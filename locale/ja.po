@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
 "PO-Revision-Date: 2007-04-05 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:56+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -439,6 +439,9 @@ msgstr ""
 #~ msgid "Targetname."
 #~ msgstr "ターゲット名．"
 
+#~ msgid "Manage RAID"
+#~ msgstr "RAID 管理"
+
 #~ msgid "Format RAID"
 #~ msgstr "RAID のフォーマット"
 
@@ -461,6 +464,11 @@ msgstr ""
 #~ "The Raid configuration has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
 #~ msgstr "Raid の設定が変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
+
+#~ msgid ""
+#~ "Do you really want to delete this raid volume? All elements that still use "
+#~ "it will become invalid (e.g. share)!"
+#~ msgstr "本当にこの RAID ボリュームを削除しても宜しいですか? それを使用する全ての要素は無効になります (例: share)!"
 
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "エラー: RAID 設定を保存する事が出来ませんでした．\n"
@@ -608,6 +616,9 @@ msgstr ""
 
 #~ msgid "RSYNC Options"
 #~ msgstr "RSYNC オプション"
+
+#~ msgid "Delete files that don't exist on sender."
+#~ msgstr "送信側に無いファイルを削除する．"
 
 #~ msgid "Shares to be synchronized"
 #~ msgstr "同期する共有"
@@ -793,6 +804,9 @@ msgstr ""
 #~ msgstr ""
 #~ "&quot;IP アドレスをホスト名に解決する&quot; が <a href=%s>%s</a> ページでチェックされている場合，IP "
 #~ "アドレスはホスト名に解決されます．"
+
+#~ msgid "webGUI Configuration"
+#~ msgstr "webGUI 設定"
 
 #~ msgid "Erasing MBR and all partitions"
 #~ msgstr "MBR と全てのパーティションを消去"
@@ -989,15 +1003,15 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s インタフェース (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr ""
 
 #, php-format
 msgid "%s used of %sB"
-msgstr ""
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
 msgstr ""
 
 #, php-format
@@ -1030,6 +1044,16 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず，<a href=%s>ユーザ</a> "
 "は完全なシェルを有効にしなければなりません．"
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1394,6 +1418,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr "オートスケール"
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr ""
 
@@ -1513,6 +1540,9 @@ msgstr "コリジョン"
 
 msgid "Cols"
 msgstr "行"
+
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
 
 msgid "Command"
 msgstr "コマンド"
@@ -1672,6 +1702,9 @@ msgstr "ルートの削除"
 msgid "Delete URL"
 msgstr ""
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr ""
 
@@ -1693,8 +1726,8 @@ msgstr "ディスクの削除"
 msgid "Delete extent"
 msgstr ""
 
-msgid "Delete files that don't exist on sender."
-msgstr "送信側に無いファイルを削除する．"
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
 
 msgid "Delete group"
 msgstr "グループの削除"
@@ -1893,11 +1926,6 @@ msgid ""
 "become invalid (e.g. share)!"
 msgstr "本当にディスクを削除しても宜しいですか? それを使用している全ての要素が無効になります (例: share)!"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-
 msgid "Do you really want to delete this extent?"
 msgstr ""
 
@@ -1929,11 +1957,6 @@ msgstr ""
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr "本当にこの RAID ボリュームを削除しても宜しいですか? それを使用する全ての要素は無効になります (例: share)!"
-
 msgid "Do you really want to delete this route?"
 msgstr "このルーティングを削除してもよろしいですか?"
 
@@ -1947,6 +1970,11 @@ msgid "Do you really want to delete this target?"
 msgstr "本当にこのターゲットを削除しても宜しいですか?"
 
 msgid "Do you really want to delete this user?"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
@@ -2293,6 +2321,9 @@ msgstr ""
 msgid "Extra options to ifconfig (usually empty)."
 msgstr ""
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -2333,6 +2364,9 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
+msgstr ""
+
+msgid "Failed to send test email. Please check log files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -2904,9 +2938,6 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
-msgid "Manage RAID"
-msgstr "RAID 管理"
-
 msgid "Management"
 msgstr "マネージメント"
 
@@ -3204,13 +3235,6 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-
 msgid "Others"
 msgstr ""
 
@@ -3386,6 +3410,12 @@ msgid "Prefix"
 msgstr ""
 
 msgid "Preformatted file system"
+msgstr ""
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
 msgstr ""
 
 msgid "Primary Group"
@@ -3699,6 +3729,9 @@ msgid "Send Command!"
 msgstr "コマンド送信!"
 
 msgid "Send now"
+msgstr ""
+
+msgid "Send test email"
 msgstr ""
 
 msgid "Server"
@@ -4036,6 +4069,13 @@ msgstr "温度"
 msgid "Temperature monitoring"
 msgstr ""
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -4281,6 +4321,9 @@ msgid ""
 "options accordingly."
 msgstr "電源制御ユーティリティはシステム状態を監視し，それに応じて様々な電源制御オプションをセットします．"
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr ""
 
@@ -4460,6 +4503,16 @@ msgid ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
+msgstr ""
+
+msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
 msgstr ""
 
 msgid ""
@@ -4832,6 +4885,16 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "警告: これは %s ログページのロードの際に大幅な遅延が起こる事があります!"
 
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr ""
 
@@ -5044,9 +5107,6 @@ msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
-
-msgid "webGUI Configuration"
-msgstr "webGUI 設定"
 
 msgid "week days"
 msgstr "週日"

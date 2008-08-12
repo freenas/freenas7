@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:57+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -42,15 +42,15 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s interface (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s od %sB"
 
 #, php-format
 msgid "%s used of %sB"
-msgstr ""
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
 msgstr ""
 
 #, php-format
@@ -83,6 +83,16 @@ msgid ""
 msgstr ""
 "Za delovanje Unison, mora biti omogočen <a href=%s>SSHD</a> ter <a "
 "href=%s>uporabnik</a> mora imeti omogočeno celotno lupino."
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -456,6 +466,9 @@ msgstr "Samodejno"
 msgid "AutoScale"
 msgstr "AvtoSkala"
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr "Dodaten parameter"
 
@@ -576,6 +589,9 @@ msgstr "Trki"
 
 msgid "Cols"
 msgstr "Stolpci"
+
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
 
 msgid "Command"
 msgstr "Ukaz"
@@ -738,6 +754,9 @@ msgstr "Odstrani pot"
 msgid "Delete URL"
 msgstr "Izbriši URL"
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr ""
 
@@ -759,8 +778,8 @@ msgstr "Odstrani disk"
 msgid "Delete extent"
 msgstr ""
 
-msgid "Delete files that don't exist on sender."
-msgstr "Izbriši datoteke, ki ne obstajajo na pošiljatelju."
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
 
 msgid "Delete group"
 msgstr "Odstrani skupino"
@@ -961,11 +980,6 @@ msgstr ""
 "Ali res želite odstraniti ta disk? Vsi elementi, ki ga uporabljajo, bodo "
 "postali neveljavni (npr. deljene mape)!"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-
 msgid "Do you really want to delete this extent?"
 msgstr ""
 
@@ -999,13 +1013,6 @@ msgstr "Ali res želite izbrisati to možnost?"
 msgid "Do you really want to delete this parameter?"
 msgstr "Ali res želite izbrisati ta parameter?"
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Ali ste prepričani, da želite odstraniti to RAID polje? Vsi elementi v tem "
-"polju, ki so še aktivni, bodo postali neveljavni (npr. deljene mape)!"
-
 msgid "Do you really want to delete this route?"
 msgstr "Ali res želite odstraniti to pot?"
 
@@ -1020,6 +1027,11 @@ msgstr "Res želite odstraniti ta cilj?"
 
 msgid "Do you really want to delete this user?"
 msgstr "Ali res želite izbrisati tega uporabnika?"
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
+msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Ali res želite formatirati ta disk? Vsi podatki bodo izgubljeni!"
@@ -1367,6 +1379,9 @@ msgstr "Dodatne možnosti"
 msgid "Extra options to ifconfig (usually empty)."
 msgstr "Dodatne možnosti za ifconfig (ponavadi prazno)."
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -1408,6 +1423,9 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
+msgstr ""
+
+msgid "Failed to send test email. Please check log files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1987,9 +2005,6 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
-msgid "Manage RAID"
-msgstr "Uredi RAID"
-
 msgid "Management"
 msgstr "Upravljanje"
 
@@ -2292,13 +2307,6 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-
 msgid "Others"
 msgstr ""
 
@@ -2474,6 +2482,12 @@ msgid "Prefix"
 msgstr ""
 
 msgid "Preformatted file system"
+msgstr ""
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
 msgstr ""
 
 msgid "Primary Group"
@@ -2787,6 +2801,9 @@ msgid "Send Command!"
 msgstr "Pošlji ukaz!"
 
 msgid "Send now"
+msgstr ""
+
+msgid "Send test email"
 msgstr ""
 
 msgid "Server"
@@ -3129,6 +3146,13 @@ msgstr "Temperatura"
 msgid "Temperature monitoring"
 msgstr ""
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -3383,6 +3407,9 @@ msgstr ""
 "Program powerd spremlja sistemsko porabo električne energije in jo primerno "
 "uravnava."
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr ""
 
@@ -3565,6 +3592,16 @@ msgid ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
+msgstr ""
+
+msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
 msgstr ""
 
 msgid ""
@@ -3944,6 +3981,16 @@ msgstr "Opozorilo"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "Opozorilo: To lahko zelo upočasni nalaganje %s vsebine dnevnika!"
 
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr ""
 
@@ -4161,9 +4208,6 @@ msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
-
-msgid "webGUI Configuration"
-msgstr "webGUI nastavitev"
 
 msgid "week days"
 msgstr "delovnik"

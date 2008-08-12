@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
 "PO-Revision-Date: 2008-06-20 10:55+0000\n"
 "Last-Translator: ubby <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:56+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -273,6 +273,9 @@ msgstr ""
 
 #~ msgid "Targetname."
 #~ msgstr "Bestemmingsnaam."
+
+#~ msgid "Manage RAID"
+#~ msgstr "RAID beheer"
 
 #~ msgid "Format RAID"
 #~ msgstr "RAID formatteren"
@@ -580,16 +583,16 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s interface (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s van de %sB"
 
 #, php-format
 msgid "%s used of %sB"
 msgstr "%s gebruikt van %sB"
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
-msgstr "%s gebruikt %s om %s arrays te maken"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -623,6 +626,16 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1023,6 +1036,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr "AutoSchaling"
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr "Overige parameter"
 
@@ -1144,6 +1160,9 @@ msgstr "Botsingen"
 
 msgid "Cols"
 msgstr "Kolommen"
+
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
 
 msgid "Command"
 msgstr "Opdracht"
@@ -1315,6 +1334,9 @@ msgstr "Route verwijderen"
 msgid "Delete URL"
 msgstr "Wis URL"
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr "Verwijder alle MIBs"
 
@@ -1336,8 +1358,8 @@ msgstr "Schijf verwijderen"
 msgid "Delete extent"
 msgstr "Verwijder extentie"
 
-msgid "Delete files that don't exist on sender."
-msgstr "Verwijder bestanden die niet op de 'verzender' staan."
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
 
 msgid "Delete group"
 msgstr "Groep verwijderen"
@@ -1551,13 +1573,6 @@ msgstr ""
 "Weet u zeker dat u deze schijf wilt verwijderen? Alle elementen die gebruik "
 "maken van deze schijf worden ongeldig. (bv gedeelde mappen)!"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-"Wilt u dit gecodeerde statione cht verwijderen? Alle element die het "
-"gebruiken worden ongeldig (bv gedeeld station)!"
-
 msgid "Do you really want to delete this extent?"
 msgstr "Wilt u deze extentie echt verwijderen?"
 
@@ -1593,13 +1608,6 @@ msgstr ""
 msgid "Do you really want to delete this parameter?"
 msgstr "Wilt u deze parameter echt verwijderen?"
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Weet u zeker dat u dit RAID volume wilt verwijderen? Alle elementen die er "
-"gebruik van maken zullen ongeldig worden (bv gedeelde mappen)!"
-
 msgid "Do you really want to delete this route?"
 msgstr "Weet u zeker dat u deze route wilt verwijderen?"
 
@@ -1614,6 +1622,11 @@ msgstr "Bent u zeker dat u dit doel wilt verwijderen?"
 
 msgid "Do you really want to delete this user?"
 msgstr "Wilt u deze gebruiker echt verwijderen?"
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
+msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
@@ -1993,6 +2006,9 @@ msgstr "Extra opties"
 msgid "Extra options to ifconfig (usually empty)."
 msgstr ""
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -2035,6 +2051,9 @@ msgstr "Maken van geheugenbestandsysteem is mislukt."
 
 msgid "Failed to send status report. Please check log files."
 msgstr "Fouten rapport versturen is mislukt. Controlleer de log bestanden."
+
+msgid "Failed to send test email. Please check log files."
+msgstr ""
 
 msgid "Failed to upload metadata backup file."
 msgstr "Slaagde er niet in om meta-gegevens reservebestand te uploaden."
@@ -2630,9 +2649,6 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
-msgid "Manage RAID"
-msgstr "RAID beheer"
-
 msgid "Management"
 msgstr "Beheer"
 
@@ -2938,13 +2954,6 @@ msgstr ""
 msgid "Option"
 msgstr "Optie"
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-
 msgid "Others"
 msgstr ""
 
@@ -3122,6 +3131,12 @@ msgstr "Voorvoegsel"
 
 msgid "Preformatted file system"
 msgstr "Voor-geformatteerd bestandssyteem"
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
+msgstr ""
 
 msgid "Primary Group"
 msgstr "Primaire groep"
@@ -3436,6 +3451,9 @@ msgstr "Commando versturen!"
 
 msgid "Send now"
 msgstr "Verstuur"
+
+msgid "Send test email"
+msgstr ""
 
 msgid "Server"
 msgstr "Server"
@@ -3779,6 +3797,13 @@ msgstr "Temperatuur"
 msgid "Temperature monitoring"
 msgstr "Temperatuur monitoren"
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -4046,6 +4071,9 @@ msgstr ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr "Onderwerp van de e-mail"
 
@@ -4243,6 +4271,16 @@ msgid ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
+msgstr ""
+
+msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
 msgstr ""
 
 msgid ""
@@ -4640,6 +4678,16 @@ msgstr "Waarschuwing"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "Warning: This can cause a huge delay in loading the %s log page!"
 
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr "WebGUI"
 
@@ -4861,9 +4909,6 @@ msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
-
-msgid "webGUI Configuration"
-msgstr "webGUI Configuratie"
 
 msgid "week days"
 msgstr "weekdagen"

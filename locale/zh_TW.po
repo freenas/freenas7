@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
 "PO-Revision-Date: 2008-05-20 07:21+0000\n"
 "Last-Translator: chicman <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:57+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -433,6 +433,9 @@ msgstr ""
 #~ msgid "Targetname."
 #~ msgstr "iSCSI目標的名稱"
 
+#~ msgid "Manage RAID"
+#~ msgstr "管理RAID"
+
 #~ msgid "Format RAID"
 #~ msgstr "格式化RAID"
 
@@ -455,6 +458,11 @@ msgstr ""
 #~ "The Raid configuration has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
 #~ msgstr "Raid 組態已經變更。<br>套用之後才會生效。"
+
+#~ msgid ""
+#~ "Do you really want to delete this raid volume? All elements that still use "
+#~ "it will become invalid (e.g. share)!"
+#~ msgstr "確定要刪除這個RAID嗎？所有使用此RAID的元件都會失效！(例：分享)"
 
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "錯誤！不能儲存 RAID 設定值。\n"
@@ -592,6 +600,9 @@ msgstr ""
 
 #~ msgid "RSYNC Options"
 #~ msgstr "RSYNC選項"
+
+#~ msgid "Delete files that don't exist on sender."
+#~ msgstr "刪除本地端已經不存在的檔案。"
 
 #~ msgid "Shares to be synchronized"
 #~ msgstr "指定要同步的目錄"
@@ -749,6 +760,9 @@ msgstr ""
 #~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 #~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 #~ msgstr "如果<a href=%s>%s</a>頁面內， &quot;將IP解析成主機名稱&quot;的選項有開啟，IP 位置會解析成主機名稱。"
+
+#~ msgid "webGUI Configuration"
+#~ msgstr "webGUI 組態設定"
 
 #~ msgid "Erasing MBR and all partitions"
 #~ msgstr "刪除 MBR 以及所有的磁區分割"
@@ -951,12 +965,27 @@ msgstr ""
 #~ msgstr "加密磁碟表已經變更。<br>套用之後才會生效。"
 
 #~ msgid ""
+#~ "Do you really want to delete this encrypted volume? All elements that still "
+#~ "use it will become invalid (e.g. share)!"
+#~ msgstr "確定要刪除這個加密磁碟？所有存取這個磁碟的元件都將失效！"
+
+#~ msgid ""
 #~ "The iSCSI disk list has been changed.<br>You must apply the changes in order "
 #~ "for them to take effect."
 #~ msgstr "iSCSI 磁碟列表已經變更。<br>套用之後才會生效。"
 
 #~ msgid "ISO"
 #~ msgstr "ISO 檔"
+
+#, php-format
+#~ msgid ""
+#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
+#~ "href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
+#~ "format and mount it!"
+#~ msgstr ""
+#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
+#~ "href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
+#~ "format and mount it!"
 
 #~ msgid "IPv4 Gateway"
 #~ msgstr "IPv4 閘道"
@@ -1017,6 +1046,10 @@ msgstr ""
 #~ msgid "Helios X3000"
 #~ msgstr "Helios X3000"
 
+#, php-format
+#~ msgid "%s uses %s to create %s arrays."
+#~ msgstr "%s uses %s to create %s arrays."
+
 #~ msgid ""
 #~ "The NFS export list has been changed.<br>You must apply the changes in order "
 #~ "for them to take effect."
@@ -1063,16 +1096,16 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s 介面 (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s of %sB"
 
 #, php-format
 msgid "%s used of %sB"
 msgstr "%s used of %sB"
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
-msgstr "%s uses %s to create %s arrays."
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -1103,6 +1136,16 @@ msgid ""
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
 "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1479,6 +1522,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr "自動擴展"
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr "附屬參數"
 
@@ -1596,6 +1642,9 @@ msgstr "封包衝撞"
 
 msgid "Cols"
 msgstr "欄"
+
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
 
 msgid "Command"
 msgstr "命令列"
@@ -1760,6 +1809,9 @@ msgstr "刪除路由"
 msgid "Delete URL"
 msgstr "刪除 URL"
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr ""
 
@@ -1781,8 +1833,8 @@ msgstr "刪除磁碟"
 msgid "Delete extent"
 msgstr "刪除 extent"
 
-msgid "Delete files that don't exist on sender."
-msgstr "刪除本地端已經不存在的檔案。"
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
 
 msgid "Delete group"
 msgstr "刪除群組"
@@ -1988,11 +2040,6 @@ msgid ""
 "become invalid (e.g. share)!"
 msgstr "確定要刪除這個磁碟嗎？所有使用此磁碟的元件都會失效！(例：分享)"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr "確定要刪除這個加密磁碟？所有存取這個磁碟的元件都將失效！"
-
 msgid "Do you really want to delete this extent?"
 msgstr "確定要刪除這個 extent？"
 
@@ -2024,11 +2071,6 @@ msgstr ""
 msgid "Do you really want to delete this parameter?"
 msgstr "確定要刪除這個參數？"
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr "確定要刪除這個RAID嗎？所有使用此RAID的元件都會失效！(例：分享)"
-
 msgid "Do you really want to delete this route?"
 msgstr "確定要刪除這個路由資訊嗎？"
 
@@ -2043,6 +2085,11 @@ msgstr "確定要刪除這個iSCSI目標嗎？"
 
 msgid "Do you really want to delete this user?"
 msgstr "確定要刪除這個使用者？"
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
+msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "確定真的要格式化這個磁碟？所有內部的資料都會消失！"
@@ -2395,6 +2442,9 @@ msgstr ""
 msgid "Extra options to ifconfig (usually empty)."
 msgstr ""
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -2435,6 +2485,9 @@ msgstr "無法建立 RAM Disk"
 
 msgid "Failed to send status report. Please check log files."
 msgstr "狀態報告檔案傳送失敗。請檢查記錄檔。"
+
+msgid "Failed to send test email. Please check log files."
+msgstr ""
 
 msgid "Failed to upload metadata backup file."
 msgstr "組態備份檔案上傳失敗。"
@@ -3020,9 +3073,6 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr "確認你的<a href='%s'>Email</a>資訊是否設定好了。"
 
-msgid "Manage RAID"
-msgstr "管理RAID"
-
 msgid "Management"
 msgstr "管理"
 
@@ -3323,16 +3373,6 @@ msgstr "開啟 %s XML 設定檔並且點選下方的按鈕來回復設定。"
 msgid "Option"
 msgstr ""
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-
 msgid "Others"
 msgstr ""
 
@@ -3509,6 +3549,12 @@ msgstr "前置字元"
 
 msgid "Preformatted file system"
 msgstr "已格式化之檔案系統"
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
+msgstr ""
 
 msgid "Primary Group"
 msgstr "主要群組"
@@ -3828,6 +3874,9 @@ msgstr "傳送指令！"
 
 msgid "Send now"
 msgstr "立刻傳送"
+
+msgid "Send test email"
+msgstr ""
 
 msgid "Server"
 msgstr "伺服器"
@@ -4170,6 +4219,13 @@ msgstr "溫度"
 msgid "Temperature monitoring"
 msgstr "溫度監測"
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -4420,6 +4476,9 @@ msgid ""
 "options accordingly."
 msgstr "電源監控程式會監控系統的整體狀態並且設定相關的電源控制項目。"
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr "這封 email 的主旨。"
 
@@ -4613,6 +4672,16 @@ msgstr ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
+
+msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
+msgstr ""
 
 msgid ""
 "This option determines if this module should be listed when the client asks "
@@ -5018,6 +5087,16 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "注意：讀取 %s 記錄檔可能會再成很大的延遲！"
 
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr "網頁介面"
 
@@ -5232,9 +5311,6 @@ msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr "使用者附加字串，例：ou=users,dc=example,dc=com"
-
-msgid "webGUI Configuration"
-msgstr "webGUI 組態設定"
 
 msgid "week days"
 msgstr "平常日"

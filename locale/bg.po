@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:56+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #~ msgid "%b %d, %Y"
@@ -382,6 +382,9 @@ msgstr ""
 #~ msgid "Target IP address"
 #~ msgstr "Target IP address"
 
+#~ msgid "Manage RAID"
+#~ msgstr "Помени настройките на RAID-а"
+
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
 
@@ -403,6 +406,13 @@ msgstr ""
 #~ msgstr ""
 #~ "The Raid configuration has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
+
+#~ msgid ""
+#~ "Do you really want to delete this raid volume? All elements that still use "
+#~ "it will become invalid (e.g. share)!"
+#~ msgstr ""
+#~ "Do you really want to delete this raid volume? All elements that still use "
+#~ "it will become invalid (e.g. share)!"
 
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "ERR Could not save RAID configuration.\n"
@@ -485,6 +495,9 @@ msgstr ""
 
 #~ msgid "RSYNC Options"
 #~ msgstr "RSYNC Options"
+
+#~ msgid "Delete files that don't exist on sender."
+#~ msgstr "Delete files that don't exist on sender."
 
 #~ msgid "Shares to be synchronized"
 #~ msgstr "Shares to be synchronized"
@@ -654,6 +667,9 @@ msgstr ""
 #~ msgstr ""
 #~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 #~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
+
+#~ msgid "webGUI Configuration"
+#~ msgstr "webGUI Configuration"
 
 #~ msgid "Erasing MBR and all partitions"
 #~ msgstr "Erasing MBR and all partitions"
@@ -855,6 +871,10 @@ msgstr ""
 #~ msgid "Save and Restart DynDNS"
 #~ msgstr "Запази и Рестартирай DynDNS"
 
+#, php-format
+#~ msgid "%s uses %s to create %s arrays."
+#~ msgstr "%s използва %s, за да създаде %s масива."
+
 msgid " interfaces:"
 msgstr " интерфейси:"
 
@@ -882,16 +902,16 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s интерфейс (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s от %sБ"
 
 #, php-format
 msgid "%s used of %sB"
 msgstr "%s използвани от %sБ"
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
-msgstr "%s използва %s, за да създаде %s масива."
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -923,6 +943,16 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1290,6 +1320,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr "AutoScale"
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr ""
 
@@ -1410,6 +1443,9 @@ msgstr "Колизии"
 
 msgid "Cols"
 msgstr "Колони"
+
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
 
 msgid "Command"
 msgstr "Команда"
@@ -1571,6 +1607,9 @@ msgstr "Изтрий пътя"
 msgid "Delete URL"
 msgstr ""
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr ""
 
@@ -1592,8 +1631,8 @@ msgstr "изтрий диска"
 msgid "Delete extent"
 msgstr ""
 
-msgid "Delete files that don't exist on sender."
-msgstr "Delete files that don't exist on sender."
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
 
 msgid "Delete group"
 msgstr "Изтрий група"
@@ -1794,11 +1833,6 @@ msgstr ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-
 msgid "Do you really want to delete this extent?"
 msgstr ""
 
@@ -1832,13 +1866,6 @@ msgstr ""
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-
 msgid "Do you really want to delete this route?"
 msgstr "Наистина ли искатате да изтриете пътя?"
 
@@ -1852,6 +1879,11 @@ msgid "Do you really want to delete this target?"
 msgstr "Do you really want to delete this target?"
 
 msgid "Do you really want to delete this user?"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
@@ -2202,6 +2234,9 @@ msgstr ""
 msgid "Extra options to ifconfig (usually empty)."
 msgstr ""
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -2243,6 +2278,9 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
+msgstr ""
+
+msgid "Failed to send test email. Please check log files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -2821,9 +2859,6 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
-msgid "Manage RAID"
-msgstr "Помени настройките на RAID-а"
-
 msgid "Management"
 msgstr "Управление"
 
@@ -3127,13 +3162,6 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-
 msgid "Others"
 msgstr ""
 
@@ -3309,6 +3337,12 @@ msgid "Prefix"
 msgstr ""
 
 msgid "Preformatted file system"
+msgstr ""
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
 msgstr ""
 
 msgid "Primary Group"
@@ -3622,6 +3656,9 @@ msgid "Send Command!"
 msgstr "Изпрати командата"
 
 msgid "Send now"
+msgstr ""
+
+msgid "Send test email"
 msgstr ""
 
 msgid "Server"
@@ -3964,6 +4001,13 @@ msgstr "Температура"
 msgid "Temperature monitoring"
 msgstr ""
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -4220,6 +4264,9 @@ msgstr ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr ""
 
@@ -4403,6 +4450,16 @@ msgid ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
+msgstr ""
+
+msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
 msgstr ""
 
 msgid ""
@@ -4782,6 +4839,16 @@ msgstr "Внимания"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "Warning: This can cause a huge delay in loading the %s log page!"
 
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr ""
 
@@ -4996,9 +5063,6 @@ msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
-
-msgid "webGUI Configuration"
-msgstr "webGUI Configuration"
 
 msgid "week days"
 msgstr "ден от седмицата"

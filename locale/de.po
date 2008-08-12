@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
-"PO-Revision-Date: 2008-07-30 13:19+0000\n"
-"Last-Translator: votdev <Unknown>\n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
+"PO-Revision-Date: 2008-08-11 17:41+0000\n"
+"Last-Translator: Stefan H. <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:57+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -453,6 +453,9 @@ msgstr ""
 #~ msgid "Targetname."
 #~ msgstr "Zielname."
 
+#~ msgid "Manage RAID"
+#~ msgstr "RAID-Einstellungen"
+
 #~ msgid "Format RAID"
 #~ msgstr "RAID formatieren"
 
@@ -477,6 +480,13 @@ msgstr ""
 #~ msgstr ""
 #~ "Die RAID-Einstellung wurde verändert.<br>Zur Übernahme der Änderungen müssen "
 #~ "diese bestätigt werden."
+
+#~ msgid ""
+#~ "Do you really want to delete this raid volume? All elements that still use "
+#~ "it will become invalid (e.g. share)!"
+#~ msgstr ""
+#~ "Soll dieses RAID Laufwerk wirklich gelöscht werden? Alle Elemente, die "
+#~ "gerade darauf zugreifen, werden ungültig werden (z.B. Freigaben)!"
 
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "Fehler: RAID-Konfiguration konnte nicht gespeichert werden.\n"
@@ -634,6 +644,9 @@ msgstr ""
 
 #~ msgid "RSYNC Options"
 #~ msgstr "RSYNC Optionen"
+
+#~ msgid "Delete files that don't exist on sender."
+#~ msgstr "Daten löschen, die beim Sender nicht existieren."
 
 #~ msgid "Shares to be synchronized"
 #~ msgstr "Abzugleichende Freigaben"
@@ -824,6 +837,9 @@ msgstr ""
 #~ msgstr ""
 #~ "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;IP-Adressen als "
 #~ "Hostnamen auflösen&quot; auf <a href=%s>%s</a> Seite aufgelöst."
+
+#~ msgid "webGUI Configuration"
+#~ msgstr "webGUI Konfiguration"
 
 #~ msgid "Erasing MBR and all partitions"
 #~ msgstr "Lösche MBR (Master Boot Record) sowie sämtliche Partitionen"
@@ -1096,16 +1112,16 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s Schnittstelle (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s von %s B"
 
 #, php-format
 msgid "%s used of %sB"
 msgstr "%s belegt von %sB"
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
-msgstr "%s benutzt %s um %s Arrays zu erstellen"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -1140,6 +1156,16 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a href=%s>user</a> "
 "benötigt außerdem vollständigen Zugang zur Shell."
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1536,6 +1562,9 @@ msgstr "Auto"
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
+msgid "Automatically generated test email."
+msgstr "Automatisch generierte Test-Email."
+
 msgid "Auxiliary parameter"
 msgstr "Zusätzliche Parameter"
 
@@ -1660,6 +1689,12 @@ msgstr "Kollisionen"
 
 msgid "Cols"
 msgstr "Spalten"
+
+#, fuzzy
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
+"Komma separierte Liste von Verzeichnissen welche nach Dateien zum freigeben "
+"durchsucht werden."
 
 msgid "Command"
 msgstr "Befehl"
@@ -1829,6 +1864,10 @@ msgstr "Lösche Route"
 msgid "Delete URL"
 msgstr "URL löschen"
 
+#, fuzzy
+msgid "Delete algorithm"
+msgstr "Löschalgorithmus."
+
 msgid "Delete all MIBs"
 msgstr "Alle MIB's löschen"
 
@@ -1850,8 +1889,9 @@ msgstr "Lösche Festplatte"
 msgid "Delete extent"
 msgstr "Lösche Extent"
 
-msgid "Delete files that don't exist on sender."
-msgstr "Daten löschen, die beim Sender nicht existieren."
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
+"Lösche Dateien auf der Empfängerseite die beim Sender nicht existieren."
 
 msgid "Delete group"
 msgstr "Lösche Gruppe"
@@ -2066,13 +2106,6 @@ msgstr ""
 "Wollen Sie diese Festplatte wirklich löschen? Alle Elemente, die derzeit "
 "verwendet werden, werden ungültig (z.B. Freigaben)!"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-"Wollen Sie diese verschlüsselte Platte wirklich löschen? Alle Elemente, die "
-"derzeit verwendet werden, werden ungültig (z.B. Freigaben)!"
-
 msgid "Do you really want to delete this extent?"
 msgstr "Wollen Sie diesen Extent wirklich löschen?"
 
@@ -2108,13 +2141,6 @@ msgstr "Wollen Sie wirklich diese Einstellung löschen?"
 msgid "Do you really want to delete this parameter?"
 msgstr "Soll dieser Parameter wirklich gelöscht werden?"
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Soll dieses RAID Laufwerk wirklich gelöscht werden? Alle Elemente, die "
-"gerade darauf zugreifen, werden ungültig werden (z.B. Freigaben)!"
-
 msgid "Do you really want to delete this route?"
 msgstr "Wollen Sie diese Route wirklich löschen?"
 
@@ -2129,6 +2155,13 @@ msgstr "Wollen Sie wirklich dieses iSCSI-target löschen?"
 
 msgid "Do you really want to delete this user?"
 msgstr "Benutzer wirklich löschen?"
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
+msgstr ""
+"Wollen Sie diesen Datenträger wirklich löschen?\\n!!! Achtung, alle Daten "
+"gehen verloren und können nicht wieder hergestellt werden. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
@@ -2443,6 +2476,8 @@ msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
+"Geben sie das Passwort ein welches für WPA-PSK benutzt werden soll. Es muss "
+"zwischen 8 und 63 Zeichen lang sein."
 
 msgid ""
 "Enter the path to the home directory of that user. Make sure that this path "
@@ -2503,7 +2538,10 @@ msgid "Extra options"
 msgstr "Zusätzliche Optionen"
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "Zusätzliche Optionen für ifconfig (normalerweise leer)."
+
+msgid "Extra options to rsync (usually empty)."
+msgstr "Zusätzliche Optionen für rsync (normalerweise leer)."
 
 msgid "FEC (Fast EtherChannel)"
 msgstr "FEC (Fast EtherChannel)"
@@ -2548,6 +2586,12 @@ msgstr "Das Erstellen des RAM-Dateisystem ist fehlgeschlagen"
 msgid "Failed to send status report. Please check log files."
 msgstr ""
 "Statusbericht konnte nicht gesendet werden. Bitte in den Logs nachsehen."
+
+#, fuzzy
+msgid "Failed to send test email. Please check log files."
+msgstr ""
+"Das senden der Test-Email ist fehlgeschlagen. Bitte überprüfen Sie die "
+"Logdateien."
 
 msgid "Failed to upload metadata backup file."
 msgstr "Upload der Metadaten-Backupdatei fehlgeschlagen."
@@ -2789,7 +2833,7 @@ msgid ""
 msgstr ""
 
 msgid "IP or FQDN address of remote RSYNC server."
-msgstr ""
+msgstr "IP oder FQDN Addresse des Remote RSYNC Servers."
 
 msgid "IP type mismatch for network and gateway."
 msgstr "IP-Protokolle vom Netzwerk und Gateway passen nicht zusammen."
@@ -2822,7 +2866,7 @@ msgid "IPv6 addresses"
 msgstr "IPv6 Adressen"
 
 msgid "ISO file to be mounted."
-msgstr ""
+msgstr "ISO-Datei die eingehängt werden soll."
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS Server"
@@ -2990,7 +3034,7 @@ msgid "Key"
 msgstr "Schlüssel"
 
 msgid "Key Management Protocol"
-msgstr ""
+msgstr "Key Management Protocol"
 
 msgid "Kill encrypted volume"
 msgstr "Verschlüsselten Datenträger entfernen"
@@ -3049,7 +3093,7 @@ msgid "License"
 msgstr "Lizenz"
 
 msgid "Link Aggregation and Failover"
-msgstr ""
+msgstr "Link Aggregation und Failover"
 
 msgid "List"
 msgstr "Liste"
@@ -3118,11 +3162,13 @@ msgstr ""
 "Ortsangabe, z.B. physischer Standort dieses Systems: 'Etage des Gebäudes, "
 "Raum xyz'."
 
+#, fuzzy
 msgid "Location of the files to share."
-msgstr ""
+msgstr "Standort der Dateien die freigegeben werden sollen."
 
+#, fuzzy
 msgid "Location where the content database file will be stored."
-msgstr ""
+msgstr "Standort an welchem die Inhalte-Datenbank gespeichert werden soll."
 
 msgid "Log Level"
 msgstr "Log Level"
@@ -3143,7 +3189,7 @@ msgid "MAC address"
 msgstr "MAC Addresse"
 
 msgid "MIB"
-msgstr ""
+msgstr "MIB"
 
 msgid "MISSING"
 msgstr "FEHLT"
@@ -3170,9 +3216,6 @@ msgstr ""
 "Stellen Sie sicher, das Sie Ihre <a href='%s'>Email</a>-Einstellungen schon "
 "konfiguriert haben."
 
-msgid "Manage RAID"
-msgstr "RAID-Einstellungen"
-
 msgid "Management"
 msgstr "Management"
 
@@ -3183,7 +3226,7 @@ msgid "Map to user"
 msgstr "Bilde auf den Benutzer ab"
 
 msgid "Max. TTL"
-msgstr ""
+msgstr "Max. TTL"
 
 msgid "Max. conn. per IP"
 msgstr "Max. Anzahl Verb. einer IP"
@@ -3497,16 +3540,6 @@ msgstr ""
 msgid "Option"
 msgstr "Einstellung"
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-"Optionaler Konfigurationsschritt: Einen virtuellen RAID-Datenträger mit <a "
-"href='%s'>vorher konfigurierte Festplatte</a> erstellen.<br>Warten Sie auf "
-"den '%s' Status bevor Sie den Datenträger formatieren und einbinden!"
-
 msgid "Others"
 msgstr "Sonstige"
 
@@ -3684,6 +3717,12 @@ msgstr "Präfix"
 msgid "Preformatted file system"
 msgstr "Vorformatiertes Filesystem"
 
+msgid "Preserve extended attributes"
+msgstr "Erhalte erweiterte Attribute"
+
+msgid "Preserve permissions"
+msgstr "Dateirechte beibehalten"
+
 msgid "Primary Group"
 msgstr "Primäre Gruppe"
 
@@ -3850,8 +3889,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Berichte"
 
+#, fuzzy
 msgid "Rescan interval"
-msgstr ""
+msgstr "Durchsuchungsinterval"
 
 msgid "Resolve"
 msgstr "Auflösen"
@@ -3872,7 +3912,7 @@ msgid "Retry"
 msgstr "Wiederholen"
 
 msgid "Roundrobin"
-msgstr ""
+msgstr "Roundrobin"
 
 msgid "Routes"
 msgstr "Routing"
@@ -3938,8 +3978,9 @@ msgid ""
 "administrative web interface."
 msgstr ""
 
+#, fuzzy
 msgid "Scan type"
-msgstr ""
+msgstr "Suchart"
 
 msgid "Schedule time"
 msgstr "Geplante Zeit"
@@ -4010,6 +4051,9 @@ msgstr "Sende Befehl!"
 
 msgid "Send now"
 msgstr "Jetzt senden"
+
+msgid "Send test email"
+msgstr "Test-Email senden"
 
 msgid "Server"
 msgstr "Server"
@@ -4157,7 +4201,7 @@ msgstr ""
 "Legt fest, dass das Dateisystem nur lesefähig exportiert werden soll."
 
 msgid "Specifies the command to be run."
-msgstr ""
+msgstr "Gibt den auszuführende Befehl an."
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -4362,6 +4406,13 @@ msgstr "Temperatur"
 msgid "Temperature monitoring"
 msgstr "Temperaturüberwachung"
 
+#, php-format
+msgid "Test email from %s"
+msgstr "Test-Email von %s"
+
+msgid "Test email successfully sent."
+msgstr "Test-Email erfolgreich versendet."
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -4443,9 +4494,9 @@ msgstr "Das Attribut '%s' scheint kein gültiges Zertifikat zu sein."
 msgid "The attribute '%s' does not appear to be a valid private %s key."
 msgstr "Das Attribut '%s' scheint kein gültiger Privat %s Schlüssel zu sein."
 
-#, c-format
+#, fuzzy, c-format
 msgid "The attribute '%s' does not appear to be a valid private key."
-msgstr ""
+msgstr "Das Attribut '%s' ist anscheinend kein valider private key."
 
 #, c-format
 msgid "The attribute '%s' is an invalid port number."
@@ -4485,6 +4536,7 @@ msgstr ""
 #, c-format
 msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
+"Das Attribut '%s' darf nur aus folgenden Zeichen bestehen: a-z, A-Z, 0-9."
 
 #, c-format
 msgid "The attribute '%s' must be a number."
@@ -4645,6 +4697,10 @@ msgid ""
 msgstr ""
 "Das 'powerd utility' überwacht den Systemzustand und stellt entsprechend "
 "diverse Energiekontrolloptionen ein."
+
+#, fuzzy
+msgid "The share name is already used."
+msgstr "Der Freigabenamen ist bereits vergeben."
 
 msgid "The subject of the email."
 msgstr "Betreff des E-Mail."
@@ -4863,6 +4919,16 @@ msgstr ""
 "angegeben. Gruppen werden durch ein vorangestelltes @ gekennzeichnet."
 
 msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
+msgstr ""
+
+msgid ""
 "This option determines if this module should be listed when the client asks "
 "for a listing of available modules. By setting this to false you can create "
 "hidden modules."
@@ -4894,12 +4960,20 @@ msgid ""
 "permitted to access this module. You can specify the hosts by name or IP "
 "number. Leave this field empty to use default settings."
 msgstr ""
+"Diese Option ist eine Komma, Leerzeichen, oder Tab separierte Liste von "
+"Hosts welchen der Zugriff auf dieses Modul erlaubt ist. Sie können die Hosts "
+"anhand des Namens, oder der IP angeben. Lassen sie dieses Feld leer um die "
+"Standard Werte zu verwenden."
 
 msgid ""
 "This option is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. You can specify the hosts by name or IP "
 "number. Leave this field empty to use default settings."
 msgstr ""
+"Diese Option ist eine Komma, Leerzeichen, oder Tab separierte Liste von "
+"HOsts welchen der Zugriff auf diese Freigabe erlaubt ist. Sie können die "
+"Hosts anhand des Namens, oder der IP angeben. Lassen sie dieses Feld leer um "
+"die Standard Werte zu verwenden."
 
 msgid ""
 "This option specifies the group name or group ID that file transfers to and "
@@ -4919,6 +4993,8 @@ msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
 msgstr ""
+"Dieser Parameter bestimmt ob Dateien welche mit einem Punkt beginnen als "
+"versteckt behandelt werden."
 
 msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
@@ -5134,7 +5210,7 @@ msgstr ""
 
 msgid ""
 "Use the following IP address as the source address in outgoing packets."
-msgstr ""
+msgstr "Benutze folgende IP als Quelladresse für ausgehende Pakete."
 
 msgid ""
 "Use the new 64k streaming read and write varient SMB requests introduced "
@@ -5245,7 +5321,7 @@ msgid "WINS server"
 msgstr "WINS Server"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
-msgstr ""
+msgstr "WINS Server IP-Adresse (z.B. vom MS Active Directory Server)."
 
 msgid "WPA"
 msgstr ""
@@ -5267,6 +5343,20 @@ msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr ""
 "Warnung: Dies kann eine beträchtliche Verzögerung beim Laden der Logfiles "
 "von %s verursachen!"
+
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+"Warnung: Sie sind dabei ein RAID Volumen zu löschen. Alle Daten gehen dabei "
+"verloren und können nicht wiederhergestellt werden."
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+"Warnung: Sie sind dabei ein verschlüsseltes Volumen zu löschen. Alle Daten "
+"gehen dabei verloren und können nicht wiederhergestellt werden."
 
 msgid "WebGUI"
 msgstr "Weboberfläche"
@@ -5297,10 +5387,13 @@ msgstr ""
 msgid "Workgroup"
 msgstr "Arbeitsgruppe"
 
+#, fuzzy
 msgid ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
 "15 characters)."
 msgstr ""
+"Arbeitsgruppe in welcher der Server bei Anfragen erscheinen wird (maximal 15 "
+"Zeichen)."
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
@@ -5493,9 +5586,6 @@ msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr "user_suffix, example: ou=users,dc=example,dc=com"
-
-msgid "webGUI Configuration"
-msgstr "webGUI Konfiguration"
 
 msgid "week days"
 msgstr "Wochentagen"
