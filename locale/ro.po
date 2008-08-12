@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-10 10:52+0000\n"
 "PO-Revision-Date: 2008-06-03 10:45+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-10 07:57+0000\n"
+"X-Launchpad-Export-Date: 2008-08-11 21:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -444,6 +444,9 @@ msgstr ""
 #~ msgid "Targetname."
 #~ msgstr "Nume Tinta."
 
+#~ msgid "Manage RAID"
+#~ msgstr "Configurare RAID"
+
 #~ msgid "Format RAID"
 #~ msgstr "Formatare RAID"
 
@@ -468,6 +471,13 @@ msgstr ""
 #~ msgstr ""
 #~ "Configuratia Raid a fost modificata.<br>Va trebui sa o salvati pentru a "
 #~ "deveni activa."
+
+#~ msgid ""
+#~ "Do you really want to delete this raid volume? All elements that still use "
+#~ "it will become invalid (e.g. share)!"
+#~ msgstr ""
+#~ "Sigur stergeti volumul RAID? Vor fi sterse toate elementele (date, partajari "
+#~ "etc.)!"
 
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "ERROARE: Configuratia RAID nu poate fi salvata.\n"
@@ -627,6 +637,9 @@ msgstr ""
 
 #~ msgid "RSYNC Options"
 #~ msgstr "Optiuni RSYNC"
+
+#~ msgid "Delete files that don't exist on sender."
+#~ msgstr "Stergere fisiere care nu exista la expeditor."
 
 #~ msgid "Shares to be synchronized"
 #~ msgstr "Partajari de sincronizat"
@@ -822,6 +835,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Adresele IP vor fi afisate ca Nume Sistem daca &quot;Conversie Adresa IP in  "
 #~ "Nume Sistem&quot; este activata in pagina <a href=%s>%s</a>."
+
+#~ msgid "webGUI Configuration"
+#~ msgstr "Configuratie Interfata Web"
 
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "Pastrare MBR si partitii"
@@ -1055,6 +1071,27 @@ msgstr ""
 #~ msgid "A valid size target value must be specified"
 #~ msgstr "Valoare incorecta pentru dimensiunea destinatiei"
 
+#~ msgid ""
+#~ "Do you really want to delete this encrypted volume? All elements that still "
+#~ "use it will become invalid (e.g. share)!"
+#~ msgstr ""
+#~ "Stergeti acest volum criptat? Toate elementele care-l folosesc vor deveni "
+#~ "invalide (ex. partajarile)"
+
+#, php-format
+#~ msgid ""
+#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
+#~ "href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
+#~ "format and mount it!"
+#~ msgstr ""
+#~ "Pas optional de configurare: Configurarea unui volum virtula RAID folosind "
+#~ "discul <a href='%s'> definit anterior</a>.<br>Asteptati afisarea starii "
+#~ "discului  '%s' inainte de a-l formata si monta!"
+
+#, fuzzy, php-format
+#~ msgid "%s uses %s to create %s arrays."
+#~ msgstr "%s utilizeaza %s ca se creeze %s arrays."
+
 msgid " interfaces:"
 msgstr " interfetei:"
 
@@ -1082,16 +1119,16 @@ msgid "%s interface (SSID '%s')"
 msgstr "Interfata %s (SSID '%s')"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s din %sB"
 
 #, php-format
 msgid "%s used of %sB"
 msgstr ""
-
-#, fuzzy, php-format
-msgid "%s uses %s to create %s arrays."
-msgstr "%s utilizeaza %s ca se creeze %s arrays."
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -1126,6 +1163,16 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> trebuie activat pentru Unison, si utilizatorul<a "
 "href=%s></a> trebuie sa aiba acces complet la Shell."
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1518,6 +1565,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr "AutoScalare"
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr "Parametri auxiliari"
 
@@ -1644,6 +1694,9 @@ msgstr "Coliziuni"
 
 msgid "Cols"
 msgstr "Coloane"
+
+msgid "Comma separated list of directories to search for files to share."
+msgstr ""
 
 msgid "Command"
 msgstr "Comenzi"
@@ -1816,6 +1869,9 @@ msgstr "Stergere Ruta"
 msgid "Delete URL"
 msgstr ""
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr ""
 
@@ -1837,8 +1893,8 @@ msgstr "Stergere disc"
 msgid "Delete extent"
 msgstr "Stergere extensie"
 
-msgid "Delete files that don't exist on sender."
-msgstr "Stergere fisiere care nu exista la expeditor."
+msgid "Delete files on the receiving side that don't exist on sender."
+msgstr ""
 
 msgid "Delete group"
 msgstr "Stergere grup"
@@ -2053,13 +2109,6 @@ msgstr ""
 "Sigur stergeti discul? Toate datele, inclusiv partajarile, vor fi definitiv "
 "sterse!"
 
-msgid ""
-"Do you really want to delete this encrypted volume? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-"Stergeti acest volum criptat? Toate elementele care-l folosesc vor deveni "
-"invalide (ex. partajarile)"
-
 msgid "Do you really want to delete this extent?"
 msgstr "Stergeti extensia?"
 
@@ -2095,13 +2144,6 @@ msgstr "Stergeti aceasta optiune?"
 msgid "Do you really want to delete this parameter?"
 msgstr "Stergeti acest parametru?"
 
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Sigur stergeti volumul RAID? Vor fi sterse toate elementele (date, partajari "
-"etc.)!"
-
 msgid "Do you really want to delete this route?"
 msgstr "Stergeti aceasta ruta?"
 
@@ -2116,6 +2158,11 @@ msgstr "Doriti sa stergeti aceasta destinatie?"
 
 msgid "Do you really want to delete this user?"
 msgstr "Stergeti acest utilizator?"
+
+msgid ""
+"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
+"and can not be recovered. !!!"
+msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Sigur doriti formatarea discului? Toate datele vor fi pierdute!"
@@ -2475,6 +2522,9 @@ msgstr ""
 msgid "Extra options to ifconfig (usually empty)."
 msgstr ""
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -2517,6 +2567,9 @@ msgstr "Eroare la crearea sistemului de fisiere in memorie."
 
 msgid "Failed to send status report. Please check log files."
 msgstr "Eroare la trimiterea raportului. Verificati fisierul jurnal."
+
+msgid "Failed to send test email. Please check log files."
+msgstr ""
 
 msgid "Failed to upload metadata backup file."
 msgstr ""
@@ -3114,9 +3167,6 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
-msgid "Manage RAID"
-msgstr "Configurare RAID"
-
 msgid "Management"
 msgstr "Configurare"
 
@@ -3429,16 +3479,6 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#, php-format
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-"format and mount it!"
-msgstr ""
-"Pas optional de configurare: Configurarea unui volum virtula RAID folosind "
-"discul <a href='%s'> definit anterior</a>.<br>Asteptati afisarea starii "
-"discului  '%s' inainte de a-l formata si monta!"
-
 msgid "Others"
 msgstr ""
 
@@ -3615,6 +3655,12 @@ msgid "Prefix"
 msgstr "Prefix"
 
 msgid "Preformatted file system"
+msgstr ""
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
 msgstr ""
 
 msgid "Primary Group"
@@ -3938,6 +3984,9 @@ msgstr "Excutare Comanda!"
 
 msgid "Send now"
 msgstr "Trimite acum"
+
+msgid "Send test email"
+msgstr ""
 
 msgid "Server"
 msgstr "Server"
@@ -4282,6 +4331,13 @@ msgstr "Temperatura"
 msgid "Temperature monitoring"
 msgstr ""
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
@@ -4538,6 +4594,9 @@ msgstr ""
 "Utilitarul <b>powerd></b> monitorizeaza si stabileste diferite setari pentru "
 "controlul alimentarii sistemului."
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr "Subiectul e-mailului"
 
@@ -4728,6 +4787,16 @@ msgid ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
+msgstr ""
+
+msgid ""
+"This option causes rsync to update the remote extended attributes to be the "
+"same as the local ones."
+msgstr ""
+
+msgid ""
+"This option causes the receiving rsync to set the destination permissions to "
+"be the same as the source permissions."
 msgstr ""
 
 msgid ""
@@ -5124,6 +5193,16 @@ msgstr ""
 "Atentie: In acest mod poate apare o foarte mare intirziere in incarcarea "
 "paginii jurnal %s!"
 
+msgid ""
+"Warning: You are going to delete a RAID volume. All data will get lost and "
+"can not be recovered."
+msgstr ""
+
+msgid ""
+"Warning: You are going to delete an encrypted volume. All data will get lost "
+"and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr ""
 
@@ -5346,9 +5425,6 @@ msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr "sufix utilizator, ex.: ou=utilizatori, dc=exemplu, dc=com"
-
-msgid "webGUI Configuration"
-msgstr "Configuratie Interfata Web"
 
 msgid "week days"
 msgstr "zilele saptaminii"
