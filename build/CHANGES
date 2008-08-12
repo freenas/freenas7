@@ -46,6 +46,8 @@ Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
 
 Bug fixes:
+- Fix lagg interface initialization bug (BR 2003231). WebGUI was not accessible after creating a lagg
+  interface without assigning it to LAN or OPT asap before rebooting.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
