@@ -50,8 +50,8 @@ if [ "amd64" = ${FREENAS_ARCH} ]; then
 FREENAS_MFSROOT_SIZE=62
 FREENAS_IMG_SIZE=30
 else
-FREENAS_MFSROOT_SIZE=56
-FREENAS_IMG_SIZE=26
+FREENAS_MFSROOT_SIZE=58
+FREENAS_IMG_SIZE=28
 fi
 
 # Media geometry, only relevant if bios doesn't understand LBA.
