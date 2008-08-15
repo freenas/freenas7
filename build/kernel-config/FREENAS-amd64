@@ -296,6 +296,7 @@ device		ihb				# IOI-A100U2W drivers
 
 # PCI Ethernet NICs.
 device		le				# AMD Am7900 LANCE and Am79C9xx PCnet Ethernet interface driver
+device		nfe				# nVidia nForce MCP on-board Ethernet
 
 # Wireless NIC cards
 device		firmware

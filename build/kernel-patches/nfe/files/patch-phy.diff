@@ -1,0 +1,105 @@
+--- /sys/dev/mii/ciphy.c.orig	2007-02-25 18:57:12.000000000 +0100
++++ /sys/dev/mii/ciphy.c	2008-08-15 11:24:28.000000000 +0200
+@@ -93,6 +93,7 @@
+ 	MII_PHY_DESC(CICADA, CS8201),
+ 	MII_PHY_DESC(CICADA, CS8201A),
+ 	MII_PHY_DESC(CICADA, CS8201B),
++	MII_PHY_DESC(VITESSE, VSC8601),
+ 	MII_PHY_END
+ };
+ 
+@@ -356,11 +357,28 @@
+ {
+ 	uint16_t		model;
+ 	uint16_t		status, speed;
++	uint16_t		val;
+ 
+ 	model = MII_MODEL(PHY_READ(sc, CIPHY_MII_PHYIDR2));
+ 	status = PHY_READ(sc, CIPHY_MII_AUXCSR);
+ 	speed = status & CIPHY_AUXCSR_SPEED;
+ 
++	if (strcmp(device_get_name(device_get_parent(sc->mii_dev)),
++	    "nfe") == 0) {
++		/* need to set for 2.5V RGMII for NVIDIA adapters */
++		val = PHY_READ(sc, CIPHY_MII_ECTL1);
++		val &= ~(CIPHY_ECTL1_IOVOL | CIPHY_ECTL1_INTSEL);
++		val |= (CIPHY_IOVOL_2500MV | CIPHY_INTSEL_RGMII);
++		PHY_WRITE(sc, CIPHY_MII_ECTL1, val);
++		/* From Linux. */
++		val = PHY_READ(sc, CIPHY_MII_AUXCSR);
++		val |= CIPHY_AUXCSR_MDPPS;
++		PHY_WRITE(sc, CIPHY_MII_AUXCSR, val);
++		val = PHY_READ(sc, CIPHY_MII_10BTCSR);
++		val |= CIPHY_10BTCSR_ECHO;
++		PHY_WRITE(sc, CIPHY_MII_10BTCSR, val);
++	}
++
+ 	switch (model) {
+ 	case MII_MODEL_CICADA_CS8201:
+ 
+@@ -398,6 +416,8 @@
+ 		}
+ 
+ 		break;
++	case MII_MODEL_VITESSE_VSC8601:
++		break;
+ 	default:
+ 		device_printf(sc->mii_dev, "unknown CICADA PHY model %x\n",
+ 		    model);
+--- /sys/dev/mii/ciphyreg.h.orig	2005-01-06 02:42:55.000000000 +0100
++++ /sys/dev/mii/ciphyreg.h	2008-08-15 11:24:28.000000000 +0200
+@@ -251,6 +251,16 @@
+ /* Extended PHY control register #1 */
+ #define CIPHY_MII_ECTL1		0x17
+ #define CIPHY_ECTL1_ACTIPHY	0x0020	/* Enable ActiPHY power saving */
++#define CIPHY_ECTL1_IOVOL	0x0e00	/* MAC interface and I/O voltage select */
++#define CIPHY_ECTL1_INTSEL	0xf000	/* select MAC interface */
++
++#define CIPHY_IOVOL_3300MV	0x0000	/* 3.3V for I/O pins */
++#define CIPHY_IOVOL_2500MV	0x0200	/* 2.5V for I/O pins */
++
++#define CIPHY_INTSEL_GMII	0x0000	/* GMII/MII */
++#define CIPHY_INTSEL_RGMII	0x1000
++#define CIPHY_INTSEL_TBI	0x2000
++#define CIPHY_INTSEL_RTBI	0x3000
+ 
+ /* Extended PHY control register #2 */
+ #define CIPHY_MII_ECTL2		0x18
+--- /sys/dev/mii/miidevs.orig	2008-04-12 11:09:00.000000000 +0200
++++ /sys/dev/mii/miidevs	2008-08-15 10:03:16.000000000 +0200
+@@ -66,6 +66,7 @@
+ oui SIS				0x00e006	Silicon Integrated Systems
+ oui TDK				0x00c039	TDK
+ oui TI				0x080028	Texas Instruments
++oui VITESSE			0x0001c1	Vitesse Semiconductor
+ oui XAQTI			0x00e0ae	XaQti Corp.
+ oui MARVELL			0x005043	Marvell Semiconductor
+ oui xxMARVELL			0x000ac2	Marvell Semiconductor
+@@ -138,6 +139,7 @@
+ 
+ /* Cicada Semiconductor PHYs (now owned by Vitesse?) */
+ model CICADA CS8201		0x0001 Cicada CS8201 10/100/1000TX PHY
++model VITESSE VSC8601		0x0002 VSC8601 10/100/1000TX PHY
+ model CICADA CS8201A		0x0020 Cicada CS8201 10/100/1000TX PHY
+ model CICADA CS8201B		0x0021 Cicada CS8201 10/100/1000TX PHY
+ 
+@@ -199,6 +201,9 @@
+ /* XaQti Corp. PHYs. */
+ model XAQTI XMACII		0x0000 XaQti Corp. XMAC II gigabit interface
+ 
++/* IC Plus Corp. PHYs */
++model ICPLUS IP101		0x0005 IP101 10/100 PHY
++
+ /* Marvell Semiconductor PHYs */
+ model MARVELL E1000		0x0000 Marvell 88E1000 Gigabit PHY
+ model MARVELL E1011		0x0002 Marvell 88E1011 Gigabit PHY
+--- /sys/dev/mii/rlphy.c.orig	2007-02-25 17:57:43.000000000 +0100
++++ /sys/dev/mii/rlphy.c	2008-08-15 11:24:28.000000000 +0200
+@@ -93,6 +93,7 @@
+ 
+ static const struct mii_phydesc rlphys[] = {
+ 	MII_PHY_DESC(REALTEK, RTL8201L),
++	MII_PHY_DESC(ICPLUS, IP101),
+ 	MII_PHY_END
+ };
+ 

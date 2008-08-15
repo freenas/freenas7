@@ -1,0 +1,10 @@
+Create patch:
+diff -ruN /sys/modules/Makefile.orig /sys/modules/Makefile > patch-Makefile.diff
+
+diff -ruN /sys/conf/files.i386.orig /sys/conf/files.i386 > patch-files.diff
+diff -ruN /sys/conf/files.amd64.orig /sys/conf/files.amd64 >> patch-files.diff
+
+diff -ruN /sys/dev/mii/ciphy.c.orig /sys/dev/mii/ciphy.c > patch-phy.diff
+diff -ruN /sys/dev/mii/ciphyreg.h.orig /sys/dev/mii/ciphyreg.h >> patch-phy.diff
+diff -ruN /sys/dev/mii/miidevs.orig /sys/dev/mii/miidevs >> patch-phy.diff
+diff -ruN /sys/dev/mii/rlphy.c.orig /sys/dev/mii/rlphy.c >> patch-phy.diff
