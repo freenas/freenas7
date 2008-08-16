@@ -42,6 +42,7 @@ Majors changes:
 - Add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion algorithm when 'Delete'
   option has been choosen.
 - Add nVidia nForce MCP on-board ethernet support.
+- Add audio transcoding support to fuppes (LAME/TwoLAME/Vorbis/FLAC).
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.

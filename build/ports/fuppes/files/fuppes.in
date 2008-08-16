@@ -79,9 +79,12 @@ EOF
     <use_taglib>true</use_taglib>
   </content_directory>
   <transcoding>
-    <transcode_vorbis>false</transcode_vorbis>
+  	<!--[lame|twolame]-->
+    <audio_encoder>lame</audio_encoder>
+    <!--[true|false]-->
+    <transcode_vorbis>true</transcode_vorbis>
     <transcode_musepack>false</transcode_musepack>
-    <transcode_flac>false</transcode_flac>
+    <transcode_flac>true</transcode_flac>
   </transcoding>
   <device_settings>
 <!--"default" settings are inhertied by specific devices and can be overwritten-->
@@ -114,7 +117,7 @@ EOF
         <file ext="ogg">
           <type>AUDIO_ITEM</type>
           <mime_type>application/octet-stream</mime_type>
-          <transcode enabled="false">
+          <transcode enabled="true">
             <ext>mp3</ext>
             <mime_type>audio/mpeg</mime_type>
             <dlna>MP3</dlna>
@@ -146,7 +149,7 @@ EOF
         <file ext="flac">
           <type>AUDIO_ITEM</type>
           <mime_type>audio/x-flac</mime_type>
-          <transcode enabled="false">
+          <transcode enabled="true">
             <ext>mp3</ext>
             <mime_type>audio/mpeg</mime_type>
             <dlna>MP3</dlna>
