@@ -20,7 +20,7 @@ setvar()
 	_platform=`cat /etc/platform`
 
 	case ${_platform} in
-		i386-full)
+		*-full)
 			;;
 		*)
 			# If running from liveCD or embedded use a memory filesystem for /var.
