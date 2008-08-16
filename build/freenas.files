@@ -482,6 +482,9 @@ usr/sbin/ip6addrctl
 ## mount_smbfs -- mount a shared resource from an SMB file server
 usr/sbin/mount_smbfs
 
+## usbdevs -- show USB devices connected to the system
+usr/sbin/usbdevs
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
