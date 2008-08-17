@@ -261,6 +261,32 @@ EOF
           <type>VIDEO_ITEM</type>
           <mime_type>video/x-divx</mime_type>
         </file>
+        <file ext="mpg">
+          <type>VIDEO_ITEM</type>
+          <transcode enabled="true">
+            <transcoder>ffmpeg</transcoder>
+            <mime_type>video/mpeg</mime_type>
+            <ext>mpg</ext>
+            <video_codec>copy</video_codec>
+            <audio_codec>mp2</audio_codec>
+            <audio_samplerate>44100</audio_samplerate>
+            <audio_bitrate>192000</audio_bitrate>
+          </transcode>
+        </file>
+        <file ext="mkv">
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/x-matroska</mime_type>
+          <transcode enabled="true">
+            <transcoder>ffmpeg</transcoder>
+            <ext>mpg</ext>
+            <mime_type>video/mpeg</mime_type>
+            <video_codec>mpeg2video</video_codec>
+            <video_bitrate>1800000</video_bitrate>
+            <audio_codec>mp2</audio_codec>
+            <audio_samplerate>44100</audio_samplerate>
+            <audio_bitrate>192000</audio_bitrate>
+          </transcode>
+        </file>
       </file_settings>
     </device>
     <device name="Microsoft_XBox360" virtual="Microsoft_XBox360" enabled="false">

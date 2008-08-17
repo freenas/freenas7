@@ -23,18 +23,20 @@ GNU_CONFIGURE=		yes
 CONFIGURE_TARGET=	--build="${MACHINE_ARCH}-portbld-freebsd${OSREL}"
 CONFIGURE_ARGS+=	--disable-libnotify \
 									--disable-imagemagick \
-									--disable-libavformat
-CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include ${PTHREAD_CFLAGS}" \
+									--enable-video-transcoding
+CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include -I${LOCALBASE}/include/ffmpeg ${PTHREAD_CFLAGS}" \
 									LIBS="-L${LOCALBASE}/lib ${PTHREAD_LIBS}"
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-ldl ||' ${WRKSRC}/configure.in
 
-# Copy sqlite3 options file
+	# Copy options files
 	@${MKDIR} -v /var/db/ports/sqlite3
 	@${CP} -pv ${FILESDIR}/sqlite3-options.in /var/db/ports/sqlite3/options
 	@${MKDIR} -v /var/db/ports/libsndfile
 	@${CP} -pv ${FILESDIR}/libsndfile-options.in /var/db/ports/libsndfile/options
+	@${MKDIR} -v /var/db/ports/ffmpeg
+	@${CP} -pv ${FILESDIR}/ffmpeg-options.in /var/db/ports/ffmpeg/options
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/${PORTNAME}d ${FREENAS_ROOTFS}/usr/local/bin
@@ -43,7 +45,8 @@ do-install:
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	@${INSTALL_DATA} -v ${FILESDIR}/vfolder.cfg ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 
-	# Copy additional libraries for transcoding support.
+	# Copy additional libraries that are linked dynamically. These can not be
+	# covered by ldd when building userland via make.sh.
 	@${CP} -Rpv /usr/local/lib/libFLAC.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libFLAC.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libFLAC++.so ${FREENAS_ROOTFS}/usr/local/lib
