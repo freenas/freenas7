@@ -82,9 +82,9 @@ EOF
   	<!--[lame|twolame]-->
     <audio_encoder>lame</audio_encoder>
     <!--[true|false]-->
-    <transcode_vorbis>true</transcode_vorbis>
+    <transcode_vorbis>false</transcode_vorbis>
     <transcode_musepack>false</transcode_musepack>
-    <transcode_flac>true</transcode_flac>
+    <transcode_flac>false</transcode_flac>
   </transcoding>
   <device_settings>
 <!--"default" settings are inhertied by specific devices and can be overwritten-->
@@ -117,7 +117,7 @@ EOF
         <file ext="ogg">
           <type>AUDIO_ITEM</type>
           <mime_type>application/octet-stream</mime_type>
-          <transcode enabled="true">
+          <transcode enabled="false">
             <ext>mp3</ext>
             <mime_type>audio/mpeg</mime_type>
             <dlna>MP3</dlna>
@@ -149,7 +149,7 @@ EOF
         <file ext="flac">
           <type>AUDIO_ITEM</type>
           <mime_type>audio/x-flac</mime_type>
-          <transcode enabled="true">
+          <transcode enabled="false">
             <ext>mp3</ext>
             <mime_type>audio/mpeg</mime_type>
             <dlna>MP3</dlna>
@@ -263,7 +263,7 @@ EOF
         </file>
         <file ext="mpg">
           <type>VIDEO_ITEM</type>
-          <transcode enabled="true">
+          <transcode enabled="false">
             <transcoder>ffmpeg</transcoder>
             <mime_type>video/mpeg</mime_type>
             <ext>mpg</ext>
@@ -276,7 +276,7 @@ EOF
         <file ext="mkv">
           <type>VIDEO_ITEM</type>
           <mime_type>video/x-matroska</mime_type>
-          <transcode enabled="true">
+          <transcode enabled="false">
             <transcoder>ffmpeg</transcoder>
             <ext>mpg</ext>
             <mime_type>video/mpeg</mime_type>
@@ -401,6 +401,16 @@ EOF
 		# Set allowed IP to loopback to disable all external IP's.
 		/usr/local/bin/xml edit -s "//fuppes_config/network/allowed_ips" \
 			-t elem -n ip -v "127.0.0.1" ${fuppes_config} > ${fuppes_config}.tmp
+		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
+	fi
+
+	# Enable/disable transcoding
+	if configxml_isset //upnp/transcoding; then
+		/usr/local/bin/xml edit -P \
+			-u "//fuppes_config/transcoding/transcode_vorbis" -v true \
+			-u "//fuppes_config/transcoding/transcode_flac" -v true \
+			-u "//fuppes_config/device_settings/device/file_settings/file/transcode/@enabled" -v true \
+			${fuppes_config} > ${fuppes_config}.tmp
 		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
 	fi
 

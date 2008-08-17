@@ -530,6 +530,7 @@
 		<web/>
 		<profile>default|...</profile>
 		<deviceip>xxx.xxx.xxx.xxx<deviceip>
+		<transcoding/>
 		-->
 		<port>49152</port>
 		<profile>default</profile>
