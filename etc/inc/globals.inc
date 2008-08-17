@@ -58,8 +58,8 @@ $g = array(
 );
 
 $g_install = array(
-	"part1size_embedded" => "32",
-	"part1size_full" => "96"
+	"part1size_embedded" => "64",
+	"part1size_full" => "128"
 );
 
 /* Available languages/locales */
