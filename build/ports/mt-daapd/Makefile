@@ -9,7 +9,10 @@ DISTNAME=						${PORTNAME}-svn-${PORTVERSION}
 
 LIB_DEPENDS=				gdbm.3:${PORTSDIR}/databases/gdbm \
 										sqlite3:${PORTSDIR}/databases/sqlite3 \
-										id3tag.0:${PORTSDIR}/audio/libid3tag
+										id3tag.0:${PORTSDIR}/audio/libid3tag \
+										vorbis.4:${PORTSDIR}/audio/libvorbis \
+										FLAC.10:${PORTSDIR}/audio/flac \
+										avcodec:${PORTSDIR}/multimedia/ffmpeg
 
 USE_AUTOTOOLS=			autoheader:261 autoconf:261:env
 USE_ICONV=					yes
@@ -21,7 +24,16 @@ CONFIGURE_ENV=			CFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}" \
 CONFIGURE_TARGET=		--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 CONFIGURE_ARGS=			--disable-gdbm \
 										--enable-sqlite3 \
-										--with-id3tag=${PREFIX}
+										--with-id3tag=${PREFIX} \
+										--enable-oggvorbis \
+										--enable-flac \
+										--enable-ffmpeg \
+										--with-ffmpeg-includes=${LOCALBASE}/include/ffmpeg
+
+post-patch:
+	# Copy options file
+	@${MKDIR} -v /var/db/ports/ffmpeg
+	@${CP} -pv ${FILESDIR}/ffmpeg-options.in /var/db/ports/ffmpeg/options
 
 do-install:
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
@@ -30,6 +42,7 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libout-daap.so.* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/out-daap.so
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/librsp.so.* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/rsp.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/ssc-ffmpeg.so.* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/ssc-ffmpeg.so
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
 
