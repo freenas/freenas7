@@ -54,6 +54,7 @@ $pconfig['web'] = isset($config['upnp']['web']);
 $pconfig['home'] = $config['upnp']['home'];
 $pconfig['profile'] = $config['upnp']['profile'];
 $pconfig['deviceip'] = $config['upnp']['deviceip'];
+$pconfig['transcoding'] = $config['upnp']['transcoding'];
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
@@ -92,6 +93,7 @@ if($_POST) {
 		$config['upnp']['home'] = $_POST['home'];
 		$config['upnp']['profile'] = $_POST['profile'];
 		$config['upnp']['deviceip'] = $_POST['deviceip'];
+		$config['upnp']['transcoding'] = $_POST['transcoding'] ? true : false;
 
 		write_config();
 
@@ -112,7 +114,7 @@ if($_POST) {
 	}
 }
 
-if($_GET['act'] == "del") {
+if($_GET['act'] === "del") {
 	/* Remove entry from content list */
 	$config['upnp']['content'] = array_diff($config['upnp']['content'],array($config['upnp']['content'][$_GET['id']]));
 	write_config();
@@ -138,6 +140,8 @@ function enable_change(enable_change) {
 	document.iform.web.disabled = endis;
 	document.iform.home.disabled = endis;
 	document.iform.profile.disabled = endis;
+	document.iform.deviceip.disabled = endis;
+	document.iform.transcoding.disabled = endis;
 }
 
 function profile_change() {
@@ -226,6 +230,7 @@ function web_change() {
 					</tr>
 					<?php html_combobox("profile", gettext("Profile"), $pconfig['profile'], array("default" => gettext("Default"), "DLNA" => "DLNA", "PS3" => "Sony Playstation 3", "Telegent_TG100" => "Telegent TG100", "ZyXEL_DMA1000" => "ZyXEL DMA-1000", "Helios_X3000" => "Helios X3000", "DLink_DSM320" => "D-Link DSM320", "Microsoft_XBox360" => "Microsoft XBox 360", "Terratec_Noxon_iRadio" => "Terratec Noxon iRadio", "Yamaha_RXN600" => "Yamaha RX-N600", "Loewe_Connect" => "Loewe Connect"), gettext("Compliant profile to be used."), true, false, "profile_change()");?>
 					<?php html_inputbox("deviceip", gettext("Device IP"), $pconfig['deviceip'], gettext("The device's IP address."), true, 20);?>
+					<?php html_checkbox("transcoding", gettext("Transcoding"), $pconfig['transcoding'] ? true : false, gettext("Enable transcoding."));?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
 					<?php html_checkbox("web", gettext("Enable"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), "", false, "web_change()");?>
