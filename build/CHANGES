@@ -44,7 +44,7 @@ Majors changes:
 - Add nVidia nForce MCP on-board ethernet support.
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.
-- Increase mfs_root size to 70MB (32bit) and 84MB (64bit).
+- Increase mfs_root size to 70MB (32bit) and 74MB (64bit).
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
