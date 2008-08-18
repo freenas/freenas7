@@ -28,6 +28,9 @@ fuppes_loglevel=${fuppes_loglevel-"1"}
 fuppes_logfile=${fuppes_logfile-"/var/log/${name}.log"}
 fuppes_port=${fuppes_port-"49152"}
 fuppes_local_charset=${fuppes_local_charset-"UTF-8"}
+fuppes_use_imagemagick=${fuppes_use_imagemagick-"false"}
+fuppes_use_taglib=${fuppes_use_taglib-"true"}
+fuppes_use_libavformat=${fuppes_use_libavformat-"true"}
 
 command="/usr/local/bin/${name}d"
 command_args="--config-dir ${fuppes_configdir} --config-file ${fuppes_config} --vfolder-config-file ${fuppes_vfolder_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile}"
@@ -75,8 +78,12 @@ EOF
     </allowed_ips>
   </network>
   <content_directory>
+  	<!--a list of possible charsets can be found under: http://www.gnu.org/software/libiconv/-->
     <local_charset>${fuppes_local_charset}</local_charset>
-    <use_taglib>true</use_taglib>
+    <!--libs used for metadata extraction when building the database. [true|false]-->
+    <use_imagemagick>${fuppes_use_imagemagick}</use_imagemagick>
+    <use_taglib>${fuppes_use_taglib}</use_taglib>
+    <use_libavformat>${fuppes_use_libavformat}</use_libavformat>
   </content_directory>
   <transcoding>
   	<!--[lame|twolame]-->
