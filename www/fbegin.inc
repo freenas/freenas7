@@ -140,7 +140,7 @@ function display_menu($menuid) {
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 		<tr>
 			<td align="left">
-				<img src="/header_logo.gif">
+				<a href="http://www.<?=get_product_url();?>" target="_blank"><img border="0" src="/header_logo.gif"></a>
 			</td>
 			<td align="right" valign="bottom">
 				<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
