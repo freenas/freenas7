@@ -46,6 +46,7 @@ Majors changes:
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.
 - Increase mfs_root size to 70MB (32bit) and 74MB (64bit).
+- CTorrent BitTorrent client has been replaced by Transmission which includes a WebGUI.
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
