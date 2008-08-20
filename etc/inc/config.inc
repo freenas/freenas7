@@ -1395,16 +1395,24 @@ function config_upgrade() {
 	}
 
 	/* Convert 5.3 -> 5.4 */
+	/* Add //rsync/rsyncclient/options/recursive. */
+	/* Add //rsync/rsyncclient/options/times. */
+	/* Add //rsync/rsyncclient/options/compress. */
 	/* Add //rsync/rsyncclient/options/delete_algorithm. */
+	/* Add //rsync/rsynclocal/options/archive. */
 	/* Add //rsync/rsynclocal/options/delete_algorithm. */
 	if ($config['version'] === "5.3") {
 		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
+			$config['rsync']['rsyncclient'][$i]['options']['recursive'] = true;
+			$config['rsync']['rsyncclient'][$i]['options']['times'] = true;
+			$config['rsync']['rsyncclient'][$i]['options']['compress'] = true;
 			if (isset($config['rsync']['rsyncclient'][$i]['options']['delete'])) {
 				$config['rsync']['rsyncclient'][$i]['options']['delete_algorithm'] = "after";
 			}
 		}
 
 		for ($i = 0; isset($config['rsync']['rsynclocal'][$i]); $i++) {
+			$config['rsync']['rsynclocal'][$i]['options']['archive'] = true;
 			if (isset($config['rsync']['rsynclocal'][$i]['options']['delete'])) {
 				$config['rsync']['rsynclocal'][$i]['options']['delete_algorithm'] = "after";
 			}

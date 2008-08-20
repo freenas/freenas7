@@ -37,8 +37,9 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "exit" -n \
 			-o "fi" -n \
 			-o "/usr/bin/touch /var/run/rsync_local-running${_i}" -n \
-			-o "/usr/local/bin/rsync -a --log-file=${rsync_local_logfile} " \
+			-o "/usr/local/bin/rsync --log-file=${rsync_local_logfile} " \
 			-m "options" \
+				-i "count(archive) > 0" -o "--archive " -b \
 				-i "count(delete) > 0" -o "--delete " \
 					-i "delete_algorithm[. != 'default']" -v "concat('--delete-',delete_algorithm,' ')" -b \
 				-b \
