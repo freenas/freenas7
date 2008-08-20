@@ -42,6 +42,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 				-i "count(recursive) > 0" -o "--recursive " -b \
 				-i "count(times) > 0" -o "--times " -b \
 				-i "count(compress) > 0" -o "--compress " -b \
+				-i "count(archive) > 0" -o "--archive " -b \
 				-i "count(delete) > 0" -o "--delete " \
 					-i "delete_algorithm[. != 'default']" -v "concat('--delete-',delete_algorithm,' ')" -b \
 				-b \

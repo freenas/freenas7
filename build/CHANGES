@@ -39,10 +39,9 @@ FreeNAS 0.69b3 (Shai-Hulud):
 Majors changes:
 - Add nullfs.ko and unionfs.ko kernel modules.
 - Display warning message when user is going to delete an software RAID or encrypted volume.
-- Add 'Recursive', 'Times' and 'Compress' checkbox to RSYNC client WebGUI.
-- Add 'Archive' mode checkbox to RSYNC local WebGUI.
-- Add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion algorithm when 'Delete'
-  option has been choosen.
+- Add 'Recursive', 'Times', 'Compress' and 'Archive' checkbox to RSYNC client/local WebGUI.
+  Also add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion algorithm
+	when 'Delete' option has been choosen.
 - Add nVidia nForce MCP on-board ethernet support.
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.

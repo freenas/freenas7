@@ -39,6 +39,9 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "/usr/bin/touch /var/run/rsync_local-running${_i}" -n \
 			-o "/usr/local/bin/rsync --log-file=${rsync_local_logfile} " \
 			-m "options" \
+				-i "count(recursive) > 0" -o "--recursive " -b \
+				-i "count(times) > 0" -o "--times " -b \
+				-i "count(compress) > 0" -o "--compress " -b \
 				-i "count(archive) > 0" -o "--archive " -b \
 				-i "count(delete) > 0" -o "--delete " \
 					-i "delete_algorithm[. != 'default']" -v "concat('--delete-',delete_algorithm,' ')" -b \

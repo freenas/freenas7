@@ -478,6 +478,9 @@
 			<month></month>
 			<weekday></weekday>
 			<options>
+				<recursive/>
+				<times/>
+				<compress/>
 				<archive/>
 				<delete/>
 				<delete_algorithm>default|before|during|delay|after<delete_algorithm>
@@ -506,6 +509,7 @@
 				<recursive/>
 				<times/>
 				<compress/>
+				<archive/>
 				<delete/>
 				<delete_algorithm>default|before|during|delay|after<delete_algorithm>
 				<quiet/>
