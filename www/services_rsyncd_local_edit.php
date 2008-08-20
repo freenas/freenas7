@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_local_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -67,6 +67,7 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['all_months'] = $a_rsynclocal[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsynclocal[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsynclocal[$id]['description'];
+	$pconfig['archive'] = isset($a_rsynclocal[$id]['options']['archive']);
 	$pconfig['delete'] = isset($a_rsynclocal[$id]['options']['delete']);
 	$pconfig['delete_algorithm'] = $a_rsynclocal[$id]['options']['delete_algorithm'];
 	$pconfig['quiet'] = isset($a_rsynclocal[$id]['options']['quiet']);
@@ -74,6 +75,7 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['xattrs'] = isset($a_rsynclocal[$id]['options']['xattrs']);
 	$pconfig['extraoptions'] = $a_rsynclocal[$id]['options']['extraoptions'];
 } else {
+	$pconfig['archive'] = true;
 	$pconfig['delete'] = false;
 	$pconfig['delete_algorithm'] = "default";
 	$pconfig['quiet'] = false;
@@ -112,6 +114,7 @@ if ($_POST) {
 		$rsynclocal['all_months'] = $_POST['all_months'];
 		$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
 		$rsynclocal['description'] = $_POST['description'];
+		$rsynclocal['options']['archive'] = $_POST['archive'] ? true : false;
 		$rsynclocal['options']['delete'] = $_POST['delete'] ? true : false;
 		$rsynclocal['options']['delete_algorithm'] = $_POST['delete_algorithm'];
 		$rsynclocal['options']['quiet'] = $_POST['quiet'] ? true : false;
@@ -351,7 +354,8 @@ function delete_change() {
 					<tr>
 						<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced Options");?></td>
 					</tr>
-					<?php html_checkbox("delete", gettext("Delete"), $pconfig['delete'] ? true : false, "", gettext("Delete files on the receiving side that don't exist on sender."), false, "delete_change()");?>
+					<?php html_checkbox("archive", gettext("Archive"), $pconfig['archive'] ? true : false, gettext("Archive mode."), "", false);?>
+					<?php html_checkbox("delete", gettext("Delete"), $pconfig['delete'] ? true : false, gettext("Delete files on the receiving side that don't exist on sender."), "", false, "delete_change()");?>
 					<?php html_combobox("delete_algorithm", gettext("Delete algorithm"), $pconfig['delete_algorithm'], array("default" => "Default", "before" => "Before", "during" => "During", "delay" => "Delay", "after" => "After"), gettext("<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"), false);?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Quiet");?></td>

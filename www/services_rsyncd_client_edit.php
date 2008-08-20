@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_client_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -68,6 +68,9 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['all_months'] = $a_rsyncclient[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsyncclient[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsyncclient[$id]['description'];
+	$pconfig['recursive'] = isset($a_rsyncclient[$id]['options']['recursive']);
+	$pconfig['times'] = isset($a_rsyncclient[$id]['options']['times']);
+	$pconfig['compress'] = isset($a_rsyncclient[$id]['options']['compress']);
 	$pconfig['delete'] = isset($a_rsyncclient[$id]['options']['delete']);
 	$pconfig['delete_algorithm'] = $a_rsyncclient[$id]['options']['delete_algorithm'];
 	$pconfig['quiet'] = isset($a_rsyncclient[$id]['options']['quiet']);
@@ -75,6 +78,9 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['xattrs'] = isset($a_rsyncclient[$id]['options']['xattrs']);
 	$pconfig['extraoptions'] = $a_rsyncclient[$id]['options']['extraoptions'];
 } else {
+	$pconfig['recursive'] = true;
+	$pconfig['times'] = true;
+	$pconfig['compress'] = true;
 	$pconfig['delete'] = false;
 	$pconfig['delete_algorithm'] = "default";
 	$pconfig['quiet'] = false;
@@ -114,6 +120,9 @@ if ($_POST) {
 		$rsyncclient['all_months'] = $_POST['all_months'];
 		$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
 		$rsyncclient['description'] = $_POST['description'];
+		$rsyncclient['options']['recursive'] = $_POST['recursive'] ? true : false;
+		$rsyncclient['options']['times'] = $_POST['times'] ? true : false;
+		$rsyncclient['options']['compress'] = $_POST['compress'] ? true : false;
 		$rsyncclient['options']['delete'] = $_POST['delete'] ? true : false;
 		$rsyncclient['options']['delete_algorithm'] = $_POST['delete_algorithm'];
 		$rsyncclient['options']['quiet'] = $_POST['quiet'] ? true : false;
@@ -358,7 +367,10 @@ function delete_change() {
 					<tr>
 						<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced Options");?></td>
 					</tr>
-					<?php html_checkbox("delete", gettext("Delete"), $pconfig['delete'] ? true : false, "", gettext("Delete files on the receiving side that don't exist on sender."), false, "delete_change()");?>
+					<?php html_checkbox("recursive", gettext("Recursive"), $pconfig['recursive'] ? true : false, gettext("Recurse into directories."), "", false);?>
+					<?php html_checkbox("times", gettext("Times"), $pconfig['times'] ? true : false, gettext("Preserve modification times."), "", false);?>
+					<?php html_checkbox("compress", gettext("Compress"), $pconfig['compress'] ? true : false, gettext("Compress file data during the transfer."), "", false);?>
+					<?php html_checkbox("delete", gettext("Delete"), $pconfig['delete'] ? true : false, gettext("Delete files on the receiving side that don't exist on sender."), "", false, "delete_change()");?>
 					<?php html_combobox("delete_algorithm", gettext("Delete algorithm"), $pconfig['delete_algorithm'], array("default" => "Default", "before" => "Before", "during" => "During", "delay" => "Delay", "after" => "After"), gettext("<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"), false);?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Quiet");?></td>
