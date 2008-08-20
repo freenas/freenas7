@@ -67,6 +67,9 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['all_months'] = $a_rsynclocal[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsynclocal[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsynclocal[$id]['description'];
+	$pconfig['recursive'] = isset($a_rsynclocal[$id]['options']['recursive']);
+	$pconfig['times'] = isset($a_rsynclocal[$id]['options']['times']);
+	$pconfig['compress'] = isset($a_rsynclocal[$id]['options']['compress']);
 	$pconfig['archive'] = isset($a_rsynclocal[$id]['options']['archive']);
 	$pconfig['delete'] = isset($a_rsynclocal[$id]['options']['delete']);
 	$pconfig['delete_algorithm'] = $a_rsynclocal[$id]['options']['delete_algorithm'];
@@ -75,6 +78,9 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['xattrs'] = isset($a_rsynclocal[$id]['options']['xattrs']);
 	$pconfig['extraoptions'] = $a_rsynclocal[$id]['options']['extraoptions'];
 } else {
+	$pconfig['recursive'] = false;
+	$pconfig['times'] = false;
+	$pconfig['compress'] = false;
 	$pconfig['archive'] = true;
 	$pconfig['delete'] = false;
 	$pconfig['delete_algorithm'] = "default";
@@ -114,6 +120,9 @@ if ($_POST) {
 		$rsynclocal['all_months'] = $_POST['all_months'];
 		$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
 		$rsynclocal['description'] = $_POST['description'];
+		$rsynclocal['options']['recursive'] = $_POST['recursive'] ? true : false;
+		$rsynclocal['options']['times'] = $_POST['times'] ? true : false;
+		$rsynclocal['options']['compress'] = $_POST['compress'] ? true : false;
 		$rsynclocal['options']['archive'] = $_POST['archive'] ? true : false;
 		$rsynclocal['options']['delete'] = $_POST['delete'] ? true : false;
 		$rsynclocal['options']['delete_algorithm'] = $_POST['delete_algorithm'];
@@ -354,6 +363,9 @@ function delete_change() {
 					<tr>
 						<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced Options");?></td>
 					</tr>
+					<?php html_checkbox("recursive", gettext("Recursive"), $pconfig['recursive'] ? true : false, gettext("Recurse into directories."), "", false);?>
+					<?php html_checkbox("times", gettext("Times"), $pconfig['times'] ? true : false, gettext("Preserve modification times."), "", false);?>
+					<?php html_checkbox("compress", gettext("Compress"), $pconfig['compress'] ? true : false, gettext("Compress file data during the transfer."), "", false);?>
 					<?php html_checkbox("archive", gettext("Archive"), $pconfig['archive'] ? true : false, gettext("Archive mode."), "", false);?>
 					<?php html_checkbox("delete", gettext("Delete"), $pconfig['delete'] ? true : false, gettext("Delete files on the receiving side that don't exist on sender."), "", false, "delete_change()");?>
 					<?php html_combobox("delete_algorithm", gettext("Delete algorithm"), $pconfig['delete_algorithm'], array("default" => "Default", "before" => "Before", "during" => "During", "delay" => "Delay", "after" => "After"), gettext("<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"), false);?>
