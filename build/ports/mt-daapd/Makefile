@@ -14,7 +14,7 @@ LIB_DEPENDS=				gdbm.3:${PORTSDIR}/databases/gdbm \
 										FLAC.10:${PORTSDIR}/audio/flac \
 										avcodec:${PORTSDIR}/multimedia/ffmpeg
 
-USE_AUTOTOOLS=			autoheader:261 autoconf:261:env
+USE_AUTOTOOLS=			autoheader:262 autoconf:262:env
 USE_ICONV=					yes
 GNU_CONFIGURE=			yes
 CONFIGURE_ENV=			CFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}" \
