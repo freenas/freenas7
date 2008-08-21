@@ -95,11 +95,6 @@ if($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
-
-		if($retval == 0) {
-			if(file_exists($d_upnpconfdirty_path))
-				unlink($d_upnpconfdirty_path);
-		}
 	}
 }
 ?>
