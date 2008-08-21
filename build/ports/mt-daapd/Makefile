@@ -14,7 +14,7 @@ LIB_DEPENDS=				gdbm.3:${PORTSDIR}/databases/gdbm \
 										FLAC.10:${PORTSDIR}/audio/flac \
 										avcodec:${PORTSDIR}/multimedia/ffmpeg
 
-USE_AUTOTOOLS=			autoheader:261 autoconf:261:env
+USE_AUTOTOOLS=			autoheader:262 autoconf:262:env
 USE_ICONV=					yes
 GNU_CONFIGURE=			yes
 CONFIGURE_ENV=			CFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}" \
@@ -40,9 +40,9 @@ do-install:
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libout-daap.so.* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/out-daap.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/librsp.so.* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/rsp.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/ssc-ffmpeg.so.* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/ssc-ffmpeg.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/out-daap.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/rsp.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/ssc-ffmpeg.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
 
