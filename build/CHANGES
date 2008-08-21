@@ -50,6 +50,7 @@ Majors changes:
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
+- Display additional information when resetting WebGUI password (FR 2063008).
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
