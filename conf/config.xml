@@ -556,7 +556,13 @@
 		<dbdir></dbdir>
 		<admin_pw>freenas</admin_pw>
 	</daap>
-  <sshd>
+	<bittorrent>
+		<!-- <enable/> -->
+		<port>9091</port>
+		<downloaddir></downloaddir>
+		<password>freenas</password>
+	</bittorrent>
+	<sshd>
 		<!-- <enable/> -->
 		<port>22</port>
 		<passwordauthentication/>
@@ -567,7 +573,7 @@
 		<private-key>xxx</private-key>
 		<compression/>
 		-->
-  </sshd>
+	</sshd>
 	<nfsd>
 		<numproc>4</numproc>
 		<!--
