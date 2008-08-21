@@ -1,0 +1,41 @@
+#!/bin/sh
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: transmission
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+# XQUERY: -i "count(//bittorrent/enable) > 0" -o "0" -b
+# RCVAR: transmission
+
+. /etc/rc.subr
+. /etc/util.subr
+. /etc/configxml.subr
+
+name="transmission"
+rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="start_precmd"
+
+# Defaults
+transmission_enable=${transmission_enable:-"NO"}
+transmission_username=${transmission_username:-"admin"}
+
+command="/usr/local/bin/${name}-daemon"
+command_args="--no-blocklist --auth --username ${transmission_username}"
+
+start_precmd()
+{
+	local _command_args
+
+	# Create command args line.
+	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
+		-v "concat('--password ',password,' --download-dir ',downloaddir,' --port ',port)" \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	command_args="${command_args} ${_command_args}"
+}
+
+load_rc_config ${name}
+run_rc_command "$1"

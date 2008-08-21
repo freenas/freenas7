@@ -38,6 +38,8 @@ pre-configure:
 		${WRKSRC}/third-party/libevent/configure
 
 do-install:
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
+
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/daemon/transmission-daemon ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/daemon/transmission-remote ${FREENAS_ROOTFS}/usr/local/bin
 
