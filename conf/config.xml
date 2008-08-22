@@ -535,6 +535,7 @@
 		<tcpforwarding/>
 		<private-key>xxx</private-key>
 		<compression/>
+		<auxparam></auxparam> // Can be defined multiple times.
 		-->
 	</sshd>
 	<nfsd>
