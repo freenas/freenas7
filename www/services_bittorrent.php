@@ -53,7 +53,7 @@ if ($_POST) {
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "port downloaddir password");
 		$reqdfieldsn = array(gettext("Port"), gettext("Download directory"), gettext("Password"));
-		$reqdfieldst = explode(" ", "port string string");
+		$reqdfieldst = explode(" ", "port string password");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -102,7 +102,7 @@ function enable_change(enable_change) {
 					<?php html_filechooser("downloaddir", gettext("Download directory"), $pconfig['downloaddir'], gettext("Where to save downloaded data."), "/mnt", true, 60);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
-					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], gettext("Password for the administrative pages."), false, 20);?>
+					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], gettext("Password for the administrative pages."), true, 20);?>
 					<?php
 					$if = get_ifname($config['interfaces']['lan']['if']);
 					$ipaddr = get_ipaddr($if);

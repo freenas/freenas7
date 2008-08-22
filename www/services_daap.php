@@ -60,9 +60,9 @@ if($_POST) {
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "servername port dbdir content");
-		$reqdfieldsn = array(gettext("Server name"), gettext("Port"), gettext("Database directory"), gettext("Content"));
-		$reqdfieldst = explode(" ", "string port string string");
+		$reqdfields = explode(" ", "servername port dbdir content admin_pw");
+		$reqdfieldsn = array(gettext("Server name"), gettext("Port"), gettext("Database directory"), gettext("Content"), gettext("Password"));
+		$reqdfieldst = explode(" ", "string port string string password");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -132,7 +132,7 @@ function enable_change(enable_change) {
 					<?php html_combobox("scantype", gettext("Scan type"), $pconfig['scantype'], array("0" => "Normal", "1" => "Aggressive", "2" => "Painfully aggressive"), "", false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
-					<?php html_passwordbox("admin_pw", gettext("Password"), $pconfig['admin_pw'], gettext("Password for the administrative pages."), false, 20);?>
+					<?php html_passwordbox("admin_pw", gettext("Password"), $pconfig['admin_pw'], gettext("Password for the administrative pages."), true, 20);?>
 					<?php
 					$if = get_ifname($config['interfaces']['lan']['if']);
 					$ipaddr = get_ipaddr($if);
