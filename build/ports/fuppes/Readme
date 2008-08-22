@@ -1,3 +1,3 @@
 Create patch:
 diff -ruN src/lib/HTTP/HTTPMessage.cpp.orig src/lib/HTTP/HTTPMessage.cpp > patch-src_lib_HTTP_HTTPMessage.cpp
-diff -ruN aclocal.m4.orig aclocal.m4 > patch-aclocal.m4.diff
+diff -ruN aclocal.m4.orig aclocal.m4 > patch-aclocal.m4
