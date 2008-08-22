@@ -49,14 +49,11 @@ require_once("wui.inc");
 /* Set the current language */
 system_language_load();
 
-$d_staticmapsdirty_path = $g['varrun_path'] . "/staticmaps.dirty";
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_hostsdirty_path = $g['varrun_path'] . "/hosts.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
-$d_allowedipsdirty_path = $g['varrun_path'] . "/allowedips.dirty";
-
 $d_mountdirty_path = $g['varrun_path'] . "/mount.dirty";
 $d_diskdirty_path = $g['varrun_path'] . "/disk.dirty";
 $d_gelidirty_path = $g['varrun_path'] . "/geli.dirty";
@@ -75,7 +72,6 @@ $d_smbconfdirty_path = $g['varrun_path'] . "/smb.conf.dirty";
 $d_smbshareconfdirty_path = $g['varrun_path'] . "/smbshare.conf.dirty";
 $d_upnpconfdirty_path = $g['varrun_path'] . "/upnp.conf.dirty";
 $d_nfsconfdirty_path = $g['varrun_path'] . "/nfs.conf.dirty";
-$d_landirty_path = $g['varrun_path'] . "/lan.dirty";
 $d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
 $d_cronconfdirty_path = $g['varrun_path'] . "/cron.conf.dirty";
 $d_afpconfdirty_path = $g['varrun_path'] . "/afp.conf.dirty";
