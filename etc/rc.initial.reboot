@@ -8,7 +8,7 @@
 # All rights reserved.
 
 # Display dialog
-cdialog --yesno "Do you really want to reboot the system?" 5 46
+cdialog --defaultno --yesno "Do you really want to reboot the system?" 5 46
 
 case $? in
 	0)
