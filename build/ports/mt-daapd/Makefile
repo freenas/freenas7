@@ -21,7 +21,6 @@ CONFIGURE_ENV=			CFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}" \
 										CPPFLAGS="${CPPFLAGS} -I${LOCALBASE}/include" \
 										LDFLAGS="-L${LOCALBASE}/lib" \
 										LIBS="-L${LOCALBASE}/lib ${PTHREAD_LIBS}"
-CONFIGURE_TARGET=		--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 CONFIGURE_ARGS=			--disable-gdbm \
 										--enable-sqlite3 \
 										--with-id3tag=${PREFIX} \

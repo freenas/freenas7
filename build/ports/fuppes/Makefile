@@ -20,7 +20,6 @@ USE_AUTOTOOLS=		autoconf:262
 USE_GNOME=				libxml2
 USE_ICONV=				yes
 GNU_CONFIGURE=		yes
-CONFIGURE_TARGET=	--build="${MACHINE_ARCH}-portbld-freebsd${OSREL}"
 CONFIGURE_ARGS+=	--disable-libnotify \
 									--disable-imagemagick \
 									--enable-video-transcoding
