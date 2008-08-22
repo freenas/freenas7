@@ -107,7 +107,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_raid_graid5_confdirty_path, $mode, $raid['uuid']);
+		ui_set_updatenotification("raid_graid5", $mode, $raid['uuid']);
 
 		write_config();
 

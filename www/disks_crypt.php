@@ -49,11 +49,11 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			$retval = ui_process_updatenotification($d_gelidirty_path, "geli_process_updatenotification");
+			$retval = ui_process_updatenotification("geli", "geli_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification($d_gelidirty_path);
+			ui_cleanup_updatenotification("geli");
 		}
 		header("Location: disks_crypt.php");
 		exit;
@@ -63,7 +63,7 @@ if ($_POST) {
 if ($_GET['act'] === "del") {
 	if ($a_geli[$_GET['id']]) {
 		if (disks_exists($a_geli[$_GET['id']]['devicespecialfile'])) {
-			ui_set_updatenotification($d_gelidirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_geli[$_GET['id']]['uuid']);
+			ui_set_updatenotification("geli", UPDATENOTIFICATION_MODE_DIRTY, $a_geli[$_GET['id']]['uuid']);
 			header("Location: disks_crypt.php");
 			exit;
 		} else {
@@ -120,8 +120,8 @@ function geli_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="disks_crypt.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (0 == ui_isset_updatenotification_mode($d_gelidirty_path, UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."));?>
-        <?php if (file_exists($d_gelidirty_path)) print_config_change_box();?>
+        <?php if (ui_exists_updatenotification_mode("geli", UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."));?>
+        <?php if (ui_exists_updatenotification("geli")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Disk"); ?></td>
@@ -137,9 +137,9 @@ function geli_process_updatenotification($mode, $data) {
             <td class="listr"><?=htmlspecialchars($geli['ealgo']);?>&nbsp;</td>
             <td class="listbg">
               <?php
-              if (file_exists($d_gelidirty_path)) {
+              if (ui_exists_updatenotification("geli")) {
 								$status = gettext("Configuring");
-								$notificationmode = ui_get_updatenotification_mode($d_gelidirty_path, $geli['uuid']);
+								$notificationmode = ui_get_updatenotification_mode("geli", $geli['uuid']);
 								switch ($notificationmode) {
 									case UPDATENOTIFICATION_MODE_DIRTY:
 										$status = gettext("Deleting");
