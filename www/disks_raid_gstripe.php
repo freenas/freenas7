@@ -49,11 +49,11 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			$retval = ui_process_updatenotification($d_raid_gstripe_confdirty_path, "gstripe_process_updatenotification");
+			$retval = ui_process_updatenotification("raid_gstripe", "gstripe_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification($d_raid_gstripe_confdirty_path);
+			ui_cleanup_updatenotification("raid_gstripe");
 		}
 		header("Location: disks_raid_gstripe.php");
 		exit;
@@ -65,7 +65,7 @@ if ($_GET['act'] === "del") {
 	if ($a_raid[$_GET['id']]) {
 		// Check if disk is mounted.
 		if (0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
-			ui_set_updatenotification($d_raid_gstripe_confdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_raid[$_GET['id']]['uuid']);
+			ui_set_updatenotification("raid_gstripe", UPDATENOTIFICATION_MODE_DIRTY, $a_raid[$_GET['id']]['uuid']);
 			header("Location: disks_raid_gstripe.php");
 			exit;
 		} else {
@@ -125,8 +125,8 @@ function gstripe_process_updatenotification($mode, $data) {
 			<form action="disks_raid_gstripe.php" method="post">
 				<?php if ($errormsg) print_error_box($errormsg); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (0 == ui_isset_updatenotification_mode($d_raid_gstripe_confdirty_path, UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."));?>
-				<?php if (file_exists($d_raid_gstripe_confdirty_path)) print_config_change_box();?>
+				<?php if (ui_exists_updatenotification_mode("raid_gstripe", UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."));?>
+				<?php if (ui_exists_updatenotification("raid_gstripe")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>
@@ -145,7 +145,7 @@ function gstripe_process_updatenotification($mode, $data) {
         		$status = $raidstatus[$raid['name']]['state'];
 					}
 
-					$notificationmode = ui_get_updatenotification_mode($d_raid_gstripe_confdirty_path, $raid['uuid']);
+					$notificationmode = ui_get_updatenotification_mode("raid_gstripe", $raid['uuid']);
 					switch ($notificationmode) {
 						case UPDATENOTIFICATION_MODE_NEW:
 							$size = gettext("Initializing");

@@ -54,18 +54,10 @@ $d_hostsdirty_path = $g['varrun_path'] . "/hosts.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
-$d_mountdirty_path = $g['varrun_path'] . "/mount.dirty";
-$d_diskdirty_path = $g['varrun_path'] . "/disk.dirty";
-$d_gelidirty_path = $g['varrun_path'] . "/geli.dirty";
 $d_iscsiinitdirty_path = $g['varrun_path'] . "/iscsiinit.dirty";
 $d_iscsitargetdirty_path = $g['varrun_path'] . "/iscsitarget.dirty";
 $d_rsyncclientdirty_path = $g['varrun_path'] . "/rsyncclient.dirty";
 $d_rsynclocaldirty_path = $g['varrun_path'] . "/rsynclocal.dirty";
-$d_raid_graid5_confdirty_path = $g['varrun_path'] . "/raid_graid5.conf.dirty";
-$d_raid_gmirror_confdirty_path = $g['varrun_path'] . "/raid_gmirror.conf.dirty";
-$d_raid_gconcat_confdirty_path = $g['varrun_path'] . "/raid_gconcat.conf.dirty";
-$d_raid_gvinum_confdirty_path = $g['varrun_path'] . "/raid_gvinum.conf.dirty";
-$d_raid_gstripe_confdirty_path = $g['varrun_path'] . "/raid_gstripe.conf.dirty";
 $d_userconfdirty_path = $g['varrun_path'] . "/user.conf.dirty";
 $d_groupconfdirty_path = $g['varrun_path'] . "/group.conf.dirty";
 $d_smbconfdirty_path = $g['varrun_path'] . "/smb.conf.dirty";
@@ -450,50 +442,58 @@ define("UPDATENOTIFICATION_FLAG_NEW", "+");
 define("UPDATENOTIFICATION_FLAG_MODIFIED", "*");
 define("UPDATENOTIFICATION_FLAG_DIRTY", "-");
 
+define("UPDATENOTIFICATION_DB", "{$g['varrun_path']}/updatenotification.db");
+
 // Set a notification.
-// $file - File to be used
+// $key - Key to be used
 // $mode - Mode to be set
 // $data - Data to be set
-function ui_set_updatenotification($file, $mode, $data) {
+// Return 0 if successful, otherwise 1.
+function ui_set_updatenotification($key, $mode, $data) {
 	switch ($mode) {
 		case UPDATENOTIFICATION_MODE_NEW:
-			$data = UPDATENOTIFICATION_FLAG_NEW . "|{$data}\n";
+			$data = "{$key}|" . UPDATENOTIFICATION_FLAG_NEW . "|{$data}\n";
 			break;
 
 		case UPDATENOTIFICATION_MODE_MODIFIED:
-			$data = UPDATENOTIFICATION_FLAG_MODIFIED . "|{$data}\n";
+			$data = "{$key}|" . UPDATENOTIFICATION_FLAG_MODIFIED . "|{$data}\n";
 			break;
 
 		case UPDATENOTIFICATION_MODE_DIRTY:
-			$data = UPDATENOTIFICATION_FLAG_DIRTY . "|{$data}\n";
+			$data = "{$key}|" . UPDATENOTIFICATION_FLAG_DIRTY . "|{$data}\n";
 			break;
 	}
 
-	file_put_contents($file, $data, FILE_APPEND | FILE_TEXT);
+	if (FALSE === file_put_contents(UPDATENOTIFICATION_DB, $data, FILE_APPEND | FILE_TEXT))
+		return 1;
+
+	return 0;
 }
 
 // Get notifications.
-// $file - File to be processed
+// $key - Key to be processed
 // Return array of notifications if successful, otherwise false.
-function ui_get_updatenotification($file) {
-	if (!file_exists($file))
+function ui_get_updatenotification($key) {
+	if (!file_exists(UPDATENOTIFICATION_DB))
 		return false;
 
 	// Read file
-	$a_filedata = file($file);
+	$a_filedata = file(UPDATENOTIFICATION_DB);
 	if (!is_array($a_filedata))
 		return false;
 
 	// Parse data
 	$a_notification = array();
 	foreach ($a_filedata as $filedatav) {
-		// Parse data. Syntax should look like: 'mode|data'.
-		if (preg_match("/^([".UPDATENOTIFICATION_FLAG_NEW.UPDATENOTIFICATION_FLAG_MODIFIED.UPDATENOTIFICATION_FLAG_DIRTY."])\|([\S]+)/", $filedatav, $matches)) {
-			$notification = array();
-			$notification['mode'] = array_search($matches[1], array(UPDATENOTIFICATION_FLAG_NEW, UPDATENOTIFICATION_FLAG_MODIFIED, UPDATENOTIFICATION_FLAG_DIRTY));
-			$notification['data'] = $matches[2];
+		// Parse data. Syntax should look like: 'key|mode|data'.
+		if (preg_match("/^([\S]+)\|([".UPDATENOTIFICATION_FLAG_NEW.UPDATENOTIFICATION_FLAG_MODIFIED.UPDATENOTIFICATION_FLAG_DIRTY."])\|([\S]+)/", $filedatav, $matches)) {
+			if ($matches[1] === $key) {
+				$notification = array();
+				$notification['mode'] = array_search($matches[2], array(UPDATENOTIFICATION_FLAG_NEW, UPDATENOTIFICATION_FLAG_MODIFIED, UPDATENOTIFICATION_FLAG_DIRTY));
+				$notification['data'] = $matches[3];
 
-			$a_notification[] = $notification;
+				$a_notification[] = $notification;
+			}
 		}
 	}
 
@@ -501,11 +501,11 @@ function ui_get_updatenotification($file) {
 }
 
 // Process notifications.
-// $file - File to be processed
+// $key - Key to be processed
 // $function - Name of callback function. Function syntax: xyz($mode, $data)
 // Return 0 if successful, otherwise 1.
-function ui_process_updatenotification($file, $function) {
-	$a_notification = ui_get_updatenotification($file);
+function ui_process_updatenotification($key, $function) {
+	$a_notification = ui_get_updatenotification($key);
 	if (!is_array($a_notification))
 		return 1;
 
@@ -516,19 +516,43 @@ function ui_process_updatenotification($file, $function) {
 
 	return 0;
 }
+
 // Remove notification file.
-// $file - File to be removed 
-function ui_cleanup_updatenotification($file) {
-	if (file_exists($file))
-		unlink($file);
+// $key - Key to be removed
+// Return 0 if successful, otherwise 1.
+function ui_cleanup_updatenotification($key) {
+	if (!file_exists(UPDATENOTIFICATION_DB))
+		return 1;
+
+	// Read file
+	$a_filedata = file(UPDATENOTIFICATION_DB);
+	if (!is_array($a_filedata))
+		return 1;
+
+	// Unlink existing database.
+	@unlink(UPDATENOTIFICATION_DB);
+
+	// Parse data
+	$a_filedata_cleaned = array();
+	foreach ($a_filedata as $filedatav) {
+		// Parse data. Syntax should look like: 'key|mode|data'.
+		if (preg_match("/^([\S]+)\|(\S+)\|(\S+)/", $filedatav, $matches)) {
+			if ($matches[1] !== $key) {
+				if (FALSE === file_put_contents(UPDATENOTIFICATION_DB, $filedatav, FILE_APPEND | FILE_TEXT))
+					return 1;
+			}
+		}
+	}
+
+	return 0;
 }
 
 // Get the notification mode.
-// $file - File to be used
+// $key - File to be used
 // $data - Data to searched for
 // Returns the notification mode, otherwise UPDATENOTIFICATION_MODE_UNKNOWN
-function ui_get_updatenotification_mode($file, $data, $matchwholeword = true) {
-	$a_notification = ui_get_updatenotification($file);
+function ui_get_updatenotification_mode($key, $data, $matchwholeword = true) {
+	$a_notification = ui_get_updatenotification($key);
 	if (!is_array($a_notification))
 		return UPDATENOTIFICATION_MODE_UNKNOWN;
 
@@ -549,14 +573,25 @@ function ui_get_updatenotification_mode($file, $data, $matchwholeword = true) {
 	return UPDATENOTIFICATION_MODE_UNKNOWN;
 }
 
+// Check if any notification is set for the given key.
+// $key - Key to be checked
+// Return true if successful, otherwise false.
+function ui_exists_updatenotification($key) {
+	$a_notification = ui_get_updatenotification($key);
+	if (!is_array($a_notification) || !count($a_notification))
+		return false;
+
+	return true;
+}
+
 // Check if specified notification mode is set.
-// $file - File to be used
+// $key - Key to be checked
 // $mode - Mode to searched for
-// Return 0 if successful, otherwise 1.
-function ui_isset_updatenotification_mode($file, $mode) {
-	$a_notification = ui_get_updatenotification($file);
+// Return true if successful, otherwise false.
+function ui_exists_updatenotification_mode($key, $mode) {
+	$a_notification = ui_get_updatenotification($key);
 	if (!is_array($a_notification))
-		return 1;
+		return false;
 
 	// Remove duplicate entries. Last inserted notification wins (Last in, first out).
 	$a_notification = array_reverse(array_remove_duplicate(array_reverse($a_notification), "data"));
@@ -564,9 +599,9 @@ function ui_isset_updatenotification_mode($file, $mode) {
 	// Process array in reverse order => Last in, first out
 	foreach ($a_notification as $notificationv) {
 		if ($notificationv['mode'] == $mode)
-				return 0;
+				return true;
 	}
 
-	return 1;
+	return false;
 }
 ?>

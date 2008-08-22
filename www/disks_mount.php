@@ -49,7 +49,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			ui_process_updatenotification($d_mountdirty_path, "mountmanagement_process_updatenotification");
+			ui_process_updatenotification("mountpoint", "mountmanagement_process_updatenotification");
 
 			// Restart services
 			config_lock();
@@ -65,7 +65,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification($d_mountdirty_path);
+			ui_cleanup_updatenotification("mountpoint");
 		}
 		header("Location: disks_mount.php");
 		exit;
@@ -78,7 +78,7 @@ if ($_GET['act'] === "del") {
 		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
 			$errormsg[] = gettext("The swap file is using this mount point.");
 		} else {
-			ui_set_updatenotification($d_mountdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_mount[$_GET['id']]['uuid']);
+			ui_set_updatenotification("mountpoint", UPDATENOTIFICATION_MODE_DIRTY, $a_mount[$_GET['id']]['uuid']);
 			header("Location: disks_mount.php");
 			exit;
 		}
@@ -146,7 +146,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="disks_mount.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
-        <?php if (file_exists($d_mountdirty_path)) print_config_change_box();?>
+        <?php if (ui_exists_updatenotification("mountpoint")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
@@ -158,7 +158,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
           </tr>
 					<?php $i = 0; foreach($a_mount as $mount):?>
 					<?php
-					$notificationmode = ui_get_updatenotification_mode($d_mountdirty_path, $mount['uuid']);
+					$notificationmode = ui_get_updatenotification_mode("mountpoint", $mount['uuid']);
 					switch ($notificationmode) {
 						case UPDATENOTIFICATION_MODE_NEW:
 							$status = gettext("Initializing");

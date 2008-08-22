@@ -113,7 +113,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_diskdirty_path, $mode, $disks['uuid']);
+		ui_set_updatenotification("device", $mode, $disks['uuid']);
 
 		write_config();
 

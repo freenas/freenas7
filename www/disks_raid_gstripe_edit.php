@@ -107,7 +107,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_raid_gstripe_confdirty_path, $mode, $raid['uuid']);
+		ui_set_updatenotification("raid_gstripe", $mode, $raid['uuid']);
 
 		write_config();
 

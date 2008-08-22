@@ -109,7 +109,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_raid_gmirror_confdirty_path, $mode, $raid['uuid']);
+		ui_set_updatenotification("raid_gmirror", $mode, $raid['uuid']);
 
 		write_config();
 

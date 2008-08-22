@@ -48,7 +48,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification($d_diskdirty_path, "diskmanagement_process_updatenotification");
+			$retval |= ui_process_updatenotification("device", "diskmanagement_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("ataidle");
 			$retval |= rc_update_service("smartd");
@@ -56,7 +56,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification($d_diskdirty_path);
+			ui_cleanup_updatenotification("device");
 		}
 		header("Location: disks_manage.php");
 		exit;
@@ -65,7 +65,7 @@ if ($_POST) {
 
 if ($_GET['act'] === "del") {
 	if ($a_disk_conf[$_GET['id']]) {
-		ui_set_updatenotification($d_diskdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_disk_conf[$_GET['id']]['uuid']);
+		ui_set_updatenotification("device", UPDATENOTIFICATION_MODE_DIRTY, $a_disk_conf[$_GET['id']]['uuid']);
 		header("Location: disks_manage.php");
 		exit;
 	}
@@ -109,7 +109,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
     <td class="tabcont">
 			<form action="disks_manage.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_diskdirty_path)) print_config_change_box();?>
+				<?php if (ui_exists_updatenotification("device")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="5%" class="listhdrr"><?=gettext("Disk"); ?></td>
@@ -122,7 +122,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 					</tr>
 					<?php $i = 0; foreach ($a_disk_conf as $disk):?>
 					<?php
-					$notificationmode = ui_get_updatenotification_mode($d_diskdirty_path, $disk['uuid']);
+					$notificationmode = ui_get_updatenotification_mode("device", $disk['uuid']);
 					switch ($notificationmode) {
 						case UPDATENOTIFICATION_MODE_NEW:
 							$status = gettext("Initializing");

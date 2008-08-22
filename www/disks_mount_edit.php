@@ -196,7 +196,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_mountdirty_path, $mode, $mount['uuid']);
+		ui_set_updatenotification("mountpoint", $mode, $mount['uuid']);
 
 		write_config();
 

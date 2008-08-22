@@ -107,7 +107,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_raid_gconcat_confdirty_path, $mode, $raid['uuid']);
+		ui_set_updatenotification("raid_gconcat", $mode, $raid['uuid']);
 
 		write_config();
 
