@@ -13,7 +13,6 @@ DISTNAME=			${PORTNAME:S|^c||}-${PORTVERSION:R}-${PORTVERSION:E}
 EXTRACT_SUFX=			.tgz
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS=		--includedir=${PREFIX}/include/${PORTNAME}
-CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 MAKEFILE=					makefile
 
 post-patch:

@@ -19,7 +19,6 @@ CONFIGURE_ARGS+=	--disable-debug \
 									--enable-ipv6 \
 									--with-rsyncd-conf=/var/etc/rsyncd.conf \
 									--with-included-popt
-CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 
 # Enable iconv support.
 USE_ICONV=				yes

@@ -11,9 +11,8 @@ MASTER_SITES=	http://www.alistaircrooks.co.uk/src/ \
 							http://www.magnesium.net/~mdf/distfiles/
 DISTNAME=			netbsd-iscsi-${PORTVERSION}
 
-WRKSRC=						${WRKDIR}/${DISTNAME}/src
-GNU_CONFIGURE=		yes
-CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
+WRKSRC=					${WRKDIR}/${DISTNAME}/src
+GNU_CONFIGURE=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|' ${WRKSRC}/Makefile.in
