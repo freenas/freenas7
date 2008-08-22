@@ -9,7 +9,7 @@ MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 
 LIB_DEPENDS+=		curl.4:${PORTSDIR}/ftp/curl
 
-USE_GNOME?=			gnometarget pkgconfig
+USE_GNOME?=			pkgconfig
 USE_OPENSSL=		yes
 USE_BZIP2=			yes
 USE_GMAKE=			yes
@@ -26,6 +26,9 @@ general-patch:
 		s|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
 
 post-patch: general-patch
+	# Copy options files
+	@${MKDIR} -v /var/db/ports/curl
+	@${CP} -pv ${FILESDIR}/curl-options.in /var/db/ports/curl/options
 
 pre-configure:
 	@(cd ${WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${AUTORECONF} -W none)
