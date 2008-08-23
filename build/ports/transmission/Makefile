@@ -15,6 +15,11 @@ USE_BZIP2=			yes
 USE_GMAKE=			yes
 USE_AUTOTOOLS=	autoconf:262:env aclocal:19:env automake:19:env libtool:15:env
 GNU_CONFIGURE=	yes
+USE_GETTEXT=		yes
+
+CONFIGURE_ARGS+=	--disable-gtk \
+									--disable-libnotify \
+									--disable-cli
 
 EXTRA_PATCHES=	${PATCHDIR}/${PORTNAME}${PKGNAMESUFFIX}-configure.ac
 
