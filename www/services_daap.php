@@ -132,7 +132,7 @@ function enable_change(enable_change) {
 					<?php html_combobox("scantype", gettext("Scan type"), $pconfig['scantype'], array("0" => "Normal", "1" => "Aggressive", "2" => "Painfully aggressive"), "", false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
-					<?php html_passwordbox("admin_pw", gettext("Password"), $pconfig['admin_pw'], gettext("Password for the administrative pages."), true, 20);?>
+					<?php html_passwordbox("admin_pw", gettext("Password"), $pconfig['admin_pw'], sprintf("%s %s", gettext("Password for the administrative pages."), gettext("Default user name is 'admin'.")), true, 20);?>
 					<?php
 					$if = get_ifname($config['interfaces']['lan']['if']);
 					$ipaddr = get_ipaddr($if);
