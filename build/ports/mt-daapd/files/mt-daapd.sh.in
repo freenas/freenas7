@@ -134,6 +134,12 @@ process_itunes = ${mtdaapd_process_itunes}
 [daap]
 correct_order = ${mtdaapd_correct_order}
 EOF
+
+	# Delete existing database to fix messages like:
+	# kernel: pid 5285 (mt-daapd), uid 0 inumber 2542 on /: filesystem full
+	# mt-daapd[5285]: Query: vacuum
+	# mt-daapd[5285]: Error: disk I/O error
+	#rm ${_dbparms}/*.db
 }
 
 load_rc_config "$name"
