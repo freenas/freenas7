@@ -15,6 +15,8 @@
 name="fuppes"
 rcvar=`set_rcvar`
 
+load_rc_config "${name}"
+
 # Custom commands
 start_precmd="start_precmd"
 stop_postcmd="stop_postcmd"
@@ -435,5 +437,4 @@ stop_postcmd()
 	/sbin/route delete -net 239.0.0.0 >/dev/null 2>&1
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

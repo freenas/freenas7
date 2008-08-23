@@ -15,6 +15,8 @@
 name="transmission"
 rcvar=`set_rcvar`
 
+load_rc_config "${name}"
+
 # Custom commands
 start_precmd="start_precmd"
 
@@ -37,5 +39,4 @@ start_precmd()
 	command_args="${command_args} ${_command_args}"
 }
 
-load_rc_config ${name}
 run_rc_command "$1"
