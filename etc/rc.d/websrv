@@ -15,6 +15,8 @@
 name="websrv"
 rcvar=`set_rcvar`
 
+load_rc_config "${name}"
+
 # Custom commands
 start_precmd="mkconf_cmd"
 stop_postcmd=stop_postcmd
@@ -192,5 +194,4 @@ reload_postcmd()
 	run_rc_command start
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

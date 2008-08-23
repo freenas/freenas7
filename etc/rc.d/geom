@@ -12,6 +12,8 @@
 
 name="geom"
 
+load_rc_config "${name}"
+
 # Custom commands
 extra_commands="load tune"
 start_cmd="geom_start"
@@ -188,5 +190,4 @@ _geom_tune_raid5()
 	return 0
 }
 
-load_rc_config $name
 run_rc_command "$@"
