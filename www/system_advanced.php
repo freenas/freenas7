@@ -37,7 +37,6 @@ $pgtitle = array(gettext("System"), gettext("Advanced"));
 
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
-$pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
 $pconfig['zeroconf'] = isset($config['system']['zeroconf']);
@@ -68,7 +67,6 @@ if ($_POST) {
 
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
-		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
 		$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
 		$config['system']['disablebeep'] = $_POST['disablebeep'] ? true : false;
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
@@ -175,7 +173,6 @@ function sysctl_tune($mode) {
 			    <?php if ("full" !== $g['platform']):?>
 			    <?php html_checkbox("disablefirmwarecheck", gettext("Firmware version check"), $pconfig['disablefirmwarecheck'] ? true : false, gettext("Disable firmware version check"), sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware")));?>
 			    <?php endif;?>
-			    <?php html_checkbox("expanddiags", gettext("Navigation"), $pconfig['expanddiags'] ? true : false, gettext("Keep diagnostics in navigation expanded"));?>
 			    <?php html_checkbox("disablebeep", gettext("System Beep"), $pconfig['disablebeep'] ? true : false, gettext("Disable speaker beep on startup and shutdown"));?>
 			    <?php html_checkbox("tune_enable", gettext("Tuning"), $pconfig['tune_enable'] ? true : false, gettext("Enable tuning of some kernel variables"));?>
 					<?php html_checkbox("powerd", gettext("Power Daemon"), $pconfig['powerd'] ? true : false, gettext("Enable the system power control utility"), gettext("The powerd utility monitors the system state and sets various power control options accordingly."));?>			    

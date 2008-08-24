@@ -21,13 +21,15 @@ extra_commands="mkconf"
 mkconf_cmd="mkconf_cmd"
 
 # Defaults
-nut_upsmon_enable=${nut_upsmon_enable-"NO"}
-nut_upsmon_prefix=${nut_upsmon_prefix-"/usr/local"}
+nut_upsmon_enable=${nut_upsmon_enable:-"NO"}
+nut_upsmon_prefix=${nut_upsmon_prefix:-"/usr/local"}
 nut_upsmon_conf=${nut_upsmon_conf:-"/var/etc/upsmon.conf"}
 nut_upsmon_powerdownflag=${nut_upsmon_powerdownflag:-"/var/etc/killpower"}
 nut_upsmon_sched_conf=${nut_upsmon_sched_conf:-"/var/etc/upssched.conf"}
-nut_upsmon_user=${nut_upsmon_user-"root"}
-nut_upsmon_flags=${nut_upsmon_flags-"-u ${nut_upsmon_user} localhost"}
+nut_upsmon_runas=${nut_upsmon_runas:-"root"}
+nut_upsmon_user=${nut_upsmon_user:-"root"}
+nut_upsmon_password=${nut_upsmon_password:-"freenas"}
+nut_upsmon_flags=${nut_upsmon_flags:-"-u ${nut_upsmon_runas} localhost"}
 required_dirs="/var/run"
 required_files="${nut_upsmon_conf}"
 command="${nut_upsmon_prefix}/sbin/upsmon"
@@ -37,7 +39,7 @@ mkconf_cmd()
 {
 	# Create upsmon.conf
 	cat <<EOF > ${nut_upsmon_conf}
-MONITOR apc@localhost 1 root freenas master
+MONITOR apc@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
 MINSUPPLIES 1
 SHUTDOWNCMD "/sbin/shutdown -h +0"
 POLLFREQ 5
