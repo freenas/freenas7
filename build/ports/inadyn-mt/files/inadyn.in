@@ -21,7 +21,7 @@ start_precmd="start_precmd"
 inadyn_enable=${inadyn_enable:-"NO"}
 inadyn_config=${inadyn_config:-"/var/etc/${name}.conf"}
 command="/usr/local/bin/${name}"
-command_args="--input_file ${inadyn_config}"
+command_args="--input_file ${inadyn_config} > /dev/null"
 
 start_precmd()
 {
