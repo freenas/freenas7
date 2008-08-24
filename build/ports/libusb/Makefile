@@ -19,7 +19,7 @@ post-patch:
 do-install:
 	@${CP} -Rpv ${WRKSRC}/.libs/libusb-*.so* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv ${WRKSRC}/.libs/libusbpp-*.so* ${FREENAS_ROOTFS}/usr/local/lib
-# Install on host system too, otherwise depending ports fail during ./configure process. 
+# Install on host system too, otherwise host system version will overwrite patched version in make.sh::add_libs. 
 	@${CP} -Rpv ${WRKSRC}/.libs/libusb-*.so* ${PREFIX}/lib
 	@${CP} -Rpv ${WRKSRC}/.libs/libusbpp-*.so* ${PREFIX}/lib
 
