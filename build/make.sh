@@ -272,10 +272,10 @@ add_libs() {
 
 	# Identify required libs.
 	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
-	dirs=($FREENAS_ROOTFS/bin $FREENAS_ROOTFS/sbin $FREENAS_ROOTFS/usr/bin $FREENAS_ROOTFS/usr/sbin $FREENAS_ROOTFS/usr/local/bin $FREENAS_ROOTFS/usr/local/sbin $FREENAS_ROOTFS/usr/lib $FREENAS_ROOTFS/usr/local/lib)
+	dirs=(${FREENAS_ROOTFS}/bin ${FREENAS_ROOTFS}/sbin ${FREENAS_ROOTFS}/usr/bin ${FREENAS_ROOTFS}/usr/sbin ${FREENAS_ROOTFS}/usr/local/bin ${FREENAS_ROOTFS}/usr/local/sbin ${FREENAS_ROOTFS}/usr/lib ${FREENAS_ROOTFS}/usr/local/lib ${FREENAS_ROOTFS}/usr/libexec ${FREENAS_ROOTFS}/usr/local/libexec)
 	for i in ${dirs[@]}; do
-		for file in $(ls $i); do
-			ldd -f "%p\n" $i/$file 2> /dev/null >> /tmp/lib.list
+		for file in $(find -L ${i} -type f -print); do
+			ldd -f "%p\n" ${file} 2> /dev/null >> /tmp/lib.list
 		done
 	done
 

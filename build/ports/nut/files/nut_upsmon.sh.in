@@ -1,0 +1,65 @@
+#!/bin/sh
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: nut_upsmon
+# REQUIRE: NETWORKING nut
+# BEFORE: LOGIN
+# KEYWORD: shutdown
+# XQUERY: -i "count(//ups/enable) > 0" -o "0" -b
+# RCVAR: nut_upsmon
+
+. /etc/rc.subr
+
+name="nut_upsmon"
+rcvar=`set_rcvar`
+
+load_rc_config $name
+
+# Custom commands
+extra_commands="mkconf"
+mkconf_cmd="mkconf_cmd"
+
+# Defaults
+nut_upsmon_enable=${nut_upsmon_enable-"NO"}
+nut_upsmon_prefix=${nut_upsmon_prefix-"/usr/local"}
+nut_upsmon_conf=${nut_upsmon_conf:-"/var/etc/upsmon.conf"}
+nut_upsmon_powerdownflag=${nut_upsmon_powerdownflag:-"/var/etc/killpower"}
+nut_upsmon_sched_conf=${nut_upsmon_sched_conf:-"/var/etc/upssched.conf"}
+nut_upsmon_user=${nut_upsmon_user-"root"}
+nut_upsmon_flags=${nut_upsmon_flags-"-u ${nut_upsmon_user} localhost"}
+required_dirs="/var/run"
+required_files="${nut_upsmon_conf}"
+command="${nut_upsmon_prefix}/sbin/upsmon"
+pidfile="/var/run/upsmon.pid"
+
+mkconf_cmd()
+{
+	# Create upsmon.conf
+	cat <<EOF > ${nut_upsmon_conf}
+MONITOR apc@localhost 1 root freenas master
+MINSUPPLIES 1
+SHUTDOWNCMD "/sbin/shutdown -h +0"
+POLLFREQ 5
+POLLFREQALERT 5
+HOSTSYNC 15
+DEADTIME 15
+POWERDOWNFLAG ${nut_upsmon_powerdownflag}
+RBWARNTIME 43200
+NOCOMMWARNTIME 300
+FINALDELAY 5
+EOF
+
+	# Create upssched.conf
+	cat <<EOF > ${nut_upsmon_sched_conf}
+CMDSCRIPT /usr/local/bin/upssched-cmd
+EOF
+
+	chmod 0600 ${nut_upsmon_conf}
+	chmod 0600 ${nut_upsmon_sched_conf}
+}
+
+# Create required config file
+mkconf_cmd
+
+run_rc_command "$1"

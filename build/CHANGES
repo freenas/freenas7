@@ -48,6 +48,7 @@ Majors changes:
 - Increase mfs_root size to 70MB (32bit) and 74MB (64bit).
 - CTorrent BitTorrent client has been replaced by Transmission which includes a WebGUI.
 - Upgrade inadyn-mt to 02.12.24.
+- Add Network UPS tools 2.2.2.
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
