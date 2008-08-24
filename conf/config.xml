@@ -87,6 +87,15 @@
 			</param>
 			-->
 		</sysctl>
+		<ups>
+			<upsname>ups</upsname>
+			<!--
+			<driver>usbhid-ups</driver>
+			<port>auto</port>
+			<cable></cable>
+			<desc>xxx<desc>
+			-->
+		</ups>
 	</system>
 	<interfaces>
 		<lan>

@@ -17,6 +17,7 @@ $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "s
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => gettext("UPS"), "link" => "system_ups.php", "visible" => true);
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
 }

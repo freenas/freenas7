@@ -10,6 +10,7 @@
 # RCVAR: nut_upsmon
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="nut_upsmon"
 rcvar=`set_rcvar`
@@ -37,9 +38,14 @@ pidfile="/var/run/upsmon.pid"
 
 mkconf_cmd()
 {
+	local _upsname
+
+	# Get identifier.
+	_upsname=`configxml_get "//system/ups/upsname"`
+
 	# Create upsmon.conf
 	cat <<EOF > ${nut_upsmon_conf}
-MONITOR apc@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
+MONITOR ${_upsname}@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
 MINSUPPLIES 1
 SHUTDOWNCMD "/sbin/shutdown -h +0"
 POLLFREQ 5

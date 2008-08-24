@@ -10,6 +10,7 @@
 # RCVAR: nut
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="nut"
 rcvar=`set_rcvar`
@@ -41,12 +42,13 @@ pidfile="/var/run/upsd.pid"
 mkconf_cmd()
 {
 	# Create ups.conf
-	cat <<EOF > ${nut_ups_conf}
-[apc]
-	driver = usbhid-ups
-	port = auto
-	desc = "APC Back-UPS ES 650"
-EOF
+	/usr/local/bin/xml sel -t -m "//system/ups" \
+		-v "concat('[',upsname,']')" -n \
+		-v "concat('&#009;driver = ',driver)" -n \
+		-v "concat('&#009;port = ',port)" -n \
+		-i "string-length(cable) > 0" -v "concat('&#009;cable = ',cable)" -n -b \
+		-i "string-length(desc) > 0" -v "concat('&#009;desc = &quot;',desc,'&quot;')" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc > ${nut_ups_conf}
 
 	# Create upsd.conf
 	cat <<EOF > ${nut_upsd_conf}

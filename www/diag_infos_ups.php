@@ -1,12 +1,12 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos_sockets.php
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	diag_infos_ups.php
+	Copyright ¬© 2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-LabbÈ <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labb√© <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Sockets"));
+
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("UPS"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -51,22 +52,30 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Socket
 				<li class="tabinact"><a href="diag_infos_ftpd.php"><span><?=gettext("FTP");?></span></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><span><?=gettext("RSYNC Client");?></span></a></li>
 				<li class="tabinact"><a href="diag_infos_swap.php"><span><?=gettext("Swap");?></span></a></li>
-				<li class="tabact"><a href="diag_infos_sockets.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Sockets");?></span></a></li>
-				<li class="tabinact"><a href="diag_infos_ups.php"><span><?=gettext("UPS");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_sockets.php"><span><?=gettext("Sockets");?></span></a></li>
+				<li class="tabact"><a href="diag_infos_ups.php" title="<?=gettext("Reload page");?>"><span><?=gettext("UPS");?></span></a></li>
 			</ul>
-		</td>
+  	</td>
 	</tr>
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("Sockets");?></td>
+    		<tr>
+					<td class="listtopic"><?=gettext("UPS status");?></td>
 				</tr>
+				<?php if (!isset($config['system']['ups']['enable'])):?>
+				<tr>
+					<td>
+						<pre><br/><?=gettext("UPS disabled");?></pre>
+					</td>
+				</tr>
+				<?php else:?>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("/usr/bin/netstat -Aa");?></pre>
+						<pre><br/><?php system("/usr/local/bin/upsc {$config['system']['ups']['upsname']}@localhost");?></pre>
 					</td>
 			  </tr>
+			  <?php endif;?>
     	</table>
     </td>
   </tr>
