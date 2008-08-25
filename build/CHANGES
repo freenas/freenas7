@@ -1,5 +1,3 @@
-################ History Change logs ##############
-
 FreeNAS 0.7 (Sardaukar):
 ------------------------
 
@@ -207,7 +205,7 @@ Minors changes:
 - Add ability to add multiple destination email addresses on status report page (e.g. test@test,com;test2@test.com).
 - Display interfaces with status 'associated' in UPnP services WebGUI, too. Thanks to sea_sbs.
 - Add ability to configure multiple host names for Dynamic DNS service (FR 1952020).
-- Add patch to do a file system check on root if necessary. Thanks to Nelson Silva and Lars Kller.
+- Add patch to do a file system check on root if necessary. Thanks to Nelson Silva and Lars Köller.
 
 Bug fixes:
 - Display correct share name for mounted ISO's on initial system page (BR 1935353). Thanks to paq237.
@@ -262,7 +260,7 @@ Minors changes:
 - Add /usr/bin/bc - An arbitrary precision calculator language
 
 Bug fixes:
-- GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Kller.
+- GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Köller.
 - Use inadyn-mt to 02.01.13 because all newer ones causes a core dump (Bugreport has been sent).
 
 Permanent restrictions:
@@ -317,8 +315,8 @@ Minors changes:
 - Enable to set host name or IP address in 'Passive IP address' edit field on FTP service WebGUI page.
 - Enable user/group ID modification when creating a new user/group.
 - Add /usr/bin/getent.
-- Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Kller.
-- Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Kller.
+- Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Köller.
+- Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Köller.
 
 Bug fixes:
 - Calculating iSCSI extent IDs fails for numbers > 10.
@@ -331,7 +329,7 @@ Bug fixes:
 - Fix bug in user management. When creating several users without pressing the 'Apply' button the user id was
   not updated, this means all new users have the same user id.
 - Fix encoding bug in graphs (WebGUI). Thanks to Jonas Svensson.
-- Interface polling was not set even if it was selected in the WebGUI. Thanks to Lars Kller.
+- Interface polling was not set even if it was selected in the WebGUI. Thanks to Lars Köller.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

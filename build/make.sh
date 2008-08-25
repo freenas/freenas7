@@ -603,6 +603,7 @@ update_svn() {
 use_svn() {
 	echo "===> Replacing old code with SVN code"
 
+	cd ${FREENAS_SVNDIR}/build && cp -pv CHANGES ${FREENAS_ROOTFS}/usr/local/www
 	cd ${FREENAS_SVNDIR}/root && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/root
 	cd ${FREENAS_SVNDIR}/etc && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/etc
 	cd ${FREENAS_SVNDIR}/www && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/usr/local/www

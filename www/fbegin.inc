@@ -101,11 +101,12 @@ $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Ping/Traceroute"),
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("ARP Tables"), "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" => "diag_routes.php", "visible" => true);
 
-// About
-$menu['about']['desc'] = gettext("About");
-$menu['about']['menuitem'] = array();
-$menu['about']['menuitem'][] = array("desc" => gettext("Help"), "link" => "http://www.freenaskb.info/kb/", "visible" => true, "target" => "_blank");
-$menu['about']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
+// Help
+$menu['help']['desc'] = gettext("Help");
+$menu['help']['menuitem'] = array();
+$menu['help']['menuitem'][] = array("desc" => gettext("Knowledgbase"), "link" => "http://www.freenaskb.info/kb/", "visible" => true, "target" => "_blank");
+$menu['help']['menuitem'][] = array("desc" => gettext("Release notes"), "link" => "changes.php", "visible" => true);
+$menu['help']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
 
 function display_menu($menuid) {
 	global $menu;
@@ -185,7 +186,7 @@ function display_menu($menuid) {
 		<?=display_menu("status");?>
 		<?=display_menu("diagnostics");?>
 		<?=display_menu("advanced");?>
-		<?=display_menu("about");?>
+		<?=display_menu("help");?>
 	</ul>
 	<div style="clear:both"></div>
 </div>
