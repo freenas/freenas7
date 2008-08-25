@@ -423,7 +423,7 @@ function authentication_change() {
 							<?=gettext("Allow client access to accounts that have null passwords.");?>
 						</td>
 					</tr>
-					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("This parameters will be added to [global] in smb.conf."), false, 65, 5);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("These parameters will be added to [global] in smb.conf."), false, 65, 5);?>
   				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">

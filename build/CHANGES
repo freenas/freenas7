@@ -55,6 +55,8 @@ Minors changes:
 - Display additional information when resetting WebGUI password (FR 2063008).
 - Add 'Extra options' to SSH services WebGUI page (FR 2062665). This enables the user to add
   additional options to /etc/ssh/sshd_config.
+- Add 'Auxiliary parameters' to CIFS/SMB shares WebGUI. This enables the user to add additional
+  paramaters to the shares' configuration in smb.conf.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
