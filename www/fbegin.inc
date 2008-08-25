@@ -104,7 +104,7 @@ $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" =
 // Help
 $menu['help']['desc'] = gettext("Help");
 $menu['help']['menuitem'] = array();
-$menu['help']['menuitem'][] = array("desc" => gettext("Knowledgbase"), "link" => "http://www.freenaskb.info/kb/", "visible" => true, "target" => "_blank");
+$menu['help']['menuitem'][] = array("desc" => gettext("Knowledgebase"), "link" => "http://www.freenaskb.info/kb/", "visible" => true, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("Release notes"), "link" => "changes.php", "visible" => true);
 $menu['help']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
 
