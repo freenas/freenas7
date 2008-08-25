@@ -45,6 +45,7 @@ $menu['disks']['menuitem'] = array();
 $menu['disks']['menuitem'][] = array("desc" => gettext("Management"), "link" => "disks_manage.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Software RAID"), "link" => "disks_raid_gmirror.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Encryption"), "link" => "disks_crypt.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => gettext("ZFS"), "link" => "disks_zfs_zpool.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Format"), "link" => "disks_init.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" => "disks_mount.php", "visible" => true);
 
@@ -100,6 +101,12 @@ $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Ping/Traceroute"),
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("ARP Tables"), "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" => "diag_routes.php", "visible" => true);
 
+// About
+$menu['about']['desc'] = gettext("About");
+$menu['about']['menuitem'] = array();
+$menu['about']['menuitem'][] = array("desc" => gettext("Help"), "link" => "http://www.freenaskb.info/kb/", "visible" => true, "target" => "_blank");
+$menu['about']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
+
 function display_menu($menuid) {
 	global $menu;
 
@@ -114,7 +121,7 @@ function display_menu($menuid) {
 			continue;
 		}
 		# Display menuitem.
-		echo "<a href=\"{$menuv['link']}\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
+		echo "<a href=\"{$menuv['link']}\" target=\"{$menuv['target']}\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
 	}
 
 	echo "	</div>\n";
@@ -178,6 +185,7 @@ function display_menu($menuid) {
 		<?=display_menu("status");?>
 		<?=display_menu("diagnostics");?>
 		<?=display_menu("advanced");?>
+		<?=display_menu("about");?>
 	</ul>
 	<div style="clear:both"></div>
 </div>
