@@ -71,6 +71,8 @@ $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
 $pconfig['guestaccount'] = $config['samba']['guestaccount'];
 $pconfig['nullpasswords'] = isset($config['samba']['nullpasswords']);
+if (is_array($config['samba']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['samba']['auxparam']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -99,6 +101,7 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
+		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 		$config['samba']['netbiosname'] = $_POST['netbiosname'];
 		$config['samba']['workgroup'] = $_POST['workgroup'];
 		$config['samba']['serverdesc'] = $_POST['serverdesc'];
@@ -127,7 +130,14 @@ if ($_POST) {
 		else
 			unset($config['samba']['guestaccount']);
 		$config['samba']['nullpasswords'] = $_POST['nullpasswords'] ? true : false;
-		$config['samba']['enable'] = $_POST['enable'] ? true : false;
+
+		# Write additional parameters.
+		unset($config['samba']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['samba']['auxparam'][] = $auxparam;
+		}
 
 		write_config();
 
@@ -183,6 +193,7 @@ function enable_change(enable_change) {
 	document.iform.directorymask.disabled = endis;
 	document.iform.guestaccount.disabled = endis;
 	document.iform.nullpasswords.disabled = endis;
+	document.iform.auxparam.disabled = endis;
 }
 
 function authentication_change() {
@@ -412,37 +423,7 @@ function authentication_change() {
 							<?=gettext("Allow client access to accounts that have null passwords.");?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Auxiliary parameters");?></td>
-						<td width="78%" class="vtable">
-							<table width="100%" border="0" cellpadding="0" cellspacing="0">
-								<tr>
-									<td width="90%" class="listhdrr"><?=gettext("Parameter");?></td>
-									<td width="10%" class="list"></td>
-								</tr>
-								<?php if (is_array($config['samba']['auxparam'])):?>
-								<?php $i = 0; foreach($config['samba']['auxparam'] as $auxparamv):?>
-								<tr>
-									<td class="listlr"><?=htmlspecialchars($auxparamv);?> &nbsp;</td>
-									<td valign="middle" nowrap class="list">
-										<?php if(isset($config['samba']['enable'])):?>
-										<a href="services_samba_auxparam.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit parameter");?>" width="17" height="17" border="0"></a>&nbsp;
-										<a href="services_samba.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this parameter?");?>')"><img src="x.gif" title="<?=gettext("Delete parameter"); ?>" width="17" height="17" border="0"></a>
-										<?php endif;?>
-									</td>
-								</tr>
-								<?php $i++; endforeach;?>
-								<?php endif;?>
-								<tr>
-									<td class="list" colspan="1"></td>
-									<td class="list">
-										<a href="services_samba_auxparam.php"><img src="plus.gif" title="<?=gettext("Add parameter");?>" width="17" height="17" border="0"></a>
-									</td>
-								</tr>
-							</table>
-							<?=gettext("This parameters will be added to [global] in smb.conf.");?>
-						</td>
-					</tr>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("This parameters will be added to [global] in smb.conf."), false, 65, 5);?>
   				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">

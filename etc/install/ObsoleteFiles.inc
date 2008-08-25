@@ -9,3 +9,4 @@ etc/rc.d.php/netif
 etc/inc/interfaces.inc
 usr/local/www/gui.js
 usr/local/www/header_logo.gif
+usr/local/www/services_samba_auxparam.php
