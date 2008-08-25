@@ -46,9 +46,10 @@ $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 $pconfig['passwordauthentication'] = isset($config['sshd']['passwordauthentication']);
 $pconfig['compression'] = isset($config['sshd']['compression']);
+if (is_array($config['sshd']['auxparam']))
+	$pconfig['extraoptions'] = implode("\n", $config['sshd']['auxparam']);
 
-if ($_POST)
-{
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -79,6 +80,15 @@ if ($_POST)
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
 		$config['sshd']['passwordauthentication'] = $_POST['passwordauthentication'] ? true : false;
 		$config['sshd']['compression'] = $_POST['compression'] ? true : false;
+
+		# Write additional parameters.
+		unset($config['sshd']['auxparam']);
+		foreach (explode("\n", $_POST['extraoptions']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['sshd']['auxparam'][] = $auxparam;
+		}
+
 		write_config();
 
 		$retval = 0;
@@ -103,6 +113,7 @@ function enable_change(enable_change) {
 	document.iform.passwordauthentication.disabled = endis;
 	document.iform.tcpforwarding.disabled = endis;
 	document.iform.compression.disabled = endis;
+	document.iform.extraoptions.disabled = endis;
 }
 //-->
 </script>
@@ -155,6 +166,7 @@ function enable_change(enable_change) {
 			        <?=gettext("Enable compression.");?><br/>
 			        <span class="vexpl"><?=gettext("Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only.");?></span>
 			    </tr>
+			    <?php html_textarea("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."), false, 65, 5);?>
 					<tr>
 						<td colspan="2" class="list" height="12"></td>
 					</tr>

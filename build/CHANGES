@@ -53,6 +53,8 @@ Majors changes:
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
 - Display additional information when resetting WebGUI password (FR 2063008).
+- Add 'Extra options' to SSH services WebGUI page (FR 2062665). This enables the user to add
+  additional options to /etc/ssh/sshd_config.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
