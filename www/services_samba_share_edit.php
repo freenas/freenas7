@@ -65,6 +65,8 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['hidedotfiles'] = isset($a_share[$id]['hidedotfiles']);
 	$pconfig['hostsallow'] = $a_share[$id]['hostsallow'];
 	$pconfig['hostsdeny'] = $a_share[$id]['hostsdeny'];
+	if (is_array($a_share[$id]['auxparam']))
+		$pconfig['auxparam'] = implode("\n", $a_share[$id]['auxparam']);
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
@@ -76,6 +78,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['hidedotfiles'] = true;
 	$pconfig['hostsallow'] = "";
 	$pconfig['hostsdeny'] = "";
+	$pconfig['auxparam'] = "";
 }
 
 if($_POST) {
@@ -110,6 +113,14 @@ if($_POST) {
 		$share['hidedotfiles'] = $_POST['hidedotfiles'] ? true : false;
 		$share['hostsallow'] = $_POST['hostsallow'];
 		$share['hostsdeny'] = $_POST['hostsdeny'];
+
+		# Write additional parameters.
+		unset($share['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$share['auxparam'][] = $auxparam;
+		}
 
 		if (isset($id) && $a_share[$id])
 			$a_share[$id] = $share;
@@ -212,6 +223,7 @@ if($_POST) {
 			        <span class="vexpl"><?=gettext("This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings.");?></span>
 			      </td>
 			    </tr>
+			    <?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("These parameters will be added to the share configuration in smb.conf."), false, 65, 5);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
