@@ -1,9 +1,16 @@
 #!/usr/local/bin/php
 <?php 
 require("guiconfig.inc");
-$pgtitle = array(gettext("License")); 
+$pgtitle = array(gettext("License & Credits")); 
 ?>
 <?php include("fbegin.inc");?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="listt">
+						<div>
             <p><strong>FreeNAS is Copyright &copy; 2005-2008 by Olivier Cochard-Labbe 
               (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
               All rights reserved.</strong></p>
@@ -196,4 +203,11 @@ $pgtitle = array(gettext("License"));
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>
 		<p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc");?>
