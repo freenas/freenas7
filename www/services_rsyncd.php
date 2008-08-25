@@ -46,10 +46,12 @@ if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
 }
 
+$pconfig['enable'] = isset($config['rsyncd']['enable']);
 $pconfig['port'] = $config['rsyncd']['port'];
 $pconfig['motd'] = $config['rsyncd']['motd'];
 $pconfig['rsyncd_user'] = $config['rsyncd']['rsyncd_user'];
-$pconfig['enable'] = isset($config['rsyncd']['enable']);
+if (is_array($config['rsyncd']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['rsyncd']['auxparam']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -66,10 +68,18 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
+		$config['rsyncd']['enable'] = $_POST['enable'] ? true : false;
 		$config['rsyncd']['port'] = $_POST['port'];
 		$config['rsyncd']['motd'] = $_POST['motd'];
-		$config['rsyncd']['enable'] = $_POST['enable'] ? true : false;
 		$config['rsyncd']['rsyncd_user'] = $_POST['rsyncd_user'];
+
+		# Write additional parameters.
+		unset($config['rsyncd']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['rsyncd']['auxparam'][] = $auxparam;
+		}
 
 		write_config();
 
@@ -90,13 +100,12 @@ if ($_POST) {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.port.disabled = endis;
+	document.iform.auxparam.disabled = endis;
 	document.iform.motd.disabled = endis;
 	document.iform.rsyncd_user.disabled = endis;
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -118,6 +127,8 @@ function enable_change(enable_change) {
 	<tr>
 		<td class="tabcont">
 			<form action="services_rsyncd.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 						<td colspan="2" valign="top" class="optsect_t">
@@ -156,6 +167,7 @@ function enable_change(enable_change) {
 							<?=gettext("Message of the day.");?>
 						</td>
 					</tr>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to global settings in %s."), "rsyncd.conf"), false, 65, 5);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">

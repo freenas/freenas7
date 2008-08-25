@@ -55,6 +55,8 @@ Minors changes:
   additional options to /etc/ssh/sshd_config.
 - Add 'Auxiliary parameters' to CIFS/SMB shares WebGUI. This enables the user to add additional
   paramaters to the shares' configuration in smb.conf.
+- Add 'Auxiliary parameters' to 'Services|RSYNCD|Server|Settings' and 'Services|RSYNCD|Server|Module|Add/Edit'
+  WebGUI. This enables the user to add additional paramaters to rsyncd.conf.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.

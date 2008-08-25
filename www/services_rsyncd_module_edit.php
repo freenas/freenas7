@@ -65,6 +65,8 @@ if (isset($id) && $a_module[$id]) {
 	$pconfig['hostsdeny'] = $a_module[$id]['hostsdeny'];
 	$pconfig['uid'] = $a_module[$id]['uid'];
 	$pconfig['gid'] = $a_module[$id]['gid'];
+	if (is_array($a_module[$id]['auxparam']))
+		$pconfig['auxparam'] = implode("\n", $a_module[$id]['auxparam']);
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
@@ -76,9 +78,10 @@ if (isset($id) && $a_module[$id]) {
 	$pconfig['hostsdeny'] = "";
 	$pconfig['uid'] = "";
 	$pconfig['gid'] = "";
+	$pconfig['auxparam'] = "";
 }
 
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
 
 	$pconfig = $_POST;
@@ -104,6 +107,14 @@ if($_POST) {
 		$module['hostsdeny'] = $_POST['hostsdeny'];
 		$module['uid'] = $_POST['uid'];
 		$module['gid'] = $_POST['gid'];
+
+		# Write additional parameters.
+		unset($module['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$module['auxparam'][] = $auxparam;
+		}
 
 		if (isset($id) && $a_module[$id])
 			$a_module[$id] = $module;
@@ -216,6 +227,7 @@ if($_POST) {
 			        <span class="vexpl"><?=gettext("This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings.");?></span>
 			      </td>
 			    </tr>
+			    <?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("These parameters will be added to the module configuration in rsyncd.conf."), false, 65, 5);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_module[$id]))?gettext("Save"):gettext("Add")?>">
