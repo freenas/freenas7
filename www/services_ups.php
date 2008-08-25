@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_ups.php
+	services_ups.php
 	Copyright © 2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("UPS"));
+$pgtitle = array(gettext("Services"), gettext("UPS"));
 
 if(!is_array($config['system']['ups']))
 	$config['system']['ups'] = array();
@@ -94,7 +94,7 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<form action="system_ups.php" method="post" name="iform" id="iform">
+<form action="services_ups.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
