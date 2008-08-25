@@ -17,7 +17,6 @@ $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "s
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => gettext("UPS"), "link" => "system_ups.php", "visible" => true);
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
 }
@@ -64,6 +63,7 @@ $menu['services']['menuitem'][] = array("desc" => gettext("UPnP"), "link" => "se
 $menu['services']['menuitem'][] = array("desc" => gettext("DAAP"), "link" => "services_daap.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Dynamic DNS"), "link" => "services_dynamicdns.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("SNMP"), "link" => "services_snmp.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => gettext("UPS"), "link" => "services_ups.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Webserver"), "link" => "services_websrv.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("BitTorrent"), "link" => "services_bittorrent.php", "visible" => true);
 
