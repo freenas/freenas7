@@ -8,9 +8,9 @@ $pgtitle = array(gettext("License & Credits"));
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<?php html_titleline(gettext("License"));?>
 				<tr>
 					<td class="listt">
-						<div>
             <p><strong>FreeNAS is Copyright &copy; 2005-2008 by Olivier Cochard-Labbe 
               (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
               All rights reserved.</strong></p>
@@ -47,10 +47,15 @@ $pgtitle = array(gettext("License & Credits"));
               ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
               OF THE<br>
               POSSIBILITY OF SUCH DAMAGE</strong>.</p>
-            <hr size="1">
+							</td>
+						</tr>
+            <?php html_separator();?>
+            <?php html_titleline(gettext("Credits"));?>
+            <tr>
+            	<td class="listt">
             <p>The following persons have contributed to FreeNAS code:</p>
              <p>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">FreeNAS developer and team leader</font></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and team leader</font></em><br>
              <p>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em><br>
              <p>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br>
@@ -71,7 +76,7 @@ $pgtitle = array(gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP/Rsync shares.</font></em><br>
               <p>Nelson Silva (<a href="mailto:nelson.emanuel.silva@gmail.com">nelson.emanuel.silva@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add core ZFS implementation and additional code improvements.</font></em><br>
-            <br><br>
+            <hr size="1">
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>
@@ -99,11 +104,16 @@ $pgtitle = array(gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Greek translator of the WebGUI</font></em><br>
             <p>Daniel Nylander (<a href="mailto:po@danielnylander.se">po@danielnylander.se</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Swedish translator of the WebGUI</font></em><br>
-            <br><br>
+            <hr size="1">
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>
-             	  <hr size="1">
+							</td>
+						</tr>
+            <?php html_separator();?>
+            <?php html_titleline(gettext("Software used"));?>
+            <tr>
+            	<td class="listt">
       <p>FreeNAS is based upon/includes various free software packages, listed 
         below.<br>
         The authors of FreeNAS would like to thank the authors of these software 
@@ -203,7 +213,6 @@ $pgtitle = array(gettext("License & Credits"));
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>
 		<p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
-						</div>
 					</td>
 				</tr>
 			</table>
