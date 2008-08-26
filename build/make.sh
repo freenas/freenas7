@@ -47,8 +47,8 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.6
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
 if [ "amd64" = ${FREENAS_ARCH} ]; then
-FREENAS_MFSROOT_SIZE=74
-FREENAS_IMG_SIZE=34
+FREENAS_MFSROOT_SIZE=76
+FREENAS_IMG_SIZE=36
 else
 FREENAS_MFSROOT_SIZE=70
 FREENAS_IMG_SIZE=32
@@ -262,7 +262,7 @@ build_kernel() {
 
 				modulesdir=${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
 				for module in $(cat ${FREENAS_WORKINGDIR}/modules.files | grep -v "^#"); do
-					cp -Rpv ${modulesdir}/${module} ${FREENAS_ROOTFS}/boot/kernel
+					cp -v -p ${modulesdir}/${module} ${FREENAS_ROOTFS}/boot/kernel;
 				done;;
   	esac
   done
