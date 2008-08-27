@@ -15,6 +15,6 @@ do-build:
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKDIR}/iscontrol/iscontrol ${FREENAS_ROOTFS}/usr/local/sbin
-	@${CP} -pv ${WRKDIR}/sys/modules/iscsi_initiator/iscsi_initiator.ko ${FREENAS_ROOTFS}/boot/kernel
+	@${INSTALL_KLD} -v ${WRKDIR}/sys/modules/iscsi_initiator/iscsi_initiator.ko ${FREENAS_ROOTFS}/boot/kernel
 
 .include <bsd.port.mk>
