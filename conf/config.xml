@@ -568,6 +568,7 @@
 		<!-- <enable/> -->
 		<port>9091</port>
 		<downloaddir></downloaddir>
+		<configdir></configdir>
 		<password>freenas</password>
 	</bittorrent>
 	<sshd>

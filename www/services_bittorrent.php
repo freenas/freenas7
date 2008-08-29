@@ -2,7 +2,7 @@
 <?php
 /*
 	services_bittorrent.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -40,6 +40,7 @@ if(!is_array($config['bittorrent']))
 $pconfig['enable'] = isset($config['bittorrent']['enable']);
 $pconfig['port'] = $config['bittorrent']['port'];
 $pconfig['downloaddir'] = $config['bittorrent']['downloaddir'];
+$pconfig['configdir'] = $config['bittorrent']['configdir'];
 $pconfig['password'] = $config['bittorrent']['password'];
 
 // Set default values.
@@ -63,6 +64,7 @@ if ($_POST) {
 		$config['bittorrent']['enable'] = $_POST['enable'] ? true : false;
 		$config['bittorrent']['port'] = $_POST['port'];
 		$config['bittorrent']['downloaddir'] = $_POST['downloaddir'];
+		$config['bittorrent']['configdir'] = $_POST['configdir'];
 		$config['bittorrent']['password'] = $_POST['password'];
 
 		write_config();
@@ -86,6 +88,7 @@ function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.port.disabled = endis;
 	document.iform.downloaddir.disabled = endis;
+	document.iform.configdir.disabled = endis;
 	document.iform.password.disabled = endis;
 }
 //-->
@@ -100,6 +103,7 @@ function enable_change(enable_change) {
 			  	<?php html_titleline_checkbox("enable", gettext("BitTorrent"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Default port is %d."), 9091), true, 5);?>
 					<?php html_filechooser("downloaddir", gettext("Download directory"), $pconfig['downloaddir'], gettext("Where to save downloaded data."), "/mnt", true, 60);?>
+					<?php html_filechooser("configdir", gettext("Configuration directory"), $pconfig['configdir'], gettext("Alternative configuration directory (usually empty)."), "/mnt", false, 60);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
 					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], sprintf("%s %s", gettext("Password for the administrative pages."), gettext("Default user name is 'admin'.")), true, 20);?>
