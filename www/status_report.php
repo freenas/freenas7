@@ -2,8 +2,8 @@
 <?php
 /*
 	status_report.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
-	Copyright © 2007 Dan Merschi (freenas@bcapro.com)
+	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007 Dan Merschi (freenas@bcapro.com)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -187,7 +187,7 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
 						<td width="78%" class="vtable">
 							<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlspecialchars($pconfig['to']);?>"><br>
-							<span class="vexpl"><?=gettext("Destination email address.");?></span>
+							<span class="vexpl"><?=gettext("Destination email address.");?> <?=gettext("Separate email addresses by semi-colon.");?></span>
 						</td>
 					</tr>
 					<tr>
