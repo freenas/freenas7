@@ -172,6 +172,9 @@ if (!isBlank($_POST['txtPHPCommand'])) {
 	require_once("functions.inc");
 	require_once("util.inc");
 	require_once("rc.inc");
+	require_once("email.inc");
+	require_once("tui.inc");
+	require_once("array.inc");
 	echo eval($_POST['txtPHPCommand']);
 	puts("</pre>");
 }
