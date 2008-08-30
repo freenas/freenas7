@@ -72,7 +72,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("UPS"))
 				<?php else:?>
 				<tr>
 			    <td>
-						<pre><br/><?php system("/usr/local/bin/upsc {$config['system']['ups']['upsname']}@localhost");?></pre>
+						<pre><br/><?php system("/usr/local/bin/upsc {$config['ups']['upsname']}@localhost");?></pre>
 					</td>
 			  </tr>
 			  <?php endif;?>
