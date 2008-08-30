@@ -63,7 +63,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("UPS"))
     		<tr>
 					<td class="listtopic"><?=gettext("UPS status");?></td>
 				</tr>
-				<?php if (!isset($config['system']['ups']['enable'])):?>
+				<?php if (!isset($config['ups']['enable'])):?>
 				<tr>
 					<td>
 						<pre><br/><?=gettext("UPS disabled");?></pre>
