@@ -159,15 +159,6 @@ if ($_POST) {
 		}
 	}
 }
-
-if($_GET['act'] === "del") {
-	/* Remove entry from auxparam list */
-	unset($config['samba']['auxparam'][$_GET['id']]);
-	write_config();
-	touch($d_smbconfdirty_path);
-	header("Location: services_samba.php");
-	exit;
-}
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
