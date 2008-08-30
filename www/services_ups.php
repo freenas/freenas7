@@ -34,15 +34,16 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("UPS"));
 
-if(!is_array($config['system']['ups']))
-	$config['system']['ups'] = array();
+if(!is_array($config['ups']))
+	$config['ups'] = array();
 
-$pconfig['enable'] = isset($config['system']['ups']['enable']);
-$pconfig['upsname'] = $config['system']['ups']['upsname'];
-$pconfig['driver'] = $config['system']['ups']['driver'];
-$pconfig['port'] = $config['system']['ups']['port'];
-$pconfig['cable'] = $config['system']['ups']['cable'];
-$pconfig['desc'] = $config['system']['ups']['desc'];
+$pconfig['enable'] = isset($config['ups']['enable']);
+$pconfig['upsname'] = $config['ups']['upsname'];
+$pconfig['driver'] = $config['ups']['driver'];
+$pconfig['port'] = $config['ups']['port'];
+$pconfig['desc'] = $config['ups']['desc'];
+if (is_array($config['ups']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['ups']['auxparam']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -59,12 +60,19 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['system']['ups']['enable'] = $_POST['enable'] ? true : false;
-		$config['system']['ups']['upsname'] = $_POST['upsname'];
-		$config['system']['ups']['driver'] = $_POST['driver'];
-		$config['system']['ups']['port'] = $_POST['port'];
-		$config['system']['ups']['cable'] = $_POST['cable'];
-		$config['system']['ups']['desc'] = $_POST['desc'];
+		$config['ups']['enable'] = $_POST['enable'] ? true : false;
+		$config['ups']['upsname'] = $_POST['upsname'];
+		$config['ups']['driver'] = $_POST['driver'];
+		$config['ups']['port'] = $_POST['port'];
+		$config['ups']['desc'] = $_POST['desc'];
+
+		# Write additional parameters.
+		unset($config['ups']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['ups']['auxparam'][] = $auxparam;
+		}
 
 		write_config();
 
@@ -89,7 +97,7 @@ function enable_change(enable_change) {
 	document.iform.upsname.disabled = endis;
 	document.iform.driver.disabled = endis;
 	document.iform.port.disabled = endis;
-	document.iform.cable.disabled = endis;
+	document.iform.auxparam.disabled = endis;
 	document.iform.desc.disabled = endis;
 }
 //-->
@@ -105,7 +113,7 @@ function enable_change(enable_change) {
 					<?php html_inputbox("upsname", gettext("Identifier"), $pconfig['upsname'], gettext("This is used to access the UPS in the form like upsname@localhost."), true, 30);?>
 					<?php html_inputbox("driver", gettext("Driver"), $pconfig['driver'], gettext("The driver to be used."), true, 30);?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The port to be used."), true, 30);?>
-					<?php html_inputbox("cable", gettext("Cable"), $pconfig['cable'], gettext("The cable type."), false, 30);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 5);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>

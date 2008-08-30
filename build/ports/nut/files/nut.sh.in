@@ -42,12 +42,13 @@ pidfile="/var/run/upsd.pid"
 mkconf_cmd()
 {
 	# Create ups.conf
-	/usr/local/bin/xml sel -t -m "//system/ups" \
+	/usr/local/bin/xml sel -t -m "//ups" \
 		-v "concat('[',upsname,']')" -n \
 		-v "concat('&#009;driver = ',driver)" -n \
 		-v "concat('&#009;port = ',port)" -n \
-		-i "string-length(cable) > 0" -v "concat('&#009;cable = ',cable)" -n -b \
-		-i "string-length(desc) > 0" -v "concat('&#009;desc = &quot;',desc,'&quot;')" -n -b \
+		-m "auxparam" \
+			-v "concat('&#009;',.)" -n \
+		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${nut_ups_conf}
 
 	# Create upsd.conf

@@ -41,7 +41,7 @@ mkconf_cmd()
 	local _upsname
 
 	# Get identifier.
-	_upsname=`configxml_get "//system/ups/upsname"`
+	_upsname=`configxml_get "//ups/upsname"`
 
 	# Create upsmon.conf
 	cat <<EOF > ${nut_upsmon_conf}

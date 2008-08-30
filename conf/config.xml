@@ -87,15 +87,6 @@
 			</param>
 			-->
 		</sysctl>
-		<ups>
-			<upsname>ups</upsname>
-			<!--
-			<driver>usbhid-ups</driver>
-			<port>auto</port>
-			<cable></cable>
-			<desc>xxx<desc>
-			-->
-		</ups>
 	</system>
 	<interfaces>
 		<lan>
@@ -816,4 +807,13 @@
 		<username>Administrator</username>
 		<password></password>
 	</ad>
+	<ups>
+		<upsname>ups</upsname>
+		<!--
+		<driver>usbhid-ups</driver>
+		<port>auto</port>
+		<auxparam></auxparam> // Can be defined multiple times.
+		<desc>xxx<desc>
+		-->
+	</ups>
 </freenas>
