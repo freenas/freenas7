@@ -88,6 +88,25 @@ if ($_POST) {
 		$savemsg = get_std_save_message($retval);
 	}
 }
+
+function nut_get_driverlist() {
+	// Read file
+	$a_driver = file("/usr/local/etc/nut/driver.list");
+	if (!is_array($a_driver))
+		return 1;
+
+	// Parse data
+	$a_driver_data = array();
+	foreach ($a_driver as $driver) {
+		// Syntax should look like: '"<manufacturer>" "<model name>" "<model extra>" "<driver>"'.
+		if (preg_match("/^\"([\S]+)\"\t\"([\S]+)\"\t\"([\S]+)\"\t\"([\S]+)\"/", $driver, $matches)) {
+			$a_driver_data['manufacturer'] = $matches[1];
+			$a_driver_data['model name'] = $matches[1];
+			$a_driver_data['model extra'] = $matches[1];
+			$a_driver_data['driver'] = $matches[1];
+		}
+	}
+}
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
