@@ -57,6 +57,8 @@ Minors changes:
   paramaters to the shares' configuration in smb.conf.
 - Add 'Auxiliary parameters' to 'Services|RSYNCD|Server|Settings' and 'Services|RSYNCD|Server|Module|Add/Edit'
   WebGUI. This enables the user to add additional paramaters to rsyncd.conf.
+- Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending of a test email
+  whenever the service (smartd) is started.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
