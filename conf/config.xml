@@ -794,7 +794,10 @@
 			<crit>0</crit>
 		</temp>
 		<email>
-			<!-- <enable/> -->
+			<!--
+			<enable/>
+			<testemail/>
+			-->
 			<to></to>
 			<subject>S.M.A.R.T. report</subject>
 		</email>

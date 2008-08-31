@@ -37,7 +37,7 @@
 require("guiconfig.inc");
 require("email.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."));
+$pgtitle = array(gettext("Disks"), gettext("Management"), gettext("S.M.A.R.T."));
 
 if (!is_array($config['smartd']['selftest']))
 	$config['smartd']['selftest'] = array();
@@ -54,6 +54,7 @@ $pconfig['temp_crit'] = $config['smartd']['temp']['crit'];
 $pconfig['email_enable'] = isset($config['smartd']['email']['enable']);
 $pconfig['email_to'] = $config['smartd']['email']['to'];
 $pconfig['email_subject'] = $config['smartd']['email']['subject'];
+$pconfig['email_testemail'] = isset($config['smartd']['email']['testemail']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -80,6 +81,7 @@ if ($_POST) {
 		$config['smartd']['email']['enable'] = $_POST['email_enable'] ? true : false;
 		$config['smartd']['email']['to'] = $_POST['email_to'];
 		$config['smartd']['email']['subject'] = $_POST['email_subject'];
+		$config['smartd']['email']['testemail'] = $_POST['email_testemail'] ? true : false;
 
 		write_config();
 
@@ -136,6 +138,7 @@ function enable_change(enable_change) {
 
 		document.iform.email_to.disabled = endis;
 		document.iform.email_subject.disabled = endis;
+		document.iform.email_testemail.disabled = endis;
 	}
 }
 //-->
@@ -154,6 +157,7 @@ function enable_change(enable_change) {
     <td class="tabcont">
       <form action="disks_manage_smart.php" method="post" name="iform" id="iform">
 				<?php if (isset($pconfig['email_enable']) && (0 !== email_validate_settings())) print_error_box(sprintf(gettext("Make sure you have already configured your <a href='%s'>Email</a> settings."), "system_email.php"));?>
+				<?php $smart = false; foreach ($config['disks']['disk'] as $device) { if (isset($device['smart'])) $smart = true; } if (false === $smart) print_error_box(gettext("Make sure you have activated S.M.A.R.T. for your devices."));?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (file_exists($d_smartconfdirty_path)) print_config_change_box();?>
@@ -235,6 +239,7 @@ function enable_change(enable_change) {
 					<?php html_titleline_checkbox("email_enable", gettext("Email report"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], sprintf("%s %s", gettext("Destination email address."), gettext("Separate email addresses by semi-colon.")), true, 40);?>
 					<?php html_inputbox("email_subject", gettext("Subject"), $pconfig['email_subject'], gettext("The subject of the email."), true, 40);?>
+					<?php html_checkbox("email_testemail", gettext("Test email"), $pconfig['email_testemail'] ? true : false, gettext("Send a TEST warning email on startup."));?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
