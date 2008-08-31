@@ -10,3 +10,4 @@
 /sbin/nologin
 /usr/bin/scp
 /usr/local/bin/scponly
+/usr/local/bin/bash

@@ -52,7 +52,8 @@ pre-build:
 	@${ECHO_CMD} $$((${PORTREVISION}-1)) > ${WRKSRC}/.build
 
 do-install:
-	@cd ${PREFIX}/bin ; ${LN} -sf bash rbash
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bash ${FREENAS_ROOTFS}/usr/local/bin
+	@${LN} -sfv /usr/local/bin/bash ${FREENAS_ROOTFS}/usr/local/bin/rbash
 
 cklatest:
 	-ncftpls \
