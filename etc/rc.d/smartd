@@ -45,6 +45,9 @@ start_precmd()
 	_email=`/usr/local/bin/xml sel -t -m "//smartd/email" \
 		-i "count(enable) > 0" \
 			-v "concat('-m ',to,' -M exec /etc/mail/smartdreport.sh')" \
+			-i "count(testemail) > 0" \
+				-o " -M test" \
+			-b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
