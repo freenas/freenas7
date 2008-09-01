@@ -157,7 +157,6 @@ function auth_change() {
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-			        &nbsp;
 							<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>">
 			      </td>
 			    </tr>
