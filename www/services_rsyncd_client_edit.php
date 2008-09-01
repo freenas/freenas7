@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Client"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Client"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
@@ -137,12 +137,15 @@ if ($_POST) {
 		$rsyncclient['options']['xattrs'] = $_POST['xattrs'] ? true : false;
 		$rsyncclient['options']['extraoptions'] = $_POST['extraoptions'];
 
-		if (isset($id) && $a_rsyncclient[$id])
+		if (isset($id) && $a_rsyncclient[$id]) {
 			$a_rsyncclient[$id] = $rsyncclient;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_rsyncclient[] = $rsyncclient;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_rsyncclientdirty_path);
+		ui_set_updatenotification("rsyncclient", $mode, $rsyncclient['uuid']);
 		write_config();
 
 		if (stristr($_POST['Submit'], gettext("Execute now"))) {

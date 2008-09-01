@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Local"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Local"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
@@ -135,12 +135,15 @@ if ($_POST) {
 		$rsynclocal['options']['xattrs'] = $_POST['xattrs'] ? true : false;
 		$rsynclocal['options']['extraoptions'] = $_POST['extraoptions'];
 
-		if (isset($id) && $a_rsynclocal[$id])
+		if (isset($id) && $a_rsynclocal[$id]) {
 			$a_rsynclocal[$id] = $rsynclocal;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_rsynclocal[] = $rsynclocal;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_rsynclocaldirty_path);
+		ui_set_updatenotification("rsynclocal", $mode, $rsynclocal['uuid']);
 		write_config();
 
 		if (stristr($_POST['Submit'], gettext("Execute now"))) {

@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Local"));
+$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Local"));
 
 if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
@@ -51,6 +51,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("rsynclocal", "rsynclocal_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("rsync_local");
 			$retval |= rc_update_service("cron");
@@ -58,19 +59,41 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_rsynclocaldirty_path))
-				unlink($d_rsynclocaldirty_path);
+			ui_cleanup_updatenotification("rsynclocal");
 		}
 	}
 }
-if ($_GET['act'] == "del") {
+
+if ($_GET['act'] === "del") {
 	if ($a_rsynclocal[$_GET['id']]) {
-		unset($a_rsynclocal[$_GET['id']]);
-		write_config();
-		touch($d_rsynclocaldirty_path);
+		ui_set_updatenotification("rsynclocal", UPDATENOTIFICATION_MODE_DIRTY, $a_rsynclocal[$_GET['id']]['uuid']);
 		header("Location: services_rsyncd_local.php");
 		exit;
 	}
+}
+
+function rsynclocal_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['rsync']['rsynclocal'])) {
+				$index = array_search_ex($data, $config['rsync']['rsynclocal'], "uuid");
+				if (false !== $index) {
+					unset($config['rsync']['rsynclocal'][$index]);
+					write_config();
+				}
+				@unlink("/var/run/rsync_local_{$data}.sh");
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -87,8 +110,8 @@ if ($_GET['act'] == "del") {
   <tr>
     <td class="tabcont">
       <form action="services_rsyncd_local.php" method="post">
-        <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_rsynclocaldirty_path)) print_config_change_box();?>
+        <?php if ($savemsg) print_info_box($savemsg);?>
+        <?php if (ui_exists_updatenotification("rsynclocal")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Source share"); ?></td>
@@ -97,16 +120,19 @@ if ($_GET['act'] == "del") {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsynclocal as $rsynclocal): ?>
+  			  <?php $notificationmode = ui_get_updatenotification_mode("rsynclocal", $rsynclocal['uuid']);?>
           <tr>
             <td class="listr"><?=htmlspecialchars($rsynclocal['source']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['destination']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['description']);?>&nbsp;</td>
+						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" width="17" height="17" border="0"></a>&nbsp;
               <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this RSYNC?");?>')"><img src="x.gif" title="<?=gettext("Delete RSYNC"); ?>" width="17" height="17" border="0"></a>
             </td>
+            <?php endif;?>
           </tr>
-          <?php $i++; endforeach; ?>
+          <?php $i++; endforeach;?>
           <tr> 
             <td class="list" colspan="3"></td>
             <td class="list"><a href="services_rsyncd_local_edit.php"><img src="plus.gif" title="<?=gettext("Add RSYNC");?>" width="17" height="17" border="0"></a></td>
@@ -116,4 +142,4 @@ if ($_GET['act'] == "del") {
 	  </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
