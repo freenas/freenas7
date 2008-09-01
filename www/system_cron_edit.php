@@ -110,7 +110,7 @@ if ($_POST) {
 		$cronjob['command'] = $_POST['command'];
 
 		if (stristr($_POST['Submit'], gettext("Run now"))) {
-			mwexec2($_POST['command'], $output, $retval);
+			mwexec2(escapeshellcmd($_POST['command']), $output, $retval);
 			if (0 == $retval) {
 				$execmsg = gettext("The cron job has been executed successfully.");
 				write_log("The cron job '{$_POST['command']}' has been executed successfully.");
