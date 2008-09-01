@@ -141,7 +141,11 @@ function rsyncd_process_updatenotification($mode, $data) {
               <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" width="17" height="17" border="0"></a>
               <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" width="17" height="17" border="0"></a>
             </td>
-            <?php endif;?>
+						<?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
           </tr>
           <?php $i++; endforeach;?>
           <tr>
