@@ -195,8 +195,8 @@ function delete_change() {
   <tr>
     <td class="tabcont">
 			<form action="services_rsyncd_client_edit.php" method="post" name="iform" id="iform">
-				<?php if ($savemsg) print_info_box($savemsg); ?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
