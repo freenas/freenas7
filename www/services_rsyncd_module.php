@@ -2,7 +2,7 @@
 <?php
 /*
 	services_rsyncd_module.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -51,31 +51,48 @@ if($_POST) {
 	if($_POST['apply']) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
-		  config_lock();
+			$retval |= ui_process_updatenotification("rsyncd", "rsyncd_process_updatenotification");
+			config_lock();
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
-
 		$savemsg = get_std_save_message($retval);
-
-		if(0 == $retval) {
-			if(file_exists($d_rsyncdconfdirty_path))
-				unlink($d_rsyncdconfdirty_path);
+		if ($retval == 0) {
+			ui_cleanup_updatenotification("rsyncd");
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_module[$_GET['id']]) {
-		unset($a_module[$_GET['id']]);
-
-		write_config();
-		touch($d_rsyncdconfdirty_path);
-
+		ui_set_updatenotification("rsyncd", UPDATENOTIFICATION_MODE_DIRTY, $a_module[$_GET['id']]['uuid']);
 		header("Location: services_rsyncd_module.php");
 		exit;
 	}
+}
+
+function rsyncd_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['rsyncd']['module'])) {
+				$index = array_search_ex($data, $config['rsyncd']['module'], "uuid");
+				if (false !== $index) {
+					unset($config['rsyncd']['module'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -101,7 +118,7 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
       <form action="services_rsyncd_module.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
-        <?php if (file_exists($d_rsyncdconfdirty_path)) print_config_change_box();?>
+        <?php if (ui_exists_updatenotification("rsyncd")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
           	<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
@@ -112,16 +129,19 @@ if ($_GET['act'] == "del") {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_module as $modulev):?>
+  			  <?php $notificationmode = ui_get_updatenotification_mode("rsyncd", $modulev['uuid']);?>
           <tr>
             <td class="listr"><?=htmlspecialchars($modulev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($modulev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($modulev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($modulev['list'])?gettext("Yes"):gettext("No"));?></td>
             <td class="listbg"><?=htmlspecialchars($modulev['rwmode']);?>&nbsp;</td>
+            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" width="17" height="17" border="0"></a>
               <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" width="17" height="17" border="0"></a>
             </td>
+            <?php endif;?>
           </tr>
           <?php $i++; endforeach;?>
           <tr>

@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Client"));
+$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Client"));
 
 if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
@@ -51,6 +51,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("rsyncclient", "rsyncclient_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("rsync_client");
 			$retval |= rc_update_service("cron");
@@ -58,19 +59,41 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_rsyncclientdirty_path))
-				unlink($d_rsyncclientdirty_path);
+			ui_cleanup_updatenotification("rsyncclient");
 		}
 	}
 }
-if ($_GET['act'] == "del") {
+
+if ($_GET['act'] === "del") {
 	if ($a_rsyncclient[$_GET['id']]) {
-		unset($a_rsyncclient[$_GET['id']]);
-		write_config();
-		touch($d_rsyncclientdirty_path);
+		ui_set_updatenotification("rsyncclient", UPDATENOTIFICATION_MODE_DIRTY, $a_rsyncclient[$_GET['id']]['uuid']);
 		header("Location: services_rsyncd_client.php");
 		exit;
 	}
+}
+
+function rsyncclient_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['rsync']['rsyncclient'])) {
+				$index = array_search_ex($data, $config['rsync']['rsyncclient'], "uuid");
+				if (false !== $index) {
+					unset($config['rsync']['rsyncclient'][$index]);
+					write_config();
+				}
+				@unlink("/var/run/rsync_client_{$data}.sh");
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -87,8 +110,8 @@ if ($_GET['act'] == "del") {
   <tr>
     <td class="tabcont">
       <form action="services_rsyncd_client.php" method="post">
-        <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_rsyncclientdirty_path)) print_config_change_box();?>
+        <?php if ($savemsg) print_info_box($savemsg);?>
+        <?php if (ui_exists_updatenotification("rsyncclient")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
 						<td width="20%" class="listhdrr"><?=gettext("Remote module (source)"); ?></td>
@@ -97,18 +120,21 @@ if ($_GET['act'] == "del") {
 						<td width="30%" class="listhdrr"><?=gettext("Description"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient): ?>
+  			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient):?>
+  			  <?php $notificationmode = ui_get_updatenotification_mode("rsyncclient", $rsyncclient['uuid']);?>
           <tr>   
 						<td class="listr"><?=htmlspecialchars($rsyncclient['remoteshare']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsyncclient['rsyncserverip']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsyncclient['description']);?>&nbsp;</td>
+						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" width="17" height="17" border="0"></a>&nbsp;
               <a href="services_rsyncd_client.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this RSYNC?");?>')"><img src="x.gif" title="<?=gettext("Delete RSYNC"); ?>" width="17" height="17" border="0"></a>
             </td>
+            <?php endif;?>
           </tr>
-          <?php $i++; endforeach; ?>
+          <?php $i++; endforeach;?>
           <tr> 
             <td class="list" colspan="4"></td>
             <td class="list"><a href="services_rsyncd_client_edit.php"><img src="plus.gif" title="<?=gettext("Add RSYNC");?>" width="17" height="17" border="0"></a></td>
@@ -118,4 +144,4 @@ if ($_GET['act'] == "del") {
 	  </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

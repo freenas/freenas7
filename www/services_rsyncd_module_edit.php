@@ -118,12 +118,15 @@ if ($_POST) {
 				$module['auxparam'][] = $auxparam;
 		}
 
-		if (isset($id) && $a_module[$id])
+		if (isset($id) && $a_module[$id]) {
 			$a_module[$id] = $module;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_module[] = $module;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_rsyncdconfdirty_path);
+		ui_set_updatenotification("rsyncd", $mode, $module['uuid']);
 		write_config();
 
     header("Location: services_rsyncd_module.php");
