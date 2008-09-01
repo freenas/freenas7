@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	services_ups.php
+	services_ups_drv.php
 	Copyright © 2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
