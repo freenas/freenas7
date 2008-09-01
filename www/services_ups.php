@@ -129,9 +129,9 @@ function enable_change(enable_change) {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<?php html_titleline_checkbox("enable", gettext("UPS"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_inputbox("upsname", gettext("Identifier"), $pconfig['upsname'], gettext("This is used to access the UPS in the form like upsname@localhost."), true, 30);?>
-					<?php html_inputbox("driver", gettext("Driver"), $pconfig['driver'], gettext("The driver to be used."), true, 30);?>
-					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The port to be used."), true, 30);?>
+					<?php html_inputbox("upsname", gettext("Identifier"), $pconfig['upsname'], gettext("This name is used to uniquely identify your UPS on this system."), true, 30);?>
+					<?php html_inputbox("driver", gettext("Driver"), $pconfig['driver'], sprintf(gettext("The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."), "services_ups_drv.php"), true, 30);?>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The serial or USB port where your UPS is connected."), true, 30);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 5);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
@@ -140,6 +140,13 @@ function enable_change(enable_change) {
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 			      </td>
 			    </tr>
+			    <tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
+							<?=sprintf(gettext("The configuration entered here is used to generate the ups.conf configuration file used by NUT UPS daemon. To get more information how to configure your UPS please check the NUT (Network UPS Tools) <a href='%s' target='_blank'>documentation</a>."), "http://www.networkupstools.org");?>
+						</td>
+					</tr>
 			  </table>
 			</td>
 		</tr>
