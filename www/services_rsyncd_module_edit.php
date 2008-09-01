@@ -2,11 +2,11 @@
 <?php
 /*
 	services_rsyncd_module_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -55,6 +55,7 @@ $a_mount = &$config['mounts']['mount'];
 $a_module = &$config['rsyncd']['module'];
 
 if (isset($id) && $a_module[$id]) {
+	$pconfig['uuid'] = $a_module[$id]['uuid'];
 	$pconfig['name'] = $a_module[$id]['name'];
 	$pconfig['path'] = $a_module[$id]['path'];
 	$pconfig['comment'] = $a_module[$id]['comment'];
@@ -68,6 +69,7 @@ if (isset($id) && $a_module[$id]) {
 	if (is_array($a_module[$id]['auxparam']))
 		$pconfig['auxparam'] = implode("\n", $a_module[$id]['auxparam']);
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
@@ -96,7 +98,7 @@ if ($_POST) {
 
 	if(!$input_errors) {
 		$module = array();
-
+		$module['uuid'] = $_POST['uuid'];
 		$module['name'] = $_POST['name'];
 		$module['path'] = $_POST['path'];
 		$module['comment'] = $_POST['comment'];
@@ -230,7 +232,9 @@ if ($_POST) {
 			    <?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("These parameters will be added to the module configuration in rsyncd.conf."), false, 65, 5);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_module[$id]))?gettext("Save"):gettext("Add")?>">
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_module[$id])) ? gettext("Save") : gettext("Add")?>">
+			        <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			        <?php if (isset($id) && $a_module[$id]):?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif;?>

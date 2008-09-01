@@ -40,6 +40,8 @@ Majors changes:
 - Add 'Recursive', 'Times', 'Compress' and 'Archive' checkbox to RSYNC client/local WebGUI.
   Also add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion algorithm
 	when 'Delete' option has been choosen.
+- Add 'Execute now' button in RSYNC client/local WebGUI. This button is only visible if you
+  edit existing RSYNC jobs (because of implementation reasons).
 - Add nVidia nForce MCP on-board ethernet support.
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.

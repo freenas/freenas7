@@ -53,6 +53,7 @@ if (!is_array($config['rsync']['rsyncclient']))
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if (isset($id) && $a_rsyncclient[$id]) {
+	$pconfig['uuid'] = $a_rsyncclient[$id]['uuid'];
 	$pconfig['rsyncserverip'] = $a_rsyncclient[$id]['rsyncserverip'];
 	$pconfig['localshare'] = $a_rsyncclient[$id]['localshare'];
 	$pconfig['remoteshare'] = $a_rsyncclient[$id]['remoteshare'];
@@ -79,6 +80,7 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['xattrs'] = isset($a_rsyncclient[$id]['options']['xattrs']);
 	$pconfig['extraoptions'] = $a_rsyncclient[$id]['options']['extraoptions'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['recursive'] = true;
 	$pconfig['times'] = true;
 	$pconfig['compress'] = true;
@@ -97,17 +99,19 @@ if ($_POST) {
 
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation
 	$reqdfields = explode(" ", "rsyncserverip localshare remoteshare");
 	$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote module name"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	// Validate synchronization time
-	do_input_validate_synctime($_POST, &$input_errors);
+	if (gettext("Execute now") !== $_POST['Submit']) {
+		// Validate synchronization time
+		do_input_validate_synctime($_POST, &$input_errors);
+	}
 
 	if (!$input_errors) {
 		$rsyncclient = array();
-
+		$rsyncclient['uuid'] = $_POST['uuid'];
 		$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
 		$rsyncclient['minute'] = $_POST['minute'];
 		$rsyncclient['hour'] = $_POST['hour'];
@@ -141,8 +145,20 @@ if ($_POST) {
 		touch($d_rsyncclientdirty_path);
 		write_config();
 
-		header("Location: services_rsyncd_client.php");
-		exit;
+		if (stristr($_POST['Submit'], gettext("Execute now"))) {
+			$retval = 0;
+
+			// Update scripts and execute it.
+			config_lock();
+			$retval |= rc_exec_service("rsync_client");
+			$retval |= rc_exec_script("/var/run/rsync_client_{$rsyncclient['uuid']}.sh");
+			config_unlock();
+
+			$savemsg = get_std_save_message($retval);
+		} else {
+			header("Location: services_rsyncd_client.php");
+			exit;
+		}
 	}
 }
 ?>
@@ -179,6 +195,7 @@ function delete_change() {
   <tr>
     <td class="tabcont">
 			<form action="services_rsyncd_client_edit.php" method="post" name="iform" id="iform">
+				<?php if ($savemsg) print_info_box($savemsg); ?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
@@ -388,10 +405,12 @@ function delete_change() {
 					<tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
-	            <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-							<?php if (isset($id) && $a_rsyncclient[$id]): ?>
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+							<?php if (isset($id) && $a_rsyncclient[$id]):?>
+							<input name="Submit" id="execnow" type="submit" class="formbtn" value="<?=gettext("Execute now");?>">
 							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
+							<?php endif;?>
 	          </td>
 	        </tr>
 	      </table>
