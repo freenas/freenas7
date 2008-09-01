@@ -53,6 +53,7 @@ if (!is_array($config['rsync']['rsynclocal']))
 $a_rsynclocal = &$config['rsync']['rsynclocal'];
 
 if (isset($id) && $a_rsynclocal[$id]) {
+	$pconfig['uuid'] = $a_rsynclocal[$id]['uuid'];
 	$pconfig['source'] = $a_rsynclocal[$id]['source'];
 	$pconfig['destination'] = $a_rsynclocal[$id]['destination'];
 	$pconfig['minute'] = $a_rsynclocal[$id]['minute'];
@@ -78,6 +79,7 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['xattrs'] = isset($a_rsynclocal[$id]['options']['xattrs']);
 	$pconfig['extraoptions'] = $a_rsynclocal[$id]['options']['extraoptions'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['recursive'] = false;
 	$pconfig['times'] = false;
 	$pconfig['compress'] = false;
@@ -96,17 +98,19 @@ if ($_POST) {
 
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation
 	$reqdfields = explode(" ", "source destination");
 	$reqdfieldsn = array(gettext("Source share"),gettext("Destination share"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	// Validate synchronization time
-	do_input_validate_synctime($_POST, &$input_errors);
+	if (gettext("Execute now") !== $_POST['Submit']) {
+		// Validate synchronization time
+		do_input_validate_synctime($_POST, &$input_errors);
+	}
 
 	if (!$input_errors) {
 		$rsynclocal = array();
-
+		$rsynclocal['uuid'] = $_POST['uuid'];
 		$rsynclocal['minute'] = $_POST['minute'];
 		$rsynclocal['hour'] = $_POST['hour'];
 		$rsynclocal['day'] = $_POST['day'];
@@ -139,8 +143,20 @@ if ($_POST) {
 		touch($d_rsynclocaldirty_path);
 		write_config();
 
-		header("Location: services_rsyncd_local.php");
-		exit;
+		if (stristr($_POST['Submit'], gettext("Execute now"))) {
+			$retval = 0;
+
+			// Update scripts and execute it.
+			config_lock();
+			$retval |= rc_exec_service("rsync_local");
+			$retval |= rc_exec_script("/var/run/rsync_local_{$rsynclocal['uuid']}.sh");
+			config_unlock();
+
+			$savemsg = get_std_save_message($retval);
+		} else {
+			header("Location: services_rsyncd_local.php");
+			exit;
+		}
 	}
 }
 ?>
@@ -177,6 +193,7 @@ function delete_change() {
   <tr>
     <td class="tabcont">
 			<form action="services_rsyncd_local_edit.php" method="post" name="iform" id="iform">
+				<?php if ($savemsg) print_info_box($savemsg); ?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 	    		<tr>
@@ -381,10 +398,12 @@ function delete_change() {
 					<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-							<?php if (isset($id) && $a_rsynclocal[$id]) : ?>
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+							<?php if (isset($id) && $a_rsynclocal[$id]):?>
+							<input name="Submit" id="execnow" type="submit" class="formbtn" value="<?=gettext("Execute now");?>">
 							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
+							<?php endif;?>
             </td>
       		</tr>
         </table>

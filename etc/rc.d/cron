@@ -39,7 +39,7 @@ HOME=/var/log
 	if [ 0 -lt ${_index} ]; then
 		echo "# Perform RSYNC client." >> ${cron_config}
 	fi
-	_i=0
+
 	while [ ${_index} -gt 0 ]
 	do
 		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_index}]" \
@@ -58,10 +58,9 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
-			-o "root /var/run/rsync_client${_i}.sh" \
+			-v "concat('root /var/run/rsync_client_',uuid,'.sh')" \
 			${configxml_file} | /usr/local/bin/xml unesc >> ${cron_config}
 
-		_i=$(( ${_i} + 1 ))
 		_index=$(( ${_index} - 1 ))
 	done
 
@@ -70,7 +69,7 @@ HOME=/var/log
 	if [ 0 -lt ${_index} ]; then
 		echo "# Perform RSYNC local." >> ${cron_config}
 	fi
-	_i=0
+
 	while [ ${_index} -gt 0 ]
 	do
 		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[position()=${_index}]" \
@@ -89,10 +88,9 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
-			-o "root /var/run/rsync_local${_i}.sh" \
+			-v "concat('root /var/run/rsync_local_',uuid,'.sh')" \
 			${configxml_file} | /usr/local/bin/xml unesc >> ${cron_config}
 
-		_i=$(( ${_i} + 1 ))
 		_index=$(( ${_index} - 1 ))
 	done
 

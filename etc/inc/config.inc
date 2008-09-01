@@ -1421,6 +1421,24 @@ function config_upgrade() {
 		$config['version'] = "5.4";
 	}
 
+	/* Convert 5.4 -> 5.5 */
+	/* Add UUID's to //rsyncd/module, //rsync/rsyncclient and /rsync/rsynclocal. */
+	if ($config['version'] === "5.4") {
+		for ($i = 0; isset($config['rsyncd']['module'][$i]); $i++) {
+			$config['rsyncd']['module'][$i]['uuid'] = uuid();
+		}
+
+		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
+			$config['rsync']['rsyncclient'][$i]['uuid'] = uuid();
+		}
+
+		for ($i = 0; isset($config['rsync']['rsynclocal'][$i]); $i++) {
+			$config['rsync']['rsynclocal'][$i]['uuid'] = uuid();
+		}
+
+		$config['version'] = "5.5";
+	}
+
 	write_config();
 
 	if (is_booting())
