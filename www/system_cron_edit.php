@@ -2,7 +2,7 @@
 <?php
 /*
 	system_cron_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -87,8 +87,10 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Description"),gettext("Who"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	// Validate synchronization time
-	do_input_validate_synctime($_POST, &$input_errors);
+	if (gettext("Run now") !== $_POST['Submit']) {
+		// Validate synchronization time
+		do_input_validate_synctime($_POST, &$input_errors);
+	}
 
 	if (!$input_errors) {
 		$cronjob = array();
@@ -107,16 +109,27 @@ if ($_POST) {
 		$cronjob['who'] = $_POST['who'];
 		$cronjob['command'] = $_POST['command'];
 
-		if (isset($id) && $a_cronjob[$id])
-			$a_cronjob[$id] = $cronjob;
-		else
-			$a_cronjob[] = $cronjob;
+		if (stristr($_POST['Submit'], gettext("Run now"))) {
+			mwexec2($_POST['command'], $output, $retval);
+			if (0 == $retval) {
+				$execmsg = gettext("The cron job has been executed successfully.");
+				write_log("The cron job '{$_POST['command']}' has been executed successfully.");
+			} else {
+				$execfailmsg = gettext("Failed to execute cron job.");
+				write_log("Failed to execute cron job '{$_POST['command']}'.");
+			}
+		} else {
+			if (isset($id) && $a_cronjob[$id])
+				$a_cronjob[$id] = $cronjob;
+			else
+				$a_cronjob[] = $cronjob;
 
-		write_config();
-		touch($d_cronconfdirty_path);
+			write_config();
+			touch($d_cronconfdirty_path);
 
-		header("Location: system_cron.php");
-		exit;
+			header("Location: system_cron.php");
+			exit;
+		}
 	}
 }
 ?>
@@ -175,7 +188,9 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabcont">
 			<form action="system_cron_edit.php" method="post" name="iform" id="iform">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($execmsg) print_info_box($execmsg);?>
+				<?php if ($execfailmsg) print_error_box($execfailmsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <?php html_titleline_checkbox("enable", gettext("Cron job"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("command", gettext("Command"), $pconfig['command'], gettext("Specifies the command to be run."), true, 60);?>
@@ -342,6 +357,7 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+							<input name="Submit" id="runnow" type="submit" class="formbtn" value="<?=gettext("Run now");?>">
 							<?php if (isset($id) && $a_cronjob[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif; ?>
