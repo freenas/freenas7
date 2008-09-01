@@ -167,6 +167,7 @@ function enable_change(enable_change) {
 	document.iform.all_weekdays2.disabled = endis;
 	document.iform.who.disabled = endis;
 	document.iform.command.disabled = endis;
+	document.iform.runnow.disabled = endis;
 }
 //-->
 </script>
