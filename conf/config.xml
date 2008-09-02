@@ -369,6 +369,7 @@
 		<nullpasswords/>
 		<auxparam></auxparam> // Can be defined multiple times.
 		<share>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
 			<comment>xxx</comment>
