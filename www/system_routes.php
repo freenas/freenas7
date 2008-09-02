@@ -45,29 +45,45 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("routes", "routes_process_updatenotification");
 			$retval |= rc_update_service("routing");
 		}
-
 		$savemsg = get_std_save_message($retval);
-
 		if ($retval == 0) {
-			if (file_exists($d_staticroutesdirty_path)) {
-				config_lock();
-				unlink($d_staticroutesdirty_path);
-				config_unlock();
-			}
+			ui_cleanup_updatenotification("routes");
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_routes[$_GET['id']]) {
-		unset($a_routes[$_GET['id']]);
-		write_config();
-		touch($d_staticroutesdirty_path);
+		ui_set_updatenotification("routes", UPDATENOTIFICATION_MODE_DIRTY, $a_routes[$_GET['id']]['uuid']);
 		header("Location: system_routes.php");
 		exit;
 	}
+}
+
+function routes_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['staticroutes']['route'])) {
+				$index = array_search_ex($data, $config['staticroutes']['route'], "uuid");
+				if (false !== $index) {
+					unset($config['staticroutes']['route'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -76,7 +92,7 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
 			<form action="system_routes.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_staticroutesdirty_path)) print_config_change_box();?>
+				<?php if (ui_exists_updatenotification("routes")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
@@ -85,31 +101,40 @@ if ($_GET['act'] == "del") {
 						<td width="30%" class="listhdr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_routes as $route): ?>
+					<?php $i = 0; foreach ($a_routes as $route):?>
+					<?php $notificationmode = ui_get_updatenotification_mode("routes", $route['uuid']);?>
 					<tr>
 						<td class="listlr">
 							<?php
 					  	$iflabels = array('lan' => 'LAN', 'wan' => 'WAN', 'pptp' => 'PPTP');
 					  	for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++)
 					  	$iflabels['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
-					  	echo htmlspecialchars($iflabels[$route['interface']]); ?>
+					  	echo htmlspecialchars($iflabels[$route['interface']]);?>
 						</td>
 	          <td class="listr"><?=strtolower($route['network']);?></td>
 	          <td class="listr"><?=strtolower($route['gateway']);?></td>
 	          <td class="listbg"><?=htmlspecialchars($route['descr']);?>&nbsp;</td>
+	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" width="17" height="17" border="0"></a>
 	          	<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" width="17" height="17" border="0"></a>
 						</td>
+						<?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 					</tr>
-				  <?php $i++; endforeach; ?>
+				  <?php $i++; endforeach;?>
 					<tr> 
 						<td class="list" colspan="4"></td>
-						<td class="list"> <a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" width="17" height="17" border="0"></a></td>
+						<td class="list">
+							<a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" width="17" height="17" border="0"></a>
+						</td>
 					</tr>
 				</table>
       </form>
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
