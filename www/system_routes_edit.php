@@ -47,15 +47,19 @@ array_sort_key($config['staticroutes']['route'], "network");
 $a_routes = &$config['staticroutes']['route'];
 
 if (isset($id) && $a_routes[$id]) {
+	$pconfig['uuid'] = $a_routes[$id]['uuid'];
 	$pconfig['interface'] = $a_routes[$id]['interface'];
 	list($pconfig['network'],$pconfig['network_subnet']) = 
 		explode('/', $a_routes[$id]['network']);
 	$pconfig['gateway'] = $a_routes[$id]['gateway'];
 	$pconfig['descr'] = $a_routes[$id]['descr'];
+} else {
+	$pconfig['uuid'] = uuid();
+	$pconfig['gateway'] = "";
+	$pconfig['descr'] = "";
 }
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -111,18 +115,21 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$route = array();
+		$route['uuid'] = $_POST['uuid'];
 		$route['interface'] = $_POST['interface'];
 		$route['network'] = $osn;
 		$route['gateway'] = $_POST['gateway'];
 		$route['descr'] = $_POST['descr'];
 
-		if (isset($id) && $a_routes[$id])
+		if (isset($id) && $a_routes[$id]) {
 			$a_routes[$id] = $route;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_routes[] = $route;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 		
-		touch($d_staticroutesdirty_path);
-		
+		ui_set_updatenotification("routes", $mode, $route['uuid']);
 		write_config();
 		
 		header("Location: system_routes.php");
@@ -158,6 +165,7 @@ if ($_POST) {
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%"> 
               <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_routes[$id])) ? gettext("Save") : gettext("Add")?>">
+              <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
               <?php if (isset($id) && $a_routes[$id]):?>
               <input name="id" type="hidden" value="<?=$id;?>">
               <?php endif;?>

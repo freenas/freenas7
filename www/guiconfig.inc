@@ -49,7 +49,6 @@ require_once("wui.inc");
 /* Set the current language */
 system_language_load();
 
-$d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_hostsdirty_path = $g['varrun_path'] . "/hosts.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
