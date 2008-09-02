@@ -2,7 +2,7 @@
 <?php
 /*
 	services_samba_share.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -36,48 +36,63 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("CIFS/SMB"),gettext("Shares"));
+$pgtitle = array(gettext("Services"), gettext("CIFS/SMB"), gettext("Shares"));
 
-if(!is_array($config['samba']['share']))
+if (!is_array($config['samba']['share']))
 	$config['samba']['share'] = array();
 
 array_sort_key($config['samba']['share'], "name");
 
 $a_share = &$config['samba']['share'];
 
-if($_POST) {
+if ($_POST) {
 	$pconfig = $_POST;
 
-	if($_POST['apply']) {
+	if ($_POST['apply']) {
 		$retval = 0;
-		if(!file_exists($d_sysrebootreqd_path)) {
+		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("smbshare", "smbshare_process_updatenotification");
 		  config_lock();
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
-
 		$savemsg = get_std_save_message($retval);
-
-		if(0 == $retval) {
-			if(file_exists($d_smbshareconfdirty_path))
-				unlink($d_smbshareconfdirty_path);
-			if(file_exists($d_smbconfdirty_path))
-				unlink($d_smbconfdirty_path);
+		if (0 == $retval) {
+			ui_cleanup_updatenotification("smbshare");
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {
-		unset($a_share[$_GET['id']]);
-
-		write_config();
-		touch($d_smbshareconfdirty_path);
-
+		ui_set_updatenotification("smbshare", UPDATENOTIFICATION_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
 		header("Location: services_samba_share.php");
 		exit;
 	}
+}
+
+function smbshare_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['samba']['share'])) {
+				$index = array_search_ex($data, $config['samba']['share'], "uuid");
+				if (false !== $index) {
+					unset($config['samba']['share'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -94,7 +109,7 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
       <form action="services_samba_share.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_smbconfdirty_path) || file_exists($d_smbshareconfdirty_path)) print_config_change_box();?>
+        <?php if (ui_exists_updatenotification("smbshare")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
           	<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
@@ -104,15 +119,22 @@ if ($_GET['act'] == "del") {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_share as $sharev):?>
+  			  <?php $notificationmode = ui_get_updatenotification_mode("smbshare", $sharev['uuid']);?>
           <tr>
           	<td class="listlr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
+            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="services_samba_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
               <a href="services_samba_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
             </td>
+            <?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
           </tr>
           <?php $i++; endforeach;?>
           <tr> 
@@ -124,4 +146,4 @@ if ($_GET['act'] == "del") {
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
