@@ -246,6 +246,9 @@ sbin/mksnap_ffs
 ## devd -- device state change daemon
 sbin/devd
 
+## ipfw -- IP firewall and traffic shaper control program
+sbin/ipfw
+
 ## zfs - configures ZFS file systems
 sbin/zfs
 
@@ -395,6 +398,12 @@ usr/bin/printf
 
 ## true -- return true value
 usr/bin/true
+
+## nc -- arbitrary TCP and UDP connections and listens
+usr/bin/nc
+
+## ssh-keygen -- authentication key generation, management and conversion
+usr/bin/ssh-keygen
 
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
