@@ -124,15 +124,15 @@ function is_zfs_dataset_new($dataset) {
 						<td class="listr"><?=htmlspecialchars($datasetv['name']);?>&nbsp;</td>
 						<td class="listbg"><?=htmlspecialchars($datasetv['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
-							<a href="disks_zfs_dataset_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit dataset");?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="disks_zfs_dataset.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this dataset?");?>')"><img src="x.gif" title="<?=gettext("Delete dataset");?>" width="17" height="17" border="0"></a>
+							<a href="disks_zfs_dataset_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit dataset");?>" border="0"></a>&nbsp;
+							<a href="disks_zfs_dataset.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this dataset?");?>')"><img src="x.gif" title="<?=gettext("Delete dataset");?>" border="0"></a>
 						</td>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="3"></td>
 						<td class="list">
-							<a href="disks_zfs_dataset_edit.php"><img src="plus.gif" title="<?=gettext("Add dataset");?>" width="17" height="17" border="0"></a>
+							<a href="disks_zfs_dataset_edit.php"><img src="plus.gif" title="<?=gettext("Add dataset");?>" border="0"></a>
 						</td>
 					</tr>
 				</table>

@@ -3,7 +3,7 @@
 /*
 	access_users.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -101,8 +101,8 @@ if ($_GET['act'] == "del") {
 						<td class="listr"><?=htmlspecialchars($groupv['id']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($groupv['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
-							<a href="access_users_groups_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit group");?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" width="17" height="17" border="0"></a>
+							<a href="access_users_groups_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit group");?>" border="0"></a>&nbsp;
+							<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" border="0"></a>
 						</td>
 					</tr>
 					<?php $i++; endforeach;?>
@@ -117,7 +117,7 @@ if ($_GET['act'] == "del") {
 					<tr>
 						<td class="list" colspan="3"></td>
 						<td class="list">
-							<a href="access_users_groups_edit.php"><img src="plus.gif" title="<?=gettext("Add group");?>" width="17" height="17" border="0"></a>
+							<a href="access_users_groups_edit.php"><img src="plus.gif" title="<?=gettext("Add group");?>" border="0"></a>
 						</td>
 					</tr>
 				</table>

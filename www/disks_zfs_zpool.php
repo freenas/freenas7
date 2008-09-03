@@ -143,15 +143,15 @@ $a_poolstatus = zfs_get_pool_list();
 						<td class="listbg"><a href="disks_zfs_zpool_info.php?id=<?=$i?>"><?=$health;?></a>&nbsp;</td>
 						<td class="listr"><?=$altroot;?>&nbsp;</td>	
 						<td valign="middle" nowrap class="list">
-							<a href="disks_zfs_zpool_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="disks_zfs_zpool.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this pool?");?>')"><img src="x.gif" title="<?=gettext("Delete pool");?>" width="17" height="17" border="0"></a>
+							<a href="disks_zfs_zpool_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" border="0"></a>&nbsp;
+							<a href="disks_zfs_zpool.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this pool?");?>')"><img src="x.gif" title="<?=gettext("Delete pool");?>" border="0"></a>
 						</td>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="7"></td>
 						<td class="list">
-							<a href="disks_zfs_zpool_edit.php"><img src="plus.gif" title="<?=gettext("Add pool");?>" width="17" height="17" border="0"></a>
+							<a href="disks_zfs_zpool_edit.php"><img src="plus.gif" title="<?=gettext("Add pool");?>" border="0"></a>
 						</td>
 					</tr>
 				</table>

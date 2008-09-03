@@ -2,11 +2,11 @@
 <?php
 /*
 	system_rcconf.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -117,16 +117,16 @@ if ($_GET['act'] === "del") {
 	          <td class="listr"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" width="17" height="17" border="0"></a>
-	            <a href="system_rcconf.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" width="17" height="17" border="0"></a>
+	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>
+	            <a href="system_rcconf.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
 	        <tr>
 	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" width="17" height="17" border="0"></a>
+	          <td class="list"><a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" border="0"></a>
 	          <?php if (!empty($a_rcvar)):?>
-						<a href="system_rcconf.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" width="17" height="17" border="0"></a>
+						<a href="system_rcconf.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" border="0"></a>
 						<?php endif;?>
 						</td>
 	        </tr>

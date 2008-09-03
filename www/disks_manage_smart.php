@@ -222,14 +222,14 @@ function enable_change(enable_change) {
 									<td class="listr"><?=htmlspecialchars(gettext($a_type[$selftest['type']]));?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" width="17" height="17" border="0"></a>
-				            <a href="disks_manage_smart.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" width="17" height="17" border="0"></a>
+				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0"></a>
+				            <a href="disks_manage_smart.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0"></a>
 				          </td>
 				        </tr>
 				        <?php $i++; endforeach;?>
 				        <tr>
 				          <td class="list" colspan="3"></td>
-				          <td class="list"><a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" width="17" height="17" border="0"></a></td>
+				          <td class="list"><a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" border="0"></a></td>
 						    </tr>
 							</table>
 							<span class="vexpl"><?=gettext("Add additional scheduled self-test.");?></span>

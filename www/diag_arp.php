@@ -211,7 +211,7 @@ function getHostName($mac, $ip) {
 			    <td class="listr"><?=$entry['mac'];?></td>
 			    <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?>&nbsp;</td>
 			    <td class="listr"><?=$hwif[$entry['interface']];?>&nbsp;</td>
-			    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" width="17" height="17" border="0"></a></td>
+			    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" border="0"></a></td>
 			  </tr>
 			  <?php $i++; endforeach; ?>
 			  <tr>
@@ -219,7 +219,7 @@ function getHostName($mac, $ip) {
 			  </tr>
 			  <tr>
 			    <td class="list" colspan="4"></td>
-			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" width="17" height="17" border="0"></a></td>
+			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" border="0"></a></td>
 			  </tr>
 			  <tr>
 			    <td colspan="4">

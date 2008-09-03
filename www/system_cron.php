@@ -128,8 +128,8 @@ function cronjob_process_updatenotification($mode, $data) {
 	          <td class="listbg"><?=(isset($job['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
 	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
-							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" width="17" height="17" border="0"></a>
-							<a href="system_cron.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" width="17" height="17" border="0"></a>
+							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" border="0"></a>
+							<a href="system_cron.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" border="0"></a>
 	          </td>
 	          <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -141,7 +141,7 @@ function cronjob_process_updatenotification($mode, $data) {
 	        <tr>
 	          <td class="list" colspan="4"></td>
 	          <td class="list">
-							<a href="system_cron_edit.php"><img src="plus.gif" title="<?=gettext("Add job");?>" width="17" height="17" border="0"></a>
+							<a href="system_cron_edit.php"><img src="plus.gif" title="<?=gettext("Add job");?>" border="0"></a>
 						</td>
 	        </tr>
 	      </table>

@@ -92,15 +92,15 @@ if ($_GET['act'] === "del") {
 						<td class="listr"><?=htmlspecialchars($vdevicev['type']);?></td>
 						<td class="listr"><?=htmlspecialchars($vdevicev['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
-							<a href="disks_zfs_zpool_vdevice_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="disks_zfs_zpool_vdevice.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" width="17" height="17" border="0"></a>
+							<a href="disks_zfs_zpool_vdevice_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>&nbsp;
+							<a href="disks_zfs_zpool_vdevice.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" border="0"></a>
 						</td>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="3"></td>
 						<td class="list">
-							<a href="disks_zfs_zpool_vdevice_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" width="17" height="17" border="0"></a>
+							<a href="disks_zfs_zpool_vdevice_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" border="0"></a>
 						</td>
 					</tr>
 				</table>
