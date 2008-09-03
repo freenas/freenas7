@@ -2,7 +2,7 @@
 <?php
 /*
 	services_afp_share_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -37,7 +37,7 @@
 require("guiconfig.inc");
 
 $id = $_GET['id'];
-if(isset($_POST['id']))
+if (isset($_POST['id']))
 	$id = $_POST['id'];
 
 $pgtitle = array(gettext("Services"), gettext("AFP"), gettext("Share"), isset($id) ? gettext("Edit") : gettext("Add"));
@@ -49,7 +49,7 @@ array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 $a_mount = &$config['mounts']['mount'];
 
-if(!is_array($config['afp']['share']))
+if (!is_array($config['afp']['share']))
 	$config['afp']['share'] = array();
 
 array_sort_key($config['afp']['share'], "name");
@@ -57,6 +57,7 @@ array_sort_key($config['afp']['share'], "name");
 $a_share = &$config['afp']['share'];
 
 if (isset($id) && $a_share[$id]) {
+	$pconfig['uuid'] = $a_share[$id]['uuid'];
 	$pconfig['name'] = $a_share[$id]['name'];
 	$pconfig['path'] = $a_share[$id]['path'];
 	$pconfig['comment'] = $a_share[$id]['comment'];
@@ -79,6 +80,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['nostat'] = isset($a_share[$id]['options']['nostat']);
 	$pconfig['upriv'] = isset($a_share[$id]['options']['upriv']);
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
@@ -102,7 +104,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['upriv'] = false;
 }
 
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
 
 	$pconfig = $_POST;
@@ -126,9 +128,9 @@ if($_POST) {
 		$input_errors[] = gettext("The share name is already used.");
 	}
 
-	if(!$input_errors) {
+	if (!$input_errors) {
 		$share = array();
-
+		$share['uuid'] = $_POST['uuid'];
 		$share['name'] = $_POST['name'];
 		$share['path'] = $_POST['path'];
 		$share['comment'] = $_POST['comment'];
@@ -151,12 +153,15 @@ if($_POST) {
 		$share['options']['nostat'] = $_POST['nostat'] ? true : false;
 		$share['options']['upriv'] = $_POST['upriv'] ? true : false;
 
-		if (isset($id) && $a_share[$id])
+		if (isset($id) && $a_share[$id]) {
 			$a_share[$id] = $share;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_share[] = $share;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_afpconfdirty_path);
+		ui_set_updatenotification("afpshare", $mode, $share['uuid']);
 		write_config();
 
 		header("Location: services_afp_share.php");
@@ -341,10 +346,12 @@ if($_POST) {
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
-			        <?php if (isset($id) && $a_share[$id]): ?>
+			      <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+			        <?php if (isset($id) && $a_share[$id]):?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
-			        <?php endif; ?>
+			        <?php endif;?>
 			      </td>
 			    </tr>
 			  </table>

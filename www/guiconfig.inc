@@ -49,7 +49,6 @@ require_once("wui.inc");
 /* Set the current language */
 system_language_load();
 
-$d_hostsdirty_path = $g['varrun_path'] . "/hosts.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
@@ -58,11 +57,7 @@ $d_iscsitargetdirty_path = $g['varrun_path'] . "/iscsitarget.dirty";
 $d_userconfdirty_path = $g['varrun_path'] . "/user.conf.dirty";
 $d_groupconfdirty_path = $g['varrun_path'] . "/group.conf.dirty";
 $d_upnpconfdirty_path = $g['varrun_path'] . "/upnp.conf.dirty";
-$d_nfsconfdirty_path = $g['varrun_path'] . "/nfs.conf.dirty";
 $d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
-$d_cronconfdirty_path = $g['varrun_path'] . "/cron.conf.dirty";
-$d_afpconfdirty_path = $g['varrun_path'] . "/afp.conf.dirty";
-$d_nfsconfdirty_path = $g['varrun_path'] . "/nfs.conf.dirty";
 $d_smartconfdirty_path = $g['varrun_path'] . "/smart.conf.dirty";
 $d_websrvconfdirty_path = $g['varrun_path'] . "/websrv.conf.dirty";
 $d_rcconfdirty_path = $g['varrun_path'] . "/rc.conf.dirty";
