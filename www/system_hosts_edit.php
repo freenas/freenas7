@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"),gettext("Hosts"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"), gettext("Hosts"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
@@ -48,13 +48,18 @@ array_sort_key($config['system']['hosts'], "name");
 $a_hosts = &$config['system']['hosts'];
 
 if (isset($id) && $a_hosts[$id]) {
+	$pconfig['uuid'] = $a_hosts[$id]['uuid'];
 	$pconfig['name'] = $a_hosts[$id]['name'];
 	$pconfig['address'] = $a_hosts[$id]['address'];
 	$pconfig['descr'] = $a_hosts[$id]['descr'];
+} else {
+	$pconfig['uuid'] = uuid();
+	$pconfig['name'] = "";
+	$pconfig['address'] = "";
+	$pconfig['descr'] = "";
 }
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -84,16 +89,20 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$host = array();
+		$host['uuid'] = $_POST['uuid'];
 		$host['name'] = $_POST['name'];
 		$host['address'] = $_POST['address'];
 		$host['descr'] = $_POST['descr'];
 
-		if (isset($id) && $a_hosts[$id])
+		if (isset($id) && $a_hosts[$id]) {
 			$a_hosts[$id] = $host;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_hosts[] = $host;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_hostsdirty_path);
+		ui_set_updatenotification("hosts", $mode, $rsynclocal['uuid']);
 		write_config();
 
 		header("Location: system_hosts.php");
@@ -131,10 +140,11 @@ if ($_POST) {
           <tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_hosts[$id]))?gettext("Save"):gettext("Add")?>">
-              <?php if (isset($id) && $a_hosts[$id]): ?>
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_hosts[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+              <?php if (isset($id) && $a_hosts[$id]):?>
               <input name="id" type="hidden" value="<?=$id;?>">
-              <?php endif; ?>
+              <?php endif;?>
             </td>
           </tr>
         </table>
@@ -142,4 +152,4 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

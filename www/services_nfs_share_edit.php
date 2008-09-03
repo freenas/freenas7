@@ -2,11 +2,11 @@
 <?php
 /*
 	services_nfs_share_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -37,12 +37,12 @@
 require("guiconfig.inc");
 
 $id = $_GET['id'];
-if(isset($_POST['id']))
+if (isset($_POST['id']))
 	$id = $_POST['id'];
 
 $pgtitle = array(gettext("Services"), gettext("NFS"), isset($id) ? gettext("Edit") : gettext("Add"));
 
-if(!is_array($config['nfsd']['share']))
+if (!is_array($config['nfsd']['share']))
 	$config['nfsd']['share'] = array();
 
 array_sort_key($config['nfsd']['share'], "path");
@@ -50,6 +50,7 @@ array_sort_key($config['nfsd']['share'], "path");
 $a_share = &$config['nfsd']['share'];
 
 if (isset($id) && $a_share[$id]) {
+	$pconfig['uuid'] = $a_share[$id]['uuid'];
 	$pconfig['path'] = $a_share[$id]['path'];
 	$pconfig['mapall'] = $a_share[$id]['mapall'];
 	list($pconfig['network'], $pconfig['mask']) = explode('/', $a_share[$id]['network']);
@@ -58,6 +59,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['readonly'] = isset($a_share[$id]['options']['ro']);
 	$pconfig['quiet'] = isset($a_share[$id]['options']['quiet']);
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['path'] = "";
 	$pconfig['mapall'] = "yes";
 	$pconfig['network'] = "";
@@ -68,7 +70,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['quiet'] = false;
 }
 
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
 
 	$pconfig = $_POST;
@@ -80,7 +82,7 @@ if($_POST) {
 
 	if (!$input_errors) {
 		$share = array();
-
+		$share['uuid'] = $_POST['uuid'];
 		$share['path'] = $_POST['path'];
 		$share['mapall'] = $_POST['mapall'];
 		$share['network'] = gen_subnet($_POST['network'], $_POST['mask']) . "/" . $_POST['mask'];
@@ -89,12 +91,15 @@ if($_POST) {
 		$share['options']['ro'] = $_POST['readonly'] ? true : false;
 		$share['options']['quiet'] = $_POST['quiet'] ? true : false;
 
-		if (isset($id) && $a_share[$id])
+		if (isset($id) && $a_share[$id]) {
 			$a_share[$id] = $share;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_share[] = $share;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_nfsconfdirty_path);
+		ui_set_updatenotification("nfsshare", $mode, $share['uuid']);
 		write_config();
 
 		header("Location: services_nfs_share.php");
@@ -181,7 +186,9 @@ if($_POST) {
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
+			      <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			        <?php if (isset($id) && $a_share[$id]): ?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif; ?>

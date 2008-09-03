@@ -49,26 +49,47 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("hosts", "hosts_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("hosts"); // Update /etc/hosts
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_hostsdirty_path))
-				unlink($d_hostsdirty_path);
+			ui_cleanup_updatenotification("hosts");
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_hosts[$_GET['id']]) {
-		unset($a_hosts[$_GET['id']]);
-		write_config();
-		touch($d_hostsdirty_path);
+		ui_set_updatenotification("hosts", UPDATENOTIFICATION_MODE_DIRTY, $a_hosts[$_GET['id']]['uuid']);
 		header("Location: system_hosts.php");
 		exit;
 	}
+}
+
+function hosts_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['system']['hosts'])) {
+				$index = array_search_ex($data, $config['system']['hosts'], "uuid");
+				if (false !== $index) {
+					unset($config['system']['hosts'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -77,7 +98,7 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
 			<form action="system_hosts.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_hostsdirty_path)) print_config_change_box();?>
+				<?php if (ui_exists_updatenotification("hosts")) print_config_change_box();?>
 			  <table width="100%" border="0" cellpadding="0" cellspacing="0">
 			    <tr>
 			      <td width="25%" class="listhdrr"><?=gettext("Hostname");?></td>
@@ -85,17 +106,24 @@ if ($_GET['act'] == "del") {
 			      <td width="35%" class="listhdr"><?=gettext("Description");?></td>
 			      <td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_hosts as $host): ?>
+					<?php $i = 0; foreach ($a_hosts as $host):?>
+					<?php $notificationmode = ui_get_updatenotification_mode("hosts", $host['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($host['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($host['address']);?></td>
 						<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
+						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
 							<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" width="17" height="17" border="0"></a>
 							<a href="system_hosts.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" width="17" height="17" border="0"></a>
 						</td>
+						<?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 					</tr>
-				  <?php $i++; endforeach; ?>
+				  <?php $i++; endforeach;?>
 					<tr> 
 						<td class="list" colspan="3"></td>
 						<td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" width="17" height="17" border="0"></a></td>

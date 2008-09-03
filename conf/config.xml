@@ -87,6 +87,14 @@
 			</param>
 			-->
 		</sysctl>
+		<hosts>
+			<!--
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+			<name>xxx</name>
+			<address>xxx.xxx.xxx.xxx</address>
+			<descr>xxx</descr>
+			-->
+		</hosts>
 	</system>
 	<interfaces>
 		<lan>
@@ -723,6 +731,7 @@
 		<!--
 		<job> // Can be defined multiple times.
 			<enable/>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<desc>xxx</desc>
 			<all_mins></all_mins>
 			<all_hours></all_hours>

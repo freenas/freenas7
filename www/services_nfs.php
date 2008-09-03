@@ -78,11 +78,6 @@ if ($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
-
-		if (0 == $retval) {
-			if (file_exists($d_nfsconfdirty_path))
-				unlink($d_nfsconfdirty_path);
-		}
 	}
 }
 ?>
@@ -109,7 +104,6 @@ function enable_change(enable_change) {
 			<form action="services_nfs.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_nfsconfdirty_path)) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 						<td colspan="2" valign="top" class="optsect_t">

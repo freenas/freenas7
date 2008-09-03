@@ -49,6 +49,7 @@ $a_cronjob = &$config['cron']['job'];
 
 if (isset($id) && $a_cronjob[$id]) {
 	$pconfig['enable'] = isset($a_cronjob[$id]['enable']);
+	$pconfig['uuid'] = $a_cronjob[$id]['uuid'];
 	$pconfig['desc'] = $a_cronjob[$id]['desc'];
 	$pconfig['minute'] = $a_cronjob[$id]['minute'];
 	$pconfig['hour'] = $a_cronjob[$id]['hour'];
@@ -64,6 +65,7 @@ if (isset($id) && $a_cronjob[$id]) {
 	$pconfig['command'] = $a_cronjob[$id]['command'];
 } else {
 	$pconfig['enable'] = true;
+	$pconfig['uuid'] = uuid();
 	$pconfig['desc'] = "";
 	$pconfig['all_mins'] = 1;
 	$pconfig['all_hours'] = 1;
@@ -95,6 +97,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$cronjob = array();
 		$cronjob['enable'] = $_POST['enable'] ? true : false;
+		$cronjob['uuid'] = $_POST['uuid'];
 		$cronjob['desc'] = $_POST['desc'];
 		$cronjob['minute'] = $_POST['minute'];
 		$cronjob['hour'] = $_POST['hour'];
@@ -119,13 +122,16 @@ if ($_POST) {
 				write_log("Failed to execute cron job '{$_POST['command']}'.");
 			}
 		} else {
-			if (isset($id) && $a_cronjob[$id])
+			if (isset($id) && $a_cronjob[$id]) {
 				$a_cronjob[$id] = $cronjob;
-			else
+				$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			} else {
 				$a_cronjob[] = $cronjob;
+				$mode = UPDATENOTIFICATION_MODE_NEW;
+			}
 
+			ui_set_updatenotification("cronjob", $mode, $cronjob['uuid']);
 			write_config();
-			touch($d_cronconfdirty_path);
 
 			header("Location: system_cron.php");
 			exit;
@@ -357,8 +363,9 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
 							<input name="Submit" id="runnow" type="submit" class="formbtn" value="<?=gettext("Run now");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_cronjob[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif; ?>

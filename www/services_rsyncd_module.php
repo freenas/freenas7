@@ -131,7 +131,7 @@ function rsyncd_process_updatenotification($mode, $data) {
   			  <?php $i = 0; foreach($a_module as $modulev):?>
   			  <?php $notificationmode = ui_get_updatenotification_mode("rsyncd", $modulev['uuid']);?>
           <tr>
-            <td class="listr"><?=htmlspecialchars($modulev['name']);?>&nbsp;</td>
+            <td class="listlr"><?=htmlspecialchars($modulev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($modulev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($modulev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($modulev['list'])?gettext("Yes"):gettext("No"));?></td>

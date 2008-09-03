@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_local.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -122,7 +122,7 @@ function rsynclocal_process_updatenotification($mode, $data) {
   			  <?php $i = 0; foreach($a_rsynclocal as $rsynclocal): ?>
   			  <?php $notificationmode = ui_get_updatenotification_mode("rsynclocal", $rsynclocal['uuid']);?>
           <tr>
-            <td class="listr"><?=htmlspecialchars($rsynclocal['source']);?>&nbsp;</td>
+            <td class="listlr"><?=htmlspecialchars($rsynclocal['source']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['destination']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['description']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
