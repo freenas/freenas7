@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Access"),gettext("Users"));
+$pgtitle = array(gettext("Access"), gettext("Users"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -49,6 +49,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("userdb_user", "userdbuser_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("websrv_htpasswd");
@@ -60,22 +61,40 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_userconfdirty_path))
-				unlink($d_userconfdirty_path);
+			ui_cleanup_updatenotification("userdb_user");
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_user[$_GET['id']]) {
-		unset($a_user[$_GET['id']]);
-
-		write_config();
-
-		touch($d_userconfdirty_path);
+		ui_set_updatenotification("userdb_user", UPDATENOTIFICATION_MODE_DIRTY, $a_user[$_GET['id']]['uuid']);
 		header("Location: access_users.php");
 		exit;
 	}
+}
+
+function userdbuser_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['access']['user'])) {
+				$index = array_search_ex($data, $config['access']['user'], "uuid");
+				if (false !== $index) {
+					unset($config['access']['user'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -92,7 +111,7 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
 			<form action="access_users.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_userconfdirty_path)) print_config_change_box();?>
+				<?php if (ui_exists_updatenotification("userdb_user")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="20%" class="listhdrr"><?=gettext("User");?></td>
@@ -102,15 +121,22 @@ if ($_GET['act'] == "del") {
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php $i = 0; foreach ($a_user as $userv):?>
+					<?php $notificationmode = ui_get_updatenotification_mode("userdb_user", $userv['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($userv['login']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($userv['fullname']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($userv['id']);?>&nbsp;</td>
 						<td class="listr"><?=array_search($userv['primarygroup'], $a_group);?>&nbsp;</td>
+						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
 							<a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" border="0"></a>&nbsp;
 							<a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" border="0"></a>
 						</td>
+						<?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>

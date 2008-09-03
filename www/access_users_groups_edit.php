@@ -3,7 +3,7 @@
 /*
 	access_users_groups_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -48,10 +48,12 @@ $a_group = &$config['access']['group'];
 $a_group_system = system_get_group_list();
 
 if (isset($id) && $a_group[$id]) {
+	$pconfig['uuid'] = $a_group[$id]['uuid'];
 	$pconfig['groupid'] = $a_group[$id]['id'];
 	$pconfig['name'] = $a_group[$id]['name'];
 	$pconfig['desc'] = $a_group[$id]['desc'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['groupid'] = get_nextgroup_id();
 	$pconfig['name'] = "";
 	$pconfig['desc'] = "";
@@ -90,19 +92,20 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$groups = array();
-
+		$groups['uuid'] = $_POST['uuid'];
 		$groups['id'] = $_POST['groupid'];
 		$groups['name'] = $_POST['name'];
 		$groups['desc'] = $_POST['desc'];
 
 		if (isset($id) && $a_group[$id]) {
 			$a_group[$id] = $groups;
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		} else {
 			$a_group[] = $groups;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
 		}
 
-		touch($d_groupconfdirty_path);
-
+		ui_set_updatenotification("userdb_group", $mode, $groups['uuid']);
 		write_config();
 
 		header("Location: access_users_groups.php");
@@ -171,7 +174,9 @@ function get_nextgroup_id() {
 					</tr>
 					<tr>
 		        <td width="22%" valign="top">&nbsp;</td>
-		        <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
+		        <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 		          <?php if (isset($id) && $a_group[$id]):?>
 		          <input name="id" type="hidden" value="<?=$id;?>">
 		          <?php endif;?>
