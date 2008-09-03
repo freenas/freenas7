@@ -116,8 +116,8 @@ function routes_process_updatenotification($mode, $data) {
 	          <td class="listbg"><?=htmlspecialchars($route['descr']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
-							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" width="17" height="17" border="0"></a>
-	          	<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" width="17" height="17" border="0"></a>
+							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" border="0"></a>
+	          	<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -129,7 +129,7 @@ function routes_process_updatenotification($mode, $data) {
 					<tr> 
 						<td class="list" colspan="4"></td>
 						<td class="list">
-							<a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" width="17" height="17" border="0"></a>
+							<a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" border="0"></a>
 						</td>
 					</tr>
 				</table>

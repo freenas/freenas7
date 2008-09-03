@@ -127,8 +127,8 @@ function smbshare_process_updatenotification($mode, $data) {
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
             <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-              <a href="services_samba_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
-              <a href="services_samba_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
+              <a href="services_samba_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0"></a>
+              <a href="services_samba_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -139,7 +139,7 @@ function smbshare_process_updatenotification($mode, $data) {
           <?php $i++; endforeach;?>
           <tr> 
             <td class="list" colspan="4"></td>
-            <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
+            <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" border="0"></a></td>
           </tr>
         </table>
       </form>

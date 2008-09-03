@@ -138,8 +138,8 @@ function rsyncd_process_updatenotification($mode, $data) {
             <td class="listbg"><?=htmlspecialchars($modulev['rwmode']);?>&nbsp;</td>
             <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-              <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" width="17" height="17" border="0"></a>
-              <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" width="17" height="17" border="0"></a>
+              <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" border="0"></a>
+              <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" border="0"></a>
             </td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -150,7 +150,7 @@ function rsyncd_process_updatenotification($mode, $data) {
           <?php $i++; endforeach;?>
           <tr>
             <td class="list" colspan="5"></td>
-            <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" width="17" height="17" border="0"></a></td>
+            <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" border="0"></a></td>
           </tr>
         </table>
       </form>

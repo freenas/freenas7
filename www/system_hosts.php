@@ -114,8 +114,8 @@ function hosts_process_updatenotification($mode, $data) {
 						<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
-							<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" width="17" height="17" border="0"></a>
-							<a href="system_hosts.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" width="17" height="17" border="0"></a>
+							<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
+							<a href="system_hosts.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -126,7 +126,7 @@ function hosts_process_updatenotification($mode, $data) {
 				  <?php $i++; endforeach;?>
 					<tr> 
 						<td class="list" colspan="3"></td>
-						<td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" width="17" height="17" border="0"></a></td>
+						<td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
 					</tr>
 				</table>
 			</form>

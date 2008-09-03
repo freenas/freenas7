@@ -104,12 +104,12 @@ if ($_GET['act'] == "del") {
 						<td class="listr"><?=htmlspecialchars($vlan['vlandev']);?></td>
 						<td class="listr"><?=htmlspecialchars($vlan['tag']);?></td>
 						<td class="listbg"><?=htmlspecialchars($vlan['desc']);?>&nbsp;</td>
-						<td valign="middle" nowrap class="list"> <a href="interfaces_vlan_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" width="17" height="17" border="0"></a>&nbsp;<a href="interfaces_vlan.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" width="17" height="17" border="0"></a></td>
+						<td valign="middle" nowrap class="list"> <a href="interfaces_vlan_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0"></a>&nbsp;<a href="interfaces_vlan.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a></td>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="4">&nbsp;</td>
-						<td class="list"> <a href="interfaces_vlan_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" width="17" height="17" border="0"></a></td>
+						<td class="list"> <a href="interfaces_vlan_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a></td>
 					</tr>
 					<tr>
 						<td class="list" colspan="4">

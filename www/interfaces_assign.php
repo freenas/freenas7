@@ -237,7 +237,7 @@ if ($_GET['act'] == "add") {
 						</td>
 						<td valign="middle" class="list">
 							<?php if (($ifname != 'lan') && ($ifname != 'wan')):?>
-							<a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface");?>" width="17" height="17" border="0"></a>
+							<a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a>
 							<?php endif;?>
 						</td>
 					</tr>
@@ -246,7 +246,7 @@ if ($_GET['act'] == "add") {
 				  <tr>
 						<td class="list" colspan="2"></td>
 						<td class="list" nowrap>
-							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface");?>" width="17" height="17" border="0"></a>
+							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a>
 						</td>
 				  </tr>
 				  <?php else:?>

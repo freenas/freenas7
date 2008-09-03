@@ -211,8 +211,8 @@ function web_change() {
 									<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
 									<td valign="middle" nowrap class="list">
 										<?php if(isset($config['upnp']['enable'])):?>
-										<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit directory");?>" width="17" height="17" border="0"></a>&nbsp;
-										<a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this directory entry?");?>')"><img src="x.gif" title="<?=gettext("Delete directory"); ?>" width="17" height="17" border="0"></a>
+										<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit directory");?>" border="0"></a>&nbsp;
+										<a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this directory entry?");?>')"><img src="x.gif" title="<?=gettext("Delete directory"); ?>" border="0"></a>
 										<?php endif; ?>
 									</td>
 								</tr>
@@ -221,7 +221,7 @@ function web_change() {
 								<tr>
 									<td class="list" colspan="1"></td>
 									<td class="list">
-										<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=gettext("Add directory");?>" width="17" height="17" border="0"></a>
+										<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=gettext("Add directory");?>" border="0"></a>
 									</td>
 								</tr>
 							</table>

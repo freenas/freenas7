@@ -202,15 +202,15 @@ function authentication_change() {
 									<td class="listr"><?=htmlspecialchars($urlv['realm']);?>&nbsp;</td>
 									<td valign="middle" nowrap class="list">
 										<?php if(isset($config['websrv']['enable'])):?>
-										<a href="services_websrv_authurl.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit URL");?>" width="17" height="17" border="0"></a>&nbsp;
-										<a href="services_websrv.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this URL?");?>')"><img src="x.gif" title="<?=gettext("Delete URL");?>" width="17" height="17" border="0"></a>
+										<a href="services_websrv_authurl.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit URL");?>" border="0"></a>&nbsp;
+										<a href="services_websrv.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this URL?");?>')"><img src="x.gif" title="<?=gettext("Delete URL");?>" border="0"></a>
 										<?php endif;?>
 									</td>
 								</tr>
 								<?php $i++; endforeach;?>
 								<tr>
 									<td class="list" colspan="2"></td>
-									<td class="list"><a href="services_websrv_authurl.php"><img src="plus.gif" title="<?=gettext("Add URL");?>" width="17" height="17" border="0"></a></td>
+									<td class="list"><a href="services_websrv_authurl.php"><img src="plus.gif" title="<?=gettext("Add URL");?>" border="0"></a></td>
 								</tr>
 							</table>
 							<span class="vexpl"><?=gettext("Define directories/URL's that require authentication.");?></span>

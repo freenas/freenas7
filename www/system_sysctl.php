@@ -2,13 +2,13 @@
 <?php
 /*
 	system_sysctl.php
-	Copyright © 2008 Nelson Silva (nsilva@hotlap.org)
+	Copyright (C) 2008 Nelson Silva (nsilva@hotlap.org)
 	All rights reserved.
 
 	Modified by Volker Theile (votdev@gmx.de)
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -117,16 +117,16 @@ if ($_GET['act'] === "del") {
 	          <td class="listr"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" width="17" height="17" border="0"></a>
-	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" width="17" height="17" border="0"></a>
+	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0"></a>
+	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
 					<tr>
 	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" width="17" height="17" border="0"></a>
+	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" border="0"></a>
 	          	<?php if (!empty($a_sysctlvar)):?>
-							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all MIBs?");?>')"><img src="x.gif" title="<?=gettext("Delete all MIBs");?>" width="17" height="17" border="0"></a>
+							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all MIBs?");?>')"><img src="x.gif" title="<?=gettext("Delete all MIBs");?>" border="0"></a>
 							<?php endif;?>
 						</td>
 	        </tr>

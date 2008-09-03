@@ -108,15 +108,15 @@ if ($_GET['act'] == "del") {
 						<td class="listr"><?=htmlspecialchars($userv['id']);?>&nbsp;</td>
 						<td class="listr"><?=array_search($userv['primarygroup'], $a_group);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
-							<a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" width="17" height="17" border="0"></a>
+							<a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" border="0"></a>&nbsp;
+							<a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" border="0"></a>
 						</td>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="4"></td>
 						<td class="list">
-							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" width="17" height="17" border="0"></a>
+							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" border="0"></a>
 						</td>
 					</tr>
 				</table>

@@ -3,7 +3,7 @@
 /*
 	services_iscsitarget.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -134,14 +134,14 @@ if ($_GET['act'] == "del") {
 									<td class="listr"><?php echo htmlspecialchars($extent['path']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($extent['size']);?>MB&nbsp;</td>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" width="17" height="17" border="0"></a>
-				            <a href="services_iscsitarget.php?act=del&type=extent&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" width="17" height="17" border="0"></a>
+				          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
+				            <a href="services_iscsitarget.php?act=del&type=extent&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" border="0"></a>
 				          </td>
 				        </tr>
 				        <?php $i++; endforeach;?>
 				        <tr>
 				          <td class="list" colspan="3"></td>
-				          <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" width="17" height="17" border="0"></a></td>
+				          <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" border="0"></a></td>
 						    </tr>
 							</table>
 							<?=gettext("Extents must be defined before they can be used, and extents cannot be used more than once.");?>
@@ -168,14 +168,14 @@ if ($_GET['act'] == "del") {
 										&nbsp;
 									</td>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" width="17" height="17" border="0"></a>
-				            <a href="services_iscsitarget.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" width="17" height="17" border="0"></a>
+				          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>
+				            <a href="services_iscsitarget.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" border="0"></a>
 				          </td>
 				        </tr>
 				        <?php $i++; endforeach;?>
 				        <tr>
 				          <td class="list" colspan="3"></td>
-				          <td class="list"><a href="services_iscsitarget_device_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" width="17" height="17" border="0"></a></td>
+				          <td class="list"><a href="services_iscsitarget_device_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" border="0"></a></td>
 						    </tr>
 							</table>
 							<?=gettext("Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once.");?>
@@ -204,14 +204,14 @@ if ($_GET['act'] == "del") {
 									</td>
 				          <td class="listr"><?=htmlspecialchars($target['ipaddr'])."/".htmlspecialchars($target['subnet']);?>&nbsp;</td>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" width="17" height="17" border="0"></a>
-				            <a href="services_iscsitarget.php?act=del&type=target&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" width="17" height="17" border="0"></a>
+				          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
+				            <a href="services_iscsitarget.php?act=del&type=target&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" border="0"></a>
 				          </td>
 				        </tr>
 				        <?php $i++; endforeach;?>
 				        <tr>
 				          <td class="list" colspan="4"></td>
-				          <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" width="17" height="17" border="0"></a></td>
+				          <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" border="0"></a></td>
 						    </tr>
 							</table>
 							<?=gettext("At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents.");?>
