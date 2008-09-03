@@ -1424,15 +1424,15 @@ function config_upgrade() {
 	/* Convert 5.4 -> 5.5 */
 	/* Add UUID's to //rsyncd/module, //rsync/rsyncclient, //rsync/rsynclocal, */
 	/* //samba/share, //staticroutes/route, //afp/share, //nfsd/share, */
-	/* //cron/job and //system/hosts. */
+	/* //cron/job, //system/hosts, //access/user and //access/group. */
 	if ($config['version'] === "5.4") {
 		for ($i = 0; isset($config['rsyncd']['module'][$i]); $i++) {
 			$config['rsyncd']['module'][$i]['uuid'] = uuid();
 		}
 
-		foreach (explode(" ", "rsyncclient rsynclocal") as $service) {
-			for ($i = 0; isset($config['rsync'][$service][$i]); $i++) {
-				$config['rsync'][$service][$i]['uuid'] = uuid();
+		foreach (explode(" ", "rsyncclient rsynclocal") as $attr) {
+			for ($i = 0; isset($config['rsync'][$attr][$i]); $i++) {
+				$config['rsync'][$attr][$i]['uuid'] = uuid();
 			}
 		}
 
@@ -1440,9 +1440,9 @@ function config_upgrade() {
 			$config['staticroutes']['route'][$i]['uuid'] = uuid();
 		}
 
-		foreach (explode(" ", "samba afp nfsd") as $service) {
-			for ($i = 0; isset($config[$service]['share'][$i]); $i++) {
-				$config[$service]['share'][$i]['uuid'] = uuid();
+		foreach (explode(" ", "samba afp nfsd") as $attr) {
+			for ($i = 0; isset($config[$attr]['share'][$i]); $i++) {
+				$config[$attr]['share'][$i]['uuid'] = uuid();
 			}
 		}
 
@@ -1452,6 +1452,12 @@ function config_upgrade() {
 
 		for ($i = 0; isset($config['system']['hosts'][$i]); $i++) {
 			$config['system']['hosts'][$i]['uuid'] = uuid();
+		}
+
+		foreach (explode(" ", "user group") as $attr) {
+			for ($i = 0; isset($config['access'][$attr][$i]); $i++) {
+				$config['access'][$attr][$i]['uuid'] = uuid();
+			}
 		}
 
 		$config['version'] = "5.5";

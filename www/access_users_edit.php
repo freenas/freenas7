@@ -49,6 +49,7 @@ $a_user_system = system_get_user_list();
 $a_group = system_get_group_list();
 
 if (isset($id) && $a_user[$id]) {
+	$pconfig['uuid'] = $a_user[$id]['uuid'];
 	$pconfig['login'] = $a_user[$id]['login'];
 	$pconfig['fullname'] = $a_user[$id]['fullname'];
 	$pconfig['password'] = $a_user[$id]['password'];
@@ -59,6 +60,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
 	$pconfig['homedir'] = $a_user[$id]['homedir'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['primarygroup'] = $a_group['guest'];
 	$pconfig['userid'] = get_nextuser_id();
 }
@@ -111,6 +113,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$users = array();
+		$module['uuid'] = $_POST['uuid'];
 		$users['login'] = $_POST['login'];
 		$users['fullname'] = $_POST['fullname'];
 		$users['password'] = $_POST['password'];
@@ -123,12 +126,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_user[$id]) {
 			$a_user[$id] = $users;
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		} else {
 			$a_user[] = $users;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
 		}
 
-		touch($d_userconfdirty_path);
-
+		ui_set_updatenotification("userdb_user", $mode, $module['uuid']);
 		write_config();
 
 		header("Location: access_users.php");
@@ -243,7 +247,9 @@ function get_nextuser_id() {
 				  </tr>
           <tr>
             <td width="22%" valign="top">&nbsp;</td>
-            <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
+            <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_user[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>

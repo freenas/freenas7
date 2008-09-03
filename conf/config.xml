@@ -651,6 +651,7 @@
 	<access>
 		<!--
 		<user>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<id>xxx</id>
 			<primarygroup>xxx</primarygroup> // Primary group.
 			<group>xxx</group> // Additional group memberships. Can be defined multiple times.
@@ -660,6 +661,7 @@
 			<fullshell/>
 		</user>
 		<group>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<id>xxx</id>
 			<name>xxx</name>
 			<desc>xxx</desc>
