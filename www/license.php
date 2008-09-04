@@ -70,7 +70,7 @@ $pgtitle = array(gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add Unison support</font></em><br>  
               <p>Niels Endres (<a href="mailto:niels@weaklogic.com">niels@weaklogic.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added FAT support for config file and auto detection of NIC name</font></em><br>
-              <p>Dan Merschi (<a href="mailto:freenas@bcapro.com">freenas@bcapro.com</a>)<br>
+              <p>Dan Merschi (<a href="mailto:dan@freenaskb.info">dan@freenaskb.info</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Created core implementation of email status report.</font></em><br>
               <p>Gerard Hickey (<a href="mailto:hickey@kinetic-compute.com">hickey@kinetic-compute.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP/Rsync shares.</font></em><br>
@@ -120,7 +120,8 @@ $pgtitle = array(gettext("License & Credits"));
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
         Copyright &copy; 1995-2007 The FreeBSD Project. All rights reserved.</p>
-	<p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD geom raid 5 module</a><br>
+
+			<p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br>
         Copyright &copy; 2006-2007 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br>

@@ -2,7 +2,7 @@
 <?php
 /*
 	services_iscsitarget_extent_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("iSCSI Target"),gettext("Device"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Device"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
@@ -64,6 +64,7 @@ if (!sizeof($a_iscsitarget_extent)) {
 }
 
 if (isset($id) && $a_iscsitarget_device[$id]) {
+	$pconfig['uuid'] = $a_iscsitarget_device[$id]['uuid'];
 	$pconfig['name'] = $a_iscsitarget_device[$id]['name'];
 	$pconfig['type'] = $a_iscsitarget_device[$id]['type'];
 	$pconfig['storage'] = $a_iscsitarget_device[$id]['storage'];
@@ -76,6 +77,7 @@ if (isset($id) && $a_iscsitarget_device[$id]) {
 	while (true === in_array($deviceid, $a_id))
 		$deviceid += 1;
 
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "device{$deviceid}";
 	$pconfig['type'] = "RAID0";
 	$pconfig['storage'] = "";
@@ -87,19 +89,27 @@ if ($_POST) {
 
 	$pconfig = $_POST;
 
+	// Input validation
+  $reqdfields = explode(" ", "name storage");
+  $reqdfieldsn = array(gettext("Device name"), gettext("Storage"));
+  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
 	if (!$input_errors) {
 		$iscsitarget_device = array();
+		$iscsitarget_device['uuid'] = $_POST['uuid'];
 		$iscsitarget_device['name'] = $_POST['name'];
 		$iscsitarget_device['type'] = $_POST['type'];
 		$iscsitarget_device['storage'] = $_POST['storage'];
 
-		if (isset($id) && $a_iscsitarget_device[$id])
+		if (isset($id) && $a_iscsitarget_device[$id]) {
 			$a_iscsitarget_device[$id] = $iscsitarget_device;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_iscsitarget_device[] = $iscsitarget_device;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_iscsitargetdirty_path);
-
+		ui_set_updatenotification("iscsitarget_device", $mode, $iscsitarget_device['uuid']);
 		write_config();
 
 		header("Location: services_iscsitarget.php");
@@ -153,7 +163,9 @@ if ($_POST) {
 					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, "", true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id]))?gettext("Save"):gettext("Add")?>">
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_iscsitarget_device[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif; ?>

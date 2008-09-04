@@ -35,7 +35,6 @@ else
 		echo
 		echo "Console setup"
 		echo "-------------"
-		#echo "0) Logout (SSH only)"
 		echo "1) Assign interfaces"
 		echo "2) Set LAN IP address"
 		echo "3) Reset WebGUI password"
@@ -54,9 +53,6 @@ else
 
 		# see what the user has chosen
 		case ${opmode} in
-			0)
-				exit && exit && logout
-				;;
 			1)
 				/etc/rc.initial.setports
 			 	;;
@@ -82,7 +78,10 @@ else
 				/etc/rc.initial.halt
 				;;
 			9)
-				/etc/rc.initial.install
+				case ${PLATFORM} in
+					*-live[cC][dD])
+						/etc/rc.initial.install
+				esac
 				;;
 		esac
 	done

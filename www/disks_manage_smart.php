@@ -39,12 +39,6 @@ require("email.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Management"), gettext("S.M.A.R.T."));
 
-if (!is_array($config['smartd']['selftest']))
-	$config['smartd']['selftest'] = array();
-
-$a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conveyance Self-Test", "O" => "Offline Immediate Test");
-$a_selftest = &$config['smartd']['selftest'];
-
 $pconfig['enable'] = isset($config['smartd']['enable']);
 $pconfig['interval'] = $config['smartd']['interval'];
 $pconfig['powermode'] = $config['smartd']['powermode'];
@@ -60,15 +54,17 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "interval powermode temp_diff temp_info temp_crit");
-	$reqdfieldsn = array(gettext("Check interval"), gettext("Power mode"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
-	$reqdfieldst = explode(" ", "numericint string numericint numericint numericint");
+	if (true === $_POST['enable']) {
+		$reqdfields = explode(" ", "interval powermode temp_diff temp_info temp_crit");
+		$reqdfieldsn = array(gettext("Check interval"), gettext("Power mode"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
+		$reqdfieldst = explode(" ", "numericint string numericint numericint numericint");
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	if (10 > $_POST['interval']) {
-		$input_errors[] = gettext("Interval must be greater or equal than 10 seconds.");
+		if (10 > $_POST['interval']) {
+			$input_errors[] = gettext("Interval must be greater or equal than 10 seconds.");
+		}
 	}
 
 	if (!$input_errors) {
@@ -87,30 +83,53 @@ if ($_POST) {
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("smartssd", "smartssd_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("smartd");
 			config_unlock();
 		}
-
 		$savemsg = get_std_save_message($retval);
-
 		if ($retval == 0) {
-			if (file_exists($d_smartconfdirty_path))
-				unlink($d_smartconfdirty_path);
+			ui_cleanup_updatenotification("smartssd");
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if (!is_array($config['smartd']['selftest']))
+	$config['smartd']['selftest'] = array();
+
+$a_selftest = &$config['smartd']['selftest'];
+$a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conveyance Self-Test", "O" => "Offline Immediate Test");
+
+if ($_GET['act'] === "del") {
 	if ($a_selftest[$_GET['id']]) {
-		unset($a_selftest[$_GET['id']]);
-
-		write_config();
-		touch($d_smartconfdirty_path);
-
+		ui_set_updatenotification("smartssd", UPDATENOTIFICATION_MODE_DIRTY, $a_selftest[$_GET['id']]['uuid']);
 		header("Location: disks_manage_smart.php");
 		exit;
 	}
+}
+
+function smartssd_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['smartd']['selftest'])) {
+				$index = array_search_ex($data, $config['smartd']['selftest'], "uuid");
+				if (false !== $index) {
+					unset($config['smartd']['selftest'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -160,7 +179,7 @@ function enable_change(enable_change) {
 				<?php $smart = false; foreach ($config['disks']['disk'] as $device) { if (isset($device['smart'])) $smart = true; } if (false === $smart) print_error_box(gettext("Make sure you have activated S.M.A.R.T. for your devices."));?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_smartconfdirty_path)) print_config_change_box();?>
+				<?php if (ui_exists_updatenotification("smartssd")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Self-Monitoring, Analysis and Reporting Technology"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(this)");?>
 					<?php html_inputbox("interval", gettext("Check interval"), $pconfig['interval'], gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10."), true, 5);?>
@@ -217,14 +236,21 @@ function enable_change(enable_change) {
 									<td width="10%" class="list"></td>
 				        </tr>
 							  <?php $i = 0; foreach($a_selftest as $selftest):?>
+							  <?php $notificationmode = ui_get_updatenotification_mode("smartssd", $selftest['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($selftest['devicespecialfile']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(gettext($a_type[$selftest['type']]));?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
+									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
 				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0"></a>
 				            <a href="disks_manage_smart.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0"></a>
 				          </td>
+				          <?php else:?>
+									<td valign="middle" nowrap class="list">
+										<img src="del.gif" border="0">
+									</td>
+									<?php endif;?>
 				        </tr>
 				        <?php $i++; endforeach;?>
 				        <tr>

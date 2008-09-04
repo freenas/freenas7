@@ -44,12 +44,14 @@ array_sort_key($a_vlans, "if");
 
 if (isset($id) && $a_vlans[$id]) {
 	$pconfig['enable'] = isset($a_vlans[$id]['enable']);
+	$pconfig['uuid'] = $a_vlans[$id]['uuid'];
 	$pconfig['if'] = $a_vlans[$id]['if'];
 	$pconfig['tag'] = $a_vlans[$id]['tag'];
 	$pconfig['vlandev'] = $a_vlans[$id]['vlandev'];
 	$pconfig['desc'] = $a_vlans[$id]['desc'];
 } else {
 	$pconfig['enable'] = true;
+	$pconfig['uuid'] = uuid();
 	$pconfig['if'] = "vlan" . get_nextvlan_id();
 	$pconfig['tag'] = 1;
 	$pconfig['vlandev'] = "";
@@ -88,15 +90,17 @@ if ($_POST) {
 	if (!$input_errors) {
 		$vlan = array();
 		$vlan['enable'] = $_POST['enable'] ? true : false;
+		$vlan['uuid'] = $_POST['uuid'];
 		$vlan['if'] = $_POST['if'];
 		$vlan['tag'] = $_POST['tag'];
 		$vlan['vlandev'] = $_POST['vlandev'];
 		$vlan['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_vlans[$id])
+		if (isset($id) && $a_vlans[$id]) {
 			$a_vlans[$id] = $vlan;
-		else
+		} else {
 			$a_vlans[] = $vlan;
+		}
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -147,6 +151,7 @@ function get_nextvlan_id() {
 							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
 							<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
 							<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_vlans[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>

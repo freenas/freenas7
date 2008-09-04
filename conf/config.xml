@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.5</version>
+	<version>5.6</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -150,6 +150,7 @@
 	<vinterfaces>
 		<vlan>
 			<enable/>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<if>vlan0</if>
 			<vlandev>rl0</vlandev>
 			<tag>1...4094</tag>
@@ -157,6 +158,7 @@
 		</vlan>
 		<lagg>
 			<enable/>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<if>lagg0</if>
 			<laggproto>failover|fec|lacp|loadbalance|roundrobin|none<laggproto>
 			<laggport>re0<laggport>
@@ -280,16 +282,19 @@
 		<!--
 		<enable/>
 		<extent>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<path>xxx</path> // File path (/mnt/sharename/extent/extent0) or device name (/dev/ad1).
 			<size>xxx</size> // Size in MB.
 		</extent>
 		<device>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<type>RAID0|RAID1</type>
 			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
 		</device>
 		<target>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
 			<flags>rw</flags>
@@ -791,6 +796,7 @@
 		<enable/>
 		<powermode>never|sleep|standby|idle</powermode>
 		<selftest>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<type>S|L|C|O</type>
 			<desc>xxx</desc>

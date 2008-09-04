@@ -425,7 +425,7 @@ EOF
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
-		-v "concat('--database-file ',home,'/${name}.db')" \
+		-v "concat('--database-file &quot;',home,'/${name}.db&quot;')" \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	command_args="${command_args} ${_command_args}"
