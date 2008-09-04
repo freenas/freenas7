@@ -2,11 +2,11 @@
 <?php
 /*
 	interfaces_lagg_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -46,12 +46,14 @@ array_sort_key($a_lagg, "if");
 
 if (isset($id) && $a_lagg[$id]) {
 	$pconfig['enable'] = isset($a_lagg[$id]['enable']);
+	$pconfig['uuid'] = $a_lagg[$id]['uuid'];
 	$pconfig['if'] = $a_lagg[$id]['if'];
 	$pconfig['laggproto'] = $a_lagg[$id]['laggproto'];
 	$pconfig['laggport'] = $a_lagg[$id]['laggport'];
 	$pconfig['desc'] = $a_lagg[$id]['desc'];
 } else {
 	$pconfig['enable'] = true;
+	$pconfig['uuid'] = uuid();
 	$pconfig['if'] = "lagg" . get_nextlagg_id();
 	$pconfig['laggproto'] = "failover";
 	$pconfig['laggport'] = array();
@@ -76,15 +78,17 @@ if ($_POST) {
 	if (!$input_errors) {
 		$lagg = array();
 		$lagg['enable'] = $_POST['enable'] ? true : false;
+		$lagg['uuid'] = $_POST['uuid'];
 		$lagg['if'] = $_POST['if'];
 		$lagg['laggproto'] = $_POST['laggproto'];
 		$lagg['laggport'] = $_POST['laggport'];
 		$lagg['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_lagg[$id])
+		if (isset($id) && $a_lagg[$id]) {
 			$a_lagg[$id] = $lagg;
-		else
+		} else {
 			$a_lagg[] = $lagg;
+		}
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -136,6 +140,7 @@ function get_nextlagg_id() {
 							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_lagg[$id])) ? gettext("Save") : gettext("Add");?>">
 							<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
 							<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_lagg[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>

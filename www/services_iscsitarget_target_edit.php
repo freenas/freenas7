@@ -2,7 +2,7 @@
 <?php
 /*
 	services_iscsitarget_extent_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("iSCSI Target"),gettext("Target"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
@@ -64,6 +64,7 @@ if (!sizeof($a_iscsitarget_extent)) {
 }
 
 if (isset($id) && $a_iscsitarget_target[$id]) {
+	$pconfig['uuid'] = $a_iscsitarget_target[$id]['uuid'];
 	$pconfig['name'] = $a_iscsitarget_target[$id]['name'];
 	$pconfig['flags'] = $a_iscsitarget_target[$id]['flags'];
 	$pconfig['storage'] = $a_iscsitarget_target[$id]['storage'];
@@ -78,6 +79,7 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 	while (true === in_array($targetid, $a_id))
 		$targetid += 1;
 
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "target{$targetid}";
 	$pconfig['flags'] = "rw";
 	$pconfig['storage'] = "";
@@ -92,9 +94,9 @@ if ($_POST) {
 
 	$pconfig = $_POST;
 
-	/* input validation */
-  $reqdfields = explode(" ", "ipaddr subnet storage");
-  $reqdfieldsn = array(gettext("Authorised network"), gettext("Subnet bit count"), gettext("Storage"));
+	// Input validation
+  $reqdfields = explode(" ", "name ipaddr subnet storage");
+  $reqdfieldsn = array(gettext("Target name"), gettext("Authorised network"), gettext("Subnet bit count"), gettext("Storage"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
   if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
@@ -107,19 +109,22 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$iscsitarget_target = array();
+		$iscsitarget_target['uuid'] = $_POST['uuid'];
 		$iscsitarget_target['name'] = $_POST['name'];
 		$iscsitarget_target['flags'] = $_POST['flags'];
 		$iscsitarget_target['storage'] = $_POST['storage'];
 		$iscsitarget_target['ipaddr'] = gen_subnet($_POST['ipaddr'], $_POST['subnet']);
 		$iscsitarget_target['subnet'] = $_POST['subnet'];
 
-		if (isset($id) && $a_iscsitarget_target[$id])
+		if (isset($id) && $a_iscsitarget_target[$id]) {
 			$a_iscsitarget_target[$id] = $iscsitarget_target;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_iscsitarget_target[] = $iscsitarget_target;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_iscsitargetdirty_path);
-
+		ui_set_updatenotification("iscsitarget_target", $mode, $iscsitarget_target['uuid']);
 		write_config();
 
 		header("Location: services_iscsitarget.php");
@@ -172,7 +177,9 @@ if ($_POST) {
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id]))?gettext("Save"):gettext("Add")?>">
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_iscsitarget_target[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>

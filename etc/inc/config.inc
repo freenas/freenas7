@@ -1422,9 +1422,7 @@ function config_upgrade() {
 	}
 
 	/* Convert 5.4 -> 5.5 */
-	/* Add UUID's to //rsyncd/module, //rsync/rsyncclient, //rsync/rsynclocal, */
-	/* //samba/share, //staticroutes/route, //afp/share, //nfsd/share, */
-	/* //cron/job, //system/hosts, //access/user and //access/group. */
+	/* Add UUID's to //rsyncd/module, //rsync/rsyncclient and //rsync/rsynclocal. */
 	if ($config['version'] === "5.4") {
 		for ($i = 0; isset($config['rsyncd']['module'][$i]); $i++) {
 			$config['rsyncd']['module'][$i]['uuid'] = uuid();
@@ -1436,6 +1434,15 @@ function config_upgrade() {
 			}
 		}
 
+		$config['version'] = "5.5";
+	}
+
+	/* Convert 5.5 -> 5.6 */
+	/* Add UUID's to //samba/share, //staticroutes/route, //afp/share, //nfsd/share, */
+	/* //cron/job, //system/hosts, //access/user, //access/group, */
+	/* //smartd/selftest, //vinterfaces/vlan, //vinterfaces/lagg, */
+	/* //iscsitarget/extent, //iscsitarget/device and //iscsitarget/target. */
+	if ($config['version'] === "5.5") {
 		for ($i = 0; isset($config['staticroutes']['route'][$i]); $i++) {
 			$config['staticroutes']['route'][$i]['uuid'] = uuid();
 		}
@@ -1460,7 +1467,23 @@ function config_upgrade() {
 			}
 		}
 
-		$config['version'] = "5.5";
+		for ($i = 0; isset($config['smartd']['selftest'][$i]); $i++) {
+			$config['smartd']['selftest'][$i]['uuid'] = uuid();
+		}
+
+		foreach (explode(" ", "vlan lagg") as $attr) {
+			for ($i = 0; isset($config['vinterfaces'][$attr][$i]); $i++) {
+				$config['vinterfaces'][$attr][$i]['uuid'] = uuid();
+			}
+		}
+
+		foreach (explode(" ", "extent device target") as $attr) {
+			for ($i = 0; isset($config['iscsitarget'][$attr][$i]); $i++) {
+				$config['iscsitarget'][$attr][$i]['uuid'] = uuid();
+			}
+		}
+
+		$config['version'] = "5.6";
 	}
 
 	write_config();

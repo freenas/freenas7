@@ -2,7 +2,7 @@
 <?php
 /*
 	services_iscsitarget_extent_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("iSCSI Target"),gettext("Extent"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Extent"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
@@ -50,6 +50,7 @@ array_sort_key($config['iscsitarget']['extent'], "name");
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
 if (isset($id) && $a_iscsitarget_extent[$id]) {
+	$pconfig['uuid'] = $a_iscsitarget_extent[$id]['uuid'];
 	$pconfig['name'] = $a_iscsitarget_extent[$id]['name'];
 	$pconfig['path'] = $a_iscsitarget_extent[$id]['path'];
 	$pconfig['size'] = $a_iscsitarget_extent[$id]['size'];
@@ -67,6 +68,7 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 	while (true === in_array($extentid, $a_id))
 		$extentid += 1;
 
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "extent{$extentid}";
 	$pconfig['path'] = "";
 	$pconfig['size'] = "";
@@ -80,14 +82,18 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
+	$reqdfields = explode(" ", "name");
+  $reqdfieldsn = array(gettext("Extent name"));
+  $reqdfieldst = explode(" ", "string");
+
 	if ("device" === $_POST['type']) {
-		$reqdfields = explode(" ", "device");
-		$reqdfieldsn = array(gettext("Device"));
-		$reqdfieldst = explode(" ", "string");
+		$reqdfields = array_merge($reqdfields, explode(" ", "device"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Device")));
+		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string"));
 	} else {
-		$reqdfields = explode(" ", "path size");
-		$reqdfieldsn = array(gettext("Path"),gettext("File size"));
-		$reqdfieldst = explode(" ", "string numeric");
+		$reqdfields = array_merge($reqdfields, explode(" ", "path size"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Path"), gettext("File size")));
+		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string numeric"));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -95,6 +101,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$iscsitarget_extent = array();
+		$iscsitarget_extent['uuid'] = $_POST['uuid'];
 		$iscsitarget_extent['name'] = $_POST['name'];
 		if ("device" === $_POST['type']) {
 			$diskinfo = disks_get_diskinfo($_POST['device']);
@@ -105,13 +112,15 @@ if ($_POST) {
 			$iscsitarget_extent['size'] = $_POST['size'];
 		}
 
-		if (isset($id) && $a_iscsitarget_extent[$id])
+		if (isset($id) && $a_iscsitarget_extent[$id]) {
 			$a_iscsitarget_extent[$id] = $iscsitarget_extent;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_iscsitarget_extent[] = $iscsitarget_extent;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_iscsitargetdirty_path);
-
+		ui_set_updatenotification("iscsitarget_extent", $mode, $iscsitarget_extent['uuid']);
 		write_config();
 
 		header("Location: services_iscsitarget.php");
@@ -153,10 +162,12 @@ function type_change() {
 					<?php html_inputbox("size", gettext("File size"), $pconfig['size'], gettext("Size in MB."), true, 10);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+							<?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif;?>
+							<?php endif;?>
 						</td>
 					</tr>
 				</table>

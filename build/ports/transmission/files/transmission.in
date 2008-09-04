@@ -33,8 +33,8 @@ start_precmd()
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
-		-v "concat('--password ',password,' --download-dir ',downloaddir,' --port ',port)" \
-		-i "string-length(configdir) > 0" -v "concat(' --config-dir ',configdir)" -b \
+		-v "concat('--password ',password,' --download-dir &quot;',downloaddir,'&quot; --port ',port)" \
+		-i "string-length(configdir) > 0" -v "concat(' --config-dir &quot;',configdir,'&quot;')" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	command_args="${command_args} ${_command_args}"

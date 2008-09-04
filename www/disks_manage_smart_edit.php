@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_manage_smart_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."),gettext("Scheduled Self-Test"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("Management"), gettext("S.M.A.R.T."), gettext("Scheduled Self-Test"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
@@ -57,6 +57,7 @@ $a_selftest = &$config['smartd']['selftest'];
 $a_disk = get_conf_physical_disks_list();
 
 if (isset($id) && $a_selftest[$id]) {
+	$pconfig['uuid'] = $a_selftest[$id]['uuid'];
 	$pconfig['devicespecialfile'] = $a_selftest[$id]['devicespecialfile'];
 	$pconfig['type'] = $a_selftest[$id]['type'];
 	$pconfig['minute'] = $a_selftest[$id]['minute'];
@@ -71,6 +72,7 @@ if (isset($id) && $a_selftest[$id]) {
 	$pconfig['all_weekdays'] = $a_selftest[$id]['all_weekdays'];
 	$pconfig['desc'] = $a_selftest[$id]['desc'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['type'] = "S";
 	$pconfig['desc'] = "";
 }
@@ -88,6 +90,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$selftest = array();
+		$selftest['uuid'] = $_POST['uuid'];
 		$selftest['devicespecialfile'] = $_POST['disk'];
 		$selftest['type'] = $_POST['type'];
 		$selftest['hour'] = $_POST['hour'];
@@ -100,12 +103,15 @@ if ($_POST) {
 		$selftest['all_weekdays'] = $_POST['all_weekdays'];
 		$selftest['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_selftest[$id])
+		if (isset($id) && $a_selftest[$id]) {
 			$a_selftest[$id] = $selftest;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_selftest[] = $selftest;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_smartconfdirty_path);
+		ui_set_updatenotification("smartssd", $mode, $selftest['uuid']);
 		write_config();
 
 		header("Location: disks_manage_smart.php");
@@ -288,7 +294,8 @@ function enable_change(enable_change) {
 					<tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
-	            <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_selftest[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+	            <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_selftest[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+	            <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 							<?php if (isset($id) && $a_selftest[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>
