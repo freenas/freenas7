@@ -160,7 +160,7 @@ if ($_POST) {
 						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
 					}
 					?>
-					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, "", true);?>
+					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
