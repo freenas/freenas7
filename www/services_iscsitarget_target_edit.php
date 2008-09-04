@@ -173,7 +173,7 @@ if ($_POST) {
 						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
 					}
 					?>
-					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, "", true);?>
+					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
