@@ -1487,12 +1487,16 @@ function config_upgrade() {
 	}
 
 	/* Convert 5.6 -> 5.7 */
-	/* Add UUID's to //system/rcconf/param and //system/sysctl/param. */
+	/* Add UUID's to //system/rcconf/param, //system/sysctl/param and //iscsiinit/vdisk. */
 	if ($config['version'] === "5.6") {
 		foreach (explode(" ", "rcconf sysctl") as $attr) {
 			for ($i = 0; isset($config['system'][$attr]['param'][$i]); $i++) {
 				$config['system'][$attr]['param'][$i]['uuid'] = uuid();
 			}
+		}
+
+		for ($i = 0; isset($config['iscsiinit']['vdisk'][$i]); $i++) {
+			$config['iscsiinit']['vdisk'][$i]['uuid'] = uuid();
 		}
 
 		$config['version'] = "5.7";

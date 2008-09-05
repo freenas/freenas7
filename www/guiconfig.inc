@@ -52,7 +52,6 @@ system_language_load();
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
-$d_iscsiinitdirty_path = $g['varrun_path'] . "/iscsiinit.dirty";
 $d_upnpconfdirty_path = $g['varrun_path'] . "/upnp.conf.dirty";
 $d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
 $d_websrvconfdirty_path = $g['varrun_path'] . "/websrv.conf.dirty";

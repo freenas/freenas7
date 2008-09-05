@@ -33,14 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI Initiator"));
-
-if (!is_array($config['iscsiinit']['vdisk']))
-	$config['iscsiinit']['vdisk'] = array();
-
-array_sort_key($config['iscsiinit']['vdisk'], "name");
-
-$a_iscsiinit = &$config['iscsiinit']['vdisk'];
+$pgtitle = array(gettext("Disks"), gettext("Management"), gettext("iSCSI Initiator"));
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -48,31 +41,54 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("iscsiinitiator", "iscsiinitiator_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("iscsi_initiator");
 			config_unlock();
 		}
-
 		$savemsg = get_std_save_message($retval);
-
 		if ($retval == 0) {
-			if (file_exists($d_iscsiinitdirty_path))
-				unlink($d_iscsiinitdirty_path);
+			ui_cleanup_updatenotification("iscsiinitiator");
 		}
 	}
 }
-if ($_GET['act'] == "del")
-{
-	if ($a_iscsiinit[$_GET['id']]) {
-		unset($a_iscsiinit[$_GET['id']]);
-		write_config();
-		touch($d_iscsiinitdirty_path);
-		header("Location: disks_manage_iscsi.php");
-		exit;
+
+if (!is_array($config['iscsiinit']['vdisk']))
+	$config['iscsiinit']['vdisk'] = array();
+
+array_sort_key($config['iscsiinit']['vdisk'], "name");
+$a_iscsiinit = &$config['iscsiinit']['vdisk'];
+
+if ($_GET['act'] === "del") {
+	ui_set_updatenotification("iscsiinitiator", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	header("Location: disks_manage_iscsi.php");
+	exit;
+}
+
+function iscsiinitiator_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['iscsiinit']['vdisk'])) {
+				$index = array_search_ex($data, $config['iscsiinit']['vdisk'], "uuid");
+				if (false !== $index) {
+					unset($config['iscsiinit']['vdisk'][$index]);
+					write_config();
+				}
+			}
+			break;
 	}
+
+	return $retval;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
     <td class="tabnavtbl">
@@ -87,7 +103,7 @@ if ($_GET['act'] == "del")
     <td class="tabcont">
       <form action="disks_manage_iscsi.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_iscsiinitdirty_path)) print_config_change_box();?>
+        <?php if (ui_exists_updatenotification("iscsiinitiator")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
@@ -95,16 +111,23 @@ if ($_GET['act'] == "del")
 						<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>
+  			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit):?>
+  			  <?php $notificationmode = ui_get_updatenotification_mode("iscsiinitiator", $iscsiinit['uuid']);?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($iscsiinit['name']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($iscsiinit['targetaddress']);?>&nbsp;</td>
+            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list"> <a href="disks_manage_iscsi_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit initiator");?>" border="0">
-              <a href="disks_manage_iscsi.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" border="0"></a>
+              <a href="disks_manage_iscsi.php?act=del&uuid=<?=$iscsiinit['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" border="0"></a>
             </td>
+            <?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
           </tr>
-          <?php $i++; endforeach; ?>
+          <?php $i++; endforeach;?>
           <tr> 
             <td class="list" colspan="3"></td>
             <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" border="0"></a></td>
@@ -114,4 +137,4 @@ if ($_GET['act'] == "del")
 	  </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
