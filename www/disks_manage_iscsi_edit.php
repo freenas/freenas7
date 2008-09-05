@@ -3,7 +3,7 @@
 /*
 	disks_manage_iscsi_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -47,10 +47,17 @@ array_sort_key($config['iscsiinit']['vdisk'], "name");
 $a_iscsiinit = &$config['iscsiinit']['vdisk'];
 
 if (isset($id) && $a_iscsiinit[$id]) {
+	$pconfig['uuid'] = $a_iscsiinit[$id]['uuid'];
 	$pconfig['name'] = $a_iscsiinit[$id]['name'];
 	$pconfig['targetname'] = $a_iscsiinit[$id]['targetname'];
 	$pconfig['targetaddress'] = $a_iscsiinit[$id]['targetaddress'];
 	$pconfig['initiatorname'] = $a_iscsiinit[$id]['initiatorname'];
+} else {
+	$pconfig['uuid'] = uuid();
+	$pconfig['name'] = "";
+	$pconfig['targetname'] = "";
+	$pconfig['targetaddress'] = "";
+	$pconfig['initiatorname'] = "";
 }
 
 if ($_POST) {
@@ -86,18 +93,21 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$iscsiinit = array();
+		$iscsiinit['uuid'] = $_POST['uuid'];
 		$iscsiinit['name'] = $_POST['name'];
 		$iscsiinit['targetname'] = $_POST['targetname'];
 		$iscsiinit['targetaddress'] = $_POST['targetaddress'];
 		$iscsiinit['initiatorname'] = $_POST['initiatorname'];
 
-		if (isset($id) && $a_iscsiinit[$id])
+		if (isset($id) && $a_iscsiinit[$id]) {
 			$a_iscsiinit[$id] = $iscsiinit;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_iscsiinit[] = $iscsiinit;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_iscsiinitdirty_path);
-
+		ui_set_updatenotification("iscsiinitiator", $mode, $iscsiinit['uuid']);
 		write_config();
 
 		header("Location: disks_manage_iscsi.php");
@@ -151,10 +161,12 @@ if ($_POST) {
 			    </tr>
 			    <tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsiinit[$id]): ?>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+							<?php if (isset($id) && $a_iscsiinit[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif; ?>
+							<?php endif; ?>
 						</td>
 					</tr>
 			  </table>

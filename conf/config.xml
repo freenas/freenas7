@@ -305,6 +305,17 @@
 		</target>
 		-->
 	</iscsitarget>
+	<iscsiinit>
+		<!--
+		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+			<name>xxx</name>
+			<targetname>xxx</targetname>
+			<targetaddress>xxx.xxx.xxx.xxx</targetaddress>
+			<initiatorname>xxx</initiatorname>
+		</vdisk>
+		-->
+	</iscsiinit>
 	<zfs>
 		<vdevices>
 			<!--
