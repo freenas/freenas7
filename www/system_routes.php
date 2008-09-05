@@ -56,11 +56,9 @@ if ($_POST) {
 }
 
 if ($_GET['act'] === "del") {
-	if ($a_routes[$_GET['id']]) {
-		ui_set_updatenotification("routes", UPDATENOTIFICATION_MODE_DIRTY, $a_routes[$_GET['id']]['uuid']);
-		header("Location: system_routes.php");
-		exit;
-	}
+	ui_set_updatenotification("routes", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	header("Location: system_routes.php");
+	exit;
 }
 
 function routes_process_updatenotification($mode, $data) {
@@ -86,7 +84,7 @@ function routes_process_updatenotification($mode, $data) {
 	return $retval;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabcont">
@@ -117,7 +115,7 @@ function routes_process_updatenotification($mode, $data) {
 	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" border="0"></a>
-	          	<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" border="0"></a>
+	          	<a href="system_routes.php?act=del&uuid=<?=$route['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">

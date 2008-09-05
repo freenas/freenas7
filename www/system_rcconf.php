@@ -38,49 +38,61 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Advanced"), gettext("rc.conf"));
 
-if (!is_array($config['system']['rcconf']['param']))
-	$config['system']['rcconf']['param'] = array();
-
-array_sort_key($config['system']['rcconf']['param'], "name");
-
-$a_rcvar = &$config['system']['rcconf']['param'];
-
 if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("rcconf", "rcconf_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("rcconf.sh");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_rcconfdirty_path))
-				unlink($d_rcconfdirty_path);
+			ui_cleanup_updatenotification("rcconf");
 		}
 	}
 }
 
+if (!is_array($config['system']['rcconf']['param']))
+	$config['system']['rcconf']['param'] = array();
+
+array_sort_key($config['system']['rcconf']['param'], "name");
+$a_rcvar = &$config['system']['rcconf']['param'];
+
 if ($_GET['act'] === "del") {
 	if ($_GET['id'] === "all") {
 		foreach ($a_rcvar as $rcvark => $rcvarv) {
-			mwexec("/usr/local/sbin/rconf attribute remove {$a_rcvar[$rcvark]['name']}");
-			unset($a_rcvar[$rcvark]);
+			ui_set_updatenotification("rcconf", UPDATENOTIFICATION_MODE_DIRTY, $a_rcvar[$rcvark]['uuid']);
 		}
-		write_config();
-		touch($d_rcconfdirty_path);
-		header("Location: system_rcconf.php");
-		exit;
 	} else {
-		if ($a_rcvar[$_GET['id']]) {
-			mwexec("/usr/local/sbin/rconf attribute remove {$a_rcvar[$_GET['id']]['name']}");
-			unset($a_rcvar[$_GET['id']]);
-			write_config();
-			touch($d_rcconfdirty_path);
-			header("Location: system_rcconf.php");
-			exit;
-		}
+		ui_set_updatenotification("rcconf", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
 	}
+	header("Location: system_rcconf.php");
+	exit;
+}
+
+function rcconf_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['system']['rcconf']['param'])) {
+				$index = array_search_ex($data, $config['system']['rcconf']['param'], "uuid");
+				if (false !== $index) {
+					unset($config['system']['rcconf']['param'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -103,7 +115,7 @@ if ($_GET['act'] === "del") {
     <td class="tabcont">
     	<form action="system_rcconf.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
-	    	<?php if (file_exists($d_rcconfdirty_path)) print_config_change_box();?>
+	    	<?php if (ui_exists_updatenotification("rcconf")) print_config_change_box();?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
 	          <td width="40%" class="listhdrr"><?=gettext("Variable");?></td>
@@ -112,14 +124,21 @@ if ($_GET['act'] === "del") {
 	          <td width="10%" class="list"></td>
 	        </tr>
 				  <?php $i = 0; foreach($a_rcvar as $rcvarv):?>
+				  <?php $notificationmode = ui_get_updatenotification_mode("rcconf", $rcvarv['uuid']);?>
 	        <tr>
 	          <td class="listlr"><?=htmlspecialchars($rcvarv['name']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
+	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>
-	            <a href="system_rcconf.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0"></a>
+	            <a href="system_rcconf.php?act=del&uuid=<?=$rcvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0"></a>
 	          </td>
+	          <?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 	        </tr>
 	        <?php $i++; endforeach;?>
 	        <tr>
