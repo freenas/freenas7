@@ -195,9 +195,7 @@ if ($_POST) {
 			$a_mount[] = $mount;
 		}
 
-		// Set notification
 		ui_set_updatenotification("mountpoint", $mode, $mount['uuid']);
-
 		write_config();
 
 		header("Location: disks_mount.php");

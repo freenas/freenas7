@@ -102,7 +102,7 @@ if ($_POST) {
 			$mode = UPDATENOTIFICATION_MODE_NEW;
 		}
 
-		ui_set_updatenotification("hosts", $mode, $rsynclocal['uuid']);
+		ui_set_updatenotification("hosts", $mode, $host['uuid']);
 		write_config();
 
 		header("Location: system_hosts.php");

@@ -119,9 +119,7 @@ if ($_POST) {
 				$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		}
 
-		// Set notification
 		ui_set_updatenotification("raid_gvinum", $mode, $raid['uuid']);
-
 		write_config();
 
 		header("Location: disks_raid_gvinum.php");
