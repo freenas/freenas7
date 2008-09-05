@@ -62,11 +62,9 @@ if ($_POST) {
 }
 
 if ($_GET['act'] === "del") {
-	if ($a_hosts[$_GET['id']]) {
-		ui_set_updatenotification("hosts", UPDATENOTIFICATION_MODE_DIRTY, $a_hosts[$_GET['id']]['uuid']);
-		header("Location: system_hosts.php");
-		exit;
-	}
+	ui_set_updatenotification("hosts", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	header("Location: system_hosts.php");
+	exit;
 }
 
 function hosts_process_updatenotification($mode, $data) {
@@ -115,7 +113,7 @@ function hosts_process_updatenotification($mode, $data) {
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
 							<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
-							<a href="system_hosts.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
+							<a href="system_hosts.php?act=del&uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">

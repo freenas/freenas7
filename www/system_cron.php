@@ -60,11 +60,9 @@ if ($_POST) {
 }
 
 if ($_GET['act'] === "del") {
-	if ($a_cron[$_GET['id']]) {
-		ui_set_updatenotification("cronjob", UPDATENOTIFICATION_MODE_DIRTY, $a_cron[$_GET['id']]['uuid']);
-		header("Location: system_cron.php");
-		exit;
-	}
+	ui_set_updatenotification("cronjob", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	header("Location: system_cron.php");
+	exit;
 }
 
 function cronjob_process_updatenotification($mode, $data) {
@@ -129,7 +127,7 @@ function cronjob_process_updatenotification($mode, $data) {
 	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" border="0"></a>
-							<a href="system_cron.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" border="0"></a>
+							<a href="system_cron.php?act=del&uuid=<?=$job['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" border="0"></a>
 	          </td>
 	          <?php else:?>
 						<td valign="middle" nowrap class="list">

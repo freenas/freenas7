@@ -1486,6 +1486,18 @@ function config_upgrade() {
 		$config['version'] = "5.6";
 	}
 
+	/* Convert 5.6 -> 5.7 */
+	/* Add UUID's to //system/rcconf/param and //system/sysctl/param. */
+	if ($config['version'] === "5.6") {
+		foreach (explode(" ", "rcconf sysctl") as $attr) {
+			for ($i = 0; isset($config['system'][$attr]['param'][$i]); $i++) {
+				$config['system'][$attr]['param'][$i]['uuid'] = uuid();
+			}
+		}
+
+		$config['version'] = "5.7";
+	}
+
 	write_config();
 
 	if (is_booting())

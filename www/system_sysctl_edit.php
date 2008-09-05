@@ -2,13 +2,13 @@
 <?php
 /*
 	system_sysctl_edit.php
-	Copyright © 2008 Nelson Silva (nsilva@hotlap.org)
+	Copyright (C) 2008 Nelson Silva (nsilva@hotlap.org)
 	All rights reserved.
 
 	Modified by Volker Theile (votdev@gmx.de)
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -52,10 +52,12 @@ array_sort_key($config['system']['sysctl']['param'], "name");
 $a_sysctlvar = &$config['system']['sysctl']['param'];
 
 if (isset($id) && $a_sysctlvar[$id]) {
+	$pconfig['uuid'] = $a_sysctlvar[$id]['uuid'];
 	$pconfig['name'] = $a_sysctlvar[$id]['name'];
 	$pconfig['value'] = $a_sysctlvar[$id]['value'];
 	$pconfig['comment'] = $a_sysctlvar[$id]['comment'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['value'] = "";
 	$pconfig['comment'] = "";
@@ -86,18 +88,21 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$param = array();
+		$param['uuid'] = $_POST['uuid'];
 		$param['name'] = $pconfig['name'];
 		$param['value'] = $pconfig['value'];
 		$param['comment'] = $pconfig['comment'];
 
 		if (isset($id) && $a_sysctlvar[$id]) {
 			$a_sysctlvar[$id] = $param;
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		} else {
 			$a_sysctlvar[] = $param;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
 		}
 
+		ui_set_updatenotification("sysctl", $mode, $param['uuid']);
 		write_config();
-		touch($d_sysctldirty_path);
 
 		header("Location: system_sysctl.php");
 		exit;
@@ -130,7 +135,9 @@ if ($_POST) {
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
+			      <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			        <?php if (isset($id)):?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif;?>

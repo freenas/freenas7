@@ -40,47 +40,61 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Advanced"), gettext("sysctl.conf"));
 
-if (!is_array($config['system']['sysctl']['param']))
-	$config['system']['sysctl']['param'] = array();
-
-array_sort_key($config['system']['sysctl']['param'], "name");
-
-$a_sysctlvar = &$config['system']['sysctl']['param'];
-
 if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification("sysctl", "sysctl_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("sysctl");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_sysctldirty_path))
-				unlink($d_sysctldirty_path);
+			ui_cleanup_updatenotification("sysctl");
 		}
 	}
 }
 
+if (!is_array($config['system']['sysctl']['param']))
+	$config['system']['sysctl']['param'] = array();
+
+array_sort_key($config['system']['sysctl']['param'], "name");
+$a_sysctlvar = &$config['system']['sysctl']['param'];
+
 if ($_GET['act'] === "del") {
 	if ($_GET['id'] === "all") {
 		foreach ($a_sysctlvar as $sysctlvark => $sysctlvarv) {
-			unset($a_sysctlvar[$sysctlvark]);
+			ui_set_updatenotification("sysctl", UPDATENOTIFICATION_MODE_DIRTY, $a_sysctlvar[$sysctlvark]['uuid']);
 		}
-		write_config();
-		touch($d_sysctldirty_path);
-		header("Location: system_sysctl.php");
-		exit;
 	} else {
-		if ($a_sysctlvar[$_GET['id']]) {
-			unset($a_sysctlvar[$_GET['id']]);
-			write_config();
-			touch($d_sysctldirty_path);
-			header("Location: system_sysctl.php");
-			exit;
-		}
+		ui_set_updatenotification("sysctl", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
 	}
+	header("Location: system_sysctl.php");
+	exit;
+}
+
+function sysctl_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['system']['sysctl']['param'])) {
+				$index = array_search_ex($data, $config['system']['sysctl']['param'], "uuid");
+				if (false !== $index) {
+					unset($config['system']['sysctl']['param'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -103,7 +117,7 @@ if ($_GET['act'] === "del") {
     <td class="tabcont">
     	<form action="system_sysctl.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
-	    	<?php if (file_exists($d_sysctldirty_path)) print_config_change_box();?>
+	    	<?php if (ui_exists_updatenotification("sysctl")) print_config_change_box();?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
 	          <td width="40%" class="listhdrr"><?=gettext("MIB");?></td>
@@ -112,14 +126,21 @@ if ($_GET['act'] === "del") {
 	          <td width="10%" class="list"></td>
 	        </tr>
 				  <?php $i = 0; foreach($a_sysctlvar as $sysctlvarv):?>
+				  <?php $notificationmode = ui_get_updatenotification_mode("sysctl", $sysctlvarv['uuid']);?>
 	        <tr>
 	          <td class="listlr"><?=htmlspecialchars($sysctlvarv['name']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
+	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0"></a>
-	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" border="0"></a>
+	            <a href="system_sysctl.php?act=del&uuid=<?=$sysctlvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" border="0"></a>
 	          </td>
+	          <?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 	        </tr>
 	        <?php $i++; endforeach;?>
 					<tr>

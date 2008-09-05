@@ -2,11 +2,11 @@
 <?php
 /*
 	system_rcconf_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -50,10 +50,12 @@ array_sort_key($config['system']['rcconf']['param'], "name");
 $a_rcvar = &$config['system']['rcconf']['param'];
 
 if (isset($id) && $a_rcvar[$id]) {
+	$pconfig['uuid'] = $a_rcvar[$id]['uuid'];
 	$pconfig['name'] = $a_rcvar[$id]['name'];
 	$pconfig['value'] = $a_rcvar[$id]['value'];
 	$pconfig['comment'] = $a_rcvar[$id]['comment'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['value'] = "";
 	$pconfig['comment'] = "";
@@ -73,17 +75,21 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$param = array();
+		$param['uuid'] = $_POST['uuid'];
 		$param['name'] = $pconfig['name'];
 		$param['value'] = $pconfig['value'];
 		$param['comment'] = $pconfig['comment'];
 
-		if (isset($id) && $a_rcvar[$id])
+		if (isset($id) && $a_rcvar[$id]) {
 			$a_rcvar[$id] = $param;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_rcvar[] = $param;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
+		ui_set_updatenotification("rcconf", $mode, $param['uuid']);
 		write_config();
-		touch($d_rcconfdirty_path);
 
 		header("Location: system_rcconf.php");
 		exit;
@@ -116,7 +122,9 @@ if ($_POST) {
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
+			      <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			        <?php if (isset($id)):?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif;?>

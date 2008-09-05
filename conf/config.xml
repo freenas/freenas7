@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.6</version>
+	<version>5.7</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -72,6 +72,7 @@
 		<rcconf>
 			<!--
 			<param>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 				<name>xxx<name>
 				<value>xxx<value>
 				<comment>xxx<comment>
@@ -81,6 +82,7 @@
 		<sysctl>
 			<!--
 			<param>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 				<name>xxx<name>
 				<value>xxx<value>
 				<comment>xxx<comment>
