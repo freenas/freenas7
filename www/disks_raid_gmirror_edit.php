@@ -108,9 +108,7 @@ if ($_POST) {
 				$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		}
 
-		// Set notification
 		ui_set_updatenotification("raid_gmirror", $mode, $raid['uuid']);
-
 		write_config();
 
 		header("Location: disks_raid_gmirror.php");

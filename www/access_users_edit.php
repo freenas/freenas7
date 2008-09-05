@@ -3,7 +3,7 @@
 /*
 	access_users_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -113,7 +113,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$users = array();
-		$module['uuid'] = $_POST['uuid'];
+		$users['uuid'] = $_POST['uuid'];
 		$users['login'] = $_POST['login'];
 		$users['fullname'] = $_POST['fullname'];
 		$users['password'] = $_POST['password'];
@@ -132,7 +132,7 @@ if ($_POST) {
 			$mode = UPDATENOTIFICATION_MODE_NEW;
 		}
 
-		ui_set_updatenotification("userdb_user", $mode, $module['uuid']);
+		ui_set_updatenotification("userdb_user", $mode, $users['uuid']);
 		write_config();
 
 		header("Location: access_users.php");

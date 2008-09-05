@@ -112,9 +112,7 @@ if ($_POST) {
 			$mode = UPDATENOTIFICATION_MODE_NEW;
 		}
 
-		// Set notification
 		ui_set_updatenotification("device", $mode, $disks['uuid']);
-
 		write_config();
 
 		header("Location: disks_manage.php");
