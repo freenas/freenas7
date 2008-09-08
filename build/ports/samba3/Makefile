@@ -28,6 +28,7 @@ AUTOCONF_ARGS=		-I${WRKSRC} -I${WRKSRC}/lib/replace
 CPPFLAGS+=				-I${LOCALBASE}/include
 LDFLAGS+=					-L${LOCALBASE}/lib
 CONFIGURE_ENV+=		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
+USE_OPENLDAP=			yes
 
 WRKSRC=						${WRKDIR}/${DISTNAME}/source
 
@@ -51,7 +52,7 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--with-libiconv="${LOCALBASE}" \
 									--with-sendfile-support \
 									--with-quotas \
-									--with-dnsupdate \
+									--without-dnsupdate \
 									--with-acl-support \
 									--with-readline  \
 									--without-libsmbclient \
@@ -67,7 +68,7 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--disable-krb5developer \
 									--disable-dmalloc \
 									--without-profiling-data \
-									--without-utmp \
+									--with-utmp \
 									--disable-fam \
 									--without-aio-support \
 									--without-cluster-support \
