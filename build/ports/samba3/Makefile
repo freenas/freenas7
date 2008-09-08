@@ -1,6 +1,6 @@
 PORTNAME=			samba
 PORTVERSION=	3.0.32
-PORTREVISION=	0
+PORTREVISION=	1
 PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
@@ -10,13 +10,15 @@ MASTER_SITES=				${MASTER_SITE_SAMBA}
 MASTER_SITE_SUBDIR=	. old-versions rc pre
 DISTNAME=						${PORTNAME}-${PORTVERSION:S/.p/pre/:S/.r/rc/}
 
-SAMBA_LOGFILEBASE=		/var/log/samba
-SAMBA_PIDDIR=					/var/run
-SAMBA_PRIVATEDIR=			/var/etc/private
-SAMBA_CONFIGDIR=			/var/etc
-SAMBA_LOCKDIR=				/var/run
+VARDIR?=							/var
+SAMBA_LOGFILEBASE=		${VARDIR}/log/samba
+SAMBA_PIDDIR=					${VARDIR}/run
+SAMBA_PRIVATEDIR=			${VARDIR}/etc/private
+SAMBA_CONFIGDIR=			${VARDIR}/etc
+SAMBA_LOCKDIR=				${VARDIR}/run
 SAMBA_LIBDIR=					/usr/local/lib
 SAMBA_MODULEDIR=			${SAMBA_LIBDIR}/samba
+SAMBA_CONFIG?=				smb.conf
 
 USE_ICONV=				yes
 GNU_CONFIGURE=		yes
@@ -29,7 +31,8 @@ CONFIGURE_ENV+=		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 
 WRKSRC=						${WRKDIR}/${DISTNAME}/source
 
-CONFIGURE_ARGS+=	--disable-cups \
+CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
+									--disable-cups \
 									--with-ads \
 									--with-pam \
 									--with-ldapsam \
@@ -47,7 +50,32 @@ CONFIGURE_ARGS+=	--disable-cups \
 									--with-ldap \
 									--with-libiconv="${LOCALBASE}" \
 									--with-sendfile-support \
-									--with-acl-support
+									--with-quotas \
+									--with-dnsupdate \
+									--with-acl-support \
+									--with-readline  \
+									--without-libsmbclient \
+									--without-libmsrpc \
+									--without-libsmbsharemodes \
+									--without-python \
+									--without-libaddns \
+									--with-included-iniparser \
+									--enable-largefile \
+									--disable-debug \
+									--disable-socket-wrapper \
+									--disable-developer \
+									--disable-krb5developer \
+									--disable-dmalloc \
+									--without-profiling-data \
+									--without-utmp \
+									--disable-fam \
+									--without-aio-support \
+									--without-cluster-support \
+									--with-included-popt
+
+post-patch:
+		@${REINPLACE_CMD} -e 's/%%SAMBA_CONFIG%%/${SAMBA_CONFIG}/' \
+		    ${WRKSRC}/Makefile.in
 
 pre-build:
 	cd ${WRKSRC} && ${MAKE} pch
