@@ -39,7 +39,7 @@ Majors changes:
 - Display warning message when user is going to delete an software RAID or encrypted volume.
 - Add 'Recursive', 'Times', 'Compress' and 'Archive' checkbox to RSYNC client/local WebGUI.
   Also add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion algorithm
-	when 'Delete' option has been choosen.
+  when 'Delete' option has been choosen.
 - Add 'Execute now' button in RSYNC client/local WebGUI. This button is only visible if you
   edit existing RSYNC jobs (because of implementation reasons).
 - Add nVidia nForce MCP on-board ethernet support.
@@ -106,7 +106,7 @@ Minors changes:
   rsync_client_logfile and rsync_local_logfile.
 - If 'Recycle bin' has been enabled for a CIFS/SMB share the '.recycle' directory will
   be created with 0777 permissions. A subdir will be created for each user with 0700
-	permissions.
+  permissions.
 - Add 'mount_smbfs' command. HowTo see http://sig9.com/articles/samba-automount-freebsd.
 
 Bug fixes:
