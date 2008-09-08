@@ -63,6 +63,7 @@ Minors changes:
   WebGUI. This enables the user to add additional paramaters to rsyncd.conf.
 - Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending of a test email
   whenever the service (smartd) is started.
+- Add coments to ISCSI extents/devices/targets (FR 2099023).
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.

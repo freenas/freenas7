@@ -288,12 +288,14 @@
 			<name>xxx</name>
 			<path>xxx</path> // File path (/mnt/sharename/extent/extent0) or device name (/dev/ad1).
 			<size>xxx</size> // Size in MB.
+			<comment>xxx<comment>
 		</extent>
 		<device>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<type>RAID0|RAID1</type>
 			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
+			<comment>xxx<comment>
 		</device>
 		<target>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
@@ -302,6 +304,7 @@
 			<flags>rw</flags>
 			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
 			<subnet>xxx</subnet>
+			<comment>xxx<comment>
 		</target>
 		-->
 	</iscsitarget>

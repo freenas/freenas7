@@ -54,6 +54,7 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 	$pconfig['name'] = $a_iscsitarget_extent[$id]['name'];
 	$pconfig['path'] = $a_iscsitarget_extent[$id]['path'];
 	$pconfig['size'] = $a_iscsitarget_extent[$id]['size'];
+	$pconfig['comment'] = $a_iscsitarget_extent[$id]['comment'];
 
 	// Check if a device is used as target.
 	$pconfig['type'] = "device";
@@ -73,6 +74,7 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 	$pconfig['path'] = "";
 	$pconfig['size'] = "";
 	$pconfig['type'] = "device";
+	$pconfig['comment'] = "";
 }
 
 if ($_POST) {
@@ -103,6 +105,7 @@ if ($_POST) {
 		$iscsitarget_extent = array();
 		$iscsitarget_extent['uuid'] = $_POST['uuid'];
 		$iscsitarget_extent['name'] = $_POST['name'];
+		$iscsitarget_extent['comment'] = $_POST['comment'];
 		if ("device" === $_POST['type']) {
 			$diskinfo = disks_get_diskinfo($_POST['device']);
 			$iscsitarget_extent['path'] = $diskinfo['name'];
@@ -160,6 +163,7 @@ function type_change() {
 					<?php $a_device = array(); $a_device[''] = gettext("Must choose one"); foreach (get_conf_all_disks_list_filtered() as $diskv) { if (0 == strcmp($diskv['size'], "NA")) continue; if (1 == disks_exists($diskv['devicespecialfile'])) continue; $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})"); }?>
 					<?php html_combobox("device", gettext("Device"), $pconfig['path'], $a_device, "", true);?>
 					<?php html_inputbox("size", gettext("File size"), $pconfig['size'], gettext("Size in MB."), true, 10);?>
+					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
