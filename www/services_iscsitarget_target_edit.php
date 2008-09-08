@@ -70,6 +70,7 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 	$pconfig['storage'] = $a_iscsitarget_target[$id]['storage'];
 	$pconfig['ipaddr'] = $a_iscsitarget_target[$id]['ipaddr'];
 	$pconfig['subnet'] = $a_iscsitarget_target[$id]['subnet'];
+	$pconfig['comment'] = $a_iscsitarget_target[$id]['comment'];
 } else {
 	// Find next unused ID.
 	$targetid = 0;
@@ -86,6 +87,7 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 	$pconfig['network'] = "";
 	$pconfig['ipaddr'] = "";
 	$pconfig['subnet'] = "24";
+	$pconfig['comment'] = "";
 }
 
 if ($_POST) {
@@ -115,6 +117,7 @@ if ($_POST) {
 		$iscsitarget_target['storage'] = $_POST['storage'];
 		$iscsitarget_target['ipaddr'] = gen_subnet($_POST['ipaddr'], $_POST['subnet']);
 		$iscsitarget_target['subnet'] = $_POST['subnet'];
+		$iscsitarget_target['comment'] = $_POST['comment'];
 
 		if (isset($id) && $a_iscsitarget_target[$id]) {
 			$a_iscsitarget_target[$id] = $iscsitarget_target;
@@ -175,6 +178,7 @@ if ($_POST) {
 					?>
 					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
+					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
