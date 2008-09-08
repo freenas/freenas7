@@ -1,22 +1,28 @@
 PORTNAME=			nano
-PORTVERSION=	1.0
+PORTVERSION=	2.0.8
 CATEGORIES=		editors
 COMMENT=			Nano's ANOther editor, an enhanced free Pico clone
 MAINTAINER=		votdev@gmx.de
 
-# No files are needed to be fetched.
-DISTFILES?=
-# No build is required for this port.
-NO_BUILD?=	yes
-# Don't register a port installation as a package.
-NO_PKG_REGISTER?=	yes
-# Set default target to execute when a port is calling a dependency.
-ALWAYS_BUILD_DEPENDS=	yes
-DEPENDS_TARGET=	clean build
+MASTER_SITES=	http://www.nano-editor.org/dist/v2.0/ \
+							http://www.ewtoo.org/~astyanax/nano/dist/v2.0/
 
-BUILD_DEPENDS=	nano:${PORTSDIR}/editors/nano
+GNU_CONFIGURE=	yes
+USE_GETTEXT=		yes
+CONFIGURE_ARGS=	--enable-all
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+								LDFLAGS="-L${LOCALBASE}/lib"
+
+.include <bsd.port.pre.mk>
+
+# requires wide character curses
+.if (${OSVERSION} < 602107) || (${OSVERSION} >= 700000 && ${OSVERSION} < 700033)
+CONFIGURE_ARGS+=--disable-utf8
+.else
+CONFIGURE_ARGS+=--enable-utf8
+.endif
 
 do-install:
 	${INSTALL_PROGRAM} -v ${PORTSDIR}/editors/nano/work/nano*/src/nano ${FREENAS_ROOTFS}/usr/local/bin; \
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
