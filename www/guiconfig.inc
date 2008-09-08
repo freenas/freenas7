@@ -489,7 +489,7 @@ function ui_get_updatenotification($key) {
 function ui_process_updatenotification($key, $function) {
 	$a_notification = ui_get_updatenotification($key);
 	if (!is_array($a_notification))
-		return 1;
+		return 0;
 
 	foreach ($a_notification as $notificationv) {
 		if (0 != call_user_func($function, $notificationv['mode'], $notificationv['data']))
