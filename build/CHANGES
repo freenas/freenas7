@@ -52,6 +52,7 @@ Majors changes:
 - Add bash to support better scripting capabilities for experts.
 - Add 'Run now' button for CRON jobs (FR 2062970).
 - Upgrade Samba to 3.0.32.
+- Upgrade nano to 2.0.8.
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
