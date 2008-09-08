@@ -2,7 +2,7 @@
 <?php
 /*
 	services_daap.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("DAAP"));
+$pgtitle = array(gettext("Services"), gettext("iTunes/DAAP"));
 
 if(!is_array($config['daap']))
 	$config['daap'] = array();
