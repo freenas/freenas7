@@ -1,6 +1,6 @@
 PORTNAME=			samba
 PORTVERSION=	3.0.32
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
@@ -10,15 +10,14 @@ MASTER_SITES=				${MASTER_SITE_SAMBA}
 MASTER_SITE_SUBDIR=	. old-versions rc pre
 DISTNAME=						${PORTNAME}-${PORTVERSION:S/.p/pre/:S/.r/rc/}
 
-VARDIR?=							/var
-SAMBA_LOGFILEBASE=		${VARDIR}/log/samba
-SAMBA_PIDDIR=					${VARDIR}/run
-SAMBA_PRIVATEDIR=			${VARDIR}/etc/private
-SAMBA_CONFIGDIR=			${VARDIR}/etc
-SAMBA_LOCKDIR=				${VARDIR}/run
-SAMBA_LIBDIR=					/usr/local/lib
-SAMBA_MODULEDIR=			${SAMBA_LIBDIR}/samba
-SAMBA_CONFIG?=				smb.conf
+VARDIR?=						/var
+SAMBA_LOGFILEBASE=	${VARDIR}/log/samba
+SAMBA_PIDDIR=				${VARDIR}/run
+SAMBA_PRIVATEDIR=		${VARDIR}/etc/private
+SAMBA_CONFIGDIR=		${VARDIR}/etc
+SAMBA_LOCKDIR=			${VARDIR}/run
+SAMBA_LIBDIR=				/usr/local/lib
+SAMBA_MODULEDIR=		${SAMBA_LIBDIR}/samba
 
 USE_ICONV=				yes
 GNU_CONFIGURE=		yes
@@ -33,6 +32,7 @@ USE_OPENLDAP=			yes
 WRKSRC=						${WRKDIR}/${DISTNAME}/source
 
 CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
+									--enable-largefile \
 									--disable-cups \
 									--with-ads \
 									--with-pam \
@@ -51,28 +51,10 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--with-ldap \
 									--with-libiconv="${LOCALBASE}" \
 									--with-sendfile-support \
-									--with-quotas \
-									--without-dnsupdate \
 									--with-acl-support \
-									--with-readline  \
-									--without-libsmbclient \
-									--without-libmsrpc \
-									--without-libsmbsharemodes \
-									--without-python \
-									--without-libaddns \
-									--with-included-iniparser \
-									--enable-largefile \
-									--disable-debug \
-									--disable-socket-wrapper \
-									--disable-developer \
-									--disable-krb5developer \
-									--disable-dmalloc \
-									--without-profiling-data \
-									--with-utmp \
-									--disable-fam \
-									--without-aio-support \
-									--without-cluster-support \
-									--with-included-popt
+									--with-quotas \
+									--with-readline \
+									--with-utmp
 
 post-patch:
 		@${REINPLACE_CMD} -e 's/%%SAMBA_CONFIG%%/${SAMBA_CONFIG}/' \
