@@ -66,6 +66,7 @@ Minors changes:
 - Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending of a test email
   whenever the service (smartd) is started.
 - Add comments to ISCSI extents/devices/targets (FR 2099023).
+- Allow mt-daapd (iTunes) to stream WMA files.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
