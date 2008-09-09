@@ -1,20 +1,46 @@
 PORTNAME=			zoneinfo
-PORTVERSION=	1.0
+DISTVERSION=	2008e
+PORTREVISION=	1
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
 MAINTAINER=		votdev@gmx.de
 
-# No files are needed to be fetched.
-DISTFILES?=
-# No build is required for this port.
-NO_BUILD?=	yes
-# Don't register a port installation as a package.
-NO_PKG_REGISTER?=	yes
-# Set default target to execute when a port is calling a dependency.
-ALWAYS_BUILD_DEPENDS=	yes
-DEPENDS_TARGET=	clean build
+MASTER_SITES=	ftp://elsie.nci.nih.gov/pub/
+DISTNAME=			tzdata${DISTVERSION}
 
-BUILD_DEPENDS=	zoneinfo:${PORTSDIR}/misc/zoneinfo
+WRKSRC=				${WRKDIR}
+PREFIX=				/usr
+
+TZFILES=			africa antarctica asia australasia etcetera europe \
+							factory northamerica southamerica systemv
+POSIXRULES=		America/New_York
+
+.include <bsd.port.pre.mk>
+
+# The following country codes can be missing from /usr/share/misc/iso3166 and
+# shouldn't appear in the zoneinfo file.
+MISSING=	ax bl gg im je me mf rs
+
+.ifndef NOMISSING
+.for M in ${MISSING}
+HAS_${M:U}!=	${GREP} -c ^${M:U} /usr/share/misc/iso3166 || ${TRUE}
+.if ${HAS_${M:U}} == "0"
+EXTRA_PATCHES+=	${FILESDIR}/patchremove-${M}
+.endif
+.endfor
+.endif
+
+do-build:
+	umask 022; \
+	cd ${WRKSRC}; \
+	zic -d ${WRKSRC}/zoneinfo -p ${POSIXRULES} -m ${NOBINMODE} \
+		${LEAPFILE} -y ${.OBJDIR}/yearistype ${TZFILES}
+
+test-patches:
+.for M in ${MISSING}
+	make clean
+	NOMISSING=1 EXTRA_PATCHES=${FILESDIR}/patchremove-${M} make patch
+.endfor
 
 do-install:
 # Compress zoneinfo data, exclude some useless files.
@@ -24,4 +50,4 @@ do-install:
 	${ECHO_CMD} "zone.tab" >> ${WRKSRC}/zoneinfo.exlude
 	${TAR} -c -v -f - -X ${WRKSRC}/zoneinfo.exlude -C ${PORTSDIR}/misc/zoneinfo/work/zoneinfo/ . | ${GZIP_CMD} -cv > ${FREENAS_ROOTFS}/usr/share/zoneinfo.tgz
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
