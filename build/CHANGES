@@ -53,6 +53,7 @@ Majors changes:
 - Add 'Run now' button for CRON jobs (FR 2062970).
 - Upgrade Samba to 3.0.32.
 - Upgrade nano to 2.0.8.
+- Add AFP3.2 (FPSyncDir) support to netatalk.
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
@@ -66,7 +67,7 @@ Minors changes:
 - Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending of a test email
   whenever the service (smartd) is started.
 - Add comments to ISCSI extents/devices/targets (FR 2099023).
-- Allow mt-daapd (iTunes) to stream WMA files.
+- Modify mt-daapd (iTunes) to stream WMA files.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
