@@ -24,7 +24,7 @@ Known bugs:
 NEED TESTING:
 - IPv6: auto mode
 - All services using IPv6 address (NFS, FTP, etc...)
-- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accesing to share
+- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accessing to share
 - Need to write an online-test procedure
 
 Help needed:
@@ -65,7 +65,7 @@ Minors changes:
   WebGUI. This enables the user to add additional paramaters to rsyncd.conf.
 - Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending of a test email
   whenever the service (smartd) is started.
-- Add coments to ISCSI extents/devices/targets (FR 2099023).
+- Add comments to ISCSI extents/devices/targets (FR 2099023).
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
@@ -168,7 +168,7 @@ Majors changes:
 - Use a memory filesystem for /var on LiveCD and 'embedded' installations. Default size is
   32MB. You can modify it through the rc.conf variable 'varsize'.
 - Add WEP/WPA support to WLAN interfaces.
-- Add user acces restrictions to mount points.
+- Add user access restrictions to mount points.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
