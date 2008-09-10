@@ -20,6 +20,8 @@ load_rc_config "${name}"
 # Custom commands
 start_precmd="start_precmd"
 stop_postcmd="stop_postcmd"
+updatedb_cmd="updatedb_cmd"
+extra_commands="updatedb"
 
 # Defaults
 fuppes_enable=${fuppes_enable:-"NO"}
@@ -435,6 +437,19 @@ stop_postcmd()
 {
 	# Delete multicast route.
 	/sbin/route delete -net 239.0.0.0 >/dev/null 2>&1
+}
+
+updatedb_cmd()
+{
+	local _if _port _ip
+
+	# Get interface and port used for uPnP.
+	_if=`configxml_get "//upnp/if"`
+	_port=`configxml_get "//upnp/port"`
+	_ip=`get_ipaddr inet ${_if}`
+
+	# Initiate database update.
+	/usr/bin/fetch -q -o - http://${_ip}:${_port}/presentation/options.html?db=update 1>/dev/null 2>&1
 }
 
 run_rc_command "$1"
