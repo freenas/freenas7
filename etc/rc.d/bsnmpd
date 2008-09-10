@@ -99,7 +99,7 @@ mkconf_cmd()
 			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;netgraph&quot; = &quot;/usr/lib/snmp_netgraph.so&quot;" -n \
 			-n \
-			-o "%netgraph" -n \
+			-o "#netgraph" -n \
 			-o "begemotNgControlNodeName = &quot;snmpd&quot;" -n \
 			-n \
 		-b \
