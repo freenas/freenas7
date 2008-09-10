@@ -68,6 +68,7 @@ Minors changes:
   whenever the service (smartd) is started.
 - Add comments to ISCSI extents/devices/targets (FR 2099023).
 - Modify mt-daapd (iTunes) to stream WMA files.
+- Add extra command 'updatedb' to /etc/rc.d/fuppes script to rebuild database.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
