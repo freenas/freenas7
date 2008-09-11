@@ -12,6 +12,7 @@ function genhtmltitle($title) {
 // Menu items.
 // System
 $menu['system']['desc'] = gettext("System");
+$menu['system']['link'] = "";
 $menu['system']['menuitem'] = array();
 $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
@@ -28,6 +29,7 @@ $menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "
 
 // Interfaces
 $menu['interfaces']['desc'] = gettext("Interfaces");
+$menu['interfaces']['link'] = "";
 $menu['interfaces']['menuitem'] = array();
 if (!isset($config['system']['webgui']['noassigninterfaces'])) {
 	$menu['interfaces']['menuitem'][] = array("desc" => "Management", "link" => "interfaces_assign.php", "visible" => true);
@@ -40,6 +42,7 @@ for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 
 // Disks
 $menu['disks']['desc'] = gettext("Disks");
+$menu['disks']['link'] = "";
 $menu['disks']['menuitem'] = array();
 $menu['disks']['menuitem'][] = array("desc" => gettext("Management"), "link" => "disks_manage.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Software RAID"), "link" => "disks_raid_gmirror.php", "visible" => true);
@@ -50,6 +53,7 @@ $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" =>
 
 // Services
 $menu['services']['desc'] = gettext("Services");
+$menu['services']['link'] = "services_info.php";
 $menu['services']['menuitem'] = array();
 $menu['services']['menuitem'][] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "visible" => true);
@@ -69,6 +73,7 @@ $menu['services']['menuitem'][] = array("desc" => gettext("BitTorrent"), "link" 
 
 // Access
 $menu['access']['desc'] = gettext("Access");
+$menu['access']['link'] = "";
 $menu['access']['menuitem'] = array();
 $menu['access']['menuitem'][] = array("desc" => gettext("Users and Groups"), "link" => "access_users.php", "visible" => true);
 $menu['access']['menuitem'][] = array("desc" => gettext("Active Directory"), "link" => "access_ad.php", "visible" => true);
@@ -77,6 +82,7 @@ $menu['access']['menuitem'][] = array("desc" => gettext("NIS"), "link" => "notav
 
 // Status
 $menu['status']['desc'] = gettext("Status");
+$menu['status']['link'] = "index.php";
 $menu['status']['menuitem'] = array();
 $menu['status']['menuitem'][] = array("desc" => gettext("System"), "link" => "index.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => gettext("Process"), "link" => "status_process.php", "visible" => true);
@@ -88,12 +94,14 @@ $menu['status']['menuitem'][] = array("desc" => gettext("Email Report"), "link" 
 
 // Advanced
 $menu['advanced']['desc'] = gettext("Advanced");
+$menu['advanced']['link'] = "";
 $menu['advanced']['menuitem'] = array();
 $menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => "exec.php", "visible" => true);
 $menu['advanced']['menuitem'][] = array("desc" => gettext("Edit File"), "link" => "system_edit.php", "visible" => true);
 
 // Diagnostics
 $menu['diagnostics']['desc'] = gettext("Diagnostics");
+$menu['diagnostics']['link'] = "";
 $menu['diagnostics']['menuitem'] = array();
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Logs"), "link" => "diag_logs.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Information"), "link" => "diag_infos.php", "visible" => true);
@@ -103,8 +111,9 @@ $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" =
 
 // Help
 $menu['help']['desc'] = gettext("Help");
+$menu['help']['link'] = "";
 $menu['help']['menuitem'] = array();
-$menu['help']['menuitem'][] = array("desc" => gettext("Knowledgebase"), "link" => "http://www.freenaskb.info/kb/", "visible" => true, "target" => "_blank");
+$menu['help']['menuitem'][] = array("desc" => gettext("Knowledgebase"), "link" => "http://www.freenaskb.info/kb", "visible" => true, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("Release notes"), "link" => "changes.php", "visible" => true);
 $menu['help']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
 
@@ -112,7 +121,7 @@ function display_menu($menuid) {
 	global $menu;
 
 	echo "<li>\n";
-	echo "	<a href=\"\" onmouseover=\"mopen('{$menuid}')\" onmouseout=\"mclosetime()\">{$menu[$menuid]['desc']}</a>\n";
+	echo "	<a href=\"{$menu[$menuid]['link']}\" onmouseover=\"mopen('{$menuid}')\" onmouseout=\"mclosetime()\">{$menu[$menuid]['desc']}</a>\n";
 	echo "	<div id=\"{$menuid}\" onmouseover=\"mcancelclosetime()\" onmouseout=\"mclosetime()\">\n";
 
 	# Display menu items.

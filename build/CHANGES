@@ -69,6 +69,7 @@ Minors changes:
 - Add comments to ISCSI extents/devices/targets (FR 2099023).
 - Modify mt-daapd (iTunes) to stream WMA files.
 - Add extra command 'updatedb' to /etc/rc.d/fuppes script to rebuild database.
+- Add WebGUI page to display state of all services. Click on 'Services' in the navigation bar.
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
