@@ -22,8 +22,8 @@ start_precmd="start_precmd"
 stop_postcmd="stop_postcmd"
 rebuilddb_cmd="dboptions_cmd"
 updatedb_cmd="dboptions_cmd"
-updatevcont_cmd="dboptions_cmd"
-extra_commands="rebuilddb updatedb updatevcont"
+rebuildvcont_cmd="dboptions_cmd"
+extra_commands="rebuilddb updatedb rebuildvcont"
 
 # Defaults
 fuppes_enable=${fuppes_enable:-"NO"}
@@ -460,7 +460,7 @@ dboptions_cmd()
 		updatedb)
 			_param="db=update";
 			;;
-		updatevcont)
+		rebuildvcont)
 			_param="vcont=rebuild";
 			;;
 	esac
