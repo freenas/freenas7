@@ -24,15 +24,12 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $FreeBSD: src/etc/rc.d/var,v 1.40.2.4 2008/01/29 00:33:16 dougb Exp $
+# $FreeBSD: src/etc/rc.d/var,v 1.44 2007/12/08 23:00:28 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
-# - Remove useless code
-# ToDo:
-# - Relocate code to populate /var from /etc/rc to this file ASAP
-# - Add customized mount_md function
-#
+# - Add keyword nostart. Script will be executed in /etc/rc.
+# - Remove useless code.
 
 # PROVIDE: var
 # REQUIRE: FILESYSTEMS
@@ -71,6 +68,11 @@ mount_md()
 	/sbin/mount_unionfs ${flags} ${varmfs_root}/${device} ${2}
 }
 
+populate_var()
+{
+	/usr/sbin/mtree -deU -f /etc/mtree/BSD.var.dist -p /var > /dev/null
+}
+
 # If we do not have a writable /var, create a memory filesystem for /var
 # unless told otherwise by rc.conf.  We don't have /usr yet so use mkdir
 # instead of touch to test.  We want mount to record its mounts so we
@@ -88,6 +90,36 @@ case "${varmfs}" in
 	else
 		mount_md ${varsize} /var "${varmfs_flags}"
 	fi
+esac
+
+
+# If we have an empty looking /var, populate it, but only if we have
+# /usr available.  Hopefully, we'll eventually find a workaround, but
+# in realistic diskless setups, we're probably ok.
+case "${populate_var}" in
+[Yy][Ee][Ss])
+	populate_var
+	;;
+[Nn][Oo])
+	exit 0
+	;;
+*)
+	if [ -d /var/run -a -d /var/db -a -d /var/empty ] ; then
+		true
+	elif [ -x /usr/sbin/mtree ] ; then
+		populate_var
+	else
+		# We need mtree to populate /var so try mounting /usr.
+		# If this does not work, we can not boot so it is OK to
+		# try to mount out of order.
+		mount /usr
+		if [ ! -x /usr/sbin/mtree ] ; then
+			exit 1
+		else
+			populate_var
+		fi
+	fi
+	;;
 esac
 
 # Make sure we have /var/log/lastlog and /var/log/wtmp files

@@ -26,7 +26,6 @@ setvar()
 			# If running from liveCD or embedded use a memory filesystem for /var.
 			eval /usr/local/sbin/rconf attribute set varmfs "YES";
 			eval /usr/local/sbin/rconf attribute set varmfs_flags "-o copymode=transparent";
-			eval /usr/local/sbin/rconf attribute set populate_var "NO";
 			;;
 	esac
 }

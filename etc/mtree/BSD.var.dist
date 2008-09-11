@@ -1,0 +1,38 @@
+# To create this file use:
+# mtree -c -d -i -n -k uname,gname,mode,nochange -p /var > BSD.var.dist
+#
+
+/set type=dir uname=root gname=wheel mode=0755
+		db
+		..
+		empty
+		..
+    etc            
+        iscsi          
+        ..
+        private        
+        ..
+        ssh            
+        ..
+        ssl            
+            private        
+            ..
+        ..
+    ..
+    log            
+        samba          
+        ..
+    ..
+    mount          
+    ..
+    run            
+    ..
+    spool          
+        lock           
+        ..
+    ..
+    cron          
+        tabs           
+        ..
+    ..
+..
