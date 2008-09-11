@@ -2,7 +2,7 @@
 <?php
 /*
 	services_upnp.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -54,7 +54,7 @@ $pconfig['web'] = isset($config['upnp']['web']);
 $pconfig['home'] = $config['upnp']['home'];
 $pconfig['profile'] = $config['upnp']['profile'];
 $pconfig['deviceip'] = $config['upnp']['deviceip'];
-$pconfig['transcoding'] = $config['upnp']['transcoding'];
+$pconfig['transcoding'] = isset($config['upnp']['transcoding']);
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
