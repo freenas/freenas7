@@ -12,12 +12,12 @@
 # Script usage:
 # rc.firmware <args> [<file>]
 # Where <args> can take the following values:
-# - enable: Create a 40MB ram drive in /ftmp
+# - enable: Create a 48MB ram drive in /ftmp
 # - disable: Erase ram drive
 # - upgrade <file> : Do an embedded release (IMG file) upgrade using the file <file>
 # - fullupgrade <file> : Do a full release (TGZ file) upgrade using the file <file>
 
-SIZE="40M"
+SIZE="48M"
 CFDEVICE=`cat /var/etc/cfdevice`
 
 backup_chflags() {
