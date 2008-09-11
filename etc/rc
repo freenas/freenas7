@@ -78,11 +78,6 @@ if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
 	ln -s /etc/cfdevice /var/etc/cfdevice
 fi
 
-# If the firmware.lock file exists, delete it (if not, all WebGUI pages will be redirected to upgrade page)
-if [ -f "/var/run/firmware.lock" ] ; then
-	rm -f /var/run/firmware.lock
-fi
-
 # Configure the shared library cache
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
