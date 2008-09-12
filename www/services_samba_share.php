@@ -38,13 +38,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("CIFS/SMB"), gettext("Shares"));
 
-if (!is_array($config['samba']['share']))
-	$config['samba']['share'] = array();
-
-array_sort_key($config['samba']['share'], "name");
-
-$a_share = &$config['samba']['share'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -63,6 +56,12 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['samba']['share']))
+	$config['samba']['share'] = array();
+
+array_sort_key($config['samba']['share'], "name");
+$a_share = &$config['samba']['share'];
 
 if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {
