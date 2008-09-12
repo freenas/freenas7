@@ -38,10 +38,10 @@ Majors changes:
 - Add nullfs.ko and unionfs.ko kernel modules.
 - Display warning message when user is going to delete an software RAID or encrypted volume.
 - Add 'Recursive', 'Times', 'Compress' and 'Archive' checkbox to RSYNC client/local WebGUI.
-  Also add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion algorithm
-  when 'Delete' option has been choosen.
-- Add 'Execute now' button in RSYNC client/local WebGUI. This button is only visible if you
-  edit existing RSYNC jobs (because of implementation reasons).
+  Also add 'Delete algorithm' option in RSYNC client/local WebGUI to specify deletion
+  algorithm when 'Delete' option has been choosen.
+- Add 'Execute now' button in RSYNC client/local WebGUI. This button is only visible
+  if you edit existing RSYNC jobs (because of implementation reasons).
 - Add nVidia nForce MCP on-board ethernet support.
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.
@@ -54,18 +54,21 @@ Majors changes:
 - Upgrade Samba to 3.0.32.
 - Upgrade nano to 2.0.8.
 - Add AFP3.2 (FPSyncDir) support to netatalk.
+- Add patch (increase number of kernel page tables) to fix booting problem on
+  systems > 2GB RAM.
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
 - Display additional information when resetting WebGUI password (FR 2063008).
-- Add 'Extra options' to SSH services WebGUI page (FR 2062665). This enables the user to add
-  additional options to /etc/ssh/sshd_config.
-- Add 'Auxiliary parameters' to CIFS/SMB shares WebGUI. This enables the user to add additional
-  paramaters to the shares' configuration in smb.conf.
-- Add 'Auxiliary parameters' to 'Services|RSYNCD|Server|Settings' and 'Services|RSYNCD|Server|Module|Add/Edit'
-  WebGUI. This enables the user to add additional paramaters to rsyncd.conf.
-- Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending of a test email
-  whenever the service (smartd) is started.
+- Add 'Extra options' to SSH services WebGUI page (FR 2062665). This enables the
+  user to add additional options to /etc/ssh/sshd_config.
+- Add 'Auxiliary parameters' to CIFS/SMB shares WebGUI. This enables the user to
+  add additional paramaters to the shares' configuration in smb.conf.
+- Add 'Auxiliary parameters' to 'Services|RSYNCD|Server|Settings' and
+  'Services|RSYNCD|Server|Module|Add/Edit' WebGUI. This enables the user to add
+  additional paramaters to rsyncd.conf.
+- Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending
+  of a test email whenever the service (smartd) is started.
 - Add comments to ISCSI extents/devices/targets (FR 2099023).
 - Modify mt-daapd (iTunes) to stream WMA files.
 - Add extra command 'updatedb' to /etc/rc.d/fuppes script to rebuild database.
@@ -73,8 +76,9 @@ Minors changes:
 
 Bug fixes:
 - Add missing kernel modules required by mount_smbfs.
-- Fix lagg interface initialization bug (BR 2003231). WebGUI was not accessible after creating a lagg
-  interface without assigning it to LAN or OPT asap before rebooting.
+- Fix lagg interface initialization bug (BR 2003231). WebGUI was not accessible
+  after creating a lagg interface without assigning it to LAN or OPT asap before
+  rebooting.
 - Modify misc /etc/rc.d scripts to allow customizing of their variables via /etc/rc.conf.
 - Fix crash on AMD64 when trying to load fuse.ko kernel module.
 
@@ -85,7 +89,8 @@ Permanent restrictions:
   FreeBSD does not support that feature.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
+  overriden by the IPv4 DNS server.
 
 FreeNAS 0.69b2 (Stone burner):
 ------------------------------
