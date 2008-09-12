@@ -16,14 +16,17 @@ $menu['system']['link'] = "";
 $menu['system']['menuitem'] = array();
 $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
+$menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
+$menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
 }
 $menu['system']['menuitem'][] = array("desc" => gettext("Firmware"), "link" => "system_firmware.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Backup/Restore"), "link" => "system_backup.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Factory defaults"), "link" => "system_defaults.php", "visible" => true);
+$menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Reboot"), "link" => "reboot.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "shutdown.php", "visible" => true);
 
@@ -70,6 +73,8 @@ $menu['services']['menuitem'][] = array("desc" => gettext("SNMP"), "link" => "se
 $menu['services']['menuitem'][] = array("desc" => gettext("UPS"), "link" => "services_ups.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Webserver"), "link" => "services_websrv.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("BitTorrent"), "link" => "services_bittorrent.php", "visible" => true);
+$menu['services']['menuitem'][] = array("type" => "separator", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => gettext("Information"), "link" => "services_info.php", "visible" => true);
 
 // Access
 $menu['access']['desc'] = gettext("Access");
@@ -105,6 +110,7 @@ $menu['diagnostics']['link'] = "";
 $menu['diagnostics']['menuitem'] = array();
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Logs"), "link" => "diag_logs.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Information"), "link" => "diag_infos.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Ping/Traceroute"), "link" => "diag_ping.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("ARP Tables"), "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" => "diag_routes.php", "visible" => true);
@@ -130,8 +136,13 @@ function display_menu($menuid) {
 		if (!$menuv['visible']) {
 			continue;
 		}
-		# Display menuitem.
-		echo "<a href=\"{$menuv['link']}\" target=\"{$menuv['target']}\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
+		if ("separator" !== $menuv['type']) {
+			# Display menuitem.
+			echo "<a href=\"{$menuv['link']}\" target=\"{$menuv['target']}\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
+		} else {
+			# Display separator.
+			echo "<span class=\"tabseparator\">&nbsp;</span>";
+		}
 	}
 
 	echo "	</div>\n";

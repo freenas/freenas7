@@ -54,3 +54,8 @@
 #navbarmenu div a:hover {
 	background: transparent url(/navbar_active.gif) center center repeat-x;
 }
+#navbarmenu div span.tabseparator {
+	background: #AAAAAA;
+	display: block;
+	height: 1px;
+}
