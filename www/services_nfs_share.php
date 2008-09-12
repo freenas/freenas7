@@ -38,13 +38,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("NFS"), gettext("Shares"));
 
-if(!is_array($config['nfsd']['share']))
-	$config['nfsd']['share'] = array();
-
-array_sort_key($config['nfsd']['share'], "path");
-
-$a_share = &$config['nfsd']['share'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -67,6 +60,12 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['nfsd']['share']))
+	$config['nfsd']['share'] = array();
+
+array_sort_key($config['nfsd']['share'], "path");
+$a_share = &$config['nfsd']['share'];
 
 if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {

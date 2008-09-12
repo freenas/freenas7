@@ -38,19 +38,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Server"), gettext("Modules"));
 
-if(!is_array($config['rsyncd']['module']))
-	$config['rsyncd']['module'] = array();
-
-array_sort_key($config['rsyncd']['module'], "name");
-
-$a_module = &$config['rsyncd']['module'];
-
-if($_POST) {
+if ($_POST) {
 	$pconfig = $_POST;
 
-	if($_POST['apply']) {
+	if ($_POST['apply']) {
 		$retval = 0;
-		if(!file_exists($d_sysrebootreqd_path)) {
+		if (!file_exists($d_sysrebootreqd_path)) {
 			$retval |= ui_process_updatenotification("rsyncd", "rsyncd_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("rsyncd");
@@ -63,6 +56,12 @@ if($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['rsyncd']['module']))
+	$config['rsyncd']['module'] = array();
+
+array_sort_key($config['rsyncd']['module'], "name");
+$a_module = &$config['rsyncd']['module'];
 
 if ($_GET['act'] === "del") {
 	if ($a_module[$_GET['id']]) {

@@ -35,13 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Management"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-array_sort_key($config['disks']['disk'], "name");
-
-$a_disk_conf = &$config['disks']['disk'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -62,6 +55,12 @@ if ($_POST) {
 		exit;
 	}
 }
+
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
+
+array_sort_key($config['disks']['disk'], "name");
+$a_disk_conf = &$config['disks']['disk'];
 
 if ($_GET['act'] === "del") {
 	if ($a_disk_conf[$_GET['id']]) {

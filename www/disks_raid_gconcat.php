@@ -35,13 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("JBOD"), gettext("Management"));
 
-if (!is_array($config['gconcat']['vdisk']))
-	$config['gconcat']['vdisk'] = array();
-
-array_sort_key($config['gconcat']['vdisk'], "name");
-
-$a_raid = &$config['gconcat']['vdisk'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -59,6 +52,12 @@ if ($_POST) {
 		exit;
 	}
 }
+
+if (!is_array($config['gconcat']['vdisk']))
+	$config['gconcat']['vdisk'] = array();
+
+array_sort_key($config['gconcat']['vdisk'], "name");
+$a_raid = &$config['gconcat']['vdisk'];
 
 if ($_GET['act'] === "del") {
 	unset($errormsg);

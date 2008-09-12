@@ -35,13 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Management"));
 
-if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
-
-array_sort_key($config['geli']['vdisk'], "devicespecialfile");
-
-$a_geli = &$config['geli']['vdisk'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -59,6 +52,12 @@ if ($_POST) {
 		exit;
 	}
 }
+
+if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
+
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
+$a_geli = &$config['geli']['vdisk'];
 
 if ($_GET['act'] === "del") {
 	if ($a_geli[$_GET['id']]) {

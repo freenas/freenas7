@@ -38,11 +38,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Cron"));
 
-if (!is_array($config['cron']['job']))
-	$config['cron']['job'] = array();
-
-$a_cron = &$config['cron']['job'];
-
 if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
@@ -58,6 +53,11 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['cron']['job']))
+	$config['cron']['job'] = array();
+
+$a_cron = &$config['cron']['job'];
 
 if ($_GET['act'] === "del") {
 	ui_set_updatenotification("cronjob", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);

@@ -38,19 +38,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("AFP"), gettext("Shares"));
 
-if (!is_array($config['afp']['share']))
-	$config['afp']['share'] = array();
-
-array_sort_key($config['afp']['share'], "name");
-
-$a_share = &$config['afp']['share'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
 	if ($_POST['apply']) {
 		$retval = 0;
-		if(!file_exists($d_sysrebootreqd_path)) {
+		if (!file_exists($d_sysrebootreqd_path)) {
 			$retval |= ui_process_updatenotification("afpshare", "afpshare_process_updatenotification");
 		  config_lock();
 			$retval |= rc_update_service("afpd");
@@ -63,6 +56,12 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['afp']['share']))
+	$config['afp']['share'] = array();
+
+array_sort_key($config['afp']['share'], "name");
+$a_share = &$config['afp']['share'];
 
 if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {

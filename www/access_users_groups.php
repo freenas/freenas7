@@ -35,14 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Access"), gettext("Groups"));
 
-if (!is_array($config['access']['group']))
-	$config['access']['group'] = array();
-
-array_sort_key($config['access']['group'], "name");
-
-$a_group = system_get_group_list();
-$a_group_conf = &$config['access']['group'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -60,6 +52,14 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['access']['group']))
+	$config['access']['group'] = array();
+
+array_sort_key($config['access']['group'], "name");
+$a_group_conf = &$config['access']['group'];
+
+$a_group = system_get_group_list();
 
 if ($_GET['act'] === "del") {
 	if ($a_group_conf[$_GET['id']]) {

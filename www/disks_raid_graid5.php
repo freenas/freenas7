@@ -35,13 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID5"), gettext("Management"));
 
-if (!is_array($config['graid5']['vdisk']))
-	$config['graid5']['vdisk'] = array();
-
-array_sort_key($config['graid5']['vdisk'], "name");
-
-$a_raid = &$config['graid5']['vdisk'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -59,6 +52,12 @@ if ($_POST) {
 		exit;
 	}
 }
+
+if (!is_array($config['graid5']['vdisk']))
+	$config['graid5']['vdisk'] = array();
+
+array_sort_key($config['graid5']['vdisk'], "name");
+$a_raid = &$config['graid5']['vdisk'];
 
 if ($_GET['act'] === "del") {
 	unset($errormsg);

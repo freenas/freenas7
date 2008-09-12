@@ -35,16 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Local"));
 
-if (!is_array($config['rsync'])) {
-	$config['rsync'] = array();
-	if (!is_array($config['rsync']['rsynclocal']))
-		$config['rsync']['rsynclocal'] = array();
-} else if (!is_array($config['rsync']['rsynclocal'])) {
-	$config['rsync']['rsynclocal'] = array();
-}
-
-$a_rsynclocal = &$config['rsync']['rsynclocal'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -63,6 +53,16 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['rsync'])) {
+	$config['rsync'] = array();
+	if (!is_array($config['rsync']['rsynclocal']))
+		$config['rsync']['rsynclocal'] = array();
+} else if (!is_array($config['rsync']['rsynclocal'])) {
+	$config['rsync']['rsynclocal'] = array();
+}
+
+$a_rsynclocal = &$config['rsync']['rsynclocal'];
 
 if ($_GET['act'] === "del") {
 	if ($a_rsynclocal[$_GET['id']]) {
