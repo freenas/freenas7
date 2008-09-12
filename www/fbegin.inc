@@ -56,7 +56,7 @@ $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" =>
 
 // Services
 $menu['services']['desc'] = gettext("Services");
-$menu['services']['link'] = "services_info.php";
+$menu['services']['link'] = "services_status.php";
 $menu['services']['menuitem'] = array();
 $menu['services']['menuitem'][] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "visible" => true);
@@ -74,7 +74,7 @@ $menu['services']['menuitem'][] = array("desc" => gettext("UPS"), "link" => "ser
 $menu['services']['menuitem'][] = array("desc" => gettext("Webserver"), "link" => "services_websrv.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("BitTorrent"), "link" => "services_bittorrent.php", "visible" => true);
 $menu['services']['menuitem'][] = array("type" => "separator", "visible" => true);
-$menu['services']['menuitem'][] = array("desc" => gettext("Information"), "link" => "services_info.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => gettext("Status"), "link" => "services_status.php", "visible" => true);
 
 // Access
 $menu['access']['desc'] = gettext("Access");

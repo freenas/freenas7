@@ -35,13 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Management"));
 
-if (!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
-
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
-$a_mount = &$config['mounts']['mount'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -71,6 +64,12 @@ if ($_POST) {
 		exit;
 	}
 }
+
+if (!is_array($config['mounts']['mount']))
+	$config['mounts']['mount'] = array();
+
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
+$a_mount = &$config['mounts']['mount'];
 
 if ($_GET['act'] === "del") {
 	if ($a_mount[$_GET['id']]) {

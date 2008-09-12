@@ -36,13 +36,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Hosts"));
 
-if (!is_array($config['system']['hosts']))
-	$config['system']['hosts'] = array();
-
-array_sort_key($config['system']['hosts'], "name");
-
-$a_hosts = &$config['system']['hosts'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -60,6 +53,12 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['system']['hosts']))
+	$config['system']['hosts'] = array();
+
+array_sort_key($config['system']['hosts'], "name");
+$a_hosts = &$config['system']['hosts'];
 
 if ($_GET['act'] === "del") {
 	ui_set_updatenotification("hosts", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);

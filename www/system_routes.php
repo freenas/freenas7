@@ -32,13 +32,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Static routes"));
 
-if (!is_array($config['staticroutes']['route']))
-	$config['staticroutes']['route'] = array();
-
-array_sort_key($config['staticroutes']['route'], "network");
-
-$a_routes = &$config['staticroutes']['route'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -54,6 +47,12 @@ if ($_POST) {
 		}
 	}
 }
+
+if (!is_array($config['staticroutes']['route']))
+	$config['staticroutes']['route'] = array();
+
+array_sort_key($config['staticroutes']['route'], "network");
+$a_routes = &$config['staticroutes']['route'];
 
 if ($_GET['act'] === "del") {
 	ui_set_updatenotification("routes", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);

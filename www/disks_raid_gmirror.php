@@ -35,13 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"), gettext("Management"));
 
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
-
-array_sort_key($config['gmirror']['vdisk'], "name");
-
-$a_raid = &$config['gmirror']['vdisk'];
-
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -59,6 +52,12 @@ if ($_POST) {
 		exit;
 	}
 }
+
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
+
+array_sort_key($config['gmirror']['vdisk'], "name");
+$a_raid = &$config['gmirror']['vdisk'];
 
 if ($_GET['act'] === "del") {
 	unset($errormsg);

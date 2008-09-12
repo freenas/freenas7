@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	services_info.php
+	services_status.php
 	Copyright (C) 2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("Information"));
+$pgtitle = array(gettext("Services"), gettext("Status"));
 
 $a_service[] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "config" => "samba");
 $a_service[] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "config" => "ftpd");
@@ -58,7 +58,7 @@ $a_service[] = array("desc" => gettext("BitTorrent"), "link" => "services_bittor
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
 						<td width="95%" class="listhdrr"><?=gettext("Service");?></td>
-						<td width="5%" class="listhdrc"><?=gettext("Status");?></td>
+						<td width="5%" class="listhdrc"><?=gettext("State");?></td>
           </tr>
   			  <?php foreach ($a_service as $servicev):?>
           <tr>
