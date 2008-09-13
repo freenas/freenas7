@@ -45,6 +45,7 @@ Majors changes:
 - Add nVidia nForce MCP on-board ethernet support.
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.
+  Thanks to Thomas Grønsten for fine tuning the PS3 settings.
 - Increase mfs_root size to 74MB (32bit) and 80MB (64bit).
 - CTorrent BitTorrent client has been replaced by Transmission which includes a WebGUI.
 - Upgrade inadyn-mt to 02.12.24.

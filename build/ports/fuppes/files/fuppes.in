@@ -272,7 +272,20 @@ EOF
         </file>
         <file ext="avi">
           <type>VIDEO_ITEM</type>
-          <mime_type>video/x-divx</mime_type>
+          <mime_type>video/divx</mime_type>
+        </file>
+        <file ext="vob">
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/mpeg</mime_type>
+        </file>
+        <file ext="ts">
+          <ext>mpeg</ext>
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/mpeg</mime_type>
+        </file>
+        <file ext="m2ts">
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/mp4</mime_type>
         </file>
         <file ext="mpg">
           <type>VIDEO_ITEM</type>
