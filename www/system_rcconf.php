@@ -85,6 +85,7 @@ function rcconf_process_updatenotification($mode, $data) {
 			if (is_array($config['system']['rcconf']['param'])) {
 				$index = array_search_ex($data, $config['system']['rcconf']['param'], "uuid");
 				if (false !== $index) {
+					mwexec2("/usr/local/sbin/rconf attribute remove {$config['system']['rcconf']['param'][$index]['name']}");
 					unset($config['system']['rcconf']['param'][$index]);
 					write_config();
 				}
