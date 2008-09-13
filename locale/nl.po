@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2008-06-20 10:55+0000\n"
-"Last-Translator: ubby <Unknown>\n"
+"PO-Revision-Date: 2008-08-22 14:33+0000\n"
+"Last-Translator: Lucky LIX <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-11 21:44+0000\n"
+"X-Launchpad-Export-Date: 2008-09-13 18:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -584,7 +584,7 @@ msgstr "%s interface (SSID '%s')"
 
 #, php-format
 msgid "%s is used to create %s volumes."
-msgstr ""
+msgstr "%s wordt gebruikt om %s volumes aan te maken."
 
 #, php-format
 msgid "%s of %sB"
@@ -662,12 +662,17 @@ msgid ""
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
 "local network and the capabilities of the adaptor. It may be specified "
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
 msgstr ""
+"Een sleutel zal ofwel 5 of 13 karakters (40 of 104 bits) zijn afhankelijk "
+"van het locale netwerk en de mogelijkheden van de adaptor. Het kan "
+"gespecificeerd worden ofwel als een gewone string ofwel als een string van "
+"hexadecimale cijfers voorgegaan door '0x'."
 
 msgid "A route to this destination network already exists."
 msgstr "Er bestaat al een route naar dit bestemmingsnetwerk."
@@ -724,7 +729,7 @@ msgid "A valid prefix (1-128) must be specified."
 msgstr "Een geldig voorzetsel (1-128) moet worden opgegeven"
 
 msgid "A valid systctl MIB value."
-msgstr ""
+msgstr "Een geldige systctl MIB-waarde"
 
 msgid "AD authentication disabled"
 msgstr "AD authenticatie uitgeschakeld"
@@ -748,7 +753,7 @@ msgid "Access"
 msgstr "Toegang"
 
 msgid "Access Restrictions"
-msgstr ""
+msgstr "Toegangsrestricties"
 
 msgid "Access mode"
 msgstr "Toegangs methode"
@@ -824,8 +829,9 @@ msgstr "Taak toevoegen"
 msgid "Add module"
 msgstr "Module toevoegen"
 
+#, fuzzy
 msgid "Add mount point"
-msgstr ""
+msgstr "Mountpunt toevoegen"
 
 msgid "Add option"
 msgstr "Optie toevoegen"
@@ -983,8 +989,9 @@ msgstr ""
 msgid "An host with this name already exists."
 msgstr "Een host met deze naam bestaat reeds."
 
+#, fuzzy
 msgid "An interface with the specified description already exists."
-msgstr ""
+msgstr "Er bestaat reeds een interface met de gespecificeerde beschrijving."
 
 msgid "Anonymous users only"
 msgstr "Enkel anonieme gebruikers"
@@ -1031,13 +1038,13 @@ msgid "Authorised network"
 msgstr "Geautoriseerd netwerk"
 
 msgid "Auto"
-msgstr ""
+msgstr "Automatisch"
 
 msgid "AutoScale"
 msgstr "AutoSchaling"
 
 msgid "Automatically generated test email."
-msgstr ""
+msgstr "Automatisch gegenereerde test-email."
 
 msgid "Auxiliary parameter"
 msgstr "Overige parameter"
@@ -1069,11 +1076,13 @@ msgstr "Basis DN"
 msgid "Browseable"
 msgstr "Verkenbaar"
 
+#, fuzzy
 msgid "CCMP"
-msgstr ""
+msgstr "CCMP"
 
+#, fuzzy
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD of oud type Software RAID"
@@ -1161,8 +1170,10 @@ msgstr "Botsingen"
 msgid "Cols"
 msgstr "Kolommen"
 
+#, fuzzy
 msgid "Comma separated list of directories to search for files to share."
 msgstr ""
+"Komma-gescheiden lijst van mappen om in naar bestanden te zoeken om te delen."
 
 msgid "Command"
 msgstr "Opdracht"
@@ -1247,10 +1258,10 @@ msgid "Cron job"
 msgstr "Cron-taak"
 
 msgid "DAAP"
-msgstr ""
+msgstr "DAAP"
 
 msgid "DAAP Server"
-msgstr ""
+msgstr "DAAP Server"
 
 msgid "DDP"
 msgstr "DDP"
@@ -1335,7 +1346,7 @@ msgid "Delete URL"
 msgstr "Wis URL"
 
 msgid "Delete algorithm"
-msgstr ""
+msgstr "Algoritme verwijderen"
 
 msgid "Delete all MIBs"
 msgstr "Verwijder alle MIBs"
@@ -1358,8 +1369,10 @@ msgstr "Schijf verwijderen"
 msgid "Delete extent"
 msgstr "Verwijder extentie"
 
+#, fuzzy
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
+"Bestanden verwijderen op de ontvangende zijde die niet bestaan op de zender."
 
 msgid "Delete group"
 msgstr "Groep verwijderen"
@@ -1376,8 +1389,9 @@ msgstr "Verwijder taak"
 msgid "Delete module"
 msgstr "Module wissen"
 
+#, fuzzy
 msgid "Delete mount point"
-msgstr ""
+msgstr "Mountpunt verwijderen"
 
 msgid "Delete option"
 msgstr "Verwijder optie"
@@ -1398,7 +1412,7 @@ msgid "Delete user"
 msgstr "Gebruiker verwijderen"
 
 msgid "Deleting"
-msgstr ""
+msgstr "Aan het verwijderen"
 
 msgid "Deny"
 msgstr "Weigeren"
@@ -1409,8 +1423,9 @@ msgstr "Omschrijving"
 msgid "Destination email address."
 msgstr "Ontvangend e-mailadres"
 
+#, fuzzy
 msgid "Destination host name or IP number."
-msgstr ""
+msgstr "Bestemming host-naam of IP-nummer."
 
 msgid "Destination network"
 msgstr "Bestemmingsnetwerk"
@@ -1590,7 +1605,7 @@ msgstr ""
 "gebruiken worden ongeldig (bv gedeeld station)!"
 
 msgid "Do you really want to delete this interface?"
-msgstr ""
+msgstr "Wilt u deze interface echt verwijderen?"
 
 msgid "Do you really want to delete this module?"
 msgstr "Weet je zeker dat je deze module wilt verwijderen?"
@@ -1603,7 +1618,7 @@ msgstr ""
 "gebruik van maken zullen ongeldig worden (bv gedeelde mappen)!"
 
 msgid "Do you really want to delete this option?"
-msgstr ""
+msgstr "Wilt u deze optie echt verwijderen?"
 
 msgid "Do you really want to delete this parameter?"
 msgstr "Wilt u deze parameter echt verwijderen?"
@@ -1627,6 +1642,8 @@ msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
+"Wilt u dit volume echt verwijderen?\\n!!! Merk op, alle data zal verloren "
+"gaan en kan niet gerecupereerd worden. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
@@ -1752,7 +1769,7 @@ msgid "Edit initiator"
 msgstr "Bewerk initiator"
 
 msgid "Edit interface"
-msgstr ""
+msgstr "Interface aanpassen"
 
 msgid "Edit job"
 msgstr "Bewerk taak"
@@ -1761,10 +1778,10 @@ msgid "Edit module"
 msgstr "Module bewerken"
 
 msgid "Edit mount point"
-msgstr ""
+msgstr "Mountpunt wijzigen"
 
 msgid "Edit option"
-msgstr ""
+msgstr "Optie aanpassen"
 
 msgid "Edit parameter"
 msgstr "Bewerk parameter"
@@ -1923,7 +1940,7 @@ msgstr ""
 "staandaard poort (80 voor HTTP, 443 voor HTTPS) niet wilt gebruiken."
 
 msgid "Enter a valid sysctl MIB name."
-msgstr ""
+msgstr "Vul een geldige sysctl MIB-naam in."
 
 #, fuzzy
 msgid ""
@@ -1946,6 +1963,8 @@ msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
+"Vul het paswoord in dat gebruikt zal worden in WPA-PSK-modus. Dit moet "
+"tussen 8 en 63 karakters lang zijn."
 
 msgid ""
 "Enter the path to the home directory of that user. Make sure that this path "
@@ -1972,7 +1991,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Fout: de wijziginen konden niet worden doorgevoerd (fout code %s)."
 
 msgid "Execute"
-msgstr ""
+msgstr "Uitvoeren"
 
 msgid "Execute command"
 msgstr "Commando uitvoeren"
@@ -2003,14 +2022,17 @@ msgstr ""
 msgid "Extra options"
 msgstr "Extra opties"
 
+#, fuzzy
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "Extra opties voor ifconfig (normaal leeg)."
 
+#, fuzzy
 msgid "Extra options to rsync (usually empty)."
-msgstr ""
+msgstr "Extra opties voor rsync (normaal leeg)."
 
+#, fuzzy
 msgid "FEC (Fast EtherChannel)"
-msgstr ""
+msgstr "FEC (Fast EtherChannel - Snel EtherKanaal)"
 
 msgid "FTP"
 msgstr "FTP"
@@ -2052,8 +2074,10 @@ msgstr "Maken van geheugenbestandsysteem is mislukt."
 msgid "Failed to send status report. Please check log files."
 msgstr "Fouten rapport versturen is mislukt. Controlleer de log bestanden."
 
+#, fuzzy
 msgid "Failed to send test email. Please check log files."
 msgstr ""
+"Test-email verzenden mislukt. Gelieve de logboekbestanden te controleren."
 
 msgid "Failed to upload metadata backup file."
 msgstr "Slaagde er niet in om meta-gegevens reservebestand te uploaden."
@@ -2158,8 +2182,9 @@ msgstr "GID"
 msgid "Gateway"
 msgstr "Gateway"
 
+#, fuzzy
 msgid "Gateway to be used to reach the destination network."
-msgstr ""
+msgstr "Gebruikte gateway om het bestemmings-netwerk te bereiken."
 
 msgid "General"
 msgstr "Algemeen"
@@ -2260,10 +2285,10 @@ msgid "Hosts"
 msgstr "Hosts"
 
 msgid "Hosts allow"
-msgstr ""
+msgstr "Hosts toestaan"
 
 msgid "Hosts deny"
-msgstr ""
+msgstr "Hosts weigeren"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2329,8 +2354,9 @@ msgstr "IPv6 adres"
 msgid "IPv6 addresses"
 msgstr "IPv6 adressen"
 
+#, fuzzy
 msgid "ISO file to be mounted."
-msgstr ""
+msgstr "Te mounten ISO-bestand."
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS servers"
@@ -2397,7 +2423,7 @@ msgid "In"
 msgstr "In"
 
 msgid "In most cases, 'public' is used here."
-msgstr ""
+msgstr "In de meeste gevallen, wordt 'publiek' hier gebruikt."
 
 msgid "Info"
 msgstr "Info"
@@ -2421,9 +2447,12 @@ msgid ""
 "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
 "use this option if you want to add an existing encrypted disk."
 msgstr ""
+"Schijf initialiseren en encrypteren. Dit zal ALLE data op uw schijf wissen! "
+"Gebruik deze optie niet als u een bestaande geëncrypteerde schijf wilt "
+"toevoegen."
 
 msgid "Initializing"
-msgstr ""
+msgstr "Aan het initialiseren"
 
 msgid "Initiator name"
 msgstr "Initiator naam"
@@ -2454,6 +2483,8 @@ msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
 msgstr ""
+"Het is onmogelijk 'Alleen anonieme gebruikers'- en 'Alleen lokale "
+"gebruikers'-authenticatie tegelijk te activeren."
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2474,8 +2505,9 @@ msgstr "Hou de diagnosegegevens in de navigatie uitgevouwen"
 msgid "Key"
 msgstr "Sleutel"
 
+#, fuzzy
 msgid "Key Management Protocol"
-msgstr ""
+msgstr "SleutelBeheerProtocol"
 
 msgid "Kill encrypted volume"
 msgstr "Gecodeerd station onbruikbaar maken"

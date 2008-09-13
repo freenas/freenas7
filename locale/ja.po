@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"Report-Msgid-Bugs-To:  \n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2007-04-05 14:26+0000\n"
-"Last-Translator: Hiroyuki Seino <Unknown>\n"
+"PO-Revision-Date: 2008-09-12 08:14+0000\n"
+"Last-Translator: MASAKI Asato <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-11 21:44+0000\n"
+"X-Launchpad-Export-Date: 2008-09-13 18:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -74,9 +74,6 @@ msgstr ""
 
 #~ msgid "Down"
 #~ msgstr "Down"
-
-#~ msgid "off"
-#~ msgstr "of"
 
 #~ msgid "on"
 #~ msgstr "on"
@@ -977,14 +974,14 @@ msgstr ""
 #~ msgstr "有効なサイズをターゲット値に指定しなければなりません．"
 
 msgid " interfaces:"
-msgstr " インタフェース:"
+msgstr " インターフェース:"
 
 msgid " was assigned to "
 msgstr " was assigned to "
 
 #, php-format
 msgid "%d%% of %dMB"
-msgstr ""
+msgstr "%dMB 中 %d%%"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -996,11 +993,11 @@ msgstr ""
 
 #, php-format
 msgid "%s interface"
-msgstr "%s インタフェース"
+msgstr "%s インターフェース"
 
 #, php-format
 msgid "%s interface (SSID '%s')"
-msgstr "%s インタフェース (SSID '%s')"
+msgstr "%s インターフェース (SSID '%s')"
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -1016,7 +1013,7 @@ msgstr ""
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr "設定をリストアした後に，%s はリブートします．"
+msgstr "%s は設定リストア後、リブートします。"
 
 #, php-format
 msgid "%sB available of %sB"
@@ -1033,9 +1030,11 @@ msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
+"1. この特殊な作業はデバッグ時のみに使用して下さい！<br>2. "
+"RAIDボリュームの使用を開始する為にこのメニューを使用する必要はありません。(自動的に開始されます)"
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
-msgstr ""
+msgstr "802.1Q VLAN tag (between 1 and 4094)."
 
 #, php-format
 msgid ""
@@ -1055,13 +1054,14 @@ msgid ""
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
+msgstr "NTPサーバー名は英数字と記号の\"-\"と\".\"が使用できます。"
 
-#, php-format
+#, fuzzy, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
-msgstr ""
+msgstr "VLAN tag %s は既にこのインターフェースで使用されています。"
 
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
@@ -1089,26 +1089,26 @@ msgstr "有効な IP アドレスを指定して下さい．"
 
 msgid ""
 "A valid IPv4 address must be specified for the primary/secondary DNS server."
-msgstr ""
+msgstr "プライマリ/セカンダリ DNSサーバは有効なIPv4アドレスを指定してください。"
 
 msgid "A valid IPv4 address must be specified."
-msgstr ""
+msgstr "有効なIPv4アドレスを指定してください。"
 
 msgid "A valid IPv4 network bit count must be specified."
-msgstr ""
+msgstr "有効なIPv4ネットワークのビットカウント値を指定してください。"
 
 msgid "A valid IPv6 Gateway address must be specified."
-msgstr ""
+msgstr "有効なIPv6ゲートウェイアドレスを指定してください。"
 
 msgid ""
 "A valid IPv6 address must be specified for the primary/secondary DNS server."
-msgstr ""
+msgstr "プライマリ/セカンダリ DNSサーバは有効なIPv6アドレスを指定してください。"
 
 msgid "A valid IPv6 address must be specified."
-msgstr ""
+msgstr "有効なIPv6アドレスを指定してください。"
 
 msgid "A valid IPv6 prefix must be specified."
-msgstr ""
+msgstr "有効なIPv6アドレスプレフィックスを指定してください。"
 
 msgid "A valid destination network must be specified."
 msgstr "有効な宛て先ネットワークを指定して下さい．"
@@ -1120,7 +1120,7 @@ msgid "A valid mtu size must be specified."
 msgstr "有効な MTU サイズを指定して下さい．"
 
 msgid "A valid network bit count (1-32) must be specified."
-msgstr ""
+msgstr "有効なビットカウント値(1-32)を指定してください。"
 
 msgid "A valid network bit count must be specified."
 msgstr "有効なネットマスクを指定して下さい．"
@@ -1129,13 +1129,13 @@ msgid "A valid network must be specified."
 msgstr "有効なネットワークを指定して下さい．"
 
 msgid "A valid prefix (1-128) must be specified."
-msgstr ""
+msgstr "有効なプレフィックス値(1-128)を指定してください。"
 
 msgid "A valid systctl MIB value."
 msgstr ""
 
 msgid "AD authentication disabled"
-msgstr ""
+msgstr "AD認証不可"
 
 msgid "AD or PDC name."
 msgstr "AD 又は PDC 名"
@@ -1146,20 +1146,23 @@ msgstr "AFP"
 msgid "AFP Server"
 msgstr "AFP サーバ"
 
+#, fuzzy
 msgid "ARP Tables"
-msgstr ""
+msgstr "ARPテーブル"
 
+#, fuzzy
 msgid "ARP tables"
-msgstr ""
+msgstr "ARPテーブル"
 
 msgid "Access"
 msgstr "アクセス"
 
+#, fuzzy
 msgid "Access Restrictions"
-msgstr ""
+msgstr "アクセス制限"
 
 msgid "Access mode"
-msgstr ""
+msgstr "アクセスモード"
 
 msgid "Acoustic level"
 msgstr "音響レベル"
@@ -1167,13 +1170,15 @@ msgstr "音響レベル"
 msgid "Activate"
 msgstr "アクティブ"
 
+#, fuzzy
 msgid "Activate S.M.A.R.T. monitoring for this device."
-msgstr ""
+msgstr "このデバイスのS.M.A.R.T.機能を有効にする。"
 
+#, fuzzy
 msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
-msgstr ""
+msgstr "S.M.A.R.T.機能で発見された新しいエラーによるメール通知機能を有効にする。"
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -1181,11 +1186,12 @@ msgstr "Active Directory"
 msgid "Add"
 msgstr "追加"
 
+#, fuzzy
 msgid "Add Host"
-msgstr ""
+msgstr "ホストを追加"
 
 msgid "Add MIB"
-msgstr ""
+msgstr "MIBを追加"
 
 msgid "Add RAID"
 msgstr "RAID の追加"
@@ -1194,19 +1200,22 @@ msgid "Add RSYNC"
 msgstr "RSYNC の追加"
 
 msgid "Add Route"
-msgstr "ルートの追加"
+msgstr "ルーティングの追加"
 
+#, fuzzy
 msgid "Add URL"
-msgstr ""
+msgstr "URLを追加"
 
 msgid "Add additional scheduled self-test."
 msgstr ""
 
+#, fuzzy
 msgid "Add command"
-msgstr ""
+msgstr "コマンドを追加"
 
+#, fuzzy
 msgid "Add device"
-msgstr ""
+msgstr "デバイスを追加"
 
 msgid "Add directory"
 msgstr "ディレクトリ追加"
@@ -1220,32 +1229,39 @@ msgstr ""
 msgid "Add group"
 msgstr "グループの追加"
 
+#, fuzzy
 msgid "Add initiator"
-msgstr ""
+msgstr "イニシエータを追加"
 
 msgid "Add interface"
 msgstr "インタフェースの追加"
 
+#, fuzzy
 msgid "Add job"
-msgstr ""
+msgstr "ジョブを追加"
 
+#, fuzzy
 msgid "Add module"
-msgstr ""
+msgstr "モジュールを追加"
 
+#, fuzzy
 msgid "Add mount point"
-msgstr ""
+msgstr "マウントポイントを追加"
 
+#, fuzzy
 msgid "Add option"
-msgstr ""
+msgstr "オプションを追加"
 
+#, fuzzy
 msgid "Add parameter"
-msgstr ""
+msgstr "パラメータを追加"
 
 msgid "Add self-test"
 msgstr ""
 
+#, fuzzy
 msgid "Add share"
-msgstr ""
+msgstr "共有を追加"
 
 msgid "Add target"
 msgstr "ターゲットの追加"
@@ -1253,8 +1269,9 @@ msgstr "ターゲットの追加"
 msgid "Add user"
 msgstr "ユーザの追加"
 
+#, fuzzy
 msgid "Additional group"
-msgstr ""
+msgstr "グループを追加"
 
 msgid "Address"
 msgstr ""
@@ -1262,8 +1279,9 @@ msgstr ""
 msgid "Administration password"
 msgstr "管理者パスワード"
 
+#, fuzzy
 msgid "Administrative WebGUI"
-msgstr ""
+msgstr "管理用 Web画面"
 
 msgid "Administrator name"
 msgstr "管理者名"
@@ -1271,17 +1289,20 @@ msgstr "管理者名"
 msgid "Advanced"
 msgstr "高度な設定"
 
+#, fuzzy
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "高度な設定"
 
+#, fuzzy
 msgid "Advanced Options"
-msgstr ""
+msgstr "詳細なオプション"
 
 msgid "Advanced Power Management"
 msgstr "高度な電源管理"
 
+#, fuzzy
 msgid "Advanced settings"
-msgstr ""
+msgstr "詳細設定"
 
 #, php-format
 msgid ""
@@ -1324,7 +1345,7 @@ msgid "Allow"
 msgstr ""
 
 msgid "Allow client access to accounts that have null passwords."
-msgstr ""
+msgstr "空のパスワードを持つアカウントでのアクセスを許可する。"
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -1367,14 +1388,16 @@ msgid ""
 "across a reboot, cluster, ..."
 msgstr ""
 
+#, fuzzy
 msgid "An host with this name already exists."
-msgstr ""
+msgstr "この名前のホストは既に存在しています。"
 
 msgid "An interface with the specified description already exists."
 msgstr ""
 
+#, fuzzy
 msgid "Anonymous users only"
-msgstr ""
+msgstr "匿名ユーザのみ"
 
 msgid "Apply changes"
 msgstr "変更の適用"
@@ -1412,29 +1435,35 @@ msgstr "認証"
 msgid "Authorised network"
 msgstr "許可するネットワーク"
 
+#, fuzzy
 msgid "Auto"
-msgstr ""
+msgstr "自動"
 
 msgid "AutoScale"
 msgstr "オートスケール"
 
 msgid "Automatically generated test email."
-msgstr ""
+msgstr "自動的に生成されたテストメール"
 
+#, fuzzy
 msgid "Auxiliary parameter"
-msgstr ""
+msgstr "補助パラメータ"
 
+#, fuzzy
 msgid "Auxiliary parameter to be added."
-msgstr ""
+msgstr "補助パラメータが追加されました。"
 
+#, fuzzy
 msgid "Auxiliary parameters"
-msgstr ""
+msgstr "補助パラメータ"
 
+#, fuzzy
 msgid "Backup configuration"
-msgstr ""
+msgstr "バックアップの設定"
 
+#, fuzzy
 msgid "Backup file"
-msgstr ""
+msgstr "バックアップファイル"
 
 msgid "Backup/Restore"
 msgstr "バックアップ/リストア"
@@ -1445,38 +1474,41 @@ msgstr ""
 msgid "Banner"
 msgstr "バナー"
 
+#, fuzzy
 msgid "Base DN"
-msgstr ""
+msgstr "ベース DN"
 
 msgid "Browseable"
 msgstr "ブラウズ可能"
 
 msgid "CCMP"
-msgstr ""
+msgstr "CCMP"
 
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
+#, fuzzy
 msgid "CD/DVD or Old Software RAID"
-msgstr ""
+msgstr "CD/DVD もしくは古いソフトウェアRAID"
 
 msgid "CIFS/SMB"
-msgstr ""
+msgstr "CIFS/SMB"
 
 msgid "CIFS/SMB disabled"
-msgstr ""
+msgstr "CIFS/SMB 使用不可"
 
 msgid "CIFS/SMB informations"
 msgstr ""
 
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 msgid "CPU load"
 msgstr "CPU 負荷"
 
+#, fuzzy
 msgid "CPU usage"
-msgstr ""
+msgstr "CPU 使用率"
 
 msgid "Can't format the OS origin disk!"
 msgstr ""
@@ -1500,7 +1532,7 @@ msgid "Channel"
 msgstr "チャネル"
 
 msgid "Check interval"
-msgstr ""
+msgstr "チェック間隔"
 
 msgid "Check shared secret:"
 msgstr ""
@@ -1521,16 +1553,16 @@ msgstr ""
 "&quot;ファームウェアアップグレード&quot; をクリックして下さい．"
 
 msgid "Click this button to download the system configuration in XML format."
-msgstr ""
+msgstr "システム設定ファイル(XMLフォーマット)をダウンロードするには、このボタンをクリックしてください。"
 
 msgid "Client"
 msgstr "クライアント"
 
 msgid "Client sees lowercase, server sees uppercase"
-msgstr ""
+msgstr "クライアントは小文字、サーバは大文字で表示。"
 
 msgid "Client sees uppercase, server sees lowercase"
-msgstr ""
+msgstr "クライアントは大文字、サーバは小文字で表示。"
 
 msgid "Collecting initial data, please wait..."
 msgstr "初期データを収集しています．お待ち下さい..."
@@ -1550,26 +1582,31 @@ msgstr "コマンド"
 msgid "Command output:"
 msgstr "コマンド出力:"
 
+#, fuzzy
 msgid "Command scripts"
-msgstr ""
+msgstr "スクリプト"
 
+#, fuzzy
 msgid "Comment"
-msgstr ""
+msgstr "コメント"
 
+#, fuzzy
 msgid "Community"
-msgstr ""
+msgstr "コミュニティ"
 
 msgid "Compliant profile to be used."
 msgstr ""
 
+#, fuzzy
 msgid "Compression"
-msgstr ""
+msgstr "圧縮"
 
 msgid ""
 "Compression is worth using if your connection is slow. The efficiency of the "
 "compression depends on the type of the file, and varies widely. Useful for "
 "internet transfer only."
 msgstr ""
+"もしインターネットを介しての通信が遅く感じるようであれば圧縮転送を有効にしてみてください。ファイルの種類によっては圧縮転送の効果に違いが出ます。"
 
 msgid "Configuring"
 msgstr "設定"
@@ -1577,19 +1614,21 @@ msgstr "設定"
 msgid "Confirmation"
 msgstr "確認"
 
+#, fuzzy
 msgid "Connected FTP users"
-msgstr ""
+msgstr "FTPに接続しているユーザ"
 
 msgid "Console menu"
 msgstr "コンソールメニュー"
 
+#, fuzzy
 msgid "Contact"
-msgstr ""
+msgstr "連絡先"
 
 msgid ""
 "Contact information, e.g. name or email of the person responsible for this "
 "system: 'admin@email.address'."
-msgstr ""
+msgstr "連絡先情報 例:このシステムの管理者の名前やメールアドレス等"
 
 msgid "Content"
 msgstr "コンテンツ"
@@ -1600,44 +1639,47 @@ msgstr ""
 msgid "Create"
 msgstr "作成"
 
+#, fuzzy
 msgid "Create and initialize RAID."
-msgstr ""
+msgstr "RAID の作成と初期化"
 
+#, fuzzy
 msgid "Create encrypted volume"
-msgstr ""
+msgstr "暗号化されたボリュームの作成"
 
+#, fuzzy
 msgid "Create mask"
-msgstr ""
+msgstr "マスクの作成"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "作業ディレクトリが存在しない場合は作成して下さい"
 
 msgid "Critical"
-msgstr ""
+msgstr "クリティカル"
 
 msgid "Cron"
-msgstr ""
+msgstr "Cron"
 
 msgid "Cron job"
-msgstr ""
+msgstr "Cron job"
 
 msgid "DAAP"
-msgstr ""
+msgstr "DAAP"
 
 msgid "DAAP Server"
-msgstr ""
+msgstr "DAAP サーバ"
 
 msgid "DDP"
-msgstr ""
+msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
 
 msgid "DN to bind"
-msgstr ""
+msgstr "関連付けるDN"
 
 msgid "DNS settings"
-msgstr ""
+msgstr "DNS の設定"
 
 #, php-format
 msgid ""
@@ -1647,15 +1689,18 @@ msgid ""
 "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
+"ファームウェアのアップグレードを一旦開始したら途中で終了しないでください。 %s "
+"はファームウェアのアップグレードが完了すると自動的に再起動します。<br>ファームウェアのアップグレードを行うには最低 %d Mb の RAM "
+"が必要となります。<br>ファームウェアをアップグレードする前にシステム設定の <a href=%s>バックアップ</a> を行う事をお勧めします。"
 
 msgid "Daemon"
-msgstr ""
+msgstr "デーモン"
 
 msgid "Daemon events"
 msgstr "Daemon イベント"
 
 msgid "Daemon log"
-msgstr ""
+msgstr "デーモンログ"
 
 msgid "Data integrity"
 msgstr "データの完全性"
@@ -1666,8 +1711,9 @@ msgstr ""
 msgid "Date"
 msgstr "日時"
 
+#, fuzzy
 msgid "Default"
-msgstr ""
+msgstr "標準設定"
 
 msgid "Default is 21"
 msgstr "初期値は 21"
@@ -1685,10 +1731,10 @@ msgid "Delete ARP entry"
 msgstr "ARP エントリの削除"
 
 msgid "Delete Host"
-msgstr ""
+msgstr "ホストを削除"
 
 msgid "Delete MIB"
-msgstr ""
+msgstr "MIB を削除"
 
 msgid "Delete RAID"
 msgstr "RAID の削除"
@@ -1700,22 +1746,24 @@ msgid "Delete Route"
 msgstr "ルートの削除"
 
 msgid "Delete URL"
-msgstr ""
+msgstr "URL を削除"
 
 msgid "Delete algorithm"
-msgstr ""
+msgstr "アルゴリズムを削除"
 
+#, fuzzy
 msgid "Delete all MIBs"
-msgstr ""
+msgstr "全ての MIB を削除"
 
+#, fuzzy
 msgid "Delete all options"
-msgstr ""
+msgstr "全てのオプションを削除"
 
 msgid "Delete command"
-msgstr ""
+msgstr "コマンドを削除"
 
 msgid "Delete device"
-msgstr ""
+msgstr "デバイスを削除"
 
 msgid "Delete directory"
 msgstr "ディレクトリ削除"
@@ -1727,37 +1775,37 @@ msgid "Delete extent"
 msgstr ""
 
 msgid "Delete files on the receiving side that don't exist on sender."
-msgstr ""
+msgstr "送信側に存在しないファイルを受信側で削除する。"
 
 msgid "Delete group"
 msgstr "グループの削除"
 
 msgid "Delete initiator"
-msgstr ""
+msgstr "イニシエータを削除"
 
 msgid "Delete interface"
 msgstr "インタフェースの削除"
 
 msgid "Delete job"
-msgstr ""
+msgstr "ジョブを削除"
 
 msgid "Delete module"
-msgstr ""
+msgstr "モジュールを削除"
 
 msgid "Delete mount point"
-msgstr ""
+msgstr "マウントポイントを削除"
 
 msgid "Delete option"
-msgstr ""
+msgstr "オプションを削除"
 
 msgid "Delete parameter"
-msgstr ""
+msgstr "パラメータを削除"
 
 msgid "Delete self-test"
-msgstr ""
+msgstr "セルフテストの削除"
 
 msgid "Delete share"
-msgstr ""
+msgstr "共有を削除"
 
 msgid "Delete target"
 msgstr "ターゲットの削除"
@@ -1766,7 +1814,7 @@ msgid "Delete user"
 msgstr "ユーザの削除"
 
 msgid "Deleting"
-msgstr ""
+msgstr "削除中"
 
 msgid "Deny"
 msgstr ""
@@ -1775,10 +1823,10 @@ msgid "Description"
 msgstr "概要"
 
 msgid "Destination email address."
-msgstr ""
+msgstr "メールの宛先"
 
 msgid "Destination host name or IP number."
-msgstr ""
+msgstr "宛先のホスト名もしくはIPアドレス"
 
 msgid "Destination network"
 msgstr "宛て先ネットワーク"
@@ -1796,20 +1844,20 @@ msgid "Detected RSYNC remote shares"
 msgstr "検出された RSYNC リモート共有"
 
 msgid "Device"
-msgstr ""
+msgstr "デバイス"
 
 #, php-format
 msgid "Device /dev/%s - %s"
-msgstr ""
+msgstr "Device /dev/%s - %s"
 
 msgid "Device IP"
-msgstr ""
+msgstr "デバイスのIP"
 
 msgid "Device is mounted, umount it first before detaching."
-msgstr ""
+msgstr "デバイスはまだマウントされています。デバイスをデタッチするにはまず最初にアンマウントして下さい。"
 
 msgid "Device name"
-msgstr ""
+msgstr "デバイス名"
 
 msgid "Device polling"
 msgstr "デバイスポーリング"
@@ -1832,7 +1880,7 @@ msgid "Diagnostics"
 msgstr "診断"
 
 msgid "Difference"
-msgstr ""
+msgstr "差分"
 
 msgid "Directory"
 msgstr "ディレクトリ"
@@ -1872,51 +1920,52 @@ msgid ""
 "the '/' character illegal."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid "Discovered iSCSI target for %s"
-msgstr ""
+msgstr "iSCSI ターゲット %s が見つかりました。"
 
 msgid "Disk"
 msgstr "ディスク"
 
 msgid "Disk Name"
-msgstr ""
+msgstr "ディスク名"
 
 msgid "Disk space usage"
 msgstr "ディスク使用率"
 
 msgid "Disks"
-msgstr "ディスクs"
+msgstr "ディスク"
 
 msgid "Disks (ATA)"
-msgstr ""
+msgstr "ディスク(ATA)"
 
 msgid "Do not set this for CF cards."
-msgstr ""
+msgstr "CF(コンパクトフラッシュ)に対しては設定しないで下さい。"
 
 msgid "Do you really want to delete all MIBs?"
-msgstr ""
+msgstr "本当に全てのMIBを削除してもよろしいですか？"
 
 msgid "Do you really want to delete all options?"
-msgstr ""
+msgstr "本当に全てのオプションを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this MIB?"
-msgstr ""
+msgstr "本当にこのMIBを削除してもよろしいですか"
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "本当にこの RSYNC を削除しても宜しいですか?"
 
 msgid "Do you really want to delete this URL?"
-msgstr ""
+msgstr "このURLを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this command?"
-msgstr ""
+msgstr "このコマンドを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this cron job?"
-msgstr ""
+msgstr "このCronジョブを削除してもよろしいですか？"
 
+#, fuzzy
 msgid "Do you really want to delete this device?"
-msgstr ""
+msgstr "本当にこのデバイスを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this directory entry?"
 msgstr "このディレクトリエントリを削除しても宜しいですか?"
@@ -1932,8 +1981,9 @@ msgstr ""
 msgid "Do you really want to delete this group?"
 msgstr "本当にこのグループを削除しても宜しいですか?!"
 
+#, fuzzy
 msgid "Do you really want to delete this host?"
-msgstr ""
+msgstr "本当にこのホストを削除してもよろしいですか？"
 
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
@@ -1941,10 +1991,10 @@ msgid ""
 msgstr ""
 
 msgid "Do you really want to delete this interface?"
-msgstr ""
+msgstr "このインターフェースを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this module?"
-msgstr ""
+msgstr "このモジュールを削除してもよろしいですか？"
 
 msgid ""
 "Do you really want to delete this mount point? All elements that still use "
@@ -1952,63 +2002,69 @@ msgid ""
 msgstr "本当にこのマウントポイントを削除しても宜しいですか? これを使用する全ての要素 (例: share) は無効になります!"
 
 msgid "Do you really want to delete this option?"
-msgstr ""
+msgstr "このオプションを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this parameter?"
-msgstr ""
+msgstr "このパラメータを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this route?"
 msgstr "このルーティングを削除してもよろしいですか?"
 
 msgid "Do you really want to delete this scheduled self-test?"
-msgstr ""
+msgstr "このスケジュールされたセルフテストを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this share?"
-msgstr ""
+msgstr "この共有を削除してもよろしいですか？"
 
 msgid "Do you really want to delete this target?"
 msgstr "本当にこのターゲットを削除しても宜しいですか?"
 
+#, fuzzy
 msgid "Do you really want to delete this user?"
-msgstr ""
+msgstr "本当にこのユーザを削除してもよろしいですか？"
 
+#, fuzzy
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
+"本当にこのボリュームを削除してもよろしいですか？\\n !!!注意:このボリュームに含まれるデータはすべて削除され復旧できなくなります。!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "本当にディスクをフォーマットして宜しいですか? データは全て失われます!"
 
+#, fuzzy
 msgid "Do you really want to uninstall this package?"
-msgstr ""
+msgstr "本当にこのパッケージを削除してもよろしいですか？"
 
+#, fuzzy
 msgid "Document root"
-msgstr ""
+msgstr "ドキュメントルート"
 
+#, fuzzy
 msgid "Document root of the webserver. Home of the web page files."
-msgstr ""
+msgstr "ウェブサーバのドキュメントルート"
 
 msgid "Domain"
 msgstr "ドメイン"
 
 msgid "Domain controller name"
-msgstr ""
+msgstr "ドメインコントローラ名"
 
 msgid "Domain name"
 msgstr "ドメイン名"
 
 msgid "Domain name (DNS/Realm-Name)"
-msgstr ""
+msgstr "ドメイン名 (DNS/Realm-Name)"
 
 msgid "Domain name (NetBIOS-Name)"
-msgstr ""
+msgstr "ドメイン名(NetBIOS名)"
 
 msgid "Domain name in old format, e.g. EXAMPLE."
-msgstr ""
+msgstr "古い形式のドメイン名 例.EXAMPLE"
 
 msgid "Domain name, e.g. example.com."
-msgstr ""
+msgstr "ドメイン名 例:example.com"
 
 msgid "Don't Erase MBR"
 msgstr "MBR を消去しない"
@@ -2025,13 +2081,13 @@ msgid ""
 msgstr ""
 
 msgid "Done."
-msgstr ""
+msgstr "完了"
 
 msgid "Dos charset"
 msgstr "Dos 文字セット"
 
 msgid "Download configuration"
-msgstr ""
+msgstr "ダウンロード設定"
 
 msgid "Duplex"
 msgstr "デュプレックス"
@@ -2040,7 +2096,7 @@ msgid "Duplicate name."
 msgstr ""
 
 msgid "Dynamic DNS"
-msgstr ""
+msgstr "ダイナミックDNS"
 
 msgid "EA support"
 msgstr ""
@@ -2055,10 +2111,10 @@ msgid "Edit File"
 msgstr "ファイルの編集"
 
 msgid "Edit Host"
-msgstr ""
+msgstr "ホストを編集"
 
 msgid "Edit MIB"
-msgstr ""
+msgstr "MIBを編集"
 
 msgid "Edit RAID"
 msgstr "RAID の編集"
@@ -2070,13 +2126,13 @@ msgid "Edit Route"
 msgstr "ルーティングの編集"
 
 msgid "Edit URL"
-msgstr ""
+msgstr "URLを編集"
 
 msgid "Edit command"
-msgstr ""
+msgstr "コマンドを編集"
 
 msgid "Edit device"
-msgstr ""
+msgstr "デバイスを編集"
 
 msgid "Edit directory"
 msgstr "ディレクトリ編集"
@@ -2091,34 +2147,34 @@ msgid "Edit group"
 msgstr "グループの編集"
 
 msgid "Edit initiator"
-msgstr ""
+msgstr "イニシエータを編集"
 
 msgid "Edit interface"
-msgstr ""
+msgstr "インターフェースを編集"
 
 msgid "Edit job"
-msgstr ""
+msgstr "ジョブを編集"
 
 msgid "Edit module"
-msgstr ""
+msgstr "モジュールを編集"
 
 msgid "Edit mount point"
-msgstr ""
+msgstr "マウントポイントを編集"
 
 msgid "Edit option"
-msgstr ""
+msgstr "オプションを編集"
 
 msgid "Edit parameter"
-msgstr ""
+msgstr "パラメータを編集"
 
 msgid "Edit self-test"
-msgstr ""
+msgstr "セルフテストの編集"
 
 msgid "Edit share"
 msgstr "共有の編集"
 
 msgid "Edit target"
-msgstr ""
+msgstr "ターゲットを編集"
 
 msgid "Edit user"
 msgstr "ユーザの編集"
@@ -2127,10 +2183,10 @@ msgid "Email"
 msgstr ""
 
 msgid "Email Report"
-msgstr ""
+msgstr "レポートメール"
 
 msgid "Email report"
-msgstr ""
+msgstr "レポートメール"
 
 msgid "Enable"
 msgstr "有効"
@@ -2139,10 +2195,10 @@ msgid "Enable FXP protocol."
 msgstr "FXP プロトコルを有効にする．"
 
 msgid "Enable NTP"
-msgstr ""
+msgstr "NTPを有効化"
 
 msgid "Enable SMTP authentication."
-msgstr ""
+msgstr "SMTP-AUTHを有効化"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
@@ -2151,7 +2207,7 @@ msgid "Enable authentication."
 msgstr ""
 
 msgid "Enable compression."
-msgstr ""
+msgstr "圧縮を有効化"
 
 msgid "Enable device polling"
 msgstr "デバイスポーリングを有効にします"
@@ -2189,13 +2245,13 @@ msgid "Enable module listing."
 msgstr ""
 
 msgid "Enable permission inheritance"
-msgstr ""
+msgstr "パーミッションの継承の有効化"
 
 msgid "Enable proxy authentication."
-msgstr ""
+msgstr "Proxy認証の有効化"
 
 msgid "Enable recycle bin"
-msgstr ""
+msgstr "ごみ箱機能を有効化"
 
 msgid "Enable store DOS attributes"
 msgstr ""
@@ -2215,7 +2271,7 @@ msgid "Enable tuning of some kernel variables"
 msgstr "いくつかのカーネル変数のチューニングを許可する"
 
 msgid "Enable web user interface."
-msgstr ""
+msgstr "Webユーザインターフェースの有効化"
 
 msgid "Enabled"
 msgstr "有効"
@@ -2233,7 +2289,7 @@ msgstr "暗号化ディスク名"
 
 #, php-format
 msgid "Encrypting '%s'... Please wait"
-msgstr ""
+msgstr "'%s' を暗号化中です。お待ちください。"
 
 msgid "Encryption"
 msgstr "暗号化"
@@ -2258,18 +2314,18 @@ msgid ""
 msgstr ""
 
 msgid "Enter the NIS Master server hostname."
-msgstr ""
+msgstr "NIS マスターサーバ名を入力して下さい。"
 
 msgid "Enter the NIS Slave server hostname."
-msgstr ""
+msgstr "NIS スレーブサーバ名を入力して下さい。"
 
 msgid "Enter the NIS domain name."
-msgstr ""
+msgstr "NIS ドメイン名を入力して下さい。"
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
-msgstr ""
+msgstr "WPA-PSK モードで使用するパスフレーズを8文字以上63文字以内で入力してください。"
 
 msgid ""
 "Enter the path to the home directory of that user. Make sure that this path "
@@ -2278,7 +2334,7 @@ msgid ""
 msgstr ""
 
 msgid "Enter the port to send the traps to (default 162)."
-msgstr ""
+msgstr "SNMPトラップの送信に利用するポート番号を入力してください。(初期値:162)"
 
 msgid "Enter trap host name."
 msgstr ""
@@ -2288,10 +2344,10 @@ msgstr "エラー"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
-msgstr ""
+msgstr "エラー: 変更は適用されませんでした(エラーコード %s)。"
 
 msgid "Execute"
-msgstr ""
+msgstr "実行"
 
 msgid "Execute command"
 msgstr "コマンド実行"
@@ -2316,16 +2372,16 @@ msgid ""
 msgstr ""
 
 msgid "Extra options"
-msgstr ""
+msgstr "拡張オプション"
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "ifconfig の拡張オプション(通常は空)"
 
 msgid "Extra options to rsync (usually empty)."
-msgstr ""
+msgstr "rsync の拡張オプション(通常は空)"
 
 msgid "FEC (Fast EtherChannel)"
-msgstr ""
+msgstr "FEC (ファストイーサチャンネル)"
 
 msgid "FTP"
 msgstr "FTP"
@@ -2364,13 +2420,13 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
-msgstr ""
+msgstr "ステータスレポートの送信に失敗しました。ログファイルをチェックしてください。"
 
 msgid "Failed to send test email. Please check log files."
-msgstr ""
+msgstr "テストメールの送信に失敗しました。ログファイルをチェックしてください。"
 
 msgid "Failed to upload metadata backup file."
-msgstr ""
+msgstr "メタデータのバックアップファイルのアップロードに失敗しました。"
 
 msgid "Failed."
 msgstr ""
@@ -2379,7 +2435,7 @@ msgid "Failover"
 msgstr ""
 
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 msgid "File not found"
 msgstr "ファイルが存在しません"
@@ -2400,10 +2456,10 @@ msgid "File system"
 msgstr "ファイルシステム"
 
 msgid "File system check"
-msgstr ""
+msgstr "ファイルシステムチェック"
 
 msgid "Filename"
-msgstr ""
+msgstr "ファイル名"
 
 msgid "Firmware"
 msgstr "ファームウェア"
@@ -2418,7 +2474,7 @@ msgid "Firmware version check"
 msgstr "ファームウェアバージョンチェック"
 
 msgid "Flags"
-msgstr ""
+msgstr "フラグ"
 
 msgid "Follow"
 msgstr "フロー"
@@ -2444,19 +2500,19 @@ msgid "Format disk"
 msgstr "ディスクフォーマット"
 
 msgid "Free disk space"
-msgstr ""
+msgstr "ディスクの空き容量"
 
 msgid "From email"
 msgstr ""
 
 msgid "Fsck"
-msgstr ""
+msgstr "Fsck"
 
 msgid "Full Name"
 msgstr "フルネーム"
 
 msgid "GID"
-msgstr ""
+msgstr "GID"
 
 msgid "Gateway"
 msgstr "ゲートウェイ"
@@ -2474,10 +2530,10 @@ msgid "Geom Vinum"
 msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
-msgstr ""
+msgstr "ユーザにシェルアクセスを許可する。"
 
 msgid "Give only local users access to the web page."
-msgstr ""
+msgstr "ローカルユーザのみにウェブページのアクセスを許可する。"
 
 msgid "Graph"
 msgstr "グラフ"
@@ -2492,7 +2548,7 @@ msgid "Group"
 msgstr "グループ"
 
 msgid "Group ID"
-msgstr ""
+msgstr "グループ ID"
 
 msgid "Group description."
 msgstr "グループの説明"
@@ -2501,7 +2557,7 @@ msgid "Group name."
 msgstr "グループ名"
 
 msgid "Group numeric id."
-msgstr ""
+msgstr "グループID"
 
 msgid "Group suffix"
 msgstr ""
@@ -2510,22 +2566,22 @@ msgid "Groups"
 msgstr "グループ"
 
 msgid "Guest"
-msgstr ""
+msgstr "ゲスト"
 
 msgid "Guest account"
-msgstr ""
+msgstr "ゲストアカウント"
 
 msgid "HTTP Proxy"
-msgstr ""
+msgstr "HTTP プロキシ"
 
 msgid "Hard disk standby time"
 msgstr "ハードディスクスタンバイ時間"
 
 msgid "Help Needed!"
-msgstr ""
+msgstr "助けて！"
 
 msgid "Hide dot files"
-msgstr ""
+msgstr "ドットファイルを隠す"
 
 msgid "Highlighting"
 msgstr "ハイライト"
@@ -2540,7 +2596,7 @@ msgid ""
 msgstr "ヒント: チェックした場合，%s ログ内の IP アドレスは可能な限りホスト名に解決されます．"
 
 msgid "Home directory"
-msgstr ""
+msgstr "ホームディレクトリ"
 
 msgid "Host"
 msgstr ""
@@ -2554,25 +2610,25 @@ msgstr "ホスト名"
 msgid ""
 "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
 "for TLS"
-msgstr ""
+msgstr "LDAP サーバのIPアドレスかもしくはホスト名。 TLS を使用する場合はホスト名"
 
 msgid "Hosts"
 msgstr "ホスト"
 
 msgid "Hosts allow"
-msgstr ""
+msgstr "許可するホスト"
 
 msgid "Hosts deny"
-msgstr ""
+msgstr "拒否するホスト"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
-msgstr ""
+msgstr "IPアドレスのチェック頻度。秒単位で最大10日"
 
 msgid ""
 "How often the IP is updated even if it is not changed. The period is in "
 "seconds (max. is 10 days)."
-msgstr ""
+msgstr "IPアドレスの更新頻度。秒単位で最大10日(IPアドレスに変更がなくても更新を行います)"
 
 msgid "I/O errors"
 msgstr "I/O エラー"
@@ -2590,43 +2646,43 @@ msgstr "リモート syslog サーバの IP アドレス"
 msgid ""
 "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
-msgstr ""
+msgstr "<a href=%s>&quot;IPアドレスからホスト名へ変換&quot;</a>が有効な場合、IPアドレスはホスト名へ変換されます。"
 
 msgid "IP or FQDN address of remote RSYNC server."
-msgstr ""
+msgstr "リモート RSYNC サーバのIPアドレスかFQDN"
 
 msgid "IP type mismatch for network and gateway."
 msgstr ""
 
 msgid "IPv4 Configuration"
-msgstr ""
+msgstr "IP設定(IPv4)"
 
 msgid "IPv4 DNS servers"
-msgstr ""
+msgstr "DNSサーバ(IPv4)"
 
 msgid "IPv4 addresses"
-msgstr ""
+msgstr "IPアドレス(IPv4)"
 
 msgid "IPv6 Configuration"
-msgstr ""
+msgstr "IP設定(IPv6)"
 
 msgid "IPv6 DNS servers"
-msgstr ""
+msgstr "DNSサーバ(IPv6)"
 
 msgid "IPv6 Gateway"
-msgstr ""
+msgstr "ゲートウェイ(IPv6)"
 
 msgid "IPv6 Prefix"
-msgstr ""
+msgstr "プレフィックス(IPv6)"
 
 msgid "IPv6 address"
-msgstr ""
+msgstr "IPアドレス(IPv6)"
 
 msgid "IPv6 addresses"
-msgstr ""
+msgstr "IPアドレス一覧(IPv6)"
 
 msgid "ISO file to be mounted."
-msgstr ""
+msgstr "マウントされるISOファイル"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS サーバ"
@@ -2677,14 +2733,14 @@ msgstr ""
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
 "twice."
-msgstr ""
+msgstr "WebGUIにアクセスする為のパスワードを変更するにはここに入力してください。同じパスワードを2回"
 
 msgid ""
 "If you want to change the username for accessing the WebGUI, enter it here."
-msgstr ""
+msgstr "WebGUIにアクセスする為のユーザ名を変更するにはここに入力してください。"
 
 msgid "Image upload failed (out of memory?)"
-msgstr "イメージアップロードが失敗しました (メモリをオーバー?)．"
+msgstr "イメージアップロードが失敗しました (メモリ不足？)．"
 
 msgid "In"
 msgstr "入力"
@@ -2714,18 +2770,19 @@ msgid ""
 "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
 "use this option if you want to add an existing encrypted disk."
 msgstr ""
+"ディスクを初期化し暗号化を行います。この作業はディスク上の全てのデータを消去します！既存の暗号化されたディスクを追加する場合はこの作業を行わないで下さい。"
 
 msgid "Initializing"
-msgstr ""
+msgstr "初期化中"
 
 msgid "Initiator name"
-msgstr ""
+msgstr "イニシエーター名"
 
 msgid "Install"
-msgstr ""
+msgstr "インストール"
 
 msgid "Install package"
-msgstr ""
+msgstr "パッケージのインストール"
 
 msgid "Interface"
 msgstr "インタフェース"
@@ -2737,11 +2794,11 @@ msgid "Interfaces"
 msgstr "インタフェース"
 
 msgid "Interval must be greater or equal than 10 seconds."
-msgstr ""
+msgstr "10秒以上の時間を指定してください。"
 
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr ""
+msgstr "無効なポート番号です！ ポート番号は %d - %d の範囲内で指定してください。"
 
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
@@ -2766,16 +2823,16 @@ msgid "Key"
 msgstr "鍵"
 
 msgid "Key Management Protocol"
-msgstr ""
+msgstr "鍵管理プロトコル"
 
 msgid "Kill encrypted volume"
 msgstr ""
 
 msgid "LACP (Link Aggregation Control Protocol)"
-msgstr ""
+msgstr "LACP (Link アグリゲーションプロトコル)"
 
 msgid "LAGG"
-msgstr ""
+msgstr "LAGG"
 
 msgid "LAN"
 msgstr "LAN"
@@ -2793,10 +2850,10 @@ msgid ""
 msgstr ""
 
 msgid "LDAP server name"
-msgstr ""
+msgstr "LDAP サーバの名前"
 
 msgid "LDAP server name or IP"
-msgstr ""
+msgstr "LDAP サーバの名前かIPアドレス"
 
 msgid "Language"
 msgstr "言語"
@@ -2824,7 +2881,7 @@ msgid "Link Aggregation and Failover"
 msgstr ""
 
 msgid "List"
-msgstr ""
+msgstr "リスト"
 
 msgid ""
 "List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP "
@@ -2842,16 +2899,16 @@ msgid "List of detected SCSI disks"
 msgstr "認識中の SCSI ディスクのリスト"
 
 msgid "List of imported users"
-msgstr ""
+msgstr "インポートされたユーザの一覧"
 
 msgid "List of mount points"
 msgstr "マウントポイントのリスト"
 
 msgid "List of open files"
-msgstr ""
+msgstr "開いているファイルのリスト"
 
 msgid "List of shares"
-msgstr ""
+msgstr "共有のリスト"
 
 msgid "Load"
 msgstr "ロード"
@@ -2860,7 +2917,7 @@ msgid "Load averages"
 msgstr "システム負荷"
 
 msgid "Loadbalance"
-msgstr ""
+msgstr "負荷分散"
 
 msgid "Local"
 msgstr "ローカル"
@@ -2869,16 +2926,16 @@ msgid "Local Master Browser"
 msgstr "ローカルマスタブラウザ"
 
 msgid "Local share"
-msgstr ""
+msgstr "ローカル共有"
 
 msgid "Local share (destination)"
 msgstr "ローカル共有 (接続先)"
 
 msgid "Local shares to be synchronized"
-msgstr ""
+msgstr "ローカル共有は同期されました"
 
 msgid "Local users only"
-msgstr ""
+msgstr "ローカルユーザのみ"
 
 msgid "Location"
 msgstr ""
@@ -2886,7 +2943,7 @@ msgstr ""
 msgid ""
 "Location information, e.g. physical location of this system: 'Floor of "
 "building, Room xyz'."
-msgstr ""
+msgstr "このシステムの設置されている場所の情報。 例. XXXビル3階のYYY号室'"
 
 msgid "Location of the files to share."
 msgstr ""
@@ -2901,7 +2958,7 @@ msgid "Login"
 msgstr "ログイン"
 
 msgid "Login name of user."
-msgstr ""
+msgstr "ユーザのログイン名"
 
 msgid "Logs"
 msgstr "ログ"
@@ -2913,7 +2970,7 @@ msgid "MAC address"
 msgstr "MAC アドレス"
 
 msgid "MIB"
-msgstr ""
+msgstr "MIB"
 
 msgid "MISSING"
 msgstr ""
@@ -2922,7 +2979,7 @@ msgid "MOTD"
 msgstr "MOTD"
 
 msgid "MS Active Directory"
-msgstr ""
+msgstr "MS Active Directory"
 
 msgid "MS Active Directory informations"
 msgstr ""
@@ -3000,7 +3057,7 @@ msgid "Method used to store your password in your LDAP."
 msgstr ""
 
 msgid "MibII"
-msgstr ""
+msgstr "MibII"
 
 msgid "Minimum free space"
 msgstr ""
@@ -3021,22 +3078,22 @@ msgid "Miscellaneous"
 msgstr "雑多なもの"
 
 msgid "Mode"
-msgstr ""
+msgstr "モード"
 
 msgid "Modifying"
 msgstr ""
 
 msgid "Module"
-msgstr ""
+msgstr "モジュール"
 
 msgid "Modules"
-msgstr ""
+msgstr "モジュール"
 
 msgid "Mount Point"
 msgstr "マウントポイント"
 
 msgid "Mount point"
-msgstr ""
+msgstr "マウントポイント"
 
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
@@ -3046,7 +3103,7 @@ msgid "Mount to use for swap"
 msgstr "スワップをマウントし，使用する"
 
 msgid "Mounting device."
-msgstr ""
+msgstr "マウントされているデバイス。"
 
 msgid "Mounting..."
 msgstr "マウント中..."
@@ -3070,13 +3127,13 @@ msgid "NIS"
 msgstr "NIS"
 
 msgid "NIS Authentication"
-msgstr ""
+msgstr "NIS 認証"
 
 msgid "NIS master server name"
-msgstr ""
+msgstr "NIS マスターサーバ名"
 
 msgid "NIS slave server name"
-msgstr ""
+msgstr "NIS スレーブサーバ名"
 
 msgid "NTP time server"
 msgstr "NTP サーバ"
@@ -3086,7 +3143,7 @@ msgstr "名前"
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
-msgstr ""
+msgstr "ドメイン名を除いたNASのホスト名。 例. %s"
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -3100,16 +3157,16 @@ msgid "Navigation"
 msgstr "ナビゲーション"
 
 msgid "NetBIOS name"
-msgstr ""
+msgstr "NetBIOS名"
 
 msgid "Netgraph"
-msgstr ""
+msgstr "Netgraph"
 
 msgid "Network"
 msgstr "ネットワーク"
 
 msgid "Network mask"
-msgstr ""
+msgstr "ネットワークマスク"
 
 msgid "Network port"
 msgstr "ネットワークポート"
@@ -3179,7 +3236,7 @@ msgid "Now"
 msgstr ""
 
 msgid "Null passwords"
-msgstr ""
+msgstr "空のパスワード"
 
 msgid "Number of clients"
 msgstr "最大クライアント数"
@@ -3197,7 +3254,7 @@ msgid "OK"
 msgstr "OK"
 
 msgid "ONLINE"
-msgstr ""
+msgstr "オンライン"
 
 msgid "OS Version"
 msgstr "OS バージョン"
@@ -3206,10 +3263,10 @@ msgid "Object name"
 msgstr "オブジェクト名"
 
 msgid "Old passphrase"
-msgstr ""
+msgstr "古いパスフレーズ"
 
 msgid "Old password"
-msgstr ""
+msgstr "古いパスワード"
 
 msgid ""
 "Only allow anonymous users. Use this on a public FTP site with no remote FTP "
@@ -3233,19 +3290,19 @@ msgid ""
 msgstr ""
 
 msgid "Option"
-msgstr ""
+msgstr "オプション"
 
 msgid "Others"
-msgstr ""
+msgstr "その他"
 
 msgid "Out"
 msgstr "出力"
 
 msgid "Outgoing SMTP mail server address, e.g. smtp.mycorp.com."
-msgstr ""
+msgstr "外向けのSMTPサーバのアドレス。 例. smtp.mycorp.com"
 
 msgid "Outgoing mail server"
-msgstr ""
+msgstr "外向けのメールサーバ"
 
 msgid "Owner"
 msgstr ""
@@ -3257,31 +3314,31 @@ msgid "PPTP"
 msgstr "PPTP"
 
 msgid "PPTP clients"
-msgstr ""
+msgstr "PPTPクライアント"
 
 msgid "PSK"
-msgstr ""
+msgstr "PSK"
 
 msgid "Package Name"
-msgstr ""
+msgstr "パッケージ名"
 
 msgid "Package file"
-msgstr ""
+msgstr "パッケージファイル"
 
 msgid "Package is already installed."
-msgstr ""
+msgstr "パッケージは既にインストールされています。"
 
 msgid "Package upload failed (out of memory?)"
-msgstr ""
+msgstr "パッケージのアップロードに失敗しました。(メモリ不足?)"
 
 msgid "Packages"
-msgstr ""
+msgstr "パッケージ"
 
 msgid "Pairwise"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "パラメータ"
 
 msgid "Partition"
 msgstr "パーティション"
@@ -3302,7 +3359,7 @@ msgid "Passphrase don't match."
 msgstr "パスフレーズが一致しません．"
 
 msgid "Password"
-msgstr "パスワー"
+msgstr "パスワード"
 
 msgid "Password (confirmed)"
 msgstr ""
@@ -3338,7 +3395,7 @@ msgid "Paste an private key in PEM format here."
 msgstr ""
 
 msgid "Path"
-msgstr ""
+msgstr "パス"
 
 msgid "Path of the URL relative to document root."
 msgstr ""
@@ -3353,10 +3410,10 @@ msgid "Permit to do SSH Tunneling."
 msgstr "SSH トンネリングを許可する．"
 
 msgid "Physical interface"
-msgstr ""
+msgstr "物理インターフェース"
 
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
@@ -3371,19 +3428,19 @@ msgid "Please note that blanks in path names are not allowed."
 msgstr ""
 
 msgid "Polling time"
-msgstr ""
+msgstr "ポーリング時間"
 
 msgid "Port"
-msgstr ""
+msgstr "ポート"
 
 msgid "Port "
 msgstr "ポート "
 
 msgid "Port is already used by WebGUI."
-msgstr ""
+msgstr "ポートは既にWebGUIで使用されています。"
 
 msgid "Port to listen on. Default iTunes port is 3689."
-msgstr ""
+msgstr "LISTENするポート番号。iTunesのデフォルトポート番号は 3689 です。"
 
 #, php-format
 msgid ""
@@ -3431,7 +3488,7 @@ msgid "Private Key"
 msgstr "秘密鍵"
 
 msgid "Private key"
-msgstr ""
+msgstr "秘密鍵"
 
 msgid "Process"
 msgstr "プロセス"
@@ -3443,10 +3500,10 @@ msgid "Processes information"
 msgstr "プロセス情報"
 
 msgid "Profile"
-msgstr ""
+msgstr "プロファイル"
 
 msgid "Protocol"
-msgstr ""
+msgstr "プロトコル"
 
 msgid "Provider"
 msgstr ""
@@ -3469,34 +3526,34 @@ msgid "Quiet"
 msgstr ""
 
 msgid "RAID 0"
-msgstr ""
+msgstr "RAID 0"
 
 msgid "RAID 0 (stripping)"
-msgstr ""
+msgstr "RAID 0 (ストライピング)"
 
 msgid "RAID 1"
-msgstr ""
+msgstr "RAID 1"
 
 msgid "RAID 1 (mirroring)"
-msgstr ""
+msgstr "RAID 1 (ミラーリング)"
 
 msgid "RAID 5"
-msgstr ""
+msgstr "RAID 5"
 
 msgid "RAID0"
-msgstr ""
+msgstr "RAID0"
 
 msgid "RAID1"
-msgstr ""
+msgstr "RAID1"
 
 msgid "RAID5"
-msgstr ""
+msgstr "RAID5"
 
 msgid "RSYNC"
-msgstr ""
+msgstr "RSYNC"
 
 msgid "RSYNC Client"
-msgstr ""
+msgstr "RSYNCクライアント"
 
 msgid "RSYNC Client informations"
 msgstr ""
@@ -3508,7 +3565,7 @@ msgid "RSYNC events"
 msgstr ""
 
 msgid "RSYNC log"
-msgstr ""
+msgstr "RSYNCのログ"
 
 msgid "RSYNCD"
 msgstr "RSYNCD"
@@ -3517,7 +3574,7 @@ msgid "Raid name"
 msgstr "Raid 名"
 
 msgid "Read"
-msgstr ""
+msgstr "読み込み"
 
 msgid "Read Only Access"
 msgstr ""
@@ -3526,7 +3583,7 @@ msgid "Read only"
 msgstr "読み込み専用"
 
 msgid "Read/Write"
-msgstr ""
+msgstr "読み込み/書き込み"
 
 msgid "Read/Write Access"
 msgstr ""
@@ -3535,13 +3592,13 @@ msgid "Realm"
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
+msgstr "リブート"
 
 msgid "Receive Buffer Size"
 msgstr "受信バッファサイズ"
 
 msgid "Recycle bin"
-msgstr ""
+msgstr "ごみ箱"
 
 msgid "Reload page"
 msgstr "ページの再読み込み"
@@ -3575,7 +3632,7 @@ msgid ""
 msgstr ""
 
 msgid "Reports"
-msgstr ""
+msgstr "レポート"
 
 msgid "Rescan interval"
 msgstr ""
@@ -3587,7 +3644,7 @@ msgid "Resolve IP addresses to hostnames"
 msgstr "IP アドレスからホスト名を解決する"
 
 msgid "Restore configuration"
-msgstr ""
+msgstr "設定のリストア"
 
 msgid "Restore metadata from the given file to the given provider."
 msgstr ""
@@ -3599,13 +3656,13 @@ msgid "Retry"
 msgstr "リトライ"
 
 msgid "Roundrobin"
-msgstr ""
+msgstr "ラウンドロビン"
 
 msgid "Routes"
-msgstr ""
+msgstr "ルーティング"
 
 msgid "Routing tables"
-msgstr ""
+msgstr "ルーティングテーブル"
 
 msgid "Rows"
 msgstr "列"
@@ -3623,31 +3680,31 @@ msgid "S.M.A.R.T. log"
 msgstr ""
 
 msgid "SNMP"
-msgstr ""
+msgstr "SNMP"
 
 msgid "SNMP Modules"
-msgstr ""
+msgstr "SNMPモジュール"
 
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 msgid "SSH Daemon"
 msgstr "SSH デーモン"
 
 msgid "SSH events"
-msgstr ""
+msgstr "SSHのイベント"
 
 msgid "SSH key"
 msgstr "SSH 鍵"
 
 msgid "SSHD log"
-msgstr ""
+msgstr "SSHDのログ"
 
 msgid "SSID"
 msgstr "SSID"
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "Save"
 msgstr "セーブ"
@@ -3666,7 +3723,7 @@ msgid ""
 msgstr ""
 
 msgid "Scan type"
-msgstr ""
+msgstr "スキャンタイプ"
 
 msgid "Schedule time"
 msgstr ""
@@ -3675,19 +3732,19 @@ msgid "Scheduled"
 msgstr ""
 
 msgid "Scheduled Self-Test"
-msgstr ""
+msgstr "スケジュールされたセルフテスト"
 
 msgid "Scheduled reboot"
-msgstr ""
+msgstr "スケジュールされたリブート"
 
 msgid "Scheduled self-tests"
-msgstr ""
+msgstr "スケジュールされたセルフテスト"
 
 msgid "Scheduled shutdown"
 msgstr "シャットダウンスケジュール"
 
 msgid "Security"
-msgstr ""
+msgstr "セキュリティー"
 
 msgid ""
 "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
@@ -3699,13 +3756,13 @@ msgid ""
 msgstr ""
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
-msgstr ""
+msgstr "S.M.A.R.T.機能を有効にするディスクを選択してください。"
 
 msgid "Select mount point where to create the swap file."
-msgstr ""
+msgstr "スワップファイルを作成するディレクトリを選択してください。"
 
 msgid "Select the FreeBSD package to be installed."
-msgstr ""
+msgstr "インストールするFreeBSDのパッケージを選択してください。"
 
 msgid "Select the location closest to you."
 msgstr "もっとも近いロケーションを選択して下さい．"
@@ -3717,7 +3774,7 @@ msgid "Selected"
 msgstr "選択"
 
 msgid "Selected file isn't an valid ISO file."
-msgstr ""
+msgstr "選択されたファイルは有効な ISOファイルではありません。"
 
 msgid "Self-Monitoring, Analysis and Reporting Technology"
 msgstr ""
@@ -3729,10 +3786,10 @@ msgid "Send Command!"
 msgstr "コマンド送信!"
 
 msgid "Send now"
-msgstr ""
+msgstr "今すぐ送信"
 
 msgid "Send test email"
-msgstr ""
+msgstr "テストメールの送信"
 
 msgid "Server"
 msgstr "サーバ"
@@ -3744,22 +3801,22 @@ msgid "Server description. This can usually be left blank."
 msgstr "サーバの説明．通常は空白のままで構いません．"
 
 msgid "Server name"
-msgstr ""
+msgstr "サーバ名"
 
 msgid "Services"
 msgstr "サービス"
 
 msgid "Set additional group memberships for this account."
-msgstr ""
+msgstr "このアカウントを他のグループのメンバーにする。"
 
 msgid "Set browseable"
-msgstr ""
+msgstr "参照可能に設定する。"
 
 msgid "Set read only"
-msgstr ""
+msgstr "読み込み専用に設定する。"
 
 msgid "Set share password."
-msgstr ""
+msgstr "共有パスワードを設定する。"
 
 msgid "Set the account's primary group to the given group."
 msgstr ""
@@ -3782,34 +3839,34 @@ msgstr ""
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
-msgstr ""
+msgstr "ディスクのチェック間隔を秒単位で設定してください。最小の値は10(秒)になります。"
 
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 msgid "Share"
 msgstr "共有"
 
 msgid "Share Character Set"
-msgstr ""
+msgstr "共有文字セット"
 
 msgid "Share Name"
 msgstr "共有名"
 
 msgid "Share Password"
-msgstr ""
+msgstr "共有パスワード"
 
 msgid "Share all sub directories."
-msgstr ""
+msgstr "全てのサブディレクトリーを共有する。"
 
 msgid "Share passwords can not be more than 8 characters."
-msgstr ""
+msgstr "共有パスワードは8文字以内にしてください。"
 
 msgid "Sharename"
-msgstr ""
+msgstr "共有名"
 
 msgid "Shares"
-msgstr ""
+msgstr "共有"
 
 msgid "Shell access"
 msgstr ""
@@ -3821,7 +3878,7 @@ msgid "Show process information"
 msgstr ""
 
 msgid "Shutdown"
-msgstr ""
+msgstr "シャットダウン"
 
 msgid "Shutdown Time"
 msgstr "シャットダウン時間"
@@ -3833,7 +3890,7 @@ msgid "Signal strength cache"
 msgstr "Signal strength cache"
 
 msgid "Simple Network Management Protocol"
-msgstr ""
+msgstr "簡易ネットワーク管理プロトコル(SNMP)"
 
 msgid "Size"
 msgstr "サイズ"
@@ -3851,7 +3908,7 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
 msgid "Sockets"
-msgstr ""
+msgstr "ソケット"
 
 msgid "Software RAID"
 msgstr "ソフトウェア RAID"
@@ -3894,7 +3951,7 @@ msgstr ""
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
-msgstr "直接スーぱユーザ (root) がログイン可能かを選択します．"
+msgstr "直接スーパーユーザ (root) がログイン可能かを選択します．"
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
@@ -3903,7 +3960,7 @@ msgid ""
 msgstr ""
 
 msgid "Standard"
-msgstr ""
+msgstr "標準"
 
 msgid ""
 "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these "
@@ -3915,25 +3972,25 @@ msgid "Standby time"
 msgstr "スタンバイ時間"
 
 msgid "Static Routes"
-msgstr ""
+msgstr "スタティックルート"
 
 msgid "Static routes"
-msgstr "静的ルート"
+msgstr "スタティックルート"
 
 msgid "Status"
 msgstr "ステータス"
 
 msgid "Status report successfully sent."
-msgstr ""
+msgstr "ステータスレポートの送信に成功しました。"
 
 msgid "Stop after sending (and receiving) N packets."
-msgstr ""
+msgstr "N パケットを送信/受信した後に停止する。"
 
 msgid "Stopped"
-msgstr ""
+msgstr "停止"
 
 msgid "Storage"
-msgstr ""
+msgstr "ストレージ"
 
 msgid "Store DOS attributes"
 msgstr ""
@@ -3943,7 +4000,7 @@ msgid ""
 msgstr ""
 
 msgid "Subject"
-msgstr ""
+msgstr "件名"
 
 msgid "Subnet bit count"
 msgstr "サブネットビット数"
@@ -3955,7 +4012,7 @@ msgid "Successful"
 msgstr "成功"
 
 msgid "Successful."
-msgstr ""
+msgstr "成功"
 
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
 msgstr "日曜日 月曜日 火曜日 水曜日 木曜日 金曜日 土曜日"
@@ -3964,10 +4021,10 @@ msgid "Suppress non-error messages."
 msgstr ""
 
 msgid "Swap"
-msgstr ""
+msgstr "スワップ"
 
 msgid "Swap disabled"
-msgstr ""
+msgstr "スワップ無効"
 
 msgid "Swap file"
 msgstr "スワップファイル"
@@ -3979,10 +4036,10 @@ msgid "Swap memory"
 msgstr "スワップメモリ"
 
 msgid "Swap status"
-msgstr ""
+msgstr "スワップステータス"
 
 msgid "Swap usage"
-msgstr ""
+msgstr "スワップ使用率"
 
 msgid "Switch to"
 msgstr "切り替え"
@@ -4013,25 +4070,25 @@ msgid "System events"
 msgstr "システムイベント"
 
 msgid "System info"
-msgstr ""
+msgstr "システム情報"
 
 msgid "System information"
 msgstr "システムインフォメーション"
 
 msgid "System log"
-msgstr ""
+msgstr "システムログ"
 
 msgid "System message buffer"
-msgstr ""
+msgstr "システムメッセージバッファ"
 
 msgid "System time"
-msgstr ""
+msgstr "システム時刻"
 
 msgid "System tuning"
-msgstr ""
+msgstr "システムチューニング"
 
 msgid "TCP forwarding"
-msgstr ""
+msgstr "TCP転送"
 
 msgid "TCP port"
 msgstr "TCP ポート"
@@ -4040,19 +4097,19 @@ msgid "TCP port to bind the server to."
 msgstr ""
 
 msgid "TKIP"
-msgstr ""
+msgstr "TKIP"
 
 msgid "TLS + cleartext"
-msgstr ""
+msgstr "TLS + cleartext"
 
 msgid "TX rates"
 msgstr "TX レート"
 
 msgid "Target"
-msgstr ""
+msgstr "ターゲット"
 
 msgid "Target Name"
-msgstr ""
+msgstr "ターゲット名"
 
 msgid "Target address"
 msgstr ""
@@ -4067,14 +4124,14 @@ msgid "Temperature"
 msgstr "温度"
 
 msgid "Temperature monitoring"
-msgstr ""
+msgstr "温度監視"
 
 #, php-format
 msgid "Test email from %s"
-msgstr ""
+msgstr "%s からのテストメール"
 
 msgid "Test email successfully sent."
-msgstr ""
+msgstr "テストメールの送信に成功しました。"
 
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
@@ -4110,23 +4167,23 @@ msgid "The TCP port must be a valid port number."
 msgstr "有効な TCP ポート番号を指定して下さい．"
 
 msgid "The VLAN ID must be between 1 and 4094."
-msgstr ""
+msgstr "VLAN ID は1-4094の範囲内で指定してください。"
 
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid domain name."
-msgstr ""
+msgstr "'%s' は無効なドメイン名か使用できない文字が含まれています。"
 
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid host name."
-msgstr ""
+msgstr "'%s' は無効なホスト名か使用できない文字が含まれています。"
 
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid workgroup "
 "name."
-msgstr ""
+msgstr "'%s' は無効なワークグループ名から使用できない文字が含まれています。"
 
 #, c-format, php-format
 msgid "The attribute '%s' contains invalid characters."
@@ -4137,6 +4194,7 @@ msgid ""
 "The attribute '%s' contains the illegal character ':' and is no valid "
 "password."
 msgstr ""
+"'%s' は無効なcontains the illegal character ':' and is no valid password."
 
 #, c-format
 msgid "The attribute '%s' does not appear to be a valid certificate."
@@ -4152,27 +4210,27 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' is an invalid port number."
-msgstr ""
+msgstr "'%s' は無効なポート番号です。"
 
 #, c-format
 msgid "The attribute '%s' is invalid."
-msgstr ""
+msgstr "'%s' は無効です。"
 
 #, c-format
 msgid "The attribute '%s' is no valid IP address."
-msgstr ""
+msgstr "'%s' は有効なIPアドレスではありません。"
 
 #, c-format
 msgid "The attribute '%s' is no valid MAC address."
-msgstr ""
+msgstr "'%s' は有効なMACアドレスではありません。"
 
 #, c-format
 msgid "The attribute '%s' is no valid file mode mask."
-msgstr ""
+msgstr "'%s' は有効なファイルマスク値ではありません。"
 
 #, c-format
 msgid "The attribute '%s' is no valid subnet mask."
-msgstr ""
+msgstr "'%s' は有効なサブネットマスクではありません。"
 
 #, c-format
 msgid "The attribute '%s' is required."
@@ -4181,19 +4239,19 @@ msgstr "属性 '%s' は必要とされています．"
 #, php-format
 msgid ""
 "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
-msgstr ""
+msgstr "'%s' は英数字と一部の記号が使用できます。( a-z, A-Z, 0-9, _ , -. )"
 
 #, c-format
 msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
-msgstr ""
+msgstr "'%s' は英数字が使用できます。( a-z, A-Z, 0-9. )"
 
 #, c-format
 msgid "The attribute '%s' must be a number."
-msgstr ""
+msgstr "'%s' は数字である必要があります。"
 
 #, c-format
 msgid "The attribute '%s' must be a string."
-msgstr ""
+msgstr "'%s' は文字列である必要があります。"
 
 msgid "The changes have been applied successfully."
 msgstr "変更は問題なく成功しました．"
@@ -4202,13 +4260,13 @@ msgstr "変更は問題なく成功しました．"
 msgid ""
 "The changes have been saved. You have to <a href=%s>reboot</a> the system "
 "for the changes to take effect."
-msgstr ""
+msgstr "変更は保存されました。変更を有効にするにはシステムを <a href=%s>再起動</a> してください。."
 
 msgid "The combination of share and working directory does not exist."
 msgstr "共有と作業ディレクトリの組み合わせが存在しません．"
 
 msgid "The command to be executed."
-msgstr ""
+msgstr "コマンドは実行されました。"
 
 msgid "The configuration could not be restored (file upload error)."
 msgstr "設定情報をリストアする事が出来ませんでした (ファイルアップロードエラー)．"
@@ -4219,7 +4277,7 @@ msgstr "設定情報をリストアする事が出来ませんでした．"
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
 "for them to take effect."
-msgstr ""
+msgstr "設定は変更されました。<br>変更された設定は適用するまで効果は出ません。"
 
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
@@ -4228,19 +4286,19 @@ msgstr "設定情報はリストアされました．%s をリブートしてい
 msgid ""
 "The confimed password does not match. Please ensure the passwords match "
 "exactly."
-msgstr ""
+msgstr "入力したパスワードが一致しません。パスワードを再度確認して下さい。"
 
 msgid "The credentials to bind with, enter it here twice."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
-msgstr ""
+msgstr "SMTPサーバのポート番号"
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "デバイス名には a-z, A-Z, 0-9 の文字のみが利用出来ます．"
 
 msgid "The device's IP address."
-msgstr ""
+msgstr "デバイスのIPアドレス"
 
 #, php-format
 msgid ""
@@ -4259,18 +4317,18 @@ msgid "The full name contains invalid characters."
 msgstr "フルネームに不正な文字が使用されています．"
 
 msgid "The group description contains invalid characters."
-msgstr ""
+msgstr "グループの説明に不正な文字が使用されています。"
 
 msgid "The group name contains invalid characters."
-msgstr ""
+msgstr "グループ名に不正な文字が使用されています。"
 
 msgid "The host name contain invalid characters."
-msgstr ""
+msgstr "ホスト名に不正な文字が使用されています。"
 
 msgid ""
 "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
 "."
-msgstr ""
+msgstr "ホスト名には英数字(a-z,A-Z,0-9)と一部の記号( - , _ , . )のみが使用できます。"
 
 msgid "The image file is corrupt"
 msgstr "イメージファイルは破損しています"
@@ -4282,7 +4340,7 @@ msgid "The login name is a reserved login name."
 msgstr "このログイン名は予約されているログイン名です．"
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
-msgstr ""
+msgstr "同一IPアドレスからの最大接続数は0(無制限)かそれより大きな数字である必要があります。"
 
 msgid "The maximum idle time be a number."
 msgstr "アイドル時間の最大数は数字で指定して下さい．"
@@ -4298,13 +4356,13 @@ msgid ""
 msgstr "PASV スタイルのデータ接続に割り当てる最小のポート (0 = いずれかのポート)．"
 
 msgid "The number of clients must be between 1 and 50."
-msgstr ""
+msgstr "クライアント数は1から50の範囲で指定してください。"
 
 msgid "The old password is not correct."
-msgstr ""
+msgstr "古いパスワードは正しくありません。"
 
 msgid "The password contains the illegal character ':'."
-msgstr ""
+msgstr "入力したパスワードに不正ない文字が使用されています。"
 
 msgid "The passwords do not match."
 msgstr "パスワードが一致しません．"
@@ -4322,18 +4380,18 @@ msgid ""
 msgstr "電源制御ユーティリティはシステム状態を監視し，それに応じて様々な電源制御オプションをセットします．"
 
 msgid "The share name is already used."
-msgstr ""
+msgstr "この共有名は既に使用されています。"
 
 msgid "The subject of the email."
-msgstr ""
+msgstr "メールの件名"
 
 msgid "The swap file is using this mount point."
-msgstr ""
+msgstr "スワップファイルはこのマウントポイントで使用されています。"
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
 "take one minute."
-msgstr ""
+msgstr "システムは初期状態に戻されリブート中です。しばらくお待ちください。"
 
 msgid "The system is halting now. This may take one minute."
 msgstr "ドメイン管理者アカウントのパスワードを2度入力して下さい．"
@@ -4342,13 +4400,13 @@ msgid "The system is rebooting now. This may take one minute."
 msgstr "今すぐシステムをリブートします．1分ほどかかるかもしれません．"
 
 msgid "The time update interval must be either between 6 and 1440."
-msgstr ""
+msgstr "アップデート間隔は6から1440の間で指定してください。"
 
 msgid "The unique group ID is already used."
-msgstr ""
+msgstr "このグループIDは既に使用されています。"
 
 msgid "The unique user ID is already used."
-msgstr ""
+msgstr "このユーザIDは既に使用されています。"
 
 msgid "The uploaded image file is not for this platform"
 msgstr "アップロードされたイメージファイルはこのプラットフォームの物ではありません．"
@@ -4360,13 +4418,13 @@ msgid "The value of the variable."
 msgstr ""
 
 msgid "The volume must be detached before it can be deleted."
-msgstr ""
+msgstr "ボリュームは削除する前に切り離しを行う必要があります。"
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "RAID 1 ボリュームは 2つのディスクが必要です．"
 
 msgid "There must be a minimum of 2 disks in a JBOD."
-msgstr ""
+msgstr "JBODボリュームは最低2つのディスクが必要です。"
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
 msgstr "RAID 0 ボリュームは最低でも 2つのディスクが必要です．"
@@ -4375,10 +4433,10 @@ msgid "There must be a minimum of 2 disks in a RAID 5 volume."
 msgstr "RAID 5 ボリュームは最低でも 2つのディスクが必要です．"
 
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr ""
+msgstr "RAID 5 ボリュームは最低でも3つのディスクが必要です。"
 
 msgid "There must be selected a minimum of 1 interface."
-msgstr ""
+msgstr "最低1つのインターフェースを選択する必要があります。"
 
 msgid ""
 "There should be enough to handle the maximum level of concurrency from its "
@@ -4405,11 +4463,11 @@ msgid ""
 msgstr ""
 
 msgid "This URL is already configured."
-msgstr ""
+msgstr "このURLは既に設定されています。"
 
 msgid ""
 "This VLAN cannot be deleted because it is still being used as an interface."
-msgstr ""
+msgstr "このVLANは現在も使用されているため削除できませんでした。"
 
 msgid ""
 "This allows you to lower the power consumption of the drive, at the expense "
@@ -4448,7 +4506,7 @@ msgid ""
 msgstr "共有が net view とブラウズリスト内の使用可能な共有リストの中で見つかるかにかかわらずにコントロールされます．"
 
 msgid "This couple targetname/targetaddress already exists in the disk list."
-msgstr ""
+msgstr "この ターゲット名/ターゲットアドレスは既にディスクリストに存在します。"
 
 msgid "This device already exists in the raid volume list."
 msgstr "指定されたデバイスは既に RAID ボリュームリストに存在します．"
@@ -4457,7 +4515,7 @@ msgid "This disk already exists in the disk list."
 msgstr "このディスクは既にディスクリストに存在しています．"
 
 msgid "This disk/partition is already configured."
-msgstr ""
+msgstr "このディスク/パーティションは既に設定されています。"
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "この暗号化ディスクはマウントされています．取り外す前にアンマウントして下さい．"
@@ -4476,7 +4534,7 @@ msgid ""
 msgstr ""
 
 msgid "This is for information only (not using during iSCSI negociation)."
-msgstr ""
+msgstr "この内容はiSCSIネゴシエーションには使用されません。"
 
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
@@ -4490,14 +4548,14 @@ msgstr ""
 "インストールしてもよろしいですか?"
 
 msgid "This name already exists in the disk list."
-msgstr ""
+msgstr "この名前は既にディスクリストに存在しています。"
 
 msgid ""
 "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr ""
+msgstr "この名前の例: iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
-msgstr ""
+msgstr "この名前の例: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid ""
 "This option allows the users and groups that access a share to be specified. "
@@ -4571,7 +4629,7 @@ msgid ""
 msgstr ""
 
 msgid "This parameters will be added to [global] in smb.conf."
-msgstr ""
+msgstr "このパラメータはsmb.confの[global]セクションに追加されます。"
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -4580,7 +4638,7 @@ msgid ""
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
-msgstr ""
+msgstr "iSCSIターゲットのIPアドレスもしくはFQDN"
 
 msgid "This user already exists in the user list."
 msgstr "ユーザは既にユーザリストに存在します．"
@@ -4592,7 +4650,7 @@ msgid ""
 msgstr "%s が <a href=%s>%s</a> を訪れての新しいファームウェアのバージョンチェックをしません．"
 
 msgid "This will create a recycle bin on the share."
-msgstr ""
+msgstr "共有領域にごみ箱が作成されます。"
 
 msgid ""
 "This will erase ALL data on the selected disks! Do not use this option if "
@@ -4615,10 +4673,10 @@ msgid "Timeout"
 msgstr "タイムアウト"
 
 msgid "To e-mail"
-msgstr ""
+msgstr "メールの宛先"
 
 msgid "To email"
-msgstr ""
+msgstr "メールの宛先"
 
 #, php-format
 msgid ""
@@ -4626,6 +4684,8 @@ msgid ""
 "read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- "
 "Increase <a href='%s'>MTU</a>"
 msgstr ""
+"CIFSのパフォーマンスをよくするには:<br>-  'Large read/write' を有効にする。<br>- Enable '<a "
+"href='%s'>チューニング</a>' switch<br>- <a href='%s'>MTU</a> の値を大きくする。"
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
@@ -4638,7 +4698,7 @@ msgid "Tools"
 msgstr "ツール"
 
 msgid "Traceroute"
-msgstr ""
+msgstr "Traceroute"
 
 msgid ""
 "Traceroute may take a while to complete. You may hit the Stop button on your "
@@ -4651,7 +4711,7 @@ msgid "Traffic graph"
 msgstr "トラフィックグラフ"
 
 msgid "Transfer mode"
-msgstr ""
+msgstr "転送モード"
 
 msgid "Trap host"
 msgstr ""
@@ -4666,7 +4726,7 @@ msgid "Trap string."
 msgstr ""
 
 msgid "Traps"
-msgstr ""
+msgstr "トラップ"
 
 msgid "Tuning"
 msgstr "チューニング"
@@ -4692,7 +4752,7 @@ msgid ""
 msgstr ""
 
 msgid "UID"
-msgstr ""
+msgstr "UID"
 
 msgid "UPnP"
 msgstr "UPnP"
@@ -4707,7 +4767,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Uninstall package"
-msgstr ""
+msgstr "パッケージのアンインストール"
 
 msgid "Unison"
 msgstr "Unison"
@@ -4719,7 +4779,7 @@ msgid "Unix charset"
 msgstr "Unix 文字セット"
 
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 msgid "Unknown or unformatted"
 msgstr "不明又は未フォーマット"
@@ -4734,7 +4794,7 @@ msgid "Up"
 msgstr "Up"
 
 msgid "Update period"
-msgstr ""
+msgstr "アップデート間隔"
 
 msgid "Updating in 5 seconds."
 msgstr ""
@@ -4752,7 +4812,7 @@ msgid "Use AFP3 unix privileges."
 msgstr ""
 
 msgid "Use SSL/TLS encryption layer."
-msgstr ""
+msgstr "SSL/TLSを使用する。"
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
@@ -4762,7 +4822,7 @@ msgstr ""
 
 msgid ""
 "Use the following IP address as the source address in outgoing packets."
-msgstr ""
+msgstr "外向け通信のソースアドレスとしてこのIPアドレスを使用する。"
 
 msgid ""
 "Use the new 64k streaming read and write varient SMB requests introduced "
@@ -4770,7 +4830,7 @@ msgid ""
 msgstr ""
 
 msgid "Use the specified NTP server."
-msgstr ""
+msgstr "特定のNTPサーバを使用する。"
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -4798,7 +4858,7 @@ msgid "User"
 msgstr "ユーザ"
 
 msgid "User ID"
-msgstr ""
+msgstr "ユーザー ID"
 
 msgid "User full name."
 msgstr "ユーザのフルネーム．"
@@ -4825,13 +4885,14 @@ msgid "Users and Groups"
 msgstr "ユーザとグループ"
 
 msgid "VLAN"
-msgstr ""
+msgstr "VLAN"
 
 msgid "VLAN tag"
 msgstr "VLAN タグ"
 
+#, fuzzy
 msgid "Value"
-msgstr ""
+msgstr "値"
 
 msgid "Variable"
 msgstr ""
@@ -4840,43 +4901,44 @@ msgid "Version"
 msgstr "バージョン"
 
 msgid "View license"
-msgstr ""
+msgstr "ライセンスを確認"
 
 msgid "Virtual interface"
-msgstr ""
+msgstr "仮想インターフェース"
 
 msgid "Volume Name"
 msgstr "ボリューム名"
 
 msgid "Volume label"
-msgstr ""
+msgstr "ボリュームラベル"
 
 msgid "Volume label of the new file system."
-msgstr ""
+msgstr "新しいファイルシステムのボリュームラベル"
 
 msgid "WAN address"
 msgstr ""
 
 msgid "WEP"
-msgstr ""
+msgstr "WEP"
 
 msgid "WINS server"
 msgstr "WINS サーバ"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
-msgstr ""
+msgstr "WINSサーバのIPアドレス(例. )"
 
 msgid "WPA"
-msgstr ""
+msgstr "WPA"
 
+#, fuzzy
 msgid "WPA-EAP (Extensible Authentication Protocol)"
-msgstr ""
+msgstr "WPA-EAP (Extensible Authentication Protocol)"
 
 msgid "WPA-PSK (Pre Shared Key)"
-msgstr ""
+msgstr "WPA-PSK (プリシェアードキー)"
 
 msgid "WPA-PSK WPA-EAP"
-msgstr ""
+msgstr "WPA-PSK WPA-EAP"
 
 msgid "Warning"
 msgstr "警告"
@@ -4885,21 +4947,24 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "警告: これは %s ログページのロードの際に大幅な遅延が起こる事があります!"
 
+#, fuzzy
 msgid ""
 "Warning: You are going to delete a RAID volume. All data will get lost and "
 "can not be recovered."
-msgstr ""
+msgstr "警告: RAIDボリュームを削除しようとしています。このボリュームを削除すると含まれているデータはすべて消え復旧できなくなります。"
 
+#, fuzzy
 msgid ""
 "Warning: You are going to delete an encrypted volume. All data will get lost "
 "and can not be recovered."
-msgstr ""
+msgstr "警告: 暗号化されたボリュームを削除しようとしています。このボリュームを削除すると含まれているデータはすべて消え復旧できなくなります。"
 
+#, fuzzy
 msgid "WebGUI"
-msgstr ""
+msgstr "WebGUI"
 
 msgid "Webserver"
-msgstr ""
+msgstr "ウェブサーバ"
 
 msgid "Where the working files will be stored"
 msgstr "作業ファイルが保存される場所"
@@ -4913,13 +4978,13 @@ msgid "Who"
 msgstr ""
 
 msgid "Wildcard"
-msgstr ""
+msgstr "ワイルドカード"
 
 msgid "Wireless"
 msgstr "無線"
 
 msgid "Wireless configuration"
-msgstr ""
+msgstr "無線の設定"
 
 msgid "Workgroup"
 msgstr "ワークグループ"
@@ -4932,11 +4997,12 @@ msgstr ""
 msgid "Working Directory"
 msgstr "作業ディレクトリ"
 
+#, fuzzy
 msgid "Write"
-msgstr ""
+msgstr "書き込み"
 
 msgid "Write only"
-msgstr ""
+msgstr "書き込みのみ"
 
 msgid "Yes"
 msgstr "Yes"
@@ -4945,11 +5011,13 @@ msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
 "command.<br>Example: pkg_add -r packagename"
 msgstr ""
+"SSHによるリモートコンソールもしくはローカルコンソールでも "
+"\"pkg_add\"コマンドを使用してパッケージをインストールする事が可能です。<br>例: pkg_add -r パッケージ名"
 
 #, php-format
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
-msgstr ""
+msgstr "設定ファイルを保存している '%s' のパーティションはマウントできません。<br>"
 
 msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
@@ -4967,7 +5035,7 @@ msgstr ""
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
-msgstr ""
+msgstr "'%s' の項目は最低1つは選択してください。"
 
 msgid "You may enter a description here for your reference."
 msgstr ""
@@ -4981,8 +5049,9 @@ msgstr "始めにディスクを追加して下さい．"
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
+#, fuzzy
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
-msgstr ""
+msgstr "iSCSIターゲット機能を有効にするには最低256MBのRAMが必要になります。"
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "ファームウェアのアップデートの前にシステムをリブートする必要があります．"
@@ -4997,10 +5066,10 @@ msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr "パスフレーズの送信には WebGUI プロトコルに HTTPS を使用すべきです．"
 
 msgid "Your own email address."
-msgstr ""
+msgstr "あなたのメールアドレス"
 
 msgid "Zeroconf/Bonjour"
-msgstr ""
+msgstr "Zeroconf/Bonjour"
 
 msgid "built on"
 msgstr ""
@@ -5025,10 +5094,10 @@ msgstr ""
 
 #, php-format
 msgid "e.g. %s"
-msgstr ""
+msgstr "例. %s"
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr ""
+msgstr "group_suffix, example: ou=groups,dc=example,dc=com"
 
 msgid "hours"
 msgstr "時"
@@ -5073,7 +5142,7 @@ msgid "nostat"
 msgstr ""
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
+msgstr "password_suffix, example: ou=users,dc=example,dc=com"
 
 msgid "pasv_max_port"
 msgstr ""
@@ -5082,10 +5151,10 @@ msgid "pasv_min_port"
 msgstr ""
 
 msgid "prodos"
-msgstr ""
+msgstr "prodos"
 
 msgid "rc.conf"
-msgstr ""
+msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "ブロックインタリーブパリティのローテーション"
@@ -5097,16 +5166,16 @@ msgid "striping"
 msgstr "ストライピング"
 
 msgid "sysctl.conf"
-msgstr ""
+msgstr "sysctl.conf"
 
 msgid "type"
-msgstr ""
+msgstr "type"
 
 msgid "upriv"
-msgstr ""
+msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
+msgstr "user_suffix, example: ou=users,dc=example,dc=com"
 
 msgid "week days"
 msgstr "週日"
