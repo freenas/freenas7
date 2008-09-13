@@ -31,6 +31,25 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
+FreeNAS 0.69b4 (Sareer):
+------------------------
+
+Majors changes:
+
+Minors changes:
+
+Bug fixes:
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+- It is not possible to get seperate CPU stats per processor on SMP machines because
+  FreeBSD does not support that feature.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
+  overriden by the IPv4 DNS server.
+
 FreeNAS 0.69b3 (Shai-Hulud):
 ----------------------------
 
