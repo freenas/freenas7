@@ -31,13 +31,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2008-08-03 13:09+0000\n"
-"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
+"PO-Revision-Date: 2008-09-13 16:04+0000\n"
+"Last-Translator: Aron Xu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-11 21:44+0000\n"
+"X-Launchpad-Export-Date: 2008-09-13 18:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -1054,7 +1054,7 @@ msgstr "设定%s成为Windows客户端的时间服务器。"
 
 #, php-format
 msgid "%s available of %sB"
-msgstr "%s available of %sB"
+msgstr "%s字节中的%s可用"
 
 #, php-format
 msgid "%s interface"
@@ -1066,17 +1066,15 @@ msgstr "%s 界面 (SSID '%s')"
 
 #, php-format
 msgid "%s is used to create %s volumes."
-msgstr ""
+msgstr "%s 被用来创建 %s 分卷。"
 
 #, php-format
 msgid "%s of %sB"
-msgstr ""
-"Copy text   \t\n"
-"%sB中的%s"
+msgstr "%s字节中的%s"
 
 #, php-format
 msgid "%s used of %sB"
-msgstr "%s used of %sB"
+msgstr "%s字节中的%s已使用"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -1096,10 +1094,10 @@ msgstr "(不稳定)"
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
-msgstr "1. 这些行为只能用于调试！<br>2. 无需用此菜单来启动RAID卷 (自动启动)."
+msgstr "1. 这些特别的指令只可用于调试！<br>2. 无需用此菜单来启动RAID卷 (自动启动)。"
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
-msgstr ""
+msgstr "802.1Q VLAN 标签 （介于1和4094之间）。"
 
 #, php-format
 msgid ""
@@ -1116,6 +1114,10 @@ msgid ""
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
+"<li>默认 - Rsync会在连接至rsync 3.0.0或更高版本时选择'during'算法, "
+"而在连接至旧版本时使用'before'算法。</li><li>Before - 文件删除工作将在传输开始之前完成。</li><li>During - "
+"文件删除工作将在传输过程中逐渐进行。</li><li>Delay - 文件删除工作仅在传输时进行计算， 并在传输完成后进行。</li><li>After "
+"- 文件删除工作将在传输完成后进行。</li>"
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -1123,27 +1125,26 @@ msgstr "NTP时间服务器的名称只能包含字符a到z，0到9，'-' 及 '.'
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
-msgstr ""
+msgstr "已经有一个标记为 %s 的VLAN定义在此界面上。"
 
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
-"如果目录被存取时目录档不存在，系统将会自动产生一个目录档。(index.php, index.html, index.htm or "
-"default.htm) was found in that directory."
+"如果文件夹没有索引文件，系统将会自动产生一个。(index.php, index.html, index.htm 或者 default.htm)"
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
-msgstr ""
+msgstr "主机别名。在同一IP地址上有多个域名时，此选项可多次出现。使用空格间隔多个别名。"
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
 "local network and the capabilities of the adaptor. It may be specified "
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
-msgstr ""
+msgstr "密钥可能是5或13个字符（40或104位），这取决于本地网络适配器的性能。可使用字符串或以0x开头的十六进制数字来制定。"
 
 msgid "A route to this destination network already exists."
 msgstr "到目标网段的路由设定已经存在。"
@@ -1196,7 +1197,7 @@ msgid "A valid prefix (1-128) must be specified."
 msgstr "必须指定一个有效的前缀 (1-128)。"
 
 msgid "A valid systctl MIB value."
-msgstr ""
+msgstr "有效的systctl MIB值"
 
 msgid "AD authentication disabled"
 msgstr "关闭 AD 认证"
@@ -1211,16 +1212,16 @@ msgid "AFP Server"
 msgstr "AFP服务器"
 
 msgid "ARP Tables"
-msgstr "ARP Tables"
+msgstr "ARP 表"
 
 msgid "ARP tables"
-msgstr "ARP tables"
+msgstr "ARP 表"
 
 msgid "Access"
 msgstr "存取权限"
 
 msgid "Access Restrictions"
-msgstr ""
+msgstr "访问限制"
 
 msgid "Access mode"
 msgstr "存取模式"
@@ -1237,7 +1238,7 @@ msgstr "开启这个装置的 S.M.A.R.T. 监测"
 msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
-msgstr ""
+msgstr "如果你想在检测到错误或S.M.A.R.T命令失败时获得通知，请开启Email报告。"
 
 msgid "Active Directory"
 msgstr "活动目录"
@@ -1249,13 +1250,13 @@ msgid "Add Host"
 msgstr "添加主机"
 
 msgid "Add MIB"
-msgstr ""
+msgstr "添加MIB"
 
 msgid "Add RAID"
 msgstr "添加RAID"
 
 msgid "Add RSYNC"
-msgstr "添加RSYNC设定"
+msgstr ""
 
 msgid "Add Route"
 msgstr "添加路由"
@@ -1264,7 +1265,7 @@ msgid "Add URL"
 msgstr "新增 URL"
 
 msgid "Add additional scheduled self-test."
-msgstr "新增自动化的自我监测"
+msgstr "添加额外的计划自我检测"
 
 msgid "Add command"
 msgstr "添加命令"
@@ -1294,19 +1295,19 @@ msgid "Add job"
 msgstr "添加任务"
 
 msgid "Add module"
-msgstr "新增模组"
+msgstr "添加模块"
 
 msgid "Add mount point"
-msgstr ""
+msgstr "添加挂载点"
 
 msgid "Add option"
-msgstr ""
+msgstr "添加选项"
 
 msgid "Add parameter"
 msgstr "添加参数"
 
 msgid "Add self-test"
-msgstr "新增自我检测"
+msgstr "添加自我检测"
 
 msgid "Add share"
 msgstr "添加共享"
@@ -1318,7 +1319,7 @@ msgid "Add user"
 msgstr "添加用户"
 
 msgid "Additional group"
-msgstr "其余群组"
+msgstr "附加群组"
 
 msgid "Address"
 msgstr "地址"
@@ -1327,7 +1328,7 @@ msgid "Administration password"
 msgstr "管理员密码"
 
 msgid "Administrative WebGUI"
-msgstr ""
+msgstr "Web管理界面"
 
 msgid "Administrator name"
 msgstr "管理员名称"
@@ -1336,16 +1337,16 @@ msgid "Advanced"
 msgstr "高级设置"
 
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "高级设置"
 
 msgid "Advanced Options"
-msgstr "进阶选项"
+msgstr "高级选项"
 
 msgid "Advanced Power Management"
 msgstr "高级电源管理"
 
 msgid "Advanced settings"
-msgstr "高级选项..."
+msgstr "高级设置"
 
 #, php-format
 msgid ""
@@ -1581,7 +1582,7 @@ msgid "Choose which interface this route applies to."
 msgstr "选择本路由设定要套用到哪一个网路介面。"
 
 msgid "Clear log"
-msgstr "清除日志"
+msgstr "清空日志"
 
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
@@ -3209,13 +3210,13 @@ msgid "Netgraph"
 msgstr "网路图"
 
 msgid "Network"
-msgstr "目标网段"
+msgstr "网络"
 
 msgid "Network mask"
-msgstr "网路遮罩"
+msgstr ""
 
 msgid "Network port"
-msgstr "网路卡"
+msgstr "网路端口"
 
 msgid "Network that is authorised to access the NFS share."
 msgstr "授权可以存取 NFS 分享区的网域。"
@@ -4807,12 +4808,12 @@ msgid "Tools"
 msgstr "工具"
 
 msgid "Traceroute"
-msgstr "Traceroute"
+msgstr "跟踪路由"
 
 msgid ""
 "Traceroute may take a while to complete. You may hit the Stop button on your "
 "browser at any time to see the progress of failed traceroutes."
-msgstr "Traceroute需要一段时间才能完成。你可以随时按下浏览器的停止载入钮并观看结果。"
+msgstr "跟踪路由需要一段时间才能完成。你可以随时按下浏览器的停止载入钮并观看结果。"
 
 msgid "Traffic graph"
 msgstr "流量图表"

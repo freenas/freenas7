@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2008-08-11 17:41+0000\n"
-"Last-Translator: Stefan H. <Unknown>\n"
+"PO-Revision-Date: 2008-09-13 18:23+0000\n"
+"Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-11 21:45+0000\n"
+"X-Launchpad-Export-Date: 2008-09-13 18:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -1113,7 +1113,7 @@ msgstr "%s Schnittstelle (SSID '%s')"
 
 #, php-format
 msgid "%s is used to create %s volumes."
-msgstr ""
+msgstr "%s wird benutzt um %s Volumen zu erzeugen."
 
 #, php-format
 msgid "%s of %sB"
@@ -1191,6 +1191,9 @@ msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
+"Ein Alias für einen Hostnamen. Diese Option kann öfters auftauchen, für jede "
+"Domain die die gleiche IP hat. Trenne verschiedene Alias mit einem "
+"Freizeichen."
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
@@ -1198,6 +1201,10 @@ msgid ""
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
 msgstr ""
+"Ein Schlüssel hat entweder 5 oder 13 Zeichen, (40 oder 104 Bits) abhängig "
+"vom lokalen Netzwerk und den Fähigkeiten des Adapters. Er kann entweder als "
+"einfacher String oder mit einem vorgestellten '0x' als String von "
+"hexadezimalen Zeichen eingegeben werden."
 
 msgid "A route to this destination network already exists."
 msgstr "Eine Route zu diesem Netzwerk besteht bereits."
@@ -1296,6 +1303,9 @@ msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr ""
+"Aktiviere eMail-Benachrichtigung, falls Du benachrichtigt werden willst, "
+"wenn eine Störung oder ein neuer Fehler erkannt wurde, oder wenn ein "
+"S.M.A.R.T Befehl an eine Festplatte fehlschlug."
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -1690,7 +1700,6 @@ msgstr "Kollisionen"
 msgid "Cols"
 msgstr "Spalten"
 
-#, fuzzy
 msgid "Comma separated list of directories to search for files to share."
 msgstr ""
 "Komma separierte Liste von Verzeichnissen welche nach Dateien zum freigeben "
@@ -1864,7 +1873,6 @@ msgstr "Lösche Route"
 msgid "Delete URL"
 msgstr "URL löschen"
 
-#, fuzzy
 msgid "Delete algorithm"
 msgstr "Löschalgorithmus."
 
@@ -2587,7 +2595,6 @@ msgid "Failed to send status report. Please check log files."
 msgstr ""
 "Statusbericht konnte nicht gesendet werden. Bitte in den Logs nachsehen."
 
-#, fuzzy
 msgid "Failed to send test email. Please check log files."
 msgstr ""
 "Das senden der Test-Email ist fehlgeschlagen. Bitte überprüfen Sie die "
@@ -2831,6 +2838,8 @@ msgid ""
 "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
+"IP Adressen werden zu Hostnamen aufgelöst, wenn <a href=%s>&quot;Löse IP "
+"Adressen zu Hostnamen auf&quot;</a> aktiviert ist."
 
 msgid "IP or FQDN address of remote RSYNC server."
 msgstr "IP oder FQDN Addresse des Remote RSYNC Servers."
@@ -3088,6 +3097,8 @@ msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
 msgstr ""
+"Lass '%s' für unformatierte Festplatten und formatiere sie mit dem <a "
+"href=%s>Formatieren</a> Menü."
 
 msgid "License"
 msgstr "Lizenz"
@@ -3162,11 +3173,9 @@ msgstr ""
 "Ortsangabe, z.B. physischer Standort dieses Systems: 'Etage des Gebäudes, "
 "Raum xyz'."
 
-#, fuzzy
 msgid "Location of the files to share."
 msgstr "Standort der Dateien die freigegeben werden sollen."
 
-#, fuzzy
 msgid "Location where the content database file will be stored."
 msgstr "Standort an welchem die Inhalte-Datenbank gespeichert werden soll."
 
@@ -3442,6 +3451,9 @@ msgid ""
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
 "may cause problems."
 msgstr ""
+"Nicht alle Treiber/Netzwerkkarten unterstützen 802.1Q VLAN-Tagging korrekt. "
+"Auf nicht ünterstützen Netzwerkkarten wird VLAN-Tagging laufen, jedoch kann "
+"es wegen der reduzierten MTU-Size zu Problemen kommen."
 
 msgid "Not attached"
 msgstr "Nicht hinzugefügt"
@@ -3688,7 +3700,7 @@ msgid "Port is already used by WebGUI."
 msgstr "Der Anschluß (Port) wird bereits von der Weboberfläche verwendet."
 
 msgid "Port to listen on. Default iTunes port is 3689."
-msgstr ""
+msgstr "Alternativer TCP Port (Standard: 3689)."
 
 #, php-format
 msgid ""
@@ -3889,7 +3901,6 @@ msgstr ""
 msgid "Reports"
 msgstr "Berichte"
 
-#, fuzzy
 msgid "Rescan interval"
 msgstr "Durchsuchungsinterval"
 
@@ -3977,8 +3988,11 @@ msgid ""
 "is disabled, a scan can still be forced from the status page of the "
 "administrative web interface."
 msgstr ""
+"Überprüft das Filesystem alle N Sekunden, um zu sehen, ob neue Files "
+"hinzugefügt oder entfernt wurden. Wert 0 deaktiviert die Überprüfung im "
+"Hintergrund. Wenn die Hintergrundüberprüfung deaktiviert wurde, kann eine "
+"Überprüfung über die administrative Webseite manuell angestoßen werden."
 
-#, fuzzy
 msgid "Scan type"
 msgstr "Suchart"
 
@@ -4494,9 +4508,9 @@ msgstr "Das Attribut '%s' scheint kein gültiges Zertifikat zu sein."
 msgid "The attribute '%s' does not appear to be a valid private %s key."
 msgstr "Das Attribut '%s' scheint kein gültiger Privat %s Schlüssel zu sein."
 
-#, fuzzy, c-format
+#, c-format
 msgid "The attribute '%s' does not appear to be a valid private key."
-msgstr "Das Attribut '%s' ist anscheinend kein valider private key."
+msgstr "Das Attribut '%s' ist anscheinend kein gültiger privater Schlüssel."
 
 #, c-format
 msgid "The attribute '%s' is an invalid port number."
@@ -4698,7 +4712,6 @@ msgstr ""
 "Das 'powerd utility' überwacht den Systemzustand und stellt entsprechend "
 "diverse Energiekontrolloptionen ein."
 
-#, fuzzy
 msgid "The share name is already used."
 msgstr "Der Freigabenamen ist bereits vergeben."
 
@@ -5382,12 +5395,11 @@ msgid "Wireless"
 msgstr "Drahtlos"
 
 msgid "Wireless configuration"
-msgstr ""
+msgstr "WLAN Einstellungen"
 
 msgid "Workgroup"
 msgstr "Arbeitsgruppe"
 
-#, fuzzy
 msgid ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
 "15 characters)."
@@ -5399,7 +5411,7 @@ msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
 
 msgid "Write"
-msgstr ""
+msgstr "Schreiben"
 
 msgid "Write only"
 msgstr "Nur-schreib-Zugriff"
@@ -5433,13 +5445,15 @@ msgid ""
 "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
 "service to clients."
 msgstr ""
+"Sie müssen <a href=%s>Zeroconf/Bonjour</a> aktivieren um diesen Service den "
+"Clients bekannt zu machen."
 
 msgid "You have to define some 'Extent' objects first."
 msgstr "Sie müssen zuerst 'Extent'-Objekte definieren."
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
-msgstr ""
+msgstr "Sie müssen mindestens einen Eintrag für '%s' auswählen."
 
 msgid "You may enter a description here for your reference."
 msgstr "Sie können hier eine Beschreibung für Ihre Referenz eintragen."
@@ -5485,7 +5499,7 @@ msgid "built on"
 msgstr "gebaut am"
 
 msgid "cachecnid"
-msgstr ""
+msgstr "cachecnid"
 
 msgid "chroot everyone"
 msgstr "Wurzel-Verzeichnis für alle Benutzer ändern"
@@ -5494,13 +5508,13 @@ msgid "chroot() everyone, but root."
 msgstr "Wurzel-Verzeichnis für alle Benutzer ändern, bis auf den root."
 
 msgid "crlf"
-msgstr ""
+msgstr "crlf"
 
 msgid "days"
 msgstr "Tage"
 
 msgid "dbpath"
-msgstr ""
+msgstr "dbpath"
 
 #, php-format
 msgid "e.g. %s"
@@ -5531,25 +5545,25 @@ msgid "months"
 msgstr "Monate"
 
 msgid "mswindows"
-msgstr ""
+msgstr "mswindows"
 
 msgid "n/a"
 msgstr "k.A."
 
 msgid "noadouble"
-msgstr ""
+msgstr "noadouble"
 
 msgid "nodev"
-msgstr ""
+msgstr "nodev"
 
 msgid "nofileid"
-msgstr ""
+msgstr "nofileid"
 
 msgid "nohex"
-msgstr ""
+msgstr "nohex"
 
 msgid "nostat"
-msgstr ""
+msgstr "nostat"
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr "password_suffix, example: ou=users,dc=example,dc=com"
@@ -5561,7 +5575,7 @@ msgid "pasv_min_port"
 msgstr "pasv_min_port"
 
 msgid "prodos"
-msgstr ""
+msgstr "prodos"
 
 msgid "rc.conf"
 msgstr "rc.conf"
@@ -5576,13 +5590,13 @@ msgid "striping"
 msgstr "striping"
 
 msgid "sysctl.conf"
-msgstr ""
+msgstr "sysctl.conf"
 
 msgid "type"
 msgstr "Typ"
 
 msgid "upriv"
-msgstr ""
+msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr "user_suffix, example: ou=users,dc=example,dc=com"
