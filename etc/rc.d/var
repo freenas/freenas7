@@ -28,8 +28,10 @@
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
-# - Add keyword nostart. Script will be executed in /etc/rc.
-# - Remove useless code.
+# - Remove useless code
+# ToDo:
+# - Relocate code to populate /var from /etc/rc to this file ASAP
+#
 
 # PROVIDE: var
 # REQUIRE: FILESYSTEMS
@@ -40,38 +42,6 @@ name="var"
 stop_cmd=':'
 
 load_rc_config $name
-
-# Defaults
-varmfs_root=${varmfs_root:-"/"}
-
-# Provide a function for normalizing the mounting of memory
-# filesystems. This function has to be improved using mount_unionfs
-# because the default implementation in rc.subr does not allow
-# to use the copymode=transparent. This is needed because /var
-# is created before this script is executed, so it already contains
-# data and sub directories that should be accessed transparently
-# (mdmfs does not provide the feature to access sub-dirs, e.g. new
-# created data in /var/run will not be stored in the memory files
-# system, only data created in /var).
-#   $1 = size
-#   $2 = mount point
-#   $3 = (optional) extra flags
-mount_md()
-{
-	if [ -n "$3" ]; then
-		flags="$3"
-	fi
-	device=$(/sbin/mdconfig -a -t swap -s ${1})
-	/sbin/newfs /dev/${device} > /dev/null 2>&1
-	/bin/mkdir -p ${varmfs_root}/${device}
-	/sbin/mount /dev/${device} ${varmfs_root}/${device}
-	/sbin/mount_unionfs ${flags} ${varmfs_root}/${device} ${2}
-}
-
-populate_var()
-{
-	/usr/sbin/mtree -deU -f /etc/mtree/BSD.var.dist -p /var > /dev/null
-}
 
 # If we do not have a writable /var, create a memory filesystem for /var
 # unless told otherwise by rc.conf.  We don't have /usr yet so use mkdir
@@ -90,36 +60,6 @@ case "${varmfs}" in
 	else
 		mount_md ${varsize} /var "${varmfs_flags}"
 	fi
-esac
-
-
-# If we have an empty looking /var, populate it, but only if we have
-# /usr available.  Hopefully, we'll eventually find a workaround, but
-# in realistic diskless setups, we're probably ok.
-case "${populate_var}" in
-[Yy][Ee][Ss])
-	populate_var
-	;;
-[Nn][Oo])
-	exit 0
-	;;
-*)
-	if [ -d /var/run -a -d /var/db -a -d /var/empty ] ; then
-		true
-	elif [ -x /usr/sbin/mtree ] ; then
-		populate_var
-	else
-		# We need mtree to populate /var so try mounting /usr.
-		# If this does not work, we can not boot so it is OK to
-		# try to mount out of order.
-		mount /usr
-		if [ ! -x /usr/sbin/mtree ] ; then
-			exit 1
-		else
-			populate_var
-		fi
-	fi
-	;;
 esac
 
 # Make sure we have /var/log/lastlog and /var/log/wtmp files
