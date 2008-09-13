@@ -64,7 +64,7 @@ Majors changes:
 - Add nVidia nForce MCP on-board ethernet support.
 - Add audio transcoding support to mt-daapd/firefly.
 - Add audio/video transcoding support to fuppes.
-  Thanks to Thomas Grønsten for fine tuning the PS3 settings.
+  Thanks to Thomas Gronsten for fine tuning the PS3 settings.
 - Increase mfs_root size to 74MB (32bit) and 80MB (64bit).
 - CTorrent BitTorrent client has been replaced by Transmission which includes a WebGUI.
 - Upgrade inadyn-mt to 02.12.24.
@@ -83,10 +83,10 @@ Minors changes:
 - Add 'Extra options' to SSH services WebGUI page (FR 2062665). This enables the
   user to add additional options to /etc/ssh/sshd_config.
 - Add 'Auxiliary parameters' to CIFS/SMB shares WebGUI. This enables the user to
-  add additional paramaters to the shares' configuration in smb.conf.
+  add additional parameters to the shares' configuration in smb.conf.
 - Add 'Auxiliary parameters' to 'Services|RSYNCD|Server|Settings' and
   'Services|RSYNCD|Server|Module|Add/Edit' WebGUI. This enables the user to add
-  additional paramaters to rsyncd.conf.
+  additional parameters to rsyncd.conf.
 - Add 'Test email' option in 'Disks|Management|S.M.A.R.T.' which enables the sending
   of a test email whenever the service (smartd) is started.
 - Add comments to ISCSI extents/devices/targets (FR 2099023).
