@@ -35,6 +35,8 @@ FreeNAS 0.69b4 (Sareer):
 ------------------------
 
 Majors changes:
+- Upgrade to FreeBSD 6.4.
+- Upgrade rsync to 3.0.4.
 
 Minors changes:
 
