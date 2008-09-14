@@ -1,5 +1,5 @@
 PORTNAME=			rsync
-PORTVERSION=	3.0.3
+PORTVERSION=	3.0.4
 CATEGORIES=		net
 COMMENT=			A network file distribution/sync utility
 MAINTAINER=		votdev@gmx.de
@@ -9,7 +9,8 @@ MASTER_SITES=	http://rsync.samba.org/ftp/%SUBDIR%/ \
 							ftp://sunsite.auc.dk/pub/unix/%SUBDIR%/  \
 							ftp://ftp.sunet.se/pub/unix/admin/%SUBDIR%/  \
 							ftp://ftp.fu-berlin.de/pub/unix/network/%SUBDIR%/ \
-							http://www.mirrorservice.org/sites/rsync.samba.org/
+							http://www.mirrorservice.org/sites/rsync.samba.org/ \
+							CRITICAL
 MASTER_SITE_SUBDIR=	rsync
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX}
 DISTFILES+=		${PORTNAME}-patches-${PORTVERSION}${EXTRACT_SUFX}
