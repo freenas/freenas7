@@ -23,6 +23,6 @@ CONFIGURE_ARGS+=--enable-utf8
 .endif
 
 do-install:
-	${INSTALL_PROGRAM} -v ${PORTSDIR}/editors/nano/work/nano*/src/nano ${FREENAS_ROOTFS}/usr/local/bin; \
+	${INSTALL_PROGRAM} -v ${WRKSRC}/src/nano ${FREENAS_ROOTFS}/usr/local/bin;
 
 .include <bsd.port.post.mk>

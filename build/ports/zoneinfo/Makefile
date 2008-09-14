@@ -48,6 +48,6 @@ do-install:
 	${ECHO_CMD} "Factory" > ${WRKSRC}/zoneinfo.exlude
 	${ECHO_CMD} "posixrules" >> ${WRKSRC}/zoneinfo.exlude
 	${ECHO_CMD} "zone.tab" >> ${WRKSRC}/zoneinfo.exlude
-	${TAR} -c -v -f - -X ${WRKSRC}/zoneinfo.exlude -C ${PORTSDIR}/misc/zoneinfo/work/zoneinfo/ . | ${GZIP_CMD} -cv > ${FREENAS_ROOTFS}/usr/share/zoneinfo.tgz
+	${TAR} -c -v -f - -X ${WRKSRC}/zoneinfo.exlude -C ${WRKSRC} . | ${GZIP_CMD} -cv > ${FREENAS_ROOTFS}/usr/share/zoneinfo.tgz
 
 .include <bsd.port.post.mk>
