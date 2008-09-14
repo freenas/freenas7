@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/sysctl,v 1.17.4.1 2008/01/28 07:58:31 dougb Exp $
+# $FreeBSD: src/etc/rc.d/sysctl,v 1.16.2.2 2008/01/28 08:22:33 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
@@ -38,12 +38,12 @@ mkconf_cmd()
 		${configxml_file} | /usr/local/bin/xml unesc >> ${sysctl_config}
 }
 
-sysctl_start()
+#
+# Read in a file containing sysctl settings and set things accordingly.
+#
+parse_file()
 {
-	#
-	# Read in /etc/sysctl.conf and set things accordingly
-	#
-	if [ -f /etc/sysctl.conf ]; then
+	if [ -f $1 ]; then
 		while read var comments
 		do
 			case ${var} in
@@ -61,13 +61,20 @@ sysctl_start()
 						/sbin/sysctl "${var}"
 						;;
 					esac
-				elif [ "$1" = "last" ]; then
+				elif [ "$2" = "last" ]; then
 					warn "sysctl ${mib} does not exist."
 				fi
 				;;
 			esac
-		done < /etc/sysctl.conf
+		done < $1
 	fi
+}
+
+sysctl_start()
+{
+
+	parse_file /etc/sysctl.conf $1
+	parse_file /etc/sysctl.conf.local $1
 }
 
 load_rc_config $name
