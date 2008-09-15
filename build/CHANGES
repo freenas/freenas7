@@ -39,6 +39,7 @@ Majors changes:
 - Upgrade rsync to 3.0.4.
 
 Minors changes:
+- Fix bug in zoneinfo port.
 
 Bug fixes:
 
