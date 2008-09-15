@@ -159,7 +159,7 @@ function install_dd_image($harddrive)
 	}
 
 	// dd image file on the destination disk.
-	write_console("Installing system image on disk {$harddrive}.\n");
+	write_console("Installing system image on device {$harddrive}.\n");
 	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} bs=16k > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
 		return 1;
@@ -184,8 +184,8 @@ function install_harddrive_image($harddrive)
 	}
 
 	// Install system files.
-	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp --exclude {$g['cf_path']} -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	write_console("Installing system files on device {$harddrive}s1.\n");
+	mwexec("/usr/bin/tar --exclude mnt/ --exclude dev/ --exclude var/ --exclude tmp/ --exclude {$g['cf_path']}/ -c -f - -C / . | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
@@ -284,8 +284,8 @@ function install_upgrade_full($harddrive)
 	mwexec("/bin/cp -p {$mntpath}/etc/cfdevice {$sysbackup}");
 
 	// Install system files
-	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp --exclude {$g['cf_path']} -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	write_console("Installing system files on device {$harddrive}s1.\n");
+	mwexec("/usr/bin/tar --exclude mnt/ --exclude dev/ --exclude var/ --exclude tmp/ --exclude {$g['cf_path']}/ -c -f - -C / . | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
