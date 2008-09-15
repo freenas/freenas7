@@ -1,7 +1,7 @@
 <?php
 /*
 	install.inc
-	Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -205,9 +205,6 @@ kernel="kernel"
 bootfile="kernel"
 kernel_options=""
 kern.hz="100"
-splash_bmp_load="YES"
-bitmap_load="YES"
-bitmap_name="/boot/splash.bmp"
 
 EOD;
 
@@ -567,7 +564,7 @@ function install_detect_installation($mode, &$devinfo) {
 							$result = 0;
 						}
 						break;
-	
+
 					case 'full':
 						$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
 						if (FALSE !== ereg("^.*-full", $platform)) {
@@ -598,7 +595,7 @@ function install_detect_installation($mode, &$devinfo) {
 							$result = 0;
 						}
 						break;
-	
+
 					case 'full':
 						$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
 						if (FALSE !== ereg("^.*-full", $platform)) {
