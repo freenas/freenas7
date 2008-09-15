@@ -44,10 +44,11 @@ test-patches:
 
 do-install:
 # Compress zoneinfo data, exclude some useless files.
-	${MKDIR} ${WRKSRC}
-	${ECHO_CMD} "Factory" > ${WRKSRC}/zoneinfo.exlude
-	${ECHO_CMD} "posixrules" >> ${WRKSRC}/zoneinfo.exlude
-	${ECHO_CMD} "zone.tab" >> ${WRKSRC}/zoneinfo.exlude
-	${TAR} -c -v -f - -X ${WRKSRC}/zoneinfo.exlude -C ${WRKSRC} . | ${GZIP_CMD} -cv > ${FREENAS_ROOTFS}/usr/share/zoneinfo.tgz
+	@${ECHO_CMD} "Factory" > ${WRKSRC}/zoneinfo.exlude
+	@${ECHO_CMD} "posixrules" >> ${WRKSRC}/zoneinfo.exlude
+	@${ECHO_CMD} "zone.tab" >> ${WRKSRC}/zoneinfo.exlude
+
+	@${MKDIR} -p ${FREENAS_ROOTFS}/usr/share
+	${TAR} -c -v -f - -X ${WRKSRC}/zoneinfo.exlude -C ${WRKSRC}/zoneinfo/ . | ${GZIP_CMD} -cv > ${FREENAS_ROOTFS}/usr/share/zoneinfo.tgz
 
 .include <bsd.port.post.mk>
