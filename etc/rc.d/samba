@@ -23,6 +23,7 @@ start_precmd="samba_start_precmd"
 start_cmd="samba_cmd"
 stop_cmd="samba_cmd"
 status_cmd="samba_cmd"
+reload_cmd="samba_reload_cmd"
 mkconf_cmd="mkconf_cmd"
 
 # Defaults
@@ -278,6 +279,27 @@ samba_rcvar_cmd() {
 	fi
 	# Check dependent variables
 	samba_cmd "${_rc_prefix}${rc_arg}" ${rc_extra_args}
+}
+
+samba_reload_cmd() {
+	local name rcvar command pidfile
+	# Prevent recursive calling
+	unset "${rc_arg}_cmd" "${rc_arg}_precmd" "${rc_arg}_postcmd"
+	# Apply to all the daemons
+	for name in ${samba_daemons}; do
+		rcvar=$(set_rcvar)
+		command="/usr/local/sbin/${name}"
+		pidfile="${samba_piddir}/${name}${pid_extra}.pid"
+		# Daemon should be enabled and running
+		if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
+			if [ -n "$(check_pidfile "${pidfile}" "${command}")" ]; then
+				debug "reloading ${name} configuration"
+				echo "Reloading ${name}."
+				# XXX: Hack with pid_extra
+				"${smbcontrol_command}" "${name}${pid_extra}" 'reload-config' ${command_args} >/dev/null 2>&1
+			fi
+		fi
+	done
 }
 
 samba_cmd() {
