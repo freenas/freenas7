@@ -573,6 +573,7 @@
 		<profile>default|...</profile>
 		<deviceip>xxx.xxx.xxx.xxx<deviceip>
 		<transcoding/>
+		<tempdir>xxx</tempdir> // Temporary directory to store transcoded files.
 		-->
 		<port>49152</port>
 		<profile>default</profile>
