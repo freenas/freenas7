@@ -528,7 +528,7 @@ class HTMLTimeZoneComboBox extends HTMLComboBox {
 			return !preg_match("/\/$/", $elt);
 		}
 
-		exec('/usr/bin/tar -tf /usr/share/zoneinfo.tgz -W strip-components=1', $timezonelist);
+		exec('/usr/bin/tar -tf /usr/share/zoneinfo.tgz', $timezonelist);
 		$timezonelist = array_filter($timezonelist, 'is_timezone');
 		sort($timezonelist);
 
@@ -536,7 +536,7 @@ class HTMLTimeZoneComboBox extends HTMLComboBox {
 		$options = array();
 		foreach ($timezonelist as $tzv) {
 			if (!empty($tzv)) {
-				$options[$tzv] = $tzv;
+				$options[$tzv] = substr($tzv, 2); // Remove leading './'
 			}
 		}
 
