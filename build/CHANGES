@@ -45,6 +45,8 @@ Minors changes:
 
 Bug fixes:
 - Fix bug in zoneinfo port.
+- Remove Samba --with-utmp build parameter. It causes a crash when
+  accessing shares (BR 2118240).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

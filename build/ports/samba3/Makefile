@@ -1,7 +1,7 @@
 PORTNAME=			samba
 PORTVERSION=	3.0.32
 PORTREVISION=	2
-PORTEPOCH=		1
+PORTEPOCH=		2
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -54,7 +54,7 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--with-acl-support \
 									--with-quotas \
 									--with-readline \
-									--with-utmp
+									--without-utmp
 
 post-patch:
 		@${REINPLACE_CMD} -e 's/%%SAMBA_CONFIG%%/${SAMBA_CONFIG}/' \
