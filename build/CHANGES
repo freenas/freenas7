@@ -39,9 +39,11 @@ Majors changes:
 - Upgrade rsync to 3.0.4.
 
 Minors changes:
-- Fix bug in zoneinfo port.
+- Add new attribute 'Temporary directory' to UPnP WebGUI to define a directory
+  used to store temporary transcoded files.
 
 Bug fixes:
+- Fix bug in zoneinfo port.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
