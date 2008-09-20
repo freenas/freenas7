@@ -16,6 +16,7 @@ Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
 - It is not possible to get seperate CPU stats per processor on SMP machines.
+- Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
@@ -50,6 +51,7 @@ Permanent restrictions:
 - It is not possible to encrypt a disk partition, only complete disks are supported.
 - It is not possible to get seperate CPU stats per processor on SMP machines because
   FreeBSD does not support that feature.
+- Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
