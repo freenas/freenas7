@@ -229,10 +229,7 @@ function type_change() {
 function ipv6_type_change() {
   switch (document.iform.ipv6type.selectedIndex) {
 		case 0: /* Static */
-		  /* use current ip address as default */
-		  /* comment this line, because function get_ipv6addr use the local IPv6 address*/
-      /*document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>"; */
-      var endis = !(document.iform.enable.checked);
+      var endis = !(document.iform.enable.checked && document.iform.ipv6_enable.checked);
 
       document.iform.ipv6addr.disabled = endis;
 	  	document.iform.ipv6subnet.disabled = endis;
