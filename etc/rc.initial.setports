@@ -151,6 +151,7 @@ if (0 == $result) {
 
 		unset($config['interfaces']['opt' . ($i+1)]['enable']);
 		$config['interfaces']['opt' . ($i+1)]['descr'] = "OPT" . ($i+1);
+		$config['interfaces']['opt' . ($i+1)]['ipv6addr'] = "auto";
 	}
 
 	// Remove all other (old) optional interfaces
