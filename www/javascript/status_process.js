@@ -1,16 +1,16 @@
 /*
 	status_process.js
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 */
-function update_content(x) {
-	if (document.getElementById("content") == null)
+function update_procinfo(value) {
+	if (document.getElementById("procinfo") == null)
 		return;
-	document.getElementById("content").value = x; 
+	document.getElementById("procinfo").value = value; 
 }
 
 function update_callback() {
-	x_get_top_content(update_content);
+	x_get_process_info(update_procinfo);
 	window.setTimeout('update_callback()', 5000);
 }
 
