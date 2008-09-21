@@ -309,6 +309,7 @@ function install_upgrade_full($harddrive)
 	mwexec("/bin/rm -f -r {$sysbackup}");
 
 	// Start upgrade script to remove obsolete files.
+	write_console("Remove obsolete files.\n");
 	mwexec("/etc/install/upgrade.sh clean {$mntpath}");
 
 	// Unmount disk containing OS
