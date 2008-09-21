@@ -93,7 +93,6 @@ $menu['status']['menuitem'][] = array("desc" => gettext("System"), "link" => "in
 $menu['status']['menuitem'][] = array("desc" => gettext("Process"), "link" => "status_process.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => gettext("Interfaces"), "link" => "status_interfaces.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => gettext("Disks"), "link" => "status_disks.php", "visible" => true);
-$menu['status']['menuitem'][] = array("desc" => gettext("Wireless"), "link" => "status_wireless.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => gettext("Graph"), "link" => "status_graph.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => gettext("Email Report"), "link" => "status_report.php", "visible" => true);
 
