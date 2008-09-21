@@ -536,7 +536,8 @@ class HTMLTimeZoneComboBox extends HTMLComboBox {
 		$options = array();
 		foreach ($timezonelist as $tzv) {
 			if (!empty($tzv)) {
-				$options[$tzv] = substr($tzv, 2); // Remove leading './'
+				$tzv = substr($tzv, 2); // Remove leading './'
+				$options[$tzv] = $tzv; 
 			}
 		}
 
