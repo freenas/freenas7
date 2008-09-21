@@ -36,13 +36,13 @@ require("sajax/sajax.php");
 
 $pgtitle = array(gettext("Status"), gettext("Processes"));
 
-function get_top_content() {
+function get_process_info() {
 	exec("top -b", $result);
 	return implode("\n", $result);
 }
 
 sajax_init();
-sajax_export("get_top_content");
+sajax_export("get_process_info");
 sajax_handle_client_request();
 ?>
 <?php include("fbegin.inc");?>
@@ -59,7 +59,7 @@ sajax_handle_client_request();
 			  </tr>
 			  <tr>
 			    <td class="listt">
-			    	<pre><textarea id="content" name="content" class="listcontent" cols="84" rows="30" readonly><?=get_top_content();?></textarea></pre>
+			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="84" rows="30" readonly><?=get_process_info();?></textarea></pre>
 			    </td>
 			  </tr>
 			</table>
