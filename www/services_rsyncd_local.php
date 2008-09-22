@@ -114,9 +114,10 @@ function rsynclocal_process_updatenotification($mode, $data) {
         <?php if (ui_exists_updatenotification("rsynclocal")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="25%" class="listhdrr"><?=gettext("Source share"); ?></td>
-						<td width="25%" class="listhdrr"><?=gettext("Destination share"); ?></td>
-						<td width="40%" class="listhdrr"><?=gettext("Description"); ?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Source share");?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Destination share");?></td>
+						<td width="35%" class="listhdrr"><?=gettext("Description");?></td>
+						<td width="5%" class="listhdrr"><?=gettext("Enable");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsynclocal as $rsynclocal): ?>
@@ -125,6 +126,7 @@ function rsynclocal_process_updatenotification($mode, $data) {
             <td class="listlr"><?=htmlspecialchars($rsynclocal['source']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['destination']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['description']);?>&nbsp;</td>
+						<td class="listbg"><?=(isset($rsynclocal['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" border="0"></a>&nbsp;

@@ -1502,6 +1502,18 @@ function config_upgrade() {
 		$config['version'] = "5.7";
 	}
 
+	/* Convert 5.7 -> 5.8 */
+	/* Add //rsync/rsynclocal/enable and //rsync/rsyncclient/enable. */
+	if ($config['version'] === "5.7") {
+		foreach (explode(" ", "rsyncclient rsynclocal") as $attr) {
+			for ($i = 0; isset($config['rsync'][$attr][$i]); $i++) {
+				$config['rsync'][$attr][$i]['enable'] = true;
+			}
+		}
+
+		$config['version'] = "5.8";
+	}
+
 	write_config();
 
 	if (is_booting())
