@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-13 18:25+0000\n"
+"X-Launchpad-Export-Date: 2008-09-22 00:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -1405,14 +1405,6 @@ msgstr ""
 #~ msgid "Accessible through 'http://ip_address:port'."
 #~ msgstr "Accessible par 'http://adresse_ip:port'."
 
-#, fuzzy
-#~ msgid ""
-#~ "Location where the content database file will be stored. The bookmark file "
-#~ "will also be generated in that directory."
-#~ msgstr ""
-#~ "Emplacement où la base de données de contenu sera enregistrée. Le fichier "
-#~ "signet sera aussi généré dans ce répertoire."
-
 #~ msgid "Web user interface"
 #~ msgstr "Interface utilisateur web"
 
@@ -1601,9 +1593,8 @@ msgstr "Un réseau valide doit être spécifié."
 msgid "A valid prefix (1-128) must be specified."
 msgstr "Un préfixe valide (1-128) doit être spécifié."
 
-#, fuzzy
 msgid "A valid systctl MIB value."
-msgstr "Une valeur systctl MIB valide."
+msgstr ""
 
 msgid "AD authentication disabled"
 msgstr "authentification AD désactivée"
@@ -1674,9 +1665,8 @@ msgstr "Ajouter une route"
 msgid "Add URL"
 msgstr "Ajouter une URL"
 
-#, fuzzy
 msgid "Add additional scheduled self-test."
-msgstr "Ajouter des auto tests additionnels planifiés."
+msgstr ""
 
 msgid "Add command"
 msgstr "Ajouter une commande"
@@ -1788,9 +1778,8 @@ msgstr ""
 "NAS</span></li><li><span class='vexpl'>accédez à l'interface avec la "
 "nouvelle adresse IP</span></li></ul>"
 
-#, fuzzy
 msgid "Aggregation protocol"
-msgstr "Protocole d'Agrégation"
+msgstr ""
 
 msgid "All"
 msgstr "Tous"
@@ -1828,26 +1817,20 @@ msgstr ""
 "Directories can be removed, but only if they are empty. However, overwriting "
 "existing files is still allowed."
 
-#, fuzzy
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
 "follows the allow option format."
 msgstr ""
-"Autorise certain utilisateurs et groupes d'avoir l'accès en lecture/écriture "
-"à un partage. Cela suit le format d'option d'autorisation."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr ""
 "Permet à %s d'essayer de s'enregistrer comme maître explorateur local."
 
-#, fuzzy
 msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
 "follows the allow option format."
 msgstr ""
-"Autorise certain utilisateurs et groupes d'avoir l'accès en lecture/écriture "
-"à un partage. Cela suit le format d'option d'autorisation."
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Port par défaut : 22"
@@ -1861,14 +1844,10 @@ msgstr "Toujours actif"
 msgid "Always scan"
 msgstr "Scanner toujours"
 
-#, fuzzy
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
 msgstr ""
-"Utiliser toujours zéro comme numéro de périférique, cela peut aider lorsque "
-"le numéro de périférique n'est pas constant au travers d'un reboot, d'un "
-"cluster, ..."
 
 msgid "An host with this name already exists."
 msgstr "Une hôte portant ce nom existe déjà."
@@ -1962,9 +1941,8 @@ msgstr "CCMP"
 msgid "CCMP TKIP"
 msgstr "CCMP TKIP"
 
-#, fuzzy
 msgid "CD/DVD or Old Software RAID"
-msgstr "CD/DVD ou vieux logiciels RAID"
+msgstr ""
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
@@ -2050,11 +2028,8 @@ msgstr "Collisions"
 msgid "Cols"
 msgstr "Colonnes"
 
-#, fuzzy
 msgid "Comma separated list of directories to search for files to share."
 msgstr ""
-"Séparer par des virgules la liste des répertoires pour la recherche des "
-"fichiers à partager."
 
 msgid "Command"
 msgstr "Commande"
@@ -2210,9 +2185,8 @@ msgstr "Supprimer l'entrée ARP"
 msgid "Delete Host"
 msgstr "Supprimer un hôte"
 
-#, fuzzy
 msgid "Delete MIB"
-msgstr "Supprimer MIB"
+msgstr ""
 
 msgid "Delete RAID"
 msgstr "Supprimer un RAID"
@@ -2250,10 +2224,8 @@ msgstr "Supprimer le  disque"
 msgid "Delete extent"
 msgstr "Effacer l'extendue"
 
-#, fuzzy
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
-"Supprimer les fichiers du côté récepteur qui n'existent pas sur l'expéditeur."
 
 msgid "Delete group"
 msgstr "Supprimer le groupe"
@@ -2407,9 +2379,9 @@ msgid ""
 "the '/' character illegal."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Discovered iSCSI target for %s"
-msgstr "Destination iSCSI pour %s trouvée"
+msgstr ""
 
 msgid "Disk"
 msgstr "Disque"
@@ -2731,9 +2703,8 @@ msgstr "Activer la lecture/écriture élargie"
 msgid "Enable local user authentication."
 msgstr "Activer l'authentification locale des utilisateurs."
 
-#, fuzzy
 msgid "Enable module listing."
-msgstr "Activer le listing de module"
+msgstr ""
 
 msgid "Enable permission inheritance"
 msgstr "Activer l'héritage des permissions"
@@ -2744,9 +2715,8 @@ msgstr "Activer l'authentification proxy"
 msgid "Enable recycle bin"
 msgstr "Activer poubelle"
 
-#, fuzzy
 msgid "Enable store DOS attributes"
-msgstr "Active les attributs DOS enregistrés"
+msgstr ""
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activer l'enregistrement des journaux sur un serveur distant"
@@ -2811,13 +2781,10 @@ msgstr ""
 msgid "Enter a valid sysctl MIB name."
 msgstr "Entrer un nom sysctl MIB valide"
 
-#, fuzzy
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select it."
 msgstr ""
-"Entrer la date et heure système désirée (format mm/jj/aaaa hh:mm) ou bien "
-"utiliser l'icône pour la sélectionner."
 
 msgid "Enter the NIS Master server hostname."
 msgstr "Entrer le nom d'hôte du serveur maître NIS."
@@ -2880,13 +2847,10 @@ msgstr "Étendue"
 msgid "Extent name"
 msgstr "nom d'extention"
 
-#, fuzzy
 msgid ""
 "Extents must be defined before they can be used, and extents cannot be used "
 "more than once."
 msgstr ""
-"Les extensions doivent être définie avant de pouvoir les utiliser, et les "
-"extensions ne peuvent pas être utilisées plus d'une fois."
 
 msgid "Extra options"
 msgstr "Options supplémentaires"
@@ -2952,9 +2916,8 @@ msgstr ""
 msgid "Failed."
 msgstr "Echec"
 
-#, fuzzy
 msgid "Failover"
-msgstr "Procédé contre les pannes"
+msgstr ""
 
 msgid "File"
 msgstr "Fichier"
@@ -2965,13 +2928,11 @@ msgstr "Fichier non trouvé"
 msgid "File path"
 msgstr "Chemin du fichier"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 "used as extent."
 msgstr ""
-"Chemin du fichier (par ex. /mnt/partage/extent/%s) ou nom du périphérique "
-"(par ex. /dev/ad1) utilisé comme ..."
 
 msgid "File size"
 msgstr "Taille de fichier"
@@ -2997,9 +2958,8 @@ msgstr "Mise à jour du logiciel non supportée sur cette plateforme."
 msgid "Firmware version check"
 msgstr "Vérification de nouvelle version logiciel"
 
-#, fuzzy
 msgid "Flags"
-msgstr "Etiquettes"
+msgstr ""
 
 msgid "Follow"
 msgstr "Suivre"
@@ -3082,9 +3042,8 @@ msgstr "Description du groupe."
 msgid "Group name."
 msgstr "Nom du groupe."
 
-#, fuzzy
 msgid "Group numeric id."
-msgstr "Identifiant numérique du groupe"
+msgstr ""
 
 msgid "Group suffix"
 msgstr "Suffixe groupe"
@@ -3107,9 +3066,8 @@ msgstr "Délai de mise en veille du disque"
 msgid "Help Needed!"
 msgstr "Aide requise!"
 
-#, fuzzy
 msgid "Hide dot files"
-msgstr "Cacher les fichiers commençant par un point"
+msgstr ""
 
 msgid "Highlighting"
 msgstr "Surlignage"
@@ -3131,9 +3089,8 @@ msgstr "Dossier personnel"
 msgid "Host"
 msgstr "Hôte"
 
-#, fuzzy
 msgid "Host resources"
-msgstr "ressources d'hôte"
+msgstr ""
 
 msgid "Hostname"
 msgstr "Nom d'hôte"
@@ -3151,9 +3108,8 @@ msgstr "Hôtes"
 msgid "Hosts allow"
 msgstr "Hôtes autorisés"
 
-#, fuzzy
 msgid "Hosts deny"
-msgstr "Blocage hôtes"
+msgstr ""
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -3219,9 +3175,8 @@ msgstr "Adresse IPv6"
 msgid "IPv6 addresses"
 msgstr "Adresses IPv6"
 
-#, fuzzy
 msgid "ISO file to be mounted."
-msgstr "Fichier ISO à monter."
+msgstr ""
 
 msgid "ISP DNS servers"
 msgstr "Serveurs DNS du FAI"
@@ -3376,9 +3331,8 @@ msgstr "Clef"
 msgid "Key Management Protocol"
 msgstr ""
 
-#, fuzzy
 msgid "Kill encrypted volume"
-msgstr "Tuer le volume chiffré"
+msgstr ""
 
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr ""
@@ -3471,9 +3425,8 @@ msgstr "Charger"
 msgid "Load averages"
 msgstr "Charge moyenne"
 
-#, fuzzy
 msgid "Loadbalance"
-msgstr "Balance de charge"
+msgstr ""
 
 msgid "Local"
 msgstr "Local"
@@ -3506,11 +3459,8 @@ msgstr ""
 msgid "Location of the files to share."
 msgstr "Localisation des fichiers à partager."
 
-#, fuzzy
 msgid "Location where the content database file will be stored."
 msgstr ""
-"Emplacement où le contenu du fichier de la base de données doit être "
-"sauvegardé."
 
 msgid "Log Level"
 msgstr "Niveau de journalisation"
@@ -3810,9 +3760,8 @@ msgstr ""
 msgid "Now"
 msgstr "Maintenant"
 
-#, fuzzy
 msgid "Null passwords"
-msgstr "Mots de passe vide"
+msgstr ""
 
 msgid "Number of clients"
 msgstr "Nombre de clients"
@@ -4160,9 +4109,8 @@ msgstr "Nom du Raid"
 msgid "Read"
 msgstr "Lecture"
 
-#, fuzzy
 msgid "Read Only Access"
-msgstr "Accès en lecture seule"
+msgstr ""
 
 msgid "Read only"
 msgstr "Lecture seule"
@@ -4310,9 +4258,8 @@ msgstr ""
 msgid "Scan type"
 msgstr "Type de scan"
 
-#, fuzzy
 msgid "Schedule time"
-msgstr "Temps planifié"
+msgstr ""
 
 msgid "Scheduled"
 msgstr "Planifié"
@@ -4404,9 +4351,8 @@ msgstr ""
 msgid "Set share password."
 msgstr "Choisir une mot de passe du partage."
 
-#, fuzzy
 msgid "Set the account's primary group to the given group."
-msgstr "Ajuster le groupe primaire du compte à ce groupe."
+msgstr ""
 
 msgid "Set the desired Service Set Identifier (aka network name)."
 msgstr ""
@@ -4418,13 +4364,10 @@ msgid ""
 "some interfaces have range restrictions."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Sets the database information to be stored in path. You have to specifiy a "
 "writable location, even if the volume is read only."
 msgstr ""
-"Définit la base de données à stocker dans un chemin. Vous devez spécifier un "
-"emplacement inscriptible, même si le volume est en lecture seule."
 
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
@@ -4445,9 +4388,8 @@ msgstr "Encodage de caractères du partage"
 msgid "Share Name"
 msgstr "Nom du partage"
 
-#, fuzzy
 msgid "Share Password"
-msgstr "Mot de passe du partage"
+msgstr ""
 
 msgid "Share all sub directories."
 msgstr "Partager tous les sous-répertoires"
@@ -4520,9 +4462,8 @@ msgstr "Partage source"
 msgid "Space Used"
 msgstr "Occupation des disques"
 
-#, fuzzy
 msgid "Specifies how many servers to create."
-msgstr "Indique le nombre de serveurs à créer."
+msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
@@ -4705,9 +4646,8 @@ msgstr ""
 msgid "TKIP"
 msgstr "TKIP"
 
-#, fuzzy
 msgid "TLS + cleartext"
-msgstr "TLS + texte en clair"
+msgstr ""
 
 msgid "TX rates"
 msgstr "Taux de transmission"
@@ -4740,14 +4680,10 @@ msgstr "Email de test de %s"
 msgid "Test email successfully sent."
 msgstr "Email de test envoyé avec succès."
 
-#, fuzzy
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
 msgstr ""
-"L'option de Refus spécifie les utilisateurs et les groupes qui ne sont pas "
-"autorisés à avoir accès au partage. Il suit le même format que l'option "
-"Autoriser."
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -4819,9 +4755,9 @@ msgstr ""
 msgid "The attribute '%s' does not appear to be a valid certificate."
 msgstr "L'attribut '%s' ne semble pas être un certificat valide."
 
-#, fuzzy, c-format
+#, c-format
 msgid "The attribute '%s' does not appear to be a valid private %s key."
-msgstr "L'attribut '%s' ne semble pas être une clé privée %s valide."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' does not appear to be a valid private key."
@@ -4925,9 +4861,8 @@ msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
 "Le nom de périphérique doit contenir uniquement les caractères a-z, A-Z, 0-9."
 
-#, fuzzy
 msgid "The device's IP address."
-msgstr "Adresse IP du matériel."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -5646,9 +5581,8 @@ msgstr ""
 "Attention: Vous allez supprimer un volume chiffré. Toutes les données seront "
 "perdues et ne peuvent pas être récupérées."
 
-#, fuzzy
 msgid "WebGUI"
-msgstr "Interface Web"
+msgstr ""
 
 msgid "Webserver"
 msgstr "Serveur web"
@@ -5850,9 +5784,8 @@ msgstr "prodos"
 msgid "rc.conf"
 msgstr "rc.conf"
 
-#, fuzzy
 msgid "rotated block-interleaved parity"
-msgstr "rotated block-interleaved parity"
+msgstr ""
 
 msgid "seconds"
 msgstr "secondes"

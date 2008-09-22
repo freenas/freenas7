@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-13 18:26+0000\n"
+"X-Launchpad-Export-Date: 2008-09-22 00:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -189,10 +189,6 @@ msgstr ""
 
 #~ msgid "webGUI SSL certificate/key"
 #~ msgstr "webinterface SSL certificaat/sleutel"
-
-#, fuzzy
-#~ msgid "TCP idle timeout"
-#~ msgstr "TCP inactiviteitsduur voor onderbreking"
 
 #~ msgid "S.M.A.R.T Daemon"
 #~ msgstr "S.M.A.R.T Daemon"
@@ -647,32 +643,23 @@ msgstr ""
 msgid "A VLAN with the tag %s is already defined on this interface."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
-"Een folderlijst wordt geproduceerd zodra een folder wordt opgevraagd en er "
-"geen index-dossier (index.php, index.html, index.htm of default.htm) werd "
-"gevonden in die folder."
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
 "local network and the capabilities of the adaptor. It may be specified "
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
 msgstr ""
-"Een sleutel zal ofwel 5 of 13 karakters (40 of 104 bits) zijn afhankelijk "
-"van het locale netwerk en de mogelijkheden van de adaptor. Het kan "
-"gespecificeerd worden ofwel als een gewone string ofwel als een string van "
-"hexadecimale cijfers voorgegaan door '0x'."
 
 msgid "A route to this destination network already exists."
 msgstr "Er bestaat al een route naar dit bestemmingsnetwerk."
@@ -829,9 +816,8 @@ msgstr "Taak toevoegen"
 msgid "Add module"
 msgstr "Module toevoegen"
 
-#, fuzzy
 msgid "Add mount point"
-msgstr "Mountpunt toevoegen"
+msgstr ""
 
 msgid "Add option"
 msgstr "Optie toevoegen"
@@ -893,7 +879,7 @@ msgstr ""
 "address of your computer</li><li>access the webGUI with the new IP "
 "address</li></ul>"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
@@ -901,12 +887,6 @@ msgid ""
 "class='vexpl'>change the IP address of your computer</span></li><li><span "
 "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
-"Nadat u op &quot;Opslaan&quot; klikt, moet u %s opnieuw opstarten om de "
-"veranderingen aan te brengen. U moet wellicht ook één of meer van de "
-"volgende stappen uitvoeren alvorens u opnieuw toegang tot uw NAS heeft: "
-"</span></p><ul><li><span class='vexpl'>verander het IP adres van uw "
-"computer</span></li><li><span class='vexpl'>open de webGUI met het nieuwe IP "
-"adres</span></li></ul>"
 
 msgid "Aggregation protocol"
 msgstr ""
@@ -989,9 +969,8 @@ msgstr ""
 msgid "An host with this name already exists."
 msgstr "Een host met deze naam bestaat reeds."
 
-#, fuzzy
 msgid "An interface with the specified description already exists."
-msgstr "Er bestaat reeds een interface met de gespecificeerde beschrijving."
+msgstr ""
 
 msgid "Anonymous users only"
 msgstr "Enkel anonieme gebruikers"
@@ -1011,25 +990,20 @@ msgstr "Weet u zeker dat u het systeem wilt uitschakelen?"
 msgid "Associated stations"
 msgstr "Gekoppelde stations"
 
-#, fuzzy
 msgid ""
 "At the highest level, a target is what is presented to the initiator, and is "
 "made up of one or more devices, and/or one or more extents."
 msgstr ""
-"Op het hoogste niveau, is een doel datgene wat wordt gepresenteerd aan de "
-"initiator, en bestaat uit één of meerdere apparaten en/of een of meer "
-"betekenissen."
 
 msgid "Attached"
 msgstr "Verbonden"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Attaching provider '%s'."
-msgstr "Het verbinden van leverancier '%s'."
+msgstr ""
 
-#, fuzzy
 msgid "Authenticate URL"
-msgstr "Verklaar URL voor authentiek"
+msgstr ""
 
 msgid "Authentication"
 msgstr "Legitimatie"
@@ -1076,13 +1050,11 @@ msgstr "Basis DN"
 msgid "Browseable"
 msgstr "Verkenbaar"
 
-#, fuzzy
 msgid "CCMP"
-msgstr "CCMP"
+msgstr ""
 
-#, fuzzy
 msgid "CCMP TKIP"
-msgstr "CCMP TKIP"
+msgstr ""
 
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD of oud type Software RAID"
@@ -1170,10 +1142,8 @@ msgstr "Botsingen"
 msgid "Cols"
 msgstr "Kolommen"
 
-#, fuzzy
 msgid "Comma separated list of directories to search for files to share."
 msgstr ""
-"Komma-gescheiden lijst van mappen om in naar bestanden te zoeken om te delen."
 
 msgid "Command"
 msgstr "Opdracht"
@@ -1275,7 +1245,7 @@ msgstr "DN voor BIND"
 msgid "DNS settings"
 msgstr "DNS instellingen"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 "automatically after storing the new firmware. The configuration will be "
@@ -1283,12 +1253,6 @@ msgid ""
 "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
-"Breek de firmware upgrade niet af nadat het ze begonnen. %s zal automatisch "
-"na het opslaan van de nieuwe firmware herstarten. De configuratie zal worden "
-"gehandhaafd.<br>U hebt een minimum van %d Mb RAM nodig om de firmware update "
-"uit te voeren.<br>Het is zeer sterk aan te bevelen dat u een <a "
-"href=%s>Backup</a> van de configuratie van het Systeem maakt alvorens een "
-"upgrade van de firmware uit te voeren."
 
 msgid "Daemon"
 msgstr "Daemon"
@@ -1302,9 +1266,8 @@ msgstr "Daemon log"
 msgid "Data integrity"
 msgstr "Data integriteit"
 
-#, fuzzy
 msgid "Database directory"
-msgstr "De folder van het gegevensbestand"
+msgstr ""
 
 msgid "Date"
 msgstr "Datum"
@@ -1369,10 +1332,8 @@ msgstr "Schijf verwijderen"
 msgid "Delete extent"
 msgstr "Verwijder extentie"
 
-#, fuzzy
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
-"Bestanden verwijderen op de ontvangende zijde die niet bestaan op de zender."
 
 msgid "Delete group"
 msgstr "Groep verwijderen"
@@ -1389,9 +1350,8 @@ msgstr "Verwijder taak"
 msgid "Delete module"
 msgstr "Module wissen"
 
-#, fuzzy
 msgid "Delete mount point"
-msgstr "Mountpunt verwijderen"
+msgstr ""
 
 msgid "Delete option"
 msgstr "Verwijder optie"
@@ -1423,9 +1383,8 @@ msgstr "Omschrijving"
 msgid "Destination email address."
 msgstr "Ontvangend e-mailadres"
 
-#, fuzzy
 msgid "Destination host name or IP number."
-msgstr "Bestemming host-naam of IP-nummer."
+msgstr ""
 
 msgid "Destination network"
 msgstr "Bestemmingsnetwerk"
@@ -1439,9 +1398,8 @@ msgstr "Bestemmingsnetwerk voor deze statische route"
 msgid "Destination share"
 msgstr "Gedeelde bestemmingsmap"
 
-#, fuzzy
 msgid "Detected RSYNC remote shares"
-msgstr "RSYNC op niet lokale gedeelde map gedetecteert"
+msgstr ""
 
 msgid "Device"
 msgstr "Apparaat"
@@ -1462,7 +1420,6 @@ msgstr "Apparaat naam"
 msgid "Device polling"
 msgstr "Device polling"
 
-#, fuzzy
 msgid ""
 "Device polling is a technique that lets the system periodically poll network "
 "devices for new data instead of relying on interrupts. This can reduce CPU "
@@ -1470,11 +1427,6 @@ msgid ""
 "forwarding delay (the devices are polled 1000 times per second). Not all "
 "NICs support polling."
 msgstr ""
-"Apparaat peiling is een techniek die periodiek het systeem netwerkapparaten "
-"voor nieuwe gegevens vraagt in plaats van het vertrouwen op interrupts. Dit "
-"kan de belasting van de processor verminderen en daarom doorvoer verhogen, "
-"ten koste van een licht verhoogde forwarding vertraging (de apparaten worden "
-"1000 keer per seconde gepeild). Niet alle NICs ondersteunen peilen."
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -1524,13 +1476,10 @@ msgstr "Systeem geluid uitschakelen bij het opstarten en afsluiten"
 msgid "Disabled"
 msgstr "Niet geactiveerd"
 
-#, fuzzy
 msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
 msgstr ""
-"Schakelt hex vertalingen uit voor alles behalve dot bestanden. Met deze "
-"optie wordt het '/' karakter ongeldig."
 
 #, php-format
 msgid "Discovered iSCSI target for %s"
@@ -1690,14 +1639,10 @@ msgstr "Adverteer niet createfileid, resolveid, deleteid calls."
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "De MBR niet wissen (zinvol voor sommige RAID controller kaarten)"
 
-#, fuzzy
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
 msgstr ""
-"Niet het volume pad specificeren bij het opsommen van een volumenlijst, "
-"nuttig bij het automatisch aankoppelen van volumes gecreeerd door een "
-"preexec script."
 
 msgid "Done."
 msgstr "Klaar."
@@ -1843,13 +1788,10 @@ msgstr "Sta uitgebreide attributen ondersteuning toe"
 msgid "Enable firmware upload"
 msgstr "Uploaden systeemsoftware activeren"
 
-#, fuzzy
 msgid ""
 "Enable foreground/background file system consistency check during boot "
 "process."
 msgstr ""
-"Schakel bestandssysteem consistentie controle in op de voorgrond/achtergrond "
-"gedurende het opstart proces."
 
 msgid "Enable guest access."
 msgstr "Activeer gast-toegang."
@@ -1900,7 +1842,6 @@ msgstr "Shakel de web gebruikers interface in."
 msgid "Enabled"
 msgstr "Geactiveerd"
 
-#, fuzzy
 msgid ""
 "Enables crlf translation for TEXT files, automatically converting macintosh "
 "line breaks into Unix ones. Use of this option might be dangerous since some "
@@ -1908,13 +1849,6 @@ msgid ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
-"Zet crlf vertaling van TEKST bestanden aan, zet macintosh regel afbrekingen "
-"automatisch om in Unix regel afbrekingen. Het gebruik van deze optie kan "
-"gevaarlijk zijn aangezien sommige oudere programma's binaire "
-"gegevensbestanden als type ' TEKST ' opslaan en deze pas in een tweede stap "
-"definief opslaat in het uiteindelijke type. Afpd zou dus mogelijk dergelijke "
-"bestanden kunnen beschadigen bij het 'per abuis' vertalen van de regel "
-"afbrekingen."
 
 msgid "Encrypted disk name"
 msgstr "Naam van de versleutelde schijf"
@@ -1942,13 +1876,10 @@ msgstr ""
 msgid "Enter a valid sysctl MIB name."
 msgstr "Vul een geldige sysctl MIB-naam in."
 
-#, fuzzy
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select it."
 msgstr ""
-"Voer de gewenste systeemtijd in (formaat mm/dd/jjjj uu:mm) of gebruik een "
-"pictogram om het te selecteren."
 
 msgid "Enter the NIS Master server hostname."
 msgstr "Geeft de NIS master server hostname"
@@ -2022,17 +1953,14 @@ msgstr ""
 msgid "Extra options"
 msgstr "Extra opties"
 
-#, fuzzy
 msgid "Extra options to ifconfig (usually empty)."
-msgstr "Extra opties voor ifconfig (normaal leeg)."
+msgstr ""
 
-#, fuzzy
 msgid "Extra options to rsync (usually empty)."
-msgstr "Extra opties voor rsync (normaal leeg)."
+msgstr ""
 
-#, fuzzy
 msgid "FEC (Fast EtherChannel)"
-msgstr "FEC (Fast EtherChannel - Snel EtherKanaal)"
+msgstr ""
 
 msgid "FTP"
 msgstr "FTP"
@@ -2074,10 +2002,8 @@ msgstr "Maken van geheugenbestandsysteem is mislukt."
 msgid "Failed to send status report. Please check log files."
 msgstr "Fouten rapport versturen is mislukt. Controlleer de log bestanden."
 
-#, fuzzy
 msgid "Failed to send test email. Please check log files."
 msgstr ""
-"Test-email verzenden mislukt. Gelieve de logboekbestanden te controleren."
 
 msgid "Failed to upload metadata backup file."
 msgstr "Slaagde er niet in om meta-gegevens reservebestand te uploaden."
@@ -2139,7 +2065,6 @@ msgstr "Volgen"
 msgid "Force NAT mode."
 msgstr "Forceer NAT modus."
 
-#, fuzzy
 msgid ""
 "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
 "server is behind a masquerading (NAT) box that doesn't properly handle "
@@ -2147,13 +2072,6 @@ msgid ""
 "a dynamic IP address, you can put the public host name of your gateway, that "
 "will be resolved every time a new client will connect."
 msgstr ""
-"Geeft altijd het hier gespecificeerde IP adres als antwoord op een "
-"PASV/EPSV/SPSV commando. Als de server zich achter een adres verhullende "
-"(NAT) doos bevindt die niet in staat is om behoorlijk het stateful FTP "
-"maskeren af te handelen, voer dan het ip adres van die doos hier in. Als u "
-"een dynamisch IP adres hebt, kunt u de openbare host naam van uw gateway "
-"invoeren, die zal worden gebruikt telkens als een nieuwe cliënt zal "
-"verbinden."
 
 msgid "Forced update period"
 msgstr "Geforceerde bijwerk periode"
@@ -2182,9 +2100,8 @@ msgstr "GID"
 msgid "Gateway"
 msgstr "Gateway"
 
-#, fuzzy
 msgid "Gateway to be used to reach the destination network."
-msgstr "Gebruikte gateway om het bestemmings-netwerk te bereiken."
+msgstr ""
 
 msgid "General"
 msgstr "Algemeen"
@@ -2354,9 +2271,8 @@ msgstr "IPv6 adres"
 msgid "IPv6 addresses"
 msgstr "IPv6 adressen"
 
-#, fuzzy
 msgid "ISO file to be mounted."
-msgstr "Te mounten ISO-bestand."
+msgstr ""
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS servers"
@@ -2505,9 +2421,8 @@ msgstr "Hou de diagnosegegevens in de navigatie uitgevouwen"
 msgid "Key"
 msgstr "Sleutel"
 
-#, fuzzy
 msgid "Key Management Protocol"
-msgstr "SleutelBeheerProtocol"
+msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Gecodeerd station onbruikbaar maken"

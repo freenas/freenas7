@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2008-08-08 23:00+0000\n"
-"Last-Translator: Giasone <giasone@free.fr>\n"
+"PO-Revision-Date: 2008-09-19 14:10+0000\n"
+"Last-Translator: Guybrush88 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-13 18:26+0000\n"
+"X-Launchpad-Export-Date: 2008-09-22 00:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -725,7 +725,7 @@ msgstr "interfaccia %s (SSID '%s')"
 
 #, php-format
 msgid "%s is used to create %s volumes."
-msgstr ""
+msgstr "%s è usato per creare %s volumi."
 
 #, php-format
 msgid "%s of %sB"
@@ -1167,7 +1167,7 @@ msgid "AutoScale"
 msgstr "AutoScala"
 
 msgid "Automatically generated test email."
-msgstr ""
+msgstr "Email di testo generata automaticamente."
 
 msgid "Auxiliary parameter"
 msgstr "Parametro ausiliario"
@@ -1200,10 +1200,10 @@ msgid "Browseable"
 msgstr "Esplorabile"
 
 msgid "CCMP"
-msgstr ""
+msgstr "CCMP"
 
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD o Vecchio RAID Software"
@@ -1377,10 +1377,10 @@ msgid "Cron job"
 msgstr "Attivita' Cron"
 
 msgid "DAAP"
-msgstr ""
+msgstr "DAAP"
 
 msgid "DAAP Server"
-msgstr ""
+msgstr "Server DAAP"
 
 msgid "DDP"
 msgstr "DDP"
@@ -1506,7 +1506,7 @@ msgid "Delete module"
 msgstr "Elimina modulo"
 
 msgid "Delete mount point"
-msgstr ""
+msgstr "Cancella punto di montaggio"
 
 msgid "Delete option"
 msgstr "Elimina opzione"
@@ -1666,19 +1666,19 @@ msgid "Do not set this for CF cards."
 msgstr "Non impostare questo parametro per le schede CF."
 
 msgid "Do you really want to delete all MIBs?"
-msgstr ""
+msgstr "Vuoi cancellare davvero tutti i MIB?"
 
 msgid "Do you really want to delete all options?"
-msgstr ""
+msgstr "Vuoi cancellare davvero tutte le opzioni?"
 
 msgid "Do you really want to delete this MIB?"
-msgstr ""
+msgstr "Vuoi cancellare davvero questo MIB?"
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Si vuole realmente cancellare questo RSYNC?"
 
 msgid "Do you really want to delete this URL?"
-msgstr ""
+msgstr "Vuoi cancellare davvero questo URL?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Si vuole realmente cancellare questo comando?"
@@ -1716,7 +1716,7 @@ msgstr ""
 "lo stanno usando diventeranno invalidi (es. condivisioni)!"
 
 msgid "Do you really want to delete this interface?"
-msgstr ""
+msgstr "Vuoi cancellare davvero questa interfaccia?"
 
 msgid "Do you really want to delete this module?"
 msgstr "Si e' sicuri di voler eliminare questo modulo?"
@@ -1729,7 +1729,7 @@ msgstr ""
 "ancora lo utilizzano non saranno piu' validi (es. condivisioni)!"
 
 msgid "Do you really want to delete this option?"
-msgstr ""
+msgstr "Vuoi cancellare davvero questa opzione?"
 
 msgid "Do you really want to delete this parameter?"
 msgstr "Si desidera realmente cancellare questo parametro?"
@@ -1762,7 +1762,7 @@ msgid "Do you really want to uninstall this package?"
 msgstr "Si desidera realmente disinstallare questo pacchetto?"
 
 msgid "Document root"
-msgstr ""
+msgstr "Root documento"
 
 msgid "Document root of the webserver. Home of the web page files."
 msgstr ""
@@ -1935,9 +1935,8 @@ msgstr "Abilita compressione"
 msgid "Enable device polling"
 msgstr "Abilita il device polling"
 
-#, fuzzy
 msgid "Enable directory listing."
-msgstr "Attiva l'elenco delle directory."
+msgstr ""
 
 msgid "Enable domain wildcarding."
 msgstr ""
