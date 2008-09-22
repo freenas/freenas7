@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2008-09-12 08:14+0000\n"
+"PO-Revision-Date: 2008-09-17 16:30+0000\n"
 "Last-Translator: MASAKI Asato <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-13 18:25+0000\n"
+"X-Launchpad-Export-Date: 2008-09-22 00:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -1054,14 +1054,13 @@ msgid ""
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "NTPサーバー名は英数字と記号の\"-\"と\".\"が使用できます。"
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
-msgstr "VLAN tag %s は既にこのインターフェースで使用されています。"
+msgstr ""
 
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
@@ -1146,20 +1145,17 @@ msgstr "AFP"
 msgid "AFP Server"
 msgstr "AFP サーバ"
 
-#, fuzzy
 msgid "ARP Tables"
-msgstr "ARPテーブル"
+msgstr ""
 
-#, fuzzy
 msgid "ARP tables"
-msgstr "ARPテーブル"
+msgstr ""
 
 msgid "Access"
 msgstr "アクセス"
 
-#, fuzzy
 msgid "Access Restrictions"
-msgstr "アクセス制限"
+msgstr ""
 
 msgid "Access mode"
 msgstr "アクセスモード"
@@ -1170,15 +1166,13 @@ msgstr "音響レベル"
 msgid "Activate"
 msgstr "アクティブ"
 
-#, fuzzy
 msgid "Activate S.M.A.R.T. monitoring for this device."
-msgstr "このデバイスのS.M.A.R.T.機能を有効にする。"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
-msgstr "S.M.A.R.T.機能で発見された新しいエラーによるメール通知機能を有効にする。"
+msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -1186,9 +1180,8 @@ msgstr "Active Directory"
 msgid "Add"
 msgstr "追加"
 
-#, fuzzy
 msgid "Add Host"
-msgstr "ホストを追加"
+msgstr ""
 
 msgid "Add MIB"
 msgstr "MIBを追加"
@@ -1202,20 +1195,17 @@ msgstr "RSYNC の追加"
 msgid "Add Route"
 msgstr "ルーティングの追加"
 
-#, fuzzy
 msgid "Add URL"
-msgstr "URLを追加"
+msgstr ""
 
 msgid "Add additional scheduled self-test."
 msgstr ""
 
-#, fuzzy
 msgid "Add command"
-msgstr "コマンドを追加"
+msgstr ""
 
-#, fuzzy
 msgid "Add device"
-msgstr "デバイスを追加"
+msgstr ""
 
 msgid "Add directory"
 msgstr "ディレクトリ追加"
@@ -1229,39 +1219,32 @@ msgstr ""
 msgid "Add group"
 msgstr "グループの追加"
 
-#, fuzzy
 msgid "Add initiator"
-msgstr "イニシエータを追加"
+msgstr ""
 
 msgid "Add interface"
 msgstr "インタフェースの追加"
 
-#, fuzzy
 msgid "Add job"
-msgstr "ジョブを追加"
+msgstr ""
 
-#, fuzzy
 msgid "Add module"
-msgstr "モジュールを追加"
+msgstr ""
 
-#, fuzzy
 msgid "Add mount point"
-msgstr "マウントポイントを追加"
+msgstr ""
 
-#, fuzzy
 msgid "Add option"
-msgstr "オプションを追加"
+msgstr ""
 
-#, fuzzy
 msgid "Add parameter"
-msgstr "パラメータを追加"
+msgstr ""
 
 msgid "Add self-test"
 msgstr ""
 
-#, fuzzy
 msgid "Add share"
-msgstr "共有を追加"
+msgstr ""
 
 msgid "Add target"
 msgstr "ターゲットの追加"
@@ -1269,9 +1252,8 @@ msgstr "ターゲットの追加"
 msgid "Add user"
 msgstr "ユーザの追加"
 
-#, fuzzy
 msgid "Additional group"
-msgstr "グループを追加"
+msgstr ""
 
 msgid "Address"
 msgstr ""
@@ -1279,9 +1261,8 @@ msgstr ""
 msgid "Administration password"
 msgstr "管理者パスワード"
 
-#, fuzzy
 msgid "Administrative WebGUI"
-msgstr "管理用 Web画面"
+msgstr ""
 
 msgid "Administrator name"
 msgstr "管理者名"
@@ -1289,20 +1270,17 @@ msgstr "管理者名"
 msgid "Advanced"
 msgstr "高度な設定"
 
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "高度な設定"
+msgstr ""
 
-#, fuzzy
 msgid "Advanced Options"
-msgstr "詳細なオプション"
+msgstr ""
 
 msgid "Advanced Power Management"
 msgstr "高度な電源管理"
 
-#, fuzzy
 msgid "Advanced settings"
-msgstr "詳細設定"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1388,16 +1366,14 @@ msgid ""
 "across a reboot, cluster, ..."
 msgstr ""
 
-#, fuzzy
 msgid "An host with this name already exists."
-msgstr "この名前のホストは既に存在しています。"
+msgstr ""
 
 msgid "An interface with the specified description already exists."
 msgstr ""
 
-#, fuzzy
 msgid "Anonymous users only"
-msgstr "匿名ユーザのみ"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "変更の適用"
@@ -1435,9 +1411,8 @@ msgstr "認証"
 msgid "Authorised network"
 msgstr "許可するネットワーク"
 
-#, fuzzy
 msgid "Auto"
-msgstr "自動"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "オートスケール"
@@ -1445,25 +1420,20 @@ msgstr "オートスケール"
 msgid "Automatically generated test email."
 msgstr "自動的に生成されたテストメール"
 
-#, fuzzy
 msgid "Auxiliary parameter"
-msgstr "補助パラメータ"
+msgstr ""
 
-#, fuzzy
 msgid "Auxiliary parameter to be added."
-msgstr "補助パラメータが追加されました。"
+msgstr ""
 
-#, fuzzy
 msgid "Auxiliary parameters"
-msgstr "補助パラメータ"
+msgstr ""
 
-#, fuzzy
 msgid "Backup configuration"
-msgstr "バックアップの設定"
+msgstr ""
 
-#, fuzzy
 msgid "Backup file"
-msgstr "バックアップファイル"
+msgstr ""
 
 msgid "Backup/Restore"
 msgstr "バックアップ/リストア"
@@ -1474,9 +1444,8 @@ msgstr ""
 msgid "Banner"
 msgstr "バナー"
 
-#, fuzzy
 msgid "Base DN"
-msgstr "ベース DN"
+msgstr ""
 
 msgid "Browseable"
 msgstr "ブラウズ可能"
@@ -1487,9 +1456,8 @@ msgstr "CCMP"
 msgid "CCMP TKIP"
 msgstr "CCMP TKIP"
 
-#, fuzzy
 msgid "CD/DVD or Old Software RAID"
-msgstr "CD/DVD もしくは古いソフトウェアRAID"
+msgstr ""
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
@@ -1506,9 +1474,8 @@ msgstr "CPU"
 msgid "CPU load"
 msgstr "CPU 負荷"
 
-#, fuzzy
 msgid "CPU usage"
-msgstr "CPU 使用率"
+msgstr ""
 
 msgid "Can't format the OS origin disk!"
 msgstr ""
@@ -1582,24 +1549,20 @@ msgstr "コマンド"
 msgid "Command output:"
 msgstr "コマンド出力:"
 
-#, fuzzy
 msgid "Command scripts"
-msgstr "スクリプト"
+msgstr ""
 
-#, fuzzy
 msgid "Comment"
-msgstr "コメント"
+msgstr ""
 
-#, fuzzy
 msgid "Community"
-msgstr "コミュニティ"
+msgstr ""
 
 msgid "Compliant profile to be used."
 msgstr ""
 
-#, fuzzy
 msgid "Compression"
-msgstr "圧縮"
+msgstr ""
 
 msgid ""
 "Compression is worth using if your connection is slow. The efficiency of the "
@@ -1614,16 +1577,14 @@ msgstr "設定"
 msgid "Confirmation"
 msgstr "確認"
 
-#, fuzzy
 msgid "Connected FTP users"
-msgstr "FTPに接続しているユーザ"
+msgstr ""
 
 msgid "Console menu"
 msgstr "コンソールメニュー"
 
-#, fuzzy
 msgid "Contact"
-msgstr "連絡先"
+msgstr ""
 
 msgid ""
 "Contact information, e.g. name or email of the person responsible for this "
@@ -1639,17 +1600,14 @@ msgstr ""
 msgid "Create"
 msgstr "作成"
 
-#, fuzzy
 msgid "Create and initialize RAID."
-msgstr "RAID の作成と初期化"
+msgstr ""
 
-#, fuzzy
 msgid "Create encrypted volume"
-msgstr "暗号化されたボリュームの作成"
+msgstr ""
 
-#, fuzzy
 msgid "Create mask"
-msgstr "マスクの作成"
+msgstr ""
 
 msgid "Create work directory if it doesn't exist"
 msgstr "作業ディレクトリが存在しない場合は作成して下さい"
@@ -1711,9 +1669,8 @@ msgstr ""
 msgid "Date"
 msgstr "日時"
 
-#, fuzzy
 msgid "Default"
-msgstr "標準設定"
+msgstr ""
 
 msgid "Default is 21"
 msgstr "初期値は 21"
@@ -1751,13 +1708,11 @@ msgstr "URL を削除"
 msgid "Delete algorithm"
 msgstr "アルゴリズムを削除"
 
-#, fuzzy
 msgid "Delete all MIBs"
-msgstr "全ての MIB を削除"
+msgstr ""
 
-#, fuzzy
 msgid "Delete all options"
-msgstr "全てのオプションを削除"
+msgstr ""
 
 msgid "Delete command"
 msgstr "コマンドを削除"
@@ -1920,9 +1875,9 @@ msgid ""
 "the '/' character illegal."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Discovered iSCSI target for %s"
-msgstr "iSCSI ターゲット %s が見つかりました。"
+msgstr ""
 
 msgid "Disk"
 msgstr "ディスク"
@@ -1963,9 +1918,8 @@ msgstr "このコマンドを削除してもよろしいですか？"
 msgid "Do you really want to delete this cron job?"
 msgstr "このCronジョブを削除してもよろしいですか？"
 
-#, fuzzy
 msgid "Do you really want to delete this device?"
-msgstr "本当にこのデバイスを削除してもよろしいですか？"
+msgstr ""
 
 msgid "Do you really want to delete this directory entry?"
 msgstr "このディレクトリエントリを削除しても宜しいですか?"
@@ -1981,9 +1935,8 @@ msgstr ""
 msgid "Do you really want to delete this group?"
 msgstr "本当にこのグループを削除しても宜しいですか?!"
 
-#, fuzzy
 msgid "Do you really want to delete this host?"
-msgstr "本当にこのホストを削除してもよろしいですか？"
+msgstr ""
 
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
@@ -2019,31 +1972,25 @@ msgstr "この共有を削除してもよろしいですか？"
 msgid "Do you really want to delete this target?"
 msgstr "本当にこのターゲットを削除しても宜しいですか?"
 
-#, fuzzy
 msgid "Do you really want to delete this user?"
-msgstr "本当にこのユーザを削除してもよろしいですか？"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
-"本当にこのボリュームを削除してもよろしいですか？\\n !!!注意:このボリュームに含まれるデータはすべて削除され復旧できなくなります。!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "本当にディスクをフォーマットして宜しいですか? データは全て失われます!"
 
-#, fuzzy
 msgid "Do you really want to uninstall this package?"
-msgstr "本当にこのパッケージを削除してもよろしいですか？"
+msgstr ""
 
-#, fuzzy
 msgid "Document root"
-msgstr "ドキュメントルート"
+msgstr ""
 
-#, fuzzy
 msgid "Document root of the webserver. Home of the web page files."
-msgstr "ウェブサーバのドキュメントルート"
+msgstr ""
 
 msgid "Domain"
 msgstr "ドメイン"
@@ -4797,7 +4744,7 @@ msgid "Update period"
 msgstr "アップデート間隔"
 
 msgid "Updating in 5 seconds."
-msgstr ""
+msgstr "5秒毎に更新"
 
 msgid "Upgrade firmware"
 msgstr "ファームウェアアップグレード"
@@ -4890,9 +4837,8 @@ msgstr "VLAN"
 msgid "VLAN tag"
 msgstr "VLAN タグ"
 
-#, fuzzy
 msgid "Value"
-msgstr "値"
+msgstr ""
 
 msgid "Variable"
 msgstr ""
@@ -4930,9 +4876,8 @@ msgstr "WINSサーバのIPアドレス(例. )"
 msgid "WPA"
 msgstr "WPA"
 
-#, fuzzy
 msgid "WPA-EAP (Extensible Authentication Protocol)"
-msgstr "WPA-EAP (Extensible Authentication Protocol)"
+msgstr ""
 
 msgid "WPA-PSK (Pre Shared Key)"
 msgstr "WPA-PSK (プリシェアードキー)"
@@ -4947,21 +4892,18 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "警告: これは %s ログページのロードの際に大幅な遅延が起こる事があります!"
 
-#, fuzzy
 msgid ""
 "Warning: You are going to delete a RAID volume. All data will get lost and "
 "can not be recovered."
-msgstr "警告: RAIDボリュームを削除しようとしています。このボリュームを削除すると含まれているデータはすべて消え復旧できなくなります。"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "Warning: You are going to delete an encrypted volume. All data will get lost "
 "and can not be recovered."
-msgstr "警告: 暗号化されたボリュームを削除しようとしています。このボリュームを削除すると含まれているデータはすべて消え復旧できなくなります。"
+msgstr ""
 
-#, fuzzy
 msgid "WebGUI"
-msgstr "WebGUI"
+msgstr ""
 
 msgid "Webserver"
 msgstr "ウェブサーバ"
@@ -4997,9 +4939,8 @@ msgstr ""
 msgid "Working Directory"
 msgstr "作業ディレクトリ"
 
-#, fuzzy
 msgid "Write"
-msgstr "書き込み"
+msgstr ""
 
 msgid "Write only"
 msgstr "書き込みのみ"
@@ -5049,9 +4990,8 @@ msgstr "始めにディスクを追加して下さい．"
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
-#, fuzzy
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
-msgstr "iSCSIターゲット機能を有効にするには最低256MBのRAMが必要になります。"
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "ファームウェアのアップデートの前にシステムをリブートする必要があります．"

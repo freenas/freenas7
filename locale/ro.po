@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2008-06-03 10:45+0000\n"
+"PO-Revision-Date: 2008-09-20 09:37+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-13 18:26+0000\n"
+"X-Launchpad-Export-Date: 2008-09-22 00:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -1088,12 +1088,8 @@ msgstr ""
 #~ "discul <a href='%s'> definit anterior</a>.<br>Asteptati afisarea starii "
 #~ "discului  '%s' inainte de a-l formata si monta!"
 
-#, fuzzy, php-format
-#~ msgid "%s uses %s to create %s arrays."
-#~ msgstr "%s utilizeaza %s ca se creeze %s arrays."
-
 msgid " interfaces:"
-msgstr " interfetei:"
+msgstr " interfeţe"
 
 msgid " was assigned to "
 msgstr " a fost alocat "
@@ -1104,19 +1100,19 @@ msgstr "%d%% din %dMB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s se va anunta ca server de timp pentru clientii Windows"
+msgstr "%s se va anunţa ca server de timp pentru clienţii Windows"
 
 #, php-format
 msgid "%s available of %sB"
-msgstr ""
+msgstr "%s disponibil din %sB"
 
 #, php-format
 msgid "%s interface"
-msgstr "Interfata %s"
+msgstr "Interfaţa %s"
 
 #, php-format
 msgid "%s interface (SSID '%s')"
-msgstr "Interfata %s (SSID '%s')"
+msgstr "Interfaţa %s (SSID '%s')"
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -1128,11 +1124,11 @@ msgstr "%s din %sB"
 
 #, php-format
 msgid "%s used of %sB"
-msgstr ""
+msgstr "%s utilizat din %sB"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr "%s va reporni dupa restaurarea configuratiei."
+msgstr "%s va reporni după restaurarea configuraţiei."
 
 #, php-format
 msgid "%sB available of %sB"
@@ -1149,8 +1145,8 @@ msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
-"1. Folositi aceste optiuni doar pentru analiza erorilor!<br>2. Nu este "
-"nevoie de aceasta optiune pentru a porni un volum RAID (acesta este pornit "
+"1. Folosiţi aceste opţiuni doar pentru analiza erorilor!<br>2. Nu este "
+"nevoie de această opţiune pentru a porni un volum RAID (acesta este pornit "
 "automat)."
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
@@ -1161,8 +1157,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
-"<a href=%s>SSHD</a> trebuie activat pentru Unison, si utilizatorul<a "
-"href=%s></a> trebuie sa aiba acces complet la Shell."
+"<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a "
+"href=%s></a> trebuie să aibă acces complet la Shell."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -1177,11 +1173,11 @@ msgstr ""
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
-"Adresa serverului NTP poate contine numai caracterele a-z, 0-9, '-' and '.'."
+"Adresa serverului NTP poate conţine numai caracterele a-z, 0-9, '-' şi '.'."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
-msgstr "VLAN cu tag-ul %s deja definit pentru aceasta interfata."
+msgstr "VLAN cu tag-ul %s deja definit pentru această interfaţă."
 
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
@@ -1200,12 +1196,16 @@ msgid ""
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
 msgstr ""
+"Cheia poate avea 5 sau 13 caractere (40 sau 140 de biti) functie de tipul "
+"retelei si de posibilitatile adaptorului de retea. Poate fi introdusa fie ca "
+"text in clar fie ca un sir de caractere hexazecimale precedate de "
+"caracterele '0x'."
 
 msgid "A route to this destination network already exists."
-msgstr "Exista deja o ruta catre aceasta destinatie."
+msgstr "Exista deja o rută catre această destinaţie."
 
 msgid "A valid IP address must be specified."
-msgstr "Trebuie sa introduceti o adresa IP valida."
+msgstr "Trebuie să introduceţi o adresă IP validă."
 
 msgid ""
 "A valid IPv4 address must be specified for the primary/secondary DNS server."
@@ -1233,13 +1233,13 @@ msgid "A valid IPv6 prefix must be specified."
 msgstr "Trebuie sa introduceti un prefix IPv6."
 
 msgid "A valid destination network must be specified."
-msgstr "Trebuie specificata o retea destinatie valida."
+msgstr "Trebuie introdusă o reţea destinaţie validă."
 
 msgid "A valid gateway IP address must be specified."
-msgstr "Trebuie specificata o adresa IP de gateway valida."
+msgstr "Trebuie introdusă o adresa IP de gateway validă."
 
 msgid "A valid mtu size must be specified."
-msgstr "Trebuie introdusa o valoare MTU corecta."
+msgstr "Trebuie introdusă o valoare MTU validă."
 
 msgid "A valid network bit count (1-32) must be specified."
 msgstr "Trebuie specificat un numar de retea valid (1-32)."
@@ -1254,10 +1254,10 @@ msgid "A valid prefix (1-128) must be specified."
 msgstr "Trebuie introdus un prefix valid (1-128)"
 
 msgid "A valid systctl MIB value."
-msgstr ""
+msgstr "O valoare corecta systctl MIB."
 
 msgid "AD authentication disabled"
-msgstr ""
+msgstr "Autentificarea AD dezactivata."
 
 msgid "AD or PDC name."
 msgstr "Nume server AD sau PDC."
@@ -1278,10 +1278,10 @@ msgid "Access"
 msgstr "Acces"
 
 msgid "Access Restrictions"
-msgstr ""
+msgstr "Restrictii Acces"
 
 msgid "Access mode"
-msgstr ""
+msgstr "Mode de acces"
 
 msgid "Acoustic level"
 msgstr "Nivel Acustic"
@@ -1289,14 +1289,15 @@ msgstr "Nivel Acustic"
 msgid "Activate"
 msgstr "Activ"
 
-#, fuzzy
 msgid "Activate S.M.A.R.T. monitoring for this device."
-msgstr "Activeaza monitorizarea diskului cu S.M.A.R.T."
+msgstr "Activare monitorizare S.M.A.R.T. pentru dispozitiv."
 
 msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr ""
+"Activare raport prin email in cazul aparitiei unei erori sau unei defectiuni "
+"(monitorizare S.M.A.R.T.)"
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -1323,7 +1324,7 @@ msgid "Add URL"
 msgstr "Adaugare URL"
 
 msgid "Add additional scheduled self-test."
-msgstr ""
+msgstr "Adaugare auto-test programat."
 
 msgid "Add command"
 msgstr "Adaugare comanda"
@@ -1352,9 +1353,8 @@ msgstr "Adaugare Interfata"
 msgid "Add job"
 msgstr "Adaugare program"
 
-#, fuzzy
 msgid "Add module"
-msgstr "Adauga modul"
+msgstr "Adaugare modul"
 
 msgid "Add mount point"
 msgstr ""
@@ -1366,7 +1366,7 @@ msgid "Add parameter"
 msgstr "Adaugare parametru"
 
 msgid "Add self-test"
-msgstr ""
+msgstr "Adaugare auto-test"
 
 msgid "Add share"
 msgstr "Adaugare partajare"
@@ -1396,7 +1396,7 @@ msgid "Advanced"
 msgstr "Setari Speciale"
 
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Configurare avansată"
 
 msgid "Advanced Options"
 msgstr "Opţiuni Avansate"
@@ -1435,21 +1435,18 @@ msgstr ""
 "cu noua adresa IP</span></li></ul>"
 
 msgid "Aggregation protocol"
-msgstr ""
+msgstr "Protocol de agregare"
 
 msgid "All"
 msgstr "Toate"
 
 msgid "All dirs"
-msgstr ""
+msgstr "Toate directoarele"
 
-#, fuzzy
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
 "anything beginning with .Apple illegal."
 msgstr ""
-"Toate partajele utilizeaza optionea 'usedots'. Numele care incep cu "
-"\".Apple\" sint ilegale."
 
 msgid "All users will have the root privilege."
 msgstr "Toti utilizatorii vor avea privilegii de root."
@@ -1457,9 +1454,8 @@ msgstr "Toti utilizatorii vor avea privilegii de root."
 msgid "Allow"
 msgstr "Permite"
 
-#, fuzzy
 msgid "Allow client access to accounts that have null passwords."
-msgstr "Permite clientilor sa se logheze cu conturi care nu au parola."
+msgstr "Permisiune acces pentru conturile cu parolă nulă."
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -1474,25 +1470,19 @@ msgstr ""
 "posibilitatea de stergere sau redenumire fisiere. Directoarele pot fi sterse "
 "doar daca sint goale. Oricum, suprascrierea fisierelor este permisa."
 
-#, fuzzy
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
 "follows the allow option format."
 msgstr ""
-"Permite anumitor utilizatori/grupuri sa scrie/citeasca pe share. Se "
-"folosessc optiuni in format 'allow'."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Permite sistemului %s sa devina un Master Browser local."
 
-#, fuzzy
 msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
 "follows the allow option format."
 msgstr ""
-"Permite anumitor utilizatori/grupuri sa scrie/citeasca pe share. Se "
-"folosessc optiuni in format 'allow'."
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Port Alternativ TCP. Implicit este 22"
@@ -1504,7 +1494,7 @@ msgid "Always on"
 msgstr "Pornit Mereu"
 
 msgid "Always scan"
-msgstr ""
+msgstr "Scanează întotdeauna"
 
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
@@ -1560,13 +1550,13 @@ msgid "Authorised network"
 msgstr "Retea Autorizata"
 
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 msgid "AutoScale"
 msgstr "AutoScalare"
 
 msgid "Automatically generated test email."
-msgstr ""
+msgstr "Email de test generat automat."
 
 msgid "Auxiliary parameter"
 msgstr "Parametri auxiliari"
@@ -1581,7 +1571,7 @@ msgid "Backup configuration"
 msgstr "Salvare configuratie."
 
 msgid "Backup file"
-msgstr ""
+msgstr "Fişier backup"
 
 msgid "Backup/Restore"
 msgstr "Backup/Restore"
@@ -1602,17 +1592,16 @@ msgid "CCMP"
 msgstr ""
 
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
-#, fuzzy
 msgid "CD/DVD or Old Software RAID"
-msgstr "CD/DVD sau Old Software RAID"
+msgstr "CD/DVD sau Software RAID vechi"
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
 
 msgid "CIFS/SMB disabled"
-msgstr ""
+msgstr "CIFS/SMB dezactivat"
 
 msgid "CIFS/SMB informations"
 msgstr "Informatii CIFS/SMS"
@@ -1651,7 +1640,7 @@ msgid "Channel"
 msgstr "Canal"
 
 msgid "Check interval"
-msgstr ""
+msgstr "Interval de verificare"
 
 msgid "Check shared secret:"
 msgstr "Verificare partajare secreta:"
@@ -1679,9 +1668,8 @@ msgstr ""
 msgid "Client"
 msgstr "Client"
 
-#, fuzzy
 msgid "Client sees lowercase, server sees uppercase"
-msgstr "Litere mici pentru client, litere mari pentru server"
+msgstr ""
 
 msgid "Client sees uppercase, server sees lowercase"
 msgstr ""
@@ -1719,15 +1707,14 @@ msgstr "Profilul folosit implicit."
 msgid "Compression"
 msgstr "Compresie"
 
-#, fuzzy
 msgid ""
 "Compression is worth using if your connection is slow. The efficiency of the "
 "compression depends on the type of the file, and varies widely. Useful for "
 "internet transfer only."
 msgstr ""
-"Compresia merita sa fie utilizata pentru transferul Internet. Nu toate "
-"fisierele pot fi compresate. Pentru retealocala nu merita sa folositi "
-"compresie."
+"Compresia este recomandabilă dacă conexiunea este de viteză mică. Eficienţa "
+"compresiei depinde de tipul de fişier, fiind variabilă. Folositoare doar "
+"pentru transferuri în internet."
 
 msgid "Configuring"
 msgstr "Configurare"
@@ -1735,9 +1722,8 @@ msgstr "Configurare"
 msgid "Confirmation"
 msgstr "Confirmare"
 
-#, fuzzy
 msgid "Connected FTP users"
-msgstr "Utilizatori conectati prin FTP"
+msgstr "Utilizatori FTP conectaţi"
 
 msgid "Console menu"
 msgstr "Meniu Consola"
@@ -1826,9 +1812,8 @@ msgstr "Jurnal daemon:"
 msgid "Data integrity"
 msgstr "Integritate Date"
 
-#, fuzzy
 msgid "Database directory"
-msgstr "Directorul pentru DataBase"
+msgstr "Directorul bazei de date"
 
 msgid "Date"
 msgstr "Data"
@@ -1840,7 +1825,7 @@ msgid "Default is 21"
 msgstr "Implicit este 21"
 
 msgid "Define directories/URL's that require authentication."
-msgstr ""
+msgstr "Definiţi directoarele/URL-urile care necesită autentificare"
 
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Definirea unui sistem gazda (host) poate fi util pentru NFS."
@@ -1867,13 +1852,13 @@ msgid "Delete Route"
 msgstr "Stergere Ruta"
 
 msgid "Delete URL"
-msgstr ""
+msgstr "Ştergere URL"
 
 msgid "Delete algorithm"
-msgstr ""
+msgstr "Algoritm de ştergere"
 
 msgid "Delete all MIBs"
-msgstr ""
+msgstr "Ştergere completă MIB"
 
 msgid "Delete all options"
 msgstr ""
@@ -1912,7 +1897,7 @@ msgid "Delete module"
 msgstr "Sterge modulul"
 
 msgid "Delete mount point"
-msgstr ""
+msgstr "Ştergere punct de montare"
 
 msgid "Delete option"
 msgstr ""
@@ -1921,7 +1906,7 @@ msgid "Delete parameter"
 msgstr "Stergere parametru"
 
 msgid "Delete self-test"
-msgstr ""
+msgstr "Ştergere auto+test"
 
 msgid "Delete share"
 msgstr "Stergere partajare"
@@ -1933,7 +1918,7 @@ msgid "Delete user"
 msgstr "Stergere utilizator"
 
 msgid "Deleting"
-msgstr ""
+msgstr "Ştergere"
 
 msgid "Deny"
 msgstr "Respinge"
@@ -2008,7 +1993,7 @@ msgid "Diagnostics"
 msgstr "Diagnostice"
 
 msgid "Difference"
-msgstr ""
+msgstr "Diferență"
 
 msgid "Directory"
 msgstr "Director"
@@ -2044,13 +2029,10 @@ msgstr "Dezactivare sunet (beep) la pornire si la oprire"
 msgid "Disabled"
 msgstr "Dezactivat"
 
-#, fuzzy
 msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
 msgstr ""
-"Dezactiveaza translarea caracterelor in hexadecimal cu exceptia fisierelor "
-"care incep cu un punct(.) . Aceasta optiune va face caracterul \"/\" ilegal."
 
 #, php-format
 msgid "Discovered iSCSI target for %s"
@@ -2071,12 +2053,11 @@ msgstr "Discuri"
 msgid "Disks (ATA)"
 msgstr "Disc (ATA)"
 
-#, fuzzy
 msgid "Do not set this for CF cards."
-msgstr "Nu utilizati aceasta optiune pentru CF(compact flash)."
+msgstr ""
 
 msgid "Do you really want to delete all MIBs?"
-msgstr ""
+msgstr "Ştergeţi toate MIB-urile?"
 
 msgid "Do you really want to delete all options?"
 msgstr ""
@@ -2189,13 +2170,13 @@ msgid "Domain name (DNS/Realm-Name)"
 msgstr ""
 
 msgid "Domain name (NetBIOS-Name)"
-msgstr ""
+msgstr "Nume domeniu (Nume-NetBIOS)"
 
 msgid "Domain name in old format, e.g. EXAMPLE."
 msgstr ""
 
 msgid "Domain name, e.g. example.com."
-msgstr ""
+msgstr "Nume domeniu, ex. exemplu.com."
 
 msgid "Don't Erase MBR"
 msgstr "Nu stergeti MBR-ul"
@@ -2286,15 +2267,14 @@ msgstr "Editare interfata"
 msgid "Edit job"
 msgstr "Editare program"
 
-#, fuzzy
 msgid "Edit module"
-msgstr "Editeaza modulul"
+msgstr "Modul editare"
 
 msgid "Edit mount point"
 msgstr ""
 
 msgid "Edit option"
-msgstr ""
+msgstr "Opţiune editare"
 
 msgid "Edit parameter"
 msgstr "Editare parametru"
@@ -2314,9 +2294,8 @@ msgstr "Editare utilizator"
 msgid "Email"
 msgstr "Email"
 
-#, fuzzy
 msgid "Email Report"
-msgstr "Raport e-mail"
+msgstr ""
 
 msgid "Email report"
 msgstr "Raport email"
@@ -2432,9 +2411,8 @@ msgstr "Criptare"
 msgid "Encryption algorithm"
 msgstr "Algoritm criptare"
 
-#, fuzzy
 msgid "Enforce TLS"
-msgstr "Fotteaza TLS"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -3243,9 +3221,8 @@ msgstr "Consum minim in modul Standby"
 msgid "Minimum power usage without Standby"
 msgstr "Consum maxim fara modul Standby"
 
-#, fuzzy
 msgid "Minutes between network time sync."
-msgstr "Minute intre sincrenizarea ora/data"
+msgstr ""
 
 msgid "Miscellaneous"
 msgstr "Diverse"
@@ -3401,25 +3378,20 @@ msgstr ""
 "Note: Ctrl+click (sau command+click pe Mac) pentru selectare/deselectare "
 "minute, ore, zile  si luni."
 
-#, fuzzy
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
-msgstr "Nota: Ctrl+click in fereastra pentu a selecta/deselecta grupuri."
+msgstr ""
 
-#, fuzzy
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 "minutes, hours, days and months."
 msgstr ""
-"Nota: Ctrl+click in fereastra pentru a selecta/deselecta minute, ore, zile, "
-"si luni."
 
 msgid "Now"
 msgstr "Acum"
 
-#, fuzzy
 msgid "Null passwords"
-msgstr "Fara parola"
+msgstr ""
 
 msgid "Number of clients"
 msgstr "Numarul de clienti"
@@ -3647,9 +3619,8 @@ msgstr "Daemon Alimentare"
 msgid "Power mode"
 msgstr ""
 
-#, fuzzy
 msgid "PreInit"
-msgstr "PreInit"
+msgstr ""
 
 msgid "Prefix"
 msgstr "Prefix"
@@ -3669,17 +3640,14 @@ msgstr "Grup primar"
 msgid "Primary group"
 msgstr "Grup principal"
 
-#, fuzzy
 msgid "Primary group is also selected in additional group."
 msgstr ""
-"Grupul principal va fi selectat deasemenea in lista grupurilor aditionale."
 
 msgid "Private Key"
 msgstr "Cheie Privata"
 
-#, fuzzy
 msgid "Private key"
-msgstr "Cheia privata"
+msgstr ""
 
 msgid "Process"
 msgstr "Procese"
@@ -3702,17 +3670,13 @@ msgstr "Furnizor"
 msgid "Provides compatibility with Apple II clients."
 msgstr "Permite compatibilitatea cu clientii Apple ll"
 
-#, fuzzy
 msgid "Proxy"
-msgstr "Proxy"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last hard disk access has been elapsed."
 msgstr ""
-"Pune discul dur in mod de veghe dupa ce discul nu a fost accesad in perioada "
-"de timp selectionata."
 
 msgid "Quality"
 msgstr "Calitate"
@@ -3771,9 +3735,8 @@ msgstr "Nume Raid"
 msgid "Read"
 msgstr ""
 
-#, fuzzy
 msgid "Read Only Access"
-msgstr "Doar citire"
+msgstr ""
 
 msgid "Read only"
 msgstr "Doar citire"
@@ -3875,9 +3838,8 @@ msgstr ""
 msgid "S.M.A.R.T. log"
 msgstr "Jurnal S.M.A.R.T."
 
-#, fuzzy
 msgid "SNMP"
-msgstr "SNMP"
+msgstr ""
 
 msgid "SNMP Modules"
 msgstr "Modul SNMP"
@@ -4086,9 +4048,8 @@ msgstr "Semnal"
 msgid "Signal strength cache"
 msgstr "Cache Tarie Semnal"
 
-#, fuzzy
 msgid "Simple Network Management Protocol"
-msgstr "Protocol simplu de administrare a retelei"
+msgstr ""
 
 msgid "Size"
 msgstr "Marime"
@@ -4137,13 +4098,10 @@ msgid ""
 "example: dc=example,dc=com"
 msgstr "Specifica baza DN pentru operatii LDAP, exemplu: dc=example, dc=com"
 
-#, fuzzy
 msgid ""
 "Specifies the default bind DN to use when performing ldap operations, "
 "example:cn=administrator,dc=example,dc=com "
 msgstr ""
-"Specifica principalul  DN care va fi utilizat pentru operatiile LDAP, "
-"exemplu:cn=administrator,dc=example,dc=com "
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
@@ -4688,13 +4646,10 @@ msgid ""
 "This VLAN cannot be deleted because it is still being used as an interface."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "This allows you to lower the power consumption of the drive, at the expense "
 "of performance."
 msgstr ""
-"Aceasta optiune va permite micsorarea consumului de energie al discului in "
-"detrimentul performantei."
 
 msgid "This allows you to set how loud the drive is while it's operating."
 msgstr ""
@@ -4854,9 +4809,8 @@ msgid ""
 "files."
 msgstr ""
 
-#, fuzzy
 msgid "This parameters will be added to [global] in smb.conf."
-msgstr "Acesti parametri vor fi introdusi in smb.conf [global]."
+msgstr ""
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -5328,9 +5282,8 @@ msgstr ""
 msgid "chroot everyone"
 msgstr "chroot pentru fiecare"
 
-#, fuzzy
 msgid "chroot() everyone, but root."
-msgstr "Limeteaza accesul utilizatorilor la directorul \"home\""
+msgstr ""
 
 msgid "crlf"
 msgstr ""

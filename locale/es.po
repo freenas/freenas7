@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-13 18:24+0000\n"
+"X-Launchpad-Export-Date: 2008-09-22 00:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -417,9 +417,8 @@ msgstr "Añadir Ruta"
 msgid "Add URL"
 msgstr "Añadir URL"
 
-#, fuzzy
 msgid "Add additional scheduled self-test."
-msgstr "Añadir autoconprobación planeada adicional."
+msgstr ""
 
 msgid "Add command"
 msgstr "Añadir comando"
@@ -439,9 +438,8 @@ msgstr "Agregar extensión."
 msgid "Add group"
 msgstr "Añadir grupo"
 
-#, fuzzy
 msgid "Add initiator"
-msgstr "Añadir iniciador"
+msgstr ""
 
 msgid "Add interface"
 msgstr "Añadir interfaz"
@@ -568,25 +566,19 @@ msgstr ""
 "renombrarlos. Los directorios pueden ser removidos, pero sólo si están "
 "vacíos. Sin embargo, se permite la sobreescritura de archivos."
 
-#, fuzzy
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
 "follows the allow option format."
 msgstr ""
-"Permite a determinados usuarios y grupos el acceso de lectura/escritura a un "
-"recurso compartido. Utiliza el mismo formato que la opción permitir."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Permite a %s tratar de ser local master browser."
 
-#, fuzzy
 msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
 "follows the allow option format."
 msgstr ""
-"Permite a determinados usuarios y grupos el acceso de sólo lectura a un "
-"recurso compartido. Utiliza el mismo formato que la opción permitir."
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Puerto TCP alternativo. Por defecto es 22"
@@ -600,13 +592,10 @@ msgstr "Siempre activo"
 msgid "Always scan"
 msgstr "Escanear siempre"
 
-#, fuzzy
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
 msgstr ""
-"Siempre use 0 para el número del dispositivo, esto ayuda cuando el número de "
-"dispositivo no es constante tras un reinicio, cluster, ..."
 
 msgid "An host with this name already exists."
 msgstr "Ya existe una máquina con este nombre."
@@ -721,9 +710,8 @@ msgstr "Carga CPU"
 msgid "CPU usage"
 msgstr "Uso de CPU"
 
-#, fuzzy
 msgid "Can't format the OS origin disk!"
-msgstr "¡No se puede formatear el disco de origen del SO!"
+msgstr ""
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
@@ -774,13 +762,11 @@ msgstr ""
 msgid "Client"
 msgstr "Cliente"
 
-#, fuzzy
 msgid "Client sees lowercase, server sees uppercase"
-msgstr "El cliente ve minúsculas, el servidor ve mayúsculas"
+msgstr ""
 
-#, fuzzy
 msgid "Client sees uppercase, server sees lowercase"
-msgstr "El cliente ve mayúsculas, el servidor ve minúsculas"
+msgstr ""
 
 msgid "Collecting initial data, please wait..."
 msgstr "Recopilando datos iniciales, por favor espere..."
@@ -1000,9 +986,8 @@ msgstr "Borrar iniciador"
 msgid "Delete interface"
 msgstr "Borrar interfaz"
 
-#, fuzzy
 msgid "Delete job"
-msgstr "Eliminar trabajo"
+msgstr ""
 
 msgid "Delete module"
 msgstr "Eliminar Módulo"
@@ -1077,7 +1062,6 @@ msgstr "Nombre del dispositivo"
 msgid "Device polling"
 msgstr "Comprobación de los dispositivos"
 
-#, fuzzy
 msgid ""
 "Device polling is a technique that lets the system periodically poll network "
 "devices for new data instead of relying on interrupts. This can reduce CPU "
@@ -1085,12 +1069,6 @@ msgid ""
 "forwarding delay (the devices are polled 1000 times per second). Not all "
 "NICs support polling."
 msgstr ""
-"La consulta a un dispositivo es una técnica que permite que el sistema "
-"consulte a los dispositivos de red si tienen nuevos datos periódicamente, en "
-"lugar de utilizar interrupciones. Esto puede reducir la carga de la CPU y, "
-"por lo tanto, incrementar la productividad, con el precio de un leve "
-"incremento en el tiempo de reenvío (los dispositivos son consultados 1000 "
-"veces por segundo). No todas las NICs soportan consulta."
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -1113,9 +1091,8 @@ msgstr "Directorio"
 msgid "Directory listing"
 msgstr "Listado de directorio"
 
-#, fuzzy
 msgid "Directory mask"
-msgstr "Máscara de directorio"
+msgstr ""
 
 msgid "Directory to be shared."
 msgstr "Directorio a compartir."
@@ -1141,17 +1118,14 @@ msgstr "Desactivar el pitido del altavoz al iniciar y apagar"
 msgid "Disabled"
 msgstr "Deshabiliatdo"
 
-#, fuzzy
 msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
 msgstr ""
-"Deshabilita traducciones :hex para todo excepto archivos de punto. Esta "
-"opción hace el carácter '/' ilegal."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Discovered iSCSI target for %s"
-msgstr "Descubierto objetivo iSCSI para %s"
+msgstr ""
 
 msgid "Disk"
 msgstr "Disco"
@@ -1243,9 +1217,8 @@ msgstr "¿Realmente quiere eliminar esta parámetro?"
 msgid "Do you really want to delete this route?"
 msgstr "Realmente desea borrar esta ruta?"
 
-#, fuzzy
 msgid "Do you really want to delete this scheduled self-test?"
-msgstr "¿Seguro que quiere eliminar esta autocomprobación planeada?"
+msgstr ""
 
 msgid "Do you really want to delete this share?"
 msgstr "¿Realemente quire borrar ésta MIB?"
@@ -1295,9 +1268,8 @@ msgstr "Nombre de red (nombre NetBIOS)"
 msgid "Domain name in old format, e.g. EXAMPLE."
 msgstr "Nombre de dominio en formato antiguo, p.ej. EJEMPLO."
 
-#, fuzzy
 msgid "Domain name, e.g. example.com."
-msgstr "Nombre de dominio, p. ej. example.com."
+msgstr ""
 
 msgid "Don't Erase MBR"
 msgstr "No Borrar el MBR"
@@ -1416,9 +1388,8 @@ msgstr "Editar usuario"
 msgid "Email"
 msgstr "Correo electrónico"
 
-#, fuzzy
 msgid "Email Report"
-msgstr "Informe por correo electrónico"
+msgstr ""
 
 msgid "Email report"
 msgstr "Reporte por correo electrónico"
@@ -1454,9 +1425,8 @@ msgstr "Activar listado de directorio."
 msgid "Enable domain wildcarding."
 msgstr "Habilitar dominio comodín."
 
-#, fuzzy
 msgid "Enable extended attribute support"
-msgstr "Activar el soporte de atributo extendido."
+msgstr ""
 
 msgid "Enable firmware upload"
 msgstr "Habilitar la actualización del Sistema Base"
@@ -1483,9 +1453,8 @@ msgstr "Activar autentificación de usuarios locales."
 msgid "Enable module listing."
 msgstr "Activar listado de módulos."
 
-#, fuzzy
 msgid "Enable permission inheritance"
-msgstr "Habilitar herencia de permisos"
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "Activar autentificación de proxy."
@@ -1518,7 +1487,6 @@ msgstr "Activar la interfaz web de usuario."
 msgid "Enabled"
 msgstr "Habilitado"
 
-#, fuzzy
 msgid ""
 "Enables crlf translation for TEXT files, automatically converting macintosh "
 "line breaks into Unix ones. Use of this option might be dangerous since some "
@@ -1526,12 +1494,6 @@ msgid ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
-"Activa la traducción crlf para archvios TEXT (de texto), convirtiendo "
-"automáticamente saltos de línea de Machintosh a Unix. El uso de esta opción "
-"puede ser peligroso ya que algunos programas más antiguos guardan datos "
-"binarios como 'TEXT' (texto) y cambian el tipo de archivo en una segunda "
-"etapa. Afpd podría destruir tales archivos cuando cambia bytes "
-"«erroneamente» al hacer la traducción de salto de línea."
 
 msgid "Encrypted disk name"
 msgstr "Nombre del disco encriptado"
@@ -1546,9 +1508,8 @@ msgstr "Cifrado"
 msgid "Encryption algorithm"
 msgstr "Algoritmo de encriptación"
 
-#, fuzzy
 msgid "Enforce TLS"
-msgstr "Obligar al uso de TLS"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1560,20 +1521,16 @@ msgstr ""
 msgid "Enter a valid sysctl MIB name."
 msgstr "Ingrese un nombre sysctl MIB válido."
 
-#, fuzzy
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select it."
 msgstr ""
-"Introduzca la fecha de sistema deseada (formato mm/dd/yyy hh:mm) o use el "
-"icono para seleccionarla."
 
 msgid "Enter the NIS Master server hostname."
 msgstr "Ingrese el host name del servidor NIS Master."
 
-#, fuzzy
 msgid "Enter the NIS Slave server hostname."
-msgstr "Ingrese el nombre de equipo del servidor esclavo de NIS."
+msgstr ""
 
 msgid "Enter the NIS domain name."
 msgstr "Ingrese el nombre de dominio de NIS."
@@ -1594,9 +1551,8 @@ msgstr ""
 "ruta exista y que siempre se monte al inicio. Deje este campo vacío para "
 "usar la ruta por defecto /mnt."
 
-#, fuzzy
 msgid "Enter the port to send the traps to (default 162)."
-msgstr "Ingrese el puerto donde enviar las interrupciones (por defecto 162)."
+msgstr ""
 
 msgid "Enter trap host name."
 msgstr ""
@@ -1614,13 +1570,10 @@ msgstr "Ejecutar"
 msgid "Execute command"
 msgstr "Ejecutar comando"
 
-#, fuzzy
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
 msgstr ""
-"Comando a ejecutar pre o post inciailización del sistema (booteo) o antes "
-"del apagado del mismo."
 
 msgid "Extensions"
 msgstr "Extensiones"
@@ -1705,9 +1658,8 @@ msgstr "Falló."
 msgid "Failover"
 msgstr "Failover"
 
-#, fuzzy
 msgid "File"
-msgstr "Archivo"
+msgstr ""
 
 msgid "File not found"
 msgstr "Archivo no encontrado"
@@ -1729,13 +1681,11 @@ msgstr "Tamaño de archivo"
 msgid "File system"
 msgstr "Sistema de archivos"
 
-#, fuzzy
 msgid "File system check"
-msgstr "Revisión del sistema de archivos"
+msgstr ""
 
-#, fuzzy
 msgid "Filename"
-msgstr "Nombre de archivo"
+msgstr ""
 
 msgid "Firmware"
 msgstr "Firmware"
@@ -1854,9 +1804,8 @@ msgstr "Proxy HTTP"
 msgid "Hard disk standby time"
 msgstr "Tiempo de espera de apagado del disco duro"
 
-#, fuzzy
 msgid "Help Needed!"
-msgstr "¡Se necesita ayuda!"
+msgstr ""
 
 msgid "Hide dot files"
 msgstr "Ocultar archivos de punto"
@@ -2240,9 +2189,8 @@ msgstr "Elemento compartido local (destino)"
 msgid "Local shares to be synchronized"
 msgstr "Recursos compartidos locales a ser sincronizados"
 
-#, fuzzy
 msgid "Local users only"
-msgstr "Usuarios locales solamente"
+msgstr ""
 
 msgid "Location"
 msgstr "Ubicación"
@@ -2299,11 +2247,10 @@ msgstr "Dominio MS"
 msgid "MTU"
 msgstr "MTU"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
-"Asegurese de haber configurado sus preferencias de <a href='%s'>Email</a>."
 
 msgid "Management"
 msgstr "Administración"
@@ -4489,9 +4436,9 @@ msgstr "días"
 msgid "dbpath"
 msgstr "dbpath"
 
-#, fuzzy, php-format
+#, php-format
 msgid "e.g. %s"
-msgstr "por ejemplo %s"
+msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
