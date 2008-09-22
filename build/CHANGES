@@ -44,6 +44,7 @@ Minors changes:
 - Add new attribute 'Temporary directory' to UPnP WebGUI to define a directory
   used to store temporary transcoded files.
 - Modify /etc/rc.d/samba script.
+- Add 'Enable' checkbox to RSYNC client/local jobs to enable/disable them (FR 2123243).
 
 Bug fixes:
 - Fix bug in zoneinfo port.

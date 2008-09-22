@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.7</version>
+	<version>5.8</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -496,6 +496,7 @@
 	<rsync>
 		<!--
 		<rsynclocal>
+			<enable/>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<source>xxx</source> // e.g. /mnt/data
 			<destination>xxx</destination> // e.g. /mnt/backup
@@ -524,6 +525,7 @@
 			</options>
 		</rsynclocal>
 		<rsyncclient>
+			<enable/>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<rsyncserverip>xxx</rsyncserverip>
 			<localshare>xxx</localshare> // e.g. /mnt/data

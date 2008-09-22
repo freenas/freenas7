@@ -53,6 +53,7 @@ if (!is_array($config['rsync']['rsyncclient']))
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if (isset($id) && $a_rsyncclient[$id]) {
+	$pconfig['enable'] = isset($a_rsyncclient[$id]['enable']);
 	$pconfig['uuid'] = $a_rsyncclient[$id]['uuid'];
 	$pconfig['rsyncserverip'] = $a_rsyncclient[$id]['rsyncserverip'];
 	$pconfig['localshare'] = $a_rsyncclient[$id]['localshare'];
@@ -80,6 +81,7 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['xattrs'] = isset($a_rsyncclient[$id]['options']['xattrs']);
 	$pconfig['extraoptions'] = $a_rsyncclient[$id]['options']['extraoptions'];
 } else {
+	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
 	$pconfig['recursive'] = true;
 	$pconfig['times'] = true;
@@ -111,6 +113,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$rsyncclient = array();
+		$rsyncclient['enable'] = $_POST['enable'] ? true : false;
 		$rsyncclient['uuid'] = $_POST['uuid'];
 		$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
 		$rsyncclient['minute'] = $_POST['minute'];
@@ -201,6 +204,7 @@ function delete_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_titleline_checkbox("enable", gettext("Client RSYNC job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
 						<td width="78%" class="vtable">

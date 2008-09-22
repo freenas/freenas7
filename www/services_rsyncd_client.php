@@ -114,10 +114,11 @@ function rsyncclient_process_updatenotification($mode, $data) {
         <?php if (ui_exists_updatenotification("rsyncclient")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-						<td width="20%" class="listhdrr"><?=gettext("Remote module (source)"); ?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Remote address"); ?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Local share (destination)"); ?></td>
-						<td width="30%" class="listhdrr"><?=gettext("Description"); ?></td>
+						<td width="15%" class="listhdrr"><?=gettext("Remote module (source)");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Remote address");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Local share (destination)");?></td>
+						<td width="30%" class="listhdrr"><?=gettext("Description");?></td>
+						<td width="5%" class="listhdrr"><?=gettext("Enable");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient):?>
@@ -127,6 +128,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
 						<td class="listr"><?=htmlspecialchars($rsyncclient['rsyncserverip']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsyncclient['description']);?>&nbsp;</td>
+						<td class="listbg"><?=(isset($rsyncclient['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" border="0"></a>&nbsp;

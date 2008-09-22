@@ -35,14 +35,9 @@ HOME=/var/log
 #" > ${cron_config}
 
 	# RSYNC client
-	_index=`configxml_get_count "//rsync/rsyncclient"`
-	if [ 0 -lt ${_index} ]; then
+	if [ 0 -lt `configxml_get_count "//rsync/rsyncclient[enable]"` ]; then
 		echo "# Perform RSYNC client." >> ${cron_config}
-	fi
-
-	while [ ${_index} -gt 0 ]
-	do
-		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_index}]" \
+		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[enable]" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_mins[. != "0"]" -o "*" -b \
 			-o " " \
@@ -60,19 +55,12 @@ HOME=/var/log
 			-o " " \
 			-v "concat('root /var/run/rsync_client_',uuid,'.sh')" \
 			${configxml_file} | /usr/local/bin/xml unesc >> ${cron_config}
-
-		_index=$(( ${_index} - 1 ))
-	done
-
-	# RSYNC local
-	_index=`configxml_get_count "//rsync/rsynclocal"`
-	if [ 0 -lt ${_index} ]; then
-		echo "# Perform RSYNC local." >> ${cron_config}
 	fi
 
-	while [ ${_index} -gt 0 ]
-	do
-		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[position()=${_index}]" \
+	# RSYNC local
+	if [ 0 -lt `configxml_get_count "//rsync/rsynclocal[enable]"` ]; then
+		echo "# Perform RSYNC local." >> ${cron_config}
+		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[enable]" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_mins[. != "0"]" -o "*" -b \
 			-o " " \
@@ -90,9 +78,7 @@ HOME=/var/log
 			-o " " \
 			-v "concat('root /var/run/rsync_local_',uuid,'.sh')" \
 			${configxml_file} | /usr/local/bin/xml unesc >> ${cron_config}
-
-		_index=$(( ${_index} - 1 ))
-	done
+	fi
 
 	# Scheduled shutdown
 	if [ 0 -lt `configxml_get_count "//shutdown/enable"` ]; then
