@@ -1,7 +1,7 @@
 PORTNAME=			samba
 PORTVERSION=	3.0.32
 PORTREVISION=	2
-PORTEPOCH=		2
+PORTEPOCH=		3
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -16,6 +16,7 @@ SAMBA_PIDDIR=				${VARDIR}/run
 SAMBA_PRIVATEDIR=		${VARDIR}/etc/private
 SAMBA_CONFIGDIR=		${VARDIR}/etc
 SAMBA_LOCKDIR=			${VARDIR}/run
+SAMBA_CONFIG?=			smb.conf
 SAMBA_LIBDIR=				/usr/local/lib
 SAMBA_MODULEDIR=		${SAMBA_LIBDIR}/samba
 

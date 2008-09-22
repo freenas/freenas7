@@ -43,11 +43,14 @@ Majors changes:
 Minors changes:
 - Add new attribute 'Temporary directory' to UPnP WebGUI to define a directory
   used to store temporary transcoded files.
+- Modify /etc/rc.d/samba script.
 
 Bug fixes:
 - Fix bug in zoneinfo port.
 - Remove Samba --with-utmp build parameter. It causes a crash when
   accessing shares (BR 2118240).
+- Fix bug in Samba Makefile which causes various problems, e.g. it was not possible
+  to join an AD domain.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

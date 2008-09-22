@@ -13,7 +13,7 @@
 . /etc/configxml.subr
 
 name="samba"
-rcvar=`set_rcvar`
+rcvar=$(set_rcvar)
 
 load_rc_config "${name}"
 
@@ -24,6 +24,7 @@ start_cmd="samba_cmd"
 stop_cmd="samba_cmd"
 status_cmd="samba_cmd"
 reload_cmd="samba_reload_cmd"
+rcvar_cmd="samba_rcvar_cmd"
 mkconf_cmd="mkconf_cmd"
 
 # Defaults
@@ -32,6 +33,7 @@ samba_config_default="/var/etc/smb.conf"
 samba_config="${samba_config=${samba_config_default}}"
 command_args="${samba_config:+-s "${samba_config}"}"			#"
 samba_daemons="nmbd smbd winbindd"
+smbcontrol_command="/usr/bin/smbcontrol"
 samba_lockdir="${samba_lockdir=/var/run}"
 samba_piddir="${samba_piddir=/var/run}"
 samba_recycle_repository="${samba_recycle_repository:-".recycle/%U"}"
@@ -40,22 +42,23 @@ samba_recycle_subdir_mode="${samba_recycle_subdir_mode:-"0700"}"
 
 # Check if 'Active Directory' is enabled?
 configxml_isset //ad/enable
-ad_enable=$?
+samba_idmap=$?
 
 # Check if 'LDAP' is enabled?
 configxml_isset //ldap/enable
-ldap_enable=$?
+samba_ldap=$?
 
 # Disable AD if LDAP enabled:
-if [ 0 -eq ${ldap_enable} ]; then
-	ad_enable=1
+if [ 0 -eq ${samba_ldap} ]; then
+	samba_idmap=1
 fi
 
 # Setup dependent variables
 if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
     nmbd_enable="${nmbd_enable=YES}"
     smbd_enable="${smbd_enable=YES}"
-    if [ 0 -eq ${ad_enable} ]; then
+    # Check that winbindd is actually configured
+    if [ 0 -eq ${samba_idmap} ]; then
 			winbindd_enable="${winbindd_enable=YES}"
 		fi
 fi
@@ -304,10 +307,8 @@ samba_reload_cmd() {
 
 samba_cmd() {
 	local name rcvar command pidfile samba_daemons
-
 	# Prevent recursive calling
 	unset "${rc_arg}_cmd" "${rc_arg}_precmd" "${rc_arg}_postcmd"
-
 	# Stop processes in the reverse to order
 	if [ "${rc_arg}" = "stop" ]; then
 		samba_daemons=$(reverse_list ${samba_daemons})
@@ -315,23 +316,24 @@ samba_cmd() {
 
 	# Start additional processes when starting
 	if [ "${rc_arg}" = "start" ]; then
-		if [ 0 -eq ${ad_enable} ]; then
+		if [ 0 -eq ${samba_idmap} ]; then
 			local _srvname=`configxml_get "//ad/domaincontrollername"`
 			local _username=`configxml_get "//ad/username"`
 			local _password=`configxml_get "//ad/password"`
 			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
 		fi
- 		if [ 0 -eq ${ldap_enable} ]; then
+ 		if [ 0 -eq ${samba_ldap} ]; then
 			local _password=`configxml_get "//ldap/bindpw"`
 			/usr/local/bin/smbpasswd -w ${_password}
 		fi
 	fi
 
-	# Apply to all daemons
+	# Apply to all the daemons
 	for name in ${samba_daemons}; do
 		rcvar=$(set_rcvar)
 		command="/usr/local/sbin/${name}"
 		pidfile="${samba_piddir}/${name}${pid_extra}.pid"
+
 		run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
 	done
 
