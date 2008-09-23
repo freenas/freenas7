@@ -1,5 +1,6 @@
 PORTNAME=			fuppes
 PORTVERSION=	0.7.2.3
+PORTEPOCH=		2
 CATEGORIES=		net
 COMMENT=			Free UPnP Entertainment Service
 MAINTAINER=		votdev@gmx.de
@@ -36,6 +37,8 @@ post-patch:
 	@${CP} -pv ${FILESDIR}/libsndfile-options.in /var/db/ports/libsndfile/options
 	@${MKDIR} -v /var/db/ports/ffmpeg
 	@${CP} -pv ${FILESDIR}/ffmpeg-options.in /var/db/ports/ffmpeg/options
+	@${MKDIR} -v /var/db/ports/e2fsprogs
+	@${CP} -pv ${FILESDIR}/e2fsprogs-options.in /var/db/ports/e2fsprogs/options
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/${PORTNAME}d ${FREENAS_ROOTFS}/usr/local/bin
