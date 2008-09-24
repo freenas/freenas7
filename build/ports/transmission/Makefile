@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		1.33
+PORTVERSION=		1.34
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -19,7 +19,8 @@ USE_GETTEXT=		yes
 
 CONFIGURE_ARGS+=	--disable-gtk \
 									--disable-libnotify \
-									--disable-cli
+									--disable-cli \
+									--with-ssl=${OPENSSLBASE}
 
 EXTRA_PATCHES=	${PATCHDIR}/${PORTNAME}${PKGNAMESUFFIX}-configure.ac
 
@@ -27,8 +28,7 @@ general-patch:
 	@${REINPLACE_CMD} -e 's|SUBDIRS = . sample.*|SUBDIRS = .|g' \
 		${WRKSRC}/third-party/libevent/Makefile.*
 	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \
-		's|$$(OPENSSL_CFLAGS)||g ; s|$$(OPENSSL_LIBS)||g ; \
-		s|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
+		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
 
 post-patch: general-patch
 	# Copy options files
