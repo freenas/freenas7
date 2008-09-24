@@ -39,6 +39,7 @@ Majors changes:
 - Upgrade to FreeBSD 6.4.
 - Upgrade rsync to 3.0.4.
 - Upgrade PHPMailer to 2.2.1.
+- Upgrade Transmission to 1.34.
 
 Minors changes:
 - Add new attribute 'Temporary directory' to UPnP WebGUI to define a directory
