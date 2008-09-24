@@ -15,12 +15,8 @@ USE_BZIP2=			yes
 USE_GMAKE=			yes
 USE_AUTOTOOLS=	autoconf:262:env aclocal:19:env automake:19:env libtool:15:env
 GNU_CONFIGURE=	yes
-USE_GETTEXT=		yes
 
-CONFIGURE_ARGS+=	--disable-gtk \
-									--disable-libnotify \
-									--disable-cli \
-									--with-ssl=${OPENSSLBASE}
+CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE}
 
 EXTRA_PATCHES=	${PATCHDIR}/${PORTNAME}${PKGNAMESUFFIX}-configure.ac
 
@@ -31,7 +27,7 @@ general-patch:
 		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
 
 post-patch: general-patch
-	# Copy options files
+# Copy options files
 	@${MKDIR} -v /var/db/ports/curl
 	@${CP} -pv ${FILESDIR}/curl-options.in /var/db/ports/curl/options
 
