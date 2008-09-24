@@ -25,7 +25,6 @@ tune_cmd="geom_tune"
 geom_classes=${geom_classes:-"vinum mirror stripe concat raid5"}
 geom_load_param=${geom_load_param:-""}
 geom_stop_param=${geom_stop_param:-""}
-geom_ata_timeout=${geom_ata_timeout:-"15"}
 
 geom_start()
 {
@@ -183,9 +182,6 @@ _geom_tune_raid5()
 	else
 		/usr/bin/logger "Detected >= 512MB of RAM... No need to optimize RAM usage for GEOM raid5."
 	fi
-
-	# Modify ATA timeout to N seconds.
-	sysctl hw.ata.to=${geom_ata_timeout}
 
 	return 0
 }

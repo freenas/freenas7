@@ -34,6 +34,7 @@ require_once("globals.inc");
 require_once("util.inc");
 require_once("xmlparse.inc");
 require_once("system.inc");
+require_once("array.inc");
 
 /* Get product information */
 $productname = get_product_name();
@@ -1512,6 +1513,20 @@ function config_upgrade() {
 		}
 
 		$config['version'] = "5.8";
+	}
+
+	/* Convert 5.8 -> 5.9 */
+	/* Add hw.ata.to=15 to //system/sysctl/param. */
+	if ($config['version'] === "5.8") {
+		if (false === array_search_ex("hw.ata.to", $config['system']['sysctl']['param'], "name")) {
+			$config['system']['sysctl']['param'][] = array(
+				"uuid" => uuid(),
+				"name" => "hw.ata.to",
+				"value" => "15",
+				"comment" => "ATA disk timeout vis-a-vis power-saving");
+		}
+
+		$config['version'] = "5.9";
 	}
 
 	write_config();

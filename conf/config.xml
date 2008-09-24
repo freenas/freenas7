@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.8</version>
+	<version>5.9</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -80,6 +80,12 @@
 			-->
 		</rcconf>
 		<sysctl>
+			<param>
+				<uuid>dc8e537a-34f2-4aa7-afe8-cd631a52005a</uuid>
+				<name>hw.ata.to</name>
+				<value>15</value>
+				<comment>ATA disk timeout vis-a-vis power-saving</comment>
+			</param>
 			<!--
 			<param>
 				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
