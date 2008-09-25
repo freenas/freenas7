@@ -70,6 +70,7 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['all_months'] = $a_rsyncclient[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsyncclient[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsyncclient[$id]['description'];
+	$pconfig['who'] = $a_rsyncclient[$id]['who'];
 	$pconfig['recursive'] = isset($a_rsyncclient[$id]['options']['recursive']);
 	$pconfig['times'] = isset($a_rsyncclient[$id]['options']['times']);
 	$pconfig['compress'] = isset($a_rsyncclient[$id]['options']['compress']);
@@ -83,6 +84,7 @@ if (isset($id) && $a_rsyncclient[$id]) {
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
+	$pconfig['who'] = "root";
 	$pconfig['recursive'] = true;
 	$pconfig['times'] = true;
 	$pconfig['compress'] = true;
@@ -102,8 +104,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation
-	$reqdfields = explode(" ", "rsyncserverip localshare remoteshare");
-	$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote module name"));
+	$reqdfields = explode(" ", "rsyncserverip localshare remoteshare who");
+	$reqdfieldsn = array(gettext("Remote RSYNC Server"), gettext("Local shares to be synchronized"), gettext("Remote module name"), gettext("Who"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (gettext("Execute now") !== $_POST['Submit']) {
@@ -129,6 +131,7 @@ if ($_POST) {
 		$rsyncclient['all_months'] = $_POST['all_months'];
 		$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
 		$rsyncclient['description'] = $_POST['description'];
+		$rsyncclient['who'] = $_POST['who'];
 		$rsyncclient['options']['recursive'] = $_POST['recursive'] ? true : false;
 		$rsyncclient['options']['times'] = $_POST['times'] ? true : false;
 		$rsyncclient['options']['compress'] = $_POST['compress'] ? true : false;
@@ -226,6 +229,8 @@ function delete_change() {
 			        <input name="remoteshare" type="text" class="formfld" id="remoteshare" size="20" value="<?=htmlspecialchars($pconfig['remoteshare']);?>">
 			      </td>
 			    </tr>
+			    <?php $a_user = array(); foreach (system_get_user_list() as $userk => $userv) { $a_user[$userk] = htmlspecialchars($userk); }?>
+			    <?php html_combobox("who", gettext("Who"), $pconfig['who'], $a_user, "", true);?>
 			    <tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
 						<td width="78%" class="vtable">

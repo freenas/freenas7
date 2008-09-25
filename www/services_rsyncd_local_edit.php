@@ -69,6 +69,7 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['all_months'] = $a_rsynclocal[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsynclocal[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsynclocal[$id]['description'];
+	$pconfig['who'] = $a_rsynclocal[$id]['who'];
 	$pconfig['recursive'] = isset($a_rsynclocal[$id]['options']['recursive']);
 	$pconfig['times'] = isset($a_rsynclocal[$id]['options']['times']);
 	$pconfig['compress'] = isset($a_rsynclocal[$id]['options']['compress']);
@@ -82,6 +83,7 @@ if (isset($id) && $a_rsynclocal[$id]) {
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
+	$pconfig['who'] = "root";
 	$pconfig['recursive'] = false;
 	$pconfig['times'] = false;
 	$pconfig['compress'] = false;
@@ -101,8 +103,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation
-	$reqdfields = explode(" ", "source destination");
-	$reqdfieldsn = array(gettext("Source share"),gettext("Destination share"));
+	$reqdfields = explode(" ", "source destination who");
+	$reqdfieldsn = array(gettext("Source share"), gettext("Destination share"), gettext("Who"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (gettext("Execute now") !== $_POST['Submit']) {
@@ -127,6 +129,7 @@ if ($_POST) {
 		$rsynclocal['all_months'] = $_POST['all_months'];
 		$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
 		$rsynclocal['description'] = $_POST['description'];
+		$rsynclocal['who'] = $_POST['who'];
 		$rsynclocal['options']['recursive'] = $_POST['recursive'] ? true : false;
 		$rsynclocal['options']['times'] = $_POST['times'] ? true : false;
 		$rsynclocal['options']['compress'] = $_POST['compress'] ? true : false;
@@ -219,6 +222,8 @@ function delete_change() {
 							<span class="vexpl"><?=gettext("Target directory.");?></span>
 					  </td>
 					</tr>
+					<?php $a_user = array(); foreach (system_get_user_list() as $userk => $userv) { $a_user[$userk] = htmlspecialchars($userk); }?>
+					<?php html_combobox("who", gettext("Who"), $pconfig['who'], $a_user, "", true);?>
     			<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
 						<td width="78%" class="vtable">

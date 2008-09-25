@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.9</version>
+	<version>6.0</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -507,6 +507,7 @@
 			<source>xxx</source> // e.g. /mnt/data
 			<destination>xxx</destination> // e.g. /mnt/backup
 			<description>xxx</description>
+			<who>xxx<who>
 			<all_mins></all_mins>
 			<all_hours></all_hours>
 			<all_days></all_days>
@@ -536,6 +537,7 @@
 			<rsyncserverip>xxx</rsyncserverip>
 			<localshare>xxx</localshare> // e.g. /mnt/data
 			<remoteshare>xxx</remoteshare>
+			<who>xxx<who>
 			<description>xxx</description>
 			<all_mins></all_mins>
 			<all_hours></all_hours>

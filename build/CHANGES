@@ -45,6 +45,8 @@ Minors changes:
 - Add new attribute 'Temporary directory' to UPnP WebGUI to define a directory
   used to store temporary transcoded files.
 - Modify /etc/rc.d/samba script.
+- Add 'Who' combobox to RSYNC client/local jobs to select user which is used to execute
+  this job.
 - Add 'Enable' checkbox to RSYNC client/local jobs to enable/disable them (FR 2123243).
 - Add hw.ata.to=15 to sysctrl to prevent 'TIMEOUT - WRITE_DMA' errors, e.g. when using
   APM for harddrives (FR 2101811).

@@ -1529,6 +1529,18 @@ function config_upgrade() {
 		$config['version'] = "5.9";
 	}
 
+	/* Convert 5.9 -> 6.0 */
+	/* Add //rsync/rsynclocal/who and //rsync/rsyncclient/who. */
+	if ($config['version'] === "5.9") {
+		foreach (explode(" ", "rsyncclient rsynclocal") as $attr) {
+			for ($i = 0; isset($config['rsync'][$attr][$i]); $i++) {
+				$config['rsync'][$attr][$i]['who'] = "root";
+			}
+		}
+
+		$config['version'] = "6.0";
+	}
+
 	write_config();
 
 	if (is_booting())
