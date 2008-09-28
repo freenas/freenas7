@@ -15,10 +15,12 @@ load_rc_config $name
 
 # Defaults
 rsync_local_logfile=${rsync_local_logfile:-"/var/log/${name}.log"}
+rsync_local_logfile_mode=${rsync_local_logfile_mode:-"0666"}
 
 # Get number of scripts to generate
 _scriptnum=`configxml_get_count "//rsync/rsynclocal"`
 
+# Generate scripts
 if [ 0 -lt ${_scriptnum} ]; then
 	echo "Generating local rsyncd cron scripts."
 
@@ -27,6 +29,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 		_uuid=`configxml_get "//rsync/rsynclocal[${_scriptnum}]/uuid"`
 		_rsyncscript=/var/run/rsync_local_${_uuid}.sh
 		_rsyncflag=/var/run/rsync_local_running_${_uuid}
+		_who=`configxml_get "//rsync/rsynclocal[${_scriptnum}]/who"`
 
 		# Generate the shell script that is used by cron
 		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[position()=${_scriptnum}]" \
@@ -54,11 +57,18 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-v "concat('&quot;',source,'&quot; &quot;',destination,'&quot;')" -n \
 			-o "/bin/rm -f ${_rsyncflag}" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of local RSYNC synchronization from ',source,' to ',destination,'&quot;')" \
-			${configxml_file} | /usr/local/bin/xml unesc > ${_rsyncscript}
+			${configxml_file} | /usr/local/bin/xml unesc > "${_rsyncscript}"
 
-		# Add execute right to the script
-		/bin/chmod 0770 ${_rsyncscript}
+		# Set owner and execute rights of the script
+		/usr/sbin/chown ${_who} "${_rsyncscript}"
+		/bin/chmod 0770 "${_rsyncscript}"
 
 		_scriptnum=$(( ${_scriptnum} - 1 ))
 	done
 fi
+
+# Set log file permissions
+if [ ! -e "${rsync_local_logfile}" ]; then
+	cat /dev/null > "${rsync_local_logfile}"
+fi
+/bin/chmod ${rsync_local_logfile_mode} "${rsync_local_logfile}"

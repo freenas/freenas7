@@ -15,10 +15,12 @@ load_rc_config $name
 
 # Defaults
 rsync_client_logfile=${rsync_client_logfile:-"/var/log/${name}.log"}
+rsync_client_logfile_mode=${rsync_client_logfile_mode:-"0666"}
 
 # Get number of scripts to generate
 _scriptnum=`configxml_get_count "//rsync/rsyncclient"`
 
+# Generate scripts
 if [ 0 -lt ${_scriptnum} ]; then
 	echo "Generating client rsyncd cron scripts."
 
@@ -27,6 +29,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 		_uuid=`configxml_get "//rsync/rsyncclient[${_scriptnum}]/uuid"`
 		_rsyncscript=/var/run/rsync_client_${_uuid}.sh
 		_rsyncflag=/var/run/rsync_client_running_${_uuid}
+		_who=`configxml_get "//rsync/rsyncclient[${_scriptnum}]/who"`
 
 		# Generate the shell script used by cron
 		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_scriptnum}]" \
@@ -59,11 +62,18 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-b \
 			-o "/bin/rm -f ${_rsyncflag}" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
-			${configxml_file} | /usr/local/bin/xml unesc > ${_rsyncscript}
+			${configxml_file} | /usr/local/bin/xml unesc > "${_rsyncscript}"
 
-		# Add execute right to the script
-		/bin/chmod 0770 ${_rsyncscript}
+		# Set owner and execute rights of the script
+		/usr/sbin/chown ${_who} "${_rsyncscript}"
+		/bin/chmod 0770 "${_rsyncscript}"
 
 		_scriptnum=$(( ${_scriptnum} - 1 ))
 	done
 fi
+
+# Set log file permissions.
+if [ ! -e "${rsync_client_logfile}" ]; then
+	cat /dev/null > "${rsync_client_logfile}"
+fi
+/bin/chmod ${rsync_client_logfile_mode} "${rsync_client_logfile}"
