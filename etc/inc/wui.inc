@@ -163,7 +163,7 @@ class HTMLEditBox extends HTMLBaseControl {
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 
-		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}>\n";
+		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value=\"{$value}\" {$param}>\n";
 	}
 }
 
