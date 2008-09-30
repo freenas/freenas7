@@ -81,7 +81,7 @@ mkconf_cmd()
 	cat /dev/null > ${cron_allow}
 
 	# Remove all existing user crontabs
-	rm ${cron_tabspath}/*
+	rm ${cron_tabspath}/* > /dev/null 2>&1
 
 	# Create /etc/crontab
 	echo "SHELL=/bin/sh
