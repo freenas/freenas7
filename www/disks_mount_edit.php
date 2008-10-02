@@ -155,7 +155,7 @@ if ($_POST) {
 		}
 
 		if (($_POST['sharename']) && ($mount['sharename'] === $_POST['sharename'])) {
-			$input_errors[] = gettext("Duplicate name.");
+			$input_errors[] = gettext("Duplicate share name.");
 			break;
 		}
 	}
@@ -366,7 +366,7 @@ function enable_change(enable_change) {
 			      </td>
 					</tr>
 					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), "/mnt", true);?>
-					<?php html_inputbox("sharename", gettext("Sharename"), $pconfig['sharename'], "", true, 20);?>
+					<?php html_inputbox("sharename", gettext("Share name"), $pconfig['sharename'], "", true, 20);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<?php html_checkbox("readonly", gettext("Read only"), $pconfig['readonly'] ? true : false, gettext("Mount the file system read-only (even the super-user may not write it)."), "", false);?>
 					<?php html_checkbox("fsck", gettext("File system check"), $pconfig['fsck'] ? true : false, gettext("Enable foreground/background file system consistency check during boot process."), "", false);?>
