@@ -390,6 +390,11 @@ function html_text($ctrlname, $title, $text) {
 	$ctrl->Render();
 }
 
+function html_remark($ctrlname, $title, $text) {
+	$ctrl = new HTMLRemark($ctrlname, $title, $text);
+	$ctrl->Render();
+}
+
 function html_listbox($ctrlname, $title, $value, $options, $desc, $required = false, $readonly = false, $onclick = "") {
 	$ctrl = new HTMLListBox($ctrlname, $title, $value, $options, $desc);
 	$ctrl->SetRequired($required);
