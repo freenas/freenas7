@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-09-14 12:58+0000\n"
+"PO-Revision-Date: 2008-09-24 15:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1000,7 +1000,7 @@ msgstr ""
 msgid "Duplex"
 msgstr ""
 
-msgid "Duplicate name."
+msgid "Duplicate share name."
 msgstr ""
 
 msgid "Dynamic DNS"
@@ -1576,6 +1576,9 @@ msgid "If set afpd uses the ID information stored in AppleDouble V2 header files
 msgstr ""
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+msgstr ""
+
+msgid "If the server is behind a proxy set this parameters to give local services access to the internet via proxy."
 msgstr ""
 
 msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
@@ -2679,10 +2682,10 @@ msgstr ""
 msgid "Share all sub directories."
 msgstr ""
 
-msgid "Share passwords can not be more than 8 characters."
+msgid "Share name"
 msgstr ""
 
-msgid "Sharename"
+msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
 msgid "Shares"
