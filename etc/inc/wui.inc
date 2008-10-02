@@ -645,4 +645,28 @@ class HTMLText extends HTMLBaseControl {
 		echo "{$text}\n";
 	}
 }
+
+class HTMLRemark extends HTMLBaseControl {
+	function HTMLRemark($ctrlname, $title, $text) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetValue($text);
+	}
+
+	function Render() {
+		$ctrlname = $this->GetCtrlName();
+		$title = $this->GetTitle();
+		$text = $this->GetValue();
+
+		echo "<tr id='{$ctrlname}_tr'>\n";
+		echo "  <td width='22%' valign='top'>&nbsp;</td>\n";
+		echo "  <td width='78%'>\n";
+		echo "    <span class='red'>\n";
+		echo "      <strong>{$title}:</strong>\n";
+		echo "    </span><br/>\n";
+		echo "    {$text}\n";
+		echo "  </td>\n";
+		echo "</tr>\n";
+	}
+}
 ?>

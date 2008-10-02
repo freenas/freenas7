@@ -242,6 +242,7 @@ function proxy_auth_change() {
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
 			      </td>
 			    </tr>
+			    <?php html_remark("note", gettext("Note"), gettext("If the server is behind a proxy set this parameters to give local services access to the internet via proxy."));?>
 			  </table>
 			</form>
 		</td>
