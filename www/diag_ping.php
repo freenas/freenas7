@@ -87,30 +87,23 @@ function get_interface_addr($ifdescr) {
 					<?php html_interfacecombobox("interface", gettext("Interface"), $interface, gettext("Use the following IP address as the source address in outgoing packets."), true);?>
 					<?php $a_count = array(); for ($i = 1; $i <= 10; $i++) { $a_count[$i] = $i; }?>
 					<?php html_combobox("count", gettext("Count"), $count, $a_count, gettext("Stop after sending (and receiving) N packets."), true);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Ping");?>">
-						</td>
-					</tr>
-					<tr>
-						<td valign="top" colspan="2">
-							<? if ($do_ping) {
-								echo("<strong>" . gettext("Command output:") . "</strong>");
-								echo('<pre>');
-								ob_end_flush();
-								$ifaddr = get_interface_addr($interface);
-								if ($ifaddr) {
-									system("/sbin/ping -S {$ifaddr} -c {$count} " . escapeshellarg($host));
-								} else {
-									system("/sbin/ping -c {$count} " . escapeshellarg($host));
-								}
-								echo('</pre>');
-							}
-							?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Ping");?>">
+				</div>
+				<?php if ($do_ping) {
+				echo("<strong>" . gettext("Command output:") . "</strong>");
+				echo('<pre>');
+				ob_end_flush();
+				$ifaddr = get_interface_addr($interface);
+				if ($ifaddr) {
+					system("/sbin/ping -S {$ifaddr} -c {$count} " . escapeshellarg($host));
+				} else {
+					system("/sbin/ping -c {$count} " . escapeshellarg($host));
+				}
+				echo('</pre>');
+				}
+				?>
 			</form>
 		</td>
 	</tr>

@@ -38,6 +38,5 @@ include("fbegin.inc");
   <tr>
     <td class="listtopic">NOT YET AVAILABLE</td>
   </tr>
- 
 </table>
 <?php include("fend.inc"); ?>

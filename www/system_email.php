@@ -153,14 +153,11 @@ function auth_change() {
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 40);?>
 					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], "", true);?>
 					<?php html_inputbox("from", gettext("From email"), $pconfig['from'], gettext("Your own email address."), true, 40);?>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-							<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>">
-			      </td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>">
+			  </div>
 			</form>
 		</td>
   </tr>

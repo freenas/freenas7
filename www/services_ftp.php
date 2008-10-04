@@ -366,13 +366,10 @@ function tls_change() {
 							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
 						</td>
 					</tr>  	
-			  	<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				</div>
 			</td>
 		</tr>
 	</table>

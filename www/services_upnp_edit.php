@@ -83,15 +83,13 @@ if($_POST) {
 							<br><?=gettext("Directory to be shared.");?>
 			      </td>
 			    </tr>
-			    <tr> 
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>"> 
-			        <?php if(isset($id)): ?>
-			        <input name="id" type="hidden" value="<?=$id;?>"> 
-			        <?php endif; ?>
-			      </td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>"> 
+					<?php if(isset($id)): ?>
+					<input name="id" type="hidden" value="<?=$id;?>"> 
+					<?php endif; ?>
+				</div>
 			</td>
 		</tr>
 	</table>

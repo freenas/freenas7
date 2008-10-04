@@ -221,12 +221,10 @@ function getHostName($mac, $ip) {
 			    <td class="list" colspan="4"></td>
 			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" border="0"></a></td>
 			  </tr>
-			  <tr>
-			    <td colspan="4">
-			      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?php echo sprintf(gettext("IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_logs_settings.php");?></span>
-			    </td>
-			  </tr>
 			</table>
+			<div id="remarks">
+				<?php html_remark("hint", gettext("Hint"), sprintf(gettext("IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_logs_settings.php"));?>
+			</div>
 		</td>
 	</tr>
 </table>

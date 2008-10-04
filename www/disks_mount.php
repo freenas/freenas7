@@ -204,8 +204,10 @@ function mountmanagement_process_updatenotification($mode, $data) {
             <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=gettext("Add mount point");?>" border="0"></a></td>
           </tr>
         </table>
+        <div id="remarks">
+        	<?php html_remark("warning", gettext("Warning"), sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name()));?>
+        </div>
       </form>
-      <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></p>
     </td>
   </tr>
 </table>

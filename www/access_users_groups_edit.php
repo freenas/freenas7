@@ -172,17 +172,14 @@ function get_nextgroup_id() {
 							<span class="vexpl"><?=gettext("Group description.");?></span>
 						</td>
 					</tr>
-					<tr>
-		        <td width="22%" valign="top">&nbsp;</td>
-		        <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add");?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-		          <?php if (isset($id) && $a_group[$id]):?>
-		          <input name="id" type="hidden" value="<?=$id;?>">
-		          <?php endif;?>
-		        </td>
-		      </tr>
 		  	</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add");?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_group[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

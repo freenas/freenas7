@@ -53,18 +53,20 @@ if ($_POST['clear'])
 	<?php logs_display_menu("system", $logmenu);?>
   <tr> 
     <td class="tabcont">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tr> 
-				<td colspan="2" class="listtopic"> 
-			  	<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("System"));?>
-				</td>
-		  </tr>
-		  <?php logs_dump("/var/log/system.log", $nentries); ?>
-		</table>
-		<br><form action="diag_logs.php" method="post">
-<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
-</form>
-	</td>
+    	<form action="diag_logs.php" method="post">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr> 
+						<td colspan="2" class="listtopic"> 
+					  	<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("System"));?>
+						</td>
+				  </tr>
+				  <?php logs_dump("/var/log/system.log", $nentries); ?>
+				</table>
+				<div id="submit">
+					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
+				</div>
+			</form>
+		</td>
   </tr>
 </table>
 <?php include("fend.inc"); ?>

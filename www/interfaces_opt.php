@@ -308,14 +308,11 @@ function encryption_change() {
 											<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
 											<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 											<?php if (isset($optcfg['wireless'])) wireless_config_print();?>
-											<tr>
-			                  <td width="22%" valign="top">&nbsp;</td>
-			                  <td width="78%">
-			                    <input name="index" type="hidden" value="<?=$index;?>">
-													<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
-			                  </td>
-			                </tr>
 			              </table>
+										<div id="submit">
+											<input name="index" type="hidden" value="<?=$index;?>">
+											<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
+										</div>
 			       			</td>
 								</tr>
 							</table>

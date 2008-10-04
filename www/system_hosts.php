@@ -126,13 +126,10 @@ function hosts_process_updatenotification($mode, $data) {
 						<td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
 					</tr>
 				</table>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("Defining a hostname can be useful for NFS."));?>
+				</div>
 			</form>
-			<p>
-				<span class="vexpl">
-					<span class="red"><strong>Note:<br></strong></span>
-					<?=gettext("Defining a hostname can be useful for NFS.");?>
-				</span>
-			</p>
 		</td>
 	</tr>
 </table>

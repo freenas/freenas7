@@ -307,3 +307,6 @@ span.corners-top, span.corners-bottom, span.corners-top span, span.corners-botto
 	height: 8px;
 	line-height: 1px;
 }
+div#submit {
+	margin: 7px 0 7px 0;
+}

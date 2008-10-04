@@ -186,11 +186,10 @@ function gvinum_process_updatenotification($mode, $data) {
 						</td>
 					</tr>
 				</table>
+				<div id="remarks">
+					<?php html_remark("info", gettext("Info"), sprintf(gettext("%s is used to create %s volumes."), "GEOM Vinum", "RAID"));?>
+				</div>
 			</form>
-			<span class="vexpl">
-				<span class="red"><strong><?=gettext("Info");?>:</strong></span><br/>
-				<?=sprintf(gettext("%s is used to create %s volumes."), "GEOM Vinum", "RAID");?>
-			</span>
 		</td>
 	</tr>
 </table>

@@ -290,20 +290,13 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 							<?=gettext("At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents.");?>
 						</td>
 					</tr>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br>
-							<?=gettext("You must have a minimum of 256MB of RAM for using iSCSI target.");?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
+				</div>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("You must have a minimum of 256MB of RAM for using iSCSI target."));?>
+				</div>
 			</td>
 		</tr>
 	</table>

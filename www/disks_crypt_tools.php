@@ -216,82 +216,76 @@ function action_change() {
 							<span class="vexpl"><?=gettext("Restore metadata from the given file to the given provider.");?></span>
 						</td>
 					</tr>
-  				<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
-						</td>
-  				</tr>
-  				<tr>
-    				<td valign="top" colspan="2">
-    				<?php if ($pconfig['do_action']) {
-    				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
-    					echo('<pre>');
-    					ob_end_flush();
-
-              switch($pconfig['action']) {
-                case "attach":
-                case "detach":
-									// Search if a mount point use this GEOM Eli disk.
-									$id = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
-
-									// If found, get the mount point configuration.
-									if ($id !== false) $mount = $a_mount[$id];
-
-									switch($pconfig['action']) {
-                		case "attach":
- 		                  $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
-		                  // When attaching the disk, then also mount it.
-											if ((0 == $result) && is_array($mount)) {
-												echo("<br>" . gettext("Mounting device.") . "<br>");
-												$result = disks_mount($mount);
-												echo((0 == $result) ? gettext("Successful.") : gettext("Failed."));
-											}
-		                  break;
-
-		                case "detach":
-		                	// Check if disk is mounted.
-		                	if (disks_ismounted($mount)) {
-		                		echo gettext("Device is mounted, umount it first before detaching.") ."<br>";
-											} else {
-												$result = disks_geli_detach($geli['devicespecialfile'], true);
-												echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
-											}
-		                  break;
-									}
-                  break;
-
-								case "setkey":
-									disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
-                	break;
-
-                case "list":
-                	system("/sbin/geli list");
-                	break;
-
-                case "status":
-                	system("/sbin/geli status");
-                	break;
-
-                case "restore":
-									$fn = "/var/tmp/{$geli['name']}.metadata";
-									if (file_exists($fn)) {
-                		system("/sbin/geli restore -v {$fn} {$geli['devicespecialfile']}");
-                		unlink($fn);
-                	} else {
-                		echo gettext("Failed to upload metadata backup file.");
-									}
-                	break;
-              }
-
-							echo('</pre>');
+				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+				</div>
+				<?php if ($pconfig['do_action']) {
+				echo("<strong>" . gettext("Command output:") . "</strong><br>");
+				echo('<pre>');
+				ob_end_flush();
+				
+				switch($pconfig['action']) {
+				  case "attach":
+				  case "detach":
+						// Search if a mount point use this GEOM Eli disk.
+						$id = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
+				
+						// If found, get the mount point configuration.
+						if ($id !== false) $mount = $a_mount[$id];
+				
+						switch($pconfig['action']) {
+				  		case "attach":
+				        $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
+				        // When attaching the disk, then also mount it.
+								if ((0 == $result) && is_array($mount)) {
+									echo("<br>" . gettext("Mounting device.") . "<br>");
+									$result = disks_mount($mount);
+									echo((0 == $result) ? gettext("Successful.") : gettext("Failed."));
+								}
+				        break;
+				
+				      case "detach":
+				      	// Check if disk is mounted.
+				      	if (disks_ismounted($mount)) {
+				      		echo gettext("Device is mounted, umount it first before detaching.") ."<br>";
+								} else {
+									$result = disks_geli_detach($geli['devicespecialfile'], true);
+									echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
+								}
+				        break;
 						}
-    				?>
-    				</td>
-  				</tr>
-			 </table>
-    </form>
-  </td></tr>
+				    break;
+				
+					case "setkey":
+						disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
+				  	break;
+				
+				  case "list":
+				  	system("/sbin/geli list");
+				  	break;
+				
+				  case "status":
+				  	system("/sbin/geli status");
+				  	break;
+				
+				  case "restore":
+						$fn = "/var/tmp/{$geli['name']}.metadata";
+						if (file_exists($fn)) {
+				  		system("/sbin/geli restore -v {$fn} {$geli['devicespecialfile']}");
+				  		unlink($fn);
+				  	} else {
+				  		echo gettext("Failed to upload metadata backup file.");
+						}
+				  	break;
+				}
+				
+				echo('</pre>');
+				}
+				?>
+			</form>
+		</td>
+	</tr>
 </table>
 <script language="JavaScript">
 <!--

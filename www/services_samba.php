@@ -407,17 +407,13 @@ function authentication_change() {
 						</td>
 					</tr>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to global settings in %s."), "smb.conf"), false, 65, 5);?>
-  				<tr>
-            <td width="22%" valign="top">&nbsp;</td>
-            <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-            </td>
-          </tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("To increase CIFS performance try the following:<br>- Enable 'Large read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- Increase <a href='%s'>MTU</a>"), "system_advanced.php", "interfaces_lan.php");?></td>
-					</tr>
         </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				</div>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("To increase CIFS performance try the following:<br/><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"), "system_advanced.php", "interfaces_lan.php"));?>
+				</div>
       </form>
     </td>
   </tr>

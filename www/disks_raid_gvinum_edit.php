@@ -182,14 +182,13 @@ if ($_POST) {
 							<span class="vexpl"><?=gettext("This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again.");?></span>
 			      </td>
 			    </tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-						</td>
-					</tr>
 					<?php endif;?>
 			  </table>
+			  <?php if (!isset($id)):?>
+			  <div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+				</div>
+				<?php endif;?>
 			</form>
 		</td>
 	</tr>

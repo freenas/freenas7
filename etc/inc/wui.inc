@@ -658,15 +658,12 @@ class HTMLRemark extends HTMLBaseControl {
 		$title = $this->GetTitle();
 		$text = $this->GetValue();
 
-		echo "<tr id='{$ctrlname}_tr'>\n";
-		echo "  <td width='22%' valign='top'>&nbsp;</td>\n";
-		echo "  <td width='78%'>\n";
-		echo "    <span class='red'>\n";
-		echo "      <strong>{$title}:</strong>\n";
-		echo "    </span><br/>\n";
-		echo "    {$text}\n";
-		echo "  </td>\n";
-		echo "</tr>\n";
+		echo "<div id='remark'>\n";
+		echo "  <span class='red'>\n";
+		echo "    <strong>{$title}:</strong>\n";
+		echo "  </span><br/>\n";
+		echo "  {$text}\n";
+		echo "</div>\n";
 	}
 }
 ?>

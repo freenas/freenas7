@@ -101,8 +101,8 @@ if(isset($_GET['action'])) {
 			<form action="disks_mount_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
-            <td class="vtable">
+          	<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
+          	<td width="78%" class="vtable">
               <select name="sharename" class="formfld" id="sharename">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_mount as $mountv):?>
@@ -118,56 +118,52 @@ if(isset($_GET['action'])) {
             </td>
       		</tr>
           <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-            <td class="vtable">
+          	<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
+          	<td width="78%" class="vtable">
               <select name="action" class="formfld" id="action">
                 <option value="mount" <?php if ($action == "mount") echo "selected"; ?>>mount</option>
                 <option value="umount" <?php if ($action == "umount") echo "selected"; ?>>umount</option>
                </select>
             </td>
           </tr>
-  				<tr>
-  				  <td width="22%" valign="top">&nbsp;</td>
-  				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
-  				  </td>
-  				</tr>
-  				<tr>
-    				<td valign="top" colspan="2">
-    				<?php if(($do_action) && (!$errormsg))
-    				{
-    				  echo("<strong>" . gettext("Command output:") . "</strong>");
-    					echo('<pre>');
-    					ob_end_flush();
+				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+				</div>
+				<?php if(($do_action) && (!$errormsg))
+				{
+				echo("<strong>" . gettext("Command output:") . "</strong>");
+				echo('<pre>');
+				ob_end_flush();
 
-    					/* Get the id of the mount array entry. */
-		          $id = array_search_ex($sharename, $a_mount, "sharename");
-		          /* Get the mount data. */
-              $mount = $a_mount[$id];
+				/* Get the id of the mount array entry. */
+				$id = array_search_ex($sharename, $a_mount, "sharename");
+				/* Get the mount data. */
+				$mount = $a_mount[$id];
 
-              switch($action)
-              {
-                case "mount":
-                  echo(gettext("Mounting...") . "<br>");
-									$result = disks_mount($mount);
-                  break;
-                case "umount":
-                  echo(gettext("Unmounting...") . "<br>");
-									$result = disks_umount($mount);
-                  break;
-              }
+				switch($action)
+				{
+				  case "mount":
+				    echo(gettext("Mounting...") . "<br>");
+						$result = disks_mount($mount);
+				    break;
+				  case "umount":
+				    echo(gettext("Unmounting...") . "<br>");
+						$result = disks_umount($mount);
+				    break;
+				}
 
-              /* Display result */
-              echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
+				/* Display result */
+				echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
 
-    					echo('</pre>');
-    				}
-    				?>
-    				</td>
-  				</tr>
-			 </table>
-    </form>
-		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!");?></p>
-  </td></tr>
+				echo('</pre>');
+				}
+				?>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"));?>
+				</div>
+			</form>
+		</td>
+	</tr>
 </table>
 <?php include("fend.inc");?>

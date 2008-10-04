@@ -111,13 +111,10 @@ if ($_GET['act'] == "del") {
 						<td class="list" colspan="4">&nbsp;</td>
 						<td class="list"> <a href="interfaces_vlan_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a></td>
 					</tr>
-					<tr>
-						<td class="list" colspan="4">
-							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-							<?=gettext("Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems.");?>
-						</td>
-					</tr>
 				</table>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."));?>
+				</div>
 			</form>
 		</td>
 	</tr>

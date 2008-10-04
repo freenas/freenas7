@@ -159,17 +159,14 @@ if ($_POST) {
 							<br><?=gettext("This the IP address or DNS name of the iSCSI target."); ?>
 			      </td>
 			    </tr>
-			    <tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id])) ? gettext("Save") : gettext("Add");?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_iscsiinit[$id]): ?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
-						</td>
-					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_iscsiinit[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

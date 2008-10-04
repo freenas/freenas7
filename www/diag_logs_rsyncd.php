@@ -53,17 +53,19 @@ if ($_POST['clear']) {
 	<?php logs_display_menu("rsync.server", $logmenu);?>
   <tr>
     <td class="tabcont">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tr>
-				<td colspan="2" class="listtopic">
-					<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("RSYNCD"));?>
-				</td>
-		  </tr>
-		  <?php logs_dump($logfile, $nentries); ?>
-		</table><br/>
-		<form action="diag_logs_rsyncd.php" method="post">
-			<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
-		</form>
+    	<form action="diag_logs_rsyncd.php" method="post">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+						<td colspan="2" class="listtopic">
+							<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("RSYNCD"));?>
+						</td>
+				  </tr>
+				  <?php logs_dump($logfile, $nentries); ?>
+				</table>
+				<div id="submit">
+					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
+				</div>
+			</form>
 		</td>
   </tr>
 </table>

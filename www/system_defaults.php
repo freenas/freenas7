@@ -58,10 +58,10 @@ if ($_POST) {
 						<?=gettext("Are you sure you want to proceed?");?>
 					</strong>
 				</p>
-				<p>
+				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value=<?=gettext("Yes");?>>
 					<input name="Submit" type="submit" class="formbtn" value=<?=gettext("No");?>>
-				</p>
+				</div>
 			</td>
 		</tr>
 	</table>

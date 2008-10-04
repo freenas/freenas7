@@ -178,32 +178,21 @@ if (!isset($do_format)) {
 			        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)");?>
 						</td>
 				  </tr>
-					<tr>
-					  <td width="22%" valign="top">&nbsp;</td>
-					  <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
-					  </td>
-					</tr>
-					<tr>
-						<td valign="top" colspan="2">
-						<? if ($do_format) {
-							echo("<strong>" . gettext("Command output:") . "</strong>");
-							echo('<pre>');
-							ob_end_flush();
-							disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
-							echo('</pre>');
-						}
-						?>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-							<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified.");?><br><br>
-							<?php echo sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
+				</div>
+				<?php if ($do_format) {
+				echo("<strong>" . gettext("Command output:") . "</strong>");
+				echo('<pre>');
+				ob_end_flush();
+				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
+				echo('</pre>');
+				}
+				?>
+				<div id="remarks">
+					<?php html_remark("Warning", gettext("Warning"), sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name()));?>
+				</div>
 			</td>
 		</tr>
 	</table>

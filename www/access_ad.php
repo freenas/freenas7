@@ -169,20 +169,13 @@ function enable_change(enable_change) {
 							<br/><span class="vexpl"><?=gettext("Password of domain administrator account.");?></span>
 						</td>
 			    </tr>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-							<span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-							<?=gettext("To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>");?></span>
-						</td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+			  </div>
+			  <div id="remarks">
+			  	<?php html_remark("note", gettext("Note"), gettext("To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"));?>
+			  </div>
 			</td>
 		</tr>
 	</table>

@@ -140,20 +140,13 @@ function enable_change(enable_change) {
 					$text = "<a href='{$url}' target='_blank'>{$url}</a>";
 					?>
 					<?php html_text("url", gettext("URL"), $text);?>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-							<?=sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php");?>
-						</td>
-					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				</div>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php"));?>
+				</div>
 			</td>
 		</tr>
 	</table>

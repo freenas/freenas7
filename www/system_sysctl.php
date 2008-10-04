@@ -152,12 +152,9 @@ function sysctl_process_updatenotification($mode, $data) {
 						</td>
 	        </tr>
 	      </table>
-	      <p>
-					<span class="vexpl">
-						<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-						<?php echo gettext("These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system.");?>
-					</span>
-				</p>
+	      <div id="remarks">
+	      	<?php html_remark("note", gettext("Note"), gettext("These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system."));?>
+	      </div>
 			</form>
 	  </td>
   </tr>

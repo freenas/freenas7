@@ -94,13 +94,10 @@ if ($_POST) {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_passwordbox("password_old", gettext("Old password"), "", "", true);?>
 					<?php html_passwordconfbox("password_new", "password_confirm", gettext("Password"), "", "", gettext("If you want to change the password for accessing the WebGUI, enter it here twice."), true);?>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-			      </td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+				</div>
 			</form>
 		</td>
   </tr>

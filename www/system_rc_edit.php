@@ -133,16 +133,14 @@ if ($_POST) {
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("command", gettext("Command"), $pconfig['command'], gettext("The command to be executed."), true, 60);?>
 					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("PREINIT" => "PreInit", "POSTINIT" => "PostInit", "SHUTDOWN" => "Shutdown"), gettext("Execute command pre or post system initialization (booting) or before system shutdown."), true, isset($pconfig['type']));?>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type)) ? gettext("Save") : gettext("Add")?>">
-			        <?php if (isset($id) && isset($type)):?>
-			        <input name="id" type="hidden" value="<?=$id;?>">
-			        <input name="type" type="hidden" value="<?=$type;?>">
-			        <?php endif;?>
-			      </td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type)) ? gettext("Save") : gettext("Add")?>">
+					<?php if (isset($id) && isset($type)):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<input name="type" type="hidden" value="<?=$type;?>">
+					<?php endif;?>
+				</div>
 			</form>
     </td>
   </tr>

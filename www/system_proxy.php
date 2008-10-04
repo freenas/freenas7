@@ -236,14 +236,13 @@ function proxy_auth_change() {
           <?php html_checkbox("ftp_auth", gettext("Authentication"), $pconfig['ftp_auth'] ? true : false, gettext("Enable proxy authentication."), "", false, "proxy_auth_change()");?>
           <?php html_inputbox("ftp_username", gettext("User"), $pconfig['ftp_username'], "", true, 20);?>
 			    <?php html_inputbox("ftp_password", gettext("Password"), $pconfig['ftp_password'], "", true, 20);?>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
-			    <?php html_remark("note", gettext("Note"), gettext("If the server is behind a proxy set this parameters to give local services access to the internet via proxy."));?>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+			  </div>
+			  <div id="remarks">
+			  	<?php html_remark("note", gettext("Note"), gettext("If the server is behind a proxy set this parameters to give local services access to the internet via proxy."));?>
+			  </div>
 			</form>
 		</td>
   </tr>

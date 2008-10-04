@@ -76,26 +76,21 @@ if (!isset($do_traceroute)) {
 					<?php $a_ttl = array(); for ($i = 1; $i <= 64; $i++) { $a_ttl[$i] = $i; }?>
 					<?php html_combobox("ttl", gettext("Max. TTL"), $ttl, $a_ttl, gettext("Max. time-to-live (max. number of hops) used in outgoing probe packets."), true);?>
 					<?php html_checkbox("resolve", gettext("Resolve"), $resolve ? true : false, gettext("Resolve IP addresses to hostnames"), "", false);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
-						</td>
-					</tr>
-					<tr>
-						<td valign="top" colspan="2">
-							<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?></p>
-							<? if ($do_traceroute) {
-								echo("<strong>" . gettext("Command output:") . "</strong>");
-								echo('<pre>');
-								ob_end_flush();
-								system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
-								echo('</pre>');
-							}
-							?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
+				</div>
+				<?php if ($do_traceroute) {
+				echo("<strong>" . gettext("Command output:") . "</strong>");
+				echo('<pre>');
+				ob_end_flush();
+				system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
+				echo('</pre>');
+				}
+				?>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."));?>
+				</div>
 			</form>
 		</td>
 	</tr>
