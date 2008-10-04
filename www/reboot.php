@@ -33,7 +33,7 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("System"), gettext("Reboot"), gettext("Now"));
 
 if ($_POST) {
-	if ($_POST['Submit'] != " " . gettext("No") . " ") {
+	if ($_POST['Submit'] !== gettext("No")) {
 		$rebootmsg = gettext("The system is rebooting now. This may take one minute.");
 	} else {
 		header("Location: index.php");
@@ -55,11 +55,11 @@ if ($_POST) {
     <td class="tabcont">
 			<?php if ($rebootmsg): echo print_info_box($rebootmsg); system_reboot(); else:?>
 			<form action="reboot.php" method="post">
-			  <p><strong><?=gettext("Are you sure you want to reboot the system?");?></strong></p>
-			  <p>
-			    <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
-			    <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
-			  </p>
+			  <strong><?=gettext("Are you sure you want to reboot the system?");?></strong>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>">
+				</div>
 			</form>
 			<?php endif;?>
     </td>

@@ -229,16 +229,14 @@ function enable_change(enable_change) {
 							<?=gettext("This allows you to set the file system for preformatted hard disks containing data.");?> <?php echo sprintf(gettext("Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."), "Unformated", "disks_init.php");?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_disk[$id]): ?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_disk[$id]): ?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif; ?>
+				</div>
 			</form>
 		</td>
 	</tr>

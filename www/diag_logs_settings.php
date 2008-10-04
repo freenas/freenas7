@@ -161,20 +161,13 @@ function enable_change(enable_change) {
 	            <?=gettext("Daemon events");?><br>
 	          </td>
 	        </tr>
-	        <tr>
-	          <td width="22%" valign="top">&nbsp;</td>
-	          <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
-						</td>
-	        </tr>
-	        <tr>
-	          <td width="22%" valign="top">&nbsp;</td>
-	          <td width="78%">
-							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-	            <?php echo sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), get_product_name());?>
-	          </td>
-	        </tr>
 	      </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
+				</div>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), get_product_name()));?>
+				</div>
 			</td>
 		</tr>
 	</table>

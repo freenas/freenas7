@@ -106,30 +106,25 @@ if (!isset($do_action)) {
               <?=gettext("If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process.");?></span>
             </td>
           </tr>
-  				<tr>
-  				  <td width="22%" valign="top">&nbsp;</td>
-  				  <td width="78%">
-             <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Fsck");?>">
-  				  </td>
-  				</tr>
-  				<tr>
-    				<td valign="top" colspan="2">
-						<?php if($do_action) {
-							echo("<strong>" . gettext("Command output:") . "</strong>");
-							echo('<pre>');
-							ob_end_flush();
-							/* Check filesystem */
-							$result = disks_fsck($disk,$umount);
-							/* Display result */
-              echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-							echo('</pre>');
-						}
-						?>
-    				</td>
-  				</tr>
-			 </table>
+				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
+				</div>
+				<?php if($do_action) {
+				echo("<strong>" . gettext("Command output:") . "</strong>");
+				echo('<pre>');
+				ob_end_flush();
+				/* Check filesystem */
+				$result = disks_fsck($disk,$umount);
+				/* Display result */
+				echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
+				echo('</pre>');
+				}
+				?>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"));?>
+				</div>
     	</form>
-		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!");?></p>
   	</td>
 	</tr>
 </table>

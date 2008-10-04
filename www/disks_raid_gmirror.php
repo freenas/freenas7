@@ -185,11 +185,10 @@ function gmirror_process_updatenotification($mode, $data) {
             <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" border="0"></a></td>
 					</tr>
         </table>
+        <div id="remarks">
+        	<?php html_remark("info", gettext("Info"), sprintf(gettext("%s is used to create %s volumes."), "GEOM Mirror", "RAID1"));?>
+        </div>
       </form>
-			<span class="vexpl">
-				<span class="red"><strong><?=gettext("Info");?>:</strong></span><br/>
-				<?=sprintf(gettext("%s is used to create %s volumes."), "GEOM Mirror", "RAID1");?>
-			</span>
 		</td>
 	</tr>
 </table>

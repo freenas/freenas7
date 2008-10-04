@@ -173,16 +173,13 @@ function enable_change(enable_change) {
 					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
 			    <?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($id));?>
 			  	<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-							<?php if (isset($id) && $a_vdevice[$id]):?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-						</td>
-					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<?php if (isset($id) && $a_vdevice[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

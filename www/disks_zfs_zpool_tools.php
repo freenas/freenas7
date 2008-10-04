@@ -281,164 +281,157 @@ function pool_change() {
 						</td>
 					</tr>
 					<?php html_combobox("device_new", gettext("New Device"), NUL, NUL, "", true);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
-						</td>
-					</tr>
-					<tr>
-						<td valign="top" colspan="2">
-							<?php if ($do_action) {
-							echo("<strong>" . gettext("Command output:") . "</strong><br>");
-							echo('<pre>');
-							ob_end_flush();
-							$action = $pconfig['action'];
-							$option = $pconfig['option'];
-							$pool = $pconfig['pool'];
-							$device = $pconfig['device'];
-							switch ($action) {
-								case "upgrade": {
-										switch ($option) {
-											case "v": {
-													zfs_zpool_cmd($action, "-v", false, false, true, &$output);
-													foreach ($output as $line) {
-														if (preg_match("/(\s+)(\d+)(\s+)(.*)/",$line, $match)) {
-															$href = "<a href=\"http://www.opensolaris.org/os/community/zfs/version/{$match[2]}\" target=\"_blank\">{$match[2]}</a>";
-															echo "{$match[1]}{$href}{$match[3]}{$match[4]}";
-														} else {
-															echo htmlspecialchars($line);
-														}
-														echo "<br/>";
-													}
-												}
-												break;
-
-											case "a":
-												zfs_zpool_cmd($action, "-a", true);
-												break;
-
-											case "p":
-												zfs_zpool_cmd($action, $pool, true);
-												break;
+				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+				</div>
+				<?php if ($do_action) {
+				echo("<strong>" . gettext("Command output:") . "</strong><br>");
+				echo('<pre>');
+				ob_end_flush();
+				$action = $pconfig['action'];
+				$option = $pconfig['option'];
+				$pool = $pconfig['pool'];
+				$device = $pconfig['device'];
+				switch ($action) {
+					case "upgrade": {
+							switch ($option) {
+								case "v": {
+										zfs_zpool_cmd($action, "-v", false, false, true, &$output);
+										foreach ($output as $line) {
+											if (preg_match("/(\s+)(\d+)(\s+)(.*)/",$line, $match)) {
+												$href = "<a href=\"http://www.opensolaris.org/os/community/zfs/version/{$match[2]}\" target=\"_blank\">{$match[2]}</a>";
+												echo "{$match[1]}{$href}{$match[3]}{$match[4]}";
+											} else {
+												echo htmlspecialchars($line);
+											}
+											echo "<br/>";
 										}
 									}
 									break;
-
-								case "history": {
-										switch ($option) {
-											case "a":
-												zfs_zpool_cmd($action, "", true);
-												break;
-
-											case "p":
-												zfs_zpool_cmd($action, $pool, true);
-												break;
-										}
-									}
+				
+								case "a":
+									zfs_zpool_cmd($action, "-a", true);
 									break;
-
-								case "scrub": {
-										switch ($option) {
-											case "s":
-												zfs_zpool_cmd($action, $pool, true);
-								 				break;
-
-								 			case "st":
-												zfs_zpool_cmd($action,"-s {$pool}", true);
-												break;
-										}
-									}
+				
+								case "p":
+									zfs_zpool_cmd($action, $pool, true);
 									break;
-
-								case "clear": {
-										switch ($option) {
-											case "p":
-												zfs_zpool_cmd($action, $pool, true);
-												break;
-
-											case "d":
-												if (is_array($device) ) {
-													foreach ($device as $dev) {
-														zfs_zpool_cmd($action, "{$pool} {$dev}", true);
-													}
-												} else {
-													zfs_zpool_cmd($action, "{$pool} {$device}", true);
-												}
-												break;
-										}
-									}
+							}
+						}
+						break;
+				
+					case "history": {
+							switch ($option) {
+								case "a":
+									zfs_zpool_cmd($action, "", true);
 									break;
-
-								case "offline": {
-										switch ($option) {
-											case "t":
-												zfs_zpool_cmd($action, "-t {$pool} {$device}", true);
-											break;
-
-											case "d":
-												if (is_array($device) ) {
-													foreach ($device as $dev) {
-														zfs_zpool_cmd($action, "{$pool} {$dev}", true);
-													}
-												} else {
-													zfs_zpool_cmd($action, "{$pool} {$device}", true);
-												}
-											break;
-										}
-									}
+				
+								case "p":
+									zfs_zpool_cmd($action, $pool, true);
 									break;
-
-								case "online": {
-										switch ($option) {
-											case "d":
-												if (is_array($device) ) {
-													foreach ($device as $dev) {
-														zfs_zpool_cmd($action, "{$pool} {$dev}", true);
-													}
-												} else {
-													zfs_zpool_cmd($action, "{$pool} {$device}", true);
-												}
-												break;
-										}
-									}
+							}
+						}
+						break;
+				
+					case "scrub": {
+							switch ($option) {
+								case "s":
+									zfs_zpool_cmd($action, $pool, true);
+					 				break;
+				
+					 			case "st":
+									zfs_zpool_cmd($action,"-s {$pool}", true);
 									break;
-
-								case "remove": {
-										switch ($option) {
-											case "d":
-												if (is_array($device) ) {
-													foreach ($device as $dev) {
-														zfs_zpool_cmd($action, "{$pool} {$dev}", true);
-													}
-												} else {
-													zfs_zpool_cmd($action, "{$pool} {$device}", true);
-												}
-											break;
-										}
-									}
+							}
+						}
+						break;
+				
+					case "clear": {
+							switch ($option) {
+								case "p":
+									zfs_zpool_cmd($action, $pool, true);
 									break;
-
-								case "replace": {
-										switch ($option) {
-											case "d":
-												if (is_array($device) ) {
-													foreach ($device as $dev) {
-														zfs_zpool_cmd($action, "{$pool} {$dev} {$pconfig['device_new']}", true);
-													}
-												} else {
-													zfs_zpool_cmd($action, "{$pool} {$device} {$pconfig['device_new']}", true);
-												}
-											break;
+				
+								case "d":
+									if (is_array($device) ) {
+										foreach ($device as $dev) {
+											zfs_zpool_cmd($action, "{$pool} {$dev}", true);
 										}
+									} else {
+										zfs_zpool_cmd($action, "{$pool} {$device}", true);
 									}
 									break;
 							}
-							echo('</pre>');
-							};?>
-						</td>
-					</tr>
-				</table>
+						}
+						break;
+				
+					case "offline": {
+							switch ($option) {
+								case "t":
+									zfs_zpool_cmd($action, "-t {$pool} {$device}", true);
+								break;
+				
+								case "d":
+									if (is_array($device) ) {
+										foreach ($device as $dev) {
+											zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+										}
+									} else {
+										zfs_zpool_cmd($action, "{$pool} {$device}", true);
+									}
+								break;
+							}
+						}
+						break;
+				
+					case "online": {
+							switch ($option) {
+								case "d":
+									if (is_array($device) ) {
+										foreach ($device as $dev) {
+											zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+										}
+									} else {
+										zfs_zpool_cmd($action, "{$pool} {$device}", true);
+									}
+									break;
+							}
+						}
+						break;
+				
+					case "remove": {
+							switch ($option) {
+								case "d":
+									if (is_array($device) ) {
+										foreach ($device as $dev) {
+											zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+										}
+									} else {
+										zfs_zpool_cmd($action, "{$pool} {$device}", true);
+									}
+								break;
+							}
+						}
+						break;
+				
+					case "replace": {
+							switch ($option) {
+								case "d":
+									if (is_array($device) ) {
+										foreach ($device as $dev) {
+											zfs_zpool_cmd($action, "{$pool} {$dev} {$pconfig['device_new']}", true);
+										}
+									} else {
+										zfs_zpool_cmd($action, "{$pool} {$device} {$pconfig['device_new']}", true);
+									}
+								break;
+							}
+						}
+						break;
+				}
+				echo('</pre>');
+				};?>
 			</form>
 		</td>
 	</tr>

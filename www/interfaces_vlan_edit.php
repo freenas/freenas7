@@ -145,19 +145,16 @@ function get_nextvlan_id() {
 					<?php $a_if = array(); foreach (get_interface_list() as $ifk => $ifv) { if (eregi('vlan', $ifk)) { continue; } $a_if[$ifk] = htmlspecialchars("{$ifk} ({$ifv['mac']})"); };?>
 					<?php html_combobox("vlandev", gettext("Physical interface"), $pconfig['vlandev'], $a_if, "", true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
-							<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
-							<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_vlans[$id]):?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
+					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_vlans[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

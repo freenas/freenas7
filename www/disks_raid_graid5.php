@@ -182,11 +182,10 @@ function graid5_process_updatenotification($mode, $data) {
             <td class="list"> <a href="disks_raid_graid5_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" border="0"></a></td>
 					</tr>
         </table>
+        <div id="remarks">
+        	<?php html_remark("info", gettext("Info"), sprintf(gettext("%s is used to create %s volumes."), "GEOM Raid5", "RAID5"));?>
+        </div>
       </form>
-			<span class="vexpl">
-				<span class="red"><strong><?=gettext("Info");?>:</strong></span><br/>
-				<?=sprintf(gettext("%s is used to create %s volumes."), "GEOM Raid5", "RAID5");?>
-			</span>
 		</td>
 	</tr>
 </table>

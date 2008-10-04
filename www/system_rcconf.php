@@ -151,12 +151,9 @@ function rcconf_process_updatenotification($mode, $data) {
 						</td>
 	        </tr>
 	      </table>
-	      <p>
-					<span class="vexpl">
-						<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-						<?php echo gettext("These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts.");?>
-					</span>
-				</p>
+	      <div id="remarks">
+	      	<?php html_remark("note", gettext("Note"), gettext("These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts."));?>
+	      </div>
 			</form>
 	  </td>
   </tr>

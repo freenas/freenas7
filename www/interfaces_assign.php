@@ -255,11 +255,12 @@ if ($_GET['act'] == "add") {
 				  </tr>
 				  <?php endif;?>
 				</table>
-				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
-				<span class="vexpl">
-					<span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
-					<?php echo sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name());?>
-				</span>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+				</div>
+				<div id="remarks">
+					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name()));?>
+				</div>
 			</form>
 		</td>
 	</tr>

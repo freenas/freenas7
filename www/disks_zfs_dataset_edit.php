@@ -156,16 +156,13 @@ function enable_change(enable_change) {
 					<?php html_checkbox("xattr", gettext("Extended attributes"), $pconfig['xattr'] ? true : false, gettext("Enable extended attributes for this file system."), "", false);?>
 					<?php html_inputbox("quota", gettext("Quota"), $pconfig['quota'], gettext("Limits the	amount of space a dataset and its descendants can consume. This property enforces a hard limit on the amount of space used. This	includes all space consumed by descendants, including file systems and snapshots. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."), false, 10);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_dataset[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-							<?php if (isset($id) && $a_dataset[$id]):?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_dataset[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<?php if (isset($id) && $a_dataset[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

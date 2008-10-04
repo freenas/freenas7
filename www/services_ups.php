@@ -102,10 +102,10 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<form action="services_ups.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabcont">
+    	<form action="services_ups.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -115,24 +115,17 @@ function enable_change(enable_change) {
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The serial or USB port where your UPS is connected."), true, 30);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 5);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
-			    <tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-							<?=sprintf(gettext("This configuration settings are used to generate the ups.conf configuration file which is required by the NUT UPS daemon. To get more information how to configure your UPS please check the NUT (Network UPS Tools) <a href='%s' target='_blank'>documentation</a>."), "http://www.networkupstools.org");?>
-						</td>
-					</tr>
 			  </table>
-			</td>
-		</tr>
-	</table>
-</form>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				</div>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("This configuration settings are used to generate the ups.conf configuration file which is required by the NUT UPS daemon. To get more information how to configure your UPS please check the NUT (Network UPS Tools) <a href='%s' target='_blank'>documentation</a>."), "http://www.networkupstools.org"));?>
+				</div>
+			</form>
+		</td>
+  </tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);

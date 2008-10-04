@@ -202,35 +202,28 @@ if (!isset($pconfig['do_action'])) {
 							<?=gettext("Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk.");?>
 			      </td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-			      </td>
-			    </tr>
-					<tr>
-						<td valign="top" colspan="2">
-						<? if ($pconfig['do_action']) {
-							echo("<strong>" . gettext("Command output:") . "</strong>");
-							echo('<pre>');
-							ob_end_flush();
-
-							if (true === $pconfig['init']) {
-								// Initialize and encrypt the disk.
-								echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $pconfig['devicespecialfile']);
-								disks_geli_init($pconfig['devicespecialfile'], $pconfig['aalgo'], $pconfig['ealgo'], $pconfig['passphrase'], true);
-							}
-
-							// Attach the disk.
-							echo(sprintf(gettext("Attaching provider '%s'."), $pconfig['devicespecialfile']) . "<br/>");
-							disks_geli_attach($pconfig['devicespecialfile'], $pconfig['passphrase'], true);
-
-							echo('</pre>');
-						}
-						?>
-						</td>
-					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+				</div>
+				<?php if ($pconfig['do_action']) {
+				echo("<strong>" . gettext("Command output:") . "</strong>");
+				echo('<pre>');
+				ob_end_flush();
+				
+				if (true === $pconfig['init']) {
+					// Initialize and encrypt the disk.
+					echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $pconfig['devicespecialfile']);
+					disks_geli_init($pconfig['devicespecialfile'], $pconfig['aalgo'], $pconfig['ealgo'], $pconfig['passphrase'], true);
+				}
+				
+				// Attach the disk.
+				echo(sprintf(gettext("Attaching provider '%s'."), $pconfig['devicespecialfile']) . "<br/>");
+				disks_geli_attach($pconfig['devicespecialfile'], $pconfig['passphrase'], true);
+				
+				echo('</pre>');
+				}
+				?>
 			</form>
 		</td>
 	</tr>

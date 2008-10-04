@@ -128,12 +128,9 @@ if ($_GET['act'] == "del")
           <td class="list"><a href="system_rc_edit.php"><img src="plus.gif" title="<?=gettext("Add command");?>" border="0"></a></td>
         </tr>
       </table>
-      <p>
-				<span class="vexpl">
-					<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-					<?php echo gettext("These commands will be executed pre or post system initialization (booting) or before system shutdown.");?>
-				</span>
-			</p>
+      <div id="remarks">
+      	<?php html_remark("note", gettext("Note"), gettext("These commands will be executed pre or post system initialization (booting) or before system shutdown."));?>
+      </div>
     </td>
   </tr>
 </table>

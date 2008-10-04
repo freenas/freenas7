@@ -414,18 +414,15 @@ function delete_change() {
 					<?php html_checkbox("perms", gettext("Preserve permissions"), $pconfig['perms'] ? true : false, gettext("This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."), "", false);?>
 					<?php html_checkbox("xattrs", gettext("Preserve extended attributes"), $pconfig['xattrs'] ? true : false, gettext("This option causes rsync to update the remote extended attributes to be the same as the local ones."), "", false);?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to rsync (usually empty)."), false, 40);?>
-					<tr>
-	          <td width="22%" valign="top">&nbsp;</td>
-	          <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_rsyncclient[$id]):?>
-							<input name="Submit" id="execnow" type="submit" class="formbtn" value="<?=gettext("Execute now");?>">
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-	          </td>
-	        </tr>
 	      </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_rsyncclient[$id]):?>
+					<input name="Submit" id="execnow" type="submit" class="formbtn" value="<?=gettext("Execute now");?>">
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

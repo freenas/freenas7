@@ -36,7 +36,7 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("System"),gettext("Shutdown"), gettext("Now"));
 
 if ($_POST) {
-	if ($_POST['Submit'] != " " . gettext("No") . " ") {
+	if ($_POST['Submit'] !== gettext("No")) {
 		$rebootmsg = gettext("The system is halting now. This may take one minute.");
 	} else {
 		header("Location: index.php");
@@ -58,13 +58,11 @@ if ($_POST) {
     <td class="tabcont">
       <?php if ($rebootmsg): echo print_info_box($rebootmsg); system_halt(); else:?>
       <form action="shutdown.php" method="post">
-        <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <p><strong><?=gettext("Are you sure you want to shutdown the system?");?></strong></p>
-          <p>
-            <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
-            <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
-          </p>
-        </table>
+				<strong><?=gettext("Are you sure you want to shutdown the system?");?></strong>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>">
+				</div>
       </form>
       <?php endif;?>
     </td>

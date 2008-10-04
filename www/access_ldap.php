@@ -183,48 +183,41 @@ function enable_change(enable_change) {
 			      	<br><?=gettext("user_suffix, example: ou=users,dc=example,dc=com");?>
 						</td>
 					</tr>
+				  <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
+			      	<br><?=gettext("password_suffix, example: ou=users,dc=example,dc=com");?>
+						</td>
+					</tr>
+				  <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
+			      	<br><?=gettext("group_suffix, example: ou=groups,dc=example,dc=com");?>
+						</td>
+					</tr>
 					<tr>
-					  <tr>
-				      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
-				      <td width="78%" class="vtable">
-				        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
-				      	<br><?=gettext("password_suffix, example: ou=users,dc=example,dc=com");?>
-							</td>
-						</tr>
-					  <tr>
-				      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
-				      <td width="78%" class="vtable">
-				        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
-				      	<br><?=gettext("group_suffix, example: ou=groups,dc=example,dc=com");?>
-							</td>
-						</tr>
-						<tr>
-				      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
-							<td width="78%" class="vtable">
-								<select name="pam_password" class="formfld" id="pam_password">
-					        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
-					        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-					          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['pam_password']) echo "selected";?>>
-					          <?=htmlspecialchars($types[$j]);?>
-					          </option>
-					        <?php endfor; ?>
-				        </select>
-							  <br><?=gettext("Method used to store your password in your LDAP.");?>
-							</td>
-						</tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<span class="red"><strong><?=gettext("Help Needed!");?>:</strong></span>
-							<br><?php echo gettext("LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome.");?>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
+						<td width="78%" class="vtable">
+							<select name="pam_password" class="formfld" id="pam_password">
+				        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
+				        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+				          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['pam_password']) echo "selected";?>>
+				          <?=htmlspecialchars($types[$j]);?>
+				          </option>
+				        <?php endfor; ?>
+			        </select>
+						  <br><?=gettext("Method used to store your password in your LDAP.");?>
 						</td>
 					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+				</div>
+				<div id="remarks">
+					<?php html_remark("help", gettext("Help needed!"), gettext("LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."));?>
+				</div>
 			</td>
 		</tr>
 	</table>

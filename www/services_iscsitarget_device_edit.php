@@ -165,17 +165,14 @@ if ($_POST) {
 					?>
 					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id])) ? gettext("Save") : gettext("Add");?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_iscsitarget_device[$id]): ?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_iscsitarget_device[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</td>
 		</tr>
 	</table>

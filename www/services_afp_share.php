@@ -139,10 +139,10 @@ function afpshare_process_updatenotification($mode, $data) {
             <td class="list"><a href="services_afp_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" border="0"></a></td>
           </tr>
         </table>
+        <div id="remarks">
+        	<?php html_remark("note", gettext("Note"), gettext("All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."));?>
+        </div>
       </form>
-      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-			<?php echo gettext("All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal.");?>
-			</p>
     </td>
   </tr>
 </table>

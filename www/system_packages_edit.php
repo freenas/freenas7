@@ -89,39 +89,29 @@ if(!isset($do_action)) {
 							<br><?=gettext("Select the FreeBSD package to be installed.");?>
 						</td>
 					</tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Install")?>">
-			      </td>
-					</tr>
-					<tr>
-						<td valign="top" colspan="2">
-						<?php if($do_action)
-						{
-							echo("<strong>" . gettext("Command output:") . "</strong><br>");
-							echo('<pre>');
-							ob_end_flush();
-							
-							// Install package.
-							packages_install($packagename);
-							
-							// Delete file.
-							@unlink($packagename);
-							
-							echo('</pre>');
-						}
-						?>
-						</td>
-					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Install")?>">
+				</div>
+				<?php if($do_action)
+				{
+				echo("<strong>" . gettext("Command output:") . "</strong><br>");
+				echo('<pre>');
+				ob_end_flush();
+				
+				// Install package.
+				packages_install($packagename);
+				
+				// Delete file.
+				@unlink($packagename);
+				
+				echo('</pre>');
+				}
+				?>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), gettext("You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"));?>
+				</div>
 			</form>
-			<p>
-				<span class="vexpl">
-					<span class="red"><strong><?=gettext("Note");?>:</strong></span><br>
-					<?=gettext("You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename");?>
-				</span>
-			</p>
 		</td>
 	</tr>
 </table>

@@ -408,23 +408,17 @@ function enable_change(enable_change) {
 							</table>
 			      </td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
-			      	<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-			        <?php if (isset($id) && $a_mount[$id]): ?>
-			        <input name="id" type="hidden" value="<?=$id;?>">
-			        <?php endif; ?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br>
-			        </strong></span><?=sprintf(gettext("You can't mount the partition '%s' where the config file is stored.<br>"),htmlspecialchars($cfdevice));?></span>
-							<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span></p>
-			      </td>
-			    </tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_mount[$id]): ?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif; ?>
+				</div>
+				<div id="remarks">
+					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("You can't mount the partition '%s' where the config file is stored.<br>"),htmlspecialchars($cfdevice)) . sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name()));?>
+				</div>
 			</form>
 		</td>
 	</tr>

@@ -291,17 +291,14 @@ function enable_change(enable_change) {
 							<input name="desc" type="text" class="formfld" id="desc" size="40" value="<?=htmlspecialchars($pconfig['desc']);?>">
 						</td>
 					</tr>
-					<tr>
-	          <td width="22%" valign="top">&nbsp;</td>
-	          <td width="78%">
-	            <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_selftest[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-	            <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_selftest[$id]): ?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-	          </td>
-	        </tr>
 	      </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_selftest[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_selftest[$id]): ?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

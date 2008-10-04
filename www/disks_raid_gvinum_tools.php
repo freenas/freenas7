@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_raid_gvinum_tools.php
-	
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -58,7 +58,7 @@ if (!isset($do_action)) {
 	$object = '';
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
@@ -76,72 +76,69 @@ if (!isset($do_action)) {
 	<li class="tabinact"><a href="disks_raid_gvinum_info.php"><span><?=gettext("Information"); ?></span></a></li>
   </ul>
   </td></tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+			<?php if ($input_errors) print_input_errors($input_errors);?>
 			<form action="disks_raid_gvinum_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Object name");?></td>
-				  <td width="78%" class="vtable"> 
-          	<input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>">
-					</td>
-				</tr>
-				<tr> 
-                  <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-                  <td class="vtable"> 
-                    <select name="action" class="formfld" id="action">
-                      <option value="start" <?php if ($action == "start") echo "selected"; ?>>start</option>
-                      <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild parity</option>
-                      <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-                      <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
-                      <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>>force state to UP</option>
-                      <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected"; ?>>saveconfig</option>
-                     </select>
-                  </td>
-                </tr>
-				<tr>
-				  <td width="22%" valign="top">&nbsp;</td>
-				  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
-				</td>
-				</tr>
-				<tr>
-				<td valign="top" colspan="2">
+					<tr>
+					  <td width="22%" valign="top" class="vncellreq"><?=gettext("Object name");?></td>
+					  <td width="78%" class="vtable">
+	          	<input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>">
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Unix Command");?></td>
+            <td width="78%" class="vtable">
+	            <select name="action" class="formfld" id="action">
+	              <option value="start" <?php if ($action == "start") echo "selected"; ?>>start</option>
+	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild parity</option>
+	              <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
+	              <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
+	              <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>>force state to UP</option>
+	              <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected"; ?>>saveconfig</option>
+	             </select>
+	          </td>
+	        </tr>
+				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+				</div>
 				<?php if ($do_action) {
-					echo("<strong>" . gettext("Command output:") . "</strong><br>");
-					echo('<pre>');
-					ob_end_flush();
+				echo("<strong>" . gettext("Command output:") . "</strong><br>");
+				echo('<pre>');
+				ob_end_flush();
 
-					// Function disks_geom_cmd() can't be used. That's because gvinum can't be accessed
-					// via 'geom vinum xxx'.
-					switch ($action) {
-						case "start":
-							disks_geom_cmd("vinum", "start", $object, true);
-							break;
-						case "rebuild":
-							disks_geom_cmd("vinum", "rebuildparity", $object, true);
-							break;
-						case "list":
-							disks_geom_cmd("vinum", "list", $object, true);
-							break;
-						case "remove":					
-							disks_geom_cmd("vinum", "rm", "-r {$object}", true);
-							break;
-						case "forceup":					
-							disks_geom_cmd("vinum", "setstate", "-f up {$object}", true);
-							break;
-						case "saveconfig":					
-							disks_geom_cmd("vinum", "saveconfig", "", true);
-							break;
-					}
+				// Function disks_geom_cmd() can't be used. That's because gvinum can't be accessed
+				// via 'geom vinum xxx'.
+				switch ($action) {
+					case "start":
+						disks_geom_cmd("vinum", "start", $object, true);
+						break;
+					case "rebuild":
+						disks_geom_cmd("vinum", "rebuildparity", $object, true);
+						break;
+					case "list":
+						disks_geom_cmd("vinum", "list", $object, true);
+						break;
+					case "remove":
+						disks_geom_cmd("vinum", "rm", "-r {$object}", true);
+						break;
+					case "forceup":
+						disks_geom_cmd("vinum", "setstate", "-f up {$object}", true);
+						break;
+					case "saveconfig":
+						disks_geom_cmd("vinum", "saveconfig", "", true);
+						break;
+				}
 
-					echo('</pre>');
+				echo('</pre>');
 				};?>
-				</td>
-				</tr>
-			</table>
-</form>
-<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly).");?></span></p>
-</td></tr></table>
-<?php include("fend.inc"); ?>
+				<div id="remarks">
+					<?php html_remark("warning", gettext("Warning"), gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."));?>
+				</div>
+			</form>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>

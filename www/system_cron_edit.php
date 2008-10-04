@@ -360,18 +360,15 @@ function enable_change(enable_change) {
 							</table>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-							<input name="Submit" id="runnow" type="submit" class="formbtn" value="<?=gettext("Run now");?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_cronjob[$id]): ?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
-						</td>
-					</tr>
 			  </table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Submit" id="runnow" type="submit" class="formbtn" value="<?=gettext("Run now");?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_cronjob[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
     </td>
   </tr>

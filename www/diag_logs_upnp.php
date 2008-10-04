@@ -52,16 +52,18 @@ if ($_POST['clear']) {
 	<?php logs_display_menu("upnp", $logmenu);?>
   <tr>
 		<td class="tabcont">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			  <tr>
-					<td colspan="2" class="listtopic">
-						<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("UPnP"));?>
-					</td>
-			  </tr>
-			  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
-			</table><br/>
 			<form action="diag_logs_upnp.php" method="post">
-				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+						<td colspan="2" class="listtopic">
+							<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("UPnP"));?>
+						</td>
+				  </tr>
+				  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
+				</table>
+				<div id="submit">
+					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
+				</div>
 			</form>
 		</td>
   </tr>

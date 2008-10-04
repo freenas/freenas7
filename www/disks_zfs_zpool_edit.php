@@ -161,16 +161,13 @@ function enable_change(enable_change) {
 					<?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40);?>
 					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets an alternate mount point for the root dataset. Default is /mnt."), false, 40);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_pool[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-							<?php if (isset($id) && $a_pool[$id]):?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_pool[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<?php if (isset($id) && $a_pool[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>

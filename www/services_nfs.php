@@ -124,13 +124,10 @@ function enable_change(enable_change) {
 							<span class="vexpl"><?=gettext("Specifies how many servers to create.");?> <?=gettext("There should be enough to handle the maximum level of concurrency from its clients, typically four to six.");?></span>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				</div>
 			</form>
 		</td>
 	</tr>

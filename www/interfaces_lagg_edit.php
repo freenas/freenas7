@@ -134,19 +134,16 @@ function get_nextlagg_id() {
 					<?php $a_port = array(); foreach (get_interface_list() as $ifk => $ifv) { if (eregi('lagg', $ifk)) { continue; } if (!isset($id) && false !== array_search_ex($ifk, $a_lagg, "laggport")) { continue; } $a_port[$ifk] = htmlspecialchars("{$ifk} ({$ifv['mac']})"); } ?>
 					<?php html_listbox("laggport", gettext("Ports"), $pconfig['laggport'], $a_port, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_lagg[$id])) ? gettext("Save") : gettext("Add");?>">
-							<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
-							<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
-							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-							<?php if (isset($id) && $a_lagg[$id]):?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif;?>
-						</td>
-					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_lagg[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
+					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<?php if (isset($id) && $a_lagg[$id]):?>
+					<input name="id" type="hidden" value="<?=$id;?>">
+					<?php endif;?>
+				</div>
 			</form>
 		</td>
 	</tr>
