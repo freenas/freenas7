@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-09-24 15:09+0000\n"
+"PO-Revision-Date: 2008-09-24 15:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1208,15 +1208,6 @@ msgstr ""
 msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
 msgstr ""
 
-msgid "Enter the NIS Master server hostname."
-msgstr ""
-
-msgid "Enter the NIS Slave server hostname."
-msgstr ""
-
-msgid "Enter the NIS domain name."
-msgstr ""
-
 msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."
 msgstr ""
 
@@ -1465,7 +1456,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-msgid "Help Needed!"
+msgid "Help needed!"
 msgstr ""
 
 msgid "Hide dot files"
@@ -1980,15 +1971,6 @@ msgid "NFS Server"
 msgstr ""
 
 msgid "NIS"
-msgstr ""
-
-msgid "NIS Authentication"
-msgstr ""
-
-msgid "NIS master server name"
-msgstr ""
-
-msgid "NIS slave server name"
 msgstr ""
 
 msgid "NTP time server"
@@ -3361,9 +3343,6 @@ msgstr ""
 msgid "This parameter controls whether files starting with a dot appear as hidden files."
 msgstr ""
 
-msgid "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified."
-msgstr ""
-
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr ""
 
@@ -3405,7 +3384,7 @@ msgid "To email"
 msgstr ""
 
 #, php-format
-msgid "To increase CIFS performance try the following:<br>- Enable 'Large read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- Increase <a href='%s'>MTU</a>"
+msgid "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
 msgstr ""
 
 msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"
@@ -3489,6 +3468,9 @@ msgid "Unison"
 msgstr ""
 
 msgid "Unison File Synchronisation"
+msgstr ""
+
+msgid "Unix Command"
 msgstr ""
 
 msgid "Unix charset"
