@@ -40,6 +40,7 @@ Majors changes:
 Minors changes:
 
 Bug fixes:
+- Check entered path for iSCSI target extents before storing configuration (BR 2144966).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

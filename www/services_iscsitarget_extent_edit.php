@@ -101,6 +101,14 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	// Check if path exists.
+	if ("device" !== $_POST['type']) {
+		$dirname = dirname($_POST['path']);
+		if (!file_exists($dirname)) {
+			$input_errors[] = gettext("The path '{$dirname}' does not exists.");
+		}
+	}
+
 	if (!$input_errors) {
 		$iscsitarget_extent = array();
 		$iscsitarget_extent['uuid'] = $_POST['uuid'];
