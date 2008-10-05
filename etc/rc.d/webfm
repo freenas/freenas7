@@ -1,0 +1,37 @@
+#!/bin/sh
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: webfm
+# REQUIRE: DAEMON
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+# Defaults
+webfm_configdir=${webfm_configdir:-"/usr/local/www/quixplorer/.config"}
+webfm_htusers=${webfm_htusers:-"${webfm_configdir}/.htusers.php"}
+
+echo "Preparing web-based file-management."
+
+# Generate the .htusers.php file containing the user configuration
+echo '<?php $GLOBALS["users"]=array(' > ${webfm_htusers}
+
+# Iterate over all configured users
+_index=`configxml_get_count "//access/user"`
+while [ ${_index} -gt 0 ]
+do
+	_password=`configxml_get "//access/user[${_index}]/password"`
+	_password_md5=`/sbin/md5 -q -s ${_password}`
+
+	/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
+		-v "concat('array(&quot;',login,'&quot;,&quot;${_password_md5}&quot;,&quot;/mnt&quot;,&quot;http://localhost&quot;,0,&quot;^.ht&quot;,1,1),')" -b \
+		${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
+
+	_index=$(( ${_index} - 1 ))
+done
+
+# Add administrator account
+echo 'array("admin","269e8764ecb4803d0497a3d49a2f561f","/","http://localhost",1,"",7,1),' >> ${webfm_htusers}
+
+echo ');?>' >> ${webfm_htusers}
