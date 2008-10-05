@@ -207,6 +207,9 @@ $pgtitle = array(gettext("License & Credits"));
 		<p>Transmission - Transmission is a fast, easy, and free multi-platform BitTorrent client (<a href="http://www.transmissionbt.com" target="_blank">http://www.transmissionbt.com</a>)<br>
       Copyright &copy; Transmission Project 2008. All rights reserved.</p>
 
+		<p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br>
+      Copyright &copy; Felix C. Stegerman. All rights reserved.</p>
+
 		<p>Nifty Corners Cube - Rounded corners with CSS and Javascript (<a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">http://www.html.it/articoli/niftycube/index.html</a>)<br>
       Copyright &copy; 2006 Alessandro Fulciniti (a.fulciniti@html.it).</p>
 
