@@ -40,6 +40,7 @@ Majors changes:
   via http://xxx.xxx.xxx.xxx/quixplorer. Default user/password is 'admin/freenas'.
 
 Minors changes:
+- Add misc NOTIFYFLAG options to upsmon configuration to make logging more communicative.
 
 Bug fixes:
 - Check entered path for iSCSI target extents before storing configuration (BR 2144966).
