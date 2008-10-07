@@ -49,7 +49,7 @@ if ($_POST) {
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	// Validate old password.
-	if (crypt($_POST['password_old'], $config['system']['password']) !== $config['system']['password']) {
+	if ($_POST['password_old'] !== $config['system']['password']) {
 		$input_errors[] = gettext("The old password is not correct.");
 	}
 
@@ -59,7 +59,7 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['system']['password'] = crypt($_POST['password_new']);
+		$config['system']['password'] = $_POST['password_new'];
 
 		write_config();
 

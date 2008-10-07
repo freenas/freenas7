@@ -1541,6 +1541,14 @@ function config_upgrade() {
 		$config['version'] = "6.0";
 	}
 
+	/* Convert 6.0 -> 6.1 */
+	/* Reset password to default. */
+	if ($config['version'] === "6.0") {
+		$config['system']['password'] = $g['default_passwd'];
+
+		$config['version'] = "6.1";
+	}
+
 	write_config();
 
 	if (is_booting())
