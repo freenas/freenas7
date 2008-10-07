@@ -32,6 +32,10 @@ do
 done
 
 # Add administrator account
-echo 'array("admin","269e8764ecb4803d0497a3d49a2f561f","/","http://localhost",1,"",7,1),' >> ${webfm_htusers}
+_password=`configxml_get "//system/password"`
+_password_md5=`/sbin/md5 -q -s ${_password}`
+/usr/local/bin/xml sel -t -m "//system" \
+	-v "concat('array(&quot;',username,'&quot;,&quot;${_password_md5}&quot;,&quot;/&quot;,&quot;http://localhost&quot;,1,&quot;&quot;,7,1),')" -b \
+	${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
 
 echo ');?>' >> ${webfm_htusers}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>6.0</version>
+	<version>6.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -10,7 +10,7 @@
 		<ipv6dnsserver></ipv6dnsserver>
 		<dnsallowoverride/>
 		<username>admin</username>
-		<password>$1$KLfrklGE$9mMLCl/tNeqZJzdCJw6Gb0</password>
+		<password>freenas</password>
 		<timezone>Etc/UTC</timezone>
 		<language>en_US</language>
 		<ntp>
