@@ -39,7 +39,8 @@ Majors changes:
 - Modify password handling for user 'admin'. Because of that the password will be
   set back to the default which is 'freenas'.
 - Add quixplorer 2.3.1 to administrate file system via web browser. It is accessible
-  via http://xxx.xxx.xxx.xxx/quixplorer. Default user/password is 'admin/freenas'.
+  via http://xxx.xxx.xxx.xxx/quixplorer. Administrator can login via user 'admin'
+  and the WebGUI password. Local system users have access to /mnt only.
 
 Minors changes:
 - Add misc NOTIFYFLAG options to upsmon configuration to make logging more communicative.
