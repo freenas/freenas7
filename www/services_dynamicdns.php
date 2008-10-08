@@ -36,9 +36,9 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("Dynamic DNS"));
+$pgtitle = array(gettext("Services"), gettext("Dynamic DNS"));
 
-if(!is_array($config['dynamicdns']))
+if (!is_array($config['dynamicdns']))
 	$config['dynamicdns'] = array();
 
 $pconfig['enable'] = isset($config['dynamicdns']['enable']);
@@ -49,14 +49,16 @@ $pconfig['password'] = $config['dynamicdns']['password'];
 $pconfig['updateperiod'] = $config['dynamicdns']['updateperiod'];
 $pconfig['forcedupdateperiod'] = $config['dynamicdns']['forcedupdateperiod'];
 $pconfig['wildcard'] = isset($config['dynamicdns']['wildcard']);
+if (is_array($config['dynamicdns']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['dynamicdns']['auxparam']);
 
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
 
 	$pconfig = $_POST;
 
 	/* input validation */
-	if($_POST['enable']) {
+	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "provider domainname username password");
 		$reqdfieldsn = array(gettext("Provider"), gettext("Domain name"), gettext("Username"), gettext("Password"));
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -67,9 +69,9 @@ if($_POST) {
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
-	if(!$input_errors) {
-    $config['dynamicdns']['enable'] = $_POST['enable'] ? true : false;
-    $config['dynamicdns']['provider'] = $_POST['provider'];
+	if (!$input_errors) {
+		$config['dynamicdns']['enable'] = $_POST['enable'] ? true : false;
+		$config['dynamicdns']['provider'] = $_POST['provider'];
 		$config['dynamicdns']['domainname'] = $_POST['domainname'];
 		$config['dynamicdns']['username'] = $_POST['username'];
 		$config['dynamicdns']['password'] = $_POST['password'];
@@ -77,10 +79,18 @@ if($_POST) {
 		$config['dynamicdns']['forcedupdateperiod'] = $_POST['forcedupdateperiod'];
 		$config['dynamicdns']['wildcard'] = $_POST['wildcard'] ? true : false;
 
+		# Write additional parameters.
+		unset($config['dynamicdns']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['dynamicdns']['auxparam'][] = $auxparam;
+		}
+
 		write_config();
 
 		$retval = 0;
-		if(!file_exists($d_sysrebootreqd_path)) {
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_update_service("inadyn");
 			config_unlock();
@@ -104,6 +114,7 @@ function enable_change(enable_change) {
 	document.iform.updateperiod.disabled = endis;
 	document.iform.forcedupdateperiod.disabled = endis;
 	document.iform.wildcard.disabled = endis;
+	document.iform.auxparam.disabled = endis;
 }
 
 function provider_change() {
@@ -145,6 +156,7 @@ function provider_change() {
 					<?php html_inputbox("updateperiod", gettext("Update period"), $pconfig['updateperiod'], gettext("How often the IP is checked. The period is in seconds (max. is 10 days)."), false, 20);?>
 					<?php html_inputbox("forcedupdateperiod", gettext("Forced update period"), $pconfig['forcedupdateperiod'], gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."), false, 20);?>
 					<?php html_checkbox("wildcard", gettext("Wildcard"), $pconfig['wildcard'] ? true : false, gettext("Enable domain wildcarding."), "", false);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to global settings in %s."), "inadyn.conf"), false, 65, 3);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">

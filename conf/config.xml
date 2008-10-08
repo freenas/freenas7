@@ -546,7 +546,7 @@
 		<profile>default|...</profile>
 		<deviceip>xxx.xxx.xxx.xxx<deviceip>
 		<transcoding/>
-		<tempdir>xxx</tempdir> // Temporary directory to store transcoded files. 
+		<tempdir>xxx</tempdir> // Temporary directory to store transcoded files.
 		-->
 		<port>49152</port>
 		<profile>default</profile>
@@ -673,6 +673,7 @@
 		<updateperiod></updateperiod>
 		<forcedupdateperiod></forcedupdateperiod>
 		<wildcard/>
+		<auxparam></auxparam> // Can be defined multiple times.
 		-->
 	</dynamicdns>
 	<statusreport>
