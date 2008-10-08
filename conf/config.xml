@@ -710,6 +710,7 @@
 		<updateperiod></updateperiod>
 		<forcedupdateperiod></forcedupdateperiod>
 		<wildcard/>
+		<auxparam></auxparam> // Can be defined multiple times.
 		-->
 	</dynamicdns>
 	<statusreport>

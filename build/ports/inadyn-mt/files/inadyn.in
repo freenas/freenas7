@@ -41,6 +41,10 @@ start_precmd()
 		-i "string-length(updateperiod) > 0" -v "concat('--update_period_sec ',updateperiod)" -n -b \
 		-i "string-length(forcedupdateperiod) > 0" -v "concat('--forced_update_period ',forcedupdateperiod)" -n -b \
 		-i "count(wildcard) > 0" -o "--wildcard" -n -b \
+		-m "auxparam" \
+			-v "." \
+			-i "position() != last()" -n -b \
+		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${inadyn_config}
 
 		for _alias in `configxml_get "//dynamicdns/domainname"`; do
