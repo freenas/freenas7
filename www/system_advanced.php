@@ -41,6 +41,7 @@ $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
 $pconfig['zeroconf'] = isset($config['system']['zeroconf']);
 $pconfig['powerd'] = isset($config['system']['powerd']);
+$pconfig['motd'] = base64_decode($config['system']['motd']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -72,6 +73,7 @@ if ($_POST) {
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
 		$config['system']['zeroconf'] = $_POST['zeroconf'] ? true : false;
 		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
+		$config['system']['motd'] = base64_encode($_POST['motd']); // Encode string, otherwise line breaks will get lost
 
 		write_config();
 
@@ -80,6 +82,7 @@ if ($_POST) {
 			config_lock();
 			$retval |= rc_update_service("powerd");
 			$retval |= rc_update_service("mdnsresponder");
+			$retval |= rc_exec_service("motd");
 			if (isset($config['system']['tune']))
 				$retval |= rc_update_service("sysctl");
 			config_unlock();
@@ -178,7 +181,8 @@ function sysctl_tune($mode) {
 			    <?php html_checkbox("tune_enable", gettext("Tuning"), $pconfig['tune_enable'] ? true : false, gettext("Enable tuning of some kernel variables"));?>
 					<?php html_checkbox("powerd", gettext("Power Daemon"), $pconfig['powerd'] ? true : false, gettext("Enable the system power control utility"), gettext("The powerd utility monitors the system state and sets various power control options accordingly."));?>			    
 					<?php html_checkbox("zeroconf", gettext("Zeroconf/Bonjour"), $pconfig['zeroconf'] ? true : false, gettext("Enable Zeroconf/Bonjour to advertise services of this device"));?>
-			  </table>
+					<?php html_textarea("motd", gettext("MOTD"), $pconfig['motd'], gettext("Message of the day."), false, 65, 7);?>
+				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 				</div>
