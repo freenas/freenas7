@@ -63,7 +63,9 @@ mkconf_cmd()
 	# Create MOTD file
 	_motd=`configxml_get "//rsyncd/motd"`
 	if [ -n "${_motd}" ]; then
-		echo "${_motd}" > ${rsyncd_motd}
+		echo "${_motd}" > ${rsyncd_motd}.tmp
+		/usr/bin/uudecode -m -p -r ${rsyncd_motd}.tmp > ${rsyncd_motd}
+		/bin/rm -f ${rsyncd_motd}.tmp
 	fi
 }
 
