@@ -48,7 +48,7 @@ if (!is_array($config['rsync'])) {
 
 $pconfig['enable'] = isset($config['rsyncd']['enable']);
 $pconfig['port'] = $config['rsyncd']['port'];
-$pconfig['motd'] = $config['rsyncd']['motd'];
+$pconfig['motd'] = base64_decode($config['rsyncd']['motd']);
 $pconfig['rsyncd_user'] = $config['rsyncd']['rsyncd_user'];
 if (is_array($config['rsyncd']['auxparam']))
 	$pconfig['auxparam'] = implode("\n", $config['rsyncd']['auxparam']);
@@ -70,7 +70,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$config['rsyncd']['enable'] = $_POST['enable'] ? true : false;
 		$config['rsyncd']['port'] = $_POST['port'];
-		$config['rsyncd']['motd'] = $_POST['motd'];
+		$config['rsyncd']['motd'] = base64_encode($_POST['motd']); // Encode string, otherwise line breaks will get lost
 		$config['rsyncd']['rsyncd_user'] = $_POST['rsyncd_user'];
 
 		# Write additional parameters.

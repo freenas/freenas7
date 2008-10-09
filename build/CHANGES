@@ -51,6 +51,8 @@ Minors changes:
 
 Bug fixes:
 - Check entered path for iSCSI target extents before storing configuration (BR 2144966).
+- Allow line breaks in RSYNC message of the day. Due this fix you have to update
+  your MOTD.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

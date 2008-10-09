@@ -483,6 +483,8 @@
 		<!-- <enable/> -->
 		<port>873</port>
 		<rsyncd_user>ftp</rsyncd_user>
+		<!-- The message of the day has to be encoded otherwise line breaks
+		will get lost because of the PHP XML parser. -->
 		<motd/>
 		<!--
 		<auxparam></auxparam> // Can be defined multiple times.
