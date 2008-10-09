@@ -1,0 +1,21 @@
+#!/bin/sh
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: motd
+# BEFORE: LOGIN
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+# Defaults
+motd_config=${motd_config:-"/etc/motd"}
+
+echo "Generating message of the day."
+
+# Create the /etc/motd file
+/usr/local/bin/xml sel -t \
+	-v //system/motd \
+	 ${configxml_file} | /usr/local/bin/xml unesc > ${motd_config}.tmp
+/usr/bin/uudecode -m -p -r ${motd_config}.tmp > ${motd_config}
+/bin/rm -f ${motd_config}.tmp

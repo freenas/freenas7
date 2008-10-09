@@ -29,6 +29,9 @@
 			-->
 		</webgui>
 		<zeroconf/>
+		<!-- The message of the day has to be encoded otherwise line breaks
+		will get lost because of the PHP XML parser. -->
+		<motd>V2VsY29tZSB0byBGcmVlTkFTIQ0KDQo=</motd>
 		<!--
 		<disableconsolemenu/>
 		<disablefirmwarecheck/>

@@ -46,6 +46,8 @@ Minors changes:
 - Add misc NOTIFYFLAG options to upsmon configuration to make logging more communicative.
 - Add 'Auxiliary parameters' option to DynamicDNS WebGUI page to allow adding additional
   parameters to the configuration file for customization (FR 2149626).
+- Add 'MOTD' option to 'System|Advanced' to set the system message of the day.
+  This is displayed when login in via SSH for example.
 
 Bug fixes:
 - Check entered path for iSCSI target extents before storing configuration (BR 2144966).
