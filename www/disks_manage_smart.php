@@ -143,6 +143,7 @@ function enable_change(enable_change) {
 
 		document.iform.email_to.disabled = endis;
 		document.iform.email_subject.disabled = endis;
+		document.iform.email_testemail.disabled = endis;
 	} else {
 		document.iform.interval.disabled = endis;
 		document.iform.powermode.disabled = endis;

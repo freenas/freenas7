@@ -77,7 +77,7 @@ function email_send($address, $subject, $message, &$error) {
 	if (isset($config['system']['email']['auth'])) {
 		$mail->SMTPAuth = true;
 		$mail->Username = $config['system']['email']['username'];
-		$mail->Password = base64_decode($config['system']['email']['password']);
+		$mail->Password = $config['system']['email']['password'];
 	}
 
 	// Enable TLS/SSL SMTP support if set.
