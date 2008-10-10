@@ -1549,6 +1549,14 @@ function config_upgrade() {
 		$config['version'] = "6.1";
 	}
 
+	/* Convert 6.1 -> 6.2 */
+	/* Decode email password. */
+	if ($config['version'] === "6.1") {
+		$config['system']['email']['password'] = base64_decode($config['system']['email']['password']);
+
+		$config['version'] = "6.2";
+	}
+
 	write_config();
 
 	if (is_booting())

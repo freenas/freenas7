@@ -48,7 +48,7 @@ $pconfig['port'] = $config['system']['email']['port'];
 $pconfig['auth'] = isset($config['system']['email']['auth']);
 $pconfig['security'] = $config['system']['email']['security'];
 $pconfig['username'] = $config['system']['email']['username'];
-$pconfig['password'] = base64_decode($config['system']['email']['password']);
+$pconfig['password'] = $config['system']['email']['password'];
 $pconfig['passwordconf'] = $pconfig['password'];
 $pconfig['from'] = $config['system']['email']['from'];
 
@@ -80,7 +80,7 @@ if ($_POST) {
 		$config['system']['email']['auth'] = $_POST['auth'] ? true : false;
 		$config['system']['email']['security'] = $_POST['security'];
 		$config['system']['email']['username'] = $_POST['username'];
-		$config['system']['email']['password'] = base64_encode($_POST['password']);
+		$config['system']['email']['password'] = $_POST['password'];
 		$config['system']['email']['from'] = $_POST['from'];
 
 		write_config();
@@ -88,8 +88,8 @@ if ($_POST) {
 		$retval = 0;
 
 		if (stristr($_POST['Submit'], gettext("Send test email"))) {
-			$subject = sprintf(gettext("Test email from %s"), $config['system']['hostname'] . "." . $config['system']['domain']);
-			$message = gettext("Automatically generated test email.");
+			$subject = sprintf(gettext("Test email from host: %s"), $config['system']['hostname'] . "." . $config['system']['domain']);
+			$message = gettext("This email has been send to validate your email configuration.");
 
 			// Send an test email now.
 			$retval = @email_send($config['system']['email']['from'], $subject, $message, $error);
@@ -101,6 +101,12 @@ if ($_POST) {
 				write_log($error);
 			}
 		} else {
+			if (!file_exists($d_sysrebootreqd_path)) {
+				config_lock();
+				$retval |= rc_exec_service("msmtp");
+				config_unlock();
+			}
+
 			$savemsg = get_std_save_message($retval);
 		}
 	}

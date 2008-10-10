@@ -1,0 +1,35 @@
+#!/bin/sh
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: msmtp
+# BEFORE: DAEMON
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+# Defaults
+msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
+
+# Create msmtp.conf configuration
+/usr/local/bin/xml sel -t \
+	-o "account default" -n \
+	-v "concat('host ',//system/email/server)" -n \
+	-v "concat('port ',//system/email/port)" -n \
+	-o "protocol smtp" -n \
+	-v "concat('port ',//system/email/port)" -n \
+	-v "concat('from ',//system/email/from)" -n \
+	-i "count(//system/email/auth) > 0" \
+		-o "auth on" -n \
+		-v "concat('user ',//system/email/username)" -n \
+		-v "concat('password ',//system/email/password)" -n \
+	-b \
+	-i "//system/email/security[. != 'none']" \
+		-o "tls on" -n \
+		-o "tls_certcheck off" -n \
+	-b \
+	-o "syslog LOG_MAIL" -n \
+	${configxml_file} | /usr/local/bin/xml unesc > ${msmtp_config}
+
+# Set user permissions
+chmod 0600 ${msmtp_config}
