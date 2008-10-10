@@ -7,14 +7,14 @@
 
 # Defaults
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
-smartdreport_msgfile=${smartdreport_msgfile:-"/tmp/smartdreport"}
+smartdreport_msgfile=${smartdreport_msgfile:-"/tmp/message"}
 
 # Create message
 /usr/local/bin/xml sel -t \
 	-v "concat('From: ',//system/email/from)" -n \
 	-o "To: ${SMARTD_ADDRESS}" -n \
 	-o "Subject: ${SMARTD_SUBJECT}" -n \
-	-o "." \
+	-o "." -n \
 	${configxml_file} | /usr/local/bin/xml unesc > ${smartdreport_msgfile}
 
 # Save the email message (STDIN) to a file:
