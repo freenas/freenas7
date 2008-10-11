@@ -37,3 +37,5 @@ usr/local/www/reject.gif
 usr/local/www/reject_d.gif
 usr/local/www/status_wireless.php
 usr/local/www/access_nis.php
+etc/inc/phpmailer
+etc/mail/smartdreport

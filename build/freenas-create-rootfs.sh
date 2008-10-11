@@ -64,7 +64,6 @@ mkdir etc/mail ;
 mkdir etc/defaults ;
 mkdir etc/inc ;
 mkdir etc/install ;
-mkdir etc/inc/phpmailer ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
 mkdir etc/rc.d ;

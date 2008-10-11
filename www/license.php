@@ -194,9 +194,8 @@ $pgtitle = array(gettext("License & Credits"));
 		<p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br>
       Copyright &copy; 2003 Simon Ekstrand. All rights reserved.</p>
       
-    <p>PHPMailer (<a href="http://phpmailer.sourceforge.net/" target="_blank">http://phpmailer.sourceforge.net/</a>)<br>
-      Copyright &copy; Brent R. Matzelle (author), Patrice Fournier, Chris Ryan, Cem Hurturk, Tom Klingenberg, Jaime Bozza.<br>
-			All rights reserved.</p>
+    <p>msmtp - An SMTP client with a sendmail compatible interface (<a href="http://msmtp.sourceforge.net" target="_blank">http://msmtp.sourceforge.net</a>)<br>
+      Copyright &copy; 2008 Martin Lambers and others.</p>
 
 		<p>cdialog - Display simple dialog boxes from shell scripts (<a href="http://invisible-island.net/dialog" target="_blank">http://invisible-island.net/dialog</a>)<br>
       Copyright &copy; 2000-2006, 2007 Thomas E. Dickey.</p>
