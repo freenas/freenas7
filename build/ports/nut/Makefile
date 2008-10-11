@@ -1,5 +1,6 @@
 PORTNAME=			nut
 PORTVERSION=	2.2.2
+PORTEPOCH=		1
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		votdev@gmx.de
@@ -23,6 +24,7 @@ NUT_STATEDIR=		/var/db/nut
 NUT_SYSCONFDIR=	/var/etc
 NUT_DATADIR=		/usr/local/etc/${PORTNAME}
 NUT_DRVDIR=			/usr/local/libexec/${PORTNAME}
+NUT_SHAREDIR=		/usr/local/share/${PORTNAME}
 
 CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--program-transform-name="" \
@@ -114,5 +116,8 @@ do-install:
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut_upslog.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut_upslog
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut_upsmon.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut_upsmon
+
+	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_SHAREDIR}
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/notifyme.sh.in ${FREENAS_ROOTFS}/${NUT_SHAREDIR}/notifyme.sh
 
 .include <bsd.port.mk>

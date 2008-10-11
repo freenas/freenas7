@@ -721,7 +721,7 @@
 	<statusreport>
 		<!-- <enable/> -->
 		<to></to>
-		<subject>Status report</subject>
+		<subject></subject>
 		<all_mins></all_mins>
 		<all_hours></all_hours>
 		<all_days></all_days>
@@ -856,7 +856,6 @@
 			<testemail/>
 			-->
 			<to></to>
-			<subject>S.M.A.R.T. report</subject>
 		</email>
 	</smartd>
 	<ad>
@@ -875,5 +874,12 @@
 		<auxparam></auxparam> // Can be defined multiple times.
 		<desc>xxx<desc>
 		-->
+		<email>
+			<!--
+			<enable/>
+			-->
+			<to></to>
+			<subject></subject>
+		</email>
 	</ups>
 </freenas>

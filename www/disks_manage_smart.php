@@ -47,17 +47,22 @@ $pconfig['temp_info'] = $config['smartd']['temp']['info'];
 $pconfig['temp_crit'] = $config['smartd']['temp']['crit'];
 $pconfig['email_enable'] = isset($config['smartd']['email']['enable']);
 $pconfig['email_to'] = $config['smartd']['email']['to'];
-$pconfig['email_subject'] = $config['smartd']['email']['subject'];
 $pconfig['email_testemail'] = isset($config['smartd']['email']['testemail']);
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	if (true === $_POST['enable']) {
+	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "interval powermode temp_diff temp_info temp_crit");
 		$reqdfieldsn = array(gettext("Check interval"), gettext("Power mode"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
 		$reqdfieldst = explode(" ", "numericint string numericint numericint numericint");
+
+		if ($_POST['email_enable']) {
+			$reqdfields = array_merge($reqdfields, array("email_to"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("To email")));
+			$reqdfieldst = array_merge($reqdfieldst, array("string"));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -76,7 +81,6 @@ if ($_POST) {
 		$config['smartd']['temp']['crit'] = $_POST['temp_crit'];
 		$config['smartd']['email']['enable'] = $_POST['email_enable'] ? true : false;
 		$config['smartd']['email']['to'] = $_POST['email_to'];
-		$config['smartd']['email']['subject'] = $_POST['email_subject'];
 		$config['smartd']['email']['testemail'] = $_POST['email_testemail'] ? true : false;
 
 		write_config();
@@ -142,7 +146,6 @@ function enable_change(enable_change) {
 		endis = !enable_change.checked;
 
 		document.iform.email_to.disabled = endis;
-		document.iform.email_subject.disabled = endis;
 		document.iform.email_testemail.disabled = endis;
 	} else {
 		document.iform.interval.disabled = endis;
@@ -157,7 +160,6 @@ function enable_change(enable_change) {
 		}
 
 		document.iform.email_to.disabled = endis;
-		document.iform.email_subject.disabled = endis;
 		document.iform.email_testemail.disabled = endis;
 	}
 }
@@ -265,7 +267,6 @@ function enable_change(enable_change) {
 					<?php html_separator();?>
 					<?php html_titleline_checkbox("email_enable", gettext("Email report"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], sprintf("%s %s", gettext("Destination email address."), gettext("Separate email addresses by semi-colon.")), true, 40);?>
-					<?php html_inputbox("email_subject", gettext("Subject"), $pconfig['email_subject'], gettext("The subject of the email."), true, 40);?>
 					<?php html_checkbox("email_testemail", gettext("Test email"), $pconfig['email_testemail'] ? true : false, gettext("Send a TEST warning email on startup."));?>
 				</table>
 				<div id="submit">

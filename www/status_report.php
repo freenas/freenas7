@@ -62,6 +62,11 @@ $pconfig['all_weekdays'] = $config['statusreport']['all_weekdays'];
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
 
+if (empty($pconfig['subject'])) {
+	$pconfig['subject'] = sprintf(gettext("Status report from host: %s.%s"),
+		$config['system']['hostname'], $config['system']['domain']);
+}
+
 if($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;

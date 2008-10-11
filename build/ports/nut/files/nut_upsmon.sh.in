@@ -38,30 +38,37 @@ pidfile="/var/run/upsmon.pid"
 
 mkconf_cmd()
 {
-	local _upsname
+	local _upsname _notifyflags
 
 	# Get identifier.
 	_upsname=`configxml_get "//ups/upsname"`
+
+	# Build notification flags
+	_notifyflags=`/usr/local/bin/xml sel -t " \
+		-o "SYSLOG+WALL" \
+		-i "count(//ups/email/enable) > 0" -o "+EXEC" -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
 
 	# Create upsmon.conf
 	cat <<EOF > ${nut_upsmon_conf}
 MONITOR ${_upsname}@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
 MINSUPPLIES 1
 SHUTDOWNCMD "/sbin/shutdown -h +0"
+NOTIFYCMD /usr/local/share/nut/notifyme.sh
 POLLFREQ 5
 POLLFREQALERT 5
 HOSTSYNC 15
 DEADTIME 15
 POWERDOWNFLAG ${nut_upsmon_powerdownflag}
-NOTIFYFLAG ONLINE SYSLOG+WALL
-NOTIFYFLAG ONBATT SYSLOG+WALL
-NOTIFYFLAG LOWBATT SYSLOG+WALL
-NOTIFYFLAG COMMOK SYSLOG+WALL
-NOTIFYFLAG COMMBAD SYSLOG+WALL
-NOTIFYFLAG SHUTDOWN SYSLOG+WALL
-NOTIFYFLAG REPLBATT SYSLOG+WALL
-NOTIFYFLAG NOCOMM SYSLOG+WALL
-NOTIFYFLAG FSD SYSLOG+WALL
+NOTIFYFLAG ONLINE ${_notifyflags}
+NOTIFYFLAG ONBATT ${_notifyflags}
+NOTIFYFLAG LOWBATT ${_notifyflags}
+NOTIFYFLAG COMMOK ${_notifyflags}
+NOTIFYFLAG COMMBAD ${_notifyflags}
+NOTIFYFLAG SHUTDOWN ${_notifyflags}
+NOTIFYFLAG REPLBATT ${_notifyflags}
+NOTIFYFLAG NOCOMM ${_notifyflags}
+NOTIFYFLAG FSD ${_notifyflags}
 RBWARNTIME 43200
 NOCOMMWARNTIME 300
 FINALDELAY 5
