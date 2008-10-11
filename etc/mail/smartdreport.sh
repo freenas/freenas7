@@ -7,7 +7,7 @@
 
 # Defaults
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
-smartdreport_msgfile=${smartdreport_msgfile:-"/tmp/message"}
+msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 
 # Create message
 /usr/local/bin/xml sel -t \
@@ -15,13 +15,13 @@ smartdreport_msgfile=${smartdreport_msgfile:-"/tmp/message"}
 	-o "To: ${SMARTD_ADDRESS}" -n \
 	-o "Subject: ${SMARTD_SUBJECT}" -n \
 	-o "." -n \
-	${configxml_file} | /usr/local/bin/xml unesc > ${smartdreport_msgfile}
+	${configxml_file} | /usr/local/bin/xml unesc > ${msmtp_msgfile}
 
 # Save the email message (STDIN) to a file:
-cat >> ${smartdreport_msgfile}
+cat >> ${msmtp_msgfile}
 
 # Now email the message to the user at address ADD:
-/usr/local/bin/msmtp --file=${msmtp_config} ${SMARTD_ADDRESS} < ${smartdreport_msgfile} 1>/dev/null 2>&1
+/usr/local/bin/msmtp --file=${msmtp_config} ${SMARTD_ADDRESS} < ${msmtp_msgfile} 1>/dev/null 2>&1
 
 # Cleanup
-/bin/rm ${smartdreport_msgfile} 1>/dev/null 2>&1
+/bin/rm ${msmtp_msgfile} 1>/dev/null 2>&1
