@@ -44,7 +44,7 @@ mkconf_cmd()
 	_upsname=`configxml_get "//ups/upsname"`
 
 	# Build notification flags
-	_notifyflags=`/usr/local/bin/xml sel -t " \
+	_notifyflags=`/usr/local/bin/xml sel -t \
 		-o "SYSLOG+WALL" \
 		-i "count(//ups/email/enable) > 0" -o "+EXEC" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
