@@ -25,17 +25,18 @@ do
 	_password_md5=`/sbin/md5 -q -s ${_password}`
 
 	/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
-		-v "concat('array(&quot;',login,'&quot;,&quot;${_password_md5}&quot;,&quot;/mnt&quot;,&quot;http://localhost&quot;,0,&quot;^.ht&quot;,1,1),')" -b \
+		-v "concat('array(&quot;',login,'&quot;,&quot;${_password_md5}&quot;,&quot;/mnt&quot;,&quot;http://localhost&quot;,0,&quot;^.ht&quot;,1,1),')" \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
 
 	_index=$(( ${_index} - 1 ))
 done
 
-# Add administrator account
+# Add administrator and root account
 _password=`configxml_get "//system/password"`
 _password_md5=`/sbin/md5 -q -s ${_password}`
 /usr/local/bin/xml sel -t -m "//system" \
-	-v "concat('array(&quot;',username,'&quot;,&quot;${_password_md5}&quot;,&quot;/&quot;,&quot;http://localhost&quot;,1,&quot;&quot;,7,1),')" -b \
+	-v "concat('array(&quot;',username,'&quot;,&quot;${_password_md5}&quot;,&quot;/&quot;,&quot;http://localhost&quot;,1,&quot;&quot;,7,1),')" -n \
+	-o "array(&quot;root&quot;,&quot;${_password_md5}&quot;,&quot;/&quot;,&quot;http://localhost&quot;,1,&quot;&quot;,7,1)," \
 	${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
 
 echo ');?>' >> ${webfm_htusers}
