@@ -17,7 +17,6 @@ msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 	-v "concat('host ',//system/email/server)" -n \
 	-v "concat('port ',//system/email/port)" -n \
 	-o "protocol smtp" -n \
-	-v "concat('port ',//system/email/port)" -n \
 	-v "concat('from ',//system/email/from)" -n \
 	-i "count(//system/email/auth) > 0" \
 		-o "auth on" -n \
