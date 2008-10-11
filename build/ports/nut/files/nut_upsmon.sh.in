@@ -31,6 +31,7 @@ nut_upsmon_runas=${nut_upsmon_runas:-"root"}
 nut_upsmon_user=${nut_upsmon_user:-"root"}
 nut_upsmon_password=${nut_upsmon_password:-"freenas"}
 nut_upsmon_flags=${nut_upsmon_flags:-"-u ${nut_upsmon_runas} localhost"}
+nut_upsmon_notifycmd=${nut_upsmon_notifycmd:-"/usr/local/sbin/upsmon-notifycmd"}
 required_dirs="/var/run"
 required_files="${nut_upsmon_conf}"
 command="${nut_upsmon_prefix}/sbin/upsmon"
@@ -54,7 +55,7 @@ mkconf_cmd()
 MONITOR ${_upsname}@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
 MINSUPPLIES 1
 SHUTDOWNCMD "/sbin/shutdown -h +0"
-NOTIFYCMD /usr/local/share/nut/notifyme.sh
+NOTIFYCMD ${nut_upsmon_notifycmd}
 POLLFREQ 5
 POLLFREQALERT 5
 HOSTSYNC 15
