@@ -42,8 +42,16 @@ $pconfig['upsname'] = $config['ups']['upsname'];
 $pconfig['driver'] = $config['ups']['driver'];
 $pconfig['port'] = $config['ups']['port'];
 $pconfig['desc'] = $config['ups']['desc'];
+$pconfig['email_enable'] = isset($config['ups']['email']['enable']);
+$pconfig['email_to'] = $config['ups']['email']['to'];
+$pconfig['email_subject'] = $config['ups']['email']['subject'];
 if (is_array($config['ups']['auxparam']))
 	$pconfig['auxparam'] = implode("\n", $config['ups']['auxparam']);
+
+if (empty($pconfig['email_subject'])) {
+	$pconfig['email_subject'] = sprintf(gettext("UPS notification from host: %s.%s"),
+		$config['system']['hostname'], $config['system']['domain']);
+}
 
 if ($_POST) {
 	unset($input_errors);
@@ -55,6 +63,12 @@ if ($_POST) {
 		$reqdfieldsn = array(gettext("Identifier"), gettext("Driver"), gettext("Port"));
 		$reqdfieldst = explode(" ", "alias string string");
 
+		if ($_POST['email_enable']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "email_to email_subject"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("To email"), gettext("Subject")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string string"));
+		}
+
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
@@ -65,6 +79,9 @@ if ($_POST) {
 		$config['ups']['driver'] = $_POST['driver'];
 		$config['ups']['port'] = $_POST['port'];
 		$config['ups']['desc'] = $_POST['desc'];
+		$config['ups']['email']['enable'] = $_POST['email_enable'] ? true : false;
+		$config['ups']['email']['to'] = $_POST['email_to'];
+		$config['ups']['email']['subject'] = $_POST['email_subject'];
 
 		# Write additional parameters.
 		unset($config['ups']['auxparam']);
@@ -94,11 +111,27 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.upsname.disabled = endis;
+
+	if (enable_change.name == "email_enable") {
+		endis = !enable_change.checked;
+
+		document.iform.email_to.disabled = endis;
+		document.iform.email_subject.disabled = endis;
+	} else {
+		document.iform.upsname.disabled = endis;
 	document.iform.driver.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.auxparam.disabled = endis;
 	document.iform.desc.disabled = endis;
+		document.iform.email_enable.disabled = endis;
+
+		if (document.iform.enable.checked == true) {
+			endis = !(document.iform.email_enable.checked || enable_change);
+		}
+
+		document.iform.email_to.disabled = endis;
+		document.iform.email_subject.disabled = endis;
+	}
 }
 //-->
 </script>
@@ -115,6 +148,10 @@ function enable_change(enable_change) {
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The serial or USB port where your UPS is connected."), true, 30);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 5);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
+					<?php html_separator();?>
+					<?php html_titleline_checkbox("email_enable", gettext("Email notification"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
+					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], sprintf("%s %s", gettext("Destination email address."), gettext("Separate email addresses by semi-colon.")), true, 40);?>
+					<?php html_inputbox("email_subject", gettext("Subject"), $pconfig['email_subject'], gettext("The subject of the email."), true, 40);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
