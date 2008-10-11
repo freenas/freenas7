@@ -20,10 +20,9 @@ _recipients=`configxml_get "//system/email/from"`
 	-o "." -n \
 	${configxml_file} | /usr/local/bin/xml unesc > ${msmtp_msgfile}
 
-# Save the email message (STDIN) to a file:
 echo "$*" >> ${msmtp_msgfile}
 
-# Now email the message to the user at address ADD:
+# Now email the message to the user
 /usr/local/bin/msmtp --file=${msmtp_config} ${_recipients} < ${msmtp_msgfile} 1>/dev/null 2>&1
 
 # Cleanup

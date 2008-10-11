@@ -78,6 +78,8 @@ EOF
 	# Create upssched.conf
 	cat <<EOF > ${nut_upsmon_sched_conf}
 CMDSCRIPT /usr/local/bin/upssched-cmd
+PIPEFN /var/run/upssched.pipe
+LOCKFN /var/run/upssched.lock
 EOF
 
 	chmod 0600 ${nut_upsmon_conf}
