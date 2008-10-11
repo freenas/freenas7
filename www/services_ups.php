@@ -31,6 +31,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("email.inc");
 
 $pgtitle = array(gettext("Services"), gettext("UPS"));
 
