@@ -31,7 +31,6 @@
 */
 require_once("config.inc");
 require_once("util.inc");
-require_once("phpmailer/class.phpmailer.php");
 
 // Checks if Email settings are valid.
 // Return 0 if successful, otherwise 1.
@@ -58,42 +57,34 @@ function email_validate_settings() {
 function email_send($address, $subject, $message, &$error) {
 	global $config;
 
-	$mail = new PHPMailer();
-	$mail->IsSMTP();
-	$mail->IsHTML(false);
-	$mail->SetLanguage("en","/etc/inc/phpmailer/");
-	$mail->SMTPDebug = false;
-	$mail->Hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
-	$mail->Host = $config['system']['email']['server'];
-	$mail->Port = $config['system']['email']['port'];
-	$mail->From = $config['system']['email']['from'];
-	$mail->FromName = get_product_name();
-	$mail->Subject = $subject;
-	foreach (explode(";", $address) as $addressv) {
-		$mail->AddAddress($addressv);
-	}
+	$msgfilepath = "/tmp/message";
 
-	// Enable SMTH authentication if set.
-	if (isset($config['system']['email']['auth'])) {
-		$mail->SMTPAuth = true;
-		$mail->Username = $config['system']['email']['username'];
-		$mail->Password = $config['system']['email']['password'];
-	}
+	// Generate message content.
+	$data = <<<EOD
+From: {$config['system']['email']['from']}
+To: {$address}
+Subject: {$subject}
+.
 
-	// Enable TLS/SSL SMTP support if set.
-	if ("none" !== $config['system']['email']['security']) {
-		$mail->SMTPSecure = $config['system']['email']['security'];
-	}
+{$message}
 
-	// Create report.
-	$mail->Body = $message;
+EOD;
 
-	// Send email and log result.
-	if(!$mail->Send()) {
-		$error = $mail->ErrorInfo;
+	// Write message to file.
+	if (false === file_put_contents($msgfilepath, $data)) {
+		write_log("Error: Failed to create '{$msgfilepath}'.\n");
 		return 1;
 	}
 
-	return 0;
+	// Send email via external SMTP client.
+	mwexec2("/usr/local/bin/msmtp --file=/var/etc/msmtp.conf {$address} < {$msgfilepath}", $output, $retval);
+	if (0 !== $retval) {
+		$error = $output;
+	}
+
+	// Cleanup message.
+	@unlink($msgfilepath);
+
+	return $retval;
 }
 ?>
