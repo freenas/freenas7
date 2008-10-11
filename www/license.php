@@ -175,10 +175,10 @@ $pgtitle = array(gettext("License & Credits"));
 		<p>mt-daapd - Multithread daapd Apple iTunes server (<a href="http://www.fireflymediaserver.org" target="_blank">http://www.fireflymediaserver.org</a>)<br>
       Copyright &copy; 2003 Ron Pedde (ron@pedde.com).</p>
 
-	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org/</a>)<br>
+	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org</a>)<br>
       from Szabolcs Szakacsits.</p>
 	  
-	   <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net" target="_blank">http://fuse.sourceforge.net/</a>)<br>
+	   <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net" target="_blank">http://fuse.sourceforge.net</a>)<br>
       </p>
 		<p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br>
       Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
@@ -212,7 +212,7 @@ $pgtitle = array(gettext("License & Credits"));
 		<p>Nifty Corners Cube - Rounded corners with CSS and Javascript (<a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">http://www.html.it/articoli/niftycube/index.html</a>)<br>
       Copyright &copy; 2006 Alessandro Fulciniti (a.fulciniti@html.it).</p>
 
-	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com/</a>)<br>
+	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>
 		<p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
