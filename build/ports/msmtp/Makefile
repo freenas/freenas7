@@ -20,5 +20,6 @@ CONFIGURE_ARGS+=	--with-ssl=openssl \
 									--enable-nls
 
 do-install:
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/bin
 
 .include <bsd.port.mk>
