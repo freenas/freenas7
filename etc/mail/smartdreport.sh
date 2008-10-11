@@ -20,6 +20,9 @@ msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 # Save the email message (STDIN) to a file:
 cat >> ${msmtp_msgfile}
 
+# Append the output of smartctl -a to the message:
+/usr/local/sbin/smartctl -a -d ${SMARTD_DEVICETYPE} ${SMARTD_DEVICE} 1>> ${msmtp_msgfile}
+
 # Now email the message to the user at address ADD:
 /usr/local/bin/msmtp --file=${msmtp_config} ${SMARTD_ADDRESS} < ${msmtp_msgfile} 1>/dev/null 2>&1
 
