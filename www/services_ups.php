@@ -119,10 +119,10 @@ function enable_change(enable_change) {
 		document.iform.email_subject.disabled = endis;
 	} else {
 		document.iform.upsname.disabled = endis;
-	document.iform.driver.disabled = endis;
-	document.iform.port.disabled = endis;
-	document.iform.auxparam.disabled = endis;
-	document.iform.desc.disabled = endis;
+		document.iform.driver.disabled = endis;
+		document.iform.port.disabled = endis;
+		document.iform.auxparam.disabled = endis;
+		document.iform.desc.disabled = endis;
 		document.iform.email_enable.disabled = endis;
 
 		if (document.iform.enable.checked == true) {
@@ -139,9 +139,10 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabcont">
     	<form action="services_ups.php" method="post" name="iform" id="iform">
+				<?php if (isset($pconfig['email_enable']) && (0 !== email_validate_settings())) print_error_box(sprintf(gettext("Make sure you have already configured your <a href='%s'>Email</a> settings."), "system_email.php"));?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<?php html_titleline_checkbox("enable", gettext("UPS"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("upsname", gettext("Identifier"), $pconfig['upsname'], gettext("This name is used to uniquely identify your UPS on this system."), true, 30);?>
 					<?php html_inputbox("driver", gettext("Driver"), $pconfig['driver'], sprintf(gettext("The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."), "services_ups_drv.php"), true, 30);?>
