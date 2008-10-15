@@ -43,6 +43,7 @@ Majors changes:
   and the WebGUI password. Local system users have access to /mnt only.
 - Replace PHPMailer with msmtp SMTP mail client.
 - Add UPS email notification.
+- Upgrade lighttpd to 1.4.20.
 
 Minors changes:
 - Add misc NOTIFYFLAG options to upsmon configuration to make logging more communicative.

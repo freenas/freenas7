@@ -29,9 +29,10 @@ lighttpd_conf=${lighttpd_conf:-"/var/etc/lighttpd.conf"}
 lighttpd_certpem=${lighttpd_certpem:-"/var/etc/cert.pem"}
 lighttpd_docroot=${lighttpd_docroot:-"/usr/local/www"}
 lighttpd_server_maxwriteidle=${lighttpd_server_maxwriteidle:-"360"}
+lighttpd_pidfile=${lighttpd_pidfile:-"/var/run/${name}.pid"}
 command=/usr/local/sbin/lighttpd
 command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
-pidfile=/var/run/lighttpd.pid
+pidfile=${lighttpd_pidfile}
 sig_reload="-INT"
 check_cmd="checkconfig"
 

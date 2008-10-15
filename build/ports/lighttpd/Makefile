@@ -1,7 +1,5 @@
 PORTNAME=			lighttpd
-PORTVERSION=	1.4.19
-PORTREVISION=	0
-PORTEPOCH=		1
+PORTVERSION=	1.4.20
 CATEGORIES=		www
 COMMENT=			A secure, fast, compliant, and very flexible Web Server
 MAINTAINER=		votdev@gmx.de
@@ -9,7 +7,14 @@ MAINTAINER=		votdev@gmx.de
 MASTER_SITES=	http://www.lighttpd.net/download/ \
 							http://mirrors.cat.pdx.edu/lighttpd/
 
+LIB_DEPENDS+=			uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
+									sqlite3.8:${PORTSDIR}/databases/sqlite3 \
+									pcre.0:${PORTSDIR}/devel/pcre
+
+USE_BZIP2=				yes
 GNU_CONFIGURE=		yes
+USE_OPENSSL=			yes
+USE_GNOME+=				libxml2
 CONFIGURE_ARGS+=	--sysconfdir=/var/etc/ \
 									--enable-lfs \
 									--without-mysql \
@@ -17,7 +22,8 @@ CONFIGURE_ARGS+=	--sysconfdir=/var/etc/ \
 									--with-openssl \
 									--without-lua \
 									--with-bzip2 \
-									--without-pcre
+									--with-webdav-props \
+									--with-webdav-locks
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/lighttpd ${FREENAS_ROOTFS}/usr/local/sbin
