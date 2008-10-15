@@ -44,6 +44,7 @@ Majors changes:
 - Replace PHPMailer with msmtp SMTP mail client.
 - Add UPS email notification.
 - Upgrade lighttpd to 1.4.20.
+- Upgrade e2fsprogs to 1.41.3.
 
 Minors changes:
 - Add misc NOTIFYFLAG options to upsmon configuration to make logging more communicative.
