@@ -15,13 +15,14 @@ command="/usr/local/bin/${name}"
 load_rc_config $name
 
 # Defaults
+smbpasswd_passwdfile=${smbpasswd_passwdfile:-"/var/etc/private/smbpasswd"}
 smbpasswd_minuid=${smbpasswd_minuid:-"1001"}
 
 # Display message
 echo "Updating smbpasswd."
 
 # Clear password database
-cat /dev/null > /var/etc/private/smbpasswd
+cat /dev/null > ${smbpasswd_passwdfile}
 
 # Generate /var/etc/private/smbpasswd Samba password database.
 # Iterate over all configured users.
