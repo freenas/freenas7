@@ -13,8 +13,9 @@ USE_BZIP2=					yes
 USE_AUTOTOOLS=		autoconf:262
 USE_GETOPT_LONG=	yes
 USE_GNOME=				libxml2
-
+USE_OPENSSL=			yes
 GNU_CONFIGURE=		yes
+
 CONFIGURE_ARGS+=	--enable-fastcgi \
 									--enable-discard-path \
 									--enable-force-cgi-redirect \
