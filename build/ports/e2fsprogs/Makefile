@@ -1,5 +1,5 @@
 PORTNAME=			e2fsprogs
-PORTVERSION=	1.41.0
+PORTVERSION=	1.41.3
 PORTREVISION=	0
 CATEGORIES=		sysutils
 COMMENT=			Utilities & library to manipulate ext2/3/4 filesystems
@@ -17,7 +17,7 @@ CONFIGURE_ARGS+=	--disable-fsck --disable-e2initrd-helper \
 									--with-ccopts='${CFLAGS}' \
 									--with-root-prefix='${PREFIX}'
 CONFIGURE_ENV+=		CPPFLAGS='${CPPFLAGS} -I${WRKSRC}/lib \
-									-I${LOCALBASE}/include'
+									-I${LOCALBASE}/include -D_EXT2_USE_C_VERSIONS_'
 MAKE_ARGS+=				LDFLAGS='${LDFLAGS} -L${LOCALBASE}/lib'
 
 .include <bsd.port.pre.mk>
