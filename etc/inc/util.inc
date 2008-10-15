@@ -286,7 +286,7 @@ function is_validsharename($sharename) {
 	return false;
 }
 
-/* returns true if $domain is a valid domain name */
+/* Returns true if $domain is a valid domain name */
 function is_domain($domain) {
 	if (!is_string($domain))
 		return false;
@@ -296,6 +296,19 @@ function is_domain($domain) {
 
 	return false;
 }
+
+/* Returns true if $string is a valid NetBIOS name */
+function is_netbios($string) {
+	if (15 < strlen($string))
+		return false;
+	
+	// See reference http://support.microsoft.com/kb/909264
+	// The following characters are not allowed: \ / : * ? " < > |
+	if (preg_match("/^[^\.]([^\\/:*\?\"<>|])*$/i", $string))
+		return true;
+
+	return false;
+} 
 
 /* Returns true if $workgroup is a valid workgroup name */
 /* A workgroup name can contain up to 15 characters, including letters, numbers, */
