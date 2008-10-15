@@ -121,6 +121,9 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 				case 'domain': 				$valid = is_domain($postdata[$reqdfields[$i]]);
 															$message = sprintf( gettext("The attribute '%s' contains invalid characters and is no valid domain name."), $reqdfieldsn[$i]);
 															break;
+				case 'netbios': 			$valid = is_netbios($postdata[$reqdfields[$i]]);
+															$message = sprintf( gettext("The attribute '%s' contains invalid characters and is no valid NetBIOS name."), $reqdfieldsn[$i]);
+															break;
 				case 'hostname': 			$valid = is_hostname($postdata[$reqdfields[$i]]);
 															$message = sprintf( gettext("The attribute '%s' contains invalid characters and is no valid host name."), $reqdfieldsn[$i]);
 															break;

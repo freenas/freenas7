@@ -59,7 +59,7 @@ if ($_POST) {
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "domaincontrollername domainname_dns domainname_netbios username password");
 		$reqdfieldsn = array(gettext("Domain controller name"), gettext("Domain name (DNS/Realm-Name)"), gettext("Domain name (NetBIOS-Name)"), gettext("Administrator name"), gettext("Administration password"));
-		$reqdfieldst = explode(" ", "string domain domain string string");
+		$reqdfieldst = explode(" ", "string domain netbios string string");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);

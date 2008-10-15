@@ -57,6 +57,7 @@ Bug fixes:
   your MOTD.
 - Fixed bug in S.M.A.R.T WebGUI. The 'Test email' checkbox was not enabled/disabled
   correct.
+- Fix bug in NetBIOS name validation code (BR 2163358).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
