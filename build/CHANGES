@@ -45,6 +45,8 @@ Majors changes:
 - Add UPS email notification.
 - Upgrade lighttpd to 1.4.20.
 - Upgrade e2fsprogs to 1.41.3.
+- Upgrade Adaptec AACRAID 32/64-bit driver to v5.2.0 Build 15753.
+- Upgrade arcconf to 5.30.17509.
 
 Minors changes:
 - Add misc NOTIFYFLAG options to upsmon configuration to make logging more communicative.

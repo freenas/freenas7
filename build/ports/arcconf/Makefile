@@ -1,5 +1,5 @@
 PORTNAME=			arcconf
-DISTVERSION=	v5_20_17414
+DISTVERSION=	v5_30_17509
 CATEGORIES=		sysutils
 COMMENT=			Adaptec SCSI RAID administration tool
 MAINTAINER=		votdev@gmx.de
