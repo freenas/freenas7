@@ -108,8 +108,8 @@ function routes_process_updatenotification($mode, $data) {
 					  	$iflabels['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
 					  	echo htmlspecialchars($iflabels[$route['interface']]);?>
 						</td>
-	          <td class="listr"><?=strtolower($route['network']);?></td>
-	          <td class="listr"><?=strtolower($route['gateway']);?></td>
+	          <td class="listr"><?=strtolower($route['network']);?>&nbsp;</td>
+	          <td class="listr"><?=strtolower($route['gateway']);?>&nbsp;</td>
 	          <td class="listbg"><?=htmlspecialchars($route['descr']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
