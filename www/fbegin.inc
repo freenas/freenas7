@@ -100,8 +100,10 @@ $menu['status']['menuitem'][] = array("desc" => gettext("Email Report"), "link" 
 $menu['advanced']['desc'] = gettext("Advanced");
 $menu['advanced']['link'] = "";
 $menu['advanced']['menuitem'] = array();
+$menu['advanced']['menuitem'][] = array("desc" => gettext("File Editor"), "link" => "system_edit.php", "visible" => true);
+$menu['advanced']['menuitem'][] = array("desc" => gettext("File Manager"), "link" => "quixplorer", "visible" => true, "target" => "_blank");
+$menu['advanced']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => "exec.php", "visible" => true);
-$menu['advanced']['menuitem'][] = array("desc" => gettext("Edit File"), "link" => "system_edit.php", "visible" => true);
 
 // Diagnostics
 $menu['diagnostics']['desc'] = gettext("Diagnostics");

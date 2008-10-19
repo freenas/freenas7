@@ -6,11 +6,11 @@
     All rights reserved.
 
     Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
-    Copyright © 2006-2008 Volker Theile
+    Copyright (C) 2006-2008 Volker Theile
 
     Using dp.SyntaxHighlighter for syntax highlighting
     http://www.dreamprojections.com/SyntaxHighlighter
-    Copyright © 2004-2006 Alex Gorbatchev. All rights reserved.
+    Copyright (C) 2004-2006 Alex Gorbatchev. All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
@@ -38,7 +38,7 @@ require("guiconfig.inc");
 
 global $g;
 
-$pgtitle = array(gettext("Advanced"), gettext("Edit File"));
+$pgtitle = array(gettext("Advanced"), gettext("File Editor"));
 
 if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
 	$fd = fopen($_POST['savetopath'], "r");
