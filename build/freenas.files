@@ -252,6 +252,9 @@ sbin/devd
 ## ipfw -- IP firewall and traffic shaper control program
 sbin/ipfw
 
+## clri -- clear an inode
+sbin/clri
+
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
