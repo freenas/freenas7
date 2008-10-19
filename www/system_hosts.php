@@ -106,8 +106,8 @@ function hosts_process_updatenotification($mode, $data) {
 					<?php $i = 0; foreach ($a_hosts as $host):?>
 					<?php $notificationmode = ui_get_updatenotification_mode("hosts", $host['uuid']);?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($host['name']);?></td>
-						<td class="listr"><?=htmlspecialchars($host['address']);?></td>
+						<td class="listlr"><?=htmlspecialchars($host['name']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($host['address']);?>&nbsp;</td>
 						<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
