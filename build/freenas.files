@@ -255,6 +255,9 @@ sbin/zfs
 ## zpool - configures ZFS storage pools
 sbin/zpool
 
+## clri -- clear an inode
+sbin/clri
+
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
