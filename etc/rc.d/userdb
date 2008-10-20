@@ -10,14 +10,13 @@
 . /etc/configxml.subr
 
 # Defaults
-userdb_etcdir=${userdb_etcdir:-"/var/etc"}
-userdb_group=${userdb_group:-"${userdb_etcdir}/group"}
-userdb_passwd=${userdb_passwd:-"${userdb_etcdir}/passwd"}
-userdb_masterpasswd=${userdb_masterpasswd:-"${userdb_etcdir}/master.passwd"}
+userdb_group=${userdb_group:-"/etc/group"}
+userdb_passwd=${userdb_passwd:-"/etc/passwd"}
+userdb_masterpasswd=${userdb_masterpasswd:-"/etc/master.passwd"}
 
 echo "Generating user database(s)."
 
-# Create the /var/etc/group file
+# Create the /etc/group file
 /usr/local/bin/xml sel -t \
 	-o "wheel:*:0:root" -n \
 	-o "daemon:*:1:" -n \
@@ -37,20 +36,22 @@ echo "Generating user database(s)."
 	-o "www:*:80:" -n \
 	-o "nogroup:*:65533:" -n \
 	-o "nobody:*:65534:" -n \
-	-o "admin:*:1000:" -n \
+	-m "//system/usermanagement/group" \
+		-v "concat(name,':*:',id,':')" -n \
+	-b \
 	-m "//access/group" \
 		-v "concat(name,':*:',id,':')" -n \
 	-b \
 	 ${configxml_file} | /usr/local/bin/xml unesc > ${userdb_group}
 
-# Clean /var/etc/passwd file
+# Clean /etc/passwd file
 cat /dev/null > ${userdb_passwd}
 
 # Encrypt password
 _password=`configxml_get "//system/password"`
 _password_md5=`/usr/sbin/mkpw -e md5 ${_password}`
 
-# Create the /var/etc/master.passwd file
+# Create the /etc/master.passwd file
 echo "root:${_password_md5}:0:0::0:0:Charlie &:/root:/bin/tcsh
 toor:*:0:0::0:0:Bourne-again Superuser:/root:
 daemon:*:1:1::0:0:Owner of many system processes:/root:/usr/sbin/nologin
@@ -65,10 +66,29 @@ man:*:9:9::0:0:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
 sshd:*:22:22::0:0:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
 _dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin" > ${userdb_masterpasswd}
 
-# Generate the /var/etc/passwd, pwd.db and spwd.db files
-/usr/sbin/pwd_mkdb -p -d ${userdb_etcdir} ${userdb_masterpasswd} > /dev/null 2>&1
+# Generate the /etc/passwd, pwd.db and spwd.db files
+/usr/sbin/pwd_mkdb -p ${userdb_masterpasswd} > /dev/null 2>&1
 
-# Iterate over all configured users
+# Add system users
+_index=`configxml_get_count "//system/usermanagement/user"`
+while [ ${_index} -gt 0 ]
+do
+	_cmdarg=`/usr/local/bin/xml sel -t -m "//system/usermanagement/user[${_index}]" \
+		-v "concat('-n ',name,' -u ',id,' -g ',primarygroup)" \
+		-i "count(group) > 0" -o " -G " -b \
+		-m "group" \
+			-i "position() > 1" -o "," -b \
+			-v "." \
+		-b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	eval "/usr/sbin/pw user add -q ${_cmdarg}"
+
+	_index=$(( ${_index} - 1 ))
+done
+
+# Add configured users
 _index=`configxml_get_count "//access/user"`
 while [ ${_index} -gt 0 ]
 do
@@ -88,8 +108,7 @@ do
 
 	_userpasswd=`configxml_get "//access/user[${_index}]/password"`
 
-	# Add user.
-	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw -V ${userdb_etcdir} user add -q ${_cmdarg}"
+	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw user add -q ${_cmdarg}"
 
 	_index=$(( ${_index} - 1 ))
 done
