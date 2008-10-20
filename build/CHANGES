@@ -56,6 +56,7 @@ Minors changes:
 - Add 'MOTD' option to 'System|Advanced' to set the system message of the day.
   This is displayed when login in via SSH for example.
 - Add /sbin/clri command to clear an inode by hand if fsck fails (FR 2177277).
+- Run transmission daemon as user 'transmission' (FR 2129517).
 
 Bug fixes:
 - Check entered path for iSCSI target extents before storing configuration (BR 2144966).

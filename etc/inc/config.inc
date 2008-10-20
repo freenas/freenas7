@@ -1558,12 +1558,26 @@ function config_upgrade() {
 	}
 
 	/* Convert 6.2 -> 6.3 */
-	/* Add system group 'admin' to //system/usermanagement/group. */
+	/* Add system group 'admin' and 'transmission' to //system/usermanagement/group. */
+	/* Add system user 'transmission' to //system/usermanagement/user. */
 	if ($config['version'] === "6.2") {
 		$config['system']['usermanagement']['group'][] = array(
 			"uuid" => "e504881b-c8dc-43d7-9ca4-74552f9b405b",
 			"id" => "1000",
 			"name" => "admin");
+
+		$config['system']['usermanagement']['group'][] = array(
+			"uuid" => "e8cc78b8-7c3d-46de-a34c-11b1c260a37e",
+			"id" => "999",
+			"name" => "transmission");
+
+		$config['system']['usermanagement']['user'][] = array(
+			"uuid" => "60c4bfb1-7c3c-4535-800c-2b17eeae9369",
+			"id" => "999",
+			"name" => "transmission",
+			"primarygroup" => "999",
+			"group" => "50",
+			"extraoptions" => "-m -w none");
 
 		$config['version'] = "6.3";
 	}

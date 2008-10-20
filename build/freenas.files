@@ -547,7 +547,6 @@ boot/boot0
 boot/boot1
 
 ####### contents of /etc
-etc/rc.subr
 etc/rc.shutdown
 etc/network.subr
 etc/pccard_ether
