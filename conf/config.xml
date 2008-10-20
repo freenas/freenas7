@@ -122,6 +122,19 @@
 				<name>xxx</name>
 			</group>
 			-->
+			<user>
+				<uuid>60c4bfb1-7c3c-4535-800c-2b17eeae9369</uuid>
+				<name>transmission</name>
+				<id>999</id>
+				<primarygroup>999</primarygroup>
+				<group>50</group>
+				<extraoptions>-m -w none</extraoptions>
+			</user>
+			<group>
+				<uuid>e8cc78b8-7c3d-46de-a34c-11b1c260a37e</uuid>
+				<id>999</id>
+				<name>transmission</name>
+			</group>
 			<group>
 				<uuid>e504881b-c8dc-43d7-9ca4-74552f9b405b</uuid>
 				<id>1000</id>

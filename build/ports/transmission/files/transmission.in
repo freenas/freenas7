@@ -23,6 +23,8 @@ start_precmd="start_precmd"
 # Defaults
 transmission_enable=${transmission_enable:-"NO"}
 transmission_remote_user=${transmission_remote_user:-"admin"}
+transmission_user=${transmission_user:-"transmission"}
+transmission_suopt=${transmission_suopt:-"-l"}
 
 command="/usr/local/bin/${name}-daemon"
 command_args="--no-blocklist --auth --username ${transmission_remote_user}"
