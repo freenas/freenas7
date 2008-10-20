@@ -106,7 +106,6 @@ ln -s cf/conf conf
 ln -s /var/run/.htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
 ln -s /var/etc/exports etc/exports
-ln -s /var/etc/group etc/group
 ln -s /var/etc/hosts etc/hosts
 ln -s /var/etc/crontab etc/crontab
 ln -s /var/etc/syslog.conf etc/syslog.conf
