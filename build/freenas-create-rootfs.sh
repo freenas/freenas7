@@ -50,8 +50,8 @@ cd $MINIBSD_DIR ;
 
 # Create directories
 mkdir boot ;
-mkdir boot/kernel ;
 mkdir boot/defaults ;
+mkdir boot/kernel ;
 mkdir boot/zfs ;
 mkdir bin ;
 mkdir cf ;
@@ -105,13 +105,9 @@ mkdir var ;
 ln -s cf/conf conf
 ln -s /var/run/.htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
-ln -s /var/etc/master.passwd etc/master.passwd
-ln -s /var/etc/passwd etc/passwd
 ln -s /var/etc/exports etc/exports
 ln -s /var/etc/group etc/group
 ln -s /var/etc/hosts etc/hosts
-ln -s /var/etc/pwd.db etc/pwd.db
-ln -s /var/etc/spwd.db etc/spwd.db
 ln -s /var/etc/crontab etc/crontab
 ln -s /var/etc/syslog.conf etc/syslog.conf
 ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
@@ -127,5 +123,3 @@ ln -s /var/etc/ldap.conf usr/local/etc/nss_ldap.conf
 ln -s /var/etc/ldap.conf etc/ldap.conf
 ln -s /var/etc/ldap.secret usr/local/etc/ldap.secret
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
-#Patch needed when generating on FreeBSD with X11/xorg:
-ln -s local usr/X11R6

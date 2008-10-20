@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>6.2</version>
+	<version>6.3</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -106,6 +106,28 @@
 			<descr>xxx</descr>
 			-->
 		</hosts>
+		<usermanagement>
+			<!--
+			<user>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+				<id>xxx</id>
+				<name>xxx</name>
+				<primarygroup>xxx</primarygroup> // Primary group.
+				<group>xxx</group> // Additional group memberships. Can be defined multiple times.
+				<extraoptions></extraoptions>
+			</user>
+			<group>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+				<id>xxx</id>
+				<name>xxx</name>
+			</group>
+			-->
+			<group>
+				<uuid>e504881b-c8dc-43d7-9ca4-74552f9b405b</uuid>
+				<id>1000</id>
+				<name>admin</name>
+			</group>
+		</usermanagement>
 	</system>
 	<interfaces>
 		<lan>

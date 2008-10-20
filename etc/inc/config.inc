@@ -1557,6 +1557,17 @@ function config_upgrade() {
 		$config['version'] = "6.2";
 	}
 
+	/* Convert 6.2 -> 6.3 */
+	/* Add system group 'admin' to //system/usermanagement/group. */
+	if ($config['version'] === "6.2") {
+		$config['system']['usermanagement']['group'][] = array(
+			"uuid" => "e504881b-c8dc-43d7-9ca4-74552f9b405b",
+			"id" => "1000",
+			"name" => "admin");
+
+		$config['version'] = "6.3";
+	}
+
 	write_config();
 
 	if (is_booting())
