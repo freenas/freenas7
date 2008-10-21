@@ -2,298 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-08-10 10:52+0000\n"
-"PO-Revision-Date: 2007-09-20 23:51+0000\n"
-"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
+"POT-Creation-Date: 2008-10-04 14:49+0000\n"
+"PO-Revision-Date: 2008-10-14 14:39+0000\n"
+"Last-Translator: Daniel Ruus <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-22 00:49+0000\n"
+"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
-#~ msgstr "Sön Mån Tis Ons Tor Fre Lör"
-
-#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "Jan Feb Mar Apr Maj Jun Jul Aug Sep Okt Nov Dec"
-
-#~ msgid "%I:%M %p"
-#~ msgstr "%H.%M"
-
-#~ msgid "second"
-#~ msgstr "sekund"
-
-#~ msgid "minute"
-#~ msgstr "minut"
-
-#~ msgid "hour"
-#~ msgstr "timme"
-
-#~ msgid "day"
-#~ msgstr "dag"
-
-#~ msgid "week"
-#~ msgstr "vecka"
-
-#~ msgid "weeks"
-#~ msgstr "veckor"
-
-#~ msgid "month"
-#~ msgstr "månad"
-
-#~ msgid "year"
-#~ msgstr "år"
-
-#~ msgid "years"
-#~ msgstr "år"
-
-#~ msgid "and"
-#~ msgstr "och"
-
-#~ msgid "off"
-#~ msgstr "av"
-
-#~ msgid "on"
-#~ msgstr "på"
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
-
-#~ msgid "Deactivate"
-#~ msgstr "Inaktivera"
-
-#~ msgid "Help"
-#~ msgstr "Hjälp"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignorera"
-
-#~ msgid "Log out"
-#~ msgstr "Logga ut"
-
-#~ msgid "Modify"
-#~ msgstr "Ändra"
-
-#~ msgid "New"
-#~ msgstr "Ny"
-
-#~ msgid "Search"
-#~ msgstr "Sök"
-
-#~ msgid "Submit"
-#~ msgstr "Skicka"
-
-#~ msgid "Update"
-#~ msgstr "Uppdatera"
-
-#~ msgid "View"
-#~ msgstr "Visa"
-
-#~ msgid "Service"
-#~ msgstr "Tjänst"
-
-#~ msgid "Active"
-#~ msgstr "Aktiv"
-
-#~ msgid "Inactive"
-#~ msgstr "Inaktiv"
-
-#~ msgid "General setup"
-#~ msgstr "Allmän konfiguration"
-
-#~ msgid "CIFS"
-#~ msgstr "CIFS"
-
-#~ msgid "SSHD"
-#~ msgstr "SSHD"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "ARP table"
-#~ msgstr "ARP-tabell"
-
-#~ msgid "Reboot system"
-#~ msgstr "Starta om systemet"
-
-#~ msgid "Shutdown system"
-#~ msgstr "Stäng av systemet"
-
-#~ msgid "e.g. <em>mycorp.com</em>"
-#~ msgstr "t.ex. <em>mittforetag.se</em>"
-
-#~ msgid "DNS servers"
-#~ msgstr "DNS-servrar"
-
-#~ msgid "IP addresses"
-#~ msgstr "IP-adresser"
-
-#~ msgid "Select the system language"
-#~ msgstr "Välj språk för systemet"
-
-#~ msgid "System Time"
-#~ msgstr "Systemtid"
-
-#~ msgid "You must select a valid language."
-#~ msgstr "Du måste välja ett giltigt språk."
-
-#~ msgid "Zeroconf"
-#~ msgstr "Zeroconf"
-
-#~ msgid "Speed"
-#~ msgstr "Hastighet"
-
-#~ msgid " interface"
-#~ msgstr " gränssnitt"
-
-#~ msgid "Static IP configuration"
-#~ msgstr "Statisk IP-konfiguration"
-
-#~ msgid "General configuration"
-#~ msgstr "Allmän konfiguration"
-
-#~ msgid "Manage"
-#~ msgstr "Hantera"
-
-#~ msgid "iSCSI"
-#~ msgstr "iSCSI"
-
-#~ msgid "Targetname"
-#~ msgstr "Målnamn"
-
-#~ msgid "Targetname."
-#~ msgstr "Målnamn."
-
-#~ msgid "Manage RAID"
-#~ msgstr "Hantera RAID"
-
-#~ msgid "Format RAID"
-#~ msgstr "Formatera RAID"
-
-#~ msgid "RAID"
-#~ msgstr "RAID"
-
-#~ msgid "delete mount"
-#~ msgstr "ta bort montering"
-
-#~ msgid "add mount"
-#~ msgstr "lägg till montering"
-
-#~ msgid "Recycle Bin"
-#~ msgstr "Papperskorg"
-
-#~ msgid "Enable Recycle bin"
-#~ msgstr "Aktivera papperskorg"
-
-#~ msgid "Anonymous login"
-#~ msgstr "Anonym inloggning"
-
-#~ msgid "Local User"
-#~ msgstr "Lokal användare"
-
-#~ msgid "Source"
-#~ msgstr "Källa"
-
-#~ msgid "Destination"
-#~ msgstr "Mål"
-
-#~ msgid "You must create a group first."
-#~ msgstr "Du måste skapa en grupp först."
-
-#~ msgid "Confirm Password"
-#~ msgstr "Bekräfta lösenord"
-
-#~ msgid "Confirm the password."
-#~ msgstr "Bekräfta lösenordet."
-
-#~ msgid "Group Member"
-#~ msgstr "Gruppmedlem"
-
-#~ msgid "Full Shell"
-#~ msgstr "Fullständigt skal"
-
-#~ msgid "Administrator"
-#~ msgstr "Administratör"
-
-#~ msgid "Edit VLAN"
-#~ msgstr "Redigera VLAN"
-
-#~ msgid "Free Space"
-#~ msgstr "Ledigt utrymme"
-
-#~ msgid "Creating one partition"
-#~ msgstr "Skapar en partition"
-
-#~ msgid "Initializing partition"
-#~ msgstr "Initierar partition"
-
-#~ msgid "Creating BSD label"
-#~ msgstr "Skapar BSD-etikett"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "Skapar filsystem"
-
-#~ msgid "Done"
-#~ msgstr "Färdig"
-
-#, c-format
-#~ msgid "Creating %s partition"
-#~ msgstr "Skapar %s-partition"
-
-#~ msgid "Create encrypted disk"
-#~ msgstr "Skapa krypterad disk"
-
-#~ msgid "Encrypting... Please wait"
-#~ msgstr "Krypterar... var god vänta"
-
-#~ msgid "Sensors"
-#~ msgstr "Sensorer"
-
-#~ msgid "FTP users"
-#~ msgstr "FTP-användare"
-
-#~ msgid "FTP connected users"
-#~ msgstr "Anslutna FTP-användare"
-
-#~ msgid "Save and Restart UPnP"
-#~ msgstr "Spara och starta om UPnP"
-
-#~ msgid "Save and Restart Unison"
-#~ msgstr "Spara och starta om Unison"
-
-#~ msgid "Save and Restart SSHD"
-#~ msgstr "Spara och starta om SSHD"
-
-#~ msgid "Save and Restart RSYNC"
-#~ msgstr "Spara och starta om RSYNC"
-
-#~ msgid "Save and Restart NFS"
-#~ msgstr "Spara och starta om NFS"
-
-#~ msgid "Save and Restart FTP"
-#~ msgstr "Spara och starta om FTP"
-
-#~ msgid "Save and Restart AFP"
-#~ msgstr "Spara och starta om AFP"
-
-#~ msgid "Enable Zeroconf"
-#~ msgstr "Aktivera Zeroconf"
-
-#~ msgid "Networks"
-#~ msgstr "Nätverk"
-
-#~ msgid "Save and Restart CIFS"
-#~ msgstr "Spara och starta om CIFS"
-
-#~ msgid "Startup"
-#~ msgstr "Uppstart"
-
-#~ msgid "Servername"
-#~ msgstr "Servernamn"
-
-#~ msgid "Save and Restart DynDNS"
-#~ msgstr "Spara och starta om DynDNS"
 
 msgid " interfaces:"
 msgstr " gränssnitt:"
@@ -303,7 +20,7 @@ msgstr " var tilldelad till "
 
 #, php-format
 msgid "%d%% of %dMB"
-msgstr ""
+msgstr "%d%% av %dMB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -311,27 +28,23 @@ msgstr "%s annonserar ut sig själv som en tidsserver för WIndows-klienter."
 
 #, php-format
 msgid "%s available of %sB"
-msgstr ""
+msgstr "%s tillgängligt av %sB"
 
 #, php-format
 msgid "%s interface"
 msgstr "%s-gränssnitt"
 
 #, php-format
-msgid "%s interface (SSID '%s')"
-msgstr "%s-gränssnitt (SSID \"%s\")"
-
-#, php-format
 msgid "%s is used to create %s volumes."
-msgstr ""
+msgstr "%s används för att skapa %s volymer."
 
 #, php-format
 msgid "%s of %sB"
-msgstr ""
+msgstr "%s av %sB"
 
 #, php-format
 msgid "%s used of %sB"
-msgstr ""
+msgstr "%s använt av %sB"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -339,11 +52,11 @@ msgstr "%s kommer att starta om efter att konfigurationen återskapats"
 
 #, php-format
 msgid "%sB available of %sB"
-msgstr ""
+msgstr "%sB tillgängligt av %sB"
 
 #, php-format
 msgid "%sB used of %sB"
-msgstr ""
+msgstr "%sB använt av %sB"
 
 msgid "(unstable)"
 msgstr "(instabil)"
@@ -352,15 +65,19 @@ msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
+"1. Använd dessa speciella funktioner enbart för felsökning!<br>2. Denna meny "
+"behöver inte användas för att starta en RAID volym (startar automatiskt)."
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
-msgstr ""
+msgstr "802.1Q VLAN tag (mellan 1 och 4094)."
 
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
+"<a href=%s>SSHD</a> måste aktiveras för att Unison ska fungera, och <a "
+"href=%s>användaren</a> måste ha komplett Skal aktiverat."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -375,21 +92,26 @@ msgstr ""
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
+"Ett NTP server namn får enbart innehålla tecknen a-z, 0-9, '-' and '.'."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
-msgstr ""
+msgstr "Ett VLAN med taggen %s är redan definierad för detta gränssnitt."
 
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
+"En kataloglistning genereras om en katalog efterfrågas men ingen index-fil "
+"(index.php, index.html, index.htm or default.htm) återfanns i katalogen."
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
+"Ett värdnamns alias. Detta val kan förekomma flera gånger, för varje domän "
+"som har samma IP. Använd mellanslag för att separera flertalet aliasnamn."
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
@@ -397,6 +119,10 @@ msgid ""
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
 msgstr ""
+"En nyckel är antingen 5 eller 13 tecken (40 eller 104 bitar) beroende på det "
+"lokala nätverket och nätverksadapterns egenskaper. Den kan specificeras "
+"antingen i klartext eller som en sträng av hexadecimala värden inlett med "
+"'0x'."
 
 msgid "A route to this destination network already exists."
 msgstr "En väg till det här målnätverket finns redan."
@@ -407,6 +133,8 @@ msgstr "En giltig IP-adress måste anges."
 msgid ""
 "A valid IPv4 address must be specified for the primary/secondary DNS server."
 msgstr ""
+"En giltig IPv4 adress måste specificeras för den primära/sekundära DNS "
+"servern."
 
 msgid "A valid IPv4 address must be specified."
 msgstr "En giltig IPv4-adress måste anges"
@@ -415,11 +143,13 @@ msgid "A valid IPv4 network bit count must be specified."
 msgstr "Ett giltigt bitantal för IPv4-nätverk måste anges"
 
 msgid "A valid IPv6 Gateway address must be specified."
-msgstr ""
+msgstr "En giltig IPv6 gateway adress måste specificeras."
 
 msgid ""
 "A valid IPv6 address must be specified for the primary/secondary DNS server."
 msgstr ""
+"En giltig IPv6 adress måste specificeras för den primära/sekundära DNS "
+"servern."
 
 msgid "A valid IPv6 address must be specified."
 msgstr "En giltig IPv6-adress måste anges"
@@ -431,7 +161,7 @@ msgid "A valid destination network must be specified."
 msgstr "Ett giltigt målnätverk måste anges."
 
 msgid "A valid gateway IP address must be specified."
-msgstr ""
+msgstr "En giltig gateway IP adress måste anges."
 
 msgid "A valid mtu size must be specified."
 msgstr "En giltig mtu-storlek måste anges."
@@ -449,10 +179,10 @@ msgid "A valid prefix (1-128) must be specified."
 msgstr "Ett giltigt prefix (1-128) måste anges."
 
 msgid "A valid systctl MIB value."
-msgstr ""
+msgstr "Ett giltigt systctl MIB värde."
 
 msgid "AD authentication disabled"
-msgstr ""
+msgstr "AD authenticering avaktiverad."
 
 msgid "AD or PDC name."
 msgstr "AD eller PDC-namn."
@@ -464,19 +194,19 @@ msgid "AFP Server"
 msgstr "AFP-server"
 
 msgid "ARP Tables"
-msgstr ""
+msgstr "ARP Tabeller"
 
 msgid "ARP tables"
-msgstr ""
+msgstr "ARP Tabeller"
 
 msgid "Access"
 msgstr "Åtkomst"
 
 msgid "Access Restrictions"
-msgstr ""
+msgstr "Åtkomstbegränsningar"
 
 msgid "Access mode"
-msgstr ""
+msgstr "Åtkomstläge"
 
 msgid "Acoustic level"
 msgstr "Akustisk nivå"
@@ -485,7 +215,7 @@ msgid "Activate"
 msgstr "Aktivera"
 
 msgid "Activate S.M.A.R.T. monitoring for this device."
-msgstr ""
+msgstr "Aktivera S.M.A.R.T övervakning för denna enhet."
 
 msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
@@ -502,7 +232,7 @@ msgid "Add Host"
 msgstr "Lägg till värd"
 
 msgid "Add MIB"
-msgstr ""
+msgstr "Lägg till MIB"
 
 msgid "Add RAID"
 msgstr "Lägg till RAID"
@@ -514,7 +244,7 @@ msgid "Add Route"
 msgstr "Lägg till väg"
 
 msgid "Add URL"
-msgstr ""
+msgstr "Lägg till url"
 
 msgid "Add additional scheduled self-test."
 msgstr ""
@@ -555,9 +285,6 @@ msgstr ""
 msgid "Add option"
 msgstr ""
 
-msgid "Add parameter"
-msgstr "Lägg till parameter"
-
 msgid "Add self-test"
 msgstr ""
 
@@ -571,6 +298,9 @@ msgid "Add user"
 msgstr "Lägg till användare"
 
 msgid "Additional group"
+msgstr ""
+
+msgid "Additional parameters to the hardware-specific part of the driver."
 msgstr ""
 
 msgid "Address"
@@ -670,6 +400,9 @@ msgstr "Alternativ TCP-port. Standard är 22"
 msgid "Alternate TCP port. Default is 873"
 msgstr "Alternativ TCP-port. Standard är 873"
 
+msgid "Alternative configuration directory (usually empty)."
+msgstr ""
+
 msgid "Always on"
 msgstr "Alltid på"
 
@@ -693,6 +426,12 @@ msgstr ""
 msgid "Apply changes"
 msgstr "Verkställ ändringar"
 
+msgid "Archive"
+msgstr ""
+
+msgid "Archive mode."
+msgstr ""
+
 msgid "Are you sure you want to proceed?"
 msgstr "Är du säker på att du vill fortsätta?"
 
@@ -701,9 +440,6 @@ msgstr "Är du säker på att du vill starta om systemet?"
 
 msgid "Are you sure you want to shutdown the system?"
 msgstr "Är du säker på att du vill stänga av systemet?"
-
-msgid "Associated stations"
-msgstr "Associerade stationer"
 
 msgid ""
 "At the highest level, a target is what is presented to the initiator, and is "
@@ -735,12 +471,6 @@ msgstr ""
 msgid "Automatically generated test email."
 msgstr ""
 
-msgid "Auxiliary parameter"
-msgstr ""
-
-msgid "Auxiliary parameter to be added."
-msgstr ""
-
 msgid "Auxiliary parameters"
 msgstr ""
 
@@ -760,6 +490,9 @@ msgid "Banner"
 msgstr "Banderoll"
 
 msgid "Base DN"
+msgstr ""
+
+msgid "BitTorrent"
 msgstr ""
 
 msgid "Browseable"
@@ -841,6 +574,9 @@ msgstr ""
 msgid "Client"
 msgstr "Klient"
 
+msgid "Client RSYNC job"
+msgstr ""
+
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
 
@@ -877,6 +613,12 @@ msgstr ""
 msgid "Compliant profile to be used."
 msgstr ""
 
+msgid "Compress"
+msgstr ""
+
+msgid "Compress file data during the transfer."
+msgstr ""
+
 msgid "Compression"
 msgstr ""
 
@@ -884,6 +626,9 @@ msgid ""
 "Compression is worth using if your connection is slow. The efficiency of the "
 "compression depends on the type of the file, and varies widely. Useful for "
 "internet transfer only."
+msgstr ""
+
+msgid "Configuration directory"
 msgstr ""
 
 msgid "Configuring"
@@ -926,6 +671,9 @@ msgstr "Skapa mask"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Skapa arbetskatalog om den inte redan finns"
+
+msgid "Credits"
+msgstr ""
 
 msgid "Critical"
 msgstr ""
@@ -986,6 +734,9 @@ msgstr "Standard"
 
 msgid "Default is 21"
 msgstr "Standard är 21"
+
+msgid "Default user name is 'admin'."
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr ""
@@ -1064,9 +815,6 @@ msgstr ""
 
 msgid "Delete option"
 msgstr ""
-
-msgid "Delete parameter"
-msgstr "Ta bort parameter"
 
 msgid "Delete self-test"
 msgstr ""
@@ -1271,9 +1019,6 @@ msgstr ""
 msgid "Do you really want to delete this option?"
 msgstr ""
 
-msgid "Do you really want to delete this parameter?"
-msgstr "Vill du verkligen ta bort denna parameter?"
-
 msgid "Do you really want to delete this route?"
 msgstr "Vill du verkligen ta bort den här vägen?"
 
@@ -1351,10 +1096,19 @@ msgstr "Dos-teckenuppsättning"
 msgid "Download configuration"
 msgstr "Hämta ner konfiguration"
 
+msgid "Download directory"
+msgstr ""
+
+msgid "Driver"
+msgstr ""
+
+msgid "Driver list"
+msgstr ""
+
 msgid "Duplex"
 msgstr "Duplex"
 
-msgid "Duplicate name."
+msgid "Duplicate share name."
 msgstr ""
 
 msgid "Dynamic DNS"
@@ -1425,9 +1179,6 @@ msgstr ""
 
 msgid "Edit option"
 msgstr ""
-
-msgid "Edit parameter"
-msgstr "Redigera parameter"
 
 msgid "Edit self-test"
 msgstr ""
@@ -1529,6 +1280,9 @@ msgid ""
 "applicative FTP proxying."
 msgstr ""
 
+msgid "Enable transcoding."
+msgstr ""
+
 msgid "Enable tuning of some kernel variables"
 msgstr "Aktivera justering av vissa kärnvariabler"
 
@@ -1575,15 +1329,6 @@ msgid ""
 "select it."
 msgstr ""
 
-msgid "Enter the NIS Master server hostname."
-msgstr ""
-
-msgid "Enter the NIS Slave server hostname."
-msgstr ""
-
-msgid "Enter the NIS domain name."
-msgstr ""
-
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
@@ -1619,6 +1364,9 @@ msgid ""
 "shutdown."
 msgstr ""
 
+msgid "Execute now"
+msgstr ""
+
 msgid "Extensions"
 msgstr "Utökningar"
 
@@ -1634,6 +1382,11 @@ msgid ""
 msgstr ""
 
 msgid "Extra options"
+msgstr ""
+
+msgid ""
+"Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
+"entered options prevent SSH service to be started."
 msgstr ""
 
 msgid "Extra options to ifconfig (usually empty)."
@@ -1678,6 +1431,9 @@ msgid "Failed"
 msgstr "Misslyckades"
 
 msgid "Failed to create in-memory file system."
+msgstr ""
+
+msgid "Failed to execute cron job."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
@@ -1839,8 +1595,11 @@ msgstr ""
 msgid "Hard disk standby time"
 msgstr ""
 
-msgid "Help Needed!"
-msgstr "Hjälp behövs!"
+msgid "Help"
+msgstr "Hjälp"
+
+msgid "Help needed!"
+msgstr ""
 
 msgid "Hide dot files"
 msgstr ""
@@ -1949,6 +1708,9 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr ""
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
 "IDLE state, most disks are still spinning, so this is probably not what you "
@@ -1966,6 +1728,11 @@ msgid ""
 "to perform selected command, otherwise the commands work in read-only "
 "mode.<br>Service disruption to users accessing this mount will occur during "
 "this process."
+msgstr ""
+
+msgid ""
+"If the server is behind a proxy set this parameters to give local services "
+"access to the internet via proxy."
 msgstr ""
 
 msgid ""
@@ -2075,9 +1842,6 @@ msgstr ""
 msgid "Keep all files"
 msgstr ""
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr ""
-
 msgid "Key"
 msgstr "Nyckel"
 
@@ -2086,6 +1850,9 @@ msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Döda krypterad volym"
+
+msgid "Knowledgebase"
+msgstr ""
 
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr ""
@@ -2136,6 +1903,9 @@ msgstr ""
 msgid "License"
 msgstr "Licens"
 
+msgid "License & Credits"
+msgstr ""
+
 msgid "Link Aggregation and Failover"
 msgstr ""
 
@@ -2182,6 +1952,9 @@ msgid "Local"
 msgstr "Lokal"
 
 msgid "Local Master Browser"
+msgstr ""
+
+msgid "Local RSYNC job"
 msgstr ""
 
 msgid "Local share"
@@ -2249,6 +2022,9 @@ msgstr "MS-domän"
 msgid "MTU"
 msgstr "MTU"
 
+msgid "Make sure you have activated S.M.A.R.T. for your devices."
+msgstr ""
+
 #, php-format
 msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
@@ -2256,6 +2032,9 @@ msgstr ""
 
 msgid "Management"
 msgstr "Hantering"
+
+msgid "Manufacturer"
+msgstr ""
 
 msgid "Map all users to root"
 msgstr "Mappa alla användare till root"
@@ -2339,6 +2118,12 @@ msgstr "Diverse"
 msgid "Mode"
 msgstr ""
 
+msgid "Model extra"
+msgstr ""
+
+msgid "Model name"
+msgstr ""
+
 msgid "Modifying"
 msgstr ""
 
@@ -2385,15 +2170,6 @@ msgstr "NFS-server"
 msgid "NIS"
 msgstr "NIS"
 
-msgid "NIS Authentication"
-msgstr ""
-
-msgid "NIS master server name"
-msgstr ""
-
-msgid "NIS slave server name"
-msgstr ""
-
 msgid "NTP time server"
 msgstr "NTP-tidsserver"
 
@@ -2411,9 +2187,6 @@ msgstr ""
 
 msgid "Name of the variable."
 msgstr ""
-
-msgid "Navigation"
-msgstr "Navigering"
 
 msgid "NetBIOS name"
 msgstr ""
@@ -2453,14 +2226,6 @@ msgstr ""
 msgid "No disk configured"
 msgstr "Ingen disk konfigurerad"
 
-msgid ""
-"No supported wireless interfaces were found for status display (only cards "
-"that use the wi[n] driver are supported)."
-msgstr ""
-
-msgid "Noise"
-msgstr "Störning"
-
 msgid "None"
 msgstr ""
 
@@ -2485,6 +2250,10 @@ msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgstr ""
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr ""
 
 msgid ""
@@ -2597,9 +2366,6 @@ msgstr ""
 msgid "Pairwise"
 msgstr ""
 
-msgid "Parameter"
-msgstr ""
-
 msgid "Partition"
 msgstr "Partition"
 
@@ -2703,6 +2469,10 @@ msgid "Port to listen on. Default iTunes port is 3689."
 msgstr ""
 
 #, php-format
+msgid "Port to listen on. Default port is %d."
+msgstr ""
+
+#, php-format
 msgid ""
 "Port to listen on. Only dynamic or private ports can be used (from %d "
 "through %d). Default port is %d."
@@ -2730,6 +2500,9 @@ msgid "Preformatted file system"
 msgstr ""
 
 msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve modification times."
 msgstr ""
 
 msgid "Preserve permissions"
@@ -2778,9 +2551,6 @@ msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last hard disk access has been elapsed."
 msgstr ""
-
-msgid "Quality"
-msgstr "Kvalitet"
 
 msgid "Quiet"
 msgstr ""
@@ -2857,7 +2627,16 @@ msgstr ""
 msgid "Receive Buffer Size"
 msgstr ""
 
+msgid "Recurse into directories."
+msgstr ""
+
+msgid "Recursive"
+msgstr ""
+
 msgid "Recycle bin"
+msgstr ""
+
+msgid "Release notes"
 msgstr ""
 
 msgid "Reload page"
@@ -2928,6 +2707,9 @@ msgid "Rows"
 msgstr "Rader"
 
 msgid "Rsync Daemon"
+msgstr ""
+
+msgid "Run now"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3045,10 +2827,16 @@ msgstr ""
 msgid "Send Command!"
 msgstr "Skicka kommando!"
 
+msgid "Send a TEST warning email on startup."
+msgstr ""
+
 msgid "Send now"
 msgstr ""
 
 msgid "Send test email"
+msgstr ""
+
+msgid "Separate email addresses by semi-colon."
 msgstr ""
 
 msgid "Server"
@@ -3062,6 +2850,9 @@ msgstr "Serverbeskrivning. Det här kan vanligtvis lämnas tomt."
 
 msgid "Server name"
 msgstr ""
+
+msgid "Service"
+msgstr "Tjänst"
 
 msgid "Services"
 msgstr "Tjänster"
@@ -3119,10 +2910,10 @@ msgstr ""
 msgid "Share all sub directories."
 msgstr ""
 
-msgid "Share passwords can not be more than 8 characters."
+msgid "Share name"
 msgstr ""
 
-msgid "Sharename"
+msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
 msgid "Shares"
@@ -3141,12 +2932,6 @@ msgid "Shutdown"
 msgstr ""
 
 msgid "Shutdown Time"
-msgstr ""
-
-msgid "Signal"
-msgstr "Signal"
-
-msgid "Signal strength cache"
 msgstr ""
 
 msgid "Simple Network Management Protocol"
@@ -3174,6 +2959,9 @@ msgid "Software RAID"
 msgstr "Programvaru-RAID"
 
 msgid "Software RAID information and status"
+msgstr ""
+
+msgid "Software used"
 msgstr ""
 
 msgid "Source directory to be synchronized."
@@ -3229,6 +3017,9 @@ msgid ""
 msgstr ""
 
 msgid "Standby time"
+msgstr ""
+
+msgid "State"
 msgstr ""
 
 msgid "Static Routes"
@@ -3360,9 +3151,6 @@ msgstr ""
 msgid "TLS + cleartext"
 msgstr ""
 
-msgid "TX rates"
-msgstr ""
-
 msgid "Target"
 msgstr ""
 
@@ -3382,6 +3170,15 @@ msgid "Temperature"
 msgstr "Temperatur"
 
 msgid "Temperature monitoring"
+msgstr ""
+
+msgid "Temporary directory"
+msgstr ""
+
+msgid "Temporary directory to store transcoded files."
+msgstr ""
+
+msgid "Test email"
 msgstr ""
 
 #, php-format
@@ -3547,6 +3344,9 @@ msgstr ""
 msgid "The credentials to bind with, enter it here twice."
 msgstr ""
 
+msgid "The cron job has been executed successfully."
+msgstr ""
+
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr ""
 
@@ -3563,6 +3363,12 @@ msgid ""
 msgstr ""
 "Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
 "först innan du fortsätter."
+
+#, php-format
+msgid ""
+"The driver used to communicate with your UPS. Get the list of available <a "
+"href='%s' target='_blank'>drivers</a>."
+msgstr ""
 
 #, php-format
 msgid "The firmware is now being installed. %s will reboot automatically."
@@ -3637,6 +3443,9 @@ msgstr ""
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
+msgstr ""
+
+msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
 msgid "The share name is already used."
@@ -3718,6 +3527,18 @@ msgid ""
 "options used by various generic startup scripts."
 msgstr ""
 
+#, php-format
+msgid "These parameters will be added to global settings in %s."
+msgstr ""
+
+msgid ""
+"These parameters will be added to the module configuration in rsyncd.conf."
+msgstr ""
+
+msgid ""
+"These parameters will be added to the share configuration in smb.conf."
+msgstr ""
+
 msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
 msgstr ""
@@ -3743,6 +3564,14 @@ msgid ""
 msgstr ""
 
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
+msgstr ""
+
+#, php-format
+msgid ""
+"This configuration settings are used to generate the ups.conf configuration "
+"file which is required by the NUT UPS daemon. To get more information how to "
+"configure your UPS please check the NUT (Network UPS Tools) <a href='%s' "
+"target='_blank'>documentation</a>."
 msgstr ""
 
 msgid "This controls how the case of filenames are viewed and stored."
@@ -3819,6 +3648,9 @@ msgstr ""
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr ""
 
+msgid "This name is used to uniquely identify your UPS on this system."
+msgstr ""
+
 msgid ""
 "This option allows the users and groups that access a share to be specified. "
 "Users and groups are specified, delimited by commas. Groups are designated "
@@ -3890,15 +3722,6 @@ msgid ""
 "files."
 msgstr ""
 
-msgid "This parameters will be added to [global] in smb.conf."
-msgstr ""
-
-msgid ""
-"This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
-"(for others) partition and format the hard drive with the file system "
-"specified."
-msgstr ""
-
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr ""
 
@@ -3934,6 +3757,9 @@ msgstr "Tidszon"
 msgid "Timeout"
 msgstr "Tidsgräns"
 
+msgid "Times"
+msgstr ""
+
 msgid "To e-mail"
 msgstr ""
 
@@ -3942,9 +3768,9 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br>- Enable 'Large "
-"read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- "
-"Increase <a href='%s'>MTU</a>"
+"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
+"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
+"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
 msgstr ""
 
 msgid ""
@@ -3967,6 +3793,9 @@ msgstr ""
 
 msgid "Traffic graph"
 msgstr "Trafikdiagram"
+
+msgid "Transcoding"
+msgstr ""
 
 msgid "Transfer mode"
 msgstr ""
@@ -4014,6 +3843,15 @@ msgstr ""
 msgid "UID"
 msgstr ""
 
+msgid "UPS"
+msgstr ""
+
+msgid "UPS disabled"
+msgstr ""
+
+msgid "UPS status"
+msgstr ""
+
 msgid "UPnP"
 msgstr "UPnP"
 
@@ -4033,6 +3871,9 @@ msgid "Unison"
 msgstr "Unison"
 
 msgid "Unison File Synchronisation"
+msgstr ""
+
+msgid "Unix Command"
 msgstr ""
 
 msgid "Unix charset"
@@ -4160,9 +4001,6 @@ msgstr ""
 msgid "Version"
 msgstr "Version"
 
-msgid "View license"
-msgstr ""
-
 msgid "Virtual interface"
 msgstr ""
 
@@ -4225,6 +4063,9 @@ msgstr ""
 msgid "Where the working files will be stored"
 msgstr "Var arbetsfilerna ska lagras"
 
+msgid "Where to save downloaded data."
+msgstr ""
+
 msgid ""
 "Whether scans should be skipped if there are no users connected. This allows "
 "the drive to spin down when no users are connected."
@@ -4235,9 +4076,6 @@ msgstr ""
 
 msgid "Wildcard"
 msgstr ""
-
-msgid "Wireless"
-msgstr "Trådlös"
 
 msgid "Wireless configuration"
 msgstr ""
@@ -4364,6 +4202,9 @@ msgstr ""
 msgid "iSCSI initiator disabled"
 msgstr "iSCSI-initiator inaktiverad"
 
+msgid "iTunes/DAAP"
+msgstr ""
+
 msgid "minutes"
 msgstr "minuter"
 
@@ -4421,9 +4262,6 @@ msgstr ""
 msgid "sysctl.conf"
 msgstr ""
 
-msgid "type"
-msgstr ""
-
 msgid "upriv"
 msgstr ""
 
@@ -4432,3 +4270,295 @@ msgstr ""
 
 msgid "week days"
 msgstr "veckodagar"
+
+#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
+#~ msgstr "Sön Mån Tis Ons Tor Fre Lör"
+
+#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+#~ msgstr "Jan Feb Mar Apr Maj Jun Jul Aug Sep Okt Nov Dec"
+
+#~ msgid "%I:%M %p"
+#~ msgstr "%H.%M"
+
+#~ msgid "second"
+#~ msgstr "sekund"
+
+#~ msgid "minute"
+#~ msgstr "minut"
+
+#~ msgid "hour"
+#~ msgstr "timme"
+
+#~ msgid "day"
+#~ msgstr "dag"
+
+#~ msgid "week"
+#~ msgstr "vecka"
+
+#~ msgid "weeks"
+#~ msgstr "veckor"
+
+#~ msgid "month"
+#~ msgstr "månad"
+
+#~ msgid "year"
+#~ msgstr "år"
+
+#~ msgid "years"
+#~ msgstr "år"
+
+#~ msgid "and"
+#~ msgstr "och"
+
+#~ msgid "off"
+#~ msgstr "av"
+
+#~ msgid "on"
+#~ msgstr "på"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Deactivate"
+#~ msgstr "Inaktivera"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignorera"
+
+#~ msgid "Log out"
+#~ msgstr "Logga ut"
+
+#~ msgid "Modify"
+#~ msgstr "Ändra"
+
+#~ msgid "New"
+#~ msgstr "Ny"
+
+#~ msgid "Search"
+#~ msgstr "Sök"
+
+#~ msgid "Submit"
+#~ msgstr "Skicka"
+
+#~ msgid "Update"
+#~ msgstr "Uppdatera"
+
+#~ msgid "View"
+#~ msgstr "Visa"
+
+#~ msgid "Active"
+#~ msgstr "Aktiv"
+
+#~ msgid "Inactive"
+#~ msgstr "Inaktiv"
+
+#~ msgid "General setup"
+#~ msgstr "Allmän konfiguration"
+
+#~ msgid "CIFS"
+#~ msgstr "CIFS"
+
+#~ msgid "SSHD"
+#~ msgstr "SSHD"
+
+#~ msgid "Radius"
+#~ msgstr "Radius"
+
+#~ msgid "Wireless"
+#~ msgstr "Trådlös"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP-tabell"
+
+#~ msgid "Reboot system"
+#~ msgstr "Starta om systemet"
+
+#~ msgid "Shutdown system"
+#~ msgstr "Stäng av systemet"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "t.ex. <em>mittforetag.se</em>"
+
+#~ msgid "DNS servers"
+#~ msgstr "DNS-servrar"
+
+#~ msgid "IP addresses"
+#~ msgstr "IP-adresser"
+
+#~ msgid "Select the system language"
+#~ msgstr "Välj språk för systemet"
+
+#~ msgid "System Time"
+#~ msgstr "Systemtid"
+
+#~ msgid "You must select a valid language."
+#~ msgstr "Du måste välja ett giltigt språk."
+
+#~ msgid "Navigation"
+#~ msgstr "Navigering"
+
+#~ msgid "Zeroconf"
+#~ msgstr "Zeroconf"
+
+#~ msgid "Speed"
+#~ msgstr "Hastighet"
+
+#~ msgid " interface"
+#~ msgstr " gränssnitt"
+
+#~ msgid "Static IP configuration"
+#~ msgstr "Statisk IP-konfiguration"
+
+#~ msgid "General configuration"
+#~ msgstr "Allmän konfiguration"
+
+#~ msgid "Manage"
+#~ msgstr "Hantera"
+
+#~ msgid "iSCSI"
+#~ msgstr "iSCSI"
+
+#~ msgid "Targetname"
+#~ msgstr "Målnamn"
+
+#~ msgid "Targetname."
+#~ msgstr "Målnamn."
+
+#~ msgid "Manage RAID"
+#~ msgstr "Hantera RAID"
+
+#~ msgid "Format RAID"
+#~ msgstr "Formatera RAID"
+
+#~ msgid "RAID"
+#~ msgstr "RAID"
+
+#~ msgid "delete mount"
+#~ msgstr "ta bort montering"
+
+#~ msgid "add mount"
+#~ msgstr "lägg till montering"
+
+#~ msgid "Recycle Bin"
+#~ msgstr "Papperskorg"
+
+#~ msgid "Enable Recycle bin"
+#~ msgstr "Aktivera papperskorg"
+
+#~ msgid "Anonymous login"
+#~ msgstr "Anonym inloggning"
+
+#~ msgid "Local User"
+#~ msgstr "Lokal användare"
+
+#~ msgid "Source"
+#~ msgstr "Källa"
+
+#~ msgid "Destination"
+#~ msgstr "Mål"
+
+#~ msgid "You must create a group first."
+#~ msgstr "Du måste skapa en grupp först."
+
+#~ msgid "Confirm Password"
+#~ msgstr "Bekräfta lösenord"
+
+#~ msgid "Confirm the password."
+#~ msgstr "Bekräfta lösenordet."
+
+#~ msgid "Group Member"
+#~ msgstr "Gruppmedlem"
+
+#~ msgid "Full Shell"
+#~ msgstr "Fullständigt skal"
+
+#~ msgid "Administrator"
+#~ msgstr "Administratör"
+
+#~ msgid "Signal"
+#~ msgstr "Signal"
+
+#~ msgid "Noise"
+#~ msgstr "Störning"
+
+#~ msgid "Quality"
+#~ msgstr "Kvalitet"
+
+#~ msgid "Edit VLAN"
+#~ msgstr "Redigera VLAN"
+
+#~ msgid "Free Space"
+#~ msgstr "Ledigt utrymme"
+
+#~ msgid "Creating one partition"
+#~ msgstr "Skapar en partition"
+
+#~ msgid "Initializing partition"
+#~ msgstr "Initierar partition"
+
+#~ msgid "Creating BSD label"
+#~ msgstr "Skapar BSD-etikett"
+
+#~ msgid "Creating filesystem"
+#~ msgstr "Skapar filsystem"
+
+#~ msgid "Done"
+#~ msgstr "Färdig"
+
+#, c-format
+#~ msgid "Creating %s partition"
+#~ msgstr "Skapar %s-partition"
+
+#~ msgid "Create encrypted disk"
+#~ msgstr "Skapa krypterad disk"
+
+#~ msgid "Encrypting... Please wait"
+#~ msgstr "Krypterar... var god vänta"
+
+#~ msgid "Sensors"
+#~ msgstr "Sensorer"
+
+#~ msgid "FTP users"
+#~ msgstr "FTP-användare"
+
+#~ msgid "FTP connected users"
+#~ msgstr "Anslutna FTP-användare"
+
+#~ msgid "Save and Restart UPnP"
+#~ msgstr "Spara och starta om UPnP"
+
+#~ msgid "Save and Restart Unison"
+#~ msgstr "Spara och starta om Unison"
+
+#~ msgid "Save and Restart SSHD"
+#~ msgstr "Spara och starta om SSHD"
+
+#~ msgid "Save and Restart RSYNC"
+#~ msgstr "Spara och starta om RSYNC"
+
+#~ msgid "Save and Restart NFS"
+#~ msgstr "Spara och starta om NFS"
+
+#~ msgid "Save and Restart FTP"
+#~ msgstr "Spara och starta om FTP"
+
+#~ msgid "Save and Restart AFP"
+#~ msgstr "Spara och starta om AFP"
+
+#~ msgid "Enable Zeroconf"
+#~ msgstr "Aktivera Zeroconf"
+
+#~ msgid "Networks"
+#~ msgstr "Nätverk"
+
+#~ msgid "Save and Restart CIFS"
+#~ msgstr "Spara och starta om CIFS"
+
+#~ msgid "Startup"
+#~ msgstr "Uppstart"
+
+#~ msgid "Servername"
+#~ msgstr "Servernamn"
+
+#~ msgid "Save and Restart DynDNS"
+#~ msgstr "Spara och starta om DynDNS"
