@@ -1,4 +1,5 @@
 <?php
+	require_once("globals.inc");
 //------------------------------------------------------------------------------
 // Configuration Variables
 
@@ -9,7 +10,7 @@
 	$GLOBALS["language"] = "en";
 
 	// the filename of the QuiXplorer script: (you rarely need to change this)
-	$GLOBALS["script_name"] = "http://".$GLOBALS['__SERVER']['HTTP_HOST'].$GLOBALS['__SERVER']["PHP_SELF"];
+	$GLOBALS["script_name"] = "{$config['system']['webgui']['protocol']}://".$GLOBALS['__SERVER']['HTTP_HOST'].$GLOBALS['__SERVER']["PHP_SELF"];
 
 	// allow Zip, Tar, TGz -> Only (experimental) Zip-support
 	$GLOBALS["zip"] = false;	//function_exists("gzcompress");
@@ -25,7 +26,7 @@
 	$GLOBALS["home_dir"] = "/";
 
 	// the url corresponding with the home directory: (no trailing '/')
-	$GLOBALS["home_url"] = "http://localhost/~you";
+	$GLOBALS["home_url"] = "{$config['system']['webgui']['protocol']}://localhost/~you";
 
 	// show hidden files in QuiXplorer: (hide files starting with '.', as in Linux/UNIX)
 	$GLOBALS["show_hidden"] = true;
