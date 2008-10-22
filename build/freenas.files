@@ -95,6 +95,12 @@ bin/chflags
 ## pgrep, pkill -- find or signal processes by name
 bin/pkill:bin/pgrep:usr/bin/pkill:usr/bin/pgrep
 
+## getfacl -- get ACL information
+bin/getfacl
+
+## setfacl -- set ACL information
+bin/setfacl
+
 ####### contents of /sbin
 ## adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
 sbin/adjkerntz
