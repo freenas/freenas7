@@ -19,7 +19,6 @@ smbfs/smbfs.ko
 
 # NFS
 krpc/krpc.ko
-nfslockd/nfslockd.ko
 
 # Required by unionfs.ko and smbfs.ko
 libiconv/libiconv.ko

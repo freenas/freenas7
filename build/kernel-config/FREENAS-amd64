@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.439.2.19 2007/12/15 06:03:43 scottl Exp $
+# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.439.2.21.2.1 2008/10/02 02:57:24 kensmith Exp $
 
 machine		amd64
 cpu		HAMMER
@@ -38,6 +38,7 @@ options 	UFS_DIRHASH		# Improve performance on big directories
 options 	MD_ROOT			# MD is a potential root device
 options 	NFSCLIENT		# Network Filesystem Client
 options 	NFSSERVER		# Network Filesystem Server
+options 	NFSLOCKD		# Network Lock Manager
 options 	NFS_ROOT		# NFS usable as /, requires NFSCLIENT
 #options 	NTFS			# NT File System
 options 	MSDOSFS			# MSDOS Filesystem
@@ -188,6 +189,7 @@ device		bfe		# Broadcom BCM440x 10/100 Ethernet
 device		bge		# Broadcom BCM570xx Gigabit Ethernet
 device		dc		# DEC/Intel 21143 and various workalikes
 device		fxp		# Intel EtherExpress PRO/100B (82557, 82558)
+device		jme		# JMicron JMC250 Gigabit/JMC260 Fast Ethernet
 device		lge		# Level 1 LXT1001 gigabit Ethernet
 device		msk		# Marvell/SysKonnect Yukon II Gigabit Ethernet
 device		nge		# NatSemi DP83820 gigabit Ethernet
