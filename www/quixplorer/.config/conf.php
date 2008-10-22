@@ -1,5 +1,5 @@
 <?php
-	require_once("globals.inc");
+	require_once("config.inc");
 //------------------------------------------------------------------------------
 // Configuration Variables
 
