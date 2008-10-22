@@ -105,7 +105,7 @@ if ($_POST) {
 	if ("device" !== $_POST['type']) {
 		$dirname = dirname($_POST['path']);
 		if (!file_exists($dirname)) {
-			$input_errors[] = gettext("The path '{$dirname}' does not exists.");
+			$input_errors[] = gettext("The path '{$dirname}' does not exist.");
 		}
 	}
 
