@@ -65,6 +65,7 @@ function email_send($address, $subject, $message, &$error) {
 		$data .= "To: {$addressv}\n";
 	}
 	$data .= <<<EOD
+From: {$config['system']['email']['from']}
 Subject: {$subject}
 .
 
