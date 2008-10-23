@@ -16,7 +16,9 @@ name="smartd"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="start_precmd"
+start_precmd="mkconf_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="mkconf"
 
 # Defaults
 smartd_enable=${smartd_enable:-"NO"}
@@ -31,7 +33,7 @@ if [ -n "${_interval}" ]; then
 	command_args="${command_args} --interval=${_interval}"
 fi
 
-start_precmd()
+mkconf_cmd()
 {
 	local _devicespecialfile _type _param _powermode _email _tmp
 
@@ -44,7 +46,7 @@ start_precmd()
 	# Email report enabled?
 	_email=`/usr/local/bin/xml sel -t -m "//smartd/email" \
 		-i "count(enable) > 0" \
-			-v "concat('-m ',to,' -M exec /etc/mail/smartdreport.sh')" \
+			-v "concat('-m ',translate(to,';',','),' -M exec /etc/mail/smartdreport.sh')" \
 			-i "count(testemail) > 0" \
 				-o " -M test" \
 			-b \

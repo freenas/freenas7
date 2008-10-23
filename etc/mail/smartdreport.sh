@@ -12,7 +12,6 @@ msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 # Create message
 /usr/local/bin/xml sel -t \
 	-v "concat('From: ',//system/email/from)" -n \
-	-o "To: ${SMARTD_ADDRESS}" -n \
 	-o "Subject: ${SMARTD_SUBJECT}" -n \
 	-o "." -n \
 	${configxml_file} | /usr/local/bin/xml unesc > ${msmtp_msgfile}
