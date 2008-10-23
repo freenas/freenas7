@@ -318,11 +318,11 @@ function report_send_mail() {
 	// Send email and log result.
 	$result = email_send($config['statusreport']['to'], $config['statusreport']['subject'], $statusreport->Generate(), $error);
 	if (0 != $result) {
-		write_log($error);
+		write_log(sprintf(gettext("Failed to send status report to: %s."), $config['statusreport']['to']));
 		return 1;
 	}
 
-	write_log("Status report successfully sent to {$config['statusreport']['to']}.");
+	write_log(sprintf(gettext("Status report successfully sent to: %s."), $config['statusreport']['to']));
 	return 0;
 }
 ?>

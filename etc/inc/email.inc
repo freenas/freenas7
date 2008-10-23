@@ -60,9 +60,12 @@ function email_send($address, $subject, $message, &$error) {
 	$msgfilepath = "/tmp/message";
 
 	// Generate message content.
-	$data = <<<EOD
+	$data = "";
+	foreach (explode(";", $address) as $addressv) {
+		$data .= "To: {$addressv}\n";
+	}
+	$data .= <<<EOD
 From: {$config['system']['email']['from']}
-To: {$address}
 Subject: {$subject}
 .
 
@@ -77,7 +80,7 @@ EOD;
 	}
 
 	// Send email via external SMTP client.
-	mwexec2("/usr/local/bin/msmtp --file=/var/etc/msmtp.conf {$address} < {$msgfilepath}", $output, $retval);
+	mwexec2("/usr/local/bin/msmtp --read-recipients --file=/var/etc/msmtp.conf < {$msgfilepath}", $output, $retval);
 	if (0 !== $retval) {
 		$error = $output;
 	}

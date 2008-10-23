@@ -86,27 +86,26 @@ if ($_POST) {
 		write_config();
 
 		$retval = 0;
+		if (!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			$retval |= rc_exec_service("msmtp");
+			config_unlock();
+		}
 
+		// Send test email.
 		if (stristr($_POST['Submit'], gettext("Send test email"))) {
 			$subject = sprintf(gettext("Test email from host: %s"), $config['system']['hostname'] . "." . $config['system']['domain']);
 			$message = gettext("This email has been send to validate your email configuration.");
 
-			// Send an test email now.
 			$retval = @email_send($config['system']['email']['from'], $subject, $message, $error);
 			if (0 == $retval) {
 				$savemsg = gettext("Test email successfully sent.");
-				write_log("Test email successfully sent to {$config['system']['email']['from']}.");
+				write_log(sprintf(gettext("Test email successfully sent to: %s."), $config['system']['email']['from']));
 			} else {
-				$failmsg = gettext("Failed to send test email. Please check log files.");
-				write_log($error);
+				$failmsg = sprintf(gettext("Failed to send test email. Please check the <a href='%s'>log</a> files."), "diag_logs.php");
+				write_log(sprintf(gettext("Failed to send test email to: %s."), $config['system']['email']['from']));
 			}
 		} else {
-			if (!file_exists($d_sysrebootreqd_path)) {
-				config_lock();
-				$retval |= rc_exec_service("msmtp");
-				config_unlock();
-			}
-
 			$savemsg = get_std_save_message($retval);
 		}
 	}
