@@ -59,9 +59,12 @@ function email_send($address, $subject, $message, &$error) {
 
 	$msgfilepath = "/tmp/message";
 
+	// Convert adresses for msmtp.
+	$address = strtr($address, ";", " ");
+
 	// Generate message content.
 	$data = "";
-	foreach (explode(";", $address) as $addressv) {
+	foreach (explode(" ", $address) as $addressv) {
 		$data .= "To: {$addressv}\n";
 	}
 	$data .= <<<EOD
@@ -80,7 +83,7 @@ EOD;
 	}
 
 	// Send email via external SMTP client.
-	mwexec2("/usr/local/bin/msmtp --read-recipients --file=/var/etc/msmtp.conf < {$msgfilepath}", $output, $retval);
+	mwexec2("/usr/local/bin/msmtp --file=/var/etc/msmtp.conf {$address} < {$msgfilepath}", $output, $retval);
 	if (0 !== $retval) {
 		$error = $output;
 	}

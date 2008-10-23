@@ -10,11 +10,13 @@ msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 
 # Create message
+echo ${SMARTD_ADDRESS} | awk '{for ( i = NF ; i > 0 ; --i ) printf("To: %s\n",$i)}' > ${msmtp_msgfile}
+
 /usr/local/bin/xml sel -t \
 	-v "concat('From: ',//system/email/from)" -n \
 	-o "Subject: ${SMARTD_SUBJECT}" -n \
 	-o "." -n \
-	${configxml_file} | /usr/local/bin/xml unesc > ${msmtp_msgfile}
+	${configxml_file} | /usr/local/bin/xml unesc >> ${msmtp_msgfile}
 
 # Save the email message (STDIN) to a file:
 cat >> ${msmtp_msgfile}
