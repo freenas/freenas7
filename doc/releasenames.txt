@@ -1,3 +1,5 @@
+All release names are taken from the novel 'Dune' from Frank Herbert.
+
 Butlers Djihad
 Caladan
 Crysknife
@@ -11,3 +13,4 @@ Muad'Dib
 Rakis
 Salusa Secundus
 Shaitan
+Siaynoq
