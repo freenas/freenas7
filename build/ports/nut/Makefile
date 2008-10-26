@@ -106,7 +106,7 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upscmd ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upslog ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsrw ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_SCRIPT} -v ${WRKSRC}/clients/upssched-cmd ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/upssched-cmd.in ${FREENAS_ROOTFS}/usr/local/bin
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/server/upsd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsmon ${FREENAS_ROOTFS}/usr/local/sbin
