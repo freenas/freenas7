@@ -206,18 +206,14 @@ function enable_change(enable_change) {
 				    <td width="22%" valign="top" class="vncell"><?=gettext("Reports");?></td>
 			      <td width="78%" class="vtable">
 			      	<table>
-			      		<tr>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_systeminfo" value="systeminfo" <?php if (is_array($pconfig['report']) && in_array("systeminfo", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System info");?></td>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_dmesg" value="dmesg" <?php if (is_array($pconfig['report']) && in_array("dmesg", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System message buffer");?></td>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_systemlog" value="systemlog" <?php if (is_array($pconfig['report']) && in_array("systemlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System log");?></td>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_ftplog" value="ftplog" <?php if (is_array($pconfig['report']) && in_array("ftplog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("FTP log");?></td>
-								</tr>
-								<tr>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_rsynclog" value="rsynclog" <?php if (is_array($pconfig['report']) && in_array("rsynclog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("RSYNC log");?></td>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_sshdlog" value="sshdlog" <?php if (is_array($pconfig['report']) && in_array("sshdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("SSHD log");?></td>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_smartdlog" value="smartdlog" <?php if (is_array($pconfig['report']) && in_array("smartdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("S.M.A.R.T. log");?></td>
-									<td><input name="report[]" type="checkbox" class="formfld" id="report_daemonlog" value="daemonlog" <?php if (is_array($pconfig['report']) && in_array("daemonlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Daemon log");?></td>
-								</tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_systeminfo" value="systeminfo" <?php if (is_array($pconfig['report']) && in_array("systeminfo", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System info");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_dmesg" value="dmesg" <?php if (is_array($pconfig['report']) && in_array("dmesg", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System message buffer");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_systemlog" value="systemlog" <?php if (is_array($pconfig['report']) && in_array("systemlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System log");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_ftplog" value="ftplog" <?php if (is_array($pconfig['report']) && in_array("ftplog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("FTP log");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_rsynclog" value="rsynclog" <?php if (is_array($pconfig['report']) && in_array("rsynclog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("RSYNC log");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_sshdlog" value="sshdlog" <?php if (is_array($pconfig['report']) && in_array("sshdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("SSHD log");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_smartdlog" value="smartdlog" <?php if (is_array($pconfig['report']) && in_array("smartdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("S.M.A.R.T. log");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_daemonlog" value="daemonlog" <?php if (is_array($pconfig['report']) && in_array("daemonlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Daemon log");?></td></tr>
 			        </table>
 			      </td>
 					</tr>
