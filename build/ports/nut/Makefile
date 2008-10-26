@@ -111,7 +111,6 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/server/upsd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsmon ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/upssched ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_SCRIPT} -v ${FILESDIR}/upsmon-notifycmd.in ${FREENAS_ROOTFS}/usr/local/sbin/upsmon-notifycmd
 
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut_upslog.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut_upslog
