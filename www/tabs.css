@@ -2,7 +2,7 @@
 td.tabnavtbl {
 	float: left;
 	width: 100%;
-	margin-bottom: 0px;
+	margin-bottom: -1px;
 }
 td.tabnavtbl ul {
 	margin: 0px;
