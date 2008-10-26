@@ -10,29 +10,55 @@ msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 nut_upssched_forced_shutdown_timer=${nut_upssched_forced_shutdown_timer:-"2"}
 
+case "${NOTIFYTYPE}" in
+	ONLINE)
+		_notifymessage="UPS ${UPSNAME} on line power";;
+	ONBATT)
+		_notifymessage="UPS ${UPSNAME} on battery";;
+	LOWBATT)
+		_notifymessage="UPS ${UPSNAME} battery is low";;
+	FSD)
+		_notifymessage="UPS ${UPSNAME}: forced shutdown in progress";;
+	COMMOK)
+		_notifymessage="Communications with UPS ${UPSNAME} established";;
+	COMMBAD)
+		_notifymessage="Communications with UPS ${UPSNAME} lost";;
+	SHUTDOWN)
+		_notifymessage="Auto logout and shutdown proceeding";;
+	REPLBATT)
+		_notifymessage="UPS ${UPSNAME} battery needs to be replaced";;
+	NOCOMM)
+		_notifymessage="UPS ${UPSNAME} is unavailable";;
+	NOPARENT)
+		_notifymessage="upsmon parent process died - shutdown impossible";;
+esac
+
 case "${1}" in
 	early-warning)
-		_message="Early shutdown imminent";;
+		_message="${_notifymessage}.
+Early shutdown imminent.";;
 
 	early-shutdown)
-		_message="Early shutdown";
+		_message="${_notifymessage}.
+Early shutdown.";
 		shutdown -h now powerevent;;
 
 	resume)
-		_message="Early shutdown cancelled";;
+		_message="${_notifymessage}.
+Early shutdown cancelled.";;
 
 	forced-shutdown)
-		_message="Forced shutdown";
+		_message="${_notifymessage}";
 		shutdown -h +${nut_upssched_forced_shutdown_timer} powerevent-forced;;
 
 	replace-battery)
-		_message="Replace UPS battery";;
+		_message="${_notifymessage}";;
 
 	bad-communication)
-		_message="Bad communication";;
+		_message="${_notifymessage}";;
 
 	no-communication)
-		_message="No communication";;
+		_message="${_notifymessage}";;
 
 	*)
 		_message="Unknown command: ${1}";
@@ -41,7 +67,7 @@ esac
 # Write message to syslog
 logger -t upssched-cmd "${_message}"
 
-# Send email if feature is set
+# Send email if feature is enabled
 if configxml_isset //ups/email/enable; then
 	# Get recipients
 	_recipients=`configxml_get "//ups/email/to" | /usr/bin/tr ";" " "`
