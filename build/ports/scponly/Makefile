@@ -1,7 +1,6 @@
 PORTNAME=			scponly
-PORTVERSION=	4.6
-PORTREVISION=	3
-CATEGORIES=		shells
+PORTVERSION=	4.8
+CATEGORIES=		shells security
 COMMENT=			A tiny shell that only permits scp and sftp
 MAINTAINER=		votdev@gmx.de
 
@@ -11,7 +10,6 @@ MASTER_SITE_SUBDIR=	scponly
 
 EXTRACT_SUFX=		.tgz
 GNU_CONFIGURE=	yes
-PATCH_STRIP=		-p1
 
 CONFIGURE_ARGS+=	--enable-passwd-compat
 
