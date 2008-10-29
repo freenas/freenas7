@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
-"PO-Revision-Date: 2008-10-15 13:10+0000\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"PO-Revision-Date: 2008-10-25 13:55+0000\n"
 "Last-Translator: Christophe Lherieau <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -514,9 +514,6 @@ msgstr "Automatique"
 
 msgid "AutoScale"
 msgstr "Echelle auto"
-
-msgid "Automatically generated test email."
-msgstr "Email de test généré automatiquement."
 
 msgid "Auxiliary parameters"
 msgstr "Paramètres auxiliaires"
@@ -1209,9 +1206,6 @@ msgstr "Les partitions EFI/GPT ne sont utilisable qu'avec UFS uniquement."
 msgid "Edit"
 msgstr "Editer"
 
-msgid "Edit File"
-msgstr "Editer un fichier"
-
 msgid "Edit Host"
 msgstr "Edition de l'hôte"
 
@@ -1283,6 +1277,9 @@ msgstr "Email"
 
 msgid "Email Report"
 msgstr "Rapport par e-mail"
+
+msgid "Email notification"
+msgstr "Notification par e-mail"
 
 msgid "Email report"
 msgstr "Rapport par email"
@@ -1551,15 +1548,23 @@ msgstr "Echec lors de la création d'un système de fichiers en mémoire."
 msgid "Failed to execute cron job."
 msgstr "Erreur à l'éxécution d'une tâche cron."
 
-msgid "Failed to send status report. Please check log files."
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Echec lors de l'envoi du rapport d'état. Veuillez conulter les fichiers de "
-"journalisation."
+"L'envoi du rapport d'état a échoué. Vérifier les fichiers de <a "
+"href='%s'>log</a>."
 
-msgid "Failed to send test email. Please check log files."
+#, php-format
+msgid "Failed to send test email to: %s."
+msgstr "L'envoi de l'e-mail de test vers %s a échoué."
+
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Echec lors de l'envoi de l'e-mail de test. Veuillez vérifier les fichiers de "
-"log."
+"L'envoi de l'e-mail de test a échoué. Vérifier les fichiers de <a "
+"href='%s'>log</a>."
 
 msgid "Failed to upload metadata backup file."
 msgstr "Echec au chargement du fichier de sauvegarde des méta-données."
@@ -1572,6 +1577,12 @@ msgstr "Basculement (failover)"
 
 msgid "File"
 msgstr "Fichier"
+
+msgid "File Editor"
+msgstr "Editeur de fichiers"
+
+msgid "File Manager"
+msgstr "Gestionnaire de fichiers"
 
 msgid "File not found"
 msgstr "Fichier non trouvé"
@@ -3298,6 +3309,10 @@ msgstr "Routes statiques"
 msgid "Status"
 msgstr "Statut"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr "Rapport d'état du hôte: %s.%s"
+
 msgid "Status report successfully sent."
 msgstr "Rapport d'état envoyé avec succès."
 
@@ -3454,8 +3469,12 @@ msgid "Test email"
 msgstr "Tester l'e-mail"
 
 #, php-format
-msgid "Test email from %s"
-msgstr "Email de test de %s"
+msgid "Test email from host: %s"
+msgstr "Email de test du hôte: %s"
+
+#, php-format
+msgid "Test email successfully sent to: %s."
+msgstr "Email de test envoyé avec succès vers: %s."
 
 msgid "Test email successfully sent."
 msgstr "Email de test envoyé avec succès."
@@ -3499,6 +3518,13 @@ msgstr "Le port TCP doit être un nombre valide compris entre 1024 et 65535."
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "L'ID VLAN doit être compris entre 1 et 4094."
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
+msgstr ""
+"L'attribut '%s' contient des caractères invalides et n'est pas un nom "
+"NetBIOS valide."
 
 #, c-format
 msgid ""
@@ -3950,6 +3976,9 @@ msgstr "Ce disque existe déjà dans la liste des disques."
 msgid "This disk/partition is already configured."
 msgstr "Ce disque/partition est déjà configuré."
 
+msgid "This email has been send to validate your email configuration."
+msgstr "Cet e-mail a été envoyé pour valider votre configuration e-mail."
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "Ce disque crypté est monté, démontez-le avant d'essayer de la détacher."
@@ -4261,6 +4290,10 @@ msgstr "UPS"
 
 msgid "UPS disabled"
 msgstr "UPS désactivé"
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
+msgstr "Notification UPS du hôte: %s.%s"
 
 msgid "UPS status"
 msgstr "Etat de l'UPS"
@@ -4865,6 +4898,9 @@ msgstr "jours de la semaine"
 
 #~ msgid "ARP table"
 #~ msgstr "Table ARP"
+
+#~ msgid "Edit File"
+#~ msgstr "Editer un fichier"
 
 #~ msgid "Reboot system"
 #~ msgstr "Redémarrage du NAS"
@@ -6177,6 +6213,11 @@ msgstr "jours de la semaine"
 #~ "Entrez le numéro d'un port pour le serveur HTTP si vous désirez changer "
 #~ "celui par défaut (49152). Seuls des ports dynamiques ou privés peuvent être "
 #~ "utilisés (de 49152 à 65535)."
+
+#~ msgid "Failed to send status report. Please check log files."
+#~ msgstr ""
+#~ "Echec lors de l'envoi du rapport d'état. Veuillez conulter les fichiers de "
+#~ "journalisation."
 
 #~ msgid "desc"
 #~ msgstr "desc"

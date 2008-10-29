@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
-"PO-Revision-Date: 2008-10-04 18:12+0000\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"PO-Revision-Date: 2008-10-24 19:36+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -505,9 +505,6 @@ msgstr "Авто"
 
 msgid "AutoScale"
 msgstr "Автомасштаб"
-
-msgid "Automatically generated test email."
-msgstr "Автоматически созданный тест e-mail."
 
 msgid "Auxiliary parameters"
 msgstr "Дополнительные параметры"
@@ -1191,9 +1188,6 @@ msgstr "На EFI/GPT-разделах поддерживается только 
 msgid "Edit"
 msgstr "Изменить"
 
-msgid "Edit File"
-msgstr "Редактировать файл"
-
 msgid "Edit Host"
 msgstr "Изменить узел"
 
@@ -1265,6 +1259,9 @@ msgstr "Эл. почта"
 
 msgid "Email Report"
 msgstr "Отчет по электронной почте"
+
+msgid "Email notification"
+msgstr "Уведомление по е-mail"
 
 msgid "Email report"
 msgstr "Отправить отчет по e-mail"
@@ -1531,11 +1528,23 @@ msgstr "Сбой при создании файловой системы в па
 msgid "Failed to execute cron job."
 msgstr "Сбой при выполнении задания cron'а."
 
-msgid "Failed to send status report. Please check log files."
-msgstr "Сбой отсылки отчета состояния. Проверьте, пожалуйста, файлы журнала."
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
+msgstr ""
+"Отправка отчета состояния завершилась неудачно. Пожалуйста, проверьте <a "
+"href='%s'>log-файлы</a>."
 
-msgid "Failed to send test email. Please check log files."
-msgstr "Сбой отправки тестового e-mail. Прочтите лог файл."
+#, php-format
+msgid "Failed to send test email to: %s."
+msgstr "Отправка тестового сообщения для %s завершилась неудачно."
+
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
+"Отправка  тестового сообщения завершилась неудачно. Пожалуйста, проверьте <a "
+"href='%s'>log-файлы</a>."
 
 msgid "Failed to upload metadata backup file."
 msgstr "Ошибка при загрузке файла метаданных."
@@ -1548,6 +1557,12 @@ msgstr "Резервирование от сбоев"
 
 msgid "File"
 msgstr "Файл"
+
+msgid "File Editor"
+msgstr "Файловый редактор"
+
+msgid "File Manager"
+msgstr "Файловый менеджер"
 
 msgid "File not found"
 msgstr "Файл не найден"
@@ -3243,6 +3258,10 @@ msgstr "Статические маршруты"
 msgid "Status"
 msgstr "Состояние"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr "Отчет состояния от хоста %s.%s"
+
 msgid "Status report successfully sent."
 msgstr "Отчет отправлен успешно."
 
@@ -3398,8 +3417,12 @@ msgid "Test email"
 msgstr "Тест e-mail"
 
 #, php-format
-msgid "Test email from %s"
-msgstr "Тестовый e-mail для %s"
+msgid "Test email from host: %s"
+msgstr "Тестовое сообщение от хоста %s"
+
+#, php-format
+msgid "Test email successfully sent to: %s."
+msgstr "Тестовое сообщение для %s отправлено успешно."
 
 msgid "Test email successfully sent."
 msgstr "Тестовый e-mail успешно отправлен."
@@ -3442,6 +3465,11 @@ msgstr "Порт TCP должен быть верным номером порт�
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "VLAN ID должен быть между 1 и 4094."
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
+msgstr "Атрибут '%s' содержит некорректные символы и неверное имя NetBIOS."
 
 #, c-format
 msgid ""
@@ -3874,6 +3902,10 @@ msgstr "Этот диск уже есть в списке дисков."
 msgid "This disk/partition is already configured."
 msgstr "Этот диск/раздел уже сконфигурирован."
 
+msgid "This email has been send to validate your email configuration."
+msgstr ""
+"Это сообщение было отправлено для проверки настроек вашей электронной почты."
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "Зашифрованный диск смонтирован, размонтируйте его перед отсоединением."
@@ -4183,6 +4215,10 @@ msgstr "UPS"
 
 msgid "UPS disabled"
 msgstr "Сервис UPS отключен"
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
+msgstr "Уведомление UPS от хоста %s.%s"
 
 msgid "UPS status"
 msgstr "Состояние UPS"
@@ -4771,6 +4807,9 @@ msgstr "дней недели"
 
 #~ msgid "ARP table"
 #~ msgstr "Таблица ARP"
+
+#~ msgid "Edit File"
+#~ msgstr "Редактировать файл"
 
 #~ msgid "Reboot system"
 #~ msgstr "Перезагрузить систему"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
 "PO-Revision-Date: 2008-10-14 03:39+0000\n"
 "Last-Translator: osaka <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -460,9 +460,6 @@ msgstr ""
 
 msgid "AutoScale"
 msgstr "オートスケール"
-
-msgid "Automatically generated test email."
-msgstr "自動的に生成されたテストメール"
 
 msgid "Auxiliary parameters"
 msgstr ""
@@ -1116,9 +1113,6 @@ msgstr ""
 msgid "Edit"
 msgstr "編集"
 
-msgid "Edit File"
-msgstr "ファイルの編集"
-
 msgid "Edit Host"
 msgstr "ホストを編集"
 
@@ -1190,6 +1184,9 @@ msgstr ""
 
 msgid "Email Report"
 msgstr "レポートメール"
+
+msgid "Email notification"
+msgstr ""
 
 msgid "Email report"
 msgstr "レポートメール"
@@ -1430,11 +1427,19 @@ msgstr ""
 msgid "Failed to execute cron job."
 msgstr ""
 
-msgid "Failed to send status report. Please check log files."
-msgstr "ステータスレポートの送信に失敗しました。ログファイルをチェックしてください。"
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
+msgstr ""
 
-msgid "Failed to send test email. Please check log files."
-msgstr "テストメールの送信に失敗しました。ログファイルをチェックしてください。"
+#, php-format
+msgid "Failed to send test email to: %s."
+msgstr ""
+
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
 
 msgid "Failed to upload metadata backup file."
 msgstr "メタデータのバックアップファイルのアップロードに失敗しました。"
@@ -1447,6 +1452,12 @@ msgstr ""
 
 msgid "File"
 msgstr "ファイル"
+
+msgid "File Editor"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
 
 msgid "File not found"
 msgstr "ファイルが存在しません"
@@ -3025,6 +3036,10 @@ msgstr "スタティックルート"
 msgid "Status"
 msgstr "ステータス"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr ""
+
 msgid "Status report successfully sent."
 msgstr "ステータスレポートの送信に成功しました。"
 
@@ -3178,8 +3193,12 @@ msgid "Test email"
 msgstr ""
 
 #, php-format
-msgid "Test email from %s"
-msgstr "%s からのテストメール"
+msgid "Test email from host: %s"
+msgstr ""
+
+#, php-format
+msgid "Test email successfully sent to: %s."
+msgstr ""
 
 msgid "Test email successfully sent."
 msgstr "テストメールの送信に成功しました。"
@@ -3219,6 +3238,11 @@ msgstr "有効な TCP ポート番号を指定して下さい．"
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "VLAN ID は1-4094の範囲内で指定してください。"
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
+msgstr ""
 
 #, c-format
 msgid ""
@@ -3600,6 +3624,9 @@ msgstr "このディスクは既にディスクリストに存在しています
 msgid "This disk/partition is already configured."
 msgstr "このディスク/パーティションは既に設定されています。"
 
+msgid "This email has been send to validate your email configuration."
+msgstr ""
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "この暗号化ディスクはマウントされています．取り外す前にアンマウントして下さい．"
 
@@ -3839,6 +3866,10 @@ msgid "UPS"
 msgstr ""
 
 msgid "UPS disabled"
+msgstr ""
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
 msgstr ""
 
 msgid "UPS status"
@@ -4396,6 +4427,9 @@ msgstr "週日"
 
 #~ msgid "ARP table"
 #~ msgstr "ARP テーブル"
+
+#~ msgid "Edit File"
+#~ msgstr "ファイルの編集"
 
 #~ msgid "Reboot system"
 #~ msgstr "リブート"

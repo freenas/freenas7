@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
 "PO-Revision-Date: 2008-09-13 16:04+0000\n"
 "Last-Translator: Aron Xu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:38+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -498,9 +498,6 @@ msgstr ""
 
 msgid "AutoScale"
 msgstr "自动扩展"
-
-msgid "Automatically generated test email."
-msgstr ""
 
 msgid "Auxiliary parameters"
 msgstr "附属参数"
@@ -1162,9 +1159,6 @@ msgstr "EFI/GPT 只相容于 UFS 档案系统。"
 msgid "Edit"
 msgstr "编辑"
 
-msgid "Edit File"
-msgstr "编辑档案"
-
 msgid "Edit Host"
 msgstr "编辑主机资讯"
 
@@ -1236,6 +1230,9 @@ msgstr "Email"
 
 msgid "Email Report"
 msgstr "Email 报告"
+
+msgid "Email notification"
+msgstr ""
 
 msgid "Email report"
 msgstr "Email 报告"
@@ -1480,10 +1477,18 @@ msgstr "无法建立 RAM Disk"
 msgid "Failed to execute cron job."
 msgstr ""
 
-msgid "Failed to send status report. Please check log files."
-msgstr "状态报告档案传送失败。请检查记录档。"
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
+msgstr ""
 
-msgid "Failed to send test email. Please check log files."
+#, php-format
+msgid "Failed to send test email to: %s."
+msgstr ""
+
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1497,6 +1502,12 @@ msgstr ""
 
 msgid "File"
 msgstr "档案"
+
+msgid "File Editor"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
 
 msgid "File not found"
 msgstr "没有这个档案"
@@ -3106,6 +3117,10 @@ msgstr "静态路由"
 msgid "Status"
 msgstr "状态"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr ""
+
 msgid "Status report successfully sent."
 msgstr "状态报告已传送成功。"
 
@@ -3258,7 +3273,11 @@ msgid "Test email"
 msgstr ""
 
 #, php-format
-msgid "Test email from %s"
+msgid "Test email from host: %s"
+msgstr ""
+
+#, php-format
+msgid "Test email successfully sent to: %s."
 msgstr ""
 
 msgid "Test email successfully sent."
@@ -3299,6 +3318,11 @@ msgid "The TCP port must be a valid port number."
 msgstr "请输入一个有效的连接埠。"
 
 msgid "The VLAN ID must be between 1 and 4094."
+msgstr ""
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr ""
 
 #, c-format
@@ -3693,6 +3717,9 @@ msgstr "这个磁碟已经加入过了。"
 msgid "This disk/partition is already configured."
 msgstr "这个磁碟/磁区已经设定过了。"
 
+msgid "This email has been send to validate your email configuration."
+msgstr ""
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "这个加密磁碟正在挂载中，在卸除之前请先将其卸载。"
 
@@ -3967,6 +3994,10 @@ msgid "UPS"
 msgstr ""
 
 msgid "UPS disabled"
+msgstr ""
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
 msgstr ""
 
 msgid "UPS status"
@@ -4522,6 +4553,9 @@ msgstr "平常日"
 
 #~ msgid "Wireless"
 #~ msgstr "无线网路"
+
+#~ msgid "Edit File"
+#~ msgstr "编辑档案"
 
 #~ msgid "Reboot system"
 #~ msgstr "重新开机"
@@ -5408,6 +5442,9 @@ msgstr "平常日"
 #~ "default (49152). Only dynamic or private ports can be used (from 49152 "
 #~ "through 65535)."
 #~ msgstr "输入你想要使用的网页伺服器连接阜（预设为 49152），只可以使用动态或是私有区（从 49152 到 65535）。"
+
+#~ msgid "Failed to send status report. Please check log files."
+#~ msgstr "状态报告档案传送失败。请检查记录档。"
 
 #~ msgid "desc"
 #~ msgstr "递减"

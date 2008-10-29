@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
 "PO-Revision-Date: 2008-09-29 16:45+0000\n"
 "Last-Translator: Ángel Alonso (F3leR) <f3ler0x69@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -492,9 +492,6 @@ msgstr "Automático"
 
 msgid "AutoScale"
 msgstr "Escala Automática"
-
-msgid "Automatically generated test email."
-msgstr "Email de prueba generado automáticamente."
 
 msgid "Auxiliary parameters"
 msgstr "Parámetros auxiliares."
@@ -1174,9 +1171,6 @@ msgstr "Una partición EFI/GPT sólo se puede usar con UFS."
 msgid "Edit"
 msgstr "Editar"
 
-msgid "Edit File"
-msgstr "Editar fichero"
-
 msgid "Edit Host"
 msgstr "Editar Máquina"
 
@@ -1247,6 +1241,9 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 msgid "Email Report"
+msgstr ""
+
+msgid "Email notification"
 msgstr ""
 
 msgid "Email report"
@@ -1504,13 +1501,19 @@ msgstr "Falló al crear un sistema de archivos en memoria."
 msgid "Failed to execute cron job."
 msgstr ""
 
-msgid "Failed to send status report. Please check log files."
-msgstr "Falló al enviar reporte de estado. Por favor verificar archivos log."
-
-msgid "Failed to send test email. Please check log files."
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Fallo en el envío de email de prueba. Por favor comprueba los archivos de "
-"log."
+
+#, php-format
+msgid "Failed to send test email to: %s."
+msgstr ""
+
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
 
 msgid "Failed to upload metadata backup file."
 msgstr "Falló al subir archivo de respaldo de metadata."
@@ -1522,6 +1525,12 @@ msgid "Failover"
 msgstr "Failover"
 
 msgid "File"
+msgstr ""
+
+msgid "File Editor"
+msgstr ""
+
+msgid "File Manager"
 msgstr ""
 
 msgid "File not found"
@@ -3169,6 +3178,10 @@ msgstr "Rutas Estáticas"
 msgid "Status"
 msgstr "Estado"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr ""
+
 msgid "Status report successfully sent."
 msgstr "El reporte de estado se ha enviado exitosamente."
 
@@ -3323,7 +3336,11 @@ msgid "Test email"
 msgstr ""
 
 #, php-format
-msgid "Test email from %s"
+msgid "Test email from host: %s"
+msgstr ""
+
+#, php-format
+msgid "Test email successfully sent to: %s."
 msgstr ""
 
 msgid "Test email successfully sent."
@@ -3365,6 +3382,11 @@ msgstr "El puerto TCP tiene que ser un número de puerto válido."
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "El ID de la VLAN debe estar entre 1 y 4094"
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
+msgstr ""
 
 #, c-format
 msgid ""
@@ -3782,6 +3804,9 @@ msgstr "Este disco ya existe en la lista de discos."
 msgid "This disk/partition is already configured."
 msgstr "El disco/partición ya está configurada."
 
+msgid "This email has been send to validate your email configuration."
+msgstr ""
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "Este disco encriptado está montado, desmóntelo antes de tratar de eliminarlo."
@@ -4035,6 +4060,10 @@ msgid "UPS"
 msgstr ""
 
 msgid "UPS disabled"
+msgstr ""
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
 msgstr ""
 
 msgid "UPS status"

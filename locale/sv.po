@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
-"PO-Revision-Date: 2008-10-14 14:39+0000\n"
-"Last-Translator: Daniel Ruus <Unknown>\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"PO-Revision-Date: 2008-10-27 11:43+0000\n"
+"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -88,6 +88,13 @@ msgid ""
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
+"<i>Standard - Rsync väljer algoritmen 'during' vid kommunikation med rsync "
+"3.0.0 eller senare, och algoritmen 'before' vid kommunikation med en äldre "
+"version.</li><li>Before - Filraderingar kommer att ske innan överföringen "
+"startar.</li><li>During - Filraderingar sker under överföringens "
+"skede.</li><li>Delay - Filraderingar räknas ut under överföringen och ske "
+"när överföringen är klar.</li><li>After - Filraderingar sker efter att "
+"överföringen är slutförd.</li>"
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -221,6 +228,9 @@ msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr ""
+"Aktivera epostrapportering om du vill be notifierad om fel uppstår eller ett "
+"nytt fel har upptäckts, eller om ett S.M.A.R.T. kommando till en disk "
+"misslyckats."
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -247,7 +257,7 @@ msgid "Add URL"
 msgstr "Lägg till url"
 
 msgid "Add additional scheduled self-test."
-msgstr ""
+msgstr "Lägg till ytterligare schemalagt självtest."
 
 msgid "Add command"
 msgstr "Lägg till kommando"
@@ -262,13 +272,13 @@ msgid "Add disk"
 msgstr "Lägg till disk"
 
 msgid "Add extent"
-msgstr ""
+msgstr "Lägg till extent"
 
 msgid "Add group"
 msgstr "Lägg till grupp"
 
 msgid "Add initiator"
-msgstr ""
+msgstr "Lägg till initiator"
 
 msgid "Add interface"
 msgstr "Lägg till gränssnitt"
@@ -277,16 +287,16 @@ msgid "Add job"
 msgstr "Lägg till jobb"
 
 msgid "Add module"
-msgstr ""
+msgstr "Lägg till modul"
 
 msgid "Add mount point"
-msgstr ""
+msgstr "Lägg till monteringspunkt"
 
 msgid "Add option"
-msgstr ""
+msgstr "Lägg till alternativ"
 
 msgid "Add self-test"
-msgstr ""
+msgstr "Lägg till självtest"
 
 msgid "Add share"
 msgstr "Lägg till utdelning"
@@ -298,19 +308,20 @@ msgid "Add user"
 msgstr "Lägg till användare"
 
 msgid "Additional group"
-msgstr ""
+msgstr "Ytterligare grupp"
 
 msgid "Additional parameters to the hardware-specific part of the driver."
 msgstr ""
+"Ytterligare parametrar till den hårdvaruspecifika delen av drivrutinen."
 
 msgid "Address"
-msgstr ""
+msgstr "Adress"
 
 msgid "Administration password"
 msgstr "Administrationslösenord"
 
 msgid "Administrative WebGUI"
-msgstr ""
+msgstr "Anministrativt webbgränssnitt"
 
 msgid "Administrator name"
 msgstr "Administratörens namn"
@@ -319,10 +330,10 @@ msgid "Advanced"
 msgstr "Avancerat"
 
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Avancerad konfiguration"
 
 msgid "Advanced Options"
-msgstr ""
+msgstr "Avancerade alternativ"
 
 msgid "Advanced Power Management"
 msgstr "Avancerad strömhantering (APM)"
@@ -337,6 +348,9 @@ msgid ""
 "address of your computer</li><li>access the webGUI with the new IP "
 "address</li></ul>"
 msgstr ""
+"Efter att du klickat på &quot;Spara&quot; kanske du måste göra något av "
+"följande för att kunna nå %s igen:<ul><li>Ändra IP-adressen på din "
+"dator</li><li>besöka webbgränssnittet med den nya IP-adressen</li></ul>"
 
 #, php-format
 msgid ""
@@ -346,39 +360,51 @@ msgid ""
 "class='vexpl'>change the IP address of your computer</span></li><li><span "
 "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
+"Efter att du klickat på &quot;Spara&quot;, måste du starta om %s för att "
+"ändringarna ska ha effekt. Du kanske också måste göra något av följande för "
+"att kunna nå din NAS igen: </span></p><ul><li><span class='vexpl'>ändra IP-"
+"adress på din dator</span></li><li><span class='vexpl'>besöka "
+"webbgränssnittet med den nya IP-adressen</span></li></ul>"
 
 msgid "Aggregation protocol"
-msgstr ""
+msgstr "Aggregation protokoll"
 
 msgid "All"
 msgstr "Alla"
 
 msgid "All dirs"
-msgstr ""
+msgstr "Alla kataloger"
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
 "anything beginning with .Apple illegal."
 msgstr ""
+"Alla utdelningar använder inställningen 'usedots' vilket gör att filnamnen "
+".Parent och allting som börjar med .Apple är otillåtet."
 
 msgid "All users will have the root privilege."
 msgstr "Alla användare kommer att ha root-behörighet."
 
 msgid "Allow"
-msgstr ""
+msgstr "Tillåt"
 
 msgid "Allow client access to accounts that have null passwords."
-msgstr ""
+msgstr "Ge klienter tillgång till konton utan lösenord."
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr ""
+"Tillåt klienter att försöka lagra OS/2-liknande utökade attribut på en "
+"tilldelad enhet."
 
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
 "Directories can be removed, but only if they are empty. However, overwriting "
 "existing files is still allowed."
 msgstr ""
+"Tillåt användare att ladda upp filer, men INTE att radera eller döpa om dem. "
+"Kataloger kan raderas, men enbart om de är tomma. Överskrivning av "
+"existerande filer är dock tillåtet."
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -387,7 +413,7 @@ msgstr ""
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
-msgstr ""
+msgstr "Tillåt %s att försöka bli en lokal master browser."
 
 msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
@@ -401,36 +427,38 @@ msgid "Alternate TCP port. Default is 873"
 msgstr "Alternativ TCP-port. Standard är 873"
 
 msgid "Alternative configuration directory (usually empty)."
-msgstr ""
+msgstr "Alternativ konfigurationskatalog (vanligtvis tom)."
 
 msgid "Always on"
 msgstr "Alltid på"
 
 msgid "Always scan"
-msgstr ""
+msgstr "Skanna alltid"
 
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
 msgstr ""
+"Ange alltid 0 som enhetsnummer, det hjälper när numret inte är konstant "
+"mellan omstart, kluster, ..."
 
 msgid "An host with this name already exists."
 msgstr "En värd med det här namnet finns redan."
 
 msgid "An interface with the specified description already exists."
-msgstr ""
+msgstr "Ett gränssnitt med den angivna beskrivningen finns redan."
 
 msgid "Anonymous users only"
-msgstr ""
+msgstr "Endast anonyma användare"
 
 msgid "Apply changes"
 msgstr "Verkställ ändringar"
 
 msgid "Archive"
-msgstr ""
+msgstr "Arkivera"
 
 msgid "Archive mode."
-msgstr ""
+msgstr "Arkiveringsläge."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Är du säker på att du vill fortsätta?"
@@ -463,22 +491,19 @@ msgid "Authorised network"
 msgstr "Behörigt nätverk"
 
 msgid "Auto"
-msgstr ""
+msgstr "Automatisk"
 
 msgid "AutoScale"
 msgstr ""
 
-msgid "Automatically generated test email."
-msgstr ""
-
 msgid "Auxiliary parameters"
-msgstr ""
+msgstr "Yttre parametrar"
 
 msgid "Backup configuration"
 msgstr "Säkerhetskopiera konfiguration"
 
 msgid "Backup file"
-msgstr ""
+msgstr "Säkerhetskopia"
 
 msgid "Backup/Restore"
 msgstr "Säkerhetskopiera/Återskapa"
@@ -490,31 +515,31 @@ msgid "Banner"
 msgstr "Banderoll"
 
 msgid "Base DN"
-msgstr ""
+msgstr "Basdomännamn"
 
 msgid "BitTorrent"
-msgstr ""
+msgstr "BitTorrent"
 
 msgid "Browseable"
 msgstr "Bläddringsbar"
 
 msgid "CCMP"
-msgstr ""
+msgstr "CCMP"
 
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
 msgid "CD/DVD or Old Software RAID"
-msgstr ""
+msgstr "CD/DVD eller gammal mjukvaru-RAID"
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
 
 msgid "CIFS/SMB disabled"
-msgstr ""
+msgstr "CIFS/SMB avaktiverad"
 
 msgid "CIFS/SMB informations"
-msgstr ""
+msgstr "CIFS/SMB information"
 
 msgid "CPU"
 msgstr "CPU"
@@ -523,10 +548,10 @@ msgid "CPU load"
 msgstr "Processorbelastning"
 
 msgid "CPU usage"
-msgstr ""
+msgstr "CPU-användning"
 
 msgid "Can't format the OS origin disk!"
-msgstr ""
+msgstr "Kan ej formatera operativsystemets ursprungsdisk!"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Kan inte montera systempartition 1, DATA-partitionen är 2."
@@ -548,13 +573,13 @@ msgid "Channel"
 msgstr "Kanal"
 
 msgid "Check interval"
-msgstr ""
+msgstr "Kontrollera intervall"
 
 msgid "Check shared secret:"
 msgstr ""
 
 msgid "Choose which interface this route applies to."
-msgstr ""
+msgstr "Välj det gränssnitt som denna väg gäller."
 
 msgid "Clear log"
 msgstr "Töm logg"
@@ -570,6 +595,7 @@ msgstr ""
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr ""
+"Klicka denna knapp för att ladda ned systemkonfigurationen i XML-format."
 
 msgid "Client"
 msgstr "Klient"
@@ -578,10 +604,10 @@ msgid "Client RSYNC job"
 msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
-msgstr ""
+msgstr "Klienten ser gemener, servern ser versaler."
 
 msgid "Client sees uppercase, server sees lowercase"
-msgstr ""
+msgstr "Klienten ser versaler, servern ser gemener."
 
 msgid "Collecting initial data, please wait..."
 msgstr "Samlar in initial data, var god vänta..."
@@ -594,6 +620,7 @@ msgstr "Kolumner"
 
 msgid "Comma separated list of directories to search for files to share."
 msgstr ""
+"Kommaseparerad lista av kataloger som ska söker för filer som delas ut."
 
 msgid "Command"
 msgstr "Kommando"
@@ -602,7 +629,7 @@ msgid "Command output:"
 msgstr "Kommandoutmatning:"
 
 msgid "Command scripts"
-msgstr ""
+msgstr "Kommandoskript"
 
 msgid "Comment"
 msgstr "Kommentar"
@@ -614,22 +641,25 @@ msgid "Compliant profile to be used."
 msgstr ""
 
 msgid "Compress"
-msgstr ""
+msgstr "Komprimera"
 
 msgid "Compress file data during the transfer."
-msgstr ""
+msgstr "Komprimera fildata under överföring."
 
 msgid "Compression"
-msgstr ""
+msgstr "Komprimering"
 
 msgid ""
 "Compression is worth using if your connection is slow. The efficiency of the "
 "compression depends on the type of the file, and varies widely. Useful for "
 "internet transfer only."
 msgstr ""
+"Komprimering är värt att använda om din nätverksanslutning är långsam. "
+"Effektiviteten på komprimeringen beror på typen av fil, och kan variera. "
+"Användbart enbart för Internet överföring."
 
 msgid "Configuration directory"
-msgstr ""
+msgstr "Konfigurationskatalog"
 
 msgid "Configuring"
 msgstr "Konfigurering"
@@ -638,18 +668,20 @@ msgid "Confirmation"
 msgstr "Bekräftelse"
 
 msgid "Connected FTP users"
-msgstr ""
+msgstr "Anslutna FTP-användare"
 
 msgid "Console menu"
 msgstr "Konsollmeny"
 
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 msgid ""
 "Contact information, e.g. name or email of the person responsible for this "
 "system: 'admin@email.address'."
 msgstr ""
+"Kontaktinformation, så som namn eller epostadress på personen ansvarig för "
+"detta system: 'admin@email.address'."
 
 msgid "Content"
 msgstr "Innehåll"
@@ -661,7 +693,7 @@ msgid "Create"
 msgstr "Skapa"
 
 msgid "Create and initialize RAID."
-msgstr ""
+msgstr "Skapa och initialisera RAID."
 
 msgid "Create encrypted volume"
 msgstr "Skapa krypterad volym"
@@ -673,10 +705,10 @@ msgid "Create work directory if it doesn't exist"
 msgstr "Skapa arbetskatalog om den inte redan finns"
 
 msgid "Credits"
-msgstr ""
+msgstr "Tack till"
 
 msgid "Critical"
-msgstr ""
+msgstr "Kritiskt"
 
 msgid "Cron"
 msgstr "Cron"
@@ -685,22 +717,22 @@ msgid "Cron job"
 msgstr "Cron-jobb"
 
 msgid "DAAP"
-msgstr ""
+msgstr "DAAP"
 
 msgid "DAAP Server"
-msgstr ""
+msgstr "DAAP Server"
 
 msgid "DDP"
-msgstr ""
+msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
 
 msgid "DN to bind"
-msgstr ""
+msgstr "DN att binda till"
 
 msgid "DNS settings"
-msgstr ""
+msgstr "DNS inställningar"
 
 #, php-format
 msgid ""
@@ -724,7 +756,7 @@ msgid "Data integrity"
 msgstr "Dataintegritet"
 
 msgid "Database directory"
-msgstr ""
+msgstr "Databaskatalog"
 
 msgid "Date"
 msgstr "Datum"
@@ -736,10 +768,10 @@ msgid "Default is 21"
 msgstr "Standard är 21"
 
 msgid "Default user name is 'admin'."
-msgstr ""
+msgstr "Standardanvändarnamn är 'admin'."
 
 msgid "Define directories/URL's that require authentication."
-msgstr ""
+msgstr "Specificera kataloger/URL:er som kräver autentiering."
 
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Definiera ett värdnamn kan vara användbart för NFS."
@@ -754,7 +786,7 @@ msgid "Delete Host"
 msgstr "Ta bort värd"
 
 msgid "Delete MIB"
-msgstr ""
+msgstr "Radera MIB"
 
 msgid "Delete RAID"
 msgstr "Ta bort RAID"
@@ -766,16 +798,16 @@ msgid "Delete Route"
 msgstr "Ta bort väg"
 
 msgid "Delete URL"
-msgstr ""
+msgstr "Radera URL"
 
 msgid "Delete algorithm"
-msgstr ""
+msgstr "Radera algoritm"
 
 msgid "Delete all MIBs"
-msgstr ""
+msgstr "Radera all MIB:er"
 
 msgid "Delete all options"
-msgstr ""
+msgstr "Radera alla alternativ"
 
 msgid "Delete command"
 msgstr "Ta bort kommando"
@@ -790,10 +822,10 @@ msgid "Delete disk"
 msgstr "Ta bort disk"
 
 msgid "Delete extent"
-msgstr ""
+msgstr "Radera extent"
 
 msgid "Delete files on the receiving side that don't exist on sender."
-msgstr ""
+msgstr "Radera filer på mottagarsidan som inte finns hos sändaren."
 
 msgid "Delete group"
 msgstr "Ta bort grupp"
@@ -808,16 +840,16 @@ msgid "Delete job"
 msgstr "Ta bort jobb"
 
 msgid "Delete module"
-msgstr ""
+msgstr "Radera modul"
 
 msgid "Delete mount point"
-msgstr ""
+msgstr "Radera monteringspunkt"
 
 msgid "Delete option"
-msgstr ""
+msgstr "Radera altenativ"
 
 msgid "Delete self-test"
-msgstr ""
+msgstr "Radera självtest"
 
 msgid "Delete share"
 msgstr "Ta bort utdelning"
@@ -829,47 +861,47 @@ msgid "Delete user"
 msgstr "Ta bort användare"
 
 msgid "Deleting"
-msgstr ""
+msgstr "Raderar"
 
 msgid "Deny"
-msgstr ""
+msgstr "Neka"
 
 msgid "Description"
 msgstr "Beskrivning"
 
 msgid "Destination email address."
-msgstr ""
+msgstr "Destinationsepostadress"
 
 msgid "Destination host name or IP number."
-msgstr ""
+msgstr "Destinationsvärd eller IP-adress"
 
 msgid "Destination network"
-msgstr ""
+msgstr "Destinationsnätverk"
 
 msgid "Destination network bit count"
 msgstr ""
 
 msgid "Destination network for this static route"
-msgstr ""
+msgstr "Destinationsnätverk för denna statiska väg"
 
 msgid "Destination share"
 msgstr ""
 
 msgid "Detected RSYNC remote shares"
-msgstr ""
+msgstr "Upptäckte fjärranslutna RSYNC utdelningar"
 
 msgid "Device"
 msgstr "Enhet"
 
 #, php-format
 msgid "Device /dev/%s - %s"
-msgstr ""
+msgstr "Enhet /dev/%s - %s"
 
 msgid "Device IP"
-msgstr ""
+msgstr "Enhetens IP"
 
 msgid "Device is mounted, umount it first before detaching."
-msgstr ""
+msgstr "Enheten är monterad, avmontera den först innan avkoppling."
 
 msgid "Device name"
 msgstr "Enhetsnamn"
@@ -895,13 +927,13 @@ msgid "Diagnostics"
 msgstr "Diagnostik"
 
 msgid "Difference"
-msgstr ""
+msgstr "Skillnad"
 
 msgid "Directory"
 msgstr "Katalog"
 
 msgid "Directory listing"
-msgstr ""
+msgstr "Kataloglista"
 
 msgid "Directory mask"
 msgstr "Katalogmask"
@@ -910,10 +942,10 @@ msgid "Directory to be shared."
 msgstr "Katalog att delas ut."
 
 msgid "Disable"
-msgstr ""
+msgstr "Avaktivera"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
-msgstr ""
+msgstr "Avaktivera AFP-over-Appletalk för att förhindra DDP-anslutningar."
 
 msgid "Disable console menu"
 msgstr "Inaktivera konsollmeny"
@@ -922,10 +954,10 @@ msgid "Disable firmware upload"
 msgstr "Inaktivera uppskickning av fast programvara"
 
 msgid "Disable firmware version check"
-msgstr ""
+msgstr "Inaktivera firmware versionskontroll"
 
 msgid "Disable speaker beep on startup and shutdown"
-msgstr ""
+msgstr "Inaktivera högtalarpip vid uppstart och nedstängning"
 
 msgid "Disabled"
 msgstr "Inaktiverad"
@@ -934,10 +966,12 @@ msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
 msgstr ""
+"Avaktiverar :hex översättningar för allt utom punktfiler. Detta alternativ "
+"gör att tecknet '/' blir otillåtet."
 
 #, php-format
 msgid "Discovered iSCSI target for %s"
-msgstr ""
+msgstr "Upptäckte iSCSI mål för %s"
 
 msgid "Disk"
 msgstr "Disk"
@@ -952,25 +986,25 @@ msgid "Disks"
 msgstr "Diskar"
 
 msgid "Disks (ATA)"
-msgstr ""
+msgstr "Diskar (ATA)"
 
 msgid "Do not set this for CF cards."
-msgstr ""
+msgstr "Sätt inte detta för CF-kort."
 
 msgid "Do you really want to delete all MIBs?"
-msgstr ""
+msgstr "Vill du verkligen radera all MIB:er?"
 
 msgid "Do you really want to delete all options?"
-msgstr ""
+msgstr "Vill du verkligen radera alla alternativ?"
 
 msgid "Do you really want to delete this MIB?"
-msgstr ""
+msgstr "Vill du verkligen radera denna MIB?"
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Vill du verkligen ta bort denna RSYNC?"
 
 msgid "Do you really want to delete this URL?"
-msgstr ""
+msgstr "Vill du verkligen radera denna URL?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Vill du verkligen ta bort det här kommandot?"
@@ -988,9 +1022,11 @@ msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
 msgstr ""
+"Vill du verkligen radera denna disk? Alla element som använder den kommer "
+"att ogiltigförklaras (t.ex. utdelningar)!"
 
 msgid "Do you really want to delete this extent?"
-msgstr ""
+msgstr "Vill du verkligen radera detta extent?"
 
 msgid "Do you really want to delete this group?"
 msgstr "Vill du verkligen ta bort denna grupp?"
@@ -1002,12 +1038,14 @@ msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
 "will become invalid (e.g. share)!"
 msgstr ""
+"Vill du verkligen radera denna initiator? Alla element som använder det "
+"kommer att ogiltigförklaras (t.ex. utdelade kataloger)!"
 
 msgid "Do you really want to delete this interface?"
-msgstr ""
+msgstr "Vill du verkligen radera detta gränssnitt?"
 
 msgid "Do you really want to delete this module?"
-msgstr ""
+msgstr "Är du säker på att du vill radera den här modulen?"
 
 msgid ""
 "Do you really want to delete this mount point? All elements that still use "
@@ -1017,13 +1055,13 @@ msgstr ""
 "fortfarande använder den kommer att bli ogiltiga (t.ex. utdelningen)!"
 
 msgid "Do you really want to delete this option?"
-msgstr ""
+msgstr "Vill du verkligen radera detta alternativ?"
 
 msgid "Do you really want to delete this route?"
 msgstr "Vill du verkligen ta bort den här vägen?"
 
 msgid "Do you really want to delete this scheduled self-test?"
-msgstr ""
+msgstr "Vill du verkligen radera detta schemalagda självtest?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Vill du verkligen ta bort denna utdelning?"
@@ -1038,6 +1076,8 @@ msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
+"Vill du verkligen radera den här volymen?\\n!!! OBSERVERA: all data kommer "
+"att gå förlorad och kan inte återställas. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
@@ -1047,31 +1087,31 @@ msgid "Do you really want to uninstall this package?"
 msgstr "Vill du verkligen avinstallera detta paketet?"
 
 msgid "Document root"
-msgstr ""
+msgstr "Dokumentrot"
 
 msgid "Document root of the webserver. Home of the web page files."
-msgstr ""
+msgstr "Dokumentrot för webbservern. Hem till filerna för webbsidorna."
 
 msgid "Domain"
 msgstr "Domän"
 
 msgid "Domain controller name"
-msgstr ""
+msgstr "Domänkontrollernamn"
 
 msgid "Domain name"
 msgstr "Domännamn"
 
 msgid "Domain name (DNS/Realm-Name)"
-msgstr ""
+msgstr "Domännamn (DNS/Realm-Namn)"
 
 msgid "Domain name (NetBIOS-Name)"
-msgstr ""
+msgstr "Domännamn (NetBIOS-Namn)"
 
 msgid "Domain name in old format, e.g. EXAMPLE."
-msgstr ""
+msgstr "Domännamn i gammalt format, såsom EXEMPEL."
 
 msgid "Domain name, e.g. example.com."
-msgstr ""
+msgstr "Domännamn, såsom exempel.com."
 
 msgid "Don't Erase MBR"
 msgstr "Radera inte huvudstartsektorn (MBR)"
@@ -1080,7 +1120,7 @@ msgid "Don't advertise createfileid, resolveid, deleteid calls."
 msgstr ""
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr ""
+msgstr "Radera inte MBR (användbart för vissa RAID-kontrollerkort)"
 
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
@@ -1088,7 +1128,7 @@ msgid ""
 msgstr ""
 
 msgid "Done."
-msgstr ""
+msgstr "Klart."
 
 msgid "Dos charset"
 msgstr "Dos-teckenuppsättning"
@@ -1097,13 +1137,13 @@ msgid "Download configuration"
 msgstr "Hämta ner konfiguration"
 
 msgid "Download directory"
-msgstr ""
+msgstr "Nedladdningsmapp"
 
 msgid "Driver"
-msgstr ""
+msgstr "Drivrutin"
 
 msgid "Driver list"
-msgstr ""
+msgstr "Drivrutinslista"
 
 msgid "Duplex"
 msgstr "Duplex"
@@ -1115,22 +1155,19 @@ msgid "Dynamic DNS"
 msgstr "Dynamisk DNS"
 
 msgid "EA support"
-msgstr ""
+msgstr "EA support"
 
 msgid "EFI/GPT partition can be use with UFS only."
-msgstr ""
+msgstr "EFI/GPT partition kan enbart användas med UFS."
 
 msgid "Edit"
 msgstr "Redigera"
-
-msgid "Edit File"
-msgstr "Redigera fil"
 
 msgid "Edit Host"
 msgstr "Redigera värd"
 
 msgid "Edit MIB"
-msgstr ""
+msgstr "Redigera MIB"
 
 msgid "Edit RAID"
 msgstr "Redigera RAID"
@@ -1142,7 +1179,7 @@ msgid "Edit Route"
 msgstr "Redigera väg"
 
 msgid "Edit URL"
-msgstr ""
+msgstr "Redigera URL"
 
 msgid "Edit command"
 msgstr "Redigera kommando"
@@ -1157,31 +1194,31 @@ msgid "Edit disk"
 msgstr "Redigera disk"
 
 msgid "Edit extent"
-msgstr ""
+msgstr "Redigera extent"
 
 msgid "Edit group"
 msgstr "Redigera grupp"
 
 msgid "Edit initiator"
-msgstr ""
+msgstr "Redigera initiator"
 
 msgid "Edit interface"
-msgstr ""
+msgstr "Redigera gränssnitt"
 
 msgid "Edit job"
 msgstr "Redigera jobb"
 
 msgid "Edit module"
-msgstr ""
+msgstr "Redigera modul"
 
 msgid "Edit mount point"
-msgstr ""
+msgstr "Redigera monteringspunkt"
 
 msgid "Edit option"
-msgstr ""
+msgstr "Redigera alternativ"
 
 msgid "Edit self-test"
-msgstr ""
+msgstr "Redigera självtest"
 
 msgid "Edit share"
 msgstr "Redigera utdelning"
@@ -1193,13 +1230,16 @@ msgid "Edit user"
 msgstr "Redigera användare"
 
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 msgid "Email Report"
+msgstr "E-posta Rapport"
+
+msgid "Email notification"
 msgstr ""
 
 msgid "Email report"
-msgstr ""
+msgstr "E-posta rapport"
 
 msgid "Enable"
 msgstr "Aktivera"
@@ -1208,25 +1248,26 @@ msgid "Enable FXP protocol."
 msgstr "Aktivera FXP-protokoll."
 
 msgid "Enable NTP"
-msgstr ""
+msgstr "Aktivera NTP"
 
 msgid "Enable SMTP authentication."
-msgstr ""
+msgstr "Aktivera SMTP-autentisering."
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
+"Aktivera Zeroconf/Bonjour för att tillkännage tjänsterna för denna enhet."
 
 msgid "Enable authentication."
-msgstr ""
+msgstr "Aktivera autentisering."
 
 msgid "Enable compression."
-msgstr ""
+msgstr "Aktivera komprimering."
 
 msgid "Enable device polling"
 msgstr ""
 
 msgid "Enable directory listing."
-msgstr ""
+msgstr "Aktivera mapplistning."
 
 msgid "Enable domain wildcarding."
 msgstr ""
@@ -1255,7 +1296,7 @@ msgid "Enable local user authentication."
 msgstr "Aktivera lokal användarautentisering."
 
 msgid "Enable module listing."
-msgstr ""
+msgstr "Aktivera modullistning"
 
 msgid "Enable permission inheritance"
 msgstr ""
@@ -1270,10 +1311,10 @@ msgid "Enable store DOS attributes"
 msgstr ""
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
+msgstr "Aktivera loggning till fjärrliggande syslog-server"
 
 msgid "Enable the system power control utility"
-msgstr ""
+msgstr "Aktivera systemets strömkontroll-verktyg"
 
 msgid ""
 "Enable this if your FTP server is behind a NAT box that doesn't support "
@@ -1287,7 +1328,7 @@ msgid "Enable tuning of some kernel variables"
 msgstr "Aktivera justering av vissa kärnvariabler"
 
 msgid "Enable web user interface."
-msgstr ""
+msgstr "Aktivera webbanvändargränssnitt."
 
 msgid "Enabled"
 msgstr "Aktiverad"
@@ -1299,13 +1340,19 @@ msgid ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
+"Aktiverar CRLF-översättnnig för TEXT-filer, som automatiskt konverterar "
+"Macintosh radbrytningar till UNIX-kompatibla sådana. Användandet av detta "
+"alternativ kan vara farligt då vissa äldre probgram lagrar binära datafiler "
+"som typen 'TEXT' när data sparas, och sedan byter filtyp i ett andra steg. "
+"Afpd kan eventuellt förstöra sådana filer vid felaktig ändring under "
+"radbyteskonverteringen."
 
 msgid "Encrypted disk name"
 msgstr "Namn på krypterad disk"
 
 #, php-format
 msgid "Encrypting '%s'... Please wait"
-msgstr ""
+msgstr "Krypterar '%s'... Var god vänta"
 
 msgid "Encryption"
 msgstr "Kryptering"
@@ -1320,25 +1367,34 @@ msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
+"Mata in ett egenvalt portnummer för webbgränssnittet ovan om du vill använda "
+"ett annat än standard porten (80 för HTTP, 443 för HTTPS)."
 
 msgid "Enter a valid sysctl MIB name."
-msgstr ""
+msgstr "Mata in ett giltigt sysctl MIB namn."
 
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select it."
 msgstr ""
+"Mata in önskad systemtid direkt (format mm/dd/yyyy hh:mm) eller använd "
+"ikonen för att välja."
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
+"Skriv in lösenordet som skall användas i WPA-PSK-läget. Detta måste vara "
+"mellan 8 och 63 tecken långt."
 
 msgid ""
 "Enter the path to the home directory of that user. Make sure that this path "
 "exists and is always mounted at startup. Leave this field empty to use "
 "default path /mnt."
 msgstr ""
+"Mata in sökvägen till hemkatalogen för användaren. Se till att denna sökväg "
+"existerar och alltid monteras vid uppstart. Lämna fältet blankt för att "
+"använda standardsökvägen /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -1354,7 +1410,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Fel: Ändringarna kunde inte verkställas (felkod %s)."
 
 msgid "Execute"
-msgstr ""
+msgstr "Kör"
 
 msgid "Execute command"
 msgstr "Kör kommando"
@@ -1363,37 +1419,43 @@ msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
 msgstr ""
+"Kör kommndot före eller efter uppstart (booting) eller innan systemet stängs "
+"ned."
 
 msgid "Execute now"
-msgstr ""
+msgstr "Kör nu"
 
 msgid "Extensions"
 msgstr "Utökningar"
 
 msgid "Extent"
-msgstr ""
+msgstr "Extent"
 
 msgid "Extent name"
-msgstr ""
+msgstr "Extent namn"
 
 msgid ""
 "Extents must be defined before they can be used, and extents cannot be used "
 "more than once."
 msgstr ""
+"Extents måste definieras innan de kan användas, och extents kan inte "
+"användas mer än en gång."
 
 msgid "Extra options"
-msgstr ""
+msgstr "Extra alternativ"
 
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
 "entered options prevent SSH service to be started."
 msgstr ""
+"Extra val till /etc/ssh/sshd_config (vanligtvis tom). OBS: felaktigt "
+"inmatade val hindrar SSH tjänsten från att starta."
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "Extra val till ifconfig (vantligtvis tom)."
 
 msgid "Extra options to rsync (usually empty)."
-msgstr ""
+msgstr "Extra val till rsync (vantligtvis tom)."
 
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
@@ -1402,7 +1464,7 @@ msgid "FTP"
 msgstr "FTP"
 
 msgid "FTP Proxy"
-msgstr ""
+msgstr "FTP Proxy"
 
 msgid "FTP Server"
 msgstr "FTP-server"
@@ -1414,7 +1476,7 @@ msgid "FTP log"
 msgstr "FTP-logg"
 
 msgid "FTP server disabled"
-msgstr ""
+msgstr "FTP server avaktiverad"
 
 msgid "FXP"
 msgstr "FXP"
@@ -1434,25 +1496,39 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to execute cron job."
+msgstr "Misslyckades med att köra cron-jobb."
+
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr ""
 
-msgid "Failed to send status report. Please check log files."
+#, php-format
+msgid "Failed to send test email to: %s."
 msgstr ""
 
-msgid "Failed to send test email. Please check log files."
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
-msgstr ""
+msgstr "Misslyckades med att ladda upp metadata backupfil."
 
 msgid "Failed."
-msgstr ""
+msgstr "Misslyckades."
 
 msgid "Failover"
 msgstr ""
 
 msgid "File"
 msgstr "Fil"
+
+msgid "File Editor"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
 
 msgid "File not found"
 msgstr "Filen hittades inte"
@@ -1465,6 +1541,8 @@ msgid ""
 "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 "used as extent."
 msgstr ""
+"Filsökväg (t.ex. /mnt/sharename/extent/%s) eller enhetsnamn (t.ex. /dev/ad1) "
+"användes som extent."
 
 msgid "File size"
 msgstr "Filstorlek"
@@ -1473,7 +1551,7 @@ msgid "File system"
 msgstr "Filsystem"
 
 msgid "File system check"
-msgstr ""
+msgstr "Kontroll av filsystem"
 
 msgid "Filename"
 msgstr "Filnamn"
@@ -1488,7 +1566,7 @@ msgid "Firmware uploading is not supported on this platform."
 msgstr "Uppsändning av fast programvara stöds inte på den här plattformen."
 
 msgid "Firmware version check"
-msgstr ""
+msgstr "Kontroll av fast programvaruversion"
 
 msgid "Flags"
 msgstr "Flaggor"
@@ -1508,7 +1586,7 @@ msgid ""
 msgstr ""
 
 msgid "Forced update period"
-msgstr ""
+msgstr "Forcerad uppdateringsperiod"
 
 msgid "Format"
 msgstr "Formatera"
@@ -1517,10 +1595,10 @@ msgid "Format disk"
 msgstr "Formatera disk"
 
 msgid "Free disk space"
-msgstr ""
+msgstr "Ledigt diskutrymme"
 
 msgid "From email"
-msgstr ""
+msgstr "Från e-post"
 
 msgid "Fsck"
 msgstr "Fsck"
@@ -1529,34 +1607,34 @@ msgid "Full Name"
 msgstr "Fullständigt namn"
 
 msgid "GID"
-msgstr ""
+msgstr "GID"
 
 msgid "Gateway"
 msgstr "Gateway"
 
 msgid "Gateway to be used to reach the destination network."
-msgstr ""
+msgstr "Gateway som används för att nå destinationsnätverk."
 
 msgid "General"
 msgstr ""
 
 msgid "General Setup"
-msgstr ""
+msgstr "Allmän Inställning"
 
 msgid "Geom Vinum"
-msgstr ""
+msgstr "GEOM Vinum"
 
 msgid "Give full shell access to user."
-msgstr ""
+msgstr "Ge komplett skaltillgång för användare."
 
 msgid "Give only local users access to the web page."
-msgstr ""
+msgstr "Ge enbart lokala användare tillgång till webbsidan."
 
 msgid "Graph"
 msgstr "Diagram"
 
 msgid "Graph shows last"
-msgstr ""
+msgstr "Graf visar senaste"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -1566,7 +1644,7 @@ msgid "Group"
 msgstr "Grupp"
 
 msgid "Group ID"
-msgstr ""
+msgstr "Grupp ID"
 
 msgid "Group description."
 msgstr "Gruppbeskrivning."
@@ -1575,7 +1653,7 @@ msgid "Group name."
 msgstr "Gruppnamn."
 
 msgid "Group numeric id."
-msgstr ""
+msgstr "Grupp numeriskt ID"
 
 msgid "Group suffix"
 msgstr "Gruppändelse"
@@ -1584,13 +1662,13 @@ msgid "Groups"
 msgstr "Grupper"
 
 msgid "Guest"
-msgstr ""
+msgstr "Gäst"
 
 msgid "Guest account"
-msgstr ""
+msgstr "Gästkonto"
 
 msgid "HTTP Proxy"
-msgstr ""
+msgstr "HTTP-proxy"
 
 msgid "Hard disk standby time"
 msgstr ""
@@ -1599,10 +1677,10 @@ msgid "Help"
 msgstr "Hjälp"
 
 msgid "Help needed!"
-msgstr ""
+msgstr "Hjälp behövs!"
 
 msgid "Hide dot files"
-msgstr ""
+msgstr "Dölj punktfiler"
 
 msgid "Highlighting"
 msgstr ""
@@ -1615,15 +1693,17 @@ msgid ""
 "Hint: If this is checked, IP addresses in %s logs are resolved to real "
 "hostnames where possible."
 msgstr ""
+"Tips: Om denna är markerad kommer IP-adresser i %s-loggen att översättas "
+"till riktiga värdnamn när så är möjligt."
 
 msgid "Home directory"
-msgstr ""
+msgstr "Hemkatalog"
 
 msgid "Host"
 msgstr "Värd"
 
 msgid "Host resources"
-msgstr ""
+msgstr "Värdresurser"
 
 msgid "Hostname"
 msgstr "Värdnamn"
@@ -1632,15 +1712,17 @@ msgid ""
 "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
 "for TLS"
 msgstr ""
+"Värdnamn eller IP-adress för LDAP-server. Varning: Värdnamn krävs för "
+"användning av TLS"
 
 msgid "Hosts"
 msgstr "Värdar"
 
 msgid "Hosts allow"
-msgstr ""
+msgstr "Tillåtna värdar"
 
 msgid "Hosts deny"
-msgstr ""
+msgstr "Nekade värdar"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -3031,6 +3113,10 @@ msgstr "Statiska vägar"
 msgid "Status"
 msgstr "Status"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr ""
+
 msgid "Status report successfully sent."
 msgstr ""
 
@@ -3182,7 +3268,11 @@ msgid "Test email"
 msgstr ""
 
 #, php-format
-msgid "Test email from %s"
+msgid "Test email from host: %s"
+msgstr ""
+
+#, php-format
+msgid "Test email successfully sent to: %s."
 msgstr ""
 
 msgid "Test email successfully sent."
@@ -3221,6 +3311,11 @@ msgid "The TCP port must be a valid port number."
 msgstr "TCP-porten måste vara ett giltigt portnummer."
 
 msgid "The VLAN ID must be between 1 and 4094."
+msgstr ""
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr ""
 
 #, c-format
@@ -3606,6 +3701,9 @@ msgstr "Den här disken finns redan i disklistan."
 msgid "This disk/partition is already configured."
 msgstr ""
 
+msgid "This email has been send to validate your email configuration."
+msgstr ""
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 
@@ -3847,6 +3945,10 @@ msgid "UPS"
 msgstr ""
 
 msgid "UPS disabled"
+msgstr ""
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
 msgstr ""
 
 msgid "UPS status"
@@ -4369,6 +4471,9 @@ msgstr "veckodagar"
 
 #~ msgid "ARP table"
 #~ msgstr "ARP-tabell"
+
+#~ msgid "Edit File"
+#~ msgstr "Redigera fil"
 
 #~ msgid "Reboot system"
 #~ msgstr "Starta om systemet"
