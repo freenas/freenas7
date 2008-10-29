@@ -1,14 +1,14 @@
---- ata/ata-all.c.orig	2008-06-06 17:49:21.000000000 +0200
-+++ ata/ata-all.c	2008-06-06 17:49:15.000000000 +0200
+--- ata/ata-all.c.orig	2008-09-29 19:54:38.000000000 +0000
++++ ata/ata-all.c	2008-10-29 19:35:23.000000000 +0000
 @@ -75,6 +75,7 @@
  uma_zone_t ata_request_zone;
  uma_zone_t ata_composite_zone;
  int ata_wc = 1;
 +int ata_to = 5;
+ int ata_dma_check_80pin = 1;
  
  /* local vars */
- static int ata_dma = 1;
-@@ -91,6 +92,9 @@
+@@ -96,6 +97,9 @@
  TUNABLE_INT("hw.ata.wc", &ata_wc);
  SYSCTL_INT(_hw_ata, OID_AUTO, wc, CTLFLAG_RDTUN, &ata_wc, 0,
  	   "ATA disk write caching");
@@ -18,24 +18,33 @@
  
  /*
   * newbus device interface related functions
---- ata/ata-all.h.orig	2008-06-06 17:49:30.000000000 +0200
-+++ ata/ata-all.h	2008-06-06 17:49:26.000000000 +0200
-@@ -521,6 +521,7 @@
+--- ata/ata-all.h.orig	2008-08-22 08:09:13.000000000 +0000
++++ ata/ata-all.h	2008-10-29 19:35:56.000000000 +0000
+@@ -524,6 +524,7 @@
  extern struct intr_config_hook *ata_delayed_attach;
  extern devclass_t ata_devclass;
  extern int ata_wc;
 +extern int ata_to;
-  
+ extern int ata_dma_check_80pin;
+ 
  /* public prototypes */
- /* ata-all.c: */
---- ata/ata-disk.c.orig	2008-06-06 17:49:40.000000000 +0200
-+++ ata/ata-disk.c	2008-06-06 17:49:36.000000000 +0200
-@@ -243,7 +243,7 @@
+--- ata/ata-disk.c.orig	2008-04-08 10:48:21.000000000 +0000
++++ ata/ata-disk.c	2008-10-29 19:37:30.000000000 +0000
+@@ -259,7 +259,7 @@
+     }
+     request->flags = ATA_R_CONTROL;
      request->dev = dev;
-     request->bio = bp;
-     request->callback = ad_done;
 -    request->timeout = 5;
 +    request->timeout = ata_to;
+     request->retries = 1;
+     request->callback = ad_power_callback;
+     request->u.ata.command = ATA_STANDBY_IMMEDIATE;
+@@ -293,7 +293,7 @@
+ 	atadev->spindown_state = 0;
+ 	request->timeout = 31;
+     } else {
+-	request->timeout = 5;
++	request->timeout = ata_to;
+     }
      request->retries = 2;
      request->data = bp->bio_data;
-     request->bytecount = bp->bio_bcount;
