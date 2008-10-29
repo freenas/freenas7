@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/initrandom,v 1.5.2.2 2007/10/25 14:58:33 mtm Exp $
+# $FreeBSD: src/etc/rc.d/initrandom,v 1.7.2.3 2008/06/27 04:42:19 jhb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
@@ -33,24 +33,26 @@ initrandom_start()
 
 	if [ \! -z "${soft_random_generator}" ] ; then
 
-		if checkyesno harvest_interrupt; then
-			if [ -w /dev/random ]; then
+		if [ -w /dev/random ]; then
+			if checkyesno harvest_interrupt; then
 				${SYSCTL_W} kern.random.sys.harvest.interrupt=1 >/dev/null
 				echo -n ' interrupts'
-			fi
+			else
+				${SYSCTL_W} kern.random.sys.harvest.interrupt=0 >/dev/null
 		fi
 
 		if checkyesno harvest_ethernet; then
-			if [ -w /dev/random ]; then
 				${SYSCTL_W} kern.random.sys.harvest.ethernet=1 >/dev/null
 				echo -n ' ethernet'
-			fi
+			else
+				${SYSCTL_W} kern.random.sys.harvest.ethernet=0 >/dev/null
 		fi
 
 		if checkyesno harvest_p_to_p; then
-			if [ -w /dev/random ]; then
 			${SYSCTL_W} kern.random.sys.harvest.point_to_point=1 >/dev/null
 				echo -n ' point_to_point'
+			else
+				${SYSCTL_W} kern.random.sys.harvest.point_to_point=0 >/dev/null
 			fi
 		fi
 
@@ -58,11 +60,11 @@ initrandom_start()
 		# harvesting rate.
 		# Entropy below is not great, but better than nothing.
 		# This unblocks the generator at startup
-		( ps -fauxww; sysctl -a; date; df -ib; dmesg; ps -fauxww; ) \
+		( ps -fauxww; sysctl -a; date; df -ib; dmesg; ps -fauxww ) \
 		    | dd of=/dev/random bs=8k 2>/dev/null
 		cat /bin/ls | dd of=/dev/random bs=8k 2>/dev/null
 
-		# First pass at reseeding /dev/random
+		# First pass at reseeding /dev/random.
 		#
 		case ${entropy_file} in
 		[Nn][Oo] | '')

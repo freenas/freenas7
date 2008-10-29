@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/mountd,v 1.19.4.1 2008/01/28 07:58:31 dougb Exp $
+# $FreeBSD: src/etc/rc.d/mountd,v 1.19.2.1 2008/01/28 07:55:44 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
@@ -25,8 +25,9 @@ extra_commands="reload mkconf"
 
 # Defaults
 mountd_config=${mountd_config:-"/var/etc/exports"}
-required_files="${mountd_config}"
 command="/usr/sbin/${name}"
+pidfile="/var/run/${name}.pid"
+required_files="${mountd_config}"
 command_args="-r ${mountd_config}"
 
 # Clear existing file

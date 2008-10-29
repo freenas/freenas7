@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/cron,v 1.7.2.1 2008/01/28 08:22:32 dougb Exp $
+# $FreeBSD: src/etc/rc.d/cron,v 1.7.10.1 2008/01/28 07:55:44 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
