@@ -17,18 +17,13 @@
 
 name="mountd"
 rcvar=`set_rcvar`
-
-# Custom commands
+command="/usr/sbin/${name}"
+pidfile="/var/run/${name}.pid"
+mountd_config=${mountd_config:-"/var/etc/exports"}
+required_files="${mountd_config}"
 start_precmd="mountd_precmd"
 mkconf_cmd="mkconf_cmd"
 extra_commands="reload mkconf"
-
-# Defaults
-mountd_config=${mountd_config:-"/var/etc/exports"}
-command="/usr/sbin/${name}"
-pidfile="/var/run/${name}.pid"
-required_files="${mountd_config}"
-command_args="-r ${mountd_config}"
 
 # Clear existing file
 cat /dev/null > ${mountd_config}

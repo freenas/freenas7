@@ -4,7 +4,8 @@
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
-# - Remove bef: mountcritremote
+# - Remove useless requirements
+#
 
 # PROVIDE: dmesg
 # REQUIRE: cleanvar
