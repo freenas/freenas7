@@ -1,11 +1,11 @@
---- pmap.h.orig	2008-09-05 19:41:24.000000000 +0200
-+++ pmap.h	2008-09-12 08:28:08.000000000 +0200
-@@ -103,7 +103,7 @@
- #ifdef PAE
- #define	NKPT		240	/* Enough for 16GB (2MB page tables) */
+--- pmap.h.orig	2008-09-23 18:33:11.000000000 +0000
++++ pmap.h	2008-10-29 19:50:41.000000000 +0000
+@@ -118,7 +118,7 @@
+ #define	NKPT		240
  #else
--#define	NKPT		30	/* Enough for 4GB (4MB page tables) */
-+#define	NKPT		36	/* Enough for 4GB (4MB page tables) */
+ /* 18 page tables needed to map 4G (72B "struct vm_page", 4M page tables). */
+-#define	NKPT		30
++#define	NKPT		36
  #endif
  #endif
- #ifndef NKPDE
+ 

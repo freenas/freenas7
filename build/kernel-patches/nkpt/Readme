@@ -1,0 +1,3 @@
+Create patch:
+cd /usr/src/sys/i386/include
+diff -ruN pmap.h.orig pmap.h > pmap.h.diff
