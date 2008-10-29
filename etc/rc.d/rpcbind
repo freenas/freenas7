@@ -1,8 +1,10 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/rpcbind,v 1.12.2.1 2008/01/28 08:22:33 dougb Exp $
+# $FreeBSD: src/etc/rc.d/rpcbind,v 1.12.2.1.2.1 2008/10/02 02:57:24 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Remove useless requirements
 #
 
 # PROVIDE: rpcbind
