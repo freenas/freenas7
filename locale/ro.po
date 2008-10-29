@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-04 14:49+0000\n"
+"POT-Creation-Date: 2008-10-23 21:54+0000\n"
 "PO-Revision-Date: 2008-09-23 12:55+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-21 07:37+0000\n"
+"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -483,9 +483,6 @@ msgstr "Auto"
 
 msgid "AutoScale"
 msgstr "AutoScalare"
-
-msgid "Automatically generated test email."
-msgstr "Email de test generat automat."
 
 msgid "Auxiliary parameters"
 msgstr "Parametri auxiliari"
@@ -1166,9 +1163,6 @@ msgstr "Partitiile EFI/GPT pot fi folosite doar cu UFS."
 msgid "Edit"
 msgstr "Editare"
 
-msgid "Edit File"
-msgstr "Editare Fisier"
-
 msgid "Edit Host"
 msgstr "Editare sistem"
 
@@ -1239,6 +1233,9 @@ msgid "Email"
 msgstr "Email"
 
 msgid "Email Report"
+msgstr ""
+
+msgid "Email notification"
 msgstr ""
 
 msgid "Email report"
@@ -1492,10 +1489,18 @@ msgstr "Eroare la crearea sistemului de fisiere in memorie."
 msgid "Failed to execute cron job."
 msgstr ""
 
-msgid "Failed to send status report. Please check log files."
-msgstr "Eroare la trimiterea raportului. Verificati fisierul jurnal."
+#, php-format
+msgid ""
+"Failed to send status report. Please check the <a href='%s'>log</a> files."
+msgstr ""
 
-msgid "Failed to send test email. Please check log files."
+#, php-format
+msgid "Failed to send test email to: %s."
+msgstr ""
+
+#, php-format
+msgid ""
+"Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1509,6 +1514,12 @@ msgstr ""
 
 msgid "File"
 msgstr "Fisier"
+
+msgid "File Editor"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
 
 msgid "File not found"
 msgstr "Fisier negasit"
@@ -3125,6 +3136,10 @@ msgstr "Rute Statice"
 msgid "Status"
 msgstr "Stare"
 
+#, php-format
+msgid "Status report from host: %s.%s"
+msgstr ""
+
 msgid "Status report successfully sent."
 msgstr "Raportul de stare a fost trimis cu succes."
 
@@ -3278,7 +3293,11 @@ msgid "Test email"
 msgstr ""
 
 #, php-format
-msgid "Test email from %s"
+msgid "Test email from host: %s"
+msgstr ""
+
+#, php-format
+msgid "Test email successfully sent to: %s."
 msgstr ""
 
 msgid "Test email successfully sent."
@@ -3319,6 +3338,11 @@ msgid "The TCP port must be a valid port number."
 msgstr "Trebuie sa introduceti un port TCP valid."
 
 msgid "The VLAN ID must be between 1 and 4094."
+msgstr ""
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr ""
 
 #, c-format
@@ -3716,6 +3740,9 @@ msgstr "Acest disc este deja in lista."
 msgid "This disk/partition is already configured."
 msgstr "Acest disc/partitie a fost deja configurat(a)."
 
+msgid "This email has been send to validate your email configuration."
+msgstr ""
+
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Discul criptat este montat, demontati-l inainte de a-l detasa."
 
@@ -3965,6 +3992,10 @@ msgid "UPS"
 msgstr ""
 
 msgid "UPS disabled"
+msgstr ""
+
+#, php-format
+msgid "UPS notification from host: %s.%s"
 msgstr ""
 
 msgid "UPS status"
@@ -4531,6 +4562,9 @@ msgstr "zilele saptaminii"
 
 #~ msgid "ARP table"
 #~ msgstr "Tabela ARP"
+
+#~ msgid "Edit File"
+#~ msgstr "Editare Fisier"
 
 #~ msgid "Reboot system"
 #~ msgstr "Repornire Sistem"
@@ -5566,6 +5600,9 @@ msgstr "zilele saptaminii"
 
 #~ msgid "Auxiliary parameter to be added."
 #~ msgstr "Parametri auxiliari de adaugat."
+
+#~ msgid "Failed to send status report. Please check log files."
+#~ msgstr "Eroare la trimiterea raportului. Verificati fisierul jurnal."
 
 #~ msgid "Duplicate name."
 #~ msgstr "Nume existent deja."
