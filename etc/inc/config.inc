@@ -1582,6 +1582,14 @@ function config_upgrade() {
 		$config['version'] = "6.3";
 	}
 
+	/* Convert 6.3 -> 6.4 */
+	/* Set default email authentication method. */
+	if ($config['version'] === "6.3") {
+		$config['system']['email']['authmethod'] = "login";
+
+		$config['version'] = "6.4";
+	}
+
 	write_config();
 
 	if (is_booting())

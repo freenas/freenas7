@@ -19,7 +19,7 @@ msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 	-o "protocol smtp" -n \
 	-v "concat('from ',//system/email/from)" -n \
 	-i "count(//system/email/auth) > 0" \
-		-o "auth on" -n \
+		-v "concat('auth ',//system/email/authmethod)" -n \
 		-v "concat('user ',//system/email/username)" -n \
 		-v "concat('password ',//system/email/password)" -n \
 	-b \
