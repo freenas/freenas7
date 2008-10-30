@@ -46,6 +46,7 @@ if (!is_array($config['system']['email'])) {
 $pconfig['server'] = $config['system']['email']['server'];
 $pconfig['port'] = $config['system']['email']['port'];
 $pconfig['auth'] = isset($config['system']['email']['auth']);
+$pconfig['authmethod'] = $config['system']['email']['authmethod'];
 $pconfig['security'] = $config['system']['email']['security'];
 $pconfig['username'] = $config['system']['email']['username'];
 $pconfig['password'] = $config['system']['email']['password'];
@@ -78,6 +79,7 @@ if ($_POST) {
 		$config['system']['email']['server'] = $_POST['server'];
 		$config['system']['email']['port'] = $_POST['port'];
 		$config['system']['email']['auth'] = $_POST['auth'] ? true : false;
+		$config['system']['email']['authmethod'] = $_POST['authmethod'];
 		$config['system']['email']['security'] = $_POST['security'];
 		$config['system']['email']['username'] = $_POST['username'];
 		$config['system']['email']['password'] = $_POST['password'];
@@ -119,11 +121,13 @@ function auth_change() {
 		case false:
       showElementById('username_tr','hide');
   		showElementById('password_tr','hide');
+  		showElementById('authmethod_tr','hide');
       break;
 
     case true:
       showElementById('username_tr','show');
   		showElementById('password_tr','show');
+  		showElementById('authmethod_tr','show');
       break;
 	}
 }
@@ -157,6 +161,7 @@ function auth_change() {
 					<?php html_checkbox("auth", gettext("Authentication"), $pconfig['auth'] ? true : false, gettext("Enable SMTP authentication."), "", false, "auth_change()");?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 40);?>
 					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], "", true);?>
+					<?php html_combobox("authmethod", gettext("Authentication method"), $pconfig['authmethod'], array("plain" => "Plain", "cram-md5" => "Cram-MD5", "digest-md5" => "Digest-MD5", "gssapi" => "GSSAPI", "external" => "External", "login" => "Login", "ntlm" => "NTLM", "on" => "Best available"), "", true);?>
 					<?php html_inputbox("from", gettext("From email"), $pconfig['from'], gettext("Your own email address."), true, 40);?>
 			  </table>
 				<div id="submit">
