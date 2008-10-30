@@ -58,6 +58,7 @@ Minors changes:
   This is displayed when login in via SSH for example.
 - Add /sbin/clri command to clear an inode by hand if fsck fails (FR 2177277).
 - Run transmission daemon as user 'transmission' (FR 2129517).
+- Add combobox to select email authentication method on 'System|Advanced|Email'.
 
 Bug fixes:
 - Check entered path for iSCSI target extents before storing configuration (BR 2144966).
