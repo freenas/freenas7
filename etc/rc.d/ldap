@@ -17,6 +17,10 @@
 ldap_config=${ldap_config:-"/var/etc/ldap.conf"}
 ldap_secret=${ldap_secret:-"/var/etc/ldap.secret"}
 
+# Clear existing file
+/bin/cat /dev/null > ${ldap_config}
+/bin/cat /dev/null > ${ldap_secret}
+
 # Create /var/etc/ldap.conf and /var/etc/ldap.secret
 if configxml_isset //ldap/enable; then
 	echo "Generating ldap.conf."
