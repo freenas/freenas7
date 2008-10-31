@@ -31,13 +31,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-23 21:54+0000\n"
-"PO-Revision-Date: 2008-09-13 16:04+0000\n"
-"Last-Translator: Aron Xu <Unknown>\n"
+"PO-Revision-Date: 2008-10-31 14:16+0000\n"
+"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-29 11:16+0000\n"
+"X-Launchpad-Export-Date: 2008-10-31 22:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -258,7 +258,7 @@ msgid "Add RAID"
 msgstr "添加RAID"
 
 msgid "Add RSYNC"
-msgstr ""
+msgstr "添加 RSYNC 设定"
 
 msgid "Add Route"
 msgstr "添加路由"
@@ -321,7 +321,7 @@ msgid "Additional group"
 msgstr "附加群组"
 
 msgid "Additional parameters to the hardware-specific part of the driver."
-msgstr ""
+msgstr "驱动中与硬件相关到附加参数"
 
 msgid "Address"
 msgstr "地址"
@@ -373,7 +373,7 @@ msgstr ""
 "class='vexpl'>用新的IP地址进入网页界面</span></li></ul>"
 
 msgid "Aggregation protocol"
-msgstr ""
+msgstr "聚合协议"
 
 msgid "All"
 msgstr "所有"
@@ -428,13 +428,13 @@ msgid "Alternate TCP port. Default is 873"
 msgstr "更改TCP端口。默认为873"
 
 msgid "Alternative configuration directory (usually empty)."
-msgstr ""
+msgstr "可选配置目录(通常为空)."
 
 msgid "Always on"
 msgstr "总是开启"
 
 msgid "Always scan"
-msgstr ""
+msgstr "总是扫描"
 
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
@@ -456,10 +456,10 @@ msgid "Apply changes"
 msgstr "应用更改"
 
 msgid "Archive"
-msgstr ""
+msgstr "存档"
 
 msgid "Archive mode."
-msgstr ""
+msgstr "存档模式。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "确定要继续进行？"
@@ -494,7 +494,7 @@ msgid "Authorised network"
 msgstr "通过认证的网络"
 
 msgid "Auto"
-msgstr ""
+msgstr "自动"
 
 msgid "AutoScale"
 msgstr "自动扩展"
@@ -521,16 +521,16 @@ msgid "Base DN"
 msgstr "基本 DN"
 
 msgid "BitTorrent"
-msgstr ""
+msgstr "BitTorrent"
 
 msgid "Browseable"
 msgstr "提供浏览"
 
 msgid "CCMP"
-msgstr ""
+msgstr "CCMP"
 
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD/旧版SoftwareRAID"
@@ -600,7 +600,7 @@ msgid "Client"
 msgstr "客户端"
 
 msgid "Client RSYNC job"
-msgstr ""
+msgstr "客户 RSYNC 任务"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "客户端显示小写，伺服端显示大写。"
@@ -639,10 +639,10 @@ msgid "Compliant profile to be used."
 msgstr "使用的附属设定档。"
 
 msgid "Compress"
-msgstr ""
+msgstr "压缩"
 
 msgid "Compress file data during the transfer."
-msgstr ""
+msgstr "在传输时压缩数据。"
 
 msgid "Compression"
 msgstr "资料压缩"
@@ -654,7 +654,7 @@ msgid ""
 msgstr "如果你的网际网路连线速度很慢，开启资料压缩可以增快工作效率。注意：资料压缩的比例会依据不同的档案类型而有很大的差异。"
 
 msgid "Configuration directory"
-msgstr ""
+msgstr "配置目录"
 
 msgid "Configuring"
 msgstr "设定中"
@@ -698,7 +698,7 @@ msgid "Create work directory if it doesn't exist"
 msgstr "如果你还没有工作目录，请建立一个"
 
 msgid "Credits"
-msgstr ""
+msgstr "致谢"
 
 msgid "Critical"
 msgstr "重要"
@@ -710,10 +710,10 @@ msgid "Cron job"
 msgstr "Cron job"
 
 msgid "DAAP"
-msgstr ""
+msgstr "DAAP"
 
 msgid "DAAP Server"
-msgstr ""
+msgstr "DAAP 服务器"
 
 msgid "DDP"
 msgstr "DDP"
@@ -766,7 +766,7 @@ msgid "Default is 21"
 msgstr "预设值为21"
 
 msgid "Default user name is 'admin'."
-msgstr ""
+msgstr "默认到用户名为 \"admin\""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "指定需要认证的目录/URL"
@@ -784,7 +784,7 @@ msgid "Delete Host"
 msgstr "删除主机资讯"
 
 msgid "Delete MIB"
-msgstr ""
+msgstr "删除 MIB"
 
 msgid "Delete RAID"
 msgstr "删除RAID"
@@ -799,13 +799,13 @@ msgid "Delete URL"
 msgstr "删除 URL"
 
 msgid "Delete algorithm"
-msgstr ""
+msgstr "删除算法"
 
 msgid "Delete all MIBs"
-msgstr ""
+msgstr "删除所有 MIB"
 
 msgid "Delete all options"
-msgstr ""
+msgstr "删除所有选项"
 
 msgid "Delete command"
 msgstr "删除指令"
@@ -841,10 +841,10 @@ msgid "Delete module"
 msgstr "删除模组"
 
 msgid "Delete mount point"
-msgstr ""
+msgstr "删除挂载点"
 
 msgid "Delete option"
-msgstr ""
+msgstr "删除选项"
 
 msgid "Delete self-test"
 msgstr "删除自我检测"
@@ -859,7 +859,7 @@ msgid "Delete user"
 msgstr "删除使用者"
 
 msgid "Deleting"
-msgstr ""
+msgstr "正在删除"
 
 msgid "Deny"
 msgstr "拒绝"
@@ -871,7 +871,7 @@ msgid "Destination email address."
 msgstr "收件之 email"
 
 msgid "Destination host name or IP number."
-msgstr ""
+msgstr "目标主机或 IP 地址。"
 
 msgid "Destination network"
 msgstr "目标网段"
@@ -896,7 +896,7 @@ msgid "Device /dev/%s - %s"
 msgstr "装置 /dev/%s - %s"
 
 msgid "Device IP"
-msgstr ""
+msgstr "设备 IP"
 
 msgid "Device is mounted, umount it first before detaching."
 msgstr "装置已经挂载，移除之前请先卸载。"
@@ -995,7 +995,7 @@ msgid "Do not set this for CF cards."
 msgstr "CF 记忆卡请勿设置此选项。"
 
 msgid "Do you really want to delete all MIBs?"
-msgstr ""
+msgstr "是否确定删除全部 MIB ？"
 
 msgid "Do you really want to delete all options?"
 msgstr ""
@@ -1052,7 +1052,7 @@ msgid ""
 msgstr "确定要删除这个挂载点吗？所有使用此挂载点的元件都会失效！(例：分享)"
 
 msgid "Do you really want to delete this option?"
-msgstr ""
+msgstr "是否确定删除此选项？"
 
 msgid "Do you really want to delete this route?"
 msgstr "确定要删除这个路由资讯吗？"
@@ -1133,19 +1133,19 @@ msgid "Download configuration"
 msgstr "下载设定"
 
 msgid "Download directory"
-msgstr ""
+msgstr "下载目录"
 
 msgid "Driver"
-msgstr ""
+msgstr "驱动"
 
 msgid "Driver list"
-msgstr ""
+msgstr "驱动列表"
 
 msgid "Duplex"
 msgstr "双工模式"
 
 msgid "Duplicate share name."
-msgstr ""
+msgstr "重复共享名。"
 
 msgid "Dynamic DNS"
 msgstr "动态 DNS"
@@ -1163,7 +1163,7 @@ msgid "Edit Host"
 msgstr "编辑主机资讯"
 
 msgid "Edit MIB"
-msgstr ""
+msgstr "编辑 MIB"
 
 msgid "Edit RAID"
 msgstr "编辑RAID"
@@ -1178,7 +1178,7 @@ msgid "Edit URL"
 msgstr "编辑 URL"
 
 msgid "Edit command"
-msgstr ""
+msgstr "编辑命令"
 
 msgid "Edit device"
 msgstr "编辑装置"
@@ -1199,7 +1199,7 @@ msgid "Edit initiator"
 msgstr "编辑初始器"
 
 msgid "Edit interface"
-msgstr ""
+msgstr "编辑界面"
 
 msgid "Edit job"
 msgstr "编辑工作"
@@ -1208,10 +1208,10 @@ msgid "Edit module"
 msgstr "编辑模组"
 
 msgid "Edit mount point"
-msgstr ""
+msgstr "编辑挂载点"
 
 msgid "Edit option"
-msgstr ""
+msgstr "编辑选项"
 
 msgid "Edit self-test"
 msgstr "编辑自我检测流程"
@@ -1232,7 +1232,7 @@ msgid "Email Report"
 msgstr "Email 报告"
 
 msgid "Email notification"
-msgstr ""
+msgstr "电子邮件通知"
 
 msgid "Email report"
 msgstr "Email 报告"
@@ -1265,7 +1265,7 @@ msgid "Enable directory listing."
 msgstr "开启目录清单。"
 
 msgid "Enable domain wildcarding."
-msgstr ""
+msgstr "启用域名通配符。"
 
 msgid "Enable extended attribute support"
 msgstr "开启延伸属性"
@@ -1395,7 +1395,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "错误：变更无法套用（Error Code %s）。"
 
 msgid "Execute"
-msgstr ""
+msgstr "执行"
 
 msgid "Execute command"
 msgstr "执行指令"
@@ -1406,7 +1406,7 @@ msgid ""
 msgstr "在系统起始/关机之前或之后的指令。"
 
 msgid "Execute now"
-msgstr ""
+msgstr "立即执行"
 
 msgid "Extensions"
 msgstr "扩充"
@@ -1423,7 +1423,7 @@ msgid ""
 msgstr "在使用 Extent 之前必须先定义他们，而 extent 不能够被使用超过一次。"
 
 msgid "Extra options"
-msgstr ""
+msgstr "附加选项"
 
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
@@ -1431,10 +1431,10 @@ msgid ""
 msgstr ""
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "ifconfig 到附加选项(通常为空)."
 
 msgid "Extra options to rsync (usually empty)."
-msgstr ""
+msgstr "rsync 到附加选项(通常为空)."
 
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
@@ -1475,7 +1475,7 @@ msgid "Failed to create in-memory file system."
 msgstr "无法建立 RAM Disk"
 
 msgid "Failed to execute cron job."
-msgstr ""
+msgstr "执行定时任务失败。"
 
 #, php-format
 msgid ""
@@ -1504,10 +1504,10 @@ msgid "File"
 msgstr "档案"
 
 msgid "File Editor"
-msgstr ""
+msgstr "文件编辑器"
 
 msgid "File Manager"
-msgstr ""
+msgstr "文件管理器"
 
 msgid "File not found"
 msgstr "没有这个档案"
@@ -1658,7 +1658,7 @@ msgid "Help"
 msgstr "帮助"
 
 msgid "Help needed!"
-msgstr ""
+msgstr "需要帮助!"
 
 msgid "Hide dot files"
 msgstr "隐藏以逗点开头的档案"
@@ -1762,13 +1762,13 @@ msgid "IPv6 addresses"
 msgstr "IPv6 位置"
 
 msgid "ISO file to be mounted."
-msgstr ""
+msgstr "要挂载到 ISO 文件"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
 
 msgid "Identifier"
-msgstr ""
+msgstr "标识符"
 
 msgid ""
 "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
@@ -1867,7 +1867,7 @@ msgstr ""
 "use this option if you want to add an existing encrypted disk."
 
 msgid "Initializing"
-msgstr ""
+msgstr "初始化"
 
 msgid "Initiator name"
 msgstr "初始名称"
@@ -1920,7 +1920,7 @@ msgid "Kill encrypted volume"
 msgstr "删除加密磁碟"
 
 msgid "Knowledgebase"
-msgstr ""
+msgstr "知识库"
 
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr ""
