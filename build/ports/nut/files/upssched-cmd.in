@@ -5,6 +5,10 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name=upssched-cmd
+
+load_rc_config $name
+
 # Defaults
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
