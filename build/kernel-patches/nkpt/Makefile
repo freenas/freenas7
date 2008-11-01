@@ -10,6 +10,6 @@ ARCH!=	${UNAME} -p
 .endif
 
 install:
-	@if [ "$${ARCH}" != "amd64" ]; then \
+	@if [ "${ARCH}" != "amd64" ]; then \
 		patch --forward --remove-empty-files --unified --directory=/sys/i386/include < ${.CURDIR}/files/pmap.h.diff; \
 	fi
