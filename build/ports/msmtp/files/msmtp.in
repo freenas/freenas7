@@ -30,7 +30,7 @@ msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 	-i "//system/email/security[. != 'none']" \
 		-o "tls on" -n \
 		-o "tls_certcheck off" -n \
-		-i "//system/email/port[. = '465']" -o "tls_starttls off" -n -b \
+		-i "//system/email/port[. != '25']" -o "tls_starttls off" -n -b \
 		-i "//system/email/port[. = '25']" -o "tls_starttls on" -n -b \
 	-b \
 	-o "syslog LOG_MAIL" -n \
