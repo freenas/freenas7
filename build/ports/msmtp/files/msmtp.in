@@ -8,6 +8,10 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="msmtp"
+
+load_rc_config "${name}"
+
 # Defaults
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 

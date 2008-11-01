@@ -13,6 +13,8 @@
 name="sshd"
 rcvar=`set_rcvar`
 
+load_rc_config "$name"
+
 # Custom commands
 start_precmd="mkconf_cmd"
 mkconf_cmd="mkconf_cmd"
@@ -82,5 +84,4 @@ j2nICMgv/gj3zzuk7zcMpnbvGyA3W8VWb6IjJDvww4rJ21Q2gHBC5XCohJsCFQCD
 	/bin/chmod 0600 ${sshd_hostdsakey}
 }
 
-load_rc_config $name
 run_rc_command "$1"

@@ -12,7 +12,7 @@
 name="smbpasswd"
 command="/usr/local/bin/${name}"
 
-load_rc_config $name
+load_rc_config "$name"
 
 # Defaults
 smbpasswd_passwdfile=${smbpasswd_passwdfile:-"/var/etc/private/smbpasswd"}

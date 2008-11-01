@@ -8,6 +8,10 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="webfm"
+
+load_rc_config "$name"
+
 # Defaults
 webfm_configdir=${webfm_configdir:-"/usr/local/www/quixplorer/.config"}
 webfm_htusers=${webfm_htusers:-"${webfm_configdir}/.htusers.php"}

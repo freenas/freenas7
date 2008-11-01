@@ -15,6 +15,10 @@
 
 name="cron"
 rcvar="`set_rcvar`"
+
+load_rc_config "$name"
+
+# Defaults
 command="/usr/sbin/${name}"
 pidfile="/var/run/${name}.pid"
 cron_config=${cron_config:-"/etc/crontab"}

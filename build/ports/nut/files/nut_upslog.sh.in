@@ -14,7 +14,7 @@
 name="nut_upslog"
 rcvar=`set_rcvar`
 
-load_rc_config $name
+load_rc_config "${name}"
 
 # Defaults
 nut_upslog_enable=${nut_upslog_enable:-"NO"}
