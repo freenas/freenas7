@@ -128,13 +128,7 @@ function enable_change(enable_change) {
 							<?=gettext("Enable local user authentication.");?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><strong><?=gettext("DDP");?><strong></td>
-						<td width="78%" class="vtable">
-							<input name="noddp" id="noddp" type="checkbox" value="yes" <?php if ($pconfig['noddp']) echo "checked";?>>
-							<?=gettext("Disable AFP-over-Appletalk to prevent DDP connections.");?></br>
-						</td>
-					</tr>
+					<?php html_checkbox("noddp", gettext("DDP"), $pconfig['noddp'] ? true : false, gettext("Disable AFP-over-Appletalk to prevent DDP connections."));?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
