@@ -464,6 +464,7 @@
 			<rolist/>
 			<rwlist/>
 			<dbpath>xxx<dbpath>
+			<cnidscheme>cdb|dbd|last</cnidscheme>
 			<options>
 				<cachecnid/>
 				<crlf/>

@@ -69,6 +69,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['rolist'] = $a_share[$id]['rolist'];
 	$pconfig['rwlist'] = $a_share[$id]['rwlist'];
 	$pconfig['dbpath'] = $a_share[$id]['dbpath'];
+	$pconfig['cnidscheme'] = $a_share[$id]['cnidscheme'];
 	$pconfig['cachecnid'] = isset($a_share[$id]['options']['cachecnid']);
 	$pconfig['crlf'] = isset($a_share[$id]['options']['crlf']);
 	$pconfig['mswindows'] = isset($a_share[$id]['options']['mswindows']);
@@ -92,6 +93,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['rolist'] = '';
 	$pconfig['rwlist'] = '';
 	$pconfig['dbpath'] = '';
+	$pconfig['cnidscheme'] = '';
 	$pconfig['cachecnid'] = false;
 	$pconfig['crlf'] = false;
 	$pconfig['mswindows'] = false;
@@ -142,6 +144,7 @@ if ($_POST) {
 		$share['rolist'] = $_POST['rolist'];
 		$share['rwlist'] = $_POST['rwlist'];
 		$share['dbpath'] = $_POST['dbpath'];
+		$share['cnidscheme'] = $_POST['cnidscheme'];
 		$share['options']['cachecnid'] = $_POST['cachecnid'] ? true : false;
 		$share['options']['crlf'] = $_POST['crlf'] ? true : false;
 		$share['options']['mswindows'] = $_POST['mswindows'] ? true : false;
@@ -274,6 +277,7 @@ if ($_POST) {
 					  	<span class="vexpl"><?=gettext("Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only.");?></span>
 					  </td>
 					</tr>
+					<?php html_combobox("cnidscheme", gettext("cnidscheme"), $pconfig['cnidscheme'], array("" => "Default", "cdb" => "cdb", "dbd" => "dbd", "last" => "last"), gettext("Set the CNID backend to be used for the volume."));?>
 					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("cachecnid");?></td>
 			      <td width="78%" class="vtable">
