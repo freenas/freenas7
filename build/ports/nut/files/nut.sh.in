@@ -15,7 +15,7 @@
 name="nut"
 rcvar=`set_rcvar`
 
-load_rc_config $name
+load_rc_config "${name}"
 
 # Custom commands
 extra_commands="mkconf"

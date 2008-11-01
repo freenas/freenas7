@@ -7,7 +7,7 @@
 
 name=upssched-cmd
 
-load_rc_config $name
+load_rc_config "${name}"
 
 # Defaults
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}

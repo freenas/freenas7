@@ -14,6 +14,8 @@
 name="iscsi_initiator"
 rcvar=`set_rcvar`
 
+load_rc_config "$name"
+
 # Custom commands
 start_precmd="start_precmd"
 start_cmd="start_cmd"
@@ -54,5 +56,4 @@ stop_cmd()
 	/usr/bin/killall iscontrol
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

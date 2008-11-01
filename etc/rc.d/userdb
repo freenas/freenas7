@@ -9,6 +9,10 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="userdb"
+
+load_rc_config "$name"
+
 # Defaults
 userdb_group=${userdb_group:-"/etc/group"}
 userdb_passwd=${userdb_passwd:-"/etc/passwd"}

@@ -11,7 +11,7 @@
 
 name="rsync_client"
 
-load_rc_config $name
+load_rc_config "$name"
 
 # Defaults
 rsync_client_logfile=${rsync_client_logfile:-"/var/log/${name}.log"}

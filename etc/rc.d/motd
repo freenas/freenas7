@@ -8,6 +8,10 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="motd"
+
+load_rc_config "$name"
+
 # Defaults
 motd_config=${motd_config:-"/etc/motd"}
 

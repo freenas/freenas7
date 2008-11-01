@@ -13,6 +13,8 @@
 name="unison"
 rcvar=`set_rcvar`
 
+load_rc_config "$name"
+
 # Custom commands
 extra_commands="status"
 start_cmd="start_cmd"
@@ -58,5 +60,4 @@ status_cmd()
 	# Nothing to do here, but keep empty implementation
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

@@ -12,6 +12,8 @@
 name="syslogd"
 rcvar=`set_rcvar`
 
+load_rc_config "$name"
+
 # Defaults
 syslogd_enable=${syslogd_enable:-"NO"}
 syslogd_config=${syslogd_config:-"/var/etc/syslog.conf"}
@@ -24,8 +26,6 @@ start_precmd="start_precmd"
 extra_commands="reload mkconf"
 reload_precmd="reload_precmd"
 mkconf_cmd="mkconf_cmd"
-
-load_rc_config ${name}
 
 # Check if syslog'ing to remote syslog server is disabled
 if ! configxml_isset //syslogd/remote/enable; then
