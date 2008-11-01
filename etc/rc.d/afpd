@@ -66,6 +66,7 @@ mkconf_cmd()
 		-i "string-length(rolist) > 0" -v "concat('rolist:',rolist,' ')" -b \
 		-i "string-length(rwlist) > 0" -v "concat('rwlist:',rwlist,' ')" -b \
 		-i "string-length(dbpath) > 0" -v "concat('dbpath:&quot;',dbpath,'&quot; ')" -b \
+		-i "string-length(cnidscheme) > 0" -v "concat('cnidscheme:',cnidscheme,' ')" -b \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_avdefault}
 }
