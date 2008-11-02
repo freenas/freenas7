@@ -31,13 +31,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-23 21:54+0000\n"
-"PO-Revision-Date: 2008-10-31 14:16+0000\n"
-"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
+"PO-Revision-Date: 2008-11-02 04:07+0000\n"
+"Last-Translator: forinec <forinec@googlemail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-31 22:52+0000\n"
+"X-Launchpad-Export-Date: 2008-11-02 13:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -1484,12 +1484,12 @@ msgstr ""
 
 #, php-format
 msgid "Failed to send test email to: %s."
-msgstr ""
+msgstr "向 %s 发送测试消息失败"
 
 #, php-format
 msgid ""
 "Failed to send test email. Please check the <a href='%s'>log</a> files."
-msgstr ""
+msgstr "发送测试消息失败。详情请参见<a href='%s'>日志</a>文件"
 
 msgid "Failed to upload metadata backup file."
 msgstr "组态备份档案上传失败。"
@@ -1975,7 +1975,7 @@ msgid "License"
 msgstr "License"
 
 msgid "License & Credits"
-msgstr ""
+msgstr "许可协议及鸣谢"
 
 msgid "Link Aggregation and Failover"
 msgstr ""
@@ -2094,7 +2094,7 @@ msgid "MTU"
 msgstr "MTU"
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
-msgstr ""
+msgstr "请确保您的设备开启了 S.M.A.R.T 。"
 
 #, php-format
 msgid ""
@@ -2105,7 +2105,7 @@ msgid "Management"
 msgstr "管理"
 
 msgid "Manufacturer"
-msgstr ""
+msgstr "制造商"
 
 msgid "Map all users to root"
 msgstr "所有人视为root"
@@ -2187,7 +2187,7 @@ msgid "Miscellaneous"
 msgstr "杂项设定"
 
 msgid "Mode"
-msgstr ""
+msgstr "模式"
 
 msgid "Model extra"
 msgstr ""
