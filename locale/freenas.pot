@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-10-22 20:05+0000\n"
+"PO-Revision-Date: 2008-11-01 21:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -389,6 +389,9 @@ msgid "Authenticate URL"
 msgstr ""
 
 msgid "Authentication"
+msgstr ""
+
+msgid "Authentication method"
 msgstr ""
 
 msgid "Authorised network"
@@ -2640,6 +2643,9 @@ msgstr ""
 msgid "Set share password."
 msgstr ""
 
+msgid "Set the CNID backend to be used for the volume."
+msgstr ""
+
 msgid "Set the account's primary group to the given group."
 msgstr ""
 
@@ -3767,6 +3773,9 @@ msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "cnidscheme"
 msgstr ""
 
 msgid "crlf"
