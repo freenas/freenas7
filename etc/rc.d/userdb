@@ -106,7 +106,7 @@ do
 		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-i "string-length(homedir) = 0" -o " -d /mnt" -b \
-		-i "string-length(homedir) > 0" -v "concat(' -d ',homedir)" -b \
+		-i "string-length(homedir) > 0" -v "concat(' -m -d ',homedir)" -b \
 		-i "string-length(password) > 0" -o " -h 0" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
