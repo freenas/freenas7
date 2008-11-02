@@ -150,8 +150,7 @@ pre {
 -->
 </style>
 <?php if (isBlank($_POST['txtCommand'])): ?>
-<p class="red"><strong>Note: this function is unsupported. Use it
-on your own risk!</strong></p>
+<p class="red"><strong><?=gettext("Note");?>: <?=gettext("This function is unsupported. Use it on your own risk!");?></strong></p>
 <?php endif; ?>
 <?php if ($ulmsg) echo "<p><strong>" . $ulmsg . "</strong></p>\n"; ?>
 <?php
