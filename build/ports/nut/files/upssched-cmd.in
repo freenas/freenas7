@@ -44,7 +44,7 @@ Early shutdown imminent in ${nut_upsmon_onbatt_shutdown_timer} seconds.";;
 
 	early-shutdown)
 		_message="${_notifymessage}.
-Early shutdown.";
+Early shutdown in progress.";
 		shutdown -h now powerevent;;
 
 	resume)
