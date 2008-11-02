@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-11-01 22:06+0000\n"
+"PO-Revision-Date: 2008-11-01 22:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -485,6 +485,9 @@ msgid "Check shared secret:"
 msgstr ""
 
 msgid "Choose which interface this route applies to."
+msgstr ""
+
+msgid "Clear"
 msgstr ""
 
 msgid "Clear log"
@@ -983,6 +986,9 @@ msgid "Done."
 msgstr ""
 
 msgid "Dos charset"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Download configuration"
@@ -2126,6 +2132,9 @@ msgid "Outgoing mail server"
 msgstr ""
 
 msgid "Owner"
+msgstr ""
+
+msgid "PHP Command"
 msgstr ""
 
 msgid "PPPoE"
@@ -3532,6 +3541,9 @@ msgid "Updating in 5 seconds."
 msgstr ""
 
 msgid "Upgrade firmware"
+msgstr ""
+
+msgid "Upload"
 msgstr ""
 
 msgid "Uppercases names in both directions"
