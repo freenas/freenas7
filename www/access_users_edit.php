@@ -235,7 +235,7 @@ function get_nextuser_id() {
             <td width="22%" valign="top" class="vncell"><?=gettext("Home directory");?></td>
             <td width="78%" class="vtable">
               <input name="homedir" type="text" class="formfld" id="homedir" size="60" value="<?=htmlspecialchars($pconfig['homedir']);?>"><br>
-              <span class="vexpl"><?=gettext("Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt.");?></span>
+              <span class="vexpl"><?=gettext("Enter the path to the home directory of that user. Leave this field empty to use default path /mnt.");?></span>
             </td>
           </tr>
 					<tr>
