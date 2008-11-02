@@ -32,7 +32,6 @@ nut_upsmon_user=${nut_upsmon_user:-"root"}
 nut_upsmon_password=${nut_upsmon_password:-"freenas"}
 nut_upsmon_flags=${nut_upsmon_flags:-"-u ${nut_upsmon_runas} localhost"}
 nut_upsmon_notifycmd=${nut_upsmon_notifycmd:-"/usr/local/sbin/upssched"}
-nut_upsmon_onbatt_shutdown_timer=${nut_upsmon_onbatt_shutdown_timer:-"30"}
 
 required_dirs="/var/run"
 required_files="${nut_upsmon_conf}"

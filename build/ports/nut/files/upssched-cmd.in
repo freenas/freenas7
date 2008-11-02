@@ -40,7 +40,7 @@ esac
 case "${1}" in
 	early-warning)
 		_message="${_notifymessage}.
-Early shutdown imminent.";;
+Early shutdown imminent in ${nut_upsmon_onbatt_shutdown_timer} seconds.";;
 
 	early-shutdown)
 		_message="${_notifymessage}.
@@ -52,7 +52,8 @@ Early shutdown.";
 Early shutdown cancelled.";;
 
 	forced-shutdown)
-		_message="${_notifymessage}";
+		_message="${_notifymessage}.
+Forced shutdown imminent in ${nut_upssched_forced_shutdown_timer} minutes.";
 		shutdown -h +${nut_upssched_forced_shutdown_timer} powerevent-forced;;
 
 	replace-battery)
