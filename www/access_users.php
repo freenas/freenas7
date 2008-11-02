@@ -45,6 +45,7 @@ if ($_POST) {
 			config_lock();
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("websrv_htpasswd");
+			$retval |= rc_exec_service("webfm");
 			if (isset($config['samba']['enable'])) {
 				$retval |= rc_exec_service("smbpasswd");
 				$retval |= rc_update_service("samba");

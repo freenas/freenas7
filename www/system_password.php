@@ -69,6 +69,7 @@ if ($_POST) {
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("htpasswd");
 			$retval |= rc_exec_service("websrv_htpasswd");
+			$retval |= rc_exec_service("webfm");
 			config_unlock();
 		}
 
