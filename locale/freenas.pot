@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-11-01 22:15+0000\n"
+"PO-Revision-Date: 2008-11-01 22:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -3322,6 +3322,9 @@ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 
 msgid "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
+msgstr ""
+
+msgid "This function is unsupported. Use it on your own risk!"
 msgstr ""
 
 msgid "This group already exists in the group list."
