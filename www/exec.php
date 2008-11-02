@@ -27,7 +27,7 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	unset($_POST['txtCommand']);
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <?php
 // Function: is Blank
 // Returns true or false depending on blankness of argument.
@@ -182,7 +182,7 @@ if (!isBlank($_POST['txtPHPCommand'])) {
 <form action="<?=$HTTP_SERVER_VARS['SCRIPT_NAME'];?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
   <table>
     <tr>
-      <td class="label" align="right">Command:</td>
+      <td class="label" align="right"><?=gettext("Command");?></td>
       <td class="type"><input name="txtCommand" type="text" size="80" value="" onkeypress="txtCommand_onKey(event);"></td>
     </tr>
     <tr>
@@ -190,9 +190,9 @@ if (!isBlank($_POST['txtPHPCommand'])) {
       <td valign="top" class="label">
          <input type="hidden" name="txtRecallBuffer" value="<?=$_POST['txtRecallBuffer'] ?>">
          <input type="button" class="formbtn" name="btnRecallPrev" value="<" onClick="btnRecall_onClick( this.form, -1 );">
-         <input type="submit" class="formbtn" value="Execute">
+         <input type="submit" class="formbtn" value="<?=gettext("Execute");?>">
          <input type="button" class="formbtn" name="btnRecallNext" value=">" onClick="btnRecall_onClick( this.form,  1 );">
-         <input type="button"  class="formbtn" value="Clear" onClick="return Reset_onClick( this.form );">
+         <input type="button"  class="formbtn" value="<?=gettext("Clear");?>" onClick="return Reset_onClick( this.form );">
       </td>
     </tr>
     <tr>
@@ -200,30 +200,30 @@ if (!isBlank($_POST['txtPHPCommand'])) {
       <td></td>
     </tr>
     <tr>
-      <td align="right">Download:</td>
+      <td align="right"><?=gettext("Download");?></td>
       <td>
         <input name="dlPath" type="text" id="dlPath" size="50">
         <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.dlPath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-        <input name="submit" type="submit" class="formbtn" id="download" value="Download">
+        <input name="submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download");?>">
         </td>
     </tr>
     <tr>
-      <td align="right">Upload:</td>
+      <td align="right"><?=gettext("Upload");?></td>
       <td valign="top" class="label">
         <input name="ulfile" type="file" class="formbtn" id="ulfile">
-        <input name="submit" type="submit"  class="formbtn" id="upload" value="Upload"></td>
+        <input name="submit" type="submit"  class="formbtn" id="upload" value="<?=gettext("Upload");?>"></td>
     </tr>
 		<tr>
 			<td colspan="2" valign="top" height="16"></td>
 		</tr>
 		<tr>
-			<td align="right">PHP Command:</td>
+			<td align="right"><?=gettext("PHP Command");?></td>
 			<td class="type"><textarea id="txtPHPCommand" name="txtPHPCommand" type="text" rows="3" cols="50"><?=htmlspecialchars($_POST['txtPHPCommand']);?></textarea></td>
 		</tr>
 		<tr>
 			<td valign="top">&nbsp;&nbsp;&nbsp;</td>
 			<td valign="top" class="label">
-				<input type="submit" class="button" value="Execute">
+				<input type="submit" class="button" value="<?=gettext("Execute");?>">
 			</td>
 		</tr>
   </table>
