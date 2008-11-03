@@ -17,6 +17,7 @@ nullfs/nullfs.ko
 unionfs/unionfs.ko
 smbfs/smbfs.ko
 zfs/zfs.ko
+opensolaris/opensolaris.ko
 
 # NFS
 krpc/krpc.ko
