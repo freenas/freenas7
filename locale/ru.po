@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
-"PO-Revision-Date: 2008-10-24 19:36+0000\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
+"PO-Revision-Date: 2008-11-03 12:35+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:25+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:33+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -497,6 +497,9 @@ msgstr "Авторизованный адрес URL"
 msgid "Authentication"
 msgstr "Аутентификация"
 
+msgid "Authentication method"
+msgstr "Способ аутентификации"
+
 msgid "Authorised network"
 msgstr "Авторизованная сеть"
 
@@ -590,6 +593,9 @@ msgstr "Проверьте разделяемый секретный ключ:"
 msgid "Choose which interface this route applies to."
 msgstr "Выберите, к каким интерфейсам применим этот маршрут."
 
+msgid "Clear"
+msgstr "Очистить"
+
 msgid "Clear log"
 msgstr "Очистить журнал"
 
@@ -641,6 +647,9 @@ msgstr "Командные скрипты"
 
 msgid "Comment"
 msgstr "Комментарий"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr "Сообщество"
@@ -1158,6 +1167,9 @@ msgstr "Готово."
 msgid "Dos charset"
 msgstr "Кодовая страница Dos"
 
+msgid "Download"
+msgstr "Скачать"
+
 msgid "Download configuration"
 msgstr "Скачать конфигурацию"
 
@@ -1415,13 +1427,11 @@ msgstr ""
 "между 8 и 63 символами."
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
 msgstr ""
-"Введите путь к домашнему каталогу данного пользователя. Убедитесь, что "
-"директория существует и всегда монтируется при запуске. Для использование "
-"пути по умолчанию (/mnt) оставьте это поле пустым."
+"Введите путь к домашнему каталогу пользователя. Оставьте это поле пустым для "
+"использования пути по умолчанию /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr "Введите порт для отправки ловушек (по умолчанию 162)."
@@ -2524,6 +2534,9 @@ msgstr "Сервер исходящей почты"
 msgid "Owner"
 msgstr "Владелец"
 
+msgid "PHP Command"
+msgstr "Команда PHP"
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -3073,6 +3086,9 @@ msgstr "Установить запрет записи"
 
 msgid "Set share password."
 msgstr "Установить пароль для общего ресурса"
+
+msgid "Set the CNID backend to be used for the volume."
+msgstr "Установите CNID backend, чтобы использовать для этого тома."
 
 msgid "Set the account's primary group to the given group."
 msgstr "Установить данную группу основной"
@@ -3918,6 +3934,9 @@ msgstr ""
 "Windows. Не рекомендуется для общих ресурсов, используемых компьютерами "
 "Macintosh."
 
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr "Эта функция не поддерживается. Используйте только на свой  риск!"
+
 msgid "This group already exists in the group list."
 msgstr "Группа уже есть в списке групп."
 
@@ -4274,6 +4293,9 @@ msgstr "Обновляется через 5 секунд."
 msgid "Upgrade firmware"
 msgstr "Обновить прошивку"
 
+msgid "Upload"
+msgstr "Закачать"
+
 msgid "Uppercases names in both directions"
 msgstr "Верхний регистр в обоих направлениях"
 
@@ -4577,6 +4599,9 @@ msgstr "Всех в chroot"
 
 msgid "chroot() everyone, but root."
 msgstr "Всех в chroot(), кроме root"
+
+msgid "cnidscheme"
+msgstr "cnidscheme"
 
 msgid "crlf"
 msgstr "crlf"

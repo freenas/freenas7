@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
-"PO-Revision-Date: 2008-11-02 04:07+0000\n"
-"Last-Translator: forinec <forinec@googlemail.com>\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
+"PO-Revision-Date: 2008-11-04 03:21+0000\n"
+"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:26+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:33+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -447,7 +447,7 @@ msgid "An host with this name already exists."
 msgstr "已经有一个相同的主机名称存在了。"
 
 msgid "An interface with the specified description already exists."
-msgstr ""
+msgstr "具有相同描述的接口已经存在。"
 
 msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
@@ -488,6 +488,9 @@ msgid "Authenticate URL"
 msgstr "认证 URL"
 
 msgid "Authentication"
+msgstr "认证方式"
+
+msgid "Authentication method"
 msgstr "认证方式"
 
 msgid "Authorised network"
@@ -583,6 +586,9 @@ msgstr "检查分享密文："
 msgid "Choose which interface this route applies to."
 msgstr "选择本路由设定要套用到哪一个网路介面。"
 
+msgid "Clear"
+msgstr "清除"
+
 msgid "Clear log"
 msgstr "清空日志"
 
@@ -631,6 +637,9 @@ msgstr "命令列脚本"
 
 msgid "Comment"
 msgstr "注解"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr "社群"
@@ -1129,6 +1138,9 @@ msgstr "完成。"
 msgid "Dos charset"
 msgstr "Dos字元编码"
 
+msgid "Download"
+msgstr "下载"
+
 msgid "Download configuration"
 msgstr "下载设定"
 
@@ -1376,10 +1388,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
-msgstr "输入使用者家目录的路径。请确定这个路径存在而且一开机就会挂载。将此留白则会使用预设的路径 /mnt。"
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
+msgstr ""
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr "输入 Traps 传送阜（预设为 162）"
@@ -2409,6 +2420,9 @@ msgstr "外送邮件伺服器"
 msgid "Owner"
 msgstr ""
 
+msgid "PHP Command"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -2947,6 +2961,9 @@ msgstr "设成唯读"
 
 msgid "Set share password."
 msgstr "设定分享密码。"
+
+msgid "Set the CNID backend to be used for the volume."
+msgstr ""
 
 msgid "Set the account's primary group to the given group."
 msgstr "设定帐号的主要群组。"
@@ -3730,6 +3747,9 @@ msgstr ""
 "This forces filenames to be restricted to the character set used by Windows. "
 "This is not recommended for shares used principally by Mac computers."
 
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr ""
+
 msgid "This group already exists in the group list."
 msgstr "这个群组已经建立过了。"
 
@@ -4054,6 +4074,9 @@ msgstr "五秒内更新"
 msgid "Upgrade firmware"
 msgstr "韧体升级"
 
+msgid "Upload"
+msgstr ""
+
 msgid "Uppercases names in both directions"
 msgstr "双向大写名称"
 
@@ -4325,6 +4348,9 @@ msgstr "chroot everyone"
 
 msgid "chroot() everyone, but root."
 msgstr "chroot() everyone, but root."
+
+msgid "cnidscheme"
+msgstr ""
 
 msgid "crlf"
 msgstr "crlf"
@@ -5461,6 +5487,12 @@ msgstr "平常日"
 
 #~ msgid "Duplicate name."
 #~ msgstr "重复名称。"
+
+#~ msgid ""
+#~ "Enter the path to the home directory of that user. Make sure that this path "
+#~ "exists and is always mounted at startup. Leave this field empty to use "
+#~ "default path /mnt."
+#~ msgstr "输入使用者家目录的路径。请确定这个路径存在而且一开机就会挂载。将此留白则会使用预设的路径 /mnt。"
 
 #~ msgid "This parameters will be added to [global] in smb.conf."
 #~ msgstr "这个参数将会被新增到 smb.con 的 global 区域。"

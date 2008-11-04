@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:25+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:34+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -490,6 +490,9 @@ msgstr "認證 URL"
 msgid "Authentication"
 msgstr "認證方式"
 
+msgid "Authentication method"
+msgstr ""
+
 msgid "Authorised network"
 msgstr "認可網路"
 
@@ -583,6 +586,9 @@ msgstr "檢查分享密文："
 msgid "Choose which interface this route applies to."
 msgstr "選擇本路由設定要套用到哪一個網路介面。"
 
+msgid "Clear"
+msgstr ""
+
 msgid "Clear log"
 msgstr "清除記錄檔"
 
@@ -631,6 +637,9 @@ msgstr "命令列腳本"
 
 msgid "Comment"
 msgstr "註解"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr "社群"
@@ -1129,6 +1138,9 @@ msgstr "完成。"
 msgid "Dos charset"
 msgstr "Dos字元編碼"
 
+msgid "Download"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "下載設定"
 
@@ -1376,10 +1388,9 @@ msgid ""
 msgstr "輸入在 WPA-PSK 模式中使用的密語。這個密語長度必須在 8 到 63 個字元之間。"
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
-msgstr "輸入使用者家目錄的路徑。請確定這個路徑存在而且一開機就會掛載。將此留白則會使用預設的路徑 /mnt。"
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
+msgstr ""
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr "輸入 Traps 傳送阜（預設為 162）"
@@ -2409,6 +2420,9 @@ msgstr "外送郵件伺服器"
 msgid "Owner"
 msgstr "擁有者"
 
+msgid "PHP Command"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -2948,6 +2962,9 @@ msgstr "設成唯讀"
 
 msgid "Set share password."
 msgstr "設定分享密碼。"
+
+msgid "Set the CNID backend to be used for the volume."
+msgstr ""
 
 msgid "Set the account's primary group to the given group."
 msgstr "設定帳號的主要群組。"
@@ -3733,6 +3750,9 @@ msgstr ""
 "This forces filenames to be restricted to the character set used by Windows. "
 "This is not recommended for shares used principally by Mac computers."
 
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr ""
+
 msgid "This group already exists in the group list."
 msgstr "這個群組已經建立過了。"
 
@@ -4057,6 +4077,9 @@ msgstr "五秒內更新"
 msgid "Upgrade firmware"
 msgstr "韌體升級"
 
+msgid "Upload"
+msgstr ""
+
 msgid "Uppercases names in both directions"
 msgstr "雙向大寫名稱"
 
@@ -4328,6 +4351,9 @@ msgstr "chroot everyone"
 
 msgid "chroot() everyone, but root."
 msgstr "chroot() everyone, but root."
+
+msgid "cnidscheme"
+msgstr ""
 
 msgid "crlf"
 msgstr "crlf"
@@ -5492,6 +5518,12 @@ msgstr "平常日"
 
 #~ msgid "Duplicate name."
 #~ msgstr "重複名稱。"
+
+#~ msgid ""
+#~ "Enter the path to the home directory of that user. Make sure that this path "
+#~ "exists and is always mounted at startup. Leave this field empty to use "
+#~ "default path /mnt."
+#~ msgstr "輸入使用者家目錄的路徑。請確定這個路徑存在而且一開機就會掛載。將此留白則會使用預設的路徑 /mnt。"
 
 #~ msgid "This parameters will be added to [global] in smb.conf."
 #~ msgstr "這個參數將會被新增到 smb.con 的 global 區域。"
