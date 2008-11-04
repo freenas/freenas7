@@ -116,3 +116,12 @@ function logs_dump_ex($logfile, $entries, $columns, $withorig = true) {
 		echo "</tr>\n";
 	}
 }
+
+function logs_download($logfile, $filename) {
+	$fs = filesize($logfile);
+	header("Content-Type: application/octet-stream");
+	header("Content-Disposition: attachment; filename={$filename}");
+	header("Content-Length: $fs");
+	header("Pragma: hack");
+	readfile($logfile);
+}

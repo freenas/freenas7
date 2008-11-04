@@ -46,6 +46,11 @@ if ($_POST['clear']) {
 	header("Location: diag_logs_upnp.php");
 	exit;
 }
+
+if ($_POST['download']) {
+	logs_download($logfile, "upnp.log");
+	exit;
+}
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -62,7 +67,8 @@ if ($_POST['clear']) {
 				  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
 				</table>
 				<div id="submit">
-					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
+					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear");?>">
+					<input name="download" type="submit" class="formbtn" value="<?=gettext("Download");?>">
 				</div>
 			</form>
 		</td>
