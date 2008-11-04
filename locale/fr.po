@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
 "PO-Revision-Date: 2008-10-25 13:55+0000\n"
 "Last-Translator: Christophe Lherieau <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:24+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:33+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -506,6 +506,9 @@ msgstr "Authentifier l'URL"
 msgid "Authentication"
 msgstr "Authentification"
 
+msgid "Authentication method"
+msgstr ""
+
 msgid "Authorised network"
 msgstr "R&eacute;seau autoris&eacute;"
 
@@ -601,6 +604,9 @@ msgstr "Check shared secret:"
 msgid "Choose which interface this route applies to."
 msgstr "Sélectionnez à quelle interface cette route s'applique."
 
+msgid "Clear"
+msgstr ""
+
 msgid "Clear log"
 msgstr "Vider le journal"
 
@@ -654,6 +660,9 @@ msgstr "Command scripts"
 
 msgid "Comment"
 msgstr "Commentaire"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr "Communauté"
@@ -1176,6 +1185,9 @@ msgstr "Terminé."
 msgid "Dos charset"
 msgstr "Jeu de caractères Dos"
 
+msgid "Download"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "Télécharger la configuration"
 
@@ -1436,13 +1448,9 @@ msgstr ""
 "avoir entre 8 et 63 caractères."
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
 msgstr ""
-"Entrez le chemin vers le répertoire de base de cet utilisateur. Assurez-vous "
-"que ce chemin existe et qu'il soit toujours monté au démarrage. Laissez ce "
-"champ vide pour utiliser le chemin par défaut /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr "Port sur lequel envoyer les traps SNMP (162 par défaut)."
@@ -2563,6 +2571,9 @@ msgstr "Serveur mail sortant"
 msgid "Owner"
 msgstr "Propriétaire"
 
+msgid "PHP Command"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -3119,6 +3130,9 @@ msgstr "En lecture seule"
 
 msgid "Set share password."
 msgstr "Choisir un mot de passe du partage."
+
+msgid "Set the CNID backend to be used for the volume."
+msgstr ""
 
 msgid "Set the account's primary group to the given group."
 msgstr "Configure le groupe principal de l'utilisateur."
@@ -3991,6 +4005,9 @@ msgstr ""
 "utilisé par Windows. Ceci n'est pas recommandé pour les partages utilisés "
 "principalement par des ordinateurs Mac."
 
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr ""
+
 msgid "This group already exists in the group list."
 msgstr "Ce groupe existe déjà."
 
@@ -4349,6 +4366,9 @@ msgstr "Mise à jour dans 5 secondes."
 msgid "Upgrade firmware"
 msgstr "Charger"
 
+msgid "Upload"
+msgstr ""
+
 msgid "Uppercases names in both directions"
 msgstr "Noms en majuscules dans les deux directions"
 
@@ -4661,6 +4681,9 @@ msgstr "Emprisonner (chroot) tout le monde"
 
 msgid "chroot() everyone, but root."
 msgstr "Emprisonner (chroot) tout le monde, sauf root."
+
+msgid "cnidscheme"
+msgstr ""
 
 msgid "crlf"
 msgstr "crlf"
@@ -6241,6 +6264,15 @@ msgstr "jours de la semaine"
 
 #~ msgid "Duplicate name."
 #~ msgstr "Nom dupliqué."
+
+#~ msgid ""
+#~ "Enter the path to the home directory of that user. Make sure that this path "
+#~ "exists and is always mounted at startup. Leave this field empty to use "
+#~ "default path /mnt."
+#~ msgstr ""
+#~ "Entrez le chemin vers le répertoire de base de cet utilisateur. Assurez-vous "
+#~ "que ce chemin existe et qu'il soit toujours monté au démarrage. Laissez ce "
+#~ "champ vide pour utiliser le chemin par défaut /mnt."
 
 #~ msgid "Accessible through 'http://ip_address:port'."
 #~ msgstr "Accessible par 'http://adresse_ip:port'."

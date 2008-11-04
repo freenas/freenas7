@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
 "PO-Revision-Date: 2008-09-29 16:45+0000\n"
 "Last-Translator: Ángel Alonso (F3leR) <f3ler0x69@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:26+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:34+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -484,6 +484,9 @@ msgstr "Autentificar URL"
 msgid "Authentication"
 msgstr "Autentificación"
 
+msgid "Authentication method"
+msgstr ""
+
 msgid "Authorised network"
 msgstr "Authorised network"
 
@@ -579,6 +582,9 @@ msgstr "Comprobando el secreto compartido:"
 msgid "Choose which interface this route applies to."
 msgstr "Elija el interfaz al que aplicar esta ruta."
 
+msgid "Clear"
+msgstr ""
+
 msgid "Clear log"
 msgstr "Borrar registro"
 
@@ -632,6 +638,9 @@ msgstr "Scripts de comando"
 
 msgid "Comment"
 msgstr "Comentario"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr "Comunidad"
@@ -1141,6 +1150,9 @@ msgstr "Hecho."
 msgid "Dos charset"
 msgstr "Conjunto de caracteres de Dos"
 
+msgid "Download"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "Configuración de descarga"
 
@@ -1392,13 +1404,9 @@ msgstr ""
 "entre 8 y 63 caracteres de longitud"
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
 msgstr ""
-"Ingrese la ruta al directorio personal de aquel usuario. Asegúrese de que la "
-"ruta exista y que siempre se monte al inicio. Deje este campo vacío para "
-"usar la ruta por defecto /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -2466,6 +2474,9 @@ msgstr "Servidor de correos salientes"
 msgid "Owner"
 msgstr "Propietario"
 
+msgid "PHP Command"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -3006,6 +3017,9 @@ msgstr "Asignar solo lectura"
 
 msgid "Set share password."
 msgstr "Asignar compartir contraseña"
+
+msgid "Set the CNID backend to be used for the volume."
+msgstr ""
 
 msgid "Set the account's primary group to the given group."
 msgstr ""
@@ -3816,6 +3830,9 @@ msgid ""
 "This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr ""
+
 msgid "This group already exists in the group list."
 msgstr "Este grupo ya existe en la lista de grupos."
 
@@ -4120,6 +4137,9 @@ msgstr "Actualizando en 5 segundos."
 msgid "Upgrade firmware"
 msgstr "Actualizar Sistema Base"
 
+msgid "Upload"
+msgstr ""
+
 msgid "Uppercases names in both directions"
 msgstr ""
 
@@ -4397,6 +4417,9 @@ msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "cnidscheme"
 msgstr ""
 
 msgid "crlf"

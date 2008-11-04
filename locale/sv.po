@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
 "PO-Revision-Date: 2008-10-27 11:43+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:25+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:34+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -487,6 +487,9 @@ msgstr ""
 msgid "Authentication"
 msgstr "Autentisering"
 
+msgid "Authentication method"
+msgstr ""
+
 msgid "Authorised network"
 msgstr "Behörigt nätverk"
 
@@ -581,6 +584,9 @@ msgstr ""
 msgid "Choose which interface this route applies to."
 msgstr "Välj det gränssnitt som denna väg gäller."
 
+msgid "Clear"
+msgstr ""
+
 msgid "Clear log"
 msgstr "Töm logg"
 
@@ -633,6 +639,9 @@ msgstr "Kommandoskript"
 
 msgid "Comment"
 msgstr "Kommentar"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr ""
@@ -1133,6 +1142,9 @@ msgstr "Klart."
 msgid "Dos charset"
 msgstr "Dos-teckenuppsättning"
 
+msgid "Download"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "Hämta ner konfiguration"
 
@@ -1388,13 +1400,9 @@ msgstr ""
 "mellan 8 och 63 tecken långt."
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
 msgstr ""
-"Mata in sökvägen till hemkatalogen för användaren. Se till att denna sökväg "
-"existerar och alltid monteras vid uppstart. Lämna fältet blankt för att "
-"använda standardsökvägen /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -2418,6 +2426,9 @@ msgstr ""
 msgid "Owner"
 msgstr ""
 
+msgid "PHP Command"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -2949,6 +2960,9 @@ msgid "Set read only"
 msgstr ""
 
 msgid "Set share password."
+msgstr ""
+
+msgid "Set the CNID backend to be used for the volume."
 msgstr ""
 
 msgid "Set the account's primary group to the given group."
@@ -3712,6 +3726,9 @@ msgid ""
 "This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr ""
+
 msgid "This group already exists in the group list."
 msgstr "Den här gruppen finns redan i grupplistan."
 
@@ -4005,6 +4022,9 @@ msgstr ""
 msgid "Upgrade firmware"
 msgstr "Uppgradera fast programvara"
 
+msgid "Upload"
+msgstr ""
+
 msgid "Uppercases names in both directions"
 msgstr ""
 
@@ -4274,6 +4294,9 @@ msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "cnidscheme"
 msgstr ""
 
 msgid "crlf"

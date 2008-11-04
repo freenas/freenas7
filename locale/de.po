@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-10-23 21:54+0000\n"
-"PO-Revision-Date: 2008-10-24 12:51+0000\n"
+"POT-Creation-Date: 2008-11-04 14:04+0000\n"
+"PO-Revision-Date: 2008-11-04 12:09+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-02 13:25+0000\n"
+"X-Launchpad-Export-Date: 2008-11-04 20:33+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -495,6 +495,9 @@ msgstr "URL bestätigen"
 msgid "Authentication"
 msgstr "Authentifizierung"
 
+msgid "Authentication method"
+msgstr "Authentifizierungsmethode"
+
 msgid "Authorised network"
 msgstr "Zugelassenes Netzwerk"
 
@@ -593,6 +596,9 @@ msgstr "Überprüfe geteiltes Geheimnis:"
 msgid "Choose which interface this route applies to."
 msgstr "Wählen Sie eine Netzwerkschnittstelle zu dieser Route."
 
+msgid "Clear"
+msgstr "Zurücksetzen"
+
 msgid "Clear log"
 msgstr "Logfile leeren"
 
@@ -645,6 +651,9 @@ msgstr "Befehlsskript"
 
 msgid "Comment"
 msgstr "Kommentar"
+
+msgid "Common Internet File System"
+msgstr ""
 
 msgid "Community"
 msgstr "Gemeinschaft"
@@ -1166,6 +1175,9 @@ msgstr "Erledigt."
 msgid "Dos charset"
 msgstr "DOS-Zeichensatz"
 
+msgid "Download"
+msgstr "Herunterladen"
+
 msgid "Download configuration"
 msgstr "Konfiguration herunterladen"
 
@@ -1426,14 +1438,11 @@ msgstr ""
 "zwischen 8 und 63 Zeichen lang sein."
 
 msgid ""
-"Enter the path to the home directory of that user. Make sure that this path "
-"exists and is always mounted at startup. Leave this field empty to use "
-"default path /mnt."
+"Enter the path to the home directory of that user. Leave this field empty to "
+"use default path /mnt."
 msgstr ""
-"Geben Sie den Pfad zum Home-Verzeichnis des Users ein. Stellen Sie sicher, "
-"dass der Pfad bereits existiert und während der Startphase gemountet wird. "
-"Lassen Sie das Feld frei, um den Default-Pfad /mnt zu benutzen. (ACHTUNG: "
-"Der Benutzer hat dadurch auf alle Dateien zugriff!)"
+"Geben Sie den Pfad zum Home-Verzeichnis des Benutzers ein. Lassen Sie das "
+"Feld frei, um den Default-Pfad /mnt zu benutzen."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -1886,6 +1895,8 @@ msgid ""
 "If the server is behind a proxy set this parameters to give local services "
 "access to the internet via proxy."
 msgstr ""
+"Wenn der Server hinter einem Proxy sitzt, dann setzen Sie diese Parameter um "
+"lokalen Diensten den Zugang zum Internet über den Proxy zu gewähren."
 
 msgid ""
 "If this parameter is set, Samba attempts to first read DOS attributes "
@@ -2550,6 +2561,9 @@ msgstr "Ausgehender Mailserver"
 msgid "Owner"
 msgstr "Eigentümer"
 
+msgid "PHP Command"
+msgstr "PHP Befehl"
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -2870,7 +2884,7 @@ msgid "Remote module (source)"
 msgstr "Remote Modul (Quelle)"
 
 msgid "Remote module name"
-msgstr ""
+msgstr "Remote Modulname"
 
 msgid "Remote syslog server"
 msgstr "Remote syslog server"
@@ -3102,6 +3116,9 @@ msgstr "Schreibschutz einschalten"
 
 msgid "Set share password."
 msgstr "Setze Passwort für Freigabe."
+
+msgid "Set the CNID backend to be used for the volume."
+msgstr ""
 
 msgid "Set the account's primary group to the given group."
 msgstr "Setzt die primäre Gruppe für das Konto in die vorhandene Gruppe."
@@ -3493,6 +3510,8 @@ msgstr "Die VLAN ID muss zwischen 1 und 4094 liegen."
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr ""
+"Das Attribut '%s' enthält ungültige Zeichen und ist kein gültiger NetBIOS "
+"Name."
 
 #, c-format
 msgid ""
@@ -3949,6 +3968,7 @@ msgstr "Diese Platte/Partition ist bereits konfiguriert"
 
 msgid "This email has been send to validate your email configuration."
 msgstr ""
+"DIese Email wurde verschickt um Ihre Email-Einstellungen zu validieren."
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
@@ -3962,6 +3982,9 @@ msgstr ""
 "Dies limitiert Dateinamen auf den unter Windows verwendetet Zeichensatz. "
 "Dies wird nicht für Freigaben empfohlen die hauptsächlich von Mac Computern "
 "benutzt werden."
+
+msgid "This function is unsupported. Use it on your own risk!"
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "Diese Gruppe gibt es bereits."
@@ -4286,6 +4309,9 @@ msgstr "Aktualisierung in 5 Sekunden"
 msgid "Upgrade firmware"
 msgstr "Upgrade Firmware"
 
+msgid "Upload"
+msgstr "Hochladen"
+
 msgid "Uppercases names in both directions"
 msgstr "Großschreibung in beiden Verzeichnissen"
 
@@ -4422,13 +4448,13 @@ msgid "WPA"
 msgstr "WPA"
 
 msgid "WPA-EAP (Extensible Authentication Protocol)"
-msgstr ""
+msgstr "WPA-EAP (Extensible Authentication Protocol)"
 
 msgid "WPA-PSK (Pre Shared Key)"
-msgstr ""
+msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
-msgstr ""
+msgstr "WPA-PSK WPA-EAP"
 
 msgid "Warning"
 msgstr "Warnung"
@@ -4588,6 +4614,9 @@ msgstr "Wurzel-Verzeichnis für alle Benutzer ändern"
 
 msgid "chroot() everyone, but root."
 msgstr "Wurzel-Verzeichnis für alle Benutzer ändern, bis auf den root."
+
+msgid "cnidscheme"
+msgstr "cnidscheme"
 
 msgid "crlf"
 msgstr "crlf"
