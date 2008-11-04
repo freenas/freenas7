@@ -40,10 +40,16 @@ $nentries = $config['syslogd']['nentries'];
 if (!$nentries)
 	$nentries = 50;
 
+$logfile = "/var/log/sshd.log";
+
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 32768 /var/log/sshd.log");
-	/* redirect to avoid reposting form data on refresh */
+	exec("/usr/sbin/clog -i -s 32768 {$logfile}");
 	header("Location: diag_logs_sshd.php");
+	exit;
+}
+
+if ($_POST['download']) {
+	logs_download($logfile, "sshd.log");
 	exit;
 }
 ?>
@@ -62,7 +68,8 @@ if ($_POST['clear']) {
 				  <?php logs_dump("/var/log/sshd.log", $nentries); ?>
 				</table>
 				<div id="submit">
-					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
+					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear");?>">
+					<input name="download" type="submit" class="formbtn" value="<?=gettext("Download");?>">
 				</div>
 			</form>
 		</td>
