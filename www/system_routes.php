@@ -3,20 +3,20 @@
 /*
 	system_routes.php
 	part of m0n0wall (http://m0n0.ch/wall)
-	
+
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -39,7 +39,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			$retval |= ui_process_updatenotification("routes", "routes_process_updatenotification");
-			$retval |= rc_update_service("routing");
+			$retval |= rc_start_service("routing");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
@@ -73,6 +73,7 @@ function routes_process_updatenotification($mode, $data) {
 			if (is_array($config['staticroutes']['route'])) {
 				$index = array_search_ex($data, $config['staticroutes']['route'], "uuid");
 				if (false !== $index) {
+					rc_exec_service("routing delete conf_" . strtr($config['staticroutes']['route'][$index]['uuid'], "-", "_"));
 					unset($config['staticroutes']['route'][$index]);
 					write_config();
 				}
@@ -123,7 +124,7 @@ function routes_process_updatenotification($mode, $data) {
 						<?php endif;?>
 					</tr>
 				  <?php $i++; endforeach;?>
-					<tr> 
+					<tr>
 						<td class="list" colspan="4"></td>
 						<td class="list">
 							<a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" border="0"></a>

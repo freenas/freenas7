@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"),gettext("Static routes"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"), gettext("Static routes"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
@@ -63,9 +63,9 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation
 	$reqdfields = explode(" ", "interface network network_subnet gateway");
-	$reqdfieldsn = array(gettext("Interface"),gettext("Destination network"),gettext("Destination network bit count"),gettext("Gateway"));
+	$reqdfieldsn = array(gettext("Interface"), gettext("Destination network"), gettext("Destination network bit count"), gettext("Gateway"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
@@ -77,12 +77,12 @@ if ($_POST) {
 		if (filter_var($_POST['network_subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))) == false)
 			$input_errors[] = gettext("A valid IPv4 network bit count must be specified.");
 	}
-	
+
 	if (($_POST['network'] && is_ipv6addr($_POST['network'])) && $_POST['network_subnet'])  {
 		if (filter_var($_POST['network_subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false)
 			$input_errors[] = gettext("A valid IPv6 prefix must be specified.");
 	}
-	
+
 	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
 		$input_errors[] = gettext("A valid gateway IP address must be specified.");
 	}
@@ -95,8 +95,8 @@ if ($_POST) {
 		}
 	}
 	
-	/* check for overlaps */
-	/* gen_subnet work for IPv4 only... This function permit to fix user input error for network number*/
+	// Check for overlaps
+	// gen_subnet work for IPv4 only... This function permit to fix user input error for network number.
 	if (is_ipv4addr($_POST['network'])) {
 		$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
 	} else {
@@ -160,7 +160,7 @@ if ($_POST) {
 						</td>
           </tr>
           <?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], gettext("Gateway to be used to reach the destination network."), true, 40);?>
-          <?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), true, 40);?>
+          <?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), false, 40);?>
         </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_routes[$id])) ? gettext("Save") : gettext("Add")?>">
