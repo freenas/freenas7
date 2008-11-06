@@ -28,6 +28,7 @@ Minors changes:
 - Add combobox to set cnidscheme for AFP shares (FR 2212374).
 - Create user home directory if an alternative one is set (FR 2214123).
 - Add 'Download' button on 'Diagnostics|Logs' pages to download log files (FR 2221603).
+- Refactor /etc/rc.d/routing script. 
 
 Bug fixes:
 - Check entered path for iSCSI target extents before storing configuration (BR 2144966).
