@@ -1,5 +1,5 @@
-FreeNAS 0.69b5 (Salusa Secundus):
----------------------------------
+FreeNAS 0.69rc1 (Salusa Secundus):
+----------------------------------
 
 Majors changes:
 - Modify password handling for user 'admin'. Because of that the password will be
