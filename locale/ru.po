@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-04 14:04+0000\n"
-"PO-Revision-Date: 2008-11-03 12:35+0000\n"
+"POT-Creation-Date: 2008-11-07 01:27+0000\n"
+"PO-Revision-Date: 2008-11-07 12:52+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-04 20:33+0000\n"
+"X-Launchpad-Export-Date: 2008-11-07 17:13+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -25,15 +25,15 @@ msgstr " был присвоен "
 
 #, php-format
 msgid "%d%% of %dMB"
-msgstr "%d%% из %dМб"
+msgstr "%d%% из %d Мбайт"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s предлагает себя в качестве сервера времени для Windows клиентов."
+msgstr "%s предлагает себя в качестве сервера времени для клиентов Windows."
 
 #, php-format
 msgid "%s available of %sB"
-msgstr "%s доступно из %sB"
+msgstr "%s доступно из %s байт"
 
 #, php-format
 msgid "%s interface"
@@ -81,8 +81,6 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
-"<a href=%s>SSHD</a> должен быть включен для работы Unison, и <a "
-"href=%s>пользователь</a> должен иметь полные права доступа к оболочке Shell."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -142,7 +140,7 @@ msgid "A route to this destination network already exists."
 msgstr "Маршрут к этой сети уже существует."
 
 msgid "A valid IP address must be specified."
-msgstr "Должен быть указан верный IP адрес."
+msgstr "Должен быть указан верный IP-адрес."
 
 msgid ""
 "A valid IPv4 address must be specified for the primary/secondary DNS server."
@@ -321,7 +319,7 @@ msgid "Address"
 msgstr "Адрес"
 
 msgid "Administration password"
-msgstr "Администраторский пароль"
+msgstr "Пароль администратора"
 
 msgid "Administrative WebGUI"
 msgstr "Административный Веб-интерфейс"
@@ -596,9 +594,6 @@ msgstr "Выберите, к каким интерфейсам применим 
 msgid "Clear"
 msgstr "Очистить"
 
-msgid "Clear log"
-msgstr "Очистить журнал"
-
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
 "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
@@ -628,7 +623,7 @@ msgid "Collecting initial data, please wait..."
 msgstr "Сбор исходных данных. Пожалуйста, подождите..."
 
 msgid "Collisions"
-msgstr "Коллизии"
+msgstr "Коллизий"
 
 msgid "Cols"
 msgstr "Колонки"
@@ -649,7 +644,7 @@ msgid "Comment"
 msgstr "Комментарий"
 
 msgid "Common Internet File System"
-msgstr ""
+msgstr "Common Internet File System"
 
 msgid "Community"
 msgstr "Сообщество"
@@ -725,7 +720,7 @@ msgid "Credits"
 msgstr "Список разработчиков"
 
 msgid "Critical"
-msgstr "Критический"
+msgstr "Критический уровень"
 
 msgid "Cron"
 msgstr "Cron"
@@ -786,7 +781,7 @@ msgid "Default"
 msgstr "По умолчанию"
 
 msgid "Default is 21"
-msgstr "По умолчанию - 21"
+msgstr "21-й порт по умолчанию"
 
 msgid "Default user name is 'admin'."
 msgstr "По умолчанию имя пользователя 'admin'."
@@ -904,7 +899,7 @@ msgid "Destination network bit count"
 msgstr "Маска сети назначения"
 
 msgid "Destination network for this static route"
-msgstr "Сеть назначения данного статического маршрута"
+msgstr "Сеть назначения данного статического маршрута."
 
 msgid "Destination share"
 msgstr "Общий ресурс получателя"
@@ -958,7 +953,7 @@ msgid "Diagnostics"
 msgstr "Диагностика"
 
 msgid "Difference"
-msgstr "Разница"
+msgstr "Изменение"
 
 msgid "Directory"
 msgstr "Каталог"
@@ -1171,7 +1166,7 @@ msgid "Download"
 msgstr "Скачать"
 
 msgid "Download configuration"
-msgstr "Скачать конфигурацию"
+msgstr "Сохранить конфигурацию"
 
 msgid "Download directory"
 msgstr "Каталог для закачек"
@@ -1407,7 +1402,7 @@ msgid ""
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 "Введите предпочтительный номер порта для webGUI, если не хотите использовать "
-"номер по умолчанию (80 для HTTP, 443 для HTTPS)"
+"порт по умолчанию (80 для HTTP, 443 для HTTPS)"
 
 msgid "Enter a valid sysctl MIB name."
 msgstr "Введите рабочее имя sysctl MIB."
@@ -1725,7 +1720,7 @@ msgid "Help"
 msgstr "Помощь"
 
 msgid "Help needed!"
-msgstr "Требуется помощь!"
+msgstr "Требуется помощь"
 
 msgid "Hide dot files"
 msgstr "Скрыть файлы \".\""
@@ -1785,10 +1780,10 @@ msgstr ""
 "дней максимум)."
 
 msgid "I/O errors"
-msgstr "ошибки ввода-вывода"
+msgstr "Ошибок ввода/вывода"
 
 msgid "I/O packets"
-msgstr "пакеты ввода-вывода"
+msgstr "Пакетов ввода/вывода"
 
 msgid "IP address"
 msgstr "IP-адрес"
@@ -1934,7 +1929,7 @@ msgid "Info"
 msgstr "Сведения"
 
 msgid "Informal"
-msgstr "Неофициальный"
+msgstr "Информирование"
 
 msgid "Information"
 msgstr "Информация"
@@ -2188,7 +2183,7 @@ msgid "MS Active Directory informations"
 msgstr "Информация Microsoft Active Directory"
 
 msgid "MS Domain"
-msgstr "Домен MS"
+msgstr "Домен Microsoft"
 
 msgid "MTU"
 msgstr "Размер MTU"
@@ -2234,7 +2229,7 @@ msgstr ""
 "Максимальное количество соединений с одного IP-адреса (0 = неограничено)."
 
 msgid "Maximum number of simultaneous clients."
-msgstr "Максимальное количество клиентов одновременно."
+msgstr "Максимальное количество одновременно подключенных клиентов."
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr ""
@@ -2263,7 +2258,7 @@ msgid "Memory usage"
 msgstr "Использование памяти"
 
 msgid "Message of the day."
-msgstr "Сообщения дня."
+msgstr "Сообщение дня"
 
 msgid "Method used to store your password in your LDAP."
 msgstr "Метод хранения паролей в службе LDAP."
@@ -2332,7 +2327,7 @@ msgid "Mounts"
 msgstr "Точки монтирования"
 
 msgid "Must choose one"
-msgstr "Необходимо выбрать одно"
+msgstr "Выберите..."
 
 msgid "NAT mode"
 msgstr "Режим трансляции сетевых адресов (NAT)"
@@ -2354,7 +2349,7 @@ msgstr "Имя"
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
-msgstr "Имя хоста NAS без доменной части, например, %s."
+msgstr "Имя хоста NAS без доменной части (например %s)"
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2447,8 +2442,8 @@ msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 "minutes, hours, days and months."
 msgstr ""
-"Примечание:  Ctrl-щелчок (или command-click для Mac) для изменения выделения "
-"минут, часов, дней и месяцев."
+"Примечание: Щелкните, нажав Ctrl (или Сommand для Macintosh), чтобы выбрать "
+"или отменить выбор минут, часов, дней, месяцев."
 
 msgid "Now"
 msgstr "Сейчас"
@@ -2526,7 +2521,7 @@ msgid "Out"
 msgstr "Из"
 
 msgid "Outgoing SMTP mail server address, e.g. smtp.mycorp.com."
-msgstr "Адрес SMTP-сервера исходящей почты, например, smtp.mycorp.com."
+msgstr "Адрес SMTP-сервера исходящей почты, например, smtp.mycorp.com"
 
 msgid "Outgoing mail server"
 msgstr "Сервер исходящей почты"
@@ -2586,7 +2581,7 @@ msgid "Passphrase don't match."
 msgstr "Парольные фразы не совпадают."
 
 msgid "Password"
-msgstr "Пароль"
+msgstr "Новый пароль"
 
 msgid "Password (confirmed)"
 msgstr "Пароль (подтвержден)"
@@ -3364,7 +3359,7 @@ msgid "System"
 msgstr "Система"
 
 msgid "System Beep"
-msgstr "Звуковой сигнал."
+msgstr "Звуковой сигнал"
 
 msgid "System events"
 msgstr "События системы"
@@ -3805,8 +3800,8 @@ msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
 "to a running system."
 msgstr ""
-"Эти MIBs будут добавлены к /etc/sysctl.conf. Это позволить делать изменения "
-"на работающей системе."
+"Эти MIBs будут добавлены к /etc/sysctl.conf и разрешат делать изменения на "
+"работающей системе."
 
 msgid ""
 "These commands will be executed pre or post system initialization (booting) "
@@ -3819,8 +3814,8 @@ msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
 msgstr ""
-"Эти настройки будут добавлены к /etc/rc.conf. Это позволит вам перезаписать "
-"настройки используемые основными скриптами про запуске."
+"Эти настройки будут добавлены к /etc/rc.conf и позволят вам переназначить "
+"переменные, используемые основными скриптами про запуске."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -4192,10 +4187,10 @@ msgid "Trap string"
 msgstr "Trap string"
 
 msgid "Trap string."
-msgstr "Trap string."
+msgstr "Строка для trap."
 
 msgid "Traps"
-msgstr "Ловушки"
+msgstr "Traps"
 
 msgid "Tuning"
 msgstr "Настройка"
@@ -4397,7 +4392,7 @@ msgid "VLAN"
 msgstr "VLAN"
 
 msgid "VLAN tag"
-msgstr "тэг VLAN"
+msgstr "Метка VLAN"
 
 msgid "Value"
 msgstr "Значение"
@@ -4583,7 +4578,7 @@ msgstr ""
 "парольной фразы."
 
 msgid "Your own email address."
-msgstr "Ваш собственный адрес e-mail."
+msgstr "Ваш собственный адрес e-mail"
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -4595,10 +4590,10 @@ msgid "cachecnid"
 msgstr "cachecnid"
 
 msgid "chroot everyone"
-msgstr "Всех в chroot"
+msgstr "Использовать chroot для всех"
 
 msgid "chroot() everyone, but root."
-msgstr "Всех в chroot(), кроме root"
+msgstr "Использовать chroot() для всех, кроме root"
 
 msgid "cnidscheme"
 msgstr "cnidscheme"
@@ -4614,7 +4609,7 @@ msgstr "dbpath"
 
 #, php-format
 msgid "e.g. %s"
-msgstr "напр. %s"
+msgstr "Доменный суффикс (например  %s)"
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr "group_suffix, например: ou=groups,dc=example,dc=com"
@@ -5520,6 +5515,9 @@ msgstr "дней недели"
 #~ msgstr ""
 #~ "Второй шаг настройки: Объявление файловой системы используемой на <a "
 #~ "href=%s>ранее настроенном диске</a>."
+
+#~ msgid "Clear log"
+#~ msgstr "Очистить журнал"
 
 #~ msgid "SSHD events"
 #~ msgstr "События SSHD"
