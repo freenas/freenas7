@@ -29,11 +29,6 @@ CONFIGURE_ARGS=			--disable-gdbm \
 										--enable-ffmpeg \
 										--with-ffmpeg-includes=${LOCALBASE}/include/ffmpeg
 
-post-patch:
-	# Copy options file
-	@${MKDIR} -v /var/db/ports/ffmpeg
-	@${CP} -pv ${FILESDIR}/ffmpeg-options.in /var/db/ports/ffmpeg/options
-
 do-install:
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins

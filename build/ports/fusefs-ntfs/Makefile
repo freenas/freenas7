@@ -20,15 +20,6 @@ BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 								fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod \
 								fusefs-libs:${PORTSDIR}/sysutils/fusefs-libs
 
-post-patch:
-# Copy fusefs options file
-	@${MKDIR} -v /var/db/ports/fusefs
-	@${CP} -pv ${FILESDIR}/fusefs-options /var/db/ports/fusefs/options
-
-# Copy fusefs-ntfs options file
-	@${MKDIR} -v /var/db/ports/fusefs-ntfs
-	@${CP} -pv ${FILESDIR}/fusefs-ntfs-options /var/db/ports/fusefs-ntfs/options
-
 do-install:
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/fusefs.in ${FREENAS_ROOTFS}/etc/rc.d/fusefs
 

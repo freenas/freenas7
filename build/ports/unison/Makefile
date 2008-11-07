@@ -19,11 +19,6 @@ MAKE_ARGS+=	UISTYLE=text
 # Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly).
 FORCE_PKG_REGISTER=	yes
 
-pre-everything::
-# Copy ocaml options file
-	@${MKDIR} -v /var/db/ports/ocaml
-	@${CP} -pv ${FILESDIR}/ocaml-options.in /var/db/ports/ocaml/options
-
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/unison ${FREENAS_ROOTFS}/usr/local/bin
 # Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly). 
