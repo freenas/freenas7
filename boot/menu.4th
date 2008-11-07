@@ -81,7 +81,7 @@ at-xy ." "
 	clear
 	77 20 2 2 box
 	45 3 display-logo
-	5 7 at-xy ." Welcome!"
+	5 7 at-xy ." Welcome to FreeNAS!"
 	printmenuitem ."  Boot [default]" bootkey !
 	s" arch-i386" environment? if
 		drop
