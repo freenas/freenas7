@@ -26,11 +26,6 @@ general-patch:
 	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \
 		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
 
-post-patch: general-patch
-# Copy options files
-	@${MKDIR} -v /var/db/ports/curl
-	@${CP} -pv ${FILESDIR}/curl-options.in /var/db/ports/curl/options
-
 pre-configure:
 	@(cd ${WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${AUTORECONF} -W none)
 	@${REINPLACE_CMD} -e \

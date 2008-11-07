@@ -685,12 +685,12 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 	for s in $FREENAS_SVNDIR/build/ports/*; do
 		[ ! -d "$s" ] && continue
 		port=`basename $s`
-		desc=`cat $s/pkg-descr`
 		state=`cat $s/pkg-state`
 		case ${state} in
 			[hH][iI][dD][eE])
 				;;
 			*)
+				desc=`cat $s/pkg-descr`;
 				echo "\"$port\" \"$desc\" $state \\" >> $tempfile;
 				;;
 		esac
@@ -707,6 +707,12 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 
 	case ${choice} in
 		build)
+			# Set ports options
+			echo;
+			echo "--------------------------------------------------------------";
+			echo ">>> Set ports options.";
+			echo "--------------------------------------------------------------";
+			cd ${FREENAS_SVNDIR}/build/ports/options && make
 			# Clean ports.
 			echo;
 			echo "--------------------------------------------------------------";

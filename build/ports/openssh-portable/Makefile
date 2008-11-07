@@ -18,11 +18,6 @@ DEPENDS_TARGET=	clean build
 
 BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
 
-post-patch:
-# Copy openssh options file
-	@${MKDIR} -v /var/db/ports/openssh
-	@${CP} -pv ${FILESDIR}/openssh-options /var/db/ports/openssh/options
-
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd ${FREENAS_ROOTFS}/usr/sbin
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh ${FREENAS_ROOTFS}/usr/bin

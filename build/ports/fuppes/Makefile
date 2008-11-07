@@ -30,16 +30,6 @@ CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include -I${LOCALBASE}/include/ffmpeg $
 post-patch:
 	@${REINPLACE_CMD} -e 's|-ldl ||' ${WRKSRC}/configure.in
 
-	# Copy options files
-	@${MKDIR} -v /var/db/ports/sqlite3
-	@${CP} -pv ${FILESDIR}/sqlite3-options.in /var/db/ports/sqlite3/options
-	@${MKDIR} -v /var/db/ports/libsndfile
-	@${CP} -pv ${FILESDIR}/libsndfile-options.in /var/db/ports/libsndfile/options
-	@${MKDIR} -v /var/db/ports/ffmpeg
-	@${CP} -pv ${FILESDIR}/ffmpeg-options.in /var/db/ports/ffmpeg/options
-	@${MKDIR} -v /var/db/ports/e2fsprogs
-	@${CP} -pv ${FILESDIR}/e2fsprogs-options.in /var/db/ports/e2fsprogs/options
-
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/${PORTNAME}d ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/libfuppes.so.* ${FREENAS_ROOTFS}/usr/local/lib

@@ -46,11 +46,6 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--with-user=${NUT_USER} \
 								--with-group=${NUT_GROUP}
 
-post-patch:
-# Copy libusb options file
-	@${MKDIR} -pv /var/db/ports/libusb
-	@${CP} -pv ${FILESDIR}/libusb-options.in /var/db/ports/libusb/options
-
 do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DATADIR}
 	@${INSTALL_DATA} -v ${WRKSRC}/data/cmdvartab ${FREENAS_ROOTFS}/${NUT_DATADIR}

@@ -37,11 +37,6 @@ CONFIGURE_ENV=		PTHREAD_LIBS="${PTHREAD_LIBS}" \
 									LDFLAGS="${LDFLAGS}" \
 									CFLAGS="${CFLAGS}"
 
-post-patch:
-# Copy sqlite3 options file
-	@${MKDIR} -v /var/db/ports/sqlite3
-	@${CP} -pv ${FILESDIR}/sqlite3-options.in /var/db/ports/sqlite3/options
-
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/build/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
