@@ -32,7 +32,7 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
-FreeNAS 0.69rc1 (Salusa Secundus):
+FreeNAS 0.69RC1 (Salusa Secundus):
 ----------------------------------
 
 Majors changes:
