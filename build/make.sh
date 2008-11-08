@@ -440,11 +440,13 @@ create_iso () {
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
 	if [ ! $LIGHT_ISO ]; then
-		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-${FREENAS_VERSION}.${FREENAS_REVISION}"
+		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-${FREENAS_VERSION}.${FREENAS_REVISION}"
+		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-${FREENAS_VERSION}"
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
 		create_image;
 	else
-		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-light-${FREENAS_VERSION}.${FREENAS_REVISION}"
+		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-light-${FREENAS_VERSION}.${FREENAS_REVISION}"
+		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-light-${FREENAS_VERSION}"
 	fi
 
 	# Set platform information.
@@ -492,7 +494,7 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	mkisofs -b "boot/cdboot" -no-emul-boot -r -J -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -V "${LABEL}" -o "${FREENAS_ROOTDIR}/${LABEL}.iso" ${FREENAS_TMPDIR}
+	mkisofs -b "boot/cdboot" -no-emul-boot -r -J -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -V "${VOLUMEID}" -o "${FREENAS_ROOTDIR}/${LABEL}.iso" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
 	echo "Generating MD5 and SHA256 sums..."
