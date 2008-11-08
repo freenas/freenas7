@@ -13,7 +13,6 @@ usr/local/www/services_samba_auxparam.php
 usr/local/www/block.gif
 usr/local/www/block_d.gif
 usr/local/www/calc.gif
-usr/local/www/check.gif
 usr/local/www/tri_c.gif
 usr/local/www/tri_o.gif
 usr/local/www/up.gif
