@@ -24,5 +24,6 @@ krpc/krpc.ko
 libiconv/libiconv.ko
 libmchain/libmchain.ko
 
-# Packet filter
-pf/pf.ko
+# IP firewall
+ipfw/ipfw.ko
+ip6fw/ip6fw.ko
