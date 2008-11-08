@@ -566,6 +566,8 @@ etc/fbtab
 etc/netconfig
 etc/networks
 etc/protocols
+etc/rc.firewall
+etc/rc.firewall6
 
 ####### contents of /etc/defaults
 etc/defaults/devfs.rules
@@ -587,3 +589,5 @@ etc/rc.d/FILESYSTEMS
 etc/rc.d/ip6addrctl
 etc/rc.d/random
 etc/rc.d/swap1
+etc/rc.d/ip6fw
+etc/rc.d/ipfw
