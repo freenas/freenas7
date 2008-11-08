@@ -27,5 +27,8 @@ nfslockd/nfslockd.ko
 libiconv/libiconv.ko
 libmchain/libmchain.ko
 
+# Packet filter
+pf/pf.ko
+
 # Misc.
 iscsi/initiator/iscsi_initiator.ko
