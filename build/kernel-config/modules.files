@@ -23,3 +23,6 @@ krpc/krpc.ko
 # Required by unionfs.ko and smbfs.ko
 libiconv/libiconv.ko
 libmchain/libmchain.ko
+
+# Packet filter
+pf/pf.ko
