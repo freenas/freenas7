@@ -47,8 +47,8 @@ mkconf_cmd()
 	# Clean the rules file
 	cat /dev/null > ${firewall_script_user}
 
-	# ${fwcmd} add deny all from ${inet} to any in via ${oif}
-	/usr/local/bin/xml sel -t -m "//system/firewall/rule" \
+	# Add rules
+	/usr/local/bin/xml sel -t -m "//system/firewall/rule[enable]" \
 		-o "\${fwcmd} add " \
 		-v "concat(action,' ',protocol)" \
 		-v "concat(' from ',src,' ',srcport)" \
