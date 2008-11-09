@@ -348,9 +348,8 @@ function enable_change(enable_change) {
 								<option value="s5" <?php if ($pconfig['partition'] === "s5") echo "selected";?>>5</option>
 								<option value="s6" <?php if ($pconfig['partition'] === "s6") echo "selected";?>>6</option>
 								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected";?>><?=gettext("CD/DVD or Old Software RAID");?></option>
-							</select>
-							<br>
-							<span class="vexpl"><?=gettext("Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release.");?></span>
+							</select><br/>
+							<span class="vexpl"><?=gettext("<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if you select option 2 during installation on hard drive (<b>all versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on extended partition. <br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS (Windows, Linux, MAC, etc.) that use MBR partition table.");?></span>
 			      </td>
 			    </tr>
 			    <tr id="fstype_tr">
