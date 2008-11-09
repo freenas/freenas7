@@ -57,6 +57,7 @@ mkconf_cmd()
 		-v "concat(' from ',src,' ',srcport)" \
 		-v "concat(' to ',dst,' ',dstport)" \
 		-i "string-length(direction) > 0" -v "concat(' ',direction)" -b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		-i "string-length(if) > 0" -v "concat(' via ',if)" -b \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${firewall_script_auxrules}
