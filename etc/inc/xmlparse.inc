@@ -41,7 +41,7 @@ $listtags = explode(" ", "dnsserver winsserver disk vdisk diskr sharetosync " .
 	"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
 	"minute hour day month weekday content rsyncclient rsynclocal package " .
 	"ipv6dnsserver share auxparam extent device target storage group job report " .
-	"cmd module selftest url param lagg laggport vdevice pool dataset");
+	"cmd module selftest url param lagg laggport vdevice pool dataset rule");
 
 function startElement($parser, $name, $attrs) {
 	global $depth, $curpath, $config, $havedata, $listtags;
