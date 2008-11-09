@@ -23,7 +23,3 @@ krpc/krpc.ko
 # Required by unionfs.ko and smbfs.ko
 libiconv/libiconv.ko
 libmchain/libmchain.ko
-
-# IP firewall
-ipfw/ipfw.ko
-ip6fw/ip6fw.ko

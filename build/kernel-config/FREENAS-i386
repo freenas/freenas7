@@ -338,3 +338,13 @@ device		padlock
 # GEOM classes
 options		GEOM_ELI		# GELI filesystem encryption
 options		GEOM_LABEL	# Providers labelization.
+
+# IP firewall
+options		IPFIREWALL
+options		IPFIREWALL_VERBOSE
+options		IPFIREWALL_VERBOSE_LIMIT
+options		IPFIREWALL_DEFAULT_TO_ACCEPT
+options		IPV6FIREWALL
+options		IPV6FIREWALL_VERBOSE
+options		IPV6FIREWALL_VERBOSE_LIMIT
+options		IPV6FIREWALL_DEFAULT_TO_ACCEPT
