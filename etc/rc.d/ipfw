@@ -5,6 +5,7 @@
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
 # - Modify prereqs
+# - Add status command
 # - Add mkconf command to create firewall rules file 
 #
 
@@ -24,28 +25,21 @@ rcvar="firewall_enable"
 start_cmd="ipfw_start"
 start_precmd="ipfw_precmd"
 stop_cmd="ipfw_stop"
+status_cmd="status_cmd"
 mkconf_cmd="mkconf_cmd"
-extra_commands="mkconf"
+extra_commands="status mkconf"
 
 # Defaults
 firewall_script_user=${firewall_script_user:-"/etc/rc.firewall.user"}
 
-ipfw_precmd()
+status_cmd()
 {
-	mkconf_cmd
-
-	if ! ${SYSCTL} net.inet.ip.fw.enable > /dev/null 2>&1; then
-		if ! kldload ipfw; then
-			warn unable to load firewall module.
-			return 1
-		fi
+	if ${SYSCTL} net.inet.ip.fw.enable > /dev/null 2>&1; then
+		echo "${name} is running."
+	else
+		echo "${name} is not running."
+		return 1
 	fi
-
-	if checkyesno dummynet_enable; then
-		required_modules="$required_modules dummynet"
-	fi
-
-	return 0
 }
 
 mkconf_cmd()
@@ -63,6 +57,24 @@ mkconf_cmd()
 		-i "string-length(if) > 0" -v "concat(' via ',if)" -b \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${firewall_script_user}
+}
+
+ipfw_precmd()
+{
+	mkconf_cmd
+
+	if ! ${SYSCTL} net.inet.ip.fw.enable > /dev/null 2>&1; then
+		if ! kldload ipfw; then
+			warn unable to load firewall module.
+			return 1
+		fi
+	fi
+
+	if checkyesno dummynet_enable; then
+		required_modules="$required_modules dummynet"
+	fi
+
+	return 0
 }
 
 ipfw_start()
