@@ -22,6 +22,9 @@
 
 name="ipfw"
 rcvar="firewall_enable"
+
+load_rc_config "$name"
+
 start_cmd="ipfw_start"
 start_precmd="ipfw_precmd"
 stop_cmd="ipfw_stop"
@@ -30,7 +33,7 @@ mkconf_cmd="mkconf_cmd"
 extra_commands="status mkconf"
 
 # Defaults
-firewall_script_user=${firewall_script_user:-"/etc/rc.firewall.user"}
+firewall_script_auxrules=${firewall_script_auxrules:-"/etc/rc.firewall.auxrules"}
 
 status_cmd()
 {
@@ -45,10 +48,10 @@ status_cmd()
 mkconf_cmd()
 {
 	# Clean the rules file
-	cat /dev/null > ${firewall_script_user}
+	cat /dev/null > ${firewall_script_auxrules}
 
 	# Add rules
-	/usr/local/bin/xml sel -t -m "//system/firewall/rule[enable]" \
+	/usr/local/bin/xml sel -t -m "//system/firewall/rule[enable]" -s A:N "ruleno" \
 		-o "\${fwcmd} add " \
 		-v "concat(action,' ',protocol)" \
 		-v "concat(' from ',src,' ',srcport)" \
@@ -56,7 +59,7 @@ mkconf_cmd()
 		-i "string-length(direction) > 0" -v "concat(' ',direction)" -b \
 		-i "string-length(if) > 0" -v "concat(' via ',if)" -b \
 		-n \
-		${configxml_file} | /usr/local/bin/xml unesc > ${firewall_script_user}
+		${configxml_file} | /usr/local/bin/xml unesc > ${firewall_script_auxrules}
 }
 
 ipfw_precmd()
@@ -116,5 +119,4 @@ ipfw_stop()
 	fi
 }
 
-load_rc_config $name
 run_rc_command "$1"

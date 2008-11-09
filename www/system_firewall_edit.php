@@ -46,6 +46,7 @@ $a_rule = &$config['system']['firewall']['rule'];
 if (isset($id) && $a_rule[$id]) {
 	$pconfig['uuid'] = $a_rule[$id]['uuid'];
 	$pconfig['enable'] = isset($a_rule[$id]['enable']);
+	$pconfig['ruleno'] = $a_rule[$id]['ruleno'];
 	$pconfig['action'] = $a_rule[$id]['action'];
 	$pconfig['log'] = isset($a_rule[$id]['log']);
 	$pconfig['protocol'] = $a_rule[$id]['protocol'];
@@ -60,6 +61,7 @@ if (isset($id) && $a_rule[$id]) {
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['enable'] = true;
+	$pconfig['ruleno'] = get_next_rulenumber();
 	$pconfig['action'] = "";
 	$pconfig['log'] = false;
 	$pconfig['protocol'] = "all";
@@ -84,6 +86,7 @@ if ($_POST) {
 		$rule = array();
 		$rule['uuid'] = $_POST['uuid'];
 		$rule['enable'] = $_POST['enable'] ? true : false;
+		$rule['ruleno'] = $_POST['ruleno'];
 		$rule['action'] = $_POST['action'];
 		$rule['log'] = $_POST['log'] ? true : false;
 		$rule['protocol'] = $_POST['protocol'];
@@ -111,6 +114,23 @@ if ($_POST) {
 		exit;
 	}
 }
+
+// Get next rule number.
+function get_next_rulenumber() {
+	global $config;
+
+	// Set starting rule number
+	$ruleno = 10;
+
+	$a_rules = $config['system']['firewall']['rule'];
+	if (false !== array_search_ex(strval($ruleno), $a_rules, "ruleno")) {
+		do {
+			$ruleno += 10; // Increase rule number until a unused one is found.
+		} while (false !== array_search_ex(strval($ruleno), $a_rules, "ruleno"));
+	}
+
+	return $ruleno;
+}
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -120,6 +140,7 @@ if ($_POST) {
       	<?php if ($input_errors) print_input_errors($input_errors); ?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
         	<?php html_titleline_checkbox("enable", gettext("Firewall rule"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
+        	<?php html_inputbox("ruleno", gettext("Rule number"), $pconfig['ruleno'], "", true, 10);?>
 					<?php html_combobox("action", gettext("Action"), $pconfig['action'], array("allow" => gettext("Allow"), "deny" => gettext("Deny")), gettext("The action which will be executed when the packet matches the selection criterion of the rule."), true);?>
 					<?php $interfaces = array("" => gettext("All"), "lan" => "LAN"); for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) { $interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr']; }?>
 					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("udp" => "UDP", "tcp" => "TCP", "icmp" => "ICMP", "all" => gettext("All")), "", true);?>

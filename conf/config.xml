@@ -147,6 +147,8 @@
 			<!--
 			<enable/>
 			<rule>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+				<ruleno>xxx</ruleno>
 				<enable/>
 				<action>allow|deny</action>
 				<log/>

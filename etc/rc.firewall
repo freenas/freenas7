@@ -155,9 +155,9 @@ case ${firewall_type} in
 	# set this to your local network
 	net="$firewall_client_net"
 
-	# Load user rules. These are defined via the WebGUI and will be generated
-	# from the /etc/rc.d/ipfw script.
-	. /etc/rc.firewall.user
+	# Load auxiliary rules. These are defined via the WebGUI and will be
+	# generated from the /etc/rc.d/ipfw script.
+	. ${firewall_script_auxrules}
 	;;
 
 [Ss][Ii][Mm][Pp][Ll][Ee])

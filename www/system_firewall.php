@@ -59,6 +59,7 @@ if ($_POST) {
 if (!is_array($config['system']['firewall']['rule']))
 	$config['system']['firewall']['rule'] = array();
 
+array_sort_key($config['system']['firewall']['rule'], "ruleno");
 $a_rule = &$config['system']['firewall']['rule'];
 
 if ($_GET['act'] === "del") {
