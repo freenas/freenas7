@@ -17,10 +17,6 @@ $menu['system']['menuitem'] = array();
 $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
 $menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => gettext("Firewall"), "link" => "system_firewall.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
-$menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => gettext("Packages"), "link" => "system_packages.php", "visible" => true);
 } else {
@@ -32,18 +28,20 @@ $menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Reboot"), "link" => "reboot.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "shutdown.php", "visible" => true);
 
-// Interfaces
-$menu['interfaces']['desc'] = gettext("Interfaces");
-$menu['interfaces']['link'] = "";
-$menu['interfaces']['menuitem'] = array();
-if (!isset($config['system']['webgui']['noassigninterfaces'])) {
-	$menu['interfaces']['menuitem'][] = array("desc" => "Management", "link" => "interfaces_assign.php", "visible" => true);
-}
-$menu['interfaces']['menuitem'][] = array("desc" => "LAN", "link" => "interfaces_lan.php", "visible" => true);
+// Network
+$menu['network']['desc'] = gettext("Network");
+$menu['network']['link'] = "";
+$menu['network']['menuitem'] = array();
+$menu['network']['menuitem'][] = array("desc" => "Interface management", "link" => "interfaces_assign.php", "visible" => true);
+$menu['network']['menuitem'][] = array("desc" => "LAN", "link" => "interfaces_lan.php", "visible" => true);
 for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 	$desc = $config['interfaces']['opt'.$i]['descr'];
-	$menu['interfaces']['menuitem'][] = array("desc" => "{$desc}", "link" => "interfaces_opt.php?index={$i}", "visible" => true);
+	$menu['network']['menuitem'][] = array("desc" => "{$desc}", "link" => "interfaces_opt.php?index={$i}", "visible" => true);
 }
+$menu['network']['menuitem'][] = array("type" => "separator", "visible" => true);
+$menu['network']['menuitem'][] = array("desc" => gettext("Firewall"), "link" => "system_firewall.php", "visible" => true);
+$menu['network']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
+$menu['network']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
 
 // Disks
 $menu['disks']['desc'] = gettext("Disks");
@@ -182,7 +180,7 @@ function display_menu($menuid) {
 <div id="headernavbar">
 	<ul id="navbarmenu">
 		<?=display_menu("system");?>
-		<?=display_menu("interfaces");?>
+		<?=display_menu("network");?>
 		<?=display_menu("disks");?>
 		<?=display_menu("services");?>
 		<!-- Begin extension section -->
