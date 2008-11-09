@@ -106,12 +106,12 @@ function firewall_process_updatenotification($mode, $data) {
 						<td width="78%" class="vtable">
 				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="10%" class="listhdrr"><?=gettext("Proto");?></td>
+									<td width="10%" class="listhdrr"><?=gettext("Protocol");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Source");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Destination");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
-									<td width="5%" class="listhdrr"><?=gettext("State");?></td>
+									<td width="5%" class="listhdrr"><?=gettext("Enable");?></td>
 									<td width="25%" class="listhdr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
