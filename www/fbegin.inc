@@ -17,6 +17,7 @@ $menu['system']['menuitem'] = array();
 $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
 $menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => gettext("Firewall"), "link" => "system_firewall.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
 $menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);

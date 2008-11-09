@@ -2,6 +2,9 @@ FreeNAS 0.69 (Kwisatz Haderach):
 --------------------------------
 
 Majors changes:
+- Add system firewall. Please note this is only for the local system and not
+  for the network (this will also never be implemented, use pfSense or m0n0wall
+  instead).
 
 Minors changes:
 

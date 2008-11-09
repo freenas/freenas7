@@ -143,6 +143,25 @@
 				<name>admin</name>
 			</group>
 		</usermanagement>
+		<firewall>
+			<!--
+			<enable/>
+			<rule>
+				<enable/>
+				<action>allow|deny</action>
+				<log/>
+				<protocol>udp|tcp|icmp|all</protocol>
+				<src>xxx</src>
+				<srcport>xxx</srcport>
+				<dst>xxx</dst>
+				<dstport>xxx</dstport>
+				<direction>both|in|out</direction>
+				<if><if>
+				<extraoptions></extraoptions>
+				<desc></desc>
+			</rule>
+			-->
+		</firewall>
 	</system>
 	<interfaces>
 		<lan>
