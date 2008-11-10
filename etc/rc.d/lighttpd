@@ -109,7 +109,7 @@ mimetype.assign = (
   ".tbz"     => "application/x-bzip-compressed-tar",
   ".tar.bz2" => "application/x-bzip-compressed-tar"
 )
-url.access-deny = ( "~", ".inc" )
+url.access-deny = ( "~", ".inc", ".htpasswd" )
 static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file = "${pidfile}"
 auth.backend = "htpasswd"
