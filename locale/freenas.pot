@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-11-08 00:33+0000\n"
+"PO-Revision-Date: 2008-11-08 04:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -62,6 +62,9 @@ msgid "1. Use these specials actions for debugging only!<br>2. There is no need 
 msgstr ""
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
+msgstr ""
+
+msgid "<->"
 msgstr ""
 
 #, php-format
@@ -171,6 +174,9 @@ msgstr ""
 msgid "Acoustic level"
 msgstr ""
 
+msgid "Action"
+msgstr ""
+
 msgid "Activate"
 msgstr ""
 
@@ -241,6 +247,9 @@ msgid "Add mount point"
 msgstr ""
 
 msgid "Add option"
+msgstr ""
+
+msgid "Add rule"
 msgstr ""
 
 msgid "Add self-test"
@@ -358,6 +367,9 @@ msgid "An interface with the specified description already exists."
 msgstr ""
 
 msgid "Anonymous users only"
+msgstr ""
+
+msgid "Any"
 msgstr ""
 
 msgid "Apply changes"
@@ -487,6 +499,12 @@ msgstr ""
 msgid "Check shared secret:"
 msgstr ""
 
+msgid "Choose on which interface packets must come in to match this rule."
+msgstr ""
+
+msgid "Choose which IP protocol this rule should match."
+msgstr ""
+
 msgid "Choose which interface this route applies to."
 msgstr ""
 
@@ -503,6 +521,9 @@ msgid "Client"
 msgstr ""
 
 msgid "Client RSYNC job"
+msgstr ""
+
+msgid "Client firewall"
 msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
@@ -737,6 +758,9 @@ msgstr ""
 msgid "Delete option"
 msgstr ""
 
+msgid "Delete rule"
+msgstr ""
+
 msgid "Delete self-test"
 msgstr ""
 
@@ -758,6 +782,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Destination"
+msgstr ""
+
 msgid "Destination email address."
 msgstr ""
 
@@ -771,6 +798,9 @@ msgid "Destination network bit count"
 msgstr ""
 
 msgid "Destination network for this static route"
+msgstr ""
+
+msgid "Destination port"
 msgstr ""
 
 msgid "Destination share"
@@ -808,6 +838,9 @@ msgid "Diagnostics"
 msgstr ""
 
 msgid "Difference"
+msgstr ""
+
+msgid "Direction"
 msgstr ""
 
 msgid "Directory"
@@ -923,6 +956,9 @@ msgid "Do you really want to delete this option?"
 msgstr ""
 
 msgid "Do you really want to delete this route?"
+msgstr ""
+
+msgid "Do you really want to delete this rule?"
 msgstr ""
 
 msgid "Do you really want to delete this scheduled self-test?"
@@ -1076,6 +1112,9 @@ msgid "Edit mount point"
 msgstr ""
 
 msgid "Edit option"
+msgstr ""
+
+msgid "Edit rule"
 msgstr ""
 
 msgid "Edit self-test"
@@ -1361,6 +1400,12 @@ msgid "File system check"
 msgstr ""
 
 msgid "Filename"
+msgstr ""
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Firewall rule"
 msgstr ""
 
 msgid "Firmware"
@@ -1654,6 +1699,9 @@ msgstr ""
 msgid "Interface"
 msgstr ""
 
+msgid "Interface Management"
+msgstr ""
+
 msgid "Interface to listen to."
 msgstr ""
 
@@ -1810,7 +1858,13 @@ msgstr ""
 msgid "Location where the content database file will be stored."
 msgstr ""
 
+msgid "Log"
+msgstr ""
+
 msgid "Log Level"
+msgstr ""
+
+msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 
 msgid "Login"
@@ -2122,6 +2176,9 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
+msgid "Options"
+msgstr ""
+
 msgid "Others"
 msgstr ""
 
@@ -2337,6 +2394,9 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
+msgid "Proto"
+msgstr ""
+
 msgid "Protocol"
 msgstr ""
 
@@ -2436,6 +2496,9 @@ msgstr ""
 msgid "Recycle bin"
 msgstr ""
 
+msgid "Reject"
+msgstr ""
+
 msgid "Release notes"
 msgstr ""
 
@@ -2503,6 +2566,15 @@ msgid "Rows"
 msgstr ""
 
 msgid "Rsync Daemon"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules"
 msgstr ""
 
 msgid "Run now"
@@ -2742,7 +2814,13 @@ msgstr ""
 msgid "Software used"
 msgstr ""
 
+msgid "Source"
+msgstr ""
+
 msgid "Source directory to be synchronized."
+msgstr ""
+
+msgid "Source port"
 msgstr ""
 
 msgid "Source share"
@@ -2988,6 +3066,9 @@ msgstr ""
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
 
+msgid "The action which will be executed when the packet match the criteria specified below."
+msgstr ""
+
 #, c-format
 msgid "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr ""
@@ -3181,6 +3262,9 @@ msgstr ""
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
 msgstr ""
 
+msgid "The rule number determines the order of the rule."
+msgstr ""
+
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
@@ -3206,6 +3290,9 @@ msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
 msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique rule number is already used."
 msgstr ""
 
 msgid "The unique user ID is already used."
@@ -3426,7 +3513,14 @@ msgid "To email"
 msgstr ""
 
 #, php-format
+msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
 msgid "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgstr ""
+
+msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"
