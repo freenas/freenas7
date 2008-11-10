@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Hosts"));
+$pgtitle = array(gettext("Network"), gettext("Hosts"));
 
 if ($_POST) {
 	$pconfig = $_POST;

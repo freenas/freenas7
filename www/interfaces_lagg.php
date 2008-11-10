@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("Link Aggregation and Failover"));
+$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("Link Aggregation and Failover"));
 
 if (!is_array($config['vinterfaces']['lagg']))
 	$config['vinterfaces']['lagg'] = array();

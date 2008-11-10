@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Firewall"));
+$pgtitle = array(gettext("Network"), gettext("Firewall"));
 
 $pconfig['enable'] = isset($config['system']['firewall']['enable']);
 

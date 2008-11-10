@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("VLAN"));
+$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("VLAN"));
 
 if (!is_array($config['vinterfaces']['vlan']))
 	$config['vinterfaces']['vlan'] = array();

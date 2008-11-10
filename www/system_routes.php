@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Static routes"));
+$pgtitle = array(gettext("Network"), gettext("Static routes"));
 
 if ($_POST) {
 	$pconfig = $_POST;

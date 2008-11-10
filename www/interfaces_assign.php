@@ -31,7 +31,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Management"));
+$pgtitle = array(gettext("Network"), gettext("Interface Management"));
 
 /*
 	In this file, "port" refers to the physical port name,
