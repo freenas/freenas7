@@ -163,6 +163,51 @@
 				<desc></desc>
 			</rule>
 			-->
+			<rule>
+				<uuid>26e8a05f-2567-4739-bed9-64f65d1a81fb</uuid>
+				<ruleno>100</ruleno>
+				<action>deny</action>
+				<log/>
+				<protocol>tcp</protocol>
+				<src/>
+				<srcport/>
+				<dst/>
+				<dstport>21</dstport>
+				<direction>in</direction>
+				<if/>
+				<extraoptions/>
+				<desc>Deny in FTP</desc>
+			</rule>
+			<rule>
+				<uuid>5768a98d-c4a8-4a28-a25b-f8cb564cfa6c</uuid>
+				<ruleno>200</ruleno>
+				<action>deny</action>
+				<log/>
+				<protocol>tcp</protocol>
+				<src/>
+				<srcport/>
+				<dst/>
+				<dstport>22</dstport>
+				<direction>in</direction>
+				<if/>
+				<extraoptions>setup keep-state</extraoptions>
+				<desc>Deny in secure FTP, Telnet, and SCP</desc>
+			</rule>
+			<rule>
+				<uuid>857f3162-0939-4f9d-9a78-578ec4b96999</uuid>
+				<ruleno>300</ruleno>
+				<action>deny</action>
+				<log/>
+				<protocol>tcp</protocol>
+				<src/>
+				<srcport/>
+				<dst/>
+				<dstport>113</dstport>
+				<direction>in</direction>
+				<if/>
+				<extraoptions/>
+				<desc>Deny ident</desc>
+			</rule>
 		</firewall>
 	</system>
 	<interfaces>

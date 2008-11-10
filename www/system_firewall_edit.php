@@ -41,6 +41,7 @@ $pgtitle = array(gettext("Network"), gettext("Firewall"), gettext("Rule"), isset
 if (!is_array($config['system']['firewall']['rule']))
 	$config['system']['firewall']['rule'] = array();
 
+array_sort_key($config['system']['firewall']['rule'], "ruleno");
 $a_rule = &$config['system']['firewall']['rule'];
 
 if (isset($id) && $a_rule[$id]) {
@@ -120,12 +121,12 @@ function get_next_rulenumber() {
 	global $config;
 
 	// Set starting rule number
-	$ruleno = 10;
+	$ruleno = 100;
 
 	$a_rules = $config['system']['firewall']['rule'];
 	if (false !== array_search_ex(strval($ruleno), $a_rules, "ruleno")) {
 		do {
-			$ruleno += 10; // Increase rule number until a unused one is found.
+			$ruleno += 100; // Increase rule number until a unused one is found.
 		} while (false !== array_search_ex(strval($ruleno), $a_rules, "ruleno"));
 	}
 
@@ -142,15 +143,15 @@ function get_next_rulenumber() {
         	<?php html_titleline_checkbox("enable", gettext("Firewall rule"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
         	<?php html_inputbox("ruleno", gettext("Rule number"), $pconfig['ruleno'], "", true, 10);?>
 					<?php html_combobox("action", gettext("Action"), $pconfig['action'], array("allow" => gettext("Allow"), "deny" => gettext("Deny"), "unreach host" => gettext("Reject")), gettext("The action which will be executed when the packet match the criteria specified below."), true);?>
-					<?php $a_interface = array("" => gettext("All"), "lan" => "LAN"); for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) { $interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr']; }?>
+					<?php $a_interface = array("" => gettext("All"), get_ifname($config['interfaces']['lan']['if']) => "LAN"); for ($i = 1; isset($config['interfaces']['opt' . $i]); ++$i) { $a_interface[$config['interfaces']['opt' . $i]['if']] = $config['interfaces']['opt' . $i]['descr']; }?>
 					<?php html_combobox("if", gettext("Interface"), $pconfig['if'], $a_interface, gettext("Choose on which interface packets must come in to match this rule."), true);?>
 					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("udp" => "UDP", "tcp" => "TCP", "icmp" => "ICMP", "all" => gettext("All")), gettext("Choose which IP protocol this rule should match."), true);?>
-					<?php html_inputbox("src", gettext("Source"), $pconfig['src'], "", true, 40);?>
-					<?php html_inputbox("srcport", gettext("Source port"), $pconfig['srcport'], "", true, 5);?>
-					<?php html_inputbox("dst", gettext("Destination"), $pconfig['dst'], "", true, 40);?>
-					<?php html_inputbox("dstport", gettext("Destination port"), $pconfig['dstport'], "", true, 5);?>
+					<?php html_inputbox("src", gettext("Source"), $pconfig['src'], gettext("To match any IP address leave this field empty."), false, 40);?>
+					<?php html_inputbox("srcport", gettext("Source port"), $pconfig['srcport'], "", false, 5);?>
+					<?php html_inputbox("dst", gettext("Destination"), $pconfig['dst'], gettext("To match any IP address leave this field empty."), false, 40);?>
+					<?php html_inputbox("dstport", gettext("Destination port"), $pconfig['dstport'], "", false, 5);?>
 					<?php html_inputbox("extraoptions", gettext("Options"), $pconfig['extraoptions'], "", false, 40);?>
-					<?php html_combobox("direction", gettext("Direction"), $pconfig['direction'], array("in" => "in", "out" => "out", "" => gettext("Any")), "", true);?>
+					<?php html_combobox("direction", gettext("Direction"), $pconfig['direction'], array("in" => "In", "out" => "Out", "" => gettext("Any")), "", true);?>
 					<?php html_checkbox("log", gettext("Log"), $pconfig['log'] ? true : false, gettext("Log packets that are handled by this rule to syslog."), "", false);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
         </table>

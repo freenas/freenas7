@@ -6,7 +6,7 @@
 # Changes:
 # - Modify prereqs
 # - Add status command
-# - Add mkconf command to create firewall rules file 
+# - Add mkconf command to create firewall rules file
 #
 
 # PROVIDE: ipfw
@@ -34,6 +34,7 @@ extra_commands="status mkconf"
 
 # Defaults
 firewall_script_auxrules=${firewall_script_auxrules:-"/etc/rc.firewall.auxrules"}
+firewall_verbose_limit=${firewall_verbose_limit:-"5"}
 
 status_cmd()
 {
@@ -52,15 +53,24 @@ mkconf_cmd()
 
 	# Add rules
 	/usr/local/bin/xml sel -t -m "//system/firewall/rule[enable]" -s A:N "ruleno" \
-		-o "\${fwcmd} add " \
-		-v "concat(action,' ',protocol)" \
-		-v "concat(' from ',src,' ',srcport)" \
-		-v "concat(' to ',dst,' ',dstport)" \
+		-v "concat('\${fwcmd} add ',action)" \
+		-i "count(log) > 0" -o " log" -b \
+		-v "concat(' ',protocol,' from ')" \
+		-i "string-length(src) > 0" -v "src" -b \
+		-i "string-length(src) = 0" -o "any" -b \
+		-i "string-length(srcport) > 0" -v "concat(' ',srcport)" -b \
+		-o " to " \
+		-i "string-length(dst) > 0" -v "dst" -b \
+		-i "string-length(dst) = 0" -o "any" -b \
+		-i "string-length(dstport) > 0" -v "concat(' ',dstport)" -b \
 		-i "string-length(direction) > 0" -v "concat(' ',direction)" -b \
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		-i "string-length(if) > 0" -v "concat(' via ',if)" -b \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${firewall_script_auxrules}
+
+		# Set verbose logging limit
+		${SYSCTL_W} net.inet.ip.fw.verbose_limit=${firewall_verbose_limit}
 }
 
 ipfw_precmd()
