@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"), gettext("Hosts"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Network"), gettext("Hosts"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();

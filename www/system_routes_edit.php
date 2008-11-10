@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"), gettext("Static routes"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Network"), gettext("Static routes"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();

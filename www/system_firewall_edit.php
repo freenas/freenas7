@@ -36,7 +36,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"), gettext("Firewall"), gettext("Rule"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Network"), gettext("Firewall"), gettext("Rule"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['system']['firewall']['rule']))
 	$config['system']['firewall']['rule'] = array();

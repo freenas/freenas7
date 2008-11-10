@@ -34,7 +34,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("VLAN"), gettext("Edit"));
+$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("VLAN"), gettext("Edit"));
 
 if (!is_array($config['vinterfaces']['vlan']))
 	$config['vinterfaces']['vlan'] = array();
