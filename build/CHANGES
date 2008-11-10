@@ -9,6 +9,7 @@ Majors changes:
 Minors changes:
 
 Bug fixes:
+- Fix web server security hole (file .htpasswd was downloadable) (BR 2255936).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
