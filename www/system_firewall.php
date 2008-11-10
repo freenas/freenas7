@@ -106,11 +106,12 @@ function firewall_process_updatenotification($mode, $data) {
 						<td width="78%" class="vtable">
 				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="10%" class="listhdrr"><?=gettext("Protocol");?></td>
+									<td width="5%" class="listhdrr"><?=gettext("Proto");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Source");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Destination");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
+									<td width="5%" class="listhdrr"><?=gettext("<->");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Enable");?></td>
 									<td width="25%" class="listhdr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
@@ -123,6 +124,7 @@ function firewall_process_updatenotification($mode, $data) {
 									<td class="listr"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(empty($rule['dst']) ? "*" : $rule['dst']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(empty($rule['dstport']) ? "*" : $rule['dstport']);?>&nbsp;</td>
+									<td class="listrc"><?=empty($rule['direction']) ? "*" : strtoupper($rule['direction']);?>&nbsp;</td>
 									<td class="listrc"><?=(isset($rule['enable'])) ? "<img src=\"status_enabled.png\" border=\"0\">" : "<img src=\"status_disabled.png\" border=\"0\">";?>&nbsp;</td>
 									<td class="listbg"><?=htmlspecialchars($rule['desc']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
@@ -138,7 +140,7 @@ function firewall_process_updatenotification($mode, $data) {
 								</tr>
 							  <?php $i++; endforeach;?>
 								<tr>
-									<td class="list" colspan="7"></td>
+									<td class="list" colspan="8"></td>
 									<td class="list">
 										<a href="system_firewall_edit.php"><img src="plus.gif" title="<?=gettext("Add rule");?>" border="0"></a>
 									</td>
