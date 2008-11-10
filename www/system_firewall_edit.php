@@ -81,7 +81,10 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation
-	// ToDo...
+	// Validate if rule number is unique.
+	if (!isset($id) && (false !== array_search_ex($_POST['ruleno'], $a_rule, "ruleno"))) {
+		$input_errors[] = gettext("The unique rule number is already used.");
+	}
 
 	if (!$input_errors) {
 		$rule = array();
@@ -141,7 +144,7 @@ function get_next_rulenumber() {
       	<?php if ($input_errors) print_input_errors($input_errors); ?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
         	<?php html_titleline_checkbox("enable", gettext("Firewall rule"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
-        	<?php html_inputbox("ruleno", gettext("Rule number"), $pconfig['ruleno'], "", true, 10);?>
+        	<?php html_inputbox("ruleno", gettext("Rule number"), $pconfig['ruleno'], gettext("The rule number determines the order of the rule."), true, 10);?>
 					<?php html_combobox("action", gettext("Action"), $pconfig['action'], array("allow" => gettext("Allow"), "deny" => gettext("Deny"), "unreach host" => gettext("Reject")), gettext("The action which will be executed when the packet match the criteria specified below."), true);?>
 					<?php $a_interface = array("" => gettext("All"), get_ifname($config['interfaces']['lan']['if']) => "LAN"); for ($i = 1; isset($config['interfaces']['opt' . $i]); ++$i) { $a_interface[$config['interfaces']['opt' . $i]['if']] = $config['interfaces']['opt' . $i]['descr']; }?>
 					<?php html_combobox("if", gettext("Interface"), $pconfig['if'], $a_interface, gettext("Choose on which interface packets must come in to match this rule."), true);?>
