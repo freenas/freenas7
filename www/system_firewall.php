@@ -36,7 +36,31 @@ $pgtitle = array(gettext("Network"), gettext("Firewall"));
 
 $pconfig['enable'] = isset($config['system']['firewall']['enable']);
 
-if ($_POST) {
+if ($_POST['export']) {
+	$fn = "firewall-" . $config['system']['hostname'] . "." . $config['system']['domain'] . "-" . date("YmdHis") . ".rules";
+	$backup = serialize($config['system']['firewall']['rule']);
+	$fs = strlen($backup);
+	header("Content-Type: application/octet-stream");
+	header("Content-Disposition: attachment; filename={$fn}");
+	header("Content-Length: {$fs}");
+	header("Pragma: hack");
+	echo($backup);
+	exit;
+} else if ($_POST['import']) {
+	if (is_uploaded_file($_FILES['rulesfile']['tmp_name'])) {
+		$rules = unserialize(file_get_contents($_FILES['rulesfile']['tmp_name']));
+		foreach ($rules as $rule) {
+			$rule['uuid'] = uuid(); // Create new uuid
+			$config['system']['firewall']['rule'][] = $rule;
+			ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_NEW, $rule['uuid']);
+		}
+		write_config();
+		header("Location: system_firewall.php");
+		exit;
+	} else {
+		$input_errors[] = gettext("Failed to upload file.");
+	}
+} else if ($_POST) {
 	$pconfig = $_POST;
 
 	$config['system']['firewall']['enable'] = $_POST['enable'] ? true : false;
@@ -92,7 +116,7 @@ function firewall_process_updatenotification($mode, $data) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<form action="system_firewall.php" method="post" name="iform" id="iform">
+<form action="system_firewall.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
@@ -146,6 +170,21 @@ function firewall_process_updatenotification($mode, $data) {
 									</td>
 								</tr>
 							</table>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell">&nbsp;</td>
+						<td width="78%" class="vtable">
+							<input name="export" type="submit" class="formbtn" value="<?=gettext("Export");?>"><br/>
+							<?=gettext("Download firewall rules.");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell">&nbsp;</td>
+						<td width="78%" class="vtable">
+							<input name="rulesfile" type="file" class="formfld" id="rulesfile" size="40" accept="*.rules">&nbsp;
+							<input name="import" type="submit" class="formbtn" id="import" value="<?=gettext("Import");?>"><br/>
+							<?=gettext("Import firewall rules.");?>
 						</td>
 					</tr>
 				</table>
