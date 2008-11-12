@@ -118,19 +118,18 @@ function rsyncclient_process_updatenotification($mode, $data) {
 						<td width="15%" class="listhdrr"><?=gettext("Remote address");?></td>
 						<td width="15%" class="listhdrr"><?=gettext("Local share (destination)");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Who");?></td>
-						<td width="25%" class="listhdrr"><?=gettext("Description");?></td>
-						<td width="5%" class="listhdrr"><?=gettext("Enable");?></td>
+						<td width="30%" class="listhdrr"><?=gettext("Description");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient):?>
   			  <?php $notificationmode = ui_get_updatenotification_mode("rsyncclient", $rsyncclient['uuid']);?>
-          <tr>   
-						<td class="listlr"><?=htmlspecialchars($rsyncclient['remoteshare']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($rsyncclient['rsyncserverip']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($rsyncclient['who']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($rsyncclient['description']);?>&nbsp;</td>
-						<td class="listbg"><?=(isset($rsyncclient['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
+          <tr>
+          	<?php $enable = isset($rsyncclient['enable']);?>
+						<td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($rsyncclient['remoteshare']);?>&nbsp;</td>
+						<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rsyncclient['rsyncserverip']);?>&nbsp;</td>
+						<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
+						<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rsyncclient['who']);?>&nbsp;</td>
+						<td class="listbg"><?=htmlspecialchars($rsyncclient['description']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" border="0"></a>&nbsp;
@@ -144,7 +143,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
           </tr>
           <?php $i++; endforeach;?>
           <tr> 
-            <td class="list" colspan="6"></td>
+            <td class="list" colspan="5"></td>
             <td class="list"><a href="services_rsyncd_client_edit.php"><img src="plus.gif" title="<?=gettext("Add RSYNC");?>" border="0"></a></td>
 			    </tr>
         </table>

@@ -62,10 +62,11 @@ $a_service[] = array("desc" => gettext("BitTorrent"), "link" => "services_bittor
           </tr>
   			  <?php foreach ($a_service as $servicev):?>
           <tr>
-						<td class="listlr"><?=htmlspecialchars($servicev['desc']);?>&nbsp;</td>
-						<td class="listrc">
+          	<?php $enable = isset($config[$servicev['config']]['enable']);?>
+						<td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($servicev['desc']);?>&nbsp;</td>
+						<td class="<?=$enable?"listrc":"listrcd";?>">
 							<a href="<?=$servicev['link'];?>">
-								<?php if (isset($config[$servicev['config']]['enable'])):?>
+								<?php if ($enable):?>
 								<img src="status_enabled.png" border="0">
 								<?php else:?>
 								<img src="status_disabled.png" border="0">

@@ -136,20 +136,19 @@ function firewall_process_updatenotification($mode, $data) {
 									<td width="20%" class="listhdrr"><?=gettext("Destination");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("<->");?></td>
-									<td width="5%" class="listhdrr"><?=gettext("Enable");?></td>
-									<td width="25%" class="listhdr"><?=gettext("Description");?></td>
+									<td width="30%" class="listhdr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
 								<?php $i = 0; foreach ($a_rule as $rule):?>
 								<?php $notificationmode = ui_get_updatenotification_mode("firewall", $rule['uuid']);?>
 								<tr>
-									<td class="listlr"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars(empty($rule['src']) ? "*" : $rule['src']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars(empty($rule['dst']) ? "*" : $rule['dst']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars(empty($rule['dstport']) ? "*" : $rule['dstport']);?>&nbsp;</td>
-									<td class="listrc"><?=empty($rule['direction']) ? "*" : strtoupper($rule['direction']);?>&nbsp;</td>
-									<td class="listrc"><?=(isset($rule['enable'])) ? "<img src=\"status_enabled.png\" border=\"0\">" : "<img src=\"status_disabled.png\" border=\"0\">";?>&nbsp;</td>
+									<?php $enable = isset($rule['enable']);?>
+									<td class="<?=$enable?"listlr":"listlrd";?>"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
+									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['src']) ? "*" : $rule['src']);?>&nbsp;</td>
+									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
+									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['dst']) ? "*" : $rule['dst']);?>&nbsp;</td>
+									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['dstport']) ? "*" : $rule['dstport']);?>&nbsp;</td>
+									<td class="<?=$enable?"listrc":"listrcd";?>"><?=empty($rule['direction']) ? "*" : strtoupper($rule['direction']);?>&nbsp;</td>
 									<td class="listbg"><?=htmlspecialchars($rule['desc']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 									<td valign="middle" nowrap class="list">
@@ -164,7 +163,7 @@ function firewall_process_updatenotification($mode, $data) {
 								</tr>
 							  <?php $i++; endforeach;?>
 								<tr>
-									<td class="list" colspan="8"></td>
+									<td class="list" colspan="7"></td>
 									<td class="list">
 										<a href="system_firewall_edit.php"><img src="plus.gif" title="<?=gettext("Add rule");?>" border="0"></a>
 									</td>
