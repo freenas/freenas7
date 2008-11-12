@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 01:27+0000\n"
+"POT-Creation-Date: 2008-11-11 00:28+0000\n"
 "PO-Revision-Date: 2008-10-14 03:39+0000\n"
 "Last-Translator: osaka <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-08 15:44+0000\n"
+"X-Launchpad-Export-Date: 2008-11-12 18:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -74,6 +74,9 @@ msgstr ""
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN tag (between 1 and 4094)."
 
+msgid "<->"
+msgstr ""
+
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -81,6 +84,20 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず，<a href=%s>ユーザ</a> "
 "は完全なシェルを有効にしなければなりません．"
+
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
+"formatted drive or Software RAID volume (<b>created before "
+"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
+"you select option 2 during installation on hard drive (<b>all "
+"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
+"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
+"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
+"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
+"(Windows, Linux, MAC, etc.) that use MBR partition table."
+msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -201,6 +218,9 @@ msgstr "アクセスモード"
 msgid "Acoustic level"
 msgstr "音響レベル"
 
+msgid "Action"
+msgstr ""
+
 msgid "Activate"
 msgstr "アクティブ"
 
@@ -274,6 +294,9 @@ msgstr "マウントポイントを追加"
 
 msgid "Add option"
 msgstr "オプションを追加"
+
+msgid "Add rule"
+msgstr ""
 
 msgid "Add self-test"
 msgstr ""
@@ -416,6 +439,9 @@ msgstr ""
 msgid "Anonymous users only"
 msgstr ""
 
+msgid "Any"
+msgstr ""
+
 msgid "Apply changes"
 msgstr "変更の適用"
 
@@ -545,6 +571,12 @@ msgstr "チェック間隔"
 msgid "Check shared secret:"
 msgstr ""
 
+msgid "Choose on which interface packets must come in to match this rule."
+msgstr ""
+
+msgid "Choose which IP protocol this rule should match."
+msgstr ""
+
 msgid "Choose which interface this route applies to."
 msgstr "このルートがどのインタフェースに当てはまるかを選択して下さい．"
 
@@ -568,6 +600,9 @@ msgstr "クライアント"
 
 msgid "Client RSYNC job"
 msgstr "クライアント RSYNC ジョブ"
+
+msgid "Client firewall"
+msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "クライアントは小文字、サーバは大文字で表示。"
@@ -815,6 +850,9 @@ msgstr "マウントポイントを削除"
 msgid "Delete option"
 msgstr "オプションを削除"
 
+msgid "Delete rule"
+msgstr ""
+
 msgid "Delete self-test"
 msgstr "セルフテストの削除"
 
@@ -836,6 +874,9 @@ msgstr ""
 msgid "Description"
 msgstr "概要"
 
+msgid "Destination"
+msgstr "宛て先"
+
 msgid "Destination email address."
 msgstr "メールの宛先"
 
@@ -850,6 +891,9 @@ msgstr ""
 
 msgid "Destination network for this static route"
 msgstr "宛て先ネットワークの為の静的ルート"
+
+msgid "Destination port"
+msgstr ""
 
 msgid "Destination share"
 msgstr "接続先共有"
@@ -895,6 +939,9 @@ msgstr "診断"
 
 msgid "Difference"
 msgstr "差分"
+
+msgid "Direction"
+msgstr ""
 
 msgid "Directory"
 msgstr "ディレクトリ"
@@ -1018,6 +1065,9 @@ msgstr "このオプションを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this route?"
 msgstr "このルーティングを削除してもよろしいですか?"
+
+msgid "Do you really want to delete this rule?"
+msgstr ""
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr "このスケジュールされたセルフテストを削除してもよろしいですか？"
@@ -1175,6 +1225,9 @@ msgstr "マウントポイントを編集"
 
 msgid "Edit option"
 msgstr "オプションを編集"
+
+msgid "Edit rule"
+msgstr ""
 
 msgid "Edit self-test"
 msgstr "セルフテストの編集"
@@ -1490,6 +1543,12 @@ msgstr "ファイルシステムチェック"
 
 msgid "Filename"
 msgstr "ファイル名"
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Firewall rule"
+msgstr ""
 
 msgid "Firmware"
 msgstr "ファームウェア"
@@ -1828,6 +1887,9 @@ msgstr "パッケージのインストール"
 msgid "Interface"
 msgstr "インタフェース"
 
+msgid "Interface Management"
+msgstr ""
+
 msgid "Interface to listen to."
 msgstr "待ち受けるインタフェース．"
 
@@ -1998,8 +2060,14 @@ msgstr ""
 msgid "Location where the content database file will be stored."
 msgstr ""
 
+msgid "Log"
+msgstr ""
+
 msgid "Log Level"
 msgstr "ログレベル"
+
+msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
 
 msgid "Login"
 msgstr "ログイン"
@@ -2334,6 +2402,9 @@ msgstr ""
 msgid "Option"
 msgstr "オプション"
 
+msgid "Options"
+msgstr ""
+
 msgid "Others"
 msgstr "その他"
 
@@ -2551,6 +2622,9 @@ msgstr "プロセス情報"
 msgid "Profile"
 msgstr "プロファイル"
 
+msgid "Proto"
+msgstr ""
+
 msgid "Protocol"
 msgstr "プロトコル"
 
@@ -2652,6 +2726,9 @@ msgstr ""
 msgid "Recycle bin"
 msgstr "ごみ箱"
 
+msgid "Reject"
+msgstr ""
+
 msgid "Release notes"
 msgstr ""
 
@@ -2724,6 +2801,15 @@ msgstr "列"
 
 msgid "Rsync Daemon"
 msgstr "Rsync デーモン"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
 
 msgid "Run now"
 msgstr ""
@@ -2803,15 +2889,6 @@ msgstr "シャットダウンスケジュール"
 
 msgid "Security"
 msgstr "セキュリティー"
-
-msgid ""
-"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select 'Old "
-"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
-"release."
-msgstr ""
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "S.M.A.R.T.機能を有効にするディスクを選択してください。"
@@ -2983,7 +3060,13 @@ msgstr "ソフトウェア RAID の情報とステータス"
 msgid "Software used"
 msgstr ""
 
+msgid "Source"
+msgstr "送信元"
+
 msgid "Source directory to be synchronized."
+msgstr ""
+
+msgid "Source port"
 msgstr ""
 
 msgid "Source share"
@@ -3253,6 +3336,11 @@ msgstr "有効な TCP ポート番号を指定して下さい．"
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "VLAN ID は1-4094の範囲内で指定してください。"
 
+msgid ""
+"The action which will be executed when the packet match the criteria "
+"specified below."
+msgstr ""
+
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
@@ -3477,6 +3565,9 @@ msgid ""
 "options accordingly."
 msgstr "電源制御ユーティリティはシステム状態を監視し，それに応じて様々な電源制御オプションをセットします．"
 
+msgid "The rule number determines the order of the rule."
+msgstr ""
+
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
@@ -3505,6 +3596,9 @@ msgstr "アップデート間隔は6から1440の間で指定してください�
 
 msgid "The unique group ID is already used."
 msgstr "このグループIDは既に使用されています。"
+
+msgid "The unique rule number is already used."
+msgstr ""
 
 msgid "The unique user ID is already used."
 msgstr "このユーザIDは既に使用されています。"
@@ -3804,9 +3898,18 @@ msgstr "メールの宛先"
 
 #, php-format
 msgid ""
+"To get detailed informations about writing firewall rules check the FreeBSD "
+"<a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
 "read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
 "switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgstr ""
+
+msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid ""
@@ -4937,14 +5040,8 @@ msgstr "週日"
 #~ msgid "Rsync Local Synchronization"
 #~ msgstr "Rsync ローカル同期"
 
-#~ msgid "Source"
-#~ msgstr "送信元"
-
 #~ msgid "Source Mount Point."
 #~ msgstr "送信元のマウントポイント"
-
-#~ msgid "Destination"
-#~ msgstr "宛て先"
 
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "宛て先のマウントポイント (バックアップドライブ)．"

@@ -143,7 +143,7 @@ function firewall_process_updatenotification($mode, $data) {
 								<?php $i = 0; foreach ($a_rule as $rule):?>
 								<?php $notificationmode = ui_get_updatenotification_mode("firewall", $rule['uuid']);?>
 								<tr>
-									<td class="listr"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
+									<td class="listlr"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(empty($rule['src']) ? "*" : $rule['src']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(empty($rule['dst']) ? "*" : $rule['dst']);?>&nbsp;</td>
