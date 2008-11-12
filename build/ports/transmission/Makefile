@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		1.34
+PORTVERSION=		1.40
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -16,7 +16,8 @@ USE_GMAKE=			yes
 USE_AUTOTOOLS=	autoconf:262:env aclocal:19:env automake:19:env libtool:15:env
 GNU_CONFIGURE=	yes
 
-CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE}
+CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE} \
+									--with-zlib=/usr
 
 EXTRA_PATCHES=	${PATCHDIR}/${PORTNAME}${PKGNAMESUFFIX}-configure.ac
 
@@ -25,13 +26,18 @@ general-patch:
 		${WRKSRC}/third-party/libevent/Makefile.*
 	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \
 		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
+	@${REINPLACE_CMD} -e 's|%%CFLAGS%%|${CFLAGS}|g ; \
+		s|%%CXXFLAGS%%|${CXXFLAGS}|g' \
+			${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e '/#define DISABLE_GETTEXT/s,/\* \(.*\) \*/,\1,' \
+		${WRKSRC}/libtransmission/utils.h
+
+post-patch: general-patch
 
 pre-configure:
 	@(cd ${WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${AUTORECONF} -W none)
 	@${REINPLACE_CMD} -e \
-		's|CFLAGS="-g -Wall.*"|CFLAGS="${CFLAGS} -Wall -W"|g ; \
-		s|CXXFLAGS="-g -Wall.*"|CXXFLAGS="${CXXFLAGS} -Wall -W"|g ; \
-		s|_pthread_flags=".*"|_pthread_flags="${PTHREAD_LIBS}"|g' \
+		's|_pthread_flags=".*"|_pthread_flags="${PTHREAD_LIBS}"|g' \
 			${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's|-lrt||g' \
 		${WRKSRC}/third-party/libevent/configure
@@ -55,11 +61,13 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/toolbar_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/torrent_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/favicon.ico ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/favicon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/browser_firefox.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/browser_opera.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/browser_safari.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/chrome.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/filter_bar.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/filter_icon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/iphone_chrome.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/logo.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/transfer_arrows.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
