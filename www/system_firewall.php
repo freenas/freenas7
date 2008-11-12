@@ -130,19 +130,33 @@ function firewall_process_updatenotification($mode, $data) {
 						<td width="78%" class="vtable">
 				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
+									<td width="4%" class="list"></td>
 									<td width="5%" class="listhdrr"><?=gettext("Proto");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Source");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Destination");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("<->");?></td>
-									<td width="30%" class="listhdr"><?=gettext("Description");?></td>
+									<td width="26%" class="listhdr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
 								<?php $i = 0; foreach ($a_rule as $rule):?>
 								<?php $notificationmode = ui_get_updatenotification_mode("firewall", $rule['uuid']);?>
 								<tr>
-									<?php $enable = isset($rule['enable']);?>
+									<?php $enable = isset($rule['enable']);
+									switch ($rule['action']) {
+										case "allow":
+											$actionimg = "fw_action_allow.gif";
+											break;
+										case "deny":
+											$actionimg = "fw_action_deny.gif";
+											break;
+										case "unreach host":
+											$actionimg = "fw_action_reject.gif";
+											break;
+									}
+									?>
+									<td valign="middle" nowrap class="list"><img src="<?=$actionimg;?>"></td>
 									<td class="<?=$enable?"listlr":"listlrd";?>"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['src']) ? "*" : $rule['src']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
@@ -163,7 +177,7 @@ function firewall_process_updatenotification($mode, $data) {
 								</tr>
 							  <?php $i++; endforeach;?>
 								<tr>
-									<td class="list" colspan="7"></td>
+									<td class="list" colspan="8"></td>
 									<td class="list">
 										<a href="system_firewall_edit.php"><img src="plus.gif" title="<?=gettext("Add rule");?>" border="0"></a>
 									</td>
