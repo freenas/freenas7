@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-11-07 01:27+0000\n"
-"PO-Revision-Date: 2008-09-29 16:45+0000\n"
-"Last-Translator: Ángel Alonso (F3leR) <f3ler0x69@gmail.com>\n"
+"POT-Creation-Date: 2008-11-11 00:28+0000\n"
+"PO-Revision-Date: 2008-11-11 18:16+0000\n"
+"Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-08 15:44+0000\n"
+"X-Launchpad-Export-Date: 2008-11-12 18:50+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -75,6 +75,9 @@ msgstr ""
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "etiqueta VLAN 802.1Q (entre 1 y 4094)"
 
+msgid "<->"
+msgstr "<->"
+
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -82,6 +85,20 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> debe estar activado para que funcione Unison, y el <a "
 "href=%s>usuario</a> debe tener acceso completo a la Consola activado."
+
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
+"formatted drive or Software RAID volume (<b>created before "
+"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
+"you select option 2 during installation on hard drive (<b>all "
+"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
+"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
+"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
+"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
+"(Windows, Linux, MAC, etc.) that use MBR partition table."
+msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -216,6 +233,9 @@ msgstr "Modo de acceso"
 msgid "Acoustic level"
 msgstr "Ruido"
 
+msgid "Action"
+msgstr ""
+
 msgid "Activate"
 msgstr "Activar"
 
@@ -292,6 +312,9 @@ msgstr "Añadir punto de montaje"
 
 msgid "Add option"
 msgstr "Añadir opción"
+
+msgid "Add rule"
+msgstr ""
 
 msgid "Add self-test"
 msgstr "Añadir autocomprobación"
@@ -446,6 +469,9 @@ msgstr "Ya existe una interfaz con la descripcion especificada."
 msgid "Anonymous users only"
 msgstr "Usuarios anónimos solamente"
 
+msgid "Any"
+msgstr ""
+
 msgid "Apply changes"
 msgstr "Aplicar Cambios"
 
@@ -579,6 +605,12 @@ msgstr "Intervalo de pruebas"
 msgid "Check shared secret:"
 msgstr "Comprobando el secreto compartido:"
 
+msgid "Choose on which interface packets must come in to match this rule."
+msgstr ""
+
+msgid "Choose which IP protocol this rule should match."
+msgstr ""
+
 msgid "Choose which interface this route applies to."
 msgstr "Elija el interfaz al que aplicar esta ruta."
 
@@ -603,6 +635,9 @@ msgid "Client"
 msgstr "Cliente"
 
 msgid "Client RSYNC job"
+msgstr ""
+
+msgid "Client firewall"
 msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
@@ -859,6 +894,9 @@ msgstr "Borrar punto de montaje"
 msgid "Delete option"
 msgstr "Borrar opción"
 
+msgid "Delete rule"
+msgstr ""
+
 msgid "Delete self-test"
 msgstr "Eliminar autoconprobación"
 
@@ -880,6 +918,9 @@ msgstr "Denegar"
 msgid "Description"
 msgstr "Descripción"
 
+msgid "Destination"
+msgstr "Destino"
+
 msgid "Destination email address."
 msgstr "Dirección de correo electrónico de destino"
 
@@ -894,6 +935,9 @@ msgstr "cuenta de bit de la red de destino."
 
 msgid "Destination network for this static route"
 msgstr "Red de destino para esta ruta estática"
+
+msgid "Destination port"
+msgstr ""
 
 msgid "Destination share"
 msgstr "Elemento compartido de destino"
@@ -942,6 +986,9 @@ msgstr "Diagnóstico"
 
 msgid "Difference"
 msgstr "Diferencia"
+
+msgid "Direction"
+msgstr ""
 
 msgid "Directory"
 msgstr "Directorio"
@@ -1071,6 +1118,9 @@ msgstr "¿Realemente quire borrar ésta opción?"
 
 msgid "Do you really want to delete this route?"
 msgstr "Realmente desea borrar esta ruta?"
+
+msgid "Do you really want to delete this rule?"
+msgstr ""
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr ""
@@ -1233,6 +1283,9 @@ msgstr "Editar punto de montaje"
 
 msgid "Edit option"
 msgstr "Editar opción"
+
+msgid "Edit rule"
+msgstr ""
 
 msgid "Edit self-test"
 msgstr "Editar autocomprobación"
@@ -1562,6 +1615,12 @@ msgid "File system check"
 msgstr ""
 
 msgid "Filename"
+msgstr ""
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Firewall rule"
 msgstr ""
 
 msgid "Firmware"
@@ -1920,6 +1979,9 @@ msgstr "Instalar paquete"
 msgid "Interface"
 msgstr "Interfaz"
 
+msgid "Interface Management"
+msgstr ""
+
 msgid "Interface to listen to."
 msgstr "Interfaz al que escuchar."
 
@@ -2102,8 +2164,14 @@ msgstr "Ubicación de los archivos para compartir."
 msgid "Location where the content database file will be stored."
 msgstr "Ubicación donde será almacenada la base de datos de contenidos."
 
+msgid "Log"
+msgstr ""
+
 msgid "Log Level"
 msgstr "Nivel de registro"
+
+msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
 
 msgid "Login"
 msgstr "Iniciar Sesión"
@@ -2455,6 +2523,9 @@ msgstr ""
 msgid "Option"
 msgstr "Opción"
 
+msgid "Options"
+msgstr ""
+
 msgid "Others"
 msgstr "Otros"
 
@@ -2677,6 +2748,9 @@ msgstr "Información de procesos"
 msgid "Profile"
 msgstr "Perfil"
 
+msgid "Proto"
+msgstr ""
+
 msgid "Protocol"
 msgstr "Protocolo"
 
@@ -2778,6 +2852,9 @@ msgstr ""
 msgid "Recycle bin"
 msgstr "Papelera de Reciclaje"
 
+msgid "Reject"
+msgstr ""
+
 msgid "Release notes"
 msgstr ""
 
@@ -2854,6 +2931,15 @@ msgstr "Filas"
 
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
 
 msgid "Run now"
 msgstr ""
@@ -2933,15 +3019,6 @@ msgstr "Parada programada"
 
 msgid "Security"
 msgstr "Seguridad"
-
-msgid ""
-"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select 'Old "
-"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
-"release."
-msgstr ""
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "Seleccionar un disco habilitado para monitoreo S.M.A.R.T."
@@ -3115,7 +3192,13 @@ msgstr "Información y estado del RAID por software"
 msgid "Software used"
 msgstr ""
 
+msgid "Source"
+msgstr "Origen"
+
 msgid "Source directory to be synchronized."
+msgstr ""
+
+msgid "Source port"
 msgstr ""
 
 msgid "Source share"
@@ -3394,6 +3477,11 @@ msgstr "El puerto TCP tiene que ser un número de puerto válido."
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "El ID de la VLAN debe estar entre 1 y 4094"
 
+msgid ""
+"The action which will be executed when the packet match the criteria "
+"specified below."
+msgstr ""
+
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
@@ -3647,6 +3735,9 @@ msgstr ""
 "La utilidad powerd controla el estado del sistema y ajusta de acuerdo a éste "
 "varias opciones del control de alimentación eléctrica."
 
+msgid "The rule number determines the order of the rule."
+msgstr ""
+
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
@@ -3677,6 +3768,9 @@ msgstr ""
 
 msgid "The unique group ID is already used."
 msgstr "El ID unico de grupo ya esta siendo usado."
+
+msgid "The unique rule number is already used."
+msgstr ""
 
 msgid "The unique user ID is already used."
 msgstr "El ID unico de usuario ya esta siendo usado."
@@ -3988,9 +4082,18 @@ msgstr "a email"
 
 #, php-format
 msgid ""
+"To get detailed informations about writing firewall rules check the FreeBSD "
+"<a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
 "read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
 "switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgstr ""
+
+msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid ""

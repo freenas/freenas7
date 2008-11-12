@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 01:27+0000\n"
-"PO-Revision-Date: 2008-11-02 16:23+0000\n"
-"Last-Translator: genesi <Unknown>\n"
+"POT-Creation-Date: 2008-11-11 00:28+0000\n"
+"PO-Revision-Date: 2008-11-12 13:53+0000\n"
+"Last-Translator: Alex Trenta <dando.sando@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-08 15:44+0000\n"
+"X-Launchpad-Export-Date: 2008-11-12 18:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -75,6 +75,9 @@ msgstr ""
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN tag (tra 1 e 4094)"
 
+msgid "<->"
+msgstr "<->"
+
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -82,6 +85,20 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> deve essere abilitato per poter usare Unison, e l' <a "
 "href=%s>utente</a> deve aver abilitata una shell completa."
+
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
+"formatted drive or Software RAID volume (<b>created before "
+"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
+"you select option 2 during installation on hard drive (<b>all "
+"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
+"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
+"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
+"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
+"(Windows, Linux, MAC, etc.) that use MBR partition table."
+msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -206,6 +223,9 @@ msgstr "Modalita' di accesso"
 msgid "Acoustic level"
 msgstr "Livello acustico"
 
+msgid "Action"
+msgstr ""
+
 msgid "Activate"
 msgstr "Attiva"
 
@@ -279,6 +299,9 @@ msgstr "Aggiungi punto di mount"
 
 msgid "Add option"
 msgstr "Aggiungi opzione"
+
+msgid "Add rule"
+msgstr ""
 
 msgid "Add self-test"
 msgstr "Aggiungi self-test"
@@ -439,6 +462,9 @@ msgstr "Un'interfaccia con la descrizione specificata esiste già."
 msgid "Anonymous users only"
 msgstr "Solo utenti anonimi"
 
+msgid "Any"
+msgstr ""
+
 msgid "Apply changes"
 msgstr "Applica modifiche"
 
@@ -446,7 +472,7 @@ msgid "Archive"
 msgstr "Archivio"
 
 msgid "Archive mode."
-msgstr ""
+msgstr "Modalità archivio"
 
 msgid "Are you sure you want to proceed?"
 msgstr "Si e' sicuri di voler procedere?"
@@ -570,6 +596,12 @@ msgstr "Controlla l'intervallo"
 msgid "Check shared secret:"
 msgstr "Verifica condivisioni sicure:"
 
+msgid "Choose on which interface packets must come in to match this rule."
+msgstr ""
+
+msgid "Choose which IP protocol this rule should match."
+msgstr ""
+
 msgid "Choose which interface this route applies to."
 msgstr "Scegli a quale interfaccia applicare questa route."
 
@@ -596,6 +628,9 @@ msgstr "Client"
 msgid "Client RSYNC job"
 msgstr ""
 
+msgid "Client firewall"
+msgstr ""
+
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "Il client vede in minuscolo, il server vede in maiuscolo"
 
@@ -613,6 +648,7 @@ msgstr "Colonne"
 
 msgid "Comma separated list of directories to search for files to share."
 msgstr ""
+"Elenco di directory separato da virgole per cercare i files da condividere."
 
 msgid "Command"
 msgstr "Comando"
@@ -654,7 +690,7 @@ msgstr ""
 "solo per i trasferimenti attraverso internet."
 
 msgid "Configuration directory"
-msgstr ""
+msgstr "Directory di configurazione"
 
 msgid "Configuring"
 msgstr "Configurando"
@@ -849,6 +885,9 @@ msgstr "Cancella punto di montaggio"
 msgid "Delete option"
 msgstr "Elimina opzione"
 
+msgid "Delete rule"
+msgstr ""
+
 msgid "Delete self-test"
 msgstr "Cancella self-test"
 
@@ -870,6 +909,9 @@ msgstr "Nega"
 msgid "Description"
 msgstr "Descrizione"
 
+msgid "Destination"
+msgstr "Destinazione"
+
 msgid "Destination email address."
 msgstr "Indirizzo email di destinazione"
 
@@ -885,6 +927,9 @@ msgstr "Bit Count della rete di destinazione"
 msgid "Destination network for this static route"
 msgstr "Rete di destinazione per questa route statica"
 
+msgid "Destination port"
+msgstr ""
+
 msgid "Destination share"
 msgstr "Condivisione destinazione"
 
@@ -899,7 +944,7 @@ msgid "Device /dev/%s - %s"
 msgstr "Dispositivo /dev/%s - %s"
 
 msgid "Device IP"
-msgstr ""
+msgstr "Dispositivo IP"
 
 msgid "Device is mounted, umount it first before detaching."
 msgstr "Il dispositivo risulta montato e va smontato prima di sganciarlo."
@@ -939,6 +984,9 @@ msgstr "Diagnostica"
 
 msgid "Difference"
 msgstr "Differenza"
+
+msgid "Direction"
+msgstr ""
 
 msgid "Directory"
 msgstr "Directory"
@@ -1069,8 +1117,11 @@ msgstr "Vuoi cancellare davvero questa opzione?"
 msgid "Do you really want to delete this route?"
 msgstr "Si vuole realmente cancellare questa route?"
 
-msgid "Do you really want to delete this scheduled self-test?"
+msgid "Do you really want to delete this rule?"
 msgstr ""
+
+msgid "Do you really want to delete this scheduled self-test?"
+msgstr "Volete veramente cancellare questo test automatico programmato?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Si desidera realmente cancellare questa condivisone?"
@@ -1085,6 +1136,8 @@ msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
+"Volete veramente eliminare questo volume?\\n!!! Nota, tutti i dati andranno "
+"persi e non potranno essere recuperati!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
@@ -1115,7 +1168,7 @@ msgid "Domain name (NetBIOS-Name)"
 msgstr ""
 
 msgid "Domain name in old format, e.g. EXAMPLE."
-msgstr ""
+msgstr "Domain name nel vecchio formato, e.g. ESEMPIO."
 
 msgid "Domain name, e.g. example.com."
 msgstr ""
@@ -1154,13 +1207,13 @@ msgid "Driver"
 msgstr ""
 
 msgid "Driver list"
-msgstr ""
+msgstr "Lista Driver"
 
 msgid "Duplex"
 msgstr "Duplex"
 
 msgid "Duplicate share name."
-msgstr ""
+msgstr "Nome di condivisione duplicato."
 
 msgid "Dynamic DNS"
 msgstr "DNS dinamico"
@@ -1226,6 +1279,9 @@ msgid "Edit mount point"
 msgstr ""
 
 msgid "Edit option"
+msgstr "Modifica opzione"
+
+msgid "Edit rule"
 msgstr ""
 
 msgid "Edit self-test"
@@ -1247,7 +1303,7 @@ msgid "Email Report"
 msgstr "Email Report"
 
 msgid "Email notification"
-msgstr ""
+msgstr "Notifica email"
 
 msgid "Email report"
 msgstr "Rapporto email"
@@ -1277,7 +1333,7 @@ msgid "Enable device polling"
 msgstr "Abilita il device polling"
 
 msgid "Enable directory listing."
-msgstr ""
+msgstr "Abilita l'elenco directory."
 
 msgid "Enable domain wildcarding."
 msgstr ""
@@ -1314,7 +1370,7 @@ msgid "Enable permission inheritance"
 msgstr "Abilita eredita' di permesso"
 
 msgid "Enable proxy authentication."
-msgstr ""
+msgstr "Abilita l'autenticazione proxy."
 
 msgid "Enable recycle bin"
 msgstr "Abilita il cestino"
@@ -1379,7 +1435,7 @@ msgstr ""
 "vuole cambiare il default (80 per HTTP, 443 per HTTPS)."
 
 msgid "Enter a valid sysctl MIB name."
-msgstr ""
+msgstr "Inserire un nome sysctl MIB valido."
 
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
@@ -1390,11 +1446,15 @@ msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
+"Inserisci la passphrase che sarà utilizzata nella modalità WPA-PSK. Dovrà "
+"essere compresa tra gli 8 e i 63 caratteri."
 
 msgid ""
 "Enter the path to the home directory of that user. Leave this field empty to "
 "use default path /mnt."
 msgstr ""
+"Inserire il percorso della cartella home di questo utente. Lasciare questo "
+"campo vuoto per usare il percorso predefinito /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr "Inserire la porta alla quale inviare le trap (default 162)."
@@ -1424,7 +1484,7 @@ msgstr ""
 "spegnimento del sistema."
 
 msgid "Execute now"
-msgstr ""
+msgstr "Esegui ora"
 
 msgid "Extensions"
 msgstr "Estensioni"
@@ -1443,7 +1503,7 @@ msgstr ""
 "usati piu' di una volta."
 
 msgid "Extra options"
-msgstr ""
+msgstr "Opzioni extra"
 
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
@@ -1451,10 +1511,10 @@ msgid ""
 msgstr ""
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "Opzioni extra di ifconfig (normalmente vuoto)."
 
 msgid "Extra options to rsync (usually empty)."
-msgstr ""
+msgstr "Opzioni extra di rsync (normalmente vuoto)."
 
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
@@ -1506,12 +1566,14 @@ msgstr ""
 
 #, php-format
 msgid "Failed to send test email to: %s."
-msgstr ""
+msgstr "Fallito l'invio dell' email di prova a : %s."
 
 #, php-format
 msgid ""
 "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
+"Fallito l'invio dell'email di prova. Per favore controlla i files di <a "
+"href='%s'>log</a>."
 
 msgid "Failed to upload metadata backup file."
 msgstr ""
@@ -1556,6 +1618,12 @@ msgstr "Verifica del file system"
 
 msgid "Filename"
 msgstr "Nome file"
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Firewall rule"
+msgstr "Regola Firewall"
 
 msgid "Firmware"
 msgstr "Firmware"
@@ -1684,7 +1752,7 @@ msgid "Help"
 msgstr "Aiuto"
 
 msgid "Help needed!"
-msgstr ""
+msgstr "Aiuto necessario!"
 
 msgid "Hide dot files"
 msgstr "Nascondi i file dot"
@@ -1926,6 +1994,9 @@ msgstr "Installa pacchetto"
 msgid "Interface"
 msgstr "Interfaccia"
 
+msgid "Interface Management"
+msgstr ""
+
 msgid "Interface to listen to."
 msgstr "Interfaccia dove mettersi in ascolto."
 
@@ -2109,8 +2180,14 @@ msgstr ""
 msgid "Location where the content database file will be stored."
 msgstr ""
 
+msgid "Log"
+msgstr ""
+
 msgid "Log Level"
 msgstr "Livello di Log"
+
+msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
 
 msgid "Login"
 msgstr "Login"
@@ -2465,6 +2542,9 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
+msgid "Options"
+msgstr ""
+
 msgid "Others"
 msgstr ""
 
@@ -2683,6 +2763,9 @@ msgstr "Informazioni sui processi"
 msgid "Profile"
 msgstr "Profilo"
 
+msgid "Proto"
+msgstr ""
+
 msgid "Protocol"
 msgstr "Protocollo"
 
@@ -2786,6 +2869,9 @@ msgstr ""
 msgid "Recycle bin"
 msgstr "Cestino"
 
+msgid "Reject"
+msgstr ""
+
 msgid "Release notes"
 msgstr ""
 
@@ -2862,6 +2948,15 @@ msgstr "Righe"
 
 msgid "Rsync Daemon"
 msgstr "Demone Rsync"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
 
 msgid "Run now"
 msgstr ""
@@ -2941,21 +3036,6 @@ msgstr "Spegnimento Programmato"
 
 msgid "Security"
 msgstr "Sicurezza"
-
-msgid ""
-"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select 'Old "
-"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
-"release."
-msgstr ""
-"Selezionare 'EFI GPT' se si vuole montare un disco formattato GPT (metodo di "
-"default dalla 0.684b).<br>Selezionare 1 per un disco formattato UFS o per un "
-"volume Software RAID creato  dalla 0.683b.<br>Selezionare 2 per montare la "
-"partizione DATA se e' stata selezionata l'opzione 2 durante l'installazione "
-"sul disco rigido.<br>Selezionare 'Vecchio RAID Software' per i volumi "
-"gmirror/graid5/gvinum creati con le precedenti versioni."
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
@@ -3128,8 +3208,14 @@ msgstr "Informazioni e stato software RAID"
 msgid "Software used"
 msgstr ""
 
+msgid "Source"
+msgstr "Sorgente"
+
 msgid "Source directory to be synchronized."
 msgstr "Cartella sorgente da sincronizzare."
+
+msgid "Source port"
+msgstr ""
 
 msgid "Source share"
 msgstr "Condivisione sorgente"
@@ -3411,6 +3497,11 @@ msgstr "La porta TCP deve essere un numero valido."
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
 
+msgid ""
+"The action which will be executed when the packet match the criteria "
+"specified below."
+msgstr ""
+
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
@@ -3667,6 +3758,9 @@ msgstr ""
 "L'utilita' di controllo del consumo monitorizza il sistema ed imposta di "
 "conseguenza varie opzioni di controllo energetico."
 
+msgid "The rule number determines the order of the rule."
+msgstr ""
+
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
@@ -3696,6 +3790,9 @@ msgid "The time update interval must be either between 6 and 1440."
 msgstr "L'intervallo di aggiornamento dell'ora deve essere tra 6 e 1440."
 
 msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique rule number is already used."
 msgstr ""
 
 msgid "The unique user ID is already used."
@@ -4066,9 +4163,18 @@ msgstr "Spedisci con email"
 
 #, php-format
 msgid ""
+"To get detailed informations about writing firewall rules check the FreeBSD "
+"<a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
 "read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
 "switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgstr ""
+
+msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid ""
@@ -5128,14 +5234,8 @@ msgstr "giorni della settimana"
 #~ msgid "Rsync Local Synchronization"
 #~ msgstr "Rsync Sincronizzazione Locale"
 
-#~ msgid "Source"
-#~ msgstr "Sorgente"
-
 #~ msgid "Source Mount Point."
 #~ msgstr "Punto di Mount Sorgente."
-
-#~ msgid "Destination"
-#~ msgstr "Destinazione"
 
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "Punto di Mount Destinazione (disco di backup)."
@@ -5409,6 +5509,21 @@ msgstr "giorni della settimana"
 
 #~ msgid "This parameters will be added to [global] in smb.conf."
 #~ msgstr "Questo parametro sarà aggiunto in [global] nel file smb.conf."
+
+#~ msgid ""
+#~ "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select 'Old "
+#~ "software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+#~ "release."
+#~ msgstr ""
+#~ "Selezionare 'EFI GPT' se si vuole montare un disco formattato GPT (metodo di "
+#~ "default dalla 0.684b).<br>Selezionare 1 per un disco formattato UFS o per un "
+#~ "volume Software RAID creato  dalla 0.683b.<br>Selezionare 2 per montare la "
+#~ "partizione DATA se e' stata selezionata l'opzione 2 durante l'installazione "
+#~ "sul disco rigido.<br>Selezionare 'Vecchio RAID Software' per i volumi "
+#~ "gmirror/graid5/gvinum creati con le precedenti versioni."
 
 #, php-format
 #~ msgid "%s uses %s to create %s arrays."

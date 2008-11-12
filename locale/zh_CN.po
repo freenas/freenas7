@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 01:27+0000\n"
+"POT-Creation-Date: 2008-11-11 00:28+0000\n"
 "PO-Revision-Date: 2008-11-04 03:21+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-08 15:44+0000\n"
+"X-Launchpad-Export-Date: 2008-11-12 18:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -101,11 +101,28 @@ msgstr "1. 这些特别的指令只可用于调试！<br>2. 无需用此菜单�
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN 标签 （介于1和4094之间）。"
 
+msgid "<->"
+msgstr ""
+
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr "Unison 服务必须配合<a href=%s>SSHD</a> ，而<a href=%s>使用者</a>必须要有完全的Shell权限。"
+
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
+"formatted drive or Software RAID volume (<b>created before "
+"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
+"you select option 2 during installation on hard drive (<b>all "
+"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
+"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
+"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
+"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
+"(Windows, Linux, MAC, etc.) that use MBR partition table."
+msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -231,6 +248,9 @@ msgstr "存取模式"
 msgid "Acoustic level"
 msgstr "噪音控制"
 
+msgid "Action"
+msgstr ""
+
 msgid "Activate"
 msgstr "激活"
 
@@ -304,6 +324,9 @@ msgstr "添加挂载点"
 
 msgid "Add option"
 msgstr "添加选项"
+
+msgid "Add rule"
+msgstr ""
 
 msgid "Add self-test"
 msgstr "添加自我检测"
@@ -452,6 +475,9 @@ msgstr "具有相同描述的接口已经存在。"
 msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
 
+msgid "Any"
+msgstr ""
+
 msgid "Apply changes"
 msgstr "应用更改"
 
@@ -583,6 +609,12 @@ msgstr "访查间隔"
 msgid "Check shared secret:"
 msgstr "检查分享密文："
 
+msgid "Choose on which interface packets must come in to match this rule."
+msgstr ""
+
+msgid "Choose which IP protocol this rule should match."
+msgstr ""
+
 msgid "Choose which interface this route applies to."
 msgstr "选择本路由设定要套用到哪一个网路介面。"
 
@@ -604,6 +636,9 @@ msgstr "客户端"
 
 msgid "Client RSYNC job"
 msgstr "客户 RSYNC 任务"
+
+msgid "Client firewall"
+msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "客户端显示小写，伺服端显示大写。"
@@ -852,6 +887,9 @@ msgstr "删除挂载点"
 msgid "Delete option"
 msgstr "删除选项"
 
+msgid "Delete rule"
+msgstr ""
+
 msgid "Delete self-test"
 msgstr "删除自我检测"
 
@@ -873,6 +911,9 @@ msgstr "拒绝"
 msgid "Description"
 msgstr "描述"
 
+msgid "Destination"
+msgstr "目地位置"
+
 msgid "Destination email address."
 msgstr "收件之 email"
 
@@ -887,6 +928,9 @@ msgstr "目标网域 bit count"
 
 msgid "Destination network for this static route"
 msgstr "本路由设定要套用的目标网段"
+
+msgid "Destination port"
+msgstr ""
 
 msgid "Destination share"
 msgstr "目标位置"
@@ -937,6 +981,9 @@ msgstr "诊断"
 
 msgid "Difference"
 msgstr "差异"
+
+msgid "Direction"
+msgstr ""
 
 msgid "Directory"
 msgstr "目录"
@@ -1062,6 +1109,9 @@ msgstr "是否确定删除此选项？"
 
 msgid "Do you really want to delete this route?"
 msgstr "确定要删除这个路由资讯吗？"
+
+msgid "Do you really want to delete this rule?"
+msgstr ""
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr "确定要删除这项自我检测流程吗？"
@@ -1221,6 +1271,9 @@ msgstr "编辑挂载点"
 
 msgid "Edit option"
 msgstr "编辑选项"
+
+msgid "Edit rule"
+msgstr ""
 
 msgid "Edit self-test"
 msgstr "编辑自我检测流程"
@@ -1540,6 +1593,12 @@ msgstr "档案系统检查"
 
 msgid "Filename"
 msgstr "档案名称"
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Firewall rule"
+msgstr ""
 
 msgid "Firmware"
 msgstr "固件"
@@ -1889,6 +1948,9 @@ msgstr "安装套件"
 msgid "Interface"
 msgstr "网路介面卡"
 
+msgid "Interface Management"
+msgstr ""
+
 msgid "Interface to listen to."
 msgstr "要使用的网路介面"
 
@@ -2062,8 +2124,14 @@ msgstr ""
 msgid "Location where the content database file will be stored."
 msgstr ""
 
+msgid "Log"
+msgstr ""
+
 msgid "Log Level"
 msgstr "记录档层级"
+
+msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
 
 msgid "Login"
 msgstr "登入"
@@ -2402,6 +2470,9 @@ msgstr "开启 %s XML 设定档并且点选下方的按钮来回复设定。"
 msgid "Option"
 msgstr ""
 
+msgid "Options"
+msgstr ""
+
 msgid "Others"
 msgstr ""
 
@@ -2619,6 +2690,9 @@ msgstr "程序资讯"
 msgid "Profile"
 msgstr "设定档"
 
+msgid "Proto"
+msgstr ""
+
 msgid "Protocol"
 msgstr "协定"
 
@@ -2720,6 +2794,9 @@ msgstr ""
 msgid "Recycle bin"
 msgstr "垃圾桶"
 
+msgid "Reject"
+msgstr ""
+
 msgid "Release notes"
 msgstr ""
 
@@ -2792,6 +2869,15 @@ msgstr "行"
 
 msgid "Rsync Daemon"
 msgstr "Rsync伺服器"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
 
 msgid "Run now"
 msgstr ""
@@ -2871,21 +2957,6 @@ msgstr "排程关机"
 
 msgid "Security"
 msgstr "安全"
-
-msgid ""
-"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select 'Old "
-"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
-"release."
-msgstr ""
-"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select 'Old "
-"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
-"release."
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "选择要开启 S.M.A.R.T. 监测的磁碟。"
@@ -3059,8 +3130,14 @@ msgstr "软体RAID资讯与状态"
 msgid "Software used"
 msgstr ""
 
+msgid "Source"
+msgstr "来源位置"
+
 msgid "Source directory to be synchronized."
 msgstr "要备份的资料夹。"
+
+msgid "Source port"
+msgstr ""
 
 msgid "Source share"
 msgstr "来源位置"
@@ -3334,6 +3411,11 @@ msgstr "请输入一个有效的连接埠。"
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
 
+msgid ""
+"The action which will be executed when the packet match the criteria "
+"specified below."
+msgstr ""
+
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
@@ -3561,6 +3643,9 @@ msgid ""
 "options accordingly."
 msgstr "电源监控程式会监控系统的整体状态并且设定相关的电源控制项目。"
 
+msgid "The rule number determines the order of the rule."
+msgstr ""
+
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
@@ -3589,6 +3674,9 @@ msgstr "时间更新间隔必需为 6 到 1440 之间。"
 
 msgid "The unique group ID is already used."
 msgstr "这个 GID 已经被用过了。"
+
+msgid "The unique rule number is already used."
+msgstr ""
 
 msgid "The unique user ID is already used."
 msgstr "这个 UID 已经被用过了。"
@@ -3929,9 +4017,18 @@ msgstr "发送至 email"
 
 #, php-format
 msgid ""
+"To get detailed informations about writing firewall rules check the FreeBSD "
+"<a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
 "read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
 "switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgstr ""
+
+msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid ""
@@ -5005,14 +5102,8 @@ msgstr "平常日"
 #~ msgid "Rsync Local Synchronization"
 #~ msgstr "Rsync本地备援"
 
-#~ msgid "Source"
-#~ msgstr "来源位置"
-
 #~ msgid "Source Mount Point."
 #~ msgstr "选择来源档案的挂载点。"
-
-#~ msgid "Destination"
-#~ msgstr "目地位置"
 
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "选择目的位置的挂载点(备援磁碟机)。"
@@ -5493,6 +5584,21 @@ msgstr "平常日"
 
 #~ msgid "This parameters will be added to [global] in smb.conf."
 #~ msgstr "这个参数将会被新增到 smb.con 的 global 区域。"
+
+#~ msgid ""
+#~ "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select 'Old "
+#~ "software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+#~ "release."
+#~ msgstr ""
+#~ "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select 'Old "
+#~ "software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+#~ "release."
 
 #~ msgid "Accessible through 'http://ip_address:port'."
 #~ msgstr "请输入'http://ip_adress:port'连线。"

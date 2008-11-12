@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-11-07 01:27+0000\n"
+"POT-Creation-Date: 2008-11-11 00:28+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-08 15:46+0000\n"
+"X-Launchpad-Export-Date: 2008-11-12 18:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -74,6 +74,9 @@ msgstr ""
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr ""
 
+msgid "<->"
+msgstr ""
+
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -81,6 +84,20 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
+
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
+"formatted drive or Software RAID volume (<b>created before "
+"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
+"you select option 2 during installation on hard drive (<b>all "
+"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
+"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
+"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
+"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
+"(Windows, Linux, MAC, etc.) that use MBR partition table."
+msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -203,6 +220,9 @@ msgstr ""
 msgid "Acoustic level"
 msgstr "акустично ниво"
 
+msgid "Action"
+msgstr ""
+
 msgid "Activate"
 msgstr "Активирай"
 
@@ -275,6 +295,9 @@ msgid "Add mount point"
 msgstr ""
 
 msgid "Add option"
+msgstr ""
+
+msgid "Add rule"
 msgstr ""
 
 msgid "Add self-test"
@@ -419,6 +442,9 @@ msgstr ""
 msgid "Anonymous users only"
 msgstr ""
 
+msgid "Any"
+msgstr ""
+
 msgid "Apply changes"
 msgstr "Прилагане на промените"
 
@@ -548,6 +574,12 @@ msgstr ""
 msgid "Check shared secret:"
 msgstr ""
 
+msgid "Choose on which interface packets must come in to match this rule."
+msgstr ""
+
+msgid "Choose which IP protocol this rule should match."
+msgstr ""
+
 msgid "Choose which interface this route applies to."
 msgstr "Choose which interface this route applies to."
 
@@ -571,6 +603,9 @@ msgid "Client"
 msgstr "Клиент"
 
 msgid "Client RSYNC job"
+msgstr ""
+
+msgid "Client firewall"
 msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
@@ -817,6 +852,9 @@ msgstr ""
 msgid "Delete option"
 msgstr ""
 
+msgid "Delete rule"
+msgstr ""
+
 msgid "Delete self-test"
 msgstr ""
 
@@ -838,6 +876,9 @@ msgstr ""
 msgid "Description"
 msgstr "Описание"
 
+msgid "Destination"
+msgstr "Дестинация"
+
 msgid "Destination email address."
 msgstr ""
 
@@ -852,6 +893,9 @@ msgstr ""
 
 msgid "Destination network for this static route"
 msgstr "Отправна мрежа за този статичен път"
+
+msgid "Destination port"
+msgstr ""
 
 msgid "Destination share"
 msgstr "Destination share"
@@ -896,6 +940,9 @@ msgid "Diagnostics"
 msgstr "Диагностика"
 
 msgid "Difference"
+msgstr ""
+
+msgid "Direction"
 msgstr ""
 
 msgid "Directory"
@@ -1024,6 +1071,9 @@ msgstr ""
 
 msgid "Do you really want to delete this route?"
 msgstr "Наистина ли искатате да изтриете пътя?"
+
+msgid "Do you really want to delete this rule?"
+msgstr ""
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr ""
@@ -1182,6 +1232,9 @@ msgid "Edit mount point"
 msgstr ""
 
 msgid "Edit option"
+msgstr ""
+
+msgid "Edit rule"
 msgstr ""
 
 msgid "Edit self-test"
@@ -1500,6 +1553,12 @@ msgid "File system check"
 msgstr ""
 
 msgid "Filename"
+msgstr ""
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Firewall rule"
 msgstr ""
 
 msgid "Firmware"
@@ -1843,6 +1902,9 @@ msgstr ""
 msgid "Interface"
 msgstr "Интерфейс"
 
+msgid "Interface Management"
+msgstr ""
+
 msgid "Interface to listen to."
 msgstr "Interface to listen to."
 
@@ -2015,8 +2077,14 @@ msgstr ""
 msgid "Location where the content database file will be stored."
 msgstr ""
 
+msgid "Log"
+msgstr ""
+
 msgid "Log Level"
 msgstr "ниво на логване"
+
+msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
 
 msgid "Login"
 msgstr "Вписване"
@@ -2356,6 +2424,9 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
+msgid "Options"
+msgstr ""
+
 msgid "Others"
 msgstr ""
 
@@ -2573,6 +2644,9 @@ msgstr "Информация за процесите"
 msgid "Profile"
 msgstr ""
 
+msgid "Proto"
+msgstr ""
+
 msgid "Protocol"
 msgstr ""
 
@@ -2674,6 +2748,9 @@ msgstr ""
 msgid "Recycle bin"
 msgstr ""
 
+msgid "Reject"
+msgstr ""
+
 msgid "Release notes"
 msgstr ""
 
@@ -2746,6 +2823,15 @@ msgstr "Редове"
 
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
 
 msgid "Run now"
 msgstr ""
@@ -2824,15 +2910,6 @@ msgid "Scheduled shutdown"
 msgstr "Предвидено изключване"
 
 msgid "Security"
-msgstr ""
-
-msgid ""
-"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select 'Old "
-"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
-"release."
 msgstr ""
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
@@ -3005,7 +3082,13 @@ msgstr "Информация и статус на RAID"
 msgid "Software used"
 msgstr ""
 
+msgid "Source"
+msgstr "Източник"
+
 msgid "Source directory to be synchronized."
+msgstr ""
+
+msgid "Source port"
 msgstr ""
 
 msgid "Source share"
@@ -3281,6 +3364,11 @@ msgstr "The TCP port must be a valid port number."
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
 
+msgid ""
+"The action which will be executed when the packet match the criteria "
+"specified below."
+msgstr ""
+
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
@@ -3514,6 +3602,9 @@ msgstr ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
 
+msgid "The rule number determines the order of the rule."
+msgstr ""
+
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
@@ -3541,6 +3632,9 @@ msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
 msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique rule number is already used."
 msgstr ""
 
 msgid "The unique user ID is already used."
@@ -3847,9 +3941,18 @@ msgstr ""
 
 #, php-format
 msgid ""
+"To get detailed informations about writing firewall rules check the FreeBSD "
+"<a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
 "read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
 "switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgstr ""
+
+msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid ""
