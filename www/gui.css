@@ -90,7 +90,7 @@ a {
 	font-size: 11px;
 	color: #FFFFFF;
 }
-.listr, .listrc {
+.listr, .listrc, .listrd, .listrcd {
 	background-color: #FFFFFF;
 	border-right: 1px solid #999999;
 	border-bottom: 1px solid #999999;
@@ -100,7 +100,7 @@ a {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
-.listrc {
+.listrc, .listrcd {
 	text-align: center;
 }
 .listrpad {
@@ -147,7 +147,7 @@ a {
 .listhdrr a {
 	color: #000000;
 }
-.listlrns, .listlr {
+.listlrns, .listlr, .listlrd {
 	background-color: #FFFFFF;
 	border-right: 1px solid #999999;
 	border-bottom: 1px solid #999999;
@@ -156,9 +156,12 @@ a {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
-.listlr {
+.listlr, .listlrd {
 	padding-right: 6px;
 	padding-left: 6px;
+}
+.listlrd, .listrd, .listrcd {
+	background-color: #E0E0E0;
 }
 .list {
 	font-size: 11px;

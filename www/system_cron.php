@@ -111,19 +111,18 @@ function cronjob_process_updatenotification($mode, $data) {
 	    	<?php if (ui_exists_updatenotification("cronjob")) print_config_change_box();?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
-	          <td width="35%" class="listhdrr"><?=gettext("Description");?></td>
-	          <td width="10%" class="listhdrr"><?=gettext("Who");?></td>
-	          <td width="35%" class="listhdrr"><?=gettext("Command");?></td>
-	          <td width="10%" class="listhdrr"><?=gettext("Enable");?></td>
-	          <td width="10%" class="list"></td>
+						<td width="40%" class="listhdrr"><?=gettext("Command");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Who");?></td>
+						<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
+						<td width="10%" class="list"></td>
 	        </tr>
 				  <?php $i = 0; foreach($a_cron as $job):?>
 				  <?php $notificationmode = ui_get_updatenotification_mode("cronjob", $job['uuid']);?>
 	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($job['desc']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($job['who']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($job['command']);?>&nbsp;</td>
-	          <td class="listbg"><?=(isset($job['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
+	        	<?php $enable = isset($job['enable']);?>
+	        	<td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($job['command']);?>&nbsp;</td>
+	          <td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($job['who']);?>&nbsp;</td>
+	          <td class="listbg"><?=htmlspecialchars($job['desc']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" border="0"></a>
@@ -137,7 +136,7 @@ function cronjob_process_updatenotification($mode, $data) {
 	        </tr>
 	        <?php $i++; endforeach;?>
 	        <tr>
-	          <td class="list" colspan="4"></td>
+	          <td class="list" colspan="3"></td>
 	          <td class="list">
 							<a href="system_cron_edit.php"><img src="plus.gif" title="<?=gettext("Add job");?>" border="0"></a>
 						</td>

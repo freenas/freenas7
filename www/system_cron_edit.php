@@ -145,36 +145,6 @@ if ($_POST) {
 function set_selected(name) {
 	document.getElementsByName(name)[1].checked = true;
 }
-
-function enable_change(enable_change) {
-	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.desc.disabled = endis;
-	document.iform.minutes1.disabled = endis;
-	document.iform.minutes2.disabled = endis;
-	document.iform.minutes3.disabled = endis;
-	document.iform.minutes4.disabled = endis;
-	document.iform.minutes5.disabled = endis;
-	document.iform.hours1.disabled = endis;
-	document.iform.hours2.disabled = endis;
-	document.iform.days1.disabled = endis;
-	document.iform.days2.disabled = endis;
-	document.iform.days3.disabled = endis;
-	document.iform.months.disabled = endis;
-	document.iform.weekdays.disabled = endis;
-	document.iform.all_mins1.disabled = endis;
-	document.iform.all_mins2.disabled = endis;
-	document.iform.all_hours1.disabled = endis;
-	document.iform.all_hours2.disabled = endis;
-	document.iform.all_days1.disabled = endis;
-	document.iform.all_days2.disabled = endis;
-	document.iform.all_months1.disabled = endis;
-	document.iform.all_months2.disabled = endis;
-	document.iform.all_weekdays1.disabled = endis;
-	document.iform.all_weekdays2.disabled = endis;
-	document.iform.who.disabled = endis;
-	document.iform.command.disabled = endis;
-	document.iform.runnow.disabled = endis;
-}
 //-->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -199,7 +169,7 @@ function enable_change(enable_change) {
 				<?php if ($execmsg) print_info_box($execmsg);?>
 				<?php if ($execfailmsg) print_error_box($execfailmsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <?php html_titleline_checkbox("enable", gettext("Cron job"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+          <?php html_titleline_checkbox("enable", gettext("Cron job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
 					<?php html_inputbox("command", gettext("Command"), $pconfig['command'], gettext("Specifies the command to be run."), true, 60);?>
 					<?php $a_user = array(); foreach (system_get_user_list() as $userk => $userv) { $a_user[$userk] = htmlspecialchars($userk); }?>
 					<?php html_combobox("who", gettext("Who"), $pconfig['who'], $a_user, "", true);?>
