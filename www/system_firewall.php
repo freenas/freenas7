@@ -48,9 +48,20 @@ if ($_POST['export']) {
 	exit;
 } else if ($_POST['import']) {
 	if (is_uploaded_file($_FILES['rulesfile']['tmp_name'])) {
+		// Take care array already exists.
+		if (!is_array($config['system']['firewall']['rule']))
+		$config['system']['firewall']['rule'] = array();
+
+		// Import rules.
 		$rules = unserialize(file_get_contents($_FILES['rulesfile']['tmp_name']));
 		foreach ($rules as $rule) {
-			$rule['uuid'] = uuid(); // Create new uuid
+			// Check if rule already exists.
+			$index = array_search_ex($rule['uuid'], $config['system']['firewall']['rule'], "uuid");
+			if (false !== $index) {
+				// Create new uuid and mark rule as duplicate (modify description).
+				$rule['uuid'] = uuid();
+				$rule['desc'] = gettext("*** Imported duplicate ***") . " {$rule['desc']}";
+			}
 			$config['system']['firewall']['rule'][] = $rule;
 			ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_NEW, $rule['uuid']);
 		}
@@ -87,7 +98,13 @@ array_sort_key($config['system']['firewall']['rule'], "ruleno");
 $a_rule = &$config['system']['firewall']['rule'];
 
 if ($_GET['act'] === "del") {
-	ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	if ($_GET['uuid'] === "all") {
+		foreach ($a_rule as $rulek => $rulev) {
+			ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_DIRTY, $a_rule[$rulek]['uuid']);
+		}
+	} else {
+		ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	}
 	header("Location: system_firewall.php");
 	exit;
 }
@@ -180,6 +197,9 @@ function firewall_process_updatenotification($mode, $data) {
 									<td class="list" colspan="8"></td>
 									<td class="list">
 										<a href="system_firewall_edit.php"><img src="plus.gif" title="<?=gettext("Add rule");?>" border="0"></a>
+										<?php if (!empty($a_rule)):?>
+										<a href="system_firewall.php?act=del&uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all rules?");?>')"><img src="x.gif" title="<?=gettext("Delete all rules");?>" border="0"></a>
+										<?php endif;?>
 									</td>
 								</tr>
 							</table>
