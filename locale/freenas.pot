@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-11-08 04:59+0000\n"
+"PO-Revision-Date: 2008-11-15 18:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -56,6 +56,9 @@ msgid "%sB used of %sB"
 msgstr ""
 
 msgid "(unstable)"
+msgstr ""
+
+msgid "*** Imported duplicate ***"
 msgstr ""
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
@@ -683,6 +686,9 @@ msgstr ""
 msgid "Define directories/URL's that require authentication."
 msgstr ""
 
+msgid "Defines when the shutdown is initiated."
+msgstr ""
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr ""
 
@@ -717,6 +723,9 @@ msgid "Delete all MIBs"
 msgstr ""
 
 msgid "Delete all options"
+msgstr ""
+
+msgid "Delete all rules"
 msgstr ""
 
 msgid "Delete command"
@@ -907,6 +916,9 @@ msgstr ""
 msgid "Do you really want to delete all options?"
 msgstr ""
 
+msgid "Do you really want to delete all rules?"
+msgstr ""
+
 msgid "Do you really want to delete this MIB?"
 msgstr ""
 
@@ -1034,6 +1046,9 @@ msgid "Download configuration"
 msgstr ""
 
 msgid "Download directory"
+msgstr ""
+
+msgid "Download firewall rules."
 msgstr ""
 
 msgid "Driver"
@@ -1287,6 +1302,9 @@ msgstr ""
 msgid "Execute now"
 msgstr ""
 
+msgid "Export"
+msgstr ""
+
 msgid "Extensions"
 msgstr ""
 
@@ -1360,6 +1378,9 @@ msgstr ""
 
 #, php-format
 msgid "Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
+
+msgid "Failed to upload file."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1655,6 +1676,12 @@ msgid "If you want to change the username for accessing the WebGUI, enter it her
 msgstr ""
 
 msgid "Image upload failed (out of memory?)"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Import firewall rules."
 msgstr ""
 
 msgid "In"
@@ -1989,9 +2016,6 @@ msgid "Minimum power usage without Standby"
 msgstr ""
 
 msgid "Minutes between network time sync."
-msgstr ""
-
-msgid "Miscellaneous"
 msgstr ""
 
 msgid "Mode"
@@ -2784,6 +2808,12 @@ msgstr ""
 msgid "Shutdown Time"
 msgstr ""
 
+msgid "Shutdown mode"
+msgstr ""
+
+msgid "Shutdown timer"
+msgstr ""
+
 msgid "Simple Network Management Protocol"
 msgstr ""
 
@@ -3286,6 +3316,9 @@ msgstr ""
 msgid "The system is rebooting now. This may take one minute."
 msgstr ""
 
+msgid "The time in seconds until shutdown is initialted. If the UPS happens to come back before the time is up the shutdown is canceled."
+msgstr ""
+
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
@@ -3584,6 +3617,9 @@ msgstr ""
 
 #, php-format
 msgid "UPS notification from host: %s.%s"
+msgstr ""
+
+msgid "UPS reaches low battery"
 msgstr ""
 
 msgid "UPS status"
