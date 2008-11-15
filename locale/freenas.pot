@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-11-15 18:41+0000\n"
+"PO-Revision-Date: 2008-11-15 20:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -3316,7 +3316,7 @@ msgstr ""
 msgid "The system is rebooting now. This may take one minute."
 msgstr ""
 
-msgid "The time in seconds until shutdown is initialted. If the UPS happens to come back before the time is up the shutdown is canceled."
+msgid "The time in seconds until shutdown is initiated. If the UPS happens to come back before the time is up the shutdown is canceled."
 msgstr ""
 
 msgid "The time update interval must be either between 6 and 1440."
@@ -3638,6 +3638,9 @@ msgid "URL"
 msgstr ""
 
 msgid "Uninstall package"
+msgstr ""
+
+msgid "Uninterruptible Power Supply"
 msgstr ""
 
 msgid "Unison"
