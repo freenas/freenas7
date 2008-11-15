@@ -12,7 +12,7 @@ load_rc_config "${name}"
 # Defaults
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
-nut_upssched_forced_shutdown_timer=${nut_upssched_forced_shutdown_timer:-"2"}
+nut_upssched_forced_shutdown_timer=${nut_upssched_forced_shutdown_timer:-"0"}
 
 case "${NOTIFYTYPE}" in
 	ONLINE)

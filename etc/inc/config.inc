@@ -1590,6 +1590,15 @@ function config_upgrade() {
 		$config['version'] = "6.4";
 	}
 
+	/* Convert 6.4 -> 6.5 */
+	/* Set UPS shutdown mode //ups/shutdownmode and timer //ups/shutdowntimer. */
+	if ($config['version'] === "6.4") {
+		$config['ups']['shutdownmode'] = "onbatt";
+		$config['ups']['shutdowntimer'] = "30";
+
+		$config['version'] = "6.5";
+	}
+
 	write_config();
 
 	if (is_booting())

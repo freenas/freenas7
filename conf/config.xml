@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>6.4</version>
+	<version>6.5</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -972,7 +972,10 @@
 	</ad>
 	<ups>
 		<upsname>ups</upsname>
+		<shutdownmode>onbatt<shutdownmode>
+		<shutdowntimer>30<shutdowntimer>
 		<!--
+		<shutdownmode>fsd|onbatt<shutdownmode>
 		<driver>usbhid-ups</driver>
 		<port>auto</port>
 		<auxparam></auxparam> // Can be defined multiple times.
