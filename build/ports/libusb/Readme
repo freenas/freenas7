@@ -1,2 +1,0 @@
-Create patch:
-diff -ruN bsd.c.orig bsd.c > patch-bsd.c
