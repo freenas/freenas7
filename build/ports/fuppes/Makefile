@@ -15,7 +15,8 @@ LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
 									mp3lame.0:${PORTSDIR}/audio/lame \
 									twolame.0:${PORTSDIR}/audio/twolame \
-									vorbis.4:${PORTSDIR}/audio/libvorbis
+									vorbis.4:${PORTSDIR}/audio/libvorbis \
+									avformat:${PORTSDIR}/multimedia/ffmpeg
 
 USE_AUTOTOOLS=		autoconf:262
 USE_GNOME=				libxml2
@@ -23,7 +24,9 @@ USE_ICONV=				yes
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-libnotify \
 									--disable-imagemagick \
-									--enable-video-transcoding
+									--enable-transcoding \
+									--enable-video-transcoding \
+									--enable-libavformat
 CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include -I${LOCALBASE}/include/ffmpeg ${PTHREAD_CFLAGS}" \
 									LIBS="-L${LOCALBASE}/lib ${PTHREAD_LIBS}"
 
