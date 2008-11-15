@@ -8,6 +8,7 @@ Majors changes:
 - Upgrade transmission to 1.40.
 
 Minors changes:
+- Add UPS service WebGUI option to define shutdown mode. 
 
 Bug fixes:
 - Fix web server security hole (file .htpasswd was downloadable) (BR 2255936).

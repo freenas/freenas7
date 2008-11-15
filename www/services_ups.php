@@ -43,6 +43,8 @@ $pconfig['upsname'] = $config['ups']['upsname'];
 $pconfig['driver'] = $config['ups']['driver'];
 $pconfig['port'] = $config['ups']['port'];
 $pconfig['desc'] = $config['ups']['desc'];
+$pconfig['shutdownmode'] = $config['ups']['shutdownmode'];
+$pconfig['shutdowntimer'] = $config['ups']['shutdowntimer'];
 $pconfig['email_enable'] = isset($config['ups']['email']['enable']);
 $pconfig['email_to'] = $config['ups']['email']['to'];
 $pconfig['email_subject'] = $config['ups']['email']['subject'];
@@ -60,9 +62,15 @@ if ($_POST) {
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "upsname driver port");
-		$reqdfieldsn = array(gettext("Identifier"), gettext("Driver"), gettext("Port"));
-		$reqdfieldst = explode(" ", "alias string string");
+		$reqdfields = explode(" ", "upsname driver port shutdownmode");
+		$reqdfieldsn = array(gettext("Identifier"), gettext("Driver"), gettext("Port"), gettext("Shutdown mode"));
+		$reqdfieldst = explode(" ", "alias string string string");
+
+		if ("onbatt" === $_POST['shutdownmode']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "shutdowntimer"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Shutdown timer")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "numericint"));
+		}
 
 		if ($_POST['email_enable']) {
 			$reqdfields = array_merge($reqdfields, explode(" ", "email_to email_subject"));
@@ -80,6 +88,8 @@ if ($_POST) {
 		$config['ups']['driver'] = $_POST['driver'];
 		$config['ups']['port'] = $_POST['port'];
 		$config['ups']['desc'] = $_POST['desc'];
+		$config['ups']['shutdownmode'] = $_POST['shutdownmode'];
+		$config['ups']['shutdowntimer'] = $_POST['shutdowntimer'];
 		$config['ups']['email']['enable'] = $_POST['email_enable'] ? true : false;
 		$config['ups']['email']['to'] = $_POST['email_to'];
 		$config['ups']['email']['subject'] = $_POST['email_subject'];
@@ -124,6 +134,8 @@ function enable_change(enable_change) {
 		document.iform.port.disabled = endis;
 		document.iform.auxparam.disabled = endis;
 		document.iform.desc.disabled = endis;
+		document.iform.shutdownmode.disabled = endis;
+		document.iform.shutdowntimer.disabled = endis;
 		document.iform.email_enable.disabled = endis;
 
 		if (document.iform.enable.checked == true) {
@@ -132,6 +144,18 @@ function enable_change(enable_change) {
 
 		document.iform.email_to.disabled = endis;
 		document.iform.email_subject.disabled = endis;
+	}
+}
+
+function shutdownmode_change() {
+	switch(document.iform.shutdownmode.value) {
+		case "onbatt":
+			showElementById('shutdowntimer_tr','show');
+			break;
+
+		default:
+			showElementById('shutdowntimer_tr','hide');
+			break;
 	}
 }
 //-->
@@ -144,12 +168,14 @@ function enable_change(enable_change) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<?php html_titleline_checkbox("enable", gettext("UPS"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+					<?php html_titleline_checkbox("enable", gettext("UPS"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("upsname", gettext("Identifier"), $pconfig['upsname'], gettext("This name is used to uniquely identify your UPS on this system."), true, 30);?>
 					<?php html_inputbox("driver", gettext("Driver"), $pconfig['driver'], sprintf(gettext("The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."), "services_ups_drv.php"), true, 30);?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The serial or USB port where your UPS is connected."), true, 30);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 5);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
+					<?php html_combobox("shutdownmode", gettext("Shutdown mode"), $pconfig['shutdownmode'], array("fsd" => gettext("UPS reaches low battery"), "onbatt" => "UPS goes on battery"), gettext("Defines when the shutdown is initiated."), true, false, "shutdownmode_change()");?>
+					<?php html_inputbox("shutdowntimer", gettext("Shutdown timer"), $pconfig['shutdowntimer'], gettext("The time in seconds until shutdown is initialted. If the UPS happens to come back before the time is up the shutdown is canceled."), true, 3);?>
 					<?php html_separator();?>
 					<?php html_titleline_checkbox("email_enable", gettext("Email notification"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], sprintf("%s %s", gettext("Destination email address."), gettext("Separate email addresses by semi-colon.")), true, 40);?>
@@ -167,6 +193,7 @@ function enable_change(enable_change) {
 </table>
 <script language="JavaScript">
 <!--
+shutdownmode_change();
 enable_change(false);
 //-->
 </script>

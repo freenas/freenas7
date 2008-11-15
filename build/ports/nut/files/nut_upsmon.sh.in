@@ -40,10 +40,10 @@ pidfile="/var/run/upsmon.pid"
 
 mkconf_cmd()
 {
-	local _upsname _notifyflags
+	local _upsname _notifyflags shutdownmode _shutdowntimer
 
-	# Get identifier.
 	_upsname=`configxml_get "//ups/upsname"`
+	_shutdownmode=`configxml_get "//ups/shutdownmode"`
 
 	# Build notification flags
 	_notifyflags=`/usr/local/bin/xml sel -t \
@@ -82,17 +82,24 @@ CMDSCRIPT /usr/local/bin/upssched-cmd
 PIPEFN /var/run/upssched.pipe
 LOCKFN /var/run/upssched.lock
 
-AT ONLINE * CANCEL-TIMER early-shutdown 
-AT ONLINE * EXECUTE resume
-AT ONBATT * START-TIMER early-shutdown ${nut_upsmon_onbatt_shutdown_timer}
-AT ONBATT * EXECUTE early-warning
-AT LOWBATT * START-TIMER early-shutdown
-AT LOWBATT * EXECUTE early-warning 
 AT COMMBAD * EXECUTE bad-communication
 AT REPLBATT * EXECUTE replace-battery
 AT NOCOMM * EXECUTE no-communication
 AT FSD * EXECUTE forced-shutdown
 EOF
+
+	if [ "onbatt" = ${_shutdownmode} ]; then
+		_shutdowntimer=`configxml_get "//ups/shutdowntimer"`
+
+		cat <<EOF >> ${nut_upsmon_sched_conf}
+AT ONLINE * CANCEL-TIMER early-shutdown 
+AT ONLINE * EXECUTE resume
+AT ONBATT * START-TIMER early-shutdown ${_shutdowntimer}
+AT ONBATT * EXECUTE early-warning
+AT LOWBATT * START-TIMER early-shutdown
+AT LOWBATT * EXECUTE early-warning 
+EOF
+	fi
 
 	chmod 0600 ${nut_upsmon_conf}
 	chmod 0600 ${nut_upsmon_sched_conf}
