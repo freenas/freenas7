@@ -972,8 +972,8 @@
 	</ad>
 	<ups>
 		<upsname>ups</upsname>
-		<shutdownmode>onbatt<shutdownmode>
-		<shutdowntimer>30<shutdowntimer>
+		<shutdownmode>onbatt</shutdownmode>
+		<shutdowntimer>30</shutdowntimer>
 		<!--
 		<shutdownmode>fsd|onbatt<shutdownmode>
 		<driver>usbhid-ups</driver>
