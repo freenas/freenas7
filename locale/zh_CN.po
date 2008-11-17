@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 00:28+0000\n"
-"PO-Revision-Date: 2008-11-04 03:21+0000\n"
+"POT-Creation-Date: 2008-11-15 22:36+0000\n"
+"PO-Revision-Date: 2008-11-17 15:46+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-12 18:48+0000\n"
+"X-Launchpad-Export-Date: 2008-11-17 19:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -93,6 +93,9 @@ msgstr "%sB中的%sB已用"
 msgid "(unstable)"
 msgstr "(不稳定)"
 
+msgid "*** Imported duplicate ***"
+msgstr ""
+
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
@@ -102,7 +105,7 @@ msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN 标签 （介于1和4094之间）。"
 
 msgid "<->"
-msgstr ""
+msgstr "<->"
 
 #, php-format
 msgid ""
@@ -249,7 +252,7 @@ msgid "Acoustic level"
 msgstr "噪音控制"
 
 msgid "Action"
-msgstr ""
+msgstr "动作"
 
 msgid "Activate"
 msgstr "激活"
@@ -326,7 +329,7 @@ msgid "Add option"
 msgstr "添加选项"
 
 msgid "Add rule"
-msgstr ""
+msgstr "添加规则"
 
 msgid "Add self-test"
 msgstr "添加自我检测"
@@ -476,7 +479,7 @@ msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
 
 msgid "Any"
-msgstr ""
+msgstr "任意"
 
 msgid "Apply changes"
 msgstr "应用更改"
@@ -638,7 +641,7 @@ msgid "Client RSYNC job"
 msgstr "客户 RSYNC 任务"
 
 msgid "Client firewall"
-msgstr ""
+msgstr "客户端防火墙"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "客户端显示小写，伺服端显示大写。"
@@ -671,7 +674,7 @@ msgid "Comment"
 msgstr "注解"
 
 msgid "Common Internet File System"
-msgstr ""
+msgstr "通用网络文件系统(CIFS)"
 
 msgid "Community"
 msgstr "社群"
@@ -812,6 +815,9 @@ msgstr "默认到用户名为 \"admin\""
 msgid "Define directories/URL's that require authentication."
 msgstr "指定需要认证的目录/URL"
 
+msgid "Defines when the shutdown is initiated."
+msgstr "定义何时关机。"
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr "设定主机名称将会增益 NFS 服务"
 
@@ -847,6 +853,9 @@ msgstr "删除所有 MIB"
 
 msgid "Delete all options"
 msgstr "删除所有选项"
+
+msgid "Delete all rules"
+msgstr "删除全部规则"
 
 msgid "Delete command"
 msgstr "删除指令"
@@ -888,7 +897,7 @@ msgid "Delete option"
 msgstr "删除选项"
 
 msgid "Delete rule"
-msgstr ""
+msgstr "删除规则"
 
 msgid "Delete self-test"
 msgstr "删除自我检测"
@@ -930,7 +939,7 @@ msgid "Destination network for this static route"
 msgstr "本路由设定要套用的目标网段"
 
 msgid "Destination port"
-msgstr ""
+msgstr "目的地端口"
 
 msgid "Destination share"
 msgstr "目标位置"
@@ -983,7 +992,7 @@ msgid "Difference"
 msgstr "差异"
 
 msgid "Direction"
-msgstr ""
+msgstr "方向"
 
 msgid "Directory"
 msgstr "目录"
@@ -1051,10 +1060,13 @@ msgid "Do you really want to delete all MIBs?"
 msgstr "是否确定删除全部 MIB ？"
 
 msgid "Do you really want to delete all options?"
-msgstr ""
+msgstr "是否要删除全部选项？"
+
+msgid "Do you really want to delete all rules?"
+msgstr "是否要删除全部规则？"
 
 msgid "Do you really want to delete this MIB?"
-msgstr ""
+msgstr "是否确定删除此 MIB?"
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "确定要删除这个RSYNC设定吗？"
@@ -1111,7 +1123,7 @@ msgid "Do you really want to delete this route?"
 msgstr "确定要删除这个路由资讯吗？"
 
 msgid "Do you really want to delete this rule?"
-msgstr ""
+msgstr "是否要删除此规则？"
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr "确定要删除这项自我检测流程吗？"
@@ -1194,6 +1206,9 @@ msgstr "下载设定"
 msgid "Download directory"
 msgstr "下载目录"
 
+msgid "Download firewall rules."
+msgstr "下载防火墙规则。"
+
 msgid "Driver"
 msgstr "驱动"
 
@@ -1273,7 +1288,7 @@ msgid "Edit option"
 msgstr "编辑选项"
 
 msgid "Edit rule"
-msgstr ""
+msgstr "编辑规则"
 
 msgid "Edit self-test"
 msgstr "编辑自我检测流程"
@@ -1469,6 +1484,9 @@ msgstr "在系统起始/关机之前或之后的指令。"
 msgid "Execute now"
 msgstr "立即执行"
 
+msgid "Export"
+msgstr "导出"
+
 msgid "Extensions"
 msgstr "扩充"
 
@@ -1498,7 +1516,7 @@ msgid "Extra options to rsync (usually empty)."
 msgstr "rsync 到附加选项(通常为空)."
 
 msgid "FEC (Fast EtherChannel)"
-msgstr ""
+msgstr "FEC (Fast EtherChannel)"
 
 msgid "FTP"
 msgstr "FTP"
@@ -1541,7 +1559,7 @@ msgstr "执行定时任务失败。"
 #, php-format
 msgid ""
 "Failed to send status report. Please check the <a href='%s'>log</a> files."
-msgstr ""
+msgstr "发送状态失败，请检查<a href='%s'>log</a>文件。"
 
 #, php-format
 msgid "Failed to send test email to: %s."
@@ -1551,6 +1569,9 @@ msgstr "向 %s 发送测试消息失败"
 msgid ""
 "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr "发送测试消息失败。详情请参见<a href='%s'>日志</a>文件"
+
+msgid "Failed to upload file."
+msgstr "上传文件失败。"
 
 msgid "Failed to upload metadata backup file."
 msgstr "组态备份档案上传失败。"
@@ -1901,6 +1922,12 @@ msgstr "如果你想变更网页控制介面的使用者名称，请在这里输
 
 msgid "Image upload failed (out of memory?)"
 msgstr "映像档上传失败(记忆体不足？)"
+
+msgid "Import"
+msgstr ""
+
+msgid "Import firewall rules."
+msgstr ""
 
 msgid "In"
 msgstr "In"
@@ -2258,9 +2285,6 @@ msgstr "关闭待命模式之最小耗电量"
 
 msgid "Minutes between network time sync."
 msgstr "多少分钟进行一次校时。"
-
-msgid "Miscellaneous"
-msgstr "杂项设定"
 
 msgid "Mode"
 msgstr "模式"
@@ -3100,6 +3124,12 @@ msgstr "关机"
 msgid "Shutdown Time"
 msgstr "关机时间"
 
+msgid "Shutdown mode"
+msgstr ""
+
+msgid "Shutdown timer"
+msgstr ""
+
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
@@ -3669,6 +3699,11 @@ msgstr "系统关闭中，可能需要一分钟的时间..."
 msgid "The system is rebooting now. This may take one minute."
 msgstr "系统重新启动中，可能需要一分钟的时间..."
 
+msgid ""
+"The time in seconds until shutdown is initiated. If the UPS happens to come "
+"back before the time is up the shutdown is canceled."
+msgstr ""
+
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "时间更新间隔必需为 6 到 1440 之间。"
 
@@ -4114,6 +4149,9 @@ msgstr ""
 msgid "UPS notification from host: %s.%s"
 msgstr ""
 
+msgid "UPS reaches low battery"
+msgstr ""
+
 msgid "UPS status"
 msgstr ""
 
@@ -4131,6 +4169,9 @@ msgstr "URL"
 
 msgid "Uninstall package"
 msgstr "移除套件"
+
+msgid "Uninterruptible Power Supply"
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4766,6 +4807,9 @@ msgstr "平常日"
 
 #~ msgid "Paste an RSA private key in PEM format here."
 #~ msgstr "请在此贴上一个PEM格式的RSA私钥。"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "杂项设定"
 
 #~ msgid "TCP idle timeout"
 #~ msgstr "TCP闲置切断时间"

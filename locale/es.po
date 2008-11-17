@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-11-11 00:28+0000\n"
+"POT-Creation-Date: 2008-11-15 22:36+0000\n"
 "PO-Revision-Date: 2008-11-11 18:16+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-12 18:50+0000\n"
+"X-Launchpad-Export-Date: 2008-11-17 19:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -63,6 +63,9 @@ msgstr "%sB usado de %sB"
 
 msgid "(unstable)"
 msgstr "(inestable)"
+
+msgid "*** Imported duplicate ***"
+msgstr ""
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -819,6 +822,9 @@ msgstr ""
 msgid "Define directories/URL's that require authentication."
 msgstr "Definir directorios/URLs que necesitan autentificación."
 
+msgid "Defines when the shutdown is initiated."
+msgstr ""
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Definir un nombre de equipo puede ser útil para NFS."
 
@@ -854,6 +860,9 @@ msgstr "Borrar todos los MIB"
 
 msgid "Delete all options"
 msgstr "Borrar todas las opciones"
+
+msgid "Delete all rules"
+msgstr ""
 
 msgid "Delete command"
 msgstr "Borrar comando"
@@ -1056,6 +1065,9 @@ msgstr "¿Realmente quiere eliminar todos los MIB?"
 msgid "Do you really want to delete all options?"
 msgstr "¿Realmente quiere borrar todas las opciones?"
 
+msgid "Do you really want to delete all rules?"
+msgstr ""
+
 msgid "Do you really want to delete this MIB?"
 msgstr "¿Realemente quiere borrar ésta MIB?"
 
@@ -1204,6 +1216,9 @@ msgid "Download configuration"
 msgstr "Configuración de descarga"
 
 msgid "Download directory"
+msgstr ""
+
+msgid "Download firewall rules."
 msgstr ""
 
 msgid "Driver"
@@ -1485,6 +1500,9 @@ msgstr ""
 msgid "Execute now"
 msgstr ""
 
+msgid "Export"
+msgstr ""
+
 msgid "Extensions"
 msgstr "Extensiones"
 
@@ -1571,6 +1589,9 @@ msgstr ""
 #, php-format
 msgid ""
 "Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
+
+msgid "Failed to upload file."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1932,6 +1953,12 @@ msgstr ""
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Fallo en la subida de la imagen (memoria agotada?)"
+
+msgid "Import"
+msgstr ""
+
+msgid "Import firewall rules."
+msgstr ""
 
 msgid "In"
 msgstr "Entrantes"
@@ -2301,9 +2328,6 @@ msgstr "Consumo mínimo sin parada"
 
 msgid "Minutes between network time sync."
 msgstr "Minutos entre el tiempo de sincronización de red"
-
-msgid "Miscellaneous"
-msgstr "Otros"
 
 msgid "Mode"
 msgstr "Modo"
@@ -3162,6 +3186,12 @@ msgstr "Apagar"
 msgid "Shutdown Time"
 msgstr "Hora de Parada"
 
+msgid "Shutdown mode"
+msgstr ""
+
+msgid "Shutdown timer"
+msgstr ""
+
 msgid "Simple Network Management Protocol"
 msgstr "Protocolo simple de administración de redes"
 
@@ -3763,6 +3793,11 @@ msgstr "El sistema está apagándose. Este proceso puede durar un minuto."
 msgid "The system is rebooting now. This may take one minute."
 msgstr "El sistema va a reiniciar. Puede tardar un minuto."
 
+msgid ""
+"The time in seconds until shutdown is initiated. If the UPS happens to come "
+"back before the time is up the shutdown is canceled."
+msgstr ""
+
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
@@ -4183,6 +4218,9 @@ msgstr ""
 msgid "UPS notification from host: %s.%s"
 msgstr ""
 
+msgid "UPS reaches low battery"
+msgstr ""
+
 msgid "UPS status"
 msgstr ""
 
@@ -4199,6 +4237,9 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Uninstall package"
+msgstr ""
+
+msgid "Uninterruptible Power Supply"
 msgstr ""
 
 msgid "Unison"

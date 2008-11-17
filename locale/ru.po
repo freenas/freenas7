@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 00:28+0000\n"
-"PO-Revision-Date: 2008-11-11 11:56+0000\n"
+"POT-Creation-Date: 2008-11-15 22:36+0000\n"
+"PO-Revision-Date: 2008-11-16 09:41+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-12 18:49+0000\n"
+"X-Launchpad-Export-Date: 2008-11-17 19:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -65,6 +65,9 @@ msgstr "занято %s из %s байт"
 
 msgid "(unstable)"
 msgstr "(нестабилен)"
+
+msgid "*** Imported duplicate ***"
+msgstr "*** Imported duplicate ***"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -336,7 +339,7 @@ msgid "Add rule"
 msgstr "Добавить правило"
 
 msgid "Add self-test"
-msgstr "Добавить самотестирование"
+msgstr "Добавить проверку"
 
 msgid "Add share"
 msgstr "Добавить общий ресурс"
@@ -666,7 +669,7 @@ msgid "Client firewall"
 msgstr "Client firewall"
 
 msgid "Client sees lowercase, server sees uppercase"
-msgstr "Клиент видит нижний регистр, сервер видит верхний регистр"
+msgstr "Клиент оперирует нижним регистром, сервер - верхним"
 
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Клиент видит верхний регистр, сервер видит нижний регистр"
@@ -841,6 +844,9 @@ msgstr "По умолчанию имя пользователя 'admin'."
 msgid "Define directories/URL's that require authentication."
 msgstr "Укажите каталоги или адреса URL, требующие авторизации"
 
+msgid "Defines when the shutdown is initiated."
+msgstr "Определяет, когда выключение инициировано"
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Для файловой системы NFS необходимо задать имя."
 
@@ -876,6 +882,9 @@ msgstr "Удалить все MIB"
 
 msgid "Delete all options"
 msgstr "Удалить все настройки"
+
+msgid "Delete all rules"
+msgstr "Удалить все правила"
 
 msgid "Delete command"
 msgstr "Удалить команду"
@@ -921,7 +930,7 @@ msgid "Delete rule"
 msgstr "Удалить правило"
 
 msgid "Delete self-test"
-msgstr "Убрать самотестирование"
+msgstr "Удалить проверку"
 
 msgid "Delete share"
 msgstr "Удалить общий ресурс"
@@ -942,7 +951,7 @@ msgid "Description"
 msgstr "Описание"
 
 msgid "Destination"
-msgstr "Получатель"
+msgstr "Назначение"
 
 msgid "Destination email address."
 msgstr "Адрес е-mail назначения<br>"
@@ -1087,6 +1096,9 @@ msgstr "Вы действительно хотите удалить все MIB?"
 msgid "Do you really want to delete all options?"
 msgstr "Вы действительно хотите удалить все настройки?"
 
+msgid "Do you really want to delete all rules?"
+msgstr "Вы действительно хотите удалить все правила?"
+
 msgid "Do you really want to delete this MIB?"
 msgstr "Вы действительно хотите удалить этот MIB?"
 
@@ -1154,7 +1166,7 @@ msgid "Do you really want to delete this rule?"
 msgstr "Вы действительно хотите удалить это правило?"
 
 msgid "Do you really want to delete this scheduled self-test?"
-msgstr "Вы действительно хотите удалить этот запланированный самотест?"
+msgstr "Вы действительно хотите удалить запланированную проверку?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Вы действительно хотите удалить этот общий ресурс?"
@@ -1238,6 +1250,9 @@ msgstr "Сохранить конфигурацию"
 msgid "Download directory"
 msgstr "Каталог для закачек"
 
+msgid "Download firewall rules."
+msgstr "Скачать правила firewall"
+
 msgid "Driver"
 msgstr "Драйвер"
 
@@ -1320,7 +1335,7 @@ msgid "Edit rule"
 msgstr "Редактировать правило"
 
 msgid "Edit self-test"
-msgstr "Редактировать самотест"
+msgstr "Редактировать свойства проверки"
 
 msgid "Edit share"
 msgstr "Изменить общий ресурс"
@@ -1527,6 +1542,9 @@ msgstr ""
 msgid "Execute now"
 msgstr "Выполнить немедленно"
 
+msgid "Export"
+msgstr "Экспортировать"
+
 msgid "Extensions"
 msgstr "Расширения"
 
@@ -1620,6 +1638,9 @@ msgid ""
 msgstr ""
 "Отправка  тестового сообщения завершилась неудачно. Пожалуйста, проверьте <a "
 "href='%s'>log-файлы</a>."
+
+msgid "Failed to upload file."
+msgstr "Ошибка при закачке файла"
 
 msgid "Failed to upload metadata backup file."
 msgstr "Ошибка при загрузке файла метаданных."
@@ -1995,6 +2016,12 @@ msgstr ""
 msgid "Image upload failed (out of memory?)"
 msgstr "Неудача при загрузке файла (возможно, мало памяти)"
 
+msgid "Import"
+msgstr "Импортировать"
+
+msgid "Import firewall rules."
+msgstr "Импортировать правила firewall"
+
 msgid "In"
 msgstr "В"
 
@@ -2366,9 +2393,6 @@ msgstr "Минимальное энергопотребление без ожи�
 
 msgid "Minutes between network time sync."
 msgstr "Сетевая синхронизация времени через (минут)"
-
-msgid "Miscellaneous"
-msgstr "Разное"
 
 msgid "Mode"
 msgstr "Режим"
@@ -3249,6 +3273,12 @@ msgstr "Выключение"
 msgid "Shutdown Time"
 msgstr "Время выключения"
 
+msgid "Shutdown mode"
+msgstr "Режим выключения"
+
+msgid "Shutdown timer"
+msgstr "Таймер выключения"
+
 msgid "Simple Network Management Protocol"
 msgstr "Простой протокол управления сетью (SNMP)"
 
@@ -3855,6 +3885,13 @@ msgstr "Система выключается. Это может занять н
 msgid "The system is rebooting now. This may take one minute."
 msgstr "Система перезагружается. Это может занять некоторое время."
 
+msgid ""
+"The time in seconds until shutdown is initiated. If the UPS happens to come "
+"back before the time is up the shutdown is canceled."
+msgstr ""
+"Инициирован таймер выключения (в секундах). Если UPS окажется подключенным к "
+"сети до истечения таймера, процесс выключения будет прерван."
+
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "Интервал обновления времени должен быть между 6 и 1440."
 
@@ -4101,7 +4138,7 @@ msgid ""
 "This option causes the receiving rsync to set the destination permissions to "
 "be the same as the source permissions."
 msgstr ""
-"Эта настройка позволяет rsync устанавливать права доступа приемника такими "
+"Эта настройка позволяет rsync устанавливать права доступа получателя такими "
 "же, как и источника."
 
 msgid ""
@@ -4353,6 +4390,9 @@ msgstr "Сервис UPS отключен"
 msgid "UPS notification from host: %s.%s"
 msgstr "Уведомление UPS от хоста %s.%s"
 
+msgid "UPS reaches low battery"
+msgstr "Низкий заряд батареи UPS"
+
 msgid "UPS status"
 msgstr "Состояние UPS"
 
@@ -4370,6 +4410,9 @@ msgstr "URL"
 
 msgid "Uninstall package"
 msgstr "Удалить пакет"
+
+msgid "Uninterruptible Power Supply"
+msgstr "Источник бесперебойного питания (UPS)"
 
 msgid "Unison"
 msgstr "Unison"
@@ -5086,6 +5129,9 @@ msgstr "дней недели"
 
 #~ msgid "Paste an RSA private key in PEM format here."
 #~ msgstr "Вставьте сюда личный RSA-ключ в формате PEM."
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Разное"
 
 #~ msgid "TCP idle timeout"
 #~ msgstr "Таймаут простоя TCP"
