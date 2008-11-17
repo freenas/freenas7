@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-11-11 00:28+0000\n"
+"POT-Creation-Date: 2008-11-15 22:36+0000\n"
 "PO-Revision-Date: 2008-10-27 11:43+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-12 18:49+0000\n"
+"X-Launchpad-Export-Date: 2008-11-17 19:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -60,6 +60,9 @@ msgstr "%sB använt av %sB"
 
 msgid "(unstable)"
 msgstr "(instabil)"
+
+msgid "*** Imported duplicate ***"
+msgstr ""
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -814,6 +817,9 @@ msgstr "Standardanvändarnamn är 'admin'."
 msgid "Define directories/URL's that require authentication."
 msgstr "Specificera kataloger/URL:er som kräver autentiering."
 
+msgid "Defines when the shutdown is initiated."
+msgstr ""
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Definiera ett värdnamn kan vara användbart för NFS."
 
@@ -849,6 +855,9 @@ msgstr "Radera all MIB:er"
 
 msgid "Delete all options"
 msgstr "Radera alla alternativ"
+
+msgid "Delete all rules"
+msgstr ""
 
 msgid "Delete command"
 msgstr "Ta bort kommando"
@@ -1050,6 +1059,9 @@ msgstr "Vill du verkligen radera all MIB:er?"
 msgid "Do you really want to delete all options?"
 msgstr "Vill du verkligen radera alla alternativ?"
 
+msgid "Do you really want to delete all rules?"
+msgstr ""
+
 msgid "Do you really want to delete this MIB?"
 msgstr "Vill du verkligen radera denna MIB?"
 
@@ -1197,6 +1209,9 @@ msgstr "Hämta ner konfiguration"
 
 msgid "Download directory"
 msgstr "Nedladdningsmapp"
+
+msgid "Download firewall rules."
+msgstr ""
 
 msgid "Driver"
 msgstr "Drivrutin"
@@ -1483,6 +1498,9 @@ msgstr ""
 msgid "Execute now"
 msgstr "Kör nu"
 
+msgid "Export"
+msgstr ""
+
 msgid "Extensions"
 msgstr "Utökningar"
 
@@ -1568,6 +1586,9 @@ msgstr ""
 #, php-format
 msgid ""
 "Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
+
+msgid "Failed to upload file."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1912,6 +1933,12 @@ msgstr ""
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Uppsändning av avbild misslyckades (slut på minne?)"
+
+msgid "Import"
+msgstr ""
+
+msgid "Import firewall rules."
+msgstr ""
 
 msgid "In"
 msgstr "In"
@@ -2266,9 +2293,6 @@ msgstr ""
 
 msgid "Minutes between network time sync."
 msgstr ""
-
-msgid "Miscellaneous"
-msgstr "Diverse"
 
 msgid "Mode"
 msgstr ""
@@ -3104,6 +3128,12 @@ msgstr ""
 msgid "Shutdown Time"
 msgstr ""
 
+msgid "Shutdown mode"
+msgstr ""
+
+msgid "Shutdown timer"
+msgstr ""
+
 msgid "Simple Network Management Protocol"
 msgstr ""
 
@@ -3665,6 +3695,11 @@ msgstr ""
 msgid "The system is rebooting now. This may take one minute."
 msgstr ""
 
+msgid ""
+"The time in seconds until shutdown is initiated. If the UPS happens to come "
+"back before the time is up the shutdown is canceled."
+msgstr ""
+
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
@@ -4068,6 +4103,9 @@ msgstr ""
 msgid "UPS notification from host: %s.%s"
 msgstr ""
 
+msgid "UPS reaches low battery"
+msgstr ""
+
 msgid "UPS status"
 msgstr ""
 
@@ -4084,6 +4122,9 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Uninstall package"
+msgstr ""
+
+msgid "Uninterruptible Power Supply"
 msgstr ""
 
 msgid "Unison"
@@ -4621,6 +4662,9 @@ msgstr "veckodagar"
 
 #~ msgid "You must select a valid language."
 #~ msgstr "Du måste välja ett giltigt språk."
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
 
 #~ msgid "Navigation"
 #~ msgstr "Navigering"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 00:28+0000\n"
-"PO-Revision-Date: 2008-10-14 03:39+0000\n"
-"Last-Translator: osaka <Unknown>\n"
+"POT-Creation-Date: 2008-11-15 22:36+0000\n"
+"PO-Revision-Date: 2008-11-14 10:34+0000\n"
+"Last-Translator: MASAKI Asato <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-12 18:49+0000\n"
+"X-Launchpad-Export-Date: 2008-11-17 19:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -63,6 +63,9 @@ msgstr ""
 
 msgid "(unstable)"
 msgstr "(不安定)"
+
+msgid "*** Imported duplicate ***"
+msgstr ""
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -775,6 +778,9 @@ msgstr "初期ユーザ名は「admin」です"
 msgid "Define directories/URL's that require authentication."
 msgstr ""
 
+msgid "Defines when the shutdown is initiated."
+msgstr ""
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr ""
 
@@ -809,6 +815,9 @@ msgid "Delete all MIBs"
 msgstr ""
 
 msgid "Delete all options"
+msgstr ""
+
+msgid "Delete all rules"
 msgstr ""
 
 msgid "Delete command"
@@ -1009,6 +1018,9 @@ msgstr "本当に全てのMIBを削除してもよろしいですか？"
 msgid "Do you really want to delete all options?"
 msgstr "本当に全てのオプションを削除してもよろしいですか？"
 
+msgid "Do you really want to delete all rules?"
+msgstr ""
+
 msgid "Do you really want to delete this MIB?"
 msgstr "本当にこのMIBを削除してもよろしいですか"
 
@@ -1146,6 +1158,9 @@ msgid "Download configuration"
 msgstr "ダウンロード設定"
 
 msgid "Download directory"
+msgstr ""
+
+msgid "Download firewall rules."
 msgstr ""
 
 msgid "Driver"
@@ -1418,6 +1433,9 @@ msgstr ""
 msgid "Execute now"
 msgstr ""
 
+msgid "Export"
+msgstr ""
+
 msgid "Extensions"
 msgstr "拡張"
 
@@ -1500,6 +1518,9 @@ msgstr ""
 #, php-format
 msgid ""
 "Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgstr ""
+
+msgid "Failed to upload file."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1833,7 +1854,7 @@ msgstr ""
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
 "twice."
-msgstr "WebGUIにアクセスする為のパスワードを変更するにはここに入力してください。同じパスワードを2回"
+msgstr "WebGUIにアクセスする為のパスワードを変更するにはここに入力してください。同じパスワードを2回入力してください。"
 
 msgid ""
 "If you want to change the username for accessing the WebGUI, enter it here."
@@ -1841,6 +1862,12 @@ msgstr "WebGUIにアクセスする為のユーザ名を変更するにはここ
 
 msgid "Image upload failed (out of memory?)"
 msgstr "イメージアップロードが失敗しました (メモリ不足？)．"
+
+msgid "Import"
+msgstr ""
+
+msgid "Import firewall rules."
+msgstr ""
 
 msgid "In"
 msgstr "入力"
@@ -2195,9 +2222,6 @@ msgstr "スタンバイ無しの最小の電力利用"
 msgid "Minutes between network time sync."
 msgstr ""
 
-msgid "Miscellaneous"
-msgstr "雑多なもの"
-
 msgid "Mode"
 msgstr "モード"
 
@@ -2481,7 +2505,7 @@ msgid "Password authentication"
 msgstr ""
 
 msgid "Password don't match."
-msgstr "パスワードが一致しません．"
+msgstr "パスワードが一致しません。"
 
 msgid "Password encryption"
 msgstr ""
@@ -3029,6 +3053,12 @@ msgstr "シャットダウン"
 
 msgid "Shutdown Time"
 msgstr "シャットダウン時間"
+
+msgid "Shutdown mode"
+msgstr ""
+
+msgid "Shutdown timer"
+msgstr ""
 
 msgid "Simple Network Management Protocol"
 msgstr "簡易ネットワーク管理プロトコル(SNMP)"
@@ -3591,6 +3621,11 @@ msgstr "ドメイン管理者アカウントのパスワードを2度入力し�
 msgid "The system is rebooting now. This may take one minute."
 msgstr "今すぐシステムをリブートします．1分ほどかかるかもしれません．"
 
+msgid ""
+"The time in seconds until shutdown is initiated. If the UPS happens to come "
+"back before the time is up the shutdown is canceled."
+msgstr ""
+
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "アップデート間隔は6から1440の間で指定してください。"
 
@@ -3826,12 +3861,16 @@ msgid ""
 "permitted to access this module. You can specify the hosts by name or IP "
 "number. Leave this field empty to use default settings."
 msgstr ""
+"このモジュールへのアクセスを許可するホストをカンマ、半角スペース、タブで区切り入力します。ホスト名、IPアドレスどちらの形式でも可能です。空にすると標準の"
+"設定を使用します。"
 
 msgid ""
 "This option is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. You can specify the hosts by name or IP "
 "number. Leave this field empty to use default settings."
 msgstr ""
+"この共有へのアクセスを許可するホストをカンマ、半角スペース、タブで区切り入力します。ホスト名、IPアドレスどちらの形式でも可能です。空にすると標準の設定を"
+"使用します。"
 
 msgid ""
 "This option specifies the group name or group ID that file transfers to and "
@@ -3870,7 +3909,7 @@ msgstr "共有領域にごみ箱が作成されます。"
 msgid ""
 "This will erase ALL data on the selected disks! Do not use this option if "
 "you want to add an already existing RAID again."
-msgstr ""
+msgstr "選択したDiskのデータをすべて消去します！既存のRaidボリュームを追加するのにこのオプションを使用しないでください。"
 
 msgid "Time"
 msgstr "時間"
@@ -3901,6 +3940,8 @@ msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"ファイアーウォールのルールの詳細な書き方についてはFreeBSDの<a href='%s' "
+"target='_blank'>ドキュメント</a>を確認してください。"
 
 #, php-format
 msgid ""
@@ -3908,6 +3949,9 @@ msgid ""
 "read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
 "switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
 msgstr ""
+"CIFSのパフォーマンスを上げるには次のことを試してください:<br/><ul><li>'Large read/write' "
+"の有効化</li><li>Enable'<a href='%s'>Tuning</a>' switch</li><li><a "
+"href='%s'>MTU</a>値を上げる</li></ul>"
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
@@ -3983,7 +4027,7 @@ msgid "UID"
 msgstr "UID"
 
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
 
 msgid "UPS disabled"
 msgstr ""
@@ -3992,8 +4036,11 @@ msgstr ""
 msgid "UPS notification from host: %s.%s"
 msgstr ""
 
-msgid "UPS status"
+msgid "UPS reaches low battery"
 msgstr ""
+
+msgid "UPS status"
+msgstr "UPSのステータス"
 
 msgid "UPnP"
 msgstr "UPnP"
@@ -4010,6 +4057,9 @@ msgstr "URL"
 msgid "Uninstall package"
 msgstr "パッケージのアンインストール"
 
+msgid "Uninterruptible Power Supply"
+msgstr ""
+
 msgid "Unison"
 msgstr "Unison"
 
@@ -4017,7 +4067,7 @@ msgid "Unison File Synchronisation"
 msgstr "Unison ファイル同期"
 
 msgid "Unix Command"
-msgstr ""
+msgstr "Unixのコマンド"
 
 msgid "Unix charset"
 msgstr "Unix 文字セット"
@@ -4047,7 +4097,7 @@ msgid "Upgrade firmware"
 msgstr "ファームウェアアップグレード"
 
 msgid "Upload"
-msgstr ""
+msgstr "アップロード"
 
 msgid "Uppercases names in both directions"
 msgstr ""
@@ -4081,17 +4131,17 @@ msgstr "特定のNTPサーバを使用する。"
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
-msgstr ""
+msgstr "ディレクトリの作成時の初期ビットマスクを022に設定する。"
 
 msgid ""
 "Use this option to override the directory creation mask (0777 by default)."
-msgstr ""
+msgstr "ディレクトリの作成時の初期ビットマスクを0777に設定する。"
 
 msgid "Use this option to override the file creation mask (0666 by default)."
-msgstr ""
+msgstr "ディレクトリの作成時の初期ビットマスクを0666に設定する。"
 
 msgid "Use this option to override the file creation mask (077 by default)."
-msgstr ""
+msgstr "ディレクトリの作成時の初期ビットマスクを077に設定する。"
 
 msgid ""
 "Use this option to override the username ('ftp' by default) which will be "
@@ -4174,7 +4224,7 @@ msgid "WPA"
 msgstr "WPA"
 
 msgid "WPA-EAP (Extensible Authentication Protocol)"
-msgstr ""
+msgstr "WPA-EAP (Extensible Authentication Protocol)"
 
 msgid "WPA-PSK (Pre Shared Key)"
 msgstr "WPA-PSK (プリシェアードキー)"
@@ -4192,15 +4242,15 @@ msgstr "警告: これは %s ログページのロードの際に大幅な遅延
 msgid ""
 "Warning: You are going to delete a RAID volume. All data will get lost and "
 "can not be recovered."
-msgstr ""
+msgstr "警告: RAIDボリュームを削除しようとしています。このボリュームを削除すると含まれているデータはすべて消え復旧できなくなります。"
 
 msgid ""
 "Warning: You are going to delete an encrypted volume. All data will get lost "
 "and can not be recovered."
-msgstr ""
+msgstr "警告: 暗号化されたボリュームを削除しようとしています。このボリュームを削除すると含まれているデータはすべて消え復旧できなくなります。"
 
 msgid "WebGUI"
-msgstr ""
+msgstr "WebGUI"
 
 msgid "Webserver"
 msgstr "ウェブサーバ"
@@ -4209,7 +4259,7 @@ msgid "Where the working files will be stored"
 msgstr "作業ファイルが保存される場所"
 
 msgid "Where to save downloaded data."
-msgstr ""
+msgstr "ダウンロードしたデータを保存する場所"
 
 msgid ""
 "Whether scans should be skipped if there are no users connected. This allows "
@@ -4260,7 +4310,7 @@ msgstr "設定ファイルを保存している '%s' のパーティションは
 msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
 "any other running process!"
-msgstr ""
+msgstr "スワップファイルやiSCSIターゲットとして現在使用されているドライブはアンマウントできません。"
 
 #, php-format
 msgid ""
@@ -4288,7 +4338,7 @@ msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
-msgstr ""
+msgstr "iSCSIターゲット機能を有効にするには最低256MBのRAMが必要になります。"
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "ファームウェアのアップデートの前にシステムをリブートする必要があります．"
@@ -4388,10 +4438,10 @@ msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr "password_suffix, example: ou=users,dc=example,dc=com"
 
 msgid "pasv_max_port"
-msgstr ""
+msgstr "パッシブモードで使用するポート(最大)"
 
 msgid "pasv_min_port"
-msgstr ""
+msgstr "パッシブモードで使用するポート(最小)"
 
 msgid "prodos"
 msgstr "prodos"
@@ -4680,6 +4730,9 @@ msgstr "週日"
 
 #~ msgid "Paste an RSA private key in PEM format here."
 #~ msgstr "ここに PEM フォーマットの RSA 秘密鍵をペーストして下さい．"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "雑多なもの"
 
 #~ msgid "TCP idle timeout"
 #~ msgstr "TCP アイドルタイムアウト"
