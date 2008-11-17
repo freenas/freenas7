@@ -39,8 +39,9 @@ esac
 
 case "${1}" in
 	early-warning)
+		_shutdowntimer=`configxml_get "//ups/shutdowntimer"`;
 		_message="${_notifymessage}.
-Early shutdown imminent in ${nut_upsmon_onbatt_shutdown_timer} seconds.";;
+Early shutdown imminent in ${_shutdowntimer} seconds.";;
 
 	early-shutdown)
 		_message="${_notifymessage}.
