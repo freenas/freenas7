@@ -1,3 +1,5 @@
 Create patch:
 diff -ruN src/lib/HTTP/HTTPMessage.cpp.orig src/lib/HTTP/HTTPMessage.cpp > patch-src_lib_HTTP_HTTPMessage.cpp
+diff -ruN src/lib/Presentation/PresentationHandler.cpp.orig src/lib/Presentation/PresentationHandler.cpp > patch-src_lib_Presentation_PresentationHandler.cpp
+diff -ruN src/lib/Presentation/Stylesheet.h.orig src/lib/Presentation/Stylesheet.h > patch-src_lib_Presentation_Stylesheet.h
 diff -ruN aclocal.m4.orig aclocal.m4 > patch-aclocal.m4
