@@ -1,14 +1,5 @@
 --- src/lib/Presentation/PresentationHandler.cpp.orig	2007-11-23 07:56:59.000000000 +0000
 +++ src/lib/Presentation/PresentationHandler.cpp	2008-11-17 19:41:51.000000000 +0000
-@@ -3,7 +3,7 @@
-  *
-  *  FUPPES - Free UPnP Entertainment Service
-  *
-- *  Copyright (C) 2005 - 2007 Ulrich Völkel <u-voelkel@users.sourceforge.net>
-+ *  Copyright (C) 2005 - 2007 Ulrich VÃ¶lkel <u-voelkel@users.sourceforge.net>
-  ****************************************************************************/
- 
- /*
 @@ -276,7 +276,6 @@
    sResult << "<br />";
    sResult << "<a href=\"/presentation/config.html\">Configuration</a>" << endl;    
