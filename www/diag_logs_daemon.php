@@ -49,7 +49,7 @@ if ($_POST['clear']) {
 }
 
 if ($_POST['download']) {
-	logs_download($logfile, "daemon.log");
+	logs_download($logfile, "daemon.log", true);
 	exit;
 }
 ?>

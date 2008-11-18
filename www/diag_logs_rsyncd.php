@@ -49,7 +49,7 @@ if ($_POST['clear']) {
 }
 
 if ($_POST['download']) {
-	logs_download($logfile, "rsyncd.log");
+	logs_download($logfile, "rsyncd.log", true);
 	exit;
 }
 ?>

@@ -13,6 +13,7 @@ Minors changes:
 Bug fixes:
 - Fix web server security hole (file .htpasswd was downloadable) (BR 2255936).
 - Re-enable fuppes transcoding support (BR 2276571).
+- Remove garbage at end of downloaded log files (BR 2309257).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
