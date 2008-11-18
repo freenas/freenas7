@@ -117,11 +117,16 @@ function logs_dump_ex($logfile, $entries, $columns, $withorig = true) {
 	}
 }
 
-function logs_download($logfile, $filename) {
+function logs_download($logfile, $filename, $useclog = false) {
 	$fs = filesize($logfile);
 	header("Content-Type: application/octet-stream");
 	header("Content-Disposition: attachment; filename={$filename}");
 	header("Content-Length: $fs");
 	header("Pragma: hack");
-	readfile($logfile);
+	if (true === $useclog) {
+		exec("/usr/sbin/clog {$logfile}", $content);
+		echo implode("\n", $content);
+	} else {
+		readfile($logfile);
+	}
 }
