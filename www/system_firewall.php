@@ -37,14 +37,15 @@ $pgtitle = array(gettext("Network"), gettext("Firewall"));
 $pconfig['enable'] = isset($config['system']['firewall']['enable']);
 
 if ($_POST['export']) {
-	$fn = "firewall-" . $config['system']['hostname'] . "." . $config['system']['domain'] . "-" . date("YmdHis") . ".rules";
-	$backup = serialize($config['system']['firewall']['rule']);
-	$fs = strlen($backup);
+	$ts = date("YmdHis");
+	$fn = "firewall-{$config['system']['hostname']}.{$config['system']['domain']}-{$ts}.rules";
+	$data = serialize($config['system']['firewall']['rule']);
+	$fs = strlen($data);
 	header("Content-Type: application/octet-stream");
 	header("Content-Disposition: attachment; filename={$fn}");
 	header("Content-Length: {$fs}");
 	header("Pragma: hack");
-	echo($backup);
+	echo($data);
 	exit;
 } else if ($_POST['import']) {
 	if (is_uploaded_file($_FILES['rulesfile']['tmp_name'])) {
@@ -69,7 +70,7 @@ if ($_POST['export']) {
 		header("Location: system_firewall.php");
 		exit;
 	} else {
-		$input_errors[] = gettext("Failed to upload file.");
+		$errormsg = gettext("Failed to upload file.");
 	}
 } else if ($_POST) {
 	$pconfig = $_POST;
@@ -138,6 +139,7 @@ function firewall_process_updatenotification($mode, $data) {
 	  <tr>
 	    <td class="tabcont">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (ui_exists_updatenotification("firewall")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
