@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-15 22:36+0000\n"
-"PO-Revision-Date: 2008-11-11 18:16+0000\n"
-"Last-Translator: Dutchman01 <Unknown>\n"
+"PO-Revision-Date: 2008-11-19 13:42+0000\n"
+"Last-Translator: Christophe Lherieau <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-17 19:52+0000\n"
+"X-Launchpad-Export-Date: 2008-11-19 15:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -63,7 +63,7 @@ msgid "(unstable)"
 msgstr "(instable)"
 
 msgid "*** Imported duplicate ***"
-msgstr ""
+msgstr "*** Règle importée dupliquée ***"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -100,6 +100,17 @@ msgid ""
 "CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
 "(Windows, Linux, MAC, etc.) that use MBR partition table."
 msgstr ""
+"<b>EFI GPT</b> si vous voulez monter un disque formaté en GPT (<b>partition "
+"par défaut depuis 0.684b</b>).<br><b>1*</b> première partition MBR, pour un "
+"disque formaté en UFS ou un volume en RAID Logiciel (<b>créé avant "
+"0.684b</b>).<br><b>2*</b> seconde partition MBR (<b>partition DATA</b>) si "
+"vous avez sélectionné l'option 2 pendant l'installation sur un disque dur "
+"(<b>toute version</b>).<br><b>3*</b>,<b>4*</b> troisième ou quatrième "
+"partition primaire MBR.<br><b>5*</b>,<b>6*</b> première ou seconde partition "
+"logique sur une partition étendue.<br><b>CD/DVD ou Vieux RAID Logiciel</b> "
+"pour un volume en vieux RAID Logiciels (<b>créé avant 0.68</b>) ou "
+"CD/DVD.<br><br><b>*</b> pour des disques importés/formatés sur différents OS "
+"(Windows, Linux, MAC, etc.) qui utilisent la table de partition MBR."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -246,7 +257,7 @@ msgid "Acoustic level"
 msgstr "Niveau acoustique"
 
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 msgid "Activate"
 msgstr "Activer"
@@ -326,7 +337,7 @@ msgid "Add option"
 msgstr "Ajouter une option"
 
 msgid "Add rule"
-msgstr ""
+msgstr "Ajouter une règle"
 
 msgid "Add self-test"
 msgstr "Ajouter un auto test."
@@ -494,7 +505,7 @@ msgid "Anonymous users only"
 msgstr "Utilisateurs anonymes seulement"
 
 msgid "Any"
-msgstr ""
+msgstr "Tous"
 
 msgid "Apply changes"
 msgstr "Appliquer les changements"
@@ -632,9 +643,11 @@ msgstr "Check shared secret:"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
+"Choisir l'interface sur laquelle appliquer cette règle sur les paquets "
+"entrants."
 
 msgid "Choose which IP protocol this rule should match."
-msgstr ""
+msgstr "Choisir le protocole IP sur lequel appliquer cette règle."
 
 msgid "Choose which interface this route applies to."
 msgstr "Sélectionnez à quelle interface cette route s'applique."
@@ -662,7 +675,7 @@ msgid "Client RSYNC job"
 msgstr "Tâche du client RSYNC"
 
 msgid "Client firewall"
-msgstr ""
+msgstr "Pare-feu client"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "Les client voient en minuscules, les serveurs en majuscules"
@@ -845,7 +858,7 @@ msgid "Define directories/URL's that require authentication."
 msgstr "Définir des répertoires/URL's qui requièrent une authentification."
 
 msgid "Defines when the shutdown is initiated."
-msgstr ""
+msgstr "Défini quand l'arrêt du système est déclenché."
 
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Définir un nom d'hôte peut être utile pour NFS."
@@ -884,7 +897,7 @@ msgid "Delete all options"
 msgstr "Effacer toutes les options"
 
 msgid "Delete all rules"
-msgstr ""
+msgstr "Supprimer toutes les règles"
 
 msgid "Delete command"
 msgstr "Supprimer la commande"
@@ -927,7 +940,7 @@ msgid "Delete option"
 msgstr "Supprimer l'option"
 
 msgid "Delete rule"
-msgstr ""
+msgstr "Supprimer une règle"
 
 msgid "Delete self-test"
 msgstr "Supprimer l'auto test."
@@ -969,7 +982,7 @@ msgid "Destination network for this static route"
 msgstr "Réseau de destination pour cette route statique"
 
 msgid "Destination port"
-msgstr ""
+msgstr "Port de destination"
 
 msgid "Destination share"
 msgstr "Partage de destination"
@@ -1027,7 +1040,7 @@ msgid "Difference"
 msgstr "Différence"
 
 msgid "Direction"
-msgstr ""
+msgstr "Direction"
 
 msgid "Directory"
 msgstr "Répertoire"
@@ -1098,7 +1111,7 @@ msgid "Do you really want to delete all options?"
 msgstr "Souhaitez-vous vraiment supprimer toutes les options?"
 
 msgid "Do you really want to delete all rules?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir supprimer toutes les règles ?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "Souhaitez-vous vraiment supprimer cette MIB?"
@@ -1164,7 +1177,7 @@ msgid "Do you really want to delete this route?"
 msgstr "Etes-vous sur de vouloir supprimer cette route?"
 
 msgid "Do you really want to delete this rule?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir supprimer cette règle ?"
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr "Voulez-vous vraiment supprimer cet auto test planifié?"
@@ -1254,7 +1267,7 @@ msgid "Download directory"
 msgstr "Répertoire de téléchargement"
 
 msgid "Download firewall rules."
-msgstr ""
+msgstr "Télécharger des règles de pare-feu."
 
 msgid "Driver"
 msgstr "Pilote"
@@ -1335,7 +1348,7 @@ msgid "Edit option"
 msgstr "Editer option"
 
 msgid "Edit rule"
-msgstr ""
+msgstr "Editer une règle"
 
 msgid "Edit self-test"
 msgstr "Editer l'auto-test"
@@ -1549,7 +1562,7 @@ msgid "Execute now"
 msgstr "Exécuter maintenant"
 
 msgid "Export"
-msgstr ""
+msgstr "Exporter"
 
 msgid "Extensions"
 msgstr "Extensions"
@@ -1645,7 +1658,7 @@ msgstr ""
 "href='%s'>log</a>."
 
 msgid "Failed to upload file."
-msgstr ""
+msgstr "Echec du téléchargement du fichier."
 
 msgid "Failed to upload metadata backup file."
 msgstr "Echec au chargement du fichier de sauvegarde des méta-données."
@@ -1692,10 +1705,10 @@ msgid "Filename"
 msgstr "Nom de fichier"
 
 msgid "Firewall"
-msgstr ""
+msgstr "Pare-feu"
 
 msgid "Firewall rule"
-msgstr ""
+msgstr "Règle du pare-feu"
 
 msgid "Firmware"
 msgstr "Logiciel"
@@ -2031,10 +2044,10 @@ msgid "Image upload failed (out of memory?)"
 msgstr "Echec du chargement de l'image (pas assez de mémoire?)"
 
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 msgid "Import firewall rules."
-msgstr ""
+msgstr "Importer des règles de pare-feu."
 
 msgid "In"
 msgstr "Entree"
@@ -2049,7 +2062,7 @@ msgid "Informal"
 msgstr "Informel"
 
 msgid "Information"
-msgstr "Information"
+msgstr "Informations"
 
 msgid "Inherit permissions"
 msgstr "Héritage des permissions"
@@ -2086,7 +2099,7 @@ msgid "Interface"
 msgstr "Interface"
 
 msgid "Interface Management"
-msgstr ""
+msgstr "Gestion de l'interface"
 
 msgid "Interface to listen to."
 msgstr "Interface sur laquelle écouter."
@@ -2276,13 +2289,13 @@ msgstr ""
 "sauvegardé."
 
 msgid "Log"
-msgstr ""
+msgstr "Journal"
 
 msgid "Log Level"
 msgstr "Niveau de journalisation"
 
 msgid "Log packets that are handled by this rule to syslog."
-msgstr ""
+msgstr "Journaliser dans syslog les paquets gérés par cette règle."
 
 msgid "Login"
 msgstr "Identifiant de connexion"
@@ -2648,7 +2661,7 @@ msgid "Option"
 msgstr "Option"
 
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
 msgid "Others"
 msgstr "Autres"
@@ -2873,7 +2886,7 @@ msgid "Profile"
 msgstr "Profil"
 
 msgid "Proto"
-msgstr ""
+msgstr "Protocole"
 
 msgid "Protocol"
 msgstr "Protocole"
@@ -2979,7 +2992,7 @@ msgid "Recycle bin"
 msgstr "Poubelle"
 
 msgid "Reject"
-msgstr ""
+msgstr "Rejeter"
 
 msgid "Release notes"
 msgstr "Notes de la version"
@@ -3060,13 +3073,13 @@ msgid "Rsync Daemon"
 msgstr "Démon Rsync"
 
 msgid "Rule"
-msgstr ""
+msgstr "Règle"
 
 msgid "Rule number"
-msgstr ""
+msgstr "Numéro de règle"
 
 msgid "Rules"
-msgstr ""
+msgstr "Règles"
 
 msgid "Run now"
 msgstr "Exécuter maintenant"
@@ -3304,10 +3317,10 @@ msgid "Shutdown Time"
 msgstr "Heure d'arrêt"
 
 msgid "Shutdown mode"
-msgstr ""
+msgstr "Mode d'arrêt"
 
 msgid "Shutdown timer"
-msgstr ""
+msgstr "Délai avant arrêt"
 
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol (SNMP)"
@@ -3346,7 +3359,7 @@ msgid "Source directory to be synchronized."
 msgstr "Répertoire source à synchroniser"
 
 msgid "Source port"
-msgstr ""
+msgstr "Port source"
 
 msgid "Source share"
 msgstr "Partage source"
@@ -3642,6 +3655,8 @@ msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
 msgstr ""
+"Action à exécuter lorsque le paquet satisfait les critères spécifiés ci-"
+"dessous."
 
 #, c-format
 msgid ""
@@ -3902,7 +3917,7 @@ msgstr ""
 "contrôle de l'énergie en conséquence."
 
 msgid "The rule number determines the order of the rule."
-msgstr ""
+msgstr "Le numéro de règle détermine l'ordre de la règle."
 
 msgid "The serial or USB port where your UPS is connected."
 msgstr "Le port série ou le port USB auquel est connecté votre UPS."
@@ -3936,6 +3951,8 @@ msgid ""
 "The time in seconds until shutdown is initiated. If the UPS happens to come "
 "back before the time is up the shutdown is canceled."
 msgstr ""
+"Le délai en secondes avant d'effectuer un arrêt du système. Si l'UPS "
+"réapparaît avant ce délai, l'arrêt sera annulé."
 
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
@@ -3945,7 +3962,7 @@ msgid "The unique group ID is already used."
 msgstr "Cet ID unique de groupe est déjà utilisé."
 
 msgid "The unique rule number is already used."
-msgstr ""
+msgstr "Le numéro de règle est déjà utilisé."
 
 msgid "The unique user ID is already used."
 msgstr "Cet ID unique d'utilisateur est déjà utilisé."
@@ -4339,6 +4356,8 @@ msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"Pour obtenir des informations détaillées sur l'écriture des règles de pare-"
+"feu, consulter la <a href='%s' target='_blank'>documentation</a> FreeBSD."
 
 #, php-format
 msgid ""
@@ -4352,6 +4371,7 @@ msgstr ""
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
+"Laisser ce champ vide pour signifier toutes les adresses IP (ie any)."
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
@@ -4444,7 +4464,7 @@ msgid "UPS notification from host: %s.%s"
 msgstr "Notification UPS du hôte: %s.%s"
 
 msgid "UPS reaches low battery"
-msgstr ""
+msgstr "Batterie faible sur le système UPS"
 
 msgid "UPS status"
 msgstr "Etat de l'UPS"
@@ -4465,7 +4485,7 @@ msgid "Uninstall package"
 msgstr "Désinstallation paquet"
 
 msgid "Uninterruptible Power Supply"
-msgstr ""
+msgstr "Uninterruptible Power Supply"
 
 msgid "Unison"
 msgstr "Unison"
