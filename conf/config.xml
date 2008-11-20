@@ -504,7 +504,7 @@
 		<rcvbuf>16384</rcvbuf>
 		<sndbuf>16384</sndbuf>
 		<storedosattributes/>
-		<usesendfile>
+		<usesendfile/>
 		<!--
 		// createmask and directorymask can be used to overwrite default values when security=share
 		<createmask>0666</createmask>
