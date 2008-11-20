@@ -96,7 +96,9 @@ mkconf_cmd()
 		-v "concat('security = ',//samba/security)" -n \
 		-o "dns proxy = no" -n \
 		-o "# Settings to enhance performance:" -n \
-		-o "use sendfile = yes" -n \
+		-i "count(//samba/usesendfile) > 0" \
+			-o "use sendfile = yes" -n \
+		-b \
 		-o "strict locking = no" -n \
 		-o "read raw = yes" -n \
 		-o "write raw = yes" -n \

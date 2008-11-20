@@ -65,6 +65,7 @@ $pconfig['sndbuf'] = $config['samba']['sndbuf'];
 $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
+$pconfig['usesendfile'] = isset($config['samba']['usesendfile']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
 $pconfig['storedosattributes'] = isset($config['samba']['storedosattributes']);
 $pconfig['createmask'] = $config['samba']['createmask'];
@@ -85,7 +86,7 @@ if ($_POST) {
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
-	
+
 		// Do additional input type validation.
 		$reqdfields = explode(" ", "sndbuf rcvbuf createmask directorymask");
 		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
@@ -115,6 +116,7 @@ if ($_POST) {
 		$config['samba']['sndbuf'] = $_POST['sndbuf'];
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
+		$config['samba']['usesendfile'] = $_POST['usesendfile'] ? true : false;
 		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
 		$config['samba']['storedosattributes'] = $_POST['storedosattributes'] ? true : false;
 		if (!empty($_POST['createmask']))
@@ -171,6 +173,7 @@ function enable_change(enable_change) {
 	document.iform.rcvbuf.disabled = endis;
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
+	document.iform.usesendfile.disabled = endis;
 	document.iform.easupport.disabled = endis;
 	document.iform.storedosattributes.disabled = endis;
 	document.iform.createmask.disabled = endis;
@@ -374,6 +377,7 @@ function authentication_change() {
               <?=gettext("Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000.");?></span>
             </td>
           </tr>
+					<?php html_checkbox("usesendfile", gettext("Use sendfile"), $pconfig['usesendfile'] ? true : false, gettext("Enable use sendfile."), gettext("This may make more efficient use of the system CPU's and cause Samba to be faster. Samba automatically turns this off for clients that use protocol levels lower than NT LM 0.12 and when it detects a client is Windows 9x."), false);?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("EA support");?></td>
 						<td width="78%" class="vtable">
