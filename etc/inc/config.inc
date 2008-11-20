@@ -1599,6 +1599,14 @@ function config_upgrade() {
 		$config['version'] = "6.5";
 	}
 
+	/* Convert 6.5 -> 6.6 */
+	/* Add //samba/usesendfile. */
+	if ($config['version'] === "6.5") {
+		$config['samba']['usesendfile'] = true;
+
+		$config['version'] = "6.6";
+	}
+
 	write_config();
 
 	if (is_booting())
