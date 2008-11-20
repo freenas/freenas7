@@ -8,7 +8,10 @@ Majors changes:
 - Upgrade transmission to 1.40.
 
 Minors changes:
-- Add UPS service WebGUI option to define shutdown mode. 
+- Add UPS service WebGUI option to define shutdown mode.
+- Add option 'Use sendfile' to 'Services|CIFS/SMB|Settings'. Some users report
+  problems with this option (which is enabled by default), so now it is really
+  easy to disable it.
 
 Bug fixes:
 - Fix web server security hole (file .htpasswd was downloadable) (BR 2255936).
@@ -67,7 +70,7 @@ Minors changes:
 - Add combobox to set cnidscheme for AFP shares (FR 2212374).
 - Create user home directory if an alternative one is set (FR 2214123).
 - Add 'Download' button on 'Diagnostics|Logs' pages to download log files (FR 2221603).
-- Refactor /etc/rc.d/routing script. 
+- Refactor /etc/rc.d/routing script.
 - Traffic graph color change for viewability (BR 2223207).
 
 Bug fixes:
