@@ -44,8 +44,8 @@ $fetch_link = "stats.php?cpu";
 //SVG attributes
 $attribs['bg']='fill="#EEEEEE" stroke="none" stroke-width="0" opacity="1"';
 $attribs['axis']='fill="black" stroke="black"';
-$attribs['cpu']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
-$attribs['graph_cpu']='fill="none" stroke="#435370" stroke-opacity="0.8"';
+$attribs['cpu']='fill="#FF3030" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
+$attribs['graph_cpu']='fill="none" stroke="#FF0000" stroke-opacity="0.8"';
 $attribs['legend']='fill="black" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 $attribs['graphname']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="8"';
 $attribs['grid_txt']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="6"';
@@ -70,7 +70,7 @@ echo "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
     <line id="axis_x" x1="0" y1="0" x2="0" y2="100%" <?=$attribs['axis']?>/>
     <line id="axis_y" x1="0" y1="100%" x2="100%" y2="100%" <?=$attribs['axis']?>/>
     <path id="graph_cpu"  d="M0 <?=$height?> L 0 <?=$height?>" <?=$attribs['graph_cpu']?>/>
-    <text id="graph_in_lbl" x="5" y="8" <?=$attribs['cpu']?>><?=gettext("CPU");?> <tspan id="graph_cpu_txt" <?=$attribs['cpu']?>> </tspan></text>
+    <text id="graph_in_lbl" x="5" y="8" <?=$attribs['cpu']?>><?=gettext("CPU Load");?> <tspan id="graph_cpu_txt" <?=$attribs['cpu']?>> </tspan></text>
     <path id="grid"  d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" <?=$attribs['grid']?>/>
     <text id="grid_txt1" x="<?=$width?>" y="<?=$height/4*1?>" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
     <text id="grid_txt2" x="<?=$width?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>

@@ -509,6 +509,7 @@
 		<createmask>0666</createmask>
 		<directorymask>0777</directorymask>
 		<nullpasswords/>
+		<usesendfile>
 		<auxparam></auxparam> // Can be defined multiple times.
 		<share>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
