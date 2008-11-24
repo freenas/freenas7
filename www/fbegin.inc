@@ -32,7 +32,7 @@ $menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "
 $menu['network']['desc'] = gettext("Network");
 $menu['network']['link'] = "";
 $menu['network']['menuitem'] = array();
-$menu['network']['menuitem'][] = array("desc" => "Interface Management", "link" => "interfaces_assign.php", "visible" => true);
+$menu['network']['menuitem'][] = array("desc" => gettext("Interface Management"), "link" => "interfaces_assign.php", "visible" => true);
 $menu['network']['menuitem'][] = array("desc" => "LAN", "link" => "interfaces_lan.php", "visible" => true);
 for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 	$desc = $config['interfaces']['opt'.$i]['descr'];
