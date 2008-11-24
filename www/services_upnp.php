@@ -255,7 +255,7 @@ function transcoding_change() {
 					<?php html_filechooser("tempdir", gettext("Temporary directory"), $pconfig['tempdir'], gettext("Temporary directory to store transcoded files."), "/mnt", true, 60);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
-					<?php html_checkbox("web", gettext("Enable"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), "", false, "web_change()");?>
+					<?php html_checkbox("web", gettext("WebGUI"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), "", false, "web_change()");?>
 					<?php
 					$if = get_ifname($pconfig['if']);
 					$ipaddr = get_ipaddr($if);
