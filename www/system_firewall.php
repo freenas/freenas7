@@ -31,44 +31,85 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require_once("XML/Serializer.php");
+require_once("XML/Unserializer.php");
 
 $pgtitle = array(gettext("Network"), gettext("Firewall"));
 
 $pconfig['enable'] = isset($config['system']['firewall']['enable']);
 
 if ($_POST['export']) {
-	$ts = date("YmdHis");
-	$fn = "firewall-{$config['system']['hostname']}.{$config['system']['domain']}-{$ts}.rules";
-	$data = serialize($config['system']['firewall']['rule']);
-	$fs = strlen($data);
-	header("Content-Type: application/octet-stream");
-	header("Content-Disposition: attachment; filename={$fn}");
-	header("Content-Length: {$fs}");
-	header("Pragma: hack");
-	echo($data);
-	exit;
+	$options = array(
+		XML_SERIALIZER_OPTION_XML_DECL_ENABLED => true,
+		XML_SERIALIZER_OPTION_INDENT           => "\t",
+		XML_SERIALIZER_OPTION_LINEBREAKS       => "\n",
+		XML_SERIALIZER_OPTION_XML_ENCODING     => "UTF-8",
+		XML_SERIALIZER_OPTION_ROOT_NAME        => get_product_name(),
+		XML_SERIALIZER_OPTION_ROOT_ATTRIBS     => array("version" => get_product_version(), "revision" => get_product_revision()),
+		XML_SERIALIZER_OPTION_DEFAULT_TAG      => "rule",
+		XML_SERIALIZER_OPTION_MODE             => XML_SERIALIZER_MODE_DEFAULT,
+		XML_SERIALIZER_OPTION_IGNORE_FALSE     => true,
+		XML_SERIALIZER_OPTION_CONDENSE_BOOLS   => true,
+	);
+
+	$serializer = &new XML_Serializer($options);
+	$status = $serializer->serialize($config['system']['firewall']['rule']);
+
+	if (PEAR::isError($status)) {
+		$errormsg = $status->getMessage();
+	} else {
+		$ts = date("YmdHis");
+		$fn = "firewall-{$config['system']['hostname']}.{$config['system']['domain']}-{$ts}.rules";
+		$data = $serializer->getSerializedData();
+		$fs = strlen($data);
+
+		header("Content-Type: application/octet-stream");
+		header("Content-Disposition: attachment; filename={$fn}");
+		header("Content-Length: {$fs}");
+		header("Pragma: hack");
+		echo $data;
+
+		exit;
+	}
 } else if ($_POST['import']) {
 	if (is_uploaded_file($_FILES['rulesfile']['tmp_name'])) {
-		// Take care array already exists.
-		if (!is_array($config['system']['firewall']['rule']))
-		$config['system']['firewall']['rule'] = array();
+		$options = array(
+			XML_UNSERIALIZER_OPTION_COMPLEXTYPE => 'array',
+			XML_UNSERIALIZER_OPTION_ATTRIBUTES_PARSE => true,
+			XML_UNSERIALIZER_OPTION_FORCE_ENUM  => $listtags,
+		);
 
-		// Import rules.
-		$rules = unserialize(file_get_contents($_FILES['rulesfile']['tmp_name']));
-		foreach ($rules as $rule) {
-			// Check if rule already exists.
-			$index = array_search_ex($rule['uuid'], $config['system']['firewall']['rule'], "uuid");
-			if (false !== $index) {
-				// Create new uuid and mark rule as duplicate (modify description).
-				$rule['uuid'] = uuid();
-				$rule['desc'] = gettext("*** Imported duplicate ***") . " {$rule['desc']}";
+		$unserializer = &new XML_Unserializer($options);
+		$status = $unserializer->unserialize($_FILES['rulesfile']['tmp_name'], true);
+
+		if (PEAR::isError($status)) {
+			$errormsg = $status->getMessage();
+		} else {
+			// Take care array already exists.
+			if (!is_array($config['system']['firewall']['rule']))
+				$config['system']['firewall']['rule'] = array();
+
+			$data = $unserializer->getUnserializedData();
+
+			// Import rules.
+			foreach ($data['rule'] as $rule) {
+				// Check if rule already exists.
+				$index = array_search_ex($rule['uuid'], $config['system']['firewall']['rule'], "uuid");
+				if (false !== $index) {
+					// Create new uuid and mark rule as duplicate (modify description).
+					$rule['uuid'] = uuid();
+					$rule['desc'] = gettext("*** Imported duplicate ***") . " {$rule['desc']}";
+				}
+				$config['system']['firewall']['rule'][] = $rule;
+
+				ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_NEW, $rule['uuid']);
 			}
-			$config['system']['firewall']['rule'][] = $rule;
-			ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_NEW, $rule['uuid']);
+
+			write_config();
+
+			header("Location: system_firewall.php");
+			exit;
 		}
-		write_config();
-		header("Location: system_firewall.php");
-		exit;
 	} else {
 		$errormsg = gettext("Failed to upload file.");
 	}
