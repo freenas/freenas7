@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-20 22:11+0000\n"
-"PO-Revision-Date: 2008-11-21 16:37+0000\n"
+"POT-Creation-Date: 2008-11-24 21:54+0000\n"
+"PO-Revision-Date: 2008-11-25 16:22+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-24 15:04+0000\n"
+"X-Launchpad-Export-Date: 2008-11-27 18:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -363,7 +363,7 @@ msgid "Administration password"
 msgstr "Пароль администратора"
 
 msgid "Administrative WebGUI"
-msgstr "Административный WebGUI"
+msgstr "Web-интерфейс управления"
 
 msgid "Administrator name"
 msgstr "Имя администратора"
@@ -468,10 +468,10 @@ msgstr ""
 "общего ресурса."
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "Другой TCP порт. По умолчанию 22"
+msgstr "Другой TCP порт. По умолчанию 22-й."
 
 msgid "Alternate TCP port. Default is 873"
-msgstr "Другой TCP порт. По умолчанию 873"
+msgstr "Другой TCP порт. По умолчанию 873-й."
 
 msgid "Alternative configuration directory (usually empty)."
 msgstr "Другой каталог конфигурации (обычно пусто)."
@@ -508,7 +508,7 @@ msgid "Archive"
 msgstr "Архивирование"
 
 msgid "Archive mode."
-msgstr "Режим архивирования."
+msgstr "Включить режим архивирования"
 
 msgid "Are you sure you want to proceed?"
 msgstr "Вы действительно хотите продолжить?"
@@ -576,7 +576,7 @@ msgid "BitTorrent"
 msgstr "BitTorrent"
 
 msgid "Browseable"
-msgstr "Просматривается"
+msgstr "Просматриваемый"
 
 msgid "CCMP"
 msgstr "CCMP"
@@ -595,9 +595,6 @@ msgstr "CIFS/SMB отключен"
 
 msgid "CIFS/SMB informations"
 msgstr "Информация CIFS/SMB"
-
-msgid "CPU Load"
-msgstr "Загрузка процессора"
 
 msgid "CPU load"
 msgstr "Загрузка процессора"
@@ -699,7 +696,7 @@ msgid "Comment"
 msgstr "Комментарий"
 
 msgid "Common Internet File System"
-msgstr "Common Internet File System"
+msgstr "Common Internet File System (CIFS/SMB)"
 
 msgid "Community"
 msgstr "Сообщество"
@@ -760,7 +757,7 @@ msgid "Create"
 msgstr "Создать"
 
 msgid "Create and initialize RAID."
-msgstr "Создать и инициировать RAID"
+msgstr "Создать и инициализировать RAID"
 
 msgid "Create encrypted volume"
 msgstr "Создать шифрованный том"
@@ -836,7 +833,7 @@ msgid "Default"
 msgstr "По умолчанию"
 
 msgid "Default is 21"
-msgstr "По умолчанию 21-й порт."
+msgstr "Другой TCP-порт. По умолчанию 21-й."
 
 msgid "Default user name is 'admin'."
 msgstr "По умолчанию имя пользователя 'admin'."
@@ -845,7 +842,7 @@ msgid "Define directories/URL's that require authentication."
 msgstr "Укажите каталоги или адреса URL, требующие авторизации."
 
 msgid "Defines when the shutdown is initiated."
-msgstr "Определяет, когда выключение инициировано."
+msgstr "Определяет, когда будет инициировано выключение."
 
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Для файловой системы NFS необходимо задать имя."
@@ -903,7 +900,7 @@ msgstr "Удалить экстент"
 
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
-"Удалить файлы на принимающем устройстве, которые отсутствуют на передающем."
+"Удалить файлы на принимающем устройстве, которые отсутствуют на передающем"
 
 msgid "Delete group"
 msgstr "Удалить группу"
@@ -954,10 +951,10 @@ msgid "Destination"
 msgstr "Назначение"
 
 msgid "Destination email address."
-msgstr "Адрес е-mail назначения<br>"
+msgstr "Адрес е-mail назначения."
 
 msgid "Destination host name or IP number."
-msgstr "Имя или IP-адрес хоста назначения"
+msgstr "Имя или IP-адрес хоста назначения."
 
 msgid "Destination network"
 msgstr "Сеть назначения"
@@ -966,7 +963,7 @@ msgid "Destination network bit count"
 msgstr "Маска сети назначения"
 
 msgid "Destination network for this static route"
-msgstr "Сеть назначения данного статического маршрута"
+msgstr "Сеть назначения данного статического маршрута."
 
 msgid "Destination port"
 msgstr "Порт назначения"
@@ -1044,7 +1041,7 @@ msgid "Disable"
 msgstr "Отключить"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
-msgstr "Запретить AFP-over-Appletalk для предотвращения подключений DDP."
+msgstr "Запретить AFP-over-Appletalk для предотвращения подключений DDP"
 
 msgid "Disable console menu"
 msgstr "Запретить консольное меню"
@@ -1269,7 +1266,7 @@ msgid "Dynamic DNS"
 msgstr "Динамический DNS"
 
 msgid "EA support"
-msgstr "Поддержка EA"
+msgstr "Поддержка расширенных атрибутов"
 
 msgid "EFI/GPT partition can be use with UFS only."
 msgstr "На EFI/GPT-разделах поддерживается только файловая система UFS."
@@ -1451,7 +1448,7 @@ msgid "Enable use sendfile."
 msgstr "Включить использование 'sendfile'"
 
 msgid "Enable web user interface."
-msgstr "Включить пользовательский веб-интерфейс"
+msgstr "Включить web-интерфейс управления"
 
 msgid "Enabled"
 msgstr "Разрешено"
@@ -1517,7 +1514,7 @@ msgstr ""
 "использования пути по умолчанию /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
-msgstr "Введите порт для отправки traps (по умолчанию 162)."
+msgstr "Введите порт для отправки traps (по умолчанию 162-й)."
 
 msgid "Enter trap host name."
 msgstr "Введите имя хоста для traps."
@@ -1714,7 +1711,7 @@ msgid "Follow"
 msgstr "Следовать"
 
 msgid "Force NAT mode."
-msgstr "Принудительный режим NAT."
+msgstr "Установить режим NAT принудительно"
 
 msgid ""
 "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
@@ -1792,10 +1789,10 @@ msgid "Group description."
 msgstr "Описание группы."
 
 msgid "Group name."
-msgstr "Имя группы"
+msgstr "Имя группы."
 
 msgid "Group numeric id."
-msgstr "Цифровой индентификатор группы"
+msgstr "Цифровой индентификатор группы."
 
 msgid "Group suffix"
 msgstr "Суффикс группы"
@@ -1813,7 +1810,7 @@ msgid "HTTP Proxy"
 msgstr "HTTP Proxy"
 
 msgid "Hard disk standby time"
-msgstr "Время ожидания жесткого диска"
+msgstr "Таймаут до режима Standby"
 
 msgid "Help"
 msgstr "Помощь"
@@ -1822,7 +1819,7 @@ msgid "Help needed!"
 msgstr "Требуется помощь"
 
 msgid "Hide dot files"
-msgstr "Скрыть файлы \".\""
+msgstr "Скрывать файлы \".\""
 
 msgid "Highlighting"
 msgstr "Подсветка"
@@ -2037,10 +2034,11 @@ msgid "Information"
 msgstr "Информация"
 
 msgid "Inherit permissions"
-msgstr "Наследовать права"
+msgstr "Наследование прав"
 
 msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
-msgstr "Подавить диагностику syslog для /etc/exports."
+msgstr ""
+"Запрещать диагностические syslog-сообщения для неверных строк в /etc/exports"
 
 msgid "Initialize"
 msgstr "Инициализировать"
@@ -2153,7 +2151,7 @@ msgstr "Запись-чтение большими блоками"
 
 #, php-format
 msgid "Last %d %s log entries"
-msgstr "Последние %d %s записи в журнале"
+msgstr "Последние <i>%d</i> записей в журнале '%s'"
 
 msgid "Last config change"
 msgstr "Последнее изменение конфигурации"
@@ -2264,10 +2262,10 @@ msgid "Log packets that are handled by this rule to syslog."
 msgstr "Журнал пакетов, обработанных этим правилом для syslog."
 
 msgid "Login"
-msgstr "Вход"
+msgstr "Учетная запись"
 
 msgid "Login name of user."
-msgstr "Логин пользователя"
+msgstr "Логин пользователя."
 
 msgid "Logs"
 msgstr "Журналы"
@@ -2306,7 +2304,7 @@ msgstr "Убедитесь, что S.M.A.R.T. на вашем устройств
 msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
-"Убедитесь, что ваша <a href='%s'>электронная почта</a> настроена верно."
+"Убедитесь, что ваша <a href='%s'>электронная почта</a> настроена правильно."
 
 msgid "Management"
 msgstr "Управление"
@@ -2324,7 +2322,7 @@ msgid "Max. TTL"
 msgstr "Макс. TTL"
 
 msgid "Max. conn. per IP"
-msgstr "Макс. число соединений на IP"
+msgstr "Максимальное число соединений на IP"
 
 msgid ""
 "Max. time-to-live (max. number of hops) used in outgoing probe packets."
@@ -2334,7 +2332,7 @@ msgid "Maximum connections"
 msgstr "Максимальное количество соединений"
 
 msgid "Maximum idle time in minutes."
-msgstr "Максимальное время простоя в минутах"
+msgstr "Максимальное время простоя в минутах."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
@@ -2355,7 +2353,7 @@ msgid "Maximum performance, maximum power usage"
 msgstr "Максимальная производительность, максимальное энергопотребление"
 
 msgid "Media"
-msgstr "Носитель"
+msgstr "Среда передачи"
 
 msgid "Medium acoustic output"
 msgstr "Средний уровень шума"
@@ -2468,7 +2466,7 @@ msgstr ""
 "умолчанию."
 
 msgid "Name of the variable."
-msgstr "Имя переменной"
+msgstr "Имя переменной."
 
 msgid "NetBIOS name"
 msgstr "NetBIOS-имя"
@@ -2712,7 +2710,7 @@ msgid "Password for DN"
 msgstr "Пароль для уникального имени"
 
 msgid "Password for the administrative pages."
-msgstr "Пароль на административные страницы"
+msgstr "Пароль на web-интерфейс управления."
 
 msgid "Password of domain administrator account."
 msgstr "Пароль администратора домена."
@@ -2736,7 +2734,7 @@ msgid "Path of the URL relative to document root."
 msgstr "Путь URL относительно корня документа"
 
 msgid "Path to be shared."
-msgstr "Путь к общему ресурсу"
+msgstr "Путь к общему ресурсу."
 
 msgid "Permit root login"
 msgstr "Разрешать вход с учётной записью root"
@@ -2760,7 +2758,7 @@ msgid "Platform"
 msgstr "Платформа"
 
 msgid "Please note that blanks in path names are not allowed."
-msgstr "Пожалуйста, помните, что пробелы в пути не разрешены."
+msgstr "Пожалуйста, помните, что пробелы в пути запрещены."
 
 msgid "Polling time"
 msgstr "Интервал опроса"
@@ -2772,14 +2770,14 @@ msgid "Port "
 msgstr "Порт "
 
 msgid "Port is already used by WebGUI."
-msgstr "Порт уже используется веб-интерфейсом"
+msgstr "Порт уже используется web-интерфейсом"
 
 msgid "Port to listen on. Default iTunes port is 3689."
-msgstr "Порт для прослушивания. iTunes обычно использует 3689."
+msgstr "Порт для прослушивания. iTunes обычно использует 3689-й."
 
 #, php-format
 msgid "Port to listen on. Default port is %d."
-msgstr "Порт для прослушивания. По умолчанию %d."
+msgstr "Порт для прослушивания. По умолчанию %d-й."
 
 #, php-format
 msgid ""
@@ -2787,7 +2785,7 @@ msgid ""
 "through %d). Default port is %d."
 msgstr ""
 "Порт для прослушивания. Могут быть использованы только dynamic и private "
-"порты (с %d по %d). По умолчанию %d."
+"порты (с %d по %d). По умолчанию %d-й."
 
 msgid "Ports"
 msgstr "Порты"
@@ -3163,7 +3161,7 @@ msgid "Send test email"
 msgstr "Отправить тестовый e-mail"
 
 msgid "Separate email addresses by semi-colon."
-msgstr "<br>Разделить e-mail адреса на две колонки"
+msgstr "Разделять e-mail адреса на две колонки."
 
 msgid "Server"
 msgstr "Сервер"
@@ -3199,7 +3197,7 @@ msgid "Set the CNID backend to be used for the volume."
 msgstr "Установите CNID backend, чтобы использовать для этого тома."
 
 msgid "Set the account's primary group to the given group."
-msgstr "Установить данную группу основной"
+msgstr "Установить данную группу основной."
 
 msgid "Set the desired Service Set Identifier (aka network name)."
 msgstr ""
@@ -3283,7 +3281,7 @@ msgid "Simple Network Management Protocol"
 msgstr "Простой протокол управления сетью (SNMP)"
 
 msgid "Size"
-msgstr "Размер"
+msgstr "Объем"
 
 msgid "Size in MB."
 msgstr "Размер в мегабайтах"
@@ -3328,7 +3326,7 @@ msgid "Specifies how many servers to create."
 msgstr "Укажите число создаваемых серверов."
 
 msgid "Specifies that the file system should be exported read-only."
-msgstr "Укажите, если файловая система будет в режиме только-для-чтения."
+msgstr "Укажите, если файловая система будет в режиме только-для-чтения"
 
 msgid "Specifies the command to be run."
 msgstr "Задайте выполняемую команду здесь"
@@ -3380,7 +3378,7 @@ msgstr ""
 "раскручивание диска ноутбука этой опцией."
 
 msgid "Standby time"
-msgstr "Время в режиме Standby"
+msgstr "Время до режима Standby"
 
 msgid "State"
 msgstr "Состояние"
@@ -3547,7 +3545,7 @@ msgid "Temporary directory"
 msgstr "Временный каталог"
 
 msgid "Temporary directory to store transcoded files."
-msgstr "Временный каталог для хранения транскодированных файлов"
+msgstr "Временный каталог для хранения транскодированных файлов."
 
 msgid "Test email"
 msgstr "Тест e-mail"
@@ -3843,9 +3841,9 @@ msgid ""
 "single share to be used flexibly by each user."
 msgstr ""
 "Обычно права на новые файлы и каталоги назначаются согласно маске создания "
-"файлов и каталогов, но параметр \"Наследовать права доступа\" отменяет это, "
-"что в системах со многими пользователями может быть полезно для гибкого "
-"использовании ими одного общего ресурса."
+"файлов и каталогов, но параметр \"Наследование прав доступа\" отменяет это, "
+"что в многопользовательских системах может быть полезно для более гибкого "
+"использования одного общего ресурса."
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -3864,7 +3862,7 @@ msgid "The share name is already used."
 msgstr "Имя общего ресурса уже используется."
 
 msgid "The subject of the email."
-msgstr "Тема письма"
+msgstr "Тема письма."
 
 msgid "The swap file is using this mount point."
 msgstr "Эта точка монтирования используется файлом подкачки."
@@ -4072,7 +4070,7 @@ msgstr ""
 "Macintosh."
 
 msgid "This function is unsupported. Use it on your own risk!"
-msgstr "Эта функция не поддерживается. Используйте только на свой  риск!"
+msgstr "Используйте эту функцию исключительно на свой риск!"
 
 msgid "This group already exists in the group list."
 msgstr "Группа уже есть в списке групп."
@@ -4084,7 +4082,7 @@ msgstr ""
 "Это одновременно и имя сервера Zeroconf/Bonjour/Rendezvous, и имя в DAAP."
 
 msgid "This is for information only (not using during iSCSI negociation)."
-msgstr "Только для информации (не используется при настройке iSCSI)"
+msgstr "Только для информации (не используется при настройке iSCSI)."
 
 msgid ""
 "This may make more efficient use of the system CPU's and cause Samba to be "
@@ -4138,14 +4136,14 @@ msgid ""
 "same as the local ones."
 msgstr ""
 "Эта настройка позволяет rsync обновлять расширенные атрибуты аналогично "
-"локальным."
+"локальным"
 
 msgid ""
 "This option causes the receiving rsync to set the destination permissions to "
 "be the same as the source permissions."
 msgstr ""
 "Эта настройка позволяет rsync устанавливать права доступа получателя такими "
-"же, как у источника."
+"же, как у источника"
 
 msgid ""
 "This option determines if this module should be listed when the client asks "
@@ -4232,7 +4230,7 @@ msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
 msgstr ""
-"Настройка определяет, рассматривать ли начинающиеся с точки файлы как "
+"Если установлено, начинающиеся с точки файлы будут рассматриваться как "
 "скрытые."
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4303,7 +4301,7 @@ msgstr ""
 "настройка'</a></li><li>Увеличьте размер <a href='%s'>MTU</a></li></ul>"
 
 msgid "To match any IP address leave this field empty."
-msgstr "Для применения к любым IP-адресам оставьте это поле пустым."
+msgstr "Для применения ко всем IP-адресам оставьте это поле пустым."
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
@@ -4409,7 +4407,7 @@ msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Медиа сервер"
 
 msgid "UPnP friendly name."
-msgstr "UPnP дружественное имя"
+msgstr "Дружественное UPnP-имя."
 
 msgid "URL"
 msgstr "URL"
@@ -4635,7 +4633,7 @@ msgstr ""
 "потеряны и не могут быть восстановлены."
 
 msgid "WebGUI"
-msgstr "Веб-интерфейс"
+msgstr "Web-интерфейс"
 
 msgid "Webserver"
 msgstr "Веб-сервер"
@@ -4644,7 +4642,7 @@ msgid "Where the working files will be stored"
 msgstr "Место хранения рабочих файлов"
 
 msgid "Where to save downloaded data."
-msgstr "Место хранения загруженных файлов"
+msgstr "Место хранения загруженных файлов."
 
 msgid ""
 "Whether scans should be skipped if there are no users connected. This allows "
