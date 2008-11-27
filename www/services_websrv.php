@@ -35,10 +35,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("services.inc");
 
 $pgtitle = array(gettext("Services"),gettext("Webserver"));
 
-if(!is_array($config['websrv']))
+if (!is_array($config['websrv']))
 	$config['websrv'] = array();
 
 if (!is_array($config['websrv']['authentication']['url']))
@@ -77,12 +78,8 @@ if ($_POST) {
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 		// Check if port is already used.
-		if (isset($config['system']['webgui']['port']) && ($config['system']['webgui']['port'] === $_POST['port'])) {
-			$input_errors[] = gettext("Port is already used by WebGUI.");
-		}
-		if (!isset($config['system']['webgui']['port']) && ("80" === $_POST['port'])) {
-			$input_errors[] = gettext("Port is already used by WebGUI.");
-		}
+		if (services_is_port_used($_POST['port'], "websrv"))
+			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
 	}
 
 	if (!$input_errors) {

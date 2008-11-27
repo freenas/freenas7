@@ -31,10 +31,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("services.inc");
 
 $pgtitle = array(gettext("Services"), gettext("BitTorrent"));
 
-if(!is_array($config['bittorrent']))
+if (!is_array($config['bittorrent']))
 	$config['bittorrent'] = array();
 
 $pconfig['enable'] = isset($config['bittorrent']['enable']);
@@ -58,6 +59,10 @@ if ($_POST) {
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+		// Check if port is already used.
+		if (services_is_port_used($_POST['port'], "bittorrent"))
+			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
 	}
 
 	if (!$input_errors) {
