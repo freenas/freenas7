@@ -184,7 +184,7 @@ function firewall_process_updatenotification($mode, $data) {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (ui_exists_updatenotification("firewall")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_titleline_checkbox("enable", gettext("Client firewall"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+					<?php html_titleline_checkbox("enable", gettext("System firewall"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<tr>
 			    	<td width="22%" valign="top" class="vncell"><?=gettext("Rules");?></td>
 						<td width="78%" class="vtable">
