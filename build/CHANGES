@@ -12,6 +12,7 @@ Minors changes:
 - Add option 'Use sendfile' to 'Services|CIFS/SMB|Settings'. Some users report
   problems with this option (which is enabled by default), so now it is really
   easy to disable it.
+- Check if configured port is already used (e.g. UPnP, Bittorrent, DAAP, ...).
 
 Bug fixes:
 - Fix web server security hole (file .htpasswd was downloadable) (BR 2255936).

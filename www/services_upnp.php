@@ -35,13 +35,14 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("services.inc");
 
 $pgtitle = array(gettext("Services"),gettext("UPnP"));
 
-if(!is_array($config['upnp']))
+if (!is_array($config['upnp']))
 	$config['upnp'] = array();
 
-if(!is_array($config['upnp']['content']))
+if (!is_array($config['upnp']['content']))
 	$config['upnp']['content'] = array();
 
 sort($config['upnp']['content']);
@@ -85,6 +86,10 @@ if($_POST) {
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+		// Check if port is already used.
+		if (services_is_port_used($_POST['port'], "upnp"))
+			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
 	}
 
 	if ($_POST['port'] && ((1024 > $_POST['port']) || (65535 < $_POST['port']))) {

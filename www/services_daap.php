@@ -31,10 +31,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("services.inc");
 
 $pgtitle = array(gettext("Services"), gettext("iTunes/DAAP"));
 
-if(!is_array($config['daap']))
+if (!is_array($config['daap']))
 	$config['daap'] = array();
 
 $pconfig['enable'] = isset($config['daap']['enable']);
@@ -48,13 +49,13 @@ $pconfig['scantype'] = $config['daap']['scantype'];
 $pconfig['admin_pw'] = $config['daap']['admin_pw'];
 
 // Set default values.
-if(!$pconfig['servername']) $pconfig['servername'] = $config['system']['hostname'];
-if(!$pconfig['port']) $pconfig['port'] = "3689";
-if(!$pconfig['rescaninterval']) $pconfig['rescaninterval'] = "0";
-if(!$pconfig['alwaysscan']) $pconfig['alwaysscan'] = false;
-if(!$pconfig['scantype']) $pconfig['scantype'] = "0";
+if (!$pconfig['servername']) $pconfig['servername'] = $config['system']['hostname'];
+if (!$pconfig['port']) $pconfig['port'] = "3689";
+if (!$pconfig['rescaninterval']) $pconfig['rescaninterval'] = "0";
+if (!$pconfig['alwaysscan']) $pconfig['alwaysscan'] = false;
+if (!$pconfig['scantype']) $pconfig['scantype'] = "0";
 
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -71,6 +72,10 @@ if($_POST) {
 		$reqdfieldst = array_merge($reqdfieldst, array("numeric"));
 
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+		// Check if port is already used.
+		if (services_is_port_used($_POST['port'], "daap"))
+			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
 	}
 
 	if(!$input_errors) {
