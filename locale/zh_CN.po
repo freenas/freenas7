@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-24 21:54+0000\n"
+"POT-Creation-Date: 2008-11-27 21:46+0000\n"
 "PO-Revision-Date: 2008-11-18 12:22+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-27 18:33+0000\n"
+"X-Launchpad-Export-Date: 2008-11-28 18:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -636,9 +636,6 @@ msgstr "客户端"
 
 msgid "Client RSYNC job"
 msgstr "客户 RSYNC 任务"
-
-msgid "Client firewall"
-msgstr "客户端防火墙"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "客户端显示小写，伺服端显示大写。"
@@ -2641,8 +2638,9 @@ msgstr "Port"
 msgid "Port "
 msgstr "通讯埠 "
 
-msgid "Port is already used by WebGUI."
-msgstr "Port 已经给 WebGUI 使用。"
+#, php-format
+msgid "Port %ld is already used by another service."
+msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr ""
@@ -3329,6 +3327,9 @@ msgstr "提示声响"
 
 msgid "System events"
 msgstr "系统事件"
+
+msgid "System firewall"
+msgstr ""
 
 msgid "System info"
 msgstr "系统资讯"
@@ -5707,6 +5708,9 @@ msgstr "平常日"
 
 #~ msgid "HTTPS"
 #~ msgstr "HTTPS"
+
+#~ msgid "Port is already used by WebGUI."
+#~ msgstr "Port 已经给 WebGUI 使用。"
 
 #~ msgid ""
 #~ "The configuration has been modified.<br>You must apply the changes in order "

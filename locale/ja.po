@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-24 21:54+0000\n"
+"POT-Creation-Date: 2008-11-27 21:46+0000\n"
 "PO-Revision-Date: 2008-11-22 08:23+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-27 18:33+0000\n"
+"X-Launchpad-Export-Date: 2008-11-28 18:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -600,9 +600,6 @@ msgstr "クライアント"
 
 msgid "Client RSYNC job"
 msgstr "クライアント RSYNC ジョブ"
-
-msgid "Client firewall"
-msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "クライアントは小文字、サーバは大文字で表示。"
@@ -2573,8 +2570,9 @@ msgstr "ポート"
 msgid "Port "
 msgstr "ポート "
 
-msgid "Port is already used by WebGUI."
-msgstr "ポートは既にWebGUIで使用されています。"
+#, php-format
+msgid "Port %ld is already used by another service."
+msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "LISTENするポート番号。iTunesのデフォルトポート番号は 3689 です。"
@@ -3255,6 +3253,9 @@ msgstr "システムビープ"
 
 msgid "System events"
 msgstr "システムイベント"
+
+msgid "System firewall"
+msgstr ""
 
 msgid "System info"
 msgstr "システム情報"
