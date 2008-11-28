@@ -3,6 +3,9 @@
 # $FreeBSD: src/etc/rc.d/mountd,v 1.19.2.1 2008/01/28 07:55:44 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Remove nfsserver quota
+# - Add mkconf command
 #
 
 # PROVIDE: mountd
