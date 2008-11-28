@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-24 21:54+0000\n"
+"POT-Creation-Date: 2008-11-27 21:46+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-27 18:33+0000\n"
+"X-Launchpad-Export-Date: 2008-11-28 18:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -607,9 +607,6 @@ msgid "Client"
 msgstr "Odjemalec"
 
 msgid "Client RSYNC job"
-msgstr ""
-
-msgid "Client firewall"
 msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
@@ -2598,7 +2595,8 @@ msgstr ""
 msgid "Port "
 msgstr "Vrata "
 
-msgid "Port is already used by WebGUI."
+#, php-format
+msgid "Port %ld is already used by another service."
 msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
@@ -3285,6 +3283,9 @@ msgstr "Sistemski zvok"
 
 msgid "System events"
 msgstr "Sistemski dogodki"
+
+msgid "System firewall"
+msgstr ""
 
 msgid "System info"
 msgstr ""

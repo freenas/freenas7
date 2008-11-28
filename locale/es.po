@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-11-24 21:54+0000\n"
+"POT-Creation-Date: 2008-11-27 21:46+0000\n"
 "PO-Revision-Date: 2008-11-11 18:16+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-27 18:33+0000\n"
+"X-Launchpad-Export-Date: 2008-11-28 18:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -635,9 +635,6 @@ msgid "Client"
 msgstr "Cliente"
 
 msgid "Client RSYNC job"
-msgstr ""
-
-msgid "Client firewall"
 msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
@@ -2697,8 +2694,9 @@ msgstr "Puerto"
 msgid "Port "
 msgstr "Puerto "
 
-msgid "Port is already used by WebGUI."
-msgstr "El puerto está siendo usado por la webGUI."
+#, php-format
+msgid "Port %ld is already used by another service."
+msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Puerto de escucha. Por defecto el puerto de iTunes es 3689"
@@ -3395,6 +3393,9 @@ msgstr "Pitido de Sistema"
 
 msgid "System events"
 msgstr "Acciones del sistema"
+
+msgid "System firewall"
+msgstr ""
 
 msgid "System info"
 msgstr "Información del sistema"

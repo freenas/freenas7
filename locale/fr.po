@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-24 21:54+0000\n"
+"POT-Creation-Date: 2008-11-27 21:46+0000\n"
 "PO-Revision-Date: 2008-11-21 17:13+0000\n"
 "Last-Translator: Christophe Lherieau <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-11-27 18:32+0000\n"
+"X-Launchpad-Export-Date: 2008-11-28 18:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -670,9 +670,6 @@ msgstr "Client"
 
 msgid "Client RSYNC job"
 msgstr "Tâche du client RSYNC"
-
-msgid "Client firewall"
-msgstr "Pare-feu client"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "Les client voient en minuscules, les serveurs en majuscules"
@@ -2809,8 +2806,9 @@ msgstr "Port"
 msgid "Port "
 msgstr "La carte "
 
-msgid "Port is already used by WebGUI."
-msgstr "Port déjà utilisé par l'interface Web."
+#, php-format
+msgid "Port %ld is already used by another service."
+msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Port en écoute. Le port par défaut d'iTunes est 3689."
@@ -3536,6 +3534,9 @@ msgstr "Bip Système"
 
 msgid "System events"
 msgstr "Evénements système"
+
+msgid "System firewall"
+msgstr ""
 
 msgid "System info"
 msgstr "Informations système"
