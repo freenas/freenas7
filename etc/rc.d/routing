@@ -2,9 +2,12 @@
 #
 # Configure routing and miscellaneous network tunables
 #
-# $FreeBSD: src/etc/rc.d/routing,v 1.141.2.1 2006/01/21 22:42:43 yar Exp $
+# $FreeBSD: src/etc/rc.d/routing,v 1.141.2.1.8.1 2008/10/02 02:57:24 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Remove requirement ppp
+# - Add command mkconf and delete
 #
 
 # PROVIDE: routing

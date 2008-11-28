@@ -27,6 +27,9 @@
 # $FreeBSD: src/etc/rc.d/pccard,v 1.30.12.1 2008/10/02 02:57:24 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Add code to check platform support
+# - Add full path to commands
 #
 
 # PROVIDE: pccard

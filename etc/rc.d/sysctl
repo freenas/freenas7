@@ -3,6 +3,9 @@
 # $FreeBSD: src/etc/rc.d/sysctl,v 1.16.2.3.2.1 2008/10/02 02:57:24 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Add command mkconf
+# - Add full path to command sysctl to fix execution bug
 #
 
 # PROVIDE: sysctl
