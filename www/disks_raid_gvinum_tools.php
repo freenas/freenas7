@@ -105,8 +105,8 @@ if (!isset($do_action)) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
 				</div>
 				<?php if ($do_action) {
-				echo("<strong>" . gettext("Command output:") . "</strong><br>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 
 				// Function disks_geom_cmd() can't be used. That's because gvinum can't be accessed

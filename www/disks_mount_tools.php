@@ -132,8 +132,8 @@ if(isset($_GET['action'])) {
 				</div>
 				<?php if(($do_action) && (!$errormsg))
 				{
-				echo("<strong>" . gettext("Command output:") . "</strong>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 
 				/* Get the id of the mount array entry. */

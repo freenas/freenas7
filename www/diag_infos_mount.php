@@ -60,14 +60,13 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Mounts
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("List of mount points");?></td>
-				</tr>
-				<tr>
-			    <td>
-			    	<pre><br/><?php system("/sbin/mount");?></pre>
-					</td>
-			  </tr>
+			<tr>
+				<td class="listtopic"><?=gettext("List of mount points");?></td>
+			</tr>
+			<tr>
+			<td>
+				<pre><?php system("/sbin/mount");?></pre></td>
+			</tr>
     	</table>
     </td>
   </tr>

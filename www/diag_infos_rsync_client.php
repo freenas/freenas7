@@ -69,9 +69,9 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("RSYNC 
 				<tr>
 			    <td>
 			    	<?php if (!is_array($config['rsync']['rsyncclient'])):?>
-			    	<pre><br/><?=gettext("No RSYNC Client configured");?></pre>
+			    	<pre><?=gettext("No RSYNC Client configured");?></pre>
 			    	<?php else:?>
-			    	<pre><br/><?php
+			    	<pre><?php
 			    	echo("<strong>" . gettext("Detected RSYNC remote shares") . ":</strong><br><br>");
 						$i = 0;
 						foreach ($config['rsync']['rsyncclient'] as $rsyncclient) {

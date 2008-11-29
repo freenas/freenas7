@@ -72,9 +72,9 @@ $a_disk = $config['iscsiinit']['vdisk'];
 				<tr>
 			    <td>
 			    	<?php if (0 >= count($a_disk)):?>
-			    	<pre><br/><?=gettext("iSCSI initiator disabled");?></pre>
+			    	<pre><?=gettext("iSCSI initiator disabled");?></pre>
 			    	<?php else:?>
-			    	<pre><br/><?php
+			    	<pre><?php
 			    	foreach ($a_disk as $disk) {
 			    		echo sprintf(gettext("Discovered iSCSI target for %s"), $disk['targetaddress']);
 			    		echo "<br>";

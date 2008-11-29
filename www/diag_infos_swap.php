@@ -66,9 +66,9 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
 				<tr>
 			    <td>
 			    	<?php if (!isset($config['system']['swap_enable'])):?>
-			    	<pre><br/><?=gettext("Swap disabled");?></pre>
+			    	<pre><?=gettext("Swap disabled");?></pre>
 			    	<?php else:?>
-			    	<pre><br/><?php system("/usr/sbin/swapinfo");?></pre>
+			    	<pre><?php system("/usr/sbin/swapinfo");?></pre>
 						<?php endif;?>
 					</td>
 			  </tr>

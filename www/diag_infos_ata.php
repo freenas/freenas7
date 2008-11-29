@@ -68,7 +68,7 @@ $a_disk = get_ata_disks_list();
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php
+			    	<pre><?php
 			    	$name = $diskv['name'];
 						$device = $diskv['devicespecialfile'];
 						$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$name}")));

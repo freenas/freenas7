@@ -95,8 +95,8 @@ if(!isset($do_action)) {
 				</div>
 				<?php if($do_action)
 				{
-				echo("<strong>" . gettext("Command output:") . "</strong><br>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 				
 				// Install package.

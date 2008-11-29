@@ -92,8 +92,8 @@ function get_interface_addr($ifdescr) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Ping");?>">
 				</div>
 				<?php if ($do_ping) {
-				echo("<strong>" . gettext("Command output:") . "</strong>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 				$ifaddr = get_interface_addr($interface);
 				if ($ifaddr) {

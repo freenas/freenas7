@@ -66,7 +66,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Softwa
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php
+			    	<pre><?php
 			    	if (0 >= count(get_conf_disks_filtered_ex("class","g{$class}")))
 			    		echo gettext("n/a");
 			    	else

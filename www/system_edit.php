@@ -123,7 +123,6 @@ else
 		        </td>
 		      </tr>
 		    </table>
-			  <br/>
 			  <table width='100%'>
 			    <tr>
 			      <td valign="top" class="label">

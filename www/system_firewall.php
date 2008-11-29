@@ -251,16 +251,20 @@ function firewall_process_updatenotification($mode, $data) {
 					<tr>
 						<td width="22%" valign="top" class="vncell">&nbsp;</td>
 						<td width="78%" class="vtable">
-							<input name="export" type="submit" class="formbtn" value="<?=gettext("Export");?>"><br/>
-							<?=gettext("Download firewall rules.");?>
+							<?=gettext("Download firewall rules.");?><br/>
+							<div id="submit">
+								<input name="export" type="submit" class="formbtn" value="<?=gettext("Export");?>"><br/>
+							</div>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell">&nbsp;</td>
 						<td width="78%" class="vtable">
-							<input name="rulesfile" type="file" class="formfld" id="rulesfile" size="40" accept="*.rules">&nbsp;
-							<input name="import" type="submit" class="formbtn" id="import" value="<?=gettext("Import");?>"><br/>
-							<?=gettext("Import firewall rules.");?>
+							<?=gettext("Import firewall rules.");?><br/>
+							<div id="submit">
+								<input name="rulesfile" type="file" class="formfld" id="rulesfile" size="40" accept="*.rules">&nbsp;
+								<input name="import" type="submit" class="formbtn" id="import" value="<?=gettext("Import");?>"><br/>
+							</div>
 						</td>
 					</tr>
 				</table>

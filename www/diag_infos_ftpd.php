@@ -69,9 +69,8 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP"))
 				<tr>
 			    <td>
 			    	<?php if (!isset($config['ftpd']['enable'])):?>
-			    	<pre><br/><?=gettext("FTP server disabled");?></pre>
+			    	<pre><?=gettext("FTP server disabled");?></pre>
 			    	<?php else:?>
-			    	<br/>
 			    	<?php
 			    	exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
 						$rawdata = array_slice($rawdata, 1);

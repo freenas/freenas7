@@ -65,7 +65,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("/sbin/atacontrol list");?></pre>
+			    	<pre><?php system("/sbin/atacontrol list");?></pre>
 					</td>
 			  </tr>
 			  <tr>
@@ -73,7 +73,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("/sbin/camcontrol devlist");?></pre>
+			    	<pre><?php system("/sbin/camcontrol devlist");?></pre>
 					</td>
 			  </tr>
     	</table>
