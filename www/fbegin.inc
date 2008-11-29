@@ -149,23 +149,24 @@ function display_menu($menuid) {
 	echo "</li>\n";
 }
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<title><?=genhtmltitle($pgtitle);?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>">
+	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>"/>
 	<?php if ($pgrefresh):?>
-	<meta http-equiv="refresh" content="<?=$pgrefresh;?>">
+	<meta http-equiv="refresh" content="<?=$pgrefresh;?>"/>
 	<?php endif;?>
-	<link href="gui.css" rel="stylesheet" type="text/css">
-	<link href="navbar.css" rel="stylesheet" type="text/css">
-	<link href="tabs.css" rel="stylesheet" type="text/css">
+	<link href="gui.css" rel="stylesheet" type="text/css"/>
+	<link href="navbar.css" rel="stylesheet" type="text/css"/>
+	<link href="tabs.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="javascript/gui.js"></script>
 	<script type="text/javascript" src="javascript/navbar.js"></script>
 </head>
 <body>
 <div id="header">
 	<div class="logo">
-		<a title="www.<?=get_product_url();?>" href="http://www.<?=get_product_url();?>" target="_blank"><img border="0" src="/header_logo.png"></a>
+		<a title="www.<?=get_product_url();?>" href="http://www.<?=get_product_url();?>" target="_blank"><img src="/header_logo.png" alt="logo"/></a>
 	</div>
 	<div class="hostname">
 		<span><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
