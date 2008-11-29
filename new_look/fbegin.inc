@@ -161,8 +161,6 @@ function display_menu($menuid) {
 	<link href="tabs.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="javascript/gui.js"></script>
 	<script type="text/javascript" src="javascript/navbar.js"></script>
-	<script type="text/javascript" src="niftycube/niftycube.js"></script>
-	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body>
 <div id="header">
