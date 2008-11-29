@@ -211,9 +211,6 @@ $pgtitle = array(gettext("License & Credits"));
 		<p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br>
       Copyright &copy; Felix C. Stegerman. All rights reserved.</p>
 
-		<p>Nifty Corners Cube - Rounded corners with CSS and Javascript (<a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">http://www.html.it/articoli/niftycube/index.html</a>)<br>
-      Copyright &copy; 2006 Alessandro Fulciniti (a.fulciniti@html.it).</p>
-
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>
