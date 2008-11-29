@@ -391,7 +391,7 @@ create_image() {
 
 	echo "===> Copying bootloader file(s) to memory disk"
 	mkdir -p $FREENAS_TMPDIR/boot
-	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
+	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
 	mkdir -p $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
@@ -470,7 +470,7 @@ create_iso () {
 
 	echo "ISO: Copying bootloader file(s) to $FREENAS_TMPDIR"
 	mkdir -p $FREENAS_TMPDIR/boot
-	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
+	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/cdboot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
