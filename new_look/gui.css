@@ -279,7 +279,7 @@ div#headernavbar {
 	background: black url(/navbar_default.gif) center center repeat-x;
 }
 div#content {
-	background: #FFFFFF url(bgr-box-trans.gif) repeat-x scroll left top;
+	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
 	border: 1px solid #DEDBD1;
 	margin: 20px 25px 10px 25px;
 	padding: 0 15px 15px 15px;
