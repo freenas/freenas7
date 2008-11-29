@@ -21,12 +21,12 @@ p {
 	margin: 0 0 10px 0;
 }
 pre {
-   border: 0px solid #435370;
-   background: #F0F0F0;
-   font-family: courier new, courier;
-   white-space: pre;
-   line-height: 10pt;
-   font-size: 10pt;
+	border: 0px solid #435370;
+	background: #F0F0F0;
+	font-family: courier new, courier;
+	white-space: pre;
+	line-height: 10pt;
+	font-size: 10pt;
 }
 .pgtitle {
 	font-size: 18px;
@@ -252,6 +252,9 @@ div#header {
 }
 div#header .logo a {
 	margin-left: 15px;
+}
+div#header .logo a img {
+	border: 0;
 }
 div#header .hostname {
 	font-size: 11px;
