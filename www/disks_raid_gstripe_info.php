@@ -60,7 +60,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
     <td class="tabcont">
 			<?php
 			echo "<pre>";
-			echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
+			echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Software RAID information and status")));
 			exec("/sbin/gstripe list",$rawdata);
 			foreach ($rawdata as $line) {
 				echo htmlspecialchars($line) . "<br>";

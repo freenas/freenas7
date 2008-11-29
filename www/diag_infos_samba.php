@@ -69,7 +69,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 				</tr>
 				<tr>
 					<td>
-						<pre><br/><?=gettext("CIFS/SMB disabled");?></pre>
+						<pre><?=gettext("CIFS/SMB disabled");?></pre>
 					</td>
 				</tr>
 				<?php else:?>
@@ -78,7 +78,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 				</tr>
 				<tr>
 			    <td>
-						<pre><br/><?php system("/usr/local/bin/net -P rpc share");?></pre>
+						<pre><?php system("/usr/local/bin/net -P rpc share");?></pre>
 					</td>
 			  </tr>
 				<tr>
@@ -86,7 +86,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 				</tr>
 				<tr>
 			    <td>
-						<pre><br/><?php
+						<pre><?php
 						exec("/usr/local/bin/net -P rpc file", $rawdata);
 						$rawdata = array_slice($rawdata, 4);
 						echo implode("\n", $rawdata);

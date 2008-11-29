@@ -207,8 +207,8 @@ if (!isset($pconfig['do_action'])) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
 				</div>
 				<?php if ($pconfig['do_action']) {
-				echo("<strong>" . gettext("Command output:") . "</strong>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 				
 				if (true === $pconfig['init']) {

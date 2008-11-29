@@ -227,6 +227,9 @@ a {
 	font-size: 11px;
 	font-weight: bold;
 }
+div#infobox, div#errorbox, div#warningbox, div#applybox input {
+	margin-bottom: 10px;
+}
 div#infobox table tr td.icon {
 	background-color: #687BA4;
 	width: 36px;
@@ -288,5 +291,13 @@ div#content {
 	padding: 0 15px 15px 15px;
 }
 div#submit {
-	margin: 7px 0 7px 0;
+	margin-top: 10px;
+}
+div#remarks {
+	margin-top: 10px;
+}
+div#cmdoutput {
+	margin-bottom: 5px;
+	color: #777777;
+	font-weight: bold;
 }

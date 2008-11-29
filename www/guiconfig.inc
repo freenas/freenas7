@@ -178,7 +178,6 @@ function do_input_validate_synctime($postdata, $input_errors) {
 }
 
 function print_input_errors($input_errors) {
-	echo "<p>\n";
 	echo "  <div id='errorbox'>\n";
 	echo "    <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
 	echo "      <tr>\n";
@@ -195,7 +194,6 @@ function print_input_errors($input_errors) {
 	echo "      </tr>\n";
 	echo "    </table>\n";
 	echo "  </div>\n";
-	echo "</p>\n";
 }
 
 function verify_gzip_file($fname) {
@@ -206,7 +204,7 @@ function verify_gzip_file($fname) {
 		return 1;
 }
 
-function print_core_box_np($type, $msg) {
+function print_core_box($type, $msg) {
 	switch ($type) {
 		case "info":
 			$id = "infobox";
@@ -232,38 +230,24 @@ function print_core_box_np($type, $msg) {
 	echo "</div>\n";
 }
 
-function print_info_box_np($msg) {
-	print_core_box_np("info", $msg);
-}
-
 function print_info_box($msg) {
-	echo "<p>";
-	print_core_box_np("info", $msg);
-	echo "</p>";
-}
-
-function print_error_box_np($msg) {
-	print_core_box_np("error", $msg);
+	print_core_box("info", $msg);
 }
 
 function print_error_box($msg) {
-	echo "<p>";
-	print_core_box_np("error", $msg);
-	echo "</p>";
+	print_core_box("error", $msg);
 }
 
 function print_warning_box($msg) {
-	echo "<p>";
-	print_core_box_np("warning", $msg);
-	echo "</p>";
+	print_core_box("warning", $msg);
 }
 
 function print_config_change_box() {
 	$message = gettext("Apply changes");
-	echo "<p>";
-	print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));
-	echo "<br/><input name=\"apply\" type=\"submit\" class=\"formbtn\" id=\"apply\" value=\"{$message}\">";
-	echo "</p>";
+	echo "<div id='applybox'>";
+	print_info_box(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));
+	echo "<input name=\"apply\" type=\"submit\" class=\"formbtn\" id=\"apply\" value=\"{$message}\">";
+	echo "</div>";
 }
 
 function format_bytes($bytes) {

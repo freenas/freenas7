@@ -70,9 +70,9 @@ if (!is_array($config['ad'])) {
 				<tr>
 					<td>
 						<?php if (!isset($config['ad']['enable'])):?>
-						<pre><br/><?=gettext("AD authentication disabled");?></pre>
+						<pre><?=gettext("AD authentication disabled");?></pre>
 						<?php else:?>
-						<pre><br/><?php
+						<pre><?php
 						echo gettext("Results for net rpc testjoin:") . "<br>";
 						system("/usr/local/bin/net rpc testjoin -S {$config['ad']['domaincontrollername']} 2>&1");
 						echo "<br/>" . gettext("Ping winbindd to see if it is alive:") . "<br>";
@@ -87,7 +87,7 @@ if (!is_array($config['ad'])) {
 				</tr>
 				<tr>
 					<td>
-						<pre><br/><?php
+						<pre><?php
 						exec("/usr/local/bin/net rpc user -S {$config['ad']['domaincontrollername']} -U {$config['ad']['username']}%{$config['ad']['password']} 2>&1", $rawdata);
 						echo implode("\n", $rawdata);
 						unset($rawdata);

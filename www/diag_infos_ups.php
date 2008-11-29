@@ -66,13 +66,13 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("UPS"))
 				<?php if (!isset($config['ups']['enable'])):?>
 				<tr>
 					<td>
-						<pre><br/><?=gettext("UPS disabled");?></pre>
+						<pre><?=gettext("UPS disabled");?></pre>
 					</td>
 				</tr>
 				<?php else:?>
 				<tr>
 			    <td>
-						<pre><br/><?php system("/usr/local/bin/upsc {$config['ups']['upsname']}@localhost");?></pre>
+						<pre><?php system("/usr/local/bin/upsc {$config['ups']['upsname']}@localhost");?></pre>
 					</td>
 			  </tr>
 			  <?php endif;?>

@@ -67,10 +67,8 @@ $a_disk = get_physical_disks_list();
 					<td class="listtopic"><?=sprintf(gettext("Device /dev/%s - %s"), $diskk, $diskv['desc']);?></td>
 				</tr>
 				<tr>
-			    <td>
-			    	<pre><br/><?php system("/sbin/fdisk {$diskk}");?></pre>
-					</td>
-			  </tr>
+					<td><pre><?php system("/sbin/fdisk {$diskk}");?></pre></td>
+				</tr>
     		<?php endforeach;?>
     	</table>
     </td>

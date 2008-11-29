@@ -66,8 +66,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 				print('<td class="listr">&nbsp;</td>' . "\n");
 			print("</tr>\n");
 		}
-		print("</table>\n");
-		print("<br/>\n");
+		print("</table><br/>\n");
 	}
 ?>
 		</td>

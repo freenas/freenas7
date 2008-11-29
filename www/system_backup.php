@@ -88,11 +88,13 @@ if ($_POST) {
 			      <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
-			      <td width="78%" class="vtable">
-							<?=gettext("Click this button to download the system configuration in XML format.");?><br><br>
+					<td width="22%" valign="baseline" class="vncell">&nbsp;</td>
+					<td width="78%" class="vtable">
+						<?=gettext("Click this button to download the system configuration in XML format.");?><br/>
+						<div id="submit">
 							<input name="Submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download configuration");?>">
-						</td>
+						</div>
+					</td>
 			    </tr>
 			    <tr>
 			      <td colspan="2" class="list" height="12"></td>
@@ -101,14 +103,19 @@ if ($_POST) {
 			      <td colspan="2" class="listtopic"><?=gettext("Restore configuration");?></td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
-			      <td width="78%" class="vtable">
-							<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br><br>
-							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-							<?php echo sprintf(gettext("%s will reboot after restoring the configuration."), get_product_name());?><br><br>
-							<input name="conffile" type="file" class="formfld" id="conffile" size="40"><br><br>
-							<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
-			      </td>
+					<td width="22%" valign="baseline" class="vncell">&nbsp;</td>
+					<td width="78%" class="vtable">
+						<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br/>
+						<div id="remarks">
+							<?php html_remark("note", gettext("Note"), sprintf(gettext("%s will reboot after restoring the configuration."), get_product_name()));?>
+						</div>
+						<div id="submit">
+						<input name="conffile" type="file" class="formfld" id="conffile" size="40">
+						</div>
+						<div id="submit">
+						<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
+						</div>
+					</td>
 			    </tr>
 			  </table>
 			</td>

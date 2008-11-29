@@ -81,8 +81,8 @@ if (!isset($do_traceroute)) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
 				</div>
 				<?php if ($do_traceroute) {
-				echo("<strong>" . gettext("Command output:") . "</strong>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 				system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
 				echo('</pre>');

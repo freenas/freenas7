@@ -65,7 +65,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Space 
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("/bin/df -h");?></pre>
+			    	<pre><?php system("/bin/df -h");?></pre>
 					</td>
 			  </tr>
     	</table>

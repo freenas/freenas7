@@ -162,9 +162,9 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
     <td class="tabcont">
 			<?php if ($input_errors) print_input_errors($input_errors); ?>
 			<?php if ($savemsg) print_info_box($savemsg); ?>
-			<?php if ($fwinfo) echo $fwinfo; ?>
+			<?php if ($fwinfo) echo "{$fwinfo}<br/>";?>
 			<?php if (!in_array($g['platform'], $fwupplatforms)): ?>
-			<p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p>
+			<?php print_error_box(gettext("Firmware uploading is not supported on this platform."));?>
 			<?php elseif ($sig_warning && !$input_errors): ?>
 			<form action="system_firmware.php" method="post">
 			<?php
@@ -174,32 +174,32 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			<input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">
 			<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
 			</form>
-			<?php else: ?>
+			<?php else:?>
 			<?php if (!file_exists($d_firmwarelock_path)):?>
-			<p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
+			<?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?>
 			<form action="system_firmware.php" method="post" enctype="multipart/form-data">
-			  <table>
-			    <tr>
-			      <td>
-			        <?php if (!file_exists($d_sysrebootreqd_path)): ?>
-							<?php if (!file_exists($d_fwupenabled_path)): ?>
-							<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>">
-							<?php else: ?>
-							<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
-							<br><br>
-							<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld" size="40">
-							<br><br>
-							<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
-							<?php endif; else: ?>
-							<strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong>
-							<?php endif; ?>
-			      </td>
-			    </tr>
-			  </table>
-			  <br/>
-			  <div id="remarks">
-			  	<?php html_remark("warning", gettext("Warning"), sprintf(gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 192, "system_backup.php"));?>
-			  </div>
+				<?php if (!file_exists($d_sysrebootreqd_path)):?>
+					<?php if (!file_exists($d_fwupenabled_path)):?>
+					<div id="submit">
+					<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>">
+					</div>
+					<?php else:?>
+					<div id="submit">
+					<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
+					</div>
+					<div id="submit">
+					<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld" size="40">
+					</div>
+					<div id="submit">
+					<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
+					</div>
+					<?php endif;?>
+				<?php else:?>
+				<strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong>
+				<?php endif;?>
+				<div id="remarks">
+					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 192, "system_backup.php"));?>
+				</div>
 			</form>
 			<?php endif; endif;?>
 		</td>

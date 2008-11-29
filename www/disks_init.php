@@ -183,8 +183,8 @@ if (!isset($do_format)) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
 				</div>
 				<?php if ($do_format) {
-				echo("<strong>" . gettext("Command output:") . "</strong>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
 				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
 				echo('</pre>');
