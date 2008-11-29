@@ -9,7 +9,7 @@
 	list-style: none;
 	float: left;
 	font-size: 13px;
-
+	font-weight: bold;
 }
 #navbarmenu li a {
 	display: block;
@@ -38,9 +38,7 @@
 	border-bottom: 1px solid black;
 	width: 205px;
 	line-height: 12px;
-
-	border: 0;;
-
+	border: 0;
 }
 #navbarmenu div a {
 	position: relative;
@@ -56,7 +54,6 @@
 	font-size: 11px;
 	font-weight: normal;
 	color: white;
-
 }
 #navbarmenu div a:hover {
 	background: transparent url(/navbar_active.gif) center center repeat-x;
@@ -64,5 +61,5 @@
 #navbarmenu div span.tabseparator {
 	background: #AAAAAA;
 	display: block;
-	height: 1px;
+	line-height: 1px;
 }
