@@ -3,8 +3,8 @@ body, td, th, input, select {
 	font-size: 11px;
 }
 body {
-	background: #777777 url("background.gif");
-	margin: 0px 40px 20px 40px;
+	background: #F7F7F7;
+	margin: 0 auto;
 	padding: 0pt;
 	min-width: 700px;
 }
@@ -85,10 +85,6 @@ a {
 }
 .vtable {
 	border-bottom: 1px solid #999999;
-}
-.hostname {
-	font-size: 11px;
-	color: #FFFFFF;
 }
 .listr, .listrc, .listrd, .listrcd {
 	background-color: #FFFFFF;
@@ -223,10 +219,8 @@ a {
 }
 .tabcont {
 	background-color: #EEEEEE;
-	padding-right: 12px;
-	padding-left: 12px;
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding: 12px;
+	border: 1px solid #DEDBD1;
 }
 .label {
 	font-family: tahoma, verdana, arial, helvetica;
@@ -252,63 +246,43 @@ div#errorbox table tr td.message, div#warningbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-div#headerlogo {
-	height: 64px;
+div#header {
+	height: 65px;
 	background: #435370 url("header_bg.gif") center right no-repeat;
-	width: 100%;
+}
+div#header .logo a {
+	margin-left: 15px;
+}
+div#header .hostname {
+	font-size: 11px;
+	color: #FFFFFF;
+	text-align: right;
+	margin-top: -18px;
+	margin-right: 25px;
 }
 div#footer {
-	margin: 5px 0px 0px 0px;
+	margin: 5px 0px 20px 0px;
 	text-align: center;
 }
 div#footer span {
 	font-size: 11px;
-	color: #FFFFFF;
+	color: #777777;
 }
 div#footer span a:link, div#footer span a:active, div#footer span a:visited {
-	color: #FFFFFF;
+	color: #777777;
 }
 div#footer span a:hover {
-	color: #DDDDDD;
+	color: #999999;
 }
 div#headernavbar {
 	width: 100%;
 	background: black url(/navbar_default.gif) center center repeat-x;
 }
-div#content, div#content-bottom, div#content-top {
-	background: #FFFFFF;
-}
-span.corners-top {
-	background-image: url("cornerBottomLeft.png");
-	background-position: 0% 0%;
-}
-span.corners-bottom {
-	padding: 0;
-	background-image: url("cornerBottomLeft.png");
-	background-position: 0% 100%;
-	clear: both;
-}
-span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
-	background-repeat: no-repeat;
-	display: block;
-	font-size: 1px;
-	height: 8px;
-	line-height: 1px;
-}
-span.corners-top span {
-	background-image: url("cornerBottomRight.png");
-	background-position: 100% 0%;
-}
-span.corners-bottom span {
-	background-image: url("cornerBottomRight.png");
-	background-position: 100% 100%;
-}
-span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
-	background-repeat: no-repeat;
-	display: block;
-	font-size: 1px;
-	height: 8px;
-	line-height: 1px;
+div#content {
+	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
+	border: 1px solid #DEDBD1;
+	margin: 20px 25px 10px 25px;
+	padding: 0 15px 15px 15px;
 }
 div#submit {
 	margin: 7px 0 7px 0;

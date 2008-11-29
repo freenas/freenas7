@@ -161,21 +161,15 @@ function display_menu($menuid) {
 	<link href="tabs.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="javascript/gui.js"></script>
 	<script type="text/javascript" src="javascript/navbar.js"></script>
-	<script type="text/javascript" src="niftycube/niftycube.js"></script>
-	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body>
-<div id="headerlogo">
-	<table border="0" cellspacing="0" cellpadding="0" width="100%">
-		<tr>
-			<td align="left">
-				<a href="http://www.<?=get_product_url();?>" target="_blank"><img border="0" src="/header_logo.png"></a>
-			</td>
-			<td align="right" valign="bottom">
-				<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
-			</td>
-		</tr>
-	</table>
+<div id="header">
+	<div class="logo">
+		<a title="www.<?=get_product_url();?>" href="http://www.<?=get_product_url();?>" target="_blank"><img border="0" src="/header_logo.png"></a>
+	</div>
+	<div class="hostname">
+		<span><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
+	</div>
 </div>
 <div id="headernavbar">
 	<ul id="navbarmenu">

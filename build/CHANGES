@@ -6,6 +6,7 @@ Majors changes:
   for the network (this will also never be implemented, use pfSense or m0n0wall
   instead).
 - Upgrade transmission to 1.40.
+- Introduce new WebGUI look.
 
 Minors changes:
 - Add UPS service WebGUI option to define shutdown mode.

@@ -38,3 +38,8 @@ usr/local/www/status_wireless.php
 usr/local/www/access_nis.php
 etc/inc/phpmailer
 etc/mail/smartdreport
+usr/local/www/niftycube
+usr/local/www/cornerBottomLeft.png
+usr/local/www/cornerBottomRight.png
+usr/local/www/tab_l.gif
+usr/local/www/tab_r.gif
