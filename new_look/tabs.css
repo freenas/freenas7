@@ -1,0 +1,61 @@
+/* tabs styles, based on http://www.alistapart.com/articles/slidingdoors */
+td.tabnavtbl {
+	float: left;
+	width: 100%;
+	padding: 0;
+}
+td.tabnavtbl ul {
+	margin: 0px;
+	padding-left: 0px;
+	list-style: none;
+}
+td.tabnavtbl li {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+td.tabnavtbl a {
+	float: left;
+	background: #777777 url("tab_r.gif") no-repeat right top;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+}
+td.tabnavtbl a:hover {
+	background-position: 100% -150px;
+}
+td.tabnavtbl a:visited, td.tabnavtbl a:link {
+	color: white;
+}
+td.tabnavtbl a:active, td.tabnavtbl a:hover {
+	color: black;
+}
+td.tabnavtbl span {
+	float: left;
+	display: block;
+	background: url("tab_l.gif") no-repeat left top;
+	padding: 6px 9px;
+	white-space: nowrap;
+}
+td.tabnavtbl td {
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+}
+/* commented backslash hack hides rule from ie5-mac \*/
+td.tabnavtbl span {
+	float: none;
+}
+/* end ie5-mac hack */
+td.tabnavtbl a:hover span {
+	background-position: 0% -150px;
+}
+td.tabnavtbl li.tabact a {
+	background-position: 100% -150px;
+	border-width: 0px;
+}
+td.tabnavtbl li.tabact span {
+	background-position: 0% -150px;
+	padding-bottom: 6px;
+	color: black;
+}
