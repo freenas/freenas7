@@ -32,10 +32,11 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
-FreeNAS 0.69 (Kwisatz Haderach):
---------------------------------
+FreeNAS 0.69RC2 (Kralizec):
+---------------------------
 
 Majors changes:
+- Upgrade to FreeBSD 6.4.
 - Add system firewall. Please note this is only for the local system and not
   for the network (this will also never be implemented, use pfSense or m0n0wall
   instead).
@@ -121,7 +122,7 @@ FreeNAS 0.69b4 (Sareer):
 ------------------------
 
 Majors changes:
-- Upgrade to FreeBSD 6.4.
+- Upgrade to FreeBSD 6.4b.
 - Upgrade rsync to 3.0.4.
 - Upgrade PHPMailer to 2.2.1.
 - Upgrade Transmission to 1.34.
