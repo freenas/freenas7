@@ -121,7 +121,7 @@ a {
 	background-color: #D9DEE8;
 }
 .listhdr, .listhdrr, .listhdrc {
-	background-color: #BBBBBB;
+	background: #BBBBBB url("gradient_listhdr.gif") repeat-x scroll left top;
 	padding-right: 16px;
 	padding-left: 6px;
 	font-weight: bold;
