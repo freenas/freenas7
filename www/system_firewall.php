@@ -177,8 +177,8 @@ function firewall_process_updatenotification($mode, $data) {
 <?php include("fbegin.inc");?>
 <form action="system_firewall.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
+		<tr>
+			<td class="tabcont">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
@@ -186,9 +186,9 @@ function firewall_process_updatenotification($mode, $data) {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("System firewall"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<tr>
-			    	<td width="22%" valign="top" class="vncell"><?=gettext("Rules");?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Rules");?></td>
 						<td width="78%" class="vtable">
-				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
 									<td width="4%" class="list"></td>
 									<td width="5%" class="listhdrr"><?=gettext("Proto");?></td>
@@ -235,7 +235,7 @@ function firewall_process_updatenotification($mode, $data) {
 									</td>
 									<?php endif;?>
 								</tr>
-							  <?php $i++; endforeach;?>
+								<?php $i++; endforeach;?>
 								<tr>
 									<td class="list" colspan="8"></td>
 									<td class="list">
