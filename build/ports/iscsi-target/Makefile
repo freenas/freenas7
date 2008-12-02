@@ -23,8 +23,8 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKDIR}/netbsd-iscsi-*/src/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin
 
 	@${MKDIR} ${FREENAS_ROOTFS}/etc/iscsi
-	@${LN} -s -f -v /var/etc/iscsi/auths ${FREENAS_ROOTFS}/etc/iscsi/auths
-	@${LN} -s -f -v /var/etc/iscsi/passwd ${FREENAS_ROOTFS}/etc/iscsi/passwd
-	@${LN} -s -f -v /var/etc/iscsi/targets ${FREENAS_ROOTFS}/etc/iscsi/targets
+.for i in targets passwd auths
+	@${LN} -s -f -v /var/etc/iscsi/${i} ${FREENAS_ROOTFS}/etc/iscsi/${i}
+.endfor
 
 .include <bsd.port.mk>
