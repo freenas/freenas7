@@ -9,12 +9,16 @@
 msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
 msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 
+# Get date in RFC 2882 format.
+_rfcdate=`date "+%a, %d %b %Y %H:%M:%S %z"`
+
 # Create message
 echo ${SMARTD_ADDRESS} | awk '{for ( i = NF ; i > 0 ; --i ) printf("To: %s\n",$i)}' > ${msmtp_msgfile}
 
 /usr/local/bin/xml sel -t \
 	-v "concat('From: ',//system/email/from)" -n \
 	-o "Subject: ${SMARTD_SUBJECT}" -n \
+	-o "Date: ${_rfcdate}" -n \
 	-o "." -n \
 	${configxml_file} | /usr/local/bin/xml unesc >> ${msmtp_msgfile}
 

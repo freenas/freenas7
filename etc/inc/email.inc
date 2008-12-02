@@ -59,6 +59,9 @@ function email_send($address, $subject, $message, &$error) {
 
 	$msgfilepath = "/tmp/message";
 
+	// Get date in RFC 2882 format.
+	$rfcdate = date('r');
+
 	// Convert adresses for msmtp.
 	$address = strtr($address, ";", " ");
 
@@ -70,6 +73,7 @@ function email_send($address, $subject, $message, &$error) {
 	$data .= <<<EOD
 From: {$config['system']['email']['from']}
 Subject: {$subject}
+Date: {$rfcdate}
 .
 
 {$message}
