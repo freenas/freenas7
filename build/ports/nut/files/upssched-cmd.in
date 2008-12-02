@@ -75,6 +75,9 @@ logger -t upssched-cmd "${_message}"
 
 # Send email if feature is enabled
 if configxml_isset //ups/email/enable; then
+	# Get date in RFC 2882 format.
+	_rfcdate=`date "+%a, %d %b %Y %H:%M:%S %z"`
+
 	# Get recipients
 	_recipients=`configxml_get "//ups/email/to" | /usr/bin/tr ";" " "`
 
@@ -84,6 +87,7 @@ if configxml_isset //ups/email/enable; then
 	/usr/local/bin/xml sel -t \
 		-v "concat('From: ',//system/email/from)" -n \
 		-v "concat('Subject: ',//ups/email/subject)" -n \
+		-o "Date: ${_rfcdate}" -n \
 		-o "." -n \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${msmtp_msgfile}
 
