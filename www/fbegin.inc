@@ -119,6 +119,7 @@ $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" =
 $menu['help']['desc'] = gettext("Help");
 $menu['help']['link'] = "";
 $menu['help']['menuitem'] = array();
+$menu['help']['menuitem'][] = array("desc" => gettext("Forum"), "link" => "http://apps.sourceforge.net/phpbb/freenas/index.php", "visible" => true, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("Knowledgebase"), "link" => "http://www.freenaskb.info/kb", "visible" => true, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("Release notes"), "link" => "changes.php", "visible" => true);
 $menu['help']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
