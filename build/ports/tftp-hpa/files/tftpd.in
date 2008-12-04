@@ -1,0 +1,42 @@
+#!/bin/sh
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: tftpd
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+# XQUERY: -i "count(//tftpd/enable) > 0" -o "0" -b
+# RCVAR: tftpd
+
+. /etc/rc.subr
+. /etc/util.subr
+. /etc/configxml.subr
+
+name="tftpd"
+rcvar=`set_rcvar`
+
+load_rc_config "${name}"
+
+# Custom commands
+start_precmd="start_precmd"
+
+# Defaults
+tftpd_enable=${tftpd_enable:-"NO"}
+command="/usr/local/sbin/${name}"
+command_args="-v -l"
+
+start_precmd()
+{
+	local _command_args
+
+	# Create command args line.
+	_command_args=`/usr/local/bin/xml sel -t -m "//tftpd" \
+		-i "count(allownew) > 0" -o "-c " -b \
+		-v "concat('-s &quot;',dir,'&quot; ')" \
+		-i "string-length(extraoptions) > 0" -v extraoptions -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	command_args="${command_args} ${_command_args}"
+}
+
+run_rc_command "$1"
