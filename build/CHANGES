@@ -2,12 +2,11 @@ FreeNAS 0.69 (Kwisatz Haderach):
 --------------------------------
 
 Majors changes:
+- Add TFTP service. It is accessible via 'Services|TFTP' in the WebGUI.
 
 Minors changes:
 - Set date in email-header when sending email.
 - Add WebGUI link 'Help|Forum' to FreeNAS forum hosted on Sourceforge.
-
-Bug fixes:
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

@@ -953,4 +953,12 @@
 			<subject></subject>
 		</email>
 	</ups>
+	<tftpd>
+		<!--
+		<enable/>
+		<allownew/>
+		-->
+		<dir></dir>
+		<extraoptions></extraoptions>
+	</tftpd>
 </freenas>
