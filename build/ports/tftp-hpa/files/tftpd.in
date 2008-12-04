@@ -32,8 +32,8 @@ start_precmd()
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//tftpd" \
 		-i "count(allownew) > 0" -o "-c " -b \
-		-v "concat('-s &quot;',dir,'&quot; ')" \
 		-i "string-length(extraoptions) > 0" -v extraoptions -b \
+		-v "concat('-s &quot;',dir,'&quot; ')" \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	command_args="${command_args} ${_command_args}"
