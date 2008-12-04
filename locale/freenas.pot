@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-11-27 20:22+0000\n"
+"PO-Revision-Date: 2008-12-04 20:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -332,6 +332,12 @@ msgstr ""
 msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr ""
 
+msgid "Allow new files"
+msgstr ""
+
+msgid "Allow new files to be created."
+msgstr ""
+
 msgid "Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed."
 msgstr ""
 
@@ -446,6 +452,9 @@ msgid "BitTorrent"
 msgstr ""
 
 msgid "Browseable"
+msgstr ""
+
+msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
 msgid "CCMP"
@@ -1317,6 +1326,9 @@ msgstr ""
 msgid "Extra options"
 msgstr ""
 
+msgid "Extra options (usually empty)."
+msgstr ""
+
 msgid "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."
 msgstr ""
 
@@ -1457,6 +1469,9 @@ msgid "Format"
 msgstr ""
 
 msgid "Format disk"
+msgstr ""
+
+msgid "Forum"
 msgstr ""
 
 msgid "Free disk space"
@@ -3019,6 +3034,9 @@ msgstr ""
 msgid "TCP port to bind the server to."
 msgstr ""
 
+msgid "TFTP"
+msgstr ""
+
 msgid "TKIP"
 msgstr ""
 
@@ -3222,6 +3240,9 @@ msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
 
 msgid "The device's IP address."
+msgstr ""
+
+msgid "The directory containing the files you want to publish."
 msgstr ""
 
 #, php-format
@@ -3594,6 +3615,9 @@ msgid "Trap string."
 msgstr ""
 
 msgid "Traps"
+msgstr ""
+
+msgid "Trivial File Transfer Protocol"
 msgstr ""
 
 msgid "Tuning"
