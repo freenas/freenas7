@@ -100,7 +100,7 @@ sajax_handle_client_request();
     <td height="10" colspan="2">&nbsp;</td>
   </tr>
   <tr align="center" valign="top">
-    <td height="170" colspan="2"><img src="logobig.png" width="520" height="149"></td>
+    <td height="170" colspan="2"><img src="logobig.png"></td>
   </tr>
 </table>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
