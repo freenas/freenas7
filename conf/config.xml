@@ -956,9 +956,14 @@
 	<tftpd>
 		<!--
 		<enable/>
-		<allownew/>
+		<allowfilecreation/>
 		-->
 		<dir></dir>
 		<extraoptions></extraoptions>
+		<port></port>
+		<username>nobody</username>
+		<umask></umask>
+		<timeout></timeout>
+		<maxblocksize></maxblocksize>
 	</tftpd>
 </freenas>

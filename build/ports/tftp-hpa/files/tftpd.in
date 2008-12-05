@@ -31,9 +31,14 @@ start_precmd()
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//tftpd" \
-		-i "count(allownew) > 0" -o "-c " -b \
-		-i "string-length(extraoptions) > 0" -v "concat(extraoptions,' ')" -b \
-		-v "concat('-s &quot;',dir,'&quot; ')" \
+		-i "count(allowfilecreation) > 0" -o " -c" -b \
+		-i "string-length(port) > 0" -v "concat(' -a :',port)" -b \
+		-i "string-length(username) > 0" -v "concat(' -u ',username)" -b \
+		-i "string-length(umask) > 0" -v "concat(' -U ',umask)" -b \
+		-i "string-length(timeout) > 0" -v "concat(' -T ',timeout)" -b \
+		-i "string-length(maxblocksize) > 0" -v "concat(' -B ',maxblocksize)" -b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
+		-v "concat(' -s &quot;',dir,'&quot;')" \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	command_args="${command_args} ${_command_args}"
