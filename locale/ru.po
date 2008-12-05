@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-27 21:46+0000\n"
-"PO-Revision-Date: 2008-12-02 15:47+0000\n"
+"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"PO-Revision-Date: 2008-12-05 09:51+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-02 17:22+0000\n"
+"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -29,7 +29,7 @@ msgstr "%d%% из %d Мбайт"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s предлагает себя в качестве сервера времени для клиентов Windows."
+msgstr "Предлагать %s в качестве сервера времени для клиентов Windows."
 
 #, php-format
 msgid "%s available of %sB"
@@ -354,7 +354,7 @@ msgid "Additional group"
 msgstr "Дополнительная группа"
 
 msgid "Additional parameters to the hardware-specific part of the driver."
-msgstr "Дополнительные параметры аппаратной части драйвера"
+msgstr "Дополнительные параметры аппаратной части драйвера."
 
 msgid "Address"
 msgstr "Адрес"
@@ -392,7 +392,7 @@ msgid ""
 msgstr ""
 "После нажатия &quot;Сохранить&quot; для последующего доступа к %s может "
 "потребоваться: <ul><li>сменить IP-адрес вашего компьютера;</li><li>войти в "
-"веб-интерфейс управления с новым IP-адресом.</li></ul>"
+"web-интерфейс управления с новым IP-адресом.</li></ul>"
 
 #, php-format
 msgid ""
@@ -406,7 +406,7 @@ msgstr ""
 "чтобы изменения вступили в силу. Также может возникнуть необходимость "
 "выполнить следующие действия для дальнейшего доступа к NAS: </span></p> "
 "<ul><li><span class='vexpl'>сменить IP-адрес вашего компьютера;</span></li> "
-"<li><span class='vexpl'>войти в веб-интерфейс управления с новым IP-"
+"<li><span class='vexpl'>войти в web-интерфейс управления с новым IP-"
 "адресом.</span></li></ul>"
 
 msgid "Aggregation protocol"
@@ -426,17 +426,23 @@ msgstr ""
 "начинающиеся с .Apple недопустимы."
 
 msgid "All users will have the root privilege."
-msgstr "Все пользователи будут иметь права учётной записи root."
+msgstr "Все пользователи будут иметь права учетной записи root."
 
 msgid "Allow"
 msgstr "Разрешить"
 
 msgid "Allow client access to accounts that have null passwords."
-msgstr "Разрешить клиентский доступ к учетным записям без пароля."
+msgstr "Разрешить клиентский доступ к учетным записям без пароля"
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr "Разрешить клиентам хранить атрибуты в стиле OS/2 на общем ресурсе."
+
+msgid "Allow new files"
+msgstr "Новые файлы"
+
+msgid "Allow new files to be created."
+msgstr "Позволять создание новых файлов"
 
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
@@ -457,7 +463,7 @@ msgstr ""
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr ""
-"Позволяет %s участвовать в выборах и стать основным локальным обозревателем "
+"Позволять %s участвовать в выборах и стать основным локальным обозревателем "
 "сети."
 
 msgid ""
@@ -578,6 +584,9 @@ msgstr "BitTorrent"
 msgid "Browseable"
 msgstr "Просматриваемый"
 
+msgid "By default, only already existing files can be uploaded."
+msgstr "По умолчанию могут быть загружены только уже существующие файлы."
+
 msgid "CCMP"
 msgstr "CCMP"
 
@@ -649,8 +658,8 @@ msgid ""
 "process."
 msgstr ""
 "Щелкните &quot;Разрешить загрузку прошивки&quot;, затем выберите файл "
-"образа, который хотите загрузить.<br>Щелкните &quot;Обновить прошивку&quot; "
-"чтобы начать процесс обновления."
+"образа, который должен быть  загружен.<br>Щелкните &quot;Обновить "
+"прошивку&quot; чтобы начать процесс обновления."
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr ""
@@ -1190,7 +1199,7 @@ msgid "Document root"
 msgstr "Корневой документ"
 
 msgid "Document root of the webserver. Home of the web page files."
-msgstr "Документ в корне веб-сервера. Домашняя страница."
+msgstr "Документ в корне web-сервера. Домашняя страница."
 
 msgid "Domain"
 msgstr "Домен"
@@ -1245,7 +1254,7 @@ msgid "Download directory"
 msgstr "Каталог скачиваемых файлов"
 
 msgid "Download firewall rules."
-msgstr "Экспортировать правила firewall"
+msgstr "Экспортировать правила firewall."
 
 msgid "Driver"
 msgstr "Драйвер"
@@ -1260,7 +1269,7 @@ msgid "Duplicate share name."
 msgstr "Повторяющееся имя общего ресурса."
 
 msgid "Dynamic DNS"
-msgstr "Динамический DNS"
+msgstr "Dynamic DNS"
 
 msgid "EA support"
 msgstr "Поддержка расширенных атрибутов"
@@ -1534,7 +1543,7 @@ msgid ""
 "shutdown."
 msgstr ""
 "Выполнить команду до/после инициализации системы (загрузки) или перед "
-"выключением"
+"выключением."
 
 msgid "Execute now"
 msgstr "Выполнить немедленно"
@@ -1560,6 +1569,9 @@ msgstr ""
 
 msgid "Extra options"
 msgstr "Дополнительные настройки"
+
+msgid "Extra options (usually empty)."
+msgstr "Дополнительные настройки (обычно пусто)."
 
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
@@ -1731,6 +1743,9 @@ msgstr "Форматирование"
 msgid "Format disk"
 msgstr "Форматировать диск"
 
+msgid "Forum"
+msgstr "Форум разработчиков"
+
 msgid "Free disk space"
 msgstr "Свободное дисковое пространство"
 
@@ -1765,7 +1780,7 @@ msgid "Give full shell access to user."
 msgstr "Разрешить полный доступ к shell этому пользователю"
 
 msgid "Give only local users access to the web page."
-msgstr "Только локальные пользователи могут открыть веб-страницу."
+msgstr "Только локальные пользователи могут открыть web-страницу."
 
 msgid "Graph"
 msgstr "График"
@@ -1829,8 +1844,8 @@ msgid ""
 "Hint: If this is checked, IP addresses in %s logs are resolved to real "
 "hostnames where possible."
 msgstr ""
-"Подсказка: если это указано, то IP-адреса в %s журнале будут по возможности "
-"преобразовываться в реальные имена хостов."
+"Подсказка: если эта опция разрешена, то IP-адреса хостов в %s журнале будут "
+"по возможности преобразовываться в реальные имена."
 
 msgid "Home directory"
 msgstr "Домашний каталог"
@@ -2013,7 +2028,7 @@ msgid "Import"
 msgstr "Импортировать"
 
 msgid "Import firewall rules."
-msgstr "Импортировать правила firewall"
+msgstr "Импортировать правила firewall."
 
 msgid "In"
 msgstr "В"
@@ -2123,7 +2138,7 @@ msgid "LAN net"
 msgstr "Локальная сеть"
 
 msgid "LDAP"
-msgstr "LDAP"
+msgstr "Облегченный протокол доступа к каталогам (LDAP)"
 
 msgid ""
 "LDAP authentication feature is not implemented: If you know how to use PAM "
@@ -2148,7 +2163,7 @@ msgstr "Запись-чтение большими блоками"
 
 #, php-format
 msgid "Last %d %s log entries"
-msgstr "Последние <i>%d</i> записей в журнале '%s'"
+msgstr "Последние %d записей в журнале '%s'"
 
 msgid "Last config change"
 msgstr "Последнее изменение конфигурации"
@@ -2295,7 +2310,7 @@ msgid "MTU"
 msgstr "Размер MTU"
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
-msgstr "Убедитесь, что S.M.A.R.T. на вашем устройстве включен"
+msgstr "Убедитесь, что S.M.A.R.T. на вашем устройстве включен."
 
 #, php-format
 msgid ""
@@ -2310,7 +2325,7 @@ msgid "Manufacturer"
 msgstr "Производитель"
 
 msgid "Map all users to root"
-msgstr "Присвоить всем пользователям права учётной записи root"
+msgstr "Присвоить всем пользователям права учетной записи root"
 
 msgid "Map to user"
 msgstr "Назначить пользователю"
@@ -2365,7 +2380,7 @@ msgid "Memory usage"
 msgstr "Использование памяти"
 
 msgid "Message of the day."
-msgstr "Сообщение дня"
+msgstr "Сообщение дня."
 
 msgid "Method used to store your password in your LDAP."
 msgstr "Метод хранения паролей в службе LDAP."
@@ -2386,7 +2401,7 @@ msgid "Minimum power usage without Standby"
 msgstr "Минимальное энергопотребление без режима Standby"
 
 msgid "Minutes between network time sync."
-msgstr "Сетевая синхронизация времени через (минут)"
+msgstr "Сетевая синхронизация времени через (минут)."
 
 msgid "Mode"
 msgstr "Режим"
@@ -2614,7 +2629,7 @@ msgid ""
 "configuration."
 msgstr ""
 "Откройте XML-файл настроек %s и нажмите кнопку ниже для восстановления "
-"конфигурации"
+"конфигурации."
 
 msgid "Option"
 msgstr "Параметр"
@@ -2734,7 +2749,7 @@ msgid "Path to be shared."
 msgstr "Путь к общему ресурсу."
 
 msgid "Permit root login"
-msgstr "Разрешать вход с учётной записью root"
+msgstr "Разрешать вход с учетной записью root"
 
 msgid "Permit to do SSH Tunneling."
 msgstr "Разрешать SSH-туннелирование"
@@ -2783,7 +2798,7 @@ msgid ""
 "through %d). Default port is %d."
 msgstr ""
 "Порт для прослушивания. Могут быть использованы только dynamic и private "
-"порты (с %d по %d). По умолчанию %d-й."
+"порты (с %d-го по %d-й). По умолчанию %d-й."
 
 msgid "Ports"
 msgstr "Порты"
@@ -2892,7 +2907,7 @@ msgid "RAID5"
 msgstr "RAID5"
 
 msgid "RSYNC"
-msgstr "Служба RSYNC"
+msgstr "RSYNC"
 
 msgid "RSYNC Client"
 msgstr "Клиент RSYNC"
@@ -2910,7 +2925,7 @@ msgid "RSYNC log"
 msgstr "Журнал RSYNC"
 
 msgid "RSYNCD"
-msgstr "RSYNCD"
+msgstr "RSYNC"
 
 msgid "Raid name"
 msgstr "Имя RAID-массива"
@@ -3126,7 +3141,7 @@ msgid "Select mount point where to create the swap file."
 msgstr "Выберите точку монтирования для создания файла подкачки"
 
 msgid "Select the FreeBSD package to be installed."
-msgstr "Выберите пакет FreeBSD для установки"
+msgstr "Выберите пакет FreeBSD для установки."
 
 msgid "Select the location closest to you."
 msgstr "Выберите часовой пояс"
@@ -3138,7 +3153,7 @@ msgid "Selected"
 msgstr "Выбранные"
 
 msgid "Selected file isn't an valid ISO file."
-msgstr "Выбранный файл не является верным ISO-образом."
+msgstr "Выбранный файл не является корректным ISO-образом."
 
 msgid "Self-Monitoring, Analysis and Reporting Technology"
 msgstr "Self-Monitoring, Analysis and Reporting Technology (S.M.A.R.T.)"
@@ -3208,10 +3223,10 @@ msgid ""
 "transmitted on an interface. Not all interfaces support setting the MTU, and "
 "some interfaces have range restrictions."
 msgstr ""
-"Установить MTU, специфичный для этого интерфейса. MTU используется для "
+"Установите MTU, специфичный для этого интерфейса. MTU используется для "
 "ограничения размера пакетов на интерфейсе. Не все интерфейсы поддерживают "
 "установку размера MTU и некоторые интерфейсы имеют ограничения на интервал "
-"настройки параметра"
+"настройки параметра."
 
 msgid ""
 "Sets the database information to be stored in path. You have to specifiy a "
@@ -3224,8 +3239,8 @@ msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
 msgstr ""
-"Устанавливает интервал между проверками диска в N секунд. Минимальное "
-"значение - 10."
+"Устанавливает интервал между проверками диска (в секундах), минимальное "
+"значение - 10 секунд."
 
 msgid "Settings"
 msgstr "Параметры"
@@ -3327,7 +3342,7 @@ msgid "Specifies that the file system should be exported read-only."
 msgstr "Укажите, если файловая система будет в режиме только-для-чтения"
 
 msgid "Specifies the command to be run."
-msgstr "Задайте выполняемую команду здесь"
+msgstr "Задайте выполняемую команду здесь."
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3376,7 +3391,7 @@ msgstr ""
 "раскручивание диска ноутбука этой опцией."
 
 msgid "Standby time"
-msgstr "Время до режима Standby"
+msgstr "Таймаут до режима Standby"
 
 msgid "State"
 msgstr "Состояние"
@@ -3448,7 +3463,7 @@ msgid "Swap file size"
 msgstr "Размер файла подкачки"
 
 msgid "Swap memory"
-msgstr "Память подкачки"
+msgstr "Файл подкачки"
 
 msgid "Swap status"
 msgstr "Статус подкачки"
@@ -3515,6 +3530,9 @@ msgstr "TCP-порт"
 msgid "TCP port to bind the server to."
 msgstr "Порт TCP, закрепленный за сервером"
 
+msgid "TFTP"
+msgstr "TFTP"
+
 msgid "TKIP"
 msgstr "TKIP"
 
@@ -3549,7 +3567,7 @@ msgid "Temporary directory to store transcoded files."
 msgstr "Временный каталог для хранения транскодированных файлов."
 
 msgid "Test email"
-msgstr "Тест e-mail"
+msgstr "Тестовый e-mail"
 
 #, php-format
 msgid "Test email from host: %s"
@@ -3744,13 +3762,17 @@ msgid "The cron job has been executed successfully."
 msgstr "Задание Сron'а было выполнено успешно."
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
-msgstr "Порт почтового сервера по умолчанию, например, 25 или 587"
+msgstr "Порт почтового сервера по умолчанию, например, 25-й или 587-й."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Имя устройства может состоять только из символов  a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
 msgstr "IP-адрес устройства."
+
+msgid "The directory containing the files you want to publish."
+msgstr ""
+"Этот каталог содержит файлы, предназначенные для общего использования."
 
 #, php-format
 msgid ""
@@ -3941,7 +3963,7 @@ msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
 "to a running system."
 msgstr ""
-"Эти MIBs будут добавлены к /etc/sysctl.conf и разрешат делать изменения на "
+"Эти MIB будут добавлены к /etc/sysctl.conf и позволят применить изменения к "
 "работающей системе."
 
 msgid ""
@@ -4101,12 +4123,11 @@ msgid ""
 "has not been tampered with.<br><br>Do you want to install this image anyway "
 "(on your own risk)?"
 msgstr ""
-"Это означает, что предлагаемый вами образ не является "
-"официальным/поддерживаемым образом, его использование может привести к "
-"неожиданному поведению или нарушению безопасности. Устанавливайте только те "
-"образы, которые были получены из доверенных источников, убедившись, что они "
-"не были изменены.<br><br>Хотите ли вы все равно установить этот образ (на "
-"свой риск)?"
+"Это означает, что файл образа, предложенный вами, не является официальным "
+"или поддерживаемым, а его использование может привести к неожиданному "
+"поведению или нарушению безопасности. Устанавливайте только те образы, "
+"которые были получены из доверенных источников, убедившись, что они не были "
+"изменены.<br><br>Вы все равно хотите установить этот образ (на свой риск)?"
 
 msgid "This name already exists in the disk list."
 msgstr "Данное имя уже есть в списке дисков."
@@ -4353,11 +4374,14 @@ msgstr "Строка для trap."
 msgid "Traps"
 msgstr "Traps"
 
+msgid "Trivial File Transfer Protocol"
+msgstr "Trivial File Transfer Protocol (TFTP)"
+
 msgid "Tuning"
 msgstr "Настройка"
 
 msgid "Type"
-msgstr "Тип"
+msgstr "Среда передачи"
 
 #, php-format
 msgid ""
@@ -4637,7 +4661,7 @@ msgid "WebGUI"
 msgstr "Web-интерфейс"
 
 msgid "Webserver"
-msgstr "Веб-сервер"
+msgstr "Webserver"
 
 msgid "Where the working files will be stored"
 msgstr "Место хранения рабочих файлов"
@@ -4745,7 +4769,7 @@ msgstr ""
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
-"Следует использовать HTTPS в качестве WebGUI протокола для отправки "
+"Следует использовать HTTPS в качестве протокола WebGUI для отправки "
 "парольной фразы."
 
 msgid "Your own email address."

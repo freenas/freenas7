@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-11-27 21:46+0000\n"
+"POT-Creation-Date: 2008-12-04 23:29+0000\n"
 "PO-Revision-Date: 2008-12-02 02:59+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-02 17:22+0000\n"
+"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -448,6 +448,12 @@ msgstr ""
 "Sta de werkstations toe om OS/2-stijl externe attributen op te slaan op een "
 "gedeeld station."
 
+msgid "Allow new files"
+msgstr ""
+
+msgid "Allow new files to be created."
+msgstr ""
+
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
 "Directories can be removed, but only if they are empty. However, overwriting "
@@ -586,6 +592,9 @@ msgstr "BitTorrent"
 
 msgid "Browseable"
 msgstr "Verkenbaar"
+
+msgid "By default, only already existing files can be uploaded."
+msgstr ""
 
 msgid "CCMP"
 msgstr "CCMP"
@@ -1586,6 +1595,9 @@ msgstr ""
 msgid "Extra options"
 msgstr "Extra opties"
 
+msgid "Extra options (usually empty)."
+msgstr ""
+
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
 "entered options prevent SSH service to be started."
@@ -1756,6 +1768,9 @@ msgstr "Formatteren"
 
 msgid "Format disk"
 msgstr "Formatteer schijf"
+
+msgid "Forum"
+msgstr ""
 
 msgid "Free disk space"
 msgstr "Vrije schijfruimte"
@@ -3579,6 +3594,9 @@ msgstr "TCP poort"
 msgid "TCP port to bind the server to."
 msgstr "TCP poort om de sever aan te koppelen."
 
+msgid "TFTP"
+msgstr ""
+
 msgid "TKIP"
 msgstr "TKIP"
 
@@ -3826,6 +3844,9 @@ msgstr "De schijf naam mag alleen bestaan uit de karakters a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
 msgstr "Het IP adres van het apparaat."
+
+msgid "The directory containing the files you want to publish."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4450,6 +4471,9 @@ msgstr "Trap string."
 
 msgid "Traps"
 msgstr "Traps"
+
+msgid "Trivial File Transfer Protocol"
+msgstr ""
 
 msgid "Tuning"
 msgstr "Optimalizatie"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-11-27 21:46+0000\n"
+"POT-Creation-Date: 2008-12-04 23:29+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-02 17:23+0000\n"
+"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -396,6 +396,12 @@ msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr ""
 
+msgid "Allow new files"
+msgstr ""
+
+msgid "Allow new files to be created."
+msgstr ""
+
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
 "Directories can be removed, but only if they are empty. However, overwriting "
@@ -522,6 +528,9 @@ msgstr ""
 
 msgid "Browseable"
 msgstr "отварящ се"
+
+msgid "By default, only already existing files can be uploaded."
+msgstr ""
 
 msgid "CCMP"
 msgstr ""
@@ -1460,6 +1469,9 @@ msgstr ""
 msgid "Extra options"
 msgstr ""
 
+msgid "Extra options (usually empty)."
+msgstr ""
+
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
 "entered options prevent SSH service to be started."
@@ -1616,6 +1628,9 @@ msgstr "Формат"
 
 msgid "Format disk"
 msgstr "форматирай диска"
+
+msgid "Forum"
+msgstr ""
 
 msgid "Free disk space"
 msgstr ""
@@ -3311,6 +3326,9 @@ msgstr "ТCP порт"
 msgid "TCP port to bind the server to."
 msgstr ""
 
+msgid "TFTP"
+msgstr ""
+
 msgid "TKIP"
 msgstr ""
 
@@ -3536,6 +3554,9 @@ msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "The device name may only consist of the characters a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
+msgstr ""
+
+msgid "The directory containing the files you want to publish."
 msgstr ""
 
 #, php-format
@@ -4039,6 +4060,9 @@ msgid "Trap string."
 msgstr ""
 
 msgid "Traps"
+msgstr ""
+
+msgid "Trivial File Transfer Protocol"
 msgstr ""
 
 msgid "Tuning"

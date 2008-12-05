@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-27 21:46+0000\n"
+"POT-Creation-Date: 2008-12-04 23:29+0000\n"
 "PO-Revision-Date: 2008-11-29 15:09+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-02 17:22+0000\n"
+"X-Launchpad-Export-Date: 2008-12-05 19:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -393,6 +393,12 @@ msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr ""
 
+msgid "Allow new files"
+msgstr ""
+
+msgid "Allow new files to be created."
+msgstr ""
+
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
 "Directories can be removed, but only if they are empty. However, overwriting "
@@ -519,6 +525,9 @@ msgstr ""
 
 msgid "Browseable"
 msgstr "ブラウズ可能"
+
+msgid "By default, only already existing files can be uploaded."
+msgstr ""
 
 msgid "CCMP"
 msgstr "CCMP"
@@ -1450,6 +1459,9 @@ msgstr ""
 msgid "Extra options"
 msgstr "拡張オプション"
 
+msgid "Extra options (usually empty)."
+msgstr ""
+
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
 "entered options prevent SSH service to be started."
@@ -1606,6 +1618,9 @@ msgstr "フォーマット"
 
 msgid "Format disk"
 msgstr "ディスクフォーマット"
+
+msgid "Forum"
+msgstr ""
 
 msgid "Free disk space"
 msgstr "ディスクの空き容量"
@@ -3285,6 +3300,9 @@ msgstr "TCP ポート"
 msgid "TCP port to bind the server to."
 msgstr ""
 
+msgid "TFTP"
+msgstr ""
+
 msgid "TKIP"
 msgstr "TKIP"
 
@@ -3511,6 +3529,9 @@ msgstr "デバイス名には a-z, A-Z, 0-9 の文字のみが利用出来ます
 
 msgid "The device's IP address."
 msgstr "デバイスのIPアドレス"
+
+msgid "The directory containing the files you want to publish."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4007,6 +4028,9 @@ msgstr ""
 
 msgid "Traps"
 msgstr "トラップ"
+
+msgid "Trivial File Transfer Protocol"
+msgstr ""
 
 msgid "Tuning"
 msgstr "チューニング"
