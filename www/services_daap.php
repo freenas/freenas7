@@ -127,7 +127,7 @@ function enable_change(enable_change) {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (!isset($config['system']['zeroconf'])) print_error_box(sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php"));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<?php html_titleline_checkbox("enable", gettext("DAAP Server"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+			  	<?php html_titleline_checkbox("enable", gettext("Digital Audio Access Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("servername", gettext("Server name"), $pconfig['servername'], gettext("This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."), true, 20);?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("Port to listen on. Default iTunes port is 3689."), true, 5);?>
 					<?php html_filechooser("dbdir", gettext("Database directory"), $pconfig['dbdir'], gettext("Location where the content database file will be stored."), "/mnt", true, 60);?>
