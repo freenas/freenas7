@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-04 20:45+0000\n"
+"PO-Revision-Date: 2008-12-05 19:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -154,9 +154,6 @@ msgid "AD or PDC name."
 msgstr ""
 
 msgid "AFP"
-msgstr ""
-
-msgid "AFP Server"
 msgstr ""
 
 msgid "ARP Tables"
@@ -379,6 +376,9 @@ msgid "Anonymous users only"
 msgstr ""
 
 msgid "Any"
+msgstr ""
+
+msgid "Apple Filing Protocol"
 msgstr ""
 
 msgid "Apply changes"
@@ -640,9 +640,6 @@ msgstr ""
 msgid "DAAP"
 msgstr ""
 
-msgid "DAAP Server"
-msgstr ""
-
 msgid "DDP"
 msgstr ""
 
@@ -821,6 +818,9 @@ msgstr ""
 msgid "Detected RSYNC remote shares"
 msgstr ""
 
+msgid "Determine the default timeout, in microseconds, before the first packet is retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr ""
 
@@ -850,6 +850,9 @@ msgid "Diagnostics"
 msgstr ""
 
 msgid "Difference"
+msgstr ""
+
+msgid "Digital Audio Access Protocol"
 msgstr ""
 
 msgid "Direction"
@@ -1347,9 +1350,6 @@ msgstr ""
 msgid "FTP Proxy"
 msgstr ""
 
-msgid "FTP Server"
-msgstr ""
-
 msgid "FTP events"
 msgstr ""
 
@@ -1408,6 +1408,9 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
+msgstr ""
+
+msgid "File Transfer Protocol"
 msgstr ""
 
 msgid "File not found"
@@ -1751,6 +1754,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr ""
 
 #, php-format
+msgid "Invalid max. block size! Max. block size must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
 
@@ -1964,6 +1971,9 @@ msgstr ""
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr ""
 
@@ -2078,9 +2088,6 @@ msgstr ""
 msgid "NFS"
 msgstr ""
 
-msgid "NFS Server"
-msgstr ""
-
 msgid "NIS"
 msgstr ""
 
@@ -2107,6 +2114,9 @@ msgid "Netgraph"
 msgstr ""
 
 msgid "Network"
+msgstr ""
+
+msgid "Network File System"
 msgstr ""
 
 msgid "Network mask"
@@ -2779,6 +2789,9 @@ msgstr ""
 msgid "Sets the interval between disk checks to N seconds. The minimum allowed value is 10."
 msgstr ""
 
+msgid "Sets the umask for newly created files to the specified value. The default is zero (anyone can read or write)."
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
@@ -2887,7 +2900,13 @@ msgstr ""
 msgid "Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com "
 msgstr ""
 
+msgid "Specifies the maximum permitted block size. The permitted range for this parameter is from 512 to 65464."
+msgstr ""
+
 msgid "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, etc."
+msgstr ""
+
+msgid "Specifies the username which the service will run as."
 msgstr ""
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
@@ -3242,7 +3261,7 @@ msgstr ""
 msgid "The device's IP address."
 msgstr ""
 
-msgid "The directory containing the files you want to publish."
+msgid "The directory containing the files you want to publish. The remote host does not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3309,6 +3328,9 @@ msgid "The passwords do not match."
 msgstr ""
 
 msgid "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
+msgstr ""
+
+msgid "The port to listen to. The default is to listen to the tftp port specified in /etc/services."
 msgstr ""
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
@@ -4043,6 +4065,9 @@ msgid "striping"
 msgstr ""
 
 msgid "sysctl.conf"
+msgstr ""
+
+msgid "umask"
 msgstr ""
 
 msgid "upriv"
