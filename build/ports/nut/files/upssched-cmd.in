@@ -4,14 +4,13 @@
 
 . /etc/rc.subr
 . /etc/configxml.subr
+. /etc/email.subr
 
 name="upssched-cmd"
 
 load_rc_config "${name}"
 
 # Defaults
-msmtp_config=${msmtp_config:-"/var/etc/msmtp.conf"}
-msmtp_msgfile=${msmtp_msgfile:-"/tmp/message"}
 nut_upssched_forced_shutdown_timer=${nut_upssched_forced_shutdown_timer:-"0"}
 
 case "${NOTIFYTYPE}" in
@@ -75,27 +74,10 @@ logger -t upssched-cmd "${_message}"
 
 # Send email if feature is enabled
 if configxml_isset //ups/email/enable; then
-	# Get date in RFC 2882 format.
-	_rfcdate=`date "+%a, %d %b %Y %H:%M:%S %z"`
-
-	# Get recipients
+	# Get configured email recipients and subject.
 	_recipients=`configxml_get "//ups/email/to" | /usr/bin/tr ";" " "`
+	_subject=`configxml_get "//ups/email/subject"`
 
-	# Create message
-	echo ${_recipients} | awk '{for ( i = NF ; i > 0 ; --i ) printf("To: %s\n",$i)}' > ${msmtp_msgfile}
-
-	/usr/local/bin/xml sel -t \
-		-v "concat('From: ',//system/email/from)" -n \
-		-v "concat('Subject: ',//ups/email/subject)" -n \
-		-o "Date: ${_rfcdate}" -n \
-		-o "." -n \
-		${configxml_file} | /usr/local/bin/xml unesc >> ${msmtp_msgfile}
-
-	echo "${_message}" >> ${msmtp_msgfile}
-
-	# Now email the message to the user
-	/usr/local/bin/msmtp --file=${msmtp_config} ${_recipients} < ${msmtp_msgfile} 1>/dev/null 2>&1
-
-	# Cleanup
-	/bin/rm ${msmtp_msgfile} 1>/dev/null 2>&1
+	# Send email.
+	send_email "${_recipients}" "${_subject}" "${_message}"
 fi
