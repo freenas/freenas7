@@ -22,7 +22,7 @@ start_precmd="start_precmd"
 
 # Defaults
 tftpd_enable=${tftpd_enable:-"NO"}
-command="/usr/local/sbin/${name}"
+command="/usr/local/libexec/in.${name}"
 command_args="-v -l"
 
 start_precmd()
