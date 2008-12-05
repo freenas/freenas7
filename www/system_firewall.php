@@ -190,7 +190,7 @@ function firewall_process_updatenotification($mode, $data) {
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="4%" class="list"></td>
+									<td width="4%" class="listhdrr">&nbsp;</td>
 									<td width="5%" class="listhdrr"><?=gettext("Proto");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Source");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
@@ -216,8 +216,8 @@ function firewall_process_updatenotification($mode, $data) {
 											break;
 									}
 									?>
-									<td valign="middle" nowrap class="list"><img src="<?=$actionimg;?>"></td>
-									<td class="<?=$enable?"listlr":"listlrd";?>"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
+									<td class="<?=$enable?"listlr":"listlrd";?>"><img src="<?=$actionimg;?>"></td>
+									<td class="<?=$enable?"listr":"listrd";?>"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['src']) ? "*" : $rule['src']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['dst']) ? "*" : $rule['dst']);?>&nbsp;</td>
