@@ -100,18 +100,7 @@ function enable_change(enable_change) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				  <tr>
-				    <td colspan="2" valign="top" class="optsect_t">
-							<table border="0" cellspacing="0" cellpadding="0" width="100%">
-								<tr>
-									<td class="optsect_s"><strong><?=gettext("AFP Server");?></strong></td>
-									<td align="right" class="optsect_s">
-										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
-									</td>
-								</tr>
-							</table>
-						</td>
-				  </tr>
+					<?php html_titleline_checkbox("enable", gettext("Apple Filing Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Server Name");?></td>
 						<td width="78%" class="vtable">
