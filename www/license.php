@@ -140,7 +140,10 @@ $pgtitle = array(gettext("License & Credits"));
       
       <p> Pure-FTPd (<a href="http://www.pureftpd.org" target="_blank">http://www.pureftpd.org</a>)<br>
       </p>
-        
+
+			<p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br>
+			</p>
+
       <p> Netatalk (<a href="http://netatalk.sourceforge.net" target="_blank">http://netatalk.sourceforge.net</a>)<br>
         Copyright &copy; 1990,1996 Regents of The University of Michigan</p>
         
