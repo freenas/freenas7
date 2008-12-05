@@ -1,0 +1,40 @@
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+#
+# email.subr
+# functions used by various rc scripts
+#
+
+. /etc/configxml.subr
+
+# send_email [to] [subject] [message]
+# Send an email.
+send_email()
+{
+	local _recipients _subject _message _rfcdate
+
+	_recipients=$1
+	_subject=$2
+	_message=$3
+
+	# Get date in RFC 2882 format.
+	_rfcdate=`date "+%a, %d %b %Y %H:%M:%S %z"`
+
+	# Create message
+	echo ${_recipients} | awk '{for ( i = NF ; i > 0 ; --i ) printf("To: %s\n",$i)}' > ${msmtp_msgfile}
+
+	/usr/local/bin/xml sel -t \
+		-v "concat('From: ',//system/email/from)" -n \
+		-o "Subject: ${_subject}" -n \
+		-o "Date: ${_rfcdate}" -n \
+		-o "." -n \
+		${configxml_file} | /usr/local/bin/xml unesc >> ${msmtp_msgfile}
+
+	echo "${_message}" >> ${msmtp_msgfile}
+
+	# Now email the message to the user
+	/usr/local/bin/msmtp --file=${msmtp_config} ${_recipients} < ${msmtp_msgfile} 1>/dev/null 2>&1
+
+	# Cleanup
+	/bin/rm ${msmtp_msgfile} 1>/dev/null 2>&1
+}
