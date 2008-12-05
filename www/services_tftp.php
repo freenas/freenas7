@@ -39,9 +39,17 @@ if (!is_array($config['tftpd']))
 
 $pconfig['enable'] = isset($config['tftpd']['enable']);
 $pconfig['dir'] = $config['tftpd']['dir'];
-$pconfig['allownew'] = isset($config['tftpd']['allownew']);
-$pconfig['uploadmode'] = $config['tftpd']['uploadmode'];
+$pconfig['allowfilecreation'] = isset($config['tftpd']['allowfilecreation']);
+$pconfig['port'] = $config['tftpd']['port'];
+$pconfig['username'] = $config['tftpd']['username'];
+$pconfig['umask'] = $config['tftpd']['umask'];
+$pconfig['timeout'] = $config['tftpd']['timeout'];
+$pconfig['maxblocksize'] = $config['tftpd']['maxblocksize'];
 $pconfig['extraoptions'] = $config['tftpd']['extraoptions'];
+
+// Set defaults
+if (empty($pconfig['username']))
+	$pconfig['username'] = "nobody";
 
 if ($_POST) {
 	unset($input_errors);
@@ -54,13 +62,27 @@ if ($_POST) {
 		$reqdfieldst = explode(" ", "string");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+		$reqdfields = array_merge($reqdfields, explode(" ", "port umask timeout maxblocksize"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Port"), gettext("umask"), gettext("Timeout"), gettext("Max. block size")));
+		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "port numeric numeric numeric"));
+
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+	}
+
+	if ($_POST['maxblocksize'] && ((512 > $_POST['maxblocksize']) || (65464 < $_POST['maxblocksize']))) {
+		$input_errors[] = sprintf(gettext("Invalid max. block size! Max. block size must be in the range from %d to %d."), 512, 65464);
 	}
 
 	if (!$input_errors) {
 		$config['tftpd']['enable'] = $_POST['enable'] ? true : false;
 		$config['tftpd']['dir'] = $_POST['dir'];
-		$config['tftpd']['allownew'] = $_POST['allownew'] ? true : false;
+		$config['tftpd']['allowfilecreation'] = $_POST['allowfilecreation'] ? true : false;
+		$config['tftpd']['port'] = $_POST['port'];
+		$config['tftpd']['username'] = $_POST['username'];
+		$config['tftpd']['umask'] = $_POST['umask'];
+		$config['tftpd']['timeout'] = $_POST['timeout'];
+		$config['tftpd']['maxblocksize'] = $_POST['maxblocksize'];
 		$config['tftpd']['extraoptions'] = $_POST['extraoptions'];
 
 		write_config();
@@ -82,29 +104,42 @@ if ($_POST) {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.dir.disabled = endis;
-	document.iform.allownew.disabled = endis;
+	document.iform.allowfilecreation.disabled = endis;
+	document.iform.port.disabled = endis;
+	document.iform.username.disabled = endis;
+	document.iform.umask.disabled = endis;
+	document.iform.timeout.disabled = endis;
+	document.iform.maxblocksize.disabled = endis;
 	document.iform.extraoptions.disabled = endis;
 }
 //-->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="tabcont">
-    	<form action="services_tftp.php" method="post" name="iform" id="iform">
+	<tr>
+		<td class="tabcont">
+			<form action="services_tftp.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Trivial File Transfer Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_filechooser("dir", gettext("Directory"), $pconfig['dir'], gettext("The directory containing the files you want to publish."), "/mnt", true, 60);?>
-					<?php html_checkbox("allownew", gettext("Allow new files"), $pconfig['allownew'] ? true : false, gettext("Allow new files to be created."), gettext("By default, only already existing files can be uploaded."), false);?>
+					<?php html_filechooser("dir", gettext("Directory"), $pconfig['dir'], gettext("The directory containing the files you want to publish. The remote host does not need to pass along the directory as part of the transfer."), "/mnt", true, 60);?>
+					<?php html_checkbox("allowfilecreation", gettext("Allow new files"), $pconfig['allowfilecreation'] ? true : false, gettext("Allow new files to be created."), gettext("By default, only already existing files can be uploaded."), false);?>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Advanced settings"));?>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The port to listen to. The default is to listen to the tftp port specified in /etc/services."), false, 5);?>
+					<?php $a_user = array(); foreach (system_get_user_list() as $userk => $userv) { $a_user[$userk] = htmlspecialchars($userk); }?>
+					<?php html_combobox("username", gettext("Username"), $pconfig['username'], $a_user, gettext("Specifies the username which the service will run as."), false);?>
+					<?php html_inputbox("umask", gettext("umask"), $pconfig['umask'], gettext("Sets the umask for newly created files to the specified value. The default is zero (anyone can read or write)."), false, 4);?>
+					<?php html_inputbox("timeout", gettext("Timeout"), $pconfig['timeout'], gettext("Determine the default timeout, in microseconds, before the first packet is retransmitted. The default is 1000000 (1 second)."), false, 10);?>
+					<?php html_inputbox("maxblocksize", gettext("Max. block size"), $pconfig['maxblocksize'], gettext("Specifies the maximum permitted block size. The permitted range for this parameter is from 512 to 65464."), false, 5);?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty)."), false, 40);?>
-			  </table>
+				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 				</div>
 			</form>
 		</td>
-  </tr>
+	</tr>
 </table>
 <script language="JavaScript">
 <!--
