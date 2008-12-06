@@ -12,6 +12,9 @@ Minors changes:
 - Refactor 'Access|LDAP' WebGUI. Now it is possible to add additional options
   to ldap.conf via WebGUI.
 
+Bug fixes:
+- TFTP not present in "Services|Status" menu (BR 2397240).
+
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
