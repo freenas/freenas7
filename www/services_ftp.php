@@ -253,20 +253,9 @@ function tls_change() {
 			        <input name="localusersonly" type="checkbox" id="localusersonly" value="yes" <?php if ($pconfig['localusersonly']) echo "checked"; ?>>
 			        <?=gettext("Only allow authenticated users. Anonymous logins are prohibited.");?></td>
 			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>
-			      <td width="78%" class="vtable">
-			        <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
-			        <br>
-			        <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?>
-						</td>
-			    </tr>
-			    <tr>
-			      <td colspan="2" class="list" height="12"></td>
-			    </tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
-					</tr>
+					<?php html_textarea("banner", gettext("Banner"), $pconfig['banner'], gettext("Greeting banner displayed by FTP when a connection first comes in."), false, 65, 7);?>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Advanced settings"));?>
 					<tr id="filemask">
 						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
 						<td width="78%" class="vtable">
