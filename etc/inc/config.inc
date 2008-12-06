@@ -1611,8 +1611,8 @@ function config_upgrade() {
 	/* Add misc attributes to //ldap. */
 	if ($config['version'] === "6.6") {
 		$config['ldap']['auxparam'][] = "ldap_version 3";
-		$config['ldap']['auxparam'][] = "timelimit 5";
-		$config['ldap']['auxparam'][] = "bind_timelimit 5";
+		$config['ldap']['auxparam'][] = "timelimit 30";
+		$config['ldap']['auxparam'][] = "bind_timelimit 30";
 		$config['ldap']['auxparam'][] = "bind_policy soft";
 		$config['ldap']['auxparam'][] = "pam_ldap_attribute uid";
 

@@ -984,8 +984,8 @@
 		<group_suffix></group_suffix>
 		<password_suffix></password_suffix>
 		<auxparam>ldap_version 3</auxparam>
-		<auxparam>timelimit 5</auxparam>
-		<auxparam>bind_timelimit 5</auxparam>
+		<auxparam>timelimit 30</auxparam>
+		<auxparam>bind_timelimit 30</auxparam>
 		<auxparam>bind_policy soft</auxparam>
 		<auxparam>pam_ldap_attribute uid</auxparam>
 	</ldap>
