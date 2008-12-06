@@ -43,6 +43,8 @@ Majors changes:
 Minors changes:
 - Set date in email-header when sending email.
 - Add WebGUI link 'Help|Forum' to FreeNAS forum hosted on Sourceforge.
+- Refactor 'Access|LDAP' WebGUI. Now it is possible to add additional options
+  to ldap.conf via WebGUI.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

@@ -1607,6 +1607,18 @@ function config_upgrade() {
 		$config['version'] = "6.6";
 	}
 
+	/* Convert 6.6 -> 6.7 */
+	/* Add misc attributes to //ldap. */
+	if ($config['version'] === "6.6") {
+		$config['ldap']['auxparam'][] = "ldap_version 3";
+		$config['ldap']['auxparam'][] = "timelimit 5";
+		$config['ldap']['auxparam'][] = "bind_timelimit 5";
+		$config['ldap']['auxparam'][] = "bind_policy soft";
+		$config['ldap']['auxparam'][] = "pam_ldap_attribute uid";
+
+		$config['version'] = "6.7";
+	}
+
 	write_config();
 
 	if (is_booting())

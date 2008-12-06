@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Access"),gettext("LDAP"));
+$pgtitle = array(gettext("Access"), gettext("LDAP"));
 
 if (!is_array($config['ldap'])) {
 	$config['ldap'] = array();
@@ -52,29 +52,31 @@ $pconfig['enable'] = isset($config['ldap']['enable']);
 $pconfig['hostname'] = $config['ldap']['hostname'];
 $pconfig['base'] = $config['ldap']['base'];
 $pconfig['binddn'] = $config['ldap']['binddn'];
-$pconfig['bindpw2'] = $pconfig['bindpw'] = $config['ldap']['bindpw'];
+$pconfig['bindpw'] = $config['ldap']['bindpw'];
+$pconfig['bindpw2'] = $config['ldap']['bindpw'];
 $pconfig['user_suffix'] = $config['ldap']['user_suffix'];
 $pconfig['password_suffix'] = $config['ldap']['password_suffix'];
 $pconfig['group_suffix'] = $config['ldap']['group_suffix'];
 $pconfig['pam_password'] = $config['ldap']['pam_password'];
+if (is_array($config['ldap']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['ldap']['auxparam']);
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
+	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "hostname base binddn bindpw user_suffix password_suffix group_suffix"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("LDAP server name or IP"),gettext("Base DN"),gettext("DN to bind"),gettext("Password for DN"),gettext("User suffix"),gettext("Password suffix"),gettext("Group suffix")));
+		$reqdfields = explode(" ", "hostname base binddn bindpw user_suffix group_suffix password_suffix");
+		$reqdfieldsn = array(gettext("Host name"), gettext("Base DN"), gettext("Bind DN"), gettext("Bind DN Password"), gettext("User suffix"), gettext("Group suffix"), gettext("Password suffix"));
+		$reqdfieldst = explode(" ", "string string string string string string string");
+
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-  if (($_POST['bindpw'] != $_POST['bindpw2'])) {
-		$input_errors[] = gettext("Password don't match.");
+	if (($_POST['bindpw'] !== $_POST['bindpw2'])) {
+		$input_errors[] = gettext("The confimed password does not match. Please ensure the passwords match exactly.");
 	}
 
 	if (!$input_errors) {
@@ -88,10 +90,18 @@ if ($_POST) {
 		$config['ldap']['group_suffix'] = $_POST['group_suffix'];
 		$config['ldap']['pam_password'] = $_POST['pam_password'];
 
+		# Write additional parameters.
+		unset($config['ldap']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['ldap']['auxparam'][] = $auxparam;
+		}
+
 		// Disable AD
 		if ($config['ldap']['enable']) {
 			$config['samba']['security'] = "user";
-			$config['ad']['enable'] = false ;
+			$config['ad']['enable'] = false;
 		}
 
 		write_config();
@@ -123,95 +133,29 @@ function enable_change(enable_change) {
 	document.iform.password_suffix.disabled = endis;
 	document.iform.group_suffix.disabled = endis;
 	document.iform.pam_password.disabled = endis;
+	document.iform.auxparam.disabled = endis;
 }
 //-->
 </script>
 <form action="access_ldap.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
-	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+		<tr>
+			<td class="tabcont">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-						  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-							  <tr>
-									<td class="optsect_s"><strong><?=gettext("LDAP");?></strong></td>
-							  	<td align="right" class="optsect_s">
-										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
-									</td>
-								</tr>
-						  </table>
-						</td>
-			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server name");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlspecialchars($pconfig['hostname']);?>">
-			      	<br><?=gettext("Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS");?>
-						</td>
+					<?php html_titleline_checkbox("enable", gettext("Lightweight Directory Access Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+					<?php html_inputbox("hostname", gettext("Host name"), $pconfig['hostname'], gettext("The name or IP address of the LDAP server."), true, 20);?>
+					<?php html_inputbox("base", gettext("Base DN"), $pconfig['base'], sprintf(gettext("The distinguished name to use as a base for queries, e.g. %s"), "dc=test,dc=org"), true, 40);?>
+					<?php html_inputbox("binddn", gettext("Bind DN"), $pconfig['binddn'], sprintf(gettext("The distinguished name to bind to the LDAP server as, e.g. %s"), "cn=admin,dc=test,dc=org"), true, 40);?>
+					<?php html_passwordconfbox("bindpw", "bindpw2", gettext("Bind DN Password"), $pconfig['bindpw'], $pconfig['bindpw2'], gettext("The credentials to bind with, enter it here twice."), true);?>
+					<?php html_combobox("pam_password", gettext("Password encryption"), $pconfig['pam_password'], array("clear" => "clear", "crypt" => "crypt", "md5" => "md5", "nds" => "nds", "ad" => "ad", "exop" => "exop"), gettext("Method used to store your password in your LDAP."), true);?>
+					<?php html_inputbox("user_suffix", gettext("User suffix"), $pconfig['user_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"), "ou=users,dc=test,dc=org"), true, 40);?>
+					<?php html_inputbox("group_suffix", gettext("Group suffix"), $pconfig['group_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"), "ou=groups,dc=test,dc=org"), true, 40);?>
+					<?php html_inputbox("password_suffix", gettext("Password suffix"), $pconfig['password_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for passwords when these are added to the LDAP directory, e.g. %s"), "ou=users,dc=test,dc=org"), true, 40);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to %s."), "ldap.conf"), false, 65, 5);?>
 					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>">
-			      	<br><?=gettext("Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com");?>
-						</td>
-					</tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>">
-							<br><?=gettext("Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com ");?>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password for DN");?></td>
-			      <td width="78%" class="vtable">
-			      	<input name="bindpw" type="password" class="formfld" id="bindpw" size="20" value="<?=htmlspecialchars($pconfig['bindpw']);?>"><br>
-							<input name="bindpw2" type="password" class="formfld" id="bindpw2" size="20" value="<?=htmlspecialchars($pconfig['bindpw2']);?>">
-			        &nbsp;(<?=gettext("Confirmation");?>)<br>
-			        <span class="vexpl"><?=gettext("The credentials to bind with, enter it here twice.");?></span>
-						</td>
-			    </tr>
-					<tr>
-					  <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("User suffix");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>">
-			      	<br><?=gettext("user_suffix, example: ou=users,dc=example,dc=com");?>
-						</td>
-					</tr>
-				  <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
-			      	<br><?=gettext("password_suffix, example: ou=users,dc=example,dc=com");?>
-						</td>
-					</tr>
-				  <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
-			      	<br><?=gettext("group_suffix, example: ou=groups,dc=example,dc=com");?>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="pam_password" class="formfld" id="pam_password">
-				        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
-				        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-				          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['pam_password']) echo "selected";?>>
-				          <?=htmlspecialchars($types[$j]);?>
-				          </option>
-				        <?php endfor; ?>
-			        </select>
-						  <br><?=gettext("Method used to store your password in your LDAP.");?>
-						</td>
-					</tr>
-			  </table>
+				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
 				</div>

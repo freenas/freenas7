@@ -13,6 +13,10 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="ldap"
+
+load_rc_config "${name}"
+
 # Defaults
 ldap_config=${ldap_config:-"/var/etc/ldap.conf"}
 ldap_secret=${ldap_secret:-"/var/etc/ldap.secret"}
@@ -29,13 +33,10 @@ if configxml_isset //ldap/enable; then
 		-v "concat('uri ldap://',hostname)" -n \
 		-v "concat('base ',base)" -n \
 		-v "concat('rootbinddn ',binddn)" -n \
-		-v "concat('nss_base_passwd ',password_suffix,'?one')" -n \
-		-v "concat('nss_base_group ',group_suffix,'?one')" -n \
+		-i "string-length(password_suffix) > 0" -v "concat('nss_base_passwd ',password_suffix,'?one')" -n -b \
+		-i "string-length(group_suffix) > 0" -v "concat('nss_base_group ',group_suffix,'?one')" -n -b \
 		-v "concat('pam_password ',pam_password)" -n \
-		-o "pam_ldap_attribute	uid" -n \
-		-o "bind_policy soft" -n \
-		-o "bind_timelimit 5" -n \
-		-o "ldap_version 3" \
+		-m "auxparam" -v "." -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${ldap_config}
 
 	echo "Generating ldap.secret."
