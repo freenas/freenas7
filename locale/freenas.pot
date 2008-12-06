@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-06 19:18+0000\n"
+"PO-Revision-Date: 2008-12-06 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2028,9 +2028,6 @@ msgstr ""
 msgid "Message of the day."
 msgstr ""
 
-msgid "Method used to store your password in your LDAP."
-msgstr ""
-
 msgid "MibII"
 msgstr ""
 
@@ -3249,13 +3246,17 @@ msgstr ""
 msgid "The confimed password does not match. Please ensure the passwords match exactly."
 msgstr ""
 
-msgid "The credentials to bind with, enter it here twice."
+msgid "The credentials with which to bind."
 msgstr ""
 
 msgid "The cron job has been executed successfully."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
+msgstr ""
+
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -3272,11 +3273,7 @@ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first bef
 msgstr ""
 
 #, php-format
-msgid "The distinguished name to bind to the LDAP server as, e.g. %s"
-msgstr ""
-
-#, php-format
-msgid "The distinguished name to use as a base for queries, e.g. %s"
+msgid "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
 
 #, php-format
@@ -3333,6 +3330,9 @@ msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
 msgid "The old password is not correct."
+msgstr ""
+
+msgid "The password change protocol to use."
 msgstr ""
 
 msgid "The password contains the illegal character ':'."
