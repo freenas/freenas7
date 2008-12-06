@@ -149,13 +149,7 @@ function enable_change(enable_change) {
 							<br><?=gettext("Alternate TCP port. Default is 873");?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("MOTD");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea><br/>
-							<?=gettext("Message of the day.");?>
-						</td>
-					</tr>
+					<?php html_textarea("motd", gettext("MOTD"), $pconfig['motd'], gettext("Message of the day."), false, 65, 7);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to global settings in %s."), "rsyncd.conf"), false, 65, 5);?>
 				</table>
 				<div id="submit">

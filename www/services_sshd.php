@@ -157,13 +157,7 @@ function enable_change(enable_change) {
 			        <?=gettext("Enable compression.");?><br/>
 			        <span class="vexpl"><?=gettext("Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only.");?></span>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Private Key");?></td>
-			      <td width="78%" class="vtable">
-			        <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
-			        <br>
-			        <?=gettext("Paste a DSA PRIVATE KEY in PEM format here.");?></td>
-			    </tr>
+					<?php html_textarea("key", gettext("Private Key"), $pconfig['key'], gettext("Paste a DSA PRIVATE KEY in PEM format here."), false, 65, 7);?>
 			    <?php html_textarea("auxparam", gettext("Extra options"), $pconfig['auxparam'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."), false, 65, 5);?>
 			  </table>
 				<div id="submit">
