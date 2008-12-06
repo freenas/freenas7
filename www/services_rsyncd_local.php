@@ -131,7 +131,7 @@ function rsynclocal_process_updatenotification($mode, $data) {
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
-              <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job"); ?>" border="0"></a>
+              <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync job?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job");?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
