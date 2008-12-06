@@ -160,16 +160,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 			  <?php if ($savemsg) print_info_box($savemsg);?>
 			  <?php if (ui_exists_updatenotification("iscsitarget_extent") || ui_exists_updatenotification("iscsitarget_device") || ui_exists_updatenotification("iscsitarget_target")) print_config_change_box();?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-							  <tr>
-			            <td class="optsect_s"><strong><?=gettext("iSCSI Target");?></strong></td>
-							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?>> <strong><?=gettext("Enable");?></strong></td>
-			          </tr>
-							</table>
-			      </td>
-			    </tr>
+					<?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 			    <tr>
 			    	<td width="22%" valign="top" class="vncell"><?=gettext("Extent");?></td>
 						<td width="78%" class="vtable">

@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if(isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Server"), gettext("Module"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Server"), gettext("Module"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();

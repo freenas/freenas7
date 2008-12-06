@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Server"), gettext("Modules"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Server"), gettext("Modules"));
 
 if ($_POST) {
 	$pconfig = $_POST;

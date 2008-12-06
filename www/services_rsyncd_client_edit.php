@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Client"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Client"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
@@ -105,7 +105,7 @@ if ($_POST) {
 
 	// Input validation
 	$reqdfields = explode(" ", "rsyncserverip localshare remoteshare who");
-	$reqdfieldsn = array(gettext("Remote RSYNC Server"), gettext("Local shares to be synchronized"), gettext("Remote module name"), gettext("Who"));
+	$reqdfieldsn = array(gettext("Remote Rsync Server"), gettext("Local shares to be synchronized"), gettext("Remote module name"), gettext("Who"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (gettext("Execute now") !== $_POST['Submit']) {
@@ -207,7 +207,7 @@ function delete_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_titleline_checkbox("enable", gettext("Client RSYNC job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
+					<?php html_titleline_checkbox("enable", gettext("Rsync job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
 						<td width="78%" class="vtable">
@@ -217,10 +217,10 @@ function delete_change() {
 					  </td>
 					</tr>
 			    <tr>
-						<td width="22%" valign="top" class="vncellreq"><strong><?=gettext("Remote RSYNC Server");?><strong></td>
+						<td width="22%" valign="top" class="vncellreq"><strong><?=gettext("Remote Rsync Server");?><strong></td>
 						<td width="78%" class="vtable">
 							<input name="rsyncserverip" id="rsyncserverip" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['rsyncserverip']);?>">
-							<br><?=gettext("IP or FQDN address of remote RSYNC server.");?><br>
+							<br><?=gettext("IP or FQDN address of remote Rsync server.");?><br>
 						</td>
 					</tr>
 					<tr>

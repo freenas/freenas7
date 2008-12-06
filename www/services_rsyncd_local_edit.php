@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Local"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Local"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
@@ -205,7 +205,7 @@ function delete_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_titleline_checkbox("enable", gettext("Local RSYNC job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
+					<?php html_titleline_checkbox("enable", gettext("Rsync job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
 	    		<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
 						<td width="78%" class="vtable">

@@ -168,16 +168,7 @@ function authentication_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (file_exists($d_websrvconfdirty_path)) print_config_change_box();?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-			  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-			  		  <tr>
-			          <td class="optsect_s"><strong><?=gettext("Webserver");?></strong></td>
-			  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-			        </tr>
-			  		  </table>
-			      </td>
-			    </tr>
+					<?php html_titleline_checkbox("enable", gettext("Webserver"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("http" => "HTTP", "https" => "HTTPS"), "", true, false, "protocol_change()");?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("TCP port to bind the server to."), true, 5);?>
 					<?php html_filechooser("documentroot", gettext("Document root"), $pconfig['documentroot'], gettext("Document root of the webserver. Home of the web page files."), "/mnt", true, 60);?>

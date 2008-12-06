@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("RSYNC"), gettext("Local"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Local"));
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -130,8 +130,8 @@ function rsynclocal_process_updatenotification($mode, $data) {
 						<td class="listbg"><?=htmlspecialchars($rsynclocal['description']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" border="0"></a>&nbsp;
-              <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this RSYNC?");?>')"><img src="x.gif" title="<?=gettext("Delete RSYNC"); ?>" border="0"></a>
+							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
+              <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job"); ?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -142,7 +142,7 @@ function rsynclocal_process_updatenotification($mode, $data) {
           <?php $i++; endforeach;?>
           <tr> 
             <td class="list" colspan="4"></td>
-            <td class="list"><a href="services_rsyncd_local_edit.php"><img src="plus.gif" title="<?=gettext("Add RSYNC");?>" border="0"></a></td>
+            <td class="list"><a href="services_rsyncd_local_edit.php"><img src="plus.gif" title="<?=gettext("Add Rsync job");?>" border="0"></a></td>
 			    </tr>
         </table>
       </form>
