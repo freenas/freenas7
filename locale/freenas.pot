@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-06 13:40+0000\n"
+"PO-Revision-Date: 2008-12-06 19:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -201,10 +201,10 @@ msgstr ""
 msgid "Add RAID"
 msgstr ""
 
-msgid "Add RSYNC"
+msgid "Add Route"
 msgstr ""
 
-msgid "Add Route"
+msgid "Add Rsync job"
 msgstr ""
 
 msgid "Add URL"
@@ -372,6 +372,9 @@ msgstr ""
 msgid "An interface with the specified description already exists."
 msgstr ""
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
@@ -535,9 +538,6 @@ msgstr ""
 msgid "Client"
 msgstr ""
 
-msgid "Client RSYNC job"
-msgstr ""
-
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
 
@@ -677,6 +677,9 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+msgid "Debug"
+msgstr ""
+
 msgid "Default"
 msgstr ""
 
@@ -710,10 +713,10 @@ msgstr ""
 msgid "Delete RAID"
 msgstr ""
 
-msgid "Delete RSYNC"
+msgid "Delete Route"
 msgstr ""
 
-msgid "Delete Route"
+msgid "Delete Rsync job"
 msgstr ""
 
 msgid "Delete URL"
@@ -931,7 +934,10 @@ msgstr ""
 msgid "Do you really want to delete this MIB?"
 msgstr ""
 
-msgid "Do you really want to delete this RSYNC?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
 msgstr ""
 
 msgid "Do you really want to delete this URL?"
@@ -1093,10 +1099,10 @@ msgstr ""
 msgid "Edit RAID"
 msgstr ""
 
-msgid "Edit RSYNC"
+msgid "Edit Route"
 msgstr ""
 
-msgid "Edit Route"
+msgid "Edit Rsync job"
 msgstr ""
 
 msgid "Edit URL"
@@ -1489,6 +1495,9 @@ msgstr ""
 msgid "Fsck"
 msgstr ""
 
+msgid "Full"
+msgstr ""
+
 msgid "Full Name"
 msgstr ""
 
@@ -1623,7 +1632,7 @@ msgstr ""
 msgid "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
-msgid "IP or FQDN address of remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -1877,7 +1886,7 @@ msgstr ""
 msgid "Local Master Browser"
 msgstr ""
 
-msgid "Local RSYNC job"
+msgid "Local User"
 msgstr ""
 
 msgid "Local share"
@@ -2025,6 +2034,9 @@ msgstr ""
 msgid "MibII"
 msgstr ""
 
+msgid "Minimum"
+msgstr ""
+
 msgid "Minimum free space"
 msgstr ""
 
@@ -2147,6 +2159,9 @@ msgid "No disk configured"
 msgstr ""
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."
@@ -2549,7 +2564,7 @@ msgstr ""
 msgid "Reload page"
 msgstr ""
 
-msgid "Remote RSYNC Server"
+msgid "Remote Rsync Server"
 msgstr ""
 
 msgid "Remote address"
@@ -2609,7 +2624,10 @@ msgstr ""
 msgid "Rows"
 msgstr ""
 
-msgid "Rsync Daemon"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
 msgstr ""
 
 msgid "Rule"
@@ -2642,13 +2660,7 @@ msgstr ""
 msgid "SSH"
 msgstr ""
 
-msgid "SSH Daemon"
-msgstr ""
-
 msgid "SSH events"
-msgstr ""
-
-msgid "SSH key"
 msgstr ""
 
 msgid "SSHD log"
@@ -2691,6 +2703,9 @@ msgid "Scheduled self-tests"
 msgstr ""
 
 msgid "Scheduled shutdown"
+msgstr ""
+
+msgid "Secure Shell"
 msgstr ""
 
 msgid "Security"
