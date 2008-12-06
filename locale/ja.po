@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
 "PO-Revision-Date: 2008-11-29 15:09+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:48+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -200,9 +200,6 @@ msgstr "AD 又は PDC 名"
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "AFP サーバ"
-
 msgid "ARP Tables"
 msgstr "ARPテーブル"
 
@@ -250,11 +247,11 @@ msgstr "MIBを追加"
 msgid "Add RAID"
 msgstr "RAID の追加"
 
-msgid "Add RSYNC"
-msgstr "RSYNC の追加"
-
 msgid "Add Route"
 msgstr "ルーティングの追加"
+
+msgid "Add Rsync job"
+msgstr ""
 
 msgid "Add URL"
 msgstr "URLを追加"
@@ -445,10 +442,16 @@ msgstr ""
 msgid "An interface with the specified description already exists."
 msgstr ""
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
 msgid "Any"
+msgstr ""
+
+msgid "Apple Filing Protocol"
 msgstr ""
 
 msgid "Apply changes"
@@ -518,6 +521,12 @@ msgid "Banner"
 msgstr "バナー"
 
 msgid "Base DN"
+msgstr ""
+
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -606,9 +615,6 @@ msgstr "システム設定ファイル(XMLフォーマット)をダウンロー�
 
 msgid "Client"
 msgstr "クライアント"
-
-msgid "Client RSYNC job"
-msgstr "クライアント RSYNC ジョブ"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "クライアントは小文字、サーバは大文字で表示。"
@@ -724,17 +730,11 @@ msgstr "Cron job"
 msgid "DAAP"
 msgstr "DAAP"
 
-msgid "DAAP Server"
-msgstr "DAAP サーバ"
-
 msgid "DDP"
 msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "関連付けるDN"
 
 msgid "DNS settings"
 msgstr "DNS の設定"
@@ -769,6 +769,9 @@ msgstr "データベース ディレクトリ"
 msgid "Date"
 msgstr "日時"
 
+msgid "Debug"
+msgstr ""
+
 msgid "Default"
 msgstr ""
 
@@ -802,11 +805,11 @@ msgstr "MIB を削除"
 msgid "Delete RAID"
 msgstr "RAID の削除"
 
-msgid "Delete RSYNC"
-msgstr "RSYNC の削除"
-
 msgid "Delete Route"
 msgstr "ルートの削除"
+
+msgid "Delete Rsync job"
+msgstr ""
 
 msgid "Delete URL"
 msgstr "URL を削除"
@@ -913,6 +916,11 @@ msgstr "接続先共有"
 msgid "Detected RSYNC remote shares"
 msgstr "検出された RSYNC リモート共有"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr "デバイス"
 
@@ -951,6 +959,9 @@ msgstr "診断"
 
 msgid "Difference"
 msgstr "差分"
+
+msgid "Digital Audio Access Protocol"
+msgstr ""
 
 msgid "Direction"
 msgstr ""
@@ -1027,8 +1038,11 @@ msgstr ""
 msgid "Do you really want to delete this MIB?"
 msgstr "本当にこのMIBを削除してもよろしいですか"
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "本当にこの RSYNC を削除しても宜しいですか?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
+msgstr ""
 
 msgid "Do you really want to delete this URL?"
 msgstr "このURLを削除してもよろしいですか？"
@@ -1199,11 +1213,11 @@ msgstr "MIBを編集"
 msgid "Edit RAID"
 msgstr "RAID の編集"
 
-msgid "Edit RSYNC"
-msgstr "RSYNC の編集"
-
 msgid "Edit Route"
 msgstr "ルーティングの編集"
+
+msgid "Edit Rsync job"
+msgstr ""
 
 msgid "Edit URL"
 msgstr "URLを編集"
@@ -1483,9 +1497,6 @@ msgstr "FTP"
 msgid "FTP Proxy"
 msgstr ""
 
-msgid "FTP Server"
-msgstr "FTP サーバ"
-
 msgid "FTP events"
 msgstr "FTP イベント"
 
@@ -1549,6 +1560,9 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
+msgstr ""
+
+msgid "File Transfer Protocol"
 msgstr ""
 
 msgid "File not found"
@@ -1630,6 +1644,9 @@ msgstr ""
 
 msgid "Fsck"
 msgstr "Fsck"
+
+msgid "Full"
+msgstr ""
 
 msgid "Full Name"
 msgstr "フルネーム"
@@ -1727,16 +1744,14 @@ msgstr "ホームディレクトリ"
 msgid "Host"
 msgstr ""
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr ""
 
 msgid "Hostname"
 msgstr "ホスト名"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr "LDAP サーバのIPアドレスかもしくはホスト名。 TLS を使用する場合はホスト名"
 
 msgid "Hosts"
 msgstr "ホスト"
@@ -1774,8 +1789,8 @@ msgid ""
 "addresses to hostnames&quot;</a> is enabled."
 msgstr "<a href=%s>&quot;IPアドレスからホスト名へ変換&quot;</a>が有効な場合、IPアドレスはホスト名へ変換されます。"
 
-msgid "IP or FQDN address of remote RSYNC server."
-msgstr "リモート RSYNC サーバのIPアドレスかFQDN"
+msgid "IP or FQDN address of remote Rsync server."
+msgstr ""
 
 msgid "IP type mismatch for network and gateway."
 msgstr ""
@@ -1940,6 +1955,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "10秒以上の時間を指定してください。"
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr "無効なポート番号です！ ポート番号は %d - %d の範囲内で指定してください。"
 
@@ -1992,12 +2011,6 @@ msgid ""
 "server... Your patchs are welcome."
 msgstr ""
 
-msgid "LDAP server name"
-msgstr "LDAP サーバの名前"
-
-msgid "LDAP server name or IP"
-msgstr "LDAP サーバの名前かIPアドレス"
-
 msgid "Language"
 msgstr "言語"
 
@@ -2021,6 +2034,9 @@ msgid "License"
 msgstr "ライセンス"
 
 msgid "License & Credits"
+msgstr ""
+
+msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2071,8 +2087,8 @@ msgstr "ローカル"
 msgid "Local Master Browser"
 msgstr "ローカルマスタブラウザ"
 
-msgid "Local RSYNC job"
-msgstr ""
+msgid "Local User"
+msgstr "ローカルユーザ"
 
 msgid "Local share"
 msgstr "ローカル共有"
@@ -2168,6 +2184,9 @@ msgstr "ユーザのマッピング"
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "IP 毎の最大接続数"
 
@@ -2214,11 +2233,11 @@ msgstr "メモリ使用率"
 msgid "Message of the day."
 msgstr "今日の一言．"
 
-msgid "Method used to store your password in your LDAP."
-msgstr ""
-
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Minimum"
+msgstr ""
 
 msgid "Minimum free space"
 msgstr ""
@@ -2284,9 +2303,6 @@ msgstr "NAT モード"
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "NFS サーバ"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2316,6 +2332,9 @@ msgstr "Netgraph"
 
 msgid "Network"
 msgstr "ネットワーク"
+
+msgid "Network File System"
+msgstr ""
 
 msgid "Network mask"
 msgstr "ネットワークマスク"
@@ -2347,6 +2366,9 @@ msgid "No disk configured"
 msgstr "ディスクが設定されていません"
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid ""
@@ -2521,9 +2543,6 @@ msgid "Password don't match."
 msgstr "パスワードが一致しません。"
 
 msgid "Password encryption"
-msgstr ""
-
-msgid "Password for DN"
 msgstr ""
 
 msgid "Password for the administrative pages."
@@ -2773,8 +2792,8 @@ msgstr ""
 msgid "Reload page"
 msgstr "ページの再読み込み"
 
-msgid "Remote RSYNC Server"
-msgstr "リモート RSYNC サーバ"
+msgid "Remote Rsync Server"
+msgstr ""
 
 msgid "Remote address"
 msgstr "リモートアドレス"
@@ -2837,8 +2856,11 @@ msgstr "ルーティングテーブル"
 msgid "Rows"
 msgstr "列"
 
-msgid "Rsync Daemon"
-msgstr "Rsync デーモン"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
+msgstr ""
 
 msgid "Rule"
 msgstr ""
@@ -2870,14 +2892,8 @@ msgstr "SNMPモジュール"
 msgid "SSH"
 msgstr "SSH"
 
-msgid "SSH Daemon"
-msgstr "SSH デーモン"
-
 msgid "SSH events"
 msgstr "SSHのイベント"
-
-msgid "SSH key"
-msgstr "SSH 鍵"
 
 msgid "SSHD log"
 msgstr "SSHDのログ"
@@ -2924,6 +2940,9 @@ msgstr "スケジュールされたセルフテスト"
 
 msgid "Scheduled shutdown"
 msgstr "シャットダウンスケジュール"
+
+msgid "Secure Shell"
+msgstr ""
 
 msgid "Security"
 msgstr "セキュリティー"
@@ -3025,6 +3044,11 @@ msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
 msgstr "ディスクのチェック間隔を秒単位で設定してください。最小の値は10(秒)になります。"
+
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
+msgstr ""
 
 msgid "Settings"
 msgstr "設定"
@@ -3129,18 +3153,16 @@ msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
-msgstr ""
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
+msgstr ""
+
+msgid "Specifies the username which the service will run as."
 msgstr ""
 
 msgid ""
@@ -3164,9 +3186,6 @@ msgstr ""
 
 msgid "Standby time"
 msgstr "スタンバイ時間"
-
-msgid "State"
-msgstr ""
 
 msgid "Static Routes"
 msgstr "スタティックルート"
@@ -3515,7 +3534,7 @@ msgid ""
 "exactly."
 msgstr "入力したパスワードが一致しません。パスワードを再度確認して下さい。"
 
-msgid "The credentials to bind with, enter it here twice."
+msgid "The credentials with which to bind."
 msgstr ""
 
 msgid "The cron job has been executed successfully."
@@ -3524,13 +3543,19 @@ msgstr ""
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "SMTPサーバのポート番号"
 
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "デバイス名には a-z, A-Z, 0-9 の文字のみが利用出来ます．"
 
 msgid "The device's IP address."
 msgstr "デバイスのIPアドレス"
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3538,6 +3563,11 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "ディスクは既にマウントされています! 次へ進む為に最初にディスクを <a href=%s>アンマウント</a> して下さい．"
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3594,11 +3624,17 @@ msgid ""
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最小のポート (0 = いずれかのポート)．"
 
+msgid "The name or IP address of the LDAP server."
+msgstr ""
+
 msgid "The number of clients must be between 1 and 50."
 msgstr "クライアント数は1から50の範囲で指定してください。"
 
 msgid "The old password is not correct."
 msgstr "古いパスワードは正しくありません。"
+
+msgid "The password change protocol to use."
+msgstr ""
 
 msgid "The password contains the illegal character ':'."
 msgstr "入力したパスワードに不正ない文字が使用されています。"
@@ -3611,6 +3647,11 @@ msgid ""
 "mask and directory mask but the inherit permissions parameter overrides "
 "this. This can be particularly useful on systems with many users to allow a "
 "single share to be used flexibly by each user."
+msgstr ""
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
 msgstr ""
 
 msgid ""
@@ -3709,6 +3750,10 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -3918,6 +3963,24 @@ msgstr ""
 msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4421,9 +4484,6 @@ msgstr ""
 msgid "e.g. %s"
 msgstr "例. %s"
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr "group_suffix, example: ou=groups,dc=example,dc=com"
-
 msgid "hours"
 msgstr "時"
 
@@ -4469,9 +4529,6 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr "password_suffix, example: ou=users,dc=example,dc=com"
-
 msgid "pasv_max_port"
 msgstr "パッシブモードで使用するポート(最大)"
 
@@ -4496,11 +4553,11 @@ msgstr "ストライピング"
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
+msgid "umask"
+msgstr ""
+
 msgid "upriv"
 msgstr "upriv"
-
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr "user_suffix, example: ou=users,dc=example,dc=com"
 
 msgid "week days"
 msgstr "週日"
@@ -5078,14 +5135,14 @@ msgstr "週日"
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr "少なくとも匿名 又は/且つ ローカルユーザ認証を選択しなければなりません．"
 
+#~ msgid "FTP Server"
+#~ msgstr "FTP サーバ"
+
 #~ msgid "Anonymous login"
 #~ msgstr "匿名ログイン"
 
 #~ msgid "Enable anonymous login."
 #~ msgstr "匿名ログインを有効にする．"
-
-#~ msgid "Local User"
-#~ msgstr "ローカルユーザ"
 
 #~ msgid "Enable local user login."
 #~ msgstr "ローカルユーザのログインを有効にする．"
@@ -5095,17 +5152,26 @@ msgstr "週日"
 #~ "response to the PASV command."
 #~ msgstr "FTP デーモンが PASV コマンドのレスポンスで広告する IP アドレスを上書きしたい場合に使用します．"
 
+#~ msgid "NFS Server"
+#~ msgstr "NFS サーバ"
+
 #~ msgid "Network that is authorised to access to NFS share"
 #~ msgstr "NFS 共有へのアクセスが許可されるネットワーク"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "エクスポートされるディレクトリ名は次のようになります : /mnt/sharename"
 
+#~ msgid "Rsync Daemon"
+#~ msgstr "Rsync デーモン"
+
 #~ msgid "You must configure mount point first."
 #~ msgstr "最初にマウントポイントを設定して下さい．"
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Rsync クライアント同期"
+
+#~ msgid "Remote RSYNC Server"
+#~ msgstr "リモート RSYNC サーバ"
 
 #~ msgid "IP address of remote RSYNC server"
 #~ msgstr "リモート RSYNC サーバの IP アドレス"
@@ -5134,14 +5200,23 @@ msgstr "週日"
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "宛て先のマウントポイント (バックアップドライブ)．"
 
+#~ msgid "SSH Daemon"
+#~ msgstr "SSH デーモン"
+
 #~ msgid "Enable TCP Forwarding"
 #~ msgstr "TCP フォワーディングを有効にする"
+
+#~ msgid "SSH key"
+#~ msgstr "SSH 鍵"
 
 #~ msgid "Directories to be shared."
 #~ msgstr "共有されるディレクトリ．"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "共有されるコンテンツがディレクトリに存在しません．"
+
+#~ msgid "AFP Server"
+#~ msgstr "AFP サーバ"
 
 #~ msgid ""
 #~ "The User list has been changed.<br>You must apply the changes in order for "
@@ -5466,6 +5541,18 @@ msgstr "週日"
 #~ "The RSYNC local list has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
 #~ msgstr "RSYNC ローカルリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
+
+#~ msgid "Add RSYNC"
+#~ msgstr "RSYNC の追加"
+
+#~ msgid "Edit RSYNC"
+#~ msgstr "RSYNC の編集"
+
+#~ msgid "Delete RSYNC"
+#~ msgstr "RSYNC の削除"
+
+#~ msgid "Do you really want to delete this RSYNC?"
+#~ msgstr "本当にこの RSYNC を削除しても宜しいですか?"
 
 #~ msgid "Remote source share name"
 #~ msgstr "リモートソース共有名"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
 "PO-Revision-Date: 2008-11-12 13:53+0000\n"
 "Last-Translator: Alex Trenta <dando.sando@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -205,9 +205,6 @@ msgstr "Nome AD o PDC."
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "Server AFP"
-
 msgid "ARP Tables"
 msgstr "Tabelle ARP"
 
@@ -255,11 +252,11 @@ msgstr "Aggiungi MIB"
 msgid "Add RAID"
 msgstr "Aggiungi RAID"
 
-msgid "Add RSYNC"
-msgstr "Aggiungi RSYNC"
-
 msgid "Add Route"
 msgstr "Aggiungi Route"
+
+msgid "Add Rsync job"
+msgstr ""
 
 msgid "Add URL"
 msgstr "Aggiungi URL"
@@ -468,10 +465,16 @@ msgstr "Esiste gia' un host con questo nome."
 msgid "An interface with the specified description already exists."
 msgstr "Un'interfaccia con la descrizione specificata esiste già."
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Solo utenti anonimi"
 
 msgid "Any"
+msgstr ""
+
+msgid "Apple Filing Protocol"
 msgstr ""
 
 msgid "Apply changes"
@@ -544,6 +547,12 @@ msgstr "Banner"
 
 msgid "Base DN"
 msgstr "DN base"
+
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
+msgstr ""
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -633,9 +642,6 @@ msgstr ""
 
 msgid "Client"
 msgstr "Client"
-
-msgid "Client RSYNC job"
-msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "Il client vede in minuscolo, il server vede in maiuscolo"
@@ -756,17 +762,11 @@ msgstr "Attivita' Cron"
 msgid "DAAP"
 msgstr "DAAP"
 
-msgid "DAAP Server"
-msgstr "Server DAAP"
-
 msgid "DDP"
 msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "DN da agganciare"
 
 msgid "DNS settings"
 msgstr "Impostazioni DNS"
@@ -804,6 +804,9 @@ msgstr "Cartella Database"
 msgid "Date"
 msgstr "Data"
 
+msgid "Debug"
+msgstr ""
+
 msgid "Default"
 msgstr "Predefinita"
 
@@ -837,11 +840,11 @@ msgstr "Elimina MIB"
 msgid "Delete RAID"
 msgstr "Cancella RAID"
 
-msgid "Delete RSYNC"
-msgstr "Cancella RSYNC"
-
 msgid "Delete Route"
 msgstr "Cancella Route"
+
+msgid "Delete Rsync job"
+msgstr ""
 
 msgid "Delete URL"
 msgstr "Elimina URL"
@@ -948,6 +951,11 @@ msgstr "Condivisione destinazione"
 msgid "Detected RSYNC remote shares"
 msgstr "Condivisioni RSYNC remote trovate"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -996,6 +1004,9 @@ msgstr "Diagnostica"
 
 msgid "Difference"
 msgstr "Differenza"
+
+msgid "Digital Audio Access Protocol"
+msgstr ""
 
 msgid "Direction"
 msgstr ""
@@ -1072,8 +1083,11 @@ msgstr ""
 msgid "Do you really want to delete this MIB?"
 msgstr "Vuoi cancellare davvero questo MIB?"
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "Si vuole realmente cancellare questo RSYNC?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
+msgstr ""
 
 msgid "Do you really want to delete this URL?"
 msgstr "Vuoi cancellare davvero questo URL?"
@@ -1254,11 +1268,11 @@ msgstr ""
 msgid "Edit RAID"
 msgstr "Modifica RAID"
 
-msgid "Edit RSYNC"
-msgstr "Modifica RSYNC"
-
 msgid "Edit Route"
 msgstr "Modifica Route"
+
+msgid "Edit Rsync job"
+msgstr ""
 
 msgid "Edit URL"
 msgstr "Modifica URL"
@@ -1552,9 +1566,6 @@ msgstr "FTP"
 msgid "FTP Proxy"
 msgstr "Proxy FTP"
 
-msgid "FTP Server"
-msgstr "Server FTP"
-
 msgid "FTP events"
 msgstr "Eventi FTP"
 
@@ -1621,6 +1632,9 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
+msgstr ""
+
+msgid "File Transfer Protocol"
 msgstr ""
 
 msgid "File not found"
@@ -1710,6 +1724,9 @@ msgstr "Da email"
 
 msgid "Fsck"
 msgstr "Fsck"
+
+msgid "Full"
+msgstr ""
 
 msgid "Full Name"
 msgstr "Nome completo"
@@ -1810,18 +1827,14 @@ msgstr "Directory home"
 msgid "Host"
 msgstr "Host"
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr "Risorse dell'Host"
 
 msgid "Hostname"
 msgstr "Nome di host"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr ""
-"Nome host o indirizzo IP del server LDAP. Attenzione: L'uso di un nome di "
-"host e' obbligatorio per TLS"
 
 msgid "Hosts"
 msgstr "Host"
@@ -1862,7 +1875,7 @@ msgid ""
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
-msgid "IP or FQDN address of remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -2046,6 +2059,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "L'intervallo deve essere maggiore od uguale a 10 secondi."
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
 "Porta invalida! Il numero della porta deve trovarsi nell'intervallo da %d a "
@@ -2107,12 +2124,6 @@ msgstr ""
 "conoscenza di qualcuno che usa PAM per autenticare i servizi UNIX (FTP,SSH, "
 "ecc...) e Samba al posto di un server LDAP... le tue patchs sono benvenute."
 
-msgid "LDAP server name"
-msgstr "Nome del server LDAP"
-
-msgid "LDAP server name or IP"
-msgstr "Nome o IP del server LDAP"
-
 msgid "Language"
 msgstr "Lingua"
 
@@ -2138,6 +2149,9 @@ msgid "License"
 msgstr "Licenza"
 
 msgid "License & Credits"
+msgstr ""
+
+msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2188,8 +2202,8 @@ msgstr "Locale"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Local RSYNC job"
-msgstr ""
+msgid "Local User"
+msgstr "Utenti locali"
 
 msgid "Local share"
 msgstr "Condivisione locale"
@@ -2289,6 +2303,9 @@ msgstr "Mappa come utente"
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "Max. conn. per IP"
 
@@ -2337,11 +2354,11 @@ msgstr "Utilizzo della memoria"
 msgid "Message of the day."
 msgstr "Messaggio del giorno."
 
-msgid "Method used to store your password in your LDAP."
-msgstr "Metodo utilizzato per immagazzinare le password nel vostro LDAP."
-
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Minimum"
+msgstr ""
 
 msgid "Minimum free space"
 msgstr "Minimo spazio libero"
@@ -2408,9 +2425,6 @@ msgstr "Modalita' NAT"
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "Server NFS"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2443,6 +2457,9 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Rete"
 
+msgid "Network File System"
+msgstr ""
+
 msgid "Network mask"
 msgstr "Maschera di rete"
 
@@ -2473,6 +2490,9 @@ msgid "No disk configured"
 msgstr "Nessun disco configurato"
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid ""
@@ -2661,9 +2681,6 @@ msgstr "La password non coincide."
 
 msgid "Password encryption"
 msgstr "Cifratura password"
-
-msgid "Password for DN"
-msgstr "Password per DN"
 
 msgid "Password for the administrative pages."
 msgstr ""
@@ -2915,8 +2932,8 @@ msgstr ""
 msgid "Reload page"
 msgstr "Ricarica pagina"
 
-msgid "Remote RSYNC Server"
-msgstr "Server RSYNC Remoto"
+msgid "Remote Rsync Server"
+msgstr ""
 
 msgid "Remote address"
 msgstr "Indirizzo remoto"
@@ -2983,8 +3000,11 @@ msgstr "Tabelle di Routing"
 msgid "Rows"
 msgstr "Righe"
 
-msgid "Rsync Daemon"
-msgstr "Demone Rsync"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
+msgstr ""
 
 msgid "Rule"
 msgstr ""
@@ -3016,14 +3036,8 @@ msgstr "Moduli SNMP"
 msgid "SSH"
 msgstr "SSH"
 
-msgid "SSH Daemon"
-msgstr "Demone SSH"
-
 msgid "SSH events"
 msgstr "Eventi SSH"
-
-msgid "SSH key"
-msgstr "Chiave SSH"
 
 msgid "SSHD log"
 msgstr "Log di SSHD"
@@ -3070,6 +3084,9 @@ msgstr ""
 
 msgid "Scheduled shutdown"
 msgstr "Spegnimento Programmato"
+
+msgid "Secure Shell"
+msgstr ""
 
 msgid "Security"
 msgstr "Sicurezza"
@@ -3171,6 +3188,11 @@ msgstr ""
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
+msgstr ""
+
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
 msgstr ""
 
 msgid "Settings"
@@ -3277,15 +3299,9 @@ msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
-msgstr "Specifica il DN base di default da utilizzare quando si effettuano"
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
-"Specifica il DN di default da utilizzare quando si effettuano operazioni "
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
@@ -3293,6 +3309,9 @@ msgid ""
 msgstr ""
 "Specifica il seti di caratteri della condivisione. Per esempio UTF8, UTF8-"
 "MAC, ISO-8859-15, etc."
+
+msgid "Specifies the username which the service will run as."
+msgstr ""
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
@@ -3320,9 +3339,6 @@ msgstr ""
 
 msgid "Standby time"
 msgstr "Tempo per lo standby"
-
-msgid "State"
-msgstr ""
 
 msgid "Static Routes"
 msgstr "Route statiche"
@@ -3690,14 +3706,18 @@ msgstr ""
 "La password di conferma non corrisponde. Per favore assicurarsi che le "
 "password coincidano esattamente."
 
-msgid "The credentials to bind with, enter it here twice."
-msgstr "Credenziali con le quali agganciarsi, inserirle due volte."
+msgid "The credentials with which to bind."
+msgstr ""
 
 msgid "The cron job has been executed successfully."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "La porta di default del server mail SMTP, es. 25 o 587."
+
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
@@ -3706,7 +3726,9 @@ msgstr ""
 msgid "The device's IP address."
 msgstr ""
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3716,6 +3738,11 @@ msgid ""
 msgstr ""
 "Il disco e' montato! <a href=%s>Eseguire lo smontaggio</a> di questo disco "
 "prima di procedere."
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3779,11 +3806,17 @@ msgstr ""
 "La porta minima da assegnare per le connessioni dati di tipo PASV (0 = usa "
 "una porta qualunque)."
 
+msgid "The name or IP address of the LDAP server."
+msgstr ""
+
 msgid "The number of clients must be between 1 and 50."
 msgstr "Il numero di clients deve essere compreso tra 1 e 50."
 
 msgid "The old password is not correct."
 msgstr "La vecchia password non e' corretta."
+
+msgid "The password change protocol to use."
+msgstr ""
 
 msgid "The password contains the illegal character ':'."
 msgstr "La password contiene il carattere illegale ':'."
@@ -3802,6 +3835,11 @@ msgstr ""
 "ereditati li sovrascrivono. Questo puo' essere particolarmente utile nei "
 "sistemi con molti utenti per consentire a una singola condivisione di essere "
 "utilizzata in modo flessibile da ogni utente."
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
+msgstr ""
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -3905,6 +3943,10 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -4174,6 +4216,24 @@ msgstr ""
 msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4710,9 +4770,6 @@ msgstr ""
 msgid "e.g. %s"
 msgstr "es. %s"
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr "group_suffix, esempio: ou=gruppo,dc=esempio,dc=com"
-
 msgid "hours"
 msgstr "ore"
 
@@ -4758,9 +4815,6 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr "password_suffix, esempio: ou=utente,dc=esempio,dc=com"
-
 msgid "pasv_max_port"
 msgstr "Porta massima PASV"
 
@@ -4785,11 +4839,11 @@ msgstr "striping"
 msgid "sysctl.conf"
 msgstr ""
 
-msgid "upriv"
+msgid "umask"
 msgstr ""
 
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr "user_suffix, esempio: ou=utenti,dc=esempio,dc=com"
+msgid "upriv"
+msgstr ""
 
 msgid "week days"
 msgstr "giorni della settimana"
@@ -5263,14 +5317,14 @@ msgstr "giorni della settimana"
 #~ msgid "The pasv address must be a public IP address."
 #~ msgstr "L'indirizzo pasv deve essere un indirizzo IP pubblico."
 
+#~ msgid "FTP Server"
+#~ msgstr "Server FTP"
+
 #~ msgid "Anonymous login"
 #~ msgstr "Login Anonimo"
 
 #~ msgid "Enable anonymous login."
 #~ msgstr "Accetta connessioni anonime."
-
-#~ msgid "Local User"
-#~ msgstr "Utenti locali"
 
 #~ msgid "Enable local user login."
 #~ msgstr "Accetta login di utenti locali."
@@ -5282,11 +5336,20 @@ msgstr "giorni della settimana"
 #~ "Usa questa opzione per imporre l'indirizzo IP che il demone FTP annuncia in "
 #~ "risposta al comandi PASV."
 
+#~ msgid "NFS Server"
+#~ msgstr "Server NFS"
+
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "Il nome delle directories esportate &egrave; : /mnt/nomeshare"
 
+#~ msgid "Rsync Daemon"
+#~ msgstr "Demone Rsync"
+
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Sincronizzazione client Rsync"
+
+#~ msgid "Remote RSYNC Server"
+#~ msgstr "Server RSYNC Remoto"
 
 #~ msgid "IP address of remote RSYNC server"
 #~ msgstr "Indirizzo IP del server RSYNC remoto"
@@ -5318,11 +5381,20 @@ msgstr "giorni della settimana"
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "Punto di Mount Destinazione (disco di backup)."
 
+#~ msgid "SSH Daemon"
+#~ msgstr "Demone SSH"
+
+#~ msgid "SSH key"
+#~ msgstr "Chiave SSH"
+
 #~ msgid "Directories to be shared."
 #~ msgstr "Directories da condividere"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "Nessuna directory di contenuti da condividere."
+
+#~ msgid "AFP Server"
+#~ msgstr "Server AFP"
 
 #~ msgid "Unique login name of user."
 #~ msgstr "Nome di login univoco dell'utente."
@@ -5478,6 +5550,30 @@ msgstr "giorni della settimana"
 #~ msgid "Creating filesystem with 'Soft Updates'"
 #~ msgstr "Creo un filesystem con 'Soft Updates'"
 
+#~ msgid "Add RSYNC"
+#~ msgstr "Aggiungi RSYNC"
+
+#~ msgid "Edit RSYNC"
+#~ msgstr "Modifica RSYNC"
+
+#~ msgid "Delete RSYNC"
+#~ msgstr "Cancella RSYNC"
+
+#~ msgid "Do you really want to delete this RSYNC?"
+#~ msgstr "Si vuole realmente cancellare questo RSYNC?"
+
+#~ msgid "DN to bind"
+#~ msgstr "DN da agganciare"
+
+#~ msgid "Password for DN"
+#~ msgstr "Password per DN"
+
+#~ msgid "The credentials to bind with, enter it here twice."
+#~ msgstr "Credenziali con le quali agganciarsi, inserirle due volte."
+
+#~ msgid "Method used to store your password in your LDAP."
+#~ msgstr "Metodo utilizzato per immagazzinare le password nel vostro LDAP."
+
 #~ msgid "Erasing MBR and all paritions"
 #~ msgstr "Cancello il MBR e tutte le partizioni"
 
@@ -5587,6 +5683,39 @@ msgstr "giorni della settimana"
 #~ "Inserire il percorso alla directory home di quell'utente. Assicurarsi che "
 #~ "questo percorso esista e sia sempre montato all'avvio. Lasciare questo campo "
 #~ "vuoto per utilizzare il percorso di default /mnt."
+
+#~ msgid ""
+#~ "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
+#~ "for TLS"
+#~ msgstr ""
+#~ "Nome host o indirizzo IP del server LDAP. Attenzione: L'uso di un nome di "
+#~ "host e' obbligatorio per TLS"
+
+#~ msgid "LDAP server name"
+#~ msgstr "Nome del server LDAP"
+
+#~ msgid "LDAP server name or IP"
+#~ msgstr "Nome o IP del server LDAP"
+
+#~ msgid ""
+#~ "Specifies the default base DN to use when performing ldap operations, "
+#~ "example: dc=example,dc=com"
+#~ msgstr "Specifica il DN base di default da utilizzare quando si effettuano"
+
+#~ msgid ""
+#~ "Specifies the default bind DN to use when performing ldap operations, "
+#~ "example:cn=administrator,dc=example,dc=com "
+#~ msgstr ""
+#~ "Specifica il DN di default da utilizzare quando si effettuano operazioni "
+
+#~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
+#~ msgstr "group_suffix, esempio: ou=gruppo,dc=esempio,dc=com"
+
+#~ msgid "password_suffix, example: ou=users,dc=example,dc=com"
+#~ msgstr "password_suffix, esempio: ou=utente,dc=esempio,dc=com"
+
+#~ msgid "user_suffix, example: ou=users,dc=example,dc=com"
+#~ msgstr "user_suffix, esempio: ou=utenti,dc=esempio,dc=com"
 
 #~ msgid "This parameters will be added to [global] in smb.conf."
 #~ msgstr "Questo parametro sarà aggiunto in [global] nel file smb.conf."

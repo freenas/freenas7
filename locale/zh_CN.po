@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
 "PO-Revision-Date: 2008-11-18 12:22+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -230,9 +230,6 @@ msgstr "AD或PDC 的名称。"
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "AFP服务器"
-
 msgid "ARP Tables"
 msgstr "ARP 表"
 
@@ -280,11 +277,11 @@ msgstr "添加MIB"
 msgid "Add RAID"
 msgstr "添加RAID"
 
-msgid "Add RSYNC"
-msgstr "添加 RSYNC 设定"
-
 msgid "Add Route"
 msgstr "添加路由"
+
+msgid "Add Rsync job"
+msgstr ""
 
 msgid "Add URL"
 msgstr "新增 URL"
@@ -481,11 +478,17 @@ msgstr "已经有一个相同的主机名称存在了。"
 msgid "An interface with the specified description already exists."
 msgstr "具有相同描述的接口已经存在。"
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
 
 msgid "Any"
 msgstr "任意"
+
+msgid "Apple Filing Protocol"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "应用更改"
@@ -557,6 +560,12 @@ msgstr "欢迎文字"
 
 msgid "Base DN"
 msgstr "基本 DN"
+
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
+msgstr ""
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -642,9 +651,6 @@ msgstr "点这个按钮下载 XML 格式的系统组态"
 
 msgid "Client"
 msgstr "客户端"
-
-msgid "Client RSYNC job"
-msgstr "客户 RSYNC 任务"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "客户端显示小写，伺服端显示大写。"
@@ -759,17 +765,11 @@ msgstr "Cron job"
 msgid "DAAP"
 msgstr "DAAP"
 
-msgid "DAAP Server"
-msgstr "DAAP 服务器"
-
 msgid "DDP"
 msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "欲 Bind 之网域名称"
 
 msgid "DNS settings"
 msgstr "DNS 设定"
@@ -806,6 +806,9 @@ msgstr "资料库目录"
 msgid "Date"
 msgstr "日期"
 
+msgid "Debug"
+msgstr ""
+
 msgid "Default"
 msgstr "预设值"
 
@@ -839,11 +842,11 @@ msgstr "删除 MIB"
 msgid "Delete RAID"
 msgstr "删除RAID"
 
-msgid "Delete RSYNC"
-msgstr "删除RSYNC设定"
-
 msgid "Delete Route"
 msgstr "删除路由"
+
+msgid "Delete Rsync job"
+msgstr ""
 
 msgid "Delete URL"
 msgstr "删除 URL"
@@ -950,6 +953,11 @@ msgstr "目标位置"
 msgid "Detected RSYNC remote shares"
 msgstr "删除 RSYNC 远端分享"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr "装置"
 
@@ -993,6 +1001,9 @@ msgstr "诊断"
 
 msgid "Difference"
 msgstr "差异"
+
+msgid "Digital Audio Access Protocol"
+msgstr ""
 
 msgid "Direction"
 msgstr "方向"
@@ -1071,8 +1082,11 @@ msgstr "是否要删除全部规则？"
 msgid "Do you really want to delete this MIB?"
 msgstr "是否确定删除此 MIB?"
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "确定要删除这个RSYNC设定吗？"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
+msgstr ""
 
 msgid "Do you really want to delete this URL?"
 msgstr "确定要删除这个 URL 吗？"
@@ -1245,11 +1259,11 @@ msgstr "编辑 MIB"
 msgid "Edit RAID"
 msgstr "编辑RAID"
 
-msgid "Edit RSYNC"
-msgstr "编辑RSYNC设定"
-
 msgid "Edit Route"
 msgstr "编辑路由"
+
+msgid "Edit Rsync job"
+msgstr ""
 
 msgid "Edit URL"
 msgstr "编辑 URL"
@@ -1533,9 +1547,6 @@ msgstr "FTP"
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
 
-msgid "FTP Server"
-msgstr "FTP伺服器"
-
 msgid "FTP events"
 msgstr "FTP事件"
 
@@ -1599,6 +1610,9 @@ msgstr "文件编辑器"
 
 msgid "File Manager"
 msgstr "文件管理器"
+
+msgid "File Transfer Protocol"
+msgstr ""
 
 msgid "File not found"
 msgstr "没有这个档案"
@@ -1684,6 +1698,9 @@ msgstr "来源 email"
 
 msgid "Fsck"
 msgstr "Fsck"
+
+msgid "Full"
+msgstr ""
 
 msgid "Full Name"
 msgstr "全名"
@@ -1781,16 +1798,14 @@ msgstr "家目录"
 msgid "Host"
 msgstr "主机"
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr "主机资源"
 
 msgid "Hostname"
 msgstr "主机名称"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr "LDAP 伺服器主机名称或 IP 位置。 注意： TLS 必须设定主机名称"
 
 msgid "Hosts"
 msgstr "主机列表"
@@ -1828,7 +1843,7 @@ msgid ""
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
-msgid "IP or FQDN address of remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -2000,6 +2015,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "间隔必需大于等于 10 秒。"
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr "无效的连接阜号！连接阜必需介于 %d - %d。"
 
@@ -2055,12 +2074,6 @@ msgstr ""
 "to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
 "server... Your patchs are welcome."
 
-msgid "LDAP server name"
-msgstr "LDAP 伺服器名称"
-
-msgid "LDAP server name or IP"
-msgstr "LDAP 伺服器名称或 IP"
-
 msgid "Language"
 msgstr "语言"
 
@@ -2085,6 +2098,9 @@ msgstr "License"
 
 msgid "License & Credits"
 msgstr "许可协议及鸣谢"
+
+msgid "Lightweight Directory Access Protocol"
+msgstr ""
 
 msgid "Link Aggregation and Failover"
 msgstr ""
@@ -2134,8 +2150,8 @@ msgstr "本地端"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Local RSYNC job"
-msgstr ""
+msgid "Local User"
+msgstr "本机使用者"
 
 msgid "Local share"
 msgstr "本机分享区"
@@ -2231,6 +2247,9 @@ msgstr "对应到本地使用者"
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "相同IP的连线数目"
 
@@ -2277,11 +2296,11 @@ msgstr "记忆体使用率"
 msgid "Message of the day."
 msgstr "每日新讯(每次登入时显示)。"
 
-msgid "Method used to store your password in your LDAP."
-msgstr "密码在 LDAP 伺服器存取的方式"
-
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Minimum"
+msgstr ""
 
 msgid "Minimum free space"
 msgstr "最少需求空间"
@@ -2347,9 +2366,6 @@ msgstr "NAT模式"
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "NFS伺服器"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2379,6 +2395,9 @@ msgstr "网路图"
 
 msgid "Network"
 msgstr "网络"
+
+msgid "Network File System"
+msgstr ""
 
 msgid "Network mask"
 msgstr ""
@@ -2410,6 +2429,9 @@ msgid "No disk configured"
 msgstr "尚未加入磁碟"
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid ""
@@ -2589,9 +2611,6 @@ msgstr "密码不相同"
 
 msgid "Password encryption"
 msgstr "密码文本"
-
-msgid "Password for DN"
-msgstr "网域名称密码"
 
 msgid "Password for the administrative pages."
 msgstr ""
@@ -2840,8 +2859,8 @@ msgstr ""
 msgid "Reload page"
 msgstr "重新载入页面"
 
-msgid "Remote RSYNC Server"
-msgstr "远端的RSYNC伺服器"
+msgid "Remote Rsync Server"
+msgstr ""
 
 msgid "Remote address"
 msgstr "远端位置"
@@ -2904,8 +2923,11 @@ msgstr "路由表"
 msgid "Rows"
 msgstr "行"
 
-msgid "Rsync Daemon"
-msgstr "Rsync伺服器"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
+msgstr ""
 
 msgid "Rule"
 msgstr ""
@@ -2937,14 +2959,8 @@ msgstr "SNMP 模组"
 msgid "SSH"
 msgstr "SSH"
 
-msgid "SSH Daemon"
-msgstr "SSH 伺服器"
-
 msgid "SSH events"
 msgstr "SSH 事件"
-
-msgid "SSH key"
-msgstr "SSH key"
 
 msgid "SSHD log"
 msgstr "SSHD 记录"
@@ -2991,6 +3007,9 @@ msgstr "排程自我检测"
 
 msgid "Scheduled shutdown"
 msgstr "排程关机"
+
+msgid "Secure Shell"
+msgstr ""
 
 msgid "Security"
 msgstr "安全"
@@ -3095,6 +3114,11 @@ msgid ""
 "value is 10."
 msgstr "设定磁碟检查间隔时间，单位是秒，最少是 10。"
 
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
+msgstr ""
+
 msgid "Settings"
 msgstr "设定"
 
@@ -3198,23 +3222,17 @@ msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
-msgstr ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
 msgstr "指定这个分享区的档名编码，UTF8、UTF8-MAC、ISO-8859-15等等"
+
+msgid "Specifies the username which the service will run as."
+msgstr ""
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
@@ -3238,9 +3256,6 @@ msgstr ""
 
 msgid "Standby time"
 msgstr "进入待命时间"
-
-msgid "State"
-msgstr ""
 
 msgid "Static Routes"
 msgstr "静态路由"
@@ -3588,8 +3603,8 @@ msgid ""
 "exactly."
 msgstr "密码确认并不一致，请在确认一次输入的密码是否一致。"
 
-msgid "The credentials to bind with, enter it here twice."
-msgstr "将要 Bind 的授权，请输入两次。"
+msgid "The credentials with which to bind."
+msgstr ""
 
 msgid "The cron job has been executed successfully."
 msgstr ""
@@ -3597,13 +3612,19 @@ msgstr ""
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "预设的 SMTP 邮件伺服器连接阜，例：25 或 587。"
 
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "装置名称只可以由 a-z, A-Z, 0-9 组成。"
 
 msgid "The device's IP address."
 msgstr ""
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3611,6 +3632,11 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "磁碟已经挂载！请先<a href=%s>卸载</a>之后再继续其他动作。"
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3667,11 +3693,17 @@ msgid ""
 "port)."
 msgstr "被动式连线埠的区段起点(0 = 不限制)"
 
+msgid "The name or IP address of the LDAP server."
+msgstr ""
+
 msgid "The number of clients must be between 1 and 50."
 msgstr "使用者上限必须介于 1 至 50。"
 
 msgid "The old password is not correct."
 msgstr "旧的密码错误。"
+
+msgid "The password change protocol to use."
+msgstr ""
 
 msgid "The password contains the illegal character ':'."
 msgstr "密码包含了无效的字元 ':'。"
@@ -3689,6 +3721,11 @@ msgstr ""
 "mask and directory mask but the inherit permissions parameter overrides "
 "this. This can be particularly useful on systems with many users to allow a "
 "single share to be used flexibly by each user."
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
+msgstr ""
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -3790,6 +3827,10 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -4033,6 +4074,24 @@ msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
 msgstr "这个参数将会套用在所有的档案，包含以逗点为开头的隐藏档。"
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "这是 iSCSI 的 IP 位置或者 DNS 名称"
@@ -4534,9 +4593,6 @@ msgstr "资料库位置"
 msgid "e.g. %s"
 msgstr "例：%s"
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr "群组附加字串，例：ou=groups,dc=example,dc=com"
-
 msgid "hours"
 msgstr "小时"
 
@@ -4582,9 +4638,6 @@ msgstr "nohex"
 msgid "nostat"
 msgstr "nostat"
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr "密码附加字串，例：ou=users,dc=example,dc=com"
-
 msgid "pasv_max_port"
 msgstr "被动模式连接阜最大值"
 
@@ -4609,11 +4662,11 @@ msgstr "striping"
 msgid "sysctl.conf"
 msgstr ""
 
+msgid "umask"
+msgstr ""
+
 msgid "upriv"
 msgstr "upriv"
-
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr "使用者附加字串，例：ou=users,dc=example,dc=com"
 
 msgid "week days"
 msgstr "平常日"
@@ -5130,14 +5183,14 @@ msgstr "平常日"
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr "请至少选择 匿名/本地使用者 认证。"
 
+#~ msgid "FTP Server"
+#~ msgstr "FTP伺服器"
+
 #~ msgid "Anonymous login"
 #~ msgstr "匿名登入"
 
 #~ msgid "Enable anonymous login."
 #~ msgstr "是否开启匿名登入"
-
-#~ msgid "Local User"
-#~ msgstr "本机使用者"
 
 #~ msgid "Enable local user login."
 #~ msgstr "是否开启本机使用者登入"
@@ -5147,17 +5200,26 @@ msgstr "平常日"
 #~ "response to the PASV command."
 #~ msgstr "FTP伺服器的被动式连线IP位置。"
 
+#~ msgid "NFS Server"
+#~ msgstr "NFS伺服器"
+
 #~ msgid "Network that is authorised to access to NFS share"
 #~ msgstr "设定可以使用NFS分享的网路区段"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "输出的目录名称是：/mnt/sharename"
 
+#~ msgid "Rsync Daemon"
+#~ msgstr "Rsync伺服器"
+
 #~ msgid "You must configure mount point first."
 #~ msgstr "请先设定挂载点。"
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Rsync本地端档案同步"
+
+#~ msgid "Remote RSYNC Server"
+#~ msgstr "远端的RSYNC伺服器"
 
 #~ msgid "IP address of remote RSYNC server"
 #~ msgstr "远端的RSYNC伺服器IP位置"
@@ -5186,14 +5248,23 @@ msgstr "平常日"
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "选择目的位置的挂载点(备援磁碟机)。"
 
+#~ msgid "SSH Daemon"
+#~ msgstr "SSH 伺服器"
+
 #~ msgid "Enable TCP Forwarding"
 #~ msgstr "Enable TCP Forwarding"
+
+#~ msgid "SSH key"
+#~ msgstr "SSH key"
 
 #~ msgid "Directories to be shared."
 #~ msgstr "分享的资料夹(space or CSV list)."
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "No content directory to be shared."
+
+#~ msgid "AFP Server"
+#~ msgstr "AFP服务器"
 
 #~ msgid ""
 #~ "The User list has been changed.<br>You must apply the changes in order for "
@@ -5478,6 +5549,15 @@ msgstr "平常日"
 #~ "order for them to take effect."
 #~ msgstr "本地端RSYNC设定已经变更。<br>套用之后才会生效。"
 
+#~ msgid "Edit RSYNC"
+#~ msgstr "编辑RSYNC设定"
+
+#~ msgid "Delete RSYNC"
+#~ msgstr "删除RSYNC设定"
+
+#~ msgid "Do you really want to delete this RSYNC?"
+#~ msgstr "确定要删除这个RSYNC设定吗？"
+
 #~ msgid "Remote source share name"
 #~ msgstr "远端来源名称"
 
@@ -5515,10 +5595,22 @@ msgstr "平常日"
 #~ "base must be specified as a distinguished name in LDAP format."
 #~ msgstr "指定预设的 Base 网域名称以便 LDAP运作。 Base 网域名称必须为显著的 LDAP 格式。"
 
+#~ msgid "DN to bind"
+#~ msgstr "欲 Bind 之网域名称"
+
 #~ msgid ""
 #~ "Specifies the default bind DN to use when performing ldap operations. The "
 #~ "bind DN must be specified as a distinguished name in LDAP format."
 #~ msgstr "指定预设的 Bind 网域名称以便 LDAP运作。 Bind 网域名称必须为显著的 LDAP 格式。"
+
+#~ msgid "Password for DN"
+#~ msgstr "网域名称密码"
+
+#~ msgid "The credentials to bind with, enter it here twice."
+#~ msgstr "将要 Bind 的授权，请输入两次。"
+
+#~ msgid "Method used to store your password in your LDAP."
+#~ msgstr "密码在 LDAP 伺服器存取的方式"
 
 #~ msgid ""
 #~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
@@ -5662,6 +5754,40 @@ msgstr "平常日"
 #~ "exists and is always mounted at startup. Leave this field empty to use "
 #~ "default path /mnt."
 #~ msgstr "输入使用者家目录的路径。请确定这个路径存在而且一开机就会挂载。将此留白则会使用预设的路径 /mnt。"
+
+#~ msgid ""
+#~ "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
+#~ "for TLS"
+#~ msgstr "LDAP 伺服器主机名称或 IP 位置。 注意： TLS 必须设定主机名称"
+
+#~ msgid "LDAP server name"
+#~ msgstr "LDAP 伺服器名称"
+
+#~ msgid "LDAP server name or IP"
+#~ msgstr "LDAP 伺服器名称或 IP"
+
+#~ msgid ""
+#~ "Specifies the default base DN to use when performing ldap operations, "
+#~ "example: dc=example,dc=com"
+#~ msgstr ""
+#~ "Specifies the default base DN to use when performing ldap operations, "
+#~ "example: dc=example,dc=com"
+
+#~ msgid ""
+#~ "Specifies the default bind DN to use when performing ldap operations, "
+#~ "example:cn=administrator,dc=example,dc=com "
+#~ msgstr ""
+#~ "Specifies the default bind DN to use when performing ldap operations, "
+#~ "example:cn=administrator,dc=example,dc=com "
+
+#~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
+#~ msgstr "群组附加字串，例：ou=groups,dc=example,dc=com"
+
+#~ msgid "password_suffix, example: ou=users,dc=example,dc=com"
+#~ msgstr "密码附加字串，例：ou=users,dc=example,dc=com"
+
+#~ msgid "user_suffix, example: ou=users,dc=example,dc=com"
+#~ msgstr "使用者附加字串，例：ou=users,dc=example,dc=com"
 
 #~ msgid "This parameters will be added to [global] in smb.conf."
 #~ msgstr "这个参数将会被新增到 smb.con 的 global 区域。"

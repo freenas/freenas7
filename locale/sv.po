@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
 "PO-Revision-Date: 2008-10-27 11:43+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -217,9 +217,6 @@ msgstr "AD eller PDC-namn."
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "AFP-server"
-
 msgid "ARP Tables"
 msgstr "ARP Tabeller"
 
@@ -270,11 +267,11 @@ msgstr "Lägg till MIB"
 msgid "Add RAID"
 msgstr "Lägg till RAID"
 
-msgid "Add RSYNC"
-msgstr "Lägg till RSYNC"
-
 msgid "Add Route"
 msgstr "Lägg till väg"
+
+msgid "Add Rsync job"
+msgstr ""
 
 msgid "Add URL"
 msgstr "Lägg till url"
@@ -480,10 +477,16 @@ msgstr "En värd med det här namnet finns redan."
 msgid "An interface with the specified description already exists."
 msgstr "Ett gränssnitt med den angivna beskrivningen finns redan."
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Endast anonyma användare"
 
 msgid "Any"
+msgstr ""
+
+msgid "Apple Filing Protocol"
 msgstr ""
 
 msgid "Apply changes"
@@ -554,6 +557,12 @@ msgstr "Banderoll"
 
 msgid "Base DN"
 msgstr "Basdomännamn"
+
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
+msgstr ""
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -643,9 +652,6 @@ msgstr ""
 
 msgid "Client"
 msgstr "Klient"
-
-msgid "Client RSYNC job"
-msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "Klienten ser gemener, servern ser versaler."
@@ -766,17 +772,11 @@ msgstr "Cron-jobb"
 msgid "DAAP"
 msgstr "DAAP"
 
-msgid "DAAP Server"
-msgstr "DAAP Server"
-
 msgid "DDP"
 msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "DN att binda till"
 
 msgid "DNS settings"
 msgstr "DNS inställningar"
@@ -807,6 +807,9 @@ msgstr "Databaskatalog"
 
 msgid "Date"
 msgstr "Datum"
+
+msgid "Debug"
+msgstr ""
 
 msgid "Default"
 msgstr "Standard"
@@ -841,11 +844,11 @@ msgstr "Radera MIB"
 msgid "Delete RAID"
 msgstr "Ta bort RAID"
 
-msgid "Delete RSYNC"
-msgstr "Ta bort RSYNC"
-
 msgid "Delete Route"
 msgstr "Ta bort väg"
+
+msgid "Delete Rsync job"
+msgstr ""
 
 msgid "Delete URL"
 msgstr "Radera URL"
@@ -952,6 +955,11 @@ msgstr ""
 msgid "Detected RSYNC remote shares"
 msgstr "Upptäckte fjärranslutna RSYNC utdelningar"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr "Enhet"
 
@@ -990,6 +998,9 @@ msgstr "Diagnostik"
 
 msgid "Difference"
 msgstr "Skillnad"
+
+msgid "Digital Audio Access Protocol"
+msgstr ""
 
 msgid "Direction"
 msgstr ""
@@ -1068,8 +1079,11 @@ msgstr ""
 msgid "Do you really want to delete this MIB?"
 msgstr "Vill du verkligen radera denna MIB?"
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "Vill du verkligen ta bort denna RSYNC?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
+msgstr ""
 
 msgid "Do you really want to delete this URL?"
 msgstr "Vill du verkligen radera denna URL?"
@@ -1249,11 +1263,11 @@ msgstr "Redigera MIB"
 msgid "Edit RAID"
 msgstr "Redigera RAID"
 
-msgid "Edit RSYNC"
-msgstr "Redigera RSYNC"
-
 msgid "Edit Route"
 msgstr "Redigera väg"
+
+msgid "Edit Rsync job"
+msgstr ""
 
 msgid "Edit URL"
 msgstr "Redigera URL"
@@ -1551,9 +1565,6 @@ msgstr "FTP"
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
 
-msgid "FTP Server"
-msgstr "FTP-server"
-
 msgid "FTP events"
 msgstr "FTP-händelser"
 
@@ -1616,6 +1627,9 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
+msgstr ""
+
+msgid "File Transfer Protocol"
 msgstr ""
 
 msgid "File not found"
@@ -1699,6 +1713,9 @@ msgstr "Från e-post"
 
 msgid "Fsck"
 msgstr "Fsck"
+
+msgid "Full"
+msgstr ""
 
 msgid "Full Name"
 msgstr "Fullständigt namn"
@@ -1799,18 +1816,14 @@ msgstr "Hemkatalog"
 msgid "Host"
 msgstr "Värd"
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr "Värdresurser"
 
 msgid "Hostname"
 msgstr "Värdnamn"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr ""
-"Värdnamn eller IP-adress för LDAP-server. Varning: Värdnamn krävs för "
-"användning av TLS"
 
 msgid "Hosts"
 msgstr "Värdar"
@@ -1848,7 +1861,7 @@ msgid ""
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
-msgid "IP or FQDN address of remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -2009,6 +2022,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr ""
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
 
@@ -2063,12 +2080,6 @@ msgid ""
 "server... Your patchs are welcome."
 msgstr ""
 
-msgid "LDAP server name"
-msgstr ""
-
-msgid "LDAP server name or IP"
-msgstr ""
-
 msgid "Language"
 msgstr "Språk"
 
@@ -2092,6 +2103,9 @@ msgid "License"
 msgstr "Licens"
 
 msgid "License & Credits"
+msgstr ""
+
+msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2142,8 +2156,8 @@ msgstr "Lokal"
 msgid "Local Master Browser"
 msgstr ""
 
-msgid "Local RSYNC job"
-msgstr ""
+msgid "Local User"
+msgstr "Lokal användare"
 
 msgid "Local share"
 msgstr ""
@@ -2239,6 +2253,9 @@ msgstr "Koppla till användare"
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "Max. anslutningar per IP"
 
@@ -2285,10 +2302,10 @@ msgstr "Minnesanvändning"
 msgid "Message of the day."
 msgstr "Dagens meddelande."
 
-msgid "Method used to store your password in your LDAP."
-msgstr "Metod som används för att lagra ditt lösenord i LDAP-servern."
-
 msgid "MibII"
+msgstr ""
+
+msgid "Minimum"
 msgstr ""
 
 msgid "Minimum free space"
@@ -2355,9 +2372,6 @@ msgstr ""
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "NFS-server"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2387,6 +2401,9 @@ msgstr ""
 
 msgid "Network"
 msgstr "Nätverk"
+
+msgid "Network File System"
+msgstr ""
 
 msgid "Network mask"
 msgstr ""
@@ -2418,6 +2435,9 @@ msgid "No disk configured"
 msgstr "Ingen disk konfigurerad"
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid ""
@@ -2595,9 +2615,6 @@ msgstr "Lösenordet stämmer inte."
 
 msgid "Password encryption"
 msgstr "Lösenordskryptering"
-
-msgid "Password for DN"
-msgstr ""
 
 msgid "Password for the administrative pages."
 msgstr ""
@@ -2846,7 +2863,7 @@ msgstr ""
 msgid "Reload page"
 msgstr ""
 
-msgid "Remote RSYNC Server"
+msgid "Remote Rsync Server"
 msgstr ""
 
 msgid "Remote address"
@@ -2910,7 +2927,10 @@ msgstr ""
 msgid "Rows"
 msgstr "Rader"
 
-msgid "Rsync Daemon"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
 msgstr ""
 
 msgid "Rule"
@@ -2943,14 +2963,8 @@ msgstr ""
 msgid "SSH"
 msgstr ""
 
-msgid "SSH Daemon"
-msgstr "SSH-demon"
-
 msgid "SSH events"
 msgstr ""
-
-msgid "SSH key"
-msgstr "SSH-nyckel"
 
 msgid "SSHD log"
 msgstr ""
@@ -2997,6 +3011,9 @@ msgstr ""
 
 msgid "Scheduled shutdown"
 msgstr "Schemalagd avständning"
+
+msgid "Secure Shell"
+msgstr ""
 
 msgid "Security"
 msgstr ""
@@ -3097,6 +3114,11 @@ msgstr ""
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
+msgstr ""
+
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
 msgstr ""
 
 msgid "Settings"
@@ -3202,18 +3224,16 @@ msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
-msgstr ""
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
+msgstr ""
+
+msgid "Specifies the username which the service will run as."
 msgstr ""
 
 msgid ""
@@ -3236,9 +3256,6 @@ msgid ""
 msgstr ""
 
 msgid "Standby time"
-msgstr ""
-
-msgid "State"
 msgstr ""
 
 msgid "Static Routes"
@@ -3584,7 +3601,7 @@ msgid ""
 "exactly."
 msgstr ""
 
-msgid "The credentials to bind with, enter it here twice."
+msgid "The credentials with which to bind."
 msgstr ""
 
 msgid "The cron job has been executed successfully."
@@ -3593,13 +3610,19 @@ msgstr ""
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr ""
 
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Enhetsnamnet får endast innehålla tecknen a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
 msgstr ""
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3609,6 +3632,11 @@ msgid ""
 msgstr ""
 "Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
 "först innan du fortsätter."
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3667,10 +3695,16 @@ msgid ""
 "port)."
 msgstr ""
 
+msgid "The name or IP address of the LDAP server."
+msgstr ""
+
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
 msgid "The old password is not correct."
+msgstr ""
+
+msgid "The password change protocol to use."
 msgstr ""
 
 msgid "The password contains the illegal character ':'."
@@ -3684,6 +3718,11 @@ msgid ""
 "mask and directory mask but the inherit permissions parameter overrides "
 "this. This can be particularly useful on systems with many users to allow a "
 "single share to be used flexibly by each user."
+msgstr ""
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
 msgstr ""
 
 msgid ""
@@ -3782,6 +3821,10 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -3989,6 +4032,24 @@ msgstr ""
 msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4487,9 +4548,6 @@ msgstr ""
 msgid "e.g. %s"
 msgstr ""
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr ""
-
 msgid "hours"
 msgstr "timmar"
 
@@ -4535,9 +4593,6 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
-
 msgid "pasv_max_port"
 msgstr "pasv_max_port"
 
@@ -4562,10 +4617,10 @@ msgstr ""
 msgid "sysctl.conf"
 msgstr ""
 
-msgid "upriv"
+msgid "umask"
 msgstr ""
 
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
+msgid "upriv"
 msgstr ""
 
 msgid "week days"
@@ -4751,11 +4806,23 @@ msgstr "veckodagar"
 #~ msgid "Enable Recycle bin"
 #~ msgstr "Aktivera papperskorg"
 
+#~ msgid "FTP Server"
+#~ msgstr "FTP-server"
+
 #~ msgid "Anonymous login"
 #~ msgstr "Anonym inloggning"
 
-#~ msgid "Local User"
-#~ msgstr "Lokal användare"
+#~ msgid "NFS Server"
+#~ msgstr "NFS-server"
+
+#~ msgid "SSH Daemon"
+#~ msgstr "SSH-demon"
+
+#~ msgid "SSH key"
+#~ msgstr "SSH-nyckel"
+
+#~ msgid "AFP Server"
+#~ msgstr "AFP-server"
 
 #~ msgid "You must create a group first."
 #~ msgstr "Du måste skapa en grupp först."
@@ -4847,6 +4914,15 @@ msgstr "veckodagar"
 
 #~ msgid "Save and Restart AFP"
 #~ msgstr "Spara och starta om AFP"
+
+#~ msgid "Add RSYNC"
+#~ msgstr "Lägg till RSYNC"
+
+#~ msgid "Edit RSYNC"
+#~ msgstr "Redigera RSYNC"
+
+#~ msgid "Delete RSYNC"
+#~ msgstr "Ta bort RSYNC"
 
 #~ msgid "Enable Zeroconf"
 #~ msgstr "Aktivera Zeroconf"
