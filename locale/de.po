@@ -3156,13 +3156,13 @@ msgid "SSL/TLS"
 msgstr "SSL/TLS"
 
 msgid "Save"
-msgstr "Sichern"
+msgstr "Speichern"
 
 msgid "Save and Restart"
-msgstr "Save and Restart"
+msgstr "Speichern und Neustart"
 
 msgid "Saved file to"
-msgstr "Habe Datei gespeichert nach"
+msgstr "Datei wurde gespeichert nach"
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
