@@ -18,5 +18,7 @@ BUILD_DEPENDS=	pam_ldap:${PORTSDIR}/security/pam_ldap
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/pam_ldap/work/pam_ldap-*/pam_ldap.so ${FREENAS_ROOTFS}/usr/local/lib
+	@${LN} -fsv /var/etc/ldap.conf ${FREENAS_ROOTFS}/usr/local/etc/ldap.conf
+	@${LN} -fsv /var/etc/ldap.secret ${FREENAS_ROOTFS}/usr/local/etc/ldap.secret
 
 .include <bsd.port.mk>
