@@ -1,5 +1,5 @@
 PORTNAME=			nano
-PORTVERSION=	2.0.8
+PORTVERSION=	2.0.9
 CATEGORIES=		editors
 COMMENT=			Nano's ANOther editor, an enhanced free Pico clone
 MAINTAINER=		votdev@gmx.de
