@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-06 08:27+0000\n"
+"PO-Revision-Date: 2008-12-06 13:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -448,6 +448,12 @@ msgstr ""
 msgid "Base DN"
 msgstr ""
 
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
+msgstr ""
+
 msgid "BitTorrent"
 msgstr ""
 
@@ -644,9 +650,6 @@ msgid "DDP"
 msgstr ""
 
 msgid "DHCP"
-msgstr ""
-
-msgid "DN to bind"
 msgstr ""
 
 msgid "DNS settings"
@@ -1580,13 +1583,13 @@ msgstr ""
 msgid "Host"
 msgstr ""
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr ""
 
 msgid "Hostname"
-msgstr ""
-
-msgid "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS"
 msgstr ""
 
 msgid "Hosts"
@@ -1803,12 +1806,6 @@ msgstr ""
 msgid "LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."
 msgstr ""
 
-msgid "LDAP server name"
-msgstr ""
-
-msgid "LDAP server name or IP"
-msgstr ""
-
 msgid "Language"
 msgstr ""
 
@@ -1830,6 +1827,9 @@ msgid "License"
 msgstr ""
 
 msgid "License & Credits"
+msgstr ""
+
+msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2304,9 +2304,6 @@ msgid "Password don't match."
 msgstr ""
 
 msgid "Password encryption"
-msgstr ""
-
-msgid "Password for DN"
 msgstr ""
 
 msgid "Password for the administrative pages."
@@ -2894,12 +2891,6 @@ msgstr ""
 msgid "Specifies the command to be run."
 msgstr ""
 
-msgid "Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com"
-msgstr ""
-
-msgid "Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com "
-msgstr ""
-
 msgid "Specifies the maximum permitted block size. The permitted range for this parameter is from 512 to 65464."
 msgstr ""
 
@@ -3266,6 +3257,14 @@ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first bef
 msgstr ""
 
 #, php-format
+msgid "The distinguished name to bind to the LDAP server as, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid "The distinguished name to use as a base for queries, e.g. %s"
+msgstr ""
+
+#, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
@@ -3310,6 +3309,9 @@ msgid "The maximum port to allocate for PASV style data connections (0 = use any
 msgstr ""
 
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
+msgstr ""
+
+msgid "The name or IP address of the LDAP server."
 msgstr ""
 
 msgid "The number of clients must be between 1 and 50."
@@ -3412,6 +3414,10 @@ msgid "These commands will be executed pre or post system initialization (bootin
 msgstr ""
 
 msgid "These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -3547,6 +3553,18 @@ msgid "This option specifies the user name or user ID that file transfers to and
 msgstr ""
 
 msgid "This parameter controls whether files starting with a dot appear as hidden files."
+msgstr ""
+
+#, php-format
+msgid "This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid "This parameter specifies the suffix that is used for passwords when these are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid "This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -3989,9 +4007,6 @@ msgstr ""
 msgid "e.g. %s"
 msgstr ""
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr ""
-
 msgid "hours"
 msgstr ""
 
@@ -4037,9 +4052,6 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
-
 msgid "pasv_max_port"
 msgstr ""
 
@@ -4068,9 +4080,6 @@ msgid "umask"
 msgstr ""
 
 msgid "upriv"
-msgstr ""
-
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
 msgid "week days"
