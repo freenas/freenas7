@@ -2,7 +2,7 @@
 <?php
 /*
 	services_upnp.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -139,16 +139,7 @@ function provider_change() {
 	    	<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-			  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-			  		  <tr>
-			          <td class="optsect_s"><strong><?=gettext("Dynamic DNS");?></strong></td>
-			  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-			        </tr>
-			  		  </table>
-			      </td>
-			    </tr>
+					<?php html_titleline_checkbox("enable", gettext("Dynamic DNS"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_combobox("provider", gettext("Provider"), $pconfig['provider'], array("dyndns.org" => "dyndns.org", "freedns.afraid.org" => "freedns.afraid.org", "zoneedit.com" => "zoneedit.com", "no-ip.com" => "no-ip.com", "easydns.com" => "easydns.com", "3322.org" => "3322.org"), "", true, false, "provider_change()");?>
 					<?php html_inputbox("domainname", gettext("Domain name"), $pconfig['domainname'], gettext("A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."), true, 40);?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 20);?>

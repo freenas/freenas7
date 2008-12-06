@@ -2,7 +2,7 @@
 <?php
 /*
 	reboot_sched.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -141,18 +141,7 @@ function enable_change(enable_change) {
       <form action="reboot_sched.php" method="post" name="iform" id="iform">
       	<?php if ($input_errors) print_input_errors($input_errors);?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <tr>
-            <td colspan="2" valign="top" class="optsect_t">
-              <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                <tr>
-                  <td class="optsect_s"><strong><?=gettext("Scheduled reboot"); ?></strong></td>
-                  <td align="right" class="optsect_s">
-                    <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong>
-                  </td>
-                </tr>
-				      </table>
-            </td>
-          </tr>
+					<?php html_titleline_checkbox("enable", gettext("Scheduled reboot"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
           <tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Shutdown Time");?></td>
 						<td width="78%" class="vtable">

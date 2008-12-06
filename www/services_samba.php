@@ -219,20 +219,8 @@ function authentication_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <?php html_titleline_checkbox("enable", gettext("Common Internet File System"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-          <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Authentication"); ?></td>
-            <td width="78%" class="vtable">
-              <select name="security" class="formfld" id="security" onchange="authentication_change()">
-              <?php $types = explode(",", "Anonymous,Local User,Domain"); $vals = explode(" ", "share user domain");?>
-              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
-                <?=htmlspecialchars($types[$j]);?>
-                </option>
-              <?php endfor; ?>
-              </select>
-            </td>
-          </tr>
+					<?php html_titleline_checkbox("enable", gettext("Common Internet File System"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+					<?php html_combobox("security", gettext("Authentication"), $pconfig['security'], array("share" => gettext("Anonymous"), "user" => gettext("Local User"), "domain" => gettext("Domain")), "", true, false, "authentication_change()");?>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBIOS name");?></td>
             <td width="78%" class="vtable">
@@ -280,19 +268,7 @@ function authentication_change() {
               </select>
             </td>
           </tr>
-          <tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Log Level") ; ?></td>
-            <td width="78%" class="vtable">
-              <select name="loglevel" class="formfld" id="loglevel">
-              <?php $types = explode(",", "Minimum,Normal,Full,Debug"); $vals = explode(" ", "1 2 3 10");?>
-              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['loglevel']) echo "selected";?>>
-                <?=htmlspecialchars($types[$j]);?>
-                </option>
-              <?php endfor; ?>
-              </select>
-            </td>
-          </tr>
+          <?php html_combobox("loglevel", gettext("Log Level"), $pconfig['loglevel'], array("1" => gettext("Minimum"), "2" => gettext("Normal"), "3" => gettext("Full"), "10" => gettext("Debug")), "", false);?>
           <tr>
             <td width="22%" valign="top" class="vncell"><?=gettext("Local Master Browser"); ?></td>
             <td width="78%" class="vtable">

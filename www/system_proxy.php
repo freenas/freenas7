@@ -205,32 +205,14 @@ function proxy_auth_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
-            <td colspan="2" valign="top" class="optsect_t">
-    				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-    				    <tr>
-                  <td class="optsect_s"><strong><?=gettext("HTTP Proxy");?></strong></td>
-    				      <td align="right" class="optsect_s"><input name="http_enable" type="checkbox" value="yes" <?php if ($pconfig['http_enable']) echo "checked";?> onClick="enable_change(this)"> <strong><?=gettext("Enable");?></strong></td>
-                </tr>
-    				  </table>
-            </td>
-          </tr>
+					<?php html_titleline_checkbox("http_enable", gettext("HTTP Proxy"), $pconfig['http_enable'] ? true : false, gettext("Enable"), "enable_change(this)");?>
           <?php html_inputbox("http_address", gettext("Address"), $pconfig['http_address'], "", true, 40);?>
           <?php html_inputbox("http_port", gettext("Port"), $pconfig['http_port'], "", true, 10);?>
 					<?php html_checkbox("http_auth", gettext("Authentication"), $pconfig['http_auth'] ? true : false, gettext("Enable proxy authentication."), "", false, "proxy_auth_change()");?>
           <?php html_inputbox("http_username", gettext("User"), $pconfig['http_username'], "", true, 20);?>
 			    <?php html_inputbox("http_password", gettext("Password"), $pconfig['http_password'], "", true, 20);?>
 					<?php html_separator();?>
-			    <tr>
-            <td colspan="2" valign="top" class="optsect_t">
-    				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-    				    <tr>
-                  <td class="optsect_s"><strong><?=gettext("FTP Proxy");?></strong></td>
-    				      <td align="right" class="optsect_s"><input name="ftp_enable" type="checkbox" value="yes" <?php if ($pconfig['ftp_enable']) echo "checked";?> onClick="enable_change(this)"> <strong><?=gettext("Enable");?></strong></td>
-                </tr>
-    				  </table>
-            </td>
-          </tr>
+					<?php html_titleline_checkbox("ftp_enable", gettext("FTP Proxy"), $pconfig['ftp_enable'] ? true : false, gettext("Enable"), "enable_change(this)");?>
           <?php html_inputbox("ftp_address", gettext("Address"), $pconfig['ftp_address'], "", true, 40);?>
           <?php html_inputbox("ftp_port", gettext("Port"), $pconfig['ftp_port'], "", true, 10);?>
           <?php html_checkbox("ftp_auth", gettext("Authentication"), $pconfig['ftp_auth'] ? true : false, gettext("Enable proxy authentication."), "", false, "proxy_auth_change()");?>

@@ -124,16 +124,7 @@ function enable_change(enable_change) {
 		    <?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-							<table border="0" cellspacing="0" cellpadding="0" width="100%">
-							  <tr>
-									<td class="optsect_s"><strong><?=gettext("SSH Daemon");?></strong></td>
-									<td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-								</tr>
-							</table>
-						</td>
-			    </tr>
+					<?php html_titleline_checkbox("enable", gettext("Secure Shell"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
 			      <td width="78%" class="vtable">
@@ -166,13 +157,6 @@ function enable_change(enable_change) {
 			        <?=gettext("Enable compression.");?><br/>
 			        <span class="vexpl"><?=gettext("Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only.");?></span>
 			    </tr>
-			    <?php html_textarea("auxparam", gettext("Extra options"), $pconfig['auxparam'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."), false, 65, 5);?>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-			    <tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("SSH key");?></td>
-			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Private Key");?></td>
 			      <td width="78%" class="vtable">
@@ -180,6 +164,7 @@ function enable_change(enable_change) {
 			        <br>
 			        <?=gettext("Paste a DSA PRIVATE KEY in PEM format here.");?></td>
 			    </tr>
+			    <?php html_textarea("auxparam", gettext("Extra options"), $pconfig['auxparam'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."), false, 65, 5);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
