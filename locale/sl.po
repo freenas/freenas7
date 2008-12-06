@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -200,9 +200,6 @@ msgstr "AD ali PDC ime."
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "AFP strežnik"
-
 msgid "ARP Tables"
 msgstr ""
 
@@ -252,11 +249,11 @@ msgstr ""
 msgid "Add RAID"
 msgstr "Dodaj RAID"
 
-msgid "Add RSYNC"
-msgstr "Dodaj RSYNC"
-
 msgid "Add Route"
 msgstr "Dodaj pot"
+
+msgid "Add Rsync job"
+msgstr ""
 
 msgid "Add URL"
 msgstr "Dodaj URL"
@@ -452,10 +449,16 @@ msgstr "Gostitelj s tem imenom že obstaja."
 msgid "An interface with the specified description already exists."
 msgstr ""
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Samo anonimni uporabniki"
 
 msgid "Any"
+msgstr ""
+
+msgid "Apple Filing Protocol"
 msgstr ""
 
 msgid "Apply changes"
@@ -526,6 +529,12 @@ msgstr "Sporočilo"
 
 msgid "Base DN"
 msgstr "Base DN"
+
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
+msgstr ""
 
 msgid "BitTorrent"
 msgstr ""
@@ -614,9 +623,6 @@ msgstr "Kliknite za gumb za shranitev sistemsktih nastavitev v XML datoteko."
 
 msgid "Client"
 msgstr "Odjemalec"
-
-msgid "Client RSYNC job"
-msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
@@ -734,17 +740,11 @@ msgstr ""
 msgid "DAAP"
 msgstr ""
 
-msgid "DAAP Server"
-msgstr ""
-
 msgid "DDP"
 msgstr ""
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "DN za vezavo"
 
 msgid "DNS settings"
 msgstr "DNS nastavitve"
@@ -775,6 +775,9 @@ msgstr ""
 
 msgid "Date"
 msgstr "Datum"
+
+msgid "Debug"
+msgstr ""
 
 msgid "Default"
 msgstr "Privzeto"
@@ -809,11 +812,11 @@ msgstr ""
 msgid "Delete RAID"
 msgstr "Odstrani RAID"
 
-msgid "Delete RSYNC"
-msgstr "Odstrani RSYNC"
-
 msgid "Delete Route"
 msgstr "Odstrani pot"
+
+msgid "Delete Rsync job"
+msgstr ""
 
 msgid "Delete URL"
 msgstr "Izbriši URL"
@@ -920,6 +923,11 @@ msgstr "Ciljni deljeni vir"
 msgid "Detected RSYNC remote shares"
 msgstr "Najdeni oddaljeni RSYNC deljeni viri"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr "Naprava"
 
@@ -958,6 +966,9 @@ msgstr "Diagnostika"
 
 msgid "Difference"
 msgstr "Razlika"
+
+msgid "Digital Audio Access Protocol"
+msgstr ""
 
 msgid "Direction"
 msgstr ""
@@ -1034,8 +1045,11 @@ msgstr ""
 msgid "Do you really want to delete this MIB?"
 msgstr ""
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "Res želite odstraniti ta RSYNC?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
+msgstr ""
 
 msgid "Do you really want to delete this URL?"
 msgstr "Ali res želite izbrisati ta URL?"
@@ -1210,11 +1224,11 @@ msgstr ""
 msgid "Edit RAID"
 msgstr "Uredi RAID"
 
-msgid "Edit RSYNC"
-msgstr "Uredi RSYNC"
-
 msgid "Edit Route"
 msgstr "Uredi pot"
+
+msgid "Edit Rsync job"
+msgstr ""
 
 msgid "Edit URL"
 msgstr "Uredi URL"
@@ -1495,9 +1509,6 @@ msgstr "FTP"
 msgid "FTP Proxy"
 msgstr "FTP posrednik"
 
-msgid "FTP Server"
-msgstr "FTP strežnik"
-
 msgid "FTP events"
 msgstr "FTP dogodki"
 
@@ -1562,6 +1573,9 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
+msgstr ""
+
+msgid "File Transfer Protocol"
 msgstr ""
 
 msgid "File not found"
@@ -1642,6 +1656,9 @@ msgid "From email"
 msgstr "E-pošta od"
 
 msgid "Fsck"
+msgstr ""
+
+msgid "Full"
 msgstr ""
 
 msgid "Full Name"
@@ -1743,16 +1760,14 @@ msgstr "Domača mapa"
 msgid "Host"
 msgstr "Gostitelj"
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr ""
 
 msgid "Hostname"
 msgstr "Ime gostitelja"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr ""
 
 msgid "Hosts"
 msgstr "Gostitelji"
@@ -1790,7 +1805,7 @@ msgid ""
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
-msgid "IP or FQDN address of remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -1958,6 +1973,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr ""
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
 
@@ -2012,12 +2031,6 @@ msgid ""
 "server... Your patchs are welcome."
 msgstr ""
 
-msgid "LDAP server name"
-msgstr ""
-
-msgid "LDAP server name or IP"
-msgstr ""
-
 msgid "Language"
 msgstr "Jezik"
 
@@ -2041,6 +2054,9 @@ msgid "License"
 msgstr "Licneca"
 
 msgid "License & Credits"
+msgstr ""
+
+msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2091,8 +2107,8 @@ msgstr "Lokalno"
 msgid "Local Master Browser"
 msgstr "Glavni lokalni brskalnik"
 
-msgid "Local RSYNC job"
-msgstr ""
+msgid "Local User"
+msgstr "Lokalni uporabnik"
 
 msgid "Local share"
 msgstr ""
@@ -2188,6 +2204,9 @@ msgstr "Dodeli uporabniku"
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "Največje število povezav na IP"
 
@@ -2234,10 +2253,10 @@ msgstr "Poraba spomina"
 msgid "Message of the day."
 msgstr "Sporočilo dneva."
 
-msgid "Method used to store your password in your LDAP."
-msgstr "Metoda uporabljena pri shranjevanju gesla v LDAP."
-
 msgid "MibII"
+msgstr ""
+
+msgid "Minimum"
 msgstr ""
 
 msgid "Minimum free space"
@@ -2304,9 +2323,6 @@ msgstr "NAT način"
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "NFS strežnik"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2336,6 +2352,9 @@ msgstr ""
 
 msgid "Network"
 msgstr "Omrežje"
+
+msgid "Network File System"
+msgstr ""
 
 msgid "Network mask"
 msgstr ""
@@ -2367,6 +2386,9 @@ msgid "No disk configured"
 msgstr "Ni nastavljenih diskov"
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid ""
@@ -2546,9 +2568,6 @@ msgstr "Gesli se ne ujemata"
 
 msgid "Password encryption"
 msgstr "Šifriranje gesla"
-
-msgid "Password for DN"
-msgstr "Geslo za DN"
 
 msgid "Password for the administrative pages."
 msgstr ""
@@ -2797,8 +2816,8 @@ msgstr ""
 msgid "Reload page"
 msgstr "Ponovno naloži stran"
 
-msgid "Remote RSYNC Server"
-msgstr "Oddaljeni Rsync strežnik"
+msgid "Remote Rsync Server"
+msgstr ""
 
 msgid "Remote address"
 msgstr "Naslov oddaljenega računalnika"
@@ -2861,8 +2880,11 @@ msgstr ""
 msgid "Rows"
 msgstr "Vrstice"
 
-msgid "Rsync Daemon"
-msgstr "Rsync demon"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
+msgstr ""
 
 msgid "Rule"
 msgstr ""
@@ -2894,14 +2916,8 @@ msgstr ""
 msgid "SSH"
 msgstr ""
 
-msgid "SSH Daemon"
-msgstr "SSH demon"
-
 msgid "SSH events"
 msgstr ""
-
-msgid "SSH key"
-msgstr "SSh ključ"
 
 msgid "SSHD log"
 msgstr ""
@@ -2948,6 +2964,9 @@ msgstr ""
 
 msgid "Scheduled shutdown"
 msgstr "Nastavljen izklop"
+
+msgid "Secure Shell"
+msgstr ""
 
 msgid "Security"
 msgstr ""
@@ -3048,6 +3067,11 @@ msgstr ""
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
+msgstr ""
+
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
 msgstr ""
 
 msgid "Settings"
@@ -3153,18 +3177,16 @@ msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
-msgstr ""
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
+msgstr ""
+
+msgid "Specifies the username which the service will run as."
 msgstr ""
 
 msgid ""
@@ -3192,9 +3214,6 @@ msgstr ""
 
 msgid "Standby time"
 msgstr "Čas pripravljenosti"
-
-msgid "State"
-msgstr ""
 
 msgid "Static Routes"
 msgstr ""
@@ -3544,13 +3563,17 @@ msgid ""
 "exactly."
 msgstr ""
 
-msgid "The credentials to bind with, enter it here twice."
-msgstr "Poverilnica, vnesite jo dvakrat."
+msgid "The credentials with which to bind."
+msgstr ""
 
 msgid "The cron job has been executed successfully."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
+msgstr ""
+
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -3559,7 +3582,9 @@ msgstr "Ime naprave lahko vsebuje znake a-z, A-Z, 0-9."
 msgid "The device's IP address."
 msgstr ""
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3569,6 +3594,11 @@ msgid ""
 msgstr ""
 "Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a "
 "href=%s>Odklopite</a>."
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3629,10 +3659,16 @@ msgid ""
 msgstr ""
 "Najnižje število vrat za PASV povezave (0 = uporabi katerakoli vrata)."
 
+msgid "The name or IP address of the LDAP server."
+msgstr ""
+
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
 msgid "The old password is not correct."
+msgstr ""
+
+msgid "The password change protocol to use."
 msgstr ""
 
 msgid "The password contains the illegal character ':'."
@@ -3646,6 +3682,11 @@ msgid ""
 "mask and directory mask but the inherit permissions parameter overrides "
 "this. This can be particularly useful on systems with many users to allow a "
 "single share to be used flexibly by each user."
+msgstr ""
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
 msgstr ""
 
 msgid ""
@@ -3746,6 +3787,10 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -3954,6 +3999,24 @@ msgstr ""
 msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4460,9 +4523,6 @@ msgstr ""
 msgid "e.g. %s"
 msgstr ""
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr ""
-
 msgid "hours"
 msgstr "ur(e)"
 
@@ -4508,9 +4568,6 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
-
 msgid "pasv_max_port"
 msgstr ""
 
@@ -4535,10 +4592,10 @@ msgstr "lepljenje"
 msgid "sysctl.conf"
 msgstr ""
 
-msgid "upriv"
+msgid "umask"
 msgstr ""
 
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
+msgid "upriv"
 msgstr ""
 
 msgid "week days"

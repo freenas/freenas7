@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
-"PO-Revision-Date: 2008-12-02 02:59+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
+"PO-Revision-Date: 2008-12-06 22:48+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -241,9 +241,6 @@ msgstr "AD of PDC naam."
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "AFP Server"
-
 msgid "ARP Tables"
 msgstr "ARP Tabel"
 
@@ -294,11 +291,11 @@ msgstr "MIB toevoegen"
 msgid "Add RAID"
 msgstr "RAID toevoegen"
 
-msgid "Add RSYNC"
-msgstr "RSYNC Toevoegen"
-
 msgid "Add Route"
 msgstr "Route toevoegen"
+
+msgid "Add Rsync job"
+msgstr "Rsync taak toevoegen"
 
 msgid "Add URL"
 msgstr "URL Toevoegen"
@@ -449,10 +446,10 @@ msgstr ""
 "gedeeld station."
 
 msgid "Allow new files"
-msgstr ""
+msgstr "Nieuwe bestanden toestaan"
 
 msgid "Allow new files to be created."
-msgstr ""
+msgstr "Toestaan dat nieuwe bestanden worden gemaakt."
 
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
@@ -510,11 +507,17 @@ msgstr "Een host met deze naam bestaat reeds."
 msgid "An interface with the specified description already exists."
 msgstr "Een netwerk met deze gespecificeerde omschrijving bestaat reeds."
 
+msgid "Anonymous"
+msgstr "Anoniem"
+
 msgid "Anonymous users only"
 msgstr "Alleen anonieme gebruikers"
 
 msgid "Any"
 msgstr "Alle"
+
+msgid "Apple Filing Protocol"
+msgstr "Apple Filing Protocol"
 
 msgid "Apply changes"
 msgstr "Wijzigingen toepassen"
@@ -587,6 +590,12 @@ msgstr "Banner"
 msgid "Base DN"
 msgstr "Base DN"
 
+msgid "Bind DN"
+msgstr "Bind DN"
+
+msgid "Bind DN Password"
+msgstr "Bind DN wachtwoord"
+
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
@@ -594,7 +603,7 @@ msgid "Browseable"
 msgstr "Verkenbaar"
 
 msgid "By default, only already existing files can be uploaded."
-msgstr ""
+msgstr "Standaard, alleen bestaande bestanden kunnen geupload worden."
 
 msgid "CCMP"
 msgstr "CCMP"
@@ -680,9 +689,6 @@ msgstr ""
 
 msgid "Client"
 msgstr "Cliënt"
-
-msgid "Client RSYNC job"
-msgstr "Cliënt RSYNC taak"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "Cliënt  ziet enkel kleine letters, de server ziet hoofdletters"
@@ -803,17 +809,11 @@ msgstr "Cron taak"
 msgid "DAAP"
 msgstr "DAAP"
 
-msgid "DAAP Server"
-msgstr "DAAP Server"
-
 msgid "DDP"
 msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "DN om te binden"
 
 msgid "DNS settings"
 msgstr "DNS instellingen"
@@ -851,6 +851,9 @@ msgstr "Database map"
 msgid "Date"
 msgstr "Datum"
 
+msgid "Debug"
+msgstr "Debug"
+
 msgid "Default"
 msgstr "Standaard"
 
@@ -885,11 +888,11 @@ msgstr "MIB verwijderen"
 msgid "Delete RAID"
 msgstr "RAID verwijderen"
 
-msgid "Delete RSYNC"
-msgstr "Verwijder RSYNC"
-
 msgid "Delete Route"
 msgstr "Route verwijderen"
+
+msgid "Delete Rsync job"
+msgstr "Rsync taak verwijderen"
 
 msgid "Delete URL"
 msgstr "URL verwijderen"
@@ -997,6 +1000,13 @@ msgstr "Gedeelde bestemmingsmap"
 msgid "Detected RSYNC remote shares"
 msgstr "Gedetecteerde RSYNC remote delingen"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+"Bepaal de standaard  tijdsoverschreiding in microseconden, voordat het "
+"eertste pakket opnieuw wordt overgebracht. Standaard 1000000 (1 seconden)."
+
 msgid "Device"
 msgstr "Apparaat"
 
@@ -1044,6 +1054,9 @@ msgstr "Diagnose"
 
 msgid "Difference"
 msgstr "Verschil"
+
+msgid "Digital Audio Access Protocol"
+msgstr "Digitaal Audio Toegangs Protocol"
 
 msgid "Direction"
 msgstr "Richting"
@@ -1123,8 +1136,11 @@ msgstr "Weet u zeker dat alle regels wilt verwijderen?"
 msgid "Do you really want to delete this MIB?"
 msgstr "Weet u zeker dat u deze MIB wiltverwijderen?"
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "Weet u zeker dat u deze RSYNC wil verwijderen?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr "Weet u zeker dat u deze Rsync taak wilt verwijderen?"
+
+msgid "Do you really want to delete this Rsync?"
+msgstr "Weet u zeker dat u deze Rsync wilt verwijderen?"
 
 msgid "Do you really want to delete this URL?"
 msgstr "Weet u zeker dat u deze URL wilt wissen?"
@@ -1274,7 +1290,7 @@ msgid "Download directory"
 msgstr "Download folder"
 
 msgid "Download firewall rules."
-msgstr "Download de huidige firewall regels om deze elders te bewaren."
+msgstr "Download de huidige firewall regels om deze als backup te bewaren."
 
 msgid "Driver"
 msgstr "Stuurprogramma"
@@ -1309,11 +1325,11 @@ msgstr "Bewerk MIB"
 msgid "Edit RAID"
 msgstr "Bewerk RAID"
 
-msgid "Edit RSYNC"
-msgstr "Bewerk RSYNC"
-
 msgid "Edit Route"
 msgstr "Bewerk Route"
+
+msgid "Edit Rsync job"
+msgstr "Rsync taak bewerken"
 
 msgid "Edit URL"
 msgstr "Bewerk URL"
@@ -1596,7 +1612,7 @@ msgid "Extra options"
 msgstr "Extra opties"
 
 msgid "Extra options (usually empty)."
-msgstr ""
+msgstr "Extra opties (normaal leeg)."
 
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
@@ -1619,9 +1635,6 @@ msgstr "FTP"
 
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
-
-msgid "FTP Server"
-msgstr "FTP server"
 
 msgid "FTP events"
 msgstr "FTP gebeurtenissen"
@@ -1692,6 +1705,9 @@ msgstr "Bestand Editor"
 
 msgid "File Manager"
 msgstr "Bestand Manager"
+
+msgid "File Transfer Protocol"
+msgstr "Bestands Overdracht Protocol"
 
 msgid "File not found"
 msgstr "Bestand is niet gevonden"
@@ -1770,7 +1786,7 @@ msgid "Format disk"
 msgstr "Formatteer schijf"
 
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 msgid "Free disk space"
 msgstr "Vrije schijfruimte"
@@ -1780,6 +1796,9 @@ msgstr "Van E-mail"
 
 msgid "Fsck"
 msgstr "Fsck"
+
+msgid "Full"
+msgstr "Volledig"
 
 msgid "Full Name"
 msgstr "Volledige naam"
@@ -1881,18 +1900,14 @@ msgstr "Persoonlijke map"
 msgid "Host"
 msgstr "Host"
 
+msgid "Host name"
+msgstr "Hostnaam"
+
 msgid "Host resources"
 msgstr "Host bronnen"
 
 msgid "Hostname"
 msgstr "Hostnaam"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr ""
-"Hostnaam of IP adres van de LDAP server. Waarschuwing: Het gebruiken van een "
-"hostnaam is verplicht voor TLS."
 
 msgid "Hosts"
 msgstr "Hosten"
@@ -1937,8 +1952,8 @@ msgstr ""
 "href=%s>&quot;omzetten van IP adressen naar hostnamen&quot;</a> is "
 "ingeschakeld."
 
-msgid "IP or FQDN address of remote RSYNC server."
-msgstr "IP of FQDN adres van de remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
+msgstr "IP of FQDN adres van de remote Rsync server."
 
 msgid "IP type mismatch for network and gateway."
 msgstr "IP adres komt niet overeen met het netwerk of gateway."
@@ -2131,6 +2146,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "De interval moet groter of gelijk zijn aan 10 seconden"
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr "Ongeldige blokgrootte! Het dient in het bereik %d tot %d te zijn."
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr "Ongeldige poort! Het poortnummer moet liggen tussen %d en %d"
 
@@ -2190,12 +2209,6 @@ msgstr ""
 "gebruiken voor authenticatie UNIX services (FTP,SSH, etc...) en SAMBA "
 "tegenover een LDAP server... Jouw patch is van harte welkom."
 
-msgid "LDAP server name"
-msgstr "LDAP servernaam"
-
-msgid "LDAP server name or IP"
-msgstr "LDAP servernaam of IP"
-
 msgid "Language"
 msgstr "Taal"
 
@@ -2222,6 +2235,9 @@ msgstr "Licentie"
 
 msgid "License & Credits"
 msgstr "Licentie & Bijdragen"
+
+msgid "Lightweight Directory Access Protocol"
+msgstr "Lightweight Directory Access Protocol"
 
 msgid "Link Aggregation and Failover"
 msgstr "Aggregatie koppeling en Storings Overname"
@@ -2276,8 +2292,8 @@ msgstr "Lokaal"
 msgid "Local Master Browser"
 msgstr "Lokaal Hoofd Browser"
 
-msgid "Local RSYNC job"
-msgstr "Lokaal RSYNC taak"
+msgid "Local User"
+msgstr "Lokale gebruiker"
 
 msgid "Local share"
 msgstr "Lokaal gedeeld"
@@ -2378,6 +2394,9 @@ msgstr "Naar gebruiker toewijzen"
 msgid "Max. TTL"
 msgstr "Max. TTL"
 
+msgid "Max. block size"
+msgstr "Max. blokgrootte"
+
 msgid "Max. conn. per IP"
 msgstr "Max. conn. per IP"
 
@@ -2430,11 +2449,11 @@ msgstr "Geheugen gebruik"
 msgid "Message of the day."
 msgstr "Bericht van de dag"
 
-msgid "Method used to store your password in your LDAP."
-msgstr "Methode om uw wachtwoord op te slaan in de LDAP."
-
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Minimum"
+msgstr "Minimum"
 
 msgid "Minimum free space"
 msgstr "Minimale vrije ruimte"
@@ -2502,9 +2521,6 @@ msgstr "NAT mode"
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "NFS Server"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2536,6 +2552,9 @@ msgstr "Netgrafiek"
 
 msgid "Network"
 msgstr "Netwerk"
+
+msgid "Network File System"
+msgstr "Netwerk Bestand Systeem"
 
 msgid "Network mask"
 msgstr "Netwerkmasker"
@@ -2571,6 +2590,9 @@ msgstr "Geen schijf geconfigureerd"
 
 msgid "None"
 msgstr "Geen"
+
+msgid "Normal"
+msgstr "Normaal"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -2769,9 +2791,6 @@ msgstr "Wachtwoord komt niet overeen."
 
 msgid "Password encryption"
 msgstr "Wachtwoord versleuteling"
-
-msgid "Password for DN"
-msgstr "Wachtwoord voor DN"
 
 msgid "Password for the administrative pages."
 msgstr "Wachtwoord voor de administratieve WebGUI."
@@ -3024,8 +3043,8 @@ msgstr "Uitgave Notities"
 msgid "Reload page"
 msgstr "Pagina herladen"
 
-msgid "Remote RSYNC Server"
-msgstr "Remote RSYNC Server"
+msgid "Remote Rsync Server"
+msgstr "Remote Rsync Server"
 
 msgid "Remote address"
 msgstr "Remote adres"
@@ -3093,8 +3112,11 @@ msgstr "Routerings tabellen"
 msgid "Rows"
 msgstr "Rijen"
 
-msgid "Rsync Daemon"
-msgstr "Rsync Daemon"
+msgid "Rsync"
+msgstr "Rsync"
+
+msgid "Rsync job"
+msgstr "Rsync taak"
 
 msgid "Rule"
 msgstr "Regel"
@@ -3126,14 +3148,8 @@ msgstr "SNMP Modulen"
 msgid "SSH"
 msgstr "SSH"
 
-msgid "SSH Daemon"
-msgstr "SSH Daemon"
-
 msgid "SSH events"
 msgstr "SSH gebeurtenissen"
-
-msgid "SSH key"
-msgstr "SSH sleutel"
 
 msgid "SSHD log"
 msgstr "SSHD log"
@@ -3185,6 +3201,9 @@ msgstr "Geplande zelf-tests"
 
 msgid "Scheduled shutdown"
 msgstr "Geplande uitschakeling"
+
+msgid "Secure Shell"
+msgstr "Secure Shell"
 
 msgid "Security"
 msgstr "Beveiliging"
@@ -3301,6 +3320,13 @@ msgstr ""
 "Vul hier de tijdinterval in tussen de hardeschijf controle's in N seconden. "
 "De minimum toegestane waarde is 10."
 
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
+msgstr ""
+"Zet de umask voor nieuw aangemaakte bestanden naar de opgegeven waarde. "
+"Standaard is nul (iedereen kan lezen of schrijven)."
+
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -3407,18 +3433,11 @@ msgid "Specifies the command to be run."
 msgstr "Specificeer de opdracht die uitgevoerd moet worden."
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
-"Specificeert de standaard basis DN om te gebruiken voor het uitvoeren van "
-"ldap handelingen, voorbeeld: dc=voorbeeld, dc=com"
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
-msgstr ""
-"Specificeert de standaard binding DN om te gebruiken tijdens het uitvoeren "
-"van ldap handelingen, voorbeeld:cn=administrator,dc=voorbeeld,dc=com "
+"Geef de maximaal toegestane blok grootte op. Het toegestane bereik van deze "
+"parameter is 512 tot 65464."
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
@@ -3426,6 +3445,9 @@ msgid ""
 msgstr ""
 "Specificeert de deel karakter reeks. Als voorbeeld UTF8, UTF8-MAC, ISO-8859-"
 "15, enz."
+
+msgid "Specifies the username which the service will run as."
+msgstr "De gebruikersnaam waaronder deze service gaat draaien."
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
@@ -3455,9 +3477,6 @@ msgstr ""
 
 msgid "Standby time"
 msgstr "Standby tijd"
-
-msgid "State"
-msgstr "Staat"
 
 msgid "Static Routes"
 msgstr "Statische Routes"
@@ -3595,7 +3614,7 @@ msgid "TCP port to bind the server to."
 msgstr "TCP poort om de sever aan te koppelen."
 
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 msgid "TKIP"
 msgstr "TKIP"
@@ -3830,8 +3849,8 @@ msgstr ""
 "Het bevestigings wachtwoord komt niet overeen. Verzeker u er van dat het "
 "wachtwoord exact gelijk is."
 
-msgid "The credentials to bind with, enter it here twice."
-msgstr "De rechten om samen te voegen, vul ze hier twee maal in."
+msgid "The credentials with which to bind."
+msgstr "De credentials om mee te verbinden."
 
 msgid "The cron job has been executed successfully."
 msgstr "De cron taak is met succes uitgevoerd."
@@ -3839,14 +3858,23 @@ msgstr "De cron taak is met succes uitgevoerd."
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "De standaard SMTP mailserver poort, bijv. 25 of 587."
 
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+"De standaard basis voornaam (DN) om voor zoeken te gebruiken, e.g. %s"
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "De schijf naam mag alleen bestaan uit de karakters a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
 msgstr "Het IP adres van het apparaat."
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
+"De map met bestanden die gepubliceerd dienen te worden. De remote server "
+"hoeft de map niet door te geven als onderdeel van de overdracht."
 
 #, php-format
 msgid ""
@@ -3855,6 +3883,11 @@ msgid ""
 msgstr ""
 "De schijf is momenteel aangehecht! <a href=%s>Ontkoppel</a> deze schijf "
 "eerst voor u verder gaat."
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr "De voornaam om de directory server aan te verbinden, e.g. %s"
 
 #, php-format
 msgid ""
@@ -3919,11 +3952,17 @@ msgstr ""
 "De minimale poort die toegewezen mag worden aan de PASV type "
 "dataverbindingen (0 = gebruik elke poort)."
 
+msgid "The name or IP address of the LDAP server."
+msgstr "Naam of IP adres van de LDAP server."
+
 msgid "The number of clients must be between 1 and 50."
 msgstr "Het aantal cliënten moet tussen de 1 en 50 zijn."
 
 msgid "The old password is not correct."
 msgstr "Het oude wachtwoord is niet juist."
+
+msgid "The password change protocol to use."
+msgstr "Het te gebruiken protocol voor wachtwoord veranderingen."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Het wachtwoord bevat het ongeldige karakter ':'."
@@ -3942,6 +3981,13 @@ msgstr ""
 "toestemmingen overtreed dit. Dit kan op systemen bijzonder nuttig zijn met "
 "vele gebruikers om één enkel te delen bestand toe te laten dat flexibel door "
 "elke gebruiker kan worden gebruikt."
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
+msgstr ""
+"De poort nummer om op te luisteren. Standaard is luisteren op de tftp poort "
+"opgegeven in /etc/services."
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -4059,6 +4105,10 @@ msgstr ""
 "Deze optie(s) word toegevoegd aan /etc/rc.conf. Dit staat u toe om "
 "verschillende opties te overschrijven die gebruikt worden door verschillende "
 "algemene opstart scripten."
+
+#, php-format
+msgid "These parameters are added to %s."
+msgstr "Deze parameters zijn toegevoegt aan %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -4352,6 +4402,30 @@ msgstr ""
 "Deze parameter bepaalt of bestanden die beginnen met een punt in de naam als "
 "verborgen bestanden worden weergegeven."
 
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+"Deze parameter specificeerd het achtervoegsel voor groepen, wanneer deze "
+"toegevoegt zijn aan de LDAP directory, e.g. %s"
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+"Deze parameter specificeerd het achtervoegsel voor wachtwoorden, wanneer "
+"deze toegevoegt zijn aan de LDAP directory, e.g. %s"
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+"Deze parameter specificeerd het achtervoegsel voor gebruikers, wanneer deze "
+"toegevoegt zijn aan de LDAP directory, e.g. %s"
+
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "Dit het IP adres of DNS naam van het iSCSI doel."
 
@@ -4473,7 +4547,7 @@ msgid "Traps"
 msgstr "Traps"
 
 msgid "Trivial File Transfer Protocol"
-msgstr ""
+msgstr "Trivial File Transfer Protocol"
 
 msgid "Tuning"
 msgstr "Optimalizatie"
@@ -4792,7 +4866,7 @@ msgid ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
 "15 characters)."
 msgstr ""
-"Werkgroep waarin de server verschijnt voor de werkstations. (maximaal 15 "
+"De werkgroep waarin de server verschijnt voor de werkstations. (maximaal 15 "
 "tekens)"
 
 msgid "Working Directory"
@@ -4915,9 +4989,6 @@ msgstr "dbpad"
 msgid "e.g. %s"
 msgstr "bijv. %s"
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr "groep_achtervoegsel, voorbeeld: ou=groep,dc=voorbeeld,dc=com"
-
 msgid "hours"
 msgstr "uren"
 
@@ -4963,10 +5034,6 @@ msgstr "nohex"
 msgid "nostat"
 msgstr "nostat"
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
-"wachtwoord_achtervoegsel, voorbeeld: ou=gebruikers,dc=voorbeeld,dc=com"
-
 msgid "pasv_max_port"
 msgstr "pasv_max_port"
 
@@ -4991,12 +5058,11 @@ msgstr "striping"
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
+msgid "umask"
+msgstr "umask"
+
 msgid "upriv"
 msgstr "upriv"
-
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
-"gebruiker_achtervoegsel, voorbeeld: ou=gebruikers,dc=voorbeeld,dc=com"
 
 msgid "week days"
 msgstr "weekdagen"
@@ -5352,14 +5418,14 @@ msgstr "weekdagen"
 #~ msgid "The pasv address must be a public IP address."
 #~ msgstr "Het pasv adres moet een publiek IP adres zijn."
 
+#~ msgid "FTP Server"
+#~ msgstr "FTP server"
+
 #~ msgid "Anonymous login"
 #~ msgstr "Anonieme aanmelding"
 
 #~ msgid "Enable anonymous login."
 #~ msgstr "Anonieme aanmelding activeren."
-
-#~ msgid "Local User"
-#~ msgstr "Lokale gebruiker"
 
 #~ msgid "Enable local user login."
 #~ msgstr "Lokale gebruikersaanmelding activeren."
@@ -5374,6 +5440,9 @@ msgstr "weekdagen"
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr ""
 #~ "De namen van de ge&euml;xporteerde mappen zijn van de vorm: /mnt/mapnaam"
+
+#~ msgid "Rsync Daemon"
+#~ msgstr "Rsync Daemon"
 
 #~ msgid "You must configure mount point first."
 #~ msgstr "Je moet eerst een koppelingspunt instellen."
@@ -5390,8 +5459,17 @@ msgstr "weekdagen"
 #~ msgid "Rsync Local Synchronization"
 #~ msgstr "RSYNC lokale synchronisatie"
 
+#~ msgid "SSH Daemon"
+#~ msgstr "SSH Daemon"
+
+#~ msgid "SSH key"
+#~ msgstr "SSH sleutel"
+
 #~ msgid "Directories to be shared."
 #~ msgstr "Mappen die gedeeld moeten worden."
+
+#~ msgid "AFP Server"
+#~ msgstr "AFP Server"
 
 #~ msgid ""
 #~ "The User list has been changed.<br>You must apply the changes in order for "

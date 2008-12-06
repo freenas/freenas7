@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-04 23:29+0000\n"
+"POT-Creation-Date: 2008-12-06 21:33+0000\n"
 "PO-Revision-Date: 2008-09-23 12:55+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-05 19:49+0000\n"
+"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -208,9 +208,6 @@ msgstr "Nume server AD sau PDC."
 msgid "AFP"
 msgstr "AFP"
 
-msgid "AFP Server"
-msgstr "Server AFP"
-
 msgid "ARP Tables"
 msgstr "Tabela ARP"
 
@@ -260,11 +257,11 @@ msgstr "Adaugare MIB"
 msgid "Add RAID"
 msgstr "Adaugare RAID"
 
-msgid "Add RSYNC"
-msgstr "Adaugare RSYNC"
-
 msgid "Add Route"
 msgstr "Adaugare Ruta"
+
+msgid "Add Rsync job"
+msgstr ""
 
 msgid "Add URL"
 msgstr "Adaugare URL"
@@ -465,10 +462,16 @@ msgstr "Acest nume sistem exista deja."
 msgid "An interface with the specified description already exists."
 msgstr "Exista deja o interfata cu aceasta descriere"
 
+msgid "Anonymous"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Doar utilizatori anonimi"
 
 msgid "Any"
+msgstr ""
+
+msgid "Apple Filing Protocol"
 msgstr ""
 
 msgid "Apply changes"
@@ -542,6 +545,12 @@ msgstr "Baner"
 
 msgid "Base DN"
 msgstr "DN baza"
+
+msgid "Bind DN"
+msgstr ""
+
+msgid "Bind DN Password"
+msgstr ""
 
 msgid "BitTorrent"
 msgstr ""
@@ -634,9 +643,6 @@ msgstr ""
 
 msgid "Client"
 msgstr "Client"
-
-msgid "Client RSYNC job"
-msgstr ""
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
@@ -756,17 +762,11 @@ msgstr "Lista Cron"
 msgid "DAAP"
 msgstr "DAAP"
 
-msgid "DAAP Server"
-msgstr "Server DAAP"
-
 msgid "DDP"
 msgstr "DDP"
 
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DN to bind"
-msgstr "DN de legatura"
 
 msgid "DNS settings"
 msgstr "Setari DNS"
@@ -803,6 +803,9 @@ msgstr "Directorul bazei de date"
 msgid "Date"
 msgstr "Data"
 
+msgid "Debug"
+msgstr ""
+
 msgid "Default"
 msgstr "Implicit"
 
@@ -836,11 +839,11 @@ msgstr "Stergere MIB"
 msgid "Delete RAID"
 msgstr "Stergere RAID"
 
-msgid "Delete RSYNC"
-msgstr "Stergere RSYNC"
-
 msgid "Delete Route"
 msgstr "Stergere Ruta"
+
+msgid "Delete Rsync job"
+msgstr ""
 
 msgid "Delete URL"
 msgstr "Ştergere URL"
@@ -947,6 +950,11 @@ msgstr "Partajare Destinatie"
 msgid "Detected RSYNC remote shares"
 msgstr "Partajari RSYNC detectate"
 
+msgid ""
+"Determine the default timeout, in microseconds, before the first packet is "
+"retransmitted. The default is 1000000 (1 second)."
+msgstr ""
+
 msgid "Device"
 msgstr "Dispozitiv"
 
@@ -994,6 +1002,9 @@ msgstr "Diagnostice"
 
 msgid "Difference"
 msgstr "Diferență"
+
+msgid "Digital Audio Access Protocol"
+msgstr ""
 
 msgid "Direction"
 msgstr ""
@@ -1071,8 +1082,11 @@ msgstr ""
 msgid "Do you really want to delete this MIB?"
 msgstr ""
 
-msgid "Do you really want to delete this RSYNC?"
-msgstr "Doriti sa stergeti acest RSYNC?"
+msgid "Do you really want to delete this Rsync job?"
+msgstr ""
+
+msgid "Do you really want to delete this Rsync?"
+msgstr ""
 
 msgid "Do you really want to delete this URL?"
 msgstr "Stergeti acest URL?"
@@ -1249,11 +1263,11 @@ msgstr "Editare MIB"
 msgid "Edit RAID"
 msgstr "Editare RAID"
 
-msgid "Edit RSYNC"
-msgstr "Editare RSYNC"
-
 msgid "Edit Route"
 msgstr "Editare Ruta"
+
+msgid "Edit Rsync job"
+msgstr ""
 
 msgid "Edit URL"
 msgstr "Editare URL"
@@ -1540,9 +1554,6 @@ msgstr "FTP"
 msgid "FTP Proxy"
 msgstr "Proxy FTP"
 
-msgid "FTP Server"
-msgstr "Server FTP"
-
 msgid "FTP events"
 msgstr "Evenimente FTP"
 
@@ -1607,6 +1618,9 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
+msgstr ""
+
+msgid "File Transfer Protocol"
 msgstr ""
 
 msgid "File not found"
@@ -1690,6 +1704,9 @@ msgstr "De la email"
 
 msgid "Fsck"
 msgstr "Fsck"
+
+msgid "Full"
+msgstr ""
 
 msgid "Full Name"
 msgstr "Nume Complet"
@@ -1789,18 +1806,14 @@ msgstr "Director utilizator"
 msgid "Host"
 msgstr "Sistem"
 
+msgid "Host name"
+msgstr ""
+
 msgid "Host resources"
 msgstr "Resurse Adresa"
 
 msgid "Hostname"
 msgstr "Nume Sistem"
-
-msgid ""
-"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-"for TLS"
-msgstr ""
-"Numele sau adresa IP a serverului LDAP. Atentie: Utilizarea numelui este "
-"obligatorie pentru TLS"
 
 msgid "Hosts"
 msgstr "Sisteme"
@@ -1842,7 +1855,7 @@ msgid ""
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
-msgid "IP or FQDN address of remote RSYNC server."
+msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -2013,6 +2026,10 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr ""
 
 #, php-format
+msgid "Invalid max. block size! It must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
 
@@ -2072,14 +2089,6 @@ msgstr ""
 "autentificarea serviciilor UNIX (FTP, SSH, etc...) si SAMBA folosind un "
 "server LDAP... asteptam ajutor!"
 
-msgid "LDAP server name"
-msgstr "Numele serverului LDAP"
-
-msgid "LDAP server name or IP"
-msgstr ""
-"Numele serverului LDAP\n"
-"sau adresa IP"
-
 msgid "Language"
 msgstr "Limba"
 
@@ -2103,6 +2112,9 @@ msgid "License"
 msgstr "Licente"
 
 msgid "License & Credits"
+msgstr ""
+
+msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2153,8 +2165,8 @@ msgstr "Local"
 msgid "Local Master Browser"
 msgstr "Master Browser Local"
 
-msgid "Local RSYNC job"
-msgstr ""
+msgid "Local User"
+msgstr "Utilizator Local"
 
 msgid "Local share"
 msgstr "Partajare locala"
@@ -2252,6 +2264,9 @@ msgstr "Mapare Utilizator"
 msgid "Max. TTL"
 msgstr ""
 
+msgid "Max. block size"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "Conex. Max pe IP"
 
@@ -2298,10 +2313,10 @@ msgstr "Utilizare memorie"
 msgid "Message of the day."
 msgstr "Mesajul Zilei."
 
-msgid "Method used to store your password in your LDAP."
-msgstr "Metoda folosita pentru memorarea parolei in LDAP."
-
 msgid "MibII"
+msgstr ""
+
+msgid "Minimum"
 msgstr ""
 
 msgid "Minimum free space"
@@ -2368,9 +2383,6 @@ msgstr "Mod NAT"
 msgid "NFS"
 msgstr "NFS"
 
-msgid "NFS Server"
-msgstr "Server NFS"
-
 msgid "NIS"
 msgstr "NIS"
 
@@ -2403,6 +2415,9 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Retea"
 
+msgid "Network File System"
+msgstr ""
+
 msgid "Network mask"
 msgstr ""
 
@@ -2433,6 +2448,9 @@ msgid "No disk configured"
 msgstr "Niciun disc configurat"
 
 msgid "None"
+msgstr ""
+
+msgid "Normal"
 msgstr ""
 
 msgid ""
@@ -2614,9 +2632,6 @@ msgstr "Parolele sint diferite."
 
 msgid "Password encryption"
 msgstr "Criptare parola"
-
-msgid "Password for DN"
-msgstr "Parola pentru DN"
 
 msgid "Password for the administrative pages."
 msgstr ""
@@ -2865,8 +2880,8 @@ msgstr ""
 msgid "Reload page"
 msgstr "Reincarcare pagina"
 
-msgid "Remote RSYNC Server"
-msgstr "Server Remote RSYNC"
+msgid "Remote Rsync Server"
+msgstr ""
 
 msgid "Remote address"
 msgstr "Adresa Destinatie"
@@ -2929,8 +2944,11 @@ msgstr ""
 msgid "Rows"
 msgstr "Rinduri"
 
-msgid "Rsync Daemon"
-msgstr "Daemon Rsync"
+msgid "Rsync"
+msgstr ""
+
+msgid "Rsync job"
+msgstr ""
 
 msgid "Rule"
 msgstr ""
@@ -2962,14 +2980,8 @@ msgstr "Modul SNMP"
 msgid "SSH"
 msgstr ""
 
-msgid "SSH Daemon"
-msgstr "Daemon SSH"
-
 msgid "SSH events"
 msgstr ""
-
-msgid "SSH key"
-msgstr "Cheie SSH"
 
 msgid "SSHD log"
 msgstr "Jurnal SSHD"
@@ -3016,6 +3028,9 @@ msgstr ""
 
 msgid "Scheduled shutdown"
 msgstr "Oprire Programata"
+
+msgid "Secure Shell"
+msgstr ""
 
 msgid "Security"
 msgstr "Securitate"
@@ -3116,6 +3131,11 @@ msgstr ""
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
+msgstr ""
+
+msgid ""
+"Sets the umask for newly created files to the specified value. The default "
+"is zero (anyone can read or write)."
 msgstr ""
 
 msgid "Settings"
@@ -3221,18 +3241,16 @@ msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
-"Specifies the default base DN to use when performing ldap operations, "
-"example: dc=example,dc=com"
-msgstr "Specifica baza DN pentru operatii LDAP, exemplu: dc=example, dc=com"
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations, "
-"example:cn=administrator,dc=example,dc=com "
+"Specifies the maximum permitted block size. The permitted range for this "
+"parameter is from 512 to 65464."
 msgstr ""
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
+msgstr ""
+
+msgid "Specifies the username which the service will run as."
 msgstr ""
 
 msgid ""
@@ -3260,9 +3278,6 @@ msgstr ""
 
 msgid "Standby time"
 msgstr "Timp Standby"
-
-msgid "State"
-msgstr ""
 
 msgid "Static Routes"
 msgstr "Ruta statica."
@@ -3616,8 +3631,8 @@ msgid ""
 "exactly."
 msgstr "Parolele nu coincid. Reintroduceti parolele!"
 
-msgid "The credentials to bind with, enter it here twice."
-msgstr "Credentiale de legatura, introduceti-le de doua ori."
+msgid "The credentials with which to bind."
+msgstr ""
 
 msgid "The cron job has been executed successfully."
 msgstr ""
@@ -3625,13 +3640,19 @@ msgstr ""
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "Portul implicit pentru serverul SMTP de  email, ex. 25 sau 587."
 
+#, php-format
+msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Numele dispozitivului poate contine doar caracterele  a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
 msgstr ""
 
-msgid "The directory containing the files you want to publish."
+msgid ""
+"The directory containing the files you want to publish. The remote host does "
+"not need to pass along the directory as part of the transfer."
 msgstr ""
 
 #, php-format
@@ -3639,6 +3660,11 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!"
+
+#, php-format
+msgid ""
+"The distinguished name with which to bind to the directory server, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3696,11 +3722,17 @@ msgid ""
 "port)."
 msgstr "Portul minim alocat pentru modul de conectare PASV (0 = orice port)."
 
+msgid "The name or IP address of the LDAP server."
+msgstr ""
+
 msgid "The number of clients must be between 1 and 50."
 msgstr "Numarul clientilor trebuie sa fie intre 1 si 50."
 
 msgid "The old password is not correct."
 msgstr "Parola veche incorecta."
+
+msgid "The password change protocol to use."
+msgstr ""
 
 msgid "The password contains the illegal character ':'."
 msgstr "Parola nu poate contine caracterul ':'."
@@ -3716,6 +3748,11 @@ msgid ""
 msgstr ""
 "Pemisiunile pentru crearea de fisiere/directoare sint determinate in mod "
 "normal de masca definita, insa pot fi suprascrise de permisiunile ierarhice."
+
+msgid ""
+"The port to listen to. The default is to listen to the tftp port specified "
+"in /etc/services."
+msgstr ""
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -3819,6 +3856,10 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
@@ -4028,6 +4069,24 @@ msgstr ""
 msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for passwords when these "
+"are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for users when these are "
+"added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4551,9 +4610,6 @@ msgstr ""
 msgid "e.g. %s"
 msgstr "ex. %s"
 
-msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr "sufix grupului, ex.: ou=groups, dc=exemplu, dc=com"
-
 msgid "hours"
 msgstr "ore"
 
@@ -4599,9 +4655,6 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr "sufix parolei, ex.: ou=utilizatori, dc=exemplu, dc=com"
-
 msgid "pasv_max_port"
 msgstr "port_max_pasiv"
 
@@ -4626,11 +4679,11 @@ msgstr "striping"
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
+msgid "umask"
+msgstr ""
+
 msgid "upriv"
 msgstr "upriv"
-
-msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr "sufix utilizator, ex.: ou=utilizatori, dc=exemplu, dc=com"
 
 msgid "week days"
 msgstr "zilele saptaminii"
@@ -5230,14 +5283,14 @@ msgstr "zilele saptaminii"
 #~ msgstr ""
 #~ "Trebuie sa selectati cel putin modul anonymous cu autentificare locala."
 
+#~ msgid "FTP Server"
+#~ msgstr "Server FTP"
+
 #~ msgid "Anonymous login"
 #~ msgstr "Login Anonymous"
 
 #~ msgid "Enable anonymous login."
 #~ msgstr "Activare login in mod anonymous."
-
-#~ msgid "Local User"
-#~ msgstr "Utilizator Local"
 
 #~ msgid "Enable local user login."
 #~ msgstr "Activare login utilizator local."
@@ -5249,17 +5302,26 @@ msgstr "zilele saptaminii"
 #~ "Folositi aceasta optiune pentru a suprascrie adresa IP furnizata de daemon-"
 #~ "ul FTP ca raspuns la o comanda PASV."
 
+#~ msgid "NFS Server"
+#~ msgstr "Server NFS"
+
 #~ msgid "Network that is authorised to access to NFS share"
 #~ msgstr "Retea autorizata pentru partajarea NFS"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "Numele directorului exportat: /mnt/sharename"
 
+#~ msgid "Rsync Daemon"
+#~ msgstr "Daemon Rsync"
+
 #~ msgid "You must configure mount point first."
 #~ msgstr "Trebuie sa configurati un punct de montare mai intii."
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Sincronizare Rsync Client"
+
+#~ msgid "Remote RSYNC Server"
+#~ msgstr "Server Remote RSYNC"
 
 #~ msgid "IP address of remote RSYNC server"
 #~ msgstr "Adresa IP a server-ului RSYNC"
@@ -5288,11 +5350,20 @@ msgstr "zilele saptaminii"
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "Punct Montare Destinatie (disc de backup)."
 
+#~ msgid "SSH Daemon"
+#~ msgstr "Daemon SSH"
+
+#~ msgid "SSH key"
+#~ msgstr "Cheie SSH"
+
 #~ msgid "Directories to be shared."
 #~ msgstr "Directoare de partajat."
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "Niciun director de partajat."
+
+#~ msgid "AFP Server"
+#~ msgstr "Server AFP"
 
 #~ msgid ""
 #~ "The User list has been changed.<br>You must apply the changes in order for "
@@ -5633,6 +5704,18 @@ msgstr "zilele saptaminii"
 #~ "Lista locala RSYNC a fost modificata.<br>Va trebui sa o salvati pentru a "
 #~ "deveni activa."
 
+#~ msgid "Add RSYNC"
+#~ msgstr "Adaugare RSYNC"
+
+#~ msgid "Edit RSYNC"
+#~ msgstr "Editare RSYNC"
+
+#~ msgid "Delete RSYNC"
+#~ msgstr "Stergere RSYNC"
+
+#~ msgid "Do you really want to delete this RSYNC?"
+#~ msgstr "Doriti sa stergeti acest RSYNC?"
+
 #~ msgid "Remote source share name"
 #~ msgstr "Nume sursa partajare"
 
@@ -5655,12 +5738,24 @@ msgstr "zilele saptaminii"
 #~ "Specificati baza DN pentru operatii ldap. Baza trebuie specificata ca un "
 #~ "nume distinctiv in formatul LDAP."
 
+#~ msgid "DN to bind"
+#~ msgstr "DN de legatura"
+
 #~ msgid ""
 #~ "Specifies the default bind DN to use when performing ldap operations. The "
 #~ "bind DN must be specified as a distinguished name in LDAP format."
 #~ msgstr ""
 #~ "Specificati valoarea implicitat pentru DN pentru operatii ldap. Legatura DN "
 #~ "rebuie specificata ca un nume distinctiv in formatul LDAP."
+
+#~ msgid "Password for DN"
+#~ msgstr "Parola pentru DN"
+
+#~ msgid "The credentials to bind with, enter it here twice."
+#~ msgstr "Credentiale de legatura, introduceti-le de doua ori."
+
+#~ msgid "Method used to store your password in your LDAP."
+#~ msgstr "Metoda folosita pentru memorarea parolei in LDAP."
 
 #~ msgid ""
 #~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
@@ -5817,5 +5912,32 @@ msgstr "zilele saptaminii"
 #~ "aceasta cale sa existe si sa fie intotdeauna montata la pornire. Lasati "
 #~ "acest cimp gol pentru calea implicita \"/mnt\"."
 
+#~ msgid ""
+#~ "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
+#~ "for TLS"
+#~ msgstr ""
+#~ "Numele sau adresa IP a serverului LDAP. Atentie: Utilizarea numelui este "
+#~ "obligatorie pentru TLS"
+
+#~ msgid "LDAP server name"
+#~ msgstr "Numele serverului LDAP"
+
+#~ msgid ""
+#~ "Specifies the default base DN to use when performing ldap operations, "
+#~ "example: dc=example,dc=com"
+#~ msgstr "Specifica baza DN pentru operatii LDAP, exemplu: dc=example, dc=com"
+
+#~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
+#~ msgstr "sufix grupului, ex.: ou=groups, dc=exemplu, dc=com"
+
+#~ msgid "password_suffix, example: ou=users,dc=example,dc=com"
+#~ msgstr "sufix parolei, ex.: ou=utilizatori, dc=exemplu, dc=com"
+
+#~ msgid "user_suffix, example: ou=users,dc=example,dc=com"
+#~ msgstr "sufix utilizator, ex.: ou=utilizatori, dc=exemplu, dc=com"
+
 #~ msgid "type"
 #~ msgstr "tip"
+
+#~ msgid "DAAP Server"
+#~ msgstr "Server DAAP"
