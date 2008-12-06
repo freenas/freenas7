@@ -146,10 +146,10 @@ function enable_change(enable_change) {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Lightweight Directory Access Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("hostname", gettext("Host name"), $pconfig['hostname'], gettext("The name or IP address of the LDAP server."), true, 20);?>
-					<?php html_inputbox("base", gettext("Base DN"), $pconfig['base'], sprintf(gettext("The distinguished name to use as a base for queries, e.g. %s"), "dc=test,dc=org"), true, 40);?>
-					<?php html_inputbox("binddn", gettext("Bind DN"), $pconfig['binddn'], sprintf(gettext("The distinguished name to bind to the LDAP server as, e.g. %s"), "cn=admin,dc=test,dc=org"), true, 40);?>
-					<?php html_passwordconfbox("bindpw", "bindpw2", gettext("Bind DN Password"), $pconfig['bindpw'], $pconfig['bindpw2'], gettext("The credentials to bind with, enter it here twice."), true);?>
-					<?php html_combobox("pam_password", gettext("Password encryption"), $pconfig['pam_password'], array("clear" => "clear", "crypt" => "crypt", "md5" => "md5", "nds" => "nds", "ad" => "ad", "exop" => "exop"), gettext("Method used to store your password in your LDAP."), true);?>
+					<?php html_inputbox("base", gettext("Base DN"), $pconfig['base'], sprintf(gettext("The default base distinguished name (DN) to use for searches, e.g. %s"), "dc=test,dc=org"), true, 40);?>
+					<?php html_inputbox("binddn", gettext("Bind DN"), $pconfig['binddn'], sprintf(gettext("The distinguished name with which to bind to the directory server, e.g. %s"), "cn=admin,dc=test,dc=org"), true, 40);?>
+					<?php html_passwordconfbox("bindpw", "bindpw2", gettext("Bind DN Password"), $pconfig['bindpw'], $pconfig['bindpw2'], gettext("The credentials with which to bind."), true);?>
+					<?php html_combobox("pam_password", gettext("Password encryption"), $pconfig['pam_password'], array("clear" => "clear", "crypt" => "crypt", "md5" => "md5", "nds" => "nds", "racf" => "racf", "ad" => "ad", "exop" => "exop"), gettext("The password change protocol to use."), true);?>
 					<?php html_inputbox("user_suffix", gettext("User suffix"), $pconfig['user_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"), "ou=users,dc=test,dc=org"), true, 40);?>
 					<?php html_inputbox("group_suffix", gettext("Group suffix"), $pconfig['group_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"), "ou=groups,dc=test,dc=org"), true, 40);?>
 					<?php html_inputbox("password_suffix", gettext("Password suffix"), $pconfig['password_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for passwords when these are added to the LDAP directory, e.g. %s"), "ou=users,dc=test,dc=org"), true, 40);?>
