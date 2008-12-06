@@ -71,7 +71,7 @@ if ($_POST) {
 	}
 
 	if ($_POST['maxblocksize'] && ((512 > $_POST['maxblocksize']) || (65464 < $_POST['maxblocksize']))) {
-		$input_errors[] = sprintf(gettext("Invalid max. block size! Max. block size must be in the range from %d to %d."), 512, 65464);
+		$input_errors[] = sprintf(gettext("Invalid max. block size! It must be in the range from %d to %d."), 512, 65464);
 	}
 
 	if (!$input_errors) {
