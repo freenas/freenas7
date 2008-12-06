@@ -116,8 +116,4 @@ ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
 ln -s /var/etc/pam.d/netatalk etc/pam.d/netatalk
 ln -s /var/etc/pam.d/login etc/pam.d/login
 ln -s /var/etc/pam.d/system etc/pam.d/system
-ln -s /var/etc/ldap.conf usr/local/etc/ldap.conf
-ln -s /var/etc/ldap.conf usr/local/etc/nss_ldap.conf
-ln -s /var/etc/ldap.conf etc/ldap.conf
-ln -s /var/etc/ldap.secret usr/local/etc/ldap.secret
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf

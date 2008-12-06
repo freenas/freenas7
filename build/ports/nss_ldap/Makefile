@@ -18,5 +18,7 @@ BUILD_DEPENDS=	nss_ldap:${PORTSDIR}/net/nss_ldap
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/nss_ldap/work/nss_ldap-*/nss_ldap.so ${FREENAS_ROOTFS}/usr/local/lib/nss_ldap.so.1
+	@${LN} -fsv /var/etc/ldap.conf ${FREENAS_ROOTFS}/usr/local/etc/nss_ldap.conf
+	@${LN} -fsv /var/etc/ldap.secret ${FREENAS_ROOTFS}/usr/local/etc/nss_ldap.secret
 
 .include <bsd.port.mk>
