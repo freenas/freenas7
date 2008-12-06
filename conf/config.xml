@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>6.6</version>
+	<version>6.7</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -934,6 +934,24 @@
 		<username>Administrator</username>
 		<password></password>
 	</ad>
+	<ldap>
+		<!--
+		<enable/>
+		-->
+		<hostname></hostname>
+		<base></base>
+		<binddn></binddn>
+		<bindpw></bindpw>
+		<pam_password></pam_password>
+		<user_suffix></user_suffix>
+		<group_suffix></group_suffix>
+		<password_suffix></password_suffix>
+		<auxparam>ldap_version 3</auxparam>
+		<auxparam>timelimit 5</auxparam>
+		<auxparam>bind_timelimit 5</auxparam>
+		<auxparam>bind_policy soft</auxparam>
+		<auxparam>pam_ldap_attribute uid</auxparam>
+	</ldap>
 	<ups>
 		<upsname>ups</upsname>
 		<shutdownmode>onbatt</shutdownmode>
