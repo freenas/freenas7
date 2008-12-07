@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-06 20:36+0000\n"
+"PO-Revision-Date: 2008-12-07 20:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -375,6 +375,9 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous bind"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
@@ -454,7 +457,7 @@ msgstr ""
 msgid "Bind DN"
 msgstr ""
 
-msgid "Bind DN Password"
+msgid "Bind password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -937,9 +940,6 @@ msgstr ""
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
-
 msgid "Do you really want to delete this URL?"
 msgstr ""
 
@@ -1184,6 +1184,9 @@ msgid "Enable SMTP authentication."
 msgstr ""
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable anonymous bind."
 msgstr ""
 
 msgid "Enable authentication."
@@ -1570,9 +1573,6 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-msgid "Help needed!"
-msgstr ""
-
 msgid "Hide dot files"
 msgstr ""
 
@@ -1812,9 +1812,6 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-msgid "LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."
-msgstr ""
-
 msgid "Language"
 msgstr ""
 
@@ -1956,6 +1953,9 @@ msgid "MS Domain"
 msgstr ""
 
 msgid "MTU"
+msgstr ""
+
+msgid "Machine suffix"
 msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
@@ -2609,6 +2609,12 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr ""
 
@@ -3224,6 +3230,9 @@ msgstr ""
 msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
 msgstr ""
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr ""
 
@@ -3572,6 +3581,10 @@ msgstr ""
 
 #, php-format
 msgid "This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid "This parameter specifies the suffix that is used for machines when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format

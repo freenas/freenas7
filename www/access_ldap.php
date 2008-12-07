@@ -73,12 +73,12 @@ if ($_POST) {
 	// Input validation.
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "hostname base rootbinddn rootbindpw user_suffix group_suffix password_suffix machine_suffix");
-		$reqdfieldsn = array(gettext("Host name"), gettext("Base DN"), gettext("Root bind DN"), gettext("Root bind Password"), gettext("User suffix"), gettext("Group suffix"), gettext("Password suffix"), gettext("Machine suffix"));
+		$reqdfieldsn = array(gettext("Host name"), gettext("Base DN"), gettext("Root bind DN"), gettext("Root bind password"), gettext("User suffix"), gettext("Group suffix"), gettext("Password suffix"), gettext("Machine suffix"));
 		$reqdfieldst = explode(" ", "string string string password string string string string");
 
 		if (!$_POST['anonymousbind']) {
 			$reqdfields = array_merge($reqdfields, explode(" ", "binddn bindpw"));
-			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Bind DN"), gettext("Bind Password")));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Bind DN"), gettext("Bind password")));
 			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string password"));
 		}
 
@@ -185,9 +185,9 @@ function anonymousbind_change() {
 					<?php html_inputbox("base", gettext("Base DN"), $pconfig['base'], sprintf(gettext("The default base distinguished name (DN) to use for searches, e.g. %s"), "dc=test,dc=org"), true, 40);?>
 					<?php html_checkbox("anonymousbind", gettext("Anonymous bind"), $pconfig['anonymousbind'] ? true : false, gettext("Enable anonymous bind."), "", true, "anonymousbind_change()");?>
 					<?php html_inputbox("binddn", gettext("Bind DN"), $pconfig['binddn'], sprintf(gettext("The distinguished name with which to bind to the directory server, e.g. %s"), "cn=admin,dc=test,dc=org"), true, 40);?>
-					<?php html_passwordconfbox("bindpw", "bindpw2", gettext("Bind Password"), $pconfig['bindpw'], $pconfig['bindpw2'], gettext("The cleartext credentials with which to bind."), true);?>
+					<?php html_passwordconfbox("bindpw", "bindpw2", gettext("Bind password"), $pconfig['bindpw'], $pconfig['bindpw2'], gettext("The cleartext credentials with which to bind."), true);?>
 					<?php html_inputbox("rootbinddn", gettext("Root bind DN"), $pconfig['rootbinddn'], sprintf(gettext("The distinguished name with which to bind to the directory server, e.g. %s"), "cn=admin,dc=test,dc=org"), true, 40);?>
-					<?php html_passwordconfbox("rootbindpw", "rootbindpw2", gettext("Root bind Password"), $pconfig['rootbindpw'], $pconfig['rootbindpw2'], gettext("The credentials with which to bind."), true);?>
+					<?php html_passwordconfbox("rootbindpw", "rootbindpw2", gettext("Root bind password"), $pconfig['rootbindpw'], $pconfig['rootbindpw2'], gettext("The credentials with which to bind."), true);?>
 					<?php html_combobox("pam_password", gettext("Password encryption"), $pconfig['pam_password'], array("clear" => "clear", "crypt" => "crypt", "md5" => "md5", "nds" => "nds", "racf" => "racf", "ad" => "ad", "exop" => "exop"), gettext("The password change protocol to use."), true);?>
 					<?php html_inputbox("user_suffix", gettext("User suffix"), $pconfig['user_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"), "ou=Users"), true, 20);?>
 					<?php html_inputbox("group_suffix", gettext("Group suffix"), $pconfig['group_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"), "ou=Groups"), true, 20);?>
