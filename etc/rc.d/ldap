@@ -32,16 +32,20 @@ if configxml_isset //ldap/enable; then
 		-v "concat('host ',hostname)" -n \
 		-v "concat('uri ldap://',hostname)" -n \
 		-v "concat('base ',base)" -n \
-		-v "concat('rootbinddn ',binddn)" -n \
-		-i "string-length(password_suffix) > 0" -v "concat('nss_base_passwd ',password_suffix,'?one')" -n -b \
-		-i "string-length(group_suffix) > 0" -v "concat('nss_base_group ',group_suffix,'?one')" -n -b \
+		-i "count(anonymousbind) = 0" \
+			-v "concat('binddn ',binddn)" -n \
+			-v "concat('bindpw ',bindpw)" -n \
+		-b \
+		-v "concat('rootbinddn ',rootbinddn)" -n \
+		-i "string-length(password_suffix) > 0" -v "concat('nss_base_passwd ',password_suffix,',',base,'?one')" -n -b \
+		-i "string-length(group_suffix) > 0" -v "concat('nss_base_group ',group_suffix,',',base,'?one')" -n -b \
 		-v "concat('pam_password ',pam_password)" -n \
 		-m "auxparam" -v "." -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${ldap_config}
 
 	echo "Generating ldap.secret."
 	/usr/local/bin/xml sel -t -m "//ldap" \
-		-v "bindpw" \
+		-v "rootbindpw" \
 		${configxml_file} | /usr/local/bin/xml unesc > ${ldap_secret}
 
 	/bin/chmod 0600 ${ldap_secret}

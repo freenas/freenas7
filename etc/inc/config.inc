@@ -1610,6 +1610,7 @@ function config_upgrade() {
 	/* Convert 6.6 -> 6.7 */
 	/* Add misc attributes to //ldap. */
 	if ($config['version'] === "6.6") {
+		$config['ldap']['anonymousbind'] = true;
 		$config['ldap']['auxparam'][] = "ldap_version 3";
 		$config['ldap']['auxparam'][] = "timelimit 30";
 		$config['ldap']['auxparam'][] = "bind_timelimit 30";

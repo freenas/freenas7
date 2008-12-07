@@ -940,12 +940,16 @@
 		-->
 		<hostname></hostname>
 		<base></base>
+		<anonymousbind/>
 		<binddn></binddn>
 		<bindpw></bindpw>
+		<rootbinddn></rootbinddn>
+		<rootbindpw></rootbindpw>
 		<pam_password></pam_password>
 		<user_suffix></user_suffix>
 		<group_suffix></group_suffix>
 		<password_suffix></password_suffix>
+		<machine_suffix></machine_suffix>
 		<auxparam>ldap_version 3</auxparam>
 		<auxparam>timelimit 30</auxparam>
 		<auxparam>bind_timelimit 30</auxparam>
