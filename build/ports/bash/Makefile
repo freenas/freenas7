@@ -53,7 +53,8 @@ pre-build:
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bash ${FREENAS_ROOTFS}/usr/local/bin
-	@${LN} -sfv /usr/local/bin/bash ${FREENAS_ROOTFS}/usr/local/bin/rbash
+	@${LN} -fsv /usr/local/bin/bash ${FREENAS_ROOTFS}/usr/local/bin/rbash
+	@${LN} -fsv /usr/local/bin/bash ${FREENAS_ROOTFS}/bin/bash
 
 cklatest:
 	-ncftpls \
