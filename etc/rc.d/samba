@@ -39,6 +39,9 @@ samba_piddir="${samba_piddir=/var/run}"
 samba_recycle_repository="${samba_recycle_repository:-".recycle/%U"}"
 samba_recycle_directory_mode="${samba_recycle_directory_mode:-"0777"}"
 samba_recycle_subdir_mode="${samba_recycle_subdir_mode:-"0700"}"
+samba_idmap_range="${samba_idmap_range:-"10000-999999"}"
+samba_idmap_uid="${samba_idmap_uid:-"10000-999999"}"
+samba_idmap_gid="${samba_idmap_gid:-"10000-999999"}"
 
 # Check if 'Active Directory' is enabled?
 configxml_isset //ad/enable
@@ -171,9 +174,9 @@ mkconf_cmd()
 			-o "ldap ssl = no" -n \
 			-v "concat('idmap domains = ',//ad/domainname_netbios)" -n \
 			-v "concat('idmap config ',//ad/domainname_netbios,':backend = rid')" -n \
-			-v "concat('idmap config ',//ad/domainname_netbios,':range = 10000-999999')" -n \
-			-o "idmap uid = 10000-999999" -n \
-			-o "idmap gid = 10000-999999" -n \
+			-v "concat('idmap config ',//ad/domainname_netbios,':range = ${samba_idmap_range}')" -n \
+			-o "idmap uid = ${samba_idmap_uid}" -n \
+			-o "idmap gid = ${samba_idmap_gid}" -n \
 			-o "winbind enum groups = yes" -n \
 			-o "winbind enum users = yes" -n \
 			-o "winbind use default domain = yes" -n \
@@ -181,19 +184,23 @@ mkconf_cmd()
 			-o "template shell = /bin/sh" -n \
 		-b \
 		-i "//samba/security[. = 'user']" \
-			-o "passdb backend = smbpasswd" -n \
-		-b \
-		-i "count(//ldap/enable) > 0" \
-			-v "concat('passdb backend = ldapsam:ldap://',//ldap/hostname)" -n \
-			-v "concat('ldap admin dn = ',//ldap/binddn)" -n \
-			-v "concat('ldap suffix = ',//ldap/base)" -n \
-			-v "concat('ldap user suffix = ',//ldap/user_suffix)" -n \
-			-v "concat('ldap group suffix = ',//ldap/group_suffix)" -n \
-			-o "security = user" -n \
-			-o "ldap replication sleep = 1000" -n \
-			-o "ldap passwd sync = true" -n \
-			-o "ldapsam:trusted = true" -n \
-			-o "ldap ssl = no" -n \
+			-i "count(//ldap/enable) = 0" \
+				-o "passdb backend = smbpasswd" -n \
+			-b \
+			-i "count(//ldap/enable) > 0" \
+				-v "concat('passdb backend = ldapsam:&quot;ldap://',//ldap/hostname,'&quot;')" -n \
+				-v "concat('ldap admin dn = ',//ldap/rootbinddn)" -n \
+				-v "concat('ldap suffix = ',//ldap/base)" -n \
+				-v "concat('ldap user suffix = ',//ldap/user_suffix)" -n \
+				-v "concat('ldap group suffix = ',//ldap/group_suffix)" -n \
+				-v "concat('ldap machine suffix = ',//ldap/machine_suffix)" -n \
+				-o "ldap replication sleep = 1000" -n \
+				-o "ldap passwd sync = yes" -n \
+				-o "ldap ssl = no" -n \
+				-o "ldapsam:trusted = yes" -n \
+				-o "idmap uid = ${samba_idmap_uid}" -n \
+				-o "idmap gid = ${samba_idmap_gid}" -n \
+			-b \
 		-b \
 		-m "//samba/auxparam" \
 			-v "." -n \
