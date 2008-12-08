@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
-"PO-Revision-Date: 2008-12-05 09:51+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"PO-Revision-Date: 2008-12-08 09:10+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -126,7 +126,7 @@ msgid ""
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
-"<li>Default - RSYNC будет выбирать алгоритм 'During' для взаимодействия с "
+"<li>Default - Rsync будет выбирать алгоритм 'During' для взаимодействия с "
 "версией rsync 3.0.0 или новее. Если версия rsync ниже 3.0.0, будет применен "
 "алгоритм 'Before'. </li><li>Before - удаление файлов будет осуществлено "
 "перед началом передачи.</li><li>During - удаление файлов будет выполнено "
@@ -288,7 +288,7 @@ msgid "Add Route"
 msgstr "Добавить маршрут"
 
 msgid "Add Rsync job"
-msgstr ""
+msgstr "Добавить задание Rsync"
 
 msgid "Add URL"
 msgstr "Добавить URL"
@@ -499,7 +499,10 @@ msgid "An interface with the specified description already exists."
 msgstr "Интерфейс с таким описанием уже существует."
 
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonymous"
+
+msgid "Anonymous bind"
+msgstr "Анонимная связь"
 
 msgid "Anonymous users only"
 msgstr "Только анонимные пользователи"
@@ -508,7 +511,7 @@ msgid "Any"
 msgstr "Any"
 
 msgid "Apple Filing Protocol"
-msgstr ""
+msgstr "Apple Filing Protocol (AFP)"
 
 msgid "Apply changes"
 msgstr "Применить изменения"
@@ -579,13 +582,13 @@ msgid "Banner"
 msgstr "Приветствие"
 
 msgid "Base DN"
-msgstr "Уникальное имя записи"
+msgstr "Уникальное имя (DN) базы"
 
 msgid "Bind DN"
-msgstr ""
+msgstr "Связанное уникальное имя (DN)"
 
-msgid "Bind DN Password"
-msgstr ""
+msgid "Bind password"
+msgstr "Пароль для связи"
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -836,7 +839,7 @@ msgid "Date"
 msgstr "Дата"
 
 msgid "Debug"
-msgstr ""
+msgstr "Отладочный режим (Debug)"
 
 msgid "Default"
 msgstr "По умолчанию"
@@ -875,7 +878,7 @@ msgid "Delete Route"
 msgstr "Удалить маршрут"
 
 msgid "Delete Rsync job"
-msgstr ""
+msgstr "Удалить задание Rsync"
 
 msgid "Delete URL"
 msgstr "Удалить URL"
@@ -981,12 +984,14 @@ msgid "Destination share"
 msgstr "Общий ресурс получателя"
 
 msgid "Detected RSYNC remote shares"
-msgstr "Обнаружены удаленные RSYNC-каталоги"
+msgstr "Обнаружены удаленные каталоги Rsync"
 
 msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
 "retransmitted. The default is 1000000 (1 second)."
 msgstr ""
+"Таймаут (в микросекундах) перед тем, как первый пакет будет передан "
+"повторно. По умолчанию 1.000.000 (1 секунда)."
 
 msgid "Device"
 msgstr "Устройство"
@@ -1037,7 +1042,7 @@ msgid "Difference"
 msgstr "Изменение"
 
 msgid "Digital Audio Access Protocol"
-msgstr ""
+msgstr "Digital Audio Access Protocol (DAAP)"
 
 msgid "Direction"
 msgstr "Направление"
@@ -1117,10 +1122,7 @@ msgid "Do you really want to delete this MIB?"
 msgstr "Вы действительно хотите удалить этот MIB?"
 
 msgid "Do you really want to delete this Rsync job?"
-msgstr ""
-
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
+msgstr "Вы действительно хотите удалить это задание Rsync?"
 
 msgid "Do you really want to delete this URL?"
 msgstr "Вы действительно хотите удалить этот URL?"
@@ -1307,7 +1309,7 @@ msgid "Edit Route"
 msgstr "Редактировать маршрут"
 
 msgid "Edit Rsync job"
-msgstr ""
+msgstr "Редактировать задание Rsync"
 
 msgid "Edit URL"
 msgstr "Редактировать URL"
@@ -1389,6 +1391,9 @@ msgstr "Включить SMTP-авторизацию"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Включить Zeroconf/Bonjour для объявления служб этого устройства"
+
+msgid "Enable anonymous bind."
+msgstr "Разрешить анонимную связь"
 
 msgid "Enable authentication."
 msgstr "Включить авторизацию"
@@ -1681,7 +1686,7 @@ msgid "File Manager"
 msgstr "Файловый менеджер"
 
 msgid "File Transfer Protocol"
-msgstr ""
+msgstr "File Transfer Protocol (FTP)"
 
 msgid "File not found"
 msgstr "Файл не найден"
@@ -1770,7 +1775,7 @@ msgid "Fsck"
 msgstr "Утилита fsck"
 
 msgid "Full"
-msgstr ""
+msgstr "Full"
 
 msgid "Full Name"
 msgstr "Полное имя"
@@ -1844,9 +1849,6 @@ msgstr "Таймаут до режима Standby"
 msgid "Help"
 msgstr "Помощь"
 
-msgid "Help needed!"
-msgstr "Требуется помощь"
-
 msgid "Hide dot files"
 msgstr "Скрывать файлы \".\""
 
@@ -1871,7 +1873,7 @@ msgid "Host"
 msgstr "Хост"
 
 msgid "Host name"
-msgstr ""
+msgstr "Имя компьютера"
 
 msgid "Host resources"
 msgstr "Ресурсы хоста"
@@ -1920,7 +1922,7 @@ msgstr ""
 "href=%s>&quot;Преобразовывать IP-адреса в имена хостов&quot;</a>."
 
 msgid "IP or FQDN address of remote Rsync server."
-msgstr ""
+msgstr "IP- или FQDN-адрес удаленного сервера Rsync."
 
 msgid "IP type mismatch for network and gateway."
 msgstr "Несовпадение IP для подсети и шлюза"
@@ -2105,6 +2107,8 @@ msgstr "Интервал должен быть больше или равен 10
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
+"Некорректный максимальный размер блока. Он должен быть в диапазоне от %d до "
+"%d."
 
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
@@ -2155,16 +2159,7 @@ msgid "LAN net"
 msgstr "Локальная сеть"
 
 msgid "LDAP"
-msgstr "Облегченный протокол доступа к каталогам (LDAP)"
-
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-"Проверка подлинности LDAP не реализована - если вам известно как "
-"использовать подсистему PAM для проверки подлинности UNIX-служб (FTP,SSH и "
-"др.) и Samba на LDAP-сервере, свяжитесь с нами."
+msgstr "Протокол LDAP"
 
 msgid "Language"
 msgstr "Язык"
@@ -2194,7 +2189,7 @@ msgid "License & Credits"
 msgstr "Лицензия и список разработчиков"
 
 msgid "Lightweight Directory Access Protocol"
-msgstr ""
+msgstr "Lightweight Directory Access Protocol (LDAP)"
 
 msgid "Link Aggregation and Failover"
 msgstr "Агрегация каналов и резервирование от сбоев"
@@ -2323,6 +2318,9 @@ msgstr "Домен Microsoft"
 msgid "MTU"
 msgstr "Размер MTU"
 
+msgid "Machine suffix"
+msgstr "Суффикс компьютера"
+
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr "Убедитесь, что S.M.A.R.T. на вашем устройстве включен."
 
@@ -2348,7 +2346,7 @@ msgid "Max. TTL"
 msgstr "Макс. TTL"
 
 msgid "Max. block size"
-msgstr ""
+msgstr "Максимальный размер блока"
 
 msgid "Max. conn. per IP"
 msgstr "Максимальное число соединений на IP"
@@ -2403,7 +2401,7 @@ msgid "MibII"
 msgstr "MibII"
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 msgid "Minimum free space"
 msgstr "Минимум свободного места"
@@ -2504,7 +2502,7 @@ msgid "Network"
 msgstr "Сеть"
 
 msgid "Network File System"
-msgstr ""
+msgstr "Network File System (NFS)"
 
 msgid "Network mask"
 msgstr "Сетевая маска"
@@ -2529,7 +2527,7 @@ msgid "No"
 msgstr "Нет"
 
 msgid "No RSYNC Client configured"
-msgstr "Нет настроенных клиентов RSYNC"
+msgstr "Нет настроенных клиентов Rsync"
 
 msgid "No case folding"
 msgstr "Без переключения регистра"
@@ -2541,7 +2539,7 @@ msgid "None"
 msgstr "Нет"
 
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -2924,25 +2922,25 @@ msgid "RAID5"
 msgstr "RAID5"
 
 msgid "RSYNC"
-msgstr "RSYNC"
+msgstr "Rsync"
 
 msgid "RSYNC Client"
-msgstr "Клиент RSYNC"
+msgstr "Клиент Rsync"
 
 msgid "RSYNC Client informations"
-msgstr "Информация клиента RSYNC"
+msgstr "Информация клиента Rsync"
 
 msgid "RSYNC Local"
-msgstr "Локальный RSYNC"
+msgstr "Локальный Rsync"
 
 msgid "RSYNC events"
-msgstr "События RSYNC"
+msgstr "События Rsync"
 
 msgid "RSYNC log"
-msgstr "Журнал RSYNC"
+msgstr "Журнал Rsync"
 
 msgid "RSYNCD"
-msgstr "RSYNC"
+msgstr "Rsync"
 
 msgid "Raid name"
 msgstr "Имя RAID-массива"
@@ -2990,7 +2988,7 @@ msgid "Reload page"
 msgstr "Перезагрузить страницу"
 
 msgid "Remote Rsync Server"
-msgstr ""
+msgstr "Удаленный Rsync-сервер"
 
 msgid "Remote address"
 msgstr "Удаленный адрес"
@@ -3045,6 +3043,12 @@ msgstr "Результаты команды net rpc testjoin:"
 msgid "Retry"
 msgstr "Попытаться снова"
 
+msgid "Root bind DN"
+msgstr "Уникальное имя корневой связи"
+
+msgid "Root bind password"
+msgstr "Пароль корневой связи"
+
 msgid "Roundrobin"
 msgstr "Roundrobin"
 
@@ -3058,10 +3062,10 @@ msgid "Rows"
 msgstr "Строки"
 
 msgid "Rsync"
-msgstr ""
+msgstr "Rsync"
 
 msgid "Rsync job"
-msgstr ""
+msgstr "Задание Rsync"
 
 msgid "Rule"
 msgstr "Правило"
@@ -3146,7 +3150,7 @@ msgid "Scheduled shutdown"
 msgstr "Запланированное выключение"
 
 msgid "Secure Shell"
-msgstr ""
+msgstr "Secure Shell (SSH)"
 
 msgid "Security"
 msgstr "Безопасность"
@@ -3263,6 +3267,8 @@ msgid ""
 "Sets the umask for newly created files to the specified value. The default "
 "is zero (anyone can read or write)."
 msgstr ""
+"Использовать заданное значение umask при создании новых файлов. По умолчанию "
+"ноль (любой пользователь может читать и записывать)."
 
 msgid "Settings"
 msgstr "Параметры"
@@ -3370,6 +3376,7 @@ msgid ""
 "Specifies the maximum permitted block size. The permitted range for this "
 "parameter is from 512 to 65464."
 msgstr ""
+"Задает максимальный разрешенный размер блока (в диапазоне от 512 до 65464)."
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
@@ -3379,7 +3386,7 @@ msgstr ""
 "т.д."
 
 msgid "Specifies the username which the service will run as."
-msgstr ""
+msgstr "Задает пользователя, от имени которого запускается эта служба."
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
@@ -3562,7 +3569,7 @@ msgid "Target address"
 msgstr "Адрес цели"
 
 msgid "Target directory."
-msgstr "Целевой каталог"
+msgstr "Целевой каталог."
 
 msgid "Target name"
 msgstr "Имя цели"
@@ -3738,6 +3745,11 @@ msgstr ""
 "Изменения сохранены. Необходимо <a href=%s>перезагрузить</a> систему, чтобы "
 "они вступили в силу."
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+"Незашифрованный пароль связанного уникального имени (DN) для связи с "
+"сервером каталогов."
+
 msgid "The combination of share and working directory does not exist."
 msgstr "Комбинация общего ресурса и рабочего каталога не существует."
 
@@ -3770,6 +3782,7 @@ msgstr ""
 
 msgid "The credentials with which to bind."
 msgstr ""
+"Пароль связанного уникального имени (DN) для связи с сервером каталогов."
 
 msgid "The cron job has been executed successfully."
 msgstr "Задание Сron'а было выполнено успешно."
@@ -3780,6 +3793,7 @@ msgstr "Порт почтового сервера по умолчанию, на
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
+"Уникальное имя (DN) базы по умолчанию, используемое для поиска, например %s"
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Имя устройства может состоять только из символов  a-z, A-Z, 0-9."
@@ -3791,6 +3805,9 @@ msgid ""
 "The directory containing the files you want to publish. The remote host does "
 "not need to pass along the directory as part of the transfer."
 msgstr ""
+"Этот каталог содержит файлы, предназначенные для общего использования. "
+"Удаленному хосту в процессе передачи не требуется просмотра содержимого "
+"каталогов пути."
 
 #, php-format
 msgid ""
@@ -3803,6 +3820,7 @@ msgstr ""
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
+"Уникальное имя (DN), используемое для связи с сервером каталогов, например %s"
 
 #, php-format
 msgid ""
@@ -3869,7 +3887,7 @@ msgstr ""
 "любой порт)."
 
 msgid "The name or IP address of the LDAP server."
-msgstr ""
+msgstr "Имя или IP-адрес сервера LDAP."
 
 msgid "The number of clients must be between 1 and 50."
 msgstr "Количество клиентов должно быть от 1 до 50."
@@ -3878,7 +3896,7 @@ msgid "The old password is not correct."
 msgstr "Старый пароль неверен."
 
 msgid "The password change protocol to use."
-msgstr ""
+msgstr "Используемый протокол шифрования пароля."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Пароль содержит недопустимый символ  ':'."
@@ -3901,6 +3919,8 @@ msgid ""
 "The port to listen to. The default is to listen to the tftp port specified "
 "in /etc/services."
 msgstr ""
+"Порт для прослушивания. По умолчанию используется порт tftp, заданный в "
+"файле /etc/services."
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -4016,7 +4036,7 @@ msgstr ""
 
 #, php-format
 msgid "These parameters are added to %s."
-msgstr ""
+msgstr "Эти параметры добавляются к %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -4298,21 +4318,35 @@ msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
+"Этот параметр устанавливает суффикс, который используется для групп при их "
+"добавлении в каталог LDAP, например %s"
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+"Этот параметр устанавливает суффикс, который используется для компьютеров "
+"при их добавлении в каталог LDAP, например %s"
 
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for passwords when these "
 "are added to the LDAP directory, e.g. %s"
 msgstr ""
+"Этот параметр устанавливает суффикс, который используется для паролей при их "
+"добавлении в каталог LDAP, например %s"
 
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for users when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
+"Этот параметр устанавливает суффикс, который используется для пользователей "
+"при их добавлении в каталог LDAP, например %s"
 
 msgid "This the IP address or DNS name of the iSCSI target."
-msgstr "Это IP-адрес или DNS-имя цели iSCSI."
+msgstr "IP-адрес или DNS-имя цели iSCSI."
 
 msgid "This user already exists in the user list."
 msgstr "Этот пользователь уже есть в списке пользователей."
@@ -4932,7 +4966,7 @@ msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
 msgid "umask"
-msgstr ""
+msgstr "Применить umask"
 
 msgid "upriv"
 msgstr "upriv"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -446,6 +446,9 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous bind"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
@@ -527,7 +530,7 @@ msgstr "Базов индекс"
 msgid "Bind DN"
 msgstr ""
 
-msgid "Bind DN Password"
+msgid "Bind password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -1041,9 +1044,6 @@ msgstr ""
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
-
 msgid "Do you really want to delete this URL?"
 msgstr ""
 
@@ -1304,6 +1304,9 @@ msgid "Enable SMTP authentication."
 msgstr ""
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable anonymous bind."
 msgstr ""
 
 msgid "Enable authentication."
@@ -1728,9 +1731,6 @@ msgstr "време за стендбай режим на харддиска"
 msgid "Help"
 msgstr "Помощ"
 
-msgid "Help needed!"
-msgstr ""
-
 msgid "Hide dot files"
 msgstr ""
 
@@ -2019,12 +2019,6 @@ msgstr ""
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-
 msgid "Language"
 msgstr "Език"
 
@@ -2174,6 +2168,9 @@ msgstr "MS Domain"
 
 msgid "MTU"
 msgstr "MTU"
+
+msgid "Machine suffix"
+msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr ""
@@ -2863,6 +2860,12 @@ msgstr ""
 msgid "Retry"
 msgstr "Нов опит"
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr ""
 
@@ -3532,6 +3535,9 @@ msgid ""
 "for the changes to take effect."
 msgstr ""
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr "The combination of share and working directory does not exist."
 
@@ -4002,6 +4008,12 @@ msgstr ""
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 

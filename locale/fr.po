@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
-"PO-Revision-Date: 2008-12-05 16:23+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"PO-Revision-Date: 2008-12-08 12:30+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -289,7 +289,7 @@ msgid "Add Route"
 msgstr "Ajouter une route"
 
 msgid "Add Rsync job"
-msgstr ""
+msgstr "Ajouter une tâche Rsync"
 
 msgid "Add URL"
 msgstr "Ajouter une URL"
@@ -505,7 +505,10 @@ msgid "An interface with the specified description already exists."
 msgstr "Il existe déjà une interface ayant cette description"
 
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonyme"
+
+msgid "Anonymous bind"
+msgstr "Bind anonyme"
 
 msgid "Anonymous users only"
 msgstr "Utilisateurs anonymes seulement"
@@ -514,7 +517,7 @@ msgid "Any"
 msgstr "Tous"
 
 msgid "Apple Filing Protocol"
-msgstr ""
+msgstr "Apple Filing Protocol"
 
 msgid "Apply changes"
 msgstr "Appliquer les changements"
@@ -589,10 +592,10 @@ msgid "Base DN"
 msgstr "DN de base"
 
 msgid "Bind DN"
-msgstr ""
+msgstr "DN pour le bind"
 
-msgid "Bind DN Password"
-msgstr ""
+msgid "Bind password"
+msgstr "Mot de passe pour le bind"
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -889,7 +892,7 @@ msgid "Delete Route"
 msgstr "Suppression de la route"
 
 msgid "Delete Rsync job"
-msgstr ""
+msgstr "Supprimer la tâche Rsync"
 
 msgid "Delete URL"
 msgstr "Effacer l'URL"
@@ -1001,6 +1004,8 @@ msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
 "retransmitted. The default is 1000000 (1 second)."
 msgstr ""
+"Le délai par défaut, en microsecondes, avant que le premier paquet ne soit "
+"retransmis. La valeur par défaut est 1000000 (1 seconde)."
 
 msgid "Device"
 msgstr "Périphérique"
@@ -1052,7 +1057,7 @@ msgid "Difference"
 msgstr "Différence"
 
 msgid "Digital Audio Access Protocol"
-msgstr ""
+msgstr "Digital Audio Access Protocol"
 
 msgid "Direction"
 msgstr "Direction"
@@ -1132,10 +1137,7 @@ msgid "Do you really want to delete this MIB?"
 msgstr "Souhaitez-vous vraiment supprimer cette MIB?"
 
 msgid "Do you really want to delete this Rsync job?"
-msgstr ""
-
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir supprimer cette tâche Rsync?"
 
 msgid "Do you really want to delete this URL?"
 msgstr "Voulez-vous vraiment supprimer cette URL?"
@@ -1324,7 +1326,7 @@ msgid "Edit Route"
 msgstr "Edition de la route"
 
 msgid "Edit Rsync job"
-msgstr ""
+msgstr "Editer la tâche Rsync"
 
 msgid "Edit URL"
 msgstr "Editer URL"
@@ -1406,6 +1408,9 @@ msgstr "Activer l'authentification SMTP."
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Activer Zeroconf/Bonjour pour annoncer les services"
+
+msgid "Enable anonymous bind."
+msgstr "Autoriser le bind anonyme."
 
 msgid "Enable authentication."
 msgstr "Activer l'authentification."
@@ -1700,7 +1705,7 @@ msgid "File Manager"
 msgstr "Gestionnaire de fichiers"
 
 msgid "File Transfer Protocol"
-msgstr ""
+msgstr "File Transfer Protocol"
 
 msgid "File not found"
 msgstr "Fichier non trouvé"
@@ -1866,9 +1871,6 @@ msgstr "Délai de mise en veille du disque"
 msgid "Help"
 msgstr "Aide"
 
-msgid "Help needed!"
-msgstr "Aide requise!"
-
 msgid "Hide dot files"
 msgstr "Cacher les fichiers commençant par un point"
 
@@ -1893,7 +1895,7 @@ msgid "Host"
 msgstr "Hôte"
 
 msgid "Host name"
-msgstr ""
+msgstr "Nom de hôte"
 
 msgid "Host resources"
 msgstr "Ressources du serveur"
@@ -1945,7 +1947,7 @@ msgstr ""
 "activé."
 
 msgid "IP or FQDN address of remote Rsync server."
-msgstr ""
+msgstr "Adress IP ou FQDN du serveur Rsync distant."
 
 msgid "IP type mismatch for network and gateway."
 msgstr "Le type d'IP ne correspond pas au réseau et à la passerelle."
@@ -2139,6 +2141,8 @@ msgstr "L'intervalle doit être supérieur ou égal à 10 secondes."
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
+"Taille maximum de bloc invalide! Elle doit être dans la fourchette de %d à "
+"%d."
 
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
@@ -2191,15 +2195,6 @@ msgstr "LAN net"
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-"L'authentification LDAP n'est pas implémentée: si vous savez comment "
-"utiliser PAM pour authentifier les services UNIX (FTP, SSH, etc...) ET Samba "
-"contre un serveur LDAP... vos patchs sont les bienvenus!"
-
 msgid "Language"
 msgstr "Langue"
 
@@ -2228,7 +2223,7 @@ msgid "License & Credits"
 msgstr "Licence & crédits"
 
 msgid "Lightweight Directory Access Protocol"
-msgstr ""
+msgstr "Lightweight Directory Access Protocol"
 
 msgid "Link Aggregation and Failover"
 msgstr "Agrégation de lien et basculement"
@@ -2360,6 +2355,9 @@ msgstr "Domaine MS"
 msgid "MTU"
 msgstr "MTU"
 
+msgid "Machine suffix"
+msgstr "Suffixe de la machine"
+
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr "Assurez-vous que vous avez activé S.M.A.R.T. pour vos périphériques."
 
@@ -2386,7 +2384,7 @@ msgid "Max. TTL"
 msgstr "Max. TTL"
 
 msgid "Max. block size"
-msgstr ""
+msgstr "Taille maximum de bloc"
 
 msgid "Max. conn. per IP"
 msgstr "Conn. max par IP"
@@ -2440,7 +2438,7 @@ msgid "MibII"
 msgstr "MibII"
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 msgid "Minimum free space"
 msgstr "Espace disque minimum"
@@ -2541,7 +2539,7 @@ msgid "Network"
 msgstr "Réseau"
 
 msgid "Network File System"
-msgstr ""
+msgstr "Network File System"
 
 msgid "Network mask"
 msgstr "Masque de sous-réseau"
@@ -2578,7 +2576,7 @@ msgid "None"
 msgstr "Aucun"
 
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -3031,7 +3029,7 @@ msgid "Reload page"
 msgstr "Rechargement de la page"
 
 msgid "Remote Rsync Server"
-msgstr ""
+msgstr "Serveur Rsync distant"
 
 msgid "Remote address"
 msgstr "Adresse distante"
@@ -3087,6 +3085,12 @@ msgstr "Résultat de la commande net rpc testjoin:"
 msgid "Retry"
 msgstr "Réessayer"
 
+msgid "Root bind DN"
+msgstr "DN pour le bind racine"
+
+msgid "Root bind password"
+msgstr "Mots de passe pour le bind racine"
+
 msgid "Roundrobin"
 msgstr "Cyclique (roundrobin)"
 
@@ -3100,10 +3104,10 @@ msgid "Rows"
 msgstr "Lignes"
 
 msgid "Rsync"
-msgstr ""
+msgstr "Rsync"
 
 msgid "Rsync job"
-msgstr ""
+msgstr "Tâche Rsync"
 
 msgid "Rule"
 msgstr "Règle"
@@ -3190,7 +3194,7 @@ msgid "Scheduled shutdown"
 msgstr "Arrêt programmé"
 
 msgid "Secure Shell"
-msgstr ""
+msgstr "Shell sécurisé"
 
 msgid "Security"
 msgstr "Sécurité"
@@ -3306,6 +3310,8 @@ msgid ""
 "Sets the umask for newly created files to the specified value. The default "
 "is zero (anyone can read or write)."
 msgstr ""
+"Configure le umask utilisé lors de la création de fichiers. La valeur par "
+"défaut est zéro (accès en lecture ou écriture pour tous)."
 
 msgid "Settings"
 msgstr "Réglages"
@@ -3416,6 +3422,8 @@ msgid ""
 "Specifies the maximum permitted block size. The permitted range for this "
 "parameter is from 512 to 65464."
 msgstr ""
+"Spécifie la taille maximum de bloc autorisée. La fourchette autorisée pour "
+"ce paramètre est de 512 à 65464."
 
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
@@ -3425,7 +3433,7 @@ msgstr ""
 "MAC, ISO-8859-15, etc."
 
 msgid "Specifies the username which the service will run as."
-msgstr ""
+msgstr "Spécifie le nom d'utilisateur sous lequel va fonctionner le service."
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
@@ -3801,6 +3809,9 @@ msgstr ""
 "Les modifications ont été enregistrées. Vous devez <a href=%s>redémarrer</a> "
 "votre serveur NAS pour que les modifications prennent effet."
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr "Cette combinaison partage/répertoire de travail n'existe pas."
 
@@ -3843,6 +3854,8 @@ msgstr "Le port par défaut du serveur mail SMTP, eq. 25 ou 587."
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
+"Le distinguished name (DN) de base à utiliser par défaut pour les "
+"recherches, e.g. %s"
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
@@ -3855,6 +3868,8 @@ msgid ""
 "The directory containing the files you want to publish. The remote host does "
 "not need to pass along the directory as part of the transfer."
 msgstr ""
+"Le répertoire contenant les fichiers que vous voulez publier. L'hôte distant "
+"n'a pas besoin d'indiquer le nom du répertoire dans le transfert."
 
 #, php-format
 msgid ""
@@ -3866,6 +3881,7 @@ msgstr "Ce disque est monté! <a href=%s>Démontez-le</a> avant de continuer."
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
+"Le distinguished name (DN) utilisé pour le bind au serveur LDAP, e.g. %s"
 
 #, php-format
 msgid ""
@@ -3931,7 +3947,7 @@ msgstr ""
 "passives (0 = n'importe lequel)."
 
 msgid "The name or IP address of the LDAP server."
-msgstr ""
+msgstr "Le nom ou l'adresse IP du serveur LDAP."
 
 msgid "The number of clients must be between 1 and 50."
 msgstr "Le nombre de clients doit être contenu entre 1 et 50."
@@ -3965,6 +3981,8 @@ msgid ""
 "The port to listen to. The default is to listen to the tftp port specified "
 "in /etc/services."
 msgstr ""
+"Le port à écouter. Par défaut, c'est le port tftp spécifié dans le fichier "
+"/etc/services."
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -4085,7 +4103,7 @@ msgstr ""
 
 #, php-format
 msgid "These parameters are added to %s."
-msgstr ""
+msgstr "Ces paramètres sont ajoutés à %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -4379,18 +4397,28 @@ msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
+"Suffixe utilisé lors de l'ajout de groupes au répertoire LDAP, e.g. %s"
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+"Suffixe utilisé lors de l'ajout de machines au répertoire LDAP, e.g. %s"
 
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for passwords when these "
 "are added to the LDAP directory, e.g. %s"
 msgstr ""
+"Suffixe utilisé lors de l'ajout de mots de passe au répertoire LDAP, e.g. %s"
 
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for users when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
+"Suffixe utilisé lors de l'ajout d'utilisateurs au répertoire LDAP, e.g. %s"
 
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "Indiquez ici l'adresse IP ou le nom DNS de la cible iSCSI."
@@ -5020,7 +5048,7 @@ msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
 msgid "umask"
-msgstr ""
+msgstr "umask"
 
 msgid "upriv"
 msgstr "upriv"
@@ -6431,6 +6459,15 @@ msgstr "jours de la semaine"
 
 #~ msgid "Help Needed!"
 #~ msgstr "Aide requise!"
+
+#~ msgid ""
+#~ "LDAP authentication feature is not implemented: If you know how to use PAM "
+#~ "to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+#~ "server... Your patchs are welcome."
+#~ msgstr ""
+#~ "L'authentification LDAP n'est pas implémentée: si vous savez comment "
+#~ "utiliser PAM pour authentifier les services UNIX (FTP, SSH, etc...) ET Samba "
+#~ "contre un serveur LDAP... vos patchs sont les bienvenus!"
 
 #~ msgid "NIS Authentication"
 #~ msgstr "Authentification NIS"

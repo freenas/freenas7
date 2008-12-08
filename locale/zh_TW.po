@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -481,6 +481,9 @@ msgstr "已存在具有指定描述的介面。"
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous bind"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "只允許匿名使用者"
 
@@ -564,7 +567,7 @@ msgstr "網域名稱"
 msgid "Bind DN"
 msgstr ""
 
-msgid "Bind DN Password"
+msgid "Bind password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -1085,9 +1088,6 @@ msgstr "確定要刪除這個 MIB？"
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
-
 msgid "Do you really want to delete this URL?"
 msgstr "確定要刪除這個 URL 嗎？"
 
@@ -1344,6 +1344,9 @@ msgid "Enable SMTP authentication."
 msgstr "啟用 SMTP 認證。"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable anonymous bind."
 msgstr ""
 
 msgid "Enable authentication."
@@ -1774,9 +1777,6 @@ msgstr "硬碟待命時間"
 msgid "Help"
 msgstr "說明"
 
-msgid "Help needed!"
-msgstr "需要幫助！"
-
 msgid "Hide dot files"
 msgstr "隱藏以逗點開頭的檔案"
 
@@ -2065,15 +2065,6 @@ msgstr "區域網路"
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-
 msgid "Language"
 msgstr "Language/語言設定"
 
@@ -2223,6 +2214,9 @@ msgstr "MS網域"
 
 msgid "MTU"
 msgstr "MTU"
+
+msgid "Machine suffix"
+msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr "請確定您已經啟用裝置的 S.M.A.R.T.。"
@@ -2911,6 +2905,12 @@ msgstr "Net rpc testjoin 結果："
 msgid "Retry"
 msgstr "重試"
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr ""
 
@@ -3578,6 +3578,9 @@ msgid ""
 "for the changes to take effect."
 msgstr "變更已經套用。你必須<a href=%s>重新開機</a>以讓變更生效。"
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr "設定值內的分享/工作目錄不存在。"
 
@@ -4081,6 +4084,12 @@ msgstr "這個參數將會套用在所有的檔案，包含以逗點為開頭的
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 
@@ -5672,6 +5681,15 @@ msgstr "平常日"
 
 #~ msgid "Help Needed!"
 #~ msgstr "需要幫助！"
+
+#~ msgid ""
+#~ "LDAP authentication feature is not implemented: If you know how to use PAM "
+#~ "to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+#~ "server... Your patchs are welcome."
+#~ msgstr ""
+#~ "LDAP authentication feature is not implemented: If you know how to use PAM "
+#~ "to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+#~ "server... Your patchs are welcome."
 
 #~ msgid "NIS Authentication"
 #~ msgstr "NIS 認證"
