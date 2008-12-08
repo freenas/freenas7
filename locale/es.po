@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
-"PO-Revision-Date: 2008-11-11 18:16+0000\n"
-"Last-Translator: Dutchman01 <Unknown>\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"PO-Revision-Date: 2008-12-08 17:57+0000\n"
+"Last-Translator: shortname <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -234,7 +234,7 @@ msgid "Acoustic level"
 msgstr "Ruido"
 
 msgid "Action"
-msgstr ""
+msgstr "Acción"
 
 msgid "Activate"
 msgstr "Activar"
@@ -275,7 +275,7 @@ msgid "Add URL"
 msgstr "Añadir URL"
 
 msgid "Add additional scheduled self-test."
-msgstr ""
+msgstr "Añadir autocomprobación planeada adicional."
 
 msgid "Add command"
 msgstr "Añadir comando"
@@ -314,7 +314,7 @@ msgid "Add option"
 msgstr "Añadir opción"
 
 msgid "Add rule"
-msgstr ""
+msgstr "Añadir regla"
 
 msgid "Add self-test"
 msgstr "Añadir autocomprobación"
@@ -475,6 +475,9 @@ msgstr "Ya existe una interfaz con la descripcion especificada."
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous bind"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Usuarios anónimos solamente"
 
@@ -558,7 +561,7 @@ msgstr "DN base"
 msgid "Bind DN"
 msgstr ""
 
-msgid "Bind DN Password"
+msgid "Bind password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -1088,9 +1091,6 @@ msgstr "¿Realemente quiere borrar ésta MIB?"
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
-
 msgid "Do you really want to delete this URL?"
 msgstr "¿Seguro que quiere borrar esta URL?"
 
@@ -1358,6 +1358,9 @@ msgstr "Activar autentificación SMTP."
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 "Habilitar Zeroconf/Bonjour para advertir servicios en éste dispositivo"
+
+msgid "Enable anonymous bind."
+msgstr ""
 
 msgid "Enable authentication."
 msgstr "Activar autentificación."
@@ -1793,9 +1796,6 @@ msgstr "Tiempo de espera de apagado del disco duro"
 msgid "Help"
 msgstr "Ayuda"
 
-msgid "Help needed!"
-msgstr ""
-
 msgid "Hide dot files"
 msgstr "Ocultar archivos de punto"
 
@@ -2099,15 +2099,6 @@ msgstr "Red LAN"
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-"La característica de autenticación con LDAP no está implementada. Si sabe "
-"como autenticar servicios UNIX (FTP, SSH, etc...) usando PAM Y SAMBA contra "
-"un servidor LDAP... Sus parches son bienvenidos."
-
 msgid "Language"
 msgstr "Idioma"
 
@@ -2261,6 +2252,9 @@ msgstr "Dominio MS"
 
 msgid "MTU"
 msgstr "MTU"
+
+msgid "Machine suffix"
+msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr ""
@@ -2971,6 +2965,12 @@ msgstr ""
 msgid "Retry"
 msgstr "Volver a intentar"
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr "Round-Robin"
 
@@ -3652,6 +3652,9 @@ msgstr ""
 "Los cambios furon guardados. Tiene que <a href=%s>reiniciar</a> el sistema "
 "para que los cambios tengan efecto."
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr ""
 "No existe la combinación de elemento compartido y directorio de trabajo."
@@ -4140,6 +4143,12 @@ msgstr ""
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 

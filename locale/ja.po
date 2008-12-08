@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
 "PO-Revision-Date: 2008-11-29 15:09+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -445,6 +445,9 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous bind"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
@@ -526,7 +529,7 @@ msgstr ""
 msgid "Bind DN"
 msgstr ""
 
-msgid "Bind DN Password"
+msgid "Bind password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -1041,9 +1044,6 @@ msgstr "本当にこのMIBを削除してもよろしいですか"
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
-
 msgid "Do you really want to delete this URL?"
 msgstr "このURLを削除してもよろしいですか？"
 
@@ -1298,6 +1298,9 @@ msgid "Enable SMTP authentication."
 msgstr "SMTP-AUTHを有効化"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable anonymous bind."
 msgstr ""
 
 msgid "Enable authentication."
@@ -1720,9 +1723,6 @@ msgstr "ハードディスクスタンバイ時間"
 msgid "Help"
 msgstr "ヘルプ"
 
-msgid "Help needed!"
-msgstr ""
-
 msgid "Hide dot files"
 msgstr "ドットファイルを隠す"
 
@@ -2005,12 +2005,6 @@ msgstr ""
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-
 msgid "Language"
 msgstr "言語"
 
@@ -2160,6 +2154,9 @@ msgstr "MS ドメイン"
 
 msgid "MTU"
 msgstr "MTU"
+
+msgid "Machine suffix"
+msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr ""
@@ -2844,6 +2841,12 @@ msgstr ""
 msgid "Retry"
 msgstr "リトライ"
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr "ラウンドロビン"
 
@@ -3508,6 +3511,9 @@ msgid ""
 "for the changes to take effect."
 msgstr "変更は保存されました。変更を有効にするにはシステムを <a href=%s>再起動</a> してください。."
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr "共有と作業ディレクトリの組み合わせが存在しません．"
 
@@ -3968,6 +3974,12 @@ msgstr ""
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 

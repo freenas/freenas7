@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
-"PO-Revision-Date: 2008-12-06 22:48+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"PO-Revision-Date: 2008-12-07 16:31+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:53+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -449,7 +449,7 @@ msgid "Allow new files"
 msgstr "Nieuwe bestanden toestaan"
 
 msgid "Allow new files to be created."
-msgstr "Toestaan dat nieuwe bestanden worden gemaakt."
+msgstr "Sta toe dat nieuwe bestanden kunnen worden aangemaakt."
 
 msgid ""
 "Allow users to resume and upload files, but NOT to delete or rename them. "
@@ -509,6 +509,9 @@ msgstr "Een netwerk met deze gespecificeerde omschrijving bestaat reeds."
 
 msgid "Anonymous"
 msgstr "Anoniem"
+
+msgid "Anonymous bind"
+msgstr ""
 
 msgid "Anonymous users only"
 msgstr "Alleen anonieme gebruikers"
@@ -593,8 +596,8 @@ msgstr "Base DN"
 msgid "Bind DN"
 msgstr "Bind DN"
 
-msgid "Bind DN Password"
-msgstr "Bind DN wachtwoord"
+msgid "Bind password"
+msgstr ""
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -603,7 +606,7 @@ msgid "Browseable"
 msgstr "Verkenbaar"
 
 msgid "By default, only already existing files can be uploaded."
-msgstr "Standaard, alleen bestaande bestanden kunnen geupload worden."
+msgstr "Standaard kunnen alleen bestaande bestanden geupload worden."
 
 msgid "CCMP"
 msgstr "CCMP"
@@ -792,7 +795,7 @@ msgid "Create mask"
 msgstr "Bestands attributen"
 
 msgid "Create work directory if it doesn't exist"
-msgstr "Creëer een  werkmap als deze niet bestaat"
+msgstr "Een werkmap aanmaken als deze nog niet bestaat"
 
 msgid "Credits"
 msgstr "Met dank aan"
@@ -1004,8 +1007,8 @@ msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
 "retransmitted. The default is 1000000 (1 second)."
 msgstr ""
-"Bepaal de standaard  tijdsoverschreiding in microseconden, voordat het "
-"eertste pakket opnieuw wordt overgebracht. Standaard 1000000 (1 seconden)."
+"Bepaal de standaard tijdsoverschreiding in microseconden voor het eerste "
+"pakket opnieuw wordt overgebracht. Standaard 1000000 (1 seconden)."
 
 msgid "Device"
 msgstr "Apparaat"
@@ -1138,9 +1141,6 @@ msgstr "Weet u zeker dat u deze MIB wiltverwijderen?"
 
 msgid "Do you really want to delete this Rsync job?"
 msgstr "Weet u zeker dat u deze Rsync taak wilt verwijderen?"
-
-msgid "Do you really want to delete this Rsync?"
-msgstr "Weet u zeker dat u deze Rsync wilt verwijderen?"
 
 msgid "Do you really want to delete this URL?"
 msgstr "Weet u zeker dat u deze URL wilt wissen?"
@@ -1413,6 +1413,9 @@ msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 "Inschakelen Zeroconf/Bonjour om deze service kenbaar te maken van dit "
 "apparaat"
+
+msgid "Enable anonymous bind."
+msgstr ""
 
 msgid "Enable authentication."
 msgstr "Inschakelen authentiecatie."
@@ -1874,9 +1877,6 @@ msgstr "Standby tijd harde schijf"
 msgid "Help"
 msgstr "Help"
 
-msgid "Help needed!"
-msgstr "Hulp nodig!"
-
 msgid "Hide dot files"
 msgstr "Verberg punt bestanden (.bestandsnaam)"
 
@@ -2200,15 +2200,6 @@ msgstr "LAN net"
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-"LDAP authenticatie optie is niet geimplanteerd: Als jij weet hoe PAM te "
-"gebruiken voor authenticatie UNIX services (FTP,SSH, etc...) en SAMBA "
-"tegenover een LDAP server... Jouw patch is van harte welkom."
-
 msgid "Language"
 msgstr "Taal"
 
@@ -2367,6 +2358,9 @@ msgstr "MS Domein"
 
 msgid "MTU"
 msgstr "MTU"
+
+msgid "Machine suffix"
+msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr ""
@@ -3100,6 +3094,12 @@ msgstr "Resultaten voor net rpc testjoin:"
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr "Roundrobin"
 
@@ -3324,8 +3324,8 @@ msgid ""
 "Sets the umask for newly created files to the specified value. The default "
 "is zero (anyone can read or write)."
 msgstr ""
-"Zet de umask voor nieuw aangemaakte bestanden naar de opgegeven waarde. "
-"Standaard is nul (iedereen kan lezen of schrijven)."
+"Zet de umask waarde voor nieuw aangemaakte bestanden. Standaard 0 (iedereen "
+"kan lezen of schrijven)."
 
 msgid "Settings"
 msgstr "Instellingen"
@@ -3819,6 +3819,9 @@ msgstr ""
 "De wijzigingen zijn opgeslagen. U moet het systeem <a href=%s>herstarten</a> "
 "voordat deze veranderingen effect hebben."
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr "De combinatie van gedeelde map en werkmap bestaat niet."
 
@@ -3861,7 +3864,7 @@ msgstr "De standaard SMTP mailserver poort, bijv. 25 of 587."
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
-"De standaard basis voornaam (DN) om voor zoeken te gebruiken, e.g. %s"
+"De standaard basis voornaam (DN) om voor zoeken te gebruiken, bijv. %s"
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "De schijf naam mag alleen bestaan uit de karakters a-z, A-Z, 0-9."
@@ -3887,7 +3890,7 @@ msgstr ""
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
-msgstr "De voornaam om de directory server aan te verbinden, e.g. %s"
+msgstr "De voornaam om de directory server aan te verbinden, bijv. %s"
 
 #, php-format
 msgid ""
@@ -3986,8 +3989,8 @@ msgid ""
 "The port to listen to. The default is to listen to the tftp port specified "
 "in /etc/services."
 msgstr ""
-"De poort nummer om op te luisteren. Standaard is luisteren op de tftp poort "
-"opgegeven in /etc/services."
+"Poort om op te luisteren. Standaard is de tftp poort opgegeven in "
+"/etc/services."
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -4408,7 +4411,13 @@ msgid ""
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 "Deze parameter specificeerd het achtervoegsel voor groepen, wanneer deze "
-"toegevoegt zijn aan de LDAP directory, e.g. %s"
+"toegevoegt zijn aan de LDAP directory, bijv. %s"
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4416,7 +4425,7 @@ msgid ""
 "are added to the LDAP directory, e.g. %s"
 msgstr ""
 "Deze parameter specificeerd het achtervoegsel voor wachtwoorden, wanneer "
-"deze toegevoegt zijn aan de LDAP directory, e.g. %s"
+"deze toegevoegt zijn aan de LDAP directory, bijv. %s"
 
 #, php-format
 msgid ""
@@ -4424,7 +4433,7 @@ msgid ""
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 "Deze parameter specificeerd het achtervoegsel voor gebruikers, wanneer deze "
-"toegevoegt zijn aan de LDAP directory, e.g. %s"
+"toegevoegt zijn aan de LDAP directory, bijv. %s"
 
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "Dit het IP adres of DNS naam van het iSCSI doel."

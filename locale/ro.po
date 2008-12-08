@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-06 21:33+0000\n"
+"POT-Creation-Date: 2008-12-07 23:48+0000\n"
 "PO-Revision-Date: 2008-09-23 12:55+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-06 22:54+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -465,6 +465,9 @@ msgstr "Exista deja o interfata cu aceasta descriere"
 msgid "Anonymous"
 msgstr ""
 
+msgid "Anonymous bind"
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Doar utilizatori anonimi"
 
@@ -549,7 +552,7 @@ msgstr "DN baza"
 msgid "Bind DN"
 msgstr ""
 
-msgid "Bind DN Password"
+msgid "Bind password"
 msgstr ""
 
 msgid "BitTorrent"
@@ -1085,9 +1088,6 @@ msgstr ""
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
-msgid "Do you really want to delete this Rsync?"
-msgstr ""
-
 msgid "Do you really want to delete this URL?"
 msgstr "Stergeti acest URL?"
 
@@ -1348,6 +1348,9 @@ msgid "Enable SMTP authentication."
 msgstr ""
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable anonymous bind."
 msgstr ""
 
 msgid "Enable authentication."
@@ -1780,9 +1783,6 @@ msgstr "Timp de standby disc"
 msgid "Help"
 msgstr "Ajutor"
 
-msgid "Help needed!"
-msgstr ""
-
 msgid "Hide dot files"
 msgstr ""
 
@@ -2080,15 +2080,6 @@ msgstr "Retea LAN"
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid ""
-"LDAP authentication feature is not implemented: If you know how to use PAM "
-"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-"server... Your patchs are welcome."
-msgstr ""
-"LSAP nu este implementat inca: daca stiti cum se utilizeaza PAM pentru "
-"autentificarea serviciilor UNIX (FTP, SSH, etc...) si SAMBA folosind un "
-"server LDAP... asteptam ajutor!"
-
 msgid "Language"
 msgstr "Limba"
 
@@ -2240,6 +2231,9 @@ msgstr "Domeniu MS"
 
 msgid "MTU"
 msgstr "MTU"
+
+msgid "Machine suffix"
+msgstr ""
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr ""
@@ -2932,6 +2926,12 @@ msgstr "Rezultat test net rpc:"
 msgid "Retry"
 msgstr "Reincearca"
 
+msgid "Root bind DN"
+msgstr ""
+
+msgid "Root bind password"
+msgstr ""
+
 msgid "Roundrobin"
 msgstr ""
 
@@ -3603,6 +3603,9 @@ msgstr ""
 "Schimbarile au fost salvate. Va trebui sa <a href=%s>reporniti</a> sistemul "
 "pentru ca acestea sa devina active."
 
+msgid "The cleartext credentials with which to bind."
+msgstr ""
+
 msgid "The combination of share and working directory does not exist."
 msgstr "Combinatia de director/partajare nu exista."
 
@@ -4074,6 +4077,12 @@ msgstr ""
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
+"added to the LDAP directory, e.g. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"This parameter specifies the suffix that is used for machines when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 
@@ -5827,6 +5836,15 @@ msgstr "zilele saptaminii"
 
 #~ msgid "Help Needed!"
 #~ msgstr "Ajutor!"
+
+#~ msgid ""
+#~ "LDAP authentication feature is not implemented: If you know how to use PAM "
+#~ "to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+#~ "server... Your patchs are welcome."
+#~ msgstr ""
+#~ "LSAP nu este implementat inca: daca stiti cum se utilizeaza PAM pentru "
+#~ "autentificarea serviciilor UNIX (FTP, SSH, etc...) si SAMBA folosind un "
+#~ "server LDAP... asteptam ajutor!"
 
 #~ msgid "NIS Authentication"
 #~ msgstr "Autentificare NIS"
