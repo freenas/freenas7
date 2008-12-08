@@ -123,10 +123,10 @@ EOF
           <dlna>MP3</dlna>
         </file>
         <file ext="m4a">
-	        <type>AUDIO_ITEM_MUSIC_TRACK</type> 
-	        <mime_type>audio/mp4</mime_type> 
-	        <dlna>MP4A</dlna> 
-	      </file> 
+          <type>AUDIO_ITEM_MUSIC_TRACK</type>
+          <mime_type>audio/mp4</mime_type>
+          <dlna>MP4A</dlna>
+        </file>
         <file ext="ogg">
           <type>AUDIO_ITEM</type>
           <mime_type>application/octet-stream</mime_type>
@@ -221,6 +221,10 @@ EOF
         <file ext="avi">
           <type>VIDEO_ITEM</type>
           <mime_type>video/x-msvideo</mime_type>
+        </file>
+        <file ext="divx">
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/x-divx</mime_type>
         </file>
         <file ext="wmv">
           <type>VIDEO_ITEM</type>
@@ -333,7 +337,7 @@ EOF
           <mime_type>video/avi</mime_type>
         </file>
         <file ext="asf">
-          <mime_type>video/x-ms-wmv</mime_type>	
+          <mime_type>video/x-ms-wmv</mime_type>
         </file>
       </file_settings>
     </device>
@@ -363,7 +367,7 @@ EOF
         <model_number>105</model_number>
       </description_values>
     </device>
-    <device name="Yamaha_RXN600" virtual="Yamaha_RXN600" enabled="false">      
+    <device name="Yamaha_RXN600" virtual="Yamaha_RXN600" enabled="false">
       <user_agent>YAMAHA Network Receiver</user_agent>
       <user_agent>YAMAHA Network Receiver DLNADOC/1.00</user_agent>
       <xbox360>false</xbox360>

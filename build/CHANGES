@@ -11,6 +11,7 @@ Minors changes:
 - Add WebGUI link 'Help|Forum' to FreeNAS forum hosted on Sourceforge.
 - Refactor 'Access|LDAP' WebGUI. Now it is possible to add additional options
   to ldap.conf via WebGUI.
+- Add *.divx file extension support to Fuppes (UPnP server) (FR 2400097).
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
