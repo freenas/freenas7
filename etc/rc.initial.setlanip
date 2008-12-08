@@ -280,6 +280,7 @@ write_config();
 write_console("Initializing interface. Please wait...");
 rc_exec_service("rcconf.sh");
 rc_restart_service("netif");
+rc_restart_service("routing");
 rc_restart_service("network_ipv6");
 
 // Get current IP.
