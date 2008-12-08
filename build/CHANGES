@@ -49,6 +49,8 @@ Minors changes:
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
+- The 'default gateway' entered during the console setup is not set without
+  doing a reboot (BR 2406068).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
