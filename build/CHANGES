@@ -39,6 +39,7 @@ Majors changes:
 - Add TFTP service. It is accessible via 'Services|TFTP' in the WebGUI.
 - Add Samba patch CVE-2008-4314.
 - Upgrade nano to 2.0.9.
+- Upgrade PHP to 5.2.8.
 
 Minors changes:
 - Set date in email-header when sending email.
