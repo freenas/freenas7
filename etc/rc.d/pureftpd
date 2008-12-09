@@ -81,6 +81,13 @@ start_precmd()
 		-i "count(keepallfiles) > 0" -o " -K" -b \
 		-i "count(permitrootlogin) = 0" -o " -u 1" -b \
 		-i "count(chrooteveryone) > 0" -o " -A" -b \
+		-i "count(localusersonly) = 0" \
+			-i "string-length(anonymousbandwidth/up) > 0 or string-length(anonymousbandwidth/down) > 0" -v "concat(' -t ',anonymousbandwidth/up,':',anonymousbandwidth/down)" -b \
+		-b \
+		-i "count(anonymousonly) = 0" \
+			-i "string-length(userbandwidth/up) > 0 or string-length(userbandwidth/down) > 0" -v "concat(' -T ',userbandwidth/up,':',userbandwidth/down)" -b \
+		-b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 }
 

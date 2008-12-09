@@ -49,6 +49,11 @@ $pconfig['localusersonly'] = isset($config['ftpd']['localusersonly']);
 $pconfig['pasv_max_port'] = $config['ftpd']['pasv_max_port'];
 $pconfig['pasv_min_port'] = $config['ftpd']['pasv_min_port'];
 $pconfig['pasv_address'] = $config['ftpd']['pasv_address'];
+$pconfig['userbandwidthup'] = $config['ftpd']['userbandwidth']['up'];
+$pconfig['userbandwidthdown'] = $config['ftpd']['userbandwidth']['down'];
+$pconfig['anonymousbandwidthup'] = $config['ftpd']['anonymousbandwidth']['up'];
+$pconfig['anonymousbandwidthdown'] = $config['ftpd']['anonymousbandwidth']['down'];
+$pconfig['extraoptions'] = $config['ftpd']['extraoptions'];
 
 if ($config['ftpd']['filemask']) {
 	$pconfig['filemask'] = $config['ftpd']['filemask'];
@@ -121,6 +126,7 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
+		$config['ftpd']['enable'] = $_POST['enable'] ? true : false;
 		$config['ftpd']['numberclients'] = $_POST['numberclients'];
 		$config['ftpd']['maxconperip'] = $_POST['maxconperip'];
 		$config['ftpd']['timeout'] = $_POST['timeout'];
@@ -141,7 +147,11 @@ if ($_POST) {
 		$config['ftpd']['tls'] = $_POST['tls'];
 		$config['ftpd']['privatekey'] = base64_encode($_POST['privatekey']);
 		$config['ftpd']['certificate'] = base64_encode($_POST['certificate']);
-		$config['ftpd']['enable'] = $_POST['enable'] ? true : false;
+		$config['ftpd']['userbandwidth']['up'] = $pconfig['userbandwidthup'];
+		$config['ftpd']['userbandwidth']['down'] = $pconfig['userbandwidthdown'];
+		$config['ftpd']['anonymousbandwidth']['up'] = $pconfig['anonymousbandwidthup'];
+		$config['ftpd']['anonymousbandwidth']['down'] = $pconfig['anonymousbandwidthdown'];
+		$config['ftpd']['extraoptions'] = $_POST['extraoptions'];
 
 		write_config();
 
@@ -181,10 +191,15 @@ function enable_change(enable_change) {
 	document.iform.tls.disabled = endis;
 	document.iform.privatekey.disabled = endis;
 	document.iform.certificate.disabled = endis;
+	document.iform.userbandwidthup.disabled = endis;
+	document.iform.userbandwidthdown.disabled = endis;
+	document.iform.anonymousbandwidthup.disabled = endis;
+	document.iform.anonymousbandwidthdown.disabled = endis;
+	document.iform.extraoptions.disabled = endis;
 }
 
 function tls_change() {
-	switch(document.iform.tls.selectedIndex) {
+	switch (document.iform.tls.selectedIndex) {
 		case 0:
 			showElementById('privatekey_tr','hide');
 			showElementById('certificate_tr','hide');
@@ -193,6 +208,34 @@ function tls_change() {
 		default:
 			showElementById('privatekey_tr','show');
 			showElementById('certificate_tr','show');
+			break;
+	}
+}
+
+function localusersonly_change() {
+	switch (document.iform.localusersonly.checked) {
+		case true:
+			showElementById('anonymousbandwidthup_tr','hide');
+			showElementById('anonymousbandwidthdown_tr','hide');
+			break;
+
+		case false:
+			showElementById('anonymousbandwidthup_tr','show');
+			showElementById('anonymousbandwidthdown_tr','show');
+			break;
+	}
+}
+
+function anonymousonly_change() {
+	switch (document.iform.anonymousonly.checked) {
+		case true:
+			showElementById('userbandwidthup_tr','hide');
+			showElementById('userbandwidthdown_tr','hide');
+			break;
+
+		case false:
+			showElementById('userbandwidthup_tr','show');
+			showElementById('userbandwidthdown_tr','show');
 			break;
 	}
 }
@@ -241,18 +284,8 @@ function tls_change() {
 							<?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
 						</td>
 					</tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous users only");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="anonymousonly" type="checkbox" id="anonymousonly" value="yes" <?php if ($pconfig['anonymousonly']) echo "checked"; ?>>
-							<?=gettext("Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts.");?></td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Local users only");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="localusersonly" type="checkbox" id="localusersonly" value="yes" <?php if ($pconfig['localusersonly']) echo "checked"; ?>>
-			        <?=gettext("Only allow authenticated users. Anonymous logins are prohibited.");?></td>
-			    </tr>
+					<?php html_checkbox("anonymousonly", gettext("Anonymous users only"), $pconfig['anonymousonly'] ? true : false, gettext("Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."), "", false, "anonymousonly_change()");?>
+					<?php html_checkbox("localusersonly", gettext("Local users only"), $pconfig['localusersonly'] ? true : false, gettext("Only allow authenticated users. Anonymous logins are prohibited."), "", false, "localusersonly_change()");?>
 					<?php html_textarea("banner", gettext("Banner"), $pconfig['banner'], gettext("Greeting banner displayed by FTP when a connection first comes in."), false, 65, 7);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Advanced settings"));?>
@@ -317,9 +350,13 @@ function tls_change() {
 						<td width="78%" class="vtable">
 							<input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>"><br/>
 							<span class="vexpl"><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?></span><br/><br/>
-							<span class="vexpl"><?=gettext("Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening.");?></span>			      	
+							<span class="vexpl"><?=gettext("Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening.");?></span>
 						</td>
 					</tr>
+					<?php html_inputbox("userbandwidthup", gettext("Local user bandwidth"), $pconfig['userbandwidthup'], gettext("Local user upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
+					<?php html_inputbox("userbandwidthdown", "", $pconfig['userbandwidthdown'], gettext("Local user download bandwith in KB/s. An empty field means infinity."), false, 5);?>
+					<?php html_inputbox("anonymousbandwidthup", gettext("Anonymous user bandwidth"), $pconfig['anonymousbandwidthup'], gettext("Anonymous user upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
+					<?php html_inputbox("anonymousbandwidthdown", "", $pconfig['anonymousbandwidthdown'], gettext("Anonymous user download bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("SSL/TLS");?></td>
 						<td width="78%" class="vtable">
@@ -345,7 +382,8 @@ function tls_change() {
 							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
 						</td>
-					</tr>  	
+					</tr>
+					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty)."), false, 40);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
@@ -357,6 +395,8 @@ function tls_change() {
 <script language="JavaScript">
 <!--
 enable_change(false);
+anonymousonly_change();
+localusersonly_change();
 tls_change();
 //-->
 </script>

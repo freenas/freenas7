@@ -18,7 +18,8 @@ CONFIGURE_ARGS+=	--with-rfc2640 \
 									--with-pam \
 									--with-ftpwho \
 									--with-tls \
-									--with-certfile="${PUREFTPD_CERTFILE}"
+									--with-certfile="${PUREFTPD_CERTFILE}" \
+									--with-throttling
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpd ${FREENAS_ROOTFS}/usr/local/sbin
