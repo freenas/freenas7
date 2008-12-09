@@ -1,5 +1,5 @@
 PORTNAME=			php5
-PORTVERSION=	5.2.6
+PORTVERSION=	5.2.8
 CATEGORIES=		lang
 COMMENT=			PHP5 scripting language
 MAINTAINER=		votdev@gmx.de
@@ -23,7 +23,7 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--without-pear \
 									--with-openssl \
 									--without-sqlite \
-									--with-pcre-regex \
+									--with-pcre-regex=yes \
 									--with-gettext \
 									--enable-libxml \
 									--with-libxml-dir=${LOCALBASE} \
