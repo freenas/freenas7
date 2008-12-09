@@ -175,7 +175,7 @@
 				<dstport>21</dstport>
 				<direction>in</direction>
 				<if/>
-				<extraoptions/>
+				<extraoptions></extraoptions>
 				<desc>Deny in FTP</desc>
 			</rule>
 			<rule>
@@ -205,7 +205,7 @@
 				<dstport>113</dstport>
 				<direction>in</direction>
 				<if/>
-				<extraoptions/>
+				<extraoptions></extraoptions>
 				<desc>Deny ident</desc>
 			</rule>
 		</firewall>
@@ -542,6 +542,15 @@
 		<tls>0</tls>
 		<privatekey></privatekey>
 		<certificate></certificate>
+		<userbandwidth>
+			<up></up>
+			<down></down>
+		</userbandwidth>
+		<anonymousbandwidth>
+			<up></up>
+			<down></down>
+		</anonymousbandwidth>
+		<extraoptions></extraoptions>
 		<!--
 		<anonymousonly/>
 		<localusersonly/>
