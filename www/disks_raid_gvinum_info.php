@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_raid_gvinum_info.php
-	
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("Geom Vinum"), gettext("Information"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID 0/1/5"), gettext("Information"));
 $pgrefresh = 5; // Refresh every 5 seconds.
 
 ?>
@@ -46,7 +46,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("RAID 0");?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("RAID 1");?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5.php"><span><?=gettext("RAID 5");?></span></a></li>
-	<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Geom Vinum");?> <?=gettext("(unstable)");?></span></a></li>
+	<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>"><span><?=gettext("RAID 0/1/5");?></span></a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
@@ -56,7 +56,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
 	<li class="tabact"><a href="disks_raid_gvinum_info.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Information");?></span></a></li>
   </ul>
   </td></tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
 			<?php
 			echo "<pre>";

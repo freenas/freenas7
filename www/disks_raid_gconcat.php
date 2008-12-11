@@ -109,7 +109,7 @@ function gconcat_process_updatenotification($mode, $data) {
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("RAID 0"); ?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("RAID 1"); ?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5.php"><span><?=gettext("RAID 5"); ?></span></a></li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><span><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><span><?=gettext("RAID 0/1/5");?></span></a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
