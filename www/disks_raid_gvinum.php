@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("Geom Vinum"), gettext("Management"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID 0/1/5"), gettext("Management"));
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -105,11 +105,11 @@ function gvinum_process_updatenotification($mode, $data) {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabinact"><a href="disks_raid_gconcat.php"><span><?=gettext("JBOD"); ?></span></a></li>
-				<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("RAID 0"); ?></span></a></li>
-				<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("RAID 1"); ?></span></a></li>
-				<li class="tabinact"><a href="disks_raid_graid5.php"><span><?=gettext("RAID 5"); ?></span></a></li>
-				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></span></a></li>
+				<li class="tabinact"><a href="disks_raid_gconcat.php"><span><?=gettext("JBOD");?></span></a></li>
+				<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("RAID 0");?></span></a></li>
+				<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("RAID 1");?></span></a></li>
+				<li class="tabinact"><a href="disks_raid_graid5.php"><span><?=gettext("RAID 5");?></span></a></li>
+				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>"><span><?=gettext("RAID 0/1/5");?></span></a></li>
 			</ul>
 		</td>
 	</tr>

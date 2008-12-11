@@ -4,7 +4,7 @@
 	disks_raid_graid5_info.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -46,7 +46,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("RAID 0");?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("RAID 1");?></span></a></li>
 	<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>"><span><?=gettext("RAID 5");?></span></a></li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><span><?=gettext("Geom Vinum");?> <?=gettext("(unstable)");?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><span><?=gettext("RAID 0/1/5");?></span></a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
