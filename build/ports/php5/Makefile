@@ -10,6 +10,8 @@ DISTNAME=						php-${PORTVERSION:S/.r/RC/}
 DISTFILES=					${DISTNAME}${EXTRACT_SUFX}:release
 USE_BZIP2=					yes
 
+BUILD_DEPENDS=		sqlite3>=3.0:${PORTSDIR}/databases/sqlite3
+
 USE_AUTOTOOLS=		autoconf:262
 USE_GETOPT_LONG=	yes
 USE_GNOME=				libxml2
@@ -27,10 +29,11 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-gettext \
 									--enable-libxml \
 									--with-libxml-dir=${LOCALBASE} \
-									--with-config-file-path=/usr/local/etc
+									--with-config-file-path=/usr/local/etc \
+									--with-sqlite3=${LOCALBASE}
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/usr/local/bin/php
-	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/usr/local/etc
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/${PREFIX}/bin/php
+	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/${PREFIX}/etc
 
 .include <bsd.port.mk>
