@@ -2,25 +2,25 @@
 <?php
 /*
 	system_hosts.php
-	
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -104,6 +104,7 @@ function hosts_process_updatenotification($mode, $data) {
 			      <td width="10%" class="list"></td>
 					</tr>
 					<?php $i = 0; foreach ($a_hosts as $host):?>
+					<?php if (empty($host['uuid'])) continue;?>
 					<?php $notificationmode = ui_get_updatenotification_mode("hosts", $host['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($host['name']);?>&nbsp;</td>
@@ -120,10 +121,10 @@ function hosts_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 					</tr>
-				  <?php $i++; endforeach;?>
-					<tr> 
+					<?php $i++; endforeach;?>
+					<tr>
 						<td class="list" colspan="3"></td>
-						<td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
+						<td class="list"><a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
 					</tr>
 				</table>
 				<div id="remarks">
