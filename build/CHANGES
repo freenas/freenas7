@@ -14,6 +14,7 @@ Minors changes:
   to ldap.conf via WebGUI.
 - Add *.divx file extension support to Fuppes (UPnP server) (FR 2400097).
 - Add FTP bandwidth limit for local and anonymous users (FR 1860459).
+- Add SQLite3 support to PHP (FR 2352505).
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
