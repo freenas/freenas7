@@ -18,6 +18,9 @@ xgettext ${PARAMETERS} *.*
 cd ${FREENAS_SVNDIR}/www
 xgettext ${PARAMETERS} --join-existing *.*
 
+cd ${FREENAS_SVNDIR}/etc/inc
+xgettext ${PARAMETERS} --join-existing *.*
+
 echo "msgid \"\"
 msgstr \"\"
 \"Project-Id-Version: ${FREENAS_PRODUCTNAME}\\n\"
