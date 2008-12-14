@@ -16,6 +16,7 @@ Minors changes:
 - Add FTP bandwidth limit for local and anonymous users (FR 1860459).
 - Add SQLite3 support to PHP (FR 2352505).
 - Display service state (running/stopped) in 'Services|Status'.
+- Add exit status for send_email function in email.subr (FR 2422479).
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
