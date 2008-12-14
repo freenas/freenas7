@@ -11,9 +11,13 @@
 
 # send_email [to] [subject] [message]
 # Send an email.
+# Return 0 if successful, nonzero otherwise.
+# $1 - Recipients
+# $2 - Subject
+# $2 - Message
 send_email()
 {
-	local _recipients _subject _message _rfcdate
+	local _recipients _subject _message _rfcdate _result
 
 	_recipients=$1
 	_subject=$2
@@ -36,7 +40,10 @@ send_email()
 
 	# Now email the message to the user
 	/usr/local/bin/msmtp --file=${msmtp_config} ${_recipients} < ${msmtp_msgfile} 1>/dev/null 2>&1
+	_result=$?
 
 	# Cleanup
 	/bin/rm ${msmtp_msgfile} 1>/dev/null 2>&1
+
+	return ${_result}
 }
