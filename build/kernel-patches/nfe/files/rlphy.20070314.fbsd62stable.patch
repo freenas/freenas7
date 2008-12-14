@@ -1,0 +1,22 @@
+--- rlphy.c.orig	Wed Mar 14 23:46:44 2007
++++ rlphy.c	Wed Mar 14 23:48:55 2007
+@@ -93,6 +93,7 @@
+ 
+ static const struct mii_phydesc rlphys[] = {
+ 	MII_PHY_DESC(REALTEK, RTL8201L),
++	MII_PHY_DESC(ICPLUS, IP101),
+ 	MII_PHY_END
+ };
+ 
+--- miidevs.orig	Wed Mar 14 23:46:47 2007
++++ miidevs	Wed Mar 14 23:46:57 2007
+@@ -188,6 +188,9 @@
+ /* XaQti Corp. PHYs. */
+ model XAQTI XMACII		0x0000 XaQti Corp. XMAC II gigabit interface
+ 
++/* IC Plus Corp. PHYs */
++model ICPLUS IP101              0x0005 IP101 10/100 PHY
++
+ /* Marvell Semiconductor PHYs */
+ model MARVELL E1000		0x0000 Marvell 88E1000 Gigabit PHY
+ model MARVELL E1011		0x0002 Marvell 88E1011 Gigabit PHY

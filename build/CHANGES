@@ -6,6 +6,10 @@ Majors changes:
 - Add Samba patch CVE-2008-4314.
 - Upgrade nano to 2.0.9.
 - Upgrade PHP to 5.2.8.
+- Add WOL support for misc NIC's. Thanks to Tobias Reber for porting WOL patch
+  to FreeBSD 6.4.
+- Upgrade nfe driver. Thanks to Tobias Reber for backporting FreeBSD 7.0
+  driver and adding WOL support.
 
 Minors changes:
 - Set date in email-header when sending email.

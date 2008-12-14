@@ -10,9 +10,10 @@ install:
 	@cp -pv ${.CURDIR}/files/if_nfevar.h /sys/dev/nfe
 	@cp -pv ${.CURDIR}/files/Makefile /sys/modules/nfe
 
-	@patch --forward --remove-empty-files --unified --directory=/sys/conf < ${.CURDIR}/files/patch-files.diff
-	@patch --forward --remove-empty-files --unified --directory=/sys/modules < ${.CURDIR}/files/patch-Makefile.diff
-	@patch --forward --remove-empty-files --unified --directory=/sys/dev/mii < ${.CURDIR}/files/patch-phy.diff
+	@echo "dev/nfe/if_nfe.c		optional nfe" >> /sys/conf/files
+	@patch -p1 --forward --remove-empty-files --directory=/sys/dev/nfe < ${.CURDIR}/files/wol_nfe.patch
+	@patch -p1 --forward --remove-empty-files --unified --directory=/sys/dev/mii < ${.CURDIR}/files/rlphy.20070314.fbsd62stable.patch
+	@patch -p1 --forward --remove-empty-files --unified --directory=/sys/dev/mii < ${.CURDIR}/files/ciphy.20070402.fbsd62stable.patch
 
 clean:
 	@rm -f -r /sys/dev/nfe /sys/modules/nfe

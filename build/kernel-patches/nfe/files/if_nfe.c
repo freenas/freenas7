@@ -21,7 +21,7 @@
 /* Driver for NVIDIA nForce MCP Fast Ethernet and Gigabit Ethernet */
 
 #include <sys/cdefs.h>
-__FBSDID("$FreeBSD: src/sys/dev/nfe/if_nfe.c,v 1.21 2007/09/14 05:12:25 yongari Exp $");
+__FBSDID("$FreeBSD: src/sys/dev/nfe/if_nfe.c,v 1.21.2.2 2007/12/06 04:05:56 yongari Exp $");
 
 #ifdef HAVE_KERNEL_OPTION_HEADERS
 #include "opt_device_polling.h"
@@ -617,12 +617,12 @@ nfe_attach(device_t dev)
 	error = 0;
 	if (sc->nfe_msi == 0 && sc->nfe_msix == 0) {
 		error = bus_setup_intr(dev, sc->nfe_irq[0],
-		    INTR_TYPE_NET | INTR_MPSAFE | INTR_FAST, nfe_intr, sc,
+		    INTR_TYPE_NET | INTR_MPSAFE, nfe_intr, /* NULL, */ sc,
 		    &sc->nfe_intrhand[0]);
 	} else {
 		for (i = 0; i < NFE_MSI_MESSAGES; i++) {
 			error = bus_setup_intr(dev, sc->nfe_irq[i],
-			    INTR_TYPE_NET | INTR_MPSAFE | INTR_FAST, nfe_intr, sc,
+			    INTR_TYPE_NET | INTR_MPSAFE, nfe_intr, /* NULL, */ sc,
 			    &sc->nfe_intrhand[i]);
 			if (error != 0)
 				break;
@@ -1713,7 +1713,7 @@ nfe_poll(struct ifnet *ifp, enum poll_cmd cmd, int count)
 		nfe_rxeof(sc, count);
 	nfe_txeof(sc);
 	if (!IFQ_DRV_IS_EMPTY(&ifp->if_snd))
-		taskqueue_enqueue_fast(taskqueue_fast, &sc->nfe_tx_task);
+		taskqueue_enqueue_fast(sc->nfe_tq, &sc->nfe_tx_task);
 
 	if (cmd == POLL_AND_CHECK_STATUS) {
 		if ((r = NFE_READ(sc, sc->nfe_irq_status)) == 0) {
@@ -1922,7 +1922,7 @@ nfe_intr(void *arg)
 	if (status == 0 || status == 0xffffffff)
 		return;
 	nfe_disable_intr(sc);
-	taskqueue_enqueue_fast(taskqueue_fast, &sc->nfe_int_task);
+	taskqueue_enqueue_fast(sc->nfe_tq, &sc->nfe_int_task);
 
 	return;
 }
@@ -1976,12 +1976,12 @@ nfe_int_task(void *arg, int pending)
 	nfe_txeof(sc);
 
 	if (!IFQ_DRV_IS_EMPTY(&ifp->if_snd))
-		taskqueue_enqueue_fast(taskqueue_fast, &sc->nfe_tx_task);
+		taskqueue_enqueue_fast(sc->nfe_tq, &sc->nfe_tx_task);
 
 	NFE_UNLOCK(sc);
 
 	if (domore || (NFE_READ(sc, sc->nfe_irq_status) != 0)) {
-		taskqueue_enqueue_fast(taskqueue_fast, &sc->nfe_int_task);
+		taskqueue_enqueue_fast(sc->nfe_tq, &sc->nfe_int_task);
 		return;
 	}
 
@@ -2556,6 +2556,7 @@ nfe_encap(struct nfe_softc *sc, struct mbuf **m_head)
 	bus_dmamap_t map;
 	bus_dma_segment_t segs[NFE_MAX_SCATTER];
 	int error, i, nsegs, prod, si;
+	uint32_t tso_segsz;
 	uint16_t cflags, flags;
 	struct mbuf *m;
 	struct m_tag *vtag=NULL;
@@ -2594,11 +2595,8 @@ nfe_encap(struct nfe_softc *sc, struct mbuf **m_head)
 	}
 
 	m = *m_head;
-
-	if (sc->nfe_flags & NFE_HW_VLAN)
-		vtag = VLAN_OUTPUT_TAG(sc->nfe_ifp, m);
-
 	cflags = flags = 0;
+	tso_segsz = 0;
 	if ((m->m_pkthdr.csum_flags & NFE_CSUM_FEATURES) != 0) {
 		if ((m->m_pkthdr.csum_flags & CSUM_IP) != 0)
 			cflags |= NFE_TX_IP_CSUM;
@@ -2646,7 +2644,15 @@ nfe_encap(struct nfe_softc *sc, struct mbuf **m_head)
 		if ((m->m_flags & M_VLANTAG) != 0)
 			desc64->vtag = htole32(NFE_TX_VTAG |
 			    VLAN_TAG_VALUE(vtag));
-
+		if (tso_segsz != 0) {
+			/*
+			 * XXX
+			 * The following indicates the descriptor element
+			 * is a 32bit quantity.
+			 */
+			desc64->length |= htole16((uint16_t)tso_segsz);
+			desc64->flags |= htole16(tso_segsz >> 16);
+		}
 		/*
 		 * finally, set the valid/checksum/TSO bit in the first
 		 * descriptor.
@@ -2658,6 +2664,15 @@ nfe_encap(struct nfe_softc *sc, struct mbuf **m_head)
 		else
 			desc32->flags |= htole16(NFE_TX_LASTFRAG_V1);
 		desc32 = &sc->txq.desc32[si];
+		if (tso_segsz != 0) {
+			/*
+			 * XXX
+			 * The following indicates the descriptor element
+			 * is a 32bit quantity.
+			 */
+			desc32->length |= htole16((uint16_t)tso_segsz);
+			desc32->flags |= htole16(tso_segsz >> 16);
+		}
 		/*
 		 * finally, set the valid/checksum/TSO bit in the first
 		 * descriptor.
@@ -2812,7 +2827,7 @@ nfe_watchdog(struct ifnet *ifp)
 		if_printf(ifp, "watchdog timeout (missed Tx interrupts) "
 		    "-- recovering\n");
 		if (!IFQ_DRV_IS_EMPTY(&ifp->if_snd))
-			taskqueue_enqueue_fast(taskqueue_fast,
+			taskqueue_enqueue_fast(sc->nfe_tq,
 			    &sc->nfe_tx_task);
 		return;
 	}

@@ -1,0 +1,1320 @@
+diff -r -u kernel63.alt/src/sbin/ifconfig/Makefile kernel63.neu/src/sbin/ifconfig/Makefile
+--- kernel63.alt/src/sbin/ifconfig/Makefile	2007-05-17 03:50:45.000000000 +0200
++++ kernel63.neu/src/sbin/ifconfig/Makefile	2008-05-22 23:34:24.000000000 +0200
+@@ -29,6 +29,8 @@
+ SRCS+=	ifbridge.c		# bridge support
+ SRCS+=	iflagg.c		# lagg support
+ 
++SRCS+=	ifwol.c			# wake on lan support
++
+ .if !defined(RELEASE_CRUNCH)
+ SRCS+=	af_ipx.c		# IPX support
+ DPADD=	${LIBIPX}
+diff -r -u kernel63.alt/src/sbin/ifconfig/ifconfig.8 kernel63.neu/src/sbin/ifconfig/ifconfig.8
+--- kernel63.alt/src/sbin/ifconfig/ifconfig.8	2007-10-11 22:20:39.000000000 +0200
++++ kernel63.neu/src/sbin/ifconfig/ifconfig.8	2008-05-22 23:34:24.000000000 +0200
+@@ -940,6 +940,29 @@
+ If that is the case, then the first four keys
+ (1-4) will be the standard temporary keys and any others will be adaptor
+ specific keys such as permanent keys stored in NVRAM.
++.It Cm wakeon Ar events
++Enable Wake On Lan support, if available. The 
++.Ar events
++argument is a comma seperated list of events that shall
++wake the system up. The set of valid events is
++.Dq Li unicast ,
++.Dq Li multicast ,
++.Dq Li broadcast ,
++.Dq Li magic,
++and
++.Dq Li link .
++These enable wake on reception of unicast, multicast, broadcast
++and packets, of a Magic Packet(tm) and on link state change
++(e.g. a cable plugged in or removed from the network card), respectively.
++Not all drivers support all types of events.
++For Magic Packets(tm), a SecureOn password, if supported, can be be
++enabled using the
++.Dq Li sopasswd:<password> 
++event.
++The password must consist of 12 hexadecimal digits.
++.It Fl wakeon
++Disable Wake On Lan.
++.Pp
+ .It Cm wme
+ Enable Wireless Multimedia Extensions (WME) support, if available,
+ for the specified interface.
+@@ -947,7 +970,6 @@
+ efficient communication of realtime and multimedia data.
+ To disable WME support, use
+ .Fl wme .
+-.Pp
+ The following parameters are meaningful only when WME support is in use.
+ Parameters are specified per-AC (Access Category) and
+ split into those that are used by a station when acting
+diff -r -u kernel63.alt/src/sbin/ifconfig/ifwol.c kernel63.neu/src/sbin/ifconfig/ifwol.c
+--- kernel63.alt/src/sbin/ifconfig/ifwol.c	2008-05-22 23:44:53.000000000 +0200
++++ kernel63.neu/src/sbin/ifconfig/ifwol.c	2008-05-22 23:34:24.000000000 +0200
+@@ -0,0 +1,232 @@
++/* $Id$ */
++
++/*
++ * Copyright (c) 2005, 2006, 2007 Stefan Sperling <stsp@stsp.name>
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The name of the author may not be used to endorse or promote products
++ *    derived from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
++ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
++ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++#include <sys/param.h>
++#include <sys/ioctl.h>
++#include <sys/socket.h>
++#include <sys/sysctl.h>
++#include <sys/time.h>
++
++#include <net/if.h>
++#include <net/if_dl.h>
++#include <net/if_types.h>
++#include <net/if_media.h>
++#include <net/route.h>
++
++#include <ctype.h>
++#include <err.h>
++#include <errno.h>
++#include <fcntl.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++#include <sysexits.h>
++
++#include "ifconfig.h"
++
++static void wol_status(int s);
++static void setwol(const char *, int, int, const struct afswtch *);
++static void parse_args(const char *, struct if_wolopts *);
++static void parse_sopasswd(const char *, u_char *);
++static void unsetwol(const char *, int, int, const struct afswtch *);
++static void print_wol_events(uint32_t events);
++
++/*
++ * Print wake on lan capabilities and events the device currently heeds.
++ */
++static void
++wol_status(int s)
++{
++	struct ifreq ifr;
++
++	memset(&ifr, 0, sizeof(ifr));
++	strlcpy(ifr.ifr_name, name, IFNAMSIZ);
++
++	if (ioctl(s, SIOCGIFWOLSUPP, &ifr) < 0)
++		/* Device does not support wake on lan */
++		return;
++
++	printf("\tsupported wake events:");
++	print_wol_events(ifr.ifr_wolopts.ifwol_supported);
++	printf("\n");
++
++	if (ioctl(s, SIOCGIFWOLOPTS, &ifr) < 0)
++		err(EX_USAGE, "SIOCGIFWOLOPTS");
++
++	if (ifr.ifr_wolopts.ifwol_events == 0)
++		return;
++
++	printf("\twill wake on:");
++	print_wol_events(ifr.ifr_wolopts.ifwol_events);
++	printf("\n");
++}
++
++static void
++print_wol_events(uint32_t events)
++{
++	if (events & IFWOL_WAKE_ON_UNICAST)
++		printf(" unicast");
++	if (events & IFWOL_WAKE_ON_MULTICAST)
++		printf(" multicast");
++	if (events & IFWOL_WAKE_ON_BROADCAST)
++		printf(" broadcast");
++	if (events & IFWOL_WAKE_ON_MAGIC) {
++		printf(" magic");
++		if (events & IFWOL_ENABLE_SOPASSWD)
++			printf("[SecureOn password]");
++	}
++	if (events & IFWOL_WAKE_ON_LINK)
++		printf(" link");
++}
++
++/*
++ * Set wake on lan events.
++ */
++static void
++setwol(const char *val, int d, int s, const struct afswtch *afp)
++{
++	struct ifreq ifr;
++
++	memset(&ifr, 0, sizeof(ifr));
++	strlcpy(ifr.ifr_name, name, IFNAMSIZ);
++
++	if (ioctl(s, SIOCGIFWOLSUPP, &ifr) < 0)
++		err(EX_USAGE, "device does not support wake on lan");
++
++	parse_args(val, &ifr.ifr_wolopts);
++	if (ioctl(s, SIOCSIFWOLOPTS, &ifr) < 0)
++		err(EX_USAGE, "SIOCSIFWOLOPTS");
++}
++
++/* 
++ * Parse the argument string, which may contain one or more of the
++ * following:
++ *    
++ *     unicast,multicast,broadcast,magic,sopasswd:xxxxxxxxxxxx,
++ *
++ * and fill the wolopts structure accordingly.
++ * 
++ */
++static void
++parse_args(const char* args, struct if_wolopts *wolopts)
++{
++	uint32_t wol_events = 0;
++	char* opt;
++
++	for (opt = strdup(args); (opt = strtok(opt, ",")) != NULL; opt = NULL) {
++		if (strcmp(opt, "unicast") == 0)
++			wol_events |= IFWOL_WAKE_ON_UNICAST;
++		else if (strcmp(opt, "multicast") == 0)
++			wol_events |= IFWOL_WAKE_ON_MULTICAST;
++		else if (strcmp(opt, "broadcast") == 0)
++			wol_events |= IFWOL_WAKE_ON_BROADCAST;
++		else if (strcmp(opt, "magic") == 0)
++			wol_events |= IFWOL_WAKE_ON_MAGIC;
++		else if (strcmp(opt, "sopasswd") == 0)
++			errx(EX_USAGE, "no SecureOn password specfied.");
++		else if (strncmp(opt, "sopasswd:", strlen("sopasswd:")) == 0) {
++			wol_events |= IFWOL_ENABLE_SOPASSWD;
++			parse_sopasswd(opt + strlen("sopasswd:"), wolopts->ifwol_sopasswd);
++		} else if (strcmp(opt, "link") == 0)
++			wol_events |= IFWOL_WAKE_ON_LINK;
++		else
++			errx(EX_USAGE, "unknown wake event %s", opt);
++	}
++	free(opt);
++	wolopts->ifwol_events = wol_events;
++}
++
++/* SecureOn passwords are not like plain text passwords. Instead, they consist
++ * of 6 bytes (ie unsigned char). Try to prevent users from giving anything other
++ * than a string of six concatenated unsigned chars in hex as password.
++ */
++static void
++parse_sopasswd(const char *pw, u_char *dest) {
++	char substr[3];
++	int len, i, n;
++
++	len = strlen(pw) / 2;
++	if (len != 6)
++		errx(EX_USAGE, "Invalid SecureOn password.");
++
++	for (i = 0; i < len; i++) {
++		(void)strncpy(substr, pw, 2);
++		substr[2] = '\0';
++		if (sscanf(substr, "%x", &n) != 1)
++			errx(EX_USAGE, "Invalid SecureOn password.");
++		if (n < 0x0 || n > 0xff)
++			/* Should never happen, but just in case... */
++			errx(EX_USAGE, "Invalid SecureOn password.");
++		*dest++ = (u_char)n;
++		pw += 2;
++	}
++}
++
++/*
++ * Unset all wake on lan events.
++ */
++static void
++unsetwol(const char *val, int d, int s, const struct afswtch *afp)
++{
++	struct ifreq ifr;
++
++	memset(&ifr, 0, sizeof(ifr));
++	strlcpy(ifr.ifr_name, name, IFNAMSIZ);
++
++	if (ioctl(s, SIOCGIFWOLSUPP, &ifr) < 0)
++		err(EX_USAGE, "device does not support wake on lan");
++
++	ifr.ifr_wolopts.ifwol_events = IFWOL_DISABLE;
++	if (ioctl(s, SIOCSIFWOLOPTS, &ifr) < 0)
++		err(EX_USAGE, "SIOCSIFWOLOPTS");
++}
++
++static struct cmd wol_cmds[] = {
++	DEF_CMD_ARG("wakeon",	setwol),
++	DEF_CMD("-wakeon", 0, unsetwol)
++};
++static struct afswtch af_wol = {
++	.af_name	= "af_wol",
++	.af_af		= AF_UNSPEC,
++	.af_other_status = wol_status,
++};
++
++static __constructor void
++ifwol_ctor(void)
++{
++#define	N(a)	(sizeof(a) / sizeof(a[0]))
++	int i;
++
++	for (i = 0; i < N(wol_cmds);  i++)
++		cmd_register(&wol_cmds[i]);
++	af_register(&af_wol);
++#undef N
++}
+diff -r -u kernel63.alt/src/sys/dev/nve/if_nve.c kernel63.neu/src/sys/dev/nve/if_nve.c
+--- kernel63.alt/src/sys/dev/nve/if_nve.c	2006-09-13 17:15:57.000000000 +0200
++++ kernel63.neu/src/sys/dev/nve/if_nve.c	2008-05-22 23:34:24.000000000 +0200
+@@ -177,6 +177,10 @@
+ static NV_SINT32 nve_oslockrelease(PNV_VOID, NV_SINT32, PNV_VOID);
+ static PNV_VOID  nve_osreturnbufvirt(PNV_VOID, PNV_VOID);
+ 
++static void	nve_enable_wol(struct nve_softc *);
++static void	nve_get_wolopts(struct nve_softc *, struct if_wolopts *);
++static int	nve_set_wolopts(struct nve_softc *, struct if_wolopts *);
++
+ static device_method_t nve_methods[] = {
+ 	/* Device interface */
+ 	DEVMETHOD(device_probe, nve_probe),
+@@ -694,14 +698,24 @@
+ 	/* Cancel tick timer */
+ 	callout_stop(&sc->stat_callout);
+ 
+-	/* Stop hardware activity */
+-	sc->hwapi->pfnDisableInterrupts(sc->hwapi->pADCX);
+-	sc->hwapi->pfnStop(sc->hwapi->pADCX, 0);
++	if (sc->wol_events) {
++		/* Stop the transmitter but not the receiver
++		 * and leave interrupts enabled. */
++		sc->hwapi->pfnStop(sc->hwapi->pADCX, AFFECT_TRANSMITTER);
++		DEBUGOUT(NVE_DEBUG_DEINIT, "nve: do pfnDeinit\n");
++		if (sc->hwapi->pfnDeinit)
++			sc->hwapi->pfnDeinit(sc->hwapi->pADCX, AFFECT_TRANSMITTER);
++	} else {
+ 
+-	DEBUGOUT(NVE_DEBUG_DEINIT, "nve: do pfnDeinit\n");
+-	/* Shutdown interface and deallocate memory buffers */
+-	if (sc->hwapi->pfnDeinit)
+-		sc->hwapi->pfnDeinit(sc->hwapi->pADCX, 0);
++		/* Stop hardware activity */
++		sc->hwapi->pfnDisableInterrupts(sc->hwapi->pADCX);
++		sc->hwapi->pfnStop(sc->hwapi->pADCX, 0);
++
++		DEBUGOUT(NVE_DEBUG_DEINIT, "nve: do pfnDeinit\n");
++		/* Shutdown interface and deallocate memory buffers */
++		if (sc->hwapi->pfnDeinit)
++			sc->hwapi->pfnDeinit(sc->hwapi->pADCX, 0);
++	}
+ 
+ 	sc->linkup = 0;
+ 	sc->cur_rx = 0;
+@@ -725,6 +739,10 @@
+ 
+ 	sc = device_get_softc(dev);
+ 
++	NVE_LOCK(sc);
++	nve_enable_wol(sc);
++	NVE_UNLOCK(sc);
++
+ 	/* Stop hardware activity */
+ 	NVE_LOCK(sc);
+ 	nve_stop(sc);
+@@ -1036,6 +1054,21 @@
+ 		mii = device_get_softc(sc->miibus);
+ 		error = ifmedia_ioctl(ifp, ifr, &mii->mii_media, command);
+ 		break;
++ 	case SIOCGIFWOLSUPP:
++ 		ifr->ifr_wolopts.ifwol_supported = NVE_SUPPORTED_WOL_EVENTS;
++ 		error = 0;
++ 		break;
++ 	case SIOCGIFWOLOPTS:
++ 		NVE_LOCK(sc);
++ 		nve_get_wolopts(sc, &ifr->ifr_wolopts);
++ 		NVE_UNLOCK(sc);
++ 		error = 0;
++ 		break;
++ 	case SIOCSIFWOLOPTS:
++ 		NVE_LOCK(sc);
++ 		error = nve_set_wolopts(sc, &ifr->ifr_wolopts);
++ 		NVE_UNLOCK(sc);
++  		break;
+ 
+ 	default:
+ 		/* Everything else we forward to generic ether ioctl */
+@@ -1775,3 +1808,53 @@
+ }
+ 
+ /* --- End on NVOSAPI interface --- */
++
++/*
++ * Enable Wake On Lan.
++ */
++static void
++nve_enable_wol(struct nve_softc *sc)
++{
++	ADAPTER_POWERSTATE pstate = {0};
++	PACKET_FILTER hwfilter;
++
++	if (sc->wol_events == 0)
++		return;
++
++	hwfilter.ulFilterFlags = ACCEPT_ALL_PACKETS;
++	sc->hwapi->pfnSetPacketFilter(sc->hwapi->pADCX, &hwfilter);
++	
++	if (sc->wol_events & IFWOL_WAKE_ON_MAGIC) {
++		pstate.ulPowerFlags = POWER_STATE_D3;
++		pstate.ulMagicPacketWakeUpFlags = POWER_STATE_ALL;
++		pstate.ulLinkChangeWakeUpFlags = 0;
++		pstate.ulPatternWakeUpFlags = 0;
++		sc->hwapi->pfnSetPowerState(sc->hwapi->pADCX, &pstate);
++	}
++}
++
++/*
++ * Write current wake on lan settings into an if_wolopts structure.
++ */
++static void
++nve_get_wolopts(struct nve_softc *sc, struct if_wolopts *wolopts)
++{
++	wolopts->ifwol_events = sc->wol_events;
++}
++
++/*
++ * Set wake on lan options.
++ */
++static int
++nve_set_wolopts(struct nve_softc *sc, struct if_wolopts *wolopts)
++{
++	if (wolopts->ifwol_events == IFWOL_DISABLE)
++		sc->wol_events = 0;
++	else {
++		if ((wolopts->ifwol_events & ~NVE_SUPPORTED_WOL_EVENTS) != 0)
++			return EINVAL;
++		sc->wol_events = wolopts->ifwol_events;
++	}
++
++	return 0;
++}
+diff -r -u kernel63.alt/src/sys/dev/nve/if_nvereg.h kernel63.neu/src/sys/dev/nve/if_nvereg.h
+--- kernel63.alt/src/sys/dev/nve/if_nvereg.h	2006-12-07 23:26:18.000000000 +0100
++++ kernel63.neu/src/sys/dev/nve/if_nvereg.h	2008-05-22 23:34:24.000000000 +0200
+@@ -69,6 +69,8 @@
+ #define	NVE_DEBUG_MII		0x0100
+ #define	NVE_DEBUG_ALL		0xFFFF
+ 
++#define NVE_SUPPORTED_WOL_EVENTS	IFWOL_WAKE_ON_MAGIC
++
+ #if NVE_DEBUG
+ #define	DEBUGOUT(level, fmt, args...) if (NVE_DEBUG & level) \
+     printf(fmt, ## args)
+@@ -143,6 +145,8 @@
+ 
+ 	struct mtx mtx;
+ 
++	uint32_t wol_events;
++
+ 	/* Stuff for dealing with the NVIDIA OS API */
+ 	struct callout ostimer;
+ 	PTIMER_FUNC ostimer_func;
+diff -r -u kernel63.alt/src/sys/net/if.c kernel63.neu/src/sys/net/if.c
+--- kernel63.alt/src/sys/net/if.c	2007-07-13 03:26:44.000000000 +0200
++++ kernel63.neu/src/sys/net/if.c	2008-05-22 23:34:24.000000000 +0200
+@@ -1480,6 +1480,7 @@
+ 	case SIOCSLIFPHYADDR:
+ 	case SIOCSIFMEDIA:
+ 	case SIOCSIFGENERIC:
++	case SIOCSIFWOLOPTS:
+ 		error = suser(td);
+ 		if (error)
+ 			return (error);
+@@ -1501,6 +1502,8 @@
+ 	case SIOCGLIFPHYADDR:
+ 	case SIOCGIFMEDIA:
+ 	case SIOCGIFGENERIC:
++	case SIOCGIFWOLOPTS:
++	case SIOCGIFWOLSUPP:
+ 		if (ifp->if_ioctl == NULL)
+ 			return (EOPNOTSUPP);
+ 		IFF_LOCKGIANT(ifp);
+diff -r -u kernel63.alt/src/sys/net/if.h kernel63.neu/src/sys/net/if.h
+--- kernel63.alt/src/sys/net/if.h	2006-02-15 04:37:15.000000000 +0100
++++ kernel63.neu/src/sys/net/if.h	2008-05-22 23:34:24.000000000 +0200
+@@ -254,6 +254,28 @@
+ #define	IFAN_DEPARTURE	1	/* interface departure */
+ 
+ /*
++ * Wake on Lan related options.
++ */
++struct if_wolopts {
++	uint32_t	ifwol_supported;/* indicates wol capabilities */
++	uint32_t 	ifwol_events;	/* wake events configured by user */
++
++	/* Supported wake on lan events.
++	 * A given device may not support all of these,
++	 * or even support wake events not listed here.
++	 * If you add wake more events, make to sure to teach
++	 * ifconfig about them too. */
++#define	IFWOL_DISABLE		0x01 /* clears all other events */
++#define	IFWOL_WAKE_ON_UNICAST	0x02
++#define	IFWOL_WAKE_ON_MULTICAST	0x04
++#define	IFWOL_WAKE_ON_BROADCAST	0x08
++#define	IFWOL_WAKE_ON_MAGIC	0x10 /* wake on Magic Packet(tm) */
++#define	IFWOL_ENABLE_SOPASSWD	0x20 /* whether to set SecureOn password */
++#define IFWOL_WAKE_ON_LINK	0x40 /* wake on link (PHY) status change */
++	u_char	ifwol_sopasswd[6]; /* SecureOn password */
++};
++
++/*
+  * Interface request structure used for socket
+  * ioctl's.  All interface ioctl's must have parameter
+  * definitions which begin with ifr_name.  The
+@@ -265,6 +287,7 @@
+ 		struct	sockaddr ifru_addr;
+ 		struct	sockaddr ifru_dstaddr;
+ 		struct	sockaddr ifru_broadaddr;
++		struct  if_wolopts ifru_wolopts;
+ 		short	ifru_flags[2];
+ 		short	ifru_index;
+ 		int	ifru_metric;
+@@ -277,6 +300,7 @@
+ #define	ifr_addr	ifr_ifru.ifru_addr	/* address */
+ #define	ifr_dstaddr	ifr_ifru.ifru_dstaddr	/* other end of p-to-p link */
+ #define	ifr_broadaddr	ifr_ifru.ifru_broadaddr	/* broadcast address */
++#define	ifr_wolopts	ifr_ifru.ifru_wolopts	/* wake on lan related options */
+ #define	ifr_flags	ifr_ifru.ifru_flags[0]	/* flags (low 16 bits) */
+ #define	ifr_flagshigh	ifr_ifru.ifru_flags[1]	/* flags (high 16 bits) */
+ #define	ifr_metric	ifr_ifru.ifru_metric	/* metric */
+diff -r -u kernel63.alt/src/sys/pci/if_sis.c kernel63.neu/src/sys/pci/if_sis.c
+--- kernel63.alt/src/sys/pci/if_sis.c	2007-11-05 13:42:26.000000000 +0100
++++ kernel63.neu/src/sys/pci/if_sis.c	2008-05-22 22:14:38.000000000 +0200
+@@ -138,6 +138,10 @@
+ static void sis_startl(struct ifnet *);
+ static void sis_stop(struct sis_softc *);
+ static void sis_watchdog(struct sis_softc *);
++static void sis_get_wolopts(struct sis_softc *, struct if_wolopts *);
++static int sis_set_wolopts(struct sis_softc *, struct if_wolopts *);
++static void sis_enable_wol(struct sis_softc *);
++static uint32_t sis_translate_wol_events(uint32_t);
+ 
+ 
+ static struct resource_spec sis_res_spec[] = {
+@@ -185,7 +189,7 @@
+ static void
+ sis_dma_map_ring(void *arg, bus_dma_segment_t *segs, int nseg, int error)
+ {
+-	u_int32_t *p;
++	uint32_t *p;
+ 
+ 	p = arg;
+ 	*p = segs->ds_addr;
+@@ -273,7 +277,7 @@
+ sis_eeprom_getword(struct sis_softc *sc, int addr, uint16_t *dest)
+ {
+ 	int		i;
+-	u_int16_t		word = 0;
++	uint16_t		word = 0;
+ 
+ 	/* Force EEPROM to idle state. */
+ 	sis_eeprom_idle(sc);
+@@ -316,11 +320,11 @@
+ sis_read_eeprom(struct sis_softc *sc, caddr_t dest, int off, int cnt, int swap)
+ {
+ 	int			i;
+-	u_int16_t		word = 0, *ptr;
++	uint16_t		word = 0, *ptr;
+ 
+ 	for (i = 0; i < cnt; i++) {
+ 		sis_eeprom_getword(sc, off + i, &word);
+-		ptr = (u_int16_t *)(dest + (i * 2));
++		ptr = (uint16_t *)(dest + (i * 2));
+ 		if (swap)
+ 			*ptr = ntohs(word);
+ 		else
+@@ -369,7 +373,7 @@
+ sis_read_cmos(struct sis_softc *sc, device_t dev, caddr_t dest, int off, int cnt)
+ {
+ 	device_t		bridge;
+-	u_int8_t		reg;
++	uint8_t			reg;
+ 	int			i;
+ 	bus_space_tag_t		btag;
+ 
+@@ -398,7 +402,7 @@
+ static void
+ sis_read_mac(struct sis_softc *sc, device_t dev, caddr_t dest)
+ {
+-	u_int32_t		filtsave, csrsave;
++	uint32_t		filtsave, csrsave;
+ 
+ 	filtsave = CSR_READ_4(sc, SIS_RXFILT_CTL);
+ 	csrsave = CSR_READ_4(sc, SIS_CSR);
+@@ -409,11 +413,11 @@
+ 	CSR_WRITE_4(sc, SIS_RXFILT_CTL, filtsave & ~SIS_RXFILTCTL_ENABLE);
+ 
+ 	CSR_WRITE_4(sc, SIS_RXFILT_CTL, SIS_FILTADDR_PAR0);
+-	((u_int16_t *)dest)[0] = CSR_READ_2(sc, SIS_RXFILT_DATA);
++	((uint16_t *)dest)[0] = CSR_READ_2(sc, SIS_RXFILT_DATA);
+ 	CSR_WRITE_4(sc, SIS_RXFILT_CTL,SIS_FILTADDR_PAR1);
+-	((u_int16_t *)dest)[1] = CSR_READ_2(sc, SIS_RXFILT_DATA);
++	((uint16_t *)dest)[1] = CSR_READ_2(sc, SIS_RXFILT_DATA);
+ 	CSR_WRITE_4(sc, SIS_RXFILT_CTL, SIS_FILTADDR_PAR2);
+-	((u_int16_t *)dest)[2] = CSR_READ_2(sc, SIS_RXFILT_DATA);
++	((uint16_t *)dest)[2] = CSR_READ_2(sc, SIS_RXFILT_DATA);
+ 
+ 	CSR_WRITE_4(sc, SIS_RXFILT_CTL, filtsave);
+ 	CSR_WRITE_4(sc, SIS_CSR, csrsave);
+@@ -746,7 +750,7 @@
+ {
+ 	struct ifnet		*ifp;
+ 	struct ifmultiaddr	*ifma;
+-	u_int32_t		h = 0, i, filtsave;
++	uint32_t		h = 0, i, filtsave;
+ 	int			bit, index;
+ 
+ 	ifp = sc->sis_ifp;
+@@ -797,8 +801,8 @@
+ {
+ 	struct ifnet		*ifp;
+ 	struct ifmultiaddr	*ifma;
+-	u_int32_t		h, i, n, ctl;
+-	u_int16_t		hashes[16];
++	uint32_t		h, i, n, ctl;
++	uint16_t		hashes[16];
+ 
+ 	ifp = sc->sis_ifp;
+ 
+@@ -982,7 +986,7 @@
+ 		 * Why? Who the hell knows.
+ 		 */
+ 		{
+-			u_int16_t		tmp[4];
++			uint16_t		tmp[4];
+ 
+ 			sis_read_eeprom(sc, (caddr_t)&tmp,
+ 			    NS_EE_NODEADDR, 4, 0);
+@@ -1400,7 +1404,7 @@
+ 	struct ifnet		*ifp;
+ 	struct sis_desc		*cur_rx;
+ 	int			total_len = 0;
+-	u_int32_t		rxstat;
++	uint32_t		rxstat;
+ 
+ 	SIS_LOCK_ASSERT(sc);
+ 
+@@ -1494,7 +1498,7 @@
+ sis_txeof(struct sis_softc *sc)
+ {
+ 	struct ifnet		*ifp;
+-	u_int32_t		idx;
++	uint32_t		idx;
+ 
+ 	SIS_LOCK_ASSERT(sc);
+ 	ifp = sc->sis_ifp;
+@@ -1600,7 +1604,7 @@
+ 		sis_startl(ifp);
+ 
+ 	if (sc->rxcycles > 0 || cmd == POLL_AND_CHECK_STATUS) {
+-		u_int32_t	status;
++		uint32_t	status;
+ 
+ 		/* Reading the ISR register clears all interrupts. */
+ 		status = CSR_READ_4(sc, SIS_ISR);
+@@ -1626,7 +1630,7 @@
+ {
+ 	struct sis_softc	*sc;
+ 	struct ifnet		*ifp;
+-	u_int32_t		status;
++	uint32_t		status;
+ 
+ 	sc = arg;
+ 	ifp = sc->sis_ifp;
+@@ -1780,7 +1784,7 @@
+ {
+ 	struct sis_softc	*sc;
+ 	struct mbuf		*m_head = NULL;
+-	u_int32_t		idx, queued = 0;
++	uint32_t		idx, queued = 0;
+ 
+ 	sc = ifp->if_softc;
+ 
+@@ -1867,23 +1871,23 @@
+ 	if (sc->sis_type == SIS_TYPE_83815) {
+ 		CSR_WRITE_4(sc, SIS_RXFILT_CTL, NS_FILTADDR_PAR0);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_DATA,
+-		    ((u_int16_t *)IF_LLADDR(sc->sis_ifp))[0]);
++		    ((uint16_t *)IF_LLADDR(sc->sis_ifp))[0]);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_CTL, NS_FILTADDR_PAR1);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_DATA,
+-		    ((u_int16_t *)IF_LLADDR(sc->sis_ifp))[1]);
++		    ((uint16_t *)IF_LLADDR(sc->sis_ifp))[1]);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_CTL, NS_FILTADDR_PAR2);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_DATA,
+-		    ((u_int16_t *)IF_LLADDR(sc->sis_ifp))[2]);
++		    ((uint16_t *)IF_LLADDR(sc->sis_ifp))[2]);
+ 	} else {
+ 		CSR_WRITE_4(sc, SIS_RXFILT_CTL, SIS_FILTADDR_PAR0);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_DATA,
+-		    ((u_int16_t *)IF_LLADDR(sc->sis_ifp))[0]);
++		    ((uint16_t *)IF_LLADDR(sc->sis_ifp))[0]);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_CTL, SIS_FILTADDR_PAR1);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_DATA,
+-		    ((u_int16_t *)IF_LLADDR(sc->sis_ifp))[1]);
++		    ((uint16_t *)IF_LLADDR(sc->sis_ifp))[1]);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_CTL, SIS_FILTADDR_PAR2);
+ 		CSR_WRITE_4(sc, SIS_RXFILT_DATA,
+-		    ((u_int16_t *)IF_LLADDR(sc->sis_ifp))[2]);
++		    ((uint16_t *)IF_LLADDR(sc->sis_ifp))[2]);
+ 	}
+ 
+ 	/* Init circular TX/RX lists. */
+@@ -2157,6 +2161,21 @@
+ 		}
+ #endif /* DEVICE_POLLING */
+ 		break;
++ 	case SIOCGIFWOLSUPP:
++ 		ifr->ifr_wolopts.ifwol_supported = NS_SUPPORTED_WOL_EVENTS;
++ 		error = 0;
++ 		break;
++ 	case SIOCGIFWOLOPTS:
++ 		SIS_LOCK(sc);
++ 		sis_get_wolopts(sc, &ifr->ifr_wolopts);
++ 		SIS_UNLOCK(sc);
++ 		error = 0;
++ 		break;
++ 	case SIOCSIFWOLOPTS:
++ 		SIS_LOCK(sc);
++ 		error = sis_set_wolopts(sc, &ifr->ifr_wolopts);
++ 		SIS_UNLOCK(sc);
++  		break;
+ 	default:
+ 		error = ether_ioctl(ifp, command, data);
+ 		break;
+@@ -2264,9 +2283,141 @@
+ 	SIS_LOCK(sc);
+ 	sis_reset(sc);
+ 	sis_stop(sc);
++	sis_enable_wol(sc);
+ 	SIS_UNLOCK(sc);
+ }
+ 
++/*
++ * Translate wake on lan events defined in if.h
++ * into flags the chip understands.
++ */
++static uint32_t
++sis_translate_wol_events(uint32_t wol_events)
++{
++	uint32_t sis_wol_events = 0;
++	
++	if (wol_events & IFWOL_WAKE_ON_UNICAST)
++		sis_wol_events |= NS_WCSR_WAKE_UCAST;
++	if (wol_events & IFWOL_WAKE_ON_MULTICAST)
++		sis_wol_events |= NS_WCSR_WAKE_MCAST;
++	if (wol_events & IFWOL_WAKE_ON_BROADCAST)
++		sis_wol_events |= NS_WCSR_WAKE_BCAST;
++	if (wol_events & IFWOL_WAKE_ON_MAGIC)
++		sis_wol_events |= NS_WCSR_WAKE_MAGIC;
++
++	return sis_wol_events;
++}
++
++/*
++ * Write current wake on lan settings into an if_wolopts structure.
++ * Note that the sopasswd field in the structure is cleared, because
++ * the password is confidential.
++ */
++static void
++sis_get_wolopts(struct sis_softc *sc, struct if_wolopts *wolopts)
++{
++	int i;
++
++	SIS_LOCK_ASSERT(sc);
++
++	wolopts->ifwol_events = sc->ns_wol_events;
++	
++	/* Do not disclose Secure On password. */
++#define	N(a)	(sizeof(a) / sizeof(a[0]))
++	for (i = 0; i < N(wolopts->ifwol_sopasswd); i++)
++		wolopts->ifwol_sopasswd[i] = '\0';
++#undef N
++}
++	
++/*
++ * Set wake on lan options.
++ */
++static int
++sis_set_wolopts(struct sis_softc *sc, struct if_wolopts *wolopts)
++{
++	SIS_LOCK_ASSERT(sc);
++
++	/* FIXME: handle sopasswd */
++
++	if (wolopts->ifwol_events == IFWOL_DISABLE)
++		sc->ns_wol_events = 0;
++	else {
++		if ((wolopts->ifwol_events & ~NS_SUPPORTED_WOL_EVENTS) != 0)
++			return EINVAL;
++		sc->ns_wol_events = wolopts->ifwol_events;
++	}
++
++	return 0;
++}
++
++/* 
++ * Enable Wake On Lan on the DP83815,
++ * if any wake on lan options have been set.
++ */
++static void
++sis_enable_wol(struct sis_softc *sc)
++{
++	SIS_LOCK_ASSERT(sc);
++	
++	if (sc->sis_type != SIS_TYPE_83815)
++		return;
++
++	/* Check whether any wake on lan events have been set. */
++	if (sc->ns_wol_events == 0)
++		return;
++
++	/*
++	 * Configure the recieve filter to accept potential wake packets,
++	 * configure wake events and enter low-power state.
++	 */
++
++	/* Stop reciever. */
++	SIS_SETBIT(sc, SIS_CSR, SIS_CSR_RX_DISABLE);
++	
++	/* Reset recieve pointer */
++	CSR_WRITE_4(sc, SIS_RX_LISTPTR, 0);
++
++	/* Re-enable reciever (now in "silent recieve mode.") */
++	SIS_SETBIT(sc, SIS_CSR, SIS_CSR_RX_ENABLE);
++
++	/* Clear recieve filter register, so that the enable bit is unset.
++	 * Other bits in this register can only be configured while the enable
++	 * bit is zero. */
++	CSR_WRITE_4(sc, SIS_RXFILT_CTL, 0);
++
++	/* 
++	 * Accept unicast packets. The datasheet seems to be inaccurate.
++	 * It suggests simply setting the unicast bit in NS_RXFILTCTL,
++	 * but this does not seem to work. Instead, we "perfect match"
++	 * our own mac address, which makes the rx filter accept unicast
++	 * packets. (section below copy pasted from sis_initl routine)
++	 */
++	CSR_WRITE_4(sc, SIS_RXFILT_CTL, NS_FILTADDR_PAR0);
++	CSR_WRITE_4(sc, SIS_RXFILT_DATA,
++	    ((uint16_t *)IFP2ENADDR(sc->sis_ifp))[0]);
++	CSR_WRITE_4(sc, SIS_RXFILT_CTL, NS_FILTADDR_PAR1);
++	CSR_WRITE_4(sc, SIS_RXFILT_DATA,
++	    ((uint16_t *)IFP2ENADDR(sc->sis_ifp))[1]);
++	CSR_WRITE_4(sc, SIS_RXFILT_CTL, NS_FILTADDR_PAR2);
++	CSR_WRITE_4(sc, SIS_RXFILT_DATA,
++	    ((uint16_t *)IFP2ENADDR(sc->sis_ifp))[2]);
++	SIS_SETBIT(sc, SIS_RXFILT_CTL, NS_RXFILTCTL_PERFECT);
++
++	/* Allow broadcast and multicast packets, too. */
++	SIS_SETBIT(sc, SIS_RXFILT_CTL, SIS_RXFILTCTL_BROAD);
++	SIS_SETBIT(sc, SIS_RXFILT_CTL, SIS_RXFILTCTL_ALLMULTI);
++
++	/* Re-enable RX filter. */
++	SIS_SETBIT(sc, SIS_RXFILT_CTL, SIS_RXFILTCTL_ENABLE);
++
++	/* Configure wake on lan events */
++	CSR_WRITE_4(sc, NS_WCSR, sis_translate_wol_events(sc->ns_wol_events));
++
++	/* Set appropriate power state, so the card stays active
++	 * after system shutdown. */
++	CSR_WRITE_4(sc, NS_CLKRUN, NS_CLKRUN_PMESTS | NS_CLKRUN_PMEENB);
++}
++
+ static device_method_t sis_methods[] = {
+ 	/* Device interface */
+ 	DEVMETHOD(device_probe,		sis_probe),
+diff -r -u kernel63.alt/src/sys/pci/if_sisreg.h kernel63.neu/src/sys/pci/if_sisreg.h
+--- kernel63.alt/src/sys/pci/if_sisreg.h	2007-11-05 13:42:26.000000000 +0100
++++ kernel63.neu/src/sys/pci/if_sisreg.h	2008-05-22 23:34:24.000000000 +0200
+@@ -77,6 +77,7 @@
+ /* NS DP83815/6 registers */
+ #define NS_IHR			0x1C
+ #define NS_CLKRUN		0x3C
++#define NS_WCSR			0x40
+ #define NS_SRR			0x58
+ #define NS_BMCR			0x80
+ #define NS_BMSR			0x84
+@@ -461,6 +462,7 @@
+ #endif
+ 	int			in_tick;
+ 	struct mtx		sis_mtx;
++	uint32_t		ns_wol_events;
+ };
+ 
+ #define SIS_TIMEOUT		1000
+@@ -505,3 +507,17 @@
+ #define SIS_PSTATE_D3		0x0003
+ #define SIS_PME_EN		0x0010
+ #define SIS_PME_STATUS		0x8000
++
++/* DP83815 pci config space power management register */
++#define NS_PMCSR		0x44
++
++/* DP83815 Wake On Lan Command/Status register */
++#define NS_WCSR_WAKE_UCAST	0x00000002
++#define NS_WCSR_WAKE_MCAST	0x00000004
++#define NS_WCSR_WAKE_BCAST	0x00000008
++#define NS_WCSR_WAKE_MAGIC	0x00000200
++
++/* FIXME: handle sopasswd */
++#define NS_SUPPORTED_WOL_EVENTS	(IFWOL_WAKE_ON_UNICAST | IFWOL_WAKE_ON_MULTICAST \
++				    | IFWOL_WAKE_ON_BROADCAST | IFWOL_WAKE_ON_MAGIC)
++
+diff -r -u kernel63.alt/src/sys/pci/if_vr.c kernel63.neu/src/sys/pci/if_vr.c
+--- kernel63.alt/src/sys/pci/if_vr.c	2007-11-05 12:17:39.000000000 +0100
++++ kernel63.neu/src/sys/pci/if_vr.c	2008-05-22 22:21:37.000000000 +0200
+@@ -166,6 +166,10 @@
+ #ifdef DEVICE_POLLING
+ 	int			rxcycles;
+ #endif
++ 	int			vr_wolsupport;	/* Chip supports WOL. */
++ 	uint32_t		vr_wolevents;	/* Wake on Lan satus */
++ 	/* some chips have 6 "patterns" for WOL instead of 4 */
++ 	int			vr_wol6patterns;
+ };
+ 
+ static int vr_probe(device_t);
+@@ -202,6 +206,10 @@
+ static int vr_list_rx_init(struct vr_softc *);
+ static int vr_list_tx_init(struct vr_softc *);
+ 
++static int vr_set_wolopts(struct vr_softc *, struct if_wolopts *);
++static void vr_get_wolopts(struct vr_softc *, struct if_wolopts *);
++static void vr_enable_wol(struct vr_softc *);
++
+ #ifdef VR_USEIOSPACE
+ #define VR_RES			SYS_RES_IOPORT
+ #define VR_RID			VR_PCI_LOIO
+@@ -589,7 +597,7 @@
+ #endif
+ 
+ 	/*
+-	 * Windows may put the chip in suspend mode when it
++	 * Windows or WOL may put the chip in suspend mode when it
+ 	 * shuts down. Be sure to kick it in the head to wake it
+ 	 * up again.
+ 	 */
+@@ -641,6 +649,13 @@
+ 
+ 	sc->vr_suspended = 0;
+ 
++	/* Check Wake on Lan support. */
++	if (sc->vr_revid >= REV_ID_VT6102 ) {
++		sc->vr_wolsupport = 1;
++		if (sc->vr_revid >= REV_ID_VT6105_B0)
++			sc->vr_wol6patterns = 1;
++	}
++
+ 	/* Hook interrupt last to avoid having to lock softc */
+ 	error = bus_setup_intr(dev, sc->vr_irq, INTR_TYPE_NET | INTR_MPSAFE,
+ 	    vr_intr, sc, &sc->vr_intrhand);
+@@ -1520,6 +1535,21 @@
+ 		else
+ 			ifp->if_hwassist = 0;
+ 		break;
++ 	case SIOCGIFWOLSUPP:
++ 		ifr->ifr_wolopts.ifwol_supported = VR_SUPPORTED_WOL_EVENTS;
++ 		error = 0;
++ 		break;
++ 	case SIOCGIFWOLOPTS:
++ 		VR_LOCK(sc);
++ 		vr_get_wolopts(sc, &ifr->ifr_wolopts);
++ 		VR_UNLOCK(sc);
++ 		error = 0;
++ 		break;
++ 	case SIOCSIFWOLOPTS:
++ 		VR_LOCK(sc);
++ 		error = vr_set_wolopts(sc, &ifr->ifr_wolopts);
++ 		VR_UNLOCK(sc);
++  		break;
+ 	default:
+ 		error = ether_ioctl(ifp, command, data);
+ 		break;
+@@ -1598,6 +1628,92 @@
+ static void
+ vr_shutdown(device_t dev)
+ {
++	struct vr_softc *sc;
+ 
++	sc = device_get_softc(dev);
++	VR_LOCK(sc);
++	vr_enable_wol(sc);
++	VR_UNLOCK(sc);
+ 	vr_detach(dev);
+ }
++
++static void
++vr_enable_wol(struct vr_softc *sc)
++{
++	VR_LOCK_ASSERT(sc);
++	
++	/* Check whether wake on lan is available
++	 * and whether events have been set. */
++	if (!sc->vr_wolsupport || sc->vr_wolevents == 0)
++		return;
++
++	/* Set the chip to power state D0 */
++	VR_CLRBIT(sc, VR_STICKHW, (VR_STICKHW_DS0|VR_STICKHW_DS1));
++
++	/* Clear WOL configuration */
++	CSR_WRITE_1(sc, VR_WOLCRCLR, 0xFF);
++	if (sc->vr_wol6patterns)
++		CSR_WRITE_1(sc, VR_WOLCRCLR1, 0x03);
++
++	/* Clear power-event status. */
++	CSR_WRITE_1(sc, VR_PWRCSRCLR, 0xFF);
++
++	/* Don't use extra patterns. */
++	if (sc->vr_wol6patterns)
++		CSR_WRITE_1(sc, VR_WOLCGCLR, 0x04);
++	
++	/* Set unicast wake event if applicable. */
++	if (sc->vr_wolevents & IFWOL_WAKE_ON_UNICAST)
++		VR_SETBIT(sc, VR_WOLCRSET, VR_WAKE_UCAST);
++	
++	/* Set magic wake event if applicable. */
++	if (sc->vr_wolevents & IFWOL_WAKE_ON_MAGIC) {
++		VR_SETBIT(sc, VR_WOLCRSET, VR_WAKE_MAGIC);
++		/* enable EEPROM-controlled wake-up */
++		VR_SETBIT(sc, VR_CONFIG, 0x03);
++	}
++#if 0
++	/* Set broadcast/multicast wake event if applicable. */
++	/* Does not work for some reason :( */
++	if (sc->vr_wolevents & IFWOL_WAKE_ON_BROADCAST ||
++	    sc->vr_wolevents & IFWOL_WAKE_ON_MULTICAST)
++		CSR_WRITE_1(sc, VR_WOLCGSET, VR_WAKE_BMCAST);
++#endif
++	/* Enable Wake On Lan. */
++	CSR_WRITE_1(sc, VR_PWCFGSET, 0x01);
++	VR_SETBIT(sc, VR_STICKHW, VR_STICKHW_WOL_ENB);
++
++	/* Set power state to D3 */
++	VR_SETBIT(sc, VR_STICKHW, (VR_STICKHW_DS0|VR_STICKHW_DS1));
++}
++
++
++/*
++ * Write current wake on lan settings into an if_wolopts structure.
++ */
++static void
++vr_get_wolopts(struct vr_softc *sc, struct if_wolopts *wolopts)
++{
++	VR_LOCK_ASSERT(sc);
++	wolopts->ifwol_events = sc->vr_wolevents;
++}
++	
++/*
++ * Set wake on lan options.
++ */
++static int
++vr_set_wolopts(struct vr_softc *sc, struct if_wolopts *wolopts)
++{
++	VR_LOCK_ASSERT(sc);
++
++	if (wolopts->ifwol_events == IFWOL_DISABLE)
++		sc->vr_wolevents = 0;
++	else {
++		if ((wolopts->ifwol_events & ~VR_SUPPORTED_WOL_EVENTS) != 0)
++			return EINVAL;
++		sc->vr_wolevents = wolopts->ifwol_events;
++	}
++
++	return 0;
++}
++
+diff -r -u kernel63.alt/src/sys/pci/if_vrreg.h kernel63.neu/src/sys/pci/if_vrreg.h
+--- kernel63.alt/src/sys/pci/if_vrreg.h	2007-11-05 12:17:39.000000000 +0100
++++ kernel63.neu/src/sys/pci/if_vrreg.h	2008-05-22 23:34:24.000000000 +0200
+@@ -283,6 +283,21 @@
+ #define VR_STICKHW_WOL_STS	0x08
+ #define VR_STICKHW_LEGWOL_ENB	0x80
+ 
++/* Wake on Lan definitions (snooped from Linux driver) */
++#define	VR_WOLCRSET		0xA0
++#define VR_PWCFGSET		0xA1
++#define	VR_WOLCGSET		0xA3
++#define	VR_WOLCRCLR		0xA4
++#define	VR_WOLCRCLR1		0xA6
++#define	VR_WOLCGCLR		0xA7
++#define	VR_PWRCSRCLR		0xAC
++#define	VR_WAKE_UCAST		0x10
++#define	VR_WAKE_MAGIC		0x20
++#define	VR_WAKE_BMCAST		0x30
++#define	VR_WAKE_LINKON		0x40
++#define	VR_WAKE_LINKOFF		0x80
++#define VR_SUPPORTED_WOL_EVENTS	(IFWOL_WAKE_ON_UNICAST | IFWOL_WAKE_ON_MAGIC)
++
+ /*
+  * BCR0 register bits. (At least for the VT6102 chip.)
+  */
+@@ -474,10 +489,14 @@
+ #define REV_ID_VT3065_A			0x40
+ #define REV_ID_VT3065_B			0x41
+ #define REV_ID_VT3065_C			0x42
++#define REV_ID_VT6102			0x40
+ #define REV_ID_VT6102_APOLLO		0x74
+ #define REV_ID_VT3106			0x80
+ #define REV_ID_VT3106_J			0x80    /* 0x80-0x8F */
+ #define REV_ID_VT3106_S			0x90    /* 0x90-0xA0 */
++#define	REV_ID_VT6105			0x80
++#define	REV_ID_VT6105_B0		0x83
++
+ 
+ /*
+  * PCI low memory base and low I/O base register, and
+diff -r -u kernel63.alt/src/sys/pci/if_xl.c kernel63.neu/src/sys/pci/if_xl.c
+--- kernel63.alt/src/sys/pci/if_xl.c	2007-09-15 11:57:01.000000000 +0200
++++ kernel63.neu/src/sys/pci/if_xl.c	2008-05-22 23:34:24.000000000 +0200
+@@ -249,6 +249,9 @@
+ static void xl_shutdown(device_t);
+ static int xl_suspend(device_t);
+ static int xl_resume(device_t);
++static void xl_get_wolopts(struct xl_softc *, struct if_wolopts *);
++static int xl_set_wolopts(struct xl_softc *, struct if_wolopts *);
++static void xl_enable_wol(device_t dev);
+ 
+ #ifdef DEVICE_POLLING
+ static void xl_poll(struct ifnet *ifp, enum poll_cmd cmd, int count);
+@@ -1223,6 +1226,7 @@
+ 	int			media;
+ 	int			unit, error = 0, rid, res;
+ 	uint16_t		did;
++	uint16_t		pwrmgmtcap;
+ 
+ 	sc = device_get_softc(dev);
+ 	sc->xl_dev = dev;
+@@ -1478,6 +1482,15 @@
+ 	else
+ 		sc->xl_type = XL_TYPE_90X;
+ 
++	/* Figure out whether the chip at hand supports wake on lan. */
++	if (sc->xl_caps & XL_CAPS_PWRMGMT) {
++		pwrmgmtcap = pci_read_config(dev, XL_PCI_PWRMGMTCAP, 2);
++		 /* Flag the card as WOL-capable if it supports
++		  * PME# assertion from D3hot power state. */
++		if (pwrmgmtcap & XL_PME_SUPPORT_FROM_D3hot)
++			sc->xl_flags |= XL_FLAG_SUPPORTS_WOL;
++	}
++
+ 	/* Set the TX start threshold for best performance. */
+ 	sc->xl_tx_thresh = XL_MIN_FRAMELEN;
+ 
+@@ -3225,6 +3238,25 @@
+ 			ifp->if_hwassist = 0;
+ 		XL_UNLOCK(sc);
+ 		break;
++	case SIOCGIFWOLSUPP:
++		if (sc->xl_flags & XL_FLAG_SUPPORTS_WOL)
++			ifr->ifr_wolopts.ifwol_supported =
++			    XL_SUPPORTED_WOL_EVENTS;
++		else
++			ifr->ifr_wolopts.ifwol_supported = 0;
++ 		error = 0;
++ 		break;
++ 	case SIOCGIFWOLOPTS:
++ 		XL_LOCK(sc);
++ 		xl_get_wolopts(sc, &ifr->ifr_wolopts);
++ 		XL_UNLOCK(sc);
++ 		error = 0;
++ 		break;
++ 	case SIOCSIFWOLOPTS:
++ 		XL_LOCK(sc);
++ 		error = xl_set_wolopts(sc, &ifr->ifr_wolopts);
++ 		XL_UNLOCK(sc);
++  		break;
+ 	default:
+ 		error = ether_ioctl(ifp, command, data);
+ 		break;
+@@ -3356,6 +3388,7 @@
+ 	XL_LOCK(sc);
+ 	xl_reset(sc);
+ 	xl_stop(sc);
++	xl_enable_wol(dev);
+ 	XL_UNLOCK(sc);
+ }
+ 
+@@ -3392,3 +3425,92 @@
+ 
+ 	return (0);
+ }
++
++/*
++ * Write current wake on lan settings into an if_wolopts structure.
++ */
++static void
++xl_get_wolopts(struct xl_softc *sc, struct if_wolopts *wolopts)
++{
++	XL_LOCK_ASSERT(sc);
++	
++	if (sc->xl_type == XL_TYPE_905B)
++		wolopts->ifwol_events = sc->xl_wol_events;
++	else
++		wolopts->ifwol_events = 0;
++}
++
++/*
++ * Set wake on lan options.
++ */
++static int
++xl_set_wolopts(struct xl_softc *sc, struct if_wolopts *wolopts)
++{
++	XL_LOCK_ASSERT(sc);
++
++	if (! sc->xl_flags & XL_FLAG_SUPPORTS_WOL)
++		return ENOTSUP;
++
++	if (wolopts->ifwol_events == IFWOL_DISABLE)
++		sc->xl_wol_events = 0;
++	else {
++		if ((wolopts->ifwol_events & ~XL_SUPPORTED_WOL_EVENTS) != 0)
++			return EINVAL;
++		sc->xl_wol_events = wolopts->ifwol_events;
++	}
++
++	return 0;
++}
++
++/* 
++ * Enable Wake On Lan if any wake on lan options have been set.
++ */
++static void
++xl_enable_wol(device_t dev)
++{
++	u_int8_t	rxfilt;
++	u_int32_t	config;
++	struct xl_softc	*sc;
++
++	sc = device_get_softc(dev);
++
++	XL_LOCK_ASSERT(sc);
++
++	/* If the card isn't WOL-capable, bail out. */
++	if (! sc->xl_flags & XL_FLAG_SUPPORTS_WOL)
++		return;
++	
++	/* Check whether any wake on lan events have been configured
++	 * by the user. */
++	if (sc->xl_wol_events == 0)
++		return;
++
++	/* Disable interrupts. The data sheet says interrupts need
++	 * to be disabled before wake events are configured. */
++	CSR_WRITE_2(sc, XL_COMMAND, XL_CMD_INTR_ENB|0);
++
++	/* Configure wake on lan events. */
++	config = 0;
++	XL_SEL_WIN(7);
++	if (sc->xl_wol_events & IFWOL_WAKE_ON_MAGIC)
++		config |= XL_WAKE_ON_MAGIC;
++	if (sc->xl_wol_events & IFWOL_WAKE_ON_LINK)
++		config |= XL_WAKE_ON_LINK;
++	CSR_WRITE_2(sc, XL_W7_BM_WOL, config);
++	
++	/* Configure the receive filter to accept any kind of packet. */
++	XL_SEL_WIN(5);
++	rxfilt = CSR_READ_1(sc, XL_W5_RX_FILTER);
++	rxfilt |= XL_RXFILTER_INDIVIDUAL | XL_RXFILTER_ALLMULTI |
++		  XL_RXFILTER_BROADCAST | XL_RXFILTER_ALLFRAMES;
++	CSR_WRITE_2(sc, XL_COMMAND, XL_CMD_RX_SET_FILT | rxfilt);
++			
++	/* Make sure receiver is enabled. */
++	CSR_WRITE_2(sc, XL_COMMAND, XL_CMD_RX_ENABLE);
++
++	/* Make sure power management is enabled and set the card
++	 * into D3hot power state, so it stays active after system shutdown. */
++	config = pci_read_config(dev, XL_PCI_PWRMGMTCTRL, 2);
++	config |= XL_PME_EN | XL_PSTATE_D3;
++	pci_write_config(dev, XL_PCI_PWRMGMTCTRL, config | XL_PME_EN, 2);
++}
+diff -r -u kernel63.alt/src/sys/pci/if_xlreg.h kernel63.neu/src/sys/pci/if_xlreg.h
+--- kernel63.alt/src/sys/pci/if_xlreg.h	2007-09-15 11:57:01.000000000 +0200
++++ kernel63.neu/src/sys/pci/if_xlreg.h	2008-05-22 23:34:24.000000000 +0200
+@@ -408,6 +408,7 @@
+ #define XL_W7_BM_LEN		0x06
+ #define XL_W7_BM_STATUS		0x0B
+ #define XL_W7_BM_TIMEr		0x0A
++#define XL_W7_BM_WOL		0x0C
+ 
+ /*
+  * bus master control registers
+@@ -576,6 +577,7 @@
+ #define XL_FLAG_NO_XCVR_PWR		0x0080
+ #define XL_FLAG_USE_MMIO		0x0100
+ #define	XL_FLAG_NO_MMIO			0x0200
++#define	XL_FLAG_SUPPORTS_WOL		0x0400
+ 
+ #define XL_NO_XCVR_PWR_MAGICBITS	0x0900
+ 
+@@ -613,6 +615,7 @@
+ #ifdef DEVICE_POLLING
+ 	int			rxcycles;
+ #endif
++	uint32_t		xl_wol_events;
+ };
+ 
+ #define XL_LOCK(_sc)		mtx_lock(&(_sc)->xl_mtx)
+@@ -741,3 +744,15 @@
+ #ifndef IFM_10_FL
+ #define IFM_10_FL	13		/* 10baseFL - Fiber */
+ #endif
++
++/* Bits in the XL_PCI_PWRMGMTCAP register */
++#define XL_PME_SUPPORT_FROM_D0		0x0800
++#define XL_PME_SUPPORT_FROM_D1		0x1000
++#define XL_PME_SUPPORT_FROM_D2		0x2000
++#define XL_PME_SUPPORT_FROM_D3hot	0x4000
++#define XL_PME_SUPPORT_FROM_D3cold	0x8000
++
++#define	XL_WAKE_ON_MAGIC	0x0002
++#define	XL_WAKE_ON_LINK		0x0004
++#define	XL_SUPPORTED_WOL_EVENTS	(IFWOL_WAKE_ON_MAGIC | IFWOL_WAKE_ON_LINK)
++
+diff -r -u kernel63.alt/src/sys/sys/sockio.h kernel63.neu/src/sys/sys/sockio.h
+--- kernel63.alt/src/sys/sys/sockio.h	2006-02-15 04:37:15.000000000 +0100
++++ kernel63.neu/src/sys/sys/sockio.h	2008-05-22 23:34:24.000000000 +0200
+@@ -117,4 +117,11 @@
+ #define	SIOCIFDESTROY	 _IOW('i', 121, struct ifreq)	/* destroy clone if */
+ #define	SIOCIFGCLONERS	_IOWR('i', 120, struct if_clonereq) /* get cloners */
+ 
++#define	SIOCGIFWOLOPTS	_IOWR('i', 125, struct ifreq)	/* get wake on lan
++							   	options */
++#define	SIOCSIFWOLOPTS	 _IOW('i', 126, struct ifreq)	/* set wake on lan
++							   	options */
++#define	SIOCGIFWOLSUPP	_IOWR('i', 127, struct ifreq)	/* get wake on lan
++							   modes supported by
++							   device */
+ #endif /* !_SYS_SOCKIO_H_ */

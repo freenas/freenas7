@@ -1,0 +1,182 @@
+diff -p orig/if_nfe.c new/if_nfe.c
+*** orig/if_nfe.c	Sat Nov 24 15:39:58 2007
+--- new/if_nfe.c	Sat Jan  5 17:52:56 2008
+*************** __FBSDID("$FreeBSD: /usr/local/www/cvsro
+*** 27,33 ****
+  /* #define	DEVICE_POLLING */
+  
+  #ifdef HAVE_KERNEL_OPTION_HEADERS
+! #include "opt_device_polling.h"
+  #endif
+  
+  #include <sys/param.h>
+--- 27,33 ----
+  /* #define	DEVICE_POLLING */
+  
+  #ifdef HAVE_KERNEL_OPTION_HEADERS
+! /* #include "opt_device_polling.h" */
+  #endif
+  
+  #include <sys/param.h>
+*************** static void nfe_get_macaddr(struct nfe_s
+*** 126,131 ****
+--- 126,135 ----
+  static void nfe_set_macaddr(struct nfe_softc *, uint8_t *);
+  static void nfe_dma_map_segs(void *, bus_dma_segment_t *, int, int);
+  
++ static void	nfe_enable_wol(struct nfe_softc *);
++ static void	nfe_get_wolopts(struct nfe_softc *, struct if_wolopts *);
++ static int	nfe_set_wolopts(struct nfe_softc *, struct if_wolopts *);
++ 
+  static int sysctl_int_range(SYSCTL_HANDLER_ARGS, int, int);
+  static int sysctl_hw_nfe_proc_limit(SYSCTL_HANDLER_ARGS);
+  
+*************** nfe_ioctl(struct ifnet *ifp, u_long cmd,
+*** 1892,1897 ****
+--- 1896,1916 ----
+  		if ((sc->nfe_flags & NFE_HW_VLAN) != 0)
+  			VLAN_CAPABILITIES(ifp);
+  		break;
++  	case SIOCGIFWOLSUPP:
++  		ifr->ifr_wolopts.ifwol_supported = NFE_SUPPORTED_WOL_EVENTS;
++  		error = 0;
++  		break;
++  	case SIOCGIFWOLOPTS:
++  		NFE_LOCK(sc);
++  		nfe_get_wolopts(sc, &ifr->ifr_wolopts);
++  		NFE_UNLOCK(sc);
++  		error = 0;
++  		break;
++ 	case SIOCSIFWOLOPTS:
++  		NFE_LOCK(sc);
++  		error = nfe_set_wolopts(sc, &ifr->ifr_wolopts);
++  		NFE_UNLOCK(sc);
++   		break;
+  	default:
+  		error = ether_ioctl(ifp, cmd, data);
+  		break;
+*************** nfe_stop(struct ifnet *ifp)
+*** 3006,3016 ****
+  	/* abort Tx */
+  	NFE_WRITE(sc, NFE_TX_CTL, 0);
+  
+! 	/* disable Rx */
+! 	NFE_WRITE(sc, NFE_RX_CTL, 0);
+  
+! 	/* disable interrupts */
+! 	nfe_disable_intr(sc);
+  
+  	sc->nfe_link = 0;
+  
+--- 3025,3038 ----
+  	/* abort Tx */
+  	NFE_WRITE(sc, NFE_TX_CTL, 0);
+  
+! 	if (sc->wol_events) {
+! 	} else {
+! 		/* disable Rx */
+! 		NFE_WRITE(sc, NFE_RX_CTL, 0);
+  
+! 		/* disable interrupts */
+! 		nfe_disable_intr(sc);
+! 	}
+  
+  	sc->nfe_link = 0;
+  
+*************** nfe_shutdown(device_t dev)
+*** 3120,3125 ****
+--- 3142,3151 ----
+  	sc = device_get_softc(dev);
+  
+  	NFE_LOCK(sc);
++ 	nfe_enable_wol(sc);
++ 	NFE_UNLOCK(sc);
++ 
++ 	NFE_LOCK(sc);
+  	ifp = sc->nfe_ifp;
+  	nfe_stop(ifp);
+  	/* nfe_reset(sc); */
+*************** sysctl_hw_nfe_proc_limit(SYSCTL_HANDLER_
+*** 3211,3213 ****
+--- 3237,3293 ----
+  	return (sysctl_int_range(oidp, arg1, arg2, req, NFE_PROC_MIN,
+  	    NFE_PROC_MAX));
+  }
++ 
++ /*
++  * Enable Wake On Lan.
++  */
++ static void
++ nfe_enable_wol(struct nfe_softc *sc)
++ {
++ #if 1
++ 	return;
++ #else
++ 	ADAPTER_POWERSTATE pstate = {0};
++ 	PACKET_FILTER hwfilter;
++ 
++ 	if (sc->wol_events == 0)
++ 		return;
++ 
++ 	hwfilter.ulFilterFlags = ACCEPT_ALL_PACKETS;
++ 	sc->hwapi->pfnSetPacketFilter(sc->hwapi->pADCX, &hwfilter);
++ 	
++ 	if (sc->wol_events & IFWOL_WAKE_ON_MAGIC) {
++ 		pstate.ulPowerFlags = POWER_STATE_D3;
++ 		pstate.ulMagicPacketWakeUpFlags = POWER_STATE_ALL;
++ 		pstate.ulLinkChangeWakeUpFlags = 0;
++ 		pstate.ulPatternWakeUpFlags = 0;
++ 		sc->hwapi->pfnSetPowerState(sc->hwapi->pADCX, &pstate);
++ 	}
++ #endif
++ }
++ 
++ /*
++  * Write current wake on lan settings into an if_wolopts structure.
++  */
++ static void
++ nfe_get_wolopts(struct nfe_softc *sc, struct if_wolopts *wolopts)
++ {
++ 	wolopts->ifwol_events = sc->wol_events;
++ }
++ 
++ /*
++  * Set wake on lan options.
++  */
++ static int
++ nfe_set_wolopts(struct nfe_softc *sc, struct if_wolopts *wolopts)
++ {
++ 	if (wolopts->ifwol_events == IFWOL_DISABLE)
++ 		sc->wol_events = 0;
++ 	else {
++ 		if ((wolopts->ifwol_events & ~NFE_SUPPORTED_WOL_EVENTS) != 0)
++ 			return EINVAL;
++ 		sc->wol_events = wolopts->ifwol_events;
++ 	}
++ 
++ 	return 0;
++ }
+diff -p orig/if_nfereg.h new/if_nfereg.h
+*** orig/if_nfereg.h	Sat Nov 24 15:34:34 2007
+--- new/if_nfereg.h	Sat Jan  5 17:49:50 2008
+*************** struct nfe_desc64 {
+*** 320,322 ****
+--- 320,324 ----
+  #define	NFE_DEBUG_BROKEN	0x0080
+  #define	NFE_DEBUG_MII		0x0100
+  #define	NFE_DEBUG_ALL		0xFFFF
++ 
++ #define NFE_SUPPORTED_WOL_EVENTS	IFWOL_WAKE_ON_MAGIC
+diff -p orig/if_nfevar.h new/if_nfevar.h
+*** orig/if_nfevar.h	Sat Nov 24 15:34:34 2007
+--- new/if_nfevar.h	Sat Jan  5 17:51:42 2008
+*************** struct nfe_softc {
+*** 103,108 ****
+--- 103,109 ----
+  #define	NFE_PWR_MGMT		0x0010
+  #define	NFE_CORRECT_MACADDR	0x0020
+  #define	NFE_TX_FLOW_CTRL	0x0040
++ 	uint32_t		wol_events;
+  	int			nfe_jumbo_disable;
+  	uint32_t		rxtxctl;
+  	uint8_t			mii_phyaddr;
