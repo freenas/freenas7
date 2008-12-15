@@ -1,6 +1,0 @@
-Create SQLite3 patch:
----------------------
-Download sources from http://pecl.php.net/package/sqlite3
-
-cd /usr/local/freenas/svn/build/ports/php5/work/php-5.2.8
-diff -ruN ext.orig ext > patch-ext.diff
