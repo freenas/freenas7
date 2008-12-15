@@ -414,6 +414,9 @@ usr/bin/nc
 ## ssh-keygen -- authentication key generation, management and conversion
 usr/bin/ssh-keygen
 
+## nfsstat -- display NFS statistics
+usr/bin/nfsstat
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
