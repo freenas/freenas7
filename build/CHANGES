@@ -18,7 +18,7 @@ Minors changes:
   to ldap.conf via WebGUI.
 - Add *.divx file extension support to Fuppes (UPnP server) (FR 2400097).
 - Add FTP bandwidth limit for local and anonymous users (FR 1860459).
-- Add SQLite3 support to PHP (FR 2352505).
+- Add PHP PDO SQLite3 support (FR 2352505).
 - Display service state (running/stopped) in 'Services|Status'.
 - Add exit status for send_email function in email.subr (BR 2422479).
 - Add nfsstat for NFS diagnostics (FR 2093184).
