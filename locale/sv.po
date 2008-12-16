@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-10-27 11:43+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -57,9 +57,6 @@ msgstr "%sB tillgängligt av %sB"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sB använt av %sB"
-
-msgid "(unstable)"
-msgstr "(instabil)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -483,6 +480,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Endast anonyma användare"
 
@@ -759,6 +767,15 @@ msgstr "Skapa mask"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Skapa arbetskatalog om den inte redan finns"
+
+msgid "Creating filesystem"
+msgstr "Skapar filsystem"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr ""
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr "Tack till"
@@ -1212,6 +1229,9 @@ msgid ""
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "Färdig"
+
 msgid "Done."
 msgstr "Klart."
 
@@ -1447,6 +1467,9 @@ msgstr ""
 "Afpd kan eventuellt förstöra sådana filer vid felaktig ändring under "
 "radbyteskonverteringen."
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "Namn på krypterad disk"
 
@@ -1497,6 +1520,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr ""
+
+msgid "Erasing MBR and all partitions"
+msgstr "Raderar MBR och alla partitioner"
 
 msgid "Error"
 msgstr "Fel"
@@ -1596,6 +1622,10 @@ msgstr ""
 
 msgid "Failed to execute cron job."
 msgstr "Misslyckades med att köra cron-jobb."
+
+#, c-format
+msgid "Failed to send status report to: %s."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1705,6 +1735,9 @@ msgstr "Formatera"
 msgid "Format disk"
 msgstr "Formatera disk"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1737,9 +1770,6 @@ msgstr ""
 
 msgid "General Setup"
 msgstr "Allmän Inställning"
-
-msgid "Geom Vinum"
-msgstr "GEOM Vinum"
 
 msgid "Give full shell access to user."
 msgstr "Ge komplett skaltillgång för användare."
@@ -1997,6 +2027,9 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
+msgid "Initializing partition"
+msgstr "Initierar partition"
+
 msgid "Initiator name"
 msgstr "Initiatornamn"
 
@@ -2160,6 +2193,15 @@ msgid "Local share (destination)"
 msgstr ""
 
 msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid "Local users only"
@@ -2776,6 +2818,9 @@ msgstr ""
 msgid "RAID 0 (stripping)"
 msgstr ""
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr ""
 
@@ -2946,6 +2991,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
+msgstr ""
+
+msgid "Running"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3193,6 +3241,9 @@ msgstr ""
 msgid "Sockets"
 msgstr ""
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "Programvaru-RAID"
 
@@ -3272,6 +3323,10 @@ msgstr "Status"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3638,6 +3693,11 @@ msgid ""
 msgstr ""
 "Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
 "först innan du fortsätter."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4225,6 +4285,9 @@ msgstr ""
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr ""
 
@@ -4550,6 +4613,9 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
+msgid "day"
+msgstr "dag"
+
 msgid "days"
 msgstr "dagar"
 
@@ -4655,9 +4721,6 @@ msgstr "veckodagar"
 
 #~ msgid "hour"
 #~ msgstr "timme"
-
-#~ msgid "day"
-#~ msgstr "dag"
 
 #~ msgid "week"
 #~ msgstr "vecka"
@@ -4803,6 +4866,9 @@ msgstr "veckodagar"
 #~ msgid "Format RAID"
 #~ msgstr "Formatera RAID"
 
+#~ msgid "(unstable)"
+#~ msgstr "(instabil)"
+
 #~ msgid "RAID"
 #~ msgstr "RAID"
 
@@ -4875,17 +4941,8 @@ msgstr "veckodagar"
 #~ msgid "Creating one partition"
 #~ msgstr "Skapar en partition"
 
-#~ msgid "Initializing partition"
-#~ msgstr "Initierar partition"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "Skapar BSD-etikett"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "Skapar filsystem"
-
-#~ msgid "Done"
-#~ msgstr "Färdig"
 
 #, c-format
 #~ msgid "Creating %s partition"

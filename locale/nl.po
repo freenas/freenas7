@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
-"PO-Revision-Date: 2008-12-07 16:31+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"PO-Revision-Date: 2008-12-16 03:42+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -61,9 +61,6 @@ msgstr "%sB beschikbaar van %sB"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sB gebruikt van %sB"
-
-msgid "(unstable)"
-msgstr "(instabiel)"
 
 msgid "*** Imported duplicate ***"
 msgstr "*** Belangrijke duplicaat ***"
@@ -511,7 +508,22 @@ msgid "Anonymous"
 msgstr "Anoniem"
 
 msgid "Anonymous bind"
+msgstr "Anonieme koppeling"
+
+msgid "Anonymous user bandwidth"
+msgstr "Anonieme gebruikers bandbreedte"
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
 msgstr ""
+"Anonieme gebruikers download bandbreedte in KB/s. Een leeg gelaten veld "
+"betekent onbeperkt."
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Anonieme gebruikers upload bandbreedte in KB/s. Een leeg gelaten veld "
+"betekent onbeperkt."
 
 msgid "Anonymous users only"
 msgstr "Alleen anonieme gebruikers"
@@ -597,7 +609,7 @@ msgid "Bind DN"
 msgstr "Bind DN"
 
 msgid "Bind password"
-msgstr ""
+msgstr "Koppelings wachtwoord"
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -796,6 +808,15 @@ msgstr "Bestands attributen"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Een werkmap aanmaken als deze nog niet bestaat"
+
+msgid "Creating filesystem"
+msgstr "Creating filesystem"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Creating filesystem with 'Soft Updates'"
+
+msgid "Creating partition"
+msgstr "Partitie aanmaken"
 
 msgid "Credits"
 msgstr "Met dank aan"
@@ -1274,6 +1295,9 @@ msgstr ""
 "nuttig bij het automatisch aankoppelen van volumes gecreeerd door een "
 "preexec script."
 
+msgid "Done"
+msgstr "Gereed"
+
 msgid "Done."
 msgstr "Klaar."
 
@@ -1415,7 +1439,7 @@ msgstr ""
 "apparaat"
 
 msgid "Enable anonymous bind."
-msgstr ""
+msgstr "Inschakelen anonieme koppeling."
 
 msgid "Enable authentication."
 msgstr "Inschakelen authentiecatie."
@@ -1515,6 +1539,9 @@ msgstr ""
 "dergelijke bestanden kunnen beschadigen bij het 'per abuis' vertalen van de "
 "regel afbrekingen."
 
+msgid "Encrypted"
+msgstr "Versleuteld"
+
 msgid "Encrypted disk name"
 msgstr "Versleutelde schijf naam"
 
@@ -1568,6 +1595,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr "Vul de trap host naam in."
+
+msgid "Erasing MBR and all partitions"
+msgstr "Wist de MBR en alle partities"
 
 msgid "Error"
 msgstr "Fout"
@@ -1669,6 +1699,10 @@ msgstr "Mislukt om het in-geheugen bestandsysteem te maken."
 
 msgid "Failed to execute cron job."
 msgstr "Mislukt om de cron taak uit te voeren."
+
+#, c-format
+msgid "Failed to send status report to: %s."
+msgstr "Mislukt om het statusrapport te verzenden naar: %s."
 
 #, php-format
 msgid ""
@@ -1788,6 +1822,9 @@ msgstr "Formatteren"
 msgid "Format disk"
 msgstr "Formatteer schijf"
 
+msgid "Formating disk"
+msgstr "Formatteer schijf"
+
 msgid "Forum"
 msgstr "Forum"
 
@@ -1820,9 +1857,6 @@ msgstr "Algemeen"
 
 msgid "General Setup"
 msgstr "Algemene instellingen"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "Geef volledige shell rechten aan de gebruiker"
@@ -2060,10 +2094,10 @@ msgid ""
 "immediately. The entire system configuration will be overwritten. The LAN IP "
 "address will be reset to %s and the password will be set to '%s'."
 msgstr ""
-"Als u op de knop 'Ja' drukt zal %s direct naar de standaard "
-"fabrieksinstellingen terugkeren en onmiddelijk herstarten. De huidige "
-"systeemconfiguratie wordt overschreven. Het LAN IP adres verandert in IP %s "
-"en het wachtwoord wijzigt in '%s'."
+"Als u op 'Ja' drukt zal, %s direct naar de standaard fabrieksinstellingen "
+"terugkeren, een herstart zal volgen. De huidige systeemconfiguratie wordt "
+"overschreven. Het LAN IP adres verandert in IP %s en het wachtwoord wijzigt "
+"in '%s'."
 
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
@@ -2120,6 +2154,9 @@ msgstr ""
 
 msgid "Initializing"
 msgstr "Aan het initialiseren"
+
+msgid "Initializing partition"
+msgstr "initialiseert de partitie"
 
 msgid "Initiator name"
 msgstr "Initiator naam"
@@ -2295,6 +2332,19 @@ msgstr "Lokaal gedeeld (bestemming)"
 msgid "Local shares to be synchronized"
 msgstr "Lokale deelingen die moeten worden gesynchroniseerd"
 
+msgid "Local user bandwidth"
+msgstr "Lokale gebruikers bandbreedte"
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Lokale gebruikers download bandbreedte in KB/s. Een leeg gelaten veld "
+"betekent onbeperkt."
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Lokale gebruikers upload bandbreedte in KB/s. Een leeg gelaten veld betekent "
+"onbeperkt."
+
 msgid "Local users only"
 msgstr "Alleen lokale gebruikers"
 
@@ -2360,7 +2410,7 @@ msgid "MTU"
 msgstr "MTU"
 
 msgid "Machine suffix"
-msgstr ""
+msgstr "Machine achtervoegsel"
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr ""
@@ -2953,6 +3003,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (stripping)"
 
+msgid "RAID 0/1/5"
+msgstr "RAID 0/1/5"
+
 msgid "RAID 1"
 msgstr "RAID 1"
 
@@ -3095,10 +3148,10 @@ msgid "Retry"
 msgstr "Opnieuw proberen"
 
 msgid "Root bind DN"
-msgstr ""
+msgstr "Root koppelings DN"
 
 msgid "Root bind password"
-msgstr ""
+msgstr "Root koppelings wachtwoord"
 
 msgid "Roundrobin"
 msgstr "Roundrobin"
@@ -3129,6 +3182,9 @@ msgstr "Regels"
 
 msgid "Run now"
 msgstr "Nu uitvoeren"
+
+msgid "Running"
+msgstr "Draaiend"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3399,6 +3455,9 @@ msgstr ""
 msgid "Sockets"
 msgstr "Sockets"
 
+msgid "SoftRaid"
+msgstr "SoftRaid"
+
 msgid "Software RAID"
 msgstr "Software RAID"
 
@@ -3490,6 +3549,10 @@ msgstr "Status"
 #, php-format
 msgid "Status report from host: %s.%s"
 msgstr "Status rapport van host: %s.%s"
+
+#, c-format
+msgid "Status report successfully sent to: %s."
+msgstr "De statusrapport is met succes verzonden naar: %s."
 
 msgid "Status report successfully sent."
 msgstr "De status rapport is met succes verzonden."
@@ -3820,7 +3883,7 @@ msgstr ""
 "voordat deze veranderingen effect hebben."
 
 msgid "The cleartext credentials with which to bind."
-msgstr ""
+msgstr "De cleartext credentials om mee te koppelen."
 
 msgid "The combination of share and working directory does not exist."
 msgstr "De combinatie van gedeelde map en werkmap bestaat niet."
@@ -3853,7 +3916,7 @@ msgstr ""
 "wachtwoord exact gelijk is."
 
 msgid "The credentials with which to bind."
-msgstr "De credentials om mee te verbinden."
+msgstr "De credentials om mee te koppelen."
 
 msgid "The cron job has been executed successfully."
 msgstr "De cron taak is met succes uitgevoerd."
@@ -3884,13 +3947,20 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr ""
-"De schijf is momenteel aangehecht! <a href=%s>Ontkoppel</a> deze schijf "
+"De schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> deze schijf "
 "eerst voor u verder gaat."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"De schijf is momenteel aangekoppeld! Het koppelpunt zal tijdelijk verwijderd "
+"worden om het geselecteerde commando uit te voeren."
 
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
-msgstr "De voornaam om de directory server aan te verbinden, bijv. %s"
+msgstr "De voornaam van de directory server om mee aan te koppelen, bijv. %s"
 
 #, php-format
 msgid ""
@@ -4418,6 +4488,8 @@ msgid ""
 "This parameter specifies the suffix that is used for machines when these are "
 "added to the LDAP directory, e.g. %s"
 msgstr ""
+"Deze parameter specificeer het achtervoegsel dat gebruikt wordt door de "
+"machines wanneer deze zijn toegevoegt aan de LDAP directory, bijv. %s"
 
 #, php-format
 msgid ""
@@ -4617,6 +4689,9 @@ msgstr "UPnP vriendschappelijke naam. (De media delen als...)"
 
 msgid "URL"
 msgstr "URL"
+
+msgid "Unformated"
+msgstr "Niet geformatteerd"
 
 msgid "Uninstall package"
 msgstr "Pakket deïnstalleren"
@@ -4988,6 +5063,9 @@ msgstr "cnidscheme"
 msgid "crlf"
 msgstr "crlf"
 
+msgid "day"
+msgstr "dag"
+
 msgid "days"
 msgstr "dagen"
 
@@ -5108,9 +5186,6 @@ msgstr "weekdagen"
 
 #~ msgid "hour"
 #~ msgstr "uur"
-
-#~ msgid "day"
-#~ msgstr "dag"
 
 #~ msgid "week"
 #~ msgstr "week"
@@ -5343,6 +5418,9 @@ msgstr "weekdagen"
 
 #~ msgid "Format RAID"
 #~ msgstr "RAID formatteren"
+
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
 
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
@@ -5624,9 +5702,6 @@ msgstr "weekdagen"
 #~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 #~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 
-#~ msgid "Creating filesystem"
-#~ msgstr "Creating filesystem"
-
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "Destroying old %s information"
@@ -5634,9 +5709,6 @@ msgstr "weekdagen"
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "Creating %s partition"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "Creating filesystem with 'Soft Updates'"
 
 #~ msgid ""
 #~ "The content directory list has been changed.<br>You must apply the changes "

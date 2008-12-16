@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -62,9 +62,6 @@ msgstr "%sБ свободни от %sБ"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sБ използвани от %sБ"
-
-msgid "(unstable)"
-msgstr "(нестабилен)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -449,6 +446,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
@@ -718,6 +726,15 @@ msgstr ""
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Create work directory if it doesn't exist"
+
+msgid "Creating filesystem"
+msgstr "Създаване на файлова система"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Creating filesystem with 'Soft Updates'"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr ""
@@ -1168,6 +1185,9 @@ msgid ""
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "Завърши"
+
 msgid "Done."
 msgstr ""
 
@@ -1398,6 +1418,9 @@ msgid ""
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "Криприрано име на диска"
 
@@ -1442,6 +1465,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr ""
+
+msgid "Erasing MBR and all partitions"
+msgstr "Erasing MBR and all partitions"
 
 msgid "Error"
 msgstr "Грешка"
@@ -1536,6 +1562,10 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to execute cron job."
+msgstr ""
+
+#, c-format
+msgid "Failed to send status report to: %s."
 msgstr ""
 
 #, php-format
@@ -1644,6 +1674,9 @@ msgstr "Формат"
 msgid "Format disk"
 msgstr "форматирай диска"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1676,9 +1709,6 @@ msgstr ""
 
 msgid "General Setup"
 msgstr ""
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr ""
@@ -1942,6 +1972,9 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
+msgid "Initializing partition"
+msgstr "Инициализиране на партицията"
+
 msgid "Initiator name"
 msgstr "Initiator name"
 
@@ -2105,6 +2138,15 @@ msgid "Local share (destination)"
 msgstr "Локален дял (дестинация)"
 
 msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid "Local users only"
@@ -2724,6 +2766,9 @@ msgstr ""
 msgid "RAID 0 (stripping)"
 msgstr ""
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr ""
 
@@ -2894,6 +2939,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
+msgstr ""
+
+msgid "Running"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3141,6 +3189,9 @@ msgstr ""
 msgid "Sockets"
 msgstr ""
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "Софтуерен RAID"
 
@@ -3224,6 +3275,10 @@ msgstr "Състояние"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3595,6 +3650,13 @@ msgid ""
 msgstr ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
 
 #, php-format
 msgid ""
@@ -4193,6 +4255,9 @@ msgstr "UPnP friendly name."
 msgid "URL"
 msgstr "Уеб адрес"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr ""
 
@@ -4519,6 +4584,9 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
+msgid "day"
+msgstr "ден"
+
 msgid "days"
 msgstr "дни"
 
@@ -4639,9 +4707,6 @@ msgstr "ден от седмицата"
 
 #~ msgid "hour"
 #~ msgstr "час"
-
-#~ msgid "day"
-#~ msgstr "ден"
 
 #~ msgid "week"
 #~ msgstr "седмица"
@@ -4971,13 +5036,6 @@ msgstr "ден от седмицата"
 #~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
 #~ msgstr "\"fdisk: Geom not found\"is not an error message!\n"
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -4986,6 +5044,9 @@ msgstr "ден от седмицата"
 
 #~ msgid "Manage RAID"
 #~ msgstr "Помени настройките на RAID-а"
+
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
 
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
@@ -4998,6 +5059,9 @@ msgstr "ден от седмицата"
 
 #~ msgid "Geom Raid5"
 #~ msgstr "Geom Raid5"
+
+#~ msgid "(unstable)"
+#~ msgstr "(нестабилен)"
 
 #~ msgid "RAID"
 #~ msgstr "RAID"
@@ -5323,23 +5387,14 @@ msgstr "ден от седмицата"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI Configuration"
 
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "Erasing MBR and all partitions"
-
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "Keeping the MBR and all partitions"
 
 #~ msgid "Creating one partition"
 #~ msgstr "Creating one partition"
 
-#~ msgid "Initializing partition"
-#~ msgstr "Инициализиране на партицията"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "Създаване на BSD label"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "Създаване на файлова система"
 
 #, c-format
 #~ msgid "Destroying old %s information"
@@ -5348,9 +5403,6 @@ msgstr "ден от седмицата"
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "Създаване %s партиция"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "Creating filesystem with 'Soft Updates'"
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "

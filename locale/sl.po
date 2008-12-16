@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -60,9 +60,6 @@ msgstr "navoljo %sB od %sB"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "uporabljeno %sB od %sB"
-
-msgid "(unstable)"
-msgstr "(nestabilno)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -455,6 +452,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Samo anonimni uporabniki"
 
@@ -727,6 +735,15 @@ msgstr ""
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Ustvari delovni imenik, če ne obstaja"
+
+msgid "Creating filesystem"
+msgstr "Ustvarjanje datotečnega sistema"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Ustvarjanje datotečnega sistema z 'Mehke nadgradnje'"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr ""
@@ -1173,6 +1190,9 @@ msgid ""
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "Narejeno"
+
 msgid "Done."
 msgstr "Opravljeno."
 
@@ -1403,6 +1423,9 @@ msgid ""
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "Ime šifriranega pogona"
 
@@ -1447,6 +1470,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr ""
+
+msgid "Erasing MBR and all partitions"
+msgstr "Brisanje MBR in vseh particij"
 
 msgid "Error"
 msgstr "Napaka"
@@ -1541,6 +1567,10 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to execute cron job."
+msgstr ""
+
+#, c-format
+msgid "Failed to send status report to: %s."
 msgstr ""
 
 #, php-format
@@ -1649,6 +1679,9 @@ msgstr "Formatiranje"
 msgid "Format disk"
 msgstr "Formatiraj disk"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1681,9 +1714,6 @@ msgstr "Splošno"
 
 msgid "General Setup"
 msgstr "Splošne nastavitve"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr ""
@@ -1948,6 +1978,9 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
+msgid "Initializing partition"
+msgstr "Pregled particije"
+
 msgid "Initiator name"
 msgstr "Ime pobudnika"
 
@@ -2111,6 +2144,15 @@ msgid "Local share (destination)"
 msgstr "Lokalni deljeni vir (cilj)"
 
 msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid "Local users only"
@@ -2729,6 +2771,9 @@ msgstr ""
 msgid "RAID 0 (stripping)"
 msgstr ""
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr ""
 
@@ -2899,6 +2944,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
+msgstr ""
+
+msgid "Running"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3146,6 +3194,9 @@ msgstr ""
 msgid "Sockets"
 msgstr ""
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "Programski RAID"
 
@@ -3229,6 +3280,10 @@ msgstr "Stanje"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3600,6 +3655,13 @@ msgid ""
 msgstr ""
 "Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a "
 "href=%s>Odklopite</a>."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"Pogon je trnutno priklopljen! Za izvršitev izbranega ukaza, bo točka "
+"priklopa začasno odstranjena."
 
 #, php-format
 msgid ""
@@ -4196,6 +4258,9 @@ msgstr "UPnp prijazno ime."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr ""
 
@@ -4524,6 +4589,9 @@ msgstr ""
 
 msgid "crlf"
 msgstr ""
+
+msgid "day"
+msgstr "dan"
 
 msgid "days"
 msgstr "dni"

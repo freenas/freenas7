@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
-"PO-Revision-Date: 2008-12-08 09:10+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"PO-Revision-Date: 2008-12-15 22:55+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -62,9 +62,6 @@ msgstr "%s байт доступно из %s байт"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "занято %s из %s байт"
-
-msgid "(unstable)"
-msgstr "(unstable)"
 
 msgid "*** Imported duplicate ***"
 msgstr "*** Imported duplicate ***"
@@ -502,7 +499,22 @@ msgid "Anonymous"
 msgstr "Anonymous"
 
 msgid "Anonymous bind"
-msgstr "Анонимная связь"
+msgstr "Анонимный доступ"
+
+msgid "Anonymous user bandwidth"
+msgstr "Ограничение скорости анонимных пользователей"
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Ограничение скорости скачивания для анонимных пользователей (кбайт/с). "
+"Пустое поле - без ограничений."
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Ограничение скорости закачки для анонимных пользователей (кбайт/с). Пустое "
+"поле - без ограничений."
 
 msgid "Anonymous users only"
 msgstr "Только анонимные пользователи"
@@ -582,10 +594,10 @@ msgid "Banner"
 msgstr "Приветствие"
 
 msgid "Base DN"
-msgstr "Уникальное имя (DN) базы"
+msgstr "База поиска DN"
 
 msgid "Bind DN"
-msgstr "Связанное уникальное имя (DN)"
+msgstr "DN для связи"
 
 msgid "Bind password"
 msgstr "Пароль для связи"
@@ -744,7 +756,7 @@ msgid "Configuring"
 msgstr "Настраивается"
 
 msgid "Confirmation"
-msgstr "Подтверждение"
+msgstr "подтверждение"
 
 msgid "Connected FTP users"
 msgstr "Подключенные пользователи FTP"
@@ -775,13 +787,22 @@ msgid "Create and initialize RAID."
 msgstr "Создать и инициализировать RAID"
 
 msgid "Create encrypted volume"
-msgstr "Создать шифрованный том"
+msgstr "Создать зашифрованный том"
 
 msgid "Create mask"
 msgstr "Создать маску"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Создать рабочий каталог, если он не существует"
+
+msgid "Creating filesystem"
+msgstr "Создание файловой системы"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Создание файловой системы с \"Мягкими обновлениями\""
+
+msgid "Creating partition"
+msgstr "Создание раздела"
 
 msgid "Credits"
 msgstr "Список разработчиков"
@@ -1042,7 +1063,7 @@ msgid "Difference"
 msgstr "Изменение"
 
 msgid "Digital Audio Access Protocol"
-msgstr "Digital Audio Access Protocol (DAAP)"
+msgstr "iTunes/Digital Audio Access Protocol (DAAP)"
 
 msgid "Direction"
 msgstr "Направление"
@@ -1215,7 +1236,7 @@ msgid "Document root"
 msgstr "Корневой документ"
 
 msgid "Document root of the webserver. Home of the web page files."
-msgstr "Документ в корне web-сервера. Домашняя страница."
+msgstr "Корневой документ web-сервера, являющийся домашней страницей сайта."
 
 msgid "Domain"
 msgstr "Домен"
@@ -1233,10 +1254,10 @@ msgid "Domain name (NetBIOS-Name)"
 msgstr "Доменное имя (NetBIOS-Name)"
 
 msgid "Domain name in old format, e.g. EXAMPLE."
-msgstr "Доменное имя в старом формате, например: EXAMPLE."
+msgstr "Доменное имя в старом формате, например <i>EXAMPLE</i>"
 
 msgid "Domain name, e.g. example.com."
-msgstr "Доменное имя, например, example.com"
+msgstr "Доменное имя, например <i>example.com</i>"
 
 msgid "Don't Erase MBR"
 msgstr "Не стирать MBR"
@@ -1253,6 +1274,9 @@ msgid ""
 msgstr ""
 "Не собирать информацию о томах (stat volume path). Удобно при "
 "автомонтировании или для томов, создаваемых скриптом preexec."
+
+msgid "Done"
+msgstr "Готово"
 
 msgid "Done."
 msgstr "Выполнено"
@@ -1393,7 +1417,7 @@ msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Включить Zeroconf/Bonjour для объявления служб этого устройства"
 
 msgid "Enable anonymous bind."
-msgstr "Разрешить анонимную связь"
+msgstr "Разрешить анонимный доступ"
 
 msgid "Enable authentication."
 msgstr "Включить авторизацию"
@@ -1491,6 +1515,9 @@ msgstr ""
 "тип 'TEXT' и только потом меняют тип файла. Afpd может легко повредить "
 "содержимое таких файлов, когда начнет конвертировать в них переводы строк."
 
+msgid "Encrypted"
+msgstr "Зашифровано"
+
 msgid "Encrypted disk name"
 msgstr "Имя зашифрованного диска"
 
@@ -1543,6 +1570,9 @@ msgstr "Введите порт для отправки traps (по умолча
 
 msgid "Enter trap host name."
 msgstr "Введите имя хоста для traps."
+
+msgid "Erasing MBR and all partitions"
+msgstr "Стирание MBR и всех разделов"
 
 msgid "Error"
 msgstr "Ошибка"
@@ -1645,6 +1675,10 @@ msgstr "Сбой при создании файловой системы в па
 
 msgid "Failed to execute cron job."
 msgstr "Сбой при выполнении задания Сron'а."
+
+#, c-format
+msgid "Failed to send status report to: %s."
+msgstr "Отправка отчета состояния для %s завершилась неудачно."
 
 #, php-format
 msgid ""
@@ -1762,6 +1796,9 @@ msgstr "Форматирование"
 msgid "Format disk"
 msgstr "Форматировать диск"
 
+msgid "Formating disk"
+msgstr "Форматирование диска"
+
 msgid "Forum"
 msgstr "Форум разработчиков"
 
@@ -1794,9 +1831,6 @@ msgstr "Общие"
 
 msgid "General Setup"
 msgstr "Общие параметры"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "Разрешить полный доступ к shell этому пользователю"
@@ -2080,6 +2114,9 @@ msgstr ""
 msgid "Initializing"
 msgstr "Инициализация"
 
+msgid "Initializing partition"
+msgstr "Инициализация раздела"
+
 msgid "Initiator name"
 msgstr "Имя инициатора"
 
@@ -2254,6 +2291,19 @@ msgstr "Локальный каталог (получатель)"
 msgid "Local shares to be synchronized"
 msgstr "Локальные ресурсы для синхронизации"
 
+msgid "Local user bandwidth"
+msgstr "Ограничение скорости локальных пользователей"
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Ограничение скорости скачивания для локальных пользователей (кбайт/с). "
+"Пустое поле - без ограничений."
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Ограничение скорости закачки для локальных пользователей (кбайт/с). Пустое "
+"поле - без ограничений."
+
 msgid "Local users only"
 msgstr "Только локальные пользователи"
 
@@ -2340,7 +2390,7 @@ msgid "Map all users to root"
 msgstr "Присвоить всем пользователям права учетной записи root"
 
 msgid "Map to user"
-msgstr "Назначить пользователю"
+msgstr "Пользователь"
 
 msgid "Max. TTL"
 msgstr "Макс. TTL"
@@ -2903,6 +2953,9 @@ msgstr "Массив RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (с чередованием)"
 
+msgid "RAID 0/1/5"
+msgstr "Массив RAID 0/1/5 (Vinum)"
+
 msgid "RAID 1"
 msgstr "Массив RAID 1"
 
@@ -3044,10 +3097,10 @@ msgid "Retry"
 msgstr "Попытаться снова"
 
 msgid "Root bind DN"
-msgstr "Уникальное имя корневой связи"
+msgstr "DN администратора каталогов"
 
 msgid "Root bind password"
-msgstr "Пароль корневой связи"
+msgstr "Пароль администратора каталогов"
 
 msgid "Roundrobin"
 msgstr "Roundrobin"
@@ -3078,6 +3131,9 @@ msgstr "Правила"
 
 msgid "Run now"
 msgstr "Выполнить сейчас"
+
+msgid "Running"
+msgstr "Выполняется"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3124,9 +3180,9 @@ msgid ""
 "is disabled, a scan can still be forced from the status page of the "
 "administrative web interface."
 msgstr ""
-"Сканировать файловую систему каждые N секунд для поиска добавленных или "
-"удаленных файлов. Установите 0 для отключения, при этом можно вручную "
-"запустить сканирование на странице статуса интерфейса управления."
+"Сканировать файловую систему каждые n секунд для поиска добавленных или "
+"удаленных файлов, установите 0 для отключения. При этом остается возможность "
+"вручную запустить сканирование на странице статуса интерфейса управления."
 
 msgid "Scan type"
 msgstr "Тип сканирования"
@@ -3195,7 +3251,7 @@ msgid "Send test email"
 msgstr "Отправить тестовый e-mail"
 
 msgid "Separate email addresses by semi-colon."
-msgstr "Разделять e-mail адреса на две колонки."
+msgstr "Несколько адресов e-mail разделяются точкой с запятой."
 
 msgid "Server"
 msgstr "Сервер"
@@ -3268,7 +3324,7 @@ msgid ""
 "is zero (anyone can read or write)."
 msgstr ""
 "Использовать заданное значение umask при создании новых файлов. По умолчанию "
-"ноль (любой пользователь может читать и записывать)."
+"ноль (любой пользователь может читать или записывать)."
 
 msgid "Settings"
 msgstr "Параметры"
@@ -3339,8 +3395,11 @@ msgstr "Sleep - проверять устройство, пока оно не в
 msgid "Sockets"
 msgstr "Sockets"
 
+msgid "SoftRaid"
+msgstr "Software RAID"
+
 msgid "Software RAID"
-msgstr "Программный RAID"
+msgstr "Software RAID"
 
 msgid "Software RAID information and status"
 msgstr "Информация и состояние программного RAID-массива"
@@ -3390,7 +3449,7 @@ msgstr "Задает пользователя, от имени которого 
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
-msgstr "Указывает, позволено ли входить с правами суперпользователя (root)."
+msgstr "Указывает, позволен ли вход от имени суперпользователя (root)."
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
@@ -3428,6 +3487,10 @@ msgstr "Состояние"
 #, php-format
 msgid "Status report from host: %s.%s"
 msgstr "Отчет состояния от хоста %s.%s"
+
+#, c-format
+msgid "Status report successfully sent to: %s."
+msgstr "Отчет для %s отправлен успешно."
 
 msgid "Status report successfully sent."
 msgstr "Отчет отправлен успешно."
@@ -3548,7 +3611,7 @@ msgid "TCP port"
 msgstr "TCP-порт"
 
 msgid "TCP port to bind the server to."
-msgstr "Порт TCP, закрепленный за сервером"
+msgstr "Порт TCP, закрепленный за сервером."
 
 msgid "TFTP"
 msgstr "TFTP"
@@ -3746,9 +3809,7 @@ msgstr ""
 "они вступили в силу."
 
 msgid "The cleartext credentials with which to bind."
-msgstr ""
-"Незашифрованный пароль связанного уникального имени (DN) для связи с "
-"сервером каталогов."
+msgstr "Незашифрованный пароль DN для связи с сервером каталогов."
 
 msgid "The combination of share and working directory does not exist."
 msgstr "Комбинация общего ресурса и рабочего каталога не существует."
@@ -3781,8 +3842,7 @@ msgstr ""
 "раз."
 
 msgid "The credentials with which to bind."
-msgstr ""
-"Пароль связанного уникального имени (DN) для связи с сервером каталогов."
+msgstr "Пароль DN для связи с сервером каталогов."
 
 msgid "The cron job has been executed successfully."
 msgstr "Задание Сron'а было выполнено успешно."
@@ -3793,7 +3853,7 @@ msgstr "Порт почтового сервера по умолчанию, на
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
-"Уникальное имя (DN) базы по умолчанию, используемое для поиска, например %s"
+"Базовый DN, начиная с которого по умолчанию производится поиск, например %s"
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Имя устройства может состоять только из символов  a-z, A-Z, 0-9."
@@ -3816,11 +3876,17 @@ msgid ""
 msgstr ""
 "Этот диск смонтирован! <a href=%s>Размонтируйте</a> диск перед продолжением."
 
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"Этот диск в настоящий момент смонтирован! Для выполнения выбранной команды "
+"точка монтирования будет временно удалена."
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
-msgstr ""
-"Уникальное имя (DN), используемое для связи с сервером каталогов, например %s"
+msgstr "DN, используемое для связи с сервером каталогов, например %s"
 
 #, php-format
 msgid ""
@@ -4101,7 +4167,7 @@ msgid "This controls how the case of filenames are viewed and stored."
 msgstr "Этим контроллируется регистр просмотра и хранения имен файлов."
 
 msgid "This controls the access a remote host has to this module."
-msgstr "Это управляет доступом удаленных хостов к этому модулю."
+msgstr "Опция управляет доступом удаленных хостов к этому модулю."
 
 msgid "This controls the access to this share with an access password."
 msgstr "Этим задается доступ к общему ресурсу с паролем."
@@ -4230,9 +4296,9 @@ msgid ""
 "for a listing of available modules. By setting this to false you can create "
 "hidden modules."
 msgstr ""
-"Эта настройка определяет, будет ли отображен этот модуль, если клиент "
-"запрашивает список всех доступных модулей. Сняв эту настройку, можно "
-"создавать скрытые модули."
+"Эта настройка определяет, будет ли показан данный модуль, если клиент "
+"запрашивает список всех доступных модулей. Если отменить эту настройку, "
+"можно будет создать скрытые модули."
 
 msgid ""
 "This option is a comma, space, or tab delimited set of host which are NOT "
@@ -4527,6 +4593,9 @@ msgstr "Дружественное UPnP-имя."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr "Unformated"
+
 msgid "Uninstall package"
 msgstr "Удалить пакет"
 
@@ -4537,7 +4606,7 @@ msgid "Unison"
 msgstr "Unison"
 
 msgid "Unison File Synchronisation"
-msgstr "Синхронизация файлов Unison"
+msgstr "Служба синхронизации файлов Unison"
 
 msgid "Unix Command"
 msgstr "Команда Unix"
@@ -4751,7 +4820,7 @@ msgid "WebGUI"
 msgstr "Web-интерфейс"
 
 msgid "Webserver"
-msgstr "Webserver"
+msgstr "Web Server"
 
 msgid "Where the working files will be stored"
 msgstr "Место хранения рабочих файлов"
@@ -4763,8 +4832,9 @@ msgid ""
 "Whether scans should be skipped if there are no users connected. This allows "
 "the drive to spin down when no users are connected."
 msgstr ""
-"Нужно ли пропустить сканирование, если нет подключенных пользователей. Это "
-"позволяет остановить диск, когда отсутствуют подключенные пользователи."
+"Если отмечено, сканирование будет происходить всегда, даже если подключенные "
+"пользователи отсутствуют. Отменив эту опцию, можно избежать раскручивание "
+"диска при отсутствии обращений."
 
 msgid "Who"
 msgstr "Пользователь"
@@ -4855,7 +4925,7 @@ msgstr "Вы должны выбрать как минимум один из с�
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr ""
-"Для присоединения шифрованного диска нужно использовать парольную фразу."
+"Для присоединения зашифрованного диска нужно использовать парольную фразу."
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
@@ -4885,6 +4955,9 @@ msgstr "cnidscheme"
 
 msgid "crlf"
 msgstr "crlf"
+
+msgid "day"
+msgstr "день"
 
 msgid "days"
 msgstr "дней"
@@ -5006,9 +5079,6 @@ msgstr "дней недели"
 
 #~ msgid "hour"
 #~ msgstr "час"
-
-#~ msgid "day"
-#~ msgstr "день"
 
 #~ msgid "week"
 #~ msgstr "неделя"
@@ -5383,13 +5453,6 @@ msgstr "дней недели"
 #~ "Этот шаг сотрет все разделы, создаст раздел номер 1 и отформатирует его с "
 #~ "указанной файловой системой."
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr ""
-#~ "Этот диск в настоящий момент смонтирован! Для выполнения выбранной команды "
-#~ "точка монтирования будет временно удалена."
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -5410,6 +5473,9 @@ msgstr "дней недели"
 
 #~ msgid "Format RAID"
 #~ msgstr "Форматирование RAID-массива"
+
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
 
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
@@ -5803,37 +5869,22 @@ msgstr "дней недели"
 #~ msgid "webGUI Configuration"
 #~ msgstr "Настройка webGUI"
 
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "Стирание MBR и всех разделов"
-
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "Сохранение MBR и всех разделов"
 
 #~ msgid "Creating one partition"
 #~ msgstr "Создание одного раздела"
 
-#~ msgid "Initializing partition"
-#~ msgstr "Инициация раздела"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "Создание BSD метки"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "Создание файловой системы"
 
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "Уничтожение старой %s информации"
 
-#~ msgid "Done"
-#~ msgstr "Готово"
-
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "Создание %s раздела"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "Создание файловой системы с \"Мягкими обновлениями\""
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "
@@ -5857,12 +5908,6 @@ msgstr "дней недели"
 
 #~ msgid "Init and encrypt disk"
 #~ msgstr "Инициализировать и зашифровать диск"
-
-#~ msgid "Disk initialization and encryption"
-#~ msgstr "Инициация и шифрование диска"
-
-#~ msgid "Encrypting... Please wait"
-#~ msgstr "Шифруется... Подождите пожалуйста"
 
 #~ msgid "Attaching..."
 #~ msgstr "Присоединение..."
