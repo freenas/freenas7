@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
-"PO-Revision-Date: 2008-12-08 09:26+0000\n"
-"Last-Translator: Keruskerfuerst <Unknown>\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"PO-Revision-Date: 2008-12-16 08:15+0000\n"
+"Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -27,7 +27,7 @@ msgstr "%d%% von %d MB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s meldet sich selbst als Zeitserver gegenüber Windows Clients."
+msgstr "%s meldet sich selbst als Zeitserver gegenüber Windows-Clients."
 
 #, php-format
 msgid "%s available of %sB"
@@ -61,9 +61,6 @@ msgstr "%sB verfügbar von %s B"
 msgid "%sB used of %sB"
 msgstr "%sB verwendet von %s B"
 
-msgid "(unstable)"
-msgstr "(instabil)"
-
 msgid "*** Imported duplicate ***"
 msgstr "*** Importierte Duplikate ***"
 
@@ -87,7 +84,7 @@ msgid ""
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
 "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a href=%s>user</a> "
-"benötigt außerdem vollständigen Zugang zur Shell."
+"benötigt außerdem vollständigen Zugang zur Konsole."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -509,6 +506,21 @@ msgstr "Anonym"
 msgid "Anonymous bind"
 msgstr "Anomymer Bind"
 
+msgid "Anonymous user bandwidth"
+msgstr "Bandbreite anonymer Benutzer"
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Download-Bandbreite anonymer Benutzer in KB/s. Ein leeres Feld steht für "
+"unbegrenzt"
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Upload-Bandbreite anonymer Benutzer in KB/s. Ein leeres Feld steht für "
+"unbegrenzt."
+
 msgid "Anonymous users only"
 msgstr "Nur anonyme Benutzer zulassen"
 
@@ -795,6 +807,15 @@ msgstr "Erzeuge Maske"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Lege Arbeitsverzeichnis an, falls es noch nicht existiert"
+
+msgid "Creating filesystem"
+msgstr "Erstelle Dateisystem"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Erstelle Dateisystem samt 'Soft Updates'"
+
+msgid "Creating partition"
+msgstr "Erzeuge Partition"
 
 msgid "Credits"
 msgstr "Mitwirkende"
@@ -1274,6 +1295,9 @@ msgstr ""
 "durchgezählt wird - nützlich, wenn automatisch einghängt oder Volumes "
 "erzeugt werden - durch ein vorausgeführtes Skript."
 
+msgid "Done"
+msgstr "Fertig"
+
 msgid "Done."
 msgstr "Erledigt."
 
@@ -1514,6 +1538,9 @@ msgstr ""
 "Afpd wird dann fälschlicherweise bestimmte Bytes vertauschen, um sie zu "
 "übersetzen, und so möglicherweise die Dateien zerstören."
 
+msgid "Encrypted"
+msgstr "Verschlüsselt"
+
 msgid "Encrypted disk name"
 msgstr "Name der verschlüsselten Festplatte"
 
@@ -1568,6 +1595,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr "Geben Sie den Trap Hostnamen an."
+
+msgid "Erasing MBR and all partitions"
+msgstr "Lösche MBR (Master Boot Record) sowie sämtliche Partitionen"
 
 msgid "Error"
 msgstr "Fehler"
@@ -1670,6 +1700,10 @@ msgstr "Das Erstellen des RAM-Dateisystem ist fehlgeschlagen"
 
 msgid "Failed to execute cron job."
 msgstr "cron Job wurde nicht ausgeführt."
+
+#, c-format
+msgid "Failed to send status report to: %s."
+msgstr "Konnte keine Statusreport an %s senden."
 
 #, php-format
 msgid ""
@@ -1789,6 +1823,9 @@ msgstr "Formatieren"
 msgid "Format disk"
 msgstr "Festplatte formatieren!"
 
+msgid "Formating disk"
+msgstr "Formatiere Festplatte"
+
 msgid "Forum"
 msgstr "Forum"
 
@@ -1821,9 +1858,6 @@ msgstr "Allgemein"
 
 msgid "General Setup"
 msgstr "Allgemeine Einstellungen"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "Voller Kommandozeilenzugang für Benutzer!"
@@ -2119,6 +2153,9 @@ msgstr ""
 msgid "Initializing"
 msgstr "Initialisieren"
 
+msgid "Initializing partition"
+msgstr "Initialisiere Partition"
+
 msgid "Initiator name"
 msgstr "Name des Initiators"
 
@@ -2291,6 +2328,19 @@ msgstr "Lokale Freigabe (Ziel)"
 
 msgid "Local shares to be synchronized"
 msgstr "Lokale Freigaben für Synchonisation"
+
+msgid "Local user bandwidth"
+msgstr "Bandbreite lokaler Benutzer"
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Download-Bandbreite lokaler Benutzer in KB/s. Ein leeres Feld steht für "
+"unbegrenzt."
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Upload-Bandbreite lokaler Benutzer in KB/s. Ein leeres Feld steht für "
+"unbegrenzt."
 
 msgid "Local users only"
 msgstr "Nur lokale Benutzer zulassen"
@@ -2945,6 +2995,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (stripping)"
 
+msgid "RAID 0/1/5"
+msgstr "RAID 0/1/5"
+
 msgid "RAID 1"
 msgstr "RAID 1"
 
@@ -3006,7 +3059,7 @@ msgid "Realm"
 msgstr "Bereich"
 
 msgid "Reboot"
-msgstr "Reboot"
+msgstr "Neustarten"
 
 msgid "Receive Buffer Size"
 msgstr "Receive Buffer Size"
@@ -3123,6 +3176,9 @@ msgstr "Regeln"
 
 msgid "Run now"
 msgstr "Jetzt ausführen"
+
+msgid "Running"
+msgstr "Läuft"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3389,6 +3445,9 @@ msgstr ""
 msgid "Sockets"
 msgstr "Sockets"
 
+msgid "SoftRaid"
+msgstr "SoftRaid"
+
 msgid "Software RAID"
 msgstr "Software RAID"
 
@@ -3484,6 +3543,10 @@ msgstr "Status"
 #, php-format
 msgid "Status report from host: %s.%s"
 msgstr "Statusbericht von Host: %s.%s"
+
+#, c-format
+msgid "Status report successfully sent to: %s."
+msgstr "Statusbericht erfolgreich versendet an: %s."
 
 msgid "Status report successfully sent."
 msgstr "Statusreport wurde erfolgreich versandt."
@@ -3884,6 +3947,13 @@ msgid ""
 msgstr ""
 "Diese Festplatte ist momentan gemountet! <a href=%s>Unmounten</a> Sie diese "
 "Festplatte zuerst bevor sie fortfahren."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"Diese Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig "
+"entfernt um den ausgewählten Befehl auszuführen."
 
 #, php-format
 msgid ""
@@ -4629,6 +4699,9 @@ msgstr "UPnP-konformer Name."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr "Unformatiert"
+
 msgid "Uninstall package"
 msgstr "Deinstallationspaket"
 
@@ -4994,6 +5067,9 @@ msgstr "cnidscheme"
 msgid "crlf"
 msgstr "crlf"
 
+msgid "day"
+msgstr "Tag"
+
 msgid "days"
 msgstr "Tage"
 
@@ -5111,9 +5187,6 @@ msgstr "Wochentagen"
 
 #~ msgid "hour"
 #~ msgstr "Stunde"
-
-#~ msgid "day"
-#~ msgstr "Tag"
 
 #~ msgid "week"
 #~ msgstr "Woche"
@@ -5499,13 +5572,6 @@ msgstr "Wochentagen"
 #~ "Dieser Vorgang wird alle bestehenden Partitionen löschen, Partition #1 "
 #~ "anlegen und diese mit dem gewählten Dateisystem formatieren."
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr ""
-#~ "Diese Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig "
-#~ "entfernt um den ausgewählten Befehl auszuführen."
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -5527,6 +5593,9 @@ msgstr "Wochentagen"
 #~ msgid "Format RAID"
 #~ msgstr "RAID formatieren"
 
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
+
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
 
@@ -5538,6 +5607,9 @@ msgstr "Wochentagen"
 
 #~ msgid "Geom Raid5"
 #~ msgstr "Geom Raid5"
+
+#~ msgid "(unstable)"
+#~ msgstr "(instabil)"
 
 #~ msgid "RAID"
 #~ msgstr "RAID"
@@ -5953,37 +6025,22 @@ msgstr "Wochentagen"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI Konfiguration"
 
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "Lösche MBR (Master Boot Record) sowie sämtliche Partitionen"
-
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "Übernehme den MBR sowie alle Partitionen"
 
 #~ msgid "Creating one partition"
 #~ msgstr "Erstelle eine Partition"
 
-#~ msgid "Initializing partition"
-#~ msgstr "Initialisiere Partition"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "Erstelle BSD label"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "Erstelle Dateisystem"
 
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "Lösche %s alte Informationen"
 
-#~ msgid "Done"
-#~ msgstr "Fertig"
-
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "Erstelle %s Partition"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "Erstelle Dateisystem samt 'Soft Updates'"
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "

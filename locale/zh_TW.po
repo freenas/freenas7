@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -89,9 +89,6 @@ msgstr "%sB available of %sB"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sB used of %sB"
-
-msgid "(unstable)"
-msgstr "(測試中)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -484,6 +481,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "只允許匿名使用者"
 
@@ -752,6 +760,15 @@ msgstr "建立遮罩"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "如果你還沒有工作目錄，請建立一個"
+
+msgid "Creating filesystem"
+msgstr "建立檔案系統"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "建立'Soft Updates'的檔案系統"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr ""
@@ -1208,6 +1225,9 @@ msgstr ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
 
+msgid "Done"
+msgstr "完成"
+
 msgid "Done."
 msgstr "完成。"
 
@@ -1441,6 +1461,9 @@ msgstr ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "加密磁碟名稱"
 
@@ -1485,6 +1508,9 @@ msgstr "輸入 Traps 傳送阜（預設為 162）"
 
 msgid "Enter trap host name."
 msgstr "輸入 Trap 主機名稱。"
+
+msgid "Erasing MBR and all partitions"
+msgstr "刪除 MBR 以及所有的磁區分割"
 
 msgid "Error"
 msgstr "錯誤"
@@ -1578,6 +1604,10 @@ msgstr "無法建立 RAM Disk"
 
 msgid "Failed to execute cron job."
 msgstr "執行 cron 工作失敗。"
+
+#, c-format
+msgid "Failed to send status report to: %s."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1690,6 +1720,9 @@ msgstr "格式化"
 msgid "Format disk"
 msgstr "格式化磁碟"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1722,9 +1755,6 @@ msgstr "一般"
 
 msgid "General Setup"
 msgstr "一般設定"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "授與使用者 shell 權限"
@@ -1990,6 +2020,9 @@ msgstr ""
 msgid "Initializing"
 msgstr "正在初始化"
 
+msgid "Initializing partition"
+msgstr "磁區初始化"
+
 msgid "Initiator name"
 msgstr "初始名稱"
 
@@ -2152,6 +2185,15 @@ msgstr "本地端分享(目標)"
 
 msgid "Local shares to be synchronized"
 msgstr "欲同步的本機分享區"
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid "Local users only"
 msgstr "只允許本機使用者存取"
@@ -2769,6 +2811,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (stripping)"
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr "RAID 1"
 
@@ -2940,6 +2985,9 @@ msgstr ""
 
 msgid "Run now"
 msgstr "立刻執行"
+
+msgid "Running"
+msgstr ""
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3189,6 +3237,9 @@ msgstr "睡眠 - 裝置除了在睡眠模式之外都將檢查。"
 msgid "Sockets"
 msgstr "Sockets"
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "軟體RAID"
 
@@ -3270,6 +3321,10 @@ msgstr "狀態"
 #, php-format
 msgid "Status report from host: %s.%s"
 msgstr "主機 %s 的狀態報告。%s"
+
+#, c-format
+msgid "Status report successfully sent to: %s."
+msgstr ""
 
 msgid "Status report successfully sent."
 msgstr "狀態報告已傳送成功。"
@@ -3636,6 +3691,11 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr "磁碟目前正在掛載中！系統會將磁碟暫時卸載以進行指令。"
 
 #, php-format
 msgid ""
@@ -4269,6 +4329,9 @@ msgstr "UPnP friendly name."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr "移除套件"
 
@@ -4595,6 +4658,9 @@ msgstr ""
 msgid "crlf"
 msgstr "crlf"
 
+msgid "day"
+msgstr "天"
+
 msgid "days"
 msgstr "天"
 
@@ -4715,9 +4781,6 @@ msgstr "平常日"
 
 #~ msgid "hour"
 #~ msgstr "小時"
-
-#~ msgid "day"
-#~ msgstr "天"
 
 #~ msgid "week"
 #~ msgstr "周"
@@ -5061,11 +5124,6 @@ msgstr "平常日"
 #~ "format the hard drive with the file system specified."
 #~ msgstr "這個動作會刪除所有磁區，建立並且格式化第一號磁區成為你指定的檔案系統。"
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr "磁碟目前正在掛載中！系統會將磁碟暫時卸載以進行指令。"
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -5087,6 +5145,9 @@ msgstr "平常日"
 #~ msgid "Format RAID"
 #~ msgstr "格式化RAID"
 
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
+
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
 
@@ -5098,6 +5159,9 @@ msgstr "平常日"
 
 #~ msgid "Geom Raid5"
 #~ msgstr "Geom Raid5"
+
+#~ msgid "(unstable)"
+#~ msgstr "(測試中)"
 
 #~ msgid "RAID"
 #~ msgstr "RAID"
@@ -5454,37 +5518,22 @@ msgstr "平常日"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI 組態設定"
 
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "刪除 MBR 以及所有的磁區分割"
-
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "保留原有的MBR以及所有的磁區分割"
 
 #~ msgid "Creating one partition"
 #~ msgstr "建立一個磁區"
 
-#~ msgid "Initializing partition"
-#~ msgstr "磁區初始化"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "建立 BSD 標籤"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "建立檔案系統"
 
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "刪除舊 %s 資訊"
 
-#~ msgid "Done"
-#~ msgstr "完成"
-
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "建立 %s 磁區"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "建立'Soft Updates'的檔案系統"
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "

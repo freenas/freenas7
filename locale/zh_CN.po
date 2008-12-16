@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-11-18 12:22+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -89,9 +89,6 @@ msgstr "%sB中的%sB有效"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sB中的%sB已用"
-
-msgid "(unstable)"
-msgstr "(不稳定)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -484,6 +481,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
 
@@ -752,6 +760,15 @@ msgstr "建立遮罩"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "如果你还没有工作目录，请建立一个"
+
+msgid "Creating filesystem"
+msgstr "建立档案系统"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "建立'Soft Updates'的档案系统"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr "致谢"
@@ -1208,6 +1225,9 @@ msgstr ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
 
+msgid "Done"
+msgstr "完成"
+
 msgid "Done."
 msgstr "完成。"
 
@@ -1441,6 +1461,9 @@ msgstr ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "加密磁碟名称"
 
@@ -1485,6 +1508,9 @@ msgstr "输入 Traps 传送阜（预设为 162）"
 
 msgid "Enter trap host name."
 msgstr "输入 Trap 主机名称。"
+
+msgid "Erasing MBR and all partitions"
+msgstr "删除 MBR 以及所有的磁区分割"
 
 msgid "Error"
 msgstr "错误"
@@ -1578,6 +1604,10 @@ msgstr "无法建立 RAM Disk"
 
 msgid "Failed to execute cron job."
 msgstr "执行定时任务失败。"
+
+#, c-format
+msgid "Failed to send status report to: %s."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1690,6 +1720,9 @@ msgstr "格式化"
 msgid "Format disk"
 msgstr "格式化磁碟"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1722,9 +1755,6 @@ msgstr "一般"
 
 msgid "General Setup"
 msgstr "一般设定"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "授与使用者 shell 权限"
@@ -1990,6 +2020,9 @@ msgstr ""
 msgid "Initializing"
 msgstr "初始化"
 
+msgid "Initializing partition"
+msgstr "磁区初始化"
+
 msgid "Initiator name"
 msgstr "初始名称"
 
@@ -2152,6 +2185,15 @@ msgstr "本地端分享(目标)"
 
 msgid "Local shares to be synchronized"
 msgstr "欲同步的本机分享区"
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid "Local users only"
 msgstr "只允许本机使用者存取"
@@ -2769,6 +2811,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (stripping)"
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr "RAID 1"
 
@@ -2939,6 +2984,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
+msgstr ""
+
+msgid "Running"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3188,6 +3236,9 @@ msgstr "睡眠 - 装置除了在睡眠模式之外都将检查。"
 msgid "Sockets"
 msgstr "Sockets"
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "软体RAID"
 
@@ -3268,6 +3319,10 @@ msgstr "状态"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3635,6 +3690,11 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "磁碟已经挂载！请先<a href=%s>卸载</a>之后再继续其他动作。"
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr "磁碟目前正在挂载中！系统会将磁碟暂时卸载以进行指令。"
 
 #, php-format
 msgid ""
@@ -4266,6 +4326,9 @@ msgstr "UPnP friendly name."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr "移除套件"
 
@@ -4592,6 +4655,9 @@ msgstr ""
 msgid "crlf"
 msgstr "crlf"
 
+msgid "day"
+msgstr "天"
+
 msgid "days"
 msgstr "天"
 
@@ -4712,9 +4778,6 @@ msgstr "平常日"
 
 #~ msgid "hour"
 #~ msgstr "小时"
-
-#~ msgid "day"
-#~ msgstr "天"
 
 #~ msgid "week"
 #~ msgstr "周"
@@ -5039,11 +5102,6 @@ msgstr "平常日"
 #~ "format the hard drive with the file system specified."
 #~ msgstr "这个动作会删除所有磁区，建立并且格式化第一号磁区成为你指定的档案系统。"
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr "磁碟目前正在挂载中！系统会将磁碟暂时卸载以进行指令。"
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -5065,6 +5123,9 @@ msgstr "平常日"
 #~ msgid "Format RAID"
 #~ msgstr "格式化RAID"
 
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
+
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
 
@@ -5076,6 +5137,9 @@ msgstr "平常日"
 
 #~ msgid "Geom Raid5"
 #~ msgstr "Geom Raid5"
+
+#~ msgid "(unstable)"
+#~ msgstr "(不稳定)"
 
 #~ msgid "RAID"
 #~ msgstr "RAID"
@@ -5420,37 +5484,22 @@ msgstr "平常日"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI 组态设定"
 
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "删除 MBR 以及所有的磁区分割"
-
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "保留原有的MBR以及所有的磁区分割"
 
 #~ msgid "Creating one partition"
 #~ msgstr "建立一个磁区"
 
-#~ msgid "Initializing partition"
-#~ msgstr "磁区初始化"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "建立 BSD 标籤"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "建立档案系统"
 
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "删除旧 %s 资讯"
 
-#~ msgid "Done"
-#~ msgstr "完成"
-
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "建立 %s 磁区"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "建立'Soft Updates'的档案系统"
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "

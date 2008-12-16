@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-12-08 17:57+0000\n"
-"Last-Translator: shortname <Unknown>\n"
+"Last-Translator: Javier García Díaz <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -60,9 +60,6 @@ msgstr "%sB disponible de %sB"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sB usado de %sB"
-
-msgid "(unstable)"
-msgstr "(inestable)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -478,6 +475,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Usuarios anónimos solamente"
 
@@ -758,6 +766,15 @@ msgstr "Crear máscara"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Crear el directorio de trabajo si no existe"
+
+msgid "Creating filesystem"
+msgstr "Creando el sistema de archivos"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Creando sistema de archivos con 'Soft Updates'"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr ""
@@ -1220,6 +1237,9 @@ msgid ""
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "Finalizado"
+
 msgid "Done."
 msgstr "Hecho."
 
@@ -1453,6 +1473,9 @@ msgid ""
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "Nombre del disco encriptado"
 
@@ -1501,6 +1524,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr ""
+
+msgid "Erasing MBR and all partitions"
+msgstr "Borrando el MBR y todas las particiones"
 
 msgid "Error"
 msgstr "Error"
@@ -1598,6 +1624,10 @@ msgid "Failed to create in-memory file system."
 msgstr "Falló al crear un sistema de archivos en memoria."
 
 msgid "Failed to execute cron job."
+msgstr ""
+
+#, c-format
+msgid "Failed to send status report to: %s."
 msgstr ""
 
 #, php-format
@@ -1708,6 +1738,9 @@ msgstr "Formatear"
 msgid "Format disk"
 msgstr "Formatear el disco"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1740,9 +1773,6 @@ msgstr "General"
 
 msgid "General Setup"
 msgstr "Configuración general"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "Otorgar al usuario acceso completo a la consola."
@@ -2019,6 +2049,9 @@ msgstr ""
 msgid "Initializing"
 msgstr "Inicializando"
 
+msgid "Initializing partition"
+msgstr "Inicializando partición"
+
 msgid "Initiator name"
 msgstr "Nombre del iniciador"
 
@@ -2188,6 +2221,15 @@ msgstr "Elemento compartido local (destino)"
 
 msgid "Local shares to be synchronized"
 msgstr "Recursos compartidos locales a ser sincronizados"
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid "Local users only"
 msgstr ""
@@ -2825,6 +2867,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (stripping)"
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr "RADI 1"
 
@@ -2999,6 +3044,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
+msgstr ""
+
+msgid "Running"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3248,6 +3296,9 @@ msgstr "Dormir - Controla que el dispositivo esté en modo DORMIR"
 msgid "Sockets"
 msgstr "Sockets"
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "Software RAID"
 
@@ -3332,6 +3383,10 @@ msgstr "Estado"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3720,6 +3775,13 @@ msgid ""
 msgstr ""
 "Este disco está montado! <a href=%s>Desmontar</a> el disco antes de "
 "continuar."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"El disco está montado! El punto de montaje se eliminará temporalmente para "
+"llevar a cabo el comando seleccionado."
 
 #, php-format
 msgid ""
@@ -4334,6 +4396,9 @@ msgstr "Nombre común UPnP."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr ""
 
@@ -4667,6 +4732,9 @@ msgstr ""
 msgid "crlf"
 msgstr "crlf"
 
+msgid "day"
+msgstr "día"
+
 msgid "days"
 msgstr "días"
 
@@ -4869,6 +4937,9 @@ msgstr "días de la semana"
 
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
+
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
 
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"

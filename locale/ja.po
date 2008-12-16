@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
-"PO-Revision-Date: 2008-11-29 15:09+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"PO-Revision-Date: 2008-12-11 14:23+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:17+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -60,9 +60,6 @@ msgstr ""
 #, php-format
 msgid "%sB used of %sB"
 msgstr ""
-
-msgid "(unstable)"
-msgstr "(不安定)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -448,6 +445,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr ""
 
@@ -717,6 +725,15 @@ msgstr "Create mask"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "作業ディレクトリが存在しない場合は作成して下さい"
+
+msgid "Creating filesystem"
+msgstr "ファイルシステムの作成"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "'ソフトアップデート' 有りのファイルシステムを作成"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr ""
@@ -1162,6 +1179,9 @@ msgid ""
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "完了"
+
 msgid "Done."
 msgstr "完了"
 
@@ -1390,6 +1410,9 @@ msgid ""
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
+msgid "Encrypted"
+msgstr ""
+
 msgid "Encrypted disk name"
 msgstr "暗号化ディスク名"
 
@@ -1434,6 +1457,9 @@ msgstr "SNMPトラップの送信に利用するポート番号を入力して�
 
 msgid "Enter trap host name."
 msgstr ""
+
+msgid "Erasing MBR and all partitions"
+msgstr "MBR と全てのパーティションを消去"
 
 msgid "Error"
 msgstr "エラー"
@@ -1528,6 +1554,10 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to execute cron job."
+msgstr ""
+
+#, c-format
+msgid "Failed to send status report to: %s."
 msgstr ""
 
 #, php-format
@@ -1636,6 +1666,9 @@ msgstr "フォーマット"
 msgid "Format disk"
 msgstr "ディスクフォーマット"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1668,9 +1701,6 @@ msgstr "基本"
 
 msgid "General Setup"
 msgstr "基本設定"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr "ユーザにシェルアクセスを許可する。"
@@ -1930,6 +1960,9 @@ msgstr ""
 msgid "Initializing"
 msgstr "初期化中"
 
+msgid "Initializing partition"
+msgstr "パーティションの初期化"
+
 msgid "Initiator name"
 msgstr "イニシエーター名"
 
@@ -2092,6 +2125,15 @@ msgstr "ローカル共有 (接続先)"
 
 msgid "Local shares to be synchronized"
 msgstr "ローカル共有は同期されました"
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid "Local users only"
 msgstr "ローカルユーザのみ"
@@ -2705,6 +2747,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (ストライピング)"
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr "RAID 1"
 
@@ -2877,6 +2922,9 @@ msgstr ""
 msgid "Run now"
 msgstr ""
 
+msgid "Running"
+msgstr ""
+
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
 
@@ -2914,7 +2962,7 @@ msgid "Save and Restart"
 msgstr ""
 
 msgid "Saved file to"
-msgstr "ファイルを保存する"
+msgstr "以下のファイルを保存しました"
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -3122,6 +3170,9 @@ msgstr ""
 msgid "Sockets"
 msgstr "ソケット"
 
+msgid "SoftRaid"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "ソフトウェア RAID"
 
@@ -3201,6 +3252,10 @@ msgstr "ステータス"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3569,6 +3624,11 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "ディスクは既にマウントされています! 次へ進む為に最初にディスクを <a href=%s>アンマウント</a> して下さい．"
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr "ディスクは既にマウントされています! マウントポイントは選択されたコマンドによってテンポラリが削除されます．"
 
 #, php-format
 msgid ""
@@ -4161,6 +4221,9 @@ msgstr "UPnP フレンドリ名．"
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr ""
+
 msgid "Uninstall package"
 msgstr "パッケージのアンインストール"
 
@@ -4486,6 +4549,9 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
+msgid "day"
+msgstr "日"
+
 msgid "days"
 msgstr "日"
 
@@ -4606,9 +4672,6 @@ msgstr "週日"
 
 #~ msgid "hour"
 #~ msgstr "時"
-
-#~ msgid "day"
-#~ msgstr "日"
 
 #~ msgid "week"
 #~ msgstr "週"
@@ -4984,11 +5047,6 @@ msgstr "週日"
 #~ msgstr ""
 #~ "このステップでは，全てのパーティションを消去し，パーティション番号 1 を作成して，ファイルシステムを指定した状態でハードディスクをフォーマットします．"
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr "ディスクは既にマウントされています! マウントポイントは選択されたコマンドによってテンポラリが削除されます．"
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -5010,6 +5068,9 @@ msgstr "週日"
 #~ msgid "Format RAID"
 #~ msgstr "RAID のフォーマット"
 
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
+
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom ミラー"
 
@@ -5021,6 +5082,9 @@ msgstr "週日"
 
 #~ msgid "Geom Raid5"
 #~ msgstr "Geom Raid5"
+
+#~ msgid "(unstable)"
+#~ msgstr "(不安定)"
 
 #~ msgid "RAID"
 #~ msgstr "RAID"
@@ -5412,37 +5476,22 @@ msgstr "週日"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI 設定"
 
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "MBR と全てのパーティションを消去"
-
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "MBR と全てのパーティションをキープ"
 
 #~ msgid "Creating one partition"
 #~ msgstr "パーティションを1つ作成"
 
-#~ msgid "Initializing partition"
-#~ msgstr "パーティションの初期化"
-
 #~ msgid "Creating BSD label"
 #~ msgstr "BSD ラベルの作成"
-
-#~ msgid "Creating filesystem"
-#~ msgstr "ファイルシステムの作成"
 
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "古い %s の情報を破壊します"
 
-#~ msgid "Done"
-#~ msgstr "完了"
-
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "パーティション %s の作成"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "'ソフトアップデート' 有りのファイルシステムを作成"
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "

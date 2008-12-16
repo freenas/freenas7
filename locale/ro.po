@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-07 23:48+0000\n"
+"POT-Creation-Date: 2008-12-15 03:03+0000\n"
 "PO-Revision-Date: 2008-09-23 12:55+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 20:18+0000\n"
+"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -60,9 +60,6 @@ msgstr "%sB disponibili din %sB"
 #, php-format
 msgid "%sB used of %sB"
 msgstr "%sB utilizati din %sB"
-
-msgid "(unstable)"
-msgstr "(instabil)"
 
 msgid "*** Imported duplicate ***"
 msgstr ""
@@ -468,6 +465,17 @@ msgstr ""
 msgid "Anonymous bind"
 msgstr ""
 
+msgid "Anonymous user bandwidth"
+msgstr ""
+
+msgid ""
+"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid ""
+"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid "Anonymous users only"
 msgstr "Doar utilizatori anonimi"
 
@@ -749,6 +757,15 @@ msgstr "Creare masca"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Creare director de lucru daca acesta nu exista"
+
+msgid "Creating filesystem"
+msgstr "Creare Sistem fisiere"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Creare sistem fisiere cu 'Soft Updates'"
+
+msgid "Creating partition"
+msgstr ""
 
 msgid "Credits"
 msgstr ""
@@ -1212,6 +1229,9 @@ msgid ""
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "Gata"
+
 msgid "Done."
 msgstr "Gata."
 
@@ -1442,6 +1462,9 @@ msgid ""
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
+msgid "Encrypted"
+msgstr "Criptat"
+
 msgid "Encrypted disk name"
 msgstr "Nume disc criptat"
 
@@ -1488,6 +1511,9 @@ msgstr ""
 
 msgid "Enter trap host name."
 msgstr "Numele Serverului"
+
+msgid "Erasing MBR and all partitions"
+msgstr "Stergere MBR si toate partitiile definite."
 
 msgid "Error"
 msgstr "Eroare"
@@ -1586,6 +1612,10 @@ msgid "Failed to create in-memory file system."
 msgstr "Eroare la crearea sistemului de fisiere in memorie."
 
 msgid "Failed to execute cron job."
+msgstr ""
+
+#, c-format
+msgid "Failed to send status report to: %s."
 msgstr ""
 
 #, php-format
@@ -1696,6 +1726,9 @@ msgstr "Formatare"
 msgid "Format disk"
 msgstr "Formatare disc"
 
+msgid "Formating disk"
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1728,9 +1761,6 @@ msgstr "General"
 
 msgid "General Setup"
 msgstr "Setări generale"
-
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
 msgstr ""
@@ -2001,6 +2031,9 @@ msgstr ""
 msgid "Initializing"
 msgstr ""
 
+msgid "Initializing partition"
+msgstr "Initializare partitie"
+
 msgid "Initiator name"
 msgstr "Nume initiator"
 
@@ -2167,6 +2200,15 @@ msgstr "Partajare locala (destinatie)"
 
 msgid "Local shares to be synchronized"
 msgstr "Partajarile locale pentru sincronizare"
+
+msgid "Local user bandwidth"
+msgstr ""
+
+msgid "Local user download bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
+msgid "Local user upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid "Local users only"
 msgstr "Doar utilizatori locali"
@@ -2790,6 +2832,9 @@ msgstr "RAID 0"
 msgid "RAID 0 (stripping)"
 msgstr "RAID 0 (distribuire)"
 
+msgid "RAID 0/1/5"
+msgstr ""
+
 msgid "RAID 1"
 msgstr "RAID 1"
 
@@ -2960,6 +3005,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
+msgstr ""
+
+msgid "Running"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3207,6 +3255,9 @@ msgstr ""
 msgid "Sockets"
 msgstr ""
 
+msgid "SoftRaid"
+msgstr "Radi Soft"
+
 msgid "Software RAID"
 msgstr "RAID Software"
 
@@ -3290,6 +3341,10 @@ msgstr "Stare"
 
 #, php-format
 msgid "Status report from host: %s.%s"
+msgstr ""
+
+#, c-format
+msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
@@ -3663,6 +3718,13 @@ msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!"
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"Acest disc este montat in acest moment! Punctul de montare va fi eliminat "
+"temporar pentru a putea efectua comanda selectata."
 
 #, php-format
 msgid ""
@@ -4267,6 +4329,9 @@ msgstr "Nume simplu UPnP."
 msgid "URL"
 msgstr "URL"
 
+msgid "Unformated"
+msgstr "Neformatat"
+
 msgid "Uninstall package"
 msgstr "Dezinstalare pachet"
 
@@ -4609,6 +4674,9 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
+msgid "day"
+msgstr "zi"
+
 msgid "days"
 msgstr "zile"
 
@@ -4729,9 +4797,6 @@ msgstr "zilele saptaminii"
 
 #~ msgid "hour"
 #~ msgstr "ora"
-
-#~ msgid "day"
-#~ msgstr "zi"
 
 #~ msgid "week"
 #~ msgstr "saptamina"
@@ -5113,13 +5178,6 @@ msgstr "zilele saptaminii"
 #~ "Vor fi sterse toate partiile, va fi creata partiatia 1 si va fi formatat "
 #~ "discul cu sistemul de fisiere selectat."
 
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary to "
-#~ "perform selected command."
-#~ msgstr ""
-#~ "Acest disc este montat in acest moment! Punctul de montare va fi eliminat "
-#~ "temporar pentru a putea efectua comanda selectata."
-
 #~ msgid "iSCSI"
 #~ msgstr "iSCSI"
 
@@ -5141,6 +5199,9 @@ msgstr "zilele saptaminii"
 #~ msgid "Format RAID"
 #~ msgstr "Formatare RAID"
 
+#~ msgid "Geom Vinum"
+#~ msgstr "Geom Vinum"
+
 #~ msgid "Geom Mirror"
 #~ msgstr "Geom Mirror"
 
@@ -5152,6 +5213,9 @@ msgstr "zilele saptaminii"
 
 #~ msgid "Geom Raid5"
 #~ msgstr "Geom Raid5"
+
+#~ msgid "(unstable)"
+#~ msgstr "(instabil)"
 
 #~ msgid "RAID"
 #~ msgstr "RAID"
@@ -5576,22 +5640,13 @@ msgstr "zilele saptaminii"
 #~ msgid "Creating BSD label"
 #~ msgstr "Creare eticheta BSD"
 
-#~ msgid "Creating filesystem"
-#~ msgstr "Creare Sistem fisiere"
-
 #, c-format
 #~ msgid "Destroying old %s information"
 #~ msgstr "Distrugere informatii vechi %s"
 
-#~ msgid "Done"
-#~ msgstr "Gata"
-
 #, c-format
 #~ msgid "Creating %s partition"
 #~ msgstr "Creare partitie %s"
-
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "Creare sistem fisiere cu 'Soft Updates'"
 
 #~ msgid ""
 #~ "The crypted disk list has been changed.<br>You must apply the changes in "
