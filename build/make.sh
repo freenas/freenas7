@@ -47,10 +47,10 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.6
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
 if [ "amd64" = ${FREENAS_ARCH} ]; then
-FREENAS_MFSROOT_SIZE=80
+FREENAS_MFSROOT_SIZE=86
 FREENAS_IMG_SIZE=40
 else
-FREENAS_MFSROOT_SIZE=74
+FREENAS_MFSROOT_SIZE=80
 FREENAS_IMG_SIZE=36
 fi
 
