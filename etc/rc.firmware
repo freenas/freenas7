@@ -18,7 +18,7 @@
 # - fullupgrade <file> : Do a full release (TGZ file) upgrade using the file <file>
 
 SIZE="48M"
-CFDEVICE=`cat /var/etc/cfdevice`
+CFDEVICE=`cat /etc/cfdevice`
 
 backup_chflags() {
  	TOPROCESS="bin lib libexec sbin usr"

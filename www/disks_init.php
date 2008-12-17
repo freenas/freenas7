@@ -4,7 +4,7 @@
 	disks_init.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -47,10 +47,9 @@ unset($a_fst['ufs']); // Remove old UFS type: Now FreeNAS will impose only one U
 unset($a_fst['ufs_no_su']);
 unset($a_fst['ufsgpt_no_su']);
 
-// Load the /var/etc/cfdevice file to find out on which disk the OS is installed.
-$filename=$g['varetc_path']."/cfdevice";
-$cfdevice = trim(file_get_contents($filename));
-$cfdevice = "/dev/" . $cfdevice;
+// Load the /etc/cfdevice file to find out on which disk the OS is installed.
+$cfdevice = trim(file_get_contents("{$g['etc_path']}/cfdevice"));
+$cfdevice = "/dev/{$cfdevice}";
 
 // Get list of all configured disks (physical and virtual).
 $a_disk = get_conf_all_disks_list_filtered();

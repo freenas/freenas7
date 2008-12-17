@@ -240,8 +240,9 @@ EOD;
 	}
 
 	// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
-	// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
-	// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
+	// This file is used by the firmware and mount check and is normally
+	// generated with 'liveCD' and 'embedded' during startup, but need to be
+	// created during install of 'full'.
 	$cfdevice .= <<<EOD
 {$harddrive}s1a
 
