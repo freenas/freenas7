@@ -49,10 +49,9 @@ $a_mount = &$config['mounts']['mount'];
 // Get list of all configured disks (physical and virtual).
 $a_disk = get_conf_all_disks_list_filtered();
 
-/* Load the cfdevice file*/
-$filename=$g['varetc_path']."/cfdevice";
-$cfdevice = trim(file_get_contents("$filename"));
-$cfdevice = "/dev/" . $cfdevice;
+// Load the /etc/cfdevice file to find out on which disk the OS is installed.
+$cfdevice = trim(file_get_contents("{$g['etc_path']}/cfdevice"));
+$cfdevice = "/dev/{$cfdevice}";
 
 if (isset($id) && $a_mount[$id]) {
 	$pconfig['uuid'] = $a_mount[$id]['uuid'];
@@ -208,7 +207,7 @@ function initmodectrl(&$pconfig, $mode) {
 	$pconfig['mode_group'] = array();
 	$pconfig['mode_others'] = array();
 
-	// Convert octal to decimal 
+	// Convert octal to decimal
 	$mode = octdec($mode);
 
 	// Owner

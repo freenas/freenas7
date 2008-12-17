@@ -200,7 +200,7 @@ EOD;
 		}
 
 		// Write device name to a file (used by rc.firmware for example)
-		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
+		$fd = fopen("{$g['etc_path']}/cfdevice", "w");
 		if ($fd) {
 			fwrite($fd, "{$cfgpartition}\n");
 			fclose($fd);
