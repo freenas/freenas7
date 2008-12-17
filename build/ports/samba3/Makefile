@@ -19,7 +19,7 @@ SAMBA_LOGFILEBASE=	${VARDIR}/log/samba
 SAMBA_PIDDIR=				${VARDIR}/run
 SAMBA_PRIVATEDIR=		${VARDIR}/etc/private
 SAMBA_CONFIGDIR=		${VARDIR}/etc
-SAMBA_LOCKDIR=			${VARDIR}/run
+SAMBA_LOCKDIR=			${VARDIR}/db/samba
 SAMBA_CONFIG?=			smb.conf
 SAMBA_LIBDIR=				/usr/local/lib
 SAMBA_MODULEDIR=		${SAMBA_LIBDIR}/samba
@@ -69,6 +69,8 @@ pre-build:
 	cd ${WRKSRC} && ${MAKE} pch
 
 do-install:
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
+
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/winbindd ${FREENAS_ROOTFS}/usr/local/sbin

@@ -34,7 +34,7 @@ samba_config="${samba_config=${samba_config_default}}"
 command_args="${samba_config:+-s "${samba_config}"}"			#"
 samba_daemons="nmbd smbd winbindd"
 smbcontrol_command="/usr/bin/smbcontrol"
-samba_lockdir="${samba_lockdir=/var/run}"
+samba_lockdir="${samba_lockdir=/var/db/samba}"
 samba_piddir="${samba_piddir=/var/run}"
 samba_recycle_repository="${samba_recycle_repository:-".recycle/%U"}"
 samba_recycle_directory_mode="${samba_recycle_directory_mode:-"0777"}"
@@ -55,6 +55,9 @@ samba_ldap=$?
 if [ 0 -eq ${samba_ldap} ]; then
 	samba_idmap=1
 fi
+
+# Create required lock directory.
+[ ! -d "${samba_lockdir}" ] && mkdir -p "${samba_lockdir}"
 
 # Setup dependent variables
 if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
