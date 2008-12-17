@@ -10,6 +10,11 @@ Majors changes:
   to FreeBSD 6.4.
 - Upgrade nfe driver. Thanks to Tobias Reber for backporting FreeBSD 7.0
   driver and adding WOL support.
+- Finally fixed Samba lock file problem (they are located in /var/db/samba now).
+  You can increase the memory filesystem size for /var for LiveCD and 'embedded'
+  installations by modifying the rc.conf variable named 'varsize'. This is
+  necessary if you are running out of file space for *.tdb files (this normally
+  happens on heavy Samba share usage with many users). The default size is 32MB.
 
 Minors changes:
 - Set date in email-header when sending email.
