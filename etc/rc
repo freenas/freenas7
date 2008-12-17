@@ -73,16 +73,12 @@ for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/ssl/p
 	[ ! -d "${dir}" ] && mkdir -p ${dir} 
 done
 
-# If the file /etc/cfdevice exists (which means a 'full' release), and symlink /var/etc/cfdevice doesn't exist.. create it
-if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
-	ln -s /etc/cfdevice /var/etc/cfdevice
-fi
-
 # Configure the shared library cache
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
-# Let the other functions know we're booting
-touch /var/etc/booting
+# Let the PHP functions know we're booting
+BOOTING=1
+export BOOTING
 
 if [ "$1" = autoboot ]; then
 	autoboot=yes
@@ -146,8 +142,8 @@ for _rc_elem in ${files}; do
 	run_rc_script ${_rc_elem} ${_boot}
 done
 
-# Let the other functions know we've finished booting
-rm -f /var/etc/booting > /dev/null 2>&1
+# Let the PHP functions know we've finished booting
+BOOTING=0
 
 echo ''
 date

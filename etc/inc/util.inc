@@ -301,14 +301,14 @@ function is_domain($domain) {
 function is_netbios($string) {
 	if (15 < strlen($string))
 		return false;
-	
+
 	// See reference http://support.microsoft.com/kb/909264
 	// The following characters are not allowed: \ / : * ? " < > |
 	if (preg_match("/^[^\.]([^\\/:*\?\"<>|])*$/i", $string))
 		return true;
 
 	return false;
-} 
+}
 
 /* Returns true if $workgroup is a valid workgroup name */
 /* A workgroup name can contain up to 15 characters, including letters, numbers, */
@@ -1742,8 +1742,8 @@ function write_console($message) {
 // Check if booting process is performed.
 // Return TRUE if booting, otherwise FALSE
 function is_booting() {
-	global $g;
-	return file_exists("/var/etc/booting");
+	$val = getenv("BOOTING");
+	return (1 == $val) ? TRUE : FALSE;
 }
 
 // Get list of configured physical disks.
