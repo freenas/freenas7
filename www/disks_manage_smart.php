@@ -87,14 +87,14 @@ if ($_POST) {
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("smartssd", "smartssd_process_updatenotification");
+			$retval |= updatenotify_process("smartssd", "smartssd_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("smartd");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("smartssd");
+			updatenotify_delete("smartssd");
 		}
 	}
 }
@@ -110,7 +110,7 @@ $a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conv
 
 if ($_GET['act'] === "del") {
 	if ($a_selftest[$_GET['id']]) {
-		ui_set_updatenotification("smartssd", UPDATENOTIFICATION_MODE_DIRTY, $a_selftest[$_GET['id']]['uuid']);
+		updatenotify_set("smartssd", UPDATENOTIFY_MODE_DIRTY, $a_selftest[$_GET['id']]['uuid']);
 		header("Location: disks_manage_smart.php");
 		exit;
 	}
@@ -122,10 +122,10 @@ function smartssd_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['smartd']['selftest'])) {
 				$index = array_search_ex($data, $config['smartd']['selftest'], "uuid");
 				if (false !== $index) {
@@ -185,7 +185,7 @@ function enable_change(enable_change) {
 				<?php $smart = false; foreach ($config['disks']['disk'] as $device) { if (isset($device['smart'])) $smart = true; } if (false === $smart) print_error_box(gettext("Make sure you have activated S.M.A.R.T. for your devices."));?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (ui_exists_updatenotification("smartssd")) print_config_change_box();?>
+				<?php if (updatenotify_exists("smartssd")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Self-Monitoring, Analysis and Reporting Technology"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(this)");?>
 					<?php html_inputbox("interval", gettext("Check interval"), $pconfig['interval'], gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10."), true, 5);?>
@@ -242,12 +242,12 @@ function enable_change(enable_change) {
 									<td width="10%" class="list"></td>
 				        </tr>
 							  <?php $i = 0; foreach($a_selftest as $selftest):?>
-							  <?php $notificationmode = ui_get_updatenotification_mode("smartssd", $selftest['uuid']);?>
+							  <?php $notificationmode = updatenotify_get_mode("smartssd", $selftest['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($selftest['devicespecialfile']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars(gettext($a_type[$selftest['type']]));?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
-									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
 				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0"></a>
 				            <a href="disks_manage_smart.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0"></a>

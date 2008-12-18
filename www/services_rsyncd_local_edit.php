@@ -143,13 +143,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_rsynclocal[$id]) {
 			$a_rsynclocal[$id] = $rsynclocal;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rsynclocal[] = $rsynclocal;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("rsynclocal", $mode, $rsynclocal['uuid']);
+		updatenotify_set("rsynclocal", $mode, $rsynclocal['uuid']);
 		write_config();
 
 		if (stristr($_POST['Submit'], gettext("Execute now"))) {

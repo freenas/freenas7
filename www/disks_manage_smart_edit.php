@@ -105,13 +105,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_selftest[$id]) {
 			$a_selftest[$id] = $selftest;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_selftest[] = $selftest;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("smartssd", $mode, $selftest['uuid']);
+		updatenotify_set("smartssd", $mode, $selftest['uuid']);
 		write_config();
 
 		header("Location: disks_manage_smart.php");

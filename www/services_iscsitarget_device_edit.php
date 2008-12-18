@@ -106,13 +106,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_iscsitarget_device[$id]) {
 			$a_iscsitarget_device[$id] = $iscsitarget_device;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_device[] = $iscsitarget_device;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("iscsitarget_device", $mode, $iscsitarget_device['uuid']);
+		updatenotify_set("iscsitarget_device", $mode, $iscsitarget_device['uuid']);
 		write_config();
 
 		header("Location: services_iscsitarget.php");

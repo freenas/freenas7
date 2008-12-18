@@ -38,12 +38,12 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("routes", "routes_process_updatenotification");
+			$retval |= updatenotify_process("routes", "routes_process_updatenotification");
 			$retval |= rc_start_service("routing");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("routes");
+			updatenotify_delete("routes");
 		}
 	}
 }
@@ -55,7 +55,7 @@ array_sort_key($config['staticroutes']['route'], "network");
 $a_routes = &$config['staticroutes']['route'];
 
 if ($_GET['act'] === "del") {
-	ui_set_updatenotification("routes", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	updatenotify_set("routes", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	header("Location: system_routes.php");
 	exit;
 }
@@ -66,10 +66,10 @@ function routes_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['staticroutes']['route'])) {
 				$index = array_search_ex($data, $config['staticroutes']['route'], "uuid");
 				if (false !== $index) {
@@ -90,7 +90,7 @@ function routes_process_updatenotification($mode, $data) {
     <td class="tabcont">
 			<form action="system_routes.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (ui_exists_updatenotification("routes")) print_config_change_box();?>
+				<?php if (updatenotify_exists("routes")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
@@ -100,7 +100,7 @@ function routes_process_updatenotification($mode, $data) {
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php $i = 0; foreach ($a_routes as $route):?>
-					<?php $notificationmode = ui_get_updatenotification_mode("routes", $route['uuid']);?>
+					<?php $notificationmode = updatenotify_get_mode("routes", $route['uuid']);?>
 					<tr>
 						<td class="listlr">
 							<?php
@@ -112,7 +112,7 @@ function routes_process_updatenotification($mode, $data) {
 	          <td class="listr"><?=strtolower($route['network']);?>&nbsp;</td>
 	          <td class="listr"><?=strtolower($route['gateway']);?>&nbsp;</td>
 	          <td class="listbg"><?=htmlspecialchars($route['descr']);?>&nbsp;</td>
-	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" border="0"></a>
 	          	<a href="system_routes.php?act=del&uuid=<?=$route['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" border="0"></a>

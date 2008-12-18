@@ -187,14 +187,14 @@ if ($_POST) {
 		$mount['accessrestrictions']['mode'] = getmodectrl($pconfig['mode_owner'], $pconfig['mode_group'], $pconfig['mode_others']);
 
 		if (isset($id) && $a_mount[$id]) {
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 			$a_mount[$id] = $mount;
 		} else {
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 			$a_mount[] = $mount;
 		}
 
-		ui_set_updatenotification("mountpoint", $mode, $mount['uuid']);
+		updatenotify_set("mountpoint", $mode, $mount['uuid']);
 		write_config();
 
 		header("Location: disks_mount.php");

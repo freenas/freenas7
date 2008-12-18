@@ -42,7 +42,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			ui_process_updatenotification("mountpoint", "mountmanagement_process_updatenotification");
+			updatenotify_process("mountpoint", "mountmanagement_process_updatenotification");
 
 			// Restart services
 			config_lock();
@@ -58,7 +58,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("mountpoint");
+			updatenotify_delete("mountpoint");
 		}
 		header("Location: disks_mount.php");
 		exit;
@@ -77,7 +77,7 @@ if ($_GET['act'] === "del") {
 		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
 			$errormsg[] = gettext("The swap file is using this mount point.");
 		} else {
-			ui_set_updatenotification("mountpoint", UPDATENOTIFICATION_MODE_DIRTY, $a_mount[$_GET['id']]['uuid']);
+			updatenotify_set("mountpoint", UPDATENOTIFY_MODE_DIRTY, $a_mount[$_GET['id']]['uuid']);
 			header("Location: disks_mount.php");
 			exit;
 		}
@@ -112,16 +112,16 @@ function mountmanagement_process_updatenotification($mode, $data) {
 		return 1;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFY_MODE_NEW:
 			disks_mount($config['mounts']['mount'][$index]);
 			break;
 
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			disks_umount_ex($config['mounts']['mount'][$index]);
 			disks_mount($config['mounts']['mount'][$index]);
 			break;
 
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			disks_umount($config['mounts']['mount'][$index]);
 			unset($config['mounts']['mount'][$index]);
 			write_config();
@@ -145,7 +145,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="disks_mount.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
-        <?php if (ui_exists_updatenotification("mountpoint")) print_config_change_box();?>
+        <?php if (updatenotify_exists("mountpoint")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
@@ -157,15 +157,15 @@ function mountmanagement_process_updatenotification($mode, $data) {
           </tr>
 					<?php $i = 0; foreach($a_mount as $mount):?>
 					<?php
-					$notificationmode = ui_get_updatenotification_mode("mountpoint", $mount['uuid']);
+					$notificationmode = updatenotify_get_mode("mountpoint", $mount['uuid']);
 					switch ($notificationmode) {
-						case UPDATENOTIFICATION_MODE_NEW:
+						case UPDATENOTIFY_MODE_NEW:
 							$status = gettext("Initializing");
 							break;
-						case UPDATENOTIFICATION_MODE_MODIFIED:
+						case UPDATENOTIFY_MODE_MODIFIED:
 							$status = gettext("Modifying");
 							break;
-						case UPDATENOTIFICATION_MODE_DIRTY:
+						case UPDATENOTIFY_MODE_DIRTY:
 							$status = gettext("Deleting");
 							break;
 						default:
@@ -187,7 +187,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
             <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
             <td class="listbg"><?=$status;?>&nbsp;</td>
-            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+            <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit mount point");?>" border="0"></a>&nbsp;
               <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete mount point");?>" border="0"></a>

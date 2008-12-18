@@ -41,14 +41,14 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("userdb_group", "userdbgroup_process_updatenotification");
+			$retval |= updatenotify_process("userdb_group", "userdbgroup_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("userdb");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("userdb_group");
+			updatenotify_delete("userdb_group");
 		}
 	}
 }
@@ -63,7 +63,7 @@ $a_group = system_get_group_list();
 
 if ($_GET['act'] === "del") {
 	if ($a_group_conf[$_GET['id']]) {
-		ui_set_updatenotification("userdb_group", UPDATENOTIFICATION_MODE_DIRTY, $a_group_conf[$_GET['id']]['uuid']);
+		updatenotify_set("userdb_group", UPDATENOTIFY_MODE_DIRTY, $a_group_conf[$_GET['id']]['uuid']);
 		header("Location: access_users_groups.php");
 		exit;
 	}
@@ -75,10 +75,10 @@ function userdbgroup_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['access']['group'])) {
 				$index = array_search_ex($data, $config['access']['group'], "uuid");
 				if (false !== $index) {
@@ -106,7 +106,7 @@ function userdbgroup_process_updatenotification($mode, $data) {
 		<td class="tabcont">
 			<form action="access_users_groups.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (ui_exists_updatenotification("userdb_group")) print_config_change_box();?>
+				<?php if (updatenotify_exists("userdb_group")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="45%" class="listhdrr"><?=gettext("Group");?></td>
@@ -115,12 +115,12 @@ function userdbgroup_process_updatenotification($mode, $data) {
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php $i = 0; foreach ($a_group_conf as $groupv):?>
-					<?php $notificationmode = ui_get_updatenotification_mode("userdb_group", $groupv['uuid']);?>
+					<?php $notificationmode = updatenotify_get_mode("userdb_group", $groupv['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($groupv['name']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($groupv['id']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($groupv['desc']);?>&nbsp;</td>
-						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
 							<a href="access_users_groups_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit group");?>" border="0"></a>&nbsp;
 							<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" border="0"></a>

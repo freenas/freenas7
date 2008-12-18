@@ -102,7 +102,7 @@ if ($_POST['export']) {
 				}
 				$config['system']['firewall']['rule'][] = $rule;
 
-				ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_NEW, $rule['uuid']);
+				updatenotify_set("firewall", UPDATENOTIFY_MODE_NEW, $rule['uuid']);
 			}
 
 			write_config();
@@ -122,14 +122,14 @@ if ($_POST['export']) {
 
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
-		$retval |= ui_process_updatenotification("firewall", "firewall_process_updatenotification");
+		$retval |= updatenotify_process("firewall", "firewall_process_updatenotification");
 		config_lock();
 		$retval |= rc_update_service("ipfw");
 		config_unlock();
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		ui_cleanup_updatenotification("firewall");
+		updatenotify_delete("firewall");
 	}
 }
 
@@ -142,10 +142,10 @@ $a_rule = &$config['system']['firewall']['rule'];
 if ($_GET['act'] === "del") {
 	if ($_GET['uuid'] === "all") {
 		foreach ($a_rule as $rulek => $rulev) {
-			ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_DIRTY, $a_rule[$rulek]['uuid']);
+			updatenotify_set("firewall", UPDATENOTIFY_MODE_DIRTY, $a_rule[$rulek]['uuid']);
 		}
 	} else {
-		ui_set_updatenotification("firewall", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+		updatenotify_set("firewall", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	}
 	header("Location: system_firewall.php");
 	exit;
@@ -157,10 +157,10 @@ function firewall_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['system']['firewall']['rule'])) {
 				$index = array_search_ex($data, $config['system']['firewall']['rule'], "uuid");
 				if (false !== $index) {
@@ -182,7 +182,7 @@ function firewall_process_updatenotification($mode, $data) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (ui_exists_updatenotification("firewall")) print_config_change_box();?>
+				<?php if (updatenotify_exists("firewall")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("System firewall"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<tr>
@@ -201,7 +201,7 @@ function firewall_process_updatenotification($mode, $data) {
 									<td width="10%" class="list"></td>
 								</tr>
 								<?php $i = 0; foreach ($a_rule as $rule):?>
-								<?php $notificationmode = ui_get_updatenotification_mode("firewall", $rule['uuid']);?>
+								<?php $notificationmode = updatenotify_get_mode("firewall", $rule['uuid']);?>
 								<tr>
 									<?php $enable = isset($rule['enable']);
 									switch ($rule['action']) {
@@ -224,7 +224,7 @@ function firewall_process_updatenotification($mode, $data) {
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['dstport']) ? "*" : $rule['dstport']);?>&nbsp;</td>
 									<td class="<?=$enable?"listrc":"listrcd";?>"><?=empty($rule['direction']) ? "*" : strtoupper($rule['direction']);?>&nbsp;</td>
 									<td class="listbg"><?=htmlspecialchars($rule['desc']);?>&nbsp;</td>
-									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 									<td valign="middle" nowrap class="list">
 										<a href="system_firewall_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit rule");?>" border="0"></a>
 										<a href="system_firewall.php?act=del&uuid=<?=$rule['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this rule?");?>')"><img src="x.gif" title="<?=gettext("Delete rule");?>" border="0"></a>

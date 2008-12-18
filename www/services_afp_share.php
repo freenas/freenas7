@@ -44,7 +44,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("afpshare", "afpshare_process_updatenotification");
+			$retval |= updatenotify_process("afpshare", "afpshare_process_updatenotification");
 		  config_lock();
 			$retval |= rc_update_service("afpd");
 			$retval |= rc_update_service("mdnsresponder");
@@ -52,7 +52,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("afpshare");
+			updatenotify_delete("afpshare");
 		}
 	}
 }
@@ -65,7 +65,7 @@ $a_share = &$config['afp']['share'];
 
 if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {
-		ui_set_updatenotification("afpshare", UPDATENOTIFICATION_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
+		updatenotify_set("afpshare", UPDATENOTIFY_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
 		header("Location: services_afp_share.php");
 		exit;
 	}
@@ -77,10 +77,10 @@ function afpshare_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['afp']['share'])) {
 				$index = array_search_ex($data, $config['afp']['share'], "uuid");
 				if (false !== $index) {
@@ -108,7 +108,7 @@ function afpshare_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="services_afp_share.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (ui_exists_updatenotification("afpshare")) print_config_change_box();?>
+        <?php if (updatenotify_exists("afpshare")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
           	<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
@@ -117,12 +117,12 @@ function afpshare_process_updatenotification($mode, $data) {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach ($a_share as $sharev):?>
-  			  <?php $notificationmode = ui_get_updatenotification_mode("afpshare", $sharev['uuid']);?>
+  			  <?php $notificationmode = updatenotify_get_mode("afpshare", $sharev['uuid']);?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
-            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+            <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="services_afp_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0"></a>
               <a href="services_afp_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" border="0"></a>

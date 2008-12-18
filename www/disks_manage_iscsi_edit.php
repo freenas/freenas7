@@ -101,13 +101,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_iscsiinit[$id]) {
 			$a_iscsiinit[$id] = $iscsiinit;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsiinit[] = $iscsiinit;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("iscsiinitiator", $mode, $iscsiinit['uuid']);
+		updatenotify_set("iscsiinitiator", $mode, $iscsiinit['uuid']);
 		write_config();
 
 		header("Location: disks_manage_iscsi.php");

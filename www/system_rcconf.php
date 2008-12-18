@@ -42,14 +42,14 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("rcconf", "rcconf_process_updatenotification");
+			$retval |= updatenotify_process("rcconf", "rcconf_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("rcconf.sh");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("rcconf");
+			updatenotify_delete("rcconf");
 		}
 	}
 }
@@ -63,10 +63,10 @@ $a_rcvar = &$config['system']['rcconf']['param'];
 if ($_GET['act'] === "del") {
 	if ($_GET['id'] === "all") {
 		foreach ($a_rcvar as $rcvark => $rcvarv) {
-			ui_set_updatenotification("rcconf", UPDATENOTIFICATION_MODE_DIRTY, $a_rcvar[$rcvark]['uuid']);
+			updatenotify_set("rcconf", UPDATENOTIFY_MODE_DIRTY, $a_rcvar[$rcvark]['uuid']);
 		}
 	} else {
-		ui_set_updatenotification("rcconf", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+		updatenotify_set("rcconf", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	}
 	header("Location: system_rcconf.php");
 	exit;
@@ -78,10 +78,10 @@ function rcconf_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['system']['rcconf']['param'])) {
 				$index = array_search_ex($data, $config['system']['rcconf']['param'], "uuid");
 				if (false !== $index) {
@@ -116,7 +116,7 @@ function rcconf_process_updatenotification($mode, $data) {
     <td class="tabcont">
     	<form action="system_rcconf.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
-	    	<?php if (ui_exists_updatenotification("rcconf")) print_config_change_box();?>
+	    	<?php if (updatenotify_exists("rcconf")) print_config_change_box();?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
 	          <td width="40%" class="listhdrr"><?=gettext("Variable");?></td>
@@ -125,12 +125,12 @@ function rcconf_process_updatenotification($mode, $data) {
 	          <td width="10%" class="list"></td>
 	        </tr>
 				  <?php $i = 0; foreach($a_rcvar as $rcvarv):?>
-				  <?php $notificationmode = ui_get_updatenotification_mode("rcconf", $rcvarv['uuid']);?>
+				  <?php $notificationmode = updatenotify_get_mode("rcconf", $rcvarv['uuid']);?>
 	        <tr>
 	          <td class="listlr"><?=htmlspecialchars($rcvarv['name']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
-	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>
 	            <a href="system_rcconf.php?act=del&uuid=<?=$rcvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0"></a>

@@ -126,13 +126,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_share[$id]) {
 			$a_share[$id] = $share;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_share[] = $share;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("smbshare", $mode, $share['uuid']);
+		updatenotify_set("smbshare", $mode, $share['uuid']);
 		write_config();
 
     header("Location: services_samba_share.php");

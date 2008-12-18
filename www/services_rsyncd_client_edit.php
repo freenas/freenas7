@@ -145,13 +145,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_rsyncclient[$id]) {
 			$a_rsyncclient[$id] = $rsyncclient;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rsyncclient[] = $rsyncclient;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("rsyncclient", $mode, $rsyncclient['uuid']);
+		updatenotify_set("rsyncclient", $mode, $rsyncclient['uuid']);
 		write_config();
 
 		if (stristr($_POST['Submit'], gettext("Execute now"))) {

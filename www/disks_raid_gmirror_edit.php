@@ -99,16 +99,16 @@ if ($_POST) {
 
 		if (isset($id) && $a_raid[$id]) {
 			$a_raid[$id] = $raid;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_raid[] = $raid;
 			if ($_POST['init'])
-				$mode = UPDATENOTIFICATION_MODE_NEW;
+				$mode = UPDATENOTIFY_MODE_NEW;
 			else
-				$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+				$mode = UPDATENOTIFY_MODE_MODIFIED;
 		}
 
-		ui_set_updatenotification("raid_gmirror", $mode, $raid['uuid']);
+		updatenotify_set("raid_gmirror", $mode, $raid['uuid']);
 		write_config();
 
 		header("Location: disks_raid_gmirror.php");

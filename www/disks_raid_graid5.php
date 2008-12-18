@@ -42,11 +42,11 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			$retval = ui_process_updatenotification("raid_graid5", "graid5_process_updatenotification");
+			$retval = updatenotify_process("raid_graid5", "graid5_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("raid_graid5");
+			updatenotify_delete("raid_graid5");
 		}
 		header("Location: disks_raid_graid5.php");
 		exit;
@@ -64,7 +64,7 @@ if ($_GET['act'] === "del") {
 	if ($a_raid[$_GET['id']]) {
 		// Check if disk is mounted.
 		if (0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
-			ui_set_updatenotification("raid_graid5", UPDATENOTIFICATION_MODE_DIRTY, $a_raid[$_GET['id']]['uuid']);
+			updatenotify_set("raid_graid5", UPDATENOTIFY_MODE_DIRTY, $a_raid[$_GET['id']]['uuid']);
 			header("Location: disks_raid_graid5.php");
 			exit;
 		} else {
@@ -79,15 +79,15 @@ function graid5_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFY_MODE_NEW:
 			$retval |= rc_exec_service("geom load raid5");
 			$retval |= rc_exec_service("geom tune raid5");
 			$retval |= disks_raid_graid5_configure($data);
 			break;
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			$retval |= rc_exec_service("geom start raid5");
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			$retval |= disks_raid_graid5_delete($data);
 			if (is_array($config['graid5']['vdisk'])) {
 				$index = array_search_ex($data, $config['graid5']['vdisk'], "uuid");
@@ -125,8 +125,8 @@ function graid5_process_updatenotification($mode, $data) {
 			<form action="disks_raid_graid5.php" method="post">
 				<?php if ($errormsg) print_error_box($errormsg); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (ui_exists_updatenotification_mode("raid_graid5", UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."));?>
-				<?php if (ui_exists_updatenotification("raid_graid5")) print_config_change_box();?>
+				<?php if (updatenotify_exists_mode("raid_graid5", UPDATENOTIFY_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."));?>
+				<?php if (updatenotify_exists("raid_graid5")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>
@@ -145,17 +145,17 @@ function graid5_process_updatenotification($mode, $data) {
         		$status = $raidstatus[$raid['name']]['state'];
 					}
 
-					$notificationmode = ui_get_updatenotification_mode("raid_graid5", $raid['uuid']);
+					$notificationmode = updatenotify_get_mode("raid_graid5", $raid['uuid']);
 					switch ($notificationmode) {
-						case UPDATENOTIFICATION_MODE_NEW:
+						case UPDATENOTIFY_MODE_NEW:
 							$size = gettext("Initializing");
 							$status = gettext("Initializing");
 							break;
-						case UPDATENOTIFICATION_MODE_MODIFIED:
+						case UPDATENOTIFY_MODE_MODIFIED:
 							$size = gettext("Modifying");
 							$status = gettext("Modifying");
 							break;
-						case UPDATENOTIFICATION_MODE_DIRTY:
+						case UPDATENOTIFY_MODE_DIRTY:
 							$status = gettext("Deleting");
 							break;
 					}
@@ -165,7 +165,7 @@ function graid5_process_updatenotification($mode, $data) {
             <td class="listr"><?=htmlspecialchars($raid['type']);?></td>
             <td class="listr"><?=$size;?>&nbsp;</td>
             <td class="listbg"><?=$status;?>&nbsp;</td>
-            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+            <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="disks_raid_graid5_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" border="0"></a>&nbsp;
 							<a href="disks_raid_graid5.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" border="0"></a>

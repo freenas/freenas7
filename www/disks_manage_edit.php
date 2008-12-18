@@ -106,13 +106,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_disk[$id]) {
 			$a_disk[$id] = $disks;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_disk[] = $disks;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("device", $mode, $disks['uuid']);
+		updatenotify_set("device", $mode, $disks['uuid']);
 		write_config();
 
 		header("Location: disks_manage.php");

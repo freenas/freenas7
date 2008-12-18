@@ -42,11 +42,11 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			$retval = ui_process_updatenotification("geli", "geli_process_updatenotification");
+			$retval = updatenotify_process("geli", "geli_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("geli");
+			updatenotify_delete("geli");
 		}
 		header("Location: disks_crypt.php");
 		exit;
@@ -62,7 +62,7 @@ $a_geli = &$config['geli']['vdisk'];
 if ($_GET['act'] === "del") {
 	if ($a_geli[$_GET['id']]) {
 		if (disks_exists($a_geli[$_GET['id']]['devicespecialfile'])) {
-			ui_set_updatenotification("geli", UPDATENOTIFICATION_MODE_DIRTY, $a_geli[$_GET['id']]['uuid']);
+			updatenotify_set("geli", UPDATENOTIFY_MODE_DIRTY, $a_geli[$_GET['id']]['uuid']);
 			header("Location: disks_crypt.php");
 			exit;
 		} else {
@@ -85,7 +85,7 @@ function geli_process_updatenotification($mode, $data) {
 	$retval = 0;
 	
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['geli']['vdisk'])) {
 				$index = array_search_ex($data, $config['geli']['vdisk'], "uuid");
 				if (false !== $index) {
@@ -119,8 +119,8 @@ function geli_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="disks_crypt.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (ui_exists_updatenotification_mode("geli", UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."));?>
-        <?php if (ui_exists_updatenotification("geli")) print_config_change_box();?>
+        <?php if (updatenotify_exists_mode("geli", UPDATENOTIFY_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."));?>
+        <?php if (updatenotify_exists("geli")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Disk"); ?></td>
@@ -136,11 +136,11 @@ function geli_process_updatenotification($mode, $data) {
             <td class="listr"><?=htmlspecialchars($geli['ealgo']);?>&nbsp;</td>
             <td class="listbg">
               <?php
-              if (ui_exists_updatenotification("geli")) {
+              if (updatenotify_exists("geli")) {
 								$status = gettext("Configuring");
-								$notificationmode = ui_get_updatenotification_mode("geli", $geli['uuid']);
+								$notificationmode = updatenotify_get_mode("geli", $geli['uuid']);
 								switch ($notificationmode) {
-									case UPDATENOTIFICATION_MODE_DIRTY:
+									case UPDATENOTIFY_MODE_DIRTY:
 										$status = gettext("Deleting");
 										break;
 								}

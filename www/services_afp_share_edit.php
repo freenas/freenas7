@@ -158,13 +158,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_share[$id]) {
 			$a_share[$id] = $share;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_share[] = $share;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("afpshare", $mode, $share['uuid']);
+		updatenotify_set("afpshare", $mode, $share['uuid']);
 		write_config();
 
 		header("Location: services_afp_share.php");

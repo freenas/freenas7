@@ -42,14 +42,14 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("cronjob", "cronjob_process_updatenotification");
+			$retval |= updatenotify_process("cronjob", "cronjob_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("cron");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("cronjob");
+			updatenotify_delete("cronjob");
 		}
 	}
 }
@@ -60,7 +60,7 @@ if (!is_array($config['cron']['job']))
 $a_cron = &$config['cron']['job'];
 
 if ($_GET['act'] === "del") {
-	ui_set_updatenotification("cronjob", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+	updatenotify_set("cronjob", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	header("Location: system_cron.php");
 	exit;
 }
@@ -71,10 +71,10 @@ function cronjob_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['cron']['job'])) {
 				$index = array_search_ex($data, $config['cron']['job'], "uuid");
 				if (false !== $index) {
@@ -108,7 +108,7 @@ function cronjob_process_updatenotification($mode, $data) {
     <td class="tabcont">
     	<form action="system_cron.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
-	    	<?php if (ui_exists_updatenotification("cronjob")) print_config_change_box();?>
+	    	<?php if (updatenotify_exists("cronjob")) print_config_change_box();?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
 						<td width="40%" class="listhdrr"><?=gettext("Command");?></td>
@@ -117,13 +117,13 @@ function cronjob_process_updatenotification($mode, $data) {
 						<td width="10%" class="list"></td>
 	        </tr>
 				  <?php $i = 0; foreach($a_cron as $job):?>
-				  <?php $notificationmode = ui_get_updatenotification_mode("cronjob", $job['uuid']);?>
+				  <?php $notificationmode = updatenotify_get_mode("cronjob", $job['uuid']);?>
 	        <tr>
 	        	<?php $enable = isset($job['enable']);?>
 	        	<td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($job['command']);?>&nbsp;</td>
 	          <td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($job['who']);?>&nbsp;</td>
 	          <td class="listbg"><?=htmlspecialchars($job['desc']);?>&nbsp;</td>
-	          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" border="0"></a>
 							<a href="system_cron.php?act=del&uuid=<?=$job['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" border="0"></a>

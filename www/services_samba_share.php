@@ -44,7 +44,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("smbshare", "smbshare_process_updatenotification");
+			$retval |= updatenotify_process("smbshare", "smbshare_process_updatenotification");
 		  config_lock();
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("mdnsresponder");
@@ -52,7 +52,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if (0 == $retval) {
-			ui_cleanup_updatenotification("smbshare");
+			updatenotify_delete("smbshare");
 		}
 	}
 }
@@ -65,7 +65,7 @@ $a_share = &$config['samba']['share'];
 
 if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {
-		ui_set_updatenotification("smbshare", UPDATENOTIFICATION_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
+		updatenotify_set("smbshare", UPDATENOTIFY_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
 		header("Location: services_samba_share.php");
 		exit;
 	}
@@ -77,10 +77,10 @@ function smbshare_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['samba']['share'])) {
 				$index = array_search_ex($data, $config['samba']['share'], "uuid");
 				if (false !== $index) {
@@ -108,7 +108,7 @@ function smbshare_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="services_samba_share.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (ui_exists_updatenotification("smbshare")) print_config_change_box();?>
+        <?php if (updatenotify_exists("smbshare")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
           	<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
@@ -118,13 +118,13 @@ function smbshare_process_updatenotification($mode, $data) {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_share as $sharev):?>
-  			  <?php $notificationmode = ui_get_updatenotification_mode("smbshare", $sharev['uuid']);?>
+  			  <?php $notificationmode = updatenotify_get_mode("smbshare", $sharev['uuid']);?>
           <tr>
           	<td class="listlr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
-            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+            <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="services_samba_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0"></a>
               <a href="services_samba_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" border="0"></a>
