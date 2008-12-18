@@ -4,19 +4,21 @@ CATEGORIES=		textproc
 COMMENT=			Command line XML toolkit
 MAINTAINER=		votdev@gmx.de
 
-# No files are needed to be fetched.
-DISTFILES?=
-# No build is required for this port.
-NO_BUILD?=	yes
-# Don't register a port installation as a package.
-NO_PKG_REGISTER?=	yes
-# Set default target to execute when a port is calling a dependency.
-ALWAYS_BUILD_DEPENDS=	yes
-DEPENDS_TARGET=	clean build
+MASTER_SITES=				${MASTER_SITE_SOURCEFORGE_EXTENDED}
+MASTER_SITE_SUBDIR=	xmlstar
 
-BUILD_DEPENDS=	xml:${PORTSDIR}/textproc/xmlstarlet
+USE_GNOME=			libxslt
+USE_ICONV=			yes
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--with-libxml-prefix=${LOCALBASE} \
+								--with-libxslt-prefix=${LOCALBASE} \
+								--with-libiconv-prefix=${LOCALBASE}
+
+post-patch:
+	@${REINPLACE_CMD} -e "s|%%PTHREAD%%|${PTHREAD_LIBS}|g" \
+		${WRKSRC}/configure
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/textproc/xmlstarlet/work/xmlstarlet-*/src/xml ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/xml ${FREENAS_ROOTFS}/${PREFIX}/bin
 
 .include <bsd.port.mk>
