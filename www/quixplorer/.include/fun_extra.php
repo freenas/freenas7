@@ -111,7 +111,9 @@ function parse_file_perms($mode) {		// parsed file permisions
 }
 //------------------------------------------------------------------------------
 function get_file_size($dir, $item) {		// file size
-	return @filesize(get_abs_item($dir, $item));
+	// Fix PHP file size problem (see http://de.php.net/manual/en/function.filesize.php).
+	return exec("stat -f %z " . escapeshellarg(get_abs_item($dir, $item)));
+	//return @filesize(get_abs_item($dir, $item));
 }
 //------------------------------------------------------------------------------
 function parse_file_size($size) {		// parsed file size
