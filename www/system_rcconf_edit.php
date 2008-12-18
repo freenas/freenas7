@@ -82,13 +82,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_rcvar[$id]) {
 			$a_rcvar[$id] = $param;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rcvar[] = $param;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("rcconf", $mode, $param['uuid']);
+		updatenotify_set("rcconf", $mode, $param['uuid']);
 		write_config();
 
 		header("Location: system_rcconf.php");

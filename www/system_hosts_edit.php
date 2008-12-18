@@ -96,13 +96,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_hosts[$id]) {
 			$a_hosts[$id] = $host;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_hosts[] = $host;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("hosts", $mode, $host['uuid']);
+		updatenotify_set("hosts", $mode, $host['uuid']);
 		write_config();
 
 		header("Location: system_hosts.php");

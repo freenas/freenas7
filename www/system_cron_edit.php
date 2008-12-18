@@ -124,13 +124,13 @@ if ($_POST) {
 		} else {
 			if (isset($id) && $a_cronjob[$id]) {
 				$a_cronjob[$id] = $cronjob;
-				$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+				$mode = UPDATENOTIFY_MODE_MODIFIED;
 			} else {
 				$a_cronjob[] = $cronjob;
-				$mode = UPDATENOTIFICATION_MODE_NEW;
+				$mode = UPDATENOTIFY_MODE_NEW;
 			}
 
-			ui_set_updatenotification("cronjob", $mode, $cronjob['uuid']);
+			updatenotify_set("cronjob", $mode, $cronjob['uuid']);
 			write_config();
 
 			header("Location: system_cron.php");

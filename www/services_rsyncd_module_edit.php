@@ -120,13 +120,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_module[$id]) {
 			$a_module[$id] = $module;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_module[] = $module;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("rsyncd", $mode, $module['uuid']);
+		updatenotify_set("rsyncd", $mode, $module['uuid']);
 		write_config();
 
     header("Location: services_rsyncd_module.php");

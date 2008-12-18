@@ -44,7 +44,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("nfsshare", "nfsshare_process_updatenotification");
+			$retval |= updatenotify_process("nfsshare", "nfsshare_process_updatenotification");
 		  config_lock();
 			$retval |= rc_update_service("rpcbind"); // !!! Do
 			$retval |= rc_update_service("mountd");  // !!! not
@@ -56,7 +56,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("nfsshare");
+			updatenotify_delete("nfsshare");
 		}
 	}
 }
@@ -69,7 +69,7 @@ $a_share = &$config['nfsd']['share'];
 
 if ($_GET['act'] === "del") {
 	if ($a_share[$_GET['id']]) {
-		ui_set_updatenotification("nfsshare", UPDATENOTIFICATION_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
+		updatenotify_set("nfsshare", UPDATENOTIFY_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
 		header("Location: services_nfs_share.php");
 		exit;
 	}
@@ -81,10 +81,10 @@ function nfsshare_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['nfsd']['share'])) {
 				$index = array_search_ex($data, $config['nfsd']['share'], "uuid");
 				if (false !== $index) {
@@ -112,7 +112,7 @@ function nfsshare_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="services_nfs_share.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
-        <?php if (ui_exists_updatenotification("nfsshare")) print_config_change_box();?>
+        <?php if (updatenotify_exists("nfsshare")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
 						<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
@@ -121,12 +121,12 @@ function nfsshare_process_updatenotification($mode, $data) {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach ($a_share as $sharev):?>
-  			  <?php $notificationmode = ui_get_updatenotification_mode("nfsshare", $sharev['uuid']);?>
+  			  <?php $notificationmode = updatenotify_get_mode("nfsshare", $sharev['uuid']);?>
           <tr>
 						<td class="listlr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($sharev['network']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
-						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="services_nfs_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0"></a>
               <a href="services_nfs_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" border="0"></a>

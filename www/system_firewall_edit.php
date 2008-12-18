@@ -105,13 +105,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_rule[$id]) {
 			$a_rule[$id] = $rule;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rule[] = $rule;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("firewall", $mode, $rule['uuid']);
+		updatenotify_set("firewall", $mode, $rule['uuid']);
 		write_config();
 
 		header("Location: system_firewall.php");

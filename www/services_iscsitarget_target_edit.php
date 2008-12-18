@@ -121,13 +121,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_iscsitarget_target[$id]) {
 			$a_iscsitarget_target[$id] = $iscsitarget_target;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_target[] = $iscsitarget_target;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("iscsitarget_target", $mode, $iscsitarget_target['uuid']);
+		updatenotify_set("iscsitarget_target", $mode, $iscsitarget_target['uuid']);
 		write_config();
 
 		header("Location: services_iscsitarget.php");

@@ -126,13 +126,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_user[$id]) {
 			$a_user[$id] = $users;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_user[] = $users;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		ui_set_updatenotification("userdb_user", $mode, $users['uuid']);
+		updatenotify_set("userdb_user", $mode, $users['uuid']);
 		write_config();
 
 		header("Location: access_users.php");

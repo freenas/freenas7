@@ -41,7 +41,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("device", "diskmanagement_process_updatenotification");
+			$retval |= updatenotify_process("device", "diskmanagement_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("ataidle");
 			$retval |= rc_update_service("smartd");
@@ -49,7 +49,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("device");
+			updatenotify_delete("device");
 		}
 		header("Location: disks_manage.php");
 		exit;
@@ -64,7 +64,7 @@ $a_disk_conf = &$config['disks']['disk'];
 
 if ($_GET['act'] === "del") {
 	if ($a_disk_conf[$_GET['id']]) {
-		ui_set_updatenotification("device", UPDATENOTIFICATION_MODE_DIRTY, $a_disk_conf[$_GET['id']]['uuid']);
+		updatenotify_set("device", UPDATENOTIFY_MODE_DIRTY, $a_disk_conf[$_GET['id']]['uuid']);
 		header("Location: disks_manage.php");
 		exit;
 	}
@@ -76,10 +76,10 @@ function diskmanagement_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['disks']['disk'])) {
 				$index = array_search_ex($data, $config['disks']['disk'], "uuid");
 				if (false !== $index) {
@@ -108,7 +108,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
     <td class="tabcont">
 			<form action="disks_manage.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (ui_exists_updatenotification("device")) print_config_change_box();?>
+				<?php if (updatenotify_exists("device")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="5%" class="listhdrr"><?=gettext("Disk"); ?></td>
@@ -121,15 +121,15 @@ function diskmanagement_process_updatenotification($mode, $data) {
 					</tr>
 					<?php $i = 0; foreach ($a_disk_conf as $disk):?>
 					<?php
-					$notificationmode = ui_get_updatenotification_mode("device", $disk['uuid']);
+					$notificationmode = updatenotify_get_mode("device", $disk['uuid']);
 					switch ($notificationmode) {
-						case UPDATENOTIFICATION_MODE_NEW:
+						case UPDATENOTIFY_MODE_NEW:
 							$status = gettext("Initializing");
 							break;
-						case UPDATENOTIFICATION_MODE_MODIFIED:
+						case UPDATENOTIFY_MODE_MODIFIED:
 							$status = gettext("Modifying");
 							break;
-						case UPDATENOTIFICATION_MODE_DIRTY:
+						case UPDATENOTIFY_MODE_DIRTY:
 							$status = gettext("Deleting");
 							break;
 						default:
@@ -144,7 +144,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="listr"><?php if ($disk['harddiskstandby']) { echo $disk['harddiskstandby']; } else { echo gettext("Always on"); }?>&nbsp;</td>
 						<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>
 						<td class="listbg"><?=$status;?>&nbsp;</td>
-						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
 							<a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" border="0"></a>&nbsp;
 							<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" border="0"></a>

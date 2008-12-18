@@ -123,13 +123,13 @@ if ($_POST) {
 
 		if (isset($id) && $a_routes[$id]) {
 			$a_routes[$id] = $route;
-			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_routes[] = $route;
-			$mode = UPDATENOTIFICATION_MODE_NEW;
+			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 		
-		ui_set_updatenotification("routes", $mode, $route['uuid']);
+		updatenotify_set("routes", $mode, $route['uuid']);
 		write_config();
 		
 		header("Location: system_routes.php");

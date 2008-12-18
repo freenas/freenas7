@@ -41,7 +41,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			$retval |= ui_process_updatenotification("rsyncclient", "rsyncclient_process_updatenotification");
+			$retval |= updatenotify_process("rsyncclient", "rsyncclient_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("rsync_client");
 			$retval |= rc_update_service("cron");
@@ -49,7 +49,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			ui_cleanup_updatenotification("rsyncclient");
+			updatenotify_delete("rsyncclient");
 		}
 	}
 }
@@ -66,7 +66,7 @@ $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if ($_GET['act'] === "del") {
 	if ($a_rsyncclient[$_GET['id']]) {
-		ui_set_updatenotification("rsyncclient", UPDATENOTIFICATION_MODE_DIRTY, $a_rsyncclient[$_GET['id']]['uuid']);
+		updatenotify_set("rsyncclient", UPDATENOTIFY_MODE_DIRTY, $a_rsyncclient[$_GET['id']]['uuid']);
 		header("Location: services_rsyncd_client.php");
 		exit;
 	}
@@ -78,10 +78,10 @@ function rsyncclient_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_NEW:
-		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['rsync']['rsyncclient'])) {
 				$index = array_search_ex($data, $config['rsync']['rsyncclient'], "uuid");
 				if (false !== $index) {
@@ -111,7 +111,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
     <td class="tabcont">
       <form action="services_rsyncd_client.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
-        <?php if (ui_exists_updatenotification("rsyncclient")) print_config_change_box();?>
+        <?php if (updatenotify_exists("rsyncclient")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
 						<td width="20%" class="listhdrr"><?=gettext("Remote module (source)");?></td>
@@ -122,7 +122,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient):?>
-  			  <?php $notificationmode = ui_get_updatenotification_mode("rsyncclient", $rsyncclient['uuid']);?>
+  			  <?php $notificationmode = updatenotify_get_mode("rsyncclient", $rsyncclient['uuid']);?>
           <tr>
           	<?php $enable = isset($rsyncclient['enable']);?>
 						<td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($rsyncclient['remoteshare']);?>&nbsp;</td>
@@ -130,7 +130,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
 						<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
 						<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rsyncclient['who']);?>&nbsp;</td>
 						<td class="listbg"><?=htmlspecialchars($rsyncclient['description']);?>&nbsp;</td>
-						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
               <a href="services_rsyncd_client.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync job?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job"); ?>" border="0"></a>

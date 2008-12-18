@@ -46,18 +46,18 @@ if ($_POST) {
 
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
-		$retval |= ui_process_updatenotification("iscsitarget_extent", "iscsitargetextent_process_updatenotification");
-		$retval |= ui_process_updatenotification("iscsitarget_device", "iscsitargetdevice_process_updatenotification");
-		$retval |= ui_process_updatenotification("iscsitarget_target", "iscsitargettarget_process_updatenotification");
+		$retval |= updatenotify_process("iscsitarget_extent", "iscsitargetextent_process_updatenotification");
+		$retval |= updatenotify_process("iscsitarget_device", "iscsitargetdevice_process_updatenotification");
+		$retval |= updatenotify_process("iscsitarget_target", "iscsitargettarget_process_updatenotification");
 		config_lock();
 		$retval |= rc_update_service("iscsi_target");
 		config_unlock();
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		ui_cleanup_updatenotification("iscsitarget_extent");
-		ui_cleanup_updatenotification("iscsitarget_device");
-		ui_cleanup_updatenotification("iscsitarget_target");
+		updatenotify_delete("iscsitarget_extent");
+		updatenotify_delete("iscsitarget_device");
+		updatenotify_delete("iscsitarget_target");
 	}
 }
 
@@ -77,15 +77,15 @@ array_sort_key($config['iscsitarget']['extent'], "name");
 if ($_GET['act'] === "del") {
 	switch ($_GET['type']) {
 		case "extent":
-			ui_set_updatenotification("iscsitarget_extent", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+			updatenotify_set("iscsitarget_extent", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 			break;
 
 		case "device":
-			ui_set_updatenotification("iscsitarget_device", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+			updatenotify_set("iscsitarget_device", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 			break;
 
 		case "target":
-			ui_set_updatenotification("iscsitarget_target", UPDATENOTIFICATION_MODE_DIRTY, $_GET['uuid']);
+			updatenotify_set("iscsitarget_target", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 			break;
 	}
 	header("Location: services_iscsitarget.php");
@@ -98,7 +98,7 @@ function iscsitargetextent_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['iscsitarget']['extent'])) {
 				$index = array_search_ex($data, $config['iscsitarget']['extent'], "uuid");
 				if (false !== $index) {
@@ -118,7 +118,7 @@ function iscsitargetdevice_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['iscsitarget']['device'])) {
 				$index = array_search_ex($data, $config['iscsitarget']['device'], "uuid");
 				if (false !== $index) {
@@ -138,7 +138,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 	$retval = 0;
 
 	switch ($mode) {
-		case UPDATENOTIFICATION_MODE_DIRTY:
+		case UPDATENOTIFY_MODE_DIRTY:
 			if (is_array($config['iscsitarget']['target'])) {
 				$index = array_search_ex($data, $config['iscsitarget']['target'], "uuid");
 				if (false !== $index) {
@@ -158,7 +158,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 	  <tr>
 	    <td class="tabcont">
 			  <?php if ($savemsg) print_info_box($savemsg);?>
-			  <?php if (ui_exists_updatenotification("iscsitarget_extent") || ui_exists_updatenotification("iscsitarget_device") || ui_exists_updatenotification("iscsitarget_target")) print_config_change_box();?>
+			  <?php if (updatenotify_exists("iscsitarget_extent") || updatenotify_exists("iscsitarget_device") || updatenotify_exists("iscsitarget_target")) print_config_change_box();?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 			    <tr>
@@ -172,12 +172,12 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td width="10%" class="list"></td>
 				        </tr>
 							  <?php $i = 0; foreach($config['iscsitarget']['extent'] as $extent):?>
-							  <?php $notificationmode = ui_get_updatenotification_mode("iscsitarget_extent", $extent['uuid']);?>
+							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_extent", $extent['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
 									<td class="listr"><?php echo htmlspecialchars($extent['path']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($extent['size']);?>MB&nbsp;</td>
-									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
 				          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
 				            <a href="services_iscsitarget.php?act=del&type=extent&uuid=<?=$extent['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" border="0"></a>
@@ -208,7 +208,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td width="10%" class="list"></td>
 				        </tr>
 							  <?php $i = 0; foreach($config['iscsitarget']['device'] as $device):?>
-							  <?php $notificationmode = ui_get_updatenotification_mode("iscsitarget_device", $device['uuid']);?>
+							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_device", $device['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($device['name']);?>&nbsp;</td>
 				          <td class="listr"><?=htmlspecialchars($device['type']);?>&nbsp;</td>
@@ -218,7 +218,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 										<?php endforeach;?>
 										&nbsp;
 									</td>
-									<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
 				          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>
 				            <a href="services_iscsitarget.php?act=del&type=device&uuid=<?=$device['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" border="0"></a>
@@ -250,7 +250,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td width="10%" class="list"></td>
 				        </tr>
 							  <?php $i = 0; foreach($config['iscsitarget']['target'] as $target):?>
-							  <?php $notificationmode = ui_get_updatenotification_mode("iscsitarget_target", $target['uuid']);?>
+							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_target", $target['uuid']);?>
 				        <tr>
 									<td class="listlr">iqn.1994-04.org.netbsd.iscsi-target:<?=htmlspecialchars($target['name']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($target['flags']);?>&nbsp;</td>
@@ -261,7 +261,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 										&nbsp;
 									</td>
 				          <td class="listr"><?=htmlspecialchars($target['ipaddr'])."/".htmlspecialchars($target['subnet']);?>&nbsp;</td>
-				          <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+				          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
 				          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
 				            <a href="services_iscsitarget.php?act=del&type=target&uuid=<?=$target['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" border="0"></a>
