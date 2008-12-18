@@ -30,15 +30,11 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--enable-libxml \
 									--with-libxml-dir=${LOCALBASE} \
 									--with-config-file-path=/usr/local/etc \
-									--enable-pdo=shared \
-									--with-pdo-sqlite=shared,${LOCALBASE}
+									--enable-pdo \
+									--with-pdo-sqlite=${LOCALBASE}
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/${PREFIX}/bin/php
 	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/${PREFIX}/etc
-
-	@${MKDIR} ${FREENAS_ROOTFS}/${PREFIX}/lib/php
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/ext/pdo/.libs/pdo.so ${FREENAS_ROOTFS}/${PREFIX}/lib/php
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/ext/pdo_sqlite/.libs/pdo_sqlite.so ${FREENAS_ROOTFS}/${PREFIX}/lib/php
 
 .include <bsd.port.mk>
