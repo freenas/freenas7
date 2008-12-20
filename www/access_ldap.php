@@ -161,13 +161,11 @@ function anonymousbind_change() {
 		case false:
 			showElementById('binddn_tr','show');
 			showElementById('bindpw_tr','show');
-			showElementById('bindpw2_tr','show');
 			break;
 
 		case true:
 			showElementById('binddn_tr','hide');
 			showElementById('bindpw_tr','hide');
-			showElementById('bindpw2_tr','hide');
 			break;
 	}
 }
