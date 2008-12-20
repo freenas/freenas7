@@ -157,12 +157,16 @@ function print_table($dir, $list, $allow) {	// print table of files
 		echo htmlspecialchars($item)."\" onclick=\"javascript:Toggle(this);\"></TD>\n";
 	// Icon + Link
 		echo "<TD nowrap>";
+		if (get_is_dir($dir, $item)) {
 		/*if($link!="") */ echo"<A HREF=\"".$link."\" TARGET=\"".$target."\">";
 		//else echo "<A>";
+		}
 		echo "<IMG border=\"0\" width=\"16\" height=\"16\" ";
 		echo "align=\"ABSMIDDLE\" src=\"_img/".get_mime_type($dir, $item, "img")."\" ALT=\"\">&nbsp;";
 		$s_item=$item;	if(strlen($s_item)>50) $s_item=substr($s_item,0,47)."...";
-		echo htmlspecialchars($s_item)."</A></TD>\n";	// ...$extra...
+		echo htmlspecialchars($s_item);
+		if (get_is_dir($dir, $item)) echo "</A>";
+		echo "</TD>\n";	// ...$extra...
 	// Size
 		echo "<TD>".parse_file_size(get_file_size($dir,$item))."</TD>\n";
 	// Type
