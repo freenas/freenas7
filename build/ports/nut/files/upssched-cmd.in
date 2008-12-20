@@ -75,7 +75,7 @@ logger -t upssched-cmd "${_message}"
 # Send email if feature is enabled
 if configxml_isset //ups/email/enable; then
 	# Get configured email recipients and subject.
-	_recipients=`configxml_get "//ups/email/to" | /usr/bin/tr ";" " "`
+	_recipients=`configxml_get "//ups/email/to" | /usr/bin/tr ";," " "`
 	_subject=`configxml_get "//ups/email/subject"`
 
 	# Send email.

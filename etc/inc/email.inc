@@ -63,7 +63,7 @@ function email_send($address, $subject, $message, &$error) {
 	$rfcdate = date('r');
 
 	// Convert adresses for msmtp.
-	$address = strtr($address, ";", " ");
+	$address = strtr($address, array(";" => " ", "," => " "));
 
 	// Generate message content.
 	$data = "";
