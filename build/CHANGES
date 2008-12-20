@@ -28,6 +28,10 @@ Minors changes:
 - Add exit status for send_email function in email.subr (BR 2422479).
 - Add nfsstat for NFS diagnostics (FR 2093184).
 - Do not display links for files in Quixplorer file view.
+- Add knobs to the fusefs rc.d script (NTFS support) to safely wait until all
+  data has been written on shutdown. To enable this feature you have to set
+  the rc.conf variables 'fusefs_safe=YES' and 'fusefs_safe_evil=YES' in
+  'System|Advanced|rc.conf'.
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).

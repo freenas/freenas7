@@ -21,6 +21,8 @@ stop_cmd="fusefs_stop"
 
 # Defaults
 fusefs_enable=${fusefs_enable:-"NO"}
+fusefs_safe=${fusefs_safe:-"NO"}
+fusefs_safe_evil=${fusefs_safe_evil:-"NO"}
 kmod="/boot/kernel/fuse.ko"
 
 fusefs_start()
@@ -40,19 +42,37 @@ fusefs_stop()
 		return 1
 	fi
 	echo "Stopping ${name}."
-# Unmount FUSE filesystems in reverse order (in case they are nested) with
-# a delay of one second after, to allow 'umount' finish.
+# Unmount FUSE filesystems in reverse order (in case they are nested) to
+# allow recent FUSE implementation to synchronize disks before shutdown.
 	mount | sed -e '1!G;h;$!d' | while read dev d1 mountpoint d2; do
 		case "$dev" in
 		/dev/fuse[0-9]*)
 			echo "fusefs: unmounting ${mountpoint}."
-			umount $mountpoint ; sleep 1
+			umount -f $mountpoint
 			;;
 		esac
 	done
-# Delay of one second, otherwise kldunload fails because of busy device(s).
-	sleep 1
+	if checkyesno "${name}_safe_evil"; then
+		if [ -n "$_rcshutdown_watchdog" ]; then
+			echo "fusefs: pausing watchdog timer."
+			kill -STOP "$_rcshutdown_watchdog"
+		fi
+	fi
+	if checkyesno "${name}_safe"; then
+		printf "fusefs: unloading $kmod... "
+		while ! kldunload $kmod 2> /dev/null; do
+			sleep 0.25
+		done
+		echo "done."
+	else
 	kldunload $kmod
+	fi
+	if checkyesno "${name}_safe_evil"; then
+		if [ -n "$_rcshutdown_watchdog" ]; then
+			echo "fusefs: continuing watchdog timer."
+			kill -CONT "$_rcshutdown_watchdog"
+		fi
+	fi
 }
 
 load_rc_config $name
