@@ -23,6 +23,8 @@ CONFIGURE_ARGS+=	--with-rfc2640 \
 									--without-inetd
 
 do-install:
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/pureftpd.in ${FREENAS_ROOTFS}/etc/rc.d/pureftpd
+
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpwho ${FREENAS_ROOTFS}/usr/local/sbin
 
