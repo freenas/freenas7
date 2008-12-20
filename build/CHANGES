@@ -61,6 +61,7 @@ Minors changes:
 - Display service state (running/stopped) in 'Services|Status'.
 - Add exit status for send_email function in email.subr (BR 2422479).
 - Add nfsstat for NFS diagnostics (FR 2093184).
+- Do not display links for files in Quixplorer file view.
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
