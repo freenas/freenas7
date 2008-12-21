@@ -149,7 +149,10 @@ function updatenotify_get_mode($key, $data, $matchwholeword = TRUE) {
 		$stmt->execute(array(':key' => $key, ':data' => $data));
 
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		$result = $result['mode'];
+		if (FALSE !== $result)
+			$result = $result['mode'];
+		else
+			$result = UPDATENOTIFY_MODE_UNKNOWN;
 
 		$stmt = null;
 	} catch (PDOException $e) {
