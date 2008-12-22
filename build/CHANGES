@@ -74,6 +74,8 @@ Bug fixes:
 - Fix file size bug in Quixplorer (BR 2445421).
   PHP can not get correct file size for files larger than 2GB. See
   http://de.php.net/manual/en/function.filesize.php for detailed description.
+- iSCSI-Target target configuration should only accept one extent or device
+  as storage (BR 2454804).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

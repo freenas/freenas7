@@ -68,6 +68,8 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 	$pconfig['name'] = $a_iscsitarget_target[$id]['name'];
 	$pconfig['flags'] = $a_iscsitarget_target[$id]['flags'];
 	$pconfig['storage'] = $a_iscsitarget_target[$id]['storage'];
+	if (is_array($pconfig['storage']))
+		$pconfig['storage'] = $pconfig['storage'][0];
 	$pconfig['ipaddr'] = $a_iscsitarget_target[$id]['ipaddr'];
 	$pconfig['subnet'] = $a_iscsitarget_target[$id]['subnet'];
 	$pconfig['comment'] = $a_iscsitarget_target[$id]['comment'];
@@ -176,7 +178,7 @@ if ($_POST) {
 						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
 					}
 					?>
-					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
+					<?php html_combobox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, "", true);?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
