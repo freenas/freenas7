@@ -53,29 +53,26 @@ $pconfig['userbandwidthup'] = $config['ftpd']['userbandwidth']['up'];
 $pconfig['userbandwidthdown'] = $config['ftpd']['userbandwidth']['down'];
 $pconfig['anonymousbandwidthup'] = $config['ftpd']['anonymousbandwidth']['up'];
 $pconfig['anonymousbandwidthdown'] = $config['ftpd']['anonymousbandwidth']['down'];
-$pconfig['extraoptions'] = $config['ftpd']['extraoptions'];
-
 if ($config['ftpd']['filemask']) {
 	$pconfig['filemask'] = $config['ftpd']['filemask'];
 } else {
 	$pconfig['filemask'] = "077";
 }
-
 if ($config['ftpd']['directorymask']) {
 	$pconfig['directorymask'] = $config['ftpd']['directorymask'];
 } else {
 	$pconfig['directorymask'] = "022";
 }
-
 $pconfig['banner'] = $config['ftpd']['banner'];
-$pconfig['natmode'] = isset($config['ftpd']['natmode']);
 $pconfig['fxp'] = isset($config['ftpd']['fxp']);
-$pconfig['keepallfiles'] = isset($config['ftpd']['keepallfiles']);
+$pconfig['allowrestart'] = isset($config['ftpd']['allowrestart']);
 $pconfig['permitrootlogin'] = isset($config['ftpd']['permitrootlogin']);
 $pconfig['chrooteveryone'] = isset($config['ftpd']['chrooteveryone']);
-$pconfig['tls'] = $config['ftpd']['tls'];
+$pconfig['tls'] = isset($config['ftpd']['tls']);
 $pconfig['privatekey'] = base64_decode($config['ftpd']['privatekey']);
 $pconfig['certificate'] = base64_decode($config['ftpd']['certificate']);
+if (is_array($config['ftpd']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['ftpd']['auxparam']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -87,7 +84,7 @@ if ($_POST) {
 		$reqdfieldsn = array(gettext("TCP port"), gettext("Number of clients"), gettext("Max. conn. per IP"), gettext("Timeout"));
 		$reqdfieldst = explode(" ", "numeric numeric numeric numeric");
 
-		if ("0" != $_POST['tls']) {
+		if ($_POST['tls']) {
 			$reqdfields = array_merge($reqdfields, explode(" ", "certificate privatekey"));
 			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Certificate"), gettext("Private key")));
 			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "certificate privatekey"));
@@ -112,12 +109,17 @@ if ($_POST) {
 			$input_errors[] = gettext("The maximum idle time be a number.");
 		}
 
-		if (!("0" === $_POST['pasv_min_port']) && !is_port($_POST['pasv_min_port'])) {
-			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_min_port"));
+		if (("0" !== $_POST['pasv_min_port']) && (($_POST['pasv_min_port'] < 1024) || ($_POST['pasv_min_port'] > 65534))) {
+			$input_errors[] = sprintf(gettext("The %s port must be in the range from %d to %d."), "min-pasv-port", 1024, 65534);
 		}
 
-		if (!("0" === $_POST['pasv_max_port']) && !is_port($_POST['pasv_max_port'])) {
-			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
+		if (("0" !== $_POST['pasv_max_port']) && (($_POST['pasv_max_port'] < 1024) || ($_POST['pasv_max_port'] > 65534))) {
+			$input_errors[] = sprintf(gettext("The %s port must be in the range from %d to %d."), "max-pasv-port", 1024, 65534);
+		}
+
+		if (("0" !== $_POST['pasv_min_port']) && ("0" !== $_POST['pasv_max_port'])) {
+			if ($_POST['pasv_min_port'] >= $_POST['pasv_max_port'])
+				$input_errors[] = sprintf(gettext("Port %s must be less than %s."), "min-pasv-port", "max-pasv-port");
 		}
 
 		if ($_POST['anonymousonly'] && $_POST['localusersonly']) {
@@ -140,25 +142,31 @@ if ($_POST) {
 		$config['ftpd']['filemask'] = $_POST['filemask'];
 		$config['ftpd']['directorymask'] = $_POST['directorymask'];
 		$config['ftpd']['fxp'] = $_POST['fxp'] ? true : false;
-		$config['ftpd']['natmode'] = $_POST['natmode'] ? true : false;
-		$config['ftpd']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
+		$config['ftpd']['allowrestart'] = $_POST['allowrestart'] ? true : false;
 		$config['ftpd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
 		$config['ftpd']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
-		$config['ftpd']['tls'] = $_POST['tls'];
+		$config['ftpd']['tls'] = $_POST['tls'] ? true : false;
 		$config['ftpd']['privatekey'] = base64_encode($_POST['privatekey']);
 		$config['ftpd']['certificate'] = base64_encode($_POST['certificate']);
 		$config['ftpd']['userbandwidth']['up'] = $pconfig['userbandwidthup'];
 		$config['ftpd']['userbandwidth']['down'] = $pconfig['userbandwidthdown'];
 		$config['ftpd']['anonymousbandwidth']['up'] = $pconfig['anonymousbandwidthup'];
 		$config['ftpd']['anonymousbandwidth']['down'] = $pconfig['anonymousbandwidthdown'];
-		$config['ftpd']['extraoptions'] = $_POST['extraoptions'];
+
+		# Write additional parameters.
+		unset($config['ftpd']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['ftpd']['auxparam'][] = $auxparam;
+		}
 
 		write_config();
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("pureftpd");
+			$retval |= rc_update_service("proftpd.sh");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
@@ -180,8 +188,7 @@ function enable_change(enable_change) {
 	document.iform.localusersonly.disabled = endis;
 	document.iform.banner.disabled = endis;
 	document.iform.fxp.disabled = endis;
-	document.iform.natmode.disabled = endis;
-	document.iform.keepallfiles.disabled = endis;
+	document.iform.allowrestart.disabled = endis;
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
 	document.iform.pasv_address.disabled = endis;
@@ -195,19 +202,19 @@ function enable_change(enable_change) {
 	document.iform.userbandwidthdown.disabled = endis;
 	document.iform.anonymousbandwidthup.disabled = endis;
 	document.iform.anonymousbandwidthdown.disabled = endis;
-	document.iform.extraoptions.disabled = endis;
+	document.iform.auxparam.disabled = endis;
 }
 
 function tls_change() {
-	switch (document.iform.tls.selectedIndex) {
-		case 0:
-			showElementById('privatekey_tr','hide');
-			showElementById('certificate_tr','hide');
-			break;
-
-		default:
+	switch (document.iform.tls.checked) {
+		case true:
 			showElementById('privatekey_tr','show');
 			showElementById('certificate_tr','show');
+			break;
+
+		case false:
+			showElementById('privatekey_tr','hide');
+			showElementById('certificate_tr','hide');
 			break;
 	}
 }
@@ -274,7 +281,7 @@ function anonymousonly_change() {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Timeout") ;?></td>
 			      <td width="78%" class="vtable">
 			        <input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
-			        <br><?=gettext("Maximum idle time in minutes.");?>
+			        <br><?=gettext("Maximum idle time in seconds.");?>
 						</td>
 			    </tr>
 			    <tr>
@@ -310,36 +317,11 @@ function anonymousonly_change() {
 			        <?=gettext("Enable FXP protocol.");?><span class="vexpl"><br>
 			        <?=gettext("FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!).");?></span></td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("NAT mode");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="natmode" type="checkbox" id="natmode" value="yes" <?php if ($pconfig['natmode']) echo "checked"; ?>>
-			        <?=gettext("Force NAT mode.");?><span class="vexpl"><br>
-			        <?=gettext("Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying.");?></span></td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Keep all files");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="keepallfiles" type="checkbox" id="keepallfiles" value="yes" <?php if ($pconfig['keepallfiles']) echo "checked"; ?>>
-			        <?=gettext("Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed.");?>
-			      </td>
-			    </tr>
-			    <tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("chroot everyone");?></td>
-						<td width="78%" class="vtable">
-							<input name="chrooteveryone" type="checkbox" id="chrooteveryone" value="yes" <?php if ($pconfig['chrooteveryone']) echo "checked"; ?>>
-							<?=gettext("chroot() everyone, but root.");?>
-						</td>
-					</tr>
+			    <?php html_checkbox("allowrestart", gettext("Resume"), $pconfig['allowrestart'] ? true : false, gettext("Allow clients to resume interrupted uploads and downloads."), "", false);?>
+					<?php html_checkbox("chrooteveryone", gettext("Default root"), $pconfig['chrooteveryone'] ? true : false, gettext("chroot() everyone, but root."), gettext("If default root is enabled, a chroot operation is performed immediately after a client authenticates. This can be used to effectively isolate the client from a portion of the host system filespace."), false);?>
+					<?php html_inputbox("pasv_address", gettext("Masquerade address"), $pconfig['pasv_address'], gettext("Causes the server to display the network information for the specified IP address or DNS hostname to the client, on the assumption that that IP address or DNS host is acting as a NAT gateway or port forwarder for the server."), false, 20);?>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address");?></td>
-						<td width="78%" class="vtable">
-							<input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
-							<br><?=gettext("Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect.");?>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellbg"><?=gettext("Passive mode ports");?></td>
+						<td width="22%" valign="top" class="vncellbg"><?=gettext("Passive ports");?></td>
 						<td width="78%" class="">
 							<input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>"><br/>
 							<span class="vexpl"><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port).");?></span>
@@ -350,40 +332,17 @@ function anonymousonly_change() {
 						<td width="78%" class="vtable">
 							<input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>"><br/>
 							<span class="vexpl"><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?></span><br/><br/>
-							<span class="vexpl"><?=gettext("Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening.");?></span>
+							<span class="vexpl"><?=gettext("Passive ports restricts the range of ports from which the server will select when sent the PASV command from a client. The server will randomly choose a number from within the specified range until an open port is found. The port range selected must be in the non-privileged range (eg. greater than or equal to 1024). It is strongly recommended that the chosen range be large enough to handle many simultaneous passive connections (for example, 49152-65534, the IANA-registered ephemeral port range).");?></span>
 						</td>
 					</tr>
 					<?php html_inputbox("userbandwidthup", gettext("Local user bandwidth"), $pconfig['userbandwidthup'], gettext("Local user upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("userbandwidthdown", "", $pconfig['userbandwidthdown'], gettext("Local user download bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("anonymousbandwidthup", gettext("Anonymous user bandwidth"), $pconfig['anonymousbandwidthup'], gettext("Anonymous user upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("anonymousbandwidthdown", "", $pconfig['anonymousbandwidthdown'], gettext("Anonymous user download bandwith in KB/s. An empty field means infinity."), false, 5);?>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("SSL/TLS");?></td>
-						<td width="78%" class="vtable">
-							<select name="tls" class="formfld" id="tls" onchange="tls_change()">
-								<?php $types = array(gettext("Disable"),gettext("TLS + cleartext"),gettext("Enforce TLS")); $vals = explode(" ", "0 1 2");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['tls']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-								<?php endfor;?>
-							</select><br/>
-							<span class="vexpl"><?=gettext("Use SSL/TLS encryption layer.");?></span>
-						</td>
-					</tr>
-					<tr id="certificate_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
-						</td>
-					</tr>
-					<tr id="privatekey_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
-						</td>
-					</tr>
-					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty)."), false, 40);?>
+					<?php html_checkbox("tls", gettext("SSL/TLS"), $pconfig['tls'] ? true : false, gettext("Enable TLS/SSL connections."), "", false, "tls_change()");?>
+					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
+					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters are added to %s."), "proftpd.conf"), false, 65, 5);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">

@@ -109,7 +109,7 @@ ln -s /var/etc/syslog.conf etc/syslog.conf
 ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
 ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
-ln -s /var/etc/pam.d/ftp etc/pam.d/pure-ftpd
+ln -s /var/etc/pam.d/ftp etc/pam.d/proftpd
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
 ln -s /var/etc/pam.d/netatalk etc/pam.d/netatalk
 ln -s /var/etc/pam.d/login etc/pam.d/login
