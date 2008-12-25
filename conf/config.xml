@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>6.7</version>
+	<version>6.8</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -531,7 +531,7 @@
 		<!-- <enable/> -->
 		<numberclients>5</numberclients>
 		<maxconperip>2</maxconperip>
-		<timeout>5</timeout>
+		<timeout>600</timeout>
 		<port>21</port>
 		<pasv_max_port>0</pasv_max_port>
 		<pasv_min_port>0</pasv_min_port>
@@ -539,7 +539,6 @@
 		<directorymask>022</directorymask>
 		<filemask>077</filemask>
 		<chrooteveryone/>
-		<tls>0</tls>
 		<privatekey></privatekey>
 		<certificate></certificate>
 		<userbandwidth>
@@ -554,7 +553,7 @@
 		<!--
 		<anonymousonly/>
 		<localusersonly/>
-		<tls>0:no TLS|1:TLS+cleartext|2:enforce TLS</tls>
+		<tls/>
 		-->
 	</ftpd>
 	<afp>

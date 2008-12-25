@@ -1620,6 +1620,23 @@ function config_upgrade() {
 		$config['version'] = "6.7";
 	}
 
+	/* Convert 6.7 -> 6.8 */
+	/* Convert //ftpd/timeout from minutes to seconds. */
+	/* Convert //ftpd/tls to boolean. */
+	/* Remove //ftpd/keepallfiles and //ftpd/natmode. */
+	if ($config['version'] === "6.7") {
+		if (isset($config['ftpd']['timeout']) && !empty($config['ftpd']['timeout']))
+			$config['ftpd']['timeout'] = $config['ftpd']['timeout'] * 60;
+
+		if (isset($config['ftpd']['tls']) && ("0" !== ($config['ftpd']['tls'])))
+			$config['ftpd']['tls'] = true;
+
+		unset($config['ftpd']['keepallfiles']);
+		unset($config['ftpd']['natmode']);
+
+		$config['version'] = "6.8";
+	}
+
 	write_config();
 
 	if (is_booting())

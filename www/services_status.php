@@ -35,7 +35,7 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("Services"), gettext("Status"));
 
 $a_service[] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "config" => "samba", "scriptname" => "samba");
-$a_service[] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "config" => "ftpd", "scriptname" => "pureftpd");
+$a_service[] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "config" => "ftpd", "scriptname" => "proftpd.sh");
 $a_service[] = array("desc" => gettext("TFTP"), "link" => "services_tftp.php", "config" => "tftpd", "scriptname" => "tftpd");
 $a_service[] = array("desc" => gettext("SSH"), "link" => "services_sshd.php", "config" => "sshd", "scriptname" => "sshd");
 $a_service[] = array("desc" => gettext("NFS"), "link" => "services_nfs.php", "config" => "nfsd", "scriptname" => "nfsd");

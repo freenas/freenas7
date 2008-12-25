@@ -23,11 +23,13 @@
     SUBDIR += openssh-portable
     SUBDIR += pam_ldap
     SUBDIR += php
-    SUBDIR += pure-ftpd
+    SUBDIR += proftpd
     SUBDIR += rsync
     SUBDIR += samba
     SUBDIR += scponly
     SUBDIR += smartmontools
+    SUBDIR += tftp-hpa
+    SUBDIR += transmission
     SUBDIR += unison
     SUBDIR += mediatomb
 
