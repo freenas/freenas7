@@ -140,7 +140,7 @@ $pgtitle = array(gettext("License & Credits"));
       <p> Rsync (<a href="http://www.samba.org/rsync" target="_blank">http://www.samba.org/rsync</a>)<br>
        </p>
       
-      <p> ProFTPD - Highly configurable GPL-licensed FTP server software (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br>
+      <p> ProFTPD - Highly configurable FTP server (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br>
         Copyright &copy; 1999, 2000-8, The ProFTPD Project</p>      
 
 			<p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br>

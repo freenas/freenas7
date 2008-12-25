@@ -1,8 +1,6 @@
 #!/bin/sh
-#
 # Copyright (c) 2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
-#
 
 # PROVIDE: proftpd
 # REQUIRE: DAEMON
@@ -42,6 +40,7 @@ proftpd_multilinerfc2228=${proftpd_multilinerfc2228:-"off"}
 proftpd_timeoutlogin=${proftpd_timeoutlogin:-"300"}
 proftpd_timeoutnotransfer=${proftpd_timeoutnotransfer:-"300"}
 proftpd_timeoutstalled=${proftpd_timeoutstalled:-"3600"}
+proftpd_defaultrootdir=${proftpd_defaultrootdir:-"~"}
 proftpd_defaultrootgroupexpr=${proftpd_defaultrootgroupexpr:-"!wheel"}
 proftpd_requirevalidshell=${proftpd_requirevalidshell:-"off"}
 proftpd_deleteabortedstores=${proftpd_deleteabortedstores:-"off"}
@@ -138,10 +137,10 @@ mkconf_cmd()
 		-n \
 		-o "&lt;Global&gt;" -n \
 		-o "  RequireValidShell ${proftpd_requirevalidshell}" -n \
-		-i "count(chrooteveryone) > 0" -o "  DefaultRoot ~ ${proftpd_defaultrootgroupexpr}" -n -b \
+		-i "count(chrooteveryone) > 0" -o "  DefaultRoot ${proftpd_defaultrootdir} ${proftpd_defaultrootgroupexpr}" -n -b \
 		-i "count(permitrootlogin) > 0" -o "  RootLogin on" -n -b \
-		-i "count(keepallfiles) > 0" \
-			-o "  AllowOverwrite on" -n \
+		-o "  AllowOverwrite on" -n \
+		-i "count(allowrestart) > 0" \
 			-o "  AllowRetrieveRestart on" -n \
 			-o "  AllowStoreRestart on" -n \
 		-b \
