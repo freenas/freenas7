@@ -36,7 +36,7 @@ sethostname()
 {
 	local _hostname
 
-	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
+	_hostname=`configxml_get "//system/hostname"`
 
 	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
