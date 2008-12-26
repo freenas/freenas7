@@ -28,8 +28,10 @@ proftpd_flags=${proftpd_flags:-""}
 proftpd_config=${proftpd_config:-"/var/etc/${name}.conf"}
 proftpd_delaytable=${proftpd_delaytable:-"/var/run/${name}/${name}.delay"}
 proftpd_displaylogin=${proftpd_displaylogin:-"/var/run/${name}/welcome.msg"}
-proftpd_tlsrsacertfile=${proftpd_tlsrsacertfile:-"/var/etc/ssl/private/${name}.crt"}
+proftpd_tlsrsacertfile=${proftpd_tlsrsacertfile:-"/var/etc/ssl/private/${name}.cert"}
 proftpd_tlsrsakeyfile=${proftpd_tlsrsakeyfile:-"/var/etc/ssl/private/${name}.key"}
+proftpd_tcpaccessfilesallow=${proftpd_tcpaccessfilesallow:-"/etc/hosts.allow"}
+proftpd_tcpaccessfilesdeny=${proftpd_tcpaccessfilesdeny:-"/etc/hosts.deny"}
 proftpd_umaskfile=${proftpd_umaskfile:-"077"}
 proftpd_umaskdirectory=${proftpd_umaskdirectory:-"022"}
 proftpd_maxinstances=${proftpd_maxinstances:-"none"}
@@ -47,6 +49,8 @@ proftpd_deleteabortedstores=${proftpd_deleteabortedstores:-"off"}
 proftpd_tlsverifyclient=${proftpd_tlsverifyclient:-"off"}
 proftpd_tlsoptions=${proftpd_tlsoptions:-"NoCertRequest"}
 proftpd_tlsprotocol=${proftpd_tlsprotocol:-"SSLv23"}
+proftpd_tcpaccesssysloglevels=${proftpd_tcpaccesssysloglevels:-"info warn"}
+proftpd_tcpservicename=${proftpd_tcpservicename:-"${name}"}
 command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
@@ -90,6 +94,10 @@ mkconf_cmd()
 			/bin/rm -f ${_tmpfile}
 		fi
 	fi
+
+	# Ensure that file-based access tables exists
+	[ ! -e "${proftpd_tcpaccessfilesallow}" ] && cat /dev/null > "${proftpd_tcpaccessfilesallow}"
+	[ ! -e "${proftpd_tcpaccessfilesdeny}" ] && cat /dev/null > "${proftpd_tcpaccessfilesdeny}"
 
 	/usr/local/bin/xml sel -t \
 		-v "concat('ServerName &quot;',//system/hostname,' FTP Server&quot;')" -n \
@@ -170,6 +178,13 @@ mkconf_cmd()
 			-o "  TLSVerifyClient ${proftpd_tlsverifyclient}" -n \
 			-o "&lt;/IfModule&gt;" -n \
 		-b \
+		-n \
+		-o "&lt;ifModule mod_wrap.c&gt;" -n \
+		-o "  TCPAccessFiles ${proftpd_tcpaccessfilesallow} ${proftpd_tcpaccessfilesdeny}" -n \
+		-o "  TCPAccessSyslogLevels ${proftpd_tcpaccesssysloglevels}" -n \
+		-o "  TCPServiceName ${proftpd_tcpservicename}" -n \
+		-o "&lt;/ifModule&gt;" -n \
+		-n \
 		-m "auxparam" \
 				-v "." -n \
 		-b \
