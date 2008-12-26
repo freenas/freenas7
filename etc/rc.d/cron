@@ -79,7 +79,7 @@ mkconf_cmd()
 	local _index _user _data
 
 	# Make sure /var/cron/tabs path exists
-	mkdir -p ${cron_tabspath}
+	[ ! -d "${cron_tabspath}" ] && mkdir "${cron_tabspath}"
 
 	# Empty /var/cron/allow
 	cat /dev/null > ${cron_allow}
