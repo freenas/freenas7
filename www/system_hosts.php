@@ -37,9 +37,23 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("Network"), gettext("Hosts"));
 
 if ($_POST) {
-	$pconfig = $_POST;
+	if ($_POST['Submit']) {
+		unset($input_errors);
+		$pconfig = $_POST;
 
-	if ($_POST['apply']) {
+		if (!$input_errors) {
+			unset($config['system']['hostsacl']['rule']);
+			foreach (explode("\n", $_POST['hostsacl']) as $rule) {
+				$rule = trim($rule, "\t\n\r");
+				if (!empty($rule))
+					$config['system']['hostsacl']['rule'][] = $rule;
+			}
+
+			write_config();
+		}
+	}
+
+	if ($_POST['apply'] || $_POST['Submit']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			$retval |= updatenotify_process("hosts", "hosts_process_updatenotification");
@@ -57,8 +71,15 @@ if ($_POST) {
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
 
+if (!is_array($config['system']['hostsacl']['rule']))
+	$config['system']['hostsacl']['rule'] = array();
+
 array_sort_key($config['system']['hosts'], "name");
-$a_hosts = &$config['system']['hosts'];
+
+$a_hosts = $config['system']['hosts'];
+
+if (is_array($config['system']['hostsacl']['rule']))
+	$pconfig['hostsacl'] = implode("\n", $config['system']['hostsacl']['rule']);
 
 if ($_GET['act'] === "del") {
 	updatenotify_set("hosts", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
@@ -89,46 +110,54 @@ function hosts_process_updatenotification($mode, $data) {
 	return $retval;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabcont">
 			<form action="system_hosts.php" method="post">
-				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (updatenotify_exists("hosts")) print_config_change_box();?>
-			  <table width="100%" border="0" cellpadding="0" cellspacing="0">
-			    <tr>
-			      <td width="25%" class="listhdrr"><?=gettext("Hostname");?></td>
-			      <td width="30%" class="listhdrr"><?=gettext("IP address");?></td>
-			      <td width="35%" class="listhdr"><?=gettext("Description");?></td>
-			      <td width="10%" class="list"></td>
-					</tr>
-					<?php $i = 0; foreach ($a_hosts as $host):?>
-					<?php if (empty($host['uuid'])) continue;?>
-					<?php $notificationmode = updatenotify_get_mode("hosts", $host['uuid']);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($host['name']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($host['address']);?>&nbsp;</td>
-						<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
-						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-						<td valign="middle" nowrap class="list">
-							<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
-							<a href="system_hosts.php?act=del&uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Hostname database");?></td>
+						<td width="78%" class="vtable">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="25%" class="listhdrr"><?=gettext("Hostname");?></td>
+									<td width="30%" class="listhdrr"><?=gettext("IP address");?></td>
+									<td width="35%" class="listhdr"><?=gettext("Description");?></td>
+									<td width="10%" class="list"></td>
+								</tr>
+								<?php $i = 0; foreach ($a_hosts as $host):?>
+								<?php if (empty($host['uuid'])) continue;?>
+								<?php $notificationmode = updatenotify_get_mode("hosts", $host['uuid']);?>
+								<tr>
+									<td class="listlr"><?=htmlspecialchars($host['name']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($host['address']);?>&nbsp;</td>
+									<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
+									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
+									<td valign="middle" nowrap class="list">
+										<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
+										<a href="system_hosts.php?act=del&uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
+									</td>
+									<?php else:?>
+									<td valign="middle" nowrap class="list">
+										<img src="del.gif" border="0">
+									</td>
+									<?php endif;?>
+								</tr>
+								<?php $i++; endforeach;?>
+								<tr>
+									<td class="list" colspan="3"></td>
+									<td class="list"><a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
+								</tr>
+							</table>
 						</td>
-						<?php else:?>
-						<td valign="middle" nowrap class="list">
-							<img src="del.gif" border="0">
-						</td>
-						<?php endif;?>
 					</tr>
-					<?php $i++; endforeach;?>
-					<tr>
-						<td class="list" colspan="3"></td>
-						<td class="list"><a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
-					</tr>
+					<?php html_textarea("hostsacl", gettext("Host access control"), $pconfig['hostsacl'], gettext("Basic configuration usually takes the form of 'daemon : address : action'. Where daemon is the daemon name of the service started. The address can be a valid hostname, an IP address or an IPv6 address enclosed in brackets. The action field can be either allow or deny to grant or deny access appropriately. Keep in mind that configuration works off a first rule match semantic, meaning that the configuration file is scanned in ascending order for a matching rule. When a match is found the rule is applied and the search process will halt."), false, 80, 8);?>
 				</table>
-				<div id="remarks">
-					<?php html_remark("note", gettext("Note"), gettext("Defining a hostname can be useful for NFS."));?>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
 				</div>
 			</form>
 		</td>
