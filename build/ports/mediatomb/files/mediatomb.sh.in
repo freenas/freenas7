@@ -45,9 +45,7 @@ start_precmd()
 	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if} >/dev/null 2>&1
 
 	# Ensure that config directory exists.
-	if [ ! -e ${mediatomb_cfgdir} ]; then
-		/bin/mkdir -p ${mediatomb_cfgdir}
-	fi
+	[ ! -d "${mediatomb_cfgdir}" ] && mkdir "${mediatomb_cfgdir}"
 
 	# Create config file.
 	_name=`configxml_get "//upnp/name"`

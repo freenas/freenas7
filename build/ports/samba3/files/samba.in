@@ -57,7 +57,7 @@ if [ 0 -eq ${samba_ldap} ]; then
 fi
 
 # Create required lock directory.
-[ ! -d "${samba_lockdir}" ] && mkdir -p "${samba_lockdir}"
+[ ! -d "${samba_lockdir}" ] && mkdir "${samba_lockdir}"
 
 # Setup dependent variables
 if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
