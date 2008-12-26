@@ -1637,6 +1637,14 @@ function config_upgrade() {
 		$config['version'] = "6.8";
 	}
 
+	/* Convert 6.8 -> 6.9 */
+	/* Add //system/hostsacl/rule host access control rules. */
+	if ($config['version'] === "6.8") {
+		$config['system']['hostsacl']['rule'][] = "ALL : ALL : allow";
+
+		$config['version'] = "6.9";
+	}
+
 	write_config();
 
 	if (is_booting())

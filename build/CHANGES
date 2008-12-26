@@ -16,6 +16,9 @@ Majors changes:
   necessary if you are running out of file space for *.tdb files (this normally
   happens on heavy Samba share usage with many users). The default size is 32MB.
 - Replace FTP server pure-ftpd 1.0.21 with proftpd 1.3.2rc3.
+- Add TCP Wrappers. All applications linked against libwrap support this
+  feature, for example FreeNAS services like FTP, TFTP, SSH, NFS... The rules
+  can be configured via WebGUI 'Network|Hosts'.
 
 Minors changes:
 - Set date in email-header when sending email.

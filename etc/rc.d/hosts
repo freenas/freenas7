@@ -6,7 +6,6 @@
 # REQUIRE: var
 # BEFORE: netif
 
-. /etc/util.subr
 . /etc/configxml.subr
 
 echo "Updating hosts."
@@ -22,3 +21,8 @@ echo "Updating hosts."
 		-i "string-length(name) > 0" -v "concat(address,' ',name)" -n -b \
 	-b \
 	${configxml_file} | /usr/local/bin/xml unesc > /etc/hosts
+
+# Generate /etc/hosts.allow file
+/usr/local/bin/xml sel -t -m "//system/hostsacl/rule" \
+	-v "." -n \
+	${configxml_file} | /usr/local/bin/xml unesc > /etc/hosts.allow
