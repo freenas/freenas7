@@ -27,8 +27,8 @@ start_precmd="mkconf_cmd"
 proftpd_enable=${proftpd_enable:-"NO"}
 proftpd_flags=${proftpd_flags:-""}
 proftpd_config=${proftpd_config:-"/var/etc/${name}.conf"}
-proftpd_delaytable=${proftpd_delaytable:-"/var/run/${name}.delay"}
-proftpd_displaylogin=${proftpd_displaylogin:-"/var/run/${name}.motd"}
+proftpd_delaytable=${proftpd_delaytable:-"/var/run/${name}/${name}.delay"}
+proftpd_displaylogin=${proftpd_displaylogin:-"/var/run/${name}/${name}.motd"}
 proftpd_tlsrsacertfile=${proftpd_tlsrsacertfile:-"/var/etc/ssl/private/${name}.cert"}
 proftpd_tlsrsakeyfile=${proftpd_tlsrsakeyfile:-"/var/etc/ssl/private/${name}.key"}
 proftpd_tcpaccessfilesallow=${proftpd_tcpaccessfilesallow:-"/etc/hosts.allow"}
@@ -56,11 +56,13 @@ command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
 
-# Check if DelayTable file exists.
-if [ ! -e "${proftpd_delaytable}" ]; then
-	mkdir -p $(dirname "${proftpd_delaytable}")
-	cat /dev/null > "${proftpd_delaytable}"
-fi
+# Check if required directories exists.
+[ ! -d "/var/run/${name}" ] && mkdir "/var/run/${name}"
+
+# Check if required files exists.
+[ ! -e "${proftpd_delaytable}" ] && cat /dev/null > "${proftpd_delaytable}"
+[ ! -e "${proftpd_tcpaccessfilesallow}" ] && cat /dev/null > "${proftpd_tcpaccessfilesallow}"
+[ ! -e "${proftpd_tcpaccessfilesdeny}" ] && cat /dev/null > "${proftpd_tcpaccessfilesdeny}"
 
 mkconf_cmd()
 {
@@ -95,10 +97,6 @@ mkconf_cmd()
 			/bin/rm -f ${_tmpfile}
 		fi
 	fi
-
-	# Ensure that file-based access tables exists
-	[ ! -e "${proftpd_tcpaccessfilesallow}" ] && cat /dev/null > "${proftpd_tcpaccessfilesallow}"
-	[ ! -e "${proftpd_tcpaccessfilesdeny}" ] && cat /dev/null > "${proftpd_tcpaccessfilesdeny}"
 
 	/usr/local/bin/xml sel -t \
 		-v "concat('ServerName &quot;',//system/hostname,' FTP Server&quot;')" -n \
