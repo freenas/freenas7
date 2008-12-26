@@ -512,11 +512,13 @@
 			<up></up>
 			<down></down>
 		</anonymousbandwidth>
-		<extraoptions></extraoptions>
+		<banner></banner>
 		<!--
 		<anonymousonly/>
 		<localusersonly/>
 		<tls/>
+		<allowrestart/>
+		<auxparam></auxparam> // Can be defined multiple times.
 		-->
 	</ftpd>
 	<afp>
