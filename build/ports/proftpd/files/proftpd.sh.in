@@ -10,6 +10,7 @@
 # RCVAR: proftpd
 
 . /etc/rc.subr
+. /etc/util.subr
 . /etc/configxml.subr
 
 name="proftpd"
@@ -26,8 +27,8 @@ start_precmd="mkconf_cmd"
 proftpd_enable=${proftpd_enable:-"NO"}
 proftpd_flags=${proftpd_flags:-""}
 proftpd_config=${proftpd_config:-"/var/etc/${name}.conf"}
-proftpd_delaytable=${proftpd_delaytable:-"/var/run/${name}/${name}.delay"}
-proftpd_displaylogin=${proftpd_displaylogin:-"/var/run/${name}/welcome.msg"}
+proftpd_delaytable=${proftpd_delaytable:-"/var/run/${name}.delay"}
+proftpd_displaylogin=${proftpd_displaylogin:-"/var/run/${name}.motd"}
 proftpd_tlsrsacertfile=${proftpd_tlsrsacertfile:-"/var/etc/ssl/private/${name}.cert"}
 proftpd_tlsrsakeyfile=${proftpd_tlsrsakeyfile:-"/var/etc/ssl/private/${name}.key"}
 proftpd_tcpaccessfilesallow=${proftpd_tcpaccessfilesallow:-"/etc/hosts.allow"}
@@ -68,7 +69,7 @@ mkconf_cmd()
 	# Create welcome message file
 	_welcomemsg=`configxml_get "//ftpd/banner"`
 	if [ -z "${_welcomemsg}" ]; then
-		_productname=`cat /etc/prd.name`
+		_productname=`get_product_name`
 		echo "Welcome to ${_productname} FTP Server" > ${proftpd_displaylogin}
 	else
 		echo ${_welcomemsg} > ${proftpd_displaylogin}
