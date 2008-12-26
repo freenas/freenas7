@@ -21,7 +21,7 @@ GNU_CONFIGURE=	yes
 USE_GETTEXT=		yes
 USE_OPENSSL=		yes
 
-MODULES=				mod_site_misc:mod_tls:mod_wrap
+MODULES=				mod_site_misc:mod_tls:mod_wrap:mod_ban
 
 CONFIGURE_ARGS=	--localstatedir=/var/run \
 								--with-pkgconfig=libdata/pkgconfig \
