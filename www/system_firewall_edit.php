@@ -166,7 +166,7 @@ function get_next_rulenumber() {
 					<?php endif;?>
 			  </div>
 			  <div id="remarks">
-					<?php html_remark("note", gettext("Note"), sprintf(gettext("To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/firewalls-ipfw.html"));?>
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/doc/en/books/handbook/firewalls-ipfw.html"));?>
 				</div>
 			</form>
 		</td>
