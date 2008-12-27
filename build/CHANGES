@@ -53,6 +53,7 @@ Majors changes:
 - Add TCP Wrappers. All applications linked against libwrap support this
   feature, for example FreeNAS services like FTP, TFTP, SSH, NFS... The rules
   can be configured via WebGUI 'Network|Hosts'.
+- Upgrade ATAidle to 2.4.
 
 Minors changes:
 - Set date in email-header when sending email.
