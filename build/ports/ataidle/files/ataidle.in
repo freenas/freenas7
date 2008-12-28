@@ -39,7 +39,10 @@ echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 		fi
 
 		if [ ${_harddiskstandby} != 0 ]; then
-			_cmdargs="${_cmdargs} -S ${_harddiskstandby}"
+			# Calculate idle timeout, otherwise disk will immediately go into
+			# standby mode.
+			_idle=$((${_harddiskstandby} / 2))
+			_cmdargs="${_cmdargs} -I ${_idle} -S ${_harddiskstandby}"
 		fi
 
 		/usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile} > /dev/null 2>&1
