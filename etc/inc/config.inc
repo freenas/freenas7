@@ -1640,6 +1640,9 @@ function config_upgrade() {
 	/* Convert 6.8 -> 6.9 */
 	/* Add //system/hostsacl/rule host access control rules. */
 	if ($config['version'] === "6.8") {
+		$config['system']['hostsacl']['rule'][] = "#ftpd  : xxx.xxx.xxx.xxx : deny";
+		$config['system']['hostsacl']['rule'][] = "#sshd : .example.com : deny";
+		$config['system']['hostsacl']['rule'][] = "#in.tftpd : xxx.xxx.xxx.xxx : deny";
 		$config['system']['hostsacl']['rule'][] = "ALL : ALL : allow";
 
 		$config['version'] = "6.9";
