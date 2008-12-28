@@ -20,6 +20,7 @@ Majors changes:
   feature, for example FreeNAS services like FTP, TFTP, SSH, NFS... The rules
   can be configured via WebGUI 'Network|Hosts'.
 - Upgrade ATAidle to 2.4.
+- Upgrade transmission to 1.42.
 
 Minors changes:
 - Set date in email-header when sending email.
