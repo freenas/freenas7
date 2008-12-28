@@ -9,6 +9,13 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="ataidle"
+
+load_rc_config "${name}"
+
+# Defaults
+ataidle_delay=${ataidle_delay:-"60"}
+
 echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 
 # Process all configured IDE disks
@@ -39,13 +46,15 @@ echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 		fi
 
 		if [ ${_harddiskstandby} != 0 ]; then
-			# Calculate idle timeout, otherwise disk will immediately go into
-			# standby mode.
 			_idle=$((${_harddiskstandby} / 2))
 			_cmdargs="${_cmdargs} -I ${_idle} -S ${_harddiskstandby}"
-		fi
 
-		/usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile} > /dev/null 2>&1
+			# Delay execution to prevent drives to spin up during boot process
+			# because 'ataidle' immediately spins down the drives on execution.
+			(sleep ${ataidle_delay}; /usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile}) > /dev/null 2>&1 &
+		else
+			/usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile} > /dev/null 2>&1
+		fi
 
 		# Print out some disk information
 		echo -n "${_name} "

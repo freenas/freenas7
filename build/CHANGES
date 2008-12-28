@@ -81,6 +81,11 @@ Bug fixes:
   http://de.php.net/manual/en/function.filesize.php for detailed description.
 - iSCSI-Target target configuration should only accept one extent or device
   as storage (BR 2454804).
+- If 'Hard disk standby time' is set for a drive, the execution of ataidle
+  is delayed to prevent drives to spin up again during the boot process
+  because ataidle immediately spins down the drives on execution. The delay
+  value (default is 60 seconds) can be modified via 'ataidle_delay' rc.conf
+  variable (BR 2471158).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
