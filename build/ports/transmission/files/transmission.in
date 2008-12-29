@@ -22,12 +22,14 @@ start_precmd="start_precmd"
 
 # Defaults
 transmission_enable=${transmission_enable:-"NO"}
-transmission_remote_user=${transmission_remote_user:-"admin"}
+transmission_remoteuser=${transmission_remoteuser:-"admin"}
+transmission_allowed=${transmission_allowed:-"*"}
+transmission_noblocklist=${transmission_noblocklist:-"YES"}
 transmission_user=${transmission_user:-"transmission"}
 transmission_suopt=${transmission_suopt:-"-l"}
 
 command="/usr/local/bin/${name}-daemon"
-command_args="--no-blocklist --auth --username ${transmission_remote_user}"
+command_args="--auth --username ${transmission_remoteuser} --allowed ${transmission_allowed}"
 
 start_precmd()
 {
@@ -37,8 +39,11 @@ start_precmd()
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
 		-v "concat('--password ',password,' --download-dir &quot;',downloaddir,'&quot; --port ',port)" \
 		-i "string-length(configdir) > 0" -v "concat(' --config-dir &quot;',configdir,'&quot;')" -b \
-		-o " --allowed *" \
 		${configxml_file} | /usr/local/bin/xml unesc`
+
+	if checkyesno transmission_noblocklist; then
+		_command_args="${_command_args} --no-blocklist"
+	fi
 
 	command_args="${command_args} ${_command_args}"
 }
