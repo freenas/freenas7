@@ -122,6 +122,7 @@ function provider_change() {
 		case "dyndns.org":
 		case "3322.org":
 		case "easydns.com":
+		case "custom":
 			showElementById('wildcard_tr','show');
 			break;
 
@@ -140,7 +141,7 @@ function provider_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Dynamic DNS"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_combobox("provider", gettext("Provider"), $pconfig['provider'], array("dyndns.org" => "dyndns.org", "freedns.afraid.org" => "freedns.afraid.org", "zoneedit.com" => "zoneedit.com", "no-ip.com" => "no-ip.com", "easydns.com" => "easydns.com", "3322.org" => "3322.org"), "", true, false, "provider_change()");?>
+					<?php html_combobox("provider", gettext("Provider"), $pconfig['provider'], array("dyndns.org" => "dyndns.org", "freedns.afraid.org" => "freedns.afraid.org", "zoneedit.com" => "zoneedit.com", "no-ip.com" => "no-ip.com", "easydns.com" => "easydns.com", "3322.org" => "3322.org", "custom" => gettext("Custom")), "", true, false, "provider_change()");?>
 					<?php html_inputbox("domainname", gettext("Domain name"), $pconfig['domainname'], gettext("A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."), true, 40);?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 20);?>
 					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], "", true, 20);?>
