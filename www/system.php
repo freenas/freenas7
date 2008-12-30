@@ -287,8 +287,8 @@ function webguiproto_change() {
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext("If you want to change the username for accessing the WebGUI, enter it here."), false, 20);?>
 					<?php html_combobox("webguiproto", gettext("Protocol"), $pconfig['webguiproto'], array("http" => "HTTP", "https" => "HTTPS"), "", false, false, "webguiproto_change()");?>
 					<?php html_inputbox("webguiport", gettext("Port"), $pconfig['webguiport'], gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."), false, 5);?>
-					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
-					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7);?>
+					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7, false, false);?>
+					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7, false, false);?>
 					<?php html_languagecombobox("language", gettext("Language"), $pconfig['language'], "", false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Time"));?>
