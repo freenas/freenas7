@@ -233,6 +233,7 @@ class HTMLPasswordConfBox extends HTMLEditBox {
 class HTMLTextArea extends HTMLEditBox {
 	var $_columns = 40;
 	var $_rows = 5;
+	var $_wrap = true;
 
 	function HTMLTextArea($ctrlname, $title, $value, $description, $columns, $rows) {
 		$this->SetCtrlName($ctrlname);
@@ -257,6 +258,21 @@ class HTMLTextArea extends HTMLEditBox {
 
 	function SetRows($rows) {
 		$this->_rows = $rows;
+	}
+
+	function IsWrap() {
+		return $this->_wrap;
+	}
+
+	function SetWrap($bool) {
+		$this->_wrap = $bool;
+	}
+
+	function GetParam() {
+		$param = parent::GetParam();
+		if (false === $this->IsWrap())
+			$param .= " wrap='off'";
+		return $param;
 	}
 
 	function RenderCtrl() {
@@ -537,7 +553,7 @@ class HTMLTimeZoneComboBox extends HTMLComboBox {
 		foreach ($timezonelist as $tzv) {
 			if (!empty($tzv)) {
 				$tzv = substr($tzv, 2); // Remove leading './'
-				$options[$tzv] = $tzv; 
+				$options[$tzv] = $tzv;
 			}
 		}
 

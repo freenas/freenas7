@@ -377,7 +377,7 @@ function authentication_change() {
 							<?=gettext("Allow client access to accounts that have null passwords.");?>
 						</td>
 					</tr>
-					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to global settings in %s."), "smb.conf"), false, 65, 5);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to global settings in %s."), "smb.conf"), false, 65, 5, false, false);?>
         </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">

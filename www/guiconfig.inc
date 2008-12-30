@@ -301,10 +301,11 @@ function html_passwordconfbox($ctrlname, $ctrlnameconf, $title, $value, $valueco
 	$ctrl->Render();
 }
 
-function html_textarea($ctrlname, $title, $value, $desc, $required = false, $columns = 40, $rows = 5, $readonly = false) {
+function html_textarea($ctrlname, $title, $value, $desc, $required = false, $columns = 40, $rows = 5, $readonly = false, $wrap = true) {
 	$ctrl = new HTMLTextArea($ctrlname, $title, $value, $desc, $columns, $rows);
 	$ctrl->SetRequired($required);
 	$ctrl->SetReadOnly($readonly);
+	$ctrl->SetWrap($wrap);
 	$ctrl->Render();
 }
 
