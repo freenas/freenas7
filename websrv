@@ -173,7 +173,7 @@ EOF
 
 	# Add virtual hosts
 	/usr/local/bin/xml sel -t -m "//websrv/virtualhosts/host[enable]" \
-		-v "concat('\$HTTP[&quot;host&quot;] == &quot;',domainname,'&quot; {')" -n \
+		-v "concat('\$HTTP[&quot;host&quot;] ~= &quot;',domainname,'&quot; {')" -n \
 		-v "concat('  server.port = ',port)" -n \
 		-v "concat('  server.document-root = &quot;',documentroot,'&quot;')" -n \
 		-i "count(dirlisting) > 0" \
