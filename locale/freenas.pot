@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-26 02:34+0000\n"
+"PO-Revision-Date: 2008-12-31 00:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -662,6 +662,9 @@ msgid "Cron"
 msgstr ""
 
 msgid "Cron job"
+msgstr ""
+
+msgid "Custom"
 msgstr ""
 
 msgid "DAAP"
