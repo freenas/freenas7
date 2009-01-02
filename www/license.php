@@ -11,7 +11,7 @@ $pgtitle = array(gettext("License & Credits"));
 				<?php html_titleline(gettext("License"));?>
 				<tr>
 					<td class="listt">
-            <p><strong>FreeNAS is Copyright &copy; 2005-2008 by Olivier Cochard-Labbe 
+            <p><strong>FreeNAS is Copyright &copy; 2005-2009 by Olivier Cochard-Labbe 
               (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
               All rights reserved.</strong></p>
 			  <p>FreeNAS&reg is a registered trademark of Olivier Cochard-Labbe.</p>
