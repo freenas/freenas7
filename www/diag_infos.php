@@ -3,7 +3,7 @@
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-LabbÃ© <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -57,27 +57,31 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
 			</ul>
 		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
-    	<table width="100%" border="0">
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0">
+				<?php
+				unset($rawdata);
+				exec("/sbin/atacontrol list", $rawdata);
+				html_titleline(gettext("List of detected ATA disks"));
+				?>
 				<tr>
-					<td class="listtopic"><?=gettext("List of detected ATA disks");?></td>
-				</tr>
-				<tr>
-			    <td>
-			    	<pre><?php system("/sbin/atacontrol list");?></pre>
+					<td>
+						<pre><?php if (empty($rawdata)) { echo gettext("n/a"); } else { echo implode("\n", $rawdata); }?></pre>
 					</td>
-			  </tr>
-			  <tr>
-					<td class="listtopic"><?=gettext("List of detected SCSI disks");?></td>
 				</tr>
+				<?php
+				unset($rawdata);
+				exec("/sbin/camcontrol devlist", $rawdata);
+				html_titleline(gettext("List of detected SCSI disks"));
+				?>
 				<tr>
-			    <td>
-			    	<pre><?php system("/sbin/camcontrol devlist");?></pre>
+					<td>
+						<pre><?php if (empty($rawdata)) { echo gettext("n/a"); } else { echo implode("\n", $rawdata); }?></pre>
 					</td>
-			  </tr>
-    	</table>
-    </td>
-  </tr>
+				</tr>
+			</table>
+		</td>
+	</tr>
 </table>
 <?php include("fend.inc");?>
