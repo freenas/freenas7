@@ -1,5 +1,5 @@
 PORTNAME=			cdialog
-PORTVERSION=	1.1.20071028
+PORTVERSION=	1.1.20080316
 PORTEPOCH=		1
 CATEGORIES=		devel
 COMMENT=			An enhanced version of 'dialog' to work with ncurses
@@ -11,15 +11,18 @@ MASTER_SITES=	ftp://invisible-island.net/dialog/ \
 DISTNAME=			${PORTNAME:S|^c||}-${PORTVERSION:R}-${PORTVERSION:E}
 
 EXTRACT_SUFX=			.tgz
+USE_AUTOTOOLS=		libtool:15
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS=		--includedir=${PREFIX}/include/${PORTNAME}
+USE_LDCONFIG=			yes
+CONFIGURE_ARGS=		--includedir=${PREFIX}/include/${PORTNAME} --with-libtool
 MAKEFILE=					makefile
 
 post-patch:
 	@${FIND} ${WRKSRC}/samples/ -type f -exec ${REINPLACE_CMD} -i "" "s|dialog|cdialog|g" {} \;
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/dialog ${FREENAS_ROOTFS}/usr/local/bin/cdialog
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/.libs/dialog ${FREENAS_ROOTFS}/${PREFIX}/bin/cdialog
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/.libs/libdialog.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib
 
 .include <bsd.port.pre.mk>
 
