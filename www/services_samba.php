@@ -242,32 +242,8 @@ function authentication_change() {
               <br><?=gettext("Server description. This can usually be left blank.") ;?>
             </td>
           </tr>
-          <tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Dos charset") ; ?></td>
-            <td width="78%" class="vtable">
-              <select name="doscharset" class="formfld" id="doscharset">
-              <?php $types = explode(",", "CP850,CP852,CP437,CP932,CP866,ASCII"); $vals = explode(" ", "CP850 CP852 CP437 CP932 CP866 ASCII");?>
-              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['doscharset']) echo "selected";?>>
-                <?=htmlspecialchars($types[$j]);?>
-                </option>
-              <?php endfor; ?>
-              </select>
-            </td>
-          </tr>
-	        <tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Unix charset") ; ?></td>
-            <td width="78%" class="vtable">
-              <select name="unixcharset" class="formfld" id="unixcharset">
-              <?php $types = explode(",", "UTF-8,iso-8859-1,iso-8859-15,gb2312,EUC-JP,ASCII"); $vals = explode(" ", "UTF-8 iso-8859-1 iso-8859-15 gb2312 EUC-JP ASCII");?>
-              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['unixcharset']) echo "selected";?>>
-                <?=htmlspecialchars($types[$j]);?>
-                </option>
-              <?php endfor; ?>
-              </select>
-            </td>
-          </tr>
+          <?php html_combobox("doscharset", gettext("Dos charset"), $pconfig['doscharset'], array("CP437" => "CP437", "CP850" => "CP850", "CP852" => "CP852", "CP866" => "CP866", "CP932" => "CP932", "ASCII" => "ASCII"), "", false);?>
+          <?php html_combobox("unixcharset", gettext("Unix charset"), $pconfig['unixcharset'], array("UTF-8" => "UTF-8", "iso-8859-1" => "iso-8859-1", "iso-8859-15" => "iso-8859-15", "gb2312" => "gb2312", "EUC-JP" => "EUC-JP", "ASCII" => "ASCII"), "", false);?>
           <?php html_combobox("loglevel", gettext("Log Level"), $pconfig['loglevel'], array("1" => gettext("Minimum"), "2" => gettext("Normal"), "3" => gettext("Full"), "10" => gettext("Debug")), "", false);?>
           <tr>
             <td width="22%" valign="top" class="vncell"><?=gettext("Local Master Browser"); ?></td>
