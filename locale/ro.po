@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"POT-Creation-Date: 2008-12-31 05:52+0000\n"
 "PO-Revision-Date: 2008-09-23 12:55+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
+"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -404,20 +404,14 @@ msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr "Permisiune pentru clientii de a utiliza atribute extinse tip OS/2"
 
+msgid "Allow clients to resume interrupted uploads and downloads."
+msgstr ""
+
 msgid "Allow new files"
 msgstr ""
 
 msgid "Allow new files to be created."
 msgstr ""
-
-msgid ""
-"Allow users to resume and upload files, but NOT to delete or rename them. "
-"Directories can be removed, but only if they are empty. However, overwriting "
-"existing files is still allowed."
-msgstr ""
-"Permite utilizatorilor sa continue incarcarea fisierelor (resume), dar FARA "
-"posibilitatea de stergere sau redenumire fisiere. Directoarele pot fi sterse "
-"doar daca sint goale. Oricum, suprascrierea fisierelor este permisa."
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -609,6 +603,13 @@ msgstr "Nicio informatie disponibila despre interfata"
 msgid "Case Folding"
 msgstr ""
 
+msgid ""
+"Causes the server to display the network information for the specified IP "
+"address or DNS hostname to the client, on the assumption that that IP "
+"address or DNS host is acting as a NAT gateway or port forwarder for the "
+"server."
+msgstr ""
+
 msgid "Certificate"
 msgstr "Certificat"
 
@@ -779,6 +780,9 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Lista Cron"
 
+msgid "Custom"
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -832,6 +836,9 @@ msgstr "Implicit"
 msgid "Default is 21"
 msgstr "Implicit este 21"
 
+msgid "Default root"
+msgstr ""
+
 msgid "Default user name is 'admin'."
 msgstr ""
 
@@ -840,9 +847,6 @@ msgstr "Definiţi directoarele/URL-urile care necesită autentificare"
 
 msgid "Defines when the shutdown is initiated."
 msgstr ""
-
-msgid "Defining a hostname can be useful for NFS."
-msgstr "Definirea unui sistem gazda (host) poate fi util pentru NFS."
 
 msgid "Delete"
 msgstr "Stergere"
@@ -1040,9 +1044,6 @@ msgstr "Masca directoare"
 
 msgid "Directory to be shared."
 msgstr "Directorul de partajat."
-
-msgid "Disable"
-msgstr "Dezactivează"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
@@ -1367,6 +1368,9 @@ msgstr "Activeaza NTP"
 msgid "Enable SMTP authentication."
 msgstr ""
 
+msgid "Enable TLS/SSL connections."
+msgstr ""
+
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 
@@ -1432,13 +1436,6 @@ msgstr "Activare trimitere mesaje syslog catre server-ul remote syslog"
 msgid "Enable the system power control utility"
 msgstr "Activare utilitar control alimentare sistem (UPS)"
 
-msgid ""
-"Enable this if your FTP server is behind a NAT box that doesn't support "
-"applicative FTP proxying."
-msgstr ""
-"Activati daca server-ul dvs. FTP se gaseste in spatele unui proxy care nu "
-"suporta modul proxy pentru FTP."
-
 msgid "Enable transcoding."
 msgstr ""
 
@@ -1477,9 +1474,6 @@ msgstr "Criptare"
 
 msgid "Encryption algorithm"
 msgstr "Algoritm criptare"
-
-msgid "Enforce TLS"
-msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1706,17 +1700,6 @@ msgstr "Indicatori"
 msgid "Follow"
 msgstr "Urmarire"
 
-msgid "Force NAT mode."
-msgstr "Fortare mod NAT."
-
-msgid ""
-"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
-"server is behind a masquerading (NAT) box that doesn't properly handle "
-"stateful FTP masquerading, put the ip address of that box here. If you have "
-"a dynamic IP address, you can put the public host name of your gateway, that "
-"will be resolved every time a new client will connect."
-msgstr ""
-
 msgid "Forced update period"
 msgstr "Perioada de actualizare fortata"
 
@@ -1836,6 +1819,9 @@ msgstr "Director utilizator"
 msgid "Host"
 msgstr "Sistem"
 
+msgid "Host access control"
+msgstr ""
+
 msgid "Host name"
 msgstr ""
 
@@ -1844,6 +1830,9 @@ msgstr "Resurse Adresa"
 
 msgid "Hostname"
 msgstr "Nume Sistem"
+
+msgid "Hostname database"
+msgstr ""
 
 msgid "Hosts"
 msgstr "Sisteme"
@@ -1931,6 +1920,12 @@ msgid ""
 "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
 "IDLE state, most disks are still spinning, so this is probably not what you "
 "want."
+msgstr ""
+
+msgid ""
+"If default root is enabled, a chroot operation is performed immediately "
+"after a client authenticates. This can be used to effectively isolate the "
+"client from a portion of the host system filespace."
 msgstr ""
 
 msgid ""
@@ -2082,9 +2077,6 @@ msgid ""
 msgstr ""
 "Ianuarie Februarie Martie Aprilie Mai Iunie Iulie August Septembrie "
 "Octombrie Noiembrie Decembrie"
-
-msgid "Keep all files"
-msgstr "Pastreaza toate fisierele"
 
 msgid "Key"
 msgstr "Cheie"
@@ -2297,6 +2289,9 @@ msgstr "Mapare toti utilizatori in root"
 msgid "Map to user"
 msgstr "Mapare Utilizator"
 
+msgid "Masquerade address"
+msgstr ""
+
 msgid "Max. TTL"
 msgstr ""
 
@@ -2313,8 +2308,8 @@ msgstr ""
 msgid "Maximum connections"
 msgstr "Numar Maxim Conexiuni"
 
-msgid "Maximum idle time in minutes."
-msgstr "Timp maxim in mod idle (minute)."
+msgid "Maximum idle time in seconds."
+msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numar maxim de conexiuni pe IP (0 = nelimitat)."
@@ -2412,9 +2407,6 @@ msgstr "Montari"
 
 msgid "Must choose one"
 msgstr "Trebuie selectat unul"
-
-msgid "NAT mode"
-msgstr "Mod NAT"
 
 msgid "NFS"
 msgstr "NFS"
@@ -2567,13 +2559,6 @@ msgstr ""
 "Permite doar accesul utilizatorilor autentificati. Accesul \"anonim\" nu "
 "este permis."
 
-msgid ""
-"Only ports in the range min. port to max. port inclusive are used for "
-"passive-mode downloads. This is especially useful if the server is behind a "
-"firewall without FTP connection tracking. Use high ports (40000-50000 for "
-"instance), where no regular server should be listening."
-msgstr ""
-
 #, php-format
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
@@ -2642,11 +2627,18 @@ msgstr "Partitie"
 msgid "Partitions"
 msgstr "Partitii"
 
-msgid "Passive IP address"
-msgstr "Adresa IP pasiva"
+msgid "Passive ports"
+msgstr ""
 
-msgid "Passive mode ports"
-msgstr "Porti pentru transfer pasiv"
+msgid ""
+"Passive ports restricts the range of ports from which the server will select "
+"when sent the PASV command from a client. The server will randomly choose a "
+"number from within the specified range until an open port is found. The port "
+"range selected must be in the non-privileged range (eg. greater than or "
+"equal to 1024). It is strongly recommended that the chosen range be large "
+"enough to handle many simultaneous passive connections (for example, 49152-"
+"65534, the IANA-registered ephemeral port range)."
+msgstr ""
 
 msgid "Passphrase"
 msgstr "Fraza control"
@@ -2731,6 +2723,10 @@ msgstr "Portul "
 
 #, php-format
 msgid "Port %ld is already used by another service."
+msgstr ""
+
+#, php-format
+msgid "Port %s must be less than %s."
 msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
@@ -2967,6 +2963,9 @@ msgstr ""
 
 msgid "Results for net rpc testjoin:"
 msgstr "Rezultat test net rpc:"
+
+msgid "Resume"
+msgstr "Continua"
 
 msgid "Retry"
 msgstr "Reincearca"
@@ -3472,9 +3471,6 @@ msgstr ""
 msgid "TKIP"
 msgstr ""
 
-msgid "TLS + cleartext"
-msgstr ""
-
 msgid "Target"
 msgstr "Destinatie"
 
@@ -3522,8 +3518,8 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid "The %s port must be a valid port number."
-msgstr "Valoare incorecta pentru portul %s"
+msgid "The %s port must be in the range from %d to %d."
+msgstr ""
 
 msgid "The IP address that this hostname represents."
 msgstr "Adresa IP corespunzatoare sistemului."
@@ -3646,6 +3642,17 @@ msgstr "Atributul '%s' trebuie sa fie tip numar."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Atributul '%s' trebuie sa fie tip text."
+
+msgid ""
+"The basic configuration usually takes the form of 'daemon : address : "
+"action'. Where daemon is the daemon name of the service started. The address "
+"can be a valid hostname, an IP address or an IPv6 address enclosed in "
+"brackets. The action field can be either allow or deny to grant or deny "
+"access appropriately. Keep in mind that configuration works off a first rule "
+"match semantic, meaning that the configuration file is scanned in ascending "
+"order for a matching rule. When a match is found the rule is applied and the "
+"search process will halt."
+msgstr ""
 
 msgid "The changes have been applied successfully."
 msgstr "Modificarile au fost aplicate cu succes."
@@ -4208,6 +4215,12 @@ msgstr "La email"
 
 #, php-format
 msgid ""
+"To get detailed informations about TCP Wrappers check the FreeBSD <a "
+"href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
@@ -4384,9 +4397,6 @@ msgid "Uptime"
 msgstr "Timp de functionare neintrerupta"
 
 msgid "Use AFP3 unix privileges."
-msgstr ""
-
-msgid "Use SSL/TLS encryption layer."
 msgstr ""
 
 msgid ""
@@ -4662,9 +4672,6 @@ msgstr "inclus"
 msgid "cachecnid"
 msgstr ""
 
-msgid "chroot everyone"
-msgstr "chroot pentru fiecare"
-
 msgid "chroot() everyone, but root."
 msgstr ""
 
@@ -4731,12 +4738,6 @@ msgstr ""
 
 msgid "nostat"
 msgstr ""
-
-msgid "pasv_max_port"
-msgstr "port_max_pasiv"
-
-msgid "pasv_min_port"
-msgstr "port_min_pasiv"
 
 msgid "prodos"
 msgstr ""
@@ -5359,6 +5360,9 @@ msgstr "zilele saptaminii"
 #~ msgid "FTP Server"
 #~ msgstr "Server FTP"
 
+#~ msgid "Maximum idle time in minutes."
+#~ msgstr "Timp maxim in mod idle (minute)."
+
 #~ msgid "Anonymous login"
 #~ msgstr "Login Anonymous"
 
@@ -5367,6 +5371,22 @@ msgstr "zilele saptaminii"
 
 #~ msgid "Enable local user login."
 #~ msgstr "Activare login utilizator local."
+
+#~ msgid "NAT mode"
+#~ msgstr "Mod NAT"
+
+#~ msgid "Force NAT mode."
+#~ msgstr "Fortare mod NAT."
+
+#~ msgid ""
+#~ "Enable this if your FTP server is behind a NAT box that doesn't support "
+#~ "applicative FTP proxying."
+#~ msgstr ""
+#~ "Activati daca server-ul dvs. FTP se gaseste in spatele unui proxy care nu "
+#~ "suporta modul proxy pentru FTP."
+
+#~ msgid "Passive IP address"
+#~ msgstr "Adresa IP pasiva"
 
 #~ msgid ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
@@ -5699,9 +5719,6 @@ msgstr "zilele saptaminii"
 #~ msgid "detach"
 #~ msgstr "detasare"
 
-#~ msgid "Resume"
-#~ msgstr "Continua"
-
 #~ msgid "Enable resume mode."
 #~ msgstr "Activare mod continuare"
 
@@ -5747,6 +5764,10 @@ msgstr "zilele saptaminii"
 
 #~ msgid "Save and Restart AFP"
 #~ msgstr "Salvare si Repornire AFP"
+
+#, php-format
+#~ msgid "The %s port must be a valid port number."
+#~ msgstr "Valoare incorecta pentru portul %s"
 
 #~ msgid "Password confirmation"
 #~ msgstr "Confirmare Parola"
@@ -5939,6 +5960,12 @@ msgstr "zilele saptaminii"
 #~ msgid "CPU"
 #~ msgstr "CPU"
 
+#~ msgid "pasv_min_port"
+#~ msgstr "port_min_pasiv"
+
+#~ msgid "pasv_max_port"
+#~ msgstr "port_max_pasiv"
+
 #~ msgid "Parameter"
 #~ msgstr "Parametru"
 
@@ -5973,6 +6000,18 @@ msgstr "zilele saptaminii"
 #~ msgid "Failed to send status report. Please check log files."
 #~ msgstr "Eroare la trimiterea raportului. Verificati fisierul jurnal."
 
+#~ msgid "Defining a hostname can be useful for NFS."
+#~ msgstr "Definirea unui sistem gazda (host) poate fi util pentru NFS."
+
+#~ msgid ""
+#~ "Allow users to resume and upload files, but NOT to delete or rename them. "
+#~ "Directories can be removed, but only if they are empty. However, overwriting "
+#~ "existing files is still allowed."
+#~ msgstr ""
+#~ "Permite utilizatorilor sa continue incarcarea fisierelor (resume), dar FARA "
+#~ "posibilitatea de stergere sau redenumire fisiere. Directoarele pot fi sterse "
+#~ "doar daca sint goale. Oricum, suprascrierea fisierelor este permisa."
+
 #~ msgid "Duplicate name."
 #~ msgstr "Nume existent deja."
 
@@ -5992,6 +6031,9 @@ msgstr "zilele saptaminii"
 #~ "Numele sau adresa IP a serverului LDAP. Atentie: Utilizarea numelui este "
 #~ "obligatorie pentru TLS"
 
+#~ msgid "Keep all files"
+#~ msgstr "Pastreaza toate fisierele"
+
 #~ msgid "LDAP server name"
 #~ msgstr "Numele serverului LDAP"
 
@@ -5999,6 +6041,9 @@ msgstr "zilele saptaminii"
 #~ "Specifies the default base DN to use when performing ldap operations, "
 #~ "example: dc=example,dc=com"
 #~ msgstr "Specifica baza DN pentru operatii LDAP, exemplu: dc=example, dc=com"
+
+#~ msgid "chroot everyone"
+#~ msgstr "chroot pentru fiecare"
 
 #~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 #~ msgstr "sufix grupului, ex.: ou=groups, dc=exemplu, dc=com"
@@ -6008,6 +6053,12 @@ msgstr "zilele saptaminii"
 
 #~ msgid "user_suffix, example: ou=users,dc=example,dc=com"
 #~ msgstr "sufix utilizator, ex.: ou=utilizatori, dc=exemplu, dc=com"
+
+#~ msgid "Disable"
+#~ msgstr "Dezactivează"
+
+#~ msgid "Passive mode ports"
+#~ msgstr "Porti pentru transfer pasiv"
 
 #~ msgid "type"
 #~ msgstr "tip"

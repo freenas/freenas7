@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-15 03:03+0000\n"
-"PO-Revision-Date: 2008-12-16 03:42+0000\n"
+"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"PO-Revision-Date: 2009-01-02 01:22+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
+"X-Launchpad-Export-Date: 2009-01-02 10:23+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -442,21 +442,14 @@ msgstr ""
 "Sta de werkstations toe om OS/2-stijl externe attributen op te slaan op een "
 "gedeeld station."
 
+msgid "Allow clients to resume interrupted uploads and downloads."
+msgstr "Sta toe dat cliënten onderbroken uploads/downloads kunnen hervatten."
+
 msgid "Allow new files"
 msgstr "Nieuwe bestanden toestaan"
 
 msgid "Allow new files to be created."
 msgstr "Sta toe dat nieuwe bestanden kunnen worden aangemaakt."
-
-msgid ""
-"Allow users to resume and upload files, but NOT to delete or rename them. "
-"Directories can be removed, but only if they are empty. However, overwriting "
-"existing files is still allowed."
-msgstr ""
-"Sta gebruikers toe om door te gaan en bestanden toe te voegen, maar NIET om "
-"bestanden te hernoemen of te verwijderen. Mappen kunnen verwijderd worden, "
-"maar alleen wanneer deze leeg zijn. Let op! bestanden overschrijven is nog "
-"steeds toegestaan."
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -657,6 +650,17 @@ msgstr "Kan geen data krijgen over netwerkkaart"
 msgid "Case Folding"
 msgstr "karakter omzetting"
 
+msgid ""
+"Causes the server to display the network information for the specified IP "
+"address or DNS hostname to the client, on the assumption that that IP "
+"address or DNS host is acting as a NAT gateway or port forwarder for the "
+"server."
+msgstr ""
+"Verzorgt dat de server netwerk informatie voor de gespecificeerde IP "
+"adressen of DNS hostnamen weergeeft aan de cliënt, aangenomen zijnde dat de "
+"IP adres of DNS host werkt als een NAT gateway of als poort forwarder voor "
+"de server."
+
 msgid "Certificate"
 msgstr "Certificaat"
 
@@ -830,6 +834,9 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Cron taak"
 
+msgid "Custom"
+msgstr "Aangepast"
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -884,6 +891,9 @@ msgstr "Standaard"
 msgid "Default is 21"
 msgstr "Standaard poort 21."
 
+msgid "Default root"
+msgstr "Standaard root"
+
 msgid "Default user name is 'admin'."
 msgstr "De standaard gebruikersnaam is 'admin'."
 
@@ -892,10 +902,6 @@ msgstr "Defineer mappen/URL'S die authenticatie vereisen."
 
 msgid "Defines when the shutdown is initiated."
 msgstr "Geef aan wanneer het afsluiten in werking moet treden."
-
-msgid "Defining a hostname can be useful for NFS."
-msgstr ""
-"Het opgeven van een hostnaam kan zeer nuttig zijn voor de NFS service."
 
 msgid "Delete"
 msgstr "Verwijderen"
@@ -1096,9 +1102,6 @@ msgstr "Mappen atributen"
 
 msgid "Directory to be shared."
 msgstr "Map die gedeeld moet worden."
-
-msgid "Disable"
-msgstr "Deactiveren"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
@@ -1433,6 +1436,9 @@ msgstr "Inschakelen NTP"
 msgid "Enable SMTP authentication."
 msgstr "Inchakelen SMTP authenticatie."
 
+msgid "Enable TLS/SSL connections."
+msgstr "Inschakelen TLS/SSL verbindingen."
+
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 "Inschakelen Zeroconf/Bonjour om deze service kenbaar te maken van dit "
@@ -1502,13 +1508,6 @@ msgstr "Inschakelen syslog'ing naar de remote syslog server"
 msgid "Enable the system power control utility"
 msgstr "Inschakelen van de systeem energiebeheer service"
 
-msgid ""
-"Enable this if your FTP server is behind a NAT box that doesn't support "
-"applicative FTP proxying."
-msgstr ""
-"Schakel deze optie in wanneer de FTP server zich achter een NAT router "
-"bevindt welke geen proxy functie heeft/of ingesteld voor het FTP verkeer."
-
 msgid "Enable transcoding."
 msgstr "Inschakelen hercoderen."
 
@@ -1554,9 +1553,6 @@ msgstr "Versleutelen"
 
 msgid "Encryption algorithm"
 msgstr "Versleutelings algoritme"
-
-msgid "Enforce TLS"
-msgstr "TLS afdwingen"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1796,23 +1792,6 @@ msgstr "Vlaggen"
 msgid "Follow"
 msgstr "Volgen"
 
-msgid "Force NAT mode."
-msgstr "Geforceerde NAT mode."
-
-msgid ""
-"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
-"server is behind a masquerading (NAT) box that doesn't properly handle "
-"stateful FTP masquerading, put the ip address of that box here. If you have "
-"a dynamic IP address, you can put the public host name of your gateway, that "
-"will be resolved every time a new client will connect."
-msgstr ""
-"Forceer het gespecificeerde IP adres in herhaling naar een PASV/EPSV/SPSV "
-"opdracht. Als de server zich achter een adres verhullende (NAT) router "
-"bevindt die niet in staat is om FTP verhulling af te handelen, vul dan hier "
-"het IP adres in van deze box. Als u een dynamisch IP adres heeft, kunt u de "
-"openbare host naam van uw gateway invoeren, deze zal telkens worden gebruikt "
-"als een nieuwe cliënt verbinding maakt."
-
 msgid "Forced update period"
 msgstr "Geforceerde update periode"
 
@@ -1934,6 +1913,9 @@ msgstr "Persoonlijke map"
 msgid "Host"
 msgstr "Host"
 
+msgid "Host access control"
+msgstr "Host toegangs controle"
+
 msgid "Host name"
 msgstr "Hostnaam"
 
@@ -1942,6 +1924,9 @@ msgstr "Host bronnen"
 
 msgid "Hostname"
 msgstr "Hostnaam"
+
+msgid "Hostname database"
+msgstr "Hostnaam database"
 
 msgid "Hosts"
 msgstr "Hosten"
@@ -2038,6 +2023,16 @@ msgstr ""
 "dan misschien niet helemaal wat u wilt."
 
 msgid ""
+"If default root is enabled, a chroot operation is performed immediately "
+"after a client authenticates. This can be used to effectively isolate the "
+"client from a portion of the host system filespace."
+msgstr ""
+"Als de standaard root is ingeschakeld, een chroot operatie wordt onmiddelijk "
+"uitgevoerd  nadat een cliënt geautoriseerd is verklaart. Dit kan gebruikt "
+"worden om de cliënt  zeer effectief te isoleren van het systeem "
+"bestandsruimte."
+
+msgid ""
 "If set afpd uses the ID information stored in AppleDouble V2 header files to "
 "reduce database load. Don't set this option if the volume is modified by non "
 "AFP clients (NFS/SMB/local)."
@@ -2094,7 +2089,7 @@ msgid ""
 "immediately. The entire system configuration will be overwritten. The LAN IP "
 "address will be reset to %s and the password will be set to '%s'."
 msgstr ""
-"Als u op 'Ja' drukt zal, %s direct naar de standaard fabrieksinstellingen "
+"Als u op 'Ja' drukt, zal %s direct naar de standaard fabrieksinstellingen "
 "terugkeren, een herstart zal volgen. De huidige systeemconfiguratie wordt "
 "overschreven. Het LAN IP adres verandert in IP %s en het wachtwoord wijzigt "
 "in '%s'."
@@ -2206,9 +2201,6 @@ msgid ""
 msgstr ""
 "Januari Februari Maart April Mei Juni Juli Augustus September Oktober "
 "November December"
-
-msgid "Keep all files"
-msgstr "Alle bestanden behouden"
 
 msgid "Key"
 msgstr "Sleutel"
@@ -2435,6 +2427,9 @@ msgstr "Alle gebruikers aan de root toewijzen"
 msgid "Map to user"
 msgstr "Naar gebruiker toewijzen"
 
+msgid "Masquerade address"
+msgstr "Masquerade adres"
+
 msgid "Max. TTL"
 msgstr "Max. TTL"
 
@@ -2453,17 +2448,15 @@ msgstr ""
 msgid "Maximum connections"
 msgstr "Maximaal aantal verbindingen"
 
-msgid "Maximum idle time in minutes."
-msgstr ""
-"Vul de maximum inactiviteitsduur in voor een tijdsoverschrijding plaats moet "
-"vinden (aantal minuten)."
+msgid "Maximum idle time in seconds."
+msgstr "Maximale rusttijd in seconden."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
 "Maximaal aantal gelijktijdige verbindingen per IP adres (0 = ongelimiteerd)."
 
 msgid "Maximum number of simultaneous clients."
-msgstr "Maximaal aantal gelijktijdige cliënten."
+msgstr "Maximaal aantal gelijktijdige gebruikers."
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr ""
@@ -2558,9 +2551,6 @@ msgstr "Koppelpunten"
 
 msgid "Must choose one"
 msgstr "Kies een schijf (verplicht)"
-
-msgid "NAT mode"
-msgstr "NAT mode"
 
 msgid "NFS"
 msgstr "NFS"
@@ -2726,19 +2716,8 @@ msgstr ""
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr ""
-"Alleen geautoriseerde gebruikers toestaan. Anonieme aanmeldingen zijn niet "
-"toegestaan."
-
-msgid ""
-"Only ports in the range min. port to max. port inclusive are used for "
-"passive-mode downloads. This is especially useful if the server is behind a "
-"firewall without FTP connection tracking. Use high ports (40000-50000 for "
-"instance), where no regular server should be listening."
-msgstr ""
-"Alleen de poorten in het bereik min. poort tot max. poort zijn in gebruik "
-"voor passieve-mode downloads. Dit is zeer nuttig wanneer de server zich "
-"achter een firewall bevindt zonder de FTP connectie te volgen. Tip! Gebruik "
-"hoge poorten (40000-50000) waar normaal geen server zou gaan luisteren."
+"Alleen geautoriseerde gebruikers toestaan. Anonieme aanmeldingen worden niet "
+"toegelaten."
 
 #, php-format
 msgid ""
@@ -2809,11 +2788,26 @@ msgstr "Partitie"
 msgid "Partitions"
 msgstr "Partities"
 
-msgid "Passive IP address"
-msgstr "Passief IP adres"
+msgid "Passive ports"
+msgstr "passieve poorten"
 
-msgid "Passive mode ports"
-msgstr "Passieve mode poorten"
+msgid ""
+"Passive ports restricts the range of ports from which the server will select "
+"when sent the PASV command from a client. The server will randomly choose a "
+"number from within the specified range until an open port is found. The port "
+"range selected must be in the non-privileged range (eg. greater than or "
+"equal to 1024). It is strongly recommended that the chosen range be large "
+"enough to handle many simultaneous passive connections (for example, 49152-"
+"65534, the IANA-registered ephemeral port range)."
+msgstr ""
+"De passieve poorten beperken het bereik van poorten waaruit de server kan "
+"kiezen voor het versturen van de PASV opdrachten naar cliënten. De server "
+"zal een willekeurig poort nummer kiezen binnen dit opgegeven bereik tot een "
+"open poort is gevonden. De geselecteerde poorten mogen niet binnen het non-"
+"privileged bereik liggen (bijv. groter dan of gelijk aan poort 1024). Het is "
+"aanbevolen dat het gekozen bereik groot genoeg is om meerdere passieve "
+"verbindingen tegelijk af te kunnen handelen (als voorbeeld, 49152-65534, de "
+"IANA-geregistreerde kortstondig poort bereik)."
 
 msgid "Passphrase"
 msgstr "Wachtwoordzin"
@@ -2899,6 +2893,10 @@ msgstr "Poort "
 #, php-format
 msgid "Port %ld is already used by another service."
 msgstr "Poort %ld is al in gebruik door een andere service."
+
+#, php-format
+msgid "Port %s must be less than %s."
+msgstr "Poort %s moet lager zijn dan %s."
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Poort om op te luisteren. Standaard iTunes poort 3689."
@@ -3143,6 +3141,9 @@ msgstr ""
 
 msgid "Results for net rpc testjoin:"
 msgstr "Resultaten voor net rpc testjoin:"
+
+msgid "Resume"
+msgstr "Hervat"
 
 msgid "Retry"
 msgstr "Opnieuw proberen"
@@ -3682,9 +3683,6 @@ msgstr "TFTP"
 msgid "TKIP"
 msgstr "TKIP"
 
-msgid "TLS + cleartext"
-msgstr "TLS + cleartext"
-
 msgid "Target"
 msgstr "Doel"
 
@@ -3737,8 +3735,8 @@ msgstr ""
 "toestaan optie."
 
 #, php-format
-msgid "The %s port must be a valid port number."
-msgstr "De %s poort moet een geldig poort nummer zijn."
+msgid "The %s port must be in the range from %d to %d."
+msgstr "De %s poort moet binnen het bereik zijn van %d tot %d."
 
 msgid "The IP address that this hostname represents."
 msgstr "Het IP adres dat deze hostnaam vertegenwoordigd."
@@ -3870,6 +3868,26 @@ msgstr "Het attribuut '%s' moet een nummer zijn."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Het attribuut '%s' moet een tekenreeks zijn."
+
+msgid ""
+"The basic configuration usually takes the form of 'daemon : address : "
+"action'. Where daemon is the daemon name of the service started. The address "
+"can be a valid hostname, an IP address or an IPv6 address enclosed in "
+"brackets. The action field can be either allow or deny to grant or deny "
+"access appropriately. Keep in mind that configuration works off a first rule "
+"match semantic, meaning that the configuration file is scanned in ascending "
+"order for a matching rule. When a match is found the rule is applied and the "
+"search process will halt."
+msgstr ""
+"De basisconfiguratie neemt gewoonlijk de vorm aan van 'daemon: adres: "
+"actie'. Waar daemon de daemonnaam van de gestarte service is. Het adres kan "
+"een geldig hostnaam, een IP adres of een IPv6 adres tussen haakjes "
+"ingesloten zijn. Het actie veld kan zijn toestaan of afwijzen tot aangewezen "
+"toestaan of afwijzen van de toegang. Houd in gedachte dat de configuratie "
+"werkt van een eerste regel match semantisch, dit betekenend dat het "
+"configuratie bestand  in stijgende lijn voor een passende regel wordt "
+"afgezocht. Wanneer een match is gevonden zal de regel worden toegepast en "
+"het zoek proces zal worden beëindigd."
 
 msgid "The changes have been applied successfully."
 msgstr "De wijzigingen zijn succesvol uitgevoerd."
@@ -4245,8 +4263,8 @@ msgid ""
 msgstr ""
 "Deze configuratie opties zijn gebruikt om de ups.conf configuratie bestand "
 "te genereren welke nodig zijn voor de NUT UPS daemon. Om meer informatie te "
-"krijgen hoe u uw UPS configureerd gebruikt u dan alstublieft de NUT (Netwerk "
-"UPS Tool) <a href='%s' target='_blank'>documentatie</a>."
+"krijgen hoe u uw UPS configureerd, bekijkt u dan de NUT (Netwerk UPS Tool) "
+"<a href='%s' target='_blank'>documentatie</a>."
 
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
@@ -4557,11 +4575,19 @@ msgstr "Naar E-mail"
 
 #, php-format
 msgid ""
+"To get detailed informations about TCP Wrappers check the FreeBSD <a "
+"href='%s' target='_blank'>documentation</a>."
+msgstr ""
+"Voor gedetailleerde informatie over TCP Wrappers bekijkt u de FreeBSD <a "
+"href='%s' target='_blank'>documentatie</a>."
+
+#, php-format
+msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
-"Voor gedetailleerde informatie hoe een firewall regel te maken, ga naar de "
-"FreeBSD <a href='%s' target='_blank'>documentatie</a>."
+"Voor gedetailleerde informatie hoe u een firewall regel kunt maken, bekijkt "
+"u de FreeBSD <a href='%s' target='_blank'>documentatie</a>."
 
 #, php-format
 msgid ""
@@ -4746,9 +4772,6 @@ msgstr "Tijd beschikbaar"
 
 msgid "Use AFP3 unix privileges."
 msgstr "Gebruik AFP3 unix bevoegdheden."
-
-msgid "Use SSL/TLS encryption layer."
-msgstr "SSL/TLS versleuteling activeren of deactiveren."
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
@@ -5051,9 +5074,6 @@ msgstr "gebouwd op"
 msgid "cachecnid"
 msgstr "cachecnid"
 
-msgid "chroot everyone"
-msgstr "Chroot iedereen"
-
 msgid "chroot() everyone, but root."
 msgstr "chroot() iedereen, maar niet de root."
 
@@ -5120,12 +5140,6 @@ msgstr "nohex"
 
 msgid "nostat"
 msgstr "nostat"
-
-msgid "pasv_max_port"
-msgstr "pasv_max_port"
-
-msgid "pasv_min_port"
-msgstr "pasv_min_port"
 
 msgid "prodos"
 msgstr "prodos"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"POT-Creation-Date: 2008-12-31 05:52+0000\n"
 "PO-Revision-Date: 2008-11-12 13:53+0000\n"
 "Last-Translator: Alex Trenta <dando.sando@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
+"X-Launchpad-Export-Date: 2009-01-02 10:23+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -403,20 +403,14 @@ msgstr ""
 "Consente ai client di  tentare il salvataggiodegli attributi estesi in stile "
 "OS/2 su una condivisione."
 
+msgid "Allow clients to resume interrupted uploads and downloads."
+msgstr ""
+
 msgid "Allow new files"
 msgstr ""
 
 msgid "Allow new files to be created."
 msgstr ""
-
-msgid ""
-"Allow users to resume and upload files, but NOT to delete or rename them. "
-"Directories can be removed, but only if they are empty. However, overwriting "
-"existing files is still allowed."
-msgstr ""
-"Consenti agli utenti di prelevare e caricare files, ma NON di cancellarli o "
-"rinominarli. Le directories possono essere rimosse, ma solo se sono vuote. "
-"Comunque, sovrascrivere files esistenti e' ancora consentito."
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -610,6 +604,13 @@ msgstr "Non e' possibile ottenere dati sull'interfaccia"
 msgid "Case Folding"
 msgstr "Case Folding"
 
+msgid ""
+"Causes the server to display the network information for the specified IP "
+"address or DNS hostname to the client, on the assumption that that IP "
+"address or DNS host is acting as a NAT gateway or port forwarder for the "
+"server."
+msgstr ""
+
 msgid "Certificate"
 msgstr "Certificato"
 
@@ -779,6 +780,9 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Attivita' Cron"
 
+msgid "Custom"
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -833,6 +837,9 @@ msgstr "Predefinita"
 msgid "Default is 21"
 msgstr "Il valore di default e' 21"
 
+msgid "Default root"
+msgstr ""
+
 msgid "Default user name is 'admin'."
 msgstr ""
 
@@ -841,9 +848,6 @@ msgstr ""
 
 msgid "Defines when the shutdown is initiated."
 msgstr ""
-
-msgid "Defining a hostname can be useful for NFS."
-msgstr "Definire un nome host puo' ritornare utile per NFS."
 
 msgid "Delete"
 msgstr "Cancella"
@@ -1042,9 +1046,6 @@ msgstr "Maschera dell'indice"
 
 msgid "Directory to be shared."
 msgstr "Directory da condividere."
-
-msgid "Disable"
-msgstr "Disabilita"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Disattiva AFP-over-AppleTalk per impedire connessioni DDP."
@@ -1372,6 +1373,9 @@ msgstr "Abilita NTP"
 msgid "Enable SMTP authentication."
 msgstr "Attiva l'autenticazione SMTP."
 
+msgid "Enable TLS/SSL connections."
+msgstr ""
+
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 
@@ -1439,13 +1443,6 @@ msgstr "Abilitare il logging verso un server syslog remoto"
 msgid "Enable the system power control utility"
 msgstr "Abilita l'utilita' di controllo del consumo energetico del sistema"
 
-msgid ""
-"Enable this if your FTP server is behind a NAT box that doesn't support "
-"applicative FTP proxying."
-msgstr ""
-"Abilitare se il vostro server FTP e' dietro un NAT che non supporta il "
-"proxing FTP."
-
 msgid "Enable transcoding."
 msgstr ""
 
@@ -1484,9 +1481,6 @@ msgstr "Cifratura"
 
 msgid "Encryption algorithm"
 msgstr "Algoritmo di cifratura"
-
-msgid "Enforce TLS"
-msgstr "Forza TLS"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1720,23 +1714,6 @@ msgstr "Flags"
 msgid "Follow"
 msgstr "Segui"
 
-msgid "Force NAT mode."
-msgstr "Forza modalita' NAT."
-
-msgid ""
-"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
-"server is behind a masquerading (NAT) box that doesn't properly handle "
-"stateful FTP masquerading, put the ip address of that box here. If you have "
-"a dynamic IP address, you can put the public host name of your gateway, that "
-"will be resolved every time a new client will connect."
-msgstr ""
-"Forza lo specifico indirizzo IP in risposta al comando PASV/EPSV/SPSV. Se il "
-"server si trova dietro un apparato che effettua un mascheramento (NAT) che "
-"non gestisce in modo adeguato FTP, inserire qui l'indirizzo IP di "
-"quell'apparato. Se avete un indirizzo IP dinamico, potete utilizzare il nome "
-"di host pubblico del vosto gateway, sarà risolto ogni volta che un nuovo "
-"client si connetterà."
-
 msgid "Forced update period"
 msgstr "Aggiornamento periiodico forzato"
 
@@ -1857,6 +1834,9 @@ msgstr "Directory home"
 msgid "Host"
 msgstr "Host"
 
+msgid "Host access control"
+msgstr ""
+
 msgid "Host name"
 msgstr ""
 
@@ -1865,6 +1845,9 @@ msgstr "Risorse dell'Host"
 
 msgid "Hostname"
 msgstr "Nome di host"
+
+msgid "Hostname database"
+msgstr ""
 
 msgid "Hosts"
 msgstr "Host"
@@ -1955,6 +1938,12 @@ msgstr ""
 "Idle - Controlla il dispositivo finché si trova in modalità SLEEP, STANDBY o "
 "IDLE. Nello stato di IDLE, la maggior parte dei dischi sta ancora girando, "
 "pertanto questo probabilmente non è ciò che ti interessa."
+
+msgid ""
+"If default root is enabled, a chroot operation is performed immediately "
+"after a client authenticates. This can be used to effectively isolate the "
+"client from a portion of the host system filespace."
+msgstr ""
 
 msgid ""
 "If set afpd uses the ID information stored in AppleDouble V2 header files to "
@@ -2117,9 +2106,6 @@ msgid ""
 msgstr ""
 "Gennaio Febbraio Marzo Maggio Aprile Meggio Giugno Luglio Agosto Settembre "
 "Ottobre Novembre Dicembre"
-
-msgid "Keep all files"
-msgstr "Mantieni tutti i file"
 
 msgid "Key"
 msgstr "Chiave"
@@ -2336,6 +2322,9 @@ msgstr "mappa tutti gli utenti come root"
 msgid "Map to user"
 msgstr "Mappa come utente"
 
+msgid "Masquerade address"
+msgstr ""
+
 msgid "Max. TTL"
 msgstr ""
 
@@ -2352,8 +2341,8 @@ msgstr ""
 msgid "Maximum connections"
 msgstr "Connessioni massime"
 
-msgid "Maximum idle time in minutes."
-msgstr "Tempo massimo in idle in minuti."
+msgid "Maximum idle time in seconds."
+msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numero massimo di connessioni per indirizzo IP (0 = illimitate)."
@@ -2454,9 +2443,6 @@ msgstr "Mounts"
 
 msgid "Must choose one"
 msgstr "Bisogna sceglierne uno"
-
-msgid "NAT mode"
-msgstr "Modalita' NAT"
 
 msgid "NFS"
 msgstr "NFS"
@@ -2611,18 +2597,6 @@ msgstr ""
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr "Permette solo utenti autenticati. Le login anonime sono vietate."
 
-msgid ""
-"Only ports in the range min. port to max. port inclusive are used for "
-"passive-mode downloads. This is especially useful if the server is behind a "
-"firewall without FTP connection tracking. Use high ports (40000-50000 for "
-"instance), where no regular server should be listening."
-msgstr ""
-"Solo le porte incluse in Porta min. - Porta max sono utilizzate per i "
-"download in modalita' passiva. Cio' e' particolarmente utile se il server e' "
-"protetto da un firewall senza connessione FTP di monitoraggio. Utilizzare le "
-"porte alte (40000-50000 per esempio) dove dovrebbero essere in ascolto "
-"server non regolari."
-
 #, php-format
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
@@ -2691,11 +2665,18 @@ msgstr "Partizione"
 msgid "Partitions"
 msgstr "Partizioni"
 
-msgid "Passive IP address"
-msgstr "Indirizzo IP passivo"
+msgid "Passive ports"
+msgstr ""
 
-msgid "Passive mode ports"
-msgstr "Porte a modalita' passiva"
+msgid ""
+"Passive ports restricts the range of ports from which the server will select "
+"when sent the PASV command from a client. The server will randomly choose a "
+"number from within the specified range until an open port is found. The port "
+"range selected must be in the non-privileged range (eg. greater than or "
+"equal to 1024). It is strongly recommended that the chosen range be large "
+"enough to handle many simultaneous passive connections (for example, 49152-"
+"65534, the IANA-registered ephemeral port range)."
+msgstr ""
 
 msgid "Passphrase"
 msgstr "Passphrase"
@@ -2781,6 +2762,10 @@ msgstr "Porta "
 
 #, php-format
 msgid "Port %ld is already used by another service."
+msgstr ""
+
+#, php-format
+msgid "Port %s must be less than %s."
 msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
@@ -3023,6 +3008,9 @@ msgstr ""
 
 msgid "Results for net rpc testjoin:"
 msgstr "Risultati per il testjoin net rpc:"
+
+msgid "Resume"
+msgstr "Ripristina"
 
 msgid "Retry"
 msgstr "Riprova"
@@ -3534,9 +3522,6 @@ msgstr ""
 msgid "TKIP"
 msgstr ""
 
-msgid "TLS + cleartext"
-msgstr "TLS + cleartext"
-
 msgid "Target"
 msgstr "Target"
 
@@ -3586,8 +3571,8 @@ msgstr ""
 "l'accesso alla share. Segue lo stesso formato della opzione consenti."
 
 #, php-format
-msgid "The %s port must be a valid port number."
-msgstr "La porta %s deve avere un numero di porta valido."
+msgid "The %s port must be in the range from %d to %d."
+msgstr ""
 
 msgid "The IP address that this hostname represents."
 msgstr "L'indirizzo IP che questo nome di host rappresenta."
@@ -3717,6 +3702,17 @@ msgstr "L' attributo '%s' deve essere un numero."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "L'attributo '%s' deve essere una stringa."
+
+msgid ""
+"The basic configuration usually takes the form of 'daemon : address : "
+"action'. Where daemon is the daemon name of the service started. The address "
+"can be a valid hostname, an IP address or an IPv6 address enclosed in "
+"brackets. The action field can be either allow or deny to grant or deny "
+"access appropriately. Keep in mind that configuration works off a first rule "
+"match semantic, meaning that the configuration file is scanned in ascending "
+"order for a matching rule. When a match is found the rule is applied and the "
+"search process will halt."
+msgstr ""
 
 msgid "The changes have been applied successfully."
 msgstr "I cambiamenti sono stati applicati con successo."
@@ -4357,6 +4353,12 @@ msgstr "Spedisci con email"
 
 #, php-format
 msgid ""
+"To get detailed informations about TCP Wrappers check the FreeBSD <a "
+"href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
@@ -4534,9 +4536,6 @@ msgstr "Attivo da:"
 
 msgid "Use AFP3 unix privileges."
 msgstr "Usa i privilegi unix AFP3."
-
-msgid "Use SSL/TLS encryption layer."
-msgstr "Usare il livello di cifratura SSL/TLS."
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
@@ -4822,9 +4821,6 @@ msgstr "costruito su"
 msgid "cachecnid"
 msgstr ""
 
-msgid "chroot everyone"
-msgstr "Chiunque dentro chroot"
-
 msgid "chroot() everyone, but root."
 msgstr "Chiunque dentro chroot, tranne root."
 
@@ -4891,12 +4887,6 @@ msgstr ""
 
 msgid "nostat"
 msgstr ""
-
-msgid "pasv_max_port"
-msgstr "Porta massima PASV"
-
-msgid "pasv_min_port"
-msgstr "Porta minima PASV"
 
 msgid "prodos"
 msgstr ""
@@ -5393,6 +5383,9 @@ msgstr "giorni della settimana"
 #~ msgid "FTP Server"
 #~ msgstr "Server FTP"
 
+#~ msgid "Maximum idle time in minutes."
+#~ msgstr "Tempo massimo in idle in minuti."
+
 #~ msgid "Anonymous login"
 #~ msgstr "Login Anonimo"
 
@@ -5401,6 +5394,22 @@ msgstr "giorni della settimana"
 
 #~ msgid "Enable local user login."
 #~ msgstr "Accetta login di utenti locali."
+
+#~ msgid "NAT mode"
+#~ msgstr "Modalita' NAT"
+
+#~ msgid "Force NAT mode."
+#~ msgstr "Forza modalita' NAT."
+
+#~ msgid ""
+#~ "Enable this if your FTP server is behind a NAT box that doesn't support "
+#~ "applicative FTP proxying."
+#~ msgstr ""
+#~ "Abilitare se il vostro server FTP e' dietro un NAT che non supporta il "
+#~ "proxing FTP."
+
+#~ msgid "Passive IP address"
+#~ msgstr "Indirizzo IP passivo"
 
 #~ msgid ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
@@ -5614,6 +5623,10 @@ msgstr "giorni della settimana"
 #~ msgid "Destroying old %s information"
 #~ msgstr "Distruggo le vecchie informazioni %s"
 
+#, php-format
+#~ msgid "The %s port must be a valid port number."
+#~ msgstr "La porta %s deve avere un numero di porta valido."
+
 #~ msgid "Add RSYNC"
 #~ msgstr "Aggiungi RSYNC"
 
@@ -5709,6 +5722,12 @@ msgstr "giorni della settimana"
 #~ msgid "CPU"
 #~ msgstr "CPU"
 
+#~ msgid "pasv_min_port"
+#~ msgstr "Porta minima PASV"
+
+#~ msgid "pasv_max_port"
+#~ msgstr "Porta massima PASV"
+
 #~ msgid "Parameter"
 #~ msgstr "Parametro"
 
@@ -5745,6 +5764,18 @@ msgstr "giorni della settimana"
 #~ "Spedizione rapporto del rapporto di stato fallita. Si prega di controllare i "
 #~ "file di log."
 
+#~ msgid "Defining a hostname can be useful for NFS."
+#~ msgstr "Definire un nome host puo' ritornare utile per NFS."
+
+#~ msgid ""
+#~ "Allow users to resume and upload files, but NOT to delete or rename them. "
+#~ "Directories can be removed, but only if they are empty. However, overwriting "
+#~ "existing files is still allowed."
+#~ msgstr ""
+#~ "Consenti agli utenti di prelevare e caricare files, ma NON di cancellarli o "
+#~ "rinominarli. Le directories possono essere rimosse, ma solo se sono vuote. "
+#~ "Comunque, sovrascrivere files esistenti e' ancora consentito."
+
 #~ msgid "Duplicate name."
 #~ msgstr "Nome duplicato."
 
@@ -5758,11 +5789,28 @@ msgstr "giorni della settimana"
 #~ "vuoto per utilizzare il percorso di default /mnt."
 
 #~ msgid ""
+#~ "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
+#~ "server is behind a masquerading (NAT) box that doesn't properly handle "
+#~ "stateful FTP masquerading, put the ip address of that box here. If you have "
+#~ "a dynamic IP address, you can put the public host name of your gateway, that "
+#~ "will be resolved every time a new client will connect."
+#~ msgstr ""
+#~ "Forza lo specifico indirizzo IP in risposta al comando PASV/EPSV/SPSV. Se il "
+#~ "server si trova dietro un apparato che effettua un mascheramento (NAT) che "
+#~ "non gestisce in modo adeguato FTP, inserire qui l'indirizzo IP di "
+#~ "quell'apparato. Se avete un indirizzo IP dinamico, potete utilizzare il nome "
+#~ "di host pubblico del vosto gateway, sarà risolto ogni volta che un nuovo "
+#~ "client si connetterà."
+
+#~ msgid ""
 #~ "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
 #~ "for TLS"
 #~ msgstr ""
 #~ "Nome host o indirizzo IP del server LDAP. Attenzione: L'uso di un nome di "
 #~ "host e' obbligatorio per TLS"
+
+#~ msgid "Keep all files"
+#~ msgstr "Mantieni tutti i file"
 
 #~ msgid "LDAP server name"
 #~ msgstr "Nome del server LDAP"
@@ -5780,6 +5828,9 @@ msgstr "giorni della settimana"
 #~ "example:cn=administrator,dc=example,dc=com "
 #~ msgstr ""
 #~ "Specifica il DN di default da utilizzare quando si effettuano operazioni "
+
+#~ msgid "chroot everyone"
+#~ msgstr "Chiunque dentro chroot"
 
 #~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 #~ msgstr "group_suffix, esempio: ou=gruppo,dc=esempio,dc=com"
@@ -5807,6 +5858,33 @@ msgstr "giorni della settimana"
 #~ "partizione DATA se e' stata selezionata l'opzione 2 durante l'installazione "
 #~ "sul disco rigido.<br>Selezionare 'Vecchio RAID Software' per i volumi "
 #~ "gmirror/graid5/gvinum creati con le precedenti versioni."
+
+#~ msgid "Disable"
+#~ msgstr "Disabilita"
+
+#~ msgid "Enforce TLS"
+#~ msgstr "Forza TLS"
+
+#~ msgid ""
+#~ "Only ports in the range min. port to max. port inclusive are used for "
+#~ "passive-mode downloads. This is especially useful if the server is behind a "
+#~ "firewall without FTP connection tracking. Use high ports (40000-50000 for "
+#~ "instance), where no regular server should be listening."
+#~ msgstr ""
+#~ "Solo le porte incluse in Porta min. - Porta max sono utilizzate per i "
+#~ "download in modalita' passiva. Cio' e' particolarmente utile se il server e' "
+#~ "protetto da un firewall senza connessione FTP di monitoraggio. Utilizzare le "
+#~ "porte alte (40000-50000 per esempio) dove dovrebbero essere in ascolto "
+#~ "server non regolari."
+
+#~ msgid "Passive mode ports"
+#~ msgstr "Porte a modalita' passiva"
+
+#~ msgid "TLS + cleartext"
+#~ msgstr "TLS + cleartext"
+
+#~ msgid "Use SSL/TLS encryption layer."
+#~ msgstr "Usare il livello di cifratura SSL/TLS."
 
 #, php-format
 #~ msgid "%s uses %s to create %s arrays."
