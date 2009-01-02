@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"POT-Creation-Date: 2008-12-31 05:52+0000\n"
 "PO-Revision-Date: 2008-11-18 12:22+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-16 16:54+0000\n"
+"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -421,17 +421,14 @@ msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr "允许客户端尝试在共享中存储OS/2样式扩展属性。"
 
+msgid "Allow clients to resume interrupted uploads and downloads."
+msgstr ""
+
 msgid "Allow new files"
 msgstr ""
 
 msgid "Allow new files to be created."
 msgstr ""
-
-msgid ""
-"Allow users to resume and upload files, but NOT to delete or rename them. "
-"Directories can be removed, but only if they are empty. However, overwriting "
-"existing files is still allowed."
-msgstr "让使用者可以续传、覆盖与上传档案，同时可以移除空白的资料夹。但是不能删除或是更名。"
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -623,6 +620,13 @@ msgstr "不能从界面获取数据"
 msgid "Case Folding"
 msgstr "大小写视为相同"
 
+msgid ""
+"Causes the server to display the network information for the specified IP "
+"address or DNS hostname to the client, on the assumption that that IP "
+"address or DNS host is acting as a NAT gateway or port forwarder for the "
+"server."
+msgstr ""
+
 msgid "Certificate"
 msgstr "证书"
 
@@ -782,6 +786,9 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Cron job"
 
+msgid "Custom"
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -835,6 +842,9 @@ msgstr "预设值"
 msgid "Default is 21"
 msgstr "预设值为21"
 
+msgid "Default root"
+msgstr ""
+
 msgid "Default user name is 'admin'."
 msgstr "默认到用户名为 \"admin\""
 
@@ -843,9 +853,6 @@ msgstr "指定需要认证的目录/URL"
 
 msgid "Defines when the shutdown is initiated."
 msgstr "定义何时关机。"
-
-msgid "Defining a hostname can be useful for NFS."
-msgstr "设定主机名称将会增益 NFS 服务"
 
 msgid "Delete"
 msgstr "删除"
@@ -1039,9 +1046,6 @@ msgstr "目录遮罩"
 
 msgid "Directory to be shared."
 msgstr "分享的目录"
-
-msgid "Disable"
-msgstr "关闭"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "关闭 AFP-over-Appletalk 避免 DDP 连线。"
@@ -1363,6 +1367,9 @@ msgstr "开启 NTP"
 msgid "Enable SMTP authentication."
 msgstr "启用 SMTP 认证。"
 
+msgid "Enable TLS/SSL connections."
+msgstr ""
+
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 
@@ -1428,11 +1435,6 @@ msgstr "开启 syslog'ing 写入远端 syslog 伺服器"
 msgid "Enable the system power control utility"
 msgstr "开启电源监控程式。"
 
-msgid ""
-"Enable this if your FTP server is behind a NAT box that doesn't support "
-"applicative FTP proxying."
-msgstr "如果你的FTP伺服器是架设在NAT的环境之下，请开启这个功能。"
-
 msgid "Enable transcoding."
 msgstr ""
 
@@ -1476,9 +1478,6 @@ msgstr "加密方式"
 
 msgid "Encryption algorithm"
 msgstr "加密演算法"
-
-msgid "Enforce TLS"
-msgstr "强制 TLS"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1695,22 +1694,6 @@ msgstr "旗标"
 msgid "Follow"
 msgstr "Follow"
 
-msgid "Force NAT mode."
-msgstr "强迫NAT模式。"
-
-msgid ""
-"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
-"server is behind a masquerading (NAT) box that doesn't properly handle "
-"stateful FTP masquerading, put the ip address of that box here. If you have "
-"a dynamic IP address, you can put the public host name of your gateway, that "
-"will be resolved every time a new client will connect."
-msgstr ""
-"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
-"server is behind a masquerading (NAT) box that doesn't properly handle "
-"stateful FTP masquerading, put the ip address of that box here. If you have "
-"a dynamic IP address, you can put the public host name of your gateway, that "
-"will be resolved every time a new client will connect."
-
 msgid "Forced update period"
 msgstr "强制更新间隔"
 
@@ -1828,6 +1811,9 @@ msgstr "家目录"
 msgid "Host"
 msgstr "主机"
 
+msgid "Host access control"
+msgstr ""
+
 msgid "Host name"
 msgstr ""
 
@@ -1836,6 +1822,9 @@ msgstr "主机资源"
 
 msgid "Hostname"
 msgstr "主机名称"
+
+msgid "Hostname database"
+msgstr ""
 
 msgid "Hosts"
 msgstr "主机列表"
@@ -1920,6 +1909,12 @@ msgid ""
 "IDLE state, most disks are still spinning, so this is probably not what you "
 "want."
 msgstr "闲置 - 装置除了在睡眠、待命、闲置模式以外都要进行检查。大部分的磁碟在闲置状态下依然会转动磁盘，所以这并不能节省电源。"
+
+msgid ""
+"If default root is enabled, a chroot operation is performed immediately "
+"after a client authenticates. This can be used to effectively isolate the "
+"client from a portion of the host system filespace."
+msgstr ""
 
 msgid ""
 "If set afpd uses the ID information stored in AppleDouble V2 header files to "
@@ -2067,9 +2062,6 @@ msgid ""
 "January February March April May June July August September October November "
 "December"
 msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
-
-msgid "Keep all files"
-msgstr "保存所有档案"
 
 msgid "Key"
 msgstr "金钥"
@@ -2280,6 +2272,9 @@ msgstr "所有人视为root"
 msgid "Map to user"
 msgstr "对应到本地使用者"
 
+msgid "Masquerade address"
+msgstr ""
+
 msgid "Max. TTL"
 msgstr ""
 
@@ -2296,8 +2291,8 @@ msgstr ""
 msgid "Maximum connections"
 msgstr "连线数目上线"
 
-msgid "Maximum idle time in minutes."
-msgstr "自动切断连线时间。"
+msgid "Maximum idle time in seconds."
+msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "来自相同IP的连线数目上限(0 = 不限制)."
@@ -2395,9 +2390,6 @@ msgstr "挂载点"
 
 msgid "Must choose one"
 msgstr "必选栏位。"
-
-msgid "NAT mode"
-msgstr "NAT模式"
 
 msgid "NFS"
 msgstr "NFS"
@@ -2544,17 +2536,6 @@ msgstr "只允许匿名使用者。使用在公共而且拒绝远端帐号连线
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr "只允许授权的使用者，匿名使用者无法连线。"
 
-msgid ""
-"Only ports in the range min. port to max. port inclusive are used for "
-"passive-mode downloads. This is especially useful if the server is behind a "
-"firewall without FTP connection tracking. Use high ports (40000-50000 for "
-"instance), where no regular server should be listening."
-msgstr ""
-"Only ports in the range min. port to max. port inclusive are used for "
-"passive-mode downloads. This is especially useful if the server is behind a "
-"firewall without FTP connection tracking. Use high ports (40000-50000 for "
-"instance), where no regular server should be listening."
-
 #, php-format
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
@@ -2621,11 +2602,18 @@ msgstr "磁区"
 msgid "Partitions"
 msgstr "磁区"
 
-msgid "Passive IP address"
-msgstr "被动式IP位置"
+msgid "Passive ports"
+msgstr ""
 
-msgid "Passive mode ports"
-msgstr "被动模式传输阜"
+msgid ""
+"Passive ports restricts the range of ports from which the server will select "
+"when sent the PASV command from a client. The server will randomly choose a "
+"number from within the specified range until an open port is found. The port "
+"range selected must be in the non-privileged range (eg. greater than or "
+"equal to 1024). It is strongly recommended that the chosen range be large "
+"enough to handle many simultaneous passive connections (for example, 49152-"
+"65534, the IANA-registered ephemeral port range)."
+msgstr ""
 
 msgid "Passphrase"
 msgstr "加密金钥"
@@ -2710,6 +2698,10 @@ msgstr "通讯埠 "
 
 #, php-format
 msgid "Port %ld is already used by another service."
+msgstr ""
+
+#, php-format
+msgid "Port %s must be less than %s."
 msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
@@ -2946,6 +2938,9 @@ msgstr "Restore metadata from the given file to the given provider."
 
 msgid "Results for net rpc testjoin:"
 msgstr "Net rpc testjoin 结果："
+
+msgid "Resume"
+msgstr "续传"
 
 msgid "Retry"
 msgstr "重试"
@@ -3449,9 +3444,6 @@ msgstr ""
 msgid "TKIP"
 msgstr ""
 
-msgid "TLS + cleartext"
-msgstr "TLS + cleartext"
-
 msgid "Target"
 msgstr "目标"
 
@@ -3501,8 +3493,8 @@ msgstr ""
 "the share. It follows the same  format  as  the  allow option."
 
 #, php-format
-msgid "The %s port must be a valid port number."
-msgstr "请给 %s 输入一个有效的连接埠。"
+msgid "The %s port must be in the range from %d to %d."
+msgstr ""
 
 msgid "The IP address that this hostname represents."
 msgstr "主机名称所代表的 IP 位置"
@@ -3622,6 +3614,17 @@ msgstr "属性 '%s' 必须是数字。"
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "属性 '%s' 是字串。"
+
+msgid ""
+"The basic configuration usually takes the form of 'daemon : address : "
+"action'. Where daemon is the daemon name of the service started. The address "
+"can be a valid hostname, an IP address or an IPv6 address enclosed in "
+"brackets. The action field can be either allow or deny to grant or deny "
+"access appropriately. Keep in mind that configuration works off a first rule "
+"match semantic, meaning that the configuration file is scanned in ascending "
+"order for a matching rule. When a match is found the rule is applied and the "
+"search process will halt."
+msgstr ""
 
 msgid "The changes have been applied successfully."
 msgstr "变更套用成功。"
@@ -4208,6 +4211,12 @@ msgstr "发送至 email"
 
 #, php-format
 msgid ""
+"To get detailed informations about TCP Wrappers check the FreeBSD <a "
+"href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
@@ -4382,9 +4391,6 @@ msgstr "启动时间"
 
 msgid "Use AFP3 unix privileges."
 msgstr "使用 AFP3 UNIX 权限。"
-
-msgid "Use SSL/TLS encryption layer."
-msgstr "使用 SSL/TLS 加密层。"
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
@@ -4643,9 +4649,6 @@ msgstr "建立于"
 msgid "cachecnid"
 msgstr "cachecnid"
 
-msgid "chroot everyone"
-msgstr "chroot everyone"
-
 msgid "chroot() everyone, but root."
 msgstr "chroot() everyone, but root."
 
@@ -4712,12 +4715,6 @@ msgstr "nohex"
 
 msgid "nostat"
 msgstr "nostat"
-
-msgid "pasv_max_port"
-msgstr "被动模式连接阜最大值"
-
-msgid "pasv_min_port"
-msgstr "被动模式连接阜最小值"
 
 msgid "prodos"
 msgstr "prodos"
@@ -5259,6 +5256,9 @@ msgstr "平常日"
 #~ msgid "FTP Server"
 #~ msgstr "FTP伺服器"
 
+#~ msgid "Maximum idle time in minutes."
+#~ msgstr "自动切断连线时间。"
+
 #~ msgid "Anonymous login"
 #~ msgstr "匿名登入"
 
@@ -5267,6 +5267,20 @@ msgstr "平常日"
 
 #~ msgid "Enable local user login."
 #~ msgstr "是否开启本机使用者登入"
+
+#~ msgid "NAT mode"
+#~ msgstr "NAT模式"
+
+#~ msgid "Force NAT mode."
+#~ msgstr "强迫NAT模式。"
+
+#~ msgid ""
+#~ "Enable this if your FTP server is behind a NAT box that doesn't support "
+#~ "applicative FTP proxying."
+#~ msgstr "如果你的FTP伺服器是架设在NAT的环境之下，请开启这个功能。"
+
+#~ msgid "Passive IP address"
+#~ msgstr "被动式IP位置"
 
 #~ msgid ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
@@ -5546,9 +5560,6 @@ msgstr "平常日"
 #~ msgid "detach"
 #~ msgstr "卸除"
 
-#~ msgid "Resume"
-#~ msgstr "续传"
-
 #~ msgid "Enable resume mode."
 #~ msgstr "开启续传功能"
 
@@ -5590,6 +5601,10 @@ msgstr "平常日"
 
 #~ msgid "Save and Restart AFP"
 #~ msgstr "储存并重新启动 AFP"
+
+#, php-format
+#~ msgid "The %s port must be a valid port number."
+#~ msgstr "请给 %s 输入一个有效的连接埠。"
 
 #~ msgid "Password confirmation"
 #~ msgstr "密码确认"
@@ -5761,6 +5776,12 @@ msgstr "平常日"
 #~ msgid "IPv4 address"
 #~ msgstr "IPv4 位置"
 
+#~ msgid "pasv_min_port"
+#~ msgstr "被动模式连接阜最小值"
+
+#~ msgid "pasv_max_port"
+#~ msgstr "被动模式连接阜最大值"
+
 #~ msgid "Parameter"
 #~ msgstr "参数"
 
@@ -5808,10 +5829,19 @@ msgstr "平常日"
 #~ "for them to take effect."
 #~ msgstr "Cron job 列表已经变更。<br>套用之后才会生效。"
 
+#~ msgid "Defining a hostname can be useful for NFS."
+#~ msgstr "设定主机名称将会增益 NFS 服务"
+
 #~ msgid ""
 #~ "The package list has been changed.<br>You must apply the changes in order "
 #~ "for them to take effect."
 #~ msgstr "套件列表已经变更了。<br>套用之后变更才会生效。"
+
+#~ msgid ""
+#~ "Allow users to resume and upload files, but NOT to delete or rename them. "
+#~ "Directories can be removed, but only if they are empty. However, overwriting "
+#~ "existing files is still allowed."
+#~ msgstr "让使用者可以续传、覆盖与上传档案，同时可以移除空白的资料夹。但是不能删除或是更名。"
 
 #~ msgid "Duplicate name."
 #~ msgstr "重复名称。"
@@ -5823,9 +5853,25 @@ msgstr "平常日"
 #~ msgstr "输入使用者家目录的路径。请确定这个路径存在而且一开机就会挂载。将此留白则会使用预设的路径 /mnt。"
 
 #~ msgid ""
+#~ "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
+#~ "server is behind a masquerading (NAT) box that doesn't properly handle "
+#~ "stateful FTP masquerading, put the ip address of that box here. If you have "
+#~ "a dynamic IP address, you can put the public host name of your gateway, that "
+#~ "will be resolved every time a new client will connect."
+#~ msgstr ""
+#~ "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
+#~ "server is behind a masquerading (NAT) box that doesn't properly handle "
+#~ "stateful FTP masquerading, put the ip address of that box here. If you have "
+#~ "a dynamic IP address, you can put the public host name of your gateway, that "
+#~ "will be resolved every time a new client will connect."
+
+#~ msgid ""
 #~ "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
 #~ "for TLS"
 #~ msgstr "LDAP 伺服器主机名称或 IP 位置。 注意： TLS 必须设定主机名称"
+
+#~ msgid "Keep all files"
+#~ msgstr "保存所有档案"
 
 #~ msgid "LDAP server name"
 #~ msgstr "LDAP 伺服器名称"
@@ -5846,6 +5892,9 @@ msgstr "平常日"
 #~ msgstr ""
 #~ "Specifies the default bind DN to use when performing ldap operations, "
 #~ "example:cn=administrator,dc=example,dc=com "
+
+#~ msgid "chroot everyone"
+#~ msgstr "chroot everyone"
 
 #~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 #~ msgstr "群组附加字串，例：ou=groups,dc=example,dc=com"
@@ -5888,8 +5937,31 @@ msgstr "平常日"
 #~ msgid "Alias host name."
 #~ msgstr "主机别名"
 
+#~ msgid "Disable"
+#~ msgstr "关闭"
+
+#~ msgid "Enforce TLS"
+#~ msgstr "强制 TLS"
+
+#~ msgid ""
+#~ "Only ports in the range min. port to max. port inclusive are used for "
+#~ "passive-mode downloads. This is especially useful if the server is behind a "
+#~ "firewall without FTP connection tracking. Use high ports (40000-50000 for "
+#~ "instance), where no regular server should be listening."
+#~ msgstr ""
+#~ "Only ports in the range min. port to max. port inclusive are used for "
+#~ "passive-mode downloads. This is especially useful if the server is behind a "
+#~ "firewall without FTP connection tracking. Use high ports (40000-50000 for "
+#~ "instance), where no regular server should be listening."
+
+#~ msgid "Passive mode ports"
+#~ msgstr "被动模式传输阜"
+
 #~ msgid "Sony Playstation 3"
 #~ msgstr "Sony Playstation 3"
+
+#~ msgid "TLS + cleartext"
+#~ msgstr "TLS + cleartext"
 
 #~ msgid "Telegent TG100"
 #~ msgstr "Telegent TG100"
@@ -5898,6 +5970,9 @@ msgstr "平常日"
 #~ "The modules has been modified.<br>You must apply the changes in order for "
 #~ "them to take effect."
 #~ msgstr "这个模组已经修改。<br>套用之后才会生效。"
+
+#~ msgid "Use SSL/TLS encryption layer."
+#~ msgstr "使用 SSL/TLS 加密层。"
 
 #~ msgid "ZyXEL DMA-1000"
 #~ msgstr "ZyXEL DMA-1000"

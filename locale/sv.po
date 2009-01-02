@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-15 03:03+0000\n"
+"POT-Creation-Date: 2008-12-31 05:52+0000\n"
 "PO-Revision-Date: 2008-10-27 11:43+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-16 16:53+0000\n"
+"X-Launchpad-Export-Date: 2009-01-02 10:23+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -417,20 +417,14 @@ msgstr ""
 "Tillåt klienter att försöka lagra OS/2-liknande utökade attribut på en "
 "tilldelad enhet."
 
+msgid "Allow clients to resume interrupted uploads and downloads."
+msgstr ""
+
 msgid "Allow new files"
 msgstr ""
 
 msgid "Allow new files to be created."
 msgstr ""
-
-msgid ""
-"Allow users to resume and upload files, but NOT to delete or rename them. "
-"Directories can be removed, but only if they are empty. However, overwriting "
-"existing files is still allowed."
-msgstr ""
-"Tillåt användare att ladda upp filer, men INTE att radera eller döpa om dem. "
-"Kataloger kan raderas, men enbart om de är tomma. Överskrivning av "
-"existerande filer är dock tillåtet."
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -620,6 +614,13 @@ msgstr "Kan inte få data om gränssnittet"
 msgid "Case Folding"
 msgstr ""
 
+msgid ""
+"Causes the server to display the network information for the specified IP "
+"address or DNS hostname to the client, on the assumption that that IP "
+"address or DNS host is acting as a NAT gateway or port forwarder for the "
+"server."
+msgstr ""
+
 msgid "Certificate"
 msgstr "Certifikat"
 
@@ -789,6 +790,9 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Cron-jobb"
 
+msgid "Custom"
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -837,6 +841,9 @@ msgstr "Standard"
 msgid "Default is 21"
 msgstr "Standard är 21"
 
+msgid "Default root"
+msgstr ""
+
 msgid "Default user name is 'admin'."
 msgstr "Standardanvändarnamn är 'admin'."
 
@@ -845,9 +852,6 @@ msgstr "Specificera kataloger/URL:er som kräver autentiering."
 
 msgid "Defines when the shutdown is initiated."
 msgstr ""
-
-msgid "Defining a hostname can be useful for NFS."
-msgstr "Definiera ett värdnamn kan vara användbart för NFS."
 
 msgid "Delete"
 msgstr "Ta bort"
@@ -1036,9 +1040,6 @@ msgstr "Katalogmask"
 
 msgid "Directory to be shared."
 msgstr "Katalog att delas ut."
-
-msgid "Disable"
-msgstr "Avaktivera"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Avaktivera AFP-over-Appletalk för att förhindra DDP-anslutningar."
@@ -1367,6 +1368,9 @@ msgstr "Aktivera NTP"
 msgid "Enable SMTP authentication."
 msgstr "Aktivera SMTP-autentisering."
 
+msgid "Enable TLS/SSL connections."
+msgstr ""
+
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 "Aktivera Zeroconf/Bonjour för att tillkännage tjänsterna för denna enhet."
@@ -1433,11 +1437,6 @@ msgstr "Aktivera loggning till fjärrliggande syslog-server"
 msgid "Enable the system power control utility"
 msgstr "Aktivera systemets strömkontroll-verktyg"
 
-msgid ""
-"Enable this if your FTP server is behind a NAT box that doesn't support "
-"applicative FTP proxying."
-msgstr ""
-
 msgid "Enable transcoding."
 msgstr ""
 
@@ -1482,9 +1481,6 @@ msgstr "Kryptering"
 
 msgid "Encryption algorithm"
 msgstr "Krypteringsalgoritm"
-
-msgid "Enforce TLS"
-msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1715,17 +1711,6 @@ msgstr "Flaggor"
 msgid "Follow"
 msgstr "Följ"
 
-msgid "Force NAT mode."
-msgstr "Tvinga NAT-läge."
-
-msgid ""
-"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
-"server is behind a masquerading (NAT) box that doesn't properly handle "
-"stateful FTP masquerading, put the ip address of that box here. If you have "
-"a dynamic IP address, you can put the public host name of your gateway, that "
-"will be resolved every time a new client will connect."
-msgstr ""
-
 msgid "Forced update period"
 msgstr "Forcerad uppdateringsperiod"
 
@@ -1846,6 +1831,9 @@ msgstr "Hemkatalog"
 msgid "Host"
 msgstr "Värd"
 
+msgid "Host access control"
+msgstr ""
+
 msgid "Host name"
 msgstr ""
 
@@ -1854,6 +1842,9 @@ msgstr "Värdresurser"
 
 msgid "Hostname"
 msgstr "Värdnamn"
+
+msgid "Hostname database"
+msgstr ""
 
 msgid "Hosts"
 msgstr "Värdar"
@@ -1937,6 +1928,12 @@ msgid ""
 "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
 "IDLE state, most disks are still spinning, so this is probably not what you "
 "want."
+msgstr ""
+
+msgid ""
+"If default root is enabled, a chroot operation is performed immediately "
+"after a client authenticates. This can be used to effectively isolate the "
+"client from a portion of the host system filespace."
 msgstr ""
 
 msgid ""
@@ -2076,9 +2073,6 @@ msgid ""
 msgstr ""
 "Januari Februari Mars April Maj Juni Juli Augusti September Oktober November "
 "December"
-
-msgid "Keep all files"
-msgstr ""
 
 msgid "Key"
 msgstr "Nyckel"
@@ -2289,6 +2283,9 @@ msgstr "Mappa alla användare till root"
 msgid "Map to user"
 msgstr "Koppla till användare"
 
+msgid "Masquerade address"
+msgstr ""
+
 msgid "Max. TTL"
 msgstr ""
 
@@ -2305,8 +2302,8 @@ msgstr ""
 msgid "Maximum connections"
 msgstr "Maximalt antal anslutningar"
 
-msgid "Maximum idle time in minutes."
-msgstr "Maximal overksam tid i minuter"
+msgid "Maximum idle time in seconds."
+msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximalt antal anslutningar per IP-adress (0 = obegränsat)."
@@ -2403,9 +2400,6 @@ msgid "Mounts"
 msgstr "Monteringar"
 
 msgid "Must choose one"
-msgstr ""
-
-msgid "NAT mode"
 msgstr ""
 
 msgid "NFS"
@@ -2555,13 +2549,6 @@ msgstr ""
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr ""
 
-msgid ""
-"Only ports in the range min. port to max. port inclusive are used for "
-"passive-mode downloads. This is especially useful if the server is behind a "
-"firewall without FTP connection tracking. Use high ports (40000-50000 for "
-"instance), where no regular server should be listening."
-msgstr ""
-
 #, php-format
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
@@ -2628,10 +2615,17 @@ msgstr "Partition"
 msgid "Partitions"
 msgstr "Partitioner"
 
-msgid "Passive IP address"
+msgid "Passive ports"
 msgstr ""
 
-msgid "Passive mode ports"
+msgid ""
+"Passive ports restricts the range of ports from which the server will select "
+"when sent the PASV command from a client. The server will randomly choose a "
+"number from within the specified range until an open port is found. The port "
+"range selected must be in the non-privileged range (eg. greater than or "
+"equal to 1024). It is strongly recommended that the chosen range be large "
+"enough to handle many simultaneous passive connections (for example, 49152-"
+"65534, the IANA-registered ephemeral port range)."
 msgstr ""
 
 msgid "Passphrase"
@@ -2717,6 +2711,10 @@ msgstr "Port "
 
 #, php-format
 msgid "Port %ld is already used by another service."
+msgstr ""
+
+#, php-format
+msgid "Port %s must be less than %s."
 msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
@@ -2952,6 +2950,9 @@ msgid "Restore metadata from the given file to the given provider."
 msgstr ""
 
 msgid "Results for net rpc testjoin:"
+msgstr ""
+
+msgid "Resume"
 msgstr ""
 
 msgid "Retry"
@@ -3452,9 +3453,6 @@ msgstr ""
 msgid "TKIP"
 msgstr ""
 
-msgid "TLS + cleartext"
-msgstr ""
-
 msgid "Target"
 msgstr ""
 
@@ -3502,8 +3500,8 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid "The %s port must be a valid port number."
-msgstr "%s-porten måste vara ett giltigt portnummer."
+msgid "The %s port must be in the range from %d to %d."
+msgstr ""
 
 msgid "The IP address that this hostname represents."
 msgstr "IP-adressen som det här värdnamnet representerar."
@@ -3622,6 +3620,17 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must be a string."
+msgstr ""
+
+msgid ""
+"The basic configuration usually takes the form of 'daemon : address : "
+"action'. Where daemon is the daemon name of the service started. The address "
+"can be a valid hostname, an IP address or an IPv6 address enclosed in "
+"brackets. The action field can be either allow or deny to grant or deny "
+"access appropriately. Keep in mind that configuration works off a first rule "
+"match semantic, meaning that the configuration file is scanned in ascending "
+"order for a matching rule. When a match is found the rule is applied and the "
+"search process will halt."
 msgstr ""
 
 msgid "The changes have been applied successfully."
@@ -4170,6 +4179,12 @@ msgstr ""
 
 #, php-format
 msgid ""
+"To get detailed informations about TCP Wrappers check the FreeBSD <a "
+"href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
+msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
@@ -4340,9 +4355,6 @@ msgid "Uptime"
 msgstr "Upptid"
 
 msgid "Use AFP3 unix privileges."
-msgstr ""
-
-msgid "Use SSL/TLS encryption layer."
 msgstr ""
 
 msgid ""
@@ -4601,9 +4613,6 @@ msgstr ""
 msgid "cachecnid"
 msgstr ""
 
-msgid "chroot everyone"
-msgstr ""
-
 msgid "chroot() everyone, but root."
 msgstr ""
 
@@ -4670,12 +4679,6 @@ msgstr ""
 
 msgid "nostat"
 msgstr ""
-
-msgid "pasv_max_port"
-msgstr "pasv_max_port"
-
-msgid "pasv_min_port"
-msgstr "pasv_min_port"
 
 msgid "prodos"
 msgstr ""
