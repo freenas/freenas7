@@ -45,7 +45,7 @@ Early shutdown imminent in ${_shutdowntimer} seconds.";;
 	early-shutdown)
 		_message="${_notifymessage}.
 Early shutdown in progress.";
-		shutdown -h now powerevent;;
+		shutdown -p now ${_message};;
 
 	resume)
 		_message="${_notifymessage}.
@@ -54,7 +54,7 @@ Early shutdown cancelled.";;
 	forced-shutdown)
 		_message="${_notifymessage}.
 Forced shutdown imminent in ${nut_upssched_forced_shutdown_timer} minutes.";
-		shutdown -h +${nut_upssched_forced_shutdown_timer} powerevent-forced;;
+		shutdown -p +${nut_upssched_forced_shutdown_timer} ${_message};;
 
 	replace-battery)
 		_message="${_notifymessage}";;
