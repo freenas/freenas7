@@ -417,6 +417,9 @@ usr/bin/ssh-keygen
 ## nfsstat -- display NFS statistics
 usr/bin/nfsstat
 
+## showmount -- show remote nfs mounts on host
+usr/bin/showmount
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
