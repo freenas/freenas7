@@ -27,5 +27,9 @@ nfslockd/nfslockd.ko
 libiconv/libiconv.ko
 libmchain/libmchain.ko
 
+# Netgraph (required by bsnmpd)
+netgraph/netgraph/netgraph.ko
+netgraph/socket/ng_socket.ko
+
 # Misc.
 iscsi/initiator/iscsi_initiator.ko

@@ -87,6 +87,7 @@ Bug fixes:
   because ataidle immediately spins down the drives on execution. The delay
   value (default is 60 seconds) can be modified via 'ataidle_delay' rc.conf
   variable (BR 2471158).
+- Get SNMP module 'netgraph' working. Fixed by adding missing kernel modules.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
