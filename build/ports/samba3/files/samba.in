@@ -149,7 +149,7 @@ mkconf_cmd()
 		-i "string-length(//samba/guestaccount) > 0" -v "concat('guest account = ',//samba/guestaccount)" -n -b \
 		-i "string-length(//samba/guestaccount) = 0" -o "guest account = ftp" -n -b \
 		-i "count(nullpasswords) > 0" -o "null passwords = yes" -n -b \
-		-o "display charset = UTF-8" -n \
+		-o "display charset = LOCALE" -n \
 		-o "max log size = 10" -n \
 		-o "syslog only = yes" -n \
 		-v "concat('syslog = ',//samba/loglevel)" -n \
