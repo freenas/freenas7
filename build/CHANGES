@@ -21,6 +21,7 @@ Majors changes:
   can be configured via WebGUI 'Network|Hosts'.
 - Upgrade ATAidle to 2.4.
 - Upgrade transmission to 1.42.
+- Upgrade rsync to 3.0.5.
 
 Minors changes:
 - Set date in email-header when sending email.
