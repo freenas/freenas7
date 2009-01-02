@@ -52,6 +52,8 @@ proftpd_tlsoptions=${proftpd_tlsoptions:-"NoCertRequest"}
 proftpd_tlsprotocol=${proftpd_tlsprotocol:-"SSLv23"}
 proftpd_tcpaccesssysloglevels=${proftpd_tcpaccesssysloglevels:-"info warn"}
 proftpd_tcpservicename=${proftpd_tcpservicename:-"ftpd"}
+proftpd_moddelay_enable=${proftpd_moddelay_enable:-"YES"}
+proftpd_modwrap_enable=${proftpd_modwrap_enable:-"YES"}
 command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
@@ -156,16 +158,12 @@ mkconf_cmd()
 		-i "string-length(userbandwidth/down) > 0" -v "concat('  TransferRate RETR ',userbandwidth/down)" -n -b \
 		-o "&lt;/Global&gt;" -n \
 		-i "count(anonymousonly) > 0" \
+			-n \
 			-o "&lt;Limit LOGIN&gt;" -n \
 			-i "count(permitrootlogin) > 0" -o "  AllowGroup wheel" -n -b \
 			-o "  DenyAll" -n \
 			-o "&lt;/Limit&gt;" -n \
 		-b \
-		-n \
-		-o "&lt;IfModule mod_delay.c&gt;" -n \
-		-o "  DelayEngine on" -n \
-		-o "  DelayTable &quot;${proftpd_delaytable}&quot;" -n \
-		-o "&lt;/IfModule&gt;" -n \
 		-i "count(tls) > 0" \
 			-n \
 			-o "&lt;IfModule mod_tls.c&gt;" -n \
@@ -177,17 +175,33 @@ mkconf_cmd()
 			-o "  TLSVerifyClient ${proftpd_tlsverifyclient}" -n \
 			-o "&lt;/IfModule&gt;" -n \
 		-b \
-		-n \
-		-o "&lt;ifModule mod_wrap.c&gt;" -n \
-		-o "  TCPAccessFiles ${proftpd_tcpaccessfilesallow} ${proftpd_tcpaccessfilesdeny}" -n \
-		-o "  TCPAccessSyslogLevels ${proftpd_tcpaccesssysloglevels}" -n \
-		-o "  TCPServiceName ${proftpd_tcpservicename}" -n \
-		-o "&lt;/ifModule&gt;" -n \
-		-n \
 		-m "auxparam" \
 				-v "." -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${proftpd_config}
+
+		# Add mod_delay
+		if checkyesno proftpd_moddelay_enable; then
+			cat <<EOF >> ${proftpd_config}
+<IfModule mod_delay.c>
+  DelayEngine on
+  DelayTable "${proftpd_delaytable}"
+</IfModule>
+
+EOF
+		fi
+
+		# Add mod_wrap
+		if checkyesno proftpd_modwrap_enable; then
+			cat <<EOF >> ${proftpd_config}
+<IfModule mod_wrap.c>
+  TCPAccessFiles ${proftpd_tcpaccessfilesallow} ${proftpd_tcpaccessfilesdeny}
+  TCPAccessSyslogLevels ${proftpd_tcpaccesssysloglevels}
+  TCPServiceName ${proftpd_tcpservicename}
+</ifModule>
+
+EOF
+		fi
 }
 
 run_rc_command "$1"
