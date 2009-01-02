@@ -23,6 +23,7 @@ Majors changes:
 - Upgrade transmission to 1.42.
 - Upgrade rsync to 3.0.5.
 - Upgrade cdialog to 1.1.20080316.
+- Upgrade msmtp to 1.4.17.
 
 Minors changes:
 - Set date in email-header when sending email.
