@@ -43,7 +43,7 @@ mkconf_cmd()
 
 	/usr/local/bin/xml sel -t -m "//snmpd" \
 		-o "# Set some common variables" -n \
-		-v "concat('host := ',//system/hostname,'.',//system/domain)" -n \
+		-v "concat('host := ',//system/hostname)" -n \
 		-v "concat('location := &quot;',location,'&quot;')" -n \
 		-v "concat('contact := &quot;',contact,'&quot;')" -n \
 		-o "system := 1 # FreeBSD" -n \
@@ -87,33 +87,34 @@ mkconf_cmd()
 		-o "sysDescr = \$(description)" -n \
 		-n \
 		-o "snmpEnableAuthenTraps = 2" -n \
-		-n \
 		-i "count(modules/mibii) > 0" \
+			-n \
 			-o "#" -n \
 			-o "# Load MIB-2 module" -n \
 			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;mibII&quot; = &quot;/usr/lib/snmp_mibII.so&quot;" -n \
 			-n \
+			-o "#%mibII" -n \
+			-o "#begemotIfForcePoll = 2000" -n \
 		-b \
 		-i "count(modules/netgraph) > 0" \
+			-n \
 			-o "#" -n \
 			-o "# Netgraph module" -n \
 			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;netgraph&quot; = &quot;/usr/lib/snmp_netgraph.so&quot;" -n \
 			-n \
-			-o "#netgraph" -n \
+			-o "%netgraph" -n \
 			-o "begemotNgControlNodeName = &quot;snmpd&quot;" -n \
-			-n \
 		-b \
 		-i "count(modules/hostres) > 0" \
+			-n \
 			-o "#" -n \
 			-o "# Host resources module snmp_hostres(3)." -n \
 			-o "# This requires the mibII module." -n \
 			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;hostres&quot; = &quot;/usr/lib/snmp_hostres.so&quot;" -n \
-			-n \
 		-b \
-		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${bsnmpd_config}
 }
 

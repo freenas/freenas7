@@ -23,3 +23,7 @@ krpc/krpc.ko
 # Required by unionfs.ko and smbfs.ko
 libiconv/libiconv.ko
 libmchain/libmchain.ko
+
+# Netgraph (required by bsnmpd)
+netgraph/netgraph/netgraph.ko
+netgraph/socket/ng_socket.ko
