@@ -10,6 +10,8 @@ function update_controls(x) {
 	update_date(value['date']);
 	update_memusage(value['memusage']);
 	update_loadaverage(value['loadaverage']);
+	update_cputemp(value['cputemp']);
+	update_cpufreq(value['cpufreq']);
 	update_cpuusage(value['cpuusage']);
 	update_diskusage(value['diskusage']);
 	update_swapusage(value['swapusage']);
@@ -39,6 +41,18 @@ function update_loadaverage(value) {
 	if (document.getElementById("loadaverage") == null)
 		return;
 	document.getElementById("loadaverage").value = value;
+}
+
+function update_cputemp(value) {
+	if (document.getElementById("cputemp") == null)
+		return;
+	document.getElementById("cputemp").value = value;
+}
+
+function update_cpufreq(value) {
+	if (document.getElementById("cpufreq") == null)
+		return;
+	document.getElementById("cpufreq").value = value + 'MHz';
 }
 
 function update_cpuusage(value) {

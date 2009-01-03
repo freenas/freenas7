@@ -75,6 +75,8 @@ Minors changes:
   data has been written on shutdown. To enable this feature you have to set
   the rc.conf variables 'fusefs_safe=YES' and 'fusefs_safe_evil=YES' in
   'System|Advanced|rc.conf'.
+- Display CPU temperature and frequency in 'Status|System' page (FR 2480272).
+  The frequency levels are displayed as tooltips.
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
