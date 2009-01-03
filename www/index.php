@@ -50,6 +50,10 @@ function update_controls() {
 	// Get load average.
 	exec("uptime", $result);
 	$value['loadaverage'] = substr(strrchr($result[0], "load averages:"), 15);
+	// Get CPU informations.
+	$cpuinfo = system_get_cpu_info();
+	$value['cputemp'] = $cpuinfo['temperature'];
+	$value['cpufreq'] = $cpuinfo['freq'];
 	// Get CPU usage.
 	$value['cpuusage'] = system_get_cpu_usage();
 	// Get disk usage.
@@ -141,7 +145,7 @@ sajax_handle_client_request();
 			      exec("/sbin/sysctl -n hw.model", $cputype);
 			      foreach ($cputype as $cputypel) echo " on " . htmlspecialchars($cputypel);
 			      exec("/sbin/sysctl -n hw.clockrate", $clockrate);
-			      echo " running at $clockrate[0] MHz";
+			      echo " running at {$clockrate[0]}MHz";
 			      ?>
 			    </td>
 			  </tr>
@@ -166,7 +170,22 @@ sajax_handle_client_request();
 							<input style="padding: 0; border: 0;" size="30" name="lastchange" id="lastchange" value="<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>"/>
 			      </td>
 			    </tr>
-			  <?php endif;?>
+				<?php endif;?>
+				<?php $cpuinfo = system_get_cpu_info();?>
+				<?php if (!empty($cpuinfo['temperature'])):?>
+				<tr>
+					<td width="25%" class="vncellt"><?=gettext("CPU temperature");?></td>
+					<td width="75%" class="listr">
+						<input style="padding: 0; border: 0;" size="30" name="cputemp" id="cputemp" value="<?=htmlspecialchars($cpuinfo['temperature']);?>"/>
+					</td>
+				</tr>
+				<?php endif;?>
+				<tr>
+					<td width="25%" class="vncellt"><?=gettext("CPU frequency");?></td>
+					<td width="75%" class="listr">
+						<input style="padding: 0; border: 0;" size="30" name="cpufreq" id="cpufreq" value="<?=htmlspecialchars($cpuinfo['freq']);?>MHz" title="<?=htmlspecialchars($cpuinfo['freqlevels']);?>"/>
+					</td>
+				</tr>
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU usage");?></td>
 					<td width="75%" class="listr">

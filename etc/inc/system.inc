@@ -184,6 +184,25 @@ function system_get_cpu_usage() {
 	return $cpuUsage;
 }
 
+// Get various CPU informations.
+// Result:
+//  Array (
+//    [number] => 1
+//    [temperature] => 65C !!! May be empty if sensor is not available. !!!
+//    [freq] => 995
+//    [freqlevels] => 1990/67000 1791/64700 995/28600
+//  )
+function system_get_cpu_info() {
+	$cpuinfo = array();
+
+	$cpuinfo['number'] = chop(`/sbin/sysctl -n hw.ncpu`);
+	$cpuinfo['temperature'] = chop(`/sbin/sysctl -n hw.acpi.thermal.tz0.temperature`);
+	$cpuinfo['freq'] = chop(`/sbin/sysctl -n dev.cpu.0.freq`);
+	$cpuinfo['freqlevels'] = chop(`/sbin/sysctl -n dev.cpu.0.freq_levels`);
+
+	return $cpuinfo;
+}
+
 // Get uptime (how long system is running).
 // Return current uptime as string.
 function system_get_uptime() {
