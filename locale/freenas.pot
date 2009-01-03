@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-31 00:49+0000\n"
+"PO-Revision-Date: 2009-01-03 20:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -493,7 +493,13 @@ msgstr ""
 msgid "CIFS/SMB informations"
 msgstr ""
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
+msgstr ""
+
+msgid "CPU temperature"
 msgstr ""
 
 msgid "CPU usage"
@@ -1858,6 +1864,10 @@ msgstr ""
 
 #, php-format
 msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+msgstr ""
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
 msgstr ""
 
 msgid "License"
