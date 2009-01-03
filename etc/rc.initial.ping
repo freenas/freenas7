@@ -21,16 +21,23 @@ value=`cat $tmpfile`
 
 if [ 0 -eq ${retval} ]; then
 	echo
-	if [ ! `is_validip inet ${value}` ]; then
+
+	# Check if it is a IPv4 address
+	is_validip inet ${value}
+	if [ 0 -eq $? ]; then
 		echo "IPv4 address detected..."
 		ping -c 3 -n ${value}
-	elif [ ! `is_validip inet6 ${value}` ]; then
-		echo "IPv6 address detected..."
-		ping6 -c 3 -n ${value}
 	else
-		echo "Hostname supposed, trying IPv4 and IPv6 ping..."
-		ping -c 3 -n ${value}
-		ping6 -c 3 -n ${value}
+		# Check if it is a IPv6 address
+		is_validip inet6 ${value}
+		if [ 0 -eq $? ]; then
+			echo "IPv6 address detected..."
+			ping6 -c 3 -n ${value}
+		else
+			echo "Hostname supposed, trying IPv4 and IPv6 ping..."
+			ping -c 3 -n ${value}
+			ping6 -c 3 -n ${value}
+		fi
 	fi
 
 	echo
