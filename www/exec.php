@@ -218,7 +218,7 @@ if (!isBlank($_POST['txtPHPCommand'])) {
 		</tr>
 		<tr>
 			<td align="right"><?=gettext("PHP Command");?></td>
-			<td class="type"><textarea id="txtPHPCommand" name="txtPHPCommand" type="text" rows="3" cols="50"><?=htmlspecialchars($_POST['txtPHPCommand']);?></textarea></td>
+			<td class="type"><textarea id="txtPHPCommand" name="txtPHPCommand" type="text" rows="3" cols="50" wrap="off"><?=htmlspecialchars($_POST['txtPHPCommand']);?></textarea></td>
 		</tr>
 		<tr>
 			<td valign="top">&nbsp;&nbsp;&nbsp;</td>
