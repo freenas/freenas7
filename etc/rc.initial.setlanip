@@ -3,7 +3,7 @@
 /*
 	rc.initial.setlanip
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -277,7 +277,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 write_config();
 
 // Initialize interface
-write_console("Initializing interface. Please wait...");
+write_console("\nInitializing interface. Please wait...");
 rc_exec_service("rcconf.sh");
 rc_restart_service("netif");
 rc_restart_service("routing");
