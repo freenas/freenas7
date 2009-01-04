@@ -180,12 +180,14 @@ sajax_handle_client_request();
 					</td>
 				</tr>
 				<?php endif;?>
+				<?php if (!empty($cpuinfo['freq'])):?>
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU frequency");?></td>
 					<td width="75%" class="listr">
 						<input style="padding: 0; border: 0;" size="30" name="cpufreq" id="cpufreq" value="<?=htmlspecialchars($cpuinfo['freq']);?>MHz" title="<?=sprintf(gettext("Levels (MHz/mW): %s"), $cpuinfo['freqlevels']);?>"/>
 					</td>
 				</tr>
+				<?php endif;?>
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU usage");?></td>
 					<td width="75%" class="listr">
