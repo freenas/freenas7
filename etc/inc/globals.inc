@@ -2,7 +2,7 @@
 /*
 	globals.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -64,25 +64,25 @@ $g_install = array(
 
 /* Available languages/locales */
 $g_languages = array (
-	"bg"    => array("codeset" => "UTF-8", "desc" => "Bulgarian"),
-	"zh_CN" => array("codeset" => "UTF-8", "desc" => "Chinese (Simplified)"),
-	"zh_TW" => array("codeset" => "UTF-8", "desc" => "Chinese (Traditional)"),
-	"nl"    => array("codeset" => "ISO-8859-1", "desc" => "Dutch"),
-	"en_US" => array("codeset" => "ISO-8859-1", "desc" => "English"),
-	"fr"    => array("codeset" => "UTF-8", "desc" => "French"),
-	"de"    => array("codeset" => "ISO-8859-1", "desc" => "German"),
-	"el"    => array("codeset" => "UTF-8", "desc" => "Greek"),
-	"hu"    => array("codeset" => "UTF-8", "desc" => "Hungarian"),
-	"it"    => array("codeset" => "ISO-8859-1", "desc" => "Italian"),
-	"ja"    => array("codeset" => "UTF-8", "desc" => "Japanese"),
-	"no_NB" => array("codeset" => "UTF-8", "desc" => "Norwegian (Bokmal)"),
-	"pl"    => array("codeset" => "UTF-8", "desc" => "Polish"),
-	"pt"    => array("codeset" => "UTF-8", "desc" => "Portuguese"),
-	"ro"    => array("codeset" => "ISO-8859-1", "desc" => "Romanian"),
-	"ru"    => array("codeset" => "UTF-8", "desc" => "Russian"),
-	"sl"    => array("codeset" => "UTF-8", "desc" => "Slovenian"),
-	"es"    => array("codeset" => "ISO-8859-1", "desc" => "Spanish"),
-	"sv"    => array("codeset" => "UTF-8", "desc" => "Swedish")
+	"bg"    => array("codeset" => "UTF-8", "desc" => gettext("Bulgarian")),
+	"zh_CN" => array("codeset" => "UTF-8", "desc" => gettext("Chinese (Simplified)")),
+	"zh_TW" => array("codeset" => "UTF-8", "desc" => gettext("Chinese (Traditional)")),
+	"nl"    => array("codeset" => "ISO-8859-1", "desc" => gettext("Dutch")),
+	"en_US" => array("codeset" => "ISO-8859-1", "desc" => gettext("English")),
+	"fr"    => array("codeset" => "UTF-8", "desc" => gettext("French")),
+	"de"    => array("codeset" => "ISO-8859-1", "desc" => gettext("German")),
+	"el"    => array("codeset" => "UTF-8", "desc" => gettext("Greek")),
+	"hu"    => array("codeset" => "UTF-8", "desc" => gettext("Hungarian")),
+	"it"    => array("codeset" => "ISO-8859-1", "desc" => gettext("Italian")),
+	"ja"    => array("codeset" => "UTF-8", "desc" => gettext("Japanese")),
+	"no_NB" => array("codeset" => "UTF-8", "desc" => gettext("Norwegian (Bokmal)")),
+	"pl"    => array("codeset" => "UTF-8", "desc" => gettext("Polish")),
+	"pt"    => array("codeset" => "UTF-8", "desc" => gettext("Portuguese")),
+	"ro"    => array("codeset" => "ISO-8859-1", "desc" => gettext("Romanian")),
+	"ru"    => array("codeset" => "UTF-8", "desc" => gettext("Russian")),
+	"sl"    => array("codeset" => "UTF-8", "desc" => gettext("Slovenian")),
+	"es"    => array("codeset" => "ISO-8859-1", "desc" => gettext("Spanish")),
+	"sv"    => array("codeset" => "UTF-8", "desc" => gettext("Swedish"))
 );
 
 /* Supported filesystems */
