@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
-"PO-Revision-Date: 2009-01-02 01:22+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
+"PO-Revision-Date: 2009-01-04 12:14+0000\n"
 "Last-Translator: Dutchman01 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:23+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:06+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -610,6 +610,9 @@ msgstr "BitTorrent"
 msgid "Browseable"
 msgstr "Verkenbaar"
 
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
 msgid "By default, only already existing files can be uploaded."
 msgstr "Standaard kunnen alleen bestaande bestanden geupload worden."
 
@@ -631,8 +634,14 @@ msgstr "CIFS/SMB uitgeschakeld"
 msgid "CIFS/SMB informations"
 msgstr "CIFS/SMB informatie"
 
+msgid "CPU frequency"
+msgstr "CPU kloksnelheid"
+
 msgid "CPU load"
 msgstr "CPU belasting"
+
+msgid "CPU temperature"
+msgstr "CPU temperatuur"
 
 msgid "CPU usage"
 msgstr "CPU belasting"
@@ -666,8 +675,7 @@ msgstr "Certificaat"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
-"Wijziging van deze optie zal pas van kracht worden na een herstart van dit "
-"systeem."
+"Wijzigingen van deze optie worden pas van kracht na een systeem herstart."
 
 msgid "Channel"
 msgstr "Kanaal"
@@ -677,6 +685,12 @@ msgstr "Controle interval"
 
 msgid "Check shared secret:"
 msgstr "Controleer gedeelde sleutel:"
+
+msgid "Chinese (Simplified)"
+msgstr "Chinees (Vereenvoudigd)"
+
+msgid "Chinese (Traditional)"
+msgstr "Chinees (Traditioneel)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -1331,6 +1345,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr "Duplicaat deelnaam."
 
+msgid "Dutch"
+msgstr "Nederlands"
+
 msgid "Dynamic DNS"
 msgstr "Dynamic DNS"
 
@@ -1553,6 +1570,9 @@ msgstr "Versleutelen"
 
 msgid "Encryption algorithm"
 msgstr "Versleutelings algoritme"
+
+msgid "English"
+msgstr "Engels"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1810,6 +1830,9 @@ msgstr "Forum"
 msgid "Free disk space"
 msgstr "Vrije schijfruimte"
 
+msgid "French"
+msgstr "Frans"
+
 msgid "From email"
 msgstr "Van E-mail"
 
@@ -1837,6 +1860,9 @@ msgstr "Algemeen"
 msgid "General Setup"
 msgstr "Algemene instellingen"
 
+msgid "German"
+msgstr "Duits"
+
 msgid "Give full shell access to user."
 msgstr "Geef volledige shell rechten aan de gebruiker"
 
@@ -1848,6 +1874,9 @@ msgstr "Grafieken"
 
 msgid "Graph shows last"
 msgstr "Grafiek laatste"
+
+msgid "Greek"
+msgstr "Grieks"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -1949,6 +1978,9 @@ msgid ""
 msgstr ""
 "Hoe vaak het IP adres geupdate wordt zelfs wanneer het niet is gewijzigd. De "
 "periode is in seconden (max. 10 dagen)."
+
+msgid "Hungarian"
+msgstr "Hongaars"
 
 msgid "I/O errors"
 msgstr "I/O fouten"
@@ -2192,6 +2224,9 @@ msgstr ""
 "Het is onmogelijk om 'Alleen anonieme gebruikers' en 'Alleen lokale "
 "gebruikers' authenticatie tegelijk te activeren."
 
+msgid "Italian"
+msgstr "Italiaans"
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2201,6 +2236,9 @@ msgid ""
 msgstr ""
 "Januari Februari Maart April Mei Juni Juli Augustus September Oktober "
 "November December"
+
+msgid "Japanese"
+msgstr "Japans"
 
 msgid "Key"
 msgstr "Sleutel"
@@ -2249,6 +2287,10 @@ msgid ""
 msgstr ""
 "Behoud '%s' voor ongeformatteerde schijven en formatteer deze via het menu "
 "<a href=%s>Formatteren</a>."
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
+msgstr "CPU Stappen (MHz/mW): %s"
 
 msgid "License"
 msgstr "Licentie"
@@ -2628,6 +2670,9 @@ msgstr "Geen"
 msgid "Normal"
 msgstr "Normaal"
 
+msgid "Norwegian (Bokmal)"
+msgstr "Noors (Bokmal)"
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2802,11 +2847,11 @@ msgid ""
 msgstr ""
 "De passieve poorten beperken het bereik van poorten waaruit de server kan "
 "kiezen voor het versturen van de PASV opdrachten naar cliënten. De server "
-"zal een willekeurig poort nummer kiezen binnen dit opgegeven bereik tot een "
-"open poort is gevonden. De geselecteerde poorten mogen niet binnen het non-"
+"zal een willekeurig poort nummer kiezen binnen dit opgegeven bereik, tot een "
+"open poort gevonden is. De geselecteerde poorten mogen niet binnen het non-"
 "privileged bereik liggen (bijv. groter dan of gelijk aan poort 1024). Het is "
 "aanbevolen dat het gekozen bereik groot genoeg is om meerdere passieve "
-"verbindingen tegelijk af te kunnen handelen (als voorbeeld, 49152-65534, de "
+"verbindingen tegelijk af te kunnen handelen (als voorbeeld, 49152-65534, het "
 "IANA-geregistreerde kortstondig poort bereik)."
 
 msgid "Passphrase"
@@ -2881,6 +2926,9 @@ msgstr "Platform"
 msgid "Please note that blanks in path names are not allowed."
 msgstr "Let op dat spaties in padnamen niet zijn toegestaan."
 
+msgid "Polish"
+msgstr "Pools"
+
 msgid "Polling time"
 msgstr "Verzend tijd rapportage"
 
@@ -2915,6 +2963,9 @@ msgstr ""
 
 msgid "Ports"
 msgstr "Poorten"
+
+msgid "Portuguese"
+msgstr "Portugees"
 
 msgid "PostInit"
 msgstr "PostInit"
@@ -3148,6 +3199,9 @@ msgstr "Hervat"
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
+msgid "Romanian"
+msgstr "Roemeens"
+
 msgid "Root bind DN"
 msgstr "Root koppelings DN"
 
@@ -3186,6 +3240,9 @@ msgstr "Nu uitvoeren"
 
 msgid "Running"
 msgstr "Draaiend"
+
+msgid "Russian"
+msgstr "Russisch"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3453,6 +3510,9 @@ msgstr ""
 "Slaapstand - Controleert de harde schijf tenzij het zich in de SLAAP mode "
 "bevindt."
 
+msgid "Slovenian"
+msgstr "Sloveens"
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3482,6 +3542,9 @@ msgstr "Gedeelde bronmap"
 
 msgid "Space Used"
 msgstr "Gebruikte Ruimte"
+
+msgid "Spanish"
+msgstr "Spaans"
 
 msgid "Specifies how many servers to create."
 msgstr "Geef op hoeveel servers er moeten worden gemaakt."
@@ -3617,6 +3680,9 @@ msgstr "Wisselbestand status"
 
 msgid "Swap usage"
 msgstr "Wisselbestand gebruik"
+
+msgid "Swedish"
+msgstr "Zweeds"
 
 msgid "Switch to"
 msgstr "Schakel naar"
@@ -4084,8 +4150,8 @@ msgid ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
 msgstr ""
-"De Energie Service functie controleert de systeemstaat en plaatst "
-"dienovereenkomstig diverse energiebeheer opties."
+"De Energie Service functie controleert de systeemstaat en bestuurd diverse "
+"energie opties om energie te besparen."
 
 msgid "The rule number determines the order of the rule."
 msgstr "Het regelnummer bepaald de volgorde van de regel."
@@ -4347,8 +4413,8 @@ msgid ""
 "faster. Samba automatically turns this off for clients that use protocol "
 "levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
-"Dit kan het gebruik van de CPU's efficienter maken en zorgt dat Samba "
-"sneller is. Samba schakelt dit uit voor werkstations die protocol nivo's "
+"Dit kan het gebruik van de CPU's efficiënter maken en zorgt dat Samba "
+"sneller is. Samba schakelt dit uit voor werkstations die protocol niveaus "
 "gebruiken voor NT LM 0.12, en als Samba detecteert dat een wekstation "
 "windows 9.x gebruikt."
 

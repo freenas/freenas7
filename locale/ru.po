@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
-"PO-Revision-Date: 2008-12-30 14:00+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
+"PO-Revision-Date: 2009-01-04 11:27+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:23+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -602,6 +602,9 @@ msgstr "BitTorrent"
 msgid "Browseable"
 msgstr "Просматриваемый"
 
+msgid "Bulgarian"
+msgstr "Болгарский"
+
 msgid "By default, only already existing files can be uploaded."
 msgstr "По умолчанию могут быть загружены только уже существующие файлы."
 
@@ -623,8 +626,14 @@ msgstr "CIFS/SMB отключен"
 msgid "CIFS/SMB informations"
 msgstr "Информация CIFS/SMB"
 
+msgid "CPU frequency"
+msgstr "Частота ЦП"
+
 msgid "CPU load"
 msgstr "Загрузка процессора"
+
+msgid "CPU temperature"
+msgstr "Температура ЦП"
 
 msgid "CPU usage"
 msgstr "Загрузка процессора"
@@ -647,6 +656,9 @@ msgid ""
 "address or DNS host is acting as a NAT gateway or port forwarder for the "
 "server."
 msgstr ""
+"Позволяет серверу показывать клиенту сетевую информацию для указанного IP-"
+"адреса или DNS-имени хоста в случае, если эти IP-адрес или DNS-имя "
+"принадлежат шлюзу NAT или форвардеру портов сервера."
 
 msgid "Certificate"
 msgstr "Сертификат"
@@ -662,6 +674,12 @@ msgstr "Интервал проверки"
 
 msgid "Check shared secret:"
 msgstr "Проверьте разделяемый секретный ключ:"
+
+msgid "Chinese (Simplified)"
+msgstr "Китайский (упрощенный)"
+
+msgid "Chinese (Traditional)"
+msgstr "Китайский (традиционный)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -818,7 +836,7 @@ msgid "Cron job"
 msgstr "Задание Сron'а"
 
 msgid "Custom"
-msgstr ""
+msgstr "Custom"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -873,7 +891,7 @@ msgid "Default is 21"
 msgstr "Другой TCP-порт. По умолчанию 21-й."
 
 msgid "Default root"
-msgstr ""
+msgstr "Корневой каталог по умолчанию"
 
 msgid "Default user name is 'admin'."
 msgstr "По умолчанию имя пользователя 'admin'."
@@ -1309,6 +1327,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr "Повторяющееся имя общего ресурса."
 
+msgid "Dutch"
+msgstr "Голландский"
+
 msgid "Dynamic DNS"
 msgstr "Dynamic DNS"
 
@@ -1527,6 +1548,9 @@ msgstr "Шифрование"
 
 msgid "Encryption algorithm"
 msgstr "Алгоритм шифрования"
+
+msgid "English"
+msgstr "Английский"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1784,6 +1808,9 @@ msgstr "Форум разработчиков"
 msgid "Free disk space"
 msgstr "Свободное дисковое пространство"
 
+msgid "French"
+msgstr "Французский"
+
 msgid "From email"
 msgstr "Адрес отправителя e-mail"
 
@@ -1811,6 +1838,9 @@ msgstr "Общие"
 msgid "General Setup"
 msgstr "Общие параметры"
 
+msgid "German"
+msgstr "Немецкий"
+
 msgid "Give full shell access to user."
 msgstr "Разрешить полный доступ к shell этому пользователю"
 
@@ -1822,6 +1852,9 @@ msgstr "График"
 
 msgid "Graph shows last"
 msgstr "График показывает последние данные"
+
+msgid "Greek"
+msgstr "Греческий"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Приветствие, показываемое FTP-сервером в начале сеанса."
@@ -1920,6 +1953,9 @@ msgstr ""
 "Как часто обновлять IP-адрес, даже если он прежний. Интервал в секундах "
 "(макс. 10 дней)."
 
+msgid "Hungarian"
+msgstr "Венгерский"
+
 msgid "I/O errors"
 msgstr "Ошибок ввода/вывода"
 
@@ -1995,6 +2031,9 @@ msgid ""
 "after a client authenticates. This can be used to effectively isolate the "
 "client from a portion of the host system filespace."
 msgstr ""
+"Если корневой каталог по умолчанию разрешен, то команда chroot выполняется "
+"сразу же после аутентификации клиента. Это может быть использовано для "
+"эффективной изоляции клиента от остальной файловой системы хоста."
 
 msgid ""
 "If set afpd uses the ID information stored in AppleDouble V2 header files to "
@@ -2149,6 +2188,9 @@ msgstr ""
 "Невозможно одновременно включить \"Только анонимные пользователи\" и "
 "\"Только локальные пользователи\"."
 
+msgid "Italian"
+msgstr "Итальянский"
+
 msgid "JBOD"
 msgstr "JBOD (простой массив дисков)"
 
@@ -2158,6 +2200,9 @@ msgid ""
 msgstr ""
 "Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь "
 "Декабрь"
+
+msgid "Japanese"
+msgstr "Японский"
 
 msgid "Key"
 msgstr "Ключ"
@@ -2206,6 +2251,10 @@ msgid ""
 msgstr ""
 "Оставьте '%s' для неформатированных дисков и отформатируйте их в меню <a "
 "href=%s>Формат</a>."
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
+msgstr "Уровни (MHz/mW): %s"
 
 msgid "License"
 msgstr "Лицензия"
@@ -2381,7 +2430,7 @@ msgid "Map to user"
 msgstr "Пользователь"
 
 msgid "Masquerade address"
-msgstr ""
+msgstr "Маскарадный адрес"
 
 msgid "Max. TTL"
 msgstr "Макс. TTL"
@@ -2579,6 +2628,9 @@ msgstr "Нет"
 msgid "Normal"
 msgstr "Normal"
 
+msgid "Norwegian (Bokmal)"
+msgstr "Норвежский (книжный)"
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2747,6 +2799,13 @@ msgid ""
 "enough to handle many simultaneous passive connections (for example, 49152-"
 "65534, the IANA-registered ephemeral port range)."
 msgstr ""
+"Пассивные порты задают диапазон, из которого будет выбран номер порта при "
+"получении команды PASV от клиента. Сервер будет случайным образом выбирать "
+"порт из указанного диапазона до тех пор, пока не найдет открытый. Выбранный "
+"диапазон не должен включать зарезервированные порты (0-1023), также "
+"настоятельно рекомендуется выбирать диапазон достаточно большим для "
+"поддержки множества одновременных пассивных соединений (например, IANA-"
+"зарегистрированный свободный диапазон 49152-65534)."
 
 msgid "Passphrase"
 msgstr "Парольная фраза"
@@ -2820,6 +2879,9 @@ msgstr "Платформа"
 msgid "Please note that blanks in path names are not allowed."
 msgstr "Пожалуйста, помните, что пробелы в пути запрещены."
 
+msgid "Polish"
+msgstr "Польский"
+
 msgid "Polling time"
 msgstr "Интервал опроса"
 
@@ -2854,6 +2916,9 @@ msgstr ""
 
 msgid "Ports"
 msgstr "Порты"
+
+msgid "Portuguese"
+msgstr "Португальский"
 
 msgid "PostInit"
 msgstr "Постинициализация"
@@ -3081,10 +3146,13 @@ msgid "Results for net rpc testjoin:"
 msgstr "Результаты команды net rpc testjoin:"
 
 msgid "Resume"
-msgstr "Продолжить"
+msgstr "Возобновление"
 
 msgid "Retry"
 msgstr "Попытаться снова"
+
+msgid "Romanian"
+msgstr "Румынский"
 
 msgid "Root bind DN"
 msgstr "DN администратора каталогов"
@@ -3124,6 +3192,9 @@ msgstr "Выполнить сейчас"
 
 msgid "Running"
 msgstr "Выполняется"
+
+msgid "Russian"
+msgstr "Русский"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3382,6 +3453,9 @@ msgstr "Размер буфера отправки (по умолчанию 1638
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - проверять устройство, пока оно не в режиме сна (SLEEP)."
 
+msgid "Slovenian"
+msgstr "Словенский"
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3411,6 +3485,9 @@ msgstr "Исходный общий ресурс"
 
 msgid "Space Used"
 msgstr "Занятый объем"
+
+msgid "Spanish"
+msgstr "Испанский"
 
 msgid "Specifies how many servers to create."
 msgstr "Укажите число создаваемых серверов."
@@ -3543,6 +3620,9 @@ msgstr "Статус подкачки"
 
 msgid "Swap usage"
 msgstr "Использование подкачки"
+
+msgid "Swedish"
+msgstr "Шведский"
 
 msgid "Switch to"
 msgstr "Переключить на"

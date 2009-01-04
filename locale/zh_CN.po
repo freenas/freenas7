@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
 "PO-Revision-Date: 2008-11-18 12:22+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -581,6 +581,9 @@ msgstr "BitTorrent"
 msgid "Browseable"
 msgstr "提供浏览"
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
@@ -602,8 +605,14 @@ msgstr "网路芳邻伺服器关闭中"
 msgid "CIFS/SMB informations"
 msgstr "网路芳邻资讯"
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
 msgstr "CPU 负载"
+
+msgid "CPU temperature"
+msgstr ""
 
 msgid "CPU usage"
 msgstr "CPU 负载"
@@ -641,6 +650,12 @@ msgstr "访查间隔"
 
 msgid "Check shared secret:"
 msgstr "检查分享密文："
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
+msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -1262,6 +1277,9 @@ msgstr "双工模式"
 msgid "Duplicate share name."
 msgstr "重复共享名。"
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr "动态 DNS"
 
@@ -1478,6 +1496,9 @@ msgstr "加密方式"
 
 msgid "Encryption algorithm"
 msgstr "加密演算法"
+
+msgid "English"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1712,6 +1733,9 @@ msgstr ""
 msgid "Free disk space"
 msgstr "可用空间"
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr "来源 email"
 
@@ -1739,6 +1763,9 @@ msgstr "一般"
 msgid "General Setup"
 msgstr "一般设定"
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr "授与使用者 shell 权限"
 
@@ -1750,6 +1777,9 @@ msgstr "图表"
 
 msgid "Graph shows last"
 msgstr "Graph shows last"
+
+msgid "Greek"
+msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "当使用者刚连接上FTP所显示的讯息。"
@@ -1843,6 +1873,9 @@ msgid ""
 "How often the IP is updated even if it is not changed. The period is in "
 "seconds (max. is 10 days)."
 msgstr "多久强制更新一次 IP 资讯。以秒为单位（最多 10 天）"
+
+msgid "Hungarian"
+msgstr ""
 
 msgid "I/O errors"
 msgstr "I/O错误"
@@ -2055,6 +2088,9 @@ msgid ""
 "authentication simultaneously."
 msgstr "'只允许匿名使用者'与'只允许本地端使用者存取'并不能够同时选取。"
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2062,6 +2098,9 @@ msgid ""
 "January February March April May June July August September October November "
 "December"
 msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
+
+msgid "Japanese"
+msgstr ""
 
 msgid "Key"
 msgstr "金钥"
@@ -2108,6 +2147,10 @@ msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
 msgstr "将未格式化的磁碟设为 '%s' 并且使用<a href=%s>格式化选单</a>来进行格式化。"
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
+msgstr ""
 
 msgid "License"
 msgstr "License"
@@ -2462,6 +2505,9 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2687,6 +2733,9 @@ msgstr "硬体平台"
 msgid "Please note that blanks in path names are not allowed."
 msgstr "请注意在路径中不可以有空白字元。"
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr "Polling 时间"
 
@@ -2718,6 +2767,9 @@ msgid ""
 msgstr ""
 
 msgid "Ports"
+msgstr ""
+
+msgid "Portuguese"
 msgstr ""
 
 msgid "PostInit"
@@ -2945,6 +2997,9 @@ msgstr "续传"
 msgid "Retry"
 msgstr "重试"
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr ""
 
@@ -2982,6 +3037,9 @@ msgid "Run now"
 msgstr ""
 
 msgid "Running"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3228,6 +3286,9 @@ msgstr "传送缓冲区的大小(预设为16384)."
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "睡眠 - 装置除了在睡眠模式之外都将检查。"
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3257,6 +3318,9 @@ msgstr "来源位置"
 
 msgid "Space Used"
 msgstr "使用空间"
+
+msgid "Spanish"
+msgstr ""
 
 msgid "Specifies how many servers to create."
 msgstr "输入预建立伺服器的数量。"
@@ -3380,6 +3444,9 @@ msgstr "Swap 状态"
 
 msgid "Swap usage"
 msgstr "Swap 使用量"
+
+msgid "Swedish"
+msgstr ""
 
 msgid "Switch to"
 msgstr "Switch to"

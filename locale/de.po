@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
-"PO-Revision-Date: 2009-01-02 10:16+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
+"PO-Revision-Date: 2009-01-04 10:29+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -609,6 +609,9 @@ msgstr "BitTorrent"
 msgid "Browseable"
 msgstr "Sichtbar"
 
+msgid "Bulgarian"
+msgstr "Bulgarisch"
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 "Standardmäßig können nur bereits existierende Dateien hochgeladen werden."
@@ -631,8 +634,14 @@ msgstr "CIFS/SMB deaktiviert"
 msgid "CIFS/SMB informations"
 msgstr "Informationen über CIFS/SMB"
 
+msgid "CPU frequency"
+msgstr "Prozessortaktfrequenz"
+
 msgid "CPU load"
 msgstr "CPU-Auslastung"
+
+msgid "CPU temperature"
+msgstr "Prozessortemperatur"
 
 msgid "CPU usage"
 msgstr "Prozessorauslastung"
@@ -675,6 +684,12 @@ msgstr "Überprüfungsintervall"
 
 msgid "Check shared secret:"
 msgstr "Überprüfe geteiltes Geheimnis:"
+
+msgid "Chinese (Simplified)"
+msgstr "Chinesisch (Vereinfacht)"
+
+msgid "Chinese (Traditional)"
+msgstr "Chinesisch (Traditionell)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -1330,6 +1345,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr "Dupliziere Freigabename"
 
+msgid "Dutch"
+msgstr "Niederländisch"
+
 msgid "Dynamic DNS"
 msgstr "Dynamic DNS"
 
@@ -1551,6 +1569,9 @@ msgstr "Verschlüsselung"
 
 msgid "Encryption algorithm"
 msgstr "Verschlüsselungsalgorithmus"
+
+msgid "English"
+msgstr "Englisch"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1810,6 +1831,9 @@ msgstr "Forum"
 msgid "Free disk space"
 msgstr "Freier Speicherplatz"
 
+msgid "French"
+msgstr "Französisch"
+
 msgid "From email"
 msgstr "E-Mail-Adresse des Absenders"
 
@@ -1837,6 +1861,9 @@ msgstr "Allgemein"
 msgid "General Setup"
 msgstr "Allgemeine Einstellungen"
 
+msgid "German"
+msgstr "Deutsch"
+
 msgid "Give full shell access to user."
 msgstr "Voller Kommandozeilenzugang für Benutzer!"
 
@@ -1848,6 +1875,9 @@ msgstr "Graph"
 
 msgid "Graph shows last"
 msgstr "Graph zeigt die letzten"
+
+msgid "Greek"
+msgstr "Griechisch"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Grußbotschaft (wird beim Verbindungsaufbau zum FTP-Server angezeigt)"
@@ -1912,7 +1942,7 @@ msgid "Host"
 msgstr "Host"
 
 msgid "Host access control"
-msgstr ""
+msgstr "Host-Zugangskontrolle"
 
 msgid "Host name"
 msgstr "Rechnername"
@@ -1947,6 +1977,9 @@ msgid ""
 msgstr ""
 "Wie oft die IP aktualisiert wird, selbst wenn sie sich nicht verändert hat. "
 "Dauer in Sekunden (max. 10 Tage)."
+
+msgid "Hungarian"
+msgstr "Ungarisch"
 
 msgid "I/O errors"
 msgstr "I/O-Fehler"
@@ -2185,6 +2218,9 @@ msgstr ""
 "Es ist unmöglich gleichzeitig Zugang für »Nur anonyme Benutzer« und »Nur "
 "lokale Benutzer« zu aktivieren."
 
+msgid "Italian"
+msgstr "Italienisch"
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2194,6 +2230,9 @@ msgid ""
 msgstr ""
 "Januar Februar März April Mai Juni Juli August September Oktober November "
 "Dezember"
+
+msgid "Japanese"
+msgstr "Japanisch"
 
 msgid "Key"
 msgstr "Schlüssel"
@@ -2242,6 +2281,10 @@ msgid ""
 msgstr ""
 "Lass '%s' für unformatierte Festplatten und formatiere sie mit dem <a "
 "href=%s>Formatieren</a> Menü."
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
+msgstr "Niveaus (MHz/mW): %s"
 
 msgid "License"
 msgstr "Lizenz"
@@ -2619,6 +2662,9 @@ msgstr "Keine"
 msgid "Normal"
 msgstr "Normal"
 
+msgid "Norwegian (Bokmal)"
+msgstr "Norwegisch (Bokmal)"
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2778,7 +2824,7 @@ msgid "Partitions"
 msgstr "Partitionen"
 
 msgid "Passive ports"
-msgstr ""
+msgstr "Passive Ports"
 
 msgid ""
 "Passive ports restricts the range of ports from which the server will select "
@@ -2862,6 +2908,9 @@ msgstr "Plattform"
 msgid "Please note that blanks in path names are not allowed."
 msgstr "Bitte beachten, dass Leerstellen in Pfadnamen nicht erlaubt sind."
 
+msgid "Polish"
+msgstr "Polnisch"
+
 msgid "Polling time"
 msgstr "Abfragezeit"
 
@@ -2877,7 +2926,7 @@ msgstr "Port %ld wird bereits von einem anderen Dienst verwendet."
 
 #, php-format
 msgid "Port %s must be less than %s."
-msgstr ""
+msgstr "Port %s muss kleiner sein als %s."
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Alternativer TCP Port (Standard: 3689)."
@@ -2896,6 +2945,9 @@ msgstr ""
 
 msgid "Ports"
 msgstr "Ports"
+
+msgid "Portuguese"
+msgstr "Portugiesisch"
 
 msgid "PostInit"
 msgstr "PostInit"
@@ -3131,6 +3183,9 @@ msgstr "Fortfahren"
 msgid "Retry"
 msgstr "Wiederholen"
 
+msgid "Romanian"
+msgstr "Rumänisch"
+
 msgid "Root bind DN"
 msgstr "hervorgehobener Name des Systemadministrator für Bind"
 
@@ -3169,6 +3224,9 @@ msgstr "Jetzt ausführen"
 
 msgid "Running"
 msgstr "Läuft"
+
+msgid "Russian"
+msgstr "Russisch"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3432,6 +3490,9 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 "Sleep - Überprüfe das Gerät es sei denn es befindet sich im SLEEP Modus."
 
+msgid "Slovenian"
+msgstr "Slowenisch"
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3461,6 +3522,9 @@ msgstr "Quell - Freigabe"
 
 msgid "Space Used"
 msgstr "Benutzter Speicherplatz"
+
+msgid "Spanish"
+msgstr "Spanisch"
 
 msgid "Specifies how many servers to create."
 msgstr "Legt fest, wie viele Server erstellt werden sollen."
@@ -3600,6 +3664,9 @@ msgstr "Swap Status"
 msgid "Swap usage"
 msgstr "Nutzungsgrad des Auslagerungsspeichers (Swap)"
 
+msgid "Swedish"
+msgstr "Schwedisch"
+
 msgid "Switch to"
 msgstr "Umschalten zu"
 
@@ -3716,7 +3783,7 @@ msgstr ""
 
 #, php-format
 msgid "The %s port must be in the range from %d to %d."
-msgstr ""
+msgstr "Der %s Port muss im Bereich von %d bis %d sein."
 
 msgid "The IP address that this hostname represents."
 msgstr "Die IP Adresse, welche diesen Hostnamen repräsentiert."
@@ -4566,6 +4633,8 @@ msgid ""
 "To get detailed informations about TCP Wrappers check the FreeBSD <a "
 "href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"Um ausführliche Informationen über TCP Wrapper zu erhalten, sehen Sie in der "
+"FreeBSD <a href='%s' target='_blank'>Dokumentation</a> nach."
 
 #, php-format
 msgid ""
@@ -4573,8 +4642,8 @@ msgid ""
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 "Um ausführliche Informationen über das Erstellen von Firewall-Regeln zu "
-"erhalten, sehen Sie bei FreeBSD <a href='%s' "
-"target='_blank'>documentation</a> nach."
+"erhalten, sehen Sie in der FreeBSD <a href='%s' "
+"target='_blank'>Dokumentation</a> nach."
 
 #, php-format
 msgid ""

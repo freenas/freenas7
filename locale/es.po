@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
 "PO-Revision-Date: 2008-12-08 17:57+0000\n"
 "Last-Translator: Javier García Díaz <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -572,6 +572,9 @@ msgstr ""
 msgid "Browseable"
 msgstr "Visible"
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
@@ -593,8 +596,14 @@ msgstr "CIFS/SMB desactivado"
 msgid "CIFS/SMB informations"
 msgstr "Información de CIFS/SMB"
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
 msgstr "Carga CPU"
+
+msgid "CPU temperature"
+msgstr ""
 
 msgid "CPU usage"
 msgstr "Uso de CPU"
@@ -634,6 +643,12 @@ msgstr "Intervalo de pruebas"
 
 msgid "Check shared secret:"
 msgstr "Comprobando el secreto compartido:"
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
+msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -1271,6 +1286,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr "DNS dinámico"
 
@@ -1485,6 +1503,9 @@ msgstr "Cifrado"
 
 msgid "Encryption algorithm"
 msgstr "Algoritmo de encriptación"
+
+msgid "English"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1730,6 +1751,9 @@ msgstr ""
 msgid "Free disk space"
 msgstr "Liberar espacio en disco"
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr "De correo electrónico"
 
@@ -1757,6 +1781,9 @@ msgstr "General"
 msgid "General Setup"
 msgstr "Configuración general"
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr "Otorgar al usuario acceso completo a la consola."
 
@@ -1768,6 +1795,9 @@ msgstr "Gráfico"
 
 msgid "Graph shows last"
 msgstr "El gráfico muestra los últimos"
+
+msgid "Greek"
+msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -1868,6 +1898,9 @@ msgid ""
 msgstr ""
 "Que tan frecuente es actualizada la IP, incluso si no es cambiada. El "
 "periodo es en segundos (max. son 10 días)."
+
+msgid "Hungarian"
+msgstr ""
 
 msgid "I/O errors"
 msgstr "Errores I/O"
@@ -2087,6 +2120,9 @@ msgstr ""
 "Es imposible activar autentificación 'Sólo usuarios anónimos\" y \"Sólo "
 "usuarios locales\" a la vez."
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2096,6 +2132,9 @@ msgid ""
 msgstr ""
 "Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre "
 "Noviembre Diciembre"
+
+msgid "Japanese"
+msgstr ""
 
 msgid "Key"
 msgstr "Clave"
@@ -2144,6 +2183,10 @@ msgid ""
 msgstr ""
 "Dejar '%s' para discos sin formtear y formatearlos usuando menú <a "
 "href=%s>formatear</a>."
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
+msgstr ""
 
 msgid "License"
 msgstr "Licencia"
@@ -2507,6 +2550,9 @@ msgstr "Ninguno"
 msgid "Normal"
 msgstr ""
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2745,6 +2791,9 @@ msgstr ""
 "Por favor notar que los espacios en blanco en los nombre de ruta no están "
 "permitidos."
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr "Tiempo de poléo"
 
@@ -2779,6 +2828,9 @@ msgstr ""
 
 msgid "Ports"
 msgstr "Puertos"
+
+msgid "Portuguese"
+msgstr ""
 
 msgid "PostInit"
 msgstr "PostInit"
@@ -3009,6 +3061,9 @@ msgstr "Continuar"
 msgid "Retry"
 msgstr "Volver a intentar"
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr ""
 
@@ -3046,6 +3101,9 @@ msgid "Run now"
 msgstr ""
 
 msgid "Running"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3292,6 +3350,9 @@ msgstr "Tamaño del buffer de envío (16384 por defecto)."
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Dormir - Controla que el dispositivo esté en modo DORMIR"
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3321,6 +3382,9 @@ msgstr "Elemento compartido de origen"
 
 msgid "Space Used"
 msgstr "Espacio Usado"
+
+msgid "Spanish"
+msgstr ""
 
 msgid "Specifies how many servers to create."
 msgstr ""
@@ -3448,6 +3512,9 @@ msgstr "Estado del intercambio."
 
 msgid "Swap usage"
 msgstr "Uso del intercambio."
+
+msgid "Swedish"
+msgstr ""
 
 msgid "Switch to"
 msgstr "Cambiar a"

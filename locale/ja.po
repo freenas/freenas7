@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
 "PO-Revision-Date: 2008-12-11 14:23+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:23+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:06+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -543,6 +543,9 @@ msgstr ""
 msgid "Browseable"
 msgstr "ブラウズ可能"
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
@@ -564,8 +567,14 @@ msgstr "CIFS/SMB 使用不可"
 msgid "CIFS/SMB informations"
 msgstr ""
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
 msgstr "CPU 負荷"
+
+msgid "CPU temperature"
+msgstr ""
 
 msgid "CPU usage"
 msgstr "CPU 使用率"
@@ -602,6 +611,12 @@ msgid "Check interval"
 msgstr "チェック間隔"
 
 msgid "Check shared secret:"
+msgstr ""
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
 msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
@@ -1216,6 +1231,9 @@ msgstr "デュプレックス"
 msgid "Duplicate share name."
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr "ダイナミックDNS"
 
@@ -1427,6 +1445,9 @@ msgstr "暗号化"
 
 msgid "Encryption algorithm"
 msgstr "暗号化アルゴリズム"
+
+msgid "English"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1663,6 +1684,9 @@ msgstr ""
 msgid "Free disk space"
 msgstr "ディスクの空き容量"
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr ""
 
@@ -1690,6 +1714,9 @@ msgstr "基本"
 msgid "General Setup"
 msgstr "基本設定"
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr "ユーザにシェルアクセスを許可する。"
 
@@ -1701,6 +1728,9 @@ msgstr "グラフ"
 
 msgid "Graph shows last"
 msgstr "最後のグラフを表示"
+
+msgid "Greek"
+msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "FTP 接続の際に最初に表示される挨拶のバナー．"
@@ -1794,6 +1824,9 @@ msgid ""
 "How often the IP is updated even if it is not changed. The period is in "
 "seconds (max. is 10 days)."
 msgstr "IPアドレスの更新頻度。秒単位で最大10日(IPアドレスに変更がなくても更新を行います)"
+
+msgid "Hungarian"
+msgstr ""
 
 msgid "I/O errors"
 msgstr "I/O エラー"
@@ -2000,6 +2033,9 @@ msgid ""
 "authentication simultaneously."
 msgstr ""
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2007,6 +2043,9 @@ msgid ""
 "January February March April May June July August September October November "
 "December"
 msgstr "1月 2月 3月 4月 5月 6月 7月 8月 9月 10月 11月 12月"
+
+msgid "Japanese"
+msgstr ""
 
 msgid "Key"
 msgstr "鍵"
@@ -2052,6 +2091,10 @@ msgstr "最終設定変更日"
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
+msgstr ""
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
 msgstr ""
 
 msgid "License"
@@ -2407,6 +2450,9 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2632,6 +2678,9 @@ msgstr "プラットフォーム"
 msgid "Please note that blanks in path names are not allowed."
 msgstr ""
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr "ポーリング時間"
 
@@ -2663,6 +2712,9 @@ msgid ""
 msgstr ""
 
 msgid "Ports"
+msgstr ""
+
+msgid "Portuguese"
 msgstr ""
 
 msgid "PostInit"
@@ -2890,6 +2942,9 @@ msgstr "リジューム"
 msgid "Retry"
 msgstr "リトライ"
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr ""
 
@@ -2927,6 +2982,9 @@ msgid "Run now"
 msgstr ""
 
 msgid "Running"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3171,6 +3229,9 @@ msgstr "送信バッファのサイズ (デフォルトは 16384)．"
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr "ソケット"
 
@@ -3200,6 +3261,9 @@ msgstr "接続元共有"
 
 msgid "Space Used"
 msgstr "使用量"
+
+msgid "Spanish"
+msgstr ""
 
 msgid "Specifies how many servers to create."
 msgstr ""
@@ -3322,6 +3386,9 @@ msgstr "スワップステータス"
 
 msgid "Swap usage"
 msgstr "スワップ使用率"
+
+msgid "Swedish"
+msgstr ""
 
 msgid "Switch to"
 msgstr "切り替え"
