@@ -184,7 +184,7 @@ setifconfig()
 	_ifn=`get_if ${_ifn}`
 	_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/lan" \
 		-i "count(ipv6addr) > 0 and ipv6addr[. != 'auto']" \
-			-v "concat('inet6 alias ',ipv6addr,'/',ipv6subnet)" \
+			-v "concat(ipv6addr,'/',ipv6subnet)" \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
@@ -208,7 +208,7 @@ setifconfig()
 		if configxml_isset "//interfaces/*[name() = 'opt${_id}']/enable"; then
 			_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/*[name() = 'opt${_id}']" \
 				-i "count(ipv6addr) > 0 and ipv6addr[. != 'auto']" \
-					-v "concat('inet6 alias ',ipv6addr,'/',ipv6subnet)" \
+					-v "concat(ipv6addr,'/',ipv6subnet)" \
 				-b \
 				${configxml_file} | /usr/local/bin/xml unesc`
 
