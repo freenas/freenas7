@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-03 20:18+0000\n"
+"PO-Revision-Date: 2009-01-04 01:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -472,6 +472,9 @@ msgstr ""
 msgid "Browseable"
 msgstr ""
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
@@ -533,6 +536,12 @@ msgid "Check interval"
 msgstr ""
 
 msgid "Check shared secret:"
+msgstr ""
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
 msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
@@ -1105,6 +1114,9 @@ msgstr ""
 msgid "Duplicate share name."
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr ""
 
@@ -1308,6 +1320,9 @@ msgid "Encryption"
 msgstr ""
 
 msgid "Encryption algorithm"
+msgstr ""
+
+msgid "English"
 msgstr ""
 
 msgid "Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
@@ -1523,6 +1538,9 @@ msgstr ""
 msgid "Free disk space"
 msgstr ""
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr ""
 
@@ -1550,6 +1568,9 @@ msgstr ""
 msgid "General Setup"
 msgstr ""
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr ""
 
@@ -1560,6 +1581,9 @@ msgid "Graph"
 msgstr ""
 
 msgid "Graph shows last"
+msgstr ""
+
+msgid "Greek"
 msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
@@ -1648,6 +1672,9 @@ msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr ""
 
 msgid "How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."
+msgstr ""
+
+msgid "Hungarian"
 msgstr ""
 
 msgid "I/O errors"
@@ -1816,10 +1843,16 @@ msgstr ""
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr ""
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr ""
 
 msgid "January February March April May June July August September October November December"
+msgstr ""
+
+msgid "Japanese"
 msgstr ""
 
 msgid "Key"
@@ -2211,6 +2244,9 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."
 msgstr ""
 
@@ -2416,6 +2452,9 @@ msgstr ""
 msgid "Please note that blanks in path names are not allowed."
 msgstr ""
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2445,6 +2484,9 @@ msgid "Port to listen on. Only dynamic or private ports can be used (from %d thr
 msgstr ""
 
 msgid "Ports"
+msgstr ""
+
+msgid "Portuguese"
 msgstr ""
 
 msgid "PostInit"
@@ -2666,6 +2708,9 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr ""
 
@@ -2703,6 +2748,9 @@ msgid "Run now"
 msgstr ""
 
 msgid "Running"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -2933,6 +2981,9 @@ msgstr ""
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -2961,6 +3012,9 @@ msgid "Source share"
 msgstr ""
 
 msgid "Space Used"
+msgstr ""
+
+msgid "Spanish"
 msgstr ""
 
 msgid "Specifies how many servers to create."
@@ -3071,6 +3125,9 @@ msgid "Swap status"
 msgstr ""
 
 msgid "Swap usage"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Switch to"
