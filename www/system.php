@@ -3,7 +3,7 @@
 /*
 	system.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	Set time function added by Paul Wheels (pwheels@users.sourceforge.net)
 
@@ -120,10 +120,12 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
+		// Store old values for later processing.
 		$oldcert = $config['system']['webgui']['certificate'];
 		$oldkey = $config['system']['webgui']['privatekey'];
 		$oldwebguiproto = $config['system']['webgui']['protocol'];
 		$oldwebguiport = $config['system']['webgui']['port'];
+		$oldlanguage = $config['system']['language'];
 
 		$config['system']['hostname'] = strtolower($_POST['hostname']);
 		$config['system']['domain'] = strtolower($_POST['domain']);
@@ -205,6 +207,13 @@ if ($_POST) {
 		// Update DNS server controls.
 		list($pconfig['dns1'],$pconfig['dns2']) = get_ipv4dnsserver();
 		list($pconfig['ipv6dns1'],$pconfig['ipv6dns2']) = get_ipv6dnsserver();
+	}
+
+	// Reload page if language has been changed, otherwise page is displayed
+	// in previous selected language.
+	if ($oldlanguage !== $config['system']['language']) {
+		header("Location: system.php");
+		exit;
 	}
 }
 ?>
