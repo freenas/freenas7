@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
 "PO-Revision-Date: 2008-12-27 01:19+0000\n"
 "Last-Translator: Pierre Rudloff <tael67@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:06+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -608,6 +608,9 @@ msgstr "BitTorrent"
 msgid "Browseable"
 msgstr "Navigabilité"
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 "Par défault, seuls les fichiers déjà existant peuvent être téléchargés."
@@ -630,8 +633,14 @@ msgstr "CIFS/SMB désactivé"
 msgid "CIFS/SMB informations"
 msgstr "Informations CIFS/SMB"
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
 msgstr "Charge CPU"
+
+msgid "CPU temperature"
+msgstr ""
 
 msgid "CPU usage"
 msgstr "Utilisation CPU"
@@ -671,6 +680,12 @@ msgstr "Périodicité de contrôle"
 
 msgid "Check shared secret:"
 msgstr "Check shared secret:"
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
+msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -1325,6 +1340,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr "Nom de partage dupliqué."
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr "DNS Dynamique"
 
@@ -1546,6 +1564,9 @@ msgstr "Cryptage"
 
 msgid "Encryption algorithm"
 msgstr "Algorithme de cryptage"
+
+msgid "English"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1802,6 +1823,9 @@ msgstr "Forum"
 msgid "Free disk space"
 msgstr "Espace disque disponible"
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr "Email d'origine"
 
@@ -1829,6 +1853,9 @@ msgstr "Général"
 msgid "General Setup"
 msgstr "Configuration générale"
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr "Donner l'accès complet au shell à cet utilisateur"
 
@@ -1840,6 +1867,9 @@ msgstr "Graphe"
 
 msgid "Graph shows last"
 msgstr "Afficher les dernieres"
+
+msgid "Greek"
+msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -1940,6 +1970,9 @@ msgid ""
 msgstr ""
 "Indique l'intervalle de mise à jour de l'IP si celle-ci n'a pas changé. La "
 "période est en secondes (10 jours maximum)."
+
+msgid "Hungarian"
+msgstr ""
 
 msgid "I/O errors"
 msgstr "Erreurs E/S"
@@ -2180,6 +2213,9 @@ msgstr ""
 "Il est impossible d'activer les authentifications 'Utilisateurs anonymes "
 "seulement' et 'Utilisateurs locaux seulement' simultanément."
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2189,6 +2225,9 @@ msgid ""
 msgstr ""
 "Janvier Février Mars Avril Mai Juin Juillet Aout Septembre Octobre Novembre "
 "Décembre"
+
+msgid "Japanese"
+msgstr ""
 
 msgid "Key"
 msgstr "Clef"
@@ -2237,6 +2276,10 @@ msgid ""
 msgstr ""
 "Laisser '%s' pour les disques non formatés et les formater en utilisant le "
 "menu <a href=%s>format</a>."
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
+msgstr ""
 
 msgid "License"
 msgstr "Licence"
@@ -2613,6 +2656,9 @@ msgstr "Aucun"
 msgid "Normal"
 msgstr "Normal"
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2857,6 +2903,9 @@ msgstr ""
 "Veuillez noter que les espaces dans les noms des chemins d'accès ne sont pas "
 "autorisés."
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr "Intervalle de sondage"
 
@@ -2891,6 +2940,9 @@ msgstr ""
 
 msgid "Ports"
 msgstr "Ports"
+
+msgid "Portuguese"
+msgstr ""
 
 msgid "PostInit"
 msgstr "PostInit"
@@ -3125,6 +3177,9 @@ msgstr "Reprise"
 msgid "Retry"
 msgstr "Réessayer"
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr "DN pour le bind racine"
 
@@ -3163,6 +3218,9 @@ msgstr "Exécuter maintenant"
 
 msgid "Running"
 msgstr "En cours"
+
+msgid "Russian"
+msgstr ""
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3424,6 +3482,9 @@ msgstr "Taille du tampon d'envoi (16384 par défaut)."
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - Contrôler le disque sauf s'il est dans le mode SLEEP."
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3453,6 +3514,9 @@ msgstr "Partage source"
 
 msgid "Space Used"
 msgstr "Occupation des disques"
+
+msgid "Spanish"
+msgstr ""
 
 msgid "Specifies how many servers to create."
 msgstr "Indique le nombre de serveurs à créer."
@@ -3591,6 +3655,9 @@ msgstr "Etat du swap"
 
 msgid "Swap usage"
 msgstr "Utilisation du swap"
+
+msgid "Swedish"
+msgstr ""
 
 msgid "Switch to"
 msgstr "Basculer en"

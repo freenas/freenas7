@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
 "PO-Revision-Date: 2008-09-23 12:55+0000\n"
 "Last-Translator: laurb <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -563,6 +563,9 @@ msgstr ""
 msgid "Browseable"
 msgstr "Vizibil"
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
@@ -584,8 +587,14 @@ msgstr "CIFS/SMB dezactivat"
 msgid "CIFS/SMB informations"
 msgstr "Informatii CIFS/SMS"
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
 msgstr "Incarcare CPU"
+
+msgid "CPU temperature"
+msgstr ""
 
 msgid "CPU usage"
 msgstr "Utilizare CPU"
@@ -626,6 +635,12 @@ msgstr "Interval de verificare"
 
 msgid "Check shared secret:"
 msgstr "Verificare partajare secreta:"
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
+msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -1263,6 +1278,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr "DNS Dynamic"
 
@@ -1474,6 +1492,9 @@ msgstr "Criptare"
 
 msgid "Encryption algorithm"
 msgstr "Algoritm criptare"
+
+msgid "English"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1718,6 +1739,9 @@ msgstr ""
 msgid "Free disk space"
 msgstr ""
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr "De la email"
 
@@ -1745,6 +1769,9 @@ msgstr "General"
 msgid "General Setup"
 msgstr "Setări generale"
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr ""
 
@@ -1756,6 +1783,9 @@ msgstr "Graphic"
 
 msgid "Graph shows last"
 msgstr "Graphic final"
+
+msgid "Greek"
+msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Baner afisat la conectare de catre server-ul FTP."
@@ -1855,6 +1885,9 @@ msgid ""
 msgstr ""
 "De cite ori este actualizat IP-ul (chiar daca nu este schimbat). Perioada "
 "este definita in secunde, valoarea maxima fiind 10 zile."
+
+msgid "Hungarian"
+msgstr ""
 
 msgid "I/O errors"
 msgstr "Erori I/O"
@@ -2068,6 +2101,9 @@ msgstr ""
 "Nu puteti sa utilizati \"Doar utilizator anonim\" si \"Doar utilizator "
 "local\" in acelasi timp."
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2077,6 +2113,9 @@ msgid ""
 msgstr ""
 "Ianuarie Februarie Martie Aprilie Mai Iunie Iulie August Septembrie "
 "Octombrie Noiembrie Decembrie"
+
+msgid "Japanese"
+msgstr ""
 
 msgid "Key"
 msgstr "Cheie"
@@ -2122,6 +2161,10 @@ msgstr "Ultima modificare configuratie"
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
+msgstr ""
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
 msgstr ""
 
 msgid "License"
@@ -2481,6 +2524,9 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2712,6 +2758,9 @@ msgstr "Platforma"
 msgid "Please note that blanks in path names are not allowed."
 msgstr ""
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr "Interval verificare"
 
@@ -2743,6 +2792,9 @@ msgid ""
 msgstr ""
 
 msgid "Ports"
+msgstr ""
+
+msgid "Portuguese"
 msgstr ""
 
 msgid "PostInit"
@@ -2970,6 +3022,9 @@ msgstr "Continua"
 msgid "Retry"
 msgstr "Reincearca"
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr ""
 
@@ -3007,6 +3062,9 @@ msgid "Run now"
 msgstr ""
 
 msgid "Running"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3251,6 +3309,9 @@ msgstr "Marimea buffer-ului de Iesire (implicit 16384)."
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -3280,6 +3341,9 @@ msgstr "Sursa Partajare"
 
 msgid "Space Used"
 msgstr "Spatiu Utilizat"
+
+msgid "Spanish"
+msgstr ""
 
 msgid "Specifies how many servers to create."
 msgstr ""
@@ -3405,6 +3469,9 @@ msgid "Swap status"
 msgstr ""
 
 msgid "Swap usage"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Switch to"

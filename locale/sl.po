@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-31 05:52+0000\n"
+"POT-Creation-Date: 2009-01-04 07:12+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-02 10:24+0000\n"
+"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -550,6 +550,9 @@ msgstr ""
 msgid "Browseable"
 msgstr "Brskalno"
 
+msgid "Bulgarian"
+msgstr ""
+
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
 
@@ -571,8 +574,14 @@ msgstr "CIFS/SMB onemogočen"
 msgid "CIFS/SMB informations"
 msgstr "CIFS/SMB informacije"
 
+msgid "CPU frequency"
+msgstr ""
+
 msgid "CPU load"
 msgstr "Obremenitev CPE"
+
+msgid "CPU temperature"
+msgstr ""
 
 msgid "CPU usage"
 msgstr "Raba CPE"
@@ -610,6 +619,12 @@ msgid "Check interval"
 msgstr "Interval preverjanja"
 
 msgid "Check shared secret:"
+msgstr ""
+
+msgid "Chinese (Simplified)"
+msgstr ""
+
+msgid "Chinese (Traditional)"
 msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
@@ -1227,6 +1242,9 @@ msgstr "Duplex"
 msgid "Duplicate share name."
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Dynamic DNS"
 msgstr "Dinamični DNS"
 
@@ -1438,6 +1456,9 @@ msgstr "Šifriranje"
 
 msgid "Encryption algorithm"
 msgstr "Algoritem šifriranja"
+
+msgid "English"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1674,6 +1695,9 @@ msgstr ""
 msgid "Free disk space"
 msgstr "Prost diskovni prostor"
 
+msgid "French"
+msgstr ""
+
 msgid "From email"
 msgstr "E-pošta od"
 
@@ -1701,6 +1725,9 @@ msgstr "Splošno"
 msgid "General Setup"
 msgstr "Splošne nastavitve"
 
+msgid "German"
+msgstr ""
+
 msgid "Give full shell access to user."
 msgstr ""
 
@@ -1712,6 +1739,9 @@ msgstr "Graf"
 
 msgid "Graph shows last"
 msgstr "Graf prikaže nazadnje"
+
+msgid "Greek"
+msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -1807,6 +1837,9 @@ msgstr ""
 msgid ""
 "How often the IP is updated even if it is not changed. The period is in "
 "seconds (max. is 10 days)."
+msgstr ""
+
+msgid "Hungarian"
 msgstr ""
 
 msgid "I/O errors"
@@ -2016,6 +2049,9 @@ msgid ""
 "authentication simultaneously."
 msgstr ""
 
+msgid "Italian"
+msgstr ""
+
 msgid "JBOD"
 msgstr "JBOD"
 
@@ -2025,6 +2061,9 @@ msgid ""
 msgstr ""
 "Januar Februar Marec April Maj Junij Julij Avgust September Oktober November "
 "December"
+
+msgid "Japanese"
+msgstr ""
 
 msgid "Key"
 msgstr "Ključ"
@@ -2070,6 +2109,10 @@ msgstr "Zadnja sprememba nastavitev"
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
+msgstr ""
+
+#, php-format
+msgid "Levels (MHz/mW): %s"
 msgstr ""
 
 msgid "License"
@@ -2425,6 +2468,9 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
+msgid "Norwegian (Bokmal)"
+msgstr ""
+
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
@@ -2654,6 +2700,9 @@ msgstr "Platforma"
 msgid "Please note that blanks in path names are not allowed."
 msgstr ""
 
+msgid "Polish"
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2685,6 +2734,9 @@ msgid ""
 msgstr ""
 
 msgid "Ports"
+msgstr ""
+
+msgid "Portuguese"
 msgstr ""
 
 msgid "PostInit"
@@ -2912,6 +2964,9 @@ msgstr "Povrni"
 msgid "Retry"
 msgstr "Poskusi ponovno"
 
+msgid "Romanian"
+msgstr ""
+
 msgid "Root bind DN"
 msgstr ""
 
@@ -2949,6 +3004,9 @@ msgid "Run now"
 msgstr ""
 
 msgid "Running"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "S.M.A.R.T."
@@ -3193,6 +3251,9 @@ msgstr "Velikost predpomnilnika pošiljanja (privzeto 16384)."
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
+msgid "Slovenian"
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -3222,6 +3283,9 @@ msgstr "Izvorni deljeni vir"
 
 msgid "Space Used"
 msgstr "Zasedeno"
+
+msgid "Spanish"
+msgstr ""
 
 msgid "Specifies how many servers to create."
 msgstr ""
@@ -3347,6 +3411,9 @@ msgid "Swap status"
 msgstr ""
 
 msgid "Swap usage"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Switch to"
