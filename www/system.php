@@ -33,6 +33,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("services.inc");
 
 $pgtitle = array(gettext("System"), gettext("General Setup"));
 
@@ -119,6 +120,11 @@ if ($_POST) {
 		}
 	}
 
+	// Check if port is already used.
+	if (services_is_port_used($_POST['webguiport'], "sysgui")) {
+		$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['webguiport']);
+	}
+
 	if (!$input_errors) {
 		// Store old values for later processing.
 		$oldcert = $config['system']['webgui']['certificate'];
@@ -130,8 +136,8 @@ if ($_POST) {
 		$config['system']['hostname'] = strtolower($_POST['hostname']);
 		$config['system']['domain'] = strtolower($_POST['domain']);
 		$config['system']['username'] = $_POST['username'];
-		$config['system']['webgui']['protocol'] = $pconfig['webguiproto'];
-		$config['system']['webgui']['port'] = $pconfig['webguiport'];
+		$config['system']['webgui']['protocol'] = $_POST['webguiproto'];
+		$config['system']['webgui']['port'] = $_POST['webguiport'];
 		$config['system']['language'] = $_POST['language'];
 		$config['system']['timezone'] = $_POST['timezone'];
 		$config['system']['ntp']['enable'] = $_POST['ntp_enable'] ? true : false;
@@ -207,13 +213,13 @@ if ($_POST) {
 		// Update DNS server controls.
 		list($pconfig['dns1'],$pconfig['dns2']) = get_ipv4dnsserver();
 		list($pconfig['ipv6dns1'],$pconfig['ipv6dns2']) = get_ipv6dnsserver();
-	}
 
-	// Reload page if language has been changed, otherwise page is displayed
-	// in previous selected language.
-	if ($oldlanguage !== $config['system']['language']) {
-		header("Location: system.php");
-		exit;
+		// Reload page if language has been changed, otherwise page is displayed
+		// in previous selected language.
+		if ($oldlanguage !== $config['system']['language']) {
+			header("Location: system.php");
+			exit;
+		}
 	}
 }
 ?>
