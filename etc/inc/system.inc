@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -179,9 +179,7 @@ function system_get_cpu_usage() {
 		$totalused = 0.001;
 	}
 
-	$cpuUsage = floor(100 * ($totalused / $totalDiff));
-
-	return $cpuUsage;
+	return floor(100 * ($totalused / $totalDiff));
 }
 
 // Get various CPU informations.
