@@ -117,11 +117,11 @@ function system_get_group_list() {
 //                      [password] => $1$yuQLaTPN$lkwYlZEB7B8n85flXPkHd0
 //                      [uid] => 1001
 //                      [gid] => 1001
-//                      [class] => 
-//                      [change] => 0 
-//                      [expire] => 0 
-//                      [gecos] => test 
-//                      [home_dir] => /mnt 
+//                      [class] =>
+//                      [change] => 0
+//                      [expire] => 0
+//                      [gecos] => test
+//                      [home_dir] => /mnt
 //                      [shell] => /usr/local/bin/scponly
 //                    )
 //    [root] => ...
@@ -151,7 +151,7 @@ function system_get_user_list() {
 		$user['gecos'] = $userinfo[7];
 		$user['home_dir'] = $userinfo[8];
 		$user['shell'] = $userinfo[9];
-		
+
 		$userlist[$user['name']] = $user;
 	}
 
@@ -164,23 +164,23 @@ function system_get_cpu_usage() {
 	$cpuTicks1 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
 	sleep(2);
 	$cpuTicks2 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
-	
+
 	$diff = array();
 	$diff['user'] = ($cpuTicks2[0] - $cpuTicks1[0]);
 	$diff['nice'] = ($cpuTicks2[1] - $cpuTicks1[1]);
 	$diff['sys'] = ($cpuTicks2[2] - $cpuTicks1[2]);
 	$diff['intr'] = ($cpuTicks2[3] - $cpuTicks1[3]);
 	$diff['idle'] = ($cpuTicks2[4] - $cpuTicks1[4]);
-	
+
 	$totalDiff = $diff['user'] + $diff['nice'] + $diff['sys'] + $diff['intr'] + $diff['idle'];
 	$totalused = $diff['user'] + $diff['nice'] + $diff['sys'] + $diff['intr'];
-	
+
 	if (isset($totalused) && $totalused <= 0) {
 		$totalused = 0.001;
 	}
-	
+
 	$cpuUsage = floor(100 * ($totalused / $totalDiff));
-	
+
 	return $cpuUsage;
 }
 
@@ -188,6 +188,8 @@ function system_get_cpu_usage() {
 // Result:
 //  Array (
 //    [number] => 1
+//    [model] => AMD Athlon(tm) 64 Processor 3200+
+//    [clockrate] => 1994
 //    [temperature] => 65C !!! May be empty if sensor is not available. !!!
 //    [freq] => 995
 //    [freqlevels] => 1990/67000 1791/64700 995/28600
@@ -196,6 +198,8 @@ function system_get_cpu_info() {
 	$cpuinfo = array();
 
 	$cpuinfo['number'] = chop(`/sbin/sysctl -n hw.ncpu`);
+	$cpuinfo['model'] = chop(`/sbin/sysctl -n hw.model`);
+	$cpuinfo['clockrate'] = chop(`/sbin/sysctl -n hw.clockrate`);
 	$cpuinfo['temperature'] = chop(`/sbin/sysctl -n hw.acpi.thermal.tz0.temperature`);
 	$cpuinfo['freq'] = chop(`/sbin/sysctl -n dev.cpu.0.freq`);
 	$cpuinfo['freqlevels'] = chop(`/sbin/sysctl -n dev.cpu.0.freq_levels`);

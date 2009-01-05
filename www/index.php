@@ -38,6 +38,8 @@ require("sajax/sajax.php");
 $pgtitle = array(get_product_name()." webGUI");
 $pgtitle_omit = true;
 
+$cpuinfo = system_get_cpu_info();
+
 function update_controls() {
 	// Get uptime and date.
 	$value['uptime'] = system_get_uptime();
@@ -50,7 +52,7 @@ function update_controls() {
 	// Get load average.
 	exec("uptime", $result);
 	$value['loadaverage'] = substr(strrchr($result[0], "load averages:"), 15);
-	// Get CPU informations.
+	// Get up-to-date CPU informations.
 	$cpuinfo = system_get_cpu_info();
 	$value['cputemp'] = $cpuinfo['temperature'];
 	$value['cpufreq'] = $cpuinfo['freq'];
@@ -141,12 +143,7 @@ sajax_handle_client_request();
 			  <tr>
 			    <td width="25%" class="vncellt"><?=gettext("Platform");?></td>
 			    <td width="75%" class="listr">
-			      <?=htmlspecialchars($g['fullplatform']);
-			      exec("/sbin/sysctl -n hw.model", $cputype);
-			      foreach ($cputype as $cputypel) echo " on " . htmlspecialchars($cputypel);
-			      exec("/sbin/sysctl -n hw.clockrate", $clockrate);
-			      echo " running at {$clockrate[0]}MHz";
-			      ?>
+			    	<?=sprintf(gettext("%s on %s (%dMHz)"), $g['fullplatform'], $cpuinfo['model'], $cpuinfo['clockrate']);?>
 			    </td>
 			  </tr>
 			  <tr>
@@ -171,7 +168,6 @@ sajax_handle_client_request();
 			      </td>
 			    </tr>
 				<?php endif;?>
-				<?php $cpuinfo = system_get_cpu_info();?>
 				<?php if (!empty($cpuinfo['temperature'])):?>
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU temperature");?></td>
