@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-04 01:50+0000\n"
+"PO-Revision-Date: 2009-01-05 19:34+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -37,6 +37,10 @@ msgstr ""
 
 #, php-format
 msgid "%s of %sB"
+msgstr ""
+
+#, php-format
+msgid "%s on %s (%dMHz)"
 msgstr ""
 
 #, php-format

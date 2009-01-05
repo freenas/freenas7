@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-04 07:12+0000\n"
-"PO-Revision-Date: 2008-12-27 01:19+0000\n"
-"Last-Translator: Pierre Rudloff <tael67@gmail.com>\n"
+"PO-Revision-Date: 2009-01-05 17:04+0000\n"
+"Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-04 13:06+0000\n"
+"X-Launchpad-Export-Date: 2009-01-05 19:19+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -438,7 +438,7 @@ msgstr ""
 "Autoriser les clients à stocker des attributs étendus OS/2 sur un partage."
 
 msgid "Allow clients to resume interrupted uploads and downloads."
-msgstr ""
+msgstr "Autorise les clients à reprendre les transferts interrompus."
 
 msgid "Allow new files"
 msgstr "Autorise les nouveaux fichiers"
@@ -609,7 +609,7 @@ msgid "Browseable"
 msgstr "Navigabilité"
 
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgare"
 
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
@@ -634,13 +634,13 @@ msgid "CIFS/SMB informations"
 msgstr "Informations CIFS/SMB"
 
 msgid "CPU frequency"
-msgstr ""
+msgstr "Fréquence CPU"
 
 msgid "CPU load"
 msgstr "Charge CPU"
 
 msgid "CPU temperature"
-msgstr ""
+msgstr "Température CPU"
 
 msgid "CPU usage"
 msgstr "Utilisation CPU"
@@ -665,6 +665,9 @@ msgid ""
 "address or DNS host is acting as a NAT gateway or port forwarder for the "
 "server."
 msgstr ""
+"Permet au serveur d'afficher au client les informations réseau pour "
+"l'adresse IP spécifiée ou le nom d'hôte DNS, en assumant que l'adresse IP ou "
+"le hôte DNS joue le rôle de NAT ou de relai de port au serveur."
 
 msgid "Certificate"
 msgstr "Certificat"
@@ -682,10 +685,10 @@ msgid "Check shared secret:"
 msgstr "Check shared secret:"
 
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Chinois (Simplifié)"
 
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Chinois (Traditionnel)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -844,7 +847,7 @@ msgid "Cron job"
 msgstr "Cron job"
 
 msgid "Custom"
-msgstr ""
+msgstr "Personnaliser"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -892,7 +895,7 @@ msgid "Date"
 msgstr "Date"
 
 msgid "Debug"
-msgstr ""
+msgstr "Débug"
 
 msgid "Default"
 msgstr "Standard"
@@ -901,7 +904,7 @@ msgid "Default is 21"
 msgstr "Port par défaut : 21"
 
 msgid "Default root"
-msgstr ""
+msgstr "Racine par défaut"
 
 msgid "Default user name is 'admin'."
 msgstr "Le nom d'utilisateur par défaut est 'admin'."
@@ -1341,7 +1344,7 @@ msgid "Duplicate share name."
 msgstr "Nom de partage dupliqué."
 
 msgid "Dutch"
-msgstr ""
+msgstr "Néerlandais"
 
 msgid "Dynamic DNS"
 msgstr "DNS Dynamique"
@@ -1449,7 +1452,7 @@ msgid "Enable SMTP authentication."
 msgstr "Activer l'authentification SMTP."
 
 msgid "Enable TLS/SSL connections."
-msgstr ""
+msgstr "Autorise les connexions TLS/SSL."
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Activer Zeroconf/Bonjour pour annoncer les services"
@@ -1566,7 +1569,7 @@ msgid "Encryption algorithm"
 msgstr "Algorithme de cryptage"
 
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1824,7 +1827,7 @@ msgid "Free disk space"
 msgstr "Espace disque disponible"
 
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 msgid "From email"
 msgstr "Email d'origine"
@@ -1854,7 +1857,7 @@ msgid "General Setup"
 msgstr "Configuration générale"
 
 msgid "German"
-msgstr ""
+msgstr "Allemand"
 
 msgid "Give full shell access to user."
 msgstr "Donner l'accès complet au shell à cet utilisateur"
@@ -1869,7 +1872,7 @@ msgid "Graph shows last"
 msgstr "Afficher les dernieres"
 
 msgid "Greek"
-msgstr ""
+msgstr "Grec"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -1935,7 +1938,7 @@ msgid "Host"
 msgstr "Hôte"
 
 msgid "Host access control"
-msgstr ""
+msgstr "Contrôle d'accès du hôte"
 
 msgid "Host name"
 msgstr "Nom de hôte"
@@ -1947,7 +1950,7 @@ msgid "Hostname"
 msgstr "Nom d'hôte"
 
 msgid "Hostname database"
-msgstr ""
+msgstr "Base de donnée des noms d'hôte"
 
 msgid "Hosts"
 msgstr "Hôtes"
@@ -1972,7 +1975,7 @@ msgstr ""
 "période est en secondes (10 jours maximum)."
 
 msgid "Hungarian"
-msgstr ""
+msgstr "Hongrois"
 
 msgid "I/O errors"
 msgstr "Erreurs E/S"
@@ -2051,6 +2054,10 @@ msgid ""
 "after a client authenticates. This can be used to effectively isolate the "
 "client from a portion of the host system filespace."
 msgstr ""
+"Si la racine par défaut est activée, un <i>chroot</i> est réalisé "
+"immédiatement après que le client se soit authentifié. Ceci peut être "
+"utilisé pour restreindre l'accès du client à une partie seulement du système "
+"du hôte."
 
 msgid ""
 "If set afpd uses the ID information stored in AppleDouble V2 header files to "
@@ -2214,7 +2221,7 @@ msgstr ""
 "seulement' et 'Utilisateurs locaux seulement' simultanément."
 
 msgid "Italian"
-msgstr ""
+msgstr "Italien"
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2227,7 +2234,7 @@ msgstr ""
 "Décembre"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Japonais"
 
 msgid "Key"
 msgstr "Clef"
@@ -2279,7 +2286,7 @@ msgstr ""
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
-msgstr ""
+msgstr "Niveaux (MHz/mW): %s"
 
 msgid "License"
 msgstr "Licence"
@@ -2459,7 +2466,7 @@ msgid "Map to user"
 msgstr "Associer à l'utilisateur"
 
 msgid "Masquerade address"
-msgstr ""
+msgstr "Adresse de masquerading"
 
 msgid "Max. TTL"
 msgstr "Max. TTL"
@@ -2480,7 +2487,7 @@ msgid "Maximum connections"
 msgstr "Maximum de connexions"
 
 msgid "Maximum idle time in seconds."
-msgstr ""
+msgstr "Temps d'innoccupation maximum en secondes."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Nombre maximum de connexions par IP (0 = illimité)."
@@ -2657,7 +2664,7 @@ msgid "Normal"
 msgstr "Normal"
 
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "Norvégien (Bokmal)"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -2817,7 +2824,7 @@ msgid "Partitions"
 msgstr "Partitions"
 
 msgid "Passive ports"
-msgstr ""
+msgstr "Ports passifs"
 
 msgid ""
 "Passive ports restricts the range of ports from which the server will select "
@@ -2828,6 +2835,13 @@ msgid ""
 "enough to handle many simultaneous passive connections (for example, 49152-"
 "65534, the IANA-registered ephemeral port range)."
 msgstr ""
+"L'utilisation des ports passifs restreint la plage des ports dans laquelle "
+"le serveur puise à l'envoi de la commande PASV à un client. Le serveur "
+"sélectionne un port au hasard dans cette plage jusqu'à ce qu'un port libre "
+"soit trouvé. Cette plage de ports doit être dans la plage de ports non-"
+"privilégiés (ie. plus grand ou égal à 1024). Il est vivement recommandé que "
+"la plage choisie soit suffisamment large pour pouvoir gérer beaucoup de "
+"connexions passives simultanées."
 
 msgid "Passphrase"
 msgstr "Phrase de passe"
@@ -2904,7 +2918,7 @@ msgstr ""
 "autorisés."
 
 msgid "Polish"
-msgstr ""
+msgstr "Polonais"
 
 msgid "Polling time"
 msgstr "Intervalle de sondage"
@@ -2921,7 +2935,7 @@ msgstr "Le port %ld est déjà utilisé par un autre service."
 
 #, php-format
 msgid "Port %s must be less than %s."
-msgstr ""
+msgstr "Le port %s doit être inférieur à %s."
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Port en écoute. Le port par défaut d'iTunes est 3689."
@@ -2942,7 +2956,7 @@ msgid "Ports"
 msgstr "Ports"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugais"
 
 msgid "PostInit"
 msgstr "PostInit"
@@ -3178,7 +3192,7 @@ msgid "Retry"
 msgstr "Réessayer"
 
 msgid "Romanian"
-msgstr ""
+msgstr "Roumain"
 
 msgid "Root bind DN"
 msgstr "DN pour le bind racine"
@@ -3220,7 +3234,7 @@ msgid "Running"
 msgstr "En cours"
 
 msgid "Russian"
-msgstr ""
+msgstr "Russe"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3483,13 +3497,13 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - Contrôler le disque sauf s'il est dans le mode SLEEP."
 
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovène"
 
 msgid "Sockets"
 msgstr "Sockets"
 
 msgid "SoftRaid"
-msgstr ""
+msgstr "RAID Logiciel"
 
 msgid "Software RAID"
 msgstr "RAID logiciel"
@@ -3516,7 +3530,7 @@ msgid "Space Used"
 msgstr "Occupation des disques"
 
 msgid "Spanish"
-msgstr ""
+msgstr "Espagnol"
 
 msgid "Specifies how many servers to create."
 msgstr "Indique le nombre de serveurs à créer."
@@ -3657,7 +3671,7 @@ msgid "Swap usage"
 msgstr "Utilisation du swap"
 
 msgid "Swedish"
-msgstr ""
+msgstr "Suédois"
 
 msgid "Switch to"
 msgstr "Basculer en"
@@ -3775,7 +3789,7 @@ msgstr ""
 
 #, php-format
 msgid "The %s port must be in the range from %d to %d."
-msgstr ""
+msgstr "Le port %s doit avoir une valeur de %d à %d."
 
 msgid "The IP address that this hostname represents."
 msgstr "L'adresse IP que ce nom d'hôte représente."
@@ -3922,6 +3936,16 @@ msgid ""
 "order for a matching rule. When a match is found the rule is applied and the "
 "search process will halt."
 msgstr ""
+"La configuration basique prend habituellement la forme 'démon : adresse : "
+"action'. Où <i>démon</i> est le nom du démon du service démarré. "
+"L'<i>adresse</i> peut être un nom d'hôte valide, une adresse IP ou une "
+"adresse IPv6 entre crochets. Le champ <i>action</i> peut être soit "
+"<i>allow</i> ou <i>deny</i> pour respectivement autoriser ou interdire les "
+"accès.\n"
+"Gardez bien en tête que le configuration fonctionne sur la première règle "
+"satisfaite, c'est à dire que le fichier de configuration est parcouru à "
+"partir du début vers la fin jusqu'à trouver une règle satisfaisante. Dès "
+"qu'un règle est satisfaite, elle est appliquée et la recherche est arrêté."
 
 msgid "The changes have been applied successfully."
 msgstr "Les modifications ont été appliquées avec succès."
@@ -4088,7 +4112,7 @@ msgid "The old password is not correct."
 msgstr "L'ancien mot de passe est incorrect"
 
 msgid "The password change protocol to use."
-msgstr ""
+msgstr "Le protocole de changement de mot de passe à utiliser."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Le mot de passe contient le caractère invalide ':'."
@@ -4605,6 +4629,8 @@ msgid ""
 "To get detailed informations about TCP Wrappers check the FreeBSD <a "
 "href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"Pour obtenir des informations supplémentaires sur TCP Wrappers, voir la <a "
+"href='%s' target='_blank'>documentation</a> FreeBSD."
 
 #, php-format
 msgid ""
