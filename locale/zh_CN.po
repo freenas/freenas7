@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-04 07:12+0000\n"
+"POT-Creation-Date: 2009-01-06 12:46+0000\n"
 "PO-Revision-Date: 2008-11-18 12:22+0000\n"
 "Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-04 13:07+0000\n"
+"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -73,6 +73,10 @@ msgstr "%s 被用来创建 %s 分卷。"
 #, php-format
 msgid "%s of %sB"
 msgstr "%s字节中的%s"
+
+#, php-format
+msgid "%s on %s (%dMHz)"
+msgstr ""
 
 #, php-format
 msgid "%s used of %sB"
@@ -854,8 +858,9 @@ msgstr ""
 msgid "Default"
 msgstr "预设值"
 
-msgid "Default is 21"
-msgstr "预设值为21"
+#, php-format
+msgid "Default is %s."
+msgstr ""
 
 msgid "Default root"
 msgstr ""
@@ -1450,6 +1455,9 @@ msgstr "开启 DOS 属性储存"
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "开启 syslog'ing 写入远端 syslog 伺服器"
 
+msgid "Enable the ident protocol (RFC1413)."
+msgstr ""
+
 msgid "Enable the system power control utility"
 msgstr "开启电源监控程式。"
 
@@ -1933,6 +1941,9 @@ msgstr "要挂载到 ISO 文件"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
+
+msgid "Ident protocol"
+msgstr ""
 
 msgid "Identifier"
 msgstr "标识符"
@@ -4607,6 +4618,11 @@ msgstr "网页介面"
 msgid "Webserver"
 msgstr "网页伺服器"
 
+msgid ""
+"When a client initially connects to the server the ident protocol is used to "
+"attempt to identify the remote username."
+msgstr ""
+
 msgid "Where the working files will be stored"
 msgstr "选择工作档案要储存的位置"
 
@@ -5533,6 +5549,9 @@ msgstr "平常日"
 #~ "Second configuration step: Declaring the filesystem used by your <a "
 #~ "href=%s>previously configured disk.</a>"
 #~ msgstr "规划的第二步：选择<a href=%s>刚才设定的磁碟</a>所使用之档案系统"
+
+#~ msgid "Default is 21"
+#~ msgstr "预设值为21"
 
 #~ msgid "List of partition on all detected disk"
 #~ msgstr "所有磁碟内的磁区列表"

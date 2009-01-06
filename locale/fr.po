@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-04 07:12+0000\n"
+"POT-Creation-Date: 2009-01-06 12:46+0000\n"
 "PO-Revision-Date: 2009-01-05 17:04+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-05 19:19+0000\n"
+"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -42,6 +42,10 @@ msgstr "%s est utilisé pour créer les volumes %s."
 #, php-format
 msgid "%s of %sB"
 msgstr "%s de %sB"
+
+#, php-format
+msgid "%s on %s (%dMHz)"
+msgstr ""
 
 #, php-format
 msgid "%s used of %sB"
@@ -900,8 +904,9 @@ msgstr "Débug"
 msgid "Default"
 msgstr "Standard"
 
-msgid "Default is 21"
-msgstr "Port par défaut : 21"
+#, php-format
+msgid "Default is %s."
+msgstr ""
 
 msgid "Default root"
 msgstr "Racine par défaut"
@@ -1518,6 +1523,9 @@ msgstr "Activer les attributs de stockage DOS"
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activer l'enregistrement des journaux sur un serveur distant"
 
+msgid "Enable the ident protocol (RFC1413)."
+msgstr ""
+
 msgid "Enable the system power control utility"
 msgstr "Activer l'utilitaire de contrôle de l'alimentation en énergie"
 
@@ -2036,6 +2044,9 @@ msgstr "Fichier ISO à monter."
 
 msgid "ISP DNS servers"
 msgstr "Serveurs DNS du FAI"
+
+msgid "Ident protocol"
+msgstr ""
 
 msgid "Identifier"
 msgstr "Identifiant"
@@ -4993,6 +5004,11 @@ msgstr "Interface Web"
 msgid "Webserver"
 msgstr "Serveur web"
 
+msgid ""
+"When a client initially connects to the server the ident protocol is used to "
+"attempt to identify the remote username."
+msgstr ""
+
 msgid "Where the working files will be stored"
 msgstr "Emplacement où seront stockés les fichiers de travail"
 
@@ -6110,6 +6126,9 @@ msgstr "jours de la semaine"
 #~ msgstr ""
 #~ "Deuxième étape de la configuration: Déclarer le système de fichiers utilisé "
 #~ "par votre <a href=%s>disque configuré précédemment</a>."
+
+#~ msgid "Default is 21"
+#~ msgstr "Port par défaut : 21"
 
 #~ msgid "Clear log"
 #~ msgstr "Vider le journal"
