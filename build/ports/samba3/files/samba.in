@@ -335,7 +335,7 @@ samba_cmd() {
 			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
 		fi
  		if [ 0 -eq ${samba_ldap} ]; then
-			local _password=`configxml_get "//ldap/bindpw"`
+			local _password=`configxml_get "//ldap/rootbindpw"`
 			/usr/local/bin/smbpasswd -w ${_password}
 		fi
 	fi
