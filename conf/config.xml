@@ -561,6 +561,7 @@
 		<localusersonly/>
 		<tls/>
 		<allowrestart/>
+		<identlookups/>
 		<auxparam></auxparam> // Can be defined multiple times.
 		-->
 	</ftpd>
