@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-01-04 07:12+0000\n"
-"PO-Revision-Date: 2009-01-05 17:13+0000\n"
-"Last-Translator: Dutchman01 <Unknown>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-06 12:46+0000\n"
+"PO-Revision-Date: 2009-01-06 12:56+0000\n"
+"Last-Translator: Michael Zoon <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-05 19:19+0000\n"
+"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -43,6 +43,10 @@ msgstr "%s is gebruikt voor het maken van %s volumes."
 #, php-format
 msgid "%s of %sB"
 msgstr "%s van %sB"
+
+#, php-format
+msgid "%s on %s (%dMHz)"
+msgstr "%s op %s (%dMHz)"
 
 #, php-format
 msgid "%s used of %sB"
@@ -254,7 +258,7 @@ msgid "Access mode"
 msgstr "Toegangs mode"
 
 msgid "Acoustic level"
-msgstr "Geluids productie"
+msgstr "Geluids niveau"
 
 msgid "Action"
 msgstr "Actie"
@@ -874,7 +878,7 @@ msgstr ""
 "Breek de firmware update procedure niet af nadat deze is gestart. %s zal "
 "automatisch herstarten na het updaten van de nieuwe firmware. De huidige "
 "configuratie zal behouden blijven.<br>Er is minimaal %d Mbyte RAM nodig om "
-"de firmware update uit te voeren.<br>Het is aan te bevelen om eerst een <a "
+"de firmware update uit te voeren.<br>Het is aanbevolen eerst een <a "
 "href=%s>Backup</a> van de actuele configuratie te maken, alvorens de "
 "firmware update uit te voeren."
 
@@ -902,8 +906,9 @@ msgstr "Debug"
 msgid "Default"
 msgstr "Standaard"
 
-msgid "Default is 21"
-msgstr "Standaard poort 21."
+#, php-format
+msgid "Default is %s."
+msgstr "Standaard is %s."
 
 msgid "Default root"
 msgstr "Standaard root"
@@ -1522,6 +1527,9 @@ msgstr "Inschakelen opslaan van DOS attributen."
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Inschakelen syslog'ing naar de remote syslog server"
 
+msgid "Enable the ident protocol (RFC1413)."
+msgstr "Inschakelen van de ident protocol (RFC1413)."
+
 msgid "Enable the system power control utility"
 msgstr "Inschakelen van de systeem energiebeheer service"
 
@@ -2041,6 +2049,9 @@ msgstr "ISO bestand om aangekoppeld te worden."
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS servers"
+
+msgid "Ident protocol"
+msgstr "Ident protocol"
 
 msgid "Identifier"
 msgstr "Identificatie"
@@ -5008,6 +5019,14 @@ msgstr "WebGUI"
 
 msgid "Webserver"
 msgstr "Webserver"
+
+msgid ""
+"When a client initially connects to the server the ident protocol is used to "
+"attempt to identify the remote username."
+msgstr ""
+"Wanneer een cliënt aanvankelijk verbinding maakt met de server, de ident "
+"protocol wordt gebruikt om de remote gebruikersnaam proberen te "
+"identificeren."
 
 msgid "Where the working files will be stored"
 msgstr "Plaats waar de werkbestanden bewaard zullen worden."
