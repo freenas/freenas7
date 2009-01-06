@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-05 19:34+0000\n"
+"PO-Revision-Date: 2009-01-06 12:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -726,7 +726,8 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-msgid "Default is 21"
+#, php-format
+msgid "Default is %s."
 msgstr ""
 
 msgid "Default root"
@@ -1289,6 +1290,9 @@ msgstr ""
 msgid "Enable syslog'ing to remote syslog server"
 msgstr ""
 
+msgid "Enable the ident protocol (RFC1413)."
+msgstr ""
+
 msgid "Enable the system power control utility"
 msgstr ""
 
@@ -1734,6 +1738,9 @@ msgid "ISO file to be mounted."
 msgstr ""
 
 msgid "ISP DNS servers"
+msgstr ""
+
+msgid "Ident protocol"
 msgstr ""
 
 msgid "Identifier"
@@ -4050,6 +4057,9 @@ msgid "WebGUI"
 msgstr ""
 
 msgid "Webserver"
+msgstr ""
+
+msgid "When a client initially connects to the server the ident protocol is used to attempt to identify the remote username."
 msgstr ""
 
 msgid "Where the working files will be stored"
