@@ -128,6 +128,9 @@ mkconf_cmd()
 		-i "count(fxp) > 0" -o "AllowForeignAddress on" -n -b \
 		-i "string-length(pasv_address) > 0" -v "concat('MasqueradeAddress ',pasv_address)" -n -b \
 		-i "pasv_min_port[. != '0'] and pasv_max_port[. != '0']" -v "concat('PassivePorts ',pasv_min_port,' ',pasv_max_port)" -n -b \
+		-i "count(identlookups) = 0" \
+			-o "IdentLookups off" -n \
+		-b \
 		-i "count(localusersonly) = 0" \
 			-n \
 			-o "&lt;Anonymous ${proftpd_anonymousrootdir}&gt;" -n \
