@@ -196,6 +196,11 @@ function get_show_item($dir, $item) {		// show this file?
 	return true;
 }
 //------------------------------------------------------------------------------
+function copy_file($source,$dest) {		// copy file
+	@exec("cp -p {$source} {$dest}", $output, $retval);
+	return (0 == $retval) ? true : false;
+}
+//------------------------------------------------------------------------------
 function copy_dir($source,$dest) {		// copy dir
 	$ok = true;
 	
@@ -210,7 +215,7 @@ function copy_dir($source,$dest) {		// copy dir
 		if(@is_dir($new_source)) {
 			$ok=copy_dir($new_source,$new_dest);
 		} else {
-			$ok=@copy($new_source,$new_dest);
+			$ok=copy_file($new_source,$new_dest);
 		}
 	}
 	closedir($handle);

@@ -205,7 +205,7 @@ function copy_move_items($dir) {		// copy/move file/dir
 		if($GLOBALS["action"]=="copy") {
 			if(@is_link($abs_item) || @is_file($abs_item)) {
 				// check file-exists to avoid error with 0-size files (PHP 4.3.0)
-				$ok=@copy($abs_item,$abs_new_item);	//||@file_exists($abs_new_item);
+				$ok=@copy_file($abs_item,$abs_new_item);	//||@file_exists($abs_new_item);
 			} elseif(@is_dir($abs_item)) {
 				$ok=copy_dir($abs_item,$abs_new_item);
 			}

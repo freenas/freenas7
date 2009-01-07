@@ -78,7 +78,7 @@ function upload_items($dir) {		// upload file
 			if(function_exists("move_uploaded_file")) {
 				$ok = @move_uploaded_file($tmp, $abs);
 			} else {
-				$ok = @copy($tmp, $abs);
+				$ok = @copy_file($tmp, $abs);
 				@unlink($tmp);	// try to delete...
 			}
 			
