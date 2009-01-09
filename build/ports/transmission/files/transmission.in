@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: transmission
@@ -23,7 +23,7 @@ start_precmd="start_precmd"
 # Defaults
 transmission_enable=${transmission_enable:-"NO"}
 transmission_remoteuser=${transmission_remoteuser:-"admin"}
-transmission_allowed=${transmission_allowed:-"*"}
+transmission_allowed=${transmission_allowed:-"*.*.*.*"}
 transmission_noblocklist=${transmission_noblocklist:-"YES"}
 transmission_user=${transmission_user:-"transmission"}
 transmission_suopt=${transmission_suopt:-"-l"}
