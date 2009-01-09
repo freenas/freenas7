@@ -52,7 +52,7 @@ function download_item($dir, $item) {		// download file
 		'application/octetstream':'application/octet-stream'));
 	header('Expires: '.gmdate('D, d M Y H:i:s').' GMT');
 	header('Content-Transfer-Encoding: binary');
-	header('Content-Length: '.filesize($abs_item));
+	header('Content-Length: '.get_file_size($dir,$item));
 	if($browser=='IE') {
 		header('Content-Disposition: attachment; filename="'.$item.'"');
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

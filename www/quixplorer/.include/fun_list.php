@@ -83,7 +83,7 @@ function make_tables($dir, &$dir_list, &$file_list, &$tot_file_size, &$num_items
 		if(!@file_exists($abs_new_item)) show_error($dir.": ".$GLOBALS["error_msg"]["readdir"]);
 		if(!get_show_item($dir, $new_item)) continue;
 		
-		$new_file_size = filesize($abs_new_item);
+		$new_file_size = get_file_size($dir, $new_item);
 		$tot_file_size += $new_file_size;
 		$num_items++;
 		
