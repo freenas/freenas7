@@ -5,13 +5,13 @@ msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-06 12:46+0000\n"
-"PO-Revision-Date: 2009-01-04 16:08+0000\n"
+"PO-Revision-Date: 2009-01-06 14:12+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
+"X-Launchpad-Export-Date: 2009-01-10 14:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -49,7 +49,7 @@ msgstr "%s из %s байт"
 
 #, php-format
 msgid "%s on %s (%dMHz)"
-msgstr ""
+msgstr "%s из %s (%dMHz)"
 
 #, php-format
 msgid "%s used of %sB"
@@ -893,7 +893,7 @@ msgstr "По умолчанию"
 
 #, php-format
 msgid "Default is %s."
-msgstr ""
+msgstr "По умолчанию %s."
 
 msgid "Default root"
 msgstr "Корневой каталог по умолчанию"
@@ -1508,7 +1508,7 @@ msgid "Enable syslog'ing to remote syslog server"
 msgstr "Разрешить отпраку журналов на удаленный syslog-сервер"
 
 msgid "Enable the ident protocol (RFC1413)."
-msgstr ""
+msgstr "Разрешить протокол идентификации (RFC1413)"
 
 msgid "Enable the system power control utility"
 msgstr "Включить утилиту контроля системного питания"
@@ -2024,7 +2024,7 @@ msgid "ISP DNS servers"
 msgstr "DNS-серверы провайдера"
 
 msgid "Ident protocol"
-msgstr ""
+msgstr "Протокол идентификации"
 
 msgid "Identifier"
 msgstr "Идентификатор"
@@ -4929,6 +4929,8 @@ msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
 msgstr ""
+"Когда клиент первоначально подключается к серверу идентификационный протокол "
+"используется для попытки идентификации удаленного пользователя."
 
 msgid "Where the working files will be stored"
 msgstr "Место хранения рабочих файлов"
@@ -5047,7 +5049,7 @@ msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
 msgid "built on"
-msgstr "сборка от"
+msgstr "Cборка от"
 
 msgid "cachecnid"
 msgstr "cachecnid"

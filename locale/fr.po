@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-06 12:46+0000\n"
-"PO-Revision-Date: 2009-01-05 17:04+0000\n"
+"PO-Revision-Date: 2009-01-08 15:24+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
+"X-Launchpad-Export-Date: 2009-01-10 14:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -45,7 +45,7 @@ msgstr "%s de %sB"
 
 #, php-format
 msgid "%s on %s (%dMHz)"
-msgstr ""
+msgstr "%s sur %s (%dMHz)"
 
 #, php-format
 msgid "%s used of %sB"
@@ -906,7 +906,7 @@ msgstr "Standard"
 
 #, php-format
 msgid "Default is %s."
-msgstr ""
+msgstr "%s par défault."
 
 msgid "Default root"
 msgstr "Racine par défaut"
@@ -1524,7 +1524,7 @@ msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activer l'enregistrement des journaux sur un serveur distant"
 
 msgid "Enable the ident protocol (RFC1413)."
-msgstr ""
+msgstr "Activer le protocole d'identification (RFC1413)."
 
 msgid "Enable the system power control utility"
 msgstr "Activer l'utilitaire de contrôle de l'alimentation en énergie"
@@ -2046,7 +2046,7 @@ msgid "ISP DNS servers"
 msgstr "Serveurs DNS du FAI"
 
 msgid "Ident protocol"
-msgstr ""
+msgstr "Protocole d'identification"
 
 msgid "Identifier"
 msgstr "Identifiant"
@@ -5008,6 +5008,8 @@ msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
 msgstr ""
+"Le protocole d'identification est utilisé lorsqu'un client se connecte au "
+"serveur pour tenter d'identifier le nom de l'utilisateur distant ."
 
 msgid "Where the working files will be stored"
 msgstr "Emplacement où seront stockés les fichiers de travail"
