@@ -91,6 +91,7 @@ function enable_change(enable_change) {
 	document.iform.type.disabled = endis;
 	document.iform.mountpoint.disabled = endis;
 	document.iform.size.disabled = endis;
+	document.iform.devicespecialfile.disabled = endis;
 }
 
 function type_change() {
