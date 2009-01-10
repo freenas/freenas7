@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-10 17:39+0000\n"
+"PO-Revision-Date: 2009-01-10 17:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2201,7 +2201,8 @@ msgstr ""
 msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr ""
 
-msgid "Name of the device to use as swap device."
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
 msgstr ""
 
 msgid "Name of the server. If this field is left empty the default server is specified."
