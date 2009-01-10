@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-06 12:27+0000\n"
+"PO-Revision-Date: 2009-01-10 17:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2173,9 +2173,6 @@ msgstr ""
 msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 
-msgid "Mount to use for swap"
-msgstr ""
-
 msgid "Mounting device."
 msgstr ""
 
@@ -2202,6 +2199,9 @@ msgstr ""
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
+
+msgid "Name of the device to use as swap device."
 msgstr ""
 
 msgid "Name of the server. If this field is left empty the default server is specified."
@@ -3123,12 +3123,6 @@ msgstr ""
 msgid "Swap disabled"
 msgstr ""
 
-msgid "Swap file"
-msgstr ""
-
-msgid "Swap file size"
-msgstr ""
-
 msgid "Swap memory"
 msgstr ""
 
@@ -3504,6 +3498,9 @@ msgid "The serial or USB port where your UPS is connected."
 msgstr ""
 
 msgid "The share name is already used."
+msgstr ""
+
+msgid "The size of the swap file in MB."
 msgstr ""
 
 msgid "The subject of the email."
