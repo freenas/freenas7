@@ -284,15 +284,17 @@ function list_dir($dir) {			// list directory contents
 		echo "align=\"ABSMIDDLE\" src=\"_img/_delete.gif\" ALT=\"".$GLOBALS["messages"]["dellink"];
 		echo "\" TITLE=\"".$GLOBALS["messages"]["dellink"]."\"></A></TD>\n";
 		// UPLOAD
-		if(get_cfg_var("file_uploads")) {
-			echo "<TD><A HREF=\"".make_link("upload",$dir,NULL)."\">";
-			echo "<IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
-			echo "src=\"_img/_upload.gif\" ALT=\"".$GLOBALS["messages"]["uploadlink"];
-			echo "\" TITLE=\"".$GLOBALS["messages"]["uploadlink"]."\"></A></TD>\n";
-		} else {
-			echo "<TD><IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
-			echo "src=\"_img/_upload_.gif\" ALT=\"".$GLOBALS["messages"]["uploadlink"];
-			echo "\" TITLE=\"".$GLOBALS["messages"]["uploadlink"]."\"></TD>\n";
+		if($GLOBALS["display_file_uploads"]) {
+			if(get_cfg_var("file_uploads")) {
+				echo "<TD><A HREF=\"".make_link("upload",$dir,NULL)."\">";
+				echo "<IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
+				echo "src=\"_img/_upload.gif\" ALT=\"".$GLOBALS["messages"]["uploadlink"];
+				echo "\" TITLE=\"".$GLOBALS["messages"]["uploadlink"]."\"></A></TD>\n";
+			} else {
+				echo "<TD><IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
+				echo "src=\"_img/_upload_.gif\" ALT=\"".$GLOBALS["messages"]["uploadlink"];
+				echo "\" TITLE=\"".$GLOBALS["messages"]["uploadlink"]."\"></TD>\n";
+			}
 		}
 		// ARCHIVE
 		if($GLOBALS["zip"] || $GLOBALS["tar"] || $GLOBALS["tgz"]) {
