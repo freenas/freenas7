@@ -79,6 +79,7 @@ Minors changes:
   The frequency levels are displayed as tooltips. Please note that these values
   are not displayed if FreeBSD is not able to get these hardware informations
   via sysctl.
+- Add ability to configure a disk device as swap device via WebGUI.
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).

@@ -2,7 +2,7 @@
 /*
 	config.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1646,6 +1646,26 @@ function config_upgrade() {
 		$config['system']['hostsacl']['rule'][] = "ALL : ALL : allow";
 
 		$config['version'] = "6.9";
+	}
+
+	/* Convert 6.9 -> 7.0 */
+	/* Convert swap configuration. */
+	if ($config['version'] === "6.9") {
+		$config['system']['swap']['type'] = "file";
+
+		if (isset($config['system']['swap_enable'])) {
+			$index = array_search_ex($config['system']['swap_mountname'], $config['mounts']['mount'], "sharename");
+
+			$config['system']['swap']['enable'] = true;
+			$config['system']['swap']['mountpoint'] = $config['mounts']['mount'][$index]['uuid'];
+			$config['system']['swap']['size'] = $config['system']['swap_size'];
+
+			unset($config['system']['swap_enable']);
+			unset($config['system']['swap_mountname']);
+			unset($config['system']['swap_size']);
+		}
+
+		$config['version'] = "7.0";
 	}
 
 	write_config();
