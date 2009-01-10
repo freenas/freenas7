@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>6.9</version>
+	<version>7.0</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -38,10 +38,16 @@
 		<disablebeep/>
 		<tune/>
 		<powerd/>
-		<swap_mountname></swap_mountname>
-		<swap_size></swap_size>
-		<swap_enable/>
 		-->
+		<swap>
+			<type>file</type>
+			<!--
+			<enable/> 
+			<devicespecialfile></devicespecialfile>
+			<mountpoint>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</mountpoint>
+			<size></size>
+			-->
+		</swap>
 		<proxy>
 			<http>
 				<!-- <enable/> -->

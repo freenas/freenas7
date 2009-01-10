@@ -3,7 +3,7 @@
 /*
 	system_swap.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,29 +33,43 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Swap file"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Swap"));
 
-$pconfig['enable'] = isset($config['system']['swap_enable']);
-$pconfig['swap_mountname'] = $config['system']['swap_mountname'];
-$pconfig['swap_size'] = $config['system']['swap_size'];
+$pconfig['enable'] = isset($config['system']['swap']['enable']);
+$pconfig['type'] = $config['system']['swap']['type'];
+$pconfig['mountpoint'] = $config['system']['swap']['mountpoint'];
+$pconfig['devicespecialfile'] = $config['system']['swap']['devicespecialfile'];
+$pconfig['size'] = $config['system']['swap']['size'];
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "swap_size swap_mountname");
-		$reqdfieldsn = array(gettext("Swap file size"), gettext("Mount to use for swap"));
-		$reqdfieldst = explode(" ", "numeric string");
+		$reqdfields = explode(" ", "type");
+		$reqdfieldsn = array(gettext("Type"));
+		$reqdfieldst = explode(" ", "string");
+
+		if ("device" === $_POST['type']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "devicespecialfile"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Device")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string"));
+		} else {
+			$reqdfields = array_merge($reqdfields, explode(" ", "mountpoint size"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Mount point"), gettext("Size")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string numeric"));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
 	if (!$input_errors) {
-		$config['system']['swap_enable'] = $_POST['enable'] ? true : false;
-		$config['system']['swap_mountname'] = $_POST['swap_mountname'];
-		$config['system']['swap_size'] = $_POST['swap_size'];
+		$config['system']['swap']['enable'] = $_POST['enable'] ? true : false;
+		$config['system']['swap']['type'] = $_POST['type'];
+		$config['system']['swap']['mountpoint'] = $_POST['mountpoint'];
+		$config['system']['swap']['devicespecialfile'] = $_POST['devicespecialfile'];
+		$config['system']['swap']['size'] = $_POST['size'];
 
 		write_config();
 
@@ -74,15 +88,32 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.swap_mountname.disabled = endis;
-	document.iform.swap_size.disabled = endis;
+	document.iform.type.disabled = endis;
+	document.iform.mountpoint.disabled = endis;
+	document.iform.size.disabled = endis;
+}
+
+function type_change() {
+	switch (document.iform.type.value) {
+	case "file":
+		showElementById('mountpoint_tr','show');
+		showElementById('size_tr','show');
+		showElementById('devicespecialfile_tr','hide');
+		break;
+
+	case "device":
+		showElementById('mountpoint_tr','hide');
+		showElementById('size_tr','hide');
+		showElementById('devicespecialfile_tr','show');
+		break;
+	}
 }
 //-->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
 				<li class="tabinact"><a href="system_advanced.php"><span><?=gettext("Advanced");?></span></a></li>
 				<li class="tabinact"><a href="system_email.php"><span><?=gettext("Email");?></span></a></li>
 				<li class="tabinact"><a href="system_proxy.php"><span><?=gettext("Proxy");?></span></a></li>
@@ -91,29 +122,32 @@ function enable_change(enable_change) {
 				<li class="tabinact"><a href="system_cron.php"><span><?=gettext("Cron");?></span></a></li>
 				<li class="tabinact"><a href="system_rcconf.php"><span><?=gettext("rc.conf");?></span></a></li>
 				<li class="tabinact"><a href="system_sysctl.php"><span><?=gettext("sysctl.conf");?></span></a></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td class="tabcont">
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
 			<form action="system_swap.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-        <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Swap memory"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-          <?php html_mountcombobox("swap_mountname", gettext("Mount to use for swap"), $pconfig['swap_mountname'], gettext("Select mount point where to create the swap file."), true);?>
-					<?php html_inputbox("swap_size", gettext("Swap file size"), $pconfig['swap_size'], gettext("Size in MB."), true, 10);?>
-  			</table>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device")), "", true, false, "type_change()");?>
+					<?php html_mountcombobox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Select mount point where to create the swap file."), true);?>
+					<?php html_inputbox("size", gettext("Size"), $pconfig['size'], gettext("The size of the swap file in MB."), true, 10);?>
+					<?php html_inputbox("devicespecialfile", gettext("Device"), $pconfig['devicespecialfile'], gettext("Name of the device to use as swap device."), true, 20);?>
+				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-			  </div>
+				</div>
 			</form>
-    </td>
-  </tr>
+		</td>
+	</tr>
 </table>
 <script language="JavaScript">
 <!--
 enable_change(false);
+type_change(false);
 //-->
 </script>
 <?php include("fend.inc");?>

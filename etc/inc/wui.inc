@@ -1,7 +1,7 @@
 <?php
 /*
 	wui.inc
-	Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -530,7 +530,7 @@ class HTMLMountComboBox extends HTMLComboBox {
 
 		$options = array();
 		foreach ($config['mounts']['mount'] as $mountv) {
-			$options[$mountv['sharename']] = $mountv['sharename'];
+			$options[$mountv['uuid']] = $mountv['sharename'];
 		}
 
 		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
