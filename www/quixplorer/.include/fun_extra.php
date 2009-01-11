@@ -112,7 +112,7 @@ function parse_file_perms($mode) {		// parsed file permisions
 //------------------------------------------------------------------------------
 function get_file_size($dir, $item) {		// file size
 	// Fix PHP file size problem (see http://de.php.net/manual/en/function.filesize.php).
-	return exec("stat -f %z " . escapeshellarg(get_abs_item($dir, $item)));
+	return @exec("stat -f %z " . escapeshellarg(get_abs_item($dir, $item)));
 	//return @filesize(get_abs_item($dir, $item));
 }
 //------------------------------------------------------------------------------
@@ -197,11 +197,14 @@ function get_show_item($dir, $item) {		// show this file?
 }
 //------------------------------------------------------------------------------
 function copy_file($source,$dest) {		// copy file
-	@exec("cp -p {$source} {$dest}", $output, $retval);
+	@exec("cp -p " . escapeshellarg($source) . " " . escapeshellarg($dest), $output, $retval);
 	return (0 == $retval) ? true : false;
 }
 //------------------------------------------------------------------------------
 function copy_dir($source,$dest) {		// copy dir
+	@exec("cp -pr " . escapeshellarg($source) . " " . escapeshellarg($dest), $output, $retval);
+	return (0 == $retval) ? true : false;
+/*
 	$ok = true;
 	
 	if(!@mkdir($dest,0777)) return false;
@@ -220,6 +223,7 @@ function copy_dir($source,$dest) {		// copy dir
 	}
 	closedir($handle);
 	return $ok;
+*/
 }
 //------------------------------------------------------------------------------
 function remove($item) {			// remove file / dir
