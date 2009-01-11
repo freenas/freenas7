@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_crypt_tools.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -109,7 +109,7 @@ if(isset($_GET['action'])) {
 if ("backup" === $pconfig['action']) {
 	$fn = "/var/tmp/{$geli['name']}.metadata";
 	mwexec("/sbin/geli backup {$geli['device'][0]} {$fn}");
-	$fs = filesize($fn);
+	$fs = get_filesize($fn);
 	header("Content-Type: application/octet-stream");
 	header("Content-Disposition: attachment; filename={$geli['name']}.metadata");
 	header("Content-Length: {$fs}");

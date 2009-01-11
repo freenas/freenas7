@@ -1,37 +1,37 @@
 #!/usr/local/bin/php
 <?php
 /*
-    system_edit.php
-    Copyright (C) 2004, 2005 Scott Ullrich
-    All rights reserved.
+	system_edit.php
+	Copyright (C) 2004, 2005 Scott Ullrich
+	All rights reserved.
 
-    Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
-    Copyright (C) 2006-2008 Volker Theile
+	Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile
 
-    Using dp.SyntaxHighlighter for syntax highlighting
-    http://www.dreamprojections.com/SyntaxHighlighter
-    Copyright (C) 2004-2006 Alex Gorbatchev. All rights reserved.
+	Using dp.SyntaxHighlighter for syntax highlighting
+	http://www.dreamprojections.com/SyntaxHighlighter
+	Copyright (C) 2004-2006 Alex Gorbatchev. All rights reserved.
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions are met:
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
 
-    1. Redistributions of source code must retain the above copyright notice,
-       this list of conditions and the following disclaimer.
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
 
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
 
-    THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-    OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
 */
 
 require("guiconfig.inc");
@@ -41,9 +41,7 @@ global $g;
 $pgtitle = array(gettext("Advanced"), gettext("File Editor"));
 
 if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
-	$fd = fopen($_POST['savetopath'], "r");
-	$content = fread($fd, filesize($_POST['savetopath']));
-	fclose($fd);
+	$content = file_get_contents($_POST['savetopath']);
 	$edit_area="";
 	if(stristr($_POST['savetopath'], ".php") == true)
 		$language = "php";
@@ -60,9 +58,7 @@ if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) &
 } else if (($_POST['submit'] == gettext("Save"))) {
 	conf_mount_rw();
 	$content = ereg_replace("\r","",$_POST['code']) ;
-	$fd = fopen($_POST['savetopath'], "w");
-	fwrite($fd, $content);
-	fclose($fd);
+	file_put_contents($_POST['savetopath'], $content);
 	$edit_area="";
 	$savemsg = gettext("Saved file to") . " " . $_POST['savetopath'];
 	if($_POST['savetopath'] == "{$g['cf_conf_path']}/config.xml")

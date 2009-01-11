@@ -155,7 +155,7 @@ class FileChooser
 				$fileInfo['type'] = $this->cfg['simpleType'] ?
 					$this->get_extension("{$dir}/{$file}") :
 					mime_content_type("{$dir}/{$file}");
-				$fileInfo['size'] = @$this->get_file_size("{$dir}/{$file}");
+				$fileInfo['size'] = @get_filesize("{$dir}/{$file}");
 				$fileInfo['rowType'] = 'fl';
 				$fileArray[] = $fileInfo;
 			}
@@ -256,12 +256,6 @@ class FileChooser
 		}
 	}
 
-  function get_file_size($file)
-  {
-    // Fix PHP file size problem (see http://de.php.net/manual/en/function.filesize.php).
-    return @exec("stat -f %z " . escapeshellarg($file));
-  }
-
 	function get_folder_size($dir)
 	{
 		$size = 0;
@@ -271,7 +265,7 @@ class FileChooser
 					if(is_dir("{$dir}/{$file}")) {
 						$size += $this->get_folder_size("{$dir}/{$file}");
 					} else {
-						$size += @$this->get_file_size("{$dir}/{$file}");
+						$size += @get_filesize("{$dir}/{$file}");
 					}
 				}
 			}

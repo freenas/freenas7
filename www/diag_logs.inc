@@ -2,7 +2,7 @@
 /*
 	diag_logs.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -118,7 +118,7 @@ function logs_dump_ex($logfile, $entries, $columns, $withorig = true) {
 }
 
 function logs_download($logfile, $filename, $useclog = false) {
-	$fs = filesize($logfile);
+	$fs = get_filesize($logfile);
 	header("Content-Type: application/octet-stream");
 	header("Content-Disposition: attachment; filename={$filename}");
 	header("Content-Length: $fs");
