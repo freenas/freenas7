@@ -2,7 +2,7 @@
 /*
 	util.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1978,5 +1978,11 @@ function uuid() {
 		mt_rand(0, 0x0fff) | 0x4000,
 		mt_rand(0, 0x3fff) | 0x8000,
 		mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
+}
+
+// Get the file size in bytes.
+// Fix PHP file size problem (see http://de.php.net/manual/en/function.filesize.php).
+function get_filesize($file) {
+	return @exec("stat -f %z " . escapeshellarg($file));
 }
 ?>

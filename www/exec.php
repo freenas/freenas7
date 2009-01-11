@@ -16,7 +16,7 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	session_cache_limiter('public');
 	$fd = fopen($_POST['dlPath'], "rb");
 	header("Content-Type: application/octet-stream");
-	header("Content-Length: " . filesize($_POST['dlPath']));
+	header("Content-Length: " . get_filesize($_POST['dlPath']));
 	header("Content-Disposition: attachment; filename=\"" . trim(htmlentities(basename($_POST['dlPath']))) . "\"");
 
 	fpassthru($fd);

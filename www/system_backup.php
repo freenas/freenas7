@@ -3,7 +3,7 @@
 /*
 	system_backup.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -51,7 +51,7 @@ if ($_POST) {
 			config_lock();
 
 			$fn = "config-" . $config['system']['hostname'] . "." . $config['system']['domain'] . "-" . date("YmdHis") . ".xml";
-			$fs = filesize($g['conf_path'] . "/config.xml");
+			$fs = get_filesize($g['conf_path'] . "/config.xml");
 
 			header("Content-Type: application/octet-stream");
 			header("Content-Disposition: attachment; filename=$fn");
