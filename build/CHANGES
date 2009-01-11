@@ -98,6 +98,7 @@ Bug fixes:
 - Get SNMP module 'netgraph' working. Fixed by adding missing kernel modules.
 - Static IPv6 ifconfig is set correct now in rc.conf.
 - QuiXplorer incorrectly copies premissions (BR 2491739).
+- Filechooser reports incorrect file size for files > 2GB (BR 2499277).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
