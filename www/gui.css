@@ -303,3 +303,7 @@ div#cmdoutput {
 	color: #777777;
 	font-weight: bold;
 }
+div#enumeration ul {
+	margin: 0;
+	padding-left: 15px;
+}
