@@ -155,7 +155,7 @@ class FileChooser
 				$fileInfo['type'] = $this->cfg['simpleType'] ?
 					$this->get_extension("{$dir}/{$file}") :
 					mime_content_type("{$dir}/{$file}");
-				$fileInfo['size'] = @$this->get_filesize("{$dir}/{$file}");
+				$fileInfo['size'] = @$this->get_file_size("{$dir}/{$file}");
 				$fileInfo['rowType'] = 'fl';
 				$fileArray[] = $fileInfo;
 			}
@@ -239,14 +239,14 @@ class FileChooser
 
 	function format_size($bytes)
 	{
-		if(is_integer($bytes) && $bytes > 0)
+		if(is_numeric($bytes) && $bytes > 0)
 		{
 			$formats = array("%d Bytes","%.1f KB","%.1f MB","%.1f GB","%.1f TB");
-			$logsize = min((int)(log($bytes)/log(1024)), count($formats)-1);
+			$logsize = min(intval(log($bytes)/log(1024)), count($formats)-1);
 			return sprintf($formats[$logsize], $bytes/pow(1024, $logsize));
 		}
 		// is a folder without calculated size
-		else if(!is_integer($bytes) && $bytes == '-')
+		else if(!is_numeric($bytes) && $bytes == '-')
 		{
 			return '-';
 		}
@@ -256,10 +256,10 @@ class FileChooser
 		}
 	}
 
-  function get_filesize($file)
+  function get_file_size($file)
   {
     // Fix PHP file size problem (see http://de.php.net/manual/en/function.filesize.php).
-    return @intval(exec("stat -f %z " . escapeshellarg($file)));
+    return @exec("stat -f %z " . escapeshellarg($file));
   }
 
 	function get_folder_size($dir)
@@ -271,7 +271,7 @@ class FileChooser
 					if(is_dir("{$dir}/{$file}")) {
 						$size += $this->get_folder_size("{$dir}/{$file}");
 					} else {
-						$size += @$this->get_filesize("{$dir}/{$file}");
+						$size += @$this->get_file_size("{$dir}/{$file}");
 					}
 				}
 			}
