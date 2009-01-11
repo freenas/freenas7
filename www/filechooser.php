@@ -1,23 +1,23 @@
 <?
 /*
 	filechooser.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
-	
+
 	Parts of code are take from 'File Browser Class'
 	Copyright @ 2005 Gabriel Dunne
 	gdunne@quilime.com
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -155,7 +155,7 @@ class FileChooser
 				$fileInfo['type'] = $this->cfg['simpleType'] ?
 					$this->get_extension("{$dir}/{$file}") :
 					mime_content_type("{$dir}/{$file}");
-				$fileInfo['size'] = @filesize("{$dir}/{$file}");
+				$fileInfo['size'] = @$this->get_filesize("{$dir}/{$file}");
 				$fileInfo['rowType'] = 'fl';
 				$fileArray[] = $fileInfo;
 			}
@@ -241,7 +241,7 @@ class FileChooser
 	{
 		if(is_integer($bytes) && $bytes > 0)
 		{
-			$formats = array("%d bytes","%.1f kb","%.1f mb","%.1f gb","%.1f tb");
+			$formats = array("%d Bytes","%.1f KB","%.1f MB","%.1f GB","%.1f TB");
 			$logsize = min((int)(log($bytes)/log(1024)), count($formats)-1);
 			return sprintf($formats[$logsize], $bytes/pow(1024, $logsize));
 		}
@@ -256,6 +256,12 @@ class FileChooser
 		}
 	}
 
+  function get_filesize($file)
+  {
+    // Fix PHP file size problem (see http://de.php.net/manual/en/function.filesize.php).
+    return @intval(exec("stat -f %z " . escapeshellarg($file)));
+  }
+
 	function get_folder_size($dir)
 	{
 		$size = 0;
@@ -265,7 +271,7 @@ class FileChooser
 					if(is_dir("{$dir}/{$file}")) {
 						$size += $this->get_folder_size("{$dir}/{$file}");
 					} else {
-						$size += filesize("{$dir}/{$file}");
+						$size += @$this->get_filesize("{$dir}/{$file}");
 					}
 				}
 			}
@@ -512,7 +518,7 @@ EOD;
 			.filechooser { background-color: #fff; margin: 0px; padding: 0px; }
 			.filechooser table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
 			.filechooser td { padding: 10px; vertical-align: top; }
-			
+
 			.filechooser .filelist table { width:100%; }
 			.filechooser .filelist table tr td { padding:1px; font-size:12px; }
 			.filechooser .filelist table tr.fr_odd td,
@@ -548,7 +554,7 @@ EOD;
 			.filechooser .filelist table tr td.dt { border-right:1px solid #eee; }
 			/* footer row */
 			.filechooser .filelist table tr.footer td { border:0; font-weight:bold; }
-			
+
 			/* Navigation bar */
 			.filechooser .navbar { background-color: #eee; padding: 6px 9px; text-align:left; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
 			.filechooser .navbar .input { position:absolute; width:75%; }
