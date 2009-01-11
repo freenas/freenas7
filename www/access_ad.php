@@ -3,7 +3,7 @@
 /*
 	acces_ad.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -163,7 +163,7 @@ function enable_change(enable_change) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
 			  </div>
 			  <div id="remarks">
-			  	<?php html_remark("note", gettext("Note"), gettext("To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"));?>
+			  	<?php html_remark("note", gettext("Note"), gettext("To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<div id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul></div>"));?>
 			  </div>
 			</td>
 		</tr>
