@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-10 17:57+0000\n"
+"PO-Revision-Date: 2009-01-11 04:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -3780,7 +3780,7 @@ msgid "To get detailed informations about writing firewall rules check the FreeB
 msgstr ""
 
 #, php-format
-msgid "To increase CIFS performance try the following:<br/><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
