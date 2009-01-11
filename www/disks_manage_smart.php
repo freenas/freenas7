@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_manage_smart.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -197,13 +197,15 @@ function enable_change(enable_change) {
 								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
 								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['powermode']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
 								<?php endfor;?>
-							</select><br/>
-							<span class="vexpl">
-							<li><?=gettext("Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked.");?></li>
-							<li><?=gettext("Sleep - Check the device unless it is in SLEEP mode.");?></li>
-							<li><?=gettext("Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want.");?></li>
-							<li><?=gettext("Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want.");?></li>
-							</span>
+							</select>
+							<div id="enumeration">
+								<ul>
+									<li><?=gettext("Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked.");?></li>
+									<li><?=gettext("Sleep - Check the device unless it is in SLEEP mode.");?></li>
+									<li><?=gettext("Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want.");?></li>
+									<li><?=gettext("Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want.");?></li>
+								</ul>
+							</div>
 						</td>
 					</tr>
 					<?php html_separator();?>
