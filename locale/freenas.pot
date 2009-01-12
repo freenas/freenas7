@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-11 04:43+0000\n"
+"PO-Revision-Date: 2009-01-12 21:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,10 +24,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr ""
 
 #, php-format
-msgid "%s available of %sB"
-msgstr ""
-
-#, php-format
 msgid "%s interface"
 msgstr ""
 
@@ -41,10 +37,6 @@ msgstr ""
 
 #, php-format
 msgid "%s on %s (%dMHz)"
-msgstr ""
-
-#, php-format
-msgid "%s used of %sB"
 msgstr ""
 
 #, php-format
