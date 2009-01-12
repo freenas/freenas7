@@ -24,6 +24,7 @@ Majors changes:
 - Upgrade rsync to 3.0.5.
 - Upgrade cdialog to 1.1.20080316.
 - Upgrade msmtp to 1.4.17.
+- Add ability to create a SWAP partition during installation.
 
 Minors changes:
 - Set date in email-header when sending email.

@@ -1,11 +1,11 @@
 <?php
 /*
 	install.inc
-	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -78,70 +78,6 @@ function install_unmount_cd()
 	@rmdir($mntpath);
 
 	return $result;
-}
-
-// Create two partitions on the destination hard drive.
-// $harddrive - Disk name (e.g. ad0)
-// $size - Partition 1 size in MB
-// Return 0 if successful, otherwise 1
-function install_init2partdisk($harddrive, $size)
-{
-	write_console("Initialze disk '{$harddrive}':\n");
-
-	/* Initialize the destination disk with 2 partitions. */
-	if (1 == install_fdisk2partdisk($harddrive, $size)) {
-		write_console("Error: Failed to create partitions!\n");
-		return 1;
-	}
-
-	/* Must wait until /dev is updated with the new disk partition information. */
-	$devtotest="/dev/{$harddrive}s2";
-	$i=0;
-	while (!file_exists($devtotest)) {
-		sleep(1);
-		write_console(".");
-		$i++;
-		if (20 == $i) {
-			write_console("\nError: System not updated! Failed to find partition '{$devtotest}'.\n");
-			return 1;
-		}
-	}
-
-	/* Create disk label. */
-	write_console("Create BSD label on disk partition:");
-	write_console(" {$harddrive}s1");
-	if (install_bsdlabel("{$harddrive}s1")) {
-		write_console("Error: Failed to label '{$harddrive}s1'!\n");
-		return 1;
-	}
-	write_console(" {$harddrive}s2");
-	if (install_bsdlabel("{$harddrive}s2")) {
-		write_console("Error: Failed to label '{$harddrive}s2'!\n");
-		return 1;
-	}
-	write_console("\n");
-
-	/* Create filesystems. */
-	write_console("Create filesystem:");
-	write_console(" {$harddrive}s1");
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1")) {
-		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
-		return 1;
-	}
-	write_console(" {$harddrive}s2");
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s2")) {
-		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
-		return 1;
-	}
-	write_console("\n");
-
-	/* Create volume label on file system. */
-	if (mwexec("/sbin/tunefs -L Data /dev/{$harddrive}s2")) {
-		write_console("\nError: Failed to modify volume label on '/dev/{$harddrive}s2'!\n");
-		return 1;
-	}
-
-	return 0;
 }
 
 // Install the IMG on the destination harddrive.
@@ -400,47 +336,139 @@ function install_restore_config($disk)
 	return 0;
 }
 
-// Initialize harddrive. Use given size for partition 1, use the rest for partition 2.
-// $harddrive - Disk name (e.g. ad0)
-// $size - Partition 1 size in MB
+// Create two partitions on the destination hard drive.
+// $disk - Disk name (e.g. ad0)
+// $partlayout - The layout description of the disk, e.g.
+// array(
+//   array("slice" => 1, "fstype" => "4.2BSD", "size" => 64, "volname" => "root"),
+//   array("slice" => 2, "fstype" => "4.2BSD", "size" => "*", "volname" => "data"),
+//   array("slice" => 3, "fstype" => "swap", "size" => 200, "volname" => "")
+//   array("slice" => 4, "fstype" => "unused", "size" => 0, "volname" => "")
+// )
 // Return 0 if successful, otherwise 1
-function install_fdisk2partdisk($harddrive, $size)
+function install_init_disk($disk, $partlayout)
+{
+	// Initialize the destination using fdisk.
+	write_console("Create slice/partition table on device {$disk}.\n");
+	$slicesize = array(0, 0, 0, 0);
+	foreach ($partlayout as $partlayoutv) {
+		$slicesize[$partlayoutv['slice'] - 1] = $partlayoutv['size'];
+	}
+	if (install_fdisk($disk, $slicesize)) {
+		write_console("Error: Failed to create slice/partition table!\n");
+		return 1;
+	}
+
+	// Create disk labels.
+	write_console("Create BSD label on slice/partition:");
+	foreach ($partlayout as $partlayoutv) {
+		$diskdevicename = "{$disk}s{$partlayoutv['slice']}";
+
+		write_console(" {$diskdevicename}");
+		if (install_bsdlabel($diskdevicename, $partlayoutv['fstype'])) {
+			write_console("\nError: Failed to create BSD label on {$diskdevicename}!\n");
+			return 1;
+		}
+	}
+	write_console("\n");
+
+	// Create file systems and set volume label.
+	write_console("Create file system on slice/partition:");
+	foreach ($partlayout as $partlayoutv) {
+		// Do not create a file system for swap/unused partitions.
+		if ("swap" === $partlayoutv['fstype'] || "unused" === $partlayoutv['fstype'])
+			continue;
+
+		$diskdevicename = "{$disk}s{$partlayoutv['slice']}";
+
+		write_console(" {$diskdevicename}");
+		if (install_newfs($diskdevicename, $partlayoutv['volname'])) {
+			write_console("\nError: Failed to create file system on {$diskdevicename}!\n");
+			return 1;
+		}
+	}
+	write_console("\n");
+
+	return 0;
+}
+
+// Initialize harddrive. It creates the root (p1), data (p2) and swap (p3) partitions.
+// $disk - Disk name (e.g. ad0)
+// $slicesize - Array containing the size of each slice in MB, e.g. array(64, 100, *, 0)
+// Return 0 if successful, otherwise 1
+function install_fdisk($disk, $slicesize)
 {
 	global $g;
 
-	write_console("Create slice table.\n");
+	$slicetable = array(
+		array("slice" => 1, "type" => 0, "start" => 0, "length" => 0),
+		array("slice" => 2, "type" => 0, "start" => 0, "length" => 0),
+		array("slice" => 3, "type" => 0, "start" => 0, "length" => 0),
+		array("slice" => 4, "type" => 0, "start" => 0, "length" => 0)
+	);
+	$activeslice = 0;
 
-	// Get disk information
-	$diskinfo = disks_get_diskinfo($harddrive);
+	// Get disk informations
+	$diskinfo = disks_get_diskinfo($disk);
 
 	// Get valid CHS information. 'diskinfo' gets values from harddisk firmware that
 	// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63).
 	disk_sanitize_bios_geom($diskinfo);
 
-	// Check available disk space
-	if ($diskinfo['mediasize_mbytes'] <= $size) {
-		write_console("Error: Not enough space available on disk {$diskinfo['name']}.\n");
+	// Calculate the size of the slices
+	$usedsectors = 0;
+	foreach ($slicesize as $slicesizek => $slicesizev) {
+		if (is_numeric($slicesizev)) {
+			$bytes = $slicesizev * 1024 * 1024;
+			$slicetable[$slicesizek]['length'] = $bytes / $diskinfo['sectorsize'];
+
+			// Sum total used sectors
+			$usedsectors += $slicetable[$slicesizek]['length'];
+		}
+	}
+	foreach ($slicesize as $slicesizek => $slicesizev) {
+		if ("*" === $slicesizev) { // Use the rest of the disk space for this slice.
+			$slicetable[$slicesizek]['length'] = $diskinfo['mediasize_sectors'] - $usedsectors;
+			// Stop processing here (only one '*' is accepted and processed)
+			break;
+		}
+	}
+
+	// Check if partition layout fit disk size
+	if ($diskinfo['mediasize_sectors'] <= $usedsectors) {
+		write_console("Error: Partition layout does not fit on disk {$diskinfo['name']}.\n");
+		write_console("  Requested sectors: {$usedsectors}\n");
+		write_console("  Available sectors: {$diskinfo['mediasize_sectors']}\n");
+		write_console("  Layout: ");
+		foreach ($slicesize as $slicesizev)
+			write_console(" {$slicesizev}");
+		write_console("\n");
 		return 1;
 	}
 
-	// Setting partition size to $size (in MB)
-	$part1_size_mbytes = $size;
-	$part1_size_bytes = $part1_size_mbytes * 1024 * 1024;
+	// Calculate slice start sectors and type
+	$startsector = 1;
+	foreach ($slicesize as $slicesizek => $slicesizev) {
+		if ( 0 >= $slicetable[$slicesizek]['length'])
+			continue;
 
-	// Calculate partition sector sizes
-	$part1_size_sectors = $part1_size_bytes / $diskinfo['sectorsize'];
-	$part2_size_sectors = $diskinfo['mediasize_sectors'] - $part1_size_sectors;
+		// Set the first found slice with length > 0 as active
+		if (0 == $activeslice)
+			$activeslice = $slicesizek + 1;
+
+		$slicetable[$slicesizek]['type'] = 165;
+		$slicetable[$slicesizek]['start'] = $startsector;
+
+		// Calculate start of next slice
+		$startsector += $slicetable[$slicesizek]['length'] + 1;
+	}
 
 	// Create fdisk config file (fdisk.conf)
-	$fdiskconf .= <<<EOD
-g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
-p 1 165 1 $part1_size_sectors
-p 2 165 $part1_size_sectors $part2_size_sectors
-p 3 0 0 0
-p 4 0 0 0
-a 1
-
-EOD;
+	$fdiskconf = "g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}\n";
+	for ($i = 0; $i < 4; ++$i) {
+		$fdiskconf .= "p {$slicetable[$i]['slice']} {$slicetable[$i]['type']} {$slicetable[$i]['start']} {$slicetable[$i]['length']}\n";
+	}
+	$fdiskconf .= "a {$activeslice}\n";
 
 	if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
 		write_console("Error: Failed to create '{$g['tmp_path']}/fdisk.conf'.\n");
@@ -448,22 +476,20 @@ EOD;
 	}
 
 	// Completely wipe any prior information on the disk
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$harddrive} bs=512 count=32")) {
-		write_console("Error: Failed to wipe any prior information on the disk '{$harddrive}'.\n");
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=32")) {
+		write_console("Error: Failed to wipe any prior information on disk '{$disk}'.\n");
 		return 1;
 	}
 
 	// Set slice values
-	if (mwexec("/sbin/fdisk -f {$g['tmp_path']}/fdisk.conf {$harddrive}")) {
-		write_console("Error: Failed to set partitions on the disk '{$harddrive}'.\n");
+	if (mwexec("/sbin/fdisk -f {$g['tmp_path']}/fdisk.conf {$disk}")) {
+		write_console("Error: Failed to write slice table on disk '{$disk}'.\n");
 		return 1;
 	}
 
-	write_console("Install boot code.\n");
-
 	// Reinitialize the boot code contained in sector 0 of the disk
-	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
-		write_console("Error: Failed to reinitialize the boot code on disk '{$harddrive}'!\n");
+	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$disk}")) {
+		write_console("Error: Failed to reinitialize the boot code on disk '{$disk}'!\n");
 		return 1;
 	}
 
@@ -471,25 +497,27 @@ EOD;
 }
 
 // Create disk label.
+// $disk - Disk name (e.g. ad0s1)
+// $fstype - The file system type (e.g. 4.2BSD or swap)
 // Return 0 if successful, otherwise 1
-function install_bsdlabel($harddrive)
+function install_bsdlabel($disk, $fstype)
 {
 	global $g;
 
 	// Completely wipe any prior information on the partition
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$harddrive} bs=512 count=32")) {
-		write_console("Error: Failed to wipe any prior information on the partition '{$harddrive}'.\n");
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=32")) {
+		write_console("\nError: Failed to wipe any prior information on {$disk}.\n");
 		return 1;
 	}
 
 	// Do an automatic label first
-	if (mwexec("/sbin/bsdlabel -w -B {$harddrive}")) {
+	if (mwexec("/sbin/bsdlabel -w -B {$disk}")) {
 		write_console("\nError: Failed to write standard label.\n");
 		return 1;
 	}
 
 	// Read the label to manipulate it
-	exec("/sbin/bsdlabel {$harddrive} > {$g['tmp_path']}/label.tmp", $output, $result);
+	exec("/sbin/bsdlabel {$disk} > {$g['tmp_path']}/label.tmp", $output, $result);
 	if ($result) {
 		write_console("\nError: Failed to backup label.\n");
 		return 1;
@@ -505,7 +533,7 @@ function install_bsdlabel($harddrive)
 		if (ereg ("unused",$val)) {
 			$val = ereg_replace("c:", "a:", $val);
 			// Peplacing unused by $type
-			$val = ereg_replace("unused", "4.2BSD", $val);
+			$val = ereg_replace("unused", $fstype, $val);
 			// Adding this line add the end of the file
 			fwrite($fd, $val);
 		}
@@ -515,13 +543,29 @@ function install_bsdlabel($harddrive)
 	fclose($fd);
 
 	// Injecting modified label
-	if (mwexec("/sbin/bsdlabel -R -B {$harddrive} {$g['tmp_path']}/label.tmp")) {
+	if (mwexec("/sbin/bsdlabel -R -B {$disk} {$g['tmp_path']}/label.tmp")) {
 		write_console("\nError: Failed to write modified label.\n");
 		return 1;
 	}
 
 	// Cleanup
 	unlink("{$g['tmp_path']}/label.tmp");
+
+	return 0;
+}
+
+// Create new file system on disk.
+// $disk - Disk name (e.g. ad0s1)
+// $volname - The new volume label (e.g. 'data')
+// Return 0 if successful, otherwise 1
+function install_newfs($disk, $volname) {
+	$param = "-U -b 16384 -f 2048";
+	if (!empty($volname))
+		$param .= " -L \"{$volname}\"";
+
+	if (mwexec("/sbin/newfs {$param} /dev/{$disk}")) {
+		return 1;
+	}
 
 	return 0;
 }
