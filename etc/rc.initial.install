@@ -2,7 +2,7 @@
 
 # /etc/rc.initial
 # part of FreeNAS (http://www.freenas.org)
-# Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>
+# Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>
 # All rights reserved.
 
 tmpfile=`tmpfile 2>/dev/null` || tmpfile=/tmp/tui$$
@@ -10,10 +10,10 @@ trap "rm -f $tmpfile" 0 1 2 5 15
 
 # Endless loop
 while : ; do
-	cdialog --clear --title "Install & Upgrade" --cancel-label "Exit" --menu "" 12 66 6 \
+	cdialog --clear --title "Install & Upgrade" --cancel-label "Exit" --menu "" 12 73 6 \
 		"1" "Install 'embedded' OS on HDD/Flash/USB" \
-		"2" "Install 'embedded' OS on HDD/Flash/USB + data partition" \
-		"3" "Install 'full' OS on HDD + data partition" \
+		"2" "Install 'embedded' OS on HDD/Flash/USB + DATA + SWAP partition" \
+		"3" "Install 'full' OS on HDD + DATA + SWAP partition" \
 		"4" "Upgrade 'embedded' OS from CDROM" \
 		"5" "Upgrade 'full' OS from CDROM" \
 		"6" "Upgrade and convert 'full' OS to 'embedded'" 2> $tmpfile
