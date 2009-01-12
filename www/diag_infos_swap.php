@@ -3,7 +3,7 @@
 /*
 	diag_infos_swap.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -65,7 +65,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
 				</tr>
 				<tr>
 			    <td>
-			    	<?php if (!isset($config['system']['swap_enable'])):?>
+			    	<?php if (!isset($config['system']['swap']['enable'])):?>
 			    	<pre><?=gettext("Swap disabled");?></pre>
 			    	<?php else:?>
 			    	<pre><?php system("/usr/sbin/swapinfo");?></pre>
