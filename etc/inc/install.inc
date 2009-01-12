@@ -360,20 +360,19 @@ function install_init_disk($disk, $partlayout)
 	}
 
 	// Create disk labels.
-	write_console("Create BSD label on slice/partition:");
+	write_console("Create BSD label on slice/partition:\n");
 	foreach ($partlayout as $partlayoutv) {
 		$diskdevicename = "{$disk}s{$partlayoutv['slice']}";
 
-		write_console(" {$diskdevicename}");
+		write_console("  {$diskdevicename}\n");
 		if (install_bsdlabel($diskdevicename, $partlayoutv['fstype'])) {
 			write_console("\nError: Failed to create BSD label on {$diskdevicename}!\n");
 			return 1;
 		}
 	}
-	write_console("\n");
 
 	// Create file systems and set volume label.
-	write_console("Create file system on slice/partition:");
+	write_console("Create file system on slice/partition:\n");
 	foreach ($partlayout as $partlayoutv) {
 		// Do not create a file system for swap/unused partitions.
 		if ("swap" === $partlayoutv['fstype'] || "unused" === $partlayoutv['fstype'])
@@ -381,13 +380,12 @@ function install_init_disk($disk, $partlayout)
 
 		$diskdevicename = "{$disk}s{$partlayoutv['slice']}";
 
-		write_console(" {$diskdevicename}");
+		write_console("  {$diskdevicename}\n");
 		if (install_newfs($diskdevicename, $partlayoutv['volname'])) {
 			write_console("\nError: Failed to create file system on {$diskdevicename}!\n");
 			return 1;
 		}
 	}
-	write_console("\n");
 
 	return 0;
 }
