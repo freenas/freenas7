@@ -532,7 +532,7 @@ function install_bsdlabel($disk, $fstype)
 	while(list(,$val) = each($label)) {
 		if (ereg ("unused",$val)) {
 			$val = ereg_replace("c:", "a:", $val);
-			// Peplacing unused by $type
+			// Replace 'unused' with '$fstype'
 			$val = ereg_replace("unused", $fstype, $val);
 			// Adding this line add the end of the file
 			fwrite($fd, $val);
