@@ -81,8 +81,8 @@ function update_controls() {
 			$devswap = array();
 			$devswap['id']  = $id;
 			$devswap['percentage']  = rtrim($swap['capacity'],"%");
-			$devswap['tooltip']['used'] = sprintf(gettext("%s used of %sB"), $swap['used'], $swap['total']);
-			$devswap['tooltip']['available']  = sprintf(gettext("%s available of %sB"), $swap['avail'], $swap['total']);
+			$devswap['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
+			$devswap['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
 			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
 			$value['swapusage'][]= $devswap;
 		}
