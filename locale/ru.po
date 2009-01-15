@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 12:46+0000\n"
-"PO-Revision-Date: 2009-01-06 14:12+0000\n"
+"POT-Creation-Date: 2009-01-12 21:42+0000\n"
+"PO-Revision-Date: 2009-01-13 16:26+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-10 14:16+0000\n"
+"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -32,10 +32,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "Предлагать %s в качестве сервера времени для клиентов Windows."
 
 #, php-format
-msgid "%s available of %sB"
-msgstr "%s доступно из %s байт"
-
-#, php-format
 msgid "%s interface"
 msgstr "%s интерфейс"
 
@@ -50,10 +46,6 @@ msgstr "%s из %s байт"
 #, php-format
 msgid "%s on %s (%dMHz)"
 msgstr "%s из %s (%dMHz)"
-
-#, php-format
-msgid "%s used of %sB"
-msgstr "%s использовано из %s байт"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -1505,7 +1497,7 @@ msgid "Enable store DOS attributes"
 msgstr "Включить хранение атрибутов DOS"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Разрешить отпраку журналов на удаленный syslog-сервер"
+msgstr "Разрешить отправку журналов на удаленный syslog-сервер"
 
 msgid "Enable the ident protocol (RFC1413)."
 msgstr "Разрешить протокол идентификации (RFC1413)"
@@ -1654,7 +1646,7 @@ msgid ""
 msgstr ""
 "Дополнительные настройки в файле /etc/ssh/sshd_config (обычно пусто). "
 "Помните, что некорректные настройки могут привести к невозможности запуска "
-"сервиса SSH."
+"службы SSH."
 
 msgid "Extra options to ifconfig (usually empty)."
 msgstr "Дополнительные настройки ifconfig (обычно пусто)."
@@ -1759,8 +1751,8 @@ msgid ""
 "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 "used as extent."
 msgstr ""
-"Путь к файлу (напр. /mnt/sharename/extent/%s) или имя устройства (напр. "
-"/dev/ad1), используемого как экстент."
+"Путь к файлу (например, /mnt/sharename/extent/%s) или имя устройства "
+"(например, /dev/ad1), используемого как экстент."
 
 msgid "File size"
 msgstr "Размер файла"
@@ -2549,9 +2541,6 @@ msgstr ""
 "Смонтировать файловую систему только для чтения (возможности записи не будет "
 "даже у суперпользователя)."
 
-msgid "Mount to use for swap"
-msgstr "Смонтировать для использования файла подкачки"
-
 msgid "Mounting device."
 msgstr "Монтирование устройства."
 
@@ -2578,7 +2567,12 @@ msgstr "Имя"
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
-msgstr "Имя хоста NAS без доменной части (например %s)."
+msgstr "Имя хоста NAS без доменной части (например, %s)."
+
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
+msgstr ""
+"Имя устройства, используемого как устройство подкачки (например, %s)."
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2648,7 +2642,7 @@ msgid ""
 "may cause problems."
 msgstr ""
 "Не все сетевые карты поддерживают корректные метки 802.1Q VLAN. На таких "
-"картах метки VLAN будут работать, но уменьшенный размер MTU может вызвать "
+"картах метки VLAN будут работать, но уменьшение размера MTU может вызвать "
 "проблемы."
 
 msgid "Not attached"
@@ -3617,12 +3611,6 @@ msgstr "Файл подкачки"
 msgid "Swap disabled"
 msgstr "Подкачка отключена."
 
-msgid "Swap file"
-msgstr "Файл подкачки"
-
-msgid "Swap file size"
-msgstr "Размер файла подкачки"
-
 msgid "Swap memory"
 msgstr "Файл подкачки"
 
@@ -3885,11 +3873,12 @@ msgid ""
 "order for a matching rule. When a match is found the rule is applied and the "
 "search process will halt."
 msgstr ""
-"Конфигурация обычно задается в форме 'демон : адрес : действие'. Имя демона "
-"стартуемой службы задается в поле 'демон'. В поле 'адрес' могут быть заданы "
-"действительные имена хостов, а также IPv4- или IPv6-адреса, заключенные в "
-"квадратные скобки. Поле 'действие' может принимать значения 'allow' или "
-"'deny', что соответствующим образом разрешает или отказывает в доступе. "
+"Конфигурация обычно задается в форме 'daemon : address : action'.<br>\n"
+"Имя демона стартуемой службы задается в поле 'daemon'. В поле 'address' "
+"могут быть заданы действительные имена хостов, а также IPv4- или IPv6-"
+"адреса, заключенные в квадратные скобки. Поле 'action' может принимать "
+"значения 'allow' или 'deny', что соответствующим образом разрешает или "
+"отказывает в доступе.<br>\n"
 "Имейте в виду, что конфигурация работает до первого совпадающего правила. "
 "Это означает, что конфигурационный файл сканируется по возрастанию в поисках "
 "соответствующего правила. Когда совпадение находится, применяется найденное "
@@ -4101,6 +4090,9 @@ msgstr "Serial- или USB-порт, к которому подключен ва
 
 msgid "The share name is already used."
 msgstr "Имя общего ресурса уже используется."
+
+msgid "The size of the swap file in MB."
+msgstr "Объем файла подкачки, Мбайт."
 
 msgid "The subject of the email."
 msgstr "Тема письма."
@@ -4575,28 +4567,30 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
-"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
-"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+"To increase CIFS performance try the following:<div "
+"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+"href='%s'>Tuning</a>' switch</li><li>Increase <a "
+"href='%s'>MTU</a></li></ul></div>"
 msgstr ""
-"Чтобы увеличить производительность CIFS, попробуйте сделать "
-"следующее:<br/><ul><li>Разрешите параметр 'Чтение/запись большими "
-"блоками'</li><li>Разрешите параметр <a href='%s'>'Детальная "
-"настройка'</a></li><li>Увеличьте размер <a href='%s'>MTU</a></li></ul>"
+"Чтобы увеличить производительность службы CIFS/SMB, попробуйте сделать "
+"следующее:<div id='enumeration'><ul><li>Разрешите параметр 'Чтение/запись "
+"большими блоками'</li><li>Разрешите параметр '<a href='%s'>Настройка</a>' "
+"для настройки некоторых переменных ядра</li><li>Увеличьте размер <a "
+"href='%s'>MTU</a></li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr "Для применения ко всем IP-адресам оставьте это поле пустым."
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD "
-"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
-"<li>System</li></ul>"
+"following services will use AD authentication:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 msgstr ""
-"При использовании Active Directory сервис CIFS/SMB будет тоже включен. "
-"Следующие сервисы будут использовать авторизацию "
-"AD:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</"
-"li></ul>"
+"При использовании Active Directory служба CIFS/SMB будет тоже включена. "
+"Следующие службы будут использовать авторизацию AD:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 
 msgid "Tools"
 msgstr "Инструменты"
@@ -4643,7 +4637,7 @@ msgid "Tuning"
 msgstr "Настройка"
 
 msgid "Type"
-msgstr "Среда передачи"
+msgstr "Тип"
 
 #, php-format
 msgid ""
@@ -4739,7 +4733,7 @@ msgid "Update period"
 msgstr "Интервал обновления"
 
 msgid "Updating in 5 seconds."
-msgstr "Обновляется через 5 секунд."
+msgstr "Обновляется каждые 5 секунд"
 
 msgid "Upgrade firmware"
 msgstr "Обновить прошивку"
@@ -4809,8 +4803,8 @@ msgid ""
 "guest service. This user must exist in the password file, but does not "
 "require a valid login."
 msgstr ""
-"Использование этой настройки заменяет имя по умолчанию ('ftp'), которое "
-"будет использоваться для гостевого доступа к сервису. Права у такого "
+"Использование этой настройки заменяет имя по умолчанию ('ftp'). Оно будет "
+"использоваться для гостевого доступа к сервису, и права у такого "
 "пользователя будут как у гостевого. Этот пользователь должен существовать в "
 "файле паролей, но от него не требуется корректного входа."
 
@@ -5430,11 +5424,17 @@ msgstr "дней недели"
 #~ msgid "Zeroconf"
 #~ msgstr "Служба ZeroConf"
 
+#~ msgid "Swap file"
+#~ msgstr "Файл подкачки"
+
 #~ msgid "Swap size"
 #~ msgstr "Размер подкачки"
 
 #~ msgid "mount share"
 #~ msgstr "монтировать общий ресурс"
+
+#~ msgid "Swap file size"
+#~ msgstr "Размер файла подкачки"
 
 #~ msgid "A valid gateway must be specified."
 #~ msgstr "Должен быть указан корректный шлюз."

@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 12:46+0000\n"
+"POT-Creation-Date: 2009-01-12 21:42+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
+"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -59,10 +59,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "設定%s成為Windows客戶端的時間伺服器。"
 
 #, php-format
-msgid "%s available of %sB"
-msgstr "%s available of %sB"
-
-#, php-format
 msgid "%s interface"
 msgstr "%s 介面"
 
@@ -77,10 +73,6 @@ msgstr "%s of %sB"
 #, php-format
 msgid "%s on %s (%dMHz)"
 msgstr ""
-
-#, php-format
-msgid "%s used of %sB"
-msgstr "%s used of %sB"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -2430,9 +2422,6 @@ msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr "以唯讀模式掛載（超級使用者也無法寫入）。"
 
-msgid "Mount to use for swap"
-msgstr "Swap所使用的掛載點"
-
 msgid "Mounting device."
 msgstr "裝置掛載中。"
 
@@ -2460,6 +2449,10 @@ msgstr "名稱"
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr "NAS 主機的名稱，不包含網域的名稱。例：%s。"
+
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -3442,12 +3435,6 @@ msgstr "Swap 分割區："
 msgid "Swap disabled"
 msgstr "關閉 Swap"
 
-msgid "Swap file"
-msgstr "Swap檔"
-
-msgid "Swap file size"
-msgstr "Swap檔案大小"
-
 msgid "Swap memory"
 msgstr "Swap記憶體"
 
@@ -3886,6 +3873,9 @@ msgstr "您的 UPS 連接的序列埠或 USB 埠。"
 msgid "The share name is already used."
 msgstr "此分享名稱已經被使用了。"
 
+msgid "The size of the swap file in MB."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr "這封 email 的主旨。"
 
@@ -4304,9 +4294,10 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
-"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
-"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+"To increase CIFS performance try the following:<div "
+"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+"href='%s'>Tuning</a>' switch</li><li>Increase <a "
+"href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -4314,13 +4305,10 @@ msgstr ""
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD "
-"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
-"<li>System</li></ul>"
+"following services will use AD authentication:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 msgstr ""
-"一旦使用 AD，CIFS/SMB 服務也會一同啟用。下列的服務也會使用 AD "
-"認證：<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</"
-"li></ul>"
 
 msgid "Tools"
 msgstr "工具"
@@ -5092,8 +5080,17 @@ msgstr "平常日"
 #~ msgid "Zeroconf"
 #~ msgstr "ZeroConf"
 
+#~ msgid "Swap file"
+#~ msgstr "Swap檔"
+
 #~ msgid "mount share"
 #~ msgstr "分享之掛載點"
+
+#~ msgid "Mount to use for swap"
+#~ msgstr "Swap所使用的掛載點"
+
+#~ msgid "Swap file size"
+#~ msgstr "Swap檔案大小"
 
 #~ msgid "Assign network ports"
 #~ msgstr "指派通訊埠"
@@ -6134,3 +6131,21 @@ msgstr "平常日"
 
 #~ msgid "type"
 #~ msgstr "類別"
+
+#, php-format
+#~ msgid "%s available of %sB"
+#~ msgstr "%s available of %sB"
+
+#, php-format
+#~ msgid "%s used of %sB"
+#~ msgstr "%s used of %sB"
+
+#~ msgid ""
+#~ "To use Active Directory the CIFS/SMB service will enabled, too. The "
+#~ "following services will use AD "
+#~ "authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
+#~ "<li>System</li></ul>"
+#~ msgstr ""
+#~ "一旦使用 AD，CIFS/SMB 服務也會一同啟用。下列的服務也會使用 AD "
+#~ "認證：<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</"
+#~ "li></ul>"
