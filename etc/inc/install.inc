@@ -213,12 +213,18 @@ function install_upgrade_full($harddrive)
 	}
 
 	// Backup system files
-	write_console("Backup system configuration files.\n");
+	write_console("Backup system configuration.\n");
 	mwexec("/bin/mkdir -p {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/boot/loader.conf {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/etc/platform {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/etc/fstab {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/etc/cfdevice {$sysbackup}");
+
+	// Start upgrade script to remove obsolete files. This should be done
+	// before system is updated because it may happen that some files
+	// may be reintroduced in the system.
+	write_console("Remove obsolete files.\n");
+	mwexec("/etc/install/upgrade.sh clean {$mntpath}");
 
 	// Install system files
 	write_console("Installing system files on device {$harddrive}s1.\n");
@@ -236,7 +242,7 @@ function install_upgrade_full($harddrive)
 	mwexec("/usr/bin/gzip -d -f {$mntpath}/boot/kernel/kernel.gz");
 
 	// Restore system files
-	write_console("Restore system configuration files.\n");
+	write_console("Restore system configuration.\n");
 	mwexec("/bin/cp -p {$sysbackup}/loader.conf {$mntpath}/boot");
 	mwexec("/bin/cp -p {$sysbackup}/platform {$mntpath}/etc");
 	mwexec("/bin/cp -p {$sysbackup}/fstab {$mntpath}/etc");
@@ -244,10 +250,6 @@ function install_upgrade_full($harddrive)
 
 	// Cleanup system backup files
 	mwexec("/bin/rm -f -r {$sysbackup}");
-
-	// Start upgrade script to remove obsolete files.
-	write_console("Remove obsolete files.\n");
-	mwexec("/etc/install/upgrade.sh clean {$mntpath}");
 
 	// Unmount disk containing OS
 	mwexec("/sbin/umount {$mntpath}");
