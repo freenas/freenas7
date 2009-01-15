@@ -15,16 +15,21 @@ Majors changes:
   installations by modifying the rc.conf variable named 'varsize'. This is
   necessary if you are running out of file space for *.tdb files (this normally
   happens on heavy Samba share usage with many users). The default size is 32MB.
-- Replace FTP server pure-ftpd 1.0.21 with proftpd 1.3.2rc3.
+- Replace FTP server pure-ftpd 1.0.21 with proftpd 1.3.2rc3. Please note that
+  there can be set additional options via rc.conf variables which are not
+  displayed in the service WebGUI. Please have a look into /etc/rc.d/proftpd
+  script for a detailed list of options.
 - Add TCP Wrappers. All applications linked against libwrap support this
-  feature, for example FreeNAS services like FTP, TFTP, SSH, NFS... The rules
-  can be configured via WebGUI 'Network|Hosts'.
+  feature, for example services like FTP, TFTP, SSH, NFS... The rules can be
+  configured via WebGUI 'Network|Hosts'.
 - Upgrade ATAidle to 2.4.
 - Upgrade transmission to 1.42.
 - Upgrade rsync to 3.0.5.
 - Upgrade cdialog to 1.1.20080316.
 - Upgrade msmtp to 1.4.17.
 - Add ability to create a SWAP partition during installation.
+- Enhance the 'System|Advanced|Swap' page to select a file or disk device as
+  swap space.
 
 Minors changes:
 - Set date in email-header when sending email.
@@ -46,7 +51,6 @@ Minors changes:
   The frequency levels are displayed as tooltips. Please note that these values
   are not displayed if FreeBSD is not able to get these hardware informations
   via sysctl.
-- Add ability to configure a disk device as swap device via WebGUI.
 
 Bug fixes:
 - TFTP not present in "Services|Status" menu (BR 2397240).
@@ -65,7 +69,7 @@ Bug fixes:
 - Get SNMP module 'netgraph' working. Fixed by adding missing kernel modules.
 - Static IPv6 ifconfig is set correct now in rc.conf.
 - QuiXplorer incorrectly copies premissions (BR 2491739).
-- Filechooser reports incorrect file size for files > 2GB (BR 2499277).
+- WebGUI filechooser reports incorrect file size for files > 2GB (BR 2499277).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
