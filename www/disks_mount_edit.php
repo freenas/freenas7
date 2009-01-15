@@ -3,7 +3,7 @@
 /*
 	disks_mount_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -89,12 +89,12 @@ if ($_POST) {
 	switch($_POST['type']) {
 		case "disk":
 			$reqdfields = explode(" ", "mdisk partition fstype sharename");
-			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Name"));
+			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Share name"));
 			break;
 
 		case "iso":
 			$reqdfields = explode(" ", "filename sharename");
-			$reqdfieldsn = array(gettext("Filename"), gettext("Name"));
+			$reqdfieldsn = array(gettext("Filename"), gettext("Share name"));
 			break;
 	}
 
