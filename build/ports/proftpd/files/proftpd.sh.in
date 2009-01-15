@@ -54,6 +54,7 @@ proftpd_tcpaccesssysloglevels=${proftpd_tcpaccesssysloglevels:-"info warn"}
 proftpd_tcpservicename=${proftpd_tcpservicename:-"ftpd"}
 proftpd_moddelay_enable=${proftpd_moddelay_enable:-"YES"}
 proftpd_modwrap_enable=${proftpd_modwrap_enable:-"YES"}
+proftpd_usereversedns=${proftpd_usereversedns:-"on"}
 command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
@@ -131,6 +132,7 @@ mkconf_cmd()
 		-i "count(identlookups) = 0" \
 			-o "IdentLookups off" -n \
 		-b \
+		-o "UseReverseDNS ${proftpd_usereversedns}" -n \
 		-i "count(localusersonly) = 0" \
 			-n \
 			-o "&lt;Anonymous ${proftpd_anonymousrootdir}&gt;" -n \
