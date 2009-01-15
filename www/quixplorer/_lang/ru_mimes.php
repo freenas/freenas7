@@ -1,60 +1,62 @@
 <?php
 
 // Russian Mimes Module (translated by Mikhail M. Pigulsky - mikhail@mikhail.pp.ru)
+// Reviewed by Alexey P. Sannikov 
+// QuiXplorer Version 2.3.2
 
 $GLOBALS["mimes"]=array(
       // dir, exe, file
-      "dir"      => "Директория",
-      "exe"      => "Исполняемый файл",
+      "dir"       => "Каталог",
+      "exe"       => "Файл",
       "file"      => "Файл",
 
       // text
       "text"      => "Текстовый файл",
       
       // programming
-      "php"      => "PHP скрипт",
-      "sql"      => "файл SQL",
-      "perl"      => "PERL скрипт",
-      "html"      => "страница HTML",
-      "js"      => "файл Javascript",
-      "css"      => "CSS стиль",
-      "cgi"      => "CGI скрипт",
+      "php"       => "PHP-скрипт",
+      "sql"       => "SQL-файл",
+      "perl"      => "PERL-скрипт",
+      "html"      => "HTML-страница",
+      "js"        => "JavaScript-файл",
+      "css"       => "CSS-стиль",
+      "cgi"       => "CGI-скрипт",
       // C++
-      "cpps"      => "исходный код C++",
-      "cpph"      => "заголовок кода C++",
+      "cpps"      => "Исходный код C++",
+      "cpph"      => "Заголовок кода C++",
       // Java
-      "javas"      => "исходный код Java",
-      "javac"      => "исходный код Java class",
+      "javas"     => "Исходный код Java",
+      "javac"     => "Исходный код Java class",
       // Pascal
-      "pas"      => "файл Pascal",
+      "pas"       => "Исходный код Pascal",
       
       // images
-      "gif"      => "изображение GIF",
-      "jpg"      => "изображение JPG",
-      "bmp"      => "изображение BMP",
-      "png"      => "изображение PNG",
+      "gif"       => "Изображение GIF",
+      "jpg"       => "Изображение JPG",
+      "bmp"       => "Изображение BMP",
+      "png"       => "Изображение PNG",
       
       // compressed
-      "zip"      => "архив ZIP",
-      "tar"      => "архив TAR",
-      "gzip"      => "архив GZIP",
-      "bzip2"      => "архив BZIP2e",
-      "rar"      => "архив RAR",
+      "zip"       => "Архив ZIP",
+      "tar"       => "Архив TAR",
+      "gzip"      => "Архив GZIP",
+      "bzip2"     => "Архив BZIP2",
+      "rar"       => "Архив RAR",
       
       // music
-      "mp3"      => "файл MP3",
-      "wav"      => "файл WAV",
-      "midi"      => "файл MIDI",
-      "real"      => "файл RealAudio",
+      "mp3"       => "Файл MP3",
+      "wav"       => "Файл WAV",
+      "midi"      => "Файл MIDI",
+      "real"      => "Файл RealAudio",
       
       // movie
-      "mpg"      => "видео-файл MPG",
-      "mov"      => "видео-файл Movie",
-      "avi"      => "видео-файл AVI",
-      "flash"      => "Flash файл",
+      "mpg"       => "Видеофайл MPG",
+      "mov"       => "Видеофайл Movie",
+      "avi"       => "Видеофайл AVI",
+      "flash"     => "Файл Flash",
       
       // Micosoft / Adobe
-      "word"      => "документ Word",
-      "excel"      => "документ Excel",
-      "pdf"      => "файл PDF"
+      "word"      => "Документ Word",
+      "excel"     => "Документ Excel",
+      "pdf"       => "Файл PDF"
 ); ?>
