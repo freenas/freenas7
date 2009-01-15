@@ -115,7 +115,7 @@ install_unmount_cd();
 // Display final message
 $text = <<<EOD
 
-{$productname} OS has been installed on {$harddrive}.
+{$productname} has been installed on {$harddrive}.
 You can now remove the CDROM and reboot the PC.
 EOD;
 

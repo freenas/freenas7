@@ -155,7 +155,7 @@ install_unmount_cd();
 // Display final message
 $text = <<<EOD
 
-{$productname} OS has been installed on {$harddrive}s1.
+{$productname} has been installed on {$harddrive}s1.
 You can now remove the CDROM and reboot the PC.
 
 To use the DATA partition:
