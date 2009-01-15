@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-01-06 12:46+0000\n"
+"POT-Creation-Date: 2009-01-12 21:42+0000\n"
 "PO-Revision-Date: 2008-12-08 17:57+0000\n"
 "Last-Translator: Javier García Díaz <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
+"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -30,10 +30,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s se anuncia como servidor de tiempo y hora para clientes Windows."
 
 #, php-format
-msgid "%s available of %sB"
-msgstr "%s disponible(s) de %sB"
-
-#, php-format
 msgid "%s interface"
 msgstr "%s interfaz"
 
@@ -48,10 +44,6 @@ msgstr "%s de %sB"
 #, php-format
 msgid "%s on %s (%dMHz)"
 msgstr ""
-
-#, php-format
-msgid "%s used of %sB"
-msgstr "%s usado(s) de %sB"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -2473,9 +2465,6 @@ msgstr ""
 "Montar el sistema de archivos como de solo lectura (incluso el super usuario "
 "no podrá escribir)."
 
-msgid "Mount to use for swap"
-msgstr "Montar para usarlo como swap"
-
 msgid "Mounting device."
 msgstr "Dispositivo de montaje"
 
@@ -2503,6 +2492,10 @@ msgstr "Nombre"
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr "Nombre del host NAS, sin el nombre de dominio, por ejemplo %s"
+
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -3509,12 +3502,6 @@ msgstr "Intercambio"
 msgid "Swap disabled"
 msgstr "Intercambio deshabilitado."
 
-msgid "Swap file"
-msgstr "Archivo Swap"
-
-msgid "Swap file size"
-msgstr "Tamaño del archivo Swap"
-
 msgid "Swap memory"
 msgstr "Memoria Swap"
 
@@ -3982,6 +3969,9 @@ msgstr ""
 msgid "The share name is already used."
 msgstr "El nombre compartido ya esta en uso"
 
+msgid "The size of the swap file in MB."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr "El asunto del correo electrónico."
 
@@ -4371,9 +4361,10 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
-"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
-"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+"To increase CIFS performance try the following:<div "
+"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+"href='%s'>Tuning</a>' switch</li><li>Increase <a "
+"href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -4381,9 +4372,9 @@ msgstr ""
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD "
-"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
-"<li>System</li></ul>"
+"following services will use AD authentication:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 msgstr ""
 
 msgid "Tools"

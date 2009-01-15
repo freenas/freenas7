@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 12:46+0000\n"
+"POT-Creation-Date: 2009-01-12 21:42+0000\n"
 "PO-Revision-Date: 2008-12-11 14:23+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
+"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -30,10 +30,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s を Windows クライアントにタイムサーバとして公告します．"
 
 #, php-format
-msgid "%s available of %sB"
-msgstr ""
-
-#, php-format
 msgid "%s interface"
 msgstr "%s インターフェース"
 
@@ -47,10 +43,6 @@ msgstr ""
 
 #, php-format
 msgid "%s on %s (%dMHz)"
-msgstr ""
-
-#, php-format
-msgid "%s used of %sB"
 msgstr ""
 
 #, php-format
@@ -2375,9 +2367,6 @@ msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 
-msgid "Mount to use for swap"
-msgstr "スワップをマウントし，使用する"
-
 msgid "Mounting device."
 msgstr "マウントされているデバイス。"
 
@@ -2405,6 +2394,10 @@ msgstr "名前"
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr "ドメイン名を除いたNASのホスト名。 例. %s"
+
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -3383,12 +3376,6 @@ msgstr "スワップ"
 msgid "Swap disabled"
 msgstr "スワップ無効"
 
-msgid "Swap file"
-msgstr "スワップファイル"
-
-msgid "Swap file size"
-msgstr "スワップファイルサイズ"
-
 msgid "Swap memory"
 msgstr "スワップメモリ"
 
@@ -3824,6 +3811,9 @@ msgstr ""
 msgid "The share name is already used."
 msgstr "この共有名は既に使用されています。"
 
+msgid "The size of the swap file in MB."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr "メールの件名"
 
@@ -4205,22 +4195,20 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
-"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
-"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+"To increase CIFS performance try the following:<div "
+"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+"href='%s'>Tuning</a>' switch</li><li>Increase <a "
+"href='%s'>MTU</a></li></ul></div>"
 msgstr ""
-"CIFSのパフォーマンスを上げるには次のことを試してください:<br/><ul><li>'Large read/write' "
-"の有効化</li><li>Enable'<a href='%s'>Tuning</a>' switch</li><li><a "
-"href='%s'>MTU</a>値を上げる</li></ul>"
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD "
-"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
-"<li>System</li></ul>"
+"following services will use AD authentication:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 msgstr ""
 
 msgid "Tools"
@@ -5021,11 +5009,20 @@ msgstr "週日"
 #~ msgid "Zeroconf"
 #~ msgstr "Zeroconf"
 
+#~ msgid "Swap file"
+#~ msgstr "スワップファイル"
+
 #~ msgid "Swap size"
 #~ msgstr "スワップサイズ"
 
 #~ msgid "mount share"
 #~ msgstr "共有のマウント"
+
+#~ msgid "Mount to use for swap"
+#~ msgstr "スワップをマウントし，使用する"
+
+#~ msgid "Swap file size"
+#~ msgstr "スワップファイルサイズ"
 
 #~ msgid "Assign network ports"
 #~ msgstr "ネットワークポートのアサイン"

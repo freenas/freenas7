@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 12:46+0000\n"
-"PO-Revision-Date: 2009-01-08 15:24+0000\n"
+"POT-Creation-Date: 2009-01-12 21:42+0000\n"
+"PO-Revision-Date: 2009-01-13 16:24+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-10 14:16+0000\n"
+"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -28,10 +28,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s s'annonce commme un serveur de temps pour les clients Windows."
 
 #, php-format
-msgid "%s available of %sB"
-msgstr "%s disponible de %sB"
-
-#, php-format
 msgid "%s interface"
 msgstr "Interface %s"
 
@@ -46,10 +42,6 @@ msgstr "%s de %sB"
 #, php-format
 msgid "%s on %s (%dMHz)"
 msgstr "%s sur %s (%dMHz)"
-
-#, php-format
-msgid "%s used of %sB"
-msgstr "%s utilisé de %sB"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -2584,9 +2576,6 @@ msgstr ""
 "Monter le système de fichiers en lecture seule (même le super-utilisateur ne "
 "pourra pas y écrire)."
 
-msgid "Mount to use for swap"
-msgstr "Point de montage à utiliser pour la pagination"
-
 msgid "Mounting device."
 msgstr "Périphérique en cours de montage."
 
@@ -2614,6 +2603,10 @@ msgstr "Nom"
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr "Nom de l'hôte NAS, sans le nom de domaine e.g. %s."
+
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
+msgstr "Nom du périphérique à utiliser pour le swap, e.g. %s."
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -3666,12 +3659,6 @@ msgstr "Pagination"
 msgid "Swap disabled"
 msgstr "Swap désactivé"
 
-msgid "Swap file"
-msgstr "Fichier de pagination"
-
-msgid "Swap file size"
-msgstr "Taille du fichier de pagination"
-
 msgid "Swap memory"
 msgstr "Mémoire virtuelle"
 
@@ -4167,6 +4154,9 @@ msgstr "Le port série ou le port USB auquel est connecté votre UPS."
 msgid "The share name is already used."
 msgstr "Le nom de partage est déjà utilisé."
 
+msgid "The size of the swap file in MB."
+msgstr "La taille du fichier de swap en MB."
+
 msgid "The subject of the email."
 msgstr "Sujet de l'e-mail."
 
@@ -4653,13 +4643,15 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
-"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
-"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+"To increase CIFS performance try the following:<div "
+"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+"href='%s'>Tuning</a>' switch</li><li>Increase <a "
+"href='%s'>MTU</a></li></ul></div>"
 msgstr ""
-"Pour augmenter les performances CIFS essayez ceci:<br/><ul><li>Activer "
-"l'option 'Grande lecture/écriture'</li><li>Configurer les options de '<a "
-"href='%s'>Tuning</a>'</li><li>Augmenter le <a href='%s'>MTU</a></li></ul>"
+"Pour augmenter les performances de CIFS, essayez ceci : <div "
+"id='enumeration'><ul><li>Activer le bouton 'Large read/write' "
+"</li><li>Activer le '<a href='%s'>Tuning</a>' switch</li><li>Augmenter le <a "
+"href='%s'>MTU</a></li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
@@ -4667,14 +4659,10 @@ msgstr ""
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD "
-"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
-"<li>System</li></ul>"
+"following services will use AD authentication:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 msgstr ""
-"Pour pouvoir utiliser Active Directory, CIFS/SMB sera activé également. Les "
-"services suivant utiliseront l'authentification AD: "
-"<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li>"
-"</ul>"
 
 msgid "Tools"
 msgstr "Outils"
@@ -5552,11 +5540,20 @@ msgstr "jours de la semaine"
 #~ msgid "Zeroconf"
 #~ msgstr "Zeroconf"
 
+#~ msgid "Swap file"
+#~ msgstr "Fichier de pagination"
+
 #~ msgid "Swap size"
 #~ msgstr "Taille du fichier de pagination"
 
 #~ msgid "mount share"
 #~ msgstr "monter le partage"
+
+#~ msgid "Mount to use for swap"
+#~ msgstr "Point de montage à utiliser pour la pagination"
+
+#~ msgid "Swap file size"
+#~ msgstr "Taille du fichier de pagination"
 
 #~ msgid "Assign network ports"
 #~ msgstr "Assigner les cartes réseau"

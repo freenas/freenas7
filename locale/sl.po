@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 12:46+0000\n"
+"POT-Creation-Date: 2009-01-12 21:42+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-06 13:04+0000\n"
+"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -30,10 +30,6 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s se bo predstavljal Windows-ovim klientom, kot časovni strežnik."
 
 #, php-format
-msgid "%s available of %sB"
-msgstr ""
-
-#, php-format
 msgid "%s interface"
 msgstr "%s vmesnik"
 
@@ -47,10 +43,6 @@ msgstr "%s od %sB"
 
 #, php-format
 msgid "%s on %s (%dMHz)"
-msgstr ""
-
-#, php-format
-msgid "%s used of %sB"
 msgstr ""
 
 #, php-format
@@ -2393,9 +2385,6 @@ msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 
-msgid "Mount to use for swap"
-msgstr "Priklopna točka za izmenjevalno praticijo"
-
 msgid "Mounting device."
 msgstr ""
 
@@ -2422,6 +2411,10 @@ msgstr "Ime"
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
+
+#, php-format
+msgid "Name of the device to use as swap device, e.g. %s."
 msgstr ""
 
 msgid ""
@@ -3409,12 +3402,6 @@ msgstr "Izmenjevalni pomnilnik"
 msgid "Swap disabled"
 msgstr ""
 
-msgid "Swap file"
-msgstr "Izmenjevalna datoteka"
-
-msgid "Swap file size"
-msgstr "Velikost izmenjevalne datoteke"
-
 msgid "Swap memory"
 msgstr "Izmenjevalni spomin"
 
@@ -3861,6 +3848,9 @@ msgstr ""
 msgid "The share name is already used."
 msgstr ""
 
+msgid "The size of the swap file in MB."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr ""
 
@@ -4241,9 +4231,10 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To increase CIFS performance try the following:<br/><ul><li>Enable 'Large "
-"read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' "
-"switch</li><li>Increase <a href='%s'>MTU</a></li></ul>"
+"To increase CIFS performance try the following:<div "
+"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+"href='%s'>Tuning</a>' switch</li><li>Increase <a "
+"href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -4251,9 +4242,9 @@ msgstr ""
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD "
-"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
-"<li>System</li></ul>"
+"following services will use AD authentication:<div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 msgstr ""
 
 msgid "Tools"
