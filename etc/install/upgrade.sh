@@ -1,10 +1,12 @@
 #!/bin/sh
-# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 . /etc/rc.subr
 
 name="upgrade"
+
+load_rc_config "$name"
 
 # Custom commands
 extra_commands="clean"
@@ -20,7 +22,7 @@ upgrade_clean()
 	local _path _file _filepath
 
 	_path=$1
-	
+
 	if [ -n ${_path} ]; then
 		for _file in $(cat ${upgrade_obsoletefiles} | grep -v "^#"); do
 			_filepath="${_path}/${_file}"
@@ -35,5 +37,4 @@ upgrade_clean()
 	fi
 }
 
-load_rc_config $name
 run_rc_command "$@"

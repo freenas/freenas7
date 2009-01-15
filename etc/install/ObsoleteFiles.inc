@@ -43,3 +43,6 @@ usr/local/www/cornerBottomLeft.png
 usr/local/www/cornerBottomRight.png
 usr/local/www/tab_l.gif
 usr/local/www/tab_r.gif
+etc/rc.d/pureftpd
+usr/local/sbin/pure-ftpd
+usr/local/sbin/pure-ftpwho
