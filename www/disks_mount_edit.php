@@ -363,7 +363,7 @@ function enable_change(enable_change) {
 							</select>
 			      </td>
 					</tr>
-					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), "/mnt", true);?>
+					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), $g['media_path'], true);?>
 					<?php html_inputbox("sharename", gettext("Share name"), $pconfig['sharename'], "", true, 20);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<?php html_checkbox("readonly", gettext("Read only"), $pconfig['readonly'] ? true : false, gettext("Mount the file system read-only (even the super-user may not write it)."), "", false);?>

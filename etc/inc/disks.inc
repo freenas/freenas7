@@ -2,7 +2,7 @@
 /*
 	disks.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -99,7 +99,7 @@ function disks_mount($mount)
 	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
 
 	// Set mount name
-	$mountname = "/mnt/{$mount['sharename']}";
+	$mountname = "{$g['media_path']}/{$mount['sharename']}";
 
 	// Create one directory for each device under /mnt
 	if (!@mkdir($mountname)) {
@@ -228,6 +228,8 @@ function disks_mount($mount)
 // Return 0 is successfull, 1 if error
 function disks_umount($mount)
 {
+	global $g;
+
 	// Get memory disk unit for ISOs
 	if ("iso" === $mount['type']) {
 		// Get current mount list
@@ -244,7 +246,7 @@ function disks_umount($mount)
 	}
 
 	// Unmount mount point
-	$mountname = "/mnt/{$mount['sharename']}";
+	$mountname = "{$g['media_path']}/{$mount['sharename']}";
 
 	if (mwexec("/sbin/umount -f '{$mountname}'") == 0) {
 		if(@rmdir("{$mountname}")) {

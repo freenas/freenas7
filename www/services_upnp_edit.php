@@ -2,11 +2,11 @@
 <?php 
 /*
 	services_upnp_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright ¬© 2006-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-LabbÈ <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labb√© <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -79,7 +79,7 @@ if($_POST) {
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
 			      <td width="78%" class="vtable">
 							<input name="content" type="text" class="formfld" id="content" size="60" value="<?=htmlspecialchars($config['upnp']['content'][$id]);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
 							<br><?=gettext("Directory to be shared.");?>
 			      </td>
 			    </tr>

@@ -3,7 +3,7 @@
 /*
 	services_unison.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -79,7 +79,7 @@ if ($_POST) {
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$fullpath = "/mnt/{$_POST['share']}/{$_POST['workdir']}";
+	$fullpath = "{$g['media_path']}/{$_POST['share']}/{$_POST['workdir']}";
 
 	if (!$_POST['makedir'] && ($fullpath) && (!file_exists($fullpath))) {
 		$input_errors[] = gettext("The combination of share and working directory does not exist.");

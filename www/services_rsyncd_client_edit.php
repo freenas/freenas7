@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_client_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -212,7 +212,7 @@ function delete_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
 						<td width="78%" class="vtable">
 							<input name="localshare" type="text" class="formfld" id="localshare" size="60" value="<?=htmlspecialchars($pconfig['localshare']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.localshare; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.localshare; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
 							<span class="vexpl"><?=gettext("Path to be shared.");?></span>
 					  </td>
 					</tr>

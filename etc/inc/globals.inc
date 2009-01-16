@@ -44,6 +44,7 @@ $g = array(
 	"tmp_path" => "/tmp",
 	"conf_path" => "/conf",
 	"ftmp_path" => "/ftmp",
+	"media_path" => "/mnt",
 	"conf_default_path" => "/conf.default",
 	"cf_path" => "/cf",
 	"cf_conf_path" => "/cf/conf",

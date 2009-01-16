@@ -2,11 +2,11 @@
 <?php
 /*
 	services_tftp.php
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -122,7 +122,7 @@ function enable_change(enable_change) {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Trivial File Transfer Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_filechooser("dir", gettext("Directory"), $pconfig['dir'], gettext("The directory containing the files you want to publish. The remote host does not need to pass along the directory as part of the transfer."), "/mnt", true, 60);?>
+					<?php html_filechooser("dir", gettext("Directory"), $pconfig['dir'], gettext("The directory containing the files you want to publish. The remote host does not need to pass along the directory as part of the transfer."), $g['media_path'], true, 60);?>
 					<?php html_checkbox("allowfilecreation", gettext("Allow new files"), $pconfig['allowfilecreation'] ? true : false, gettext("Allow new files to be created."), gettext("By default, only already existing files can be uploaded."), false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Advanced settings"));?>
