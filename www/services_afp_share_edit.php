@@ -203,7 +203,7 @@ if ($_POST) {
 					  <td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
 					  <td width="78%" class="vtable">
 					  	<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
-					  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+					  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
 					  	<span class="vexpl"><?=gettext("Path to be shared.");?></span>
 					  </td>
 					</tr>
@@ -273,7 +273,7 @@ if ($_POST) {
 					  <td width="22%" valign="top" class="vncell"><?=gettext("dbpath");?></td>
 					  <td width="78%" class="vtable">
 					  	<input name="dbpath" type="text" class="formfld" id="dbpath" size="60" value="<?=htmlspecialchars($pconfig['dbpath']);?>">
-					  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.dbpath; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+					  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.dbpath; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
 					  	<span class="vexpl"><?=gettext("Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only.");?></span>
 					  </td>
 					</tr>

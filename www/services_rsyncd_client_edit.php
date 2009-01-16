@@ -212,7 +212,7 @@ function delete_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
 						<td width="78%" class="vtable">
 							<input name="localshare" type="text" class="formfld" id="localshare" size="60" value="<?=htmlspecialchars($pconfig['localshare']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.localshare; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.localshare; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
 							<span class="vexpl"><?=gettext("Path to be shared.");?></span>
 					  </td>
 					</tr>
