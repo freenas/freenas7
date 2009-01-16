@@ -79,7 +79,7 @@ if($_POST) {
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
 			      <td width="78%" class="vtable">
 							<input name="content" type="text" class="formfld" id="content" size="60" value="<?=htmlspecialchars($config['upnp']['content'][$id]);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
 							<br><?=gettext("Directory to be shared.");?>
 			      </td>
 			    </tr>
