@@ -521,7 +521,7 @@ function get_mounts_list()
 //      )
 function get_mount_usage()
 {
-	global $config;
+	global $config, $g;
 
 	exec("/bin/df -h", $rawdata);
 
@@ -540,7 +540,7 @@ function get_mount_usage()
 
 		if (is_array($config['mounts']['mount'])) {
 			foreach ($config['mounts']['mount'] as $mountcfg) {
-				if (0 == strcmp($mounted_on, "/mnt/{$mountcfg['sharename']}")) {
+				if (0 == strcmp($mounted_on, "{$g['media_path']}/{$mountcfg['sharename']}")) {
 					$result[$mounted_on] = array();
 					$result[$mounted_on]['filesystem'] = $filesystem;
 					$result[$mounted_on]['capacity'] = $capacity;

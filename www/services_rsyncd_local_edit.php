@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_local_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -210,7 +210,7 @@ function delete_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
 						<td width="78%" class="vtable">
 							<input name="source" type="text" class="formfld" id="source" size="60" value="<?=htmlspecialchars($pconfig['source']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.source; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.source; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
 							<span class="vexpl"><?=gettext("Source directory to be synchronized.");?></span>
 					  </td>
 					</tr>
@@ -218,7 +218,7 @@ function delete_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
 						<td width="78%" class="vtable">
 							<input name="destination" type="text" class="formfld" id="destination" size="60" value="<?=htmlspecialchars($pconfig['destination']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.destination; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.destination; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd={$g['media_path']}", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
 							<span class="vexpl"><?=gettext("Target directory.");?></span>
 					  </td>
 					</tr>

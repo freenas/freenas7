@@ -2,11 +2,11 @@
 <?php
 /*
 	services_upnp.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -222,7 +222,7 @@ function transcoding_change() {
 			      </td>
 			    </tr>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."), 1025, 65535, 49152), true, 5);?>
-					<?php html_filechooser("home", gettext("Database directory"), $pconfig['home'], gettext("Location where the content database file will be stored."), "/mnt", true, 60);?>
+					<?php html_filechooser("home", gettext("Database directory"), $pconfig['home'], gettext("Location where the content database file will be stored."), $g['media_path'], true, 60);?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
 			      <td width="78%" class="vtable">
@@ -257,7 +257,7 @@ function transcoding_change() {
 					<?php html_combobox("profile", gettext("Profile"), $pconfig['profile'], array("default" => gettext("Default"), "DLNA" => "DLNA", "PS3" => "Sony Playstation 3", "Telegent_TG100" => "Telegent TG100", "ZyXEL_DMA1000" => "ZyXEL DMA-1000", "Helios_X3000" => "Helios X3000", "DLink_DSM320" => "D-Link DSM320", "Microsoft_XBox360" => "Microsoft XBox 360", "Terratec_Noxon_iRadio" => "Terratec Noxon iRadio", "Yamaha_RXN600" => "Yamaha RX-N600", "Loewe_Connect" => "Loewe Connect"), gettext("Compliant profile to be used."), true, false, "profile_change()");?>
 					<?php html_inputbox("deviceip", gettext("Device IP"), $pconfig['deviceip'], gettext("The device's IP address."), true, 20);?>
 					<?php html_checkbox("transcoding", gettext("Transcoding"), $pconfig['transcoding'] ? true : false, gettext("Enable transcoding."), "", false, "transcoding_change()");?>
-					<?php html_filechooser("tempdir", gettext("Temporary directory"), $pconfig['tempdir'], gettext("Temporary directory to store transcoded files."), "/mnt", true, 60);?>
+					<?php html_filechooser("tempdir", gettext("Temporary directory"), $pconfig['tempdir'], gettext("Temporary directory to store transcoded files."), $g['media_path'], true, 60);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
 					<?php html_checkbox("web", gettext("WebGUI"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), "", false, "web_change()");?>

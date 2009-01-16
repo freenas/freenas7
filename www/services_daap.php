@@ -2,11 +2,11 @@
 <?php
 /*
 	services_daap.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -130,8 +130,8 @@ function enable_change(enable_change) {
 			  	<?php html_titleline_checkbox("enable", gettext("Digital Audio Access Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("servername", gettext("Server name"), $pconfig['servername'], gettext("This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."), true, 20);?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("Port to listen on. Default iTunes port is 3689."), true, 5);?>
-					<?php html_filechooser("dbdir", gettext("Database directory"), $pconfig['dbdir'], gettext("Location where the content database file will be stored."), "/mnt", true, 60);?>
-					<?php html_filechooser("content", gettext("Content"), $pconfig['content'], gettext("Comma separated list of directories to search for files to share."), "/mnt", true, 60);?>
+					<?php html_filechooser("dbdir", gettext("Database directory"), $pconfig['dbdir'], gettext("Location where the content database file will be stored."), $g['media_path'], true, 60);?>
+					<?php html_filechooser("content", gettext("Content"), $pconfig['content'], gettext("Comma separated list of directories to search for files to share."), $g['media_path'], true, 60);?>
 					<?php html_inputbox("rescaninterval", gettext("Rescan interval"), $pconfig['rescaninterval'], gettext("Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."), false, 5);?>
 					<?php html_checkbox("alwaysscan", gettext("Always scan"), $pconfig['alwaysscan'] ? true : false, "", gettext("Whether scans should be skipped if there are no users connected. This allows the drive to spin down when no users are connected."), false);?>
 					<?php html_combobox("scantype", gettext("Scan type"), $pconfig['scantype'], array("0" => "Normal", "1" => "Aggressive", "2" => "Painfully aggressive"), "", false);?>
