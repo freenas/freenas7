@@ -51,6 +51,7 @@ Minors changes:
   The frequency levels are displayed as tooltips. Please note that these values
   are not displayed if FreeBSD is not able to get these hardware informations
   via sysctl.
+- Update translation files. Thanks to all translators contributing to FreeNAS. 
 
 Bug fixes:
 - The 'default gateway' entered during the console setup is not set without
@@ -80,13 +81,6 @@ Permanent restrictions:
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
   overriden by the IPv4 DNS server.
-
-NEED TESTING:
-- IPv6: auto mode
-- All services using IPv6 address (NFS, FTP, etc...)
-- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes
-  samba when accessing to share
-- Need to write an online-test procedure
 
 Help needed:
 - Need help for adding LDAP authentication feature:
