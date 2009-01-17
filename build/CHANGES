@@ -53,7 +53,6 @@ Minors changes:
   via sysctl.
 
 Bug fixes:
-- TFTP not present in "Services|Status" menu (BR 2397240).
 - The 'default gateway' entered during the console setup is not set without
   doing a reboot (BR 2406068).
 - Fix file size bug in Quixplorer (BR 2445421).
