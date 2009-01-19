@@ -43,6 +43,7 @@ $pconfig['port'] = $config['bittorrent']['port'];
 $pconfig['downloaddir'] = $config['bittorrent']['downloaddir'];
 $pconfig['configdir'] = $config['bittorrent']['configdir'];
 $pconfig['password'] = $config['bittorrent']['password'];
+$pconfig['authrequired'] = isset($config['bittorrent']['authrequired']);
 
 // Set default values.
 if (!$pconfig['port']) $pconfig['port'] = "9091";
@@ -53,9 +54,15 @@ if ($_POST) {
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "port downloaddir password");
-		$reqdfieldsn = array(gettext("Port"), gettext("Download directory"), gettext("Password"));
-		$reqdfieldst = explode(" ", "port string password");
+		$reqdfields = explode(" ", "port downloaddir");
+		$reqdfieldsn = array(gettext("Port"), gettext("Download directory"));
+		$reqdfieldst = explode(" ", "port string");
+
+		if ($_POST['authrequired']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "password"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Password")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "password"));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -71,6 +78,7 @@ if ($_POST) {
 		$config['bittorrent']['downloaddir'] = $_POST['downloaddir'];
 		$config['bittorrent']['configdir'] = $_POST['configdir'];
 		$config['bittorrent']['password'] = $_POST['password'];
+		$config['bittorrent']['authrequired'] = $_POST['authrequired'] ? true : false;
 
 		write_config();
 
@@ -94,7 +102,20 @@ function enable_change(enable_change) {
 	document.iform.port.disabled = endis;
 	document.iform.downloaddir.disabled = endis;
 	document.iform.configdir.disabled = endis;
+	document.iform.authrequired.disabled = endis;
 	document.iform.password.disabled = endis;
+}
+
+function authrequired_change() {
+	switch (document.iform.authrequired.checked) {
+		case true:
+			showElementById('password_tr','show');
+			break;
+
+		case false:
+			showElementById('password_tr','hide');
+			break;
+	}
 }
 //-->
 </script>
@@ -111,6 +132,7 @@ function enable_change(enable_change) {
 					<?php html_filechooser("configdir", gettext("Configuration directory"), $pconfig['configdir'], gettext("Alternative configuration directory (usually empty)."), $g['media_path'], false, 60);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
+					<?php html_checkbox("authrequired", gettext("Authentication"), $pconfig['authrequired'] ? true : false, gettext("Require authentication."), "", false, "authrequired_change()");?>
 					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], sprintf("%s %s", gettext("Password for the administrative pages."), gettext("Default user name is 'admin'.")), true, 20);?>
 					<?php
 					$if = get_ifname($config['interfaces']['lan']['if']);
@@ -130,6 +152,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 enable_change(false);
+authrequired_change();
 //-->
 </script>
 <?php include("fend.inc");?>

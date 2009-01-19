@@ -1668,6 +1668,14 @@ function config_upgrade() {
 		$config['version'] = "7.0";
 	}
 
+	/* Convert 7.0 -> 7.1 */
+	/* Add //bittorrent/authrequired flag. */
+	if ($config['version'] === "7.0") {
+		$config['bittorrent']['authrequired'] = true;
+
+		$config['version'] = "7.1";
+	}
+
 	write_config();
 
 	if (is_booting())

@@ -50,6 +50,7 @@ proftpd_deleteabortedstores=${proftpd_deleteabortedstores:-"off"}
 proftpd_tlsverifyclient=${proftpd_tlsverifyclient:-"off"}
 proftpd_tlsoptions=${proftpd_tlsoptions:-"NoCertRequest"}
 proftpd_tlsprotocol=${proftpd_tlsprotocol:-"SSLv23"}
+proftpd_tlsrequired=${proftpd_tlsrequired:-"on"}
 proftpd_tcpaccesssysloglevels=${proftpd_tcpaccesssysloglevels:-"info warn"}
 proftpd_tcpservicename=${proftpd_tcpservicename:-"ftpd"}
 proftpd_moddelay_enable=${proftpd_moddelay_enable:-"YES"}
@@ -178,6 +179,9 @@ mkconf_cmd()
 			-o "  TLSRSACertificateFile ${proftpd_tlsrsacertfile}" -n \
 			-o "  TLSRSACertificateKeyFile ${proftpd_tlsrsakeyfile}" -n \
 			-o "  TLSVerifyClient ${proftpd_tlsverifyclient}" -n \
+			-i "count(tlsrequired) > 0" \
+				-o "  TLSRequired ${proftpd_tlsrequired}"
+			-b \
 			-o "&lt;/IfModule&gt;" -n \
 		-b \
 		-m "auxparam" \
