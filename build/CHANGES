@@ -32,8 +32,8 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
-FreeNAS 0.69.1 (Muad'Dib):
---------------------------
+FreeNAS 0.69.1 (Kwisatz Haderach):
+----------------------------------
 
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
