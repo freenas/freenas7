@@ -443,6 +443,43 @@
 		</vdisk>
 		-->
 	</iscsiinit>
+	<zfs>
+		<vdevices>
+			<!--
+			<vdevice>
+				<name>xxx</name>
+				<type>stripe|mirror|zraid|zraid1|zraid2|spare</type>
+				<device>xxx</device> // Can be defined multiple times.
+				<desc>xxx</desc>
+			</vdevice>
+			-->
+		</vdevices>
+		<pools>
+			<!--
+			<pool>
+				<name>xxx</name>
+				<vdevice>xxx</vdevice> // Can be defined multiple times.
+				<root>/</root>
+				<mountpoint>xxx</mountpoint>
+				<desc>xxx</desc>
+			</pool>
+			-->
+		</pools>
+		<datasets>
+			<!--
+			<dataset>
+				<name>xxx</name>
+				<pool>xxx<pool>
+				<quota>xxx(k|KB|M|Gb)<quota>
+				<readonly/>
+				<compression>on|off|lzjb|gzip|gzip-N</compression>
+				<canmount/>
+				<xattr/>
+				<desc>xxx</desc>
+			</dataset>
+			-->
+		</datasets>
+	</zfs>
 	<mounts>
 		<!--
 		<mount>
