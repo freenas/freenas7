@@ -70,6 +70,7 @@ $pconfig['permitrootlogin'] = isset($config['ftpd']['permitrootlogin']);
 $pconfig['chrooteveryone'] = isset($config['ftpd']['chrooteveryone']);
 $pconfig['identlookups'] = isset($config['ftpd']['identlookups']);
 $pconfig['tls'] = isset($config['ftpd']['tls']);
+$pconfig['tlsrequired'] = isset($config['ftpd']['tlsrequired']);
 $pconfig['privatekey'] = base64_decode($config['ftpd']['privatekey']);
 $pconfig['certificate'] = base64_decode($config['ftpd']['certificate']);
 if (is_array($config['ftpd']['auxparam']))
@@ -148,6 +149,7 @@ if ($_POST) {
 		$config['ftpd']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
 		$config['ftpd']['identlookups'] = $_POST['identlookups'] ? true : false;
 		$config['ftpd']['tls'] = $_POST['tls'] ? true : false;
+		$config['ftpd']['tlsrequired'] = $_POST['tlsrequired'] ? true : false;
 		$config['ftpd']['privatekey'] = base64_encode($_POST['privatekey']);
 		$config['ftpd']['certificate'] = base64_encode($_POST['certificate']);
 		$config['ftpd']['userbandwidth']['up'] = $pconfig['userbandwidthup'];
@@ -199,6 +201,7 @@ function enable_change(enable_change) {
 	document.iform.chrooteveryone.disabled = endis;
 	document.iform.identlookups.disabled = endis;
 	document.iform.tls.disabled = endis;
+	document.iform.tlsrequired.disabled = endis;
 	document.iform.privatekey.disabled = endis;
 	document.iform.certificate.disabled = endis;
 	document.iform.userbandwidthup.disabled = endis;
@@ -211,11 +214,13 @@ function enable_change(enable_change) {
 function tls_change() {
 	switch (document.iform.tls.checked) {
 		case true:
+			showElementById('tlsrequired_tr','show');
 			showElementById('privatekey_tr','show');
 			showElementById('certificate_tr','show');
 			break;
 
 		case false:
+			showElementById('tlsrequired_tr','hide');
 			showElementById('privatekey_tr','hide');
 			showElementById('certificate_tr','hide');
 			break;
@@ -285,6 +290,7 @@ function anonymousonly_change() {
 					<?php html_checkbox("tls", gettext("SSL/TLS"), $pconfig['tls'] ? true : false, gettext("Enable TLS/SSL connections."), "", false, "tls_change()");?>
 					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7, false, false);?>
 					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7, false, false);?>
+					<?php html_checkbox("tlsrequired", gettext("SSL/TLS only"), $pconfig['tlsrequired'] ? true : false, gettext("Allow TLS/SSL connections only."), "", false);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters are added to %s."), "proftpd.conf"), false, 65, 5, false, false);?>
 			  </table>
 				<div id="submit">

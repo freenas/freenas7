@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>7.0</version>
+	<version>7.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -42,7 +42,7 @@
 		<swap>
 			<type>file</type>
 			<!--
-			<enable/> 
+			<enable/>
 			<devicespecialfile></devicespecialfile>
 			<mountpoint>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</mountpoint>
 			<size></size>
@@ -525,6 +525,7 @@
 			<down></down>
 		</anonymousbandwidth>
 		<banner></banner>
+		<tlsrequired/>
 		<!--
 		<anonymousonly/>
 		<localusersonly/>
@@ -702,6 +703,7 @@
 		<port>9091</port>
 		<downloaddir></downloaddir>
 		<configdir></configdir>
+		<authrequired/>
 		<password>freenas</password>
 	</bittorrent>
 	<sshd>

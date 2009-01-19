@@ -29,7 +29,7 @@ transmission_user=${transmission_user:-"transmission"}
 transmission_suopt=${transmission_suopt:-"-l"}
 
 command="/usr/local/bin/${name}-daemon"
-command_args="--auth --username ${transmission_remoteuser} --allowed ${transmission_allowed}"
+command_args="--allowed ${transmission_allowed}"
 
 start_precmd()
 {
@@ -37,7 +37,13 @@ start_precmd()
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
-		-v "concat('--password ',password,' --download-dir &quot;',downloaddir,'&quot; --port ',port)" \
+		-i "count(authrequired) > 0" \
+			-o " --auth" \
+			-o " --username ${transmission_remoteuser}" \
+			-v "concat(' --password ',password)" \
+		-b \
+		-i "count(authrequired) = 0" -o " --no-auth" -b \
+		-v "concat(' --download-dir &quot;',downloaddir,'&quot; --port ',port)" \
 		-i "string-length(configdir) > 0" -v "concat(' --config-dir &quot;',configdir,'&quot;')" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
