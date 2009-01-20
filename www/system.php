@@ -72,9 +72,15 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-	$reqdfields = explode(" ", "hostname domain username");
-	$reqdfieldsn = array(gettext("Hostname"),gettext("Domain"),gettext("Username"));
-	$reqdfieldst = explode(" ", "hostname domain string");
+	$reqdfields = explode(" ", "hostname username");
+	$reqdfieldsn = array(gettext("Hostname"), gettext("Username"));
+	$reqdfieldst = explode(" ", "hostname string");
+
+	if (!empty($_POST['domain'])) {
+		$reqdfields = array_merge($reqdfields, array("domain"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Domain")));
+		$reqdfieldst = array_merge($reqdfieldst, array("domain"));
+	}
 
 	if (isset($_POST['ntp_enable'])) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "ntp_timeservers ntp_updateinterval"));
@@ -88,7 +94,7 @@ if ($_POST) {
 		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "certificate privatekey"));
 	}
 
-	if ($_POST['webguiport']) {
+	if (!empty($_POST['webguiport'])) {
 		$reqdfields = array_merge($reqdfields, array("webguiport"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Port")));
 		$reqdfieldst = array_merge($reqdfieldst, array("port"));
@@ -276,7 +282,7 @@ function webguiproto_change() {
 						<td colspan="2" valign="top" class="listtopic"><?=gettext("Hostname");?></td>
 					</tr>
 					<?php html_inputbox("hostname", gettext("Hostname"), $pconfig['hostname'], sprintf(gettext("Name of the NAS host, without domain part e.g. %s."), "<em>" . strtolower(get_product_name()) ."</em>"), true, 40);?>
-					<?php html_inputbox("domain", gettext("Domain"), $pconfig['domain'], sprintf(gettext("e.g. %s"), "<em>com, local</em>"), true, 40);?>
+					<?php html_inputbox("domain", gettext("Domain"), $pconfig['domain'], sprintf(gettext("e.g. %s"), "<em>com, local</em>"), false, 40);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("DNS settings"));?>
 			    <tr>
