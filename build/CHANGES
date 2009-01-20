@@ -8,6 +8,7 @@ Minors changes:
 
 Bug fixes:
 - Set friendly name in fuppes.cfg for Xbox 360 (BR 2519324).
+- Set correct shutdown property in upsmon.conf (BR 2521141).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
