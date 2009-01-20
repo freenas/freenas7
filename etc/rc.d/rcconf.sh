@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: rcconf
@@ -36,7 +36,13 @@ sethostname()
 {
 	local _hostname
 
-	_hostname=`configxml_get "//system/hostname"`
+	# Generate hostname from configuration.
+	_hostname=`/usr/local/bin/xml sel -t -m "//system" \
+		-v "hostname" \
+		-i "string-length(domain) > 0" \
+			-v "concat('.',domain)" \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc`
 
 	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
