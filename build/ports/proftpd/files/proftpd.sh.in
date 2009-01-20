@@ -180,7 +180,7 @@ mkconf_cmd()
 			-o "  TLSRSACertificateKeyFile ${proftpd_tlsrsakeyfile}" -n \
 			-o "  TLSVerifyClient ${proftpd_tlsverifyclient}" -n \
 			-i "count(tlsrequired) > 0" \
-				-o "  TLSRequired ${proftpd_tlsrequired}"
+				-o "  TLSRequired ${proftpd_tlsrequired}" -n \
 			-b \
 			-o "&lt;/IfModule&gt;" -n \
 		-b \
