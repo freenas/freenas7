@@ -6,6 +6,9 @@ Minors changes:
 - Add 'Authentication' checkbox on 'Services|BitTorrent' page to enable/disable
   authentication for TransmissionBT WebGUI.
 
+Bug fixes:
+- Set friendly name in fuppes.cfg for Xbox 360 (BR 2519324).
+
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
