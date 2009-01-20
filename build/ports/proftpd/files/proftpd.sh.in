@@ -106,6 +106,7 @@ mkconf_cmd()
 		-v "concat('ServerName &quot;',//system/hostname,' FTP Server&quot;')" -n \
 		-o "ServerType standalone" -n \
 		-o "DefaultServer on" -n \
+		-v "concat('DefaultAddress ',//system/hostname)" -n \
 		-o "UseIPv6 on" -n \
 		-m "//ftpd" \
 		-v "concat('Port ',port)" -n \
