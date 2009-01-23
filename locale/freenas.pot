@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-12 21:04+0000\n"
+"PO-Revision-Date: 2009-01-23 09:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -314,6 +314,9 @@ msgid "All users will have the root privilege."
 msgstr ""
 
 msgid "Allow"
+msgstr ""
+
+msgid "Allow TLS/SSL connections only."
 msgstr ""
 
 msgid "Allow client access to accounts that have null passwords."
@@ -2688,6 +2691,9 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
+msgid "Require authentication."
+msgstr ""
+
 msgid "Rescan interval"
 msgstr ""
 
@@ -2785,6 +2791,9 @@ msgid "SSID"
 msgstr ""
 
 msgid "SSL/TLS"
+msgstr ""
+
+msgid "SSL/TLS only"
 msgstr ""
 
 msgid "Save"
@@ -4028,6 +4037,9 @@ msgid "WPA-PSK (Pre Shared Key)"
 msgstr ""
 
 msgid "WPA-PSK WPA-EAP"
+msgstr ""
+
+msgid "Wake On LAN"
 msgstr ""
 
 msgid "Warning"
