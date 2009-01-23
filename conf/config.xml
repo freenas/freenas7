@@ -236,6 +236,7 @@
 			<ipv6_enable/>
 			<mtu>1500</mtu>
 			<polling/>
+			<wakeon>off|magic|unicast|multicast|broadcast|link</wakeon>
 			<extraoptions></extraoptions>
 			<wireless>
 				*see below (opt[n])*
@@ -253,6 +254,7 @@
 			<media></media>
 			<mediaopt></mediaopt>
 			<bridge>lan|wan|opt[n]</bridge>
+			<wakeon>off|magic|unicast|multicast|broadcast|link</wakeon>
 			<extraoptions></extraoptions>
 			<wireless>
 				<standard>11a|11b|11g</standard>

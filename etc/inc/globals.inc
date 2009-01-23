@@ -54,6 +54,7 @@ $g = array(
 	"latest_config" => "7.1",
 	"nopccard_platforms" => array("wrap", "net48xx"),
 	"wireless_regex" => "/^(ndis|wi|ath|an|ral|ural|wai|iwi|awi|wlan|ipw|wpi|rum|arl)/",
+	"wakeonlan_regex" => "/^(nfe|nve|sis|vr|xl)\d+/",
 	"default_passwd" => "freenas",
 	"default_ip" => "192.168.1.250"
 );

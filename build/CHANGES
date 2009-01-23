@@ -39,6 +39,9 @@ Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
 - Add 'Authentication' checkbox on 'Services|BitTorrent' page to enable/disable
   authentication for TransmissionBT WebGUI.
+- Add checkbox to enable WOL on 'Network|Interfaces|LAN' and 'Interfaces|Optionalx'
+  pages. Please note that WOL only works for nfe, nve, sis, vr, xl. Thanks to
+  Tobias Reber for the patch.
 
 Bug fixes:
 - Set friendly name in fuppes.cfg for Xbox 360 (BR 2519324).

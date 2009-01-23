@@ -51,9 +51,7 @@ if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
 	$pconfig['ipaddr'] = $optcfg['ipaddr'];
   $pconfig['subnet'] = $optcfg['subnet'];
 }
-
 $pconfig['ipv6_enable'] = isset($optcfg['ipv6_enable']);
-
 if ($config['interfaces']['opt' . $index]['ipv6addr'] == "auto") {
 	$pconfig['ipv6type'] = "Auto";
 	$pconfig['ipv6addr'] = get_ipv6addr($optcfg['if']);
@@ -62,7 +60,6 @@ if ($config['interfaces']['opt' . $index]['ipv6addr'] == "auto") {
 	$pconfig['ipv6addr'] = $optcfg['ipv6addr'];
 	$pconfig['ipv6subnet'] = $optcfg['ipv6subnet'];
 }
-
 $pconfig['descr'] = $optcfg['descr'];
 $pconfig['enable'] = isset($optcfg['enable']);
 $pconfig['mtu'] = $optcfg['mtu'];
@@ -70,6 +67,8 @@ $pconfig['polling'] = isset($optcfg['polling']);
 $pconfig['media'] = $optcfg['media'];
 $pconfig['mediaopt'] = $optcfg['mediaopt'];
 $pconfig['extraoptions'] = $optcfg['extraoptions'];
+if (preg_match($g['wakeonlan_regex'], get_ifname($optcfg['if'])))
+	$pconfig['wakeon'] = $optcfg['wakeon'];
 
 /* Wireless interface? */
 if (isset($optcfg['wireless'])) {
@@ -154,6 +153,8 @@ if ($_POST) {
 		$optcfg['media'] = $_POST['media'];
 		$optcfg['mediaopt'] = $_POST['mediaopt'];
 		$optcfg['extraoptions'] = $_POST['extraoptions'];
+		if (preg_match($g['wakeonlan_regex'], get_ifname($optcfg['if'])))
+			$optcfg['wakeon'] = $_POST['wakeon'];
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -181,6 +182,9 @@ function enable_change(enable_change) {
 		document.iform.polling.disabled = endis;
 		document.iform.media.disabled = endis;
 		document.iform.mediaopt.disabled = endis;
+<?php if (preg_match($g['wakeonlan_regex'], get_ifname($optcfg['if']))):?>
+		document.iform.wakeon.disabled = endis;
+<?php endif;?>
 		document.iform.extraoptions.disabled = endis;
 		document.iform.ipv6_enable.disabled = endis;
 <?php if (isset($optcfg['wireless'])):?>
@@ -265,14 +269,14 @@ function encryption_change() {
 			showElementById('wpa_pairwise_tr','hide');
 			showElementById('wpa_psk_tr','hide');
 			break;
-	
+
 		case "wep":
 			showElementById('wep_key_tr','show');
 			showElementById('wpa_keymgmt_tr','hide');
 			showElementById('wpa_pairwise_tr','hide');
 			showElementById('wpa_psk_tr','hide');
 			break;
-	
+
 		case "wpa":
 			showElementById('wep_key_tr','hide');
 			showElementById('wpa_keymgmt_tr','show');
@@ -306,6 +310,9 @@ function encryption_change() {
 											<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 											<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
 											<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
+											<?php if (preg_match($g['wakeonlan_regex'], get_ifname($optcfg['if']))):?>
+											<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], array("off" => "off", "magic" => "magic", "unicast" => "unicast", "multicast" => "multicast", "broadcast" => "broadcast", "link" => "link"), "", false);?>
+											<?php endif;?>
 											<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 											<?php if (isset($optcfg['wireless'])) wireless_config_print();?>
 			              </table>
