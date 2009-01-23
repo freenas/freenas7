@@ -1,6 +1,5 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.32
-PORTREVISION=	2
+PORTVERSION=	3.0.34
 PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
@@ -9,10 +8,6 @@ MAINTAINER=		votdev@gmx.de
 MASTER_SITES=				${MASTER_SITE_SAMBA}
 MASTER_SITE_SUBDIR=	. old-versions rc pre
 DISTNAME=						${PORTNAME}-${PORTVERSION:S/.p/pre/:S/.r/rc/}
-
-PATCH_SITES=				http://us1.samba.org/samba/ftp/patches/security/
-PATCHFILES=					samba-3.0.32-CVE-2008-4314.patch
-PATCH_DIST_STRIP=		-p2
 
 VARDIR?=						/var
 SAMBA_LOGFILEBASE=	${VARDIR}/log/samba
