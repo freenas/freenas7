@@ -2,7 +2,7 @@
 <?php
 /*
 	system_firewall.php
-	Copyright (C) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -175,6 +175,14 @@ function firewall_process_updatenotification($mode, $data) {
 }
 ?>
 <?php include("fbegin.inc");?>
+
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+}
+//-->
+</script>
 <form action="system_firewall.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
