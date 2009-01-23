@@ -83,8 +83,6 @@ generate_nsswitch_conf()
 			-o "hosts: files dns wins" -n \
 			-o "networks: files" -n \
 			-o "passwd: files winbind" -n \
-			-o "passwd_compat: nis" -n \
-			-o "shells: files" \
 		-b -b \
 		-i "count(//ad/enable) > 0" -i "count(//ldap/enable) > 0" \
 			-o "group: files winbind ldap" -n \
@@ -92,8 +90,6 @@ generate_nsswitch_conf()
 			-o "hosts: files dns wins" -n \
 			-o "networks: files" -n \
 			-o "passwd: files winbind ldap" -n \
-			-o "passwd_compat: nis" -n \
-			-o "shells: files" \
 		-b -b \
 		-i "count(//ad/enable) = 0" -i "count(//ldap/enable) > 0" \
 			-o "group: files ldap" -n \
@@ -101,8 +97,6 @@ generate_nsswitch_conf()
 			-o "hosts: files dns" -n \
 			-o "networks: files" -n \
 			-o "passwd: files ldap" -n \
-			-o "passwd_compat: nis" -n \
-			-o "shells: files" \
 		-b -b \
 		-i "count(//ad/enable) = 0" -i "count(//ldap/enable) = 0" \
 			-o "group: compat" -n \
@@ -110,9 +104,13 @@ generate_nsswitch_conf()
 			-o "hosts: files dns" -n \
 			-o "networks: files" -n \
 			-o "passwd: compat" -n \
-			-o "passwd_compat: nis" -n \
-			-o "shells: files" \
 		-b -b \
+		-o "passwd_compat: nis" -n \
+		-o "shells: files" -n \
+		-o "services: compat" -n \
+		-o "services_compat: nis" -n \
+		-o "protocols: files" -n \
+		-o "rpc: files" \
 		${configxml_file} | /usr/local/bin/xml unesc > ${nsswitch_conf}
 }
 
