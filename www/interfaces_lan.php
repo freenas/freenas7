@@ -36,7 +36,7 @@ $pgtitle = array(gettext("Network"), gettext("Interfaces"), gettext("LAN"));
 $lancfg = &$config['interfaces']['lan'];
 $optcfg = &$config['interfaces']['lan']; // Required for WLAN.
 
-if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
+if (strcmp($lancfg['ipaddr'], "dhcp") == 0) {
 	$pconfig['type'] = "DHCP";
 	$pconfig['ipaddr'] = get_ipaddr($lancfg['if']);
 	$pconfig['subnet'] = get_subnet_bits($lancfg['if']);
@@ -45,10 +45,8 @@ if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
 	$pconfig['ipaddr'] = $lancfg['ipaddr'];
 	$pconfig['subnet'] = $lancfg['subnet'];
 }
-
 $pconfig['ipv6_enable'] = isset($lancfg['ipv6_enable']);
-
-if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
+if (strcmp($lancfg['ipv6addr'], "auto") == 0) {
 	$pconfig['ipv6type'] = "Auto";
 	$pconfig['ipv6addr'] = get_ipv6addr($lancfg['if']);
 } else {
@@ -56,15 +54,15 @@ if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
 	$pconfig['ipv6addr'] = $lancfg['ipv6addr'];
 	$pconfig['ipv6subnet'] = $lancfg['ipv6subnet'];
 }
-
 $pconfig['gateway'] = get_defaultgateway();
 $pconfig['ipv6gateway'] = get_ipv6defaultgateway();
-
 $pconfig['mtu'] = $lancfg['mtu'];
 $pconfig['media'] = $lancfg['media'];
 $pconfig['mediaopt'] = $lancfg['mediaopt'];
 $pconfig['polling'] = isset($lancfg['polling']);
 $pconfig['extraoptions'] = $lancfg['extraoptions'];
+if (preg_match($g['wakeonlan_regex'], get_ifname($lancfg['if'])))
+	$pconfig['wakeon'] = $lancfg['wakeon'];
 
 /* Wireless interface? */
 if (isset($lancfg['wireless'])) {
@@ -142,6 +140,8 @@ if ($_POST) {
 		$lancfg['mediaopt'] = $_POST['mediaopt'];
 		$lancfg['polling'] = $_POST['polling'] ? true : false;
 		$lancfg['extraoptions'] = $_POST['extraoptions'];
+		if (preg_match($g['wakeonlan_regex'], get_ifname($lancfg['if'])))
+			$lancfg['wakeon'] = $_POST['wakeon'];
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -153,10 +153,10 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.ipv6_enable.checked || enable_change);
-	
+
 	if (enable_change.name == "ipv6_enable") {
 		endis = !enable_change.checked;
-	
+
 		document.iform.ipv6type.disabled = endis;
 		document.iform.ipv6addr.disabled = endis;
 		document.iform.ipv6subnet.disabled = endis;
@@ -178,7 +178,7 @@ function type_change() {
 			document.iform.subnet.disabled = 0;
 			document.iform.gateway.disabled = 0;
 			break;
-		
+
 		case 1: /* DHCP */
 			document.iform.ipaddr.disabled = 1;
 			document.iform.subnet.disabled = 1;
@@ -196,7 +196,7 @@ function ipv6_type_change() {
 			document.iform.ipv6subnet.disabled = endis;
 			document.iform.ipv6gateway.disabled = endis;
 			break;
-		
+
 		case 1: /* Autoconfigure */
 			document.iform.ipv6addr.disabled = 1;
 			document.iform.ipv6subnet.disabled = 1;
@@ -210,7 +210,7 @@ function media_change() {
 		case "autoselect":
 			showElementById('mediaopt_tr','hide');
 			break;
-		
+
 		default:
 			showElementById('mediaopt_tr','show');
 			break;
@@ -226,14 +226,14 @@ function encryption_change() {
 			showElementById('wpa_pairwise_tr','hide');
 			showElementById('wpa_psk_tr','hide');
 			break;
-	
+
 		case "wep":
 			showElementById('wep_key_tr','show');
 			showElementById('wpa_keymgmt_tr','hide');
 			showElementById('wpa_pairwise_tr','hide');
 			showElementById('wpa_psk_tr','hide');
 			break;
-	
+
 		case "wpa":
 			showElementById('wep_key_tr','hide');
 			showElementById('wpa_keymgmt_tr','show');
@@ -267,6 +267,9 @@ function encryption_change() {
 					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
 					<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
+					<?php if (preg_match($g['wakeonlan_regex'], get_ifname($lancfg['if']))):?>
+					<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], array("off" => "off", "magic" => "magic", "unicast" => "unicast", "multicast" => "multicast", "broadcast" => "broadcast", "link" => "link"), "", false);?>
+					<?php endif;?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 					<?php if (isset($lancfg['wireless'])) wireless_config_print();?>
 			  </table>
