@@ -35,6 +35,9 @@ Help needed:
 FreeNAS 0.69.1 (Kwisatz Haderach):
 ----------------------------------
 
+Majors changes:
+- Upgrade Samba to 3.0.34.
+
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
 - Add 'Authentication' checkbox on 'Services|BitTorrent' page to enable/disable
