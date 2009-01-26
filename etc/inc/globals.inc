@@ -101,4 +101,13 @@ $g_filesystems = array(
 	"softraid" => "Software RAID",
 	"geli" => "Encrypted"
 );
+
+/* WOL wake events */
+$g_wakeonlanevents = array(
+	"nfe" => array("magic" => "magic"),
+	"nve" => array("magic" => "magic"),
+	"sis" => array("magic" => "magic", "unicast" => "unicast", "multicast" => "multicast", "broadcast" => "broadcast"),
+	"vr" => array("magic" => "magic", "unicast" => "unicast"),
+	"xl" => array("magic" => "magic", "link" => "link")
+);
 ?>

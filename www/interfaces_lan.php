@@ -267,8 +267,8 @@ function encryption_change() {
 					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
 					<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
-					<?php if (preg_match($g['wakeonlan_regex'], get_ifname($lancfg['if']))):?>
-					<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], array("off" => "off", "magic" => "magic", "unicast" => "unicast", "multicast" => "multicast", "broadcast" => "broadcast", "link" => "link"), "", false);?>
+					<?php if (preg_match($g['wakeonlan_regex'], get_ifname($optcfg['if']), $matches)):?>
+					<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], array_merge(array("off" => "off"), $g_wakeonlanevents[$matches[1]]), "", false);?>
 					<?php endif;?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 					<?php if (isset($lancfg['wireless'])) wireless_config_print();?>
