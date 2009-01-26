@@ -11,6 +11,7 @@ Minors changes:
 - Add checkbox to enable WOL on 'Network|Interfaces|LAN' and 'Interfaces|Optionalx'
   pages. Please note that WOL only works for nfe, nve, sis, vr, xl. Thanks to
   Tobias Reber for the patch.
+- Add traceroute6 command (FR 2531610).
 
 Bug fixes:
 - Set friendly name in fuppes.cfg for Xbox 360 (BR 2519324).

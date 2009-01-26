@@ -451,6 +451,9 @@ usr/sbin/rtsold:sbin/rtsol
 ##  traceroute -- print the route packets take to network host
 usr/sbin/traceroute
 
+## traceroute6 -- print the route IPv6 packets will take to a network node
+usr/sbin/traceroute6
+
 ## wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
 usr/sbin/wicontrol
 
