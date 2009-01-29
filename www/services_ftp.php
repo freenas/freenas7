@@ -69,6 +69,7 @@ $pconfig['allowrestart'] = isset($config['ftpd']['allowrestart']);
 $pconfig['permitrootlogin'] = isset($config['ftpd']['permitrootlogin']);
 $pconfig['chrooteveryone'] = isset($config['ftpd']['chrooteveryone']);
 $pconfig['identlookups'] = isset($config['ftpd']['identlookups']);
+$pconfig['usereversedns'] = isset($config['ftpd']['usereversedns']);
 $pconfig['tls'] = isset($config['ftpd']['tls']);
 $pconfig['tlsrequired'] = isset($config['ftpd']['tlsrequired']);
 $pconfig['privatekey'] = base64_decode($config['ftpd']['privatekey']);
@@ -148,6 +149,7 @@ if ($_POST) {
 		$config['ftpd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
 		$config['ftpd']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
 		$config['ftpd']['identlookups'] = $_POST['identlookups'] ? true : false;
+		$config['ftpd']['usereversedns'] = $_POST['usereversedns'] ? true : false;
 		$config['ftpd']['tls'] = $_POST['tls'] ? true : false;
 		$config['ftpd']['tlsrequired'] = $_POST['tlsrequired'] ? true : false;
 		$config['ftpd']['privatekey'] = base64_encode($_POST['privatekey']);
@@ -200,6 +202,7 @@ function enable_change(enable_change) {
 	document.iform.directorymask.disabled = endis;
 	document.iform.chrooteveryone.disabled = endis;
 	document.iform.identlookups.disabled = endis;
+	document.iform.usereversedns.disabled = endis;
 	document.iform.tls.disabled = endis;
 	document.iform.tlsrequired.disabled = endis;
 	document.iform.privatekey.disabled = endis;
@@ -280,6 +283,7 @@ function anonymousonly_change() {
 					<?php html_checkbox("allowrestart", gettext("Resume"), $pconfig['allowrestart'] ? true : false, gettext("Allow clients to resume interrupted uploads and downloads."), "", false);?>
 					<?php html_checkbox("chrooteveryone", gettext("Default root"), $pconfig['chrooteveryone'] ? true : false, gettext("chroot() everyone, but root."), gettext("If default root is enabled, a chroot operation is performed immediately after a client authenticates. This can be used to effectively isolate the client from a portion of the host system filespace."), false);?>
 					<?php html_checkbox("identlookups", gettext("Ident protocol"), $pconfig['identlookups'] ? true : false, gettext("Enable the ident protocol (RFC1413)."), gettext("When a client initially connects to the server the ident protocol is used to attempt to identify the remote username."), false);?>
+					<?php html_checkbox("usereversedns", gettext("Reverse DNS lookup"), $pconfig['usereversedns'] ? true : false, gettext("Enable reverse DNS lookup."), gettext("Enable reverse DNS lookup performed on the remote host's IP address for incoming active mode data connections and outgoing passive mode data connections."), false);?>
 					<?php html_inputbox("pasv_address", gettext("Masquerade address"), $pconfig['pasv_address'], gettext("Causes the server to display the network information for the specified IP address or DNS hostname to the client, on the assumption that that IP address or DNS host is acting as a NAT gateway or port forwarder for the server."), false, 20);?>
 					<?php html_inputbox("pasv_min_port", gettext("Passive ports"), $pconfig['pasv_min_port'], gettext("The minimum port to allocate for PASV style data connections (0 = use any port)."), false, 20);?>
 					<?php html_inputbox("pasv_max_port", "&nbsp;", $pconfig['pasv_max_port'], gettext("The maximum port to allocate for PASV style data connections (0 = use any port).") . "<br/><br/>" . gettext("Passive ports restricts the range of ports from which the server will select when sent the PASV command from a client. The server will randomly choose a number from within the specified range until an open port is found. The port range selected must be in the non-privileged range (eg. greater than or equal to 1024). It is strongly recommended that the chosen range be large enough to handle many simultaneous passive connections (for example, 49152-65534, the IANA-registered ephemeral port range)."), true, 20);?>
