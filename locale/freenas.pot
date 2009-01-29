@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-01-23 09:35+0000\n"
+"PO-Revision-Date: 2009-01-29 17:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1277,6 +1277,12 @@ msgid "Enable proxy authentication."
 msgstr ""
 
 msgid "Enable recycle bin"
+msgstr ""
+
+msgid "Enable reverse DNS lookup performed on the remote host's IP address for incoming active mode data connections and outgoing passive mode data connections."
+msgstr ""
+
+msgid "Enable reverse DNS lookup."
 msgstr ""
 
 msgid "Enable store DOS attributes"
@@ -2716,6 +2722,9 @@ msgid "Resume"
 msgstr ""
 
 msgid "Retry"
+msgstr ""
+
+msgid "Reverse DNS lookup"
 msgstr ""
 
 msgid "Romanian"
