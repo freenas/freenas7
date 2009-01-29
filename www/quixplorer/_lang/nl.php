@@ -29,11 +29,11 @@ $GLOBALS["error_msg"] = array(
 	"readdir"		=> "Kan map niet lezen.",
 	
 	// access
-	"accessdir"		=> "U hebt geen toegang tot deze map.",
-	"accessfile"		=> "U hebt geen toegang tot dit bestand.",
-	"accessitem"		=> "U hebt geen toegang tot dit item.",
-	"accessfunc"		=> "U hebt geen rechten deze functie te gebruiken.",
-	"accesstarget"		=> "U hebt geen toegang tot de doel map.",
+	"accessdir"		=> "U heeft geen toegang tot deze map.",
+	"accessfile"		=> "U heeft geen toegang tot dit bestand.",
+	"accessitem"		=> "U heeft geen toegang tot dit item.",
+	"accessfunc"		=> "U heeft geen rechten om deze functie te gebruiken.",
+	"accesstarget"		=> "U heeft geen toegang tot de doel map.",
 	
 	// actions
 	"permread"		=> "Rechten opvragen mislukt.",
@@ -50,7 +50,7 @@ $GLOBALS["error_msg"] = array(
 	"deluser"		=> "Gebruiker verwijderen mislukt.",
 	"adduser"		=> "Gebruiker toevoegen mislukt.",
 	"saveuser"		=> "Gebruiker opslaan mislukt.",
-	"searchnothing"		=> "U moet iets te zoeken opgeven.",
+	"searchnothing"		=> "U diend om iets te zoeken juist op te geven.",
 	
 	// misc
 	"miscnofunc"		=> "Functie niet beschikbaar.",
