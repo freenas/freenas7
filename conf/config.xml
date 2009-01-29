@@ -534,6 +534,7 @@
 		<tls/>
 		<allowrestart/>
 		<identlookups/>
+		<usereversedns/>
 		<auxparam></auxparam> // Can be defined multiple times.
 		-->
 	</ftpd>

@@ -6,6 +6,9 @@ Majors changes:
 
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
+- Add 'Reverse DNS lookup' on 'Services|FTP' page. This and the 'Ident protocol'
+  option are disabled per default because they may slow down or break the user
+  login to the FTP server in some situations.
 - Add 'Authentication' checkbox on 'Services|BitTorrent' page to enable/disable
   authentication for TransmissionBT WebGUI.
 - Add checkbox to enable WOL on 'Network|Interfaces|LAN' and 'Interfaces|Optionalx'
@@ -14,7 +17,8 @@ Minors changes:
 - Add traceroute6 command (FR 2531610).
 
 Bug fixes:
-- Set friendly name in fuppes.cfg for Xbox 360 (BR 2519324).
+- Set correct friendly name in fuppes.cfg for Xbox 360. The correct
+  friendly name will be generated automatically (e.g. 'xxxx : 1').
 - Set correct shutdown property in upsmon.conf (BR 2521141).
 - Starting FTP service fails when using DHCP on LAN interface (BR 2519951).
 
