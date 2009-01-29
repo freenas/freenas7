@@ -5,8 +5,7 @@ function gentitle($title) {
 }
 
 function genhtmltitle($title) {
-	global $config;
-	return $config['system']['hostname'] . "." . $config['system']['domain'] . " - " . gentitle($title);
+	return system_get_hostname() . " - " . gentitle($title);
 }
 
 // Menu items.
@@ -173,7 +172,7 @@ function display_menu($menuid) {
 		<a title="www.<?=get_product_url();?>" href="http://www.<?=get_product_url();?>" target="_blank"><img src="/header_logo.png" alt="logo"/></a>
 	</div>
 	<div class="hostname">
-		<span><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
+		<span><?=system_get_hostname();?>&nbsp;</span>
 	</div>
 </div>
 <div id="headernavbar">
