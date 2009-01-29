@@ -284,4 +284,10 @@ function system_get_swap_info() {
 
 	return $swapinfo;
 }
+
+// Get the system hostname.
+// Return hostname string.
+function system_get_hostname() {
+	return @exec("hostname");
+}
 ?>
