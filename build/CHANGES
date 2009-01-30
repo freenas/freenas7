@@ -55,6 +55,7 @@ Bug fixes:
   friendly name will be generated automatically (e.g. 'xxxx : 1').
 - Set correct shutdown property in upsmon.conf (BR 2521141).
 - Starting FTP service fails when using DHCP on LAN interface (BR 2519951).
+- FPSyncDir patch correction (BR 2546107).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
