@@ -1,6 +1,6 @@
 --- etc/afpd/directory.c.orig	2008-05-14 15:30:52.000000000 +0200
 +++ etc/afpd/directory.c	2008-05-14 15:36:36.000000000 +0200
-@@ -2271,6 +2271,53 @@
+@@ -2271,6 +2271,54 @@
      return err;
  }
  
@@ -47,7 +47,8 @@
 +    if ( fsync ( dfd ) < 0 ) {
 +        LOG(log_error, logtype_afpd, "syncdir(%s): ddir(%d) %s", dir->d_u_name, dfd, strerror(errno) );
 +    }
-+   
++    closedir(dp);
++
 +    return ( AFP_OK );
 +}
 +
