@@ -54,7 +54,6 @@ $g = array(
 	"latest_config" => "7.1",
 	"nopccard_platforms" => array("wrap", "net48xx"),
 	"wireless_regex" => "/^(ndis|wi|ath|an|ral|ural|wai|iwi|awi|wlan|ipw|wpi|rum|arl)/",
-	"wakeonlan_regex" => "/^(nfe|nve|sis|vr|xl)\d+/",
 	"default_passwd" => "freenas",
 	"default_ip" => "192.168.1.250"
 );
@@ -101,14 +100,5 @@ $g_filesystems = array(
 	"softraid" => "Software RAID",
 	"geli" => "Encrypted",
 	"zfs" => "ZFS storage pool device"
-);
-
-/* WOL wake events */
-$g_wakeonlanevents = array(
-	"nfe" => array("magic" => "magic"),
-	"nve" => array("magic" => "magic"),
-	"sis" => array("magic" => "magic", "unicast" => "unicast", "multicast" => "multicast", "broadcast" => "broadcast"),
-	"vr" => array("magic" => "magic", "unicast" => "unicast"),
-	"xl" => array("magic" => "magic", "link" => "link")
 );
 ?>

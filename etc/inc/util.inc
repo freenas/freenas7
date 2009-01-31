@@ -1547,6 +1547,11 @@ function get_fstype_shortdesc($fstype) {
 //		[media] => 100baseTX
 //		[ipaddr] => 192.168.178.150
 //		[subnet] => 255.255.255.0
+//		[wolevents] => array("unicast",
+//                           "multicast",
+//                           "broadcast",
+//                           "magic",
+//                           "link")
 // Additional:
 //		[channel] => xxx
 //		[ssid] => xxx
@@ -1609,6 +1614,9 @@ function get_interface_info($if) {
 					$ifinfo['ssid'] = substr($matches[1], 1, -1);
 				else
 					$ifinfo['ssid'] = $matches[1];
+			}
+			if (preg_match("/supported wake events: (.*)$/", $ici, $matches)) {
+				$ifinfo['wolevents'] = explode(" ", $matches[1]);
 			}
 		}
 
