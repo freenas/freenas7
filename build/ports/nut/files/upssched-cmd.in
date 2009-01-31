@@ -65,6 +65,9 @@ Forced shutdown imminent in ${nut_upssched_forced_shutdown_timer} minutes.";
 	no-communication)
 		_message="${_notifymessage}";;
 
+	message)
+		_message="${_notifymessage}.";;
+
 	*)
 		_message="Unknown command: ${1}";
 esac

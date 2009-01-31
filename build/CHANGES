@@ -56,6 +56,8 @@ Bug fixes:
 - Set correct shutdown property in upsmon.conf (BR 2521141).
 - Starting FTP service fails when using DHCP on LAN interface (BR 2519951).
 - FPSyncDir patch correction (BR 2546107).
+- UPS service improvements. Display NUT messages in syslog and send emails when
+  using shutdown mode 'UPS reaches low battery' (BR 2549047).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
