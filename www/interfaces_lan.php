@@ -5,7 +5,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -36,6 +36,9 @@ $pgtitle = array(gettext("Network"), gettext("Interfaces"), gettext("LAN"));
 $lancfg = &$config['interfaces']['lan'];
 $optcfg = &$config['interfaces']['lan']; // Required for WLAN.
 
+// Get interface informations.
+$ifinfo = get_interface_info(get_ifname($lancfg['if']));
+
 if (strcmp($lancfg['ipaddr'], "dhcp") == 0) {
 	$pconfig['type'] = "DHCP";
 	$pconfig['ipaddr'] = get_ipaddr($lancfg['if']);
@@ -61,7 +64,7 @@ $pconfig['media'] = $lancfg['media'];
 $pconfig['mediaopt'] = $lancfg['mediaopt'];
 $pconfig['polling'] = isset($lancfg['polling']);
 $pconfig['extraoptions'] = $lancfg['extraoptions'];
-if (preg_match($g['wakeonlan_regex'], get_ifname($lancfg['if'])))
+if (!empty($ifinfo['wolevents']))
 	$pconfig['wakeon'] = $lancfg['wakeon'];
 
 /* Wireless interface? */
@@ -140,7 +143,7 @@ if ($_POST) {
 		$lancfg['mediaopt'] = $_POST['mediaopt'];
 		$lancfg['polling'] = $_POST['polling'] ? true : false;
 		$lancfg['extraoptions'] = $_POST['extraoptions'];
-		if (preg_match($g['wakeonlan_regex'], get_ifname($lancfg['if'])))
+		if (!empty($ifinfo['wolevents']))
 			$lancfg['wakeon'] = $_POST['wakeon'];
 
 		write_config();
@@ -267,8 +270,9 @@ function encryption_change() {
 					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
 					<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
-					<?php if (preg_match($g['wakeonlan_regex'], get_ifname($optcfg['if']), $matches)):?>
-					<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], array_merge(array("off" => "off"), $g_wakeonlanevents[$matches[1]]), "", false);?>
+					<?php if (!empty($ifinfo['wolevents'])):?>
+					<?php $wakeonoptions = array("off" => "off"); foreach ($ifinfo['wolevents'] as $woleventv) { $wakeonoptions[$woleventv] = $woleventv; };?>
+					<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], $wakeonoptions, "", false);?>
 					<?php endif;?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 					<?php if (isset($lancfg['wireless'])) wireless_config_print();?>
