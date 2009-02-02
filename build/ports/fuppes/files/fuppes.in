@@ -264,6 +264,10 @@ EOF
             <audio_bitrate>192000</audio_bitrate>
           </transcode>
         </file>
+        <file ext="iso">
+          <type>VIDEO_ITEM</type>
+          <mime_type>application/x-iso-image</mime_type>
+        </file>
 <!--playlists-->
         <file ext="pls">
           <type>PLAYLIST</type>
