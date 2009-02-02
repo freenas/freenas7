@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
-"PO-Revision-Date: 2009-01-13 16:24+0000\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
+"PO-Revision-Date: 2009-01-29 14:31+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -223,7 +223,7 @@ msgstr "authentification AD désactivée"
 
 msgid "AD or PDC name."
 msgstr ""
-"Nom du serveur Active Directory ou du Controleur Principal de Domaine NT4."
+"Nom du serveur Active Directory ou du Contrôleur Principal de Domaine NT4."
 
 msgid "AFP"
 msgstr "AFP"
@@ -424,6 +424,9 @@ msgstr "Tous les utilisateurs auront les privilèges root."
 
 msgid "Allow"
 msgstr "Autoriser"
+
+msgid "Allow TLS/SSL connections only."
+msgstr "Permettez les raccordements de TLS/SSL seulement."
 
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Autoriser l'accès client aux comptes ayant un mot de passe vide"
@@ -743,7 +746,7 @@ msgid "Command output:"
 msgstr "Résultat de la commande:"
 
 msgid "Command scripts"
-msgstr "Command scripts"
+msgstr "Scripts de commande"
 
 msgid "Comment"
 msgstr "Commentaire"
@@ -1271,7 +1274,7 @@ msgid "Domain"
 msgstr "Domaine"
 
 msgid "Domain controller name"
-msgstr "Nom du controleur de domaine"
+msgstr "Nom du contrôleur de domaine"
 
 msgid "Domain name"
 msgstr "Nom de domaine"
@@ -1464,7 +1467,7 @@ msgid "Enable compression."
 msgstr "Active la compression."
 
 msgid "Enable device polling"
-msgstr "Activer le Sondage de périphérique"
+msgstr "Activer le sondage de périphérique"
 
 msgid "Enable directory listing."
 msgstr "Activer le listing des répertoires."
@@ -1508,6 +1511,15 @@ msgstr "Activer l'authentification proxy"
 
 msgid "Enable recycle bin"
 msgstr "Activer poubelle"
+
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+
+msgid "Enable reverse DNS lookup."
+msgstr ""
 
 msgid "Enable store DOS attributes"
 msgstr "Activer les attributs de stockage DOS"
@@ -3170,6 +3182,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Rapports"
 
+msgid "Require authentication."
+msgstr "Exigez l'authentification."
+
 msgid "Rescan interval"
 msgstr "Intervalle de re-scannage"
 
@@ -3194,6 +3209,9 @@ msgstr "Reprise"
 
 msgid "Retry"
 msgstr "Réessayer"
+
+msgid "Reverse DNS lookup"
+msgstr ""
 
 msgid "Romanian"
 msgstr "Roumain"
@@ -3269,6 +3287,9 @@ msgstr "SSID"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
+
+msgid "SSL/TLS only"
+msgstr "SSL/TLS seulement"
 
 msgid "Save"
 msgstr "Sauvegarder"
@@ -3939,7 +3960,7 @@ msgstr ""
 "L'<i>adresse</i> peut être un nom d'hôte valide, une adresse IP ou une "
 "adresse IPv6 entre crochets. Le champ <i>action</i> peut être soit "
 "<i>allow</i> ou <i>deny</i> pour respectivement autoriser ou interdire les "
-"accès.\n"
+"accès.\r\n"
 "Gardez bien en tête que le configuration fonctionne sur la première règle "
 "satisfaite, c'est à dire que le fichier de configuration est parcouru à "
 "partir du début vers la fin jusqu'à trouver une règle satisfaisante. Dès "
@@ -3957,7 +3978,7 @@ msgstr ""
 "votre serveur NAS pour que les modifications prennent effet."
 
 msgid "The cleartext credentials with which to bind."
-msgstr ""
+msgstr "Mot de passe en clair utilisé pour le bind."
 
 msgid "The combination of share and working directory does not exist."
 msgstr "Cette combinaison partage/répertoire de travail n'existe pas."
@@ -3990,7 +4011,7 @@ msgstr ""
 "mots de passe concordent exactement."
 
 msgid "The credentials with which to bind."
-msgstr ""
+msgstr "Mot de passe utilisé pour le bind."
 
 msgid "The cron job has been executed successfully."
 msgstr "La tâche cron a été éxécutée avec succès."
@@ -4110,7 +4131,7 @@ msgid "The old password is not correct."
 msgstr "L'ancien mot de passe est incorrect"
 
 msgid "The password change protocol to use."
-msgstr "Le protocole de changement de mot de passe à utiliser."
+msgstr "Le protocole de cryptage à utiliser pour le mot de passe."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Le mot de passe contient le caractère invalide ':'."
@@ -4663,6 +4684,10 @@ msgid ""
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">System</li></ul></div>"
 msgstr ""
+"Pour utiliser Active Directory, le service CIFS/SMB sera automatiquement "
+"activé. Les services suivants vont utiliser l'authentification par AD: <div "
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
+">System</li></ul></div>"
 
 msgid "Tools"
 msgstr "Outils"
@@ -4962,6 +4987,9 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+msgid "Wake On LAN"
+msgstr "Wake On LAN"
 
 msgid "Warning"
 msgstr "Avertissement"

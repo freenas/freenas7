@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
-"PO-Revision-Date: 2008-09-23 12:55+0000\n"
-"Last-Translator: laurb <Unknown>\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
+"PO-Revision-Date: 2009-01-24 07:04+0000\n"
+"Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -393,6 +393,9 @@ msgstr "Toti utilizatorii vor avea privilegii de root."
 msgid "Allow"
 msgstr "Permite"
 
+msgid "Allow TLS/SSL connections only."
+msgstr ""
+
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Permisiune acces pentru conturile cu parolă nulă."
 
@@ -470,7 +473,7 @@ msgid "Anonymous users only"
 msgstr "Doar utilizatori anonimi"
 
 msgid "Any"
-msgstr ""
+msgstr "Oricare"
 
 msgid "Apple Filing Protocol"
 msgstr ""
@@ -479,7 +482,7 @@ msgid "Apply changes"
 msgstr "Aplicare modificari"
 
 msgid "Archive"
-msgstr ""
+msgstr "Arhivă"
 
 msgid "Archive mode."
 msgstr ""
@@ -515,7 +518,7 @@ msgid "Authentication"
 msgstr "Autentificare"
 
 msgid "Authentication method"
-msgstr ""
+msgstr "Metodă de autentificare"
 
 msgid "Authorised network"
 msgstr "Retea Autorizata"
@@ -560,7 +563,7 @@ msgid "Browseable"
 msgstr "Vizibil"
 
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgară"
 
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
@@ -633,10 +636,10 @@ msgid "Check shared secret:"
 msgstr "Verificare partajare secreta:"
 
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Chineză (Simplificată)"
 
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Chineză (Tradiţională)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -648,7 +651,7 @@ msgid "Choose which interface this route applies to."
 msgstr "Selectati interfata pentru aceasta ruta."
 
 msgid "Clear"
-msgstr ""
+msgstr "Curăță"
 
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
@@ -707,7 +710,7 @@ msgid "Compliant profile to be used."
 msgstr "Profilul folosit implicit."
 
 msgid "Compress"
-msgstr ""
+msgstr "Compresează"
 
 msgid "Compress file data during the transfer."
 msgstr ""
@@ -780,7 +783,7 @@ msgid "Creating partition"
 msgstr ""
 
 msgid "Credits"
-msgstr ""
+msgstr "Credite"
 
 msgid "Critical"
 msgstr "Critic"
@@ -792,7 +795,7 @@ msgid "Cron job"
 msgstr "Lista Cron"
 
 msgid "Custom"
-msgstr ""
+msgstr "Personalizat"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -978,7 +981,7 @@ msgid "Destination network for this static route"
 msgstr "Reteaua destinatie pentru aceasta ruta statica"
 
 msgid "Destination port"
-msgstr ""
+msgstr "Portul de destinatie"
 
 msgid "Destination share"
 msgstr "Partajare Destinatie"
@@ -1043,7 +1046,7 @@ msgid "Digital Audio Access Protocol"
 msgstr ""
 
 msgid "Direction"
-msgstr ""
+msgstr "Direcţie"
 
 msgid "Directory"
 msgstr "Director"
@@ -1252,7 +1255,7 @@ msgid "Dos charset"
 msgstr "Caractere Dos"
 
 msgid "Download"
-msgstr ""
+msgstr "Descarcă"
 
 msgid "Download configuration"
 msgstr "Descarcare configuratie"
@@ -1276,7 +1279,7 @@ msgid "Duplicate share name."
 msgstr ""
 
 msgid "Dutch"
-msgstr ""
+msgstr "Olandeză"
 
 msgid "Dynamic DNS"
 msgstr "DNS Dynamic"
@@ -1442,6 +1445,15 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr "Activare Cos"
 
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+
+msgid "Enable reverse DNS lookup."
+msgstr ""
+
 msgid "Enable store DOS attributes"
 msgstr "Activare salvare atribute DOS"
 
@@ -1494,7 +1506,7 @@ msgid "Encryption algorithm"
 msgstr "Algoritm criptare"
 
 msgid "English"
-msgstr ""
+msgstr "Engleză"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1538,7 +1550,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Eroare: Schimbarile nu pot fi aplicate (cod de eroare %s)."
 
 msgid "Execute"
-msgstr ""
+msgstr "Execută"
 
 msgid "Execute command"
 msgstr "Executare comanda"
@@ -1551,10 +1563,10 @@ msgstr ""
 "de oprirea systemului."
 
 msgid "Execute now"
-msgstr ""
+msgstr "Execută acum"
 
 msgid "Export"
-msgstr ""
+msgstr "Exportă"
 
 msgid "Extensions"
 msgstr "Extensii"
@@ -1573,7 +1585,7 @@ msgstr ""
 "folosite, si pot fi utilizate doar o singura data."
 
 msgid "Extra options"
-msgstr ""
+msgstr "Opţiuni suplimentare"
 
 msgid "Extra options (usually empty)."
 msgstr ""
@@ -1666,7 +1678,7 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
-msgstr ""
+msgstr "Gestionar de fișiere"
 
 msgid "File Transfer Protocol"
 msgstr ""
@@ -1740,7 +1752,7 @@ msgid "Free disk space"
 msgstr ""
 
 msgid "French"
-msgstr ""
+msgstr "Franceză"
 
 msgid "From email"
 msgstr "De la email"
@@ -1749,7 +1761,7 @@ msgid "Fsck"
 msgstr "Fsck"
 
 msgid "Full"
-msgstr ""
+msgstr "Complet"
 
 msgid "Full Name"
 msgstr "Nume Complet"
@@ -1770,7 +1782,7 @@ msgid "General Setup"
 msgstr "Setări generale"
 
 msgid "German"
-msgstr ""
+msgstr "Germană"
 
 msgid "Give full shell access to user."
 msgstr ""
@@ -1785,7 +1797,7 @@ msgid "Graph shows last"
 msgstr "Graphic final"
 
 msgid "Greek"
-msgstr ""
+msgstr "Greacă"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Baner afisat la conectare de catre server-ul FTP."
@@ -1887,7 +1899,7 @@ msgstr ""
 "este definita in secunde, valoarea maxima fiind 10 zile."
 
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungară"
 
 msgid "I/O errors"
 msgstr "Erori I/O"
@@ -2022,7 +2034,7 @@ msgid "Image upload failed (out of memory?)"
 msgstr "Eroare la incarcarea imaginii (memorie insuficienta?)"
 
 msgid "Import"
-msgstr ""
+msgstr "Importă"
 
 msgid "Import firewall rules."
 msgstr ""
@@ -2060,7 +2072,7 @@ msgstr ""
 "encryptat."
 
 msgid "Initializing"
-msgstr ""
+msgstr "Initializare"
 
 msgid "Initializing partition"
 msgstr "Initializare partitie"
@@ -2105,7 +2117,7 @@ msgstr ""
 "local\" in acelasi timp."
 
 msgid "Italian"
-msgstr ""
+msgstr "Italiană"
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2118,7 +2130,7 @@ msgstr ""
 "Octombrie Noiembrie Decembrie"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Japoneză"
 
 msgid "Key"
 msgstr "Cheie"
@@ -2327,7 +2339,7 @@ msgid "Management"
 msgstr "Configurare"
 
 msgid "Manufacturer"
-msgstr ""
+msgstr "Producător"
 
 msgid "Map all users to root"
 msgstr "Mapare toti utilizatori in root"
@@ -2529,7 +2541,7 @@ msgid "Normal"
 msgstr ""
 
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "Norvegiană (Bokmal)"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -2618,13 +2630,13 @@ msgstr ""
 "pentru restaurarea configuratiei."
 
 msgid "Option"
-msgstr ""
+msgstr "Opţiune"
 
 msgid "Options"
-msgstr ""
+msgstr "Opţiuni"
 
 msgid "Others"
-msgstr ""
+msgstr "Altele"
 
 msgid "Out"
 msgstr "Out"
@@ -2636,7 +2648,7 @@ msgid "Outgoing mail server"
 msgstr "Server de trimitere pentru email."
 
 msgid "Owner"
-msgstr ""
+msgstr "Proprietar"
 
 msgid "PHP Command"
 msgstr ""
@@ -2763,7 +2775,7 @@ msgid "Please note that blanks in path names are not allowed."
 msgstr ""
 
 msgid "Polish"
-msgstr ""
+msgstr "Poloneză"
 
 msgid "Polling time"
 msgstr "Interval verificare"
@@ -2796,10 +2808,10 @@ msgid ""
 msgstr ""
 
 msgid "Ports"
-msgstr ""
+msgstr "Porturi"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugheză"
 
 msgid "PostInit"
 msgstr ""
@@ -2930,7 +2942,7 @@ msgid "Raid name"
 msgstr "Nume Raid"
 
 msgid "Read"
-msgstr ""
+msgstr "Citeşte"
 
 msgid "Read Only Access"
 msgstr ""
@@ -2957,7 +2969,7 @@ msgid "Recurse into directories."
 msgstr ""
 
 msgid "Recursive"
-msgstr ""
+msgstr "Recursiv"
 
 msgid "Recycle bin"
 msgstr "Cos"
@@ -3002,6 +3014,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Rapoarte"
 
+msgid "Require authentication."
+msgstr ""
+
 msgid "Rescan interval"
 msgstr ""
 
@@ -3026,8 +3041,11 @@ msgstr "Continua"
 msgid "Retry"
 msgstr "Reincearca"
 
-msgid "Romanian"
+msgid "Reverse DNS lookup"
 msgstr ""
+
+msgid "Romanian"
+msgstr "Română"
 
 msgid "Root bind DN"
 msgstr ""
@@ -3054,7 +3072,7 @@ msgid "Rsync job"
 msgstr ""
 
 msgid "Rule"
-msgstr ""
+msgstr "Regulă"
 
 msgid "Rule number"
 msgstr ""
@@ -3063,13 +3081,13 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run now"
-msgstr ""
+msgstr "Execută"
 
 msgid "Running"
-msgstr ""
+msgstr "În execuţie"
 
 msgid "Russian"
-msgstr ""
+msgstr "Rusă"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3099,6 +3117,9 @@ msgid "SSID"
 msgstr "SSID"
 
 msgid "SSL/TLS"
+msgstr ""
+
+msgid "SSL/TLS only"
 msgstr ""
 
 msgid "Save"
@@ -3314,7 +3335,7 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
 msgid "Slovenian"
-msgstr ""
+msgstr "Sârbă"
 
 msgid "Sockets"
 msgstr ""
@@ -3347,7 +3368,7 @@ msgid "Space Used"
 msgstr "Spatiu Utilizat"
 
 msgid "Spanish"
-msgstr ""
+msgstr "Spaniolă"
 
 msgid "Specifies how many servers to create."
 msgstr ""
@@ -3470,7 +3491,7 @@ msgid "Swap usage"
 msgstr ""
 
 msgid "Swedish"
-msgstr ""
+msgstr "Suedeză"
 
 msgid "Switch to"
 msgstr "Comutare la"
@@ -3558,7 +3579,7 @@ msgid "Temperature monitoring"
 msgstr ""
 
 msgid "Temporary directory"
-msgstr ""
+msgstr "Director temporar"
 
 msgid "Temporary directory to store transcoded files."
 msgstr ""
@@ -4559,7 +4580,7 @@ msgid "Value"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "Variabilă"
 
 msgid "Version"
 msgstr "Versiune"
@@ -4598,6 +4619,9 @@ msgid "WPA-PSK (Pre Shared Key)"
 msgstr ""
 
 msgid "WPA-PSK WPA-EAP"
+msgstr ""
+
+msgid "Wake On LAN"
 msgstr ""
 
 msgid "Warning"
