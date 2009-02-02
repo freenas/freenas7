@@ -37,6 +37,7 @@ FreeNAS 0.69.1 (Kwisatz Haderach):
 
 Majors changes:
 - Upgrade Samba to 3.0.34.
+- Upgrade ProFTPD to 1.3.2rc4.
 
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
