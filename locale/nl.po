@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
-"PO-Revision-Date: 2009-01-12 23:41+0000\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
+"PO-Revision-Date: 2009-02-01 03:55+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -429,6 +429,9 @@ msgstr "Alle gebruikers zullen root bevoegdheden hebben."
 msgid "Allow"
 msgstr "Toestaan"
 
+msgid "Allow TLS/SSL connections only."
+msgstr "Alleen toestaan van TLS/SSL verbindingen."
+
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Sta werkstations toe tot accounts met een leeg wachtwoord."
 
@@ -442,7 +445,7 @@ msgid "Allow clients to resume interrupted uploads and downloads."
 msgstr "Sta toe dat cliënten onderbroken uploads/downloads kunnen hervatten."
 
 msgid "Allow new files"
-msgstr "Nieuwe bestanden toestaan"
+msgstr "Nieuwe bestanden toelaten"
 
 msgid "Allow new files to be created."
 msgstr "Sta toe dat nieuwe bestanden kunnen worden aangemaakt."
@@ -1516,6 +1519,18 @@ msgstr "Inschakelen proxy authenticatie."
 msgid "Enable recycle bin"
 msgstr "Inschakelen prullenbak"
 
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+"Inschakelen reverse DNS lookup, deze is operationeel op de remote hosts IP "
+"adres voor binnenkomende actieve dataverbindingen en uitgaande passieve mode "
+"dataverbindingen."
+
+msgid "Enable reverse DNS lookup."
+msgstr "Inschakelen reverse DNS lookup."
+
 msgid "Enable store DOS attributes"
 msgstr "Inschakelen opslaan van DOS attributen."
 
@@ -1757,16 +1772,16 @@ msgid "File"
 msgstr "Bestand"
 
 msgid "File Editor"
-msgstr "Bestand Editor"
+msgstr "Bestands Editor"
 
 msgid "File Manager"
-msgstr "Bestand Manager"
+msgstr "Bestands Manager"
 
 msgid "File Transfer Protocol"
 msgstr "Bestands Overdracht Protocol"
 
 msgid "File not found"
-msgstr "Bestand is niet gevonden"
+msgstr "Bestand niet gevonden"
 
 msgid "File path"
 msgstr "Bestand pad"
@@ -1946,7 +1961,7 @@ msgid "Host"
 msgstr "Host"
 
 msgid "Host access control"
-msgstr "Host toegangs controle"
+msgstr "Host toegangscontrole"
 
 msgid "Host name"
 msgstr "Hostnaam"
@@ -2130,7 +2145,7 @@ msgstr ""
 "Als u op 'Ja' drukt, zal %s direct naar de standaard fabrieksinstellingen "
 "terugkeren, een herstart zal volgen. De huidige systeemconfiguratie wordt "
 "overschreven. Het LAN IP adres verandert in IP %s en het wachtwoord wijzigt "
-"in '%s'."
+"naar '%s'."
 
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
@@ -2497,7 +2512,9 @@ msgid "Maximum connections"
 msgstr "Maximaal aantal verbindingen"
 
 msgid "Maximum idle time in seconds."
-msgstr "Maximale rusttijd in seconden."
+msgstr ""
+"De maximale rusttijd in seconden dat proftpd toestaat clienten verbonden te "
+"houden zonder data te ontvangen. 0 schakeld de timer in zijn geheel uit."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
@@ -2734,7 +2751,7 @@ msgid "Number of clients"
 msgstr "Aantal gebruikers"
 
 msgid "Number of log entries to show"
-msgstr "Stel hier het aantal regels in van het logboek"
+msgstr "Het aantal logregels dat bijgehouden moet worden"
 
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr ""
@@ -2960,7 +2977,7 @@ msgstr "Poort om op te luisteren. Standaard iTunes poort 3689."
 
 #, php-format
 msgid "Port to listen on. Default port is %d."
-msgstr "Poort om op te luisteren. Standaard poort %d."
+msgstr "Poort om op te luisteren. Standaard poort is %d."
 
 #, php-format
 msgid ""
@@ -2968,7 +2985,7 @@ msgid ""
 "through %d). Default port is %d."
 msgstr ""
 "Poort om op te luisteren. Alleen dynamische of privé poorten kunnen gebruikt "
-"worden (van %d tot %d). De standaard poort is %d."
+"worden (van %d tot %d). Standaard poort is %d."
 
 msgid "Ports"
 msgstr "Poorten"
@@ -3183,6 +3200,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Rapporten"
 
+msgid "Require authentication."
+msgstr "Vereis authenticatie."
+
 msgid "Rescan interval"
 msgstr "Rescan interval"
 
@@ -3208,6 +3228,9 @@ msgstr "Hervatten"
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
+msgid "Reverse DNS lookup"
+msgstr "Reverse DNS lookup"
+
 msgid "Romanian"
 msgstr "Roemeens"
 
@@ -3221,10 +3244,10 @@ msgid "Roundrobin"
 msgstr "Roundrobin"
 
 msgid "Routes"
-msgstr "Routerings tabellen"
+msgstr "Route Tabellen"
 
 msgid "Routing tables"
-msgstr "Routerings tabellen"
+msgstr "Route tabellen"
 
 msgid "Rows"
 msgstr "Rijen"
@@ -3282,6 +3305,9 @@ msgstr "SSID"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
+
+msgid "SSL/TLS only"
+msgstr "Alleen SSL/TLS"
 
 msgid "Save"
 msgstr "Opslaan"
@@ -3832,7 +3858,7 @@ msgid "The TCP idle timeout must be an integer."
 msgstr "De TCP rust inactiviteitsduur moet een geheel getal zijn."
 
 msgid "The TCP port must be a valid port number."
-msgstr "De TCP poort moet een geldig poort nummer zijn."
+msgstr "De TCP poort moet een geldig poortnummer zijn."
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "De VLAN ID moet tussen de 1 en 4094 zijn."
@@ -3895,7 +3921,7 @@ msgstr "Het attribuut '%s' schijnt geen geldige privé sleutel te zijn."
 
 #, c-format
 msgid "The attribute '%s' is an invalid port number."
-msgstr "Het attribuut '%s' is een ongeldig poort nummer."
+msgstr "Het attribuut '%s' is een ongeldig poortnummer."
 
 #, c-format
 msgid "The attribute '%s' is invalid."
@@ -4105,14 +4131,14 @@ msgid ""
 "port)."
 msgstr ""
 "De maximale poort die toegewezen mag worden voor de PASV type "
-"dataverbindingen (0 = gebruik elke poort)."
+"dataverbindingen (0 = gebruik alle poorten)."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr ""
 "De minimale poort die toegewezen mag worden aan de PASV type "
-"dataverbindingen (0 = gebruik elke poort)."
+"dataverbindingen (0 = gebruik alle poorten)."
 
 msgid "The name or IP address of the LDAP server."
 msgstr "Naam of IP adres van de LDAP server."
@@ -4990,6 +5016,9 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+msgid "Wake On LAN"
+msgstr "Wake On LAN"
 
 msgid "Warning"
 msgstr "Waarschuwing"

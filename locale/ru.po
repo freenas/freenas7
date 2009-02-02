@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
-"PO-Revision-Date: 2009-01-16 13:06+0000\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
+"PO-Revision-Date: 2009-01-29 19:32+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-17 10:20+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -420,6 +420,9 @@ msgstr "Все пользователи будут иметь права уче�
 
 msgid "Allow"
 msgstr "Разрешить"
+
+msgid "Allow TLS/SSL connections only."
+msgstr "Разрешить только TLS/SSL соединения"
 
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Разрешить клиентский доступ к учетным записям без пароля"
@@ -1492,6 +1495,17 @@ msgstr "Включить авторизацию прокси-сервера"
 
 msgid "Enable recycle bin"
 msgstr "Включить Корзину"
+
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+"Обратный поиск DNS выполняется по IP-адресу удаленного хоста для входящих "
+"соединений в активном режиме и исходящих соединений в пассивном."
+
+msgid "Enable reverse DNS lookup."
+msgstr "Разрешить обратный поиск DNS"
 
 msgid "Enable store DOS attributes"
 msgstr "Включить хранение атрибутов DOS"
@@ -3132,6 +3146,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Отчеты"
 
+msgid "Require authentication."
+msgstr "Требовать аутентификации"
+
 msgid "Rescan interval"
 msgstr "Интервал обновления"
 
@@ -3155,6 +3172,9 @@ msgstr "Возобновление"
 
 msgid "Retry"
 msgstr "Попытаться снова"
+
+msgid "Reverse DNS lookup"
+msgstr "Обратный поиск DNS"
 
 msgid "Romanian"
 msgstr "Румынский"
@@ -3230,6 +3250,9 @@ msgstr "SSID"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
+
+msgid "SSL/TLS only"
+msgstr "Только SSL/TLS"
 
 msgid "Save"
 msgstr "Сохранить"
@@ -3873,12 +3896,12 @@ msgid ""
 "order for a matching rule. When a match is found the rule is applied and the "
 "search process will halt."
 msgstr ""
-"Конфигурация обычно задается в форме 'daemon : address : action'.<br>\n"
+"Конфигурация обычно задается в форме 'daemon : address : action'.<br>\r\n"
 "Имя демона стартуемой службы задается в поле 'daemon'. В поле 'address' "
 "могут быть заданы действительные имена хостов, а также IPv4- или IPv6-"
 "адреса, заключенные в квадратные скобки. Поле 'action' может принимать "
 "значения 'allow' или 'deny', что соответствующим образом разрешает или "
-"отказывает в доступе.<br>\n"
+"отказывает в доступе.<br>\r\n"
 "Имейте в виду, что конфигурация работает до первого совпадающего правила. "
 "Это означает, что конфигурационный файл сканируется по возрастанию в поисках "
 "соответствующего правила. Когда совпадение находится, применяется найденное "
@@ -4889,6 +4912,9 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+msgid "Wake On LAN"
+msgstr "Wake On LAN"
 
 msgid "Warning"
 msgstr "Внимание"

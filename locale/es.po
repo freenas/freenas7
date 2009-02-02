@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
 "PO-Revision-Date: 2008-12-08 17:57+0000\n"
 "Last-Translator: Javier García Díaz <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -400,6 +400,9 @@ msgstr "Todos los usuarios tendrán permisos de root."
 
 msgid "Allow"
 msgstr "Permitir"
+
+msgid "Allow TLS/SSL connections only."
+msgstr ""
 
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Permitir acceso de clientes a cuentas que tienen contraseñas nulas."
@@ -1452,6 +1455,15 @@ msgstr "Activar autentificación de proxy."
 
 msgid "Enable recycle bin"
 msgstr "Activar papelera de reciclaje"
+
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+
+msgid "Enable reverse DNS lookup."
+msgstr ""
 
 msgid "Enable store DOS attributes"
 msgstr "Activar almacenamiento de atributos DOS"
@@ -3041,6 +3053,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Informes"
 
+msgid "Require authentication."
+msgstr ""
+
 msgid "Rescan interval"
 msgstr "Intervalo de Re-Escaneo"
 
@@ -3064,6 +3079,9 @@ msgstr "Continuar"
 
 msgid "Retry"
 msgstr "Volver a intentar"
+
+msgid "Reverse DNS lookup"
+msgstr ""
 
 msgid "Romanian"
 msgstr ""
@@ -3139,6 +3157,9 @@ msgstr "SSID"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
+
+msgid "SSL/TLS only"
+msgstr ""
 
 msgid "Save"
 msgstr "Guardar"
@@ -4659,6 +4680,9 @@ msgstr ""
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+msgid "Wake On LAN"
+msgstr ""
 
 msgid "Warning"
 msgstr "Precaución"

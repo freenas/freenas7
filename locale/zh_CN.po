@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
-"PO-Revision-Date: 2008-11-18 12:22+0000\n"
-"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
+"PO-Revision-Date: 2009-01-31 14:11+0000\n"
+"Last-Translator: Zhang Zetao <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -87,7 +87,7 @@ msgid "%sB used of %sB"
 msgstr "%sB中的%sB已用"
 
 msgid "*** Imported duplicate ***"
-msgstr ""
+msgstr "*** 重复导入 ***"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -274,7 +274,7 @@ msgid "Add Route"
 msgstr "添加路由"
 
 msgid "Add Rsync job"
-msgstr ""
+msgstr "新增 Rsync 任务"
 
 msgid "Add URL"
 msgstr "新增 URL"
@@ -410,6 +410,9 @@ msgstr "让所有的使用者都有 root 权限。"
 msgid "Allow"
 msgstr "允许"
 
+msgid "Allow TLS/SSL connections only."
+msgstr "只允许 TLS/SSL 连接."
+
 msgid "Allow client access to accounts that have null passwords."
 msgstr "允许未设置密码的帐号连线。"
 
@@ -418,13 +421,13 @@ msgid ""
 msgstr "允许客户端尝试在共享中存储OS/2样式扩展属性。"
 
 msgid "Allow clients to resume interrupted uploads and downloads."
-msgstr ""
+msgstr "允许客户端在上传和下载时断点续传"
 
 msgid "Allow new files"
-msgstr ""
+msgstr "允许新文件"
 
 msgid "Allow new files to be created."
-msgstr ""
+msgstr "允许创建新文件."
 
 msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
@@ -469,13 +472,13 @@ msgid "An interface with the specified description already exists."
 msgstr "具有相同描述的接口已经存在。"
 
 msgid "Anonymous"
-msgstr ""
+msgstr "匿名"
 
 msgid "Anonymous bind"
-msgstr ""
+msgstr "匿名绑定"
 
 msgid "Anonymous user bandwidth"
-msgstr ""
+msgstr "匿名用户带宽"
 
 msgid ""
 "Anonymous user download bandwith in KB/s. An empty field means infinity."
@@ -1440,6 +1443,15 @@ msgstr "启用 Proxy 认证。"
 
 msgid "Enable recycle bin"
 msgstr "开启档案垃圾桶"
+
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+
+msgid "Enable reverse DNS lookup."
+msgstr ""
 
 msgid "Enable store DOS attributes"
 msgstr "开启 DOS 属性储存"
@@ -2977,6 +2989,9 @@ msgstr "如果温度大于摄氏 N 便回报。设为 0 则可以关闭这项功
 msgid "Reports"
 msgstr "报告"
 
+msgid "Require authentication."
+msgstr ""
+
 msgid "Rescan interval"
 msgstr ""
 
@@ -3000,6 +3015,9 @@ msgstr "续传"
 
 msgid "Retry"
 msgstr "重试"
+
+msgid "Reverse DNS lookup"
+msgstr ""
 
 msgid "Romanian"
 msgstr ""
@@ -3075,6 +3093,9 @@ msgstr "SSID"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
+
+msgid "SSL/TLS only"
+msgstr ""
 
 msgid "Save"
 msgstr "储存"
@@ -4581,6 +4602,9 @@ msgid "WPA-PSK (Pre Shared Key)"
 msgstr ""
 
 msgid "WPA-PSK WPA-EAP"
+msgstr ""
+
+msgid "Wake On LAN"
 msgstr ""
 
 msgid "Warning"

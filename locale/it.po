@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:42+0000\n"
-"PO-Revision-Date: 2008-11-12 13:53+0000\n"
-"Last-Translator: Alex Trenta <dando.sando@gmail.com>\n"
+"POT-Creation-Date: 2009-01-29 18:00+0000\n"
+"PO-Revision-Date: 2009-01-25 08:52+0000\n"
+"Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-15 19:00+0000\n"
+"X-Launchpad-Export-Date: 2009-02-02 16:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -217,7 +217,7 @@ msgid "Acoustic level"
 msgstr "Livello acustico"
 
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 msgid "Activate"
 msgstr "Attiva"
@@ -389,6 +389,9 @@ msgstr "Tutti gli utenti avranno i privilegi di root."
 
 msgid "Allow"
 msgstr "Consenti"
+
+msgid "Allow TLS/SSL connections only."
+msgstr ""
 
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Consentire l'accesso agli account dei client con nessuna password."
@@ -562,7 +565,7 @@ msgid "Browseable"
 msgstr "Esplorabile"
 
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgaro"
 
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
@@ -632,10 +635,10 @@ msgid "Check shared secret:"
 msgstr "Verifica condivisioni sicure:"
 
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Cinese (semplificato)"
 
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Cinese (Tradizionale)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -707,7 +710,7 @@ msgid "Compliant profile to be used."
 msgstr "Profilo conforme da utilizzare."
 
 msgid "Compress"
-msgstr ""
+msgstr "Compressione"
 
 msgid "Compress file data during the transfer."
 msgstr ""
@@ -952,7 +955,7 @@ msgid "Delete user"
 msgstr "Cancella utente"
 
 msgid "Deleting"
-msgstr ""
+msgstr "Eliminazione"
 
 msgid "Deny"
 msgstr "Nega"
@@ -979,7 +982,7 @@ msgid "Destination network for this static route"
 msgstr "Rete di destinazione per questa route statica"
 
 msgid "Destination port"
-msgstr ""
+msgstr "Porta destinazione"
 
 msgid "Destination share"
 msgstr "Condivisione destinazione"
@@ -1045,7 +1048,7 @@ msgid "Digital Audio Access Protocol"
 msgstr ""
 
 msgid "Direction"
-msgstr ""
+msgstr "Direzione"
 
 msgid "Directory"
 msgstr "Directory"
@@ -1281,7 +1284,7 @@ msgid "Duplicate share name."
 msgstr "Nome di condivisione duplicato."
 
 msgid "Dutch"
-msgstr ""
+msgstr "Olandese"
 
 msgid "Dynamic DNS"
 msgstr "DNS dinamico"
@@ -1350,7 +1353,7 @@ msgid "Edit option"
 msgstr "Modifica opzione"
 
 msgid "Edit rule"
-msgstr ""
+msgstr "Editare regola"
 
 msgid "Edit self-test"
 msgstr ""
@@ -1448,6 +1451,15 @@ msgstr "Abilita l'autenticazione proxy."
 
 msgid "Enable recycle bin"
 msgstr "Abilita il cestino"
+
+msgid ""
+"Enable reverse DNS lookup performed on the remote host's IP address for "
+"incoming active mode data connections and outgoing passive mode data "
+"connections."
+msgstr ""
+
+msgid "Enable reverse DNS lookup."
+msgstr ""
 
 msgid "Enable store DOS attributes"
 msgstr "Abilita gli attributi DOS per l'archiviazione"
@@ -1712,7 +1724,7 @@ msgid "Filename"
 msgstr "Nome file"
 
 msgid "Firewall"
-msgstr ""
+msgstr "Firewall"
 
 msgid "Firewall rule"
 msgstr "Regola Firewall"
@@ -1748,13 +1760,13 @@ msgid "Formating disk"
 msgstr ""
 
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 msgid "Free disk space"
 msgstr "Sazio disponibile su disco"
 
 msgid "French"
-msgstr ""
+msgstr "Francese"
 
 msgid "From email"
 msgstr "Da email"
@@ -2134,7 +2146,7 @@ msgstr ""
 "anonimi' e 'Solo utenti locali'"
 
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2162,10 +2174,10 @@ msgid "Knowledgebase"
 msgstr ""
 
 msgid "LACP (Link Aggregation Control Protocol)"
-msgstr ""
+msgstr "LACP (Link Aggregation Control Protocol)"
 
 msgid "LAGG"
-msgstr ""
+msgstr "LAGG"
 
 msgid "LAN"
 msgstr "LAN"
@@ -2205,7 +2217,7 @@ msgid "License"
 msgstr "Licenza"
 
 msgid "License & Credits"
-msgstr ""
+msgstr "License & Credits"
 
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
@@ -2360,7 +2372,7 @@ msgid "Management"
 msgstr "Gestione"
 
 msgid "Manufacturer"
-msgstr ""
+msgstr "Fabbricante"
 
 msgid "Map all users to root"
 msgstr "mappa tutti gli utenti come root"
@@ -2429,7 +2441,7 @@ msgid "MibII"
 msgstr "MibII"
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimo"
 
 msgid "Minimum free space"
 msgstr "Minimo spazio libero"
@@ -2565,7 +2577,7 @@ msgid "Normal"
 msgstr ""
 
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "Norvegese (Bokmal)"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -2802,7 +2814,7 @@ msgstr ""
 "Attenzione che gli spazi vuoti nei nomi di percorso non sono permessi."
 
 msgid "Polish"
-msgstr ""
+msgstr "Polacco"
 
 msgid "Polling time"
 msgstr "Tempo di polling"
@@ -2838,7 +2850,7 @@ msgid "Ports"
 msgstr ""
 
 msgid "Portuguese"
-msgstr ""
+msgstr "Portoghese"
 
 msgid "PostInit"
 msgstr "PostInit"
@@ -3047,6 +3059,9 @@ msgstr ""
 msgid "Reports"
 msgstr "Rapporti"
 
+msgid "Require authentication."
+msgstr ""
+
 msgid "Rescan interval"
 msgstr ""
 
@@ -3071,8 +3086,11 @@ msgstr "Ripristina"
 msgid "Retry"
 msgstr "Riprova"
 
-msgid "Romanian"
+msgid "Reverse DNS lookup"
 msgstr ""
+
+msgid "Romanian"
+msgstr "Romeno"
 
 msgid "Root bind DN"
 msgstr ""
@@ -3114,7 +3132,7 @@ msgid "Running"
 msgstr ""
 
 msgid "Russian"
-msgstr ""
+msgstr "Russo"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3145,6 +3163,9 @@ msgstr "SSID"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
+
+msgid "SSL/TLS only"
+msgstr ""
 
 msgid "Save"
 msgstr "Salva"
@@ -3242,7 +3263,7 @@ msgid "Server description. This can usually be left blank."
 msgstr "Descrizione del server. Questa solitamente puo' essere vuota."
 
 msgid "Server name"
-msgstr ""
+msgstr "Nome del server"
 
 msgid "Service"
 msgstr "Servizio"
@@ -3366,7 +3387,7 @@ msgid "Sockets"
 msgstr "Sockets"
 
 msgid "SoftRaid"
-msgstr ""
+msgstr "SoftRaid"
 
 msgid "Software RAID"
 msgstr "Software RAID"
@@ -3393,7 +3414,7 @@ msgid "Space Used"
 msgstr "Spazio Utilizzato"
 
 msgid "Spanish"
-msgstr ""
+msgstr "Spagnola"
 
 msgid "Specifies how many servers to create."
 msgstr "Specifica quanti server creare."
@@ -3582,10 +3603,10 @@ msgid "TCP port to bind the server to."
 msgstr "Porta TCP a cui collegare il server."
 
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 msgid "TKIP"
-msgstr ""
+msgstr "TKIP"
 
 msgid "Target"
 msgstr "Target"
@@ -3609,7 +3630,7 @@ msgid "Temperature monitoring"
 msgstr "Monitoraggio della temperatura."
 
 msgid "Temporary directory"
-msgstr ""
+msgstr "Directory temporanea"
 
 msgid "Temporary directory to store transcoded files."
 msgstr ""
@@ -4746,6 +4767,9 @@ msgstr ""
 
 msgid "WPA-PSK WPA-EAP"
 msgstr ""
+
+msgid "Wake On LAN"
+msgstr "Wake On LAN"
 
 msgid "Warning"
 msgstr "Attenzione"
