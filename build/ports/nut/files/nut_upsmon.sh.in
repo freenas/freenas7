@@ -95,13 +95,13 @@ AT LOWBATT * START-TIMER early-shutdown
 AT LOWBATT * EXECUTE early-warning
 EOF
 	else
-		# Display and send messages via email only, do not trigger any action.
-		# In case of low battery the FSD command will be send and 'forced-shutdown'
-		# will be initiated.
+		# Log and send messages via email only, do not trigger any action.
+		# In case of low battery the FSD command will be send and
+		# 'forced-shutdown' will be executed.
 		cat <<EOF >> ${nut_upsmon_sched_conf}
-AT ONLINE * EXECUTE message
-AT ONBATT * EXECUTE message
-AT LOWBATT * EXECUTE message
+AT ONLINE * EXECUTE notify
+AT ONBATT * EXECUTE notify
+AT LOWBATT * EXECUTE notify
 EOF
 	fi
 
