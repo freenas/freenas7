@@ -26,6 +26,7 @@ Check that you have installed the following ports:
 - bash
 - cdrtools
 - perl (required by misc ports)
+- ruby (required by misc ports)
 - portupgrade
 
 Start /freenas/svn/build/make.sh
