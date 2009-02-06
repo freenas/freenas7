@@ -17,6 +17,8 @@ Minors changes:
   Tobias Reber for the patch.
 - Add traceroute6 command (FR 2531610).
 - Add *.iso support to Fuppes UPnP (FR 2521047).
+- Add 'Remote monitors' to 'Services|UPS' to allow adding remote networks that
+  monitor the local installed UPS in slave mode.
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct

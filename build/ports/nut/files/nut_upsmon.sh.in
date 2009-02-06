@@ -33,6 +33,14 @@ nut_upsmon_password=${nut_upsmon_password:-"freenas"}
 nut_upsmon_flags=${nut_upsmon_flags:-"-u ${nut_upsmon_runas} localhost"}
 nut_upsmon_notifycmd=${nut_upsmon_notifycmd:-"/usr/local/sbin/upssched"}
 nut_upsmon_shutdowncmd=${nut_upsmon_shutdowncmd:-"/sbin/shutdown -p now"}
+nut_upsmon_minsupplies=${nut_upsmon_minsupplies:-"1"}
+nut_upsmon_pollfreq=${nut_upsmon_pollfreq:-"5"}
+nut_upsmon_pollfreqalert=${nut_upsmon_pollfreqalert:-"5"}
+nut_upsmon_hostsync=${nut_upsmon_hostsync:-"15"}
+nut_upsmon_deadtime=${nut_upsmon_deadtime:-"15"}
+nut_upsmon_rbwarntime=${nut_upsmon_rbwarntime:-"43200"}
+nut_upsmon_nocommwarntime=${nut_upsmon_nocommwarntime:-"300"}
+nut_upsmon_finaldelay=${nut_upsmon_finaldelay:-"5"}
 
 required_dirs="/var/run"
 required_files="${nut_upsmon_conf}"
@@ -49,13 +57,13 @@ mkconf_cmd()
 	# Create upsmon.conf
 	cat <<EOF > ${nut_upsmon_conf}
 MONITOR ${_upsname}@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
-MINSUPPLIES 1
+MINSUPPLIES ${nut_upsmon_minsupplies}
 SHUTDOWNCMD "${nut_upsmon_shutdowncmd}"
 NOTIFYCMD ${nut_upsmon_notifycmd}
-POLLFREQ 5
-POLLFREQALERT 5
-HOSTSYNC 15
-DEADTIME 15
+POLLFREQ ${nut_upsmon_pollfreq}
+POLLFREQALERT ${nut_upsmon_pollfreqalert}
+HOSTSYNC ${nut_upsmon_hostsync}
+DEADTIME ${nut_upsmon_deadtime}
 POWERDOWNFLAG ${nut_upsmon_powerdownflag}
 NOTIFYFLAG ONLINE SYSLOG+WALL+EXEC
 NOTIFYFLAG ONBATT SYSLOG+WALL+EXEC
@@ -66,9 +74,9 @@ NOTIFYFLAG SHUTDOWN SYSLOG+WALL+EXEC
 NOTIFYFLAG REPLBATT SYSLOG+WALL+EXEC
 NOTIFYFLAG NOCOMM SYSLOG+WALL+EXEC
 NOTIFYFLAG FSD SYSLOG+WALL+EXEC
-RBWARNTIME 43200
-NOCOMMWARNTIME 300
-FINALDELAY 5
+RBWARNTIME ${nut_upsmon_rbwarntime}
+NOCOMMWARNTIME ${nut_upsmon_nocommwarntime}
+FINALDELAY ${nut_upsmon_finaldelay}
 EOF
 
 	# Create upssched.conf
@@ -77,10 +85,12 @@ CMDSCRIPT /usr/local/bin/upssched-cmd
 PIPEFN /var/run/upssched.pipe
 LOCKFN /var/run/upssched.lock
 
-AT COMMBAD * EXECUTE bad-communication
-AT REPLBATT * EXECUTE replace-battery
-AT NOCOMM * EXECUTE no-communication
+AT COMMOK * EXECUTE notify
+AT COMMBAD * EXECUTE notify
+AT REPLBATT * EXECUTE notify
+AT NOCOMM * EXECUTE notify
 AT FSD * EXECUTE forced-shutdown
+AT NOPARENT * EXECUTE notify
 EOF
 
 	if [ "onbatt" = ${_shutdownmode} ]; then
