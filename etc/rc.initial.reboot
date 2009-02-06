@@ -1,10 +1,10 @@
 #!/bin/sh
 #
 # rc.initial.reboot
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 #
 # part of FreeNAS (http://www.freenas.org)
-# Copyright (C) 2005-2008 Olivier Cochard <cochard@gmail.com>.
+# Copyright (C) 2005-2009 Olivier Cochard <cochard@gmail.com>.
 # All rights reserved.
 
 # Display dialog
