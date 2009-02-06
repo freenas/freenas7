@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: nut
@@ -41,6 +41,11 @@ pidfile="/var/run/upsd.pid"
 
 mkconf_cmd()
 {
+	local _remotemonitors _network _id _aclname _aclnames
+
+	# Get configuration
+	_remotemonitors=`configxml_get "//ups/remotemonitors"`
+
 	# Create ups.conf
 	/usr/local/bin/xml sel -t -m "//ups" \
 		-v "concat('[',upsname,']')" -n \
@@ -55,8 +60,17 @@ mkconf_cmd()
 	cat <<EOF > ${nut_upsd_conf}
 ACL all 0.0.0.0/0
 ACL localhost 127.0.0.1/32
+EOF
 
-ACCEPT localhost
+	for _network in ${_remotemonitors}; do
+		_id=$(( ${_id} + 1 ))
+		_aclname="remotemonitor${_id}"
+		_aclnames="${_aclnames} ${_aclname}"
+		echo "ACL ${_aclname} ${_network}" >> ${nut_upsd_conf}
+	done
+
+	cat <<EOF >> ${nut_upsd_conf}
+ACCEPT localhost ${_aclnames}
 REJECT all
 EOF
 
@@ -64,7 +78,7 @@ EOF
 	cat <<EOF > ${nut_upsd_users}
 [${nut_upsmon_user}]
         password = ${nut_upsmon_password}
-        allowfrom = localhost
+        allowfrom = localhost ${_aclnames}
         actions = set
         upsmon master
 EOF

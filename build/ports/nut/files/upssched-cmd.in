@@ -56,15 +56,6 @@ Early shutdown cancelled.";;
 Forced shutdown imminent in ${nut_upssched_forced_shutdown_timer} minutes.";
 		shutdown -p +${nut_upssched_forced_shutdown_timer} ${_message};;
 
-	replace-battery)
-		_message="${_notifymessage}";;
-
-	bad-communication)
-		_message="${_notifymessage}";;
-
-	no-communication)
-		_message="${_notifymessage}";;
-
 	notify)
 		_message="${_notifymessage}";;
 
