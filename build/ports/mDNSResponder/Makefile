@@ -23,5 +23,6 @@ pre-build:
 do-install:
 	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/mDNSResponderPosix ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/libdns_sd.so ${FREENAS_ROOTFS}/usr/local/lib
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/mdnsresponder.in ${FREENAS_ROOTFS}/etc/rc.d/mdnsresponder
 
 .include <bsd.port.post.mk>
