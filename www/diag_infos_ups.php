@@ -2,11 +2,11 @@
 <?php
 /*
 	diag_infos_ups.php
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2008-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("UPS"))
 				<?php else:?>
 				<tr>
 			    <td>
-						<pre><?php system("/usr/local/bin/upsc {$config['ups']['upsname']}@localhost");?></pre>
+						<pre><?php system("/usr/local/bin/upsc {$config['ups']['upsname']}@localhost 2>&1");?></pre>
 					</td>
 			  </tr>
 			  <?php endif;?>
