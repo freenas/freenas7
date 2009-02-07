@@ -97,21 +97,18 @@ EOF
 		_shutdowntimer=`configxml_get "//ups/shutdowntimer"`
 
 		cat <<EOF >> ${nut_upsmon_sched_conf}
-AT ONLINE * CANCEL-TIMER early-shutdown
+AT ONLINE * CANCEL-TIMER shutdown
 AT ONLINE * EXECUTE resume
-AT ONBATT * START-TIMER early-shutdown ${_shutdowntimer}
-AT ONBATT * EXECUTE early-warning
-AT LOWBATT * START-TIMER early-shutdown
-AT LOWBATT * EXECUTE early-warning
+AT ONBATT * START-TIMER shutdown ${_shutdowntimer}
+AT ONBATT * EXECUTE shutdown-warning
+AT LOWBATT * START-TIMER shutdown
+AT LOWBATT * EXECUTE shutdown-warning
 EOF
 	else
-		# Log and send messages via email only, do not trigger any action.
-		# In case of low battery the FSD command will be send and
-		# 'forced-shutdown' will be executed.
 		cat <<EOF >> ${nut_upsmon_sched_conf}
 AT ONLINE * EXECUTE notify
 AT ONBATT * EXECUTE notify
-AT LOWBATT * EXECUTE notify
+AT LOWBATT * EXECUTE shutdown
 EOF
 	fi
 

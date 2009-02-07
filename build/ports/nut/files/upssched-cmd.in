@@ -37,19 +37,19 @@ case "${NOTIFYTYPE}" in
 esac
 
 case "${1}" in
-	early-warning)
+	shutdown-warning)
 		_shutdowntimer=`configxml_get "//ups/shutdowntimer"`;
 		_message="${_notifymessage}.
-Early shutdown imminent in ${_shutdowntimer} seconds.";;
+Shutdown imminent in ${_shutdowntimer} seconds.";;
 
-	early-shutdown)
+	shutdown)
 		_message="${_notifymessage}.
-Early shutdown in progress.";
+Shutdown in progress.";
 		shutdown -p now ${_message};;
 
 	resume)
 		_message="${_notifymessage}.
-Early shutdown cancelled.";;
+Shutdown cancelled.";;
 
 	forced-shutdown)
 		_message="${_notifymessage}.
