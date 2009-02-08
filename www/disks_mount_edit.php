@@ -154,7 +154,7 @@ if ($_POST) {
 		}
 
 		if (($_POST['sharename']) && ($mount['sharename'] === $_POST['sharename'])) {
-			$input_errors[] = gettext("Duplicate Mount point name.");
+			$input_errors[] = gettext("Duplicate mount point name.");
 			break;
 		}
 	}
