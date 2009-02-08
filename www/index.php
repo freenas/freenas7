@@ -143,7 +143,7 @@ sajax_handle_client_request();
 			  <tr>
 			    <td width="25%" class="vncellt"><?=gettext("Platform");?></td>
 			    <td width="75%" class="listr">
-			    	<?=sprintf(gettext("%s on %s (%dMHz)"), $g['fullplatform'], $cpuinfo['model'], $cpuinfo['clockrate']);?>
+			    	<?=sprintf(gettext("%s on %s"), $g['fullplatform'], $cpuinfo['model']);?>
 			    </td>
 			  </tr>
 			  <tr>
