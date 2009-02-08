@@ -5,6 +5,7 @@ Majors changes:
 - Upgrade to FreeBSD 7.1.
 - Include ZFS support. Thanks to Nelson Silva for doing core coding and Falk Menzel
   for testing and giving some tipps and ideas.
+- Upgrade Samba to 3.0.34.
 
 Majors changes:
 
@@ -36,7 +37,6 @@ FreeNAS 0.69.1 (Kwisatz Haderach):
 ----------------------------------
 
 Majors changes:
-- Upgrade Samba to 3.0.34.
 - Upgrade ProFTPD to 1.3.2.
 - Upgrade mDNSResponder to 1.08.6.
 
