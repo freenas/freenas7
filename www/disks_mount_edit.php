@@ -89,12 +89,12 @@ if ($_POST) {
 	switch($_POST['type']) {
 		case "disk":
 			$reqdfields = explode(" ", "mdisk partition fstype sharename");
-			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Share name"));
+			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Mount point name"));
 			break;
 
 		case "iso":
 			$reqdfields = explode(" ", "filename sharename");
-			$reqdfieldsn = array(gettext("Filename"), gettext("Share name"));
+			$reqdfieldsn = array(gettext("Filename"), gettext("Mount point name"));
 			break;
 	}
 
@@ -154,7 +154,7 @@ if ($_POST) {
 		}
 
 		if (($_POST['sharename']) && ($mount['sharename'] === $_POST['sharename'])) {
-			$input_errors[] = gettext("Duplicate share name.");
+			$input_errors[] = gettext("Duplicate mount point name.");
 			break;
 		}
 	}
@@ -364,7 +364,7 @@ function enable_change(enable_change) {
 			      </td>
 					</tr>
 					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), $g['media_path'], true);?>
-					<?php html_inputbox("sharename", gettext("Share name"), $pconfig['sharename'], "", true, 20);?>
+					<?php html_inputbox("sharename", gettext("Mount point name"), $pconfig['sharename'], "", true, 20);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<?php html_checkbox("readonly", gettext("Read only"), $pconfig['readonly'] ? true : false, gettext("Mount the file system read-only (even the super-user may not write it)."), "", false);?>
 					<?php html_checkbox("fsck", gettext("File system check"), $pconfig['fsck'] ? true : false, gettext("Enable foreground/background file system consistency check during boot process."), "", false);?>

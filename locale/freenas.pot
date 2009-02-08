@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-02-06 19:29+0000\n"
+"PO-Revision-Date: 2009-02-08 10:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1111,7 +1111,7 @@ msgstr ""
 msgid "Duplex"
 msgstr ""
 
-msgid "Duplicate share name."
+msgid "Duplicate mount point name."
 msgstr ""
 
 msgid "Dutch"
@@ -2174,6 +2174,9 @@ msgstr ""
 msgid "Mount point"
 msgstr ""
 
+msgid "Mount point name"
+msgstr ""
+
 msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 
@@ -2959,9 +2962,6 @@ msgid "Share Password"
 msgstr ""
 
 msgid "Share all sub directories."
-msgstr ""
-
-msgid "Share name"
 msgstr ""
 
 msgid "Share passwords can not be more than 8 characters."
