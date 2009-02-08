@@ -1025,7 +1025,7 @@
 		<upsname>ups</upsname>
 		<shutdownmode>onbatt</shutdownmode>
 		<shutdowntimer>30</shutdowntimer>
-		<remotemonitors></remotemonitors>
+		<remotemonitor></remotemonitor>
 		<!--
 		<shutdownmode>fsd|onbatt<shutdownmode>
 		<driver>usbhid-ups</driver>

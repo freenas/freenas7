@@ -41,10 +41,10 @@ pidfile="/var/run/upsd.pid"
 
 mkconf_cmd()
 {
-	local _remotemonitors _network _id _aclname _aclnames
+	local _remotemonitor _network _id _aclname _aclnames
 
 	# Get configuration
-	_remotemonitors=`configxml_get "//ups/remotemonitors"`
+	_remotemonitor=`configxml_get "//ups/remotemonitor"`
 
 	# Create ups.conf
 	/usr/local/bin/xml sel -t -m "//ups" \
@@ -62,7 +62,7 @@ ACL all 0.0.0.0/0
 ACL localhost 127.0.0.1/32
 EOF
 
-	for _network in ${_remotemonitors}; do
+	for _network in ${_remotemonitor}; do
 		_id=$(( ${_id} + 1 ))
 		_aclname="remotemonitor${_id}"
 		_aclnames="${_aclnames} ${_aclname}"
