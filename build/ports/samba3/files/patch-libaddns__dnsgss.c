@@ -1,6 +1,8 @@
---- ./libaddns/dnsgss.c.orig	2009-01-19 10:40:09.000000000 +0000
-+++ ./libaddns/dnsgss.c	2009-01-20 15:50:59.000000000 +0000
-@@ -221,11 +221,8 @@
+Index: libaddns/dnsgss.c
+===================================================================
+--- libaddns/dnsgss.c	(revision 25080)
++++ libaddns/dnsgss.c	(working copy)
+@@ -219,11 +219,8 @@ DNS_ERROR dns_negotiate_sec_ctx( const c
  
  	gss_name_t targ_name;
  
@@ -13,7 +15,7 @@
  
  	TALLOC_CTX *mem_ctx;
  
-@@ -249,23 +246,13 @@
+@@ -247,23 +244,13 @@ DNS_ERROR dns_negotiate_sec_ctx( const c
  		goto error;
  	}
  
@@ -39,7 +41,7 @@
  		err = ERROR_DNS_GSS_ERROR;
  		goto error;
  	}
-@@ -275,11 +262,6 @@
+@@ -273,11 +260,6 @@ DNS_ERROR dns_negotiate_sec_ctx( const c
  	
  	gss_release_name( &minor, &targ_name );
  

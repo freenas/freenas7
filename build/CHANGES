@@ -2,7 +2,6 @@ FreeNAS 0.69.1 (Kwisatz Haderach):
 ----------------------------------
 
 Majors changes:
-- Upgrade Samba to 3.0.34.
 - Upgrade ProFTPD to 1.3.2.
 - Upgrade mDNSResponder to 1.08.6.
 
