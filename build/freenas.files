@@ -417,6 +417,9 @@ usr/bin/nfsstat
 ## showmount -- show remote nfs mounts on host
 usr/bin/showmount
 
+## truss -- trace system calls
+usr/bin/truss
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
