@@ -96,7 +96,7 @@ mkdir usr/share/locale ;
 mkdir tmp ;
 # /var will be populated by /etc/rc and /etc/rc.d/var
 mkdir var ;
-mkdir proc ;
+mkdir -m 0555 proc ;
 
 # Creating symbolic links. Most of the target files will be created at runtime.
 # !!! For optional ports add the required links in the port Makefile. !!!
