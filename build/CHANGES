@@ -52,7 +52,7 @@ Minors changes:
   Tobias Reber for the patch.
 - Add traceroute6 command (FR 2531610).
 - Add *.iso support to Fuppes UPnP (FR 2521047).
-- Add 'Remote monitors' to 'Services|UPS' to allow adding remote networks that
+- Add 'Remote monitoring' to 'Services|UPS' to allow adding remote monitors that
   monitor the local installed UPS in slave mode.
 
 Bug fixes:
