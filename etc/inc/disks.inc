@@ -453,10 +453,10 @@ EOD;
 	fclose($fd);
 
 	// Create volume
-	mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdisk['name']}.conf");
+	mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdisk['name']}.conf", true);
 
 	// Start volume
-	mwexec("/sbin/gvinum start {$vdisk['name']}");
+	mwexec("/sbin/gvinum start {$vdisk['name']}", true);
 
 	return 0;
 }
@@ -484,7 +484,7 @@ function disks_raid_gmirror_configure($uuid) {
 		$cmd .= "{$devicev} ";
 	}
 
-	return mwexec($cmd);
+	return mwexec($cmd, true);
 }
 
 // Configure, create and start gconcat volume.
@@ -510,7 +510,7 @@ function disks_raid_gconcat_configure($uuid) {
 		$cmd .= "{$devicev} ";
 	}
 
-	return mwexec($cmd);
+	return mwexec($cmd, true);
 }
 
 // Configure, create and start gstripe volume.
@@ -536,7 +536,7 @@ function disks_raid_gstripe_configure($uuid) {
 		$cmd .= "{$devicev} ";
 	}
 
-	return mwexec($cmd);
+	return mwexec($cmd, true);
 }
 
 // Configure, create and start graid5 volume.
@@ -562,7 +562,7 @@ function disks_raid_graid5_configure($uuid) {
 		$cmd .= "{$devicev} ";
 	}
 
-	return mwexec($cmd);
+	return mwexec($cmd, true);
 }
 
 // Delete geom gvinum volume given in parameter.
