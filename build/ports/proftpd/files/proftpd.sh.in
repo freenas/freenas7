@@ -71,18 +71,18 @@ command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
 
-# Check if required directories exists.
-[ ! -d "/var/run/${name}" ] && mkdir "/var/run/${name}"
-[ ! -d "/var/log/${name}" ] && mkdir "/var/log/${name}"
-
-# Check if required files exists.
-[ ! -e "${proftpd_delaytable}" ] && cat /dev/null > "${proftpd_delaytable}"
-[ ! -e "${proftpd_tcpaccessfilesallow}" ] && cat /dev/null > "${proftpd_tcpaccessfilesallow}"
-[ ! -e "${proftpd_tcpaccessfilesdeny}" ] && cat /dev/null > "${proftpd_tcpaccessfilesdeny}"
-
 mkconf_cmd()
 {
 	local _welcomemsg _productname _certificate _privatekey _tmpfile
+
+	# Check if required directories exists.
+	[ ! -d "/var/run/${name}" ] && mkdir "/var/run/${name}"
+	[ ! -d "/var/log/${name}" ] && mkdir "/var/log/${name}"
+
+	# Check if required files exists.
+	[ ! -e "${proftpd_delaytable}" ] && cat /dev/null > "${proftpd_delaytable}"
+	[ ! -e "${proftpd_tcpaccessfilesallow}" ] && cat /dev/null > "${proftpd_tcpaccessfilesallow}"
+	[ ! -e "${proftpd_tcpaccessfilesdeny}" ] && cat /dev/null > "${proftpd_tcpaccessfilesdeny}"
 
 	# Create welcome message file
 	_welcomemsg=`configxml_get "//ftpd/banner"`
