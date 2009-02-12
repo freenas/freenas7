@@ -2,9 +2,12 @@
 <?php
 /*
 	status_graph_cpu.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	All rights reserved.
 
-	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -32,7 +35,7 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
 		<td class="tabnavtbl">
@@ -47,10 +50,10 @@ $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
       <div align="center">
         <object id="graph" data="graph_cpu.php" type="image/svg+xml" width="550" height="275">
           <param name="src" value="graph_cpu.php">
-          Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a> is required to view the graph.
+          Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.examotion.com/index.php?id=product_player_download" target="_blank">RENESIS Player</a> is required to view the graph.
         </object>
       </div>
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
