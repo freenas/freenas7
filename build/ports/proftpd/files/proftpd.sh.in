@@ -55,12 +55,25 @@ proftpd_tcpaccesssysloglevels=${proftpd_tcpaccesssysloglevels:-"info warn"}
 proftpd_tcpservicename=${proftpd_tcpservicename:-"ftpd"}
 proftpd_moddelay_enable=${proftpd_moddelay_enable:-"YES"}
 proftpd_modwrap_enable=${proftpd_modwrap_enable:-"YES"}
+proftpd_modctrls_controlsengine=${proftpd_modctrls_controlsengine:-"off"}
+proftpd_modctrls_controlsacls=${proftpd_modctrls_controlsacls:-"all allow group wheel"}
+proftpd_modctrls_controlsauthfreshness=${proftpd_modctrls_controlsauthfreshness:-"10"}
+proftpd_modctrls_controlsmaxclients=${proftpd_modctrls_controlsmaxclients:-"5"}
+proftpd_modctrls_controlslog=${proftpd_modctrls_controlslog:-"/var/log/${name}/controls.log"}
+proftpd_modctrls_controlsinterval=${proftpd_modctrls_controlsinterval:-"10"}
+proftpd_modban_banengine=${proftpd_modban_banengine:-"off"}
+proftpd_modban_bancontrolsacls=${proftpd_modban_bancontrolsacls:-"all allow group wheel"}
+proftpd_modban_banlog=${proftpd_modban_banlog:-"/var/log/${name}/ban.log"}
+proftpd_modban_banmessage=${proftpd_modban_banmessage:-"Host %a has been banned"}
+proftpd_modban_banonevent=${proftpd_modban_banonevent:-"MaxLoginAttempts 2/00:5:00 00:30:00"}
+proftpd_modban_bantable=${proftpd_modban_bantable:-"/var/run/${name}/ban.tab"}
 command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
 
 # Check if required directories exists.
 [ ! -d "/var/run/${name}" ] && mkdir "/var/run/${name}"
+[ ! -d "/var/log/${name}" ] && mkdir "/var/log/${name}"
 
 # Check if required files exists.
 [ ! -e "${proftpd_delaytable}" ] && cat /dev/null > "${proftpd_delaytable}"
@@ -208,6 +221,36 @@ EOF
   TCPAccessSyslogLevels ${proftpd_tcpaccesssysloglevels}
   TCPServiceName ${proftpd_tcpservicename}
 </ifModule>
+
+EOF
+		fi
+
+		# Add mod_ctrls.
+		if [ "${proftpd_modctrls_controlsengine}" = "on" ]; then
+			cat <<EOF >> ${proftpd_config}
+<IfModule mod_ctrls.c>
+  ControlsEngine ${proftpd_modctrls_controlsengine}
+  ControlsACLs ${proftpd_modctrls_controlsacls}
+  ControlsAuthFreshness
+  ControlsMaxClients ${proftpd_modctrls_controlsmaxclients}
+  ControlsLog ${proftpd_modctrls_controlslog}
+  ControlsInterval ${proftpd_modctrls_controlsinterval}
+</IfModule>
+
+EOF
+		fi
+
+		# Add mod_ban.
+		if [ "${proftpd_modban_banengine}" = "on" ]; then
+			cat <<EOF >> ${proftpd_config}
+<IfModule mod_ban.c>
+  BanEngine ${proftpd_modban_banengine}
+  BanControlsACLs ${proftpd_modban_bancontrolsacls}
+  BanLog ${proftpd_modban_banlog}
+  BanMessage ${proftpd_modban_banmessage}
+  BanOnEvent ${proftpd_modban_banonevent}
+  BanTable ${proftpd_modban_bantable}
+</IfModule>
 
 EOF
 		fi

@@ -21,7 +21,7 @@ GNU_CONFIGURE=	yes
 USE_GETTEXT=		yes
 USE_OPENSSL=		yes
 
-MODULES=				mod_site_misc:mod_tls:mod_wrap
+MODULES=				mod_site_misc:mod_tls:mod_wrap:mod_ban
 
 CONFIGURE_ARGS=	--localstatedir=/var/run \
 								--with-pkgconfig=libdata/pkgconfig \
@@ -32,7 +32,8 @@ CONFIGURE_ARGS=	--localstatedir=/var/run \
 								--with-modules=${MODULES} \
 								--with-includes=${WORKDIR}/include:${LOCALBASE}/include \
 								--with-libraries=${LOCALBASE}/lib \
-								--enable-auth-pam
+								--enable-auth-pam \
+								--enable-ctrls
 CONFIGURE_ENV=	"LIBS=-lintl -L${LOCALBASE}/lib -lssl -lcrypto -L${OPENSSLLIB}"
 CFLAGS+=				-DHAVE_OPENSSL -I${OPENSSLINC}
 
@@ -58,6 +59,7 @@ do-install:
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/ftpwho ${FREENAS_ROOTFS}/${PREFIX}/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/ftpdctl ${FREENAS_ROOTFS}/${PREFIX}/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/${PORTNAME} ${FREENAS_ROOTFS}/${PREFIX}/sbin
 
 .include <bsd.port.post.mk>
