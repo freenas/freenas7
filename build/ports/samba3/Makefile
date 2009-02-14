@@ -54,7 +54,19 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--with-acl-support \
 									--with-quotas \
 									--with-readline \
-									--without-utmp
+									--without-utmp \
+									--without-libsmbclient \
+									--without-libmsrpc \
+									--without-libsmbsharemodes \
+									--without-python \
+									--without-libaddns \
+									--disable-debug \
+									--disable-socket-wrapper \
+									--disable-developer \
+									--disable-krb5developer \
+									--disable-dmalloc \
+									--without-profiling-data \
+									--without-cluster-support
 
 post-patch:
 		@${REINPLACE_CMD} -e 's/%%SAMBA_CONFIG%%/${SAMBA_CONFIG}/' \
