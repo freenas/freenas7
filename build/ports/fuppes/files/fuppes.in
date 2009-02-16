@@ -281,7 +281,7 @@ EOF
     </device>
   	<device name="PS3" enabled="false">
       <user_agent>UPnP/1.0 DLNADOC/1.00</user_agent>
-      <user_agent>PLAYSTATION3</user_agent>
+      <user_agent>PLAYSTATION 3</user_agent>
 <!--<ip></ip>-->
       <enable_dlna>true</enable_dlna>
       <transcoding_release_delay>50</transcoding_release_delay>

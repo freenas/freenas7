@@ -63,6 +63,7 @@ Bug fixes:
 - FPSyncDir patch correction (BR 2546107).
 - UPS service improvements. Display NUT messages in syslog and send emails when
   using shutdown mode 'UPS reaches low battery' (BR 2549047).
+- Change user agent string for PS3 to 'PLAYSTATION 3' in fuppes.cfg (BR 2600554).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
