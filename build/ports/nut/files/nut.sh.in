@@ -26,6 +26,7 @@ mkconf_cmd="mkconf_cmd"
 # Defaults
 nut_enable=${nut_enable:-"NO"}
 nut_prefix=${nut_prefix:-"/usr/local"}
+nut_nut_conf=${nut_nut_conf:-"/var/etc/nut.conf"}
 nut_ups_conf=${nut_ups_conf:-"/var/etc/ups.conf"}
 nut_upsd_conf=${nut_upsd_conf:-"/var/etc/upsd.conf"}
 nut_upsd_users=${nut_upsd_users:-"/var/etc/upsd.users"}
@@ -41,7 +42,11 @@ pidfile="/var/run/upsd.pid"
 
 mkconf_cmd()
 {
-	local _remotemonitor _network _id _aclname _aclnames
+	# Create nut.conf
+	/usr/local/bin/xml sel -t -m "//ups" \
+		-i "string-length(remotemonitor) = 0" -o "MODE = standalone" -b \
+		-i "string-length(remotemonitor) > 0" -o "MODE = netserver" -b \
+		${configxml_file} | /usr/local/bin/xml unesc > ${nut_nut_conf}
 
 	# Get configuration
 	_remotemonitor=`configxml_get "//ups/remotemonitor"`
@@ -58,31 +63,17 @@ mkconf_cmd()
 
 	# Create upsd.conf
 	cat <<EOF > ${nut_upsd_conf}
-ACL all 0.0.0.0/0
-ACL localhost 127.0.0.1/32
-EOF
-
-	for _network in ${_remotemonitor}; do
-		_id=$(( ${_id} + 1 ))
-		_aclname="remotemonitor${_id}"
-		_aclnames="${_aclnames} ${_aclname}"
-		echo "ACL ${_aclname} ${_network}" >> ${nut_upsd_conf}
-	done
-
-	cat <<EOF >> ${nut_upsd_conf}
-ACCEPT localhost ${_aclnames}
-REJECT all
 EOF
 
 	# Create upsd.users
 	cat <<EOF > ${nut_upsd_users}
 [${nut_upsmon_user}]
         password = ${nut_upsmon_password}
-        allowfrom = localhost ${_aclnames}
         actions = set
         upsmon master
 EOF
 
+	chmod 0600 ${nut_nut_conf}
 	chmod 0600 ${nut_ups_conf}
 	chmod 0600 ${nut_upsd_conf}
 	chmod 0600 ${nut_upsd_users}
