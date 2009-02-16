@@ -91,6 +91,7 @@ AT REPLBATT * EXECUTE notify
 AT NOCOMM * EXECUTE notify
 AT FSD * EXECUTE forced-shutdown
 AT NOPARENT * EXECUTE notify
+AT SHUTDOWN * EXECUTE notify
 EOF
 
 	if [ "onbatt" = ${_shutdownmode} ]; then
@@ -108,7 +109,7 @@ EOF
 		cat <<EOF >> ${nut_upsmon_sched_conf}
 AT ONLINE * EXECUTE notify
 AT ONBATT * EXECUTE notify
-AT LOWBATT * EXECUTE shutdown
+AT LOWBATT * EXECUTE notify
 EOF
 	fi
 
