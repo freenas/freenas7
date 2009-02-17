@@ -264,6 +264,9 @@ sbin/clri
 ## dumpon -- specify a device for crash dumps
 sbin/dumpon
 
+## savecore -- save a core dump of the operating system
+sbin/savecore
+
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
