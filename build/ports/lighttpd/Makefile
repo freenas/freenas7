@@ -1,5 +1,5 @@
 PORTNAME=			lighttpd
-PORTVERSION=	1.4.20
+PORTVERSION=	1.4.21
 CATEGORIES=		www
 COMMENT=			A secure, fast, compliant, and very flexible Web Server
 MAINTAINER=		votdev@gmx.de
