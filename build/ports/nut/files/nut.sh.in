@@ -30,6 +30,7 @@ nut_nut_conf=${nut_nut_conf:-"/var/etc/nut.conf"}
 nut_ups_conf=${nut_ups_conf:-"/var/etc/ups.conf"}
 nut_upsd_conf=${nut_upsd_conf:-"/var/etc/upsd.conf"}
 nut_upsd_users=${nut_upsd_users:-"/var/etc/upsd.users"}
+nut_upsd_port=${nut_upsd_port:-"3493"}
 nut_statedir=${nut_statedir:-"/var/db/${name}"}
 nut_runas=${nut_runas:-"root"}
 nut_flags=${nut_flags:-"-u ${nut_runas}"}
@@ -42,6 +43,8 @@ pidfile="/var/run/upsd.pid"
 
 mkconf_cmd()
 {
+	local _network
+
 	# Create nut.conf
 	/usr/local/bin/xml sel -t -m "//ups" \
 		-i "string-length(remotemonitor) = 0" -o "MODE = standalone" -b \
@@ -63,7 +66,13 @@ mkconf_cmd()
 
 	# Create upsd.conf
 	cat <<EOF > ${nut_upsd_conf}
+LISTEN 127.0.0.1 ${nut_upsd_port}
+LISTEN ::1 ${nut_upsd_port}
 EOF
+
+	for _network in $(configxml_get "//ups/remotemonitor"); do
+		echo "LISTEN ${_network} ${nut_upsd_port}" >> ${nut_upsd_conf}
+	done
 
 	# Create upsd.users
 	cat <<EOF > ${nut_upsd_users}
