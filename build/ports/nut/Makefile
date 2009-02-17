@@ -1,5 +1,5 @@
 PORTNAME=			nut
-PORTVERSION=	2.4.0
+PORTVERSION=	2.4.1
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		votdev@gmx.de

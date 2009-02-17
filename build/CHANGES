@@ -5,6 +5,7 @@ Majors changes:
 - Upgrade to FreeBSD 7.1.
 - Include ZFS support. Thanks to Nelson Silva for doing core coding and Falk Menzel
   for testing and giving some tipps and ideas.
+- Upgrade nut to 2.4.1.
 
 Majors changes:
 
