@@ -264,6 +264,9 @@ sbin/zpool
 ## clri -- clear an inode
 sbin/clri
 
+## dumpon -- specify a device for crash dumps
+sbin/dumpon
+
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
