@@ -429,6 +429,9 @@ usr/bin/showmount
 ## truss -- trace system calls
 usr/bin/truss
 
+## install-info -- update info/dir entries
+usr/bin/install-info
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
