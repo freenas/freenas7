@@ -5,7 +5,7 @@
  #else
  /* 18 page tables needed to map 4G (72B "struct vm_page", 4M page tables). */
 -#define	NKPT		30
-+#define	NKPT		38
++#define	NKPT		37
  #endif
  #endif
  
