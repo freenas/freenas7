@@ -33,12 +33,12 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--with-altpidpath=${NUT_PIDDIR} \
 								--with-pidpath=${NUT_PIDDIR} \
 								--without-pkgconfig-dir \
-								--with-linux-hiddev=no \
 								--without-cgi \
 								--with-serial \
 								--with-usb=auto \
 								--without-snmp \
 								--without-neonxml \
+								--without-powerman \
 								--without-hal \
 								--with-ipv6 \
 								--without-dev \
