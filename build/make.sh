@@ -528,7 +528,7 @@ create_full() {
 	# Set revision.
 	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
-	FULLFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.tgz"
+	FULLFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.${FREENAS_REVISION}.tgz"
 
 	echo "FULL: Generating tempory $FREENAS_TMPDIR folder"
 	#Clean TMP dir:
