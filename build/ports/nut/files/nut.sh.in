@@ -97,7 +97,7 @@ nut_poststop() {
 }
 
 # Prepare state dir
-mkdir -m 0600 ${nut_statedir}
+mkdir -m 0600 ${nut_statedir} 2>/dev/null
 
 # Create required config file
 mkconf_cmd
