@@ -11,6 +11,7 @@
 
 . /etc/rc.subr
 . /etc/configxml.subr
+. /etc/util.subr
 
 name="nut"
 rcvar=`set_rcvar`
@@ -26,9 +27,13 @@ mkconf_cmd="mkconf_cmd"
 # Defaults
 nut_enable=${nut_enable:-"NO"}
 nut_prefix=${nut_prefix:-"/usr/local"}
+nut_nut_conf=${nut_nut_conf:-"/var/etc/nut.conf"}
 nut_ups_conf=${nut_ups_conf:-"/var/etc/ups.conf"}
 nut_upsd_conf=${nut_upsd_conf:-"/var/etc/upsd.conf"}
 nut_upsd_users=${nut_upsd_users:-"/var/etc/upsd.users"}
+nut_upsd_port=${nut_upsd_port:-"3493"}
+nut_upsd_maxage=${nut_upsd_maxage:-"15"}
+nut_upsd_maxconn=${nut_upsd_maxconn:-"1024"}
 nut_statedir=${nut_statedir:-"/var/db/${name}"}
 nut_runas=${nut_runas:-"root"}
 nut_flags=${nut_flags:-"-u ${nut_runas}"}
@@ -41,11 +46,16 @@ pidfile="/var/run/upsd.pid"
 
 mkconf_cmd()
 {
-	local _remotemonitor _network _id _aclname _aclnames
+	local _if _ip
 
-	# Get configuration
-	_remotemonitor=`configxml_get "//ups/remotemonitor"`
+	############################
+	# Create nut.conf
+	/usr/local/bin/xml sel -t -m "//ups" \
+		-i "count(remotemonitor) = 0" -o "MODE = standalone" -b \
+		-i "count(remotemonitor) > 0" -o "MODE = netserver" -b \
+		${configxml_file} | /usr/local/bin/xml unesc > ${nut_nut_conf}
 
+	############################
 	# Create ups.conf
 	/usr/local/bin/xml sel -t -m "//ups" \
 		-v "concat('[',upsname,']')" -n \
@@ -56,33 +66,37 @@ mkconf_cmd()
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${nut_ups_conf}
 
+	############################
 	# Create upsd.conf
 	cat <<EOF > ${nut_upsd_conf}
-ACL all 0.0.0.0/0
-ACL localhost 127.0.0.1/32
+MAXAGE ${nut_upsd_maxage}
+MAXCONN ${nut_upsd_maxconn}
+LISTEN 127.0.0.1 ${nut_upsd_port}
+LISTEN ::1 ${nut_upsd_port}
 EOF
 
-	for _network in ${_remotemonitor}; do
-		_id=$(( ${_id} + 1 ))
-		_aclname="remotemonitor${_id}"
-		_aclnames="${_aclnames} ${_aclname}"
-		echo "ACL ${_aclname} ${_network}" >> ${nut_upsd_conf}
-	done
+	# Add listening interface for remote monitoring
+	if configxml_isset //ups/remotemonitor; then
+		_if=`configxml_get "//interfaces/lan/if"`
+		_ip=`get_ipaddr inet ${_if}`
+		echo "LISTEN ${_ip} ${nut_upsd_port}" >> ${nut_upsd_conf}
 
-	cat <<EOF >> ${nut_upsd_conf}
-ACCEPT localhost ${_aclnames}
-REJECT all
-EOF
+		#if configxml_isset //interfaces/lan/ipv6_enable; then
+		#	_ip=`get_ipaddr inet6 ${_if}`
+		#	echo "LISTEN ${_ip} ${nut_upsd_port}" >> ${nut_upsd_conf}
+		#fi
+	fi
 
+	############################
 	# Create upsd.users
 	cat <<EOF > ${nut_upsd_users}
 [${nut_upsmon_user}]
         password = ${nut_upsmon_password}
-        allowfrom = localhost ${_aclnames}
         actions = set
         upsmon master
 EOF
 
+	chmod 0600 ${nut_nut_conf}
 	chmod 0600 ${nut_ups_conf}
 	chmod 0600 ${nut_upsd_conf}
 	chmod 0600 ${nut_upsd_users}
@@ -97,7 +111,7 @@ nut_poststop() {
 }
 
 # Prepare state dir
-mkdir -m 0600 -p ${nut_statedir}
+mkdir -m 0600 ${nut_statedir} 2>/dev/null
 
 # Create required config file
 mkconf_cmd

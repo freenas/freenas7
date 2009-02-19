@@ -45,7 +45,7 @@ $pconfig['port'] = $config['ups']['port'];
 $pconfig['desc'] = $config['ups']['desc'];
 $pconfig['shutdownmode'] = $config['ups']['shutdownmode'];
 $pconfig['shutdowntimer'] = $config['ups']['shutdowntimer'];
-$pconfig['remotemonitor'] = $config['ups']['remotemonitor'];
+$pconfig['remotemonitor'] = isset($config['ups']['remotemonitor']);
 $pconfig['email_enable'] = isset($config['ups']['email']['enable']);
 $pconfig['email_to'] = $config['ups']['email']['to'];
 $pconfig['email_subject'] = $config['ups']['email']['subject'];
@@ -91,7 +91,7 @@ if ($_POST) {
 		$config['ups']['desc'] = $_POST['desc'];
 		$config['ups']['shutdownmode'] = $_POST['shutdownmode'];
 		$config['ups']['shutdowntimer'] = $_POST['shutdowntimer'];
-		$config['ups']['remotemonitor'] = $_POST['remotemonitor'];
+		$config['ups']['remotemonitor'] = $_POST['remotemonitor'] ? true : false;
 		$config['ups']['email']['enable'] = $_POST['email_enable'] ? true : false;
 		$config['ups']['email']['to'] = $_POST['email_to'];
 		$config['ups']['email']['subject'] = $_POST['email_subject'];
@@ -179,7 +179,7 @@ function shutdownmode_change() {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<?php html_combobox("shutdownmode", gettext("Shutdown mode"), $pconfig['shutdownmode'], array("fsd" => gettext("UPS reaches low battery"), "onbatt" => "UPS goes on battery"), gettext("Defines when the shutdown is initiated."), true, false, "shutdownmode_change()");?>
 					<?php html_inputbox("shutdowntimer", gettext("Shutdown timer"), $pconfig['shutdowntimer'], gettext("The time in seconds until shutdown is initiated. If the UPS happens to come back before the time is up the shutdown is canceled."), true, 3);?>
-					<?php html_inputbox("remotemonitor", gettext("Remote monitoring"), $pconfig['remotemonitor'], gettext("Enter the network of the remote monitor that monitor the local connected UPS in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 (IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."), false, 60);?>
+					<?php html_checkbox("remotemonitor", gettext("Remote monitoring"), $pconfig['remotemonitor'] ? true : false, gettext("Enable remote monitoring of the local connected UPS."), "", false);?>
 					<?php html_separator();?>
 					<?php html_titleline_checkbox("email_enable", gettext("Email notification"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], sprintf("%s %s", gettext("Destination email address."), gettext("Separate email addresses by semi-colon.")), true, 40);?>

@@ -1676,6 +1676,14 @@ function config_upgrade() {
 		$config['version'] = "7.1";
 	}
 
+	/* Convert 7.1 -> 7.2 */
+	/* Convert //ups/remotemonitor to boolean. */
+	if ($config['version'] === "7.1") {
+		$config['ups']['remotemonitor'] = !empty($config['ups']['remotemonitor']);
+
+		$config['version'] = "7.2";
+	}
+
 	write_config();
 
 	if (is_booting())
