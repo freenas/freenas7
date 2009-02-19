@@ -33,7 +33,6 @@ nut_statedir=${nut_statedir:-"/var/db/${name}"}
 nut_runas=${nut_runas:-"root"}
 nut_flags=${nut_flags:-"-u ${nut_runas}"}
 nut_upsmon_user=${nut_upsmon_user:-"root"}
-nut_upsmon_password=${nut_upsmon_password:-"freenas"}
 required_dirs="/var/run ${nut_statedir}"
 required_files="${nut_ups_conf} ${nut_upsd_conf} ${nut_upsd_users}"
 command="${nut_prefix}/sbin/upsd"
@@ -41,11 +40,9 @@ pidfile="/var/run/upsd.pid"
 
 mkconf_cmd()
 {
-	local _remotemonitor _network _id _aclname _aclnames
+	local _network _id _aclname _aclnames
 
-	# Get configuration
-	_remotemonitor=`configxml_get "//ups/remotemonitor"`
-
+	############################
 	# Create ups.conf
 	/usr/local/bin/xml sel -t -m "//ups" \
 		-v "concat('[',upsname,']')" -n \
@@ -56,13 +53,14 @@ mkconf_cmd()
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${nut_ups_conf}
 
+	############################
 	# Create upsd.conf
 	cat <<EOF > ${nut_upsd_conf}
 ACL all 0.0.0.0/0
 ACL localhost 127.0.0.1/32
 EOF
 
-	for _network in ${_remotemonitor}; do
+	for _network in `configxml_get "//ups/remotemonitor"`; do
 		_id=$(( ${_id} + 1 ))
 		_aclname="remotemonitor${_id}"
 		_aclnames="${_aclnames} ${_aclname}"
@@ -74,14 +72,15 @@ ACCEPT localhost ${_aclnames}
 REJECT all
 EOF
 
+	############################
 	# Create upsd.users
-	cat <<EOF > ${nut_upsd_users}
-[${nut_upsmon_user}]
-        password = ${nut_upsmon_password}
-        allowfrom = localhost ${_aclnames}
-        actions = set
-        upsmon master
-EOF
+	/usr/local/bin/xml sel -t \
+		-o "[${nut_upsmon_user}]" -n \
+		-v "concat('        password = ',//system/password)" -n \
+		-o "        allowfrom = localhost ${_aclnames}" -n \
+		-o "        actions = set" -n \
+		-o "        upsmon master" \
+		${configxml_file} | /usr/local/bin/xml unesc > ${nut_upsd_users}
 
 	chmod 0600 ${nut_ups_conf}
 	chmod 0600 ${nut_upsd_conf}
