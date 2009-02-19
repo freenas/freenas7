@@ -80,7 +80,7 @@ generate_nsswitch_conf()
 		-o "services_compat: nis" -n \
 		-o "protocols: files" -n \
 		-o "rpc: files" \
-		${configxml_file} | /usr/local/bin/xml unesc > ${nsswitch_conf}
+		${configxml_file} | /usr/local/bin/xml unesc > /etc/nsswitch.conf
 }
 
 generate_host_conf()
