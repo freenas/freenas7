@@ -74,6 +74,7 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/metasys ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/mge-shut ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/mge-utalk ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/microdowell ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/newmge-shut ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/oneac ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/optiups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
