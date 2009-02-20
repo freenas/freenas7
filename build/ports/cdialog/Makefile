@@ -1,13 +1,13 @@
 PORTNAME=			cdialog
-PORTVERSION=	1.1.20080316
+PORTVERSION=	1.1.20080819
 PORTEPOCH=		1
 CATEGORIES=		devel
 COMMENT=			An enhanced version of 'dialog' to work with ncurses
 MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=	ftp://invisible-island.net/dialog/ \
-							http://www.carpetsmoker.net/distfiles/ \
-							http://www.xs4all.nl/~tournoij/distfiles/
+							http://www.xs4all.nl/~tournoij/distfiles/ \
+							http://www.rwxrwxrwx.net/distfiles/
 DISTNAME=			${PORTNAME:S|^c||}-${PORTVERSION:R}-${PORTVERSION:E}
 
 EXTRACT_SUFX=			.tgz
