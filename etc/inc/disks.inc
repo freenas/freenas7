@@ -829,21 +829,26 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 {
 	global $g;
 
+	// Get disk information
+	$diskinfo = disks_get_diskinfo($disk);
+
 	if (!$notinitmbr) {
-		echo gettext("Erasing MBR and all partitions").".\n";
-		system("/bin/dd if=/dev/zero of={$disk} bs=32k count=640");
+		echo gettext("Deleting MBR and partition table")."...\n";
+		system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} count=1 2>&1");
 	}
 
 	switch ($type) {
 		case "ufsgpt":
 			// Create GPT partition table
-			echo gettext("Creating partition").":\n";
-			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1"); // Destroy old GTP partition
+			echo gettext("Creating partition")."...\n";
+			// Destroy old GTP partition
+			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1");
+			// Create new GPT partition
 			system("/sbin/gpt create -f {$disk} 2>&1");
 			system("/sbin/gpt add -t ufs {$disk} 2>&1");
 
 			// Create filesystem
-			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
+			echo gettext("Creating filesystem with 'Soft Updates'")."...\n";
 			$param = "-U";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
@@ -853,17 +858,18 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			break;
 
 		case "softraid":
+			// Calculate last sector of disk containing GEOM metadata.
+			$oseek = $diskinfo['mediasize_sectors'] - 1;
+
 			// Initialize disk
-			echo gettext("Formating disk").".\n";
-			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");
+			// Ensure that existing GEOM metadata is completely removed.
+			echo gettext("Formating disk")."...\n";
+			system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} oseek={$oseek} count=1");
 			break;
 
 		case "msdos":
-			// Get disk information
-			$diskinfo = disks_get_diskinfo($disk);
-
 			// Get valid CHS information. 'diskinfo' gets values from harddisk firmware that
-			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
+			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63).
 			disk_sanitize_bios_geom($diskinfo);
 
 			// Create fdisk config file (fdisk.conf)
@@ -873,15 +879,15 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			}
 
 			// Initialize disk
-			echo gettext("Creating partition").":\n";
+			echo gettext("Creating partition")."...\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
 
 			// Initialize the partition
-			echo gettext("Initializing partition").".\n";
+			echo gettext("Initializing partition")."...\n";
 			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
 
 			// Create filesystem
-			echo gettext("Creating filesystem").":\n";
+			echo gettext("Creating filesystem")."...\n";
 			$param = "-F 32";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
@@ -893,11 +899,8 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			break;
 
 		case "ext2":
-			// Get disk information
-			$diskinfo = disks_get_diskinfo($disk);
-
 			// Get valid CHS information. 'diskinfo' gets values from harddisk firmware that
-			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
+			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63).
 			disk_sanitize_bios_geom($diskinfo);
 
 			// Create fdisk config file (fdisk.conf)
@@ -907,15 +910,15 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			}
 
 			// Initialize disk
-			echo gettext("Creating partition").":\n";
+			echo gettext("Creating partition")."...\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
 
 			// Initialize the partition
-			echo gettext("Initializing partition").".\n";
+			echo gettext("Initializing partition")."...\n";
 			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
 
 			// Create filesystem
-			echo gettext("Creating filesystem").":\n";
+			echo gettext("Creating filesystem")."...\n";
 			$param = "-r 0 "; // Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disapears)
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
