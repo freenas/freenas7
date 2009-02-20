@@ -432,6 +432,9 @@ usr/bin/truss
 ## install-info -- update info/dir entries
 usr/bin/install-info
 
+## xargs -- construct argument list(s) and execute utility
+usr/bin/xargs
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
