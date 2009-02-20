@@ -43,7 +43,8 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--with-ipv6 \
 								--without-dev \
 								--with-user=${NUT_USER} \
-								--with-group=${NUT_GROUP}
+								--with-group=${NUT_GROUP} \
+								--with-wrap
 
 do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DATADIR}
