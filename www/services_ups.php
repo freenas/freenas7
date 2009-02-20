@@ -53,8 +53,8 @@ if (is_array($config['ups']['auxparam']))
 	$pconfig['auxparam'] = implode("\n", $config['ups']['auxparam']);
 
 if (empty($pconfig['email_subject'])) {
-	$pconfig['email_subject'] = sprintf(gettext("UPS notification from host: %s.%s"),
-		$config['system']['hostname'], $config['system']['domain']);
+	$pconfig['email_subject'] = sprintf(gettext("UPS notification from host: %s"),
+		system_get_hostname());
 }
 
 if ($_POST) {
