@@ -1,5 +1,5 @@
 PORTNAME=			e2fsprogs
-PORTVERSION=	1.41.3
+PORTVERSION=	1.41.4
 PORTREVISION=	0
 CATEGORIES=		sysutils
 COMMENT=			Utilities & library to manipulate ext2/3/4 filesystems
@@ -23,7 +23,6 @@ MAKE_ARGS+=				LDFLAGS='${LDFLAGS} -L${LOCALBASE}/lib'
 .include <bsd.port.pre.mk>
 
 USE_GETTEXT=	yes
-PLIST_SUB=		NLS=""
 
 post-patch::
 	@${REINPLACE_CMD} -E -e \
