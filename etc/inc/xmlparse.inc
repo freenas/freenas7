@@ -124,34 +124,31 @@ function parse_xml_config($cffile, $rootobj) {
 	$havedata = 0;
 	$encoding = "UTF-8"; // PHP default
 
+	// Create XML parser and initialize handler.
 	$xml_parser = xml_parser_create();
-
 	xml_set_element_handler($xml_parser, "startElement", "endElement");
 	xml_set_character_data_handler($xml_parser, "cdata");
 
-	if (!($fp = fopen($cffile, "r"))) {
+	// Read configuration file.
+	$data = file_get_contents($cffile);
+	if (FALSE === $data)
 		die("Error: could not open XML input\n");
-	}
+	// Convert special HTML entities back to characters.
+	$data = htmlspecialchars_decode($data);
 
 	// Detect and set output character encoding. Default output encoding is UTF-8
-	$data = fread($fp, 4096);
 	if (preg_match('/<?xml.*encoding=[\'"](.*?)[\'"].*?>/m', $data, $m)) {
-	  $encoding = strtoupper($m[1]);
-	  xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, $encoding);
+		$encoding = strtoupper($m[1]);
+		xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, $encoding);
 	}
 
-	// Set position to file origin
-	fseek($fp, 0, SEEK_SET);
-
-	while ($data = fread($fp, 4096)) {
-		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			die(sprintf("XML error: %s at line %d\n",
-						xml_error_string(xml_get_error_code($xml_parser)),
-						xml_get_current_line_number($xml_parser)));
-		}
+	// Parse configuration.
+	if (!xml_parse($xml_parser, $data)) {
+		die(sprintf("XML error: %s at line %d\n",
+			xml_error_string(xml_get_error_code($xml_parser)),
+			xml_get_current_line_number($xml_parser)));
 	}
 
-	fclose($fp);
 	xml_parser_free($xml_parser);
 
 	if (!$config[$rootobj]) {
