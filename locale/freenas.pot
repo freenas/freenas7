@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-02-08 10:44+0000\n"
+"PO-Revision-Date: 2009-02-21 01:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -830,6 +830,9 @@ msgstr ""
 msgid "Deleting"
 msgstr ""
 
+msgid "Deleting MBR and partition table"
+msgstr ""
+
 msgid "Deny"
 msgstr ""
 
@@ -1356,9 +1359,6 @@ msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
 
 msgid "Enter trap host name."
-msgstr ""
-
-msgid "Erasing MBR and all partitions"
 msgstr ""
 
 msgid "Error"
@@ -3865,7 +3865,7 @@ msgid "UPS disabled"
 msgstr ""
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
+msgid "UPS notification from host: %s"
 msgstr ""
 
 msgid "UPS reaches low battery"
