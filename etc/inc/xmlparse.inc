@@ -4,7 +4,7 @@
 	functions to parse/dump configuration files in XML format
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -150,6 +150,8 @@ function parse_xml_config($cffile, $rootobj) {
 						xml_get_current_line_number($xml_parser)));
 		}
 	}
+
+	fclose($fp);
 	xml_parser_free($xml_parser);
 
 	if (!$config[$rootobj]) {
