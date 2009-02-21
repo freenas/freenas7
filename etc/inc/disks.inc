@@ -864,8 +864,8 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 
 			// Initialize disk
 			// Ensure that existing GEOM metadata is completely removed.
-			echo gettext("Formating disk")."...\n";
-			system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} oseek={$oseek} count=1");
+			echo gettext("Deleting GEOM metadata")."...\n";
+			system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} oseek={$oseek} count=1 2>&1");
 			break;
 
 		case "msdos":
@@ -882,10 +882,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			// Initialize disk
 			echo gettext("Creating partition")."...\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
-
-			// Initialize the partition
-			echo gettext("Initializing partition")."...\n";
-			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
+			@unlink("{$g['tmp_path']}/fdisk.conf");
 
 			// Create filesystem
 			echo gettext("Creating filesystem")."...\n";
@@ -893,9 +890,6 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/sbin/newfs_msdos {$param} {$disk}s1 2>&1");
-
-			// Cleanup
-			@unlink("{$g['tmp_path']}/fdisk.conf");
 
 			break;
 
@@ -913,10 +907,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			// Initialize disk
 			echo gettext("Creating partition")."...\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
-
-			// Initialize the partition
-			echo gettext("Initializing partition")."...\n";
-			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
+			@unlink("{$g['tmp_path']}/fdisk.conf");
 
 			// Create filesystem
 			echo gettext("Creating filesystem")."...\n";
@@ -924,9 +915,6 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/usr/local/sbin/mke2fs {$param} {$disk}s1 2>&1");
-
-			// Cleanup
-			@unlink("{$g['tmp_path']}/fdisk.conf");
 
 			break;
 	}
