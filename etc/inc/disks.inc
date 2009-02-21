@@ -910,8 +910,10 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			@unlink("{$g['tmp_path']}/fdisk.conf");
 
 			// Create filesystem
+			// Note: FreeBSD's ext2fs module, as of release 7.1, cannot mount ext2
+			// file systems with 256-byte large inodes, only 128 byte sized.
 			echo gettext("Creating filesystem")."...\n";
-			$param = "-r 0 "; // Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disapears)
+			$param = "-I 128";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/usr/local/sbin/mke2fs {$param} {$disk}s1 2>&1");

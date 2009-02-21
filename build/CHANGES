@@ -22,6 +22,9 @@ Permanent restrictions:
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
 - Downgrading to 0.69 via WebGUI fails because of broken pipe error.
+- FreeBSD's ext2fs module, as of release 7.1, cannot mount ext2 file systems
+  with 256-byte large inodes, only 128 byte sized.  Unfortunately, 256 byte is
+  the default size with many recent Linux distributions.
 
 NEED TESTING:
 - IPv6: auto mode
