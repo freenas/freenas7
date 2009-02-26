@@ -475,21 +475,28 @@ function install_fdisk($disk, $slicesize)
 		return 1;
 	}
 
-	// Completely wipe any prior information on the disk
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=32")) {
-		write_console("Error: Failed to wipe any prior information on disk '{$disk}'.\n");
+	// Delete MBR and partition table.
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs={$diskinfo['sectorsize']} count=1")) {
+		write_console("Error: Failed to delete MBR and partition table on disk {$disk}.\n");
+		return 1;
+	}
+
+	// Delete GEOM metadata.
+	$oseek = $diskinfo['mediasize_sectors'] - 1;
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs={$diskinfo['sectorsize']} oseek={$oseek} count=1")) {
+		write_console("Error: Failed to delete GEOM metadata on disk {$disk}.\n");
 		return 1;
 	}
 
 	// Set slice values
 	if (mwexec("/sbin/fdisk -f {$g['tmp_path']}/fdisk.conf {$disk}")) {
-		write_console("Error: Failed to write slice table on disk '{$disk}'.\n");
+		write_console("Error: Failed to write slice table on disk {$disk}.\n");
 		return 1;
 	}
 
 	// Reinitialize the boot code contained in sector 0 of the disk
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$disk}")) {
-		write_console("Error: Failed to reinitialize the boot code on disk '{$disk}'!\n");
+		write_console("Error: Failed to reinitialize the boot code on disk {$disk}!\n");
 		return 1;
 	}
 
