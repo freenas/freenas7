@@ -121,7 +121,7 @@ if ($_POST) {
 	}
 
 	// Check if it is a valid ISO image.
-	if (("iso" === $_POST['type']) && (FALSE === disks_is_iso_image($_POST['filename'])))
+	if (("iso" === $_POST['type']) && (FALSE === disks_is_iso_image($_POST['filename']))) {
 		$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 	}
 
