@@ -171,7 +171,7 @@ function disks_mount($mount)
 				$result = 0;
 			} else {
 				@rmdir($mountname);
-				write_log("Error: Failed to mount {$devicespecialfile} as CD/DVD");
+				write_log("Error: Failed to mount {$devicespecialfile} as CD/DVD (fstype={$mount['fstype']})");
 				$result = 1;
 			}
 			break;
