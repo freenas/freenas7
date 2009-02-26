@@ -18,6 +18,7 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
+start_precmd="mkconf_cmd"
 extra_commands="mkconf"
 mkconf_cmd="mkconf_cmd"
 
@@ -54,6 +55,7 @@ mkconf_cmd()
 	_upsname=`configxml_get "//ups/upsname"`
 	_shutdownmode=`configxml_get "//ups/shutdownmode"`
 
+	############################
 	# Create upsmon.conf
 	cat <<EOF > ${nut_upsmon_conf}
 MONITOR ${_upsname}@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
@@ -79,6 +81,7 @@ NOCOMMWARNTIME ${nut_upsmon_nocommwarntime}
 FINALDELAY ${nut_upsmon_finaldelay}
 EOF
 
+	############################
 	# Create upssched.conf
 	cat <<EOF > ${nut_upsmon_sched_conf}
 CMDSCRIPT /usr/local/bin/upssched-cmd
@@ -113,11 +116,10 @@ AT LOWBATT * EXECUTE notify
 EOF
 	fi
 
+	############################
+	# Modify file permissions.
 	chmod 0600 ${nut_upsmon_conf}
 	chmod 0600 ${nut_upsmon_sched_conf}
 }
-
-# Create required config file
-mkconf_cmd
 
 run_rc_command "$1"
