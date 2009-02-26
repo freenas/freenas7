@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
-"PO-Revision-Date: 2009-02-12 18:01+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"PO-Revision-Date: 2009-02-22 02:35+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-12 20:32+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -729,7 +729,7 @@ msgid "Client sees uppercase, server sees lowercase"
 msgstr "Cliënt ziet enkel hoofdletters, de server ziet kleine letters"
 
 msgid "Collecting initial data, please wait..."
-msgstr "Initiële data wordt opgehaald, even geduld aub..."
+msgstr "Bezig met het ophalen van de data, Even geduld a.u.b."
 
 msgid "Collisions"
 msgstr "Conflicten"
@@ -1011,6 +1011,12 @@ msgstr "Gebruiker verwijderen"
 
 msgid "Deleting"
 msgstr "Aan het verwijderen"
+
+msgid "Deleting GEOM metadata"
+msgstr "Verwijderen van de GEOM metadata"
+
+msgid "Deleting MBR and partition table"
+msgstr "Verwijderen van de MBR en partitie tabel"
 
 msgid "Deny"
 msgstr "Weigeren"
@@ -1641,9 +1647,6 @@ msgstr ""
 msgid "Enter trap host name."
 msgstr "Vul de trap host naam in."
 
-msgid "Erasing MBR and all partitions"
-msgstr "Wist de MBR en alle partities"
-
 msgid "Error"
 msgstr "Fout"
 
@@ -1848,9 +1851,6 @@ msgid "Format"
 msgstr "Formatteren"
 
 msgid "Format disk"
-msgstr "Formatteer schijf"
-
-msgid "Formating disk"
 msgstr "Formatteer schijf"
 
 msgid "Forum"
@@ -2213,9 +2213,6 @@ msgstr ""
 
 msgid "Initializing"
 msgstr "Aan het initialiseren"
-
-msgid "Initializing partition"
-msgstr "initialiseert de partitie"
 
 msgid "Initiator name"
 msgstr "Initiator naam"
@@ -4811,8 +4808,8 @@ msgid "UPS disabled"
 msgstr "UPS uitgeschakeld"
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
-msgstr "UPS kennisgeving van host: %s.%s"
+msgid "UPS notification from host: %s"
+msgstr "UPS bericht van host: %s"
 
 msgid "UPS reaches low battery"
 msgstr "UPS heeft een laag batterij niveau bereikt."
@@ -4893,8 +4890,8 @@ msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
 msgstr ""
-"Gebruik een spatie tussen elke host indien u er meerdere hosts toevoegt (u "
-"heeft er slechts één nodig). Onthoudt om tenminste één DNS server op te "
+"Zet een spatie tussen elke host als er meerdere NTP servers toevoegt worden "
+"(u heeft er slechts één nodig). Onthoudt om tenminste één DNS server op te "
 "zetten als u hier een hostnaam invult!"
 
 msgid "Use sendfile"

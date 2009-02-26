@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
 "PO-Revision-Date: 2009-01-16 10:46+0000\n"
 "Last-Translator: Conny Arnfeldt <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-09 18:52+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -961,6 +961,12 @@ msgstr "Ta bort användare"
 msgid "Deleting"
 msgstr "Raderar"
 
+msgid "Deleting GEOM metadata"
+msgstr ""
+
+msgid "Deleting MBR and partition table"
+msgstr ""
+
 msgid "Deny"
 msgstr "Neka"
 
@@ -1556,9 +1562,6 @@ msgstr ""
 msgid "Enter trap host name."
 msgstr ""
 
-msgid "Erasing MBR and all partitions"
-msgstr "Raderar MBR och alla partitioner"
-
 msgid "Error"
 msgstr "Fel"
 
@@ -1758,9 +1761,6 @@ msgstr "Formatera"
 
 msgid "Format disk"
 msgstr "Formatera disk"
-
-msgid "Formating disk"
-msgstr ""
 
 msgid "Forum"
 msgstr ""
@@ -2077,9 +2077,6 @@ msgstr ""
 
 msgid "Initializing"
 msgstr ""
-
-msgid "Initializing partition"
-msgstr "Initierar partition"
 
 msgid "Initiator name"
 msgstr "Initiatornamn"
@@ -4378,7 +4375,7 @@ msgid "UPS disabled"
 msgstr ""
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
+msgid "UPS notification from host: %s"
 msgstr ""
 
 msgid "UPS reaches low battery"
@@ -5053,6 +5050,9 @@ msgstr "veckodagar"
 
 #~ msgid "Creating one partition"
 #~ msgstr "Skapar en partition"
+
+#~ msgid "Initializing partition"
+#~ msgstr "Initierar partition"
 
 #~ msgid "Creating BSD label"
 #~ msgstr "Skapar BSD-etikett"

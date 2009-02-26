@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
 "PO-Revision-Date: 2009-01-31 14:11+0000\n"
 "Last-Translator: Zetao Zhang <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-09 18:52+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -962,6 +962,12 @@ msgstr "删除使用者"
 msgid "Deleting"
 msgstr "正在删除"
 
+msgid "Deleting GEOM metadata"
+msgstr ""
+
+msgid "Deleting MBR and partition table"
+msgstr ""
+
 msgid "Deny"
 msgstr "拒绝"
 
@@ -1547,9 +1553,6 @@ msgstr "输入 Traps 传送阜（预设为 162）"
 msgid "Enter trap host name."
 msgstr "输入 Trap 主机名称。"
 
-msgid "Erasing MBR and all partitions"
-msgstr "删除 MBR 以及所有的磁区分割"
-
 msgid "Error"
 msgstr "错误"
 
@@ -1741,9 +1744,6 @@ msgstr "格式化"
 
 msgid "Format disk"
 msgstr "格式化磁碟"
-
-msgid "Formating disk"
-msgstr ""
 
 msgid "Forum"
 msgstr ""
@@ -2068,9 +2068,6 @@ msgstr ""
 
 msgid "Initializing"
 msgstr "初始化"
-
-msgid "Initializing partition"
-msgstr "磁区初始化"
 
 msgid "Initiator name"
 msgstr "初始名称"
@@ -4410,7 +4407,7 @@ msgid "UPS disabled"
 msgstr ""
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
+msgid "UPS notification from host: %s"
 msgstr ""
 
 msgid "UPS reaches low battery"
@@ -5614,11 +5611,17 @@ msgstr "平常日"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI 组态设定"
 
+#~ msgid "Erasing MBR and all partitions"
+#~ msgstr "删除 MBR 以及所有的磁区分割"
+
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "保留原有的MBR以及所有的磁区分割"
 
 #~ msgid "Creating one partition"
 #~ msgstr "建立一个磁区"
+
+#~ msgid "Initializing partition"
+#~ msgstr "磁区初始化"
 
 #~ msgid "Creating BSD label"
 #~ msgstr "建立 BSD 标籤"

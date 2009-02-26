@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
-"PO-Revision-Date: 2009-02-07 13:47+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"PO-Revision-Date: 2009-02-24 16:36+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-09 18:52+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -77,8 +77,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
-"<a href=%s>SSHD</a> doit être activé pour qu' Unison fonctionne, et l'<a "
-"href=%s>utilisateur</a> doit avoir un accès complet au shell."
+"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+"href=%s>user</a> must have full Shell enabled."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -219,7 +219,7 @@ msgid "A valid systctl MIB value."
 msgstr "Une valeur systctl MIB valide."
 
 msgid "AD authentication disabled"
-msgstr "authentification AD désactivée"
+msgstr "Authentification AD désactivée"
 
 msgid "AD or PDC name."
 msgstr ""
@@ -398,7 +398,7 @@ msgstr ""
 "Après avoir cliqué sur &quot;Enregistrer&quot;, vous devez redémarrer %s "
 "pour prendre en compte les changements. Vous devriez également vérifier les "
 "points suivants avant de pouvoir vous reconnecter sur votre NAS: "
-"</span></p><ul><li><span class='vexpl'>Vérifiez que l'adresse IP de votre "
+"</span></p><ul><li><span class='vexpl'>vérifiez que l'adresse IP de votre "
 "ordinateur soit dans le même réseau que la nouvelle adresse du "
 "NAS</span></li><li><span class='vexpl'>accédez à l'interface avec la "
 "nouvelle adresse IP</span></li></ul>"
@@ -477,7 +477,7 @@ msgid "Always on"
 msgstr "Toujours actif"
 
 msgid "Always scan"
-msgstr "Scanner toujours"
+msgstr "Toujours balayer"
 
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
@@ -521,7 +521,7 @@ msgid "Any"
 msgstr "Tous"
 
 msgid "Apple Filing Protocol"
-msgstr "Apple Filing Protocol"
+msgstr "Apple Filing Protocol (AFP)"
 
 msgid "Apply changes"
 msgstr "Appliquer les changements"
@@ -752,7 +752,7 @@ msgid "Comment"
 msgstr "Commentaire"
 
 msgid "Common Internet File System"
-msgstr "Common Internet File System"
+msgstr "Common Internet File System (CIFS)"
 
 msgid "Community"
 msgstr "Communauté"
@@ -822,7 +822,7 @@ msgid "Create mask"
 msgstr "Masque de fichier"
 
 msgid "Create work directory if it doesn't exist"
-msgstr "Créer le répertoire de travail s'il n' existe pas"
+msgstr "Créer le répertoire de travail s'il n'existe pas"
 
 msgid "Creating filesystem"
 msgstr "Création du système de fichiers"
@@ -888,7 +888,7 @@ msgid "Data integrity"
 msgstr "Intégrité des données"
 
 msgid "Database directory"
-msgstr "Répertoire base de données"
+msgstr "Répertoire de base de données"
 
 msgid "Date"
 msgstr "Date"
@@ -1009,6 +1009,12 @@ msgstr "Supprimer l'utilisateur"
 msgid "Deleting"
 msgstr "Suppression"
 
+msgid "Deleting GEOM metadata"
+msgstr "Suppression des metadonnées de GEOM"
+
+msgid "Deleting MBR and partition table"
+msgstr "Suppression de la MBR et de la table des partitions"
+
 msgid "Deny"
 msgstr "Interdire"
 
@@ -1075,12 +1081,13 @@ msgid ""
 "forwarding delay (the devices are polled 1000 times per second). Not all "
 "NICs support polling."
 msgstr ""
-"Le sondage de périphérique est une technique permettant au système "
-"d'interroger périodiquement les périphériques réseau pour vérifier la "
-"présence de nouvelles données plutot que de se baser sur les interruptions. "
+"Le sondage de périphérique (device polling) est une technique permettant au "
+"système d'interroger périodiquement les périphériques réseau pour vérifier "
+"la présence de nouvelles données au lieu de se baser sur les interruptions. "
 "Ceci peut réduire la charge CPU et donc augmenter le débit, au détriment "
-"d'un délai de transfert plus élevé (les périphériques sont sondés 1000 fois "
-"par seconde). Toutes les cartes réseau ne supportent pas cette technique."
+"d'un délai de transfert légèrement plus élevé (les périphériques sont sondés "
+"1000 fois par seconde). Toutes les cartes réseau ne supportent pas cette "
+"technique."
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -1300,7 +1307,7 @@ msgstr ""
 "(respectivement createfileid, resolveid, deleteid)"
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr "Conserve le MBR intact (utile avec certains controleurs RAID)"
+msgstr "Conserve le MBR intact (utile avec certains contrôleurs RAID)"
 
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
@@ -1341,7 +1348,7 @@ msgid "Duplex"
 msgstr "Duplex"
 
 msgid "Duplicate mount point name."
-msgstr ""
+msgstr "Le nom du point de montage existe déjà."
 
 msgid "Dutch"
 msgstr "Néerlandais"
@@ -1437,7 +1444,7 @@ msgid "Email notification"
 msgstr "Notification par e-mail"
 
 msgid "Email report"
-msgstr "Rapport par email"
+msgstr "Rapport par e-mail"
 
 msgid "Enable"
 msgstr "Activer"
@@ -1473,7 +1480,7 @@ msgid "Enable directory listing."
 msgstr "Activer le listing des répertoires."
 
 msgid "Enable domain wildcarding."
-msgstr "Activer les wildcard pour les domaines"
+msgstr "Activer les wildcards pour les domaines"
 
 msgid "Enable extended attribute support"
 msgstr "activer le support des attributs étendus"
@@ -1608,6 +1615,9 @@ msgid ""
 "in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
 "(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
 msgstr ""
+"Entrer le réseau du contrôleur distant qui gère l'UPS local en mode esclave, "
+"e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 (IPv4) ou "
+"2001:0db8:1234::/48 (IPv6). Séparer les réseaux par un espace."
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
@@ -1628,9 +1638,6 @@ msgstr "Port sur lequel envoyer les traps SNMP (162 par défaut)."
 
 msgid "Enter trap host name."
 msgstr "Nom du hôte vers lequel envoyer les traps SNMP"
-
-msgid "Erasing MBR and all partitions"
-msgstr "Détruire le MBR et toutes les partitions"
 
 msgid "Error"
 msgstr "Erreur"
@@ -1777,7 +1784,7 @@ msgid "File Manager"
 msgstr "Gestionnaire de fichiers"
 
 msgid "File Transfer Protocol"
-msgstr "File Transfer Protocol"
+msgstr "File Transfer Protocol (FTP)"
 
 msgid "File not found"
 msgstr "Fichier non trouvé"
@@ -1830,16 +1837,13 @@ msgid "Follow"
 msgstr "Suivre"
 
 msgid "Forced update period"
-msgstr "Intervalle de mise à jour forcé"
+msgstr "Période de mise à jour forcée"
 
 msgid "Format"
 msgstr "Formater"
 
 msgid "Format disk"
 msgstr "Formater le disque"
-
-msgid "Formating disk"
-msgstr "Formattage de disque en cours"
 
 msgid "Forum"
 msgstr "Forum"
@@ -1851,7 +1855,7 @@ msgid "French"
 msgstr "Français"
 
 msgid "From email"
-msgstr "Email d'origine"
+msgstr "E-mail d'origine"
 
 msgid "Fsck"
 msgstr "Fsck"
@@ -1887,7 +1891,7 @@ msgid "Give only local users access to the web page."
 msgstr "Donner l'accès à la page web uniquement aux utilisateurs locaux."
 
 msgid "Graph"
-msgstr "Graphe"
+msgstr "Graphes"
 
 msgid "Graph shows last"
 msgstr "Afficher les dernieres"
@@ -2200,9 +2204,6 @@ msgstr ""
 msgid "Initializing"
 msgstr "Initialisation"
 
-msgid "Initializing partition"
-msgstr "Initialisation de la partition"
-
 msgid "Initiator name"
 msgstr "Nom de l'initiateur"
 
@@ -2319,7 +2320,7 @@ msgid "License & Credits"
 msgstr "Licence & crédits"
 
 msgid "Lightweight Directory Access Protocol"
-msgstr "Lightweight Directory Access Protocol"
+msgstr "Lightweight Directory Access Protocol (LDAP)"
 
 msgid "Link Aggregation and Failover"
 msgstr "Agrégation de lien et basculement"
@@ -2592,7 +2593,7 @@ msgid "Mount point"
 msgstr "Point de montage"
 
 msgid "Mount point name"
-msgstr ""
+msgstr "Nom du point de montage"
 
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
@@ -2610,7 +2611,7 @@ msgid "Mounts"
 msgstr "Montages"
 
 msgid "Must choose one"
-msgstr "Vous devez en choisir une"
+msgstr "Vous devez choisir une valeur"
 
 msgid "NFS"
 msgstr "NFS"
@@ -2652,7 +2653,7 @@ msgid "Network"
 msgstr "Réseau"
 
 msgid "Network File System"
-msgstr "Network File System"
+msgstr "Network File System (NFS)"
 
 msgid "Network mask"
 msgstr "Masque de sous-réseau"
@@ -3172,7 +3173,7 @@ msgid "Remote module name"
 msgstr "Nom du module distant"
 
 msgid "Remote monitoring"
-msgstr ""
+msgstr "Contrôle à distance"
 
 msgid "Remote syslog server"
 msgstr "Serveur syslog distant"
@@ -3201,7 +3202,7 @@ msgid "Require authentication."
 msgstr "Exigez l'authentification."
 
 msgid "Rescan interval"
-msgstr "Intervalle de re-scannage"
+msgstr "Intervalle de balayage"
 
 msgid "Resolve"
 msgstr "Résoudre"
@@ -3328,7 +3329,7 @@ msgstr ""
 "d'administration."
 
 msgid "Scan type"
-msgstr "Type de scan"
+msgstr "Type de balayage"
 
 msgid "Schedule time"
 msgstr "Planification"
@@ -3349,7 +3350,7 @@ msgid "Scheduled shutdown"
 msgstr "Arrêt programmé"
 
 msgid "Secure Shell"
-msgstr "Shell sécurisé"
+msgstr "Shell sécurisé (SSH)"
 
 msgid "Security"
 msgstr "Sécurité"
@@ -3976,7 +3977,7 @@ msgstr ""
 "Gardez bien en tête que le configuration fonctionne sur la première règle "
 "satisfaite, c'est à dire que le fichier de configuration est parcouru à "
 "partir du début vers la fin jusqu'à trouver une règle satisfaisante. Dès "
-"qu'un règle est satisfaite, elle est appliquée et la recherche est arrêté."
+"qu'une règle est satisfaite, elle est appliquée et la recherche est arrêtée."
 
 msgid "The changes have been applied successfully."
 msgstr "Les modifications ont été appliquées avec succès."
@@ -4653,10 +4654,10 @@ msgid "Times"
 msgstr "Temps"
 
 msgid "To e-mail"
-msgstr "Email de destination"
+msgstr "Destinataire de l'e-mail"
 
 msgid "To email"
-msgstr "Email de destination"
+msgstr "Destinataire de l'e-mail"
 
 #, php-format
 msgid ""
@@ -4739,7 +4740,7 @@ msgid "Traps"
 msgstr "Traps"
 
 msgid "Trivial File Transfer Protocol"
-msgstr "Trivial File Transfer Protocol"
+msgstr "Trivial File Transfer Protocol (TFTP)"
 
 msgid "Tuning"
 msgstr "Paramétrage"
@@ -4780,8 +4781,8 @@ msgid "UPS disabled"
 msgstr "UPS désactivé"
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
-msgstr "Notification UPS du hôte: %s.%s"
+msgid "UPS notification from host: %s"
+msgstr "Notification UPS du hôte: %s"
 
 msgid "UPS reaches low battery"
 msgstr "Batterie faible sur le système UPS"
@@ -4808,7 +4809,7 @@ msgid "Uninstall package"
 msgstr "Désinstallation paquet"
 
 msgid "Uninterruptible Power Supply"
-msgstr "Uninterruptible Power Supply"
+msgstr "Uninterruptible Power Supply (UPS)"
 
 msgid "Unison"
 msgstr "Unison"
@@ -6220,11 +6221,17 @@ msgstr "jours de la semaine"
 #~ msgid "webGUI Configuration"
 #~ msgstr "Configuration webGUI"
 
+#~ msgid "Erasing MBR and all partitions"
+#~ msgstr "Détruire le MBR et toutes les partitions"
+
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "Conserver le MBR et toutes les partitions"
 
 #~ msgid "Creating one partition"
 #~ msgstr "Création d'une partition"
+
+#~ msgid "Initializing partition"
+#~ msgstr "Initialisation de la partition"
 
 #~ msgid "Creating BSD label"
 #~ msgstr "Création de l'étiquette BSD"
