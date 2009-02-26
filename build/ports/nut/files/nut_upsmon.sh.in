@@ -18,7 +18,6 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="mkconf_cmd"
 extra_commands="mkconf"
 mkconf_cmd="mkconf_cmd"
 
@@ -30,7 +29,6 @@ nut_upsmon_powerdownflag=${nut_upsmon_powerdownflag:-"/var/etc/killpower"}
 nut_upsmon_sched_conf=${nut_upsmon_sched_conf:-"/var/etc/upssched.conf"}
 nut_upsmon_runas=${nut_upsmon_runas:-"root"}
 nut_upsmon_user=${nut_upsmon_user:-"root"}
-nut_upsmon_password=${nut_upsmon_password:-"freenas"}
 nut_upsmon_flags=${nut_upsmon_flags:-"-u ${nut_upsmon_runas} localhost"}
 nut_upsmon_notifycmd=${nut_upsmon_notifycmd:-"/usr/local/sbin/upssched"}
 nut_upsmon_shutdowncmd=${nut_upsmon_shutdowncmd:-"/sbin/shutdown -p now"}
@@ -50,15 +48,17 @@ pidfile="/var/run/upsmon.pid"
 
 mkconf_cmd()
 {
-	local _upsname _shutdownmode _shutdowntimer
+	local _shutdownmode _shutdowntimer
 
-	_upsname=`configxml_get "//ups/upsname"`
 	_shutdownmode=`configxml_get "//ups/shutdownmode"`
 
 	############################
 	# Create upsmon.conf
-	cat <<EOF > ${nut_upsmon_conf}
-MONITOR ${_upsname}@localhost 1 ${nut_upsmon_user} ${nut_upsmon_password} master
+	/usr/local/bin/xml sel -t \
+		-v "concat('MONITOR ',//ups/upsname,'@localhost 1 ${nut_upsmon_user} ',//system/password,' master')" \
+		${configxml_file} | /usr/local/bin/xml unesc > ${nut_upsmon_conf}
+
+	cat <<EOF >> ${nut_upsmon_conf}
 MINSUPPLIES ${nut_upsmon_minsupplies}
 SHUTDOWNCMD "${nut_upsmon_shutdowncmd}"
 NOTIFYCMD ${nut_upsmon_notifycmd}
@@ -97,7 +97,7 @@ AT NOPARENT * EXECUTE notify
 AT SHUTDOWN * EXECUTE notify
 EOF
 
-	if [ "onbatt" = ${_shutdownmode} ]; then
+	if [ "onbatt" = "${_shutdownmode}" ]; then
 		_shutdowntimer=`configxml_get "//ups/shutdowntimer"`
 
 		cat <<EOF >> ${nut_upsmon_sched_conf}
@@ -121,5 +121,8 @@ EOF
 	chmod 0600 ${nut_upsmon_conf}
 	chmod 0600 ${nut_upsmon_sched_conf}
 }
+
+# Create required config file
+mkconf_cmd
 
 run_rc_command "$1"
