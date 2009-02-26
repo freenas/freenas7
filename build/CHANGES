@@ -73,7 +73,6 @@ Bug fixes:
   using shutdown mode 'UPS reaches low battery' (BR 2549047).
 - Change user agent string for PS3 to 'PLAYSTATION 3' in fuppes.cfg (BR 2600554).
 - Formating disks with 'Software RAID' doesn't clear GEOM metadata (BR 2609681).
-- Fix bug in XML parser to do not filter double quotes in configuration anymore.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
