@@ -120,27 +120,12 @@ if ($_POST) {
 		}
 	}
 
-	// Do some 'iso' specific checks.
-	if ("iso" === $_POST['type']) {
-		// Check if it is a valid ISO file.
-		// 32769    string    CD001     ISO 9660 CD-ROM filesystem data
-		// 37633    string    CD001     ISO 9660 CD-ROM filesystem data (raw 2352 byte sectors)
-		// 32776    string    CDROM     High Sierra CD-ROM filesystem data
-		$fp = fopen($_POST['filename'], 'r');
-		fseek($fp, 32769, SEEK_SET);
-		$identifier[] = fgets($fp, 6);
-		fseek($fp, 37633, SEEK_SET);
-		$identifier[] = fgets($fp, 6);
-		fseek($fp, 32776, SEEK_SET);
-		$identifier[] = fgets($fp, 6);
-		fclose($fp);
-
-		if (false === array_search('CD001', $identifier) && false === array_search('CDROM', $identifier)) {
-			$input_errors[] = gettext("Selected file isn't an valid ISO file.");
-		}
+	// Check if it is a valid ISO image.
+	if (("iso" === $_POST['type']) && (FALSE === disks_is_iso_image($_POST['filename'])))
+		$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 	}
 
-	/* Check for name conflicts. */
+	// Check for name conflicts.
 	foreach ($a_mount as $mount) {
 		if (isset($id) && ($a_mount[$id]) && ($a_mount[$id] === $mount))
 			continue;
@@ -176,7 +161,7 @@ if ($_POST) {
 
 			case "iso":
 				$mount['filename'] = $_POST['filename'];
-				$mount['fstype'] = "cd9660";
+				$mount['fstype'] = disks_is_iso_image($_POST['filename']);
 				break;
 		}
 
