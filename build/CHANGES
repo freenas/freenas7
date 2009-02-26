@@ -21,6 +21,7 @@ Minors changes:
   Tobias Reber for the patch.
 - Add traceroute6 command (FR 2531610).
 - Add *.iso support to Fuppes UPnP (FR 2521047).
+- Move 'm2ts' video file extension to 'default' section (BR 2643180).
 - Add 'Remote monitoring' to 'Services|UPS' to allow adding remote monitors that
   monitor the local installed UPS in slave mode.
 - Use WebGUI administrator password for the NUT user 'root'.
