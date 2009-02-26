@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
-"PO-Revision-Date: 2009-02-08 22:55+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"PO-Revision-Date: 2009-02-21 19:56+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-09 18:52+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -996,6 +996,12 @@ msgstr "Удалить пользователя"
 msgid "Deleting"
 msgstr "Удаление"
 
+msgid "Deleting GEOM metadata"
+msgstr "Удаление метаданных GEOM"
+
+msgid "Deleting MBR and partition table"
+msgstr "Удаление MBR и таблицы разделов"
+
 msgid "Deny"
 msgstr "Запретить"
 
@@ -1613,9 +1619,6 @@ msgstr "Введите порт для отправки traps (по умолча
 msgid "Enter trap host name."
 msgstr "Введите имя хоста для traps."
 
-msgid "Erasing MBR and all partitions"
-msgstr "Стирание MBR и всех разделов"
-
 msgid "Error"
 msgstr "Ошибка"
 
@@ -1822,9 +1825,6 @@ msgstr "Форматирование"
 
 msgid "Format disk"
 msgstr "Форматировать диск"
-
-msgid "Formating disk"
-msgstr "Форматирование диска"
 
 msgid "Forum"
 msgstr "Форум разработчиков"
@@ -2170,9 +2170,6 @@ msgstr ""
 
 msgid "Initializing"
 msgstr "Инициализация"
-
-msgid "Initializing partition"
-msgstr "Инициализация раздела"
 
 msgid "Initiator name"
 msgstr "Имя инициатора"
@@ -4708,8 +4705,8 @@ msgid "UPS disabled"
 msgstr "Служба UPS отключена"
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
-msgstr "Уведомление UPS от хоста %s.%s"
+msgid "UPS notification from host: %s"
+msgstr "Уведомление UPS хоста %s"
 
 msgid "UPS reaches low battery"
 msgstr "Низкий заряд батареи UPS"
@@ -6011,6 +6008,9 @@ msgstr "дней недели"
 
 #~ msgid "webGUI Configuration"
 #~ msgstr "Настройка webGUI"
+
+#~ msgid "Erasing MBR and all partitions"
+#~ msgstr "Стирание MBR и всех разделов"
 
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "Сохранение MBR и всех разделов"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
 "PO-Revision-Date: 2009-01-25 08:52+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-09 18:52+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -957,6 +957,12 @@ msgstr "Cancella utente"
 msgid "Deleting"
 msgstr "Eliminazione"
 
+msgid "Deleting GEOM metadata"
+msgstr ""
+
+msgid "Deleting MBR and partition table"
+msgstr ""
+
 msgid "Deny"
 msgstr "Nega"
 
@@ -1556,9 +1562,6 @@ msgstr "Inserire la porta alla quale inviare le trap (default 162)."
 msgid "Enter trap host name."
 msgstr "Inserire un nome di host per le trap"
 
-msgid "Erasing MBR and all partitions"
-msgstr "Cancello il MBR e tutte le partizioni"
-
 msgid "Error"
 msgstr "Errore"
 
@@ -1761,9 +1764,6 @@ msgstr "Formatta"
 
 msgid "Format disk"
 msgstr "Formatta il disco"
-
-msgid "Formating disk"
-msgstr ""
 
 msgid "Forum"
 msgstr "Forum"
@@ -2106,9 +2106,6 @@ msgstr ""
 
 msgid "Initializing"
 msgstr ""
-
-msgid "Initializing partition"
-msgstr "Inizializzo partizione"
 
 msgid "Initiator name"
 msgstr "Nome iniziatore"
@@ -4558,7 +4555,7 @@ msgid "UPS disabled"
 msgstr ""
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
+msgid "UPS notification from host: %s"
 msgstr ""
 
 msgid "UPS reaches low battery"

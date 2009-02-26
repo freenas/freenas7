@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:09+0000\n"
-"PO-Revision-Date: 2008-12-11 14:23+0000\n"
+"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"PO-Revision-Date: 2009-02-17 16:01+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-09 18:52+0000\n"
+"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -71,7 +71,7 @@ msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN tag (between 1 and 4094)."
 
 msgid "<->"
-msgstr ""
+msgstr "<->"
 
 #, php-format
 msgid ""
@@ -118,6 +118,8 @@ msgid ""
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
+"ディレクトリがリクエストされたときに、indexファイル(index.php、index.html、index.htmまたはdefault.htm)がその"
+"ディレクトリに存在しない場合はディレクトリリストが生成されます。"
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
@@ -289,7 +291,7 @@ msgid "Add option"
 msgstr "オプションを追加"
 
 msgid "Add rule"
-msgstr ""
+msgstr "ルールの追加"
 
 msgid "Add self-test"
 msgstr ""
@@ -325,7 +327,7 @@ msgid "Advanced"
 msgstr "高度な設定"
 
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "高度な設定"
 
 msgid "Advanced Options"
 msgstr ""
@@ -343,9 +345,9 @@ msgid ""
 "address of your computer</li><li>access the webGUI with the new IP "
 "address</li></ul>"
 msgstr ""
-"&quot;保存&quot;をクリックした後，変更を有効にするには %s をリブートしなければなりません．また，再度 FreeNAS "
-"へアクセスする為に以下のステップを実行する必要があるかもしれません: <ul><li>コンピュータの IP "
-"アドレスを変更して下さい</li><li>新しい IP アドレスで WebGUI へアクセスして下さい</li></ul>"
+"&quot;セーブ&quot;をクリックした後、変更を有効にするには %s をリブートしなければなりません。また、再度 FreeNAS "
+"へアクセスする為に以下のステップを実行する必要があるかもしれません: <ul><li>コンピュータの IP アドレスの変更</li><li>新しい IP "
+"アドレスでの WebGUI へアクセス</li></ul>"
 
 #, php-format
 msgid ""
@@ -355,6 +357,10 @@ msgid ""
 "class='vexpl'>change the IP address of your computer</span></li><li><span "
 "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
+"&quot;セーブ&quot;をクリックした後、変更を有効にするには %s をリブートしなければなりません。 また、再度 FreeNAS "
+"へアクセスする為に以下のステップを実行する必要があるかもしれません。: </span></p><ul><li><span "
+"class='vexpl'>コンピュータの IP アドレスの変更</span></li><li><span class='vexpl'>新しい IP "
+"アドレスでの WebGUI へアクセス</span></li></ul>"
 
 msgid "Aggregation protocol"
 msgstr ""
@@ -430,7 +436,7 @@ msgid ""
 msgstr ""
 
 msgid "An host with this name already exists."
-msgstr ""
+msgstr "この名前のホストは既に存在しています。"
 
 msgid "An interface with the specified description already exists."
 msgstr ""
@@ -513,7 +519,7 @@ msgid "Auxiliary parameters"
 msgstr ""
 
 msgid "Backup configuration"
-msgstr ""
+msgstr "設定のバックアップ"
 
 msgid "Backup file"
 msgstr ""
@@ -567,13 +573,13 @@ msgid "CIFS/SMB informations"
 msgstr ""
 
 msgid "CPU frequency"
-msgstr ""
+msgstr "CPU周波数"
 
 msgid "CPU load"
 msgstr "CPU 負荷"
 
 msgid "CPU temperature"
-msgstr ""
+msgstr "CPU温度"
 
 msgid "CPU usage"
 msgstr "CPU 使用率"
@@ -619,10 +625,10 @@ msgid "Chinese (Traditional)"
 msgstr ""
 
 msgid "Choose on which interface packets must come in to match this rule."
-msgstr ""
+msgstr "このルールの対象とするインタフェースを選択してください。"
 
 msgid "Choose which IP protocol this rule should match."
-msgstr ""
+msgstr "このルールの対象とするIPプロトコルを選択してください。"
 
 msgid "Choose which interface this route applies to."
 msgstr "このルートがどのインタフェースに当てはまるかを選択して下さい．"
@@ -860,13 +866,13 @@ msgid "Delete algorithm"
 msgstr "アルゴリズムを削除"
 
 msgid "Delete all MIBs"
-msgstr ""
+msgstr "全ての MIB を削除"
 
 msgid "Delete all options"
 msgstr ""
 
 msgid "Delete all rules"
-msgstr ""
+msgstr "全てのルールの削除"
 
 msgid "Delete command"
 msgstr "コマンドを削除"
@@ -908,7 +914,7 @@ msgid "Delete option"
 msgstr "オプションを削除"
 
 msgid "Delete rule"
-msgstr ""
+msgstr "ルールの削除"
 
 msgid "Delete self-test"
 msgstr "セルフテストの削除"
@@ -924,6 +930,12 @@ msgstr "ユーザの削除"
 
 msgid "Deleting"
 msgstr "削除中"
+
+msgid "Deleting GEOM metadata"
+msgstr ""
+
+msgid "Deleting MBR and partition table"
+msgstr ""
 
 msgid "Deny"
 msgstr ""
@@ -989,6 +1001,9 @@ msgid ""
 "forwarding delay (the devices are polled 1000 times per second). Not all "
 "NICs support polling."
 msgstr ""
+"デバイスポーリングは割り込みの代わりに、ネットワークデバイスに新しいデータが来ていないか定期的に問い合わせを行うテクニックです。 "
+"これによりCPU負荷が抑えられ、わずかに遅延が発生する(デバイスは1秒に1000回ポーリングされます)代わりにスループットが向上します。 "
+"すべてのNICがデバイスポーリングをサポートするわけではありません。"
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -1012,7 +1027,7 @@ msgid "Directory"
 msgstr "ディレクトリ"
 
 msgid "Directory listing"
-msgstr ""
+msgstr "ディレクトリリスト"
 
 msgid "Directory mask"
 msgstr ""
@@ -1072,13 +1087,13 @@ msgid "Do you really want to delete all options?"
 msgstr "本当に全てのオプションを削除してもよろしいですか？"
 
 msgid "Do you really want to delete all rules?"
-msgstr ""
+msgstr "本当に全てのルールを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "本当にこのMIBを削除してもよろしいですか"
 
 msgid "Do you really want to delete this Rsync job?"
-msgstr ""
+msgstr "本当にこのRsyncジョブを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this URL?"
 msgstr "このURLを削除してもよろしいですか？"
@@ -1107,7 +1122,7 @@ msgid "Do you really want to delete this group?"
 msgstr "本当にこのグループを削除しても宜しいですか?!"
 
 msgid "Do you really want to delete this host?"
-msgstr ""
+msgstr "本当にこのホストを削除してもよろしいですか？"
 
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
@@ -1132,7 +1147,7 @@ msgid "Do you really want to delete this route?"
 msgstr "このルーティングを削除してもよろしいですか?"
 
 msgid "Do you really want to delete this rule?"
-msgstr ""
+msgstr "本当にこのルールを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr "このスケジュールされたセルフテストを削除してもよろしいですか？"
@@ -1144,18 +1159,19 @@ msgid "Do you really want to delete this target?"
 msgstr "本当にこのターゲットを削除しても宜しいですか?"
 
 msgid "Do you really want to delete this user?"
-msgstr ""
+msgstr "本当にこのユーザを削除してもよろしいですか？"
 
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
+"本当にこのボリュームを削除してもよろしいですか？\\n !!!注意:このボリュームに含まれるデータはすべて削除され復旧できなくなります。!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "本当にディスクをフォーマットして宜しいですか? データは全て失われます!"
 
 msgid "Do you really want to uninstall this package?"
-msgstr ""
+msgstr "本当にこのパッケージをアンインストールしてもよろしいですか？"
 
 msgid "Document root"
 msgstr ""
@@ -1211,13 +1227,13 @@ msgid "Download"
 msgstr ""
 
 msgid "Download configuration"
-msgstr "ダウンロード設定"
+msgstr "設定ファイルのダウンロード"
 
 msgid "Download directory"
 msgstr ""
 
 msgid "Download firewall rules."
-msgstr ""
+msgstr "ファイアーウォールルールのダウンロード"
 
 msgid "Driver"
 msgstr ""
@@ -1301,7 +1317,7 @@ msgid "Edit option"
 msgstr "オプションを編集"
 
 msgid "Edit rule"
-msgstr ""
+msgstr "ルールの編集"
 
 msgid "Edit self-test"
 msgstr "セルフテストの編集"
@@ -1358,7 +1374,7 @@ msgid "Enable device polling"
 msgstr "デバイスポーリングを有効にします"
 
 msgid "Enable directory listing."
-msgstr ""
+msgstr "ディレクトリリストを有効にする。"
 
 msgid "Enable domain wildcarding."
 msgstr ""
@@ -1408,7 +1424,7 @@ msgid "Enable reverse DNS lookup."
 msgstr ""
 
 msgid "Enable store DOS attributes"
-msgstr ""
+msgstr "DOS属性の保存を有効にする。"
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "リモートの syslog サーバへのロギングを有効にする"
@@ -1426,7 +1442,7 @@ msgid "Enable tuning of some kernel variables"
 msgstr "いくつかのカーネル変数のチューニングを許可する"
 
 msgid "Enable use sendfile."
-msgstr ""
+msgstr "sendfileを有効にする。"
 
 msgid "Enable web user interface."
 msgstr "Webユーザインターフェースの有効化"
@@ -1464,7 +1480,7 @@ msgstr ""
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
-msgstr ""
+msgstr "WebGUIのポートをデフォルト(HTTPは80、HTTPSは443)から変更したい場合は、ポート番号を入力してください。"
 
 msgid "Enter a valid sysctl MIB name."
 msgstr ""
@@ -1472,7 +1488,7 @@ msgstr ""
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select it."
-msgstr ""
+msgstr "\"mm/dd/yyyy hh:mm\"の形式でシステム時間を直接入力するか、アイコンを使用して選択してください。"
 
 msgid ""
 "Enter the network of the remote monitor that monitor the local connected UPS "
@@ -1496,9 +1512,6 @@ msgstr "SNMPトラップの送信に利用するポート番号を入力して�
 msgid "Enter trap host name."
 msgstr ""
 
-msgid "Erasing MBR and all partitions"
-msgstr "MBR と全てのパーティションを消去"
-
 msgid "Error"
 msgstr "エラー"
 
@@ -1515,13 +1528,13 @@ msgstr "コマンド実行"
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
-msgstr ""
+msgstr "コマンドをシステム起動前・起動後、あるいはシステムシャットダウンの前に実行します。"
 
 msgid "Execute now"
 msgstr ""
 
 msgid "Export"
-msgstr ""
+msgstr "エクスポート"
 
 msgid "Extensions"
 msgstr "拡張"
@@ -1664,7 +1677,7 @@ msgid "Firewall"
 msgstr ""
 
 msgid "Firewall rule"
-msgstr ""
+msgstr "ファイアーウォールルール"
 
 msgid "Firmware"
 msgstr "ファームウェア"
@@ -1692,9 +1705,6 @@ msgstr "フォーマット"
 
 msgid "Format disk"
 msgstr "ディスクフォーマット"
-
-msgid "Formating disk"
-msgstr ""
 
 msgid "Forum"
 msgstr ""
@@ -1724,7 +1734,7 @@ msgid "Gateway"
 msgstr "ゲートウェイ"
 
 msgid "Gateway to be used to reach the destination network."
-msgstr ""
+msgstr "宛て先ネットワークへ到達するために使用するゲートウェイ。"
 
 msgid "General"
 msgstr "基本"
@@ -1823,7 +1833,7 @@ msgid "Hostname"
 msgstr "ホスト名"
 
 msgid "Hostname database"
-msgstr ""
+msgstr "ホスト名データベース"
 
 msgid "Hosts"
 msgstr "ホスト"
@@ -1940,6 +1950,7 @@ msgid ""
 "If the server is behind a proxy set this parameters to give local services "
 "access to the internet via proxy."
 msgstr ""
+"サーバがプロキシ配下にある場合は、ローカルサービスがプロキシを経由してインターネットにアクセスするためにこのパラメータを設定してください。"
 
 msgid ""
 "If this parameter is set, Samba attempts to first read DOS attributes "
@@ -1948,6 +1959,9 @@ msgid ""
 "attributes will be stored onto an extended attribute in the UNIX filesystem, "
 "associated with the file or directory."
 msgstr ""
+"このパラメータが設定された場合、SambaはUNIXのパーミッションをDOS属性にマッピングする前に、ファイルシステムの拡張属性からDOS属性(SYSTE"
+"M、HIDDEN、ARCHIVEまたはREAD-"
+"ONLY)の取得を試みます。設定時は、DOS属性はUNIXファイルシステムにおける拡張属性として関連するファイルまたはディレクトリに記録されます。"
 
 msgid ""
 "If this parameter is set, then users may not create or modify files in the "
@@ -1976,10 +1990,10 @@ msgid "Image upload failed (out of memory?)"
 msgstr "イメージアップロードが失敗しました (メモリ不足？)．"
 
 msgid "Import"
-msgstr ""
+msgstr "インポート"
 
 msgid "Import firewall rules."
-msgstr ""
+msgstr "ファイアーウォールルールのインポート"
 
 msgid "In"
 msgstr "入力"
@@ -2013,9 +2027,6 @@ msgstr ""
 
 msgid "Initializing"
 msgstr "初期化中"
-
-msgid "Initializing partition"
-msgstr "パーティションの初期化"
 
 msgid "Initiator name"
 msgstr "イニシエーター名"
@@ -2112,7 +2123,7 @@ msgstr "最終設定変更日"
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
-msgstr ""
+msgstr "未フォーマットのディスクは '%s' とし、<a href=%s>フォーマット</a> メニューにてフォーマットしてください。"
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
@@ -2220,7 +2231,7 @@ msgid "Log Level"
 msgstr "ログレベル"
 
 msgid "Log packets that are handled by this rule to syslog."
-msgstr ""
+msgstr "このルールにマッチしたパケットをsyslogに記録する。"
 
 msgid "Login"
 msgstr "ログイン"
@@ -2355,7 +2366,7 @@ msgid "Minimum power usage without Standby"
 msgstr "スタンバイ無しの最小の電力利用"
 
 msgid "Minutes between network time sync."
-msgstr ""
+msgstr "時刻を同期する間隔を分で指定します。"
 
 msgid "Mode"
 msgstr "モード"
@@ -2506,7 +2517,7 @@ msgstr ""
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 "minutes, hours, days and months."
-msgstr ""
+msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分，時，日，月を複数選択出来ます．"
 
 msgid "Now"
 msgstr ""
@@ -2556,7 +2567,7 @@ msgstr ""
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
 "configuration."
-msgstr ""
+msgstr "%s のコンフィグXMLファイルを指定し、ボタンをクリックすると設定のリストアを行います。"
 
 msgid "Option"
 msgstr "オプション"
@@ -2653,10 +2664,10 @@ msgid "Password encryption"
 msgstr ""
 
 msgid "Password for the administrative pages."
-msgstr ""
+msgstr "管理用ページのパスワード。"
 
 msgid "Password of domain administrator account."
-msgstr ""
+msgstr "ドメイン管理者アカウントのパスワード。"
 
 msgid "Password suffix"
 msgstr ""
@@ -2758,7 +2769,7 @@ msgid "Prefix"
 msgstr ""
 
 msgid "Preformatted file system"
-msgstr ""
+msgstr "フォーマット済みファイルシステム"
 
 msgid "Preserve extended attributes"
 msgstr ""
@@ -2814,7 +2825,7 @@ msgstr ""
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last hard disk access has been elapsed."
-msgstr ""
+msgstr "最後のハードディスクアクセスから選択された時間が経過すると、ハードディスクはスタンバイモードに入ります。"
 
 msgid "Quiet"
 msgstr ""
@@ -3004,13 +3015,13 @@ msgid "Rsync job"
 msgstr ""
 
 msgid "Rule"
-msgstr ""
+msgstr "ルール"
 
 msgid "Rule number"
-msgstr ""
+msgstr "ルール番号"
 
 msgid "Rules"
-msgstr ""
+msgstr "ルール"
 
 msgid "Run now"
 msgstr ""
@@ -3137,7 +3148,7 @@ msgid "Send test email"
 msgstr "テストメールの送信"
 
 msgid "Separate email addresses by semi-colon."
-msgstr ""
+msgstr "Eメールアドレスをセミコロン区切りで記述。"
 
 msgid "Server"
 msgstr "サーバ"
@@ -3184,6 +3195,9 @@ msgid ""
 "transmitted on an interface. Not all interfaces support setting the MTU, and "
 "some interfaces have range restrictions."
 msgstr ""
+"インタフェースのMTU(Maximum Transmission Unit)を指定してください。デフォルトの値はインタフェースに依存します。 "
+"MTUは、インタフェース上で送信パケットサイズを制限するのに使用されます。 "
+"すべてのインタフェースがMTUの設定をサポートするというわけではありません。また、いくつかのインタフェースでは、MTU値の指定できる範囲に制限があります。"
 
 msgid ""
 "Sets the database information to be stored in path. You have to specifiy a "
@@ -3231,7 +3245,7 @@ msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "逆順でログエントリを表示する (もっとも新しいエントリがトップ)"
 
 msgid "Show process information"
-msgstr ""
+msgstr "プロセス情報の表示"
 
 msgid "Shutdown"
 msgstr "シャットダウン"
@@ -3373,7 +3387,7 @@ msgid "Storage"
 msgstr "ストレージ"
 
 msgid "Store DOS attributes"
-msgstr ""
+msgstr "DOS属性の保存"
 
 msgid ""
 "String displayed in the dialog presented to the user when accessing the URL."
@@ -3533,7 +3547,7 @@ msgid "The %s port must be in the range from %d to %d."
 msgstr ""
 
 msgid "The IP address that this hostname represents."
-msgstr ""
+msgstr "このホスト名が表すIPアドレス。"
 
 #, php-format
 msgid "The MIB '%s' already exist."
@@ -3562,7 +3576,7 @@ msgstr "VLAN ID は1-4094の範囲内で指定してください。"
 msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
-msgstr ""
+msgstr "以下に指定された基準にパケットがマッチした場合に実行するアクション。"
 
 #, c-format
 msgid ""
@@ -3663,6 +3677,10 @@ msgid ""
 "order for a matching rule. When a match is found the rule is applied and the "
 "search process will halt."
 msgstr ""
+"基本的に構文は\"デーモン : アドレス : "
+"アクション\"の形を取ります。デーモン欄は起動したサービスのデーモン名です。アドレス欄は、有効なホスト名、IPアドレスまたはIPv6アドレスが指定可能です"
+"。アクション欄は、allowまたはdenyをアクセスを許可するか拒否するかにより指定します。ルールは昇順に評価され、最初にマッチしたルールが適用されます。"
+"マッチしたルールが見つかると検索は終了します。"
 
 msgid "The changes have been applied successfully."
 msgstr "変更は問題なく成功しました．"
@@ -3833,7 +3851,7 @@ msgid ""
 msgstr "電源制御ユーティリティはシステム状態を監視し，それに応じて様々な電源制御オプションをセットします．"
 
 msgid "The rule number determines the order of the rule."
-msgstr ""
+msgstr "ルール番号によりルールの順序が決定されます。"
 
 msgid "The serial or USB port where your UPS is connected."
 msgstr ""
@@ -3842,7 +3860,7 @@ msgid "The share name is already used."
 msgstr "この共有名は既に使用されています。"
 
 msgid "The size of the swap file in MB."
-msgstr ""
+msgstr "スワップファイルのサイズをMBで指定します。"
 
 msgid "The subject of the email."
 msgstr "メールの件名"
@@ -3873,7 +3891,7 @@ msgid "The unique group ID is already used."
 msgstr "このグループIDは既に使用されています。"
 
 msgid "The unique rule number is already used."
-msgstr ""
+msgstr "このルール番号は既に使用されています。"
 
 msgid "The unique user ID is already used."
 msgstr "このユーザIDは既に使用されています。"
@@ -3916,17 +3934,17 @@ msgstr ""
 msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
 "to a running system."
-msgstr ""
+msgstr "これらのMIBは/etc/sysctl.confに追加されます。 これによりシステム設定の変更を行うことができます。"
 
 msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
-msgstr ""
+msgstr "これらのコマンドはシステム起動前・起動後、あるいはシステムシャットダウンの前に実行されます。"
 
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
-msgstr ""
+msgstr "これらのオプションは/etc/rc.confに追加されます。 これにより様々な起動スクリプトのオプションを上書きできます。"
 
 #, php-format
 msgid "These parameters are added to %s."
@@ -3934,7 +3952,7 @@ msgstr ""
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
-msgstr ""
+msgstr "これらのパラメータは%sのグローバルセクションに追加されます。"
 
 msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
@@ -3942,7 +3960,7 @@ msgstr ""
 
 msgid ""
 "These parameters will be added to the share configuration in smb.conf."
-msgstr ""
+msgstr "これらのパラメータはsmb.confの共有セクションに追加されます。"
 
 msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
@@ -3958,7 +3976,7 @@ msgstr "このVLANは現在も使用されているため削除できません�
 msgid ""
 "This allows you to lower the power consumption of the drive, at the expense "
 "of performance."
-msgstr ""
+msgstr "この設定により、パフォーマンスを犠牲にしてドライブの電力消費を下げることができます。"
 
 msgid "This allows you to set how loud the drive is while it's operating."
 msgstr ""
@@ -3966,10 +3984,10 @@ msgstr ""
 msgid ""
 "This allows you to set the file system for preformatted hard disks "
 "containing data."
-msgstr ""
+msgstr "データが入ったフォーマット済みハードディスクドライブのファイルシステムを指定します。"
 
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
-msgstr ""
+msgstr "ATA/IDEハードディスクドライブの転送モードを設定します。"
 
 #, php-format
 msgid ""
@@ -4214,6 +4232,7 @@ msgid ""
 "To get detailed informations about TCP Wrappers check the FreeBSD <a "
 "href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"TCP Wrappersの詳細な情報はFreeBSDの<a href='%s' target='_blank'>ドキュメント</a>を参照してください。"
 
 #, php-format
 msgid ""
@@ -4230,9 +4249,12 @@ msgid ""
 "href='%s'>Tuning</a>' switch</li><li>Increase <a "
 "href='%s'>MTU</a></li></ul></div>"
 msgstr ""
+"CIFSのパフォーマンスを向上させるために以下をお試しください:<div id='enumeration'><ul><li>'Large "
+"read/write'を有効にする</li><li>'<a href='%s'>チューニング</a>' を有効にする</li><li><a "
+"href='%s'>MTU</a>値を増やす</li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
-msgstr ""
+msgstr "このフィールドを空欄にした場合、全てのIPアドレスにマッチします。"
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
@@ -4303,6 +4325,8 @@ msgid ""
 "Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
 "can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
+"UFSは FreeBSD (%s のベース OS) のネイティブなファイルフォーマットです．FAT，FAT32，EXT2，EXT3 又は NTFS "
+"等，他のファイルフォーマットを使う場合，予期せぬ結果，ファイルの破損及びデータの紛失が起こる恐れがあります!"
 
 msgid "UID"
 msgstr "UID"
@@ -4314,7 +4338,7 @@ msgid "UPS disabled"
 msgstr ""
 
 #, php-format
-msgid "UPS notification from host: %s.%s"
+msgid "UPS notification from host: %s"
 msgstr ""
 
 msgid "UPS reaches low battery"
@@ -4411,7 +4435,7 @@ msgid ""
 msgstr ""
 
 msgid "Use the specified NTP server."
-msgstr "特定のNTPサーバを使用する。"
+msgstr "指定されたNTPサーバを使用する。"
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -4618,7 +4642,7 @@ msgid "You have to select at least one item for '%s'."
 msgstr "'%s' の項目は最低1つは選択してください。"
 
 msgid "You may enter a description here for your reference."
-msgstr ""
+msgstr "参考のための記述を入力できます。"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr "同期する全てのファイルを複製する為に十分なスペースが必要かもしれません"
@@ -5615,11 +5639,17 @@ msgstr "週日"
 #~ msgid "webGUI Configuration"
 #~ msgstr "webGUI 設定"
 
+#~ msgid "Erasing MBR and all partitions"
+#~ msgstr "MBR と全てのパーティションを消去"
+
 #~ msgid "Keeping the MBR and all partitions"
 #~ msgstr "MBR と全てのパーティションをキープ"
 
 #~ msgid "Creating one partition"
 #~ msgstr "パーティションを1つ作成"
+
+#~ msgid "Initializing partition"
+#~ msgstr "パーティションの初期化"
 
 #~ msgid "Creating BSD label"
 #~ msgstr "BSD ラベルの作成"
