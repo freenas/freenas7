@@ -15,6 +15,8 @@
 name="smartd"
 rcvar=`set_rcvar`
 
+load_rc_config "${name}"
+
 # Custom commands
 start_precmd="mkconf_cmd"
 mkconf_cmd="mkconf_cmd"
@@ -143,5 +145,4 @@ mkconf_cmd()
 		done
 }
 
-load_rc_config ${name}
 run_rc_command "$1"
