@@ -133,8 +133,6 @@ function parse_xml_config($cffile, $rootobj) {
 	$data = file_get_contents($cffile);
 	if (FALSE === $data)
 		die("Error: could not open XML input\n");
-	// Convert special HTML entities back to characters.
-	$data = htmlspecialchars_decode($data);
 
 	// Detect and set output character encoding. Default output encoding is UTF-8
 	if (preg_match('/<?xml.*encoding=[\'"](.*?)[\'"].*?>/m', $data, $m)) {
