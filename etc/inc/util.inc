@@ -2017,7 +2017,8 @@ function util_is_iso_image($filename) {
 		"NSR0"  => "udf",
 		"NSR01" => "udf",
 		"NSR02" => "udf",
-		"NSR03" => "udf");
+		"NSR03" => "udf",
+		"BEA01" => "udf");
 
 	$fh = fopen($filename, "r");
 	if (FALSE === $fh)

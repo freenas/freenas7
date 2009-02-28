@@ -16,6 +16,8 @@ ext2fs/ext2fs.ko
 nullfs/nullfs.ko
 unionfs/unionfs.ko
 smbfs/smbfs.ko
+udf/udf.ko
+udf_iconv/udf_iconv.ko
 
 # NFS
 krpc/krpc.ko
