@@ -161,7 +161,7 @@ if ($_POST) {
 
 			case "iso":
 				$mount['filename'] = $_POST['filename'];
-				$mount['fstype'] = disks_is_iso_image($_POST['filename']);
+				$mount['fstype'] = util_is_iso_image($_POST['filename']);
 				break;
 		}
 

@@ -68,6 +68,7 @@ Minors changes:
 - Add 'Remote monitoring' to 'Services|UPS' to allow adding remote monitors that
   monitor the local installed UPS in slave mode.
 - Use WebGUI administrator password for the NUT user 'root'.
+- Add ability to mount UDF ISO images.
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct
