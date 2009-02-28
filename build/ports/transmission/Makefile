@@ -1,6 +1,6 @@
 PORTNAME=				transmission
-PORTVERSION=		1.42
-PORTREVISION?=	1
+PORTVERSION=		1.51
+PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
 MAINTAINER=			votdev@gmx.de
@@ -26,9 +26,6 @@ general-patch:
 		${WRKSRC}/third-party/libevent/Makefile.*
 	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \
 		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
-	@${REINPLACE_CMD} -e 's|%%CFLAGS%%|${CFLAGS}|g ; \
-		s|%%CXXFLAGS%%|${CXXFLAGS}|g' \
-			${WRKSRC}/configure.ac
 	@${REINPLACE_CMD} -e '/#define DISABLE_GETTEXT/s,/\* \(.*\) \*/,\1,' \
 		${WRKSRC}/libtransmission/utils.h
 
@@ -62,9 +59,6 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/torrent_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/favicon.ico ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/favicon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
-	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/browser_firefox.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
-	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/browser_opera.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
-	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/browser_safari.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/chrome.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/filter_bar.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/filter_icon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
@@ -87,6 +81,8 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/transmission.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/transmission.remote.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/common.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
+	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie6.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
+	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie7.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/iphone.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 
 .include <bsd.port.mk>
