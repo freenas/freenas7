@@ -167,7 +167,7 @@ function shutdownmode_change() {
   <tr>
     <td class="tabcont">
     	<form action="services_ups.php" method="post" name="iform" id="iform">
-				<?php if (isset($pconfig['email_enable']) && (0 !== email_validate_settings())) print_error_box(sprintf(gettext("Make sure you have already configured your <a href='%s'>Email</a> settings."), "system_email.php"));?>
+				<?php if ($pconfig['enable'] && $pconfig['email_enable'] && (0 !== email_validate_settings())) print_error_box(sprintf(gettext("Make sure you have already configured your <a href='%s'>Email</a> settings."), "system_email.php"));?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
