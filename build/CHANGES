@@ -5,7 +5,6 @@ Majors changes:
 - Upgrade to FreeBSD 7.1.
 - Include ZFS support. Thanks to Nelson Silva for doing core coding and Falk Menzel
   for testing and giving some tipps and ideas.
-- Upgrade nut to 2.4.1. Thanks to Joerg Pulz for the core dump patch.
 
 Majors changes:
 
@@ -46,6 +45,12 @@ Majors changes:
 - Upgrade lighttpd to 1.4.21.
 - Upgrade cdialog to 1.1.20080819.
 - Upgrade e2fsprogs to 1.41.4.
+- Upgrade nut to 2.4.1. Thanks to Joerg Pulz for the core dump patch. This
+  version uses TCP wrappers instead of the internal ACL mechanism. Because of
+  that all client can listen the UPS. If you want to prevent this you have to
+  use the FreeNAS client firewall to block specific IP ranges. See
+  http://lists.alioth.debian.org/pipermail/nut-upsuser/2009-February/004862.html
+  for a detailed explanation.
 
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
