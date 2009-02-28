@@ -3,7 +3,7 @@
 /*
   index.php
   part of FreeNAS (http://www.freenas.org)
-  Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+  Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
 
@@ -43,7 +43,7 @@ $cpuinfo = system_get_cpu_info();
 function update_controls() {
 	// Get uptime and date.
 	$value['uptime'] = system_get_uptime();
-	exec("/bin/date", $value['date']);
+	$value['date'] = shell_exec("date");
 	// Get RAM usage.
 	$raminfo = system_get_ram_info();
 	$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
@@ -149,8 +149,7 @@ sajax_handle_client_request();
 			  <tr>
 			    <td width="25%" class="vncellt"><?=gettext("Date");?></td>
 			    <td width="75%" class="listr">
-			      <?php exec("/bin/date", $date);?>
-			      <input style="padding: 0; border: 0;" size="30" name="date" id="date" value="<?=htmlspecialchars($date[0]);?>"/>
+			      <input style="padding: 0; border: 0;" size="30" name="date" id="date" value="<?=htmlspecialchars(shell_exec("date"));?>"/>
 			    </td>
 			  </tr>
 			  <tr>
