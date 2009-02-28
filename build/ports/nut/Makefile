@@ -1,6 +1,5 @@
 PORTNAME=			nut
-PORTVERSION=	2.2.2
-PORTEPOCH=		2
+PORTVERSION=	2.4.1
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		votdev@gmx.de
@@ -34,17 +33,18 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--with-altpidpath=${NUT_PIDDIR} \
 								--with-pidpath=${NUT_PIDDIR} \
 								--without-pkgconfig-dir \
-								--with-linux-hiddev=no \
 								--without-cgi \
 								--with-serial \
 								--with-usb=auto \
 								--without-snmp \
 								--without-neonxml \
+								--without-powerman \
 								--without-hal \
 								--with-ipv6 \
 								--without-dev \
 								--with-user=${NUT_USER} \
-								--with-group=${NUT_GROUP}
+								--with-group=${NUT_GROUP} \
+								--with-wrap
 
 do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DATADIR}
@@ -52,7 +52,6 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/data/driver.list ${FREENAS_ROOTFS}/${NUT_DATADIR}
 
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/al175 ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/apcsmart ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bcmxcp ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bcmxcp_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
@@ -61,9 +60,9 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestfcom ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestuferrups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/cpsups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/blazer_ser ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/blazer_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/cyberpower ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/dummy-ups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/etapro ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/everups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/gamatronic ${FREENAS_ROOTFS}/${NUT_DRVDIR}
@@ -76,13 +75,14 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/metasys ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/mge-shut ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/mge-utalk ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/microdowell ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/newmge-shut ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/nitram ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/oneac ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/optiups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/powercom ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/powerpanel ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/rhino ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/richcomm_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/safenet ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/skel ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/solis ${FREENAS_ROOTFS}/${NUT_DRVDIR}
@@ -93,10 +93,10 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/upsdrvctl ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/usbhid-ups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/victronups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	
+
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/libupsclient.so.1 ${FREENAS_ROOTFS}/usr/local/lib
 	@${LN} -f -v -s /usr/local/lib/libupsclient.so.1 ${FREENAS_ROOTFS}/usr/local/lib/libupsclient.so
-	
+
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsc ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upscmd ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upslog ${FREENAS_ROOTFS}/usr/local/bin

@@ -1676,6 +1676,15 @@ function config_upgrade() {
 		$config['version'] = "7.1";
 	}
 
+	/* Convert 7.1 -> 7.2 */
+	/* Convert //ups/remotemonitor to boolean. Add upsd TCP wrapper example. */
+	if ($config['version'] === "7.1") {
+		$config['ups']['remotemonitor'] = !empty($config['ups']['remotemonitor']);
+		$config['system']['hostsacl']['rule'][] = "#upsd : xxx.xxx.xxx.xxx : deny";
+
+		$config['version'] = "7.2";
+	}
+
 	write_config();
 
 	if (is_booting())
