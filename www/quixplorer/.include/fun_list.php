@@ -202,15 +202,17 @@ function print_table($dir, $list, $allow) {	// print table of files
 		}
 		// DOWNLOAD
 		if(get_is_file($dir,$item)) {
-			if($allow) {
-				echo "<TD><A HREF=\"".make_link("download",$dir,$item)."\">";
-				echo "<IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
-				echo "src=\"_img/_download.gif\" ALT=\"".$GLOBALS["messages"]["downlink"];
-				echo "\" TITLE=\"".$GLOBALS["messages"]["downlink"]."\"></A></TD>\n";
-			} else if(!$allow) {
-				echo "<TD><IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
-				echo "src=\"_img/_download_.gif\" ALT=\"".$GLOBALS["messages"]["downlink"];
-				echo "\" TITLE=\"".$GLOBALS["messages"]["downlink"]."\"></TD>\n";
+			if($GLOBALS["display_file_download_icon"]) {
+				if($allow) {
+					echo "<TD><A HREF=\"".make_link("download",$dir,$item)."\">";
+					echo "<IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
+					echo "src=\"_img/_download.gif\" ALT=\"".$GLOBALS["messages"]["downlink"];
+					echo "\" TITLE=\"".$GLOBALS["messages"]["downlink"]."\"></A></TD>\n";
+				} else if(!$allow) {
+					echo "<TD><IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
+					echo "src=\"_img/_download_.gif\" ALT=\"".$GLOBALS["messages"]["downlink"];
+					echo "\" TITLE=\"".$GLOBALS["messages"]["downlink"]."\"></TD>\n";
+				}
 			}
 		} else {
 			echo "<TD><IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
@@ -284,7 +286,7 @@ function list_dir($dir) {			// list directory contents
 		echo "align=\"ABSMIDDLE\" src=\"_img/_delete.gif\" ALT=\"".$GLOBALS["messages"]["dellink"];
 		echo "\" TITLE=\"".$GLOBALS["messages"]["dellink"]."\"></A></TD>\n";
 		// UPLOAD
-		if($GLOBALS["display_file_uploads"]) {
+		if($GLOBALS["display_file_upload_icon"]) {
 			if(get_cfg_var("file_uploads")) {
 				echo "<TD><A HREF=\"".make_link("upload",$dir,NULL)."\">";
 				echo "<IMG border=\"0\" width=\"16\" height=\"16\" align=\"ABSMIDDLE\" ";
