@@ -2,7 +2,7 @@
 <?php
 /*
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -139,6 +139,10 @@ var plot_cpu = new Array();
 var max_num_points = <?=$nb_plot?>;  // maximum number of plot data points
 var step = <?=$width?> / max_num_points ;
 
+function formatString(x) {
+  return (x < 0 || x > 9 ? "" : "0") + x;
+}
+
 function init(evt) {
   SVGDoc = evt.target.ownerDocument;
   fetch_data();
@@ -211,10 +215,6 @@ function handle_error() {
 
 function isNumber(a) {
     return typeof a == 'number' && isFinite(a);
-}
-
-function formatString(x) {
-  return (x < 0 || x > 9 ? "" : "0") + x;
 }
     ]]>
   </script>
