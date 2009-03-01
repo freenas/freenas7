@@ -32,7 +32,6 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-config-file-path=/usr/local/etc \
 									--enable-pdo \
 									--with-pdo-sqlite=${LOCALBASE} \
-									--with-xmlrpc \
 									--with-iconv-dir=${LOCALBASE}
 
 do-install:
