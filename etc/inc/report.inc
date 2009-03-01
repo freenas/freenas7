@@ -1,11 +1,11 @@
 <?php
 /*
 	report.inc
-	Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ class StatusReportArticleCmd extends StatusReportArticle
 		$this->_text = "";
 
 		if (!empty($command)) {
-			exec($command . " 2>&1", $execOutput, $execStatus);
+			mwexec2("{$command} 2>&1", $execOutput, $execStatus);
 			for ($i = 0; isset($execOutput[$i]); $i++) {
 				if ($i > 0) $this->_text .= "\n";
 				$this->_text .= $execOutput[$i]; // Print command output.
@@ -107,7 +107,7 @@ class StatusReportRendererText extends StatusReportRenderer
 class StatusReportRendererHTML extends StatusReportRenderer
 {
 	function _RenderReport(&$report,$articles) {
-		exec("/bin/date", $dateOutput, $dateStatus);
+		mwexec("/bin/date", $dateOutput, $dateStatus);
 		$currentDate = $dateOutput[0];
 
 		$report = <<<EOD
@@ -269,6 +269,7 @@ function report_send_mail() {
 		$statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Firewall","ipfw -at list"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));

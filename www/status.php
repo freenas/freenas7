@@ -2,11 +2,11 @@
 <?php
 /*
 	status.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -46,6 +46,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
 $statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Firewall","ipfw -at list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Network performances","netstat -m"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
@@ -67,6 +68,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("Encrypted disks","/sbin/ge
 $statusreport->AddArticle(new StatusReportArticleCmd("rc.conf","cat /etc/rc.conf"));
 $statusreport->AddArticle(new StatusReportArticleCmd("resolv.conf","cat /var/etc/resolv.conf"));
 $statusreport->AddArticle(new StatusReportArticleCmd("hosts","cat /etc/hosts"));
+$statusreport->AddArticle(new StatusReportArticleCmd("hosts.allow","cat /etc/hosts.allow"));
 $statusreport->AddArticle(new StatusReportArticleCmd("crontab","cat /var/etc/crontab"));
 $statusreport->AddArticle(new StatusReportArticleCmd("dhclient.conf","cat /etc/dhclient.conf"));
 $statusreport->AddArticle(new StatusReportArticleCmd("smb.conf","cat /var/etc/smb.conf"));
