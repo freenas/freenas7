@@ -70,6 +70,8 @@ Minors changes:
   monitor the local installed UPS in slave mode.
 - Use WebGUI administrator password for the NUT user 'root'.
 - Add ability to mount UDF ISO images.
+- Disable download feature in Quixplorer because there are misc. (PHP and
+  system) limitations that makes this feature senseless.
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct

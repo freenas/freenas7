@@ -37,8 +37,9 @@
 	// user permissions bitfield: (1=modify, 2=password, 4=admin, add the numbers)
 	$GLOBALS["permissions"] = 7;
 
-	// display file uploads icon
-	$GLOBALS["display_file_uploads"] = false;
+	// display file upload/download icon
+	$GLOBALS["display_file_upload_icon"] = false;
+	$GLOBALS["display_file_download_icon"] = false;
 //------------------------------------------------------------------------------
 /* NOTE:
 	Users can be defined by using the Admin-section,
