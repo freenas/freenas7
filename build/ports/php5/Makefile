@@ -31,7 +31,9 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-libxml-dir=${LOCALBASE} \
 									--with-config-file-path=/usr/local/etc \
 									--enable-pdo \
-									--with-pdo-sqlite=${LOCALBASE}
+									--with-pdo-sqlite=${LOCALBASE} \
+									--with-xmlrpc \
+									--with-iconv-dir=${LOCALBASE}
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/${PREFIX}/bin/php
