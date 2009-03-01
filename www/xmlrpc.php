@@ -34,7 +34,7 @@ require_once("config.inc");
 require_once("util.inc");
 require_once("system.inc");
 
-function xmlrpc_get_system_info($method_name, $params, $app_data) {
+function xmlrpc_system_getinfo($method_name, $params, $app_data) {
 	// Get uptime and date.
 	$value['uptime'] = system_get_uptime();
 	$value['date'] = shell_exec("date");
@@ -81,25 +81,32 @@ function xmlrpc_get_system_info($method_name, $params, $app_data) {
 			$value['swapusage'][]= $devswap;
 		}
 	}
+
+	// Encode to JSON?
+	if ("json" === $app_data['encoding'])
+		$value = json_encode($value);
+
 	return $value;
 }
 
 // When an XML-RPC request is sent to this script, it can be found in the
 // raw post data.
 $request_xml = $HTTP_RAW_POST_DATA;
-
 if (empty($request_xml))
 	die;
+
+// Get misc options.
+$userdata = array("encoding" => $_GET['encoding']);
 
 // Create XMLRPC server.
 $xmlrpc_server = xmlrpc_server_create();
 
 // Register methods.
-$registered = xmlrpc_server_register_method($xmlrpc_server, "getSystemInfo", "xmlrpc_get_system_info");
+$registered = xmlrpc_server_register_method($xmlrpc_server, "System.GetInfo", "xmlrpc_system_getinfo");
 
 // Send request to the server to get the response XML.
 $options = array('output_type' => 'xml', 'version' => 'auto');
-$response = xmlrpc_server_call_method($xmlrpc_server, $request_xml, null, $options);
+$response = xmlrpc_server_call_method($xmlrpc_server, $request_xml, $userdata, $options);
 
 // Print the response for the client to read.
 print $response;
