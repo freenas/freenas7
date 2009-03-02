@@ -218,22 +218,22 @@ function action_change() {
 					</tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
 				</div>
 				<?php if ($pconfig['do_action']) {
 				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
-				
+
 				switch($pconfig['action']) {
 				  case "attach":
 				  case "detach":
 						// Search if a mount point use this GEOM Eli disk.
 						$id = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
-				
+
 						// If found, get the mount point configuration.
 						if ($id !== false) $mount = $a_mount[$id];
-				
+
 						switch($pconfig['action']) {
 				  		case "attach":
 				        $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
@@ -244,7 +244,7 @@ function action_change() {
 									echo((0 == $result) ? gettext("Successful.") : gettext("Failed."));
 								}
 				        break;
-				
+
 				      case "detach":
 				      	// Check if disk is mounted.
 				      	if (disks_ismounted($mount)) {
@@ -256,19 +256,19 @@ function action_change() {
 				        break;
 						}
 				    break;
-				
+
 					case "setkey":
 						disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
 				  	break;
-				
+
 				  case "list":
 				  	system("/sbin/geli list");
 				  	break;
-				
+
 				  case "status":
 				  	system("/sbin/geli status");
 				  	break;
-				
+
 				  case "restore":
 						$fn = "/var/tmp/{$geli['name']}.metadata";
 						if (file_exists($fn)) {
@@ -279,7 +279,7 @@ function action_change() {
 						}
 				  	break;
 				}
-				
+
 				echo('</pre>');
 				}
 				?>

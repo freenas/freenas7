@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_mount_tools.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,51 +36,48 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Tools"));
+$pgtitle = array(gettext("Disks"), gettext("Mount Point"), gettext("Tools"));
+
+if (isset($_GET['disk'])) {
+	$index = array_search_ex($_GET['disk'], $config['mounts']['mount'], "mdisk");
+	if (false !== $index) {
+		$uuid = $config['mounts']['mount'][$index]['uuid'];
+	}
+}
+
+if (isset($_GET['action'])) {
+	$action = $_GET['action'];
+}
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
-
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
-$a_mount = $config['mounts']['mount'];
 
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
 	unset($do_action);
 
-	/* input validation */
-	$reqdfields = explode(" ", "sharename action");
-	$reqdfieldsn = array(gettext("Share Name"),gettext("Command"));
+	// Input validation.
+	$reqdfields = explode(" ", "mountpoint action");
+	$reqdfieldsn = array(gettext("Mount point"), gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $_POST['sharename'])) {
+	// Check if mount point is used to store a swap file.
+	if ((isset($config['system']['swap']['enable'])) &&
+			($config['system']['swap']['type'] === "file") &&
+			($config['system']['swap']['mountpoint'] === $_POST['mountpoint'])) {
 		$errormsg[] = gettext("The swap file is using this mount point.");
   }
 
-	if((!$input_errors) || (!$errormsg)) 	{
+	if ((!$input_errors) || (!$errormsg)) {
 		$do_action = true;
-		$sharename = $_POST['sharename'];
+		$uuid = $_POST['mountpoint'];
 		$action = $_POST['action'];
 	}
 }
-if(!isset($do_action))
-{
+
+if (!isset($do_action)) {
 	$do_action = false;
-	$action = '';
-}
-
-if(isset($_GET['disk'])) {
-	$disk = $_GET['disk'];
-	$id = array_search_ex($disk, $a_mount, "mdisk");
-	if (false !== $id) {
-		$sharename = $a_mount[$id]['sharename'];
-	}
-}
-
-if(isset($_GET['action'])) {
-  $action = $_GET['action'];
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -100,65 +97,37 @@ if(isset($_GET['action'])) {
       <?php if ($input_errors) print_input_errors($input_errors);?>
 			<form action="disks_mount_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <tr>
-          	<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
-          	<td width="78%" class="vtable">
-              <select name="sharename" class="formfld" id="sharename">
-              	<option value=""><?=gettext("Must choose one");?></option>
-                <?php foreach ($a_mount as $mountv):?>
-                <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] === $sharename) echo "selected";?>>
-                <?php if ("disk" === $mountv['type']):?>
-                <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-                <?php else:?>
-                <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("File") . ": " . $mountv['filename']. ")");?>
-                <?php endif;?>
-                </option>
-                <?php endforeach;?>
-              </select>
-            </td>
-      		</tr>
-          <tr>
-          	<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
-          	<td width="78%" class="vtable">
-              <select name="action" class="formfld" id="action">
-                <option value="mount" <?php if ($action == "mount") echo "selected"; ?>>mount</option>
-                <option value="umount" <?php if ($action == "umount") echo "selected"; ?>>umount</option>
-               </select>
-            </td>
-          </tr>
+					<?php html_mountcombobox("mountpoint", gettext("Mount point"), $uuid, "", true);?>
+					<?php html_combobox("action", gettext("Command"), $action, array("mount" => gettext("mount"), "umount" => gettext("umount")), "", true);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
 				</div>
-				<?php if(($do_action) && (!$errormsg))
-				{
-				echo('<pre>');
-				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
-				ob_end_flush();
+				<?php if(($do_action) && (!$errormsg)) {
+					echo('<pre>');
+					echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+					ob_end_flush();
 
-				/* Get the id of the mount array entry. */
-				$id = array_search_ex($sharename, $a_mount, "sharename");
-				/* Get the mount data. */
-				$mount = $a_mount[$id];
+					$index = array_search_ex($uuid, $config['mounts']['mount'], "uuid");
+					if (false !== $index) {
+						$mount = $config['mounts']['mount'][$index];
 
-				switch($action)
-				{
-				  case "mount":
-				    echo(gettext("Mounting...") . "<br>");
-						$result = disks_mount($mount);
-				    break;
-				  case "umount":
-				    echo(gettext("Unmounting...") . "<br>");
-						$result = disks_umount($mount);
-				    break;
-				}
+						switch ($action) {
+						  case "mount":
+						    echo(gettext("Mounting...") . "<br>");
+								$result = disks_mount($mount);
+						    break;
 
-				/* Display result */
-				echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
+						  case "umount":
+						    echo(gettext("Unmounting...") . "<br>");
+								$result = disks_umount($mount);
+						    break;
+						}
 
-				echo('</pre>');
-				}
-				?>
+						echo (0 == $result) ? gettext("Done.") : gettext("Failed.");
+					}
+					echo('</pre>');
+				}?>
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"));?>
 				</div>
