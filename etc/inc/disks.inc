@@ -140,7 +140,7 @@ function disks_mount($mount)
 	/* This part is too stupid: I must read the FreeBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
-			$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devicespecialfile} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devicespecialfile} '{$mountname}'", true);
 			if (0 == $result) {
 				write_log("Device {$devicespecialfile} mounted using UFS on '{$mountname}'");
 				$result = 0;
@@ -152,7 +152,7 @@ function disks_mount($mount)
 			break;
 
 		case "msdosfs":
-			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777,large {$readonly} {$devicespecialfile} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777,large {$readonly} {$devicespecialfile} '{$mountname}'", true);
 			if (0 == $result) {
 				write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
 				$result = 0;
@@ -165,7 +165,7 @@ function disks_mount($mount)
 
 		case "udf":
 		case "cd9660":
-			$result = mwexec("/sbin/mount -t {$mount['fstype']} {$devicespecialfile} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t {$mount['fstype']} {$devicespecialfile} '{$mountname}'", true);
 			if (0 == $result) {
 				write_log("Device {$devicespecialfile} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
@@ -179,7 +179,7 @@ function disks_mount($mount)
 		case "ntfs":
 			// Load the kernel FUSE module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devicespecialfile} '{$mountname}'"); // default options: silent,allow_other
+			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devicespecialfile} '{$mountname}'", true); // default options: silent,allow_other
 			if (0 == $result) {
 				write_log("Disk {$devicespecialfile} mounted using NTFS on '{$mountname}'");
 				$result = 0;
@@ -191,7 +191,7 @@ function disks_mount($mount)
 			break;
 
 		case "ext2fs":
-			$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devicespecialfile} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devicespecialfile} '{$mountname}'", true);
 			if (0 == $result) {
 				write_log("Disk {$devicespecialfile} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
@@ -218,7 +218,7 @@ function disks_mount($mount)
 	// For ISO's this may be 'chmod: /mnt/xxx: Read-only file system)'
 	if (file_exists($mountname) && is_writable($mountname)) {
 		if (!@chmod($mountname, octdec($mode)) || !@chown($mountname, $owner) || !@chgrp($mountname, $group)) {
-			write_log("Error: Failed to set access restrictions on directory {$mountname}");
+			write_log("Error: Failed to set access restrictions on directory '{$mountname}'");
 		}
 	}
 
