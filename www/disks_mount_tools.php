@@ -63,10 +63,13 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// Check if mount point is used to store a swap file.
-	if ((isset($config['system']['swap']['enable'])) &&
+	if (("umount" === $_POST['action']) &&
+			(isset($config['system']['swap']['enable'])) &&
 			($config['system']['swap']['type'] === "file") &&
 			($config['system']['swap']['mountpoint'] === $_POST['mountpoint'])) {
-		$errormsg[] = gettext("The swap file is using this mount point.");
+		$index = array_search_ex($_POST['mountpoint'], $config['mounts']['mount'], "uuid");
+		$errormsg[] = gettext(sprintf("A swap file is located on the mounted device %s.",
+			$config['mounts']['mount'][$index]['devicespecialfile']));
   }
 
 	if ((!$input_errors) || (!$errormsg)) {

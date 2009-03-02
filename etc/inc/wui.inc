@@ -5,7 +5,7 @@
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -529,6 +529,7 @@ class HTMLMountComboBox extends HTMLComboBox {
 		array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 		$options = array();
+		$options[""] = gettext("Must choose one");
 		foreach ($config['mounts']['mount'] as $mountv) {
 			$options[$mountv['uuid']] = $mountv['sharename'];
 		}
