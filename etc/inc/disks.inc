@@ -152,7 +152,7 @@ function disks_mount($mount)
 			break;
 
 		case "msdosfs":
-			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777,large {$readonly} {$devicespecialfile} '{$mountname}'", true);
+			$result = mwexec("/sbin/mount -t msdosfs -o large {$readonly} {$devicespecialfile} '{$mountname}'", true);
 			if (0 == $result) {
 				write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
 				$result = 0;
