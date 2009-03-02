@@ -78,7 +78,7 @@ if ($_GET['act'] === "del") {
 		if ((isset($config['system']['swap']['enable'])) &&
 			($config['system']['swap']['type'] === "file") &&
 			($config['system']['swap']['mountpoint'] === $_GET['uuid'])) {
-			$errormsg[] = gettext(sprintf("A swap file is using the disk %s.",
+			$errormsg[] = gettext(sprintf("A swap file is located on the mounted device %s.",
 				$config['mounts']['mount'][$index]['devicespecialfile']));
 		} else {
 			updatenotify_set("mountpoint", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
