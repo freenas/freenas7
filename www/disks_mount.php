@@ -3,7 +3,7 @@
 /*
 	disks_mount.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Management"));
+$pgtitle = array(gettext("Disks"), gettext("Mount Point"), gettext("Management"));
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -72,12 +72,16 @@ array_sort_key($config['mounts']['mount'], "devicespecialfile");
 $a_mount = &$config['mounts']['mount'];
 
 if ($_GET['act'] === "del") {
-	if ($a_mount[$_GET['id']]) {
+	$index = array_search_ex($_GET['uuid'], $config['mounts']['mount'], "uuid");
+	if (false !== $index) {
 		// MUST check if mount point is used by swap.
-		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
-			$errormsg[] = gettext("The swap file is using this mount point.");
+		if ((isset($config['system']['swap']['enable'])) &&
+			($config['system']['swap']['type'] === "file") &&
+			($config['system']['swap']['mountpoint'] === $_GET['uuid'])) {
+			$errormsg[] = gettext(sprintf("A swap file is using the disk %s.",
+				$config['mounts']['mount'][$index]['devicespecialfile']));
 		} else {
-			updatenotify_set("mountpoint", UPDATENOTIFY_MODE_DIRTY, $a_mount[$_GET['id']]['uuid']);
+			updatenotify_set("mountpoint", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 			header("Location: disks_mount.php");
 			exit;
 		}
@@ -190,7 +194,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit mount point");?>" border="0"></a>&nbsp;
-              <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete mount point");?>" border="0"></a>
+              <a href="disks_mount.php?act=del&uuid=<?=$mount['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete mount point");?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
