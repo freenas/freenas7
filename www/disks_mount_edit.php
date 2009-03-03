@@ -43,7 +43,6 @@ if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
 array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
 $a_mount = &$config['mounts']['mount'];
 
 // Get list of all configured disks (physical and virtual).
@@ -125,24 +124,24 @@ if ($_POST) {
 		$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 	}
 
-	// Check for name conflicts.
-	foreach ($a_mount as $mount) {
-		if (isset($id) && ($a_mount[$id]) && ($a_mount[$id] === $mount))
-			continue;
-
-		if ("disk" === $_POST['type']) {
-			// Check for duplicate mount point
+	// Check whether the device is already configured. Ensure we do not find the
+	// current processed mount point itself.
+	if ("disk" === $_POST['type']) {
+		foreach ($a_mount as $mount) {
+			if ($mount['uuid'] === $a_mount[$id]['uuid'])
+				continue;
 			if (($mount['mdisk'] === $_POST['mdisk']) && ($mount['partition'] === $_POST['partition'])) {
-				$input_errors[] = gettext("This disk/partition is already configured.");
+				$input_errors[] = gettext("The disk/partition is already configured.");
 				break;
 			}
 		}
-
-		if (($_POST['sharename']) && ($mount['sharename'] === $_POST['sharename'])) {
-			$input_errors[] = gettext("Duplicate mount point name.");
-			break;
-		}
 	}
+
+	// Check whether the mount point name is already in use. Ensure we do not find
+	// the current processed mount point itself.
+	$index = array_search_ex($_POST['sharename'], $a_mount, "sharename");
+	if ((false !== $index) && ($a_mount[$id]['uuid'] !== $a_mount[$index]['uuid']))
+		$input_errors[] = gettext("Duplicate mount point name.");
 
 	if (!$input_errors) {
 		$mount = array();
@@ -336,18 +335,7 @@ function enable_change(enable_change) {
 							<span class="vexpl"><?=gettext("<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if you select option 2 during installation on hard drive (<b>all versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on extended partition. <br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS (Windows, Linux, MAC, etc.) that use MBR partition table.");?></span>
 			      </td>
 			    </tr>
-			    <tr id="fstype_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("File system");?></td>
-			      <td class="vtable">
-							<select name="fstype" class="formfld" id="fstype" onchange="fstype_change()">
-								<option value="ufs" <?php if ($pconfig['fstype'] === "ufs") echo "selected";?>>UFS</option>
-								<option value="msdosfs" <?php if ($pconfig['fstype'] === "msdosfs") echo "selected";?>>FAT</option>
-								<option value="cd9660" <?php if ($pconfig['fstype'] === "cd9660") echo "selected";?>>CD/DVD</option>
-								<option value="ntfs" <?php if ($pconfig['fstype'] === "ntfs") echo "selected";?>>NTFS</option>
-								<option value="ext2fs" <?php if ($pconfig['fstype'] === "ext2fs") echo "selected";?>>EXT2</option>
-							</select>
-			      </td>
-					</tr>
+					<?php html_combobox("fstype", gettext("File system"), $pconfig['fstype'], array("ufs" => "UFS", "msdosfs" => "FAT", "cd9660" => "CD/DVD", "ntfs" => "NTFS", "ext2fs" => "EXT2"), "", true);?>
 					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), $g['media_path'], true);?>
 					<?php html_inputbox("sharename", gettext("Mount point name"), $pconfig['sharename'], "", true, 20);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
@@ -393,7 +381,7 @@ function enable_change(enable_change) {
 			    </tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_mount[$id])) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 					<?php if (isset($id) && $a_mount[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>">
@@ -409,7 +397,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 type_change();
-<?php if (isset($id) && $a_disk[$id]):?>
+<?php if (isset($id) && $a_mount[$id]):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>
