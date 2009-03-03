@@ -89,8 +89,9 @@ if ($_GET['act'] === "del") {
 }
 
 if ($_GET['act'] === "retry") {
-	if ($a_mount[$_GET['id']]) {
-		if (0 == disks_mount($a_mount[$_GET['id']])) {
+	$index = array_search_ex($_GET['uuid'], $config['mounts']['mount'], "uuid");
+	if (false !== $index) {
+		if (0 == disks_mount($config['mounts']['mount'][$index])) {
 			rc_update_service("samba");
 			rc_update_service("rsyncd");
 			rc_update_service("afpd");
@@ -176,7 +177,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
 							if(disks_ismounted_ex($mount['sharename'],"sharename")) {
 								$status = gettext("OK");
 							} else {
-								$status = gettext("Error") . " - <a href=\"disks_mount.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>";
+								$status = gettext("Error") . " - <a href=\"disks_mount.php?act=retry&uuid={$mount['uuid']}\">" . gettext("Retry") . "</a>";
 							}
 							break;
 					}
