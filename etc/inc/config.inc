@@ -1686,13 +1686,26 @@ function config_upgrade() {
 	}
 
 	/* Convert 7.2 -> 7.3 */
-	/* Add sysctl variable to disable core dumps. */
+	/* Add sysctl variable to disable core dumps and power button. */
+	/* Enable all already existing sysctl variables. */
 	if ($config['version'] === "7.2") {
+		for ($i = 0; $config['system']['sysctl']['param'][$i]; $i++) {
+			$config['system']['sysctl']['param'][$i]['enable'] = true;
+		}
+
 		$config['system']['sysctl']['param'][] = array(
+			"enable" => true,
 			"uuid" => uuid(),
 			"name" => "kern.coredump",
 			"value" => "0",
 			"comment" => "Disable core dump");
+
+		$config['system']['sysctl']['param'][] = array(
+			"enable" => false,
+			"uuid" => uuid(),
+			"name" => "hw.acpi.power_button_state",
+			"value" => "NONE",
+			"comment" => "Disable power button");
 
 		$config['version'] = "7.3";
 	}
