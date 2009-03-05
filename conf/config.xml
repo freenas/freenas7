@@ -133,6 +133,7 @@
 			<rule>#ftpd  : xxx.xxx.xxx.xxx : deny</rule>
 			<rule>#sshd : .example.com : deny</rule>
 			<rule>#in.tftpd : xxx.xxx.xxx.xxx : deny</rule>
+			<rule>#bsnmpd : xxx.xxx.xxx.xxx : deny</rule>
 			<rule>ALL : ALL : allow</rule>
 		</hostsacl>
 		<usermanagement>
