@@ -33,7 +33,8 @@ CONFIGURE_ARGS=	--localstatedir=/var/run \
 								--with-includes=${WORKDIR}/include:${LOCALBASE}/include \
 								--with-libraries=${LOCALBASE}/lib \
 								--enable-auth-pam \
-								--enable-ctrls
+								--enable-ctrls \
+								--enable-largefile
 CONFIGURE_ENV=	"LIBS=-lintl -L${LOCALBASE}/lib -lssl -lcrypto -L${OPENSSLLIB}"
 CFLAGS+=				-DHAVE_OPENSSL -I${OPENSSLINC}
 
