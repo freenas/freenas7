@@ -53,6 +53,7 @@ function download_item($dir, $item) {		// download file
 	header('Expires: '.gmdate('D, d M Y H:i:s').' GMT');
 	header('Content-Transfer-Encoding: binary');
 	header('Content-Length: '.get_file_size($dir,$item));
+	header('Content-Description: File Download');
 	if($browser=='IE') {
 		header('Content-Disposition: attachment; filename="'.$item.'"');
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -63,7 +64,18 @@ function download_item($dir, $item) {		// download file
 		header('Pragma: no-cache');
 	}
 	
-	@readfile($abs_item);
+	//@readfile($abs_item);
+	
+	flush();
+	$fp = popen("tail -c " . get_file_size($dir,$item) . " {$abs_item} 2>&1", "r");
+	while (!feof($fp)) {
+		// Send the current file part to the browser.
+		print fread($fp, 1024);
+		// Flush the content to the browser.
+		flush();
+	}
+	fclose($fp);
+	
 	exit;
 }
 //------------------------------------------------------------------------------
