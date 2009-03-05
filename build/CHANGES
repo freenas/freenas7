@@ -35,6 +35,8 @@ Minors changes:
 - Add ability to mount UDF ISO images.
 - Disable download feature in Quixplorer because there are misc. (PHP and
   system) limitations that makes this feature senseless.
+- Prevent generation of core dump files (BR 2662404). Can be enabled via
+  'System|Advanced|sysctl.conf'.
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct
