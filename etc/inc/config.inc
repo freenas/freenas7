@@ -1685,6 +1685,18 @@ function config_upgrade() {
 		$config['version'] = "7.2";
 	}
 
+	/* Convert 7.2 -> 7.3 */
+	/* Add sysctl variable to disable core dumps. */
+	if ($config['version'] === "7.2") {
+		$config['system']['sysctl']['param'][] = array(
+			"uuid" => uuid(),
+			"name" => "kern.coredump",
+			"value" => "0",
+			"comment" => "Disable core dump");
+
+		$config['version'] = "7.3";
+	}
+
 	write_config();
 
 	if (is_booting())
