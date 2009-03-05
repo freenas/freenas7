@@ -1688,6 +1688,7 @@ function config_upgrade() {
 	/* Convert 7.2 -> 7.3 */
 	/* Add sysctl variable to disable core dumps and power button. */
 	/* Enable all already existing sysctl variables. */
+	/* Add bsnmpd TCP wrapper example. */
 	if ($config['version'] === "7.2") {
 		for ($i = 0; $config['system']['sysctl']['param'][$i]; $i++) {
 			$config['system']['sysctl']['param'][$i]['enable'] = true;
@@ -1706,6 +1707,8 @@ function config_upgrade() {
 			"name" => "hw.acpi.power_button_state",
 			"value" => "NONE",
 			"comment" => "Disable power button");
+
+		$config['system']['hostsacl']['rule'][] = "#bsnmpd : xxx.xxx.xxx.xxx : deny";
 
 		$config['version'] = "7.3";
 	}
