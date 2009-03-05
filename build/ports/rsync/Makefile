@@ -19,7 +19,8 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-debug \
 									--enable-ipv6 \
 									--with-rsyncd-conf=/var/etc/rsyncd.conf \
-									--with-included-popt
+									--with-included-popt \
+									--enable-largefile
 
 # Enable iconv support.
 USE_ICONV=				yes

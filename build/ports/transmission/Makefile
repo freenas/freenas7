@@ -17,7 +17,8 @@ USE_AUTOTOOLS=	autoconf:262:env aclocal:19:env automake:19:env libtool:15:env
 GNU_CONFIGURE=	yes
 
 CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE} \
-									--with-zlib=/usr
+									--with-zlib=/usr \
+									--enable-largefile
 
 EXTRA_PATCHES=	${PATCHDIR}/${PORTNAME}${PKGNAMESUFFIX}-configure.ac
 

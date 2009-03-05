@@ -25,7 +25,8 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-libnotify \
 									--disable-imagemagick \
 									--enable-transcoding \
-									--enable-video-transcoding
+									--enable-video-transcoding \
+									--enable-largefile
 CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include -I${LOCALBASE}/include/ffmpeg ${PTHREAD_CFLAGS}" \
 									LIBS="-L${LOCALBASE}/lib ${PTHREAD_LIBS}"
 

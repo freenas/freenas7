@@ -11,6 +11,8 @@ USE_BZIP2=			yes
 GNU_CONFIGURE=	yes
 USE_GMAKE=			yes
 
+CONFIGURE_ARGS+=	--enable-largefile
+
 post-patch:
 	@${REINPLACE_CMD} -e 's,SBINDIR,LIBEXECDIR,; s,sbindir,libexecdir,' \
 	    ${WRKSRC}/MCONFIG.in
