@@ -33,7 +33,7 @@ mkconf_cmd()
 	cat /dev/null > ${sysctl_config}
 
 	# Generate /etc/sysctl.conf
-	/usr/local/bin/xml sel -t -m "//system/sysctl/param" \
+	/usr/local/bin/xml sel -t -m "//system/sysctl/param[enable]" \
 		-i "string-length(comment) > 0" \
 			-v "concat('# ',comment)" -n \
 		-b \

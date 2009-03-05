@@ -92,19 +92,28 @@
 		</rcconf>
 		<sysctl>
 			<param>
+				<enable/>
 				<uuid>dc8e537a-34f2-4aa7-afe8-cd631a52005a</uuid>
 				<name>hw.ata.to</name>
 				<value>15</value>
 				<comment>ATA disk timeout vis-a-vis power-saving</comment>
 			</param>
 			<param>
+				<enable/>
 				<uuid>2f71d182-095e-11de-8303-0011951cd231</uuid>
 				<name>kern.coredump</name>
 				<value>0</value>
 				<comment>Disable core dump</comment>
 			</param>
+			<param>
+				<uuid>2a44ee73-23b7-4aed-be91-11e8230bc1e1</uuid>
+				<name>hw.acpi.power_button_state</name>
+				<value>NONE</value>
+				<comment>Disable power button</comment>
+			</param>
 			<!--
 			<param>
+				<enable/>
 				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 				<name>xxx<name>
 				<value>xxx<value>

@@ -8,7 +8,7 @@
 	Modified by Volker Theile (votdev@gmx.de)
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -128,9 +128,10 @@ function sysctl_process_updatenotification($mode, $data) {
 				  <?php $i = 0; foreach($a_sysctlvar as $sysctlvarv):?>
 				  <?php $notificationmode = updatenotify_get_mode("sysctl", $sysctlvarv['uuid']);?>
 	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($sysctlvarv['name']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
+	        	<?php $enable = isset($sysctlvarv['enable']);?>
+	          <td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($sysctlvarv['name']);?>&nbsp;</td>
+	          <td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
+	          <td class="listbg"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0"></a>

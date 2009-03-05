@@ -8,7 +8,7 @@
 	Modified by Volker Theile (votdev@gmx.de)
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -52,11 +52,13 @@ array_sort_key($config['system']['sysctl']['param'], "name");
 $a_sysctlvar = &$config['system']['sysctl']['param'];
 
 if (isset($id) && $a_sysctlvar[$id]) {
+	$pconfig['enable'] = isset($a_sysctlvar[$id]['enable']);
 	$pconfig['uuid'] = $a_sysctlvar[$id]['uuid'];
 	$pconfig['name'] = $a_sysctlvar[$id]['name'];
 	$pconfig['value'] = $a_sysctlvar[$id]['value'];
 	$pconfig['comment'] = $a_sysctlvar[$id]['comment'];
 } else {
+	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['value'] = "";
@@ -88,6 +90,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$param = array();
+		$param['enable'] = $_POST['enable'] ? true : false;
 		$param['uuid'] = $_POST['uuid'];
 		$param['name'] = $pconfig['name'];
 		$param['value'] = $pconfig['value'];
@@ -130,11 +133,12 @@ if ($_POST) {
 			<form action="system_sysctl_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_titleline_checkbox("enable", "", $pconfig['enable'] ? true : false, gettext("Enable"));?>
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("Enter a valid sysctl MIB name."), true, 40);?>
 					<?php html_inputbox("value", gettext("Value"), $pconfig['value'], gettext("A valid systctl MIB value."), true);?>
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-			  </table>
-			  <div id="submit">
+				</table>
+				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 					<?php if (isset($id)):?>
