@@ -87,6 +87,8 @@ Bug fixes:
 - Change user agent string for PS3 to 'PLAYSTATION 3' in fuppes.cfg (BR 2600554).
 - Formating disks with 'Software RAID' doesn't clear GEOM metadata (BR 2609681).
 - GUI menu separator line too thick in Safari (BR 2652160). Thanks to skabde.
+- Add patch for PHP bug #45996 (libxml2 2.7 causes breakage with character data
+  in xml_parse()).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
