@@ -37,6 +37,7 @@ require_once("util.inc");
 require_once("rc.inc");
 require_once("tui.inc");
 require_once("interfaces.inc");
+require_once("services.inc");
 
 $result = tui_display_yesno("Do you want to use DHCP for this interface?", 47, 5);
 if (0 == $result) {
@@ -69,7 +70,7 @@ if (0 == $result) {
 			exit(0);
 		}
 		if ("" === $gatewayip) {
-				break;
+			break;
 		}
 	} while (!is_ipv4addr($gatewayip));
 
@@ -126,7 +127,7 @@ if (0 == $result) {
 				exit(0);
 			}
 			if ("" === $gatewayip) {
-					break;
+				break;
 			}
 		} while (!is_ipv6addr($gatewayip));
 
@@ -152,9 +153,21 @@ if (0 == $result) {
 }
 
 if ("https" === $config['system']['webgui']['protocol']) {
-	$result = tui_display_yesno("Do you want to revert to HTTP as the WebGUI protocol?", 40, 8);
+	$result = tui_display_yesno("Do you want to revert to HTTP as the WebGUI protocol?", 57, 5);
 	if (0 == $result) {
+		$port = $config['system']['webgui']['port'] ? $config['system']['webgui']['port'] : 80;
+		do {
+			$result = tui_display_input("Enter port (e.g. 80 or 8080).", 41, 8, $port);
+			if (0 != $result) {
+				exit(0);
+			}
+			if ("" === $port) {
+				break;
+			}
+		} while (!is_port($port) && services_is_port_used($port, "sysgui"));
+
 		$config['system']['webgui']['protocol'] = "http";
+		$config['system']['webgui']['port'] = $port;
 	}
 }
 
@@ -301,17 +314,19 @@ else
 
 write_console("\n\n");
 write_console("The LAN IP address has been set to:\n");
-//write_console("\n");
 write_console("IPv4: {$laninfov4}\n");
 if (isset($config['interfaces']['lan']['ipv6_enable'])) {
 	write_console("IPv6: {$laninfov6}\n");
 }
+
+$port = $config['system']['webgui']['port'] ? $config['system']['webgui']['port'] : 80;
+$protocol = $config['system']['webgui']['protocol'];
+
 write_console("\n");
 write_console("You can access the WebGUI using the following URL:\n");
-//write_console("\n");
-write_console("{$config['system']['webgui']['protocol']}://{$lanipv4}\n");
+write_console("{$protocol}://{$lanipv4}:{$port}\n");
 if (isset($config['interfaces']['lan']['ipv6_enable'])) {
-	write_console("{$config['system']['webgui']['protocol']}://[{$lanipv6}]\n");
+	write_console("{$protocol}://[{$lanipv6}]:{$port}\n");
 }
 
 tui_wait_keypress();

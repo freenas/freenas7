@@ -52,6 +52,8 @@ Bug fixes:
 - GUI menu separator line too thick in Safari (BR 2652160). Thanks to skabde.
 - Add patch for PHP bug #45996 (libxml2 2.7 causes breakage with character data
   in xml_parse()).
+- Display dialog to set WebGUI port when configuring network settings via
+  console menu (BR 2661938).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
