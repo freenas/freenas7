@@ -93,12 +93,13 @@ $request_xml = $HTTP_RAW_POST_DATA;
 if (empty($request_xml))
 	die;
 
+// Create XMLRPC server.
 $xmlrpc_server = new xmlrpc_server(array(
 	"System.getInfo" => array(
 		"function" => "xmlrpc_system_getinfo",
 		"signature" => array(array($xmlrpcStruct)),
     "docstring" => "Get various system informations.")), false);
-//$xmlrpc_server->setdebug(2);
-//$xmlrpc_server->compress_response = true;
+
+// Process request.
 $xmlrpc_server->service($request_xml);
 ?>
