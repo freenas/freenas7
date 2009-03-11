@@ -94,8 +94,11 @@ if (empty($request_xml))
 	die;
 
 $xmlrpc_server = new xmlrpc_server(array(
-	"System.getInfo" => array("function" => "xmlrpc_system_getinfo")));
+	"System.getInfo" => array(
+		"function" => "xmlrpc_system_getinfo",
+		"signature" => array(array($xmlrpcStruct)),
+    "docstring" => "Get various system informations.")), false);
 //$xmlrpc_server->setdebug(2);
 //$xmlrpc_server->compress_response = true;
-//$xmlrpc_server->service($request_xml);
+$xmlrpc_server->service($request_xml);
 ?>
