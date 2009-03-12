@@ -19,8 +19,8 @@ load_rc_config "${name}"
 
 # Custom commands
 start_precmd="start_precmd"
-updateblocklists_cmd="updateblocklists_cmd"
-extra_commands="updateblocklists"
+updateblocklist_cmd="updateblocklist_cmd"
+extra_commands="updateblocklist"
 
 # Defaults
 transmission_enable=${transmission_enable:-"NO"}
@@ -59,7 +59,7 @@ start_precmd()
 	command_args="${command_args} ${_command_args}"
 }
 
-updateblocklists_cmd()
+updateblocklist_cmd()
 {
 	local _configdir _md5 _file
 
