@@ -41,55 +41,8 @@ $pgtitle_omit = true;
 $cpuinfo = system_get_cpu_info();
 
 function update_controls() {
-	// Get uptime and date.
-	$value['uptime'] = system_get_uptime();
-	$value['date'] = shell_exec("date");
-	// Get RAM usage.
-	$raminfo = system_get_ram_info();
-	$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
-	$value['memusage']['percentage'] = $percentage;
-	$value['memusage']['caption'] = sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));
-	// Get load average.
-	exec("uptime", $result);
-	$value['loadaverage'] = substr(strrchr($result[0], "load averages:"), 15);
-	// Get up-to-date CPU informations.
-	$cpuinfo = system_get_cpu_info();
-	$value['cputemp'] = $cpuinfo['temperature'];
-	$value['cpufreq'] = $cpuinfo['freq'];
-	// Get CPU usage.
-	$value['cpuusage'] = system_get_cpu_usage();
-	// Get disk usage.
-	$a_diskusage = get_mount_usage();
-	if (is_array($a_diskusage) && (0 < count($a_diskusage))) {
-		foreach ($a_diskusage as $diskusagek => $diskusagev) {
-			$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
-			$diskinfo = array();
-			$diskinfo['id'] = $fsid;
-			$diskinfo['percentage'] = rtrim($diskusagev['capacity'],"%");
-			$diskinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
-			$diskinfo['tooltip']['available'] = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
-			$diskinfo['caption'] = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
-			$value['diskusage'][] = $diskinfo;
-		}
-	}
-	// Get swap info.
-	$swapinfo = system_get_swap_info();
-	if (is_array($swapinfo) && (0 < count($swapinfo))) {
-		$id = 0;
-		foreach ($swapinfo as $swap) {
-			$id++;
-			$devswap = array();
-			$devswap['id']  = $id;
-			$devswap['percentage']  = rtrim($swap['capacity'],"%");
-			$devswap['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
-			$devswap['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
-			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
-			$value['swapusage'][]= $devswap;
-		}
-	}
-	// Encode data using JSON.
-	$value = json_encode($value);
-	return $value;
+	$value = system_get_sysinfo();
+	return json_encode($value);
 }
 
 sajax_init();
