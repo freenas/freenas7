@@ -19,12 +19,15 @@ load_rc_config "${name}"
 
 # Custom commands
 start_precmd="start_precmd"
+updateblocklists_cmd="updateblocklists_cmd"
+extra_commands="updateblocklists"
 
 # Defaults
 transmission_enable=${transmission_enable:-"NO"}
 transmission_remoteuser=${transmission_remoteuser:-"admin"}
 transmission_allowed=${transmission_allowed:-"*.*.*.*"}
 transmission_blocklist=${transmission_blocklist:-"NO"}
+transmission_blocklist_url=${transmission_blocklist_url:-"http://update.transmissionbt.com/level1.gz"}
 transmission_user=${transmission_user:-"transmission"}
 transmission_suopt=${transmission_suopt:-"-l"}
 
@@ -54,6 +57,44 @@ start_precmd()
 	fi
 
 	command_args="${command_args} ${_command_args}"
+}
+
+updateblocklists_cmd()
+{
+	local _configdir _md5 _file
+
+	# Get the configuration directory.
+	_configdir=`configxml_get "//bittorrent/configdir"`
+	[ -z "${_configdir}" ] && _configdir="${HOME}/.config/${name}-daemon"
+
+	# Check if blocklists folder exists, create it if necessary. Then
+	# change directory.
+	[ ! -e "${_configdir}/blocklists" ] && mkdir "${_configdir}/blocklists"
+	cd "${_configdir}/blocklists"
+
+	# Download blocklist file.
+	_file=${transmission_blocklist_url##*/}
+	[ -f "${_file}" ] && _md5=$(md5 -q "${_file}")
+	fetch -ampw 5 "${transmission_blocklist_url}"
+	if [ 0 -ne $? ]; then
+		logger -s -t "${name}" "Failed to fetch blocklists update ${transmission_blocklist_url}"
+		exit 1
+	fi
+
+	# Has the file been updated?
+	if [ "$(md5 -q ${_file})" = "${_md5:=0}" ]; then
+		logger -s -t "${name}" "Blocklists are up-to-date"
+		exit 1
+	fi
+
+	# Extract file content.
+	gzip -dfkq ${_file};
+	if [ 0 -ne $? ]; then
+		logger -s -t "${name}" "Failed to extract blocklists update"
+		exit 1
+	fi
+
+	logger -t "${name}" "Blocklists have been updated successful"
 }
 
 run_rc_command "$1"
