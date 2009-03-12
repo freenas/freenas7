@@ -24,7 +24,6 @@ start_precmd="start_precmd"
 transmission_enable=${transmission_enable:-"NO"}
 transmission_remoteuser=${transmission_remoteuser:-"admin"}
 transmission_allowed=${transmission_allowed:-"*.*.*.*"}
-transmission_noblocklist=${transmission_noblocklist:-"YES"}  # To check if we really need noblocklist 
 transmission_blocklist=${transmission_blocklist:-"NO"}
 transmission_user=${transmission_user:-"transmission"}
 transmission_suopt=${transmission_suopt:-"-l"}
@@ -48,12 +47,12 @@ start_precmd()
 		-i "string-length(configdir) > 0" -v "concat(' --config-dir &quot;',configdir,'&quot;')" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
-	if checkyesno transmission_noblocklist; then
+	if checkyesno transmission_blocklist; then
+		_command_args="${_command_args} --blocklist"
+	else
 		_command_args="${_command_args} --no-blocklist"
 	fi
-	if checkyesno transmission_blocklist; then
-		_command_args="-b ${_command_args}"
-	fi
+
 	command_args="${command_args} ${_command_args}"
 }
 
