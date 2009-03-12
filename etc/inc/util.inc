@@ -509,54 +509,6 @@ function get_mounts_list()
 	return $amountlist;
 }
 
-// Get usage information of mountpoints.
-// example: Array
-// [mount_point_name] => Array
-//      (
-//        [filesystem] => /dev/ad0a
-//        [capacity] => 48%
-//        [used] => 2.4G
-//        [avail] => 2.6G
-//        [size] => 5.4G
-//      )
-function get_mount_usage()
-{
-	global $config, $g;
-
-	exec("/bin/df -h", $rawdata);
-
-	$result = array();
-
-	foreach ($rawdata as $line) {
-		if (0 == preg_match("/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+%)\s+(.+)/", $line, $aline))
-			continue;
-
-		$filesystem = chop($aline[1]);
-		$size = chop($aline[2]);
-		$used = chop($aline[3]);
-		$avail = chop($aline[4]);
-		$capacity = chop($aline[5]);
-		$mounted_on = chop($aline[6]);
-
-		if (is_array($config['mounts']['mount'])) {
-			foreach ($config['mounts']['mount'] as $mountcfg) {
-				if (0 == strcmp($mounted_on, "{$g['media_path']}/{$mountcfg['sharename']}")) {
-					$result[$mounted_on] = array();
-					$result[$mounted_on]['filesystem'] = $filesystem;
-					$result[$mounted_on]['capacity'] = $capacity;
-					$result[$mounted_on]['avail'] = $avail;
-					$result[$mounted_on]['used'] = $used;
-					$result[$mounted_on]['size'] = $size;
-				}
-			}
-		} else {
-			return 0;
-		}
-	}
-
-	return $result;
-}
-
 // Retrieve the fsid from mount point.
 // $devicespecialfile - The device special name, e.g. /dev/ad6p1
 // $mp - Name of the mount point, e.g. /mnt/1

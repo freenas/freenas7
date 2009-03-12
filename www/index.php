@@ -207,7 +207,7 @@ sajax_handle_client_request();
 			    <td width="75%" class="listr">
 				    <table width="100%" border="0" cellspacing="0" cellpadding="1">
 				      <?php
-				      $a_diskusage = get_mount_usage();
+				      $a_diskusage = system_get_mount_usage();
 				      $a_mount = get_mounts_list();
 				      if (is_array($a_diskusage) && (0 < count($a_diskusage))) {
 								foreach ($a_diskusage as $diskusagek => $diskusagev) {
