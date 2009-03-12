@@ -320,17 +320,17 @@ function system_get_mount_usage() {
 		$used = chop($aline[3]);
 		$avail = chop($aline[4]);
 		$capacity = chop($aline[5]);
-		$mounted_on = chop($aline[6]);
+		$mountpoint = chop($aline[6]);
 
 		if (is_array($config['mounts']['mount'])) {
 			foreach ($config['mounts']['mount'] as $mountcfg) {
-				if (0 == strcmp($mounted_on, "{$g['media_path']}/{$mountcfg['sharename']}")) {
-					$result[$mounted_on] = array();
-					$result[$mounted_on]['filesystem'] = $filesystem;
-					$result[$mounted_on]['capacity'] = $capacity;
-					$result[$mounted_on]['avail'] = $avail;
-					$result[$mounted_on]['used'] = $used;
-					$result[$mounted_on]['size'] = $size;
+				if (0 == strcmp($mountpoint, "{$g['media_path']}/{$mountcfg['sharename']}")) {
+					$result[$mountpoint] = array();
+					$result[$mountpoint]['filesystem'] = $filesystem;
+					$result[$mountpoint]['capacity'] = $capacity;
+					$result[$mountpoint]['avail'] = $avail;
+					$result[$mountpoint]['used'] = $used;
+					$result[$mountpoint]['size'] = $size;
 				}
 			}
 		}
@@ -344,6 +344,8 @@ function system_get_mount_usage() {
  * @return An array containing the system informations.
  */
 function system_get_sysinfo() {
+	$value['hostname'] = system_get_hostname();
+
 	// Get uptime and date.
 	$value['uptime'] = system_get_uptime();
 	$value['date'] = shell_exec("date");

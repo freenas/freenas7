@@ -41,8 +41,8 @@ $pgtitle_omit = true;
 $cpuinfo = system_get_cpu_info();
 
 function update_controls() {
-	$value = system_get_sysinfo();
-	return json_encode($value);
+	$sysinfo = system_get_sysinfo();
+	return json_encode($sysinfo);
 }
 
 sajax_init();
@@ -71,9 +71,7 @@ sajax_handle_client_request();
 			  </tr>
 			  <tr>
 			    <td width="25%" class="vncellt"><?=gettext("Name");?></td>
-			    <td width="75%" class="listr">
-			      <?php echo $config['system']['hostname'] . "." . $config['system']['domain'];?>
-			    </td>
+			    <td width="75%" class="listr"><?=system_get_hostname();?></td>
 			  </tr>
 			  <tr>
 			    <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
