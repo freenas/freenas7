@@ -38,6 +38,8 @@ Minors changes:
 - Prevent generation of core dump files (BR 2662404). Can be enabled via
   'System|Advanced|sysctl.conf'.
 - Add ability to enable/disable sysctl variables in 'System|Advanced|sysctl.conf'.
+- Add XMLRPC services that are available via http://xxx.xxx.xxx.xxx/xmlrpc.php
+  - system.getInfo
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct

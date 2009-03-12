@@ -285,9 +285,117 @@ function system_get_swap_info() {
 	return $swapinfo;
 }
 
-// Get the system hostname.
-// Return hostname string.
+/**
+ * Get the system hostname.
+ * @return The hostname
+ */
 function system_get_hostname() {
 	return @exec("hostname");
+}
+
+/**
+ * Get mount point usage information.
+ * @return An array containg the requested informations:
+ * @code
+ * [mount_point_name] => array(
+ *   [filesystem] => /dev/ad0a
+ *   [capacity] => 48%
+ *   [used] => 2.4G
+ *   [avail] => 2.6G
+ *   [size] => 5.4G)
+ * @endcode
+ */
+function system_get_mount_usage() {
+	global $config, $g;
+
+	$result = array();
+
+	exec("/bin/df -h", $rawdata);
+	foreach ($rawdata as $line) {
+		if (0 == preg_match("/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+%)\s+(.+)/", $line, $aline))
+			continue;
+
+		$filesystem = chop($aline[1]);
+		$size = chop($aline[2]);
+		$used = chop($aline[3]);
+		$avail = chop($aline[4]);
+		$capacity = chop($aline[5]);
+		$mounted_on = chop($aline[6]);
+
+		if (is_array($config['mounts']['mount'])) {
+			foreach ($config['mounts']['mount'] as $mountcfg) {
+				if (0 == strcmp($mounted_on, "{$g['media_path']}/{$mountcfg['sharename']}")) {
+					$result[$mounted_on] = array();
+					$result[$mounted_on]['filesystem'] = $filesystem;
+					$result[$mounted_on]['capacity'] = $capacity;
+					$result[$mounted_on]['avail'] = $avail;
+					$result[$mounted_on]['used'] = $used;
+					$result[$mounted_on]['size'] = $size;
+				}
+			}
+		}
+	}
+
+	return $result;
+}
+
+/**
+ * Get various system informations.
+ * @return An array containing the system informations.
+ */
+function system_get_sysinfo() {
+	// Get uptime and date.
+	$value['uptime'] = system_get_uptime();
+	$value['date'] = shell_exec("date");
+
+	// Get RAM usage.
+	$raminfo = system_get_ram_info();
+	$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
+	$value['memusage']['percentage'] = $percentage;
+	$value['memusage']['caption'] = sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));
+
+	// Get load average.
+	exec("uptime", $result);
+	$value['loadaverage'] = substr(strrchr($result[0], "load averages:"), 15);
+	// Get up-to-date CPU informations.
+	$cpuinfo = system_get_cpu_info();
+	$value['cputemp'] = $cpuinfo['temperature'];
+	$value['cpufreq'] = $cpuinfo['freq'];
+
+	// Get CPU usage.
+	$value['cpuusage'] = system_get_cpu_usage();
+
+	// Get disk usage.
+	$a_diskusage = system_get_mount_usage();
+	if (is_array($a_diskusage) && (0 < count($a_diskusage))) {
+		foreach ($a_diskusage as $diskusagek => $diskusagev) {
+			$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
+			$diskinfo = array();
+			$diskinfo['id'] = $fsid;
+			$diskinfo['percentage'] = rtrim($diskusagev['capacity'],"%");
+			$diskinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
+			$diskinfo['tooltip']['available'] = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
+			$diskinfo['caption'] = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
+			$value['diskusage'][] = $diskinfo;
+		}
+	}
+
+	// Get swap info.
+	$swapinfo = system_get_swap_info();
+	if (is_array($swapinfo) && (0 < count($swapinfo))) {
+		$id = 0;
+		foreach ($swapinfo as $swap) {
+			$id++;
+			$devswap = array();
+			$devswap['id']  = $id;
+			$devswap['percentage']  = rtrim($swap['capacity'],"%");
+			$devswap['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
+			$devswap['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
+			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
+			$value['swapusage'][]= $devswap;
+		}
+	}
+
+	return $value;
 }
 ?>
