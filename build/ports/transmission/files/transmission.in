@@ -77,24 +77,24 @@ updateblocklists_cmd()
 	[ -f "${_file}" ] && _md5=$(md5 -q "${_file}")
 	fetch -ampw 5 "${transmission_blocklist_url}"
 	if [ 0 -ne $? ]; then
-		logger -s -t "${name}" "Failed to fetch blocklists update ${transmission_blocklist_url}"
+		logger -s -t "${name}" "Failed to fetch blocklist ${transmission_blocklist_url}"
 		exit 1
 	fi
 
 	# Has the file been updated?
 	if [ "$(md5 -q ${_file})" = "${_md5:=0}" ]; then
-		logger -s -t "${name}" "Blocklists are up-to-date"
+		logger -s -t "${name}" "Blocklist is up-to-date"
 		exit 1
 	fi
 
 	# Extract file content.
 	gzip -dfkq ${_file};
 	if [ 0 -ne $? ]; then
-		logger -s -t "${name}" "Failed to extract blocklists update"
+		logger -s -t "${name}" "Failed to extract blocklist update"
 		exit 1
 	fi
 
-	logger -t "${name}" "Blocklists have been updated successful"
+	logger -t "${name}" "Blocklist have been updated successful"
 }
 
 run_rc_command "$1"
