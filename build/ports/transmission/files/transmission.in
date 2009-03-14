@@ -94,7 +94,7 @@ updateblocklist_cmd()
 		exit 1
 	fi
 
-	logger -t "${name}" "Blocklist have been updated successful"
+	logger -s -t "${name}" "Blocklist has been updated successful"
 }
 
 run_rc_command "$1"
