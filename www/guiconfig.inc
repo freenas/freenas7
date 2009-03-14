@@ -2,7 +2,7 @@
 /*
 	guiconfig.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -154,6 +154,9 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 															break;
 				case 'alias':					$valid = is_validaliasname($postdata[$reqdfields[$i]]);
 															$message = sprintf( gettext("The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."), $reqdfieldsn[$i]);
+															break;
+				case 'time':					$valid = (FALSE !== strptime($postdata[$reqdfields[$i]], "%H:%M:%S"));
+															$message = sprintf( gettext("The attribute '%s' is no valid time."), $reqdfieldsn[$i]);
 															break;
 			}
 			if (!$valid) {

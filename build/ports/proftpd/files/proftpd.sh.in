@@ -61,7 +61,6 @@ proftpd_modctrls_controlsauthfreshness=${proftpd_modctrls_controlsauthfreshness:
 proftpd_modctrls_controlsmaxclients=${proftpd_modctrls_controlsmaxclients:-"5"}
 proftpd_modctrls_controlslog=${proftpd_modctrls_controlslog:-"/var/log/${name}/controls.log"}
 proftpd_modctrls_controlsinterval=${proftpd_modctrls_controlsinterval:-"10"}
-proftpd_modban_banengine=${proftpd_modban_banengine:-"off"}
 proftpd_modban_bancontrolsacls=${proftpd_modban_bancontrolsacls:-"all allow group wheel"}
 proftpd_modban_banlog=${proftpd_modban_banlog:-"/var/log/${name}/ban.log"}
 proftpd_modban_banmessage=${proftpd_modban_banmessage:-"Host %a has been banned"}
@@ -197,6 +196,19 @@ mkconf_cmd()
 			-b \
 			-o "&lt;/IfModule&gt;" -n \
 		-b \
+		-n \
+		-o "&lt;IfModule mod_ban.c&gt;" -n \
+		-i "count(mod_ban/enable) = 0" -o "  BanEngine off" -n -b \
+		-i "count(mod_ban/enable) > 0" -o "  BanEngine on" -n -b \
+		-o "  BanControlsACLs ${proftpd_modban_bancontrolsacls}" -n \
+		-o "  BanLog ${proftpd_modban_banlog}" -n \
+		-o "  BanMessage ${proftpd_modban_banmessage}" -n \
+		-m "mod_ban/rule" \
+			-v "concat('  BanOnEvent ',event,' ',occurrence,'/',timeinterval,' ',expire)" -n \
+		-b \
+		-o "  BanTable ${proftpd_modban_bantable}" -n \
+		-o "&lt;/IfModule&gt;" -n \
+		-n \
 		-m "auxparam" \
 				-v "." -n \
 		-b \
@@ -235,21 +247,6 @@ EOF
   ControlsMaxClients ${proftpd_modctrls_controlsmaxclients}
   ControlsLog ${proftpd_modctrls_controlslog}
   ControlsInterval ${proftpd_modctrls_controlsinterval}
-</IfModule>
-
-EOF
-		fi
-
-		# Add mod_ban.
-		if [ "${proftpd_modban_banengine}" = "on" ]; then
-			cat <<EOF >> ${proftpd_config}
-<IfModule mod_ban.c>
-  BanEngine ${proftpd_modban_banengine}
-  BanControlsACLs ${proftpd_modban_bancontrolsacls}
-  BanLog ${proftpd_modban_banlog}
-  BanMessage ${proftpd_modban_banmessage}
-  BanOnEvent ${proftpd_modban_banonevent}
-  BanTable ${proftpd_modban_bantable}
 </IfModule>
 
 EOF
