@@ -259,13 +259,21 @@ function anonymousonly_change() {
 }
 //-->
 </script>
-<form action="services_ftp.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
-	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="services_ftp.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Settings");?></span></a></li>
+				<li class="tabinact"><a href="services_ftp_mod.php"><span><?=gettext("Modules");?></span></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
+			<form action="services_ftp.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("File Transfer Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("port", gettext("TCP port"), $pconfig['port'], sprintf(gettext("Default is %s."), "21"), true, 20);?>
 					<?php html_inputbox("numberclients", gettext("Number of clients"), $pconfig['numberclients'], gettext("Maximum number of simultaneous clients."), true, 20);?>
@@ -296,14 +304,14 @@ function anonymousonly_change() {
 					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7, false, false);?>
 					<?php html_checkbox("tlsrequired", gettext("SSL/TLS only"), $pconfig['tlsrequired'] ? true : false, gettext("Allow TLS/SSL connections only."), "", false);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters are added to %s."), "proftpd.conf"), false, 65, 5, false, false);?>
-			  </table>
+				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 				</div>
-			</td>
-		</tr>
-	</table>
-</form>
+			</form>
+		</td>
+	</tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);

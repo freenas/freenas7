@@ -552,6 +552,16 @@
 		<identlookups/>
 		<usereversedns/>
 		<auxparam></auxparam> // Can be defined multiple times.
+		<mod_ban>
+			<enable/>
+			<rule> // Can be defined multiple times.
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+				<event>xxx</event>
+				<occurrence>x</occurrence>
+				<timeinterval>hh:mm:ss</timeinterval>
+				<expire>hh:mm:ss</expire>
+			</rule>
+		</mod_ban>
 		-->
 	</ftpd>
 	<afp>

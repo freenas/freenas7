@@ -676,9 +676,11 @@ class HTMLRemark extends HTMLBaseControl {
 		$text = $this->GetValue();
 
 		echo "<div id='remark'>\n";
-		echo "  <span class='red'>\n";
-		echo "    <strong>{$title}:</strong>\n";
-		echo "  </span><br/>\n";
+		if (!empty($title)) {
+			echo "  <span class='red'>\n";
+			echo "    <strong>{$title}:</strong>\n";
+			echo "  </span><br/>\n";
+		}
 		echo "  {$text}\n";
 		echo "</div>\n";
 	}
