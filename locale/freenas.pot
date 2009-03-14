@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-02-21 12:15+0000\n"
+"PO-Revision-Date: 2009-03-14 03:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 msgid " was assigned to "
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr ""
 
@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr ""
 
@@ -43,11 +43,11 @@ msgstr ""
 msgid "%s will reboot after restoring the configuration."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr ""
 
@@ -451,6 +451,12 @@ msgid "Backup/Restore"
 msgstr ""
 
 msgid "Balance algorithm"
+msgstr ""
+
+msgid "Ban list"
+msgstr ""
+
+msgid "Ban list rule"
 msgstr ""
 
 msgid "Banner"
@@ -1285,6 +1291,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr ""
+
 msgid "Enable reverse DNS lookup performed on the remote host's IP address for incoming active mode data connections and outgoing passive mode data connections."
 msgstr ""
 
@@ -1349,9 +1358,6 @@ msgstr ""
 msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
 msgstr ""
 
-msgid "Enter the network of the remote monitor that monitor the local connected UPS in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 (IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-
 msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."
 msgstr ""
 
@@ -1371,6 +1377,9 @@ msgstr ""
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr ""
 
+msgid "Event"
+msgstr ""
+
 msgid "Execute"
 msgstr ""
 
@@ -1381,6 +1390,9 @@ msgid "Execute command pre or post system initialization (booting) or before sys
 msgstr ""
 
 msgid "Execute now"
+msgstr ""
+
+msgid "Expire"
 msgstr ""
 
 msgid "Export"
@@ -1551,6 +1563,9 @@ msgid "Free disk space"
 msgstr ""
 
 msgid "French"
+msgstr ""
+
+msgid "Frequency"
 msgstr ""
 
 msgid "From email"
@@ -2314,6 +2329,9 @@ msgstr ""
 msgid "Object name"
 msgstr ""
 
+msgid "Occurrence"
+msgstr ""
+
 msgid "Old passphrase"
 msgstr ""
 
@@ -2952,9 +2970,6 @@ msgstr ""
 msgid "Share Character Set"
 msgstr ""
 
-msgid "Share Name"
-msgstr ""
-
 msgid "Share Password"
 msgstr ""
 
@@ -3055,6 +3070,12 @@ msgid "Specifies the maximum permitted block size. The permitted range for this 
 msgstr ""
 
 msgid "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, etc."
+msgstr ""
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr ""
+
+msgid "Specifies the time interval in hh:mm:ss in which the given number of occurrences must happen to add the ban."
 msgstr ""
 
 msgid "Specifies the username which the service will run as."
@@ -3344,6 +3365,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr ""
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr ""
 
@@ -3427,6 +3452,9 @@ msgstr ""
 msgid "The disk is currently mounted! The mount point will be removed temporary to perform selected command."
 msgstr ""
 
+msgid "The disk/partition is already configured."
+msgstr ""
+
 #, php-format
 msgid "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
@@ -3478,6 +3506,9 @@ msgstr ""
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
 msgstr ""
 
+msgid "The module provides automatic bans that are triggered based on configurable criteria. A ban prevents the banned user, host, or class from logging in to the server, it does not prevent the banned user, host, or class from connecting to the server."
+msgstr ""
+
 msgid "The name or IP address of the LDAP server."
 msgstr ""
 
@@ -3518,9 +3549,6 @@ msgid "The size of the swap file in MB."
 msgstr ""
 
 msgid "The subject of the email."
-msgstr ""
-
-msgid "The swap file is using this mount point."
 msgstr ""
 
 msgid "The system has been reset to factory defaults and is now rebooting. This may take one minute."
@@ -3652,9 +3680,6 @@ msgstr ""
 msgid "This disk already exists in the disk list."
 msgstr ""
 
-msgid "This disk/partition is already configured."
-msgstr ""
-
 msgid "This email has been send to validate your email configuration."
 msgstr ""
 
@@ -3728,6 +3753,9 @@ msgstr ""
 msgid "This parameter controls whether files starting with a dot appear as hidden files."
 msgstr ""
 
+msgid "This parameter says that if N occurrences of the event happen within the given time interval, then a ban is automatically added."
+msgstr ""
+
 #, php-format
 msgid "This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"
 msgstr ""
@@ -3742,6 +3770,9 @@ msgstr ""
 
 #, php-format
 msgid "This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"
+msgstr ""
+
+msgid "This rule is triggered whenever the selected event directive occurs."
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -3761,6 +3792,9 @@ msgid "This will erase ALL data on the selected disks! Do not use this option if
 msgstr ""
 
 msgid "Time"
+msgstr ""
+
+msgid "Time interval"
 msgstr ""
 
 msgid "Time server"
@@ -4218,6 +4252,9 @@ msgstr ""
 msgid "months"
 msgstr ""
 
+msgid "mount"
+msgstr ""
+
 msgid "mswindows"
 msgstr ""
 
@@ -4258,6 +4295,9 @@ msgid "sysctl.conf"
 msgstr ""
 
 msgid "umask"
+msgstr ""
+
+msgid "umount"
 msgstr ""
 
 msgid "upriv"
