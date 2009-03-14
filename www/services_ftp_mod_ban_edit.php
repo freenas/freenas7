@@ -102,7 +102,7 @@ if ($_POST) {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_combobox("event", gettext("Event"), $pconfig['event'], array("AnonRejectPasswords" => "AnonRejectPasswords", "MaxClientsPerClass" => "MaxClientsPerClass", "MaxClientsPerHost" => "MaxClientsPerHost", "MaxClientsPerUser" => "MaxClientsPerUser", "MaxConnectionsPerHost" => "MaxConnectionsPerHost", "MaxHostsPerUser" => "MaxHostsPerUser", "TimeoutIdle" => "TimeoutIdle", "TimeoutNoTransfer" => "TimeoutNoTransfer"), gettext("This rule is triggered whenever the selected event directive occurs."), true);?>
 					<?php html_inputbox("occurrence", gettext("Occurrence"), $pconfig['occurrence'], gettext("This parameter says that if N occurrences of the event happen within the given time interval, then a ban is automatically added."), true, 2);?>
-					<?php html_inputbox("timeinterval", gettext("Time interval"), $pconfig['timeinterval'], gettext("Specifies the time interval in hh:mm:ss in which the given number of occurrences must happen to activate the ban."), true, 8);?>
+					<?php html_inputbox("timeinterval", gettext("Time interval"), $pconfig['timeinterval'], gettext("Specifies the time interval in hh:mm:ss in which the given number of occurrences must happen to add the ban."), true, 8);?>
 					<?php html_inputbox("expire", gettext("Expire"), $pconfig['expire'], gettext("Specifies the time in hh:mm:ss after which the ban expires."), true, 8);?>
 				</table>
 				<div id="submit">
