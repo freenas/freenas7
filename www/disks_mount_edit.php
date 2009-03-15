@@ -114,9 +114,13 @@ if ($_POST) {
 			$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
 		}
 
-		$device = "{$_POST['mdisk']}{$_POST['partition']}";
+		$device = "{$_POST['mdisk']}{$_POST['partition_type']}{$_POST['partition_number']}";
 		if ($device === $cfdevice) {
-			$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
+			$input_errors[] = gettext("Can't mount (FreeNAS) system partition 1, the DATA partition is the 2.");
+		}
+		//Check if partition exist
+		if (!file_exists($device)) {
+			$input_errors[] = gettext("Wrong partition type or partition number.");
 		}
 	}
 
