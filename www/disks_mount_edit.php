@@ -77,7 +77,9 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['group'] = "wheel";
 	$pconfig['mode'] = "0777";
 }
-
+    // Split partition name to keep backward compatibility
+	$partition_type = substr($pconfig['partition'] , 0 , 1);
+	$partition_number = substr($pconfig['partition'] , 1);
 initmodectrl($pconfig, $pconfig['mode']);
 
 if ($_POST) {
@@ -87,8 +89,8 @@ if ($_POST) {
 	/* input validation */
 	switch($_POST['type']) {
 		case "disk":
-			$reqdfields = explode(" ", "mdisk partition fstype sharename");
-			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Mount point name"));
+			$reqdfields = explode(" ", "mdisk partition_type partition_number fstype sharename");
+			$reqdfieldsn = array(gettext("Disk"), gettext("Partition type"), gettext("Partition number"), gettext("File system"), gettext("Mount point name"));
 			break;
 
 		case "iso":
@@ -106,16 +108,19 @@ if ($_POST) {
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
 		$input_errors[] = sprintf(gettext("The attribute '%s' contains invalid characters."), gettext("Description"));
 	}
-
 	// Do some 'disk' specific checks.
 	if ("disk" === $_POST['type']) {
-		if (($_POST['partition'] == "p1") && (($_POST['fstype'] == "msdosfs") || ($_POST['fstype'] == "cd9660") || ($_POST['fstype'] == "ntfs") || ($_POST['fstype'] == "ext2fs")))  {
+		if (($_POST['partition_type'] == "p") && (($_POST['fstype'] == "msdosfs") || ($_POST['fstype'] == "cd9660") || ($_POST['fstype'] == "ntfs") || ($_POST['fstype'] == "ext2fs")))  {
 			$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
 		}
 
-		$device = "{$_POST['mdisk']}{$_POST['partition']}";
+		$device = "{$_POST['mdisk']}{$_POST['partition_type']}{$_POST['partition_number']}";
 		if ($device === $cfdevice) {
-			$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
+			$input_errors[] = gettext("Can't mount (FreeNAS) system partition 1, the DATA partition is the 2.");
+		}
+		//Check if partition exist
+		if (!file_exists($device)) {
+			$input_errors[] = gettext("Wrong partition type or partition number.");
 		}
 	}
 
@@ -151,7 +156,7 @@ if ($_POST) {
 		switch($_POST['type']) {
 			case "disk":
 				$mount['mdisk'] = $_POST['mdisk'];
-				$mount['partition'] = $_POST['partition'];
+				$mount['partition'] = $_POST['partition_type'].$_POST['partition_number'];
 				$mount['fstype'] = $_POST['fstype'];
 				$mount['devicespecialfile'] = trim("{$mount['mdisk']}{$mount['partition']}");
 				$mount['readonly'] = $_POST['readonly'] ? true : false;
@@ -252,7 +257,8 @@ function type_change() {
   switch(document.iform.type.selectedIndex) {
     case 0: /* Disk */
       showElementById('mdisk_tr','show');
-      showElementById('partition_tr','show');
+      showElementById('partition_type_tr','show');
+      showElementById('partition_number_tr','show');
       showElementById('fstype_tr','show');
       showElementById('filename_tr','hide');
       showElementById('readonly_tr','show');
@@ -261,7 +267,8 @@ function type_change() {
 
     case 1: /* ISO */
       showElementById('mdisk_tr','hide');
-      showElementById('partition_tr','hide');
+      showElementById('partition_type_tr','hide');
+      showElementById('partition_number_tr','hide');
       showElementById('fstype_tr','hide');
       showElementById('filename_tr','show');
       showElementById('readonly_tr','hide');
@@ -273,7 +280,10 @@ function type_change() {
 function fstype_change() {
 	switch(document.iform.fstype.selectedIndex) {
 		case 0: /* UFS */
-			document.iform.partition.value = "p1";
+			document.iform.partition.value = "s";
+			break;
+		case 1: /* UFS */
+			document.iform.partition.value = "p";
 			break;
 
 		case 2: /* CD/DVD */
@@ -319,22 +329,18 @@ function enable_change(enable_change) {
 							</select>
 			      </td>
 			    </tr>
-					<tr id="partition_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition");?></td>
+				<tr id="partition_type_tr">
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition type");?> </td>
 			      <td class="vtable">
-							<select name="partition" class="formfld" id="partition">
-								<option value="p1" <?php if ($pconfig['partition'] === "p1") echo "selected";?>>EFI GPT</option>
-								<option value="s1" <?php if ($pconfig['partition'] === "s1") echo "selected";?>>1</option>
-								<option value="s2" <?php if ($pconfig['partition'] === "s2") echo "selected";?>>2</option>
-								<option value="s3" <?php if ($pconfig['partition'] === "s3") echo "selected";?>>3</option>
-								<option value="s4" <?php if ($pconfig['partition'] === "s4") echo "selected";?>>4</option>
-								<option value="s5" <?php if ($pconfig['partition'] === "s5") echo "selected";?>>5</option>
-								<option value="s6" <?php if ($pconfig['partition'] === "s6") echo "selected";?>>6</option>
+							<select name="partition_type" class="formfld" id="partition_type">
+								<option value="p" <?php if ($partition_type === "p") echo "selected";?>>GPT partition</option>
+								<option value="s" <?php if ($partition_type === "s") echo "selected";?>>MBR partition</option>
 								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected";?>><?=gettext("CD/DVD or Old Software RAID");?></option>
 							</select><br/>
-							<span class="vexpl"><?=gettext("<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if you select option 2 during installation on hard drive (<b>all versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on extended partition. <br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS (Windows, Linux, MAC, etc.) that use MBR partition table.");?></span>
+							<span class="vexpl"><?=gettext("<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD.");?></span>
 			      </td>
 			    </tr>
+					<?php html_inputbox("partition_number", gettext("Partition number"), $partition_number, "", true, 3);?>  
 					<?php html_combobox("fstype", gettext("File system"), $pconfig['fstype'], array("ufs" => "UFS", "msdosfs" => "FAT", "cd9660" => "CD/DVD", "ntfs" => "NTFS", "ext2fs" => "EXT2"), "", true);?>
 					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), $g['media_path'], true);?>
 					<?php html_inputbox("sharename", gettext("Mount point name"), $pconfig['sharename'], "", true, 20);?>
