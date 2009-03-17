@@ -67,7 +67,7 @@ function update_diskusage(value) {
 	if (value == 'undefined' || value == null)
 		return;
 	for (var i=0; i<value.length; i++) {
-		if (document.getElementById("diskusage_" + value[i].id) == null)
+		if (document.getElementById("diskusagec_" + value[i].id) == null)
 			return;
 		document.getElementById("diskusagec_" + value[i].id).value = value[i].caption;
 		document.getElementById("diskusagecd_" + value[i].id).innerHTML = value[i].caption_detailed;
@@ -83,9 +83,9 @@ function update_swapusage(value) {
 		return;
 
 	for (var i=0; i<value.length; i++) {
-		if (document.getElementById("swapusage_" + value[i].id) == null)
+		if (document.getElementById("swapusagec_" + value[i].id) == null)
 			return;
-		document.getElementById("swapusage_" + value[i].id).value = value[i].caption;
+		document.getElementById("swapusagec_" + value[i].id).value = value[i].caption;
 		document.getElementById("swapusageu_" + value[i].id).style.width = value[i].percentage + 'px';
 		document.getElementById("swapusageu_" + value[i].id).title = value[i]['tooltip'].used;
 		document.getElementById("swapusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';

@@ -184,7 +184,7 @@ sajax_handle_client_request();
 								echo "<img src='bar_blue.gif' name='swapusageu_{$fsid}' id='swapusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='texttop' title='{$tooltip_used}'>";
 								echo "<img src='bar_gray.gif' name='swapusagef_{$fsid}' id='swapusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='texttop' title='{$tooltip_available}'>";
 								echo "<img src='bar_right.gif' height='15' width='5' border='0' align='texttop'> ";
-								echo "<input style='padding: 0; border: 0;' size='30' name='swapusage_{$fsid}' id='swapusage_{$fsid}' value='{$caption}'/>";
+								echo "<input style='padding: 0; border: 0;' size='30' name='swapusagec_{$fsid}' id='swapusagec_{$fsid}' value='{$caption}'/>";
 								echo "<br/></td></tr>";
 							}?>
 						</table>
