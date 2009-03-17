@@ -139,10 +139,10 @@ sajax_handle_client_request();
 					<td width="75%" class="listr">
 						<?php
 						$percentage = 0;
-						echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-						echo "<img src='bar_blue.gif' name='cpuusageu' id='cpuusageu' height='15' width='" . $percentage . "' border='0' align='absmiddle'>";
-						echo "<img src='bar_gray.gif' name='cpuusagef' id='cpuusagef' height='15' width='" . (100 - $percentage) . "' border='0' align='absmiddle'>";
-						echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
+						echo "<img src='bar_left.gif' height='15' width='4' border='0' align='texttop'>";
+						echo "<img src='bar_blue.gif' name='cpuusageu' id='cpuusageu' height='15' width='" . $percentage . "' border='0' align='texttop'>";
+						echo "<img src='bar_gray.gif' name='cpuusagef' id='cpuusagef' height='15' width='" . (100 - $percentage) . "' border='0' align='texttop'>";
+						echo "<img src='bar_right.gif' height='15' width='5' border='0' align='texttop'> ";
 						?>
 						<input style="padding: 0; border: 0;" size="30" name="cpuusage" id="cpuusage" value="<?=gettext("Updating in 5 seconds.");?>"/>
 					</td>
@@ -153,10 +153,10 @@ sajax_handle_client_request();
 						<?php
 						$raminfo = system_get_ram_info();
 						$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
-						echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-						echo "<img src='bar_blue.gif' name='memusageu' id='memusageu' height='15' width='" . $percentage . "' border='0' align='absmiddle'>";
-						echo "<img src='bar_gray.gif' name='memusagef' id='memusagef' height='15' width='" . (100 - $percentage) . "' border='0' align='absmiddle'>";
-						echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
+						echo "<img src='bar_left.gif' height='15' width='4' border='0' align='texttop'>";
+						echo "<img src='bar_blue.gif' name='memusageu' id='memusageu' height='15' width='" . $percentage . "' border='0' align='texttop'>";
+						echo "<img src='bar_gray.gif' name='memusagef' id='memusagef' height='15' width='" . (100 - $percentage) . "' border='0' align='texttop'>";
+						echo "<img src='bar_right.gif' height='15' width='5' border='0' align='texttop'> ";
 						?>
 						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>"/>
 			    </td>
@@ -175,14 +175,16 @@ sajax_handle_client_request();
 
 								$fsid++;
 								$percent_used = rtrim($swap['capacity'],"%");
+
+								$caption = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
 								$tooltip_used = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
 								$tooltip_available = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
 
-								echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-								echo "<img src='bar_blue.gif' name='swapusageu_{$fsid}' id='swapusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='absmiddle' title='{$tooltip_used}'>";
-								echo "<img src='bar_gray.gif' name='swapusagef_{$fsid}' id='swapusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
-								echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-								echo "<input style='padding: 0; border: 0;' size='30' name='swapusage_{$fsid}' id='swapusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']) . "'/>";
+								echo "<img src='bar_left.gif' height='15' width='4' border='0' align='texttop'>";
+								echo "<img src='bar_blue.gif' name='swapusageu_{$fsid}' id='swapusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='texttop' title='{$tooltip_used}'>";
+								echo "<img src='bar_gray.gif' name='swapusagef_{$fsid}' id='swapusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='texttop' title='{$tooltip_available}'>";
+								echo "<img src='bar_right.gif' height='15' width='5' border='0' align='texttop'> ";
+								echo "<input style='padding: 0; border: 0;' size='30' name='swapusage_{$fsid}' id='swapusage_{$fsid}' value='{$caption}'/>";
 								echo "<br/></td></tr>";
 							}?>
 						</table>
@@ -222,12 +224,12 @@ sajax_handle_client_request();
 									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 
-									echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='absmiddle' title='{$tooltip_used}'>";
-									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
-									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-									echo "<input style='padding: 0; border: 0;' size='30' name='diskusagec_{$fsid}' id='diskusagec_{$fsid}' value='{$caption}'/>";
-									echo "<div name='diskusagecd_{$fsid}' id='diskusagecd_{$fsid}'>{$caption_detailed}</div>";
+									echo "<img src='bar_left.gif' height='15' width='4' border='0' align='texttop'>";
+									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='texttop' title='{$tooltip_used}'>";
+									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='texttop' title='{$tooltip_available}'>";
+									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='texttop'> ";
+									echo "<input style='padding: 0; border: 0;' size='30' name='diskusagec_{$fsid}' id='diskusagec_{$fsid}' value='{$caption}'/><br/>";
+									echo "<span name='diskusagecd_{$fsid}' id='diskusagecd_{$fsid}'>{$caption_detailed}</span>";
 									echo "</td></tr>";
 								}
 							} else {
