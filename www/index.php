@@ -228,7 +228,7 @@ sajax_handle_client_request();
 									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
 									echo "<input style='padding: 0; border: 0;' size='30' name='diskusagec_{$fsid}' id='diskusagec_{$fsid}' value='{$caption}'/>";
 									echo "<div name='diskusagecd_{$fsid}' id='diskusagecd_{$fsid}'>{$caption_detailed}</div>";
-									echo "<br/></td></tr>";
+									echo "</td></tr>";
 								}
 							} else {
 								echo gettext("No disk configured");
