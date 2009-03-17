@@ -216,6 +216,9 @@ sajax_handle_client_request();
 
 									$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
 									$percent_used = rtrim($diskusagev['capacity'],"%");
+
+									$caption = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
+									$caption_detailed = sprintf(gettext("Disk capacity: <b>%s</b> | Free: <b>%s</b> | Used: <b>%s</b>"), $diskusagev['size'], $diskusagev['avail'], $diskusagev['used']);
 									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 
@@ -223,7 +226,8 @@ sajax_handle_client_request();
 									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='absmiddle' title='{$tooltip_used}'>";
 									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
 									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-									echo "<input style='padding: 0; border: 0;' size='30' name='diskusage_{$fsid}' id='diskusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']) . "'/>";
+									echo "<input style='padding: 0; border: 0;' size='30' name='diskusagec_{$fsid}' id='diskusagec_{$fsid}' value='{$caption}'/>";
+									echo "<div name='diskusagecd_{$fsid}' id='diskusagecd_{$fsid}'>{$caption_detailed}</div>";
 									echo "<br/></td></tr>";
 								}
 							} else {

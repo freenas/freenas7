@@ -69,7 +69,8 @@ function update_diskusage(value) {
 	for (var i=0; i<value.length; i++) {
 		if (document.getElementById("diskusage_" + value[i].id) == null)
 			return;
-		document.getElementById("diskusage_" + value[i].id).value = value[i].caption;
+		document.getElementById("diskusagec_" + value[i].id).value = value[i].caption;
+		document.getElementById("diskusagecd_" + value[i].id).innerHTML = value[i].caption_detailed;
 		document.getElementById("diskusageu_" + value[i].id).style.width = value[i].percentage + 'px';
 		document.getElementById("diskusageu_" + value[i].id).title = value[i]['tooltip'].used;
 		document.getElementById("diskusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';

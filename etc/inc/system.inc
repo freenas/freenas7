@@ -378,6 +378,7 @@ function system_get_sysinfo() {
 			$diskinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 			$diskinfo['tooltip']['available'] = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 			$diskinfo['caption'] = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
+			$diskinfo['caption_detailed'] = sprintf(gettext("Disk capacity: <b>%s</b> | Free: <b>%s</b> | Used: <b>%s</b>"), $diskusagev['size'], $diskusagev['avail'], $diskusagev['used']);
 			$value['diskusage'][] = $diskinfo;
 		}
 	}
