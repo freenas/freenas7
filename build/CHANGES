@@ -64,6 +64,8 @@ Permanent restrictions:
 - It is not possible to get seperate CPU stats per processor on SMP machines because
   FreeBSD does not support that feature.
 - Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
+- It is not possible to mount EXT2 disks with an inode size of 256 bytes. You
+  have to format it with 128 bytes on Linux to use them on FreeBSD.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
