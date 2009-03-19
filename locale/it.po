@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"POT-Creation-Date: 2009-03-14 03:54+0000\n"
 "PO-Revision-Date: 2009-01-25 08:52+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -21,7 +21,7 @@ msgstr " interfacce:"
 msgid " was assigned to "
 msgstr " era assegnata a "
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr "%d%% di %dMB"
 
@@ -37,7 +37,7 @@ msgstr "interfaccia %s"
 msgid "%s is used to create %s volumes."
 msgstr "%s è usato per creare %s volumi."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s di %sB"
 
@@ -49,11 +49,11 @@ msgstr ""
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s eseguirà un riavvio dopo il ripristino della configurazione."
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr "%sB disponibili su %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr "%sB utilizzati su %sB"
 
@@ -545,6 +545,12 @@ msgstr "Backup/Ripristino"
 
 msgid "Balance algorithm"
 msgstr "Algoritmo di bilanciamento"
+
+msgid "Ban list"
+msgstr ""
+
+msgid "Ban list rule"
+msgstr ""
 
 msgid "Banner"
 msgstr "Banner"
@@ -1458,6 +1464,9 @@ msgstr "Abilita l'autenticazione proxy."
 msgid "Enable recycle bin"
 msgstr "Abilita il cestino"
 
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr ""
+
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
 "incoming active mode data connections and outgoing passive mode data "
@@ -1537,12 +1546,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter the network of the remote monitor that monitor the local connected UPS "
-"in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
-"(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-
-msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
@@ -1570,6 +1573,9 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr ""
 "Errore: I cambiamenti non possono essere applicati (codice di errore %s)."
 
+msgid "Event"
+msgstr ""
+
 msgid "Execute"
 msgstr ""
 
@@ -1585,6 +1591,9 @@ msgstr ""
 
 msgid "Execute now"
 msgstr "Esegui ora"
+
+msgid "Expire"
+msgstr ""
 
 msgid "Export"
 msgstr ""
@@ -1773,6 +1782,9 @@ msgstr "Sazio disponibile su disco"
 
 msgid "French"
 msgstr "Francese"
+
+msgid "Frequency"
+msgstr ""
 
 msgid "From email"
 msgstr "Da email"
@@ -2649,6 +2661,9 @@ msgstr "Versione OS"
 msgid "Object name"
 msgstr "Nome Oggetto"
 
+msgid "Occurrence"
+msgstr ""
+
 msgid "Old passphrase"
 msgstr "Vecchia passphrase"
 
@@ -3332,9 +3347,6 @@ msgstr "Condivisione"
 msgid "Share Character Set"
 msgstr "Set di caratteri della condivisione."
 
-msgid "Share Name"
-msgstr "Nome Condivisione"
-
 msgid "Share Password"
 msgstr "Password della Condivisione."
 
@@ -3443,6 +3455,14 @@ msgid ""
 msgstr ""
 "Specifica il seti di caratteri della condivisione. Per esempio UTF8, UTF8-"
 "MAC, ISO-8859-15, etc."
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr ""
+
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
 
 msgid "Specifies the username which the service will run as."
 msgstr ""
@@ -3774,6 +3794,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr "L' attributo '%s' non e' una valida maschera di sottorete."
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr "L'attributo '%s' e' richiesto."
 
@@ -3892,6 +3916,9 @@ msgstr ""
 "Al momento il disco &egrave; montato! Il punto di mount sar&agrave; rimosso "
 "temporaneamente per eseguire il comando selezionato."
 
+msgid "The disk/partition is already configured."
+msgstr ""
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
@@ -3959,6 +3986,13 @@ msgstr ""
 "La porta minima da assegnare per le connessioni dati di tipo PASV (0 = usa "
 "una porta qualunque)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+
 msgid "The name or IP address of the LDAP server."
 msgstr ""
 
@@ -4015,9 +4049,6 @@ msgstr ""
 
 msgid "The subject of the email."
 msgstr "L'oggetto della email."
-
-msgid "The swap file is using this mount point."
-msgstr "Il file di swap sta utilizzando questo punto di montaggio."
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
@@ -4201,9 +4232,6 @@ msgstr "Questo dispositivo esiste gia' nella lista dei volumi raid."
 msgid "This disk already exists in the disk list."
 msgstr "Questo disco esiste già nella lista dei dischi."
 
-msgid "This disk/partition is already configured."
-msgstr "Questo disco/partizione e' gia' configurato."
-
 msgid "This email has been send to validate your email configuration."
 msgstr ""
 
@@ -4374,6 +4402,11 @@ msgid ""
 "files."
 msgstr ""
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4396,6 +4429,9 @@ msgstr ""
 msgid ""
 "This parameter specifies the suffix that is used for users when these are "
 "added to the LDAP directory, e.g. %s"
+msgstr ""
+
+msgid "This rule is triggered whenever the selected event directive occurs."
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4424,6 +4460,9 @@ msgstr ""
 
 msgid "Time"
 msgstr "Ora"
+
+msgid "Time interval"
+msgstr ""
 
 msgid "Time server"
 msgstr "Time server"
@@ -4971,6 +5010,9 @@ msgstr "mirroring"
 msgid "months"
 msgstr "mesi"
 
+msgid "mount"
+msgstr ""
+
 msgid "mswindows"
 msgstr ""
 
@@ -5011,6 +5053,9 @@ msgid "sysctl.conf"
 msgstr ""
 
 msgid "umask"
+msgstr ""
+
+msgid "umount"
 msgstr ""
 
 msgid "upriv"
@@ -5429,6 +5474,9 @@ msgstr "giorni della settimana"
 #~ "di usare questo men&ugrave; per inizializzare un volume RAID (parte "
 #~ "automaticamente)."
 
+#~ msgid "Share Name"
+#~ msgstr "Nome Condivisione"
+
 #~ msgid "delete mount"
 #~ msgstr "cancella mount"
 
@@ -5779,6 +5827,9 @@ msgstr "giorni della settimana"
 #~ msgid "Do you really want to delete this user?!"
 #~ msgstr "Si vuole realmente cancellare questo utente?!"
 
+#~ msgid "This disk/partition is already configured."
+#~ msgstr "Questo disco/partizione e' gia' configurato."
+
 #~ msgid ""
 #~ "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
 #~ "(for others) partition and format the hard drive with the file system "
@@ -5824,6 +5875,9 @@ msgstr "giorni della settimana"
 #~ msgstr ""
 #~ "Si desidera realmente cancellare questo volume cifrato? Tutti gli elementi "
 #~ "che lo stanno usando diventeranno invalidi (es. condivisioni)!"
+
+#~ msgid "The swap file is using this mount point."
+#~ msgstr "Il file di swap sta utilizzando questo punto di montaggio."
 
 #, php-format
 #~ msgid ""

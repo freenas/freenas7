@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 12:36+0000\n"
-"PO-Revision-Date: 2009-02-22 02:35+0000\n"
+"POT-Creation-Date: 2009-03-14 03:54+0000\n"
+"PO-Revision-Date: 2009-03-16 01:05+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -20,7 +20,7 @@ msgstr " netwerken:"
 msgid " was assigned to "
 msgstr " werd toegewezen aan "
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr "%d%% van %dMB"
 
@@ -36,7 +36,7 @@ msgstr "%s netwerk"
 msgid "%s is used to create %s volumes."
 msgstr "%s is gebruikt voor het maken van %s volumes."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s van %sB"
 
@@ -50,11 +50,11 @@ msgstr ""
 "Na het herstellen van het configuratiebestand zal %s automatisch opnieuw "
 "opstarten."
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr "%sB beschikbaar van %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr "%sB gebruikt van %sB"
 
@@ -590,6 +590,12 @@ msgstr "Backup/Herstellen"
 
 msgid "Balance algorithm"
 msgstr "Balance algoritme"
+
+msgid "Ban list"
+msgstr "Ban lijst"
+
+msgid "Ban list rule"
+msgstr "Ban lijst regels"
 
 msgid "Banner"
 msgstr "Banner"
@@ -1526,6 +1532,9 @@ msgstr "Inschakelen proxy authenticatie."
 msgid "Enable recycle bin"
 msgstr "Inschakelen prullenbak"
 
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr "Inschakelen remote monitoring  van de lokaal verbonden UPS."
+
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
 "incoming active mode data connections and outgoing passive mode data "
@@ -1617,16 +1626,6 @@ msgstr ""
 "het icoon om het te selecteren."
 
 msgid ""
-"Enter the network of the remote monitor that monitor the local connected UPS "
-"in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
-"(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-"Vul hier de netwerk gegevens in van de remote monitor die de in slave mode "
-"lokaal aangesloten UPS monitort, bijv. 192.168.50.0/255.255.255.0 (IPv4), "
-"192.168.50.0/24 (IPv4) of 2001:0db8:1234::/48 (IPv6). Meerdere  netwerken "
-"scheiden met een spatie."
-
-msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
@@ -1654,6 +1653,9 @@ msgstr "Fout"
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Fout: de wijzigingen konden niet worden doorgevoerd (fout code %s)."
 
+msgid "Event"
+msgstr "Gebeurtenis"
+
 msgid "Execute"
 msgstr "Uitvoeren"
 
@@ -1669,6 +1671,9 @@ msgstr ""
 
 msgid "Execute now"
 msgstr "Nu uitvoeren"
+
+msgid "Expire"
+msgstr "Verlooptijd"
 
 msgid "Export"
 msgstr "Exporteren"
@@ -1861,6 +1866,9 @@ msgstr "Vrije schijfruimte"
 
 msgid "French"
 msgstr "Frans"
+
+msgid "Frequency"
+msgstr "Frequentie"
 
 msgid "From email"
 msgstr "Van E-mail"
@@ -2783,6 +2791,9 @@ msgstr "OS Versie"
 msgid "Object name"
 msgstr "Object naam"
 
+msgid "Occurrence"
+msgstr "Overtredingen"
+
 msgid "Old passphrase"
 msgstr "Oud wachtwoordzin"
 
@@ -3500,9 +3511,6 @@ msgstr "Gedeelde map"
 msgid "Share Character Set"
 msgstr "Gedeelde Karakter reeks"
 
-msgid "Share Name"
-msgstr "Deel Naam"
-
 msgid "Share Password"
 msgstr "Gedeeld Wachtwoord"
 
@@ -3614,6 +3622,18 @@ msgid ""
 msgstr ""
 "Specificeert de deel karakter reeks. Als voorbeeld UTF8, UTF8-MAC, ISO-8859-"
 "15, enz."
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr ""
+"Geef de tijdsduur van de ban in uu:mm:ss. Na het verstrijken van deze tijd "
+"wordt de ban opgeheven."
+
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
+"Geef de tijdsinterval op in uu:mm:ss waarin het bepaald aantal overtredingen "
+"dient te gebeuren voordat de ban toegepast gaat worden."
 
 msgid "Specifies the username which the service will run as."
 msgstr "De gebruikersnaam waaronder deze service gaat draaien."
@@ -3955,6 +3975,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr "Het attribuut '%s' is geen geldig subnetmasker."
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr "De attribuut '%s' is geen geldige tijd."
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr "Het kenmerk '%s' is vereist."
 
@@ -4083,6 +4107,9 @@ msgstr ""
 "De schijf is momenteel aangekoppeld! Het koppelpunt zal tijdelijk verwijderd "
 "worden om het geselecteerde commando uit te voeren."
 
+msgid "The disk/partition is already configured."
+msgstr "De schijf/partitie is reeds geconfigureerd."
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
@@ -4151,6 +4178,17 @@ msgstr ""
 "De minimale poort die toegewezen mag worden aan de PASV type "
 "dataverbindingen (0 = gebruik alle poorten)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"De module verstrekt automatische bans die gebaseerd op configureerbare "
+"criteria worden toegepast. Een ban verhindert de verbannen gebruiker, "
+"gastheer, of de klasse om in te loggen op de server, het verhindert niet de "
+"verbannen gebruiker, de gastheer, of de klasse met de server te verbinden."
+
 msgid "The name or IP address of the LDAP server."
 msgstr "Naam of IP adres van de LDAP server."
 
@@ -4209,9 +4247,6 @@ msgstr "De grootte van het swap bestand in MB."
 
 msgid "The subject of the email."
 msgstr "Het onderwerp van de e-mail."
-
-msgid "The swap file is using this mount point."
-msgstr "Het wisselbestand maakt gebruik van dit koppelpunt."
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
@@ -4413,9 +4448,6 @@ msgstr "Deze schijf bestaat reeds in de RAID volumelijst."
 msgid "This disk already exists in the disk list."
 msgstr "Deze schijf bestaat al in de lijst met schijven."
 
-msgid "This disk/partition is already configured."
-msgstr "Deze schijf/partitie is reeds ingesteld."
-
 msgid "This email has been send to validate your email configuration."
 msgstr ""
 "Dit e-mail bericht is verzonden om uw email configuratie te valideren."
@@ -4605,6 +4637,13 @@ msgstr ""
 "Deze parameter bepaalt of bestanden die beginnen met een punt in de naam als "
 "verborgen bestanden worden weergegeven."
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+"Deze parameter zegt dat als N voorkomt en binnen het bepaalde tijdsinterval "
+"gebeurt, een ban automatisch wordt toegepast."
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4637,6 +4676,10 @@ msgstr ""
 "Deze parameter specificeerd het achtervoegsel voor gebruikers, wanneer deze "
 "toegevoegt zijn aan de LDAP directory, bijv. %s"
 
+msgid "This rule is triggered whenever the selected event directive occurs."
+msgstr ""
+"Deze regel wordt toegepast wanneer de geselecteerde gebeurtenis voorkomt."
+
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "Dit het IP adres of DNS naam van het iSCSI doel."
 
@@ -4663,6 +4706,9 @@ msgstr ""
 
 msgid "Time"
 msgstr "Tijd"
+
+msgid "Time interval"
+msgstr "Tijdsinterval"
 
 msgid "Time server"
 msgstr "Tijd server"
@@ -5244,6 +5290,9 @@ msgstr "mirroring"
 msgid "months"
 msgstr "maanden"
 
+msgid "mount"
+msgstr "aankoppelen"
+
 msgid "mswindows"
 msgstr "mswindows"
 
@@ -5285,6 +5334,9 @@ msgstr "sysctl.conf"
 
 msgid "umask"
 msgstr "umask"
+
+msgid "umount"
+msgstr "loskoppelen"
 
 msgid "upriv"
 msgstr "upriv"
