@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"POT-Creation-Date: 2009-03-14 03:54+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -50,7 +50,7 @@ msgstr " 介面:"
 msgid " was assigned to "
 msgstr " 被指派為 "
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr "%d%% of %dMB"
 
@@ -66,7 +66,7 @@ msgstr "%s 介面"
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s of %sB"
 
@@ -78,11 +78,11 @@ msgstr ""
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s復原設定組態之後將會自動重新開機。"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr "%sB available of %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr "%sB used of %sB"
 
@@ -561,6 +561,12 @@ msgstr "備份/還原"
 
 msgid "Balance algorithm"
 msgstr "平衡演算法"
+
+msgid "Ban list"
+msgstr ""
+
+msgid "Ban list rule"
+msgstr ""
 
 msgid "Banner"
 msgstr "歡迎文字"
@@ -1450,6 +1456,9 @@ msgstr "啟用 Proxy 認證。"
 msgid "Enable recycle bin"
 msgstr "開啟檔案垃圾桶"
 
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr ""
+
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
 "incoming active mode data connections and outgoing passive mode data "
@@ -1532,12 +1541,6 @@ msgid ""
 msgstr "直接輸入欲設定的系統時間 (格式為 mm/dd/yyyy hh:mm) ，或是點選圖示選擇時間"
 
 msgid ""
-"Enter the network of the remote monitor that monitor the local connected UPS "
-"in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
-"(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-
-msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr "輸入在 WPA-PSK 模式中使用的密語。這個密語長度必須在 8 到 63 個字元之間。"
@@ -1560,6 +1563,9 @@ msgstr "錯誤"
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr "錯誤：變更無法套用（Error Code %s）。"
 
+msgid "Event"
+msgstr ""
+
 msgid "Execute"
 msgstr "執行"
 
@@ -1573,6 +1579,9 @@ msgstr "在系統起始/關機之前或之後的指令。"
 
 msgid "Execute now"
 msgstr "立刻執行"
+
+msgid "Expire"
+msgstr ""
 
 msgid "Export"
 msgstr ""
@@ -1752,6 +1761,9 @@ msgid "Free disk space"
 msgstr "可用空間"
 
 msgid "French"
+msgstr ""
+
+msgid "Frequency"
 msgstr ""
 
 msgid "From email"
@@ -2590,6 +2602,9 @@ msgstr "作業系統版本"
 msgid "Object name"
 msgstr "物件名稱"
 
+msgid "Occurrence"
+msgstr ""
+
 msgid "Old passphrase"
 msgstr "舊金鑰"
 
@@ -3264,9 +3279,6 @@ msgstr "分享"
 msgid "Share Character Set"
 msgstr "分享區字元編碼"
 
-msgid "Share Name"
-msgstr "分享名稱"
-
 msgid "Share Password"
 msgstr "分享密碼"
 
@@ -3372,6 +3384,14 @@ msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
 msgstr "指定這個分享區的檔名編碼，UTF8、UTF8-MAC、ISO-8859-15等等"
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr ""
+
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
 
 msgid "Specifies the username which the service will run as."
 msgstr ""
@@ -3688,6 +3708,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr "屬性 '%s' 是無效的子網域遮罩。"
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr "屬性 '%s' 是必須欄位。"
 
@@ -3792,6 +3816,9 @@ msgid ""
 "perform selected command."
 msgstr "磁碟目前正在掛載中！系統會將磁碟暫時卸載以進行指令。"
 
+msgid "The disk/partition is already configured."
+msgstr ""
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
@@ -3852,6 +3879,13 @@ msgid ""
 "port)."
 msgstr "被動式連線埠的區段起點(0 = 不限制)"
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+
 msgid "The name or IP address of the LDAP server."
 msgstr ""
 
@@ -3905,9 +3939,6 @@ msgstr ""
 
 msgid "The subject of the email."
 msgstr "這封 email 的主旨。"
-
-msgid "The swap file is using this mount point."
-msgstr "Swap 檔放在這個掛載點下。"
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
@@ -4078,9 +4109,6 @@ msgstr "這個裝置已經是RAID成員。"
 msgid "This disk already exists in the disk list."
 msgstr "這個磁碟已經加入過了。"
 
-msgid "This disk/partition is already configured."
-msgstr "這個磁碟/磁區已經設定過了。"
-
 msgid "This email has been send to validate your email configuration."
 msgstr "這個電子郵件會寄出以驗證您的電子郵件組態。"
 
@@ -4239,6 +4267,11 @@ msgid ""
 "files."
 msgstr "這個參數將會套用在所有的檔案，包含以逗點為開頭的隱藏檔。"
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4263,6 +4296,9 @@ msgid ""
 "added to the LDAP directory, e.g. %s"
 msgstr ""
 
+msgid "This rule is triggered whenever the selected event directive occurs."
+msgstr ""
+
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "這是 iSCSI 的 IP 位置或者 DNS 名稱"
 
@@ -4285,6 +4321,9 @@ msgstr "這個動作會把選取的磁碟內資料清空！如果你想要新增
 
 msgid "Time"
 msgstr "時間"
+
+msgid "Time interval"
+msgstr ""
 
 msgid "Time server"
 msgstr "時間伺服器"
@@ -4799,6 +4838,9 @@ msgstr "mirroring"
 msgid "months"
 msgstr "月"
 
+msgid "mount"
+msgstr ""
+
 msgid "mswindows"
 msgstr "微軟小窗窗"
 
@@ -4839,6 +4881,9 @@ msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
 msgid "umask"
+msgstr ""
+
+msgid "umount"
 msgstr ""
 
 msgid "upriv"
@@ -5302,6 +5347,9 @@ msgstr "平常日"
 #~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
 #~ "using this menu for start a RAID volume (start automaticaly)."
 #~ msgstr "1. 這些特殊的命令只用來除錯而已！<br>2. RAID磁碟在建立之後會自動的啟動，不需要利用activate工具再啟動一次。"
+
+#~ msgid "Share Name"
+#~ msgstr "分享名稱"
 
 #~ msgid ""
 #~ "The mount point list has been changed.<br>You must apply the changes in "
@@ -5856,6 +5904,9 @@ msgstr "平常日"
 #~ msgid "Do you really want to delete this user?!"
 #~ msgstr "確定要刪除此使用者帳號？"
 
+#~ msgid "This disk/partition is already configured."
+#~ msgstr "這個磁碟/磁區已經設定過了。"
+
 #~ msgid ""
 #~ "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
 #~ "(for others) partition and format the hard drive with the file system "
@@ -5906,6 +5957,9 @@ msgstr "平常日"
 #~ "The iSCSI disk list has been changed.<br>You must apply the changes in order "
 #~ "for them to take effect."
 #~ msgstr "iSCSI 磁碟列表已經變更。<br>套用之後才會生效。"
+
+#~ msgid "The swap file is using this mount point."
+#~ msgstr "Swap 檔放在這個掛載點下。"
 
 #~ msgid "ISO"
 #~ msgstr "ISO 檔"

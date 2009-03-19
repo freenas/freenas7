@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 12:36+0000\n"
-"PO-Revision-Date: 2009-02-21 19:56+0000\n"
+"POT-Creation-Date: 2009-03-14 03:54+0000\n"
+"PO-Revision-Date: 2009-03-16 14:40+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -23,7 +23,7 @@ msgstr " интерфейсы:"
 msgid " was assigned to "
 msgstr " был присвоен "
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr "%d%% из %d Мбайт"
 
@@ -39,7 +39,7 @@ msgstr "%s интерфейс"
 msgid "%s is used to create %s volumes."
 msgstr "%s используется для создания %s разделов."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s из %s байт"
 
@@ -51,11 +51,11 @@ msgstr "%s из %s (%dMHz)"
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s будет перезагружен после восстановления конфигурации."
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr "%s байт доступно из %s байт"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr "занято %s из %s байт"
 
@@ -583,6 +583,12 @@ msgstr "Копировать/Восстановить"
 msgid "Balance algorithm"
 msgstr "Алгоритм балансировки"
 
+msgid "Ban list"
+msgstr "Ban list"
+
+msgid "Ban list rule"
+msgstr "Правило 'Ban list'"
+
 msgid "Banner"
 msgstr "Приветствие"
 
@@ -817,7 +823,7 @@ msgid "Creating filesystem"
 msgstr "Создание файловой системы"
 
 msgid "Creating filesystem with 'Soft Updates'"
-msgstr "Создание файловой системы с \"Мягкими обновлениями\""
+msgstr "Создание файловой системы с 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Создание раздела"
@@ -1500,7 +1506,10 @@ msgid "Enable proxy authentication."
 msgstr "Включить авторизацию прокси-сервера"
 
 msgid "Enable recycle bin"
-msgstr "Включить Корзину"
+msgstr "Включить 'корзину'"
+
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr "Включить удаленный мониторинг локально подключенного UPS"
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -1590,16 +1599,6 @@ msgstr ""
 "значок."
 
 msgid ""
-"Enter the network of the remote monitor that monitor the local connected UPS "
-"in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
-"(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-"Задайте сети удаленного мониторинга, из которых проверяется подключенный "
-"локально источник бесперебойного питания (UPS) в slave-режиме. Например, "
-"192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 (IPv4) или "
-"2001:0db8:1234::/48 (IPv6). Сети в списке разделяются пробелом."
-
-msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
@@ -1626,6 +1625,9 @@ msgstr "Ошибка"
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Ошибка: Изменения не могут быть применены (код ошибки %s)."
 
+msgid "Event"
+msgstr "Событие"
+
 msgid "Execute"
 msgstr "Выполнить"
 
@@ -1641,6 +1643,9 @@ msgstr ""
 
 msgid "Execute now"
 msgstr "Выполнить немедленно"
+
+msgid "Expire"
+msgstr "Срок действия"
 
 msgid "Export"
 msgstr "Экспортировать"
@@ -1834,6 +1839,9 @@ msgstr "Свободное дисковое пространство"
 
 msgid "French"
 msgstr "Французский"
+
+msgid "Frequency"
+msgstr "Частота возникновения"
 
 msgid "From email"
 msgstr "Адрес отправителя e-mail"
@@ -2731,6 +2739,9 @@ msgstr "Версия ОС"
 msgid "Object name"
 msgstr "Имя объекта"
 
+msgid "Occurrence"
+msgstr "Число событий"
+
 msgid "Old passphrase"
 msgstr "Старая парольная фраза"
 
@@ -3437,9 +3448,6 @@ msgstr "Общий ресурс"
 msgid "Share Character Set"
 msgstr "Кодировка общего ресурса"
 
-msgid "Share Name"
-msgstr "Имя общего ресурса"
-
 msgid "Share Password"
 msgstr "Пароль общего ресурса"
 
@@ -3548,6 +3556,19 @@ msgid ""
 msgstr ""
 "Указывает кодировку общего ресурса, например, UTF8, UTF8-MAC, ISO-8859-15, и "
 "т.д."
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr ""
+"Задает временной интервал в часах, минутах и секундах, после чего запрет "
+"прекращает свое действие."
+
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
+"Определяет временной интервал в часах, минутах и секундах, в течение "
+"которого должно произойти определенное выше число событий для добавления "
+"этого запрета."
 
 msgid "Specifies the username which the service will run as."
 msgstr "Задает пользователя, от имени которого запускается эта служба."
@@ -3876,6 +3897,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr "Атрибут '%s' содержит неверную маску подсети."
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr "Параметр '%s' задан неверно."
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr "Атрибут '%s' обязателен."
 
@@ -4003,6 +4028,9 @@ msgstr ""
 "Этот диск в настоящий момент смонтирован! Для выполнения выбранной команды "
 "точка монтирования будет временно удалена."
 
+msgid "The disk/partition is already configured."
+msgstr "Диск/раздел уже сконфигурирован"
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
@@ -4072,6 +4100,17 @@ msgstr ""
 "Минимальный номер используемого порта при PASV-соединении (0 = использовать "
 "любой порт)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"Модуль 'Ban list' выполняет автоматическое блокирование в соответствии с "
+"гибко задаваемыми критериями. Блокирование подразумевает собой временную "
+"невозможность работы с сервером, но не запрещает соединение с ним и может "
+"применяться к пользователям, хостам, или классам."
+
 msgid "The name or IP address of the LDAP server."
 msgstr "Имя или IP-адрес сервера LDAP."
 
@@ -4129,9 +4168,6 @@ msgstr "Объем файла подкачки, Мбайт."
 
 msgid "The subject of the email."
 msgstr "Тема письма."
-
-msgid "The swap file is using this mount point."
-msgstr "Эта точка монтирования используется файлом подкачки."
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
@@ -4320,9 +4356,6 @@ msgstr "Это устройство уже есть в списке тома RAI
 msgid "This disk already exists in the disk list."
 msgstr "Этот диск уже есть в списке дисков."
 
-msgid "This disk/partition is already configured."
-msgstr "Этот диск/раздел уже сконфигурирован."
-
 msgid "This email has been send to validate your email configuration."
 msgstr ""
 "Это сообщение было отправлено для проверки настроек вашей электронной почты."
@@ -4502,6 +4535,13 @@ msgstr ""
 "Если установлено, начинающиеся с точки файлы будут рассматриваться как "
 "скрытые."
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+"Этот параметр означает, что если в рамках заданного временного интервала "
+"произошло N таких событий, то запрет будет добавлен автоматически."
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4534,6 +4574,9 @@ msgstr ""
 "Этот параметр устанавливает суффикс, который используется для пользователей "
 "при их добавлении в каталог LDAP, например %s"
 
+msgid "This rule is triggered whenever the selected event directive occurs."
+msgstr "Правило, которое срабатывает при наступлении выбранного события."
+
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "IP-адрес или DNS-имя цели iSCSI."
 
@@ -4549,7 +4592,7 @@ msgstr ""
 "страницы <a href=%s>%s</a>."
 
 msgid "This will create a recycle bin on the share."
-msgstr "Это создаст Корзину на данном общем ресурсе."
+msgstr "Создает 'корзину' на данном общем ресурсе."
 
 msgid ""
 "This will erase ALL data on the selected disks! Do not use this option if "
@@ -4560,6 +4603,9 @@ msgstr ""
 
 msgid "Time"
 msgstr "Время"
+
+msgid "Time interval"
+msgstr "Временной интервал"
 
 msgid "Time server"
 msgstr "Сервер времени"
@@ -5130,6 +5176,9 @@ msgstr "зеркалирование"
 msgid "months"
 msgstr "месяцев"
 
+msgid "mount"
+msgstr "монтировать"
+
 msgid "mswindows"
 msgstr "mswindows"
 
@@ -5171,6 +5220,9 @@ msgstr "sysctl.conf"
 
 msgid "umask"
 msgstr "Применить umask"
+
+msgid "umount"
+msgstr "размонтировать"
 
 msgid "upriv"
 msgstr "upriv"
@@ -5667,6 +5719,9 @@ msgstr "дней недели"
 #~ "1. Используйте эти специальные действия только для отладки!<br>2.Для запуска "
 #~ "RAID-массива необходимости в использовании этого меню нет (запускается "
 #~ "автоматически)."
+
+#~ msgid "Share Name"
+#~ msgstr "Имя общего ресурса"
 
 #~ msgid ""
 #~ "The mount point list has been changed.<br>You must apply the changes in "

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 12:36+0000\n"
-"PO-Revision-Date: 2009-02-24 16:36+0000\n"
+"POT-Creation-Date: 2009-03-14 03:54+0000\n"
+"PO-Revision-Date: 2009-03-14 21:02+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -19,7 +19,7 @@ msgstr " interfaces:"
 msgid " was assigned to "
 msgstr " a été assignée à "
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr "%d%% de %dMB"
 
@@ -35,7 +35,7 @@ msgstr "Interface %s"
 msgid "%s is used to create %s volumes."
 msgstr "%s est utilisé pour créer les volumes %s."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s de %sB"
 
@@ -47,11 +47,11 @@ msgstr "%s sur %s (%dMHz)"
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s redémarrera après  avoir restauré la configuration."
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr "%sB disponible de %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr "%sB utilisé de %sB"
 
@@ -588,6 +588,12 @@ msgstr "Sauvegarde/Restauration"
 
 msgid "Balance algorithm"
 msgstr "Algorithme d'équilibrage"
+
+msgid "Ban list"
+msgstr "Liste des interdits"
+
+msgid "Ban list rule"
+msgstr "Règle d'interdiction"
 
 msgid "Banner"
 msgstr "Bannière"
@@ -1519,6 +1525,9 @@ msgstr "Activer l'authentification proxy"
 msgid "Enable recycle bin"
 msgstr "Activer poubelle"
 
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr "Autoriser le contrôle à distance de l'UPS local."
+
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
 "incoming active mode data connections and outgoing passive mode data "
@@ -1611,15 +1620,6 @@ msgstr ""
 "utiliser l'icône pour la sélectionner."
 
 msgid ""
-"Enter the network of the remote monitor that monitor the local connected UPS "
-"in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
-"(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-"Entrer le réseau du contrôleur distant qui gère l'UPS local en mode esclave, "
-"e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 (IPv4) ou "
-"2001:0db8:1234::/48 (IPv6). Séparer les réseaux par un espace."
-
-msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
@@ -1646,6 +1646,9 @@ msgstr "Erreur"
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Erreur: Ce changement ne peut être appliqué (code erreur %s)."
 
+msgid "Event"
+msgstr "Evénement"
+
 msgid "Execute"
 msgstr "Exécuter"
 
@@ -1661,6 +1664,9 @@ msgstr ""
 
 msgid "Execute now"
 msgstr "Exécuter maintenant"
+
+msgid "Expire"
+msgstr "Expiration"
 
 msgid "Export"
 msgstr "Exporter"
@@ -1854,6 +1860,9 @@ msgstr "Espace disque disponible"
 msgid "French"
 msgstr "Français"
 
+msgid "Frequency"
+msgstr "Fréquence"
+
 msgid "From email"
 msgstr "E-mail d'origine"
 
@@ -2019,9 +2028,8 @@ msgid ""
 "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"Les adresses IP sont traduites en noms de serveurs si <a "
-"href=%s>&quot;Traduire les adresses IP en noms de serveurs&quot;</a> est "
-"activé."
+"Les adresses IP sont traduites en noms d'hôtes si <a href=%s>&quot;Résoudre "
+"les adresses IP en noms d'hôtes&quot;</a> est activé."
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr "Adress IP ou FQDN du serveur Rsync distant."
@@ -2767,6 +2775,9 @@ msgstr "Version de l'OS"
 msgid "Object name"
 msgstr "Nom de l'objet"
 
+msgid "Occurrence"
+msgstr "Occurrence"
+
 msgid "Old passphrase"
 msgstr "Ancienne phrase de passe"
 
@@ -3199,7 +3210,7 @@ msgid "Reports"
 msgstr "Rapports"
 
 msgid "Require authentication."
-msgstr "Exigez l'authentification."
+msgstr "Activer l'authentification."
 
 msgid "Rescan interval"
 msgstr "Intervalle de balayage"
@@ -3478,9 +3489,6 @@ msgstr "Partage"
 msgid "Share Character Set"
 msgstr "Encodage de caractères du partage"
 
-msgid "Share Name"
-msgstr "Nom du partage"
-
 msgid "Share Password"
 msgstr "Mot de passe du partage"
 
@@ -3593,6 +3601,16 @@ msgid ""
 msgstr ""
 "Indique le jeu de caractères utilisé par le partage. Par exemple UTF8, UTF8-"
 "MAC, ISO-8859-15, etc."
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr "Spécifie la durée en hh:mm:ss après laquelle l'interdiction expire."
+
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
+"Spécifie l'intervalle de temps en hh:mm:ss pendant lequel le nombre "
+"d'occurrences spécifié doit être atteint pour ajouter l'interdiction."
 
 msgid "Specifies the username which the service will run as."
 msgstr "Spécifie le nom d'utilisateur sous lequel va fonctionner le service."
@@ -3936,6 +3954,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr "L'attribut '%s' n'est pas un masque de  sous réseau valide."
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr "L'attribut '%s' n'est pas une durée valide."
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr "L'attribut '%s' est requis."
 
@@ -4065,6 +4087,9 @@ msgstr ""
 "Ce disque est monté!<br>Il va être temporairement démonté afin d' exécuter "
 "la commande."
 
+msgid "The disk/partition is already configured."
+msgstr "Le disque ou la partition est déjà configuré."
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
@@ -4134,6 +4159,16 @@ msgstr ""
 "Port min. : valeur basse du numéro de port à allouer pour les connexions "
 "passives (0 = n'importe lequel)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"Le module fourni des interdictions (bans) qui sont déclenchées sur des "
+"critères configurables. Une interdiction permet de refuser à un utilisateur, "
+"un hôte ou une classe de se connecter sur le serveur."
+
 msgid "The name or IP address of the LDAP server."
 msgstr "Le nom ou l'adresse IP du serveur LDAP."
 
@@ -4193,9 +4228,6 @@ msgstr "La taille du fichier de swap en MB."
 
 msgid "The subject of the email."
 msgstr "Sujet de l'e-mail."
-
-msgid "The swap file is using this mount point."
-msgstr "Le fichier de swap utilise ce point de montage"
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
@@ -4395,9 +4427,6 @@ msgstr "Ce périphérique existe déjà dans la liste des volumes RAID."
 msgid "This disk already exists in the disk list."
 msgstr "Ce disque existe déjà dans la liste des disques."
 
-msgid "This disk/partition is already configured."
-msgstr "Ce disque/partition est déjà configuré."
-
 msgid "This email has been send to validate your email configuration."
 msgstr "Cet e-mail a été envoyé pour valider votre configuration e-mail."
 
@@ -4583,6 +4612,13 @@ msgstr ""
 "Ce paramètre vérifie si les fichiers débutant par un point apparaissent "
 "comme fichiers cachés."
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+"Ce paramètre indique que si N occurrences de l'événement ont lieu pendant "
+"l'intervalle de temps défini, une interdiction est ajoutée automatiquement ."
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4611,6 +4647,10 @@ msgid ""
 msgstr ""
 "Suffixe utilisé lors de l'ajout d'utilisateurs au répertoire LDAP, e.g. %s"
 
+msgid "This rule is triggered whenever the selected event directive occurs."
+msgstr ""
+"Cette règle est déclenchée à chaque occurrence de l'événement sélectionné."
+
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "Indiquez ici l'adresse IP ou le nom DNS de la cible iSCSI."
 
@@ -4637,6 +4677,9 @@ msgstr ""
 
 msgid "Time"
 msgstr "Temps"
+
+msgid "Time interval"
+msgstr "Intervalle de temps"
 
 msgid "Time server"
 msgstr "Serveur de temps"
@@ -5010,8 +5053,8 @@ msgstr "Avertissement"
 #, php-format
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr ""
-"Attention: ceci peut provoquer un gros ralentissement dans l'affichage de la "
-"page de journaux %s !"
+"Attention: ceci peut provoquer un fort ralentissement lors de l'affichage de "
+"journaux %s !"
 
 msgid ""
 "Warning: You are going to delete a RAID volume. All data will get lost and "
@@ -5213,6 +5256,9 @@ msgstr "mirroring"
 msgid "months"
 msgstr "mois"
 
+msgid "mount"
+msgstr "montage"
+
 msgid "mswindows"
 msgstr "mswindows"
 
@@ -5254,6 +5300,9 @@ msgstr "sysctl.conf"
 
 msgid "umask"
 msgstr "umask"
+
+msgid "umount"
+msgstr "démontage"
 
 msgid "upriv"
 msgstr "upriv"
@@ -5810,6 +5859,9 @@ msgstr "jours de la semaine"
 #~ "1. N'utilisez ces actions spéciales qu'à des fins de débogage!<br>2. Nul "
 #~ "besoin d'utiliser ce menu pour démarrer un volume RAID (démarrage "
 #~ "automatique)."
+
+#~ msgid "Share Name"
+#~ msgstr "Nom du partage"
 
 #~ msgid ""
 #~ "The mount point list has been changed.<br>You must apply the changes in "
@@ -6640,6 +6692,9 @@ msgstr "jours de la semaine"
 #~ "FreeNAS red&eacute;marrera apr&egrave;s  avoir restor&eacute; la "
 #~ "configuration."
 
+#~ msgid "This disk/partition is already configured."
+#~ msgstr "Ce disque/partition est déjà configuré."
+
 #~ msgid ""
 #~ "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
 #~ "(for others) partition and format the hard drive with the file system "
@@ -6734,6 +6789,9 @@ msgstr "jours de la semaine"
 #~ msgstr ""
 #~ "La liste des disques iSCSI a été modifiée.<br>Vous devez appliquer les "
 #~ "modifications pour qu'elles prennent effet."
+
+#~ msgid "The swap file is using this mount point."
+#~ msgstr "Le fichier de swap utilise ce point de montage"
 
 #~ msgid "ISO"
 #~ msgstr "ISO"

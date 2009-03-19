@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 12:36+0000\n"
+"POT-Creation-Date: 2009-03-14 03:54+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-26 20:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -21,7 +21,7 @@ msgstr " vmesniku:"
 msgid " was assigned to "
 msgstr " so bila prikrojena "
 
-#, php-format
+#, c-format, php-format
 msgid "%d%% of %dMB"
 msgstr "%d%% od %dMB"
 
@@ -37,7 +37,7 @@ msgstr "%s vmesnik"
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s od %sB"
 
@@ -49,11 +49,11 @@ msgstr ""
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s se bo, po obnovitvi nastavitev, ponovno zagnal."
 
-#, php-format
+#, c-format, php-format
 msgid "%sB available of %sB"
 msgstr "navoljo %sB od %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%sB used of %sB"
 msgstr "uporabljeno %sB od %sB"
 
@@ -530,6 +530,12 @@ msgstr "Shrani/Naloži"
 
 msgid "Balance algorithm"
 msgstr "Algoritem ravnotežja"
+
+msgid "Ban list"
+msgstr ""
+
+msgid "Ban list rule"
+msgstr ""
 
 msgid "Banner"
 msgstr "Sporočilo"
@@ -1415,6 +1421,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr ""
+
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
 "incoming active mode data connections and outgoing passive mode data "
@@ -1492,12 +1501,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter the network of the remote monitor that monitor the local connected UPS "
-"in slave mode, e.g. 192.168.50.0/255.255.255.0 (IPv4), 192.168.50.0/24 "
-"(IPv4) or 2001:0db8:1234::/48 (IPv6). Seperate networks by blank."
-msgstr ""
-
-msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
@@ -1520,6 +1523,9 @@ msgstr "Napaka"
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr ""
 
+msgid "Event"
+msgstr ""
+
 msgid "Execute"
 msgstr "Izvedi"
 
@@ -1532,6 +1538,9 @@ msgid ""
 msgstr ""
 
 msgid "Execute now"
+msgstr ""
+
+msgid "Expire"
 msgstr ""
 
 msgid "Export"
@@ -1714,6 +1723,9 @@ msgid "Free disk space"
 msgstr "Prost diskovni prostor"
 
 msgid "French"
+msgstr ""
+
+msgid "Frequency"
 msgstr ""
 
 msgid "From email"
@@ -2555,6 +2567,9 @@ msgstr "Verzija OS"
 msgid "Object name"
 msgstr "Ime predmeta"
 
+msgid "Occurrence"
+msgstr ""
+
 msgid "Old passphrase"
 msgstr ""
 
@@ -3228,9 +3243,6 @@ msgstr "Deljeni vir"
 msgid "Share Character Set"
 msgstr ""
 
-msgid "Share Name"
-msgstr "Ime deljene mape"
-
 msgid "Share Password"
 msgstr ""
 
@@ -3335,6 +3347,14 @@ msgstr ""
 msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
+msgstr ""
+
+msgid "Specifies the time in hh:mm:ss after which the ban expires."
+msgstr ""
+
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
 msgstr ""
 
 msgid "Specifies the username which the service will run as."
@@ -3657,6 +3677,10 @@ msgid "The attribute '%s' is no valid subnet mask."
 msgstr ""
 
 #, c-format
+msgid "The attribute '%s' is no valid time."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' is required."
 msgstr "Oznaka '%s' je potrebna."
 
@@ -3765,6 +3789,9 @@ msgstr ""
 "Pogon je trnutno priklopljen! Za izvršitev izbranega ukaza, bo točka "
 "priklopa začasno odstranjena."
 
+msgid "The disk/partition is already configured."
+msgstr ""
+
 #, php-format
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
@@ -3829,6 +3856,13 @@ msgid ""
 msgstr ""
 "Najnižje število vrat za PASV povezave (0 = uporabi katerakoli vrata)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+
 msgid "The name or IP address of the LDAP server."
 msgstr ""
 
@@ -3879,9 +3913,6 @@ msgid "The size of the swap file in MB."
 msgstr ""
 
 msgid "The subject of the email."
-msgstr ""
-
-msgid "The swap file is using this mount point."
 msgstr ""
 
 msgid ""
@@ -4043,9 +4074,6 @@ msgstr "Ta naprava že obstaja v seznamu RAID polja."
 msgid "This disk already exists in the disk list."
 msgstr "Ta disk je že na seznamu."
 
-msgid "This disk/partition is already configured."
-msgstr ""
-
 msgid "This email has been send to validate your email configuration."
 msgstr ""
 
@@ -4174,6 +4202,11 @@ msgid ""
 "files."
 msgstr ""
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4196,6 +4229,9 @@ msgstr ""
 msgid ""
 "This parameter specifies the suffix that is used for users when these are "
 "added to the LDAP directory, e.g. %s"
+msgstr ""
+
+msgid "This rule is triggered whenever the selected event directive occurs."
 msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -4222,6 +4258,9 @@ msgstr ""
 
 msgid "Time"
 msgstr "Čas"
+
+msgid "Time interval"
+msgstr ""
 
 msgid "Time server"
 msgstr "Časovni strežnik"
@@ -4741,6 +4780,9 @@ msgstr "zrcaljenje"
 msgid "months"
 msgstr "mesecev"
 
+msgid "mount"
+msgstr ""
+
 msgid "mswindows"
 msgstr ""
 
@@ -4781,6 +4823,9 @@ msgid "sysctl.conf"
 msgstr ""
 
 msgid "umask"
+msgstr ""
+
+msgid "umount"
 msgstr ""
 
 msgid "upriv"
