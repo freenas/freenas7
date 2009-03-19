@@ -220,7 +220,7 @@ sajax_handle_client_request();
 									$percent_used = rtrim($diskusagev['capacity'],"%");
 
 									$caption = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
-									$caption_detailed = sprintf(gettext("Disk capacity: <b>%s</b> | Free: <b>%s</b> | Used: <b>%s</b>"), $diskusagev['size'], $diskusagev['avail'], $diskusagev['used']);
+									$caption_detailed = sprintf(gettext("Disk capacity: %s | Used: %s | Free: %s"), "<b>{$diskusagev['size']}</b>", "<b>{$diskusagev['used']}</b>", "<b>{$diskusagev['avail']}</b>");
 									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 
