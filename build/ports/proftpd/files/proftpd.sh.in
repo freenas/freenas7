@@ -20,8 +20,8 @@ load_rc_config "$name"
 
 # Custom commands
 extra_commands="mkconf"
-mkconf_cmd="mkconf_cmd"
-start_precmd="mkconf_cmd"
+mkconf_cmd="proftpd_mkconf"
+start_precmd="proftpd_mkconf"
 
 # Defaults
 proftpd_enable=${proftpd_enable:-"NO"}
@@ -70,7 +70,7 @@ command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
 pidfile="/var/run/${name}.pid"
 
-mkconf_cmd()
+proftpd_mkconf()
 {
 	local _welcomemsg _productname _certificate _privatekey _tmpfile
 

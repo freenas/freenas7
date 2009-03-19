@@ -22,7 +22,7 @@ load_rc_config "${name}"
 extra_commands="mkconf"
 start_precmd="nut_prestart"
 stop_postcmd="nut_poststop"
-mkconf_cmd="mkconf_cmd"
+mkconf_cmd="nut_mkconf"
 
 # Defaults
 nut_enable=${nut_enable:-"NO"}
@@ -43,7 +43,7 @@ required_files="${nut_ups_conf} ${nut_upsd_conf} ${nut_upsd_users}"
 command="${nut_prefix}/sbin/upsd"
 pidfile="/var/run/upsd.pid"
 
-mkconf_cmd()
+nut_mkconf()
 {
 	local _if _ip
 
@@ -113,6 +113,6 @@ nut_poststop() {
 mkdir -m 0600 ${nut_statedir} 2>/dev/null
 
 # Create required config file
-mkconf_cmd
+nut_mkconf
 
 run_rc_command "$1"

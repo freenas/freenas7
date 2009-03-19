@@ -19,7 +19,7 @@ load_rc_config "${name}"
 
 # Custom commands
 extra_commands="mkconf"
-mkconf_cmd="mkconf_cmd"
+mkconf_cmd="nut_upsmon_mkconf"
 
 # Defaults
 nut_upsmon_enable=${nut_upsmon_enable:-"NO"}
@@ -46,7 +46,7 @@ required_files="${nut_upsmon_conf}"
 command="${nut_upsmon_prefix}/sbin/upsmon"
 pidfile="/var/run/upsmon.pid"
 
-mkconf_cmd()
+nut_upsmon_mkconf()
 {
 	local _shutdownmode _shutdowntimer
 
@@ -123,6 +123,6 @@ EOF
 }
 
 # Create required config file
-mkconf_cmd
+nut_upsmon_mkconf
 
 run_rc_command "$1"

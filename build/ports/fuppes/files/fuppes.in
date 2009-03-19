@@ -18,11 +18,11 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="start_precmd"
-stop_postcmd="stop_postcmd"
-rebuilddb_cmd="dboptions_cmd"
-updatedb_cmd="dboptions_cmd"
-rebuildvcont_cmd="dboptions_cmd"
+start_precmd="fuppes_prestart"
+stop_postcmd="fuppes_poststop"
+rebuilddb_cmd="fuppes_dboptions"
+updatedb_cmd="fuppes_dboptions"
+rebuildvcont_cmd="fuppes_dboptions"
 extra_commands="rebuilddb updatedb rebuildvcont"
 
 # Defaults
@@ -44,7 +44,7 @@ command_args="--config-dir ${fuppes_configdir} --config-file ${fuppes_config} --
 # Set kill signal to KILL, otherwise fuppes takes too long to terminate.
 sig_stop=${sig_stop-"KILL"}
 
-start_precmd()
+fuppes_prestart()
 {
 	local _if _port _name _profile _deviceip _command_args
 
@@ -457,7 +457,7 @@ EOF
 	command_args="${command_args} ${_command_args}"
 }
 
-stop_postcmd()
+fuppes_poststop()
 {
 	# Delete multicast route.
 	/sbin/route delete -net 239.0.0.0 >/dev/null 2>&1
@@ -466,7 +466,7 @@ stop_postcmd()
 # Command to
 # - rebuild/update database
 # - rebuild virtual container
-dboptions_cmd()
+fuppes_dboptions()
 {
 	local _if _port _ip _param
 

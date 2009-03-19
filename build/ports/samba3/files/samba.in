@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: nmbd smbd winbindd
@@ -25,7 +25,7 @@ stop_cmd="samba_cmd"
 status_cmd="samba_cmd"
 reload_cmd="samba_reload_cmd"
 rcvar_cmd="samba_rcvar_cmd"
-mkconf_cmd="mkconf_cmd"
+mkconf_cmd="samba_mkconf_cmd"
 
 # Defaults
 samba_enable="${samba_enable:=NO}"
@@ -92,7 +92,7 @@ winbindd_flags="${winbindd_flags=''}"
 required_files="${samba_config}"
 required_dirs="${samba_lockdir}"
 
-mkconf_cmd()
+samba_mkconf_cmd()
 {
 	# Create smb.conf file
 	/usr/local/bin/xml sel -t \
@@ -358,6 +358,6 @@ samba_cmd() {
 }
 
 # Create required config file
-mkconf_cmd
+samba_mkconf_cmd
 
 run_rc_command "$1"
