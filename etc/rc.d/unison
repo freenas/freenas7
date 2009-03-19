@@ -17,15 +17,15 @@ load_rc_config "$name"
 
 # Custom commands
 extra_commands="status"
-start_cmd="start_cmd"
+start_cmd="unison_start"
 stop_cmd=":"
-status_cmd="status_cmd"
+status_cmd="unison_status"
 
 # Defaults
 unison_enable="${unison_enable:=NO}"
 unison_config=${unison_config:-"/etc/login.conf"}
 
-start_cmd()
+unison_start()
 {
 	local _makedir _workdir
 
@@ -55,7 +55,7 @@ start_cmd()
 	mv -f ${unison_config}.tmp ${unison_config}
 }
 
-status_cmd()
+unison_status()
 {
 	# Nothing to do here, but keep empty implementation
 }

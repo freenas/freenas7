@@ -8,10 +8,14 @@
 . /etc/rc.subr
 
 name="system_init"
-stop_cmd=":"
-start_cmd="start_cmd"
 
-start_cmd()
+load_rc_config "${name}"
+
+# Custom commands
+stop_cmd=":"
+start_cmd="system_init_start"
+
+system_init_start()
 {
 	# If firmware.lock file exists, delete it (otherwise all WebGUI pages will be redirected to upgrade page).
 	if [ -f "/var/run/firmware.lock" ]; then
@@ -23,5 +27,4 @@ start_cmd()
 	return $?
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

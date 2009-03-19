@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: clog
@@ -10,7 +10,7 @@
 
 name="clog"
 
-load_rc_config $name
+load_rc_config "$name"
 
 # Defaults
 clog_logdir=${clog_logdir:-"/var/log"}

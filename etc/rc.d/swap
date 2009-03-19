@@ -21,9 +21,9 @@ load_rc_config "${name}"
 
 # Custom commands
 extra_commands="status"
-start_cmd="start_cmd"
-stop_cmd="stop_cmd"
-status_cmd="status_cmd"
+start_cmd="swap_start"
+stop_cmd="swap_stop"
+status_cmd="swap_status"
 
 # Defaults
 swap_enable="${swap_enable:-NO}"
@@ -33,7 +33,7 @@ swap_filename=${swap_filename:-".swapfile"}
 # Get type of swap, 'file' or 'device'
 swap_type=`configxml_get "//system/swap/type"`
 
-status_cmd()
+swap_status()
 {
 	local _mdid _device
 
@@ -54,7 +54,7 @@ status_cmd()
 	fi
 }
 
-start_cmd()
+swap_start()
 {
 	local _mdid _uuid _sharename _filename _size _device
 
@@ -92,7 +92,7 @@ start_cmd()
 	/sbin/swapon "${_device}"
 }
 
-stop_cmd()
+swap_stop()
 {
 	local _mdid _uuid _sharename _filename _device _result
 

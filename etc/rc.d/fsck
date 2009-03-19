@@ -16,6 +16,8 @@
 . /etc/configxml.subr
 
 name="fsck"
+
+# Custom commands
 extra_commands="root"
 start_cmd="fsck_start"
 stop_cmd=":"

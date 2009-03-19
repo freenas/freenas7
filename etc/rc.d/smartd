@@ -18,8 +18,8 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="mkconf_cmd"
-mkconf_cmd="mkconf_cmd"
+start_precmd="smartd_mkconf"
+mkconf_cmd="smartd_mkconf"
 extra_commands="mkconf"
 
 # Defaults
@@ -35,7 +35,7 @@ if [ -n "${_interval}" ]; then
 	command_args="${command_args} --interval=${_interval}"
 fi
 
-mkconf_cmd()
+smartd_mkconf()
 {
 	local _devicespecialfile _type _param _powermode _email _tmp
 

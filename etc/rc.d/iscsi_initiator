@@ -17,15 +17,15 @@ rcvar=`set_rcvar`
 load_rc_config "$name"
 
 # Custom commands
-start_precmd="start_precmd"
-start_cmd="start_cmd"
-stop_cmd="stop_cmd"
+start_precmd="iscsi_initiator_prestart"
+start_cmd="iscsi_initiator_start"
+stop_cmd="iscsi_initiator_stop"
 
 # Defaults
 iscsi_initiator_enable="${iscsi_initiator_enable:=NO}"
 command="/usr/local/sbin/iscontrol"
 
-start_precmd()
+iscsi_initiator_prestart()
 {
 	# Load kernel module
 	load_kld -e iscsi_initiator -m iscsi_initiator iscsi_initiator.ko
@@ -34,7 +34,7 @@ start_precmd()
 	/sbin/sysctl debug.iscsi=0 > /dev/null
 }
 
-start_cmd()
+iscsi_initiator_start()
 {
 	local _command_args
 
@@ -50,7 +50,7 @@ start_cmd()
 		done
 }
 
-stop_cmd()
+iscsi_initiator_stop()
 {
 	echo "Stopping ${name}."
 	/usr/bin/killall iscontrol

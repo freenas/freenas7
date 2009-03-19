@@ -25,13 +25,13 @@ pidfile="/var/run/${name}.pid"
 mountd_config=${mountd_config:-"/var/etc/exports"}
 required_files="${mountd_config}"
 start_precmd="mountd_precmd"
-mkconf_cmd="mkconf_cmd"
+mkconf_cmd="mountd_mkconf"
 extra_commands="reload mkconf"
 
 # Clear existing file
 cat /dev/null > ${mountd_config}
 
-mkconf_cmd()
+mountd_mkconf()
 {
 	local _index _ipaddr _network _mask
 
@@ -61,7 +61,7 @@ mkconf_cmd()
 
 mountd_precmd()
 {
-	mkconf_cmd
+	mountd_mkconf
 
 	if ! checkyesno rpcbind_enable  && \
 	    ! /etc/rc.d/rpcbind forcestatus 1>/dev/null 2>&1
