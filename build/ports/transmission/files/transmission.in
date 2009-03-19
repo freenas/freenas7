@@ -18,8 +18,8 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="start_precmd"
-updateblocklist_cmd="updateblocklist_cmd"
+start_precmd="transmission_prestart"
+updateblocklist_cmd="transmission_updateblocklist"
 extra_commands="updateblocklist"
 
 # Defaults
@@ -34,7 +34,7 @@ transmission_suopt=${transmission_suopt:-"-l"}
 command="/usr/local/bin/${name}-daemon"
 command_args="--allowed ${transmission_allowed}"
 
-start_precmd()
+transmission_prestart()
 {
 	local _command_args
 
@@ -59,7 +59,7 @@ start_precmd()
 	command_args="${command_args} ${_command_args}"
 }
 
-updateblocklist_cmd()
+transmission_updateblocklist()
 {
 	local _configdir _md5 _file
 

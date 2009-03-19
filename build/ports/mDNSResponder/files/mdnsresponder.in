@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 #
 # Service types definition: http://www.dns-sd.org/ServiceTypes.html
@@ -16,9 +16,11 @@
 name="mdnsresponder"
 rcvar=`set_rcvar`
 
+load_rc_config "${name}"
+
 # Custom commands
-start_precmd="mkconf_cmd"
-mkconf_cmd="mkconf_cmd"
+start_precmd="mdnsresponder_mkconf"
+mkconf_cmd="mdnsresponder_mkconf"
 extra_commands="mkconf"
 
 # Defaults
@@ -27,7 +29,7 @@ command="/usr/local/sbin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 pidfile="/var/run/mDNSResponder.pid"
 
-mkconf_cmd()
+mdnsresponder_mkconf()
 {
 	echo "# mDNSResponderPosix configuration File
 #
@@ -121,5 +123,4 @@ mkconf_cmd()
 		${configxml_file} | /usr/local/bin/xml unesc >> ${mdnsresponder_config}
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

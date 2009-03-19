@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: mt-daapd
@@ -17,7 +17,7 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="start_precmd"
+start_precmd="mtdaapd_prestart"
 
 # Defaults
 mtdaapd_enable=${mtdaapd_enable:-"NO"}
@@ -60,7 +60,7 @@ mtdaapd_plugin_dir=${mtdaapd_plugin_dir:-"/usr/local/share/mt-daapd/plugins"}
 command="/usr/local/sbin/mt-daapd"
 command_args="-m -c ${mtdaapd_config}"
 
-start_precmd()
+mtdaapd_prestart()
 {
 	local _port _dbparms _mp3dir _rescaninterval _alwaysscan _scantype _servername _admin_pw
 

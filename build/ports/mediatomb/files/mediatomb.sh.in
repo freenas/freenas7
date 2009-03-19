@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: mediatomb
@@ -17,8 +17,8 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="start_precmd"
-stop_postcmd="stop_postcmd"
+start_precmd="mediatomb_prestart"
+stop_postcmd="mediatomb_poststop"
 
 # Defaults
 mediatomb_enable=${mediatomb_enable-"NO"}
@@ -34,7 +34,7 @@ pidfile="${mediatomb_pidfile}"
 command="/usr/local/bin/${name}"
 command_args="--daemon --cfgdir ${mediatomb_cfgdir} --config ${mediatomb_config} --logfile ${mediatomb_logfile} --user ${mediatomb_mtuser} --group ${mediatomb_mtgroup} --pidfile ${mediatomb_pidfile}"
 
-start_precmd()
+mediatomb_prestart()
 {
 	local _if _name _home _profile _command_args
 
@@ -69,13 +69,13 @@ start_precmd()
 	echo '<storage driver="sqlite3">' >> ${mediatomb_config}
 	echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
 	echo '</storage>' >> ${mediatomb_config}
-	if [ "PS3" = "${_profile}" ]; then 		
+	if [ "PS3" = "${_profile}" ]; then
 		echo '<protocolInfo extend="yes"/>' >> ${mediatomb_config} # Adds specific tags to the protocolInfo attribute, this is required to enable MP3 and MPEG4 playback on Playstation 3.
 	fi
-	if [ "Telegent_TG100" = "${_profile}" ]; then 		
+	if [ "Telegent_TG100" = "${_profile}" ]; then
 		echo '<upnp-string-limit>101</upnp-string-limit>' >> ${mediatomb_config} # The Telegent TG100 client has a problem browsing containers, where item titles exceed 101 characters.
 	fi
-	if [ "ZyXEL_DMA1000" = "${_profile}" ]; then 		
+	if [ "ZyXEL_DMA1000" = "${_profile}" ]; then
 		echo '<alive>600</alive>' >> ${mediatomb_config} # Incresing the alive interval seems to solve the “Failed to retrieve list” error.
 	fi
 	if [ "DLink_DSM320" = "${_profile}" ]; then
@@ -162,7 +162,7 @@ start_precmd()
 	command_args="${command_args} ${_command_args}"
 }
 
-stop_postcmd()
+mediatomb_poststop()
 {
 	# Delete multicast route.
 	/sbin/route delete -net 239.0.0.0 >/dev/null 2>&1

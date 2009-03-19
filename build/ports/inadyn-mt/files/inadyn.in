@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: inadyn
@@ -17,7 +17,7 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="start_precmd"
+start_precmd="inadyn_prestart"
 
 # Defaults
 inadyn_enable=${inadyn_enable:-"NO"}
@@ -25,7 +25,7 @@ inadyn_config=${inadyn_config:-"/var/etc/${name}.conf"}
 command="/usr/local/bin/${name}"
 command_args="--input_file ${inadyn_config} > /dev/null"
 
-start_precmd()
+inadyn_prestart()
 {
 	local _alias
 
