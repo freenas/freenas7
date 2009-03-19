@@ -10,6 +10,10 @@
 . /etc/configxml.subr
 
 name="geli"
+
+load_rc_config "$name"
+
+# Custom commands
 start_cmd="geli_start"
 stop_cmd="geli_stop"
 
@@ -47,5 +51,4 @@ geli_stop()
 	done
 }
 
-load_rc_config $name
 run_rc_command "$1"

@@ -24,12 +24,12 @@ stop_cmd="routing_stop"
 extra_commands="options static mkconf delete"
 static_cmd="static_start"
 options_cmd="options_start"
-mkconf_cmd="mkconf_cmd"
-delete_cmd="delete_cmd"
+mkconf_cmd="routing_mkconf"
+delete_cmd="routing_delete"
 
 routing_start()
 {
-	mkconf_cmd
+	routing_mkconf
 
 	# Force reloading of rc.conf file
 	_rc_conf_loaded=false
@@ -44,7 +44,7 @@ routing_stop()
 	route -n flush
 }
 
-delete_cmd()
+routing_delete()
 {
 	local _route_id _route_args
 
@@ -65,7 +65,7 @@ delete_cmd()
 	/usr/local/sbin/rconf attribute set "static_routes" "${static_routes}"
 }
 
-mkconf_cmd()
+routing_mkconf()
 {
 	local _index _uuid _route_id _network _gateway _protocol
 

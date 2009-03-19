@@ -18,8 +18,8 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="mkconf_cmd"
-mkconf_cmd="mkconf_cmd"
+start_precmd="afpd_mkconf"
+mkconf_cmd="afpd_mkconf"
 extra_commands="mkconf"
 
 # Defaults
@@ -30,7 +30,7 @@ afpd_avsystem=${afpd_avsystem:-"/var/etc/AppleVolumes.system"}
 command="/usr/local/sbin/${name}"
 command_args="-F ${afpd_config}"
 
-mkconf_cmd()
+afpd_mkconf()
 {
 	# Create config file
 	/usr/local/bin/xml sel -t -m "//afp" \

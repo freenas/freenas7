@@ -22,10 +22,10 @@ command="/usr/sbin/${name}"
 command_args="-f ${syslogd_config}"
 
 # Custom commands
-start_precmd="start_precmd"
+start_precmd="syslogd_prestart"
 extra_commands="reload mkconf"
-reload_precmd="reload_precmd"
-mkconf_cmd="mkconf_cmd"
+reload_precmd="syslogd_prereload"
+mkconf_cmd="syslogd_mkconf"
 
 # Check if syslog'ing to remote syslog server is disabled
 if ! configxml_isset //syslogd/remote/enable; then
@@ -33,7 +33,7 @@ if ! configxml_isset //syslogd/remote/enable; then
 	command_args="-f ${syslogd_config}"
 fi
 
-mkconf_cmd()
+syslogd_mkconf()
 {
 	echo "local3.* %/var/log/sshd.log
 local4.* %/var/log/rsyncd.log
@@ -67,18 +67,18 @@ auth.info;authpriv.info %/var/log/system.log
 		${configxml_file} | /usr/local/bin/xml unesc >> ${syslogd_config}
 }
 
-reload_precmd()
+syslogd_prereload()
 {
 	# Clear existing file
 	cat /dev/null > ${syslogd_config}
 
 	# Create configuration file
-	mkconf_cmd
+	syslogd_mkconf
 }
 
-start_precmd()
+syslogd_prestart()
 {
-	reload_precmd
+	syslogd_prereload
 }
 
 run_rc_command "$1"

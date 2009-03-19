@@ -17,8 +17,8 @@ rcvar=`set_rcvar`
 load_rc_config "$name"
 
 # Custom commands
-start_precmd="mkconf_cmd"
-mkconf_cmd="mkconf_cmd"
+start_precmd="iscsi_target_mkconf"
+mkconf_cmd="iscsi_target_mkconf"
 extra_commands="mkconf"
 
 # Defaults
@@ -30,7 +30,7 @@ command="/usr/local/bin/iscsi-target"
 command_args="-f ${iscsi_target_config}"
 pidfile="/var/run/iscsi-target.pid"
 
-mkconf_cmd()
+iscsi_target_mkconf()
 {
 	# Clear existing file
 	cat /dev/null > ${iscsi_target_config}

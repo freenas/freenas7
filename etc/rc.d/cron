@@ -26,8 +26,8 @@ cron_tabspath=${cron_tabspath:-"/var/cron/tabs"}
 cron_allow=${cron_allow:-"/var/cron/allow"}
 
 # Custom commands
-start_precmd="mkconf_cmd"
-mkconf_cmd="mkconf_cmd"
+start_precmd="cron_mkconf"
+mkconf_cmd="cron_mkconf"
 extra_commands="mkconf"
 
 # crontab_allowuser [user]
@@ -74,7 +74,7 @@ HOME=/var/log
 	fi
 }
 
-mkconf_cmd()
+cron_mkconf()
 {
 	local _index _user _data
 

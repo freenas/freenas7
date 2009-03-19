@@ -18,12 +18,13 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="mkconf_cmd"
-stop_postcmd=stop_postcmd
-restart_precmd="checkconfig"
-reload_precmd=reload_precmd
-reload_postcmd=reload_postcmd
-mkconf_cmd="mkconf_cmd"
+start_precmd="websrv_mkconf"
+stop_postcmd="websrv_poststop"
+restart_precmd="websrv_check"
+reload_precmd="websrv_prereload"
+reload_postcmd="websrv_postreload"
+mkconf_cmd="websrv_mkconf"
+check_cmd="websrv_check"
 extra_commands="reload check mkconf"
 
 # Defaults
@@ -35,9 +36,8 @@ command=/usr/local/sbin/lighttpd
 command_args="-f ${websrv_conf} -m /usr/local/lib/lighttpd"
 pidfile=/var/run/websrv.pid
 sig_reload="-INT"
-check_cmd="checkconfig"
 
-mkconf_cmd()
+websrv_mkconf()
 {
 	local _protocol _certificate _privatekey _documentroot
 
@@ -172,23 +172,23 @@ EOF
 	fi
 }
 
-checkconfig()
+websrv_check()
 {
 	echo "Performing sanity check on ${name} configuration:"
 	eval "${command} ${command_args} -t"
 }
 
-stop_postcmd()
+websrv_poststop()
 {
 	rm -f ${pidfile}
 }
 
-reload_precmd()
+websrv_prereload()
 {
 	echo "Stopping ${name} and starting gracefully."
 }
 
-reload_postcmd()
+websrv_postreload()
 {
 	rm -f ${pidfile}
 	run_rc_command start

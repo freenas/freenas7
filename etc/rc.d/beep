@@ -10,10 +10,12 @@
 . /etc/configxml.subr
 
 name="beep"
-start_cmd="start_cmd"
-stop_cmd="stop_cmd"
 
-start_cmd()
+# Custom commands
+start_cmd="beep_start"
+stop_cmd="beep_stop"
+
+beep_start()
 {
 	if ! configxml_isset //system/disablebeep; then
 		if [ -e /dev/speaker ]; then
@@ -22,7 +24,7 @@ start_cmd()
 	fi
 }
 
-stop_cmd()
+beep_stop()
 {
 	if ! configxml_isset //system/disablebeep; then
 		if [ -e /dev/speaker ]; then

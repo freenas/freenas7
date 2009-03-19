@@ -10,7 +10,7 @@
 
 name="clog"
 
-load_rc_config $name
+load_rc_config "$name"
 
 # Defaults
 clog_logdir=${clog_logdir:-"/var/log"}

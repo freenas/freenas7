@@ -25,18 +25,19 @@ rcvar="firewall_enable"
 
 load_rc_config "$name"
 
+# Custom commands
 start_cmd="ipfw_start"
 start_precmd="ipfw_precmd"
 stop_cmd="ipfw_stop"
-status_cmd="status_cmd"
-mkconf_cmd="mkconf_cmd"
+status_cmd="ipfw_status"
+mkconf_cmd="ipfw_mkconf"
 extra_commands="status mkconf"
 
 # Defaults
 firewall_script_auxrules=${firewall_script_auxrules:-"/etc/rc.firewall.auxrules"}
 firewall_verbose_limit=${firewall_verbose_limit:-"5"}
 
-status_cmd()
+ipfw_status()
 {
 	if ${SYSCTL} net.inet.ip.fw.enable > /dev/null 2>&1; then
 		echo "${name} is running."
@@ -46,7 +47,7 @@ status_cmd()
 	fi
 }
 
-mkconf_cmd()
+ipfw_mkconf()
 {
 	# Clean the rules file
 	cat /dev/null > ${firewall_script_auxrules}
@@ -75,7 +76,7 @@ mkconf_cmd()
 
 ipfw_precmd()
 {
-	mkconf_cmd
+	ipfw_mkconf
 
 	if ! ${SYSCTL} net.inet.ip.fw.enable > /dev/null 2>&1; then
 		if ! kldload ipfw; then

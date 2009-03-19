@@ -13,9 +13,11 @@
 name="msntp"
 rcvar=`set_rcvar`
 
+load_rc_config "${name}"
+
 # Custom commands
-start_precmd="start_precmd"
-stop_postcmd="stop_postcmd"
+start_precmd="msntp_prestart"
+stop_postcmd="msntp_poststop"
 
 # Defaults
 msntp_enable="${msntp_enable:=NO}"
@@ -23,7 +25,7 @@ pidfile="/var/run/${name}.pid"
 command="/usr/local/bin/${name}"
 command_args="-r -P no -l ${pidfile} -x"
 
-start_precmd()
+msntp_prestart()
 {
 	local _cmdarg
 
@@ -36,11 +38,10 @@ start_precmd()
 	command_args="${command_args} ${_cmdarg} &"
 }
 
-stop_postcmd()
+msntp_poststop()
 {
 	# Remove 'pidfile' because this is not done automatically
 	rm -f ${pidfile}
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

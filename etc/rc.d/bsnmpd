@@ -20,8 +20,8 @@ rcvar=`set_rcvar`
 load_rc_config "$name"
 
 # Custom commands
-start_precmd="mkconf_cmd"
-mkconf_cmd="mkconf_cmd"
+start_precmd="bsnmpd_mkconf"
+mkconf_cmd="bsnmpd_mkconf"
 extra_commands="mkconf"
 
 # Defaults
@@ -31,7 +31,7 @@ pidfile="/var/run/snmpd.pid"
 command="/usr/sbin/${name}"
 command_args="-c ${bsnmpd_config} -p ${pidfile}"
 
-mkconf_cmd()
+bsnmpd_mkconf()
 {
 	# Get some system information
 	hw_machine=`/sbin/sysctl -n hw.machine`
