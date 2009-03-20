@@ -86,6 +86,7 @@ function update_swapusage(value) {
 		if (document.getElementById("swapusagec_" + value[i].id) == null)
 			return;
 		document.getElementById("swapusagec_" + value[i].id).value = value[i].caption;
+		document.getElementById("swapusagecd_" + value[i].id).innerHTML = value[i].caption_detailed;
 		document.getElementById("swapusageu_" + value[i].id).style.width = value[i].percentage + 'px';
 		document.getElementById("swapusageu_" + value[i].id).title = value[i]['tooltip'].used;
 		document.getElementById("swapusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';
