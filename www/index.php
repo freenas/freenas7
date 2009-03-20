@@ -168,24 +168,25 @@ sajax_handle_client_request();
 						<table width="100%" border="0" cellspacing="0" cellpadding="1">
 							<?php
 							$fsid = 0;
-							foreach ($swapinfo as $swap) {
-								echo "<tr><td>";
-								echo htmlspecialchars($swap['device']);
-								echo "</td><td>";
-
+							foreach ($swapinfo as $swapk => $swapv) {
 								$fsid++;
-								$percent_used = rtrim($swap['capacity'],"%");
+								$percent_used = rtrim($swapv['capacity'], "%");
+								$caption = sprintf(gettext("%s of %sB"), $swapv['capacity'], $swapv['total']);
+								$caption_detailed = sprintf(gettext("Device: %s | Total: %s | Used: %s | Free: %s"), "<b>{$swapv['device']}</b>", "<b>{$swapv['total']}</b>", "<b>{$swapv['used']}</b>", "<b>{$swapv['avail']}</b>");
+								$tooltip_used = sprintf(gettext("%sB used of %sB"), $swapv['used'], $swapv['total']);
+								$tooltip_available = sprintf(gettext("%sB available of %sB"), $swapv['avail'], $swapv['total']);
 
-								$caption = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
-								$tooltip_used = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
-								$tooltip_available = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
-
+								echo "<tr><td>";
 								echo "<img src='bar_left.gif' height='15' width='4' border='0' align='texttop'>";
 								echo "<img src='bar_blue.gif' name='swapusageu_{$fsid}' id='swapusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='texttop' title='{$tooltip_used}'>";
 								echo "<img src='bar_gray.gif' name='swapusagef_{$fsid}' id='swapusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='texttop' title='{$tooltip_available}'>";
 								echo "<img src='bar_right.gif' height='15' width='5' border='0' align='texttop'> ";
-								echo "<input style='padding: 0; border: 0;' size='30' name='swapusagec_{$fsid}' id='swapusagec_{$fsid}' value='{$caption}'/>";
-								echo "<br/></td></tr>";
+								echo "<input style='padding: 0; border: 0;' size='30' name='swapusagec_{$fsid}' id='swapusagec_{$fsid}' value='{$caption}'/><br/>";
+								echo "<span name='swapusagecd_{$fsid}' id='swapusagecd_{$fsid}'>{$caption_detailed}</span>";
+								echo "</td></tr>";
+
+								if ($fsid < count($swapinfo))
+										echo "<tr><td><hr></td></tr>";
 							}?>
 						</table>
 					</td>
@@ -208,22 +209,17 @@ sajax_handle_client_request();
 				    <table width="100%" border="0" cellspacing="0" cellpadding="1">
 				      <?php
 				      $a_diskusage = system_get_mount_usage();
-				      $a_mount = get_mounts_list();
 				      if (is_array($a_diskusage) && (0 < count($a_diskusage))) {
+				      	$index = 0;
 								foreach ($a_diskusage as $diskusagek => $diskusagev) {
-									echo "<tr><td>";
-									$index = array_search_ex($diskusagev['filesystem'], $a_mount, "devicespecialfile");
-									echo htmlspecialchars($a_mount[$index]['sharename']);
-									echo "</td><td>";
-
 									$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
 									$percent_used = rtrim($diskusagev['capacity'],"%");
-
 									$caption = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
-									$caption_detailed = sprintf(gettext("Disk capacity: %s | Used: %s | Free: %s"), "<b>{$diskusagev['size']}</b>", "<b>{$diskusagev['used']}</b>", "<b>{$diskusagev['avail']}</b>");
+									$caption_detailed = sprintf(gettext("Name: %s | Total: %s | Used: %s | Free: %s"), "<b>{$diskusagev['name']}</b>", "<b>{$diskusagev['size']}</b>", "<b>{$diskusagev['used']}</b>", "<b>{$diskusagev['avail']}</b>");
 									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 
+									echo "<tr><td>";
 									echo "<img src='bar_left.gif' height='15' width='4' border='0' align='texttop'>";
 									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='texttop' title='{$tooltip_used}'>";
 									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='texttop' title='{$tooltip_available}'>";
@@ -231,6 +227,9 @@ sajax_handle_client_request();
 									echo "<input style='padding: 0; border: 0;' size='30' name='diskusagec_{$fsid}' id='diskusagec_{$fsid}' value='{$caption}'/><br/>";
 									echo "<span name='diskusagecd_{$fsid}' id='diskusagecd_{$fsid}'>{$caption_detailed}</span>";
 									echo "</td></tr>";
+
+									if (++$index < count($a_diskusage))
+										echo "<tr><td><hr></td></tr>";
 								}
 							} else {
 								echo gettext("No disk configured");

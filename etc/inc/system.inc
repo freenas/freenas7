@@ -270,10 +270,10 @@ function system_get_swap_info() {
 	$swapinfo = array();
 
 	foreach ($swap as $swapv) {
-		if (preg_match("/(.*)(?:\s+)(\d+)(?:\s+)(\d+)(?:\s+)(\d+)(?:\s)(.+)/", $swapv, $matches)) {
+		if (preg_match("/(\/dev\/.*)(?:\s+)(\d+)(?:\s+)(\d+)(?:\s+)(\d+)(?:\s)(.+)/", $swapv, $matches)) {
 			$devswap = array();
-			$devswap['device']  = trim($matches[1]);
-			$devswap['total']  = decode_size(trim($matches[2])*$val);
+			$devswap['device'] = trim($matches[1]);
+			$devswap['total'] = decode_size(trim($matches[2])*$val);
 			$devswap['used'] = decode_size(trim($matches[3])*$val);
 			$devswap['avail'] = decode_size(trim($matches[4])*$val);
 			$devswap['capacity'] = trim($matches[5]);
@@ -297,7 +297,9 @@ function system_get_hostname() {
  * Get mount point usage information.
  * @return An array containg the requested informations:
  * @code
- * [mount_point_name] => array(
+ * [mountpoint] => array(
+ *   [mountpoint] => /mnt/xyz
+ *   [name] => xyz
  *   [filesystem] => /dev/ad0a
  *   [capacity] => 48%
  *   [used] => 2.4G
@@ -326,6 +328,8 @@ function system_get_mount_usage() {
 			foreach ($config['mounts']['mount'] as $mountcfg) {
 				if (0 == strcmp($mountpoint, "{$g['media_path']}/{$mountcfg['sharename']}")) {
 					$result[$mountpoint] = array();
+					$result[$mountpoint]['mountpoint'] = $mountpoint;
+					$result[$mountpoint]['name'] = $mountcfg['sharename'];
 					$result[$mountpoint]['filesystem'] = $filesystem;
 					$result[$mountpoint]['capacity'] = $capacity;
 					$result[$mountpoint]['avail'] = $avail;
@@ -378,7 +382,7 @@ function system_get_sysinfo() {
 			$diskinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 			$diskinfo['tooltip']['available'] = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 			$diskinfo['caption'] = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
-			$diskinfo['caption_detailed'] = sprintf(gettext("Disk capacity: %s | Used: %s | Free: %s"), "<b>{$diskusagev['size']}</b>", "<b>{$diskusagev['used']}</b>", "<b>{$diskusagev['avail']}</b>");
+			$diskinfo['caption_detailed'] = sprintf(gettext("Name: %s | Total: %s | Used: %s | Free: %s"), "<b>{$diskusagev['name']}</b>", "<b>{$diskusagev['size']}</b>", "<b>{$diskusagev['used']}</b>", "<b>{$diskusagev['avail']}</b>");
 			$value['diskusage'][] = $diskinfo;
 		}
 	}
@@ -387,14 +391,15 @@ function system_get_sysinfo() {
 	$swapinfo = system_get_swap_info();
 	if (is_array($swapinfo) && (0 < count($swapinfo))) {
 		$id = 0;
-		foreach ($swapinfo as $swap) {
+		foreach ($swapinfo as $swapv) {
 			$id++;
 			$devswap = array();
 			$devswap['id']  = $id;
-			$devswap['percentage']  = rtrim($swap['capacity'],"%");
-			$devswap['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
-			$devswap['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
-			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
+			$devswap['percentage']  = rtrim($swapv['capacity'],"%");
+			$devswap['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swapv['used'], $swapv['total']);
+			$devswap['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swapv['avail'], $swapv['total']);
+			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swapv['capacity'], $swapv['total']);
+			$devswap['caption_detailed'] = sprintf(gettext("Device: %s | Total: %s | Used: %s | Free: %s"), "<b>{$swapv['device']}</b>", "<b>{$swapv['total']}</b>", "<b>{$swapv['used']}</b>", "<b>{$swapv['avail']}</b>");
 			$value['swapusage'][]= $devswap;
 		}
 	}
