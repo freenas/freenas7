@@ -186,7 +186,7 @@ sajax_handle_client_request();
 								echo "</td></tr>";
 
 								if ($fsid < count($swapinfo))
-										echo "<tr><td><hr></td></tr>";
+										echo "<tr><td><hr size='1'></td></tr>";
 							}?>
 						</table>
 					</td>
@@ -229,7 +229,7 @@ sajax_handle_client_request();
 									echo "</td></tr>";
 
 									if (++$index < count($a_diskusage))
-										echo "<tr><td><hr></td></tr>";
+										echo "<tr><td><hr size='1'></td></tr>";
 								}
 							} else {
 								echo gettext("No disk configured");
