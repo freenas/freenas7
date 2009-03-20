@@ -55,6 +55,7 @@ Majors changes:
   http://lists.alioth.debian.org/pipermail/nut-upsuser/2009-February/004862.html
   for a detailed explanation.
 - Upgrade transmission to 1.51.
+- Upgrade fusefs-ntfs/ntfs-3g to 2009.2.1.
 
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.
