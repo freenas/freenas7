@@ -75,8 +75,8 @@ update_sources() {
 
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Update sources" --checklist "Please select what to update." 10 60 3 \
-		"freebsd-update" "Fetch and install binary updates" OFF \
 		"cvsup" "Update source tree" OFF \
+		"freebsd-update" "Fetch and install binary updates" OFF \
 		"portsnap" "Update ports collection" OFF \
 		"portupgrade" "Upgrade ports on host" OFF 2> $tempfile
 	if [ 0 != $? ]; then # successful?
