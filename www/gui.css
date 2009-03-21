@@ -307,3 +307,11 @@ div#enumeration ul {
 	margin: 0;
 	padding-left: 15px;
 }
+div#swapusage .device, div#swapusage .total, div#swapusage .used,
+div#swapusage .free, div#diskusage .name, div#diskusage .total,
+div#diskusage .used, div#diskusage .free {
+	font-weight: bold;
+}
+div#diskusage .name {
+	font-size: 12px;
+}

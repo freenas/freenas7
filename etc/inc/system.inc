@@ -378,11 +378,16 @@ function system_get_sysinfo() {
 			$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
 			$diskinfo = array();
 			$diskinfo['id'] = $fsid;
-			$diskinfo['percentage'] = rtrim($diskusagev['capacity'],"%");
+			$diskinfo['mountpoint'] = $diskusagev['mountpoint'];
+			$diskinfo['name'] = $diskusagev['name'];
+			$diskinfo['capacity'] = $diskusagev['capacity'];
+			$diskinfo['percentage'] = rtrim($diskusagev['capacity'], "%");
+			$diskinfo['size'] = $diskusagev['size'];
+			$diskinfo['used'] = $diskusagev['used'];
+			$diskinfo['avail'] = $diskusagev['avail'];
 			$diskinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 			$diskinfo['tooltip']['available'] = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
-			$diskinfo['caption'] = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
-			$diskinfo['caption_detailed'] = sprintf(gettext("Name: %s | Total: %s | Used: %s | Free: %s"), "<b>{$diskusagev['name']}</b>", "<b>{$diskusagev['size']}</b>", "<b>{$diskusagev['used']}</b>", "<b>{$diskusagev['avail']}</b>");
+
 			$value['diskusage'][] = $diskinfo;
 		}
 	}
@@ -392,15 +397,18 @@ function system_get_sysinfo() {
 	if (is_array($swapinfo) && (0 < count($swapinfo))) {
 		$id = 0;
 		foreach ($swapinfo as $swapv) {
-			$id++;
-			$devswap = array();
-			$devswap['id']  = $id;
-			$devswap['percentage']  = rtrim($swapv['capacity'],"%");
-			$devswap['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swapv['used'], $swapv['total']);
-			$devswap['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swapv['avail'], $swapv['total']);
-			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swapv['capacity'], $swapv['total']);
-			$devswap['caption_detailed'] = sprintf(gettext("Device: %s | Total: %s | Used: %s | Free: %s"), "<b>{$swapv['device']}</b>", "<b>{$swapv['total']}</b>", "<b>{$swapv['used']}</b>", "<b>{$swapv['avail']}</b>");
-			$value['swapusage'][]= $devswap;
+			$swapinfo = array();
+			$swapinfo['id'] = $id++;
+			$swapinfo['device'] = $swapv['device'];
+			$swapinfo['capacity'] = $swapv['capacity'];
+			$swapinfo['percentage'] = rtrim($swapv['capacity'], "%");
+			$swapinfo['total'] = $swapv['total'];
+			$swapinfo['used'] = $swapv['used'];
+			$swapinfo['avail'] = $swapv['avail'];
+			$swapinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $swapv['used'], $swapv['total']);
+			$swapinfo['tooltip']['available']  = sprintf(gettext("%sB available of %sB"), $swapv['avail'], $swapv['total']);
+
+			$value['swapusage'][]= $swapinfo;
 		}
 	}
 
