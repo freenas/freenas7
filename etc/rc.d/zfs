@@ -3,6 +3,8 @@
 # $FreeBSD: src/etc/rc.d/zfs,v 1.5.6.1 2008/11/25 02:59:29 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Add function zfs_init: Import zpool's if necessary
 #
 
 # PROVIDE: zfs
@@ -17,7 +19,20 @@ name="zfs"
 rcvar="zfs_enable"
 start_cmd="zfs_start"
 stop_cmd="zfs_stop"
+init_cmd="zfs_init"
+extra_commands="init"
 required_modules="zfs"
+
+zfs_init()
+{
+	# Make sure /boot/zfs/zpool.cache exists. On 'embedded' installations
+	# this file is missing after a reboot => zpools are missing, so we
+	# have to import them to be able to use them.
+	if [ ! -e /boot/zfs/zpool.cache ]; then
+		info Importing ZFS pools...
+		zpool import -f -a
+	fi
+}
 
 zfs_start_jail()
 {
@@ -50,6 +65,7 @@ zfs_start()
 	if [ `$SYSCTL_N security.jail.jailed` -eq 1 ]; then
 		zfs_start_jail
 	else
+		zfs_init
 		zfs_start_main
 	fi
 }
