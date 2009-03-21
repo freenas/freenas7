@@ -1,6 +1,6 @@
 # http://www.3ware.com/kb/article.aspx?id=14847
-ARCHIVE=	driver-freebsd_6x-9.4.2.tgz
-SRCDIR=	${FREENAS_WORKINGDIR}/twa
+ARCHIVE=	driver-freebsd_6x-9.5.1.tgz
+SRCDIR=	${FREENAS_WORKINGDIR}/twa_fat6
 
 install:	clean
 	@tar -zxvf ${.CURDIR}/files/${ARCHIVE} -C ${FREENAS_WORKINGDIR}
