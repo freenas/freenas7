@@ -32,38 +32,43 @@
 */
 require_once("config.inc");
 
-// Get list of zpools
-//[poolname] => Array
-//    (
-//        [name] => pool
-//        [size] => 4.66G
-//        [used] => 112K
-//        [avail] => 4.66G
-//        [cap] => 0%
-//        [health] => ONLINE
-//        [altroot] => -
-//    )
+/**
+ * Get list of available zpools
+ * @return An array containg the requested informations:
+ * @code
+ * [poolname] => array(
+ *   [name] => pool
+ *   [size] => 4.66G
+ *   [used] => 112K
+ *   [avail] => 4.66G
+ *   [cap] => 0%
+ *   [health] => ONLINE
+ *   [altroot] => -)
+ * @endcode
+ */
 function zfs_get_pool_list() {
-	$poollist = array();
+	$result = array();
 
 	exec("/sbin/zpool list -H", $rawdata);
 
 	foreach ($rawdata as $line) {
 		$aline = preg_split("/\s+/", $line);
+		if (7 > count($aline)) // Ensure we process the correct line data
+			continue;
 
 		$poolname = $aline[0];
 
-		$poollist[$poolname] = array();
-		$poollist[$poolname]['name'] = $aline[0];
-		$poollist[$poolname]['size'] = $aline[1];
-		$poollist[$poolname]['used'] = $aline[2];
-		$poollist[$poolname]['avail'] = $aline[3];
-		$poollist[$poolname]['cap'] = $aline[4];
-		$poollist[$poolname]['health'] = $aline[5];
-		$poollist[$poolname]['altroot'] = $aline[6];
+		$result[$poolname] = array();
+		$result[$poolname]['name'] = $aline[0];
+		$result[$poolname]['size'] = $aline[1];
+		$result[$poolname]['used'] = $aline[2];
+		$result[$poolname]['avail'] = $aline[3];
+		$result[$poolname]['cap'] = $aline[4];
+		$result[$poolname]['health'] = $aline[5];
+		$result[$poolname]['altroot'] = $aline[6];
 	}
 
-	return $poollist;
+	return $result;
 }
 
 // Configure, create and start a zpool
@@ -128,9 +133,11 @@ function zfs_zpool_configure($name) {
 	return $result;
 }
 
-// Delete zpool given in parameter.
-// $name - Name of the pool to be deleted.
-// Return 0 if successful, 1 if error
+/**
+ * Destroy a zpool.
+ * @param pool	Name of the pool to be destroyed.
+ * @return 0 if successful, otherwise 1
+ */ 
 function zfs_zpool_destroy($name) {
 	global $config;
 
