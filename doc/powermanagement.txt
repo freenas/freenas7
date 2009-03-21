@@ -1,2 +1,0 @@
-ACPI and APM cannot be used at the same time. Because of this we only use ACPI.
-ACPI is the newer technology and replaces APM.
