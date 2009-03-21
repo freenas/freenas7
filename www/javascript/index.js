@@ -1,6 +1,6 @@
 /*
 	index.js
-	Copyright (C) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 */
 function update_controls(x) {
@@ -67,14 +67,17 @@ function update_diskusage(value) {
 	if (value == 'undefined' || value == null)
 		return;
 	for (var i=0; i<value.length; i++) {
-		if (document.getElementById("diskusagec_" + value[i].id) == null)
+		if (document.getElementById("diskusage_" + value[i].id + "_bar_used") == null)
 			return;
-		document.getElementById("diskusagec_" + value[i].id).value = value[i].caption;
-		document.getElementById("diskusagecd_" + value[i].id).innerHTML = value[i].caption_detailed;
-		document.getElementById("diskusageu_" + value[i].id).style.width = value[i].percentage + 'px';
-		document.getElementById("diskusageu_" + value[i].id).title = value[i]['tooltip'].used;
-		document.getElementById("diskusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';
-		document.getElementById("diskusagef_" + value[i].id).title = value[i]['tooltip'].available;
+		document.getElementById("diskusage_" + value[i].id + "_name").innerHTML = value[i].name;
+		document.getElementById("diskusage_" + value[i].id + "_bar_used").style.width = value[i].percentage + 'px';
+		document.getElementById("diskusage_" + value[i].id + "_bar_used").title = value[i]['tooltip'].used;
+		document.getElementById("diskusage_" + value[i].id + "_bar_free").style.width = (100 - value[i].percentage) + 'px';
+		document.getElementById("diskusage_" + value[i].id + "_bar_free").title = value[i]['tooltip'].available;
+		document.getElementById("diskusage_" + value[i].id + "_capacity").innerHTML = value[i].capacity;
+		document.getElementById("diskusage_" + value[i].id + "_total").innerHTML = value[i].size;
+		document.getElementById("diskusage_" + value[i].id + "_used").innerHTML = value[i].used;
+		document.getElementById("diskusage_" + value[i].id + "_free").innerHTML = value[i].avail;
 	}
 }
 
@@ -83,14 +86,16 @@ function update_swapusage(value) {
 		return;
 
 	for (var i=0; i<value.length; i++) {
-		if (document.getElementById("swapusagec_" + value[i].id) == null)
+		if (document.getElementById("swapusage_" + value[i].id + "_bar_used") == null)
 			return;
-		document.getElementById("swapusagec_" + value[i].id).value = value[i].caption;
-		document.getElementById("swapusagecd_" + value[i].id).innerHTML = value[i].caption_detailed;
-		document.getElementById("swapusageu_" + value[i].id).style.width = value[i].percentage + 'px';
-		document.getElementById("swapusageu_" + value[i].id).title = value[i]['tooltip'].used;
-		document.getElementById("swapusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';
-		document.getElementById("swapusagef_" + value[i].id).title = value[i]['tooltip'].available;
+		document.getElementById("swapusage_" + value[i].id + "_bar_used").style.width = value[i].percentage + 'px';
+		document.getElementById("swapusage_" + value[i].id + "_bar_used").title = value[i]['tooltip'].used;
+		document.getElementById("swapusage_" + value[i].id + "_bar_free").style.width = (100 - value[i].percentage) + 'px';
+		document.getElementById("swapusage_" + value[i].id + "_bar_free").title = value[i]['tooltip'].available;
+		document.getElementById("swapusage_" + value[i].id + "_capacity").innerHTML = value[i].capacity;
+		document.getElementById("swapusage_" + value[i].id + "_total").innerHTML = value[i].total;
+		document.getElementById("swapusage_" + value[i].id + "_used").innerHTML = value[i].used;
+		document.getElementById("swapusage_" + value[i].id + "_free").innerHTML = value[i].avail;
 	}
 }
 
