@@ -33,11 +33,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Virtual device"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Virtual device"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!isset($config['zfs']['vdevices']) || !is_array($config['zfs']['vdevices']['vdevice']))
 	$config['zfs']['vdevices']['vdevice'] = array();
@@ -47,16 +47,18 @@ array_sort_key($config['zfs']['vdevices']['vdevice'], "name");
 $a_vdevice = &$config['zfs']['vdevices']['vdevice'];
 $a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
 
-if (!isset($id) && (!sizeof($a_disk))) {
+if (!isset($uuid) && (!sizeof($a_disk))) {
 	$errormsg = sprintf(gettext("No disks available. Please add new <a href=%s>disk</a> first."), "disks_manage.php");
 }
 
-if (isset($id) && $a_vdevice[$id]) {
-	$pconfig['name'] = $a_vdevice[$id]['name'];
-	$pconfig['type'] = $a_vdevice[$id]['type'];
-	$pconfig['device'] = $a_vdevice[$id]['device'];
-	$pconfig['desc'] = $a_vdevice[$id]['desc'];
+if (isset($uuid) && (false !== ($cnid = array_search_ex($uuid, $a_vdevice, "uuid")))) {
+	$pconfig['uuid'] = $a_vdevice[$cnid]['uuid'];
+	$pconfig['name'] = $a_vdevice[$cnid]['name'];
+	$pconfig['type'] = $a_vdevice[$cnid]['type'];
+	$pconfig['device'] = $a_vdevice[$cnid]['device'];
+	$pconfig['desc'] = $a_vdevice[$cnid]['desc'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['type'] = "stripe";
 	$pconfig['desc'] = "";
@@ -75,13 +77,13 @@ if ($_POST) {
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	// Check for duplicate name
-	if(!(isset($id) && $_POST['name'] === $a_vdevice[$id]['name'])) {
+	if(!(isset($uuid) && $_POST['name'] === $a_vdevice[$cnid]['name'])) {
 		if (false !== array_search_ex($_POST['name'], $a_vdevice, "name")) {
 			$input_errors[] = gettext("This virtual device name already exists.");
 		}
 	}
 
-	switch($_POST['type']) {
+	switch ($_POST['type']) {
 		case "mirror": {
 				if (count($_POST['device']) <  2) {
 					$input_errors[] = gettext("There must be at least 2 disks in a mirror.");
@@ -114,16 +116,21 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$vdevice = array();
+		$vdevice['uuid'] = $_POST['uuid'];
 		$vdevice['name'] = $_POST['name'];
 		$vdevice['type'] = $_POST['type'];
 		$vdevice['device'] = $_POST['device'];
 		$vdevice['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_vdevice[$id])
-			$a_vdevice[$id] = $vdevice;
-		else
+		if (isset($uuid) && (false !== $cnid)) {
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
+			$a_vdevice[$cnid] = $vdevice;
+		} else {
+			$mode = UPDATENOTIFY_MODE_NEW;
 			$a_vdevice[] = $vdevice;
+		}
 
+		updatenotify_set("zfsvdev", $mode, $vdevice['uuid']);
    	write_config();
 
 		header("Location: disks_zfs_zpool_vdevice.php");
@@ -154,7 +161,7 @@ function enable_change(enable_change) {
 		<td class="tabnavtbl">
   		<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool_vdevice.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Virtual device");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pool");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
@@ -168,17 +175,15 @@ function enable_change(enable_change) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($id));?>
-			  	<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), "", true, isset($id));?>
-					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
-			    <?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($id));?>
+			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($uuid));?>
+			  	<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), "", true, isset($uuid));?>
+					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($uuid) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($uuid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
+			    <?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($uuid));?>
 			  	<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-					<?php if (isset($id) && $a_vdevice[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (false !== $cnid))) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>
 		</td>
@@ -186,7 +191,7 @@ function enable_change(enable_change) {
 </table>
 <script language="JavaScript">
 <!--
-<?php if (isset($id) && $a_vdevice[$id]):?>
+<?php if (isset($uuid) && (false !== $cnid)):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>
