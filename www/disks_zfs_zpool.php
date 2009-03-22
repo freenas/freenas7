@@ -48,37 +48,47 @@ if ($_POST) {
 
 	if ($_POST['apply']) {
 		$retval = 0;
-
 		if (!file_exists($d_sysrebootreqd_path)) {
-			foreach ($a_pool as $poolv) {
-				if (is_zfs_zpool_modified($poolv['name'])) {
-					$retval |= zfs_zpool_configure($poolv['name']);
-				}
-			}
+			// Process notifications
+			updatenotify_process("zfszpool", "zfszpool_process_updatenotification");
 		}
-
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			unlink_if_exists($d_zpoolconfdirty_path);
+			updatenotify_delete("zfszpool");
 		}
 	}
 }
 
 if ($_GET['act'] === "del") {
-	if ($a_pool[$_GET['id']]) {
-		zfs_zpool_destroy($a_pool[$_GET['id']]['name']);
-		unset($a_pool[$_GET['id']]);
-
-		write_config();
-
-		header("Location: disks_zfs_zpool.php");
-		exit;
-	}
+	updatenotify_set("zfszpool", UPDATENOTIFY_MODE_DIRTY, $_GET['pool']);
+	header("Location: disks_zfs_zpool.php");
+	exit;
 }
 
-function is_zfs_zpool_modified($name) {
-	global $d_zpoolconfdirty_path;
-	return (file_exists($d_zpoolconfdirty_path) && in_array("{$name}\n", file($d_zpoolconfdirty_path)));
+function zfszpool_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFY_MODE_NEW:
+			$retval = zfs_zpool_configure($data);
+			break;
+
+		case UPDATENOTIFY_MODE_MODIFIED:
+			break;
+
+		case UPDATENOTIFY_MODE_DIRTY:
+			zfs_zpool_destroy($data);
+			$index = array_search_ex($data, $config['zfs']['pools']['pool'], "name");
+			if (false !== $index) {
+				unset($config['zfs']['pools']['pool'][$index]);
+				write_config();
+			}
+			break;
+	}
+
+	return $retval;
 }
 
 $a_poolstatus = zfs_get_pool_list();
@@ -108,8 +118,7 @@ $a_poolstatus = zfs_get_pool_list();
     <td class="tabcont">
 			<form action="disks_zfs_zpool.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_zpoolconfdirty_path)) print_config_change_box();?>
-				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
+				<?php if (updatenotify_exists("zfszpool")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
@@ -121,18 +130,19 @@ $a_poolstatus = zfs_get_pool_list();
 						<td width="20%" class="listhdrr"><?=gettext("AltRoot");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_pool as $poolv):?>
+					<?php foreach ($a_pool as $poolk => $poolv):?>
 					<?php
-						$altroot = $cap = $avail = $used = $size = gettext("Unknown");
-						$health = gettext("STOPPED");
-						if (is_array($a_poolstatus) && array_key_exists($poolv['name'], $a_poolstatus)) {
-							$size = $a_poolstatus[$poolv['name']]['size'];
-							$used = $a_poolstatus[$poolv['name']]['used'];
-							$avail = $a_poolstatus[$poolv['name']]['avail'];
-							$cap = $a_poolstatus[$poolv['name']]['cap'];
-							$health = $a_poolstatus[$poolv['name']]['health'];
-							$altroot = $a_poolstatus[$poolv['name']]['altroot'];
-						}
+					$notificationmode = updatenotify_get_mode("zfszpool", $poolv['name']);
+					$altroot = $cap = $avail = $used = $size = gettext("Unknown");
+					$health = gettext("STOPPED");
+					if (is_array($a_poolstatus) && array_key_exists($poolv['name'], $a_poolstatus)) {
+						$size = $a_poolstatus[$poolv['name']]['size'];
+						$used = $a_poolstatus[$poolv['name']]['used'];
+						$avail = $a_poolstatus[$poolv['name']]['avail'];
+						$cap = $a_poolstatus[$poolv['name']]['cap'];
+						$health = $a_poolstatus[$poolv['name']]['health'];
+						$altroot = $a_poolstatus[$poolv['name']]['altroot'];
+					}
 					?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($poolv['name']);?>&nbsp;</td>
@@ -142,12 +152,18 @@ $a_poolstatus = zfs_get_pool_list();
 						<td class="listr"><?=$cap;?>&nbsp;</td>
 						<td class="listbg"><a href="disks_zfs_zpool_info.php?pool=<?=$poolv['name']?>"><?=$health;?></a>&nbsp;</td>
 						<td class="listr"><?=$altroot;?>&nbsp;</td>	
+						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>	
 						<td valign="middle" nowrap class="list">
-							<a href="disks_zfs_zpool_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" border="0"></a>&nbsp;
-							<a href="disks_zfs_zpool.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this pool?");?>')"><img src="x.gif" title="<?=gettext("Delete pool");?>" border="0"></a>
+							<a href="disks_zfs_zpool_edit.php?pool=<?=$poolv['name'];?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" border="0"></a>&nbsp;
+							<a href="disks_zfs_zpool.php?act=del&pool=<?=$poolv['name'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this pool?");?>')"><img src="x.gif" title="<?=gettext("Delete pool");?>" border="0"></a>
 						</td>
+						<?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 					</tr>
-					<?php $i++; endforeach;?>
+					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="7"></td>
 						<td class="list">

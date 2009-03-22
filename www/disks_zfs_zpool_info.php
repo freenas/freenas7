@@ -68,7 +68,7 @@ function zfs_zpool_get_status() {
 		if (preg_match("/(\s+)(?:pool\:)(\s+)(.*)/", $line, $match)) {
 			$pool = trim($match[3]);
 			$index = array_search_ex($pool, $a_pool, "name");
-			$href = "<a href='disks_zfs_zpool.php?id={$index}'>{$pool}</a>";
+			$href = "<a href='disks_zfs_zpool_edit.php?pool={$pool}'>{$pool}</a>";
 			$result .= "{$match[1]}pool:{$match[2]}{$href}";
 		} else if (preg_match("/(\s+)(?:scrub\:)(\s+)(.*)/", $line, $match)) {
 			if (isset($pool)) {
@@ -82,26 +82,31 @@ function zfs_zpool_get_status() {
 				$index = array_search_ex($pool, $a_pool, "name");
 				$pool_conf = $a_pool[$index];
 				$found = false;
-				foreach ($pool_conf['vdevice'] as $vdevicev) {
-					$index = array_search_ex($vdevicev, $a_vdevice, "name");
-					$vdevice = $a_vdevice[$index];
-					foreach ($vdevice['device'] as $devicev) {
-						$a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
-						$index = array_search_ex($devicev, $a_disk, "devicespecialfile");
-						$disk = $a_disk[$index];
-						$string = "/(\s+)(?:".$disk['name'].")(\s+)(\w+)(.*)/";
-						if (preg_match($string, $line, $match)) {
-							$href = "<a href='disks_zfs_zpool_tools.php'>{$disk['name']}</a>";
-							if ($match[3] === "ONLINE") {
-								$href1 = "<a href='disks_zfs_zpool_tools.php?action=offline&option=d&pool={$pool}&device={$disk[name]}'>{$match[3]}</a>";
-							} else if($match[3] == "OFFLINE") {
-								$href1 = "<a href='disks_zfs_zpool_tools.php?action=online&option=d&pool={$pool}&device={$disk[name]}'>{$match[3]}</a>";
-							} else {
-								$href1 = "";
+				if (is_array($pool_conf['vdevice'])) {
+					foreach ($pool_conf['vdevice'] as $vdevicev) {
+						if (false !== ($index = array_search_ex($vdevicev, $a_vdevice, "name"))) {
+							$vdevice = $a_vdevice[$index];
+							if (is_array($vdevice['device'])) {
+								foreach ($vdevice['device'] as $devicev) {
+									$a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
+									$index = array_search_ex($devicev, $a_disk, "devicespecialfile");
+									$disk = $a_disk[$index];
+									$string = "/(\s+)(?:".$disk['name'].")(\s+)(\w+)(.*)/";
+									if (preg_match($string, $line, $match)) {
+										$href = "<a href='disks_zfs_zpool_tools.php'>{$disk['name']}</a>";
+										if ($match[3] === "ONLINE") {
+											$href1 = "<a href='disks_zfs_zpool_tools.php?action=offline&option=d&pool={$pool}&device={$disk[name]}'>{$match[3]}</a>";
+										} else if($match[3] == "OFFLINE") {
+											$href1 = "<a href='disks_zfs_zpool_tools.php?action=online&option=d&pool={$pool}&device={$disk[name]}'>{$match[3]}</a>";
+										} else {
+											$href1 = "";
+										}
+										$result .= "{$match[1]}{$href}{$match[2]}{$href1}{$match[4]}";
+										$found = true;
+										continue 2;
+									}
+								}
 							}
-							$result .= "{$match[1]}{$href}{$match[2]}{$href1}{$match[4]}";
-							$found = true;
-							continue 2;
 						}
 					}
 				}
