@@ -71,9 +71,11 @@ function zfs_get_pool_list() {
 	return $result;
 }
 
-// Configure, create and start a zpool
-// $name - Name of the pool to be configured.
-// Return 0 if successful, 1 if error
+/**
+ * Configure, create and start a zpool.
+ * @param name	Name of the pool to be configured.
+ * @return Return 0 if successful, otherwise 1
+ */
 function zfs_zpool_configure($name) {
 	global $config;
 
@@ -125,19 +127,21 @@ function zfs_zpool_configure($name) {
 		}
 	}
 
-	$result = mwexec($cmd);
+	$result = mwexec($cmd, true);
+	if (0 != $result)
+		return 1;
 
 	// Modify access restrictions.
 	@chmod($mountpoint, octdec(777));
 
-	return $result;
+	return 0;
 }
 
 /**
  * Destroy a zpool.
  * @param pool	Name of the pool to be destroyed.
  * @return 0 if successful, otherwise 1
- */ 
+ */
 function zfs_zpool_destroy($name) {
 	global $config;
 
@@ -153,7 +157,7 @@ function zfs_zpool_destroy($name) {
 		 return 1;
 
 	// Destroy the pool
-	$result = mwexec("/sbin/zpool destroy {$name}");
+	$result = mwexec("/sbin/zpool destroy {$name}", true);
 
 	// Remove mount point.
 	$mountpoint = "/mnt/{$pool['name']}";
@@ -228,7 +232,7 @@ function zfs_dataset_configure($name) {
 	// Create the dataset
 	$cmd = "/sbin/zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
 
-	return mwexec($cmd);
+	return mwexec($cmd, true);
 }
 
 // Delete a dataset given in parameter.
@@ -249,7 +253,7 @@ function zfs_dataset_destroy($name) {
 		 return 1;
 
 	// Destroy the dataset
-	return mwexec("/sbin/zfs destroy {$dataset['pool'][0]}/{$dataset['name']}");
+	return mwexec("/sbin/zfs destroy {$dataset['pool'][0]}/{$dataset['name']}", true);
 }
 
 // Update properties of a dataset
