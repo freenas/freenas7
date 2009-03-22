@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-14 03:54+0000\n"
+"POT-Creation-Date: 2009-03-21 13:54+0000\n"
 "PO-Revision-Date: 2009-03-16 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -37,7 +37,7 @@ msgstr "%s インタフェース"
 msgid "%s is used to create %s volumes."
 msgstr "%s は %s ボリュームを作成して使用します．"
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%2$sB 中 %1$s"
 
@@ -83,26 +83,11 @@ msgstr ""
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
-"formatted drive or Software RAID volume (<b>created before "
-"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
-"you select option 2 during installation on hard drive (<b>all "
-"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
-"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
-"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
-"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
-"(Windows, Linux, MAC, etc.) that use MBR partition table."
+"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
-"<b>EFI GPT</b> GPT フォーマットのドライブ (<b>0.684b 以降のデフォルトパーティション</b>) をマウントする場合は "
-"EFI GPT を選択して下さい．<br><b>1*</b> UFS フォーマットされたドライブの 1番目のパーティション又はソフトウェア RAID "
-"ボリューム (<b>0.684b 以前に作成されたもの</b>)．<br><b>2*</b> 2番目の MBR パーティション "
-"(<b>データパーティション</b>)．ハードディスクにインストールした際にオプション 2 を選択した場合 "
-"(<b>全てのバージョン</b>)．<br><b>3*, 4*</b> プライマリ MBR パーティションの 3番目もしくは "
-"4番目．<br><b>5*, 6*</b> 拡張パーティション上の 1番目もしくは 2番目の論理的な MBR パーティション．<br><b>CD/DVD "
-"or Old software RAID</b> (バージョン 0.68 より以前に作成された) 古いソフトウェア RAID ボリュームまたは "
-"CD/DVD．<br><br><b>*</b> MBR パーティションテーブルを使用する他の OS (Windows, Linux, MAC 等) "
-"からインポート/フォーマットされたディスクの場合，* 印がある選択のいずれかを使用します．"
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -1025,6 +1010,10 @@ msgstr ""
 "デバイスポーリングは，割り込みに依存する代わりに新しいデータの為に周期的にネットワークデバイスをポーリングさせる技術です．これは，CPU "
 "負荷を減らし，及び少し高い転送遅延の損失においてスループットを増大させる事が出来ます (デバイスは1秒あたり "
 "1000回ポーリングされます)．ポーリングは全ての NIC をサポートする訳ではありません．"
+
+#, php-format
+msgid "Device: %s | Total: %s | Used: %s | Free: %s"
+msgstr ""
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -2670,8 +2659,11 @@ msgstr "パッケージ"
 msgid "Pairwise"
 msgstr "ペア"
 
-msgid "Partition"
-msgstr "パーティション"
+msgid "Partition number"
+msgstr ""
+
+msgid "Partition type"
+msgstr ""
 
 msgid "Partitions"
 msgstr "パーティション"
@@ -4378,6 +4370,10 @@ msgstr ""
 msgid "Tools"
 msgstr "ツール"
 
+#, php-format
+msgid "Total: %s | Used: %s | Free: %s"
+msgstr ""
+
 msgid "Traceroute"
 msgstr "Traceroute"
 
@@ -4724,6 +4720,9 @@ msgstr "書込み"
 msgid "Write only"
 msgstr "書込みのみ"
 
+msgid "Wrong partition type or partition number."
+msgstr ""
+
 msgid "Yes"
 msgstr "Yes"
 
@@ -4991,6 +4990,9 @@ msgstr "週日"
 
 #~ msgid "View"
 #~ msgstr "参照"
+
+#~ msgid "Partition"
+#~ msgstr "パーティション"
 
 #~ msgid ""
 #~ "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
