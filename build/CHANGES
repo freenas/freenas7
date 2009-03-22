@@ -59,6 +59,7 @@ Bug fixes:
   in xml_parse()).
 - Display dialog to set WebGUI port when configuring network settings via
   console menu (BR 2661938).
+- Fix problem with DAAP & Mac iTunes 8.1 (BR 2701606). Thanks to Alexey Sannikov.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
