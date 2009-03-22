@@ -2,12 +2,12 @@
 <?php
 /*
 	disks_zfs_zpool_io.php
-	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -32,22 +32,29 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("sajax/sajax.php");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("I/O statistics"));
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("IO statistics"));
-$pgrefresh = 5; // Refresh every 5 seconds.
+function zfs_zpool_get_iostat() {
+	// Get zpool I/O statistic informations
+	$cmd = "zpool iostat -v 2>&1";
+	if (isset($_GET['pool'])) {
+		$cmd .= " {$_GET['pool']}";
+	}
+	mwexec2($cmd, $rawdata);
+	return implode("\n", $rawdata);
+}
 
-if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
-	$config['zfs']['pools']['pool'] = array();
-
-array_sort_key($config['zfs']['pools']['pool'], "name");
-
-$a_pool = $config['zfs']['pools']['pool'];
+sajax_init();
+sajax_export("zfs_zpool_get_iostat");
+sajax_handle_client_request();
 ?>
 <?php include("fbegin.inc");?>
+<script>
+<?php sajax_show_javascript();?>
+</script>
+<script type="text/javascript" src="javascript/disks_zfs_zpool_io.js"></script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -64,30 +71,22 @@ $a_pool = $config['zfs']['pools']['pool'];
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pool");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
-				<li class="tabact"><a href="disks_zfs_zpool_io.php" title="<?=gettext("Reload page");?>"><span><?=gettext("IO statistics");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_zpool_io.php" title="<?=gettext("Reload page");?>"><span><?=gettext("I/O statistics");?></span></a></li>
   		</ul>
   	</td>
 	</tr>
   <tr>
 		<td class="tabcont">
-			<?php
-			echo "<pre>";
-			echo "<strong>" . gettext("ZFS IO statistics") . "</strong><br/><br/>";
-			$cmd = "/sbin/zpool iostat -v";
-			if (isset($id) && $a_pool[$id]) {
-				$cmd .= " {$a_pool[$id]['name']}";
-			}
-			exec($cmd, $rawdata);
-			if (!empty($rawdata)) {
-				foreach ($rawdata as $line) {
-					echo htmlspecialchars($line) . "<br>";
-				}
-				unset($line);
-			} else {
-				echo "no pools available";
-			}
-			echo "</pre>";
-			?>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td class="listtopic"><?=gettext("Pool I/O statistics");?></td>
+			  </tr>
+			  <tr>
+			    <td class="listt">
+			    	<pre><span id="zfs_zpool_iostat"><?=zfs_zpool_get_iostat();?></span></pre>
+			    </td>
+			  </tr>
+			</table>
 		</td>
 	</tr>
 </table>

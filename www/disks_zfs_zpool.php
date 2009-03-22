@@ -2,12 +2,12 @@
 <?php
 /*
 	disks_zfs_zpool.php
-	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -100,7 +100,7 @@ $a_poolstatus = zfs_get_pool_list();
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pool");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("IO statistics");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
   		</ul>
   	</td>
 	</tr>
@@ -140,7 +140,7 @@ $a_poolstatus = zfs_get_pool_list();
 						<td class="listr"><?=$used;?>&nbsp;</td>
 						<td class="listr"><?=$avail;?>&nbsp;</td>
 						<td class="listr"><?=$cap;?>&nbsp;</td>
-						<td class="listbg"><a href="disks_zfs_zpool_info.php?id=<?=$i?>"><?=$health;?></a>&nbsp;</td>
+						<td class="listbg"><a href="disks_zfs_zpool_info.php?pool=<?=$poolv['name']?>"><?=$health;?></a>&nbsp;</td>
 						<td class="listr"><?=$altroot;?>&nbsp;</td>	
 						<td valign="middle" nowrap class="list">
 							<a href="disks_zfs_zpool_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" border="0"></a>&nbsp;
