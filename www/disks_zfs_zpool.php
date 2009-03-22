@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("zfs.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Pool"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Management"));
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -107,7 +107,7 @@ $a_poolstatus = zfs_get_pool_list();
 		<td class="tabnavtbl">
   		<ul id="tabnav">
   			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
-				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pool");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
@@ -124,8 +124,8 @@ $a_poolstatus = zfs_get_pool_list();
 						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Size");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Used");?></td>
-						<td width="10%" class="listhdrr"><?=gettext("Avail");?></td>
-						<td width="10%" class="listhdrr"><?=gettext("Cap");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Free");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Capacity");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Health");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("AltRoot");?></td>
 						<td width="10%" class="list"></td>

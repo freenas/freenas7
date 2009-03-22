@@ -79,7 +79,7 @@ if ($_POST || $_GET) {
 
 if (!isset($do_action)) {
 	$do_action = false;
-	$pconfig['action'] = "";
+	$pconfig['action'] = "history";
 	$pconfig['option'] = "";
 	$pconfig['pool'] = "";
 	$pconfig['device'] = "";
@@ -226,7 +226,7 @@ function pool_change() {
 		<td class="tabnavtbl">
   		<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pool");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool_tools.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
@@ -240,8 +240,8 @@ function pool_change() {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
-						<td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-						<td class="vtable">
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
+	          <td width="78%" class="vtable">
 							<select name="action" class="formfld" id="action" onchange="command_change()">
 							<?
 								$cmd = "upgrade history";
@@ -260,18 +260,8 @@ function pool_change() {
 							</select>
 						</td>
 					</tr>
-					<tr>
-						<td valign="top" class="vncellreq"><?=gettext("Option");?></td>
-						<td class="vtable">
-							<select name="option" class="formfld" id="option"  onchange="option_change()"></select>
-						</td>
-					</tr>
-					<tr>
-						<td valign="top" class="vncellreq"><?=gettext("Pool");?></td>
-						<td class="vtable">
-							<select name="pool" class="formfld" id="pool" disabled onchange="pool_change()"></select>
-						</td>
-					</tr>
+					<?php html_combobox("option", gettext("Option"), NULL, NULL, "", true, false, "option_change()");?>
+					<?php html_combobox("pool", gettext("Pool"), NULL, NULL, "", true, true, "pool_change()");?>
 					<tr>
 						<td valign="top" class="vncellreq"><?=gettext("Devices");?></td>
 						<td class="vtable">
@@ -280,15 +270,16 @@ function pool_change() {
 							</div>
 						</td>
 					</tr>
-					<?php html_combobox("device_new", gettext("New Device"), NUL, NUL, "", true);?>
+					<?php html_combobox("device_new", gettext("New Device"), NULL, NULL, "", true);?>
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
 				</div>
 				<?php if ($do_action) {
-				echo("<strong>" . gettext("Command output:") . "</strong><br>");
 				echo('<pre>');
+				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
+
 				$action = $pconfig['action'];
 				$option = $pconfig['option'];
 				$pool = $pconfig['pool'];
@@ -309,50 +300,50 @@ function pool_change() {
 										}
 									}
 									break;
-				
+
 								case "a":
 									zfs_zpool_cmd($action, "-a", true);
 									break;
-				
+
 								case "p":
 									zfs_zpool_cmd($action, $pool, true);
 									break;
 							}
 						}
 						break;
-				
+
 					case "history": {
 							switch ($option) {
 								case "a":
 									zfs_zpool_cmd($action, "", true);
 									break;
-				
+
 								case "p":
 									zfs_zpool_cmd($action, $pool, true);
 									break;
 							}
 						}
 						break;
-				
+
 					case "scrub": {
 							switch ($option) {
 								case "s":
 									zfs_zpool_cmd($action, $pool, true);
 					 				break;
-				
+
 					 			case "st":
 									zfs_zpool_cmd($action,"-s {$pool}", true);
 									break;
 							}
 						}
 						break;
-				
+
 					case "clear": {
 							switch ($option) {
 								case "p":
 									zfs_zpool_cmd($action, $pool, true);
 									break;
-				
+
 								case "d":
 									if (is_array($device) ) {
 										foreach ($device as $dev) {
@@ -365,13 +356,13 @@ function pool_change() {
 							}
 						}
 						break;
-				
+
 					case "offline": {
 							switch ($option) {
 								case "t":
 									zfs_zpool_cmd($action, "-t {$pool} {$device}", true);
 								break;
-				
+
 								case "d":
 									if (is_array($device) ) {
 										foreach ($device as $dev) {
@@ -384,7 +375,7 @@ function pool_change() {
 							}
 						}
 						break;
-				
+
 					case "online": {
 							switch ($option) {
 								case "d":
@@ -399,7 +390,7 @@ function pool_change() {
 							}
 						}
 						break;
-				
+
 					case "remove": {
 							switch ($option) {
 								case "d":
@@ -414,7 +405,7 @@ function pool_change() {
 							}
 						}
 						break;
-				
+
 					case "replace": {
 							switch ($option) {
 								case "d":
