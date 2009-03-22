@@ -179,7 +179,7 @@ function disks_mount($mount)
 		case "ntfs":
 			// Load the kernel FUSE module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devicespecialfile} '{$mountname}'", true); // default options: silent,allow_other
+			$result = mwexec("/sbin/mount -t ntfs-3g {$readonly} {$devicespecialfile} '{$mountname}'", true); // default options: silent,allow_other
 			if (0 == $result) {
 				write_log("Disk {$devicespecialfile} mounted using NTFS on '{$mountname}'");
 				$result = 0;
