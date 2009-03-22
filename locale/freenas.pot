@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-03-21 09:32+0000\n"
+"PO-Revision-Date: 2009-03-21 13:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr ""
 
@@ -900,7 +900,7 @@ msgstr ""
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr ""
 
@@ -2232,10 +2232,6 @@ msgid "Name of the server. If this field is left empty the default server is spe
 msgstr ""
 
 msgid "Name of the variable."
-msgstr ""
-
-#, c-format, php-format
-msgid "Name: %s | Total: %s | Used: %s | Free: %s"
 msgstr ""
 
 msgid "NetBIOS name"
@@ -3848,6 +3844,10 @@ msgid "To use Active Directory the CIFS/SMB service will enabled, too. The follo
 msgstr ""
 
 msgid "Tools"
+msgstr ""
+
+#, php-format
+msgid "Total: %s | Used: %s | Free: %s"
 msgstr ""
 
 msgid "Traceroute"

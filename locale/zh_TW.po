@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-14 03:54+0000\n"
+"POT-Creation-Date: 2009-03-21 13:54+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-19 07:52+0000\n"
+"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -66,7 +66,7 @@ msgstr "%s 介面"
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%s of %sB"
 
@@ -109,16 +109,10 @@ msgstr ""
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>1*</b> first MBR partition, for UFS "
-"formatted drive or Software RAID volume (<b>created before "
-"0.684b</b>).<br><b>2*</b> second MBR partition (<b>DATA partition</b>) if "
-"you select option 2 during installation on hard drive (<b>all "
-"versions</b>).<br><b>3*</b>,<b>4*</b> third or fourth primary MRB "
-"partition.<br><b>5*</b>,<b>6*</b> first or second logical MBR partition on "
-"extended partition. <br><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or "
-"CD/DVD.<br><br><b>*</b> for disks imported/formatted under a different OS "
-"(Windows, Linux, MAC, etc.) that use MBR partition table."
+"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
 
 msgid ""
@@ -1040,6 +1034,10 @@ msgid ""
 msgstr ""
 "Polling 是一種定期訪查網路卡資料區的方式（每秒將檢查 1000 次），這可以降低 CPU "
 "的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding delay）。但並非所有網路卡都支援 Polling。"
+
+#, php-format
+msgid "Device: %s | Total: %s | Used: %s | Free: %s"
+msgstr ""
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -2679,8 +2677,11 @@ msgstr "套件"
 msgid "Pairwise"
 msgstr ""
 
-msgid "Partition"
-msgstr "磁區"
+msgid "Partition number"
+msgstr ""
+
+msgid "Partition type"
+msgstr ""
 
 msgid "Partitions"
 msgstr "磁區"
@@ -4379,6 +4380,10 @@ msgstr ""
 msgid "Tools"
 msgstr "工具"
 
+#, php-format
+msgid "Total: %s | Used: %s | Free: %s"
+msgstr ""
+
 msgid "Traceroute"
 msgstr "Traceroute"
 
@@ -4722,6 +4727,9 @@ msgstr "寫入"
 msgid "Write only"
 msgstr "只供寫入"
 
+msgid "Wrong partition type or partition number."
+msgstr ""
+
 msgid "Yes"
 msgstr "是"
 
@@ -4990,6 +4998,9 @@ msgstr "平常日"
 
 #~ msgid "View"
 #~ msgstr "檢視"
+
+#~ msgid "Partition"
+#~ msgstr "磁區"
 
 #~ msgid ""
 #~ "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
