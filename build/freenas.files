@@ -527,6 +527,9 @@ usr/sbin/mount_smbfs
 ## usbdevs -- show USB devices connected to the system
 usr/sbin/usbdevs
 
+## iostat -- report I/O statistics
+usr/sbin/iostat
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
