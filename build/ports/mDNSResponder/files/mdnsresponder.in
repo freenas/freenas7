@@ -108,7 +108,9 @@ mdnsresponder_mkconf()
 			-v "//daap/servername" -n \
 			-o "_daap._tcp. local." -n \
 			-v "//daap/port" -n \
-			-o "txtvers=1 iTShVersion=131073 Version=196610" -n \
+			-o "txtvers=1" -n \
+			-o "iTSh Version=131073" -n \
+			-o "Version=196610" -n \
 			-n \
 			-v "//daap/servername" -n \
 			-o "_rsp._tcp. local." -n \
