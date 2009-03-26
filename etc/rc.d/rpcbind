@@ -8,7 +8,7 @@
 #
 
 # PROVIDE: rpcbind
-# REQUIRE: NETWORKING syslogd
+# REQUIRE: NETWORKING ntpdate syslogd
 # XQUERY: -i "count(//nfsd/enable) > 0" -o "0" -b
 # RCVAR: rpcbind
 
