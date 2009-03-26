@@ -46,3 +46,4 @@ usr/local/www/tab_r.gif
 etc/rc.d/pureftpd
 usr/local/sbin/pure-ftpd
 usr/local/sbin/pure-ftpwho
+etc/rc.d/proftpd.sh

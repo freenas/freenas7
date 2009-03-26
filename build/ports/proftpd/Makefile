@@ -57,7 +57,7 @@ post-configure:
 		${WRKSRC}/utils/ftpcount.1
 
 do-install:
-	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/ftpwho ${FREENAS_ROOTFS}/${PREFIX}/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/ftptop ${FREENAS_ROOTFS}/${PREFIX}/bin
