@@ -84,6 +84,7 @@ Minors changes:
   e.g. system.getInfo.
 - Add ability to configure ProFTPD module mod_ban via WebGUI (FR 2546338).
 - Add device I/O statistics to 'Status|Disks' page (FR 2704919).
+- Replace msntp with FreeBSD's ntpdate.
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct

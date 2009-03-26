@@ -196,7 +196,7 @@ if ($_POST) {
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("htpasswd");
 			$retval |= rc_exec_service("websrv_htpasswd");
- 			$retval |= rc_update_service("msntp");
+ 			$retval |= rc_update_service("ntpdate");
  			$retval |= rc_update_service("mdnsresponder");
  			$retval |= rc_update_service("bsnmpd");
  			$retval |= rc_update_service("cron");
@@ -324,8 +324,8 @@ function webguiproto_change() {
 						</td>
 			    </tr>
 					<?php html_checkbox("ntp_enable", gettext("Enable NTP"), $pconfig['ntp_enable'] ? true : false, gettext("Use the specified NTP server."), "", false, "ntp_change()");?>
-					<?php html_inputbox("ntp_timeservers", gettext("NTP time server"), $pconfig['ntp_timeservers'], gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"), false, 40);?>
-					<?php html_inputbox("ntp_updateinterval", gettext("Time update interval"), $pconfig['ntp_updateinterval'], gettext("Minutes between network time sync."), false, 20);?>
+					<?php html_inputbox("ntp_timeservers", gettext("NTP time server"), $pconfig['ntp_timeservers'], gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"), true, 40);?>
+					<?php html_inputbox("ntp_updateinterval", gettext("Time update interval"), $pconfig['ntp_updateinterval'], gettext("Minutes between network time sync."), true, 20);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
