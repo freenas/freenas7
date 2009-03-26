@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/ntpdate,v 1.13.2.2.6.1 2008/10/02 02:57:24 kensmith Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Remove requirement 'named'
+# - Add mkconf command
+#
+
+# PROVIDE: ntpdate
+# REQUIRE: NETWORKING syslogd
+# KEYWORD: nojail
+# XQUERY: -i "count(//system/ntp/enable) > 0" -o "0" -b
+# RCVAR: ntpdate
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="ntpdate"
+rcvar=`set_rcvar`
+
+load_rc_config "$name"
+
+# Custom commands
+stop_cmd=":"
+start_cmd="ntpdate_start"
+
+# Set timeservers
+_timeservers=`configxml_get "//system/ntp/timeservers"`
+if [ -n "${_timeservers}" ]; then
+	ntpdate_flags="${ntpdate_flags} ${_timeservers}"
+fi
+
+ntpdate_start()
+{
+	if [ -z "$ntpdate_hosts" -a -f ${ntpdate_config} ]; then
+		ntpdate_hosts=`awk '
+			/^server[ \t]*127.127/      {next}
+			/^(server|peer)/            {print $2}
+		' < ${ntpdate_config}`
+	fi
+	if [ -n "$ntpdate_hosts" -o -n "$rc_flags" ]; then
+		echo "Setting date via ntp."
+		${ntpdate_program:-ntpdate} $rc_flags $ntpdate_hosts
+	fi
+}
+
+run_rc_command "$1"

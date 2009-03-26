@@ -530,6 +530,9 @@ usr/sbin/usbdevs
 ## iostat -- report I/O statistics
 usr/sbin/iostat
 
+## ntpdate -- set the date and time via NTP
+usr/sbin/ntpdate
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1

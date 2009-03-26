@@ -95,6 +95,26 @@ HOME=/var/log
 #minute	hour	mday	month	wday	who	command
 #" > ${cron_config}
 
+	# Time synchronization
+	if [ 0 -lt `configxml_get_count "//system/ntp/enable"` ]; then
+		_interval=`configxml_get "//system/ntp/updateinterval"`
+		_mins=$(expr ${_interval} % 60)
+		_hours=$(expr ${_interval} / 60)
+
+		if [ "0" -ne "${_mins}" ]; then
+			_mins="*/${_mins}"
+		fi
+
+		if [ "0" -eq "${_hours}" ]; then
+			_hours="*"
+		else
+			_hours="*/${_hours}"
+		fi
+
+		echo "# Perform time synchronization via NTP." >> ${cron_config}
+		echo "${_mins} ${_hours} * * * root /etc/rc.d/ntpdate restart" >> ${cron_config}
+	fi
+
 	# RSYNC client
 	_index=`configxml_get_count "//rsync/rsyncclient[enable]"`
 	if [ 0 -lt ${_index} ]; then
