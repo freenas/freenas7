@@ -294,6 +294,54 @@ function system_get_hostname() {
 }
 
 /**
+ * Get device I/O statistics.
+ * @param[in] device	The device name, e.g. ad1
+ * @return	An array containing the I/O statistics kpt (kilobytes per transfer),
+ *					tps (transfers per second) and mps (megabytes per second). On
+ *					failure, FALSE will be returned.
+ * @code
+ * array(
+ *   [kpt] => 11.93
+ *   [tps] => 61
+ *   [mps] => 0.71)
+ * @endcode
+ */
+function system_get_device_iostat($device) {
+	$result = FALSE;
+
+	mwexec2("iostat -d {$device}", $rawdata);
+	if (preg_match("/^\s*(\S+)\s*(\S+)\s*(\S+)/", $rawdata[2], $matches)) {
+		$result = array();
+		$result['kpt'] = $matches[1];
+		$result['tps'] = $matches[2];
+		$result['mps'] = $matches[3];
+	}
+
+	return $result;
+}
+
+/**
+ * Get device temperature.
+ * @param[in] device	The device name, e.g. ad1
+ * @return	The temperature in C if available, otherwise FALSE.
+ */
+function system_get_device_temp($device) {
+	$result = FALSE;
+
+	mwexec2("smartctl -A /dev/{$device}", $rawdata);
+	foreach ($rawdata as $rawdatav) {
+		$arawdatav = preg_split("/\s+/", $rawdatav);
+		if ((0 == strncmp(trim($arawdatav[1]), "Temperature_", 12)) &&
+			(0 != strcmp(trim($arawdatav[0]), "190"))) {
+			$result = chop($arawdatav[9]);
+			break;
+		}
+	}
+
+	return $result;
+}
+
+/**
  * Get mount point usage information.
  * @return An array containg the requested informations:
  * @code
