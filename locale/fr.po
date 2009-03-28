@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-21 13:54+0000\n"
-"PO-Revision-Date: 2009-03-14 21:02+0000\n"
+"PO-Revision-Date: 2009-03-23 12:39+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
+"X-Launchpad-Export-Date: 2009-03-28 12:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -87,6 +87,12 @@ msgid ""
 "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
+"<b>EFI GPT</b> si vous voulez monter un disque formaté en GPT "
+"(<b>partitionnement par défaut depuis 0.684b</b>).<br><b>MBR</b> partition "
+"ou disque formaté en UFS, ou volume de RAID logiciel (<b>créé avant "
+"0.684b</b>) ou disque importé depuis un autre OS.<br><b>CD/DVD ou Ancien "
+"RAID logiciel</b> pour les volumes d'ancien RAID logiciel (<b>créé avant "
+"0.68</b>) ou CD/DVD."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -1080,7 +1086,7 @@ msgstr ""
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
-msgstr ""
+msgstr "Périphérique: %s | Total: %s | Utilisé: %s | Disponible: %s"
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -1890,7 +1896,7 @@ msgid "Graph"
 msgstr "Graphes"
 
 msgid "Graph shows last"
-msgstr "Afficher les dernieres"
+msgstr "Afficher les dernières"
 
 msgid "Greek"
 msgstr "Grec"
@@ -2845,10 +2851,10 @@ msgid "Pairwise"
 msgstr "Par paire"
 
 msgid "Partition number"
-msgstr ""
+msgstr "Numéro de partition"
 
 msgid "Partition type"
-msgstr ""
+msgstr "Type de partition"
 
 msgid "Partitions"
 msgstr "Partitions"
@@ -4740,7 +4746,7 @@ msgstr "Outils"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s"
-msgstr ""
+msgstr "Total: %s | Utilisé: %s | Disponible: %s"
 
 msgid "Traceroute"
 msgstr "Traceroute"
@@ -5120,7 +5126,7 @@ msgid "Write only"
 msgstr "Écriture seule"
 
 msgid "Wrong partition type or partition number."
-msgstr ""
+msgstr "Type de partition ou numéro de partition erroné"
 
 msgid "Yes"
 msgstr "Oui"
