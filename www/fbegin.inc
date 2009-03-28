@@ -208,7 +208,7 @@ function display_menu($menuid) {
 	</ul>
 	<div style="clear:both"></div>
 </div>
-<div id="content">
+<div id="pagecontent">
 	<table width="100%" border="0" cellspacing="0" cellpadding="2">
 	  <tr valign="top">
 	    <td>

@@ -268,25 +268,25 @@ div#header .hostname {
 	margin-top: -18px;
 	margin-right: 25px;
 }
-div#footer {
+div#pagefooter {
 	margin: 5px 0px 20px 0px;
 	text-align: center;
 }
-div#footer span {
+div#pagefooter span {
 	font-size: 11px;
 	color: #777777;
 }
-div#footer span a:link, div#footer span a:active, div#footer span a:visited {
+div#pagefooter span a:link, div#pagefooter span a:active, div#pagefooter span a:visited {
 	color: #777777;
 }
-div#footer span a:hover {
+div#pagefooter span a:hover {
 	color: #999999;
 }
 div#headernavbar {
 	width: 100%;
 	background: black url(/navbar_default.gif) center center repeat-x;
 }
-div#content {
+div#pagecontent {
 	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
 	border: 1px solid #DEDBD1;
 	margin: 20px 25px 10px 25px;
