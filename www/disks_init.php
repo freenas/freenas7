@@ -4,7 +4,7 @@
 	disks_init.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -90,7 +90,8 @@ if ($_POST) {
 			$do_format = false;
 		}
 
-		if (strstr($cfdevice, $disk)) {
+		// Check if user tries to format the OS disk.
+		if (preg_match("/" . preg_quote($disk, "/") . "\D+/", $cfdevice)) {
 			$input_errors[] = gettext("Can't format the OS origin disk!");
 		}
 
