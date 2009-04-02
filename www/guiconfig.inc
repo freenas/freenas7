@@ -158,6 +158,9 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 				case 'time':					$valid = (FALSE !== strptime($postdata[$reqdfields[$i]], "%H:%M:%S"));
 															$message = sprintf( gettext("The attribute '%s' is no valid time."), $reqdfieldsn[$i]);
 															break;
+				case 'array':					$valid = (is_array($postdata[$reqdfields[$i]]) && !empty($postdata[$reqdfields[$i]]));
+															$message = sprintf( gettext("The attribute '%s' must contain at least one entry."), $reqdfieldsn[$i]);
+															break;
 			}
 			if (!$valid) {
 				$input_errors[] = $message;
@@ -408,6 +411,14 @@ function html_ipv6addrbox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenet
 	$ctrl = new HTMLIPv6AddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $desc);
 	$ctrl->SetRequired($required);
 	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
+
+function html_folderbox($ctrlname, $title, $value, $desc, $path, $required = false, $readonly = false) {
+	$ctrl = new HTMLFolderBox($ctrlname, $title, $value, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->SetPath($path);
 	$ctrl->Render();
 }
 ?>
