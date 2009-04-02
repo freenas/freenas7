@@ -47,7 +47,7 @@ if ($_POST) {
 	if (!file_exists($d_sysrebootreqd_path)) {
 		$retval |= updatenotify_process("ftpd_mod_ban", "ftpd_mod_ban_process_updatenotification");
 		config_lock();
-		$retval |= rc_update_service("proftpd.sh");
+		$retval |= rc_update_service("proftpd");
 		config_unlock();
 	}
 	$savemsg = get_std_save_message($retval);
