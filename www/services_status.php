@@ -44,7 +44,7 @@ $a_service[] = array("desc" => gettext("RSYNC"), "link" => "services_rsyncd.php"
 $a_service[] = array("desc" => gettext("Unison"), "link" => "services_unison.php", "config" => "unison", "scriptname" => "unison");
 $a_service[] = array("desc" => gettext("iSCSI Target"), "link" => "services_iscsitarget.php", "config" => "iscsitarget", "scriptname" => "iscsi_target");
 $a_service[] = array("desc" => gettext("UPnP"), "link" => "services_upnp.php", "config" => "upnp", "scriptname" => "fuppes");
-$a_service[] = array("desc" => gettext("iTunes/DAAP"), "link" => "services_daap.php", "config" => "daap", "scriptname" => "mt-daapd.sh");
+$a_service[] = array("desc" => gettext("iTunes/DAAP"), "link" => "services_daap.php", "config" => "daap", "scriptname" => "mt-daapd");
 $a_service[] = array("desc" => gettext("Dynamic DNS"), "link" => "services_dynamicdns.php", "config" => "dynamicdns", "scriptname" => "inadyn");
 $a_service[] = array("desc" => gettext("SNMP"), "link" => "services_snmp.php", "config" => "snmpd", "scriptname" => "bsnmpd");
 $a_service[] = array("desc" => gettext("UPS"), "link" => "services_ups.php", "config" => "ups", "scriptname" => "nut");

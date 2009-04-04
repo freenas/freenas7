@@ -17,7 +17,9 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="mtdaapd_prestart"
+extra_commands="mkconf"
+start_precmd="mtdaapd_mkconf"
+mkconf_cmd="mtdaapd_mkconf"
 
 # Defaults
 mtdaapd_enable=${mtdaapd_enable:-"NO"}
@@ -60,7 +62,7 @@ mtdaapd_plugin_dir=${mtdaapd_plugin_dir:-"/usr/local/share/mt-daapd/plugins"}
 command="/usr/local/sbin/mt-daapd"
 command_args="-m -c ${mtdaapd_config}"
 
-mtdaapd_prestart()
+mtdaapd_mkconf()
 {
 	local _port _dbparms _mp3dir _rescaninterval _alwaysscan _scantype _servername _admin_pw
 
@@ -68,7 +70,10 @@ mtdaapd_prestart()
 	_servername=`configxml_get "//daap/servername"`
 	_port=`configxml_get "//daap/port"`
 	_dbparms=`configxml_get "//daap/dbdir"`
-	_mp3dir=`configxml_get "//daap/content"`
+	_mp3dir=`/usr/local/bin/xml sel -t -m "//daap/content" \
+		-v . \
+		-i "position() != last()" -o "," -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
 	_rescaninterval=`configxml_get "//daap/rescaninterval"`
 	_alwaysscan=0
 	_scantype=`configxml_get "//daap/scantype"`

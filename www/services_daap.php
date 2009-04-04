@@ -42,7 +42,7 @@ $pconfig['enable'] = isset($config['daap']['enable']);
 $pconfig['servername'] = $config['daap']['servername'];
 $pconfig['port'] = $config['daap']['port'];
 $pconfig['dbdir'] = $config['daap']['dbdir'];
-$pconfig['content'] = explode(",", $config['daap']['content'][0]);
+$pconfig['content'] = $config['daap']['content'];
 $pconfig['rescaninterval'] = $config['daap']['rescaninterval'];
 $pconfig['alwaysscan'] = isset($config['daap']['alwaysscan']);
 $pconfig['scantype'] = $config['daap']['scantype'];
@@ -63,7 +63,7 @@ if ($_POST) {
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "servername port dbdir content admin_pw");
 		$reqdfieldsn = array(gettext("Server name"), gettext("Port"), gettext("Database directory"), gettext("Content"), gettext("Password"));
-		$reqdfieldst = explode(" ", "string port string string password");
+		$reqdfieldst = explode(" ", "string port string array password");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -83,7 +83,7 @@ if ($_POST) {
 		$config['daap']['servername'] = $_POST['servername'];
 		$config['daap']['port'] = $_POST['port'];
 		$config['daap']['dbdir'] = $_POST['dbdir'];
-		$config['daap']['content'] = implode(",", $_POST['content']);
+		$config['daap']['content'] = $_POST['content'];
 		$config['daap']['rescaninterval'] = $_POST['rescaninterval'];
 		$config['daap']['alwaysscan'] = $_POST['alwaysscan'] ? true : false;
 		$config['daap']['scantype'] = $_POST['scantype'];
@@ -94,7 +94,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("mt-daapd.sh");
+			$retval |= rc_update_service("mt-daapd");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}

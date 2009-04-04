@@ -1713,6 +1713,16 @@ function config_upgrade() {
 		$config['version'] = "7.3";
 	}
 
+	/* Convert 7.3 -> 7.4 */
+	/* Convert //daap/content from single string to array. */
+	if ($config['version'] === "7.3") {
+		if (isset($config['daap']['content'])) {
+			$config['daap']['content'] = explode(",", $config['daap']['content'][0]);
+		}
+
+		$config['version'] = "7.4";
+	}
+
 	write_config();
 
 	if (is_booting())
