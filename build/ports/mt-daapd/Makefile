@@ -34,9 +34,9 @@ do-install:
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/out-daap.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/out-daap.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/rsp.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/rsp.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/ssc-ffmpeg.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/ssc-ffmpeg.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libout-daap.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/out-daap.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/librsp.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/rsp.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libssc-ffmpeg.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/ssc-ffmpeg.so
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 
