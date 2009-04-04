@@ -57,6 +57,7 @@ Majors changes:
 - Upgrade transmission to 1.51.
 - Upgrade fusefs-ntfs/ntfs-3g to 2009.2.1.
 - Upgrade 3Ware serial ATA RAID controller driver to 9.5.1.
+- Upgrade bash to 4.0.10.
 
 Minors changes:
 - Add 'SSL/TLS only' on 'Services|FTP' page to allow TLS/SSL connections only.

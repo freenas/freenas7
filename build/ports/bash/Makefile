@@ -1,6 +1,6 @@
 PORTNAME=				bash
-PATCHLEVEL=			39
-PORTVERSION=		3.2.${PATCHLEVEL:S/^0//g}
+PATCHLEVEL=			10
+PORTVERSION=		4.0.${PATCHLEVEL:S/^0//g}
 PORTREVISION?=	1
 CATEGORIES=			shells
 COMMENT=				The GNU Project's Bourne Again SHell
@@ -26,6 +26,7 @@ EXTRA_PATCHES+=	${PATCHDIR}/xpatch-implicitcd
 EXTRA_PATCHES+=	${PATCHDIR}/xpatch-colonbreakswords
 
 GNU_CONFIGURE=	yes
+USE_BISON=			build
 USE_GETTEXT=		yes
 CONFIGURE_ARGS=	--without-bash-malloc \
 								--disable-rpath \
@@ -37,7 +38,7 @@ CPPFLAGS+=			${PTHREAD_CFLAGS} \
 LDFLAGS+=				-L${LOCALBASE}/lib
 CONFIGURE_ENV=	CPPFLAGS="${CPPFLAGS}" \
 								LDFLAGS="${LDFLAGS}" \
-								YACC="${YACC}"
+								YACC="bison"
 
 .include <bsd.port.pre.mk>
 
@@ -55,6 +56,9 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bash ${FREENAS_ROOTFS}/usr/local/bin
 	@${LN} -fsv /usr/local/bin/bash ${FREENAS_ROOTFS}/usr/local/bin/rbash
 	@${LN} -fsv /usr/local/bin/bash ${FREENAS_ROOTFS}/bin/bash
+
+regress: build
+	cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} test
 
 cklatest:
 	-ncftpls \
