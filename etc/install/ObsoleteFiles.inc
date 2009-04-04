@@ -48,3 +48,4 @@ usr/local/sbin/pure-ftpd
 usr/local/sbin/pure-ftpwho
 etc/rc.d/proftpd.sh
 usr/local/www/services_upnp_edit.php
+etc/rc.d/mt-daapd.sh
