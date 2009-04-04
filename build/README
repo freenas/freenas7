@@ -25,9 +25,14 @@ Check that you have installed the following ports:
 - subversion
 - bash
 - cdrtools
-- perl (required by misc ports)
-- ruby (required by misc ports)
 - portupgrade
+
+Additional you might install the following ports, otherwise they are build
+from sources:
+- perl
+- ruby
+- m4
+- bison
 
 Start /freenas/svn/build/make.sh
 
