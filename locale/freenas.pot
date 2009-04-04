@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-03-21 13:15+0000\n"
+"PO-Revision-Date: 2009-04-04 18:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -210,9 +210,6 @@ msgid "Add command"
 msgstr ""
 
 msgid "Add device"
-msgstr ""
-
-msgid "Add directory"
 msgstr ""
 
 msgid "Add disk"
@@ -522,6 +519,9 @@ msgstr ""
 msgid "Cannot get data about interface"
 msgstr ""
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr ""
 
@@ -529,6 +529,9 @@ msgid "Causes the server to display the network information for the specified IP
 msgstr ""
 
 msgid "Certificate"
+msgstr ""
+
+msgid "Change"
 msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
@@ -583,9 +586,6 @@ msgid "Collisions"
 msgstr ""
 
 msgid "Cols"
-msgstr ""
-
-msgid "Comma separated list of directories to search for files to share."
 msgstr ""
 
 msgid "Command"
@@ -785,9 +785,6 @@ msgstr ""
 msgid "Delete device"
 msgstr ""
 
-msgid "Delete directory"
-msgstr ""
-
 msgid "Delete disk"
 msgstr ""
 
@@ -928,9 +925,6 @@ msgstr ""
 msgid "Directory mask"
 msgstr ""
 
-msgid "Directory to be shared."
-msgstr ""
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 
@@ -1001,9 +995,6 @@ msgstr ""
 msgid "Do you really want to delete this device?"
 msgstr ""
 
-msgid "Do you really want to delete this directory entry?"
-msgstr ""
-
 msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
 msgstr ""
 
@@ -1053,6 +1044,9 @@ msgid "Do you really want to delete this volume?\\n!!! Note, all data will get l
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
+msgstr ""
+
+msgid "Do you really want to remove the selected item from the list?"
 msgstr ""
 
 msgid "Do you really want to uninstall this package?"
@@ -1167,9 +1161,6 @@ msgid "Edit command"
 msgstr ""
 
 msgid "Edit device"
-msgstr ""
-
-msgid "Edit directory"
 msgstr ""
 
 msgid "Edit disk"
@@ -1712,6 +1703,9 @@ msgid "I/O errors"
 msgstr ""
 
 msgid "I/O packets"
+msgstr ""
+
+msgid "I/O statistics"
 msgstr ""
 
 msgid "IP address"
@@ -2878,6 +2872,9 @@ msgstr ""
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr ""
 
@@ -3393,6 +3390,10 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must be a string."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
 msgstr ""
 
 msgid "The basic configuration usually takes the form of 'daemon : address : action'. Where daemon is the daemon name of the service started. The address can be a valid hostname, an IP address or an IPv6 address enclosed in brackets. The action field can be either allow or deny to grant or deny access appropriately. Keep in mind that configuration works off a first rule match semantic, meaning that the configuration file is scanned in ascending order for a matching rule. When a match is found the rule is applied and the search process will halt."
