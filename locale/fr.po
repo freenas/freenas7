@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
 "PO-Revision-Date: 2009-03-23 12:39+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-28 12:56+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -284,9 +284,6 @@ msgstr "Ajouter une commande"
 
 msgid "Add device"
 msgstr "Ajout périphérique"
-
-msgid "Add directory"
-msgstr "Ajouter un répertoire"
 
 msgid "Add disk"
 msgstr "Ajouter un disque"
@@ -650,6 +647,9 @@ msgstr ""
 msgid "Cannot get data about interface"
 msgstr "Impossible de collecter des donnees sur cette interface"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr "Modification de casse"
 
@@ -665,6 +665,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "Certificat"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Ce changement ne prend effet qu'au prochain redémarrage."
@@ -728,11 +731,6 @@ msgstr "Collisions"
 
 msgid "Cols"
 msgstr "Colonnes"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr ""
-"Séparer par des virgules la liste des répertoires pour la recherche des "
-"fichiers à partager."
 
 msgid "Command"
 msgstr "Commande"
@@ -952,9 +950,6 @@ msgstr "Supprimer la commande"
 msgid "Delete device"
 msgstr "Supprimer périphérique"
 
-msgid "Delete directory"
-msgstr "Supprimer un répertoire"
-
 msgid "Delete disk"
 msgstr "Supprimer le  disque"
 
@@ -1119,9 +1114,6 @@ msgstr "Listing du répertoire"
 msgid "Directory mask"
 msgstr "Masque de répertoire"
 
-msgid "Directory to be shared."
-msgstr "Répertoire à partager."
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Désactiver AFP-sur-Appletalk pour prévenir les connections DDP."
 
@@ -1196,9 +1188,6 @@ msgstr "Êtes-vous sûr de vouloir supprimer cette tâche cron ?"
 msgid "Do you really want to delete this device?"
 msgstr "Voulez vous réellement supprimer ce périphérique?"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "Voulez-vous vraiment supprimer cette entrée de répertoire?"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1266,6 +1255,9 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 "Voulez-vous vraiment formater ce disque? Toutes les données seront perdues!"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Voulez vous réellement désinstaller ce paquet?"
@@ -1387,9 +1379,6 @@ msgstr "Modifier la commande"
 
 msgid "Edit device"
 msgstr "Editer périphériqe"
-
-msgid "Edit directory"
-msgstr "Modifier un répertoire"
 
 msgid "Edit disk"
 msgstr "Modifier le disque"
@@ -2009,6 +1998,9 @@ msgstr "Erreurs E/S"
 
 msgid "I/O packets"
 msgstr "Paquets E/S"
+
+msgid "I/O statistics"
+msgstr ""
 
 msgid "IP address"
 msgstr "Adresse IP"
@@ -3365,6 +3357,9 @@ msgstr "Sécurité"
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "Sélectionnez un disque configuré pour le pilotage S.M.A.R.T."
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr "Sélectionnez le point de montage où créer le fichier d'échange."
 
@@ -3975,6 +3970,10 @@ msgstr "L'attribut '%s' doit être un nombre."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "L'attribut '%s' doit être une chaîne de caractères."
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -6074,6 +6073,21 @@ msgstr "jours de la semaine"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "Aucun contenu à partager."
+
+#~ msgid "Add directory"
+#~ msgstr "Ajouter un répertoire"
+
+#~ msgid "Edit directory"
+#~ msgstr "Modifier un répertoire"
+
+#~ msgid "Delete directory"
+#~ msgstr "Supprimer un répertoire"
+
+#~ msgid "Do you really want to delete this directory entry?"
+#~ msgstr "Voulez-vous vraiment supprimer cette entrée de répertoire?"
+
+#~ msgid "Directory to be shared."
+#~ msgstr "Répertoire à partager."
 
 #~ msgid "AFP Server"
 #~ msgstr "Serveur AFP"

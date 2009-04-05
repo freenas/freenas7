@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
 "PO-Revision-Date: 2009-01-25 08:52+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -256,9 +256,6 @@ msgstr "Aggiungi comando"
 
 msgid "Add device"
 msgstr "Aggiungere dispositivo"
-
-msgid "Add directory"
-msgstr "Aggiungi directory"
 
 msgid "Add disk"
 msgstr "Aggiungi disco"
@@ -609,6 +606,9 @@ msgstr "Non si puo' montare la partizione 1, la partizione DATI e' la 2."
 msgid "Cannot get data about interface"
 msgstr "Non e' possibile ottenere dati sull'interfaccia"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr "Case Folding"
 
@@ -621,6 +621,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "Certificato"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "I cambiamenti a questa opzione avranno effetto dopo un riavvio."
@@ -683,10 +686,6 @@ msgstr "Collisioni"
 
 msgid "Cols"
 msgstr "Colonne"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr ""
-"Elenco di directory separato da virgole per cercare i files da condividere."
 
 msgid "Command"
 msgstr "Comando"
@@ -906,9 +905,6 @@ msgstr "Cancella comando"
 msgid "Delete device"
 msgstr "Elimina dispositivo"
 
-msgid "Delete directory"
-msgstr "Cancella directory"
-
 msgid "Delete disk"
 msgstr "Cancella disco"
 
@@ -1069,9 +1065,6 @@ msgstr "Elenco delle cartelle"
 msgid "Directory mask"
 msgstr "Maschera dell'indice"
 
-msgid "Directory to be shared."
-msgstr "Directory da condividere."
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Disattiva AFP-over-AppleTalk per impedire connessioni DDP."
 
@@ -1144,9 +1137,6 @@ msgstr "Si desidera realmente cancellare questo lavoro del cron?"
 msgid "Do you really want to delete this device?"
 msgstr "Si desidera realmente cancellare questo dispositivo?"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "Si vuole realmente cancellare questa directory?"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1214,6 +1204,9 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 "Si vuole realmente formattare questo disco? Verranno persi tutti i dati!"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Si desidera realmente disinstallare questo pacchetto?"
@@ -1331,9 +1324,6 @@ msgstr "Modifica comando"
 
 msgid "Edit device"
 msgstr "Modifica dispositivo"
-
-msgid "Edit directory"
-msgstr "Edita directory"
 
 msgid "Edit disk"
 msgstr "Edita disco"
@@ -1936,6 +1926,9 @@ msgstr "Errori I/O"
 
 msgid "I/O packets"
 msgstr "Pacchetti I/O"
+
+msgid "I/O statistics"
+msgstr ""
 
 msgid "IP address"
 msgstr "Indirizzo IP"
@@ -3239,6 +3232,9 @@ msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 "Selezionare un disco che sia abilitato per il monitoraggio S.M.A.R.T."
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr "Selezionare il punto di montaggio dove creare il file di swap."
 
@@ -3819,6 +3815,10 @@ msgstr "L' attributo '%s' deve essere un numero."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "L'attributo '%s' deve essere una stringa."
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -5646,6 +5646,21 @@ msgstr "giorni della settimana"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "Nessuna directory di contenuti da condividere."
+
+#~ msgid "Add directory"
+#~ msgstr "Aggiungi directory"
+
+#~ msgid "Edit directory"
+#~ msgstr "Edita directory"
+
+#~ msgid "Delete directory"
+#~ msgstr "Cancella directory"
+
+#~ msgid "Do you really want to delete this directory entry?"
+#~ msgstr "Si vuole realmente cancellare questa directory?"
+
+#~ msgid "Directory to be shared."
+#~ msgstr "Directory da condividere."
 
 #~ msgid "AFP Server"
 #~ msgstr "Server AFP"

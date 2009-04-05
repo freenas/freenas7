@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
 "PO-Revision-Date: 2009-03-22 20:28+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-28 12:57+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -282,9 +282,6 @@ msgstr "Добавить команду"
 
 msgid "Add device"
 msgstr "Добавить устройство"
-
-msgid "Add directory"
-msgstr "Добавить каталог"
 
 msgid "Add disk"
 msgstr "Добавить диск"
@@ -640,6 +637,9 @@ msgstr "Невозможно смонтировать системный раз�
 msgid "Cannot get data about interface"
 msgstr "Невозможно получить информацию об интерфейсе"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr "Переключение регистра"
 
@@ -655,6 +655,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "Сертификат"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Изменения этого параметра подействуют после перезагрузки."
@@ -718,9 +721,6 @@ msgstr "Коллизий"
 
 msgid "Cols"
 msgstr "Колонки"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr "Запятой разделяется список каталогов для поиска общих файлов."
 
 msgid "Command"
 msgstr "Команда"
@@ -938,9 +938,6 @@ msgstr "Удалить команду"
 msgid "Delete device"
 msgstr "Удалить устройство"
 
-msgid "Delete directory"
-msgstr "Удалить каталог"
-
 msgid "Delete disk"
 msgstr "Удалить диск"
 
@@ -1103,9 +1100,6 @@ msgstr "Список файлов каталога"
 msgid "Directory mask"
 msgstr "Маска каталога"
 
-msgid "Directory to be shared."
-msgstr "Общий каталог"
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Запретить AFP-over-Appletalk для предотвращения подключений DDP"
 
@@ -1180,9 +1174,6 @@ msgstr "Вы действительно хотите удалить это за�
 msgid "Do you really want to delete this device?"
 msgstr "Вы действительно хотите удалить это устройство?"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "Вы действительно хотите удалить этот каталог?"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1251,6 +1242,9 @@ msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 "Вы действительно хотите отформатировать этот диск? Все данные на диске будут "
 "уничтожены!"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Вы действительно хотите удалить этот пакет?"
@@ -1369,9 +1363,6 @@ msgstr "Редактировать команду"
 
 msgid "Edit device"
 msgstr "Изменить устройство"
-
-msgid "Edit directory"
-msgstr "Изменить каталог"
 
 msgid "Edit disk"
 msgstr "Изменить диск"
@@ -1985,6 +1976,9 @@ msgstr "Ошибок ввода/вывода"
 
 msgid "I/O packets"
 msgstr "Пакетов ввода/вывода"
+
+msgid "I/O statistics"
+msgstr ""
 
 msgid "IP address"
 msgstr "IP-адрес"
@@ -3322,6 +3316,9 @@ msgstr "Безопасность"
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "Укажите диск с включенным S.M.A.R.T."
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr "Выберите точку монтирования для создания файла подкачки"
 
@@ -3915,6 +3912,10 @@ msgstr "Атрибут '%s' должен быть числом."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Атрибут '%s' должен быть строкой."
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -5890,6 +5891,18 @@ msgstr "дней недели"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "Нет общего каталога."
+
+#~ msgid "Add directory"
+#~ msgstr "Добавить каталог"
+
+#~ msgid "Edit directory"
+#~ msgstr "Изменить каталог"
+
+#~ msgid "Delete directory"
+#~ msgstr "Удалить каталог"
+
+#~ msgid "Do you really want to delete this directory entry?"
+#~ msgstr "Вы действительно хотите удалить этот каталог?"
 
 #~ msgid "AFP Server"
 #~ msgstr "Сервер AFP"

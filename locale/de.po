@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
-"PO-Revision-Date: 2009-03-22 10:24+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
+"PO-Revision-Date: 2009-04-05 12:09+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -281,9 +281,6 @@ msgstr "Befehl hinzufügen"
 
 msgid "Add device"
 msgstr "Gerät hinzufügen"
-
-msgid "Add directory"
-msgstr "Füge Verzeichnis hinzu"
 
 msgid "Add disk"
 msgstr "Festplatte hinzufügen"
@@ -646,6 +643,9 @@ msgstr ""
 msgid "Cannot get data about interface"
 msgstr "Kann von der Schnittstelle keine Daten erfassen"
 
+msgid "Capacity"
+msgstr "Kapazität"
+
 msgid "Case Folding"
 msgstr "Gross-/Kleinschreibung erzwingen"
 
@@ -662,6 +662,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "Zertifikat"
+
+msgid "Change"
+msgstr "Ändern"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -725,11 +728,6 @@ msgstr "Kollisionen"
 
 msgid "Cols"
 msgstr "Spalten"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr ""
-"Komma separierte Liste von Verzeichnissen welche nach Dateien zum freigeben "
-"durchsucht werden."
 
 msgid "Command"
 msgstr "Befehl"
@@ -948,9 +946,6 @@ msgstr "Lösche Befehl"
 msgid "Delete device"
 msgstr "Lösche Gerät"
 
-msgid "Delete directory"
-msgstr "Lösche Verzeichnis"
-
 msgid "Delete disk"
 msgstr "Lösche Festplatte"
 
@@ -1115,9 +1110,6 @@ msgstr "Verzeichnisauflistung"
 msgid "Directory mask"
 msgstr "Verzeichnismaske"
 
-msgid "Directory to be shared."
-msgstr "Freizugebendes Verzeichnis."
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 "Deaktivieren von \"AFP-over-Appletalk\", um DDP Verbindungen zu verhindern."
@@ -1193,9 +1185,6 @@ msgstr "Wollen Sie den Cronjob wirklich löschen?"
 msgid "Do you really want to delete this device?"
 msgstr "Wollen Sie dieses Gerät wirklich löschen?"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "Wollen Sie wirklich diesen Verzeichniseintrag löschen?"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1264,6 +1253,10 @@ msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 "Wollen Sie diese Festplatte wirklich formatieren? Alle Daten gehen dabei "
 "verloren!"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
+"Wollen Sie wirklich den selektierten Eintrag aus der Liste entfernen?"
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Soll das Paket wirklich deinstalliert werden?"
@@ -1385,9 +1378,6 @@ msgstr "Befehl bearbeiten"
 
 msgid "Edit device"
 msgstr "Gerät ändern"
-
-msgid "Edit directory"
-msgstr "Bearbeite Verzeichnis"
 
 msgid "Edit disk"
 msgstr "Bearbeite Festplatte"
@@ -2009,6 +1999,9 @@ msgstr "I/O-Fehler"
 
 msgid "I/O packets"
 msgstr "I/O-Pakete"
+
+msgid "I/O statistics"
+msgstr "I/O Statistik"
 
 msgid "IP address"
 msgstr "IP-Adresse"
@@ -3368,6 +3361,9 @@ msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 "Wähle ein Gerät welches für die S.M.A.R.T. Überwachung aktiviert wurde."
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr "Wählen Sie den Einhängpunkt wo die Swap Datei erzeugt werden soll."
 
@@ -3980,6 +3976,10 @@ msgstr "Das Attribut '%s' muss eine Zahl sein."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Der Wert '%s' muss eine Zeichenfolge sein."
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr "Das Attribut '%s' muss mindestens einen Eintrag enthalten."
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -6047,6 +6047,21 @@ msgstr "Wochentagen"
 #~ msgid "No content directory to be shared."
 #~ msgstr "Kein Verzeichnis freigegeben."
 
+#~ msgid "Add directory"
+#~ msgstr "Füge Verzeichnis hinzu"
+
+#~ msgid "Edit directory"
+#~ msgstr "Bearbeite Verzeichnis"
+
+#~ msgid "Delete directory"
+#~ msgstr "Lösche Verzeichnis"
+
+#~ msgid "Do you really want to delete this directory entry?"
+#~ msgstr "Wollen Sie wirklich diesen Verzeichniseintrag löschen?"
+
+#~ msgid "Directory to be shared."
+#~ msgstr "Freizugebendes Verzeichnis."
+
 #~ msgid "AFP Server"
 #~ msgstr "AFP-Server"
 
@@ -6670,6 +6685,11 @@ msgstr "Wochentagen"
 
 #~ msgid "IP or FQDN address of remote RSYNC server."
 #~ msgstr "IP oder FQDN Addresse des Remote RSYNC Servers."
+
+#~ msgid "Comma separated list of directories to search for files to share."
+#~ msgstr ""
+#~ "Komma separierte Liste von Verzeichnissen welche nach Dateien zum freigeben "
+#~ "durchsucht werden."
 
 #~ msgid "Client RSYNC job"
 #~ msgstr "RSYNC Auftrag beim Klienten"

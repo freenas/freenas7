@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
 "PO-Revision-Date: 2009-03-08 19:53+0000\n"
 "Last-Translator: Linus C Unneback <linus@folkdatorn.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -271,9 +271,6 @@ msgstr "Lägg till kommando"
 
 msgid "Add device"
 msgstr "Lägg till enhet"
-
-msgid "Add directory"
-msgstr "Lägg till katalog"
 
 msgid "Add disk"
 msgstr "Lägg till disk"
@@ -619,6 +616,9 @@ msgstr "Kan inte montera systempartition 1, DATA-partitionen är 2."
 msgid "Cannot get data about interface"
 msgstr "Kan inte få data om gränssnittet"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr ""
 
@@ -631,6 +631,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "Certifikat"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -693,10 +696,6 @@ msgstr "Kollisioner"
 
 msgid "Cols"
 msgstr "Kolumner"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr ""
-"Kommaseparerad lista av kataloger som ska söker för filer som delas ut."
 
 msgid "Command"
 msgstr "Kommando"
@@ -910,9 +909,6 @@ msgstr "Ta bort kommando"
 msgid "Delete device"
 msgstr "Ta bort enhet"
 
-msgid "Delete directory"
-msgstr "Ta bort katalog"
-
 msgid "Delete disk"
 msgstr "Ta bort disk"
 
@@ -1063,9 +1059,6 @@ msgstr "Kataloglista"
 msgid "Directory mask"
 msgstr "Katalogmask"
 
-msgid "Directory to be shared."
-msgstr "Katalog att delas ut."
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Avaktivera AFP-over-Appletalk för att förhindra DDP-anslutningar."
 
@@ -1140,9 +1133,6 @@ msgstr "Vill du verkligen ta bort detta cron-jobb?"
 msgid "Do you really want to delete this device?"
 msgstr "Vill du verkligen ta bort denna enhet?"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "Vill du verkligen ta bort denna katalogpost?"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1210,6 +1200,9 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 "Vill du verkligen formatera den här disken? All data kommer att förloras!"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Vill du verkligen avinstallera detta paketet?"
@@ -1326,9 +1319,6 @@ msgstr "Redigera kommando"
 
 msgid "Edit device"
 msgstr "Redigera enhet"
-
-msgid "Edit directory"
-msgstr "Redigera katalog"
 
 msgid "Edit disk"
 msgstr "Redigera disk"
@@ -1930,6 +1920,9 @@ msgstr "In/ut-fel"
 
 msgid "I/O packets"
 msgstr "In/ut-paket"
+
+msgid "I/O statistics"
+msgstr ""
 
 msgid "IP address"
 msgstr "IP-adress"
@@ -3181,6 +3174,9 @@ msgstr ""
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr ""
 
@@ -3737,6 +3733,10 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must be a string."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
 msgstr ""
 
 msgid ""
@@ -5061,6 +5061,15 @@ msgstr "veckodagar"
 
 #~ msgid "SSH key"
 #~ msgstr "SSH-nyckel"
+
+#~ msgid "Add directory"
+#~ msgstr "Lägg till katalog"
+
+#~ msgid "Edit directory"
+#~ msgstr "Redigera katalog"
+
+#~ msgid "Delete directory"
+#~ msgstr "Ta bort katalog"
 
 #~ msgid "AFP Server"
 #~ msgstr "AFP-server"
