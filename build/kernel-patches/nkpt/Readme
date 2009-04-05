@@ -1,3 +1,9 @@
+Informations:
+-------------
+http://kerneltrap.org/mailarchive/freebsd-current/2008/3/28/1282784
+http://kerneltrap.org/mailarchive/freebsd-current/2008/3/29/1290894
+
 Create patch:
+-------------
 cd /usr/src/sys/i386/include
 diff -ruN pmap.h.orig pmap.h > pmap.h.diff

@@ -1,6 +1,6 @@
 # Patch number of kernel page tables to allow booting of larger compressed mfs_root images
 # on systems with > 2GB RAM.
-# http://markmail.org/message/737aymqrbntjxktc
+# http://kerneltrap.org/mailarchive/freebsd-current/2008/3/29/1290894
 
 UNAME?=		/usr/bin/uname
 
