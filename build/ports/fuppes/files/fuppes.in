@@ -18,12 +18,13 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-start_precmd="fuppes_prestart"
+start_precmd="fuppes_mkconf"
 stop_postcmd="fuppes_poststop"
+mkconf_cmd="fuppes_mkconf"
 rebuilddb_cmd="fuppes_dboptions"
 updatedb_cmd="fuppes_dboptions"
 rebuildvcont_cmd="fuppes_dboptions"
-extra_commands="rebuilddb updatedb rebuildvcont"
+extra_commands="mkconf rebuilddb updatedb rebuildvcont"
 
 # Defaults
 fuppes_enable=${fuppes_enable:-"NO"}
@@ -44,7 +45,7 @@ command_args="--config-dir ${fuppes_configdir} --config-file ${fuppes_config} --
 # Set kill signal to KILL, otherwise fuppes takes too long to terminate.
 sig_stop=${sig_stop-"KILL"}
 
-fuppes_prestart()
+fuppes_mkconf()
 {
 	local _if _port _name _profile _deviceip _command_args
 
