@@ -11,5 +11,7 @@ ARCH!=	${UNAME} -p
 
 install:
 	@if [ "${ARCH}" != "amd64" ]; then \
-		patch --forward --remove-empty-files --unified --directory=/sys/i386/include < ${.CURDIR}/files/pmap.h.diff; \
+		patch --forward --remove-empty-files --unified --directory=/sys/i386/include < ${.CURDIR}/files/patch-sys_i386_include_pmap.h.diff; \
+	else \
+		patch --forward --remove-empty-files --unified --directory=/sys/amd64/include < ${.CURDIR}/files/patch-sys_amd64_include_pmap.h.diff; \
 	fi
