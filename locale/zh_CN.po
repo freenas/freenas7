@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
 "PO-Revision-Date: 2009-01-31 14:11+0000\n"
 "Last-Translator: Zetao Zhang <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -281,9 +281,6 @@ msgstr "添加命令"
 
 msgid "Add device"
 msgstr "添加设备"
-
-msgid "Add directory"
-msgstr "添加目录"
 
 msgid "Add disk"
 msgstr "添加磁盘"
@@ -625,6 +622,9 @@ msgstr "不能挂载系统分区(第1区)，资料分区为第2区。"
 msgid "Cannot get data about interface"
 msgstr "不能从界面获取数据"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr "大小写视为相同"
 
@@ -637,6 +637,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "证书"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "重新开机之后，更改才会生效。"
@@ -695,9 +698,6 @@ msgstr "封包冲撞"
 
 msgid "Cols"
 msgstr "栏"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr ""
 
 msgid "Command"
 msgstr "命令列"
@@ -911,9 +911,6 @@ msgstr "删除指令"
 msgid "Delete device"
 msgstr "删除装置"
 
-msgid "Delete directory"
-msgstr "刪除目录"
-
 msgid "Delete disk"
 msgstr "删除磁碟"
 
@@ -1069,9 +1066,6 @@ msgstr "目录清单"
 msgid "Directory mask"
 msgstr "目录遮罩"
 
-msgid "Directory to be shared."
-msgstr "分享的目录"
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "关闭 AFP-over-Appletalk 避免 DDP 连线。"
 
@@ -1146,9 +1140,6 @@ msgstr "确定要删除这项 Cron job？"
 msgid "Do you really want to delete this device?"
 msgstr "确定要删除这个装置？"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "确定要刪除这个目录？"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1207,6 +1198,9 @@ msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "确定真的要格式化这个磁碟？所有内部的资料都会消失！"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
 
 msgid "Do you really want to uninstall this package?"
 msgstr "确定要移除这个套件？"
@@ -1325,9 +1319,6 @@ msgstr "编辑命令"
 
 msgid "Edit device"
 msgstr "编辑装置"
-
-msgid "Edit directory"
-msgstr "编辑目录"
 
 msgid "Edit disk"
 msgstr "编辑磁碟"
@@ -1910,6 +1901,9 @@ msgstr "I/O错误"
 
 msgid "I/O packets"
 msgstr "I/O封包"
+
+msgid "I/O statistics"
+msgstr ""
 
 msgid "IP address"
 msgstr "IP位置"
@@ -3168,6 +3162,9 @@ msgstr "安全"
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "选择要开启 S.M.A.R.T. 监测的磁碟。"
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr "选择欲产生 Swap 档的挂载点。"
 
@@ -3731,6 +3728,10 @@ msgstr "属性 '%s' 必须是数字。"
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "属性 '%s' 是字串。"
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -5518,6 +5519,21 @@ msgstr "平常日"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "No content directory to be shared."
+
+#~ msgid "Add directory"
+#~ msgstr "添加目录"
+
+#~ msgid "Edit directory"
+#~ msgstr "编辑目录"
+
+#~ msgid "Delete directory"
+#~ msgstr "刪除目录"
+
+#~ msgid "Do you really want to delete this directory entry?"
+#~ msgstr "确定要刪除这个目录？"
+
+#~ msgid "Directory to be shared."
+#~ msgstr "分享的目录"
 
 #~ msgid "AFP Server"
 #~ msgstr "AFP服务器"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-21 13:54+0000\n"
+"POT-Creation-Date: 2009-04-04 21:27+0000\n"
 "PO-Revision-Date: 2009-01-24 07:04+0000\n"
 "Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-22 10:28+0000\n"
+"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -261,9 +261,6 @@ msgstr "Adaugare comanda"
 
 msgid "Add device"
 msgstr "Adaugare dispozitiv"
-
-msgid "Add directory"
-msgstr "Adaugare director"
 
 msgid "Add disk"
 msgstr "Adaugare disc"
@@ -608,6 +605,9 @@ msgstr ""
 msgid "Cannot get data about interface"
 msgstr "Nicio informatie disponibila despre interfata"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr ""
 
@@ -620,6 +620,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "Certificat"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -684,9 +687,6 @@ msgstr "Coliziuni"
 
 msgid "Cols"
 msgstr "Coloane"
-
-msgid "Comma separated list of directories to search for files to share."
-msgstr ""
 
 msgid "Command"
 msgstr "Comenzi"
@@ -905,9 +905,6 @@ msgstr "Stergere comanda"
 msgid "Delete device"
 msgstr "Stergere dispozitiv"
 
-msgid "Delete directory"
-msgstr "Stergere director"
-
 msgid "Delete disk"
 msgstr "Stergere disc"
 
@@ -1067,9 +1064,6 @@ msgstr "Lista director"
 msgid "Directory mask"
 msgstr "Masca directoare"
 
-msgid "Directory to be shared."
-msgstr "Directorul de partajat."
-
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 "Dezactiveaza AFP-over-Appletalk pentru a preveni conectiile de tip DDP."
@@ -1143,9 +1137,6 @@ msgstr "Stergeti acesta inregistrare in lista programelor (Cron)?"
 msgid "Do you really want to delete this device?"
 msgstr "Stergeti acest dispozitiv?"
 
-msgid "Do you really want to delete this directory entry?"
-msgstr "Doriti sa stergeti aceasta intrare director?"
-
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
@@ -1210,6 +1201,9 @@ msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Sigur doriti formatarea discului? Toate datele vor fi pierdute!"
+
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Stergeti acest pachet?"
@@ -1326,9 +1320,6 @@ msgstr "Editare comanda"
 
 msgid "Edit device"
 msgstr "Editare dispozitiv"
-
-msgid "Edit directory"
-msgstr "Editare director"
 
 msgid "Edit disk"
 msgstr "Editare disc"
@@ -1922,6 +1913,9 @@ msgstr "Erori I/O"
 
 msgid "I/O packets"
 msgstr "Pachete I/O"
+
+msgid "I/O statistics"
+msgstr ""
 
 msgid "IP address"
 msgstr "Adresa IP"
@@ -3193,6 +3187,9 @@ msgstr "Securitate"
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 
+msgid "Select item to remove from the list"
+msgstr ""
+
 msgid "Select mount point where to create the swap file."
 msgstr "Selecteaza mount-ul unde se va crea fisierul 'swap'"
 
@@ -3759,6 +3756,10 @@ msgstr "Atributul '%s' trebuie sa fie tip numar."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Atributul '%s' trebuie sa fie tip text."
+
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -5626,6 +5627,21 @@ msgstr "zilele saptaminii"
 
 #~ msgid "No content directory to be shared."
 #~ msgstr "Niciun director de partajat."
+
+#~ msgid "Add directory"
+#~ msgstr "Adaugare director"
+
+#~ msgid "Edit directory"
+#~ msgstr "Editare director"
+
+#~ msgid "Delete directory"
+#~ msgstr "Stergere director"
+
+#~ msgid "Do you really want to delete this directory entry?"
+#~ msgstr "Doriti sa stergeti aceasta intrare director?"
+
+#~ msgid "Directory to be shared."
+#~ msgstr "Directorul de partajat."
 
 #~ msgid "AFP Server"
 #~ msgstr "Server AFP"
