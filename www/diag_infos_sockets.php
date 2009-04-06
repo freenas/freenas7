@@ -2,11 +2,11 @@
 <?php
 /*
 	diag_infos_sockets.php
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2008-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -59,12 +59,12 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Socket
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-			<tr>
-				<td class="listtopic"><?=gettext("Sockets");?></td>
-			</tr>
-			<tr>
-			  	<td><pre><?php system("/usr/bin/netstat -Aa");?></pre></td>
-			</tr>
+    		<?php html_titleline(gettext("Sockets"));?>
+				<tr>
+					<td>
+						<pre><?php system("/usr/bin/netstat -Aa");?></pre>
+					</td>
+				</tr>
     	</table>
     </td>
   </tr>

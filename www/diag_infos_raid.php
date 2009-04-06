@@ -3,7 +3,7 @@
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -61,9 +61,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Softwa
     <td class="tabcont">
     	<table width="100%" border="0">
   			<?php foreach (explode(" ", "concat mirror raid5 stripe vinum") as $class):?>
-				<tr>
-					<td class="listtopic"><?="GEOM {$class}";?></td>
-				</tr>
+  			<?php html_titleline("GEOM {$class}");?>
 				<tr>
 			    <td>
 			    	<pre><?php

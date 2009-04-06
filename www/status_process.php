@@ -3,7 +3,7 @@
 /*
 	status_process.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -54,9 +54,7 @@ sajax_handle_client_request();
   <tr>
     <td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			  <tr>
-			    <td class="listtopic"><?=gettext("Processes information");?></td>
-			  </tr>
+				<?php html_titleline(gettext("Processes information"));?>
 			  <tr>
 			    <td class="listt">
 			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="84" rows="30" readonly><?=get_process_info();?></textarea></pre>

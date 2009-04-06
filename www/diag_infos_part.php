@@ -3,7 +3,7 @@
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -63,11 +63,11 @@ $a_disk = get_physical_disks_list();
     <td class="tabcont">
     	<table width="100%" border="0">
   			<?php foreach($a_disk as $diskk => $diskv):?>
+  			<?php html_titleline(sprintf(gettext("Device /dev/%s - %s"), $diskk, $diskv['desc']));?>
 				<tr>
-					<td class="listtopic"><?=sprintf(gettext("Device /dev/%s - %s"), $diskk, $diskv['desc']);?></td>
-				</tr>
-				<tr>
-					<td><pre><?php system("/sbin/fdisk {$diskk}");?></pre></td>
+					<td>
+						<pre><?php system("/sbin/fdisk {$diskk}");?></pre>
+					</td>
 				</tr>
     		<?php endforeach;?>
     	</table>

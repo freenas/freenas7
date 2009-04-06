@@ -2,11 +2,11 @@
 <?php
 /*
 	diag_infos_ftpd.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2007-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -63,9 +63,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP"))
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("Connected FTP users");?></td>
-				</tr>
+    		<?php html_titleline(gettext("Connected FTP users"));?>
 				<tr>
 			    <td>
 			    	<?php if (!isset($config['ftpd']['enable'])):?>
