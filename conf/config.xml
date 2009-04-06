@@ -465,6 +465,7 @@
 		<vdevices>
 			<!--
 			<vdevice>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 				<name>xxx</name>
 				<type>stripe|mirror|zraid|zraid1|zraid2|spare</type>
 				<device>xxx</device> // Can be defined multiple times.
@@ -475,6 +476,7 @@
 		<pools>
 			<!--
 			<pool>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 				<name>xxx</name>
 				<vdevice>xxx</vdevice> // Can be defined multiple times.
 				<root>/</root>
@@ -486,6 +488,7 @@
 		<datasets>
 			<!--
 			<dataset>
+				<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 				<name>xxx</name>
 				<pool>xxx<pool>
 				<quota>xxx(k|KB|M|Gb)<quota>

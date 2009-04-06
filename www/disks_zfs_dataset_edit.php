@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_zfs_dataset_edit.php
-	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,11 @@
 require("guiconfig.inc");
 require("zfs.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Dataset"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Dataset"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -51,22 +51,24 @@ array_sort_key($config['zfs']['datasets']['dataset'], "name");
 $a_pool = &$config['zfs']['pools']['pool'];
 $a_dataset = &$config['zfs']['datasets']['dataset'];
 
-if (!isset($id) && (!sizeof($a_pool))) {
+if (!isset($uuid) && (!sizeof($a_pool))) {
 	$errormsg = sprintf(gettext("No configured pools. Please add new <a href=%s>pools</a> first."), "disks_zfs_zpool.php");
 }
 
-if (isset($id) && $a_dataset[$id]) {
-	$pconfig['name'] = $a_dataset[$id]['name'];
-	$pconfig['pool'] = $a_dataset[$id]['pool'][0];
-	$pconfig['compression'] = $a_dataset[$id]['compression'];
-	$pconfig['canmount'] = isset($a_dataset[$id]['canmount']);
-	$pconfig['readonly'] = isset($a_dataset[$id]['readonly']);
-	$pconfig['xattr'] = isset($a_dataset[$id]['xattr']);
-	$pconfig['quota'] = $a_dataset[$id]['quota'];
-	$pconfig['desc'] = $a_dataset[$id]['desc'];
+if (isset($uuid) && (false !== ($index = array_search_ex($uuid, $a_dataset, "uuid")))) {
+	$pconfig['uuid'] = $a_dataset[$index]['uuid'];
+	$pconfig['name'] = $a_dataset[$index]['name'];
+	$pconfig['pool'] = $a_dataset[$index]['pool'][0];
+	$pconfig['compression'] = $a_dataset[$index]['compression'];
+	$pconfig['canmount'] = isset($a_dataset[$index]['canmount']);
+	$pconfig['readonly'] = isset($a_dataset[$index]['readonly']);
+	$pconfig['xattr'] = isset($a_dataset[$index]['xattr']);
+	$pconfig['quota'] = $a_dataset[$index]['quota'];
+	$pconfig['desc'] = $a_dataset[$index]['desc'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
-	$dataset['pool'] = "";
+	$pconfig['pool'] = "";
 	$pconfig['compression'] = "off";
 	$pconfig['canmount'] = true;
 	$pconfig['readonly'] = false;
@@ -89,6 +91,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$dataset = array();
+		$dataset['uuid'] = $_POST['uuid'];
 		$dataset['name'] = $_POST['name'];
 		$dataset['pool'] = $_POST['pool'];
 		$dataset['compression'] = $_POST['compression'];
@@ -97,15 +100,15 @@ if ($_POST) {
 		$dataset['quota'] = $_POST['quota'];
 		$dataset['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_dataset[$id]) {
-			$a_dataset[$id] = $dataset;
+		if (isset($uuid) && $a_dataset[$index]) {
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
+			$a_dataset[$index] = $dataset;
 		} else {
+			$mode = UPDATENOTIFY_MODE_NEW;
 			$a_dataset[] = $dataset;
 		}
 
-		// Mark new added dataset to be configured.
-		file_put_contents($d_zfsconfdirty_path, ((!isset($id)) ? "+" : "") . "{$dataset['pool']}/{$dataset[name]}\n", FILE_APPEND | FILE_TEXT);
-
+		updatenotify_set("zfsdataset", $mode, $dataset['uuid']);
 		write_config();
 
 		header("Location: disks_zfs_dataset.php");
@@ -158,10 +161,8 @@ function enable_change(enable_change) {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_dataset[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-					<?php if (isset($id) && $a_dataset[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && $a_dataset[$index])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>
 		</td>
@@ -169,7 +170,7 @@ function enable_change(enable_change) {
 </table>
 <script language="JavaScript">
 <!--
-<?php if (isset($id) && $a_dataset[$id]):?>
+<?php if (isset($uuid) && $a_dataset[$index]):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>

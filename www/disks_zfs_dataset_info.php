@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_zfs_dataset_info.php
-	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,16 +36,24 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
-
 $pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Information"));
 
 if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['dataset']))
 	$config['zfs']['datasets']['dataset'] = array();
 
 $a_dataset = &$config['zfs']['datasets']['dataset'];
+
+function zfs_dataset_display_list() {
+	$cmd = "zfs list 2>&1";
+	mwexec2($cmd, $rawdata);
+	return implode("\n", $rawdata);
+}
+
+function zfs_dataset_display_properties($name) {
+	$cmd = "zfs get all {$name} 2>&1";
+	mwexec2($cmd, $rawdata);
+	return implode("\n", $rawdata);
+}
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -68,29 +76,17 @@ $a_dataset = &$config['zfs']['datasets']['dataset'];
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0">
+				<?php html_titleline(gettext("ZFS dataset information and status"));?>
 				<tr>
-					<td class="listtopic"><?=gettext("ZFS dataset information and status");?></td>
-				</tr>
-				<tr>
-					<td>
-						<pre><br/><?php
-						exec("/sbin/zfs list", $rawdata);
-						echo implode("\n", $rawdata);
-						unset ($rawdata);
-						?></pre>
+					<td class="listt">
+						<pre><span id="zfs_dataset_list"><?=zfs_dataset_display_list();?></span></pre>
 					</td>
 				</tr>
 				<?php foreach($a_dataset as $datasetv):?>
+				<?php html_titleline(sprintf(gettext("Dataset %s"), "{$datasetv['pool'][0]}/{$datasetv['name']}"));?>
 				<tr>
-					<td class="listtopic"><?=sprintf(gettext("Dataset %s"), "{$datasetv['pool'][0]}/{$datasetv['name']}");?></td>
-				</tr>
-				<tr>
-					<td>
-						<pre><br/><?php
-						exec("/sbin/zfs get all {$datasetv['pool'][0]}/{$datasetv['name']}", $rawdata);
-						echo implode("\n", $rawdata);
-						unset($rawdata);
-						?></pre>
+					<td class="listt">
+						<pre><span id="zfs_dataset_list"><?=zfs_dataset_display_properties("{$datasetv['pool'][0]}/{$datasetv['name']}");?></span></pre>
 					</td>
 				</tr>
 				<?php endforeach;?>

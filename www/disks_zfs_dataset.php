@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_zfs_dataset.php
-	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['
 	$config['zfs']['datasets']['dataset'] = array();
 
 array_sort_key($config['zfs']['datasets']['dataset'], "name");
-
 $a_dataset = &$config['zfs']['datasets']['dataset'];
 
 if ($_POST) {
@@ -49,42 +48,47 @@ if ($_POST) {
 		$retval = 0;
 
 		if (!file_exists($d_sysrebootreqd_path)) {
-			foreach ($a_dataset as $datasetv) {
-				if (is_zfs_dataset_new($datasetv)) {
-					$retval |= zfs_dataset_configure($datasetv['name']);
-				} else if (is_zfs_dataset_modified($datasetv)) {
-					$retval |= zfs_dataset_properties($datasetv['name']);
-				}
-			}
+			// Process notifications
+			updatenotify_process("zfsdataset", "zfsdataset_process_updatenotification");
 		}
-
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			unlink_if_exists($d_zfsconfdirty_path);
+			updatenotify_delete("zfsdataset");
 		}
 	}
 }
 
 if ($_GET['act'] === "del") {
-	if ($a_dataset[$_GET['id']]) {
-		zfs_dataset_destroy($a_dataset[$_GET['id']]['name']);
-		unset($a_dataset[$_GET['id']]);
+	updatenotify_set("zfsdataset", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: disks_zfs_dataset.php");
+	exit;
+}
 
-		write_config();
+function zfsdataset_process_updatenotification($mode, $data) {
+	global $config;
 
-		header("Location: disks_zfs_dataset.php");
-		exit;
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFY_MODE_NEW:
+			$retval = zfs_dataset_configure($data);
+			break;
+
+		case UPDATENOTIFY_MODE_MODIFIED:
+			$retval = zfs_dataset_properties($data);
+			break;
+
+		case UPDATENOTIFY_MODE_DIRTY:
+			zfs_dataset_destroy($data);
+			$index = array_search_ex($data, $config['zfs']['datasets']['dataset'], "uuid");
+			if (false !== $index) {
+				unset($config['zfs']['datasets']['dataset'][$index]);
+				write_config();
+			}
+			break;
 	}
-}
 
-function is_zfs_dataset_modified($dataset) {
-	global $d_zfsconfdirty_path;
-	return (file_exists($d_zfsconfdirty_path) && in_array("{$dataset['pool'][0]}/{$dataset['name']}\n", file($d_zfsconfdirty_path)));
-}
-
-function is_zfs_dataset_new($dataset) {
-	global $d_zfsconfdirty_path;
-	return (file_exists($d_zfsconfdirty_path) && in_array("+{$dataset['pool'][0]}/{$dataset['name']}\n", file($d_zfsconfdirty_path)));
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -109,8 +113,7 @@ function is_zfs_dataset_new($dataset) {
     <td class="tabcont">
 			<form action="disks_zfs_dataset.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_zfsconfdirty_path)) print_config_change_box();?>
-				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
+				<?php if (updatenotify_exists("zfsdataset")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="20%" class="listhdrr"><?=gettext("Pool");?></td>
@@ -118,17 +121,24 @@ function is_zfs_dataset_new($dataset) {
 						<td width="45%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_dataset as $datasetv):?>
+					<?php foreach ($a_dataset as $datasetv):?>
+					<?php $notificationmode = updatenotify_get_mode("zfsdataset", $datasetv['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($datasetv['pool'][0]);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($datasetv['name']);?>&nbsp;</td>
 						<td class="listbg"><?=htmlspecialchars($datasetv['desc']);?>&nbsp;</td>
+						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
-							<a href="disks_zfs_dataset_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit dataset");?>" border="0"></a>&nbsp;
-							<a href="disks_zfs_dataset.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this dataset?");?>')"><img src="x.gif" title="<?=gettext("Delete dataset");?>" border="0"></a>
+							<a href="disks_zfs_dataset_edit.php?uuid=<?=$datasetv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit dataset");?>" border="0"></a>&nbsp;
+							<a href="disks_zfs_dataset.php?act=del&uuid=<?=$datasetv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this dataset?");?>')"><img src="x.gif" title="<?=gettext("Delete dataset");?>" border="0"></a>
 						</td>
+						<?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
 					</tr>
-					<?php $i++; endforeach;?>
+					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="3"></td>
 						<td class="list">

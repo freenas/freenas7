@@ -194,16 +194,18 @@ function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out 
 	return $result;
 }
 
-// Configure, create and start a dataset
-// $name - Name of the dataset to be configured.
-// Return 0 if successful, 1 if error
-function zfs_dataset_configure($name) {
+/**
+ * Configure, create and start a ZFS dataset.
+ * @param[in] uuid	The UUID of the dataset to be configured.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_dataset_configure($uuid) {
 	global $config;
 
 	if (!is_array($config['zfs']['datasets']['dataset']))
 		return 1;
 
-	$index = array_search_ex($name, $config['zfs']['datasets']['dataset'], "name");
+	$index = array_search_ex($uuid, $config['zfs']['datasets']['dataset'], "uuid");
 	if (false === $index)
 		return 1;
 
@@ -235,16 +237,18 @@ function zfs_dataset_configure($name) {
 	return mwexec($cmd, true);
 }
 
-// Delete a dataset given in parameter.
-// $name - Name of the dataset to be deleted.
-// Return 0 if successful, 1 if error
-function zfs_dataset_destroy($name) {
+/**
+ * Delete a ZFS dataset.
+ * @param[in] uuid	The UUID of the dataset to be deleted.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_dataset_destroy($uuid) {
 	global $config;
 
 	if (!is_array($config['zfs']['datasets']['dataset']))
 		return 1;
 
-	$index = array_search_ex($name, $config['zfs']['datasets']['dataset'], "name");
+	$index = array_search_ex($uuid, $config['zfs']['datasets']['dataset'], "uuid");
 	if (false === $index)
 		return 1;
 
@@ -256,16 +260,18 @@ function zfs_dataset_destroy($name) {
 	return mwexec("/sbin/zfs destroy {$dataset['pool'][0]}/{$dataset['name']}", true);
 }
 
-// Update properties of a dataset
-// $name - Name of the dataset to be updated.
-// Return 0 if successful, 1 if error
-function zfs_dataset_properties($name) {
+/**
+ * Update properties of a ZFS dataset.
+ * @param[in] uuid	The UUID of the dataset to be updated.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_dataset_properties($uuid) {
 	global $config;
 
 	if (!is_array($config['zfs']['datasets']['dataset']))
 		return 1;
 
-	$index = array_search_ex($name, $config['zfs']['datasets']['dataset'], "name");
+	$index = array_search_ex($uuid, $config['zfs']['datasets']['dataset'], "uuid");
 	if (false === $index)
 		return 1;
 

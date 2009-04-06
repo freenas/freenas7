@@ -66,26 +66,24 @@ sajax_handle_client_request();
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-  			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
+			<ul id="tabnav">
+				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool_io.php" title="<?=gettext("Reload page");?>"><span><?=gettext("I/O statistics");?></span></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
+	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			  <tr>
-			    <td class="listtopic"><?=gettext("Pool I/O statistics");?></td>
-			  </tr>
-			  <tr>
-			    <td class="listt">
-			    	<pre><span id="zfs_zpool_iostat"><?=zfs_zpool_get_iostat();?></span></pre>
-			    </td>
-			  </tr>
+				<?php html_titleline(gettext("Pool information and status"));?>
+				<tr>
+					<td class="listt">
+						<pre><span id="zfs_zpool_iostat"><?=zfs_zpool_get_iostat();?></span></pre>
+					</td>
+				</tr>
 			</table>
 		</td>
 	</tr>

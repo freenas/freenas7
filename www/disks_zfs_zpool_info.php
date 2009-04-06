@@ -9,7 +9,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -142,26 +142,24 @@ sajax_handle_client_request();
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-  			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
+			<ul id="tabnav">
+				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool_info.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr> 
+	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			  <tr>
-			    <td class="listtopic"><?=gettext("Pool information and status");?></td>
-			  </tr>
-			  <tr>
-			    <td class="listt">
-			    	<pre><span id="zfs_zpool_status"><?=zfs_zpool_get_status();?></span></pre>
-			    </td>
-			  </tr>
+				<?php html_titleline(gettext("Pool information and status"));?>
+				<tr>
+					<td class="listt">
+						<pre><span id="zfs_zpool_status"><?=zfs_zpool_get_status();?></span></pre>
+					</td>
+				</tr>
 			</table>
 		</td>
 	</tr>

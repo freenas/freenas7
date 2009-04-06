@@ -56,8 +56,6 @@ $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
 $d_upnpconfdirty_path = $g['varrun_path'] . "/upnp.conf.dirty";
 $d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
 $d_websrvconfdirty_path = $g['varrun_path'] . "/websrv.conf.dirty";
-$d_zpoolconfdirty_path = $g['varrun_path'] . "/zpool.conf.dirty";
-$d_zfsconfdirty_path = $g['varrun_path'] . "/zfs.conf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {
