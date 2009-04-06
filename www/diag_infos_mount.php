@@ -3,7 +3,7 @@
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -60,13 +60,12 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Mounts
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-			<tr>
-				<td class="listtopic"><?=gettext("List of mount points");?></td>
-			</tr>
-			<tr>
-			<td>
-				<pre><?php system("/sbin/mount");?></pre></td>
-			</tr>
+    		<?php html_titleline(gettext("List of mount points"));?>
+				<tr>
+					<td>
+						<pre><?php system("/sbin/mount");?></pre>
+					</td>
+				</tr>
     	</table>
     </td>
   </tr>

@@ -3,7 +3,7 @@
 /*
 	diag_infos_iscsi.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -66,9 +66,7 @@ $a_disk = $config['iscsiinit']['vdisk'];
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("List of available target name on all configured iSCSI targets");?></td>
-				</tr>
+    		<?php html_titleline(gettext("List of available target name on all configured iSCSI targets"));?>
 				<tr>
 			    <td>
 			    	<?php if (0 >= count($a_disk)):?>

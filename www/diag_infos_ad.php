@@ -3,7 +3,7 @@
 /*
 	diag_infos_ad.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -64,9 +64,7 @@ if (!is_array($config['ad'])) {
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("MS Active Directory informations");?></td>
-				</tr>
+				<?php html_titleline(gettext("MS Active Directory informations"));?>
 				<tr>
 					<td>
 						<?php if (!isset($config['ad']['enable'])):?>
@@ -82,9 +80,7 @@ if (!is_array($config['ad'])) {
 						?></pre>
 					</td>
 				</tr>
-				<tr>
-					<td class="listtopic"><?=gettext("List of imported users");?></td>
-				</tr>
+				<?php html_titleline(gettext("List of imported users"));?>
 				<tr>
 					<td>
 						<pre><?php

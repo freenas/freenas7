@@ -2,11 +2,11 @@
 <?php
 /*
 	diag_infos_samba.php
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2008-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -64,26 +64,20 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
     <td class="tabcont">
     	<table width="100%" border="0">
 				<?php if (!isset($config['samba']['enable'])):?>
-				<tr>
-					<td class="listtopic"><?=gettext("CIFS/SMB informations");?></td>
-				</tr>
+				<?php html_titleline(gettext("CIFS/SMB informations"));?>
 				<tr>
 					<td>
 						<pre><?=gettext("CIFS/SMB disabled");?></pre>
 					</td>
 				</tr>
 				<?php else:?>
-    		<tr>
-					<td class="listtopic"><?=gettext("List of shares");?></td>
-				</tr>
+				<?php html_titleline(gettext("List of shares"));?>
 				<tr>
 			    <td>
 						<pre><?php system("/usr/local/bin/net -P rpc share");?></pre>
 					</td>
 			  </tr>
-				<tr>
-					<td class="listtopic"><?=gettext("List of open files");?></td>
-				</tr>
+			  <?php html_titleline(gettext("List of open files"));?>
 				<tr>
 			    <td>
 						<pre><?php

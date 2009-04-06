@@ -60,9 +60,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("Swap status");?></td>
-				</tr>
+				<?php html_titleline(gettext("Swap status"));?>
 				<tr>
 			    <td>
 			    	<?php if (!isset($config['system']['swap']['enable'])):?>
