@@ -2,8 +2,12 @@
 <?php
 /*
 	services_iscsitarget.php
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009 Daisuke Aoyama (aoyama@peach.ne.jp)
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,263 +37,149 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("iSCSI Target"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"));
+
+if (!is_array($config['iscsitarget']['portalgroup']))
+	$config['iscsitarget']['portalgroup'] = array();
+
+if (!is_array($config['iscsitarget']['initiatorgroup']))
+	$config['iscsitarget']['initiatorgroup'] = array();
+
+if (!is_array($config['iscsitarget']['authgroup']))
+	$config['iscsitarget']['authgroup'] = array();
+
+function cmp_tag($a, $b) {
+	if ($a['tag'] == $b['tag'])
+		return 0;
+	return ($a['tag'] > $b['tag']) ? 1 : -1;
+}
+usort($config['iscsitarget']['portalgroup'], "cmp_tag");
+usort($config['iscsitarget']['initiatorgroup'], "cmp_tag");
+usort($config['iscsitarget']['authgroup'], "cmp_tag");
 
 $pconfig['enable'] = isset($config['iscsitarget']['enable']);
+$pconfig['nodebase'] = $config['iscsitarget']['nodebase'];
+$pconfig['discoveryauthmethod'] = $config['iscsitarget']['discoveryauthmethod'];
+$pconfig['discoveryauthgroup'] = $config['iscsitarget']['discoveryauthgroup'];
+$pconfig['timeout'] = $config['iscsitarget']['timeout'];
+$pconfig['nopininterval'] = $config['iscsitarget']['nopininterval'];
+$pconfig['maxsessions'] = $config['iscsitarget']['maxsessions'];
+$pconfig['maxconnections'] = $config['iscsitarget']['maxconnections'];
+$pconfig['firstburstlength'] = $config['iscsitarget']['firstburstlength'];
+$pconfig['maxburstlength'] = $config['iscsitarget']['maxburstlength'];
+$pconfig['maxrecvdatasegmentlength'] = $config['iscsitarget']['maxrecvdatasegmentlength'];
 
 if ($_POST) {
+	unset($input_errors);
+	unset($errormsg);
+
 	$pconfig = $_POST;
 
-	$config['iscsitarget']['enable'] = $_POST['enable'] ? true : false;
+	// Input validation.
+	$reqdfields = explode(" ", "nodebase discoveryauthmethod discoveryauthgroup");
+	$reqdfieldsn = array(gettext("Node Base"),
+						 gettext("Discovery Auth Method"),
+						 gettext("Discovery Auth Group"));
+	$reqdfieldst = explode(" ", "string string numericint");
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	write_config();
+	$reqdfields = explode(" ", "timeout nopininterval maxsessions maxconnections firstburstlength maxburstlength maxrecvdatasegmentlength");
+	$reqdfieldsn = array(gettext("I/O Timeout"),
+						 gettext("NOPIN Interval"),
+						 gettext("Max. sessions"),
+						 gettext("Max. connections"),
+						 gettext("FirstBurstLength"),
+						 gettext("MaxBurstLength"),
+						 gettext("MaxRecvDataSegmentLength"));
+	$reqdfieldst = explode(" ", "numericint numericint numericint numericint numericint numericint numericint");
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	$retval = 0;
-	if (!file_exists($d_sysrebootreqd_path)) {
-		$retval |= updatenotify_process("iscsitarget_extent", "iscsitargetextent_process_updatenotification");
-		$retval |= updatenotify_process("iscsitarget_device", "iscsitargetdevice_process_updatenotification");
-		$retval |= updatenotify_process("iscsitarget_target", "iscsitargettarget_process_updatenotification");
-		config_lock();
-		$retval |= rc_update_service("iscsi_target");
-		config_unlock();
+	if (!$input_errors) {
+		$config['iscsitarget']['enable'] = $_POST['enable'] ? true : false;
+
+		$config['iscsitarget']['nodebase'] = $_POST['nodebase'];
+		$config['iscsitarget']['discoveryauthmethod'] = $_POST['discoveryauthmethod'];
+		$config['iscsitarget']['discoveryauthgroup'] = $_POST['discoveryauthgroup'];
+		$config['iscsitarget']['timeout'] = $_POST['timeout'];
+		$config['iscsitarget']['nopininterval'] = $_POST['nopininterval'];
+		$config['iscsitarget']['maxsessions'] = $_POST['maxsessions'];
+		$config['iscsitarget']['maxconnections'] = $_POST['maxconnections'];
+		$config['iscsitarget']['firstburstlength'] = $_POST['firstburstlength'];
+		$config['iscsitarget']['maxburstlength'] = $_POST['maxburstlength'];
+		$config['iscsitarget']['maxrecvdatasegmentlength'] = $_POST['maxrecvdatasegmentlength'];
+
+		write_config();
+
+		$retval = 0;
+		if (!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			$retval |= rc_update_service("iscsi_target");
+			config_unlock();
+		}
+
+		$savemsg = get_std_save_message($retval);
 	}
-	$savemsg = get_std_save_message($retval);
-	if ($retval == 0) {
-		updatenotify_delete("iscsitarget_extent");
-		updatenotify_delete("iscsitarget_device");
-		updatenotify_delete("iscsitarget_target");
-	}
-}
-
-if (!is_array($config['iscsitarget']['extent']))
-	$config['iscsitarget']['extent'] = array();
-
-if (!is_array($config['iscsitarget']['device']))
-	$config['iscsitarget']['device'] = array();
-
-if (!is_array($config['iscsitarget']['target']))
-	$config['iscsitarget']['target'] = array();
-
-array_sort_key($config['iscsitarget']['extent'], "name");
-array_sort_key($config['iscsitarget']['device'], "name");
-array_sort_key($config['iscsitarget']['extent'], "name");
-
-if ($_GET['act'] === "del") {
-	switch ($_GET['type']) {
-		case "extent":
-			updatenotify_set("iscsitarget_extent", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
-			break;
-
-		case "device":
-			updatenotify_set("iscsitarget_device", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
-			break;
-
-		case "target":
-			updatenotify_set("iscsitarget_target", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
-			break;
-	}
-	header("Location: services_iscsitarget.php");
-	exit;
-}
-
-function iscsitargetextent_process_updatenotification($mode, $data) {
-	global $config;
-
-	$retval = 0;
-
-	switch ($mode) {
-		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['iscsitarget']['extent'])) {
-				$index = array_search_ex($data, $config['iscsitarget']['extent'], "uuid");
-				if (false !== $index) {
-					unset($config['iscsitarget']['extent'][$index]);
-					write_config();
-				}
-			}
-			break;
-	}
-
-	return $retval;
-}
-
-function iscsitargetdevice_process_updatenotification($mode, $data) {
-	global $config;
-
-	$retval = 0;
-
-	switch ($mode) {
-		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['iscsitarget']['device'])) {
-				$index = array_search_ex($data, $config['iscsitarget']['device'], "uuid");
-				if (false !== $index) {
-					unset($config['iscsitarget']['device'][$index]);
-					write_config();
-				}
-			}
-			break;
-	}
-
-	return $retval;
-}
-
-function iscsitargettarget_process_updatenotification($mode, $data) {
-	global $config;
-
-	$retval = 0;
-
-	switch ($mode) {
-		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['iscsitarget']['target'])) {
-				$index = array_search_ex($data, $config['iscsitarget']['target'], "uuid");
-				if (false !== $index) {
-					unset($config['iscsitarget']['target'][$index]);
-					write_config();
-				}
-			}
-			break;
-	}
-
-	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
 <form action="services_iscsitarget.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
-			  <?php if ($savemsg) print_info_box($savemsg);?>
-			  <?php if (updatenotify_exists("iscsitarget_extent") || updatenotify_exists("iscsitarget_device") || updatenotify_exists("iscsitarget_target")) print_config_change_box();?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncell"><?=gettext("Extent");?></td>
-						<td width="78%" class="vtable">
-				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-				        <tr>
-									<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
-									<td width="50%" class="listhdrr"><?=gettext("Path");?></td>
-									<td width="20%" class="listhdrr"><?=gettext("Size");?></td>
-									<td width="10%" class="list"></td>
-				        </tr>
-							  <?php $i = 0; foreach($config['iscsitarget']['extent'] as $extent):?>
-							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_extent", $extent['uuid']);?>
-				        <tr>
-				          <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
-									<td class="listr"><?php echo htmlspecialchars($extent['path']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars($extent['size']);?>MB&nbsp;</td>
-									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
-				            <a href="services_iscsitarget.php?act=del&type=extent&uuid=<?=$extent['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" border="0"></a>
-				          </td>
-				          <?php else:?>
-									<td valign="middle" nowrap class="list">
-										<img src="del.gif" border="0">
-									</td>
-									<?php endif;?>
-				        </tr>
-				        <?php $i++; endforeach;?>
-				        <tr>
-				          <td class="list" colspan="3"></td>
-				          <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" border="0"></a></td>
-						    </tr>
-							</table>
-							<?=gettext("Extents must be defined before they can be used, and extents cannot be used more than once.");?>
-						</td>
-					</tr>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncell"><?=gettext("Device");?></td>
-						<td width="78%" class="vtable">
-				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-				        <tr>
-									<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
-									<td width="5%" class="listhdrr"><?=gettext("Type");?></td>
-									<td width="65%" class="listhdrr"><?=gettext("Storage");?></td>
-									<td width="10%" class="list"></td>
-				        </tr>
-							  <?php $i = 0; foreach($config['iscsitarget']['device'] as $device):?>
-							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_device", $device['uuid']);?>
-				        <tr>
-				          <td class="listlr"><?=htmlspecialchars($device['name']);?>&nbsp;</td>
-				          <td class="listr"><?=htmlspecialchars($device['type']);?>&nbsp;</td>
-									<td class="listr">
-										<?php foreach($device['storage'] as $storage):?>
-										<?=htmlspecialchars($storage);?>&nbsp;
-										<?php endforeach;?>
-										&nbsp;
-									</td>
-									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>
-				            <a href="services_iscsitarget.php?act=del&type=device&uuid=<?=$device['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" border="0"></a>
-				          </td>
-				          <?php else:?>
-									<td valign="middle" nowrap class="list">
-										<img src="del.gif" border="0">
-									</td>
-									<?php endif;?>
-				        </tr>
-				        <?php $i++; endforeach;?>
-				        <tr>
-				          <td class="list" colspan="3"></td>
-				          <td class="list"><a href="services_iscsitarget_device_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" border="0"></a></td>
-						    </tr>
-							</table>
-							<?=gettext("Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once.");?>
-						</td>
-					</tr>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncell"><?=gettext("Target");?></td>
-						<td width="78%" class="vtable">
-				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-				        <tr>
-									<td width="40%" class="listhdrr"><?=gettext("Name");?></td>
-									<td width="5%" class="listhdrr"><?=gettext("Flags");?></td>
-									<td width="25%" class="listhdrr"><?=gettext("Storage");?></td>
-									<td width="20%" class="listhdrr"><?=gettext("Network");?></td>
-									<td width="10%" class="list"></td>
-				        </tr>
-							  <?php $i = 0; foreach($config['iscsitarget']['target'] as $target):?>
-							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_target", $target['uuid']);?>
-				        <tr>
-									<td class="listlr">iqn.1994-04.org.netbsd.iscsi-target:<?=htmlspecialchars($target['name']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars($target['flags']);?>&nbsp;</td>
-									<td class="listr">
-										<?php foreach($target['storage'] as $storage):?>
-										<?=htmlspecialchars($storage);?>&nbsp;
-										<?php endforeach;?>
-										&nbsp;
-									</td>
-				          <td class="listr"><?=htmlspecialchars($target['ipaddr'])."/".htmlspecialchars($target['subnet']);?>&nbsp;</td>
-				          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
-				            <a href="services_iscsitarget.php?act=del&type=target&uuid=<?=$target['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" border="0"></a>
-				          </td>
-				          <?php else:?>
-									<td valign="middle" nowrap class="list">
-										<img src="del.gif" border="0">
-									</td>
-									<?php endif;?>
-				        </tr>
-				        <?php $i++; endforeach;?>
-				        <tr>
-				          <td class="list" colspan="4"></td>
-				          <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" border="0"></a></td>
-						    </tr>
-							</table>
-							<?=gettext("At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents.");?>
-						</td>
-					</tr>
-				</table>
-				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
-				</div>
-				<div id="remarks">
-					<?php html_remark("note", gettext("Note"), gettext("You must have a minimum of 256MB of RAM for using iSCSI target."));?>
-				</div>
-			</td>
-		</tr>
-	</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><a href="services_iscsitarget.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Settings");?></span></a></li>
+        <li class="tabinact"><a href="services_iscsitarget_target.php"><span><?=gettext("Targets");?></span></a></li>
+        <li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
+		<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
+		<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="tabcont">
+      <?php if ($input_errors) print_input_errors($input_errors);?>
+      <?php if ($savemsg) print_info_box($savemsg);?>
+      <table width="100%" border="0" cellpadding="6" cellspacing="0">
+      <?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), false);?>
+      <?php html_inputbox("nodebase", gettext("Base Name"), $pconfig['nodebase'], gettext("The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."), true, 60, false);?>
+      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("mutual CHAP")), "", true);?>
+      <?php
+		$ag_list = array();
+		$ag_list['0'] = 'None';
+		foreach($config['iscsitarget']['authgroup'] as $ag) {
+		  if ($ag['comment']) {
+			  $l = sprintf("Tag%d (%s)", $ag['tag'], $ag['comment']);
+		  } else {
+			  $l = sprintf("Tag%d", $ag['tag']);
+		  }
+		  $ag_list[$ag['tag']] = htmlspecialchars($l);
+		}
+		html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, "", true);
+      ?>
+      <tr>
+        <td colspan="2" class="list" height="12"></td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
+      </tr>
+      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], gettext("I/O timeout in seconds. (30 by default)"), false, 30, false);?>
+      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], gettext("NOPIN sending interval in seconds. (20 by default)"), false, 30, false);?>
+      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], gettext("Maximum number of sessions holding at same time. (32 by default)"), false, 30, false);?>
+      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], gettext("Maximum number of connections in each session. (8 by default)"), false, 30, false);?>
+      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter. (65536 by default)"), false, 30, false);?>
+      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter. (262144 by default)"), false, 30, false);?>
+      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter. (262144 by default)"), false, 30, false);?>
+      </table>
+      <div id="submit">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
+      </div>
+      <div id="remarks">
+        <?php html_remark("note", gettext("Note"), gettext("You must have a minimum of 256MB of RAM for using iSCSI target."));?>
+      </div>
+    </td>
+  </tr>
+</table>
 </form>
 <?php include("fend.inc");?>

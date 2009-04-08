@@ -162,10 +162,10 @@ $pgtitle = array(gettext("License & Credits"));
 			Copyright &copy; 2002-2008 Bruce Allen.</p>
 
 	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
-			Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
+			Copyright &copy; 2005-2009 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
-		<p>iSCSI-target (<a href="http://www.alistaircrooks.co.uk" target="_blank">http://www.alistaircrooks.co.uk</a>)<br>
-	  	Copyright &copy; 2006 Alistair Crooks. All rights reserved.</p>
+		<p>istgt (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br>
+	  	Copyright &copy; 2008,2009 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
 
     <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br>
       Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>

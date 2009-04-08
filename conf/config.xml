@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>7.4</version>
+	<version>7.5</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -423,30 +423,80 @@
 		-->
 	</geli>
 	<iscsitarget>
+		<!-- <enable/> -->
+		<nodebase>iqn.2007-09.jp.ne.peach.istgt</nodebase>
+		<discoveryauthmethod>Auto</discoveryauthmethod>
+		<discoveryauthgroup>0</discoveryauthgroup>
+		<timeout>30</timeout>
+		<nopininterval>20</nopininterval>
+		<maxsessions>32</maxsessions>
+		<maxconnections>8</maxconnections>
+		<firstburstlength>65536</firstburstlength>
+		<maxburstlength>262144</maxburstlength>
+		<maxrecvdatasegmentlength>262144</maxrecvdatasegmentlength>
 		<!--
-		<enable/>
+		<portalgroup>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+			<tag>xxx</tag>
+			<comment/>
+			<portal>xxx.xxx.xxx.xxx:xxxx</portal>
+			<portal>xxx.xxx.xxx.xxx:xxxx</portal>
+		</portalgroup>
+		<initiatorgroup>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+			<tag>xxx</tag>
+			<comment/>
+			<iginitiatorname>xxx</iginitiatorname>
+			<iginitiatorname>xxx</iginitiatorname>
+			<ignetmask>xxx.xxx.xxx.xxx/xx</ignetmask>
+			<ignetmask>xxx.xxx.xxx.xxx/xx</ignetmask>
+		</initiatorgroup>
+		<authgroup>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+			<tag>xxx</tag>
+			<comment/>
+			<agauth>
+				<authuser>xxx</authuser>
+				<authsecret>xxx</authsecret>
+				<authmuser>xxx</authmuser>
+				<authmsecret>xxx</authmsecret>
+			</agauth>
+		</authgroup>
 		<extent>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
-			<path>xxx</path> // File path (/mnt/sharename/extent/extent0) or device name (/dev/ad1).
-			<size>xxx</size> // Size in MB.
-			<comment>xxx<comment>
+			<path>xxx</path>
+			<size>xxx</size>
+			<sizeunit>MB|GB|TB</sizeunit>
+			<type>xxx</type>
+			<comment/>
 		</extent>
-		<device>
-			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
-			<name>xxx</name>
-			<type>RAID0|RAID1</type>
-			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
-			<comment>xxx<comment>
-		</device>
 		<target>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
-			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
-			<flags>rw</flags>
-			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
-			<subnet>xxx</subnet>
-			<comment>xxx<comment>
+			<alias/>
+			<type>xxx</type>
+			<flags>xx</flags>
+			<comment/>
+			<authmethod>xxx</authmethod>
+			<digest>xxx</digest>
+			<queuedepth>xxx</queuedepth>
+			<inqvendor/>
+			<inqproduct/>
+			<inqrevision/>
+			<inqserial/>
+			<pgigmap>
+				<pgtag>xxx</pgtag>
+				<igtag>xxx</igtag>
+			</pgigmap>
+			<agmap>
+				<agtag>xxx</agtag>
+			</agmap>
+			<lunmap>
+				<lun>xxx</lun>
+				<type>xxx</type>
+				<extentname>xxx</extentname>
+			</lunmap>
 		</target>
 		-->
 	</iscsitarget>

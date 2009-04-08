@@ -3,9 +3,12 @@ FreeNAS 0.7 (Sardaukar):
 
 Majors changes:
 - Upgrade to FreeBSD 7.1.
-- Include ZFS support. Thanks to Nelson Silva for doing core coding and Falk Menzel
-  for testing and giving some tipps and ideas.
-- Upgrade iSCSI-Initator to 2.1.1.
+- Include ZFS support. Thanks to Nelson Silva for doing core coding and Falk
+  Menzel for testing and giving some tipps and ideas.
+- Upgrade iSCSI initiator to 2.1.1.
+- Replace iSCSI target by istgt. Thanks to Daisuke Aoyama for the WebGUI
+  adaption. Please note, if you have used devices with the previous iSCSI target
+  software you have to recreate your target.
 
 Majors changes:
 
@@ -23,7 +26,8 @@ Permanent restrictions:
   have to format it with 128 bytes on Linux to use them on FreeBSD.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
+  overriden by the IPv4 DNS server.
 - Downgrading to 0.69 via WebGUI fails because of broken pipe error.
 - FreeBSD's ext2fs module, as of release 7.1, cannot mount ext2 file systems
   with 256-byte large inodes, only 128 byte sized.  Unfortunately, 256 byte is
@@ -32,7 +36,8 @@ Known bugs:
 NEED TESTING:
 - IPv6: auto mode
 - All services using IPv6 address (NFS, FTP, etc...)
-- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accessing to share
+- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes
+  samba when accessing to share
 - Need to write an online-test procedure
 
 Help needed:

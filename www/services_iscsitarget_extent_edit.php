@@ -3,10 +3,11 @@
 /*
 	services_iscsitarget_extent_edit.php
 	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -46,7 +47,6 @@ if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
 
 array_sort_key($config['iscsitarget']['extent'], "name");
-
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
 if (isset($id) && $a_iscsitarget_extent[$id]) {
@@ -54,12 +54,12 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 	$pconfig['name'] = $a_iscsitarget_extent[$id]['name'];
 	$pconfig['path'] = $a_iscsitarget_extent[$id]['path'];
 	$pconfig['size'] = $a_iscsitarget_extent[$id]['size'];
+	$pconfig['sizeunit'] = $a_iscsitarget_extent[$id]['sizeunit'];
+	$pconfig['type'] = $a_iscsitarget_extent[$id]['type'];
 	$pconfig['comment'] = $a_iscsitarget_extent[$id]['comment'];
 
-	// Check if a device is used as target.
-	$pconfig['type'] = "device";
-	if (!preg_match("/^\/dev\/(\S+)/", $pconfig['path']))
-		$pconfig['type'] = "file";
+	if (!isset($pconfig['sizeunit']))
+		$pconfig['sizeunit'] = "MB";
 } else {
 	// Find next unused ID.
 	$extentid = 0;
@@ -73,7 +73,8 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 	$pconfig['name'] = "extent{$extentid}";
 	$pconfig['path'] = "";
 	$pconfig['size'] = "";
-	$pconfig['type'] = "device";
+	$pconfig['sizeunit'] = "MB";
+	$pconfig['type'] = "file";
 	$pconfig['comment'] = "";
 }
 
@@ -85,21 +86,25 @@ if ($_POST) {
 
 	// Input validation.
 	$reqdfields = explode(" ", "name");
-  $reqdfieldsn = array(gettext("Extent name"));
-  $reqdfieldst = explode(" ", "string");
-
-	if ("device" === $_POST['type']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "device"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Device")));
-		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string"));
-	} else {
-		$reqdfields = array_merge($reqdfields, explode(" ", "path size"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Path"), gettext("File size")));
-		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string numeric"));
-	}
+	$reqdfieldsn = array(gettext("Extent name"));
+	$reqdfieldst = explode(" ", "string");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+	$reqdfields = explode(" ", "path size");
+	$reqdfieldsn = array(gettext("Path"),
+						 gettext("File size"));
+	$reqdfieldst = explode(" ", "string numericint");
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+	if (!isset($id)) {
+		$index = array_search_ex($pconfig['name'], $a_iscsitarget_extent, "name");
+		if ($index !== false) {
+			$input_errors[] = gettext("This name already exists.");
+		}
+	}
 
 	// Check if path exists.
 	if ("device" !== $_POST['type']) {
@@ -113,15 +118,11 @@ if ($_POST) {
 		$iscsitarget_extent = array();
 		$iscsitarget_extent['uuid'] = $_POST['uuid'];
 		$iscsitarget_extent['name'] = $_POST['name'];
+		$iscsitarget_extent['path'] = $_POST['path'];
+		$iscsitarget_extent['size'] = $_POST['size'];
+		$iscsitarget_extent['sizeunit'] = $_POST['sizeunit'];
+		$iscsitarget_extent['type'] = $_POST['type'];
 		$iscsitarget_extent['comment'] = $_POST['comment'];
-		if ("device" === $_POST['type']) {
-			$diskinfo = disks_get_diskinfo($_POST['device']);
-			$iscsitarget_extent['path'] = $diskinfo['name'];
-			$iscsitarget_extent['size'] = $diskinfo['mediasize_mbytes'] - 1; // Calculate target size.
-		} else {
-			$iscsitarget_extent['path'] = $_POST['path'];
-			$iscsitarget_extent['size'] = $_POST['size'];
-		}
 
 		if (isset($id) && $a_iscsitarget_extent[$id]) {
 			$a_iscsitarget_extent[$id] = $iscsitarget_extent;
@@ -134,59 +135,55 @@ if ($_POST) {
 		updatenotify_set("iscsitarget_extent", $mode, $iscsitarget_extent['uuid']);
 		write_config();
 
-		header("Location: services_iscsitarget.php");
+		header("Location: services_iscsitarget_target.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
-<!--
-function type_change() {
-	switch (document.iform.type.value) {
-	case "file":
-		showElementById('path_tr','show');
-		showElementById('size_tr','show');
-		showElementById('device_tr','hide');
-		break;
-	
-	case "device":
-		showElementById('path_tr','hide');
-		showElementById('size_tr','hide');
-		showElementById('device_tr','show');
-		break;
-	}
-}
-// -->
-</script>
 <form action="services_iscsitarget_extent_edit.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-		<tr>
-			<td class="tabcont">
-				<?php if ($input_errors) print_input_errors($input_errors);?>
-				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("name", gettext("Extent name"), $pconfig['name'], "", true, 10, isset($id));?>
-					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device")), "", true, false, "type_change()");?>
-					<?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."), $pconfig['name']), $g['media_path'], true);?>
-					<?php $a_device = array(); $a_device[''] = gettext("Must choose one"); foreach (get_conf_all_disks_list_filtered() as $diskv) { if (0 == strcmp($diskv['size'], "NA")) continue; if (1 == disks_exists($diskv['devicespecialfile'])) continue; $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})"); }?>
-					<?php html_combobox("device", gettext("Device"), $pconfig['path'], $a_device, "", true);?>
-					<?php html_inputbox("size", gettext("File size"), $pconfig['size'], gettext("Size in MB."), true, 10);?>
-					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-				</table>
-				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
-				</div>
-			</td>
-		</tr>
-	</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabinact"><a href="services_iscsitarget.php"><span><?=gettext("Settings");?></span></a></li>
+        <li class="tabact"><a href="services_iscsitarget_target.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Targets");?></span></a></li>
+        <li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
+		<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
+		<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="tabcont">
+      <?php if ($input_errors) print_input_errors($input_errors);?>
+      <table width="100%" border="0" cellpadding="6" cellspacing="0">
+      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], "", true, 10, isset($id));?>
+      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), "", true);?>
+      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
+      <tr>
+        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
+        <td width="78%" class="vtable">
+          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>">
+          <select name="sizeunit">
+            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MB"));?></option>
+            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GB"));?></option>
+            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TB"));?></option>
+          </select>
+        </td>
+      </tr>
+      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
+      </table>
+      <div id="submit">
+      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
+      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+      <?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
+      <input name="id" type="hidden" value="<?=$id;?>">
+      <?php endif;?>
+      </div>
+    </td>
+  </tr>
+</table>
 </form>
-<script language="JavaScript">
-<!--
-type_change(false);
-//-->
-</script>
 <?php include("fend.inc");?>
