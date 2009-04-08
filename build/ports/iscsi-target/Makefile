@@ -21,6 +21,7 @@ post-patch:
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKDIR}/netbsd-iscsi-*/src/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/iscsi_target.in ${FREENAS_ROOTFS}/etc/rc.d/iscsi_target
 
 	@${MKDIR} ${FREENAS_ROOTFS}/etc/iscsi
 .for i in targets passwd auths
