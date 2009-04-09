@@ -85,17 +85,10 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = array(gettext("Extent name"));
-	$reqdfieldst = explode(" ", "string");
+	$reqdfields = explode(" ", "name path size");
+	$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("File size"));
+	$reqdfieldst = explode(" ", "string string numericint");
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
-
-	$reqdfields = explode(" ", "path size");
-	$reqdfieldsn = array(gettext("Path"),
-						 gettext("File size"));
-	$reqdfieldst = explode(" ", "string numericint");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
@@ -142,48 +135,47 @@ if ($_POST) {
 ?>
 <?php include("fbegin.inc");?>
 <form action="services_iscsitarget_extent_edit.php" method="post" name="iform" id="iform">
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
-        <li class="tabinact"><a href="services_iscsitarget.php"><span><?=gettext("Settings");?></span></a></li>
-        <li class="tabact"><a href="services_iscsitarget_target.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Targets");?></span></a></li>
-        <li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
-		<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
-		<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
-      </ul>
-    </td>
-  </tr>
-
-  <tr>
-    <td class="tabcont">
-      <?php if ($input_errors) print_input_errors($input_errors);?>
-      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], "", true, 10, isset($id));?>
-      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), "", true);?>
-      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
-      <tr>
-        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
-        <td width="78%" class="vtable">
-          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>">
-          <select name="sizeunit">
-            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MB"));?></option>
-            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GB"));?></option>
-            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TB"));?></option>
-          </select>
-        </td>
-      </tr>
-      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-      </table>
-      <div id="submit">
-      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
-      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-      <?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
-      <input name="id" type="hidden" value="<?=$id;?>">
-      <?php endif;?>
-      </div>
-    </td>
-  </tr>
-</table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabnavtbl">
+	      <ul id="tabnav">
+					<li class="tabinact"><a href="services_iscsitarget.php"><span><?=gettext("Settings");?></span></a></li>
+					<li class="tabact"><a href="services_iscsitarget_target.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Targets");?></span></a></li>
+					<li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
+					<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
+					<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+	      </ul>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td class="tabcont">
+	      <?php if ($input_errors) print_input_errors($input_errors);?>
+	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
+	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], "", true, 10, isset($id));?>
+	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), "", true);?>
+	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
+	      <tr>
+	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
+	        <td width="78%" class="vtable">
+	          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>">
+	          <select name="sizeunit">
+	            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MiB"));?></option>
+	            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GiB"));?></option>
+	            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TiB"));?></option>
+	          </select>
+	        </td>
+	      </tr>
+	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
+	      </table>
+	      <div id="submit">
+	      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
+	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+	      <?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
+	      <input name="id" type="hidden" value="<?=$id;?>">
+	      <?php endif;?>
+	      </div>
+	    </td>
+	  </tr>
+	</table>
 </form>
 <?php include("fend.inc");?>

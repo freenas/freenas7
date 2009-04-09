@@ -11,5 +11,6 @@ GNU_CONFIGURE=	yes
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/istgt ${FREENAS_ROOTFS}/${PREFIX}/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/istgtcontrol ${FREENAS_ROOTFS}/${PREFIX}/bin
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/iscsi_target.in ${FREENAS_ROOTFS}/etc/rc.d/iscsi_target
 
 .include <bsd.port.mk>
