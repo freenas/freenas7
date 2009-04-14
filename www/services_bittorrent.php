@@ -60,9 +60,11 @@ if ($_POST) {
 		$reqdfieldst = explode(" ", "port string");
 
 		if ($_POST['authrequired']) {
+			// !!! Note !!! It seems TransmissionBT does not support special characters,
+			// so use 'alias' instead of 'password' check.
 			$reqdfields = array_merge($reqdfields, explode(" ", "username password"));
 			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Username"), gettext("Password")));
-			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "alias password"));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "alias alias"));
 		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
