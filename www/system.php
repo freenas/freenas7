@@ -74,7 +74,7 @@ if ($_POST) {
 	// Input validation.
 	$reqdfields = explode(" ", "hostname username");
 	$reqdfieldsn = array(gettext("Hostname"), gettext("Username"));
-	$reqdfieldst = explode(" ", "hostname string");
+	$reqdfieldst = explode(" ", "hostname alias");
 
 	if (!empty($_POST['domain'])) {
 		$reqdfields = array_merge($reqdfields, array("domain"));
@@ -106,11 +106,9 @@ if ($_POST) {
 	if (($_POST['dns1'] && !is_ipv4addr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipv4addr($_POST['dns2']))) {
 		$input_errors[] = gettext("A valid IPv4 address must be specified for the primary/secondary DNS server.");
 	}
+
 	if (($_POST['ipv6dns1'] && !is_ipv6addr($_POST['ipv6dns1'])) || ($_POST['ipv6dns2'] && !is_ipv6addr($_POST['ipv6dns2']))) {
 		$input_errors[] = gettext("A valid IPv6 address must be specified for the primary/secondary DNS server.");
-	}
-	if ($_POST['username'] && !preg_match("/^[a-zA-Z0-9]*$/", $_POST['username'])) {
-		$input_errors[] = gettext("The username may only contain the characters a-z, A-Z and 0-9.");
 	}
 
 	if (isset($_POST['ntp_enable'])) {

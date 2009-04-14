@@ -348,10 +348,10 @@ function is_validaliasname($name) {
 	if (!is_string($name))
 		return false;
 
-	if (!preg_match("/[^a-zA-Z0-9]/", $name))
-		return true;
+	if (!preg_match("/^[a-zA-Z0-9]*$/", $name))
+		return false;
 
-	return false;
+	return true;
 }
 
 /* returns true if $port is a valid TCP/UDP port */
