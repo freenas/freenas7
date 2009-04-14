@@ -1723,6 +1723,14 @@ function config_upgrade() {
 		$config['version'] = "7.4";
 	}
 
+	/* Convert 7.4 -> 7.5 */
+	/* Set default //bittorrent/username. */
+	if ($config['version'] === "7.4") {
+		$config['bittorrent']['username'] = "admin";
+
+		$config['version'] = "7.5";
+	}
+
 	write_config();
 
 	if (is_booting())

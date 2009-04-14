@@ -24,7 +24,6 @@ extra_commands="updateblocklist"
 
 # Defaults
 transmission_enable=${transmission_enable:-"NO"}
-transmission_remoteuser=${transmission_remoteuser:-"admin"}
 transmission_allowed=${transmission_allowed:-"*.*.*.*"}
 transmission_blocklist=${transmission_blocklist:-"NO"}
 transmission_blocklist_url=${transmission_blocklist_url:-"http://update.transmissionbt.com/level1.gz"}
@@ -42,8 +41,8 @@ transmission_prestart()
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
 		-i "count(authrequired) > 0" \
 			-o " --auth" \
-			-o " --username ${transmission_remoteuser}" \
-			-v "concat(' --password ',password)" \
+			-v "concat(' --username ',username)" \
+			-v "concat(' --password &quot;',password,'&quot;')" \
 		-b \
 		-i "count(authrequired) = 0" -o " --no-auth" -b \
 		-v "concat(' --download-dir &quot;',downloaddir,'&quot; --port ',port)" \

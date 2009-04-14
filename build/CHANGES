@@ -46,6 +46,7 @@ Minors changes:
 - Add ability to configure ProFTPD module mod_ban via WebGUI (FR 2546338).
 - Add device I/O statistics to 'Status|Disks' page (FR 2704919).
 - Replace msntp with FreeBSD's ntpdate.
+- Allow setting TransmissionBT WebGUI user name (FR 2745563).
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct
