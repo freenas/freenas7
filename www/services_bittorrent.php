@@ -42,6 +42,7 @@ $pconfig['enable'] = isset($config['bittorrent']['enable']);
 $pconfig['port'] = $config['bittorrent']['port'];
 $pconfig['downloaddir'] = $config['bittorrent']['downloaddir'];
 $pconfig['configdir'] = $config['bittorrent']['configdir'];
+$pconfig['username'] = $config['bittorrent']['username'];
 $pconfig['password'] = $config['bittorrent']['password'];
 $pconfig['authrequired'] = isset($config['bittorrent']['authrequired']);
 
@@ -59,9 +60,9 @@ if ($_POST) {
 		$reqdfieldst = explode(" ", "port string");
 
 		if ($_POST['authrequired']) {
-			$reqdfields = array_merge($reqdfields, explode(" ", "password"));
-			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Password")));
-			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "password"));
+			$reqdfields = array_merge($reqdfields, explode(" ", "username password"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Username"), gettext("Password")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "alias password"));
 		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -77,6 +78,7 @@ if ($_POST) {
 		$config['bittorrent']['port'] = $_POST['port'];
 		$config['bittorrent']['downloaddir'] = $_POST['downloaddir'];
 		$config['bittorrent']['configdir'] = $_POST['configdir'];
+		$config['bittorrent']['username'] = $_POST['username'];
 		$config['bittorrent']['password'] = $_POST['password'];
 		$config['bittorrent']['authrequired'] = $_POST['authrequired'] ? true : false;
 
@@ -103,16 +105,19 @@ function enable_change(enable_change) {
 	document.iform.downloaddir.disabled = endis;
 	document.iform.configdir.disabled = endis;
 	document.iform.authrequired.disabled = endis;
+	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
 }
 
 function authrequired_change() {
 	switch (document.iform.authrequired.checked) {
 		case true:
+			showElementById('username_tr','show');
 			showElementById('password_tr','show');
 			break;
 
 		case false:
+			showElementById('username_tr','hide');
 			showElementById('password_tr','hide');
 			break;
 	}
@@ -133,7 +138,8 @@ function authrequired_change() {
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
 					<?php html_checkbox("authrequired", gettext("Authentication"), $pconfig['authrequired'] ? true : false, gettext("Require authentication."), "", false, "authrequired_change()");?>
-					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], sprintf("%s %s", gettext("Password for the administrative pages."), gettext("Default user name is 'admin'.")), true, 20);?>
+					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 20);?>
+					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], gettext("Password for the administrative pages."), true, 20);?>
 					<?php
 					$if = get_ifname($config['interfaces']['lan']['if']);
 					$ipaddr = get_ipaddr($if);
