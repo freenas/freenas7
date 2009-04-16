@@ -22,4 +22,7 @@ To add new WebGUI elements use the UI control creation functions in
 www/guiconfig.inc (e.g. html_inputbox to create a input box). This should
 be done to make changes in the WebGUI look easy as possible.
 
+Global settings:
+- Use real tabs in source files. The tab width is 2.
+
 Volker Theile
