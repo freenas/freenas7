@@ -314,6 +314,9 @@ device		fwip		# IP over FireWire (RFC 2734,3146)
 #####################################################################
 device		speaker
 
+# Kernel tuning (see http://wiki.freebsd.org/ZFSTuningGuide)
+options		KVA_PAGES=512
+
 # Networking options
 options		DEVICE_POLLING
 options		HZ=1000
