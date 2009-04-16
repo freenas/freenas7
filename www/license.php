@@ -76,6 +76,8 @@ $pgtitle = array(gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP/Rsync shares.</font></em><br>
               <p>Nelson Silva (<a href="mailto:nelson.emanuel.silva@gmail.com">nelson.emanuel.silva@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add core ZFS implementation and additional code improvements.</font></em><br>
+              <p>Daisuke Aoyama (<a href="mailto:aoyama@peach.ne.jp">aoyama@peach.ne.jp</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Adapt iSCSI Target WebGUI to istgt.</font></em><br>
             <hr size="1">
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
