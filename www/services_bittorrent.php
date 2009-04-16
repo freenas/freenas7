@@ -45,6 +45,10 @@ $pconfig['configdir'] = $config['bittorrent']['configdir'];
 $pconfig['username'] = $config['bittorrent']['username'];
 $pconfig['password'] = $config['bittorrent']['password'];
 $pconfig['authrequired'] = isset($config['bittorrent']['authrequired']);
+$pconfig['peerport'] = $config['bittorrent']['peerport'];
+$pconfig['portforwarding'] = isset($config['bittorrent']['portforwarding']);
+$pconfig['uplimit'] = $config['bittorrent']['uplimit'];
+$pconfig['downlimit'] = $config['bittorrent']['downlimit'];
 
 // Set default values.
 if (!$pconfig['port']) $pconfig['port'] = "9091";
@@ -55,9 +59,9 @@ if ($_POST) {
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "port downloaddir");
-		$reqdfieldsn = array(gettext("Port"), gettext("Download directory"));
-		$reqdfieldst = explode(" ", "port string");
+		$reqdfields = explode(" ", "port downloaddir peerport");
+		$reqdfieldsn = array(gettext("Port"), gettext("Download directory"), gettext("Peer port"));
+		$reqdfieldst = explode(" ", "port string port");
 
 		if ($_POST['authrequired']) {
 			// !!! Note !!! It seems TransmissionBT does not support special characters,
@@ -83,6 +87,10 @@ if ($_POST) {
 		$config['bittorrent']['username'] = $_POST['username'];
 		$config['bittorrent']['password'] = $_POST['password'];
 		$config['bittorrent']['authrequired'] = $_POST['authrequired'] ? true : false;
+		$config['bittorrent']['peerport'] = $_POST['peerport'];
+		$config['bittorrent']['portforwarding'] = $_POST['portforwarding'] ? true : false;
+		$config['bittorrent']['uplimit'] = $_POST['uplimit'];
+		$config['bittorrent']['downlimit'] = $_POST['downlimit'];
 
 		write_config();
 
@@ -105,10 +113,16 @@ function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.port.disabled = endis;
 	document.iform.downloaddir.disabled = endis;
+	document.iform.downloaddirbrowsebtn.disabled = endis;
 	document.iform.configdir.disabled = endis;
+	document.iform.configdirbrowsebtn.disabled = endis;
 	document.iform.authrequired.disabled = endis;
 	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
+	document.iform.peerport.disabled = endis;
+	document.iform.portforwarding.disabled = endis;
+	document.iform.uplimit.disabled = endis;
+	document.iform.downlimit.disabled = endis;
 }
 
 function authrequired_change() {
@@ -134,11 +148,15 @@ function authrequired_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<?php html_titleline_checkbox("enable", gettext("BitTorrent"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Default port is %d."), 9091), true, 5);?>
+					<?php html_inputbox("peerport", gettext("Peer port"), $pconfig['peerport'], sprintf(gettext("Port to listen for incoming peer connections. Default port is %d."), 51413), true, 5);?>
 					<?php html_filechooser("downloaddir", gettext("Download directory"), $pconfig['downloaddir'], gettext("Where to save downloaded data."), $g['media_path'], true, 60);?>
 					<?php html_filechooser("configdir", gettext("Configuration directory"), $pconfig['configdir'], gettext("Alternative configuration directory (usually empty)."), $g['media_path'], false, 60);?>
+					<?php html_checkbox("portforwarding", gettext("Port forwarding"), $pconfig['portforwarding'] ? true : false, gettext("Enable port forwarding via NAT-PMP or UPnP."), "", false);?>
+					<?php html_inputbox("uplimit", gettext("Upload bandwidth"), $pconfig['uplimit'], gettext("The maximum upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
+					<?php html_inputbox("downlimit", gettext("Download bandwidth"), $pconfig['downlimit'], gettext("The maximum download bandwith in KiB/s. An empty field means infinity."), false, 5);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Default port is %d."), 9091), true, 5);?>
 					<?php html_checkbox("authrequired", gettext("Authentication"), $pconfig['authrequired'] ? true : false, gettext("Require authentication."), "", false, "authrequired_change()");?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 20);?>
 					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], gettext("Password for the administrative pages."), true, 20);?>
