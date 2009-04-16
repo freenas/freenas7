@@ -201,6 +201,11 @@ if ($_POST) {
 	$lunmap[0]['type'] = "Storage";
 	$lunmap[0]['extentname'] = $_POST['storage'];
 	$pconfig['lunmap'] = $lunmap;
+	if ($_POST['queuedepth'] === "") {
+		$queuedepth = 0;
+	} else {
+		$queuedepth = $_POST['queuedepth'];
+	}
 
 	// Input validation.
 	$reqdfields = explode(" ", "name");
@@ -237,6 +242,18 @@ if ($_POST) {
 	if ($pconfig['queuedepth'] < 0 || $pconfig['queuedepth'] > 255) {
 		$input_errors[] = gettext("The queuedepth range is invalid.");
 	}
+	if (strlen($pconfig['inqvendor']) > 8) {
+		$input_errors[] = sprintf(gettext("%s is too long."), gettext("Inquiry Vendor"));
+	}
+	if (strlen($pconfig['inqproduct']) > 16) {
+		$input_errors[] = sprintf(gettext("%s is too long."), gettext("Inquiry Product"));
+	}
+	if (strlen($pconfig['inqrevision']) > 4) {
+		$input_errors[] = sprintf(gettext("%s is too long."), gettext("Inquiry Revision"));
+	}
+	if (strlen($pconfig['inqserial']) > 16) {
+		$input_errors[] = sprintf(gettext("%s is too long."), gettext("Inquiry Serial"));
+	}
 
 	if (!isset($id)) {
 		foreach ($a_iscsitarget_target as $target) {
@@ -261,7 +278,7 @@ if ($_POST) {
 
 		$iscsitarget_target['authmethod'] = $_POST['authmethod'];
 		$iscsitarget_target['digest'] = $_POST['digest'];
-		$iscsitarget_target['queuedepth'] = $_POST['queuedepth'];
+		$iscsitarget_target['queuedepth'] = $queuedepth;
 		$iscsitarget_target['inqvendor'] = $_POST['inqvendor'];
 		$iscsitarget_target['inqproduct'] = $_POST['inqproduct'];
 		$iscsitarget_target['inqrevision'] = $_POST['inqrevision'];
@@ -318,34 +335,34 @@ if ($_POST) {
       <?php if ($input_errors) print_input_errors($input_errors);?>
       <table width="100%" border="0" cellpadding="6" cellspacing="0">
       <?php html_inputbox("name", gettext("Target Name"), $pconfig['name'], gettext("Base Name will be appended automatically when starting without 'iqn.'."), true, 60, false);?>
-      <?php html_inputbox("alias", gettext("Target Alias"), $pconfig['alias'], "", false, 60,false);?>
-      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk")), "", true);?>
-      <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => "rw", "ro" => "ro"), "", true);?>
+      <?php html_inputbox("alias", gettext("Target Alias"), $pconfig['alias'], gettext("Optional user-friendly string of the target."), false, 60, false);?>
+      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk")), gettext("Logical Unit Type"), true);?>
+      <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => gettext("Read/Write (rw)"), "ro" => gettext("Read Only (ro)")), "", true);?>
       <?php
 		$pg_list = array();
 		//$pg_list['0'] = 'None';
 		foreach($config['iscsitarget']['portalgroup'] as $pg) {
 		  if ($pg['comment']) {
-			  $l = sprintf("Tag%d (%s)", $pg['tag'], $pg['comment']);
+			  $l = sprintf(gettext("Tag%d (%s)"), $pg['tag'], $pg['comment']);
 		  } else {
-			  $l = sprintf("Tag%d", $pg['tag']);
+			  $l = sprintf(gettext("Tag%d"), $pg['tag']);
 		  }
 		  $pg_list[$pg['tag']] = htmlspecialchars($l);
 		}
-		html_combobox("portalgroup", gettext("Portal Group"), $pconfig['portalgroup'], $pg_list, "", true);
+		html_combobox("portalgroup", gettext("Portal Group"), $pconfig['portalgroup'], $pg_list, gettext("The initiator can connect the portals in specific Portal Group."), true);
       ?>
       <?php
 		$ig_list = array();
 		//$ig_list['0'] = 'None';
 		foreach($config['iscsitarget']['initiatorgroup'] as $ig) {
 		  if ($ig['comment']) {
-			  $l = sprintf("Tag%d (%s)", $ig['tag'], $ig['comment']);
+			  $l = sprintf(gettext("Tag%d (%s)"), $ig['tag'], $ig['comment']);
 		  } else {
-			  $l = sprintf("Tag%d", $ig['tag']);
+			  $l = sprintf(gettext("Tag%d"), $ig['tag']);
 		  }
 		  $ig_list[$ig['tag']] = htmlspecialchars($l);
 		}
-		html_combobox("initiatorgroup", gettext("Initiator Group"), $pconfig['initiatorgroup'], $ig_list, "", true);
+		html_combobox("initiatorgroup", gettext("Initiator Group"), $pconfig['initiatorgroup'], $ig_list, gettext("The initiator can access to the target via the portals by authorised initiator names and networks in specific Initiator Group."), true);
       ?>
       <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 
@@ -390,7 +407,7 @@ if ($_POST) {
       <?php
 			$index = array_search_ex("0", $pconfig['lunmap'], "lun");
 			if (false !== $index) {
-				html_combobox("storage", gettext("Storage"), $pconfig['lunmap'][$index]['extentname'], $a_storage, "", true);
+				html_combobox("storage", gettext("Storage"), $pconfig['lunmap'][$index]['extentname'], $a_storage, sprintf(gettext("The storage area mapped to LUN%d."), 0), true);
 			}
       ?>
 
@@ -400,19 +417,19 @@ if ($_POST) {
       <tr>
         <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
       </tr>
-      <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("mutual CHAP")), "", false);?>
+      <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("mutual CHAP")), gettext("The method the target accept. Auto means both none and authentication."), false);?>
       <?php
 		$ag_list = array();
 		$ag_list['0'] = 'None';
 		foreach($config['iscsitarget']['authgroup'] as $ag) {
 		  if ($ag['comment']) {
-			  $l = sprintf("Tag%d (%s)", $ag['tag'], $ag['comment']);
+			  $l = sprintf(gettext("Tag%d (%s)"), $ag['tag'], $ag['comment']);
 		  } else {
-			  $l = sprintf("Tag%d", $ag['tag']);
+			  $l = sprintf(gettext("Tag%d"), $ag['tag']);
 		  }
 		  $ag_list[$ag['tag']] = htmlspecialchars($l);
 		}
-		html_combobox("authgroup", gettext("Auth Group"), $pconfig['authgroup'], $ag_list, "", false);
+		html_combobox("authgroup", gettext("Auth Group"), $pconfig['authgroup'], $ag_list, gettext("The initiator can access to the target with correct user and secret in specific Auth Group."), false);
       ?>
       <?php html_combobox("digest", gettext("Initial Digest"), $pconfig['digest'], array("Auto" => gettext("Auto"), "Header" => gettext("Header digest"), "Data" => gettext("Data digest"), "Header Data" => gettext("Header and Data digest")), gettext("The initial digest mode negotiated with the initiator."), false);?>
       <?php html_inputbox("queuedepth", gettext("Queue Depth"), $pconfig['queuedepth'], gettext("0=disabled, 1-255=enabled command queuing with specified depth."), false, 10);?>

@@ -174,7 +174,7 @@ function iscsitargetig_process_updatenotification($mode, $data) {
           <td class="list"><a href="services_iscsitarget_ig_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator group");?>" border="0"></a></td>
         </tr>
         </table>
-        <?=gettext("Initiator Group must be defined before they can be used.");?>
+        <?=gettext("A Initiator Group contains authorised initiator names and networks to access the target.");?>
         </td>
       </tr>
       </table>

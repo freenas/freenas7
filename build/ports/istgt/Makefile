@@ -1,5 +1,5 @@
 PORTNAME=				istgt
-PORTVERSION=		20090326
+PORTVERSION=		20090414
 CATEGORIES=			net
 COMMENT=				Implementation of userland ISCSI target
 MAINTAINER=			aoyama@peach.ne.jp
@@ -7,6 +7,7 @@ MAINTAINER=			aoyama@peach.ne.jp
 MASTER_SITES=		http://www.peach.ne.jp/archives/istgt/
 
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+= --with-logfacility="daemon"
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/istgt ${FREENAS_ROOTFS}/${PREFIX}/bin

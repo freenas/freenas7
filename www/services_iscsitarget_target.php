@@ -369,6 +369,9 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
         </td>
       </tr>
       </table>
+      <div id="remarks">
+        <?php html_remark("note", gettext("Note"), gettext("To configure the target, you must add at least Portal Group and Initiator Group and Extent.<br/>Portal Group which is identified by tag number defines IP addresses and listening TCP ports.<br/>Initiator Group which is identified by tag number defines authorised initiator names and networks.<br/>Auth Group which is identified by tag number and is optional if the target does not use CHAP authentication defines authorised users and secrets for additional security.<br/>Extent defines the storage area of the target."));?>
+      </div>
     </td>
   </tr>
 </table>

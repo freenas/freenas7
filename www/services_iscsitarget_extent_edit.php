@@ -151,8 +151,8 @@ if ($_POST) {
 	    <td class="tabcont">
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], "", true, 10, isset($id));?>
-	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), "", true);?>
+	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, isset($id));?>
+	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true);?>
 	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 	      <tr>
 	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
@@ -162,7 +162,8 @@ if ($_POST) {
 	            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MiB"));?></option>
 	            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GiB"));?></option>
 	            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TiB"));?></option>
-	          </select>
+	          </select><br/>
+	          <span class="vexpl"><?=gettext("Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)");?></span>
 	        </td>
 	      </tr>
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>

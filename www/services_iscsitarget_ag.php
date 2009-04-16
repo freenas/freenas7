@@ -186,7 +186,7 @@ function iscsitargetag_process_updatenotification($mode, $data) {
           <td class="list"><a href="services_iscsitarget_ag_edit.php"><img src="plus.gif" title="<?=gettext("Add auth group");?>" border="0"></a></td>
         </tr>
         </table>
-        <?=gettext("Auth Group must be defined before they can be used.");?>
+        <?=gettext("A Auth Group contains authorised users and secrets for additional security.");?>
         </td>
       </tr>
       </table>

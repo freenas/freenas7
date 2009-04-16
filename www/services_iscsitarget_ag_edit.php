@@ -291,7 +291,7 @@ function normalize_ipv6addr($v6addr) {
 	    <td class="tabcont">
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], "", true, 10, isset($id));?>
+	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, isset($id));?>
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 	      <?php for ($i = 1; $i <= $MAX_AUTHUSERS; $i++): ?>
 	      <?php $ldelete=sprintf("delete%d", $i); ?>
@@ -303,20 +303,22 @@ function normalize_ipv6addr($v6addr) {
 	      <?php $lmsecret2=sprintf("msecret2%d", $i); ?>
 	      <?php html_separator();?>
 	      <?php html_titleline_checkbox("$ldelete", sprintf("%s%d", gettext("User"), $i), false, gettext("Delete"), false);?>
-	      <?php html_inputbox("$luser", gettext("User"), $pconfig["$luser"], "", false, 60);?>
+	      <?php html_inputbox("$luser", gettext("User"), $pconfig["$luser"], gettext("Target side user name. It is usually the initiator name by default."), false, 60);?>
 	      <tr>
 	        <td width="22%" valign="top" class="vncell"><?=gettext("Secret");?></td>
 	        <td width="78%" class="vtable">
 	          <input name="<?=$lsecret;?>" type="password" class="formfld" id="<?=$lsecret;?>" size="30" value="<?=htmlspecialchars($pconfig[$lsecret]);?>"><br/>
 	          <input name="<?=$lsecret2;?>" type="password" class="formfld" id="<?=$lsecret2;?>" size="30" value="<?=htmlspecialchars($pconfig[$lsecret2]);?>">&nbsp;(<?=gettext("Confirmation");?>)<br/>
+	          <span class="vexpl"><?=gettext("Target side secret.");?></span>
 	        </td>
 	      </tr>
-	      <?php html_inputbox("$lmuser", gettext("Peer User"), $pconfig["$lmuser"], "", false, 60);?>
+	      <?php html_inputbox("$lmuser", gettext("Peer User"), $pconfig["$lmuser"], gettext("Initiator side secret. (for mutual CHAP authentication)"), false, 60);?>
 	      <tr>
 	        <td width="22%" valign="top" class="vncell"><?=gettext("Peer Secret");?></td>
 	        <td width="78%" class="vtable">
 	          <input name="<?=$lmsecret;?>" type="password" class="formfld" id="<?=$lmsecret;?>" size="30" value="<?=htmlspecialchars($pconfig[$lmsecret]);?>"><br/>
 	          <input name="<?=$lmsecret2;?>" type="password" class="formfld" id="<?=$lmsecret2;?>" size="30" value="<?=htmlspecialchars($pconfig[$lmsecret2]);?>">&nbsp;(<?=gettext("Confirmation");?>)<br/>
+	          <span class="vexpl"><?=gettext("Initiator side secret. (for mutual CHAP autentication)");?></span>
 	        </td>
 	      </tr>
 	      <?php endfor;?>

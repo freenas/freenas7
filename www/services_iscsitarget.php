@@ -144,7 +144,7 @@ if ($_POST) {
       <table width="100%" border="0" cellpadding="6" cellspacing="0">
       <?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), false);?>
       <?php html_inputbox("nodebase", gettext("Base Name"), $pconfig['nodebase'], gettext("The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."), true, 60, false);?>
-      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("mutual CHAP")), "", true);?>
+      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method discovery session accept. Auto means both none and authentication."), true);?>
       <?php
 		$ag_list = array();
 		$ag_list['0'] = 'None';
@@ -156,7 +156,7 @@ if ($_POST) {
 		  }
 		  $ag_list[$ag['tag']] = htmlspecialchars($l);
 		}
-		html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, "", true);
+		html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, gettext("The initiator can discover the targets with correct user and secret in specific Auth Group."), true);
       ?>
       <tr>
         <td colspan="2" class="list" height="12"></td>
@@ -164,13 +164,13 @@ if ($_POST) {
       <tr>
         <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
       </tr>
-      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], gettext("I/O timeout in seconds. (30 by default)"), false, 30, false);?>
-      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], gettext("NOPIN sending interval in seconds. (20 by default)"), false, 30, false);?>
-      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], gettext("Maximum number of sessions holding at same time. (32 by default)"), false, 30, false);?>
-      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], gettext("Maximum number of connections in each session. (8 by default)"), false, 30, false);?>
-      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter. (65536 by default)"), false, 30, false);?>
-      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter. (262144 by default)"), false, 30, false);?>
-      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter. (262144 by default)"), false, 30, false);?>
+      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], gettext("I/O timeout in seconds. (30 by default)"), true, 30, false);?>
+      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], gettext("NOPIN sending interval in seconds. (20 by default)"), true, 30, false);?>
+      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], gettext("Maximum number of sessions holding at same time. (32 by default)"), true, 30, false);?>
+      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], gettext("Maximum number of connections in each session. (8 by default)"), true, 30, false);?>
+      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter. (65536 by default)"), true, 30, false);?>
+      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter. (262144 by default)"), true, 30, false);?>
+      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter. (262144 by default)"), true, 30, false);?>
       </table>
       <div id="submit">
         <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">

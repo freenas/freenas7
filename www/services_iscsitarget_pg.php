@@ -168,7 +168,7 @@ function iscsitargetpg_process_updatenotification($mode, $data) {
           <td class="list"><a href="services_iscsitarget_pg_edit.php"><img src="plus.gif" title="<?=gettext("Add portal group");?>" border="0"></a></td>
         </tr>
         </table>
-        <?=gettext("Portal Group must be defined before they can be used.");?>
+        <?=gettext("A Portal Group contains IP addresses and listening TCP ports to connect the target from the initiator.");?>
         </td>
       </tr>
       </table>
