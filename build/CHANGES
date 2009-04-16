@@ -47,6 +47,8 @@ Minors changes:
 - Add device I/O statistics to 'Status|Disks' page (FR 2704919).
 - Replace msntp with FreeBSD's ntpdate.
 - Allow setting TransmissionBT WebGUI user name (FR 2745563).
+- Allow to set the following TransmissionBT settings via WebGUI: peer port,
+  port forwarding and max. upload/download bandwidth (FR 2765940).
 
 Bug fixes:
 - Set correct friendly name in fuppes.cfg for Xbox 360. The correct

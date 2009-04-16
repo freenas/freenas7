@@ -1724,9 +1724,13 @@ function config_upgrade() {
 	}
 
 	/* Convert 7.4 -> 7.5 */
-	/* Set default //bittorrent/username. */
+	/* Set default username //bittorrent/username. */
+	/* Set default peer port //bittorrent/peerport. */
+	/* Enable port forwarding //bittorrent/portforwarding. */
 	if ($config['version'] === "7.4") {
 		$config['bittorrent']['username'] = "admin";
+		$config['bittorrent']['peerport'] = "51413";
+		$config['bittorrent']['portforwarding'] = true;
 
 		$config['version'] = "7.5";
 	}

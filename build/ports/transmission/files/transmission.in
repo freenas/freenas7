@@ -19,6 +19,7 @@ load_rc_config "${name}"
 
 # Custom commands
 start_precmd="transmission_prestart"
+start_postcmd="transmission_poststart"
 updateblocklist_cmd="transmission_updateblocklist"
 extra_commands="updateblocklist"
 
@@ -56,6 +57,26 @@ transmission_prestart()
 	fi
 
 	command_args="${command_args} ${_command_args}"
+}
+
+transmission_poststart()
+{
+	local _command_args
+
+	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
+		-v "concat('--port=',peerport)" \
+		-i "count(portforwarding) > 0" -o " --portmap" -b \
+		-i "count(portforwarding) = 0" -o " --no-portmap" -b \
+		-i "string-length(uplimit) > 0" -v "concat(' --uplimit=',uplimit)" -b \
+		-i "string-length(uplimit) = 0" -o " --no-uplimit" -b \
+		-i "string-length(downlimit) > 0" -v "concat(' --downlimit=',downlimit)" -b \
+		-i "string-length(downlimit) = 0" -o " --no-downlimit" -b \
+		-i "count(authrequired) > 0" \
+			-v "concat(' --auth=',username,':',password)" \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	sleep 1; transmission-remote ${_command_args} >/dev/null 2>&1
 }
 
 transmission_updateblocklist()

@@ -728,7 +728,13 @@
 		<admin_pw>freenas</admin_pw>
 	</daap>
 	<bittorrent>
-		<!-- <enable/> -->
+		<!--
+		<enable/>
+		<uplimit>xxx</uplimit> // in KB/s
+		<downlimit>xxx</downlimit> // in KB/s
+		-->
+		<peerport>51413</peerport>
+		<portforwarding/>
 		<port>9091</port>
 		<downloaddir></downloaddir>
 		<configdir></configdir>
