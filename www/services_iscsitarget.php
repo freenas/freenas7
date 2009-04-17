@@ -78,20 +78,20 @@ if ($_POST) {
 	// Input validation.
 	$reqdfields = explode(" ", "nodebase discoveryauthmethod discoveryauthgroup");
 	$reqdfieldsn = array(gettext("Node Base"),
-						 gettext("Discovery Auth Method"),
-						 gettext("Discovery Auth Group"));
+		gettext("Discovery Auth Method"),
+		gettext("Discovery Auth Group"));
 	$reqdfieldst = explode(" ", "string string numericint");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	$reqdfields = explode(" ", "timeout nopininterval maxsessions maxconnections firstburstlength maxburstlength maxrecvdatasegmentlength");
 	$reqdfieldsn = array(gettext("I/O Timeout"),
-						 gettext("NOPIN Interval"),
-						 gettext("Max. sessions"),
-						 gettext("Max. connections"),
-						 gettext("FirstBurstLength"),
-						 gettext("MaxBurstLength"),
-						 gettext("MaxRecvDataSegmentLength"));
+		gettext("NOPIN Interval"),
+		gettext("Max. sessions"),
+		gettext("Max. connections"),
+		gettext("FirstBurstLength"),
+		gettext("MaxBurstLength"),
+		gettext("MaxRecvDataSegmentLength"));
 	$reqdfieldst = explode(" ", "numericint numericint numericint numericint numericint numericint numericint");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -146,31 +146,26 @@ if ($_POST) {
       <?php html_inputbox("nodebase", gettext("Base Name"), $pconfig['nodebase'], gettext("The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."), true, 60, false);?>
       <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method discovery session accept. Auto means both none and authentication."), true);?>
       <?php
-		$ag_list = array();
-		$ag_list['0'] = 'None';
-		foreach($config['iscsitarget']['authgroup'] as $ag) {
-		  if ($ag['comment']) {
-			  $l = sprintf("Tag%d (%s)", $ag['tag'], $ag['comment']);
-		  } else {
-			  $l = sprintf("Tag%d", $ag['tag']);
-		  }
-		  $ag_list[$ag['tag']] = htmlspecialchars($l);
-		}
-		html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, gettext("The initiator can discover the targets with correct user and secret in specific Auth Group."), true);
-      ?>
-      <tr>
-        <td colspan="2" class="list" height="12"></td>
-      </tr>
-      <tr>
-        <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
-      </tr>
-      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], gettext("I/O timeout in seconds. (30 by default)"), true, 30, false);?>
-      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], gettext("NOPIN sending interval in seconds. (20 by default)"), true, 30, false);?>
-      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], gettext("Maximum number of sessions holding at same time. (32 by default)"), true, 30, false);?>
-      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], gettext("Maximum number of connections in each session. (8 by default)"), true, 30, false);?>
-      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter. (65536 by default)"), true, 30, false);?>
-      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter. (262144 by default)"), true, 30, false);?>
-      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter. (262144 by default)"), true, 30, false);?>
+			$ag_list = array();
+			$ag_list['0'] = 'None';
+			foreach($config['iscsitarget']['authgroup'] as $ag) {
+			  if ($ag['comment']) {
+				  $l = sprintf("Tag%d (%s)", $ag['tag'], $ag['comment']);
+			  } else {
+				  $l = sprintf("Tag%d", $ag['tag']);
+			  }
+			  $ag_list[$ag['tag']] = htmlspecialchars($l);
+			};?>
+			<?php html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, gettext("The initiator can discover the targets with correct user and secret in specific Auth Group."), true);?>
+      <?php html_separator();?>
+      <?php html_titleline(gettext("Advanced settings"));?>
+      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], gettext("I/O timeout in seconds (30 by default)."), true, 30, false);?>
+      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], gettext("NOPIN sending interval in seconds (20 by default)."), true, 30, false);?>
+      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], gettext("Maximum number of sessions holding at same time (32 by default)."), true, 30, false);?>
+      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], gettext("Maximum number of connections in each session (8 by default)."), true, 30, false);?>
+      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter (65536 by default)."), true, 30, false);?>
+      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter (262144 by default)."), true, 30, false);?>
+      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter (262144 by default)."), true, 30, false);?>
       </table>
       <div id="submit">
         <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
