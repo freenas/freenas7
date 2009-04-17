@@ -146,6 +146,7 @@ function enable_change(enable_change) {
 	document.iform.port.disabled = endis;
 	document.iform.web.disabled = endis;
 	document.iform.home.disabled = endis;
+	document.iform.homebrowsebtn.disabled = endis;
 	document.iform.content.disabled = endis;
 	document.iform.contentaddbtn.disabled = endis;
 	document.iform.contentchangebtn.disabled = endis;

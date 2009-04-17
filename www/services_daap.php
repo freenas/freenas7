@@ -111,6 +111,7 @@ function enable_change(enable_change) {
 	document.iform.servername.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.dbdir.disabled = endis;
+	document.iform.dbdirbrowsebtn.disabled = endis;
 	document.iform.content.disabled = endis;
 	document.iform.contentaddbtn.disabled = endis;
 	document.iform.contentchangebtn.disabled = endis;

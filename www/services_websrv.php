@@ -127,6 +127,7 @@ function enable_change(enable_change) {
 	document.iform.protocol.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.documentroot.disabled = endis;
+	document.iform.documentrootbrowsebtn.disabled = endis;
 	document.iform.privatekey.disabled = endis;
 	document.iform.certificate.disabled = endis;
 	document.iform.authentication.disabled = endis;

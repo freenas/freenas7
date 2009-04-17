@@ -104,6 +104,7 @@ if ($_POST) {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.dir.disabled = endis;
+	document.iform.dirbrowsebtn.disabled = endis;
 	document.iform.allowfilecreation.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.username.disabled = endis;
