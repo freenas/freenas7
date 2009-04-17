@@ -49,6 +49,8 @@ $pconfig['peerport'] = $config['bittorrent']['peerport'];
 $pconfig['portforwarding'] = isset($config['bittorrent']['portforwarding']);
 $pconfig['uplimit'] = $config['bittorrent']['uplimit'];
 $pconfig['downlimit'] = $config['bittorrent']['downlimit'];
+$pconfig['pex'] = isset($config['bittorrent']['pex']);
+$pconfig['encryption'] = $config['bittorrent']['encryption'];
 
 // Set default values.
 if (!$pconfig['port']) $pconfig['port'] = "9091";
@@ -91,6 +93,8 @@ if ($_POST) {
 		$config['bittorrent']['portforwarding'] = $_POST['portforwarding'] ? true : false;
 		$config['bittorrent']['uplimit'] = $_POST['uplimit'];
 		$config['bittorrent']['downlimit'] = $_POST['downlimit'];
+		$config['bittorrent']['pex'] = $_POST['pex'] ? true : false;
+		$config['bittorrent']['encryption'] = $_POST['encryption'];
 
 		write_config();
 
@@ -123,6 +127,8 @@ function enable_change(enable_change) {
 	document.iform.portforwarding.disabled = endis;
 	document.iform.uplimit.disabled = endis;
 	document.iform.downlimit.disabled = endis;
+	document.iform.pex.disabled = endis;
+	document.iform.encryption.disabled = endis;
 }
 
 function authrequired_change() {
@@ -152,6 +158,8 @@ function authrequired_change() {
 					<?php html_filechooser("downloaddir", gettext("Download directory"), $pconfig['downloaddir'], gettext("Where to save downloaded data."), $g['media_path'], true, 60);?>
 					<?php html_filechooser("configdir", gettext("Configuration directory"), $pconfig['configdir'], gettext("Alternative configuration directory (usually empty)."), $g['media_path'], false, 60);?>
 					<?php html_checkbox("portforwarding", gettext("Port forwarding"), $pconfig['portforwarding'] ? true : false, gettext("Enable port forwarding via NAT-PMP or UPnP."), "", false);?>
+					<?php html_checkbox("pex", gettext("Peer exchange"), $pconfig['pex'] ? true : false, gettext("Enable peer exchange (PEX)."), "", false);?>
+					<?php html_combobox("encryption", gettext("Encryption"), $pconfig['encryption'], array("0" => gettext("Tolerated"), "1" => gettext("Preferred"), "2" => gettext("Required")), gettext("Select the peer connection encryption mode."), false);?>
 					<?php html_inputbox("uplimit", gettext("Upload bandwidth"), $pconfig['uplimit'], gettext("The maximum upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("downlimit", gettext("Download bandwidth"), $pconfig['downlimit'], gettext("The maximum download bandwith in KiB/s. An empty field means infinity."), false, 5);?>
 					<?php html_separator();?>

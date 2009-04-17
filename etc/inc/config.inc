@@ -1727,10 +1727,14 @@ function config_upgrade() {
 	/* Set default username //bittorrent/username. */
 	/* Set default peer port //bittorrent/peerport. */
 	/* Enable port forwarding //bittorrent/portforwarding. */
+	/* Enable port peer exchange //bittorrent/pex. */
+	/* Set default encryption mode //bittorrent/encryption. */
 	if ($config['version'] === "7.4") {
 		$config['bittorrent']['username'] = "admin";
 		$config['bittorrent']['peerport'] = "51413";
 		$config['bittorrent']['portforwarding'] = true;
+		$config['bittorrent']['pex'] = true;
+		$config['bittorrent']['encryption'] = "1";
 
 		$config['version'] = "7.5";
 	}
