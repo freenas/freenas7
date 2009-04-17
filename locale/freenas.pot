@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-04-14 20:08+0000\n"
+"PO-Revision-Date: 2009-04-17 20:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1103,6 +1103,9 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+msgid "Download bandwidth"
+msgstr ""
+
 msgid "Download configuration"
 msgstr ""
 
@@ -1277,7 +1280,13 @@ msgstr ""
 msgid "Enable module listing."
 msgstr ""
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
+msgstr ""
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
 msgstr ""
 
 msgid "Enable proxy authentication."
@@ -2466,6 +2475,12 @@ msgstr ""
 msgid "Path to be shared."
 msgstr ""
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr ""
 
@@ -2510,6 +2525,13 @@ msgstr ""
 msgid "Port %s must be less than %s."
 msgstr ""
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr ""
 
@@ -2537,6 +2559,9 @@ msgid "Power mode"
 msgstr ""
 
 msgid "PreInit"
+msgstr ""
+
+msgid "Preferred"
 msgstr ""
 
 msgid "Prefix"
@@ -2726,6 +2751,9 @@ msgid "Reports"
 msgstr ""
 
 msgid "Require authentication."
+msgstr ""
+
+msgid "Required"
 msgstr ""
 
 msgid "Rescan interval"
@@ -3508,10 +3536,16 @@ msgstr ""
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 
+msgid "The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr ""
 
 msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
+msgstr ""
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
@@ -3536,6 +3570,9 @@ msgid "The password contains the illegal character ':'."
 msgstr ""
 
 msgid "The passwords do not match."
+msgstr ""
+
+msgid "The peer connection encryption mode."
 msgstr ""
 
 msgid "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
@@ -3844,6 +3881,9 @@ msgstr ""
 msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<div id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul></div>"
 msgstr ""
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr ""
 
@@ -3975,6 +4015,9 @@ msgid "Upgrade firmware"
 msgstr ""
 
 msgid "Upload"
+msgstr ""
+
+msgid "Upload bandwidth"
 msgstr ""
 
 msgid "Uppercases names in both directions"
