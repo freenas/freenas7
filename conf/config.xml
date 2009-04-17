@@ -732,6 +732,7 @@
 		<enable/>
 		<uplimit>xxx</uplimit> // in KB/s
 		<downlimit>xxx</downlimit> // in KB/s
+		<encryption>tolerated=0|preferred=1|required=2</encryption>
 		-->
 		<peerport>51413</peerport>
 		<portforwarding/>
@@ -741,6 +742,8 @@
 		<authrequired/>
 		<username>admin</username>
 		<password>freenas</password>
+		<pex/>
+		<encryption>1</encryption>
 	</bittorrent>
 	<sshd>
 		<!-- <enable/> -->

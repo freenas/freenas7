@@ -67,6 +67,11 @@ transmission_poststart()
 		-v "concat('--port=',peerport)" \
 		-i "count(portforwarding) > 0" -o " --portmap" -b \
 		-i "count(portforwarding) = 0" -o " --no-portmap" -b \
+		-i "count(pex) > 0" -o " --pex" -b \
+		-i "count(pex) = 0" -o " --no-pex" -b \
+		-i "encryption[. = '0']" -o " --encryption-tolerated" -b \
+		-i "encryption[. = '1']" -o " --encryption-preferred" -b \
+		-i "encryption[. = '2']" -o " --encryption-required" -b \
 		-i "string-length(uplimit) > 0" -v "concat(' --uplimit=',uplimit)" -b \
 		-i "string-length(uplimit) = 0" -o " --no-uplimit" -b \
 		-i "string-length(downlimit) > 0" -v "concat(' --downlimit=',downlimit)" -b \
