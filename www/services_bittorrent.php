@@ -159,7 +159,7 @@ function authrequired_change() {
 					<?php html_filechooser("configdir", gettext("Configuration directory"), $pconfig['configdir'], gettext("Alternative configuration directory (usually empty)."), $g['media_path'], false, 60);?>
 					<?php html_checkbox("portforwarding", gettext("Port forwarding"), $pconfig['portforwarding'] ? true : false, gettext("Enable port forwarding via NAT-PMP or UPnP."), "", false);?>
 					<?php html_checkbox("pex", gettext("Peer exchange"), $pconfig['pex'] ? true : false, gettext("Enable peer exchange (PEX)."), "", false);?>
-					<?php html_combobox("encryption", gettext("Encryption"), $pconfig['encryption'], array("0" => gettext("Tolerated"), "1" => gettext("Preferred"), "2" => gettext("Required")), gettext("Select the peer connection encryption mode."), false);?>
+					<?php html_combobox("encryption", gettext("Encryption"), $pconfig['encryption'], array("0" => gettext("Tolerated"), "1" => gettext("Preferred"), "2" => gettext("Required")), gettext("The peer connection encryption mode."), false);?>
 					<?php html_inputbox("uplimit", gettext("Upload bandwidth"), $pconfig['uplimit'], gettext("The maximum upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("downlimit", gettext("Download bandwidth"), $pconfig['downlimit'], gettext("The maximum download bandwith in KiB/s. An empty field means infinity."), false, 5);?>
 					<?php html_separator();?>
