@@ -4,7 +4,7 @@ CATEGORIES=					audio
 COMMENT=						Multithread daapd yet another server for Apple iTunes
 MAINTAINER=					votdev@gmx.de
 
-MASTER_SITES=				http://nightlies.mt-daapd.org/
+MASTER_SITES=				http://nightlies.fireflymediaserver.org/nightlies/svn-1586/
 DISTNAME=						${PORTNAME}-svn-${PORTVERSION}
 
 LIB_DEPENDS=				gdbm.3:${PORTSDIR}/databases/gdbm \
