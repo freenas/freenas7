@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
-"PO-Revision-Date: 2009-04-05 11:42+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"PO-Revision-Date: 2009-04-18 04:32+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -1326,6 +1326,9 @@ msgstr "DOS karakterset"
 msgid "Download"
 msgstr "Opslaan"
 
+msgid "Download bandwidth"
+msgstr "Download bandbreedte"
+
 msgid "Download configuration"
 msgstr "Configuratie Opslaan"
 
@@ -1506,8 +1509,14 @@ msgstr "Inschakelen lokale gebruikers authenticatie."
 msgid "Enable module listing."
 msgstr "Inschakelen modulenlijst."
 
+msgid "Enable peer exchange (PEX)."
+msgstr "Inschakelen peer exchange (PEX)."
+
 msgid "Enable permission inheritance"
 msgstr "Inschakelen permissie overerving"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr "Inschakelen poort forwarding via NAT-PMP of UPnP."
 
 msgid "Enable proxy authentication."
 msgstr "Inschakelen proxy authenticatie."
@@ -2416,7 +2425,7 @@ msgstr ""
 "gebouw, Kamer xyz.'."
 
 msgid "Location of the files to share."
-msgstr "Locatie van de bestanden die gedeeld dienen te worden."
+msgstr "Locatie(s) van de bestanden om te delen."
 
 msgid "Location where the content database file will be stored."
 msgstr "Locatie waar de Fuppes database opgeslagen kan worden."
@@ -2624,6 +2633,9 @@ msgstr "NFS"
 
 msgid "NIS"
 msgstr "NIS"
+
+msgid "NOT YET AVAILABLE"
+msgstr "NOG NIET BESCHIKBAAR"
 
 msgid "NTP time server"
 msgstr "NTP Tijdservers"
@@ -2939,6 +2951,12 @@ msgstr "Pad van de URL ten opzichte van de document root."
 msgid "Path to be shared."
 msgstr "Pad dat gedeeld dient te worden."
 
+msgid "Peer exchange"
+msgstr "Peer exchange"
+
+msgid "Peer port"
+msgstr "Peer poort"
+
 msgid "Permit root login"
 msgstr "Root aanmeldingen gebruikers"
 
@@ -2983,6 +3001,13 @@ msgstr "Poort %ld is al in gebruik door een andere service."
 msgid "Port %s must be less than %s."
 msgstr "Poort %s moet lager zijn dan %s."
 
+msgid "Port forwarding"
+msgstr "Poort forwarding"
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr "Luisterpoort voor binnenkomende peer connecties. Standaard poort %d."
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Poort om op te luisteren. Standaard iTunes poort 3689."
 
@@ -3015,6 +3040,9 @@ msgstr "Energie mode"
 
 msgid "PreInit"
 msgstr "PreInit"
+
+msgid "Preferred"
+msgstr "Voorkeur"
 
 msgid "Prefix"
 msgstr "Voorvoegsel"
@@ -3216,6 +3244,9 @@ msgstr "Rapporten"
 
 msgid "Require authentication."
 msgstr "Vereis authenticatie."
+
+msgid "Required"
+msgstr "Vereist"
 
 msgid "Rescan interval"
 msgstr "Rescan interval"
@@ -4157,6 +4188,12 @@ msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 "Het max. aantal connecties per IP-adres moet 0 (ongelimiteerd) of hoger zijn."
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+"De maximum download bandbreedte in KiB/s. Een leeg gelaten veld betekent "
+"onbeperkt."
+
 msgid "The maximum idle time be a number."
 msgstr "De maximale inactiviteitsduur moet een getal zijn."
 
@@ -4166,6 +4203,11 @@ msgid ""
 msgstr ""
 "De maximale poort die toegewezen mag worden voor de PASV type "
 "dataverbindingen (0 = gebruik alle poorten)."
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"De maximum upload bandbreedte in KB/s. Een leeg gelaten veld betekent "
+"onbeperkt."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4202,6 +4244,9 @@ msgstr "Het wachtwoord bevat het ongeldige karakter ':'."
 
 msgid "The passwords do not match."
 msgstr "De wachtwoorden komen niet overeen."
+
+msgid "The peer connection encryption mode."
+msgstr "De peer connectie encryptie mode."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4280,10 +4325,6 @@ msgstr "De unieke gebruikers ID is al in gebruik."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Het geuploade image bestand is niet voor dit platform"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr ""
-"De gebruikersnaam mag alleen bestaan uit de karakters a-z, A-Z en 0-9."
 
 msgid "The value of the variable."
 msgstr "De waarde van de variabele."
@@ -4770,6 +4811,9 @@ msgstr ""
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">Systeem</li></ul></div>"
 
+msgid "Tolerated"
+msgstr "Toegestaan"
+
 msgid "Tools"
 msgstr "Hulpmiddelen"
 
@@ -4922,6 +4966,9 @@ msgstr "Update Firmware"
 
 msgid "Upload"
 msgstr "Upload"
+
+msgid "Upload bandwidth"
+msgstr "Upload bandbreedte"
 
 msgid "Uppercases names in both directions"
 msgstr "Uppercases namen in beide richtingen."

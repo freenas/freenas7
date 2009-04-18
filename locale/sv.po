@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
 "PO-Revision-Date: 2009-03-08 19:53+0000\n"
 "Last-Translator: Linus C Unneback <linus@folkdatorn.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -1260,6 +1260,9 @@ msgstr "Dos-teckenuppsättning"
 msgid "Download"
 msgstr ""
 
+msgid "Download bandwidth"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "Hämta ner konfiguration"
 
@@ -1437,7 +1440,13 @@ msgstr "Aktivera lokal användarautentisering."
 msgid "Enable module listing."
 msgstr "Aktivera modullistning"
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
+msgstr ""
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
 msgstr ""
 
 msgid "Enable proxy authentication."
@@ -2472,6 +2481,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP-tidsserver"
 
@@ -2753,6 +2765,12 @@ msgstr ""
 msgid "Path to be shared."
 msgstr ""
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr ""
 
@@ -2797,6 +2815,13 @@ msgstr ""
 msgid "Port %s must be less than %s."
 msgstr ""
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr ""
 
@@ -2826,6 +2851,9 @@ msgid "Power mode"
 msgstr ""
 
 msgid "PreInit"
+msgstr ""
+
+msgid "Preferred"
 msgstr ""
 
 msgid "Prefix"
@@ -3021,6 +3049,9 @@ msgid "Reports"
 msgstr ""
 
 msgid "Require authentication."
+msgstr ""
+
+msgid "Required"
 msgstr ""
 
 msgid "Rescan interval"
@@ -3877,12 +3908,19 @@ msgstr "Inloggningsnamnet är ett reserverat inloggningsnamn."
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr ""
 
 msgid ""
 "The maximum port to allocate for PASV style data connections (0 = use any "
 "port)."
+msgstr ""
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid ""
@@ -3914,6 +3952,9 @@ msgstr ""
 
 msgid "The passwords do not match."
 msgstr "Lösenorden stämmer inte överens."
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3977,9 +4018,6 @@ msgstr ""
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Den uppskickade avbildsfilen är inte för den här plattformen"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "Användarnamnet får endast innehålla tecknen a-z, A-Z och 0-9."
 
 msgid "The value of the variable."
 msgstr ""
@@ -4342,6 +4380,9 @@ msgid ""
 ">System</li></ul></div>"
 msgstr ""
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr "Verktyg"
 
@@ -4486,6 +4527,9 @@ msgid "Upgrade firmware"
 msgstr "Uppgradera fast programvara"
 
 msgid "Upload"
+msgstr ""
+
+msgid "Upload bandwidth"
 msgstr ""
 
 msgid "Uppercases names in both directions"

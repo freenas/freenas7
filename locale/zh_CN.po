@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
 "PO-Revision-Date: 2009-01-31 14:11+0000\n"
 "Last-Translator: Zetao Zhang <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -1260,6 +1260,9 @@ msgstr "Dos字元编码"
 msgid "Download"
 msgstr "下载"
 
+msgid "Download bandwidth"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "下载设定"
 
@@ -1436,8 +1439,14 @@ msgstr "启用本地端使用者可以登入。"
 msgid "Enable module listing."
 msgstr "开启模组列表。"
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr "开启权限继承"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "启用 Proxy 认证。"
@@ -2462,6 +2471,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP时间伺服器"
 
@@ -2741,6 +2753,12 @@ msgstr "URL 相对路径（以根目录为底）"
 msgid "Path to be shared."
 msgstr "欲分享的路径"
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr "root准许登入"
 
@@ -2785,6 +2803,13 @@ msgstr ""
 msgid "Port %s must be less than %s."
 msgstr ""
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr ""
 
@@ -2815,6 +2840,9 @@ msgstr "电源模式"
 
 msgid "PreInit"
 msgstr "前置初始动作"
+
+msgid "Preferred"
+msgstr ""
 
 msgid "Prefix"
 msgstr "前置字元"
@@ -3009,6 +3037,9 @@ msgid "Reports"
 msgstr "报告"
 
 msgid "Require authentication."
+msgstr ""
+
+msgid "Required"
 msgstr ""
 
 msgid "Rescan interval"
@@ -3867,6 +3898,10 @@ msgstr "预定的登入帐号。"
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "每个 IP 的最大连线数必需是 0 （不限制）或更大。"
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr "失效时间必须是一个数字。"
 
@@ -3874,6 +3909,9 @@ msgid ""
 "The maximum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "被动式连线埠的区段终点(0 = 不限制)"
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -3904,6 +3942,9 @@ msgstr "密码包含了无效的字元 ':'。"
 
 msgid "The passwords do not match."
 msgstr "您输入的密码不相符。"
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3971,9 +4012,6 @@ msgstr "这个 UID 已经被用过了。"
 
 msgid "The uploaded image file is not for this platform"
 msgstr "上传之映像档并不适用于这个系统"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "帐号只能包含以下字元 a-z, A-Z, 0-9。"
 
 msgid "The value of the variable."
 msgstr ""
@@ -4375,6 +4413,9 @@ msgid ""
 ">System</li></ul></div>"
 msgstr ""
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr "工具"
 
@@ -4519,6 +4560,9 @@ msgid "Upgrade firmware"
 msgstr "韧体升级"
 
 msgid "Upload"
+msgstr ""
+
+msgid "Upload bandwidth"
 msgstr ""
 
 msgid "Uppercases names in both directions"
@@ -5080,6 +5124,9 @@ msgstr "平常日"
 #~ msgid ""
 #~ "A valid IP address must be specified for the primary/secondary DNS server."
 #~ msgstr "主要/次要DNS伺服器必须指定一个有效的IP。"
+
+#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
+#~ msgstr "帐号只能包含以下字元 a-z, A-Z, 0-9。"
 
 #~ msgid "You must select a valid language."
 #~ msgstr "必须选择一个有效的语言。"

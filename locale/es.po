@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
-"PO-Revision-Date: 2009-03-12 04:05+0000\n"
-"Last-Translator: Julián Alarcón <alarconj@gmail.com>\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"PO-Revision-Date: 2009-04-10 18:17+0000\n"
+"Last-Translator: Marcos <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -58,7 +58,7 @@ msgid "%sB used of %sB"
 msgstr "%sB usado de %sB"
 
 msgid "*** Imported duplicate ***"
-msgstr ""
+msgstr "*** Importación duplicada ***"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -123,6 +123,8 @@ msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
+"Un alias al anfitrión. Esta opción puede aparecer múltiples veces, para cada "
+"dominio que usa la misma IP. Usa un espacio para separar los múltiples alias"
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
@@ -556,10 +558,10 @@ msgid "Balance algorithm"
 msgstr "Algoritmo de balanceo"
 
 msgid "Ban list"
-msgstr ""
+msgstr "Lista de rechazados"
 
 msgid "Ban list rule"
-msgstr ""
+msgstr "Regla de la lista de rechazados"
 
 msgid "Banner"
 msgstr "Banner"
@@ -627,7 +629,7 @@ msgid "Cannot get data about interface"
 msgstr "No es posible obtener información sobre el interfaz"
 
 msgid "Capacity"
-msgstr ""
+msgstr "Capacidad"
 
 msgid "Case Folding"
 msgstr ""
@@ -643,7 +645,7 @@ msgid "Certificate"
 msgstr "Certificado"
 
 msgid "Change"
-msgstr ""
+msgstr "Modificar"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Los cambios en esta opción serán activos después de reiniciar."
@@ -727,7 +729,7 @@ msgid "Community"
 msgstr "Comunidad"
 
 msgid "Compliant profile to be used."
-msgstr ""
+msgstr "Perfil compatible a ser usado"
 
 msgid "Compress"
 msgstr "Comprimir"
@@ -873,7 +875,7 @@ msgid "Default is %s."
 msgstr "Por defecto es %s."
 
 msgid "Default root"
-msgstr ""
+msgstr "Raíz por defecto"
 
 msgid "Default user name is 'admin'."
 msgstr "El nombre de usuario por defecto es 'admin'"
@@ -975,10 +977,10 @@ msgid "Deleting"
 msgstr "Borrando"
 
 msgid "Deleting GEOM metadata"
-msgstr ""
+msgstr "Borrar metadatos GEOM"
 
 msgid "Deleting MBR and partition table"
-msgstr ""
+msgstr "Borrar el MBR y la tabla de partición"
 
 msgid "Deny"
 msgstr "Denegar"
@@ -1055,7 +1057,7 @@ msgstr ""
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
-msgstr ""
+msgstr "Dispositivo: %s | Total: %s | Usado: %s | Libre: %s"
 
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
@@ -1230,7 +1232,7 @@ msgstr ""
 "Realmente quiere formatear este disco? Se perderán todos los datos del mismo!"
 
 msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
+msgstr "¿Realmente quieres remover los ítems seleccionados de la lista?"
 
 msgid "Do you really want to uninstall this package?"
 msgstr "¿Realmente quiere eliminar este paquete?"
@@ -1289,6 +1291,9 @@ msgstr "Conjunto de caracteres de Dos"
 
 msgid "Download"
 msgstr "Descargas"
+
+msgid "Download bandwidth"
+msgstr ""
 
 msgid "Download configuration"
 msgstr "Configuración de descarga"
@@ -1424,7 +1429,7 @@ msgstr ""
 "Habilitar Zeroconf/Bonjour para advertir servicios en éste dispositivo"
 
 msgid "Enable anonymous bind."
-msgstr ""
+msgstr "Permitir vínculo anónimo"
 
 msgid "Enable authentication."
 msgstr "Activar autentificación."
@@ -1469,8 +1474,14 @@ msgstr "Activar autentificación de usuarios locales."
 msgid "Enable module listing."
 msgstr "Activar listado de módulos."
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr "Habilitar herencia de permisos"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "Activar autentificación de proxy."
@@ -1479,7 +1490,7 @@ msgid "Enable recycle bin"
 msgstr "Activar papelera de reciclaje"
 
 msgid "Enable remote monitoring of the local connected UPS."
-msgstr ""
+msgstr "Permitir monitoreo remoto del UPS conectado localmente"
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -1497,19 +1508,19 @@ msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activar el registro en un servidor syslog remoto"
 
 msgid "Enable the ident protocol (RFC1413)."
-msgstr ""
+msgstr "Activar el protocolo de identificación (RFC1413)."
 
 msgid "Enable the system power control utility"
 msgstr "Activar la utilidad de control de alimentación eléctrica del sistema"
 
 msgid "Enable transcoding."
-msgstr ""
+msgstr "Permitir transcodificación"
 
 msgid "Enable tuning of some kernel variables"
 msgstr "Permitir ajustar algunas variables del kernel"
 
 msgid "Enable use sendfile."
-msgstr ""
+msgstr "Permitir el uso de sendfile"
 
 msgid "Enable web user interface."
 msgstr "Activar la interfaz web de usuario."
@@ -1590,7 +1601,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Error. Los cambios no han podido ser aplicados (código de error %s)."
 
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 msgid "Execute"
 msgstr "Ejecutar"
@@ -1609,7 +1620,7 @@ msgid "Execute now"
 msgstr "Ejecutar ahora"
 
 msgid "Expire"
-msgstr ""
+msgstr "Expirar"
 
 msgid "Export"
 msgstr "Exportar"
@@ -1803,7 +1814,7 @@ msgid "French"
 msgstr "Francés"
 
 msgid "Frequency"
-msgstr ""
+msgstr "Frecuencia"
 
 msgid "From email"
 msgstr "De correo electrónico"
@@ -1960,7 +1971,7 @@ msgid "I/O packets"
 msgstr "Paquetes I/O"
 
 msgid "I/O statistics"
-msgstr ""
+msgstr "Estadísticas de E/S"
 
 msgid "IP address"
 msgstr "Dirección IP"
@@ -2204,7 +2215,7 @@ msgid "Kill encrypted volume"
 msgstr "Matar volúmen encriptado"
 
 msgid "Knowledgebase"
-msgstr ""
+msgstr "Base de conocimientos"
 
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr "LACP (Link Aggregation Control Protocol)"
@@ -2438,7 +2449,7 @@ msgid "Maximum connections"
 msgstr "Máximo número de conexiones"
 
 msgid "Maximum idle time in seconds."
-msgstr ""
+msgstr "Tiempo de espera máximo en segundos"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Máximo número de conexiones por dirección IP (0 = ilimitadas)."
@@ -2499,7 +2510,7 @@ msgid "Mode"
 msgstr "Modo"
 
 msgid "Model extra"
-msgstr ""
+msgstr "Modelo extra"
 
 msgid "Model name"
 msgstr "Nombre de modelo"
@@ -2545,6 +2556,9 @@ msgstr "NFS"
 
 msgid "NIS"
 msgstr "NIS"
+
+msgid "NOT YET AVAILABLE"
+msgstr ""
 
 msgid "NTP time server"
 msgstr "Servidor de fecha y hora NTP"
@@ -2686,7 +2700,7 @@ msgid "Object name"
 msgstr "Nombre del objeto"
 
 msgid "Occurrence"
-msgstr ""
+msgstr "Ocurrencia"
 
 msgid "Old passphrase"
 msgstr "Passphrase antigua"
@@ -2769,10 +2783,10 @@ msgid "Pairwise"
 msgstr ""
 
 msgid "Partition number"
-msgstr ""
+msgstr "Número de partición"
 
 msgid "Partition type"
-msgstr ""
+msgstr "Tipo de partición"
 
 msgid "Partitions"
 msgstr "Particiones"
@@ -2846,6 +2860,12 @@ msgstr "Ruta de la URL relativa a la raíz del documento."
 msgid "Path to be shared."
 msgstr "Ruta a ser compartida."
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr "Permitir el acceso root"
 
@@ -2892,6 +2912,13 @@ msgstr "El puerto %ld ya está en uso por otro servicio."
 msgid "Port %s must be less than %s."
 msgstr "El puerto %s debe ser menor que %s."
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Puerto de escucha. Por defecto el puerto de iTunes es 3689"
 
@@ -2925,6 +2952,9 @@ msgstr "Modo de energía"
 msgid "PreInit"
 msgstr "PreInit"
 
+msgid "Preferred"
+msgstr ""
+
 msgid "Prefix"
 msgstr "Prefijo"
 
@@ -2947,7 +2977,7 @@ msgid "Primary group"
 msgstr "Grupo primario"
 
 msgid "Primary group is also selected in additional group."
-msgstr ""
+msgstr "El grupo primario es seleccionado también en el grupo adicional"
 
 msgid "Private Key"
 msgstr "Clave Privada"
@@ -3066,7 +3096,7 @@ msgid "Receive Buffer Size"
 msgstr "Tamaño del Buffer de recepción"
 
 msgid "Recurse into directories."
-msgstr ""
+msgstr "Navegar recursivamente en los directorios."
 
 msgid "Recursive"
 msgstr "Recursivo"
@@ -3123,6 +3153,9 @@ msgstr "Informes"
 
 msgid "Require authentication."
 msgstr "Requiere autenticación."
+
+msgid "Required"
+msgstr ""
 
 msgid "Rescan interval"
 msgstr "Intervalo de Re-Escaneo"
@@ -3276,7 +3309,7 @@ msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "Seleccionar un disco habilitado para monitoreo S.M.A.R.T."
 
 msgid "Select item to remove from the list"
-msgstr ""
+msgstr "Selecionar el ítem a remover de la lista"
 
 msgid "Select mount point where to create the swap file."
 msgstr "Seleccione el punto de montaje donde crear el archivo de swap."
@@ -3306,7 +3339,7 @@ msgid "Send Command!"
 msgstr "Enviar el Comando!"
 
 msgid "Send a TEST warning email on startup."
-msgstr ""
+msgstr "Enviar una alerta de PRUEBA por correo al arrancar"
 
 msgid "Send now"
 msgstr "Enviar ahora"
@@ -3970,7 +4003,7 @@ msgstr ""
 "llevar a cabo el comando seleccionado."
 
 msgid "The disk/partition is already configured."
-msgstr ""
+msgstr "El disco/partición ya ha sido configurado"
 
 #, php-format
 msgid ""
@@ -4025,6 +4058,10 @@ msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 "Las conexiones máximas por IP deben ser o bien 0 (ilimitadas) o mayores."
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr "El máximo tiempo de inactividad debe ser un número."
 
@@ -4034,6 +4071,9 @@ msgid ""
 msgstr ""
 "El puerto máximo para localizar las conexiones de datos de tipo PASV (0 = "
 "emplear cualquier puerto)."
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4066,6 +4106,9 @@ msgstr "La contraseña contiene el caracter ilegal ':'."
 
 msgid "The passwords do not match."
 msgstr "Las contraseñas no coinciden."
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4135,10 +4178,6 @@ msgstr "El ID unico de usuario ya esta siendo usado."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "El fichero de imagen subido no es para esta plataforma"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr ""
-"El nombre de usuario solamente puede contener los caracteres a-z, A-Z y 0-9."
 
 msgid "The value of the variable."
 msgstr "El valor de la variable."
@@ -4535,6 +4574,9 @@ msgid ""
 ">System</li></ul></div>"
 msgstr ""
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr "Herramientas"
 
@@ -4687,6 +4729,9 @@ msgstr "Actualizar Sistema Base"
 
 msgid "Upload"
 msgstr "Subida"
+
+msgid "Upload bandwidth"
+msgstr ""
 
 msgid "Uppercases names in both directions"
 msgstr ""
