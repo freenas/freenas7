@@ -4,7 +4,7 @@ CATEGORIES=					audio
 COMMENT=						Multithread daapd yet another server for Apple iTunes
 MAINTAINER=					votdev@gmx.de
 
-MASTER_SITES=				http://nightlies.mt-daapd.org/
+MASTER_SITES=				http://nightlies.fireflymediaserver.org/nightlies/svn-1586/
 DISTNAME=						${PORTNAME}-svn-${PORTVERSION}
 
 LIB_DEPENDS=				gdbm.3:${PORTSDIR}/databases/gdbm \
@@ -34,9 +34,9 @@ do-install:
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libout-daap.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/out-daap.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/librsp.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/rsp.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libssc-ffmpeg.so* ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins/ssc-ffmpeg.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/out-daap.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/rsp.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/ssc-ffmpeg.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 
