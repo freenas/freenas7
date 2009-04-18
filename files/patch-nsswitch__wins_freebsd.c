@@ -1,6 +1,6 @@
---- ./nsswitch/wins_freebsd.c.orig	2009-01-06 17:10:53.000000000 +0000
-+++ ./nsswitch/wins_freebsd.c	2009-01-06 17:10:53.000000000 +0000
-@@ -0,0 +1,112 @@
+--- ./nsswitch/wins_freebsd.c.orig	2009-04-07 01:39:14.000000000 +0000
++++ ./nsswitch/wins_freebsd.c	2009-04-07 01:39:14.000000000 +0000
+@@ -0,0 +1,108 @@
 +/* 
 +   Unix SMB/CIFS implementation.
 +
@@ -34,21 +34,17 @@
 +
 +static ns_mtab methods[] =
 +{
-+/*
 +	{ NSDB_HOSTS, "getaddrinfo",	  NULL, NULL },
 +	{ NSDB_HOSTS, "ghbyname",	  NULL, NULL },
 +	{ NSDB_HOSTS, "ghbyaddr",	  NULL, NULL },
-+*/
 +	{ NSDB_HOSTS, "gethostbyaddr_r",  __nss_wins_freebsd_gethostbyname_r,  _nss_wins_gethostbyname_r },
 +	{ NSDB_HOSTS, "gethostbyname2_r", __nss_wins_freebsd_gethostbyname2_r, _nss_wins_gethostbyname2_r },
-+/*
 +	{ NSDB_HOSTS, "getnetbyname_r",	  NULL, NULL },
 +	{ NSDB_HOSTS, "getnetbyaddr_r",	  NULL, NULL },
 +	{ NSDB_HOSTS, "gethostbyname",	  NULL, NULL },
 +	{ NSDB_HOSTS, "gethostbyaddr",	  NULL, NULL },
 +	{ NSDB_HOSTS, "getnetbyname",	  NULL, NULL },
 +	{ NSDB_HOSTS, "getnetbyaddr",	  NULL, NULL }
-+*/
 +};
 +
 +int
@@ -60,7 +56,7 @@
 +	char		*buffer;
 +	size_t		buflen;
 +	int		*h_errnop;
-+	enum nss_status	 status;
++	enum nss_status	status;
 +	
 +	fn = mdata;
 +	hostname = va_arg(ap, const char *);
@@ -87,7 +83,7 @@
 +	char		*buffer;
 +	size_t		buflen;
 +	int		*h_errnop;
-+	enum nss_status	 status;
++	enum nss_status	status;
 +	
 +	fn = mdata;
 +	hostname = va_arg(ap, const char *);

@@ -1,6 +1,5 @@
 PORTNAME=			samba
-PORTVERSION=	3.2.7
-PORTEPOCH=		1
+PORTVERSION=	3.3.3
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -16,11 +15,12 @@ SAMBA_PRIVATEDIR=		${VARDIR}/etc/private
 SAMBA_CONFIGDIR=		${VARDIR}/etc
 SAMBA_LOCKDIR=			${VARDIR}/db/samba
 SAMBA_CONFIG?=			smb.conf
-SAMBA_LIBDIR=				/usr/local/lib
+SAMBA_LIBDIR=				${PREFIX}/lib
 SAMBA_MODULEDIR=		${SAMBA_LIBDIR}/samba
+SAMBA_SHARED_LIBS=	talloc tdb netapi smbsharemodes
 
-USE_ICONV=				yes
 USE_GMAKE=				yes
+USE_ICONV=				yes
 GNU_CONFIGURE=		yes
 USE_AUTOTOOLS=		autoconf:262 autoheader:262
 AUTOHEADER_ARGS=	-I${WRKSRC}/m4 -I${WRKSRC}/lib/replace
@@ -60,11 +60,7 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--disable-dnssd \
 									--disable-swat \
 									--disable-shared-libs \
-									--without-libtalloc \
-									--without-libtdb \
-									--without-libnetapi \
 									--without-libsmbclient \
-									--without-libsmbsharemodes \
 									--without-libaddns \
 									--disable-debug \
 									--disable-socket-wrapper \
@@ -74,9 +70,16 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--disable-dmalloc \
 									--without-profiling-data
 
+.for lib in ${SAMBA_SHARED_LIBS}
+CONFIGURE_ARGS+=	--with-lib${lib}
+.endfor
+
 post-patch:
 		@${REINPLACE_CMD} -e 's/%%SAMBA_CONFIG%%/${SAMBA_CONFIG}/' \
 		    ${WRKSRC}/Makefile.in
+
+pre-build:
+	cd ${WRKSRC} && ${MAKE} pch
 
 do-install:
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}

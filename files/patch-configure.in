@@ -1,6 +1,6 @@
---- ./configure.in.orig	2008-12-19 13:57:33.000000000 +0000
-+++ ./configure.in	2009-01-06 17:10:53.000000000 +0000
-@@ -184,16 +184,6 @@
+--- ./configure.in.orig	2009-04-01 11:48:54.000000000 +0000
++++ ./configure.in	2009-04-07 01:39:14.000000000 +0000
+@@ -189,16 +189,6 @@
         fi
  fi
  
@@ -17,29 +17,7 @@
  #################################################
  # check for a shared memory profiling support
  AC_MSG_CHECKING(whether to use profiling)
-@@ -888,6 +878,21 @@
- 	[#include <signal.h>])
- fi
- 
-+AC_CACHE_CHECK([for struct sigevent type],samba_cv_struct_sigevent, [
-+    AC_TRY_COMPILE([
-+#include <sys/types.h>
-+#if STDC_HEADERS
-+#include <stdlib.h>
-+#include <stddef.h>
-+#endif
-+#include <signal.h>],[struct sigevent s;],
-+	samba_cv_struct_sigevent=yes,samba_cv_struct_sigevent=no)])
-+if test x"$samba_cv_struct_sigevent" = x"yes"; then
-+   AC_DEFINE(HAVE_STRUCT_SIGEVENT,1,[Whether we have the struct sigevent])
-+   AC_CHECK_MEMBERS([struct sigevent.sigev_value.sival_ptr,struct sigevent.sigev_value.sigval_ptr], , ,
-+	[#include <signal.h>])
-+fi
-+
- AC_CACHE_CHECK([for struct timespec type],samba_cv_struct_timespec, [
-     AC_TRY_COMPILE([
- #include <sys/types.h>
-@@ -1858,9 +1863,6 @@
+@@ -1996,9 +1986,6 @@
  AC_MSG_CHECKING([PICFLAG])
  AC_MSG_RESULT([$PICFLAG])
  
@@ -49,53 +27,7 @@
  AC_CACHE_CHECK([whether building shared libraries actually works],
                 [ac_cv_shlib_works],[
     # try building a trivial shared library
-@@ -2299,31 +2301,15 @@
- 
-     #  This is here to handle -withval stuff for --with-libiconv
-     #  Perhaps we should always add a -L
-+    LDFLAGS="$save_LDFLAGS -L$i/lib"
-     CPPFLAGS="$save_CPPFLAGS -I$i/include"
--
--    # Check lib and lib32 library variants to cater for IRIX ABI-specific
--    # installation paths. This gets a little tricky since we might have iconv
--    # in both libiconv and in libc. In this case the jm_ICONV test will always
--    # succeed when the header is found. To counter this, make sure the
--    # library directory is there and check the ABI directory first (which
--    # should be harmless on other systems.
--    # For IA64 HPUX systems, the libs are located in lib/hpux32 instead of lib.
--    for l in "lib32" "lib" "lib/hpux32"; do
--        if test -d "$i/$l" ; then
--                LDFLAGS="$save_LDFLAGS -L$i/$l"
--		LIBS=
--		export LDFLAGS LIBS CPPFLAGS
--		# Try to find iconv(3)
--                jm_ICONV($i/$l)
--                if test x"$ICONV_FOUND" = "xyes" ; then
--		    libext="$l"
--		    break
--		fi
--        fi
--    done
-+    LIBS=
-+    export LDFLAGS LIBS CPPFLAGS
-+    # Try to find iconv(3)
-+    jm_ICONV($i/lib)
- 
-     if test x"$ICONV_FOUND" = "xyes" ; then
--	iconv_current_LDFLAGS="-L$i/$libext"
-+	iconv_current_LDFLAGS="-L$i/lib"
- 	iconv_current_CPPFLAGS="-I$i/include"
- 
-         if test x"$jm_cv_lib_iconv" != x; then
-@@ -2332,7 +2318,6 @@
- 	    # We found iconv in libc.
- 	    iconv_current_LIBS=""
-         fi
--
-     fi
- 
-     if test x"$ICONV_FOUND" = "xyes" ; then
-@@ -4030,10 +4015,10 @@
+@@ -4175,10 +4162,10 @@
  
    ################################################################
    # first test for Active Directory support being enabled
@@ -106,11 +38,76 @@
 +  if test x"$with_ads_support" = x"no"; then
 +  		AC_MSG_ERROR(Active Directory support is required to enable DNS Update support)
 +  		with_dnsupdate_support=no
-+  fi	  	
++  fi
    ##################################################################
    # then test for uuid.h (necessary to generate unique DNS keynames
    # (uuid.h is required for this test)
-@@ -5673,6 +5658,7 @@
+@@ -4395,15 +4382,51 @@
+ 		x"$ac_cv_header_pam_pam_modules_h" = x"no" ; then
+ 		if test x"${try_pam}" = x"yes";then
+ 			AC_MSG_ERROR([--with-pam=yes but pam_modules.h not found])
+-       fi
++		fi
+ 		create_pam_modules=no
+-    fi
++	fi
+ 
+ 	if test x"$use_pam" = x"yes"; then
+-    AC_DEFINE(WITH_PAM,1,[Whether to include PAM support])
++		AC_DEFINE(WITH_PAM,1,[Whether to include PAM support])
+ 		AC_DEFINE(HAVE_LIBPAM,1,[Whether libpam is available])
+ 		AUTH_LIBS="$AUTH_LIBS $PAM_LIBS"
+-    with_pam_for_crypt=yes
++		with_pam_for_crypt=yes
++
++		AC_VERIFY_C_PROTOTYPE(
++			[int pam_get_data(const pam_handle_t *pamh, const char *module_data_name, const void **data)],
++			[return 0;],
++			[AC_DEFINE(PAM_GET_DATA_ARG3_CONST_VOID_PP, 1, [Whether pam_get_data 3 argument is a const pointer to pointer])],
++			[
++			dnl Old OpenPAM declaration
++			AC_VERIFY_C_PROTOTYPE(
++				[int pam_get_data(pam_handle_t *pamh, const char *module_data_name, void **data)],
++				[return 0;],
++				[AC_DEFINE(PAM_GET_DATA_ARG3_VOID_PP, 1, [Whether pam_get_data 3 argument is a void pointer to pointer])],
++				[], [
++					#include <sys/types.h>
++					#if HAVE_SECURITY_PAM_APPL_H
++					#include <security/pam_appl.h>
++					#endif
++					#if HAVE_PAM_PAM_APPL_H
++					#include <pam/pam_appl.h>
++					#endif
++					#if HAVE_SECURITY_PAM_MODULES_H
++					#include <security/pam_modules.h>
++					#endif
++				]
++			)],[
++				#include <sys/types.h>
++				#if HAVE_SECURITY_PAM_APPL_H
++				#include <security/pam_appl.h>
++				#endif
++				#if HAVE_PAM_PAM_APPL_H
++				#include <pam/pam_appl.h>
++				#endif
++				#if HAVE_SECURITY_PAM_MODULES_H
++				#include <security/pam_modules.h>
++				#endif
++			]
++		)
+ 
+ 		if test x"$create_pam_modules" = x"yes"; then
+ 			AC_DEFINE(WITH_PAM_MODULES,1,[Whether to include PAM MODULES support])
+@@ -4413,7 +4436,7 @@
+ 			AC_CHECK_HEADERS(pam/pam_ext.h pam/_pam_macros.h)
+ 			AC_CHECK_FUNC_EXT(pam_vsyslog,$PAM_LIBS)
+ 		else
+-			AC_MSG_WARN([PAM support detected but PAM MODULES support is missing])		
++			AC_MSG_WARN([PAM support detected but PAM MODULES support is missing])
+ 		fi
+ 	fi
+ 	AC_MSG_CHECKING(whether to use PAM support)
+@@ -5958,6 +5981,7 @@
  		NSSSONAMEVERSIONSUFFIX=".1"
  		WINBIND_NSS_EXTRA_OBJS="nsswitch/winbind_nss_freebsd.o \
  		    nsswitch/winbind_nss_linux.o"
@@ -118,7 +115,7 @@
  		WINBIND_NSS="nsswitch/nss_winbind.$SHLIBEXT"
  		WINBIND_WINS_NSS="nsswitch/nss_wins.$SHLIBEXT"
  		;;
-@@ -5751,23 +5737,15 @@
+@@ -6036,23 +6060,15 @@
  fi
  
  # Display test results
@@ -142,7 +139,7 @@
  	## Only worry about libwbclient if we have shared library support
  	## and winbindd
          LIBWBCLIENT_SHARED=$LIBWBCLIENT_SHARED_TARGET
-@@ -5785,26 +5763,34 @@
+@@ -6070,26 +6086,34 @@
  
  	EXTRA_BIN_PROGS="$EXTRA_BIN_PROGS bin/wbinfo\$(EXEEXT)"
  	EXTRA_SBIN_PROGS="$EXTRA_SBIN_PROGS bin/winbindd\$(EXEEXT)"
@@ -163,7 +160,7 @@
 +AC_MSG_CHECKING([NSSSONAMEVERSIONSUFFIX])
 +AC_MSG_RESULT([$NSSSONAMEVERSIONSUFFIX])
 +
-+AC_CHECK_LIB(pthread, pthread_mutex_lock, [WINBIND_NSS_PTHREAD="-pthread"
++AC_CHECK_LIB(pthread, pthread_mutex_lock, [WINBIND_NSS_PTHREAD="${PTHREAD_LIBS}"
  			AC_DEFINE(HAVE_PTHREAD, 1, [whether pthread exists])])
  
  AC_SUBST(WINBIND_NSS_PTHREAD)
@@ -181,16 +178,7 @@
  
  AC_SUBST(WINBIND_KRB5_LOCATOR)
  
-@@ -5899,7 +5885,7 @@
-     AC_CHECK_FUNCS(DNSServiceRegister)
-     AC_CHECK_LIB_EXT(dns_sd, DNSSD_LIBS, DNSServiceRegister)
-     if test x"$ac_cv_func_DNSServiceRegister" != x"yes" -a \
--            x"$ac_cv_lib_ext_DNSServiceRegister" != x"yes"; then
-+	    x"$ac_cv_lib_ext_dns_sd_DNSServiceRegister" != x"yes"; then
- 	have_dnssd_support=no
-     fi
- 
-@@ -5955,13 +5941,21 @@
+@@ -6276,13 +6300,21 @@
  # Start
  AC_CHECK_FUNC(getmntent)
  
@@ -213,7 +201,7 @@
  		int main(void)
  		{
  			struct statfs fsd;
-@@ -6207,6 +6201,16 @@
+@@ -6539,6 +6571,16 @@
  
  fi
  
@@ -230,3 +218,12 @@
  dnl Remove -L/usr/lib/? from LDFLAGS and LIBS
  LIB_REMOVE_USR_LIB(LDFLAGS)
  LIB_REMOVE_USR_LIB(LIBS)
+@@ -6595,6 +6637,8 @@
+ 	  pkgconfig/wbclient.pc
+ 	  pkgconfig/netapi.pc
+ 	  pkgconfig/smbsharemodes.pc
++	  lib/talloc/talloc.pc
++	  lib/tdb/tdb.pc
+ 	  ../examples/libsmbclient/Makefile.internal
+ 	  )
+ 
