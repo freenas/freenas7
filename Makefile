@@ -56,22 +56,22 @@ CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--with-quotas \
 									--with-readline \
 									--without-utmp \
-									--without-cluster-support \
-									--disable-dnssd \
-									--disable-swat \
-									--disable-shared-libs \
 									--without-libsmbclient \
 									--without-libaddns \
 									--disable-debug \
 									--disable-socket-wrapper \
-									--disable-nss-wrapper \
 									--disable-developer \
 									--disable-krb5developer \
 									--disable-dmalloc \
-									--without-profiling-data
+									--without-profiling-data \
+									--without-cluster-support \
+									--disable-dnssd \
+									--disable-swat \
+									--disable-shared-libs \
+									--disable-nss-wrapper
 
 .for lib in ${SAMBA_SHARED_LIBS}
-CONFIGURE_ARGS+=	--with-lib${lib}
+CONFIGURE_ARGS+=	--without-lib${lib}
 .endfor
 
 post-patch:
