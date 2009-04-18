@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
-"PO-Revision-Date: 2009-04-05 12:09+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"PO-Revision-Date: 2009-04-18 17:57+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -27,7 +27,7 @@ msgstr "%d%% von %d MB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s meldet sich selbst als Zeitserver gegenüber Windows-Klienten."
+msgstr "%s wird Windows-Klienten als Zeitserver gemeldet."
 
 #, php-format
 msgid "%s interface"
@@ -35,7 +35,7 @@ msgstr "%s Schnittstelle"
 
 #, php-format
 msgid "%s is used to create %s volumes."
-msgstr "%s wird benutzt um %s Volumen zu erzeugen."
+msgstr "%s wird benutzt um %s Speicherplatz zu reservieren."
 
 #, php-format
 msgid "%s of %sB"
@@ -47,7 +47,8 @@ msgstr "%s auf %s (%dMHz)"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr "%s wird nach dem Wiederherstellen der Konfiguration neu gestartet."
+msgstr ""
+"%s wird neu gestartet, sobald die Konfiguration wiederhergestellt ist."
 
 #, c-format, php-format
 msgid "%sB available of %sB"
@@ -64,8 +65,8 @@ msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
-"1. Diese Befehle sind nur für die Fehlerbeseitigung (debugging)!<br>2. "
-"Dieses Menü wird zum Start eines RAID-Datenträgers nicht benötigt (startet "
+"1. Spezialbefehle NUR für die Fehlerbeseitigung (debugging)!<br>2. Zum Start "
+"eines RAID-Datenträgers wird dieses Menü NICHT benötigt (startet "
 "automatisch)."
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
@@ -79,8 +80,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
-"<a href=%s>SSHD</a> muss für Unison aktiviert sein; außerdem benötigt der <a "
-"href=%s>user</a> vollständigen Zugang zur Konsole."
+"<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a "
+"href=%s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -89,6 +90,12 @@ msgid ""
 "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
+"<b>EFI GPT</b> wenn Sie eine GPT formatiertes Laufwerk einbinden wollen "
+"(<b>voreingestelle Partition seit 0.684b</b>).<br><b>MBR</b>Partition, für "
+"UFS formatierte Laufwerke oder Software RAID Volumes (<b>erzeugt vor "
+"0.684b</b>) oder importierte Laufwerke von anderen BS.<br><b>CD/DVD oder "
+"altes Software RAID</b> für alte Software RAID Volumes (<b>erzeugt vor "
+"Version 0.68</b>) oder CD/DVD."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -1319,6 +1326,9 @@ msgstr "DOS-Zeichensatz"
 msgid "Download"
 msgstr "Herunterladen"
 
+msgid "Download bandwidth"
+msgstr "Downloadbandbreite"
+
 msgid "Download configuration"
 msgstr "Konfiguration herunterladen"
 
@@ -1497,8 +1507,14 @@ msgstr "Aktiviere Zugriff für lokale Benutzer."
 msgid "Enable module listing."
 msgstr "Modulauflistung aktivieren."
 
+msgid "Enable peer exchange (PEX)."
+msgstr "Peer-Austausch (PEX) aktivieren."
+
 msgid "Enable permission inheritance"
 msgstr "Aktiviere Rechtevererbung"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr "Portweiterleitung via NAT-PMP oder UPnP aktivieren."
 
 msgid "Enable proxy authentication."
 msgstr "Aktiviere Proxy Authentifizierung."
@@ -2613,6 +2629,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr "Noch nicht verfügbar"
+
 msgid "NTP time server"
 msgstr "NTP Zeit Server"
 
@@ -2924,6 +2943,12 @@ msgstr "Pfad der URL relativ zum Wurzelverzeichnis."
 msgid "Path to be shared."
 msgstr "freizugebender Pfad"
 
+msgid "Peer exchange"
+msgstr "Peer-Austausch"
+
+msgid "Peer port"
+msgstr "Peer-Port"
+
 msgid "Permit root login"
 msgstr "Root Login zulassen"
 
@@ -2968,6 +2993,15 @@ msgstr "Port %ld wird bereits von einem anderen Dienst verwendet."
 msgid "Port %s must be less than %s."
 msgstr "Port %s muss kleiner sein als %s."
 
+msgid "Port forwarding"
+msgstr "Portweiterleitung"
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+"Der Port auf welchem nach eingehenden Verbindungen gehorcht wird. Standard-"
+"Port ist %d."
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Alternativer TCP Port (Standard: 3689)."
 
@@ -3000,6 +3034,9 @@ msgstr "Expertenmodus"
 
 msgid "PreInit"
 msgstr "PreInit"
+
+msgid "Preferred"
+msgstr "Bevorzugt"
 
 msgid "Prefix"
 msgstr "Präfix"
@@ -3203,6 +3240,9 @@ msgstr "Berichte"
 msgid "Require authentication."
 msgstr "Erfordern Sie Authentisierung."
 
+msgid "Required"
+msgstr "Erforderlich"
+
 msgid "Rescan interval"
 msgstr "Durchsuchungsinterval"
 
@@ -3362,7 +3402,7 @@ msgstr ""
 "Wähle ein Gerät welches für die S.M.A.R.T. Überwachung aktiviert wurde."
 
 msgid "Select item to remove from the list"
-msgstr ""
+msgstr "Objekt auswählen, welches von der Liste entfernt werden soll"
 
 msgid "Select mount point where to create the swap file."
 msgstr "Wählen Sie den Einhängpunkt wo die Swap Datei erzeugt werden soll."
@@ -4150,6 +4190,12 @@ msgstr ""
 "Die maximale Anzahl von Verbindungen je IP muss entweder 0 (unbegrenzt) oder "
 "größer 0 sein."
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+"Die maximale Download-Bandbreite in KiB/s. Ein leeres Feld steht für "
+"unbegrenzt."
+
 msgid "The maximum idle time be a number."
 msgstr "Die maximale Leerlaufzeit muss eine Zahl sein."
 
@@ -4159,6 +4205,11 @@ msgid ""
 msgstr ""
 "Der höchstmögliche zuweisbare Port, der 'PASV style' Datenverbindungen "
 "ermöglicht (0 = Verwende jeden Port)."
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+"Die maximale Upload-Bandbreite in KiB/s. Ein leeres Feld steht für "
+"unbegrenzt."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4196,6 +4247,9 @@ msgstr "Das Passwort enthält das ungültige Zeichen ':'."
 
 msgid "The passwords do not match."
 msgstr "Die Passwörter stimmen nicht überein."
+
+msgid "The peer connection encryption mode."
+msgstr "Der Verschlüsselungsmodus von Peer-Verbindung."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4274,10 +4328,6 @@ msgstr "Die eindeutige Benutzer ID wird schon verwendet."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Dieses Image ist nicht für diese Plattform geeignet"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr ""
-"Der Benutzername darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9."
 
 msgid "The value of the variable."
 msgstr "Der Wert der Variable."
@@ -4767,6 +4817,9 @@ msgstr ""
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">System</li></ul></div>"
 
+msgid "Tolerated"
+msgstr "Toleriert"
+
 msgid "Tools"
 msgstr "Tools"
 
@@ -4920,6 +4973,9 @@ msgstr "Upgrade Firmware"
 
 msgid "Upload"
 msgstr "Hochladen"
+
+msgid "Upload bandwidth"
+msgstr "Upload-Bandbreite"
 
 msgid "Uppercases names in both directions"
 msgstr "Großschreibung in beiden Verzeichnissen"
@@ -5541,6 +5597,10 @@ msgstr "Wochentagen"
 #~ msgstr ""
 #~ "Eine gültige IP Adresse muss für den Primären/Sekundären DNS Server "
 #~ "angegeben werden."
+
+#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
+#~ msgstr ""
+#~ "Der Benutzername darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9."
 
 #~ msgid "A valid TCP/IP port must be specified for the webGUI port."
 #~ msgstr "Ein gültiger TCP/IP Port muss für den WebGUI Port angegeben werden."

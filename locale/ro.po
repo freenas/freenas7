@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
 "PO-Revision-Date: 2009-01-24 07:04+0000\n"
 "Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -1261,6 +1261,9 @@ msgstr "Caractere Dos"
 msgid "Download"
 msgstr "Descarcă"
 
+msgid "Download bandwidth"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "Descarcare configuratie"
 
@@ -1437,8 +1440,14 @@ msgstr "Activare autentificare locala."
 msgid "Enable module listing."
 msgstr "Activeaza listarea modulelor"
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr "Activare permisiuni ierarhice"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr ""
@@ -2479,6 +2488,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "Server NTP"
 
@@ -2766,6 +2778,12 @@ msgstr ""
 msgid "Path to be shared."
 msgstr "Calea de partajat"
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr "Permisiune login root"
 
@@ -2810,6 +2828,13 @@ msgstr ""
 msgid "Port %s must be less than %s."
 msgstr ""
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr ""
 
@@ -2839,6 +2864,9 @@ msgid "Power mode"
 msgstr ""
 
 msgid "PreInit"
+msgstr ""
+
+msgid "Preferred"
 msgstr ""
 
 msgid "Prefix"
@@ -3034,6 +3062,9 @@ msgid "Reports"
 msgstr "Rapoarte"
 
 msgid "Require authentication."
+msgstr ""
+
+msgid "Required"
 msgstr ""
 
 msgid "Rescan interval"
@@ -3902,6 +3933,10 @@ msgstr "Numele introdus reprezinta un nume rezervat."
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "Numarul de conexiuni pe IP poate fi 0 (nelimitat) sau mai mare."
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr "Timp maxim mod idle invalid."
 
@@ -3909,6 +3944,9 @@ msgid ""
 "The maximum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "Portul maxim alocat pentru modul de conectare PASV (0 = orice port)."
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -3939,6 +3977,9 @@ msgstr "Parola nu poate contine caracterul ':'."
 
 msgid "The passwords do not match."
 msgstr "Parolele nu coincid."
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4008,9 +4049,6 @@ msgstr ""
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Imaginea sistem incarcata nu este pentru aceasta platforma"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "Numele utilizator poate contine doar caracterele a-z, A-Z and 0-9."
 
 msgid "The value of the variable."
 msgstr ""
@@ -4379,6 +4417,9 @@ msgid ""
 ">System</li></ul></div>"
 msgstr ""
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr "Unelte"
 
@@ -4529,6 +4570,9 @@ msgid "Upgrade firmware"
 msgstr "Actualizare Firmware"
 
 msgid "Upload"
+msgstr ""
+
+msgid "Upload bandwidth"
 msgstr ""
 
 msgid "Uppercases names in both directions"
@@ -5115,6 +5159,9 @@ msgstr "zilele saptaminii"
 #~ msgstr ""
 #~ "Trebuie sa introduceti o adesa IP valida pentru server-ul DNS "
 #~ "Primar/Secundar."
+
+#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
+#~ msgstr "Numele utilizator poate contine doar caracterele a-z, A-Z and 0-9."
 
 #~ msgid "A valid TCP/IP port must be specified for the webGUI port."
 #~ msgstr "Trebuie sa introduceti un port TCP/IP valid pentru Interfata Web."

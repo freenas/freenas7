@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
 "PO-Revision-Date: 2009-03-16 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:17+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:02+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -1233,6 +1233,9 @@ msgstr "Dos 文字セット"
 msgid "Download"
 msgstr "ダウンロード"
 
+msgid "Download bandwidth"
+msgstr ""
+
 msgid "Download configuration"
 msgstr "設定のダウンロード"
 
@@ -1409,8 +1412,14 @@ msgstr "ローカルユーザ認証を許可．"
 msgid "Enable module listing."
 msgstr "モジュールリストを有効にします．"
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr "パーミッションの継承の有効化"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "Proxy認証の有効化"
@@ -2440,6 +2449,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP サーバ"
 
@@ -2727,6 +2739,12 @@ msgstr "ドキュメントルートからの相対 URL パス．"
 msgid "Path to be shared."
 msgstr "共有するパス．"
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr "root ログインを許可"
 
@@ -2771,6 +2789,13 @@ msgstr "ポート番号 %ld は既に他のサービスで使用されていま�
 msgid "Port %s must be less than %s."
 msgstr "ポート %s は %s より少なくなければなりません．"
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "待ち受けるポート番号．iTunes のデフォルトポート番号は 3689 です．"
 
@@ -2801,6 +2826,9 @@ msgstr "電源モード"
 
 msgid "PreInit"
 msgstr "事前実行"
+
+msgid "Preferred"
+msgstr ""
 
 msgid "Prefix"
 msgstr "プレフィックス"
@@ -2996,6 +3024,9 @@ msgstr "レポート"
 
 msgid "Require authentication."
 msgstr "認証を要求します．"
+
+msgid "Required"
+msgstr ""
 
 msgid "Rescan interval"
 msgstr "再スキャンの間隔"
@@ -3867,6 +3898,10 @@ msgstr "このログイン名は予約されているログイン名です．"
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "同一IPアドレスからの最大接続数は0(無制限)かそれより大きな数字である必要があります．"
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr "アイドル時間の最大数は数字で指定して下さい．"
 
@@ -3874,6 +3909,9 @@ msgid ""
 "The maximum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最大のポート (0 = いずれかのポート)．"
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -3904,6 +3942,9 @@ msgstr "入力したパスワードに不正ない文字が使用されていま
 
 msgid "The passwords do not match."
 msgstr "パスワードが一致しません．"
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3971,9 +4012,6 @@ msgstr "このユーザ ID は既に使用されています．"
 
 msgid "The uploaded image file is not for this platform"
 msgstr "アップロードされたイメージファイルはこのプラットフォームの物ではありません．"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "ユーザ名に使用出来る文字は a-z，A-Z 及び 0-9 のみです．"
 
 msgid "The value of the variable."
 msgstr "変数の値"
@@ -4368,6 +4406,9 @@ msgstr ""
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">System</li></ul></div>"
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr "ツール"
 
@@ -4515,6 +4556,9 @@ msgstr "ファームウェアアップグレード"
 
 msgid "Upload"
 msgstr "アップロード"
+
+msgid "Upload bandwidth"
+msgstr ""
 
 msgid "Uppercases names in both directions"
 msgstr "両方で名前を大文字化します"
@@ -5099,6 +5143,9 @@ msgstr "週日"
 #~ msgid ""
 #~ "A valid IP address must be specified for the primary/secondary DNS server."
 #~ msgstr "有効な IP アドレスをプライマリ/セカンダリ DNS に指定して下さい．"
+
+#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
+#~ msgstr "ユーザ名に使用出来る文字は a-z，A-Z 及び 0-9 のみです．"
 
 #~ msgid "A valid TCP/IP port must be specified for the webGUI port."
 #~ msgstr "webGUI の為の有効な TCP/IP ポートを指定して下さい．"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 21:27+0000\n"
-"PO-Revision-Date: 2009-03-23 12:39+0000\n"
+"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"PO-Revision-Date: 2009-04-15 09:49+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-05 12:16+0000\n"
+"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -77,8 +77,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have full Shell enabled."
 msgstr ""
-"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+"<a href=%s>SSHD</a> doit être activé pour qu' Unison fonctionne, et l'<a "
+"href=%s>utilisateur</a> doit avoir un accès complet au shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -205,7 +205,7 @@ msgid "A valid prefix (1-128) must be specified."
 msgstr "Un préfixe valide (1-128) doit être spécifié."
 
 msgid "A valid systctl MIB value."
-msgstr "Une valeur systctl MIB valide."
+msgstr "Une valeur sysctl MIB valide."
 
 msgid "AD authentication disabled"
 msgstr "Authentification AD désactivée"
@@ -648,7 +648,7 @@ msgid "Cannot get data about interface"
 msgstr "Impossible de collecter des donnees sur cette interface"
 
 msgid "Capacity"
-msgstr ""
+msgstr "Capacité"
 
 msgid "Case Folding"
 msgstr "Modification de casse"
@@ -667,7 +667,7 @@ msgid "Certificate"
 msgstr "Certificat"
 
 msgid "Change"
-msgstr ""
+msgstr "Modifier"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Ce changement ne prend effet qu'au prochain redémarrage."
@@ -1257,7 +1257,7 @@ msgstr ""
 "Voulez-vous vraiment formater ce disque? Toutes les données seront perdues!"
 
 msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir supprimer l'item sélectionné de la liste?"
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Voulez vous réellement désinstaller ce paquet?"
@@ -1319,6 +1319,9 @@ msgstr "Jeu de caractères Dos"
 
 msgid "Download"
 msgstr "Téléchargement"
+
+msgid "Download bandwidth"
+msgstr ""
 
 msgid "Download configuration"
 msgstr "Télécharger la configuration"
@@ -1498,8 +1501,14 @@ msgstr "Activer l'authentification locale des utilisateurs."
 msgid "Enable module listing."
 msgstr "Activer le listage des modules."
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr "Activer l'héritage des permissions"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "Activer l'authentification proxy"
@@ -1679,8 +1688,8 @@ msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
 "entered options prevent SSH service to be started."
 msgstr ""
-"Options additionnelles pour /etc/ssh/sshd_config (d'habitude vides). Note, "
-"la saisie d'option incorrectes empêchent le démarrage du service SSH."
+"Options additionnelles pour /etc/ssh/sshd_config (d'habitude vides). Nota: "
+"la saisie d'options incorrectes empêche le démarrage du service SSH."
 
 msgid "Extra options to ifconfig (usually empty)."
 msgstr "Options supplémentaires pour ifconfig (souvent vide)."
@@ -2000,7 +2009,7 @@ msgid "I/O packets"
 msgstr "Paquets E/S"
 
 msgid "I/O statistics"
-msgstr ""
+msgstr "Statistiques des I/O"
 
 msgid "IP address"
 msgstr "Adresse IP"
@@ -2612,6 +2621,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr "PAS ENCORE DISPONIBLE"
+
 msgid "NTP time server"
 msgstr "Serveur de temps NTP"
 
@@ -2919,6 +2931,12 @@ msgstr "Chemin de l'URL relative à la racine du document."
 msgid "Path to be shared."
 msgstr "Chemin à partager."
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr "Autoriser le login root"
 
@@ -2965,6 +2983,13 @@ msgstr "Le port %ld est déjà utilisé par un autre service."
 msgid "Port %s must be less than %s."
 msgstr "Le port %s doit être inférieur à %s."
 
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
+
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Port en écoute. Le port par défaut d'iTunes est 3689."
 
@@ -2997,6 +3022,9 @@ msgstr "Mode d'alimentation"
 
 msgid "PreInit"
 msgstr "PreInit"
+
+msgid "Preferred"
+msgstr ""
 
 msgid "Prefix"
 msgstr "Préfixe"
@@ -3200,6 +3228,9 @@ msgstr "Rapports"
 msgid "Require authentication."
 msgstr "Activer l'authentification."
 
+msgid "Required"
+msgstr ""
+
 msgid "Rescan interval"
 msgstr "Intervalle de balayage"
 
@@ -3358,7 +3389,7 @@ msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "Sélectionnez un disque configuré pour le pilotage S.M.A.R.T."
 
 msgid "Select item to remove from the list"
-msgstr ""
+msgstr "Sélectionner l'item à supprimer de la liste"
 
 msgid "Select mount point where to create the swap file."
 msgstr "Sélectionnez le point de montage où créer le fichier d'échange."
@@ -3577,7 +3608,7 @@ msgstr ""
 "Indique que le système de fichiers devrait ête exporté en lecture seule."
 
 msgid "Specifies the command to be run."
-msgstr "Indique la commande à exécuter."
+msgstr "Indiquer la commande à exécuter."
 
 msgid ""
 "Specifies the maximum permitted block size. The permitted range for this "
@@ -3619,7 +3650,7 @@ msgid ""
 msgstr ""
 "Spécifiez le pourcentage d'espace disque retenu aux utilisateurs normaux. "
 "Notez qu'abaisser ce seuil peut nuire aux performances et à l'auto-"
-"defragmentation."
+"défragmentation."
 
 msgid "Standard"
 msgstr "Standard"
@@ -3973,7 +4004,7 @@ msgstr "L'attribut '%s' doit être une chaîne de caractères."
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
-msgstr ""
+msgstr "L'attribut '%s' doit avoir au moins une valeur."
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -4137,6 +4168,10 @@ msgstr "L'identifiant est un identifiant réservé du système."
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "Le maximum de connexions par IP doit être 0 (illimité) ou plus."
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr "La durée maximum d'inactivité doit être un entier."
 
@@ -4146,6 +4181,9 @@ msgid ""
 msgstr ""
 "Port max. : valeur haute du numéro de port à allouer pour les connexions "
 "passives (0 = n'importe lequel)."
+
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4181,6 +4219,9 @@ msgstr "Le mot de passe contient le caractère invalide ':'."
 
 msgid "The passwords do not match."
 msgstr "Les mots de passe ne correspondent pas."
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4262,10 +4303,6 @@ msgstr "Cet ID unique d'utilisateur est déjà utilisé."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Le fichier image chargé n'est pas valide pour cette plateforme"
-
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr ""
-"Le nom d'utilisateur doit seulement contenir les caractères a-z, A-Z et 0-9."
 
 msgid "The value of the variable."
 msgstr "La valeur de la variable."
@@ -4721,9 +4758,9 @@ msgid ""
 "href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 "Pour augmenter les performances de CIFS, essayez ceci : <div "
-"id='enumeration'><ul><li>Activer le bouton 'Large read/write' "
-"</li><li>Activer le '<a href='%s'>Tuning</a>' switch</li><li>Augmenter le <a "
-"href='%s'>MTU</a></li></ul></div>"
+"id='enumeration'><ul><li>Activer le bouton 'Lecture/écriture élargie\r\n"
+"' </li><li>Activer le '<a href='%s'>Tuning</a>' switch</li><li>Augmenter le "
+"<a href='%s'>MTU</a></li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
@@ -4739,6 +4776,9 @@ msgstr ""
 "activé. Les services suivants vont utiliser l'authentification par AD: <div "
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">System</li></ul></div>"
+
+msgid "Tolerated"
+msgstr ""
 
 msgid "Tools"
 msgstr "Outils"
@@ -4891,6 +4931,9 @@ msgstr "Charger"
 
 msgid "Upload"
 msgstr "Transfert de fichiers"
+
+msgid "Upload bandwidth"
+msgstr ""
 
 msgid "Uppercases names in both directions"
 msgstr "Noms en majuscules dans les deux directions"
@@ -5532,6 +5575,10 @@ msgstr "jours de la semaine"
 #~ msgstr ""
 #~ "Une adresse IP valide doit être spécifiée pour les serveurs DNS "
 #~ "primaire/secondaire."
+
+#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
+#~ msgstr ""
+#~ "Le nom d'utilisateur doit seulement contenir les caractères a-z, A-Z et 0-9."
 
 #~ msgid "A valid TCP/IP port must be specified for the webGUI port."
 #~ msgstr "Un port TCP/IP valide doit être spécifié pour l'interface web."
