@@ -44,6 +44,13 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
+FreeNAS 0.69.2 (Chirox):
+------------------------
+
+Majors changes:
+- Add another WOL patch. It is tested for nfe(4) und xl(4). Thanks to Tobias
+  Reber.
+
 FreeNAS 0.69.1 (Omnius):
 ------------------------
 
