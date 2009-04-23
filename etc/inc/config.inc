@@ -1739,6 +1739,14 @@ function config_upgrade() {
 		$config['version'] = "7.5";
 	}
 
+	/* Convert 7.5 -> 7.6 */
+	/* Set default console screensaver blanktime //system/sysconsaver/blanktime. */
+	if ($config['version'] === "7.5") {
+		$config['system']['sysconsaver']['blanktime'] = "300";
+
+		$config['version'] = "7.6";
+	}
+
 	write_config();
 
 	if (is_booting())

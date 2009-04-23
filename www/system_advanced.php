@@ -3,7 +3,7 @@
 /*
 	system_advanced.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -42,6 +42,8 @@ $pconfig['tune_enable'] = isset($config['system']['tune']);
 $pconfig['zeroconf'] = isset($config['system']['zeroconf']);
 $pconfig['powerd'] = isset($config['system']['powerd']);
 $pconfig['motd'] = base64_decode($config['system']['motd']);
+$pconfig['sysconsaver'] = isset($config['system']['sysconsaver']['enable']);
+$pconfig['sysconsaverblanktime'] = $config['system']['sysconsaver']['blanktime'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -50,6 +52,15 @@ if ($_POST) {
 	// Input validation.
 	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
 		$input_errors[] = gettext("The TCP idle timeout must be an integer.");
+	}
+
+	if ($_POST['sysconsaver']) {
+		$reqdfields = explode(" ", "sysconsaverblanktime");
+		$reqdfieldsn = array(gettext("Blank time"));
+		$reqdfieldst = explode(" ", "numeric");
+
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
 	if (!$input_errors) {
@@ -74,6 +85,8 @@ if ($_POST) {
 		$config['system']['zeroconf'] = $_POST['zeroconf'] ? true : false;
 		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
 		$config['system']['motd'] = base64_encode($_POST['motd']); // Encode string, otherwise line breaks will get lost
+		$config['system']['sysconsaver']['enable'] = $_POST['sysconsaver'] ? true : false;
+		$config['system']['sysconsaver']['blanktime'] = $_POST['sysconsaverblanktime'];
 
 		write_config();
 
@@ -85,6 +98,8 @@ if ($_POST) {
 			$retval |= rc_exec_service("motd");
 			if (isset($config['system']['tune']))
 				$retval |= rc_update_service("sysctl");
+			if (isset($config['system']['sysconsaver']['enable']))
+				$retval |= rc_update_service("syscons");
 			config_unlock();
 		}
 
@@ -128,7 +143,7 @@ function sysctl_tune($mode) {
 				unset($a_sysctlvar[$id]);
 			}
 			break;
-			
+
 		case 1:
 			// Add system tune MIB's.
 			while (list($name, $value) = each($a_mib)) {
@@ -149,34 +164,51 @@ function sysctl_tune($mode) {
 }
 ?>
 <?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function sysconsaver_change() {
+	switch (document.iform.sysconsaver.checked) {
+		case true:
+			showElementById('sysconsaverblanktime_tr','show');
+			break;
+
+		case false:
+			showElementById('sysconsaverblanktime_tr','hide');
+			break;
+	}
+}
+//-->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
-        <li class="tabact"><a href="system_advanced.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Advanced");?></span></a></li>
-        <li class="tabinact"><a href="system_email.php"><span><?=gettext("Email");?></span></a></li>
-        <li class="tabinact"><a href="system_proxy.php"><span><?=gettext("Proxy");?></span></a></li>
-        <li class="tabinact"><a href="system_swap.php"><span><?=gettext("Swap");?></span></a></li>
-        <li class="tabinact"><a href="system_rc.php"><span><?=gettext("Command scripts");?></span></a></li>
-        <li class="tabinact"><a href="system_cron.php"><span><?=gettext("Cron");?></span></a></li>
-        <li class="tabinact"><a href="system_rcconf.php"><span><?=gettext("rc.conf");?></span></a></li>
-        <li class="tabinact"><a href="system_sysctl.php"><span><?=gettext("sysctl.conf");?></span></a></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="system_advanced.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Advanced");?></span></a></li>
+				<li class="tabinact"><a href="system_email.php"><span><?=gettext("Email");?></span></a></li>
+				<li class="tabinact"><a href="system_proxy.php"><span><?=gettext("Proxy");?></span></a></li>
+				<li class="tabinact"><a href="system_swap.php"><span><?=gettext("Swap");?></span></a></li>
+				<li class="tabinact"><a href="system_rc.php"><span><?=gettext("Command scripts");?></span></a></li>
+				<li class="tabinact"><a href="system_cron.php"><span><?=gettext("Cron");?></span></a></li>
+				<li class="tabinact"><a href="system_rcconf.php"><span><?=gettext("rc.conf");?></span></a></li>
+				<li class="tabinact"><a href="system_sysctl.php"><span><?=gettext("sysctl.conf");?></span></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
 			<form action="system_advanced.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <?php html_checkbox("disableconsolemenu", gettext("Console menu"), $pconfig['disableconsolemenu'] ? true : false, gettext("Disable console menu"), gettext("Changes to this option will take effect after a reboot."));?>
-			    <?php if ("full" !== $g['platform']):?>
-			    <?php html_checkbox("disablefirmwarecheck", gettext("Firmware version check"), $pconfig['disablefirmwarecheck'] ? true : false, gettext("Disable firmware version check"), sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware")));?>
-			    <?php endif;?>
-			    <?php html_checkbox("disablebeep", gettext("System Beep"), $pconfig['disablebeep'] ? true : false, gettext("Disable speaker beep on startup and shutdown"));?>
-			    <?php html_checkbox("tune_enable", gettext("Tuning"), $pconfig['tune_enable'] ? true : false, gettext("Enable tuning of some kernel variables"));?>
-					<?php html_checkbox("powerd", gettext("Power Daemon"), $pconfig['powerd'] ? true : false, gettext("Enable the system power control utility"), gettext("The powerd utility monitors the system state and sets various power control options accordingly."));?>			    
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_checkbox("disableconsolemenu", gettext("Console menu"), $pconfig['disableconsolemenu'] ? true : false, gettext("Disable console menu"), gettext("Changes to this option will take effect after a reboot."));?>
+					<?php html_checkbox("sysconsaver", gettext("Console screensaver"), $pconfig['sysconsaver'] ? true : false, gettext("Enable console screensaver"), "", false, "sysconsaver_change()");?>
+					<?php html_inputbox("sysconsaverblanktime", gettext("Blank time"), $pconfig['sysconsaverblanktime'], gettext("Turn the monitor to standby after N seconds."), true, 5);?>
+					<?php if ("full" !== $g['platform']):?>
+					<?php html_checkbox("disablefirmwarecheck", gettext("Firmware version check"), $pconfig['disablefirmwarecheck'] ? true : false, gettext("Disable firmware version check"), sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware")));?>
+					<?php endif;?>
+					<?php html_checkbox("disablebeep", gettext("System Beep"), $pconfig['disablebeep'] ? true : false, gettext("Disable speaker beep on startup and shutdown"));?>
+					<?php html_checkbox("tune_enable", gettext("Tuning"), $pconfig['tune_enable'] ? true : false, gettext("Enable tuning of some kernel variables"));?>
+					<?php html_checkbox("powerd", gettext("Power Daemon"), $pconfig['powerd'] ? true : false, gettext("Enable the system power control utility"), gettext("The powerd utility monitors the system state and sets various power control options accordingly."));?>
 					<?php html_checkbox("zeroconf", gettext("Zeroconf/Bonjour"), $pconfig['zeroconf'] ? true : false, gettext("Enable Zeroconf/Bonjour to advertise services of this device"));?>
 					<?php html_textarea("motd", gettext("MOTD"), $pconfig['motd'], gettext("Message of the day."), false, 65, 7, false, false);?>
 				</table>
@@ -184,7 +216,12 @@ function sysctl_tune($mode) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 				</div>
 			</form>
-    </td>
-  </tr>
+		</td>
+	</tr>
 </table>
+<script language="JavaScript">
+<!--
+sysconsaver_change();
+//-->
+</script>
 <?php include("fend.inc");?>
