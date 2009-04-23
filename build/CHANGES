@@ -51,6 +51,9 @@ Majors changes:
 - Add another WOL patch. It is tested for nfe(4) und xl(4). Thanks to Tobias
   Reber.
 
+Minors changes:
+- Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
+
 FreeNAS 0.69.1 (Omnius):
 ------------------------
 
