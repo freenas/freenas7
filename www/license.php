@@ -119,18 +119,18 @@ $pgtitle = array(gettext("License & Credits"));
         The authors of FreeNAS would like to thank the authors of these software
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
-        Copyright &copy; 1995-2007 The FreeBSD Project. All rights reserved.</p>
+        Copyright &copy; 1995-2009 The FreeBSD Project. All rights reserved.</p>
 
 			<p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br>
         Copyright &copy; 2006-2007 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br>
-        Copyright &copy; 2001-2007 The PHP Group. All rights reserved.</p>
+        Copyright &copy; 2001-2009 The PHP Group. All rights reserved.</p>
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://www.lighttpd.net</a>)<br>
         Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
 
       <p> OpenSSH (<a href="http://www.openssh.com" target="_blank">http://www.openssh.com</a>)<br>
-        Copyright &copy; 1999-2007 OpenBSD</p>
+        Copyright &copy; 1999-2009 OpenBSD</p>
 
       <p> Samba (<a href="http://www.samba.org" target="_blank">http://www.samba.org</a>)<br>
        </p>
@@ -139,7 +139,7 @@ $pgtitle = array(gettext("License & Credits"));
        </p>
 
       <p> ProFTPD - Highly configurable FTP server (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br>
-        Copyright &copy; 1999, 2000-8, The ProFTPD Project</p>
+        Copyright &copy; 1999, 2000-9, The ProFTPD Project</p>
 
 			<p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br>
 			</p>
