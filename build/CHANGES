@@ -50,6 +50,8 @@ FreeNAS 0.69.2 (Chirox):
 Majors changes:
 - Add another WOL patch. It is tested for nfe(4) und xl(4). Thanks to Tobias
   Reber.
+- Add switch in 'System|Advanced' WebGUI to enable the console screensaver
+  (FR 2777301).
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).

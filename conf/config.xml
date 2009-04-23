@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>7.6</version>
+	<version>7.7</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -237,6 +237,10 @@
 				<desc>Deny ident</desc>
 			</rule>
 		</firewall>
+		<sysconsaver>
+			<!-- <enable/> -->
+			<blanktime>300</blanktime>
+		</sysconsaver>
 	</system>
 	<interfaces>
 		<lan>
