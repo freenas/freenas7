@@ -533,6 +533,9 @@ usr/sbin/iostat
 ## ntpdate -- set the date and time via NTP
 usr/sbin/ntpdate
 
+## vidcontrol -- system console control and configuration utility
+usr/sbin/vidcontrol
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
@@ -615,3 +618,4 @@ etc/rc.d/ip6addrctl
 etc/rc.d/random
 etc/rc.d/swap1
 etc/rc.d/ip6fw
+etc/rc.d/syscons

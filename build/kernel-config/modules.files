@@ -29,3 +29,6 @@ libmchain/libmchain.ko
 # Netgraph (required by bsnmpd)
 netgraph/netgraph/netgraph.ko
 netgraph/socket/ng_socket.ko
+
+# Misc.
+syscons/green/green_saver.ko
