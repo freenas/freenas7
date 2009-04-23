@@ -151,7 +151,7 @@ device		kbdmux		# keyboard multiplexer
 
 device		vga		# VGA video card driver
 
-#device		splash		# Splash screen and screen saver support
+device		splash		# Splash screen and screen saver support
 
 # syscons is the default console driver, resembling an SCO console
 device		sc

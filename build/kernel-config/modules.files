@@ -35,3 +35,4 @@ netgraph/socket/ng_socket.ko
 
 # Misc.
 iscsi/initiator/iscsi_initiator.ko
+syscons/green/green_saver.ko
