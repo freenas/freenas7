@@ -50,10 +50,6 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
-		$input_errors[] = gettext("The TCP idle timeout must be an integer.");
-	}
-
 	if ($_POST['sysconsaver']) {
 		$reqdfields = explode(" ", "sysconsaverblanktime");
 		$reqdfieldsn = array(gettext("Blank time"));
