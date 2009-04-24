@@ -3,7 +3,7 @@
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -76,7 +76,7 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* check for name conflicts */
+	// Input validation.
 	foreach ($a_disk as $disk) {
 		if (isset($id) && ($a_disk[$id]) && ($a_disk[$id] === $disk))
 			continue;
@@ -148,87 +148,26 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 						<td width="78%" class="vtable">
 							<select name="name" class="formfld" id="name">
-								<?php foreach ($a_phy_disk as $diskk => $diskv): ?>
+								<?php foreach ($a_phy_disk as $diskk => $diskv):?>
 								<?php // Do not display disks that are already configured. (Create mode);?>
 								<?php if (!isset($id) && (false !== array_search_ex($diskk,$a_disk,"name"))) continue;?>
 								<option value="<?=$diskk;?>" <?php if ($diskk == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diskk . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
-								<?php endforeach; ?>
+								<?php endforeach;?>
 							</select>
 					  </td>
 					</tr>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Transfer mode"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="transfermode" class="formfld" id="transfermode">
-							<?php $types = explode(",", "Auto,PIO0,PIO1,PIO2,PIO3,PIO4,WDMA2,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto PIO0 PIO1 PIO2 PIO3 PIO4 WDMA2 UDMA2 UDMA4 UDMA5 UDMA6");
-							$j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['transfermode']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-							<?php endfor; ?>
-							</select>
-							<br>
-							<?=gettext("This allows you to set the transfer mode for ATA/IDE hard drives.");?>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="harddiskstandby" class="formfld">
-							<?php $sbvals = array(0=>gettext("Always on"), 5=>"5 ".gettext("minutes"), 10=>"10 ".gettext("minutes"), 20=>"20 ".gettext("minutes"), 30=>"30 ".gettext("minutes"), 60=>"60 ".gettext("minutes"));?>
-							<?php foreach ($sbvals as $sbval => $sbname): ?>
-								<option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=htmlspecialchars($sbname);?></option>
-							<?php endforeach; ?>
-							</select>
-							<br>
-							<?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Advanced Power Management"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="apm" class="formfld">
-							<?php $apmvals = array(0=>gettext("Disabled"),1=>gettext("Minimum power usage with Standby"),64=>gettext("Medium power usage with Standby"),128=>gettext("Minimum power usage without Standby"),192=>gettext("Medium power usage without Standby"),254=>gettext("Maximum performance, maximum power usage"));?>
-							<?php foreach ($apmvals as $apmval => $apmname): ?>
-								<option value="<?=$apmval;?>" <?php if($pconfig['apm'] == $apmval) echo 'selected';?>><?=htmlspecialchars($apmname);?></option>
-							<?php endforeach; ?>
-							</select>
-							<br>
-							<?=gettext("This allows you to lower the power consumption of the drive, at the expense of performance.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Acoustic level"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="acoustic" class="formfld">
-							<?php $acvals = array(0=>gettext("Disabled"),1=>gettext("Minimum performance, Minimum acoustic output"),64=>gettext("Medium acoustic output"),127=>gettext("Maximum performance, maximum acoustic output"));?>
-							<?php foreach ($acvals as $acval => $acname): ?>
-								<option value="<?=$acval;?>" <?php if($pconfig['acoustic'] == $acval) echo 'selected';?>><?=htmlspecialchars($acname);?></option>
-							<?php endforeach; ?>
-							</select>
-							<br>
-							<?=gettext("This allows you to set how loud the drive is while it's operating.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("S.M.A.R.T.");?></td>
-			      <td width="78%" class="vtable">
-							<input name="smart" type="checkbox" id="smart" value="yes" <?php if ($pconfig['smart']) echo "checked";?>>
-							<span class="vexpl"><?=gettext("Activate S.M.A.R.T. monitoring for this device.");?></span>
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted file system"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="fstype" class="formfld">
-							<?php $fstlist = get_fstype_list(); ?>
-							<?php foreach ($fstlist as $fstval => $fstname): ?>
-								<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=gettext($fstname);?></option>
-							<?php endforeach; ?>
-							</select>
-							<br/>
-							<?=gettext("This allows you to set the file system for preformatted hard disks containing data.");?> <?php echo sprintf(gettext("Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."), "Unformated", "disks_init.php");?>
-						</td>
-					</tr>
+					<?php $options = array("auto" => "Auto", "PIO0" => "PIO0", "PIO1" => "PIO1", "PIO2" => "PIO2", "PIO3" => "PIO3", "PIO4" => "PIO4", "WDMA2" => "WDMA2", "UDMA2" => "UDMA-33", "UDMA4" => "UDMA-66", "UDMA5" => "UDMA-100", "UDMA6" => "UDMA-133");?>
+					<?php html_combobox("transfermode", gettext("Transfer mode"), $pconfig['transfermode'], $options, gettext("This allows you to set the transfer mode for ATA/IDE hard drives."), false);?>
+					<?php $options = array(0 => gettext("Always on")); foreach(array(5, 10, 20, 30, 60, 120, 180, 240, 300, 360) as $vsbtime) { $options[$vsbtime] = sprintf("%d %s", $vsbtime, gettext("minutes")); }?>
+					<?php html_combobox("harddiskstandby", gettext("Hard disk standby time"), $pconfig['harddiskstandby'], $options, gettext("Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed."), false);?>
+					<?php $options = array(0 => gettext("Disabled"), 1 => gettext("Minimum power usage with Standby"), 64 => gettext("Medium power usage with Standby"), 128 => gettext("Minimum power usage without Standby"), 192 => gettext("Medium power usage without Standby"), 254 => gettext("Maximum performance, maximum power usage"));?>
+					<?php html_combobox("apm", gettext("Advanced Power Management"), $pconfig['apm'], $options, gettext("This allows you to lower the power consumption of the drive, at the expense of performance."), false);?>
+					<?php $options = array(0 => gettext("Disabled"), 1 => gettext("Minimum performance, Minimum acoustic output"), 64 => gettext("Medium acoustic output"), 127 => gettext("Maximum performance, maximum acoustic output"));?>
+					<?php html_combobox("acoustic", gettext("Acoustic level"), $pconfig['acoustic'], $options, gettext("This allows you to set how loud the drive is while it's operating."), false);?>
+					<?php html_checkbox("smart", gettext("S.M.A.R.T."), $pconfig['smart'] ? true : false, gettext("Activate S.M.A.R.T. monitoring for this device."), "", false);?>
+					<?php $options = get_fstype_list();?>
+					<?php html_combobox("fstype", gettext("Preformatted file system"), $pconfig['fstype'], $options, gettext("This allows you to set the file system for preformatted hard disks containing data.") . " " . sprintf(gettext("Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."), "Unformated", "disks_init.php"), false);?>
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
