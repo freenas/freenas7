@@ -271,6 +271,7 @@ setoptions()
 {
 	local _option _name _value
 
+	# Set rc.conf variables configured via WebGUI.
 	/usr/local/bin/xml sel -t -m "//system/rcconf/param" \
 		-v "concat(name,'=',value)" \
 		-i "position() != last()" -n -b \
@@ -281,6 +282,16 @@ setoptions()
 
 			eval /usr/local/sbin/rconf attribute set "${_name}" "${_value}"
 		done
+
+	# Enable/disable console screensaver. Set default timeout value.
+	_value=`configxml_get "//system/sysconsaver/blanktime"`
+	eval /usr/local/sbin/rconf attribute set blanktime "${_value}";
+	if configxml_isset "//system/sysconsaver/enable"; then
+		_value="green";
+	else
+		_value=""
+	fi
+	eval /usr/local/sbin/rconf attribute set saver "${_value}";
 }
 
 load_rc_config ${name}
