@@ -89,13 +89,13 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
+			$retval |= rc_exec_service("rcconf.sh");
 			$retval |= rc_update_service("powerd");
 			$retval |= rc_update_service("mdnsresponder");
 			$retval |= rc_exec_service("motd");
 			if (isset($config['system']['tune']))
 				$retval |= rc_update_service("sysctl");
-			if (isset($config['system']['sysconsaver']['enable']))
-				$retval |= rc_update_service("syscons");
+			$retval |= rc_update_service("syscons");
 			config_unlock();
 		}
 
