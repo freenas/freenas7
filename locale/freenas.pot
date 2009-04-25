@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-04-17 20:03+0000\n"
+"PO-Revision-Date: 2009-04-25 21:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -471,6 +471,9 @@ msgstr ""
 msgid "BitTorrent"
 msgstr ""
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr ""
 
@@ -634,6 +637,9 @@ msgid "Connected FTP users"
 msgstr ""
 
 msgid "Console menu"
+msgstr ""
+
+msgid "Console screensaver"
 msgstr ""
 
 msgid "Contact"
@@ -965,9 +971,6 @@ msgstr ""
 msgid "Disks (ATA)"
 msgstr ""
 
-msgid "Do not set this for CF cards."
-msgstr ""
-
 msgid "Do you really want to delete all MIBs?"
 msgstr ""
 
@@ -1247,6 +1250,9 @@ msgstr ""
 msgid "Enable compression."
 msgstr ""
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr ""
 
@@ -1348,6 +1354,9 @@ msgid "Encryption"
 msgstr ""
 
 msgid "Encryption algorithm"
+msgstr ""
+
+msgid "Encryption algorithm to use."
 msgstr ""
 
 msgid "English"
@@ -1836,7 +1845,7 @@ msgstr ""
 msgid "Initialize"
 msgstr ""
 
-msgid "Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
 
 msgid "Initializing"
@@ -1893,6 +1902,12 @@ msgid "Key"
 msgstr ""
 
 msgid "Key Management Protocol"
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -3327,9 +3342,6 @@ msgstr ""
 msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
 msgstr ""
 
-msgid "The TCP idle timeout must be an integer."
-msgstr ""
-
 msgid "The TCP port must be a valid port number."
 msgstr ""
 
@@ -3473,6 +3485,9 @@ msgstr ""
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -3836,6 +3851,9 @@ msgstr ""
 msgid "This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again."
 msgstr ""
 
+msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr ""
 
@@ -3925,6 +3943,9 @@ msgid "Trivial File Transfer Protocol"
 msgstr ""
 
 msgid "Tuning"
+msgstr ""
+
+msgid "Turn the monitor to standby after N seconds."
 msgstr ""
 
 msgid "Type"
