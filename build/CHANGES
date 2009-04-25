@@ -1,5 +1,5 @@
-FreeNAS 0.69.2 (Chirox):
-------------------------
+FreeNAS 0.69.2 (Muad'Dib):
+--------------------------
 
 Majors changes:
 - Add another WOL patch. It is tested for nfe(4) und xl(4). Thanks to Tobias
