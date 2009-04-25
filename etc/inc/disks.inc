@@ -719,15 +719,16 @@ function disks_raid_graid5_delete($uuid) {
 
 // Initialize provider which needs to be encrypted.
 // Return 0 if successful, 1 if error
-function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = false)
+function disks_geli_init($provider, $aalgo, $ealgo, $keylen, $passphrase, $verbose = false)
 {
 	$param = "-t";
 	$result = 1;
 
 	// Add additional parameters
 	if (true == $verbose) $param .= " -v";
-	if (0 !== strcmp($aalgo,"none")) $param .= " -a {$aalgo}";
+	if (0 !== strcmp($aalgo, "none")) $param .= " -a {$aalgo}";
 	if (!empty($ealgo)) $param .= " -e {$ealgo}";
+	if (!empty($keylen)) $param .= " -l {$keylen}";
 
 	// Init disk
 	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init {$param} {$provider} 2>&1", $result);

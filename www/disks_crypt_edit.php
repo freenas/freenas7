@@ -3,7 +3,7 @@
 /*
 	disks_crypt_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -115,17 +115,38 @@ if ($_POST) {
 }
 
 if (!isset($pconfig['do_action'])) {
+	// Default values.
 	$pconfig['do_action'] = false;
 	$pconfig['init'] = false;
 	$pconfig['disk'] = 0;
 	$pconfig['aalgo'] = "";
-	$pconfig['ealgo'] = "";
+	$pconfig['ealgo'] = "AES";
+	$pconfig['keylen'] = "";
 	$pconfig['passphrase'] = "";
 	$pconfig['name'] = "";
 	$pconfig['devicespecialfile'] = "";
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function ealgo_change() {
+	// Disable illegal values in 'Key length' selective list.
+	for (i = 0; i < document.iform.keylen.length; i++) {
+		document.iform.keylen.options[i].disabled = false;
+		if (document.iform.ealgo.value == "3DES" &&
+				document.iform.keylen.options[i].value == "256") {
+			document.iform.keylen.options[i].disabled = true;
+		}
+	}
+
+	// Set key length to 'default' whether an illegal value is selected.
+	var selected = document.iform.keylen.selectedIndex;
+	if (document.iform.keylen.options[selected].disabled == true)
+		document.iform.keylen.selectedIndex = 0;
+}
+//-->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
     <td class="tabnavtbl">
@@ -178,30 +199,12 @@ if (!isset($pconfig['do_action'])) {
 			    </tr>
 					*/
 					?>
-			    <tr>
-			      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm");?></td>
-			      <td class="vtable">
-			        <select name="ealgo" class="formfld" id="ealgo">
-			          <option value="AES" <?php if ($pconfig['ealgo'] === "AES") echo "selected"; ?>>AES</option>
-			          <option value="Blowfish" <?php if ($pconfig['ealgo'] === "Blowfish") echo "selected"; ?>>Blowfish</option>
-			          <option value="3DES" <?php if ($pconfig['ealgo'] === "3DES") echo "selected"; ?>>3DES</option>
-			        </select>
-			      </td>
-			    </tr>
-					<tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
-				    <td width="78%" class="vtable">
-				      <input name="passphrase" type="password" class="formfld" id="passphrase" size="20" value=""><br>
-				      <input name="passphraseconf" type="password" class="formfld" id="passphraseconf" size="20" value="">&nbsp;(<?=gettext("Confirmation");?>)
-				    </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
-			      <td width="78%" class="vtable">
-							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked"; ?>>
-							<?=gettext("Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk.");?>
-			      </td>
-			    </tr>
+					<?php $options = array("AES" => "AES", "Blowfish" => "Blowfish", "3DES" => "3DES");?>
+					<?php html_combobox("ealgo", gettext("Encryption algorithm"), $pconfig['ealgo'], $options, gettext("Encryption algorithm to use."), true, false, "ealgo_change()");?>
+					<?php $options = array("" => gettext("Default"), 128 => "128", 192 => "192", 256 => "256");?>
+					<?php html_combobox("keylen", gettext("Key length"), $pconfig['keylen'], $options, gettext("Key length to use with the given cryptographic algorithm.") . " " . gettext("The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."), false);?>
+					<?php html_passwordconfbox("passphrase", "passphraseconf", gettext("Passphrase"), "", "", "", true);?>
+					<?php html_checkbox("init", gettext("Initialize"), $pconfig['init'] ? true : false, gettext("Initialize and encrypt disk."), gettext("This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."));?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
@@ -210,17 +213,17 @@ if (!isset($pconfig['do_action'])) {
 				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				ob_end_flush();
-				
+
 				if (true === $pconfig['init']) {
 					// Initialize and encrypt the disk.
 					echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $pconfig['devicespecialfile']);
-					disks_geli_init($pconfig['devicespecialfile'], $pconfig['aalgo'], $pconfig['ealgo'], $pconfig['passphrase'], true);
+					disks_geli_init($pconfig['devicespecialfile'], $pconfig['aalgo'], $pconfig['ealgo'], $pconfig['keylen'], $pconfig['passphrase'], true);
 				}
-				
+
 				// Attach the disk.
 				echo(sprintf(gettext("Attaching provider '%s'."), $pconfig['devicespecialfile']) . "<br/>");
 				disks_geli_attach($pconfig['devicespecialfile'], $pconfig['passphrase'], true);
-				
+
 				echo('</pre>');
 				}
 				?>
@@ -228,4 +231,9 @@ if (!isset($pconfig['do_action'])) {
 		</td>
 	</tr>
 </table>
+<script language="JavaScript">
+<!--
+ealgo_change();
+//-->
+</script>
 <?php include("fend.inc");?>

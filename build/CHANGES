@@ -55,6 +55,8 @@ Majors changes:
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
+- Allow selecting the key length of the cryptographic algorithm used to encrypt
+  a disk (FR 2779692).
 
 FreeNAS 0.69.1 (Omnius):
 ------------------------
