@@ -202,7 +202,7 @@ function ealgo_change() {
 					<?php $options = array("AES" => "AES", "Blowfish" => "Blowfish", "Camellia" => "Camellia", "3DES" => "3DES");?>
 					<?php html_combobox("ealgo", gettext("Encryption algorithm"), $pconfig['ealgo'], $options, gettext("Encryption algorithm to use."), true, false, "ealgo_change()");?>
 					<?php $options = array("" => gettext("Default"), 128 => "128", 192 => "192", 256 => "256");?>
-					<?php html_combobox("keylen", gettext("Key length"), $pconfig['keylen'], $options, gettext("Key length to use with the given cryptographic algorithm.") . " " . gettext("The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."), false);?>
+					<?php html_combobox("keylen", gettext("Key length"), $pconfig['keylen'], $options, gettext("Key length to use with the given cryptographic algorithm.") . " " . gettext("The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."), false);?>
 					<?php html_passwordconfbox("passphrase", "passphraseconf", gettext("Passphrase"), "", "", "", true);?>
 					<?php html_checkbox("init", gettext("Initialize"), $pconfig['init'] ? true : false, gettext("Initialize and encrypt disk."), gettext("This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."));?>
 			  </table>
