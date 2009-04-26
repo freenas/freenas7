@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2009-04-18 09:22+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -589,6 +589,9 @@ msgstr "Пароль для связи"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "Просматриваемый"
 
@@ -775,6 +778,9 @@ msgstr "Подключенные пользователи FTP"
 
 msgid "Console menu"
 msgstr "Консольное меню"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "Контакт"
@@ -1144,9 +1150,6 @@ msgstr "Диски"
 msgid "Disks (ATA)"
 msgstr "Диски (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "Не устанавливайте для флэш-накопителей."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "Вы действительно хотите удалить все MIB?"
 
@@ -1448,6 +1451,9 @@ msgstr "Включить авторизацию"
 msgid "Enable compression."
 msgstr "Включить сжатие"
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "Разрешить опрос устройств"
 
@@ -1569,6 +1575,9 @@ msgstr "Шифрование"
 
 msgid "Encryption algorithm"
 msgstr "Алгоритм шифрования"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr "Английский"
@@ -2164,12 +2173,8 @@ msgstr ""
 msgid "Initialize"
 msgstr "Инициализировать"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
-"Инициализация и шифрование диска. Это удалит ВСЕ данные на вашем диске! Не "
-"используйте эту опцию, если просто хотите добавить уже зашифрованный диск."
 
 msgid "Initializing"
 msgstr "Инициализация"
@@ -2236,6 +2241,12 @@ msgstr "Ключ"
 
 msgid "Key Management Protocol"
 msgstr "Протокол управления ключом"
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Удалить зашифрованный том"
@@ -3836,9 +3847,6 @@ msgstr ""
 "Том RAID-массива в данный момент смонтирован! Удалите <a href=%s>точку "
 "монтирования</a> перед продолжением."
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "Таймаут простоя TCP должен быть целым числом."
-
 msgid "The TCP port must be a valid port number."
 msgstr "Порт TCP должен быть верным номером порта."
 
@@ -4026,6 +4034,10 @@ msgstr "Порт почтового сервера по умолчанию, на
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 "Базовый DN, начиная с которого по умолчанию производится поиск, например %s"
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Имя устройства может состоять только из символов  a-z, A-Z, 0-9."
@@ -4637,6 +4649,11 @@ msgstr ""
 "Это удалит ВСЕ данные с указанных дисков. Не используйте эту настройку, если "
 "хотите подключить уже существующий RAID."
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Время"
 
@@ -4757,6 +4774,9 @@ msgstr "Trivial File Transfer Protocol (TFTP)"
 
 msgid "Tuning"
 msgstr "Настройка"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Тип"
@@ -5507,6 +5527,9 @@ msgstr "дней недели"
 
 #~ msgid "There has been an error verifying the signature on this image."
 #~ msgstr "Произошла ошибка при проверке подписи этого образа."
+
+#~ msgid "The TCP idle timeout must be an integer."
+#~ msgstr "Таймаут простоя TCP должен быть целым числом."
 
 #~ msgid "Certificate and key must always be specified together."
 #~ msgstr "Сертификат и ключ должны быть указаны вместе."

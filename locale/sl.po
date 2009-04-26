@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2008-08-07 05:15+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:02+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -543,6 +543,9 @@ msgstr ""
 msgid "BitTorrent"
 msgstr ""
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "Brskalno"
 
@@ -724,6 +727,9 @@ msgstr "Priklopljeni uporabniki FTP"
 
 msgid "Console menu"
 msgstr "Menu konzole"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "Stik"
@@ -1073,9 +1079,6 @@ msgstr "Diski"
 msgid "Disks (ATA)"
 msgstr "Diski (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "Ne nastavi tega za CF kartice."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr ""
 
@@ -1369,6 +1372,9 @@ msgstr ""
 msgid "Enable compression."
 msgstr "Omogoči stiskanje."
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "Omogoči polling naprav"
 
@@ -1481,6 +1487,9 @@ msgstr "Šifriranje"
 
 msgid "Encryption algorithm"
 msgstr "Algoritem šifriranja"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr ""
@@ -2035,9 +2044,7 @@ msgstr ""
 msgid "Initialize"
 msgstr "Vpelji"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
 
 msgid "Initializing"
@@ -2100,6 +2107,12 @@ msgid "Key"
 msgstr "Ključ"
 
 msgid "Key Management Protocol"
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -3624,9 +3637,6 @@ msgstr ""
 "RAID polje je trenutno priključeno! Pred nadaljevanjem odstranite <a "
 "href=%s>priklopno točko</a>."
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "TCP čas mirovanja mora biti število."
-
 msgid "The TCP port must be a valid port number."
 msgstr "Vrata TCP mora biti veljavna štrevilka vrat."
 
@@ -3794,6 +3804,10 @@ msgstr ""
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4296,6 +4310,11 @@ msgid ""
 "you want to add an already existing RAID again."
 msgstr ""
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Čas"
 
@@ -4402,6 +4421,9 @@ msgstr ""
 
 msgid "Tuning"
 msgstr "Fino nastavljanje"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Tip"

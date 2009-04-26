@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2009-01-31 14:11+0000\n"
 "Last-Translator: Zetao Zhang <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -574,6 +574,9 @@ msgstr ""
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "提供浏览"
 
@@ -749,6 +752,9 @@ msgstr "已连线 FTP 使用者"
 
 msgid "Console menu"
 msgstr "Console选单"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "联络人"
@@ -1110,9 +1116,6 @@ msgstr "磁碟"
 msgid "Disks (ATA)"
 msgstr "磁碟（ATA）"
 
-msgid "Do not set this for CF cards."
-msgstr "CF 记忆卡请勿设置此选项。"
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "是否确定删除全部 MIB ？"
 
@@ -1404,6 +1407,9 @@ msgstr "启用认证。"
 msgid "Enable compression."
 msgstr "开启资料压缩。"
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "开启device polling"
 
@@ -1521,6 +1527,9 @@ msgstr "加密方式"
 
 msgid "Encryption algorithm"
 msgstr "加密演算法"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr ""
@@ -2072,12 +2081,8 @@ msgstr "系统记录程式发现一些错误在 /etc/exports。"
 msgid "Initialize"
 msgstr "初始化"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
 
 msgid "Initializing"
 msgstr "初始化"
@@ -2137,6 +2142,12 @@ msgid "Key"
 msgstr "金钥"
 
 msgid "Key Management Protocol"
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -3654,9 +3665,6 @@ msgid ""
 "first before proceeding."
 msgstr "这个RAID volume目前正被挂载中！进行任何操作之前请先将其<a href=%s>卸载</a>。"
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "TCP闲置切断时间必须是一个整数。"
-
 msgid "The TCP port must be a valid port number."
 msgstr "请输入一个有效的连接埠。"
 
@@ -3824,6 +3832,10 @@ msgstr "预设的 SMTP 邮件伺服器连接阜，例：25 或 587。"
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4356,6 +4368,11 @@ msgid ""
 "you want to add an already existing RAID again."
 msgstr "这个动作会把选取的磁碟内资料清空！如果你想要新增一个已经设定好的 RAID 请勿使用这个选项。"
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "时间"
 
@@ -4460,6 +4477,9 @@ msgstr ""
 
 msgid "Tuning"
 msgstr "微调"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "类别"
@@ -5154,6 +5174,9 @@ msgstr "平常日"
 
 #~ msgid "There has been an error verifying the signature on this image."
 #~ msgstr "无法验証映像档内的数位签章。"
+
+#~ msgid "The TCP idle timeout must be an integer."
+#~ msgstr "TCP闲置切断时间必须是一个整数。"
 
 #~ msgid "This key does not appear to be valid."
 #~ msgstr "这个金钥似乎是无效的。"
@@ -6117,6 +6140,13 @@ msgstr "平常日"
 #~ "for TLS"
 #~ msgstr "LDAP 伺服器主机名称或 IP 位置。 注意： TLS 必须设定主机名称"
 
+#~ msgid ""
+#~ "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+#~ "use this option if you want to add an existing encrypted disk."
+#~ msgstr ""
+#~ "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+#~ "use this option if you want to add an existing encrypted disk."
+
 #~ msgid "Keep all files"
 #~ msgstr "保存所有档案"
 
@@ -6180,6 +6210,9 @@ msgstr "平常日"
 
 #~ msgid "Web user interface"
 #~ msgstr "网页控制介面"
+
+#~ msgid "Do not set this for CF cards."
+#~ msgstr "CF 记忆卡请勿设置此选项。"
 
 #~ msgid "Alias host name."
 #~ msgstr "主机别名"
