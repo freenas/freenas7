@@ -77,7 +77,7 @@ if ($_POST) {
 		$rule['timeinterval'] = $_POST['timeinterval'];
 		$rule['expire'] = $_POST['expire'];
 
-		if (isset($uuid) && $a_rule[$index]) {
+		if (isset($uuid) && (FALSE !== $index)) {
 			$a_rule[$index] = $rule;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
@@ -96,6 +96,14 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabinact"><a href="services_ftp.php"><span><?=gettext("Settings");?></span></a></li>
+				<li class="tabact"><a href="services_ftp_mod.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Modules");?></span></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
 		<td class="tabcont">
 			<form action="services_ftp_mod_ban_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -106,11 +114,8 @@ if ($_POST) {
 					<?php html_inputbox("expire", gettext("Expire"), $pconfig['expire'], gettext("Specifies the time in hh:mm:ss after which the ban expires."), true, 8);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && $a_rule[$index])) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $index)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($uuid) && $a_rule[$index]):?>
-					<input name="uuid" type="hidden" value="<?=$uuid;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

@@ -13,6 +13,10 @@ Minors changes:
 - Allow selecting the key length of the cryptographic algorithm used to encrypt
   a disk (FR 2779692).
 
+Bug fixes:
+- It was not possible to configure multiple FTP ban list rules. Thanks to
+  Michael Zoon.
+
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
