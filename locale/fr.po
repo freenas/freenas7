@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
-"PO-Revision-Date: 2009-04-15 09:49+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
+"PO-Revision-Date: 2009-04-19 16:35+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -596,6 +596,9 @@ msgstr "Mot de passe pour le bind"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "Navigabilité"
 
@@ -785,6 +788,9 @@ msgstr "Utilisateurs FTP connectés"
 
 msgid "Console menu"
 msgstr "Menu de la console"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "Contact"
@@ -1158,9 +1164,6 @@ msgstr "Disques"
 msgid "Disks (ATA)"
 msgstr "Disques (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "Ne pas activer ceci pour les cartes CF."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "Souhaitez-vous vraiment supprimer toutes les MIBs?"
 
@@ -1321,7 +1324,7 @@ msgid "Download"
 msgstr "Téléchargement"
 
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Bande passante en download"
 
 msgid "Download configuration"
 msgstr "Télécharger la configuration"
@@ -1464,6 +1467,9 @@ msgstr "Activer l'authentification."
 msgid "Enable compression."
 msgstr "Active la compression."
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "Activer le sondage de périphérique"
 
@@ -1502,13 +1508,13 @@ msgid "Enable module listing."
 msgstr "Activer le listage des modules."
 
 msgid "Enable peer exchange (PEX)."
-msgstr ""
+msgstr "Activer peer exchange (PEX)"
 
 msgid "Enable permission inheritance"
 msgstr "Activer l'héritage des permissions"
 
 msgid "Enable port forwarding via NAT-PMP or UPnP."
-msgstr ""
+msgstr "Activer la redirection de port via NAT-PMP ou UPnP"
 
 msgid "Enable proxy authentication."
 msgstr "Activer l'authentification proxy"
@@ -1589,6 +1595,9 @@ msgstr "Cryptage"
 
 msgid "Encryption algorithm"
 msgstr "Algorithme de cryptage"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr "Anglais"
@@ -2195,13 +2204,8 @@ msgstr ""
 msgid "Initialize"
 msgstr "Initialiser"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
-"Initialiser et crypter le disque. Ceci effacera TOUTES les données sur ce "
-"disque! N'utilisez pas cette option si vous voulez ajouter un disque crypté "
-"existant."
 
 msgid "Initializing"
 msgstr "Initialisation"
@@ -2268,6 +2272,12 @@ msgstr "Clef"
 
 msgid "Key Management Protocol"
 msgstr "Key Management Protocol"
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Detruire les volumes cryptés."
@@ -2932,10 +2942,10 @@ msgid "Path to be shared."
 msgstr "Chemin à partager."
 
 msgid "Peer exchange"
-msgstr ""
+msgstr "Peer exchange"
 
 msgid "Peer port"
-msgstr ""
+msgstr "Peer port"
 
 msgid "Permit root login"
 msgstr "Autoriser le login root"
@@ -2984,11 +2994,13 @@ msgid "Port %s must be less than %s."
 msgstr "Le port %s doit être inférieur à %s."
 
 msgid "Port forwarding"
-msgstr ""
+msgstr "Redirection de port"
 
 #, php-format
 msgid "Port to listen for incoming peer connections. Default port is %d."
 msgstr ""
+"Port d'écoute pour les connexions entrantes des pairs. Le port par défaut "
+"est %d."
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Port en écoute. Le port par défaut d'iTunes est 3689."
@@ -3024,7 +3036,7 @@ msgid "PreInit"
 msgstr "PreInit"
 
 msgid "Preferred"
-msgstr ""
+msgstr "Préféré"
 
 msgid "Prefix"
 msgstr "Préfixe"
@@ -3229,7 +3241,7 @@ msgid "Require authentication."
 msgstr "Activer l'authentification."
 
 msgid "Required"
-msgstr ""
+msgstr "Requis"
 
 msgid "Rescan interval"
 msgstr "Intervalle de balayage"
@@ -3689,7 +3701,7 @@ msgid "Status report successfully sent."
 msgstr "Rapport d'état envoyé avec succès."
 
 msgid "Stop after sending (and receiving) N packets."
-msgstr "Arrêt après l'envoi (et reception) de N paquets."
+msgstr "Arrêt après l'envoi (et réception) de N paquets."
 
 msgid "Stopped"
 msgstr "Arrêté"
@@ -3881,9 +3893,6 @@ msgid ""
 msgstr ""
 "Le volume RAID est monté! Commencez par supprimer le <a href=%s>point de "
 "montage</a> avant de continuer."
-
-msgid "The TCP idle timeout must be an integer."
-msgstr "Le timeout TCP idle doit être un entier."
 
 msgid "The TCP port must be a valid port number."
 msgstr "Le port TCP doit être un nombre valide compris entre 1024 et 65535."
@@ -4086,6 +4095,10 @@ msgstr ""
 "Le distinguished name (DN) de base à utiliser par défaut pour les "
 "recherches, e.g. %s"
 
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
 "Le nom de périphérique doit contenir uniquement les caractères a-z, A-Z, 0-9."
@@ -4171,6 +4184,8 @@ msgstr "Le maximum de connexions par IP doit être 0 (illimité) ou plus."
 msgid ""
 "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
+"La bande passante maximale pour le download en KiB/s. Le champ vide signifie "
+"infini."
 
 msgid "The maximum idle time be a number."
 msgstr "La durée maximum d'inactivité doit être un entier."
@@ -4184,6 +4199,7 @@ msgstr ""
 
 msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
+"La bande passante maximale en upload en KiB/s. Le champ vide signifie infini."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4221,7 +4237,7 @@ msgid "The passwords do not match."
 msgstr "Les mots de passe ne correspondent pas."
 
 msgid "The peer connection encryption mode."
-msgstr ""
+msgstr "Le mode dechiffrement de la connexion avec le pair."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4707,6 +4723,11 @@ msgstr ""
 "Ceci effacera TOUTES les données des disques sélectionnés! Ne pas utiliser "
 "cette option si vous voulez ajouter un RAID déjà existant."
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Temps"
 
@@ -4778,7 +4799,7 @@ msgstr ""
 ">System</li></ul></div>"
 
 msgid "Tolerated"
-msgstr ""
+msgstr "Toléré"
 
 msgid "Tools"
 msgstr "Outils"
@@ -4826,6 +4847,9 @@ msgstr "Trivial File Transfer Protocol (TFTP)"
 
 msgid "Tuning"
 msgstr "Paramétrage"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Type"
@@ -4933,7 +4957,7 @@ msgid "Upload"
 msgstr "Transfert de fichiers"
 
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Bande passante en upload"
 
 msgid "Uppercases names in both directions"
 msgstr "Noms en majuscules dans les deux directions"
@@ -5622,6 +5646,9 @@ msgstr "jours de la semaine"
 
 #~ msgid "There has been an error verifying the signature on this image."
 #~ msgstr "Une erreur s'est produite lors de la vérification de cette image."
+
+#~ msgid "The TCP idle timeout must be an integer."
+#~ msgstr "Le timeout TCP idle doit être un entier."
 
 #~ msgid "Certificate and key must always be specified together."
 #~ msgstr "Le certificat et la clef doivent être spécifiés ensemble."
@@ -6968,6 +6995,14 @@ msgstr "jours de la semaine"
 #~ "Nom d'hôte ou adresse IP du serveur LDAP. Attention: l'utilisation d'un nom "
 #~ "d'hôte est obligatoire pour TLS"
 
+#~ msgid ""
+#~ "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+#~ "use this option if you want to add an existing encrypted disk."
+#~ msgstr ""
+#~ "Initialiser et crypter le disque. Ceci effacera TOUTES les données sur ce "
+#~ "disque! N'utilisez pas cette option si vous voulez ajouter un disque crypté "
+#~ "existant."
+
 #~ msgid "Keep all files"
 #~ msgstr "Garder tout les fichiers"
 
@@ -7008,6 +7043,9 @@ msgstr "jours de la semaine"
 
 #~ msgid "Web user interface"
 #~ msgstr "Interface utilisateur web"
+
+#~ msgid "Do not set this for CF cards."
+#~ msgstr "Ne pas activer ceci pour les cartes CF."
 
 #~ msgid "Disable"
 #~ msgstr "Désactiver"

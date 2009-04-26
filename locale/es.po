@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2009-04-10 18:17+0000\n"
 "Last-Translator: Marcos <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -578,6 +578,9 @@ msgstr "Contraseña de Bind"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "Visible"
 
@@ -763,6 +766,9 @@ msgstr "Usuarios de FTP conectados"
 
 msgid "Console menu"
 msgstr "Menú de consola"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "Contacto"
@@ -1133,9 +1139,6 @@ msgstr "Discos"
 msgid "Disks (ATA)"
 msgstr "Discos (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "No active esto para tajetas CF."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "¿Realmente quiere eliminar todos los MIB?"
 
@@ -1437,6 +1440,9 @@ msgstr "Activar autentificación."
 msgid "Enable compression."
 msgstr "Habilitar compresión"
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "Permitir comprobación de los dispositivos"
 
@@ -1551,6 +1557,9 @@ msgstr "Cifrado"
 
 msgid "Encryption algorithm"
 msgstr "Algoritmo de encriptación"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr "Inglés"
@@ -2139,12 +2148,8 @@ msgstr ""
 msgid "Initialize"
 msgstr "Inicializar"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
-"Inicializar y cifrar disco. ¡Esto borrará TODOS los datos en su disco! No "
-"use esta opción si desea añadir un disco previamente cifrado."
 
 msgid "Initializing"
 msgstr "Inicializando"
@@ -2210,6 +2215,12 @@ msgstr "Clave"
 
 msgid "Key Management Protocol"
 msgstr "Protocolo de Gestión de Claves"
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Matar volúmen encriptado"
@@ -3783,9 +3794,6 @@ msgstr ""
 "El volumen RAID está montado! Elimine el <a href=%s>punto de montaje</a> "
 "antes de continuar."
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "El tiempo de espera inactivo TCP debe ser un número entero."
-
 msgid "The TCP port must be a valid port number."
 msgstr "El puerto TCP tiene que ser un número de puerto válido."
 
@@ -3972,6 +3980,10 @@ msgstr "El puerto por defecto del servidor SMTP, por ejemplo 25 o 587."
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4514,6 +4526,11 @@ msgstr ""
 "¡Ésto borrará TODOS los datos en los discos seleccionados! No utilice esta "
 "opción si quiere añadir de nuevo un RAID ya existente."
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Hora"
 
@@ -4624,6 +4641,9 @@ msgstr "Trivial File Transfer Protocol"
 
 msgid "Tuning"
 msgstr "Ajuste"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Escriba"

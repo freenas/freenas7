@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
-"PO-Revision-Date: 2009-04-18 04:32+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
+"PO-Revision-Date: 2009-04-26 01:27+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:00+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -597,6 +597,9 @@ msgstr "Koppelings wachtwoord"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr "Wachttijd Schermbeveiliging"
+
 msgid "Browseable"
 msgstr "Verkenbaar"
 
@@ -788,6 +791,9 @@ msgstr "Verbonden FTP gebruikers"
 
 msgid "Console menu"
 msgstr "Console Menu"
+
+msgid "Console screensaver"
+msgstr "Console Screensaver"
 
 msgid "Contact"
 msgstr "Contact"
@@ -1160,9 +1166,6 @@ msgstr "Schijven"
 msgid "Disks (ATA)"
 msgstr "Schijven (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "Niet gebruiken voor CF kaarten."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "Weet u zeker dat u alle MIBs wilt verwijderen?"
 
@@ -1472,6 +1475,9 @@ msgstr "Inschakelen authentiecatie."
 msgid "Enable compression."
 msgstr "Inschakelen van compressie."
 
+msgid "Enable console screensaver"
+msgstr "Inschakelen schermbeveiliging console"
+
 msgid "Enable device polling"
 msgstr "Inschakelen netwerk polling."
 
@@ -1596,6 +1602,9 @@ msgstr "Versleutelen"
 
 msgid "Encryption algorithm"
 msgstr "Versleutelings algoritme"
+
+msgid "Encryption algorithm to use."
+msgstr "Selecteer het versleutelingsalgoritme om te gebruiken."
 
 msgid "English"
 msgstr "Engels"
@@ -2207,12 +2216,8 @@ msgstr "Verbieden van syslog diagnose voor verkeerde regels in /etc/exports."
 msgid "Initialize"
 msgstr "Initialiseer"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
-msgstr ""
-"Schijf initialiseren en encrypten. Dit zal ALLE data op uw schijf wissen! "
-"Gebruik deze optie niet als u een bestaande encrypted schijf wilt toevoegen."
+msgid "Initialize and encrypt disk."
+msgstr "Initialiseer en versleutel de schijf."
 
 msgid "Initializing"
 msgstr "Aan het initialiseren"
@@ -2277,6 +2282,13 @@ msgstr "Sleutel"
 
 msgid "Key Management Protocol"
 msgstr "Sleutel Beheer Protocol"
+
+msgid "Key length"
+msgstr "Sleutellengte"
+
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr ""
+"Sleutellengte om te gebruiken voor de opgegeven cryptografische algoritme."
 
 msgid "Kill encrypted volume"
 msgstr "encrypted station verwijderen"
@@ -3908,9 +3920,6 @@ msgstr ""
 "Het RAID volume is momenteel aangekoppeld! Verwijder het <a "
 "href=%s>koppelpunt</a> eerst voor u verder gaat."
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "De TCP rust inactiviteitsduur moet een geheel getal zijn."
-
 msgid "The TCP port must be a valid port number."
 msgstr "De TCP poort moet een geldig poortnummer zijn."
 
@@ -4105,6 +4114,12 @@ msgstr "De standaard SMTP mailserver poort, bijv. 25 of 587."
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 "De standaard basis voornaam (DN) om voor zoeken te gebruiken, bijv. %s"
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+msgstr ""
+"De standaard sleutellengtes zijn: 128 bits voor AES, 128 bits voor Blowfish "
+"en 192 bits voor 3DES."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "De schijf naam mag alleen bestaan uit de karakters a-z, A-Z, 0-9."
@@ -4741,6 +4756,13 @@ msgstr ""
 "Dit zal ALLE data op de geselecteerde schijven wissen! Gebruik deze optie "
 "niet als u een bestaande RAID opnieuw wil toevoegen."
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+"Dit zal ALLE data op de schijf wissen! Gebruik deze optie niet als u een "
+"bestaande reeds versleutelde schijf wil toevoegen."
+
 msgid "Time"
 msgstr "Tijd"
 
@@ -4861,6 +4883,9 @@ msgstr "Trivial File Transfer Protocol"
 
 msgid "Tuning"
 msgstr "Optimalisatie"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr "Schakelt de monitor in de stand-by stand na N seconden."
 
 msgid "Type"
 msgstr "Type"

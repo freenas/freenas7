@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2009-03-08 19:53+0000\n"
 "Last-Translator: Linus C Unneback <linus@folkdatorn.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -568,6 +568,9 @@ msgstr ""
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "Bläddringsbar"
 
@@ -750,6 +753,9 @@ msgstr "Anslutna FTP-användare"
 
 msgid "Console menu"
 msgstr "Konsollmeny"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "Kontakt"
@@ -1103,9 +1109,6 @@ msgstr "Diskar"
 msgid "Disks (ATA)"
 msgstr "Diskar (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "Sätt inte detta för CF-kort."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "Vill du verkligen radera all MIB:er?"
 
@@ -1405,6 +1408,9 @@ msgstr "Aktivera autentisering."
 msgid "Enable compression."
 msgstr "Aktivera komprimering."
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr ""
 
@@ -1523,6 +1529,9 @@ msgstr "Kryptering"
 
 msgid "Encryption algorithm"
 msgstr "Krypteringsalgoritm"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr ""
@@ -2082,9 +2091,7 @@ msgstr ""
 msgid "Initialize"
 msgstr "Initiera"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
 
 msgid "Initializing"
@@ -2147,6 +2154,12 @@ msgid "Key"
 msgstr "Nyckel"
 
 msgid "Key Management Protocol"
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -3660,9 +3673,6 @@ msgid ""
 "first before proceeding."
 msgstr ""
 
-msgid "The TCP idle timeout must be an integer."
-msgstr ""
-
 msgid "The TCP port must be a valid port number."
 msgstr "TCP-porten måste vara ett giltigt portnummer."
 
@@ -3830,6 +3840,10 @@ msgstr ""
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4323,6 +4337,11 @@ msgid ""
 "you want to add an already existing RAID again."
 msgstr ""
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Tid"
 
@@ -4427,6 +4446,9 @@ msgstr ""
 
 msgid "Tuning"
 msgstr "Justering"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Typ"

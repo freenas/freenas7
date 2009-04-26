@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2009-04-18 15:57+0000\n"
 "Last-Translator: 94thomas <Thomas.Bellotti@liceotosi.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:01+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -563,6 +563,9 @@ msgstr ""
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "Esplorabile"
 
@@ -747,6 +750,9 @@ msgstr "Utenti FTP connessi"
 
 msgid "Console menu"
 msgstr "Console menu"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr "Contatto"
@@ -1116,9 +1122,6 @@ msgstr "Dischi"
 msgid "Disks (ATA)"
 msgstr "Dischi (ATA)"
 
-msgid "Do not set this for CF cards."
-msgstr "Non impostare questo parametro per le schede CF."
-
 msgid "Do you really want to delete all MIBs?"
 msgstr "Vuoi cancellare davvero tutti i MIB?"
 
@@ -1418,6 +1421,9 @@ msgstr "Attiva autenticazione."
 msgid "Enable compression."
 msgstr "Abilita compressione"
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "Abilita il device polling"
 
@@ -1532,6 +1538,9 @@ msgstr "Cifratura"
 
 msgid "Encryption algorithm"
 msgstr "Algoritmo di cifratura"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr ""
@@ -2118,12 +2127,8 @@ msgstr ""
 msgid "Initialize"
 msgstr "Inizializza"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
-"Inizializza e cifra il disco. TUTTI i dati sul disco saranno cancellati! Non "
-"utilizzare questa opzione se si vuole aggiungere un disco cifrato esistente."
 
 msgid "Initializing"
 msgstr ""
@@ -2189,6 +2194,12 @@ msgid "Key"
 msgstr "Chiave"
 
 msgid "Key Management Protocol"
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -3742,9 +3753,6 @@ msgstr ""
 "Il volume RAID e' attualmente montato! Prima di procedere rimuovere il <a "
 "href=%s>punto di mount</a>."
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "Il tempo di attesa per il TCP inattivo deve essere un intero."
-
 msgid "The TCP port must be a valid port number."
 msgstr "La porta TCP deve essere un numero valido."
 
@@ -3928,6 +3936,10 @@ msgstr "La porta di default del server mail SMTP, es. 25 o 587."
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4506,6 +4518,11 @@ msgstr ""
 "Questo cancellera' tutti i dati sui dischi selezionati! Non utilizzare "
 "questa opzione se si desidera aggiungere ancora un RAID già esistente."
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Ora"
 
@@ -4613,6 +4630,9 @@ msgstr ""
 
 msgid "Tuning"
 msgstr "Ottimizzazione"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Tipo"
@@ -5356,6 +5376,9 @@ msgstr "giorni della settimana"
 #~ "C'&egrave; stato un errore nella verifica della firma digitale di questa "
 #~ "immagine."
 
+#~ msgid "The TCP idle timeout must be an integer."
+#~ msgstr "Il tempo di attesa per il TCP inattivo deve essere un intero."
+
 #~ msgid "Certificate and key must always be specified together."
 #~ msgstr "Certificato e chiave devono sempre essere specificati insieme."
 
@@ -6061,6 +6084,13 @@ msgstr "giorni della settimana"
 #~ "Nome host o indirizzo IP del server LDAP. Attenzione: L'uso di un nome di "
 #~ "host e' obbligatorio per TLS"
 
+#~ msgid ""
+#~ "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+#~ "use this option if you want to add an existing encrypted disk."
+#~ msgstr ""
+#~ "Inizializza e cifra il disco. TUTTI i dati sul disco saranno cancellati! Non "
+#~ "utilizzare questa opzione se si vuole aggiungere un disco cifrato esistente."
+
 #~ msgid "Keep all files"
 #~ msgstr "Mantieni tutti i file"
 
@@ -6110,6 +6140,9 @@ msgstr "giorni della settimana"
 #~ "partizione DATA se e' stata selezionata l'opzione 2 durante l'installazione "
 #~ "sul disco rigido.<br>Selezionare 'Vecchio RAID Software' per i volumi "
 #~ "gmirror/graid5/gvinum creati con le precedenti versioni."
+
+#~ msgid "Do not set this for CF cards."
+#~ msgstr "Non impostare questo parametro per le schede CF."
 
 #~ msgid "Disable"
 #~ msgstr "Disabilita"

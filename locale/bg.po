@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-04-17 20:45+0000\n"
+"POT-Creation-Date: 2009-04-25 22:09+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-18 18:02+0000\n"
+"X-Launchpad-Export-Date: 2009-04-26 17:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -537,6 +537,9 @@ msgstr ""
 msgid "BitTorrent"
 msgstr ""
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "отварящ се"
 
@@ -715,6 +718,9 @@ msgstr ""
 
 msgid "Console menu"
 msgstr "конзолно меню"
+
+msgid "Console screensaver"
+msgstr ""
 
 msgid "Contact"
 msgstr ""
@@ -1066,9 +1072,6 @@ msgstr "Дискове"
 msgid "Disks (ATA)"
 msgstr ""
 
-msgid "Do not set this for CF cards."
-msgstr ""
-
 msgid "Do you really want to delete all MIBs?"
 msgstr ""
 
@@ -1364,6 +1367,9 @@ msgstr ""
 msgid "Enable compression."
 msgstr ""
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "позволи device polling"
 
@@ -1476,6 +1482,9 @@ msgstr "Криптиране"
 
 msgid "Encryption algorithm"
 msgstr "алгоритъм за криптиране"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr ""
@@ -2029,9 +2038,7 @@ msgstr ""
 msgid "Initialize"
 msgstr "инициализирай"
 
-msgid ""
-"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-"use this option if you want to add an existing encrypted disk."
+msgid "Initialize and encrypt disk."
 msgstr ""
 
 msgid "Initializing"
@@ -2094,6 +2101,12 @@ msgid "Key"
 msgstr "Ключ"
 
 msgid "Key Management Protocol"
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -3619,9 +3632,6 @@ msgstr ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
 "first before proceeding."
 
-msgid "The TCP idle timeout must be an integer."
-msgstr "The TCP idle timeout must be an integer."
-
 msgid "The TCP port must be a valid port number."
 msgstr "The TCP port must be a valid port number."
 
@@ -3789,6 +3799,10 @@ msgstr ""
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
+msgstr ""
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4294,6 +4308,11 @@ msgid ""
 "you want to add an already existing RAID again."
 msgstr ""
 
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+
 msgid "Time"
 msgstr "Час"
 
@@ -4400,6 +4419,9 @@ msgstr ""
 
 msgid "Tuning"
 msgstr "Настройки"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "Тип:"
@@ -5100,6 +5122,9 @@ msgstr "ден от седмицата"
 
 #~ msgid "There has been an error verifying the signature on this image."
 #~ msgstr "There has been an error verifying the signature on this image."
+
+#~ msgid "The TCP idle timeout must be an integer."
+#~ msgstr "The TCP idle timeout must be an integer."
 
 #~ msgid "Certificate and key must always be specified together."
 #~ msgstr "Certificate and key must always be specified together."
