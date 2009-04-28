@@ -324,7 +324,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           <td class="listr">
           <?php
 				if ($pgtag == 0) {
-					echo htmlspecialchars("none");
+					echo htmlspecialchars(gettext("none"));
 				} else {
 					echo htmlspecialchars($pgtag);
 				}
@@ -333,7 +333,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           <td class="listr">
           <?php
 				if ($igtag == 0) {
-					echo htmlspecialchars("none");
+					echo htmlspecialchars(gettext("none"));
 				} else {
 					echo htmlspecialchars($igtag);
 				}
@@ -342,7 +342,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           <td class="listr">
           <?php
 				if ($agtag == 0) {
-					echo htmlspecialchars("none");
+					echo htmlspecialchars(gettext("none"));
 				} else {
 					echo htmlspecialchars($agtag);
 				}

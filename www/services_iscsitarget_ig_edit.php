@@ -374,8 +374,8 @@ function get_ipv6network($v6addr, $mask) {
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, isset($id));?>
-	      <?php html_textarea("initiators", gettext("Initiators"), $pconfig['initiators'], gettext("Initiator that is authorised to access to this iSCSI target.  It takes a name or 'ALL' for any initiators."), true, 65, 7, false, false);?>
-	      <?php html_textarea("netmasks", gettext("Authorised network"), $pconfig['netmasks'], gettext("Network that is authorised to access to this iSCSI target. It takes IP or CIDR addresses or 'ALL' for any IPs."), true, 65, 7, false, false);?>
+	      <?php html_textarea("initiators", gettext("Initiators"), $pconfig['initiators'], gettext("Initiator authorised to access to the iSCSI target.  It takes a name or 'ALL' for any initiators."), true, 65, 7, false, false);?>
+	      <?php html_textarea("netmasks", gettext("Authorised network"), $pconfig['netmasks'], gettext("Network authorised to access to the iSCSI target. It takes IP or CIDR addresses or 'ALL' for any IPs."), true, 65, 7, false, false);?>
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 	      </table>
 	      <div id="submit">

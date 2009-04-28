@@ -99,19 +99,34 @@ if ($_POST) {
 		}
 	}
 
-	// Check if path exists.
+	// Check if path exists and match directory.
 	if ("device" !== $_POST['type']) {
 		$dirname = dirname($_POST['path']);
-		if (!file_exists($dirname)) {
-			$input_errors[] = gettext("The path '{$dirname}' does not exist.");
+		$basename = basename($_POST['path']);
+		if ($dirname !== "/") {
+			$path = "$dirname/$basename";
+		} else {
+			$path = "/$basename";
 		}
+		if (!file_exists($dirname)) {
+			$input_errors[] = sprintf(gettext("The path '%s' does not exist."), $dirname);
+		}
+		if (!is_dir($dirname)) {
+			$input_errors[] = sprintf(gettext("The path '%s' is not a directory."), $dirname);
+		}
+		if (is_dir($path)) {
+			$input_errors[] = sprintf(gettext("The path '%s' is a directory."), $path);
+		}
+	} else {
+		$path = $_POST['path'];
 	}
+	$pconfig['path'] = $path;
 
 	if (!$input_errors) {
 		$iscsitarget_extent = array();
 		$iscsitarget_extent['uuid'] = $_POST['uuid'];
 		$iscsitarget_extent['name'] = $_POST['name'];
-		$iscsitarget_extent['path'] = $_POST['path'];
+		$iscsitarget_extent['path'] = $path;
 		$iscsitarget_extent['size'] = $_POST['size'];
 		$iscsitarget_extent['sizeunit'] = $_POST['sizeunit'];
 		$iscsitarget_extent['type'] = $_POST['type'];

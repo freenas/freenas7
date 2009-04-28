@@ -312,7 +312,7 @@ function normalize_ipv6addr($v6addr) {
 	          <span class="vexpl"><?=gettext("Target side secret.");?></span>
 	        </td>
 	      </tr>
-	      <?php html_inputbox("$lmuser", gettext("Peer User"), $pconfig["$lmuser"], gettext("Initiator side secret. (for mutual CHAP authentication)"), false, 60);?>
+	      <?php html_inputbox("$lmuser", gettext("Peer User"), $pconfig["$lmuser"], gettext("Initiator side user name. (for mutual CHAP authentication)"), false, 60);?>
 	      <tr>
 	        <td width="22%" valign="top" class="vncell"><?=gettext("Peer Secret");?></td>
 	        <td width="78%" class="vtable">

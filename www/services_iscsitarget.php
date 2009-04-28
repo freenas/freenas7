@@ -96,10 +96,14 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	$nodebase = $_POST['nodebase'];
+	$nodebase = preg_replace('/\s/', '', $nodebase);
+	$pconfig['nodebase'] = $nodebase;
+
 	if (!$input_errors) {
 		$config['iscsitarget']['enable'] = $_POST['enable'] ? true : false;
 
-		$config['iscsitarget']['nodebase'] = $_POST['nodebase'];
+		$config['iscsitarget']['nodebase'] = $nodebase;
 		$config['iscsitarget']['discoveryauthmethod'] = $_POST['discoveryauthmethod'];
 		$config['iscsitarget']['discoveryauthgroup'] = $_POST['discoveryauthgroup'];
 		$config['iscsitarget']['timeout'] = $_POST['timeout'];
@@ -122,6 +126,15 @@ if ($_POST) {
 		$savemsg = get_std_save_message($retval);
 	}
 }
+
+if (!is_array($config['iscsitarget']['portalgroup']))
+	$config['iscsitarget']['portalgroup'] = array();
+
+if (!is_array($config['iscsitarget']['initiatorgroup']))
+	$config['iscsitarget']['initiatorgroup'] = array();
+
+if (!is_array($config['iscsitarget']['authgroup']))
+	$config['iscsitarget']['authgroup'] = array();
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
@@ -161,19 +174,17 @@ function enable_change(enable_change) {
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 		      <?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 		      <?php html_inputbox("nodebase", gettext("Base Name"), $pconfig['nodebase'], gettext("The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."), true, 60, false);?>
-		      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method discovery session accept. Auto means both none and authentication."), true);?>
+		      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted in discovery session. Auto means both none and authentication."), true);?>
 		      <?php
 					$ag_list = array();
-					$ag_list['0'] = 'None';
-					if (is_array($config['iscsitarget']['authgroup'])) {
-						foreach($config['iscsitarget']['authgroup'] as $ag) {
-						  if ($ag['comment']) {
-							  $l = sprintf("Tag%d (%s)", $ag['tag'], $ag['comment']);
-						  } else {
-							  $l = sprintf("Tag%d", $ag['tag']);
-						  }
-						  $ag_list[$ag['tag']] = htmlspecialchars($l);
+					$ag_list['0'] = gettext("None");
+					foreach($config['iscsitarget']['authgroup'] as $ag) {
+						if ($ag['comment']) {
+							$l = sprintf(gettext("Tag%d (%s)"), $ag['tag'], $ag['comment']);
+						} else {
+							$l = sprintf(gettext("Tag%d"), $ag['tag']);
 						}
+						$ag_list[$ag['tag']] = htmlspecialchars($l);
 					};?>
 					<?php html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, gettext("The initiator can discover the targets with correct user and secret in specific Auth Group."), true);?>
 		      <?php html_separator();?>

@@ -288,7 +288,7 @@ istgt_mkconf()
 							-v "concat('  UnitInquiry &quot;',inqvendor,'&quot;',' ','&quot;',inqproduct,'&quot;',' ','&quot;',inqrevision,'&quot;',' ', '&quot;',inqserial,'&quot;')" -n \
 						-b \
 						-m "lunmap" \
-							-v "concat('  LUN',position()-1,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+							-v "concat('  LUN',lun,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
 						-b \
 					-b \
 					-i "count(lunmap) = 0" \
