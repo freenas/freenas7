@@ -56,6 +56,8 @@ if ($_POST) {
 		if ($retval == 0) {
 			updatenotify_delete("zfszpool");
 		}
+		header("Location: disks_zfs_zpool.php");
+		exit;
 	}
 }
 

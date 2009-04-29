@@ -54,6 +54,8 @@ if ($_POST) {
 		if ($retval == 0) {
 			updatenotify_delete("zfsvdev");
 		}
+		header("Location: disks_zfs_zpool_vdevice.php");
+		exit;
 	}
 }
 

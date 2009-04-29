@@ -55,6 +55,8 @@ if ($_POST) {
 		if ($retval == 0) {
 			updatenotify_delete("zfsdataset");
 		}
+		header("Location: disks_zfs_dataset.php");
+		exit;
 	}
 }
 
