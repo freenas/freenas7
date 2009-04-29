@@ -68,7 +68,7 @@ function zfs_zpool_get_status() {
 		if (preg_match("/(\s+)(?:pool\:)(\s+)(.*)/", $line, $match)) {
 			$pool = trim($match[3]);
 			$index = array_search_ex($pool, $a_pool, "name");
-			$href = "<a href='disks_zfs_zpool_edit.php?pool={$pool}'>{$pool}</a>";
+			$href = "<a href='disks_zfs_zpool_edit.php?uuid={$a_pool[$index]['uuid']}'>{$pool}</a>";
 			$result .= "{$match[1]}pool:{$match[2]}{$href}";
 		} else if (preg_match("/(\s+)(?:scrub\:)(\s+)(.*)/", $line, $match)) {
 			if (isset($pool)) {

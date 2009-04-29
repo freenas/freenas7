@@ -62,7 +62,7 @@ if ($_POST) {
 }
 
 if ($_GET['act'] === "del") {
-	updatenotify_set("zfszpool", UPDATENOTIFY_MODE_DIRTY, $_GET['pool']);
+	updatenotify_set("zfszpool", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	header("Location: disks_zfs_zpool.php");
 	exit;
 }
@@ -81,9 +81,9 @@ function zfszpool_process_updatenotification($mode, $data) {
 			break;
 
 		case UPDATENOTIFY_MODE_DIRTY:
-			zfs_zpool_destroy($data);
-			$cnid = array_search_ex($data, $config['zfs']['pools']['pool'], "name");
+			$cnid = array_search_ex($data, $config['zfs']['pools']['pool'], "uuid");
 			if (FALSE !== $cnid) {
+				zfs_zpool_destroy($data);
 				unset($config['zfs']['pools']['pool'][$cnid]);
 				write_config();
 			}
@@ -134,7 +134,7 @@ $a_poolstatus = zfs_get_pool_list();
 					</tr>
 					<?php foreach ($a_pool as $poolk => $poolv):?>
 					<?php
-					$notificationmode = updatenotify_get_mode("zfszpool", $poolv['name']);
+					$notificationmode = updatenotify_get_mode("zfszpool", $poolv['uuid']);
 					$altroot = $cap = $avail = $used = $size = $health = gettext("Unknown");
 					if (is_array($a_poolstatus) && array_key_exists($poolv['name'], $a_poolstatus)) {
 						$size = $a_poolstatus[$poolv['name']]['size'];
@@ -155,8 +155,8 @@ $a_poolstatus = zfs_get_pool_list();
 						<td class="listr"><?=$altroot;?>&nbsp;</td>	
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>	
 						<td valign="middle" nowrap class="list">
-							<a href="disks_zfs_zpool_edit.php?pool=<?=$poolv['name'];?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" border="0"></a>&nbsp;
-							<a href="disks_zfs_zpool.php?act=del&pool=<?=$poolv['name'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this pool?");?>')"><img src="x.gif" title="<?=gettext("Delete pool");?>" border="0"></a>
+							<a href="disks_zfs_zpool_edit.php?uuid=<?=$poolv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit pool");?>" border="0"></a>&nbsp;
+							<a href="disks_zfs_zpool.php?act=del&uuid=<?=$poolv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this pool?");?>')"><img src="x.gif" title="<?=gettext("Delete pool");?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">

@@ -73,16 +73,16 @@ function zfs_get_pool_list() {
 
 /**
  * Configure, create and start a zpool.
- * @param name	Name of the pool to be configured.
+ * @param[in] uuid	The UUID of the zpool.
  * @return Return 0 if successful, otherwise 1
  */
-function zfs_zpool_configure($name) {
+function zfs_zpool_configure($uuid) {
 	global $config;
 
 	if (!is_array($config['zfs']['pools']['pool']))
 		return 1;
 
-	$index = array_search_ex($name, $config['zfs']['pools']['pool'], "name");
+	$index = array_search_ex($uuid, $config['zfs']['pools']['pool'], "uuid");
 	if (false === $index)
 		return 1;
 
@@ -139,16 +139,16 @@ function zfs_zpool_configure($name) {
 
 /**
  * Destroy a zpool.
- * @param pool	Name of the pool to be destroyed.
+ * @param[in] uuid	The UUID of the zpool.
  * @return 0 if successful, otherwise 1
  */
-function zfs_zpool_destroy($name) {
+function zfs_zpool_destroy($uuid) {
 	global $config;
 
 	if (!is_array($config['zfs']['pools']['pool']))
 		return 1;
 
-	$index = array_search_ex($name, $config['zfs']['pools']['pool'], "name");
+	$index = array_search_ex($uuid, $config['zfs']['pools']['pool'], "uuid");
 	if (false === $index)
 		return 1;
 
@@ -157,7 +157,7 @@ function zfs_zpool_destroy($name) {
 		 return 1;
 
 	// Destroy the pool
-	$result = mwexec("/sbin/zpool destroy {$name}", true);
+	$result = mwexec("/sbin/zpool destroy {$pool['name']}", true);
 
 	// Remove mount point.
 	$mountpoint = "/mnt/{$pool['name']}";

@@ -34,11 +34,11 @@
 require("guiconfig.inc");
 require("zfs.inc");
 
-$pool = $_GET['pool'];
-if (isset($_POST['pool']))
-	$pool = $_POST['pool'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Management"), isset($pool) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Management"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -52,17 +52,17 @@ array_sort_key($config['zfs']['vdevices']['vdevice'], "name");
 $a_pool = &$config['zfs']['pools']['pool'];
 $a_vdevice = &$config['zfs']['vdevices']['vdevice'];
 
-if (!isset($pool) && (!sizeof($a_vdevice))) {
+if (!isset($uuid) && (!sizeof($a_vdevice))) {
 	$errormsg = sprintf(gettext("No configured virtual devices. Please add new <a href=%s>virtual device</a> first."), "disks_zfs_zpool_vdevice.php");
 }
 
-if (isset($pool) && (false !== ($index = array_search_ex($pool, $a_pool, "name")))) {
-	$pconfig['uuid'] = $a_pool[$index]['uuid'];
-	$pconfig['name'] = $a_pool[$index]['name'];
-	$pconfig['vdevice'] = $a_pool[$index]['vdevice'];
-	$pconfig['root'] = $a_pool[$index]['root'];
-	$pconfig['mountpoint'] = $a_pool[$index]['mountpoint'];
-	$pconfig['desc'] = $a_pool[$index]['desc'];	
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_pool, "uuid")))) {
+	$pconfig['uuid'] = $a_pool[$cnid]['uuid'];
+	$pconfig['name'] = $a_pool[$cnid]['name'];
+	$pconfig['vdevice'] = $a_pool[$cnid]['vdevice'];
+	$pconfig['root'] = $a_pool[$cnid]['root'];
+	$pconfig['mountpoint'] = $a_pool[$cnid]['mountpoint'];
+	$pconfig['desc'] = $a_pool[$cnid]['desc'];	
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -87,7 +87,7 @@ if ($_POST) {
 	}
 
 	// Check for duplicate name
-	if (!(isset($pool) && $_POST['name'] === $a_pool[$index]['name'])) {
+	if (!(isset($uuid) && $_POST['name'] === $a_pool[$cnid]['name'])) {
 		if (false !== array_search_ex($_POST['name'], $a_pool, "name")) {
 			$input_errors[] = gettext("This pool name already exists.");
 		}
@@ -102,15 +102,15 @@ if ($_POST) {
 		$pooldata['mountpoint'] = $_POST['mountpoint'];
 		$pooldata['desc'] = $_POST['desc'];
 
-		if (isset($pool) && $a_pool[$index]) {
+		if (isset($uuid) && (FALSE !== $cnid)) {
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
-			$a_pool[$index] = $pooldata;
+			$a_pool[$cnid] = $pooldata;
 		} else {
 			$mode = UPDATENOTIFY_MODE_NEW;
 			$a_pool[] = $pooldata;
 		}
 
-		updatenotify_set("zfszpool", $mode, $pooldata['name']);
+		updatenotify_set("zfszpool", $mode, $pooldata['uuid']);
 		write_config();
 
 		header("Location: disks_zfs_zpool.php");
@@ -164,11 +164,8 @@ function enable_change(enable_change) {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($pool) && $a_pool[$index])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (FALSE !== $cnid))) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($pool) && $a_pool[$index]):?>
-					<input name="pool" type="hidden" value="<?=$pool;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>
@@ -176,7 +173,7 @@ function enable_change(enable_change) {
 </table>
 <script language="JavaScript">
 <!--
-<?php if (isset($pool)):?>
+<?php if (isset($uuid) && (false !== $cnid)):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>
