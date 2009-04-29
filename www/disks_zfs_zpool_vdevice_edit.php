@@ -51,7 +51,7 @@ if (!isset($uuid) && (!sizeof($a_disk))) {
 	$errormsg = sprintf(gettext("No disks available. Please add new <a href=%s>disk</a> first."), "disks_manage.php");
 }
 
-if (isset($uuid) && (false !== ($cnid = array_search_ex($uuid, $a_vdevice, "uuid")))) {
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_vdevice, "uuid")))) {
 	$pconfig['uuid'] = $a_vdevice[$cnid]['uuid'];
 	$pconfig['name'] = $a_vdevice[$cnid]['name'];
 	$pconfig['type'] = $a_vdevice[$cnid]['type'];
@@ -77,7 +77,7 @@ if ($_POST) {
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	// Check for duplicate name
-	if(!(isset($uuid) && $_POST['name'] === $a_vdevice[$cnid]['name'])) {
+	if (!(isset($uuid) && $_POST['name'] === $a_vdevice[$cnid]['name'])) {
 		if (false !== array_search_ex($_POST['name'], $a_vdevice, "name")) {
 			$input_errors[] = gettext("This virtual device name already exists.");
 		}
@@ -122,7 +122,7 @@ if ($_POST) {
 		$vdevice['device'] = $_POST['device'];
 		$vdevice['desc'] = $_POST['desc'];
 
-		if (isset($uuid) && (false !== $cnid)) {
+		if (isset($uuid) && (FALSE !== $cnid)) {
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 			$a_vdevice[$cnid] = $vdevice;
 		} else {
@@ -182,7 +182,7 @@ function enable_change(enable_change) {
 			  	<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (false !== $cnid))) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (FALSE !== $cnid))) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

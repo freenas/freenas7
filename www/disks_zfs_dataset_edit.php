@@ -55,16 +55,16 @@ if (!isset($uuid) && (!sizeof($a_pool))) {
 	$errormsg = sprintf(gettext("No configured pools. Please add new <a href=%s>pools</a> first."), "disks_zfs_zpool.php");
 }
 
-if (isset($uuid) && (false !== ($index = array_search_ex($uuid, $a_dataset, "uuid")))) {
-	$pconfig['uuid'] = $a_dataset[$index]['uuid'];
-	$pconfig['name'] = $a_dataset[$index]['name'];
-	$pconfig['pool'] = $a_dataset[$index]['pool'][0];
-	$pconfig['compression'] = $a_dataset[$index]['compression'];
-	$pconfig['canmount'] = isset($a_dataset[$index]['canmount']);
-	$pconfig['readonly'] = isset($a_dataset[$index]['readonly']);
-	$pconfig['xattr'] = isset($a_dataset[$index]['xattr']);
-	$pconfig['quota'] = $a_dataset[$index]['quota'];
-	$pconfig['desc'] = $a_dataset[$index]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_dataset, "uuid")))) {
+	$pconfig['uuid'] = $a_dataset[$cnid]['uuid'];
+	$pconfig['name'] = $a_dataset[$cnid]['name'];
+	$pconfig['pool'] = $a_dataset[$cnid]['pool'][0];
+	$pconfig['compression'] = $a_dataset[$cnid]['compression'];
+	$pconfig['canmount'] = isset($a_dataset[$cnid]['canmount']);
+	$pconfig['readonly'] = isset($a_dataset[$cnid]['readonly']);
+	$pconfig['xattr'] = isset($a_dataset[$cnid]['xattr']);
+	$pconfig['quota'] = $a_dataset[$cnid]['quota'];
+	$pconfig['desc'] = $a_dataset[$cnid]['desc'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -100,9 +100,9 @@ if ($_POST) {
 		$dataset['quota'] = $_POST['quota'];
 		$dataset['desc'] = $_POST['desc'];
 
-		if (isset($uuid) && $a_dataset[$index]) {
+		if (isset($uuid) && (FALSE !== $cnid)) {
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
-			$a_dataset[$index] = $dataset;
+			$a_dataset[$cnid] = $dataset;
 		} else {
 			$mode = UPDATENOTIFY_MODE_NEW;
 			$a_dataset[] = $dataset;
@@ -161,7 +161,7 @@ function enable_change(enable_change) {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && $a_dataset[$index])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (FALSE !== $cnid))) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>
@@ -170,7 +170,7 @@ function enable_change(enable_change) {
 </table>
 <script language="JavaScript">
 <!--
-<?php if (isset($uuid) && $a_dataset[$index]):?>
+<?php if (isset($uuid) && (FALSE !== $cnid)):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>
