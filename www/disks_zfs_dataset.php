@@ -80,9 +80,9 @@ function zfsdataset_process_updatenotification($mode, $data) {
 
 		case UPDATENOTIFY_MODE_DIRTY:
 			zfs_dataset_destroy($data);
-			$index = array_search_ex($data, $config['zfs']['datasets']['dataset'], "uuid");
-			if (false !== $index) {
-				unset($config['zfs']['datasets']['dataset'][$index]);
+			$cnid = array_search_ex($data, $config['zfs']['datasets']['dataset'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['zfs']['datasets']['dataset'][$cnid]);
 				write_config();
 			}
 			break;

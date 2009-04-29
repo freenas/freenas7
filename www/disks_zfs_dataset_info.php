@@ -44,14 +44,12 @@ if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['
 $a_dataset = &$config['zfs']['datasets']['dataset'];
 
 function zfs_dataset_display_list() {
-	$cmd = "zfs list 2>&1";
-	mwexec2($cmd, $rawdata);
+	mwexec2("zfs list 2>&1", $rawdata);
 	return implode("\n", $rawdata);
 }
 
-function zfs_dataset_display_properties($name) {
-	$cmd = "zfs get all {$name} 2>&1";
-	mwexec2($cmd, $rawdata);
+function zfs_dataset_display_properties() {
+	mwexec2("zfs get all 2>&1", $rawdata);
 	return implode("\n", $rawdata);
 }
 ?>
@@ -82,14 +80,12 @@ function zfs_dataset_display_properties($name) {
 						<pre><span id="zfs_dataset_list"><?=zfs_dataset_display_list();?></span></pre>
 					</td>
 				</tr>
-				<?php foreach($a_dataset as $datasetv):?>
-				<?php html_titleline(sprintf(gettext("Dataset %s"), "{$datasetv['pool'][0]}/{$datasetv['name']}"));?>
+				<?php html_titleline(gettext("ZFS dataset properties"));?>
 				<tr>
 					<td class="listt">
-						<pre><span id="zfs_dataset_list"><?=zfs_dataset_display_properties("{$datasetv['pool'][0]}/{$datasetv['name']}");?></span></pre>
+						<pre><span id="zfs_dataset_list"><?=zfs_dataset_display_properties();?></span></pre>
 					</td>
 				</tr>
-				<?php endforeach;?>
 			</table>
 		</td>
 	</tr>

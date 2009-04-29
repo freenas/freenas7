@@ -79,9 +79,9 @@ function zfsvdev_process_updatenotification($mode, $data) {
 			break;
 
 		case UPDATENOTIFY_MODE_DIRTY:
-			$index = array_search_ex($data, $config['zfs']['vdevices']['vdevice'], "uuid");
-			if (false !== $index) {
-				unset($config['zfs']['vdevices']['vdevice'][$index]);
+			$cnid = array_search_ex($data, $config['zfs']['vdevices']['vdevice'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['zfs']['vdevices']['vdevice'][$cnid]);
 				write_config();
 			}
 			break;

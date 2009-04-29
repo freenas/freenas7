@@ -80,9 +80,9 @@ function zfszpool_process_updatenotification($mode, $data) {
 
 		case UPDATENOTIFY_MODE_DIRTY:
 			zfs_zpool_destroy($data);
-			$index = array_search_ex($data, $config['zfs']['pools']['pool'], "name");
-			if (false !== $index) {
-				unset($config['zfs']['pools']['pool'][$index]);
+			$cnid = array_search_ex($data, $config['zfs']['pools']['pool'], "name");
+			if (FALSE !== $cnid) {
+				unset($config['zfs']['pools']['pool'][$cnid]);
 				write_config();
 			}
 			break;
