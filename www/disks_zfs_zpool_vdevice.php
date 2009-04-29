@@ -122,7 +122,7 @@ function zfsvdev_process_updatenotification($mode, $data) {
 					<tr>
 						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="15%" class="listhdrr"><?=gettext("Type");?></td>
-						<td width="55%" class="listhdrr"><?=gettext("Comment");?></td>
+						<td width="55%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 				  <?php foreach ($a_vdevice as $vdevicev):?>
@@ -130,7 +130,7 @@ function zfsvdev_process_updatenotification($mode, $data) {
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($vdevicev['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($vdevicev['type']);?></td>
-						<td class="listr"><?=htmlspecialchars($vdevicev['desc']);?>&nbsp;</td>
+						<td class="listbg"><?=htmlspecialchars($vdevicev['desc']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
 							<a href="disks_zfs_zpool_vdevice_edit.php?uuid=<?=$vdevicev['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>&nbsp;
