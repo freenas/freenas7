@@ -43,12 +43,12 @@ if (!is_array($config['ftpd']['mod_ban']['rule']))
 
 $a_rule = &$config['ftpd']['mod_ban']['rule'];
 
-if (isset($uuid) && (FALSE !== ($index = array_search_ex($uuid, $a_rule, "uuid")))) {
-	$pconfig['uuid'] = $a_rule[$index]['uuid'];
-	$pconfig['event'] = $a_rule[$index]['event'];
-	$pconfig['occurrence'] = $a_rule[$index]['occurrence'];
-	$pconfig['timeinterval'] = $a_rule[$index]['timeinterval'];
-	$pconfig['expire'] = $a_rule[$index]['expire'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rule, "uuid")))) {
+	$pconfig['uuid'] = $a_rule[$cnid]['uuid'];
+	$pconfig['event'] = $a_rule[$cnid]['event'];
+	$pconfig['occurrence'] = $a_rule[$cnid]['occurrence'];
+	$pconfig['timeinterval'] = $a_rule[$cnid]['timeinterval'];
+	$pconfig['expire'] = $a_rule[$cnid]['expire'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['event'] = "MaxConnectionsPerHost";
@@ -77,8 +77,8 @@ if ($_POST) {
 		$rule['timeinterval'] = $_POST['timeinterval'];
 		$rule['expire'] = $_POST['expire'];
 
-		if (isset($uuid) && (FALSE !== $index)) {
-			$a_rule[$index] = $rule;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_rule[$cnid] = $rule;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rule[] = $rule;
@@ -114,7 +114,7 @@ if ($_POST) {
 					<?php html_inputbox("expire", gettext("Expire"), $pconfig['expire'], gettext("Specifies the time in hh:mm:ss after which the ban expires."), true, 8);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $index)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>
