@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-04-25 21:14+0000\n"
+"PO-Revision-Date: 2009-04-29 19:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2515,6 +2515,10 @@ msgid "Ping/Traceroute"
 msgstr ""
 
 msgid "Platform"
+msgstr ""
+
+#, php-format
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
 msgid "Please note that blanks in path names are not allowed."
