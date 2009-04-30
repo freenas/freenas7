@@ -253,19 +253,29 @@ div#errorbox table tr td.message, div#warningbox table tr td.message {
 }
 div#header {
 	height: 65px;
-	background: #435370 url("header_bg.gif") center right no-repeat;
+	background: #1a1a1a url("header_bg.gif") center left no-repeat;
 }
-div#header .logo a {
+div#headerlogo {
+	float: left;
+}
+div#headerlogo a {
 	margin-left: 15px;
 }
-div#header .logo a img {
+div#headerlogo a img {
+	margin-bottom: -2px;
 	border: 0;
 }
-div#header .hostname {
+div#headerrlogo {
+	float: right;
+	height: 100%;
+	width: 366px;
+	background-image: url("header_rlogo.png");
+}
+div#headerrlogo .hostname {
 	font-size: 11px;
 	color: #FFFFFF;
 	text-align: right;
-	margin-top: -18px;
+	margin-top: 49px;
 	margin-right: 25px;
 }
 div#pagefooter {
