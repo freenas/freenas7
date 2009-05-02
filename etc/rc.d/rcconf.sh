@@ -272,7 +272,7 @@ setoptions()
 	local _option _name _value
 
 	# Set rc.conf variables configured via WebGUI.
-	/usr/local/bin/xml sel -t -m "//system/rcconf/param" \
+	/usr/local/bin/xml sel -t -m "//system/rcconf/param[enable]" \
 		-v "concat(name,'=',value)" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \

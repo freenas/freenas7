@@ -1690,7 +1690,7 @@ function config_upgrade() {
 	/* Enable all already existing sysctl variables. */
 	/* Add bsnmpd TCP wrapper example. */
 	if ($config['version'] === "7.2") {
-		for ($i = 0; $config['system']['sysctl']['param'][$i]; $i++) {
+		for ($i = 0; isset($config['system']['sysctl']['param'][$i]); $i++) {
 			$config['system']['sysctl']['param'][$i]['enable'] = true;
 		}
 
@@ -1745,6 +1745,26 @@ function config_upgrade() {
 		$config['system']['sysconsaver']['blanktime'] = "300";
 
 		$config['version'] = "7.6";
+	}
+
+	/* Convert 7.7 -> 7.7 */
+	/* Enable all existing //system/rcconf/param entries. */
+	/* Add powerd_flags to //system/rcconf. */
+	if ($config['version'] === "7.6") {
+		for ($i = 0; isset($config['system']['rcconf']['param'][$i]); $i++) {
+			$config['system']['rcconf']['param'][$i]['enable'] = true;
+		}
+
+		if (false === array_search_ex("powerd_flags", $config['system']['rcconf']['param'], "name")) {
+			$config['system']['rcconf']['param'][] = array(
+				"enable" => true,
+				"uuid" => uuid(),
+				"name" => "powerd_flags",
+				"value" => "-a adaptive -b adaptive",
+				"comment" => "System power control options");
+		}
+
+		$config['version'] = "7.7";
 	}
 
 	write_config();
