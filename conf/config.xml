@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>7.6</version>
+	<version>7.7</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -87,8 +87,16 @@
 				<name>xxx<name>
 				<value>xxx<value>
 				<comment>xxx<comment>
+				<enable/>
 			</param>
 			-->
+			<param>
+				<uuid>f69687d9-acdf-42d9-bd27-04486068874b</uuid>
+				<name>powerd_flags</name>
+				<value>-a adaptive -b adaptive</value>
+				<comment>System power control options</comment>
+				<enable/>
+			</param>
 		</rcconf>
 		<sysctl>
 			<param>

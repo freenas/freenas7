@@ -7,11 +7,14 @@ Majors changes:
 - Add switch in 'System|Advanced' WebGUI to enable the console screensaver
   (FR 2777301).
 - Upgrade Adaptec SCSI RAID administration tool to 6.10.18359.
+- Add ability to enable or disable rc.conf variables configured via
+  'System|Advanced|rc.conf'.
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
 - Allow selecting the key length of the cryptographic algorithm used to encrypt
   a disk (FR 2779692).
+- Add system power control options to 'System|Advanced|rc.conf' (FR 2784889).
 
 Bug fixes:
 - It was not possible to configure multiple FTP ban list rules. Thanks to

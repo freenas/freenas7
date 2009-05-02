@@ -2,7 +2,7 @@
 <?php
 /*
 	system_rcconf.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -127,9 +127,10 @@ function rcconf_process_updatenotification($mode, $data) {
 				  <?php $i = 0; foreach($a_rcvar as $rcvarv):?>
 				  <?php $notificationmode = updatenotify_get_mode("rcconf", $rcvarv['uuid']);?>
 	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($rcvarv['name']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
+	        	<?php $enable = isset($rcvarv['enable']);?>
+	          <td class="<?=$enable?"listlr":"listlrd";?>"><?=htmlspecialchars($rcvarv['name']);?>&nbsp;</td>
+	          <td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
+	          <td class="listbg"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
 	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>

@@ -2,7 +2,7 @@
 <?php
 /*
 	system_rcconf_edit.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -50,11 +50,13 @@ array_sort_key($config['system']['rcconf']['param'], "name");
 $a_rcvar = &$config['system']['rcconf']['param'];
 
 if (isset($id) && $a_rcvar[$id]) {
+	$pconfig['enable'] = isset($a_rcvar[$id]['enable']);
 	$pconfig['uuid'] = $a_rcvar[$id]['uuid'];
 	$pconfig['name'] = $a_rcvar[$id]['name'];
 	$pconfig['value'] = $a_rcvar[$id]['value'];
 	$pconfig['comment'] = $a_rcvar[$id]['comment'];
 } else {
+	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['value'] = "";
@@ -75,6 +77,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$param = array();
+		$param['enable'] = $_POST['enable'] ? true : false;
 		$param['uuid'] = $_POST['uuid'];
 		$param['name'] = $pconfig['name'];
 		$param['value'] = $pconfig['value'];
@@ -116,11 +119,12 @@ if ($_POST) {
     <td class="tabcont">
 			<form action="system_rcconf_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_titleline_checkbox("enable", "", $pconfig['enable'] ? true : false, gettext("Enable"));?>
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("Name of the variable."), true, 40);?>
 					<?php html_inputbox("value", gettext("Value"), $pconfig['value'], gettext("The value of the variable."), true);?>
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-			  </table>
+				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
