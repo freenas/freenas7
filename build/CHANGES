@@ -55,6 +55,7 @@ Majors changes:
 - Upgrade Adaptec SCSI RAID administration tool to 6.10.18359.
 - Add ability to enable or disable rc.conf variables configured via
   'System|Advanced|rc.conf'.
+- Add danish WebGUI translation. Thanks to all translators.
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
