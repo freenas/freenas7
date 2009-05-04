@@ -130,7 +130,7 @@ function enable_change(enable_change) {
 // -->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabact"><a href="disks_manage.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Management");?></span></a></li>
