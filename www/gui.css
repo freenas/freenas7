@@ -252,7 +252,7 @@ div#errorbox table tr td.message, div#warningbox table tr td.message {
 	font-weight: bold;
 }
 div#header {
-	height: 65px;
+	height: 80px;
 	background: #171717 url("header_bg.png") top left no-repeat;
 }
 div#headerlogo {
@@ -261,21 +261,21 @@ div#headerlogo {
 div#headerlogo a {
 }
 div#headerlogo a img {
-	margin-top: 3px;
+	margin-top: 11px;
 	margin-left: 23px;
 	border: 0;
 }
 div#headerrlogo {
 	float: right;
 	height: 100%;
-	width: 366px;
+	width: 400px;
 	background-image: url("header_rlogo.png");
 }
 div#headerrlogo .hostname {
 	font-size: 11px;
 	color: #FFFFFF;
 	text-align: right;
-	margin-top: 49px;
+	margin-top: 56px;
 	margin-right: 25px;
 }
 div#pagefooter {
