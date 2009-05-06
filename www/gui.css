@@ -253,16 +253,16 @@ div#errorbox table tr td.message, div#warningbox table tr td.message {
 }
 div#header {
 	height: 65px;
-	background: #22252b url("header_bg.gif") center left no-repeat;
+	background: #171717 url("header_bg.png") top left no-repeat;
 }
 div#headerlogo {
 	float: left;
 }
 div#headerlogo a {
-	margin-left: 15px;
 }
 div#headerlogo a img {
-	margin-bottom: -2px;
+	margin-top: 3px;
+	margin-left: 23px;
 	border: 0;
 }
 div#headerrlogo {

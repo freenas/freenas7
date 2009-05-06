@@ -50,3 +50,4 @@ etc/rc.d/proftpd.sh
 usr/local/www/services_upnp_edit.php
 etc/rc.d/mt-daapd.sh
 usr/local/www/services_iscsitarget_device_edit.php
+usr/local/www/header_bg.gif
