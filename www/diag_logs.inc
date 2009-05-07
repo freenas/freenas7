@@ -32,8 +32,8 @@
 */
 $logmenu['system'] = array("desc" => gettext("System"), "link" => "diag_logs.php");
 $logmenu['ftp'] = array("desc" => gettext("FTP"), "link" => "diag_logs_ftp.php", "childs" => array(
-	"syslog" => array("desc" => gettext("FTP"), "link" => "diag_logs_ftp.php"),
-	"xferlog" => array("desc" => gettext("Transfer"), "link" => "diag_logs_ftp_xfer.php")));
+	"syslog" => array("desc" => gettext("Syslog"), "link" => "diag_logs_ftp.php"),
+	"xferlog" => array("desc" => gettext("File transfer"), "link" => "diag_logs_ftp_xfer.php")));
 $logmenu['rsync'] = array("desc" => gettext("RSYNC"), "link" => "diag_logs_rsyncd.php", "childs" => array(
 	"server" => array("desc" => gettext("Server"), "link" => "diag_logs_rsyncd.php"),
 	"client" => array("desc" => gettext("Client"), "link" => "diag_logs_rsync_client.php"),

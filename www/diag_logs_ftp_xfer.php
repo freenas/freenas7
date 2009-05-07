@@ -33,7 +33,7 @@
 require("guiconfig.inc");
 require("diag_logs.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("FTP"), gettext("Transfer"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("FTP"), gettext("File transfer"));
 
 $nentries = $config['syslogd']['nentries'];
 if (!$nentries)
@@ -61,7 +61,7 @@ if ($_POST['download']) {
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
 						<td colspan="2" class="listtopic">
-							<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("FTP transfer"));?>
+							<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("FTP file transfer"));?>
 						</td>
 				  </tr>
 				  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
