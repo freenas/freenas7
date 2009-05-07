@@ -9,6 +9,7 @@ Majors changes:
 - Replace iSCSI target by istgt. Thanks to Daisuke Aoyama for the WebGUI
   adaption. Please note, if you have used devices with the previous iSCSI target
   software you have to recreate your target.
+- Add WOL patch for nVidia(nfe(4)) and 3Com(xl(4)). Thanks to Tobias Reber.
 
 Majors changes:
 

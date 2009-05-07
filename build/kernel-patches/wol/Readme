@@ -1,0 +1,4 @@
+These patches enable WOL for the nfe(4) and xl(4) drivers.
+To enable WOL on the adapters put a command 
+    ifconfig {xl0,nfe0} wol
+as a preinit script.
