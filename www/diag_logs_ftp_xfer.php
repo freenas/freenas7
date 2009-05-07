@@ -1,13 +1,12 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_logs_ftp.php
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	diag_logs_ftp_xfer.php
+	Copyright © 2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -34,38 +33,38 @@
 require("guiconfig.inc");
 require("diag_logs.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("FTP"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("FTP"), gettext("Transfer"));
 
 $nentries = $config['syslogd']['nentries'];
 if (!$nentries)
 	$nentries = 50;
 
-$logfile = "/var/log/ftp.log";
+$logfile = "/var/log/xferlog";
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 32768 {$logfile}");
-	header("Location: diag_logs_ftp.php");
+	exec("/bin/cat /dev/null > {$logfile}");
+	header("Location: diag_logs_ftp_xfer.php");
 	exit;
 }
 
 if ($_POST['download']) {
-	logs_download($logfile, "ftp.log", true);
+	logs_download($logfile, "xferlog");
 	exit;
 }
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<?php logs_display_menu("ftp.syslog", $logmenu);?>
+	<?php logs_display_menu("ftp.xferlog", $logmenu);?>
   <tr>
-		<td class="tabcont">
-			<form action="diag_logs_ftp.php" method="post">
+    <td class="tabcont">
+    	<form action="diag_logs_ftp_xfer.php" method="post">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
 						<td colspan="2" class="listtopic">
-							<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("FTP"));?>
+							<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("FTP transfer"));?>
 						</td>
 				  </tr>
-				  <?php logs_dump("/var/log/ftp.log", $nentries);?>
+				  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
 				</table>
 				<div id="submit">
 					<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear");?>">
