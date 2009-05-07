@@ -2,7 +2,7 @@
 /*
 	diag_logs.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -31,7 +31,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 $logmenu['system'] = array("desc" => gettext("System"), "link" => "diag_logs.php");
-$logmenu['ftp'] = array("desc" => gettext("FTP"), "link" => "diag_logs_ftp.php");
+$logmenu['ftp'] = array("desc" => gettext("FTP"), "link" => "diag_logs_ftp.php", "childs" => array(
+	"syslog" => array("desc" => gettext("FTP"), "link" => "diag_logs_ftp.php"),
+	"xferlog" => array("desc" => gettext("Transfer"), "link" => "diag_logs_ftp_xfer.php")));
 $logmenu['rsync'] = array("desc" => gettext("RSYNC"), "link" => "diag_logs_rsyncd.php", "childs" => array(
 	"server" => array("desc" => gettext("Server"), "link" => "diag_logs_rsyncd.php"),
 	"client" => array("desc" => gettext("Client"), "link" => "diag_logs_rsync_client.php"),

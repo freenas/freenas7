@@ -63,6 +63,7 @@ Minors changes:
 - Allow selecting the key length of the cryptographic algorithm used to encrypt
   a disk (FR 2779692).
 - Add system power control options to 'System|Advanced|rc.conf' (FR 2784889).
+- Show FTP transfer log in 'Diagnostics|Logs|FTP|Transfer' (FR 2785325).
 
 Bug fixes:
 - It was not possible to configure multiple FTP ban list rules. Thanks to
