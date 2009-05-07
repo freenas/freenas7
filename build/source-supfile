@@ -1,7 +1,7 @@
-# $FreeBSD: src/share/examples/cvsup/stable-supfile,v 1.32.2.1 2007/10/11 06:26:19 kensmith Exp $
+# $FreeBSD: src/share/examples/cvsup/standard-supfile,v 1.25.2.1.6.2 2009/04/15 04:24:24 kensmith Exp $
 #
 # This file contains all of the "CVSup collections" that make up the
-# FreeBSD-stable source tree.
+# FreeBSD-current source tree.
 #
 # CVSup (CVS Update Protocol) allows you to download the latest CVS
 # tree (or any branch of development therefrom) to your system easily
@@ -10,12 +10,12 @@
 # currently using an X display server, you should run CVSup as follows
 # to keep your CVS tree up-to-date:
 #
-#	cvsup stable-supfile
+#	cvsup standard-supfile
 #
 # If not running X, or invoking cvsup from a non-interactive script, then
 # run it as follows:
 #
-#	cvsup -g -L 2 stable-supfile
+#	cvsup -g -L 2 standard-supfile
 #
 # You may wish to change some of the settings in this file to better
 # suit your system:
@@ -41,23 +41,6 @@
 #		setting of "/usr" will place all of the files requested
 #		in "/usr/src" (e.g., "/usr/src/bin", "/usr/src/lib").
 #		The prefix directory must exist in order to run CVSup.
-#
-###############################################################################
-#
-# DANGER!  WARNING!  LOOK OUT!  VORSICHT!
-#
-# If you add any of the ports or doc collections to this file, be sure to
-# specify them with a "tag" value set to ".", like this:
-#
-#   ports-all tag=.
-#   doc-all tag=.
-#
-# If you leave out the "tag=." portion, CVSup will delete all of
-# the files in your ports or doc tree.  That is because the ports and doc
-# collections do not use the same tags as the main part of the FreeBSD 
-# source tree.
-#
-###############################################################################
 
 # Defaults that apply to all the collections
 #
@@ -66,10 +49,7 @@
 *default host=cvsup5.FreeBSD.org
 *default base=/var/db
 *default prefix=/usr
-# The following line is for 7-stable.  If you want 6-stable, 5-stable,
-# 4-stable, 3-stable, or 2.2-stable, change to "RELENG_6", "RELENG_5",
-# "RELENG_4", "RELENG_3", or "RELENG_2_2" respectively.
-*default release=cvs tag=RELENG_7
+*default release=cvs tag=RELENG_7_2
 *default delete use-rel-suffix
 
 # If you seem to be limited by CPU rather than network or disk bandwidth, try
@@ -81,7 +61,6 @@
 #
 # The easiest way to get the main source tree is to use the "src-all"
 # mega-collection.  It includes all of the individual "src-*" collections.
-# Please note:  If you want to track -STABLE, leave this uncommented.
 src-all
 
 # These are the individual collections that make up "src-all".  If you
