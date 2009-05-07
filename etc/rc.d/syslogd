@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: syslogd
-# REQUIRE: mountcritlocal cleanvar NETWORKING
+# REQUIRE: mountcritremote cleanvar NETWORKING
 # BEFORE: SERVERS
 
 . /etc/rc.subr

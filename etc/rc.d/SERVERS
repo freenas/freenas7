@@ -1,11 +1,12 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/SERVERS,v 1.7.4.1 2008/01/28 07:58:31 dougb Exp $
+# $FreeBSD: src/etc/rc.d/SERVERS,v 1.7.2.1.4.1 2009/04/15 03:14:26 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
 
 # PROVIDE: SERVERS
+# REQUIRE: mountcritremote
 
 #	This is a dummy dependency, for early-start servers relying on
 #	some basic configuration.

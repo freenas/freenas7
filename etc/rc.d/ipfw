@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/ipfw,v 1.15.2.1.2.1 2008/11/25 02:59:29 kensmith Exp $
+# $FreeBSD: src/etc/rc.d/ipfw,v 1.15.2.2.2.1 2009/04/15 03:14:26 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
@@ -27,11 +27,12 @@ load_rc_config "$name"
 
 # Custom commands
 start_cmd="ipfw_start"
-start_precmd="ipfw_precmd"
+start_precmd="ipfw_prestart"
 stop_cmd="ipfw_stop"
 status_cmd="ipfw_status"
 mkconf_cmd="ipfw_mkconf"
 extra_commands="status mkconf"
+required_modules="ipfw"
 
 # Defaults
 firewall_script_auxrules=${firewall_script_auxrules:-"/etc/rc.firewall.auxrules"}
@@ -74,26 +75,27 @@ ipfw_mkconf()
 		${SYSCTL_W} net.inet.ip.fw.verbose_limit=${firewall_verbose_limit}
 }
 
-ipfw_precmd()
+ipfw_prestart()
 {
 	ipfw_mkconf
-
-	if ! ${SYSCTL} net.inet.ip.fw.enable > /dev/null 2>&1; then
-		if ! kldload ipfw; then
-			warn unable to load firewall module.
-			return 1
-		fi
-	fi
 
 	if checkyesno dummynet_enable; then
 		required_modules="$required_modules dummynet"
 	fi
 
-	return 0
+	if checkyesno firewall_nat_enable; then
+		if ! checkyesno natd_enable; then
+			required_modules="$required_modules ipfw_nat"
+		fi
+	fi 
 }
 
 ipfw_start()
 {
+	local   _firewall_type
+
+	_firewall_type=$1 
+
 	# set the firewall rules script if none was specified
 	[ -z "${firewall_script}" ] && firewall_script=/etc/rc.firewall
 
@@ -101,7 +103,7 @@ ipfw_start()
 		if [ -f /etc/rc.d/natd ] ; then
 			/etc/rc.d/natd start
 		fi
-		/bin/sh "${firewall_script}"
+		/bin/sh "${firewall_script}" "${_firewall_type}"
 		echo 'Firewall rules loaded.'
 	elif [ "`ipfw list 65535`" = "65535 deny ip from any to any" ]; then
 		echo 'Warning: kernel has firewall functionality, but' \
@@ -131,4 +133,5 @@ ipfw_stop()
 	fi
 }
 
-run_rc_command "$1"
+load_rc_config $name
+run_rc_command $*

@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: motd
+# REQUIRE: mountcritremote
 # BEFORE: LOGIN
 
 . /etc/rc.subr

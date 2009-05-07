@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/sysctl,v 1.17.2.2.2.1 2008/11/25 02:59:29 kensmith Exp $
+# $FreeBSD: src/etc/rc.d/sysctl,v 1.17.2.2.4.1 2009/04/15 03:14:26 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:

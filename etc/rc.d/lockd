@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # FreeBSD History: src/etc/rc.d/nfslocking,v 1.11 2004/10/07 13:55:26 mtm
-# $FreeBSD: src/etc/rc.d/lockd,v 1.18.4.1.2.1 2008/11/25 02:59:29 kensmith Exp $
+# $FreeBSD: src/etc/rc.d/lockd,v 1.18.4.2.2.1 2009/04/15 03:14:26 kensmith Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
@@ -11,7 +11,7 @@
 # PROVIDE: lockd
 # REQUIRE: nfsd rpcbind statd
 # BEFORE:  DAEMON
-# KEYWORD: nojail
+# KEYWORD: nojail shutdown
 # XQUERY: -i "count(//nfsd/enable) > 0" -o "0" -b
 # RCVAR: rpc_lockd nfs_server
 
