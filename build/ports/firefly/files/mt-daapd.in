@@ -38,7 +38,6 @@ mtdaapd_password=${mtdaapd_password:-""}
 mtdaapd_truncate=${mtdaapd_truncate:-"0"}
 mtdaapd_mp3_dir=${mtdaapd_mp3_dir:-"/mnt"}
 mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p,.ogg,.flac,.wma"}
-mtdaapd_playlist=${mtdaapd_playlist:-"/usr/local/share/mt-daapd/mt-daapd.playlist"}
 mtdaapd_db_type=${mtdaapd_db_type:-"sqlite3"}
 mtdaapd_db_parms=${mtdaapd_db_parms:-"/var/db/mt-daapd"}
 mtdaapd_scan_type=${mtdaapd_scan_type:-"0"}
@@ -117,7 +116,6 @@ EOF
 truncate = ${mtdaapd_truncate}
 mp3_dir = ${_mp3dir}
 extensions = ${mtdaapd_extensions}
-playlist = ${mtdaapd_playlist}
 db_type = ${mtdaapd_db_type}
 db_parms = ${_dbparms}
 scan_type = ${_scantype}
