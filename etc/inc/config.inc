@@ -1767,6 +1767,23 @@ function config_upgrade() {
 		$config['version'] = "7.7";
 	}
 
+	/* Convert 7.7 -> 7.8 */
+	/* Set default iSCSI target (istgt) values. */
+	if ($config['version'] === "7.7") {
+		$config['iscsitarget']['nodebase'] = "iqn.2007-09.jp.ne.peach.istgt";
+		$config['iscsitarget']['discoveryauthmethod'] = "Auto";
+		$config['iscsitarget']['discoveryauthgroup'] = "0";
+		$config['iscsitarget']['timeout'] = "30";
+		$config['iscsitarget']['nopininterval'] = "20";
+		$config['iscsitarget']['maxsessions'] = "32";
+		$config['iscsitarget']['maxconnections'] = "8";
+		$config['iscsitarget']['firstburstlength'] = "65536";
+		$config['iscsitarget']['maxburstlength'] = "262144";
+		$config['iscsitarget']['maxrecvdatasegmentlength'] = "262144";
+
+		$config['version'] = "7.8";
+	}
+
 	write_config();
 
 	if (is_booting())
