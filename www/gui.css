@@ -325,6 +325,9 @@ div#diskusage .used, div#diskusage .free {
 div#diskusage .name {
 	font-size: 12px;
 }
+div#diskusage .capacity {
+	margin-left: 2px;
+}
 .progbarl, .progbarc, .progbarcf, .progbarr {
 	height: 14px;
 	border: 0px;
