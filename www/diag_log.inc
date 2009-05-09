@@ -84,9 +84,13 @@ $loginfo = array(
 		"logfile" => "/var/log/xferlog",
 		"filename" => "xferlog",
 		"type" => "plain",
-		"pattern" => "/^(\S+\s+\S+\s+\d+\s+\S+\s+\d+)\s+(.*)$/",
+		"pattern" => "/^(\S+\s+\S+\s+\d+\s+\S+\s+\d+) ((\d+) (\S+) (\d+) (\S+) (a|b) (C|U|T|_) (o|i|d) (a|g|r) (\S+) (\S+) (0|1) (\S+) (c|i))$/",
 		"columns" => array(
 			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
+			array("title" => gettext("IP"), "class" => "listr", "param" => "", "pmid" => 4),
+			array("title" => gettext("User"), "class" => "listr", "param" => "", "pmid" => 11),
+//		array("title" => gettext("File"), "class" => "listr", "param" => "", "pmid" => 6),
+//		array("title" => gettext("Filesize"), "class" => "listr", "param" => "", "pmid" => 5),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 2)
 		)),
 	array(
