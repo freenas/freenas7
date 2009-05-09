@@ -2,12 +2,12 @@
 <?php
 /*
 	status_report.php
-	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
 	Copyright (C) 2007 Dan Merschi (freenas@bcapro.com)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -110,7 +110,7 @@ if($_POST) {
 			if (0 == $retval)
 				$savemsg = gettext("Status report successfully sent.");
 			else
-				$failmsg = sprintf(gettext("Failed to send status report. Please check the <a href='%s'>log</a> files."), "diag_logs.php");
+				$failmsg = sprintf(gettext("Failed to send status report. Please check the <a href='%s'>log</a> files."), "diag_log.php");
 		} else {
 			// Configure cron job.
 			if (!file_exists($d_sysrebootreqd_path)) {

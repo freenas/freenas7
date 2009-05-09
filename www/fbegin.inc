@@ -109,7 +109,7 @@ $menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => 
 $menu['diagnostics']['desc'] = gettext("Diagnostics");
 $menu['diagnostics']['link'] = "";
 $menu['diagnostics']['menuitem'] = array();
-$menu['diagnostics']['menuitem'][] = array("desc" => gettext("Logs"), "link" => "diag_logs.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => gettext("Log"), "link" => "diag_log.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Information"), "link" => "diag_infos.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Ping/Traceroute"), "link" => "diag_ping.php", "visible" => true);

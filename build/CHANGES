@@ -11,8 +11,7 @@ Majors changes:
   software you have to recreate your target.
 - Add WOL patch for nVidia(nfe(4)) and 3Com(xl(4)). Thanks to Tobias Reber.
 - Upgrade mt-daapd/firefly to svn-1696.
-
-Majors changes:
+- Refactor 'Diagnostics|Log' WebGUI.
 
 Minors changes:
 

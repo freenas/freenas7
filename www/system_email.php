@@ -2,11 +2,11 @@
 <?php
 /*
 	system_email.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -104,7 +104,7 @@ if ($_POST) {
 				$savemsg = gettext("Test email successfully sent.");
 				write_log(sprintf(gettext("Test email successfully sent to: %s."), $config['system']['email']['from']));
 			} else {
-				$failmsg = sprintf(gettext("Failed to send test email. Please check the <a href='%s'>log</a> files."), "diag_logs.php");
+				$failmsg = sprintf(gettext("Failed to send test email. Please check the <a href='%s'>log</a> files."), "diag_log.php");
 				write_log(sprintf(gettext("Failed to send test email to: %s."), $config['system']['email']['from']));
 			}
 		} else {

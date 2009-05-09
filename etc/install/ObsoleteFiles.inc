@@ -51,3 +51,16 @@ usr/local/www/services_upnp_edit.php
 etc/rc.d/mt-daapd.sh
 usr/local/www/services_iscsitarget_device_edit.php
 usr/local/www/header_bg.gif
+usr/local/www/diag_logs.inc
+usr/local/www/diag_logs.php
+usr/local/www/diag_logs_daap.php
+usr/local/www/diag_logs_daemon.php
+usr/local/www/diag_logs_ftp.php
+usr/local/www/diag_logs_ftp_xfer.php
+usr/local/www/diag_logs_rsync_client.php
+usr/local/www/diag_logs_rsync_local.php
+usr/local/www/diag_logs_rsyncd.php
+usr/local/www/diag_logs_settings.php
+usr/local/www/diag_logs_smartd.php
+usr/local/www/diag_logs_sshd.php
+usr/local/www/diag_logs_upnp.php
