@@ -325,3 +325,11 @@ div#diskusage .used, div#diskusage .free {
 div#diskusage .name {
 	font-size: 12px;
 }
+.progbarl, .progbarc, .progbarcf, .progbarr {
+	height: 14px;
+	border: 0px;
+	vertical-align: text-top;
+}
+.progbarl, .progbarr {
+	width: 2px;
+}
