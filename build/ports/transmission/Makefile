@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		1.51
+PORTVERSION=		1.60
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -53,7 +53,10 @@ do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 
 	@${INSTALL_DATA} -v ${WRKSRC}/web/LICENSE ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/file_priority_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/file_wanted_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_activity.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_files.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_general.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/tab_backgrounds.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/toolbar_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
@@ -72,7 +75,6 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/common.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/dialog.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.dimensions.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
