@@ -175,6 +175,7 @@ if (!isBlank($_POST['txtPHPCommand'])) {
 	require_once("tui.inc");
 	require_once("array.inc");
 	require_once("services.inc");
+	require_once("zfs.inc");
 	echo eval($_POST['txtPHPCommand']);
 	puts("</pre>");
 }
