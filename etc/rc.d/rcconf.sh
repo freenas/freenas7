@@ -69,7 +69,7 @@ setifconfig()
 		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 		-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
 		-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
-		-i "wakeon[. = 'off']" -o " -wol " -b \		
+		-i "wakeon[. = 'off']" -o " -wol " -b \
 		-i "count(polling) > 0" -o " polling" -b \
 		-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
