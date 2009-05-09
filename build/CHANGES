@@ -57,6 +57,7 @@ Majors changes:
 - Add ability to enable or disable rc.conf variables configured via
   'System|Advanced|rc.conf'.
 - Add danish WebGUI translation. Thanks to all translators.
+- Upgrade transmission to 1.60.
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
