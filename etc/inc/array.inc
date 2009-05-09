@@ -78,7 +78,7 @@ function array_sort_key(array &$array, $key) {
 
 	// Sort array. Set key used my compare function. Finally unset useless global variable.
 	$_key = $key;
-	$result = usort($array, "_array_sort_key_cmp");
+	$result = uasort($array, "_array_sort_key_cmp");
 	unset($_key);
 
 	return $result;
