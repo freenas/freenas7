@@ -1546,7 +1546,7 @@ function get_interface_info($if) {
 	if ($ifinfo['status'] === "up") {
 		/* try to determine media with ifconfig */
 		unset($ifconfiginfo);
-		exec("/sbin/ifconfig " . $ifinfo['hwif'], $ifconfiginfo);
+		exec("/sbin/ifconfig -m " . $ifinfo['hwif'], $ifconfiginfo);
 
 		foreach ($ifconfiginfo as $ici) {
 			if (preg_match("/media: .*? \((.*?)\)/", $ici, $matches)) {
@@ -1569,6 +1569,10 @@ function get_interface_info($if) {
 			}
 			if (preg_match("/supported wake events: (.*)$/", $ici, $matches)) {
 				$ifinfo['wolevents'] = explode(" ", $matches[1]);
+			}
+			if (preg_match("/capabilities=.*<(.*)>$/", $ici, $matches)) {
+				$info = explode(",", $matches[1]);
+				$ifinfo['wolevents'] = preg_grep("/^WOL/", $info);
 			}
 		}
 
