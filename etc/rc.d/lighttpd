@@ -31,6 +31,7 @@ lighttpd_certpem=${lighttpd_certpem:-"/var/etc/cert.pem"}
 lighttpd_docroot=${lighttpd_docroot:-"/usr/local/www"}
 lighttpd_server_maxwriteidle=${lighttpd_server_maxwriteidle:-"360"}
 lighttpd_pidfile=${lighttpd_pidfile:-"/var/run/${name}.pid"}
+lighttpd_authrequire=${lighttpd_authrequire:-"YES"}
 command=/usr/local/sbin/lighttpd
 command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
 pidfile=${lighttpd_pidfile}
@@ -112,18 +113,24 @@ mimetype.assign = (
 url.access-deny = ( "~", ".inc", ".htpasswd" )
 static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file = "${pidfile}"
-auth.backend = "htpasswd"
-auth.backend.htpasswd.userfile = "${lighttpd_docroot}/.htpasswd"
 cgi.assign = (".php" => "/usr/local/bin/php")
 EOF
 
+	# Is authentication (RFC 2617) required?
+	if checkyesno lighttpd_authrequire; then
+		/usr/local/bin/xml sel -t \
+			-o "auth.backend = &quot;htpasswd&quot;" -n \
+			-o "auth.backend.htpasswd.userfile = &quot;${lighttpd_docroot}/.htpasswd&quot;" -n \
+			-o "auth.require = ( &quot;/&quot; => (" -n \
+			-o "  &quot;method&quot;  => &quot;basic&quot;," -n \
+			-v "concat('  &quot;realm&quot;   => &quot;',//system/hostname,'&quot;,')" -n \
+			-o "  &quot;require&quot; => &quot;valid-user&quot;" -n \
+			-o "  )," -n \
+			-o ")" -n \
+			${configxml_file} | /usr/local/bin/xml unesc >> ${lighttpd_conf}
+	fi
+
 	/usr/local/bin/xml sel -t \
-		-o "auth.require = ( &quot;/&quot; => (" -n \
-		-o "  &quot;method&quot;  => &quot;basic&quot;," -n \
-		-v "concat('  &quot;realm&quot;   => &quot;',//system/hostname,'&quot;,')" -n \
-		-o "  &quot;require&quot; => &quot;valid-user&quot;" -n \
-		-o "  )," -n \
-		-o ")" -n \
 		-i "string-length(//system/webgui/port) > 0" -v "concat('server.port = ',//system/webgui/port)" -n -b \
 		-i "//system/webgui/protocol[. = 'https']" \
 			-o "ssl.engine = &quot;enable&quot;" -n \
