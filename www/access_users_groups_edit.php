@@ -3,7 +3,7 @@
 /*
 	access_users_groups_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,11 +33,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Access"),gettext("Groups"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Access"), gettext("Groups"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();
@@ -47,11 +47,11 @@ array_sort_key($config['access']['group'], "name");
 $a_group = &$config['access']['group'];
 $a_group_system = system_get_group_list();
 
-if (isset($id) && $a_group[$id]) {
-	$pconfig['uuid'] = $a_group[$id]['uuid'];
-	$pconfig['groupid'] = $a_group[$id]['id'];
-	$pconfig['name'] = $a_group[$id]['name'];
-	$pconfig['desc'] = $a_group[$id]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_group, "uuid")))) {
+	$pconfig['uuid'] = $a_group[$cnid]['uuid'];
+	$pconfig['groupid'] = $a_group[$cnid]['id'];
+	$pconfig['name'] = $a_group[$cnid]['name'];
+	$pconfig['desc'] = $a_group[$cnid]['desc'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['groupid'] = get_nextgroup_id();
@@ -80,13 +80,13 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if group is created.
-	if (!isset($id) && ((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
+	if (!(isset($uuid) && (FALSE !== $cnid)) && ((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
 		(false !== array_search_ex($_POST['name'], $a_group, "name")))) {
 		$input_errors[] = gettext("This group already exists in the group list.");
 	}
 
 	// Validate if ID is unique. Only check if user is created.
-	if (!isset($id) && (false !== array_search_ex($_POST['groupid'], $a_group, "id"))) {
+	if (!(isset($uuid) && (FALSE !== $cnid)) && (false !== array_search_ex($_POST['groupid'], $a_group, "id"))) {
 		$input_errors[] = gettext("The unique group ID is already used.");
 	}
 
@@ -97,8 +97,8 @@ if ($_POST) {
 		$groups['name'] = $_POST['name'];
 		$groups['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_group[$id]) {
-			$a_group[$id] = $groups;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_group[$cnid] = $groups;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_group[] = $groups;
@@ -138,47 +138,26 @@ function get_nextgroup_id() {
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-    		<li class="tabinact"><a href="access_users.php"><span><?=gettext("Users");?></span></a></li>
-    		<li class="tabact"><a href="access_users_groups.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Groups");?></span></a></li>
-  		</ul>
-  	</td>
+			<ul id="tabnav">
+				<li class="tabinact"><a href="access_users.php"><span><?=gettext("Users");?></span></a></li>
+				<li class="tabact"><a href="access_users_groups.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Groups");?></span></a></li>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabcont">
 			<form action="access_users_groups_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-		      <tr>
-		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-		        <td width="78%" class="vtable">
-		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
-							<span class="vexpl"><?=gettext("Group name.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Group ID");?></td>
-						<td width="78%" class="vtable">
-							<input name="groupid" type="text" class="formfld" id="groupid" size="20" value="<?=htmlspecialchars($pconfig['groupid']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
-							<span class="vexpl"><?=gettext("Group numeric id.");?></span>
-						</td>
-					</tr>
-					<tr>
-		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
-		        <td width="78%" class="vtable">
-		          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br/>
-							<span class="vexpl"><?=gettext("Group description.");?></span>
-						</td>
-					</tr>
-		  	</table>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("Group name."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
+					<?php html_inputbox("groupid", gettext("Group ID"), $pconfig['groupid'], gettext("Group numeric id."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("Group description."), true, 20);?>
+				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_group[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

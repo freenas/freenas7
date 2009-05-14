@@ -3,7 +3,7 @@
 /*
 	access_users.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -62,11 +62,9 @@ $a_group_conf = &$config['access']['group'];
 $a_group = system_get_group_list();
 
 if ($_GET['act'] === "del") {
-	if ($a_group_conf[$_GET['id']]) {
-		updatenotify_set("userdb_group", UPDATENOTIFY_MODE_DIRTY, $a_group_conf[$_GET['id']]['uuid']);
-		header("Location: access_users_groups.php");
-		exit;
-	}
+	updatenotify_set("userdb_group", UPDATENOTIFY_MODE_DIRTY,  $_GET['uuid']);
+	header("Location: access_users_groups.php");
+	exit;
 }
 
 function userdbgroup_process_updatenotification($mode, $data) {
@@ -79,12 +77,10 @@ function userdbgroup_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['access']['group'])) {
-				$index = array_search_ex($data, $config['access']['group'], "uuid");
-				if (false !== $index) {
-					unset($config['access']['group'][$index]);
-					write_config();
-				}
+			$index = array_search_ex($data, $config['access']['group'], "uuid");
+			if (false !== $index) {
+				unset($config['access']['group'][$index]);
+				write_config();
 			}
 			break;
 	}
@@ -114,7 +110,7 @@ function userdbgroup_process_updatenotification($mode, $data) {
 						<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_group_conf as $groupv):?>
+					<?php foreach ($a_group_conf as $groupv):?>
 					<?php $notificationmode = updatenotify_get_mode("userdb_group", $groupv['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($groupv['name']);?>&nbsp;</td>
@@ -122,8 +118,8 @@ function userdbgroup_process_updatenotification($mode, $data) {
 						<td class="listr"><?=htmlspecialchars($groupv['desc']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
-							<a href="access_users_groups_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit group");?>" border="0"></a>&nbsp;
-							<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" border="0"></a>
+							<a href="access_users_groups_edit.php?uuid=<?=$groupv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit group");?>" border="0"></a>&nbsp;
+							<a href="access_users_groups.php?act=del&uuid=<?=$groupv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -131,7 +127,7 @@ function userdbgroup_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 					</tr>
-					<?php $i++; endforeach;?>
+					<?php endforeach;?>
 					<?php foreach ($a_group as $groupk => $groupv):?>
 					<?php if (false !== array_search_ex($groupv, $a_group_conf, "id")) continue; // Do not display user defined groups twice. ?>
 					<tr>

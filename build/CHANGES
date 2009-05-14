@@ -18,6 +18,8 @@ Minors changes:
   a disk (FR 2779692).
 - Add system power control options to 'System|Advanced|rc.conf' (FR 2784889).
 - Show FTP transfer log in 'Diagnostics|Logs|FTP|Transfer' (FR 2785325).
+- Add filechooser button to 'Home directory' editbox in 'Access|Users|Edit'
+  WebGUI (FR 2790909).
 
 Bug fixes:
 - It was not possible to configure multiple FTP ban list rules. Thanks to
