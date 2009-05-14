@@ -491,8 +491,18 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 }
 
 class HTMLMultiSelectControl extends HTMLSelectControl {
+	var $_size = 10;
+
 	function HTMLMultiSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description) {
 		$this->HTMLSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description);
+	}
+
+	function GetSize() {
+		return $this->_size;
+	}
+
+	function SetSize($size) {
+		$this->_size = $size;
 	}
 
 	function RenderCtrl() {
@@ -501,8 +511,9 @@ class HTMLMultiSelectControl extends HTMLSelectControl {
 		$value = $this->GetValue();
 		$param = $this->GetParam();
 		$options = $this->GetOptions();
+		$size = $this->GetSize();
 
-		echo "    <select name='{$ctrlname}[]' class='{$ctrlclass}' multiple='multiple' id='{$ctrlname}' {$param}>\n";
+		echo "    <select name='{$ctrlname}[]' class='{$ctrlclass}' multiple='multiple' id='{$ctrlname}' size='{$size}' {$param}>\n";
 		foreach ($options as $optionk => $optionv) {
 			$optparam = "";
 			if (is_array($value) && in_array($optionk, $value))

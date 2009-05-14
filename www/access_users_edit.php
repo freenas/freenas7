@@ -3,7 +3,7 @@
 /*
 	access_users_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,11 +33,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Access"), gettext("Users"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Access"), gettext("Users"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -48,17 +48,17 @@ $a_user = &$config['access']['user'];
 $a_user_system = system_get_user_list();
 $a_group = system_get_group_list();
 
-if (isset($id) && $a_user[$id]) {
-	$pconfig['uuid'] = $a_user[$id]['uuid'];
-	$pconfig['login'] = $a_user[$id]['login'];
-	$pconfig['fullname'] = $a_user[$id]['fullname'];
-	$pconfig['password'] = $a_user[$id]['password'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_user, "uuid")))) {
+	$pconfig['uuid'] = $a_user[$cnid]['uuid'];
+	$pconfig['login'] = $a_user[$cnid]['login'];
+	$pconfig['fullname'] = $a_user[$cnid]['fullname'];
+	$pconfig['password'] = $a_user[$cnid]['password'];
 	$pconfig['passwordconf'] = $pconfig['password'];
-	$pconfig['userid'] = $a_user[$id]['id'];
-	$pconfig['primarygroup'] = $a_user[$id]['primarygroup'];
-	$pconfig['group'] = $a_user[$id]['group'];
-	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
-	$pconfig['homedir'] = $a_user[$id]['homedir'];
+	$pconfig['userid'] = $a_user[$cnid]['id'];
+	$pconfig['primarygroup'] = $a_user[$cnid]['primarygroup'];
+	$pconfig['group'] = $a_user[$cnid]['group'];
+	$pconfig['fullshell'] = isset($a_user[$cnid]['fullshell']);
+	$pconfig['homedir'] = $a_user[$cnid]['homedir'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['primarygroup'] = $a_group['guest'];
@@ -91,7 +91,7 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if user is created.
-	if (!isset($id) && ((is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system)) ||
+	if (!(isset($uuid) && (FALSE !== $cnid)) && ((is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system)) ||
 		(false !== array_search_ex($_POST['login'], $a_user, "login")))) {
 		$input_errors[] = gettext("This user already exists in the user list.");
 	}
@@ -107,7 +107,7 @@ if ($_POST) {
 	}
 
 	// Validate if ID is unique. Only check if user is created.
-	if (!isset($id) && (false !== array_search_ex($_POST['userid'], $a_user, "id"))) {
+	if (!(isset($uuid) && (FALSE !== $cnid)) && (false !== array_search_ex($_POST['userid'], $a_user, "id"))) {
 		$input_errors[] = gettext("The unique user ID is already used.");
 	}
 
@@ -124,8 +124,8 @@ if ($_POST) {
 		$users['homedir'] = $_POST['homedir'];
 		$users['id'] = $_POST['userid'];
 
-		if (isset($id) && $a_user[$id]) {
-			$a_user[$id] = $users;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_user[$cnid] = $users;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_user[] = $users;
@@ -165,93 +165,33 @@ function get_nextuser_id() {
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-			<li class="tabact"><a href="access_users.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Users");?></span></a></li>
-    		<li class="tabinact"><a href="access_users_groups.php"><span><?=gettext("Groups");?></span></a></li>
-  		</ul>
-  	</td>
+			<ul id="tabnav">
+				<li class="tabact"><a href="access_users.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Users");?></span></a></li>
+				<li class="tabinact"><a href="access_users_groups.php"><span><?=gettext("Groups");?></span></a></li>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
-      <form action="access_users_edit.php" method="post" name="iform" id="iform">
-      	<?php if ($nogroup_errors) print_input_errors($nogroup_errors); ?>
+	<tr>
+		<td class="tabcont">
+			<form action="access_users_edit.php" method="post" name="iform" id="iform">
+				<?php if ($nogroup_errors) print_input_errors($nogroup_errors); ?>
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
-        <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
-            <td width="78%" class="vtable">
-              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
-							<span class="vexpl"><?=gettext("Login name of user.");?></span>
-            </td>
-	       </tr>
-	       <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name");?></td>
-            <td width="78%" class="vtable">
-              <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>"><br/>
-							<span class="vexpl"><?=gettext("User full name.");?></span>
-            </td>
-          </tr>
-          <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-            <td width="78%" class="vtable">
-              <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br/>
-              <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br/>
-              <span class="vexpl"><?=gettext("User password.");?></span>
-            </td>
-          </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("User ID");?></td>
-						<td width="78%" class="vtable">
-							<input name="userid" type="text" class="formfld" id="userid" size="20" value="<?=htmlspecialchars($pconfig['userid']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
-							<span class="vexpl"><?=gettext("User numeric id.");?></span>
-						</td>
-					</tr>
-          <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Primary group");?></td>
-            <td width="78%" class="vtable">
-							<select name="primarygroup" class="formfld" id="primarygroup">
-								<?php foreach ($a_group as $groupk => $groupv):?>
-								<option value="<?=$groupv;?>" <?php if ("{$groupv}" === $pconfig['primarygroup']) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
-								<?php endforeach;?>
-							</select><br/>
-							<span class="vexpl"><?=gettext("Set the account's primary group to the given group.");?></span>
-						</td>
-					</tr>
-					<tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Additional group");?></td>
-            <td width="78%" class="vtable">
-							<select multiple size="12" name="group[]" id="group">
-								<?php foreach ($a_group as $groupk => $groupv):?>
-								<option value="<?=$groupv;?>" <?php if (is_array($pconfig['group']) && in_array("{$groupv}", $pconfig['group'])) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
-								<?php endforeach;?>
-							</select><br/>
-							<span class="vexpl"><?=gettext("Set additional group memberships for this account.");?><br/>
-							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups.");?></span>
-						</td>
-					</tr>
-					<tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Home directory");?></td>
-            <td width="78%" class="vtable">
-              <input name="homedir" type="text" class="formfld" id="homedir" size="60" value="<?=htmlspecialchars($pconfig['homedir']);?>"><br>
-              <span class="vexpl"><?=gettext("Enter the path to the home directory of that user. Leave this field empty to use default path /mnt.");?></span>
-            </td>
-          </tr>
-					<tr>
-					  <td width="22%" valign="top" class="vncell"><?=gettext("Shell access");?></td>
-					  <td width="78%" class="vtable">
-					  	<input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)">
-							<span class="vexpl"><?=gettext("Give full shell access to user.");?></span>
-						</td>
-				  </tr>
-        </table>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("login", gettext("Login"), $pconfig['login'], gettext("Login name of user."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
+					<?php html_inputbox("fullname", gettext("Full Name"), $pconfig['fullname'], gettext("User full name."), true, 20);?>
+					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], gettext("User password."), true);?>
+					<?php html_inputbox("userid", gettext("User ID"), $pconfig['userid'], gettext("User numeric id."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
+					<?php $grouplist = array(); foreach ($a_group as $groupk => $groupv) { $grouplist[$groupv] = $groupk; } ?>
+					<?php html_combobox("primarygroup", gettext("Primary group"), $pconfig['primarygroup'], $grouplist, gettext("Set the account's primary group to the given group."), true);?>
+					<?php html_listbox("group", gettext("Additional group"), $pconfig['group'], $grouplist, gettext("Set additional group memberships for this account.")."<br>".gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."));?>
+					<?php html_filechooser("homedir", gettext("Home directory"), $pconfig['homedir'], gettext("Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."), $g['media_path'], false, 60);?>
+					<?php html_checkbox("fullshell", gettext("Shell access"), $pconfig['fullshell'] ? true : false, gettext("Give full shell access to user."), "", false);?>
+				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_user[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>
