@@ -12,6 +12,8 @@ Majors changes:
 - Add WOL patch for nVidia(nfe(4)) and 3Com(xl(4)). Thanks to Tobias Reber.
 - Upgrade mt-daapd/firefly to svn-1696.
 - Refactor 'Diagnostics|Log' WebGUI.
+- Add kernel patches to get ARTiGO A2000 hardware working. Thanks to
+  David Davis for the patches.
 
 Minors changes:
 
@@ -58,6 +60,8 @@ Majors changes:
   'System|Advanced|rc.conf'.
 - Add danish WebGUI translation. Thanks to all translators.
 - Upgrade transmission to 1.61.
+- Add kernel patches to get ARTiGO A2000 hardware working. Thanks to
+  David Davis for the patches.
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
