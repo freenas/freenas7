@@ -11,6 +11,8 @@ Majors changes:
   'System|Advanced|rc.conf'.
 - Add danish WebGUI translation. Thanks to all translators.
 - Upgrade transmission to 1.61.
+- Add kernel patches to get ARTiGO A2000 hardware working. Thanks to
+  David Davis for the patches.
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).

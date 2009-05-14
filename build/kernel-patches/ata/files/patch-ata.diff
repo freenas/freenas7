@@ -42,3 +42,31 @@ diff -ruN ata.orig/ata-disk.c ata/ata-disk.c
      request->retries = 2;
      request->data = bp->bio_data;
      request->bytecount = bp->bio_bcount;
+--- ata/ata-chipset.c	2008-10-21 18:40:29.000000000 +0000
++++ ata/ata-chipset.c	2009-04-27 17:51:39.000000000 +0000
+@@ -5410,6 +5410,7 @@
+      { ATA_VIA8237A,  0x00, VIA133, 0x00,    ATA_UDMA6, "8237A" },
+      { ATA_VIA8237S,  0x00, VIA133, 0x00,    ATA_UDMA6, "8237S" },
+      { ATA_VIA8251,   0x00, VIA133, 0x00,    ATA_UDMA6, "8251" },
++     { ATA_VIACX700M2,   0x00, VIA133, 0x00,    ATA_UDMA6, "CX700M2" },
+      { 0, 0, 0, 0, 0, 0 }};
+     static struct ata_chip_id new_ids[] =
+     {{ ATA_VIA6410,   0x00, 0,      0x00,    ATA_UDMA6, "6410" },
+@@ -5418,6 +5419,7 @@
+      { ATA_VIA8237A,  0x00, 7,      0x00,    ATA_SA150, "8237A" },
+      { ATA_VIA8237S,  0x00, 7,      0x00,    ATA_SA150, "8237S" },
+      { ATA_VIA8251,   0x00, 0,      VIAAHCI, ATA_SA300, "8251" },
++     { ATA_VIACX700M2,   0x00, 0,      0x00, ATA_SA300, "CX700M2" },
+      { 0, 0, 0, 0, 0, 0 }};
+ 
+     if (pci_get_devid(dev) == ATA_VIA82C571) {
+--- ata/ata-pci.h	2008-10-02 02:57:24.000000000 +0000
++++ ata/ata-pci.h	2009-04-27 17:50:22.000000000 +0000
+@@ -379,6 +379,7 @@
+ #define ATA_VIA6410             0x31641106
+ #define ATA_VIA6420             0x31491106
+ #define ATA_VIA6421             0x32491106
++#define ATA_VIACX700M2		0x53241106
+ 
+ /* chipset setup related defines */
+ #define AHCI            1
