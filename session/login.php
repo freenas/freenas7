@@ -57,40 +57,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	 	<link href="gui.css" rel="stylesheet" type="text/css"/>
 	  <title><?=get_product_name();?></title>
 	</head>
-	<body>
+	<body onLoad='document.iform.username.focus();'>
 		<table height="100%" width="100%" cellspacing="0" cellpadding="0" border="0">
 			<tbody>
 				<tr>
 					<td align="center">
 						<form name="iform" id="iform" action="login.php" method="post">
-					  	<div id="login">
-								<table>
-									<tbody>
-										<tr>
-											<td align="center">
-												<div id="pagecontent">
-													<br/>
-													<table>
-														<tbody>
-															<tr>
-																<td><?=gettext("Username");?></td>
-																<td><input class="formfld" type="text" name="username" value=""/></td>
-															</tr>
-															<tr>
-																<td><?=gettext("Password");?></td>
-																<td><input class="formfld" type="password" name="password" value=""/></td>
-															</tr>
-															<tr>
-																<td align="center" colspan="2"><input class="formbtn" type="submit" value="<?=gettext("Login");?>"/></td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+							<table>
+								<tbody>
+									<tr>
+										<td align="center">
+											<div id="loginbox">
+												<table>
+													<tbody>
+														<tr>
+															<td><?=gettext("Username");?></td>
+															<td><input class="formfld" type="text" name="username" value=""/></td>
+														</tr>
+														<tr>
+															<td><?=gettext("Password");?></td>
+															<td><input class="formfld" type="password" name="password" value=""/></td>
+														</tr>
+														<tr>
+															<td></td>
+														</tr>
+														<tr>
+															<td align="center" colspan="2"><input class="formbtn" type="submit" value="<?=gettext("Login");?>"/></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</form>
 					</td>
 				</tr>
