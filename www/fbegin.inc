@@ -1,4 +1,6 @@
 <?php
+require_once("auth.inc");
+
 function gentitle($title) {
 	$navlevelsep = "|"; // Navigation level separator string.
 	return join($navlevelsep, $title);
@@ -26,6 +28,8 @@ $menu['system']['menuitem'][] = array("desc" => gettext("Factory defaults"), "li
 $menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Reboot"), "link" => "reboot.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "shutdown.php", "visible" => true);
+$menu['system']['menuitem'][] = array("type" => "separator", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => gettext("Logout"), "link" => "logout.php", "visible" => true);
 
 // Network
 $menu['network']['desc'] = gettext("Network");

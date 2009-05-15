@@ -34,6 +34,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("auth.inc");
 
 header("Content-type: image/svg+xml");
 

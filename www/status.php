@@ -36,6 +36,7 @@
 */
 require("guiconfig.inc");
 require("report.inc");
+require("auth.inc");
 
 $statusreport = new StatusReport();
 $statusreport->IsHTML(true);

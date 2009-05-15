@@ -34,6 +34,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("auth.inc");
 
 /********* Other conf *******/
 $nb_plot=120;			//NB plot in graph
