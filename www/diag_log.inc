@@ -215,7 +215,7 @@ function log_display($loginfo) {
 
 		echo "<tr valign=\"top\">\n";
 		foreach ($loginfo['columns'] as $columnk => $columnv) {
-			echo "<td class='{$columnv['class']}'>" . htmlspecialchars($matches[$columnv['pmid']]) . "</td>\n";
+			echo "<td {$columnv['param']} class='{$columnv['class']}'>" . htmlspecialchars($matches[$columnv['pmid']]) . "</td>\n";
 		}
 		echo "</tr>\n";
 	}
