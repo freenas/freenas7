@@ -180,7 +180,7 @@ function rc_is_service_enabled($name) {
  */
 function rc_getenv($varname) {
 	$data = @file_get_contents("/etc/rc.conf");
-	if (!preg_match("/{$varname}=[\"]*(.*)[\"]*/", $data, $matches)) {
+	if (!preg_match("/{$varname}=\"(.*)\"/", $data, $matches)) {
 		return FALSE;
 	}
 	return $matches[1];
@@ -195,10 +195,9 @@ function rc_getenv($varname) {
  *					or the default one.
  */
 function rc_getenv_ex($varname, $default) {
-	$data = @file_get_contents("/etc/rc.conf");
-	if (!preg_match("/{$varname}=[\"]*(.*)[\"]*/", $data, $matches)) {
+	if (FALSE === ($retval = rc_getenv($varname))) {
 		return $default;
 	}
-	return $matches[1];
+	return $retval;
 }
 ?>
