@@ -1,12 +1,11 @@
 <?php
 /*
 	diag_log.inc
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright © 2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -30,10 +29,21 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require_once("globals.inc");
+require_once("rc.inc");
+
+// Get the location of the log files (may be modified via rc.conf variables).
+$clogdir = rc_getenv_ex("clog_logdir", $g['varlog_path']);
+$rsync_client_logfile = rc_getenv_ex("rsync_client_logfile", "{$g['varlog_path']}/rsync_client.log");
+$rsync_local_logfile = rc_getenv_ex("rsync_local_logfile", "{$g['varlog_path']}/rsync_local.log");
+$fuppes_logfile = rc_getenv_ex("fuppes_logfile", "{$g['varlog_path']}/fuppes.log");
+$mtdaapd_logfile = rc_getenv_ex("mtdaapd_logfile", "{$g['varlog_path']}/mt-daapd.log");
+
+// The log configuration
 $loginfo = array(
 	array(
 		"desc" => gettext("System"),
-		"logfile" => "/var/log/system.log",
+		"logfile" => "{$clogdir}/system.log",
 		"filename" => "system.log",
 		"type" => "clog",
 		"size" => "262144",
@@ -45,7 +55,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("SSH"),
-		"logfile" => "/var/log/sshd.log",
+		"logfile" => "{$clogdir}/sshd.log",
 		"filename" => "sshd.log",
 		"type" => "clog",
 		"size" => "32768",
@@ -57,7 +67,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("Daemon"),
-		"logfile" => "/var/log/daemon.log",
+		"logfile" => "{$clogdir}/daemon.log",
 		"filename" => "daemon.log",
 		"type" => "clog",
 		"size" => "32768",
@@ -69,7 +79,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("FTP"),
-		"logfile" => "/var/log/ftp.log",
+		"logfile" => "{$clogdir}/ftp.log",
 		"filename" => "ftp.log",
 		"type" => "clog",
 		"size" => "32768",
@@ -81,7 +91,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("FTP - File transfer"),
-		"logfile" => "/var/log/xferlog",
+		"logfile" => "{$g['varlog_path']}/xferlog",
 		"filename" => "xferlog",
 		"type" => "plain",
 		"pattern" => "/^(\S+\s+\S+\s+\d+\s+\S+\s+\d+) ((\d+) (\S+) (\d+) (\S+) (a|b) (C|U|T|_) (o|i|d) (a|g|r) (\S+) (\S+) (0|1) (\S+) (c|i))$/",
@@ -95,7 +105,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("S.M.A.R.T."),
-		"logfile" => "/var/log/smartd.log",
+		"logfile" => "{$clogdir}/smartd.log",
 		"filename" => "smartd.log",
 		"type" => "clog",
 		"size" => "32768",
@@ -107,7 +117,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("RSYNC - Server"),
-		"logfile" => "/var/log/rsyncd.log",
+		"logfile" => "{$clogdir}/rsyncd.log",
 		"filename" => "rsyncd.log",
 		"type" => "clog",
 		"size" => "32768",
@@ -119,7 +129,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("RSYNC - Client"),
-		"logfile" => "/var/log/rsync_client.log",
+		"logfile" => $rsync_client_logfile,
 		"filename" => "rsync_client.log",
 		"type" => "plain",
 		"pattern" => "/^(.*)$/",
@@ -128,7 +138,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("RSYNC - Local"),
-		"logfile" => "/var/log/rsync_local.log",
+		"logfile" => $rsync_local_logfile,
 		"filename" => "rsync_local.log",
 		"type" => "plain",
 		"pattern" => "/^(.*)$/",
@@ -137,7 +147,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("UPnP"),
-		"logfile" => "/var/log/fuppes.log",
+		"logfile" => $fuppes_logfile,
 		"filename" => "upnp.log",
 		"type" => "plain",
 		"pattern" => "/^(.*)$/",
@@ -146,7 +156,7 @@ $loginfo = array(
 		)),
 	array(
 		"desc" => gettext("DAAP"),
-		"logfile" => "/var/log/mt-daapd.log",
+		"logfile" => $mtdaapd_logfile,
 		"filename" => "daap.log",
 		"type" => "plain",
 		"pattern" => "/^(\S+\s+\S+)\s+\S+:\s+(.*)$/",

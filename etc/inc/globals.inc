@@ -39,6 +39,7 @@ $g = array(
 	"varrun_path" => "/var/run",
 	"varetc_path" => "/var/etc",
 	"vardb_path" => "/var/db",
+	"varlog_path" => "/var/log",
 	"etc_path" => "/etc",
 	"tmp_path" => "/tmp",
 	"conf_path" => "/conf",
