@@ -1,11 +1,11 @@
 <?php
 /*
 	rc.inc
-	Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -170,5 +170,35 @@ function rc_is_service_enabled($name) {
 	mwexec2("/usr/local/bin/xml sel -t {$xquery[1]} {$g['conf_path']}/config.xml", $output);
 
 	return ("0" === $output[0]) ? 0 : 1;
+}
+
+/**
+ * Gets the value of an /etc/rc.conf environment variable.
+ * @param[in] $varname	The variable name
+ * @return	Returns the value of the environment variable varname,
+ *					or FALSE on an error.
+ */
+function rc_getenv($varname) {
+	$data = @file_get_contents("/etc/rc.conf");
+	if (!preg_match("/{$varname}=[\"]*(.*)[\"]*/", $data, $matches)) {
+		return FALSE;
+	}
+	return $matches[1];
+}
+
+/**
+ * Gets the value of an /etc/rc.conf environment variable. If the variable
+ * is not defined in rc.conf the default value will be used instead.
+ * @param[in] $varname	The variable name
+ * @param[in] $default	The default variable value
+ * @return	Returns the value of the environment variable varname in rc.conf
+ *					or the default one.
+ */
+function rc_getenv_ex($varname, $default) {
+	$data = @file_get_contents("/etc/rc.conf");
+	if (!preg_match("/{$varname}=[\"]*(.*)[\"]*/", $data, $matches)) {
+		return $default;
+	}
+	return $matches[1];
 }
 ?>

@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: syslogd
-# REQUIRE: mountcritlocal cleanvar NETWORKING
+# REQUIRE: clog mountcritremote cleanvar NETWORKING
 # BEFORE: SERVERS
 
 . /etc/rc.subr
@@ -17,6 +17,7 @@ load_rc_config "$name"
 # Defaults
 syslogd_enable=${syslogd_enable:-"NO"}
 syslogd_config=${syslogd_config:-"/var/etc/syslog.conf"}
+clog_logdir=${clog_logdir:-"/var/log"}
 pidfile="/var/run/syslog.pid"
 command="/usr/sbin/${name}"
 command_args="-f ${syslogd_config}"
@@ -35,14 +36,14 @@ fi
 
 syslogd_mkconf()
 {
-	echo "local3.* %/var/log/sshd.log
-local4.* %/var/log/rsyncd.log
-local5.* %/var/log/smartd.log
-ftp.* %/var/log/ftp.log
-daemon.* %/var/log/daemon.log
-*.notice;kern.debug;lpr.info;mail.crit;mail.info;news.err;local0.none;local7.none %/var/log/system.log
-security.* %/var/log/system.log
-auth.info;authpriv.info %/var/log/system.log
+	echo "local3.* %${clog_logdir}/sshd.log
+local4.* %${clog_logdir}/rsyncd.log
+local5.* %${clog_logdir}/smartd.log
+ftp.* %${clog_logdir}/ftp.log
+daemon.* %${clog_logdir}/daemon.log
+*.notice;kern.debug;lpr.info;mail.crit;mail.info;news.err;local0.none;local7.none %${clog_logdir}/system.log
+security.* %${clog_logdir}/system.log
+auth.info;authpriv.info %${clog_logdir}/system.log
 *.emerg *" > ${syslogd_config}
 
 	# Add remote server configuration if syslog'ing to remote syslog server is enabled
