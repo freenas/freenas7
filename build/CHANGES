@@ -14,7 +14,8 @@ Majors changes:
   David Davis for the patches.
 
 Minors changes:
-- Add 'MaxLoginAttempts' event to FTP ban list rule (FR 2777481).
+- Add 'MaxLoginAttempts' event to FTP ban list rules (FR 2777481).
+- Add 'ClientConnectRate' event to FTP ban list rules.
 - Allow selecting the key length of the cryptographic algorithm used to encrypt
   a disk (FR 2779692).
 - Add system power control options to 'System|Advanced|rc.conf' (FR 2784889).
