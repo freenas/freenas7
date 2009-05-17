@@ -6,7 +6,7 @@
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,11 +36,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("rc.conf"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("rc.conf"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['system']['rcconf']['param']))
 	$config['system']['rcconf']['param'] = array();
@@ -49,12 +49,12 @@ array_sort_key($config['system']['rcconf']['param'], "name");
 
 $a_rcvar = &$config['system']['rcconf']['param'];
 
-if (isset($id) && $a_rcvar[$id]) {
-	$pconfig['enable'] = isset($a_rcvar[$id]['enable']);
-	$pconfig['uuid'] = $a_rcvar[$id]['uuid'];
-	$pconfig['name'] = $a_rcvar[$id]['name'];
-	$pconfig['value'] = $a_rcvar[$id]['value'];
-	$pconfig['comment'] = $a_rcvar[$id]['comment'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rcvar, "uuid")))) {
+	$pconfig['enable'] = isset($a_rcvar[$cnid]['enable']);
+	$pconfig['uuid'] = $a_rcvar[$cnid]['uuid'];
+	$pconfig['name'] = $a_rcvar[$cnid]['name'];
+	$pconfig['value'] = $a_rcvar[$cnid]['value'];
+	$pconfig['comment'] = $a_rcvar[$cnid]['comment'];
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
@@ -83,8 +83,8 @@ if ($_POST) {
 		$param['value'] = $pconfig['value'];
 		$param['comment'] = $pconfig['comment'];
 
-		if (isset($id) && $a_rcvar[$id]) {
-			$a_rcvar[$id] = $param;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_rcvar[$cnid] = $param;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rcvar[] = $param;
@@ -126,11 +126,8 @@ if ($_POST) {
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id)):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
     </td>

@@ -2,11 +2,11 @@
 <?php
 /*
 	system_cron_edit.php
-	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,33 +36,33 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Cron"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Cron"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['cron']['job']))
 	$config['cron']['job'] = array();
 
 $a_cronjob = &$config['cron']['job'];
 
-if (isset($id) && $a_cronjob[$id]) {
-	$pconfig['enable'] = isset($a_cronjob[$id]['enable']);
-	$pconfig['uuid'] = $a_cronjob[$id]['uuid'];
-	$pconfig['desc'] = $a_cronjob[$id]['desc'];
-	$pconfig['minute'] = $a_cronjob[$id]['minute'];
-	$pconfig['hour'] = $a_cronjob[$id]['hour'];
-	$pconfig['day'] = $a_cronjob[$id]['day'];
-	$pconfig['month'] = $a_cronjob[$id]['month'];
-	$pconfig['weekday'] = $a_cronjob[$id]['weekday'];
-	$pconfig['all_mins'] = $a_cronjob[$id]['all_mins'];
-	$pconfig['all_hours'] = $a_cronjob[$id]['all_hours'];
-	$pconfig['all_days'] = $a_cronjob[$id]['all_days'];
-	$pconfig['all_months'] = $a_cronjob[$id]['all_months'];
-	$pconfig['all_weekdays'] = $a_cronjob[$id]['all_weekdays'];
-	$pconfig['who'] = $a_cronjob[$id]['who'];
-	$pconfig['command'] = $a_cronjob[$id]['command'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_cronjob, "uuid")))) {
+	$pconfig['enable'] = isset($a_cronjob[$cnid]['enable']);
+	$pconfig['uuid'] = $a_cronjob[$cnid]['uuid'];
+	$pconfig['desc'] = $a_cronjob[$cnid]['desc'];
+	$pconfig['minute'] = $a_cronjob[$cnid]['minute'];
+	$pconfig['hour'] = $a_cronjob[$cnid]['hour'];
+	$pconfig['day'] = $a_cronjob[$cnid]['day'];
+	$pconfig['month'] = $a_cronjob[$cnid]['month'];
+	$pconfig['weekday'] = $a_cronjob[$cnid]['weekday'];
+	$pconfig['all_mins'] = $a_cronjob[$cnid]['all_mins'];
+	$pconfig['all_hours'] = $a_cronjob[$cnid]['all_hours'];
+	$pconfig['all_days'] = $a_cronjob[$cnid]['all_days'];
+	$pconfig['all_months'] = $a_cronjob[$cnid]['all_months'];
+	$pconfig['all_weekdays'] = $a_cronjob[$cnid]['all_weekdays'];
+	$pconfig['who'] = $a_cronjob[$cnid]['who'];
+	$pconfig['command'] = $a_cronjob[$cnid]['command'];
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
@@ -122,8 +122,8 @@ if ($_POST) {
 				write_log("Failed to execute cron job '{$_POST['command']}'.");
 			}
 		} else {
-			if (isset($id) && $a_cronjob[$id]) {
-				$a_cronjob[$id] = $cronjob;
+			if (isset($uuid) && (FALSE !== $cnid)) {
+				$a_cronjob[$cnid] = $cronjob;
 				$mode = UPDATENOTIFY_MODE_MODIFIED;
 			} else {
 				$a_cronjob[] = $cronjob;
@@ -332,20 +332,12 @@ function set_selected(name) {
 					</tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="Submit" id="runnow" type="submit" class="formbtn" value="<?=gettext("Run now");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_cronjob[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
     </td>
   </tr>
 </table>
-<script language="JavaScript">
-<!--
-enable_change(false);
-//-->
-</script>
 <?php include("fend.inc");?>

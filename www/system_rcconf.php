@@ -6,7 +6,7 @@
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -124,7 +124,7 @@ function rcconf_process_updatenotification($mode, $data) {
 	          <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
 	          <td width="10%" class="list"></td>
 	        </tr>
-				  <?php $i = 0; foreach($a_rcvar as $rcvarv):?>
+				  <?php foreach($a_rcvar as $rcvarv):?>
 				  <?php $notificationmode = updatenotify_get_mode("rcconf", $rcvarv['uuid']);?>
 	        <tr>
 	        	<?php $enable = isset($rcvarv['enable']);?>
@@ -133,7 +133,7 @@ function rcconf_process_updatenotification($mode, $data) {
 	          <td class="listbg"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>
+	            <a href="system_rcconf_edit.php?uuid=<?=$rcvarv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>
 	            <a href="system_rcconf.php?act=del&uuid=<?=$rcvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0"></a>
 	          </td>
 	          <?php else:?>
@@ -142,7 +142,7 @@ function rcconf_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 	        </tr>
-	        <?php $i++; endforeach;?>
+	        <?php endforeach;?>
 	        <tr>
 	          <td class="list" colspan="3"></td>
 	          <td class="list"><a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" border="0"></a>

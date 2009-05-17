@@ -125,7 +125,7 @@ function sysctl_process_updatenotification($mode, $data) {
 	          <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
 	          <td width="10%" class="list"></td>
 	        </tr>
-				  <?php $i = 0; foreach($a_sysctlvar as $sysctlvarv):?>
+				  <?php foreach($a_sysctlvar as $sysctlvarv):?>
 				  <?php $notificationmode = updatenotify_get_mode("sysctl", $sysctlvarv['uuid']);?>
 	        <tr>
 	        	<?php $enable = isset($sysctlvarv['enable']);?>
@@ -134,7 +134,7 @@ function sysctl_process_updatenotification($mode, $data) {
 	          <td class="listbg"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0"></a>
+	            <a href="system_sysctl_edit.php?uuid=<?=$sysctlvarv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0"></a>
 	            <a href="system_sysctl.php?act=del&uuid=<?=$sysctlvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" border="0"></a>
 	          </td>
 	          <?php else:?>
@@ -143,7 +143,7 @@ function sysctl_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 	        </tr>
-	        <?php $i++; endforeach;?>
+	        <?php endforeach;?>
 					<tr>
 	          <td class="list" colspan="3"></td>
 	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" border="0"></a>
