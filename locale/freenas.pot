@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-04-29 19:41+0000\n"
+"PO-Revision-Date: 2009-05-17 00:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -716,6 +716,9 @@ msgid "Daemon events"
 msgstr ""
 
 msgid "Daemon log"
+msgstr ""
+
+msgid "Danish"
 msgstr ""
 
 msgid "Data integrity"
@@ -1450,6 +1453,9 @@ msgstr ""
 msgid "FTP events"
 msgstr ""
 
+msgid "FTP file transfer"
+msgstr ""
+
 msgid "FTP log"
 msgstr ""
 
@@ -1531,6 +1537,9 @@ msgid "File system"
 msgstr ""
 
 msgid "File system check"
+msgstr ""
+
+msgid "File transfer"
 msgstr ""
 
 msgid "Filename"
@@ -1948,6 +1957,24 @@ msgstr ""
 msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
 msgstr ""
 
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr ""
+
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr ""
+
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr ""
+
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr ""
+
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr ""
+
 #, php-format
 msgid "Levels (MHz/mW): %s"
 msgstr ""
@@ -2142,19 +2169,10 @@ msgstr ""
 msgid "Maximum performance, maximum acoustic output"
 msgstr ""
 
-msgid "Maximum performance, maximum power usage"
-msgstr ""
-
 msgid "Media"
 msgstr ""
 
 msgid "Medium acoustic output"
-msgstr ""
-
-msgid "Medium power usage with Standby"
-msgstr ""
-
-msgid "Medium power usage without Standby"
 msgstr ""
 
 msgid "Memory usage"
@@ -2173,12 +2191,6 @@ msgid "Minimum free space"
 msgstr ""
 
 msgid "Minimum performance, Minimum acoustic output"
-msgstr ""
-
-msgid "Minimum power usage with Standby"
-msgstr ""
-
-msgid "Minimum power usage without Standby"
 msgstr ""
 
 msgid "Minutes between network time sync."
@@ -3232,6 +3244,9 @@ msgid "Switch to %s/s"
 msgstr ""
 
 msgid "Synchronization Time"
+msgstr ""
+
+msgid "Syslog"
 msgstr ""
 
 #, php-format
