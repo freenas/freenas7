@@ -28,6 +28,8 @@ Bug fixes:
   Michael Zoon.
 - Modify Fuppes UPnP configuration to get PS3 with firmware 2.70 working
   again (BR 2782729).
+- Editing existing config items in WebGUI will display incorrect data (e.g.
+  'System|Advanced|rc.conf' or 'System|Advanced|sysctl.conf') (BR 2792956).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

@@ -2,11 +2,11 @@
 <?php
 /*
 	system_cron.php
-	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -116,7 +116,7 @@ function cronjob_process_updatenotification($mode, $data) {
 						<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 	        </tr>
-				  <?php $i = 0; foreach($a_cron as $job):?>
+				  <?php foreach($a_cron as $job):?>
 				  <?php $notificationmode = updatenotify_get_mode("cronjob", $job['uuid']);?>
 	        <tr>
 	        	<?php $enable = isset($job['enable']);?>
@@ -125,7 +125,7 @@ function cronjob_process_updatenotification($mode, $data) {
 	          <td class="listbg"><?=htmlspecialchars($job['desc']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
-							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" border="0"></a>
+							<a href="system_cron_edit.php?uuid=<?=$job['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit job");?>" border="0"></a>
 							<a href="system_cron.php?act=del&uuid=<?=$job['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" border="0"></a>
 	          </td>
 	          <?php else:?>
@@ -134,7 +134,7 @@ function cronjob_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 	        </tr>
-	        <?php $i++; endforeach;?>
+	        <?php endforeach;?>
 	        <tr>
 	          <td class="list" colspan="3"></td>
 	          <td class="list">
