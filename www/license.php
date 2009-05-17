@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 require("guiconfig.inc");
-$pgtitle = array(gettext("License & Credits"));
+$pgtitle = array(gettext("Help"), gettext("License & Credits"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
