@@ -10,7 +10,6 @@ Majors changes:
 - Add ability to enable or disable rc.conf variables configured via
   'System|Advanced|rc.conf'.
 - Add danish WebGUI translation. Thanks to all translators.
-- Upgrade transmission to 1.61.
 - Add kernel patches to get ARTiGO A2000 hardware working. Thanks to
   David Davis for the patches.
 
