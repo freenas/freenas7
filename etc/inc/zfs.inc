@@ -31,6 +31,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require_once("config.inc");
+require_once("util.inc");
 
 /**
  * Get list of available zpools
@@ -49,8 +50,7 @@ require_once("config.inc");
 function zfs_get_pool_list() {
 	$result = array();
 
-	exec("/sbin/zpool list -H", $rawdata);
-
+	mwexec2("zpool list -H", $rawdata);
 	foreach ($rawdata as $line) {
 		$aline = preg_split("/\s+/", $line);
 		if (7 > count($aline)) // Ensure we process the correct line data
@@ -66,6 +66,14 @@ function zfs_get_pool_list() {
 		$result[$poolname]['cap'] = $aline[4];
 		$result[$poolname]['health'] = $aline[5];
 		$result[$poolname]['altroot'] = $aline[6];
+
+		// Get correct used/available disk space.
+		// See http://bugs.opensolaris.org/bugdatabase/view_bug.do?bug_id=6308817
+		mwexec2("zfs list -H -o used,available {$poolname}", $rawdata2);
+		if (preg_match("/^(\S+)\s+(\S+)$/", $rawdata2[0], $matches)) {
+			$result[$poolname]['used'] = $matches[1];
+			$result[$poolname]['avail'] = $matches[2];
+		}
 	}
 
 	return $result;
@@ -102,7 +110,7 @@ function zfs_zpool_configure($uuid) {
 		$param .= "-R {$pool['root']} ";
 
 	// Create the pool
-	$cmd = "/sbin/zpool create {$param} {$pool['name']} ";
+	$cmd = "zpool create {$param} {$pool['name']} ";
 
 	foreach ($pool['vdevice'] as $vdevicev) {
 		$index = array_search_ex($vdevicev, $config['zfs']['vdevices']['vdevice'], "name");
@@ -157,7 +165,7 @@ function zfs_zpool_destroy($uuid) {
 		 return 1;
 
 	// Destroy the pool
-	$result = mwexec("/sbin/zpool destroy {$pool['name']}", true);
+	$result = mwexec("zpool destroy {$pool['name']}", true);
 
 	// Remove mount point.
 	$mountpoint = "/mnt/{$pool['name']}";
@@ -177,7 +185,7 @@ function zfs_zpool_destroy($uuid) {
 // Return 0 if successful, 1 if error.
 function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out = false, &$output = array()) {
 	$result = 1;
-	$cmd = "/sbin/zpool {$command} {$param}";
+	$cmd = "zpool {$command} {$param}";
 
 	if (true === $verbose) {
 		if (true === $stderr)
@@ -185,7 +193,7 @@ function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out 
 		system($cmd, $result);
 	}	else {
 		if (true === $out) {
-			exec($cmd, $output, $result);
+			mwexec2($cmd, $output, $result);
 		} else {
 			$result = mwexec($cmd);
 		}
@@ -232,7 +240,7 @@ function zfs_dataset_configure($uuid) {
 		$param .= "-o xattr=off ";
 
 	// Create the dataset
-	$cmd = "/sbin/zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
+	$cmd = "zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
 
 	return mwexec($cmd, true);
 }
@@ -257,7 +265,7 @@ function zfs_dataset_destroy($uuid) {
 		 return 1;
 
 	// Destroy the dataset
-	return mwexec("/sbin/zfs destroy {$dataset['pool'][0]}/{$dataset['name']}", true);
+	return mwexec("zfs destroy {$dataset['pool'][0]}/{$dataset['name']}", true);
 }
 
 /**
@@ -321,7 +329,7 @@ function zfs_dataset_properties($uuid) {
 
 		// Update dataset properties
 		if (!empty($param)) {
-			$cmd = "/sbin/zfs set {$param} {$dataset['pool'][0]}/{$dataset['name']}";
+			$cmd = "zfs set {$param} {$dataset['pool'][0]}/{$dataset['name']}";
 			$result |= mwexec($cmd);
 		}
 	}
