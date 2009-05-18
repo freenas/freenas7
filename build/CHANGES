@@ -16,6 +16,7 @@ Majors changes:
   David Davis for the patches.
 - Respect the modified log file location (via rc.conf for syslog, fuppes,
   mt-daapd, ...) in the WebGUI (FR 2778803/2791772).
+- Upgrade transmission to 1.60.
 
 Minors changes:
 
