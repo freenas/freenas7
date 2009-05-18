@@ -48,6 +48,12 @@ transmission_prestart()
 		-i "count(authrequired) = 0" -o " --no-auth" -b \
 		-v "concat(' --download-dir &quot;',downloaddir,'&quot; --port ',port)" \
 		-i "string-length(configdir) > 0" -v "concat(' --config-dir &quot;',configdir,'&quot;')" -b \
+		-v "concat(' --peerport=',peerport)" \
+		-i "count(portforwarding) > 0" -o " --portmap" -b \
+		-i "count(portforwarding) = 0" -o " --no-portmap" -b \
+		-i "string-length(watchdir) > 0" -v "concat(' --watch-dir=',watchdir)" -b \
+		-i "string-length(watchdir) = 0" -o " --no-watch-dir" -b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	if checkyesno transmission_blocklist; then
@@ -64,9 +70,6 @@ transmission_poststart()
 	local _command_args
 
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
-		-v "concat('--port=',peerport)" \
-		-i "count(portforwarding) > 0" -o " --portmap" -b \
-		-i "count(portforwarding) = 0" -o " --no-portmap" -b \
 		-i "count(pex) > 0" -o " --pex" -b \
 		-i "count(pex) = 0" -o " --no-pex" -b \
 		-i "encryption[. = '0']" -o " --encryption-tolerated" -b \

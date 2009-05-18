@@ -846,6 +846,8 @@
 		<password>freenas</password>
 		<pex/>
 		<encryption>1</encryption>
+		<watchdir></watchdir>
+		<extraoptions></extraoptions>
 	</bittorrent>
 	<sshd>
 		<!-- <enable/> -->

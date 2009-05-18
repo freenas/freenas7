@@ -51,6 +51,8 @@ $pconfig['uplimit'] = $config['bittorrent']['uplimit'];
 $pconfig['downlimit'] = $config['bittorrent']['downlimit'];
 $pconfig['pex'] = isset($config['bittorrent']['pex']);
 $pconfig['encryption'] = $config['bittorrent']['encryption'];
+$pconfig['watchdir'] = $config['bittorrent']['watchdir'];
+$pconfig['extraoptions'] = $config['bittorrent']['extraoptions'];
 
 // Set default values.
 if (!$pconfig['port']) $pconfig['port'] = "9091";
@@ -95,6 +97,8 @@ if ($_POST) {
 		$config['bittorrent']['downlimit'] = $_POST['downlimit'];
 		$config['bittorrent']['pex'] = $_POST['pex'] ? true : false;
 		$config['bittorrent']['encryption'] = $_POST['encryption'];
+		$config['bittorrent']['watchdir'] = $_POST['watchdir'];
+		$config['bittorrent']['extraoptions'] = $_POST['extraoptions'];
 
 		write_config();
 
@@ -129,6 +133,9 @@ function enable_change(enable_change) {
 	document.iform.downlimit.disabled = endis;
 	document.iform.pex.disabled = endis;
 	document.iform.encryption.disabled = endis;
+	document.iform.watchdir.disabled = endis;
+	document.iform.watchdirbrowsebtn.disabled = endis;
+	document.iform.extraoptions.disabled = endis;
 }
 
 function authrequired_change() {
@@ -162,6 +169,8 @@ function authrequired_change() {
 					<?php html_combobox("encryption", gettext("Encryption"), $pconfig['encryption'], array("0" => gettext("Tolerated"), "1" => gettext("Preferred"), "2" => gettext("Required")), gettext("The peer connection encryption mode."), false);?>
 					<?php html_inputbox("uplimit", gettext("Upload bandwidth"), $pconfig['uplimit'], gettext("The maximum upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("downlimit", gettext("Download bandwidth"), $pconfig['downlimit'], gettext("The maximum download bandwith in KiB/s. An empty field means infinity."), false, 5);?>
+					<?php html_filechooser("watchdir", gettext("Watch directory"), $pconfig['watchdir'], gettext("Directory to watch for new .torrent files."), $g['media_path'], false, 60);?>
+					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty)."), false, 40);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Default port is %d."), 9091), true, 5);?>
