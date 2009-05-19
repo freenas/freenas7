@@ -157,7 +157,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
             <td width="5%" class="listhdrr"><?=gettext("File system");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Description");?></td>
-            <td width="20%" class="listhdr"><?=gettext("Status");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Status");?></td>
             <td width="10%" class="list"></td>
           </tr>
 					<?php $i = 0; foreach($a_mount as $mount):?>
