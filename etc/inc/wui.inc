@@ -159,7 +159,7 @@ class HTMLEditBox extends HTMLBaseControl {
 
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
-		$value = htmlspecialchars($this->GetValue());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 
@@ -178,7 +178,7 @@ class HTMLPasswordBox extends HTMLEditBox {
 
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
-		$value = htmlspecialchars($this->GetValue());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 
@@ -219,11 +219,11 @@ class HTMLPasswordConfBox extends HTMLEditBox {
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
 		$ctrlnameconf = $this->GetCtrlNameConf();
-		$value = htmlspecialchars($this->GetValue());
-		$valueconf = htmlspecialchars($this->GetValueConf());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
+		$valueconf = htmlspecialchars($this->GetValueConf(), ENT_QUOTES);
 		$size = $this->GetSize();
 		$param = $this->GetParam();
-		$caption = gettext("Confirmation");
+		$caption = htmlspecialchars(gettext("Confirmation"), ENT_QUOTES);
 
 		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}><br/>\n";
 		echo "    <input name='{$ctrlnameconf}' type='password' class='formfld' id='{$ctrlnameconf}' size='{$size}' value='{$valueconf}' {$param}>&nbsp;({$caption})\n";
@@ -277,7 +277,7 @@ class HTMLTextArea extends HTMLEditBox {
 
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
-		$value = htmlspecialchars($this->GetValue());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
 		$columns = $this->GetColumns();
 		$rows = $this->GetRows();
 		$param = $this->GetParam();
@@ -307,7 +307,7 @@ class HTMLFileChooser extends HTMLEditBox {
 
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
-		$value = htmlspecialchars($this->GetValue());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 		$path = $this->GetPath();
@@ -356,8 +356,8 @@ class HTMLIPv4AddressBox extends HTMLIPAddressBox {
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
 		$ctrlnamenetmask = $this->GetCtrlNameNetmask();
-		$value = htmlspecialchars($this->GetValue());
-		$valuenetmask = htmlspecialchars($this->GetValueNetmask());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
+		$valuenetmask = htmlspecialchars($this->GetValueNetmask(), ENT_QUOTES);
 		$size = $this->GetSize();
 
 		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}'>\n";
@@ -382,8 +382,8 @@ class HTMLIPv6AddressBox extends HTMLIPAddressBox {
 	function RenderCtrl() {
 		$ctrlname = $this->GetCtrlName();
 		$ctrlnamenetmask = $this->GetCtrlNameNetmask();
-		$value = htmlspecialchars($this->GetValue());
-		$valuenetmask = htmlspecialchars($this->GetValueNetmask());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
+		$valuenetmask = htmlspecialchars($this->GetValueNetmask(), ENT_QUOTES);
 		$size = $this->GetSize();
 
 		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}'>\n";
@@ -475,7 +475,7 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 	function RenderCtrl() {
 		$ctrlclass = $this->GetCtrlClass();
 		$ctrlname = $this->GetCtrlName();
-		$value = htmlspecialchars($this->GetValue());
+		$value = htmlspecialchars($this->GetValue(), ENT_QUOTES);
 		$param = $this->GetParam();
 		$options = $this->GetOptions();
 
@@ -540,7 +540,7 @@ class HTMLMountComboBox extends HTMLComboBox {
 		array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 		$options = array();
-		$options[""] = gettext("Must choose one");
+		$options[""] = htmlspecialchars(gettext("Must choose one"), ENT_QUOTES);
 		foreach ($config['mounts']['mount'] as $mountv) {
 			$options[$mountv['uuid']] = $mountv['sharename'];
 		}
@@ -580,7 +580,7 @@ class HTMLLanguageComboBox extends HTMLComboBox {
 		// Generate options.
 		$options = array();
 		foreach ($g_languages as $languagek => $languagev) {
-			$options[$languagek] = gettext($languagev['desc']);
+			$options[$languagek] = htmlspecialchars(gettext($languagev['desc']), ENT_QUOTES);
 		}
 
 		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
@@ -741,13 +741,13 @@ class HTMLFolderBox extends HTMLBaseControl {
 		echo "    function onclick_delete_{$ctrlname}() {\n";
 		echo "      var element = document.getElementById('{$ctrlname}');\n";
 		echo "      if (element.value != '') {\n";
-		echo "        var msg = confirm('".gettext("Do you really want to remove the selected item from the list?")."');\n";
+		echo "        var msg = confirm('".htmlspecialchars(gettext("Do you really want to remove the selected item from the list?"), ENT_QUOTES)."');\n";
 		echo "        if (msg == true) {\n";
 		echo "          element.options[element.selectedIndex] = null;\n";
 		echo "          document.getElementById('{$ctrlname}data').value = '';\n";
 		echo "        }\n";
 		echo "      } else {\n";
-		echo "        alert('".gettext("Select item to remove from the list")."');\n";
+		echo "        alert('".htmlspecialchars(gettext("Select item to remove from the list"), ENT_QUOTES)."');\n";
 		echo "      }\n";
 		echo "    }\n";
 		echo "    function onclick_change_{$ctrlname}() {\n";
@@ -771,11 +771,11 @@ class HTMLFolderBox extends HTMLBaseControl {
 			echo "      <option value='{$valuev}' {$optparam}>{$valuev}</option>\n";
 		}
 		echo "    </select>\n";
-		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".gettext("Delete")."' onclick='onclick_delete_{$ctrlname}()'><br/>\n";
+		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".htmlspecialchars(gettext("Delete"), ENT_QUOTES)."' onclick='onclick_delete_{$ctrlname}()'><br/>\n";
 		echo "    <input name='{$ctrlname}data' type='text' class='formfld' id='{$ctrlname}data' size='60' value=''>\n";
 		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...'\>\n";
-		echo "    <input name='{$ctrlname}addbtn' type='button' class='formbtn' id='{$ctrlname}addbtn' value='".gettext("Add")."' onclick='onclick_add_{$ctrlname}()'>\n";
-		echo "    <input name='{$ctrlname}changebtn' type='button' class='formbtn' id='{$ctrlname}changebtn' value='".gettext("Change")."' onclick='onclick_change_{$ctrlname}()'>\n";
+		echo "    <input name='{$ctrlname}addbtn' type='button' class='formbtn' id='{$ctrlname}addbtn' value='".htmlspecialchars(gettext("Add"), ENT_QUOTES)."' onclick='onclick_add_{$ctrlname}()'>\n";
+		echo "    <input name='{$ctrlname}changebtn' type='button' class='formbtn' id='{$ctrlname}changebtn' value='".htmlspecialchars(gettext("Change"), ENT_QUOTES)."' onclick='onclick_change_{$ctrlname}()'>\n";
 	}
 }
 ?>
