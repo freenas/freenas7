@@ -30,6 +30,8 @@ Bug fixes:
   again (BR 2782729).
 - Editing existing config items in WebGUI will display incorrect data (e.g.
   'System|Advanced|rc.conf' or 'System|Advanced|sysctl.conf') (BR 2792956).
+- Fix bug in WebGUI which is caused by unhandled special HTML characters
+  used in various languages (BR 2793875).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
