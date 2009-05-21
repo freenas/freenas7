@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-25 22:09+0000\n"
-"PO-Revision-Date: 2009-04-26 01:27+0000\n"
+"POT-Creation-Date: 2009-05-17 01:18+0000\n"
+"PO-Revision-Date: 2009-05-17 04:09+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
+"X-Launchpad-Export-Date: 2009-05-21 12:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -874,7 +874,7 @@ msgstr ""
 "automatisch herstarten na het updaten van de nieuwe firmware. De huidige "
 "configuratie zal behouden blijven.<br>Er is minimaal %d Mbyte RAM nodig om "
 "de firmware update uit te voeren.<br>Het is aanbevolen eerst een <a "
-"href=%s>Backup</a> van de actuele configuratie te maken, alvorens de "
+"href=%s>Backup</a> van de huidige configuratie te maken, alvorens de "
 "firmware update uit te voeren."
 
 msgid "Daemon"
@@ -1549,7 +1549,7 @@ msgid "Enable store DOS attributes"
 msgstr "Inschakelen opslaan van DOS attributen."
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Inschakelen syslog'ing naar de remote syslog server"
+msgstr "Inschakelen syslog'ing naar de externe syslog server"
 
 msgid "Enable the ident protocol (RFC1413)."
 msgstr "Inschakelen van de ident protocol (RFC1413)."
@@ -2033,7 +2033,7 @@ msgid "IP address"
 msgstr "IP adres"
 
 msgid "IP address of remote syslog server"
-msgstr "IP adres van de remote syslog server"
+msgstr "IP adres van de externe syslog server"
 
 #, php-format
 msgid ""
@@ -2449,7 +2449,8 @@ msgid "Log Level"
 msgstr "Log Niveau"
 
 msgid "Log packets that are handled by this rule to syslog."
-msgstr "Log pakketen die afgehandeld worden door deze regel naar syslog."
+msgstr ""
+"Log pakketen die worden behandeld door deze regel door naar de syslog."
 
 msgid "Login"
 msgstr "Aanmelden"
@@ -2553,20 +2554,11 @@ msgstr ""
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Maximale prestaties, maximale geluidsproductie"
 
-msgid "Maximum performance, maximum power usage"
-msgstr "Maximale prestaties, maximale energieverbruik"
-
 msgid "Media"
 msgstr "Media"
 
 msgid "Medium acoustic output"
 msgstr "Medium geluidsproductie"
-
-msgid "Medium power usage with Standby"
-msgstr "Gemiddelde energie verbruik met Standby"
-
-msgid "Medium power usage without Standby"
-msgstr "Gemiddelde energie verbruik zonder Standby"
 
 msgid "Memory usage"
 msgstr "Geheugen gebruik"
@@ -2585,12 +2577,6 @@ msgstr "Minimale vrije ruimte"
 
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minimale prestaties, Minimale geluidsproductie"
-
-msgid "Minimum power usage with Standby"
-msgstr "Minimale energie verbruik met Standby"
-
-msgid "Minimum power usage without Standby"
-msgstr "Minimale energie verbruik zonder Standby"
 
 msgid "Minutes between network time sync."
 msgstr "Aantal minuten tussen de netwerk tijdsynchronisatie's."
@@ -3232,7 +3218,7 @@ msgid "Remote monitoring"
 msgstr "Remote monitoring"
 
 msgid "Remote syslog server"
-msgstr "Remote syslog server"
+msgstr "Externe syslog server"
 
 msgid "Remove all entries from ARP table"
 msgstr "Alle ARP regels verwijderen uit de tabel"
@@ -4434,8 +4420,8 @@ msgid ""
 "This allows you to lower the power consumption of the drive, at the expense "
 "of performance."
 msgstr ""
-"Selecteer de energiebeheer mode voor de harde schijf, dit bespaart energie, "
-"maar gaat wel ten koste van de prestaties."
+"Selecteer het energie niveau voor de schijf, diverse niveau's kunnen energie "
+"besparen maar brengt dan wel de systeemprestaties omlaag."
 
 msgid "This allows you to set how loud the drive is while it's operating."
 msgstr ""
@@ -5419,583 +5405,37 @@ msgstr "upriv"
 msgid "week days"
 msgstr "weekdagen"
 
-#~ msgid "%b %d, %Y"
-#~ msgstr "%b %d, %Y"
+msgid "Danish"
+msgstr "Deens"
 
-#~ msgid "%A, %B %d, %Y"
-#~ msgstr "%A, %B %d, %Y"
+msgid "FTP file transfer"
+msgstr "FTP bestandsoverdracht"
 
-#~ msgid "%A, %B %d @ %H:%M:%S"
-#~ msgstr "%A, %B %d @ %H:%M:%S"
+msgid "File transfer"
+msgstr "Bestandsoverdracht"
 
-#~ msgid "%b %d, %Y - %I:%M %p"
-#~ msgstr "%b %d, %Y - %I:%M %p"
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr "Niveau 1 - Minimaal energieverbruik met Standby (spin-down)"
 
-#~ msgid "%A, %B %d, %Y - %I:%M %p"
-#~ msgstr "%A, %B %d, %Y - %I:%M %p"
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr "Niveau 127 - Intermediair energieverbruik met Standby"
 
-#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
-#~ msgstr "ma di wo do vr za zo"
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+"Niveau 128 - Minimaal energieverbruik zonder Standby (geen spin-down)"
 
-#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "jan feb maa apr mei jun jul aug sep okt nov dec"
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr "Niveau 192 - Intermediair energieverbruik zonder Standby"
 
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr "Niveau 254 - Maximale prestatie's, maximaal energieverbruik"
 
-#~ msgid "second"
-#~ msgstr "seconde"
-
-#~ msgid "minute"
-#~ msgstr "minuut"
-
-#~ msgid "hour"
-#~ msgstr "uur"
-
-#~ msgid "week"
-#~ msgstr "week"
-
-#~ msgid "weeks"
-#~ msgstr "weken"
-
-#~ msgid "month"
-#~ msgstr "maand"
-
-#~ msgid "year"
-#~ msgstr "jaar"
-
-#~ msgid "years"
-#~ msgstr "jaren"
-
-#~ msgid "and"
-#~ msgstr "en"
-
-#~ msgid "by"
-#~ msgstr "tegen"
-
-#~ msgid "off"
-#~ msgstr "uit"
-
-#~ msgid "on"
-#~ msgstr "aan"
-
-#~ msgid "To"
-#~ msgstr "Tot"
-
-#~ msgid "The"
-#~ msgstr "De"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
-
-#~ msgid "Deactivate"
-#~ msgstr "Deactiveren"
-
-#~ msgid "Ignore"
-#~ msgstr "Negeren"
-
-#~ msgid "Log out"
-#~ msgstr "Afmelden"
-
-#~ msgid "Modify"
-#~ msgstr "Wijzigen"
-
-#~ msgid "New"
-#~ msgstr "Nieuw"
-
-#~ msgid "Search"
-#~ msgstr "Zoeken"
-
-#~ msgid "Submit"
-#~ msgstr "Doorsturen"
-
-#~ msgid "Update"
-#~ msgstr "Bijwerken"
-
-#~ msgid "View"
-#~ msgstr "Bekijken"
-
-#~ msgid "Partition"
-#~ msgstr "Partitie"
-
-#~ msgid "ERROR: The changes could not be applied (error code %s)."
-#~ msgstr "FOUT: De wijzigingen konden niet toegepast worden (foutcode %s)."
-
-#~ msgid "Active"
-#~ msgstr "Actief"
-
-#~ msgid "Assign"
-#~ msgstr "Toewijzen"
-
-#~ msgid "CIFS"
-#~ msgstr "CIFS"
-
-#~ msgid "SSHD"
-#~ msgstr "SSHD"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "Wireless"
-#~ msgstr "Draadloos"
-
-#~ msgid "Edit File"
-#~ msgstr "Bestand bewerken"
-
-#~ msgid "Reboot system"
-#~ msgstr "Systeem herstarten"
-
-#~ msgid "Shutdown system"
-#~ msgstr "Systeem uitschakelen"
-
-#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-#~ msgstr "Naam van de NAS host, zonder het domein gedeelte<br>b.v. <em>nas"
-
-#~ msgid "e.g. <em>mycorp.com</em>"
-#~ msgstr "b.v. <em>mijndomein.com</em>"
-
-#~ msgid "DNS servers"
-#~ msgstr "DNS servers"
-
-#~ msgid "IP addresses"
-#~ msgstr "IP adressen"
-
-#~ msgid "WebGUI protocol"
-#~ msgstr "Webinterface protocol"
-
-#~ msgid "WebGUI port"
-#~ msgstr "Webinterface poort"
-
-#~ msgid "Select the system language"
-#~ msgstr "Selecteer de systeemtaal"
-
-#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-#~ msgstr "De hostnaam mag alleen de karakters a-z, 0-9 en '-' bevatten."
-
-#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr ""
-#~ "Het domein mag alleen maar de karakters a-z, 0-9, '-' en '.' bevatten."
-
-#~ msgid "You must select a valid language."
-#~ msgstr "Je moet een geldige taal kiezen."
-
-#~ msgid ""
-#~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr ""
-#~ "De naam van een NTP tijdserver mag alleen de karakters a-z, 0-9, '-' en '.' "
-#~ "bevatten."
-
-#~ msgid "Gateway to be used to reach the destination network"
-#~ msgstr ""
-#~ "De gateway die gebruikt moet worden om het bestemmingsnetwerk te bereiken"
-
-#~ msgid "This certificate does not appear to be valid."
-#~ msgstr "Dit certificaat is ongeldig."
-
-#~ msgid "This key does not appear to be valid."
-#~ msgstr "Deze sleutel is ongeldig"
-
-#~ msgid "webGUI SSL certificate/key"
-#~ msgstr "webinterface SSL certificaat/sleutel"
-
-#~ msgid "Navigation"
-#~ msgstr "Navigatie"
-
-#~ msgid "S.M.A.R.T Daemon"
-#~ msgstr "S.M.A.R.T Daemon"
-
-#~ msgid "Enable the S.M.A.R.T daemon"
-#~ msgstr "De S.M.A.R.T daemon inschakelen"
-
-#~ msgid "Zeroconf"
-#~ msgstr "Zeroconf"
-
-#~ msgid "Assign network ports"
-#~ msgstr "Netwerkpoorten toekennen"
-
-#~ msgid "A valid gateway must be specified."
-#~ msgstr "Er moet een geldige gateway opgegeven worden."
-
-#~ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-#~ msgstr "De standaard MTU is 1500, gebruik 9000 voor jumbo frame."
-
-#~ msgid "Speed"
-#~ msgstr "Snelheid"
-
-#~ msgid "Enable Optional "
-#~ msgstr "Activeer optioneel "
-
-#~ msgid " interface"
-#~ msgstr " interface"
-
-#~ msgid "Enter a description (name) for the interface here."
-#~ msgstr "Geef hier een omschrijving (naam) voor de interface."
-
-#~ msgid "Static IP configuration"
-#~ msgstr "Statische IP instellingen"
-
-#~ msgid "DHCP client configuration"
-#~ msgstr "DHCP client instellingen"
-
-#~ msgid "General configuration"
-#~ msgstr "Algemene instellingen"
-
-#~ msgid ""
-#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
-#~ "lease."
-#~ msgstr ""
-#~ "De waarde in dit veld wordt als DHCP hostnaam doorgestuurd bij het aanvragen "
-#~ "van een DHCP lease."
-
-#~ msgid "Calculate netmask bits"
-#~ msgstr "Bereken de netmask bits"
-
-#~ msgid "Manage"
-#~ msgstr "Beheer"
-
-#~ msgid "UDMA mode"
-#~ msgstr "UDMA modus"
-
-#~ msgid "Preformatted FS"
-#~ msgstr "Voorgeformatteerd bestandssysteem"
-
-#~ msgid "Disk initialization details"
-#~ msgstr "Initialisatiedetails van de schijf"
-
-#~ msgid ""
-#~ "This step will erase all your partition, create partition number 1 and "
-#~ "format the hard drive with the file system specified."
-#~ msgstr ""
-#~ "Deze stap zal alle partities wissen, een nieuwe partitie aanmaken en deze "
-#~ "formatteren met het opgegeven bestandssysteem."
-
-#~ msgid "iSCSI"
-#~ msgstr "iSCSI"
-
-#~ msgid "IP address of the iSCSI target."
-#~ msgstr "IP adres van de iSCSI bestemming."
-
-#~ msgid "Targetname"
-#~ msgstr "Bestemmingsnaam"
-
-#~ msgid "Targetname."
-#~ msgstr "Bestemmingsnaam."
-
-#~ msgid "Manage RAID"
-#~ msgstr "RAID beheer"
-
-#~ msgid "Format RAID"
-#~ msgstr "RAID formatteren"
-
-#~ msgid "Geom Vinum"
-#~ msgstr "Geom Vinum"
-
-#~ msgid "Geom Mirror"
-#~ msgstr "Geom Mirror"
-
-#~ msgid "Geom Stripe"
-#~ msgstr "Geom Stripe"
-
-#~ msgid "Geom Concat"
-#~ msgstr "Geom Concat"
-
-#~ msgid "Geom Raid5"
-#~ msgstr "Geom Raid5"
-
-#~ msgid "RAID"
-#~ msgstr "RAID"
-
-#~ msgid "ERR Could not save RAID configuration.\n"
-#~ msgstr "FOUT: kon de RAID instellingen niet opslaan.\n"
-
-#~ msgid "Disk format UFS output:"
-#~ msgstr "Schijf formattering UFS uitvoer:"
-
-#~ msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-#~ msgstr ""
-#~ "Deze stap zal het RAID volume formatteren in het unix bestandssysteem (UFS)."
-
-#~ msgid "Format UFS disk!"
-#~ msgstr "Formatter UFS schijf!"
-
-#~ msgid "The description name contain invalid characters."
-#~ msgstr "De naam van de gedeelde map bevat ongeldige karakters."
-
-#~ msgid "Duplicate Share Name."
-#~ msgstr "Dubbele naam voor de gedeelde map."
-
-#~ msgid ""
-#~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
-#~ "FreeBSD NTFS has lots of bugs."
-#~ msgstr ""
-#~ "1. Je kan geen partitie koppelen waarop de systeeminstellingen bewaard "
-#~ "zijn.<br>2. FreeBSD NTFS vertoont nog veel fouten."
-
-#~ msgid "The Netbios name contains invalid characters."
-#~ msgstr "De Netbiosnaam bevat ongeldige karakters."
-
-#~ msgid "The Workgroup name contains invalid characters."
-#~ msgstr "De werkgroepnaam bevat ongeldige karakters."
-
-#~ msgid "The WINS server must be an IP address."
-#~ msgstr "De WINS server moet een IP adres zijn."
-
-#~ msgid "The SND Buffer value must be a number."
-#~ msgstr "De verzendbufferwaarde moet een getal zijn."
-
-#~ msgid "The RCV Buffer value must be a number."
-#~ msgstr "De ontvangbufferwaarde moet een getal zijn."
-
-#~ msgid "CIFS share"
-#~ msgstr "Gedeelde map"
-
-#~ msgid "NetBiosName"
-#~ msgstr "NetBiosnaam"
-
-#~ msgid "Workgroup to be member of."
-#~ msgstr "Werkgroep waarvan lid."
-
-#~ msgid "WINS Server IP address."
-#~ msgstr "WINS Server IP adres."
-
-#~ msgid "Recycle Bin"
-#~ msgstr "Prullenmand"
-
-#~ msgid "Enable Recycle bin"
-#~ msgstr "Prullenmand activeren"
-
-#~ msgid "The maximum Number of client must be a number."
-#~ msgstr "Het maximum aantal clients moet een getal zijn."
-
-#~ msgid "The max con per ip must be a number."
-#~ msgstr "Het maximum aantal connecties per IP adres moet een getal zijn."
-
-#~ msgid "The pasv address must be a public IP address."
-#~ msgstr "Het pasv adres moet een publiek IP adres zijn."
-
-#~ msgid "FTP Server"
-#~ msgstr "FTP server"
-
-#~ msgid "Anonymous login"
-#~ msgstr "Anonieme aanmelding"
-
-#~ msgid "Enable anonymous login."
-#~ msgstr "Anonieme aanmelding activeren."
-
-#~ msgid "Enable local user login."
-#~ msgstr "Lokale gebruikersaanmelding activeren."
-
-#~ msgid ""
-#~ "Use this option to override the IP address that FTP daemon will advertise in "
-#~ "response to the PASV command."
-#~ msgstr ""
-#~ "Gebruik deze optie om het IP adres te omzeilen dat de FTP server zal "
-#~ "adverteren in antwoord op het PASV commando."
-
-#~ msgid "The name of the exported directories are : /mnt/sharename"
-#~ msgstr ""
-#~ "De namen van de ge&euml;xporteerde mappen zijn van de vorm: /mnt/mapnaam"
-
-#~ msgid "Rsync Daemon"
-#~ msgstr "Rsync Daemon"
-
-#~ msgid "You must configure mount point first."
-#~ msgstr "Je moet eerst een koppelingspunt instellen."
-
-#~ msgid "Rsync Client Synchronization"
-#~ msgstr "RSYNC client synchronisatie"
-
-#~ msgid "IP address of remote RSYNC server"
-#~ msgstr "IP adres van de RSYNC server op afstand"
-
-#~ msgid "RSYNC Options"
-#~ msgstr "RSYNC opties"
-
-#~ msgid "Rsync Local Synchronization"
-#~ msgstr "RSYNC lokale synchronisatie"
-
-#~ msgid "SSH Daemon"
-#~ msgstr "SSH Daemon"
-
-#~ msgid "SSH key"
-#~ msgstr "SSH sleutel"
-
-#~ msgid "Directories to be shared."
-#~ msgstr "Mappen die gedeeld moeten worden."
-
-#~ msgid "Add directory"
-#~ msgstr "Map toevoegen"
-
-#~ msgid "Edit directory"
-#~ msgstr "Map bewerken"
-
-#~ msgid "Delete directory"
-#~ msgstr "Map verwijderen"
-
-#~ msgid "Directory to be shared."
-#~ msgstr "Map die gedeeld moet worden."
-
-#~ msgid "AFP Server"
-#~ msgstr "AFP Server"
-
-#~ msgid ""
-#~ "The User list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "De gebruikerslijst werd aangepast.<br>Je moet op 'toepassen' klikken "
-#~ "vooraleer de wijzigingen actief zijn."
-
-#~ msgid "You must create a group first."
-#~ msgstr "Je moet eerst een groep aanmaken."
-
-#~ msgid "Unique login name of user."
-#~ msgstr "Unieke aanmeldingsnaam van de gebruiker."
-
-#~ msgid "Confirm Password"
-#~ msgstr "Bevestig wachtwoord"
-
-#~ msgid "Confirm the password."
-#~ msgstr "Bevestig het wachtwoord."
-
-#~ msgid "Group Member"
-#~ msgstr "Groepslid"
-
-#~ msgid "Full Shell"
-#~ msgstr "Volledige gebruikersomgeving"
-
-#~ msgid "Give full shell to user"
-#~ msgstr "Geef de volledige gebruikersomgeving aan de gebruiker"
-
-#~ msgid ""
-#~ "The group list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "De groeplijst werd gewijzigd.<br>Je moet op 'toepassen' klikken vooraleer de "
-#~ "wijzigingen actief zijn."
-
-#~ msgid "The Group name contains invalid characters."
-#~ msgstr "De naam van de groep bevat ongeldige karakters."
-
-#~ msgid "The Group desc contains invalid characters."
-#~ msgstr "De omschrijving van de groep bevat ongeldige karakters."
-
-#~ msgid "AD server name"
-#~ msgstr "AD servernaam"
-
-#~ msgid "AD server IP"
-#~ msgstr "AD server IP"
-
-#~ msgid "IP address of MS Active Directory server."
-#~ msgstr "IP adres van de MS Active Directory server."
-
-#~ msgid "Domain name in old format."
-#~ msgstr "Domeinnaam in oud formaat."
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr "Niveau 64 - Intermediair energieverbruik met Standby"
 
 #, php-format
-#~ msgid "%s interface (SSID '%s')"
-#~ msgstr "%s interface (SSID '%s')"
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr "Bekijk de <a href='%s' target='_blank'>documentatie</a>."
 
-#~ msgid "Signal strength cache"
-#~ msgstr "Cache voor signaalsterkte"
-
-#~ msgid "Signal"
-#~ msgstr "Signaal"
-
-#~ msgid "Noise"
-#~ msgstr "Ruis"
-
-#~ msgid "Quality"
-#~ msgstr "Kwaliteit"
-
-#~ msgid "Associated stations"
-#~ msgstr "Gekoppelde stations"
-
-#~ msgid "TX rates"
-#~ msgstr "TX (verzend) snelheden"
-
-#~ msgid "Edit VLAN"
-#~ msgstr "VLAN bewerken"
-
-#~ msgid "ATAidle"
-#~ msgstr "ATAidle"
-
-#~ msgid "Free Space"
-#~ msgstr "Beschikbare (vrije) ruimte"
-
-#~ msgid ""
-#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-#~ "hard drive."
-#~ msgstr ""
-#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-#~ "hard drive."
-
-#, php-format
-#~ msgid ""
-#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
-#~ "'unformated' for unformated disk and then use <a href=%s>format "
-#~ "menu</a>.</em>"
-#~ msgstr ""
-#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
-#~ "'unformated' for unformated disk and then use <a href=%s>format "
-#~ "menu</a>.</em>"
-
-#~ msgid ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
-#~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-#~ "before format and mount it!"
-#~ msgstr ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
-#~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-#~ "before format and mount it!"
-
-#, php-format
-#~ msgid ""
-#~ "Second configuration step: Declaring the filesystem used by your <a "
-#~ "href=%s>previously configured disk.</a>"
-#~ msgstr ""
-#~ "Second configuration step: Declaring the filesystem used by your <a "
-#~ "href=%s>previously configured disk.</a>"
-
-#~ msgid "List of partition on all detected disk"
-#~ msgstr "List of partition on all detected disk"
-
-#~ msgid "List of SMART capabilities on all detected disk"
-#~ msgstr "List of SMART capabilities on all detected disk"
-
-#~ msgid "List of Advanced ATA capabilities on all ATA disk"
-#~ msgstr "List of Advanced ATA capabilities on all ATA disk"
-
-#~ msgid "Show the list of available target Name on the iSCSI target"
-#~ msgstr "Show the list of available target Name on the iSCSI target"
-
-#~ msgid "Ping output"
-#~ msgstr "Ping output"
-
-#~ msgid "Traceroute output"
-#~ msgstr "Traceroute output"
-
-#, php-format
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
-#~ msgstr ""
-#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
-
-#, c-format
-#~ msgid "Destroying old %s information"
-#~ msgstr "Destroying old %s information"
-
-#, c-format
-#~ msgid "Creating %s partition"
-#~ msgstr "Creating %s partition"
-
-#~ msgid ""
-#~ "The content directory list has been changed.<br>You must apply the changes "
-#~ "in order for them to take effect."
-#~ msgstr ""
-#~ "De inhoudmappenlijst is veranderd.<br>Je moet op 'toepassen' klikken "
-#~ "vooraleer de wijzigingen actief zijn."
-
-#~ msgid "The password contain the illegal : character"
-#~ msgstr "Het wachtwoord bevat het ongeldige ':' karakter"
+msgid "Syslog"
+msgstr "Syslog"

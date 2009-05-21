@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-25 22:09+0000\n"
-"PO-Revision-Date: 2009-04-19 16:35+0000\n"
+"POT-Creation-Date: 2009-05-17 01:18+0000\n"
+"PO-Revision-Date: 2009-05-19 11:42+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
+"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -128,7 +128,7 @@ msgid ""
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
-"Un listing du répertoire est généré si un répertoire est requis et aucun "
+"Un listage du répertoire est généré si un répertoire est requis et aucun "
 "fichier d'index (index.php, index.html, index.htm ou default.htm) n'a été "
 "trouvé dans ce répertoire."
 
@@ -346,7 +346,7 @@ msgid "Administrator name"
 msgstr "Nom de l'administrateur"
 
 msgid "Advanced"
-msgstr "Configuration avancée"
+msgstr "Avancé"
 
 msgid "Advanced Configuration"
 msgstr "Configuration avancée"
@@ -597,7 +597,7 @@ msgid "BitTorrent"
 msgstr "BitTorrent"
 
 msgid "Blank time"
-msgstr ""
+msgstr "Blank time moniteur"
 
 msgid "Browseable"
 msgstr "Navigabilité"
@@ -727,7 +727,7 @@ msgid "Client sees uppercase, server sees lowercase"
 msgstr "Les client voient en majuscules, les serveurs en minuscules"
 
 msgid "Collecting initial data, please wait..."
-msgstr "Collecte des premieres donnees, veuillez patienter..."
+msgstr "Collecte des premières données, veuillez patienter..."
 
 msgid "Collisions"
 msgstr "Collisions"
@@ -790,7 +790,7 @@ msgid "Console menu"
 msgstr "Menu de la console"
 
 msgid "Console screensaver"
-msgstr ""
+msgstr "Veille de la console"
 
 msgid "Contact"
 msgstr "Contact"
@@ -1115,7 +1115,7 @@ msgid "Directory"
 msgstr "Répertoire"
 
 msgid "Directory listing"
-msgstr "Listing du répertoire"
+msgstr "Listage de répertoire"
 
 msgid "Directory mask"
 msgstr "Masque de répertoire"
@@ -1468,13 +1468,13 @@ msgid "Enable compression."
 msgstr "Active la compression."
 
 msgid "Enable console screensaver"
-msgstr ""
+msgstr "Activer l'écran de veille sur la console"
 
 msgid "Enable device polling"
 msgstr "Activer le sondage de périphérique"
 
 msgid "Enable directory listing."
-msgstr "Activer le listing des répertoires."
+msgstr "Activer le listage des répertoires."
 
 msgid "Enable domain wildcarding."
 msgstr "Activer les wildcards pour les domaines"
@@ -1517,10 +1517,10 @@ msgid "Enable port forwarding via NAT-PMP or UPnP."
 msgstr "Activer la redirection de port via NAT-PMP ou UPnP"
 
 msgid "Enable proxy authentication."
-msgstr "Activer l'authentification proxy"
+msgstr "Activer l'authentification auprès du proxy"
 
 msgid "Enable recycle bin"
-msgstr "Activer poubelle"
+msgstr "Activer la poubelle"
 
 msgid "Enable remote monitoring of the local connected UPS."
 msgstr "Autoriser le contrôle à distance de l'UPS local."
@@ -1584,20 +1584,20 @@ msgid "Encrypted"
 msgstr "Chiffré"
 
 msgid "Encrypted disk name"
-msgstr "Nom du disque crypté"
+msgstr "Nom du disque chiffré"
 
 #, php-format
 msgid "Encrypting '%s'... Please wait"
-msgstr "Encryptage '%s'... patientez"
+msgstr "Chiffrement de '%s'... patientez"
 
 msgid "Encryption"
-msgstr "Cryptage"
+msgstr "Chiffrement"
 
 msgid "Encryption algorithm"
-msgstr "Algorithme de cryptage"
+msgstr "Algorithme de chiffrement"
 
 msgid "Encryption algorithm to use."
-msgstr ""
+msgstr "Algorithme de chiffrement à utiliser."
 
 msgid "English"
 msgstr "Anglais"
@@ -1748,7 +1748,7 @@ msgstr "Erreur à l'éxécution d'une tâche cron."
 
 #, c-format
 msgid "Failed to send status report to: %s."
-msgstr "Echec de l'envoi du rapport de statut à: %s."
+msgstr "Echec de l'envoi du rapport d'état à: %s."
 
 #, php-format
 msgid ""
@@ -1834,7 +1834,7 @@ msgid "Firmware uploading is not supported on this platform."
 msgstr "Mise à jour du logiciel non supportée sur cette plateforme."
 
 msgid "Firmware version check"
-msgstr "Vérification de nouvelle version logiciel"
+msgstr "Vérification de nouvelle version logicielle"
 
 msgid "Flags"
 msgstr "Modes"
@@ -1975,7 +1975,7 @@ msgid "Host access control"
 msgstr "Contrôle d'accès du hôte"
 
 msgid "Host name"
-msgstr "Nom de hôte"
+msgstr "Nom du hôte"
 
 msgid "Host resources"
 msgstr "Ressources du serveur"
@@ -2018,7 +2018,7 @@ msgid "I/O packets"
 msgstr "Paquets E/S"
 
 msgid "I/O statistics"
-msgstr "Statistiques des I/O"
+msgstr "Statistiques I/O"
 
 msgid "IP address"
 msgstr "Adresse IP"
@@ -2205,7 +2205,7 @@ msgid "Initialize"
 msgstr "Initialiser"
 
 msgid "Initialize and encrypt disk."
-msgstr ""
+msgstr "Initialiser et chiffrer le disque."
 
 msgid "Initializing"
 msgstr "Initialisation"
@@ -2274,13 +2274,13 @@ msgid "Key Management Protocol"
 msgstr "Key Management Protocol"
 
 msgid "Key length"
-msgstr ""
+msgstr "Longueur de la clef"
 
 msgid "Key length to use with the given cryptographic algorithm."
-msgstr ""
+msgstr "Longueur de clef à utiliser pour l'algorithme de chiffrement."
 
 msgid "Kill encrypted volume"
-msgstr "Detruire les volumes cryptés."
+msgstr "Détruire le volume chiffré"
 
 msgid "Knowledgebase"
 msgstr "Base de connaissances"
@@ -2538,20 +2538,11 @@ msgstr "Nombre maximum de connexions simultanées. 0 par défaut (illimité)."
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Performance maximale, niveau acoustique maximal"
 
-msgid "Maximum performance, maximum power usage"
-msgstr "Performance maximale, consommation d'énergie maximale"
-
 msgid "Media"
 msgstr "Media"
 
 msgid "Medium acoustic output"
 msgstr "Niveau acoustique moyen"
-
-msgid "Medium power usage with Standby"
-msgstr "Consommation d'énergie moyenne avec mise en veille"
-
-msgid "Medium power usage without Standby"
-msgstr "Consommation d'énergie moyenne sans mise en veille"
 
 msgid "Memory usage"
 msgstr "Utilisation de la mémoire"
@@ -2570,12 +2561,6 @@ msgstr "Espace disque minimum"
 
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Performance minimale, niveau acoustique minimal"
-
-msgid "Minimum power usage with Standby"
-msgstr "Consommation d'énergie minimale avec mise en veille"
-
-msgid "Minimum power usage without Standby"
-msgstr "Consommation d'énergie minimale sans mise en veille"
 
 msgid "Minutes between network time sync."
 msgstr "Minutes entre des syncronisations du temps réseau."
@@ -2646,7 +2631,7 @@ msgstr "Nom de l'hôte NAS, sans le nom de domaine e.g. %s."
 
 #, php-format
 msgid "Name of the device to use as swap device, e.g. %s."
-msgstr "Nom du périphérique à utiliser pour le swap, e.g. %s."
+msgstr "Nom du périphérique à utiliser pour la pagination, e.g. %s."
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2912,13 +2897,13 @@ msgid "Password don't match."
 msgstr "Les mots de passe ne correspondent pas."
 
 msgid "Password encryption"
-msgstr "Cryptage du mot de passe"
+msgstr "Chiffrement du mot de passe"
 
 msgid "Password for the administrative pages."
 msgstr "Mot de passe pour les pages d'administration."
 
 msgid "Password of domain administrator account."
-msgstr "Mot de passe du compte de l'administrateur domaine."
+msgstr "Mot de passe du compte de l'administrateur du domaine."
 
 msgid "Password suffix"
 msgstr "Suffixe mot de passe"
@@ -3404,7 +3389,7 @@ msgid "Select item to remove from the list"
 msgstr "Sélectionner l'item à supprimer de la liste"
 
 msgid "Select mount point where to create the swap file."
-msgstr "Sélectionnez le point de montage où créer le fichier d'échange."
+msgstr "Sélectionnez le point de montage où créer le fichier de pagination."
 
 msgid "Select the FreeBSD package to be installed."
 msgstr "Sélectionner le paquet FreeBSD à installer"
@@ -3487,7 +3472,7 @@ msgid ""
 "transmitted on an interface. Not all interfaces support setting the MTU, and "
 "some interfaces have range restrictions."
 msgstr ""
-"Définit l'unité de transmission maximale (MTU) de l'interface à n, qui est "
+"Défini l'unité de transmission maximale (MTU) de l'interface à n, qui est "
 "par défaut spécifique à l'interface. La MTU est utilisée pour limiter la "
 "taille des paquets qui sont transmis au moyen d'une interface. Toutes les "
 "interfaces ne supportent pas la MTU, et certaines interfaces imposent la "
@@ -3497,14 +3482,14 @@ msgid ""
 "Sets the database information to be stored in path. You have to specifiy a "
 "writable location, even if the volume is read only."
 msgstr ""
-"Définit le chemin de la base de données à stocker. Vous devez spécifier un "
+"Défini le chemin de la base de données à stocker. Vous devez spécifier un "
 "emplacement inscriptible, même si le volume est en lecture seule."
 
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
 msgstr ""
-"Définit l'intervalle entre les contrôles de disque à N secondes. La valeur "
+"Défini l'intervalle entre les contrôles de disque à N secondes. La valeur "
 "minimale autorisée est de 10."
 
 msgid ""
@@ -3589,7 +3574,7 @@ msgid "Software RAID"
 msgstr "RAID logiciel"
 
 msgid "Software RAID information and status"
-msgstr "Information et état du RAID logiciel"
+msgstr "Informations et état du RAID logiciel"
 
 msgid "Software used"
 msgstr "Logiciel utilisé"
@@ -3617,7 +3602,7 @@ msgstr "Indique le nombre de serveurs à créer."
 
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
-"Indique que le système de fichiers devrait ête exporté en lecture seule."
+"Indique que le système de fichiers doit être exporté en lecture seule."
 
 msgid "Specifies the command to be run."
 msgstr "Indiquer la commande à exécuter."
@@ -3695,7 +3680,7 @@ msgstr "Rapport d'état du hôte: %s.%s"
 
 #, c-format
 msgid "Status report successfully sent to: %s."
-msgstr "Rapport de statut envoyé avec succès à: %s."
+msgstr "Rapport d'état envoyé avec succès à: %s."
 
 msgid "Status report successfully sent."
 msgstr "Rapport d'état envoyé avec succès."
@@ -3743,16 +3728,16 @@ msgid "Swap"
 msgstr "Pagination"
 
 msgid "Swap disabled"
-msgstr "Swap désactivé"
+msgstr "Pagination désactivée"
 
 msgid "Swap memory"
-msgstr "Mémoire virtuelle"
+msgstr "Mémoire de pagination (swap)"
 
 msgid "Swap status"
-msgstr "Etat du swap"
+msgstr "Etat de la pagination (swap)"
 
 msgid "Swap usage"
-msgstr "Utilisation du swap"
+msgstr "Utilisation de la pagination"
 
 msgid "Swedish"
 msgstr "Suédois"
@@ -3762,7 +3747,7 @@ msgstr "Basculer en"
 
 #, php-format
 msgid "Switch to %s/s"
-msgstr "Basculer vers %s/s"
+msgstr "Basculer en %s/s"
 
 msgid "Synchronization Time"
 msgstr "Heure de synchronisation"
@@ -3781,7 +3766,7 @@ msgid "System"
 msgstr "Système"
 
 msgid "System Beep"
-msgstr "Bip Système"
+msgstr "Bip système"
 
 msgid "System events"
 msgstr "Evénements système"
@@ -3867,7 +3852,7 @@ msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
 msgstr ""
-"L'option de Refus spécifie les utilisateurs et les groupes qui ne sont pas "
+"Cette option spécifie les utilisateurs et les groupes qui ne sont pas "
 "autorisés à avoir accès au partage. Elle suit le même format que l'option "
 "Autoriser."
 
@@ -4066,8 +4051,8 @@ msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
 "for them to take effect."
 msgstr ""
-"La configuration a été changé.<br>Vous devez appliquer les changements afin "
-"qu'ils prennent effet."
+"La configuration a été modifiée.<br>Vous devez appliquer les changements "
+"afin qu'ils prennent effet."
 
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
@@ -4098,6 +4083,8 @@ msgstr ""
 msgid ""
 "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
+"Les longueurs de clefs par défaut sont: 128 pour AES, 128 pour Blowfish et "
+"192 pour 3DES."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
@@ -4228,7 +4215,7 @@ msgid "The old password is not correct."
 msgstr "L'ancien mot de passe est incorrect"
 
 msgid "The password change protocol to use."
-msgstr "Le protocole de cryptage à utiliser pour le mot de passe."
+msgstr "Le protocole de chiffrement à utiliser pour le mot de passe."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Le mot de passe contient le caractère invalide ':'."
@@ -4237,7 +4224,7 @@ msgid "The passwords do not match."
 msgstr "Les mots de passe ne correspondent pas."
 
 msgid "The peer connection encryption mode."
-msgstr "Le mode dechiffrement de la connexion avec le pair."
+msgstr "Le mode de chiffrement de la connexion avec le pair."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4276,7 +4263,7 @@ msgid "The share name is already used."
 msgstr "Le nom de partage est déjà utilisé."
 
 msgid "The size of the swap file in MB."
-msgstr "La taille du fichier de swap en MB."
+msgstr "La taille du fichier de pagination en MB."
 
 msgid "The subject of the email."
 msgstr "Sujet de l'e-mail."
@@ -4348,8 +4335,8 @@ msgid ""
 "There should be enough to handle the maximum level of concurrency from its "
 "clients, typically four to six."
 msgstr ""
-"Il devrait y avoir de quoi gérer le niveau maximal de concurrence entre les "
-"clients, typiquement quatre à six."
+"Il doit y en avoir suffisamment pour gérer le niveau maximal de concurrence "
+"entre les clients, typiquement quatre à six."
 
 msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
@@ -4480,7 +4467,7 @@ msgstr "Cet e-mail a été envoyé pour valider votre configuration e-mail."
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
-"Ce disque crypté est monté, démontez-le avant d'essayer de la détacher."
+"Ce disque chiffré est monté, démontez-le avant d'essayer de la détacher."
 
 msgid ""
 "This forces filenames to be restricted to the character set used by Windows. "
@@ -4665,7 +4652,7 @@ msgid ""
 "given time interval, then a ban is automatically added."
 msgstr ""
 "Ce paramètre indique que si N occurrences de l'événement ont lieu pendant "
-"l'intervalle de temps défini, une interdiction est ajoutée automatiquement ."
+"l'intervalle de temps défini, une interdiction est ajoutée automatiquement."
 
 #, php-format
 msgid ""
@@ -4727,6 +4714,8 @@ msgid ""
 "This will erase ALL data on your disk! Do not use this option if you want to "
 "add an existing encrypted disk."
 msgstr ""
+"Ceci va supprimer TOUTES les données de votre disque! Ne pas utiliser cette "
+"option si vous voulez ajouter un disque déjà chiffré."
 
 msgid "Time"
 msgstr "Temps"
@@ -4744,7 +4733,7 @@ msgid "Time zone"
 msgstr "Fuseau horaire"
 
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Délai"
 
 msgid "Times"
 msgstr "Temps"
@@ -4849,7 +4838,7 @@ msgid "Tuning"
 msgstr "Paramétrage"
 
 msgid "Turn the monitor to standby after N seconds."
-msgstr ""
+msgstr "Basculer le moniteur en mode veille après N secondes."
 
 msgid "Type"
 msgstr "Type"
@@ -5134,7 +5123,7 @@ msgid ""
 "and can not be recovered."
 msgstr ""
 "Attention: Vous allez supprimer un volume chiffré. Toutes les données seront "
-"perdues et ne peuvent pas être récupérées."
+"perdues et ne pourront pas être récupérées."
 
 msgid "WebGUI"
 msgstr "Interface Web"
@@ -5147,7 +5136,7 @@ msgid ""
 "attempt to identify the remote username."
 msgstr ""
 "Le protocole d'identification est utilisé lorsqu'un client se connecte au "
-"serveur pour tenter d'identifier le nom de l'utilisateur distant ."
+"serveur pour tenter d'identifier le nom de l'utilisateur distant."
 
 msgid "Where the working files will be stored"
 msgstr "Emplacement où seront stockés les fichiers de travail"
@@ -5186,7 +5175,7 @@ msgid "Working Directory"
 msgstr "Répertoire de travail"
 
 msgid "Write"
-msgstr "Enregistrer"
+msgstr "Ecriture"
 
 msgid "Write only"
 msgstr "Écriture seule"
@@ -5260,7 +5249,7 @@ msgstr "Vous devez sélectionner au moins une méthode d'authentification."
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr ""
-"Vous devez utiliser une phrase de passe pour attacher un disque crypté."
+"Vous devez utiliser une phrase de passe pour attacher un disque chiffré."
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
@@ -5379,1694 +5368,56 @@ msgstr "upriv"
 msgid "week days"
 msgstr "jours de la semaine"
 
-#~ msgid "%b %d, %Y"
-#~ msgstr "%b %d, %Y"
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "Consommation d'énergie minimale avec mise en veille"
 
-#~ msgid "%A, %B %d, %Y"
-#~ msgstr "%A, %B %d, %Y"
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "Consommation d'énergie moyenne avec mise en veille"
 
-#~ msgid "%A, %B %d @ %H:%M:%S"
-#~ msgstr "%A, %B %d @ %H:%M:%S"
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "Consommation d'énergie minimale sans mise en veille"
 
-#~ msgid "%b %d, %Y - %I:%M %p"
-#~ msgstr "%b %d, %Y - %I:%M %p"
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "Consommation d'énergie moyenne sans mise en veille"
 
-#~ msgid "%A, %B %d, %Y - %I:%M %p"
-#~ msgstr "%A, %B %d, %Y - %I:%M %p"
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "Performance maximale, consommation d'énergie maximale"
 
-#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
-#~ msgstr "Dim Lun Mar Mer Jeu Ven Sam"
+msgid "Danish"
+msgstr "Danois"
 
-#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "Jan Fév Mar Avr Mai Juin Juil Aou Sep Oct Nov Déc"
+msgid "FTP file transfer"
+msgstr "Transfert de fichier FTP"
 
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
+msgid "File transfer"
+msgstr "Transfert de fichier"
 
-#~ msgid "second"
-#~ msgstr "seconde"
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr ""
+"Niveau 1 -  Consommation minimale avec Standby (rotation des disques arrêtée "
+"(spindown))"
 
-#~ msgid "minute"
-#~ msgstr "minute"
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr "Niveau 127 - Consommation intermédiaire avec Standby"
 
-#~ msgid "hour"
-#~ msgstr "heure"
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+"Niveau 128 - Consommation minimale sans Standby (les disques tournent (no "
+"spindown))"
 
-#~ msgid "week"
-#~ msgstr "semaine"
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr "Niveau 192 - Consommation intermédiaire sans Standby"
 
-#~ msgid "weeks"
-#~ msgstr "semaines"
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr "Niveau 254 - Performances maximales, consommation maximale"
 
-#~ msgid "month"
-#~ msgstr "mois"
-
-#~ msgid "year"
-#~ msgstr "année"
-
-#~ msgid "years"
-#~ msgstr "années"
-
-#~ msgid "and"
-#~ msgstr "et"
-
-#~ msgid "by"
-#~ msgstr "par"
-
-#~ msgid "Down"
-#~ msgstr "Bas"
-
-#~ msgid "off"
-#~ msgstr "off"
-
-#~ msgid "on"
-#~ msgstr "on"
-
-#~ msgid "To"
-#~ msgstr "Vers"
-
-#~ msgid "The"
-#~ msgstr "Le"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuler"
-
-#~ msgid "Deactivate"
-#~ msgstr "Désactiver"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignorer"
-
-#~ msgid "Log out"
-#~ msgstr "Déconnexion"
-
-#~ msgid "Modify"
-#~ msgstr "Modifier"
-
-#~ msgid "New"
-#~ msgstr "Nouveau"
-
-#~ msgid "Search"
-#~ msgstr "Chercher"
-
-#~ msgid "Submit"
-#~ msgstr "Soumettre"
-
-#~ msgid "Update"
-#~ msgstr "Mettre à jour"
-
-#~ msgid "View"
-#~ msgstr "Voir"
-
-#~ msgid "Partition"
-#~ msgstr "Partition"
-
-#~ msgid ""
-#~ "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
-#~ "changes to take effect."
-#~ msgstr ""
-#~ "Les modifications ont été enregistrées. Vous devez <a href=%s>redémarrer</a> "
-#~ "votre serveur NAS pour que les modifications prennent effet."
-
-#~ msgid "ERROR: The changes could not be applied (error code %s)."
-#~ msgstr ""
-#~ "Erreur: Les modifications ne peuvent être appliquées (code d'erreur %s)."
-
-#~ msgid "Active"
-#~ msgstr "Actif"
-
-#~ msgid "Inactive"
-#~ msgstr "Inactif"
-
-#~ msgid "General setup"
-#~ msgstr "Configuration générale"
-
-#~ msgid "Assign"
-#~ msgstr "Assigner"
-
-#~ msgid "CIFS"
-#~ msgstr "CIFS"
-
-#~ msgid "SSHD"
-#~ msgstr "SSHD"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "Wireless"
-#~ msgstr "Sans-fil"
-
-#~ msgid "ARP table"
-#~ msgstr "Table ARP"
-
-#~ msgid "Edit File"
-#~ msgstr "Editer un fichier"
-
-#~ msgid "Reboot system"
-#~ msgstr "Redémarrage du NAS"
-
-#~ msgid "Shutdown system"
-#~ msgstr "Arrêt du NAS"
-
-#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-#~ msgstr ""
-#~ "Nom du serveur NAS, sans préciser le nom de domaine<br>ex. <em>nas</em>"
-
-#~ msgid "e.g. <em>mycorp.com</em>"
-#~ msgstr "ex: <em>macompagnie.fr</em>"
-
-#~ msgid "DNS servers"
-#~ msgstr "Serveurs DNS"
-
-#~ msgid "IP addresses"
-#~ msgstr "Adresses IP"
-
-#~ msgid ""
-#~ "If you want to change the username for accessing the webGUI, enter it here."
-#~ msgstr "Nom d'utilisateur pour accéder à l'interface WEB."
-
-#~ msgid ""
-#~ "If you want to change the password for accessing the webGUI, enter it here "
-#~ "twice.<br>Don't use the character ':'."
-#~ msgstr ""
-#~ "Mot de passe d'accès à l'interface WEB.<br>N'utilisez pas le caractère ':'."
-
-#~ msgid "WebGUI protocol"
-#~ msgstr "Protocole de l'interface WEB"
-
-#~ msgid "WebGUI port"
-#~ msgstr "Port TCP de l'interface WEB"
-
-#~ msgid ""
-#~ "Enter a custom port number for the webGUI above if you want to override the "
-#~ "default (80 for HTTP, 443 for HTTPS)."
-#~ msgstr ""
-#~ "Entrez le numéro d'un port si vous désirez changer celui par défaut (80 pour "
-#~ "HTTP, 443 pour HTTPS)."
-
-#~ msgid "Select the system language"
-#~ msgstr "Choisissez la langue utilisée par le système"
-
-#~ msgid "System Time"
-#~ msgstr "Heure système"
-
-#~ msgid ""
-#~ "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-#~ "select one, then use Save button to update system time. (Mind seconds part "
-#~ "will be ignored)"
-#~ msgstr ""
-#~ "Entrez directement ici l'heure désirée (au format mm/jj/aaaa hh:mm) ou "
-#~ "utilisez l'icône pour en sélectionner une, puis cliquez sur le bouton "
-#~ "sauvegarder pour mettre à jour l'heure du système. (Les secondes seront "
-#~ "ignorées)"
-
-#~ msgid ""
-#~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
-#~ msgstr ""
-#~ "Minutes entre les synchronisations de temps.<br>300 recommandé, ou 0 pour "
-#~ "désactiver."
-
-#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-#~ msgstr ""
-#~ "Un nom d'hôte doit seulement contenir les caractères a-z, 0-9, et '-' ."
-
-#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr ""
-#~ "Un nom de domaine doit seulement contenir les caractères a-z, 0-9, et '-' ."
-
-#~ msgid ""
-#~ "A valid IP address must be specified for the primary/secondary DNS server."
-#~ msgstr ""
-#~ "Une adresse IP valide doit être spécifiée pour les serveurs DNS "
-#~ "primaire/secondaire."
-
-#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
-#~ msgstr ""
-#~ "Le nom d'utilisateur doit seulement contenir les caractères a-z, A-Z et 0-9."
-
-#~ msgid "A valid TCP/IP port must be specified for the webGUI port."
-#~ msgstr "Un port TCP/IP valide doit être spécifié pour l'interface web."
-
-#~ msgid "You must select a valid language."
-#~ msgstr "Vous devez sélectionner une langue valide."
-
-#~ msgid ""
-#~ "The time update interval must be either 0 (disabled) or between 6 and 1440."
-#~ msgstr ""
-#~ "L'intervalle de mise à jour doit être soit 0 (désactivé), soit compris entre "
-#~ "6 et 1440."
-
-#~ msgid ""
-#~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr ""
-#~ "Un nom de serveur de temps NTP doit seulement contenir les caractères a-z, 0-"
-#~ "9, '-' et '.'."
-
-#~ msgid "show process information"
-#~ msgstr "Détail des processus"
-
-#~ msgid ""
-#~ "The static route configuration has been changed.<br>You must apply the "
-#~ "changes in order for them to take effect."
-#~ msgstr ""
-#~ "La configuration des routes statiques a été modifiée.<br>Vous devez "
-#~ "appliquer les modifications pour qu'elles prennent effet."
-
-#~ msgid "Gateway to be used to reach the destination network"
-#~ msgstr "Routeur à utiliser pour atteindre la destination"
-
-#~ msgid "You may enter a description here for your reference (not parsed)."
-#~ msgstr "Vous pouvez entrer une description ici."
-
-#~ msgid "The digital signature on this image is invalid."
-#~ msgstr "La signature numérique de cette image est invalide."
-
-#~ msgid "This image is not digitally signed."
-#~ msgstr "Cette image n'est pas signée numériquement."
-
-#~ msgid "There has been an error verifying the signature on this image."
-#~ msgstr "Une erreur s'est produite lors de la vérification de cette image."
-
-#~ msgid "The TCP idle timeout must be an integer."
-#~ msgstr "Le timeout TCP idle doit être un entier."
-
-#~ msgid "Certificate and key must always be specified together."
-#~ msgstr "Le certificat et la clef doivent être spécifiés ensemble."
-
-#~ msgid "This certificate does not appear to be valid."
-#~ msgstr "Ce certificat n'est pas valide."
-
-#~ msgid "This key does not appear to be valid."
-#~ msgstr "La clef ne semble pas valide."
-
-#~ msgid ""
-#~ "The options on this page are intended for use by advanced users only, and "
-#~ "there's <strong>NO</strong> support for them."
-#~ msgstr ""
-#~ "Les options de cette page sont destinées à des utilisateurs avancés "
-#~ "uniquement et il n'y a <strong>AUCUN</strong> support sur ces options."
-
-#~ msgid "webGUI SSL certificate/key"
-#~ msgstr "Clef/certificat SSL de l'interface web"
-
-#~ msgid "Paste an RSA private key in PEM format here."
-#~ msgstr "Copiez une clef privée RSA au format PEM ici."
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Divers"
-
-#~ msgid "TCP idle timeout"
-#~ msgstr "Timeout inactivité TCP"
-
-#~ msgid ""
-#~ "Idle TCP connections will be removed from the state table after no packets "
-#~ "have been received for the specified number of seconds. Don't set this too "
-#~ "high or your state table could become full of connections that have been "
-#~ "improperly shut down. The default is 9000 seconds (2.5 hours)."
-#~ msgstr ""
-#~ "Les connexions TCP inactives seront supprimées de la table d'état si aucun "
-#~ "paquet n'est recu durant le nombre de secondes spécifié. N'indiquez pas une "
-#~ "valeur trop haute ou la table d'état pourrait se remplir de connexions "
-#~ "improprement terminées. Réglage par defaut : 2.5 heures."
-
-#~ msgid "Navigation"
-#~ msgstr "Navigation"
-
-#~ msgid "Keep diagnostics in navigation expanded"
-#~ msgstr "Garder le menu diagnostics ouvert"
-
-#~ msgid "S.M.A.R.T Daemon"
-#~ msgstr "Démon S.M.A.R.T"
-
-#~ msgid "Enable the S.M.A.R.T daemon"
-#~ msgstr "Activer le démon S.M.A.R.T"
-
-#~ msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-#~ msgstr ""
-#~ "Surveiller les périphériques S.M.A.R.T en enregistrant leur état dans le "
-#~ "journal."
-
-#~ msgid "Zeroconf"
-#~ msgstr "Zeroconf"
-
-#~ msgid "Swap file"
-#~ msgstr "Fichier de pagination"
-
-#~ msgid "Swap size"
-#~ msgstr "Taille du fichier de pagination"
-
-#~ msgid "mount share"
-#~ msgstr "monter le partage"
-
-#~ msgid "Mount to use for swap"
-#~ msgstr "Point de montage à utiliser pour la pagination"
-
-#~ msgid "Swap file size"
-#~ msgstr "Taille du fichier de pagination"
-
-#~ msgid "Assign network ports"
-#~ msgstr "Assigner les cartes réseau"
-
-#~ msgid "A valid gateway must be specified."
-#~ msgstr "Une passerelle valide doit être spécifiée."
-
-#~ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-#~ msgstr "Le MTU standard est de 1500, utilisez 9000 pour les jumbo frames."
-
-#~ msgid ""
-#~ "Device polling is a technique that lets the system periodically poll network "
-#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
-#~ "load and therefore increase throughput, at the expense of a slightly higher "
-#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
-#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
-#~ "cards."
-#~ msgstr ""
-#~ "Le sondage de périphérique est une technique permettant au système "
-#~ "d'interroger périodiquement les périphériques réseau pour vérifier la "
-#~ "présence de nouvelles données plutot que de se baser sur les interruptions. "
-#~ "Ceci peut réduire la charge CPU et donc augmenter le débit, au détriment "
-#~ "d'un délai de transfert plus élevé (les périphériques sont sondés 1000 fois "
-#~ "par seconde). Toutes les cartes réseau ne supportent pas cette technique; "
-#~ "voyez le site de <a href=http://m0n0.ch/wall>m0n0wall</a> pour trouver la "
-#~ "liste des cartes supportées."
-
-#~ msgid "Speed"
-#~ msgstr "Vitesse"
-
-#~ msgid "Enable Optional "
-#~ msgstr "Activer l'interface optionnelle "
-
-#~ msgid " interface"
-#~ msgstr " ."
-
-#~ msgid "Enter a description (name) for the interface here."
-#~ msgstr "Entrez une description pour l'interface ici."
-
-#~ msgid "Static IP configuration"
-#~ msgstr "Configuration avec IP statique"
-
-#~ msgid "DHCP client configuration"
-#~ msgstr "Configuration avec client DHCP"
-
-#~ msgid "General configuration"
-#~ msgstr "Configuration générale"
-
-#~ msgid ""
-#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
-#~ "lease."
-#~ msgstr ""
-#~ "Le contenu de ce champ est envoyé en tant que nom d'hôte DHCP lors de la "
-#~ "demande de bail DHCP."
-
-#~ msgid "Client Identifier"
-#~ msgstr "Identificateur du client"
-
-#~ msgid ""
-#~ "The value in this field is sent as the DHCP client identifier when "
-#~ "requesting a DHCP lease."
-#~ msgstr ""
-#~ "La valeur de ce champ est envoyée en tant qu'identificateur du client lors "
-#~ "de la demande de bail DHCP."
-
-#~ msgid "Calculate netmask bits"
-#~ msgstr "Calculer le nombre de bits du masque de sous réseau"
-
-#~ msgid ""
-#~ "The LAN configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La configuration LAN a changé.<br>Vous devez appliquer les changements pour "
-#~ "qu'ils prennent effet."
-
-#~ msgid "Manage"
-#~ msgstr "Gérer"
-
-#~ msgid ""
-#~ "The disk list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "La liste des disques a changé.<br>Vous devez appliquer les changements pour "
-#~ "qu'ils prennent effet."
-
-#~ msgid "First configuration step: Add your hardrive to the disk list."
-#~ msgstr "Première étape: Ajoutez votre disque dur à la liste des disques."
-
-#~ msgid "UDMA mode"
-#~ msgstr "Mode UDMA"
-
-#~ msgid ""
-#~ "Puts the hard disk into standby mode when the selected amount of time after "
-#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Mets le disque en veille lorsque la durée spécifiée depuis le dernier accès "
-#~ "est écoulée. <em>N'activez PAS cette option pour les cartes Compact "
-#~ "Flash.</em>"
-
-#~ msgid ""
-#~ "This allows  you  to lower the power consumption of the drive, at the "
-#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Ceci vous permet de baisser la consommation d'énergie du disque, au "
-#~ "détriment de ses performances.<br><em>N'activez PAS cette option pour les "
-#~ "cartes Compact Flash.</em>"
-
-#~ msgid ""
-#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
-#~ "not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Ceci vous permet de contrôler le niveau sonore du disque en "
-#~ "fonctionnement.<br><em>N'activez PAS cette option pour les cartes Compact "
-#~ "Flash.</em>"
-
-#~ msgid "Preformatted FS"
-#~ msgstr "Système de fichier prééxistant"
-
-#~ msgid "Can't format the drive where FreeNAS configuration file is installed!"
-#~ msgstr ""
-#~ "Impossible de formater le disque sur lequel se trouve le fichier de "
-#~ "configuration FreeNAS!"
-
-#~ msgid "Disk initialization details"
-#~ msgstr "Détails de l'initialisation"
-
-#~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
-#~ msgstr "\"fdisk: Geom not found\"n'est pas un message d'erreur!\n"
-
-#~ msgid ""
-#~ "This step will erase all your partition, create partition number 1 and "
-#~ "format the hard drive with the file system specified."
-#~ msgstr ""
-#~ "Ceci efface toutes les partitions, cr&eacute;&eacute; la partition "
-#~ "num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier "
-#~ "sp&eacute;cifi&eacute;."
-
-#~ msgid "iSCSI"
-#~ msgstr "iSCSI"
-
-#~ msgid "Target IP address"
-#~ msgstr "Adresse IP cible"
-
-#~ msgid "IP address of the iSCSI target."
-#~ msgstr "Adresse IP de la cible iSCSI."
-
-#~ msgid "Targetname"
-#~ msgstr "Nom de la cible"
-
-#~ msgid "Targetname."
-#~ msgstr "Nom de la cible."
-
-#~ msgid "Manage RAID"
-#~ msgstr "Gestion RAID"
-
-#~ msgid "Format RAID"
-#~ msgstr "Formatage RAID"
-
-#~ msgid "Geom Vinum"
-#~ msgstr "Geom Vinum"
-
-#~ msgid "Geom Mirror"
-#~ msgstr "Geom Mirror"
-
-#~ msgid "Geom Stripe"
-#~ msgstr "Geom Stripe"
-
-#~ msgid "Geom Concat"
-#~ msgstr "Geom Concat"
-
-#~ msgid "Geom Raid5"
-#~ msgstr "Geom Raid5"
-
-#~ msgid "(unstable)"
-#~ msgstr "(instable)"
-
-#~ msgid "RAID"
-#~ msgstr "RAID"
-
-#~ msgid ""
-#~ "The Raid configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La configuration RAID a changé.<br>Vous devez appliquer les changements pour "
-#~ "qu'ils prennent effet."
-
-#~ msgid ""
-#~ "Do you really want to delete this raid volume? All elements that still use "
-#~ "it will become invalid (e.g. share)!"
-#~ msgstr ""
-#~ "Voulez-vous vraiment supprimer ce volume RAID? Tous les éléments l'utilisant "
-#~ "seront invalidés (par ex. share)!"
-
-#~ msgid "ERR Could not save RAID configuration.\n"
-#~ msgstr "ERREUR Impossible de sauvegarder la configuration RAID.\n"
-
-#~ msgid "Members of this volume"
-#~ msgstr "Membres de ce volume"
-
-#~ msgid "Disk format UFS output:"
-#~ msgstr "Formatage du disque en UFS:"
-
-#~ msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-#~ msgstr "Le volume RAID sera formaté avec le système de fichiers Unix (UFS)."
-
-#~ msgid "Format UFS disk!"
-#~ msgstr "Formatage du disque en UFS!"
-
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
-#~ "using this menu for start a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. N'utilisez ces actions spéciales qu'à des fins de débogage!<br>2. Nul "
-#~ "besoin d'utiliser ce menu pour démarrer un volume RAID (démarrage "
-#~ "automatique)."
-
-#~ msgid "Share Name"
-#~ msgstr "Nom du partage"
-
-#~ msgid ""
-#~ "The mount point list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La liste des points de montage a été modifiée.<br>Vous devez appliquer les "
-#~ "changements pour qu'ils prennent effet."
-
-#~ msgid "delete mount"
-#~ msgstr "Supprimer le point de montage"
-
-#~ msgid "add mount"
-#~ msgstr "Ajouter un point de montage"
-
-#~ msgid "The description name contain invalid characters."
-#~ msgstr "La description contient des caractères invalides."
-
-#~ msgid "Duplicate Share Name."
-#~ msgstr "Nom de partage dupliqué."
-
-#~ msgid ""
-#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
-#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-#~ "you select option 2 during installation on hard drive.<br>Select old "
-#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-#~ msgstr ""
-#~ "Sélectionnez EFI GPT si vous voulez monter un disque formaté en GPT (méthode "
-#~ "par défaut depuis la version 0.684b).<br>Sélectionnez 1 pour les disques "
-#~ "formatés en UFS ou en RAID logiciel créés depuis la version "
-#~ "0.683b.<br>Sélectionnez 2 pour monter la partition de données si vous aviez "
-#~ "choisi l'option 2 durant l'installation sur le disque dur.<br>Sélectionnez "
-#~ "ancien gmirror/graid5/gvinum logiciel pour les volumes créés avec des "
-#~ "anciennes versions de FreeNAS."
-
-#~ msgid ""
-#~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
-#~ "FreeBSD NTFS has lots of bugs."
-#~ msgstr ""
-#~ "1. Vous ne pouvez pas monter la partition '%s' car elle contient le fichier "
-#~ "de configuration.<br>2. Le support NTFS de FreeBSD est bogu&eacute;."
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr "Niveau 64 - Consommation intermédiaire avec Standby"
 
 #, php-format
-#~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-#~ msgstr ""
-#~ "Vous ne pouvez pas démonter un disque contenant le fichier de pagination ou "
-#~ "le fichier cible-iSCSI!"
-
-#~ msgid "The Netbios name contains invalid characters."
-#~ msgstr "Le nom Netbios contient des caractères invalides."
-
-#~ msgid "The Workgroup name contains invalid characters."
-#~ msgstr "Le groupe de travail contient des caractères invalides."
-
-#~ msgid "The WINS server must be an IP address."
-#~ msgstr "Le serveur WINS doit être une adresse IP."
-
-#~ msgid "The SND Buffer value must be a number."
-#~ msgstr "La valeur du tampon d'envoi doit être un entier."
-
-#~ msgid "The RCV Buffer value must be a number."
-#~ msgstr "La valeur du tampon de réception doit être un entier."
-
-#~ msgid "CIFS share"
-#~ msgstr "Partage CIFS"
-
-#~ msgid "NetBiosName"
-#~ msgstr "Nom Netbios"
-
-#~ msgid "Workgroup to be member of."
-#~ msgstr "Groupe de travail auquel rattacher le NAS."
-
-#~ msgid "WINS Server IP address."
-#~ msgstr "Adresse IP du serveur WINS."
-
-#~ msgid "Recycle Bin"
-#~ msgstr "Corbeille"
-
-#~ msgid "Enable Recycle bin"
-#~ msgstr "Activer la corbeille"
-
-#~ msgid "This will create a recycle bin on the CIFS shares."
-#~ msgstr "Ceci crééra une corbeille pour les partages CIFS."
-
-#~ msgid ""
-#~ "The shares has been modified.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "Les partages ont été modifiés.<br>Vous devez appliquer les changements pour "
-#~ "qu'ils prennent effet."
-
-#~ msgid "The maximum Number of client must be a number."
-#~ msgstr "Le nombre maximum de clients doit être un entier."
-
-#~ msgid "The max con per ip must be a number."
-#~ msgstr "Le nombre maximum de connexions par IP doit être un entier."
-
-#~ msgid "The pasv address must be a public IP address."
-#~ msgstr "L'adresse pasv doit être une adresse IP publique."
-
-#~ msgid "You must select at minium anonymous or/and local user authentication."
-#~ msgstr ""
-#~ "Vous devez sélectionner au minimum une authentification anonyme et/ou locale."
-
-#~ msgid "FTP Server"
-#~ msgstr "Serveur FTP"
-
-#~ msgid "Maximum idle time in minutes."
-#~ msgstr "Durée maximum d'inactivité en minutes."
-
-#~ msgid "Anonymous login"
-#~ msgstr "Login anonyme"
-
-#~ msgid "Enable anonymous login."
-#~ msgstr "Accepter les connexions anonymes."
-
-#~ msgid "Enable local user login."
-#~ msgstr "Accepter les connexions des utilisateurs authentifiés."
-
-#~ msgid "NAT mode"
-#~ msgstr "Mode NAT"
-
-#~ msgid "Force NAT mode."
-#~ msgstr "Force le mode NAT"
-
-#~ msgid ""
-#~ "Enable this if your FTP server is behind a NAT box that doesn't support "
-#~ "applicative FTP proxying."
-#~ msgstr ""
-#~ "Activez ce mode si votre serveur FTP se trouve derriere un routeur NAT ne "
-#~ "faisant pas office de proxy FTP applicatif."
-
-#~ msgid "Passive IP address"
-#~ msgstr "Adresse IP passive"
-
-#~ msgid ""
-#~ "Use this option to override the IP address that FTP daemon will advertise in "
-#~ "response to the PASV command."
-#~ msgstr ""
-#~ "Utilisez cette option pour outrepasser l'adresse IP que le serveur FTP "
-#~ "envoie en réponse aux commandes PASV."
-
-#~ msgid "NFS Server"
-#~ msgstr "Serveur NFS"
-
-#~ msgid "Network that is authorised to access to NFS share"
-#~ msgstr "Réseau autorisé à accéder au partage NFS"
-
-#~ msgid "The name of the exported directories are : /mnt/sharename"
-#~ msgstr "Le nom de partage exporté est du type : /mnt/partage"
-
-#~ msgid "Rsync Daemon"
-#~ msgstr "Démon Rsync"
-
-#~ msgid "You must configure mount point first."
-#~ msgstr "Vous devez d'abord configurer un point de montage."
-
-#~ msgid "Rsync Client Synchronization"
-#~ msgstr "Synchronisation client Rsync"
-
-#~ msgid "Remote RSYNC Server"
-#~ msgstr "Serveur RSYNC distant"
-
-#~ msgid "IP address of remote RSYNC server"
-#~ msgstr "Adresse IP du Serveur RSYNC distant"
-
-#~ msgid "RSYNC Options"
-#~ msgstr "Options RSYNC"
-
-#~ msgid "Delete files that don't exist on sender."
-#~ msgstr "Supprimer les fichiers qui n'existent pas sur la machine source."
-
-#~ msgid "Shares to be synchronized"
-#~ msgstr "Partages à synchroniser"
-
-#~ msgid "This same local share must be present on the Remote Server."
-#~ msgstr "Un partage du même nom doit exister sur le serveur distant."
-
-#~ msgid "You can't have the same mount point for source and destination!"
-#~ msgstr ""
-#~ "Vous ne pouvez pas avoir le même point de montage comme source et "
-#~ "destination!"
-
-#~ msgid "Rsync Local Synchronization"
-#~ msgstr "Synchronisation Rsync locale"
-
-#~ msgid "Source Mount Point."
-#~ msgstr "Point de montage source."
-
-#~ msgid "Destination Mount Point (backup drive)."
-#~ msgstr "Point de montage destination (disque de sauvegarde)."
-
-#~ msgid "SSH Daemon"
-#~ msgstr "Démon SSH"
-
-#~ msgid "Enable TCP Forwarding"
-#~ msgstr "Activer le transfert TCP"
-
-#~ msgid "SSH key"
-#~ msgstr "Clef SSH"
-
-#~ msgid "Directories to be shared."
-#~ msgstr "Répertoires à partager."
-
-#~ msgid "No content directory to be shared."
-#~ msgstr "Aucun contenu à partager."
-
-#~ msgid "Add directory"
-#~ msgstr "Ajouter un répertoire"
-
-#~ msgid "Edit directory"
-#~ msgstr "Modifier un répertoire"
-
-#~ msgid "Delete directory"
-#~ msgstr "Supprimer un répertoire"
-
-#~ msgid "Do you really want to delete this directory entry?"
-#~ msgstr "Voulez-vous vraiment supprimer cette entrée de répertoire?"
-
-#~ msgid "Directory to be shared."
-#~ msgstr "Répertoire à partager."
-
-#~ msgid "AFP Server"
-#~ msgstr "Serveur AFP"
-
-#~ msgid ""
-#~ "The User list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "La liste des utilisateurs a été modifiée.<br>Vous devez appliquer les "
-#~ "changements pour qu'ils prennent effet."
-
-#~ msgid "You must create a group first."
-#~ msgstr "Vious devez d'abord créer un groupe"
-
-#~ msgid "Unique login name of user."
-#~ msgstr "Identifiant unique d'un utilisateur."
-
-#~ msgid "Confirm Password"
-#~ msgstr "Confirmez le mot de passe"
-
-#~ msgid "Confirm the password."
-#~ msgstr "Confirmez le mot de passe."
-
-#~ msgid "Group Member"
-#~ msgstr "Membre du groupe"
-
-#~ msgid "Full Shell"
-#~ msgstr "Shell complet"
-
-#~ msgid "Give full shell to user"
-#~ msgstr "Donner l'accès complet au shell"
-
-#~ msgid "Administrator"
-#~ msgstr "Administrateur"
-
-#~ msgid "Put user in the administrator group"
-#~ msgstr "Mettre l'utilisateur dans le groupe administrateur"
-
-#~ msgid ""
-#~ "The group list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "La liste des groupes a été modifiée.<br>Vous devez appliquer les changements "
-#~ "pour qu'ils prennent effet."
-
-#~ msgid "The Group name contains invalid characters."
-#~ msgstr "Le nom du groupe contient un caractère invalide."
-
-#~ msgid "The Group desc contains invalid characters."
-#~ msgstr "La description du groupe contient un caractère invalide."
-
-#~ msgid "AD server name"
-#~ msgstr "Nom du serveur AD"
-
-#~ msgid "AD server IP"
-#~ msgstr "IP du serveur AD"
-
-#~ msgid "IP address of MS Active Directory server."
-#~ msgstr "Adresse IP du serveur Active Directory."
-
-#~ msgid "Domain name in old format."
-#~ msgstr "Nom du domaine à l'ancien format (NETBIOS)."
-
-#~ msgid "Password of domain administrator account, enter it here twice."
-#~ msgstr "Mot de passe d'un compte administrateur du domaine, à entrer 2 fois."
-
-#, php-format
-#~ msgid "%s interface (SSID '%s')"
-#~ msgstr "interface %s (SSID '%s')"
-
-#~ msgid "Signal strength cache"
-#~ msgstr "Cache Force du Signal"
-
-#~ msgid "Signal"
-#~ msgstr "Signal"
-
-#~ msgid "Noise"
-#~ msgstr "Bruit"
-
-#~ msgid "Quality"
-#~ msgstr "Qualité"
-
-#~ msgid "Associated stations"
-#~ msgstr "Stations associées"
-
-#~ msgid "TX rates"
-#~ msgstr "Taux de transmission"
-
-#~ msgid ""
-#~ "No supported wireless interfaces were found for status display (only cards "
-#~ "that use the wi[n] driver are supported)."
-#~ msgstr ""
-#~ "Aucune interface sans fil supportée n' a été trouvée (seules les cartes qui "
-#~ "utilisent le pilote wi[n] sont supportées)."
-
-#~ msgid "Edit VLAN"
-#~ msgstr "Modifier un VLAN"
-
-#~ msgid "ATAidle"
-#~ msgstr "ATAidle"
-
-#~ msgid "Free Space"
-#~ msgstr "Espace libre"
-
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "N'ANNULEZ PAS la mise à jour une fois commencée. %s redémarrera "
-#~ "automatiquement après installation de la mise à jour. La configuration sera "
-#~ "maintenue.<br>128 Mo de RAM sont nécessaires pour la mise à jour.<br>Il est "
-#~ "fortement recommandé de <a href=%s>sauvegarder</a> la configuration du "
-#~ "système avant de faire une mise à jour du logiciel."
-
-#~ msgid ""
-#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-#~ "hard drive."
-#~ msgstr ""
-#~ "Vous pouvez forcer le mode UDMA si vous avez le message 'UDMA_ERROR.... LBA' "
-#~ "avec votre disque dur."
-
-#, php-format
-#~ msgid ""
-#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
-#~ "'unformated' for unformated disk and then use <a href=%s>format "
-#~ "menu</a>.</em>"
-#~ msgstr ""
-#~ "Ceci vous permet d'indiquer le type de système de fichier d'un disque "
-#~ "contenant des données.<br><em>Laissez \"unformated\" pour des disques non "
-#~ "formatés puis utilisez <a href=%s>le menu Formater</a>.</em>"
-
-#~ msgid ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
-#~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-#~ "before format and mount it!"
-#~ msgstr ""
-#~ "Etape optionnelle: Configurer un disque RAID virtuel en utilisant votre <a "
-#~ "href='%s'>disque configuré précédemment</a>.<br>Attendez l'apparition de "
-#~ "l'état '%s' avant de le formater et de le monter!"
-
-#, php-format
-#~ msgid ""
-#~ "Second configuration step: Declaring the filesystem used by your <a "
-#~ "href=%s>previously configured disk.</a>"
-#~ msgstr ""
-#~ "Deuxième étape de la configuration: Déclarer le système de fichiers utilisé "
-#~ "par votre <a href=%s>disque configuré précédemment</a>."
-
-#~ msgid "Default is 21"
-#~ msgstr "Port par défaut : 21"
-
-#~ msgid "Clear log"
-#~ msgstr "Vider le journal"
-
-#~ msgid "SSHD events"
-#~ msgstr "Evénements SSHD"
-
-#~ msgid "RSYNCD events"
-#~ msgstr "Evénements RSYNCD"
-
-#~ msgid "SMARTD events"
-#~ msgstr "Evénements SMARTD"
-
-#~ msgid "List of partition on all detected disk"
-#~ msgstr "Liste des partitions sur tous les disques détectés"
-
-#~ msgid "List of SMART capabilities on all detected disk"
-#~ msgstr "Liste des aptitudes SMART sur tous les disques détectés"
-
-#~ msgid "List of Advanced ATA capabilities on all ATA disk"
-#~ msgstr "Liste des aptitudes ATA avancées sur tous les disques ATA"
-
-#~ msgid "Show the list of available target Name on the iSCSI target"
-#~ msgstr "Afficher la liste des noms de cibles disponibles sur la cible iSCSI"
-
-#~ msgid "AD Authentication disabled"
-#~ msgstr "Authentification AD désactivée"
-
-#, php-format
-#~ msgid "Count must be between 1 and %d"
-#~ msgstr "Le masque doit être compris entre 1 et %d"
-
-#~ msgid "Ping output"
-#~ msgstr "Message Ping"
-
-#~ msgid "Maximum number of hops"
-#~ msgstr "Nombre de sauts maximum"
-
-#~ msgid "Traceroute output"
-#~ msgstr "Message Traceroute"
-
-#, php-format
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
-#~ msgstr ""
-#~ "Les adresses IP sont résolues en noms d'hôtes si l'option &quot;Résoudre les "
-#~ "adresses IP en noms d'hôtes&quot; est cochée sur la page <a href=%s>%s</a>."
-
-#~ msgid "webGUI Configuration"
-#~ msgstr "Configuration webGUI"
-
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "Détruire le MBR et toutes les partitions"
-
-#~ msgid "Keeping the MBR and all partitions"
-#~ msgstr "Conserver le MBR et toutes les partitions"
-
-#~ msgid "Creating one partition"
-#~ msgstr "Création d'une partition"
-
-#~ msgid "Initializing partition"
-#~ msgstr "Initialisation de la partition"
-
-#~ msgid "Creating BSD label"
-#~ msgstr "Création de l'étiquette BSD"
-
-#, c-format
-#~ msgid "Destroying old %s information"
-#~ msgstr "Destruction des anciennes informations de %s"
-
-#, c-format
-#~ msgid "Creating %s partition"
-#~ msgstr "Création de la partition %s"
-
-#~ msgid ""
-#~ "The crypted disk list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La liste des disques cryptés a changé.<br>Vous devez appliquer les "
-#~ "changements pour qu'ils prennent effet."
-
-#~ msgid ""
-#~ "Do you really want to delete this encrypted disk? All elements that still "
-#~ "use it will become invalid (e.g. share)!"
-#~ msgstr ""
-#~ "Voulez-vous vraiment supprimer ce disque crypté? Tous les éléments "
-#~ "l'utilisant seront invalidés!"
-
-#~ msgid "Create encrypted disk"
-#~ msgstr "Créer un disque crypté"
-
-#~ msgid "Data integrity algorithm"
-#~ msgstr "Algorithme d'intégrité des données"
-
-#~ msgid "Init and encrypt disk"
-#~ msgstr "Initialiser et crypter un disque"
-
-#~ msgid "Disk initialization and encryption"
-#~ msgstr "Initialisation et cryptage du disque"
-
-#~ msgid "Encrypting... Please wait"
-#~ msgstr "Cryptage... Veuillez patienter"
-
-#~ msgid "Attaching..."
-#~ msgstr "Attachement..."
-
-#~ msgid "Sensors"
-#~ msgstr "Sondes"
-
-#~ msgid "Detaching..."
-#~ msgstr "Détachement..."
-
-#~ msgid "attach"
-#~ msgstr "attacher"
-
-#~ msgid "detach"
-#~ msgstr "détacher"
-
-#~ msgid "Enable resume mode."
-#~ msgstr "Activer la reprise après echec"
-
-#~ msgid ""
-#~ "Use this option to enable resuming broken transfers at the point of "
-#~ "interruption."
-#~ msgstr ""
-#~ "Utilisez cette option pour activer la reprise des transferts echoués à leur "
-#~ "point d'interruption."
-
-#~ msgid ""
-#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La liste des cibles iSCSI a changé.<br>Vous devez appliquer les changements "
-#~ "pour qu'ils prennent effet."
-
-#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-#~ msgstr "Vous devez avoir au minimum 256Mo de RAM pour créer une cible iSCSI."
-
-#~ msgid "FTP Server disabled"
-#~ msgstr "Serveur FTP désactivé"
-
-#~ msgid "FTP users"
-#~ msgstr "Utilisateurs FTP"
-
-#~ msgid "FTP connected users"
-#~ msgstr "Utilisateurs connectés en FTP"
-
-#~ msgid "Save and Restart UPnP"
-#~ msgstr "Sauvegarder et redémarrer UPnP"
-
-#~ msgid "Save and Restart Unison"
-#~ msgstr "Sauvegarder et redémarrer Unison"
-
-#~ msgid "Save and Restart SSHD"
-#~ msgstr "Sauvegarder et redémarrer SSHD"
-
-#~ msgid "Save and Restart RSYNC"
-#~ msgstr "Sauvegarder et redémarrer RSYNC"
-
-#~ msgid "Save and Restart NFS"
-#~ msgstr "Sauvegarder et redémarrer NFS"
-
-#~ msgid "Save and Restart FTP"
-#~ msgstr "Sauvegarder et redémarrer FTP"
-
-#~ msgid "Save and Restart AFP"
-#~ msgstr "Sauvegarder et redémarrer AFP"
-
-#, php-format
-#~ msgid "The %s port must be a valid port number."
-#~ msgstr "Le port %s doit être un numéro de port valide."
-
-#~ msgid "Password confirmation"
-#~ msgstr "Confirmation"
-
-#~ msgid "Remote share (source)"
-#~ msgstr "Partage distant (source)"
-
-#~ msgid ""
-#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La liste des clients RSYNC a changé.<br>Vous devez appliquer les changements "
-#~ "pour qu'ils prennent effet."
-
-#~ msgid ""
-#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La liste des clients RSYNC locaux a changé.<br>Vous devez appliquer les "
-#~ "changements pour qu'ils prennent effet."
-
-#~ msgid "Add RSYNC"
-#~ msgstr "Ajouter un RSYNC"
-
-#~ msgid "Edit RSYNC"
-#~ msgstr "Modifier un RSYNC"
-
-#~ msgid "Delete RSYNC"
-#~ msgstr "Supprimer un RSYNC"
-
-#~ msgid "Do you really want to delete this RSYNC?"
-#~ msgstr "Etes-vous sur de vouloir supprimer ce RSYNC?"
-
-#~ msgid "Remote source share name"
-#~ msgstr "Nom du partage source distant"
-
-#~ msgid "Mount to use"
-#~ msgstr "Point de montage à utiliser"
-
-#~ msgid "A valid size target value must be specified."
-#~ msgstr "Une taille de cible valide doit être spécifiée."
-
-#~ msgid "Mount used"
-#~ msgstr "Montage utilisé"
-
-#~ msgid "Define an host name can be useful for NFS."
-#~ msgstr "Définir un nom d'hôte peut être utile pour NFS."
-
-#~ msgid ""
-#~ "The host list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "La liste des hôtes a changé.<br>Vous devez appliquer les changements pour "
-#~ "qu'ils prennent effet."
-
-#~ msgid "Initializing disk"
-#~ msgstr "Initialisation du disque"
-
-#~ msgid "Enable Zeroconf"
-#~ msgstr "Activer le protocole Zeroconf."
-
-#~ msgid "LDAP server IP"
-#~ msgstr "IP du serveur LDAP"
-
-#~ msgid "IP address of LDAP server."
-#~ msgstr "Adresse IP du Serveur LDAP."
-
-#~ msgid ""
-#~ "Specifies the default base DN to use when performing ldap operations. The "
-#~ "base must be specified as a distinguished name in LDAP format."
-#~ msgstr ""
-#~ "Spécifie le DN de base (base DN) par défaut à utiliser lors de l'exécution "
-#~ "d'opérations LDAP. Le DN de base doit être spécifié comme un nom distingué "
-#~ "au format LDAP."
-
-#~ msgid "DN to bind"
-#~ msgstr "DN à utiliser"
-
-#~ msgid ""
-#~ "Specifies the default bind DN to use when performing ldap operations. The "
-#~ "bind DN must be specified as a distinguished name in LDAP format."
-#~ msgstr ""
-#~ "Spécifie le DN de liaison (bind DN) par défaut à utiliser lors de "
-#~ "l'exécution d'opérations LDAP. Le DN de liaison doit être spécifié comme un "
-#~ "nom distingué au format LDAP."
-
-#~ msgid "Password for DN"
-#~ msgstr "Mot de passe pour le DN"
-
-#~ msgid "The credentials to bind with, enter it here twice."
-#~ msgstr "Informations d'authentification, à entrer deux fois."
-
-#~ msgid "Method used to store your password in your LDAP."
-#~ msgstr ""
-#~ "Méthode utilisée pour stocker votre mot de passe dans le catalogue LDAP."
-
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span><"
-#~ msgstr ""
-#~ "Après avoir cliqué sur &quot;Enregistrer&quot;, vous devez redémarrer %s "
-#~ "pour prendre en compte les changements. Vous devriez également vérifier les "
-#~ "points suivants avant de pouvoir vous reconnecter sur votre NAS: "
-#~ "</span></p><ul><li><span class=\"vexpl\">Vérifiez que l'adresse IP de votre "
-#~ "ordinateur soit dans le même réseau que la nouvelle adresse du "
-#~ "NAS</span></li><li><span class=\"vexpl\">accédez à l'interface avec la "
-#~ "nouvelle adresse IP</span></li></ul>"
-
-#~ msgid ""
-#~ "The content directory list has been changed.<br>You must apply the changes "
-#~ "in order for them to take effect."
-#~ msgstr "La liste"
-
-#~ msgid ""
-#~ "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS "
-#~ "for changes to take effect."
-#~ msgstr ""
-#~ "Les modifications ont &eacute;t&eacute; enregistr&eacute;es. Vous devez <a "
-#~ "href=reboot.php>red&eacute;marrer</a> votre serveur NAS pour que les "
-#~ "modifications prennent effet."
-
-#~ msgid "ERROR: the changes could not be applied (error code '.$ok.')."
-#~ msgstr ""
-#~ "Erreur: Les modifications ne peuvent &ecirc;tre appliqu&eacute;es (code "
-#~ "d'erreur )."
-
-#~ msgid ""
-#~ "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
-#~ "of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, "
-#~ "EXT3, or NTFS can result in unpredictable results, file corruption, and loss "
-#~ "of data!"
-#~ msgstr ""
-#~ "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
-#~ "of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, "
-#~ "EXT3, or NTFS can result in unpredictable results, file corruption, and loss "
-#~ "of data!"
-
-#~ msgid ""
-#~ "Use a space to separate multiple hosts (only one required). Remember to set "
-#~ "\t\t\t\t  up at least one DNS server if you enter a host name here!"
-#~ msgstr ""
-#~ "Utilisez un espace pour s&eacute;parer plusieurs entr&eacute;es (une seule "
-#~ "obligatoire). V&eacute;rifiez d'avoir configur&eacute; un serveur DNS avant "
-#~ "d'utiliser un nom ici!"
-
-#~ msgid ""
-#~ "The firmware is now being installed. FreeNAS will reboot automatically."
-#~ msgstr ""
-#~ "Mise &agrave; jour en cours. FreeNAS red&eacute;marrera automatiquement."
-
-#~ msgid "This means that the image you uploaded "
-#~ msgstr ""
-#~ "Cela signifie que l'image que vous avez charg&eacute;e n'est pas une image "
-#~ "officiellement support&eacute;e, ceci pouvant causer un comportement "
-#~ "erratique ou provoquerdes failles de s&eacute;curit&eacute;. N'installez que "
-#~ "des images venant de sources de confiance, et assurez-vous que ces images "
-#~ "n'aient pas &eacute;t&eacute; modifi&eacute;es.<br><br>Voulez-vous installer "
-#~ "tout de m&ecirc;me cette image (sous votre enti&egrave;re "
-#~ "responsabilit&eacute;)? "
-
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image file "
-#~ "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
-#~ "process.');"
-#~ msgstr ""
-#~ "Cliquez sur &quot;Activer le chargement de mise &agrave; jour&quot; ci-"
-#~ "dessous, puis choisissez un fichier image &agrave; charger.<br>Cliquez sur "
-#~ "&quot;Charger&quot; pour lancer la mise &agrave; jour."
-
-#~ msgid "Enable firmware upload'"
-#~ msgstr "Activer le chargement de mise a jour"
-
-#~ msgid "Firmware image file'"
-#~ msgstr "Fichier image de mise &agrave; jour"
-
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minium of 128 Mb RAM to perform the firmware "
-#~ "update.<"
-#~ msgstr ""
-#~ "N'ANNULEZ PAS la mise &agrave; jour une fois commenc&eacute;e.<br>FreeNAS "
-#~ "red&eacute;marrera automatiquement apr&egrave;s installation de la mise "
-#~ "&agrave; jour.<br>La configuration sera maintenue.<br>128 Mo de RAM sont "
-#~ "n&eacute;cessaires pour la mise &agrave; jour."
-
-#~ msgid "Enable tuning of some kernel variable"
-#~ msgstr "Activer la personnalisation de quelques variables du noyau"
-
-#~ msgid "ZeroConf"
-#~ msgstr "ZeroConf"
-
-#~ msgid "Disable ZeroConf service announce"
-#~ msgstr "D&eacute;sactiver l'annonce du service ZeroConf"
-
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot FreeNAS to make the "
-#~ "changes take effect. You may also have to do one or more of the following "
-#~ "steps before you can access your NAS again: </span><"
-#~ msgstr ""
-#~ "Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&quot;, vous devez "
-#~ "red&eacute;marrer FreeNAS pour prendre en compte les changements. Vous "
-#~ "devriez &eacute;galement v&eacute;rifier les points suivants avant de "
-#~ "pouvoir vous reconnecter sur votre NAS: </span></p><ul><li><span "
-#~ "class=\"vexpl\">V&eacute;rifiez que l'adresse IP de votre ordinateur soit "
-#~ "dans le m&ecirc;me r&eacute;seau que la nouvelle adresse du "
-#~ "NAS</span></li><li><span class=\"vexpl\">acc&eacute;dez &agrave; l'interface "
-#~ "avec la nouvelle adresse IP</span></li></ul>"
-
-#~ msgid ""
-#~ "Device polling is a technique that lets the system periodically poll network "
-#~ "devices for "
-#~ msgstr ""
-#~ "Le sondage de p&eacute;riph&eacute;rique est une technique permettant au "
-#~ "syst&egrave;me d'interroger p&eacute;riodiquement les "
-#~ "p&eacute;riph&eacute;riques r&eacute;seau pour v&eacute;rifier la "
-#~ "pr&eacute;sence de nouvelles donn&eacute;es plutot que de se baser sur les "
-#~ "interruptions. Ceci peut r&eacute;duire la charge CPU et donc augmenter le "
-#~ "d&eacute;bit, au d&eacute;triment d'un d&eacute;lai de transfert plus "
-#~ "&eacute;lev&eacute; (les p&eacute;riph&eacute;riques sont sond&eacute;s 1000 "
-#~ "fois par seconde). Toutes les cartes r&eacute;seau ne supportent pas cette "
-#~ "technique; voyez le site de <a href=http://m0n0.ch/wall>m0n0wall</a> pour "
-#~ "trouver la liste des cartes support&eacute;es. "
-
-#~ msgid "after you click &quot;Save&quot;, you may al"
-#~ msgstr ""
-#~ "Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&quot;, Vous pourriez "
-#~ "&eacute;galement avoir besoin de v&eacute;rifier les points suivants avant "
-#~ "de pouvoir vous reconnecter sur votre NAS"
-
-#~ msgid "iSCSI initiator"
-#~ msgstr "initiateur iSCSI"
-
-#~ msgid ""
-#~ "Puts the hard disk into standby mode when the selected amount of time after "
-#~ "the l"
-#~ msgstr ""
-#~ "Mets le disque en veille lorsque la dur&eacute;e sp&eacute;cifi&eacute;e "
-#~ "depuis le dernier acc&egrave;s est &eacute;coul&eacute;e. <em>N'activez PAS "
-#~ "cette option pour les cartes Compact Flash.</em>"
-
-#~ msgid ""
-#~ "This allows  you  to lower the power consumption of the drive, at the "
-#~ "expense of performance.<em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Ceci vous permet de baisser la consommation d'&eacute;nergie du disque, au "
-#~ "d&eacute;triment de ses performances.<em>N'activez PAS cette option pour les "
-#~ "cartes Compact Flash.</em>"
-
-#~ msgid ""
-#~ "This allows you to set how loud the drive is while it's  operating.<em>Do "
-#~ "not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Ceci vous permet de contr&ocirc;ler le niveau sonore du disque en "
-#~ "fonctionnement.<em>N'activez PAS cette option pour les cartes Compact "
-#~ "Flash.</em>"
-
-#~ msgid "<strong>Disk initialization details:</strong>"
-#~ msgstr "D&eacute;tails de l'initialisation:"
-
-#~ msgid "don't erase the MBR (useful for some RAID controller cards)"
-#~ msgstr "Conserve le MBR intact (utile avec certains controleurs RAID)"
-
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted temporarily "
-#~ "to perform selected command, otherwise the commands work in read-only mode.<"
-#~ msgstr ""
-#~ "Si le disque ou la partition est mont&eacute;(e) il (elle) sera "
-#~ "d&eacute;mont&eacute;(e) temporairement pour ex&eacute;cuter la commande "
-#~ "s&eacute;lectionn&eacute;e, sinon les commandes fonctionnent en lecture "
-#~ "seule."
-
-#~ msgid "Allows FreeNAS to try and become a local master browser."
-#~ msgstr ""
-#~ "Permet &agrave; FreeNAS d'essayer de s'enregistrer comme ma&icirc;tre "
-#~ "explorateur local."
-
-#~ msgid "FreeNAS advertises itself as a time server to Windows clients."
-#~ msgstr ""
-#~ "FreeNAS s'annonce commme un serveur de temps pour les clients Windows."
-
-#~ msgid "This will create a recycle bin on the CIFS shares"
-#~ msgstr "Ceci cr&eacute;&eacute;ra une corbeille pour les partages CIFS"
-
-#~ msgid "Do you really want to delete this user?!"
-#~ msgstr "Voulez-vous vraiment supprimer cet utilisateur?"
-
-#~ msgid "you must create a group first."
-#~ msgstr "Vous devez d'abord cr&eacute;er un groupe."
-
-#~ msgid "Do you really want to delete this group?!"
-#~ msgstr "Voulez-vous vraiment supprimer ce groupe?!"
-
-#~ msgid "FreeNAS will reboot after restoring the configuration."
-#~ msgstr ""
-#~ "FreeNAS red&eacute;marrera apr&egrave;s  avoir restor&eacute; la "
-#~ "configuration."
-
-#~ msgid "This disk/partition is already configured."
-#~ msgstr "Ce disque/partition est déjà configuré."
-
-#~ msgid ""
-#~ "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
-#~ "(for others) partition and format the hard drive with the file system "
-#~ "specified."
-#~ msgstr ""
-#~ "Ceci effacera toutes les partitions, crééra une partition GPT/EFI (pour UFS) "
-#~ "ou MBR (pour les autres formats) et formatera le disque avec le système de "
-#~ "fichiers spécifié."
-
-#~ msgid "Authorized"
-#~ msgstr "Autorisations"
-
-#~ msgid "Networks"
-#~ msgstr "Réseaux"
-
-#~ msgid "Networks Authorized"
-#~ msgstr "Réseaux autorisés"
-
-#~ msgid ""
-#~ "This will erase ALL data on your disk!<br>Using Data integrity will reduce "
-#~ "size of available storage and also reduce speed."
-#~ msgstr ""
-#~ "Ceci détruira TOUTES les données sur le disque!<br>L'utilisation de "
-#~ "l'intégrité des données réduira la taille de stockage disponible ainsi que "
-#~ "la vitesse d'accès."
-
-#~ msgid "Save and Restart CIFS"
-#~ msgstr "Sauvegarder et redémarrer CIFS"
-
-#~ msgid ""
-#~ "These commands will be executed pre or post system initialization (booting)."
-#~ msgstr ""
-#~ "Ces commandes seront exécutées pré ou post initialisation (démarrage du "
-#~ "système)."
-
-#~ msgid "Execute command pre or post system initialization (booting)."
-#~ msgstr "Exécuter une commande pré ou post initialisation."
-
-#~ msgid "Startup"
-#~ msgstr "Démarrage"
-
-#~ msgid "Help Needed!"
-#~ msgstr "Aide requise!"
-
-#~ msgid ""
-#~ "LDAP authentication feature is not implemented: If you know how to use PAM "
-#~ "to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
-#~ "server... Your patchs are welcome."
-#~ msgstr ""
-#~ "L'authentification LDAP n'est pas implémentée: si vous savez comment "
-#~ "utiliser PAM pour authentifier les services UNIX (FTP, SSH, etc...) ET Samba "
-#~ "contre un serveur LDAP... vos patchs sont les bienvenus!"
-
-#~ msgid "NIS Authentication"
-#~ msgstr "Authentification NIS"
-
-#~ msgid "Enter the NIS domain name."
-#~ msgstr "Entrer le nom de domaine NIS."
-
-#~ msgid "NIS master server name"
-#~ msgstr "Nom serveur maître NIS"
-
-#~ msgid "Enter the NIS Master server hostname."
-#~ msgstr "Entrer le nom d'hôte du serveur maître NIS."
-
-#~ msgid "NIS slave server name"
-#~ msgstr "Nom du serveur esclave NIS"
-
-#~ msgid "Enter the NIS Slave server hostname."
-#~ msgstr "Entrer le nom d'hôte du serveur esclave NIS."
-
-#~ msgid "Accessiblity test to MS domain"
-#~ msgstr "Test d'accessibilité au domaine MS"
-
-#~ msgid ""
-#~ "The encrypted volume list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La liste des volumes cryptés a été modifiée.<br>Vous devez appliquer les "
-#~ "modifications pour qu'elles prennent effet."
-
-#~ msgid ""
-#~ "Do you really want to delete this encrypted volume? All elements that still "
-#~ "use it will become invalid (e.g. share)!"
-#~ msgstr ""
-#~ "Voulez vous réellement supprimer ce volume chiffré? Tous les éléments "
-#~ "restant en utilisation deviendront invalide (comme les partages)!"
-
-#~ msgid ""
-#~ "The iSCSI disk list has been changed.<br>You must apply the changes in order "
-#~ "for them to take effect."
-#~ msgstr ""
-#~ "La liste des disques iSCSI a été modifiée.<br>Vous devez appliquer les "
-#~ "modifications pour qu'elles prennent effet."
-
-#~ msgid "The swap file is using this mount point."
-#~ msgstr "Le fichier de swap utilise ce point de montage"
-
-#~ msgid "ISO"
-#~ msgstr "ISO"
-
-#, php-format
-#~ msgid ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
-#~ "href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
-#~ "format and mount it!"
-#~ msgstr ""
-#~ "Etape optionnelle: Configurer un disque RAID virtuel en utilisant votre <a "
-#~ "href='%s'>disque configuré précédemment</a>.<br>Attendez l'apparition de "
-#~ "l'état '%s' avant de le formater et de le monter!"
-
-#~ msgid "CPU"
-#~ msgstr "CPU"
-
-#~ msgid "IPv4 Gateway"
-#~ msgstr "Passerelle IPv4"
-
-#~ msgid "Global Configuration"
-#~ msgstr "Configuration globale"
-
-#~ msgid "IPv4 address"
-#~ msgstr "Adresse IPv4"
-
-#~ msgid "pasv_min_port"
-#~ msgstr "pasv_min_port"
-
-#~ msgid "pasv_max_port"
-#~ msgstr "pasv_max_port"
-
-#~ msgid "Parameter"
-#~ msgstr "Paramètre"
-
-#~ msgid "Edit parameter"
-#~ msgstr "Editer paramêtre"
-
-#~ msgid "Do you really want to delete this parameter?"
-#~ msgstr "Voulez vous réellement supprimer ce paramètre?"
-
-#~ msgid "Delete parameter"
-#~ msgstr "Supprimer paramètre"
-
-#~ msgid "Add parameter"
-#~ msgstr "Ajouter paramètre"
-
-#~ msgid "Auxiliary parameter"
-#~ msgstr "Auxiliary parameter"
-
-#~ msgid "Auxiliary parameter to be added."
-#~ msgstr "Auxiliary parameter to be added."
-
-#~ msgid ""
-#~ "Enter a custom port number for the HTTP server if you want to override the "
-#~ "default (49152). Only dynamic or private ports can be used (from 49152 "
-#~ "through 65535)."
-#~ msgstr ""
-#~ "Entrez le numéro d'un port pour le serveur HTTP si vous désirez changer "
-#~ "celui par défaut (49152). Seuls des ports dynamiques ou privés peuvent être "
-#~ "utilisés (de 49152 à 65535)."
-
-#~ msgid "Failed to send status report. Please check log files."
-#~ msgstr ""
-#~ "Echec lors de l'envoi du rapport d'état. Veuillez conulter les fichiers de "
-#~ "journalisation."
-
-#~ msgid "desc"
-#~ msgstr "desc"
-
-#~ msgid "Pick a date"
-#~ msgstr "Choisir une date"
-
-#~ msgid ""
-#~ "The cron job list has been changed.<br>You must apply the changes in order "
-#~ "for them to take effect."
-#~ msgstr ""
-#~ "La liste des tâches cron a été modifiée.<br>Vous devez appliquer les "
-#~ "modifications pour qu'elles prennent effet."
-
-#~ msgid "Defining a hostname can be useful for NFS."
-#~ msgstr "Définir un nom d'hôte peut être utile pour NFS."
-
-#~ msgid ""
-#~ "The package list has been changed.<br>You must apply the changes in order "
-#~ "for them to take effect."
-#~ msgstr ""
-#~ "La liste des paquetages a été modifiée.<br>Vous devez appliquer les "
-#~ "modifications pour qu'elles prennent effet."
-
-#~ msgid "Duplicate name."
-#~ msgstr "Nom dupliqué."
-
-#~ msgid ""
-#~ "Enter the path to the home directory of that user. Make sure that this path "
-#~ "exists and is always mounted at startup. Leave this field empty to use "
-#~ "default path /mnt."
-#~ msgstr ""
-#~ "Entrez le chemin vers le répertoire de base de cet utilisateur. Assurez-vous "
-#~ "que ce chemin existe et qu'il soit toujours monté au démarrage. Laissez ce "
-#~ "champ vide pour utiliser le chemin par défaut /mnt."
-
-#~ msgid ""
-#~ "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
-#~ "for TLS"
-#~ msgstr ""
-#~ "Nom d'hôte ou adresse IP du serveur LDAP. Attention: l'utilisation d'un nom "
-#~ "d'hôte est obligatoire pour TLS"
-
-#~ msgid ""
-#~ "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
-#~ "use this option if you want to add an existing encrypted disk."
-#~ msgstr ""
-#~ "Initialiser et crypter le disque. Ceci effacera TOUTES les données sur ce "
-#~ "disque! N'utilisez pas cette option si vous voulez ajouter un disque crypté "
-#~ "existant."
-
-#~ msgid "Keep all files"
-#~ msgstr "Garder tout les fichiers"
-
-#~ msgid "LDAP server name"
-#~ msgstr "Nom serveur LDAP"
-
-#~ msgid "LDAP server name or IP"
-#~ msgstr "Nom serveur LDAP ou IP"
-
-#~ msgid ""
-#~ "Specifies the default base DN to use when performing ldap operations, "
-#~ "example: dc=example,dc=com"
-#~ msgstr ""
-#~ "Spécifie le DN de base (base DN) par défaut à utiliser lors de l'exécution "
-#~ "d'opérations LDAP, par ex. dc=exemple,dc=com"
-
-#~ msgid ""
-#~ "Specifies the default bind DN to use when performing ldap operations, "
-#~ "example:cn=administrator,dc=example,dc=com "
-#~ msgstr ""
-#~ "Spécifie le DN de liaison (bind DN) par défaut à utiliser lors de "
-#~ "l'exécution d'opérations LDAP, par ex. cn=administrateur,dc=exemple,dc=com "
-
-#~ msgid "chroot everyone"
-#~ msgstr "Emprisonner (chroot) tout le monde"
-
-#~ msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-#~ msgstr "group_suffix, exemple: ou=groupes,dc=exemple,dc=com"
-
-#~ msgid "password_suffix, example: ou=users,dc=example,dc=com"
-#~ msgstr "password_suffix, exemple: ou=utilisateurs,dc=exemple,dc=com"
-
-#~ msgid "user_suffix, example: ou=users,dc=example,dc=com"
-#~ msgstr "user_suffix, exemple: ou=utilisateurs,dc=exemple,dc=com"
-
-#~ msgid "Accessible through 'http://ip_address:port'."
-#~ msgstr "Accessible par 'http://adresse_ip:port'."
-
-#~ msgid "Web user interface"
-#~ msgstr "Interface utilisateur web"
-
-#~ msgid "Do not set this for CF cards."
-#~ msgstr "Ne pas activer ceci pour les cartes CF."
-
-#~ msgid "Disable"
-#~ msgstr "Désactiver"
-
-#~ msgid "Enforce TLS"
-#~ msgstr "TLS renforcé"
-
-#~ msgid "Passive mode ports"
-#~ msgstr "Ports en mode passif"
-
-#~ msgid "Sony Playstation 3"
-#~ msgstr "Sony Playstation 3"
-
-#~ msgid "Telegent TG100"
-#~ msgstr "Telegent TG100"
-
-#~ msgid "Use SSL/TLS encryption layer."
-#~ msgstr "Utiliser la couche de cryptage SSL/TLS"
-
-#~ msgid "ZyXEL DMA-1000"
-#~ msgstr "ZyXEL DMA-1000"
-
-#~ msgid "Helios X3000"
-#~ msgstr "Helios X3000"
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+"Veuillez consulter la documentation de <a href='%s' target='_blank'>."
+
+msgid "Syslog"
+msgstr "Syslog"
