@@ -3,7 +3,7 @@
 /*
 	system_routes_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,26 +33,25 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Network"), gettext("Static routes"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Network"), gettext("Static routes"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
 
 array_sort_key($config['staticroutes']['route'], "network");
-
 $a_routes = &$config['staticroutes']['route'];
 
-if (isset($id) && $a_routes[$id]) {
-	$pconfig['uuid'] = $a_routes[$id]['uuid'];
-	$pconfig['interface'] = $a_routes[$id]['interface'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_routes, "uuid")))) {
+	$pconfig['uuid'] = $a_routes[$cnid]['uuid'];
+	$pconfig['interface'] = $a_routes[$cnid]['interface'];
 	list($pconfig['network'],$pconfig['network_subnet']) = 
-		explode('/', $a_routes[$id]['network']);
-	$pconfig['gateway'] = $a_routes[$id]['gateway'];
-	$pconfig['descr'] = $a_routes[$id]['descr'];
+		explode('/', $a_routes[$cnid]['network']);
+	$pconfig['gateway'] = $a_routes[$cnid]['gateway'];
+	$pconfig['descr'] = $a_routes[$cnid]['descr'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['gateway'] = "";
@@ -102,14 +101,11 @@ if ($_POST) {
 	} else {
 		$osn = $_POST['network'] . "/" . $_POST['network_subnet'] ;
 	}
-	
-	foreach ($a_routes as $route) {
-		if (isset($id) && ($a_routes[$id]) && ($a_routes[$id] === $route))
-			continue;
 
-		if ($route['network'] == $osn) {
+	$index = array_search_ex($osn, $a_routes, "network");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_routes[$cnid]['uuid'] === $a_routes[$index]['uuid']))) {
 			$input_errors[] = gettext("A route to this destination network already exists.");
-			break;
 		}
 	}
 
@@ -121,8 +117,8 @@ if ($_POST) {
 		$route['gateway'] = $_POST['gateway'];
 		$route['descr'] = $_POST['descr'];
 
-		if (isset($id) && $a_routes[$id]) {
-			$a_routes[$id] = $route;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_routes[$cnid] = $route;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_routes[] = $route;
@@ -163,11 +159,8 @@ if ($_POST) {
           <?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), false, 40);?>
         </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_routes[$id])) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_routes[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 			  </div>
 			</form>
 		</td>

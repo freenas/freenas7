@@ -4,7 +4,7 @@
 	system_hosts_edit.php
 	part of FreeNAS (http://www.freenas.org)
 
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -34,24 +34,23 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Network"), gettext("Hosts"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Network"), gettext("Hosts"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
 
 array_sort_key($config['system']['hosts'], "name");
-
 $a_hosts = &$config['system']['hosts'];
 
-if (isset($id) && $a_hosts[$id]) {
-	$pconfig['uuid'] = $a_hosts[$id]['uuid'];
-	$pconfig['name'] = $a_hosts[$id]['name'];
-	$pconfig['address'] = $a_hosts[$id]['address'];
-	$pconfig['descr'] = $a_hosts[$id]['descr'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_hosts, "uuid")))) {
+	$pconfig['uuid'] = $a_hosts[$cnid]['uuid'];
+	$pconfig['name'] = $a_hosts[$cnid]['name'];
+	$pconfig['address'] = $a_hosts[$cnid]['address'];
+	$pconfig['descr'] = $a_hosts[$cnid]['descr'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -76,14 +75,11 @@ if ($_POST) {
 		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 
-	/* check for name conflicts */
-	foreach ($a_hosts as $host) {
-		if (isset($id) && ($a_hosts[$id]) && ($a_hosts[$id] === $host))
-			continue;
-
-		if ($host['name'] == $_POST['name']) {
+	// Check for duplicates.
+	$index = array_search_ex($_POST['name'], $a_hosts, "name");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_hosts[$cnid]['uuid'] === $a_hosts[$index]['uuid']))) {
 			$input_errors[] = gettext("An host with this name already exists.");
-			break;
 		}
 	}
 
@@ -94,8 +90,8 @@ if ($_POST) {
 		$host['address'] = $_POST['address'];
 		$host['descr'] = $_POST['descr'];
 
-		if (isset($id) && $a_hosts[$id]) {
-			$a_hosts[$id] = $host;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_hosts[$cnid] = $host;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_hosts[] = $host;
@@ -117,33 +113,13 @@ if ($_POST) {
       <form action="system_hosts_edit.php" method="post" name="iform" id="iform">
       	<?php if ($input_errors) print_input_errors($input_errors); ?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-            <td class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
-              <br><span class="vexpl"><?=gettext("The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and .");?></span>
-						</td>
-          </tr>
-          <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
-            <td width="78%" class="vtable">
-							<input name="address" type="text" class="formfld" id="address" size="20" value="<?=htmlspecialchars($pconfig['address']);?>">
-							<br><span class="vexpl"><?=gettext("The IP address that this hostname represents.");?></span>
-						</td>
-          </tr>
-          <tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
-            <td width="78%" class="vtable"> <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-              <br><span class="vexpl"><?=gettext("You may enter a description here for your reference.");?></span>
-						</td>
-          </tr>
+					<?php html_inputbox("name", gettext("Hostname"), $pconfig['name'], gettext("The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."), true, 40);?>
+					<?php html_inputbox("address", gettext("IP address"), $pconfig['address'], gettext("The IP address that this hostname represents."), true, 20);?>
+					<?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), false, 20);?>
         </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_hosts[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_hosts[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

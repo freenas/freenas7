@@ -37,11 +37,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Auth Group"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Auth Group"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 $MAX_AUTHUSERS = 4;
 $GROW_AUTHUSERS = 4;
@@ -52,15 +52,15 @@ if (!is_array($config['iscsitarget']['authgroup']))
 array_sort_key($config['iscsitarget']['authgroup'], "tag");
 $a_iscsitarget_ag = &$config['iscsitarget']['authgroup'];
 
-if (isset($id) && $a_iscsitarget_ag[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_ag[$id]['uuid'];
-	$pconfig['tag'] = $a_iscsitarget_ag[$id]['tag'];
-	$pconfig['comment'] = $a_iscsitarget_ag[$id]['comment'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ag, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_ag[$cnid]['uuid'];
+	$pconfig['tag'] = $a_iscsitarget_ag[$cnid]['tag'];
+	$pconfig['comment'] = $a_iscsitarget_ag[$cnid]['comment'];
 	$i = 1;
-	if (!is_array($a_iscsitarget_ag[$id]['agauth']))
-		$a_iscsitarget_ag[$id]['agauth'] = array();
-	array_sort_key($a_iscsitarget_ag[$id]['agauth'], "authuser");
-	foreach ($a_iscsitarget_ag[$id]['agauth'] as $agauth) {
+	if (!is_array($a_iscsitarget_ag[$cnid]['agauth']))
+		$a_iscsitarget_ag[$cnid]['agauth'] = array();
+	array_sort_key($a_iscsitarget_ag[$cnid]['agauth'], "authuser");
+	foreach ($a_iscsitarget_ag[$cnid]['agauth'] as $agauth) {
 		$pconfig["user$i"] = $agauth['authuser'];
 		$pconfig["secret$i"] = $agauth['authsecret'];
 		$pconfig["secret2$i"] = $pconfig["secret$i"];
@@ -104,9 +104,9 @@ if ($_POST) {
 	if ($pconfig['tag'] < 1 || $pconfig['tag'] > 65535) {
 		$input_errors[] = gettext("The tag range is invalid.");
 	}
-	if (!isset($id)) {
+	if (!(isset($uuid) && (FALSE !== $cnid))) {
 		$index = array_search_ex($pconfig['tag'], $config['iscsitarget']['authgroup'], "tag");
-		if ($index !== false) {
+		if ($index !== FALSE) {
 			$input_errors[] = gettext("This tag already exists.");
 		}
 	}
@@ -164,8 +164,8 @@ if ($_POST) {
 		$iscsitarget_ag['comment'] = $_POST['comment'];
 		$iscsitarget_ag['agauth'] = $auths;
 
-		if (isset($id) && $a_iscsitarget_ag[$id]) {
-			$a_iscsitarget_ag[$id] = $iscsitarget_ag;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_ag[$cnid] = $iscsitarget_ag;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_ag[] = $iscsitarget_ag;
@@ -291,7 +291,7 @@ function normalize_ipv6addr($v6addr) {
 	    <td class="tabcont">
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, isset($id));?>
+	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 	      <?php for ($i = 1; $i <= $MAX_AUTHUSERS; $i++): ?>
 	      <?php $ldelete=sprintf("delete%d", $i); ?>
@@ -324,11 +324,8 @@ function normalize_ipv6addr($v6addr) {
 	      <?php endfor;?>
 	      </table>
 	      <div id="submit">
-		      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_ag[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-		      <?php if (isset($id) && $a_iscsitarget_ag[$id]):?>
-		      <input name="id" type="hidden" value="<?=$id;?>">
-		      <?php endif;?>
 	      </div>
 	    </td>
 	  </tr>

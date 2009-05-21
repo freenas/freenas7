@@ -4,7 +4,7 @@
 	system_hosts.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -97,12 +97,10 @@ function hosts_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['system']['hosts'])) {
-				$index = array_search_ex($data, $config['system']['hosts'], "uuid");
-				if (false !== $index) {
-					unset($config['system']['hosts'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['system']['hosts'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['system']['hosts'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -128,7 +126,7 @@ function hosts_process_updatenotification($mode, $data) {
 									<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
-								<?php $i = 0; foreach ($a_hosts as $host):?>
+								<?php foreach ($a_hosts as $host):?>
 								<?php if (empty($host['uuid'])) continue;?>
 								<?php $notificationmode = updatenotify_get_mode("hosts", $host['uuid']);?>
 								<tr>
@@ -137,7 +135,7 @@ function hosts_process_updatenotification($mode, $data) {
 									<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 									<td valign="middle" nowrap class="list">
-										<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
+										<a href="system_hosts_edit.php?iuuid=<?=$host['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
 										<a href="system_hosts.php?act=del&uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
 									</td>
 									<?php else:?>
@@ -146,7 +144,7 @@ function hosts_process_updatenotification($mode, $data) {
 									</td>
 									<?php endif;?>
 								</tr>
-								<?php $i++; endforeach;?>
+								<?php endforeach;?>
 								<tr>
 									<td class="list" colspan="3"></td>
 									<td class="list"><a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
