@@ -36,50 +36,48 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("AFP"), gettext("Share"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("AFP"), gettext("Share"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
-$a_mount = &$config['mounts']['mount'];
-
 if (!is_array($config['afp']['share']))
 	$config['afp']['share'] = array();
 
-array_sort_key($config['afp']['share'], "name");
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
+$a_mount = &$config['mounts']['mount'];
 
+array_sort_key($config['afp']['share'], "name");
 $a_share = &$config['afp']['share'];
 
-if (isset($id) && $a_share[$id]) {
-	$pconfig['uuid'] = $a_share[$id]['uuid'];
-	$pconfig['name'] = $a_share[$id]['name'];
-	$pconfig['path'] = $a_share[$id]['path'];
-	$pconfig['comment'] = $a_share[$id]['comment'];
-	$pconfig['volpasswd'] = $a_share[$id]['volpasswd'];
-	$pconfig['casefold'] = $a_share[$id]['casefold'];
-	$pconfig['volcharset'] = $a_share[$id]['volcharset'];
-	$pconfig['allow'] = $a_share[$id]['allow'];
-	$pconfig['deny'] = $a_share[$id]['deny'];
-	$pconfig['rolist'] = $a_share[$id]['rolist'];
-	$pconfig['rwlist'] = $a_share[$id]['rwlist'];
-	$pconfig['dbpath'] = $a_share[$id]['dbpath'];
-	$pconfig['cnidscheme'] = $a_share[$id]['cnidscheme'];
-	$pconfig['cachecnid'] = isset($a_share[$id]['options']['cachecnid']);
-	$pconfig['crlf'] = isset($a_share[$id]['options']['crlf']);
-	$pconfig['mswindows'] = isset($a_share[$id]['options']['mswindows']);
-	$pconfig['noadouble'] = isset($a_share[$id]['options']['noadouble']);
-	$pconfig['nodev'] = isset($a_share[$id]['options']['nodev']);
-	$pconfig['nofileid'] = isset($a_share[$id]['options']['nofileid']);
-	$pconfig['nohex'] = isset($a_share[$id]['options']['nohex']);
-	$pconfig['prodos'] = isset($a_share[$id]['options']['prodos']);
-	$pconfig['nostat'] = isset($a_share[$id]['options']['nostat']);
-	$pconfig['upriv'] = isset($a_share[$id]['options']['upriv']);
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")))) {
+	$pconfig['uuid'] = $a_share[$cnid]['uuid'];
+	$pconfig['name'] = $a_share[$cnid]['name'];
+	$pconfig['path'] = $a_share[$cnid]['path'];
+	$pconfig['comment'] = $a_share[$cnid]['comment'];
+	$pconfig['volpasswd'] = $a_share[$cnid]['volpasswd'];
+	$pconfig['casefold'] = $a_share[$cnid]['casefold'];
+	$pconfig['volcharset'] = $a_share[$cnid]['volcharset'];
+	$pconfig['allow'] = $a_share[$cnid]['allow'];
+	$pconfig['deny'] = $a_share[$cnid]['deny'];
+	$pconfig['rolist'] = $a_share[$cnid]['rolist'];
+	$pconfig['rwlist'] = $a_share[$cnid]['rwlist'];
+	$pconfig['dbpath'] = $a_share[$cnid]['dbpath'];
+	$pconfig['cnidscheme'] = $a_share[$cnid]['cnidscheme'];
+	$pconfig['cachecnid'] = isset($a_share[$cnid]['options']['cachecnid']);
+	$pconfig['crlf'] = isset($a_share[$cnid]['options']['crlf']);
+	$pconfig['mswindows'] = isset($a_share[$cnid]['options']['mswindows']);
+	$pconfig['noadouble'] = isset($a_share[$cnid]['options']['noadouble']);
+	$pconfig['nodev'] = isset($a_share[$cnid]['options']['nodev']);
+	$pconfig['nofileid'] = isset($a_share[$cnid]['options']['nofileid']);
+	$pconfig['nohex'] = isset($a_share[$cnid]['options']['nohex']);
+	$pconfig['prodos'] = isset($a_share[$cnid]['options']['prodos']);
+	$pconfig['nostat'] = isset($a_share[$cnid]['options']['nostat']);
+	$pconfig['upriv'] = isset($a_share[$cnid]['options']['upriv']);
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -125,9 +123,11 @@ if ($_POST) {
 	}
 
 	// Check for duplicates.
-	if ((!isset($id) && (false !== array_search_ex($_POST['name'], $a_share, "name"))) ||
-			(isset($id) && ($a_share[$id]['name'] !== $_POST['name']) && (false !== array_search_ex($_POST['name'], $a_share, "name")))) {
-		$input_errors[] = gettext("The share name is already used.");
+	$index = array_search_ex($_POST['name'], $a_share, "name");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_share[$cnid]['uuid'] === $a_share[$index]['uuid']))) {
+			$input_errors[] = gettext("The share name is already used.");
+		}
 	}
 
 	if (!$input_errors) {
@@ -156,8 +156,8 @@ if ($_POST) {
 		$share['options']['nostat'] = $_POST['nostat'] ? true : false;
 		$share['options']['upriv'] = $_POST['upriv'] ? true : false;
 
-		if (isset($id) && $a_share[$id]) {
-			$a_share[$id] = $share;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_share[$cnid] = $share;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_share[] = $share;
@@ -350,11 +350,8 @@ if ($_POST) {
 			    </tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_share[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

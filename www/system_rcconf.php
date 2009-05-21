@@ -61,9 +61,9 @@ array_sort_key($config['system']['rcconf']['param'], "name");
 $a_rcvar = &$config['system']['rcconf']['param'];
 
 if ($_GET['act'] === "del") {
-	if ($_GET['id'] === "all") {
-		foreach ($a_rcvar as $rcvark => $rcvarv) {
-			updatenotify_set("rcconf", UPDATENOTIFY_MODE_DIRTY, $a_rcvar[$rcvark]['uuid']);
+	if ($_GET['uuid'] === "all") {
+		foreach ($a_rcvar as $rcvarv) {
+			updatenotify_set("rcconf", UPDATENOTIFY_MODE_DIRTY, $rcvarv['uuid']);
 		}
 	} else {
 		updatenotify_set("rcconf", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
@@ -145,10 +145,11 @@ function rcconf_process_updatenotification($mode, $data) {
 	        <?php endforeach;?>
 	        <tr>
 	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" border="0"></a>
-	          <?php if (!empty($a_rcvar)):?>
-						<a href="system_rcconf.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" border="0"></a>
-						<?php endif;?>
+	          <td class="list">
+							<a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" border="0"></a>
+	          	<?php if (!empty($a_rcvar)):?>
+							<a href="system_rcconf.php?act=del&uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" border="0"></a>
+							<?php endif;?>
 						</td>
 	        </tr>
 	      </table>

@@ -2,11 +2,11 @@
 <?php
 /*
 	services_afp_share.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -64,11 +64,9 @@ array_sort_key($config['afp']['share'], "name");
 $a_share = &$config['afp']['share'];
 
 if ($_GET['act'] === "del") {
-	if ($a_share[$_GET['id']]) {
-		updatenotify_set("afpshare", UPDATENOTIFY_MODE_DIRTY, $a_share[$_GET['id']]['uuid']);
-		header("Location: services_afp_share.php");
-		exit;
-	}
+	updatenotify_set("afpshare", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: services_afp_share.php");
+	exit;
 }
 
 function afpshare_process_updatenotification($mode, $data) {
@@ -81,12 +79,10 @@ function afpshare_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['afp']['share'])) {
-				$index = array_search_ex($data, $config['afp']['share'], "uuid");
-				if (false !== $index) {
-					unset($config['afp']['share'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['afp']['share'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['afp']['share'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -116,7 +112,7 @@ function afpshare_process_updatenotification($mode, $data) {
             <td width="40%" class="listhdrr"><?=gettext("Comment");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach ($a_share as $sharev):?>
+  			  <?php foreach ($a_share as $sharev):?>
   			  <?php $notificationmode = updatenotify_get_mode("afpshare", $sharev['uuid']);?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
@@ -124,8 +120,8 @@ function afpshare_process_updatenotification($mode, $data) {
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-              <a href="services_afp_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0"></a>
-              <a href="services_afp_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" border="0"></a>
+              <a href="services_afp_share_edit.php?uuid=<?=$sharev['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0"></a>
+              <a href="services_afp_share.php?act=del&uuid=<?=$sharev['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -133,10 +129,12 @@ function afpshare_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
           </tr>
-          <?php $i++; endforeach;?>
+          <?php endforeach;?>
           <tr>
             <td class="list" colspan="3"></td>
-            <td class="list"><a href="services_afp_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" border="0"></a></td>
+            <td class="list">
+							<a href="services_afp_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" border="0"></a>
+						</td>
           </tr>
         </table>
         <div id="remarks">

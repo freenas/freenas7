@@ -160,7 +160,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
             <td width="20%" class="listhdrr"><?=gettext("Status");?></td>
             <td width="10%" class="list"></td>
           </tr>
-					<?php $i = 0; foreach($a_mount as $mount):?>
+					<?php foreach($a_mount as $mount):?>
 					<?php
 					$notificationmode = updatenotify_get_mode("mountpoint", $mount['uuid']);
 					switch ($notificationmode) {
@@ -194,7 +194,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
             <td class="listbg"><?=$status;?>&nbsp;</td>
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-              <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit mount point");?>" border="0"></a>&nbsp;
+              <a href="disks_mount_edit.php?uuid=<?=$mount['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit mount point");?>" border="0"></a>&nbsp;
               <a href="disks_mount.php?act=del&uuid=<?=$mount['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete mount point");?>" border="0"></a>
             </td>
             <?php else:?>
@@ -203,7 +203,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
           </tr>
-          <?php $i++; endforeach;?>
+          <?php endforeach;?>
           <tr>
             <td class="list" colspan="5"></td>
             <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=gettext("Add mount point");?>" border="0"></a></td>

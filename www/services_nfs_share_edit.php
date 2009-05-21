@@ -36,28 +36,27 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("NFS"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("NFS"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['nfsd']['share']))
 	$config['nfsd']['share'] = array();
 
 array_sort_key($config['nfsd']['share'], "path");
-
 $a_share = &$config['nfsd']['share'];
 
-if (isset($id) && $a_share[$id]) {
-	$pconfig['uuid'] = $a_share[$id]['uuid'];
-	$pconfig['path'] = $a_share[$id]['path'];
-	$pconfig['mapall'] = $a_share[$id]['mapall'];
-	list($pconfig['network'], $pconfig['mask']) = explode('/', $a_share[$id]['network']);
-	$pconfig['comment'] = $a_share[$id]['comment'];
-	$pconfig['alldirs'] = isset($a_share[$id]['options']['alldirs']);
-	$pconfig['readonly'] = isset($a_share[$id]['options']['ro']);
-	$pconfig['quiet'] = isset($a_share[$id]['options']['quiet']);
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")))) {
+	$pconfig['uuid'] = $a_share[$cnid]['uuid'];
+	$pconfig['path'] = $a_share[$cnid]['path'];
+	$pconfig['mapall'] = $a_share[$cnid]['mapall'];
+	list($pconfig['network'], $pconfig['mask']) = explode('/', $a_share[$cnid]['network']);
+	$pconfig['comment'] = $a_share[$cnid]['comment'];
+	$pconfig['alldirs'] = isset($a_share[$cnid]['options']['alldirs']);
+	$pconfig['readonly'] = isset($a_share[$cnid]['options']['ro']);
+	$pconfig['quiet'] = isset($a_share[$cnid]['options']['quiet']);
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['path'] = "";
@@ -91,8 +90,8 @@ if ($_POST) {
 		$share['options']['ro'] = $_POST['readonly'] ? true : false;
 		$share['options']['quiet'] = $_POST['quiet'] ? true : false;
 
-		if (isset($id) && $a_share[$id]) {
-			$a_share[$id] = $share;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_share[$cnid] = $share;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_share[] = $share;
@@ -186,11 +185,8 @@ if ($_POST) {
 			    </tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_share[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

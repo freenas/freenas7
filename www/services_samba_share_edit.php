@@ -36,11 +36,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if(isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"),gettext("CIFS/SMB"),gettext("Share"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("CIFS/SMB"), gettext("Share"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -54,20 +54,20 @@ array_sort_key($config['samba']['share'], "name");
 $a_mount = &$config['mounts']['mount'];
 $a_share = &$config['samba']['share'];
 
-if (isset($id) && $a_share[$id]) {
-	$pconfig['uuid'] = $a_share[$id]['uuid'];
-	$pconfig['name'] = $a_share[$id]['name'];
-	$pconfig['path'] = $a_share[$id]['path'];
-	$pconfig['comment'] = $a_share[$id]['comment'];
-	$pconfig['readonly'] = isset($a_share[$id]['readonly']);
-	$pconfig['browseable'] = isset($a_share[$id]['browseable']);
-	$pconfig['inheritpermissions'] = isset($a_share[$id]['inheritpermissions']);
-	$pconfig['recyclebin'] = isset($a_share[$id]['recyclebin']);
-	$pconfig['hidedotfiles'] = isset($a_share[$id]['hidedotfiles']);
-	$pconfig['hostsallow'] = $a_share[$id]['hostsallow'];
-	$pconfig['hostsdeny'] = $a_share[$id]['hostsdeny'];
-	if (is_array($a_share[$id]['auxparam']))
-		$pconfig['auxparam'] = implode("\n", $a_share[$id]['auxparam']);
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")))) {
+	$pconfig['uuid'] = $a_share[$cnid]['uuid'];
+	$pconfig['name'] = $a_share[$cnid]['name'];
+	$pconfig['path'] = $a_share[$cnid]['path'];
+	$pconfig['comment'] = $a_share[$cnid]['comment'];
+	$pconfig['readonly'] = isset($a_share[$cnid]['readonly']);
+	$pconfig['browseable'] = isset($a_share[$cnid]['browseable']);
+	$pconfig['inheritpermissions'] = isset($a_share[$cnid]['inheritpermissions']);
+	$pconfig['recyclebin'] = isset($a_share[$cnid]['recyclebin']);
+	$pconfig['hidedotfiles'] = isset($a_share[$cnid]['hidedotfiles']);
+	$pconfig['hostsallow'] = $a_share[$cnid]['hostsallow'];
+	$pconfig['hostsdeny'] = $a_share[$cnid]['hostsdeny'];
+	if (is_array($a_share[$cnid]['auxparam']))
+		$pconfig['auxparam'] = implode("\n", $a_share[$cnid]['auxparam']);
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -97,9 +97,11 @@ if ($_POST) {
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	// Check for duplicates.
-	if ((!isset($id) && (false !== array_search_ex($_POST['name'], $a_share, "name"))) ||
-			(isset($id) && ($a_share[$id]['name'] !== $_POST['name']) && (false !== array_search_ex($_POST['name'], $a_share, "name")))) {
-		$input_errors[] = gettext("The share name is already used.");
+	$index = array_search_ex($_POST['name'], $a_share, "name");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_share[$cnid]['uuid'] === $a_share[$index]['uuid']))) {
+			$input_errors[] = gettext("The share name is already used.");
+		}
 	}
 
 	if (!$input_errors) {
@@ -124,8 +126,8 @@ if ($_POST) {
 				$share['auxparam'][] = $auxparam;
 		}
 
-		if (isset($id) && $a_share[$id]) {
-			$a_share[$id] = $share;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_share[$cnid] = $share;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_share[] = $share;
@@ -231,11 +233,8 @@ if ($_POST) {
 			    <?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("These parameters will be added to the share configuration in smb.conf."), false, 65, 5, false, false);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id])) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_share[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

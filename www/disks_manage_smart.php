@@ -109,11 +109,15 @@ $a_selftest = &$config['smartd']['selftest'];
 $a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conveyance Self-Test", "O" => "Offline Immediate Test");
 
 if ($_GET['act'] === "del") {
-	if ($a_selftest[$_GET['id']]) {
-		updatenotify_set("smartssd", UPDATENOTIFY_MODE_DIRTY, $a_selftest[$_GET['id']]['uuid']);
-		header("Location: disks_manage_smart.php");
-		exit;
+	if ($_GET['uuid'] === "all") {
+		foreach ($a_selftest as $selftestv) {
+			updatenotify_set("smartssd", UPDATENOTIFY_MODE_DIRTY, $selftestv['uuid']);
+		}
+	} else {
+		updatenotify_set("smartssd", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	}
+	header("Location: disks_manage_smart.php");
+	exit;
 }
 
 function smartssd_process_updatenotification($mode, $data) {
@@ -243,7 +247,7 @@ function enable_change(enable_change) {
 									<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 				        </tr>
-							  <?php $i = 0; foreach($a_selftest as $selftest):?>
+							  <?php foreach($a_selftest as $selftest):?>
 							  <?php $notificationmode = updatenotify_get_mode("smartssd", $selftest['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($selftest['devicespecialfile']);?>&nbsp;</td>
@@ -251,8 +255,8 @@ function enable_change(enable_change) {
 									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0"></a>
-				            <a href="disks_manage_smart.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0"></a>
+				          	<a href="disks_manage_smart_edit.php?uuid=<?=$selftest['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0"></a>
+				            <a href="disks_manage_smart.php?act=del&uuid=<?=$selftest['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0"></a>
 				          </td>
 				          <?php else:?>
 									<td valign="middle" nowrap class="list">
@@ -260,10 +264,15 @@ function enable_change(enable_change) {
 									</td>
 									<?php endif;?>
 				        </tr>
-				        <?php $i++; endforeach;?>
+				        <?php endforeach;?>
 				        <tr>
 				          <td class="list" colspan="3"></td>
-				          <td class="list"><a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" border="0"></a></td>
+				          <td class="list">
+										<a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" border="0"></a>
+										<?php if (!empty($a_selftest)):?>
+										<a href="disks_manage_smart.php?act=del&uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all scheduled self-tests?");?>')"><img src="x.gif" title="<?=gettext("Delete all self-tests");?>" border="0"></a>
+										<?php endif;?>
+									</td>
 						    </tr>
 							</table>
 							<span class="vexpl"><?=gettext("Add additional scheduled self-test.");?></span>
