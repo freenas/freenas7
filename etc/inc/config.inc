@@ -1767,6 +1767,16 @@ function config_upgrade() {
 		$config['version'] = "7.7";
 	}
 
+	/* Convert 7.7 -> 7.8 */
+	/* Set uuid's for //websrv/authentication/url. */
+	if ($config['version'] === "7.7") {
+		for ($i = 0; isset($config['websrv']['authentication']['url'][$i]); $i++) {
+			$config['websrv']['authentication']['url'][$i]['uuid'] = uuid();
+		}
+
+		$config['version'] = "7.8";
+	}
+
 	write_config();
 
 	if (is_booting())
