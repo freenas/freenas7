@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-25 22:09+0000\n"
+"POT-Creation-Date: 2009-05-17 01:18+0000\n"
 "PO-Revision-Date: 2009-03-16 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-26 17:57+0000\n"
+"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -80,14 +80,6 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず，<a href=%s>ユーザ</a> "
 "は完全なシェルを有効にしなければなりません．"
-
-msgid ""
-"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
-"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
-msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -546,9 +538,6 @@ msgstr "バインドパスワード"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
-msgid "Blank time"
-msgstr ""
-
 msgid "Browseable"
 msgstr "ブラウズ可能"
 
@@ -597,9 +586,6 @@ msgstr "システムパーティション 1 はマウント出来ません, デ�
 msgid "Cannot get data about interface"
 msgstr "インタフェースのデータを取得出来ません"
 
-msgid "Capacity"
-msgstr ""
-
 msgid "Case Folding"
 msgstr "ケースフォールディング"
 
@@ -614,9 +600,6 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "証明書"
-
-msgid "Change"
-msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "このオプションの変更はリブート後に効果があらわれます．"
@@ -729,9 +712,6 @@ msgstr "FTP 接続中のユーザ"
 
 msgid "Console menu"
 msgstr "コンソールメニュー"
-
-msgid "Console screensaver"
-msgstr ""
 
 msgid "Contact"
 msgstr "連絡先"
@@ -1014,10 +994,6 @@ msgstr ""
 "負荷を減らし，及び少し高い転送遅延の損失においてスループットを増大させる事が出来ます (デバイスは1秒あたり "
 "1000回ポーリングされます)．ポーリングは全ての NIC をサポートする訳ではありません．"
 
-#, php-format
-msgid "Device: %s | Total: %s | Used: %s | Free: %s"
-msgstr ""
-
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
 "must be defined before they can be used, and they cannot be used more than "
@@ -1177,9 +1153,6 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "ディスクをフォーマットして宜しいですか? データは全て失われます!"
 
-msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
-
 msgid "Do you really want to uninstall this package?"
 msgstr "このパッケージをアンインストールしてもよろしいですか?"
 
@@ -1235,9 +1208,6 @@ msgstr "Dos 文字セット"
 
 msgid "Download"
 msgstr "ダウンロード"
-
-msgid "Download bandwidth"
-msgstr ""
 
 msgid "Download configuration"
 msgstr "設定のダウンロード"
@@ -1380,9 +1350,6 @@ msgstr "認証を有効にします．"
 msgid "Enable compression."
 msgstr "圧縮を有効化"
 
-msgid "Enable console screensaver"
-msgstr ""
-
 msgid "Enable device polling"
 msgstr "デバイスポーリングを有効にします"
 
@@ -1418,23 +1385,14 @@ msgstr "ローカルユーザ認証を許可．"
 msgid "Enable module listing."
 msgstr "モジュールリストを有効にします．"
 
-msgid "Enable peer exchange (PEX)."
-msgstr ""
-
 msgid "Enable permission inheritance"
 msgstr "パーミッションの継承の有効化"
-
-msgid "Enable port forwarding via NAT-PMP or UPnP."
-msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "Proxy認証の有効化"
 
 msgid "Enable recycle bin"
 msgstr "ごみ箱機能を有効化"
-
-msgid "Enable remote monitoring of the local connected UPS."
-msgstr ""
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -1497,9 +1455,6 @@ msgstr "暗号化"
 
 msgid "Encryption algorithm"
 msgstr "暗号化アルゴリズム"
-
-msgid "Encryption algorithm to use."
-msgstr ""
 
 msgid "English"
 msgstr "英語"
@@ -1894,9 +1849,6 @@ msgstr "I/O エラー"
 msgid "I/O packets"
 msgstr "I/O パケット"
 
-msgid "I/O statistics"
-msgstr ""
-
 msgid "IP address"
 msgstr "IP アドレス"
 
@@ -2060,9 +2012,6 @@ msgstr "/etc/exports 内で間違った行があった際，syslog への診断�
 msgid "Initialize"
 msgstr "初期化"
 
-msgid "Initialize and encrypt disk."
-msgstr ""
-
 msgid "Initializing"
 msgstr "初期化中"
 
@@ -2122,12 +2071,6 @@ msgstr "鍵"
 
 msgid "Key Management Protocol"
 msgstr "鍵管理プロトコル"
-
-msgid "Key length"
-msgstr ""
-
-msgid "Key length to use with the given cryptographic algorithm."
-msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "暗号化ボリュームを停止"
@@ -2370,20 +2313,11 @@ msgstr "最大の同時接続数．初期値は 0 (無制限)．"
 msgid "Maximum performance, maximum acoustic output"
 msgstr "最大のパフォーマンス，最大の音響出力"
 
-msgid "Maximum performance, maximum power usage"
-msgstr "最大性能，最大の電力利用"
-
 msgid "Media"
 msgstr "メディア"
 
 msgid "Medium acoustic output"
 msgstr "中間の音響出力"
-
-msgid "Medium power usage with Standby"
-msgstr "スタンバイ有りの中間の電力利用"
-
-msgid "Medium power usage without Standby"
-msgstr "スタンバイ無しの中間の電力利用"
 
 msgid "Memory usage"
 msgstr "メモリ使用率"
@@ -2402,12 +2336,6 @@ msgstr "空き容量の最小値"
 
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "最小のパフォーマンス，最小の音響出力"
-
-msgid "Minimum power usage with Standby"
-msgstr "スタンバイ有りの最小の電力利用"
-
-msgid "Minimum power usage without Standby"
-msgstr "スタンバイ無しの最小の電力利用"
 
 msgid "Minutes between network time sync."
 msgstr "NTP の時間更新間隔を指定して下さい．"
@@ -2460,9 +2388,6 @@ msgstr "NFS"
 
 msgid "NIS"
 msgstr "NIS"
-
-msgid "NOT YET AVAILABLE"
-msgstr ""
 
 msgid "NTP time server"
 msgstr "NTP サーバ"
@@ -2677,12 +2602,6 @@ msgstr "パッケージ"
 msgid "Pairwise"
 msgstr "ペア"
 
-msgid "Partition number"
-msgstr ""
-
-msgid "Partition type"
-msgstr ""
-
 msgid "Partitions"
 msgstr "パーティション"
 
@@ -2751,12 +2670,6 @@ msgstr "ドキュメントルートからの相対 URL パス．"
 msgid "Path to be shared."
 msgstr "共有するパス．"
 
-msgid "Peer exchange"
-msgstr ""
-
-msgid "Peer port"
-msgstr ""
-
 msgid "Permit root login"
 msgstr "root ログインを許可"
 
@@ -2801,13 +2714,6 @@ msgstr "ポート番号 %ld は既に他のサービスで使用されていま�
 msgid "Port %s must be less than %s."
 msgstr "ポート %s は %s より少なくなければなりません．"
 
-msgid "Port forwarding"
-msgstr ""
-
-#, php-format
-msgid "Port to listen for incoming peer connections. Default port is %d."
-msgstr ""
-
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "待ち受けるポート番号．iTunes のデフォルトポート番号は 3689 です．"
 
@@ -2838,9 +2744,6 @@ msgstr "電源モード"
 
 msgid "PreInit"
 msgstr "事前実行"
-
-msgid "Preferred"
-msgstr ""
 
 msgid "Prefix"
 msgstr "プレフィックス"
@@ -3037,9 +2940,6 @@ msgstr "レポート"
 msgid "Require authentication."
 msgstr "認証を要求します．"
 
-msgid "Required"
-msgstr ""
-
 msgid "Rescan interval"
 msgstr "再スキャンの間隔"
 
@@ -3193,9 +3093,6 @@ msgstr "セキュリティー"
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "S.M.A.R.T. を有効にするディスクを選択してください．"
-
-msgid "Select item to remove from the list"
-msgstr ""
 
 msgid "Select mount point where to create the swap file."
 msgstr "スワップファイルを作成するディレクトリを選択してください．"
@@ -3417,11 +3314,6 @@ msgstr "共有で使用する文字コードを指定します．例えば UTF8,
 
 msgid "Specifies the time in hh:mm:ss after which the ban expires."
 msgstr "指定した時間を過ぎると期限切れとなります．hh:mm:ss 形式で時間を指定します．"
-
-msgid ""
-"Specifies the time interval in hh:mm:ss in which the given number of "
-"occurrences must happen to add the ban."
-msgstr ""
 
 msgid "Specifies the username which the service will run as."
 msgstr "サービスを動作させる為のユーザ名を指定します．"
@@ -3762,10 +3654,6 @@ msgstr "'%s' は数字である必要があります．"
 msgid "The attribute '%s' must be a string."
 msgstr "'%s' は文字列である必要があります．"
 
-#, c-format
-msgid "The attribute '%s' must contain at least one entry."
-msgstr ""
-
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
 "action'. Where daemon is the daemon name of the service started. The address "
@@ -3832,10 +3720,6 @@ msgstr "SMTPサーバのポート番号"
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr "検索の為のデフォルトのベース DN を指定して下さい．例) %s"
-
-msgid ""
-"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
-msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "デバイス名には a-z, A-Z, 0-9 の文字のみが利用出来ます．"
@@ -3911,10 +3795,6 @@ msgstr "このログイン名は予約されているログイン名です．"
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "同一IPアドレスからの最大接続数は0(無制限)かそれより大きな数字である必要があります．"
 
-msgid ""
-"The maximum download bandwith in KiB/s. An empty field means infinity."
-msgstr ""
-
 msgid "The maximum idle time be a number."
 msgstr "アイドル時間の最大数は数字で指定して下さい．"
 
@@ -3923,20 +3803,10 @@ msgid ""
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最大のポート (0 = いずれかのポート)．"
 
-msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
-msgstr ""
-
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最小のポート (0 = いずれかのポート)．"
-
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
 
 msgid "The name or IP address of the LDAP server."
 msgstr "LDAP サーバのホスト名または IP アドレスを入力して下さい．"
@@ -3955,9 +3825,6 @@ msgstr "入力したパスワードに不正ない文字が使用されていま
 
 msgid "The passwords do not match."
 msgstr "パスワードが一致しません．"
-
-msgid "The peer connection encryption mode."
-msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4300,11 +4167,6 @@ msgid ""
 "files."
 msgstr "ドットから始まるファイルを隠しファイルとして表示させるかを決定します．"
 
-msgid ""
-"This parameter says that if N occurrences of the event happen within the "
-"given time interval, then a ban is automatically added."
-msgstr ""
-
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4329,9 +4191,6 @@ msgid ""
 "added to the LDAP directory, e.g. %s"
 msgstr "ユーザで使用されるサフィックスを指定します．例) %s"
 
-msgid "This rule is triggered whenever the selected event directive occurs."
-msgstr ""
-
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "iSCSIターゲットのIPアドレスもしくはFQDN"
 
@@ -4351,11 +4210,6 @@ msgid ""
 "This will erase ALL data on the selected disks! Do not use this option if "
 "you want to add an already existing RAID again."
 msgstr "選択したDiskのデータをすべて消去します！既存の RAID ボリュームを追加するのにこのオプションを使用しないでください．"
-
-msgid ""
-"This will erase ALL data on your disk! Do not use this option if you want to "
-"add an existing encrypted disk."
-msgstr ""
 
 msgid "Time"
 msgstr "時間"
@@ -4424,15 +4278,8 @@ msgstr ""
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">System</li></ul></div>"
 
-msgid "Tolerated"
-msgstr ""
-
 msgid "Tools"
 msgstr "ツール"
-
-#, php-format
-msgid "Total: %s | Used: %s | Free: %s"
-msgstr ""
 
 msgid "Traceroute"
 msgstr "Traceroute"
@@ -4473,9 +4320,6 @@ msgstr "Trivial File Transfer Protocol"
 
 msgid "Tuning"
 msgstr "チューニング"
-
-msgid "Turn the monitor to standby after N seconds."
-msgstr ""
 
 msgid "Type"
 msgstr "タイプ"
@@ -4577,9 +4421,6 @@ msgstr "ファームウェアアップグレード"
 
 msgid "Upload"
 msgstr "アップロード"
-
-msgid "Upload bandwidth"
-msgstr ""
 
 msgid "Uppercases names in both directions"
 msgstr "両方で名前を大文字化します"
@@ -4786,9 +4627,6 @@ msgstr "書込み"
 msgid "Write only"
 msgstr "書込みのみ"
 
-msgid "Wrong partition type or partition number."
-msgstr ""
-
 msgid "Yes"
 msgstr "Yes"
 
@@ -4961,1045 +4799,198 @@ msgstr "upriv"
 msgid "week days"
 msgstr "週日"
 
-#~ msgid "%b %d, %Y"
-#~ msgstr "%b %d, %Y"
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "スタンバイ有りの最小の電力利用"
 
-#~ msgid "%A, %B %d, %Y"
-#~ msgstr "%A, %B %d, %Y"
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "スタンバイ有りの中間の電力利用"
 
-#~ msgid "%A, %B %d @ %H:%M:%S"
-#~ msgstr "%A, %B %d @ %H:%M:%S"
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "スタンバイ無しの最小の電力利用"
 
-#~ msgid "%b %d, %Y - %I:%M %p"
-#~ msgstr "%b %d, %Y - %I:%M %p"
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "スタンバイ無しの中間の電力利用"
 
-#~ msgid "%A, %B %d, %Y - %I:%M %p"
-#~ msgstr "%A, %B %d, %Y - %I:%M %p"
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "最大性能，最大の電力利用"
 
-#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
-#~ msgstr "日曜 月曜 火曜 水曜 木曜 金曜 土曜"
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+msgstr ""
 
-#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "1月 2月 3月 4月 5月 6月 7月 8月 9月 10月 11月 12月"
+msgid "Blank time"
+msgstr ""
 
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
+msgid "Capacity"
+msgstr ""
 
-#~ msgid "second"
-#~ msgstr "秒"
+msgid "Change"
+msgstr ""
 
-#~ msgid "minute"
-#~ msgstr "分"
+msgid "Console screensaver"
+msgstr ""
 
-#~ msgid "hour"
-#~ msgstr "時"
-
-#~ msgid "week"
-#~ msgstr "週"
-
-#~ msgid "weeks"
-#~ msgstr "週"
-
-#~ msgid "month"
-#~ msgstr "月"
-
-#~ msgid "year"
-#~ msgstr "年"
-
-#~ msgid "years"
-#~ msgstr "年"
-
-#~ msgid "and"
-#~ msgstr "and"
-
-#~ msgid "by"
-#~ msgstr "by"
-
-#~ msgid "Down"
-#~ msgstr "Down"
-
-#~ msgid "on"
-#~ msgstr "on"
-
-#~ msgid "To"
-#~ msgstr "To"
-
-#~ msgid "The"
-#~ msgstr "The"
-
-#~ msgid "Cancel"
-#~ msgstr "キャンセル"
-
-#~ msgid "Deactivate"
-#~ msgstr "非アクティブ"
-
-#~ msgid "Ignore"
-#~ msgstr "拒否"
-
-#~ msgid "Log out"
-#~ msgstr "ログアウト"
-
-#~ msgid "Modify"
-#~ msgstr "修正"
-
-#~ msgid "New"
-#~ msgstr "新規"
-
-#~ msgid "Search"
-#~ msgstr "検索"
-
-#~ msgid "Submit"
-#~ msgstr "送信"
-
-#~ msgid "Update"
-#~ msgstr "アップデート"
-
-#~ msgid "View"
-#~ msgstr "参照"
-
-#~ msgid "Partition"
-#~ msgstr "パーティション"
-
-#~ msgid ""
-#~ "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
-#~ "changes to take effect."
-#~ msgstr "変更は保存されました．変更を有効にするには NAS を<a href=%s>リブート</a>して下さい．"
-
-#~ msgid "ERROR: The changes could not be applied (error code %s)."
-#~ msgstr "エラー: 変更は適用されませんでした(エラーコード %s)．"
-
-#~ msgid "Active"
-#~ msgstr "アクティブ"
-
-#~ msgid "Inactive"
-#~ msgstr "非アクティブ"
-
-#~ msgid "General setup"
-#~ msgstr "基本設定"
-
-#~ msgid "Assign"
-#~ msgstr "アサイン"
-
-#~ msgid "CIFS"
-#~ msgstr "CIFS"
-
-#~ msgid "SSHD"
-#~ msgstr "SSHD"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "Wireless"
-#~ msgstr "無線"
-
-#~ msgid "ARP table"
-#~ msgstr "ARP テーブル"
-
-#~ msgid "Edit File"
-#~ msgstr "ファイルの編集"
-
-#~ msgid "Reboot system"
-#~ msgstr "リブート"
-
-#~ msgid "Shutdown system"
-#~ msgstr "シャットダウン"
-
-#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-#~ msgstr "ドメインパートを除いた NAS ホスト名<br>例) <em>nas</em>"
-
-#~ msgid "e.g. <em>mycorp.com</em>"
-#~ msgstr "例) <em>micorp.com</em>"
-
-#~ msgid "DNS servers"
-#~ msgstr "DNS サーバ"
-
-#~ msgid "IP addresses"
-#~ msgstr "IP アドレス"
-
-#~ msgid ""
-#~ "If you want to change the username for accessing the webGUI, enter it here."
-#~ msgstr "WebUI にアクセスするユーザ名を変更したい場合，ここに入力して下さい．"
-
-#~ msgid ""
-#~ "If you want to change the password for accessing the webGUI, enter it here "
-#~ "twice.<br>Don't use the character ':'."
-#~ msgstr "WebUI にアクセスする為のパスワードを変更したい場合，ここに 2回入力して下さい．<br> ':' は使わないで下さい．"
-
-#~ msgid "WebGUI protocol"
-#~ msgstr "WebUI プロトコル"
-
-#~ msgid "WebGUI port"
-#~ msgstr "WebGUI ポート"
-
-#~ msgid ""
-#~ "Enter a custom port number for the webGUI above if you want to override the "
-#~ "default (80 for HTTP, 443 for HTTPS)."
-#~ msgstr ""
-#~ "デフォルトの  (HTTP 80番，HTTPS 443番ポート) を変更したい場合，WebUI の為のカスタムポート番号を入力して下さい．"
-
-#~ msgid "Select the system language"
-#~ msgstr "システム言語を選択"
-
-#~ msgid "System Time"
-#~ msgstr "システム時刻"
-
-#~ msgid ""
-#~ "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-#~ "select one, then use Save button to update system time. (Mind seconds part "
-#~ "will be ignored)"
-#~ msgstr ""
-#~ "直接，あなたが望む時間を入力するか (フォーマットは mm/dd/yyyy "
-#~ "hh:mm)，アイコンを使用して選択し，その後，システム時刻を更新する為に保存ボタンをクリックして下さい．(秒数の部分は無視されます)"
-
-#~ msgid ""
-#~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
-#~ msgstr "ネットワークタイムの更新間隔; 推奨は 300 で 0 は更新を無効とします．"
-
-#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-#~ msgstr "ホスト名に使用出来る文字は a-z，0-9 及び '-' のみです．"
-
-#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr "ドメイン名に使用出来る文字は a-z，0-9，'-' 及び '.' のみです．"
-
-#~ msgid ""
-#~ "A valid IP address must be specified for the primary/secondary DNS server."
-#~ msgstr "有効な IP アドレスをプライマリ/セカンダリ DNS に指定して下さい．"
-
-#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
-#~ msgstr "ユーザ名に使用出来る文字は a-z，A-Z 及び 0-9 のみです．"
-
-#~ msgid "A valid TCP/IP port must be specified for the webGUI port."
-#~ msgstr "webGUI の為の有効な TCP/IP ポートを指定して下さい．"
-
-#~ msgid "You must select a valid language."
-#~ msgstr "有効な言語を選択して下さい．"
-
-#~ msgid ""
-#~ "The time update interval must be either 0 (disabled) or between 6 and 1440."
-#~ msgstr "ネットワークタイムの更新間隔を 0 (無効) と 6 から 1440 の間で指定して下さい．"
-
-#~ msgid ""
-#~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr "NTP タイムサーバ名に使用出来る文字は a-z，0-9，'-' 及び '.' のみです．"
-
-#~ msgid "show process information"
-#~ msgstr "プロセス情報の表示"
-
-#~ msgid ""
-#~ "The static route configuration has been changed.<br>You must apply the "
-#~ "changes in order for them to take effect."
-#~ msgstr "静的ルートの設定が変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "Gateway to be used to reach the destination network"
-#~ msgstr "宛て先ネットワークに到達するためのゲートウェイ"
-
-#~ msgid "You may enter a description here for your reference (not parsed)."
-#~ msgstr "参考程度に説明を入力して下さい (パースされません)．"
-
-#~ msgid "The digital signature on this image is invalid."
-#~ msgstr "このイメージのデジタル署名は無効です．"
-
-#~ msgid "This image is not digitally signed."
-#~ msgstr "このイメージにはデジタル署名がありません．"
-
-#~ msgid "There has been an error verifying the signature on this image."
-#~ msgstr "このイメージの署名を照合している時にエラーが発生しました．"
-
-#~ msgid "The TCP idle timeout must be an integer."
-#~ msgstr "TCP アイドルタイムは整数でなければなりません．"
-
-#~ msgid "Certificate and key must always be specified together."
-#~ msgstr "証明書と鍵は必ず一緒に指定しなければなりません．"
-
-#~ msgid "This certificate does not appear to be valid."
-#~ msgstr "この証明書は有効ではありません．"
-
-#~ msgid "This key does not appear to be valid."
-#~ msgstr "この鍵は有効ではありません．"
-
-#~ msgid ""
-#~ "The options on this page are intended for use by advanced users only, and "
-#~ "there's <strong>NO</strong> support for them."
-#~ msgstr "このページのオプションは上級ユーザが使用する為を意図しており，ここについてのサポートは <strong>ありません</strong>．"
-
-#~ msgid "webGUI SSL certificate/key"
-#~ msgstr "WebUI SSL 証明書/鍵"
-
-#~ msgid "Paste an RSA private key in PEM format here."
-#~ msgstr "ここに PEM フォーマットの RSA 秘密鍵をペーストして下さい．"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "雑多なもの"
-
-#~ msgid "TCP idle timeout"
-#~ msgstr "TCP アイドルタイムアウト"
-
-#~ msgid ""
-#~ "Idle TCP connections will be removed from the state table after no packets "
-#~ "have been received for the specified number of seconds. Don't set this too "
-#~ "high or your state table could become full of connections that have been "
-#~ "improperly shut down. The default is 9000 seconds (2.5 hours)."
-#~ msgstr ""
-#~ "指定された秒数の間にどんなパケット受け取られなかった場合，アイドルな TCP "
-#~ "接続はステートテーブルから削除されます．この値はあまり高くしないで下さい．さもないと，ステートテーブルは不適当に閉じられている接続であふれるかもしれません"
-#~ "．デフォルトは 9000秒 (2.5 時間)です．"
-
-#~ msgid "Navigation"
-#~ msgstr "ナビゲーション"
-
-#~ msgid "Keep diagnostics in navigation expanded"
-#~ msgstr "ナビゲーション内の診断メニューを展開したままにする"
-
-#~ msgid "S.M.A.R.T Daemon"
-#~ msgstr "S.M.A.R.T デーモン"
-
-#~ msgid "Enable the S.M.A.R.T daemon"
-#~ msgstr "S.M.A.R.T デーモンを有効にする"
-
-#~ msgid "Zeroconf"
-#~ msgstr "Zeroconf"
-
-#~ msgid "Swap file"
-#~ msgstr "スワップファイル"
-
-#~ msgid "Swap size"
-#~ msgstr "スワップサイズ"
-
-#~ msgid "mount share"
-#~ msgstr "共有のマウント"
-
-#~ msgid "Mount to use for swap"
-#~ msgstr "スワップをマウントし，使用する"
-
-#~ msgid "Swap file size"
-#~ msgstr "スワップファイルサイズ"
-
-#~ msgid "Assign network ports"
-#~ msgstr "ネットワークポートのアサイン"
-
-#~ msgid "A valid gateway must be specified."
-#~ msgstr "有効なゲートウェイを指定して下さい．"
-
-#~ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-#~ msgstr "通常の MTU は 1500 で，ジャンボフレームでは 9000 を使用します．"
-
-#~ msgid ""
-#~ "Device polling is a technique that lets the system periodically poll network "
-#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
-#~ "load and therefore increase throughput, at the expense of a slightly higher "
-#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
-#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
-#~ "cards."
-#~ msgstr ""
-#~ "デバイスポーリングは，割り込みに依存する代わりに新しいデータの為に周期的にネットワークデバイスをポーリングさせる技術です．これは，CPU "
-#~ "負荷を減らし，及び少し高い転送遅延の損失においてスループットを増大させる事が出来ます (デバイスは1秒あたり "
-#~ "1000回ポーリングされます)．ポーリングは全ての NIC をサポートする訳ではありません; サポートされたカードリストは m0n0wall "
-#~ "のホームページを見て下さい．"
-
-#~ msgid "Speed"
-#~ msgstr "スピード"
-
-#~ msgid "Enable Optional "
-#~ msgstr "オプションを有効にする "
-
-#~ msgid " interface"
-#~ msgstr " インタフェース"
-
-#~ msgid "Enter a description (name) for the interface here."
-#~ msgstr "ここにインタフェースの概要 (名前) を入力して下さい．"
-
-#~ msgid "Static IP configuration"
-#~ msgstr "静的 IP 設定"
-
-#~ msgid "DHCP client configuration"
-#~ msgstr "DHCP クライアント設定"
-
-#~ msgid "General configuration"
-#~ msgstr "基本設定"
-
-#~ msgid ""
-#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
-#~ "lease."
-#~ msgstr "このフィールドの値は，DHCP リース要求時に DHCP ホスト名として送信されます．"
-
-#~ msgid "Client Identifier"
-#~ msgstr "クライアント識別子"
-
-#~ msgid ""
-#~ "The value in this field is sent as the DHCP client identifier when "
-#~ "requesting a DHCP lease."
-#~ msgstr "このフィールドの値は，DHCP リース要求時に DHCP クライアント識別子として送信されます．"
-
-#~ msgid "Calculate netmask bits"
-#~ msgstr "ネットワークビットマスクの計算"
-
-#~ msgid ""
-#~ "The LAN configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "LAN の構成は変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "Manage"
-#~ msgstr "管理"
-
-#~ msgid ""
-#~ "The disk list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr "ディスクリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "First configuration step: Add your hardrive to the disk list."
-#~ msgstr "初期設定ステップ: ハードディスクをディスクリストに追加して下さい．"
-
-#~ msgid "UDMA mode"
-#~ msgstr "UDMA モード"
-
-#~ msgid ""
-#~ "Puts the hard disk into standby mode when the selected amount of time after "
-#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "最後のアクセスの後，選択された時間を経過した際に，ハードディスクを待機モードにします．<em>これを CF カードに設定しないで下さい．</em>"
-
-#~ msgid ""
-#~ "This allows  you  to lower the power consumption of the drive, at the "
-#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
-#~ msgstr "これは，性能の犠牲においてドライブの電力消費量を下げる事が出来ます．<br><em>これを CFカードに設定してはいけません．</em>"
-
-#~ msgid ""
-#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
-#~ "not set this for CF cards.</em>"
-#~ msgstr "オペレーション中のドライブの騒音レベルを設定する事が出来ます．<em>これを CFカードに設定してはいけません．</em>"
-
-#~ msgid "Preformatted FS"
-#~ msgstr "FS のプリフォーマット"
-
-#~ msgid "Disk initialization details"
-#~ msgstr "ディスク初期化の詳細"
-
-#~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
-#~ msgstr "\"fdisk: Geom not found\" はエラーメッセージではありません!\n"
-
-#~ msgid ""
-#~ "This step will erase all your partition, create partition number 1 and "
-#~ "format the hard drive with the file system specified."
-#~ msgstr ""
-#~ "このステップでは，全てのパーティションを消去し，パーティション番号 1 を作成して，ファイルシステムを指定した状態でハードディスクをフォーマットします．"
-
-#~ msgid "iSCSI"
-#~ msgstr "iSCSI"
-
-#~ msgid "Target IP address"
-#~ msgstr "ターゲット IP アドレス"
-
-#~ msgid "IP address of the iSCSI target."
-#~ msgstr "iSCSI ターゲットの IP アドレス"
-
-#~ msgid "Targetname"
-#~ msgstr "ターゲット名"
-
-#~ msgid "Targetname."
-#~ msgstr "ターゲット名．"
-
-#~ msgid "Manage RAID"
-#~ msgstr "RAID 管理"
-
-#~ msgid "Format RAID"
-#~ msgstr "RAID のフォーマット"
-
-#~ msgid "Geom Vinum"
-#~ msgstr "Geom Vinum"
-
-#~ msgid "Geom Mirror"
-#~ msgstr "Geom ミラー"
-
-#~ msgid "Geom Stripe"
-#~ msgstr "Geom ストライプ"
-
-#~ msgid "Geom Concat"
-#~ msgstr "Geom Concat"
-
-#~ msgid "Geom Raid5"
-#~ msgstr "Geom Raid5"
-
-#~ msgid "(unstable)"
-#~ msgstr "(不安定)"
-
-#~ msgid "RAID"
-#~ msgstr "RAID"
-
-#~ msgid ""
-#~ "The Raid configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "Raid の設定が変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid ""
-#~ "Do you really want to delete this raid volume? All elements that still use "
-#~ "it will become invalid (e.g. share)!"
-#~ msgstr "本当にこの RAID ボリュームを削除しても宜しいですか? それを使用する全ての要素は無効になります (例: share)!"
-
-#~ msgid "ERR Could not save RAID configuration.\n"
-#~ msgstr "エラー: RAID 設定を保存する事が出来ませんでした．\n"
-
-#~ msgid "Members of this volume"
-#~ msgstr "ボリュームのメンバ"
-
-#~ msgid "Disk format UFS output:"
-#~ msgstr "ディスクの UFS フォーマット出力:"
-
-#~ msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-#~ msgstr "このステップは Unix ファイルシステム (UFS) で RAID ボリュームをフォーマットします．"
-
-#~ msgid "Format UFS disk!"
-#~ msgstr "UFS ディスクのフォーマット!"
-
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
-#~ "using this menu for start a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. デバッグ目的の為だけにこの特殊機能を使用して下さい!<br>2. RAID ボリュームの開始の為にこのメニューを使う必要はありません "
-#~ "(自動的にスタートします)．"
-
-#~ msgid "Share Name"
-#~ msgstr "共有名"
-
-#~ msgid ""
-#~ "The mount point list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "マウントポイントは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "delete mount"
-#~ msgstr "マウントの削除"
-
-#~ msgid "add mount"
-#~ msgstr "マウントの追加"
-
-#~ msgid "The description name contain invalid characters."
-#~ msgstr "説明部分に無効な文字列が含まれています．"
-
-#~ msgid "Duplicate Share Name."
-#~ msgstr "共有名の複製．"
-
-#~ msgid ""
-#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
-#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-#~ "you select option 2 during installation on hard drive.<br>Select old "
-#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-#~ msgstr ""
-#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
-#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-#~ "you select option 2 during installation on hard drive.<br>Select old "
-#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-
-#~ msgid ""
-#~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
-#~ "FreeBSD NTFS has lots of bugs."
-#~ msgstr ""
-#~ "1. 設定ファイルが保存されるパーティション '%s' をマウントする事が出来ませんでした．<br>2. FreeBSD の NTFS "
-#~ "実装には沢山のバグがあります．"
-
-#~ msgid "The Netbios name contains invalid characters."
-#~ msgstr "Netbios 名に無効な文字が含まれています．"
-
-#~ msgid "The Workgroup name contains invalid characters."
-#~ msgstr "ワークグループ名に無効な文字が含まれています．"
-
-#~ msgid "The WINS server must be an IP address."
-#~ msgstr "WINS サーバは IP アドレスで指定して下さい．"
-
-#~ msgid "The SND Buffer value must be a number."
-#~ msgstr "送信バッファサイズは数字で入力して下さい．"
-
-#~ msgid "The RCV Buffer value must be a number."
-#~ msgstr "受信バッファサイズは数字で入力して下さい．"
-
-#~ msgid "CIFS share"
-#~ msgstr "CIFS 共有"
-
-#~ msgid "NetBiosName"
-#~ msgstr "Netbios 名"
-
-#~ msgid "Workgroup to be member of."
-#~ msgstr "参加しているワークグループ．"
-
-#~ msgid "WINS Server IP address."
-#~ msgstr "WINS サーバの IP アドレス．"
-
-#~ msgid "Recycle Bin"
-#~ msgstr "ごみ箱"
-
-#~ msgid "Enable Recycle bin"
-#~ msgstr "ごみ箱を有効にする"
-
-#~ msgid "This will create a recycle bin on the CIFS shares."
-#~ msgstr "CIFS 共有上にごみ箱を作成します"
-
-#~ msgid ""
-#~ "The shares has been modified.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr "共有は変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "The maximum Number of client must be a number."
-#~ msgstr "クライアント数の最大値は数字で指定して下さい．"
-
-#~ msgid "The max con per ip must be a number."
-#~ msgstr "1IP あたりの最大接続数は数字で指定して下さい．"
-
-#~ msgid "The pasv address must be a public IP address."
-#~ msgstr "pasv アドレスはパブリックな IP アドレスである必要があります．"
-
-#~ msgid "You must select at minium anonymous or/and local user authentication."
-#~ msgstr "少なくとも匿名 又は/且つ ローカルユーザ認証を選択しなければなりません．"
-
-#~ msgid "FTP Server"
-#~ msgstr "FTP サーバ"
-
-#~ msgid "Maximum idle time in minutes."
-#~ msgstr "アイドルタイムの最大秒数．"
-
-#~ msgid "Anonymous login"
-#~ msgstr "匿名ログイン"
-
-#~ msgid "NAT mode"
-#~ msgstr "NAT モード"
-
-#~ msgid "Force NAT mode."
-#~ msgstr "NAT モードを強制する"
-
-#~ msgid ""
-#~ "Enable this if your FTP server is behind a NAT box that doesn't support "
-#~ "applicative FTP proxying."
-#~ msgstr "FXP サーバが適応する FTP プロキシをサポートしない NAT ボックス配下にある場合に許可して下さい．"
-
-#~ msgid "Passive IP address"
-#~ msgstr "パッシブ IP アドレス"
-
-#~ msgid ""
-#~ "Use this option to override the IP address that FTP daemon will advertise in "
-#~ "response to the PASV command."
-#~ msgstr "FTP デーモンが PASV コマンドのレスポンスで広告する IP アドレスを上書きしたい場合に使用します．"
-
-#~ msgid "NFS Server"
-#~ msgstr "NFS サーバ"
-
-#~ msgid "Network that is authorised to access to NFS share"
-#~ msgstr "NFS 共有へのアクセスが許可されるネットワーク"
-
-#~ msgid "The name of the exported directories are : /mnt/sharename"
-#~ msgstr "エクスポートされるディレクトリ名は次のようになります : /mnt/sharename"
-
-#~ msgid "Rsync Daemon"
-#~ msgstr "Rsync デーモン"
-
-#~ msgid "You must configure mount point first."
-#~ msgstr "最初にマウントポイントを設定して下さい．"
-
-#~ msgid "Rsync Client Synchronization"
-#~ msgstr "Rsync クライアント同期"
-
-#~ msgid "Remote RSYNC Server"
-#~ msgstr "リモート RSYNC サーバ"
-
-#~ msgid "IP address of remote RSYNC server"
-#~ msgstr "リモート RSYNC サーバの IP アドレス"
-
-#~ msgid "RSYNC Options"
-#~ msgstr "RSYNC オプション"
-
-#~ msgid "Shares to be synchronized"
-#~ msgstr "同期する共有"
-
-#~ msgid "This same local share must be present on the Remote Server."
-#~ msgstr "ローカルな共有と同一のものがリモートサーバに存在しなければなりません．"
-
-#~ msgid "You can't have the same mount point for source and destination!"
-#~ msgstr "送信元とあて先に同一のマウントポイントを設定する事は出来ません!"
-
-#~ msgid "Rsync Local Synchronization"
-#~ msgstr "Rsync ローカル同期"
-
-#~ msgid "Source Mount Point."
-#~ msgstr "送信元のマウントポイント"
-
-#~ msgid "Destination Mount Point (backup drive)."
-#~ msgstr "宛て先のマウントポイント (バックアップドライブ)．"
-
-#~ msgid "SSH Daemon"
-#~ msgstr "SSH デーモン"
-
-#~ msgid "Enable TCP Forwarding"
-#~ msgstr "TCP フォワーディングを有効にする"
-
-#~ msgid "SSH key"
-#~ msgstr "SSH 鍵"
-
-#~ msgid "Directories to be shared."
-#~ msgstr "共有されるディレクトリ．"
-
-#~ msgid "No content directory to be shared."
-#~ msgstr "共有されるコンテンツがディレクトリに存在しません．"
-
-#~ msgid "Add directory"
-#~ msgstr "ディレクトリ追加"
-
-#~ msgid "Delete directory"
-#~ msgstr "ディレクトリ削除"
-
-#~ msgid "Do you really want to delete this directory entry?"
-#~ msgstr "このディレクトリエントリを削除しても宜しいですか?"
-
-#~ msgid "Directory to be shared."
-#~ msgstr "共有されるディレクトリ．"
-
-#~ msgid "AFP Server"
-#~ msgstr "AFP サーバ"
-
-#~ msgid ""
-#~ "The User list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr "ユーザリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "You must create a group first."
-#~ msgstr "最初にグループを作成して下さい．"
-
-#~ msgid "Unique login name of user."
-#~ msgstr "ユーザのユニークなログイン名．"
-
-#~ msgid "Confirm Password"
-#~ msgstr "パスワードの確認"
-
-#~ msgid "Confirm the password."
-#~ msgstr "パスワードの確認"
-
-#~ msgid "Group Member"
-#~ msgstr "グループメンバ"
-
-#~ msgid "Full Shell"
-#~ msgstr "完全なシェル"
-
-#~ msgid "Give full shell to user"
-#~ msgstr "ユーザに完全なシェルを提供"
-
-#~ msgid "Administrator"
-#~ msgstr "Administrator"
-
-#~ msgid ""
-#~ "The group list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr "グループリストが変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "The Group name contains invalid characters."
-#~ msgstr "グループ名に不正な文字が使用されています．"
-
-#~ msgid "The Group desc contains invalid characters."
-#~ msgstr "グループの説明に不正な文字が使用されています．"
-
-#~ msgid "AD server name"
-#~ msgstr "AD サーバ名"
-
-#~ msgid "AD server IP"
-#~ msgstr "AD サーバ IP"
-
-#~ msgid "IP address of MS Active Directory server."
-#~ msgstr "MS ActiveDirectory サーバの IP アドレス"
-
-#~ msgid "Domain name in old format."
-#~ msgstr "古い書式のドメイン名"
-
-#~ msgid "Password of domain administrator account, enter it here twice."
-#~ msgstr "ドメイン管理者アカウントのパスワードを2度入力して下さい．"
-
-#~ msgid "Signal strength cache"
-#~ msgstr "Signal strength cache"
-
-#~ msgid "Signal"
-#~ msgstr "シグナル"
-
-#~ msgid "Noise"
-#~ msgstr "ノイズ"
-
-#~ msgid "Quality"
-#~ msgstr "品質"
-
-#~ msgid "Associated stations"
-#~ msgstr "関連したステーション"
-
-#~ msgid "TX rates"
-#~ msgstr "TX レート"
-
-#~ msgid ""
-#~ "No supported wireless interfaces were found for status display (only cards "
-#~ "that use the wi[n] driver are supported)."
-#~ msgstr ""
-#~ "サポートされた無線インタフェースがステータスディスプレイ内にありません (wi[n] ドライバを使用するカードのみがサポートされています)．"
-
-#~ msgid "Edit VLAN"
-#~ msgstr "VLAN 編集"
-
-#~ msgid "ATAidle"
-#~ msgstr "ATAidle"
-
-#~ msgid "Free Space"
-#~ msgstr "空き領域"
-
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "ファームウェアアップグレードが動作したら中止しないで下さい．新しいファームウェアを格納したら，%s "
-#~ "は自動的にリブートします．また，今までの設定は維持されます．<br>ファームウェアアップデートの為に，%d MB 以上の RAM "
-#~ "が必要です．<br>アップグレードの前にシステム構成の <a href=%s>Backup</a> を行う事を強く推奨します．"
-
-#~ msgid ""
-#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-#~ "hard drive."
-#~ msgstr "ハードディスクを使用中 'UDMA_ERROR.... LBA' メッセージが表示された場合，UDMA モードを強制させる事が可能です．"
+msgid "Danish"
+msgstr ""
 
 #, php-format
-#~ msgid ""
-#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
-#~ "'unformated' for unformated disk and then use <a href=%s>format "
-#~ "menu</a>.</em>"
-#~ msgstr ""
-#~ "This allows you to set FS type for preformated disk with "
-#~ "data.<br><em>フォーマットしないディスクに 'unformated' を選択してから <a href=%s>format menu</a> "
-#~ "を使用して下さい．</em>"
+msgid "Device: %s | Total: %s | Used: %s | Free: %s"
+msgstr ""
 
-#~ msgid ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
-#~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-#~ "before format and mount it!"
-#~ msgstr ""
-#~ "オプションの設定ステップ: <a href='%s'>先立って設定されたディスク</a> を使用して仮想 RAID "
-#~ "ディスクを設定します．<br>フォーマット及びマウントの前にステータスが '%s' する事を確認して下さい!"
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
+
+msgid "Download bandwidth"
+msgstr ""
+
+msgid "Enable console screensaver"
+msgstr ""
+
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
+
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr ""
+
+msgid "Encryption algorithm to use."
+msgstr ""
+
+msgid "FTP file transfer"
+msgstr ""
+
+msgid "File transfer"
+msgstr ""
+
+msgid "I/O statistics"
+msgstr ""
+
+msgid "Initialize and encrypt disk."
+msgstr ""
+
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr ""
+
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr ""
+
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr ""
+
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr ""
+
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr ""
+
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr ""
+
+msgid "NOT YET AVAILABLE"
+msgstr ""
+
+msgid "Partition number"
+msgstr ""
+
+msgid "Partition type"
+msgstr ""
+
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
 
 #, php-format
-#~ msgid ""
-#~ "Second configuration step: Declaring the filesystem used by your <a "
-#~ "href=%s>previously configured disk.</a>"
-#~ msgstr "2番目の設定ステップ: <a href=%s>先立って設定されたディスク</a> に対して使用するファイルシステムを選択します．"
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
 
-#~ msgid "Default is 21"
-#~ msgstr "初期値は 21"
-
-#~ msgid "Clear log"
-#~ msgstr "ログのクリア"
-
-#~ msgid "SSHD events"
-#~ msgstr "SSHD イベント"
-
-#~ msgid "RSYNCD events"
-#~ msgstr "RSYNCD イベント"
-
-#~ msgid "SMARTD events"
-#~ msgstr "SMARTD イベント"
-
-#~ msgid "List of partition on all detected disk"
-#~ msgstr "検出されたディスクの全てのパーティションの一覧"
-
-#~ msgid "List of SMART capabilities on all detected disk"
-#~ msgstr "検出されたディスクの全ての SMART 能力の一覧"
-
-#~ msgid "List of Advanced ATA capabilities on all ATA disk"
-#~ msgstr "検出された ATA ディスクの全ての高度な ATA 能力の一覧"
-
-#~ msgid "Show the list of available target Name on the iSCSI target"
-#~ msgstr "iSCSI ターゲットとして有効なターゲット名の一覧を表示"
-
-#~ msgid "AD Authentication disabled"
-#~ msgstr "AD 認証は無効です"
+msgid "Port forwarding"
+msgstr ""
 
 #, php-format
-#~ msgid "Count must be between 1 and %d"
-#~ msgstr "カウントは 1 から %d の間である必要があります"
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
 
-#~ msgid "Ping output"
-#~ msgstr "Ping 出力"
+msgid "Preferred"
+msgstr ""
 
-#~ msgid "Maximum number of hops"
-#~ msgstr "最大ホップ数"
+msgid "Required"
+msgstr ""
 
-#~ msgid "Traceroute output"
-#~ msgstr "Traceroute 出力"
+msgid "Select item to remove from the list"
+msgstr ""
 
-#, php-format
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
-#~ msgstr ""
-#~ "&quot;IP アドレスをホスト名に解決する&quot; が <a href=%s>%s</a> ページでチェックされている場合，IP "
-#~ "アドレスはホスト名に解決されます．"
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
 
-#~ msgid "webGUI Configuration"
-#~ msgstr "webGUI 設定"
-
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "MBR と全てのパーティションを消去"
-
-#~ msgid "Keeping the MBR and all partitions"
-#~ msgstr "MBR と全てのパーティションをキープ"
-
-#~ msgid "Creating one partition"
-#~ msgstr "パーティションを1つ作成"
-
-#~ msgid "Initializing partition"
-#~ msgstr "パーティションの初期化"
-
-#~ msgid "Creating BSD label"
-#~ msgstr "BSD ラベルの作成"
+msgid "Syslog"
+msgstr ""
 
 #, c-format
-#~ msgid "Destroying old %s information"
-#~ msgstr "古い %s の情報を破壊します"
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
 
-#, c-format
-#~ msgid "Creating %s partition"
-#~ msgstr "パーティション %s の作成"
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+msgstr ""
 
-#~ msgid ""
-#~ "The crypted disk list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "暗号化ディスクリストは変更されました．変更した設定を有効にするには適用を選択して下さい．"
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
 
-#~ msgid ""
-#~ "Do you really want to delete this encrypted disk? All elements that still "
-#~ "use it will become invalid (e.g. share)!"
-#~ msgstr "本当にこの暗号化ディスクを削除しても宜しいですか? これを使用する全ての要素 (例: share) は無効になります!"
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
 
-#~ msgid "Create encrypted disk"
-#~ msgstr "暗号化ディスクを作成"
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging in to "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
 
-#~ msgid "Data integrity algorithm"
-#~ msgstr "データ完全性アルゴリズム"
+msgid "The peer connection encryption mode."
+msgstr ""
 
-#~ msgid "Init and encrypt disk"
-#~ msgstr "ディスクの初期化と暗号化"
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
 
-#~ msgid "Disk initialization and encryption"
-#~ msgstr "ディスクの初期化と暗号化を行います"
+msgid "This rule is triggered whenever the selected event directive occurs."
+msgstr ""
 
-#~ msgid "Encrypting... Please wait"
-#~ msgstr "暗号化中... 少々お待ち下さい"
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
 
-#~ msgid "Attaching..."
-#~ msgstr "接続中..."
-
-#~ msgid ""
-#~ "Using Data integrity will reduce size of available storage and also reduce "
-#~ "speed."
-#~ msgstr "データの完全性機能を利用する場合，使用可能なストレージサイズを減らし，また，スピードが落ちてしまいます．"
-
-#~ msgid "Sensors"
-#~ msgstr "センサー"
-
-#~ msgid "Detaching..."
-#~ msgstr "取り外し中..."
-
-#~ msgid "attach"
-#~ msgstr "接続"
-
-#~ msgid "detach"
-#~ msgstr "取り外し"
-
-#~ msgid ""
-#~ "Use this option to enable resuming broken transfers at the point of "
-#~ "interruption."
-#~ msgstr "割込みの際に壊れた転送を再開させる場合にこのオプションを使用して下さい．"
-
-#~ msgid ""
-#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "iSCSI ターゲットリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-#~ msgstr "iSCSI ターゲットを利用するには最低でも 256MB の RAM が必要です．"
-
-#~ msgid "FTP Server disabled"
-#~ msgstr "FTP サーバは無効です"
-
-#~ msgid "FTP users"
-#~ msgstr "FTP ユーザ"
-
-#~ msgid "FTP connected users"
-#~ msgstr "FTP 接続ユーザ"
-
-#~ msgid "Save and Restart UPnP"
-#~ msgstr "UPnP の保存と再起動"
-
-#~ msgid "Save and Restart Unison"
-#~ msgstr "Unison の保存と再起動"
-
-#~ msgid "Save and Restart SSHD"
-#~ msgstr "SSHD の保存と再起動"
-
-#~ msgid "Save and Restart RSYNC"
-#~ msgstr "RSYNC の保存と再起動"
-
-#~ msgid "Save and Restart NFS"
-#~ msgstr "NFS の保存と再起動"
-
-#~ msgid "Save and Restart FTP"
-#~ msgstr "FTP の保存と再起動"
-
-#~ msgid "Save and Restart AFP"
-#~ msgstr "AFP の保存と再起動"
+msgid "Tolerated"
+msgstr ""
 
 #, php-format
-#~ msgid "The %s port must be a valid port number."
-#~ msgstr "%s ポートは有効なポート番号である必要があります．"
+msgid "Total: %s | Used: %s | Free: %s"
+msgstr ""
 
-#~ msgid "Password confirmation"
-#~ msgstr "パスワードの確認"
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
-#~ msgid "Remote share (source)"
-#~ msgstr "リモート共有 (接続元)"
+msgid "Upload bandwidth"
+msgstr ""
 
-#~ msgid ""
-#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "RSYNC クライアントリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid ""
-#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "RSYNC ローカルリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
-
-#~ msgid "Add RSYNC"
-#~ msgstr "RSYNC の追加"
-
-#~ msgid "Edit RSYNC"
-#~ msgstr "RSYNC の編集"
-
-#~ msgid "Delete RSYNC"
-#~ msgstr "RSYNC の削除"
-
-#~ msgid "Do you really want to delete this RSYNC?"
-#~ msgstr "本当にこの RSYNC を削除しても宜しいですか?"
-
-#~ msgid "Remote source share name"
-#~ msgstr "リモートソース共有名"
-
-#~ msgid "Mount to use"
-#~ msgstr "マウントして利用"
-
-#~ msgid "A valid size target value must be specified."
-#~ msgstr "有効なサイズをターゲット値に指定しなければなりません．"
-
-#~ msgid "Mount used"
-#~ msgstr "マウントし利用"
-
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span><"
-#~ msgstr ""
-#~ "&quot;保存&quot; をクリックした後，変更を有効にするには %s をリブートしなければなりません．また，再度 FreeNAS "
-#~ "へアクセスする為に以下のステップを実行する必要があるかもしれません: </span><"
-
-#~ msgid "Do you really want to delete this user?!"
-#~ msgstr "本当にユーザを削除しても宜しいですか?!"
-
-#~ msgid "A valid size target value must be specified"
-#~ msgstr "有効なサイズをターゲット値に指定しなければなりません．"
+msgid "Wrong partition type or partition number."
+msgstr ""

@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-25 22:09+0000\n"
-"PO-Revision-Date: 2009-04-18 09:22+0000\n"
-"Last-Translator: Alexey Sannikov <Unknown>\n"
+"POT-Creation-Date: 2009-05-17 01:18+0000\n"
+"PO-Revision-Date: 2009-05-20 17:32+0000\n"
+"Last-Translator: Bedouin2 <Unknown>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-04-26 17:56+0000\n"
+"X-Launchpad-Export-Date: 2009-05-21 12:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -589,9 +589,6 @@ msgstr "Пароль для связи"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
-msgid "Blank time"
-msgstr ""
-
 msgid "Browseable"
 msgstr "Просматриваемый"
 
@@ -778,9 +775,6 @@ msgstr "Подключенные пользователи FTP"
 
 msgid "Console menu"
 msgstr "Консольное меню"
-
-msgid "Console screensaver"
-msgstr ""
 
 msgid "Contact"
 msgstr "Контакт"
@@ -1451,9 +1445,6 @@ msgstr "Включить авторизацию"
 msgid "Enable compression."
 msgstr "Включить сжатие"
 
-msgid "Enable console screensaver"
-msgstr ""
-
 msgid "Enable device polling"
 msgstr "Разрешить опрос устройств"
 
@@ -1575,9 +1566,6 @@ msgstr "Шифрование"
 
 msgid "Encryption algorithm"
 msgstr "Алгоритм шифрования"
-
-msgid "Encryption algorithm to use."
-msgstr ""
 
 msgid "English"
 msgstr "Английский"
@@ -2173,9 +2161,6 @@ msgstr ""
 msgid "Initialize"
 msgstr "Инициализировать"
 
-msgid "Initialize and encrypt disk."
-msgstr ""
-
 msgid "Initializing"
 msgstr "Инициализация"
 
@@ -2241,12 +2226,6 @@ msgstr "Ключ"
 
 msgid "Key Management Protocol"
 msgstr "Протокол управления ключом"
-
-msgid "Key length"
-msgstr ""
-
-msgid "Key length to use with the given cryptographic algorithm."
-msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Удалить зашифрованный том"
@@ -2504,20 +2483,11 @@ msgstr ""
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Максимальная производительность, максимальный уровень шума"
 
-msgid "Maximum performance, maximum power usage"
-msgstr "Максимальная производительность, максимальное энергопотребление"
-
 msgid "Media"
 msgstr "Среда передачи"
 
 msgid "Medium acoustic output"
 msgstr "Средний уровень шума"
-
-msgid "Medium power usage with Standby"
-msgstr "Среднее энергопотребление с режимом Standby"
-
-msgid "Medium power usage without Standby"
-msgstr "Среднее энергопотребление без режима Standby"
 
 msgid "Memory usage"
 msgstr "Использование памяти"
@@ -2536,12 +2506,6 @@ msgstr "Минимум свободного места"
 
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Минимальная производительность, минимум шума."
-
-msgid "Minimum power usage with Standby"
-msgstr "Минимальное энергопотребление с режимом Standby"
-
-msgid "Minimum power usage without Standby"
-msgstr "Минимальное энергопотребление без режима Standby"
 
 msgid "Minutes between network time sync."
 msgstr "Сетевая синхронизация времени через (минут)."
@@ -4035,10 +3999,6 @@ msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 "Базовый DN, начиная с которого по умолчанию производится поиск, например %s"
 
-msgid ""
-"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
-msgstr ""
-
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Имя устройства может состоять только из символов  a-z, A-Z, 0-9."
 
@@ -4649,11 +4609,6 @@ msgstr ""
 "Это удалит ВСЕ данные с указанных дисков. Не используйте эту настройку, если "
 "хотите подключить уже существующий RAID."
 
-msgid ""
-"This will erase ALL data on your disk! Do not use this option if you want to "
-"add an existing encrypted disk."
-msgstr ""
-
 msgid "Time"
 msgstr "Время"
 
@@ -4774,9 +4729,6 @@ msgstr "Trivial File Transfer Protocol (TFTP)"
 
 msgid "Tuning"
 msgstr "Настройка"
-
-msgid "Turn the monitor to standby after N seconds."
-msgstr ""
 
 msgid "Type"
 msgstr "Тип"
@@ -5299,1072 +5251,83 @@ msgstr "upriv"
 msgid "week days"
 msgstr "дней недели"
 
-#~ msgid "%b %d, %Y"
-#~ msgstr "%b %d, %Y"
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "Максимальная производительность, максимальное энергопотребление"
 
-#~ msgid "%A, %B %d, %Y"
-#~ msgstr "%A, %B %d, %Y"
+msgid "Blank time"
+msgstr "Время простоя"
 
-#~ msgid "%A, %B %d @ %H:%M:%S"
-#~ msgstr "%A, %B %d @ %H:%M:%S"
+msgid "Console screensaver"
+msgstr "Консольный хранитель экрана"
 
-#~ msgid "%b %d, %Y - %I:%M %p"
-#~ msgstr "%b %d, %Y - %I:%M %p"
+msgid "Danish"
+msgstr "Датский"
 
-#~ msgid "%A, %B %d, %Y - %I:%M %p"
-#~ msgstr "%A, %B %d, %Y - %I:%M %p"
+msgid "Enable console screensaver"
+msgstr "Разрешить консольный хранитель экрана"
 
-#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
-#~ msgstr "Вс Пн Вт Ср Чт Пт Сб"
+msgid "Encryption algorithm to use."
+msgstr "Используемый алгоритм шифрования."
 
-#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "Янв Фев Мар Апр Май Июн Июл Авг Сен Окт Ноя Дек"
+msgid "FTP file transfer"
+msgstr "Файловая передача FTP"
 
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
+msgid "File transfer"
+msgstr "Предача файла"
 
-#~ msgid "second"
-#~ msgstr "секунда"
+msgid "Initialize and encrypt disk."
+msgstr "Инициализация и шифрование диска"
 
-#~ msgid "minute"
-#~ msgstr "минута"
+msgid "Key length"
+msgstr "Длина ключа"
 
-#~ msgid "hour"
-#~ msgstr "час"
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr "Длина ключа, используемого с выбранным алгоритмом шифрования."
 
-#~ msgid "week"
-#~ msgstr "неделя"
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr ""
+"Уровень 1 - минимальное энергопотребление с режимом Standby (остановка "
+"шпинделя)"
 
-#~ msgid "weeks"
-#~ msgstr "недель"
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr "Уровень 127 - среднее энергопотребление с режимом Standby"
 
-#~ msgid "month"
-#~ msgstr "месяц"
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+"Уровень 128 - минимальное энергопотребление без режима Standby (без "
+"остановки шпинделя)"
 
-#~ msgid "year"
-#~ msgstr "год"
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr "Уровень 192 - среднее энергопотребление без режима Standby"
 
-#~ msgid "years"
-#~ msgstr "лет"
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr ""
+"Уровень 254 - максимальная производительность, максимальное энергопотребление"
 
-#~ msgid "and"
-#~ msgstr "и"
-
-#~ msgid "Down"
-#~ msgstr "Вниз"
-
-#~ msgid "off"
-#~ msgstr "отключен"
-
-#~ msgid "on"
-#~ msgstr "включен"
-
-#~ msgid "To"
-#~ msgstr "К"
-
-#~ msgid "Cancel"
-#~ msgstr "Отменить"
-
-#~ msgid "Deactivate"
-#~ msgstr "Деактивировать"
-
-#~ msgid "Ignore"
-#~ msgstr "Игнорировать"
-
-#~ msgid "Log out"
-#~ msgstr "Выход"
-
-#~ msgid "Modify"
-#~ msgstr "Изменить"
-
-#~ msgid "New"
-#~ msgstr "Новый"
-
-#~ msgid "Search"
-#~ msgstr "Поиск"
-
-#~ msgid "Submit"
-#~ msgstr "Передать"
-
-#~ msgid "Update"
-#~ msgstr "Обновить"
-
-#~ msgid "View"
-#~ msgstr "Смотреть"
-
-#~ msgid "Partition"
-#~ msgstr "Раздел"
-
-#~ msgid "ERROR: The changes could not be applied (error code %s)."
-#~ msgstr "ОШИБКА: Изменения не могут быть применены (код ошибки %s)."
-
-#~ msgid "Active"
-#~ msgstr "Активен"
-
-#~ msgid "Inactive"
-#~ msgstr "Неактивен"
-
-#~ msgid "General setup"
-#~ msgstr "Общие настройки"
-
-#~ msgid "Assign"
-#~ msgstr "Назначить"
-
-#~ msgid "CIFS"
-#~ msgstr "CIFS"
-
-#~ msgid "SSHD"
-#~ msgstr "SSHD"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "ARP table"
-#~ msgstr "Таблица ARP"
-
-#~ msgid "Edit File"
-#~ msgstr "Редактировать файл"
-
-#~ msgid "Reboot system"
-#~ msgstr "Перезагрузить систему"
-
-#~ msgid "Shutdown system"
-#~ msgstr "Выключить систему"
-
-#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-#~ msgstr "Имя компьютера NAS, без доменной части<br>например <em>nas</em>"
-
-#~ msgid "e.g. <em>mycorp.com</em>"
-#~ msgstr "например <em>mycorp.com</em>"
-
-#~ msgid "DNS servers"
-#~ msgstr "серверы DNS"
-
-#~ msgid ""
-#~ "If you want to change the username for accessing the webGUI, enter it here."
-#~ msgstr ""
-#~ "Если хотите изменить имя пользователя для доступа к webGUI, введите его "
-#~ "здесь."
-
-#~ msgid ""
-#~ "If you want to change the password for accessing the webGUI, enter it here "
-#~ "twice.<br>Don't use the character ':'."
-#~ msgstr ""
-#~ "Если хотите изменить пароль доступа к webGUI, введите его здесь "
-#~ "дважды.<br>Не используйте символ ':'."
-
-#~ msgid "WebGUI protocol"
-#~ msgstr "Протокол WebGUI"
-
-#~ msgid "WebGUI port"
-#~ msgstr "WebGUI порт"
-
-#~ msgid ""
-#~ "Enter a custom port number for the webGUI above if you want to override the "
-#~ "default (80 for HTTP, 443 for HTTPS)."
-#~ msgstr ""
-#~ "Введите нестандартный номер порта для webGUI выше, если хотите изменить "
-#~ "настройки по умолчанию (80 для HTTP, 443 для HTTPS)."
-
-#~ msgid "Select the system language"
-#~ msgstr "Выбрать язык системы"
-
-#~ msgid "System Time"
-#~ msgstr "Системное время"
-
-#~ msgid ""
-#~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
-#~ msgstr ""
-#~ "Минут между синхронизацией времени по сети.; 300\tрекоммендовано, или 0 "
-#~ "чтобы отключить."
-
-#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr "Домен может содержать только символы a-z, 0-9, '-' и '.'."
-
-#~ msgid ""
-#~ "A valid IP address must be specified for the primary/secondary DNS server."
-#~ msgstr ""
-#~ "Нужно указать корректный IP адрес для первичного/вторичного DNS сервера."
-
-#~ msgid "The username may only contain the characters a-z, A-Z and 0-9."
-#~ msgstr "Имя пользователя может содержать только символы a-z, A-Z и 0-9."
-
-#~ msgid "You must select a valid language."
-#~ msgstr "Необходимо выбрать правильный язык."
-
-#~ msgid ""
-#~ "The time update interval must be either 0 (disabled) or between 6 and 1440."
-#~ msgstr ""
-#~ "Период обновления времени должен быть либо 0 (отключено) либо между 6 и 1440"
-
-#~ msgid ""
-#~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr ""
-#~ "Имя сервера времени NTP может содержать только символы a-z, 0-9, '-' и '.'."
-
-#~ msgid "show process information"
-#~ msgstr "Показать информацию о процессах"
-
-#~ msgid ""
-#~ "The static route configuration has been changed.<br>You must apply the "
-#~ "changes in order for them to take effect."
-#~ msgstr ""
-#~ "Настройки статических маршрутов были изменены.<br>Вы должны применить их, "
-#~ "чтобы они вступили в силу."
-
-#~ msgid "Gateway to be used to reach the destination network"
-#~ msgstr "Шлюз используемый для доступа к сети назначения"
-
-#~ msgid "You may enter a description here for your reference (not parsed)."
-#~ msgstr ""
-#~ "Можно ввести здесь описание для собственных нужд (не обрабатывается)."
-
-#~ msgid "The digital signature on this image is invalid."
-#~ msgstr "Неправильная цифровая подпись образа."
-
-#~ msgid "This image is not digitally signed."
-#~ msgstr "Образ не имеет цифровой подписи."
-
-#~ msgid "There has been an error verifying the signature on this image."
-#~ msgstr "Произошла ошибка при проверке подписи этого образа."
-
-#~ msgid "The TCP idle timeout must be an integer."
-#~ msgstr "Таймаут простоя TCP должен быть целым числом."
-
-#~ msgid "Certificate and key must always be specified together."
-#~ msgstr "Сертификат и ключ должны быть указаны вместе."
-
-#~ msgid "This certificate does not appear to be valid."
-#~ msgstr "Похоже сертификат не верен."
-
-#~ msgid "This key does not appear to be valid."
-#~ msgstr "Похоже ключ не верен."
-
-#~ msgid ""
-#~ "The options on this page are intended for use by advanced users only, and "
-#~ "there's <strong>NO</strong> support for them."
-#~ msgstr ""
-#~ "Параметры на этой странице предназначены только для опытных пользователей и "
-#~ "они <strong>НЕ</strong> поддерживаются."
-
-#~ msgid "webGUI SSL certificate/key"
-#~ msgstr "webGUI SSL-сертификат/ключ"
-
-#~ msgid "Paste an RSA private key in PEM format here."
-#~ msgstr "Вставьте сюда личный RSA-ключ в формате PEM."
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Разное"
-
-#~ msgid "TCP idle timeout"
-#~ msgstr "Таймаут простоя TCP"
-
-#~ msgid ""
-#~ "Idle TCP connections will be removed from the state table after no packets "
-#~ "have been received for the specified number of seconds. Don't set this too "
-#~ "high or your state table could become full of connections that have been "
-#~ "improperly shut down. The default is 9000 seconds (2.5 hours)."
-#~ msgstr ""
-#~ "Простаивающие TCP соединения будут удалены из таблицы состояния, если в "
-#~ "течении указанного количества секунд от них не будет получено никаких "
-#~ "пакетов. Не ставьте слишком большое значение, иначе таблица состояния "
-#~ "переполнится неверно завершенными соединениями. Значение по умолчанию - 9000 "
-#~ "секунд (2.5 часа)."
-
-#~ msgid "Navigation"
-#~ msgstr "Навигация"
-
-#~ msgid "Keep diagnostics in navigation expanded"
-#~ msgstr "Видеть диагностику при развернутой навигации"
-
-#~ msgid "S.M.A.R.T Daemon"
-#~ msgstr "S.M.A.R.T Демон"
-
-#~ msgid "Enable the S.M.A.R.T daemon"
-#~ msgstr "Разрешить S.M.A.R.T демон"
-
-#~ msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-#~ msgstr ""
-#~ "Наблюдать за устройством S.M.A.R.T, записывая его состояние в файл журнала."
-
-#~ msgid "Zeroconf"
-#~ msgstr "Служба ZeroConf"
-
-#~ msgid "Swap file"
-#~ msgstr "Файл подкачки"
-
-#~ msgid "Swap size"
-#~ msgstr "Размер подкачки"
-
-#~ msgid "mount share"
-#~ msgstr "монтировать общий ресурс"
-
-#~ msgid "Swap file size"
-#~ msgstr "Размер файла подкачки"
-
-#~ msgid "A valid gateway must be specified."
-#~ msgstr "Должен быть указан корректный шлюз."
-
-#~ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-#~ msgstr ""
-#~ "Стандартный размер MTU равен 1500, для кадров \"джамбо-фрэйм\" задайте 9000."
-
-#~ msgid ""
-#~ "Device polling is a technique that lets the system periodically poll network "
-#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
-#~ "load and therefore increase throughput, at the expense of a slightly higher "
-#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
-#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
-#~ "cards."
-#~ msgstr ""
-#~ "Опрос устройств - это способ, при котором система периодически опрашивает "
-#~ "сетевые устройства о новых данных, вместо того, чтобы полагаться на "
-#~ "прерывания. Это может снизить загрузку процессора, и, следовательно, "
-#~ "увеличить пропускную способность за счет чуть большей задержки при отправке "
-#~ "(устройства опрашиваются 1000 раз в секунду). Не все сетевые карты "
-#~ "поддерживают опрос; см. домашнюю страницу m0n0wall, где указан список "
-#~ "поддерживаемых карт."
-
-#~ msgid "Speed"
-#~ msgstr "Скорость"
-
-#~ msgid "Enable Optional "
-#~ msgstr "Включить Дополнительный "
-
-#~ msgid " interface"
-#~ msgstr " интерфейс"
-
-#~ msgid "Enter a description (name) for the interface here."
-#~ msgstr "Введите здесь описание (имя) для интерфейса."
-
-#~ msgid "Static IP configuration"
-#~ msgstr "Конфигурация со статическим IP"
-
-#~ msgid "DHCP client configuration"
-#~ msgstr "Настройка клиента DHCP"
-
-#~ msgid "General configuration"
-#~ msgstr "Общие настройки"
-
-#~ msgid "Client Identifier"
-#~ msgstr "Идентификатор клиента"
-
-#~ msgid ""
-#~ "The value in this field is sent as the DHCP client identifier when "
-#~ "requesting a DHCP lease."
-#~ msgstr ""
-#~ "Это значение подставляется в качестве идентификатора клиента DHCP при "
-#~ "запросе DHCP аренды"
-
-#~ msgid "Calculate netmask bits"
-#~ msgstr "Рассчитать биты сетевой маски"
-
-#~ msgid ""
-#~ "The LAN configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Настройки локальной сети были изменены. <br>Нужно применить настройки чтобы "
-#~ "они вступили в силу."
-
-#~ msgid "Manage"
-#~ msgstr "Управление"
-
-#~ msgid ""
-#~ "The disk list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "Список дисков был изменен. <br>Нужно применить настройки, чтобы они вступили "
-#~ "в силу."
-
-#~ msgid "UDMA mode"
-#~ msgstr "Режим UDMA"
-
-#~ msgid ""
-#~ "Puts the hard disk into standby mode when the selected amount of time after "
-#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Переводит жесткий диск в режим ожидания по прошествии указанного времени с "
-#~ "момента последнего обращения. <em> Не устанавливайте для CF карт.</em>"
-
-#~ msgid ""
-#~ "This allows  you  to lower the power consumption of the drive, at the "
-#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Позволяет снизить потребление энергии за счет падения  "
-#~ "производительности.<br><em>Не устанавливайте для CF карт.</em>"
-
-#~ msgid ""
-#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
-#~ "not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "Позволяет указать, насколько шумным будет диск при работе.<br><em>Не "
-#~ "устанавливайте для CF карт.</em>"
-
-#~ msgid "Preformatted FS"
-#~ msgstr "Преформатированная ФС"
-
-#~ msgid "Can't format the drive where FreeNAS configuration file is installed!"
-#~ msgstr ""
-#~ "Форматировать диск, на котором размещён файл настроек FreeNAS, невозможно."
-
-#~ msgid "Disk initialization details"
-#~ msgstr "Подробности инициализации диска"
-
-#~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
-#~ msgstr "\"fdisk: Geom not found\" не является сообщением об ошибке!\n"
-
-#~ msgid ""
-#~ "This step will erase all your partition, create partition number 1 and "
-#~ "format the hard drive with the file system specified."
-#~ msgstr ""
-#~ "Этот шаг сотрет все разделы, создаст раздел номер 1 и отформатирует его с "
-#~ "указанной файловой системой."
-
-#~ msgid "iSCSI"
-#~ msgstr "iSCSI"
-
-#~ msgid "Target IP address"
-#~ msgstr "Целевой IP адрес"
-
-#~ msgid "IP address of the iSCSI target."
-#~ msgstr "IP адрес iSCSI цели."
-
-#~ msgid "Targetname"
-#~ msgstr "Имя цели"
-
-#~ msgid "Targetname."
-#~ msgstr "Имя цели."
-
-#~ msgid "Manage RAID"
-#~ msgstr "Управление RAID-массивом"
-
-#~ msgid "Format RAID"
-#~ msgstr "Форматирование RAID-массива"
-
-#~ msgid "Geom Vinum"
-#~ msgstr "Geom Vinum"
-
-#~ msgid "Geom Mirror"
-#~ msgstr "Geom Mirror"
-
-#~ msgid "Geom Stripe"
-#~ msgstr "Geom Stripe"
-
-#~ msgid "Geom Concat"
-#~ msgstr "Geom Concat"
-
-#~ msgid "Geom Raid5"
-#~ msgstr "Geom Raid5"
-
-#~ msgid "RAID"
-#~ msgstr "RAID-массив"
-
-#~ msgid ""
-#~ "The Raid configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Настройки RAID были изменены.<br>Примените изменения, чтобы они вступили в "
-#~ "силу."
-
-#~ msgid ""
-#~ "Do you really want to delete this raid volume? All elements that still use "
-#~ "it will become invalid (e.g. share)!"
-#~ msgstr ""
-#~ "Вы действительно хотите удалить этот RAID-массив? Все использующие его "
-#~ "объекты станут недоступны (например, общие ресурсы)!"
-
-#~ msgid "ERR Could not save RAID configuration.\n"
-#~ msgstr "ОШИБКА Не могу сохранить конфигурацию RAID.\n"
-
-#~ msgid "Members of this volume"
-#~ msgstr "Члены тома"
-
-#~ msgid "Disk format UFS output:"
-#~ msgstr "Сообщения при форматировании диска в UFS"
-
-#~ msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-#~ msgstr ""
-#~ "Этот шаг приведет к форматированию RAID-массива в файловой системе Unix "
-#~ "(UFS)."
-
-#~ msgid "Format UFS disk!"
-#~ msgstr "Форматировать диск в UFS!"
-
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
-#~ "using this menu for start a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. Используйте эти специальные действия только для отладки!<br>2.Для запуска "
-#~ "RAID-массива необходимости в использовании этого меню нет (запускается "
-#~ "автоматически)."
-
-#~ msgid "Share Name"
-#~ msgstr "Имя общего ресурса"
-
-#~ msgid ""
-#~ "The mount point list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Точка монтирования была изменена.<br>Вы должны применить изменения, чтобы "
-#~ "они вступили в силу."
-
-#~ msgid "delete mount"
-#~ msgstr "удалить точку монтирования"
-
-#~ msgid "add mount"
-#~ msgstr "добавить точку монтирования"
-
-#~ msgid "The description name contain invalid characters."
-#~ msgstr "Описание содержит некорректные символы"
-
-#~ msgid "Duplicate Share Name."
-#~ msgstr "Повторяющееся имя общего ресурса"
-
-#~ msgid ""
-#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
-#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-#~ "you select option 2 during installation on hard drive.<br>Select old "
-#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-#~ msgstr ""
-#~ "Выберите вариант EFI GPT для монтирования диска GPT-формата (по умолчанию с "
-#~ "версии 0.684b). <br>Выберите вариант 1 для монтирования UFS-диска или тома "
-#~ "RAID-массива версии 0.683b или позже. <br>Выберите вариант 2 для "
-#~ "монтирования раздела данных, если во время установки на жёсткий диск был "
-#~ "выбран вариант 2.<br>Выберите вариант gmirror/graid5/gvinum для монтирования "
-#~ "тома, созданного старым выпуском FreeNAS"
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr "Уровень 64 - среднее энергопотребление с режимом Standby"
 
 #, php-format
-#~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-#~ msgstr ""
-#~ "Невозможно размонтировать диск, занятый файлом подкачки или файлом iSCSI-"
-#~ "цели."
-
-#~ msgid "The Netbios name contains invalid characters."
-#~ msgstr "Имя Netbios содержит некорректные символы"
-
-#~ msgid "The Workgroup name contains invalid characters."
-#~ msgstr "Имя рабочей группы содержит некорректные символы."
-
-#~ msgid "The WINS server must be an IP address."
-#~ msgstr "Поле WINS-сервера должно содержать IP-адрес."
-
-#~ msgid "The SND Buffer value must be a number."
-#~ msgstr "Значение SND Buffer должно быть числом."
-
-#~ msgid "The RCV Buffer value must be a number."
-#~ msgstr "Значение RCV Buffer должно быть числом."
-
-#~ msgid "CIFS share"
-#~ msgstr "общий ресурс CIFS"
-
-#~ msgid "NetBiosName"
-#~ msgstr "Имя NetBios"
-
-#~ msgid "Workgroup to be member of."
-#~ msgstr "Стать членом рабочей группы."
-
-#~ msgid "WINS Server IP address."
-#~ msgstr "IP адрес сервера WINS"
-
-#~ msgid "Recycle Bin"
-#~ msgstr "Корзина"
-
-#~ msgid "Enable Recycle bin"
-#~ msgstr "Включить корзину"
-
-#~ msgid "This will create a recycle bin on the CIFS shares."
-#~ msgstr "Это создасть корзину на общих ресурсах CIFS"
-
-#~ msgid ""
-#~ "The shares has been modified.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "Общие ресурсы были изменены.<br>Вы должны применить изменения, чтобы они "
-#~ "вступили в силу."
-
-#~ msgid "The maximum Number of client must be a number."
-#~ msgstr "Максимальное количество клиентов должно быть числом."
-
-#~ msgid "The max con per ip must be a number."
-#~ msgstr "Макс. число соединений с одного IP должно быть числом."
-
-#~ msgid "The pasv address must be a public IP address."
-#~ msgstr "Адрес pasv должен быть публичным IP адресом."
-
-#~ msgid "You must select at minium anonymous or/and local user authentication."
-#~ msgstr ""
-#~ "Как минимум нужно выбрать анонимную и/или локальную аутентификацию "
-#~ "пользователей."
-
-#~ msgid "Anonymous login"
-#~ msgstr "Анонимный вход"
-
-#~ msgid "NAT mode"
-#~ msgstr "Режим трансляции сетевых адресов (NAT)"
-
-#~ msgid ""
-#~ "Use this option to override the IP address that FTP daemon will advertise in "
-#~ "response to the PASV command."
-#~ msgstr ""
-#~ "Используйте этот параметр для замещения IP-адреса, который FTP-сервер "
-#~ "предложит в ответ на команду PASV."
-
-#~ msgid "NFS Server"
-#~ msgstr "Сервер NFS"
-
-#~ msgid "Network that is authorised to access to NFS share"
-#~ msgstr "Сети, которым разрешено подключаться к общему ресурсу NFS"
-
-#~ msgid "The name of the exported directories are : /mnt/sharename"
-#~ msgstr "Имена экспортируемых каталогов будут вида /mnt/sharename"
-
-#~ msgid "You must configure mount point first."
-#~ msgstr "Сначала нужно настроить точку монтирования."
-
-#~ msgid "Rsync Client Synchronization"
-#~ msgstr "Синхронизация клиента RSYNC"
-
-#~ msgid "Remote RSYNC Server"
-#~ msgstr "Удаленный сервер RSYNC"
-
-#~ msgid "RSYNC Options"
-#~ msgstr "Параметры RSYNC"
-
-#~ msgid "Delete files that don't exist on sender."
-#~ msgstr "Удалять файлы отсутствующие на отправителе."
-
-#~ msgid "Shares to be synchronized"
-#~ msgstr "Синхронизирующиеся папки"
-
-#~ msgid "This same local share must be present on the Remote Server."
-#~ msgstr ""
-#~ "Такая же локальная папка должна присутствовать и на удаленном сервере."
-
-#~ msgid "You can't have the same mount point for source and destination!"
-#~ msgstr ""
-#~ "Нельзя использовать одну и ту же точку монтирования и для источника, и для "
-#~ "получателя!"
-
-#~ msgid "Rsync Local Synchronization"
-#~ msgstr "Локальная синхронизация RSYNC"
-
-#~ msgid "Source Mount Point."
-#~ msgstr "Точка монтирования источника."
-
-#~ msgid "Destination Mount Point (backup drive)."
-#~ msgstr "Точка монтирования получателя (резервный жесткий диск)."
-
-#~ msgid "Enable TCP Forwarding"
-#~ msgstr "Разрешить пересылку TCP"
-
-#~ msgid "Directories to be shared."
-#~ msgstr "Общие каталоги."
-
-#~ msgid "No content directory to be shared."
-#~ msgstr "Нет общего каталога."
-
-#~ msgid "Add directory"
-#~ msgstr "Добавить каталог"
-
-#~ msgid "Edit directory"
-#~ msgstr "Изменить каталог"
-
-#~ msgid "Delete directory"
-#~ msgstr "Удалить каталог"
-
-#~ msgid "Do you really want to delete this directory entry?"
-#~ msgstr "Вы действительно хотите удалить этот каталог?"
-
-#~ msgid "AFP Server"
-#~ msgstr "Сервер AFP"
-
-#~ msgid ""
-#~ "The User list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "Список пользователей был изменен.<br>Вы должны применить изменения, чтобы "
-#~ "они вступили в силу."
-
-#~ msgid "You must create a group first."
-#~ msgstr "Сначала нужно создать группу."
-
-#~ msgid "Unique login name of user."
-#~ msgstr "Уникальное имя входа пользователя."
-
-#~ msgid "Confirm Password"
-#~ msgstr "Подтверждение пароля"
-
-#~ msgid "Confirm the password."
-#~ msgstr "Подтвердите ранее введенный пароль."
-
-#~ msgid "Group Member"
-#~ msgstr "Член группы"
-
-#~ msgid "Administrator"
-#~ msgstr "Администратор"
-
-#~ msgid "Put user in the administrator group"
-#~ msgstr "Внести пользователя в группу администраторов"
-
-#~ msgid ""
-#~ "The group list has been changed.<br>You must apply the changes in order for "
-#~ "them to take effect."
-#~ msgstr ""
-#~ "Список групп был изменен.<br>Вы должны применить изменения, чтобы они "
-#~ "вступили в силу."
-
-#~ msgid "The Group name contains invalid characters."
-#~ msgstr "Имя группы содержит недопустимые символы."
-
-#~ msgid "The Group desc contains invalid characters."
-#~ msgstr "Описание группы содержит недопустимые символы."
-
-#~ msgid "AD server name"
-#~ msgstr "Имя сервера AD"
-
-#~ msgid "IP address of MS Active Directory server."
-#~ msgstr "IP-адрес сервера служб каталогов Active Directory."
-
-#~ msgid "Domain name in old format."
-#~ msgstr "Доменное имя в старом формате."
-
-#~ msgid "Password of domain administrator account, enter it here twice."
-#~ msgstr "Пароль учетной записи администратора домена, введите здесь дважды."
-
-#, php-format
-#~ msgid "%s interface (SSID '%s')"
-#~ msgstr "%s интерфейс (SSID '%s')"
-
-#~ msgid "Signal strength cache"
-#~ msgstr "Кэш силы сигнала"
-
-#~ msgid "Signal"
-#~ msgstr "Сигнал"
-
-#~ msgid "Noise"
-#~ msgstr "Шум"
-
-#~ msgid "Quality"
-#~ msgstr "Качество"
-
-#~ msgid "Associated stations"
-#~ msgstr "Ассоциированные станции"
-
-#~ msgid "TX rates"
-#~ msgstr "Скорость передачи"
-
-#~ msgid ""
-#~ "No supported wireless interfaces were found for status display (only cards "
-#~ "that use the wi[n] driver are supported)."
-#~ msgstr ""
-#~ "Не найдено поддерживаемых беспроводных интерфейсов для отображения их "
-#~ "состояния (поддерживаются только карты использующие драйверы wi[n])"
-
-#~ msgid "ATAidle"
-#~ msgstr "ATAidle"
-
-#~ msgid "Free Space"
-#~ msgstr "Свободный объем"
-
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "НЕ отменяйте обновление прошивки, после того как оно началось. %s будет "
-#~ "перезагружен автоматически после сохранения новой прошивки. Настройки "
-#~ "сохранятся.<br>Необходимо как минимум %d Мб ОЗУ для проведения обновления "
-#~ "прошивки.<br>Настоятельно рекомендуется <a href=%s>Сохранить</a> настройки "
-#~ "системы перед обновлением прошивки."
-
-#~ msgid ""
-#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-#~ "hard drive."
-#~ msgstr ""
-#~ "Вы можете поставить UDMA-режим принудительно, если получаете сообщение "
-#~ "'UDMA_ERROR.... LBA' при использовании жесткого диска."
-
-#, php-format
-#~ msgid ""
-#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
-#~ "'unformated' for unformated disk and then use <a href=%s>format "
-#~ "menu</a>.</em>"
-#~ msgstr ""
-#~ "Это позволяет указать тип ФС для диска с данными.<br><em>Оставьте "
-#~ "'unformated' для неформатированного диска, затем используйте  <a "
-#~ "href=%s>меню форматирования</a>.</em>"
-
-#~ msgid ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
-#~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-#~ "before format and mount it!"
-#~ msgstr ""
-#~ "Возможный шаг настройки: Настройка виртуального RAID диска используя <a "
-#~ "href='%s'>ранее настроенный диск</a>.<br>Дождитесь '%s' состояния перед "
-#~ "форматированием и монтированием!"
-
-#, php-format
-#~ msgid ""
-#~ "Second configuration step: Declaring the filesystem used by your <a "
-#~ "href=%s>previously configured disk.</a>"
-#~ msgstr ""
-#~ "Второй шаг настройки: Объявление файловой системы используемой на <a "
-#~ "href=%s>ранее настроенном диске</a>."
-
-#~ msgid "Clear log"
-#~ msgstr "Очистить журнал"
-
-#~ msgid "SSHD events"
-#~ msgstr "События SSHD"
-
-#~ msgid "RSYNCD events"
-#~ msgstr "События RSYNCD"
-
-#~ msgid "SMARTD events"
-#~ msgstr "События SMARTD"
-
-#~ msgid "List of partition on all detected disk"
-#~ msgstr "Список разделов на всех обнаруженных дисках"
-
-#~ msgid "List of SMART capabilities on all detected disk"
-#~ msgstr "Список возможностей SMART на всех обнаруженных дисках"
-
-#~ msgid "List of Advanced ATA capabilities on all ATA disk"
-#~ msgstr "Список возможностей Advanced ATA на всех ATA дисках"
-
-#~ msgid "Show the list of available target Name on the iSCSI target"
-#~ msgstr "Показать список доступных имен Целей на iSCSI цели"
-
-#, php-format
-#~ msgid "Count must be between 1 and %d"
-#~ msgstr "Количество должно быть между 1 и %d"
-
-#~ msgid "Ping output"
-#~ msgstr "Результат команды Ping"
-
-#~ msgid "Maximum number of hops"
-#~ msgstr "Максимальное количество прыжков"
-
-#~ msgid "Traceroute output"
-#~ msgstr "Результат команды Traceroute"
-
-#~ msgid "webGUI Configuration"
-#~ msgstr "Настройка webGUI"
-
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "Стирание MBR и всех разделов"
-
-#~ msgid "Keeping the MBR and all partitions"
-#~ msgstr "Сохранение MBR и всех разделов"
-
-#~ msgid "Creating one partition"
-#~ msgstr "Создание одного раздела"
-
-#~ msgid "Creating BSD label"
-#~ msgstr "Создание BSD метки"
-
-#, c-format
-#~ msgid "Destroying old %s information"
-#~ msgstr "Уничтожение старой %s информации"
-
-#, c-format
-#~ msgid "Creating %s partition"
-#~ msgstr "Создание %s раздела"
-
-#~ msgid ""
-#~ "The crypted disk list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Список шифрованных дисков был изменен.<br>Вы должны применить изменения, "
-#~ "чтобы они вступили в силу."
-
-#~ msgid ""
-#~ "Do you really want to delete this encrypted disk? All elements that still "
-#~ "use it will become invalid (e.g. share)!"
-#~ msgstr ""
-#~ "Вы действительно хотите удалить этот шифрованный диск? Все объекты, "
-#~ "использующие его, станут недоступны (например, общие ресурсы)!"
-
-#~ msgid "Create encrypted disk"
-#~ msgstr "Создать зашифрованный диск"
-
-#~ msgid "Data integrity algorithm"
-#~ msgstr "Алгоритм целостности данных"
-
-#~ msgid "Init and encrypt disk"
-#~ msgstr "Инициализировать и зашифровать диск"
-
-#~ msgid "Attaching..."
-#~ msgstr "Присоединение..."
-
-#~ msgid ""
-#~ "Using Data integrity will reduce size of available storage and also reduce "
-#~ "speed."
-#~ msgstr ""
-#~ "Использование контроля за целостностью данных уменьшит размер доступного "
-#~ "хранилища, а также уменьшит скорость."
-
-#~ msgid "Sensors"
-#~ msgstr "Датчики"
-
-#~ msgid "Detaching..."
-#~ msgstr "Отсоединение..."
-
-#~ msgid "attach"
-#~ msgstr "присоединить"
-
-#~ msgid "detach"
-#~ msgstr "отсоединить"
-
-#~ msgid "Enable resume mode."
-#~ msgstr "Разрешить режим продолжения."
-
-#~ msgid ""
-#~ "Use this option to enable resuming broken transfers at the point of "
-#~ "interruption."
-#~ msgstr ""
-#~ "Используйте этот параметр, чтобы разрешить продолжение нарушенных передач с "
-#~ "места их обрыва."
-
-#~ msgid ""
-#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Список iSCSI цели был изменен.<br>Вы должны применить изменения, чтобы они "
-#~ "вступили в силу."
-
-#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-#~ msgstr "Нужно как минимум 256Мб ОЗУ для использования iSCSI-цели."
-
-#~ msgid "FTP Server disabled"
-#~ msgstr "FTP-сервер запрещен"
-
-#~ msgid "FTP users"
-#~ msgstr "Пользователи FTP"
-
-#~ msgid "FTP connected users"
-#~ msgstr "Подключенные пользователи FTP"
-
-#~ msgid "Save and Restart UPnP"
-#~ msgstr "Сохранить и перезагрузить UPnP"
-
-#~ msgid "Save and Restart Unison"
-#~ msgstr "Сохранить и перезагрузить Unison"
-
-#~ msgid "Save and Restart SSHD"
-#~ msgstr "Сохранить и перезагрузить SSHD"
-
-#~ msgid "Save and Restart RSYNC"
-#~ msgstr "Сохранить и перезагрузить RSYNC"
-
-#~ msgid "Save and Restart NFS"
-#~ msgstr "Сохранить и перезагрузить NFS"
-
-#~ msgid "Save and Restart FTP"
-#~ msgstr "Сохранить и перезагрузить FTP"
-
-#~ msgid "Save and Restart AFP"
-#~ msgstr "Сохранить и перезагрузить AFP"
-
-#, php-format
-#~ msgid "The %s port must be a valid port number."
-#~ msgstr "Порт %s должен быть корректным номером порта."
-
-#~ msgid "Password confirmation"
-#~ msgstr "Подтверждение пароля"
-
-#~ msgid "Remote share (source)"
-#~ msgstr "Удаленная папка (источник)"
-
-#~ msgid ""
-#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Список клиентов RSYNC был изменен.<br>Вы должны применить изменения, чтобы "
-#~ "они вступили в силу."
-
-#~ msgid ""
-#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Локальный список RSYNC был изменен.<br>Вы должны применить изменения, чтобы "
-#~ "они вступили в силу."
-
-#~ msgid "Add RSYNC"
-#~ msgstr "ДобавитьRSYNC"
-
-#~ msgid "Delete RSYNC"
-#~ msgstr "Удалить RSYNC"
-
-#~ msgid "Do you really want to delete this RSYNC?"
-#~ msgstr "Вы действительно хотите удалить этот RSYNC?"
-
-#~ msgid "Remote source share name"
-#~ msgstr "Имя папки удаленного источника"
-
-#~ msgid "Mount to use"
-#~ msgstr "Монтирование для использования"
-
-#~ msgid "A valid size target value must be specified."
-#~ msgstr "Должно быть указано корректное значение размера цели."
-
-#~ msgid "Mount used"
-#~ msgstr "Использовано монтирование"
-
-#~ msgid "Initializing disk"
-#~ msgstr "Инициализация диска"
-
-#~ msgid "Enable Zeroconf"
-#~ msgstr "Включить службу ZeroConf"
-
-#~ msgid "LDAP server IP"
-#~ msgstr "IP LDAP-сервера"
-
-#~ msgid "IP address of LDAP server."
-#~ msgstr "IP-адрес LDAP-сервера."
-
-#~ msgid ""
-#~ "Specifies the default base DN to use when performing ldap operations. The "
-#~ "base must be specified as a distinguished name in LDAP format."
-#~ msgstr ""
-#~ "Задаёт основное уникальное имя по умолчанию для использования при LDAP-"
-#~ "операциях."
-
-#~ msgid "DN to bind"
-#~ msgstr "Уникальное имя для аутентификации"
-
-#~ msgid ""
-#~ "Specifies the default bind DN to use when performing ldap operations. The "
-#~ "bind DN must be specified as a distinguished name in LDAP format."
-#~ msgstr ""
-#~ "Задаёт уникальное имя по умолчанию для LDAP-операций. Имя должно "
-#~ "соответствовать LDAP-формату."
-
-#~ msgid "Method used to store your password in your LDAP."
-#~ msgstr "Метод хранения паролей в службе LDAP."
-
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span><"
-#~ msgstr ""
-#~ "После нажатия &quot;Сохранить&quot;, необходимо  перезагрузить %s, чтобы "
-#~ "изменения вступили в силу. Возможно, перед тем, как Вы снова сможете "
-#~ "получить доступ к NAS, понадобится сделать следующее: </span><"
-
-#~ msgid "Do you really want to delete this user?!"
-#~ msgstr "Вы действительно хотите удалить этого пользователя?!"
-
-#~ msgid ""
-#~ "These commands will be executed pre or post system initialization (booting)."
-#~ msgstr ""
-#~ "Эти команды будут выполнены до или после инициализации (загрузки) системы."
-
-#~ msgid "Execute command pre or post system initialization (booting)."
-#~ msgstr "Выполнить команды до или после инициализации (загрузки) системы."
-
-#~ msgid "Startup"
-#~ msgstr "Запуск"
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+"Для получения дополнительных сведений вы можете обратиться к <a href='%s' "
+"target='_blank'>документации</a>."
+
+msgid "Syslog"
+msgstr "Syslog"
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+msgstr ""
+"По умолчанию, длина ключа составляет 128 бит для AES, 128 бит для Blowfish и "
+"192 бита для 3DES."
+
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
+"Внимание! Все данные на вашем диске будут УДАЛЕНЫ! Не используйте эту опцию, "
+"если вы просто хотите добавить уже зашифрованный диск."
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr "Переводить монитор в режим энергопотребления через N секунд."
