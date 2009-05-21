@@ -2,11 +2,11 @@
 <?php
 /*
 	services_websrv_authurl.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,23 +36,24 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"),gettext("Webserver"),gettext("Authenticate URL"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("Webserver"), gettext("Authenticate URL"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['websrv']['authentication']['url']))
 	$config['websrv']['authentication']['url'] = array();
 
 array_sort_key($config['websrv']['authentication']['url'], "path");
-
 $a_authurl = &$config['websrv']['authentication']['url'];
 
-if (isset($id) && $a_authurl[$id]) {
-	$pconfig['path'] = $a_authurl[$id]['path'];
-	$pconfig['realm'] = $a_authurl[$id]['realm'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_authurl, "uuid")))) {
+	$pconfig['uuid'] = $a_authurl[$cnid]['uuid'];
+	$pconfig['path'] = $a_authurl[$cnid]['path'];
+	$pconfig['realm'] = $a_authurl[$cnid]['realm'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['path'] = "";
 	$pconfig['realm'] = "";
 }
@@ -67,22 +68,28 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// Check if URL is already configured.
-	if (!isset($id) && FALSE !== array_search_ex($_POST['path'], $a_authurl, "path")) {
-		$input_errors[] = gettext("This URL is already configured.");
+	$index = array_search_ex($_POST['path'], $a_authurl, "path");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_authurl[$cnid]['uuid'] === $a_authurl[$index]['uuid']))) {
+			$input_errors[] = gettext("This URL is already configured.");
+		}
 	}
 
 	if (!$input_errors) {
 		$url = array();
-
+		$url['uuid'] = $_POST['uuid'];
 		$url['path'] = $_POST['path'];
 		$url['realm'] = $_POST['realm'];
 
-		if (isset($id) && $a_authurl[$id])
-			$a_authurl[$id] = $url;
-		else
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_authurl[$cnid] = $url;
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
+		} else {
 			$a_authurl[] = $url;
+			$mode = UPDATENOTIFY_MODE_NEW;
+		}
 
-		touch($d_websrvconfdirty_path);
+		updatenotify_set("websrvauth", $mode, $url['uuid']);
 		write_config();
 
 		header("Location: services_websrv.php");
@@ -96,26 +103,12 @@ if ($_POST) {
 		<form action="services_websrv_authurl.php" method="post" name="iform" id="iform">
 			<?php if ($input_errors) print_input_errors($input_errors);?>
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
-					<td width="78%" class="vtable">
-						<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>"><br/>
-						<span class="vexpl"><?=gettext("Path of the URL relative to document root.");?></span>
-					</td>
-				</tr>
-				<tr>
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("Realm");?></td>
-					<td width="78%" class="vtable">
-						<input name="realm" type="text" class="formfld" id="realm" size="60" value="<?=htmlspecialchars($pconfig['realm']);?>"><br/>
-						<span class="vexpl"><?=gettext("String displayed in the dialog presented to the user when accessing the URL.");?></span>
-					</td>
-				</tr>
+				<?php html_inputbox("path", gettext("Path"), $pconfig['path'], gettext("Path of the URL relative to document root."), true, 60);?>
+				<?php html_inputbox("realm", gettext("Realm"), $pconfig['realm'], gettext("String displayed in the dialog presented to the user when accessing the URL."), true, 20);?>
 			</table>
 			<div id="submit">
-				<input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>">
-				<?php if(isset($id)):?>
-				<input name="id" type="hidden" value="<?=$id;?>">
-				<?php endif;?>
+				<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+				<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			</div>
 		</form>
 	</td>

@@ -45,10 +45,6 @@ if (!is_array($config['websrv']))
 if (!is_array($config['websrv']['authentication']['url']))
 	$config['websrv']['authentication']['url'] = array();
 
-array_sort_key($config['websrv']['authentication']['url'], "path");
-
-$a_authurl = &$config['websrv']['authentication']['url'];
-
 $pconfig['enable'] = isset($config['websrv']['enable']);
 $pconfig['protocol'] = $config['websrv']['protocol'];
 $pconfig['port'] = $config['websrv']['port'];
@@ -96,6 +92,7 @@ if ($_POST) {
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= updatenotify_process("websrvauth", "websrvauth_process_updatenotification");
 			config_lock();
 			$retval |= rc_exec_service("websrv_htpasswd");
 			$retval |= rc_update_service("websrv");
@@ -105,18 +102,36 @@ if ($_POST) {
 		$savemsg = get_std_save_message($retval);
 
 		if (0 == $retval) {
-			if(file_exists($d_websrvconfdirty_path))
-				unlink($d_websrvconfdirty_path);
+			updatenotify_delete("websrvauth");
 		}
 	}
 }
 
 if($_GET['act'] === "del") {
-	unset($config['websrv']['authentication']['url'][$_GET['id']]);
-	write_config();
-	touch($d_websrvconfdirty_path);
+	updatenotify_set("websrvauth", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 	header("Location: services_websrv.php");
 	exit;
+}
+
+function websrvauth_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFY_MODE_NEW:
+		case UPDATENOTIFY_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFY_MODE_DIRTY:
+			$cnid = array_search_ex($data, $config['websrv']['authentication']['url'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['websrv']['authentication']['url'][$cnid]);
+				write_config();
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -161,13 +176,13 @@ function authentication_change() {
 }
 //-->
 </script>
-<form action="services_websrv.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabcont">
+    	<form action="services_websrv.php" method="post" name="iform" id="iform">
 	    	<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_websrvconfdirty_path)) print_config_change_box();?>
+				<?php if (updatenotify_exists("websrvauth")) print_config_change_box();?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Webserver"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("http" => "HTTP", "https" => "HTTPS"), "", true, false, "protocol_change()");?>
@@ -185,21 +200,30 @@ function authentication_change() {
 									<td width="45%" class="listhdrr"><?=gettext("Realm");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
-								<?php $i = 0; foreach($a_authurl as $urlv):?>
+								<?php foreach ($config['websrv']['authentication']['url'] as $urlv):?>
+								<?php $notificationmode = updatenotify_get_mode("websrvauth", $urlv['uuid']);?>
 								<tr>
 									<td class="listlr"><?=htmlspecialchars($urlv['path']);?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($urlv['realm']);?>&nbsp;</td>
+									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 									<td valign="middle" nowrap class="list">
-										<?php if(isset($config['websrv']['enable'])):?>
-										<a href="services_websrv_authurl.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit URL");?>" border="0"></a>&nbsp;
-										<a href="services_websrv.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this URL?");?>')"><img src="x.gif" title="<?=gettext("Delete URL");?>" border="0"></a>
+										<?php if (isset($config['websrv']['enable'])):?>
+										<a href="services_websrv_authurl.php?uuid=<?=$urlv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit URL");?>" border="0"></a>&nbsp;
+										<a href="services_websrv.php?act=del&uuid=<?=$urlv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this URL?");?>')"><img src="x.gif" title="<?=gettext("Delete URL");?>" border="0"></a>
 										<?php endif;?>
 									</td>
+									<?php else:?>
+									<td valign="middle" nowrap class="list">
+										<img src="del.gif" border="0">
+									</td>
+									<?php endif;?>
 								</tr>
-								<?php $i++; endforeach;?>
+								<?php endforeach;?>
 								<tr>
 									<td class="list" colspan="2"></td>
-									<td class="list"><a href="services_websrv_authurl.php"><img src="plus.gif" title="<?=gettext("Add URL");?>" border="0"></a></td>
+									<td class="list">
+										<a href="services_websrv_authurl.php"><img src="plus.gif" title="<?=gettext("Add URL");?>" border="0"></a>
+									</td>
 								</tr>
 							</table>
 							<span class="vexpl"><?=gettext("Define directories/URL's that require authentication.");?></span>
@@ -210,10 +234,10 @@ function authentication_change() {
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 				</div>
-			</td>
-		</tr>
-	</table>
-</form>
+			</form>
+		</td>
+	</tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);

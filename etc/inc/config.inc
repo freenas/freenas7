@@ -1768,8 +1768,18 @@ function config_upgrade() {
 	}
 
 	/* Convert 7.7 -> 7.8 */
-	/* Set default iSCSI target (istgt) values. */
+	/* Set uuid's for //websrv/authentication/url. */
 	if ($config['version'] === "7.7") {
+		for ($i = 0; isset($config['websrv']['authentication']['url'][$i]); $i++) {
+			$config['websrv']['authentication']['url'][$i]['uuid'] = uuid();
+		}
+
+		$config['version'] = "7.8";
+	}
+
+	/* Convert 7.8 -> 7.9 */
+	/* Set default iSCSI target (istgt) values. */
+	if ($config['version'] === "7.8") {
 		$config['iscsitarget']['nodebase'] = "iqn.2007-09.jp.ne.peach.istgt";
 		$config['iscsitarget']['discoveryauthmethod'] = "Auto";
 		$config['iscsitarget']['discoveryauthgroup'] = "0";
@@ -1781,7 +1791,7 @@ function config_upgrade() {
 		$config['iscsitarget']['maxburstlength'] = "262144";
 		$config['iscsitarget']['maxrecvdatasegmentlength'] = "262144";
 
-		$config['version'] = "7.8";
+		$config['version'] = "7.9";
 	}
 
 	write_config();
