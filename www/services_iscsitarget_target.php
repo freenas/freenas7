@@ -171,12 +171,10 @@ function iscsitargetextent_process_updatenotification($mode, $data) {
 
 	switch ($mode) {
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['iscsitarget']['extent'])) {
-				$index = array_search_ex($data, $config['iscsitarget']['extent'], "uuid");
-				if (false !== $index) {
-					unset($config['iscsitarget']['extent'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['iscsitarget']['extent'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['iscsitarget']['extent'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -191,12 +189,10 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 
 	switch ($mode) {
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['iscsitarget']['target'])) {
-				$index = array_search_ex($data, $config['iscsitarget']['target'], "uuid");
-				if (false !== $index) {
-					unset($config['iscsitarget']['target'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['iscsitarget']['target'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['iscsitarget']['target'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -210,15 +206,14 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="services_iscsitarget.php"><span><?=gettext("Settings");?></span></a></li>
-        <li class="tabact"><a href="services_iscsitarget_target.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Targets");?></span></a></li>
-        <li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
-		<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
-		<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+				<li class="tabinact"><a href="services_iscsitarget.php"><span><?=gettext("Settings");?></span></a></li>
+				<li class="tabact"><a href="services_iscsitarget_target.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Targets");?></span></a></li>
+				<li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
+				<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
+				<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
       </ul>
     </td>
   </tr>
-
   <tr>
     <td class="tabcont">
       <?php if ($input_errors) print_input_errors($input_errors);?>
@@ -228,7 +223,6 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
       <tr>
         <td colspan="2" valign="top" class="listtopic"><?=gettext("Targets");?></td>
       </tr>
-
       <tr>
         <td width="22%" valign="top" class="vncell"><?=gettext("Extent");?></td>
         <td width="78%" class="vtable">
@@ -239,9 +233,8 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           <td width="20%" class="listhdrr"><?=gettext("Size");?></td>
           <td width="10%" class="list"></td>
         </tr>
-        <?php $i = 0; foreach($config['iscsitarget']['extent'] as $extent):?>
-        <?php $sizeunit = $extent['sizeunit'];
-			if (!$sizeunit) { $sizeunit = "MB"; } ?>
+        <?php foreach($config['iscsitarget']['extent'] as $extent):?>
+        <?php $sizeunit = $extent['sizeunit']; if (!$sizeunit) { $sizeunit = "MB"; }?>
         <?php $notificationmode = updatenotify_get_mode("iscsitarget_extent", $extent['uuid']);?>
         <tr>
           <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
@@ -249,7 +242,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           <td class="listr"><?=htmlspecialchars($extent['size']);?><?=htmlspecialchars($sizeunit)?>&nbsp;</td>
           <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
           <td valign="middle" nowrap class="list">
-            <a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
+            <a href="services_iscsitarget_extent_edit.php?uuid=<?=$extent['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
             <a href="services_iscsitarget_target.php?act=del&type=extent&uuid=<?=$extent['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" border="0"></a>
           </td>
           <?php else:?>
@@ -258,7 +251,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           </td>
           <?php endif;?>
         </tr>
-        <?php $i++; endforeach;?>
+        <?php endforeach;?>
         <tr>
           <td class="list" colspan="3"></td>
           <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" border="0"></a></td>
@@ -280,7 +273,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           <td width="7%" class="listhdrr"><?=gettext("AG");?></td>
           <td width="10%" class="list"></td>
         </tr>
-        <?php $i = 0; foreach($config['iscsitarget']['target'] as $target):?>
+        <?php foreach($config['iscsitarget']['target'] as $target):?>
         <?php
 			$pgtag = $target['pgigmap'][0]['pgtag'];
 			$igtag = $target['pgigmap'][0]['igtag'];
@@ -350,7 +343,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           </td>
           <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
           <td valign="middle" nowrap class="list">
-            <a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
+            <a href="services_iscsitarget_target_edit.php?uuid=<?=$target['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
             <a href="services_iscsitarget_target.php?act=del&type=target&uuid=<?=$target['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" border="0"></a>
           </td>
           <?php else:?>
@@ -359,7 +352,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
           </td>
           <?php endif;?>
         </tr>
-        <?php $i++; endforeach;?>
+        <?php endforeach;?>
         <tr>
           <td class="list" colspan="6"></td>
           <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" border="0"></a></td>

@@ -97,12 +97,10 @@ function iscsitargetpg_process_updatenotification($mode, $data) {
 
 	switch ($mode) {
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['iscsitarget']['portalgroup'])) {
-				$index = array_search_ex($data, $config['iscsitarget']['portalgroup'], "uuid");
-				if (false !== $index) {
-					unset($config['iscsitarget']['portalgroup'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['iscsitarget']['portalgroup'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['iscsitarget']['portalgroup'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -142,7 +140,7 @@ function iscsitargetpg_process_updatenotification($mode, $data) {
           <td width="80%" class="listhdrr"><?=gettext("Portals");?></td>
           <td width="10%" class="list"></td>
         </tr>
-        <?php $i = 0; foreach($config['iscsitarget']['portalgroup'] as $pg):?>
+        <?php foreach($config['iscsitarget']['portalgroup'] as $pg):?>
         <?php $notificationmode = updatenotify_get_mode("iscsitarget_pg", $pg['uuid']);?>
         <tr>
           <td class="listlr"><?=htmlspecialchars($pg['tag']);?>&nbsp;</td>
@@ -153,7 +151,7 @@ function iscsitargetpg_process_updatenotification($mode, $data) {
           </td>
           <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
           <td valign="middle" nowrap class="list">
-            <a href="services_iscsitarget_pg_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit portal group");?>" border="0"></a>
+            <a href="services_iscsitarget_pg_edit.php?uuid=<?=$pg['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit portal group");?>" border="0"></a>
             <a href="services_iscsitarget_pg.php?act=del&type=pg&uuid=<?=$pg['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this portal group?");?>')"><img src="x.gif" title="<?=gettext("Delete portal group");?>" border="0"></a>
           </td>
           <?php else:?>
@@ -162,7 +160,7 @@ function iscsitargetpg_process_updatenotification($mode, $data) {
           </td>
           <?php endif;?>
         </tr>
-        <?php $i++; endforeach;?>
+        <?php endforeach;?>
         <tr>
           <td class="list" colspan="2"></td>
           <td class="list"><a href="services_iscsitarget_pg_edit.php"><img src="plus.gif" title="<?=gettext("Add portal group");?>" border="0"></a></td>

@@ -37,11 +37,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Initiator Group"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Initiator Group"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['initiatorgroup']))
 	$config['iscsitarget']['initiatorgroup'] = array();
@@ -49,16 +49,16 @@ if (!is_array($config['iscsitarget']['initiatorgroup']))
 array_sort_key($config['iscsitarget']['initiatorgroup'], "tag");
 $a_iscsitarget_ig = &$config['iscsitarget']['initiatorgroup'];
 
-if (isset($id) && $a_iscsitarget_ig[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_ig[$id]['uuid'];
-	$pconfig['tag'] = $a_iscsitarget_ig[$id]['tag'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ig, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_ig[$cnid]['uuid'];
+	$pconfig['tag'] = $a_iscsitarget_ig[$cnid]['tag'];
 	$pconfig['initiators'] = "";
 	$pconfig['netmasks'] = "";
-	$pconfig['comment'] = $a_iscsitarget_ig[$id]['comment'];
-	foreach ($a_iscsitarget_ig[$id]['iginitiatorname'] as $initiator) {
+	$pconfig['comment'] = $a_iscsitarget_ig[$cnid]['comment'];
+	foreach ($a_iscsitarget_ig[$cnid]['iginitiatorname'] as $initiator) {
 		$pconfig['initiators'] .= $initiator."\n";
 	}
-	foreach ($a_iscsitarget_ig[$id]['ignetmask'] as $netmask) {
+	foreach ($a_iscsitarget_ig[$cnid]['ignetmask'] as $netmask) {
 		$pconfig['netmasks'] .= $netmask."\n";
 	}
 } else {
@@ -134,9 +134,11 @@ if ($_POST) {
 	if ($pconfig['tag'] < 1 || $pconfig['tag'] > 65535) {
 		$input_errors[] = gettext("The tag range is invalid.");
 	}
-	if (!isset($id)) {
-		$index = array_search_ex($pconfig['tag'], $config['iscsitarget']['initiatorgroup'], "tag");
-		if ($index !== false) {
+
+	// Check for duplicates.
+	$index = array_search_ex($_POST['tag'], $config['iscsitarget']['initiatorgroup'], "tag");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($config['iscsitarget']['initiatorgroup'][$cnid]['uuid'] === $config['iscsitarget']['initiatorgroup'][$index]['uuid']))) {
 			$input_errors[] = gettext("This tag already exists.");
 		}
 	}
@@ -197,8 +199,8 @@ if ($_POST) {
 		$iscsitarget_ig['iginitiatorname'] = $initiators;
 		$iscsitarget_ig['ignetmask'] = $netmasks;
 
-		if (isset($id) && $a_iscsitarget_ig[$id]) {
-			$a_iscsitarget_ig[$id] = $iscsitarget_ig;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_ig[$cnid] = $iscsitarget_ig;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_ig[] = $iscsitarget_ig;
@@ -373,18 +375,15 @@ function get_ipv6network($v6addr, $mask) {
 	    <td class="tabcont">
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, isset($id));?>
+	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 	      <?php html_textarea("initiators", gettext("Initiators"), $pconfig['initiators'], gettext("Initiator authorised to access to the iSCSI target.  It takes a name or 'ALL' for any initiators."), true, 65, 7, false, false);?>
 	      <?php html_textarea("netmasks", gettext("Authorised network"), $pconfig['netmasks'], gettext("Network authorised to access to the iSCSI target. It takes IP or CIDR addresses or 'ALL' for any IPs."), true, 65, 7, false, false);?>
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 	      </table>
-	      <div id="submit">
-	      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_ig[$id])) ? gettext("Save") : gettext("Add");?>">
-	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-	      <?php if (isset($id) && $a_iscsitarget_ig[$id]):?>
-	      <input name="id" type="hidden" value="<?=$id;?>">
-	      <?php endif;?>
-	      </div>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+				</div>
 	    </td>
 	  </tr>
 	</table>

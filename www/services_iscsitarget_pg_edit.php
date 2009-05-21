@@ -37,11 +37,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Portal Group"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Portal Group"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['portalgroup']))
 	$config['iscsitarget']['portalgroup'] = array();
@@ -49,12 +49,12 @@ if (!is_array($config['iscsitarget']['portalgroup']))
 array_sort_key($config['iscsitarget']['portalgroup'], "tag");
 $a_iscsitarget_pg = &$config['iscsitarget']['portalgroup'];
 
-if (isset($id) && $a_iscsitarget_pg[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_pg[$id]['uuid'];
-	$pconfig['tag'] = $a_iscsitarget_pg[$id]['tag'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_pg, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_pg[$cnid]['uuid'];
+	$pconfig['tag'] = $a_iscsitarget_pg[$cnid]['tag'];
 	$pconfig['portals'] = "";
-	$pconfig['comment'] = $a_iscsitarget_pg[$id]['comment'];
-	foreach ($a_iscsitarget_pg[$id]['portal'] as $portal) {
+	$pconfig['comment'] = $a_iscsitarget_pg[$cnid]['comment'];
+	foreach ($a_iscsitarget_pg[$cnid]['portal'] as $portal) {
 		$pconfig['portals'] .= $portal."\n";
 	}
 } else {
@@ -124,9 +124,11 @@ if ($_POST) {
 	if ($pconfig['tag'] < 1 || $pconfig['tag'] > 65535) {
 		$input_errors[] = gettext("The tag range is invalid.");
 	}
-	if (!isset($id)) {
-		$index = array_search_ex($pconfig['tag'], $config['iscsitarget']['portalgroup'], "tag");
-		if ($index !== false) {
+
+	// Check for duplicates.
+	$index = array_search_ex($_POST['tag'], $config['iscsitarget']['portalgroup'], "tag");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($config['iscsitarget']['portalgroup'][$cnid]['uuid'] === $config['iscsitarget']['portalgroup'][$index]['uuid']))) {
 			$input_errors[] = gettext("This tag already exists.");
 		}
 	}
@@ -173,8 +175,8 @@ if ($_POST) {
 		$iscsitarget_pg['comment'] = $_POST['comment'];
 		$iscsitarget_pg['portal'] = $portals;
 
-		if (isset($id) && $a_iscsitarget_pg[$id]) {
-			$a_iscsitarget_pg[$id] = $iscsitarget_pg;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_pg[$cnid] = $iscsitarget_pg;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_pg[] = $iscsitarget_pg;
@@ -298,19 +300,16 @@ function normalize_ipv6addr($v6addr) {
 	  </tr>
 	  <tr>
 	    <td class="tabcont">
-	      <?php if ($input_errors) print_input_errors($input_errors);?>
-	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, isset($id));?>
-	      <?php html_textarea("portals", gettext("Portals"), $pconfig['portals'], gettext("The portal takes the form of 'address:port'. for example '192.168.1.1:3260' for IPv4, '[2001:db8:1:1::1]:3260' for IPv6. the port 3260 is standard iSCSI port number. For any IPs (wildcard address), use '0.0.0.0:3260' and/or '[::]:3260'. Do not mix wildcard and other IPs at same address family."), true, 65, 7, false, false);?>
-	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-	      </table>
-	      <div id="submit">
-	      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_pg[$id])) ? gettext("Save") : gettext("Add");?>">
-	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-	      <?php if (isset($id) && $a_iscsitarget_pg[$id]):?>
-	      <input name="id" type="hidden" value="<?=$id;?>">
-	      <?php endif;?>
-	      </div>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<?php html_inputbox("tag", gettext("Tag number"), $pconfig['tag'], gettext("Numeric identifier of the group."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
+				<?php html_textarea("portals", gettext("Portals"), $pconfig['portals'], gettext("The portal takes the form of 'address:port'. for example '192.168.1.1:3260' for IPv4, '[2001:db8:1:1::1]:3260' for IPv6. the port 3260 is standard iSCSI port number. For any IPs (wildcard address), use '0.0.0.0:3260' and/or '[::]:3260'. Do not mix wildcard and other IPs at same address family."), true, 65, 7, false, false);?>
+				<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
+				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+				</div>
 	    </td>
 	  </tr>
 	</table>

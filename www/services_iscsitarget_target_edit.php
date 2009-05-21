@@ -37,11 +37,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 /* currently support LUN0 only */
 $MAX_LUNS = 1;
@@ -113,32 +113,30 @@ if (count($config['iscsitarget']['extent']) == 0) {
 	$errormsg .= sprintf(gettext("No configured Extent. Please add new <a href=%s>Extent</a> first."), "services_iscsitarget_target.php")."<br/>\n";
 }
 
-if (isset($id) && $a_iscsitarget_target[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_target[$id]['uuid'];
-	$pconfig['name'] = $a_iscsitarget_target[$id]['name'];
-	$pconfig['alias'] = $a_iscsitarget_target[$id]['alias'];
-	$pconfig['type'] = $a_iscsitarget_target[$id]['type'];
-	$pconfig['flags'] = $a_iscsitarget_target[$id]['flags'];
-	$pconfig['comment'] = $a_iscsitarget_target[$id]['comment'];
-
-	$pconfig['storage'] = $a_iscsitarget_target[$id]['storage'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_target, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_target[$cnid]['uuid'];
+	$pconfig['name'] = $a_iscsitarget_target[$cnid]['name'];
+	$pconfig['alias'] = $a_iscsitarget_target[$cnid]['alias'];
+	$pconfig['type'] = $a_iscsitarget_target[$cnid]['type'];
+	$pconfig['flags'] = $a_iscsitarget_target[$cnid]['flags'];
+	$pconfig['comment'] = $a_iscsitarget_target[$cnid]['comment'];
+	$pconfig['storage'] = $a_iscsitarget_target[$cnid]['storage'];
 	if (is_array($pconfig['storage']))
 		$pconfig['storage'] = $pconfig['storage'][0];
-
-	$pconfig['pgigmap'] = $a_iscsitarget_target[$id]['pgigmap'];
-	$pconfig['agmap'] = $a_iscsitarget_target[$id]['agmap'];
-	$pconfig['lunmap'] = $a_iscsitarget_target[$id]['lunmap'];
+	$pconfig['pgigmap'] = $a_iscsitarget_target[$cnid]['pgigmap'];
+	$pconfig['agmap'] = $a_iscsitarget_target[$cnid]['agmap'];
+	$pconfig['lunmap'] = $a_iscsitarget_target[$cnid]['lunmap'];
 	$pconfig['portalgroup'] = $pconfig['pgigmap'][0]['pgtag'];
 	$pconfig['initiatorgroup'] = $pconfig['pgigmap'][0]['igtag'];
 	$pconfig['authgroup'] = $pconfig['agmap'][0]['agtag'];
 
-	$pconfig['authmethod'] = $a_iscsitarget_target[$id]['authmethod'];
-	$pconfig['digest'] = $a_iscsitarget_target[$id]['digest'];
-	$pconfig['queuedepth'] = $a_iscsitarget_target[$id]['queuedepth'];
-	$pconfig['inqvendor'] = $a_iscsitarget_target[$id]['inqvendor'];
-	$pconfig['inqproduct'] = $a_iscsitarget_target[$id]['inqproduct'];
-	$pconfig['inqrevision'] = $a_iscsitarget_target[$id]['inqrevision'];
-	$pconfig['inqserial'] = $a_iscsitarget_target[$id]['inqserial'];
+	$pconfig['authmethod'] = $a_iscsitarget_target[$cnid]['authmethod'];
+	$pconfig['digest'] = $a_iscsitarget_target[$cnid]['digest'];
+	$pconfig['queuedepth'] = $a_iscsitarget_target[$cnid]['queuedepth'];
+	$pconfig['inqvendor'] = $a_iscsitarget_target[$cnid]['inqvendor'];
+	$pconfig['inqproduct'] = $a_iscsitarget_target[$cnid]['inqproduct'];
+	$pconfig['inqrevision'] = $a_iscsitarget_target[$cnid]['inqrevision'];
+	$pconfig['inqserial'] = $a_iscsitarget_target[$cnid]['inqserial'];
 
 	/*
 	if (!isset($pconfig['storage']))
@@ -290,15 +288,17 @@ if ($_POST) {
 		$input_errors[] = sprintf(gettext("%s is too long."), gettext("Inquiry Serial"));
 	}
 
-	if (!isset($id)) {
+	// Check for duplicates.
+	if (!(isset($uuid) && (FALSE !== $cnid))) {
+		$fullname = get_fulliqn($pconfig['name']);
 		foreach ($a_iscsitarget_target as $target) {
-			$fullname = get_fulliqn($pconfig['name']);
 			if (strcasecmp($fullname, get_fulliqn($target['name'])) == 0) {
-				$input_errors[] = gettext("This name already exists.");
+				$input_errors[] = gettext("The target name already exists.");
 				break;
 			}
 		}
 	}
+
 	// optional LUNs
 	for ($i = 1; $i < $MAX_LUNS; $i++) {
 		if (!isset($lunmap[$i]['extentname'])
@@ -337,8 +337,8 @@ if ($_POST) {
 		$iscsitarget_target['agmap'] = $agmap;
 		$iscsitarget_target['lunmap'] = $lunmap;
 
-		if (isset($id) && $a_iscsitarget_target[$id]) {
-			$a_iscsitarget_target[$id] = $iscsitarget_target;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_target[$cnid] = $iscsitarget_target;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_target[] = $iscsitarget_target;
@@ -406,20 +406,19 @@ function lun_change(idx) {
 		html_combobox("portalgroup", gettext("Portal Group"), $pconfig['portalgroup'], $pg_list, gettext("The initiator can connect to the portals in specific Portal Group."), true);
       ?>
       <?php
-		$ig_list = array();
-		//$ig_list['0'] = gettext("None");
-		foreach($config['iscsitarget']['initiatorgroup'] as $ig) {
-		  if ($ig['comment']) {
-			  $l = sprintf(gettext("Tag%d (%s)"), $ig['tag'], $ig['comment']);
-		  } else {
-			  $l = sprintf(gettext("Tag%d"), $ig['tag']);
-		  }
-		  $ig_list[$ig['tag']] = htmlspecialchars($l);
-		}
-		html_combobox("initiatorgroup", gettext("Initiator Group"), $pconfig['initiatorgroup'], $ig_list, gettext("The initiator can access to the target via the portals by authorised initiator names and networks in specific Initiator Group."), true);
+			$ig_list = array();
+			//$ig_list['0'] = gettext("None");
+			foreach($config['iscsitarget']['initiatorgroup'] as $ig) {
+			  if ($ig['comment']) {
+				  $l = sprintf(gettext("Tag%d (%s)"), $ig['tag'], $ig['comment']);
+			  } else {
+				  $l = sprintf(gettext("Tag%d"), $ig['tag']);
+			  }
+			  $ig_list[$ig['tag']] = htmlspecialchars($l);
+			}
+			html_combobox("initiatorgroup", gettext("Initiator Group"), $pconfig['initiatorgroup'], $ig_list, gettext("The initiator can access to the target via the portals by authorised initiator names and networks in specific Initiator Group."), true);
       ?>
       <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
-
       <?php
 			$a_storage_add = array();
 			$a_storage_edit = array();
@@ -439,9 +438,9 @@ function lun_change(idx) {
 				}
 				$a_storage_add[$extent['name']] = htmlspecialchars(sprintf("%s (%s)", $extent['name'], $extent['path']));
 			}
-			if (isset($id)) {
+			if (isset($uuid) && (FALSE !== $cnid)) {
 				// reload lunmap
-				$pconfig['lunmap'] = $a_iscsitarget_target[$id]['lunmap'];
+				$pconfig['lunmap'] = $a_iscsitarget_target[$cnid]['lunmap'];
 			}
 			foreach ($pconfig['lunmap'] as $lunmap) {
 				$index = array_search_ex($lunmap['extentname'], $a_iscsitarget_extent, "name");
@@ -450,7 +449,7 @@ function lun_change(idx) {
 					$a_storage_edit[$extent['name']] = htmlspecialchars(sprintf("%s (%s)", $extent['name'], $extent['path']));
 				}
 			}
-			if (!isset($id)) {
+			if (!(isset($uuid) && (FALSE !== $cnid))) {
 				// Add
 				$a_storage = &$a_storage_add;
 			} else {
@@ -458,7 +457,6 @@ function lun_change(idx) {
 				$a_storage = &$a_storage_edit;
 			}
       ?>
-
       <?php html_separator();?>
       <?php html_titleline(sprintf("%s%d", gettext("LUN"), 0));?>
       <?php
@@ -467,12 +465,11 @@ function lun_change(idx) {
 				html_combobox("storage", gettext("Storage"), $pconfig['lunmap'][$index]['extentname'], $a_storage, sprintf(gettext("The storage area mapped to LUN%d."), 0), true);
 			}
       ?>
-
       <?php for ($i = 1; $i < $MAX_LUNS; $i++): ?>
       <?php $lenable=sprintf("enable%d", $i); ?>
       <?php $lstorage=sprintf("storage%d", $i); ?>
       <?php $a_storage_opt_add=array_merge(array("-" => gettext("None")), $a_storage_add); ?>
-	  <?php
+			<?php
 			$enabled = 0;
 			$index = array_search_ex("$i", $pconfig['lunmap'], "lun");
 			if (false !== $index) {
@@ -480,16 +477,16 @@ function lun_change(idx) {
 					$enabled = 1;
 				}
 			}
-	  ?>
+			?>
       <?php
-			if (!isset($id)) {
+			if (!(isset($uuid) && (FALSE !== $cnid))) {
 				$a_storage_opt=array_merge(array("-" => gettext("None")), $a_storage_add);
 			} else {
 				$a_storage_opt=array_merge(array("-" => gettext("None")), $a_storage_edit);
 			}
-	  ?>
+			?>
       <?php html_separator();?>
-	  <?php html_titleline_checkbox("$lenable", sprintf("%s%d", gettext("LUN"), $i), $enabled ? true : false, gettext("Enable"), "lun_change($i)");?>
+			<?php html_titleline_checkbox("$lenable", sprintf("%s%d", gettext("LUN"), $i), $enabled ? true : false, gettext("Enable"), "lun_change($i)");?>
       <?php
 			$index = array_search_ex("$i", $pconfig['lunmap'], "lun");
 			if (false !== $index) {
@@ -499,22 +496,21 @@ function lun_change(idx) {
 			}
       ?>
       <?php endfor;?>
-
       <?php html_separator();?>
       <?php html_titleline(gettext("Advanced settings"));?>
       <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("mutual CHAP")), gettext("The method can be accepted by the target. Auto means both none and authentication."), false);?>
       <?php
-		$ag_list = array();
-		$ag_list['0'] = gettext("None");
-		foreach($config['iscsitarget']['authgroup'] as $ag) {
-		  if ($ag['comment']) {
-			  $l = sprintf(gettext("Tag%d (%s)"), $ag['tag'], $ag['comment']);
-		  } else {
-			  $l = sprintf(gettext("Tag%d"), $ag['tag']);
-		  }
-		  $ag_list[$ag['tag']] = htmlspecialchars($l);
-		}
-		html_combobox("authgroup", gettext("Auth Group"), $pconfig['authgroup'], $ag_list, gettext("The initiator can access to the target with correct user and secret in specific Auth Group."), false);
+			$ag_list = array();
+			$ag_list['0'] = gettext("None");
+			foreach($config['iscsitarget']['authgroup'] as $ag) {
+			  if ($ag['comment']) {
+				  $l = sprintf(gettext("Tag%d (%s)"), $ag['tag'], $ag['comment']);
+			  } else {
+				  $l = sprintf(gettext("Tag%d"), $ag['tag']);
+			  }
+			  $ag_list[$ag['tag']] = htmlspecialchars($l);
+			}
+			html_combobox("authgroup", gettext("Auth Group"), $pconfig['authgroup'], $ag_list, gettext("The initiator can access to the target with correct user and secret in specific Auth Group."), false);
       ?>
       <?php html_combobox("digest", gettext("Initial Digest"), $pconfig['digest'], array("Auto" => gettext("Auto"), "Header" => gettext("Header digest"), "Data" => gettext("Data digest"), "Header Data" => gettext("Header and Data digest")), gettext("The initial digest mode negotiated with the initiator."), false);?>
       <?php html_inputbox("queuedepth", gettext("Queue Depth"), $pconfig['queuedepth'], gettext("0=disabled, 1-255=enabled command queuing with specified depth."), false, 10);?>
@@ -524,11 +520,8 @@ function lun_change(idx) {
       <?php html_inputbox("inqserial", gettext("Inquiry Serial"), $pconfig['inqserial'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII chars)"), 16), false, 20);?>
       </table>
       <div id="submit">
-      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id])) ? gettext("Save") : gettext("Add");?>">
-      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-      <?php if (isset($id) && $a_iscsitarget_target[$id]):?>
-      <input name="id" type="hidden" value="<?=$id;?>">
-      <?php endif;?>
+	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
       </div>
     </td>
   </tr>

@@ -37,11 +37,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Extent"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Extent"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
@@ -49,14 +49,14 @@ if (!is_array($config['iscsitarget']['extent']))
 array_sort_key($config['iscsitarget']['extent'], "name");
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
-if (isset($id) && $a_iscsitarget_extent[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_extent[$id]['uuid'];
-	$pconfig['name'] = $a_iscsitarget_extent[$id]['name'];
-	$pconfig['path'] = $a_iscsitarget_extent[$id]['path'];
-	$pconfig['size'] = $a_iscsitarget_extent[$id]['size'];
-	$pconfig['sizeunit'] = $a_iscsitarget_extent[$id]['sizeunit'];
-	$pconfig['type'] = $a_iscsitarget_extent[$id]['type'];
-	$pconfig['comment'] = $a_iscsitarget_extent[$id]['comment'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_extent, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_extent[$cnid]['uuid'];
+	$pconfig['name'] = $a_iscsitarget_extent[$cnid]['name'];
+	$pconfig['path'] = $a_iscsitarget_extent[$cnid]['path'];
+	$pconfig['size'] = $a_iscsitarget_extent[$cnid]['size'];
+	$pconfig['sizeunit'] = $a_iscsitarget_extent[$cnid]['sizeunit'];
+	$pconfig['type'] = $a_iscsitarget_extent[$cnid]['type'];
+	$pconfig['comment'] = $a_iscsitarget_extent[$cnid]['comment'];
 
 	if (!isset($pconfig['sizeunit']))
 		$pconfig['sizeunit'] = "MB";
@@ -92,10 +92,11 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	if (!isset($id)) {
-		$index = array_search_ex($pconfig['name'], $a_iscsitarget_extent, "name");
-		if ($index !== false) {
-			$input_errors[] = gettext("This name already exists.");
+	// Check for duplicates.
+	$index = array_search_ex($_POST['name'], $a_iscsitarget_extent, "name");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_iscsitarget_extent[$cnid]['uuid'] === $a_iscsitarget_extent[$index]['uuid']))) {
+			$input_errors[] = gettext("The extent name already exists.");
 		}
 	}
 
@@ -132,8 +133,8 @@ if ($_POST) {
 		$iscsitarget_extent['type'] = $_POST['type'];
 		$iscsitarget_extent['comment'] = $_POST['comment'];
 
-		if (isset($id) && $a_iscsitarget_extent[$id]) {
-			$a_iscsitarget_extent[$id] = $iscsitarget_extent;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_extent[$cnid] = $iscsitarget_extent;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_extent[] = $iscsitarget_extent;
@@ -166,7 +167,7 @@ if ($_POST) {
 	    <td class="tabcont">
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, isset($id));?>
+	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true);?>
 	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 	      <tr>
@@ -184,11 +185,8 @@ if ($_POST) {
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 	      </table>
 	      <div id="submit">
-	      <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
-	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-	      <?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
-	      <input name="id" type="hidden" value="<?=$id;?>">
-	      <?php endif;?>
+		      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 	      </div>
 	    </td>
 	  </tr>
