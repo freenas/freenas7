@@ -33,11 +33,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"), gettext("Mount Point"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("Mount Point"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -52,21 +52,21 @@ $a_disk = get_conf_all_disks_list_filtered();
 $cfdevice = trim(file_get_contents("{$g['etc_path']}/cfdevice"));
 $cfdevice = "/dev/{$cfdevice}";
 
-if (isset($id) && $a_mount[$id]) {
-	$pconfig['uuid'] = $a_mount[$id]['uuid'];
-	$pconfig['type'] = $a_mount[$id]['type'];
-	$pconfig['mdisk'] = $a_mount[$id]['mdisk'];
-	$pconfig['partition'] = $a_mount[$id]['partition'];
-	$pconfig['devicespecialfile'] = $a_mount[$id]['devicespecialfile'];
-	$pconfig['fstype'] = $a_mount[$id]['fstype'];
-	$pconfig['sharename'] = $a_mount[$id]['sharename'];
-	$pconfig['desc'] = $a_mount[$id]['desc'];
-	$pconfig['readonly'] = isset($a_mount[$id]['readonly']);
-	$pconfig['fsck'] = isset($a_mount[$id]['fsck']);
-	$pconfig['owner'] = $a_mount[$id]['accessrestrictions']['owner'];
-	$pconfig['group'] = $a_mount[$id]['accessrestrictions']['group'][0];
-	$pconfig['mode'] = $a_mount[$id]['accessrestrictions']['mode'];
-	$pconfig['filename'] = $a_mount[$id]['filename'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_mount, "uuid")))) {
+	$pconfig['uuid'] = $a_mount[$cnid]['uuid'];
+	$pconfig['type'] = $a_mount[$cnid]['type'];
+	$pconfig['mdisk'] = $a_mount[$cnid]['mdisk'];
+	$pconfig['partition'] = $a_mount[$cnid]['partition'];
+	$pconfig['devicespecialfile'] = $a_mount[$cnid]['devicespecialfile'];
+	$pconfig['fstype'] = $a_mount[$cnid]['fstype'];
+	$pconfig['sharename'] = $a_mount[$cnid]['sharename'];
+	$pconfig['desc'] = $a_mount[$cnid]['desc'];
+	$pconfig['readonly'] = isset($a_mount[$cnid]['readonly']);
+	$pconfig['fsck'] = isset($a_mount[$cnid]['fsck']);
+	$pconfig['owner'] = $a_mount[$cnid]['accessrestrictions']['owner'];
+	$pconfig['group'] = $a_mount[$cnid]['accessrestrictions']['group'][0];
+	$pconfig['mode'] = $a_mount[$cnid]['accessrestrictions']['mode'];
+	$pconfig['filename'] = $a_mount[$cnid]['filename'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['type'] = "disk";
@@ -154,11 +154,10 @@ if ($_POST) {
 		$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 	}
 
-	// Check whether the device is already configured. Ensure we do not find the
-	// current processed mount point itself.
+	// Check for duplicates.
 	if ("disk" === $_POST['type']) {
 		foreach ($a_mount as $mount) {
-			if ($mount['uuid'] === $a_mount[$id]['uuid'])
+			if (isset($uuid) && (FALSE !== $cnid) && ($mount['uuid'] === $uuid)) 
 				continue;
 			if (($mount['mdisk'] === $_POST['mdisk']) && ($mount['partition'] === $_POST['partition'])) {
 				$input_errors[] = gettext("The disk/partition is already configured.");
@@ -167,11 +166,14 @@ if ($_POST) {
 		}
 	}
 
-	// Check whether the mount point name is already in use. Ensure we do not find
-	// the current processed mount point itself.
+	// Check whether the mount point name is already in use.
 	$index = array_search_ex($_POST['sharename'], $a_mount, "sharename");
-	if ((false !== $index) && ($a_mount[$id]['uuid'] !== $a_mount[$index]['uuid']))
-		$input_errors[] = gettext("Duplicate mount point name.");
+	if (FALSE !== $index) {
+		// Ensure we do not check the current processed mount point itself.
+		if (!((FALSE !== $cnid) && ($a_mount[$cnid]['uuid'] === $a_mount[$index]['uuid']))) {
+			$input_errors[] = gettext("Duplicate mount point name.");
+		}
+	}
 
 	if (!$input_errors) {
 		$mount = array();
@@ -200,9 +202,9 @@ if ($_POST) {
 		$mount['accessrestrictions']['group'] = $_POST['group'];
 		$mount['accessrestrictions']['mode'] = getmodectrl($pconfig['mode_owner'], $pconfig['mode_group'], $pconfig['mode_others']);
 
-		if (isset($id) && $a_mount[$id]) {
+		if (isset($uuid) && (FALSE !== $cnid)) {
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
-			$a_mount[$id] = $mount;
+			$a_mount[$cnid] = $mount;
 		} else {
 			$mode = UPDATENOTIFY_MODE_NEW;
 			$a_mount[] = $mount;
@@ -411,11 +413,8 @@ function enable_change(enable_change) {
 			    </tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_mount[$id])) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_mount[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif; ?>
 				</div>
 				<div id="remarks">
 					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("You can't mount the partition '%s' where the config file is stored.<br>"),htmlspecialchars($cfdevice)) . sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name()));?>
@@ -427,7 +426,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 type_change();
-<?php if (isset($id) && $a_mount[$id]):?>
+<?php if (isset($uuid) && (FALSE !== $cnid)):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>

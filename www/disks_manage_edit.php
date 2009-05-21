@@ -33,11 +33,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("Disk"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("Management"), gettext("Disk"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 // Get all physical disks including CDROM.
 $a_phy_disk = array_merge((array)get_physical_disks_list(), (array)get_cdrom_list());
@@ -49,17 +49,17 @@ array_sort_key($config['disks']['disk'], "name");
 
 $a_disk = &$config['disks']['disk'];
 
-if (isset($id) && $a_disk[$id]) {
-	$pconfig['uuid'] = $a_disk[$id]['uuid'];
-	$pconfig['name'] = $a_disk[$id]['name'];
-	$pconfig['harddiskstandby'] = $a_disk[$id]['harddiskstandby'];
-	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
-	$pconfig['fstype'] = $a_disk[$id]['fstype'];
-	$pconfig['apm'] = $a_disk[$id]['apm'];
-	$pconfig['transfermode'] = $a_disk[$id]['transfermode'];
-	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
-	$pconfig['smart'] = isset($a_disk[$id]['smart']);
-	$pconfig['desc'] = $a_disk[$id]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_disk, "uuid")))) {
+	$pconfig['uuid'] = $a_disk[$cnid]['uuid'];
+	$pconfig['name'] = $a_disk[$cnid]['name'];
+	$pconfig['harddiskstandby'] = $a_disk[$cnid]['harddiskstandby'];
+	$pconfig['acoustic'] = $a_disk[$cnid]['acoustic'];
+	$pconfig['fstype'] = $a_disk[$cnid]['fstype'];
+	$pconfig['apm'] = $a_disk[$cnid]['apm'];
+	$pconfig['transfermode'] = $a_disk[$cnid]['transfermode'];
+	$pconfig['devicespecialfile'] = $a_disk[$cnid]['devicespecialfile'];
+	$pconfig['smart'] = isset($a_disk[$cnid]['smart']);
+	$pconfig['desc'] = $a_disk[$cnid]['desc'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -78,10 +78,9 @@ if ($_POST) {
 
 	// Input validation.
 	foreach ($a_disk as $disk) {
-		if (isset($id) && ($a_disk[$id]) && ($a_disk[$id] === $disk))
+		if (isset($uuid) && (FALSE !== $cnid) && ($disk['uuid'] === $uuid))
 			continue;
-
-		if ($disk['name'] == $_POST['name']) {
+		if ($disk['name'] === $_POST['name']) {
 			$input_errors[] = gettext("This disk already exists in the disk list.");
 			break;
 		}
@@ -104,8 +103,8 @@ if ($_POST) {
 		$disks['size'] = $a_phy_disk[$devname]['size'];
 		$disks['smart'] = $_POST['smart'] ? true : false;
 
-		if (isset($id) && $a_disk[$id]) {
-			$a_disk[$id] = $disks;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_disk[$cnid] = $disks;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_disk[] = $disks;
@@ -150,7 +149,7 @@ function enable_change(enable_change) {
 							<select name="name" class="formfld" id="name">
 								<?php foreach ($a_phy_disk as $diskk => $diskv):?>
 								<?php // Do not display disks that are already configured. (Create mode);?>
-								<?php if (!isset($id) && (false !== array_search_ex($diskk,$a_disk,"name"))) continue;?>
+								<?php if (!isset($uuid) && (false !== array_search_ex($diskk, $a_disk, "name"))) continue;?>
 								<option value="<?=$diskk;?>" <?php if ($diskk == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diskk . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
 								<?php endforeach;?>
 							</select>
@@ -170,17 +169,14 @@ function enable_change(enable_change) {
 					<?php html_combobox("fstype", gettext("Preformatted file system"), $pconfig['fstype'], $options, gettext("This allows you to set the file system for preformatted hard disks containing data.") . " " . sprintf(gettext("Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."), "Unformated", "disks_init.php"), false);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_disk[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif; ?>
 				</div>
 			</form>
 		</td>
 	</tr>
 </table>
-<?php if (isset($id) && $a_disk[$id]):?>
+<?php if (isset($uuid) && (FALSE !== $cnid)):?>
 <script language="JavaScript">
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);

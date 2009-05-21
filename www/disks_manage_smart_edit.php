@@ -2,7 +2,7 @@
 <?php
 /*
 	disks_manage_smart_edit.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -36,11 +36,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"), gettext("Management"), gettext("S.M.A.R.T."), gettext("Scheduled Self-Test"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("Management"), gettext("S.M.A.R.T."), gettext("Scheduled Self-Test"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
@@ -56,21 +56,21 @@ $a_selftest = &$config['smartd']['selftest'];
 // Get list of all configured physical disks.
 $a_disk = get_conf_physical_disks_list();
 
-if (isset($id) && $a_selftest[$id]) {
-	$pconfig['uuid'] = $a_selftest[$id]['uuid'];
-	$pconfig['devicespecialfile'] = $a_selftest[$id]['devicespecialfile'];
-	$pconfig['type'] = $a_selftest[$id]['type'];
-	$pconfig['minute'] = $a_selftest[$id]['minute'];
-	$pconfig['hour'] = $a_selftest[$id]['hour'];
-	$pconfig['day'] = $a_selftest[$id]['day'];
-	$pconfig['month'] = $a_selftest[$id]['month'];
-	$pconfig['weekday'] = $a_selftest[$id]['weekday'];
-	$pconfig['all_mins'] = $a_selftest[$id]['all_mins'];
-	$pconfig['all_hours'] = $a_selftest[$id]['all_hours'];
-	$pconfig['all_days'] = $a_selftest[$id]['all_days'];
-	$pconfig['all_months'] = $a_selftest[$id]['all_months'];
-	$pconfig['all_weekdays'] = $a_selftest[$id]['all_weekdays'];
-	$pconfig['desc'] = $a_selftest[$id]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_selftest, "uuid")))) {
+	$pconfig['uuid'] = $a_selftest[$cnid]['uuid'];
+	$pconfig['devicespecialfile'] = $a_selftest[$cnid]['devicespecialfile'];
+	$pconfig['type'] = $a_selftest[$cnid]['type'];
+	$pconfig['minute'] = $a_selftest[$cnid]['minute'];
+	$pconfig['hour'] = $a_selftest[$cnid]['hour'];
+	$pconfig['day'] = $a_selftest[$cnid]['day'];
+	$pconfig['month'] = $a_selftest[$cnid]['month'];
+	$pconfig['weekday'] = $a_selftest[$cnid]['weekday'];
+	$pconfig['all_mins'] = $a_selftest[$cnid]['all_mins'];
+	$pconfig['all_hours'] = $a_selftest[$cnid]['all_hours'];
+	$pconfig['all_days'] = $a_selftest[$cnid]['all_days'];
+	$pconfig['all_months'] = $a_selftest[$cnid]['all_months'];
+	$pconfig['all_weekdays'] = $a_selftest[$cnid]['all_weekdays'];
+	$pconfig['desc'] = $a_selftest[$cnid]['desc'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['type'] = "S";
@@ -103,8 +103,8 @@ if ($_POST) {
 		$selftest['all_weekdays'] = $_POST['all_weekdays'];
 		$selftest['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_selftest[$id]) {
-			$a_selftest[$id] = $selftest;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_selftest[$cnid] = $selftest;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_selftest[] = $selftest;
@@ -293,17 +293,14 @@ function enable_change(enable_change) {
 					</tr>
 	      </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_selftest[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_selftest[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>
 	</tr>
 </table>
-<?php if (isset($id) && $a_selftest[$id]):?>
+<?php if (isset($uuid) && (FALSE !== $cnid)):?>
 <script language="JavaScript">
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);

@@ -3,7 +3,7 @@
 /*
 	disks_crypt.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -60,22 +60,14 @@ array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 $a_geli = &$config['geli']['vdisk'];
 
 if ($_GET['act'] === "del") {
-	if ($a_geli[$_GET['id']]) {
-		if (disks_exists($a_geli[$_GET['id']]['devicespecialfile'])) {
-			updatenotify_set("geli", UPDATENOTIFY_MODE_DIRTY, $a_geli[$_GET['id']]['uuid']);
+	if (FALSE !== ($cnid = array_search_ex($_GET['uuid'], $config['geli']['vdisk'], "uuid"))) {
+		if (disks_exists($config['geli']['vdisk'][$cnid]['devicespecialfile'])) {
+			updatenotify_set("geli", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
 			header("Location: disks_crypt.php");
 			exit;
 		} else {
 			$errormsg[] = gettext("The volume must be detached before it can be deleted.");
 		}
-	}
-}
-
-if ($_GET['act'] === "ret") {
-	if ($a_mount[$_GET['id']]) {
-		disks_mount($a_mount[$_GET['id']]);
-		header("Location: disks_crypt.php");
-		exit;
 	}
 }
 
@@ -86,17 +78,15 @@ function geli_process_updatenotification($mode, $data) {
 	
 	switch ($mode) {
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['geli']['vdisk'])) {
-				$index = array_search_ex($data, $config['geli']['vdisk'], "uuid");
-				if (false !== $index) {
-					// Kill encrypted volume.
-					disks_geli_kill($config['geli']['vdisk'][$index]['devicespecialfile']);
-					// Reset disk file system type attribute ('fstype') in configuration.
-					set_conf_disk_fstype($config['geli']['vdisk'][$index]['device'][0], "");
-	
-					unset($config['geli']['vdisk'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['geli']['vdisk'], "uuid");
+			if (FALSE !== $cnid) {
+				// Kill encrypted volume.
+				disks_geli_kill($config['geli']['vdisk'][$cnid]['devicespecialfile']);
+				// Reset disk file system type attribute ('fstype') in configuration.
+				set_conf_disk_fstype($config['geli']['vdisk'][$cnid]['device'][0], "");
+
+				unset($config['geli']['vdisk'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -154,15 +144,23 @@ function geli_process_updatenotification($mode, $data) {
               }
               ?>&nbsp;
             </td>
+            <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="disks_crypt_tools.php?disk=<?=$geli['devicespecialfile'];?>&action=setkey"><img src="e.gif" title="Change password" border="0"></a>&nbsp;
-              <a href="disks_crypt.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" border="0"></a>
+              <a href="disks_crypt.php?act=del&uuid=<?=$geli['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" border="0"></a>
             </td>
+            <?php else:?>
+						<td valign="middle" nowrap class="list">
+							<img src="del.gif" border="0">
+						</td>
+						<?php endif;?>
           </tr>
-          <?php $i++; endforeach; ?>
+          <?php $i++; endforeach;?>
           <tr>
             <td class="list" colspan="4"></td>
-            <td class="list"><a href="disks_crypt_edit.php"><img src="plus.gif" title="<?=gettext("Create encrypted volume");?>" border="0"></a></td>
+            <td class="list">
+							<a href="disks_crypt_edit.php"><img src="plus.gif" title="<?=gettext("Create encrypted volume");?>" border="0"></a>
+						</td>
 			    </tr>
         </table>
       </form>

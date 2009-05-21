@@ -3,7 +3,7 @@
 /*
 	disks_manage.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -63,11 +63,9 @@ array_sort_key($config['disks']['disk'], "name");
 $a_disk_conf = &$config['disks']['disk'];
 
 if ($_GET['act'] === "del") {
-	if ($a_disk_conf[$_GET['id']]) {
-		updatenotify_set("device", UPDATENOTIFY_MODE_DIRTY, $a_disk_conf[$_GET['id']]['uuid']);
-		header("Location: disks_manage.php");
-		exit;
-	}
+	updatenotify_set("device", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: disks_manage.php");
+	exit;
 }
 
 function diskmanagement_process_updatenotification($mode, $data) {
@@ -119,7 +117,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_disk_conf as $disk):?>
+					<?php foreach ($a_disk_conf as $disk):?>
 					<?php
 					$notificationmode = updatenotify_get_mode("device", $disk['uuid']);
 					switch ($notificationmode) {
@@ -146,8 +144,8 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="listbg"><?=$status;?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap class="list">
-							<a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" border="0"></a>&nbsp;
-							<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" border="0"></a>
+							<a href="disks_manage_edit.php?uuid=<?=$disk['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" border="0"></a>&nbsp;
+							<a href="disks_manage.php?act=del&uuid=<?=$disk['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" border="0"></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -155,7 +153,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 					</tr>
-					<?php $i++; endforeach;?>
+					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="6"></td>
 						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0"></a></td>

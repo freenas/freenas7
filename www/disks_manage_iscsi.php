@@ -3,7 +3,7 @@
 /*
 	disks_manage_iscsi.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -111,15 +111,16 @@ function iscsiinitiator_process_updatenotification($mode, $data) {
 						<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit):?>
+  			  <?php foreach($a_iscsiinit as $iscsiinit):?>
   			  <?php $notificationmode = updatenotify_get_mode("iscsiinitiator", $iscsiinit['uuid']);?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($iscsiinit['name']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($iscsiinit['targetaddress']);?>&nbsp;</td>
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-            <td valign="middle" nowrap class="list"> <a href="disks_manage_iscsi_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit initiator");?>" border="0">
-              <a href="disks_manage_iscsi.php?act=del&uuid=<?=$iscsiinit['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" border="0"></a>
+            <td valign="middle" nowrap class="list">
+							<a href="disks_manage_iscsi_edit.php?uuid=<?=$iscsiinit['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit initiator");?>" border="0">
+							<a href="disks_manage_iscsi.php?act=del&uuid=<?=$iscsiinit['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -127,7 +128,7 @@ function iscsiinitiator_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
           </tr>
-          <?php $i++; endforeach;?>
+          <?php endforeach;?>
           <tr> 
             <td class="list" colspan="3"></td>
             <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" border="0"></a></td>
