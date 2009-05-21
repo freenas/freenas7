@@ -34,11 +34,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Client"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Client"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
@@ -52,35 +52,35 @@ if (!is_array($config['rsync']['rsyncclient']))
 
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
-if (isset($id) && $a_rsyncclient[$id]) {
-	$pconfig['enable'] = isset($a_rsyncclient[$id]['enable']);
-	$pconfig['uuid'] = $a_rsyncclient[$id]['uuid'];
-	$pconfig['rsyncserverip'] = $a_rsyncclient[$id]['rsyncserverip'];
-	$pconfig['localshare'] = $a_rsyncclient[$id]['localshare'];
-	$pconfig['remoteshare'] = $a_rsyncclient[$id]['remoteshare'];
-	$pconfig['minute'] = $a_rsyncclient[$id]['minute'];
-	$pconfig['hour'] = $a_rsyncclient[$id]['hour'];
-	$pconfig['day'] = $a_rsyncclient[$id]['day'];
-	$pconfig['month'] = $a_rsyncclient[$id]['month'];
-	$pconfig['weekday'] = $a_rsyncclient[$id]['weekday'];
-	$pconfig['sharetosync'] = $a_rsyncclient[$id]['sharetosync'];
-	$pconfig['all_mins'] = $a_rsyncclient[$id]['all_mins'];
-	$pconfig['all_hours'] = $a_rsyncclient[$id]['all_hours'];
-	$pconfig['all_days'] = $a_rsyncclient[$id]['all_days'];
-	$pconfig['all_months'] = $a_rsyncclient[$id]['all_months'];
-	$pconfig['all_weekdays'] = $a_rsyncclient[$id]['all_weekdays'];
-	$pconfig['description'] = $a_rsyncclient[$id]['description'];
-	$pconfig['who'] = $a_rsyncclient[$id]['who'];
-	$pconfig['recursive'] = isset($a_rsyncclient[$id]['options']['recursive']);
-	$pconfig['times'] = isset($a_rsyncclient[$id]['options']['times']);
-	$pconfig['compress'] = isset($a_rsyncclient[$id]['options']['compress']);
-	$pconfig['archive'] = isset($a_rsyncclient[$id]['options']['archive']);
-	$pconfig['delete'] = isset($a_rsyncclient[$id]['options']['delete']);
-	$pconfig['delete_algorithm'] = $a_rsyncclient[$id]['options']['delete_algorithm'];
-	$pconfig['quiet'] = isset($a_rsyncclient[$id]['options']['quiet']);
-	$pconfig['perms'] = isset($a_rsyncclient[$id]['options']['perms']);
-	$pconfig['xattrs'] = isset($a_rsyncclient[$id]['options']['xattrs']);
-	$pconfig['extraoptions'] = $a_rsyncclient[$id]['options']['extraoptions'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rsyncclient, "uuid")))) {
+	$pconfig['enable'] = isset($a_rsyncclient[$cnid]['enable']);
+	$pconfig['uuid'] = $a_rsyncclient[$cnid]['uuid'];
+	$pconfig['rsyncserverip'] = $a_rsyncclient[$cnid]['rsyncserverip'];
+	$pconfig['localshare'] = $a_rsyncclient[$cnid]['localshare'];
+	$pconfig['remoteshare'] = $a_rsyncclient[$cnid]['remoteshare'];
+	$pconfig['minute'] = $a_rsyncclient[$cnid]['minute'];
+	$pconfig['hour'] = $a_rsyncclient[$cnid]['hour'];
+	$pconfig['day'] = $a_rsyncclient[$cnid]['day'];
+	$pconfig['month'] = $a_rsyncclient[$cnid]['month'];
+	$pconfig['weekday'] = $a_rsyncclient[$cnid]['weekday'];
+	$pconfig['sharetosync'] = $a_rsyncclient[$cnid]['sharetosync'];
+	$pconfig['all_mins'] = $a_rsyncclient[$cnid]['all_mins'];
+	$pconfig['all_hours'] = $a_rsyncclient[$cnid]['all_hours'];
+	$pconfig['all_days'] = $a_rsyncclient[$cnid]['all_days'];
+	$pconfig['all_months'] = $a_rsyncclient[$cnid]['all_months'];
+	$pconfig['all_weekdays'] = $a_rsyncclient[$cnid]['all_weekdays'];
+	$pconfig['description'] = $a_rsyncclient[$cnid]['description'];
+	$pconfig['who'] = $a_rsyncclient[$cnid]['who'];
+	$pconfig['recursive'] = isset($a_rsyncclient[$cnid]['options']['recursive']);
+	$pconfig['times'] = isset($a_rsyncclient[$cnid]['options']['times']);
+	$pconfig['compress'] = isset($a_rsyncclient[$cnid]['options']['compress']);
+	$pconfig['archive'] = isset($a_rsyncclient[$cnid]['options']['archive']);
+	$pconfig['delete'] = isset($a_rsyncclient[$cnid]['options']['delete']);
+	$pconfig['delete_algorithm'] = $a_rsyncclient[$cnid]['options']['delete_algorithm'];
+	$pconfig['quiet'] = isset($a_rsyncclient[$cnid]['options']['quiet']);
+	$pconfig['perms'] = isset($a_rsyncclient[$cnid]['options']['perms']);
+	$pconfig['xattrs'] = isset($a_rsyncclient[$cnid]['options']['xattrs']);
+	$pconfig['extraoptions'] = $a_rsyncclient[$cnid]['options']['extraoptions'];
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
@@ -143,8 +143,8 @@ if ($_POST) {
 		$rsyncclient['options']['xattrs'] = $_POST['xattrs'] ? true : false;
 		$rsyncclient['options']['extraoptions'] = $_POST['extraoptions'];
 
-		if (isset($id) && $a_rsyncclient[$id]) {
-			$a_rsyncclient[$id] = $rsyncclient;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_rsyncclient[$cnid] = $rsyncclient;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rsyncclient[] = $rsyncclient;
@@ -416,11 +416,10 @@ function delete_change() {
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to rsync (usually empty)."), false, 40);?>
 	      </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_rsyncclient[$id]):?>
+					<?php if (isset($uuid) && (FALSE !== $cnid)):?>
 					<input name="Submit" id="execnow" type="submit" class="formbtn" value="<?=gettext("Execute now");?>">
-					<input name="id" type="hidden" value="<?=$id;?>">
 					<?php endif;?>
 				</div>
 			</form>

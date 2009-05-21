@@ -2,11 +2,11 @@
 <?php
 /*
 	services_rsyncd_module.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -64,11 +64,9 @@ array_sort_key($config['rsyncd']['module'], "name");
 $a_module = &$config['rsyncd']['module'];
 
 if ($_GET['act'] === "del") {
-	if ($a_module[$_GET['id']]) {
-		updatenotify_set("rsyncd", UPDATENOTIFY_MODE_DIRTY, $a_module[$_GET['id']]['uuid']);
-		header("Location: services_rsyncd_module.php");
-		exit;
-	}
+	updatenotify_set("rsyncd", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: services_rsyncd_module.php");
+	exit;
 }
 
 function rsyncd_process_updatenotification($mode, $data) {
@@ -81,12 +79,10 @@ function rsyncd_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['rsyncd']['module'])) {
-				$index = array_search_ex($data, $config['rsyncd']['module'], "uuid");
-				if (false !== $index) {
-					unset($config['rsyncd']['module'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['rsyncd']['module'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['rsyncd']['module'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -127,7 +123,7 @@ function rsyncd_process_updatenotification($mode, $data) {
             <td width="10%" class="listhdrr"><?=gettext("Access mode");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_module as $modulev):?>
+  			  <?php foreach($a_module as $modulev):?>
   			  <?php $notificationmode = updatenotify_get_mode("rsyncd", $modulev['uuid']);?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($modulev['name']);?>&nbsp;</td>
@@ -137,8 +133,8 @@ function rsyncd_process_updatenotification($mode, $data) {
             <td class="listbg"><?=htmlspecialchars($modulev['rwmode']);?>&nbsp;</td>
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-              <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" border="0"></a>
-              <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" border="0"></a>
+              <a href="services_rsyncd_module_edit.php?uuid=<?=$modulev['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit module");?>" border="0"></a>
+              <a href="services_rsyncd_module.php?act=del&uuid=<?=$modulev['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" border="0"></a>
             </td>
 						<?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -146,7 +142,7 @@ function rsyncd_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
           </tr>
-          <?php $i++; endforeach;?>
+          <?php endforeach;?>
           <tr>
             <td class="list" colspan="5"></td>
             <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" border="0"></a></td>

@@ -2,11 +2,11 @@
 <?php
 /*
 	system_firewall_edit.php
-	Copyright (C) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -32,11 +32,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Network"), gettext("Firewall"), gettext("Rule"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Network"), gettext("Firewall"), gettext("Rule"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['system']['firewall']['rule']))
 	$config['system']['firewall']['rule'] = array();
@@ -44,21 +44,21 @@ if (!is_array($config['system']['firewall']['rule']))
 array_sort_key($config['system']['firewall']['rule'], "ruleno");
 $a_rule = &$config['system']['firewall']['rule'];
 
-if (isset($id) && $a_rule[$id]) {
-	$pconfig['uuid'] = $a_rule[$id]['uuid'];
-	$pconfig['enable'] = isset($a_rule[$id]['enable']);
-	$pconfig['ruleno'] = $a_rule[$id]['ruleno'];
-	$pconfig['action'] = $a_rule[$id]['action'];
-	$pconfig['log'] = isset($a_rule[$id]['log']);
-	$pconfig['protocol'] = $a_rule[$id]['protocol'];
-	$pconfig['src'] = $a_rule[$id]['src'];
-	$pconfig['srcport'] = $a_rule[$id]['srcport'];
-	$pconfig['dst'] = $a_rule[$id]['dst'];
-	$pconfig['dstport'] = $a_rule[$id]['dstport'];
-	$pconfig['direction'] = $a_rule[$id]['direction'];
-	$pconfig['if'] = $a_rule[$id]['if'];
-	$pconfig['extraoptions'] = $a_rule[$id]['extraoptions'];
-	$pconfig['desc'] = $a_rule[$id]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rule, "uuid")))) {
+	$pconfig['uuid'] = $a_rule[$cnid]['uuid'];
+	$pconfig['enable'] = isset($a_rule[$cnid]['enable']);
+	$pconfig['ruleno'] = $a_rule[$cnid]['ruleno'];
+	$pconfig['action'] = $a_rule[$cnid]['action'];
+	$pconfig['log'] = isset($a_rule[$cnid]['log']);
+	$pconfig['protocol'] = $a_rule[$cnid]['protocol'];
+	$pconfig['src'] = $a_rule[$cnid]['src'];
+	$pconfig['srcport'] = $a_rule[$cnid]['srcport'];
+	$pconfig['dst'] = $a_rule[$cnid]['dst'];
+	$pconfig['dstport'] = $a_rule[$cnid]['dstport'];
+	$pconfig['direction'] = $a_rule[$cnid]['direction'];
+	$pconfig['if'] = $a_rule[$cnid]['if'];
+	$pconfig['extraoptions'] = $a_rule[$cnid]['extraoptions'];
+	$pconfig['desc'] = $a_rule[$cnid]['desc'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['enable'] = true;
@@ -82,8 +82,11 @@ if ($_POST) {
 
 	// Input validation
 	// Validate if rule number is unique.
-	if (!isset($id) && (false !== array_search_ex($_POST['ruleno'], $a_rule, "ruleno"))) {
-		$input_errors[] = gettext("The unique rule number is already used.");
+	$index = array_search_ex($_POST['ruleno'], $a_rule, "ruleno");
+	if (FALSE !== $index) {
+		if (!((FALSE !== $cnid) && ($a_rule[$cnid]['uuid'] === $a_rule[$index]['uuid']))) {
+			$input_errors[] = gettext("The unique rule number is already used.");
+		}
 	}
 
 	if (!$input_errors) {
@@ -103,8 +106,8 @@ if ($_POST) {
 		$rule['extraoptions'] = $_POST['extraoptions'];
 		$rule['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_rule[$id]) {
-			$a_rule[$id] = $rule;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_rule[$cnid] = $rule;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_rule[] = $rule;
@@ -159,11 +162,8 @@ function get_next_rulenumber() {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
         </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_rule[$id])) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_rule[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 			  </div>
 			  <div id="remarks">
 					<?php html_remark("note", gettext("Note"), sprintf(gettext("To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/doc/en/books/handbook/firewalls-ipfw.html"));?>

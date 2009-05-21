@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_local.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -65,11 +65,9 @@ if (!is_array($config['rsync'])) {
 $a_rsynclocal = &$config['rsync']['rsynclocal'];
 
 if ($_GET['act'] === "del") {
-	if ($a_rsynclocal[$_GET['id']]) {
-		updatenotify_set("rsynclocal", UPDATENOTIFY_MODE_DIRTY, $a_rsynclocal[$_GET['id']]['uuid']);
-		header("Location: services_rsyncd_local.php");
-		exit;
-	}
+	updatenotify_set("rsynclocal", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: services_rsyncd_local.php");
+	exit;
 }
 
 function rsynclocal_process_updatenotification($mode, $data) {
@@ -82,14 +80,12 @@ function rsynclocal_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['rsync']['rsynclocal'])) {
-				$index = array_search_ex($data, $config['rsync']['rsynclocal'], "uuid");
-				if (false !== $index) {
-					unset($config['rsync']['rsynclocal'][$index]);
-					write_config();
-				}
-				@unlink("/var/run/rsync_local_{$data}.sh");
+			$cnid = array_search_ex($data, $config['rsync']['rsynclocal'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['rsync']['rsynclocal'][$cnid]);
+				write_config();
 			}
+			@unlink("/var/run/rsync_local_{$data}.sh");
 			break;
 	}
 
@@ -120,7 +116,7 @@ function rsynclocal_process_updatenotification($mode, $data) {
 						<td width="30%" class="listhdrr"><?=gettext("Description");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_rsynclocal as $rsynclocal):?>
+  			  <?php foreach($a_rsynclocal as $rsynclocal):?>
   			  <?php $notificationmode = updatenotify_get_mode("rsynclocal", $rsynclocal['uuid']);?>
           <tr>
           	<?php $enable = isset($rsynclocal['enable']);?>
@@ -130,8 +126,8 @@ function rsynclocal_process_updatenotification($mode, $data) {
 						<td class="listbg"><?=htmlspecialchars($rsynclocal['description']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
-              <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync job?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job");?>" border="0"></a>
+							<a href="services_rsyncd_local_edit.php?uuid=<?=$rsynclocal['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
+              <a href="services_rsyncd_local.php?act=del&uuid=<?=$rsynclocal['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync job?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job");?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -139,7 +135,7 @@ function rsynclocal_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
           </tr>
-          <?php $i++; endforeach;?>
+          <?php endforeach;?>
           <tr> 
             <td class="list" colspan="4"></td>
             <td class="list"><a href="services_rsyncd_local_edit.php"><img src="plus.gif" title="<?=gettext("Add Rsync job");?>" border="0"></a></td>

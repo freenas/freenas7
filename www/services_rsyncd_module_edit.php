@@ -36,11 +36,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if(isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Server"), gettext("Module"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("Rsync"), gettext("Server"), gettext("Module"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -54,20 +54,20 @@ array_sort_key($config['rsyncd']['module'], "name");
 $a_mount = &$config['mounts']['mount'];
 $a_module = &$config['rsyncd']['module'];
 
-if (isset($id) && $a_module[$id]) {
-	$pconfig['uuid'] = $a_module[$id]['uuid'];
-	$pconfig['name'] = $a_module[$id]['name'];
-	$pconfig['path'] = $a_module[$id]['path'];
-	$pconfig['comment'] = $a_module[$id]['comment'];
-	$pconfig['list'] = isset($a_module[$id]['list']);
-	$pconfig['rwmode'] = $a_module[$id]['rwmode'];
-	$pconfig['maxconnections'] = $a_module[$id]['maxconnections'];
-	$pconfig['hostsallow'] = $a_module[$id]['hostsallow'];
-	$pconfig['hostsdeny'] = $a_module[$id]['hostsdeny'];
-	$pconfig['uid'] = $a_module[$id]['uid'];
-	$pconfig['gid'] = $a_module[$id]['gid'];
-	if (is_array($a_module[$id]['auxparam']))
-		$pconfig['auxparam'] = implode("\n", $a_module[$id]['auxparam']);
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_module, "uuid")))) {
+	$pconfig['uuid'] = $a_module[$cnid]['uuid'];
+	$pconfig['name'] = $a_module[$cnid]['name'];
+	$pconfig['path'] = $a_module[$cnid]['path'];
+	$pconfig['comment'] = $a_module[$cnid]['comment'];
+	$pconfig['list'] = isset($a_module[$cnid]['list']);
+	$pconfig['rwmode'] = $a_module[$cnid]['rwmode'];
+	$pconfig['maxconnections'] = $a_module[$cnid]['maxconnections'];
+	$pconfig['hostsallow'] = $a_module[$cnid]['hostsallow'];
+	$pconfig['hostsdeny'] = $a_module[$cnid]['hostsdeny'];
+	$pconfig['uid'] = $a_module[$cnid]['uid'];
+	$pconfig['gid'] = $a_module[$cnid]['gid'];
+	if (is_array($a_module[$cnid]['auxparam']))
+		$pconfig['auxparam'] = implode("\n", $a_module[$cnid]['auxparam']);
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -118,8 +118,8 @@ if ($_POST) {
 				$module['auxparam'][] = $auxparam;
 		}
 
-		if (isset($id) && $a_module[$id]) {
-			$a_module[$id] = $module;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_module[$cnid] = $module;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_module[] = $module;
@@ -235,11 +235,8 @@ if ($_POST) {
 			    <?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("These parameters will be added to the module configuration in rsyncd.conf."), false, 65, 5, false, false);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_module[$id])) ? gettext("Save") : gettext("Add")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_module[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>
