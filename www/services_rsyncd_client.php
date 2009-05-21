@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_client.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -65,11 +65,9 @@ if (!is_array($config['rsync'])) {
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if ($_GET['act'] === "del") {
-	if ($a_rsyncclient[$_GET['id']]) {
-		updatenotify_set("rsyncclient", UPDATENOTIFY_MODE_DIRTY, $a_rsyncclient[$_GET['id']]['uuid']);
-		header("Location: services_rsyncd_client.php");
-		exit;
-	}
+	updatenotify_set("rsyncclient", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: services_rsyncd_client.php");
+	exit;
 }
 
 function rsyncclient_process_updatenotification($mode, $data) {
@@ -82,14 +80,12 @@ function rsyncclient_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['rsync']['rsyncclient'])) {
-				$index = array_search_ex($data, $config['rsync']['rsyncclient'], "uuid");
-				if (false !== $index) {
-					unset($config['rsync']['rsyncclient'][$index]);
-					write_config();
-				}
-				@unlink("/var/run/rsync_client_{$data}.sh");
+			$cnid = array_search_ex($data, $config['rsync']['rsyncclient'], "uuid");
+			if (FALSE !== $cnid) {
+				unset($config['rsync']['rsyncclient'][$cnid]);
+				write_config();
 			}
+			@unlink("/var/run/rsync_client_{$data}.sh");
 			break;
 	}
 
@@ -121,7 +117,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
 						<td width="30%" class="listhdrr"><?=gettext("Description");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient):?>
+  			  <?php foreach($a_rsyncclient as $rsyncclient):?>
   			  <?php $notificationmode = updatenotify_get_mode("rsyncclient", $rsyncclient['uuid']);?>
           <tr>
           	<?php $enable = isset($rsyncclient['enable']);?>
@@ -132,8 +128,8 @@ function rsyncclient_process_updatenotification($mode, $data) {
 						<td class="listbg"><?=htmlspecialchars($rsyncclient['description']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
-							<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
-              <a href="services_rsyncd_client.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync job?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job"); ?>" border="0"></a>
+							<a href="services_rsyncd_client_edit.php?uuid=<?=$rsyncclient['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Rsync job");?>" border="0"></a>&nbsp;
+              <a href="services_rsyncd_client.php?act=del&uuid=<?=$rsyncclient['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this Rsync job?");?>')"><img src="x.gif" title="<?=gettext("Delete Rsync job"); ?>" border="0"></a>
             </td>
             <?php else:?>
 						<td valign="middle" nowrap class="list">
@@ -141,7 +137,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
           </tr>
-          <?php $i++; endforeach;?>
+          <?php endforeach;?>
           <tr> 
             <td class="list" colspan="5"></td>
             <td class="list"><a href="services_rsyncd_client_edit.php"><img src="plus.gif" title="<?=gettext("Add Rsync job");?>" border="0"></a></td>

@@ -2,7 +2,6 @@
 <?php
 /*
 	system_hosts.php
-
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
@@ -135,7 +134,7 @@ function hosts_process_updatenotification($mode, $data) {
 									<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 									<td valign="middle" nowrap class="list">
-										<a href="system_hosts_edit.php?iuuid=<?=$host['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
+										<a href="system_hosts_edit.php?uuid=<?=$host['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
 										<a href="system_hosts.php?act=del&uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
 									</td>
 									<?php else:?>
