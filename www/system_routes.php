@@ -2,8 +2,11 @@
 <?php
 /*
 	system_routes.php
-	part of m0n0wall (http://m0n0.ch/wall)
-
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
+	
+	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
@@ -70,13 +73,11 @@ function routes_process_updatenotification($mode, $data) {
 		case UPDATENOTIFY_MODE_MODIFIED:
 			break;
 		case UPDATENOTIFY_MODE_DIRTY:
-			if (is_array($config['staticroutes']['route'])) {
-				$index = array_search_ex($data, $config['staticroutes']['route'], "uuid");
-				if (false !== $index) {
-					rc_exec_service("routing delete conf_" . strtr($config['staticroutes']['route'][$index]['uuid'], "-", "_"));
-					unset($config['staticroutes']['route'][$index]);
-					write_config();
-				}
+			$cnid = array_search_ex($data, $config['staticroutes']['route'], "uuid");
+			if (FALSE !== $index) {
+				rc_exec_service("routing delete conf_" . strtr($config['staticroutes']['route'][$cnid]['uuid'], "-", "_"));
+				unset($config['staticroutes']['route'][$cnid]);
+				write_config();
 			}
 			break;
 	}
@@ -99,7 +100,7 @@ function routes_process_updatenotification($mode, $data) {
 						<td width="30%" class="listhdr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_routes as $route):?>
+					<?php foreach ($a_routes as $route):?>
 					<?php $notificationmode = updatenotify_get_mode("routes", $route['uuid']);?>
 					<tr>
 						<td class="listlr">
@@ -114,7 +115,7 @@ function routes_process_updatenotification($mode, $data) {
 	          <td class="listbg"><?=htmlspecialchars($route['descr']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 	          <td valign="middle" nowrap class="list">
-							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" border="0"></a>
+							<a href="system_routes_edit.php?uuid=<?=$route['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" border="0"></a>
 	          	<a href="system_routes.php?act=del&uuid=<?=$route['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" border="0"></a>
 						</td>
 						<?php else:?>
@@ -123,7 +124,7 @@ function routes_process_updatenotification($mode, $data) {
 						</td>
 						<?php endif;?>
 					</tr>
-				  <?php $i++; endforeach;?>
+				  <?php endforeach;?>
 					<tr>
 						<td class="list" colspan="4"></td>
 						<td class="list">
