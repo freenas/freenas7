@@ -2,7 +2,7 @@
 <?php
 /*
 	interfaces_lagg.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -57,8 +57,13 @@ function lagg_inuse($ifn) {
 	return false;
 }
 
-if ($_GET['act'] == "del") {
-	$lagg = $a_lagg[$_GET['id']];
+if ($_GET['act'] === "del") {
+	if (FALSE === ($cnid = array_search_ex($_GET['uuid'], $config['vinterfaces']['lagg'], "uuid"))) {
+		header("Location: interfaces_lagg.php");
+		exit;
+	}
+
+	$lagg = $a_lagg[$cnid];
 
 	// Check if still in use.
 	if (lagg_inuse($lagg['if'])) {
@@ -66,7 +71,7 @@ if ($_GET['act'] == "del") {
 	} else {
 		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_{$lagg['if']}'");
 
-		unset($a_lagg[$_GET['id']]);
+		unset($a_lagg[$cnid]);
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -99,17 +104,22 @@ if ($_GET['act'] == "del") {
 						<td width="45%" class="listhdr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_lagg as $lagg):?>
+					<?php foreach ($a_lagg as $lagg):?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($lagg['if']);?></td>
 						<td class="listr"><?=htmlspecialchars(implode(" ", $lagg['laggport']));?></td>
 						<td class="listbg"><?=htmlspecialchars($lagg['desc']);?>&nbsp;</td>
-						<td valign="middle" nowrap class="list"> <a href="interfaces_lagg_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0"></a>&nbsp;<a href="interfaces_lagg.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a></td>
+						<td valign="middle" nowrap class="list">
+							<a href="interfaces_lagg_edit.php?uuid=<?=$lagg['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0"></a>&nbsp;
+							<a href="interfaces_lagg.php?act=del&uuid=<?=$lagg['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a>
+						</td>
 					</tr>
-					<?php $i++; endforeach;?>
+					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="3">&nbsp;</td>
-						<td class="list"> <a href="interfaces_lagg_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a></td>
+						<td class="list">
+							<a href="interfaces_lagg_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a>
+						</td>
 					</tr>
 				</table>
 			</form>

@@ -55,8 +55,13 @@ function vlan_inuse($ifn) {
 	return false;
 }
 
-if ($_GET['act'] == "del") {
-	$vlan = $a_vlan[$_GET['id']];
+if ($_GET['act'] === "del") {
+	if (FALSE === ($cnid = array_search_ex($_GET['uuid'], $config['vinterfaces']['vlan'], "uuid"))) {
+		header("Location: interfaces_vlan.php");
+		exit;
+	}
+
+	$vlan = $a_vlan[$cnid];
 
 	// Check if still in use.
 	if (vlan_inuse($vlan['if'])) {
@@ -64,7 +69,7 @@ if ($_GET['act'] == "del") {
 	} else {
 		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_{$vlan['if']}'");
 
-		unset($a_vlan[$_GET['id']]);
+		unset($a_vlan[$cnid]);
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -98,18 +103,23 @@ if ($_GET['act'] == "del") {
 						<td width="45%" class="listhdr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_vlan as $vlan):?>
+					<?php foreach ($a_vlan as $vlan):?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($vlan['if']);?></td>
 						<td class="listr"><?=htmlspecialchars($vlan['vlandev']);?></td>
 						<td class="listr"><?=htmlspecialchars($vlan['tag']);?></td>
 						<td class="listbg"><?=htmlspecialchars($vlan['desc']);?>&nbsp;</td>
-						<td valign="middle" nowrap class="list"> <a href="interfaces_vlan_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0"></a>&nbsp;<a href="interfaces_vlan.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a></td>
+						<td valign="middle" nowrap class="list">
+							<a href="interfaces_vlan_edit.php?uuid=<?=$vlan['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0"></a>&nbsp;
+							<a href="interfaces_vlan.php?act=del&uuid=<?=$vlan['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a>
+						</td>
 					</tr>
-					<?php $i++; endforeach;?>
+					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="4">&nbsp;</td>
-						<td class="list"> <a href="interfaces_vlan_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a></td>
+						<td class="list">
+							<a href="interfaces_vlan_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a>
+						</td>
 					</tr>
 				</table>
 				<div id="remarks">
