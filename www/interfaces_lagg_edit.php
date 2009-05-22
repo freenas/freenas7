@@ -2,7 +2,7 @@
 <?php
 /*
 	interfaces_lagg_edit.php
-	Copyright (C) 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -32,11 +32,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("Link Aggregation and Failover"), gettext("Edit"));
+$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("Link Aggregation and Failover"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['vinterfaces']['lagg']))
 	$config['vinterfaces']['lagg'] = array();
@@ -44,13 +44,13 @@ if (!is_array($config['vinterfaces']['lagg']))
 $a_lagg = &$config['vinterfaces']['lagg'];
 array_sort_key($a_lagg, "if");
 
-if (isset($id) && $a_lagg[$id]) {
-	$pconfig['enable'] = isset($a_lagg[$id]['enable']);
-	$pconfig['uuid'] = $a_lagg[$id]['uuid'];
-	$pconfig['if'] = $a_lagg[$id]['if'];
-	$pconfig['laggproto'] = $a_lagg[$id]['laggproto'];
-	$pconfig['laggport'] = $a_lagg[$id]['laggport'];
-	$pconfig['desc'] = $a_lagg[$id]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_lagg, "uuid")))) {
+	$pconfig['enable'] = isset($a_lagg[$cnid]['enable']);
+	$pconfig['uuid'] = $a_lagg[$cnid]['uuid'];
+	$pconfig['if'] = $a_lagg[$cnid]['if'];
+	$pconfig['laggproto'] = $a_lagg[$cnid]['laggproto'];
+	$pconfig['laggport'] = $a_lagg[$cnid]['laggport'];
+	$pconfig['desc'] = $a_lagg[$cnid]['desc'];
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
@@ -84,8 +84,8 @@ if ($_POST) {
 		$lagg['laggport'] = $_POST['laggport'];
 		$lagg['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_lagg[$id]) {
-			$a_lagg[$id] = $lagg;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_lagg[$cnid] = $lagg;
 		} else {
 			$a_lagg[] = $lagg;
 		}
@@ -131,18 +131,15 @@ function get_nextlagg_id() {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("if", gettext("Interface"), $pconfig['if'], "", true, 5, true);?>
 					<?php html_combobox("laggproto", gettext("Aggregation protocol"), $pconfig['laggproto'], array("failover" => gettext("Failover"), "fec" => gettext("FEC (Fast EtherChannel)"), "lacp" => gettext("LACP (Link Aggregation Control Protocol)"), "loadbalance" => gettext("Loadbalance"), "roundrobin" => gettext("Roundrobin"), "none" => gettext("None")), "", true);?>
-					<?php $a_port = array(); foreach (get_interface_list() as $ifk => $ifv) { if (eregi('lagg', $ifk)) { continue; } if (!isset($id) && false !== array_search_ex($ifk, $a_lagg, "laggport")) { continue; } $a_port[$ifk] = htmlspecialchars("{$ifk} ({$ifv['mac']})"); } ?>
+					<?php $a_port = array(); foreach (get_interface_list() as $ifk => $ifv) { if (eregi('lagg', $ifk)) { continue; } if (!(isset($uuid) && (FALSE !== $cnid)) && false !== array_search_ex($ifk, $a_lagg, "laggport")) { continue; } $a_port[$ifk] = htmlspecialchars("{$ifk} ({$ifv['mac']})"); } ?>
 					<?php html_listbox("laggport", gettext("Ports"), $pconfig['laggport'], $a_port, gettext("Note: Ctrl-click (or command-click on the Mac) to select multiple entries."), true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_lagg[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
 					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_lagg[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>

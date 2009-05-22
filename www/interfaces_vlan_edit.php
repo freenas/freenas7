@@ -30,11 +30,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("VLAN"), gettext("Edit"));
+$pgtitle = array(gettext("Network"), gettext("Interface Management"), gettext("VLAN"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['vinterfaces']['vlan']))
 	$config['vinterfaces']['vlan'] = array();
@@ -42,13 +42,13 @@ if (!is_array($config['vinterfaces']['vlan']))
 $a_vlans = &$config['vinterfaces']['vlan'];
 array_sort_key($a_vlans, "if");
 
-if (isset($id) && $a_vlans[$id]) {
-	$pconfig['enable'] = isset($a_vlans[$id]['enable']);
-	$pconfig['uuid'] = $a_vlans[$id]['uuid'];
-	$pconfig['if'] = $a_vlans[$id]['if'];
-	$pconfig['tag'] = $a_vlans[$id]['tag'];
-	$pconfig['vlandev'] = $a_vlans[$id]['vlandev'];
-	$pconfig['desc'] = $a_vlans[$id]['desc'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_vlans, "uuid")))) {
+	$pconfig['enable'] = isset($a_vlans[$cnid]['enable']);
+	$pconfig['uuid'] = $a_vlans[$cnid]['uuid'];
+	$pconfig['if'] = $a_vlans[$cnid]['if'];
+	$pconfig['tag'] = $a_vlans[$cnid]['tag'];
+	$pconfig['vlandev'] = $a_vlans[$cnid]['vlandev'];
+	$pconfig['desc'] = $a_vlans[$cnid]['desc'];
 } else {
 	$pconfig['enable'] = true;
 	$pconfig['uuid'] = uuid();
@@ -76,7 +76,7 @@ if ($_POST) {
 	}
 
 	// Validate if tag is unique. Only check if not in edit mode.
-	if (!isset($id)) {
+	if (!(isset($uuid) && (FALSE !== $cnid))) {
 		class InterfaceFilter {
 			function InterfaceFilter($vlandev) { $this->vlandev = $vlandev; }
 			function filter($data) { return ($data['vlandev'] === $this->vlandev); }
@@ -96,8 +96,8 @@ if ($_POST) {
 		$vlan['vlandev'] = $_POST['vlandev'];
 		$vlan['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_vlans[$id]) {
-			$a_vlans[$id] = $vlan;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_vlans[$cnid] = $vlan;
 		} else {
 			$a_vlans[] = $vlan;
 		}
@@ -147,13 +147,10 @@ function get_nextvlan_id() {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
 					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_vlans[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</form>
 		</td>
