@@ -3,7 +3,7 @@
 /*
 	services_iscsitarget.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -171,7 +171,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td width="20%" class="listhdrr"><?=gettext("Size");?></td>
 									<td width="10%" class="list"></td>
 				        </tr>
-							  <?php $i = 0; foreach($config['iscsitarget']['extent'] as $extent):?>
+							  <?php foreach($config['iscsitarget']['extent'] as $extent):?>
 							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_extent", $extent['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
@@ -179,7 +179,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td class="listr"><?=htmlspecialchars($extent['size']);?>MB&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
+				          	<a href="services_iscsitarget_extent_edit.php?uuid=<?=$extent['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>
 				            <a href="services_iscsitarget.php?act=del&type=extent&uuid=<?=$extent['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" border="0"></a>
 				          </td>
 				          <?php else:?>
@@ -188,7 +188,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									</td>
 									<?php endif;?>
 				        </tr>
-				        <?php $i++; endforeach;?>
+				        <?php endforeach;?>
 				        <tr>
 				          <td class="list" colspan="3"></td>
 				          <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" border="0"></a></td>
@@ -207,7 +207,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td width="65%" class="listhdrr"><?=gettext("Storage");?></td>
 									<td width="10%" class="list"></td>
 				        </tr>
-							  <?php $i = 0; foreach($config['iscsitarget']['device'] as $device):?>
+							  <?php foreach($config['iscsitarget']['device'] as $device):?>
 							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_device", $device['uuid']);?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($device['name']);?>&nbsp;</td>
@@ -220,7 +220,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>
+				          	<a href="services_iscsitarget_device_edit.php?uuid=<?=$device['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit device");?>" border="0"></a>
 				            <a href="services_iscsitarget.php?act=del&type=device&uuid=<?=$device['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" border="0"></a>
 				          </td>
 				          <?php else:?>
@@ -229,7 +229,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									</td>
 									<?php endif;?>
 				        </tr>
-				        <?php $i++; endforeach;?>
+				        <?php endforeach;?>
 				        <tr>
 				          <td class="list" colspan="3"></td>
 				          <td class="list"><a href="services_iscsitarget_device_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" border="0"></a></td>
@@ -249,7 +249,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									<td width="20%" class="listhdrr"><?=gettext("Network");?></td>
 									<td width="10%" class="list"></td>
 				        </tr>
-							  <?php $i = 0; foreach($config['iscsitarget']['target'] as $target):?>
+							  <?php foreach($config['iscsitarget']['target'] as $target):?>
 							  <?php $notificationmode = updatenotify_get_mode("iscsitarget_target", $target['uuid']);?>
 				        <tr>
 									<td class="listlr">iqn.1994-04.org.netbsd.iscsi-target:<?=htmlspecialchars($target['name']);?>&nbsp;</td>
@@ -263,7 +263,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 				          <td class="listr"><?=htmlspecialchars($target['ipaddr'])."/".htmlspecialchars($target['subnet']);?>&nbsp;</td>
 				          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 				          <td valign="middle" nowrap class="list">
-				          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
+				          	<a href="services_iscsitarget_target_edit.php?uuid=<?=$target['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit target");?>" border="0"></a>
 				            <a href="services_iscsitarget.php?act=del&type=target&uuid=<?=$target['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" border="0"></a>
 				          </td>
 				          <?php else:?>
@@ -272,7 +272,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 									</td>
 									<?php endif;?>
 				        </tr>
-				        <?php $i++; endforeach;?>
+				        <?php endforeach;?>
 				        <tr>
 				          <td class="list" colspan="4"></td>
 				          <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" border="0"></a></td>

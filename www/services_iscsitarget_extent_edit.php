@@ -36,25 +36,24 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Extent"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Extent"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
 
 array_sort_key($config['iscsitarget']['extent'], "name");
-
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
-if (isset($id) && $a_iscsitarget_extent[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_extent[$id]['uuid'];
-	$pconfig['name'] = $a_iscsitarget_extent[$id]['name'];
-	$pconfig['path'] = $a_iscsitarget_extent[$id]['path'];
-	$pconfig['size'] = $a_iscsitarget_extent[$id]['size'];
-	$pconfig['comment'] = $a_iscsitarget_extent[$id]['comment'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_extent, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_extent[$cnid]['uuid'];
+	$pconfig['name'] = $a_iscsitarget_extent[$cnid]['name'];
+	$pconfig['path'] = $a_iscsitarget_extent[$cnid]['path'];
+	$pconfig['size'] = $a_iscsitarget_extent[$cnid]['size'];
+	$pconfig['comment'] = $a_iscsitarget_extent[$cnid]['comment'];
 
 	// Check if a device is used as target.
 	$pconfig['type'] = "device";
@@ -123,8 +122,8 @@ if ($_POST) {
 			$iscsitarget_extent['size'] = $_POST['size'];
 		}
 
-		if (isset($id) && $a_iscsitarget_extent[$id]) {
-			$a_iscsitarget_extent[$id] = $iscsitarget_extent;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_extent[$cnid] = $iscsitarget_extent;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_extent[] = $iscsitarget_extent;
@@ -165,7 +164,7 @@ function type_change() {
 			<td class="tabcont">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("name", gettext("Extent name"), $pconfig['name'], "", true, 10, isset($id));?>
+					<?php html_inputbox("name", gettext("Extent name"), $pconfig['name'], "", true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device")), "", true, false, "type_change()");?>
 					<?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 					<?php $a_device = array(); $a_device[''] = gettext("Must choose one"); foreach (get_conf_all_disks_list_filtered() as $diskv) { if (0 == strcmp($diskv['size'], "NA")) continue; if (1 == disks_exists($diskv['devicespecialfile'])) continue; $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})"); }?>
@@ -174,11 +173,8 @@ function type_change() {
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</td>
 		</tr>

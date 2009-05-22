@@ -2,11 +2,11 @@
 <?php
 /*
 	services_iscsitarget_extent_edit.php
-	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,11 +36,11 @@
 */
 require("guiconfig.inc");
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
+$uuid = $_GET['uuid'];
+if (isset($_POST['uuid']))
+	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target"), isset($uuid) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
@@ -63,16 +63,16 @@ if (!sizeof($a_iscsitarget_extent)) {
 	$errormsg = gettext("You have to define some 'Extent' objects first.");
 }
 
-if (isset($id) && $a_iscsitarget_target[$id]) {
-	$pconfig['uuid'] = $a_iscsitarget_target[$id]['uuid'];
-	$pconfig['name'] = $a_iscsitarget_target[$id]['name'];
-	$pconfig['flags'] = $a_iscsitarget_target[$id]['flags'];
-	$pconfig['storage'] = $a_iscsitarget_target[$id]['storage'];
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_target, "uuid")))) {
+	$pconfig['uuid'] = $a_iscsitarget_target[$cnid]['uuid'];
+	$pconfig['name'] = $a_iscsitarget_target[$cnid]['name'];
+	$pconfig['flags'] = $a_iscsitarget_target[$cnid]['flags'];
+	$pconfig['storage'] = $a_iscsitarget_target[$cnid]['storage'];
 	if (is_array($pconfig['storage']))
 		$pconfig['storage'] = $pconfig['storage'][0];
-	$pconfig['ipaddr'] = $a_iscsitarget_target[$id]['ipaddr'];
-	$pconfig['subnet'] = $a_iscsitarget_target[$id]['subnet'];
-	$pconfig['comment'] = $a_iscsitarget_target[$id]['comment'];
+	$pconfig['ipaddr'] = $a_iscsitarget_target[$cnid]['ipaddr'];
+	$pconfig['subnet'] = $a_iscsitarget_target[$cnid]['subnet'];
+	$pconfig['comment'] = $a_iscsitarget_target[$cnid]['comment'];
 } else {
 	// Find next unused ID.
 	$targetid = 0;
@@ -121,8 +121,8 @@ if ($_POST) {
 		$iscsitarget_target['subnet'] = $_POST['subnet'];
 		$iscsitarget_target['comment'] = $_POST['comment'];
 
-		if (isset($id) && $a_iscsitarget_target[$id]) {
-			$a_iscsitarget_target[$id] = $iscsitarget_target;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$a_iscsitarget_target[$cnid] = $iscsitarget_target;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
 			$a_iscsitarget_target[] = $iscsitarget_target;
@@ -145,16 +145,16 @@ if ($_POST) {
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("name", gettext("Target name"), $pconfig['name'], "", true, 10, isset($id));?>
+					<?php html_inputbox("name", gettext("Target name"), $pconfig['name'], "", true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 					<?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => "rw", "ro" => "ro"), "", true);?>
 					<?php
 					$a_storage = array();
 					// Check extents
 					foreach ($a_iscsitarget_extent as $extentv) {
 						// Add mode: Only display extents that are not already used in a target or device.
-						if (!isset($id) && (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage"))) { continue; }
+						if (!(isset($uuid) && (FALSE !== $cnid)) && (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage"))) { continue; }
 						// Edit mode:
-						if (isset($id)) {
+						if (isset($uuid) && (FALSE !== $cnid)) {
 							// Check if extent is already used in another target. Verify that it isn't the current processed target.
 							$index = array_search_ex($extentv['name'], $a_iscsitarget_target, "storage");
 							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
@@ -166,9 +166,9 @@ if ($_POST) {
 					// Check devices
 					foreach ($a_iscsitarget_device as $devicev) {
 						// Add mode: Only display devices that are not already used in a target or device.
-						if (!isset($id) && false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage")) { continue; }
+						if (!(isset($uuid) && (FALSE !== $cnid)) && false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage")) { continue; }
 						// Edit mode:
-						if (isset($id)) {
+						if (isset($uuid) && (FALSE !== $cnid)) {
 							// Check if device is already used in another target. Verify that it isn't the current processed target.
 							$index = array_search_ex($devicev['name'], $a_iscsitarget_device, "storage");
 							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
@@ -183,11 +183,8 @@ if ($_POST) {
 					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id])) ? gettext("Save") : gettext("Add");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-					<?php if (isset($id) && $a_iscsitarget_target[$id]):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<?php endif;?>
 				</div>
 			</td>
 		</tr>
