@@ -53,7 +53,7 @@ iscsi_initiator_start()
 iscsi_initiator_stop()
 {
 	echo "Stopping ${name}."
-	/usr/bin/killall iscontrol
+	/usr/bin/killall iscontrol > /dev/null 2>&1
 }
 
 run_rc_command "$1"
