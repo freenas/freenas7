@@ -63,7 +63,12 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	if ($_POST['Cancel']) {
+		header("Location: access_users_groups.php");
+		exit;
+	}
+
+	// Input validation
 	$reqdfields = explode(" ", "name desc groupid");
 	$reqdfieldsn = array(gettext("Name"),gettext("Description"),gettext("Group ID"));
 	$reqdfieldst = explode(" ", "string string numeric");
@@ -157,6 +162,7 @@ function get_nextgroup_id() {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

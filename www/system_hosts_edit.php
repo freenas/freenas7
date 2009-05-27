@@ -62,7 +62,12 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	if ($_POST['Cancel']) {
+		header("Location: system_hosts.php");
+		exit;
+	}
+
+	// Input validation.
 	$reqdfields = explode(" ", "name address");
 	$reqdfieldsn = array(gettext("Hostname"),gettext("IP address"));
 
@@ -119,6 +124,7 @@ if ($_POST) {
         </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

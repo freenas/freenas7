@@ -48,7 +48,6 @@ if (!is_array($config['system']['sysctl']['param']))
 	$config['system']['sysctl']['param'] = array();
 
 array_sort_key($config['system']['sysctl']['param'], "name");
-
 $a_sysctlvar = &$config['system']['sysctl']['param'];
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_sysctlvar, "uuid")))) {
@@ -68,6 +67,11 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_sysctlvar, "uu
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
+
+	if ($_POST['Cancel']) {
+		header("Location: system_sysctl.php");
+		exit;
+	}
 
 	// Input validation.
 	$reqdfields = explode(" ", "name value");
@@ -140,6 +144,7 @@ if ($_POST) {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			  </div>
 			</form>

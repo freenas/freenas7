@@ -69,6 +69,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: access_users.php");
+		exit;
+	}
+
 	$reqdfields = explode(" ", "login fullname primarygroup userid");
 	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Primary Group"),gettext("User ID"));
 	$reqdfieldst = explode(" ", "string string numeric numeric");
@@ -191,6 +196,7 @@ function get_nextuser_id() {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

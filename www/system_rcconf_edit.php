@@ -46,7 +46,6 @@ if (!is_array($config['system']['rcconf']['param']))
 	$config['system']['rcconf']['param'] = array();
 
 array_sort_key($config['system']['rcconf']['param'], "name");
-
 $a_rcvar = &$config['system']['rcconf']['param'];
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rcvar, "uuid")))) {
@@ -66,6 +65,11 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rcvar, "uuid")
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
+
+	if ($_POST['Cancel']) {
+		header("Location: system_rcconf.php");
+		exit;
+	}
 
 	// Input validation.
 	$reqdfields = explode(" ", "name value");
@@ -127,6 +131,7 @@ if ($_POST) {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

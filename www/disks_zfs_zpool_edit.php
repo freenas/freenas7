@@ -75,6 +75,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: disks_zfs_zpool.php");
+		exit;
+	}
+
 	// Input validation
 	$reqdfields = explode(" ", "name vdevice");
 	$reqdfieldsn = array(gettext("Name"), gettext("Virtual devices"));
@@ -165,6 +170,7 @@ function enable_change(enable_change) {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (FALSE !== $cnid))) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

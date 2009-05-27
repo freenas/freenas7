@@ -59,8 +59,12 @@ if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
 	unset($pconfig['do_action']);
-
 	$pconfig = $_POST;
+
+	if ($_POST['Cancel']) {
+		header("Location: disks_crypt.php");
+		exit;
+	}
 
 	// Input validation.
   $reqdfields = explode(" ", "disk ealgo passphrase passphraseconf");
@@ -208,6 +212,7 @@ function ealgo_change() {
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 				</div>
 				<?php if ($pconfig['do_action']) {
 				echo('<pre>');

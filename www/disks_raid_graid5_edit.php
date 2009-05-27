@@ -3,7 +3,7 @@
 /*
 	disks_raid_graid5_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -64,7 +64,12 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	if ($_POST['Cancel']) {
+		header("Location: disks_raid_graid5.php");
+		exit;
+	}
+
+	// Input validation
 	$reqdfields = explode(" ", "name");
 	$reqdfieldsn = array(gettext("Raid name"));
 
@@ -170,6 +175,7 @@ if ($_POST) {
 			  <?php if (!isset($id)):?>
 			  <div id="submit">
 			  	<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+			  	<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 				</div>
 			  <?php endif;?>
 			</form>

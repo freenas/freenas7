@@ -90,8 +90,12 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ag
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
-
 	$pconfig = $_POST;
+
+	if ($_POST['Cancel']) {
+		header("Location: services_iscsitarget_ag.php");
+		exit;
+	}
 
 	// Input validation.
 	$reqdfields = explode(" ", "tag");
@@ -325,6 +329,7 @@ function normalize_ipv6addr($v6addr) {
 	      </table>
 	      <div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 	      </div>
 	    </td>

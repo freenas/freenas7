@@ -80,7 +80,12 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	// Input validation
+	if ($_POST['Cancel']) {
+		header("Location: system_firewall.php");
+		exit;
+	}
+
+	// Input validation.
 	// Validate if rule number is unique.
 	$index = array_search_ex($_POST['ruleno'], $a_rule, "ruleno");
 	if (FALSE !== $index) {
@@ -163,6 +168,7 @@ function get_next_rulenumber() {
         </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			  </div>
 			  <div id="remarks">

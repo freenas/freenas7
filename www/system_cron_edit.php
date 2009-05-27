@@ -81,10 +81,14 @@ $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Frid
 
 if ($_POST) {
 	unset($input_errors);
-
 	$pconfig = $_POST;
 
-	/* Input validation */
+	if ($_POST['Cancel']) {
+		header("Location: system_cron.php");
+		exit;
+	}
+
+	// Input validation.
 	$reqdfields = explode(" ", "desc who command");
 	$reqdfieldsn = array(gettext("Description"),gettext("Who"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -334,6 +338,7 @@ function set_selected(name) {
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 					<input name="Submit" id="runnow" type="submit" class="formbtn" value="<?=gettext("Run now");?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

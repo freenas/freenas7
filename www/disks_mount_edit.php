@@ -88,6 +88,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: disks_mount.php");
+		exit;
+	}
+
 	// Rebuild partition string
 	$_POST['partition'] = "";
 	if ("disk" === $_POST['type']) {
@@ -414,6 +419,7 @@ function enable_change(enable_change) {
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 				<div id="remarks">

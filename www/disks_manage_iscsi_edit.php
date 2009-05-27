@@ -63,8 +63,12 @@ if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
 	unset($do_crypt);
-
 	$pconfig = $_POST;
+
+	if ($_POST['Cancel']) {
+		header("Location: disks_manage_iscsi.php");
+		exit;
+	}
 
 	// Check for duplicates.
 	foreach ($a_iscsiinit as $iscsiinit) {
@@ -135,6 +139,7 @@ if ($_POST) {
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

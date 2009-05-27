@@ -99,8 +99,12 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rsynclocal, "u
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
-
 	$pconfig = $_POST;
+
+	if ($_POST['Cancel']) {
+		header("Location: services_rsyncd_local.php");
+		exit;
+	}
 
 	// Input validation
 	$reqdfields = explode(" ", "source destination who");
@@ -413,6 +417,7 @@ function delete_change() {
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 					<?php if (isset($uuid) && (FALSE !== $cnid)):?>
 					<input name="Submit" id="execnow" type="submit" class="formbtn" value="<?=gettext("Execute now");?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<?php endif;?>
 				</div>
 			</form>

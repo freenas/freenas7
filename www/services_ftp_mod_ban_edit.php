@@ -61,6 +61,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: services_ftp_mod.php");
+		exit;
+	}
+
 	// Input validation
 	$reqdfields = explode(" ", "event occurrence timeinterval expire");
 	$reqdfieldsn = array(gettext("Event"), gettext("Occurrence"), gettext("Time interval"), gettext("Expire"));
@@ -115,6 +120,7 @@ if ($_POST) {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
 			</form>

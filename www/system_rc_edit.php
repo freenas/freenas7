@@ -2,11 +2,11 @@
 <?php
 /*
 	system_rc_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -77,6 +77,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: system_rc.php");
+		exit;
+	}
+
 	// Input validation.
 	$reqdfields = explode(" ", "command type");
 	$reqdfieldsn = array(gettext("Command"), gettext("Type"));
@@ -136,6 +141,7 @@ if ($_POST) {
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<?php if (isset($id) && isset($type)):?>
 					<input name="id" type="hidden" value="<?=$id;?>">
 					<input name="type" type="hidden" value="<?=$type;?>">

@@ -64,6 +64,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: interfaces_lagg.php");
+		exit;
+	}
+
 	// Input validation.
 	$reqdfields = explode(" ", "laggproto");
 	$reqdfieldsn = array(gettext("Aggregation protocol"));
@@ -137,6 +142,7 @@ function get_nextlagg_id() {
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
 					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">

@@ -62,6 +62,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	if ($_POST['Cancel']) {
+		header("Location: system_routes.php");
+		exit;
+	}
+
 	// Input validation
 	$reqdfields = explode(" ", "interface network network_subnet gateway");
 	$reqdfieldsn = array(gettext("Interface"), gettext("Destination network"), gettext("Destination network bit count"), gettext("Gateway"));
@@ -160,6 +165,7 @@ if ($_POST) {
         </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			  </div>
 			</form>
