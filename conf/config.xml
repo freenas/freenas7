@@ -865,7 +865,7 @@
 	<statusreport>
 		<!-- <enable/> -->
 		<to></to>
-		<subject></subject>
+		<subject>Status report from %h</subject>
 		<all_mins></all_mins>
 		<all_hours></all_hours>
 		<all_days></all_days>
@@ -1050,7 +1050,7 @@
 			<enable/>
 			-->
 			<to></to>
-			<subject></subject>
+			<subject>UPS notification from %h</subject>
 		</email>
 	</ups>
 	<tftpd>

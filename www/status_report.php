@@ -2,12 +2,12 @@
 <?php
 /*
 	status_report.php
-	Copyright (C) 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
 	Copyright (C) 2007 Dan Merschi (freenas@bcapro.com)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -41,7 +41,7 @@ require("report.inc");
 
 $pgtitle = array(gettext("Status"), gettext("Email Report"));
 
-if(!is_array($config['statusreport']))
+if (!is_array($config['statusreport']))
 	$config['statusreport'] = array();
 
 $pconfig['enable'] = isset($config['statusreport']['enable']);
@@ -62,16 +62,11 @@ $pconfig['all_weekdays'] = $config['statusreport']['all_weekdays'];
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
 
-if (empty($pconfig['subject'])) {
-	$pconfig['subject'] = sprintf(gettext("Status report from host: %s.%s"),
-		$config['system']['hostname'], $config['system']['domain']);
-}
-
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* Input validation. */
+	// Input validation.
 	if($_POST['enable']) {
 		$reqdfields = explode(" ", "to");
 		$reqdfieldsn = array(gettext("To e-mail"));
@@ -86,7 +81,7 @@ if($_POST) {
 		}
 	}
 
-	if(!$input_errors) {
+	if (!$input_errors) {
 		$config['statusreport']['enable'] = $_POST['enable'] ? true : false;
 		$config['statusreport']['to'] = $_POST['to'];
 		$config['statusreport']['subject'] = $_POST['subject'];
@@ -186,13 +181,7 @@ function enable_change(enable_change) {
 							<span class="vexpl"><?=gettext("Destination email address.");?> <?=gettext("Separate email addresses by semi-colon.");?></span>
 						</td>
 					</tr>
-					<tr>
-				    <td width="22%" valign="top" class="vncell"><?=gettext("Subject");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlspecialchars($pconfig['subject']);?>"><br>
-			        <span class="vexpl"><?=gettext("The subject of the email.");?></span>
-			      </td>
-					</tr>
+					<?php html_inputbox("subject", gettext("Subject"), $pconfig['subject'], gettext("The subject of the email.") . " " . gettext("You can use the following parameters for substitution:<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"), false, 60);?>
 					<tr>
 				    <td width="22%" valign="top" class="vncell"><?=gettext("Reports");?></td>
 			      <td width="78%" class="vtable">

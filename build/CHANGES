@@ -12,6 +12,8 @@ Majors changes:
 - Add danish WebGUI translation. Thanks to all translators.
 - Add kernel patches to get ARTiGO A2000 hardware working. Thanks to
   David Davis for the patches.
+- Add ability to use %d (date) and %h (hostname) in email subjects (e.g.
+  Services|UPS) (FR 2796141).
 
 Minors changes:
 - Add 'MaxLoginAttempts' event to FTP ban list rules (FR 2777481).

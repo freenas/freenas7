@@ -26,6 +26,9 @@ send_email()
 	# Get date in RFC 2882 format.
 	_rfcdate=`date "+%a, %d %b %Y %H:%M:%S %z"`
 
+	# Substitute special characters in subject.
+	_subject=$(echo ${_subject} | sed "s/%h/$(hostname)/" | sed "s/%d/$(date)/")
+
 	# Create message
 	echo ${_recipients} | awk '{for ( i = NF ; i > 0 ; --i ) printf("To: %s\n",$i)}' > ${msmtp_msgfile}
 
