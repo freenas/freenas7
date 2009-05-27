@@ -52,11 +52,6 @@ $pconfig['email_subject'] = $config['ups']['email']['subject'];
 if (is_array($config['ups']['auxparam']))
 	$pconfig['auxparam'] = implode("\n", $config['ups']['auxparam']);
 
-if (empty($pconfig['email_subject'])) {
-	$pconfig['email_subject'] = sprintf(gettext("UPS notification from host: %s"),
-		system_get_hostname());
-}
-
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
@@ -183,7 +178,7 @@ function shutdownmode_change() {
 					<?php html_separator();?>
 					<?php html_titleline_checkbox("email_enable", gettext("Email notification"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], sprintf("%s %s", gettext("Destination email address."), gettext("Separate email addresses by semi-colon.")), true, 40);?>
-					<?php html_inputbox("email_subject", gettext("Subject"), $pconfig['email_subject'], gettext("The subject of the email."), true, 40);?>
+					<?php html_inputbox("email_subject", gettext("Subject"), $pconfig['email_subject'], gettext("The subject of the email.") . " " . gettext("You can use the following parameters for substitution:<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"), true, 60);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">

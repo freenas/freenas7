@@ -1,11 +1,11 @@
 <?php
 /*
 	email.inc
-	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@
 */
 require_once("config.inc");
 require_once("util.inc");
+require_once("system.inc");
 
 // Checks if Email settings are valid.
 // Return 0 if successful, otherwise 1.
@@ -61,6 +62,10 @@ function email_send($address, $subject, $message, &$error) {
 
 	// Get date in RFC 2882 format.
 	$rfcdate = date('r');
+
+	// Substitute special characters in subject.
+	$subject = str_replace("%d", shell_exec("date"), $subject);
+	$subject = str_replace("%h", system_get_hostname(), $subject); 
 
 	// Convert adresses for msmtp.
 	$address = strtr($address, array(";" => " ", "," => " "));
