@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-05-17 00:27+0000\n"
+"PO-Revision-Date: 2009-05-28 21:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -788,6 +788,9 @@ msgstr ""
 msgid "Delete all rules"
 msgstr ""
 
+msgid "Delete all self-tests"
+msgstr ""
+
 msgid "Delete command"
 msgstr ""
 
@@ -981,6 +984,9 @@ msgid "Do you really want to delete all options?"
 msgstr ""
 
 msgid "Do you really want to delete all rules?"
+msgstr ""
+
+msgid "Do you really want to delete all scheduled self-tests?"
 msgstr ""
 
 msgid "Do you really want to delete this MIB?"
@@ -3171,10 +3177,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr ""
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr ""
@@ -3299,9 +3301,6 @@ msgid "TKIP"
 msgstr ""
 
 msgid "Target"
-msgstr ""
-
-msgid "Target Name"
 msgstr ""
 
 msgid "Target address"
@@ -3701,13 +3700,18 @@ msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr ""
+
+#, php-format
 msgid "These parameters will be added to global settings in %s."
 msgstr ""
 
 msgid "These parameters will be added to the module configuration in rsyncd.conf."
-msgstr ""
-
-msgid "These parameters will be added to the share configuration in smb.conf."
 msgstr ""
 
 msgid "This LAGG cannot be deleted because it is still being used as an interface."
@@ -3987,10 +3991,6 @@ msgstr ""
 msgid "UPS disabled"
 msgstr ""
 
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr ""
-
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -4245,6 +4245,9 @@ msgid "Yes"
 msgstr ""
 
 msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+msgstr ""
+
+msgid "You can use the following parameters for substitution:<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
 #, php-format
