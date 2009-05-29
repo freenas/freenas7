@@ -152,7 +152,7 @@ function ftpd_mod_ban_process_updatenotification($mode, $data) {
 								</tr>
 							</table>
 							<div id="remarks">
-								<?php html_remark("note", "", gettext("The module provides automatic bans that are triggered based on configurable criteria. A ban prevents the banned user, host, or class from logging in to the server, it does not prevent the banned user, host, or class from connecting to the server."));?>
+								<?php html_remark("note", "", gettext("The module provides automatic bans that are triggered based on configurable criteria. A ban prevents the banned user, host, or class from logging into the server, it does not prevent the banned user, host, or class from connecting to the server."));?>
 							</div>
 						</td>
 					</tr>
