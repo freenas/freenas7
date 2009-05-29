@@ -38,10 +38,12 @@ $rsync_client_logfile = rc_getenv_ex("rsync_client_logfile", "{$g['varlog_path']
 $rsync_local_logfile = rc_getenv_ex("rsync_local_logfile", "{$g['varlog_path']}/rsync_local.log");
 $fuppes_logfile = rc_getenv_ex("fuppes_logfile", "{$g['varlog_path']}/fuppes.log");
 $mtdaapd_logfile = rc_getenv_ex("mtdaapd_logfile", "{$g['varlog_path']}/mt-daapd.log");
+$proftpd_modban_logfile = rc_getenv_ex("proftpd_modban_banlog", "{$g['varlog_path']}/proftpd/ban.log");
 
 // The log configuration
 $loginfo = array(
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("System"),
 		"logfile" => "{$clogdir}/system.log",
 		"filename" => "system.log",
@@ -54,6 +56,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("SSH"),
 		"logfile" => "{$clogdir}/sshd.log",
 		"filename" => "sshd.log",
@@ -66,6 +69,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("Daemon"),
 		"logfile" => "{$clogdir}/daemon.log",
 		"filename" => "daemon.log",
@@ -78,6 +82,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("FTP"),
 		"logfile" => "{$clogdir}/ftp.log",
 		"filename" => "ftp.log",
@@ -90,6 +95,18 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
+		"visible" => isset($config['ftpd']['mod_ban']['enable']),
+		"desc" => gettext("FTP - Ban module"),
+		"logfile" => $proftpd_modban_logfile,
+		"filename" => "ban.log",
+		"type" => "plain",
+		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+):\s+(.*)$/",
+		"columns" => array(
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
+			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
+		)),
+	array(
+		"visible" => TRUE,
 		"desc" => gettext("FTP - File transfer"),
 		"logfile" => "{$g['varlog_path']}/xferlog",
 		"filename" => "xferlog",
@@ -104,6 +121,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 2)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("S.M.A.R.T."),
 		"logfile" => "{$clogdir}/smartd.log",
 		"filename" => "smartd.log",
@@ -116,6 +134,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("RSYNC - Server"),
 		"logfile" => "{$clogdir}/rsyncd.log",
 		"filename" => "rsyncd.log",
@@ -128,6 +147,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("RSYNC - Client"),
 		"logfile" => $rsync_client_logfile,
 		"filename" => "rsync_client.log",
@@ -137,6 +157,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listlr", "param" => "", "pmid" => 1)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("RSYNC - Local"),
 		"logfile" => $rsync_local_logfile,
 		"filename" => "rsync_local.log",
@@ -146,6 +167,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listlr", "param" => "", "pmid" => 1)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("UPnP"),
 		"logfile" => $fuppes_logfile,
 		"filename" => "upnp.log",
@@ -155,6 +177,7 @@ $loginfo = array(
 			array("title" => gettext("Event"), "class" => "listlr", "param" => "", "pmid" => 1)
 		)),
 	array(
+		"visible" => TRUE,
 		"desc" => gettext("DAAP"),
 		"logfile" => $mtdaapd_logfile,
 		"filename" => "daap.log",
