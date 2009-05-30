@@ -166,7 +166,7 @@ function enable_change(enable_change) {
 		<td class="tabnavtbl">
   		<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool_vdevice.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Virtual device");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pool");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
@@ -180,10 +180,10 @@ function enable_change(enable_change) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($uuid));?>
-			  	<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), "", true, isset($uuid));?>
-					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($uuid) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($uuid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
-			    <?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($uuid));?>
+			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($uuid) && false !== $cnid);?>
+			  	<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), "", true, isset($uuid) && false !== $cnid);?>
+					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($uuid) && false !== $cnid && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if ((!isset($uuid) || isset($uuid) && false === $cnid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
+			    <?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($uuid) && false !== $cnid);?>
 			  	<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 			  </table>
 				<div id="submit">
