@@ -64,7 +64,7 @@ function email_send($address, $subject, $message, &$error) {
 	$rfcdate = date('r');
 
 	// Substitute special characters in subject.
-	$subject = str_replace("%d", shell_exec("date"), $subject);
+	$subject = str_replace("%d", trim(shell_exec("date")), $subject);
 	$subject = str_replace("%h", system_get_hostname(), $subject); 
 
 	// Convert adresses for msmtp.
