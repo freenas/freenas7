@@ -24,6 +24,8 @@ Minors changes:
 - Show FTP transfer log in 'Diagnostics|Logs|FTP|Transfer' (FR 2785325).
 - Add filechooser button to 'Home directory' editbox in 'Access|Users|Edit'
   WebGUI (FR 2790909).
+- Sort various lists displayed in the WebGUI using a 'natural order' algorithm
+  (FR 2481934). Thanks to Marion Desnault for the patch.
 
 Bug fixes:
 - It was not possible to configure multiple FTP ban list rules. Thanks to
