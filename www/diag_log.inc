@@ -100,10 +100,10 @@ $loginfo = array(
 		"logfile" => $proftpd_modban_logfile,
 		"filename" => "ban.log",
 		"type" => "plain",
-		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+):\s+(.*)$/",
+		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(.*)$/",
 		"columns" => array(
 			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
+			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 2)
 		)),
 	array(
 		"visible" => TRUE,
