@@ -336,6 +336,12 @@ div#diskusage .capacity {
 .progbarl, .progbarr {
 	width: 2px;
 }
+div#loginpage {
+	background-image: url("login_bg.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+}
 div#loginbox {
 	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
 	border: 1px solid #DEDBD1;

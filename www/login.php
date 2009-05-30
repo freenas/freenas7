@@ -58,43 +58,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<title><?=get_product_name();?></title>
 	</head>
 	<body onLoad='document.iform.username.focus();'>
-		<table height="100%" width="100%" cellspacing="0" cellpadding="0" border="0">
-			<tbody>
-				<tr>
-					<td align="center">
-						<form name="iform" id="iform" action="login.php" method="post">
-							<table>
-								<tbody>
-									<tr>
-										<td align="center">
-											<div id="loginbox">
-												<table>
-													<tbody>
-														<tr>
-															<td><?=gettext("Username");?></td>
-															<td><input class="formfld" type="text" name="username" value=""/></td>
-														</tr>
-														<tr>
-															<td><?=gettext("Password");?></td>
-															<td><input class="formfld" type="password" name="password" value=""/></td>
-														</tr>
-														<tr>
-															<td></td>
-														</tr>
-														<tr>
-															<td align="center" colspan="2"><input class="formbtn" type="submit" value="<?=gettext("Login");?>"/></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="loginpage">
+			<table height="100%" width="100%" cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+					<tr>
+						<td align="center">
+							<form name="iform" id="iform" action="login.php" method="post">
+								<table>
+									<tbody>
+										<tr>
+											<td align="center">
+												<div id="loginbox">
+													<table>
+														<tbody>
+															<tr>
+																<td><?=gettext("Username");?></td>
+																<td><input class="formfld" type="text" name="username" value=""/></td>
+															</tr>
+															<tr>
+																<td><?=gettext("Password");?></td>
+																<td><input class="formfld" type="password" name="password" value=""/></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td align="center" colspan="2"><input class="formbtn" type="submit" value="<?=gettext("Login");?>"/></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</body>
 </html>
