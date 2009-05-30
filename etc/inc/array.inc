@@ -72,7 +72,7 @@ function array_sort_key(array &$array, $key) {
 	if(!function_exists(_array_sort_key_cmp)) {
 		function _array_sort_key_cmp($a, $b) {
 			global $_key;
-			return strcmp($a[$_key], $b[$_key]);
+			return strnatcmp($a[$_key], $b[$_key]);
 		}
 	}
 
