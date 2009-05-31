@@ -105,7 +105,7 @@ if ($_POST) {
 			if (0 == $retval)
 				$savemsg = gettext("Status report successfully sent.");
 			else
-				$failmsg = sprintf(gettext("Failed to send status report. Please check the <a href='%s'>log</a> files."), "diag_logs.php");
+				$failmsg = sprintf(gettext("Failed to send status report. Please check the <a href='%s'>log</a> files."), "diag_log.php");
 		} else {
 			// Configure cron job.
 			if (!file_exists($d_sysrebootreqd_path)) {
