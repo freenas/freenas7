@@ -92,6 +92,11 @@ Bug fixes:
   'System|Advanced|rc.conf' or 'System|Advanced|sysctl.conf') (BR 2792956).
 - Fix bug in WebGUI which is caused by unhandled special HTML characters
   used in various languages (BR 2793875).
+- Set Quixplorer user permissions to 'View only' because of security reason
+  because Quixplorer does not respect system user permissions (BR 2798934).
+  If you want to allow users to modify file permissions set rc.conf variable
+  'webfm_user_permissions' to 1. If you want to deny all users to login into
+  the Quixplorer WebGUI set 'webfm_user_active' to 0.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

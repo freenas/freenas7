@@ -15,6 +15,8 @@ load_rc_config "$name"
 # Defaults
 webfm_configdir=${webfm_configdir:-"/usr/local/www/quixplorer/.config"}
 webfm_htusers=${webfm_htusers:-"${webfm_configdir}/.htusers.php"}
+webfm_user_permissions=${webfm_user_permissions:-"0"}
+webfm_user_active=${webfm_user_active:-"1"}
 
 echo "Preparing web-based file-management."
 
@@ -29,7 +31,7 @@ do
 	_password_md5=`/sbin/md5 -q -s ${_password}`
 
 	/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
-		-v "concat('array(&quot;',login,'&quot;,&quot;${_password_md5}&quot;,&quot;/mnt&quot;,&quot;http://localhost&quot;,0,&quot;^.ht&quot;,1,1),')" \
+		-v "concat('array(&quot;',login,'&quot;,&quot;${_password_md5}&quot;,&quot;/mnt&quot;,&quot;http://localhost&quot;,0,&quot;^.ht&quot;,${webfm_user_permissions},${webfm_user_active}),')" \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
 
 	_index=$(( ${_index} - 1 ))
