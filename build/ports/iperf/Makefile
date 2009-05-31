@@ -1,0 +1,19 @@
+PORTNAME=			iperf
+PORTVERSION=	2.0.4
+CATEGORIES=		benchmarks ipv6
+COMMENT=			A tool to measure maximum TCP and UDP bandwidth
+MAINTAINER=		votdev@gmx.de
+
+MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
+MASTER_SITE_SUBDIR=	${PORTNAME}
+
+GNU_CONFIGURE=		yes
+CONFIGURE_ARGS+=	--enable-ipv6 \
+									--enable-threads \
+									--enable-multicast
+CONFIGURE_ENV+=		CFLAGS=${PTHREAD_LIBS}
+
+do-install:
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/${PREFIX}/bin
+
+.include <bsd.port.mk>

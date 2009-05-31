@@ -20,6 +20,7 @@ Majors changes:
   fields to 'Services|BitTorrent' WebGUI.
 - Add entry 'FTP - Ban module' to the list of log files in 'Diagnostics|Log'
   if the module is enabled (FR 2797652).
+- Add 'iperf', a tool to measure maximum TCP and UDP bandwidth (FR 2785038).
 
 Minors changes:
 
