@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
-"PO-Revision-Date: 2009-05-17 04:09+0000\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
+"PO-Revision-Date: 2009-05-31 15:38+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:04+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -1958,7 +1958,7 @@ msgid "Help"
 msgstr "Help"
 
 msgid "Hide dot files"
-msgstr "Verberg punt bestanden (.bestandsnaam)"
+msgstr "Verberg punt bestanden"
 
 msgid "Highlighting"
 msgstr "Markeren"
@@ -3383,13 +3383,13 @@ msgid "Scheduled"
 msgstr "Gepland"
 
 msgid "Scheduled Self-Test"
-msgstr "Gepland Zelf-Test"
+msgstr "Gepland Zelf-Testen"
 
 msgid "Scheduled reboot"
 msgstr "Geplande herstart"
 
 msgid "Scheduled self-tests"
-msgstr "Geplande zelf-tests"
+msgstr "Geplande zelf-testen"
 
 msgid "Scheduled shutdown"
 msgstr "Geplande uitschakeling"
@@ -3699,10 +3699,6 @@ msgstr "Statische routes"
 msgid "Status"
 msgstr "Status"
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr "Status rapport van host: %s.%s"
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr "De statusrapport is met succes verzonden naar: %s."
@@ -3834,9 +3830,6 @@ msgstr "TKIP"
 
 msgid "Target"
 msgstr "Doel"
-
-msgid "Target Name"
-msgstr "Doelnaam"
 
 msgid "Target address"
 msgstr "Doel adres"
@@ -4217,17 +4210,6 @@ msgstr ""
 "De minimale poort die toegewezen mag worden aan de PASV type "
 "dataverbindingen (0 = gebruik alle poorten)."
 
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-"De module verstrekt automatische bans die gebaseerd op configureerbare "
-"criteria worden toegepast. Een ban verhindert de verbannen gebruiker, "
-"gastheer, of de klasse om in te loggen op de server, het verhindert niet de "
-"verbannen gebruiker, de gastheer, of de klasse met de server te verbinden."
-
 msgid "The name or IP address of the LDAP server."
 msgstr "Naam of IP adres van de LDAP server."
 
@@ -4395,11 +4377,6 @@ msgid ""
 msgstr ""
 "Deze parameters zullen worden toegevoegd aan de modulen configuratie in "
 "rsyncd.conf."
-
-msgid ""
-"These parameters will be added to the share configuration in smb.conf."
-msgstr ""
-"Deze parameters worden toegevoegd aan de deel configuratie in smb.conf."
 
 msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
@@ -4672,8 +4649,8 @@ msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
 "files."
 msgstr ""
-"Deze parameter bepaalt of bestanden die beginnen met een punt in de naam als "
-"verborgen bestanden worden weergegeven."
+"Deze parameter bepaalt of bestandsnamen beginnend met een punt als verborgen "
+"bestand wordt weergegeven.  (.bestandsnaam)"
 
 msgid ""
 "This parameter says that if N occurrences of the event happen within the "
@@ -4907,10 +4884,6 @@ msgstr "UPS"
 
 msgid "UPS disabled"
 msgstr "UPS uitgeschakeld"
-
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr "UPS bericht van host: %s"
 
 msgid "UPS reaches low battery"
 msgstr "UPS heeft een laag batterij niveau bereikt."
@@ -5408,6 +5381,12 @@ msgstr "weekdagen"
 msgid "Danish"
 msgstr "Deens"
 
+msgid "Delete all self-tests"
+msgstr "Verwijder alle zelf-testen"
+
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr "Weet u zeker dat u alle geplande zelf-testen wilt verwijderen?"
+
 msgid "FTP file transfer"
 msgstr "FTP bestandsoverdracht"
 
@@ -5439,3 +5418,29 @@ msgstr "Bekijk de <a href='%s' target='_blank'>documentatie</a>."
 
 msgid "Syslog"
 msgstr "Syslog"
+
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"De module verstrekt automatische bans die via configureerbare ban regels "
+"wordt toegepast. Een ban verhindert de verbannen gebruiker, gastheer, of "
+"groep om in te loggen op de server, het verhindert niet dat de verbannen "
+"gebruiker, gastheer, of groep met de server kan verbinden."
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr "Deze parameters zijn toegevoegd aan [Globaal] de sectie van %s."
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr "Deze parameters zijn toegevoegd aan [Deelmap] de sectie van %s."
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"U kunt de volgende parameters gebruiken voor substitutie:<div "
+"id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostnaam</li></ul></div>"

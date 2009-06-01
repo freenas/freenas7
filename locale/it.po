@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
-"PO-Revision-Date: 2009-04-18 15:57+0000\n"
-"Last-Translator: 94thomas <Thomas.Bellotti@liceotosi.org>\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
+"PO-Revision-Date: 2009-05-28 12:32+0000\n"
+"Last-Translator: Matteo Piotto <piotto@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -2789,9 +2789,6 @@ msgstr "TKIP"
 msgid "Target"
 msgstr "Target"
 
-msgid "Target Name"
-msgstr "Nome del Target"
-
 msgid "Target address"
 msgstr "Indirizzo target"
 
@@ -3728,6 +3725,9 @@ msgstr "giorni della settimana"
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Massime prestazioni, massimo consumo"
 
+#~ msgid "Target Name"
+#~ msgstr "Nome del Target"
+
 #, php-format
 msgid "%s on %s (%dMHz)"
 msgstr ""
@@ -3760,6 +3760,8 @@ msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
+"Alias per un host. L'opzione può ripetersi più volte, per ogni dominio che "
+"condivide lo stesso IP. Separare gli alias con uno spazio."
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
@@ -3774,7 +3776,7 @@ msgid ""
 msgstr ""
 
 msgid "Alternative configuration directory (usually empty)."
-msgstr ""
+msgstr "Directory alternativa per la configurazione (normalmente non usato)"
 
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
@@ -3806,7 +3808,7 @@ msgid "Blank time"
 msgstr ""
 
 msgid "Capacity"
-msgstr ""
+msgstr "Capacità"
 
 msgid ""
 "Causes the server to display the network information for the specified IP "
@@ -3816,7 +3818,7 @@ msgid ""
 msgstr ""
 
 msgid "Change"
-msgstr ""
+msgstr "Cambia"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -3825,7 +3827,7 @@ msgid "Choose which IP protocol this rule should match."
 msgstr ""
 
 msgid "Compress file data during the transfer."
-msgstr ""
+msgstr "Comprimi il file durante il trasferimento"
 
 msgid "Console screensaver"
 msgstr ""
@@ -3834,10 +3836,10 @@ msgid "Credits"
 msgstr ""
 
 msgid "Custom"
-msgstr ""
+msgstr "Personalizzato"
 
 msgid "Danish"
-msgstr ""
+msgstr "Danese"
 
 msgid "Debug"
 msgstr ""
@@ -3855,11 +3857,14 @@ msgstr ""
 msgid "Define directories/URL's that require authentication."
 msgstr ""
 
-msgid "Delete rule"
+msgid "Delete all self-tests"
 msgstr ""
 
+msgid "Delete rule"
+msgstr "Rimuovi regola"
+
 msgid "Destination host name or IP number."
-msgstr ""
+msgstr "Nome Host di destinazione o numero di IP"
 
 msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
@@ -3869,6 +3874,9 @@ msgstr ""
 msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
+msgstr ""
+
+msgid "Do you really want to delete all scheduled self-tests?"
 msgstr ""
 
 msgid "Document root of the webserver. Home of the web page files."
@@ -4609,10 +4617,6 @@ msgid ""
 "from spinning up each poll, this is probably what you want."
 msgstr ""
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr ""
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr ""
@@ -4771,7 +4775,7 @@ msgstr ""
 
 msgid ""
 "The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
+"criteria. A ban prevents the banned user, host, or class from logging into "
 "the server, it does not prevent the banned user, host, or class from "
 "connecting to the server."
 msgstr ""
@@ -4842,15 +4846,19 @@ msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr ""
+
+#, php-format
 msgid "These parameters will be added to global settings in %s."
 msgstr ""
 
 msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
-msgstr ""
-
-msgid ""
-"These parameters will be added to the share configuration in smb.conf."
 msgstr ""
 
 msgid ""
@@ -5004,10 +5012,6 @@ msgstr ""
 msgid "UPS disabled"
 msgstr ""
 
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr ""
-
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -5110,6 +5114,11 @@ msgid "Write"
 msgstr ""
 
 msgid "Wrong partition type or partition number."
+msgstr ""
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
 #, php-format

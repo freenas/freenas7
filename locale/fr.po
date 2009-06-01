@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
-"PO-Revision-Date: 2009-05-19 11:42+0000\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
+"PO-Revision-Date: 2009-06-01 12:58+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -1165,31 +1165,31 @@ msgid "Disks (ATA)"
 msgstr "Disques (ATA)"
 
 msgid "Do you really want to delete all MIBs?"
-msgstr "Souhaitez-vous vraiment supprimer toutes les MIBs?"
+msgstr "Voulez-vous vraiment supprimer toutes les MIBs?"
 
 msgid "Do you really want to delete all options?"
-msgstr "Souhaitez-vous vraiment supprimer toutes les options?"
+msgstr "Voulez-vous vraiment supprimer toutes les options?"
 
 msgid "Do you really want to delete all rules?"
-msgstr "Etes-vous sûr de vouloir supprimer toutes les règles ?"
+msgstr "Voulez-vous vraiment supprimer toutes les règles?"
 
 msgid "Do you really want to delete this MIB?"
-msgstr "Souhaitez-vous vraiment supprimer cette MIB?"
+msgstr "Voulez-vous vraiment supprimer cette MIB?"
 
 msgid "Do you really want to delete this Rsync job?"
-msgstr "Etes-vous sûr de vouloir supprimer cette tâche Rsync?"
+msgstr "Voulez-vous vraiment supprimer cette tâche Rsync?"
 
 msgid "Do you really want to delete this URL?"
 msgstr "Voulez-vous vraiment supprimer cette URL?"
 
 msgid "Do you really want to delete this command?"
-msgstr "Etes-vous sur de vouloir supprimer cette commande?"
+msgstr "Voulez-vous vraiment supprimer cette commande?"
 
 msgid "Do you really want to delete this cron job?"
-msgstr "Êtes-vous sûr de vouloir supprimer cette tâche cron ?"
+msgstr "Voulez-vous vraiment supprimer cette tâche cron?"
 
 msgid "Do you really want to delete this device?"
-msgstr "Voulez vous réellement supprimer ce périphérique?"
+msgstr "Voulez-vous vraiment supprimer ce périphérique?"
 
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
@@ -1199,13 +1199,13 @@ msgstr ""
 "seront invalidés!"
 
 msgid "Do you really want to delete this extent?"
-msgstr "Voulez-vous réellement effecer cette extendue ?"
+msgstr "Voulez-vous vraiment effacer cette extension (extent)?"
 
 msgid "Do you really want to delete this group?"
 msgstr "Voulez-vous vraiment supprimer ce groupe?"
 
 msgid "Do you really want to delete this host?"
-msgstr "Etes-vous sur de vouloir supprimer cet hôte?"
+msgstr "Voulez-vous vraiment supprimer cet hôte?"
 
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
@@ -1215,10 +1215,10 @@ msgstr ""
 "toujours deviendront invalides!"
 
 msgid "Do you really want to delete this interface?"
-msgstr "Souhaitez-vous vraiment supprimer cette interface?"
+msgstr "Voulez-vous vraiment supprimer cette interface?"
 
 msgid "Do you really want to delete this module?"
-msgstr "Voulez vous réellement supprimer ce module?"
+msgstr "Voulez-vous vraiment supprimer ce module?"
 
 msgid ""
 "Do you really want to delete this mount point? All elements that still use "
@@ -1228,42 +1228,42 @@ msgstr ""
 "l'utilisant seront invalidés!"
 
 msgid "Do you really want to delete this option?"
-msgstr "Souhaitez-vous vraiment supprimer cette option?"
+msgstr "Voulez-vous vraiment supprimer cette option?"
 
 msgid "Do you really want to delete this route?"
-msgstr "Etes-vous sur de vouloir supprimer cette route?"
+msgstr "Voulez-vous vraiment supprimer cette route?"
 
 msgid "Do you really want to delete this rule?"
-msgstr "Etes-vous sûr de vouloir supprimer cette règle ?"
+msgstr "Voulez-vous vraiment supprimer cette règle?"
 
 msgid "Do you really want to delete this scheduled self-test?"
-msgstr "Voulez-vous vraiment supprimer cet auto test planifié?"
+msgstr "Voulez-vous vraiment supprimer cet auto-test planifié?"
 
 msgid "Do you really want to delete this share?"
-msgstr "Voulez vous réellement supprimer ce partage?"
+msgstr "Voulez-vous vraiment supprimer ce partage?"
 
 msgid "Do you really want to delete this target?"
-msgstr "Etes-vous sûr de vouloir supprimer cette cible?"
+msgstr "Voulez-vous vraiment supprimer cette cible?"
 
 msgid "Do you really want to delete this user?"
-msgstr "Voulez vous réellement supprimer cet utilisateur?"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur?"
 
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
-"Voulez vous réellement supprimer ce volume?\\n!!! Note, toutes les données "
-"seront perdues et ne pourront être récupérées. !!!"
+"Voulez-vous vraiment supprimer ce volume?\\n!!! Nota: toutes les données "
+"seront perdues et ne pourront être récupérées !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 "Voulez-vous vraiment formater ce disque? Toutes les données seront perdues!"
 
 msgid "Do you really want to remove the selected item from the list?"
-msgstr "Êtes-vous sûr de vouloir supprimer l'item sélectionné de la liste?"
+msgstr "Voulez-vous vraiment supprimer de la liste l'item sélectionné?"
 
 msgid "Do you really want to uninstall this package?"
-msgstr "Voulez vous réellement désinstaller ce paquet?"
+msgstr "Voulez-vous vraiment désinstaller ce paquet?"
 
 msgid "Document root"
 msgstr "Racine du document"
@@ -3674,10 +3674,6 @@ msgstr "Routes statiques"
 msgid "Status"
 msgstr "Statut"
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr "Rapport d'état du hôte: %s.%s"
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr "Rapport d'état envoyé avec succès à: %s."
@@ -3809,9 +3805,6 @@ msgstr "TKIP"
 
 msgid "Target"
 msgstr "Cible"
-
-msgid "Target Name"
-msgstr "Nom cible"
 
 msgid "Target address"
 msgstr "Adresse de la cible"
@@ -4195,16 +4188,6 @@ msgstr ""
 "Port min. : valeur basse du numéro de port à allouer pour les connexions "
 "passives (0 = n'importe lequel)."
 
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-"Le module fourni des interdictions (bans) qui sont déclenchées sur des "
-"critères configurables. Une interdiction permet de refuser à un utilisateur, "
-"un hôte ou une classe de se connecter sur le serveur."
-
 msgid "The name or IP address of the LDAP server."
 msgstr "Le nom ou l'adresse IP du serveur LDAP."
 
@@ -4371,11 +4354,6 @@ msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
 msgstr ""
 "Ces paramètres seront ajoutés à la configuration du module dans rsyncd.conf."
-
-msgid ""
-"These parameters will be added to the share configuration in smb.conf."
-msgstr ""
-"Ces paramètres seront ajoutés à la configuration du partage dans smb.conf."
 
 msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
@@ -4875,10 +4853,6 @@ msgstr "UPS"
 msgid "UPS disabled"
 msgstr "UPS désactivé"
 
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr "Notification UPS du hôte: %s"
-
 msgid "UPS reaches low battery"
 msgstr "Batterie faible sur le système UPS"
 
@@ -5051,7 +5025,7 @@ msgid "VLAN"
 msgstr "VLAN"
 
 msgid "VLAN tag"
-msgstr "Etiquette VLAN"
+msgstr "Étiquette VLAN"
 
 msgid "Value"
 msgstr "Valeur"
@@ -5122,7 +5096,7 @@ msgid ""
 "Warning: You are going to delete an encrypted volume. All data will get lost "
 "and can not be recovered."
 msgstr ""
-"Attention: Vous allez supprimer un volume chiffré. Toutes les données seront "
+"Attention: Vous allez supprimer un volume crypté. Toutes les données seront "
 "perdues et ne pourront pas être récupérées."
 
 msgid "WebGUI"
@@ -5135,7 +5109,7 @@ msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
 msgstr ""
-"Le protocole d'identification est utilisé lorsqu'un client se connecte au "
+"Ce protocole d'identification est utilisé lorsqu'un client se connecte au "
 "serveur pour tenter d'identifier le nom de l'utilisateur distant."
 
 msgid "Where the working files will be stored"
@@ -5148,9 +5122,8 @@ msgid ""
 "Whether scans should be skipped if there are no users connected. This allows "
 "the drive to spin down when no users are connected."
 msgstr ""
-"Forcer le balayage même s'il n'y a pas d'utilisateur connecté. Si non "
-"activé, cela permet au disque de s'arrêter lorsqu'il n'y a pas d'utilisateur "
-"connecté."
+"Éviter le balayage s'il n'y a pas d'utilisateur connecté. Permet au disque "
+"de s'arrêter lorsqu'il n'y a pas d'utilisateur connecté."
 
 msgid "Who"
 msgstr "Utilisateur"
@@ -5159,23 +5132,23 @@ msgid "Wildcard"
 msgstr "Caractère de remplacement"
 
 msgid "Wireless configuration"
-msgstr "Configuration non câblée"
+msgstr "Configuration sans fil"
 
 msgid "Workgroup"
-msgstr "Groupe de travail"
+msgstr "Groupe de travail (workgroup Windows)"
 
 msgid ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
 "15 characters)."
 msgstr ""
-"Groupe de travail (workgroup Windows) auquel le serveur sera déclaré comme "
-"appartenant lorsqu'il sera contacté par des clients (15 caractères maximum)."
+"Groupe de travail (workgroup Windows) auquel le serveur paraîtra appartenir "
+"lorsqu'il sera contacté par des clients (15 caractères maximum)."
 
 msgid "Working Directory"
 msgstr "Répertoire de travail"
 
 msgid "Write"
-msgstr "Ecriture"
+msgstr "Écriture"
 
 msgid "Write only"
 msgstr "Écriture seule"
@@ -5190,8 +5163,8 @@ msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
 "command.<br>Example: pkg_add -r packagename"
 msgstr ""
-"Vous pouvez aussi installer un paquetage par SSH ou console en utilisant la "
-"commande pkg_add.<br>Exemple: pkg_add -r nomdupaquetage"
+"Vous pouvez aussi installer un paquetage par SSH ou depuis la console en "
+"utilisant la commande pkg_add.<br>Exemple: pkg_add -r nomdupaquetage"
 
 #, php-format
 msgid ""
@@ -5216,7 +5189,7 @@ msgstr ""
 "auprès des clients."
 
 msgid "You have to define some 'Extent' objects first."
-msgstr "Vous devez d'abord définir quelques objets 'Extension'."
+msgstr "Vous devez d'abord définir quelques objets 'Extension' (extent)."
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
@@ -5238,11 +5211,12 @@ msgstr ""
 "Vous devez entrer le même adresse type d'IP pour le éseau et la passerelle."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
-msgstr "Vous devez avoir au minimum 256MB de RAM pour utiliser iSCSI target."
+msgstr ""
+"Vous devez avoir au minimum 256MB de RAM pour utiliser une cible iSCSI."
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr ""
-"Vous devez redémarrer le systeme avant de pouvoir faire une mise a jour."
+"Vous devez redémarrer le système avant de pouvoir effectuer une mise à jour."
 
 msgid "You must select at least one authentication method."
 msgstr "Vous devez sélectionner au moins une méthode d'authentification."
@@ -5383,8 +5357,17 @@ msgstr "jours de la semaine"
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Performance maximale, consommation d'énergie maximale"
 
+#~ msgid "Target Name"
+#~ msgstr "Nom cible"
+
 msgid "Danish"
 msgstr "Danois"
+
+msgid "Delete all self-tests"
+msgstr "Supprimer tous les auto-tests"
+
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr "Voulez-vous vraiment supprimer tous les auto-tests planifiés?"
 
 msgid "FTP file transfer"
 msgstr "Transfert de fichier FTP"
@@ -5417,7 +5400,34 @@ msgstr "Niveau 64 - Consommation intermédiaire avec Standby"
 #, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
-"Veuillez consulter la documentation de <a href='%s' target='_blank'>."
+"Veuillez consulter la <a href='%s' target='_blank'>documentation</a>."
 
 msgid "Syslog"
 msgstr "Syslog"
+
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"Le module fourni des interdictions automatiques (bans), basées sur des "
+"critères configurables. Une interdiction permet d'éviter qu'un utilisateur, "
+"un hôte, ou une classe puisse se connecter (comme un utilisateur) au serveur "
+"mais cela ne leur interdit pas de se connecter (au sens connexion réseau) au "
+"serveur."
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr "Ces paramètres sont ajoutés à la section [Global] de %s."
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr "Ces paramètres sont ajoutés à la section [Share] de %s."
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Vous pouvez utiliser les paramètres suivants pour la substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Nom du hôte</li></ul></div>"
