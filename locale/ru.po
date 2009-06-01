@@ -1,17 +1,20 @@
-# translation of ru1.po to russian
-# Alexey Sannikov <mr-sannikov@yandex.ru>, 2008.
+# Russian translation for freenas
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the freenas package.
+# LAST TRANSLATOR Alexey Sannikov <mr-sannikov@yandex.ru>, 2009.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: ru1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
-"PO-Revision-Date: 2009-05-20 17:32+0000\n"
-"Last-Translator: Bedouin2 <Unknown>\n"
-"Language-Team: russian <ru@li.org>\n"
+"Project-Id-Version: freenas-0.69.2\n"
+"Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
+"PO-Revision-Date: 2009-06-01 08:29+0000\n"
+"Last-Translator: Alexey Sannikov <Unknown>\n"
+"Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:04+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:02+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -60,7 +63,7 @@ msgid "%sB used of %sB"
 msgstr "занято %s из %s байт"
 
 msgid "*** Imported duplicate ***"
-msgstr "*** Imported duplicate ***"
+msgstr "***ВНИМАНИЕ!*** Правило аналогично"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -140,7 +143,7 @@ msgid ""
 msgstr ""
 "Псевдоним сервера (hostname alias). Эта настройка может иметь несколько "
 "строк для каждого домена с одним и тем же IP. Используйте пробел для "
-"разделения множественных псевдонимов."
+"разделения нескольких псевдонимов."
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
@@ -167,7 +170,7 @@ msgid "A valid IPv4 address must be specified."
 msgstr "Должен быть указан верный IPv4-адрес."
 
 msgid "A valid IPv4 network bit count must be specified."
-msgstr "Должна быть указана верная маска сети IPv4."
+msgstr "Должна быть указана правильная маска сети IPv4."
 
 msgid "A valid IPv6 Gateway address must be specified."
 msgstr "Должен быть указан верный IPv6-адрес шлюза."
@@ -181,7 +184,7 @@ msgid "A valid IPv6 address must be specified."
 msgstr "Должен быть указан верный IPv6-адрес."
 
 msgid "A valid IPv6 prefix must be specified."
-msgstr "Должен быть указан верный префикс IPv6."
+msgstr "Должен быть указан корректный префикс IPv6."
 
 msgid "A valid destination network must be specified."
 msgstr "Должна быть указана верная сеть назначения."
@@ -429,8 +432,8 @@ msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
 "follows the allow option format."
 msgstr ""
-"Предоставляет выбранным пользователям и группам права на чтение/запись "
-"общего ресурса."
+"Настройка предоставляет выбранным пользователям и группам права на "
+"чтение/запись общего ресурса."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
@@ -442,8 +445,8 @@ msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
 "follows the allow option format."
 msgstr ""
-"Предоставляет выбранным пользователям и группам право только на чтение "
-"общего ресурса."
+"Настройка предоставляет выбранным пользователям и группам право только на "
+"чтение общего ресурса."
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Другой TCP порт. По умолчанию 22-й."
@@ -464,7 +467,7 @@ msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
 msgstr ""
-"Всегда используйте 0 для номера устройства. Это помогает, когда номер "
+"Всегда использовать 0 для номера устройства. Это помогает, когда номер "
 "устройства меняется после перезагрузки, в кластере и т.п."
 
 msgid "An host with this name already exists."
@@ -1122,7 +1125,7 @@ msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
 msgstr ""
-"Отключает перевод в :hex для всех файлов, кроме \"точки\". Эта настройка "
+"Отключить перевод в :hex для всех файлов, кроме \"точки\". Эта настройка "
 "делает символ \"/\" недоступным."
 
 #, php-format
@@ -1280,7 +1283,7 @@ msgid "Don't advertise createfileid, resolveid, deleteid calls."
 msgstr "Не показывать вызовы createfileid, resolveid, deleteid."
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr "Не стирать MBR (полезно для некоторых RAID контроллеров)"
+msgstr "Не стирать MBR (полезно для некоторых контроллеров RAID)"
 
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
@@ -2962,7 +2965,7 @@ msgid "PreInit"
 msgstr "Преинициализация"
 
 msgid "Preferred"
-msgstr "Предпочтительный"
+msgstr "Предпочитается"
 
 msgid "Prefix"
 msgstr "Префикс"
@@ -3016,7 +3019,7 @@ msgid "Provider"
 msgstr "Провайдер"
 
 msgid "Provides compatibility with Apple II clients."
-msgstr "Предоставляет совместимость с клиентами Apple II."
+msgstr "Предоставить совместимость с клиентами Apple II."
 
 msgid "Proxy"
 msgstr "Proxy"
@@ -3166,7 +3169,7 @@ msgid "Require authentication."
 msgstr "Требовать аутентификации"
 
 msgid "Required"
-msgstr "Требуемый"
+msgstr "Требуется"
 
 msgid "Rescan interval"
 msgstr "Интервал обновления"
@@ -3308,7 +3311,7 @@ msgid "Scheduled reboot"
 msgstr "Запланированная перезагрузка"
 
 msgid "Scheduled self-tests"
-msgstr "Запланированное самотестирование"
+msgstr "Запланированные самотестирования"
 
 msgid "Scheduled shutdown"
 msgstr "Запланированное выключение"
@@ -3395,7 +3398,7 @@ msgid "Set share password."
 msgstr "Установить пароль общего ресурса"
 
 msgid "Set the CNID backend to be used for the volume."
-msgstr "Установите CNID backend, чтобы использовать для этого тома."
+msgstr "CNID backend, используемый для этого тома."
 
 msgid "Set the account's primary group to the given group."
 msgstr "Установить данную группу основной."
@@ -3420,8 +3423,8 @@ msgid ""
 "Sets the database information to be stored in path. You have to specifiy a "
 "writable location, even if the volume is read only."
 msgstr ""
-"Устанавливает путь для хранения данных. Нужно указать путь с возможностью "
-"записи, даже если раздел находится в режиме только-для-чтения."
+"Путь для хранения данных. Нужно указать путь с возможностью записи, даже "
+"если раздел находится в режиме только-для-чтения."
 
 msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
@@ -3552,8 +3555,7 @@ msgid ""
 "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
 "etc."
 msgstr ""
-"Указывает кодировку общего ресурса, например, UTF8, UTF8-MAC, ISO-8859-15, и "
-"т.д."
+"Кодировка общего ресурса, например: UTF8, UTF8-MAC, ISO-8859-15, и т.д."
 
 msgid "Specifies the time in hh:mm:ss after which the ban expires."
 msgstr ""
@@ -3607,10 +3609,6 @@ msgstr "Статические маршруты"
 
 msgid "Status"
 msgstr "Состояние"
-
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr "Отчет состояния от хоста %s.%s"
 
 #, c-format
 msgid "Status report successfully sent to: %s."
@@ -3742,9 +3740,6 @@ msgstr "TKIP"
 
 msgid "Target"
 msgstr "Цель"
-
-msgid "Target Name"
-msgstr "Имя цели"
 
 msgid "Target address"
 msgstr "Адрес цели"
@@ -4108,17 +4103,6 @@ msgstr ""
 "Минимальный номер используемого порта при PASV-соединении (0 = использовать "
 "любой порт)."
 
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-"Модуль 'Ban list' выполняет автоматическое блокирование в соответствии с "
-"гибко задаваемыми критериями. Блокирование подразумевает собой временную "
-"невозможность работы с сервером, но не запрещает соединение с ним и может "
-"применяться к пользователям, хостам, или классам."
-
 msgid "The name or IP address of the LDAP server."
 msgstr "Имя или IP-адрес сервера LDAP."
 
@@ -4280,11 +4264,6 @@ msgid ""
 msgstr "Эти параметры будут добавлены к настройкам модуля в rsyncd.conf."
 
 msgid ""
-"These parameters will be added to the share configuration in smb.conf."
-msgstr ""
-"Эти параметры будут добавлены к настройкам общих ресурсов в smb.conf."
-
-msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
 msgstr ""
 "Этот LAGG не может быть удален, так как он все еще используется как "
@@ -4331,20 +4310,20 @@ msgstr ""
 "target='_blank'>документации</a>."
 
 msgid "This controls how the case of filenames are viewed and stored."
-msgstr "Этим контроллируется регистр просмотра и хранения имен файлов."
+msgstr "Выбор регистра для просмотра и хранения имен файлов."
 
 msgid "This controls the access a remote host has to this module."
-msgstr "Опция управляет доступом удаленных хостов к этому модулю."
+msgstr "Эта опция управляет доступом удаленных хостов к данному модулю."
 
 msgid "This controls the access to this share with an access password."
-msgstr "Этим задается доступ к общему ресурсу с паролем."
+msgstr "Здесь задается доступ к общему ресурсу с паролем."
 
 msgid ""
 "This controls whether the .AppleDouble directory gets created unless "
 "absolutely needed. This option should not be used if files are access mostly "
 "by Mac computers."
 msgstr ""
-"Этим задается крайняя необходимость создания каталога .AppleDouble. Этот "
+"Задать необходимость создания каталога .AppleDouble в крайнем случае. Этот "
 "параметр не должна использоваться, если доступ к файлам осуществляется в "
 "основном с компьютеров Macintosh."
 
@@ -4376,9 +4355,8 @@ msgid ""
 "This forces filenames to be restricted to the character set used by Windows. "
 "This is not recommended for shares used principally by Mac computers."
 msgstr ""
-"Это ограничивает использование в именах файлов только набора символов "
-"Windows. Не рекомендуется для общих ресурсов, используемых компьютерами "
-"Macintosh."
+"Ограничить использование в именах файлов только набора символов Windows. Не "
+"рекомендуется для общих ресурсов, используемых компьютерами Macintosh."
 
 msgid "This function is unsupported. Use it on your own risk!"
 msgstr "Используйте эту функцию исключительно на свой риск!"
@@ -4437,8 +4415,8 @@ msgid ""
 "Users and groups are specified, delimited by commas. Groups are designated "
 "by a @ prefix."
 msgstr ""
-"Эта настройка позволяет указать пользователей и групп для доступа к общему "
-"ресурсу. Указывать пользователей и группы следует через запятую. Группы "
+"Эта настройка позволяет указать пользователей и группы для доступа к общему "
+"ресурсу. Указывать пользователей и группы следует через запятую, группы "
 "определяются префиксом @."
 
 msgid ""
@@ -4680,7 +4658,7 @@ msgstr ""
 ">System</li></ul></div>"
 
 msgid "Tolerated"
-msgstr "Допустимый"
+msgstr "Допускается"
 
 msgid "Tools"
 msgstr "Инструменты"
@@ -4764,10 +4742,6 @@ msgstr "UPS"
 
 msgid "UPS disabled"
 msgstr "Служба UPS отключена"
-
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr "Уведомление UPS хоста %s"
 
 msgid "UPS reaches low battery"
 msgstr "Низкий заряд батареи UPS"
@@ -5251,9 +5225,6 @@ msgstr "upriv"
 msgid "week days"
 msgstr "дней недели"
 
-#~ msgid "Maximum performance, maximum power usage"
-#~ msgstr "Максимальная производительность, максимальное энергопотребление"
-
 msgid "Blank time"
 msgstr "Время простоя"
 
@@ -5263,6 +5234,13 @@ msgstr "Консольный хранитель экрана"
 msgid "Danish"
 msgstr "Датский"
 
+msgid "Delete all self-tests"
+msgstr "Удалить все самотестирования"
+
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr ""
+"Вы действительно хотите удалить все запланированные самотестирования?"
+
 msgid "Enable console screensaver"
 msgstr "Разрешить консольный хранитель экрана"
 
@@ -5270,10 +5248,10 @@ msgid "Encryption algorithm to use."
 msgstr "Используемый алгоритм шифрования."
 
 msgid "FTP file transfer"
-msgstr "Файловая передача FTP"
+msgstr "Передача файлов по FTP"
 
 msgid "File transfer"
-msgstr "Предача файла"
+msgstr "Передача файлов"
 
 msgid "Initialize and encrypt disk."
 msgstr "Инициализация и шифрование диска"
@@ -5323,6 +5301,25 @@ msgstr ""
 "192 бита для 3DES."
 
 msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"Модуль 'Ban list' выполняет автоматическое блокирование в соответствии с "
+"гибко задаваемыми критериями. Блокирование подразумевает собой временную "
+"невозможность работы с сервером, но не запрещает соединение с ним и может "
+"применяться к пользователям, хостам, или классам."
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr "Эти параметры добавлены в секцию [Global] на %s."
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr "Эти параметры добавлены в секцию [Share] на %s."
+
+msgid ""
 "This will erase ALL data on your disk! Do not use this option if you want to "
 "add an existing encrypted disk."
 msgstr ""
@@ -5331,3 +5328,10 @@ msgstr ""
 
 msgid "Turn the monitor to standby after N seconds."
 msgstr "Переводить монитор в режим энергопотребления через N секунд."
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Вы можете использовать следующие параметры для замены: :<div "
+"id='enumeration'><ul><li>%d - Дата</li><li>%h - Имя хоста</li></ul></div>"

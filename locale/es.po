@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
-"PO-Revision-Date: 2009-05-14 14:45+0000\n"
-"Last-Translator: Erick Huezo <erickhuezo@gmail.com>\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
+"PO-Revision-Date: 2009-05-24 13:31+0000\n"
+"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:02+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -3325,10 +3325,6 @@ msgstr "Rutas Estáticas"
 msgid "Status"
 msgstr "Estado"
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr "Informe de estado del equipo: %s.%s"
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr "Informe de estado enviado con éxito a: %s."
@@ -3451,9 +3447,6 @@ msgstr "TKIP"
 
 msgid "Target"
 msgstr "Objetivo"
-
-msgid "Target Name"
-msgstr "Nombre del objetivo"
 
 msgid "Target address"
 msgstr "Dirección del destino"
@@ -3863,11 +3856,6 @@ msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
 msgstr ""
 "Estos parámetros se añadirán a la configuración del módulo en rsyncd.conf."
-
-msgid ""
-"These parameters will be added to the share configuration in smb.conf."
-msgstr ""
-"Estos parámetros se añadirán a la configuración de compartición en smb.conf."
 
 msgid "This URL is already configured."
 msgstr "Esta dirección URL ya está configurada."
@@ -4521,7 +4509,7 @@ msgid ""
 msgstr ""
 
 msgid "Anonymous bind"
-msgstr ""
+msgstr "Vínculo anónimo"
 
 msgid "Bind DN"
 msgstr ""
@@ -4543,13 +4531,19 @@ msgid "Console screensaver"
 msgstr ""
 
 msgid "Danish"
+msgstr "Danés"
+
+msgid "Delete all self-tests"
 msgstr ""
 
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
 
-msgid "Don't advertise createfileid, resolveid, deleteid calls."
+msgid "Do you really want to delete all scheduled self-tests?"
 msgstr ""
+
+msgid "Don't advertise createfileid, resolveid, deleteid calls."
+msgstr "No anunciar llamadas a createfileid, resolveid, deleteid."
 
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
@@ -4560,10 +4554,10 @@ msgid "Download bandwidth"
 msgstr "Ancho de banda para Descarga"
 
 msgid "Enable console screensaver"
-msgstr ""
+msgstr "Activar salvapantallas de consola"
 
 msgid "Enable peer exchange (PEX)."
-msgstr ""
+msgstr "Activar intercambio de pares (PEX)."
 
 msgid "Enable port forwarding via NAT-PMP or UPnP."
 msgstr ""
@@ -4596,10 +4590,10 @@ msgstr ""
 "parametros incorrectos evitaran que el servicio SSH inicie."
 
 msgid "FTP file transfer"
-msgstr ""
+msgstr "Transferencia de archivos FTP"
 
 msgid "File transfer"
-msgstr ""
+msgstr "Transferencia de archivo"
 
 msgid "Hostname database"
 msgstr ""
@@ -4861,7 +4855,7 @@ msgstr ""
 
 msgid ""
 "The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
+"criteria. A ban prevents the banned user, host, or class from logging into "
 "the server, it does not prevent the banned user, host, or class from "
 "connecting to the server."
 msgstr ""
@@ -4902,6 +4896,14 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
 msgstr ""
 
 msgid ""
@@ -5090,10 +5092,6 @@ msgstr ""
 msgid "Turn the monitor to standby after N seconds."
 msgstr ""
 
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr ""
-
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -5150,6 +5148,11 @@ msgid ""
 msgstr ""
 
 msgid "Wrong partition type or partition number."
+msgstr ""
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
 msgid "You have to define some 'Extent' objects first."

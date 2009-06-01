@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
 "PO-Revision-Date: 2009-03-16 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -3353,10 +3353,6 @@ msgstr "スタティックルート"
 msgid "Status"
 msgstr "ステータス"
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr "ホストのステータスレポート: %s.%s"
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr "ステータスレポートの送信が完了しました．宛て先: %s"
@@ -3485,9 +3481,6 @@ msgstr "TKIP"
 
 msgid "Target"
 msgstr "ターゲット"
-
-msgid "Target Name"
-msgstr "ターゲット名"
 
 msgid "Target address"
 msgstr "ターゲットアドレス"
@@ -3952,10 +3945,6 @@ msgid ""
 msgstr "ここで指定したパラメータは rsyncd.conf のモジュール設定に追加されます．"
 
 msgid ""
-"These parameters will be added to the share configuration in smb.conf."
-msgstr "ここで指定したパラメータは smb.conf の共有設定に追加されます．"
-
-msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
 msgstr "この LAGG インタフェースは現在も使用されている為，削除する事が出来ませんでした．"
 
@@ -4351,10 +4340,6 @@ msgstr "UPS"
 
 msgid "UPS disabled"
 msgstr "UPS は無効です"
-
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr "ホストからの UPS 通知: %s"
 
 msgid "UPS reaches low battery"
 msgstr "UPS のバッテリ残量が少なくなりました．"
@@ -4837,8 +4822,14 @@ msgstr ""
 msgid "Danish"
 msgstr ""
 
+msgid "Delete all self-tests"
+msgstr ""
+
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
+msgstr ""
+
+msgid "Do you really want to delete all scheduled self-tests?"
 msgstr ""
 
 msgid "Do you really want to remove the selected item from the list?"
@@ -4958,12 +4949,20 @@ msgstr ""
 
 msgid ""
 "The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
+"criteria. A ban prevents the banned user, host, or class from logging into "
 "the server, it does not prevent the banned user, host, or class from "
 "connecting to the server."
 msgstr ""
 
 msgid "The peer connection encryption mode."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
 msgstr ""
 
 msgid ""
@@ -4993,4 +4992,9 @@ msgid "Upload bandwidth"
 msgstr ""
 
 msgid "Wrong partition type or partition number."
+msgstr ""
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""

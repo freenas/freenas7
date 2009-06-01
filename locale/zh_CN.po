@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-17 01:18+0000\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
 "PO-Revision-Date: 2009-01-31 14:11+0000\n"
 "Last-Translator: Zetao Zhang <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-21 12:05+0000\n"
+"X-Launchpad-Export-Date: 2009-06-01 18:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -2855,9 +2855,6 @@ msgstr "这个服务将使用的 TCP 连接阜。"
 msgid "Target"
 msgstr "目标"
 
-msgid "Target Name"
-msgstr "目标名称"
-
 msgid "Target address"
 msgstr "目标位置"
 
@@ -3775,6 +3772,9 @@ msgstr "平常日"
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "最大效能/耗电量"
 
+#~ msgid "Target Name"
+#~ msgstr "目标名称"
+
 #, php-format
 msgid "%s on %s (%dMHz)"
 msgstr ""
@@ -3875,6 +3875,9 @@ msgstr ""
 msgid "Delete Rsync job"
 msgstr ""
 
+msgid "Delete all self-tests"
+msgstr ""
+
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
 
@@ -3894,6 +3897,9 @@ msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr ""
 
 msgid "Digital Audio Access Protocol"
+msgstr ""
+
+msgid "Do you really want to delete all scheduled self-tests?"
 msgstr ""
 
 msgid "Do you really want to delete this Rsync job?"
@@ -4505,10 +4511,6 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr ""
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr ""
@@ -4657,7 +4659,7 @@ msgstr ""
 
 msgid ""
 "The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
+"criteria. A ban prevents the banned user, host, or class from logging into "
 "the server, it does not prevent the banned user, host, or class from "
 "connecting to the server."
 msgstr ""
@@ -4717,15 +4719,19 @@ msgid "These parameters are added to %s."
 msgstr ""
 
 #, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr ""
+
+#, php-format
 msgid "These parameters will be added to global settings in %s."
 msgstr ""
 
 msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
-msgstr ""
-
-msgid ""
-"These parameters will be added to the share configuration in smb.conf."
 msgstr ""
 
 msgid ""
@@ -4869,10 +4875,6 @@ msgstr ""
 msgid "UPS disabled"
 msgstr ""
 
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr ""
-
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -4964,6 +4966,11 @@ msgid "Write"
 msgstr ""
 
 msgid "Wrong partition type or partition number."
+msgstr ""
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
 #, php-format
