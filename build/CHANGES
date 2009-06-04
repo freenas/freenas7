@@ -21,6 +21,7 @@ Majors changes:
 - Add entry 'FTP - Ban module' to the list of log files in 'Diagnostics|Log'
   if the module is enabled (FR 2797652).
 - Add 'iperf', a tool to measure maximum TCP and UDP bandwidth (FR 2785038).
+- Upgrade netatalk to 2.0.4.
 
 Minors changes:
 
