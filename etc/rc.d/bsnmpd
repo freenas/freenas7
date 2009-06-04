@@ -115,6 +115,30 @@ bsnmpd_mkconf()
 			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;hostres&quot; = &quot;/usr/lib/snmp_hostres.so&quot;" -n \
 		-b \
+		-i "count(modules/ucd) > 0" \
+			-n \
+			-o "#" -n \
+			-o "# bsnmp-ucd (8)" -n \
+			-o "#" -n \
+			-o "begemotSnmpdModulePath.&quot;ucd&quot; = &quot;/usr/lib/snmp_ucd.so&quot;" -n \
+			-o "%ucd" -n \
+			-o "memMinimumSwap = 1600" -n \
+			-o "memSwapErrorMsg = &quot;No free swap!&quot;" -n \
+			-n \
+			-o "laConfig.1 = &quot;6.0&quot;" -n \
+			-o "laConfig.2 = &quot;5.0&quot;" -n \
+			-o "laConfig.3 = &quot;4.0&quot;" -n \
+			-n \
+			-o "laErrMessage.1 = &quot;1min load average is high!&quot;" -n \
+			-o "laErrMessage.2 = &quot;5min load average is high!&quot;" -n \
+			-o "laErrMessage.3 = &quot;15min load average is high!&quot;" -n \
+			-n \
+			-o "# Extension commands (extTable)" -n \
+			-o "extNames.0 = &quot;uname&quot;" -n \
+			-o "extCommand.0 = &quot;/usr/bin/uname -a&quot;" -n \
+			-o "extNames.1 = &quot;uptime&quot;" -n \
+			-o "extCommand.1 = &quot;/usr/bin/uptime&quot;" -n \
+		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${bsnmpd_config}
 }
 
