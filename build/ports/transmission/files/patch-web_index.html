@@ -1,0 +1,52 @@
+--- web/index.html.orig	2009-05-12 00:32:40.000000000 +0000
++++ web/index.html	2009-06-03 22:08:44.000000000 +0000
+@@ -257,16 +257,16 @@
+ 			<div class="dialog_top_bar"></div>
+ 			<div class="dialog_window">
+ 				<img src="images/graphics/logo.png" alt="Transmission Logo" />
+-				<h2 class="dialog_heading">Upload Torrent Files</h2>
++				<h2 class="dialog_heading">Open a Torrent File</h2>
+ 				<form action="#" method="post" id="torrent_upload_form" 
+ 					enctype="multipart/form-data" target="torrent_upload_frame">  
+ 					<div class="dialog_message">
+-						<label for="torrent_upload_file">Please select a torrent file to upload:</label>
++						<label for="torrent_upload_file">Please select a torrent file:</label>
+ 							<input type="file" name="torrent_file" id="torrent_upload_file"/>
+ 						<label for="torrent_upload_url">Or enter a URL:</label>
+ 							<input type="text" id="torrent_upload_url"/>
+ 					</div>
+-					<a href="#upload" id="upload_confirm_button">Upload</a>
++					<a href="#upload" id="upload_confirm_button">Run</a>
+ 					<a href="#cancel" id="upload_cancel_button">Cancel</a>
+ 				</form>
+ 			</div>
+@@ -294,7 +294,9 @@
+ 								<li>150 KB/s</li>
+ 								<li>200 KB/s</li>
+ 								<li>250 KB/s</li>
+-								<li>500 KB/s</li>
++                                <li>300 KB/s</li>
++								<li>400 KB/s</li>
++                                <li>500 KB/s</li>
+ 								<li>750 KB/s</li>
+ 							</ul>
+ 						</li>
+@@ -312,8 +314,17 @@
+ 								<li>75 KB/s</li>
+ 								<li>100 KB/s</li>
+ 								<li>150 KB/s</li>
+-								<li>200 KB/s</li>
++								<li>160 KB/s</li>
++                                <li>170 KB/s</li>
++                                <li>180 KB/s</li>
++                                <li>190 KB/s</li>
++                                <li>200 KB/s</li>
++                                <li>225 KB/s</li>
+ 								<li>250 KB/s</li>
++                                <li>300 KB/s</li>
++                                <li>325 KB/s</li>
++                                <li>350 KB/s</li>
++                                <li>400 KB/s</li>
+ 								<li>500 KB/s</li>
+ 								<li>750 KB/s</li>
+ 							</ul>
