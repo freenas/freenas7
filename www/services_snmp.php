@@ -158,6 +158,9 @@ function enable_change(enable_change) {
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 				</div>
+				<div id="remarks">
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("The associated MIB files can be found at %s."), "/usr/share/snmp/mibs"));?>
+				</div>
 			</td>
 		</tr>
 	</table>
