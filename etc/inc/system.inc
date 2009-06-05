@@ -335,6 +335,9 @@ function system_get_device_temp($device) {
 			(0 != strcmp(trim($arawdatav[0]), "190"))) {
 			$result = chop($arawdatav[9]);
 			break;
+		} else if (preg_match("/Current Drive Temperature:\s+(\d+) C.*/", $rawdatav, $matches)) {
+			$result = $matches[1];
+			break;
 		}
 	}
 

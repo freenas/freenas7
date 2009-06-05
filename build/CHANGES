@@ -100,6 +100,7 @@ Bug fixes:
   If you want to allow users to modify file permissions set rc.conf variable
   'webfm_user_permissions' to 1. If you want to deny all users to login into
   the Quixplorer WebGUI set 'webfm_user_active' to 0.
+- Disk temperature not detected correct for SCSI devices (BR 2801565).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
