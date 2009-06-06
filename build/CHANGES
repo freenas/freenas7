@@ -16,7 +16,7 @@ Majors changes:
   David Davis for the patches.
 - Respect the modified log file location (via rc.conf for syslog, fuppes,
   mt-daapd, ...) in the WebGUI (FR 2778803/2791772).
-- Upgrade transmission to 1.60. Add 'Watch directory' and 'Extra options'
+- Upgrade transmission to 1.61. Add 'Watch directory' and 'Extra options'
   fields to 'Services|BitTorrent' WebGUI.
 - Add entry 'FTP - Ban module' to the list of log files in 'Diagnostics|Log'
   if the module is enabled (FR 2797652).
