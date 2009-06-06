@@ -4,7 +4,7 @@ CATEGORIES=		net dns
 COMMENT=			Apple's mDNSResponder
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=	http://www.opensource.apple.com/darwinsource/tarballs/other/
+MASTER_SITES=	http://www.opensource.apple.com/tarballs/mDNSResponder/
 DISTNAME=			${PORTNAME}-${PORTVERSION}
 
 USE_LDCONFIG=		YES
