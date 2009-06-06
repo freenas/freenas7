@@ -93,6 +93,9 @@ mkdir usr/sbin ;
 mkdir usr/share ;
 mkdir usr/share/misc ;
 mkdir usr/share/locale ;
+mkdir usr/share/snmp ;
+mkdir usr/share/snmp/defs ;
+mkdir usr/share/snmp/mibs ;
 mkdir tmp ;
 # /var will be populated by /etc/rc and /etc/rc.d/var
 mkdir var ;

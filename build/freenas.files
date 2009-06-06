@@ -618,3 +618,9 @@ etc/rc.d/ip6addrctl
 etc/rc.d/random
 etc/rc.d/swap1
 etc/rc.d/ip6fw
+
+####### contents of /usr/share/snmp/defs
+usr/share/snmp/defs/*.def
+
+####### contents of /usr/share/snmp/mibs
+usr/share/snmp/mibs/*.txt
