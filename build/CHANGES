@@ -24,6 +24,8 @@ Majors changes:
 - Upgrade netatalk to 2.0.4.
 - Add 'bsnmp-ucd' module that implements parts of UCD-SNMP-MIB.
 - Add SNMP client tools: bsnmpget, bsnmpset and bsnmpwalk
+- Add 'Auxiliary parameters' to 'Services|SNMP' that will be added to the end
+  of the snmpd.config file.
 
 Minors changes:
 

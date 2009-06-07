@@ -881,11 +881,14 @@
 		-->
 	</nfsd>
 	<snmpd>
-		<!-- <enable/> -->
+		<!--
+		<enable/>
+		<trapenable/>
+		<auxparam></auxparam> // Can be defined multiple times.
+		-->
 		<location></location>
 		<contact></contact>
 		<read>public</read>
-		<!-- <trapenable/> -->
 		<traphost>localhost</traphost>
 		<trapport>162</trapport>
 		<trap></trap>

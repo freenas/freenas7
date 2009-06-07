@@ -48,6 +48,8 @@ $pconfig['mibii'] = isset($config['snmpd']['modules']['mibii']);
 $pconfig['netgraph'] = isset($config['snmpd']['modules']['netgraph']);
 $pconfig['hostres'] = isset($config['snmpd']['modules']['hostres']);
 $pconfig['ucd'] = isset($config['snmpd']['modules']['ucd']);
+if (is_array($config['snmpd']['auxparam']))
+	$pconfig['auxparam'] = implode("\n", $config['snmpd']['auxparam']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -56,16 +58,17 @@ if ($_POST) {
 	// Input validation
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "location contact read");
-		$reqdfieldsn = array(gettext("Location"),gettext("Contact"),gettext("Community"));
+		$reqdfieldsn = array(gettext("Location"), gettext("Contact"), gettext("Community"));
+		$reqdfieldst = explode(" ", "string string string");
+
+		if ($_POST['trapenable']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "traphost trapport trap"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Trap host"), gettext("Trap port"), gettext("Trap string")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string port string"));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	}
-
-	if ($_POST['trapenable']) {
-		$reqdfields = explode(" ", "traphost trapport trap");
-		$reqdfieldsn = array(gettext("Trap host"),gettext("Trap port"),gettext("Trap string"));
-
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
 	if (!$input_errors) {
@@ -81,6 +84,14 @@ if ($_POST) {
 		$config['snmpd']['modules']['netgraph'] = $_POST['netgraph'] ? true : false;
 		$config['snmpd']['modules']['hostres'] = $_POST['hostres'] ? true : false;
 		$config['snmpd']['modules']['ucd'] = $_POST['ucd'] ? true : false;
+
+		// Write additional parameters.
+		unset($config['snmpd']['auxparam']);
+		foreach (explode("\n", $_POST['auxparam']) as $auxparam) {
+			$auxparam = trim($auxparam, "\t\n\r");
+			if (!empty($auxparam))
+				$config['snmpd']['auxparam'][] = $auxparam;
+		}
 
 		write_config();
 
@@ -99,30 +110,32 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.location.disabled = endis;
+	document.iform.contact.disabled = endis;
+	document.iform.read.disabled = endis;
+	document.iform.mibii.disabled = endis;
+	document.iform.netgraph.disabled = endis;
+	document.iform.hostres.disabled = endis;
+	document.iform.ucd.disabled = endis;
+	document.iform.trapenable.disabled = endis;
+	document.iform.traphost.disabled = endis;
+	document.iform.trapport.disabled = endis;
+	document.iform.trap.disabled = endis;
+}
 
-	if (enable_change.name == "trapenable") {
-		endis = !enable_change.checked;
+function trapenable_change() {
+	switch (document.iform.trapenable.checked) {
+		case false:
+			showElementById('traphost_tr','hide');
+			showElementById('trapport_tr','hide');
+			showElementById('trap_tr','hide');
+			break;
 
-		document.iform.traphost.disabled = endis;
-		document.iform.trapport.disabled = endis;
-		document.iform.trap.disabled = endis;
-	} else {
-		document.iform.location.disabled = endis;
-		document.iform.contact.disabled = endis;
-		document.iform.read.disabled = endis;
-		document.iform.mibii.disabled = endis;
-		document.iform.netgraph.disabled = endis;
-		document.iform.hostres.disabled = endis;
-		document.iform.ucd.disabled = endis;
-		document.iform.trapenable.disabled = endis;
-
-		if (document.iform.enable.checked == true) {
-			endis = !(document.iform.trapenable.checked || enable_change);
-		}
-
-		document.iform.traphost.disabled = endis;
-		document.iform.trapport.disabled = endis;
-		document.iform.trap.disabled = endis;
+		case true:
+			showElementById('traphost_tr','show');
+			showElementById('trapport_tr','show');
+			showElementById('trap_tr','show');
+			break;
 	}
 }
 //-->
@@ -138,11 +151,11 @@ function enable_change(enable_change) {
 					<?php html_inputbox("location", gettext("Location"), $pconfig['location'], gettext("Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."), true, 40);?>
 					<?php html_inputbox("contact", gettext("Contact"), $pconfig['contact'], gettext("Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'."), true, 40);?>					
 					<?php html_inputbox("read", gettext("Community"), $pconfig['read'], gettext("In most cases, 'public' is used here."), true, 40);?>
-					<?php html_separator();?>
-					<?php html_titleline_checkbox("trapenable", gettext("Traps"), $pconfig['trapenable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+					<?php html_checkbox("trapenable", gettext("Traps"), $pconfig['trapenable'] ? true : false, gettext("Enable traps."), "", false, "trapenable_change()");?>
 					<?php html_inputbox("traphost", gettext("Trap host"), $pconfig['traphost'], gettext("Enter trap host name."), true, 40);?>
 					<?php html_inputbox("trapport", gettext("Trap port"), $pconfig['trapport'], gettext("Enter the port to send the traps to (default 162)."), true, 5);?>
 					<?php html_inputbox("trap", gettext("Trap string"), $pconfig['trap'], gettext("Trap string."), true, 40);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to %s."), "snmpd.config"), false, 65, 5, false, false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Modules"));?>
 					<tr>
@@ -167,6 +180,7 @@ function enable_change(enable_change) {
 </form>
 <script language="JavaScript">
 <!--
+trapenable_change();
 enable_change(false);
 //-->
 </script>

@@ -26,7 +26,7 @@ extra_commands="mkconf"
 
 # Defaults
 bsnmpd_enable=${bsnmpd_enable:-"NO"}
-bsnmpd_config=${bsnmpd_config:-"/var/etc/${name}.config"}
+bsnmpd_config=${bsnmpd_config:-"/var/etc/snmpd.config"}
 pidfile="/var/run/snmpd.pid"
 command="/usr/sbin/${name}"
 command_args="-c ${bsnmpd_config} -p ${pidfile}"
@@ -138,6 +138,9 @@ bsnmpd_mkconf()
 			-o "extCommand.0 = &quot;/usr/bin/uname -a&quot;" -n \
 			-o "extNames.1 = &quot;uptime&quot;" -n \
 			-o "extCommand.1 = &quot;/usr/bin/uptime&quot;" -n \
+		-b \
+		-m "auxparam" \
+			-v "." -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${bsnmpd_config}
 }
