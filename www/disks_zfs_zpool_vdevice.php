@@ -99,22 +99,23 @@ function zfsvdev_process_updatenotification($mode, $data) {
 			<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
+			<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool_vdevice.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Virtual device");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabcont">
 			<form action="disks_zfs_zpool_vdevice.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
 				<?php if (updatenotify_exists("zfsvdev")) print_config_change_box();?>
@@ -125,8 +126,8 @@ function zfsvdev_process_updatenotification($mode, $data) {
 						<td width="55%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-				  <?php foreach ($a_vdevice as $vdevicev):?>
-				  <?php $notificationmode = updatenotify_get_mode("zfsvdev", $vdevicev['uuid']);?>
+					<?php foreach ($a_vdevice as $vdevicev):?>
+					<?php $notificationmode = updatenotify_get_mode("zfsvdev", $vdevicev['uuid']);?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($vdevicev['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($vdevicev['type']);?></td>

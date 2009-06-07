@@ -140,6 +140,7 @@ function enable_change(enable_change) {
 			<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -162,7 +163,7 @@ function enable_change(enable_change) {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20);?>
-					<?php $a_device = array(); foreach ($a_vdevice as $vdevicev) { if (isset($pool) && !(is_array($pconfig['vdevice']) && in_array($vdevicev['name'], $pconfig['vdevice']))) { continue; } if (!isset($pool) && false !== array_search_ex($vdevicev['name'], $a_vdevice, "vdevice")) { continue; } $a_device[$vdevicev['name']] = htmlspecialchars("{$vdevicev['name']} ({$vdevicev['type']}" . (!empty($vdevicev['desc']) ? ", {$vdevicev['desc']})" : ")")); }?>
+					<?php $a_device = array(); foreach ($a_vdevice as $vdevicev) { if (isset($uuid) && false !== $cnid && !(is_array($pconfig['vdevice']) && in_array($vdevicev['name'], $pconfig['vdevice']))) { continue; } if ((!isset($uuid) || isset($uuid) && false === $cnid) && false !== array_search_ex($vdevicev['name'], $a_pool, "vdevice")) { continue; } $a_device[$vdevicev['name']] = htmlspecialchars("{$vdevicev['name']} ({$vdevicev['type']}" . (!empty($vdevicev['desc']) ? ", {$vdevicev['desc']})" : ")")); }?>
 					<?php html_listbox("vdevice", gettext("Virtual devices"), $pconfig['vdevice'], $a_device, "", true);?>
 					<?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40);?>
 					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets an alternate mount point for the root dataset. Default is /mnt."), false, 40);?>

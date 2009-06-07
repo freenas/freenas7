@@ -102,6 +102,7 @@ if ($_POST) {
 		$dataset['compression'] = $_POST['compression'];
 		$dataset['canmount'] = $_POST['canmount'] ? true : false;
 		$dataset['readonly'] = $_POST['readonly'] ? true : false;
+		$dataset['xattr'] = $_POST['xattr'] ? true : false;
 		$dataset['quota'] = $_POST['quota'];
 		$dataset['desc'] = $_POST['desc'];
 
@@ -136,6 +137,7 @@ function enable_change(enable_change) {
 			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
 	</tr>

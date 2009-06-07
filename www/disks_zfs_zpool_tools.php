@@ -219,29 +219,30 @@ function pool_change() {
 			<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
+			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool_tools.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("I/O statistics");?></span></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
-    	<form action="disks_zfs_zpool_tools.php" method="post" name="iform" id="iform">
+	<tr>
+		<td class="tabcont">
+			<form action="disks_zfs_zpool_tools.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
-	          <td width="78%" class="vtable">
+						<td width="78%" class="vtable">
 							<select name="action" class="formfld" id="action" onchange="command_change()">
 							<?
 								$cmd = "upgrade history";

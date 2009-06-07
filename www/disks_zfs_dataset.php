@@ -100,19 +100,20 @@ function zfsdataset_process_updatenotification($mode, $data) {
 			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-  			<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Dataset");?></span></a></li>
+			<ul id="tabnav">
+				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Dataset");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset_info.php"><span><?=gettext("Information");?></span></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabcont">
 			<form action="disks_zfs_dataset.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (updatenotify_exists("zfsdataset")) print_config_change_box();?>
