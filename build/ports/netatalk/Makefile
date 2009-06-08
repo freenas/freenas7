@@ -1,5 +1,7 @@
 PORTNAME=			netatalk
-PORTVERSION=	2.0.4
+PORTVERSION=	2.0.3
+PORTREVISION=	4
+PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			File and print server for AppleTalk networks
 MAINTAINER=		votdev@gmx.de
@@ -25,13 +27,11 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/etc/uams
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_dhx_pam.so ${FREENAS_ROOTFS}/etc/uams
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_dhx_passwd.so ${FREENAS_ROOTFS}/etc/uams
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_guest.so ${FREENAS_ROOTFS}/etc/uams
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_pam.so ${FREENAS_ROOTFS}/etc/uams
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_randnum.so ${FREENAS_ROOTFS}/etc/uams
 
-	@cd ${FREENAS_ROOTFS}/etc/uams && ${LN} -fsv uams_passwd.so uams_clrtxt.so
+	@cd ${FREENAS_ROOTFS}/etc/uams && ${LN} -fsv uams_passwd.so uams_clrtxt.so && ${LN} -fsv uams_dhx_passwd.so uams_dhx.so
 
 .include <bsd.port.mk>
