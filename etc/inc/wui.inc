@@ -40,7 +40,7 @@ class HTMLBaseControl {
 	var $_required = false;
 	var $_readonly = false;
 
-	public function HTMLBaseControl($ctrlname, $title, $value, $description = "") {
+	public function __construct($ctrlname, $title, $value, $description = "") {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetDescription($description);
@@ -137,8 +137,8 @@ class HTMLBaseControlJS extends HTMLBaseControl {
 class HTMLEditBox extends HTMLBaseControl {
 	var $_size = 40;
 
-	function HTMLEditBox($ctrlname, $title, $value, $description, $size) {
-		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
+	function __construct($ctrlname, $title, $value, $description, $size) {
+		parent::__construct($ctrlname, $title, $value, $description);
 		$this->SetSize($size);
 	}
 
@@ -168,7 +168,7 @@ class HTMLEditBox extends HTMLBaseControl {
 }
 
 class HTMLPasswordBox extends HTMLEditBox {
-	function HTMLPasswordBox($ctrlname, $title, $value, $description, $size) {
+	function __construct($ctrlname, $title, $value, $description, $size) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetValue($value);
@@ -190,7 +190,7 @@ class HTMLPasswordConfBox extends HTMLEditBox {
 	var $_ctrlnameconf = "";
 	var $_valueconf = "";
 
-	function HTMLPasswordConfBox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $description, $size) {
+	function __construct($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $description, $size) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetCtrlNameConf($ctrlnameconf);
 		$this->SetTitle($title);
@@ -235,7 +235,7 @@ class HTMLTextArea extends HTMLEditBox {
 	var $_rows = 5;
 	var $_wrap = true;
 
-	function HTMLTextArea($ctrlname, $title, $value, $description, $columns, $rows) {
+	function __construct($ctrlname, $title, $value, $description, $columns, $rows) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetValue($value);
@@ -289,7 +289,7 @@ class HTMLTextArea extends HTMLEditBox {
 class HTMLFileChooser extends HTMLEditBox {
 	var $_path = "";
 
-	function HTMLFileChooser($ctrlname, $title, $value, $description, $size = 60) {
+	function __construct($ctrlname, $title, $value, $description, $size = 60) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetValue($value);
@@ -321,7 +321,7 @@ class HTMLIPAddressBox extends HTMLEditBox {
 	var $_ctrlnamenetmask = "";
 	var $_valuenetmask = "";
 
-	function HTMLIPAddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
+	function __construct($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetCtrlNameNetmask($ctrlnamenetmask);
 		$this->SetTitle($title);
@@ -348,8 +348,8 @@ class HTMLIPAddressBox extends HTMLEditBox {
 }
 
 class HTMLIPv4AddressBox extends HTMLIPAddressBox {
-	function HTMLIPv4AddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
-		$this->HTMLIPAddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description);
+	function __construct($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
+		parent::__construct($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description);
 		$this->SetSize(20);
 	}
 
@@ -374,8 +374,8 @@ class HTMLIPv4AddressBox extends HTMLIPAddressBox {
 }
 
 class HTMLIPv6AddressBox extends HTMLIPAddressBox {
-	function HTMLIPv6AddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
-		$this->HTMLIPAddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description);
+	function __construct($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
+		parent::__construct($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description);
 		$this->SetSize(30);
 	}
 
@@ -395,7 +395,7 @@ class HTMLIPv6AddressBox extends HTMLIPAddressBox {
 class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
-	function HTMLCheckBox($ctrlname, $title, $value, $caption, $description = "") {
+	function __construct($ctrlname, $title, $value, $caption, $description = "") {
 		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
 		$this->SetCaption($caption);
 	}
@@ -440,7 +440,7 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 	var $_ctrlclass = "";
 	var $_options = array();
 
-	function HTMLSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description) {
+	function __construct($ctrlclass, $ctrlname, $title, $value, $options, $description) {
 		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
 		$this->SetCtrlClass($ctrlclass);
 		$this->SetOptions($options);
@@ -493,8 +493,8 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 class HTMLMultiSelectControl extends HTMLSelectControl {
 	var $_size = 10;
 
-	function HTMLMultiSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description) {
-		$this->HTMLSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description);
+	function __construct($ctrlclass, $ctrlname, $title, $value, $options, $description) {
+		parent::__construct($ctrlclass, $ctrlname, $title, $value, $options, $description);
 	}
 
 	function GetSize() {
@@ -525,13 +525,13 @@ class HTMLMultiSelectControl extends HTMLSelectControl {
 }
 
 class HTMLComboBox extends HTMLSelectControl {
-	function HTMLComboBox($ctrlname, $title, $value, $options, $description) {
-		$this->HTMLSelectControl("formfld", $ctrlname, $title, $value, $options, $description);
+	function __construct($ctrlname, $title, $value, $options, $description) {
+		parent::__construct("formfld", $ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLMountComboBox extends HTMLComboBox {
-	function HTMLMountComboBox($ctrlname, $title, $value, $description) {
+	function __construct($ctrlname, $title, $value, $description) {
 		global $config;
 
 		// Generate options.
@@ -545,12 +545,12 @@ class HTMLMountComboBox extends HTMLComboBox {
 			$options[$mountv['uuid']] = $mountv['sharename'];
 		}
 
-		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
+		parent::__construct($ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLTimeZoneComboBox extends HTMLComboBox {
-	function HTMLTimeZoneComboBox($ctrlname, $title, $value, $description) {
+	function __construct($ctrlname, $title, $value, $description) {
 		// Get time zone data.
 		function is_timezone($elt) {
 			return !preg_match("/\/$/", $elt);
@@ -569,12 +569,12 @@ class HTMLTimeZoneComboBox extends HTMLComboBox {
 			}
 		}
 
-		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
+		parent::__construct($ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLLanguageComboBox extends HTMLComboBox {
-	function HTMLLanguageComboBox($ctrlname, $title, $value, $description) {
+	function __construct($ctrlname, $title, $value, $description) {
 		global $g_languages;
 
 		// Generate options.
@@ -583,12 +583,12 @@ class HTMLLanguageComboBox extends HTMLComboBox {
 			$options[$languagek] = htmlspecialchars(gettext($languagev['desc']), ENT_QUOTES);
 		}
 
-		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
+		parent::__construct($ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLInterfaceComboBox extends HTMLComboBox {
-	function HTMLInterfaceComboBox($ctrlname, $title, $value, $description) {
+	function __construct($ctrlname, $title, $value, $description) {
 		global $config;
 
 		// Generate options.
@@ -599,18 +599,19 @@ class HTMLInterfaceComboBox extends HTMLComboBox {
 			}
 		}
 
-		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
+		parent::__construct($ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLListBox extends HTMLMultiSelectControl {
-	function HTMLListBox($ctrlname, $title, $value, $options, $description) {
-		$this->HTMLMultiSelectControl("formselect", $ctrlname, $title, $value, $options, $description);
+	function __construct($ctrlname, $title, $value, $options, $description) {
+		parent::__construct("formselect", $ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLSeparator extends HTMLBaseControl {
-	function HTMLSeparator() {
+	function __construct() {
+		// Nothing to do here...
 	}
 
 	function Render() {
@@ -621,7 +622,7 @@ class HTMLSeparator extends HTMLBaseControl {
 }
 
 class HTMLTitleLine extends HTMLBaseControl {
-	function HTMLTitleLine($title) {
+	function __construct($title) {
 		$this->SetTitle($title);
 	}
 
@@ -635,8 +636,8 @@ class HTMLTitleLine extends HTMLBaseControl {
 }
 
 class HTMLTitleLineCheckBox extends HTMLCheckBox {
-	function HTMLTitleLineCheckBox($ctrlname, $title, $value, $caption) {
-		$this->HTMLCheckBox($ctrlname, $title, $value, $caption);
+	function __construct($ctrlname, $title, $value, $caption) {
+		parent::__construct($ctrlname, $title, $value, $caption);
 	}
 
 	function Render() {
@@ -661,7 +662,7 @@ class HTMLTitleLineCheckBox extends HTMLCheckBox {
 }
 
 class HTMLText extends HTMLBaseControl {
-	function HTMLText($ctrlname, $title, $text) {
+	function __construct($ctrlname, $title, $text) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetValue($text);
@@ -675,7 +676,7 @@ class HTMLText extends HTMLBaseControl {
 }
 
 class HTMLRemark extends HTMLBaseControl {
-	function HTMLRemark($ctrlname, $title, $text) {
+	function __construct($ctrlname, $title, $text) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetValue($text);
@@ -700,8 +701,8 @@ class HTMLRemark extends HTMLBaseControl {
 class HTMLFolderBox extends HTMLBaseControl {
 	var $_path = "";
 
-	function HTMLFolderBox($ctrlname, $title, $value, $description = "") {
-		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
+	function __construct($ctrlname, $title, $value, $description = "") {
+		parent::__construct($ctrlname, $title, $value, $description);
 	}
 
 	function GetPath() {

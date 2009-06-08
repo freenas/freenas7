@@ -39,7 +39,7 @@ class StatusReportArticle
 	var $_title = "";
 	var $_text = "";
 
-	function StatusReportArticle($title,$text) {
+	function __construct($title,$text) {
 		$this->_title = $title;
 		$this->_text = $text;
 	}
@@ -55,7 +55,7 @@ class StatusReportArticle
 
 class StatusReportArticleCmd extends StatusReportArticle
 {
-	function StatusReportArticleCmd($title,$command) {
+	function __construct($title,$command) {
 		$this->_title = $title;
 		$this->_text = "";
 
