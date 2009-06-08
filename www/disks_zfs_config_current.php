@@ -32,7 +32,7 @@
  */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Configuration"), gettext("Current config"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Configuration"), gettext("Current"));
 
 $zfs = $config['zfs'];
 
@@ -115,86 +115,83 @@ if (updatenotify_exists('zfs_import_config'))
 	<tr>
 		<td class="tabnavtbl">
 		<ul id="tabnav">
-			<li class="tabact"><a href="disks_zfs_config_current.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Current config");?></span></a></li>
-			<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Detected config");?></span></a></li>
-			<li class="tabinact"><a href="disks_zfs_config_import.php"><span><?=gettext("Import");?></span></a></li>
+			<li class="tabact"><a href="disks_zfs_config_current.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Current");?></span></a></li>
+			<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Detected");?></span></a></li>
+			<li class="tabinact"><a href="disks_zfs_config_sync.php"><span><?=gettext("Synchronize");?></span></a></li>
 		</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabcont">
-		<?php if (isset($savemsg)) print_info_box($savemsg); ?>
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
-			<tr>
-				<td colspan="7" valign="top" class="listtopic"><?=gettext('Pools').' ('.count($zfs['pools']['pool']).')';?></td>
-			</tr>
-			<tr>
-				<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Free");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Health");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Mount point");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("AltRoot");?></td>
-			</tr>
-			<?php foreach ($zfs['pools']['pool'] as $pool):?>
-			<tr>
-				<td class="listlr"><?= $pool['name']; ?></td>
-				<td class="listr"><?= $pool['size']; ?></td>
-				<td class="listr"><?= $pool['used']; ?> (<?= $pool['cap']; ?>)</td>
-				<td class="listr"><?= $pool['avail']; ?></td>
-				<td class="listr"><?= $pool['health']; ?></td>
-				<td class="listr"><?= $pool['mountpoint']; ?></td>
-				<td class="listr"><?= empty($pool['root']) ? '-' : $pool['root']; ?></td>
-			</tr>
-			<?php endforeach; ?>
-		</table>
-		<br />
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
-			<tr>
-				<td colspan="4" valign="top" class="listtopic"><?=gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')';?></td>
-			</tr>
-			<tr>
-				<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
-				<td width="21%" class="listhdrr"><?=gettext("Type");?></td>
-				<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
-				<td width="42%" class="listhdrr"><?=gettext("Devices");?></td>
-			</tr>
-			<?php foreach ($zfs['vdevices']['vdevice'] as $vdevice):?>
-			<tr>
-				<td class="listlr"><?= $vdevice['name']; ?></td>
-				<td class="listr"><?= $vdevice['type']; ?></td>
-				<td class="listr"><?= $vdevice['pool']; ?></td>
-				<td class="listr"><?= implode(', ', $vdevice['device']); ?></td>
-			</tr>
-			<?php endforeach; ?>
-		</table>
-		<br />
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
-			<tr>
-				<td colspan="7" valign="top" class="listtopic"><?=gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')';?></td>
-			</tr>
-			<tr>
-				<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Canmount");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Quota");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Extended attributes");?></td>
-				<td width="14%" class="listhdrr"><?=gettext("Readonly");?></td>
-			</tr>
-			<?php foreach ($zfs['datasets']['dataset'] as $dataset):?>
-			<tr>
-				<td class="listlr"><?= $dataset['name']; ?></td>
-				<td class="listr"><?= $dataset['pool'][0]; ?></td>
-				<td class="listr"><?= $dataset['compression']; ?></td>
-				<td class="listr"><?= isset($dataset['canmount']) ? 'on' : 'off'; ?></td>
-				<td class="listr"><?= empty($dataset['quota']) ? 'none' : $dataset['quota']; ?></td>
-				<td class="listr"><?= isset($dataset['xattr']) ? 'on' : 'off'; ?></td>
-				<td class="listr"><?= isset($dataset['readonly']) ? 'on' : 'off'; ?></td>
-			</tr>
-			<?php endforeach; ?>
-		</table>
+			<?php if (isset($savemsg)) print_info_box($savemsg); ?>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 7);?>
+				<tr>
+					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Free");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Health");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Mount point");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("AltRoot");?></td>
+				</tr>
+				<?php foreach ($zfs['pools']['pool'] as $pool):?>
+				<tr>
+					<td class="listlr"><?= $pool['name']; ?></td>
+					<td class="listr"><?= $pool['size']; ?></td>
+					<td class="listr"><?= $pool['used']; ?> (<?= $pool['cap']; ?>)</td>
+					<td class="listr"><?= $pool['avail']; ?></td>
+					<td class="listr"><?= $pool['health']; ?></td>
+					<td class="listr"><?= $pool['mountpoint']; ?></td>
+					<td class="listr"><?= empty($pool['root']) ? '-' : $pool['root']; ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+			<br />
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<?php html_titleline(gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')', 4);?>
+				<tr>
+					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Type");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="42%" class="listhdrr"><?=gettext("Devices");?></td>
+				</tr>
+				<?php foreach ($zfs['vdevices']['vdevice'] as $vdevice):?>
+				<tr>
+					<td class="listlr"><?= $vdevice['name']; ?></td>
+					<td class="listr"><?= $vdevice['type']; ?></td>
+					<td class="listr"><?= $vdevice['pool']; ?></td>
+					<td class="listr"><?= implode(', ', $vdevice['device']); ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+			<br />
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 7);?>
+				<tr>
+					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Canmount");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Quota");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Extended attributes");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Readonly");?></td>
+				</tr>
+				<?php foreach ($zfs['datasets']['dataset'] as $dataset):?>
+				<tr>
+					<td class="listlr"><?= $dataset['name']; ?></td>
+					<td class="listr"><?= $dataset['pool'][0]; ?></td>
+					<td class="listr"><?= $dataset['compression']; ?></td>
+					<td class="listr"><?= isset($dataset['canmount']) ? 'on' : 'off'; ?></td>
+					<td class="listr"><?= empty($dataset['quota']) ? 'none' : $dataset['quota']; ?></td>
+					<td class="listr"><?= isset($dataset['xattr']) ? 'on' : 'off'; ?></td>
+					<td class="listr"><?= isset($dataset['readonly']) ? 'on' : 'off'; ?></td>
+				</tr>
+				<?php endforeach;?>
+			</table>
+			<div id="remarks">
+				<?php html_remark("note", gettext("Note"), gettext("This page reflects the configuration that has been created with the WebGUI."));?>
+			</div>
 		</td>
 	</tr>
 </table>

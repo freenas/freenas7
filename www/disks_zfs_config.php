@@ -32,7 +32,7 @@
 */
 require('guiconfig.inc');
 
-$pgtitle = array(gettext('Disks'), gettext('ZFS'), gettext('Configuration'), gettext('Detected config'));
+$pgtitle = array(gettext('Disks'), gettext('ZFS'), gettext('Configuration'), gettext('Detected'));
 
 $zfs = array(
 	'vdevices' => array(
@@ -185,7 +185,7 @@ if (count($zfs['pools']['pool']) <= 0)
 	if (isset($_POST['import']))
 	{
 		$message_box_type = 'warning';
-		$message_box_text  = gettext('No pool was found.');
+		$message_box_text = gettext('No pool was found.');
 		if (isset($retval) && $retval != 0)
 		{
 			if (isset($_POST['import_force']))
@@ -245,9 +245,9 @@ if (!$health)
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabinact"><a href="disks_zfs_config_current.php"><span><?=gettext("Current config");?></span></a></li>
-				<li class="tabact" title="<?=gettext("Reload page");?>"><a href="disks_zfs_config.php"><span><?=gettext("Detected config");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_config_import.php"><span><?=gettext("Import");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config_current.php"><span><?=gettext("Current");?></span></a></li>
+				<li class="tabact" title="<?=gettext("Reload page");?>"><a href="disks_zfs_config.php"><span><?=gettext("Detected");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_config_sync.php"><span><?=gettext("Synchronize");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -255,9 +255,7 @@ if (!$health)
 		<td class="tabcont">
 			<?php if (isset($message_box_text)) print_core_box($message_box_type, $message_box_text);?>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<td colspan="7" valign="top" class="listtopic"><?=gettext('Pools').' ('.count($zfs['pools']['pool']).')';?></td>
-				</tr>
+				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 7);?>
 				<tr>
 					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
@@ -281,9 +279,7 @@ if (!$health)
 			</table>
 			<br/>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<td colspan="4" valign="top" class="listtopic"><?=gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')';?></td>
-				</tr>
+				<?php html_titleline(gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')', 4);?>
 				<tr>
 					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
 					<td width="21%" class="listhdrr"><?=gettext("Type");?></td>
@@ -301,9 +297,7 @@ if (!$health)
 			</table>
 			<br/>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<td colspan="7" valign="top" class="listtopic"><?=gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')';?></td>
-				</tr>
+				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 7);?>
 				<tr>
 					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
@@ -325,6 +319,9 @@ if (!$health)
 				</tr>
 				<?php endforeach; ?>
 			</table>
+			<div id="remarks">
+				<?php html_remark("note", gettext("Note"), gettext("This page reflects the current system configuration. It may be different to the configuration which has been created with the WebGUI if changes has been done via command line."));?>
+			</div>
 		</td>
 	</tr>
 </table>
