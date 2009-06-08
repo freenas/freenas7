@@ -396,7 +396,7 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
 	function __construct($ctrlname, $title, $value, $caption, $description = "") {
-		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
+		parent::__construct($ctrlname, $title, $value, $description);
 		$this->SetCaption($caption);
 	}
 
@@ -441,7 +441,7 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 	var $_options = array();
 
 	function __construct($ctrlclass, $ctrlname, $title, $value, $options, $description) {
-		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
+		parent::__construct($ctrlname, $title, $value, $description);
 		$this->SetCtrlClass($ctrlclass);
 		$this->SetOptions($options);
 	}
@@ -610,34 +610,67 @@ class HTMLListBox extends HTMLMultiSelectControl {
 }
 
 class HTMLSeparator extends HTMLBaseControl {
+	var $_colspan = 2;
+
 	function __construct() {
 		// Nothing to do here...
 	}
 
+	function GetColSpan() {
+		return $this->_colspan;
+	}
+
+	function SetColSpan($colspan) {
+		$this->_colspan = $colspan;
+	}
+
 	function Render() {
+		$colspan = $this->GetColSpan();
+
 		echo "<tr>\n";
-		echo "	<td colspan='2' class='list' height='12'></td>\n";
+		echo "	<td colspan='{$colspan}' class='list' height='12'></td>\n";
 		echo "</tr>\n";
 	}
 }
 
 class HTMLTitleLine extends HTMLBaseControl {
+	var $_colspan = 2;
+
 	function __construct($title) {
 		$this->SetTitle($title);
 	}
 
+	function GetColSpan() {
+		return $this->_colspan;
+	}
+
+	function SetColSpan($colspan) {
+		$this->_colspan = $colspan;
+	}
+
 	function Render() {
 		$title = $this->GetTitle();
+		$colspan = $this->GetColSpan();
 
 		echo "<tr>\n";
-		echo "	<td colspan='2' valign='top' class='listtopic'>{$title}</td>\n";
+		echo "	<td colspan='{$colspan}' valign='top' class='listtopic'>{$title}</td>\n";
 		echo "</tr>\n";
 	}
 }
 
 class HTMLTitleLineCheckBox extends HTMLCheckBox {
+	var $_colspan = 2;
+
 	function __construct($ctrlname, $title, $value, $caption) {
 		parent::__construct($ctrlname, $title, $value, $caption);
+	}
+
+	function GetColSpan() {
+		return $this->_colspan;
+	}
+
+	function SetColSpan($colspan) {
+		$this->_colspan = $colspan;
 	}
 
 	function Render() {
@@ -645,9 +678,10 @@ class HTMLTitleLineCheckBox extends HTMLCheckBox {
 		$caption = $this->GetCaption();
 		$title = $this->GetTitle();
 		$param = $this->GetParam();
+		$colspan = $this->GetColSpan();
 
 		echo "<tr>\n";
-		echo "	<td colspan='2' valign='top' class='optsect_t'>\n";
+		echo "	<td colspan='{$colspan}' valign='top' class='optsect_t'>\n";
 		echo "    <table border='0' cellspacing='0' cellpadding='0' width='100%'>\n";
 		echo "      <tr>\n";
 		echo "        <td class='optsect_s'><strong>{$title}</strong></td>\n";

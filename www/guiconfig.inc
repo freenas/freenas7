@@ -363,18 +363,21 @@ function html_checkbox($ctrlname, $title, $checked, $caption = "", $desc = "", $
 	$ctrl->Render();
 }
 
-function html_separator() {
+function html_separator($colspan = 2) {
 	$ctrl = new HTMLSeparator();
+	$ctrl->SetColSpan($colspan);
 	$ctrl->Render();
 }
 
-function html_titleline($title) {
+function html_titleline($title, $colspan = 2) {
 	$ctrl = new HTMLTitleLine($title);
+	$ctrl->SetColSpan($colspan);
 	$ctrl->Render();
 }
 
-function html_titleline_checkbox($ctrlname, $title, $value, $caption, $onclick = "") {
+function html_titleline_checkbox($ctrlname, $title, $value, $caption, $onclick = "", $colspan = 2) {
 	$ctrl = new HTMLTitleLineCheckBox($ctrlname, $title, $value, $caption);
+	$ctrl->SetColSpan($colspan);
 	$ctrl->SetJSonClick($onclick);
 	$ctrl->Render();
 }
