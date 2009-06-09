@@ -37,7 +37,7 @@ class FileChooser
 
 	function FileChooser()
 	{
-    // Settings.
+		// Settings.
 		$this->cfg['footer'] = true; // show footer
 		$this->cfg['sort'] = true; // show sorting header
 		$this->cfg['lineNumbers'] = true; // show/hide column
@@ -49,18 +49,18 @@ class FileChooser
 		$this->cfg['separateFolders'] = true; // sort folders on top of files
 		$this->cfg['naturalSort'] = true; // natural sort files, as opposed to regular sort (files with capital letters get sorted first)
 		$this->cfg['filterShowFiles'] = '*';
-    $this->cfg['filterHideFiles'] = '.*';
-    $this->cfg['filterShowFolders'] = '*';
-    $this->cfg['filterHideFolders'] = '.,..,.*';
+		$this->cfg['filterHideFiles'] = '.*';
+		$this->cfg['filterShowFolders'] = '*';
+		$this->cfg['filterHideFolders'] = '.,..,.*';
 		$this->cfg['dateFormat'] = 'F d, Y g:i A'; // date format.
 		$this->cfg['startDirectory'] = "/";
 
 		// Get path if browsing a tree.
-		$path = (isset($_GET['p'])) ? urldecode($_GET['p']) : FALSE;
+		$path = (isset($_GET['p'])) ? urldecode(htmlspecialchars($_GET['p'])) : FALSE;
 
-    // If no path is available, set it to root.
-    if(!$path) {
-      $path = (isset($_GET['sd'])) ? $_GET['sd'] : $this->cfg['startDirectory'];
+		// If no path is available, set it to root.
+		if (!$path) {
+			$path = (isset($_GET['sd'])) ? htmlspecialchars($_GET['sd']) : $this->cfg['startDirectory'];
     }
 
     // Check if file exists.
@@ -568,9 +568,7 @@ EOD;
   </head>
   <body class="filechooser">
   	<table cellspacing="0">
-<?
-			new FileChooser();
-?>
+		<?php new FileChooser();?>
 		</table>
   </body>
 </html>
