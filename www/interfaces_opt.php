@@ -328,6 +328,7 @@ function encryption_change() {
 									</td>
 								</tr>
 							</table>
+							<?php include("formend.inc");?>
 						</form>
 <script language="JavaScript">
 <!--

@@ -126,6 +126,7 @@ if ($_GET['act'] === "del") {
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

@@ -425,6 +425,7 @@ function pool_change() {
 				}
 				echo('</pre>');
 				};?>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

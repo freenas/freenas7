@@ -31,8 +31,15 @@
 */
 session_start();
 
+// Check if session is valid
 if (!isset($_SESSION['login']) || !$_SESSION['login']) {
 	header('Location: login.php');
 	exit;
+}
+
+// Check if request is valid and authorized
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	if (!isset($_POST['authtoken']) || ($_POST['authtoken'] !== $_SESSION['authtoken'])) 
+		die(sprintf(gettext("An unauthorized POST request has been detected. Because this can be a <a href='%s' target='_blank'>cross-site request forgery</a> attack, the request has been blocked. Please <a href='%s'>login</a> again to continue."), "http://en.wikipedia.org/wiki/Cross-site_request_forgery", "login.php"));
 }
 ?>

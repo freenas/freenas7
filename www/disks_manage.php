@@ -160,6 +160,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0"></a></td>
 					</tr>
 				</table>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

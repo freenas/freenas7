@@ -204,6 +204,7 @@ function enable_change(enable_change) {
 	      <div id="remarks">
 	        <?php html_remark("note", gettext("Note"), gettext("You must have a minimum of 256MB of RAM for using iSCSI target."));?>
 	      </div>
+	      <?php include("formend.inc");?>
       </form>
     </td>
   </tr>

@@ -174,6 +174,7 @@ $a_poolstatus = zfs_get_pool_list();
 						</td>
 					</tr>
 				</table>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

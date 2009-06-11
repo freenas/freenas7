@@ -87,6 +87,7 @@ $a_service[] = array("desc" => gettext("BitTorrent"), "link" => "services_bittor
 					</tr>
 					<?php endforeach;?>
 				</table>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

@@ -61,6 +61,7 @@ if ($_POST) {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>">
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 			<?php endif;?>
     </td>

@@ -197,5 +197,6 @@ if ($_POST) {
 	    </td>
 	  </tr>
 	</table>
+	<?php include("formend.inc");?>
 </form>
 <?php include("fend.inc");?>

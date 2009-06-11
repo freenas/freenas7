@@ -83,6 +83,7 @@ if ($_GET['act'] == "del") {
 						<td class="list"> <a href="system_packages_edit.php"><img src="plus.gif" title="<?=gettext("Install package"); ?>" border="0"></a></td>
 					</tr>
 			  </table>
+			  <?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

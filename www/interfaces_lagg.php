@@ -123,6 +123,7 @@ if ($_GET['act'] === "del") {
 						</td>
 					</tr>
 				</table>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

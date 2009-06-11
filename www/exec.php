@@ -229,6 +229,7 @@ if (!isBlank($_POST['txtPHPCommand'])) {
 			</td>
 		</tr>
   </table>
+  <?php include("formend.inc");?>
 </form>
 <script language="JavaScript">
 <!--

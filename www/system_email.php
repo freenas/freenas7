@@ -169,6 +169,7 @@ function auth_change() {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>">
 			  </div>
+			  <?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>

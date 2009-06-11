@@ -138,6 +138,7 @@ function smbshare_process_updatenotification($mode, $data) {
             <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" border="0"></a></td>
           </tr>
         </table>
+        <?php include("formend.inc");?>
       </form>
     </td>
   </tr>

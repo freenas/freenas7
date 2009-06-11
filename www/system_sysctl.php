@@ -157,6 +157,7 @@ function sysctl_process_updatenotification($mode, $data) {
 	      <div id="remarks">
 	      	<?php html_remark("note", gettext("Note"), gettext("These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system."));?>
 	      </div>
+	      <?php include("formend.inc");?>
 			</form>
 	  </td>
   </tr>

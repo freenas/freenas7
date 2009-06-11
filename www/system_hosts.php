@@ -157,6 +157,7 @@ function hosts_process_updatenotification($mode, $data) {
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

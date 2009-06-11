@@ -262,6 +262,7 @@ if ($_GET['act'] == "add") {
 				<div id="remarks">
 					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name()));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

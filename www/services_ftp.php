@@ -309,6 +309,7 @@ function anonymousonly_change() {
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

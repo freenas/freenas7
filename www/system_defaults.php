@@ -66,6 +66,7 @@ if ($_POST) {
 			</td>
 		</tr>
 	</table>
+	<?php include("formend.inc");?>
 </form>
 <?php endif;?>
 <?php include("fend.inc");?>

@@ -143,6 +143,7 @@ function cronjob_process_updatenotification($mode, $data) {
 						</td>
 	        </tr>
 	      </table>
+	      <?php include("formend.inc");?>
 			</form>
     </td>
   </tr>

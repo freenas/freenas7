@@ -131,6 +131,7 @@ else
 						</td>
 					</tr>
 				</table>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

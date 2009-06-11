@@ -189,6 +189,7 @@ function gmirror_process_updatenotification($mode, $data) {
         <div id="remarks">
         	<?php html_remark("info", gettext("Info"), sprintf(gettext("%s is used to create %s volumes."), "GEOM Mirror", "RAID1"));?>
         </div>
+        <?php include("formend.inc");?>
       </form>
 		</td>
 	</tr>

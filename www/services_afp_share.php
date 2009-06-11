@@ -141,6 +141,7 @@ function afpshare_process_updatenotification($mode, $data) {
         <div id="remarks">
         	<?php html_remark("note", gettext("Note"), gettext("All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."));?>
         </div>
+        <?php include("formend.inc");?>
       </form>
     </td>
   </tr>

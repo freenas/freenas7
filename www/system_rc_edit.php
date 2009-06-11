@@ -148,6 +148,7 @@ if ($_POST) {
 					<input name="type" type="hidden" value="<?=$type;?>">
 					<?php endif;?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
     </td>
   </tr>

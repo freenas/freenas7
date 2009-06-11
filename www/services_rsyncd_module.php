@@ -149,6 +149,7 @@ function rsyncd_process_updatenotification($mode, $data) {
             <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" border="0"></a></td>
           </tr>
         </table>
+        <?php include("formend.inc");?>
       </form>
     </td>
   </tr>

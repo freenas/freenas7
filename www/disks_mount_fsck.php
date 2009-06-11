@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_mount_fsck.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright ¬© 2006-2009 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-LabbÈ <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labb√© <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -125,6 +125,7 @@ if (!isset($do_action)) {
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"));?>
 				</div>
+				<?php include("formend.inc");?>
     	</form>
   	</td>
 	</tr>

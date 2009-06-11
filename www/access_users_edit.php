@@ -200,6 +200,7 @@ function get_nextuser_id() {
 					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

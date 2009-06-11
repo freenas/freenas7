@@ -105,6 +105,7 @@ function get_interface_addr($ifdescr) {
 				echo('</pre>');
 				}
 				?>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

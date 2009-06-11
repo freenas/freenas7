@@ -368,7 +368,10 @@ if (!$health)
 					<?php html_checkbox("import_disks_overwrite", gettext("Overwrite disks configuration"), false, gettext("Overwrite already configured disks (only affects filesystem value)."), "", false);?>
 				</table>
 				<br />
-				<input type="submit" name="import_config" value="<?= gettext('Synchronize'); ?>" />
+				<div id="submit">
+					<input type="submit" name="import_config" value="<?= gettext('Synchronize'); ?>" />
+				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

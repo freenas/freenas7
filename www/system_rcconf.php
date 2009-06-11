@@ -157,6 +157,7 @@ function rcconf_process_updatenotification($mode, $data) {
 	      <div id="remarks">
 	      	<?php html_remark("note", gettext("Note"), gettext("These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts."));?>
 	      </div>
+	      <?php include("formend.inc");?>
 			</form>
 	  </td>
   </tr>

@@ -138,6 +138,7 @@ if (!isset($do_action)) {
 				<div id="remarks">
 					<?php html_remark("warning", gettext("Warning"), gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

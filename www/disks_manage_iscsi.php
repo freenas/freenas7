@@ -135,6 +135,7 @@ function iscsiinitiator_process_updatenotification($mode, $data) {
             <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" border="0"></a></td>
 			    </tr>
         </table>
+        <?php include("formend.inc");?>
       </form>
 	  </td>
   </tr>

@@ -29,6 +29,8 @@ Majors changes:
 Minors changes:
 
 Bug fixes:
+- Hardening WebGUI to prevent cross-site request forgery attacks
+  (JPCERT/CC JVN#15267895).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

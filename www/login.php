@@ -31,12 +31,13 @@
 */
 require("guiconfig.inc");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	session_start();
 
 	if ($_POST['username'] === $config['system']['username'] &&
 			$_POST['password'] === $config['system']['password']) {
 		$_SESSION['login'] = true;
+		$_SESSION['authtoken'] = crypt(session_id());
 
 		if ($_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
 			if (php_sapi_name() === 'cgi') {

@@ -197,6 +197,7 @@ if (!isset($do_format)) {
 			</td>
 		</tr>
 	</table>
+	<?php include("formend.inc");?>
 </form>
 <script language="JavaScript">
 <!--

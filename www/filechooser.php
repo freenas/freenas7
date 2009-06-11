@@ -494,6 +494,7 @@ class FileChooser
 	      	<input class="button" type="reset" value="Cancel">
 	      	<input class="button" type="submit" value="Ok">
 		    </td>
+		    <?php include("formend.inc");?>
 		  </form>
 	  </tr>
 

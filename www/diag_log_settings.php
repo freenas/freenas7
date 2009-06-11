@@ -177,6 +177,7 @@ function enable_change(enable_change) {
 					<?php html_remark("note", gettext("Note"), sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), get_product_name()));?>
 				</div>
 			</td>
+			<?php include("formend.inc");?>
 		</form>
 	</tr>
 </table>

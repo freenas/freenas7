@@ -192,6 +192,7 @@ if ($_POST) {
 			  	<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 				</div>
 			  <?php endif;?>
+			  <?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

@@ -70,6 +70,7 @@ foreach ($ifdescrs as $ifn => $ifd) {
 }
 ?>
 </select>
+<?php include("formend.inc");?>
 </form>
 <div align="center">
 <object id="graph"

@@ -393,5 +393,6 @@ function get_ipv6network($v6addr, $mask) {
 	    </td>
 	  </tr>
 	</table>
+	<?php include("formend.inc");?>
 </form>
 <?php include("fend.inc");?>

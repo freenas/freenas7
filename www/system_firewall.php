@@ -280,5 +280,6 @@ function enable_change(enable_change) {
 			</td>
 		</tr>
 	</table>
+	<?php include("formend.inc");?>
 </form>
 <?php include("fend.inc");?>

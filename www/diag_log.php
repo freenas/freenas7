@@ -92,6 +92,7 @@ function log_change() {
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				  <?php log_display($loginfo[$log]);?>
 				</table>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>

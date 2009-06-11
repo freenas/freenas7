@@ -187,6 +187,7 @@ function shutdownmode_change() {
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), sprintf(gettext("This configuration settings are used to generate the ups.conf configuration file which is required by the NUT UPS daemon. To get more information how to configure your UPS please check the NUT (Network UPS Tools) <a href='%s' target='_blank'>documentation</a>."), "http://www.networkupstools.org"));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>

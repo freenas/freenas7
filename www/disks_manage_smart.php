@@ -290,6 +290,7 @@ function enable_change(enable_change) {
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails."));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

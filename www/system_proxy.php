@@ -226,6 +226,7 @@ function proxy_auth_change() {
 			  <div id="remarks">
 			  	<?php html_remark("note", gettext("Note"), gettext("If the server is behind a proxy set this parameters to give local services access to the internet via proxy."));?>
 			  </div>
+			  <?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>

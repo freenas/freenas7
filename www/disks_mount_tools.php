@@ -135,6 +135,7 @@ if (!isset($do_action)) {
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

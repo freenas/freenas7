@@ -92,6 +92,7 @@ if (!isset($do_traceroute)) {
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."));?>
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

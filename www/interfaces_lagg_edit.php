@@ -148,6 +148,7 @@ function get_nextlagg_id() {
 					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 				</div>
+				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>

@@ -532,6 +532,7 @@ function lun_change(idx) {
     </td>
   </tr>
 </table>
+<?php include("formend.inc");?>
 </form>
 <script language="JavaScript">
 <!--

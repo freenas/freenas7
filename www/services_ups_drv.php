@@ -84,5 +84,6 @@ function nut_get_driverlist() {
 			</td>
 		</tr>
 	</table>
+	<?php include("formend.inc");?>
 </form>
 <?php include("fend.inc");?>

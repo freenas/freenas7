@@ -144,6 +144,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
             <td class="list"><a href="services_rsyncd_client_edit.php"><img src="plus.gif" title="<?=gettext("Add Rsync job");?>" border="0"></a></td>
 			    </tr>
         </table>
+        <?php include("formend.inc");?>
       </form>
 	  </td>
   </tr>
