@@ -7,15 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-04-29 20:18+0000\n"
-"PO-Revision-Date: 2009-04-30 19:51+0000\n"
+"POT-Creation-Date: 2009-05-30 20:09+0000\n"
+"PO-Revision-Date: 2009-05-29 14:52+0000\n"
 "Last-Translator: Carsten Vinkler <carsten@indysign.dk>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-02 12:12+0000\n"
+"X-Launchpad-Export-Date: 2009-06-11 18:36+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Add additional scheduled self-test."
+msgstr "Tilføj ekstra planlagt selv-diagnose."
+
+msgid "Add self-test"
+msgstr "Tilføj selv-diagnose"
+
+msgid "Delete self-test"
+msgstr "Slet selv-diagnose"
+
+msgid "Do you really want to delete this scheduled self-test?"
+msgstr "Vil du virkelig slette denne planlagte selv-diagnose?"
+
+msgid "Edit self-test"
+msgstr "Rediger selv-diagnose"
+
+msgid "Scheduled Self-Test"
+msgstr "Planlagt selv-diagnose"
+
+msgid "Scheduled self-tests"
+msgstr "Planlagte selv-diagnose"
 
 msgid " interfaces:"
 msgstr " grænseflader:"
@@ -273,9 +294,6 @@ msgstr "Tilføj Rsync opgave"
 msgid "Add URL"
 msgstr "Tilføj URL"
 
-msgid "Add additional scheduled self-test."
-msgstr "Tilføj ekstra planlagt selv-test."
-
 msgid "Add command"
 msgstr "Tilføj kommando"
 
@@ -311,9 +329,6 @@ msgstr "Tilføj indstilling"
 
 msgid "Add rule"
 msgstr "Tilføj regel"
-
-msgid "Add self-test"
-msgstr "Tilføj selv-test"
 
 msgid "Add share"
 msgstr "Tilføj share"
@@ -383,6 +398,9 @@ msgstr ""
 "</span></p><ul><li><span class='vexpl'>Skift IP-adressen på din "
 "computer.</span></li><li><span class='vexpl'>Gå ind på WebGUI med den nye IP-"
 "adresse.</span></li></ul>"
+
+msgid "Aggregation protocol"
+msgstr "Aggregerings protokol"
 
 msgid "All"
 msgstr "Alle"
@@ -472,6 +490,9 @@ msgstr "En grænseflade med den angivne beskrivelse eksisterer allerede."
 msgid "Anonymous"
 msgstr "Anonym"
 
+msgid "Anonymous bind"
+msgstr "Anonym bind"
+
 msgid "Anonymous user bandwidth"
 msgstr "Anonym bruger båndbredde"
 
@@ -541,6 +562,9 @@ msgstr "Godkendt netværk"
 
 msgid "Auto"
 msgstr "Automatisk"
+
+msgid "AutoScale"
+msgstr "AutoScale"
 
 msgid "Auxiliary parameters"
 msgstr "Ekstra parametre"
@@ -631,6 +655,9 @@ msgstr "Kan ikke hente data om grænsefladen"
 
 msgid "Capacity"
 msgstr "Kapacitet"
+
+msgid "Case Folding"
+msgstr "Skift mellem små og store bogstaver"
 
 msgid ""
 "Causes the server to display the network information for the specified IP "
@@ -725,6 +752,9 @@ msgstr "Kommentar"
 
 msgid "Common Internet File System"
 msgstr "Common Internet Fil System"
+
+msgid "Community"
+msgstr "Forum"
 
 msgid "Compliant profile to be used."
 msgstr "Overholdelses profil der skal bruges."
@@ -856,6 +886,9 @@ msgstr "Dæmon hændelser"
 msgid "Daemon log"
 msgstr "Dæmon log"
 
+msgid "Danish"
+msgstr "Dansk"
+
 msgid "Data integrity"
 msgstr "Data integritet"
 
@@ -923,6 +956,9 @@ msgstr "Slet alle indstillinger"
 msgid "Delete all rules"
 msgstr "Slet alle regler"
 
+msgid "Delete all self-tests"
+msgstr "Slet alle selv-diagnoser"
+
 msgid "Delete command"
 msgstr "Slet kommando"
 
@@ -962,9 +998,6 @@ msgstr "Slet indstilling"
 
 msgid "Delete rule"
 msgstr "Slet regel"
-
-msgid "Delete self-test"
-msgstr "Slet selv-test"
 
 msgid "Delete share"
 msgstr "Slet share"
@@ -1039,6 +1072,22 @@ msgstr "Enheden er monteret, afmonter den inden frakobling"
 
 msgid "Device name"
 msgstr "Enhedsnavn"
+
+msgid "Device polling"
+msgstr "Enheds polling"
+
+msgid ""
+"Device polling is a technique that lets the system periodically poll network "
+"devices for new data instead of relying on interrupts. This can reduce CPU "
+"load and therefore increase throughput, at the expense of a slightly higher "
+"forwarding delay (the devices are polled 1000 times per second). Not all "
+"NICs support polling."
+msgstr ""
+"Enheds polling er en teknik der lader systemet periodisk undersøge "
+"netværksenheder efter ny data, istedet for at være afhængig af interrupts. "
+"Dette kan reducere CPU forbruget og derfor øge båndbredden, på bekostning af "
+"en fremsendelses forsinkelse (enhederne polles 1000 gange hvert sekund). "
+"Ikke alle netkort understøtter polling."
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
@@ -1127,6 +1176,9 @@ msgstr "Vil du virkelig slette alle indstillinger?"
 msgid "Do you really want to delete all rules?"
 msgstr "Vil du virkelig slette alle regler?"
 
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr "Vil du virkelig slette alle planlagte selv-diagnoser?"
+
 msgid "Do you really want to delete this MIB?"
 msgstr "Vil du virkelig slette denne MIB?"
 
@@ -1189,9 +1241,6 @@ msgstr "Vil du virkelig slette denne rute?"
 
 msgid "Do you really want to delete this rule?"
 msgstr "Vil du virkelig slette denne regel?"
-
-msgid "Do you really want to delete this scheduled self-test?"
-msgstr "Vil du virkelig slette denne planlagte selv-test?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Vil du virkelig slette denne share?"
@@ -1294,6 +1343,9 @@ msgstr "Driverliste"
 msgid "Duplex"
 msgstr "Dupleks"
 
+msgid "Duplicate mount point name."
+msgstr "Duplikeret monterings punkts navn."
+
 msgid "Dutch"
 msgstr "Hollandsk"
 
@@ -1363,9 +1415,6 @@ msgstr "Rediger indstillinger"
 msgid "Edit rule"
 msgstr "Rediger regel"
 
-msgid "Edit self-test"
-msgstr "Rediger selv-test"
-
 msgid "Edit share"
 msgstr "Rediger share"
 
@@ -1416,6 +1465,9 @@ msgstr "Aktiver komprimering."
 
 msgid "Enable console screensaver"
 msgstr "Aktiver konsol pauseskærm"
+
+msgid "Enable device polling"
+msgstr "Aktiver enheds polling"
 
 msgid "Enable directory listing."
 msgstr "Aktiver indholdslister."
@@ -1657,6 +1709,9 @@ msgstr "FTP proxy"
 msgid "FTP events"
 msgstr "FTP hændelser"
 
+msgid "FTP file transfer"
+msgstr "FTP fil overførsel"
+
 msgid "FTP log"
 msgstr "FTP log"
 
@@ -1716,6 +1771,9 @@ msgstr "Kunne ikke uploade metadata backup fil."
 msgid "Failed."
 msgstr "Fejlede"
 
+msgid "Failover"
+msgstr "Failover"
+
 msgid "File"
 msgstr "Fil"
 
@@ -1750,6 +1808,9 @@ msgstr "Filsystem"
 
 msgid "File system check"
 msgstr "Filsystem kontrol"
+
+msgid "File transfer"
+msgstr "Fil overførsel"
 
 msgid "Filename"
 msgstr "Filnavn"
@@ -2252,6 +2313,24 @@ msgstr ""
 "Sæt til '%s' for uformaterede diske og formater dem med <a "
 "href%s>formater</a> menuen."
 
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr "Niveau 1 - Minimalt strømforbrug ved standby (spindown)"
+
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr "Niveau 127 - Mellem strømforbrug ved standby"
+
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr "Niveau 128 - Minimalt strømforbrug uden standby (ingen spindown)"
+
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr "Niveau 192 - Mellem strømforbrug uden standby"
+
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr "Niveau 254 - Maksimal ydelse, højeste strømforbrug"
+
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr "Niveau 64 - Mellem strømforbrug med standby"
+
 #, php-format
 msgid "Levels (MHz/mW): %s"
 msgstr "Niveauer (MHz/mW): %s"
@@ -2264,6 +2343,9 @@ msgstr "Licens og tak"
 
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protokol"
+
+msgid "Link Aggregation and Failover"
+msgstr "Link Aggregering og Failover"
 
 msgid "List"
 msgstr "Liste"
@@ -2303,6 +2385,9 @@ msgstr "Indlæs"
 
 msgid "Load averages"
 msgstr "Gennemsnits belastning"
+
+msgid "Loadbalance"
+msgstr "Belastnings balancering"
 
 msgid "Local"
 msgstr "Lokal"
@@ -2455,20 +2540,11 @@ msgstr "Maksimum antal samtidige forbindelser. Standard er 0 (uendeligt)."
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Maksimum ydelse, maksimum akustisk output"
 
-msgid "Maximum performance, maximum power usage"
-msgstr "Maksimum ydelse, maksimum strømforbrug"
-
 msgid "Media"
 msgstr "Medie"
 
 msgid "Medium acoustic output"
 msgstr "Medium akustisk output"
-
-msgid "Medium power usage with Standby"
-msgstr "Medium strømforbrug med standby"
-
-msgid "Medium power usage without Standby"
-msgstr "Medium strømforbrug uden standby"
 
 msgid "Memory usage"
 msgstr "Hukommelsesforbrug"
@@ -2487,12 +2563,6 @@ msgstr "Minimum ledig plads"
 
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minimum ydelse, minimum akustisk output"
-
-msgid "Minimum power usage with Standby"
-msgstr "Minimum strømforbrug med standby"
-
-msgid "Minimum power usage without Standby"
-msgstr "Monimum strømforbrug uden standby"
 
 msgid "Minutes between network time sync."
 msgstr "Minustter mellem netværks tids synkronisering."
@@ -2598,11 +2668,21 @@ msgstr "Netværk der er godkendt til at tilgå NFS sharet."
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Netværk der er godkendt til at tilgå iSCSI målet."
 
+msgid ""
+"Never - Poll (check) the device regardless of its power mode. This may cause "
+"a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+"Aldrig - Kontroller enheden uanset dens strømtilstand. Dette kan få en disk, "
+"der er holdt op med at køre, til at køre rundt igen når den kontrolleres"
+
 msgid "No"
 msgstr "Nej"
 
 msgid "No RSYNC Client configured"
 msgstr "Ingen RSYNC klient konfigureret"
+
+msgid "No case folding"
+msgstr "Ingen skift mellem store og små bogstaver"
 
 msgid "No disk configured"
 msgstr "Ingen diske konfigureret"
@@ -2872,11 +2952,18 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Platform"
 
+#, php-format
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr "Se venligst <a href='%s' target='_blank'>dokumentationen</a>."
+
 msgid "Please note that blanks in path names are not allowed."
 msgstr "Bemærk venligst at tomme stier ikke er tilladt."
 
 msgid "Polish"
 msgstr "Polsk"
+
+msgid "Polling time"
+msgstr "Kontrol tid"
 
 msgid "Port"
 msgstr "Port"
@@ -3079,6 +3166,9 @@ msgstr "Genstart"
 msgid "Receive Buffer Size"
 msgstr "Modtage buffer størrelse"
 
+msgid "Recurse into directories."
+msgstr "Medtag undermapper"
+
 msgid "Recursive"
 msgstr "Rekursiv"
 
@@ -3273,14 +3363,8 @@ msgstr "Plalagt tid"
 msgid "Scheduled"
 msgstr "Planlagt"
 
-msgid "Scheduled Self-Test"
-msgstr "Planlagt selv-test"
-
 msgid "Scheduled reboot"
 msgstr "Planlagt genstart"
-
-msgid "Scheduled self-tests"
-msgstr "Planlagte selv-tests"
 
 msgid "Scheduled shutdown"
 msgstr "Planlagt nedlukning"
@@ -3356,6 +3440,9 @@ msgstr "Tjenester"
 
 msgid "Set additional group memberships for this account."
 msgstr "Vælg yderligere gruppe medlemsskaber for denne konto."
+
+msgid "Set browseable"
+msgstr "Kan gennemsøges"
 
 msgid "Set read only"
 msgstr "Skrivebeskyttet"
@@ -3574,10 +3661,6 @@ msgstr "Statiske ruter"
 msgid "Status"
 msgstr "Status"
 
-#, php-format
-msgid "Status report from host: %s.%s"
-msgstr "Status rapport fra vært: %s.%s"
-
 #, c-format
 msgid "Status report successfully sent to: %s."
 msgstr "Status rapporten blev succesfuldt sendt til: %s"
@@ -3650,6 +3733,9 @@ msgstr "Skift til %s/s"
 msgid "Synchronization Time"
 msgstr "Synkroniserings tid"
 
+msgid "Syslog"
+msgstr "Syslog"
+
 #, php-format
 msgid ""
 "Syslog sends UDP datagrams to port 514 on the specified remote syslog "
@@ -3707,9 +3793,6 @@ msgstr "TKIP"
 
 msgid "Target"
 msgstr "Destination"
-
-msgid "Target Name"
-msgstr "Destinations navn"
 
 msgid "Target address"
 msgstr "Destinations adresse"
@@ -3922,6 +4005,9 @@ msgstr ""
 "Ændringerne blev gemt. Du skal <a href=%s>genstarte</a> systemet, inden "
 "ændringerne bliver anvendt."
 
+msgid "The cleartext credentials with which to bind."
+msgstr "Klartekst legitimationsoplysningerne der skal tilkobles."
+
 msgid "The combination of share and working directory does not exist."
 msgstr "Kombinationen af share og arbejdsmappe eksisterer ikke."
 
@@ -3951,6 +4037,9 @@ msgid ""
 msgstr ""
 "Det bekræftede kodeord passer ikke. Sørg venligst for at kodeordene passer "
 "præcist sammen."
+
+msgid "The credentials with which to bind."
+msgstr "Legitimationsoplysningerne der skal tilkobles."
 
 msgid "The cron job has been executed successfully."
 msgstr "Cron opgaven blev udført korrekt."
@@ -4074,6 +4163,13 @@ msgid ""
 msgstr ""
 "Minimum porten der allokeres til PASV data forbindelser (0 = brug hvilken "
 "som helst port)."
+
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
 
 msgid "The name or IP address of the LDAP server."
 msgstr "Navnet eller IP-adressen til LDAP serveren."
@@ -4229,6 +4325,14 @@ msgid "These parameters are added to %s."
 msgstr "Disse parametre er tilføjet til %s."
 
 #, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr "Disse parametre bliver tilføjet til [Global] sektionen i %s."
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr "Disse parametre bliver tilføjet til [Share] sektionen i %s."
+
+#, php-format
 msgid "These parameters will be added to global settings in %s."
 msgstr ""
 "Disse parametre vil blive tilføjet til de globale indstillinger i %s."
@@ -4237,10 +4341,6 @@ msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
 msgstr ""
 "Disse parametre vil blive tilføjet modul konfigurationen i rsyncd.conf."
-
-msgid ""
-"These parameters will be added to the share configuration in smb.conf."
-msgstr "Disse parametre vil blive tilføjet share konfigurationen i smb.conf."
 
 msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
@@ -4398,206 +4498,6 @@ msgstr "Dette navn kan f.eks. være: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is used to uniquely identify your UPS on this system."
 msgstr "Dette navn bruges til at unikt identificere din UPS på dette system."
-
-msgid "Time"
-msgstr "Tid"
-
-msgid "Time zone"
-msgstr "Tidszone"
-
-msgid "Timeout"
-msgstr "Timeout"
-
-msgid "To e-mail"
-msgstr "Til email"
-
-msgid "To email"
-msgstr "Til email"
-
-msgid "Tools"
-msgstr "Værktøjer"
-
-msgid "Tuning"
-msgstr "Finjustering"
-
-msgid "Type"
-msgstr "Type"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Uninstall package"
-msgstr "Afinstaller pakke"
-
-msgid "Unknown"
-msgstr "Ukendt"
-
-msgid "Unknown or unformatted"
-msgstr "Ukendt eller uformateret"
-
-msgid "Up"
-msgstr "Op"
-
-msgid "Updating in 5 seconds."
-msgstr "Opdaterer om 5 sekunder."
-
-msgid "User"
-msgstr "Bruger"
-
-msgid "User ID"
-msgstr "Bruger ID"
-
-msgid "User full name."
-msgstr "Brugerens fulde navn."
-
-msgid "User password."
-msgstr "Bruger adgangskode"
-
-msgid "Username"
-msgstr "Brugernavn"
-
-msgid "Users"
-msgstr "Brugere"
-
-msgid "Users and Groups"
-msgstr "Brugere og grupper"
-
-msgid "Version"
-msgstr "Version"
-
-msgid "WAN address"
-msgstr "WAN adresse"
-
-msgid "WINS server"
-msgstr "WINS server"
-
-msgid "Warning"
-msgstr "Advarsel"
-
-msgid "Webserver"
-msgstr "Webserver"
-
-msgid "Who"
-msgstr "Hvem"
-
-msgid "Workgroup"
-msgstr "Arbejdsgruppe"
-
-msgid "Write only"
-msgstr "Kun skrive"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "Your own email address."
-msgstr "Din egen email adresse."
-
-msgid "days"
-msgstr "dage"
-
-msgid "hours"
-msgstr "timer"
-
-msgid "minutes"
-msgstr "minutter"
-
-msgid "months"
-msgstr "måneder"
-
-msgid "n/a"
-msgstr "Ikke tilgængelig"
-
-msgid "seconds"
-msgstr "sekunder"
-
-msgid "week days"
-msgstr "uge dage"
-
-msgid "Aggregation protocol"
-msgstr "Aggregerings protokol"
-
-msgid "Anonymous bind"
-msgstr "Anonym bind"
-
-msgid "AutoScale"
-msgstr "AutoScale"
-
-msgid "Case Folding"
-msgstr "Skift mellem små og store bogstaver"
-
-msgid "Community"
-msgstr "Forum"
-
-msgid "Device polling"
-msgstr "Enheds polling"
-
-msgid ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling."
-msgstr ""
-"Enheds polling er en teknik der lader systemet periodisk undersøge "
-"netværksenheder efter ny data, istedet for at være afhængig af interrupts. "
-"Dette kan reducere CPU forbruget og derfor øge båndbredden, på bekostning af "
-"en fremsendelses forsinkelse (enhederne polles 1000 gange hvert sekund). "
-"Ikke alle netkort understøtter polling."
-
-msgid "Duplicate mount point name."
-msgstr "Duplikeret monterings punkts navn."
-
-msgid "Enable device polling"
-msgstr "Aktiver enheds polling"
-
-msgid "Failover"
-msgstr "Failover"
-
-msgid "Link Aggregation and Failover"
-msgstr "Link Aggregering og Failover"
-
-msgid "Loadbalance"
-msgstr "Belastnings balancering"
-
-msgid ""
-"Never - Poll (check) the device regardless of its power mode. This may cause "
-"a disk which is spun-down to be spun-up when it is checked."
-msgstr ""
-"Aldrig - Kontroller enheden uanset dens strømtilstand. Dette kan få en disk, "
-"der er holdt op med at køre, til at køre rundt igen når den kontrolleres"
-
-msgid "No case folding"
-msgstr "Ingen skift mellem store og små bogstaver"
-
-#, php-format
-msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
-msgstr "Se venligst <a href='%s' target='_blank'>dokumentationen</a>."
-
-msgid "Polling time"
-msgstr "Kontrol tid"
-
-msgid "Recurse into directories."
-msgstr "Medtag undermapper"
-
-msgid "Set browseable"
-msgstr "Kan gennemsøges"
-
-msgid "The cleartext credentials with which to bind."
-msgstr "Klartekst legitimationsoplysningerne der skal tilkobles."
-
-msgid "The credentials with which to bind."
-msgstr "Legitimationsoplysningerne der skal tilkobles."
-
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging in to "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-"Dette modul lavet automatiske udelukkelser, der aktiveres baseret på "
-"konfigurerbare kriterier. En udelukkelse forhindrer den udelukkede bruger, "
-"vært eller klasse i at logge ind på serveren, den forbindrer ikke den "
-"udelukkede bruger, vært eller klasse fra at oprette forbindelse til serveren."
 
 msgid ""
 "This option allows the users and groups that access a share to be specified. "
@@ -4784,6 +4684,9 @@ msgstr ""
 "Dette vil slette ALT data på din disk! Brug ikke denne valgmulighed, hvis du "
 "vil tilføje en eksisterende krypteret disk."
 
+msgid "Time"
+msgstr "Tid"
+
 msgid "Time interval"
 msgstr "Tidsinterval"
 
@@ -4793,8 +4696,20 @@ msgstr "Tidsserver"
 msgid "Time update interval"
 msgstr "Tids opdaterings interval"
 
+msgid "Time zone"
+msgstr "Tidszone"
+
+msgid "Timeout"
+msgstr "Timeout"
+
 msgid "Times"
 msgstr "Antal"
+
+msgid "To e-mail"
+msgstr "Til email"
+
+msgid "To email"
+msgstr "Til email"
 
 #, php-format
 msgid ""
@@ -4841,6 +4756,9 @@ msgstr ""
 msgid "Tolerated"
 msgstr "Tolereret"
 
+msgid "Tools"
+msgstr "Værktøjer"
+
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Ialt: %s | Brugt: %s | Ledigt: %s"
@@ -4882,8 +4800,14 @@ msgstr "Traps"
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protokol"
 
+msgid "Tuning"
+msgstr "Finjustering"
+
 msgid "Turn the monitor to standby after N seconds."
 msgstr "Sæt skærmen i standby efter N sekunder."
+
+msgid "Type"
+msgstr "Type"
 
 #, php-format
 msgid ""
@@ -4915,10 +4839,6 @@ msgstr "UPS"
 msgid "UPS disabled"
 msgstr "UPS deaktiveret"
 
-#, php-format
-msgid "UPS notification from host: %s"
-msgstr "UPS besked fra vært: %s"
-
 msgid "UPS reaches low battery"
 msgstr "UPS har lavt batteri"
 
@@ -4934,8 +4854,14 @@ msgstr "UPnP A/V Media Server"
 msgid "UPnP friendly name."
 msgstr "UPnP venligt navn."
 
+msgid "URL"
+msgstr "URL"
+
 msgid "Unformated"
 msgstr "Uformateret"
+
+msgid "Uninstall package"
+msgstr "Afinstaller pakke"
 
 msgid "Uninterruptible Power Supply"
 msgstr "Uninterruptible Power Supply"
@@ -4952,14 +4878,26 @@ msgstr "Unix kommando"
 msgid "Unix charset"
 msgstr "Unix tegnsæt"
 
+msgid "Unknown"
+msgstr "Ukendt"
+
+msgid "Unknown or unformatted"
+msgstr "Ukendt eller uformateret"
+
 msgid "Unmount disk/partition"
 msgstr "Afmonter disk/partition"
 
 msgid "Unmounting..."
 msgstr "Afmonterer..."
 
+msgid "Up"
+msgstr "Op"
+
 msgid "Update period"
 msgstr "Updaterings periode"
+
+msgid "Updating in 5 seconds."
+msgstr "Opdaterer om 5 sekunder."
 
 msgid "Upgrade firmware"
 msgstr "Opgrader firmware"
@@ -5038,14 +4976,35 @@ msgstr ""
 "tjenesten. Denne bruger skal eksistere i kodeords filen, men kræver ikke et "
 "gyldigt login."
 
+msgid "User"
+msgstr "Bruger"
+
+msgid "User ID"
+msgstr "Bruger ID"
+
+msgid "User full name."
+msgstr "Brugerens fulde navn."
+
 msgid "User numeric id."
 msgstr "Bruger nummerisk id."
+
+msgid "User password."
+msgstr "Bruger adgangskode"
 
 msgid "User suffix"
 msgstr "Bruger endelse"
 
+msgid "Username"
+msgstr "Brugernavn"
+
 msgid "Username of a domain administrator account."
 msgstr "Brugernavnet på domæne administrator kontoen."
+
+msgid "Users"
+msgstr "Brugere"
+
+msgid "Users and Groups"
+msgstr "Brugere og grupper"
 
 msgid "VLAN"
 msgstr "VLAN"
@@ -5059,6 +5018,9 @@ msgstr "Værdi"
 msgid "Variable"
 msgstr "Variabel"
 
+msgid "Version"
+msgstr "Version"
+
 msgid "Virtual interface"
 msgstr "Virtuel grænseflade"
 
@@ -5071,8 +5033,14 @@ msgstr "Volume mærkat"
 msgid "Volume label of the new file system."
 msgstr "Volume mærket på det nye filsystem."
 
+msgid "WAN address"
+msgstr "WAN adresse"
+
 msgid "WEP"
 msgstr "WEP"
+
+msgid "WINS server"
+msgstr "WINS server"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
 msgstr "WINS server IP-adresse (f.eks. fra en MS Active Directory server)."
@@ -5091,6 +5059,9 @@ msgstr "WPA-PSK WPA-EAP"
 
 msgid "Wake On LAN"
 msgstr "Wake On LAN"
+
+msgid "Warning"
+msgstr "Advarsel"
 
 #, php-format
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
@@ -5115,6 +5086,9 @@ msgstr ""
 msgid "WebGUI"
 msgstr "WebGUI"
 
+msgid "Webserver"
+msgstr "Webserver"
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5136,11 +5110,17 @@ msgstr ""
 "brugere. Dette tillader at drevet kan stoppe, når der ikke er nogen brugere "
 "forbundet."
 
+msgid "Who"
+msgstr "Hvem"
+
 msgid "Wildcard"
 msgstr "Jokertegn"
 
 msgid "Wireless configuration"
 msgstr "Trådløs opsætning"
+
+msgid "Workgroup"
+msgstr "Arbejdsgruppe"
 
 msgid ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
@@ -5155,8 +5135,14 @@ msgstr "Arbejdsmappe"
 msgid "Write"
 msgstr "Skrive"
 
+msgid "Write only"
+msgstr "Kun skrive"
+
 msgid "Wrong partition type or partition number."
 msgstr "Forkert partitions type eller partitions nummer."
+
+msgid "Yes"
+msgstr "Ja"
 
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
@@ -5164,6 +5150,13 @@ msgid ""
 msgstr ""
 "Du kan også installere en pakke via SSH eller konsollen, ved at bruge "
 "pkg_add kommandoen.<br>Eksempel: pkg_add -r pakkenavn"
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Du kan bruge følgende parametre til erstatning: <div "
+"id='enumeration'><ul><li>%d - Dato</li><li>%h - Værtsnavn</li></ul></div>"
 
 #, php-format
 msgid ""
@@ -5222,6 +5215,9 @@ msgstr "Du skal bruge en adgangskode for at tilkoble en krypteret disk."
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr "Du bør bruge HTTPS som WebGUI protokol for at sende adgangskoden."
 
+msgid "Your own email address."
+msgstr "Din egen email adresse."
+
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
@@ -5243,12 +5239,18 @@ msgstr "crlf"
 msgid "day"
 msgstr "dag"
 
+msgid "days"
+msgstr "dage"
+
 msgid "dbpath"
 msgstr "dbpath"
 
 #, php-format
 msgid "e.g. %s"
 msgstr "f.eks. %s"
+
+msgid "hours"
+msgstr "timer"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI initiator"
@@ -5262,14 +5264,23 @@ msgstr "iSCSI initiator deaktiveret"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "minutes"
+msgstr "minutter"
+
 msgid "mirroring"
 msgstr "spejling"
+
+msgid "months"
+msgstr "måneder"
 
 msgid "mount"
 msgstr "mount"
 
 msgid "mswindows"
 msgstr "mswindows"
+
+msgid "n/a"
+msgstr "Ikke tilgængelig"
 
 msgid "noadouble"
 msgstr "noadouble"
@@ -5295,6 +5306,9 @@ msgstr "rc.conf"
 msgid "rotated block-interleaved parity"
 msgstr "roteret block-interleaved paritet"
 
+msgid "seconds"
+msgstr "sekunder"
+
 msgid "striping"
 msgstr "striping"
 
@@ -5309,3 +5323,47 @@ msgstr "umount"
 
 msgid "upriv"
 msgstr "upriv"
+
+msgid "week days"
+msgstr "uge dage"
+
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "Minimum strømforbrug med standby"
+
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "Medium strømforbrug med standby"
+
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "Monimum strømforbrug uden standby"
+
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "Medium strømforbrug uden standby"
+
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "Maksimum ydelse, maksimum strømforbrug"
+
+#~ msgid "Target Name"
+#~ msgstr "Destinations navn"
+
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr "Disse parametre vil blive tilføjet share konfigurationen i smb.conf."
+
+#, php-format
+#~ msgid "Status report from host: %s.%s"
+#~ msgstr "Status rapport fra vært: %s.%s"
+
+#, php-format
+#~ msgid "UPS notification from host: %s"
+#~ msgstr "UPS besked fra vært: %s"
+
+#~ msgid ""
+#~ "The module provides automatic bans that are triggered based on configurable "
+#~ "criteria. A ban prevents the banned user, host, or class from logging in to "
+#~ "the server, it does not prevent the banned user, host, or class from "
+#~ "connecting to the server."
+#~ msgstr ""
+#~ "Dette modul lavet automatiske udelukkelser, der aktiveres baseret på "
+#~ "konfigurerbare kriterier. En udelukkelse forhindrer den udelukkede bruger, "
+#~ "vært eller klasse i at logge ind på serveren, den forbindrer ikke den "
+#~ "udelukkede bruger, vært eller klasse fra at oprette forbindelse til serveren."
