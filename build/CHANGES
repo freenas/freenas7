@@ -1,3 +1,27 @@
+FreeNAS 0.69.3 (Kaitain):
+-------------------------
+
+Bug fixes:
+- Fix cross site scripting vulnerability in graph (BR 2804671). Thanks to
+  ratmandall.
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+- It is not possible to get seperate CPU stats per processor on SMP machines because
+  FreeBSD does not support that feature.
+- Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
+- It is not possible to mount EXT2 disks with an inode size of 256 bytes. You
+  have to format it with 128 bytes on Linux to use them on FreeBSD.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
+  overriden by the IPv4 DNS server.
+
+Help needed:
+- Need help for adding LDAP authentication feature:
+  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
+
 FreeNAS 0.69.2 (Muad'Dib):
 --------------------------
 
@@ -56,10 +80,6 @@ Permanent restrictions:
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
   overriden by the IPv4 DNS server.
-
-Help needed:
-- Need help for adding LDAP authentication feature:
-  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.69.1 (Omnius):
 ------------------------
