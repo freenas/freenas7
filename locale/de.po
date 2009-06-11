@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-04 19:29+0000\n"
+"X-Launchpad-Export-Date: 2009-06-11 02:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -597,6 +597,9 @@ msgstr "Kennwort für Bind"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr "untätig"
+
 msgid "Browseable"
 msgstr "Sichtbar"
 
@@ -883,6 +886,9 @@ msgstr "Dienstereignisse"
 msgid "Daemon log"
 msgstr "Dienstprotokoll"
 
+msgid "Danish"
+msgstr "dänisch"
+
 msgid "Data integrity"
 msgstr "Datenintegrität"
 
@@ -949,6 +955,9 @@ msgstr "Alle Optionen löschen"
 
 msgid "Delete all rules"
 msgstr "Lösche alle Regeln"
+
+msgid "Delete all self-tests"
+msgstr "Alle Selbsttests löschen"
 
 msgid "Delete command"
 msgstr "Lösche Befehl"
@@ -1173,6 +1182,9 @@ msgstr "Wollen Sie wirklich sämtliche MIBs löschen?"
 
 msgid "Do you really want to delete all rules?"
 msgstr "Wollen Sie wirklich alle Regeln löschen?"
+
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr "Wollen Sie wirklich sämtliche geplanten Selbsttests löschen?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "Wollen Sie wirklich diese MIB löschen?"
@@ -1724,6 +1736,9 @@ msgstr "FTP-Proxy"
 msgid "FTP events"
 msgstr "FTP-Ereignisse"
 
+msgid "FTP file transfer"
+msgstr "FTP-Datenübertragung"
+
 msgid "FTP log"
 msgstr "FTP-Log"
 
@@ -1820,6 +1835,9 @@ msgstr "Dateisystem"
 
 msgid "File system check"
 msgstr "Dateisystemüberprüfung"
+
+msgid "File transfer"
+msgstr "Dateiübertragung"
 
 msgid "Filename"
 msgstr "Dateiname"
@@ -2324,6 +2342,24 @@ msgid ""
 msgstr ""
 "Lass '%s' für unformatierte Festplatten und formatiere sie mit dem <a "
 "href=%s>Formatieren</a> Menü."
+
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr "Level 1 - Minimaler Stromverbrauch mit Standby ('spindown')"
+
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr "Level 127 - Mittlerer Stromverbrauch mit Standby"
+
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr "Level 128 - Minimaler Stromverbrauch ohne Standby (kein 'spindown')"
+
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr "Level 192 - Mittlerer Stromverbrauch ohne Standby"
+
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr "Level 254 - Maximale Leistung, maximaler Stromverbrauch"
+
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr "Level 64 - Mittlerer Stromverbrauch mit Standby"
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
@@ -2961,6 +2997,10 @@ msgstr "Ping / Traceroute"
 
 msgid "Platform"
 msgstr "Plattform"
+
+#, php-format
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr "Bitte überprüfe die <a href='%s' target='_blank'>Dokumentation</a>."
 
 msgid "Please note that blanks in path names are not allowed."
 msgstr "Bitte beachten, dass Leerstellen in Pfadnamen nicht erlaubt sind."
@@ -3758,6 +3798,9 @@ msgstr "Schalte um zu %s/s"
 msgid "Synchronization Time"
 msgstr "Synchronisationzeit"
 
+msgid "Syslog"
+msgstr "Syslog"
+
 #, php-format
 msgid ""
 "Syslog sends UDP datagrams to port 514 on the specified remote syslog "
@@ -4206,6 +4249,17 @@ msgstr ""
 "Der kleinstmögliche zuweisbare Port, der 'PASV style' Datenverbindungen "
 "ermöglicht (0 = Verwende jeden Port)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"Dieses Modul gibt die automatischen Bann an, die aufgrund konfigurierbarer "
+"Kriterien ausgelöst werden. Ein Bann verhindert, daß ein gebannter Benutzer, "
+"Rechner, Klasse sich beim Server anmeldet, es verhindert nicht, daß der "
+"gebannte Benutzer, Rechnder oder Klasse sich zum Server verbindet."
+
 msgid "The name or IP address of the LDAP server."
 msgstr "Der Name oder die IP-Adresse des LDAP Server."
 
@@ -4362,6 +4416,14 @@ msgstr ""
 #, php-format
 msgid "These parameters are added to %s."
 msgstr "Diese Parameter werden %s hinzugefügt."
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr "Diese Parameter werden dem [Global] Abschnitt in %s hinzugefügt."
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr "Diese Parameter werden dem [Share] Abschnitt in %s hinzugefügt."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -5199,6 +5261,13 @@ msgstr ""
 "Sie können ebenfalls ein Packet mittels SSH oder Konsole unter Benutzung des "
 "Kommandos pkg_add installieren.<br>Beispiel: pkg_add -r Packetname"
 
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Folgende Parameter können als Ersetzungen verwendet werden:<div "
+"id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostname</li></ul></div>"
+
 #, php-format
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
@@ -5400,72 +5469,3 @@ msgstr "Wochentagen"
 #, php-format
 #~ msgid "Status report from host: %s.%s"
 #~ msgstr "Statusbericht von Host: %s.%s"
-
-msgid "Blank time"
-msgstr "untätig"
-
-msgid "Danish"
-msgstr "dänisch"
-
-msgid "Delete all self-tests"
-msgstr "Alle Selbsttests löschen"
-
-msgid "Do you really want to delete all scheduled self-tests?"
-msgstr "Wollen Sie wirklich sämtliche geplanten Selbsttests löschen?"
-
-msgid "FTP file transfer"
-msgstr "FTP-Datenübertragung"
-
-msgid "File transfer"
-msgstr "Dateiübertragung"
-
-msgid "Level 1 - Minimum power usage with Standby (spindown)"
-msgstr "Level 1 - Minimaler Stromverbrauch mit Standby ('spindown')"
-
-msgid "Level 127 - Intermediate power usage with Standby"
-msgstr "Level 127 - Mittlerer Stromverbrauch mit Standby"
-
-msgid "Level 128 - Minimum power usage without Standby (no spindown)"
-msgstr "Level 128 - Minimaler Stromverbrauch ohne Standby (kein 'spindown')"
-
-msgid "Level 192 - Intermediate power usage without Standby"
-msgstr "Level 192 - Mittlerer Stromverbrauch ohne Standby"
-
-msgid "Level 254 - Maximum performance, maximum power usage"
-msgstr "Level 254 - Maximale Leistung, maximaler Stromverbrauch"
-
-msgid "Level 64 - Intermediate power usage with Standby"
-msgstr "Level 64 - Mittlerer Stromverbrauch mit Standby"
-
-#, php-format
-msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
-msgstr "Bitte überprüfe die <a href='%s' target='_blank'>Dokumentation</a>."
-
-msgid "Syslog"
-msgstr "Syslog"
-
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging into "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-"Dieses Modul gibt die automatischen Bann an, die aufgrund konfigurierbarer "
-"Kriterien ausgelöst werden. Ein Bann verhindert, daß ein gebannter Benutzer, "
-"Rechner, Klasse sich beim Server anmeldet, es verhindert nicht, daß der "
-"gebannte Benutzer, Rechnder oder Klasse sich zum Server verbindet."
-
-#, php-format
-msgid "These parameters are added to [Global] section of %s."
-msgstr "Diese Parameter werden dem [Global] Abschnitt in %s hinzugefügt."
-
-#, php-format
-msgid "These parameters are added to [Share] section of %s."
-msgstr "Diese Parameter werden dem [Share] Abschnitt in %s hinzugefügt."
-
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
-msgstr ""
-"Folgende Parameter können als Ersetzungen verwendet werden:<div "
-"id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostname</li></ul></div>"

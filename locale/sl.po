@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-04 19:28+0000\n"
+"X-Launchpad-Export-Date: 2009-06-11 02:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -34,8 +34,16 @@ msgid "%s interface"
 msgstr "%s vmesnik"
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr "%s od %sB"
+
+#, php-format
+msgid "%s on %s (%dMHz)"
+msgstr ""
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -49,8 +57,19 @@ msgstr "navoljo %sB od %sB"
 msgid "%sB used of %sB"
 msgstr "uporabljeno %sB od %sB"
 
+msgid "*** Imported duplicate ***"
+msgstr ""
+
+msgid ""
+"1. Use these specials actions for debugging only!<br>2. There is no need of "
+"using this menu for starting a RAID volume (start automaticaly)."
+msgstr ""
+
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN oznaka (med 1 in 4094)."
+
+msgid "<->"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -61,12 +80,48 @@ msgstr ""
 "href=%s>uporabnik</a> mora imeti omogočeno celotno lupino."
 
 msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+msgstr ""
+
+msgid ""
+"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older "
+"rsync.</li><li>Before - File-deletions will be done before the transfer "
+"starts.</li><li>During - File-deletions will be done incrementally as the "
+"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"transfer, and then removed after the transfer completes.</li><li>After - "
+"File-deletions will be done after the transfer has completed.</li>"
+msgstr ""
+
+msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Ime NTP strežnika lahko vsebuje le znake a-z, 0-9, '-' in '.'."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
 msgstr "VLAN z oznako %s je že določen na tem vmesniku."
+
+msgid ""
+"A directory listing is generated if a directory is requested and no index-"
+"file (index.php, index.html, index.htm or default.htm) was found in that "
+"directory."
+msgstr ""
+
+msgid ""
+"A host name alias. This option can appear multiple times, for each domain "
+"that has the same IP. Use a space to separate multiple alias names."
+msgstr ""
+
+msgid ""
+"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
+"local network and the capabilities of the adaptor. It may be specified "
+"either as a plain string or as a string of hexadecimal digits preceded by "
+"'0x'."
+msgstr ""
 
 msgid "A route to this destination network already exists."
 msgstr "Pot do ciljnega omrežja že obstaja."
@@ -81,6 +136,9 @@ msgstr ""
 
 msgid "A valid IPv4 address must be specified."
 msgstr "Določen mora biti veljaven IPv4 naslov."
+
+msgid "A valid IPv4 network bit count must be specified."
+msgstr ""
 
 msgid "A valid IPv6 Gateway address must be specified."
 msgstr "Določen mora biti veljaven naslov IPv6 prehoda."
@@ -105,6 +163,9 @@ msgstr "Naveden mora biti veljaven IP naslov."
 msgid "A valid mtu size must be specified."
 msgstr "Nastavljena mora biti pravila mtu velikost."
 
+msgid "A valid network bit count (1-32) must be specified."
+msgstr ""
+
 msgid "A valid network bit count must be specified."
 msgstr "Vnešen mora biti veljaven podomrežni bit."
 
@@ -114,11 +175,23 @@ msgstr "Določeno mora biti veljavno omrežje."
 msgid "A valid prefix (1-128) must be specified."
 msgstr "Določena mora biti veljavna predpona (1-128)."
 
+msgid "A valid systctl MIB value."
+msgstr ""
+
+msgid "AD authentication disabled"
+msgstr ""
+
 msgid "AD or PDC name."
 msgstr "AD ali PDC ime."
 
 msgid "AFP"
 msgstr "AFP"
+
+msgid "ARP Tables"
+msgstr ""
+
+msgid "ARP tables"
+msgstr ""
 
 msgid "Access"
 msgstr "Dostop"
@@ -131,6 +204,9 @@ msgstr "Način dostopa"
 
 msgid "Acoustic level"
 msgstr "Nivo glasnosti"
+
+msgid "Action"
+msgstr ""
 
 msgid "Activate"
 msgstr "Aktiviraj"
@@ -154,14 +230,23 @@ msgstr "Dodaj"
 msgid "Add Host"
 msgstr "Dodaj gostitelja"
 
+msgid "Add MIB"
+msgstr ""
+
 msgid "Add RAID"
 msgstr "Dodaj RAID"
 
 msgid "Add Route"
 msgstr "Dodaj pot"
 
+msgid "Add Rsync job"
+msgstr ""
+
 msgid "Add URL"
 msgstr "Dodaj URL"
+
+msgid "Add additional scheduled self-test."
+msgstr ""
 
 msgid "Add command"
 msgstr "Dodaj ukaz"
@@ -172,8 +257,14 @@ msgstr "Dodaj napravo"
 msgid "Add disk"
 msgstr "Dodaj disk"
 
+msgid "Add extent"
+msgstr ""
+
 msgid "Add group"
 msgstr "Dodaj skupino"
+
+msgid "Add initiator"
+msgstr ""
 
 msgid "Add interface"
 msgstr "Dodaj vmesnik"
@@ -181,11 +272,20 @@ msgstr "Dodaj vmesnik"
 msgid "Add job"
 msgstr "Dodaj opravilo"
 
+msgid "Add module"
+msgstr ""
+
 msgid "Add mount point"
 msgstr "Dodaj priklopno točko"
 
 msgid "Add option"
 msgstr "Dodaj možnost"
+
+msgid "Add rule"
+msgstr ""
+
+msgid "Add self-test"
+msgstr ""
 
 msgid "Add share"
 msgstr "Dodaj deljeno mapo"
@@ -198,6 +298,9 @@ msgstr "Dodaj uporabnika"
 
 msgid "Additional group"
 msgstr "Dodatna skupina"
+
+msgid "Additional parameters to the hardware-specific part of the driver."
+msgstr ""
 
 msgid "Address"
 msgstr "Naslov"
@@ -251,1804 +354,25 @@ msgstr ""
 "naslov vašega računalnika</span></li><li><span class='vexpl'>odpreti webGUI "
 "na novem IP naslovu</span></li></ul>"
 
+msgid "Aggregation protocol"
+msgstr ""
+
 msgid "All"
 msgstr "Vse"
 
 msgid "All dirs"
 msgstr "Vse mape"
 
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "Vsi uporabniki bodo imeli root pravice."
 
 msgid "Allow"
 msgstr "Dovoli"
-
-#, php-format
-msgid "Allows %s to try and become a local master browser."
-msgstr "Dovoli %s, da poizkuša postati glavni lokalni brskalnik."
-
-msgid "Alternate TCP port. Default is 22"
-msgstr "Alternativna TCP vrata. Privzeta so 22."
-
-msgid "Alternate TCP port. Default is 873"
-msgstr "Alternativna TCP vrata. Privzeta so 873."
-
-msgid "Always on"
-msgstr "Vedno vklopljen"
-
-msgid "An host with this name already exists."
-msgstr "Gostitelj s tem imenom že obstaja."
-
-msgid "Anonymous users only"
-msgstr "Samo anonimni uporabniki"
-
-msgid "Apply changes"
-msgstr "Uveljavi spremembe"
-
-msgid "Are you sure you want to proceed?"
-msgstr "Ste prepričani, da želite nadaljevati?"
-
-msgid "Are you sure you want to reboot the system?"
-msgstr "Ali ste prepričani, da želite znova zagnati sistem?"
-
-msgid "Are you sure you want to shutdown the system?"
-msgstr "Ste prepričani, da želite ugasniti sistem?"
-
-msgid "Attached"
-msgstr "Pripet"
-
-msgid "Authentication"
-msgstr "Overjanje"
-
-msgid "Auto"
-msgstr "Samodejno"
-
-msgid "AutoScale"
-msgstr "AvtoSkala"
-
-msgid "Auxiliary parameters"
-msgstr "Dodatni parametri"
-
-msgid "Backup configuration"
-msgstr "Varnostna kopija nastavitev"
-
-msgid "Backup/Restore"
-msgstr "Shrani/Naloži"
-
-msgid "Balance algorithm"
-msgstr "Algoritem ravnotežja"
-
-msgid "Banner"
-msgstr "Sporočilo"
-
-msgid "Base DN"
-msgstr "Base DN"
-
-msgid "Browseable"
-msgstr "Brskalno"
-
-msgid "CD/DVD or Old Software RAID"
-msgstr "CD/DVD ali star programski RAID"
-
-msgid "CIFS/SMB"
-msgstr "CIFS/SMB"
-
-msgid "CIFS/SMB disabled"
-msgstr "CIFS/SMB onemogočen"
-
-msgid "CIFS/SMB informations"
-msgstr "CIFS/SMB informacije"
-
-msgid "CPU load"
-msgstr "Obremenitev CPE"
-
-msgid "CPU usage"
-msgstr "Raba CPE"
-
-msgid "Can't mount the system partition 1, the DATA partition is the 2."
-msgstr ""
-"Ne morem priklopiti sistemske particije 1, PODATKOVNA particija je 2."
-
-msgid "Cannot get data about interface"
-msgstr "Ne morem pridobiti podatkov o vmesniku"
-
-msgid "Certificate"
-msgstr "Certifikat"
-
-msgid "Changes to this option will take effect after a reboot."
-msgstr "Te spremembe bodo začele veljati po ponovnem zagonu."
-
-msgid "Channel"
-msgstr "Kanal"
-
-msgid "Check interval"
-msgstr "Interval preverjanja"
-
-msgid "Choose which interface this route applies to."
-msgstr "Izberite za kateri vmesnik velja ta pot."
-
-msgid ""
-"Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
-"process."
-msgstr ""
-"Spodaj kliknite &quot;Omogoči nalaganje firmware&quot;, nato izberite sliko "
-"za nalaganje.<br>Za začetek nadgradnje pa kliknite &quot;Nadgradi "
-"firmware&quot;."
-
-msgid "Click this button to download the system configuration in XML format."
-msgstr "Kliknite za gumb za shranitev sistemsktih nastavitev v XML datoteko."
-
-msgid "Client"
-msgstr "Odjemalec"
-
-msgid "Collecting initial data, please wait..."
-msgstr "Zbiranje podatkov, prosim počakajte..."
-
-msgid "Collisions"
-msgstr "Trki"
-
-msgid "Cols"
-msgstr "Stolpci"
-
-msgid "Command"
-msgstr "Ukaz"
-
-msgid "Command output:"
-msgstr "Izpis ukaza:"
-
-msgid "Comment"
-msgstr "Opomba"
-
-msgid "Community"
-msgstr "Skupnost"
-
-msgid "Compression"
-msgstr "Stiskanje"
-
-msgid ""
-"Compression is worth using if your connection is slow. The efficiency of the "
-"compression depends on the type of the file, and varies widely. Useful for "
-"internet transfer only."
-msgstr ""
-"Stiskanje je smiselno, če je vaša povezava počasna. Učinkovitost stiskanja "
-"je odvisna od vrste datotek in se lahko zelo razlikuje. Uporabno le za "
-"internetne prenose."
-
-msgid "Configuring"
-msgstr "Nastavljanje"
-
-msgid "Confirmation"
-msgstr "Potrditev"
-
-msgid "Connected FTP users"
-msgstr "Priklopljeni uporabniki FTP"
-
-msgid "Console menu"
-msgstr "Menu konzole"
-
-msgid "Contact"
-msgstr "Stik"
-
-msgid "Content"
-msgstr "Vsebina"
-
-msgid "Count"
-msgstr "Število"
-
-msgid "Create"
-msgstr "Ustvari"
-
-msgid "Create work directory if it doesn't exist"
-msgstr "Ustvari delovni imenik, če ne obstaja"
-
-msgid "Creating filesystem"
-msgstr "Ustvarjanje datotečnega sistema"
-
-msgid "Creating filesystem with 'Soft Updates'"
-msgstr "Ustvarjanje datotečnega sistema z 'Mehke nadgradnje'"
-
-msgid "DHCP"
-msgstr "DHCP"
-
-msgid "DNS settings"
-msgstr "DNS nastavitve"
-
-msgid "Daemon events"
-msgstr "Demon dogodki"
-
-msgid "Data integrity"
-msgstr "Neokrnjenost podatkov"
-
-msgid "Date"
-msgstr "Datum"
-
-msgid "Default"
-msgstr "Privzeto"
-
-msgid "Delete"
-msgstr "Izbriši"
-
-msgid "Delete ARP entry"
-msgstr "Odstrani ARP vnos"
-
-msgid "Delete Host"
-msgstr "Odstrani gostitelja"
-
-msgid "Delete RAID"
-msgstr "Odstrani RAID"
-
-msgid "Delete Route"
-msgstr "Odstrani pot"
-
-msgid "Delete URL"
-msgstr "Izbriši URL"
-
-msgid "Delete all options"
-msgstr "Izbriši vse možnosti"
-
-msgid "Delete command"
-msgstr "Odstrani ukaz"
-
-msgid "Delete device"
-msgstr "Izbriši napravo"
-
-msgid "Delete disk"
-msgstr "Odstrani disk"
-
-msgid "Delete group"
-msgstr "Odstrani skupino"
-
-msgid "Delete interface"
-msgstr "Odstrani vnesnik"
-
-msgid "Delete job"
-msgstr "Izbriši opravilo"
-
-msgid "Delete mount point"
-msgstr "Izbriši priklopno točko"
-
-msgid "Delete option"
-msgstr "Izbrišite izbiro"
-
-msgid "Delete share"
-msgstr "Izbriši deljeno mapo"
-
-msgid "Delete target"
-msgstr "Odstrani cilj"
-
-msgid "Delete user"
-msgstr "Odstrani uporabnika"
-
-msgid "Deleting"
-msgstr "Brisanje"
-
-msgid "Deny"
-msgstr "Zavrni"
-
-msgid "Description"
-msgstr "Opis"
-
-msgid "Destination"
-msgstr "Cilj"
-
-msgid "Destination email address."
-msgstr "CIjni naslov e-pošte."
-
-msgid "Destination network"
-msgstr "Ciljno omrežje"
-
-msgid "Destination network for this static route"
-msgstr "Ciljno omrežje za to statično pot"
-
-msgid "Destination share"
-msgstr "Ciljni deljeni vir"
-
-msgid "Detected RSYNC remote shares"
-msgstr "Najdeni oddaljeni RSYNC deljeni viri"
-
-msgid "Device"
-msgstr "Naprava"
-
-msgid "Device IP"
-msgstr "IP naprave"
-
-msgid "Device name"
-msgstr "Ime naprave"
-
-msgid "Device polling"
-msgstr "Prioritete naprave"
-
-msgid "Diagnostics"
-msgstr "Diagnostika"
-
-msgid "Difference"
-msgstr "Razlika"
-
-msgid "Directory"
-msgstr "Mapa"
-
-msgid "Disable console menu"
-msgstr "Onemogoči menu konzole"
-
-msgid "Disable firmware upload"
-msgstr "Onemogoči nalaganje firmware"
-
-msgid "Disable firmware version check"
-msgstr "Onemogoči preverjanje Firmware verzije"
-
-msgid "Disable speaker beep on startup and shutdown"
-msgstr "Onemogoči sistemski zvok ob zagonu in izklopu"
-
-msgid "Disabled"
-msgstr "Onemogočen"
-
-msgid "Disk"
-msgstr "Disk"
-
-msgid "Disk Name"
-msgstr "Ime diska"
-
-msgid "Disk space usage"
-msgstr "Uporaba diska"
-
-msgid "Disks"
-msgstr "Diski"
-
-msgid "Disks (ATA)"
-msgstr "Diski (ATA)"
-
-msgid "Do you really want to delete all options?"
-msgstr "Ali res želite izbrisati vse možnosti?"
-
-msgid "Do you really want to delete this URL?"
-msgstr "Ali res želite izbrisati ta URL?"
-
-msgid "Do you really want to delete this command?"
-msgstr "Res želite odstraniti ta ukaz?"
-
-msgid "Do you really want to delete this cron job?"
-msgstr "Ali res želite izbrisati to cron opravilo?"
-
-msgid "Do you really want to delete this device?"
-msgstr "Ali res želite izbrisati to napravo?"
-
-msgid ""
-"Do you really want to delete this disk? All elements that still use it will "
-"become invalid (e.g. share)!"
-msgstr ""
-"Ali res želite odstraniti ta disk? Vsi elementi, ki ga uporabljajo, bodo "
-"postali neveljavni (npr. deljene mape)!"
-
-msgid "Do you really want to delete this group?"
-msgstr "Ali res želite odstraniti to skupino?"
-
-msgid "Do you really want to delete this host?"
-msgstr "Res želite odstraniti tega gostitelja?"
-
-msgid "Do you really want to delete this interface?"
-msgstr "Ali res želite izbrisati ta vmesnik?"
-
-msgid ""
-"Do you really want to delete this mount point? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"ALi res želite odstraniti to točko priklopa? Vsi elementi, ki jo "
-"uporabljajo, ne bodo več veljavni (npr. deljene mape)!"
-
-msgid "Do you really want to delete this option?"
-msgstr "Ali res želite izbrisati to možnost?"
-
-msgid "Do you really want to delete this route?"
-msgstr "Ali res želite odstraniti to pot?"
-
-msgid "Do you really want to delete this share?"
-msgstr "Ali res želite izbrisati to deljeno mapo?"
-
-msgid "Do you really want to delete this target?"
-msgstr "Res želite odstraniti ta cilj?"
-
-msgid "Do you really want to delete this user?"
-msgstr "Ali res želite izbrisati tega uporabnika?"
-
-msgid "Do you really want to format this disk? All data will be lost!"
-msgstr "Ali res želite formatirati ta disk? Vsi podatki bodo izgubljeni!"
-
-msgid "Domain"
-msgstr "Domena"
-
-msgid "Domain name"
-msgstr "Ime domene"
-
-msgid "Don't Erase MBR"
-msgstr "Ne izbriši MBR"
-
-msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr "Ne izbriši MBR (uporabno pri nekaterih RAID kontrolerjih)"
-
-msgid "Done"
-msgstr "Narejeno"
-
-msgid "Done."
-msgstr "Opravljeno."
-
-msgid "Dos charset"
-msgstr "Dos kodna tabela"
-
-msgid "Download configuration"
-msgstr "Snami/shrani nastavitve"
-
-msgid "Duplex"
-msgstr "Duplex"
-
-msgid "Dynamic DNS"
-msgstr "Dinamični DNS"
-
-msgid "Edit"
-msgstr "Uredi"
-
-msgid "Edit Host"
-msgstr "Uredi gostitelja"
-
-msgid "Edit RAID"
-msgstr "Uredi RAID"
-
-msgid "Edit Route"
-msgstr "Uredi pot"
-
-msgid "Edit URL"
-msgstr "Uredi URL"
-
-msgid "Edit command"
-msgstr "Uredi ukaz"
-
-msgid "Edit device"
-msgstr "Uredi napravo"
-
-msgid "Edit disk"
-msgstr "Uredi disk"
-
-msgid "Edit group"
-msgstr "Uredi skupino"
-
-msgid "Edit interface"
-msgstr "Uredi vmesnik"
-
-msgid "Edit job"
-msgstr "Uredi opravilo"
-
-msgid "Edit module"
-msgstr "Uredi modul"
-
-msgid "Edit mount point"
-msgstr "Uredi priklopno točko"
-
-msgid "Edit option"
-msgstr "Uredi možnost"
-
-msgid "Edit share"
-msgstr "Uredi deljeno mapo"
-
-msgid "Edit user"
-msgstr "Uredi uporabnika"
-
-msgid "Email"
-msgstr "E-pošta"
-
-msgid "Enable"
-msgstr "Omogoči"
-
-msgid "Enable FXP protocol."
-msgstr "Omogoči FXP protokol."
-
-msgid "Enable NTP"
-msgstr "Omogoči NTP"
-
-msgid "Enable Zeroconf/Bonjour to advertise services of this device"
-msgstr "Omogoči Zeroconf/Bonjour za oglaševanje te naprave"
-
-msgid "Enable compression."
-msgstr "Omogoči stiskanje."
-
-msgid "Enable device polling"
-msgstr "Omogoči polling naprav"
-
-msgid "Enable firmware upload"
-msgstr "Omogoči nalaganje firmware"
-
-msgid "Enable guest access."
-msgstr "Omogoči dostop gostom."
-
-msgid "Enable large read/write"
-msgstr "Omogoči veliko branje/pisanje"
-
-msgid "Enable local user authentication."
-msgstr "Omogoči preverjanje lokalnih uporabnikov."
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Omogoči sistemski dnevnik na oddaljeni syslog strežnik"
-
-msgid "Enable the system power control utility"
-msgstr "Omogoči sistemsko kontrolo nad električno porabo"
-
-msgid "Enable tuning of some kernel variables"
-msgstr "Omogoči uravnavanje nekaterih spremenljivk jedra."
-
-msgid "Enable web user interface."
-msgstr "Omogoči spletni uporabniški vmesnik"
-
-msgid "Enabled"
-msgstr "Omogočen"
-
-msgid "Encrypted disk name"
-msgstr "Ime šifriranega pogona"
-
-#, php-format
-msgid "Encrypting '%s'... Please wait"
-msgstr "Kriptiranje '%s'... Prosim počakajte"
-
-msgid "Encryption"
-msgstr "Šifriranje"
-
-msgid "Encryption algorithm"
-msgstr "Algoritem šifriranja"
-
-msgid "Error"
-msgstr "Napaka"
-
-msgid "Execute"
-msgstr "Izvedi"
-
-msgid "Execute command"
-msgstr "Izvedi"
-
-msgid "Extensions"
-msgstr "Razširitve"
-
-msgid "Extra options"
-msgstr "Dodatne možnosti"
-
-msgid "Extra options to ifconfig (usually empty)."
-msgstr "Dodatne možnosti za ifconfig (ponavadi prazno)."
-
-msgid "FTP"
-msgstr "FTP"
-
-msgid "FTP Proxy"
-msgstr "FTP posrednik"
-
-msgid "FTP events"
-msgstr "FTP dogodki"
-
-msgid "FTP log"
-msgstr "FTP dnevnik"
-
-msgid "FTP server disabled"
-msgstr "FTP strežnik onemogočen"
-
-msgid "FXP"
-msgstr "FXP"
-
-msgid ""
-"FXP allows transfers between two remote servers without any file data going "
-"to the client asking for the transfer (insecure!)."
-msgstr ""
-"FXP omogoča prenose med dvema oddaljenima strežnikoma brez preverjanja "
-"podatkov pri klientu (ni varno!)."
-
-msgid "Factory defaults"
-msgstr "Tovarniške nastavitve"
-
-msgid "Failed"
-msgstr "Spodletelo"
-
-msgid "Failed."
-msgstr "Spodletelo."
-
-msgid "File"
-msgstr "Datoteka"
-
-msgid "File not found"
-msgstr "Datoteka ni najdena"
-
-msgid "File path"
-msgstr "Pot do datoteke"
-
-msgid "File size"
-msgstr "Velikost datoteke"
-
-msgid "File system"
-msgstr "Datotečni sistem"
-
-msgid "Filename"
-msgstr "Ime datoteke"
-
-msgid "Firmware"
-msgstr "Strojna programska oprema"
-
-msgid "Firmware image file"
-msgstr "Firmware datoteka"
-
-msgid "Firmware uploading is not supported on this platform."
-msgstr "Na tej platformi nalaganje Firmware-a ni mogoče."
-
-msgid "Firmware version check"
-msgstr "Preverjanje Firmware verzije"
-
-msgid "Flags"
-msgstr "Zastavice"
-
-msgid "Follow"
-msgstr "Sledi"
-
-msgid "Format"
-msgstr "Formatiranje"
-
-msgid "Format disk"
-msgstr "Formatiraj disk"
-
-msgid "Free disk space"
-msgstr "Prost diskovni prostor"
-
-msgid "From email"
-msgstr "E-pošta od"
-
-msgid "Full Name"
-msgstr "Polno ime"
-
-msgid "Gateway"
-msgstr "Prehod"
-
-msgid "General"
-msgstr "Splošno"
-
-msgid "General Setup"
-msgstr "Splošne nastavitve"
-
-msgid "Graph"
-msgstr "Graf"
-
-msgid "Graph shows last"
-msgstr "Graf prikaže nazadnje"
-
-msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr ""
-"Pozdravno sporočilo, ki bo prikazano pri prvi povezavi na FTP strežnik."
-
-msgid "Group"
-msgstr "Skupina"
-
-msgid "Group ID"
-msgstr "ID skupine"
-
-msgid "Group description."
-msgstr "Opis skupine."
-
-msgid "Group name."
-msgstr "Ime skupine."
-
-msgid "Group numeric id."
-msgstr "Numerični identifikator skupine"
-
-msgid "Group suffix"
-msgstr "Pripona skupine"
-
-msgid "Groups"
-msgstr "Skupine"
-
-msgid "Guest"
-msgstr "Gost"
-
-msgid "HTTP Proxy"
-msgstr "HTTP Posrednik"
-
-msgid "Hard disk standby time"
-msgstr "Čas mirovanja trdega diska"
-
-msgid "Help"
-msgstr "Pomoč"
-
-msgid "Highlighting"
-msgstr "Poudarjanje"
-
-msgid "Hint"
-msgstr "Namig"
-
-#, php-format
-msgid ""
-"Hint: If this is checked, IP addresses in %s logs are resolved to real "
-"hostnames where possible."
-msgstr ""
-"Namig: Če je tza možnost vključena, se bodo IP naslovi, kjer bo možno, v %s "
-"dnevniku zamenjali z imeni gostiteljev."
-
-msgid "Home directory"
-msgstr "Domača mapa"
-
-msgid "Host"
-msgstr "Gostitelj"
-
-msgid "Hostname"
-msgstr "Ime gostitelja"
-
-msgid "Hosts"
-msgstr "Gostitelji"
-
-msgid "I/O errors"
-msgstr "I/O napake"
-
-msgid "I/O packets"
-msgstr "I/O paketi"
-
-msgid "IP address"
-msgstr "IP naslov"
-
-msgid "IP address of remote syslog server"
-msgstr "IP naslov oddaljenega syslog strežnika"
-
-msgid "IPv4 Configuration"
-msgstr "IPv4 nastavitve"
-
-msgid "IPv4 DNS servers"
-msgstr "IPv4 DNS strežniki"
-
-msgid "IPv4 addresses"
-msgstr "IPv4 naslov"
-
-msgid "IPv6 Configuration"
-msgstr "IPv6 nastavitve"
-
-msgid "IPv6 DNS servers"
-msgstr "IPv6 DNS strežniki"
-
-msgid "IPv6 Gateway"
-msgstr "IPv6 prehod"
-
-msgid "IPv6 Prefix"
-msgstr "IPv6 predpona"
-
-msgid "IPv6 address"
-msgstr "IPv6 naslov"
-
-msgid "IPv6 addresses"
-msgstr "IPv6 naslovi"
-
-msgid "ISP DNS servers"
-msgstr "ISP DNS strežniki"
-
-msgid ""
-"If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only "
-"mode.<br>Service disruption to users accessing this mount will occur during "
-"this process."
-msgstr ""
-"Če je izbrani pogon/particija priklopljen, bo za izvršitev izbranega ukaza "
-"začasno odklopljen. Drugače se bo ukaz izvršil v bralnem načinu.<br>Med "
-"izvajanjem ukaza bodo imeli uporabniki, ki dostopajo do sistema, moten "
-"dostop."
-
-#, php-format
-msgid ""
-"If you click 'Yes', %s will be reset to factory defaults and will reboot "
-"immediately. The entire system configuration will be overwritten. The LAN IP "
-"address will be reset to %s and the password will be set to '%s'."
-msgstr ""
-"Če kliknete 'Da', bo %s ponastavil privzete tovarniške nastavitve in se "
-"avtomatsko ponovno zagnal. VSE sistemske nastavitve bodo prepisane. LAN IP "
-"naslov bo nastavljen na %s in geslo nastavljeno na '%s'."
-
-msgid "Image upload failed (out of memory?)"
-msgstr "Napaka pri nalaganju slike (premalo spomina?)"
-
-msgid "In"
-msgstr "Noter"
-
-msgid "Info"
-msgstr "Podatki"
-
-msgid "Information"
-msgstr "Informacije"
-
-msgid "Initialize"
-msgstr "Vpelji"
-
-msgid "Initiator name"
-msgstr "Ime pobudnika"
-
-msgid "Interface"
-msgstr "Vmesnik"
-
-msgid "Interface to listen to."
-msgstr "Naprava za poslušanje."
-
-msgid "Interfaces"
-msgstr "Vmesniki"
-
-msgid "JBOD"
-msgstr "JBOD"
-
-msgid ""
-"January February March April May June July August September October November "
-"December"
-msgstr ""
-"Januar Februar Marec April Maj Junij Julij Avgust September Oktober November "
-"December"
-
-msgid "Key"
-msgstr "Ključ"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "LDAP"
-msgstr "LDAP"
-
-msgid "Language"
-msgstr "Jezik"
-
-msgid "Large read/write"
-msgstr "Veliko branje/pisanje"
-
-#, php-format
-msgid "Last %d %s log entries"
-msgstr "Zadnjih %d %s dnevniških vnosov"
-
-msgid "Last config change"
-msgstr "Zadnja sprememba nastavitev"
-
-msgid "License"
-msgstr "Licneca"
-
-msgid "List of detected ATA disks"
-msgstr "Seznam najdenih ATA pogonov"
-
-msgid "List of detected SCSI disks"
-msgstr "Seznam najdenih iSCSI pogonov"
-
-msgid "List of mount points"
-msgstr "Seznam priklopnih točk"
-
-msgid "Load"
-msgstr "Nalaganje"
-
-msgid "Load averages"
-msgstr "Povprečne obremenitve"
-
-msgid "Local"
-msgstr "Lokalno"
-
-msgid "Local Master Browser"
-msgstr "Glavni lokalni brskalnik"
-
-msgid "Local User"
-msgstr "Lokalni uporabnik"
-
-msgid "Local share (destination)"
-msgstr "Lokalni deljeni vir (cilj)"
-
-msgid "Log Level"
-msgstr "Nivo dnevnika"
-
-msgid "Login"
-msgstr "Prijava"
-
-msgid "Logs"
-msgstr "Dnevniki"
-
-msgid "MAC address"
-msgstr "MAC naslov"
-
-msgid "MOTD"
-msgstr "Sporočilo dneva"
-
-msgid "MS Domain"
-msgstr "MS domena"
-
-msgid "MTU"
-msgstr "MTU"
-
-msgid "Management"
-msgstr "Upravljanje"
-
-msgid "Map all users to root"
-msgstr "Dodaj vse uporabnike k root-u"
-
-msgid "Map to user"
-msgstr "Dodeli uporabniku"
-
-msgid "Max. conn. per IP"
-msgstr "Največje število povezav na IP"
-
-msgid "Maximum connections"
-msgstr "Največje število povezav"
-
-msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr "Največje število povezav na IP naslov (0 = neomejeno)."
-
-msgid "Maximum number of simultaneous clients."
-msgstr "Največje število hkratnih klientov."
-
-msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
-msgstr "Največje število hkratnih povezav. Privzeto je 0 (neomejeno)."
-
-msgid "Maximum performance, maximum acoustic output"
-msgstr "Najboljše delovanje, največji nivo glasnosti"
-
-msgid "Media"
-msgstr "Medija"
-
-msgid "Medium acoustic output"
-msgstr "Srednji nivo glasnosti"
-
-msgid "Memory usage"
-msgstr "Poraba spomina"
-
-msgid "Message of the day."
-msgstr "Sporočilo dneva."
-
-msgid "Minimum performance, Minimum acoustic output"
-msgstr "Najslabše delovanje, najmanjši nivo glasnosti"
-
-msgid "Mount Point"
-msgstr "Točka priklopa"
-
-msgid "Mounting..."
-msgstr "Priklapljanje..."
-
-msgid "Mounts"
-msgstr "Priklopi"
-
-msgid "NFS"
-msgstr "NFS"
-
-msgid "NIS"
-msgstr "NIS"
-
-msgid "NTP time server"
-msgstr "NTP časovni strežnik"
-
-msgid "Name"
-msgstr "Ime"
-
-msgid "Network"
-msgstr "Omrežje"
-
-msgid "Network port"
-msgstr "Omrežna vrata"
-
-msgid "Network that is authorised to access to this iSCSI target."
-msgstr "Omrežje z dovoljenjem za dostop do tega iSCSI cilja."
-
-msgid "No"
-msgstr "Ne"
-
-msgid "No RSYNC Client configured"
-msgstr "Določen ni nobeden RSYNC odjemalec"
-
-msgid "No disk configured"
-msgstr "Ni nastavljenih diskov"
-
-msgid "Not attached"
-msgstr "Ni pripet"
-
-msgid "Note"
-msgstr "Opombe"
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
-"minutes, hours, days and months."
-msgstr ""
-"Opomba: Za izbor minut, ur, dnevov in mesecev uporabite Ctrl-klik (command-"
-"klik na MAC-u)."
-
-msgid "Number of clients"
-msgstr "Število klientov"
-
-msgid "Number of log entries to show"
-msgstr "Število prikazanih dnevniških vnosov"
-
-msgid "OK"
-msgstr "Vredu"
-
-msgid "OS Version"
-msgstr "Verzija OS"
-
-msgid "Object name"
-msgstr "Ime predmeta"
-
-#, php-format
-msgid ""
-"Open a %s configuration XML file and click the button below to restore the "
-"configuration."
-msgstr ""
-"Za obnovitev nastavitev, odpri %s nastavitveno XML datoteko in kliknite "
-"spodbnji gumb."
-
-msgid "Out"
-msgstr "Ven"
-
-msgid "PPPoE"
-msgstr "PPPoE"
-
-msgid "PPTP"
-msgstr "PPTP"
-
-msgid "Partitions"
-msgstr "Particije"
-
-msgid "Passphrase"
-msgstr "Geslo"
-
-msgid "Passphrase don't match."
-msgstr "Gesli se ne ujemata."
-
-msgid "Password"
-msgstr "Geslo"
-
-msgid "Password don't match."
-msgstr "Gesli se ne ujemata"
-
-msgid "Password encryption"
-msgstr "Šifriranje gesla"
-
-msgid "Password suffix"
-msgstr "Pripona gesla"
-
-msgid "Paste a DSA PRIVATE KEY in PEM format here."
-msgstr "Sem prilepite DSA PRIVATNI KLJUČ v PEM zapisu."
-
-msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr "Vnesite potrjen certifikat. V X.509 PEM zapisu."
-
-msgid "Permit root login"
-msgstr "Dovoli root prijavo"
-
-msgid "Permit to do SSH Tunneling."
-msgstr "Dovoli SSH tunel."
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "Platform"
-msgstr "Platforma"
-
-msgid "Port "
-msgstr "Vrata "
-
-msgid "Power Daemon"
-msgstr "Demon električne porabe"
-
-msgid "Private Key"
-msgstr "Privatni ključ"
-
-msgid "Process"
-msgstr "Proces"
-
-msgid "Processes"
-msgstr "Procesi"
-
-msgid "Processes information"
-msgstr "Informacije o procesih"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
-
-msgid "Raid name"
-msgstr "RAID ime"
-
-msgid "Read only"
-msgstr "Samo za branje"
-
-msgid "Receive Buffer Size"
-msgstr "Velikost predpomnilnika sprejemanja"
-
-msgid "Reload page"
-msgstr "Ponovno naloži stran"
-
-msgid "Remote address"
-msgstr "Naslov oddaljenega računalnika"
-
-msgid "Remote syslog server"
-msgstr "Oddaljeni syslog strežnik"
-
-msgid "Remove all entries from ARP table"
-msgstr "Odstrani vse vnose v ARP tabeli"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "Zamenjaj IP naslove v imena gostiteljev"
-
-msgid "Restore configuration"
-msgstr "Obnovi nastavitve"
-
-msgid "Resume"
-msgstr "Povrni"
-
-msgid "Retry"
-msgstr "Poskusi ponovno"
-
-msgid "Rows"
-msgstr "Vrstice"
-
-msgid "S.M.A.R.T."
-msgstr "S.M.A.R.T."
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Save"
-msgstr "Shrani"
-
-msgid "Saved file to"
-msgstr "Shrani datoteko v"
-
-msgid "Scheduled shutdown"
-msgstr "Nastavljen izklop"
-
-msgid "Select the location closest to you."
-msgstr "Izbor najbližje lokacije"
-
-msgid "Select your read balance algorithm."
-msgstr "Izberite bralni algrotem."
-
-msgid "Selected"
-msgstr "Izbrano"
-
-msgid "Send Buffer Size"
-msgstr "Velikost predpomnilnika pošiljanja"
-
-msgid "Send Command!"
-msgstr "Pošlji ukaz!"
-
-msgid "Server"
-msgstr "Strežnik"
-
-msgid "Server Name"
-msgstr "Ime strežnika"
-
-msgid "Server description. This can usually be left blank."
-msgstr "Opis strežnika. Ponavadi lahko pustite prazno."
-
-msgid "Service"
-msgstr "Storitve"
-
-msgid "Services"
-msgstr "Storitve"
-
-msgid "Settings"
-msgstr "Nastavitve"
-
-msgid "Share"
-msgstr "Deljeni vir"
-
-msgid "Shares"
-msgstr "Mape v skupni rabi"
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Prikaži dnevniške vnose v obratnem vrstnem redu (novejši na vrhu)"
-
-msgid "Shutdown Time"
-msgstr "Čas izklopa"
-
-msgid "Size"
-msgstr "Velikost"
-
-msgid "Size in MB."
-msgstr "Velikost v MB."
-
-msgid "Size of receive buffer (16384 by default)."
-msgstr "Velikost predpomnilnika sprejemanja (privzeto 16384)."
-
-msgid "Size of send buffer (16384 by default)."
-msgstr "Velikost predpomnilnika pošiljanja (privzeto 16384)."
-
-msgid "Software RAID"
-msgstr "Programski RAID"
-
-msgid "Software RAID information and status"
-msgstr "Info in stanje programskega RAID-a"
-
-msgid "Source"
-msgstr "Vir"
-
-msgid "Source share"
-msgstr "Izvorni deljeni vir"
-
-msgid "Space Used"
-msgstr "Zasedeno"
-
-msgid ""
-"Specifies whether it is allowed to login as superuser (root) directly."
-msgstr ""
-"Določuje, če je dovoljena neposredna prijava super uporabnika (root)."
-
-msgid ""
-"Specify the percentage of space held back from normal users. Note that "
-"lowering the threshold can adversely affect performance and auto-"
-"defragmentation."
-msgstr ""
-"Določite odstotkovni delež normalnim uporabnikom nedostopnega diska. "
-"Zmanjševanje rezerviranega prostora lahko vpliva na delovanje in samodejno "
-"razdrobljevanje datotek."
-
-msgid "Standby time"
-msgstr "Čas pripravljenosti"
-
-msgid "Static routes"
-msgstr "Statične poti"
-
-msgid "Status"
-msgstr "Stanje"
-
-msgid "Subnet bit count"
-msgstr "Podomrežni bit"
-
-msgid "Subnet mask"
-msgstr "Maska omrežja"
-
-msgid "Successful"
-msgstr "Uspešno"
-
-msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
-msgstr "Nedelja Ponedeljek Torek Sreda Četrtek Petek Sobota"
-
-msgid "Swap"
-msgstr "Izmenjevalni pomnilnik"
-
-msgid "Swap memory"
-msgstr "Izmenjevalni spomin"
-
-msgid "Switch to"
-msgstr "Preklop na"
-
-msgid "Synchronization Time"
-msgstr "Čas sinhronizacije"
-
-#, php-format
-msgid ""
-"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from %s."
-msgstr ""
-"Syslog pošlje UDP datagram na vrata 514 k določenemu oddaljenemu syslog "
-"strežniku. Prepričajte se, da boste nastavili syslogd na oddaljenem "
-"strežniku, da bo sprejemal syslog sporočila iz %s."
-
-msgid "System"
-msgstr "Sistem"
-
-msgid "System Beep"
-msgstr "Sistemski zvok"
-
-msgid "System events"
-msgstr "Sistemski dogodki"
-
-msgid "System information"
-msgstr "Sistemske informacije"
-
-msgid "TCP port"
-msgstr "Vrata TCP"
-
-msgid "Target address"
-msgstr "Naslov cilja"
-
-msgid "Target name"
-msgstr "Ime cilja"
-
-msgid "Temperature"
-msgstr "Temperatura"
-
-msgid "The IP address that this hostname represents."
-msgstr "IP naslov, ki ga predstavlja to ime gostitelja."
-
-#, php-format
-msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
-msgstr ""
-"RAID polje je trenutno priključeno! Pred nadaljevanjem odstranite <a "
-"href=%s>priklopno točko</a>."
-
-msgid "The TCP port must be a valid port number."
-msgstr "Vrata TCP mora biti veljavna štrevilka vrat."
-
-#, c-format, php-format
-msgid "The attribute '%s' contains invalid characters."
-msgstr "Oznaka '%s' vsebuje neveljavne znake."
-
-#, c-format
-msgid "The attribute '%s' is required."
-msgstr "Oznaka '%s' je potrebna."
-
-msgid "The changes have been applied successfully."
-msgstr "Spremembe so bile uspešno uveljavljene."
-
-msgid "The combination of share and working directory does not exist."
-msgstr "Kombinacija deljenega vira in delovne mape ne obstaja."
-
-msgid "The configuration could not be restored (file upload error)."
-msgstr "Nastavitev ni bilo možno obnoviti (napaka pri nalaganju datoteke)."
-
-msgid "The configuration could not be restored."
-msgstr "Nastavitev ni bilo možno obnoviti."
-
-#, php-format
-msgid "The configuration has been restored. %s is now rebooting."
-msgstr "Nastavitve so bile obnovljene. %s se bo ponovno zagnal."
-
-msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
-msgstr "Ime naprave lahko vsebuje znake a-z, A-Z, 0-9."
-
-#, php-format
-msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
-msgstr ""
-"Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a "
-"href=%s>Odklopite</a>."
-
-msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
-msgstr ""
-"Pogon je trnutno priklopljen! Za izvršitev izbranega ukaza, bo točka "
-"priklopa začasno odstranjena."
-
-#, php-format
-msgid "The firmware is now being installed. %s will reboot automatically."
-msgstr "Nadgradnja je v teku. %s se bo avtomatsko ponovno zagnal."
-
-msgid "The following input errors were detected"
-msgstr "Odkrite so bile sledeče vhodne napake"
-
-msgid "The full name contains invalid characters."
-msgstr "Polno ime vsebuje neveljavne karakterje."
-
-msgid "The host name contain invalid characters."
-msgstr "Gostiteljevo ime vsebuje nepravilne karakterje."
-
-msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
-"."
-msgstr ""
-"Ime gostitelja lahko sestavljajo le naslednji karakterji a-z, A-Z in 0-9, - "
-", _ in ."
-
-msgid "The image file is corrupt"
-msgstr "Datoteka (slika) je pokvarjena."
-
-msgid "The login name contains invalid characters."
-msgstr "Prijavno ime vsebije neveljavne znake."
-
-msgid "The login name is a reserved login name."
-msgstr "Prijavno ime je rezervirano."
-
-msgid "The maximum idle time be a number."
-msgstr "Najdaljši čas nedejavnosti mora biti številka."
-
-msgid ""
-"The maximum port to allocate for PASV style data connections (0 = use any "
-"port)."
-msgstr ""
-"Najvišje število vrat za PASV povezave (0 = uporabi katerakoli vrata)."
-
-msgid ""
-"The minimum port to allocate for PASV style data connections (0 = use any "
-"port)."
-msgstr ""
-"Najnižje število vrat za PASV povezave (0 = uporabi katerakoli vrata)."
-
-msgid "The passwords do not match."
-msgstr "Gesli se ne ujemata."
-
-msgid ""
-"The powerd utility monitors the system state and sets various power control "
-"options accordingly."
-msgstr ""
-"Program powerd spremlja sistemsko porabo električne energije in jo primerno "
-"uravnava."
-
-msgid "The system is halting now. This may take one minute."
-msgstr "Sistem se bo ugasnil. To lahko traja kakšno minuto."
-
-msgid "The system is rebooting now. This may take one minute."
-msgstr "Sistem se ponovno zaganja. To lahko traja kakšno minuto."
-
-msgid "The uploaded image file is not for this platform"
-msgstr "Slika za nadgradnjo ni za to platformo"
-
-msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "Za RAID 1 polje, morata biti na voljo 2 pogona."
-
-msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "Za RAID 0 polje, morata biti na voljo vsaj 2 pogona."
-
-msgid "There must be a minimum of 2 disks in a RAID 5 volume."
-msgstr "Za RAID 5 polje, morata biti na voljo vsaj 2 pogona."
-
-msgid ""
-"This controls whether this share is seen in the list of available shares in "
-"a net view and in the browse list."
-msgstr ""
-"Določi ali je ta deljena mapa videna v seznamu map (pri brskanju po omrežju)."
-
-msgid "This device already exists in the raid volume list."
-msgstr "Ta naprava že obstaja v seznamu RAID polja."
-
-msgid "This disk already exists in the disk list."
-msgstr "Ta disk je že na seznamu."
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr ""
-"Ta šifriran pogon je priklopljen, preden ga izvlecete, ga morate opdklopiti."
-
-msgid "This group already exists in the group list."
-msgstr "Skupina že obstaja."
-
-msgid "This is for information only (not using during iSCSI negociation)."
-msgstr "to je samo za informacijo (ni uporabljeno med iSCSI prenosi)."
-
-msgid ""
-"This means that the image you uploaded is not an official/supported image "
-"and may lead to unexpected behavior or security compromises. Only install "
-"images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br><br>Do you want to install this image anyway "
-"(on your own risk)?"
-msgstr ""
-"Pomeni, da slika, ki ste jo naložili ni uradna/podprta slika in lahko "
-"privede do nepričakovanega obnašanja sistema. Nameščajte le slike, ki "
-"prihajajo iz zanesljivih virov.<br><br>Ali želite kljub temu namestiti to "
-"sliko (na lastno odgovornost)?"
-
-msgid ""
-"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "To ime je za primer: iqn.1994-04.org.netbsd.iscsi-cilj:cilj0."
-
-msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
-msgstr "To ime je za primer: iqn.2005-01.il.ac.huji.cs:nekdo."
-
-msgid "This the IP address or DNS name of the iSCSI target."
-msgstr "IP naslov ali DNS ime iSCSI cilja."
-
-msgid "This user already exists in the user list."
-msgstr "Ta uporabnik že obstaja."
-
-#, php-format
-msgid ""
-"This will cause %s not to check for newer firmware versions when the <a "
-"href=%s>%s</a> page is viewed."
-msgstr ""
-"To bo, kadar je prikazana <a href=%s>%s</a> stran, onemogočilo %s -u "
-"preverjanje nove verzije firmware."
-
-msgid "Time"
-msgstr "Čas"
-
-msgid "Time server"
-msgstr "Časovni strežnik"
-
-msgid "Time update interval"
-msgstr "Interval posodobitve časa"
-
-msgid "Time zone"
-msgstr "Časovni pas"
-
-msgid "Timeout"
-msgstr "Časovna omejitev"
-
-msgid "Tools"
-msgstr "Orodja"
-
-msgid ""
-"Traceroute may take a while to complete. You may hit the Stop button on your "
-"browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Traceroute lahko traja nekaj časa. Za pregled napredka neuspelih traceroute, "
-"lahko kadarkoli kliknete Stop na vašem brskalniku."
-
-msgid "Traffic graph"
-msgstr "Graf prometa"
-
-msgid "Tuning"
-msgstr "Fino nastavljanje"
-
-msgid "Type"
-msgstr "Tip"
-
-#, php-format
-msgid ""
-"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
-"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
-"can result in unpredictable results, file corruption, and loss of data!"
-msgstr ""
-"UFS je privzeti datotečni sistem za FreeBSD (osnova OS-a na %s). Poizkus "
-"uporabe katerega koli drugega datotečnega sistema, kot so FAT, FAT32, EXT2, "
-"EXT3 ali NTFS, lahko privede do nepredvidljivih situacij, napak v datotekah "
-"ali celo izgube le teh!"
-
-msgid "UPnP"
-msgstr "UPnP"
-
-msgid "UPnP A/V Media Server"
-msgstr "UPnP A/V Medija strežnik"
-
-msgid "UPnP friendly name."
-msgstr "UPnp prijazno ime."
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Unison"
-msgstr "Unison"
-
-msgid "Unison File Synchronisation"
-msgstr "Unison datotečna sinhronizacija"
-
-msgid "Unix charset"
-msgstr "Unix kodna tabela"
-
-msgid "Unknown or unformatted"
-msgstr "Neznan ali neformatiran"
-
-msgid "Unmount disk/partition"
-msgstr "Odklopi pogon/particijo"
-
-msgid "Unmounting..."
-msgstr "Odklapljanje..."
-
-msgid "Up"
-msgstr "Gor"
-
-msgid "Upgrade firmware"
-msgstr "Nadgradi Firmware"
-
-msgid "Uptime"
-msgstr "Čas delovanja"
-
-msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
-msgstr ""
-"Za vnos večih gostiteljev (potreben le eden) uporabite presledek. Če boste "
-"vnesli gostitelja, ne pozabite nastaviti vsaj en DNS strežnik!"
-
-msgid "User"
-msgstr "Uporabnik"
-
-msgid "User full name."
-msgstr "Uporabnikovo polno ime."
-
-msgid "User password."
-msgstr "Uporabnikovo geslo."
-
-msgid "User suffix"
-msgstr "Uporabniška pripona"
-
-msgid "Username"
-msgstr "Uporabniško ime"
-
-msgid "Username of a domain administrator account."
-msgstr "Uporabniško ime skrbnika domene."
-
-msgid "Users"
-msgstr "Uporabniki"
-
-msgid "Users and Groups"
-msgstr "Uporabniki in skupine"
-
-msgid "VLAN tag"
-msgstr "VLAN oznaka"
-
-msgid "Version"
-msgstr "Različica"
-
-msgid "Volume Name"
-msgstr "Ime polja"
-
-msgid "WINS server"
-msgstr "WINS strežnik"
-
-msgid "Warning"
-msgstr "Opozorilo"
-
-#, php-format
-msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr "Opozorilo: To lahko zelo upočasni nalaganje %s vsebine dnevnika!"
-
-msgid "Where the working files will be stored"
-msgstr "Kjer bodo shranjene delovne datoteke"
-
-msgid "Workgroup"
-msgstr "Delovna skupina"
-
-msgid "Working Directory"
-msgstr "Delovna mapa"
-
-msgid "Yes"
-msgstr "Da"
-
-#, php-format
-msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br>"
-msgstr ""
-"Me morete priklopiti particije '%s', kjer je shranjena datoteka z "
-"nastavitvami.<br>"
-
-msgid "You may enter a description here for your reference."
-msgstr "Tukaj lahko vpišete opis."
-
-msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-"Potrebovali boste zadostno količino prostega diska, da boste lahko "
-"duplicirali vse podatke, ki se sinhronizirajo"
-
-msgid "You must add disks first."
-msgstr "Najprej morate dodati diske."
-
-msgid "You must reboot the system before you can upgrade the firmware."
-msgstr "Pred Firmware nadgradnjo je potreben ponovni zagon sistema."
-
-msgid "You must select at least one authentication method."
-msgstr "Izbrati morate vsaj eno metodo preverjanja."
-
-msgid "You must use a passphrase to attach an encrypted disk."
-msgstr "Za pliklop šifriranega pogona, morate uporabiti geslo."
-
-msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
-msgstr ""
-"Za pošiljanje gesla priporočamo rabo WebGUI programa po HTTPS protokolu."
-
-msgid "day"
-msgstr "dan"
-
-msgid "days"
-msgstr "dni"
-
-msgid "hours"
-msgstr "ur(e)"
-
-msgid "iSCSI Initiator"
-msgstr "iSCSI pobudnik"
-
-msgid "iSCSI Target"
-msgstr "iSCSI Cilj"
-
-msgid "iSCSI initiator disabled"
-msgstr "iSCSI pobudnik onemogočen"
-
-msgid "minutes"
-msgstr "minut"
-
-msgid "mirroring"
-msgstr "zrcaljenje"
-
-msgid "months"
-msgstr "mesecev"
-
-msgid "n/a"
-msgstr "ni na voljo"
-
-msgid "rotated block-interleaved parity"
-msgstr "rotirajoča pariteta blok-prepletanje"
-
-msgid "seconds"
-msgstr "sekund"
-
-msgid "striping"
-msgstr "lepljenje"
-
-msgid "week days"
-msgstr "delovnik"
-
-#, php-format
-msgid "%s is used to create %s volumes."
-msgstr ""
-
-#, php-format
-msgid "%s on %s (%dMHz)"
-msgstr ""
-
-msgid "*** Imported duplicate ***"
-msgstr ""
-
-msgid ""
-"1. Use these specials actions for debugging only!<br>2. There is no need of "
-"using this menu for starting a RAID volume (start automaticaly)."
-msgstr ""
-
-msgid "<->"
-msgstr ""
-
-msgid ""
-"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
-"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
-msgstr ""
-
-msgid ""
-"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older "
-"rsync.</li><li>Before - File-deletions will be done before the transfer "
-"starts.</li><li>During - File-deletions will be done incrementally as the "
-"transfer happens.</li><li>Delay - File-deletions will be computed during the "
-"transfer, and then removed after the transfer completes.</li><li>After - "
-"File-deletions will be done after the transfer has completed.</li>"
-msgstr ""
-
-msgid ""
-"A directory listing is generated if a directory is requested and no index-"
-"file (index.php, index.html, index.htm or default.htm) was found in that "
-"directory."
-msgstr ""
-
-msgid ""
-"A host name alias. This option can appear multiple times, for each domain "
-"that has the same IP. Use a space to separate multiple alias names."
-msgstr ""
-
-msgid ""
-"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
-"local network and the capabilities of the adaptor. It may be specified "
-"either as a plain string or as a string of hexadecimal digits preceded by "
-"'0x'."
-msgstr ""
-
-msgid "A valid IPv4 network bit count must be specified."
-msgstr ""
-
-msgid "A valid network bit count (1-32) must be specified."
-msgstr ""
-
-msgid "A valid systctl MIB value."
-msgstr ""
-
-msgid "AD authentication disabled"
-msgstr ""
-
-msgid "ARP Tables"
-msgstr ""
-
-msgid "ARP tables"
-msgstr ""
-
-msgid "Action"
-msgstr ""
-
-msgid "Add MIB"
-msgstr ""
-
-msgid "Add Rsync job"
-msgstr ""
-
-msgid "Add additional scheduled self-test."
-msgstr ""
-
-msgid "Add extent"
-msgstr ""
-
-msgid "Add initiator"
-msgstr ""
-
-msgid "Add module"
-msgstr ""
-
-msgid "Add rule"
-msgstr ""
-
-msgid "Add self-test"
-msgstr ""
-
-msgid "Additional parameters to the hardware-specific part of the driver."
-msgstr ""
-
-msgid "Aggregation protocol"
-msgstr ""
-
-msgid ""
-"All shares use the option 'usedots' thus making the filenames .Parent and "
-"anything beginning with .Apple illegal."
-msgstr ""
 
 msgid "Allow TLS/SSL connections only."
 msgstr ""
@@ -2074,13 +398,26 @@ msgid ""
 "follows the allow option format."
 msgstr ""
 
+#, php-format
+msgid "Allows %s to try and become a local master browser."
+msgstr "Dovoli %s, da poizkuša postati glavni lokalni brskalnik."
+
 msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
 "follows the allow option format."
 msgstr ""
 
+msgid "Alternate TCP port. Default is 22"
+msgstr "Alternativna TCP vrata. Privzeta so 22."
+
+msgid "Alternate TCP port. Default is 873"
+msgstr "Alternativna TCP vrata. Privzeta so 873."
+
 msgid "Alternative configuration directory (usually empty)."
 msgstr ""
+
+msgid "Always on"
+msgstr "Vedno vklopljen"
 
 msgid "Always scan"
 msgstr ""
@@ -2089,6 +426,9 @@ msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
 msgstr ""
+
+msgid "An host with this name already exists."
+msgstr "Gostitelj s tem imenom že obstaja."
 
 msgid "An interface with the specified description already exists."
 msgstr ""
@@ -2110,11 +450,17 @@ msgid ""
 "Anonymous user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
+msgid "Anonymous users only"
+msgstr "Samo anonimni uporabniki"
+
 msgid "Any"
 msgstr ""
 
 msgid "Apple Filing Protocol"
 msgstr ""
+
+msgid "Apply changes"
+msgstr "Uveljavi spremembe"
 
 msgid "Archive"
 msgstr ""
@@ -2122,10 +468,22 @@ msgstr ""
 msgid "Archive mode."
 msgstr ""
 
+msgid "Are you sure you want to proceed?"
+msgstr "Ste prepričani, da želite nadaljevati?"
+
+msgid "Are you sure you want to reboot the system?"
+msgstr "Ali ste prepričani, da želite znova zagnati sistem?"
+
+msgid "Are you sure you want to shutdown the system?"
+msgstr "Ste prepričani, da želite ugasniti sistem?"
+
 msgid ""
 "At the highest level, a target is what is presented to the initiator, and is "
 "made up of one or more devices, and/or one or more extents."
 msgstr ""
+
+msgid "Attached"
+msgstr "Pripet"
 
 #, php-format
 msgid "Attaching provider '%s'."
@@ -2134,20 +492,47 @@ msgstr ""
 msgid "Authenticate URL"
 msgstr ""
 
+msgid "Authentication"
+msgstr "Overjanje"
+
 msgid "Authentication method"
 msgstr ""
 
 msgid "Authorised network"
 msgstr ""
 
+msgid "Auto"
+msgstr "Samodejno"
+
+msgid "AutoScale"
+msgstr "AvtoSkala"
+
+msgid "Auxiliary parameters"
+msgstr "Dodatni parametri"
+
+msgid "Backup configuration"
+msgstr "Varnostna kopija nastavitev"
+
 msgid "Backup file"
 msgstr ""
+
+msgid "Backup/Restore"
+msgstr "Shrani/Naloži"
+
+msgid "Balance algorithm"
+msgstr "Algoritem ravnotežja"
 
 msgid "Ban list"
 msgstr ""
 
 msgid "Ban list rule"
 msgstr ""
+
+msgid "Banner"
+msgstr "Sporočilo"
+
+msgid "Base DN"
+msgstr "Base DN"
 
 msgid "Bind DN"
 msgstr ""
@@ -2161,6 +546,9 @@ msgstr ""
 msgid "Blank time"
 msgstr ""
 
+msgid "Browseable"
+msgstr "Brskalno"
+
 msgid "Bulgarian"
 msgstr ""
 
@@ -2173,14 +561,39 @@ msgstr ""
 msgid "CCMP TKIP"
 msgstr ""
 
+msgid "CD/DVD or Old Software RAID"
+msgstr "CD/DVD ali star programski RAID"
+
+msgid "CIFS/SMB"
+msgstr "CIFS/SMB"
+
+msgid "CIFS/SMB disabled"
+msgstr "CIFS/SMB onemogočen"
+
+msgid "CIFS/SMB informations"
+msgstr "CIFS/SMB informacije"
+
 msgid "CPU frequency"
 msgstr ""
+
+msgid "CPU load"
+msgstr "Obremenitev CPE"
 
 msgid "CPU temperature"
 msgstr ""
 
+msgid "CPU usage"
+msgstr "Raba CPE"
+
 msgid "Can't format the OS origin disk!"
 msgstr ""
+
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
+msgstr ""
+"Ne morem priklopiti sistemske particije 1, PODATKOVNA particija je 2."
+
+msgid "Cannot get data about interface"
+msgstr "Ne morem pridobiti podatkov o vmesniku"
 
 msgid "Capacity"
 msgstr ""
@@ -2195,8 +608,20 @@ msgid ""
 "server."
 msgstr ""
 
+msgid "Certificate"
+msgstr "Certifikat"
+
 msgid "Change"
 msgstr ""
+
+msgid "Changes to this option will take effect after a reboot."
+msgstr "Te spremembe bodo začele veljati po ponovnem zagonu."
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Check interval"
+msgstr "Interval preverjanja"
 
 msgid "Check shared secret:"
 msgstr ""
@@ -2213,8 +638,26 @@ msgstr ""
 msgid "Choose which IP protocol this rule should match."
 msgstr ""
 
+msgid "Choose which interface this route applies to."
+msgstr "Izberite za kateri vmesnik velja ta pot."
+
 msgid "Clear"
 msgstr ""
+
+msgid ""
+"Click &quot;Enable firmware upload&quot; below, then choose the image file "
+"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"process."
+msgstr ""
+"Spodaj kliknite &quot;Omogoči nalaganje firmware&quot;, nato izberite sliko "
+"za nalaganje.<br>Za začetek nadgradnje pa kliknite &quot;Nadgradi "
+"firmware&quot;."
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr "Kliknite za gumb za shranitev sistemsktih nastavitev v XML datoteko."
+
+msgid "Client"
+msgstr "Odjemalec"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
@@ -2222,11 +665,32 @@ msgstr ""
 msgid "Client sees uppercase, server sees lowercase"
 msgstr ""
 
+msgid "Collecting initial data, please wait..."
+msgstr "Zbiranje podatkov, prosim počakajte..."
+
+msgid "Collisions"
+msgstr "Trki"
+
+msgid "Cols"
+msgstr "Stolpci"
+
+msgid "Command"
+msgstr "Ukaz"
+
+msgid "Command output:"
+msgstr "Izpis ukaza:"
+
 msgid "Command scripts"
 msgstr ""
 
+msgid "Comment"
+msgstr "Opomba"
+
 msgid "Common Internet File System"
 msgstr ""
+
+msgid "Community"
+msgstr "Skupnost"
 
 msgid "Compliant profile to be used."
 msgstr ""
@@ -2237,16 +701,52 @@ msgstr ""
 msgid "Compress file data during the transfer."
 msgstr ""
 
+msgid "Compression"
+msgstr "Stiskanje"
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
+msgstr ""
+"Stiskanje je smiselno, če je vaša povezava počasna. Učinkovitost stiskanja "
+"je odvisna od vrste datotek in se lahko zelo razlikuje. Uporabno le za "
+"internetne prenose."
+
 msgid "Configuration directory"
 msgstr ""
 
+msgid "Configuring"
+msgstr "Nastavljanje"
+
+msgid "Confirmation"
+msgstr "Potrditev"
+
+msgid "Connected FTP users"
+msgstr "Priklopljeni uporabniki FTP"
+
+msgid "Console menu"
+msgstr "Menu konzole"
+
 msgid "Console screensaver"
 msgstr ""
+
+msgid "Contact"
+msgstr "Stik"
 
 msgid ""
 "Contact information, e.g. name or email of the person responsible for this "
 "system: 'admin@email.address'."
 msgstr ""
+
+msgid "Content"
+msgstr "Vsebina"
+
+msgid "Count"
+msgstr "Število"
+
+msgid "Create"
+msgstr "Ustvari"
 
 msgid "Create and initialize RAID."
 msgstr ""
@@ -2256,6 +756,15 @@ msgstr ""
 
 msgid "Create mask"
 msgstr ""
+
+msgid "Create work directory if it doesn't exist"
+msgstr "Ustvari delovni imenik, če ne obstaja"
+
+msgid "Creating filesystem"
+msgstr "Ustvarjanje datotečnega sistema"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Ustvarjanje datotečnega sistema z 'Mehke nadgradnje'"
 
 msgid "Creating partition"
 msgstr ""
@@ -2281,6 +790,12 @@ msgstr ""
 msgid "DDP"
 msgstr ""
 
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "DNS settings"
+msgstr "DNS nastavitve"
+
 #, php-format
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -2293,17 +808,29 @@ msgstr ""
 msgid "Daemon"
 msgstr ""
 
+msgid "Daemon events"
+msgstr "Demon dogodki"
+
 msgid "Daemon log"
 msgstr ""
 
 msgid "Danish"
 msgstr ""
 
+msgid "Data integrity"
+msgstr "Neokrnjenost podatkov"
+
 msgid "Database directory"
 msgstr ""
 
+msgid "Date"
+msgstr "Datum"
+
 msgid "Debug"
 msgstr ""
+
+msgid "Default"
+msgstr "Privzeto"
 
 #, php-format
 msgid "Default is %s."
@@ -2321,11 +848,29 @@ msgstr ""
 msgid "Defines when the shutdown is initiated."
 msgstr ""
 
+msgid "Delete"
+msgstr "Izbriši"
+
+msgid "Delete ARP entry"
+msgstr "Odstrani ARP vnos"
+
+msgid "Delete Host"
+msgstr "Odstrani gostitelja"
+
 msgid "Delete MIB"
 msgstr ""
 
+msgid "Delete RAID"
+msgstr "Odstrani RAID"
+
+msgid "Delete Route"
+msgstr "Odstrani pot"
+
 msgid "Delete Rsync job"
 msgstr ""
+
+msgid "Delete URL"
+msgstr "Izbriši URL"
 
 msgid "Delete algorithm"
 msgstr ""
@@ -2333,11 +878,23 @@ msgstr ""
 msgid "Delete all MIBs"
 msgstr ""
 
+msgid "Delete all options"
+msgstr "Izbriši vse možnosti"
+
 msgid "Delete all rules"
 msgstr ""
 
 msgid "Delete all self-tests"
 msgstr ""
+
+msgid "Delete command"
+msgstr "Odstrani ukaz"
+
+msgid "Delete device"
+msgstr "Izbriši napravo"
+
+msgid "Delete disk"
+msgstr "Odstrani disk"
 
 msgid "Delete extent"
 msgstr ""
@@ -2345,11 +902,26 @@ msgstr ""
 msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
 
+msgid "Delete group"
+msgstr "Odstrani skupino"
+
 msgid "Delete initiator"
 msgstr ""
 
+msgid "Delete interface"
+msgstr "Odstrani vnesnik"
+
+msgid "Delete job"
+msgstr "Izbriši opravilo"
+
 msgid "Delete module"
 msgstr ""
+
+msgid "Delete mount point"
+msgstr "Izbriši priklopno točko"
+
+msgid "Delete option"
+msgstr "Izbrišite izbiro"
 
 msgid "Delete rule"
 msgstr ""
@@ -2357,32 +929,80 @@ msgstr ""
 msgid "Delete self-test"
 msgstr ""
 
+msgid "Delete share"
+msgstr "Izbriši deljeno mapo"
+
+msgid "Delete target"
+msgstr "Odstrani cilj"
+
+msgid "Delete user"
+msgstr "Odstrani uporabnika"
+
+msgid "Deleting"
+msgstr "Brisanje"
+
 msgid "Deleting GEOM metadata"
 msgstr ""
 
 msgid "Deleting MBR and partition table"
 msgstr ""
 
+msgid "Deny"
+msgstr "Zavrni"
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Destination"
+msgstr "Cilj"
+
+msgid "Destination email address."
+msgstr "CIjni naslov e-pošte."
+
 msgid "Destination host name or IP number."
 msgstr ""
+
+msgid "Destination network"
+msgstr "Ciljno omrežje"
 
 msgid "Destination network bit count"
 msgstr ""
 
+msgid "Destination network for this static route"
+msgstr "Ciljno omrežje za to statično pot"
+
 msgid "Destination port"
 msgstr ""
+
+msgid "Destination share"
+msgstr "Ciljni deljeni vir"
+
+msgid "Detected RSYNC remote shares"
+msgstr "Najdeni oddaljeni RSYNC deljeni viri"
 
 msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
 "retransmitted. The default is 1000000 (1 second)."
 msgstr ""
 
+msgid "Device"
+msgstr "Naprava"
+
 #, php-format
 msgid "Device /dev/%s - %s"
 msgstr ""
 
+msgid "Device IP"
+msgstr "IP naprave"
+
 msgid "Device is mounted, umount it first before detaching."
 msgstr ""
+
+msgid "Device name"
+msgstr "Ime naprave"
+
+msgid "Device polling"
+msgstr "Prioritete naprave"
 
 msgid ""
 "Device polling is a technique that lets the system periodically poll network "
@@ -2402,11 +1022,20 @@ msgid ""
 "once."
 msgstr ""
 
+msgid "Diagnostics"
+msgstr "Diagnostika"
+
+msgid "Difference"
+msgstr "Razlika"
+
 msgid "Digital Audio Access Protocol"
 msgstr ""
 
 msgid "Direction"
 msgstr ""
+
+msgid "Directory"
+msgstr "Mapa"
 
 msgid "Directory listing"
 msgstr ""
@@ -2417,6 +1046,21 @@ msgstr ""
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 
+msgid "Disable console menu"
+msgstr "Onemogoči menu konzole"
+
+msgid "Disable firmware upload"
+msgstr "Onemogoči nalaganje firmware"
+
+msgid "Disable firmware version check"
+msgstr "Onemogoči preverjanje Firmware verzije"
+
+msgid "Disable speaker beep on startup and shutdown"
+msgstr "Onemogoči sistemski zvok ob zagonu in izklopu"
+
+msgid "Disabled"
+msgstr "Onemogočen"
+
 msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
@@ -2426,8 +1070,26 @@ msgstr ""
 msgid "Discovered iSCSI target for %s"
 msgstr ""
 
+msgid "Disk"
+msgstr "Disk"
+
+msgid "Disk Name"
+msgstr "Ime diska"
+
+msgid "Disk space usage"
+msgstr "Uporaba diska"
+
+msgid "Disks"
+msgstr "Diski"
+
+msgid "Disks (ATA)"
+msgstr "Diski (ATA)"
+
 msgid "Do you really want to delete all MIBs?"
 msgstr ""
+
+msgid "Do you really want to delete all options?"
+msgstr "Ali res želite izbrisati vse možnosti?"
 
 msgid "Do you really want to delete all rules?"
 msgstr ""
@@ -2441,16 +1103,57 @@ msgstr ""
 msgid "Do you really want to delete this Rsync job?"
 msgstr ""
 
+msgid "Do you really want to delete this URL?"
+msgstr "Ali res želite izbrisati ta URL?"
+
+msgid "Do you really want to delete this command?"
+msgstr "Res želite odstraniti ta ukaz?"
+
+msgid "Do you really want to delete this cron job?"
+msgstr "Ali res želite izbrisati to cron opravilo?"
+
+msgid "Do you really want to delete this device?"
+msgstr "Ali res želite izbrisati to napravo?"
+
+msgid ""
+"Do you really want to delete this disk? All elements that still use it will "
+"become invalid (e.g. share)!"
+msgstr ""
+"Ali res želite odstraniti ta disk? Vsi elementi, ki ga uporabljajo, bodo "
+"postali neveljavni (npr. deljene mape)!"
+
 msgid "Do you really want to delete this extent?"
 msgstr ""
+
+msgid "Do you really want to delete this group?"
+msgstr "Ali res želite odstraniti to skupino?"
+
+msgid "Do you really want to delete this host?"
+msgstr "Res želite odstraniti tega gostitelja?"
 
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
 "will become invalid (e.g. share)!"
 msgstr ""
 
+msgid "Do you really want to delete this interface?"
+msgstr "Ali res želite izbrisati ta vmesnik?"
+
 msgid "Do you really want to delete this module?"
 msgstr ""
+
+msgid ""
+"Do you really want to delete this mount point? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+"ALi res želite odstraniti to točko priklopa? Vsi elementi, ki jo "
+"uporabljajo, ne bodo več veljavni (npr. deljene mape)!"
+
+msgid "Do you really want to delete this option?"
+msgstr "Ali res želite izbrisati to možnost?"
+
+msgid "Do you really want to delete this route?"
+msgstr "Ali res želite odstraniti to pot?"
 
 msgid "Do you really want to delete this rule?"
 msgstr ""
@@ -2458,10 +1161,22 @@ msgstr ""
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr ""
 
+msgid "Do you really want to delete this share?"
+msgstr "Ali res želite izbrisati to deljeno mapo?"
+
+msgid "Do you really want to delete this target?"
+msgstr "Res želite odstraniti ta cilj?"
+
+msgid "Do you really want to delete this user?"
+msgstr "Ali res želite izbrisati tega uporabnika?"
+
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
 msgstr ""
+
+msgid "Do you really want to format this disk? All data will be lost!"
+msgstr "Ali res želite formatirati ta disk? Vsi podatki bodo izgubljeni!"
 
 msgid "Do you really want to remove the selected item from the list?"
 msgstr ""
@@ -2475,8 +1190,14 @@ msgstr ""
 msgid "Document root of the webserver. Home of the web page files."
 msgstr ""
 
+msgid "Domain"
+msgstr "Domena"
+
 msgid "Domain controller name"
 msgstr ""
+
+msgid "Domain name"
+msgstr "Ime domene"
 
 msgid "Domain name (DNS/Realm-Name)"
 msgstr ""
@@ -2490,19 +1211,37 @@ msgstr ""
 msgid "Domain name, e.g. example.com."
 msgstr ""
 
+msgid "Don't Erase MBR"
+msgstr "Ne izbriši MBR"
+
 msgid "Don't advertise createfileid, resolveid, deleteid calls."
 msgstr ""
+
+msgid "Don't erase the MBR (useful for some RAID controller cards)"
+msgstr "Ne izbriši MBR (uporabno pri nekaterih RAID kontrolerjih)"
 
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
 msgstr ""
 
+msgid "Done"
+msgstr "Narejeno"
+
+msgid "Done."
+msgstr "Opravljeno."
+
+msgid "Dos charset"
+msgstr "Dos kodna tabela"
+
 msgid "Download"
 msgstr ""
 
 msgid "Download bandwidth"
 msgstr ""
+
+msgid "Download configuration"
+msgstr "Snami/shrani nastavitve"
 
 msgid "Download directory"
 msgstr ""
@@ -2516,11 +1255,17 @@ msgstr ""
 msgid "Driver list"
 msgstr ""
 
+msgid "Duplex"
+msgstr "Duplex"
+
 msgid "Duplicate mount point name."
 msgstr ""
 
 msgid "Dutch"
 msgstr ""
+
+msgid "Dynamic DNS"
+msgstr "Dinamični DNS"
 
 msgid "EA support"
 msgstr ""
@@ -2528,17 +1273,59 @@ msgstr ""
 msgid "EFI/GPT partition can be use with UFS only."
 msgstr ""
 
+msgid "Edit"
+msgstr "Uredi"
+
+msgid "Edit Host"
+msgstr "Uredi gostitelja"
+
 msgid "Edit MIB"
 msgstr ""
+
+msgid "Edit RAID"
+msgstr "Uredi RAID"
+
+msgid "Edit Route"
+msgstr "Uredi pot"
 
 msgid "Edit Rsync job"
 msgstr ""
 
+msgid "Edit URL"
+msgstr "Uredi URL"
+
+msgid "Edit command"
+msgstr "Uredi ukaz"
+
+msgid "Edit device"
+msgstr "Uredi napravo"
+
+msgid "Edit disk"
+msgstr "Uredi disk"
+
 msgid "Edit extent"
 msgstr ""
 
+msgid "Edit group"
+msgstr "Uredi skupino"
+
 msgid "Edit initiator"
 msgstr ""
+
+msgid "Edit interface"
+msgstr "Uredi vmesnik"
+
+msgid "Edit job"
+msgstr "Uredi opravilo"
+
+msgid "Edit module"
+msgstr "Uredi modul"
+
+msgid "Edit mount point"
+msgstr "Uredi priklopno točko"
+
+msgid "Edit option"
+msgstr "Uredi možnost"
 
 msgid "Edit rule"
 msgstr ""
@@ -2546,8 +1333,17 @@ msgstr ""
 msgid "Edit self-test"
 msgstr ""
 
+msgid "Edit share"
+msgstr "Uredi deljeno mapo"
+
 msgid "Edit target"
 msgstr ""
+
+msgid "Edit user"
+msgstr "Uredi uporabnika"
+
+msgid "Email"
+msgstr "E-pošta"
 
 msgid "Email Report"
 msgstr ""
@@ -2558,11 +1354,23 @@ msgstr ""
 msgid "Email report"
 msgstr ""
 
+msgid "Enable"
+msgstr "Omogoči"
+
+msgid "Enable FXP protocol."
+msgstr "Omogoči FXP protokol."
+
+msgid "Enable NTP"
+msgstr "Omogoči NTP"
+
 msgid "Enable SMTP authentication."
 msgstr ""
 
 msgid "Enable TLS/SSL connections."
 msgstr ""
+
+msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr "Omogoči Zeroconf/Bonjour za oglaševanje te naprave"
 
 msgid "Enable anonymous bind."
 msgstr ""
@@ -2570,8 +1378,14 @@ msgstr ""
 msgid "Enable authentication."
 msgstr ""
 
+msgid "Enable compression."
+msgstr "Omogoči stiskanje."
+
 msgid "Enable console screensaver"
 msgstr ""
+
+msgid "Enable device polling"
+msgstr "Omogoči polling naprav"
 
 msgid "Enable directory listing."
 msgstr ""
@@ -2582,13 +1396,25 @@ msgstr ""
 msgid "Enable extended attribute support"
 msgstr ""
 
+msgid "Enable firmware upload"
+msgstr "Omogoči nalaganje firmware"
+
 msgid ""
 "Enable foreground/background file system consistency check during boot "
 "process."
 msgstr ""
 
+msgid "Enable guest access."
+msgstr "Omogoči dostop gostom."
+
 msgid "Enable keyboard-interactive authentication."
 msgstr ""
+
+msgid "Enable large read/write"
+msgstr "Omogoči veliko branje/pisanje"
+
+msgid "Enable local user authentication."
+msgstr "Omogoči preverjanje lokalnih uporabnikov."
 
 msgid "Enable module listing."
 msgstr ""
@@ -2623,14 +1449,29 @@ msgstr ""
 msgid "Enable store DOS attributes"
 msgstr ""
 
+msgid "Enable syslog'ing to remote syslog server"
+msgstr "Omogoči sistemski dnevnik na oddaljeni syslog strežnik"
+
 msgid "Enable the ident protocol (RFC1413)."
 msgstr ""
+
+msgid "Enable the system power control utility"
+msgstr "Omogoči sistemsko kontrolo nad električno porabo"
 
 msgid "Enable transcoding."
 msgstr ""
 
+msgid "Enable tuning of some kernel variables"
+msgstr "Omogoči uravnavanje nekaterih spremenljivk jedra."
+
 msgid "Enable use sendfile."
 msgstr ""
+
+msgid "Enable web user interface."
+msgstr "Omogoči spletni uporabniški vmesnik"
+
+msgid "Enabled"
+msgstr "Omogočen"
 
 msgid ""
 "Enables crlf translation for TEXT files, automatically converting macintosh "
@@ -2642,6 +1483,19 @@ msgstr ""
 
 msgid "Encrypted"
 msgstr ""
+
+msgid "Encrypted disk name"
+msgstr "Ime šifriranega pogona"
+
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr "Kriptiranje '%s'... Prosim počakajte"
+
+msgid "Encryption"
+msgstr "Šifriranje"
+
+msgid "Encryption algorithm"
+msgstr "Algoritem šifriranja"
 
 msgid "Encryption algorithm to use."
 msgstr ""
@@ -2678,12 +1532,21 @@ msgstr ""
 msgid "Enter trap host name."
 msgstr ""
 
+msgid "Error"
+msgstr "Napaka"
+
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr ""
 
 msgid "Event"
 msgstr ""
+
+msgid "Execute"
+msgstr "Izvedi"
+
+msgid "Execute command"
+msgstr "Izvedi"
 
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
@@ -2699,6 +1562,9 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
+msgid "Extensions"
+msgstr "Razširitve"
+
 msgid "Extent"
 msgstr ""
 
@@ -2710,6 +1576,9 @@ msgid ""
 "more than once."
 msgstr ""
 
+msgid "Extra options"
+msgstr "Dodatne možnosti"
+
 msgid "Extra options (usually empty)."
 msgstr ""
 
@@ -2718,14 +1587,48 @@ msgid ""
 "entered options prevent SSH service to be started."
 msgstr ""
 
+msgid "Extra options to ifconfig (usually empty)."
+msgstr "Dodatne možnosti za ifconfig (ponavadi prazno)."
+
 msgid "Extra options to rsync (usually empty)."
 msgstr ""
 
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
+msgid "FTP"
+msgstr "FTP"
+
+msgid "FTP Proxy"
+msgstr "FTP posrednik"
+
+msgid "FTP events"
+msgstr "FTP dogodki"
+
 msgid "FTP file transfer"
 msgstr ""
+
+msgid "FTP log"
+msgstr "FTP dnevnik"
+
+msgid "FTP server disabled"
+msgstr "FTP strežnik onemogočen"
+
+msgid "FXP"
+msgstr "FXP"
+
+msgid ""
+"FXP allows transfers between two remote servers without any file data going "
+"to the client asking for the transfer (insecure!)."
+msgstr ""
+"FXP omogoča prenose med dvema oddaljenima strežnikoma brez preverjanja "
+"podatkov pri klientu (ni varno!)."
+
+msgid "Factory defaults"
+msgstr "Tovarniške nastavitve"
+
+msgid "Failed"
+msgstr "Spodletelo"
 
 msgid "Failed to create in-memory file system."
 msgstr ""
@@ -2757,8 +1660,14 @@ msgstr ""
 msgid "Failed to upload metadata backup file."
 msgstr ""
 
+msgid "Failed."
+msgstr "Spodletelo."
+
 msgid "Failover"
 msgstr ""
+
+msgid "File"
+msgstr "Datoteka"
 
 msgid "File Editor"
 msgstr ""
@@ -2769,11 +1678,23 @@ msgstr ""
 msgid "File Transfer Protocol"
 msgstr ""
 
+msgid "File not found"
+msgstr "Datoteka ni najdena"
+
+msgid "File path"
+msgstr "Pot do datoteke"
+
 #, php-format
 msgid ""
 "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 "used as extent."
 msgstr ""
+
+msgid "File size"
+msgstr "Velikost datoteke"
+
+msgid "File system"
+msgstr "Datotečni sistem"
 
 msgid "File system check"
 msgstr ""
@@ -2781,17 +1702,47 @@ msgstr ""
 msgid "File transfer"
 msgstr ""
 
+msgid "Filename"
+msgstr "Ime datoteke"
+
 msgid "Firewall"
 msgstr ""
 
 msgid "Firewall rule"
 msgstr ""
 
+msgid "Firmware"
+msgstr "Strojna programska oprema"
+
+msgid "Firmware image file"
+msgstr "Firmware datoteka"
+
+msgid "Firmware uploading is not supported on this platform."
+msgstr "Na tej platformi nalaganje Firmware-a ni mogoče."
+
+msgid "Firmware version check"
+msgstr "Preverjanje Firmware verzije"
+
+msgid "Flags"
+msgstr "Zastavice"
+
+msgid "Follow"
+msgstr "Sledi"
+
 msgid "Forced update period"
 msgstr ""
 
+msgid "Format"
+msgstr "Formatiranje"
+
+msgid "Format disk"
+msgstr "Formatiraj disk"
+
 msgid "Forum"
 msgstr ""
+
+msgid "Free disk space"
+msgstr "Prost diskovni prostor"
 
 msgid "French"
 msgstr ""
@@ -2799,17 +1750,32 @@ msgstr ""
 msgid "Frequency"
 msgstr ""
 
+msgid "From email"
+msgstr "E-pošta od"
+
 msgid "Fsck"
 msgstr ""
 
 msgid "Full"
 msgstr ""
 
+msgid "Full Name"
+msgstr "Polno ime"
+
 msgid "GID"
 msgstr ""
 
+msgid "Gateway"
+msgstr "Prehod"
+
 msgid "Gateway to be used to reach the destination network."
 msgstr ""
+
+msgid "General"
+msgstr "Splošno"
+
+msgid "General Setup"
+msgstr "Splošne nastavitve"
 
 msgid "German"
 msgstr ""
@@ -2820,14 +1786,77 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr ""
 
+msgid "Graph"
+msgstr "Graf"
+
+msgid "Graph shows last"
+msgstr "Graf prikaže nazadnje"
+
 msgid "Greek"
 msgstr ""
+
+msgid "Greeting banner displayed by FTP when a connection first comes in."
+msgstr ""
+"Pozdravno sporočilo, ki bo prikazano pri prvi povezavi na FTP strežnik."
+
+msgid "Group"
+msgstr "Skupina"
+
+msgid "Group ID"
+msgstr "ID skupine"
+
+msgid "Group description."
+msgstr "Opis skupine."
+
+msgid "Group name."
+msgstr "Ime skupine."
+
+msgid "Group numeric id."
+msgstr "Numerični identifikator skupine"
+
+msgid "Group suffix"
+msgstr "Pripona skupine"
+
+msgid "Groups"
+msgstr "Skupine"
+
+msgid "Guest"
+msgstr "Gost"
 
 msgid "Guest account"
 msgstr ""
 
+msgid "HTTP Proxy"
+msgstr "HTTP Posrednik"
+
+msgid "Hard disk standby time"
+msgstr "Čas mirovanja trdega diska"
+
+msgid "Help"
+msgstr "Pomoč"
+
 msgid "Hide dot files"
 msgstr ""
+
+msgid "Highlighting"
+msgstr "Poudarjanje"
+
+msgid "Hint"
+msgstr "Namig"
+
+#, php-format
+msgid ""
+"Hint: If this is checked, IP addresses in %s logs are resolved to real "
+"hostnames where possible."
+msgstr ""
+"Namig: Če je tza možnost vključena, se bodo IP naslovi, kjer bo možno, v %s "
+"dnevniku zamenjali z imeni gostiteljev."
+
+msgid "Home directory"
+msgstr "Domača mapa"
+
+msgid "Host"
+msgstr "Gostitelj"
 
 msgid "Host access control"
 msgstr ""
@@ -2838,8 +1867,14 @@ msgstr ""
 msgid "Host resources"
 msgstr ""
 
+msgid "Hostname"
+msgstr "Ime gostitelja"
+
 msgid "Hostname database"
 msgstr ""
+
+msgid "Hosts"
+msgstr "Gostitelji"
 
 msgid "Hosts allow"
 msgstr ""
@@ -2859,8 +1894,20 @@ msgstr ""
 msgid "Hungarian"
 msgstr ""
 
+msgid "I/O errors"
+msgstr "I/O napake"
+
+msgid "I/O packets"
+msgstr "I/O paketi"
+
 msgid "I/O statistics"
 msgstr ""
+
+msgid "IP address"
+msgstr "IP naslov"
+
+msgid "IP address of remote syslog server"
+msgstr "IP naslov oddaljenega syslog strežnika"
 
 #, php-format
 msgid ""
@@ -2874,8 +1921,38 @@ msgstr ""
 msgid "IP type mismatch for network and gateway."
 msgstr ""
 
+msgid "IPv4 Configuration"
+msgstr "IPv4 nastavitve"
+
+msgid "IPv4 DNS servers"
+msgstr "IPv4 DNS strežniki"
+
+msgid "IPv4 addresses"
+msgstr "IPv4 naslov"
+
+msgid "IPv6 Configuration"
+msgstr "IPv6 nastavitve"
+
+msgid "IPv6 DNS servers"
+msgstr "IPv6 DNS strežniki"
+
+msgid "IPv6 Gateway"
+msgstr "IPv6 prehod"
+
+msgid "IPv6 Prefix"
+msgstr "IPv6 predpona"
+
+msgid "IPv6 address"
+msgstr "IPv6 naslov"
+
+msgid "IPv6 addresses"
+msgstr "IPv6 naslovi"
+
 msgid "ISO file to be mounted."
 msgstr ""
+
+msgid "ISP DNS servers"
+msgstr "ISP DNS strežniki"
 
 msgid "Ident protocol"
 msgstr ""
@@ -2902,6 +1979,17 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If the selected disk/partition is mounted it will be unmounted temporarily "
+"to perform selected command, otherwise the commands work in read-only "
+"mode.<br>Service disruption to users accessing this mount will occur during "
+"this process."
+msgstr ""
+"Če je izbrani pogon/particija priklopljen, bo za izvršitev izbranega ukaza "
+"začasno odklopljen. Drugače se bo ukaz izvršil v bralnem načinu.<br>Med "
+"izvajanjem ukaza bodo imeli uporabniki, ki dostopajo do sistema, moten "
+"dostop."
+
+msgid ""
 "If the server is behind a proxy set this parameters to give local services "
 "access to the internet via proxy."
 msgstr ""
@@ -2919,6 +2007,16 @@ msgid ""
 "share."
 msgstr ""
 
+#, php-format
+msgid ""
+"If you click 'Yes', %s will be reset to factory defaults and will reboot "
+"immediately. The entire system configuration will be overwritten. The LAN IP "
+"address will be reset to %s and the password will be set to '%s'."
+msgstr ""
+"Če kliknete 'Da', bo %s ponastavil privzete tovarniške nastavitve in se "
+"avtomatsko ponovno zagnal. VSE sistemske nastavitve bodo prepisane. LAN IP "
+"naslov bo nastavljen na %s in geslo nastavljeno na '%s'."
+
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
 "twice."
@@ -2928,17 +2026,29 @@ msgid ""
 "If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
 
+msgid "Image upload failed (out of memory?)"
+msgstr "Napaka pri nalaganju slike (premalo spomina?)"
+
 msgid "Import"
 msgstr ""
 
 msgid "Import firewall rules."
 msgstr ""
 
+msgid "In"
+msgstr "Noter"
+
 msgid "In most cases, 'public' is used here."
 msgstr ""
 
+msgid "Info"
+msgstr "Podatki"
+
 msgid "Informal"
 msgstr ""
+
+msgid "Information"
+msgstr "Informacije"
 
 msgid "Inherit permissions"
 msgstr ""
@@ -2946,11 +2056,17 @@ msgstr ""
 msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
 msgstr ""
 
+msgid "Initialize"
+msgstr "Vpelji"
+
 msgid "Initialize and encrypt disk."
 msgstr ""
 
 msgid "Initializing"
 msgstr ""
+
+msgid "Initiator name"
+msgstr "Ime pobudnika"
 
 msgid "Install"
 msgstr ""
@@ -2958,8 +2074,17 @@ msgstr ""
 msgid "Install package"
 msgstr ""
 
+msgid "Interface"
+msgstr "Vmesnik"
+
 msgid "Interface Management"
 msgstr ""
+
+msgid "Interface to listen to."
+msgstr "Naprava za poslušanje."
+
+msgid "Interfaces"
+msgstr "Vmesniki"
 
 msgid "Interval must be greater or equal than 10 seconds."
 msgstr ""
@@ -2980,8 +2105,21 @@ msgstr ""
 msgid "Italian"
 msgstr ""
 
+msgid "JBOD"
+msgstr "JBOD"
+
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+"Januar Februar Marec April Maj Junij Julij Avgust September Oktober November "
+"December"
+
 msgid "Japanese"
 msgstr ""
+
+msgid "Key"
+msgstr "Ključ"
 
 msgid "Key Management Protocol"
 msgstr ""
@@ -3004,8 +2142,27 @@ msgstr ""
 msgid "LAGG"
 msgstr ""
 
+msgid "LAN"
+msgstr "LAN"
+
 msgid "LAN net"
 msgstr ""
+
+msgid "LDAP"
+msgstr "LDAP"
+
+msgid "Language"
+msgstr "Jezik"
+
+msgid "Large read/write"
+msgstr "Veliko branje/pisanje"
+
+#, php-format
+msgid "Last %d %s log entries"
+msgstr "Zadnjih %d %s dnevniških vnosov"
+
+msgid "Last config change"
+msgstr "Zadnja sprememba nastavitev"
 
 #, php-format
 msgid ""
@@ -3035,6 +2192,9 @@ msgstr ""
 msgid "Levels (MHz/mW): %s"
 msgstr ""
 
+msgid "License"
+msgstr "Licneca"
+
 msgid "License & Credits"
 msgstr ""
 
@@ -3056,8 +2216,17 @@ msgstr ""
 msgid "List of available target name on all configured iSCSI targets"
 msgstr ""
 
+msgid "List of detected ATA disks"
+msgstr "Seznam najdenih ATA pogonov"
+
+msgid "List of detected SCSI disks"
+msgstr "Seznam najdenih iSCSI pogonov"
+
 msgid "List of imported users"
 msgstr ""
+
+msgid "List of mount points"
+msgstr "Seznam priklopnih točk"
 
 msgid "List of open files"
 msgstr ""
@@ -3065,11 +2234,29 @@ msgstr ""
 msgid "List of shares"
 msgstr ""
 
+msgid "Load"
+msgstr "Nalaganje"
+
+msgid "Load averages"
+msgstr "Povprečne obremenitve"
+
 msgid "Loadbalance"
 msgstr ""
 
+msgid "Local"
+msgstr "Lokalno"
+
+msgid "Local Master Browser"
+msgstr "Glavni lokalni brskalnik"
+
+msgid "Local User"
+msgstr "Lokalni uporabnik"
+
 msgid "Local share"
 msgstr ""
+
+msgid "Local share (destination)"
+msgstr "Lokalni deljeni vir (cilj)"
 
 msgid "Local shares to be synchronized"
 msgstr ""
@@ -3103,14 +2290,26 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
+msgid "Log Level"
+msgstr "Nivo dnevnika"
+
 msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
+
+msgid "Login"
+msgstr "Prijava"
 
 msgid "Login name of user."
 msgstr ""
 
+msgid "Logs"
+msgstr "Dnevniki"
+
 msgid "Lowercases names in both directions"
 msgstr ""
+
+msgid "MAC address"
+msgstr "MAC naslov"
 
 msgid "MIB"
 msgstr ""
@@ -3118,11 +2317,20 @@ msgstr ""
 msgid "MISSING"
 msgstr ""
 
+msgid "MOTD"
+msgstr "Sporočilo dneva"
+
 msgid "MS Active Directory"
 msgstr ""
 
 msgid "MS Active Directory informations"
 msgstr ""
+
+msgid "MS Domain"
+msgstr "MS domena"
+
+msgid "MTU"
+msgstr "MTU"
 
 msgid "Machine suffix"
 msgstr ""
@@ -3135,8 +2343,17 @@ msgid ""
 "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
+msgid "Management"
+msgstr "Upravljanje"
+
 msgid "Manufacturer"
 msgstr ""
+
+msgid "Map all users to root"
+msgstr "Dodaj vse uporabnike k root-u"
+
+msgid "Map to user"
+msgstr "Dodeli uporabniku"
 
 msgid "Masquerade address"
 msgstr ""
@@ -3147,12 +2364,42 @@ msgstr ""
 msgid "Max. block size"
 msgstr ""
 
+msgid "Max. conn. per IP"
+msgstr "Največje število povezav na IP"
+
 msgid ""
 "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
+msgid "Maximum connections"
+msgstr "Največje število povezav"
+
 msgid "Maximum idle time in seconds."
 msgstr ""
+
+msgid "Maximum number of connections per IP address (0 = unlimited)."
+msgstr "Največje število povezav na IP naslov (0 = neomejeno)."
+
+msgid "Maximum number of simultaneous clients."
+msgstr "Največje število hkratnih klientov."
+
+msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
+msgstr "Največje število hkratnih povezav. Privzeto je 0 (neomejeno)."
+
+msgid "Maximum performance, maximum acoustic output"
+msgstr "Najboljše delovanje, največji nivo glasnosti"
+
+msgid "Media"
+msgstr "Medija"
+
+msgid "Medium acoustic output"
+msgstr "Srednji nivo glasnosti"
+
+msgid "Memory usage"
+msgstr "Poraba spomina"
+
+msgid "Message of the day."
+msgstr "Sporočilo dneva."
 
 msgid "MibII"
 msgstr ""
@@ -3162,6 +2409,9 @@ msgstr ""
 
 msgid "Minimum free space"
 msgstr ""
+
+msgid "Minimum performance, Minimum acoustic output"
+msgstr "Najslabše delovanje, najmanjši nivo glasnosti"
 
 msgid "Minutes between network time sync."
 msgstr ""
@@ -3184,6 +2434,9 @@ msgstr ""
 msgid "Modules"
 msgstr ""
 
+msgid "Mount Point"
+msgstr "Točka priklopa"
+
 msgid "Mount point"
 msgstr ""
 
@@ -3197,11 +2450,29 @@ msgstr ""
 msgid "Mounting device."
 msgstr ""
 
+msgid "Mounting..."
+msgstr "Priklapljanje..."
+
+msgid "Mounts"
+msgstr "Priklopi"
+
 msgid "Must choose one"
 msgstr ""
 
+msgid "NFS"
+msgstr "NFS"
+
+msgid "NIS"
+msgstr "NIS"
+
 msgid "NOT YET AVAILABLE"
 msgstr ""
+
+msgid "NTP time server"
+msgstr "NTP časovni strežnik"
+
+msgid "Name"
+msgstr "Ime"
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
@@ -3225,22 +2496,40 @@ msgstr ""
 msgid "Netgraph"
 msgstr ""
 
+msgid "Network"
+msgstr "Omrežje"
+
 msgid "Network File System"
 msgstr ""
 
 msgid "Network mask"
 msgstr ""
 
+msgid "Network port"
+msgstr "Omrežna vrata"
+
 msgid "Network that is authorised to access the NFS share."
 msgstr ""
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr "Omrežje z dovoljenjem za dostop do tega iSCSI cilja."
 
 msgid ""
 "Never - Poll (check) the device regardless of its power mode. This may cause "
 "a disk which is spun-down to be spun-up when it is checked."
 msgstr ""
 
+msgid "No"
+msgstr "Ne"
+
+msgid "No RSYNC Client configured"
+msgstr "Določen ni nobeden RSYNC odjemalec"
+
 msgid "No case folding"
 msgstr ""
+
+msgid "No disk configured"
+msgstr "Ni nastavljenih diskov"
 
 msgid "None"
 msgstr ""
@@ -3256,6 +2545,19 @@ msgid ""
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
 "may cause problems."
 msgstr ""
+
+msgid "Not attached"
+msgstr "Ni pripet"
+
+msgid "Note"
+msgstr "Opombe"
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
+"minutes, hours, days and months."
+msgstr ""
+"Opomba: Za izbor minut, ur, dnevov in mesecev uporabite Ctrl-klik (command-"
+"klik na MAC-u)."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
@@ -3276,14 +2578,29 @@ msgstr ""
 msgid "Null passwords"
 msgstr ""
 
+msgid "Number of clients"
+msgstr "Število klientov"
+
+msgid "Number of log entries to show"
+msgstr "Število prikazanih dnevniških vnosov"
+
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr ""
 
 msgid "Number of servers"
 msgstr ""
 
+msgid "OK"
+msgstr "Vredu"
+
 msgid "ONLINE"
 msgstr ""
+
+msgid "OS Version"
+msgstr "Verzija OS"
+
+msgid "Object name"
+msgstr "Ime predmeta"
 
 msgid "Occurrence"
 msgstr ""
@@ -3302,6 +2619,14 @@ msgstr ""
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr ""
 
+#, php-format
+msgid ""
+"Open a %s configuration XML file and click the button below to restore the "
+"configuration."
+msgstr ""
+"Za obnovitev nastavitev, odpri %s nastavitveno XML datoteko in kliknite "
+"spodbnji gumb."
+
 msgid "Option"
 msgstr ""
 
@@ -3310,6 +2635,9 @@ msgstr ""
 
 msgid "Others"
 msgstr ""
+
+msgid "Out"
+msgstr "Ven"
 
 msgid "Outgoing SMTP mail server address, e.g. smtp.mycorp.com."
 msgstr ""
@@ -3322,6 +2650,12 @@ msgstr ""
 
 msgid "PHP Command"
 msgstr ""
+
+msgid "PPPoE"
+msgstr "PPPoE"
+
+msgid "PPTP"
+msgstr "PPTP"
 
 msgid "PPTP clients"
 msgstr ""
@@ -3353,6 +2687,9 @@ msgstr ""
 msgid "Partition type"
 msgstr ""
 
+msgid "Partitions"
+msgstr "Particije"
+
 msgid "Passive ports"
 msgstr ""
 
@@ -3366,17 +2703,41 @@ msgid ""
 "65534, the IANA-registered ephemeral port range)."
 msgstr ""
 
+msgid "Passphrase"
+msgstr "Geslo"
+
+msgid "Passphrase don't match."
+msgstr "Gesli se ne ujemata."
+
+msgid "Password"
+msgstr "Geslo"
+
 msgid "Password (confirmed)"
 msgstr ""
 
 msgid "Password authentication"
 msgstr ""
 
+msgid "Password don't match."
+msgstr "Gesli se ne ujemata"
+
+msgid "Password encryption"
+msgstr "Šifriranje gesla"
+
 msgid "Password for the administrative pages."
 msgstr ""
 
 msgid "Password of domain administrator account."
 msgstr ""
+
+msgid "Password suffix"
+msgstr "Pripona gesla"
+
+msgid "Paste a DSA PRIVATE KEY in PEM format here."
+msgstr "Sem prilepite DSA PRIVATNI KLJUČ v PEM zapisu."
+
+msgid "Paste a signed certificate in X.509 PEM format here."
+msgstr "Vnesite potrjen certifikat. V X.509 PEM zapisu."
 
 msgid "Paste an private key in PEM format here."
 msgstr ""
@@ -3396,6 +2757,12 @@ msgstr ""
 msgid "Peer port"
 msgstr ""
 
+msgid "Permit root login"
+msgstr "Dovoli root prijavo"
+
+msgid "Permit to do SSH Tunneling."
+msgstr "Dovoli SSH tunel."
+
 msgid "Physical interface"
 msgstr ""
 
@@ -3404,6 +2771,12 @@ msgstr ""
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
+
+msgid "Platform"
+msgstr "Platforma"
 
 #, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
@@ -3420,6 +2793,9 @@ msgstr ""
 
 msgid "Port"
 msgstr ""
+
+msgid "Port "
+msgstr "Vrata "
 
 #, php-format
 msgid "Port %ld is already used by another service."
@@ -3458,6 +2834,9 @@ msgstr ""
 msgid "PostInit"
 msgstr ""
 
+msgid "Power Daemon"
+msgstr "Demon električne porabe"
+
 msgid "Power mode"
 msgstr ""
 
@@ -3491,8 +2870,20 @@ msgstr ""
 msgid "Primary group is also selected in additional group."
 msgstr ""
 
+msgid "Private Key"
+msgstr "Privatni ključ"
+
 msgid "Private key"
 msgstr ""
+
+msgid "Process"
+msgstr "Proces"
+
+msgid "Processes"
+msgstr "Procesi"
+
+msgid "Processes information"
+msgstr "Informacije o procesih"
 
 msgid "Profile"
 msgstr ""
@@ -3565,11 +2956,20 @@ msgstr ""
 msgid "RSYNC log"
 msgstr ""
 
+msgid "RSYNCD"
+msgstr "RSYNCD"
+
+msgid "Raid name"
+msgstr "RAID ime"
+
 msgid "Read"
 msgstr ""
 
 msgid "Read Only Access"
 msgstr ""
+
+msgid "Read only"
+msgstr "Samo za branje"
 
 msgid "Read/Write"
 msgstr ""
@@ -3582,6 +2982,9 @@ msgstr ""
 
 msgid "Reboot"
 msgstr ""
+
+msgid "Receive Buffer Size"
+msgstr "Velikost predpomnilnika sprejemanja"
 
 msgid "Recurse into directories."
 msgstr ""
@@ -3598,8 +3001,14 @@ msgstr ""
 msgid "Release notes"
 msgstr ""
 
+msgid "Reload page"
+msgstr "Ponovno naloži stran"
+
 msgid "Remote Rsync Server"
 msgstr ""
+
+msgid "Remote address"
+msgstr "Naslov oddaljenega računalnika"
 
 msgid "Remote module (source)"
 msgstr ""
@@ -3609,6 +3018,12 @@ msgstr ""
 
 msgid "Remote monitoring"
 msgstr ""
+
+msgid "Remote syslog server"
+msgstr "Oddaljeni syslog strežnik"
+
+msgid "Remove all entries from ARP table"
+msgstr "Odstrani vse vnose v ARP tabeli"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -3635,11 +3050,23 @@ msgstr ""
 msgid "Resolve"
 msgstr ""
 
+msgid "Resolve IP addresses to hostnames"
+msgstr "Zamenjaj IP naslove v imena gostiteljev"
+
+msgid "Restore configuration"
+msgstr "Obnovi nastavitve"
+
 msgid "Restore metadata from the given file to the given provider."
 msgstr ""
 
 msgid "Results for net rpc testjoin:"
 msgstr ""
+
+msgid "Resume"
+msgstr "Povrni"
+
+msgid "Retry"
+msgstr "Poskusi ponovno"
 
 msgid "Reverse DNS lookup"
 msgstr ""
@@ -3661,6 +3088,9 @@ msgstr ""
 
 msgid "Routing tables"
 msgstr ""
+
+msgid "Rows"
+msgstr "Vrstice"
 
 msgid "Rsync"
 msgstr ""
@@ -3686,6 +3116,9 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
+msgid "S.M.A.R.T."
+msgstr "S.M.A.R.T."
+
 msgid "S.M.A.R.T. events"
 msgstr ""
 
@@ -3707,14 +3140,23 @@ msgstr ""
 msgid "SSHD log"
 msgstr ""
 
+msgid "SSID"
+msgstr "SSID"
+
 msgid "SSL/TLS"
 msgstr ""
 
 msgid "SSL/TLS only"
 msgstr ""
 
+msgid "Save"
+msgstr "Shrani"
+
 msgid "Save and Restart"
 msgstr ""
+
+msgid "Saved file to"
+msgstr "Shrani datoteko v"
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -3741,6 +3183,9 @@ msgstr ""
 msgid "Scheduled self-tests"
 msgstr ""
 
+msgid "Scheduled shutdown"
+msgstr "Nastavljen izklop"
+
 msgid "Secure Shell"
 msgstr ""
 
@@ -3759,11 +3204,26 @@ msgstr ""
 msgid "Select the FreeBSD package to be installed."
 msgstr ""
 
+msgid "Select the location closest to you."
+msgstr "Izbor najbližje lokacije"
+
+msgid "Select your read balance algorithm."
+msgstr "Izberite bralni algrotem."
+
+msgid "Selected"
+msgstr "Izbrano"
+
 msgid "Selected file isn't an valid ISO file."
 msgstr ""
 
 msgid "Self-Monitoring, Analysis and Reporting Technology"
 msgstr ""
+
+msgid "Send Buffer Size"
+msgstr "Velikost predpomnilnika pošiljanja"
+
+msgid "Send Command!"
+msgstr "Pošlji ukaz!"
 
 msgid "Send a TEST warning email on startup."
 msgstr ""
@@ -3777,8 +3237,23 @@ msgstr ""
 msgid "Separate email addresses by semi-colon."
 msgstr ""
 
+msgid "Server"
+msgstr "Strežnik"
+
+msgid "Server Name"
+msgstr "Ime strežnika"
+
+msgid "Server description. This can usually be left blank."
+msgstr "Opis strežnika. Ponavadi lahko pustite prazno."
+
 msgid "Server name"
 msgstr ""
+
+msgid "Service"
+msgstr "Storitve"
+
+msgid "Services"
+msgstr "Storitve"
 
 msgid "Set additional group memberships for this account."
 msgstr ""
@@ -3823,6 +3298,12 @@ msgid ""
 "is zero (anyone can read or write)."
 msgstr ""
 
+msgid "Settings"
+msgstr "Nastavitve"
+
+msgid "Share"
+msgstr "Deljeni vir"
+
 msgid "Share Character Set"
 msgstr ""
 
@@ -3835,14 +3316,23 @@ msgstr ""
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
+msgid "Shares"
+msgstr "Mape v skupni rabi"
+
 msgid "Shell access"
 msgstr ""
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr "Prikaži dnevniške vnose v obratnem vrstnem redu (novejši na vrhu)"
 
 msgid "Show process information"
 msgstr ""
 
 msgid "Shutdown"
 msgstr ""
+
+msgid "Shutdown Time"
+msgstr "Čas izklopa"
 
 msgid "Shutdown mode"
 msgstr ""
@@ -3852,6 +3342,18 @@ msgstr ""
 
 msgid "Simple Network Management Protocol"
 msgstr ""
+
+msgid "Size"
+msgstr "Velikost"
+
+msgid "Size in MB."
+msgstr "Velikost v MB."
+
+msgid "Size of receive buffer (16384 by default)."
+msgstr "Velikost predpomnilnika sprejemanja (privzeto 16384)."
+
+msgid "Size of send buffer (16384 by default)."
+msgstr "Velikost predpomnilnika pošiljanja (privzeto 16384)."
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
@@ -3865,14 +3367,29 @@ msgstr ""
 msgid "SoftRaid"
 msgstr ""
 
+msgid "Software RAID"
+msgstr "Programski RAID"
+
+msgid "Software RAID information and status"
+msgstr "Info in stanje programskega RAID-a"
+
 msgid "Software used"
 msgstr ""
+
+msgid "Source"
+msgstr "Vir"
 
 msgid "Source directory to be synchronized."
 msgstr ""
 
 msgid "Source port"
 msgstr ""
+
+msgid "Source share"
+msgstr "Izvorni deljeni vir"
+
+msgid "Space Used"
+msgstr "Zasedeno"
 
 msgid "Spanish"
 msgstr ""
@@ -3907,6 +3424,20 @@ msgstr ""
 msgid "Specifies the username which the service will run as."
 msgstr ""
 
+msgid ""
+"Specifies whether it is allowed to login as superuser (root) directly."
+msgstr ""
+"Določuje, če je dovoljena neposredna prijava super uporabnika (root)."
+
+msgid ""
+"Specify the percentage of space held back from normal users. Note that "
+"lowering the threshold can adversely affect performance and auto-"
+"defragmentation."
+msgstr ""
+"Določite odstotkovni delež normalnim uporabnikom nedostopnega diska. "
+"Zmanjševanje rezerviranega prostora lahko vpliva na delovanje in samodejno "
+"razdrobljevanje datotek."
+
 msgid "Standard"
 msgstr ""
 
@@ -3916,8 +3447,17 @@ msgid ""
 "from spinning up each poll, this is probably what you want."
 msgstr ""
 
+msgid "Standby time"
+msgstr "Čas pripravljenosti"
+
 msgid "Static Routes"
 msgstr ""
+
+msgid "Static routes"
+msgstr "Statične poti"
+
+msgid "Status"
+msgstr "Stanje"
 
 #, c-format
 msgid "Status report successfully sent to: %s."
@@ -3945,14 +3485,32 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
+msgid "Subnet bit count"
+msgstr "Podomrežni bit"
+
+msgid "Subnet mask"
+msgstr "Maska omrežja"
+
+msgid "Successful"
+msgstr "Uspešno"
+
 msgid "Successful."
 msgstr ""
+
+msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+msgstr "Nedelja Ponedeljek Torek Sreda Četrtek Petek Sobota"
 
 msgid "Suppress non-error messages."
 msgstr ""
 
+msgid "Swap"
+msgstr "Izmenjevalni pomnilnik"
+
 msgid "Swap disabled"
 msgstr ""
+
+msgid "Swap memory"
+msgstr "Izmenjevalni spomin"
 
 msgid "Swap status"
 msgstr ""
@@ -3963,18 +3521,46 @@ msgstr ""
 msgid "Swedish"
 msgstr ""
 
+msgid "Switch to"
+msgstr "Preklop na"
+
 #, php-format
 msgid "Switch to %s/s"
 msgstr ""
 
+msgid "Synchronization Time"
+msgstr "Čas sinhronizacije"
+
 msgid "Syslog"
 msgstr ""
+
+#, php-format
+msgid ""
+"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
+"server. Be sure to set syslogd on the remote server to accept syslog "
+"messages from %s."
+msgstr ""
+"Syslog pošlje UDP datagram na vrata 514 k določenemu oddaljenemu syslog "
+"strežniku. Prepričajte se, da boste nastavili syslogd na oddaljenem "
+"strežniku, da bo sprejemal syslog sporočila iz %s."
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "System Beep"
+msgstr "Sistemski zvok"
+
+msgid "System events"
+msgstr "Sistemski dogodki"
 
 msgid "System firewall"
 msgstr ""
 
 msgid "System info"
 msgstr ""
+
+msgid "System information"
+msgstr "Sistemske informacije"
 
 msgid "System log"
 msgstr ""
@@ -3991,6 +3577,9 @@ msgstr ""
 msgid "TCP forwarding"
 msgstr ""
 
+msgid "TCP port"
+msgstr "Vrata TCP"
+
 msgid "TCP port to bind the server to."
 msgstr ""
 
@@ -4003,8 +3592,17 @@ msgstr ""
 msgid "Target"
 msgstr ""
 
+msgid "Target address"
+msgstr "Naslov cilja"
+
 msgid "Target directory."
 msgstr ""
+
+msgid "Target name"
+msgstr "Ime cilja"
+
+msgid "Temperature"
+msgstr "Temperatura"
 
 msgid "Temperature monitoring"
 msgstr ""
@@ -4038,6 +3636,9 @@ msgstr ""
 msgid "The %s port must be in the range from %d to %d."
 msgstr ""
 
+msgid "The IP address that this hostname represents."
+msgstr "IP naslov, ki ga predstavlja to ime gostitelja."
+
 #, php-format
 msgid "The MIB '%s' already exist."
 msgstr ""
@@ -4045,6 +3646,17 @@ msgstr ""
 #, php-format
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
+
+#, php-format
+msgid ""
+"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+"first before proceeding."
+msgstr ""
+"RAID polje je trenutno priključeno! Pred nadaljevanjem odstranite <a "
+"href=%s>priklopno točko</a>."
+
+msgid "The TCP port must be a valid port number."
+msgstr "Vrata TCP mora biti veljavna štrevilka vrat."
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
@@ -4074,6 +3686,10 @@ msgid ""
 "The attribute '%s' contains invalid characters and is no valid workgroup "
 "name."
 msgstr ""
+
+#, c-format, php-format
+msgid "The attribute '%s' contains invalid characters."
+msgstr "Oznaka '%s' vsebuje neveljavne znake."
 
 #, c-format
 msgid ""
@@ -4121,6 +3737,10 @@ msgstr ""
 msgid "The attribute '%s' is no valid time."
 msgstr ""
 
+#, c-format
+msgid "The attribute '%s' is required."
+msgstr "Oznaka '%s' je potrebna."
+
 #, php-format
 msgid ""
 "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
@@ -4153,6 +3773,9 @@ msgid ""
 "search process will halt."
 msgstr ""
 
+msgid "The changes have been applied successfully."
+msgstr "Spremembe so bile uspešno uveljavljene."
+
 #, c-format
 msgid ""
 "The changes have been saved. You have to <a href=%s>reboot</a> the system "
@@ -4162,13 +3785,26 @@ msgstr ""
 msgid "The cleartext credentials with which to bind."
 msgstr ""
 
+msgid "The combination of share and working directory does not exist."
+msgstr "Kombinacija deljenega vira in delovne mape ne obstaja."
+
 msgid "The command to be executed."
 msgstr ""
+
+msgid "The configuration could not be restored (file upload error)."
+msgstr "Nastavitev ni bilo možno obnoviti (napaka pri nalaganju datoteke)."
+
+msgid "The configuration could not be restored."
+msgstr "Nastavitev ni bilo možno obnoviti."
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
 "for them to take effect."
 msgstr ""
+
+#, php-format
+msgid "The configuration has been restored. %s is now rebooting."
+msgstr "Nastavitve so bile obnovljene. %s se bo ponovno zagnal."
 
 msgid ""
 "The confimed password does not match. Please ensure the passwords match "
@@ -4192,6 +3828,9 @@ msgid ""
 "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 msgstr ""
 
+msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
+msgstr "Ime naprave lahko vsebuje znake a-z, A-Z, 0-9."
+
 msgid "The device's IP address."
 msgstr ""
 
@@ -4199,6 +3838,21 @@ msgid ""
 "The directory containing the files you want to publish. The remote host does "
 "not need to pass along the directory as part of the transfer."
 msgstr ""
+
+#, php-format
+msgid ""
+"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+"proceeding."
+msgstr ""
+"Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a "
+"href=%s>Odklopite</a>."
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"Pogon je trnutno priklopljen! Za izvršitev izbranega ukaza, bo točka "
+"priklopa začasno odstranjena."
 
 msgid "The disk/partition is already configured."
 msgstr ""
@@ -4214,11 +3868,40 @@ msgid ""
 "href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
+#, php-format
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr "Nadgradnja je v teku. %s se bo avtomatsko ponovno zagnal."
+
+msgid "The following input errors were detected"
+msgstr "Odkrite so bile sledeče vhodne napake"
+
+msgid "The full name contains invalid characters."
+msgstr "Polno ime vsebuje neveljavne karakterje."
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
 msgid "The group name contains invalid characters."
 msgstr ""
+
+msgid "The host name contain invalid characters."
+msgstr "Gostiteljevo ime vsebuje nepravilne karakterje."
+
+msgid ""
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
+"."
+msgstr ""
+"Ime gostitelja lahko sestavljajo le naslednji karakterji a-z, A-Z in 0-9, - "
+", _ in ."
+
+msgid "The image file is corrupt"
+msgstr "Datoteka (slika) je pokvarjena."
+
+msgid "The login name contains invalid characters."
+msgstr "Prijavno ime vsebije neveljavne znake."
+
+msgid "The login name is a reserved login name."
+msgstr "Prijavno ime je rezervirano."
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
@@ -4227,8 +3910,23 @@ msgid ""
 "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
 
+msgid "The maximum idle time be a number."
+msgstr "Najdaljši čas nedejavnosti mora biti številka."
+
+msgid ""
+"The maximum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+"Najvišje število vrat za PASV povezave (0 = uporabi katerakoli vrata)."
+
 msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
+
+msgid ""
+"The minimum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+"Najnižje število vrat za PASV povezave (0 = uporabi katerakoli vrata)."
 
 msgid ""
 "The module provides automatic bans that are triggered based on configurable "
@@ -4252,6 +3950,9 @@ msgstr ""
 msgid "The password contains the illegal character ':'."
 msgstr ""
 
+msgid "The passwords do not match."
+msgstr "Gesli se ne ujemata."
+
 msgid "The peer connection encryption mode."
 msgstr ""
 
@@ -4266,6 +3967,13 @@ msgid ""
 "The port to listen to. The default is to listen to the tftp port specified "
 "in /etc/services."
 msgstr ""
+
+msgid ""
+"The powerd utility monitors the system state and sets various power control "
+"options accordingly."
+msgstr ""
+"Program powerd spremlja sistemsko porabo električne energije in jo primerno "
+"uravnava."
 
 msgid "The rule number determines the order of the rule."
 msgstr ""
@@ -4287,6 +3995,12 @@ msgid ""
 "take one minute."
 msgstr ""
 
+msgid "The system is halting now. This may take one minute."
+msgstr "Sistem se bo ugasnil. To lahko traja kakšno minuto."
+
+msgid "The system is rebooting now. This may take one minute."
+msgstr "Sistem se ponovno zaganja. To lahko traja kakšno minuto."
+
 msgid ""
 "The time in seconds until shutdown is initiated. If the UPS happens to come "
 "back before the time is up the shutdown is canceled."
@@ -4304,14 +4018,26 @@ msgstr ""
 msgid "The unique user ID is already used."
 msgstr ""
 
+msgid "The uploaded image file is not for this platform"
+msgstr "Slika za nadgradnjo ni za to platformo"
+
 msgid "The value of the variable."
 msgstr ""
 
 msgid "The volume must be detached before it can be deleted."
 msgstr ""
 
+msgid "There must be 2 disks in a RAID 1 volume."
+msgstr "Za RAID 1 polje, morata biti na voljo 2 pogona."
+
 msgid "There must be a minimum of 2 disks in a JBOD."
 msgstr ""
+
+msgid "There must be a minimum of 2 disks in a RAID 0 volume."
+msgstr "Za RAID 0 polje, morata biti na voljo vsaj 2 pogona."
+
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "Za RAID 5 polje, morata biti na voljo vsaj 2 pogona."
 
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
@@ -4409,11 +4135,27 @@ msgid ""
 "by Mac computers."
 msgstr ""
 
+msgid ""
+"This controls whether this share is seen in the list of available shares in "
+"a net view and in the browse list."
+msgstr ""
+"Določi ali je ta deljena mapa videna v seznamu map (pri brskanju po omrežju)."
+
 msgid "This couple targetname/targetaddress already exists in the disk list."
 msgstr ""
 
+msgid "This device already exists in the raid volume list."
+msgstr "Ta naprava že obstaja v seznamu RAID polja."
+
+msgid "This disk already exists in the disk list."
+msgstr "Ta disk je že na seznamu."
+
 msgid "This email has been send to validate your email configuration."
 msgstr ""
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr ""
+"Ta šifriran pogon je priklopljen, preden ga izvlecete, ga morate opdklopiti."
 
 msgid ""
 "This forces filenames to be restricted to the character set used by Windows. "
@@ -4423,10 +4165,16 @@ msgstr ""
 msgid "This function is unsupported. Use it on your own risk!"
 msgstr ""
 
+msgid "This group already exists in the group list."
+msgstr "Skupina že obstaja."
+
 msgid ""
 "This is both the name of the server as advertised via "
 "Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
+
+msgid "This is for information only (not using during iSCSI negociation)."
+msgstr "to je samo za informacijo (ni uporabljeno med iSCSI prenosi)."
 
 msgid ""
 "This may make more efficient use of the system CPU's and cause Samba to be "
@@ -4434,8 +4182,27 @@ msgid ""
 "levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
 
+msgid ""
+"This means that the image you uploaded is not an official/supported image "
+"and may lead to unexpected behavior or security compromises. Only install "
+"images that come from sources that you trust, and make sure that the image "
+"has not been tampered with.<br><br>Do you want to install this image anyway "
+"(on your own risk)?"
+msgstr ""
+"Pomeni, da slika, ki ste jo naložili ni uradna/podprta slika in lahko "
+"privede do nepričakovanega obnašanja sistema. Nameščajte le slike, ki "
+"prihajajo iz zanesljivih virov.<br><br>Ali želite kljub temu namestiti to "
+"sliko (na lastno odgovornost)?"
+
 msgid "This name already exists in the disk list."
 msgstr ""
+
+msgid ""
+"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgstr "To ime je za primer: iqn.1994-04.org.netbsd.iscsi-cilj:cilj0."
+
+msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr "To ime je za primer: iqn.2005-01.il.ac.huji.cs:nekdo."
 
 msgid "This name is used to uniquely identify your UPS on this system."
 msgstr ""
@@ -4543,6 +4310,20 @@ msgstr ""
 msgid "This rule is triggered whenever the selected event directive occurs."
 msgstr ""
 
+msgid "This the IP address or DNS name of the iSCSI target."
+msgstr "IP naslov ali DNS ime iSCSI cilja."
+
+msgid "This user already exists in the user list."
+msgstr "Ta uporabnik že obstaja."
+
+#, php-format
+msgid ""
+"This will cause %s not to check for newer firmware versions when the <a "
+"href=%s>%s</a> page is viewed."
+msgstr ""
+"To bo, kadar je prikazana <a href=%s>%s</a> stran, onemogočilo %s -u "
+"preverjanje nove verzije firmware."
+
 msgid "This will create a recycle bin on the share."
 msgstr ""
 
@@ -4556,8 +4337,23 @@ msgid ""
 "add an existing encrypted disk."
 msgstr ""
 
+msgid "Time"
+msgstr "Čas"
+
 msgid "Time interval"
 msgstr ""
+
+msgid "Time server"
+msgstr "Časovni strežnik"
+
+msgid "Time update interval"
+msgstr "Interval posodobitve časa"
+
+msgid "Time zone"
+msgstr "Časovni pas"
+
+msgid "Timeout"
+msgstr "Časovna omejitev"
 
 msgid "Times"
 msgstr ""
@@ -4601,12 +4397,25 @@ msgstr ""
 msgid "Tolerated"
 msgstr ""
 
+msgid "Tools"
+msgstr "Orodja"
+
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr ""
 
 msgid "Traceroute"
 msgstr ""
+
+msgid ""
+"Traceroute may take a while to complete. You may hit the Stop button on your "
+"browser at any time to see the progress of failed traceroutes."
+msgstr ""
+"Traceroute lahko traja nekaj časa. Za pregled napredka neuspelih traceroute, "
+"lahko kadarkoli kliknete Stop na vašem brskalniku."
+
+msgid "Traffic graph"
+msgstr "Graf prometa"
 
 msgid "Transcoding"
 msgstr ""
@@ -4632,8 +4441,14 @@ msgstr ""
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
+msgid "Tuning"
+msgstr "Fino nastavljanje"
+
 msgid "Turn the monitor to standby after N seconds."
 msgstr ""
+
+msgid "Type"
+msgstr "Tip"
 
 #, php-format
 msgid ""
@@ -4642,6 +4457,17 @@ msgid ""
 "or NTFS can result in unpredictable results, file corruption, and loss of "
 "data!"
 msgstr ""
+
+#, php-format
+msgid ""
+"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
+"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
+"can result in unpredictable results, file corruption, and loss of data!"
+msgstr ""
+"UFS je privzeti datotečni sistem za FreeBSD (osnova OS-a na %s). Poizkus "
+"uporabe katerega koli drugega datotečnega sistema, kot so FAT, FAT32, EXT2, "
+"EXT3 ali NTFS, lahko privede do nepredvidljivih situacij, napak v datotekah "
+"ali celo izgube le teh!"
 
 msgid "UID"
 msgstr ""
@@ -4658,6 +4484,18 @@ msgstr ""
 msgid "UPS status"
 msgstr ""
 
+msgid "UPnP"
+msgstr "UPnP"
+
+msgid "UPnP A/V Media Server"
+msgstr "UPnP A/V Medija strežnik"
+
+msgid "UPnP friendly name."
+msgstr "UPnp prijazno ime."
+
+msgid "URL"
+msgstr "URL"
+
 msgid "Unformated"
 msgstr ""
 
@@ -4667,17 +4505,41 @@ msgstr ""
 msgid "Uninterruptible Power Supply"
 msgstr ""
 
+msgid "Unison"
+msgstr "Unison"
+
+msgid "Unison File Synchronisation"
+msgstr "Unison datotečna sinhronizacija"
+
 msgid "Unix Command"
 msgstr ""
 
+msgid "Unix charset"
+msgstr "Unix kodna tabela"
+
 msgid "Unknown"
 msgstr ""
+
+msgid "Unknown or unformatted"
+msgstr "Neznan ali neformatiran"
+
+msgid "Unmount disk/partition"
+msgstr "Odklopi pogon/particijo"
+
+msgid "Unmounting..."
+msgstr "Odklapljanje..."
+
+msgid "Up"
+msgstr "Gor"
 
 msgid "Update period"
 msgstr ""
 
 msgid "Updating in 5 seconds."
 msgstr ""
+
+msgid "Upgrade firmware"
+msgstr "Nadgradi Firmware"
 
 msgid "Upload"
 msgstr ""
@@ -4688,8 +4550,18 @@ msgstr ""
 msgid "Uppercases names in both directions"
 msgstr ""
 
+msgid "Uptime"
+msgstr "Čas delovanja"
+
 msgid "Use AFP3 unix privileges."
 msgstr ""
+
+msgid ""
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
+msgstr ""
+"Za vnos večih gostiteljev (potreben le eden) uporabite presledek. Če boste "
+"vnesli gostitelja, ne pozabite nastaviti vsaj en DNS strežnik!"
 
 msgid "Use sendfile"
 msgstr ""
@@ -4728,14 +4600,41 @@ msgid ""
 "require a valid login."
 msgstr ""
 
+msgid "User"
+msgstr "Uporabnik"
+
 msgid "User ID"
 msgstr ""
+
+msgid "User full name."
+msgstr "Uporabnikovo polno ime."
 
 msgid "User numeric id."
 msgstr ""
 
+msgid "User password."
+msgstr "Uporabnikovo geslo."
+
+msgid "User suffix"
+msgstr "Uporabniška pripona"
+
+msgid "Username"
+msgstr "Uporabniško ime"
+
+msgid "Username of a domain administrator account."
+msgstr "Uporabniško ime skrbnika domene."
+
+msgid "Users"
+msgstr "Uporabniki"
+
+msgid "Users and Groups"
+msgstr "Uporabniki in skupine"
+
 msgid "VLAN"
 msgstr ""
+
+msgid "VLAN tag"
+msgstr "VLAN oznaka"
 
 msgid "Value"
 msgstr ""
@@ -4743,8 +4642,14 @@ msgstr ""
 msgid "Variable"
 msgstr ""
 
+msgid "Version"
+msgstr "Različica"
+
 msgid "Virtual interface"
 msgstr ""
+
+msgid "Volume Name"
+msgstr "Ime polja"
 
 msgid "Volume label"
 msgstr ""
@@ -4757,6 +4662,9 @@ msgstr ""
 
 msgid "WEP"
 msgstr ""
+
+msgid "WINS server"
+msgstr "WINS strežnik"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
 msgstr ""
@@ -4775,6 +4683,13 @@ msgstr ""
 
 msgid "Wake On LAN"
 msgstr ""
+
+msgid "Warning"
+msgstr "Opozorilo"
+
+#, php-format
+msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr "Opozorilo: To lahko zelo upočasni nalaganje %s vsebine dnevnika!"
 
 msgid ""
 "Warning: You are going to delete a RAID volume. All data will get lost and "
@@ -4797,6 +4712,9 @@ msgid ""
 "attempt to identify the remote username."
 msgstr ""
 
+msgid "Where the working files will be stored"
+msgstr "Kjer bodo shranjene delovne datoteke"
+
 msgid "Where to save downloaded data."
 msgstr ""
 
@@ -4814,10 +4732,16 @@ msgstr ""
 msgid "Wireless configuration"
 msgstr ""
 
+msgid "Workgroup"
+msgstr "Delovna skupina"
+
 msgid ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
 "15 characters)."
 msgstr ""
+
+msgid "Working Directory"
+msgstr "Delovna mapa"
 
 msgid "Write"
 msgstr ""
@@ -4828,6 +4752,9 @@ msgstr ""
 msgid "Wrong partition type or partition number."
 msgstr ""
 
+msgid "Yes"
+msgstr "Da"
+
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
 "command.<br>Example: pkg_add -r packagename"
@@ -4837,6 +4764,13 @@ msgid ""
 "You can use the following parameters for substitution:<div "
 "id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
+
+#, php-format
+msgid ""
+"You can't mount the partition '%s' where the config file is stored.<br>"
+msgstr ""
+"Me morete priklopiti particije '%s', kjer je shranjena datoteka z "
+"nastavitvami.<br>"
 
 msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
@@ -4856,11 +4790,35 @@ msgstr ""
 msgid "You have to select at least one item for '%s'."
 msgstr ""
 
+msgid "You may enter a description here for your reference."
+msgstr "Tukaj lahko vpišete opis."
+
+msgid "You may need enough space to duplicate all files being synced"
+msgstr ""
+"Potrebovali boste zadostno količino prostega diska, da boste lahko "
+"duplicirali vse podatke, ki se sinhronizirajo"
+
+msgid "You must add disks first."
+msgstr "Najprej morate dodati diske."
+
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
+
+msgid "You must reboot the system before you can upgrade the firmware."
+msgstr "Pred Firmware nadgradnjo je potreben ponovni zagon sistema."
+
+msgid "You must select at least one authentication method."
+msgstr "Izbrati morate vsaj eno metodo preverjanja."
+
+msgid "You must use a passphrase to attach an encrypted disk."
+msgstr "Za pliklop šifriranega pogona, morate uporabiti geslo."
+
+msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
+msgstr ""
+"Za pošiljanje gesla priporočamo rabo WebGUI programa po HTTPS protokolu."
 
 msgid "Your own email address."
 msgstr ""
@@ -4883,6 +4841,12 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
+msgid "day"
+msgstr "dan"
+
+msgid "days"
+msgstr "dni"
+
 msgid "dbpath"
 msgstr ""
 
@@ -4890,14 +4854,38 @@ msgstr ""
 msgid "e.g. %s"
 msgstr ""
 
+msgid "hours"
+msgstr "ur(e)"
+
+msgid "iSCSI Initiator"
+msgstr "iSCSI pobudnik"
+
+msgid "iSCSI Target"
+msgstr "iSCSI Cilj"
+
+msgid "iSCSI initiator disabled"
+msgstr "iSCSI pobudnik onemogočen"
+
 msgid "iTunes/DAAP"
 msgstr ""
+
+msgid "minutes"
+msgstr "minut"
+
+msgid "mirroring"
+msgstr "zrcaljenje"
+
+msgid "months"
+msgstr "mesecev"
 
 msgid "mount"
 msgstr ""
 
 msgid "mswindows"
 msgstr ""
+
+msgid "n/a"
+msgstr "ni na voljo"
 
 msgid "noadouble"
 msgstr ""
@@ -4920,6 +4908,15 @@ msgstr ""
 msgid "rc.conf"
 msgstr ""
 
+msgid "rotated block-interleaved parity"
+msgstr "rotirajoča pariteta blok-prepletanje"
+
+msgid "seconds"
+msgstr "sekund"
+
+msgid "striping"
+msgstr "lepljenje"
+
 msgid "sysctl.conf"
 msgstr ""
 
@@ -4931,3 +4928,6 @@ msgstr ""
 
 msgid "upriv"
 msgstr ""
+
+msgid "week days"
+msgstr "delovnik"
