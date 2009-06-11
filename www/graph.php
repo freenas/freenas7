@@ -33,8 +33,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-require("guiconfig.inc");
 require("auth.inc");
+require("guiconfig.inc");
 
 header("Content-type: image/svg+xml");
 

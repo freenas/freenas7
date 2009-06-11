@@ -31,7 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("auth.inc");
 require("guiconfig.inc");
+
 $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Partitions"));
 
 $a_disk = get_physical_disks_list();

@@ -3,7 +3,7 @@
 /*
 	system_firmware.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,6 +33,7 @@
 */
 $d_isfwfile = 1;
 
+require("auth.inc");
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));

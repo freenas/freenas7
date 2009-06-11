@@ -51,6 +51,7 @@
 	* 	Arguably, a full client install could be done too to
 	allow FreeNAS to FreeNAS syncing.
 */
+require("auth.inc");
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"),gettext("Unison"));

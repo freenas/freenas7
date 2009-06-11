@@ -27,6 +27,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("auth.inc");
 require("guiconfig.inc");
 
 // Make sure no other output than the requested data is echoed.

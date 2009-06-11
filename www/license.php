@@ -1,5 +1,6 @@
 #!/usr/local/bin/php
 <?php
+require("auth.inc");
 require("guiconfig.inc");
 $pgtitle = array(gettext("Help"), gettext("License & Credits"));
 ?>

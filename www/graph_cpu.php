@@ -33,8 +33,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-require("guiconfig.inc");
 require("auth.inc");
+require("guiconfig.inc");
 
 /********* Other conf *******/
 $nb_plot=120;			//NB plot in graph

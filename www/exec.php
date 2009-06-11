@@ -8,6 +8,7 @@
 	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
 	(adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
 */
+require("auth.inc");
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("Execute command"));

@@ -34,6 +34,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("auth.inc");
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Fsck"));

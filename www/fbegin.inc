@@ -1,6 +1,4 @@
 <?php
-require_once("auth.inc");
-
 function gentitle($title) {
 	$navlevelsep = "|"; // Navigation level separator string.
 	return join($navlevelsep, $title);

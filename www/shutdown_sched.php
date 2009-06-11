@@ -3,7 +3,7 @@
 /*
 	shutdown_sched.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	Cron configuration from services_rsynclient.php improved by Mat Murdock <mmurdock@kimballequipment.com>
 
@@ -32,6 +32,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("auth.inc");
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Shutdown"), gettext("Scheduled"));
