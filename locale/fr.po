@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-30 20:09+0000\n"
-"PO-Revision-Date: 2009-06-01 12:58+0000\n"
+"PO-Revision-Date: 2009-06-09 16:33+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-04 20:01+0000\n"
+"X-Launchpad-Export-Date: 2009-06-11 02:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -883,6 +883,9 @@ msgstr "Evénements démons"
 msgid "Daemon log"
 msgstr "Journal des démons"
 
+msgid "Danish"
+msgstr "Danois"
+
 msgid "Data integrity"
 msgstr "Intégrité des données"
 
@@ -949,6 +952,9 @@ msgstr "Effacer toutes les options"
 
 msgid "Delete all rules"
 msgstr "Supprimer toutes les règles"
+
+msgid "Delete all self-tests"
+msgstr "Supprimer tous les auto-tests"
 
 msgid "Delete command"
 msgstr "Supprimer la commande"
@@ -1172,6 +1178,9 @@ msgstr "Voulez-vous vraiment supprimer toutes les options?"
 
 msgid "Do you really want to delete all rules?"
 msgstr "Voulez-vous vraiment supprimer toutes les règles?"
+
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr "Voulez-vous vraiment supprimer tous les auto-tests planifiés?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "Voulez-vous vraiment supprimer cette MIB?"
@@ -1718,6 +1727,9 @@ msgstr "Proxy FTP"
 msgid "FTP events"
 msgstr "Evénements FTP"
 
+msgid "FTP file transfer"
+msgstr "Transfert de fichier FTP"
+
 msgid "FTP log"
 msgstr "Log FTP"
 
@@ -1814,6 +1826,9 @@ msgstr "Système de fichiers"
 
 msgid "File system check"
 msgstr "Vérification de système de fichier"
+
+msgid "File transfer"
+msgstr "Transfert de fichier"
 
 msgid "Filename"
 msgstr "Nom de fichier"
@@ -2320,6 +2335,28 @@ msgid ""
 msgstr ""
 "Laisser '%s' pour les disques non formatés et les formater en utilisant le "
 "menu <a href=%s>format</a>."
+
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr ""
+"Niveau 1 -  Consommation minimale avec Standby (rotation des disques arrêtée "
+"(spindown))"
+
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr "Niveau 127 - Consommation intermédiaire avec Standby"
+
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+"Niveau 128 - Consommation minimale sans Standby (les disques tournent (no "
+"spindown))"
+
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr "Niveau 192 - Consommation intermédiaire sans Standby"
+
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr "Niveau 254 - Performances maximales, consommation maximale"
+
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr "Niveau 64 - Consommation intermédiaire avec Standby"
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
@@ -2952,6 +2989,11 @@ msgstr "Ping/Traceroute"
 
 msgid "Platform"
 msgstr "Plateforme"
+
+#, php-format
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+"Veuillez consulter la <a href='%s' target='_blank'>documentation</a>."
 
 msgid "Please note that blanks in path names are not allowed."
 msgstr ""
@@ -3748,6 +3790,9 @@ msgstr "Basculer en %s/s"
 msgid "Synchronization Time"
 msgstr "Heure de synchronisation"
 
+msgid "Syslog"
+msgstr "Syslog"
+
 #, php-format
 msgid ""
 "Syslog sends UDP datagrams to port 514 on the specified remote syslog "
@@ -4188,6 +4233,18 @@ msgstr ""
 "Port min. : valeur basse du numéro de port à allouer pour les connexions "
 "passives (0 = n'importe lequel)."
 
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
+"Le module fourni des interdictions automatiques (bans), basées sur des "
+"critères configurables. Une interdiction permet d'éviter qu'un utilisateur, "
+"un hôte, ou une classe puisse se connecter (comme un utilisateur) au serveur "
+"mais cela ne leur interdit pas de se connecter (au sens connexion réseau) au "
+"serveur."
+
 msgid "The name or IP address of the LDAP server."
 msgstr "Le nom ou l'adresse IP du serveur LDAP."
 
@@ -4345,6 +4402,14 @@ msgstr ""
 #, php-format
 msgid "These parameters are added to %s."
 msgstr "Ces paramètres sont ajoutés à %s."
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr "Ces paramètres sont ajoutés à la section [Global] de %s."
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr "Ces paramètres sont ajoutés à la section [Share] de %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -5166,6 +5231,13 @@ msgstr ""
 "Vous pouvez aussi installer un paquetage par SSH ou depuis la console en "
 "utilisant la commande pkg_add.<br>Exemple: pkg_add -r nomdupaquetage"
 
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Vous pouvez utiliser les paramètres suivants pour la substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Nom du hôte</li></ul></div>"
+
 #, php-format
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
@@ -5359,75 +5431,3 @@ msgstr "jours de la semaine"
 
 #~ msgid "Target Name"
 #~ msgstr "Nom cible"
-
-msgid "Danish"
-msgstr "Danois"
-
-msgid "Delete all self-tests"
-msgstr "Supprimer tous les auto-tests"
-
-msgid "Do you really want to delete all scheduled self-tests?"
-msgstr "Voulez-vous vraiment supprimer tous les auto-tests planifiés?"
-
-msgid "FTP file transfer"
-msgstr "Transfert de fichier FTP"
-
-msgid "File transfer"
-msgstr "Transfert de fichier"
-
-msgid "Level 1 - Minimum power usage with Standby (spindown)"
-msgstr ""
-"Niveau 1 -  Consommation minimale avec Standby (rotation des disques arrêtée "
-"(spindown))"
-
-msgid "Level 127 - Intermediate power usage with Standby"
-msgstr "Niveau 127 - Consommation intermédiaire avec Standby"
-
-msgid "Level 128 - Minimum power usage without Standby (no spindown)"
-msgstr ""
-"Niveau 128 - Consommation minimale sans Standby (les disques tournent (no "
-"spindown))"
-
-msgid "Level 192 - Intermediate power usage without Standby"
-msgstr "Niveau 192 - Consommation intermédiaire sans Standby"
-
-msgid "Level 254 - Maximum performance, maximum power usage"
-msgstr "Niveau 254 - Performances maximales, consommation maximale"
-
-msgid "Level 64 - Intermediate power usage with Standby"
-msgstr "Niveau 64 - Consommation intermédiaire avec Standby"
-
-#, php-format
-msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
-msgstr ""
-"Veuillez consulter la <a href='%s' target='_blank'>documentation</a>."
-
-msgid "Syslog"
-msgstr "Syslog"
-
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging into "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-"Le module fourni des interdictions automatiques (bans), basées sur des "
-"critères configurables. Une interdiction permet d'éviter qu'un utilisateur, "
-"un hôte, ou une classe puisse se connecter (comme un utilisateur) au serveur "
-"mais cela ne leur interdit pas de se connecter (au sens connexion réseau) au "
-"serveur."
-
-#, php-format
-msgid "These parameters are added to [Global] section of %s."
-msgstr "Ces paramètres sont ajoutés à la section [Global] de %s."
-
-#, php-format
-msgid "These parameters are added to [Share] section of %s."
-msgstr "Ces paramètres sont ajoutés à la section [Share] de %s."
-
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
-msgstr ""
-"Vous pouvez utiliser les paramètres suivants pour la substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Nom du hôte</li></ul></div>"

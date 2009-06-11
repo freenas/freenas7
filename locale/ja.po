@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-04 20:01+0000\n"
+"X-Launchpad-Export-Date: 2009-06-11 02:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -80,6 +80,14 @@ msgid ""
 msgstr ""
 "<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず，<a href=%s>ユーザ</a> "
 "は完全なシェルを有効にしなければなりません．"
+
+msgid ""
+"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+msgstr ""
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -538,6 +546,9 @@ msgstr "バインドパスワード"
 msgid "BitTorrent"
 msgstr "BitTorrent"
 
+msgid "Blank time"
+msgstr ""
+
 msgid "Browseable"
 msgstr "ブラウズ可能"
 
@@ -586,6 +597,9 @@ msgstr "システムパーティション 1 はマウント出来ません, デ�
 msgid "Cannot get data about interface"
 msgstr "インタフェースのデータを取得出来ません"
 
+msgid "Capacity"
+msgstr ""
+
 msgid "Case Folding"
 msgstr "ケースフォールディング"
 
@@ -600,6 +614,9 @@ msgstr ""
 
 msgid "Certificate"
 msgstr "証明書"
+
+msgid "Change"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "このオプションの変更はリブート後に効果があらわれます．"
@@ -713,6 +730,9 @@ msgstr "FTP 接続中のユーザ"
 msgid "Console menu"
 msgstr "コンソールメニュー"
 
+msgid "Console screensaver"
+msgstr ""
+
 msgid "Contact"
 msgstr "連絡先"
 
@@ -799,6 +819,9 @@ msgstr "Daemon イベント"
 msgid "Daemon log"
 msgstr "デーモンログ"
 
+msgid "Danish"
+msgstr ""
+
 msgid "Data integrity"
 msgstr "データの完全性"
 
@@ -865,6 +888,9 @@ msgstr "全てのオプションを削除"
 
 msgid "Delete all rules"
 msgstr "全てのルールを削除"
+
+msgid "Delete all self-tests"
+msgstr ""
 
 msgid "Delete command"
 msgstr "コマンドを削除"
@@ -994,6 +1020,10 @@ msgstr ""
 "負荷を減らし，及び少し高い転送遅延の損失においてスループットを増大させる事が出来ます (デバイスは1秒あたり "
 "1000回ポーリングされます)．ポーリングは全ての NIC をサポートする訳ではありません．"
 
+#, php-format
+msgid "Device: %s | Total: %s | Used: %s | Free: %s"
+msgstr ""
+
 msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
 "must be defined before they can be used, and they cannot be used more than "
@@ -1074,6 +1104,9 @@ msgstr "全てのオプションを削除してもよろしいですか?"
 msgid "Do you really want to delete all rules?"
 msgstr "このルールを削除してもよろしいですか?"
 
+msgid "Do you really want to delete all scheduled self-tests?"
+msgstr ""
+
 msgid "Do you really want to delete this MIB?"
 msgstr "この MIB を削除してもよろしいですか?"
 
@@ -1153,6 +1186,9 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "ディスクをフォーマットして宜しいですか? データは全て失われます!"
 
+msgid "Do you really want to remove the selected item from the list?"
+msgstr ""
+
 msgid "Do you really want to uninstall this package?"
 msgstr "このパッケージをアンインストールしてもよろしいですか?"
 
@@ -1208,6 +1244,9 @@ msgstr "Dos 文字セット"
 
 msgid "Download"
 msgstr "ダウンロード"
+
+msgid "Download bandwidth"
+msgstr ""
 
 msgid "Download configuration"
 msgstr "設定のダウンロード"
@@ -1350,6 +1389,9 @@ msgstr "認証を有効にします．"
 msgid "Enable compression."
 msgstr "圧縮を有効化"
 
+msgid "Enable console screensaver"
+msgstr ""
+
 msgid "Enable device polling"
 msgstr "デバイスポーリングを有効にします"
 
@@ -1385,14 +1427,23 @@ msgstr "ローカルユーザ認証を許可．"
 msgid "Enable module listing."
 msgstr "モジュールリストを有効にします．"
 
+msgid "Enable peer exchange (PEX)."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr "パーミッションの継承の有効化"
+
+msgid "Enable port forwarding via NAT-PMP or UPnP."
+msgstr ""
 
 msgid "Enable proxy authentication."
 msgstr "Proxy認証の有効化"
 
 msgid "Enable recycle bin"
 msgstr "ごみ箱機能を有効化"
+
+msgid "Enable remote monitoring of the local connected UPS."
+msgstr ""
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -1455,6 +1506,9 @@ msgstr "暗号化"
 
 msgid "Encryption algorithm"
 msgstr "暗号化アルゴリズム"
+
+msgid "Encryption algorithm to use."
+msgstr ""
 
 msgid "English"
 msgstr "英語"
@@ -1563,6 +1617,9 @@ msgstr "FTP プロキシ"
 msgid "FTP events"
 msgstr "FTP イベント"
 
+msgid "FTP file transfer"
+msgstr ""
+
 msgid "FTP log"
 msgstr "FTP ログ"
 
@@ -1653,6 +1710,9 @@ msgstr "ファイルシステム"
 
 msgid "File system check"
 msgstr "ファイルシステムチェック"
+
+msgid "File transfer"
+msgstr ""
 
 msgid "Filename"
 msgstr "ファイル名"
@@ -1849,6 +1909,9 @@ msgstr "I/O エラー"
 msgid "I/O packets"
 msgstr "I/O パケット"
 
+msgid "I/O statistics"
+msgstr ""
+
 msgid "IP address"
 msgstr "IP アドレス"
 
@@ -2012,6 +2075,9 @@ msgstr "/etc/exports 内で間違った行があった際，syslog への診断�
 msgid "Initialize"
 msgstr "初期化"
 
+msgid "Initialize and encrypt disk."
+msgstr ""
+
 msgid "Initializing"
 msgstr "初期化中"
 
@@ -2072,6 +2138,12 @@ msgstr "鍵"
 msgid "Key Management Protocol"
 msgstr "鍵管理プロトコル"
 
+msgid "Key length"
+msgstr ""
+
+msgid "Key length to use with the given cryptographic algorithm."
+msgstr ""
+
 msgid "Kill encrypted volume"
 msgstr "暗号化ボリュームを停止"
 
@@ -2111,6 +2183,24 @@ msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
 msgstr "フォーマットしたくない場合は '%s' を選択し，後で <a href=%s>フォーマット</a> メニューからフォーマットして下さい．"
+
+msgid "Level 1 - Minimum power usage with Standby (spindown)"
+msgstr ""
+
+msgid "Level 127 - Intermediate power usage with Standby"
+msgstr ""
+
+msgid "Level 128 - Minimum power usage without Standby (no spindown)"
+msgstr ""
+
+msgid "Level 192 - Intermediate power usage without Standby"
+msgstr ""
+
+msgid "Level 254 - Maximum performance, maximum power usage"
+msgstr ""
+
+msgid "Level 64 - Intermediate power usage with Standby"
+msgstr ""
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
@@ -2389,6 +2479,9 @@ msgstr "NFS"
 msgid "NIS"
 msgstr "NIS"
 
+msgid "NOT YET AVAILABLE"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP サーバ"
 
@@ -2602,6 +2695,12 @@ msgstr "パッケージ"
 msgid "Pairwise"
 msgstr "ペア"
 
+msgid "Partition number"
+msgstr ""
+
+msgid "Partition type"
+msgstr ""
+
 msgid "Partitions"
 msgstr "パーティション"
 
@@ -2670,6 +2769,12 @@ msgstr "ドキュメントルートからの相対 URL パス．"
 msgid "Path to be shared."
 msgstr "共有するパス．"
 
+msgid "Peer exchange"
+msgstr ""
+
+msgid "Peer port"
+msgstr ""
+
 msgid "Permit root login"
 msgstr "root ログインを許可"
 
@@ -2690,6 +2795,10 @@ msgstr "Ping/Traceroute"
 
 msgid "Platform"
 msgstr "プラットフォーム"
+
+#, php-format
+msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
 
 msgid "Please note that blanks in path names are not allowed."
 msgstr "パス内に空白が含まれないように注意して下さい．"
@@ -2713,6 +2822,13 @@ msgstr "ポート番号 %ld は既に他のサービスで使用されていま�
 #, php-format
 msgid "Port %s must be less than %s."
 msgstr "ポート %s は %s より少なくなければなりません．"
+
+msgid "Port forwarding"
+msgstr ""
+
+#, php-format
+msgid "Port to listen for incoming peer connections. Default port is %d."
+msgstr ""
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "待ち受けるポート番号．iTunes のデフォルトポート番号は 3689 です．"
@@ -2744,6 +2860,9 @@ msgstr "電源モード"
 
 msgid "PreInit"
 msgstr "事前実行"
+
+msgid "Preferred"
+msgstr ""
 
 msgid "Prefix"
 msgstr "プレフィックス"
@@ -2940,6 +3059,9 @@ msgstr "レポート"
 msgid "Require authentication."
 msgstr "認証を要求します．"
 
+msgid "Required"
+msgstr ""
+
 msgid "Rescan interval"
 msgstr "再スキャンの間隔"
 
@@ -3093,6 +3215,9 @@ msgstr "セキュリティー"
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "S.M.A.R.T. を有効にするディスクを選択してください．"
+
+msgid "Select item to remove from the list"
+msgstr ""
 
 msgid "Select mount point where to create the swap file."
 msgstr "スワップファイルを作成するディレクトリを選択してください．"
@@ -3315,6 +3440,11 @@ msgstr "共有で使用する文字コードを指定します．例えば UTF8,
 msgid "Specifies the time in hh:mm:ss after which the ban expires."
 msgstr "指定した時間を過ぎると期限切れとなります．hh:mm:ss 形式で時間を指定します．"
 
+msgid ""
+"Specifies the time interval in hh:mm:ss in which the given number of "
+"occurrences must happen to add the ban."
+msgstr ""
+
 msgid "Specifies the username which the service will run as."
 msgstr "サービスを動作させる為のユーザ名を指定します．"
 
@@ -3424,6 +3554,9 @@ msgstr "Switch to %s/s"
 
 msgid "Synchronization Time"
 msgstr "同期時間"
+
+msgid "Syslog"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3647,6 +3780,10 @@ msgstr "'%s' は数字である必要があります．"
 msgid "The attribute '%s' must be a string."
 msgstr "'%s' は文字列である必要があります．"
 
+#, c-format
+msgid "The attribute '%s' must contain at least one entry."
+msgstr ""
+
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
 "action'. Where daemon is the daemon name of the service started. The address "
@@ -3713,6 +3850,10 @@ msgstr "SMTPサーバのポート番号"
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr "検索の為のデフォルトのベース DN を指定して下さい．例) %s"
+
+msgid ""
+"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "デバイス名には a-z, A-Z, 0-9 の文字のみが利用出来ます．"
@@ -3788,6 +3929,10 @@ msgstr "このログイン名は予約されているログイン名です．"
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "同一IPアドレスからの最大接続数は0(無制限)かそれより大きな数字である必要があります．"
 
+msgid ""
+"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgstr ""
+
 msgid "The maximum idle time be a number."
 msgstr "アイドル時間の最大数は数字で指定して下さい．"
 
@@ -3796,10 +3941,20 @@ msgid ""
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最大のポート (0 = いずれかのポート)．"
 
+msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr ""
+
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最小のポート (0 = いずれかのポート)．"
+
+msgid ""
+"The module provides automatic bans that are triggered based on configurable "
+"criteria. A ban prevents the banned user, host, or class from logging into "
+"the server, it does not prevent the banned user, host, or class from "
+"connecting to the server."
+msgstr ""
 
 msgid "The name or IP address of the LDAP server."
 msgstr "LDAP サーバのホスト名または IP アドレスを入力して下さい．"
@@ -3818,6 +3973,9 @@ msgstr "入力したパスワードに不正ない文字が使用されていま
 
 msgid "The passwords do not match."
 msgstr "パスワードが一致しません．"
+
+msgid "The peer connection encryption mode."
+msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3935,6 +4093,14 @@ msgstr ""
 #, php-format
 msgid "These parameters are added to %s."
 msgstr "ここで指定したパラメータは %s に追加されます．"
+
+#, php-format
+msgid "These parameters are added to [Global] section of %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters are added to [Share] section of %s."
+msgstr ""
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -4156,6 +4322,11 @@ msgid ""
 "files."
 msgstr "ドットから始まるファイルを隠しファイルとして表示させるかを決定します．"
 
+msgid ""
+"This parameter says that if N occurrences of the event happen within the "
+"given time interval, then a ban is automatically added."
+msgstr ""
+
 #, php-format
 msgid ""
 "This parameter specifies the suffix that is used for groups when these are "
@@ -4180,6 +4351,9 @@ msgid ""
 "added to the LDAP directory, e.g. %s"
 msgstr "ユーザで使用されるサフィックスを指定します．例) %s"
 
+msgid "This rule is triggered whenever the selected event directive occurs."
+msgstr ""
+
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "iSCSIターゲットのIPアドレスもしくはFQDN"
 
@@ -4199,6 +4373,11 @@ msgid ""
 "This will erase ALL data on the selected disks! Do not use this option if "
 "you want to add an already existing RAID again."
 msgstr "選択したDiskのデータをすべて消去します！既存の RAID ボリュームを追加するのにこのオプションを使用しないでください．"
+
+msgid ""
+"This will erase ALL data on your disk! Do not use this option if you want to "
+"add an existing encrypted disk."
+msgstr ""
 
 msgid "Time"
 msgstr "時間"
@@ -4267,8 +4446,15 @@ msgstr ""
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">System</li></ul></div>"
 
+msgid "Tolerated"
+msgstr ""
+
 msgid "Tools"
 msgstr "ツール"
+
+#, php-format
+msgid "Total: %s | Used: %s | Free: %s"
+msgstr ""
 
 msgid "Traceroute"
 msgstr "Traceroute"
@@ -4309,6 +4495,9 @@ msgstr "Trivial File Transfer Protocol"
 
 msgid "Tuning"
 msgstr "チューニング"
+
+msgid "Turn the monitor to standby after N seconds."
+msgstr ""
 
 msgid "Type"
 msgstr "タイプ"
@@ -4406,6 +4595,9 @@ msgstr "ファームウェアアップグレード"
 
 msgid "Upload"
 msgstr "アップロード"
+
+msgid "Upload bandwidth"
+msgstr ""
 
 msgid "Uppercases names in both directions"
 msgstr "両方で名前を大文字化します"
@@ -4612,6 +4804,9 @@ msgstr "書込み"
 msgid "Write only"
 msgstr "書込みのみ"
 
+msgid "Wrong partition type or partition number."
+msgstr ""
+
 msgid "Yes"
 msgstr "Yes"
 
@@ -4621,6 +4816,11 @@ msgid ""
 msgstr ""
 "SSHによるリモートコンソールもしくはローカルコンソールでも pkg_add コマンドを使用してパッケージをインストールする事が可能です．<br>例) "
 "pkg_add -r パッケージ名"
+
+msgid ""
+"You can use the following parameters for substitution:<div "
+"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4798,203 +4998,3 @@ msgstr "週日"
 
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "最大性能，最大の電力利用"
-
-msgid ""
-"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
-"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
-msgstr ""
-
-msgid "Blank time"
-msgstr ""
-
-msgid "Capacity"
-msgstr ""
-
-msgid "Change"
-msgstr ""
-
-msgid "Console screensaver"
-msgstr ""
-
-msgid "Danish"
-msgstr ""
-
-msgid "Delete all self-tests"
-msgstr ""
-
-#, php-format
-msgid "Device: %s | Total: %s | Used: %s | Free: %s"
-msgstr ""
-
-msgid "Do you really want to delete all scheduled self-tests?"
-msgstr ""
-
-msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
-
-msgid "Download bandwidth"
-msgstr ""
-
-msgid "Enable console screensaver"
-msgstr ""
-
-msgid "Enable peer exchange (PEX)."
-msgstr ""
-
-msgid "Enable port forwarding via NAT-PMP or UPnP."
-msgstr ""
-
-msgid "Enable remote monitoring of the local connected UPS."
-msgstr ""
-
-msgid "Encryption algorithm to use."
-msgstr ""
-
-msgid "FTP file transfer"
-msgstr ""
-
-msgid "File transfer"
-msgstr ""
-
-msgid "I/O statistics"
-msgstr ""
-
-msgid "Initialize and encrypt disk."
-msgstr ""
-
-msgid "Key length"
-msgstr ""
-
-msgid "Key length to use with the given cryptographic algorithm."
-msgstr ""
-
-msgid "Level 1 - Minimum power usage with Standby (spindown)"
-msgstr ""
-
-msgid "Level 127 - Intermediate power usage with Standby"
-msgstr ""
-
-msgid "Level 128 - Minimum power usage without Standby (no spindown)"
-msgstr ""
-
-msgid "Level 192 - Intermediate power usage without Standby"
-msgstr ""
-
-msgid "Level 254 - Maximum performance, maximum power usage"
-msgstr ""
-
-msgid "Level 64 - Intermediate power usage with Standby"
-msgstr ""
-
-msgid "NOT YET AVAILABLE"
-msgstr ""
-
-msgid "Partition number"
-msgstr ""
-
-msgid "Partition type"
-msgstr ""
-
-msgid "Peer exchange"
-msgstr ""
-
-msgid "Peer port"
-msgstr ""
-
-#, php-format
-msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
-msgstr ""
-
-msgid "Port forwarding"
-msgstr ""
-
-#, php-format
-msgid "Port to listen for incoming peer connections. Default port is %d."
-msgstr ""
-
-msgid "Preferred"
-msgstr ""
-
-msgid "Required"
-msgstr ""
-
-msgid "Select item to remove from the list"
-msgstr ""
-
-msgid ""
-"Specifies the time interval in hh:mm:ss in which the given number of "
-"occurrences must happen to add the ban."
-msgstr ""
-
-msgid "Syslog"
-msgstr ""
-
-#, c-format
-msgid "The attribute '%s' must contain at least one entry."
-msgstr ""
-
-msgid ""
-"The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
-msgstr ""
-
-msgid ""
-"The maximum download bandwith in KiB/s. An empty field means infinity."
-msgstr ""
-
-msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
-msgstr ""
-
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging into "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
-msgstr ""
-
-msgid "The peer connection encryption mode."
-msgstr ""
-
-#, php-format
-msgid "These parameters are added to [Global] section of %s."
-msgstr ""
-
-#, php-format
-msgid "These parameters are added to [Share] section of %s."
-msgstr ""
-
-msgid ""
-"This parameter says that if N occurrences of the event happen within the "
-"given time interval, then a ban is automatically added."
-msgstr ""
-
-msgid "This rule is triggered whenever the selected event directive occurs."
-msgstr ""
-
-msgid ""
-"This will erase ALL data on your disk! Do not use this option if you want to "
-"add an existing encrypted disk."
-msgstr ""
-
-msgid "Tolerated"
-msgstr ""
-
-#, php-format
-msgid "Total: %s | Used: %s | Free: %s"
-msgstr ""
-
-msgid "Turn the monitor to standby after N seconds."
-msgstr ""
-
-msgid "Upload bandwidth"
-msgstr ""
-
-msgid "Wrong partition type or partition number."
-msgstr ""
-
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
-msgstr ""
