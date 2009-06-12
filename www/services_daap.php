@@ -148,7 +148,7 @@ function enable_change(enable_change) {
 					<?php
 					$if = get_ifname($config['interfaces']['lan']['if']);
 					$ipaddr = get_ipaddr($if);
-					$url = "http://{$ipaddr}:{$pconfig['port']}";
+					$url = htmlspecialchars("http://{$ipaddr}:{$pconfig['port']}");
 					$text = "<a href='{$url}' target='_blank'>{$url}</a>";
 					?>
 					<?php html_text("url", gettext("URL"), $text);?>
