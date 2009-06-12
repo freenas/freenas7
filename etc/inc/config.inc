@@ -200,20 +200,16 @@ EOD;
 		}
 
 		// Write device name to a file (used by rc.firmware for example)
-		$fd = fopen("{$g['etc_path']}/cfdevice", "w");
-		if ($fd) {
-			fwrite($fd, "{$cfgpartition}\n");
-			fclose($fd);
-		}
+		@file_put_contents("{$g['etc_path']}/cfdevice", $cfgpartition, FILE_TEXT);
 
-		// Write out an fstab
-		$fd = fopen("{$g['etc_path']}/fstab", "w");
-		if ($fd) {
-			$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
-			fwrite($fd, $fstab);
-			fclose($fd);
-		}
+		// Write /etc/fstab
+		$data = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
+		@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT);
 	}
+
+	// Append process file system to /etc/fstab
+	$data = "proc /proc procfs rw 0 0\n";
+	@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT | FILE_APPEND);
 
 	// Mount all filesystems
 	mwexec("/sbin/mount -a");
@@ -225,8 +221,8 @@ if (!$noparseconfig) {
 
 	/* see if there's a newer cache file */
 	if (file_exists("{$g['tmp_path']}/config.cache") &&
-		(filemtime("{$g['tmp_path']}/config.cache") >=
-		 filemtime("{$g['conf_path']}/config.xml"))) {
+		(@filemtime("{$g['tmp_path']}/config.cache") >=
+		 @filemtime("{$g['conf_path']}/config.xml"))) {
 
 		/* read cache */
 		$config = unserialize(file_get_contents("{$g['tmp_path']}/config.cache"));
