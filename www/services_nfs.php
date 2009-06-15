@@ -107,13 +107,7 @@ function enable_change(enable_change) {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Network File System"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Number of servers");?></td>
-						<td width="78%" class="vtable">
-							<input name="numproc" type="text" class="formfld" id="numproc" size="5" value="<?=htmlspecialchars($pconfig['numproc']);?>"></br>
-							<span class="vexpl"><?=gettext("Specifies how many servers to create.");?> <?=gettext("There should be enough to handle the maximum level of concurrency from its clients, typically four to six.");?></span>
-						</td>
-					</tr>
+					<?php html_inputbox("numproc", gettext("Number of servers"), $pconfig['numproc'], gettext("Specifies how many servers to create.") . " " . gettext("There should be enough to handle the maximum level of concurrency from its clients, typically four to six."), false, 2);?>
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
