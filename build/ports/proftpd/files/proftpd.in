@@ -64,7 +64,6 @@ proftpd_modctrls_controlsinterval=${proftpd_modctrls_controlsinterval:-"10"}
 proftpd_modban_bancontrolsacls=${proftpd_modban_bancontrolsacls:-"all allow group wheel"}
 proftpd_modban_banlog=${proftpd_modban_banlog:-"/var/log/${name}/ban.log"}
 proftpd_modban_banmessage=${proftpd_modban_banmessage:-"Host %a has been banned"}
-proftpd_modban_banonevent=${proftpd_modban_banonevent:-"MaxLoginAttempts 2/00:5:00 00:30:00"}
 proftpd_modban_bantable=${proftpd_modban_bantable:-"/var/run/${name}/ban.tab"}
 command="/usr/local/sbin/${name}"
 command_args="--config ${proftpd_config}"
