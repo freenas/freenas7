@@ -230,7 +230,7 @@ function list_dir($dir) {			// list directory contents
 	$dir_up = dirname($dir);
 	if($dir_up==".") $dir_up = "";
 	
-	if(!get_show_item($dir_up,basename($dir))) show_error($dir." : ".$GLOBALS["error_msg"]["accessdir"]);
+	if(!get_show_item($dir_up,base_name($dir))) show_error($dir." : ".$GLOBALS["error_msg"]["accessdir"]);
 	
 	// make file & dir tables, & get total filesize & number of items
 	make_tables($dir, $dir_list, $file_list, $tot_file_size, $num_items);

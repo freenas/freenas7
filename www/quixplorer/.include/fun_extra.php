@@ -208,7 +208,7 @@ function copy_dir($source,$dest) {		// copy dir
 	$ok = true;
 	
 	if(!@mkdir($dest,0777)) return false;
-	if(($handle=@opendir($source))===false) show_error(basename($source).": ".$GLOBALS["error_msg"]["opendir"]);
+	if(($handle=@opendir($source))===false) show_error(base_name($source).": ".$GLOBALS["error_msg"]["opendir"]);
 	
 	while(($file=readdir($handle))!==false) {
 		if(($file==".." || $file==".")) continue;
@@ -230,13 +230,13 @@ function remove($item) {			// remove file / dir
 	$ok = true;
 	if(@is_link($item) || @is_file($item)) $ok=@unlink($item);
 	elseif(@is_dir($item)) {
-		if(($handle=@opendir($item))===false) show_error(basename($item).": ".$GLOBALS["error_msg"]["opendir"]);
+		if(($handle=@opendir($item))===false) show_error(base_name($item).": ".$GLOBALS["error_msg"]["opendir"]);
 
 		while(($file=readdir($handle))!==false) {
 			if(($file==".." || $file==".")) continue;
 			
 			$new_item = $item."/".$file;
-			if(!@file_exists($new_item)) show_error(basename($item).": ".$GLOBALS["error_msg"]["readdir"]);
+			if(!@file_exists($new_item)) show_error(base_name($item).": ".$GLOBALS["error_msg"]["readdir"]);
 			//if(!get_show_item($item, $new_item)) continue;
 			
 			if(@is_dir($new_item)) {
@@ -296,6 +296,10 @@ function id_browser() {
 	} else {
 		return 'OTHER';
 	}
+}
+//------------------------------------------------------------------------------
+function base_name($filename) {
+	return preg_replace( '/^.+[\\\\\\/]/', '', $filename );
 }
 //------------------------------------------------------------------------------
 ?>

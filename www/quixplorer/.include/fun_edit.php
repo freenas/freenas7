@@ -41,7 +41,7 @@ Comment:
 function savefile($file_name) {			// save edited file
 	$code = stripslashes($GLOBALS['__POST']["code"]);
 	$fp = @fopen($file_name, "w");
-	if($fp===false) show_error(basename($file_name).": ".$GLOBALS["error_msg"]["savefile"]);
+	if($fp===false) show_error(base_name($file_name).": ".$GLOBALS["error_msg"]["savefile"]);
 	fputs($fp, $code);
 	@fclose($fp);
 }
@@ -55,7 +55,7 @@ function edit_file($dir, $item) {		// edit file
 	
 	if(isset($GLOBALS['__POST']["dosave"]) && $GLOBALS['__POST']["dosave"]=="yes") {
 		// Save / Save As
-		$item=basename(stripslashes($GLOBALS['__POST']["fname"]));
+		$item=base_name(stripslashes($GLOBALS['__POST']["fname"]));
 		$fname2=get_abs_item($dir, $item);
 		if(!isset($item) || $item=="") show_error($GLOBALS["error_msg"]["miscnoname"]);
 		if($fname!=$fname2 && @file_exists($fname2)) show_error($item.": ".$GLOBALS["error_msg"]["itemdoesexist"]);

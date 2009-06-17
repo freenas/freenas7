@@ -178,7 +178,7 @@ function copy_move_items($dir) {		// copy/move file/dir
 	$err=false;
 	for($i=0;$i<$cnt;++$i) {
 		$tmp = stripslashes($GLOBALS['__POST']["selitems"][$i]);
-		$new = basename(stripslashes($GLOBALS['__POST']["newitems"][$i]));
+		$new = base_name(stripslashes($GLOBALS['__POST']["newitems"][$i]));
 		$abs_item = get_abs_item($dir,$tmp);
 		$abs_new_item = get_abs_item($new_dir,$new);
 		$items[$i] = $tmp;

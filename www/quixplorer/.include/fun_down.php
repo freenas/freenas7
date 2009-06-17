@@ -40,7 +40,7 @@ Comment:
 //------------------------------------------------------------------------------
 function download_item($dir, $item) {		// download file
 	// Security Fix:
-	$item=basename($item);
+	$item=base_name($item);
 
 	if(($GLOBALS["permissions"]&01)!=01) show_error($GLOBALS["error_msg"]["accessfunc"]);
 	if(!get_is_file($dir,$item)) show_error($item.": ".$GLOBALS["error_msg"]["fileexist"]);

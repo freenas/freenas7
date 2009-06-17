@@ -44,7 +44,7 @@ function make_item($dir) {		// make new directory or file
 	$mkname=$GLOBALS['__POST']["mkname"];
 	$mktype=$GLOBALS['__POST']["mktype"];
 	
-	$mkname=basename(stripslashes($mkname));
+	$mkname=base_name(stripslashes($mkname));
 	if($mkname=="") show_error($GLOBALS["error_msg"]["miscnoname"]);
 	
 	$new = get_abs_item($dir,$mkname);
