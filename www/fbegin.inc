@@ -143,7 +143,7 @@ function display_menu($menuid) {
 		}
 		if ("separator" !== $menuv['type']) {
 			# Display menuitem.
-			echo "<a href=\"{$menuv['link']}\" target=\"{$menuv['target']}\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
+			echo "<a href=\"{$menuv['link']}\" target=\"" . (empty($menuv['target']) ? "_self" : $menuv['target']) . "\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
 		} else {
 			# Display separator.
 			echo "<span class=\"tabseparator\">&nbsp;</span>";

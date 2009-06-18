@@ -52,8 +52,9 @@ sajax_export("update_controls");
 sajax_handle_client_request();
 ?>
 <?php include("fbegin.inc");?>
-<script>
+<script type="text/javascript">//<![CDATA[
 <?php sajax_show_javascript();?>
+//]]>
 </script>
 <script type="text/javascript" src="javascript/index.js"></script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -61,7 +62,7 @@ sajax_handle_client_request();
     <td height="10" colspan="2">&nbsp;</td>
   </tr>
   <tr align="center" valign="top">
-    <td height="170" colspan="2"><img src="logobig.png"></td>
+    <td height="170" colspan="2"><img src="logobig.png" alt="<?=get_product_name();?> logo" /></td>
   </tr>
 </table>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -141,10 +142,10 @@ sajax_handle_client_request();
 					<td width="75%" class="listr">
 						<?php
 						$percentage = 0;
-						echo "<img src='bar_left.gif' class='progbarl'>";
-						echo "<img src='bar_blue.gif' name='cpuusageu' id='cpuusageu' width='" . $percentage . "' class='progbarcf'>";
-						echo "<img src='bar_gray.gif' name='cpuusagef' id='cpuusagef' width='" . (100 - $percentage) . "' class='progbarc'>";
-						echo "<img src='bar_right.gif' class='progbarr'> ";
+						echo "<img src='bar_left.gif' class='progbarl' alt='' />";
+						echo "<img src='bar_blue.gif' name='cpuusageu' id='cpuusageu' width='" . $percentage . "' class='progbarcf' alt='' />";
+						echo "<img src='bar_gray.gif' name='cpuusagef' id='cpuusagef' width='" . (100 - $percentage) . "' class='progbarc' alt='' />";
+						echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 						?>
 						<input style="padding: 0; border: 0;" size="30" name="cpuusage" id="cpuusage" value="<?=gettext("Updating in 5 seconds.");?>"/>
 					</td>
@@ -155,10 +156,10 @@ sajax_handle_client_request();
 						<?php
 						$raminfo = system_get_ram_info();
 						$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
-						echo "<img src='bar_left.gif' class='progbarl'>";
-						echo "<img src='bar_blue.gif' name='memusageu' id='memusageu' width='" . $percentage . "' class='progbarcf'>";
-						echo "<img src='bar_gray.gif' name='memusagef' id='memusagef' width='" . (100 - $percentage) . "' class='progbarc'>";
-						echo "<img src='bar_right.gif' class='progbarr'> ";
+						echo "<img src='bar_left.gif' class='progbarl' alt='' />";
+						echo "<img src='bar_blue.gif' name='memusageu' id='memusageu' width='" . $percentage . "' class='progbarcf' alt='' />";
+						echo "<img src='bar_gray.gif' name='memusagef' id='memusagef' width='" . (100 - $percentage) . "' class='progbarc' alt='' />";
+						echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 						?>
 						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>"/>
 			    </td>
@@ -178,10 +179,10 @@ sajax_handle_client_request();
 								$tooltip_available = sprintf(gettext("%sB available of %sB"), $swapv['avail'], $swapv['total']);
 
 								echo "<tr><td><div id='swapusage'>";
-								echo "<img src='bar_left.gif' class='progbarl'>";
-								echo "<img src='bar_blue.gif' name='swapusage_{$ctrlid}_bar_used' id='swapusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}'>";
-								echo "<img src='bar_gray.gif' name='swapusage_{$ctrlid}_bar_free' id='swapusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}'>";
-								echo "<img src='bar_right.gif' class='progbarr'> ";
+								echo "<img src='bar_left.gif' class='progbarl' alt='' />";
+								echo "<img src='bar_blue.gif' name='swapusage_{$ctrlid}_bar_used' id='swapusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}' alt='' />";
+								echo "<img src='bar_gray.gif' name='swapusage_{$ctrlid}_bar_free' id='swapusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}' alt='' />";
+								echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 								echo sprintf(gettext("%s of %sB"),
 									"<span name='swapusage_{$ctrlid}_capacity' id='swapusage_{$ctrlid}_capacity' class='capacity'>{$swapv['capacity']}</span>",
 									$swapv['total']);
@@ -228,10 +229,10 @@ sajax_handle_client_request();
 
 									echo "<tr><td><div id='diskusage'>";
 									echo "<span name='diskusage_{$ctrlid}_name' id='diskusage_{$ctrlid}_name' class='name'>{$diskusagev['name']}</span><br/>";
-									echo "<img src='bar_left.gif' class='progbarl'>";
-									echo "<img src='bar_blue.gif' name='diskusage_{$ctrlid}_bar_used' id='diskusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}'>";
-									echo "<img src='bar_gray.gif' name='diskusage_{$ctrlid}_bar_free' id='diskusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}'>";
-									echo "<img src='bar_right.gif' class='progbarr'> ";
+									echo "<img src='bar_left.gif' class='progbarl' alt='' />";
+									echo "<img src='bar_blue.gif' name='diskusage_{$ctrlid}_bar_used' id='diskusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}' alt='' />";
+									echo "<img src='bar_gray.gif' name='diskusage_{$ctrlid}_bar_free' id='diskusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}' alt='' />";
+									echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 									echo sprintf(gettext("%s of %sB"),
 										"<span name='diskusage_{$ctrlid}_capacity' id='diskusage_{$ctrlid}_capacity' class='capacity'>{$diskusagev['capacity']}</span>",
 										$diskusagev['size']);
@@ -263,10 +264,10 @@ sajax_handle_client_request();
 
 									echo "<tr><td><div id='diskusage'>";
 									echo "<span name='diskusage_{$ctrlid}_name' id='diskusage_{$ctrlid}_name' class='name'>{$poolv['name']}</span><br/>";
-									echo "<img src='bar_left.gif' class='progbarl'>";
-									echo "<img src='bar_blue.gif' name='diskusage_{$ctrlid}_bar_used' id='diskusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}'>";
-									echo "<img src='bar_gray.gif' name='diskusage_{$ctrlid}_bar_free' id='diskusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}'>";
-									echo "<img src='bar_right.gif' class='progbarr'> ";
+									echo "<img src='bar_left.gif' class='progbarl' alt='' />";
+									echo "<img src='bar_blue.gif' name='diskusage_{$ctrlid}_bar_used' id='diskusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}' alt='' />";
+									echo "<img src='bar_gray.gif' name='diskusage_{$ctrlid}_bar_free' id='diskusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}' alt='' />";
+									echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 									echo sprintf(gettext("%s of %sB"),
 										"<span name='diskusage_{$ctrlid}_capacity' id='diskusage_{$ctrlid}_capacity' class='capacity'>{$poolv['cap']}</span>",
 										$poolv['size']);

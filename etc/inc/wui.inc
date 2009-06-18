@@ -163,7 +163,7 @@ class HTMLEditBox extends HTMLBaseControl {
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 
-		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value=\"{$value}\" {$param}>\n";
+		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value=\"{$value}\" {$param} />\n";
 	}
 }
 
@@ -182,7 +182,7 @@ class HTMLPasswordBox extends HTMLEditBox {
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 
-		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}>\n";
+		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} />\n";
 	}
 }
 
@@ -225,8 +225,8 @@ class HTMLPasswordConfBox extends HTMLEditBox {
 		$param = $this->GetParam();
 		$caption = htmlspecialchars(gettext("Confirmation"), ENT_QUOTES);
 
-		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}><br/>\n";
-		echo "    <input name='{$ctrlnameconf}' type='password' class='formfld' id='{$ctrlnameconf}' size='{$size}' value='{$valueconf}' {$param}>&nbsp;({$caption})\n";
+		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} /><br/>\n";
+		echo "    <input name='{$ctrlnameconf}' type='password' class='formfld' id='{$ctrlnameconf}' size='{$size}' value='{$valueconf}' {$param} />&nbsp;({$caption})\n";
 	}
 }
 
@@ -312,8 +312,8 @@ class HTMLFileChooser extends HTMLEditBox {
 		$param = $this->GetParam();
 		$path = $this->GetPath();
 
-		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}>\n";
-		echo "		<input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...'\>\n";
+		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} />\n";
+		echo "		<input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
 	}
 }
 
@@ -360,7 +360,7 @@ class HTMLIPv4AddressBox extends HTMLIPAddressBox {
 		$valuenetmask = htmlspecialchars($this->GetValueNetmask(), ENT_QUOTES);
 		$size = $this->GetSize();
 
-		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}'>\n";
+		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' />\n";
 		echo "    /\n";
 		echo "    <select name='{$ctrlnamenetmask}' class='formfld' id='{$ctrlnamenetmask}'>\n";
 		foreach (range(1, 32) as $netmask) {
@@ -386,9 +386,9 @@ class HTMLIPv6AddressBox extends HTMLIPAddressBox {
 		$valuenetmask = htmlspecialchars($this->GetValueNetmask(), ENT_QUOTES);
 		$size = $this->GetSize();
 
-		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}'>\n";
+		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' />\n";
 		echo "    /\n";
-		echo "    <input name='{$ctrlnamenetmask}' type='text' class='formfld' id='{$ctrlnamenetmask}' size='2' value='{$valuenetmask}'>\n";
+		echo "    <input name='{$ctrlnamenetmask}' type='text' class='formfld' id='{$ctrlnamenetmask}' size='2' value='{$valuenetmask}' />\n";
 	}
 }
 
@@ -432,7 +432,7 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 		$description = $this->GetDescription();
 		$param = $this->GetParam();
 
-		echo "		<input name='{$ctrlname}' type='checkbox' class='formfld' id='{$ctrlname}' value='yes' {$param}>&nbsp;{$caption}\n";
+		echo "		<input name='{$ctrlname}' type='checkbox' class='formfld' id='{$ctrlname}' value='yes' {$param} />&nbsp;{$caption}\n";
 	}
 }
 
@@ -686,7 +686,7 @@ class HTMLTitleLineCheckBox extends HTMLCheckBox {
 		echo "      <tr>\n";
 		echo "        <td class='optsect_s'><strong>{$title}</strong></td>\n";
 		echo "        <td align='right' class='optsect_s'>\n";
-		echo "          <input name='{$ctrlname}' type='checkbox' class='formfld' id='{$ctrlname}' value='yes' {$param}><strong>{$caption}</strong>\n";
+		echo "          <input name='{$ctrlname}' type='checkbox' class='formfld' id='{$ctrlname}' value='yes' {$param} /><strong>{$caption}</strong>\n";
 		echo "        </td>\n";
 		echo "      </tr>\n";
 		echo "    </table>\n";
@@ -806,11 +806,11 @@ class HTMLFolderBox extends HTMLBaseControl {
 			echo "      <option value='{$valuev}' {$optparam}>{$valuev}</option>\n";
 		}
 		echo "    </select>\n";
-		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".htmlspecialchars(gettext("Delete"), ENT_QUOTES)."' onclick='onclick_delete_{$ctrlname}()'><br/>\n";
-		echo "    <input name='{$ctrlname}data' type='text' class='formfld' id='{$ctrlname}data' size='60' value=''>\n";
-		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...'\>\n";
-		echo "    <input name='{$ctrlname}addbtn' type='button' class='formbtn' id='{$ctrlname}addbtn' value='".htmlspecialchars(gettext("Add"), ENT_QUOTES)."' onclick='onclick_add_{$ctrlname}()'>\n";
-		echo "    <input name='{$ctrlname}changebtn' type='button' class='formbtn' id='{$ctrlname}changebtn' value='".htmlspecialchars(gettext("Change"), ENT_QUOTES)."' onclick='onclick_change_{$ctrlname}()'>\n";
+		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".htmlspecialchars(gettext("Delete"), ENT_QUOTES)."' onclick='onclick_delete_{$ctrlname}()' /><br/>\n";
+		echo "    <input name='{$ctrlname}data' type='text' class='formfld' id='{$ctrlname}data' size='60' value='' />\n";
+		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
+		echo "    <input name='{$ctrlname}addbtn' type='button' class='formbtn' id='{$ctrlname}addbtn' value='".htmlspecialchars(gettext("Add"), ENT_QUOTES)."' onclick='onclick_add_{$ctrlname}()' />\n";
+		echo "    <input name='{$ctrlname}changebtn' type='button' class='formbtn' id='{$ctrlname}changebtn' value='".htmlspecialchars(gettext("Change"), ENT_QUOTES)."' onclick='onclick_change_{$ctrlname}()' />\n";
 	}
 }
 ?>
