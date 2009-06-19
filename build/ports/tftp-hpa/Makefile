@@ -1,6 +1,5 @@
 PORTNAME=			tftp-hpa
-PORTVERSION=	0.48
-PORTREVISION=	1
+PORTVERSION=	0.49
 CATEGORIES=		ftp
 COMMENT=			An advanced tftp server
 MAINTAINER=		votdev@gmx.de

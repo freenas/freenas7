@@ -27,6 +27,7 @@ Majors changes:
   of the snmpd.config file.
 - Upgrade e2fsprogs to 1.41.5.
 - Upgrade rsync to 3.0.6.
+- Upgrade tftp-hpa to 0.49.
 
 Minors changes:
 
