@@ -10,6 +10,8 @@ MASTER_SITE_SUBDIR=	${PORTNAME}
 USE_GMAKE=				yes
 GNU_CONFIGURE=		yes
 
+CFLAGS:=					${CFLAGS:S/-O2/-O/}
+
 post-patch:
 	@${REINPLACE_CMD} -e 's| install-initdDATA | |' ${WRKSRC}/Makefile.in
 
