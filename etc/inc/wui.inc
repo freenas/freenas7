@@ -109,7 +109,7 @@ class HTMLBaseControl {
 		$description = $this->GetDescription();
 
 		echo "<tr id='{$ctrlname}_tr'>\n";
-		echo "	<td width='22%' valign='top' class='{$class}'>{$title}</td>\n";
+		echo "	<td width='22%' valign='top' class='{$class}'><label for='$ctrlname'>{$title}</label></td>\n";
 		echo "	<td width='78%' class='vtable'>\n";
 		$this->RenderCtrl();
 		if (!empty($description))
