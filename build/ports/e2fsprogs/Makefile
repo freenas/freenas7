@@ -12,6 +12,7 @@ PATCH_STRIP=			-p1
 USE_GMAKE=				yes
 USE_LDCONFIG=			yes
 GNU_CONFIGURE=		yes
+MAKE_JOBS_SAFE=		yes
 CONFIGURE_ARGS+=	--disable-fsck --disable-e2initrd-helper \
 									--with-cc='${CC}' --with-linker='${LD}' \
 									--with-ccopts='${CFLAGS}' \
