@@ -111,7 +111,7 @@ function rsyncclient_process_updatenotification($mode, $data) {
         <?php if (updatenotify_exists("rsyncclient")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-						<td width="20%" class="listhdrr"><?=gettext("Remote module (source)");?></td>
+						<td width="20%" class="listhdrlr"><?=gettext("Remote module (source)");?></td>
 						<td width="15%" class="listhdrr"><?=gettext("Remote address");?></td>
 						<td width="15%" class="listhdrr"><?=gettext("Local share (destination)");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Who");?></td>

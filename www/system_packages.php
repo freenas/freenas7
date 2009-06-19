@@ -67,7 +67,7 @@ if ($_GET['act'] == "del") {
 				<?php if (file_exists($d_packagesconfdirty_path)) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
-			      <td width="40%" class="listhdrr"><?=gettext("Package Name");?></td>
+			      <td width="40%" class="listhdrlr"><?=gettext("Package Name");?></td>
 			      <td width="50%" class="listhdrr"><?=gettext("Description");?></td>
 			      <td width="10%" class="list"></td>
 			    </tr>

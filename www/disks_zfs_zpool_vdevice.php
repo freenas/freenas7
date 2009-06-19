@@ -122,7 +122,7 @@ function zfsvdev_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("zfsvdev")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+						<td width="20%" class="listhdrlr"><?=gettext("Name");?></td>
 						<td width="15%" class="listhdrr"><?=gettext("Type");?></td>
 						<td width="55%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>

@@ -114,7 +114,7 @@ function geli_process_updatenotification($mode, $data) {
         <?php if (updatenotify_exists("geli")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="25%" class="listhdrr"><?=gettext("Disk"); ?></td>
+            <td width="25%" class="listhdrlr"><?=gettext("Disk"); ?></td>
             <td width="25%" class="listhdrr"><?=gettext("Data integrity"); ?></td>
             <td width="20%" class="listhdrr"><?=gettext("Encryption"); ?></td>
             <td width="20%" class="listhdrr"><?=gettext("Status") ;?></td>

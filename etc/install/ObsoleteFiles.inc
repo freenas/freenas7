@@ -64,3 +64,4 @@ usr/local/www/diag_logs_settings.php
 usr/local/www/diag_logs_smartd.php
 usr/local/www/diag_logs_sshd.php
 usr/local/www/diag_logs_upnp.php
+usr/local/www/gradient_listhdr.gif

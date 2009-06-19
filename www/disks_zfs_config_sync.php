@@ -293,7 +293,7 @@ if (!$health)
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 8);?>
 					<tr>
-						<td width="1%" class="listhdrr"></td>
+						<td width="1%" class="listhdrlr"></td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
@@ -319,7 +319,7 @@ if (!$health)
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<?php html_titleline(gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')', 5);?>
 					<tr>
-						<td width="1%" class="listhdrr"></td>
+						<td width="1%" class="listhdrlr"></td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="21%" class="listhdrr"><?=gettext("Type");?></td>
 						<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
@@ -339,7 +339,7 @@ if (!$health)
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 8);?>
 					<tr>
-						<td width="1%" class="listhdrr"></td>
+						<td width="1%" class="listhdrlr"></td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>

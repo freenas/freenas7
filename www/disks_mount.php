@@ -154,7 +154,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
         <?php if (updatenotify_exists("mountpoint")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
+            <td width="20%" class="listhdrlr"><?=gettext("Disk");?></td>
             <td width="5%" class="listhdrr"><?=gettext("File system");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Description");?></td>

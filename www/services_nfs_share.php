@@ -112,7 +112,7 @@ function nfsshare_process_updatenotification($mode, $data) {
         <?php if (updatenotify_exists("nfsshare")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-						<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
+						<td width="30%" class="listhdrlr"><?=gettext("Path");?></td>
 						<td width="30%" class="listhdrr"><?=gettext("Network");?></td>
 						<td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
             <td width="10%" class="list"></td>

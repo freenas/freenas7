@@ -200,7 +200,7 @@ function getHostName($mac, $ip) {
     <td class="tabcont">
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			  <tr>
-			    <td class="listhdrr"><?=gettext("IP address");?></td>
+			    <td class="listhdrlr"><?=gettext("IP address");?></td>
 			    <td class="listhdrr"><?=gettext("MAC address");?></td>
 			    <td class="listhdrr"><?=gettext("Hostname");?></td>
 			    <td class="listhdr"><?=gettext("Interface");?></td>

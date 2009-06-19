@@ -243,7 +243,7 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 				        <tr>
-									<td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
+									<td width="20%" class="listhdrlr"><?=gettext("Disk");?></td>
 									<td width="30%" class="listhdrr"><?=gettext("Type");?></td>
 									<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>

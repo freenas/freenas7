@@ -205,7 +205,7 @@ if ($_GET['act'] == "add") {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td class="listhdrr"><?=gettext("Interface");?></td>
+						<td class="listhdrlr"><?=gettext("Interface");?></td>
 						<td class="listhdr"><?=gettext("Network port");?></td>
 						<td class="list">&nbsp;</td>
 					</tr>

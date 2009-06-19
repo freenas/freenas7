@@ -137,7 +137,7 @@ function iscsitargetig_process_updatenotification($mode, $data) {
         <td width="78%" class="vtable">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="10%" class="listhdrr"><?=gettext("Tag");?></td>
+          <td width="10%" class="listhdrlr"><?=gettext("Tag");?></td>
           <td width="40%" class="listhdrr"><?=gettext("Initiators");?></td>
           <td width="40%" class="listhdrr"><?=gettext("Networks");?></td>
           <td width="10%" class="list"></td>

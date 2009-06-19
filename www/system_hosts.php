@@ -121,7 +121,7 @@ function hosts_process_updatenotification($mode, $data) {
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="25%" class="listhdrr"><?=gettext("Hostname");?></td>
+									<td width="25%" class="listhdrlr"><?=gettext("Hostname");?></td>
 									<td width="30%" class="listhdrr"><?=gettext("IP address");?></td>
 									<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>

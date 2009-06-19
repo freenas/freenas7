@@ -106,7 +106,7 @@ function userdbgroup_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("userdb_group")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="45%" class="listhdrr"><?=gettext("Group");?></td>
+						<td width="45%" class="listhdrlr"><?=gettext("Group");?></td>
 						<td width="5%" class="listhdrr"><?=gettext("GID");?></td>
 						<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>

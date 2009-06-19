@@ -95,7 +95,7 @@ function routes_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("routes")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
+						<td width="15%" class="listhdrlr"><?=gettext("Interface");?></td>
 						<td width="25%" class="listhdrr"><?=gettext("Network");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Gateway");?></td>
 						<td width="30%" class="listhdr"><?=gettext("Description");?></td>

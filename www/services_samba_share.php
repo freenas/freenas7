@@ -108,7 +108,7 @@ function smbshare_process_updatenotification($mode, $data) {
         <?php if (updatenotify_exists("smbshare")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-          	<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
+          	<td width="30%" class="listhdrlr"><?=gettext("Path");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Comment");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Browseable");?></td>

@@ -67,7 +67,7 @@ function nut_get_driverlist() {
 	    <td class="tabcont">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-          	<td width="25%" class="listhdrr"><?=gettext("Manufacturer");?></td>
+          	<td width="25%" class="listhdrlr"><?=gettext("Manufacturer");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Model name");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Model extra");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Driver");?></td>

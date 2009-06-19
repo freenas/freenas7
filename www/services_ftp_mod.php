@@ -119,7 +119,7 @@ function ftpd_mod_ban_process_updatenotification($mode, $data) {
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="30%" class="listhdrr"><?=gettext("Event");?></td>
+									<td width="30%" class="listhdrlr"><?=gettext("Event");?></td>
 									<td width="30%" class="listhdrr"><?=gettext("Frequency");?></td>
 									<td width="30%" class="listhdrr"><?=gettext("Expire");?></td>
 									<td width="10%" class="list"></td>

@@ -197,7 +197,7 @@ function authentication_change() {
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="45%" class="listhdrr"><?=gettext("URL");?></td>
+									<td width="45%" class="listhdrlr"><?=gettext("URL");?></td>
 									<td width="45%" class="listhdrr"><?=gettext("Realm");?></td>
 									<td width="10%" class="list"></td>
 								</tr>

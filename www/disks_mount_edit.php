@@ -390,7 +390,7 @@ function enable_change(enable_change) {
 			      <td width="78%" class="vtable">
 			      	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				        <tr>
-				        	<td width="20%" class="listhdrr">&nbsp;</td>
+				        	<td width="20%" class="listhdrlr">&nbsp;</td>
 									<td width="20%" class="listhdrc"><?=gettext("Read");?></td>
 									<td width="50%" class="listhdrc"><?=gettext("Write");?></td>
 									<td width="20%" class="listhdrc"><?=gettext("Execute");?></td>

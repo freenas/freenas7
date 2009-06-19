@@ -90,7 +90,7 @@ if ($_GET['act'] == "del")
     <td class="tabcont">
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="80%" class="listhdrr"><?=gettext("Command");?></td>
+          <td width="80%" class="listhdrlr"><?=gettext("Command");?></td>
           <td width="10%" class="listhdrr"><?=gettext("Type");?></td>
           <td width="10%" class="list"></td>
         </tr>

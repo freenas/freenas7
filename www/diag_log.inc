@@ -216,7 +216,7 @@ function log_display($loginfo) {
 	// Create table header
 	echo "<tr>";
 	foreach ($loginfo['columns'] as $columnk => $columnv) {
-		echo "<td {$columnv['param']} class='listhdrr'>{$columnv['title']}</td>\n";
+		echo "<td {$columnv['param']} class='" . (($columnk == 0) ? "listhdrlr" : "listhdrr") . "'>{$columnv['title']}</td>\n";
 	}
 	echo "</tr>";
 

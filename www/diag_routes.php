@@ -43,27 +43,26 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 		$name = ($tabindex == 0 ? 'IPv4' : 'IPv6');
 ?>
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
-					<td colspan="<?=$elements?>" valign="top" class="listtopic"><?=$name;?></td>
-				</tr>
+				<?php html_titleline($name, $elements);?>
 <?
-		foreach (explode("\n", $table) as $i => $line) {
-			if ($i == 0) continue;
-
-			if ($i == 1)
-				$class = 'listhdrr';
-			else
-				$class = 'listr';
-
+		foreach (explode("\n", $table) as $row => $line) {
+			if ($row == 0)
+				continue;
 			print("<tr>\n");
-			$j = 0;
+			$col = 0;
 			foreach (explode(' ', $line) as $entry) {
-				if ($entry == '') continue;
+				if ($entry == '')
+					continue;
+				if ($row == 1) { 
+						$class = ($col == 0) ? "listhdrlr" : "listhdrr";
+				} else {
+					$class = ($col == 0) ? "listlr" : "listr";
+				}
 				print("<td class=\"$class\">$entry</td>\n");
-				$j++;
+				$col++;
 			}
 			// The 'Expire' field might be blank
-			if ($j == $elements - 1)
+			if ($col == ($elements - 1))
 				print('<td class="listr">&nbsp;</td>' . "\n");
 			print("</tr>\n");
 		}

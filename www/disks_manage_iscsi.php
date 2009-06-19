@@ -107,7 +107,7 @@ function iscsiinitiator_process_updatenotification($mode, $data) {
         <?php if (updatenotify_exists("iscsiinitiator")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
+            <td width="25%" class="listhdrlr"><?=gettext("Name"); ?></td>
 						<td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
 						<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="10%" class="list"></td>

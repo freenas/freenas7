@@ -120,7 +120,7 @@ function zfsdataset_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("zfsdataset")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="20%" class="listhdrr"><?=gettext("Pool");?></td>
+						<td width="20%" class="listhdrlr"><?=gettext("Pool");?></td>
 						<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="45%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>

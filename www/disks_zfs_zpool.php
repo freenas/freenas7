@@ -125,7 +125,7 @@ $a_poolstatus = zfs_get_pool_list();
 				<?php if (updatenotify_exists("zfszpool")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+						<td width="20%" class="listhdrlr"><?=gettext("Name");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Size");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Used");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Free");?></td>

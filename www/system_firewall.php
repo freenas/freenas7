@@ -196,7 +196,7 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
-									<td width="4%" class="listhdrr">&nbsp;</td>
+									<td width="4%" class="listhdrlr">&nbsp;</td>
 									<td width="5%" class="listhdrr"><?=gettext("Proto");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Source");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>

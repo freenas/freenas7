@@ -128,7 +128,7 @@ if (updatenotify_exists('zfs_import_config'))
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 7);?>
 				<tr>
-					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Free");?></td>
@@ -152,7 +152,7 @@ if (updatenotify_exists('zfs_import_config'))
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<?php html_titleline(gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')', 4);?>
 				<tr>
-					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
 					<td width="21%" class="listhdrr"><?=gettext("Type");?></td>
 					<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
 					<td width="42%" class="listhdrr"><?=gettext("Devices");?></td>
@@ -170,7 +170,7 @@ if (updatenotify_exists('zfs_import_config'))
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 7);?>
 				<tr>
-					<td width="16%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>
 					<td width="14%" class="listhdrr"><?=gettext("Canmount");?></td>

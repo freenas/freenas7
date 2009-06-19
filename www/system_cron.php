@@ -112,7 +112,7 @@ function cronjob_process_updatenotification($mode, $data) {
 	    	<?php if (updatenotify_exists("cronjob")) print_config_change_box();?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
-						<td width="40%" class="listhdrr"><?=gettext("Command");?></td>
+						<td width="40%" class="listhdrlr"><?=gettext("Command");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Who");?></td>
 						<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>

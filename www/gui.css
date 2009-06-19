@@ -120,8 +120,8 @@ a {
 	border-bottom: 1px solid #999999;
 	background-color: #D9DEE8;
 }
-.listhdr, .listhdrr, .listhdrc {
-	background: #BBBBBB url("gradient_listhdr.gif") repeat-x scroll left top;
+.listhdr, .listhdrlr, .listhdrr, .listhdrc {
+	background: #BBBBBB url("gradient_listhdr.png") repeat-x scroll left top;
 	padding-right: 16px;
 	padding-left: 6px;
 	font-weight: bold;
@@ -130,9 +130,12 @@ a {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-.listhdrr, .listhdrc {
+.listhdrlr, .listhdrr, .listhdrc {
 	border-right: 1px solid #999999;
 	vertical-align: top;
+}
+.listhdrlr {
+	border-left: 1px solid #BBBBBB;
 }
 .listhdrc {
 	text-align: center;

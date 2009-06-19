@@ -110,7 +110,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("device")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="5%" class="listhdrr"><?=gettext("Disk"); ?></td>
+						<td width="5%" class="listhdrlr"><?=gettext("Disk"); ?></td>
 						<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
 						<td width="50%" class="listhdrr"><?=gettext("Description"); ?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>

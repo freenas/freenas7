@@ -59,7 +59,7 @@ $a_service[] = array("desc" => gettext("BitTorrent"), "link" => "services_bittor
 			<form action="services_info.php" method="post">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="90%" class="listhdrr"><?=gettext("Service");?></td>
+						<td width="90%" class="listhdrlr"><?=gettext("Service");?></td>
 						<td width="5%" class="listhdrc"><?=gettext("Enabled");?></td>
 						<td width="5%" class="listhdrc"><?=gettext("Status");?></td>
 					</tr>

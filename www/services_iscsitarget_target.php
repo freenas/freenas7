@@ -229,7 +229,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
         <td width="78%" class="vtable">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+          <td width="20%" class="listhdrlr"><?=gettext("Name");?></td>
           <td width="50%" class="listhdrr"><?=gettext("Path");?></td>
           <td width="20%" class="listhdrr"><?=gettext("Size");?></td>
           <td width="10%" class="list"></td>
@@ -266,7 +266,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
         <td width="78%" class="vtable">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="35%" class="listhdrr"><?=gettext("Name");?></td>
+          <td width="35%" class="listhdrlr"><?=gettext("Name");?></td>
           <td width="4%" class="listhdrr"><?=gettext("Flags");?></td>
           <td width="30%" class="listhdrr"><?=gettext("LUNs");?></td>
           <td width="7%" class="listhdrr"><?=gettext("PG");?></td>

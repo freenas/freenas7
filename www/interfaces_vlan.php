@@ -98,7 +98,7 @@ if ($_GET['act'] === "del") {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="20%" class="listhdrr"><?=gettext("Virtual interface");?></td>
+						<td width="20%" class="listhdrlr"><?=gettext("Virtual interface");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Physical interface");?></td>
 						<td width="5%" class="listhdrr"><?=gettext("VLAN tag");?></td>
 						<td width="45%" class="listhdr"><?=gettext("Description");?></td>

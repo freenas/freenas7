@@ -130,7 +130,7 @@ function graid5_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("raid_graid5")) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>
+            <td width="25%" class="listhdrlr"><?=gettext("Volume Name");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Type");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Size");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Status");?></td>

@@ -112,7 +112,7 @@ function userdbuser_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("userdb_user")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="20%" class="listhdrr"><?=gettext("User");?></td>
+						<td width="20%" class="listhdrlr"><?=gettext("User");?></td>
 						<td width="35%" class="listhdrr"><?=gettext("Full Name");?></td>
 						<td width="5%" class="listhdrr"><?=gettext("UID");?></td>
 						<td width="30%" class="listhdrr"><?=gettext("Group");?></td>
