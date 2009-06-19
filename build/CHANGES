@@ -25,6 +25,7 @@ Majors changes:
 - Add SNMP client tools: bsnmpget, bsnmpset and bsnmpwalk
 - Add 'Auxiliary parameters' to 'Services|SNMP' that will be added to the end
   of the snmpd.config file.
+- Upgrade e2fsprogs to 1.41.5.
 
 Minors changes:
 
