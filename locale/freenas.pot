@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-06-11 21:05+0000\n"
+"PO-Revision-Date: 2009-06-20 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -328,6 +328,9 @@ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes 
 msgstr ""
 
 msgid "Aggregation protocol"
+msgstr ""
+
+msgid "Albanian"
 msgstr ""
 
 msgid "All"
@@ -1239,6 +1242,9 @@ msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr ""
 
 msgid "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
+msgstr ""
+
+msgid "Donate"
 msgstr ""
 
 msgid "Done"
@@ -4862,7 +4868,7 @@ msgid "You may need enough space to duplicate all files being synced"
 msgstr ""
 
 #, php-format
-msgid "You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII chars)"
+msgid "You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"
 msgstr ""
 
 msgid "You must add disks first."
