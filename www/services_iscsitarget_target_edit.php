@@ -130,7 +130,6 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['portalgroup'] = $pconfig['pgigmap'][0]['pgtag'];
 	$pconfig['initiatorgroup'] = $pconfig['pgigmap'][0]['igtag'];
 	$pconfig['authgroup'] = $pconfig['agmap'][0]['agtag'];
-
 	$pconfig['authmethod'] = $a_iscsitarget_target[$cnid]['authmethod'];
 	$pconfig['digest'] = $a_iscsitarget_target[$cnid]['digest'];
 	$pconfig['queuedepth'] = $a_iscsitarget_target[$cnid]['queuedepth'];
@@ -179,9 +178,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['type'] = "$type";
 	$pconfig['flags'] = "rw";
 	$pconfig['comment'] = "";
-
 	$pconfig['storage'] = "";
-
 	$pconfig['pgigmap'] = array();
 	$pconfig['pgigmap'][0]['pgtag'] = 0;
 	$pconfig['pgigmap'][0]['igtag'] = 0;
@@ -196,7 +193,6 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 		$pconfig['lunmap'][$i]['type'] = "Storage";
 		$pconfig['lunmap'][$i]['extentname'] = "-";
 	}
-
 	$pconfig['authmethod'] = "Auto";
 	$pconfig['digest'] = "Auto";
 	$pconfig['queuedepth'] = 0;
@@ -519,10 +515,10 @@ function lun_change(idx) {
       ?>
       <?php html_combobox("digest", gettext("Initial Digest"), $pconfig['digest'], array("Auto" => gettext("Auto"), "Header" => gettext("Header digest"), "Data" => gettext("Data digest"), "Header Data" => gettext("Header and Data digest")), gettext("The initial digest mode negotiated with the initiator."), false);?>
       <?php html_inputbox("queuedepth", gettext("Queue Depth"), $pconfig['queuedepth'], gettext("0=disabled, 1-255=enabled command queuing with specified depth."), false, 10);?>
-      <?php html_inputbox("inqvendor", gettext("Inquiry Vendor"), $pconfig['inqvendor'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII chars)"), 8), false, 20);?>
-      <?php html_inputbox("inqproduct", gettext("Inquiry Product"), $pconfig['inqproduct'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII chars)"), 16), false, 20);?>
-      <?php html_inputbox("inqrevision", gettext("Inquiry Revision"), $pconfig['inqrevision'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII chars)"), 4), false, 20);?>
-      <?php html_inputbox("inqserial", gettext("Inquiry Serial"), $pconfig['inqserial'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII chars)"), 16), false, 20);?>
+      <?php html_inputbox("inqvendor", gettext("Inquiry Vendor"), $pconfig['inqvendor'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 8), false, 20);?>
+      <?php html_inputbox("inqproduct", gettext("Inquiry Product"), $pconfig['inqproduct'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 16), false, 20);?>
+      <?php html_inputbox("inqrevision", gettext("Inquiry Revision"), $pconfig['inqrevision'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 4), false, 20);?>
+      <?php html_inputbox("inqserial", gettext("Inquiry Serial"), $pconfig['inqserial'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 16), false, 20);?>
       </table>
       <div id="submit">
 	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
