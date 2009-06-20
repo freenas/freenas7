@@ -174,17 +174,6 @@ function is_ipv6addr($ipv6addr) {
 	return filter_var($ipv6addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
 }
 
-/* returns true if $ipaddr is a valid dotted IPv4 address, IPv6 or an alias thereof */
-function is_ipaddroralias($ipaddr) {
-	global $aliastable;
-
-	if (isset($aliastable[$ipaddr]) && is_ipaddr($aliastable[$ipaddr])) {
-		return true;
-	} else {
-		return is_ipaddr($ipaddr);
-	}
-}
-
 /* returns true if $ipaddr is a valid dotted IPv4/IPv6 address or any alias */
 function is_ipaddroranyalias($ipaddr) {
 	global $aliastable;
@@ -1109,21 +1098,6 @@ function unlink_if_exists($fn) {
 		unlink($fn);
 }
 
-/* make a global alias table (for faster lookups) */
-function alias_make_table() {
-
-	global $config, $g, $aliastable;
-
-	$aliastable = array();
-
-	if (is_array($config['aliases']['alias'])) {
-		foreach ($config['aliases']['alias'] as $alias) {
-			if ($alias['name'])
-				$aliastable[$alias['name']] = $alias['address'];
-		}
-	}
-}
-
 /* check if an alias exists */
 function is_alias($name) {
 
@@ -2029,5 +2003,36 @@ function util_is_iso_image($filename) {
 	}
 
 	return $return;
+}
+
+/**
+ * Write a string to a file. The data will be written to a temporary file of
+ * the same name but ending with the pid of the current process. If successful,
+ * the temporary file will be renamed to the original one.
+ * @param[in] filename	Path to the file where to write the data.
+ * @param[in] data			The data to write.
+ * @param[in] binary		Force binary mode writing.
+ * @return True if successful, otherwise false.
+ */
+function file_put_contents_safe($filename, $data, $binary = FALSE) {
+	$tmpfilename = sprintf("%s.%s", $filename, getmypid());
+	$mode = (TRUE === $binary) ? "wb" : "w";
+
+	if (!($fd = fopen($tmpfilename, $mode)))
+		return FALSE;
+
+	if (!fwrite($fd, $data)) {
+		fclose($fd);
+		return FALSE;
+	}
+
+	fclose($fd);
+
+	if (!rename($tmpfilename, $filename)) {
+		unlink($tmpfilename);
+		return FALSE;
+	}
+
+	return TRUE;
 }
 ?>

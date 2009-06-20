@@ -281,17 +281,11 @@ EOD;
 			}
 		}
 
-		/* write config cache */
-		$result = config_write_cache($config);
-		if (false === $result) {
-			echo "Error: Failed to write '{$g['tmp_path']}/config.cache' file.\n";
-		}
+		// Write configuration cache file
+		config_write_cache($config);
 	}
 
 	config_unlock();
-
-	/* make alias table (for faster lookups) */
-	alias_make_table();
 }
 
 /* mount flash card read/write */
@@ -316,42 +310,42 @@ function conf_mount_ro() {
 	}
 }
 
-/* save the system configuration */
+/**
+ * Save the system configuration
+ */
 function write_config() {
 	global $config, $g;
 
 	config_lock();
 	conf_mount_rw();
 
-	if (time() > mktime(0, 0, 0, 9, 1, 2004)) {	/* make sure the clock settings is plausible */
+	// Make sure the clock settings is plausible
+	if (time() > mktime(0, 0, 0, 9, 1, 2004)) {
 		$config['lastchange'] = time();
 	}
 
-	/* generate configuration XML */
-	$xmlconfig = dump_xml_config($config, $g['xml_rootobj'], system_get_language_codeset());
+	// Dump configuration as XML data
+	$xmlconfig = dump_xml_config($config, $g['xml_rootobj'],
+		system_get_language_codeset());
 
-	/* write configuration */
-	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
-	if (!$fd)
-		die("Error: Failed to write '{$g['cf_conf_path']}/config.xml' file.\n");
-	fwrite($fd, $xmlconfig);
-	fclose($fd);
+	// Write configuration file
+	$filename = "{$g['cf_conf_path']}/config.xml";
+	if (!file_put_contents_safe($filename, $xmlconfig)) {
+		die("Error: Failed to write configuration file '{$filename}'");
+	}
 
 	// Modify file permissions
 	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
 
 	conf_mount_ro();
 
-	/* re-read configuration */
+	// Re-read configuration
 	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 
-	/* write config cache */
-	$result = config_write_cache($config);
-	if (false === $result) {
-		echo "Error: Failed to write '{$g['tmp_path']}/config.cache' file.\n";
-	}
+	// Write config cache (to prevent parsing on every access)
+	config_write_cache($config);
 
-	/* tell kernel to sync fs data */
+	// Force completion of pending disk writes
 	mwexec("/bin/sync");
 
 	config_unlock();
@@ -434,6 +428,28 @@ function config_unlock() {
 
 	if (file_exists($lockfile))
 		unlink($lockfile);
+}
+
+/**
+ * Write configuration cache file.
+ * @param[in] data	The data to write.
+ * @return True if successful, otherwise false.
+ */
+function config_write_cache($data) {
+	global $g;
+
+	$filename = "{$g['tmp_path']}/config.cache";
+
+	// Ensure configuration cache file is written
+	if (!file_put_contents_safe($filename, serialize($data), TRUE)) {
+		write_log("Error: Failed to write configuration cache file '{$filename}'.");
+		return FALSE;
+	}
+
+	// Modify file permissions
+	@chmod($filename, 0600);
+
+	return TRUE;
 }
 
 // Convert the config file.
@@ -1796,26 +1812,5 @@ function config_upgrade() {
 		echo "done\n";
 
 	return 0;
-}
-
-// Write configuration cache file.
-// Return true if successful, otherwise false.
-function config_write_cache($data) {
-	global $g;
-
-	$result = false;
-
-	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
-	if ($fd) {
-		fwrite($fd, serialize($data));
-		fclose($fd);
-
-		// Modify file permissions
-		@chmod("{$g['tmp_path']}/config.cache", 0600);
-
-		$result = true;
-	}
-
-	return $result;
 }
 ?>
