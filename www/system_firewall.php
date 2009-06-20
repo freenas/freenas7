@@ -203,7 +203,7 @@ function enable_change(enable_change) {
 									<td width="20%" class="listhdrr"><?=gettext("Destination");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("<->");?></td>
-									<td width="26%" class="listhdr"><?=gettext("Description");?></td>
+									<td width="26%" class="listhdrr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
 								<?php foreach ($a_rule as $rule):?>

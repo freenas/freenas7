@@ -206,7 +206,7 @@ if ($_GET['act'] == "add") {
 				<table border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td class="listhdrlr"><?=gettext("Interface");?></td>
-						<td class="listhdr"><?=gettext("Network port");?></td>
+						<td class="listhdrr"><?=gettext("Network port");?></td>
 						<td class="list">&nbsp;</td>
 					</tr>
 					<?php foreach ($config['interfaces'] as $ifname => $iface):

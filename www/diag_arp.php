@@ -203,7 +203,7 @@ function getHostName($mac, $ip) {
 			    <td class="listhdrlr"><?=gettext("IP address");?></td>
 			    <td class="listhdrr"><?=gettext("MAC address");?></td>
 			    <td class="listhdrr"><?=gettext("Hostname");?></td>
-			    <td class="listhdr"><?=gettext("Interface");?></td>
+			    <td class="listhdrr"><?=gettext("Interface");?></td>
 			    <td class="list"></td>
 			  </tr>
 			  <?php $i = 0; foreach ($data as $entry): ?>

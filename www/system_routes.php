@@ -98,7 +98,7 @@ function routes_process_updatenotification($mode, $data) {
 						<td width="15%" class="listhdrlr"><?=gettext("Interface");?></td>
 						<td width="25%" class="listhdrr"><?=gettext("Network");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Gateway");?></td>
-						<td width="30%" class="listhdr"><?=gettext("Description");?></td>
+						<td width="30%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php foreach ($a_routes as $route):?>

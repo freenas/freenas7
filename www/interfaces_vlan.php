@@ -101,7 +101,7 @@ if ($_GET['act'] === "del") {
 						<td width="20%" class="listhdrlr"><?=gettext("Virtual interface");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Physical interface");?></td>
 						<td width="5%" class="listhdrr"><?=gettext("VLAN tag");?></td>
-						<td width="45%" class="listhdr"><?=gettext("Description");?></td>
+						<td width="45%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php foreach ($a_vlan as $vlan):?>

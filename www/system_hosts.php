@@ -123,7 +123,7 @@ function hosts_process_updatenotification($mode, $data) {
 								<tr>
 									<td width="25%" class="listhdrlr"><?=gettext("Hostname");?></td>
 									<td width="30%" class="listhdrr"><?=gettext("IP address");?></td>
-									<td width="35%" class="listhdr"><?=gettext("Description");?></td>
+									<td width="35%" class="listhdrr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
 								<?php foreach ($a_hosts as $host):?>
