@@ -582,6 +582,8 @@ class HTMLLanguageComboBox extends HTMLComboBox {
 		foreach ($g_languages as $languagek => $languagev) {
 			$options[$languagek] = htmlspecialchars(gettext($languagev['desc']), ENT_QUOTES);
 		}
+		// Sort options alphabetically
+		asort($options);
 
 		parent::__construct($ctrlname, $title, $value, $options, $description);
 	}
