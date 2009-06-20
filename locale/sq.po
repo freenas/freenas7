@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-06-11 22:27+0000\n"
-"PO-Revision-Date: 2009-06-17 22:50+0000\n"
+"PO-Revision-Date: 2009-06-19 12:56+0000\n"
 "Last-Translator: Sir.Punisher <eris@shytaj.tk>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-18 19:53+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 19:50+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
-msgstr " Nderfaqe"
+msgstr " nderfaqe:"
 
 msgid " was assigned to "
-msgstr " eshte dhene "
+msgstr " eshte caktuar "
 
 #, c-format, php-format
 msgid "%d%% of %dMB"
@@ -61,7 +61,7 @@ msgstr "%s%d %s eshte duke u perdorur nga %s%d."
 
 #, c-format, php-format
 msgid "%sB available of %sB"
-msgstr "%sB te disponushem nga %sB"
+msgstr "%sB te disponueshem nga %sB"
 
 #, c-format, php-format
 msgid "%sB used of %sB"
@@ -72,6 +72,8 @@ msgstr ""
 
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
+"0=dizaktivizuar, 1-255=i aktivizuar me komande queuing  i specifikuar ne "
+"thellesi."
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -122,6 +124,7 @@ msgstr ""
 msgid ""
 "A Auth Group contains authorised users and secrets for additional security."
 msgstr ""
+"Nje grup i autorizuar  permban perdorues dhe sekretet per siguri shtese."
 
 msgid ""
 "A Initiator Group contains authorised initiator names and networks to access "
@@ -138,8 +141,8 @@ msgid ""
 "A Portal Group contains IP addresses and listening TCP ports to connect the "
 "target from the initiator."
 msgstr ""
-"Nje \" Portal Group\" permban adresa IP dhe portat degjuese TCP qe lidhuen "
-"me objektivin  nga iniciatori."
+"Nje \" Portal Group\" permban adresa IP dhe portat degjuese TCP qe lidhen me "
+"objektivin nga iniciatori."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
@@ -431,6 +434,8 @@ msgstr "Lejo hyrjen e klientave ne llogari pa fjalekalim"
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr ""
+"Lejo klientat qe te tentojne rregjistrimin ne stilin OS/2 atributet shtese "
+"mbi nje shperndarje."
 
 msgid "Allow clients to resume interrupted uploads and downloads."
 msgstr "Lejo klientat qe te rifillojne ngarkimet dhe shkarkimet e nderprera"
@@ -460,7 +465,7 @@ msgstr ""
 "ndjek opcionin e formatit te lejimit."
 
 msgid "AltRoot"
-msgstr ""
+msgstr "AltRoot"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Ndrysho porten TCP. Porta 22 eshte ajo e zakonshmja"
@@ -496,6 +501,9 @@ msgid ""
 "href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
 "has been blocked. Please <a href='%s'>login</a> again to continue."
 msgstr ""
+"Nje POST i paautorizuar eshte gjendur. Sepse kjo mun te jete <a href='%s' "
+"target='_blank'>kerkese falsifikimi cross-site<a/>sulmim, kerkesa eshte "
+"bllokuar. ju lutem <a href='%s'>login</a> perseri per te vazhduar."
 
 msgid "Anonymous"
 msgstr "Anonim"
@@ -5554,7 +5562,7 @@ msgid "n/a"
 msgstr "n/a"
 
 msgid "noadouble"
-msgstr ""
+msgstr "noadouble"
 
 msgid "nodev"
 msgstr "nodev"
