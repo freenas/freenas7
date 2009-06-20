@@ -7,7 +7,6 @@ Giedi Primus
 Golden Path
 IX
 Jacurutu
-Kaitain
 Rakis
 Salusa Secundus
 Shaitan
@@ -19,8 +18,10 @@ Honored Matres
 Scytale
 Duncan Idaho
 Wallach IX
-Khasadar
 Chirox
+Arafel
+Ragnarök
+Ithaka
 
 Also see:
 http://dune.wikia.com/wiki/Category:Original_Dune
