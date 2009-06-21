@@ -6,6 +6,7 @@ Majors changes:
 Minors changes:
 
 Bug fixes:
+- Prohibit user 'transmission' to login via FTP.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

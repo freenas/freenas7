@@ -1806,6 +1806,17 @@ function config_upgrade() {
 		$config['version'] = "7.9";
 	}
 
+	/* Convert 7.9 -> 8.0 */
+	/* Modify 'extraoptions' attribute for user 'transmission'. */
+	if ($config['version'] === "7.9") {
+		$index = array_search_ex("60c4bfb1-7c3c-4535-800c-2b17eeae9369", $config['system']['usermanagement']['user'], "uuid");
+		if (false !== $index) {
+			$config['system']['usermanagement']['user'][$index]['extraoptions'] = "-m -w no";
+		}
+
+		$config['version'] = "8.0";
+	}
+
 	write_config();
 
 	if (is_booting())
