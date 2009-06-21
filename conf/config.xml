@@ -166,7 +166,7 @@
 				<id>999</id>
 				<primarygroup>999</primarygroup>
 				<group>50</group>
-				<extraoptions>-m -w none</extraoptions>
+				<extraoptions>-m -w no</extraoptions>
 			</user>
 			<group>
 				<uuid>e8cc78b8-7c3d-46de-a34c-11b1c260a37e</uuid>
