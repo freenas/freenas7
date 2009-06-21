@@ -77,7 +77,7 @@ if ($_POST) {
 	}
 
 	$reqdfields = explode(" ", "login fullname primarygroup userid shell");
-	$reqdfieldsn = array(gettext("Login"), gettext("Full Name"), gettext("Primary Group"), gettext("User ID"), gettext("Shell"));
+	$reqdfieldsn = array(gettext("Name"), gettext("Full Name"), gettext("Primary Group"), gettext("User ID"), gettext("Shell"));
 	$reqdfieldst = explode(" ", "string string numeric numeric string");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -186,7 +186,7 @@ function get_nextuser_id() {
 				<?php if ($nogroup_errors) print_input_errors($nogroup_errors); ?>
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("login", gettext("Login"), $pconfig['login'], gettext("Login name of user."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
+					<?php html_inputbox("login", gettext("Name"), $pconfig['login'], gettext("Login name of user."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
 					<?php html_inputbox("fullname", gettext("Full Name"), $pconfig['fullname'], gettext("User full name."), true, 20);?>
 					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], gettext("User password."), true);?>
 					<?php html_inputbox("userid", gettext("User ID"), $pconfig['userid'], gettext("User numeric id."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
