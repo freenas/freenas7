@@ -58,12 +58,13 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_user, "uuid"))
 	$pconfig['userid'] = $a_user[$cnid]['id'];
 	$pconfig['primarygroup'] = $a_user[$cnid]['primarygroup'];
 	$pconfig['group'] = $a_user[$cnid]['group'];
-	$pconfig['fullshell'] = isset($a_user[$cnid]['fullshell']);
+	$pconfig['shell'] = $a_user[$cnid]['shell'];
 	$pconfig['homedir'] = $a_user[$cnid]['homedir'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['primarygroup'] = $a_group['guest'];
 	$pconfig['userid'] = get_nextuser_id();
+	$pconfig['shell'] = "nologin";
 }
 
 if ($_POST) {
@@ -75,9 +76,9 @@ if ($_POST) {
 		exit;
 	}
 
-	$reqdfields = explode(" ", "login fullname primarygroup userid");
-	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Primary Group"),gettext("User ID"));
-	$reqdfieldst = explode(" ", "string string numeric numeric");
+	$reqdfields = explode(" ", "login fullname primarygroup userid shell");
+	$reqdfieldsn = array(gettext("Login"), gettext("Full Name"), gettext("Primary Group"), gettext("User ID"), gettext("Shell"));
+	$reqdfieldst = explode(" ", "string string numeric numeric string");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -123,7 +124,7 @@ if ($_POST) {
 		$users['login'] = $_POST['login'];
 		$users['fullname'] = $_POST['fullname'];
 		$users['password'] = $_POST['password'];
-		$users['fullshell'] = $_POST['fullshell'] ? true : false;
+		$users['shell'] = $_POST['shell'];
 		$users['primarygroup'] = $_POST['primarygroup'];
 		if (is_array($_POST['group']))
 			$users['group'] = $_POST['group'];
@@ -189,11 +190,11 @@ function get_nextuser_id() {
 					<?php html_inputbox("fullname", gettext("Full Name"), $pconfig['fullname'], gettext("User full name."), true, 20);?>
 					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], gettext("User password."), true);?>
 					<?php html_inputbox("userid", gettext("User ID"), $pconfig['userid'], gettext("User numeric id."), true, 20, isset($uuid) && (FALSE !== $cnid));?>
+					<?php html_combobox("shell", gettext("Shell"), $pconfig['shell'], array("bash" => "bash", "csh" => "csh", "nologin" => "nologin", "scponly" => "scponly", "sh" => "sh", "tcsh" => "tcsh"), gettext("The user's login shell."), true);?>
 					<?php $grouplist = array(); foreach ($a_group as $groupk => $groupv) { $grouplist[$groupv] = $groupk; } ?>
 					<?php html_combobox("primarygroup", gettext("Primary group"), $pconfig['primarygroup'], $grouplist, gettext("Set the account's primary group to the given group."), true);?>
 					<?php html_listbox("group", gettext("Additional group"), $pconfig['group'], $grouplist, gettext("Set additional group memberships for this account.")."<br>".gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."));?>
 					<?php html_filechooser("homedir", gettext("Home directory"), $pconfig['homedir'], gettext("Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."), $g['media_path'], false, 60);?>
-					<?php html_checkbox("fullshell", gettext("Shell access"), $pconfig['fullshell'] ? true : false, gettext("Give full shell access to user."), "", false);?>
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">

@@ -934,7 +934,7 @@
 			<login>xxx</login>
 			<fullname>xxx</fullname>
 			<password>xxx</password>
-			<fullshell/>
+			<shell>bash|csh|nologin|scponly|sh|tcsh</shell>
 		</user>
 		<group>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>

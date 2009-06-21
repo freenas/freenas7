@@ -103,8 +103,8 @@ do
 			-i "position() > 1" -o "," -b \
 			-v "." \
 		-b \
-		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
-		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
+		-i "string-length(shell) > 0" -v "concat(' -s ',shell)" -b \
+		-i "string-length(shell) = 0" -o " -s nologin" -b \
 		-i "string-length(homedir) = 0" -o " -d /mnt" -b \
 		-i "string-length(homedir) > 0" -v "concat(' -m -d ',homedir)" -b \
 		-i "string-length(password) > 0" -o " -h 0" -b \
