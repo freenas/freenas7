@@ -1812,7 +1812,7 @@ function config_upgrade() {
 	if ($config['version'] === "7.9") {
 		$index = array_search_ex("60c4bfb1-7c3c-4535-800c-2b17eeae9369", $config['system']['usermanagement']['user'], "uuid");
 		if (false !== $index) {
-			$config['system']['usermanagement']['user'][$index]['extraoptions'] = "-m -w no";
+			$config['system']['usermanagement']['user'][$index]['extraoptions'] = "-m -w random -s nologin";
 		}
 
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
