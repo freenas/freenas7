@@ -73,7 +73,7 @@ sajax_handle_client_request();
 			    <td colspan="2" class="listtopic"><?=gettext("System information");?></td>
 			  </tr>
 			  <tr>
-			    <td width="25%" class="vncellt"><?=gettext("Name");?></td>
+			    <td width="25%" class="vncellt"><?=gettext("Hostname");?></td>
 			    <td width="75%" class="listr"><?=system_get_hostname();?></td>
 			  </tr>
 			  <tr>
