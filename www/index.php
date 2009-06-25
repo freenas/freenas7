@@ -103,7 +103,7 @@ sajax_handle_client_request();
 			    </td>
 			  </tr>
 			  <tr>
-			    <td width="25%" class="vncellt"><?=gettext("Date");?></td>
+			    <td width="25%" class="vncellt"><?=gettext("System time");?></td>
 			    <td width="75%" class="listr">
 			      <input style="padding: 0; border: 0;" size="30" name="date" id="date" value="<?=htmlspecialchars(shell_exec("date"));?>"/>
 			    </td>
@@ -112,7 +112,7 @@ sajax_handle_client_request();
 			    <td width="25%" class="vncellt"><?=gettext("Uptime");?></td>
 			    <td width="75%" class="listr">
 						<?php $uptime = system_get_uptime();?>
-						<input style="padding: 0; border: 0;" size="30" name="uptime" id="uptime" value="<?=htmlspecialchars($uptime);?>"/>
+						<span name="uptime" id="uptime"><?=htmlspecialchars($uptime);?></span>
 			    </td>
 			  </tr>
 			  <?php if ($config['lastchange']):?>

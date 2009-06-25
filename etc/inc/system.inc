@@ -221,13 +221,18 @@ function system_get_uptime() {
 	$uphours = (int)($uptime / 3600);
 	$uptime %= 3600;
 	$upmins = (int)($uptime / 60);
+	$upsecs = $uptime % 60;	
 
-	$uptime = "";
-	if ($updays > 1)
-		$uptime .= sprintf("%d %s, ", $updays, gettext("days"));
-	else if ($updays > 0)
-		$uptime .= sprintf("1 %s, ", gettext("day"));
-	$uptime .= sprintf("%02d:%02d", $uphours, $upmins);
+	if ($uphours < 1) {
+		$uptime = sprintf("%d %s %d %s", $upmins, gettext("minute(s)"), $upsecs, gettext("second(s)"));
+	} else if ($updays < 1) {
+		$uptime = sprintf("%d %s %d %s %d %s", $uphours, gettext("hour(s)"),
+			$upmins, gettext("minute(s)"), $upsecs, gettext("second(s)"));
+	} else {
+		$uptime = sprintf("%d %s %d %s %d %s %d %s", $updays, gettext("day(s)"),
+			$uphours, gettext("hour(s)"), $upmins, gettext("minute(s)"), $upsecs,
+			gettext("second(s)"));
+	}
 
 	return htmlspecialchars($uptime);
 }

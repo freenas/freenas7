@@ -26,7 +26,7 @@ function update_date(value) {
 function update_uptime(value) {
 	if (document.getElementById("uptime") == null)
 		return;
-	document.getElementById("uptime").value = value;
+	document.getElementById("uptime").innerHTML = value;
 }
 
 function update_memusage(value, desc) {
