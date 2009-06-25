@@ -3,6 +3,7 @@ FreeNAS 0.7RC2 (Khasadar):
 
 Majors changes:
 - Add ability to configure the login shell for a user.
+- Add Samba 3.0.34 CVE-2009-1888 patch.
 
 Minors changes:
 
