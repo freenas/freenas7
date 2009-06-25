@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		1.61
+PORTVERSION=		1.72
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -9,36 +9,36 @@ MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 
 LIB_DEPENDS+=		curl.5:${PORTSDIR}/ftp/curl
 
+USE_GMAKE=			yes
 USE_GNOME?=			pkgconfig
 USE_OPENSSL=		yes
 USE_BZIP2=			yes
-USE_GMAKE=			yes
-USE_AUTOTOOLS=	autoconf:262:env aclocal:19:env automake:19:env libtool:15:env
 GNU_CONFIGURE=	yes
 
 CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE} \
 									--with-zlib=/usr \
-									--enable-largefile
-
-EXTRA_PATCHES=	${PATCHDIR}/${PORTNAME}${PKGNAMESUFFIX}-configure.ac
+									--enable-largefile \
+									--enable-daemon \
+									--disable-gtk \
+									--disable-libnotify \
+		 							--disable-mac \
+		 							--disable-nls
 
 general-patch:
 	@${REINPLACE_CMD} -e 's|SUBDIRS = . sample.*|SUBDIRS = .|g' \
 		${WRKSRC}/third-party/libevent/Makefile.*
 	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \
 		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
-	@${REINPLACE_CMD} -e '/#define DISABLE_GETTEXT/s,/\* \(.*\) \*/,\1,' \
-		${WRKSRC}/libtransmission/utils.h
-
-post-patch: general-patch
-
-pre-configure:
-	@(cd ${WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${AUTORECONF} -W none)
 	@${REINPLACE_CMD} -e \
-		's|_pthread_flags=".*"|_pthread_flags="${PTHREAD_LIBS}"|g' \
+		's|_pthread_flags=".*"|_pthread_flags="${PTHREAD_LIBS}"|g ; \
+		s|libevent_source=system|libevent_source=bundled|g' \
 			${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's|-lrt||g' \
 		${WRKSRC}/third-party/libevent/configure
+	@${REINPLACE_CMD} -e 's|doc \\| \\|g' \
+		${WRKSRC}/Makefile.in
+
+post-patch: general-patch
 
 do-install:
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
@@ -74,10 +74,15 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/index.html ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/common.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/dialog.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery-1.3.2.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.r2.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form-2.21.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/json.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery	
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/json.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/menu.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/torrent.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
@@ -86,6 +91,7 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/common.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie6.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie7.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
+	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ieAll.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets	
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/iphone.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 
 .include <bsd.port.mk>

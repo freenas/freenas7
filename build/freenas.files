@@ -590,6 +590,7 @@ boot/boot1
 
 ####### contents of /etc
 etc/rc.shutdown
+etc/rc.subr
 etc/network.subr
 etc/pccard_ether
 etc/gettytab
