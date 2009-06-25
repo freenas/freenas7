@@ -4,7 +4,7 @@
 	disks_raid_gconcat_tools.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	JavaScript code are from Volker Theile
 	All rights reserved.
 
@@ -142,11 +142,11 @@ function raid_change() {
 					<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
             <td width="78%" class="vtable">
               <select name="action" class="formfld" id="action">
-                <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-                <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
-                <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
-                <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
-								<option value="dump" <?php if ($action == "dump") echo "selected"; ?>>dump</option>
+                <option value="list" <?php if ($action == "list") echo "selected"; ?>><?=gettext("List");?></option>
+                <option value="status" <?php if ($action == "status") echo "selected"; ?>><?=gettext("Status");?></option>
+                <option value="clear" <?php if ($action == "clear") echo "selected"; ?>><?=gettext("Clear");?></option>
+                <option value="stop" <?php if ($action == "stop") echo "selected"; ?>><?=gettext("Stop");?></option>
+                <option value="dump" <?php if ($action == "dump") echo "selected"; ?>><?=gettext("Dump");?></option>
                </select>
             </td>
           </tr>

@@ -257,22 +257,22 @@ function encryption_change() {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline(gettext("IPv4 Configuration"));?>
-					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Static" => "Static", "DHCP" => "DHCP"), "", true, false, "type_change()");?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Static" => gettext("Static"), "DHCP" => "DHCP"), "", true, false, "type_change()");?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("IP address"), $pconfig['ipaddr'], $pconfig['subnet'], "", true);?>
 					<?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], "", true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline_checkbox("ipv6_enable", gettext("IPv6 Configuration"), $pconfig['ipv6_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
-					<?php html_combobox("ipv6type", gettext("Type"), $pconfig['ipv6type'], array("Static" => "Static", "Auto" => "Auto"), "", true, false, "ipv6_type_change()");?>
+					<?php html_combobox("ipv6type", gettext("Type"), $pconfig['ipv6type'], array("Static" => gettext("Static"), "Auto" => "Auto"), "", true, false, "ipv6_type_change()");?>
 					<?php html_ipv6addrbox("ipv6addr", "ipv6subnet", gettext("IP address"), $pconfig['ipv6addr'], $pconfig['ipv6subnet'], "", true);?>
 					<?php html_inputbox("ipv6gateway", gettext("Gateway"), $pconfig['ipv6gateway'], "", true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Advanced Configuration"));?>
 					<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."), false, 5);?>
 					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
-					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
+					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => gettext("Autoselect"), "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
 					<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
 					<?php if (!empty($ifinfo['wolevents'])):?>
-					<?php $wakeonoptions = array("off" => "off"); foreach ($ifinfo['wolevents'] as $woleventv) { $wakeonoptions[$woleventv] = $woleventv; };?>
+					<?php $wakeonoptions = array("off" => gettext("Off")); foreach ($ifinfo['wolevents'] as $woleventv) { $wakeonoptions[$woleventv] = $woleventv; };?>
 					<?php html_combobox("wakeon", gettext("Wake On LAN"), $pconfig['wakeon'], $wakeonoptions, "", false);?>
 					<?php endif;?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>

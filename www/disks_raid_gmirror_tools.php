@@ -4,7 +4,7 @@
 	disks_raid_gmirror_tools.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	JavaScript code are from Volker Theile
 	All rights reserved.
 
@@ -142,16 +142,16 @@ function raid_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
 	          <td width="78%" class="vtable">
 	            <select name="action" class="formfld" id="action">
-	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild</option>
-	              <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-	              <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
-	              <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
-	              <option value="activate" <?php if ($action == "activate") echo "selected"; ?>>activate</option>
-	              <option value="deactivate" <?php if ($action == "deactivate") echo "selected"; ?>>deactivate</option>
-	              <option value="forget" <?php if ($action == "forget") echo "selected"; ?>>forget</option>
-								<option value="insert" <?php if ($action == "insert") echo "selected"; ?>>insert</option>
-	              <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
-	              <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
+	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>><?=gettext("Rebuild");?></option>
+	              <option value="list" <?php if ($action == "list") echo "selected"; ?>><?=gettext("List");?></option>
+	              <option value="status" <?php if ($action == "status") echo "selected"; ?>><?=gettext("Status");?></option>
+	              <option value="remove" <?php if ($action == "remove") echo "selected"; ?>><?=gettext("Remove");?></option>
+	              <option value="activate" <?php if ($action == "activate") echo "selected"; ?>><?=gettext("Activate");?></option>
+	              <option value="deactivate" <?php if ($action == "deactivate") echo "selected"; ?>><?=gettext("Deactivate");?></option>
+	              <option value="forget" <?php if ($action == "forget") echo "selected"; ?>><?=gettext("Forget");?></option>
+				  <option value="insert" <?php if ($action == "insert") echo "selected"; ?>><?=gettext("Insert");?></option>
+	              <option value="clear" <?php if ($action == "clear") echo "selected"; ?>><?=gettext("Clear");?></option>
+	              <option value="stop" <?php if ($action == "stop") echo "selected"; ?>><?=gettext("Stop");?></option>
 							</select>
 						</td>
 					</tr>

@@ -163,7 +163,7 @@ function get_next_rulenumber() {
 					<?php html_inputbox("dst", gettext("Destination"), $pconfig['dst'], gettext("To match any IP address leave this field empty."), false, 40);?>
 					<?php html_inputbox("dstport", gettext("Destination port"), $pconfig['dstport'], "", false, 5);?>
 					<?php html_inputbox("extraoptions", gettext("Options"), $pconfig['extraoptions'], "", false, 40);?>
-					<?php html_combobox("direction", gettext("Direction"), $pconfig['direction'], array("in" => "In", "out" => "Out", "" => gettext("Any")), "", true);?>
+					<?php html_combobox("direction", gettext("Direction"), $pconfig['direction'], array("in" => gettext("In"), "out" => gettext("Out"), "" => gettext("Any")), "", true);?>
 					<?php html_checkbox("log", gettext("Log"), $pconfig['log'] ? true : false, gettext("Log packets that are handled by this rule to syslog."), "", false);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
         </table>

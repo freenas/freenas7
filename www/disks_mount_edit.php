@@ -365,8 +365,8 @@ function enable_change(enable_change) {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition type");?></td>
 			      <td class="vtable">
 							<select name="partitiontype" class="formfld" id="partitiontype" onClick="partitiontype_change()">
-								<option value="p" <?php if ($pconfig['partitiontype'] === "p") echo "selected";?>>GPT partition</option>
-								<option value="s" <?php if ($pconfig['partitiontype'] === "s") echo "selected";?>>MBR partition</option>
+								<option value="p" <?php if ($pconfig['partitiontype'] === "p") echo "selected";?>><?=gettext("GPT partition");?></option>
+								<option value="s" <?php if ($pconfig['partitiontype'] === "s") echo "selected";?>><?=gettext("MBR partition");?></option>
 								<option value=" " <?php if (empty($pconfig['partitiontype'])) echo "selected";?>><?=gettext("CD/DVD or Old Software RAID");?></option>
 							</select><br/>
 							<span class="vexpl"><?=gettext("<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD.");?></span>

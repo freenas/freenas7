@@ -4,7 +4,7 @@
 	disks_raid_graid5_tools.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	JavaScript code are from Volker Theile
 
@@ -142,15 +142,15 @@ function raid_change() {
           	<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
       			<td width="78%" class="vtable">
               <select name="action" class="formfld" id="action">
-                <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-                <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
-                <option value="insert" <?php if ($action == "insert") echo "selected"; ?>>insert</option>
-                <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
-                <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
-                <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
-								<option value="destroy" <?php if ($action == "destroy") echo "selected"; ?>>destroy</option>
-								<option value="configure" <?php if ($action == "configure") echo "selected"; ?>>configure</option>
-								<option value="dump" <?php if ($action == "dump") echo "selected"; ?>>dump</option>
+                <option value="list" <?php if ($action == "list") echo "selected"; ?>><?=gettext("List");?></option>
+                <option value="status" <?php if ($action == "status") echo "selected"; ?>><?=gettext("Status");?></option>
+                <option value="insert" <?php if ($action == "insert") echo "selected"; ?>><?=gettext("Insert");?></option>
+                <option value="remove" <?php if ($action == "remove") echo "selected"; ?>><?=gettext("Remove");?></option>
+                <option value="clear" <?php if ($action == "clear") echo "selected"; ?>><?=gettext("Clear");?></option>
+                <option value="stop" <?php if ($action == "stop") echo "selected"; ?>><?=gettext("Stop");?></option>
+                <option value="destroy" <?php if ($action == "destroy") echo "selected"; ?>><?=gettext("Destroy");?></option>
+                <option value="configure" <?php if ($action == "configure") echo "selected"; ?>><?=gettext("Configure");?></option>
+                <option value="dump" <?php if ($action == "dump") echo "selected"; ?>><?=gettext("Dump");?></option>
                </select>
             </td>
           </tr>
