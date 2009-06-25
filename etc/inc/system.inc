@@ -205,8 +205,10 @@ function system_get_cpu_info() {
 	return $cpuinfo;
 }
 
-// Get uptime (how long system is running).
-// Return current uptime as string.
+/**
+ * Get the system uptime (how long the system is already running).
+ * @return The current uptime as string.
+ */
 function system_get_uptime() {
 	exec("/sbin/sysctl -n kern.boottime", $boottime);
 	preg_match("/sec = (\d+)/", $boottime[0], $matches);
@@ -221,11 +223,13 @@ function system_get_uptime() {
 	$upmins = (int)($uptime / 60);
 
 	$uptime = "";
-	if ($updays > 1) $uptime .= "$updays ".gettext("days").", ";
-	else if ($updays > 0) $uptime .= "1 ".gettext("day").", ";
+	if ($updays > 1)
+		$uptime .= sprintf("%d %s, ", $updays, gettext("days"));
+	else if ($updays > 0)
+		$uptime .= sprintf("1 %s, ", gettext("day"));
 	$uptime .= sprintf("%02d:%02d", $uphours, $upmins);
 
-	return $uptime;
+	return htmlspecialchars($uptime);
 }
 
 // Get the current RAM information.
