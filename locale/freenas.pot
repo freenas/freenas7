@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-06-20 20:36+0000\n"
+"PO-Revision-Date: 2009-06-25 20:34+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -489,6 +489,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr ""
 
+msgid "Autoselect"
+msgstr ""
+
 msgid "Auxiliary parameters"
 msgstr ""
 
@@ -522,6 +525,9 @@ msgstr ""
 msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
+msgid "Best available"
+msgstr ""
+
 msgid "Bind DN"
 msgstr ""
 
@@ -535,6 +541,9 @@ msgid "Blank time"
 msgstr ""
 
 msgid "Browseable"
+msgstr ""
+
+msgid "Built on"
 msgstr ""
 
 msgid "Bulgarian"
@@ -702,6 +711,9 @@ msgstr ""
 msgid "Configuration directory"
 msgstr ""
 
+msgid "Configure"
+msgstr ""
+
 msgid "Configuring"
 msgstr ""
 
@@ -827,6 +839,9 @@ msgid "Date"
 msgstr ""
 
 msgid "Date & Time"
+msgstr ""
+
+msgid "Deactivate"
 msgstr ""
 
 msgid "Debug"
@@ -993,6 +1008,9 @@ msgid "Destination port"
 msgstr ""
 
 msgid "Destination share"
+msgstr ""
+
+msgid "Destroy"
 msgstr ""
 
 msgid "Detected"
@@ -1278,6 +1296,9 @@ msgid "Driver"
 msgstr ""
 
 msgid "Driver list"
+msgstr ""
+
+msgid "Dump"
 msgstr ""
 
 msgid "Duplex"
@@ -1606,6 +1627,9 @@ msgstr ""
 msgid "Extents must be defined before they can be used, and extents cannot be used more than once."
 msgstr ""
 
+msgid "External"
+msgstr ""
+
 msgid "Extra options"
 msgstr ""
 
@@ -1755,6 +1779,12 @@ msgstr ""
 msgid "Forced update period"
 msgstr ""
 
+msgid "Forceup"
+msgstr ""
+
+msgid "Forget"
+msgstr ""
+
 msgid "Format"
 msgstr ""
 
@@ -1791,6 +1821,9 @@ msgstr ""
 msgid "GID"
 msgstr ""
 
+msgid "GPT partition"
+msgstr ""
+
 msgid "Gateway"
 msgstr ""
 
@@ -1807,9 +1840,6 @@ msgid "German"
 msgstr ""
 
 msgid "GiB"
-msgstr ""
-
-msgid "Give full shell access to user."
 msgstr ""
 
 msgid "Give only local users access to the web page."
@@ -2121,6 +2151,9 @@ msgstr ""
 msgid "Inquiry Vendor"
 msgstr ""
 
+msgid "Insert"
+msgstr ""
+
 msgid "Install"
 msgstr ""
 
@@ -2360,6 +2393,9 @@ msgid "Lowercases names in both directions"
 msgstr ""
 
 msgid "MAC address"
+msgstr ""
+
+msgid "MBR partition"
 msgstr ""
 
 msgid "MIB"
@@ -2900,6 +2936,9 @@ msgstr ""
 msgid "Ping/Traceroute"
 msgstr ""
 
+msgid "Plain"
+msgstr ""
+
 msgid "Platform"
 msgstr ""
 
@@ -3134,6 +3173,9 @@ msgstr ""
 msgid "Reboot"
 msgstr ""
 
+msgid "Rebuild"
+msgstr ""
+
 msgid "Receive Buffer Size"
 msgstr ""
 
@@ -3174,6 +3216,9 @@ msgid "Remote monitoring"
 msgstr ""
 
 msgid "Remote syslog server"
+msgstr ""
+
+msgid "Remove"
 msgstr ""
 
 msgid "Remove all entries from ARP table"
@@ -3306,6 +3351,9 @@ msgid "Save"
 msgstr ""
 
 msgid "Save and Restart"
+msgstr ""
+
+msgid "Saveconfig"
 msgstr ""
 
 msgid "Saved file to"
@@ -3464,7 +3512,7 @@ msgstr ""
 msgid "Shares"
 msgstr ""
 
-msgid "Shell access"
+msgid "Shell"
 msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
@@ -3581,8 +3629,14 @@ msgstr ""
 msgid "Standby time"
 msgstr ""
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
+msgstr ""
+
+msgid "Static"
 msgstr ""
 
 msgid "Static Routes"
@@ -3599,6 +3653,9 @@ msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
+msgstr ""
+
+msgid "Stop"
 msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
@@ -4179,6 +4236,9 @@ msgid "The unique user ID is already used."
 msgstr ""
 
 msgid "The uploaded image file is not for this platform"
+msgstr ""
+
+msgid "The user's login shell."
 msgstr ""
 
 msgid "The value of the variable."
@@ -4910,9 +4970,6 @@ msgstr ""
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
-msgid "built on"
-msgstr ""
-
 msgid "cachecnid"
 msgstr ""
 
@@ -4925,6 +4982,7 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
+#, c-format
 msgid "day"
 msgstr ""
 
