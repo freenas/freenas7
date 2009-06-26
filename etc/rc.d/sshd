@@ -42,6 +42,7 @@ sshd_mkconf()
 		-m "//sshd" \
 			-i "count(port) > 0" -v "concat('Port ',port)" -n -b \
 			-i "count(permitrootlogin) > 0" -o "PermitRootLogin yes" -n -b \
+			-i "count(tcpforwarding) = 0" -o "AllowTcpForwarding no" -n -b \
 			-i "count(tcpforwarding) > 0" -o "AllowTcpForwarding yes" -n -b \
 			-i "count(compression) > 0" -o "Compression yes" -n -b \
 			-i "count(passwordauthentication) > 0" -o "PasswordAuthentication yes" -n -b \
