@@ -82,6 +82,7 @@ if ($_POST) {
 		gettext("Discovery Auth Method"),
 		gettext("Discovery Auth Group"));
 	$reqdfieldst = explode(" ", "string string numericint");
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
@@ -94,6 +95,7 @@ if ($_POST) {
 		gettext("MaxBurstLength"),
 		gettext("MaxRecvDataSegmentLength"));
 	$reqdfieldst = explode(" ", "numericint numericint numericint numericint numericint numericint numericint");
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
@@ -103,7 +105,6 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$config['iscsitarget']['enable'] = $_POST['enable'] ? true : false;
-
 		$config['iscsitarget']['nodebase'] = $nodebase;
 		$config['iscsitarget']['discoveryauthmethod'] = $_POST['discoveryauthmethod'];
 		$config['iscsitarget']['discoveryauthgroup'] = $_POST['discoveryauthgroup'];

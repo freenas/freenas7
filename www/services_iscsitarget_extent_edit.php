@@ -174,7 +174,7 @@ if ($_POST) {
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true);?>
-	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
+	      <?php html_filechooser("path", gettext("Path"), $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 	      <tr>
 	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
 	        <td width="78%" class="vtable">

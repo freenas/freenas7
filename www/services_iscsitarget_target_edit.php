@@ -323,9 +323,6 @@ if ($_POST) {
 		$iscsitarget_target['type'] = $_POST['type'];
 		$iscsitarget_target['flags'] = $_POST['flags'];
 		$iscsitarget_target['comment'] = $_POST['comment'];
-
-		//$iscsitarget_target['storage'] = $_POST['storage'];
-
 		$iscsitarget_target['authmethod'] = $_POST['authmethod'];
 		$iscsitarget_target['digest'] = $_POST['digest'];
 		$iscsitarget_target['queuedepth'] = $queuedepth;
@@ -333,7 +330,6 @@ if ($_POST) {
 		$iscsitarget_target['inqproduct'] = $_POST['inqproduct'];
 		$iscsitarget_target['inqrevision'] = $_POST['inqrevision'];
 		$iscsitarget_target['inqserial'] = $_POST['inqserial'];
-
 		$iscsitarget_target['pgigmap'] = $pgigmap;
 		$iscsitarget_target['agmap'] = $agmap;
 		$iscsitarget_target['lunmap'] = $lunmap;
@@ -383,7 +379,6 @@ function lun_change(idx) {
       </ul>
     </td>
   </tr>
-
   <tr>
     <td class="tabcont">
       <?php if ($errormsg) print_error_box($errormsg);?>
