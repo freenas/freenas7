@@ -212,6 +212,7 @@ a {
 	font-size: 9pt;
 }
 .optsect_t {
+	background-image: url("listtopic_bg.png");
 	background-color: #435370;
 	padding-right: 6px;
 	padding-left: 6px;
