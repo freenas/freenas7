@@ -5,6 +5,8 @@ Majors changes:
 - Add ability to configure the login shell for a user.
 - Add Samba 3.0.34 CVE-2009-1888 patch.
 - Upgrade transmission to 1.72.
+- Local users must join the group 'ftp' to be able to login via FTP if
+  'Local users only' in 'Services|FTP' is enabled.
 
 Minors changes:
 

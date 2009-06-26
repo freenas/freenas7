@@ -160,6 +160,14 @@ proftpd_mkconf()
 			-b \
 			-o "&lt;/Anonymous&gt;" -n \
 		-b \
+		-i "count(localusersonly) > 0" \
+			-n \
+			-o "&lt;Limit LOGIN&gt;" -n \
+			-o "  AllowGroup ftp" -n \
+			-i "count(permitrootlogin) > 0" -o "  AllowGroup wheel" -n -b \
+			-o "  DenyAll" -n \
+			-o "&lt;/Limit&gt;" -n \
+		-b \
 		-n \
 		-o "&lt;Global&gt;" -n \
 		-o "  RequireValidShell ${proftpd_requirevalidshell}" -n \
