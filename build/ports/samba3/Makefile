@@ -1,6 +1,6 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.34
-PORTEPOCH=		2
+PORTVERSION=	3.0.35
+PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -18,10 +18,6 @@ SAMBA_LOCKDIR=			${VARDIR}/db/samba
 SAMBA_CONFIG?=			smb.conf
 SAMBA_LIBDIR=				/usr/local/lib
 SAMBA_MODULEDIR=		${SAMBA_LIBDIR}/samba
-
-PATCH_SITES=			http://us1.samba.org/samba/ftp/patches/security/
-PATCHFILES=				samba-3.0.34-CVE-2009-1888.patch
-PATCH_DIST_STRIP=	-p2
 
 USE_ICONV=				yes
 GNU_CONFIGURE=		yes
