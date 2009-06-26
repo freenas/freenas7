@@ -98,6 +98,8 @@ Bug fixes:
 - Fix cross site scripting vulnerability in graph (BR 2804671). Thanks to
   ratmandall.
 - Update time is not displayed correctly if time >24 hours (BR 2810305).
+- SSH AllowTcpForwarding was permanently enabled, regardless if disabled in
+  WebGUI (BR 2812841).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
