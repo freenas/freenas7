@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-06-25 20:34+0000\n"
+"PO-Revision-Date: 2009-06-27 19:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -328,6 +328,9 @@ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes 
 msgstr ""
 
 msgid "Aggregation protocol"
+msgstr ""
+
+msgid "Aggressive"
 msgstr ""
 
 msgid "Albanian"
@@ -711,9 +714,6 @@ msgstr ""
 msgid "Configuration directory"
 msgstr ""
 
-msgid "Configure"
-msgstr ""
-
 msgid "Configuring"
 msgstr ""
 
@@ -835,13 +835,7 @@ msgstr ""
 msgid "Datasets"
 msgstr ""
 
-msgid "Date"
-msgstr ""
-
 msgid "Date & Time"
-msgstr ""
-
-msgid "Deactivate"
 msgstr ""
 
 msgid "Debug"
@@ -1008,9 +1002,6 @@ msgid "Destination port"
 msgstr ""
 
 msgid "Destination share"
-msgstr ""
-
-msgid "Destroy"
 msgstr ""
 
 msgid "Detected"
@@ -1296,9 +1287,6 @@ msgid "Driver"
 msgstr ""
 
 msgid "Driver list"
-msgstr ""
-
-msgid "Dump"
 msgstr ""
 
 msgid "Duplex"
@@ -1627,9 +1615,6 @@ msgstr ""
 msgid "Extents must be defined before they can be used, and extents cannot be used more than once."
 msgstr ""
 
-msgid "External"
-msgstr ""
-
 msgid "Extra options"
 msgstr ""
 
@@ -1777,12 +1762,6 @@ msgid "Follow"
 msgstr ""
 
 msgid "Forced update period"
-msgstr ""
-
-msgid "Forceup"
-msgstr ""
-
-msgid "Forget"
 msgstr ""
 
 msgid "Format"
@@ -2149,9 +2128,6 @@ msgid "Inquiry Serial"
 msgstr ""
 
 msgid "Inquiry Vendor"
-msgstr ""
-
-msgid "Insert"
 msgstr ""
 
 msgid "Install"
@@ -2840,6 +2816,9 @@ msgstr ""
 msgid "Packages"
 msgstr ""
 
+msgid "Painfully aggressive"
+msgstr ""
+
 msgid "Pairwise"
 msgstr ""
 
@@ -2934,9 +2913,6 @@ msgid "Ping winbindd to see if it is alive:"
 msgstr ""
 
 msgid "Ping/Traceroute"
-msgstr ""
-
-msgid "Plain"
 msgstr ""
 
 msgid "Platform"
@@ -3152,6 +3128,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr ""
 
+msgid "Read from lowest load"
+msgstr ""
+
 msgid "Read only"
 msgstr ""
 
@@ -3171,9 +3150,6 @@ msgid "Realm"
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
-
-msgid "Rebuild"
 msgstr ""
 
 msgid "Receive Buffer Size"
@@ -3216,9 +3192,6 @@ msgid "Remote monitoring"
 msgstr ""
 
 msgid "Remote syslog server"
-msgstr ""
-
-msgid "Remove"
 msgstr ""
 
 msgid "Remove all entries from ARP table"
@@ -3276,6 +3249,9 @@ msgid "Root bind DN"
 msgstr ""
 
 msgid "Root bind password"
+msgstr ""
+
+msgid "Round-robin read"
 msgstr ""
 
 msgid "Roundrobin"
@@ -3351,9 +3327,6 @@ msgid "Save"
 msgstr ""
 
 msgid "Save and Restart"
-msgstr ""
-
-msgid "Saveconfig"
 msgstr ""
 
 msgid "Saved file to"
@@ -3620,6 +3593,9 @@ msgstr ""
 msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
 msgstr ""
 
+msgid "Split request"
+msgstr ""
+
 msgid "Standard"
 msgstr ""
 
@@ -3627,9 +3603,6 @@ msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In thes
 msgstr ""
 
 msgid "Standby time"
-msgstr ""
-
-msgid "Start"
 msgstr ""
 
 #, php-format
@@ -3653,9 +3626,6 @@ msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
-msgstr ""
-
-msgid "Stop"
 msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
@@ -4635,6 +4605,9 @@ msgstr ""
 msgid "UPS disabled"
 msgstr ""
 
+msgid "UPS goes on battery"
+msgstr ""
+
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -4982,8 +4955,7 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
-#, c-format
-msgid "day"
+msgid "day(s)"
 msgstr ""
 
 msgid "days"
@@ -4994,6 +4966,9 @@ msgstr ""
 
 #, php-format
 msgid "e.g. %s"
+msgstr ""
+
+msgid "hour(s)"
 msgstr ""
 
 msgid "hours"
@@ -5015,6 +4990,9 @@ msgid "iSCSI initiator disabled"
 msgstr ""
 
 msgid "iTunes/DAAP"
+msgstr ""
+
+msgid "minute(s)"
 msgstr ""
 
 msgid "minutes"
@@ -5063,6 +5041,9 @@ msgid "rc.conf"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
+msgstr ""
+
+msgid "second(s)"
 msgstr ""
 
 msgid "seconds"
