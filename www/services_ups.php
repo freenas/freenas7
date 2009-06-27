@@ -173,7 +173,7 @@ function shutdownmode_change() {
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The serial or USB port where your UPS is connected."), true, 30);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 5, false, false);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<?php html_combobox("shutdownmode", gettext("Shutdown mode"), $pconfig['shutdownmode'], array("fsd" => gettext("UPS reaches low battery"), "onbatt" => "UPS goes on battery"), gettext("Defines when the shutdown is initiated."), true, false, "shutdownmode_change()");?>
+					<?php html_combobox("shutdownmode", gettext("Shutdown mode"), $pconfig['shutdownmode'], array("fsd" => gettext("UPS reaches low battery"), "onbatt" => gettext("UPS goes on battery")), gettext("Defines when the shutdown is initiated."), true, false, "shutdownmode_change()");?>
 					<?php html_inputbox("shutdowntimer", gettext("Shutdown timer"), $pconfig['shutdowntimer'], gettext("The time in seconds until shutdown is initiated. If the UPS happens to come back before the time is up the shutdown is canceled."), true, 3);?>
 					<?php html_checkbox("remotemonitor", gettext("Remote monitoring"), $pconfig['remotemonitor'] ? true : false, gettext("Enable remote monitoring of the local connected UPS."), "", false);?>
 					<?php html_separator();?>

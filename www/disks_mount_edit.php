@@ -347,7 +347,7 @@ function enable_change(enable_change) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline(gettext("Settings"));?>
-					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("disk" => "Disk", "iso" => "ISO"), "", true, false, "type_change()");?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("disk" => gettext("Disk"), "iso" => "ISO"), "", true, false, "type_change()");?>
 					<tr id="mdisk_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 			      <td class="vtable">

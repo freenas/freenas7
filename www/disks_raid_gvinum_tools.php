@@ -92,12 +92,12 @@ if (!isset($do_action)) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Unix Command");?></td>
             <td width="78%" class="vtable">
 	            <select name="action" class="formfld" id="action">
-	              <option value="start" <?php if ($action == "start") echo "selected"; ?>><?=gettext("Start");?></option>
-	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>><?=gettext("Rebuild");?></option>
-	              <option value="list" <?php if ($action == "list") echo "selected"; ?>><?=gettext("List");?></option>
-	              <option value="remove" <?php if ($action == "remove") echo "selected"; ?>><?=gettext("Remove");?></option>
-	              <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>><?=gettext("Forceup");?></option>
-	              <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected"; ?>><?=gettext("Saveconfig");?></option>
+	              <option value="start" <?php if ($action == "start") echo "selected"; ?>>start</option>
+	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild</option>
+	              <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
+	              <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
+	              <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>>forceup</option>
+	              <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected"; ?>>saveconfig</option>
 	             </select>
 	          </td>
 	        </tr>

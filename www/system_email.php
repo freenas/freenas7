@@ -163,7 +163,7 @@ function auth_change() {
 					<?php html_checkbox("auth", gettext("Authentication"), $pconfig['auth'] ? true : false, gettext("Enable SMTP authentication."), "", false, "auth_change()");?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], "", true, 40);?>
 					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], "", true);?>
-					<?php html_combobox("authmethod", gettext("Authentication method"), $pconfig['authmethod'], array("plain" => gettext("Plain"), "cram-md5" => "Cram-MD5", "digest-md5" => "Digest-MD5", "gssapi" => "GSSAPI", "external" => gettext("External"), "login" => gettext("Login"), "ntlm" => "NTLM", "on" => gettext("Best available")), "", true);?>
+					<?php html_combobox("authmethod", gettext("Authentication method"), $pconfig['authmethod'], array("plain" => "Plain", "cram-md5" => "Cram-MD5", "digest-md5" => "Digest-MD5", "gssapi" => "GSSAPI", "external" => "External", "login" => "Login", "ntlm" => "NTLM", "on" => gettext("Best available")), "", true);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
