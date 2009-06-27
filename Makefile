@@ -1,5 +1,5 @@
 PORTNAME=			samba
-PORTVERSION=	3.3.3
+PORTVERSION=	3.3.6
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
