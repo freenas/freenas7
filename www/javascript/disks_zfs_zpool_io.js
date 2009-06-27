@@ -6,7 +6,11 @@
 function update_zfs_zpool_iostat(value) {
 	if (document.getElementById("zfs_zpool_iostat") == null)
 		return;
-	document.getElementById("zfs_zpool_iostat").innerHTML = value;
+	if (isIE) {
+		document.getElementById("zfs_zpool_iostat").innerText = value;
+	} else {
+		document.getElementById("zfs_zpool_iostat").innerHTML = value;
+	}
 }
 
 function update_callback() {

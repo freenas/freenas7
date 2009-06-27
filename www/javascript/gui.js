@@ -15,4 +15,17 @@ function onKeyPress(evt) {
 	if ((evt.keyCode == 13) && ((node.type=="text") || node.type=="checkbox")) { return false; }
 }
 
+/**
+ * Helper function to check the browser type
+ */
+function isBrowser(regex) {
+		return regex.test(navigator.userAgent.toLowerCase());
+}
+
+/**
+ * Local variables for browser checking
+ */ 
+var isOpera = isBrowser(/opera/),
+	isIE = !isOpera && isBrowser(/msie/);
+
 document.onkeypress = onKeyPress;
