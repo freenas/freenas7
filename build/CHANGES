@@ -7,6 +7,7 @@ Majors changes:
 - Upgrade transmission to 1.72.
 - Local users must join the group 'ftp' to be able to login via FTP if
   'Local users only' in 'Services|FTP' is enabled.
+- Upgrade lighttpd to 1.4.23.
 
 Minors changes:
 
