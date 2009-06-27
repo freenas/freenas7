@@ -74,6 +74,8 @@ function zfs_get_pool_list() {
 			$result[$poolname]['used'] = $matches[1];
 			$result[$poolname]['avail'] = $matches[2];
 		}
+		// Unset variable, otherwise data will be attached next loop.
+		unset($rawdata2);
 	}
 
 	return $result;
