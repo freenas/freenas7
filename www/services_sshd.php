@@ -39,6 +39,8 @@ if (!is_array($config['sshd'])) {
 	$config['sshd'] = array();
 }
 
+$os_release = exec('uname -r | cut -d - -f1');
+
 $pconfig['port'] = $config['sshd']['port'];
 $pconfig['permitrootlogin'] = isset($config['sshd']['permitrootlogin']);
 $pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
@@ -158,7 +160,7 @@ function enable_change(enable_change) {
 			        <span class="vexpl"><?=gettext("Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only.");?></span>
 			    </tr>
 					<?php html_textarea("key", gettext("Private Key"), $pconfig['key'], gettext("Paste a DSA PRIVATE KEY in PEM format here."), false, 65, 7, false, false);?>
-			    <?php html_textarea("auxparam", gettext("Extra options"), $pconfig['auxparam'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."), false, 65, 5, false, false);?>
+			    <?php html_textarea("auxparam", gettext("Extra options"), $pconfig['auxparam'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started.") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/cgi/man.cgi?query=sshd_config&apropos=0&sektion=0&manpath=FreeBSD+${os_release}-RELEASE&format=html"), false, 65, 5, false, false);?>
 			  </table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
