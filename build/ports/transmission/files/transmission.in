@@ -30,6 +30,7 @@ transmission_blocklist=${transmission_blocklist:-"NO"}
 transmission_blocklist_url=${transmission_blocklist_url:-"http://update.transmissionbt.com/level1.gz"}
 transmission_user=${transmission_user:-"transmission"}
 transmission_suopt=${transmission_suopt:-"-l"}
+transmission_umask=${transmission_umask:-"002"}
 
 command="/usr/local/bin/${name}-daemon"
 command_args="--allowed ${transmission_allowed}"
@@ -57,6 +58,9 @@ transmission_prestart()
 	fi
 
 	command_args="${command_args} ${_command_args}"
+
+	# Set the umask.
+	umask ${transmission_umask}
 }
 
 transmission_poststart()
