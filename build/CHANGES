@@ -10,6 +10,9 @@ Majors changes:
 - Upgrade lighttpd to 1.4.23.
 
 Minors changes:
+- Set transmission umask to 002 per default. To customize this value a new
+  rc.conf variable called 'transmission_umask' must be created via WebGUI
+  'System|Advanced|rc.conf'.
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
