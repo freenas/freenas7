@@ -1827,6 +1827,17 @@ function config_upgrade() {
 		$config['version'] = "8.0";
 	}
 
+	/* Convert 8.0 -> 8.1 */
+	/* Convert unison configuration. */
+	if ($config['version'] === "8.0") {
+		$config['unison']['mkdir'] = $config['unison']['makedir'];
+		$config['unison']['workdir'] = "{$g['media_path']}/{$config['unison']['share'][0]}/{$config['unison']['workdir']}";
+		unset($config['unison']['makedir']);
+		unset($config['unison']['share']);
+
+		$config['version'] = "8.1";
+	}
+
 	write_config();
 
 	if (is_booting())

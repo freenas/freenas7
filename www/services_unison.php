@@ -54,43 +54,40 @@
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("Unison"));
+$pgtitle = array(gettext("Services"), gettext("Unison"));
 
 if (!is_array($config['unison'])) {
 	$config['unison'] = array();
 }
 
 $pconfig['enable'] = isset($config['unison']['enable']);
-$pconfig['share'] = $config['unison']['share'];
 $pconfig['workdir'] = $config['unison']['workdir'];
-$pconfig['makedir'] = isset($config['unison']['makedir']);
+$pconfig['mkdir'] = isset($config['unison']['mkdir']);
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation
 	$reqdfields = array();
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "share workdir"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Share"),gettext("Working Directory")));
-	}
+		$reqdfields = array_merge($reqdfields, explode(" ", "workdir"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Working directory")));
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$fullpath = "{$g['media_path']}/{$_POST['share']}/{$_POST['workdir']}";
-
-	if (!$_POST['makedir'] && ($fullpath) && (!file_exists($fullpath))) {
-		$input_errors[] = gettext("The combination of share and working directory does not exist.");
+		// Check if working directory exists
+		if (!$_POST['mkdir'] && !file_exists($_POST['workdir'])) {
+			$input_errors[] = gettext("The working directory does not exist.");
+		}
 	}
 
 	if (!$input_errors) {
-		$config['unison']['share'] = $_POST['share'];
 		$config['unison']['workdir'] = $_POST['workdir'];
 		$config['unison']['enable'] = $_POST['enable'] ? true : false;
-		$config['unison']['makedir'] = $_POST['makedir'] ? true : false;
+		$config['unison']['mkdir'] = $_POST['mkdir'] ? true : false;
 
 		write_config();
 
@@ -104,7 +101,6 @@ if ($_POST) {
 	}
 }
 
-/* retrieve mounts to build list of share names */
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
@@ -116,12 +112,9 @@ $a_mount = &$config['mounts']['mount'];
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-
-	endis = !(document.iform.enable.checked || enable_change);
-	document.iform.share.disabled = endis;
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.workdir.disabled = endis;
-	document.iform.makedir.disabled = endis;
+	document.iform.mkdir.disabled = endis;
 }
 //-->
 </script>
@@ -129,42 +122,18 @@ function enable_change(enable_change) {
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
-				<?php if ($savemsg) print_info_box($savemsg); ?>	    
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>	    
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Unison File Synchronisation"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-				  <tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
-				    <td width="78%" class="vtable">
-				      <select name="share" class="formfld" id="share">
-				        <?php foreach ($a_mount as $mount): $tmp=$mount['sharename']; ?>
-				        <option value="<?=$tmp;?>"
-				        <?php if ($tmp == $pconfig['share']) echo "selected";?>><?=$tmp?></option>
-				        <?php endforeach; ?>
-				      </select>
-				      <br><?=gettext("You may need enough space to duplicate all files being synced");?>.</td>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Working Directory");?></td>
-				    <td width="78%" class="vtable">
-							<input name="workdir" type="text" class="formfld" id="workdir" size="20" value="<?=htmlspecialchars($pconfig['workdir']);?>">
-							<br><?=gettext("Where the working files will be stored");?>.</td>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Create");?></td>
-				    <td width="78%" class="vtable">
-				      <input name="makedir" type="checkbox" id="makedir" value="yes" <?php if ($pconfig['makedir']) echo "checked"; ?>>
-				      <?=gettext("Create work directory if it doesn't exist");?><span class="vexpl"><br>
-				    </td>
-				  </tr>
+					<?php html_filechooser("workdir", gettext("Working directory"), $pconfig['workdir'], sprintf(gettext("Location where the working files will be stored, e.g. %s/backup/.unison"), $g['media_path']), $g['media_path'], true, 60);?>
+				  <?php html_checkbox("mkdir", "", $pconfig['mkdir'] ? true : false, gettext("Create work directory if it doesn't exist."), "", false);?>
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 				</div>
 				<div id="remarks">
-					<?php html_remark("note", gettext("Note"), sprintf(gettext("<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."), "services_sshd.php", "access_users.php"));?>
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have shell access."), "services_sshd.php", "access_users.php"));?>
 				</div>
 			</td>
 		</tr>

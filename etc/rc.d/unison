@@ -22,30 +22,29 @@ stop_cmd=":"
 status_cmd="unison_status"
 
 # Defaults
-unison_enable="${unison_enable:=NO}"
+unison_enable=${unison_enable:-"NO"}
 unison_config=${unison_config:-"/etc/login.conf"}
+unison_directory_mode=${unison_directory_mode:-"0775"}
 
 unison_start()
 {
-	local _makedir _workdir
+	local _workdir
 
 	echo "Configuring ${name}."
 
-	# Ensure Unison workdir exists
+	# Ensure Unison environment variable exists
 	if [ 0 -eq `grep -c 'UNISON=.*' ${unison_config}` ]; then
 		err 1 "Can't find UNISON in ${unison_config}"
 	fi
 
-	_workdir=`/usr/local/bin/xml sel -t -m "//unison" \
-		-v "concat('/mnt/',share,'/',workdir)" \
-		${configxml_file} | /usr/local/bin/xml unesc`
+	# Get the configured working directory
+	_workdir=`configxml_get "//unison/workdir"`
 
-	# Create 'workdir' if necessary (Check if '//unison/makedir' is set). Use '//unison/workdir' to
-	# create directory name /mnt/xxx
-	if [ 0 -ne `configxml_get_count "//unison/makedir"` ]; then
-		if [ -n ${_workdir} -a ! -e ${_workdir} ]; then
-			/bin/mkdir ${_workdir}
-			/bin/chmod 0775 ${_workdir}
+	# Create 'workdir' if necessary (Check if '//unison/mkdir' is set).
+	if [ 0 -ne `configxml_get_count "//unison/mkdir"` ]; then
+		if [ -n "${_workdir}" -a ! -e "${_workdir}" ]; then
+			mkdir -p ${_workdir}
+			chmod ${unison_directory_mode} ${_workdir}
 		fi
 	fi
 
