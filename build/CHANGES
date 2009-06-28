@@ -14,6 +14,8 @@ Minors changes:
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
 - ZPool disk space usage isn't displayed correctly (BR 2810584).
+- Improved Unison WebGUI to be able to configure ZFS shares as working
+  directory (BR 2795084).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
