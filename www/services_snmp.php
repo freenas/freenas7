@@ -37,6 +37,8 @@ if (!is_array($config['snmpd'])) {
 	$config['snmpd'] = array();
 }
 
+$os_release = exec('uname -r | cut -d - -f1');
+
 $pconfig['enable'] = isset($config['snmpd']['enable']);
 $pconfig['location'] = $config['snmpd']['location'];
 $pconfig['contact'] = $config['snmpd']['contact'];
@@ -156,7 +158,7 @@ function trapenable_change() {
 					<?php html_inputbox("traphost", gettext("Trap host"), $pconfig['traphost'], gettext("Enter trap host name."), true, 40);?>
 					<?php html_inputbox("trapport", gettext("Trap port"), $pconfig['trapport'], gettext("Enter the port to send the traps to (default 162)."), true, 5);?>
 					<?php html_inputbox("trap", gettext("Trap string"), $pconfig['trap'], gettext("Trap string."), true, 40);?>
-					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to %s."), "snmpd.config"), false, 65, 5, false, false);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to %s."), "snmpd.config")  . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/cgi/man.cgi?query=bsnmpd&apropos=0&sektion=0&manpath=FreeBSD+${os_release}-RELEASE&format=html"), false, 65, 5, false, false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Modules"));?>
 					<tr>
