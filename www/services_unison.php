@@ -134,7 +134,7 @@ function enable_change(enable_change) {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Unison File Synchronisation"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 				  <tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Share");?></td>
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
 				    <td width="78%" class="vtable">
 				      <select name="share" class="formfld" id="share">
 				        <?php foreach ($a_mount as $mount): $tmp=$mount['sharename']; ?>
