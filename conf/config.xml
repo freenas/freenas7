@@ -844,6 +844,7 @@
 		<pex/>
 		<encryption>1</encryption>
 		<watchdir></watchdir>
+		<umask></umask>
 		<extraoptions></extraoptions>
 	</bittorrent>
 	<sshd>

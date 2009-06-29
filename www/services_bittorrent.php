@@ -53,6 +53,7 @@ $pconfig['downlimit'] = $config['bittorrent']['downlimit'];
 $pconfig['pex'] = isset($config['bittorrent']['pex']);
 $pconfig['encryption'] = $config['bittorrent']['encryption'];
 $pconfig['watchdir'] = $config['bittorrent']['watchdir'];
+$pconfig['umask'] = $config['bittorrent']['umask'];
 $pconfig['extraoptions'] = $config['bittorrent']['extraoptions'];
 
 // Set default values.
@@ -77,11 +78,20 @@ if ($_POST) {
 		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+		// Add additional type checks
+		if (isset($_POST['umask'])) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "umask"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("User mask")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "filemode"));
+		}
+
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 		// Check if port is already used.
-		if (services_is_port_used($_POST['port'], "bittorrent"))
+		if (services_is_port_used($_POST['port'], "bittorrent")) {
 			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
+		}
 	}
 
 	if (!$input_errors) {
@@ -99,6 +109,7 @@ if ($_POST) {
 		$config['bittorrent']['pex'] = $_POST['pex'] ? true : false;
 		$config['bittorrent']['encryption'] = $_POST['encryption'];
 		$config['bittorrent']['watchdir'] = $_POST['watchdir'];
+		$config['bittorrent']['umask'] = $_POST['umask'];
 		$config['bittorrent']['extraoptions'] = $_POST['extraoptions'];
 
 		write_config();
@@ -136,6 +147,7 @@ function enable_change(enable_change) {
 	document.iform.encryption.disabled = endis;
 	document.iform.watchdir.disabled = endis;
 	document.iform.watchdirbrowsebtn.disabled = endis;
+	document.iform.umask.disabled = endis;
 	document.iform.extraoptions.disabled = endis;
 }
 
@@ -171,6 +183,7 @@ function authrequired_change() {
 					<?php html_inputbox("uplimit", gettext("Upload bandwidth"), $pconfig['uplimit'], gettext("The maximum upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("downlimit", gettext("Download bandwidth"), $pconfig['downlimit'], gettext("The maximum download bandwith in KiB/s. An empty field means infinity."), false, 5);?>
 					<?php html_filechooser("watchdir", gettext("Watch directory"), $pconfig['watchdir'], gettext("Directory to watch for new .torrent files."), $g['media_path'], false, 60);?>
+					<?php html_inputbox("umask", gettext("User mask"), $pconfig['umask'], sprintf(gettext("Sets the default permission modes for newly created files."), "0002"), false, 3);?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty)."), false, 40);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>

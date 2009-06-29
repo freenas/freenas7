@@ -29,14 +29,14 @@ transmission_allowed=${transmission_allowed:-"*.*.*.*"}
 transmission_blocklist=${transmission_blocklist:-"NO"}
 transmission_blocklist_url=${transmission_blocklist_url:-"http://update.transmissionbt.com/level1.gz"}
 transmission_user=${transmission_user:-"transmission"}
-transmission_umask=${transmission_umask:-"002"}
+transmission_umask=${transmission_umask:-"0002"}
 
 command="/usr/local/bin/${name}-daemon"
 command_args="--allowed ${transmission_allowed}"
 
 transmission_prestart()
 {
-	local _command_args
+	local _command_args _umask
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
@@ -65,7 +65,10 @@ transmission_prestart()
 	command_args="${command_args} ${_command_args}"
 
 	# Set the umask.
-	umask ${transmission_umask}
+	_umask=`configxml_get "//bittorrent/umask"`
+	_umask=${_umask:-"${transmission_umask}"}
+
+	umask ${_umask}
 }
 
 transmission_poststart()

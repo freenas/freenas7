@@ -365,12 +365,17 @@ function is_mtu($mtu) {
 	return true;
 }
 
-/* Returns true if $mode is a valid file mode mask. */
+/**
+ * Validate the given file mode mask. Valid masks are in the
+ * range from [0]000 to [0]777.
+ * @param mode The file mode mask as octal value to validate
+ * @return Returns true if mode is a valid file mode mask.
+ */
 function is_filemode($mode) {
 	if (!is_numericint($mode))
 		return false;
 
-	if (($mode < 0) || ($mode > 777))
+	if (!preg_match("/^[0]?[0-7]{3}$/", $mode))
 		return false;
 
 	return true;

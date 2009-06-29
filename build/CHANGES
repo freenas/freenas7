@@ -10,9 +10,9 @@ Majors changes:
 - Upgrade lighttpd to 1.4.23.
 
 Minors changes:
-- Set transmission umask to 002 per default. To customize this value a new
-  rc.conf variable called 'transmission_umask' must be created via WebGUI
-  'System|Advanced|rc.conf'.
+- Set transmission umask to 0002 per default. This can be customize via the
+  'Services|BitTorrent' WebGUI or the rc.conf variable 'transmission_umask'
+	(FR 2813791).
 - Add ixgb driver to AMD64 kernel (BR 2813759).
 
 Bug fixes:
