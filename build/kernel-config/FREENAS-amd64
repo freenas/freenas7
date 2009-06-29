@@ -185,6 +185,7 @@ device		puc
 device		de		# DEC/Intel DC21x4x (``Tulip'')
 device		em		# Intel PRO/1000 Gigabit Ethernet Family
 device		igb		# Intel PRO/1000 PCIE Server Gigabit Family
+device		ixgb		# Intel PRO/10GbE Ethernet Card
 device		ixgbe		# Intel PRO/10GbE PCIE Ethernet Family
 device		le		# AMD Am7900 LANCE and Am79C9xx PCnet
 device		txp		# 3Com 3cR990 (``Typhoon'')

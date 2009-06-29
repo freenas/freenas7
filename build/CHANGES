@@ -13,6 +13,7 @@ Minors changes:
 - Set transmission umask to 002 per default. To customize this value a new
   rc.conf variable called 'transmission_umask' must be created via WebGUI
   'System|Advanced|rc.conf'.
+- Add ixgb driver to AMD64 kernel (BR 2813759).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
