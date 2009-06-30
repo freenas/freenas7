@@ -382,6 +382,11 @@ function reset_factory_defaults() {
 	return 0;
 }
 
+/**
+ * Install the given configuration file.
+ * @param[in] conffile The path to the file to be installed.
+ * @return Returns 0 on success or 1 on failure.
+ */
 function config_install($conffile) {
 	global $config, $g;
 
@@ -391,12 +396,12 @@ function config_install($conffile) {
 	config_lock();
 	conf_mount_rw();
 
-	copy($conffile, "{$g['conf_path']}/config.xml");
+	$result = copy($conffile, "{$g['conf_path']}/config.xml");
 
 	conf_mount_ro();
 	config_unlock();
 
-	return 0;
+	return (TRUE === $result) ? 0 : 1;
 }
 
 /* Lock configuration file, decide that the lock file is stale after 10 seconds */
