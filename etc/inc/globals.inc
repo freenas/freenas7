@@ -101,4 +101,15 @@ $g_filesystems = array(
 	"softraid" => "Software RAID",
 	"geli" => "Encrypted"
 );
+
+$g_file_upload_error = array(
+	UPLOAD_ERR_OK => gettext("There is no error, the file uploaded with success."),
+	UPLOAD_ERR_INI_SIZE => gettext("The uploaded file exceeds the upload_max_filesize directive in php.ini."),
+	UPLOAD_ERR_FORM_SIZE => gettext("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."),
+	UPLOAD_ERR_PARTIAL => gettext("The uploaded file was only partially uploaded."),
+	UPLOAD_ERR_NO_FILE => gettext("No file was uploaded."),
+	UPLOAD_ERR_NO_TMP_DIR => gettext("Missing a temporary folder."),
+	UPLOAD_ERR_CANT_WRITE => gettext("Failed to write file to disk."),
+	UPLOAD_ERR_EXTENSION => gettext("File upload stopped by extension.")
+);
 ?>

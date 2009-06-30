@@ -229,4 +229,23 @@ function dump_xml_config($arr, $rootobj, $encoding) {
 
 	return $xmlconfig;
 }
+
+/**
+ * Validate the configuration xml file.
+ * @param[in] cffile Path to the file to validate.
+ * @param[in] rootobj The name of the root object.
+ * @return TRUE if valid, otherwise FALSE.
+ */
+function validate_xml_config($cffile, $rootobj) {
+	// Parse the configuration
+	$xmlconfig = parse_xml_config($cffile, $rootobj);
+
+	// Due the configuration file does not have a DTD, we can only do some
+	// simple checks, e.g. if version is set.
+	if (!isset($xmlconfig['version']))
+		return FALSE;
+
+	// Add more checks, or implement a DTD...
+	return TRUE;
+}
 ?>
