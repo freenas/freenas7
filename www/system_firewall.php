@@ -112,7 +112,8 @@ if ($_POST['export']) {
 			exit;
 		}
 	} else {
-		$errormsg = gettext("Failed to upload file.");
+		$errormsg = sprintf("%s %s", gettext("Failed to upload file."),
+			$g_file_upload_error[$_FILES['rulesfile']['error']]);
 	}
 } else if ($_POST) {
 	$pconfig = $_POST;

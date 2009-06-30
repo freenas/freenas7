@@ -124,6 +124,9 @@ if ("restore" === $pconfig['action']) {
 		$fn = "/var/tmp/{$geli['name']}.metadata";
 		// Move the metadata backup file so PHP won't delete it.
 		move_uploaded_file($_FILES['backupfile']['tmp_name'], $fn);
+	} else {
+		$errormsg = sprintf("%s %s", gettext("Failed to upload file."),
+			$g_file_upload_error[$_FILES['backupfile']['error']]);
 	}
 }
 ?>
@@ -167,8 +170,9 @@ function action_change() {
   </tr>
   <tr>
     <td class="tabcont">
-    	<?php if ($nohttps_error) print_warning_box($nohttps_error); ?>
-      <?php if ($input_errors) print_input_errors($input_errors); ?>
+    	<?php if ($nohttps_error) print_warning_box($nohttps_error);?>
+      <?php if ($input_errors) print_input_errors($input_errors);?>
+      <?php if ($errormsg) print_error_box($errormsg);?>
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
