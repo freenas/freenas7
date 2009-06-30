@@ -40,7 +40,7 @@ $pgtitle = array(gettext("System"), gettext("Backup/Restore"));
 $omit_nocacheheaders = true;
 
 if ($_POST) {
-	unset($input_errors);
+	unset($errormsg);
 
 	if (0 == strcmp($_POST['Submit'], gettext("Restore configuration"))) {
 		$mode = "restore";
@@ -49,25 +49,25 @@ if ($_POST) {
 	}
 
 	if ($mode) {
-		if ($mode == "download") {
+		if ($mode === "download") {
 			config_lock();
 
-			$fn = "config-" . $config['system']['hostname'] . "." . $config['system']['domain'] . "-" . date("YmdHis") . ".xml";
-			$fs = get_filesize($g['conf_path'] . "/config.xml");
+			$fn = "config-{$config['system']['hostname']}.{$config['system']['domain']}-" . date("YmdHis") . ".xml";
+			$fs = get_filesize("{$g['conf_path']}/config.xml");
 
 			header("Content-Type: application/octet-stream");
-			header("Content-Disposition: attachment; filename=$fn");
-			header("Content-Length: $fs");
+			header("Content-Disposition: attachment; filename={$fn}");
+			header("Content-Length: {$fs}");
 			header("Pragma: hack");
 			readfile("{$g['conf_path']}/config.xml");
 			config_unlock();
 
 			exit;
-		} else if ($mode == "restore") {
+		} else if ($mode === "restore") {
 			if (is_uploaded_file($_FILES['conffile']['tmp_name'])) {
 				// Validate configuration backup
 				if (!validate_xml_config($_FILES['conffile']['tmp_name'], $g['xml_rootobj'])) {
-					$input_errors[] = sprintf(gettext("The configuration could not be restored. %s"),
+					$errormsg = sprintf(gettext("The configuration could not be restored. %s"),
 						gettext("Invalid file format."));
 				} else {
 					// Install configuration backup
@@ -76,11 +76,11 @@ if ($_POST) {
 						$savemsg = sprintf(gettext("The configuration has been restored. %s is now rebooting."),
 							get_product_name());
 					} else {
-						$input_errors[] = gettext("The configuration could not be restored.");
+						$errormsg = gettext("The configuration could not be restored.");
 					}
 				}
 			} else {
-				$input_errors[] = sprintf(gettext("The configuration could not be restored. %s"),
+				$errormsg = sprintf(gettext("The configuration could not be restored. %s"),
 					$g_file_upload_error[$_FILES['conffile']['error']]);
 			}
 		}
@@ -92,8 +92,8 @@ if ($_POST) {
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
-				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if ($errormsg) print_error_box($errormsg);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellspacing="0" cellpadding="6">
 			    <tr>
 			      <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>
