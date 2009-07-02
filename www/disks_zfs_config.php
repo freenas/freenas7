@@ -50,12 +50,12 @@ $zfs = array(
 if (isset($_POST['import']))
 {
 	$cmd = 'zpool import -a';
-	
+
 	if (isset($_POST['import_force']))
 	{
 		$cmd .= ' -f';
 	}
-	
+
 	$retval = mwexec($cmd);
 }
 
@@ -203,19 +203,19 @@ if (count($zfs['pools']['pool']) <= 0)
 	{$message_box_text}<br/>
 	<input type="submit" name="import" value="{$import_button_value}" />
 	<input type="hidden" name="import_force" value="true" />
+	<input name="authtoken" type="hidden" value="{$_SESSION['authtoken']}" autocomplete="off">
 </form>
 HTML;
 			}
 		}
-	}
-	else
-	{
+	} else {
 		$message_box_type = 'info';
 		$text = gettext('No pool was found.').' '.gettext('Try to import from on-disk ZFS config.');
 		$message_box_text = <<<HTML
 <form action="{$_SERVER['PHP_SELF']}" method="post">
 	{$text}<br/>
 	<input type="submit" name="import" value="{$import_button_value}" />
+	<input name="authtoken" type="hidden" value="{$_SESSION['authtoken']}" autocomplete="off">
 </form>
 HTML;
 	}
