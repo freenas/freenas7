@@ -221,9 +221,9 @@ function system_get_uptime() {
 	$uphours = (int)($uptime / 3600);
 	$uptime %= 3600;
 	$upmins = (int)($uptime / 60);
-	$upsecs = $uptime % 60;	
+	$upsecs = $uptime % 60;
 
-	if ($uphours < 1) {
+	if (($updays < 1) && ($uphours < 1)) {
 		$uptime = sprintf("%d %s %d %s", $upmins, gettext("minute(s)"), $upsecs, gettext("second(s)"));
 	} else if ($updays < 1) {
 		$uptime = sprintf("%d %s %d %s %d %s", $uphours, gettext("hour(s)"),
