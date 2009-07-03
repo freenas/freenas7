@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-06-11 22:27+0000\n"
-"PO-Revision-Date: 2009-06-09 16:29+0000\n"
-"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
+"POT-Creation-Date: 2009-07-03 22:58+0000\n"
+"PO-Revision-Date: 2009-06-30 00:25+0000\n"
+"Last-Translator: Marcos Garcia <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 19:51+0000\n"
+"X-Launchpad-Export-Date: 2009-07-03 23:37+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -38,7 +38,7 @@ msgstr "%s interfaz"
 
 #, php-format
 msgid "%s is too long."
-msgstr ""
+msgstr "%s es demasiado largo."
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -50,7 +50,7 @@ msgstr "%s de %sB"
 
 #, php-format
 msgid "%s on %s"
-msgstr ""
+msgstr "%s en %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -58,7 +58,7 @@ msgstr "%s se reiniciará después de restaurar la configuración."
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
-msgstr ""
+msgstr "%s%d %s está siendo usado por %s%d."
 
 #, c-format, php-format
 msgid "%sB available of %sB"
@@ -91,10 +91,8 @@ msgstr "<->"
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+"href=%s>user</a> must have shell access."
 msgstr ""
-"<a href=%s>SSHD</a> debe estar activado para que funcione Unison, y el <a "
-"href=%s>usuario</a> debe tener acceso completo a la Consola activado."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -227,7 +225,7 @@ msgid "AFP"
 msgstr "AFP"
 
 msgid "AG"
-msgstr ""
+msgstr "AG"
 
 msgid "ARP Tables"
 msgstr "Tablas ARP"
@@ -418,6 +416,12 @@ msgstr ""
 msgid "Aggregation protocol"
 msgstr "Protocolo de Agregación"
 
+msgid "Aggressive"
+msgstr ""
+
+msgid "Albanian"
+msgstr "Albanés"
+
 msgid "All"
 msgstr "Todos"
 
@@ -602,6 +606,9 @@ msgstr "Automático"
 msgid "AutoScale"
 msgstr "Escala Automática"
 
+msgid "Autoselect"
+msgstr ""
+
 msgid "Auxiliary parameters"
 msgstr "Parámetros auxiliares."
 
@@ -636,6 +643,9 @@ msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
+msgid "Best available"
+msgstr ""
+
 msgid "Bind DN"
 msgstr ""
 
@@ -650,6 +660,9 @@ msgstr ""
 
 msgid "Browseable"
 msgstr "Visible"
+
+msgid "Built on"
+msgstr ""
 
 msgid "Bulgarian"
 msgstr "Búlgaro"
@@ -667,10 +680,10 @@ msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD o software RAID antiguo"
 
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 msgid "CHAP Users"
-msgstr ""
+msgstr "Usuarios CHAP"
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
@@ -702,7 +715,7 @@ msgstr ""
 "2."
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgid "Canmount"
 msgstr ""
@@ -832,7 +845,7 @@ msgstr ""
 "para transferencias por internet."
 
 msgid "Configuration"
-msgstr ""
+msgstr "Configuración"
 
 msgid "Configuration directory"
 msgstr "Directorio de configuración"
@@ -880,9 +893,6 @@ msgstr ""
 msgid "Count"
 msgstr "Recuento"
 
-msgid "Create"
-msgstr "Crear"
-
 msgid "Create and initialize RAID."
 msgstr "Crear e inicializar RAID"
 
@@ -892,8 +902,8 @@ msgstr "Crear volúmen encriptado"
 msgid "Create mask"
 msgstr "Crear máscara"
 
-msgid "Create work directory if it doesn't exist"
-msgstr "Crear el directorio de trabajo si no existe"
+msgid "Create work directory if it doesn't exist."
+msgstr ""
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -920,7 +930,7 @@ msgid "Cron job"
 msgstr "Tarea de Cron"
 
 msgid "Current"
-msgstr ""
+msgstr "Actual"
 
 msgid "Custom"
 msgstr "Personalizado"
@@ -979,11 +989,8 @@ msgstr ""
 msgid "Datasets"
 msgstr ""
 
-msgid "Date"
-msgstr "Fecha"
-
 msgid "Date & Time"
-msgstr ""
+msgstr "Fecha y hora"
 
 msgid "Debug"
 msgstr "Depurar"
@@ -1152,7 +1159,7 @@ msgid "Destination share"
 msgstr "Elemento compartido de destino"
 
 msgid "Detected"
-msgstr ""
+msgstr "Detectado"
 
 msgid "Detected RSYNC remote shares"
 msgstr "Elementos compartidos RSYNC detectados"
@@ -1173,9 +1180,6 @@ msgstr "Dispositivo /dev/%s - %s"
 
 msgid "Device IP"
 msgstr "Dispositivo IP"
-
-msgid "Device is mounted, umount it first before detaching."
-msgstr "El dispositivo está montado, desmóntelo antes de desconectarlo."
 
 msgid "Device name"
 msgstr "Nombre del dispositivo"
@@ -1202,7 +1206,7 @@ msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Dispositivo: %s | Total: %s | Usado: %s | Libre: %s"
 
 msgid "Devices"
-msgstr ""
+msgstr "Dispositivos"
 
 msgid "Diagnostics"
 msgstr "Diagnóstico"
@@ -1226,7 +1230,7 @@ msgid "Directory mask"
 msgstr "Máscara de directorio"
 
 msgid "Directory to watch for new .torrent files."
-msgstr ""
+msgstr "Directorio a vigilar para nuevos archivos .torrent"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "AFP-over-Appletalk dehabilitado para prevenir conexiones DDP."
@@ -1265,9 +1269,6 @@ msgstr ""
 
 msgid "Disk"
 msgstr "Disco"
-
-msgid "Disk Name"
-msgstr "Nombre del disco"
 
 msgid "Disk space usage"
 msgstr "Uso del espacio en disco"
@@ -1438,6 +1439,9 @@ msgstr ""
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
+msgstr ""
+
+msgid "Donate"
 msgstr ""
 
 msgid "Done"
@@ -1726,9 +1730,6 @@ msgstr ""
 msgid "Encrypted"
 msgstr "Cifrado"
 
-msgid "Encrypted disk name"
-msgstr "Nombre del disco encriptado"
-
 #, php-format
 msgid "Encrypting '%s'... Please wait"
 msgstr "Cifrando '%s'... Por favor espere"
@@ -1785,6 +1786,9 @@ msgstr ""
 
 msgid "Error"
 msgstr "Error"
+
+msgid "Error's"
+msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1931,6 +1935,9 @@ msgstr "Falló al subir el archivo."
 msgid "Failed to upload metadata backup file."
 msgstr "Falló al subir archivo de respaldo de metadata."
 
+msgid "Failed to write file to disk."
+msgstr ""
+
 msgid "Failed."
 msgstr "Falló."
 
@@ -1967,6 +1974,9 @@ msgstr "Sistema de archivos"
 
 msgid "File system check"
 msgstr "Comprobación del sistema de archivos"
+
+msgid "File upload stopped by extension."
+msgstr ""
 
 msgid "Filename"
 msgstr "Nombre de archivo"
@@ -2007,6 +2017,9 @@ msgstr "Formatear"
 msgid "Format disk"
 msgstr "Formatear el disco"
 
+msgid "Format the report for phpBB forum."
+msgstr ""
+
 msgid "Forum"
 msgstr "Foro"
 
@@ -2037,6 +2050,9 @@ msgstr "Nombre Completo"
 msgid "GID"
 msgstr "GID"
 
+msgid "GPT partition"
+msgstr ""
+
 msgid "Gateway"
 msgstr "Puerta de Enlace"
 
@@ -2049,14 +2065,14 @@ msgstr "General"
 msgid "General Setup"
 msgstr "Configuración general"
 
+msgid "Generate"
+msgstr ""
+
 msgid "German"
 msgstr "Alemán"
 
 msgid "GiB"
 msgstr ""
-
-msgid "Give full shell access to user."
-msgstr "Otorgar al usuario acceso completo a la consola."
 
 msgid "Give only local users access to the web page."
 msgstr "Dar acceso a la pagina web sólo a los usuarios locales."
@@ -2106,6 +2122,9 @@ msgstr "Proxy HTTP"
 
 msgid "Hard disk standby time"
 msgstr "Tiempo de espera de apagado del disco duro"
+
+msgid "Hardware:"
+msgstr ""
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2366,8 +2385,14 @@ msgstr "Entrantes"
 msgid "In most cases, 'public' is used here."
 msgstr "En la mayoría de los casos, 'public' es usado aquí."
 
+msgid "Include basic hardware information."
+msgstr ""
+
 msgid "Info"
 msgstr "Información"
+
+msgid "Info:"
+msgstr ""
 
 msgid "Informal"
 msgstr "Informal"
@@ -2448,6 +2473,9 @@ msgstr "Interfaces"
 
 msgid "Interval must be greater or equal than 10 seconds."
 msgstr "El intervalo debe ser mayor o igual a 10 segundos."
+
+msgid "Invalid file format."
+msgstr ""
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2673,6 +2701,11 @@ msgstr "Ubicación de los archivos para compartir."
 msgid "Location where the content database file will be stored."
 msgstr "Ubicación donde será almacenada la base de datos de contenidos."
 
+#, php-format
+msgid ""
+"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgstr ""
+
 msgid "Log"
 msgstr "Registro"
 
@@ -2699,6 +2732,9 @@ msgstr "nombres en minuscula en ambas direcciones."
 
 msgid "MAC address"
 msgstr "Dirección MAC"
+
+msgid "MBR partition"
+msgstr ""
 
 msgid "MIB"
 msgstr "MIB"
@@ -2831,6 +2867,9 @@ msgid "Minutes between network time sync."
 msgstr "Minutos entre el tiempo de sincronización de red"
 
 msgid "Mirror"
+msgstr ""
+
+msgid "Missing a temporary folder."
 msgstr ""
 
 msgid "Mode"
@@ -3002,6 +3041,9 @@ msgstr "No hay discos configurados"
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgstr ""
+
+msgid "No file was uploaded."
 msgstr ""
 
 msgid "No pool was found."
@@ -3187,6 +3229,9 @@ msgstr "La carga del paquete falló (¿sin memoria?)"
 
 msgid "Packages"
 msgstr "Paquetes"
+
+msgid "Painfully aggressive"
+msgstr ""
 
 msgid "Pairwise"
 msgstr ""
@@ -3520,6 +3565,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr "Acceso de solo lectura"
 
+msgid "Read from lowest load"
+msgstr ""
+
 msgid "Read only"
 msgstr "Sólo lectura"
 
@@ -3586,6 +3634,12 @@ msgstr "Servidor syslog remoto"
 msgid "Remove all entries from ARP table"
 msgstr "Borrar todas las entradas de la tabla ARP"
 
+msgid "Report Generator"
+msgstr ""
+
+msgid "Report generator"
+msgstr ""
+
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
 "last report. Set to 0 to disable this report."
@@ -3646,6 +3700,9 @@ msgid "Root bind DN"
 msgstr ""
 
 msgid "Root bind password"
+msgstr ""
+
+msgid "Round-robin read"
 msgstr ""
 
 msgid "Roundrobin"
@@ -3899,8 +3956,8 @@ msgstr ""
 msgid "Shares"
 msgstr "Elementos compartidos"
 
-msgid "Shell access"
-msgstr "Acceso a la consola"
+msgid "Shell"
+msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
@@ -4028,6 +4085,9 @@ msgstr ""
 "cuenta que reducir el porcentaje puede afectar negativamente al rendimiento "
 "y la auto-desfragmentación."
 
+msgid "Split request"
+msgstr ""
+
 msgid "Standard"
 msgstr "Estándar"
 
@@ -4042,6 +4102,9 @@ msgstr "Tiempo de espera"
 
 #, php-format
 msgid "Start scrub on '%s'."
+msgstr ""
+
+msgid "Static"
 msgstr ""
 
 msgid "Static Routes"
@@ -4084,6 +4147,9 @@ msgstr ""
 
 msgid "Subject"
 msgstr "Asunto"
+
+msgid "Subject:"
+msgstr ""
 
 msgid "Subnet bit count"
 msgstr "Bit de subnet"
@@ -4433,19 +4499,15 @@ msgstr ""
 msgid "The cleartext credentials with which to bind."
 msgstr ""
 
-msgid "The combination of share and working directory does not exist."
-msgstr ""
-"No existe la combinación de elemento compartido y directorio de trabajo."
-
 msgid "The command to be executed."
 msgstr "El comando a ser ejecutado."
 
-msgid "The configuration could not be restored (file upload error)."
-msgstr ""
-"No se ha podido restaurar la configuración (error de subida de archivo)."
-
 msgid "The configuration could not be restored."
 msgstr "No se ha podido restaurar la configuración."
+
+#, php-format
+msgid "The configuration could not be restored. %s"
+msgstr ""
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4526,6 +4588,12 @@ msgid ""
 msgstr ""
 "El controlador utilizado para comunicarse con su UPS. Obtenga la lista de <a "
 "href='%s' target='_blank'>controladores</a> disponibles."
+
+#, php-format
+msgid ""
+"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+"first before proceeding."
+msgstr ""
 
 msgid "The extent name already exists."
 msgstr ""
@@ -4764,13 +4832,34 @@ msgstr "El número de regla ha de ser único."
 msgid "The unique user ID is already used."
 msgstr "El ID unico de usuario ya esta siendo usado."
 
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+msgid ""
+"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "El fichero de imagen subido no es para esta plataforma"
+
+msgid "The user's login shell."
+msgstr ""
 
 msgid "The value of the variable."
 msgstr "El valor de la variable."
 
 msgid "The volume must be detached before it can be deleted."
+msgstr ""
+
+msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
 msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
@@ -4837,6 +4926,10 @@ msgstr ""
 
 #, php-format
 msgid "These parameters will be added to %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters will be added to [global] settings in %s."
 msgstr ""
 
 #, php-format
@@ -4925,10 +5018,6 @@ msgid "This email has been send to validate your email configuration."
 msgstr ""
 "Este correo electrónico ha sido enviado para validar su configuración de "
 "correo electrónico."
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr ""
-"Este disco encriptado está montado, desmóntelo antes de tratar de eliminarlo."
 
 msgid "This extent is used."
 msgstr ""
@@ -5335,6 +5424,9 @@ msgstr "UPS"
 msgid "UPS disabled"
 msgstr "UPS desactivado"
 
+msgid "UPS goes on battery"
+msgstr ""
+
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -5435,6 +5527,12 @@ msgstr ""
 msgid "Use the specified NTP server."
 msgstr "Usar el servidor NTP especificado."
 
+#, php-format
+msgid ""
+"Use this option to override the default permission modes for newly created "
+"files (%s by default). "
+msgstr ""
+
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
 msgstr ""
@@ -5476,6 +5574,9 @@ msgstr "ID de usuario"
 
 msgid "User full name."
 msgstr "Nombre Completo del Usuario"
+
+msgid "User mask"
+msgstr ""
 
 msgid "User numeric id."
 msgstr "Id. numérico de usuario"
@@ -5593,9 +5694,6 @@ msgid ""
 "attempt to identify the remote username."
 msgstr ""
 
-msgid "Where the working files will be stored"
-msgstr "Donde se almacenarán los archivos de trabajo"
-
 msgid "Where to save downloaded data."
 msgstr "Dónde guardar datos descargados."
 
@@ -5621,8 +5719,8 @@ msgid ""
 "15 characters)."
 msgstr ""
 
-msgid "Working Directory"
-msgstr "Directorio de trabajo"
+msgid "Working directory"
+msgstr ""
 
 msgid "Write"
 msgstr "Escritura"
@@ -5677,14 +5775,9 @@ msgstr "Debes seleccionar por lo menos un item de '%s'"
 msgid "You may enter a description here for your reference."
 msgstr "Puede introducir una descripción aquí para su referencia."
 
-msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-"Es posible que necesite espacio suficiente para duplicar todos los archivos "
-"que se van a sincronizar"
-
 #, php-format
 msgid ""
-"You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII "
+"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
 msgstr ""
 
@@ -5702,9 +5795,6 @@ msgstr "Debe reiniciar el sistema antes de actualizar el sistema base."
 
 msgid "You must select at least one authentication method."
 msgstr "Se debe seleccionar al menos un método de autentificación."
-
-msgid "You must use a passphrase to attach an encrypted disk."
-msgstr "Debe emplear una contraseña para agregar un disco encriptado."
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
@@ -5728,9 +5818,6 @@ msgstr ""
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
-msgid "built on"
-msgstr ""
-
 msgid "cachecnid"
 msgstr ""
 
@@ -5743,8 +5830,8 @@ msgstr ""
 msgid "crlf"
 msgstr "crlf"
 
-msgid "day"
-msgstr "día"
+msgid "day(s)"
+msgstr ""
 
 msgid "days"
 msgstr "días"
@@ -5755,6 +5842,9 @@ msgstr "dbpath"
 #, php-format
 msgid "e.g. %s"
 msgstr "por ejemplo, %s"
+
+msgid "hour(s)"
+msgstr ""
 
 msgid "hours"
 msgstr "horas"
@@ -5776,6 +5866,9 @@ msgstr "Iniciador iSCSI desactivado"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "minute(s)"
+msgstr ""
 
 msgid "minutes"
 msgstr "minutos"
@@ -5816,6 +5909,9 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
+msgid "phpBB:"
+msgstr ""
+
 msgid "prodos"
 msgstr "prodos"
 
@@ -5824,6 +5920,9 @@ msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
+
+msgid "second(s)"
+msgstr ""
 
 msgid "seconds"
 msgstr "segundos"
@@ -5846,6 +5945,15 @@ msgstr "upriv"
 msgid "week days"
 msgstr "días de la semana"
 
+#~ msgid "Date"
+#~ msgstr "Fecha"
+
+#~ msgid "day"
+#~ msgstr "día"
+
+#~ msgid "Create"
+#~ msgstr "Crear"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Se debe especificar un valor de red válido."
 
@@ -5861,12 +5969,55 @@ msgstr "días de la semana"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Se debe indicar una red válida."
 
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr ""
+#~ "No existe la combinación de elemento compartido y directorio de trabajo."
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr ""
+#~ "Es posible que necesite espacio suficiente para duplicar todos los archivos "
+#~ "que se van a sincronizar"
+
+#~ msgid "Working Directory"
+#~ msgstr "Directorio de trabajo"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "Donde se almacenarán los archivos de trabajo"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Crear el directorio de trabajo si no existe"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> debe estar activado para que funcione Unison, y el <a "
+#~ "href=%s>usuario</a> debe tener acceso completo a la Consola activado."
+
 #, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Últimas %d %s entradas de registro"
 
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr ""
+#~ "No se ha podido restaurar la configuración (error de subida de archivo)."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Este disco encriptado está montado, desmóntelo antes de tratar de eliminarlo."
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr "Debe emplear una contraseña para agregar un disco encriptado."
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "Nombre del disco encriptado"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Red autorizada para acceder al destino iSCSI."
+
+#~ msgid "Disk Name"
+#~ msgstr "Nombre del disco"
 
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
@@ -5890,6 +6041,9 @@ msgstr "días de la semana"
 #~ "En el nivel más alto, el objetivo es lo que le es presentado al inicador, y "
 #~ "esta compuesto de uno o más dispositivos, y/o uno o mas extenciones."
 
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "El dispositivo está montado, desmóntelo antes de desconectarlo."
+
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
@@ -5897,6 +6051,12 @@ msgstr "días de la semana"
 #~ msgstr ""
 #~ "Ruta de archivo (e.g. /mnt/sharename/extent/%s) o nombre de dispositivo "
 #~ "(e.g. /dev/ad1) usado como extensión."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Otorgar al usuario acceso completo a la consola."
+
+#~ msgid "Shell access"
+#~ msgstr "Acceso a la consola"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Local"

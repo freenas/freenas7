@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-11 22:27+0000\n"
-"PO-Revision-Date: 2009-06-18 19:49+0000\n"
+"POT-Creation-Date: 2009-07-03 22:58+0000\n"
+"PO-Revision-Date: 2009-06-25 20:41+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 19:51+0000\n"
+"X-Launchpad-Export-Date: 2009-07-03 23:37+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -89,10 +89,8 @@ msgstr "<->"
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+"href=%s>user</a> must have shell access."
 msgstr ""
-"<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a "
-"href=%s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -431,6 +429,12 @@ msgstr ""
 msgid "Aggregation protocol"
 msgstr "Aggregation Protokoll"
 
+msgid "Aggressive"
+msgstr ""
+
+msgid "Albanian"
+msgstr "Albanisch"
+
 msgid "All"
 msgstr "Alle"
 
@@ -617,6 +621,9 @@ msgstr "Auto"
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
+msgid "Autoselect"
+msgstr ""
+
 msgid "Auxiliary parameters"
 msgstr "Zusätzliche Parameter"
 
@@ -651,6 +658,9 @@ msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
+msgid "Best available"
+msgstr ""
+
 msgid "Bind DN"
 msgstr "Bind DN"
 
@@ -665,6 +675,9 @@ msgstr "untätig"
 
 msgid "Browseable"
 msgstr "Sichtbar"
+
+msgid "Built on"
+msgstr ""
 
 msgid "Bulgarian"
 msgstr "Bulgarisch"
@@ -683,10 +696,10 @@ msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD oder altes Software RAID"
 
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 msgid "CHAP Users"
-msgstr ""
+msgstr "CHAP Benutzer"
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
@@ -720,7 +733,7 @@ msgstr ""
 "notwendige Datenpartition ist die 2. Partition auf dem Datenträger."
 
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 msgid "Canmount"
 msgstr ""
@@ -854,7 +867,7 @@ msgstr ""
 "Empfiehlt sich ausschliesslich beim Internettransfer."
 
 msgid "Configuration"
-msgstr ""
+msgstr "Einstellungen"
 
 msgid "Configuration directory"
 msgstr "Konfigurationsverzeichnis"
@@ -902,9 +915,6 @@ msgstr ""
 msgid "Count"
 msgstr "Zähler"
 
-msgid "Create"
-msgstr "Erstellen"
-
 msgid "Create and initialize RAID."
 msgstr "RAID erstellen und initialisieren."
 
@@ -914,8 +924,8 @@ msgstr "Verschlüsselten Datenträger erstellen"
 msgid "Create mask"
 msgstr "Erzeuge Maske"
 
-msgid "Create work directory if it doesn't exist"
-msgstr "Lege Arbeitsverzeichnis an, falls es noch nicht existiert"
+msgid "Create work directory if it doesn't exist."
+msgstr ""
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -942,7 +952,7 @@ msgid "Cron job"
 msgstr "Cronjob"
 
 msgid "Current"
-msgstr ""
+msgstr "Aktuell"
 
 msgid "Custom"
 msgstr "Benutzerdefiniert"
@@ -999,9 +1009,6 @@ msgstr ""
 
 msgid "Datasets"
 msgstr ""
-
-msgid "Date"
-msgstr "Datum"
 
 msgid "Date & Time"
 msgstr ""
@@ -1196,11 +1203,6 @@ msgstr "Gerät /dev/%s - %s"
 msgid "Device IP"
 msgstr "IP des Geräts"
 
-msgid "Device is mounted, umount it first before detaching."
-msgstr ""
-"Das Device ist noch gemountet! Unmounten Sie es zuerst, bevor Sie es "
-"entfernen."
-
 msgid "Device name"
 msgstr "Gerätename"
 
@@ -1290,9 +1292,6 @@ msgstr ""
 
 msgid "Disk"
 msgstr "Festplatte"
-
-msgid "Disk Name"
-msgstr "Datenträgername"
 
 msgid "Disk space usage"
 msgstr "Festplattenauslastung"
@@ -1469,6 +1468,9 @@ msgstr ""
 "Den Volumepfad nicht mit in die Statistik einbeziehen, wenn die Volume-Liste "
 "durchgezählt wird - nützlich, wenn automatisch einghängt oder Volumes "
 "erzeugt werden - durch ein vorausgeführtes Skript."
+
+msgid "Donate"
+msgstr ""
 
 msgid "Done"
 msgstr "Fertig"
@@ -1766,9 +1768,6 @@ msgstr ""
 msgid "Encrypted"
 msgstr "Verschlüsselt"
 
-msgid "Encrypted disk name"
-msgstr "Name der verschlüsselten Festplatte"
-
 #, php-format
 msgid "Encrypting '%s'... Please wait"
 msgstr "Verschlüssele '%s'... Bitte warten"
@@ -1826,6 +1825,9 @@ msgstr "Geben Sie den Trap Hostnamen an."
 
 msgid "Error"
 msgstr "Fehler"
+
+msgid "Error's"
+msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1972,6 +1974,9 @@ msgstr "Das Hochladen der Datei ist fehlgeschlagen."
 msgid "Failed to upload metadata backup file."
 msgstr "Upload der Metadaten-Backupdatei fehlgeschlagen."
 
+msgid "Failed to write file to disk."
+msgstr ""
+
 msgid "Failed."
 msgstr "Fehlgeschlagen."
 
@@ -2008,6 +2013,9 @@ msgstr "Dateisystem"
 
 msgid "File system check"
 msgstr "Dateisystemüberprüfung"
+
+msgid "File upload stopped by extension."
+msgstr ""
 
 msgid "Filename"
 msgstr "Dateiname"
@@ -2048,6 +2056,9 @@ msgstr "Formatieren"
 msgid "Format disk"
 msgstr "Festplatte formatieren!"
 
+msgid "Format the report for phpBB forum."
+msgstr ""
+
 msgid "Forum"
 msgstr "Forum"
 
@@ -2078,6 +2089,9 @@ msgstr "Vollständiger Name"
 msgid "GID"
 msgstr "GID"
 
+msgid "GPT partition"
+msgstr ""
+
 msgid "Gateway"
 msgstr "Gateway"
 
@@ -2090,14 +2104,14 @@ msgstr "Allgemein"
 msgid "General Setup"
 msgstr "Allgemeine Einstellungen"
 
+msgid "Generate"
+msgstr ""
+
 msgid "German"
 msgstr "Deutsch"
 
 msgid "GiB"
 msgstr ""
-
-msgid "Give full shell access to user."
-msgstr "Voller Kommandozeilenzugang für Benutzer!"
 
 msgid "Give only local users access to the web page."
 msgstr "Ermögliche nur lokalen Benutzern Zugriff auf die Webseite."
@@ -2146,6 +2160,9 @@ msgstr "HTTP-Proxy"
 
 msgid "Hard disk standby time"
 msgstr "Festplatten Standbyzeit"
+
+msgid "Hardware:"
+msgstr ""
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2424,8 +2441,14 @@ msgstr "Ankommend"
 msgid "In most cases, 'public' is used here."
 msgstr "In den meisten Fällen wird hier 'public' benutzt."
 
+msgid "Include basic hardware information."
+msgstr ""
+
 msgid "Info"
 msgstr "Information"
+
+msgid "Info:"
+msgstr ""
 
 msgid "Informal"
 msgstr "Zur Information"
@@ -2507,6 +2530,9 @@ msgstr "Schnittstellen"
 
 msgid "Interval must be greater or equal than 10 seconds."
 msgstr "Das Intervall muß länger wie 10 Sekunden sein"
+
+msgid "Invalid file format."
+msgstr ""
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2735,6 +2761,11 @@ msgstr "Standort der Dateien die freigegeben werden sollen."
 msgid "Location where the content database file will be stored."
 msgstr "Standort an welchem die Inhalte-Datenbank gespeichert werden soll."
 
+#, php-format
+msgid ""
+"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgstr ""
+
 msgid "Log"
 msgstr "Log"
 
@@ -2763,6 +2794,9 @@ msgstr "Kleinschreibung in beiden Verzeichnissen"
 
 msgid "MAC address"
 msgstr "MAC Addresse"
+
+msgid "MBR partition"
+msgstr ""
 
 msgid "MIB"
 msgstr "MIB"
@@ -2896,6 +2930,9 @@ msgid "Minutes between network time sync."
 msgstr "Dauer in Minuten zwischen Netzwerk-Zeit-Synchronisation (NTP)."
 
 msgid "Mirror"
+msgstr ""
+
+msgid "Missing a temporary folder."
 msgstr ""
 
 msgid "Mode"
@@ -3069,6 +3106,9 @@ msgstr "Keine Festplatte konfiguriert"
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgstr ""
+
+msgid "No file was uploaded."
 msgstr ""
 
 msgid "No pool was found."
@@ -3261,6 +3301,9 @@ msgstr "Paket-Upload fehlgeschlagen. (zuwenig Arbeitsspeicher?)"
 
 msgid "Packages"
 msgstr "Pakete"
+
+msgid "Painfully aggressive"
+msgstr ""
 
 msgid "Pairwise"
 msgstr "Paarweise"
@@ -3597,6 +3640,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr "Nur-lese-Zugriff"
 
+msgid "Read from lowest load"
+msgstr ""
+
 msgid "Read only"
 msgstr "Nur lesen"
 
@@ -3663,6 +3709,12 @@ msgstr "Remote syslog server"
 msgid "Remove all entries from ARP table"
 msgstr "Lösch alle Einträge aus ARP Tabelle"
 
+msgid "Report Generator"
+msgstr ""
+
+msgid "Report generator"
+msgstr ""
+
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
 "last report. Set to 0 to disable this report."
@@ -3727,6 +3779,9 @@ msgstr "hervorgehobener Name des Systemadministrator für Bind"
 
 msgid "Root bind password"
 msgstr "Systemadministrator-Kennwort für Bind"
+
+msgid "Round-robin read"
+msgstr ""
 
 msgid "Roundrobin"
 msgstr "Roundrobin"
@@ -3991,8 +4046,8 @@ msgstr "Passwort für die Freigabe kann nicht länger als 8 Zeichen sein."
 msgid "Shares"
 msgstr "Freigaben"
 
-msgid "Shell access"
-msgstr "Kommandozeilenzugang"
+msgid "Shell"
+msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
@@ -4125,6 +4180,9 @@ msgstr ""
 "Sie, dass das Absenken des Schwellenwertes sowohl die Performance als auch "
 "die Auto-Defragmentation nachteilig beeinflussen kann."
 
+msgid "Split request"
+msgstr ""
+
 msgid "Standard"
 msgstr "Standard"
 
@@ -4144,6 +4202,9 @@ msgstr "Standbyzeit"
 
 #, php-format
 msgid "Start scrub on '%s'."
+msgstr ""
+
+msgid "Static"
 msgstr ""
 
 msgid "Static Routes"
@@ -4187,6 +4248,9 @@ msgstr ""
 
 msgid "Subject"
 msgstr "Betreff"
+
+msgid "Subject:"
+msgstr ""
 
 msgid "Subnet bit count"
 msgstr "Subnet bit count"
@@ -4555,19 +4619,15 @@ msgstr ""
 msgid "The cleartext credentials with which to bind."
 msgstr "Die geschriebenen Referenz, auf die verwiesen werden soll."
 
-msgid "The combination of share and working directory does not exist."
-msgstr ""
-"Die Kombination aus dem Freigabe- sowie Arbeitsverzeichnis gibt es nicht."
-
 msgid "The command to be executed."
 msgstr "Der auszuführende Befehl."
 
-msgid "The configuration could not be restored (file upload error)."
-msgstr ""
-"Die Konfiguration konnte nicht wiederhergestellt werden. (file upload error)."
-
 msgid "The configuration could not be restored."
 msgstr "Die Konfiguration konnte nicht wiederhergestellt werden."
+
+#, php-format
+msgid "The configuration could not be restored. %s"
+msgstr ""
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4652,6 +4712,12 @@ msgid ""
 msgstr ""
 "Der Treiber der für die USV benutzt wird. Hier die Liste der zur Verfügung "
 "stehenden <a href='%s' target='_blank'>drivers</a>."
+
+#, php-format
+msgid ""
+"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+"first before proceeding."
+msgstr ""
 
 msgid "The extent name already exists."
 msgstr ""
@@ -4907,14 +4973,35 @@ msgstr "Die eindeutige Regelnummer wird bereits verwendet."
 msgid "The unique user ID is already used."
 msgstr "Die eindeutige Benutzer ID wird schon verwendet."
 
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+msgid ""
+"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Dieses Image ist nicht für diese Plattform geeignet"
+
+msgid "The user's login shell."
+msgstr ""
 
 msgid "The value of the variable."
 msgstr "Der Wert der Variable."
 
 msgid "The volume must be detached before it can be deleted."
 msgstr "Das Volume muss vor dem Löschen ausgeworfen werden."
+
+msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
+msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Zwei Festplatten sind für ein RAID 1 notwendig."
@@ -4989,6 +5076,10 @@ msgstr "Diese Parameter werden dem [Share] Abschnitt in %s hinzugefügt."
 
 #, php-format
 msgid "These parameters will be added to %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters will be added to [global] settings in %s."
 msgstr ""
 
 #, php-format
@@ -5096,11 +5187,6 @@ msgstr "Diese Festplatte ist bereits in der Festplatteliste enthalten."
 msgid "This email has been send to validate your email configuration."
 msgstr ""
 "DIese Email wurde verschickt um Ihre Email-Einstellungen zu validieren."
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr ""
-"Diese verschlüsselte Festplatte ist eingebunden (gemountet); vor dem "
-"Entfernen ist diese zu entbinden (unmount)"
 
 msgid "This extent is used."
 msgstr ""
@@ -5572,6 +5658,9 @@ msgstr "USV"
 msgid "UPS disabled"
 msgstr "USV abgeschaltet"
 
+msgid "UPS goes on battery"
+msgstr ""
+
 msgid "UPS reaches low battery"
 msgstr ""
 "Unterbrecherfreie Stromversorgung hat niedrigen Batteriestand erreicht."
@@ -5676,6 +5765,12 @@ msgstr ""
 msgid "Use the specified NTP server."
 msgstr "Verwendet den angegebenen NTP Server."
 
+#, php-format
+msgid ""
+"Use this option to override the default permission modes for newly created "
+"files (%s by default). "
+msgstr ""
+
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
 msgstr ""
@@ -5721,6 +5816,9 @@ msgstr "Benutzerkennung"
 
 msgid "User full name."
 msgstr "Vollständiger Name."
+
+msgid "User mask"
+msgstr ""
 
 msgid "User numeric id."
 msgstr "Numerische Benutzer-ID."
@@ -5842,9 +5940,6 @@ msgstr ""
 "Wenn ein Client sich mit dem Server verbindet, dann wird versucht durch das "
 "Ident Protokoll den Remote-Benutzernamen zu identifizieren."
 
-msgid "Where the working files will be stored"
-msgstr "Hier werden die Arbeitsdaten abgelegt"
-
 msgid "Where to save downloaded data."
 msgstr "Wo sollen die Heruntergeladenen Daten gespeichert werden?"
 
@@ -5875,8 +5970,8 @@ msgstr ""
 "Arbeitsgruppe in welcher der Server bei Anfragen erscheinen wird (maximal 15 "
 "Zeichen)."
 
-msgid "Working Directory"
-msgstr "Arbeitsverzeichnis"
+msgid "Working directory"
+msgstr ""
 
 msgid "Write"
 msgstr "Schreiben"
@@ -5933,14 +6028,9 @@ msgstr "Sie müssen mindestens einen Eintrag für '%s' auswählen."
 msgid "You may enter a description here for your reference."
 msgstr "Sie können hier eine Beschreibung für Ihre Referenz eintragen."
 
-msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-"Es könnte bei der Synchronisation zur Belegung von Speicherplatz in der "
-"GröÃüenordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
-
 #, php-format
 msgid ""
-"You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII "
+"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
 msgstr ""
 
@@ -5960,10 +6050,6 @@ msgstr ""
 
 msgid "You must select at least one authentication method."
 msgstr "Sie müssen mind. eine Authentifizierungsmethode auswählen."
-
-msgid "You must use a passphrase to attach an encrypted disk."
-msgstr ""
-"Ein Paßwort ist zum Hinzufügen einer verschlüsselten Festplatte notwendig."
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
@@ -5988,9 +6074,6 @@ msgstr ""
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
-msgid "built on"
-msgstr "gebaut am"
-
 msgid "cachecnid"
 msgstr "cachecnid"
 
@@ -6003,8 +6086,8 @@ msgstr "cnidscheme"
 msgid "crlf"
 msgstr "crlf"
 
-msgid "day"
-msgstr "Tag"
+msgid "day(s)"
+msgstr ""
 
 msgid "days"
 msgstr "Tage"
@@ -6015,6 +6098,9 @@ msgstr "dbpath"
 #, php-format
 msgid "e.g. %s"
 msgstr "z.B. %s"
+
+msgid "hour(s)"
+msgstr ""
 
 msgid "hours"
 msgstr "Stunden"
@@ -6036,6 +6122,9 @@ msgstr "iSCSI initiator deaktiviert"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "minute(s)"
+msgstr ""
 
 msgid "minutes"
 msgstr "Minuten"
@@ -6076,6 +6165,9 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
+msgid "phpBB:"
+msgstr ""
+
 msgid "prodos"
 msgstr "prodos"
 
@@ -6084,6 +6176,9 @@ msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
+
+msgid "second(s)"
+msgstr ""
 
 msgid "seconds"
 msgstr "Sekunden"
@@ -6105,6 +6200,15 @@ msgstr "upriv"
 
 msgid "week days"
 msgstr "Wochentagen"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "day"
+#~ msgstr "Tag"
+
+#~ msgid "Create"
+#~ msgstr "Erstellen"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Eine gültige Subnetz-Adressierung muss eingegeben werden."
@@ -6136,13 +6240,61 @@ msgstr "Wochentagen"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Ein gültiges Netzwerk muss angegeben werden."
 
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr ""
+#~ "Die Kombination aus dem Freigabe- sowie Arbeitsverzeichnis gibt es nicht."
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr ""
+#~ "Es könnte bei der Synchronisation zur Belegung von Speicherplatz in der "
+#~ "GröÃüenordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
+
+#~ msgid "Working Directory"
+#~ msgstr "Arbeitsverzeichnis"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "Hier werden die Arbeitsdaten abgelegt"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Lege Arbeitsverzeichnis an, falls es noch nicht existiert"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a "
+#~ "href=%s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
+
 #, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Letzte %d %s Logfileeinträge"
 
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr ""
+#~ "Die Konfiguration konnte nicht wiederhergestellt werden. (file upload error)."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Diese verschlüsselte Festplatte ist eingebunden (gemountet); vor dem "
+#~ "Entfernen ist diese zu entbinden (unmount)"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr ""
+#~ "Ein Paßwort ist zum Hinzufügen einer verschlüsselten Festplatte notwendig."
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "Name der verschlüsselten Festplatte"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr ""
 #~ "Netzwerk, welches zum Zugriff auf dieses iSCSI-target berechtigt ist."
+
+#~ msgid "Disk Name"
+#~ msgstr "Datenträgername"
+
+#~ msgid "built on"
+#~ msgstr "gebaut am"
 
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Sie müssen zuerst 'Extent'-Objekte definieren."
@@ -6170,6 +6322,11 @@ msgstr "Wochentagen"
 #~ "Es besteht aus einem oder mehreren Geräten und/oder einem oder mehreren "
 #~ "Extents."
 
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr ""
+#~ "Das Device ist noch gemountet! Unmounten Sie es zuerst, bevor Sie es "
+#~ "entfernen."
+
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
@@ -6177,6 +6334,12 @@ msgstr "Wochentagen"
 #~ msgstr ""
 #~ "Dateipfad (z. B. /mnt/sharename/extent/%s) oder Gerätename (z. B. /dev/ad1) "
 #~ "als extent nutzen."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Voller Kommandozeilenzugang für Benutzer!"
+
+#~ msgid "Shell access"
+#~ msgstr "Kommandozeilenzugang"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Lokal"

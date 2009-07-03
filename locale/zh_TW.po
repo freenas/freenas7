@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-11 22:27+0000\n"
+"POT-Creation-Date: 2009-07-03 22:58+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 19:49+0000\n"
+"X-Launchpad-Export-Date: 2009-07-03 23:38+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -114,9 +114,8 @@ msgstr ""
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+"href=%s>user</a> must have shell access."
 msgstr ""
-"Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -419,6 +418,12 @@ msgstr ""
 msgid "Aggregation protocol"
 msgstr ""
 
+msgid "Aggressive"
+msgstr ""
+
+msgid "Albanian"
+msgstr ""
+
 msgid "All"
 msgstr "全部"
 
@@ -595,6 +600,9 @@ msgstr "自動"
 msgid "AutoScale"
 msgstr "自動擴展"
 
+msgid "Autoselect"
+msgstr ""
+
 msgid "Auxiliary parameters"
 msgstr "附屬參數"
 
@@ -629,6 +637,9 @@ msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
+msgid "Best available"
+msgstr ""
+
 msgid "Bind DN"
 msgstr ""
 
@@ -643,6 +654,9 @@ msgstr ""
 
 msgid "Browseable"
 msgstr "提供瀏覽"
+
+msgid "Built on"
+msgstr ""
 
 msgid "Bulgarian"
 msgstr ""
@@ -861,9 +875,6 @@ msgstr ""
 msgid "Count"
 msgstr "次數"
 
-msgid "Create"
-msgstr "建立"
-
 msgid "Create and initialize RAID."
 msgstr "建立並初始 RAID。"
 
@@ -873,8 +884,8 @@ msgstr "建立加密磁碟"
 msgid "Create mask"
 msgstr "建立遮罩"
 
-msgid "Create work directory if it doesn't exist"
-msgstr "如果你還沒有工作目錄，請建立一個"
+msgid "Create work directory if it doesn't exist."
+msgstr ""
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -958,9 +969,6 @@ msgstr ""
 
 msgid "Datasets"
 msgstr ""
-
-msgid "Date"
-msgstr "日期"
 
 msgid "Date & Time"
 msgstr ""
@@ -1152,9 +1160,6 @@ msgstr "裝置 /dev/%s - %s"
 msgid "Device IP"
 msgstr "裝置 IP"
 
-msgid "Device is mounted, umount it first before detaching."
-msgstr "裝置已經掛載，移除之前請先卸載。"
-
 msgid "Device name"
 msgstr "裝置名稱"
 
@@ -1239,9 +1244,6 @@ msgstr ""
 
 msgid "Disk"
 msgstr "磁碟"
-
-msgid "Disk Name"
-msgstr "磁碟名稱"
 
 msgid "Disk space usage"
 msgstr "磁碟空間"
@@ -1404,6 +1406,9 @@ msgid ""
 msgstr ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
+
+msgid "Donate"
+msgstr ""
 
 msgid "Done"
 msgstr "完成"
@@ -1693,9 +1698,6 @@ msgstr ""
 msgid "Encrypted"
 msgstr ""
 
-msgid "Encrypted disk name"
-msgstr "加密磁碟名稱"
-
 #, php-format
 msgid "Encrypting '%s'... Please wait"
 msgstr "正在加密 '%s'... 請稍待..."
@@ -1743,6 +1745,9 @@ msgstr "輸入 Trap 主機名稱。"
 
 msgid "Error"
 msgstr "錯誤"
+
+msgid "Error's"
+msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1876,6 +1881,9 @@ msgstr ""
 msgid "Failed to upload metadata backup file."
 msgstr "組態備份檔案上傳失敗。"
 
+msgid "Failed to write file to disk."
+msgstr ""
+
 msgid "Failed."
 msgstr "失敗"
 
@@ -1912,6 +1920,9 @@ msgstr "檔案系統"
 
 msgid "File system check"
 msgstr "檔案系統檢查"
+
+msgid "File upload stopped by extension."
+msgstr ""
 
 msgid "Filename"
 msgstr "檔案名稱"
@@ -1952,6 +1963,9 @@ msgstr "格式化"
 msgid "Format disk"
 msgstr "格式化磁碟"
 
+msgid "Format the report for phpBB forum."
+msgstr ""
+
 msgid "Forum"
 msgstr ""
 
@@ -1982,6 +1996,9 @@ msgstr "全名"
 msgid "GID"
 msgstr "GID"
 
+msgid "GPT partition"
+msgstr ""
+
 msgid "Gateway"
 msgstr "閘道"
 
@@ -1994,14 +2011,14 @@ msgstr "一般"
 msgid "General Setup"
 msgstr "一般設定"
 
+msgid "Generate"
+msgstr ""
+
 msgid "German"
 msgstr ""
 
 msgid "GiB"
 msgstr ""
-
-msgid "Give full shell access to user."
-msgstr "授與使用者 shell 權限"
 
 msgid "Give only local users access to the web page."
 msgstr "只有本機使用者可以使用網頁伺服器。"
@@ -2050,6 +2067,9 @@ msgstr "HTTP Proxy"
 
 msgid "Hard disk standby time"
 msgstr "硬碟待命時間"
+
+msgid "Hardware:"
+msgstr ""
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2296,8 +2316,14 @@ msgstr "In"
 msgid "In most cases, 'public' is used here."
 msgstr "大多數的情況下，這裡會設定'public'"
 
+msgid "Include basic hardware information."
+msgstr ""
+
 msgid "Info"
 msgstr "資訊"
+
+msgid "Info:"
+msgstr ""
 
 msgid "Informal"
 msgstr "資訊"
@@ -2378,6 +2404,9 @@ msgstr "網路介面"
 
 msgid "Interval must be greater or equal than 10 seconds."
 msgstr "間隔必需大於等於 10 秒。"
+
+msgid "Invalid file format."
+msgstr ""
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2590,6 +2619,11 @@ msgstr "要分享檔案的位置。"
 msgid "Location where the content database file will be stored."
 msgstr "用來儲存內容資料庫檔案的位置。"
 
+#, php-format
+msgid ""
+"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgstr ""
+
 msgid "Log"
 msgstr ""
 
@@ -2616,6 +2650,9 @@ msgstr "雙向小寫名稱"
 
 msgid "MAC address"
 msgstr "MAC位置"
+
+msgid "MBR partition"
+msgstr ""
 
 msgid "MIB"
 msgstr "MIB"
@@ -2744,6 +2781,9 @@ msgid "Minutes between network time sync."
 msgstr "多少分鐘進行一次校時。"
 
 msgid "Mirror"
+msgstr ""
+
+msgid "Missing a temporary folder."
 msgstr ""
 
 msgid "Mode"
@@ -2911,6 +2951,9 @@ msgstr "尚未加入磁碟"
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgstr ""
+
+msgid "No file was uploaded."
 msgstr ""
 
 msgid "No pool was found."
@@ -3085,6 +3128,9 @@ msgstr "套件上傳失敗（記憶體不足？）"
 
 msgid "Packages"
 msgstr "套件"
+
+msgid "Painfully aggressive"
+msgstr ""
 
 msgid "Pairwise"
 msgstr ""
@@ -3406,6 +3452,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr "唯獨連線"
 
+msgid "Read from lowest load"
+msgstr ""
+
 msgid "Read only"
 msgstr "唯讀"
 
@@ -3472,6 +3521,12 @@ msgstr "遠端 syslog 伺服器"
 msgid "Remove all entries from ARP table"
 msgstr "移除所有ARP table內的項目"
 
+msgid "Report Generator"
+msgstr ""
+
+msgid "Report generator"
+msgstr ""
+
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
 "last report. Set to 0 to disable this report."
@@ -3528,6 +3583,9 @@ msgid "Root bind DN"
 msgstr ""
 
 msgid "Root bind password"
+msgstr ""
+
+msgid "Round-robin read"
 msgstr ""
 
 msgid "Roundrobin"
@@ -3778,8 +3836,8 @@ msgstr "分享區密碼不能夠超過 8 個字元。"
 msgid "Shares"
 msgstr "共享"
 
-msgid "Shell access"
-msgstr "Shell 權限"
+msgid "Shell"
+msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "反向顯示記錄資料(最新的在上面)"
@@ -3898,6 +3956,9 @@ msgid ""
 "defragmentation."
 msgstr "指定要用多少百分比的硬碟空間配置給一般使用者。注意將門檻降低會影響到磁碟效能。"
 
+msgid "Split request"
+msgstr ""
+
 msgid "Standard"
 msgstr "標準"
 
@@ -3913,6 +3974,9 @@ msgstr "進入待命時間"
 
 #, php-format
 msgid "Start scrub on '%s'."
+msgstr ""
+
+msgid "Static"
 msgstr ""
 
 msgid "Static Routes"
@@ -3955,6 +4019,9 @@ msgstr ""
 
 msgid "Subject"
 msgstr "主旨"
+
+msgid "Subject:"
+msgstr ""
 
 msgid "Subnet bit count"
 msgstr "網段遮罩位元數"
@@ -4292,17 +4359,15 @@ msgstr "變更已經套用。你必須<a href=%s>重新開機</a>以讓變更生
 msgid "The cleartext credentials with which to bind."
 msgstr ""
 
-msgid "The combination of share and working directory does not exist."
-msgstr "設定值內的分享/工作目錄不存在。"
-
 msgid "The command to be executed."
 msgstr "要執行的指令。"
 
-msgid "The configuration could not be restored (file upload error)."
-msgstr "無法回覆設定組態（檔案上傳錯誤）。"
-
 msgid "The configuration could not be restored."
 msgstr "無法回覆設定組態。"
+
+#, php-format
+msgid "The configuration could not be restored. %s"
+msgstr ""
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4371,6 +4436,12 @@ msgid ""
 "The driver used to communicate with your UPS. Get the list of available <a "
 "href='%s' target='_blank'>drivers</a>."
 msgstr "用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</a> 清單。"
+
+#, php-format
+msgid ""
+"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+"first before proceeding."
+msgstr ""
 
 msgid "The extent name already exists."
 msgstr ""
@@ -4597,14 +4668,35 @@ msgstr ""
 msgid "The unique user ID is already used."
 msgstr "這個 UID 已經被用過了。"
 
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+msgid ""
+"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "上傳之映像檔並不適用於這個系統"
+
+msgid "The user's login shell."
+msgstr ""
 
 msgid "The value of the variable."
 msgstr "變數的數值。"
 
 msgid "The volume must be detached before it can be deleted."
 msgstr "磁碟必需先移除才可以刪除。"
+
+msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
+msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "架構 RAID 1 最少要有兩個磁碟。"
@@ -4674,6 +4766,10 @@ msgstr ""
 
 #, php-format
 msgid "These parameters will be added to %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters will be added to [global] settings in %s."
 msgstr ""
 
 #, php-format
@@ -4757,9 +4853,6 @@ msgstr "這個磁碟已經加入過了。"
 
 msgid "This email has been send to validate your email configuration."
 msgstr "這個電子郵件會寄出以驗證您的電子郵件組態。"
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr "這個加密磁碟正在掛載中，在卸除之前請先將其卸載。"
 
 msgid "This extent is used."
 msgstr ""
@@ -5167,6 +5260,9 @@ msgstr "UPS"
 msgid "UPS disabled"
 msgstr "UPS 已停用"
 
+msgid "UPS goes on battery"
+msgstr ""
+
 msgid "UPS reaches low battery"
 msgstr ""
 
@@ -5265,6 +5361,12 @@ msgstr "使用 Windows 2000 之後新增的 64K 串流選項。"
 msgid "Use the specified NTP server."
 msgstr "使用指定的 NTP 伺服器。"
 
+#, php-format
+msgid ""
+"Use this option to override the default permission modes for newly created "
+"files (%s by default). "
+msgstr ""
+
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
 msgstr "設定目錄新增遮罩（預設為022）。"
@@ -5300,6 +5402,9 @@ msgstr "User ID"
 
 msgid "User full name."
 msgstr "使用者全名"
+
+msgid "User mask"
+msgstr ""
 
 msgid "User numeric id."
 msgstr "使用者數字 ID"
@@ -5413,9 +5518,6 @@ msgid ""
 "attempt to identify the remote username."
 msgstr ""
 
-msgid "Where the working files will be stored"
-msgstr "選擇工作檔案要儲存的位置"
-
 msgid "Where to save downloaded data."
 msgstr "要將下載的資料儲存於何處。"
 
@@ -5443,8 +5545,8 @@ msgstr ""
 "Workgroup the server will appear to be in when queried by clients (maximum "
 "15 characters)."
 
-msgid "Working Directory"
-msgstr "工作目錄"
+msgid "Working directory"
+msgstr ""
 
 msgid "Write"
 msgstr "寫入"
@@ -5491,12 +5593,9 @@ msgstr "請至少從 '%s' 選擇一個項目。"
 msgid "You may enter a description here for your reference."
 msgstr "可以加註必要的描述文字。"
 
-msgid "You may need enough space to duplicate all files being synced"
-msgstr "確定你有足夠的空間來複製所有要同步的檔案"
-
 #, php-format
 msgid ""
-"You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII "
+"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
 msgstr ""
 
@@ -5514,9 +5613,6 @@ msgstr "系統必須重新開機才能開啟韌體升級功能。"
 
 msgid "You must select at least one authentication method."
 msgstr "請至少選擇一種認證方式。"
-
-msgid "You must use a passphrase to attach an encrypted disk."
-msgstr "連結加密磁碟之前請輸入一個加密金鑰。"
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr "建議您使用 HTTPS 加密模式連接 WebGUI 來傳送加密金鑰。"
@@ -5539,9 +5635,6 @@ msgstr ""
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
-msgid "built on"
-msgstr "建立於"
-
 msgid "cachecnid"
 msgstr "cachecnid"
 
@@ -5554,8 +5647,8 @@ msgstr ""
 msgid "crlf"
 msgstr "crlf"
 
-msgid "day"
-msgstr "天"
+msgid "day(s)"
+msgstr ""
 
 msgid "days"
 msgstr "天"
@@ -5566,6 +5659,9 @@ msgstr "資料庫位置"
 #, php-format
 msgid "e.g. %s"
 msgstr "例：%s"
+
+msgid "hour(s)"
+msgstr ""
 
 msgid "hours"
 msgstr "小時"
@@ -5587,6 +5683,9 @@ msgstr "關閉 iSCSI 初始器"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "minute(s)"
+msgstr ""
 
 msgid "minutes"
 msgstr "分"
@@ -5627,6 +5726,9 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
+msgid "phpBB:"
+msgstr ""
+
 msgid "prodos"
 msgstr "prodos"
 
@@ -5635,6 +5737,9 @@ msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
+
+msgid "second(s)"
+msgstr ""
 
 msgid "seconds"
 msgstr "秒"
@@ -5656,6 +5761,15 @@ msgstr "upriv"
 
 msgid "week days"
 msgstr "平常日"
+
+#~ msgid "Date"
+#~ msgstr "日期"
+
+#~ msgid "day"
+#~ msgstr "天"
+
+#~ msgid "Create"
+#~ msgstr "建立"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "請輸入一個有效的network bit count。"
@@ -5687,12 +5801,52 @@ msgstr "平常日"
 #~ msgid "A valid network must be specified."
 #~ msgstr "必須指定一個有效的網域。"
 
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "設定值內的分享/工作目錄不存在。"
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr "確定你有足夠的空間來複製所有要同步的檔案"
+
+#~ msgid "Working Directory"
+#~ msgstr "工作目錄"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "選擇工作檔案要儲存的位置"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "如果你還沒有工作目錄，請建立一個"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
+
 #, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "最後 %d 筆 %s 記錄資料"
 
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr "無法回覆設定組態（檔案上傳錯誤）。"
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "這個加密磁碟正在掛載中，在卸除之前請先將其卸載。"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr "連結加密磁碟之前請輸入一個加密金鑰。"
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "加密磁碟名稱"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "設定可以使用iSCSI目標的網路區段"
+
+#~ msgid "Disk Name"
+#~ msgstr "磁碟名稱"
+
+#~ msgid "built on"
+#~ msgstr "建立於"
 
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "你必須先定義 Extent 物件。"
@@ -5719,11 +5873,20 @@ msgstr "平常日"
 #~ "At the highest level, a target is what is presented to the initiator, and is "
 #~ "made up of one or more devices, and/or one or more extents."
 
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "裝置已經掛載，移除之前請先卸載。"
+
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 #~ "used as extent."
 #~ msgstr "檔案路徑（例：/mnt/sharename/extent/%s）或是裝置名稱（例：/dev/ad1）將會視為 extent。"
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "授與使用者 shell 權限"
+
+#~ msgid "Shell access"
+#~ msgstr "Shell 權限"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"

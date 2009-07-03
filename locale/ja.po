@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-11 22:27+0000\n"
+"POT-Creation-Date: 2009-07-03 22:58+0000\n"
 "PO-Revision-Date: 2009-06-20 16:54+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-07-03 23:37+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -90,10 +90,8 @@ msgstr "方向"
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+"href=%s>user</a> must have shell access."
 msgstr ""
-"<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず，<a href=%s>ユーザ</a> "
-"は完全なシェルを有効にしなければなりません．"
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -400,6 +398,12 @@ msgstr ""
 msgid "Aggregation protocol"
 msgstr "アグリゲーションプロトコル"
 
+msgid "Aggressive"
+msgstr ""
+
+msgid "Albanian"
+msgstr ""
+
 msgid "All"
 msgstr "全て"
 
@@ -572,6 +576,9 @@ msgstr "オート"
 msgid "AutoScale"
 msgstr "オートスケール"
 
+msgid "Autoselect"
+msgstr ""
+
 msgid "Auxiliary parameters"
 msgstr "補助パラメータ"
 
@@ -606,6 +613,9 @@ msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
+msgid "Best available"
+msgstr ""
+
 msgid "Bind DN"
 msgstr "Bind DN"
 
@@ -620,6 +630,9 @@ msgstr ""
 
 msgid "Browseable"
 msgstr "ブラウズ可能"
+
+msgid "Built on"
+msgstr ""
 
 msgid "Bulgarian"
 msgstr "ブルガリア語"
@@ -843,9 +856,6 @@ msgstr ""
 msgid "Count"
 msgstr "カウント"
 
-msgid "Create"
-msgstr "作成"
-
 msgid "Create and initialize RAID."
 msgstr "RAIDの作成と初期化"
 
@@ -855,8 +865,8 @@ msgstr "暗号化ボリュームの作成"
 msgid "Create mask"
 msgstr "Create mask"
 
-msgid "Create work directory if it doesn't exist"
-msgstr "作業ディレクトリが存在しない場合は作成して下さい"
+msgid "Create work directory if it doesn't exist."
+msgstr ""
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -938,9 +948,6 @@ msgstr ""
 
 msgid "Datasets"
 msgstr ""
-
-msgid "Date"
-msgstr "日時"
 
 msgid "Date & Time"
 msgstr ""
@@ -1132,9 +1139,6 @@ msgstr "デバイス /dev/%s - %s"
 msgid "Device IP"
 msgstr "デバイスのIP"
 
-msgid "Device is mounted, umount it first before detaching."
-msgstr "デバイスはまだマウントされています．デバイスをデタッチするにはまず最初にアンマウントして下さい．"
-
 msgid "Device name"
 msgstr "デバイス名"
 
@@ -1218,9 +1222,6 @@ msgstr ""
 
 msgid "Disk"
 msgstr "ディスク"
-
-msgid "Disk Name"
-msgstr "ディスク名"
 
 msgid "Disk space usage"
 msgstr "ディスク使用率"
@@ -1382,6 +1383,9 @@ msgstr "MBR を消去しない (いくつかの RAID コントローラカード
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
 "automounting or volumes created by a preexec script."
+msgstr ""
+
+msgid "Donate"
 msgstr ""
 
 msgid "Done"
@@ -1669,9 +1673,6 @@ msgstr ""
 msgid "Encrypted"
 msgstr "暗号化"
 
-msgid "Encrypted disk name"
-msgstr "暗号化ディスク名"
-
 #, php-format
 msgid "Encrypting '%s'... Please wait"
 msgstr "'%s' を暗号化中です．お待ちください．"
@@ -1720,6 +1721,9 @@ msgstr "トラップホストを入力して下さい．"
 
 msgid "Error"
 msgstr "エラー"
+
+msgid "Error's"
+msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1855,6 +1859,9 @@ msgstr "ファイルのアップロードに失敗しました．"
 msgid "Failed to upload metadata backup file."
 msgstr "メタデータのバックアップファイルのアップロードに失敗しました．"
 
+msgid "Failed to write file to disk."
+msgstr ""
+
 msgid "Failed."
 msgstr "失敗．"
 
@@ -1891,6 +1898,9 @@ msgstr "ファイルシステム"
 
 msgid "File system check"
 msgstr "ファイルシステムチェック"
+
+msgid "File upload stopped by extension."
+msgstr ""
 
 msgid "Filename"
 msgstr "ファイル名"
@@ -1931,6 +1941,9 @@ msgstr "フォーマット"
 msgid "Format disk"
 msgstr "ディスクフォーマット"
 
+msgid "Format the report for phpBB forum."
+msgstr ""
+
 msgid "Forum"
 msgstr "フォーラム"
 
@@ -1961,6 +1974,9 @@ msgstr "フルネーム"
 msgid "GID"
 msgstr "グループ ID"
 
+msgid "GPT partition"
+msgstr ""
+
 msgid "Gateway"
 msgstr "ゲートウェイ"
 
@@ -1973,14 +1989,14 @@ msgstr "基本"
 msgid "General Setup"
 msgstr "基本設定"
 
+msgid "Generate"
+msgstr ""
+
 msgid "German"
 msgstr "ドイツ語"
 
 msgid "GiB"
 msgstr ""
-
-msgid "Give full shell access to user."
-msgstr "ユーザにシェルアクセスを許可します．"
 
 msgid "Give only local users access to the web page."
 msgstr "ローカルユーザのみにウェブページのアクセスを許可します．"
@@ -2029,6 +2045,9 @@ msgstr "HTTP プロキシ"
 
 msgid "Hard disk standby time"
 msgstr "ハードディスクスタンバイ時間"
+
+msgid "Hardware:"
+msgstr ""
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2280,8 +2299,14 @@ msgstr "入力"
 msgid "In most cases, 'public' is used here."
 msgstr "ほとんどの場合 'public' が使われます．"
 
+msgid "Include basic hardware information."
+msgstr ""
+
 msgid "Info"
 msgstr "情報"
+
+msgid "Info:"
+msgstr ""
 
 msgid "Informal"
 msgstr "インフォーマル"
@@ -2362,6 +2387,9 @@ msgstr "インタフェース"
 
 msgid "Interval must be greater or equal than 10 seconds."
 msgstr "10 秒以上の時間を指定してください．"
+
+msgid "Invalid file format."
+msgstr ""
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2574,6 +2602,11 @@ msgstr "共有ファイルの場所を指定します．"
 msgid "Location where the content database file will be stored."
 msgstr "コンテンツデータベースファイルが保存される場所を指定します．"
 
+#, php-format
+msgid ""
+"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgstr ""
+
 msgid "Log"
 msgstr "ログ"
 
@@ -2600,6 +2633,9 @@ msgstr "両方で名前を小文字化します"
 
 msgid "MAC address"
 msgstr "MAC アドレス"
+
+msgid "MBR partition"
+msgstr ""
 
 msgid "MIB"
 msgstr "MIB"
@@ -2728,6 +2764,9 @@ msgid "Minutes between network time sync."
 msgstr "NTP の時間更新間隔を指定して下さい．"
 
 msgid "Mirror"
+msgstr ""
+
+msgid "Missing a temporary folder."
 msgstr ""
 
 msgid "Mode"
@@ -2897,6 +2936,9 @@ msgstr "ディスクが設定されていません"
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgstr ""
+
+msgid "No file was uploaded."
 msgstr ""
 
 msgid "No pool was found."
@@ -3073,6 +3115,9 @@ msgstr "パッケージのアップロードに失敗しました．(メモリ�
 
 msgid "Packages"
 msgstr "パッケージ"
+
+msgid "Painfully aggressive"
+msgstr ""
 
 msgid "Pairwise"
 msgstr "ペア"
@@ -3398,6 +3443,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr "読込み専用アクセス"
 
+msgid "Read from lowest load"
+msgstr ""
+
 msgid "Read only"
 msgstr "読込み専用"
 
@@ -3464,6 +3512,12 @@ msgstr "リモート syslog サーバ"
 msgid "Remove all entries from ARP table"
 msgstr "ARP テーブルの全てのエントリを削除"
 
+msgid "Report Generator"
+msgstr ""
+
+msgid "Report generator"
+msgstr ""
+
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
 "last report. Set to 0 to disable this report."
@@ -3521,6 +3575,9 @@ msgstr "Root bind DN"
 
 msgid "Root bind password"
 msgstr "Root bind パスワード"
+
+msgid "Round-robin read"
+msgstr ""
 
 msgid "Roundrobin"
 msgstr "ラウンドロビン"
@@ -3773,8 +3830,8 @@ msgstr "共有パスワードは 8文字以内にしてください．"
 msgid "Shares"
 msgstr "共有"
 
-msgid "Shell access"
-msgstr "シェルアクセス"
+msgid "Shell"
+msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "逆順でログエントリを表示する (もっとも新しいエントリがトップ)"
@@ -3894,6 +3951,9 @@ msgid ""
 msgstr ""
 "通常のユーザが利用できない領域をパーセントで指定して下さい．しきい値を下げた場合，性能とフラグメント解消に悪影響が出る場合がある事に注意して下さい．"
 
+msgid "Split request"
+msgstr ""
+
 msgid "Standard"
 msgstr "標準"
 
@@ -3911,6 +3971,9 @@ msgstr "スタンバイ時間"
 
 #, php-format
 msgid "Start scrub on '%s'."
+msgstr ""
+
+msgid "Static"
 msgstr ""
 
 msgid "Static Routes"
@@ -3953,6 +4016,9 @@ msgstr ""
 
 msgid "Subject"
 msgstr "件名"
+
+msgid "Subject:"
+msgstr ""
 
 msgid "Subnet bit count"
 msgstr "サブネットビット数"
@@ -4292,17 +4358,15 @@ msgstr "変更は保存されました．変更を有効にするにはシステ
 msgid "The cleartext credentials with which to bind."
 msgstr "クリアテキスト証明書をを使用してバインドします．"
 
-msgid "The combination of share and working directory does not exist."
-msgstr "共有と作業ディレクトリの組み合わせが存在しません．"
-
 msgid "The command to be executed."
 msgstr "実行するコマンドを入力します．"
 
-msgid "The configuration could not be restored (file upload error)."
-msgstr "設定情報をリストアする事が出来ませんでした (ファイルアップロードエラー)．"
-
 msgid "The configuration could not be restored."
 msgstr "設定情報をリストアする事が出来ませんでした．"
+
+#, php-format
+msgid "The configuration could not be restored. %s"
+msgstr ""
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4373,6 +4437,12 @@ msgid ""
 msgstr ""
 "UPS と通信する為のドライバを指定します．使用可能な <a href='%s' target='_blank'>ドライバ</a> "
 "のリストを入手して下さい"
+
+#, php-format
+msgid ""
+"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+"first before proceeding."
+msgstr ""
 
 msgid "The extent name already exists."
 msgstr ""
@@ -4599,14 +4669,35 @@ msgstr "このルール番号は既に使用されています．"
 msgid "The unique user ID is already used."
 msgstr "このユーザ ID は既に使用されています．"
 
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+msgid ""
+"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "アップロードされたイメージファイルはこのプラットフォームの物ではありません．"
+
+msgid "The user's login shell."
+msgstr ""
 
 msgid "The value of the variable."
 msgstr "変数の値"
 
 msgid "The volume must be detached before it can be deleted."
 msgstr "ボリュームは削除する前に切り離しを行う必要があります．"
+
+msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
+msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "RAID1 ボリュームは 2つのディスクが必要です．"
@@ -4674,6 +4765,10 @@ msgstr ""
 
 #, php-format
 msgid "These parameters will be added to %s."
+msgstr ""
+
+#, php-format
+msgid "These parameters will be added to [global] settings in %s."
 msgstr ""
 
 #, php-format
@@ -4752,9 +4847,6 @@ msgstr "このディスクは既にディスクリストに存在しています
 
 msgid "This email has been send to validate your email configuration."
 msgstr "このメールは，メール設定が正しいかをチェックする為のテスト送信です．"
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr "この暗号化ディスクはマウントされています．取り外す前にアンマウントして下さい．"
 
 msgid "This extent is used."
 msgstr ""
@@ -5162,6 +5254,9 @@ msgstr "UPS"
 msgid "UPS disabled"
 msgstr "UPS は無効です"
 
+msgid "UPS goes on battery"
+msgstr ""
+
 msgid "UPS reaches low battery"
 msgstr "UPS のバッテリ残量が少なくなりました．"
 
@@ -5261,6 +5356,12 @@ msgstr "Windows 2000 より導入された 64k ストリーミングによる読
 msgid "Use the specified NTP server."
 msgstr "特定の NTP サーバを使用します．"
 
+#, php-format
+msgid ""
+"Use this option to override the default permission modes for newly created "
+"files (%s by default). "
+msgstr ""
+
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
 msgstr "ディレクトリの creation mask (デフォルトは 022) を上書きする際は，このオプションを使用します．"
@@ -5297,6 +5398,9 @@ msgstr "ユーザ ID"
 
 msgid "User full name."
 msgstr "ユーザのフルネーム．"
+
+msgid "User mask"
+msgstr ""
 
 msgid "User numeric id."
 msgstr "ユーザ ID の整数値"
@@ -5410,9 +5514,6 @@ msgid ""
 "attempt to identify the remote username."
 msgstr "クライアントが最初にサーバに接続する際，ident プロトコルはリモートのユーザ名の識別を試みます．"
 
-msgid "Where the working files will be stored"
-msgstr "作業ファイルが保存される場所"
-
 msgid "Where to save downloaded data."
 msgstr "ダウンロードしたデータを保存する場所"
 
@@ -5439,8 +5540,8 @@ msgid ""
 "15 characters)."
 msgstr "サーバがクライアントからのクエリによって表されるワークグループ名 (最大 15文字)．"
 
-msgid "Working Directory"
-msgstr "作業ディレクトリ"
+msgid "Working directory"
+msgstr ""
 
 msgid "Write"
 msgstr "書込み"
@@ -5489,12 +5590,9 @@ msgstr "'%s' の項目は最低1つは選択してください．"
 msgid "You may enter a description here for your reference."
 msgstr "参考の為の説明をここに入力できます．"
 
-msgid "You may need enough space to duplicate all files being synced"
-msgstr "同期する全てのファイルを複製する為に十分なスペースが必要かもしれません"
-
 #, php-format
 msgid ""
-"You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII "
+"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
 msgstr ""
 
@@ -5512,9 +5610,6 @@ msgstr "ファームウェアのアップデートの前にシステムをリブ
 
 msgid "You must select at least one authentication method."
 msgstr "少なくとも 1つの認証方法を選択して下さい．"
-
-msgid "You must use a passphrase to attach an encrypted disk."
-msgstr "暗号化ディスクを接続する為に，パスフレーズを使用する必要があります．"
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr "パスフレーズの送信には WebGUI プロトコルに HTTPS を使用すべきです．"
@@ -5537,9 +5632,6 @@ msgstr ""
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
-msgid "built on"
-msgstr "ビルトオン"
-
 msgid "cachecnid"
 msgstr ""
 
@@ -5552,8 +5644,8 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
-msgid "day"
-msgstr "日"
+msgid "day(s)"
+msgstr ""
 
 msgid "days"
 msgstr "日"
@@ -5564,6 +5656,9 @@ msgstr ""
 #, php-format
 msgid "e.g. %s"
 msgstr "例) %s"
+
+msgid "hour(s)"
+msgstr ""
 
 msgid "hours"
 msgstr "時"
@@ -5585,6 +5680,9 @@ msgstr "iSCSI イニシエータは無効です"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "minute(s)"
+msgstr ""
 
 msgid "minutes"
 msgstr "分"
@@ -5625,6 +5723,9 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
+msgid "phpBB:"
+msgstr ""
+
 msgid "prodos"
 msgstr "prodos"
 
@@ -5633,6 +5734,9 @@ msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "ブロックインタリーブパリティのローテーション"
+
+msgid "second(s)"
+msgstr ""
 
 msgid "seconds"
 msgstr "秒"
@@ -5654,6 +5758,15 @@ msgstr "upriv"
 
 msgid "week days"
 msgstr "週日"
+
+#~ msgid "Date"
+#~ msgstr "日時"
+
+#~ msgid "day"
+#~ msgstr "日"
+
+#~ msgid "Create"
+#~ msgstr "作成"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "有効なネットマスクを指定して下さい．"
@@ -5685,12 +5798,53 @@ msgstr "週日"
 #~ msgid "A valid network must be specified."
 #~ msgstr "有効なネットワークを指定して下さい．"
 
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "共有と作業ディレクトリの組み合わせが存在しません．"
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr "同期する全てのファイルを複製する為に十分なスペースが必要かもしれません"
+
+#~ msgid "Working Directory"
+#~ msgstr "作業ディレクトリ"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "作業ファイルが保存される場所"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "作業ディレクトリが存在しない場合は作成して下さい"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず，<a href=%s>ユーザ</a> "
+#~ "は完全なシェルを有効にしなければなりません．"
+
 #, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Last %d %s log entries"
 
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr "設定情報をリストアする事が出来ませんでした (ファイルアップロードエラー)．"
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "この暗号化ディスクはマウントされています．取り外す前にアンマウントして下さい．"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr "暗号化ディスクを接続する為に，パスフレーズを使用する必要があります．"
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "暗号化ディスク名"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "この iSCSI ターゲットに認可されているネットワーク．"
+
+#~ msgid "Disk Name"
+#~ msgstr "ディスク名"
+
+#~ msgid "built on"
+#~ msgstr "ビルトオン"
 
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "はじめにいくつかの 'エクステント' オブジェクトを定義して下さい．"
@@ -5714,12 +5868,21 @@ msgstr "週日"
 #~ "made up of one or more devices, and/or one or more extents."
 #~ msgstr "最も上のレベルで，ターゲットはイニシエータに提供されます．1つ以上のデバイス および/または 1つ以上のエクステントから構成されます．"
 
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "デバイスはまだマウントされています．デバイスをデタッチするにはまず最初にアンマウントして下さい．"
+
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 #~ "used as extent."
 #~ msgstr ""
 #~ "エクステントとして使用するファイルパス (例: /mnt/share/extent/%s) またはデバイス名 (例: /dev/ad1)．"
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "ユーザにシェルアクセスを許可します．"
+
+#~ msgid "Shell access"
+#~ msgstr "シェルアクセス"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC ローカル"

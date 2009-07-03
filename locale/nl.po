@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-11 22:27+0000\n"
-"PO-Revision-Date: 2009-06-20 19:02+0000\n"
+"POT-Creation-Date: 2009-07-03 22:58+0000\n"
+"PO-Revision-Date: 2009-07-01 22:30+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-07-03 23:36+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -27,10 +27,7 @@ msgstr ""
 "nieuwe IP adres</li></ul>"
 
 msgid "Create mask"
-msgstr "Creëer machtigingen"
-
-msgid "Create work directory if it doesn't exist"
-msgstr "Creëer een werkmap als deze nog niet bestaat"
+msgstr "Bestandsmachtigingen"
 
 msgid "Delete algorithm"
 msgstr "Algoritme verwijderen"
@@ -101,9 +98,6 @@ msgstr ""
 msgid "Unix Command"
 msgstr "Unix  Opdracht"
 
-msgid "Where the working files will be stored"
-msgstr "Plaats waar de werkbestanden bewaard zullen worden."
-
 msgid "dbpath"
 msgstr "dbpad"
 
@@ -123,7 +117,7 @@ msgstr "%d%% van %dMB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s maakt zich kenbaar als tijd server voor windows werkstations."
+msgstr "%s maakt zich kenbaar als tijdserver voor windows werkstations."
 
 #, php-format
 msgid "%s interface"
@@ -188,11 +182,8 @@ msgstr "<->"
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+"href=%s>user</a> must have shell access."
 msgstr ""
-"<a href=%s>SSHD</a> moet ingeschakeld zijn voor Unison kan werken, en de <a "
-"href=%s>gebruikers</a> moeten volledige Shell rechten ingeschakeld hebben "
-"staan."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -238,7 +229,7 @@ msgid ""
 "A Initiator Group contains authorised initiator names and networks to access "
 "the target."
 msgstr ""
-"Een Initiator Groep bevat geautoriseerde initiator namen en netwerken om "
+"Een Initiator Groep bevat geautoriseerde initiator-namen en netwerken om "
 "toegang te krijgen tot de doel."
 
 msgid ""
@@ -263,9 +254,9 @@ msgid ""
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
-"Een mappenlijst wordt gegenereerd zodra een map wordt opgevraagd en er geen "
-"index-bestand (index.php, index.html, index.htm of default.htm) wordt "
-"gevonden in die map."
+"Een folderlijst wordt gegenereerd zodra een folder wordt opgevraagd en er "
+"geen index-bestand (index.php, index.html, index.htm of default.htm) wordt "
+"gevonden in deze folder."
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
@@ -338,7 +329,7 @@ msgid "A valid systctl MIB value."
 msgstr "Een geldige systctl MIB waarde."
 
 msgid "AD authentication disabled"
-msgstr "AD Authenticatie uitgeschakeld"
+msgstr "AD verificatie uitgeschakeld"
 
 msgid "AD or PDC name."
 msgstr "AD of PDC naam."
@@ -371,7 +362,7 @@ msgid "Action"
 msgstr "Actie"
 
 msgid "Activate"
-msgstr "Activeer"
+msgstr "Activeren"
 
 msgid "Activate S.M.A.R.T. monitoring for this device."
 msgstr "Activeer S.M.A.R.T. controle voor deze harde schijf."
@@ -525,6 +516,12 @@ msgstr ""
 msgid "Aggregation protocol"
 msgstr "Protocol samenvoeging"
 
+msgid "Aggressive"
+msgstr "Agressief"
+
+msgid "Albanian"
+msgstr "Albanees"
+
 msgid "All"
 msgstr "Alle"
 
@@ -553,11 +550,12 @@ msgstr "Sta werkstations toe tot accounts met een leeg wachtwoord."
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr ""
-"Sta de werkstations toe om OS/2-stijl externe attributen op te slaan op een "
+"Sta werkstations toe om OS/2-stijl externe attributen op te slaan op een "
 "gedeeld station."
 
 msgid "Allow clients to resume interrupted uploads and downloads."
-msgstr "Sta toe dat cliënten onderbroken uploads/downloads kunnen hervatten."
+msgstr ""
+"Sta toe dat werkstations onderbroken uploads/downloads kunnen hervatten."
 
 msgid "Allow new files"
 msgstr "Nieuwe bestanden toelaten"
@@ -569,8 +567,8 @@ msgid ""
 "Allows  certain  users and groups to have read/write access to a share. This "
 "follows the allow option format."
 msgstr ""
-"Toestaan dat bepaalde gebruikers en groepen lees en schrijf rechten hebben "
-"op een gedeelde map. Dit werkt volgens de toegangs opties procedure."
+"Sta toe dat bepaalde gebruikers en groepen lees en schrijf rechten hebben op "
+"een gedeelde map. Dit werkt volgens de toegangs opties procedure."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
@@ -580,8 +578,8 @@ msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
 "follows the allow option format."
 msgstr ""
-"Toestaan dat bepaalde gebruikers en groepen alleen lees rechten hebben op "
-"een gedeelde map. Dit werkt volgens het toegangs opties procede."
+"Sta toe dat bepaalde gebruikers en groepen alleen lees rechten hebben op een "
+"gedeelde map. Dit werkt volgens het toegangs opties procede."
 
 msgid "AltRoot"
 msgstr "AltRoot"
@@ -699,10 +697,10 @@ msgid "Authenticate URL"
 msgstr "Authenticeer URL"
 
 msgid "Authentication"
-msgstr "Authenticatie"
+msgstr "Verificatie"
 
 msgid "Authentication method"
-msgstr "Authenticatie methode"
+msgstr "Verificatie methode"
 
 msgid "Authorised network"
 msgstr "Geautoriseerd netwerk"
@@ -716,11 +714,14 @@ msgstr "Automatisch"
 msgid "AutoScale"
 msgstr "AutoSchaal"
 
+msgid "Autoselect"
+msgstr "Selecteer automatisch"
+
 msgid "Auxiliary parameters"
 msgstr "Aanvullende parameters"
 
 msgid "Backup configuration"
-msgstr "Backup configuratie"
+msgstr "Backup Configuratie"
 
 msgid "Backup file"
 msgstr "Backup bestand"
@@ -751,6 +752,9 @@ msgid ""
 msgstr ""
 "De Basisnaam zal automatisch worden toegevoegt bij het starten zonder 'iqn.'."
 
+msgid "Best available"
+msgstr "Beste beschikbaar"
+
 msgid "Bind DN"
 msgstr "Bind DN"
 
@@ -765,6 +769,9 @@ msgstr "Wachttijd Schermbeveiliging"
 
 msgid "Browseable"
 msgstr "Verkenbaar"
+
+msgid "Built on"
+msgstr "Gecompileerd op"
 
 msgid "Bulgarian"
 msgstr "Bulgaars"
@@ -837,8 +844,8 @@ msgid ""
 "server."
 msgstr ""
 "Verzorgt dat de server netwerk informatie weegeeft voor het gespecificeerde "
-"IP adres of DNS hostnaam naar de cliënt, aangenomen zijnde dat het IP adres "
-"of DNS host werkzaam is als een NAT gateway of poort forwarder voor de "
+"IP adres of DNS hostnaam naar de werkstation, aangenomen zijnde dat het IP "
+"adres of DNS host werkzaam is als een NAT gateway of poort forwarder voor de "
 "server."
 
 msgid "Certificate"
@@ -895,13 +902,13 @@ msgstr ""
 "elders te bewaren. Het configuratiebestand wordt in XML formaat bewaard."
 
 msgid "Client"
-msgstr "Cliënt"
+msgstr "Werkstation"
 
 msgid "Client sees lowercase, server sees uppercase"
-msgstr "Cliënt ziet kleine letters, server ziet hoofdletters"
+msgstr "De werkstation ziet kleine letters, de server ziet hoofdletters"
 
 msgid "Client sees uppercase, server sees lowercase"
-msgstr "Cliënt ziet hoofdletters, server ziet kleine letters"
+msgstr "De werkstation ziet hoofdletters, de server ziet kleine letters"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Bezig met het ophalen van de data, Even geduld a.u.b."
@@ -916,7 +923,7 @@ msgid "Command"
 msgstr "Opdracht Uitvoeren"
 
 msgid "Command output:"
-msgstr "Opdracht uitvoer:"
+msgstr "Opdracht uitkomst:"
 
 msgid "Command scripts"
 msgstr "Opdracht scripts"
@@ -1007,14 +1014,14 @@ msgstr "Controleert of deze dataset kan worden gewijzigd."
 msgid "Count"
 msgstr "Aantal"
 
-msgid "Create"
-msgstr "Creëer"
-
 msgid "Create and initialize RAID."
 msgstr "Creëer en initialiseer RAID."
 
 msgid "Create encrypted volume"
 msgstr "Creëer versleuteld station"
+
+msgid "Create work directory if it doesn't exist."
+msgstr ""
 
 msgid "Creates the pool with an alternate root."
 msgstr "Creëer de pool met een alternatieve root."
@@ -1092,16 +1099,13 @@ msgid "Data integrity"
 msgstr "Data integriteit"
 
 msgid "Database directory"
-msgstr "Database map"
+msgstr "Database folder"
 
 msgid "Dataset"
 msgstr "Dataset"
 
 msgid "Datasets"
 msgstr "Datasetten"
-
-msgid "Date"
-msgstr "Datum"
 
 msgid "Date & Time"
 msgstr "Datum & Tijd"
@@ -1123,10 +1127,10 @@ msgid "Default user name is 'admin'."
 msgstr "De standaard gebruikersnaam is 'admin'."
 
 msgid "Define directories/URL's that require authentication."
-msgstr "Defineer mappen/URL'S die authenticatie vereisen."
+msgstr "Defineer mappen/URL'S die verificatie vereisen."
 
 msgid "Defines when the shutdown is initiated."
-msgstr "Geef aan wanneer het afsluiten in werking moet treden."
+msgstr "Geef hier aan wanneer het afsluiten in werking dient te treden."
 
 msgid "Delete"
 msgstr "Verwijderen"
@@ -1293,9 +1297,6 @@ msgstr "Schijf /dev/%s - %s"
 msgid "Device IP"
 msgstr "IP apparaat"
 
-msgid "Device is mounted, umount it first before detaching."
-msgstr "Apparaat is aangekoppeld, ontkoppel het eerst voor u het losneemt."
-
 msgid "Device name"
 msgstr "Apparaatnaam"
 
@@ -1339,10 +1340,10 @@ msgid "Directory"
 msgstr "Map"
 
 msgid "Directory listing"
-msgstr "Map lijst"
+msgstr "Folderlijst"
 
 msgid "Directory mask"
-msgstr "Mappen machtigingen"
+msgstr "Folder machtigingen"
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Map om in te kijken voor nieuwe .torrent bestanden."
@@ -1385,9 +1386,6 @@ msgstr "Ontdek Auth Methode"
 
 msgid "Disk"
 msgstr "Schijf"
-
-msgid "Disk Name"
-msgstr "Schijfnaam"
 
 msgid "Disk space usage"
 msgstr "Schijfruimte gebruik"
@@ -1517,18 +1515,18 @@ msgid "Do you really want to uninstall this package?"
 msgstr "Weet u zeker dat u dit pakket wilt deïnstalleren?"
 
 msgid "Document root"
-msgstr "Document map"
+msgstr "Webpagina folder"
 
 msgid "Document root of the webserver. Home of the web page files."
 msgstr ""
-"Document map van de webserver. De map waarin de webpagina bestanden geplaats "
-"worden."
+"Webpagina folder voor de webserver. Dit is de folder waarin u alle webpagina "
+"bestanden kunt plaatsen."
 
 msgid "Domain"
 msgstr "Domein"
 
 msgid "Domain controller name"
-msgstr "Domein beheerder naam"
+msgstr "Domeinbeheerder naam"
 
 msgid "Domain name"
 msgstr "Domein naam"
@@ -1564,6 +1562,9 @@ msgstr ""
 "nuttig bij het automatisch aankoppelen van volumes gecreeerd door een "
 "preexec script."
 
+msgid "Donate"
+msgstr "Donatie"
+
 msgid "Done"
 msgstr "Gereed"
 
@@ -1571,7 +1572,7 @@ msgid "Done."
 msgstr "Gereed."
 
 msgid "Dos charset"
-msgstr "Dos karakterset"
+msgstr "DOS karakterset"
 
 msgid "Double-parity RAID-5"
 msgstr "Dubbel-pariteit RAID-5"
@@ -1589,7 +1590,7 @@ msgid "Download directory"
 msgstr "Download folder"
 
 msgid "Download firewall rules."
-msgstr "Download de huidige firewall regels om deze als backup te bewaren."
+msgstr "Download de huidige firewallregels om deze als backup te bewaren."
 
 msgid "Driver"
 msgstr "Stuurprogramma"
@@ -1721,7 +1722,7 @@ msgid "Enable NTP"
 msgstr "Inschakelen NTP"
 
 msgid "Enable SMTP authentication."
-msgstr "Inchakelen SMTP authenticatie."
+msgstr "Inchakelen SMTP verificatie."
 
 msgid "Enable TLS/SSL connections."
 msgstr "Inschakelen TLS/SSL verbindingen."
@@ -1735,7 +1736,7 @@ msgid "Enable anonymous bind."
 msgstr "Inschakelen anonieme koppeling."
 
 msgid "Enable authentication."
-msgstr "Inschakelen authentiecatie."
+msgstr "Inschakelen verificatie."
 
 msgid "Enable compression."
 msgstr "Inschakelen van compressie."
@@ -1772,13 +1773,13 @@ msgid "Enable guest access."
 msgstr "Inschakelen gast toegang."
 
 msgid "Enable keyboard-interactive authentication."
-msgstr "Inschakelen interactieve-toetsenbord authenticatie."
+msgstr "Inschakelen interactieve-toetsenbord verificatie."
 
 msgid "Enable large read/write"
 msgstr "Inschakelen groot lees/schrijf"
 
 msgid "Enable local user authentication."
-msgstr "Inschakelen lokale gebruikers authenticatie."
+msgstr "Inschakelen lokale gebruikers verificatie."
 
 msgid "Enable module listing."
 msgstr "Inschakelen modulenlijst."
@@ -1795,7 +1796,7 @@ msgid "Enable port forwarding via NAT-PMP or UPnP."
 msgstr "Inschakelen poort forwarding via NAT-PMP of UPnP."
 
 msgid "Enable proxy authentication."
-msgstr "Inschakelen proxy authenticatie."
+msgstr "Inschakelen proxy verificatie."
 
 msgid "Enable recycle bin"
 msgstr "Inschakelen prullenbak"
@@ -1816,7 +1817,7 @@ msgid "Enable store DOS attributes"
 msgstr "Inschakelen opslaan van DOS attributen."
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Inschakelen syslog'ing naar de externe syslog server"
+msgstr "Inschakelen syslog'ing naar een externe syslog server"
 
 msgid "Enable the ident protocol (RFC1413)."
 msgstr "Inschakelen van de ident protocol (RFC1413)."
@@ -1845,15 +1846,12 @@ msgstr "Ingeschakeld"
 msgid "Encrypted"
 msgstr "Versleuteld"
 
-msgid "Encrypted disk name"
-msgstr "Versleutelde schijf naam"
-
 #, php-format
 msgid "Encrypting '%s'... Please wait"
-msgstr "Versleutelen '%s'... Een ogenblik geduld"
+msgstr "Bezig met het versleutelen '%s'... Een ogenblik geduld"
 
 msgid "Encryption"
-msgstr "Versleutelen"
+msgstr "Versleuteling"
 
 msgid "Encryption algorithm"
 msgstr "Versleutelings algoritme"
@@ -1904,6 +1902,9 @@ msgstr "Vul de trap host naam in."
 
 msgid "Error"
 msgstr "Fout"
+
+msgid "Error's"
+msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1985,7 +1986,7 @@ msgid "FTP - Ban module"
 msgstr "FTP - Ban module"
 
 msgid "FTP - File transfer"
-msgstr "FTP - Bestands overdracht"
+msgstr "FTP - Bestandsoverdracht"
 
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
@@ -2007,7 +2008,7 @@ msgid ""
 "to the client asking for the transfer (insecure!)."
 msgstr ""
 "FXP laat bestandsoverdracht toe tussen twee externe servers zonder "
-"overdracht naar de cliënt die de overdracht aanvraagt (niet veilig!)."
+"overdracht naar de werkstation die de overdracht aanvraagt (niet veilig!)."
 
 msgid "Factory defaults"
 msgstr "Fabrieksinstellingen"
@@ -2049,6 +2050,9 @@ msgstr "Mislukt om de file te uploaden."
 msgid "Failed to upload metadata backup file."
 msgstr "Mislukt om de metadata backup bestand te uploaden."
 
+msgid "Failed to write file to disk."
+msgstr ""
+
 msgid "Failed."
 msgstr "Mislukt."
 
@@ -2062,10 +2066,10 @@ msgid "File Editor"
 msgstr "Bestands Editor"
 
 msgid "File Manager"
-msgstr "Bestands Manager"
+msgstr "Bestands Viewer"
 
 msgid "File Transfer Protocol"
-msgstr "Bestands Overdracht Protocol"
+msgstr "Bestandsoverdracht Protocol (FTP)"
 
 msgid "File not found"
 msgstr "Bestand niet gevonden"
@@ -2082,6 +2086,9 @@ msgstr "Bestandssysteem"
 
 msgid "File system check"
 msgstr "Bestandssysteem controle"
+
+msgid "File upload stopped by extension."
+msgstr ""
 
 msgid "Filename"
 msgstr "bestandsnaam"
@@ -2105,7 +2112,7 @@ msgid "Firmware version check"
 msgstr "Firmware Versie Controle"
 
 msgid "FirstBurstLength"
-msgstr "FirstBurstLength"
+msgstr "EersteBurstLengte"
 
 msgid "Flags"
 msgstr "Vlaggen"
@@ -2121,6 +2128,9 @@ msgstr "Formatteren"
 
 msgid "Format disk"
 msgstr "Formatteer harde schijf"
+
+msgid "Format the report for phpBB forum."
+msgstr ""
 
 msgid "Forum"
 msgstr "Forum"
@@ -2138,7 +2148,7 @@ msgid "Frequency"
 msgstr "Frequentie"
 
 msgid "From email"
-msgstr "Van E-mail"
+msgstr "E-mailadres"
 
 msgid "Fsck"
 msgstr "Fsck"
@@ -2152,6 +2162,9 @@ msgstr "Volledige naam"
 msgid "GID"
 msgstr "GID"
 
+msgid "GPT partition"
+msgstr "GPT partitie"
+
 msgid "Gateway"
 msgstr "Gateway"
 
@@ -2164,14 +2177,14 @@ msgstr "Algemeen"
 msgid "General Setup"
 msgstr "Algemene instellingen"
 
+msgid "Generate"
+msgstr ""
+
 msgid "German"
 msgstr "Duits"
 
 msgid "GiB"
 msgstr "GiB"
-
-msgid "Give full shell access to user."
-msgstr "Geef volledige shell rechten aan de gebruiker"
 
 msgid "Give only local users access to the web page."
 msgstr "Geef alleen lokale gebruikers toegang naar de web pagina."
@@ -2188,7 +2201,7 @@ msgstr "Grieks"
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
 "De begroetings banner getoond door de FTP server nadat de eerste verbinding "
-"tot stand komt."
+"tot stand is gekomen."
 
 msgid "Group"
 msgstr "Groep"
@@ -2223,11 +2236,14 @@ msgstr "HTTP Proxy"
 msgid "Hard disk standby time"
 msgstr "Standby tijd harde schijf"
 
+msgid "Hardware:"
+msgstr ""
+
 msgid "Header and Data digest"
-msgstr "Kop and Gegevens overzicht"
+msgstr "Hoofd and Gegevens overzicht"
 
 msgid "Header digest"
-msgstr "Kop overzicht"
+msgstr "Hoofd overzicht"
 
 msgid "Health"
 msgstr "Gezondheid"
@@ -2314,7 +2330,7 @@ msgid "I/O statistics"
 msgstr "I/O statistieken"
 
 msgid "I/O timeout in seconds (30 by default)."
-msgstr "I/O onderbreking in seconden (standaard 30)."
+msgstr "I/O onderbreking in seconden. (standaard 30)"
 
 msgid "IG"
 msgstr "IG"
@@ -2326,7 +2342,7 @@ msgid "IP address"
 msgstr "IP adres"
 
 msgid "IP address of remote syslog server"
-msgstr "IP adres van de externe syslog server"
+msgstr "Vul hier het IP adres in van de externe syslog server"
 
 #, php-format
 msgid ""
@@ -2397,8 +2413,8 @@ msgid ""
 "client from a portion of the host system filespace."
 msgstr ""
 "Als de standaard root is ingeschakeld, een chroot operatie wordt onmiddelijk "
-"uitgevoerd nadat een cliënt geautoriseerd is verklaart. Dit kan gebruikt "
-"worden om effectief de cliënt te isoleren van een stuk hostsysteem "
+"uitgevoerd nadat eenwerkstation geautoriseerd is verklaart. Dit kan gebruikt "
+"worden om effectief de werkstation te isoleren van een deel hostsysteem "
 "bestandsruimte."
 
 msgid ""
@@ -2409,7 +2425,7 @@ msgstr ""
 "Wanneer geactiveerd, gebruikt afpd de ID informatie die opgeslagen is in het "
 "AppleDouble V2 hoofdbestand om de database belasting omlaag te brengen. "
 "Gebruik deze optie niet wanneer de volume is aangepast door niet AFP "
-"Cliënten (NFS/SMB/lokaal)."
+"werkstations (NFS/SMB/lokaal)."
 
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
@@ -2478,7 +2494,7 @@ msgstr ""
 msgid ""
 "If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
-"Vul de gewenste naam in voor de toegang tot de WebGUI of laat de "
+"Vul hier de gewenste naam in voor de toegang tot de WebGUI of laat de "
 "vooringestelde naam staan."
 
 msgid "Image upload failed (out of memory?)"
@@ -2494,7 +2510,7 @@ msgid "Import disks used in configuration."
 msgstr "Importeer schijfen gebruikt in de configuratie."
 
 msgid "Import firewall rules."
-msgstr "Firewall regels importeren."
+msgstr "Firewallregels importeren."
 
 msgid "Import on-disk ZFS config"
 msgstr "Importeer op-schijf ZFS config"
@@ -2505,8 +2521,14 @@ msgstr "In"
 msgid "In most cases, 'public' is used here."
 msgstr "In de meeste gevallen, wordt 'publiek' hier gebruikt."
 
+msgid "Include basic hardware information."
+msgstr ""
+
 msgid "Info"
 msgstr "Info"
+
+msgid "Info:"
+msgstr ""
 
 msgid "Informal"
 msgstr "Informeel"
@@ -2552,8 +2574,7 @@ msgid "Initiator side secret. (for mutual CHAP autentication)"
 msgstr "Initiator zijde wachtwoord. (voor wederzijdse CHAP authenticatie)"
 
 msgid "Initiator side user name. (for mutual CHAP authentication)"
-msgstr ""
-"Initiator zijde gebruikersnaam. (voor wederzijdse CHAP authenticatie)"
+msgstr "Initiator zijde gebruikersnaam. (voor wederzijdse CHAP verificatie)"
 
 msgid "Initiators"
 msgstr "Initiators"
@@ -2591,6 +2612,9 @@ msgstr "Netwerkbeheer"
 msgid "Interval must be greater or equal than 10 seconds."
 msgstr "De interval moet groter of gelijk zijn aan 10 seconden."
 
+msgid "Invalid file format."
+msgstr ""
+
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Ongeldige blokgrootte! Het dient in het bereik %d tot %d te zijn."
@@ -2603,8 +2627,8 @@ msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
 msgstr ""
-"Het is onmogelijk om 'Alleen anonieme gebruikers' en 'Alleen lokale "
-"gebruikers' authenticatie tegelijk te activeren."
+"Het is niet mogelijk om 'Alleen anonieme gebruikers' en 'Alleen lokale "
+"gebruikers' verificatie tegelijk in te schakelen."
 
 msgid ""
 "It is not recommanded to import non healty pools nor virtual devices that "
@@ -2823,10 +2847,17 @@ msgstr ""
 "gebouw, Kamer xyz.'."
 
 msgid "Location of the files to share."
-msgstr "Locatie(s) van de bestanden om te delen."
+msgstr ""
+"U kunt hier de locatie(s) van de bestanden selecteren om deze gedeeld te "
+"laten worden."
 
 msgid "Location where the content database file will be stored."
-msgstr "Locatie waar de Fuppes database opgeslagen kan worden."
+msgstr "Locatie waar de inhoudsdatabase opgeslagen gaat worden."
+
+#, php-format
+msgid ""
+"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgstr ""
 
 msgid "Log"
 msgstr "Logboek"
@@ -2842,7 +2873,7 @@ msgid "Logical Unit Type mapped to LUN."
 msgstr "Logical Unit Type in kaart gebracht aan LUN."
 
 msgid "Login"
-msgstr "Aanmelden"
+msgstr "Inloggen"
 
 msgid "Login name of user."
 msgstr "Aanmeldnaam van de gebruiker."
@@ -2855,6 +2886,9 @@ msgstr "Lowercase namen in beide richtingen"
 
 msgid "MAC address"
 msgstr "MAC adres"
+
+msgid "MBR partition"
+msgstr "MBR partitie"
 
 msgid "MIB"
 msgstr "MIB"
@@ -2916,10 +2950,10 @@ msgid "Max. conn. per IP"
 msgstr "Max. verb. per IP"
 
 msgid "Max. connections"
-msgstr "Max. verbindingen"
+msgstr "Max. Verbindingen"
 
 msgid "Max. sessions"
-msgstr "Max. sessies"
+msgstr "Max. Sessies"
 
 msgid ""
 "Max. time-to-live (max. number of hops) used in outgoing probe packets."
@@ -2928,31 +2962,29 @@ msgstr ""
 "sonde pakketten."
 
 msgid "MaxBurstLength"
-msgstr "MaxBurstLength"
+msgstr "MaxBurstLengte"
 
 msgid "MaxRecvDataSegmentLength"
-msgstr "MaxRecvDataSegmentLength"
+msgstr "MaxrecvDataSegmentLengte"
 
 msgid "Maximum connections"
 msgstr "Maximaal aantal verbindingen"
 
 msgid "Maximum idle time in seconds."
-msgstr ""
-"De maximale rusttijd in seconden dat proftpd toestaat clienten verbonden te "
-"houden zonder data te ontvangen. 0 schakeld de timer in zijn geheel uit."
+msgstr "De maximale rusttijd in seconden."
 
 msgid "Maximum number of connections in each session (8 by default)."
-msgstr "Maximaal aantal aan verbindingen in elke sessie (standaard 8)."
+msgstr "Maximum aantal verbindingen in elke sessie. (standaard 8)"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
 "Maximaal aantal gelijktijdige verbindingen per IP adres (0 = ongelimiteerd)."
 
 msgid "Maximum number of sessions holding at same time (32 by default)."
-msgstr "Maximaal aantal sessies tegelijkertijd vast houden (standaard 32)."
+msgstr "Maximum aantal sessies tegelijkertijd vasthouden. (standaard 32)"
 
 msgid "Maximum number of simultaneous clients."
-msgstr "Maximaal aantal gelijktijdige gebruikers."
+msgstr "Maximaal aantal gelijktijdige werkstations."
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr ""
@@ -2993,6 +3025,9 @@ msgstr "Aantal minuten tussen de netwerk tijdsynchronisatie's."
 
 msgid "Mirror"
 msgstr "Mirror"
+
+msgid "Missing a temporary folder."
+msgstr ""
 
 msgid "Mode"
 msgstr "Mode"
@@ -3043,7 +3078,7 @@ msgid "Mutual CHAP"
 msgstr "Mutual CHAP"
 
 msgid "Mutual CHAP Users"
-msgstr "Mutual CHAP Users"
+msgstr "Mutual CHAP Gebruikers"
 
 msgid "NFS"
 msgstr "NFS"
@@ -3055,7 +3090,7 @@ msgid "NOPIN Interval"
 msgstr "NOPIN Interval"
 
 msgid "NOPIN sending interval in seconds (20 by default)."
-msgstr "NOPIN verzend interval in seconden (standaars 20)."
+msgstr "NOPIN verzend interval in seconden. (standaars 20)"
 
 msgid "NOT YET AVAILABLE"
 msgstr "NOG NIET BESCHIKBAAR"
@@ -3132,7 +3167,7 @@ msgid "No"
 msgstr "Nee"
 
 msgid "No RSYNC Client configured"
-msgstr "Geen RSYNC Cliënt geconfigureerd"
+msgstr "Geen RSYNC Werkstation geconfigureerd"
 
 msgid "No case folding"
 msgstr "Geen Upper ot Lower karakters veranderen"
@@ -3182,6 +3217,9 @@ msgstr "Geen schijf geconfigureerd"
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
 msgstr ""
 "Geen schijven beschikbaar. Voeg eerst een nieuwe <a href=%s>schijf</a> toe."
+
+msgid "No file was uploaded."
+msgstr ""
 
 msgid "No pool was found."
 msgstr "Er is geen pool gevonden."
@@ -3250,10 +3288,10 @@ msgid "Null passwords"
 msgstr "Lege wachtwoorden"
 
 msgid "Number of clients"
-msgstr "Aantal gebruikers"
+msgstr "Aantal werkstations"
 
 msgid "Number of log entries to show"
-msgstr "Het aantal logregels dat bijgehouden moet worden"
+msgstr "Vul hier het aantal logboekregels in dat bijgehouden dient te worden"
 
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr ""
@@ -3272,7 +3310,7 @@ msgid "ONLINE"
 msgstr "ONLINE"
 
 msgid "OS Version"
-msgstr "Besturingssysteem Versie"
+msgstr "Besturingssysteem versie"
 
 msgid "Object name"
 msgstr "Object naam"
@@ -3296,13 +3334,13 @@ msgid ""
 "Only allow anonymous users. Use this on a public FTP site with no remote FTP "
 "access to real accounts."
 msgstr ""
-"Alleen anonieme gebruikers toegestaan. Gebruik dit voor een openbare FTP "
-"site zonder remote FTP toegang naar echte accounts."
+"Alleen anonieme gebruikers toegestaan. Gebruik deze optie voor een openbare "
+"FTP site zonder remote FTP toegang naar echte accounts."
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr ""
-"Alleen geautoriseerde gebruikers toestaan. Anonieme aanmeldingen worden niet "
-"toegelaten."
+"Alleen geautoriseerde lokale gebruikers toestaan. Anonieme aanmeldingen "
+"worden niet toegelaten."
 
 #, php-format
 msgid ""
@@ -3329,10 +3367,10 @@ msgid "Out"
 msgstr "Uit"
 
 msgid "Outgoing SMTP mail server address, e.g. smtp.mycorp.com."
-msgstr "Uitgaande SMTP mailserver, bijv. smtp.mycorp.com."
+msgstr "Uitgaande SMTP mailserver, bijv. smtp.mijninternetprovider.nl."
 
 msgid "Outgoing mail server"
-msgstr "Uitgaande mailserver"
+msgstr "Server voor uitgaande e-mail (SMTP)"
 
 msgid "Overwrite already configured disks (only affects filesystem value)."
 msgstr ""
@@ -3358,7 +3396,7 @@ msgid "PPTP"
 msgstr "PPTP"
 
 msgid "PPTP clients"
-msgstr "PPTP Cliënten"
+msgstr "PPTP werkstations"
 
 msgid "PSK"
 msgstr "PSK"
@@ -3377,6 +3415,9 @@ msgstr "Pakket uploaden is mislukt (niet genoeg geheugen?)"
 
 msgid "Packages"
 msgstr "Pakketten"
+
+msgid "Painfully aggressive"
+msgstr "Moeizaam agressief"
 
 msgid "Pairwise"
 msgstr "Paargewijs"
@@ -3403,7 +3444,7 @@ msgid ""
 "65534, the IANA-registered ephemeral port range)."
 msgstr ""
 "Passieve poorten beperken het poort bereik waaruit de server kan kiezen voor "
-"het versturen van de PASV opdrachten naar de cliënten. De server zal een "
+"het versturen van de PASV opdrachten naar de werkstations. De server zal een "
 "willekeurig poort nummer kiezen binnen het opgegeven bereik tot een open "
 "poort gevonden is. De geselecteerde poorten mogen niet binnen het non-"
 "privileged bereik liggen (bijv. groter dan of gelijk aan poort 1024). Het is "
@@ -3418,13 +3459,13 @@ msgid "Passphrase don't match."
 msgstr "Het wachtwoordzin komt niet overeen."
 
 msgid "Password"
-msgstr "Nieuw wachtwoord"
+msgstr "Wachtwoord"
 
 msgid "Password (confirmed)"
 msgstr "Wachtwoord (bevestigd)"
 
 msgid "Password authentication"
-msgstr "Wachtwoord authenticatie"
+msgstr "Wachtwoord verificatie"
 
 msgid "Password don't match."
 msgstr "Het wachtwoord komt niet overeen."
@@ -3475,7 +3516,7 @@ msgid "Permit root login"
 msgstr "Root aanmeldingen toelaten"
 
 msgid "Permit to do SSH Tunneling."
-msgstr "Toelaten om SSH Tunneling te doen."
+msgstr "SSH Tunneling toelaten."
 
 msgid "Physical interface"
 msgstr "Fysieke netwerkkaart"
@@ -3500,7 +3541,7 @@ msgid "Polish"
 msgstr "Pools"
 
 msgid "Polling time"
-msgstr "Verzend tijd rapportage"
+msgstr "Verzendtijd rapportage"
 
 msgid "Pool"
 msgstr "Pool"
@@ -3530,7 +3571,8 @@ msgstr "Poort forwarding"
 
 #, php-format
 msgid "Port to listen for incoming peer connections. Default port is %d."
-msgstr "Luisterpoort voor binnenkomende peer connecties. Standaard poort %d."
+msgstr ""
+"Luisterpoort voor binnenkomende peer verbindingen. Standaard poort %d."
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Poort om op te luisteren. Standaard iTunes poort 3689."
@@ -3620,7 +3662,7 @@ msgid "Profile"
 msgstr "Profiel"
 
 msgid "Proto"
-msgstr "Proto"
+msgstr "Protocol"
 
 msgid "Protocol"
 msgstr "Protocol"
@@ -3629,7 +3671,7 @@ msgid "Provider"
 msgstr "Provider"
 
 msgid "Provides compatibility with Apple II clients."
-msgstr "Biedt compatibiliteit met Apple II cliënten."
+msgstr "Biedt compatibiliteit met Apple II werkstations."
 
 msgid "Proxy"
 msgstr "Proxy"
@@ -3675,7 +3717,7 @@ msgid "RSYNC"
 msgstr "RSYNC"
 
 msgid "RSYNC - Client"
-msgstr "RSYNC - Cliënt"
+msgstr "RSYNC - Werkstation"
 
 msgid "RSYNC - Local"
 msgstr "RSYNC - Lokaal"
@@ -3684,10 +3726,10 @@ msgid "RSYNC - Server"
 msgstr "RSYNC - Server"
 
 msgid "RSYNC Client"
-msgstr "RSYNC Cliënt"
+msgstr "RSYNC Werkstation"
 
 msgid "RSYNC Client informations"
-msgstr "RSYNC Cliënt Informatie"
+msgstr "RSYNC Werkstation informatie"
 
 msgid "RSYNC events"
 msgstr "RSYNC gebeurtenissen"
@@ -3706,6 +3748,9 @@ msgstr "Alleen Lezen  (ro)"
 
 msgid "Read Only Access"
 msgstr "Alleen-Lezen Toegang"
+
+msgid "Read from lowest load"
+msgstr "Lezen van de laagste belasting"
 
 msgid "Read only"
 msgstr "Alleen lezen"
@@ -3773,6 +3818,12 @@ msgstr "Externe syslog server"
 msgid "Remove all entries from ARP table"
 msgstr "Alle ARP regels verwijderen uit de tabel"
 
+msgid "Report Generator"
+msgstr ""
+
+msgid "Report generator"
+msgstr ""
+
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
 "last report. Set to 0 to disable this report."
@@ -3791,13 +3842,13 @@ msgid "Reports"
 msgstr "Rapporten"
 
 msgid "Require authentication."
-msgstr "Vereis authenticatie."
+msgstr "Vereis verificatie."
 
 msgid "Required"
 msgstr "Vereist"
 
 msgid "Rescan interval"
-msgstr "Rescan interval"
+msgstr "Opnieuw scannen interval"
 
 msgid "Resolve"
 msgstr "Omzetten"
@@ -3835,6 +3886,9 @@ msgstr "Root koppelings DN"
 
 msgid "Root bind password"
 msgstr "Root koppelings wachtwoord"
+
+msgid "Round-robin read"
+msgstr "Round-robin lezen"
 
 msgid "Roundrobin"
 msgstr "Roundrobin"
@@ -3920,11 +3974,11 @@ msgid ""
 "is disabled, a scan can still be forced from the status page of the "
 "administrative web interface."
 msgstr ""
-"Scan het file systeem elke N seconden om te kijken of er bestanden "
+"Scan het bestandssysteem elke X seconden om te kijken of er bestanden "
 "bijgekomen of verwijderd zijn. Vul 0 in om achtergrond scannen uit te "
-"schakelen. Als achtergrond scannen is uitgeschakeld kan een geforceerde scan "
-"nog steeds worden uitgevoerd via de status pagina van de administratieve web "
-"pagina."
+"schakelen. Als in de achtergrond scannen is uitgeschakeld kan een "
+"geforceerde scan nog steeds worden uitgevoerd via de status pagina van de "
+"administratieve WebGUI."
 
 msgid "Scan type"
 msgstr "Scan type"
@@ -3954,7 +4008,7 @@ msgid "Secure Shell"
 msgstr "Secure Shell"
 
 msgid "Security"
-msgstr "Beveiliging"
+msgstr "Versleutelde verbinding"
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "Selecteer een schijf dat is ingeschakeld voor S.M.A.R.T. controle."
@@ -4051,11 +4105,11 @@ msgid ""
 "transmitted on an interface. Not all interfaces support setting the MTU, and "
 "some interfaces have range restrictions."
 msgstr ""
-"Zet de maximale fysieke datapakketgrootte van de netwerkkaart naar N, "
+"Zet de maximale fysieke datapakketgrootte van de netwerkkaart naar X, "
 "standaard is netwerkaart specifiek. De MTU wordt gebruikt om de grootte van "
 "pakketten te beperken die via een netwerkkaart worden overgebracht. Niet "
-"alle netwerkkaarten ondersteunen het aanpassen van de MTU waarde, en sommige "
-"hebben een beperkt bereik."
+"alle netwerkkaarten ondersteunen het aanpassen van de MTU waarde, sommige "
+"netwerkkaarten hebben een te beperkt bereik."
 
 msgid "Sets an alternate mount point for the root dataset. Default is /mnt."
 msgstr ""
@@ -4072,7 +4126,7 @@ msgid ""
 "Sets the interval between disk checks to N seconds. The minimum allowed "
 "value is 10."
 msgstr ""
-"Geef hier de tijdsinterval op tussen de hardeschijf controle's in N "
+"Geef hier het tijdsinterval op tussen de hardeschijf controle's in X "
 "seconden. De minimum toegestane waarde is 10."
 
 msgid ""
@@ -4103,8 +4157,8 @@ msgstr "Gedeelde wachtwoorden mogen niet langer zijn dan 8 karakters."
 msgid "Shares"
 msgstr "Gedeelde mappen"
 
-msgid "Shell access"
-msgstr "Shell toegang"
+msgid "Shell"
+msgstr "Shell"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
@@ -4120,10 +4174,10 @@ msgid "Shutdown Time"
 msgstr "Uitschakel Tijd"
 
 msgid "Shutdown mode"
-msgstr "Systeem afsluit mode"
+msgstr "Systeem afsluitmodus"
 
 msgid "Shutdown timer"
-msgstr "Systeem afsluit timer"
+msgstr "Afsluit timer"
 
 msgid "Simple Network Management Protocol"
 msgstr "Simpel Netwerk Beheer Protocol"
@@ -4200,7 +4254,7 @@ msgid ""
 "Specifies the maximum permitted block size. The permitted range for this "
 "parameter is from 512 to 65464."
 msgstr ""
-"Geef de maximaal toegestane blok grootte op. Het toegestane bereik van deze "
+"Geef de maximale toegestane blokgrootte op. Het toegestane bereik van deze "
 "parameter is 512 tot 65464."
 
 msgid ""
@@ -4228,8 +4282,8 @@ msgstr "Geef de gebruikersnaam op waaronder deze service gaat draaien."
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
-"Sta toe of gebruikers mogen inloggen als supergebruiker, direct toegang tot "
-"de (root)."
+"Sta toe of gebruikers mogen inloggen als supergebruiker, dit geeft een "
+"directe toegang tot de (root)."
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
@@ -4239,6 +4293,9 @@ msgstr ""
 "Kies het percentage van ruimte die moet worden verborgen voor algemene "
 "gebruikers. Het verlagen van deze drempel kan een negatief effect hebben op "
 "de prestaties en auto-defragmentatie."
+
+msgid "Split request"
+msgstr "Aanvragen opsplitsen"
 
 msgid "Standard"
 msgstr "Standaard"
@@ -4259,6 +4316,9 @@ msgstr "Standby tijd"
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr "Start scrub op '%s'."
+
+msgid "Static"
+msgstr "Statisch"
 
 msgid "Static Routes"
 msgstr "Statische Routes"
@@ -4302,6 +4362,9 @@ msgstr "Stripe"
 
 msgid "Subject"
 msgstr "Onderwerp"
+
+msgid "Subject:"
+msgstr ""
 
 msgid "Subnet bit count"
 msgstr "Subnet bit telling"
@@ -4441,7 +4504,7 @@ msgstr "Doel zijde wachtwoord."
 
 msgid "Target side user name. It is usually the initiator name by default."
 msgstr ""
-"Doel zijde gebruikersnaam. Dit is gewoonlijk de initiator naam (standaard)."
+"Doel zijde gebruikersnaam. Dit is standaard gewoonlijk de initiator naam."
 
 msgid "Targets"
 msgstr "Doelen"
@@ -4453,12 +4516,11 @@ msgid "Temperature monitoring"
 msgstr "Temperatuur controle"
 
 msgid "Temporary directory"
-msgstr "Tijdelijke map"
+msgstr "Tijdelijke folder"
 
 msgid "Temporary directory to store transcoded files."
 msgstr ""
-"Locatie voor de gecodeerde bestanden, deze bestanden worden maar tijdelijk "
-"opgeslagen."
+"Locatie waar de tijdelijk gecodeerde bestanden kunnen worden opgeslagen."
 
 msgid "Test email"
 msgstr "Test e-mail"
@@ -4647,17 +4709,15 @@ msgstr ""
 msgid "The cleartext credentials with which to bind."
 msgstr "De cleartext credentials om mee te koppelen."
 
-msgid "The combination of share and working directory does not exist."
-msgstr "De combinatie van gedeelde map en werkmap bestaat niet."
-
 msgid "The command to be executed."
 msgstr "De opdracht die uitgevoerd moet worden."
 
-msgid "The configuration could not be restored (file upload error)."
-msgstr "De configuratie kon niet worden hersteld. (bestands upload fout)."
-
 msgid "The configuration could not be restored."
 msgstr "De configuratie kon niet worden hersteld."
+
+#, php-format
+msgid "The configuration could not be restored. %s"
+msgstr ""
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4739,8 +4799,14 @@ msgid ""
 "The driver used to communicate with your UPS. Get the list of available <a "
 "href='%s' target='_blank'>drivers</a>."
 msgstr ""
-"Het stuurprogramma dat gebruikt word om te communiceren met uw UPS. Bekijk "
+"Het stuurprogramma dat gebruikt wordt om te communiceren met uw UPS. Bekijk "
 "de lijst met beschikbare <a href='%s' target='_blank'>stuurprogramma's</a>."
+
+#, php-format
+msgid ""
+"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+"first before proceeding."
+msgstr ""
 
 msgid "The extent name already exists."
 msgstr "Deze extentie naam bestaat reeds."
@@ -4778,7 +4844,7 @@ msgid ""
 "initiator names and networks in specific Initiator Group."
 msgstr ""
 "De initiator kan toegang krijgen naar de doel via de portalen van "
-"geautoriseerde initiator namen en netwerken in de specifieke Initiator Groep."
+"geautoriseerde initiator-namen en netwerken in de specifieke Initiator Groep."
 
 msgid ""
 "The initiator can access to the target with correct user and secret in "
@@ -4799,10 +4865,10 @@ msgstr ""
 "specifieke Auth Groep ontdekken."
 
 msgid "The login name contains invalid characters."
-msgstr "De aanmeldnaam bevat ongeldige karakters."
+msgstr "De inlognaam bevat ongeldige karakters."
 
 msgid "The login name is a reserved login name."
-msgstr "De aanmeldnaam is een gereserveerde aanmeldnaam."
+msgstr "De inlognaam is een gereserveerde inlognaam."
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
@@ -4833,15 +4899,15 @@ msgid ""
 "The method can be accepted by the target. Auto means both none and "
 "authentication."
 msgstr ""
-"Deze methode kan geaccepteerd worden door het doel. Auto betekent beide niet "
-"en authenticatie."
+"Deze methode kan geaccepteerd worden door het doel. Auto betekent beide geen "
+"en verificatie."
 
 msgid ""
 "The method can be accepted in discovery session. Auto means both none and "
 "authentication."
 msgstr ""
 "Deze methode kan geaccepteerd worden in de ontdekkings sessie. Auto betekent "
-"beide niet en authenticatie."
+"beide geen en verificatie."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4869,7 +4935,7 @@ msgid "The network '%s' is invalid."
 msgstr "Het network '%s' is ongeldig."
 
 msgid "The number of clients must be between 1 and 50."
-msgstr "Het aantal cliënten moet tussen de 1 en 50 zijn."
+msgstr "Het aantal werkstations dient tussen de 1 en 50 te zijn."
 
 msgid "The old password is not correct."
 msgstr "Het oude wachtwoord is niet juist."
@@ -5002,8 +5068,23 @@ msgstr "De unieke regel nummer is reeds gebruikt."
 msgid "The unique user ID is already used."
 msgstr "De unieke gebruikers ID is reeds gebruikt."
 
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+msgid ""
+"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Het geuploade image bestand is niet geschikt voor dit platform"
+
+msgid "The user's login shell."
+msgstr "De gebruikers inlog shell."
 
 msgid "The value of the variable."
 msgstr "De waarde van de variabele."
@@ -5011,6 +5092,12 @@ msgstr "De waarde van de variabele."
 msgid "The volume must be detached before it can be deleted."
 msgstr ""
 "Het volume moet eerst losgekoppeld worden voordat het kan worden verwijderd."
+
+msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
+msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Er moeten minimaal 2 schijven zijn in een RAID 1 volume."
@@ -5053,7 +5140,7 @@ msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
 "to a running system."
 msgstr ""
-"Deze MIBs worden toegevoegd aan de /etc/sysctl.conf. Dit staat u toe om "
+"Deze MIB's worden toegevoegd aan  /etc/sysctl.conf. Dit staat u toe "
 "veranderingen aan een draaiend systeem aan te brengen."
 
 msgid ""
@@ -5086,6 +5173,10 @@ msgstr "Deze parameters zijn toegevoegd aan [Deelmap] de sectie van %s."
 #, php-format
 msgid "These parameters will be added to %s."
 msgstr "Deze parameters worden toegevoegd aan %s."
+
+#, php-format
+msgid "These parameters will be added to [global] settings in %s."
+msgstr ""
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -5152,7 +5243,7 @@ msgstr ""
 "Dit beheerd het geval van bestandnamen hoe die worden bekeken en opgeslagen."
 
 msgid "This controls the access a remote host has to this module."
-msgstr "Dit beheerd de toegang van een remote host naar deze module."
+msgstr "Dit beheerd de toegang een remote host heeft naar deze module."
 
 msgid "This controls the access to this share with an access password."
 msgstr ""
@@ -5187,11 +5278,6 @@ msgid "This email has been send to validate your email configuration."
 msgstr ""
 "Dit e-mail bericht is verzonden om uw email configuratie te valideren."
 
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr ""
-"De versleutelde schijf is aangekoppelt, ontkoppel de schijf eerst voor u hem "
-"loskoppeld."
-
 msgid "This extent is used."
 msgstr "Deze extentie is gebruikt."
 
@@ -5215,9 +5301,8 @@ msgid ""
 "This is both the name of the server as advertised via "
 "Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
-"Deze opgegeven servernaam wordt ook bekendgemaakt voor "
-"Zeroconf/Bonjour/Rendezvous, als ook de naam van de database die voor DAAP "
-"wordt geëxporteerd."
+"Deze servernaam wordt bekendgemaakt voor Zeroconf/Bonjour/Rendezvous, als "
+"ook de naam van de database die voor DAAP wordt geëxporteerd."
 
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr ""
@@ -5230,7 +5315,7 @@ msgid ""
 "levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
 "Dit kan het gebruik van de CPU's efficiënter maken en zorgt dat Samba "
-"sneller is. Samba schakelt dit uit voor werkstations die protocol niveaus "
+"sneller werkt. Samba schakelt dit uit voor werkstations die protocol niveaus "
 "gebruiken voor NT LM 0.12, en als Samba detecteert dat een werkstation "
 "windows 9.x gebruikt."
 
@@ -5292,8 +5377,8 @@ msgid ""
 "hidden modules."
 msgstr ""
 "Deze optie bepaalt of deze module zou moeten worden vermeld wanneer de "
-"cliënt om een lijst van beschikbare modules vraagt. Door dit als vals te "
-"plaatsen kunt u verborgen modules tot stand brengen."
+"werkstation om een lijst van beschikbare modules vraagt. Door dit als vals "
+"te plaatsen kunt u verborgen modules tot stand brengen."
 
 msgid ""
 "This option is a comma, space, or tab delimited set of host which are NOT "
@@ -5482,7 +5567,7 @@ msgid "Time interval"
 msgstr "Tijdsinterval"
 
 msgid "Time server"
-msgstr "Tijd server"
+msgstr "Tijdserver"
 
 msgid "Time update interval"
 msgstr "Tijd update interval"
@@ -5510,9 +5595,9 @@ msgstr ""
 "Initiator Groep en de Extentie toe te voegen. <br/> Portaal Groep, die wordt "
 "aangeduid met een markeringsnummer definieert IP-adressen en TCP luister "
 "poorten. <br/> Initiator Groep, die wordt aangeduid met een markeringsnummer "
-"definieert geautoriseerde initiator namen en netwerken. <br/> Auth Groep, "
+"definieert geautoriseerde initiator-namen en netwerken. <br/> Auth Groep, "
 "die wordt aangeduid met een markeringsnummer en is optioneel als het doel "
-"CHAP authenticatie niet gebruikt definieert geautoriseerde gebruikers en "
+"CHAP verificatie niet gebruikt definieert geautoriseerde gebruikers en "
 "wachtwoorden voor extra beveiliging. <br/> Extenties definiëren het "
 "opslaggebied van de doel."
 
@@ -5535,7 +5620,7 @@ msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
-"Voor gedetailleerde informatie hoe u een firewall regel kunt maken, bekijkt "
+"Voor gedetailleerde informatie hoe u een firewallregels kunt maken, bekijkt "
 "u de FreeBSD <a href='%s' target='_blank'>documentatie</a>."
 
 #, php-format
@@ -5547,7 +5632,7 @@ msgid ""
 msgstr ""
 "Om de CIFS snelheid te verhogen kunt u het volgende proberen:<div "
 "id='enumeration'><ul><li>Inschakelen van de 'Groot lees/schrijf' "
-"optie</li><li>Inschakelen '<a href='%s'>Optimalisatie</a>' "
+"optie</li><li>Inschakelen van de '<a href='%s'>Optimalisatie</a>' "
 "optie</li><li>Verhogen van de <a href='%s'>MTU</a></li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
@@ -5561,12 +5646,12 @@ msgid ""
 ">System</li></ul></div>"
 msgstr ""
 "Om de Active Directory te gebruiken zal de CIFS/SMB service ook ingeschakeld "
-"worden. De volgende services gebruiken AD authenticatie::<div "
+"worden. De volgende services gebruiken AD verificatie:<div "
 "id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
 ">Systeem</li></ul></div>"
 
 msgid "Tolerated"
-msgstr "Toegestaan"
+msgstr "Toelaten"
 
 msgid "Tools"
 msgstr "Hulpmiddelen"
@@ -5594,7 +5679,7 @@ msgid "Traffic graph"
 msgstr "Netwerk grafiek"
 
 msgid "Transcoding"
-msgstr "Hercoderen"
+msgstr "Hercodering"
 
 msgid "Transfer mode"
 msgstr "Overdracht mode"
@@ -5627,7 +5712,7 @@ msgid "Tuning"
 msgstr "Optimalisatie"
 
 msgid "Turn the monitor to standby after N seconds."
-msgstr "Schakelt de monitor in de stand-by stand na N seconden."
+msgstr "Schakelt de monitor in de stand-by stand na X seconden."
 
 msgid "Type"
 msgstr "Type"
@@ -5671,6 +5756,9 @@ msgstr "UPS"
 msgid "UPS disabled"
 msgstr "UPS uitgeschakeld"
 
+msgid "UPS goes on battery"
+msgstr "UPS gaat over op batterij"
+
 msgid "UPS reaches low battery"
 msgstr "UPS heeft een laag batterij niveau bereikt."
 
@@ -5696,7 +5784,7 @@ msgid "Uninstall package"
 msgstr "Pakket deïnstalleren"
 
 msgid "Uninterruptible Power Supply"
-msgstr "Uninterruptible Power Supply"
+msgstr "Ononderbreekbare Stroomvoorziening (UPS)"
 
 msgid "Unison"
 msgstr "Unison"
@@ -5772,27 +5860,33 @@ msgstr ""
 msgid "Use the specified NTP server."
 msgstr "Na inschakeling kunt u gemachtigde NTP tijdservers configureren."
 
+#, php-format
+msgid ""
+"Use this option to override the default permission modes for newly created "
+"files (%s by default). "
+msgstr ""
+
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
 msgstr ""
-"Gebruik deze optie om de rechten in te stellen voor mappen die aangemaakt "
+"Gebruik deze optie om de rechten in te stellen op de folders die aangemaakt "
 "worden (standaard 022)."
 
 msgid ""
 "Use this option to override the directory creation mask (0777 by default)."
 msgstr ""
-"Gebruik deze optie om de rechten in te stellen voor mappen die aangemaakt "
+"Gebruik deze optie om de rechten in te stellen op de folders die aangemaakt "
 "worden (standaard 0777)."
 
 msgid "Use this option to override the file creation mask (0666 by default)."
 msgstr ""
-"Gebruik deze optie om de rechten in te stellen voor bestanden die aangemaakt "
-"worden (standaard 0666)."
+"Gebruik deze optie om de rechten in te stellen op de bestanden die "
+"aangemaakt worden (standaard 0666)."
 
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
-"Gebruik deze optie om de rechten in te stellen voor bestanden die aangemaakt "
-"worden (standaard 077)."
+"Gebruik deze optie om de rechten in te stellen op de bestanden die "
+"aangemaakt worden (standaard 077)."
 
 msgid ""
 "Use this option to override the username ('ftp' by default) which will be "
@@ -5802,10 +5896,11 @@ msgid ""
 "require a valid login."
 msgstr ""
 "Gebruik deze instelling om de gebruikersnaam (standaard 'ftp') te "
-"overbruggen, die wordt gebruikt voor toegang tot de service als gast. Deze "
-"bevoegdheden zijn beschikbaar voor alle werkstations die gebruik maken van "
-"de gast service. De gebruiker dient in het password bestand aanwezig te "
-"zijn, het behoeft geen geldig account te zijn."
+"overbruggen, die wordt gebruikt voor toegang tot de service als gast. Welke "
+"bevoegdheden deze gebruiker ook heeft zal beschikbaar zijn voor elk "
+"werkstation die verbinding maakt met de gast service. De gebruiker dient in "
+"het wachtwoord bestand aanwezig te zijn maar hoeft geen geldig wachtwoord te "
+"hebben."
 
 msgid "Used"
 msgstr "Gebruikt"
@@ -5818,6 +5913,9 @@ msgstr "Gebruiker ID"
 
 msgid "User full name."
 msgstr "De volledige naam van deze gebruiker."
+
+msgid "User mask"
+msgstr ""
 
 msgid "User numeric id."
 msgstr "Numerieke gebruikers id."
@@ -5832,7 +5930,7 @@ msgid "Username"
 msgstr "Gebruikersnaam"
 
 msgid "Username of a domain administrator account."
-msgstr "Gebruikersnaam van een domein beheerder account."
+msgstr "Gebruikersnaam van een domein beheerders account."
 
 msgid "Users"
 msgstr "Gebruikers"
@@ -5936,8 +6034,8 @@ msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
 msgstr ""
-"Wanneer de cliënt een verbinding maakt met de server wordt het ident "
-"protocol gebruikt om de remote gebruikersnaam te identificeren."
+"Wanneer een werkstation aanvankelijk verbinding maakt met de server wordt "
+"het ident protocol gebruikt om de remote gebruikersnaam te identificeren."
 
 msgid "Where to save downloaded data."
 msgstr "Folder waarin de gedownloade bestanden opgeslagen worden."
@@ -5969,8 +6067,8 @@ msgstr ""
 "De werkgroep waarin de server verschijnt voor de werkstations. (maximaal 15 "
 "tekens)."
 
-msgid "Working Directory"
-msgstr "Werkmap"
+msgid "Working directory"
+msgstr ""
 
 msgid "Write"
 msgstr "Schrijven"
@@ -6009,16 +6107,16 @@ msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
 "any other running process!"
 msgstr ""
-"Het is niet mogelijk een schijf te ontkoppelen, die gebruikt wordt door het "
-"wisselbestand, iSCSI-doel bestand of een draaiend proces."
+"Het is niet mogelijk een schijf te ontkoppelen die gebruikt wordt door het "
+"wisselbestand, een iSCSI-doel bestand of elk ander in werking zijnde proces!"
 
 #, php-format
 msgid ""
 "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
 "service to clients."
 msgstr ""
-"U moet <a href=%s>Zeroconf/Bonjour</a> activeren om deze service kenbaar te "
-"maken aan de werkstations."
+"U dient <a href=%s>Zeroconf/Bonjour</a> in te schakelen om deze service "
+"kenbaar te maken aan de werkstations."
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
@@ -6027,18 +6125,13 @@ msgstr "U moet tenminste 1 item selecteren voor '%s'."
 msgid "You may enter a description here for your reference."
 msgstr "Geef hier de omschrijving voor uw referentie."
 
-msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-"U heeft voldoende ruimte nodig om alle te synchroniseren bestanden te kunnen "
-"dupliceren"
-
 #, php-format
 msgid ""
-"You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII "
+"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
 msgstr ""
-"U kunt specificeren als SCSI INSTRUCTIE gegevens. Standaard leeg. (maximaal "
-"%d ASCII tekens)"
+"U kunt specificeren als SCSI INSTRUCTIE gegevens. Standaard leeg gelaten. "
+"(maximaal %d ASCII tekens)"
 
 msgid "You must add disks first."
 msgstr "U moet eerst de hardeschijven toevoegen."
@@ -6058,12 +6151,7 @@ msgstr ""
 "uitvoeren."
 
 msgid "You must select at least one authentication method."
-msgstr "U moet tenminste één authenticatie methode selecteren."
-
-msgid "You must use a passphrase to attach an encrypted disk."
-msgstr ""
-"U moet een wachtwoordzin gebruiken om een versleutelde schijf aan te "
-"koppelen."
+msgstr "U dient tenminste één verificatie methode te selecteren."
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
@@ -6088,9 +6176,6 @@ msgstr "ZFS dataset eigenschappen"
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
-msgid "built on"
-msgstr "gebouwd op"
-
 msgid "cachecnid"
 msgstr "cachecnid"
 
@@ -6103,11 +6188,14 @@ msgstr "cnidscheme"
 msgid "crlf"
 msgstr "crlf"
 
-msgid "day"
-msgstr "dag"
+msgid "day(s)"
+msgstr "dag(en)"
 
 msgid "days"
 msgstr "dagen"
+
+msgid "hour(s)"
+msgstr "(u)ur(en)"
 
 msgid "hours"
 msgstr "uren"
@@ -6119,16 +6207,19 @@ msgid "iSCSI Target"
 msgstr "iSCSI Doel"
 
 msgid "iSCSI initial parameter (262144 by default)."
-msgstr "iSCSI initiële parameter (standaard 262144)."
+msgstr "iSCSI initiële parameter. (standaard 262144)"
 
 msgid "iSCSI initial parameter (65536 by default)."
-msgstr "iSCSI initiële parameter (standaard 65536)."
+msgstr "iSCSI initiële parameter. (standaard 65536)"
 
 msgid "iSCSI initiator disabled"
 msgstr "iSCSI initiator uitgeschakeld"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "minute(s)"
+msgstr "minu(u)t(en)"
 
 msgid "minutes"
 msgstr "minuten"
@@ -6169,6 +6260,9 @@ msgstr "geen"
 msgid "nostat"
 msgstr "nostat"
 
+msgid "phpBB:"
+msgstr ""
+
 msgid "prodos"
 msgstr "prodos"
 
@@ -6177,6 +6271,9 @@ msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
+
+msgid "second(s)"
+msgstr "seconde(n)"
 
 msgid "seconds"
 msgstr "seconden"
@@ -6199,5 +6296,14 @@ msgstr "upriv"
 msgid "week days"
 msgstr "weekdagen"
 
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "day"
+#~ msgstr "dag"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
