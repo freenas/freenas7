@@ -9,8 +9,10 @@
 				re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
 				adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
 */
-	require("guiconfig.inc");
-	$pgtitle = array(gettext("Advanced"), gettext("Report generator"));
+require("auth.inc");
+require("guiconfig.inc");
+
+$pgtitle = array(gettext("Report generator"));
 ?>
 <?php include("fbegin.inc");?>
 <?php
@@ -23,7 +25,7 @@
 <script language="javascript">
 <!--
 // Function: Reset onClick (event handler)  . Resets form on reset button click event.
-	function Reset_onClick( form ) 
+	function Reset_onClick( form )
 	{
 		form.txtSubject.value = '';
 		form.txtError.value = '';
@@ -35,7 +37,7 @@
 </script>
 <style type="text/css">
 <!--
-	pre 
+	pre
 	{
 		border: 2px solid #435370;
 		background: #F0F0F0;
@@ -76,11 +78,11 @@
 		<td class="label" align="right"><?=gettext("Subject:");?></td>
 		<td class="text"><input id="txtSubject" name="txtSubject" type="text" size="123"  value="<?php echo $_POST['txtSubject']; ?>"'></input></td>
 	</tr>
-	<tr>	
+	<tr>
 		<td align="label"><?=gettext("Description");?></td>
 		<td class="text"><textarea id="txtDescription" name="txtDescription" type="text" rows="6" cols="77" wrap="on"><?=htmlspecialchars($_POST['txtDescription']);?></textarea></td>
 	</tr>
-	<tr>	
+	<tr>
 		<td align="label"><?=gettext("Error's");?></td>
 		<td class="text"><textarea id="txtError" name="txtError" type="text" rows="2" cols="77" wrap="on"><?=htmlspecialchars($_POST['txtError']);?></textarea></td>
 	</tr>
@@ -100,37 +102,38 @@
 		</td>
 	</tr>
   </table>
-<?php
-if (!isBlank($_POST['txtSubject']) && !isBlank($_POST['txtDescription'])) 
-	{
-		puts("<pre>");
-		require_once("functions.inc");
-		if(isset($_POST['chk_phpBB']))	//Format report for phpBB
-			{  
-				$hr	= "[hr]1[/hr]";		//Set horizontal line
-				$bs	= "[b]"; 			//Set bold start
-				$be	= "[/b]";			//Set bold end
-				$cs	= "[code]";			//Set code end
-				$ce	= "[/code]";		//Set code end
-			} 
-		print $sys_summary.$nl.$nl;
-		if(isset($_POST['chk_Hardware']))
-			{  
-			print $hw_info;
-			} 
-		print $hr.$nl.$nl.$bs."Subject:".$be.$nl.$_POST['txtSubject'].$hr;
-		print $nl.$nl.$bs."Description:".$be.$nl.$_POST['txtDescription'];
-		if (!isBlank($_POST['txtError'])) 
-			{
-			print $nl.$nl.$hr.$cs.$nl.$_POST['txtError'].$nl.$ce;
-			}
-		puts("</pre>");
-	}
-?>
+	<?php
+	if (!isBlank($_POST['txtSubject']) && !isBlank($_POST['txtDescription']))
+		{
+			puts("<pre>");
+			require_once("functions.inc");
+			if(isset($_POST['chk_phpBB']))	//Format report for phpBB
+				{
+					$hr	= "[hr]1[/hr]";		//Set horizontal line
+					$bs	= "[b]"; 			//Set bold start
+					$be	= "[/b]";			//Set bold end
+					$cs	= "[code]";			//Set code end
+					$ce	= "[/code]";		//Set code end
+				}
+			print $sys_summary.$nl.$nl;
+			if(isset($_POST['chk_Hardware']))
+				{
+				print $hw_info;
+				}
+			print $hr.$nl.$nl.$bs."Subject:".$be.$nl.$_POST['txtSubject'].$hr;
+			print $nl.$nl.$bs."Description:".$be.$nl.$_POST['txtDescription'];
+			if (!isBlank($_POST['txtError']))
+				{
+				print $nl.$nl.$hr.$cs.$nl.$_POST['txtError'].$nl.$ce;
+				}
+			puts("</pre>");
+		}
+	?>
+	<?php include("formend.inc");?>
 </form>
 <script language="JavaScript">
 <!--
-	document.forms[0].txtDescription.focus();
+document.forms[0].txtDescription.focus();
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
