@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-07-03 21:33+0000\n"
+"PO-Revision-Date: 2009-07-03 22:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -833,6 +833,9 @@ msgid "Datasets"
 msgstr ""
 
 msgid "Date & Time"
+msgstr ""
+
+msgid "Days"
 msgstr ""
 
 msgid "Debug"
@@ -1933,6 +1936,9 @@ msgstr ""
 msgid "Hot Spare"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr ""
 
@@ -2514,6 +2520,9 @@ msgstr ""
 msgid "Minimum performance, Minimum acoustic output"
 msgstr ""
 
+msgid "Minutes"
+msgstr ""
+
 msgid "Minutes between network time sync."
 msgstr ""
 
@@ -2539,6 +2548,9 @@ msgid "Module"
 msgstr ""
 
 msgid "Modules"
+msgstr ""
+
+msgid "Months"
 msgstr ""
 
 msgid "Mount Point"
@@ -2712,9 +2724,6 @@ msgid "Note: Ctrl-click (or command-click on the Mac) to select and deselect gro
 msgstr ""
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
-msgstr ""
-
-msgid "Note: Ctrl-click (or command-click on the Mac) to select or de-select minutes, hours, days and months."
 msgstr ""
 
 msgid "Nothing to synchronize"
@@ -3528,9 +3537,6 @@ msgstr ""
 msgid "Shutdown"
 msgstr ""
 
-msgid "Shutdown Time"
-msgstr ""
-
 msgid "Shutdown mode"
 msgstr ""
 
@@ -3729,7 +3735,7 @@ msgstr ""
 msgid "Switch to %s/s"
 msgstr ""
 
-msgid "Synchronization Time"
+msgid "Synchronization time"
 msgstr ""
 
 msgid "Synchronize"
@@ -4890,6 +4896,9 @@ msgstr ""
 msgid "Webserver"
 msgstr ""
 
+msgid "Week days"
+msgstr ""
+
 msgid "When a client initially connects to the server the ident protocol is used to attempt to identify the remote username."
 msgstr ""
 
@@ -5008,9 +5017,6 @@ msgstr ""
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr ""
-
 msgid "dbpath"
 msgstr ""
 
@@ -5019,9 +5025,6 @@ msgid "e.g. %s"
 msgstr ""
 
 msgid "hour(s)"
-msgstr ""
-
-msgid "hours"
 msgstr ""
 
 msgid "iSCSI Initiator"
@@ -5049,9 +5052,6 @@ msgid "minutes"
 msgstr ""
 
 msgid "mirroring"
-msgstr ""
-
-msgid "months"
 msgstr ""
 
 msgid "mount"
@@ -5115,7 +5115,4 @@ msgid "umount"
 msgstr ""
 
 msgid "upriv"
-msgstr ""
-
-msgid "week days"
 msgstr ""
