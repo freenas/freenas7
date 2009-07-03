@@ -63,9 +63,8 @@ if ($_POST) {
 
 	// Input validation.
 	$reqdfields = explode(" ", "disk action");
-	$reqdfieldsn = array(gettext("Disk Name"), gettext("Command"));
+	$reqdfieldsn = array(gettext("Disk"), gettext("Command"));
 
-	// Action = 'attach' => Check for a passphrase
 	if ($_POST['action'] === "attach") {
 		$reqdfields = array_merge($reqdfields, explode(" ", "passphrase"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Passphrase")));
@@ -73,13 +72,15 @@ if ($_POST) {
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	// Action = 'detach' => Check if device is mounted
-	if (($_POST['action'] === "detach") && (1 == disks_ismounted_ex($_POST['disk'], "devicespecialfile"))) {
-		$input_errors[] = sprintf(gettext("The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$_POST['disk']}&action=umount");
-	}
-
 	if (!$input_errors) {
 		$pconfig['do_action'] = true;
+
+		// Action = 'detach' => Check if device is mounted
+		if (($_POST['action'] === "detach") && (1 == disks_ismounted_ex($_POST['disk'], "devicespecialfile"))) {
+			$errormsg = sprintf(gettext("The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$_POST['disk']}&action=umount");
+			$pconfig['do_action'] = false;
+		}
+
 		$pconfig['action'] = $_POST['action'];
 		$pconfig['disk'] = $_POST['disk'];
 		$pconfig['oldpassphrase'] = $_POST['oldpassphrase'];
@@ -176,7 +177,7 @@ function action_change() {
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
             <td width="78%" class="vtable">
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
