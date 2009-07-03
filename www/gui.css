@@ -87,7 +87,7 @@ a {
 	border-bottom: 1px solid #999999;
 }
 .listr, .listrc, .listrd, .listrcd {
-	background-color: #FFFFFF;
+	background-color: #FCFCFC;
 	border-right: 1px solid #999999;
 	border-bottom: 1px solid #999999;
 	font-size: 11px;
@@ -147,7 +147,7 @@ a {
 	color: #000000;
 }
 .listlrns, .listlr, .listlrd {
-	background-color: #FFFFFF;
+	background-color: #FCFCFC;
 	border-right: 1px solid #999999;
 	border-bottom: 1px solid #999999;
 	border-left: 1px solid #999999;
