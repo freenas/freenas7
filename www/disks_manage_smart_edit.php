@@ -186,10 +186,10 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="4" cellspacing="0">
 								<tr>
-									<td class="listhdrlr"><?=gettext("hours");?></td>
-									<td class="listhdrr"><?=gettext("days");?></td>
-									<td class="listhdrr"><?=gettext("months");?></td>
-									<td class="listhdrr"><?=gettext("week days");?></td>
+									<td class="listhdrlr"><?=gettext("Hours");?></td>
+									<td class="listhdrr"><?=gettext("Days");?></td>
+									<td class="listhdrr"><?=gettext("Months");?></td>
+									<td class="listhdrr"><?=gettext("Week days");?></td>
 								</tr>
 								<tr>
 									<td class="listlr" valign=top>
