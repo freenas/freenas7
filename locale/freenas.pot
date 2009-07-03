@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-06-27 19:46+0000\n"
+"PO-Revision-Date: 2009-07-03 21:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgid "<->"
 msgstr ""
 
 #, php-format
-msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have shell access."
 msgstr ""
 
 msgid "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
@@ -747,9 +747,6 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-msgid "Create"
-msgstr ""
-
 msgid "Create and initialize RAID."
 msgstr ""
 
@@ -759,7 +756,7 @@ msgstr ""
 msgid "Create mask"
 msgstr ""
 
-msgid "Create work directory if it doesn't exist"
+msgid "Create work directory if it doesn't exist."
 msgstr ""
 
 msgid "Creates the pool with an alternate root."
@@ -1023,9 +1020,6 @@ msgstr ""
 msgid "Device IP"
 msgstr ""
 
-msgid "Device is mounted, umount it first before detaching."
-msgstr ""
-
 msgid "Device name"
 msgstr ""
 
@@ -1098,9 +1092,6 @@ msgid "Discovery Auth Method"
 msgstr ""
 
 msgid "Disk"
-msgstr ""
-
-msgid "Disk Name"
 msgstr ""
 
 msgid "Disk space usage"
@@ -1529,9 +1520,6 @@ msgstr ""
 msgid "Encrypted"
 msgstr ""
 
-msgid "Encrypted disk name"
-msgstr ""
-
 #, php-format
 msgid "Encrypting '%s'... Please wait"
 msgstr ""
@@ -1570,6 +1558,9 @@ msgid "Enter trap host name."
 msgstr ""
 
 msgid "Error"
+msgstr ""
+
+msgid "Error's"
 msgstr ""
 
 #, c-format
@@ -1694,6 +1685,9 @@ msgstr ""
 msgid "Failed to upload metadata backup file."
 msgstr ""
 
+msgid "Failed to write file to disk."
+msgstr ""
+
 msgid "Failed."
 msgstr ""
 
@@ -1729,6 +1723,9 @@ msgid "File system"
 msgstr ""
 
 msgid "File system check"
+msgstr ""
+
+msgid "File upload stopped by extension."
 msgstr ""
 
 msgid "Filename"
@@ -1768,6 +1765,9 @@ msgid "Format"
 msgstr ""
 
 msgid "Format disk"
+msgstr ""
+
+msgid "Format the report for phpBB forum."
 msgstr ""
 
 msgid "Forum"
@@ -1813,6 +1813,9 @@ msgid "General"
 msgstr ""
 
 msgid "General Setup"
+msgstr ""
+
+msgid "Generate"
 msgstr ""
 
 msgid "German"
@@ -1867,6 +1870,9 @@ msgid "HTTP Proxy"
 msgstr ""
 
 msgid "Hard disk standby time"
+msgstr ""
+
+msgid "Hardware:"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2070,7 +2076,13 @@ msgstr ""
 msgid "In most cases, 'public' is used here."
 msgstr ""
 
+msgid "Include basic hardware information."
+msgstr ""
+
 msgid "Info"
+msgstr ""
+
+msgid "Info:"
 msgstr ""
 
 msgid "Informal"
@@ -2149,6 +2161,9 @@ msgid "Interfaces"
 msgstr ""
 
 msgid "Interval must be greater or equal than 10 seconds."
+msgstr ""
+
+msgid "Invalid file format."
 msgstr ""
 
 #, php-format
@@ -2344,6 +2359,10 @@ msgstr ""
 msgid "Location where the content database file will be stored."
 msgstr ""
 
+#, php-format
+msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
+msgstr ""
+
 msgid "Log"
 msgstr ""
 
@@ -2501,6 +2520,9 @@ msgstr ""
 msgid "Mirror"
 msgstr ""
 
+msgid "Missing a temporary folder."
+msgstr ""
+
 msgid "Mode"
 msgstr ""
 
@@ -2654,6 +2676,9 @@ msgstr ""
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgstr ""
+
+msgid "No file was uploaded."
 msgstr ""
 
 msgid "No pool was found."
@@ -3197,6 +3222,12 @@ msgstr ""
 msgid "Remove all entries from ARP table"
 msgstr ""
 
+msgid "Report Generator"
+msgstr ""
+
+msgid "Report generator"
+msgstr ""
+
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr ""
 
@@ -3652,6 +3683,9 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
+msgid "Subject:"
+msgstr ""
+
 msgid "Subnet bit count"
 msgstr ""
 
@@ -3956,16 +3990,14 @@ msgstr ""
 msgid "The cleartext credentials with which to bind."
 msgstr ""
 
-msgid "The combination of share and working directory does not exist."
-msgstr ""
-
 msgid "The command to be executed."
 msgstr ""
 
-msgid "The configuration could not be restored (file upload error)."
+msgid "The configuration could not be restored."
 msgstr ""
 
-msgid "The configuration could not be restored."
+#, php-format
+msgid "The configuration could not be restored. %s"
 msgstr ""
 
 msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
@@ -4019,6 +4051,10 @@ msgstr ""
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr ""
+
+#, php-format
+msgid "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr ""
 
 msgid "The extent name already exists."
@@ -4205,6 +4241,15 @@ msgstr ""
 msgid "The unique user ID is already used."
 msgstr ""
 
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
+msgstr ""
+
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr ""
 
@@ -4215,6 +4260,12 @@ msgid "The value of the variable."
 msgstr ""
 
 msgid "The volume must be detached before it can be deleted."
+msgstr ""
+
+msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There is no error, the file uploaded with success."
 msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
@@ -4276,6 +4327,10 @@ msgid "These parameters will be added to %s."
 msgstr ""
 
 #, php-format
+msgid "These parameters will be added to [global] settings in %s."
+msgstr ""
+
+#, php-format
 msgid "These parameters will be added to global settings in %s."
 msgstr ""
 
@@ -4332,9 +4387,6 @@ msgid "This disk already exists in the disk list."
 msgstr ""
 
 msgid "This email has been send to validate your email configuration."
-msgstr ""
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 
 msgid "This extent is used."
@@ -4701,6 +4753,10 @@ msgstr ""
 msgid "Use the specified NTP server."
 msgstr ""
 
+#, php-format
+msgid "Use this option to override the default permission modes for newly created files (%s by default). "
+msgstr ""
+
 msgid "Use this option to override the directory creation mask (022 by default)."
 msgstr ""
 
@@ -4726,6 +4782,9 @@ msgid "User ID"
 msgstr ""
 
 msgid "User full name."
+msgstr ""
+
+msgid "User mask"
 msgstr ""
 
 msgid "User numeric id."
@@ -4834,9 +4893,6 @@ msgstr ""
 msgid "When a client initially connects to the server the ident protocol is used to attempt to identify the remote username."
 msgstr ""
 
-msgid "Where the working files will be stored"
-msgstr ""
-
 msgid "Where to save downloaded data."
 msgstr ""
 
@@ -4858,7 +4914,7 @@ msgstr ""
 msgid "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
 msgstr ""
 
-msgid "Working Directory"
+msgid "Working directory"
 msgstr ""
 
 msgid "Write"
@@ -4897,9 +4953,6 @@ msgstr ""
 msgid "You may enter a description here for your reference."
 msgstr ""
 
-msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-
 #, php-format
 msgid "You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"
 msgstr ""
@@ -4917,9 +4970,6 @@ msgid "You must reboot the system before you can upgrade the firmware."
 msgstr ""
 
 msgid "You must select at least one authentication method."
-msgstr ""
-
-msgid "You must use a passphrase to attach an encrypted disk."
 msgstr ""
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
@@ -5032,6 +5082,9 @@ msgid "none"
 msgstr ""
 
 msgid "nostat"
+msgstr ""
+
+msgid "phpBB:"
 msgstr ""
 
 msgid "prodos"
