@@ -64,16 +64,16 @@ if ($_POST) {
 
 	// Input validation.
 	$reqdfields = explode(" ", "disk action");
-	$reqdfieldsn = array(gettext("Disk Name"),gettext("Command"));
+	$reqdfieldsn = array(gettext("Disk Name"), gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$devicespecialfile = $_POST['disk']."s1";
-	if (disks_ismounted_ex($devicespecialfile ,"devicespecialfile") && ($_POST['action'] === "detach")) {
+	// Action = 'detach' => Check if device is mounted
+	if (($_POST['action'] === "detach") && (1 == disks_ismounted_ex($_POST['disk'], "devicespecialfile"))) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
 
-	// Check for a passphrase if 'attach' mode.
-	if (empty($_POST['passphrase']) && $_POST['action'] === "attach") {
+	// Action = 'attach' => Check for a passphrase
+	if (($_POST['action'] === "attach") && empty($_POST['passphrase'])) {
 		$input_errors[] = gettext("You must use a passphrase to attach an encrypted disk.");
 	}
 
@@ -246,13 +246,8 @@ function action_change() {
 				        break;
 
 				      case "detach":
-				      	// Check if disk is mounted.
-				      	if (disks_ismounted($mount)) {
-				      		echo gettext("Device is mounted, umount it first before detaching.") ."<br>";
-								} else {
-									$result = disks_geli_detach($geli['devicespecialfile'], true);
-									echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
-								}
+								$result = disks_geli_detach($geli['devicespecialfile'], true);
+								echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
 				        break;
 						}
 				    break;

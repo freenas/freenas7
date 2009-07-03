@@ -326,6 +326,9 @@ function disks_ismounted($mount)
 // Return 0 if not mounted, otherwise 1
 function disks_ismounted_ex($var,$key)
 {
+	if (empty($var))
+		return 0;
+
 	$result = 0;
 
 	// Get current mount list
