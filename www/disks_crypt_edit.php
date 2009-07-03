@@ -138,11 +138,17 @@ if (!isset($pconfig['do_action'])) {
 function ealgo_change() {
 	// Disable illegal values in 'Key length' selective list.
 	for (i = 0; i < document.iform.keylen.length; i++) {
-		document.iform.keylen.options[i].disabled = false;
-		if (document.iform.ealgo.value == "3DES" &&
-				document.iform.keylen.options[i].value == "256") {
-			document.iform.keylen.options[i].disabled = true;
+		var disabled = false;
+		switch (document.iform.ealgo.value) {
+		case "3DES":
+			disabled = (document.iform.keylen.options[i].value >= 256);
+			break;
+		case "AES":
+		case "Camellia":
+			disabled = (document.iform.keylen.options[i].value > 256);
+			break;
 		}
+		document.iform.keylen.options[i].disabled = disabled;
 	}
 
 	// Set key length to 'default' whether an illegal value is selected.
@@ -206,7 +212,7 @@ function ealgo_change() {
 					?>
 					<?php $options = array("AES" => "AES", "Blowfish" => "Blowfish", "Camellia" => "Camellia", "3DES" => "3DES");?>
 					<?php html_combobox("ealgo", gettext("Encryption algorithm"), $pconfig['ealgo'], $options, gettext("Encryption algorithm to use."), true, false, "ealgo_change()");?>
-					<?php $options = array("" => gettext("Default"), 128 => "128", 192 => "192", 256 => "256");?>
+					<?php $options = array("" => gettext("Default"), 128 => "128", 192 => "192", 256 => "256", 448 => "448");?>
 					<?php html_combobox("keylen", gettext("Key length"), $pconfig['keylen'], $options, gettext("Key length to use with the given cryptographic algorithm.") . " " . gettext("The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."), false);?>
 					<?php html_passwordconfbox("passphrase", "passphraseconf", gettext("Passphrase"), "", "", "", true);?>
 					<?php html_checkbox("init", gettext("Initialize"), $pconfig['init'] ? true : false, gettext("Initialize and encrypt disk."), gettext("This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."));?>

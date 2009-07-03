@@ -68,7 +68,7 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Disk Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$devicespecialfile = $_POST['disk']."s1";
+	$devicespecialfile = "{$_POST['disk']}s1";
 	if (disks_ismounted_ex($devicespecialfile ,"devicespecialfile") && ($_POST['action'] === "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
@@ -176,8 +176,8 @@ function action_change() {
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
-            <td class="vtable">
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
+            <td width="78%" class="vtable">
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_geli as $geliv):?>
@@ -188,20 +188,8 @@ function action_change() {
               </select>
             </td>
       		</tr>
-          <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-            <td class="vtable">
-							<select name="action" class="formfld" id="action" onchange="action_change()">
-                <option value="attach" <?php if ($pconfig['action'] === "attach") echo "selected"; ?>>attach</option>
-                <option value="detach" <?php if ($pconfig['action'] === "detach") echo "selected"; ?>>detach</option>
-								<option value="setkey" <?php if ($pconfig['action'] === "setkey") echo "selected"; ?>>setkey</option>
-                <option value="list" <?php if ($pconfig['action'] === "list") echo "selected"; ?>>list</option>
-                <option value="status" <?php if ($pconfig['action'] === "status") echo "selected"; ?>>status</option>
-                <option value="backup" <?php if ($pconfig['action'] === "backup") echo "selected"; ?>>backup</option>
-                <option value="restore" <?php if ($pconfig['action'] === "restore") echo "selected"; ?>>restore</option>
-							</select>
-            </td>
-          </tr>
+					<?php $options = array("attach" => "attach", "detach" => "detach", "setkey" => "setkey", "list" => "list", "status" => "status", "backup" => "backup", "restore" => "restore");?>
+					<?php html_combobox("action", gettext("Command"), $pconfig['action'], $options, "", true, false, "action_change()");?>
           <tr id="oldpassphrase_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Old passphrase"));?></td>
 						<td width="78%" class="vtable">
