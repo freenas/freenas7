@@ -182,16 +182,16 @@ function set_selected(name) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Schedule time");?></td>
 						<td width="78%" class="vtable">
-							<table width=100% border cellpadding="6" cellspacing="0">
+							<table width="100%" border="0" cellpadding="5" cellspacing="0">
 								<tr>
-									<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
-									<td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
-									<td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
-									<td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
-									<td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
+									<td class="listhdrlr"><?=gettext("minutes");?></td>
+									<td class="listhdrr"><?=gettext("hours");?></td>
+									<td class="listhdrr"><?=gettext("days");?></td>
+									<td class="listhdrr"><?=gettext("months");?></td>
+									<td class="listhdrr"><?=gettext("week days");?></td>
 								</tr>
-								<tr bgcolor=#cccccc>
-									<td valign=top>
+								<tr>
+									<td class="listlr">
 										<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked";?>>
 										<?=gettext("All");?><br>
 										<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked";?>>
@@ -237,7 +237,7 @@ function set_selected(name) {
 										</table>
 										<br>
 									</td>
-									<td valign=top>
+									<td class="listr" valign=top>
 										<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked";?>>
 										<?=gettext("All");?><br>
 										<input type="radio" name="all_hours" id="all_hours2" value="0" <?php if (1 != $pconfig['all_hours']) echo "checked";?>>
@@ -261,7 +261,7 @@ function set_selected(name) {
 											</tr>
 										</table>
 									</td>
-									<td valign=top>
+									<td class="listr" valign=top>
 										<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked";?>>
 										<?=gettext("All");?><br>
 										<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked";?>>
@@ -292,7 +292,7 @@ function set_selected(name) {
 											</tr>
 										</table>
 									</td>
-									<td valign=top>
+									<td class="listr" valign=top>
 										<input type="radio" name="all_months" id="all_months1" value="1" <?php if (1 == $pconfig['all_months']) echo "checked";?>>
 										<?=gettext("All");?><br>
 										<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked";?>>
@@ -309,7 +309,7 @@ function set_selected(name) {
 											</tr>
 										</table>
 									</td>
-									<td valign=top>
+									<td class="listr" valign=top>
 										<input type="radio" name="all_weekdays" id="all_weekdays1" value="1" <?php if (1 == $pconfig['all_weekdays']) echo "checked";?>>
 										<?=gettext("All");?><br>
 										<input type="radio" name="all_weekdays" id="all_weekdays2" value="0" <?php if (1 != $pconfig['all_weekdays']) echo "checked";?>>
@@ -327,12 +327,8 @@ function set_selected(name) {
 										</table>
 									</td>
 								</tr>
-								<tr bgcolor=#cccccc>
-									<td colspan=5>
-										<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?>
-									</td>
-								</tr>
 							</table>
+							<span class="vexpl"><?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?></span>
 						</td>
 					</tr>
 			  </table>
