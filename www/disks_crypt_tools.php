@@ -37,7 +37,7 @@
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
+$pgtitle = array(gettext("Disks"), gettext("Encryption"), gettext("Tools"));
 
 // Omit no-cache headers because it confuses IE with file downloads.
 $omit_nocacheheaders = true;
@@ -45,15 +45,13 @@ $omit_nocacheheaders = true;
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-array_sort_key($config['geli']['vdisk'], "devicespecialfile");
-
-$a_geli = &$config['geli']['vdisk'];
-
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
+$a_geli = &$config['geli']['vdisk'];
 
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
 $a_mount = &$config['mounts']['mount'];
 
 if ($config['system']['webgui']['protocol'] === "http") {
@@ -66,21 +64,21 @@ if ($_POST) {
 	// Input validation.
 	$reqdfields = explode(" ", "disk action");
 	$reqdfieldsn = array(gettext("Disk Name"), gettext("Command"));
-	
+
 	// Action = 'attach' => Check for a passphrase
 	if ($_POST['action'] === "attach") {
 		$reqdfields = array_merge($reqdfields, explode(" ", "passphrase"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Passphrase")));
-	}	
+	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// Action = 'detach' => Check if device is mounted
 	if (($_POST['action'] === "detach") && (1 == disks_ismounted_ex($_POST['disk'], "devicespecialfile"))) {
-		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
+		$input_errors[] = sprintf(gettext("The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$_POST['disk']}&action=umount");
 	}
 
-	if(!$input_errors) {
+	if (!$input_errors) {
 		$pconfig['do_action'] = true;
 		$pconfig['action'] = $_POST['action'];
 		$pconfig['disk'] = $_POST['disk'];
@@ -93,7 +91,7 @@ if ($_POST) {
 	}
 }
 
-if(!isset($pconfig['action'])) {
+if (!isset($pconfig['action'])) {
 	$pconfig['do_action'] = false;
 	$pconfig['action'] = "";
 	$pconfig['disk'] = "";
@@ -101,11 +99,11 @@ if(!isset($pconfig['action'])) {
 	$pconfig['passphrase'] = "";
 }
 
-if(isset($_GET['disk'])) {
+if (isset($_GET['disk'])) {
   $pconfig['disk'] = $_GET['disk'];
 }
 
-if(isset($_GET['action'])) {
+if (isset($_GET['action'])) {
   $pconfig['action'] = $_GET['action'];
 }
 
@@ -207,7 +205,7 @@ function action_change() {
 					<tr id="backupfile_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Backup file"));?></td>
 						<td width="78%" class="vtable">
-							<input name="backupfile" type="file" class="formfld" size="40"><br/>
+							<input name="backupfile" type="file" class="formfld" size="40"><br />
 							<span class="vexpl"><?=gettext("Restore metadata from the given file to the given provider.");?></span>
 						</td>
 					</tr>
@@ -216,61 +214,50 @@ function action_change() {
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
 				</div>
 				<?php if ($pconfig['do_action']) {
-				echo('<pre>');
-				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
-				ob_end_flush();
+					echo('<pre>');
+					echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+					ob_end_flush();
 
-				switch($pconfig['action']) {
-				  case "attach":
-				  case "detach":
-						// Search if a mount point use this GEOM Eli disk.
-						$cnid = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
-						if ($cnid !== FALSE) $mount = $a_mount[$cnid];
+					switch($pconfig['action']) {
+			  		case "attach":
+			        $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
+			        // When attaching the disk, then also mount it.
+							if (FALSE !== ($cnid = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk"))) {
+								echo("<br>" . gettext("Mounting device.") . "<br>");
+								echo((0 == disks_mount($a_mount[$cnid])) ? gettext("Successful.") : gettext("Failed."));
+							}
+			        break;
 
-						switch($pconfig['action']) {
-				  		case "attach":
-				        $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
-				        // When attaching the disk, then also mount it.
-								if ((0 == $result) && is_array($mount)) {
-									echo("<br>" . gettext("Mounting device.") . "<br>");
-									$result = disks_mount($mount);
-									echo((0 == $result) ? gettext("Successful.") : gettext("Failed."));
-								}
-				        break;
+			      case "detach":
+							$result = disks_geli_detach($geli['devicespecialfile'], true);
+							echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
+			        break;
 
-				      case "detach":
-								$result = disks_geli_detach($geli['devicespecialfile'], true);
-								echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
-				        break;
-						}
-				    break;
+						case "setkey":
+							disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
+					  	break;
 
-					case "setkey":
-						disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
-				  	break;
+					  case "list":
+					  	system("/sbin/geli list");
+					  	break;
 
-				  case "list":
-				  	system("/sbin/geli list");
-				  	break;
+					  case "status":
+					  	system("/sbin/geli status");
+					  	break;
 
-				  case "status":
-				  	system("/sbin/geli status");
-				  	break;
+					  case "restore":
+							$fn = "/var/tmp/{$geli['name']}.metadata";
+							if (file_exists($fn)) {
+					  		system("/sbin/geli restore -v {$fn} {$geli['devicespecialfile']}");
+					  		unlink($fn);
+					  	} else {
+					  		echo gettext("Failed to upload metadata backup file.");
+							}
+					  	break;
+					}
 
-				  case "restore":
-						$fn = "/var/tmp/{$geli['name']}.metadata";
-						if (file_exists($fn)) {
-				  		system("/sbin/geli restore -v {$fn} {$geli['devicespecialfile']}");
-				  		unlink($fn);
-				  	} else {
-				  		echo gettext("Failed to upload metadata backup file.");
-						}
-				  	break;
-				}
-
-				echo('</pre>');
-				}
-				?>
+					echo('</pre>');
+				}?>
 				<?php include("formend.inc");?>
 			</form>
 		</td>
