@@ -1,8 +1,8 @@
 #
 # GENERIC -- Generic kernel configuration file for FreeBSD/amd64
 #
-# For more information on this file, please read the handbook section on
-# Kernel Configuration Files:
+# For more information on this file, please read the config(5) manual page,
+# and/or the handbook section on Kernel Configuration Files:
 #
 #    http://www.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/kernelconfig-config.html
 #
@@ -16,11 +16,10 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.484.2.19.2.1 2009/04/15 03:14:26 kensmith Exp $
+# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.530 2009/07/02 18:24:37 ed Exp $
 
-machine		amd64
 cpu		HAMMER
-ident		FREENAS
+ident		GENERIC
 
 # To statically compile in device wiring instead of /boot/device.hints
 #hints		"GENERIC.hints"		# Default places to look for devices.
@@ -48,22 +47,27 @@ options 	PROCFS			# Process filesystem (requires PSEUDOFS)
 options 	PSEUDOFS		# Pseudo-filesystem framework
 options 	GEOM_PART_GPT		# GUID Partition Tables.
 options 	GEOM_LABEL		# Provides labelization
-options 	COMPAT_43TTY		# BSD 4.3 TTY compat [KEEP THIS!]
+options 	COMPAT_43TTY		# BSD 4.3 TTY compat (sgtty)
 options 	COMPAT_IA32		# Compatible with i386 binaries
 options 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
 options 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
 options 	COMPAT_FREEBSD6		# Compatible with FreeBSD6
+options 	COMPAT_FREEBSD7		# Compatible with FreeBSD7
 options 	SCSI_DELAY=5000		# Delay (in ms) before probing SCSI
 #options 	KTRACE			# ktrace(1) support
 #options 	STACK			# stack(9) support
 options 	SYSVSHM			# SYSV-style shared memory
 options 	SYSVMSG			# SYSV-style message queues
 options 	SYSVSEM			# SYSV-style semaphores
+options 	P1003_1B_SEMAPHORES	# POSIX-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
+options 	PRINTF_BUFR_SIZE=128	# Prevent printf output being interspersed.
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
-options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
-#options 	AUDIT			# Security event auditing
+options 	HWPMC_HOOKS		# Necessary kernel hooks for hwpmc(4)
+options 	AUDIT			# Security event auditing
+options 	MAC			# TrustedBSD MAC Framework
+options		FLOWTABLE		# per-cpu routing cache
 #options 	KDTRACE_FRAME		# Ensure frames are compiled in
 #options 	KDTRACE_HOOKS		# Kernel DTrace hooks
 
@@ -109,7 +113,6 @@ device		adv		# Advansys SCSI adapters
 device		adw		# Advansys wide SCSI adapters
 device		aic		# Adaptec 15[012]x SCSI adapters, AIC-6[23]60.
 device		bt		# Buslogic/Mylex MultiMaster SCSI adapters
-
 
 # SCSI peripherals
 device		scbus		# SCSI bus (required for SCSI)
@@ -165,7 +168,6 @@ device		pccard		# PC Card (16-bit) bus
 device		cardbus		# CardBus (32-bit) bus
 
 # Serial (COM) ports
-device		sio		# 8250, 16[45]50 based serial ports
 device		uart		# Generic UART driver
 
 # Parallel port
@@ -179,22 +181,24 @@ device		ppi		# Parallel port interface device
 # If you've got a "dumb" serial or parallel PCI card that is
 # supported by the puc(4) glue driver, uncomment the following
 # line to enable it (connects to sio, uart and/or ppc drivers):
-device		puc
+#device		puc
 
 # PCI Ethernet NICs.
 device		de		# DEC/Intel DC21x4x (``Tulip'')
 device		em		# Intel PRO/1000 Gigabit Ethernet Family
 device		igb		# Intel PRO/1000 PCIE Server Gigabit Family
-device		ixgb		# Intel PRO/10GbE Ethernet Card
 device		ixgbe		# Intel PRO/10GbE PCIE Ethernet Family
 device		le		# AMD Am7900 LANCE and Am79C9xx PCnet
+device		ti		# Alteon Networks Tigon I/II gigabit Ethernet
 device		txp		# 3Com 3cR990 (``Typhoon'')
 device		vx		# 3Com 3c590, 3c595 (``Vortex'')
 
 # PCI Ethernet NICs that use the common MII bus controller code.
 # NOTE: Be sure to keep the 'device miibus' line in order to use these NICs!
 device		miibus		# MII bus support
+device		ae		# Attansic/Atheros L2 FastEthernet
 device		age		# Attansic/Atheros L1 Gigabit Ethernet
+device		alc		# Atheros AR8131/AR8132 Ethernet
 device		ale		# Atheros AR8121/AR8113/AR8114 Ethernet
 device		bce		# Broadcom BCM5706/BCM5708 Gigabit Ethernet
 device		bfe		# Broadcom BCM440x 10/100 Ethernet
@@ -215,7 +219,7 @@ device		sf		# Adaptec AIC-6915 (``Starfire'')
 device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
 device		sk		# SysKonnect SK-984x & SK-982x gigabit Ethernet
 device		ste		# Sundance ST201 (D-Link DFE-550TX)
-device		ti		# Alteon Networks Tigon I/II gigabit Ethernet
+device		stge		# Sundance/Tamarack TC9021 gigabit Ethernet
 device		tl		# Texas Instruments ThunderLAN
 device		tx		# SMC EtherPower II (83c170 ``EPIC'')
 device		vge		# VIA VT612x gigabit Ethernet
@@ -239,14 +243,11 @@ device		wlan_wep	# 802.11 WEP support
 device		wlan_ccmp	# 802.11 CCMP support
 device		wlan_tkip	# 802.11 TKIP support
 device		wlan_amrr	# AMRR transmit rate control algorithm
-device		wlan_scan_ap	# 802.11 AP mode scanning
-device		wlan_scan_sta	# 802.11 STA mode scanning
 device		an		# Aironet 4500/4800 802.11 wireless NICs.
 device		ath		# Atheros pci/cardbus NIC's
-device		ath_hal		# Atheros HAL (Hardware Access Layer)
+device		ath_hal		# pci/cardbus chip support
 options		AH_SUPPORT_AR5416	# enable AR5416 tx/rx descriptors
 device		ath_rate_sample	# SampleRate tx rate control for ath
-device		awi		# BayStack 660 and others
 device		ral		# Ralink Technology RT2500 wireless NICs.
 device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
 
@@ -254,13 +255,11 @@ device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
 device		loop		# Network loopback
 device		random		# Entropy device
 device		ether		# Ethernet support
-#device		sl		# Kernel SLIP
-#device		ppp		# Kernel PPP
-#device		tun		# Packet tunnel.
-device		pty		# Pseudo-ttys (telnet etc)
+device		tun		# Packet tunnel.
+device		pty		# BSD-style compatibility pseudo ttys
 device		md		# Memory "disks"
-#device		gif		# IPv6 and IPv4 tunneling
-#device		faith		# IPv6-to-IPv4 relaying (translation)
+device		gif		# IPv6 and IPv4 tunneling
+device		faith		# IPv6-to-IPv4 relaying (translation)
 device		firmware	# firmware assist module
 
 # The `bpf' device enables the Berkeley Packet Filter.
@@ -274,20 +273,19 @@ device		ohci		# OHCI PCI->USB interface
 device		ehci		# EHCI PCI->USB interface (USB 2.0)
 device		usb		# USB Bus (required)
 #device		udbp		# USB Double Bulk Pipe devices
-device		ugen		# Generic
 device		uhid		# "Human Interface Devices"
 device		ukbd		# Keyboard
 device		ulpt		# Printer
 device		umass		# Disks/Mass storage - Requires scbus and da
 #device		ums		# Mouse
+device		rum		# Ralink Technology RT2501USB wireless NICs
+device		uath		# Atheros AR5523 wireless NICs
 device		ural		# Ralink Technology RT2500USB wireless NICs
+device		zyd		# ZyDAS zb1211/zb1211b wireless NICs
 #device		urio		# Diamond Rio 500 MP3 player
-#device		uscanner	# Scanners
 # USB Serial devices
-device		ucom		# Generic com ttys
 device		uark		# Technologies ARK3116 based serial adapters
 device		ubsa		# Belkin F5U103 and compatible serial adapters
-device		ubser		# BWCT console serial adapters
 device		uftdi		# For FTDI usb serial adapters
 device		uipaq		# Some WinCE based devices
 device		uplcom		# Prolific PL-2303 serial adapters
@@ -301,6 +299,7 @@ device		cdce		# Generic USB over Ethernet
 device		cue		# CATC USB Ethernet
 device		kue		# Kawasaki LSI USB Ethernet
 device		rue		# RealTek RTL8150 USB Ethernet
+device		udav		# Davicom DM9601E USB
 
 # FireWire support
 device		firewire	# FireWire bus code
@@ -332,6 +331,7 @@ device 		wpi			# Intel 3945ABG Wireless LAN controller
 device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
 device 		gem			# ERI/GEM/GMAC Ethernet device driver
 device		nxge		# Neterion Xframe 10GbE Server/Storage
+device		ixgb		# Intel PRO/10GbE Ethernet Card
 
 # SCSI Controllers
 device		ihb				# IOI-A100U2W drivers
@@ -342,9 +342,6 @@ device		wlan_xauth
 
 device		lagg			# Link aggregation interface
 device		vlan			# IEEE 802.1Q VLAN Support
-
-# USB support
-device		udav			# Davicom DM910 USB Ethernet driver
 
 # Hardware crypto acceleration
 device		crypto
