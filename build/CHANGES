@@ -1,3 +1,37 @@
+FreeNAS 0.8 (Golden Path):
+--------------------------
+
+Majors changes:
+- Upgrade to FreeBSD 8.0.
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+- It is not possible to get seperate CPU stats per processor on SMP machines because
+  FreeBSD does not support that feature.
+- Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
+- It is not possible to mount EXT2 disks with an inode size of 256 bytes. You
+  have to format it with 128 bytes on Linux to use them on FreeBSD.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
+  overriden by the IPv4 DNS server.
+- Downgrading to 0.69 via WebGUI fails because of broken pipe error.
+- FreeBSD's ext2fs module, as of release 7.1, cannot mount ext2 file systems
+  with 256-byte large inodes, only 128 byte sized.  Unfortunately, 256 byte is
+  the default size with many recent Linux distributions.
+
+NEED TESTING:
+- IPv6: auto mode
+- All services using IPv6 address (NFS, FTP, etc...)
+- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes
+  samba when accessing to share
+- Need to write an online-test procedure
+
+Help needed:
+- Need help for adding LDAP authentication feature:
+  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
+
 FreeNAS 0.7RC2 (Khasadar):
 --------------------------
 
@@ -40,17 +74,6 @@ Known bugs:
 - FreeBSD's ext2fs module, as of release 7.1, cannot mount ext2 file systems
   with 256-byte large inodes, only 128 byte sized.  Unfortunately, 256 byte is
   the default size with many recent Linux distributions.
-
-NEED TESTING:
-- IPv6: auto mode
-- All services using IPv6 address (NFS, FTP, etc...)
-- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes
-  samba when accessing to share
-- Need to write an online-test procedure
-
-Help needed:
-- Need help for adding LDAP authentication feature:
-  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.7RC1 (Sardaukar):
 ---------------------------
