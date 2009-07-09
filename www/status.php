@@ -35,53 +35,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("auth.inc");
-require("guiconfig.inc");
 require("report.inc");
-require("auth.inc");
 
-$statusreport = new StatusReport();
-$statusreport->IsHTML(true);
-$statusreport->AddArticle(new StatusReportArticleCmd("Version","cat /etc/prd.version"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Revision","cat /etc/prd.revision"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Platform","cat /etc/platform"));
-$statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
-$statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Firewall","ipfw -at list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Network performances","netstat -m"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
-$statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
-$disklist = get_physical_disks_list();
-foreach ($disklist as $disknamek => $disknamev) {
-	$statusreport->AddArticle(new StatusReportArticleCmd("S.M.A.R.T. [/dev/{$disknamek}]","/usr/local/sbin/smartctl -a /dev/{$disknamek}"));
-}
-$statusreport->AddArticle(new StatusReportArticleCmd("Geom Concat","/sbin/gconcat list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Geom Stripe","/sbin/gstripe list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Geom Mirror","/sbin/gmirror list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Geom RAID5","/sbin/graid5 list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Geom Vinum","/sbin/gvinum list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Mount point","/sbin/mount"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Free disk space","/bin/df -h"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Encrypted disks","/sbin/geli list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("rc.conf","cat /etc/rc.conf"));
-$statusreport->AddArticle(new StatusReportArticleCmd("resolv.conf","cat /var/etc/resolv.conf"));
-$statusreport->AddArticle(new StatusReportArticleCmd("hosts","cat /etc/hosts"));
-$statusreport->AddArticle(new StatusReportArticleCmd("hosts.allow","cat /etc/hosts.allow"));
-$statusreport->AddArticle(new StatusReportArticleCmd("crontab","cat /var/etc/crontab"));
-$statusreport->AddArticle(new StatusReportArticleCmd("dhclient.conf","cat /etc/dhclient.conf"));
-$statusreport->AddArticle(new StatusReportArticleCmd("smb.conf","cat /var/etc/smb.conf"));
-$statusreport->AddArticle(new StatusReportArticleCmd("sshd.conf","cat /var/etc/ssh/sshd_config"));
-$statusreport->AddArticle(new StatusReportArticleCmd("mdnsresponder.conf","cat /var/etc/mdnsresponder.conf"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200"));
-$statusreport->AddArticle(new StatusReportArticleCmd("/conf","ls /conf"));
-$statusreport->AddArticle(new StatusReportArticleCmd("/var/etc","ls /var/etc"));
-$statusreport->AddArticle(new StatusReportArticleCmd("/var/run","ls /var/run"));
-$statusreport->AddArticle(new StatusReportArticleCmd("config.xml","/usr/local/bin/xml ed -P -u \"//*/password\" -v \"xxxxx\" -u \"//system/email/from\" -v \"xxxxx\" -u \"//statusreport/to\" -v \"xxxxx\" /conf/config.xml"));
-
-// Generate status report.
-echo $statusreport->Generate();
+echo report_generate_html();
 ?>
