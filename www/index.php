@@ -163,7 +163,7 @@ sajax_handle_client_request();
 						echo "<img src='bar_gray.gif' name='memusagef' id='memusagef' width='" . (100 - $percentage) . "' class='progbarc' alt='' />";
 						echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 						?>
-						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>"/>
+						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMiB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>"/>
 			    </td>
 			  </tr>
 				<?php $swapinfo = system_get_swap_info(); if (!empty($swapinfo)):?>
