@@ -126,10 +126,10 @@ $menu['help']['menuitem'][] = array("desc" => gettext("Report Generator"), "link
 $menu['help']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['help']['menuitem'][] = array("desc" => gettext("Forum"), "link" => "http://apps.sourceforge.net/phpbb/freenas/index.php", "visible" => true, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("Knowledgebase"), "link" => "http://www.freenaskb.info/kb", "visible" => true, "target" => "_blank");
-$menu['help']['menuitem'][] = array("desc" => gettext("Donate"), "link" => "https://sourceforge.net/donate/index.php?group_id=151951", "visible" => true, "target" => "_blank");
 $menu['help']['menuitem'][] = array("type" => "separator", "visible" => true);
 $menu['help']['menuitem'][] = array("desc" => gettext("Release notes"), "link" => "changes.php", "visible" => true);
 $menu['help']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => true);
+$menu['help']['menuitem'][] = array("desc" => gettext("Donate"), "link" => "https://sourceforge.net/donate/index.php?group_id=151951", "visible" => true, "target" => "_blank");
 
 function display_menu($menuid) {
 	global $menu;
