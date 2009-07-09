@@ -33,6 +33,7 @@ require_once("config.inc");
 require_once("util.inc");
 require_once("disks.inc");
 require_once("email.inc");
+require_once("rc.inc");
 
 class StatusReportArticle
 {
@@ -258,8 +259,9 @@ class StatusReport
 }
 
 function report_send_mail() {
-	global $config;
+	global $config, $g;
 
+	// Generate report
 	$statusreport = new StatusReport();
 
 	if (is_array($config['statusreport']['report']) && in_array("systeminfo", $config['statusreport']['report'])) {
@@ -293,27 +295,35 @@ function report_send_mail() {
 		$statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
 	}
 
+	// Consider modified clog path
+	$clogdir = rc_getenv_ex("clog_logdir", $g['varlog_path']);
+
+	// Get number of lines to be displayed
 	$numentries = $config['syslogd']['nentries'];
-	if (!$numentries) { $numentries = 50; } // Use default value if setting is not available.
+	if (!$numentries) { // Use default value if setting is not available.
+		$numentries = 50;
+	}
+
+	// Reverse log output?
 	$reverse = isset($config['syslogd']['reverse']) ? "-r" : "";
 
 	if (is_array($config['statusreport']['report']) && in_array("systemlog", $config['statusreport']['report'])) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} System log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail {$reverse} -n {$numentries}"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} System log entries","/usr/sbin/clog {$clogdir}/system.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 	if (is_array($config['statusreport']['report']) && in_array("ftplog", $config['statusreport']['report'])) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} FTP log entries","/usr/sbin/clog /var/log/ftp.log 2>&1 | tail {$reverse} -n {$numentries}"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} FTP log entries","/usr/sbin/clog {$clogdir}/ftp.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 	if (is_array($config['statusreport']['report']) && in_array("rsynclog", $config['statusreport']['report'])) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} RSYNCD log entries","/usr/sbin/clog /var/log/rsyncd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} RSYNCD log entries","/usr/sbin/clog {$clogdir}/rsyncd.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 	if (is_array($config['statusreport']['report']) && in_array("sshdlog", $config['statusreport']['report'])) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SSHD log entries","/usr/sbin/clog /var/log/sshd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SSHD log entries","/usr/sbin/clog {$clogdir}/sshd.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 	if (is_array($config['statusreport']['report']) && in_array("smartdlog", $config['statusreport']['report'])) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SMARTD log entries","/usr/sbin/clog /var/log/smartd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SMARTD log entries","/usr/sbin/clog {$clogdir}/smartd.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 	if (is_array($config['statusreport']['report']) && in_array("daemonlog", $config['statusreport']['report'])) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog /var/log/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog {$clogdir}/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 
 	// Send email and log result.
