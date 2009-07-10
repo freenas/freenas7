@@ -418,7 +418,7 @@ function system_get_sysinfo() {
 	$raminfo = system_get_ram_info();
 	$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
 	$value['memusage']['percentage'] = $percentage;
-	$value['memusage']['caption'] = sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));
+	$value['memusage']['caption'] = sprintf(gettext("%d%% of %dMiB"), $percentage, round($raminfo['physical'] / 1024 / 1024));
 
 	// Get load average.
 	exec("uptime", $result);
