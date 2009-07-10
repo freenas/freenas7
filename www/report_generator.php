@@ -1,14 +1,24 @@
 #!/usr/local/bin/php
 <?php
 /*
-	FreeNAS Report Generator Copyright 2009 Dan Merschi
+	report_generator.php
+	Copyright © 2009 Dan Merschi
+	All rights reserved.
+
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	All rights reserved.
+
 	Part of code from:
-				Exec+ v1.02-000 - Copyright 2001-2003, All rights reserved
-				Created by technologEase (http://www.technologEase.com).
-				modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
-				re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
-				adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
+	Exec+ v1.02-000 - Copyright 2001-2003, All rights reserved
+	Created by technologEase (http://www.technologEase.com).
+	modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
+	re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
+	adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
 */
+// Configure page permission
+$pgperm['allowuser'] = TRUE;
+
 require("auth.inc");
 require("guiconfig.inc");
 
