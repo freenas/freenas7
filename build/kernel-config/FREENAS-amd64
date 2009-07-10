@@ -179,13 +179,12 @@ device		ppi		# Parallel port interface device
 # If you've got a "dumb" serial or parallel PCI card that is
 # supported by the puc(4) glue driver, uncomment the following
 # line to enable it (connects to sio, uart and/or ppc drivers):
-device		puc
+#device		puc
 
 # PCI Ethernet NICs.
 device		de		# DEC/Intel DC21x4x (``Tulip'')
 device		em		# Intel PRO/1000 Gigabit Ethernet Family
 device		igb		# Intel PRO/1000 PCIE Server Gigabit Family
-device		ixgb		# Intel PRO/10GbE Ethernet Card
 device		ixgbe		# Intel PRO/10GbE PCIE Ethernet Family
 device		le		# AMD Am7900 LANCE and Am79C9xx PCnet
 device		txp		# 3Com 3cR990 (``Typhoon'')
@@ -332,6 +331,7 @@ device 		wpi			# Intel 3945ABG Wireless LAN controller
 device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
 device 		gem			# ERI/GEM/GMAC Ethernet device driver
 device		nxge		# Neterion Xframe 10GbE Server/Storage
+device		ixgb		# Intel PRO/10GbE Ethernet Card
 
 # SCSI Controllers
 device		ihb				# IOI-A100U2W drivers
