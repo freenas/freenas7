@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
-"PO-Revision-Date: 2009-01-31 14:11+0000\n"
-"Last-Translator: Zetao Zhang <Unknown>\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"PO-Revision-Date: 2009-07-05 00:32+0000\n"
+"Last-Translator: votdev <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:38+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -52,7 +52,7 @@ msgstr " 被指派为 "
 
 #, c-format, php-format
 msgid "%d%% of %dMB"
-msgstr "%dMB中的%d%%"
+msgstr "%d%% 中的 %dMB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -972,6 +972,9 @@ msgid "Datasets"
 msgstr ""
 
 msgid "Date & Time"
+msgstr ""
+
+msgid "Days"
 msgstr ""
 
 msgid "Debug"
@@ -2132,6 +2135,9 @@ msgstr "拒绝主机"
 msgid "Hot Spare"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr "多久检查一次 IP。以秒为单位（最多为 10 天）"
@@ -2778,6 +2784,9 @@ msgstr "最少需求空间"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "最小效能/噪音"
 
+msgid "Minutes"
+msgstr ""
+
 msgid "Minutes between network time sync."
 msgstr "多少分钟进行一次校时。"
 
@@ -2804,6 +2813,9 @@ msgstr "模组"
 
 msgid "Modules"
 msgstr "模组"
+
+msgid "Months"
+msgstr ""
 
 msgid "Mount Point"
 msgstr "挂载点"
@@ -2996,11 +3008,6 @@ msgstr "备注：按著 Ctrl 配合滑鼠左键（Mac 请按 Cmd）以选择多�
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr ""
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr "备注：按著 Ctrl 配合滑鼠左键（Mac 请按 Cmd）以选择时间与日期。"
 
 msgid "Nothing to synchronize"
 msgstr ""
@@ -3848,9 +3855,6 @@ msgstr "程序列表"
 msgid "Shutdown"
 msgstr "关机"
 
-msgid "Shutdown Time"
-msgstr "关机时间"
-
 msgid "Shutdown mode"
 msgstr ""
 
@@ -4066,8 +4070,8 @@ msgstr "Switch to"
 msgid "Switch to %s/s"
 msgstr ""
 
-msgid "Synchronization Time"
-msgstr "同步启动时间"
+msgid "Synchronization time"
+msgstr ""
 
 msgid "Synchronize"
 msgstr ""
@@ -5511,6 +5515,9 @@ msgstr "网页介面"
 msgid "Webserver"
 msgstr "网页伺服器"
 
+msgid "Week days"
+msgstr ""
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5648,9 +5655,6 @@ msgstr "crlf"
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr "天"
-
 msgid "dbpath"
 msgstr "资料库位置"
 
@@ -5660,9 +5664,6 @@ msgstr "例：%s"
 
 msgid "hour(s)"
 msgstr ""
-
-msgid "hours"
-msgstr "小时"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI 初始"
@@ -5690,9 +5691,6 @@ msgstr "分"
 
 msgid "mirroring"
 msgstr "mirroring"
-
-msgid "months"
-msgstr "月"
 
 msgid "mount"
 msgstr ""
@@ -5757,14 +5755,23 @@ msgstr ""
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "平常日"
-
 #~ msgid "Date"
 #~ msgstr "日期"
 
+#~ msgid "hours"
+#~ msgstr "小时"
+
 #~ msgid "day"
 #~ msgstr "天"
+
+#~ msgid "days"
+#~ msgstr "天"
+
+#~ msgid "week days"
+#~ msgstr "平常日"
+
+#~ msgid "months"
+#~ msgstr "月"
 
 #~ msgid "Create"
 #~ msgstr "建立"
@@ -5799,6 +5806,9 @@ msgstr "平常日"
 #~ msgid "A valid network must be specified."
 #~ msgstr "必须指定一个有效的网络。"
 
+#~ msgid "Synchronization Time"
+#~ msgstr "同步启动时间"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "设定值内的分享/工作目录不存在。"
 
@@ -5813,6 +5823,9 @@ msgstr "平常日"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "如果你还没有工作目录，请建立一个"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "关机时间"
 
 #, php-format
 #~ msgid ""
@@ -5884,6 +5897,11 @@ msgstr "平常日"
 
 #~ msgid "Shell access"
 #~ msgstr "Shell 权限"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr "备注：按著 Ctrl 配合滑鼠左键（Mac 请按 Cmd）以选择时间与日期。"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"

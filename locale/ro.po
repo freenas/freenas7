@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
 "PO-Revision-Date: 2009-06-26 11:05+0000\n"
 "Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:37+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -963,6 +963,9 @@ msgid "Datasets"
 msgstr ""
 
 msgid "Date & Time"
+msgstr ""
+
+msgid "Days"
 msgstr ""
 
 msgid "Debug"
@@ -2135,6 +2138,9 @@ msgstr "Adrese blocate"
 msgid "Hot Spare"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr ""
@@ -2789,6 +2795,9 @@ msgstr "Spatiu minim liber"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Performanta minima, Zgomot minim"
 
+msgid "Minutes"
+msgstr ""
+
 msgid "Minutes between network time sync."
 msgstr ""
 
@@ -2815,6 +2824,9 @@ msgstr "Modul"
 
 msgid "Modules"
 msgstr "Module"
+
+msgid "Months"
+msgstr ""
 
 msgid "Mount Point"
 msgstr "Punct Montare"
@@ -3010,11 +3022,6 @@ msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
-msgstr ""
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
 msgstr ""
 
 msgid "Nothing to synchronize"
@@ -3865,9 +3872,6 @@ msgstr ""
 msgid "Shutdown"
 msgstr "Oprire"
 
-msgid "Shutdown Time"
-msgstr "Timp de Oprire"
-
 msgid "Shutdown mode"
 msgstr ""
 
@@ -4086,8 +4090,8 @@ msgstr "Comutare la"
 msgid "Switch to %s/s"
 msgstr ""
 
-msgid "Synchronization Time"
-msgstr "Timp Sincronizare"
+msgid "Synchronization time"
+msgstr ""
 
 msgid "Synchronize"
 msgstr ""
@@ -5524,6 +5528,9 @@ msgstr ""
 msgid "Webserver"
 msgstr ""
 
+msgid "Week days"
+msgstr ""
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5665,9 +5672,6 @@ msgstr ""
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr "zile"
-
 msgid "dbpath"
 msgstr ""
 
@@ -5677,9 +5681,6 @@ msgstr "ex. %s"
 
 msgid "hour(s)"
 msgstr ""
-
-msgid "hours"
-msgstr "ore"
 
 msgid "iSCSI Initiator"
 msgstr "Initiator iSCSI"
@@ -5707,9 +5708,6 @@ msgstr "minute"
 
 msgid "mirroring"
 msgstr "mirroring"
-
-msgid "months"
-msgstr "luni"
 
 msgid "mount"
 msgstr ""
@@ -5774,14 +5772,23 @@ msgstr ""
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "zilele saptaminii"
-
 #~ msgid "Date"
 #~ msgstr "Data"
 
+#~ msgid "hours"
+#~ msgstr "ore"
+
 #~ msgid "day"
 #~ msgstr "zi"
+
+#~ msgid "days"
+#~ msgstr "zile"
+
+#~ msgid "week days"
+#~ msgstr "zilele saptaminii"
+
+#~ msgid "months"
+#~ msgstr "luni"
 
 #~ msgid "Create"
 #~ msgstr "Creare"
@@ -5816,6 +5823,9 @@ msgstr "zilele saptaminii"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Trebuie introdusa o retea valida."
 
+#~ msgid "Synchronization Time"
+#~ msgstr "Timp Sincronizare"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Combinatia de director/partajare nu exista."
 
@@ -5832,6 +5842,9 @@ msgstr "zilele saptaminii"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Creare director de lucru daca acesta nu exista"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Timp de Oprire"
 
 #, php-format
 #~ msgid ""

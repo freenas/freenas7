@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
-"PO-Revision-Date: 2009-06-19 12:56+0000\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"PO-Revision-Date: 2009-07-05 19:30+0000\n"
 "Last-Translator: Sir.Punisher <eris@shytaj.tk>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:36+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -94,6 +94,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a> duhet te aktivizohet qe UNISON te punoje <a "
+"href=%s>user</a> duhet te kete hyrje ne shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -128,6 +130,8 @@ msgid ""
 "A Initiator Group contains authorised initiator names and networks to access "
 "the target."
 msgstr ""
+"Nje Grup Iniciator permban emrat e iniciatoreve te autorizuar dhe rrjetet "
+"per te hyre tek objektivi."
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -167,6 +171,10 @@ msgid ""
 "either as a plain string or as a string of hexadecimal digits preceded by "
 "'0x'."
 msgstr ""
+"Nje çeles duhet te jete i perbere nga 5 ose 13 karaktere (40 ose 104 bit) ne "
+"baze te rrjetit dhe kapacitetit te pershtatesit. Duhet te jete i specifikuar "
+"si nje rresht bosh ose nje rresht i perbere nga karaktere heksadeçimal dhe "
+"perpara duhet te kete prefiksin '0x'."
 
 msgid "A route to this destination network already exists."
 msgstr "Nje rruge per kete destinacion ekziston."
@@ -397,6 +405,10 @@ msgid ""
 "address of your computer</li><li>access the webGUI with the new IP "
 "address</li></ul>"
 msgstr ""
+"Pasi te klikoni &quot;Save&quot;. ju gjithashtu duhet te beni nje nga hapat "
+"e pershkruar ketu poshte perpara se te kni te drejten e hyrjes %s "
+"perseri.<ul><li>nderro adresen IP te kompjuterit </li><li>hyni ne WEbGUI me "
+"adresen IP te re</li></ul>"
 
 #, php-format
 msgid ""
@@ -411,10 +423,10 @@ msgid "Aggregation protocol"
 msgstr "Protokolli i agregimit"
 
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresiv"
 
 msgid "Albanian"
-msgstr ""
+msgstr "Shqip"
 
 msgid "All"
 msgstr "Te ghitha"
@@ -426,9 +438,11 @@ msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
 "anything beginning with .Apple illegal."
 msgstr ""
+"Te gjithe shperndarjet perdorin opcionin 'usedots' keshtu qe te krijojne "
+"emrat e skedarve. cdo gje do te filloje me .Apple illegal."
 
 msgid "All users will have the root privilege."
-msgstr ""
+msgstr "Te gjithe perdoruesit do te kene privilegje ne rrenje."
 
 msgid "Allow"
 msgstr "Lejo"
@@ -463,7 +477,7 @@ msgstr ""
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
-msgstr ""
+msgstr "Lejo  %s qe te provoje e te behet nje browser lokal kryesor."
 
 msgid ""
 "Allows certain users and groups to have read-only  access  to  a share. This "
@@ -606,7 +620,7 @@ msgid "AutoScale"
 msgstr "Shkallezim automatik"
 
 msgid "Autoselect"
-msgstr ""
+msgstr "Autoselect"
 
 msgid "Auxiliary parameters"
 msgstr "Parametra auziliare"
@@ -636,14 +650,14 @@ msgid "Base DN"
 msgstr "DN baze"
 
 msgid "Base Name"
-msgstr ""
+msgstr "Emri Baze"
 
 msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
-msgstr ""
+msgstr "Emri Baze do te vihet automatikisht kur te fillohet pa 'iqn.'."
 
 msgid "Best available"
-msgstr ""
+msgstr "Zgjedhja me e mire"
 
 msgid "Bind DN"
 msgstr "Bind DN"
@@ -898,7 +912,7 @@ msgid "Create mask"
 msgstr "Krijo masken"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Krijon drjtorine e punes ne qofte se nuk egziston"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -980,6 +994,9 @@ msgstr ""
 
 msgid "Date & Time"
 msgstr "Data & Ora"
+
+msgid "Days"
+msgstr "Ditë"
 
 msgid "Debug"
 msgstr "Debug"
@@ -1148,10 +1165,10 @@ msgid "Destination share"
 msgstr "Destinaconi per shperndarjen"
 
 msgid "Detected"
-msgstr ""
+msgstr "Gjendur"
 
 msgid "Detected RSYNC remote shares"
-msgstr ""
+msgstr "Gjej shperndarjet RSYNC ne largesi."
 
 msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
@@ -1425,7 +1442,7 @@ msgid ""
 msgstr ""
 
 msgid "Donate"
-msgstr ""
+msgstr "Dhuro"
 
 msgid "Done"
 msgstr "E bere"
@@ -1500,7 +1517,7 @@ msgid "Edit URL"
 msgstr "Modifiko URL-ne"
 
 msgid "Edit auth group"
-msgstr ""
+msgstr "Modifiko grupin e autorizuar"
 
 msgid "Edit command"
 msgstr "Modifiko komanden"
@@ -1524,7 +1541,7 @@ msgid "Edit initiator"
 msgstr "Modifiko iniciatorin"
 
 msgid "Edit initiator group"
-msgstr ""
+msgstr "Modifiko grupin iniciator"
 
 msgid "Edit interface"
 msgstr "Modifiko nderfaqen"
@@ -1590,7 +1607,7 @@ msgid "Enable TLS/SSL connections."
 msgstr "Aktivo lidhjet TLS/SSL"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
-msgstr ""
+msgstr "Aktivizo Zeroconf/Bonjour qe te reklamoni sherbimin e kesaj paisje"
 
 msgid "Enable anonymous bind."
 msgstr "Aktivizo bind anonim."
@@ -1617,7 +1634,7 @@ msgid "Enable extended attribute support"
 msgstr ""
 
 msgid "Enable extended attributes for this file system."
-msgstr ""
+msgstr "Aktivo atributet e perhapura per kete skedar sistemi."
 
 msgid "Enable firmware upload"
 msgstr "Aktivizo ngarkimin e firmware-it."
@@ -1634,13 +1651,13 @@ msgid "Enable keyboard-interactive authentication."
 msgstr ""
 
 msgid "Enable large read/write"
-msgstr ""
+msgstr "Aktivo lexim/shkrim te perhapur"
 
 msgid "Enable local user authentication."
 msgstr "Aktivizo autentikimin e perdoruesve lokal."
 
 msgid "Enable module listing."
-msgstr ""
+msgstr "Aktivo listimin e moduleve."
 
 msgid "Enable peer exchange (PEX)."
 msgstr "Aktivizo peer exchange (PEX)."
@@ -1670,13 +1687,13 @@ msgid "Enable reverse DNS lookup."
 msgstr ""
 
 msgid "Enable store DOS attributes"
-msgstr ""
+msgstr "Aktivo atributet per ruajtjen DOS"
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr ""
 
 msgid "Enable the ident protocol (RFC1413)."
-msgstr ""
+msgstr "Aktivo protokollin e identitetit (RFC1413)."
 
 msgid "Enable the system power control utility"
 msgstr "Aktivizo kontrollin energjitik te sistemit"
@@ -1685,7 +1702,7 @@ msgid "Enable transcoding."
 msgstr "Aktivizo transkodimin."
 
 msgid "Enable traps."
-msgstr ""
+msgstr "Aktivo kurthat."
 
 msgid "Enable tuning of some kernel variables"
 msgstr ""
@@ -1694,7 +1711,7 @@ msgid "Enable use sendfile."
 msgstr ""
 
 msgid "Enable web user interface."
-msgstr ""
+msgstr "Aktivizo nderfaqen web te perdoruesit."
 
 msgid "Enabled"
 msgstr "Aktivizuar"
@@ -1721,7 +1738,7 @@ msgid "Encryption algorithm"
 msgstr "Alogaritmi i shifrimit"
 
 msgid "Encryption algorithm to use."
-msgstr ""
+msgstr "Alogaritmi i shifrimit qe do te perdoret."
 
 msgid "English"
 msgstr "Anglisht"
@@ -1730,6 +1747,8 @@ msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
+"Futni nje numer te personalizuar per porten qe do te perdoret per WebGUI ne "
+"qofte se doni te ndryshoni ate te paracaktuar (80 per HTTP, 443 per HTTPS)."
 
 msgid "Enter a valid sysctl MIB name."
 msgstr "Vendosni nje emer sysctl MIB te vlefshem."
@@ -1763,7 +1782,7 @@ msgid "Error"
 msgstr "Gabim"
 
 msgid "Error's"
-msgstr ""
+msgstr "Gabime"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1793,7 +1812,7 @@ msgid "Export"
 msgstr "Eksporto"
 
 msgid "Extended attributes"
-msgstr ""
+msgstr "Atribute te perhapura."
 
 msgid "Extensions"
 msgstr "Shtrirje"
@@ -1826,10 +1845,10 @@ msgid ""
 msgstr ""
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr ""
+msgstr "Opcione extra per konfigurimin e IP-se (zakonisht bosh)"
 
 msgid "Extra options to rsync (usually empty)."
-msgstr ""
+msgstr "Opcione extra per rsync (zakonisht bosh)"
 
 msgid "FEC (Fast EtherChannel)"
 msgstr "FEC (Fast EtherChannel)"
@@ -1838,10 +1857,10 @@ msgid "FTP"
 msgstr "FTP"
 
 msgid "FTP - Ban module"
-msgstr ""
+msgstr "FTP - Modul ndalimi"
 
 msgid "FTP - File transfer"
-msgstr ""
+msgstr "FTP - Transferim skedari"
 
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
@@ -1906,7 +1925,7 @@ msgid "Failed to upload metadata backup file."
 msgstr "Ngarkimi i skedave metadata te kopjuara deshtoi."
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "Shrimi i skedarit ne disk deshtoi."
 
 msgid "Failed."
 msgstr "Deshtoi."
@@ -1994,7 +2013,7 @@ msgid "Forum"
 msgstr "Forumi"
 
 msgid "Free"
-msgstr ""
+msgstr "I Lire"
 
 msgid "Free disk space"
 msgstr "Hapesire e lire ne disk"
@@ -2003,7 +2022,7 @@ msgid "French"
 msgstr "Frëngjisht"
 
 msgid "Frequency"
-msgstr ""
+msgstr "Frekuence"
 
 msgid "From email"
 msgstr "Nga email"
@@ -2021,7 +2040,7 @@ msgid "GID"
 msgstr "GID"
 
 msgid "GPT partition"
-msgstr ""
+msgstr "Particion GTP"
 
 msgid "Gateway"
 msgstr ""
@@ -2036,16 +2055,16 @@ msgid "General Setup"
 msgstr ""
 
 msgid "Generate"
-msgstr ""
+msgstr "Krijo"
 
 msgid "German"
 msgstr "Gjermanisht"
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
-msgstr ""
+msgstr "Lejo hyrjen ne faqen web vetem perdoruesve lokal."
 
 msgid "Graph"
 msgstr "Grafik"
@@ -2058,6 +2077,7 @@ msgstr "Greqisht"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
+"Banner pershendetes qe do te shfaqet kur te kryhet lidhja e pare FTP."
 
 msgid "Group"
 msgstr "Grupi"
@@ -2093,7 +2113,7 @@ msgid "Hard disk standby time"
 msgstr ""
 
 msgid "Hardware:"
-msgstr ""
+msgstr "Hardware:"
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2102,13 +2122,13 @@ msgid "Header digest"
 msgstr ""
 
 msgid "Health"
-msgstr ""
+msgstr "Shëndeti"
 
 msgid "Help"
 msgstr "Ndihmë"
 
 msgid "Hide dot files"
-msgstr ""
+msgstr "Fsheh skedaret dot"
 
 msgid "Highlighting"
 msgstr ""
@@ -2121,6 +2141,8 @@ msgid ""
 "Hint: If this is checked, IP addresses in %s logs are resolved to real "
 "hostnames where possible."
 msgstr ""
+"Ndihme: Ne qofte se eshte e seleksionuar , adresa IP ne %s hyrjet do te "
+"zgjidhen  ne emrat real aty ku do te jete e mundur."
 
 msgid "Home directory"
 msgstr "Drejtoria e shtepise"
@@ -2155,6 +2177,9 @@ msgstr "Mos lejo host"
 msgid "Hot Spare"
 msgstr ""
 
+msgid "Hours"
+msgstr "Orë"
+
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr ""
@@ -2165,6 +2190,8 @@ msgid ""
 "How often the IP is updated even if it is not changed. The period is in "
 "seconds (max. is 10 days)."
 msgstr ""
+"Sa shpesh duhet te axhornohet IP-ja edhe ne qofte nuk ka ndryshuar Periudha "
+"eshte ne sekonda (max. eshte 10 dite)."
 
 msgid "Hungarian"
 msgstr "Hungarisht"
@@ -2185,10 +2212,10 @@ msgid "I/O timeout in seconds (30 by default)."
 msgstr ""
 
 msgid "IG"
-msgstr ""
+msgstr "IG"
 
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 msgid "IP address"
 msgstr "Adresa IP"
@@ -2224,7 +2251,7 @@ msgid "IPv6 DNS servers"
 msgstr "Serverat DNS IPv6"
 
 msgid "IPv6 Gateway"
-msgstr ""
+msgstr "IPv6 Gateway"
 
 msgid "IPv6 Prefix"
 msgstr "Prefiksi IPv6"
@@ -2242,7 +2269,7 @@ msgid "ISP DNS servers"
 msgstr "Serverat DNS te ISP-se"
 
 msgid "Ident protocol"
-msgstr ""
+msgstr "Protokoll identiteti"
 
 msgid "Identifier"
 msgstr "Identifikuesi"
@@ -2296,6 +2323,8 @@ msgstr ""
 
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
+"Ne qofte se kjo perkatesi eshte e dizaktivizuar, skedari is sistemit nuk "
+"mund te montohet."
 
 #, php-format
 msgid ""
@@ -2308,28 +2337,32 @@ msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
 "twice."
 msgstr ""
+"Ne qofte se doni te ndryshoni fjalekalimin per te hyre ne WebGUI, futeni dy "
+"here ketu."
 
 msgid ""
 "If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
+"Ne qofte se doni te ndryshoni emrin e perdoruesit per te hyre ne WebGUI, "
+"futeni ketu."
 
 msgid "Image upload failed (out of memory?)"
-msgstr ""
+msgstr "Ngarkimi i imazhit deshtoi (jashte memories?)"
 
 msgid "Import"
 msgstr "Importo"
 
 msgid "Import disks"
-msgstr ""
+msgstr "Importo disqet."
 
 msgid "Import disks used in configuration."
-msgstr ""
+msgstr "Importo disqe te perdorur ne konfigurim"
 
 msgid "Import firewall rules."
-msgstr ""
+msgstr "Importo rregullat e firewall-it."
 
 msgid "Import on-disk ZFS config"
-msgstr ""
+msgstr "Importo ne disk konfigurimin ZFS"
 
 msgid "In"
 msgstr "Ne"
@@ -2338,16 +2371,16 @@ msgid "In most cases, 'public' is used here."
 msgstr "Ne shumicen e rasteve, 'publike' perdoret ketu."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Permban informacionet hardware baze."
 
 msgid "Info"
 msgstr "Informacione"
 
 msgid "Info:"
-msgstr ""
+msgstr "Info:"
 
 msgid "Informal"
-msgstr ""
+msgstr "Informale"
 
 msgid "Information"
 msgstr "Informacion"
@@ -2362,19 +2395,19 @@ msgid "Initial Digest"
 msgstr ""
 
 msgid "Initialize"
-msgstr ""
+msgstr "Inizializo"
 
 msgid "Initialize and encrypt disk."
-msgstr ""
+msgstr "Inizializo nje disk te shifruar."
 
 msgid "Initializing"
-msgstr ""
+msgstr "Duke inizializuar."
 
 msgid "Initiator Group"
-msgstr ""
+msgstr "Grup iniciator"
 
 msgid "Initiator Groups"
-msgstr ""
+msgstr "Grupet iniciatore"
 
 msgid ""
 "Initiator authorised to access to the iSCSI target.  It takes a name or "
@@ -2391,7 +2424,7 @@ msgid "Initiator side user name. (for mutual CHAP authentication)"
 msgstr ""
 
 msgid "Initiators"
-msgstr ""
+msgstr "Iniciatoret"
 
 msgid "Inquiry Product"
 msgstr ""
@@ -2415,7 +2448,7 @@ msgid "Interface"
 msgstr "Ndërfaqe"
 
 msgid "Interface Management"
-msgstr ""
+msgstr "Nderfaqja e menaxhimit"
 
 msgid "Interface to listen to."
 msgstr ""
@@ -2427,7 +2460,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "Intervali duhet te jete i 10 sekonda ose me i madh."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Formati i skedarit i pavlefshem."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2443,11 +2476,13 @@ msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
 msgstr ""
+"Eshte e pamundur te aktivizoj 'Vetem perdorues anonim' dhe 'Vetem perdorues "
+"lokal' autentikim pernjehere."
 
 msgid ""
 "It is not recommanded to import non healty pools nor virtual devices that "
 "are part of a non healthy pool."
-msgstr ""
+msgstr "Nuk eshte e keshillueshme te importoni"
 
 msgid "Italian"
 msgstr "Italisht"
@@ -2475,6 +2510,7 @@ msgstr "Gjatesia e çelesit"
 
 msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
+"Gjatesia e çelesit qe do te perdoret me alogaritmin e shifrimit te dhene."
 
 msgid "Kill encrypted volume"
 msgstr "Vrit volumin e shifruar"
@@ -2498,53 +2534,59 @@ msgid "LDAP"
 msgstr "LDAP"
 
 msgid "LUN"
-msgstr ""
+msgstr "LUN"
 
 msgid "LUNs"
-msgstr ""
+msgstr "LUNs"
 
 msgid "Language"
 msgstr "Gjuhë"
 
 msgid "Large read/write"
-msgstr ""
+msgstr "Lexim/Shkrim i perhapur"
 
 msgid "Last config change"
-msgstr ""
+msgstr "Ndryshimi i fundit ne konfigurim"
 
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
 "menu."
 msgstr ""
+"Lini '%s' per disqe te paformatuar dhe formatoni ato duke perdorur <a "
+"href=%s>format</a> menu."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
+"Niveli 1 - Perdorim i fuqise ne minimun me Standby (ul numrin e rrotullimeve-"
+"spindown)"
 
 msgid "Level 127 - Intermediate power usage with Standby"
-msgstr ""
+msgstr "Niveli 127 - Perdorim i fuqise ne mesatar me Standby"
 
 msgid "Level 128 - Minimum power usage without Standby (no spindown)"
 msgstr ""
+"Niveli 128 - Perdorim i fuqise ne minimun pa Standby ( nuk ul numrin e "
+"rrotullimeve - no spindown)"
 
 msgid "Level 192 - Intermediate power usage without Standby"
-msgstr ""
+msgstr "Niveli 192 - Perdorimi i fuqise mesatar pa Standby"
 
 msgid "Level 254 - Maximum performance, maximum power usage"
-msgstr ""
+msgstr "Niveli 254 - Performanca ne maksimum, perdorimi i fuqise ne maksimum"
 
 msgid "Level 64 - Intermediate power usage with Standby"
-msgstr ""
+msgstr "Niveli 64 - Perdorim i fuqise mesatar me Standby"
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
-msgstr ""
+msgstr "Nivelet (MHz/mW): %s"
 
 msgid "License"
 msgstr "Liqencë"
 
 msgid "License & Credits"
-msgstr ""
+msgstr "Liçenza &Creditet"
 
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
@@ -2558,7 +2600,7 @@ msgid ""
 msgstr ""
 
 msgid "Link Aggregation and Failover"
-msgstr ""
+msgstr "Agregimi i lidhjes deshtoi"
 
 msgid "List"
 msgstr "Lista"
@@ -2573,25 +2615,25 @@ msgid "List of available target name on all configured iSCSI targets"
 msgstr ""
 
 msgid "List of detected ATA disks"
-msgstr ""
+msgstr "Lista e disqeve ATA te gjendur"
 
 msgid "List of detected SCSI disks"
 msgstr ""
 
 msgid "List of imported users"
-msgstr ""
+msgstr "Lista e perdoruesve te importuar."
 
 msgid "List of mount points"
-msgstr ""
+msgstr "Lista e pikave te montimit"
 
 msgid "List of open files"
-msgstr ""
+msgstr "Lista e skedareve te hapur"
 
 msgid "List of shares"
-msgstr ""
+msgstr "Lista e shperndarjeve"
 
 msgid "Load"
-msgstr ""
+msgstr "Ngarko"
 
 msgid "Load averages"
 msgstr ""
@@ -2600,48 +2642,54 @@ msgid "Loadbalance"
 msgstr ""
 
 msgid "Local"
-msgstr ""
+msgstr "Lokale"
 
 msgid "Local Master Browser"
-msgstr ""
+msgstr "Browser Lokal Kryesor"
 
 msgid "Local User"
-msgstr ""
+msgstr "Perdorues lokal"
 
 msgid "Local share"
-msgstr ""
+msgstr "Shperndarje lokale"
 
 msgid "Local share (destination)"
-msgstr ""
+msgstr "Shperndarje lokale (destinacioni)"
 
 msgid "Local shares to be synchronized"
-msgstr ""
+msgstr "Shperndarjet lokale qe do te sinkronizohen"
 
 msgid "Local user bandwidth"
-msgstr ""
+msgstr "Hapesira e bandes per perdoruesit lokal"
 
 msgid "Local user download bandwith in KB/s. An empty field means infinity."
 msgstr ""
+"Hapesira e bandes ne shkarkim per perdoruesit lokal ne KB/s. Duke lene bosh "
+"kutine do te thote e palimituar."
 
 msgid "Local user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
+"Hapesira e bandes ne ngarkim per perdoruesit lokal ne KB/s. Duke lene bosh "
+"kutine do te thote e palimituar."
 
 msgid "Local users only"
-msgstr ""
+msgstr "Vetem perdorues lokal"
 
 msgid "Location"
-msgstr ""
+msgstr "Vendodhja"
 
 msgid ""
 "Location information, e.g. physical location of this system: 'Floor of "
 "building, Room xyz'."
 msgstr ""
+"Informacion mbi vendodhjen, p.sh.vendodhja fizike e ketij sistemi: 'ne "
+"dudheme, Dhome xyz'."
 
 msgid "Location of the files to share."
-msgstr ""
+msgstr "Vendodhja e skedarve qe do te shperndahen."
 
 msgid "Location where the content database file will be stored."
-msgstr ""
+msgstr "Vendodhja ku permbajtja e skedarve te database"
 
 #, php-format
 msgid ""
@@ -2649,7 +2697,7 @@ msgid ""
 msgstr ""
 
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 msgid "Log Level"
 msgstr ""
@@ -2661,49 +2709,49 @@ msgid "Logical Unit Type mapped to LUN."
 msgstr ""
 
 msgid "Login"
-msgstr ""
+msgstr "Hyrje"
 
 msgid "Login name of user."
-msgstr ""
+msgstr "Emri hyres i perdoruesit."
 
 msgid "Logout"
-msgstr ""
+msgstr "Dil"
 
 msgid "Lowercases names in both directions"
 msgstr ""
 
 msgid "MAC address"
-msgstr ""
+msgstr "Adresa MAC"
 
 msgid "MBR partition"
-msgstr ""
+msgstr "Particioni MBR"
 
 msgid "MIB"
-msgstr ""
+msgstr "MIB"
 
 msgid "MISSING"
 msgstr ""
 
 msgid "MOTD"
-msgstr ""
+msgstr "MOTD"
 
 msgid "MS Active Directory"
-msgstr ""
+msgstr "Drejtoria Aktive MS"
 
 msgid "MS Active Directory informations"
-msgstr ""
+msgstr "Informacionet e Drejtorise Aktive MS"
 
 msgid "MS Domain"
 msgstr ""
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Machine suffix"
-msgstr ""
+msgstr "Mbrapashtesa e Makines"
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
-msgstr ""
+msgstr "Sigurohuni qe te keni aktivizuar S.M.A.R.T, per paisjet tua."
 
 #, php-format
 msgid ""
@@ -2711,10 +2759,10 @@ msgid ""
 msgstr ""
 
 msgid "Management"
-msgstr ""
+msgstr "Menaxhim"
 
 msgid "Manufacturer"
-msgstr ""
+msgstr "Prodhuesi"
 
 msgid "Map all users to root"
 msgstr ""
@@ -2726,19 +2774,19 @@ msgid "Masquerade address"
 msgstr ""
 
 msgid "Max. TTL"
-msgstr ""
+msgstr "Max. TTL"
 
 msgid "Max. block size"
-msgstr ""
+msgstr "Madhesia maksimume e blloqeve"
 
 msgid "Max. conn. per IP"
-msgstr ""
+msgstr "Maksimumi i lidhjeve per nje IP"
 
 msgid "Max. connections"
-msgstr ""
+msgstr "Lidjet maksimale"
 
 msgid "Max. sessions"
-msgstr ""
+msgstr "Maksimumi i seksioneve"
 
 msgid ""
 "Max. time-to-live (max. number of hops) used in outgoing probe packets."
@@ -2751,107 +2799,116 @@ msgid "MaxRecvDataSegmentLength"
 msgstr ""
 
 msgid "Maximum connections"
-msgstr ""
+msgstr "Lidhjet maksimale"
 
 msgid "Maximum idle time in seconds."
 msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
-msgstr ""
+msgstr "Numri maksimal i lidhjeve ne nje seksion (8 jane te paracaktuara)"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr ""
+msgstr "Numri i lidhjeve maksimale per nje adrese IP (0 = pa kufi)."
 
 msgid "Maximum number of sessions holding at same time (32 by default)."
-msgstr ""
+msgstr "Numri maksimal i seksioneve pernjeheresh (32 te paracaktuara)."
 
 msgid "Maximum number of simultaneous clients."
-msgstr ""
+msgstr "Numri maksimal i klientave pernjeheresh."
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr ""
+"Numri maksimal i lidhjeve pernjeheresh. I paracaktuar eshte 0 (dmth pa kufi)."
 
 msgid "Maximum performance, maximum acoustic output"
-msgstr ""
+msgstr "Performance maksimale, zhurme maksimale"
 
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 msgid "Medium acoustic output"
-msgstr ""
+msgstr "Zhurme mesatare"
 
 msgid "Memory usage"
-msgstr ""
+msgstr "Perdorimi i memorjes"
 
 msgid "Message of the day."
-msgstr ""
+msgstr "Mesazhi i dites."
 
 msgid "MiB"
-msgstr ""
+msgstr "MiB"
 
 msgid "MibII"
-msgstr ""
+msgstr "MibII"
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 msgid "Minimum free space"
-msgstr ""
+msgstr "Hapesira e lire minimale"
 
 msgid "Minimum performance, Minimum acoustic output"
-msgstr ""
+msgstr "Perfomanca ne minimun, zhurma ne minimun"
+
+msgid "Minutes"
+msgstr "Minuta"
 
 msgid "Minutes between network time sync."
-msgstr ""
+msgstr "Minutat perpara se koha e rrjetit te sinkronizohet"
 
 msgid "Mirror"
-msgstr ""
+msgstr "Pasqyrë"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Nuk gjej nje dosje te perkohshme."
 
 msgid "Mode"
-msgstr ""
+msgstr "Mënyra"
 
 msgid "Model extra"
-msgstr ""
+msgstr "Model ekstra"
 
 msgid "Model name"
-msgstr ""
+msgstr "Emri i modelit"
 
 msgid "Modifying"
-msgstr ""
+msgstr "Duke modifikuar"
 
 msgid "Module"
-msgstr ""
+msgstr "Moduli"
 
 msgid "Modules"
-msgstr ""
+msgstr "Modulet"
+
+msgid "Months"
+msgstr "Muajt"
 
 msgid "Mount Point"
-msgstr ""
+msgstr "Pika e Montimit"
 
 msgid "Mount point"
-msgstr ""
+msgstr "Pika e montimit"
 
 msgid "Mount point name"
-msgstr ""
+msgstr "Emri i pikes se montimit"
 
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
+"Monto skedarin e sistemit vetem ne lexim ( as nje super perdorues mund te "
+"shkruaje ne te)."
 
 msgid "Mounting device."
-msgstr ""
+msgstr "Duke montuar paisjen."
 
 msgid "Mounting..."
-msgstr ""
+msgstr "Duke montuar..."
 
 msgid "Mounts"
-msgstr ""
+msgstr "Montimet"
 
 msgid "Must choose one"
-msgstr ""
+msgstr "Duhet zgjedhur nje"
 
 msgid "Mutual CHAP"
 msgstr ""
@@ -2860,70 +2917,74 @@ msgid "Mutual CHAP Users"
 msgstr ""
 
 msgid "NFS"
-msgstr ""
+msgstr "NFS"
 
 msgid "NIS"
-msgstr ""
+msgstr "NIS"
 
 msgid "NOPIN Interval"
-msgstr ""
+msgstr "Interval NOPIN"
 
 msgid "NOPIN sending interval in seconds (20 by default)."
-msgstr ""
+msgstr "NOPIN po dergon intervalin ne sekonda (20 i paracaktuar)"
 
 msgid "NOT YET AVAILABLE"
-msgstr ""
+msgstr "NUK ESHTE AKOMA I DISPONUESHEM"
 
 msgid "NTP time server"
-msgstr ""
+msgstr "Serveri i ores NTP"
 
 msgid "Name"
-msgstr ""
+msgstr "Emër"
 
 #, php-format
 msgid "Name of the NAS host, without domain part e.g. %s."
-msgstr ""
+msgstr "Emri i NAS-it mik, pa pjesen e domain p.sh.%s."
 
 #, php-format
 msgid "Name of the device to use as swap device, e.g. %s."
-msgstr ""
+msgstr "Emri i paisjes qe do te perdoret si nje paisje swap, p.sh. %s."
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
 "specified."
 msgstr ""
+"Emri i serverit. Ne qofte se lihet bosh do te specifikohet serveri i "
+"paracaktuar."
 
 msgid "Name of the variable."
-msgstr ""
+msgstr "Emri i variantit."
 
 msgid "NetBIOS name"
-msgstr ""
+msgstr "Emri NetBIOS"
 
 msgid "Netgraph"
-msgstr ""
+msgstr "Netgraph (Grafiku i Rrjetit)"
 
 msgid "Network"
-msgstr ""
+msgstr "Rrjeti"
 
 msgid "Network File System"
-msgstr ""
+msgstr "Skedari i Sistemit te Rrjetit"
 
 msgid ""
 "Network authorised to access to the iSCSI target. It takes IP or CIDR "
 "addresses or 'ALL' for any IPs."
 msgstr ""
+"Rrjet i autorizuar per te hyre tek objektivi iSCSI. Merr nje adrese IP ose "
+"CIDR ose 'te gjithe' per çdo IP."
 
 msgid "Network mask"
-msgstr ""
+msgstr "Maska e rrjetit"
 
 msgid "Network port"
-msgstr ""
+msgstr "Porta e rrjetit"
 
 msgid "Network that is authorised to access the NFS share."
-msgstr ""
+msgstr "Rrjet qe eshte i autorizuar te kete hyrje ne shperndarjen NFS."
 
 msgid "Networks"
-msgstr ""
+msgstr "Rrjetet"
 
 msgid ""
 "Never - Poll (check) the device regardless of its power mode. This may cause "
@@ -2931,13 +2992,13 @@ msgid ""
 msgstr ""
 
 msgid "New Device"
-msgstr ""
+msgstr "Paisje e re"
 
 msgid "No"
-msgstr ""
+msgstr "Jo"
 
 msgid "No RSYNC Client configured"
-msgstr ""
+msgstr "Nuk ka nje klient RSYNC te konfiguruar"
 
 msgid "No case folding"
 msgstr ""
@@ -2945,12 +3006,16 @@ msgstr ""
 #, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
 msgstr ""
+"S'ka shtrirje te konfiguruar. Ju lutem shto nje te re <a href=%s>Extent</a> "
+"perpara."
 
 #, php-format
 msgid ""
 "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
 "first."
 msgstr ""
+"S'ka nje grup iniciator te konfiguruar . Ju lutem shto nje te re <a "
+"href=%s>Extent</a> perpara."
 
 #, php-format
 msgid ""
@@ -2966,43 +3031,50 @@ msgid ""
 "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
 "first."
 msgstr ""
+"Piasje virtuale te pakonfiguruara.Ju lutem shto nje te re <a "
+"href=%s>Extent</a> perpara."
 
 msgid "No device selected."
-msgstr ""
+msgstr "Nuk ke seleksionuar asnje paisje."
 
 msgid "No disk configured"
-msgstr ""
+msgstr "Nuk ka nje disk te konfiguruar"
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
 msgstr ""
+"S'ka nje disk te disponueshem. Ju lutem shto nje te re <a href=%s>Extent</a> "
+"perpara"
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "Nuk u ngarkua asnje file."
 
 msgid "No pool was found."
 msgstr ""
 
 msgid "Node Base"
-msgstr ""
+msgstr "Nyje baze"
 
 msgid "None"
-msgstr ""
+msgstr "Asnjë"
 
 msgid "Normal"
-msgstr ""
+msgstr "Normale"
 
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "Norvegjisht"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
 "may cause problems."
 msgstr ""
+"Jo te gjithe driverat/NICs suportojne emerimim 802.1Q VLAN  siç duhet. Ne "
+"kartat qe nuk e suportojne ne menyre specifike ate, emerimi VLAN do te "
+"punoje, por pakesimi i MTU-se mund te krijoje probleme."
 
 msgid "Not attached"
-msgstr ""
+msgstr "I palidhur"
 
 msgid "Note"
 msgstr ""
@@ -3011,58 +3083,59 @@ msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
 "minutes, hours, days and months."
 msgstr ""
+"Shenim: Ctrl-click (ose command-click ne MAC) per te seleksionuar dhe "
+"deseleksionuar minutat, oret, ditet dhe muajt."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
 msgstr ""
+"Shenim: Ctrl-click (ose command-click ne MAC) per te seleksionuar dhe "
+"deseleksionuar grupet."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr ""
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr ""
+"Shenim: Ctrl-click (ose command-click ne MAC) per te seleksionuar hyrjet e "
+"shumëfishta."
 
 msgid "Nothing to synchronize"
-msgstr ""
+msgstr "Asgje per te sinkronizuar"
 
 msgid "Now"
-msgstr ""
+msgstr "Tani"
 
 msgid "Null passwords"
-msgstr ""
+msgstr "Fjalekalim bosh"
 
 msgid "Number of clients"
-msgstr ""
+msgstr "Munri i klientave"
 
 msgid "Number of log entries to show"
-msgstr ""
+msgstr "Numri i hyrjeve qe do te tregohet"
 
 msgid "Number of log entries to show must be between 5 and 1000."
-msgstr ""
+msgstr "Numri i hyrjeve qe do te tregohet duhet te jete mes 5 dhe 1000."
 
 msgid "Number of servers"
-msgstr ""
+msgstr "Numri i serverave"
 
 msgid "Numeric identifier of the group."
-msgstr ""
+msgstr "Identifikues numerik i grupit."
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "ONLINE"
-msgstr ""
+msgstr "NË LINJË"
 
 msgid "OS Version"
-msgstr ""
+msgstr "Versioni i Sistemiti Operativ (OS)"
 
 msgid "Object name"
-msgstr ""
+msgstr "Emri i Objektit"
 
 msgid "Occurrence"
-msgstr ""
+msgstr "Rastisje"
 
 msgid "Off"
 msgstr ""
@@ -3869,9 +3942,6 @@ msgstr ""
 msgid "Shutdown"
 msgstr ""
 
-msgid "Shutdown Time"
-msgstr ""
-
 msgid "Shutdown mode"
 msgstr ""
 
@@ -4086,7 +4156,7 @@ msgstr ""
 msgid "Switch to %s/s"
 msgstr ""
 
-msgid "Synchronization Time"
+msgid "Synchronization time"
 msgstr ""
 
 msgid "Synchronize"
@@ -5479,6 +5549,9 @@ msgstr "WebGUI"
 msgid "Webserver"
 msgstr "Webserver"
 
+msgid "Week days"
+msgstr ""
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5625,9 +5698,6 @@ msgstr "crlf"
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr "ditet"
-
 msgid "dbpath"
 msgstr "dbpath"
 
@@ -5637,9 +5707,6 @@ msgstr "shembull. %s"
 
 msgid "hour(s)"
 msgstr ""
-
-msgid "hours"
-msgstr "ore"
 
 msgid "iSCSI Initiator"
 msgstr "Iniciatori iSCSI"
@@ -5667,9 +5734,6 @@ msgstr "minuta"
 
 msgid "mirroring"
 msgstr ""
-
-msgid "months"
-msgstr "muaj"
 
 msgid "mount"
 msgstr "monto"
@@ -5733,6 +5797,3 @@ msgstr "zmonto"
 
 msgid "upriv"
 msgstr "upriv"
-
-msgid "week days"
-msgstr "dite jave"

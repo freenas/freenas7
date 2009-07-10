@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
-"PO-Revision-Date: 2009-06-13 14:55+0000\n"
-"Last-Translator: Sir.Punisher <eris@shytaj.tk>\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"PO-Revision-Date: 2009-07-08 18:09+0000\n"
+"Last-Translator: Davide <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:36+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -536,7 +536,7 @@ msgid "Any"
 msgstr ""
 
 msgid "Apple Filing Protocol"
-msgstr ""
+msgstr "Apple Filing Protocol"
 
 msgid "Apply changes"
 msgstr "Applica modifiche"
@@ -674,7 +674,7 @@ msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD o Vecchio RAID Software"
 
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 msgid "CHAP Users"
 msgstr ""
@@ -975,13 +975,16 @@ msgid "Database directory"
 msgstr "Cartella Database"
 
 msgid "Dataset"
-msgstr ""
+msgstr "Dataset"
 
 msgid "Datasets"
-msgstr ""
+msgstr "Dataset"
 
 msgid "Date & Time"
-msgstr ""
+msgstr "Data & Ora"
+
+msgid "Days"
+msgstr "Giorni"
 
 msgid "Debug"
 msgstr ""
@@ -1051,7 +1054,7 @@ msgid "Delete command"
 msgstr "Cancella comando"
 
 msgid "Delete dataset"
-msgstr ""
+msgstr "Elimina dataset"
 
 msgid "Delete device"
 msgstr "Elimina dispositivo"
@@ -1491,7 +1494,7 @@ msgid "Edit Host"
 msgstr "Modifica host"
 
 msgid "Edit MIB"
-msgstr ""
+msgstr "Modifica MIB"
 
 msgid "Edit RAID"
 msgstr "Modifica RAID"
@@ -1512,7 +1515,7 @@ msgid "Edit command"
 msgstr "Modifica comando"
 
 msgid "Edit dataset"
-msgstr ""
+msgstr "Modifica datased"
 
 msgid "Edit device"
 msgstr "Modifica dispositivo"
@@ -1845,7 +1848,7 @@ msgid "Extra options to rsync (usually empty)."
 msgstr "Opzioni extra di rsync (normalmente vuoto)."
 
 msgid "FEC (Fast EtherChannel)"
-msgstr ""
+msgstr "FEC (Fast EtherChannel)"
 
 msgid "FTP"
 msgstr "FTP"
@@ -2050,10 +2053,10 @@ msgid "Generate"
 msgstr ""
 
 msgid "German"
-msgstr ""
+msgstr "Tedesco"
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
 msgstr "Consenti l'accesso alla pagina web soltanto agli utenti locali."
@@ -2065,7 +2068,7 @@ msgid "Graph shows last"
 msgstr "Grafico degli ultimi"
 
 msgid "Greek"
-msgstr ""
+msgstr "Greco"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -2167,7 +2170,10 @@ msgid "Hosts deny"
 msgstr "Nega Hosts"
 
 msgid "Hot Spare"
-msgstr ""
+msgstr "Hot Spare"
+
+msgid "Hours"
+msgstr "Ore"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2182,7 +2188,7 @@ msgstr ""
 "periodo e' in secondi (max. e' 10 giorni)."
 
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungherese"
 
 msgid "I/O Timeout"
 msgstr ""
@@ -2200,10 +2206,10 @@ msgid "I/O timeout in seconds (30 by default)."
 msgstr ""
 
 msgid "IG"
-msgstr ""
+msgstr "IG"
 
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 msgid "IP address"
 msgstr "Indirizzo IP"
@@ -2400,7 +2406,7 @@ msgid "Initialize and encrypt disk."
 msgstr ""
 
 msgid "Initializing"
-msgstr ""
+msgstr "Inizializzazione"
 
 msgid "Initiator Group"
 msgstr ""
@@ -2497,7 +2503,7 @@ msgstr ""
 "Ottobre Novembre Dicembre"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Giapponese"
 
 msgid "Key"
 msgstr "Chiave"
@@ -2533,10 +2539,10 @@ msgid "LDAP"
 msgstr "LDAP"
 
 msgid "LUN"
-msgstr ""
+msgstr "LUN"
 
 msgid "LUNs"
-msgstr ""
+msgstr "LUN"
 
 msgid "Language"
 msgstr "Lingua"
@@ -2715,10 +2721,10 @@ msgid "MAC address"
 msgstr "Indirizzo MAC"
 
 msgid "MBR partition"
-msgstr ""
+msgstr "Partizione MBR"
 
 msgid "MIB"
-msgstr ""
+msgstr "MIB"
 
 msgid "MISSING"
 msgstr "MANCANTE"
@@ -2727,7 +2733,7 @@ msgid "MOTD"
 msgstr "MOTD"
 
 msgid "MS Active Directory"
-msgstr ""
+msgstr "MS Active Directory"
 
 msgid "MS Active Directory informations"
 msgstr ""
@@ -2830,7 +2836,7 @@ msgid "Message of the day."
 msgstr "Messaggio del giorno."
 
 msgid "MiB"
-msgstr ""
+msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
@@ -2843,6 +2849,9 @@ msgstr "Minimo spazio libero"
 
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minime prestazioni, minimo livello acustico"
+
+msgid "Minutes"
+msgstr "Minuti"
 
 msgid "Minutes between network time sync."
 msgstr "Minuti tra le sincronizzazioni NTP."
@@ -2870,6 +2879,9 @@ msgstr "Modulo"
 
 msgid "Modules"
 msgstr "Moduli"
+
+msgid "Months"
+msgstr "Mesi"
 
 msgid "Mount Point"
 msgstr "Punto di Mount"
@@ -2916,7 +2928,7 @@ msgid "NOPIN sending interval in seconds (20 by default)."
 msgstr ""
 
 msgid "NOT YET AVAILABLE"
-msgstr ""
+msgstr "NON ANCORA DISPONIBILE"
 
 msgid "NTP time server"
 msgstr "NTP time server"
@@ -2952,7 +2964,7 @@ msgid "Network"
 msgstr "Rete"
 
 msgid "Network File System"
-msgstr ""
+msgstr "Network File System"
 
 msgid ""
 "Network authorised to access to the iSCSI target. It takes IP or CIDR "
@@ -3070,11 +3082,6 @@ msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr ""
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr ""
-
 msgid "Nothing to synchronize"
 msgstr ""
 
@@ -3175,10 +3182,10 @@ msgid "Owner"
 msgstr ""
 
 msgid "PG"
-msgstr ""
+msgstr "PG"
 
 msgid "PHP Command"
-msgstr ""
+msgstr "Comando PHP"
 
 msgid "PPPoE"
 msgstr "PPPoE"
@@ -3190,7 +3197,7 @@ msgid "PPTP clients"
 msgstr "Client PPTP"
 
 msgid "PSK"
-msgstr ""
+msgstr "PSK"
 
 msgid "Package Name"
 msgstr "Nome del Pacchetto"
@@ -3302,7 +3309,7 @@ msgid "Permit to do SSH Tunneling."
 msgstr "Permetti di fare tunneling SSH."
 
 msgid "Physical interface"
-msgstr ""
+msgstr "Interfaccia fisica"
 
 msgid "Ping"
 msgstr "Ping"
@@ -3319,6 +3326,7 @@ msgstr "Piattaforma"
 #, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"Per favore, controlla la <a href='%s' target='_blank'>documentazione</a>."
 
 msgid "Please note that blanks in path names are not allowed."
 msgstr ""
@@ -3474,13 +3482,13 @@ msgid "Quiet"
 msgstr "Silenzioso"
 
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 msgid "RAID 0"
 msgstr "RAID 0"
 
 msgid "RAID 0/1/5"
-msgstr ""
+msgstr "RAID 0/1/5"
 
 msgid "RAID 1"
 msgstr "RAID 1"
@@ -3501,13 +3509,13 @@ msgid "RSYNC"
 msgstr "RSYNC"
 
 msgid "RSYNC - Client"
-msgstr ""
+msgstr "RSYNC - Client"
 
 msgid "RSYNC - Local"
-msgstr ""
+msgstr "RSYNC - Locale"
 
 msgid "RSYNC - Server"
-msgstr ""
+msgstr "RSYNC - Server"
 
 msgid "RSYNC Client"
 msgstr "RSYNC Client"
@@ -3576,13 +3584,13 @@ msgid "Reject"
 msgstr ""
 
 msgid "Release notes"
-msgstr ""
+msgstr "Note di rilascio"
 
 msgid "Reload page"
 msgstr "Ricarica pagina"
 
 msgid "Remote Rsync Server"
-msgstr ""
+msgstr "Server Remoto Rsync"
 
 msgid "Remote address"
 msgstr "Indirizzo remoto"
@@ -3686,7 +3694,7 @@ msgid "Rows"
 msgstr "Righe"
 
 msgid "Rsync"
-msgstr ""
+msgstr "Rsync"
 
 msgid "Rsync job"
 msgstr ""
@@ -3931,9 +3939,6 @@ msgstr "Mostra le informazioni sul processo."
 msgid "Shutdown"
 msgstr "Spegnimento"
 
-msgid "Shutdown Time"
-msgstr "Orario di spegnimento"
-
 msgid "Shutdown mode"
 msgstr ""
 
@@ -4156,8 +4161,8 @@ msgstr "Passa a"
 msgid "Switch to %s/s"
 msgstr ""
 
-msgid "Synchronization Time"
-msgstr "Orario Sincronizzazione"
+msgid "Synchronization time"
+msgstr ""
 
 msgid "Synchronize"
 msgstr ""
@@ -5688,6 +5693,9 @@ msgstr ""
 msgid "Webserver"
 msgstr "Webserver"
 
+msgid "Week days"
+msgstr ""
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5831,9 +5839,6 @@ msgstr ""
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr "giorni"
-
 msgid "dbpath"
 msgstr ""
 
@@ -5843,9 +5848,6 @@ msgstr "es. %s"
 
 msgid "hour(s)"
 msgstr ""
-
-msgid "hours"
-msgstr "ore"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI Initiator"
@@ -5873,9 +5875,6 @@ msgstr "minuti"
 
 msgid "mirroring"
 msgstr "mirroring"
-
-msgid "months"
-msgstr "mesi"
 
 msgid "mount"
 msgstr ""
@@ -5940,14 +5939,23 @@ msgstr ""
 msgid "upriv"
 msgstr ""
 
-msgid "week days"
-msgstr "giorni della settimana"
-
 #~ msgid "Date"
 #~ msgstr "Data"
 
+#~ msgid "hours"
+#~ msgstr "ore"
+
 #~ msgid "day"
 #~ msgstr "giorno"
+
+#~ msgid "days"
+#~ msgstr "giorni"
+
+#~ msgid "week days"
+#~ msgstr "giorni della settimana"
+
+#~ msgid "months"
+#~ msgstr "mesi"
 
 #~ msgid "Create"
 #~ msgstr "Crea"
@@ -5982,6 +5990,9 @@ msgstr "giorni della settimana"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Deve essere specificata una rete valida."
 
+#~ msgid "Synchronization Time"
+#~ msgstr "Orario Sincronizzazione"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "La combinazione di condivisione e directory di lavoro non esiste."
 
@@ -5998,6 +6009,9 @@ msgstr "giorni della settimana"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Crea la directory di lavoro se non esiste"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Orario di spegnimento"
 
 #, php-format
 #~ msgid ""

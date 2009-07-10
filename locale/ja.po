@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
 "PO-Revision-Date: 2009-06-20 16:54+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:37+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -950,6 +950,9 @@ msgid "Datasets"
 msgstr ""
 
 msgid "Date & Time"
+msgstr ""
+
+msgid "Days"
 msgstr ""
 
 msgid "Debug"
@@ -2109,6 +2112,9 @@ msgstr "拒否するホスト"
 msgid "Hot Spare"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr "IPアドレスのチェック頻度．秒単位で最大10日"
@@ -2760,6 +2766,9 @@ msgstr "空き容量の最小値"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "最小のパフォーマンス，最小の音響出力"
 
+msgid "Minutes"
+msgstr ""
+
 msgid "Minutes between network time sync."
 msgstr "NTP の時間更新間隔を指定して下さい．"
 
@@ -2786,6 +2795,9 @@ msgstr "モジュール"
 
 msgid "Modules"
 msgstr "モジュール"
+
+msgid "Months"
+msgstr ""
 
 msgid "Mount Point"
 msgstr "マウントポイント"
@@ -2982,11 +2994,6 @@ msgstr "注意: Ctrl を押しながらクリック (Mac は command を押し�
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で複数選択出来ます．"
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分，時，日，月を複数選択出来ます．"
 
 msgid "Nothing to synchronize"
 msgstr ""
@@ -3842,9 +3849,6 @@ msgstr "プロセス情報の表示"
 msgid "Shutdown"
 msgstr "シャットダウン"
 
-msgid "Shutdown Time"
-msgstr "シャットダウン時間"
-
 msgid "Shutdown mode"
 msgstr "シャットダウンモード"
 
@@ -4063,8 +4067,8 @@ msgstr "切り替え"
 msgid "Switch to %s/s"
 msgstr "Switch to %s/s"
 
-msgid "Synchronization Time"
-msgstr "同期時間"
+msgid "Synchronization time"
+msgstr ""
 
 msgid "Synchronize"
 msgstr ""
@@ -5509,6 +5513,9 @@ msgstr "WebGUI"
 msgid "Webserver"
 msgstr "ウェブサーバ"
 
+msgid "Week days"
+msgstr ""
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5647,9 +5654,6 @@ msgstr ""
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr "日"
-
 msgid "dbpath"
 msgstr ""
 
@@ -5659,9 +5663,6 @@ msgstr "例) %s"
 
 msgid "hour(s)"
 msgstr ""
-
-msgid "hours"
-msgstr "時"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI イニシエータ"
@@ -5689,9 +5690,6 @@ msgstr "分"
 
 msgid "mirroring"
 msgstr "ミラーリング"
-
-msgid "months"
-msgstr "月"
 
 msgid "mount"
 msgstr "マウント"
@@ -5756,14 +5754,23 @@ msgstr "アンマウント"
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "週日"
-
 #~ msgid "Date"
 #~ msgstr "日時"
 
+#~ msgid "hours"
+#~ msgstr "時"
+
 #~ msgid "day"
 #~ msgstr "日"
+
+#~ msgid "days"
+#~ msgstr "日"
+
+#~ msgid "week days"
+#~ msgstr "週日"
+
+#~ msgid "months"
+#~ msgstr "月"
 
 #~ msgid "Create"
 #~ msgstr "作成"
@@ -5798,6 +5805,9 @@ msgstr "週日"
 #~ msgid "A valid network must be specified."
 #~ msgstr "有効なネットワークを指定して下さい．"
 
+#~ msgid "Synchronization Time"
+#~ msgstr "同期時間"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "共有と作業ディレクトリの組み合わせが存在しません．"
 
@@ -5812,6 +5822,9 @@ msgstr "週日"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "作業ディレクトリが存在しない場合は作成して下さい"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "シャットダウン時間"
 
 #, php-format
 #~ msgid ""
@@ -5883,6 +5896,11 @@ msgstr "週日"
 
 #~ msgid "Shell access"
 #~ msgstr "シェルアクセス"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分，時，日，月を複数選択出来ます．"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC ローカル"

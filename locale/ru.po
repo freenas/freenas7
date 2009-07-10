@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas-0.7\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
-"PO-Revision-Date: 2009-07-01 13:38+0000\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"PO-Revision-Date: 2009-07-08 12:24+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:36+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -98,6 +98,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a> должен быть включен для работы Unison. <a "
+"href=%s>Пользователь</a> должен иметь доступ к оболочке shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -645,7 +647,7 @@ msgid "Backup file"
 msgstr "Файл резервной копии"
 
 msgid "Backup/Restore"
-msgstr "Сохранить/Восстановить"
+msgstr "Сохранение/восстановление"
 
 msgid "Balance algorithm"
 msgstr "Алгоритм балансировки"
@@ -938,7 +940,7 @@ msgid "Create mask"
 msgstr "Создать маску"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Создать рабочий каталог, если он не существует"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Создает пул с альтернативным корневым каталогом."
@@ -1024,6 +1026,9 @@ msgstr "Dataset'ы"
 
 msgid "Date & Time"
 msgstr "Дата и Время"
+
+msgid "Days"
+msgstr "Дни"
 
 msgid "Debug"
 msgstr "Отладочный режим (Debug)"
@@ -1830,7 +1835,7 @@ msgid "Error"
 msgstr "Ошибка"
 
 msgid "Error's"
-msgstr ""
+msgstr "Ошибки"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1978,7 +1983,7 @@ msgid "Failed to upload metadata backup file."
 msgstr "Ошибка при загрузке файла метаданных."
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "&=&Ошибка при записи файла на диск."
 
 msgid "Failed."
 msgstr "Ошибка."
@@ -2020,7 +2025,7 @@ msgid "File system check"
 msgstr "Проверка файловой системы"
 
 msgid "File upload stopped by extension."
-msgstr ""
+msgstr "&=&Загрузка файла остановлена расширением."
 
 msgid "Filename"
 msgstr "Имя файла"
@@ -2062,7 +2067,7 @@ msgid "Format disk"
 msgstr "Форматировать диск"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Сформировать отчет для форума phpBB."
 
 msgid "Forum"
 msgstr "Форум разработчиков"
@@ -2110,7 +2115,7 @@ msgid "General Setup"
 msgstr "Общие параметры"
 
 msgid "Generate"
-msgstr ""
+msgstr "Создать"
 
 msgid "German"
 msgstr "Немецкий"
@@ -2167,7 +2172,7 @@ msgid "Hard disk standby time"
 msgstr "Таймаут до режима Standby"
 
 msgid "Hardware:"
-msgstr ""
+msgstr "Аппаратное обеспечение"
 
 msgid "Header and Data digest"
 msgstr "Подпись заголовков и данных"
@@ -2230,6 +2235,9 @@ msgstr "Запрещенные хосты"
 
 msgid "Hot Spare"
 msgstr "Горячее резервирование (Hot Spare)"
+
+msgid "Hours"
+msgstr "Часы"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2438,13 +2446,13 @@ msgid "In most cases, 'public' is used here."
 msgstr "В большинстве случаев здесь используется 'public'."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Включить базовые сведения об аппаратном обеспечении"
 
 msgid "Info"
 msgstr "Сведения"
 
 msgid "Info:"
-msgstr ""
+msgstr "Информация:"
 
 msgid "Informal"
 msgstr "Информирование"
@@ -2532,7 +2540,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "Интервал должен быть больше или равен 10 секундам."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Неверный формат файла."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2779,6 +2787,7 @@ msgstr "Размещение для хранения содержимого ба
 msgid ""
 "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
+"Местоположение для сохранения рабочих файлов, например, %s/backup/.unison"
 
 msgid "Log"
 msgstr "Журнал"
@@ -2939,6 +2948,9 @@ msgstr "Минимум свободного места"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Минимальная производительность, минимум шума"
 
+msgid "Minutes"
+msgstr "Минуты"
+
 msgid "Minutes between network time sync."
 msgstr "Сетевая синхронизация времени через (минут)."
 
@@ -2946,7 +2958,7 @@ msgid "Mirror"
 msgstr "Зеркалирование данных (Mirror)"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "&=&Отсутствует временный каталог."
 
 msgid "Mode"
 msgstr "Режим"
@@ -2965,6 +2977,9 @@ msgstr "Модуль"
 
 msgid "Modules"
 msgstr "Модули"
+
+msgid "Months"
+msgstr "Месяцы"
 
 msgid "Mount Point"
 msgstr "Точка монтирования"
@@ -3138,7 +3153,7 @@ msgstr ""
 "href=%s>диск</a>."
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "&=&Файл не был загружен."
 
 msgid "No pool was found."
 msgstr "Пул не обнаружен."
@@ -3188,13 +3203,6 @@ msgid ""
 msgstr ""
 "Примечание: щелкните, удерживая Ctrl (или Сommand для Macintosh), чтобы "
 "выбрать несколько записей."
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr ""
-"Примечание: щелкните, удерживая Ctrl (или Сommand для Macintosh), чтобы "
-"выбрать или отменить выбор минут, часов, дней, месяцев."
 
 msgid "Nothing to synchronize"
 msgstr "Отсутствуют данные для синхронизации"
@@ -3737,10 +3745,10 @@ msgid "Remove all entries from ARP table"
 msgstr "Удалить все записи из ARP-таблицы"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Генератор отчетов"
 
 msgid "Report generator"
-msgstr ""
+msgstr "Генератор отчетов"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -4081,9 +4089,6 @@ msgstr "Показать информацию о процессах"
 msgid "Shutdown"
 msgstr "Выключение"
 
-msgid "Shutdown Time"
-msgstr "Время выключения"
-
 msgid "Shutdown mode"
 msgstr "Режим выключения"
 
@@ -4269,7 +4274,7 @@ msgid "Subject"
 msgstr "Тема"
 
 msgid "Subject:"
-msgstr ""
+msgstr "Тема:"
 
 msgid "Subnet bit count"
 msgstr "Количество битов подсети"
@@ -4314,7 +4319,7 @@ msgstr "Переключить на"
 msgid "Switch to %s/s"
 msgstr "Переключить на %s/s"
 
-msgid "Synchronization Time"
+msgid "Synchronization time"
 msgstr "Время синхронизации"
 
 msgid "Synchronize"
@@ -4633,7 +4638,7 @@ msgstr "Конфигурация не может быть восстановле
 
 #, php-format
 msgid "The configuration could not be restored. %s"
-msgstr ""
+msgstr "Конфигурация %s не может быть восстановлена."
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4723,6 +4728,8 @@ msgid ""
 "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
 "first before proceeding."
 msgstr ""
+"Зашифрованное устройство в данный момент смонтировано. Необходимо вначале <a "
+"href=%s>размонтировать</a> этот диск."
 
 msgid "The extent name already exists."
 msgstr "Такое имя экстента уже существует."
@@ -4991,13 +4998,17 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form."
 msgstr ""
+"&=&Загружаемый файл превышает параметр MAX_FILE_SIZE, заданный для HTML-"
+"формы."
 
 msgid ""
 "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
+"&=&Загружаемый файл превышает параметр upload_max_filesize, заданный в "
+"php.ini."
 
 msgid "The uploaded file was only partially uploaded."
-msgstr ""
+msgstr "Загружаемый файл был загружен лишь частично."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Загруженный файл не для этой платформы"
@@ -5012,10 +5023,10 @@ msgid "The volume must be detached before it can be deleted."
 msgstr "Том должен быть отсоединен перед удалением."
 
 msgid "The working directory does not exist."
-msgstr ""
+msgstr "Рабочий каталог не существует."
 
 msgid "There is no error, the file uploaded with success."
-msgstr ""
+msgstr "&=&Загрузка файлов произошла успешно, ошибок не обнаружено."
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "В массиве типа RAID1 должно быть 2 диска."
@@ -5093,7 +5104,7 @@ msgstr "Эти параметры будут добавлены к %s."
 
 #, php-format
 msgid "These parameters will be added to [global] settings in %s."
-msgstr ""
+msgstr "Эти параметры будут добавлены к секции [global] в %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -5770,6 +5781,8 @@ msgid ""
 "Use this option to override the default permission modes for newly created "
 "files (%s by default). "
 msgstr ""
+"Команда umask изменяет права доступа, которые присваиваются новым файлам и "
+"каталогам (по умолчанию %s). "
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -5818,7 +5831,7 @@ msgid "User full name."
 msgstr "Полное имя пользователя."
 
 msgid "User mask"
-msgstr ""
+msgstr "Права доступа"
 
 msgid "User numeric id."
 msgstr "Числовой индентификатор пользователя."
@@ -5934,6 +5947,9 @@ msgstr "Web-интерфейс"
 msgid "Webserver"
 msgstr "Web Server"
 
+msgid "Week days"
+msgstr "Дни недели"
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5972,7 +5988,7 @@ msgstr ""
 "более 15 символов)."
 
 msgid "Working directory"
-msgstr ""
+msgstr "Рабочий каталог"
 
 msgid "Write"
 msgstr "Записать"
@@ -6087,9 +6103,6 @@ msgstr "crlf"
 msgid "day(s)"
 msgstr "дн."
 
-msgid "days"
-msgstr "дней"
-
 msgid "dbpath"
 msgstr "dbpath"
 
@@ -6099,9 +6112,6 @@ msgstr "Доменный суффикс (например  %s)."
 
 msgid "hour(s)"
 msgstr "час."
-
-msgid "hours"
-msgstr "часов"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI-инициатор"
@@ -6129,9 +6139,6 @@ msgstr "минут"
 
 msgid "mirroring"
 msgstr "зеркалирование"
-
-msgid "months"
-msgstr "месяцев"
 
 msgid "mount"
 msgstr "монтировать"
@@ -6164,7 +6171,7 @@ msgid "nostat"
 msgstr "nostat"
 
 msgid "phpBB:"
-msgstr ""
+msgstr "Отчет для phpBB:"
 
 msgid "prodos"
 msgstr "prodos"
@@ -6196,14 +6203,23 @@ msgstr "размонтировать"
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "дней недели"
-
 #~ msgid "Date"
 #~ msgstr "Дата"
 
+#~ msgid "hours"
+#~ msgstr "часов"
+
 #~ msgid "day"
 #~ msgstr "день"
+
+#~ msgid "days"
+#~ msgstr "дней"
+
+#~ msgid "week days"
+#~ msgstr "дней недели"
+
+#~ msgid "months"
+#~ msgstr "месяцев"
 
 #~ msgid "Create"
 #~ msgstr "Создать"
@@ -6223,6 +6239,9 @@ msgstr "дней недели"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Должна быть указана корректная сеть."
 
+#~ msgid "Synchronization Time"
+#~ msgstr "Время синхронизации"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Комбинация общего ресурса и рабочего каталога не существует."
 
@@ -6239,6 +6258,9 @@ msgstr "дней недели"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Создать рабочий каталог, если он не существует"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Время выключения"
 
 #, php-format
 #~ msgid ""
@@ -6316,6 +6338,13 @@ msgstr "дней недели"
 
 #~ msgid "Shell access"
 #~ msgstr "Доступ к системной оболочке shell"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Примечание: щелкните, удерживая Ctrl (или Сommand для Macintosh), чтобы "
+#~ "выбрать или отменить выбор минут, часов, дней, месяцев."
 
 #~ msgid "RSYNC Local"
 #~ msgstr "Локальный Rsync"

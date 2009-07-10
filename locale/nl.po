@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
-"PO-Revision-Date: 2009-07-01 22:30+0000\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"PO-Revision-Date: 2009-07-04 02:39+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:36+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -184,6 +184,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a> moet ingeschakeld zijn om Unison te laten werken en de  "
+"<a href=%s>gebruiker</a> dient volledige shell toegang te hebben."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -1021,7 +1023,7 @@ msgid "Create encrypted volume"
 msgstr "Creëer versleuteld station"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Werk folder aanmaken als deze nog niet bestaat."
 
 msgid "Creates the pool with an alternate root."
 msgstr "Creëer de pool met een alternatieve root."
@@ -1109,6 +1111,9 @@ msgstr "Datasetten"
 
 msgid "Date & Time"
 msgstr "Datum & Tijd"
+
+msgid "Days"
+msgstr "Dagen"
 
 msgid "Debug"
 msgstr "Debug"
@@ -1904,7 +1909,7 @@ msgid "Error"
 msgstr "Fout"
 
 msgid "Error's"
-msgstr ""
+msgstr "Fouten"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2051,7 +2056,7 @@ msgid "Failed to upload metadata backup file."
 msgstr "Mislukt om de metadata backup bestand te uploaden."
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "Mislukt om het bestand op de schijf te schrijven."
 
 msgid "Failed."
 msgstr "Mislukt."
@@ -2088,7 +2093,7 @@ msgid "File system check"
 msgstr "Bestandssysteem controle"
 
 msgid "File upload stopped by extension."
-msgstr ""
+msgstr "Bestand upload gestopt door uitbreidingen."
 
 msgid "Filename"
 msgstr "bestandsnaam"
@@ -2130,7 +2135,7 @@ msgid "Format disk"
 msgstr "Formatteer harde schijf"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Rapportage indelen voor plaatsing op het phpBB forum."
 
 msgid "Forum"
 msgstr "Forum"
@@ -2178,7 +2183,7 @@ msgid "General Setup"
 msgstr "Algemene instellingen"
 
 msgid "Generate"
-msgstr ""
+msgstr "Aanmaken"
 
 msgid "German"
 msgstr "Duits"
@@ -2237,7 +2242,7 @@ msgid "Hard disk standby time"
 msgstr "Standby tijd harde schijf"
 
 msgid "Hardware:"
-msgstr ""
+msgstr "Hardware:"
 
 msgid "Header and Data digest"
 msgstr "Hoofd and Gegevens overzicht"
@@ -2300,6 +2305,9 @@ msgstr "Hosten afwijzen"
 
 msgid "Hot Spare"
 msgstr "Hot Spare"
+
+msgid "Hours"
+msgstr "Uren"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2522,13 +2530,13 @@ msgid "In most cases, 'public' is used here."
 msgstr "In de meeste gevallen, wordt 'publiek' hier gebruikt."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Basis hardware informatie bijsluiten."
 
 msgid "Info"
 msgstr "Info"
 
 msgid "Info:"
-msgstr ""
+msgstr "Info:"
 
 msgid "Informal"
 msgstr "Informeel"
@@ -2613,7 +2621,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "De interval moet groter of gelijk zijn aan 10 seconden."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Ongeldig bestandsformaat."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2858,6 +2866,8 @@ msgstr "Locatie waar de inhoudsdatabase opgeslagen gaat worden."
 msgid ""
 "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
+"Plaats waar de werk bestanden zullen worden opgeslagen, bijv. "
+"%s/backup/.unison"
 
 msgid "Log"
 msgstr "Logboek"
@@ -3020,6 +3030,9 @@ msgstr "Minimale vrije ruimte"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minimale prestaties, Minimale geluidsproductie"
 
+msgid "Minutes"
+msgstr "Minuten"
+
 msgid "Minutes between network time sync."
 msgstr "Aantal minuten tussen de netwerk tijdsynchronisatie's."
 
@@ -3027,7 +3040,7 @@ msgid "Mirror"
 msgstr "Mirror"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Een tijdelijke folder ontbreekt."
 
 msgid "Mode"
 msgstr "Mode"
@@ -3046,6 +3059,9 @@ msgstr "Module"
 
 msgid "Modules"
 msgstr "Modulen"
+
+msgid "Months"
+msgstr "Maanden"
 
 msgid "Mount Point"
 msgstr "Koppelpunten"
@@ -3219,7 +3235,7 @@ msgstr ""
 "Geen schijven beschikbaar. Voeg eerst een nieuwe <a href=%s>schijf</a> toe."
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "Er is geen bestand geupload."
 
 msgid "No pool was found."
 msgstr "Er is geen pool gevonden."
@@ -3270,13 +3286,6 @@ msgid ""
 msgstr ""
 "Tip: Ctrl-klik (of command-click op de Mac) om verschilende toegangen te "
 "selecteren."
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr ""
-"Tip: Ctrl-klik (of command-click op de Mac) om minuten, uren, dagen en "
-"maanden te selecteren of te de-selecteren."
 
 msgid "Nothing to synchronize"
 msgstr "Er is niets om te synchroniseren"
@@ -3819,10 +3828,10 @@ msgid "Remove all entries from ARP table"
 msgstr "Alle ARP regels verwijderen uit de tabel"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Rapport Generator"
 
 msgid "Report generator"
-msgstr ""
+msgstr "Rapport generator"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -4170,9 +4179,6 @@ msgstr "Processen weergeven"
 msgid "Shutdown"
 msgstr "Uitschakelen"
 
-msgid "Shutdown Time"
-msgstr "Uitschakel Tijd"
-
 msgid "Shutdown mode"
 msgstr "Systeem afsluitmodus"
 
@@ -4364,7 +4370,7 @@ msgid "Subject"
 msgstr "Onderwerp"
 
 msgid "Subject:"
-msgstr ""
+msgstr "Onderwerp:"
 
 msgid "Subnet bit count"
 msgstr "Subnet bit telling"
@@ -4409,8 +4415,8 @@ msgstr "Schakel naar"
 msgid "Switch to %s/s"
 msgstr "Schakel naar %s/s"
 
-msgid "Synchronization Time"
-msgstr "Synchronisatie Tijd"
+msgid "Synchronization time"
+msgstr "Synchronisatietijd"
 
 msgid "Synchronize"
 msgstr "Synchronisatie"
@@ -4717,7 +4723,7 @@ msgstr "De configuratie kon niet worden hersteld."
 
 #, php-format
 msgid "The configuration could not be restored. %s"
-msgstr ""
+msgstr "De configuratie kan niet worden hersteld. %s"
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4807,6 +4813,8 @@ msgid ""
 "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
 "first before proceeding."
 msgstr ""
+"De versleutelde schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> "
+"deze schijf eerst voor u verder gaat."
 
 msgid "The extent name already exists."
 msgstr "Deze extentie naam bestaat reeds."
@@ -5072,13 +5080,17 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form."
 msgstr ""
+"Het geuploade bestand overschrijdt de MAX_BESTANDS_GROOTTE richtlijn die "
+"werd gespecificeerd in de HTML vorm."
 
 msgid ""
 "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
+"Het geuploade bestand overschrijdt de upload_max_bestandsgrootte richtlijn "
+"in de php.ini."
 
 msgid "The uploaded file was only partially uploaded."
-msgstr ""
+msgstr "Het geuploade bestand werd slechts gedeeltelijk geupload."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Het geuploade image bestand is niet geschikt voor dit platform"
@@ -5094,10 +5106,10 @@ msgstr ""
 "Het volume moet eerst losgekoppeld worden voordat het kan worden verwijderd."
 
 msgid "The working directory does not exist."
-msgstr ""
+msgstr "De werkfolder bestaat niet."
 
 msgid "There is no error, the file uploaded with success."
-msgstr ""
+msgstr "Er is geen fout ontdekt, het bestand is met succes geupload."
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Er moeten minimaal 2 schijven zijn in een RAID 1 volume."
@@ -5176,7 +5188,7 @@ msgstr "Deze parameters worden toegevoegd aan %s."
 
 #, php-format
 msgid "These parameters will be added to [global] settings in %s."
-msgstr ""
+msgstr "Deze parameters worden toegevoegd aan [globale] instellingen van %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -5865,12 +5877,13 @@ msgid ""
 "Use this option to override the default permission modes for newly created "
 "files (%s by default). "
 msgstr ""
+"Gebruik deze instelling om de standaard bestandsmachtigingen te overbruggen "
+"op nieuw aangemaakte bestanden (%s standaard). "
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
 msgstr ""
-"Gebruik deze optie om de rechten in te stellen op de folders die aangemaakt "
-"worden (standaard 022)."
+"Gebruik deze optie om de folder machtigingen te overbruggen (standaard 022)."
 
 msgid ""
 "Use this option to override the directory creation mask (0777 by default)."
@@ -5885,8 +5898,7 @@ msgstr ""
 
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
-"Gebruik deze optie om de rechten in te stellen op de bestanden die "
-"aangemaakt worden (standaard 077)."
+"Gebruik deze optie om de bestandsmachtigingen te overbruggen (standaard 077)."
 
 msgid ""
 "Use this option to override the username ('ftp' by default) which will be "
@@ -5915,7 +5927,7 @@ msgid "User full name."
 msgstr "De volledige naam van deze gebruiker."
 
 msgid "User mask"
-msgstr ""
+msgstr "Gebruikersmachtiging"
 
 msgid "User numeric id."
 msgstr "Numerieke gebruikers id."
@@ -6030,6 +6042,9 @@ msgstr "WebGUI"
 msgid "Webserver"
 msgstr "Webserver"
 
+msgid "Week days"
+msgstr "Week dagen"
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -6068,7 +6083,7 @@ msgstr ""
 "tekens)."
 
 msgid "Working directory"
-msgstr ""
+msgstr "Werkfolder"
 
 msgid "Write"
 msgstr "Schrijven"
@@ -6191,14 +6206,8 @@ msgstr "crlf"
 msgid "day(s)"
 msgstr "dag(en)"
 
-msgid "days"
-msgstr "dagen"
-
 msgid "hour(s)"
 msgstr "(u)ur(en)"
-
-msgid "hours"
-msgstr "uren"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI Initiator"
@@ -6226,9 +6235,6 @@ msgstr "minuten"
 
 msgid "mirroring"
 msgstr "mirroring"
-
-msgid "months"
-msgstr "maanden"
 
 msgid "mount"
 msgstr "aankoppelen"
@@ -6261,7 +6267,7 @@ msgid "nostat"
 msgstr "nostat"
 
 msgid "phpBB:"
-msgstr ""
+msgstr "phpBB:"
 
 msgid "prodos"
 msgstr "prodos"
@@ -6293,14 +6299,23 @@ msgstr "loskoppelen"
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "weekdagen"
-
 #~ msgid "Date"
 #~ msgstr "Datum"
 
+#~ msgid "hours"
+#~ msgstr "uren"
+
 #~ msgid "day"
 #~ msgstr "dag"
+
+#~ msgid "days"
+#~ msgstr "dagen"
+
+#~ msgid "week days"
+#~ msgstr "weekdagen"
+
+#~ msgid "months"
+#~ msgstr "maanden"
 
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
