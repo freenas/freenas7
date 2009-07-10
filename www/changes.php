@@ -30,6 +30,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+// Configure page permission
+$pgperm['allowuser'] = TRUE;
+
 require("auth.inc");
 require("guiconfig.inc");
 

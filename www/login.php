@@ -35,21 +35,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	session_start();
 
 	if ($_POST['username'] === $config['system']['username'] &&
-			$_POST['password'] === $config['system']['password']) {
-		$_SESSION['login'] = true;
+		$_POST['password'] === $config['system']['password']) {
+		$_SESSION['login'] = TRUE;
+		$_SESSION['admin'] = TRUE;
 		$_SESSION['authtoken'] = crypt(session_id());
-
-		if ($_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
-			if (php_sapi_name() === 'cgi') {
-				header('Status: 303 See Other');
-			}	else {
-				header('HTTP/1.1 303 See Other');
-			}
-		}
 
 		header('Location: index.php');
 		exit;
+	} else {
+		$users = system_get_user_list();
+		foreach ($users as $userk => $userv) {
+			$password = crypt($_POST['password'], $userv['password']);
+			if (($_POST['username'] === $userv['name']) &&
+				($password === $userv['password'])) {
+				$_SESSION['uid'] = $userv['uid'];
+				$_SESSION['login'] = TRUE;
+				$_SESSION['authtoken'] = crypt(session_id());
+
+				header('Location: system_password_user.php');
+				exit;
+			}
+		}
 	}
+
+	write_log(gettext("Authentication error for illegal user {$_POST['username']} from {$_SERVER['REMOTE_ADDR']}"));
 }
 ?>
 <html>

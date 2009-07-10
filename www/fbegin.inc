@@ -14,25 +14,26 @@ $menu['system']['desc'] = gettext("System");
 $menu['system']['visible'] = TRUE;
 $menu['system']['link'] = "";
 $menu['system']['menuitem'] = array();
-$menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => TRUE);
-$menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => TRUE);
-$menu['system']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
+$menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => $_SESSION['admin']);
+$menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => $_SESSION['admin']);
+$menu['system']['menuitem'][] = array("desc" => gettext("Password"), "link" => "system_password_user.php", "visible" => !$_SESSION['admin']);
+$menu['system']['menuitem'][] = array("type" => "separator", "visible" => $_SESSION['admin']);
 if ("full" === $g['platform']) {
-	$menu['system']['menuitem'][] = array("desc" => gettext("Packages"), "link" => "system_packages.php", "visible" => TRUE);
+	$menu['system']['menuitem'][] = array("desc" => gettext("Packages"), "link" => "system_packages.php", "visible" => $_SESSION['admin']);
 } else {
-	$menu['system']['menuitem'][] = array("desc" => gettext("Firmware"), "link" => "system_firmware.php", "visible" => TRUE);
+	$menu['system']['menuitem'][] = array("desc" => gettext("Firmware"), "link" => "system_firmware.php", "visible" => $_SESSION['admin']);
 }
-$menu['system']['menuitem'][] = array("desc" => gettext("Backup/Restore"), "link" => "system_backup.php", "visible" => TRUE);
-$menu['system']['menuitem'][] = array("desc" => gettext("Factory defaults"), "link" => "system_defaults.php", "visible" => TRUE);
-$menu['system']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
-$menu['system']['menuitem'][] = array("desc" => gettext("Reboot"), "link" => "reboot.php", "visible" => TRUE);
-$menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "shutdown.php", "visible" => TRUE);
+$menu['system']['menuitem'][] = array("desc" => gettext("Backup/Restore"), "link" => "system_backup.php", "visible" => $_SESSION['admin']);
+$menu['system']['menuitem'][] = array("desc" => gettext("Factory defaults"), "link" => "system_defaults.php", "visible" => $_SESSION['admin']);
+$menu['system']['menuitem'][] = array("type" => "separator", "visible" => $_SESSION['admin']);
+$menu['system']['menuitem'][] = array("desc" => gettext("Reboot"), "link" => "reboot.php", "visible" => $_SESSION['admin']);
+$menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "shutdown.php", "visible" => $_SESSION['admin']);
 $menu['system']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
 $menu['system']['menuitem'][] = array("desc" => gettext("Logout"), "link" => "logout.php", "visible" => TRUE);
 
 // Network
 $menu['network']['desc'] = gettext("Network");
-$menu['network']['visible'] = TRUE;
+$menu['network']['visible'] = $_SESSION['admin'];
 $menu['network']['link'] = "";
 $menu['network']['menuitem'] = array();
 $menu['network']['menuitem'][] = array("desc" => gettext("Interface Management"), "link" => "interfaces_assign.php", "visible" => TRUE);
@@ -48,7 +49,7 @@ $menu['network']['menuitem'][] = array("desc" => gettext("Firewall"), "link" => 
 
 // Disks
 $menu['disks']['desc'] = gettext("Disks");
-$menu['disks']['visible'] = TRUE;
+$menu['disks']['visible'] = $_SESSION['admin'];
 $menu['disks']['link'] = "";
 $menu['disks']['menuitem'] = array();
 $menu['disks']['menuitem'][] = array("desc" => gettext("Management"), "link" => "disks_manage.php", "visible" => TRUE);
@@ -60,7 +61,7 @@ $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" =>
 
 // Services
 $menu['services']['desc'] = gettext("Services");
-$menu['services']['visible'] = TRUE;
+$menu['services']['visible'] = $_SESSION['admin'];
 $menu['services']['link'] = "services_status.php";
 $menu['services']['menuitem'] = array();
 $menu['services']['menuitem'][] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "visible" => TRUE);
@@ -84,7 +85,7 @@ $menu['services']['menuitem'][] = array("desc" => gettext("Status"), "link" => "
 
 // Access
 $menu['access']['desc'] = gettext("Access");
-$menu['access']['visible'] = TRUE;
+$menu['access']['visible'] = $_SESSION['admin'];
 $menu['access']['link'] = "";
 $menu['access']['menuitem'] = array();
 $menu['access']['menuitem'][] = array("desc" => gettext("Users and Groups"), "link" => "access_users.php", "visible" => TRUE);
@@ -94,7 +95,7 @@ $menu['access']['menuitem'][] = array("desc" => gettext("NIS"), "link" => "notav
 
 // Status
 $menu['status']['desc'] = gettext("Status");
-$menu['status']['visible'] = TRUE;
+$menu['status']['visible'] = $_SESSION['admin'];
 $menu['status']['link'] = "index.php";
 $menu['status']['menuitem'] = array();
 $menu['status']['menuitem'][] = array("desc" => gettext("System"), "link" => "index.php", "visible" => TRUE);
@@ -109,14 +110,14 @@ $menu['advanced']['desc'] = gettext("Advanced");
 $menu['advanced']['visible'] = TRUE;
 $menu['advanced']['link'] = "";
 $menu['advanced']['menuitem'] = array();
-$menu['advanced']['menuitem'][] = array("desc" => gettext("File Editor"), "link" => "system_edit.php", "visible" => TRUE);
+$menu['advanced']['menuitem'][] = array("desc" => gettext("File Editor"), "link" => "system_edit.php", "visible" => $_SESSION['admin']);
 $menu['advanced']['menuitem'][] = array("desc" => gettext("File Manager"), "link" => "quixplorer", "visible" => TRUE, "target" => "_blank");
-$menu['advanced']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
-$menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => "exec.php", "visible" => TRUE);
+$menu['advanced']['menuitem'][] = array("type" => "separator", "visible" => $_SESSION['admin']);
+$menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => "exec.php", "visible" => $_SESSION['admin']);
 
 // Diagnostics
 $menu['diagnostics']['desc'] = gettext("Diagnostics");
-$menu['diagnostics']['visible'] = TRUE;
+$menu['diagnostics']['visible'] = $_SESSION['admin'];
 $menu['diagnostics']['link'] = "";
 $menu['diagnostics']['menuitem'] = array();
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Log"), "link" => "diag_log.php", "visible" => TRUE);
@@ -143,8 +144,8 @@ $menu['help']['menuitem'][] = array("desc" => gettext("Donate"), "link" => "http
 function display_menu($menuid) {
 	global $menu;
 
-	// Is menu visible? 
-	if ($menu[$menuid]['visible'] === FALSE)
+	// Is menu visible?
+	if (!$menu[$menuid]['visible'])
 		return;
 
 	echo "<li>\n";
