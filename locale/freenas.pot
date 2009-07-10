@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-07-10 20:23+0000\n"
+"PO-Revision-Date: 2009-07-10 20:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -4754,7 +4754,7 @@ msgid "Use the specified NTP server."
 msgstr ""
 
 #, php-format
-msgid "Use this option to override the default permission modes for newly created files (%s by default). "
+msgid "Use this option to override the default permission modes for newly created files (%s by default)."
 msgstr ""
 
 msgid "Use this option to override the directory creation mask (022 by default)."
