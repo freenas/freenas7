@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
-"PO-Revision-Date: 2009-07-01 11:41+0000\n"
-"Last-Translator: Christophe Painchaud <dash@ionblast.net>\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"PO-Revision-Date: 2009-07-08 05:52+0000\n"
+"Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:36+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -436,7 +436,7 @@ msgid "Aggregation protocol"
 msgstr "Protocole d'agrégation"
 
 msgid "Aggressive"
-msgstr ""
+msgstr "Agressif"
 
 msgid "Albanian"
 msgstr "Albanais"
@@ -635,7 +635,7 @@ msgid "AutoScale"
 msgstr "Echelle auto"
 
 msgid "Autoselect"
-msgstr ""
+msgstr "Sélection automatique"
 
 msgid "Auxiliary parameters"
 msgstr "Paramètres auxiliaires"
@@ -673,7 +673,7 @@ msgstr ""
 "Le nom de base sera ajouté automatiquement si cela ne débute pas par 'iqn.'."
 
 msgid "Best available"
-msgstr ""
+msgstr "Meilleur disponible"
 
 msgid "Bind DN"
 msgstr "DN pour le bind"
@@ -942,7 +942,7 @@ msgid "Create mask"
 msgstr "Masque de fichier"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Crée un répertoire de travail s'il n'existe pas."
 
 msgid "Creates the pool with an alternate root."
 msgstr "Crée le pool avec un root alternatif."
@@ -1030,6 +1030,9 @@ msgstr "Datasets"
 
 msgid "Date & Time"
 msgstr "Date & Heure"
+
+msgid "Days"
+msgstr "Jours"
 
 msgid "Debug"
 msgstr "Débug"
@@ -1988,7 +1991,7 @@ msgid "Failed to upload metadata backup file."
 msgstr "Echec au chargement du fichier de sauvegarde des méta-données."
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "Echec de l'écriture du fichier sur le disque."
 
 msgid "Failed."
 msgstr "Echec"
@@ -2029,7 +2032,7 @@ msgid "File system check"
 msgstr "Vérification de système de fichier"
 
 msgid "File upload stopped by extension."
-msgstr ""
+msgstr "Upload du fichier arrêté par l'extension"
 
 msgid "Filename"
 msgstr "Nom de fichier"
@@ -2071,7 +2074,7 @@ msgid "Format disk"
 msgstr "Formater le disque"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Formater le rapport pour un forum phpBB."
 
 msgid "Forum"
 msgstr "Forum"
@@ -2104,7 +2107,7 @@ msgid "GID"
 msgstr "GID"
 
 msgid "GPT partition"
-msgstr ""
+msgstr "Partition GPT"
 
 msgid "Gateway"
 msgstr "Passerelle"
@@ -2119,7 +2122,7 @@ msgid "General Setup"
 msgstr "Configuration générale"
 
 msgid "Generate"
-msgstr ""
+msgstr "Générer"
 
 msgid "German"
 msgstr "Allemand"
@@ -2240,6 +2243,9 @@ msgstr "Hôtes refusés"
 
 msgid "Hot Spare"
 msgstr "Hot Spare"
+
+msgid "Hours"
+msgstr "Heures"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2456,13 +2462,13 @@ msgid "In most cases, 'public' is used here."
 msgstr "Dans la plupart des cas, 'public' est utilisé ici."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Inclure des informations basiques sur le hardware"
 
 msgid "Info"
 msgstr "Info"
 
 msgid "Info:"
-msgstr ""
+msgstr "Information:"
 
 msgid "Informal"
 msgstr "Informel"
@@ -2550,7 +2556,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "L'intervalle doit être supérieur ou égal à 10 secondes."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Format de fichier invalide."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2799,6 +2805,7 @@ msgstr ""
 msgid ""
 "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
+"Répertoire où seront stockés les fichiers de travail, e.g. %s/backup/.unison"
 
 msgid "Log"
 msgstr "Journal"
@@ -2957,6 +2964,9 @@ msgstr "Espace disque minimum"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Performance minimale, niveau acoustique minimal"
 
+msgid "Minutes"
+msgstr "Minutes"
+
 msgid "Minutes between network time sync."
 msgstr "Minutes entre des syncronisations du temps réseau."
 
@@ -2964,7 +2974,7 @@ msgid "Mirror"
 msgstr "Mirroir"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Il manque un dossier temporaire."
 
 msgid "Mode"
 msgstr "Mode"
@@ -2983,6 +2993,9 @@ msgstr "Module"
 
 msgid "Modules"
 msgstr "Modules"
+
+msgid "Months"
+msgstr "Mois"
 
 msgid "Mount Point"
 msgstr "Point de montage"
@@ -3154,7 +3167,7 @@ msgstr ""
 "href=%s>disque</a>."
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "Aucun fichier n'a été uploadé."
 
 msgid "No pool was found."
 msgstr "Aucun pool trouvé."
@@ -3204,13 +3217,6 @@ msgid ""
 msgstr ""
 "Note : Ctrl-click (ou command-click sur Mac) pour sélectionner plusieurs "
 "entrées."
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr ""
-"Note: Ctrl-click (ou commande-click sur Mac) pour sélectionner ou "
-"déselectionner les minutes, heures, jours et mois."
 
 msgid "Nothing to synchronize"
 msgstr "Rien à synchroniser"
@@ -3349,7 +3355,7 @@ msgid "Packages"
 msgstr "Paquets"
 
 msgid "Painfully aggressive"
-msgstr ""
+msgstr "Très agressif"
 
 msgid "Pairwise"
 msgstr "Par paire"
@@ -3689,7 +3695,7 @@ msgid "Read Only Access"
 msgstr "Accès en Lecture uniquement"
 
 msgid "Read from lowest load"
-msgstr ""
+msgstr "Lire depuis la charge minimale"
 
 msgid "Read only"
 msgstr "Lecture seule"
@@ -3758,10 +3764,10 @@ msgid "Remove all entries from ARP table"
 msgstr "Supprimer toutes les entrées de la table ARP"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Générateur de rapports"
 
 msgid "Report generator"
-msgstr ""
+msgstr "Générateur de rapports"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -4106,9 +4112,6 @@ msgstr "Afficher les informations des processus"
 msgid "Shutdown"
 msgstr "Arrêt"
 
-msgid "Shutdown Time"
-msgstr "Heure d'arrêt"
-
 msgid "Shutdown mode"
 msgstr "Mode d'arrêt"
 
@@ -4252,7 +4255,7 @@ msgid "Start scrub on '%s'."
 msgstr "Démarrer le scrub sur '%s'."
 
 msgid "Static"
-msgstr ""
+msgstr "Statique"
 
 msgid "Static Routes"
 msgstr "Routes statiques"
@@ -4298,7 +4301,7 @@ msgid "Subject"
 msgstr "Sujet"
 
 msgid "Subject:"
-msgstr ""
+msgstr "Objet:"
 
 msgid "Subnet bit count"
 msgstr "Subnet bit count"
@@ -4343,8 +4346,8 @@ msgstr "Basculer en"
 msgid "Switch to %s/s"
 msgstr "Basculer en %s/s"
 
-msgid "Synchronization Time"
-msgstr "Heure de synchronisation"
+msgid "Synchronization time"
+msgstr ""
 
 msgid "Synchronize"
 msgstr "Synchroniser"
@@ -4679,7 +4682,7 @@ msgstr "La configuration n'a pu être restaurée."
 
 #, php-format
 msgid "The configuration could not be restored. %s"
-msgstr ""
+msgstr "La configuration n'a pu être restaurée. %s"
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4770,6 +4773,8 @@ msgid ""
 "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
 "first before proceeding."
 msgstr ""
+"Le périphérique chiffré est actuellement monté ! <a href=%s>Démontez</a> ce "
+"disque avant de poursuivre."
 
 msgid "The extent name already exists."
 msgstr "Le nom d'extension existe déjà."
@@ -5045,13 +5050,17 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form."
 msgstr ""
+"La taille du fichier uploadé excède la directive MAX_FILE_SIZE spécifiée "
+"dans le formulaire HTML."
 
 msgid ""
 "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
+"La taille du fichier uploadé excède la directive upload_max_filesize "
+"spécifiée dans php.ini."
 
 msgid "The uploaded file was only partially uploaded."
-msgstr ""
+msgstr "Le fichier n'a été uploadé que partiellement."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Le fichier image chargé n'est pas valide pour cette plateforme"
@@ -5066,10 +5075,10 @@ msgid "The volume must be detached before it can be deleted."
 msgstr "Le volume doit être détaché avant de pouvoir être supprimé."
 
 msgid "The working directory does not exist."
-msgstr ""
+msgstr "Le répertoire de travail n'existe pas."
 
 msgid "There is no error, the file uploaded with success."
-msgstr ""
+msgstr "Auncune erreur, le fichier a été uploadé avec succès."
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Un volume RAID1 doit être composé de 2 disques."
@@ -5147,7 +5156,7 @@ msgstr "Ces paramètres vont être ajoutés à '%s'."
 
 #, php-format
 msgid "These parameters will be added to [global] settings in %s."
-msgstr ""
+msgstr "Ces paramètres seront ajoutés à la section [global] dans %s."
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
@@ -5722,7 +5731,7 @@ msgid "UPS disabled"
 msgstr "UPS désactivé"
 
 msgid "UPS goes on battery"
-msgstr ""
+msgstr "L'UPS bascle sur la batterie"
 
 msgid "UPS reaches low battery"
 msgstr "Batterie faible sur le système UPS"
@@ -5832,6 +5841,8 @@ msgid ""
 "Use this option to override the default permission modes for newly created "
 "files (%s by default). "
 msgstr ""
+"Utiliser cette option pour surcharger les modes de permission par défaut "
+"pour les nouveaux fichiers créés (%s par défaut). "
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -5881,7 +5892,7 @@ msgid "User full name."
 msgstr "Nom complet de l'utilisateur."
 
 msgid "User mask"
-msgstr ""
+msgstr "Masque utilisateur"
 
 msgid "User numeric id."
 msgstr "Identifiant numérique de l'utilisateur."
@@ -5997,6 +6008,9 @@ msgstr "Interface Web"
 msgid "Webserver"
 msgstr "Serveur web"
 
+msgid "Week days"
+msgstr "Jours de la semaine"
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -6034,7 +6048,7 @@ msgstr ""
 "lorsqu'il sera contacté par des clients (15 caractères maximum)."
 
 msgid "Working directory"
-msgstr ""
+msgstr "Répertoire de travail"
 
 msgid "Write"
 msgstr "Écriture"
@@ -6153,10 +6167,7 @@ msgid "crlf"
 msgstr "crlf"
 
 msgid "day(s)"
-msgstr ""
-
-msgid "days"
-msgstr "jours"
+msgstr "jour(s)"
 
 msgid "dbpath"
 msgstr "dbpath"
@@ -6166,10 +6177,7 @@ msgid "e.g. %s"
 msgstr "e.g. %s"
 
 msgid "hour(s)"
-msgstr ""
-
-msgid "hours"
-msgstr "heures"
+msgstr "heure(s)"
 
 msgid "iSCSI Initiator"
 msgstr "Initiateur iSCSI"
@@ -6190,16 +6198,13 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "minute(s)"
-msgstr ""
+msgstr "minutes(s)"
 
 msgid "minutes"
 msgstr "minutes"
 
 msgid "mirroring"
 msgstr "mirroring"
-
-msgid "months"
-msgstr "mois"
 
 msgid "mount"
 msgstr "montage"
@@ -6232,7 +6237,7 @@ msgid "nostat"
 msgstr "nostat"
 
 msgid "phpBB:"
-msgstr ""
+msgstr "phpBB:"
 
 msgid "prodos"
 msgstr "prodos"
@@ -6244,7 +6249,7 @@ msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
 msgid "second(s)"
-msgstr ""
+msgstr "seconde(s)"
 
 msgid "seconds"
 msgstr "secondes"
@@ -6264,14 +6269,23 @@ msgstr "démontage"
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "jours de la semaine"
-
 #~ msgid "Date"
 #~ msgstr "Date"
 
+#~ msgid "hours"
+#~ msgstr "heures"
+
 #~ msgid "day"
 #~ msgstr "jour"
+
+#~ msgid "days"
+#~ msgstr "jours"
+
+#~ msgid "week days"
+#~ msgstr "jours de la semaine"
+
+#~ msgid "months"
+#~ msgstr "mois"
 
 #~ msgid "Create"
 #~ msgstr "Créer"
@@ -6306,6 +6320,9 @@ msgstr "jours de la semaine"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Un réseau valide doit être spécifié."
 
+#~ msgid "Synchronization Time"
+#~ msgstr "Heure de synchronisation"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Cette combinaison partage/répertoire de travail n'existe pas."
 
@@ -6322,6 +6339,9 @@ msgstr "jours de la semaine"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Créer le répertoire de travail s'il n'existe pas"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Heure d'arrêt"
 
 #, php-format
 #~ msgid ""
@@ -6401,6 +6421,13 @@ msgstr "jours de la semaine"
 
 #~ msgid "Shell access"
 #~ msgstr "Accès au shell"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Note: Ctrl-click (ou commande-click sur Mac) pour sélectionner ou "
+#~ "déselectionner les minutes, heures, jours et mois."
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Local"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-07-03 22:58+0000\n"
+"POT-Creation-Date: 2009-07-04 00:21+0000\n"
 "PO-Revision-Date: 2009-06-30 00:25+0000\n"
 "Last-Translator: Marcos Garcia <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-03 23:37+0000\n"
+"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -991,6 +991,9 @@ msgstr ""
 
 msgid "Date & Time"
 msgstr "Fecha y hora"
+
+msgid "Days"
+msgstr ""
 
 msgid "Debug"
 msgstr "Depurar"
@@ -2188,6 +2191,9 @@ msgstr "Hosts denegados"
 msgid "Hot Spare"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr ""
@@ -2863,6 +2869,9 @@ msgstr "Espacio libre mínimo"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Mínima actividad, Mínimo ruido"
 
+msgid "Minutes"
+msgstr ""
+
 msgid "Minutes between network time sync."
 msgstr "Minutos entre el tiempo de sincronización de red"
 
@@ -2889,6 +2898,9 @@ msgstr "Módulo"
 
 msgid "Modules"
 msgstr "Módulos"
+
+msgid "Months"
+msgstr ""
 
 msgid "Mount Point"
 msgstr "Punto de Montaje"
@@ -3088,13 +3100,6 @@ msgstr ""
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr ""
-
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-"minutes, hours, days and months."
-msgstr ""
-"Nota: Ctrl-click (o comando-click en Mac) para seleccionar y o no minutos, "
-"horas, días y meses."
 
 msgid "Nothing to synchronize"
 msgstr ""
@@ -3969,9 +3974,6 @@ msgstr "Mostrar informacion de procesos"
 msgid "Shutdown"
 msgstr "Apagar"
 
-msgid "Shutdown Time"
-msgstr "Hora de Parada"
-
 msgid "Shutdown mode"
 msgstr "Modo de apagado"
 
@@ -4194,8 +4196,8 @@ msgstr "Cambiar a"
 msgid "Switch to %s/s"
 msgstr "Cambiar a %s/s"
 
-msgid "Synchronization Time"
-msgstr "Hora de Sincronización"
+msgid "Synchronization time"
+msgstr ""
 
 msgid "Synchronize"
 msgstr ""
@@ -5689,6 +5691,9 @@ msgstr "WebGUI"
 msgid "Webserver"
 msgstr "Servidor Web"
 
+msgid "Week days"
+msgstr ""
+
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
 "attempt to identify the remote username."
@@ -5833,9 +5838,6 @@ msgstr "crlf"
 msgid "day(s)"
 msgstr ""
 
-msgid "days"
-msgstr "días"
-
 msgid "dbpath"
 msgstr "dbpath"
 
@@ -5845,9 +5847,6 @@ msgstr "por ejemplo, %s"
 
 msgid "hour(s)"
 msgstr ""
-
-msgid "hours"
-msgstr "horas"
 
 msgid "iSCSI Initiator"
 msgstr "Iniciador iSCSI"
@@ -5875,9 +5874,6 @@ msgstr "minutos"
 
 msgid "mirroring"
 msgstr "mirroring"
-
-msgid "months"
-msgstr "meses"
 
 msgid "mount"
 msgstr "Montar"
@@ -5942,14 +5938,23 @@ msgstr "Desmontar"
 msgid "upriv"
 msgstr "upriv"
 
-msgid "week days"
-msgstr "días de la semana"
-
 #~ msgid "Date"
 #~ msgstr "Fecha"
 
+#~ msgid "hours"
+#~ msgstr "horas"
+
 #~ msgid "day"
 #~ msgstr "día"
+
+#~ msgid "days"
+#~ msgstr "días"
+
+#~ msgid "week days"
+#~ msgstr "días de la semana"
+
+#~ msgid "months"
+#~ msgstr "meses"
 
 #~ msgid "Create"
 #~ msgstr "Crear"
@@ -5969,6 +5974,9 @@ msgstr "días de la semana"
 #~ msgid "A valid network must be specified."
 #~ msgstr "Se debe indicar una red válida."
 
+#~ msgid "Synchronization Time"
+#~ msgstr "Hora de Sincronización"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr ""
 #~ "No existe la combinación de elemento compartido y directorio de trabajo."
@@ -5986,6 +5994,9 @@ msgstr "días de la semana"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Crear el directorio de trabajo si no existe"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Hora de Parada"
 
 #, php-format
 #~ msgid ""
@@ -6057,6 +6068,13 @@ msgstr "días de la semana"
 
 #~ msgid "Shell access"
 #~ msgstr "Acceso a la consola"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Nota: Ctrl-click (o comando-click en Mac) para seleccionar y o no minutos, "
+#~ "horas, días y meses."
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Local"
