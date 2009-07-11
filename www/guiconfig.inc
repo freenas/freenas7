@@ -46,6 +46,7 @@ require_once("functions.inc");
 require_once("rc.inc");
 require_once("wui.inc");
 require_once("updatenotify.inc");
+require_once("session.inc");
 
 /* Set the current language */
 system_language_load();

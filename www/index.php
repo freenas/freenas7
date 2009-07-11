@@ -40,7 +40,7 @@ require("guiconfig.inc");
 require("zfs.inc");
 require("sajax/sajax.php");
 
-if ($_SESSION['admin']) {
+if (Session::isAdmin()) {
 	$pgtitle = array(get_product_name() . " " . gettext("administrator"));
 } else {
 	$pgtitle = array(get_product_name() . " " . gettext("user portal"));
@@ -122,7 +122,7 @@ sajax_handle_client_request();
 						<span name="uptime" id="uptime"><?=htmlspecialchars($uptime);?></span>
 			    </td>
 			  </tr>
-			  <?php if ($_SESSION['admin']):?>
+			  <?php if (Session::isAdmin()):?>
 			  <?php if ($config['lastchange']):?>
 		    <tr>
 		      <td width="25%" class="vncellt"><?=gettext("Last config change");?></td>
