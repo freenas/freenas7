@@ -16,7 +16,7 @@ $menu['system']['link'] = "";
 $menu['system']['menuitem'] = array();
 $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "system.php", "visible" => $_SESSION['admin']);
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => $_SESSION['admin']);
-$menu['system']['menuitem'][] = array("desc" => gettext("Password"), "link" => "system_password_user.php", "visible" => !$_SESSION['admin']);
+$menu['system']['menuitem'][] = array("desc" => gettext("Password"), "link" => "userportal_system_password.php", "visible" => !$_SESSION['admin']);
 $menu['system']['menuitem'][] = array("type" => "separator", "visible" => $_SESSION['admin']);
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => gettext("Packages"), "link" => "system_packages.php", "visible" => $_SESSION['admin']);

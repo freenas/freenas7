@@ -32,12 +32,19 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
 */
+// Configure page permission
+$pgperm['allowuser'] = TRUE;
+
 require("auth.inc");
 require("guiconfig.inc");
 require("zfs.inc");
 require("sajax/sajax.php");
 
-$pgtitle = array(get_product_name()." webGUI");
+if ($_SESSION['admin']) {
+	$pgtitle = array(get_product_name() . " " . gettext("administrator"));
+} else {
+	$pgtitle = array(get_product_name() . " " . gettext("user portal"));
+}
 $pgtitle_omit = true;
 
 $cpuinfo = system_get_cpu_info();
@@ -59,10 +66,10 @@ sajax_handle_client_request();
 <script type="text/javascript" src="javascript/index.js"></script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr align="center" valign="top">
-    <td height="10" colspan="2">&nbsp;</td>
+    <td><img src="logobig.png" alt="<?=get_product_name();?> logo" /></td>
   </tr>
   <tr align="center" valign="top">
-    <td height="170" colspan="2"><img src="logobig.png" alt="<?=get_product_name();?> logo" /></td>
+    <td>&nbsp;</td>
   </tr>
 </table>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -115,13 +122,14 @@ sajax_handle_client_request();
 						<span name="uptime" id="uptime"><?=htmlspecialchars($uptime);?></span>
 			    </td>
 			  </tr>
+			  <?php if ($_SESSION['admin']):?>
 			  <?php if ($config['lastchange']):?>
-			    <tr>
-			      <td width="25%" class="vncellt"><?=gettext("Last config change");?></td>
-			      <td width="75%" class="listr">
-							<input style="padding: 0; border: 0;" size="30" name="lastchange" id="lastchange" value="<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>"/>
-			      </td>
-			    </tr>
+		    <tr>
+		      <td width="25%" class="vncellt"><?=gettext("Last config change");?></td>
+		      <td width="75%" class="listr">
+						<input style="padding: 0; border: 0;" size="30" name="lastchange" id="lastchange" value="<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>"/>
+		      </td>
+		    </tr>
 				<?php endif;?>
 				<?php if (!empty($cpuinfo['temperature'])):?>
 				<tr>
@@ -293,6 +301,7 @@ sajax_handle_client_request();
 						</table>
 					</td>
 				</tr>
+				<?php endif;?>
 			</table>
 		</td>
 	</tr>

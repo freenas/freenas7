@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_password_user.php
+	userportal_system_password.php
 	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
