@@ -82,7 +82,7 @@ pre {
 		$cpuinfo['model'],
 		round($meminfo['real'] / 1024 / 1024));
 ?>
-<form action="<?=$HTTP_SERVER_VARS['SCRIPT_NAME'];?>" method="POST" enctype="multipart/form-data" name="iform">
+<form action="<?=$_SERVER['SCRIPT_NAME'];?>" method="POST" enctype="multipart/form-data" name="iform">
   <table>
 		<tr>
 			<td class="label" align="right"><?=gettext("Info");?></td>
