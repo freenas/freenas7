@@ -60,11 +60,13 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_user, "uuid"))
 	$pconfig['group'] = $a_user[$cnid]['group'];
 	$pconfig['shell'] = $a_user[$cnid]['shell'];
 	$pconfig['homedir'] = $a_user[$cnid]['homedir'];
+	$pconfig['userportal'] = isset($a_user[$cnid]['userportal']);
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['primarygroup'] = $a_group['guest'];
 	$pconfig['userid'] = get_nextuser_id();
 	$pconfig['shell'] = "nologin";
+	$pconfig['userportal'] = FALSE;
 }
 
 if ($_POST) {
@@ -119,27 +121,28 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$users = array();
-		$users['uuid'] = $_POST['uuid'];
-		$users['login'] = $_POST['login'];
-		$users['fullname'] = $_POST['fullname'];
-		$users['password'] = $_POST['password'];
-		$users['shell'] = $_POST['shell'];
-		$users['primarygroup'] = $_POST['primarygroup'];
+		$user = array();
+		$user['uuid'] = $_POST['uuid'];
+		$user['login'] = $_POST['login'];
+		$user['fullname'] = $_POST['fullname'];
+		$user['password'] = $_POST['password'];
+		$user['shell'] = $_POST['shell'];
+		$user['primarygroup'] = $_POST['primarygroup'];
 		if (is_array($_POST['group']))
-			$users['group'] = $_POST['group'];
-		$users['homedir'] = $_POST['homedir'];
-		$users['id'] = $_POST['userid'];
+			$user['group'] = $_POST['group'];
+		$user['homedir'] = $_POST['homedir'];
+		$user['id'] = $_POST['userid'];
+		$user['userportal'] = $_POST['userportal'] ? true : false;
 
 		if (isset($uuid) && (FALSE !== $cnid)) {
-			$a_user[$cnid] = $users;
+			$a_user[$cnid] = $user;
 			$mode = UPDATENOTIFY_MODE_MODIFIED;
 		} else {
-			$a_user[] = $users;
+			$a_user[] = $user;
 			$mode = UPDATENOTIFY_MODE_NEW;
 		}
 
-		updatenotify_set("userdb_user", $mode, $users['uuid']);
+		updatenotify_set("userdb_user", $mode, $user['uuid']);
 		write_config();
 
 		header("Location: access_users.php");
@@ -195,6 +198,7 @@ function get_nextuser_id() {
 					<?php html_combobox("primarygroup", gettext("Primary group"), $pconfig['primarygroup'], $grouplist, gettext("Set the account's primary group to the given group."), true);?>
 					<?php html_listbox("group", gettext("Additional group"), $pconfig['group'], $grouplist, gettext("Set additional group memberships for this account.")."<br>".gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."));?>
 					<?php html_filechooser("homedir", gettext("Home directory"), $pconfig['homedir'], gettext("Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."), $g['media_path'], false, 60);?>
+					<?php html_checkbox("userportal", gettext("User portal"), $pconfig['userportal'] ? true : false, gettext("Grant access to the user portal."), "", false);?>
 				</table>
 				<div id="submit">
 					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
