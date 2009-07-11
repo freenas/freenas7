@@ -55,6 +55,7 @@ if (!Session::isAdmin() && (!isset($pgperm['allowuser']) || !$pgperm['allowuser'
 	</body>
 </html>
 EOD;
+	Session::destroy();
 	exit;
 }
 
@@ -75,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	</body>
 </html>
 EOD;
+		Session::destroy();
 		exit;
 	}
 }
