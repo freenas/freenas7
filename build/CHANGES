@@ -8,9 +8,12 @@ Majors changes:
 - Local users must join the group 'ftp' to be able to login via FTP if
   'Local users only' in 'Services|FTP' is enabled.
 - Upgrade lighttpd to 1.4.23.
-- Add user portal feature. This allows a local user to login and change it's
-  password. Please note that the administrator needs to apply these changes
-  because there have to be restarted several services.
+- Add a user portal. This allows a local user to login and change it's
+  password. The user must have access permissions to login to the user portal.
+  This can be configured in the user configuration WebGUI. Please note that
+  the administrator needs to apply changes done by the local users because
+  there have to be restarted several services (which is not allowed to be
+  done by a user).
 
 Minors changes:
 - Set transmission umask to 0002 per default. This can be customize via the

@@ -43,8 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$users = system_get_user_list();
 		foreach ($users as $userk => $userv) {
 			$password = crypt($_POST['password'], $userv['password']);
-			if (($_POST['username'] === $userv['name']) &&
-				($password === $userv['password'])) {
+			if (($_POST['username'] === $userv['name']) && ($password === $userv['password'])) {
+				// Check if it is a local user
+				if (FALSE === ($cnid = array_search_ex($userv['uid'], $config['access']['user'], "id")))
+					break;
+				// Is user allowed to access the user portal?
+				if (!isset($config['access']['user'][$cnid]['userportal']))
+					break;
 				Session::initUser($userv['uid'], $userv['name']);
 				header('Location: index.php');
 				exit;

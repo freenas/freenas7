@@ -933,6 +933,7 @@
 			<fullname>xxx</fullname>
 			<password>xxx</password>
 			<shell>bash|csh|nologin|scponly|sh|tcsh</shell>
+			<userportal/>
 		</user>
 		<group>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
