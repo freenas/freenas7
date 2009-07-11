@@ -32,14 +32,11 @@
 require("guiconfig.inc");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	session_start();
+	Session::start();
 
 	if ($_POST['username'] === $config['system']['username'] &&
 		$_POST['password'] === $config['system']['password']) {
-		$_SESSION['login'] = TRUE;
-		$_SESSION['admin'] = TRUE;
-		$_SESSION['authtoken'] = crypt(session_id());
-
+		Session::initAdmin();
 		header('Location: index.php');
 		exit;
 	} else {
@@ -48,10 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$password = crypt($_POST['password'], $userv['password']);
 			if (($_POST['username'] === $userv['name']) &&
 				($password === $userv['password'])) {
-				$_SESSION['uid'] = $userv['uid'];
-				$_SESSION['login'] = TRUE;
-				$_SESSION['authtoken'] = crypt(session_id());
-
+				Session::initUser($userv['uid'], $userv['name']);
 				header('Location: index.php');
 				exit;
 			}

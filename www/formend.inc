@@ -1,1 +1,1 @@
-<input name="authtoken" type="hidden" value="<?=$_SESSION['authtoken'];?>" autocomplete="off">
+<input name="authtoken" type="hidden" value="<?=Session::getAuthToken();?>" autocomplete="off">

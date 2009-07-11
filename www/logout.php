@@ -29,8 +29,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-session_start();
-session_destroy();
+require_once("session.inc");
 
+Session::destroy();
 header("Location: login.php");
 ?>

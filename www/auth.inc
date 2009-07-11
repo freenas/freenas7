@@ -29,24 +29,29 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-session_start();
+require_once("session.inc");
+
+Session::start();
 
 // Check if session is valid
-if (!isset($_SESSION['login']) || !$_SESSION['login']) {
+if (!Session::isLogin()) {
 	header('Location: login.php');
 	exit;
 }
 
 // Check page permission
-if ((!isset($_SESSION['admin']) || !$_SESSION['admin']) &&
-	(!isset($pgperm['allowuser']) || !$pgperm['allowuser'])) {
-	header('Location: login.php');
+if (!Session::isAdmin() && (!isset($pgperm['allowuser']) || !$pgperm['allowuser'])) {
+	header('HTTP/1.0 403 Forbidden');
+	header('Status: 403 Forbidden');
 	exit;
 }
 
 // Check if request is valid and authorized
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	if (!isset($_POST['authtoken']) || ($_POST['authtoken'] !== $_SESSION['authtoken']))
+	if (!isset($_POST['authtoken']) || !Session::isValidAuthToken($_POST['authtoken'])) {
+		header('HTTP/1.0 401 Unauthorized');
+		header('Status: 401 Unauthorized');
 		die(sprintf(gettext("An unauthorized POST request has been detected. Because this can be a <a href='%s' target='_blank'>cross-site request forgery</a> attack, the request has been blocked. Please <a href='%s'>login</a> again to continue."), "http://en.wikipedia.org/wiki/Cross-site_request_forgery", "login.php"));
+	}
 }
 ?>

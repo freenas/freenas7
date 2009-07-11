@@ -44,7 +44,7 @@ $a_user = &$config['access']['user'];
 
 // Get user configuration. Ensure current logged in user is available,
 // otherwise exit immediatelly.
-if (FALSE === ($cnid = array_search_ex($_SESSION['uid'], $a_user, "id"))) {
+if (FALSE === ($cnid = array_search_ex(Session::getUserId(), $a_user, "id"))) {
 	header('Location: logout.php');
 	exit;
 }
