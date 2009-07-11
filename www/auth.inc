@@ -43,6 +43,18 @@ if (!Session::isLogin()) {
 if (!Session::isAdmin() && (!isset($pgperm['allowuser']) || !$pgperm['allowuser'])) {
 	header('HTTP/1.0 403 Forbidden');
 	header('Status: 403 Forbidden');
+	echo <<<EOD
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>403 - Forbidden</title>
+	</head>
+	<body>
+		<h1>403 - Forbidden</h1>
+	</body>
+</html>
+EOD;
 	exit;
 }
 
@@ -51,7 +63,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!isset($_POST['authtoken']) || !Session::isValidAuthToken($_POST['authtoken'])) {
 		header('HTTP/1.0 401 Unauthorized');
 		header('Status: 401 Unauthorized');
-		die(sprintf(gettext("An unauthorized POST request has been detected. Because this can be a <a href='%s' target='_blank'>cross-site request forgery</a> attack, the request has been blocked. Please <a href='%s'>login</a> again to continue."), "http://en.wikipedia.org/wiki/Cross-site_request_forgery", "login.php"));
+		echo <<<EOD
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>401 - Unauthorized</title>
+	</head>
+	<body>
+		<h1>401 - Unauthorized</h1>
+	</body>
+</html>
+EOD;
+		exit;
 	}
 }
 ?>
