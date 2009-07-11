@@ -75,6 +75,8 @@ if ($_POST) {
 		write_config();
 		updatenotify_set("userdb_user", UPDATENOTIFY_MODE_MODIFIED, $a_user[$cnid]['uuid']);
 
+		write_log(sprintf("The user password has been changed by user %s.", Session::getUserName()));
+
 		$savemsg = gettext("The administrator has been notified. Your changes will be available soon.");
 	}
 }
@@ -83,7 +85,7 @@ if ($_POST) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabcont">
-			<form action="system_password_user.php" method="post" name="iform" id="iform">
+			<form action="<?=$_SERVER['SCRIPT_NAME'];?>" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
