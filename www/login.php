@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$_SESSION['login'] = TRUE;
 				$_SESSION['authtoken'] = crypt(session_id());
 
-				header('Location: system_password_user.php');
+				header('Location: index.php');
 				exit;
 			}
 		}
