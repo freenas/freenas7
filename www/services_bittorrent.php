@@ -51,6 +51,7 @@ $pconfig['portforwarding'] = isset($config['bittorrent']['portforwarding']);
 $pconfig['uplimit'] = $config['bittorrent']['uplimit'];
 $pconfig['downlimit'] = $config['bittorrent']['downlimit'];
 $pconfig['pex'] = isset($config['bittorrent']['pex']);
+$pconfig['dht'] = isset($config['bittorrent']['dht']);
 $pconfig['encryption'] = $config['bittorrent']['encryption'];
 $pconfig['watchdir'] = $config['bittorrent']['watchdir'];
 $pconfig['umask'] = $config['bittorrent']['umask'];
@@ -107,6 +108,7 @@ if ($_POST) {
 		$config['bittorrent']['uplimit'] = $_POST['uplimit'];
 		$config['bittorrent']['downlimit'] = $_POST['downlimit'];
 		$config['bittorrent']['pex'] = $_POST['pex'] ? true : false;
+		$config['bittorrent']['dht'] = $_POST['dht'] ? true : false;
 		$config['bittorrent']['encryption'] = $_POST['encryption'];
 		$config['bittorrent']['watchdir'] = $_POST['watchdir'];
 		$config['bittorrent']['umask'] = $_POST['umask'];
@@ -144,6 +146,7 @@ function enable_change(enable_change) {
 	document.iform.uplimit.disabled = endis;
 	document.iform.downlimit.disabled = endis;
 	document.iform.pex.disabled = endis;
+	document.iform.dht.disabled = endis;
 	document.iform.encryption.disabled = endis;
 	document.iform.watchdir.disabled = endis;
 	document.iform.watchdirbrowsebtn.disabled = endis;
@@ -179,12 +182,13 @@ function authrequired_change() {
 					<?php html_filechooser("configdir", gettext("Configuration directory"), $pconfig['configdir'], gettext("Alternative configuration directory (usually empty)."), $g['media_path'], false, 60);?>
 					<?php html_checkbox("portforwarding", gettext("Port forwarding"), $pconfig['portforwarding'] ? true : false, gettext("Enable port forwarding via NAT-PMP or UPnP."), "", false);?>
 					<?php html_checkbox("pex", gettext("Peer exchange"), $pconfig['pex'] ? true : false, gettext("Enable peer exchange (PEX)."), "", false);?>
+					<?php html_checkbox("dht", gettext("Distributed hash table"), $pconfig['dht'] ? true : false, gettext("Enable distributed hash table."), "", false);?>
 					<?php html_combobox("encryption", gettext("Encryption"), $pconfig['encryption'], array("0" => gettext("Tolerated"), "1" => gettext("Preferred"), "2" => gettext("Required")), gettext("The peer connection encryption mode."), false);?>
 					<?php html_inputbox("uplimit", gettext("Upload bandwidth"), $pconfig['uplimit'], gettext("The maximum upload bandwith in KB/s. An empty field means infinity."), false, 5);?>
 					<?php html_inputbox("downlimit", gettext("Download bandwidth"), $pconfig['downlimit'], gettext("The maximum download bandwith in KiB/s. An empty field means infinity."), false, 5);?>
 					<?php html_filechooser("watchdir", gettext("Watch directory"), $pconfig['watchdir'], gettext("Directory to watch for new .torrent files."), $g['media_path'], false, 60);?>
 					<?php html_inputbox("umask", gettext("User mask"), $pconfig['umask'], sprintf(gettext("Use this option to override the default permission modes for newly created files (%s by default)."), "0002"), false, 3);?>
-					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty)."), false, 40);?>
+					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options (usually empty).") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://trac.transmissionbt.com/wiki/man/transmission-remote"), false, 40);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Default port is %d."), 9091), true, 5);?>

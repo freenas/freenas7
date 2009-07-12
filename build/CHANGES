@@ -56,6 +56,8 @@ Minors changes:
 - Add ixgbe driver to i386 kernel.
 - Add ixgb driver to AMD64 kernel (BR 2813759).
 - Add support for Blowfish 448 bits encryption (FR 2816028).
+- Add configuration option in 'Services|BitTorrent' to enable/disable usage
+  of distributed hash table (DHT).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
