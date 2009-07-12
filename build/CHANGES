@@ -53,7 +53,7 @@ Majors changes:
 Minors changes:
 - Set transmission umask to 0002 per default. This can be customize via the
   'Services|BitTorrent' WebGUI or the rc.conf variable 'transmission_umask'
-	(FR 2813791).
+  (FR 2813791).
 - Add ixgbe driver to i386 kernel.
 - Add ixgb driver to AMD64 kernel (BR 2813759).
 - Add support for Blowfish 448 bits encryption (FR 2816028).
