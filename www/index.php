@@ -41,7 +41,7 @@ require("zfs.inc");
 require("sajax/sajax.php");
 
 if (Session::isAdmin()) {
-	$pgtitle = array(get_product_name() . " " . gettext("administrator"));
+	$pgtitle = array(get_product_name() . " " . gettext("administration"));
 } else {
 	$pgtitle = array(get_product_name() . " " . gettext("user portal"));
 }
