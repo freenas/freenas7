@@ -40,11 +40,7 @@ require("guiconfig.inc");
 require("zfs.inc");
 require("sajax/sajax.php");
 
-if (Session::isAdmin()) {
-	$pgtitle = array(get_product_name() . " " . gettext("administration"));
-} else {
-	$pgtitle = array(get_product_name() . " " . gettext("user portal"));
-}
+$pgtitle = array(gettext("System information"));
 $pgtitle_omit = true;
 
 $cpuinfo = system_get_cpu_info();
