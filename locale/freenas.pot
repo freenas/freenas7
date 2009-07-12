@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-07-10 20:24+0000\n"
+"PO-Revision-Date: 2009-07-12 18:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -404,10 +404,6 @@ msgid "An host with this name already exists."
 msgstr ""
 
 msgid "An interface with the specified description already exists."
-msgstr ""
-
-#, c-format
-msgid "An unauthorized POST request has been detected. Because this can be a <a href='%s' target='_blank'>cross-site request forgery</a> attack, the request has been blocked. Please <a href='%s'>login</a> again to continue."
 msgstr ""
 
 msgid "Anonymous"
@@ -1106,6 +1102,9 @@ msgstr ""
 msgid "Disks (ATA)"
 msgstr ""
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr ""
 
@@ -1431,6 +1430,9 @@ msgid "Enable device polling"
 msgstr ""
 
 msgid "Enable directory listing."
+msgstr ""
+
+msgid "Enable distributed hash table."
 msgstr ""
 
 msgid "Enable domain wildcarding."
@@ -1825,6 +1827,9 @@ msgid "GiB"
 msgstr ""
 
 msgid "Give only local users access to the web page."
+msgstr ""
+
+msgid "Grant access to the user portal."
 msgstr ""
 
 msgid "Graph"
@@ -4791,6 +4796,9 @@ msgid "User numeric id."
 msgstr ""
 
 msgid "User password."
+msgstr ""
+
+msgid "User portal"
 msgstr ""
 
 msgid "User suffix"
