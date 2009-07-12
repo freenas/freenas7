@@ -842,6 +842,7 @@
 		<username>admin</username>
 		<password>freenas</password>
 		<pex/>
+		<dht/>
 		<encryption>1</encryption>
 		<watchdir></watchdir>
 		<umask></umask>

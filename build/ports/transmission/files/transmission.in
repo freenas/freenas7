@@ -53,7 +53,6 @@ transmission_prestart()
 		-i "count(portforwarding) = 0" -o " --no-portmap" -b \
 		-i "string-length(watchdir) > 0" -v "concat(' --watch-dir=',watchdir)" -b \
 		-i "string-length(watchdir) = 0" -o " --no-watch-dir" -b \
-		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	if checkyesno transmission_blocklist; then
@@ -78,6 +77,8 @@ transmission_poststart()
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
 		-i "count(pex) > 0" -o " --pex" -b \
 		-i "count(pex) = 0" -o " --no-pex" -b \
+		-i "count(dht) > 0" -o " --dht" -b \
+		-i "count(dht) = 0" -o " --no-dht" -b \
 		-i "encryption[. = '0']" -o " --encryption-tolerated" -b \
 		-i "encryption[. = '1']" -o " --encryption-preferred" -b \
 		-i "encryption[. = '2']" -o " --encryption-required" -b \
@@ -88,6 +89,7 @@ transmission_poststart()
 		-i "count(authrequired) > 0" \
 			-v "concat(' --auth=',username,':',password)" \
 		-b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	sleep 1; transmission-remote ${_command_args} >/dev/null 2>&1
