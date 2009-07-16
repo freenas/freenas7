@@ -35,6 +35,7 @@ $pgperm['allowuser'] = TRUE;
 
 require("auth.inc");
 require("guiconfig.inc");
+require("email.inc");
 
 $pgtitle = array(gettext("System"), gettext("Password"));
 
@@ -75,9 +76,15 @@ if ($_POST) {
 		write_config();
 		updatenotify_set("userdb_user", UPDATENOTIFY_MODE_MODIFIED, $a_user[$cnid]['uuid']);
 
-		write_log(sprintf("The user password has been changed by user %s.", Session::getUserName()));
+		// Write syslog entry and send an email to the administrator
+		$message = sprintf("The user password has been changed by user %s.", Session::getUserName());
+		write_log($message);
+		if (0 == @email_validate_settings()) {
+			$subject = sprintf(gettext("Notification email from host: %s"), system_get_hostname());
+			@email_send($config['system']['email']['from'], $subject, $message, $error);
+		}
 
-		$savemsg = gettext("The administrator has been notified. Your changes will be available soon.");
+		$savemsg = gettext("The administrator has been notified to apply your changes.");
 	}
 }
 ?>
