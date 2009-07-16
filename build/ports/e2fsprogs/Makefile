@@ -62,6 +62,7 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/misc/mke2fs ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/misc/dumpe2fs ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/misc/tune2fs ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/fsck_ext2fs ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${LN} -s -f -v /usr/local/sbin/e2fsck ${FREENAS_ROOTFS}/sbin/e2fsck
