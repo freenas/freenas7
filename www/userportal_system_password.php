@@ -77,7 +77,7 @@ if ($_POST) {
 		updatenotify_set("userdb_user", UPDATENOTIFY_MODE_MODIFIED, $a_user[$cnid]['uuid']);
 
 		// Write syslog entry and send an email to the administrator
-		$message = sprintf("The user password has been changed by user %s.", Session::getUserName());
+		$message = sprintf("The user %s has changed his password via user portal.", Session::getUserName());
 		write_log($message);
 		if (0 == @email_validate_settings()) {
 			$subject = sprintf(gettext("Notification email from host: %s"), system_get_hostname());
