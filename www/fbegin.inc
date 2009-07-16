@@ -203,7 +203,7 @@ function display_menu($menuid) {
 		<?=display_menu("disks");?>
 		<?=display_menu("services");?>
 		<!-- Begin extension section -->
-		<?php if (is_dir("{$g['www_path']}/ext")):?>
+		<?php if (Session::isAdmin() && is_dir("{$g['www_path']}/ext")):?>
 		<li>
 			<a href="" onmouseover="mopen('extensions')" onmouseout="mclosetime()"><?=gettext("Extensions");?></a>
 			<div id="extensions" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
