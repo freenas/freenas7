@@ -28,8 +28,8 @@ extra_commands="mkconf rebuilddb updatedb rebuildvcont"
 
 # Defaults
 fuppes_enable=${fuppes_enable:-"NO"}
-fuppes_configdir=${fuppes_configdir-"/var/etc"}
-fuppes_config=${fuppes_config-"${fuppes_configdir}/${name}.cfg"}
+fuppes_config_dir=${fuppes_config_dir-"/var/etc"}
+fuppes_config=${fuppes_config-"${fuppes_config_dir}/${name}.cfg"}
 fuppes_vfolder_config=${fuppes_vfolder_config-"/usr/local/share/${name}/vfolder.cfg"}
 fuppes_loglevel=${fuppes_loglevel-"1"}
 fuppes_logfile=${fuppes_logfile-"/var/log/${name}.log"}
@@ -38,9 +38,10 @@ fuppes_local_charset=${fuppes_local_charset-"UTF-8"}
 fuppes_use_imagemagick=${fuppes_use_imagemagick-"false"}
 fuppes_use_taglib=${fuppes_use_taglib-"true"}
 fuppes_use_libavformat=${fuppes_use_libavformat-"true"}
+fuppes_plugin_dir=${fuppes_plugin_dir-"/usr/local/lib/${name}"}
 
 command="/usr/local/bin/${name}d"
-command_args="--config-dir ${fuppes_configdir} --config-file ${fuppes_config} --vfolder-config-file ${fuppes_vfolder_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile}"
+command_args="--config-dir ${fuppes_config_dir} --config-file ${fuppes_config} --vfolder-config-file ${fuppes_vfolder_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile} --plugin-dir ${fuppes_plugin_dir}"
 
 # Set kill signal to KILL, otherwise fuppes takes too long to terminate.
 sig_stop=${sig_stop-"KILL"}
