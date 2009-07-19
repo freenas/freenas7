@@ -1,6 +1,6 @@
 PORTNAME=			fuppes
 PORTVERSION=	0.7.2.3
-PORTEPOCH=		2
+PORTEPOCH=		3
 CATEGORIES=		net
 COMMENT=			Free UPnP Entertainment Service
 MAINTAINER=		votdev@gmx.de
@@ -49,7 +49,7 @@ do-install:
 	@${CP} -Rpv /usr/local/lib/libmp3lame.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libmp3lame.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libogg.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libogg.so.5 ${FREENAS_ROOTFS}/usr/local/lib
+	@${CP} -Rpv /usr/local/lib/libogg.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libsndfile.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libsndfile.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libtwolame.so ${FREENAS_ROOTFS}/usr/local/lib
