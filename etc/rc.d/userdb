@@ -87,7 +87,7 @@ do
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
-	eval "/usr/sbin/pw user add -q ${_cmdarg}"
+	eval "/usr/sbin/pw user add -q ${_cmdarg} > /dev/null"
 
 	_index=$(( ${_index} - 1 ))
 done
@@ -112,7 +112,7 @@ do
 
 	_userpasswd=`configxml_get "//access/user[${_index}]/password"`
 
-	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw user add -q ${_cmdarg}"
+	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw user add -q ${_cmdarg} > /dev/null"
 
 	_index=$(( ${_index} - 1 ))
 done
