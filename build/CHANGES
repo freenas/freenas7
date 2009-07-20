@@ -4,7 +4,7 @@ FreeNAS 0.7RC2 (Khasadar):
 Majors changes:
 - Add ability to configure the login shell for a user.
 - Upgrade Samba to 3.0.35.
-- Upgrade transmission to 1.72.
+- Upgrade transmission to 1.73.
 - Local users must join the group 'ftp' to be able to login via FTP if
   'Local users only' in 'Services|FTP' is enabled.
 - Upgrade lighttpd to 1.4.23.
