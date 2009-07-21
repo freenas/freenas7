@@ -41,12 +41,12 @@ export FREENAS_TMPDIR
 
 # Local variables
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
-FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
+FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7"
 
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-FREENAS_MFSROOT_SIZE=90
+FREENAS_MFSROOT_SIZE=94
 FREENAS_IMG_SIZE=40
 
 # Media geometry, only relevant if bios doesn't understand LBA.
