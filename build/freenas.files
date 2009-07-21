@@ -438,6 +438,9 @@ usr/bin/xargs
 ## procstat -- get detailed process information
 usr/bin/procstat
 
+## getopt -- parse command options
+usr/bin/getopt
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol

@@ -27,6 +27,7 @@ Minors changes:
 - Add support for Blowfish 448 bits encryption (FR 2816028).
 - Add configuration option in 'Services|BitTorrent' to enable/disable usage
   of distributed hash table (DHT).
+- Add /usr/bin/getopt command (FR 2824548).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
