@@ -53,6 +53,7 @@ proftpd_tlsprotocol=${proftpd_tlsprotocol:-"SSLv23"}
 proftpd_tlsrequired=${proftpd_tlsrequired:-"on"}
 proftpd_tcpaccesssysloglevels=${proftpd_tcpaccesssysloglevels:-"info warn"}
 proftpd_tcpservicename=${proftpd_tcpservicename:-"ftpd"}
+proftpd_timesgmt=${proftpd_timesgmt:-"off"}
 proftpd_moddelay_enable=${proftpd_moddelay_enable:-"YES"}
 proftpd_modwrap_enable=${proftpd_modwrap_enable:-"YES"}
 proftpd_modctrls_controlsengine=${proftpd_modctrls_controlsengine:-"off"}
@@ -181,7 +182,7 @@ proftpd_mkconf()
 		-o "  DeleteAbortedStores ${proftpd_deleteabortedstores}" -n \
 		-i "string-length(userbandwidth/up) > 0" -v "concat('  TransferRate STOR ',userbandwidth/up)" -n -b \
 		-i "string-length(userbandwidth/down) > 0" -v "concat('  TransferRate RETR ',userbandwidth/down)" -n -b \
-		-o "  TimesGMT off" -n \
+		-o "  TimesGMT ${proftpd_timesgmt}" -n \
 		-o "&lt;/Global&gt;" -n \
 		-i "count(anonymousonly) > 0" \
 			-n \
