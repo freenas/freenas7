@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-07-12 18:25+0000\n"
+"PO-Revision-Date: 2009-07-19 22:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2728,6 +2728,10 @@ msgstr ""
 msgid "Nothing to synchronize"
 msgstr ""
 
+#, php-format
+msgid "Notification email from host: %s"
+msgstr ""
+
 msgid "Now"
 msgstr ""
 
@@ -3884,7 +3888,7 @@ msgstr ""
 msgid "The action which will be executed when the packet match the criteria specified below."
 msgstr ""
 
-msgid "The administrator has been notified. Your changes will be available soon."
+msgid "The administrator has been notified to apply your changes."
 msgstr ""
 
 #, php-format
