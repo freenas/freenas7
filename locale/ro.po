@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
 "PO-Revision-Date: 2009-06-26 11:05+0000\n"
 "Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -22,8 +22,8 @@ msgid " was assigned to "
 msgstr " a fost alocat "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% din %dMB"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -486,13 +486,6 @@ msgstr "Acest nume sistem exista deja."
 
 msgid "An interface with the specified description already exists."
 msgstr "Exista deja o interfata cu aceasta descriere"
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr "Anonim"
@@ -1252,6 +1245,9 @@ msgstr "Discuri"
 msgid "Disks (ATA)"
 msgstr "Disc (ATA)"
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "Ştergeţi toate MIB-urile?"
 
@@ -1595,6 +1591,9 @@ msgstr "Activare Device Polling"
 msgid "Enable directory listing."
 msgstr "Activare listare directoare."
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr ""
 
@@ -1744,9 +1743,6 @@ msgstr "Numele Serverului"
 
 msgid "Error"
 msgstr "Eroare"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2028,6 +2024,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr ""
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "Graphic"
 
@@ -2073,7 +2072,7 @@ msgstr "Proxy HTTP"
 msgid "Hard disk standby time"
 msgstr "Timp de standby disc"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2333,9 +2332,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "Info"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr ""
@@ -4044,9 +4040,6 @@ msgstr ""
 msgid "Subject"
 msgstr "Subiect"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "Bit Masca Retea"
 
@@ -4254,6 +4247,10 @@ msgstr ""
 msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
+msgstr ""
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
 msgstr ""
 
 #, php-format
@@ -5373,7 +5370,7 @@ msgstr "Utilizeaza un anumit server NTP."
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5424,6 +5421,9 @@ msgstr ""
 
 msgid "User password."
 msgstr "Parola Utilizator."
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "Sufix user"
@@ -5739,7 +5739,7 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5802,9 +5802,6 @@ msgstr "upriv"
 #~ msgid "Logs"
 #~ msgstr "Jurnale"
 
-#~ msgid "Size in MB."
-#~ msgstr "Dimensiune in MB."
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Consum minim in modul Standby"
 
@@ -5847,14 +5844,6 @@ msgstr "upriv"
 #~ msgstr "Timp de Oprire"
 
 #, php-format
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a "
-#~ "href=%s></a> trebuie să aibă acces complet la Shell."
-
-#, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Ultimele %d %s intrari in jurnal"
 
@@ -5874,20 +5863,22 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Retea autorizata pentru acces iSCSI"
 
+#~ msgid "Size in MB."
+#~ msgstr "Dimensiune in MB."
+
 #~ msgid "Disk Name"
 #~ msgstr "Nume Disc"
 
 #~ msgid "built on"
 #~ msgstr "inclus"
 
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "Trebuie sa definiti un obiect 'Extins' mai intii."
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (distribuire)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (duplicare)"
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and is "
+#~ "made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "La cel mai inalt nivel, o destinatie reprezinta legatura pentru initiator, "
+#~ "fiind reprezentata de unul sau mai multe dispozitive, si/sau unul sau mai "
+#~ "multe extensii."
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
@@ -5898,13 +5889,18 @@ msgstr "upriv"
 #~ "Extensiile si dispozitivele trebuie sa fie definite inainte de a fi "
 #~ "folosite, si pot fi utilizate doar o singura data."
 
-#~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and is "
-#~ "made up of one or more devices, and/or one or more extents."
-#~ msgstr ""
-#~ "La cel mai inalt nivel, o destinatie reprezinta legatura pentru initiator, "
-#~ "fiind reprezentata de unul sau mai multe dispozitive, si/sau unul sau mai "
-#~ "multe extensii."
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "Trebuie sa definiti un obiect 'Extins' mai intii."
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (distribuire)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (duplicare)"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% din %dMB"
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Dispozitivul este inca montat, demontati-l inainte de detasare."
@@ -5916,3 +5912,11 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "calea fisierului (ex. /mnt/sharename/extent/%s) sau numele dispozitivului "
 #~ "(ex. /dev/ad1) folosit ca extensie."
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a "
+#~ "href=%s></a> trebuie să aibă acces complet la Shell."

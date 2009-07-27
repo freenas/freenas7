@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
 "PO-Revision-Date: 2008-05-04 10:06+0000\n"
 "Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:24+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -24,8 +24,8 @@ msgid " was assigned to "
 msgstr " беше зададен на "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% от %dМБ"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -469,13 +469,6 @@ msgid "An host with this name already exists."
 msgstr "An host with this name already exists."
 
 msgid "An interface with the specified description already exists."
-msgstr ""
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
 msgstr ""
 
 msgid "Anonymous"
@@ -1217,6 +1210,9 @@ msgstr "Дискове"
 msgid "Disks (ATA)"
 msgstr ""
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr ""
 
@@ -1560,6 +1556,9 @@ msgstr "позволи device polling"
 msgid "Enable directory listing."
 msgstr ""
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr ""
 
@@ -1707,9 +1706,6 @@ msgstr ""
 
 msgid "Error"
 msgstr "Грешка"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1987,6 +1983,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr ""
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "Графика"
 
@@ -2032,7 +2031,7 @@ msgstr ""
 msgid "Hard disk standby time"
 msgstr "време за стендбай режим на харддиска"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2287,9 +2286,6 @@ msgid "Include basic hardware information."
 msgstr ""
 
 msgid "Info"
-msgstr ""
-
-msgid "Info:"
 msgstr ""
 
 msgid "Informal"
@@ -3992,9 +3988,6 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "Subnet bit count"
 
@@ -4203,6 +4196,10 @@ msgstr ""
 msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
+msgstr ""
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
 msgstr ""
 
 #, php-format
@@ -5311,7 +5308,7 @@ msgstr ""
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5356,6 +5353,9 @@ msgstr ""
 
 msgid "User password."
 msgstr "Потребителска парола."
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "User suffix"
@@ -5665,7 +5665,7 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5698,23 +5698,17 @@ msgstr ""
 msgid "upriv"
 msgstr ""
 
-#~ msgid "Date"
-#~ msgstr "дата"
-
-#~ msgid "hours"
-#~ msgstr "ч"
+#~ msgid "days"
+#~ msgstr "дни"
 
 #~ msgid "day"
 #~ msgstr "ден"
 
-#~ msgid "days"
-#~ msgstr "дни"
+#~ msgid "months"
+#~ msgstr "месеци"
 
 #~ msgid "week days"
 #~ msgstr "ден от седмицата"
-
-#~ msgid "months"
-#~ msgstr "месеци"
 
 #~ msgid "Create"
 #~ msgstr "Създай"
@@ -5728,35 +5722,17 @@ msgstr ""
 #~ msgid "Logs"
 #~ msgstr "Логове"
 
-#~ msgid "Size in MB."
-#~ msgstr "размер в MB"
-
-#~ msgid "Minimum power usage with Standby"
-#~ msgstr "минимален разход на енергия в стендбай режим"
-
-#~ msgid "Medium power usage with Standby"
-#~ msgstr "среден разход на енергия в стендбай режим"
-
-#~ msgid "Minimum power usage without Standby"
-#~ msgstr "минимален разход на енергия без използване на стендбай режим"
-
-#~ msgid "Medium power usage without Standby"
-#~ msgstr "среден разход на енергия без използване на стендбай режим"
-
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maximum performance, maximum power usage"
-
-#~ msgid "A valid network must be specified."
-#~ msgstr "трябва да посочите валидна мрежа"
 
 #~ msgid "Synchronization Time"
 #~ msgstr "Synchronization Time"
 
-#~ msgid "The combination of share and working directory does not exist."
-#~ msgstr "The combination of share and working directory does not exist."
-
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr "You may need enough space to duplicate all files being synced"
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "The combination of share and working directory does not exist."
 
 #~ msgid "Working Directory"
 #~ msgstr "Working Directory"
@@ -5778,12 +5754,11 @@ msgstr ""
 #~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 #~ "href=%s>user</a> must have full Shell enabled."
 
-#, php-format
-#~ msgid "Last %d %s log entries"
-#~ msgstr "последни %d %s позиции в дневника"
-
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "The configuration could not be restored (file upload error)."
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "Криприрано име на диска"
 
 #~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
@@ -5792,8 +5767,37 @@ msgstr ""
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Трябва да използвате секретна фраза за да закачите криптиран диск."
 
-#~ msgid "Encrypted disk name"
-#~ msgstr "Криприрано име на диска"
-
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Network that is authorised to access to this iSCSI target."
+
+#~ msgid "Date"
+#~ msgstr "дата"
+
+#~ msgid "hours"
+#~ msgstr "ч"
+
+#~ msgid "Size in MB."
+#~ msgstr "размер в MB"
+
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "минимален разход на енергия в стендбай режим"
+
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "минимален разход на енергия без използване на стендбай режим"
+
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "среден разход на енергия в стендбай режим"
+
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "среден разход на енергия без използване на стендбай режим"
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "трябва да посочите валидна мрежа"
+
+#, php-format
+#~ msgid "Last %d %s log entries"
+#~ msgstr "последни %d %s позиции в дневника"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% от %dМБ"

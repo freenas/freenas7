@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas-0.7\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
-"PO-Revision-Date: 2009-07-08 12:24+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
+"PO-Revision-Date: 2009-07-23 08:07+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -30,7 +30,7 @@ msgid " was assigned to "
 msgstr " был присвоен "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
+msgid "%d%% of %dMiB"
 msgstr "%d%% из %d Мбайт"
 
 #, php-format
@@ -531,16 +531,6 @@ msgstr "Хост с таким именем уже существует."
 
 msgid "An interface with the specified description already exists."
 msgstr "Интерфейс с таким описанием уже существует."
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
-"Неавторизованный POST-запрос был заблокирован, поскольку это может быть "
-"атака вида <a href='%s' target='_blank'>'межсайтовая подделка запроса'</a>. "
-"Пожалуйста, <a href='%s'>зарегистрируйтесь</a> повторно для продолжения."
 
 msgid "Anonymous"
 msgstr "Anonymous"
@@ -1318,6 +1308,9 @@ msgstr "Диски"
 msgid "Disks (ATA)"
 msgstr "Диски (ATA)"
 
+msgid "Distributed hash table"
+msgstr "DHT"
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "Вы действительно хотите удалить все MIB?"
 
@@ -1483,7 +1476,7 @@ msgstr ""
 "автомонтировании или для томов, создаваемых скриптом preexec."
 
 msgid "Donate"
-msgstr "Пожертвование"
+msgstr "Пожертвования"
 
 msgid "Done"
 msgstr "Готово"
@@ -1668,6 +1661,11 @@ msgstr "Разрешить опрос устройств"
 msgid "Enable directory listing."
 msgstr "Включить перечисление файлов в каталоге"
 
+msgid "Enable distributed hash table."
+msgstr ""
+"Разрешить использование распределенной хэш-таблицы (Distributed Hash Table, "
+"DHT)"
+
 msgid "Enable domain wildcarding."
 msgstr "Разрешить подстановочные символы для домена"
 
@@ -1833,9 +1831,6 @@ msgstr "Имя сервера, ведущего мониторинг и прие
 
 msgid "Error"
 msgstr "Ошибка"
-
-msgid "Error's"
-msgstr "Ошибки"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2126,6 +2121,9 @@ msgstr "ГБ"
 msgid "Give only local users access to the web page."
 msgstr "Только локальные пользователи могут открыть web-страницу."
 
+msgid "Grant access to the user portal."
+msgstr "Предоставить доступ к порталу пользователя"
+
 msgid "Graph"
 msgstr "График"
 
@@ -2171,7 +2169,7 @@ msgstr "HTTP Proxy"
 msgid "Hard disk standby time"
 msgstr "Таймаут до режима Standby"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr "Аппаратное обеспечение"
 
 msgid "Header and Data digest"
@@ -2450,9 +2448,6 @@ msgstr "Включить базовые сведения об аппаратно
 
 msgid "Info"
 msgstr "Сведения"
-
-msgid "Info:"
-msgstr "Информация:"
 
 msgid "Informal"
 msgstr "Информирование"
@@ -2803,7 +2798,7 @@ msgid "Logical Unit Type mapped to LUN."
 msgstr "Тип логического устройства, сопоставленный с LUN."
 
 msgid "Login"
-msgstr "Войти"
+msgstr "Вход"
 
 msgid "Login name of user."
 msgstr "Имя пользователя (логин)."
@@ -4273,9 +4268,6 @@ msgstr "Чередование данных (Stripe)"
 msgid "Subject"
 msgstr "Тема"
 
-msgid "Subject:"
-msgstr "Тема:"
-
 msgid "Subnet bit count"
 msgstr "Количество битов подсети"
 
@@ -4487,6 +4479,12 @@ msgid ""
 msgstr ""
 "Действие, которое будет применено к пакету, попадающему под указанные ниже "
 "критерии."
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
+msgstr ""
+"Администратору было отправлено уведомление, после подтверждения ваши "
+"изменения станут доступны."
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -5779,10 +5777,10 @@ msgstr "Использовать указанный NTP-сервер"
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 "Команда umask изменяет права доступа, которые присваиваются новым файлам и "
-"каталогам (по умолчанию %s). "
+"каталогам (по умолчанию %s)."
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -5838,6 +5836,9 @@ msgstr "Числовой индентификатор пользователя."
 
 msgid "User password."
 msgstr "Пароль пользователя."
+
+msgid "User portal"
+msgstr "Портал пользователя"
 
 msgid "User suffix"
 msgstr "Суффикс пользователя"
@@ -6170,8 +6171,8 @@ msgstr "none"
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
-msgstr "Отчет для phpBB:"
+msgid "phpBB"
+msgstr "Отчет для phpBB"
 
 msgid "prodos"
 msgstr "prodos"
@@ -6224,37 +6225,14 @@ msgstr "upriv"
 #~ msgid "Create"
 #~ msgstr "Создать"
 
-#~ msgid "A valid network bit count must be specified."
-#~ msgstr "Должна быть указана правильная маска подсети."
-
-#~ msgid "RSYNCD"
-#~ msgstr "Rsync"
-
 #~ msgid "Logs"
 #~ msgstr "Журналы"
-
-#~ msgid "Size in MB."
-#~ msgstr "Размер в мегабайтах"
-
-#~ msgid "A valid network must be specified."
-#~ msgstr "Должна быть указана корректная сеть."
 
 #~ msgid "Synchronization Time"
 #~ msgstr "Время синхронизации"
 
-#~ msgid "The combination of share and working directory does not exist."
-#~ msgstr "Комбинация общего ресурса и рабочего каталога не существует."
-
-#~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Вам понадобится достаточно места для дублирования всех синхронизируемых "
-#~ "файлов"
-
 #~ msgid "Working Directory"
 #~ msgstr "Рабочий каталог"
-
-#~ msgid "Where the working files will be stored"
-#~ msgstr "Место хранения рабочих файлов"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Создать рабочий каталог, если он не существует"
@@ -6262,28 +6240,9 @@ msgstr "upriv"
 #~ msgid "Shutdown Time"
 #~ msgstr "Время выключения"
 
-#, php-format
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> должен быть включен для работы Unison. <a "
-#~ "href=%s>Пользователь</a> должен иметь полные права доступа к оболочке shell."
-
-#, php-format
-#~ msgid "Last %d %s log entries"
-#~ msgstr "Последние %d записей в журнале '%s'"
-
-#~ msgid "The configuration could not be restored (file upload error)."
-#~ msgstr "Конфигурация не может быть восстановлена (ошибка загрузки файла)."
-
 #~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Зашифрованный диск смонтирован, размонтируйте его перед отсоединением."
-
-#~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr ""
-#~ "Для присоединения зашифрованного диска нужно использовать парольную фразу."
 
 #~ msgid "Encrypted disk name"
 #~ msgstr "Имя зашифрованного диска"
@@ -6291,20 +6250,15 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Сеть, авторизованная для доступа к этой iSCSI-цели."
 
-#~ msgid "Disk Name"
-#~ msgstr "Имя диска"
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr "Конфигурация не может быть восстановлена (ошибка загрузки файла)."
 
-#~ msgid "built on"
-#~ msgstr "Cборка от"
-
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "Сначала нужно задать объекты типа 'Extent'"
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (с чередованием)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (зеркалирование)"
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and is "
+#~ "made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "На верхнем уровне абстракции, цель - это то, что предоставляется инициатору, "
+#~ "и состоит из одного или более устройств и/или одного или более экстентов."
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
@@ -6315,15 +6269,86 @@ msgstr "upriv"
 #~ "использованием экстенты и устройства должны быть определены, и не могут быть "
 #~ "задействованы дважды."
 
+#~ msgid "Disk Name"
+#~ msgstr "Имя диска"
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (с чередованием)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (зеркалирование)"
+
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "Должна быть указана правильная маска подсети."
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "Должна быть указана корректная сеть."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Разрешить полный доступ к shell этому пользователю"
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "Комбинация общего ресурса и рабочего каталога не существует."
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "Место хранения рабочих файлов"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "Сначала нужно задать объекты типа 'Extent'"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% из %d Мбайт"
+
+#, php-format
 #~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and is "
-#~ "made up of one or more devices, and/or one or more extents."
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
 #~ msgstr ""
-#~ "На верхнем уровне абстракции, цель - это то, что предоставляется инициатору, "
-#~ "и состоит из одного или более устройств и/или одного или более экстентов."
+#~ "<a href=%s>SSHD</a> должен быть включен для работы Unison. <a "
+#~ "href=%s>Пользователь</a> должен иметь полные права доступа к оболочке shell."
+
+#~ msgid "Shell access"
+#~ msgstr "Доступ к системной оболочке shell"
+
+#~ msgid "Size in MB."
+#~ msgstr "Размер в мегабайтах"
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Устройство смонтировано. Размонтируйте его перед отключением."
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr ""
+#~ "Вам понадобится достаточно места для дублирования всех синхронизируемых "
+#~ "файлов"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Примечание: щелкните, удерживая Ctrl (или Сommand для Macintosh), чтобы "
+#~ "выбрать или отменить выбор минут, часов, дней, месяцев."
+
+#, php-format
+#~ msgid "Last %d %s log entries"
+#~ msgstr "Последние %d записей в журнале '%s'"
+
+#~ msgid "RSYNCD"
+#~ msgstr "Rsync"
+
+#~ msgid "RSYNC Local"
+#~ msgstr "Локальный Rsync"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr ""
+#~ "Для присоединения зашифрованного диска нужно использовать парольную фразу."
+
+#, php-format
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s из %s (%dMHz)"
+
+#~ msgid "built on"
+#~ msgstr "Cборка от"
 
 #, php-format
 #~ msgid ""
@@ -6333,37 +6358,17 @@ msgstr "upriv"
 #~ "Путь к файлу (например, /mnt/sharename/extent/%s) или имя устройства "
 #~ "(например, /dev/ad1), используемого как экстент."
 
-#~ msgid "Give full shell access to user."
-#~ msgstr "Разрешить полный доступ к shell этому пользователю"
-
-#~ msgid "Shell access"
-#~ msgstr "Доступ к системной оболочке shell"
-
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
-#~ msgstr ""
-#~ "Примечание: щелкните, удерживая Ctrl (или Сommand для Macintosh), чтобы "
-#~ "выбрать или отменить выбор минут, часов, дней, месяцев."
-
-#~ msgid "RSYNC Local"
-#~ msgstr "Локальный Rsync"
-
-#, php-format
-#~ msgid "%s on %s (%dMHz)"
-#~ msgstr "%s из %s (%dMHz)"
-
 #~ msgid ""
 #~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 #~ msgstr ""
 #~ "По умолчанию, длина ключа составляет 128 бит для AES, 128 бит для Blowfish и "
 #~ "192 бита для 3DES."
 
-#~ msgid "FTP file transfer"
-#~ msgstr "Передача файлов по FTP"
+#~ msgid "Syslog"
+#~ msgstr "Syslog"
 
 #~ msgid "File transfer"
 #~ msgstr "Передача файлов"
 
-#~ msgid "Syslog"
-#~ msgstr "Syslog"
+#~ msgid "FTP file transfer"
+#~ msgstr "Передача файлов по FTP"

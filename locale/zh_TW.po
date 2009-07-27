@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -51,8 +51,8 @@ msgid " was assigned to "
 msgstr " 被指派為 "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% of %dMB"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -506,13 +506,6 @@ msgstr "已經有一個相同的主機名稱存在了。"
 
 msgid "An interface with the specified description already exists."
 msgstr "已存在具有指定描述的介面。"
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr ""
@@ -1257,6 +1250,9 @@ msgstr "磁碟"
 msgid "Disks (ATA)"
 msgstr "磁碟（ATA）"
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "確定要刪除所有的 MIB？"
 
@@ -1596,6 +1592,9 @@ msgstr "開啟device polling"
 msgid "Enable directory listing."
 msgstr "開啟目錄清單。"
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr ""
 
@@ -1748,9 +1747,6 @@ msgstr "輸入 Trap 主機名稱。"
 
 msgid "Error"
 msgstr "錯誤"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2026,6 +2022,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr "只有本機使用者可以使用網頁伺服器。"
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "圖表"
 
@@ -2071,7 +2070,7 @@ msgstr "HTTP Proxy"
 msgid "Hard disk standby time"
 msgstr "硬碟待命時間"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2327,9 +2326,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "資訊"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr "資訊"
@@ -4024,9 +4020,6 @@ msgstr ""
 msgid "Subject"
 msgstr "主旨"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "網段遮罩位元數"
 
@@ -4233,6 +4226,10 @@ msgstr "VLAN ID 必須介於 1 到 4094 之間。"
 msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
+msgstr ""
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
 msgstr ""
 
 #, php-format
@@ -5368,7 +5365,7 @@ msgstr "使用指定的 NTP 伺服器。"
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5415,6 +5412,9 @@ msgstr "使用者數字 ID"
 
 msgid "User password."
 msgstr "使用者自行設定的密碼"
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "使用者名稱詞綴"
@@ -5724,7 +5724,7 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5814,9 +5814,6 @@ msgstr "upriv"
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "設定值內的分享/工作目錄不存在。"
 
-#~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr "確定你有足夠的空間來複製所有要同步的檔案"
-
 #~ msgid "Working Directory"
 #~ msgstr "工作目錄"
 
@@ -5828,13 +5825,6 @@ msgstr "upriv"
 
 #~ msgid "Shutdown Time"
 #~ msgstr "關機時間"
-
-#, php-format
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
 
 #, php-format
 #~ msgid "Last %d %s log entries"
@@ -5855,29 +5845,16 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "設定可以使用iSCSI目標的網路區段"
 
-#~ msgid "Disk Name"
-#~ msgstr "磁碟名稱"
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% of %dMB"
 
-#~ msgid "built on"
-#~ msgstr "建立於"
-
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "你必須先定義 Extent 物件。"
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (stripping)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (鏡射)"
-
+#, php-format
 #~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
 #~ msgstr ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
+#~ "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
 
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
@@ -5889,6 +5866,18 @@ msgstr "upriv"
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "裝置已經掛載，移除之前請先卸載。"
 
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+#~ msgstr ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+
+#~ msgid "Disk Name"
+#~ msgstr "磁碟名稱"
+
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
@@ -5898,13 +5887,28 @@ msgstr "upriv"
 #~ msgid "Give full shell access to user."
 #~ msgstr "授與使用者 shell 權限"
 
-#~ msgid "Shell access"
-#~ msgstr "Shell 權限"
-
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 #~ "minutes, hours, days and months."
 #~ msgstr "備註：按著 Ctrl 配合滑鼠左鍵（Mac 請按 Cmd）以選擇時間與日期。"
 
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (鏡射)"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"
+
+#~ msgid "Shell access"
+#~ msgstr "Shell 權限"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "你必須先定義 Extent 物件。"
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr "確定你有足夠的空間來複製所有要同步的檔案"
+
+#~ msgid "built on"
+#~ msgstr "建立於"

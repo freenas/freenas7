@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
 "PO-Revision-Date: 2009-06-20 16:54+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -25,8 +25,8 @@ msgid " was assigned to "
 msgstr " は次の項目にアサインされています "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%2$dMB 中 %1$d%%"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -482,13 +482,6 @@ msgstr "この名前がつけられたホストは既に存在しています．
 
 msgid "An interface with the specified description already exists."
 msgstr "指定されたインタフェースの説明は既に存在しています．"
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr "匿名"
@@ -1235,6 +1228,9 @@ msgstr "ディスク"
 msgid "Disks (ATA)"
 msgstr "ディスク(ATA)"
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "全ての MIB を削除してもよろしいですか?"
 
@@ -1574,6 +1570,9 @@ msgstr "デバイスポーリングを有効にします"
 msgid "Enable directory listing."
 msgstr "ディレクトリリストを有効にします．"
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr "ワイルドカードドメインを有効にします．"
 
@@ -1724,9 +1723,6 @@ msgstr "トラップホストを入力して下さい．"
 
 msgid "Error"
 msgstr "エラー"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2004,6 +2000,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr "ローカルユーザのみにウェブページのアクセスを許可します．"
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "グラフ"
 
@@ -2049,7 +2048,7 @@ msgstr "HTTP プロキシ"
 msgid "Hard disk standby time"
 msgstr "ハードディスクスタンバイ時間"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2310,9 +2309,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "情報"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr "インフォーマル"
@@ -4021,9 +4017,6 @@ msgstr ""
 msgid "Subject"
 msgstr "件名"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "サブネットビット数"
 
@@ -4228,6 +4221,10 @@ msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
 msgstr "パケットが指定されたルールに当てはまる場合に実行されるアクションを指定します．"
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
+msgstr ""
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -5363,7 +5360,7 @@ msgstr "特定の NTP サーバを使用します．"
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5411,6 +5408,9 @@ msgstr "ユーザ ID の整数値"
 
 msgid "User password."
 msgstr "ユーザのパスワード．"
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "ユーザサフィックス"
@@ -5721,7 +5721,7 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5856,25 +5856,24 @@ msgstr "upriv"
 #~ msgid "Disk Name"
 #~ msgstr "ディスク名"
 
-#~ msgid "built on"
-#~ msgstr "ビルトオン"
-
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "はじめにいくつかの 'エクステント' オブジェクトを定義して下さい．"
-
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (ストライピング)"
 
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (ミラーリング)"
 
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%2$dMB 中 %1$d%%"
+
 #~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
-#~ msgstr ""
-#~ "デバイスは，エクステントまたは他のデバイスを結び付ける為に使用します．ここで使用する前にエクステントとデバイスが定義されている必要があります．また，デバイ"
-#~ "スは何回も使用することは出来ません．"
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分，時，日，月を複数選択出来ます．"
+
+#, php-format
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s 上の %s (%dMHz)"
 
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
@@ -5883,6 +5882,14 @@ msgstr "upriv"
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "デバイスはまだマウントされています．デバイスをデタッチするにはまず最初にアンマウントして下さい．"
+
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+#~ msgstr ""
+#~ "デバイスは，エクステントまたは他のデバイスを結び付ける為に使用します．ここで使用する前にエクステントとデバイスが定義されている必要があります．また，デバイ"
+#~ "スは何回も使用することは出来ません．"
 
 #, php-format
 #~ msgid ""
@@ -5894,17 +5901,14 @@ msgstr "upriv"
 #~ msgid "Give full shell access to user."
 #~ msgstr "ユーザにシェルアクセスを許可します．"
 
-#~ msgid "Shell access"
-#~ msgstr "シェルアクセス"
-
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
-#~ msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分，時，日，月を複数選択出来ます．"
-
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC ローカル"
 
-#, php-format
-#~ msgid "%s on %s (%dMHz)"
-#~ msgstr "%s 上の %s (%dMHz)"
+#~ msgid "Shell access"
+#~ msgstr "シェルアクセス"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "はじめにいくつかの 'エクステント' オブジェクトを定義して下さい．"
+
+#~ msgid "built on"
+#~ msgstr "ビルトオン"

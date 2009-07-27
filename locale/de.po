@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
-"PO-Revision-Date: 2009-06-25 20:41+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
+"PO-Revision-Date: 2009-07-27 08:14+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:24+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -22,8 +22,8 @@ msgid " was assigned to "
 msgstr " wurde zugewiesen an "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% von %d MB"
+msgid "%d%% of %dMiB"
+msgstr "%d%% von %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -304,13 +304,13 @@ msgid "Add additional scheduled self-test."
 msgstr "Zusätzliche planmäßige Selbsttests hinzufügen."
 
 msgid "Add auth group"
-msgstr ""
+msgstr "Authentifizierungsgruppe hinzufügen"
 
 msgid "Add command"
 msgstr "Befehl hinzufügen"
 
 msgid "Add dataset"
-msgstr ""
+msgstr "Datensatz hinzufügen"
 
 msgid "Add device"
 msgstr "Gerät hinzufügen"
@@ -328,7 +328,7 @@ msgid "Add initiator"
 msgstr "Initiator hinzufügen"
 
 msgid "Add initiator group"
-msgstr ""
+msgstr "Initationsgruppe hinzufügen"
 
 msgid "Add interface"
 msgstr "Füge Schnittstelle hinzu"
@@ -430,7 +430,7 @@ msgid "Aggregation protocol"
 msgstr "Aggregation Protokoll"
 
 msgid "Aggressive"
-msgstr ""
+msgstr "Aggressiv"
 
 msgid "Albanian"
 msgstr "Albanisch"
@@ -493,7 +493,7 @@ msgstr ""
 "Freigabe. Diese Zuordnung folgt dem Erlaubt-Optionsformat."
 
 msgid "AltRoot"
-msgstr ""
+msgstr "AltRoot"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativer TCP Port (Standard: 22)."
@@ -523,13 +523,6 @@ msgstr "Ein Host mit diesem Namen existiert bereits."
 msgid "An interface with the specified description already exists."
 msgstr ""
 "Eine Schnittstelle mit der angegebenen Beschreibung existiert bereits."
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr "Anonym"
@@ -592,13 +585,13 @@ msgid "Attaching provider '%s'."
 msgstr "Binde Provider '%s' ein."
 
 msgid "Auth Group"
-msgstr ""
+msgstr "Authentifizierungsgruppe"
 
 msgid "Auth Groups"
-msgstr ""
+msgstr "Authentifizierungsgruppen"
 
 msgid "Auth Method"
-msgstr ""
+msgstr "Authentifikationsmethode"
 
 msgid "Authenticate URL"
 msgstr "URL bestätigen"
@@ -613,7 +606,7 @@ msgid "Authorised network"
 msgstr "Zugelassenes Netzwerk"
 
 msgid "Auths"
-msgstr ""
+msgstr "Authentifikationen"
 
 msgid "Auto"
 msgstr "Auto"
@@ -622,7 +615,7 @@ msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
 msgid "Autoselect"
-msgstr ""
+msgstr "Autom. Auswahl"
 
 msgid "Auxiliary parameters"
 msgstr "Zusätzliche Parameter"
@@ -1005,16 +998,16 @@ msgid "Database directory"
 msgstr "Datenbank Verzeichnis"
 
 msgid "Dataset"
-msgstr ""
+msgstr "Datensatz"
 
 msgid "Datasets"
-msgstr ""
+msgstr "Datensätze"
 
 msgid "Date & Time"
-msgstr ""
+msgstr "Datum & Zeit"
 
 msgid "Days"
-msgstr ""
+msgstr "Tage"
 
 msgid "Debug"
 msgstr "Debug"
@@ -1078,13 +1071,13 @@ msgid "Delete all self-tests"
 msgstr "Alle Selbsttests löschen"
 
 msgid "Delete auth group"
-msgstr ""
+msgstr "Authetifikationsgruppe löschen"
 
 msgid "Delete command"
 msgstr "Lösche Befehl"
 
 msgid "Delete dataset"
-msgstr ""
+msgstr "Datensatz löschen"
 
 msgid "Delete device"
 msgstr "Lösche Gerät"
@@ -1106,7 +1099,7 @@ msgid "Delete initiator"
 msgstr "Lösche Initiator"
 
 msgid "Delete initiator group"
-msgstr ""
+msgstr "Lösche Initiatorgruppe"
 
 msgid "Delete interface"
 msgstr "Lösche Schnittstelle"
@@ -1127,7 +1120,7 @@ msgid "Delete pool"
 msgstr ""
 
 msgid "Delete portal group"
-msgstr ""
+msgstr "Lösche Portalgruppe"
 
 msgid "Delete rule"
 msgstr "Regel löschen"
@@ -1184,7 +1177,7 @@ msgid "Destination share"
 msgstr "Zielfreigabe"
 
 msgid "Detected"
-msgstr ""
+msgstr "Entdeckt"
 
 msgid "Detected RSYNC remote shares"
 msgstr "Erkannte RSYNC-Remote-Freigaben"
@@ -1231,7 +1224,7 @@ msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Gerät: %s | Gesamt: %s | Belegt: %s | Frei: %s"
 
 msgid "Devices"
-msgstr ""
+msgstr "Geräte"
 
 msgid "Diagnostics"
 msgstr "Diagnose"
@@ -1288,10 +1281,10 @@ msgid "Discovered iSCSI target for %s"
 msgstr "Ermitteltes iSCSI-Ziel für %s"
 
 msgid "Discovery Auth Group"
-msgstr ""
+msgstr "Entdecke Authentifikationsgruppe"
 
 msgid "Discovery Auth Method"
-msgstr ""
+msgstr "Entdecke Authentifikationsmethode"
 
 msgid "Disk"
 msgstr "Festplatte"
@@ -1304,6 +1297,9 @@ msgstr "Festplatten"
 
 msgid "Disks (ATA)"
 msgstr "Festplatten (ATA)"
+
+msgid "Distributed hash table"
+msgstr "Bereitgestellte Hashtabelle"
 
 msgid "Do you really want to delete all MIBs?"
 msgstr "Wollen Sie wirklich sämtliche MIBs löschen?"
@@ -1327,7 +1323,7 @@ msgid "Do you really want to delete this URL?"
 msgstr "Möchten Sie diese URL wirklich löschen?"
 
 msgid "Do you really want to delete this auth group?"
-msgstr ""
+msgstr "Möchten sie diese Authentifikationsgruppe wirklich löschen?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Wollen Sie wirklich diesen Befehl löschen?"
@@ -1336,7 +1332,7 @@ msgid "Do you really want to delete this cron job?"
 msgstr "Wollen Sie den Cronjob wirklich löschen?"
 
 msgid "Do you really want to delete this dataset?"
-msgstr ""
+msgstr "Möchten sie diesen Datensatz löschen?"
 
 msgid "Do you really want to delete this device?"
 msgstr "Wollen Sie dieses Gerät wirklich löschen?"
@@ -1473,7 +1469,7 @@ msgstr ""
 "erzeugt werden - durch ein vorausgeführtes Skript."
 
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 msgid "Done"
 msgstr "Fertig"
@@ -1554,7 +1550,7 @@ msgid "Edit command"
 msgstr "Befehl bearbeiten"
 
 msgid "Edit dataset"
-msgstr ""
+msgstr "Bearbeite Datensatz"
 
 msgid "Edit device"
 msgstr "Gerät ändern"
@@ -1657,6 +1653,9 @@ msgstr "Aktiviere 'Device polling'"
 
 msgid "Enable directory listing."
 msgstr "Aktiviere Verzeichnisauflistung."
+
+msgid "Enable distributed hash table."
+msgstr ""
 
 msgid "Enable domain wildcarding."
 msgstr "Aktiviere Domain Wildcards."
@@ -1828,9 +1827,6 @@ msgstr "Geben Sie den Trap Hostnamen an."
 
 msgid "Error"
 msgstr "Fehler"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2119,6 +2115,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr "Ermögliche nur lokalen Benutzern Zugriff auf die Webseite."
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "Graph"
 
@@ -2164,7 +2163,7 @@ msgstr "HTTP-Proxy"
 msgid "Hard disk standby time"
 msgstr "Festplatten Standbyzeit"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2452,9 +2451,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "Information"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr "Zur Information"
@@ -4251,9 +4247,6 @@ msgstr ""
 msgid "Subject"
 msgstr "Betreff"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "Subnet bit count"
 
@@ -4468,6 +4461,10 @@ msgid ""
 msgstr ""
 "Diese Funktion wird in Gang gesetzt, wenn das Paket mit dem unten benannten "
 "Kriterium übereinstimmt."
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
+msgstr ""
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -5770,7 +5767,7 @@ msgstr "Verwendet den angegebenen NTP Server."
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5827,6 +5824,9 @@ msgstr "Numerische Benutzer-ID."
 
 msgid "User password."
 msgstr "Benutzerpasswort."
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "Benutzersuffix"
@@ -6161,7 +6161,7 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -6215,9 +6215,6 @@ msgstr "upriv"
 #~ msgid "Create"
 #~ msgstr "Erstellen"
 
-#~ msgid "A valid network bit count must be specified."
-#~ msgstr "Eine gültige Subnetz-Adressierung muss eingegeben werden."
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
 
@@ -6263,19 +6260,8 @@ msgstr "upriv"
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Hier werden die Arbeitsdaten abgelegt"
 
-#~ msgid "Create work directory if it doesn't exist"
-#~ msgstr "Lege Arbeitsverzeichnis an, falls es noch nicht existiert"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Shutdownzeit"
-
-#, php-format
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a "
-#~ "href=%s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
 
 #, php-format
 #~ msgid "Last %d %s log entries"
@@ -6307,14 +6293,37 @@ msgstr "upriv"
 #~ msgid "built on"
 #~ msgstr "gebaut am"
 
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "Sie müssen zuerst 'Extent'-Objekte definieren."
-
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
 
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (mirroring/spiegeln)"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% von %d MB"
+
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "Eine gültige Subnetz-Adressierung muss eingegeben werden."
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Lege Arbeitsverzeichnis an, falls es noch nicht existiert"
+
+#, php-format
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "Dateipfad (z. B. /mnt/sharename/extent/%s) oder Gerätename (z. B. /dev/ad1) "
+#~ "als extent nutzen."
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "Sie müssen zuerst 'Extent'-Objekte definieren."
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr ""
+#~ "Das Device ist noch gemountet! Unmounten Sie es zuerst, bevor Sie es "
+#~ "entfernen."
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
@@ -6332,19 +6341,6 @@ msgstr "upriv"
 #~ "Auf der höchsten Ebene ist ein Ziel das, was dem Initiator angezeigt wird. "
 #~ "Es besteht aus einem oder mehreren Geräten und/oder einem oder mehreren "
 #~ "Extents."
-
-#~ msgid "Device is mounted, umount it first before detaching."
-#~ msgstr ""
-#~ "Das Device ist noch gemountet! Unmounten Sie es zuerst, bevor Sie es "
-#~ "entfernen."
-
-#, php-format
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "Dateipfad (z. B. /mnt/sharename/extent/%s) oder Gerätename (z. B. /dev/ad1) "
-#~ "als extent nutzen."
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "Voller Kommandozeilenzugang für Benutzer!"
@@ -6375,17 +6371,25 @@ msgstr "upriv"
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s auf %s (%dMHz)"
 
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a "
+#~ "href=%s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
+
 #~ msgid ""
 #~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 #~ msgstr ""
 #~ "Die Standardschlüssellängen sind: 128 für AES, 128 für Blowfish und 192 für "
 #~ "3DES."
 
-#~ msgid "FTP file transfer"
-#~ msgstr "FTP-Datenübertragung"
+#~ msgid "Syslog"
+#~ msgstr "Syslog"
 
 #~ msgid "File transfer"
 #~ msgstr "Dateiübertragung"
 
-#~ msgid "Syslog"
-#~ msgstr "Syslog"
+#~ msgid "FTP file transfer"
+#~ msgstr "FTP-Datenübertragung"

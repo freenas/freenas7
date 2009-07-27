@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
-"PO-Revision-Date: 2009-07-08 05:52+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
+"PO-Revision-Date: 2009-07-18 12:45+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -20,8 +20,8 @@ msgid " was assigned to "
 msgstr " a été assignée à "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% de %dMB"
+msgid "%d%% of %dMiB"
+msgstr "%d%% de %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -90,6 +90,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a> doit être activé pour qu'Unison fonctionne, et l'<a "
+"href=%s>utilisateur</a> doit avoir accès au shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -531,17 +533,6 @@ msgstr "Une hôte portant ce nom existe déjà."
 msgid "An interface with the specified description already exists."
 msgstr "Il existe déjà une interface ayant cette description"
 
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
-"Une requête non-autorisée de type POST a été détectée. Cela pouvant être une "
-"requête <a href='%s' target='_blank'> cross-site falsifiée, la requête a été "
-"bloquée.\r\n"
-"Veuillez vous <a href='%s'>reconnecter</a> pour continuer."
-
 msgid "Anonymous"
 msgstr "Anonyme"
 
@@ -605,7 +596,7 @@ msgid "Attaching provider '%s'."
 msgstr "Attaching provider '%s'."
 
 msgid "Auth Group"
-msgstr "Goupe Auth"
+msgstr "Groupe Auth"
 
 msgid "Auth Groups"
 msgstr "Groupes Auth"
@@ -691,7 +682,7 @@ msgid "Browseable"
 msgstr "Navigabilité"
 
 msgid "Built on"
-msgstr ""
+msgstr "Date de compilation"
 
 msgid "Bulgarian"
 msgstr "Bulgare"
@@ -1323,6 +1314,9 @@ msgstr "Disques"
 msgid "Disks (ATA)"
 msgstr "Disques (ATA)"
 
+msgid "Distributed hash table"
+msgstr "Table de hash distribuée"
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "Voulez-vous vraiment supprimer toutes les MIBs?"
 
@@ -1674,6 +1668,9 @@ msgstr "Activer le sondage de périphérique"
 msgid "Enable directory listing."
 msgstr "Activer le listage des répertoires."
 
+msgid "Enable distributed hash table."
+msgstr "Activer les tables de hash distribuées"
+
 msgid "Enable domain wildcarding."
 msgstr "Activer les wildcards pour les domaines"
 
@@ -1842,9 +1839,6 @@ msgstr "Nom du hôte vers lequel envoyer les traps SNMP"
 
 msgid "Error"
 msgstr "Erreur"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2133,6 +2127,9 @@ msgstr "GiB"
 msgid "Give only local users access to the web page."
 msgstr "Donner l'accès à la page web uniquement aux utilisateurs locaux."
 
+msgid "Grant access to the user portal."
+msgstr "Autorise l'accès au portail utilisateur."
+
 msgid "Graph"
 msgstr "Graphes"
 
@@ -2179,8 +2176,8 @@ msgstr "Proxy HTTP"
 msgid "Hard disk standby time"
 msgstr "Délai de mise en veille du disque"
 
-msgid "Hardware:"
-msgstr ""
+msgid "Hardware"
+msgstr "Matériel"
 
 msgid "Header and Data digest"
 msgstr "Digest d'en-tête et des données"
@@ -2466,9 +2463,6 @@ msgstr "Inclure des informations basiques sur le hardware"
 
 msgid "Info"
 msgstr "Info"
-
-msgid "Info:"
-msgstr "Information:"
 
 msgid "Informal"
 msgstr "Informel"
@@ -3586,7 +3580,7 @@ msgstr "Groupe principal"
 
 msgid "Primary group is also selected in additional group."
 msgstr ""
-"Un goupe primaire est également sélectionné avec un groupe additionnel."
+"Un groupe primaire est également sélectionné avec un groupe additionnel."
 
 msgid "Private Key"
 msgstr "Clef privée"
@@ -3695,7 +3689,7 @@ msgid "Read Only Access"
 msgstr "Accès en Lecture uniquement"
 
 msgid "Read from lowest load"
-msgstr "Lire depuis la charge minimale"
+msgstr "Lire depuis le moins chargé (lowest load)"
 
 msgid "Read only"
 msgstr "Lecture seule"
@@ -3833,7 +3827,7 @@ msgid "Root bind password"
 msgstr "Mots de passe pour le bind racine"
 
 msgid "Round-robin read"
-msgstr ""
+msgstr "Lecture circulaire (round-robin)"
 
 msgid "Roundrobin"
 msgstr "Cyclique (roundrobin)"
@@ -4099,7 +4093,7 @@ msgid "Shares"
 msgstr "Partages"
 
 msgid "Shell"
-msgstr ""
+msgstr "Shell"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
@@ -4232,7 +4226,7 @@ msgstr ""
 "défragmentation."
 
 msgid "Split request"
-msgstr ""
+msgstr "Distribuer les requêtes (split)"
 
 msgid "Standard"
 msgstr "Standard"
@@ -4300,9 +4294,6 @@ msgstr "Entrelacement"
 msgid "Subject"
 msgstr "Sujet"
 
-msgid "Subject:"
-msgstr "Objet:"
-
 msgid "Subnet bit count"
 msgstr "Subnet bit count"
 
@@ -4347,7 +4338,7 @@ msgid "Switch to %s/s"
 msgstr "Basculer en %s/s"
 
 msgid "Synchronization time"
-msgstr ""
+msgstr "Période de synchronisation"
 
 msgid "Synchronize"
 msgstr "Synchroniser"
@@ -4519,6 +4510,11 @@ msgid ""
 msgstr ""
 "Action à exécuter lorsque le paquet satisfait les critères spécifiés ci-"
 "dessous."
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
+msgstr ""
+"L'administrateur a été notifié. Vos modifications seront bientôt disponibles."
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -5066,7 +5062,7 @@ msgid "The uploaded image file is not for this platform"
 msgstr "Le fichier image chargé n'est pas valide pour cette plateforme"
 
 msgid "The user's login shell."
-msgstr ""
+msgstr "Le shell de login de l'utilisateur."
 
 msgid "The value of the variable."
 msgstr "La valeur de la variable."
@@ -5839,10 +5835,10 @@ msgstr "Utiliser le serveur NTP spécifié."
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
-"Utiliser cette option pour surcharger les modes de permission par défaut "
-"pour les nouveaux fichiers créés (%s par défaut). "
+"Utiliser cette option pour remplacer les modes de permissions par défaut "
+"pour les nouveaux fichiers créés (%s par défaut)."
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -5899,6 +5895,9 @@ msgstr "Identifiant numérique de l'utilisateur."
 
 msgid "User password."
 msgstr "Mot de passe."
+
+msgid "User portal"
+msgstr "Portail utilisateur"
 
 msgid "User suffix"
 msgstr "Suffixe utilisateur"
@@ -6000,7 +5999,7 @@ msgstr ""
 "perdues et ne pourront pas être récupérées."
 
 msgid "Watch directory"
-msgstr ""
+msgstr "Répertoire à surveiller"
 
 msgid "WebGUI"
 msgstr "Interface Web"
@@ -6236,8 +6235,8 @@ msgstr "aucun"
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
-msgstr "phpBB:"
+msgid "phpBB"
+msgstr "phpBB"
 
 msgid "prodos"
 msgstr "prodos"
@@ -6299,9 +6298,6 @@ msgstr "upriv"
 #~ msgid "Logs"
 #~ msgstr "Journaux"
 
-#~ msgid "Size in MB."
-#~ msgstr "Taille en Mo."
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Consommation d'énergie minimale avec mise en veille"
 
@@ -6337,11 +6333,11 @@ msgstr "upriv"
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Emplacement où seront stockés les fichiers de travail"
 
-#~ msgid "Create work directory if it doesn't exist"
-#~ msgstr "Créer le répertoire de travail s'il n'existe pas"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Heure d'arrêt"
+
+#~ msgid "Size in MB."
+#~ msgstr "Taille en Mo."
 
 #, php-format
 #~ msgid ""
@@ -6358,34 +6354,43 @@ msgstr "upriv"
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "La configuration n'a pu être restaurée (erreur d'envoi du fichier)."
 
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Ce disque chiffré est monté, démontez-le avant d'essayer de la détacher."
-
-#~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr ""
-#~ "Vous devez utiliser une phrase de passe pour attacher un disque chiffré."
-
-#~ msgid "Encrypted disk name"
-#~ msgstr "Nom du disque chiffré"
-
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Réseau autorisé à accéder à cette cible iSCSI."
 
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% de %dMB"
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "Ce périphérique est monté, démontez-le avant de le détacher"
+
 #~ msgid "Disk Name"
 #~ msgstr "Nom disque"
-
-#~ msgid "built on"
-#~ msgstr "Compilé le"
-
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "Vous devez d'abord définir quelques objets 'Extension' (extent)."
 
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
 
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (mirroring)"
+
+#~ msgid "built on"
+#~ msgstr "Compilé le"
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Donner l'accès complet au shell à cet utilisateur"
+
+#~ msgid "Shell access"
+#~ msgstr "Accès au shell"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Note: Ctrl-click (ou commande-click sur Mac) pour sélectionner ou "
+#~ "déselectionner les minutes, heures, jours et mois."
+
+#~ msgid "RSYNC Local"
+#~ msgstr "RSYNC Local"
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
@@ -6405,9 +6410,6 @@ msgstr "upriv"
 #~ "l'initiateur (initiator), et est constitué d'un ou plusieurs périphériques "
 #~ "(device), et/ou une ou plusieurs extensions (extent)."
 
-#~ msgid "Device is mounted, umount it first before detaching."
-#~ msgstr "Ce périphérique est monté, démontez-le avant de le détacher"
-
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
@@ -6416,25 +6418,12 @@ msgstr "upriv"
 #~ "Chemin d'accès au fichier (p.ex. /mnt/sharename/extent/%s) ou nom du "
 #~ "périphérique (p.ex. /dev/ad1) utilisé comme extension."
 
-#~ msgid "Give full shell access to user."
-#~ msgstr "Donner l'accès complet au shell à cet utilisateur"
-
-#~ msgid "Shell access"
-#~ msgstr "Accès au shell"
-
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
-#~ msgstr ""
-#~ "Note: Ctrl-click (ou commande-click sur Mac) pour sélectionner ou "
-#~ "déselectionner les minutes, heures, jours et mois."
-
-#~ msgid "RSYNC Local"
-#~ msgstr "RSYNC Local"
-
 #, php-format
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s sur %s (%dMHz)"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Créer le répertoire de travail s'il n'existe pas"
 
 #~ msgid ""
 #~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
@@ -6442,11 +6431,25 @@ msgstr "upriv"
 #~ "Les longueurs de clefs par défaut sont: 128 pour AES, 128 pour Blowfish et "
 #~ "192 pour 3DES."
 
-#~ msgid "FTP file transfer"
-#~ msgstr "Transfert de fichier FTP"
+#~ msgid "Encrypted disk name"
+#~ msgstr "Nom du disque chiffré"
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Ce disque chiffré est monté, démontez-le avant d'essayer de la détacher."
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr ""
+#~ "Vous devez utiliser une phrase de passe pour attacher un disque chiffré."
+
+#~ msgid "Syslog"
+#~ msgstr "Syslog"
 
 #~ msgid "File transfer"
 #~ msgstr "Transfert de fichier"
 
-#~ msgid "Syslog"
-#~ msgstr "Syslog"
+#~ msgid "FTP file transfer"
+#~ msgstr "Transfert de fichier FTP"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "Vous devez d'abord définir quelques objets 'Extension' (extent)."

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
 "PO-Revision-Date: 2009-07-08 18:09+0000\n"
 "Last-Translator: Davide <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -22,8 +22,8 @@ msgid " was assigned to "
 msgstr " era assegnata a "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% di %dMB"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -500,13 +500,6 @@ msgstr "Esiste gia' un host con questo nome."
 
 msgid "An interface with the specified description already exists."
 msgstr "Un'interfaccia con la descrizione specificata esiste già."
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr ""
@@ -1272,6 +1265,9 @@ msgstr "Dischi"
 msgid "Disks (ATA)"
 msgstr "Dischi (ATA)"
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "Vuoi cancellare davvero tutti i MIB?"
 
@@ -1619,6 +1615,9 @@ msgstr "Abilita il device polling"
 msgid "Enable directory listing."
 msgstr "Abilita l'elenco directory."
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr ""
 
@@ -1774,9 +1773,6 @@ msgstr "Inserire un nome di host per le trap"
 
 msgid "Error"
 msgstr "Errore"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2061,6 +2057,9 @@ msgstr "GiB"
 msgid "Give only local users access to the web page."
 msgstr "Consenti l'accesso alla pagina web soltanto agli utenti locali."
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "Grafico"
 
@@ -2107,7 +2106,7 @@ msgstr "Proxy HTTP"
 msgid "Hard disk standby time"
 msgstr "Tempo per lo standby del Disco"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2380,9 +2379,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "Informazioni"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr "Informale"
@@ -4115,9 +4111,6 @@ msgstr ""
 msgid "Subject"
 msgstr "Soggetto"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "Netmask"
 
@@ -4328,6 +4321,10 @@ msgstr ""
 msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
+msgstr ""
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
 msgstr ""
 
 #, php-format
@@ -5530,7 +5527,7 @@ msgstr "Utilizza il server NTP specificato."
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5589,6 +5586,9 @@ msgstr ""
 
 msgid "User password."
 msgstr "Password utente."
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "Suffisso utente"
@@ -5906,7 +5906,7 @@ msgstr ""
 msgid "nostat"
 msgstr ""
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5969,9 +5969,6 @@ msgstr ""
 #~ msgid "Logs"
 #~ msgstr "Logs"
 
-#~ msgid "Size in MB."
-#~ msgstr "Dimensione in MB."
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Consumo minimo con standby"
 
@@ -6030,6 +6027,9 @@ msgstr ""
 #~ "Non e' stato possibile ripristinare la configurazione (errore di upload del "
 #~ "file)."
 
+#~ msgid "Size in MB."
+#~ msgstr "Dimensione in MB."
+
 #~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Questo disco cifrato risulta montato. Smontarlo prima di \"sganciarlo\"."
@@ -6044,21 +6044,6 @@ msgstr ""
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Rete autorizzata ad accedere a questo target iSCSI."
 
-#~ msgid "Disk Name"
-#~ msgstr "Nome del disco"
-
-#~ msgid "built on"
-#~ msgstr "costruito su"
-
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "In primo luogo, bisogna definire alcuni oggetti 'Limite'."
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (stripping)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (mirroring)"
-
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
 #~ "must be defined before they can be used, and they cannot be used more than "
@@ -6067,6 +6052,33 @@ msgstr ""
 #~ "I dispositivi sono utilizzati per unire i limiti o altri dispositivi. Limiti "
 #~ "e dispositivi devono essre definiti prima che essi vengano utilizzati e non "
 #~ "possono essere usati  piu' di una volta."
+
+#~ msgid "Disk Name"
+#~ msgstr "Nome del disco"
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "In primo luogo, bisogna definire alcuni oggetti 'Limite'."
+
+#~ msgid "built on"
+#~ msgstr "costruito su"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% di %dMB"
+
+#, php-format
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "Percorso di file (e.g. /mnt/sharename/extent/%s) o nome di device (e.g. "
+#~ "/dev/ad1) utilizzato come extent."
 
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
@@ -6077,14 +6089,6 @@ msgstr ""
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Il dispositivo risulta montato e va smontato prima di sganciarlo."
-
-#, php-format
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "Percorso di file (e.g. /mnt/sharename/extent/%s) o nome di device (e.g. "
-#~ "/dev/ad1) utilizzato come extent."
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "Consenti all'utente un completo accesso alla shell"
