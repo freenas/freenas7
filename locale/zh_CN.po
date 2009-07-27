@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
-"PO-Revision-Date: 2009-07-05 00:32+0000\n"
-"Last-Translator: votdev <Unknown>\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
+"PO-Revision-Date: 2009-07-24 08:53+0000\n"
+"Last-Translator: Aron Xu <aronxu@gnome.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -51,8 +51,8 @@ msgid " was assigned to "
 msgstr " 被指派为 "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% 中的 %dMB"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -507,13 +507,6 @@ msgstr "已经有一个相同的主机名称存在了。"
 
 msgid "An interface with the specified description already exists."
 msgstr "具有相同描述的接口已经存在。"
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr "匿名"
@@ -1258,6 +1251,9 @@ msgstr "磁碟"
 msgid "Disks (ATA)"
 msgstr "磁碟（ATA）"
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "是否确定删除全部 MIB ？"
 
@@ -1597,6 +1593,9 @@ msgstr "开启device polling"
 msgid "Enable directory listing."
 msgstr "开启目录清单。"
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr "启用域名通配符。"
 
@@ -1749,9 +1748,6 @@ msgstr "输入 Trap 主机名称。"
 
 msgid "Error"
 msgstr "错误"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -1929,7 +1925,7 @@ msgid "File upload stopped by extension."
 msgstr ""
 
 msgid "Filename"
-msgstr "档案名称"
+msgstr "文件名"
 
 msgid "Firewall"
 msgstr "防火墙"
@@ -2027,6 +2023,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr "只有本机使用者可以使用网页伺服器。"
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "图表"
 
@@ -2072,7 +2071,7 @@ msgstr "HTTP Proxy"
 msgid "Hard disk standby time"
 msgstr "硬碟待命时间"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2328,9 +2327,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "资讯"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr "资讯"
@@ -4024,9 +4020,6 @@ msgstr ""
 msgid "Subject"
 msgstr "主旨"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "网段遮罩位元数"
 
@@ -4233,6 +4226,10 @@ msgstr ""
 msgid ""
 "The action which will be executed when the packet match the criteria "
 "specified below."
+msgstr ""
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
 msgstr ""
 
 #, php-format
@@ -5366,7 +5363,7 @@ msgstr "使用指定的 NTP 伺服器。"
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5413,6 +5410,9 @@ msgstr "使用者数字 ID"
 
 msgid "User password."
 msgstr "使用者自行设定的密码"
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "使用者名称词缀"
@@ -5722,7 +5722,7 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5776,23 +5776,11 @@ msgstr "upriv"
 #~ msgid "Create"
 #~ msgstr "建立"
 
-#~ msgid "A valid network bit count must be specified."
-#~ msgstr "必须指定一个有效的网络比特值。"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
 
-#~ msgid "Logs"
-#~ msgstr "记录档"
-
 #~ msgid "Size in MB."
 #~ msgstr "以MB为单位。"
-
-#~ msgid "Minimum power usage with Standby"
-#~ msgstr "开启待命模式之最小耗电量"
-
-#~ msgid "Medium power usage with Standby"
-#~ msgstr "开启待命模式之中等耗电量"
 
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "关闭待命模式之最小耗电量"
@@ -5803,45 +5791,14 @@ msgstr "upriv"
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "最大效能/耗电量"
 
-#~ msgid "A valid network must be specified."
-#~ msgstr "必须指定一个有效的网络。"
-
-#~ msgid "Synchronization Time"
-#~ msgstr "同步启动时间"
-
-#~ msgid "The combination of share and working directory does not exist."
-#~ msgstr "设定值内的分享/工作目录不存在。"
-
-#~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr "确定你有足够的空间来复制所有要同步的档案"
-
-#~ msgid "Working Directory"
-#~ msgstr "工作目录"
-
 #~ msgid "Where the working files will be stored"
 #~ msgstr "选择工作档案要储存的位置"
-
-#~ msgid "Create work directory if it doesn't exist"
-#~ msgstr "如果你还没有工作目录，请建立一个"
 
 #~ msgid "Shutdown Time"
 #~ msgstr "关机时间"
 
-#, php-format
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
-#~ msgstr "Unison 服务必须配合<a href=%s>SSHD</a> ，而<a href=%s>使用者</a>必须要有完全的Shell权限。"
-
-#, php-format
-#~ msgid "Last %d %s log entries"
-#~ msgstr "最后 %d 笔 %s 记录资料"
-
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "无法回覆设定组态（档案上传错误）。"
-
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr "这个加密磁碟正在挂载中，在卸除之前请先将其卸载。"
 
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "连结加密磁碟之前请输入一个加密金钥。"
@@ -5852,29 +5809,17 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "设定可以使用iSCSI目标的网路区段"
 
-#~ msgid "Disk Name"
-#~ msgstr "磁碟名称"
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "必须指定一个有效的网络比特值。"
 
-#~ msgid "built on"
-#~ msgstr "建立于"
+#~ msgid "A valid network must be specified."
+#~ msgstr "必须指定一个有效的网络。"
 
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "你必须先定义 Extent 物件。"
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (stripping)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (镜射)"
-
+#, php-format
 #~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
-#~ msgstr ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr "Unison 服务必须配合<a href=%s>SSHD</a> ，而<a href=%s>使用者</a>必须要有完全的Shell权限。"
 
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
@@ -5882,9 +5827,24 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
 #~ "made up of one or more devices, and/or one or more extents."
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "如果你还没有工作目录，请建立一个"
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "装置已经挂载，移除之前请先卸载。"
+
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+#~ msgstr ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+
+#~ msgid "Disk Name"
+#~ msgstr "磁碟名称"
 
 #, php-format
 #~ msgid ""
@@ -5895,13 +5855,53 @@ msgstr "upriv"
 #~ msgid "Give full shell access to user."
 #~ msgstr "授与使用者 shell 权限"
 
-#~ msgid "Shell access"
-#~ msgstr "Shell 权限"
+#, php-format
+#~ msgid "Last %d %s log entries"
+#~ msgstr "最后 %d 笔 %s 记录资料"
+
+#~ msgid "Logs"
+#~ msgstr "记录档"
+
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "开启待命模式之中等耗电量"
+
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "开启待命模式之最小耗电量"
 
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 #~ "minutes, hours, days and months."
 #~ msgstr "备注：按著 Ctrl 配合滑鼠左键（Mac 请按 Cmd）以选择时间与日期。"
 
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (镜射)"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"
+
+#~ msgid "Shell access"
+#~ msgstr "Shell 权限"
+
+#~ msgid "Synchronization Time"
+#~ msgstr "同步启动时间"
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "设定值内的分享/工作目录不存在。"
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "这个加密磁碟正在挂载中，在卸除之前请先将其卸载。"
+
+#~ msgid "Working Directory"
+#~ msgstr "工作目录"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "你必须先定义 Extent 物件。"
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr "确定你有足够的空间来复制所有要同步的档案"
+
+#~ msgid "built on"
+#~ msgstr "建立于"

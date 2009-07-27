@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
-"PO-Revision-Date: 2009-07-04 02:39+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
+"PO-Revision-Date: 2009-07-27 02:42+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:26+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -75,10 +75,10 @@ msgstr ""
 "De basisconfiguratie neemt gewoonlijk de vorm aan van 'daemon: adres: "
 "actie'. Waar daemon de daemonnaam van de gestarte service is. Het adres kan "
 "een geldig hostnaam, een IP adres of een IPv6 adres tussen haakjes "
-"ingesloten zijn. Het actie veld kan zijn toestaan of afwijzen tot aangewezen "
-"toestaan of afwijzen van de toegang. Houd in gedachte dat de configuratie "
-"werkt van een eerste regel match semantisch, dit betekenend dat het "
-"configuratie bestand  in stijgende lijn voor een passende regel wordt "
+"ingesloten zijn. Het actie veld kan bestaan uit toestaan of afwijzen tot het "
+"aangewezen toestaan of afwijzen van de toegang. Houd in gedachte dat de "
+"configuratie werkt van een eerste regelmatch semantisch, dit betekenend dat "
+"het configuratie bestand in stijgende lijn voor een passende regel wordt "
 "afgezocht. Wanneer een match is gevonden zal de regel worden toegepast en "
 "het zoek proces zal worden beëindigd."
 
@@ -112,8 +112,8 @@ msgid " was assigned to "
 msgstr " werd toegewezen aan "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% van %dMB"
+msgid "%d%% of %dMiB"
+msgstr "%d%% van %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -593,7 +593,7 @@ msgid "Alternate TCP port. Default is 873"
 msgstr "Alternatieve TCP poort. Standaard 873"
 
 msgid "Alternative configuration directory (usually empty)."
-msgstr "Alternatieve configuratie map (normaal leeg)."
+msgstr "Alternatieve configuratie folder (normaal leeg)."
 
 msgid "Always on"
 msgstr "Altijd aan"
@@ -613,16 +613,6 @@ msgstr "Een host met deze naam bestaat reeds."
 
 msgid "An interface with the specified description already exists."
 msgstr "Een netwerk met deze gespecificeerde omschrijving bestaat reeds."
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
-"Een onbevoegde POST verzoek is ontdekt. Omdat dit kan een <a href='%s' "
-"target='_blank'>cross-site verzoek vervalsing</a> aanval kan wezen is het "
-"verzoek geblokkeerd. <a href='%s'>Aanmelden</a> om verder te gaan."
 
 msgid "Anonymous"
 msgstr "Anoniem"
@@ -965,7 +955,7 @@ msgid "Configuration"
 msgstr "Configuratie"
 
 msgid "Configuration directory"
-msgstr "Configuratie map"
+msgstr "Configuratie folder"
 
 msgid "Configuring"
 msgstr "Configureren"
@@ -1401,6 +1391,9 @@ msgstr "Schijven"
 msgid "Disks (ATA)"
 msgstr "Schijven (ATA)"
 
+msgid "Distributed hash table"
+msgstr "Distributed hash table"
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "Weet u zeker dat u alle MIBs wilt verwijderen?"
 
@@ -1755,6 +1748,9 @@ msgstr "Inschakelen netwerk polling."
 msgid "Enable directory listing."
 msgstr "Inschakelen folderlijst."
 
+msgid "Enable distributed hash table."
+msgstr "Inschakelen Distributed hash table (DHT)."
+
 msgid "Enable domain wildcarding."
 msgstr "Inschakelen domein wildcard"
 
@@ -1907,9 +1903,6 @@ msgstr "Vul de trap host naam in."
 
 msgid "Error"
 msgstr "Fout"
-
-msgid "Error's"
-msgstr "Fouten"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2194,6 +2187,9 @@ msgstr "GiB"
 msgid "Give only local users access to the web page."
 msgstr "Geef alleen lokale gebruikers toegang naar de web pagina."
 
+msgid "Grant access to the user portal."
+msgstr "Toegang toestaan tot de gebruikers portaal."
+
 msgid "Graph"
 msgstr "Grafieken"
 
@@ -2241,8 +2237,8 @@ msgstr "HTTP Proxy"
 msgid "Hard disk standby time"
 msgstr "Standby tijd harde schijf"
 
-msgid "Hardware:"
-msgstr "Hardware:"
+msgid "Hardware"
+msgstr "Hardware"
 
 msgid "Header and Data digest"
 msgstr "Hoofd and Gegevens overzicht"
@@ -2326,19 +2322,19 @@ msgid "Hungarian"
 msgstr "Hongaars"
 
 msgid "I/O Timeout"
-msgstr "I/O Onderbreking"
+msgstr "I/U Onderbreking"
 
 msgid "I/O errors"
-msgstr "I/O fouten"
+msgstr "I/U fouten"
 
 msgid "I/O packets"
-msgstr "I/O paketten"
+msgstr "I/U pakketten"
 
 msgid "I/O statistics"
-msgstr "I/O statistieken"
+msgstr "I/U statistieken"
 
 msgid "I/O timeout in seconds (30 by default)."
-msgstr "I/O onderbreking in seconden. (standaard 30)"
+msgstr "I/U onderbreking in seconden. (standaard 30)"
 
 msgid "IG"
 msgstr "IG"
@@ -2534,9 +2530,6 @@ msgstr "Basis hardware informatie bijsluiten."
 
 msgid "Info"
 msgstr "Info"
-
-msgid "Info:"
-msgstr "Info:"
 
 msgid "Informal"
 msgstr "Informeel"
@@ -3851,7 +3844,7 @@ msgid "Reports"
 msgstr "Rapporten"
 
 msgid "Require authentication."
-msgstr "Vereis verificatie."
+msgstr "Verificatie vereist."
 
 msgid "Required"
 msgstr "Vereist"
@@ -4369,14 +4362,11 @@ msgstr "Stripe"
 msgid "Subject"
 msgstr "Onderwerp"
 
-msgid "Subject:"
-msgstr "Onderwerp:"
-
 msgid "Subnet bit count"
 msgstr "Subnet bit telling"
 
 msgid "Subnet mask"
-msgstr "Subnet masker"
+msgstr "Subnetmasker"
 
 msgid "Successful"
 msgstr "Succesvol"
@@ -4585,6 +4575,12 @@ msgid ""
 msgstr ""
 "De actie die zal worden uitgevoerd wanneer het pakket voldoet aan de "
 "hieronder opgegeven criteria."
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
+msgstr ""
+"De beheerder is op de hoogte gebracht. Uw veranderingen zullen spoedig "
+"beschikbaar zijn."
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -4885,7 +4881,7 @@ msgstr ""
 msgid ""
 "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
-"De maximum download bandbreedte in KiB/s. Een leeg gelaten veld betekent "
+"De maximum download bandbreedte in KB/s. Een leeg gelaten veld betekent "
 "onbeperkt."
 
 msgid "The maximum idle time be a number."
@@ -4970,7 +4966,7 @@ msgid "The path '%s' is not a directory."
 msgstr "De pad '%s' is geen folder."
 
 msgid "The peer connection encryption mode."
-msgstr "De peer connectie encryptie mode."
+msgstr "Versleutelings mode voor peer-to-peer verbindingen."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -5875,10 +5871,10 @@ msgstr "Na inschakeling kunt u gemachtigde NTP tijdservers configureren."
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
-"Gebruik deze instelling om de standaard bestandsmachtigingen te overbruggen "
-"op nieuw aangemaakte bestanden (%s standaard). "
+"Gebruik deze optie om de bestandsmachtigingen te overbruggen voor nieuw "
+"gecreëerde bestanden (standaard %s)."
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -5934,6 +5930,9 @@ msgstr "Numerieke gebruikers id."
 
 msgid "User password."
 msgstr "Wachtwoord gebruiker."
+
+msgid "User portal"
+msgstr "Gebruikers portaal"
 
 msgid "User suffix"
 msgstr "Gebruiker achtervoegsel"
@@ -6266,8 +6265,8 @@ msgstr "geen"
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
-msgstr "phpBB:"
+msgid "phpBB"
+msgstr "phpBB"
 
 msgid "prodos"
 msgstr "prodos"

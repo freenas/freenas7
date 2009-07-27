@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-07-04 00:21+0000\n"
+"POT-Creation-Date: 2009-07-12 19:45+0000\n"
 "PO-Revision-Date: 2009-06-30 00:25+0000\n"
 "Last-Translator: Marcos Garcia <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-10 20:25+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -25,8 +25,8 @@ msgid " was assigned to "
 msgstr " fue asignado a "
 
 #, c-format, php-format
-msgid "%d%% of %dMB"
-msgstr "%d%% de %dMB"
+msgid "%d%% of %dMiB"
+msgstr ""
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -508,13 +508,6 @@ msgstr "Ya existe una máquina con este nombre."
 
 msgid "An interface with the specified description already exists."
 msgstr "Ya existe una interfaz con la descripcion especificada."
-
-#, c-format
-msgid ""
-"An unauthorized POST request has been detected. Because this can be a <a "
-"href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
-"has been blocked. Please <a href='%s'>login</a> again to continue."
-msgstr ""
 
 msgid "Anonymous"
 msgstr "Anónimo"
@@ -1282,6 +1275,9 @@ msgstr "Discos"
 msgid "Disks (ATA)"
 msgstr "Discos (ATA)"
 
+msgid "Distributed hash table"
+msgstr ""
+
 msgid "Do you really want to delete all MIBs?"
 msgstr "¿Realmente quiere eliminar todos los MIB?"
 
@@ -1631,6 +1627,9 @@ msgstr "Permitir comprobación de los dispositivos"
 msgid "Enable directory listing."
 msgstr "Activar listado de directorio."
 
+msgid "Enable distributed hash table."
+msgstr ""
+
 msgid "Enable domain wildcarding."
 msgstr "Habilitar dominio comodín."
 
@@ -1789,9 +1788,6 @@ msgstr ""
 
 msgid "Error"
 msgstr "Error"
-
-msgid "Error's"
-msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
@@ -2080,6 +2076,9 @@ msgstr ""
 msgid "Give only local users access to the web page."
 msgstr "Dar acceso a la pagina web sólo a los usuarios locales."
 
+msgid "Grant access to the user portal."
+msgstr ""
+
 msgid "Graph"
 msgstr "Gráfico"
 
@@ -2126,7 +2125,7 @@ msgstr "Proxy HTTP"
 msgid "Hard disk standby time"
 msgstr "Tiempo de espera de apagado del disco duro"
 
-msgid "Hardware:"
+msgid "Hardware"
 msgstr ""
 
 msgid "Header and Data digest"
@@ -2396,9 +2395,6 @@ msgstr ""
 
 msgid "Info"
 msgstr "Información"
-
-msgid "Info:"
-msgstr ""
 
 msgid "Informal"
 msgstr "Informal"
@@ -4150,9 +4146,6 @@ msgstr ""
 msgid "Subject"
 msgstr "Asunto"
 
-msgid "Subject:"
-msgstr ""
-
 msgid "Subnet bit count"
 msgstr "Bit de subnet"
 
@@ -4361,6 +4354,10 @@ msgid ""
 msgstr ""
 "La acción se ejecutará cuando el paquete concuerde con el criterio "
 "especificado debajo."
+
+msgid ""
+"The administrator has been notified. Your changes will be available soon."
+msgstr ""
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -5532,7 +5529,7 @@ msgstr "Usar el servidor NTP especificado."
 #, php-format
 msgid ""
 "Use this option to override the default permission modes for newly created "
-"files (%s by default). "
+"files (%s by default)."
 msgstr ""
 
 msgid ""
@@ -5585,6 +5582,9 @@ msgstr "Id. numérico de usuario"
 
 msgid "User password."
 msgstr "Contraseña del Usuario"
+
+msgid "User portal"
+msgstr ""
 
 msgid "User suffix"
 msgstr "Sufijo de usuario"
@@ -5905,7 +5905,7 @@ msgstr ""
 msgid "nostat"
 msgstr "nostat"
 
-msgid "phpBB:"
+msgid "phpBB"
 msgstr ""
 
 msgid "prodos"
@@ -5941,26 +5941,8 @@ msgstr "upriv"
 #~ msgid "Date"
 #~ msgstr "Fecha"
 
-#~ msgid "hours"
-#~ msgstr "horas"
-
-#~ msgid "day"
-#~ msgstr "día"
-
-#~ msgid "days"
-#~ msgstr "días"
-
-#~ msgid "week days"
-#~ msgstr "días de la semana"
-
-#~ msgid "months"
-#~ msgstr "meses"
-
 #~ msgid "Create"
 #~ msgstr "Crear"
-
-#~ msgid "A valid network bit count must be specified."
-#~ msgstr "Se debe especificar un valor de red válido."
 
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
@@ -5968,8 +5950,17 @@ msgstr "upriv"
 #~ msgid "Logs"
 #~ msgstr "Registros"
 
-#~ msgid "Size in MB."
-#~ msgstr "Tamaño en MB"
+#~ msgid "day"
+#~ msgstr "día"
+
+#~ msgid "days"
+#~ msgstr "días"
+
+#~ msgid "months"
+#~ msgstr "meses"
+
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "Se debe especificar un valor de red válido."
 
 #~ msgid "A valid network must be specified."
 #~ msgstr "Se debe indicar una red válida."
@@ -5995,9 +5986,6 @@ msgstr "upriv"
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Crear el directorio de trabajo si no existe"
 
-#~ msgid "Shutdown Time"
-#~ msgstr "Hora de Parada"
-
 #, php-format
 #~ msgid ""
 #~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -6014,6 +6002,18 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "No se ha podido restaurar la configuración (error de subida de archivo)."
 
+#~ msgid "week days"
+#~ msgstr "días de la semana"
+
+#~ msgid "hours"
+#~ msgstr "horas"
+
+#~ msgid "Size in MB."
+#~ msgstr "Tamaño en MB"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Hora de Parada"
+
 #~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Este disco encriptado está montado, desmóntelo antes de tratar de eliminarlo."
@@ -6027,14 +6027,12 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Red autorizada para acceder al destino iSCSI."
 
-#~ msgid "Disk Name"
-#~ msgstr "Nombre del disco"
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% de %dMB"
 
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (stripping)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (mirroring)"
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "El dispositivo está montado, desmóntelo antes de desconectarlo."
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
@@ -6045,15 +6043,21 @@ msgstr "upriv"
 #~ "dispositivos. Las extensiones y los dispositivos deben ser definidos antes "
 #~ "de que puedan ser utilizados, y no pueden ser usados más de una vez."
 
+#~ msgid "Disk Name"
+#~ msgstr "Nombre del disco"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
 #~ "made up of one or more devices, and/or one or more extents."
 #~ msgstr ""
 #~ "En el nivel más alto, el objetivo es lo que le es presentado al inicador, y "
 #~ "esta compuesto de uno o más dispositivos, y/o uno o mas extenciones."
-
-#~ msgid "Device is mounted, umount it first before detaching."
-#~ msgstr "El dispositivo está montado, desmóntelo antes de desconectarlo."
 
 #, php-format
 #~ msgid ""
@@ -6066,9 +6070,6 @@ msgstr "upriv"
 #~ msgid "Give full shell access to user."
 #~ msgstr "Otorgar al usuario acceso completo a la consola."
 
-#~ msgid "Shell access"
-#~ msgstr "Acceso a la consola"
-
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 #~ "minutes, hours, days and months."
@@ -6078,6 +6079,9 @@ msgstr "upriv"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Local"
+
+#~ msgid "Shell access"
+#~ msgstr "Acceso a la consola"
 
 #, php-format
 #~ msgid "%s on %s (%dMHz)"
