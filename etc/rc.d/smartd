@@ -6,7 +6,7 @@
 # REQUIRE: DAEMON
 # BEFORE: LOGIN
 # KEYWORD: shutdown
-# XQUERY: -i "count(//smartd/enable) > 0 and count(//disks/disk[smart]) > 0" -o "0" -b
+# XQUERY: -i "count(//smartd/enable) > 0 and count(//disks/disk/smart[enable]) > 0" -o "0" -b
 # RCVAR: smartd
 
 . /etc/rc.subr
@@ -37,7 +37,7 @@ fi
 
 smartd_mkconf()
 {
-	local _devicespecialfile _type _param _powermode _email _tmp
+	local _devicespecialfile _type _smartextraoptions _param _powermode _email _tmp
 
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
@@ -56,11 +56,11 @@ smartd_mkconf()
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	# Create configuration file
-	/usr/local/bin/xml sel -t -m "//disks/disk[smart]" \
-		-v "concat(devicespecialfile,' ',type)" \
+	/usr/local/bin/xml sel -t -m "//disks/disk/smart[enable]" \
+		-v "concat(../devicespecialfile,' ',../type,' ',extraoptions)" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
-		while read _devicespecialfile _type; do
+		while read _devicespecialfile _type _smartextraoptions; do
 			_param="-a"
 
 			# Specify the type of the device.
@@ -139,6 +139,11 @@ smartd_mkconf()
 			# Email report enabled?
 			if [ -n "${_email}" ]; then
 				_param="${_param} ${_email}";
+			fi
+
+			# Append extra options
+			if [ -n "${_smartextraoptions}" ]; then
+				_param="${_param} ${_smartextraoptions}"
 			fi
 
 			echo "${_devicespecialfile} ${_param}" >> ${smartd_conf}

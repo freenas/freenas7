@@ -62,6 +62,7 @@ Minors changes:
 - Add configuration option in 'Services|BitTorrent' to enable/disable usage
   of distributed hash table (DHT).
 - Add /usr/bin/getopt command (FR 2824548).
+- Add extra options for S.M.A.R.T. in 'Disks|Management|Disk|Edit' (FR 2824730).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
