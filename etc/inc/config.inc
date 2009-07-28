@@ -1843,6 +1843,22 @@ function config_upgrade() {
 		$config['version'] = "8.1";
 	}
 
+	/* Convert 8.1 -> 8.2 */
+	/* Convert S.M.A.R.T. configuration. */
+	if ($config['version'] === "8.1") {
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			$enable = false;
+			if (isset($config['disks']['disk'][$i]['smart'])) {
+				unset($config['disks']['disk'][$i]['smart']);
+				$enable = true;
+			}
+			$config['disks']['disk'][$i]['smart']['enable'] = $enable;
+			$config['disks']['disk'][$i]['smart']['extraoptions'] = "";
+		}
+
+		$config['version'] = "8.2";
+	}
+
 	write_config();
 
 	if (is_booting())

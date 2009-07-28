@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.1</version>
+	<version>8.2</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -348,7 +348,10 @@
 			<desc>xxx</desc>
 			<size>xxxMB</size>
 			<fstype>xxx</fstype>
-			<smart/>
+			<smart>
+				<enable/>
+				<extraoptions></extraoptions>
+			</smart>
 		</disk>
 		-->
 	</disks>
