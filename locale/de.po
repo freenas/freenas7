@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-12 19:45+0000\n"
-"PO-Revision-Date: 2009-07-27 08:14+0000\n"
+"POT-Creation-Date: 2009-07-27 09:18+0000\n"
+"PO-Revision-Date: 2009-07-29 07:55+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-27 08:17+0000\n"
+"X-Launchpad-Export-Date: 2009-07-29 07:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -71,6 +71,8 @@ msgstr "*** Importierte Duplikate ***"
 
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
+"0=deaktiviert, 1-255=aktivierte Befehlswarteschlange mit spezifizierter "
+"Tiefe."
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -670,7 +672,7 @@ msgid "Browseable"
 msgstr "Sichtbar"
 
 msgid "Built on"
-msgstr ""
+msgstr "angebaut"
 
 msgid "Bulgarian"
 msgstr "Bulgarisch"
@@ -729,7 +731,7 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgid "Canmount"
-msgstr ""
+msgstr "Canmount"
 
 msgid "Cannot get data about interface"
 msgstr "Kann von der Schnittstelle keine Daten erfassen"
@@ -918,7 +920,7 @@ msgid "Create mask"
 msgstr "Erzeuge Maske"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Erzeuge Arbeitsverzeichnis, falls es noch nicht existiert."
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -1248,7 +1250,7 @@ msgid "Directory mask"
 msgstr "Verzeichnismaske"
 
 msgid "Directory to watch for new .torrent files."
-msgstr ""
+msgstr "Zu beobachtendes Verzeichnis für neue .torrent Dateien."
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
@@ -1380,10 +1382,10 @@ msgid "Do you really want to delete this option?"
 msgstr "Wollen Sie wirklich diese Einstellung löschen?"
 
 msgid "Do you really want to delete this pool?"
-msgstr ""
+msgstr "Möchten Sie wirklich diesen Pool löschen?"
 
 msgid "Do you really want to delete this portal group?"
-msgstr ""
+msgstr "Möchten Sie wirklich diese Portalgruppe löschen?"
 
 msgid "Do you really want to delete this route?"
 msgstr "Wollen Sie diese Route wirklich löschen?"
@@ -1469,7 +1471,7 @@ msgstr ""
 "erzeugt werden - durch ein vorausgeführtes Skript."
 
 msgid "Donate"
-msgstr "Spenden"
+msgstr "Spende"
 
 msgid "Done"
 msgstr "Fertig"
@@ -1586,10 +1588,10 @@ msgid "Edit option"
 msgstr "Einstellung bearbeiten"
 
 msgid "Edit pool"
-msgstr ""
+msgstr "Editiere Pool"
 
 msgid "Edit portal group"
-msgstr ""
+msgstr "Editiere Portalgruppe"
 
 msgid "Edit rule"
 msgstr "Regel bearbeiten"
@@ -1906,10 +1908,10 @@ msgid "FTP"
 msgstr "FTP"
 
 msgid "FTP - Ban module"
-msgstr ""
+msgstr "FTP - Sperrliste"
 
 msgid "FTP - File transfer"
-msgstr ""
+msgstr "FTP - Dateitransfer"
 
 msgid "FTP Proxy"
 msgstr "FTP-Proxy"
@@ -1974,7 +1976,7 @@ msgid "Failed to upload metadata backup file."
 msgstr "Upload der Metadaten-Backupdatei fehlgeschlagen."
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "Die Datei wurde nicht auf die Festplatte geschrieben."
 
 msgid "Failed."
 msgstr "Fehlgeschlagen."
@@ -2056,7 +2058,7 @@ msgid "Format disk"
 msgstr "Festplatte formatieren!"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Formatiere den Report für das phpBB Forum."
 
 msgid "Forum"
 msgstr "Forum"
@@ -2089,7 +2091,7 @@ msgid "GID"
 msgstr "GID"
 
 msgid "GPT partition"
-msgstr ""
+msgstr "GPT Partition"
 
 msgid "Gateway"
 msgstr "Gateway"
@@ -2110,13 +2112,13 @@ msgid "German"
 msgstr "Deutsch"
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
 msgstr "Ermögliche nur lokalen Benutzern Zugriff auf die Webseite."
 
 msgid "Grant access to the user portal."
-msgstr ""
+msgstr "Gewähre Zugang zum Benutzerportal."
 
 msgid "Graph"
 msgstr "Graph"
@@ -2164,7 +2166,7 @@ msgid "Hard disk standby time"
 msgstr "Festplatten Standbyzeit"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Hardware"
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2229,7 +2231,7 @@ msgid "Hot Spare"
 msgstr ""
 
 msgid "Hours"
-msgstr ""
+msgstr "Stunden"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2248,7 +2250,7 @@ msgid "Hungarian"
 msgstr "Ungarisch"
 
 msgid "I/O Timeout"
-msgstr ""
+msgstr "I/O Timeout"
 
 msgid "I/O errors"
 msgstr "I/O-Fehler"
@@ -2260,13 +2262,13 @@ msgid "I/O statistics"
 msgstr "I/O Statistik"
 
 msgid "I/O timeout in seconds (30 by default)."
-msgstr ""
+msgstr "I/O Timeout in Sekunden (30 sind standard)."
 
 msgid "IG"
 msgstr ""
 
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 msgid "IP address"
 msgstr "IP-Adresse"
@@ -2429,7 +2431,7 @@ msgid "Import"
 msgstr "Importieren"
 
 msgid "Import disks"
-msgstr ""
+msgstr "Importiere Festplatten"
 
 msgid "Import disks used in configuration."
 msgstr ""
@@ -2447,7 +2449,7 @@ msgid "In most cases, 'public' is used here."
 msgstr "In den meisten Fällen wird hier 'public' benutzt."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Beinhalte grundlegende Hardwareinformationen."
 
 msgid "Info"
 msgstr "Information"
@@ -2534,7 +2536,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "Das Intervall muß länger wie 10 Sekunden sein"
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Ungültiges Dateiformat."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2606,10 +2608,10 @@ msgid "LDAP"
 msgstr "LDAP"
 
 msgid "LUN"
-msgstr ""
+msgstr "LUN"
 
 msgid "LUNs"
-msgstr ""
+msgstr "LUNs"
 
 msgid "Language"
 msgstr "Sprache"
@@ -2767,6 +2769,8 @@ msgstr "Standort an welchem die Inhalte-Datenbank gespeichert werden soll."
 msgid ""
 "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
+"Ort, an dem die Arbeitsdateien gespeichert werden sollen, z.B. "
+"%s/backup/.unison"
 
 msgid "Log"
 msgstr "Log"
@@ -2789,7 +2793,7 @@ msgid "Login name of user."
 msgstr "Loginname des Benutzers."
 
 msgid "Logout"
-msgstr ""
+msgstr "Abmelden"
 
 msgid "Lowercases names in both directions"
 msgstr "Kleinschreibung in beiden Verzeichnissen"
@@ -2798,7 +2802,7 @@ msgid "MAC address"
 msgstr "MAC Addresse"
 
 msgid "MBR partition"
-msgstr ""
+msgstr "MBR Partition"
 
 msgid "MIB"
 msgstr "MIB"
@@ -2859,10 +2863,10 @@ msgid "Max. conn. per IP"
 msgstr "Max. Anzahl Verb. einer IP"
 
 msgid "Max. connections"
-msgstr ""
+msgstr "Maximale Verbindungen"
 
 msgid "Max. sessions"
-msgstr ""
+msgstr "Maximale Verbindungen"
 
 msgid ""
 "Max. time-to-live (max. number of hops) used in outgoing probe packets."
@@ -2882,7 +2886,7 @@ msgid "Maximum idle time in seconds."
 msgstr "Maximale Leerlaufzeit in Sekunden."
 
 msgid "Maximum number of connections in each session (8 by default)."
-msgstr ""
+msgstr "Maximale Anzahl an Verbindungen pro Session (8 sind standard)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
@@ -2914,7 +2918,7 @@ msgid "Message of the day."
 msgstr "Nachricht des Tages."
 
 msgid "MiB"
-msgstr ""
+msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
@@ -2929,7 +2933,7 @@ msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minimale Performance, minimale Geräuschbelastung"
 
 msgid "Minutes"
-msgstr ""
+msgstr "Minuten"
 
 msgid "Minutes between network time sync."
 msgstr "Dauer in Minuten zwischen Netzwerk-Zeit-Synchronisation (NTP)."
@@ -2938,7 +2942,7 @@ msgid "Mirror"
 msgstr ""
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Es fehlt ein tempor&auml;rer Ordner."
 
 msgid "Mode"
 msgstr "Modus"
@@ -2959,7 +2963,7 @@ msgid "Modules"
 msgstr "Module"
 
 msgid "Months"
-msgstr ""
+msgstr "Monate"
 
 msgid "Mount Point"
 msgstr "Einhängepunkt"
@@ -3060,7 +3064,7 @@ msgid "Network that is authorised to access the NFS share."
 msgstr "Netzwerk das authorisiert ist, auf die NFS-Freigabe zuzugreifen."
 
 msgid "Networks"
-msgstr ""
+msgstr "Netzwerke"
 
 msgid ""
 "Never - Poll (check) the device regardless of its power mode. This may cause "
@@ -3107,7 +3111,7 @@ msgid ""
 msgstr ""
 
 msgid "No device selected."
-msgstr ""
+msgstr "Kein Gerät ausgewählt."
 
 msgid "No disk configured"
 msgstr "Keine Festplatte konfiguriert"
@@ -3169,6 +3173,10 @@ msgstr ""
 "auszuwählen."
 
 msgid "Nothing to synchronize"
+msgstr "Nichts wurde synchronisiert"
+
+#, php-format
+msgid "Notification email from host: %s"
 msgstr ""
 
 msgid "Now"
@@ -3265,7 +3273,7 @@ msgid "Overwrite already configured disks (only affects filesystem value)."
 msgstr ""
 
 msgid "Overwrite disks configuration"
-msgstr ""
+msgstr "Überschreibe Festplattenkonfiguration"
 
 msgid "Owner"
 msgstr "Eigentümer"
@@ -3582,7 +3590,7 @@ msgid "Quiet"
 msgstr "Leise"
 
 msgid "Quota"
-msgstr ""
+msgstr "Kontingent"
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3609,13 +3617,13 @@ msgid "RSYNC"
 msgstr "RSYNC"
 
 msgid "RSYNC - Client"
-msgstr ""
+msgstr "RSYNC - Client"
 
 msgid "RSYNC - Local"
-msgstr ""
+msgstr "RSYNC - Lokal"
 
 msgid "RSYNC - Server"
-msgstr ""
+msgstr "RSYNC - Server"
 
 msgid "RSYNC Client"
 msgstr "RSYNC Client"
@@ -3636,13 +3644,13 @@ msgid "Read"
 msgstr "Lesen"
 
 msgid "Read Only (ro)"
-msgstr ""
+msgstr "Nur Lesen (ro)"
 
 msgid "Read Only Access"
 msgstr "Nur-lese-Zugriff"
 
 msgid "Read from lowest load"
-msgstr ""
+msgstr "Lese von niedrigster Auslastung"
 
 msgid "Read only"
 msgstr "Nur lesen"
@@ -3651,13 +3659,13 @@ msgid "Read/Write"
 msgstr "Lesen/Schreiben"
 
 msgid "Read/Write (rw)"
-msgstr ""
+msgstr "Lesen/Schreiben (rw)"
 
 msgid "Read/Write Access"
 msgstr "Lese-schreib-Zugriff"
 
 msgid "Readonly"
-msgstr ""
+msgstr "Nur Lesen"
 
 msgid "Realm"
 msgstr "Bereich"
@@ -3711,10 +3719,10 @@ msgid "Remove all entries from ARP table"
 msgstr "Lösch alle Einträge aus ARP Tabelle"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Bericht generieren"
 
 msgid "Report generator"
-msgstr ""
+msgstr "Bericht generieren"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -4070,16 +4078,16 @@ msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol (SNMP)"
 
 msgid "Single-parity RAID-5"
-msgstr ""
+msgstr "Single-Parität RAID-5"
 
 msgid "Size"
-msgstr "Grösse"
+msgstr "Größe"
 
 msgid "Size of receive buffer (16384 by default)."
-msgstr "Grösse des 'Receive' Puffer (16384 Voreinstellung)."
+msgstr "Größe des 'Receive' Puffer"
 
 msgid "Size of send buffer (16384 by default)."
-msgstr "Grösse des 'Send' Puffer (16384 Voreinstellung)."
+msgstr "Größe des 'Send' Puffer"
 
 msgid ""
 "Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend "
@@ -4291,7 +4299,7 @@ msgid "Switch to %s/s"
 msgstr "Schalte um zu %s/s"
 
 msgid "Synchronization time"
-msgstr ""
+msgstr "Synchronisationszeit"
 
 msgid "Synchronize"
 msgstr ""
@@ -4390,7 +4398,7 @@ msgid "Target side user name. It is usually the initiator name by default."
 msgstr ""
 
 msgid "Targets"
-msgstr ""
+msgstr "Ziele"
 
 msgid "Temperature"
 msgstr "Temperatur"
@@ -4462,9 +4470,8 @@ msgstr ""
 "Diese Funktion wird in Gang gesetzt, wenn das Paket mit dem unten benannten "
 "Kriterium übereinstimmt."
 
-msgid ""
-"The administrator has been notified. Your changes will be available soon."
-msgstr ""
+msgid "The administrator has been notified to apply your changes."
+msgstr "Der Administrator wurde benachrichtigt die Änderungen zu bestätigen."
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -4626,7 +4633,7 @@ msgstr "Die Konfiguration konnte nicht wiederhergestellt werden."
 
 #, php-format
 msgid "The configuration could not be restored. %s"
-msgstr ""
+msgstr "Die Konfiguration konnte nicht wiederhergestellt werden. %s"
 
 msgid ""
 "The configuration has been changed.<br>You must apply the changes in order "
@@ -4665,6 +4672,8 @@ msgid ""
 "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia "
 "and 192 for 3DES."
 msgstr ""
+"Die standard Schlüssellänge beträgt: 128 für AES, 128 für Blowfish, 128 für "
+"Camellia und 192 für 3DES."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Der Gerätename darf nur folgende Zeichen enthalten: a-z, A-Z, 0-9."
@@ -4717,6 +4726,8 @@ msgid ""
 "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
 "first before proceeding."
 msgstr ""
+"Diese Festplatte is momentan gemountet. <a href=%s>Unmounten</a> Sie diese "
+"Festplatte zuerst bevor sie fortfahren."
 
 msgid "The extent name already exists."
 msgstr ""
@@ -4837,7 +4848,7 @@ msgstr "Der Name oder die IP-Adresse des LDAP Server."
 
 #, php-format
 msgid "The network '%s' is invalid."
-msgstr ""
+msgstr "Das Netzwerk '%s' ist ungültig."
 
 msgid "The number of clients must be between 1 and 50."
 msgstr "Die Anzahl der Clients muss zwischen 1 und 50 liegen."
@@ -4857,15 +4868,15 @@ msgstr "Die Passwörter stimmen nicht überein."
 
 #, php-format
 msgid "The path '%s' does not exist."
-msgstr ""
+msgstr "Der Pfad '%s' existiert nicht."
 
 #, php-format
 msgid "The path '%s' is a directory."
-msgstr ""
+msgstr "Der Pfad '%s' ist ein Verzeichnis."
 
 #, php-format
 msgid "The path '%s' is not a directory."
-msgstr ""
+msgstr "Der Pfad '%s' ist kein Verzeichnis."
 
 msgid "The peer connection encryption mode."
 msgstr "Der Verschlüsselungsmodus von Peer-Verbindung."
@@ -4950,7 +4961,7 @@ msgid "The tag range is invalid."
 msgstr ""
 
 msgid "The target name already exists."
-msgstr ""
+msgstr "Der Zielname existiert bereits."
 
 msgid ""
 "The time in seconds until shutdown is initiated. If the UPS happens to come "
@@ -4982,7 +4993,7 @@ msgid ""
 msgstr ""
 
 msgid "The uploaded file was only partially uploaded."
-msgstr ""
+msgstr "Die Datei wurde nur teilweise hochgeladen."
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Dieses Image ist nicht für diese Plattform geeignet"
@@ -4997,7 +5008,7 @@ msgid "The volume must be detached before it can be deleted."
 msgstr "Das Volume muss vor dem Löschen ausgeworfen werden."
 
 msgid "The working directory does not exist."
-msgstr ""
+msgstr "Das Arbeitsverzeichnis existiert nicht."
 
 msgid "There is no error, the file uploaded with success."
 msgstr ""
@@ -5018,10 +5029,10 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "Ein RAID 5-Verbund benötigt mindestens 3 Platten."
 
 msgid "There must be at least 1 disks selected."
-msgstr ""
+msgstr "Es muss mindestens 1 Festplatte ausgewählt sein."
 
 msgid "There must be at least 2 disks in a mirror."
-msgstr ""
+msgstr "Es müssen mindestens 2 Festplatten in einem Mirror sein."
 
 msgid "There must be at least 2 disks in a raidz."
 msgstr ""
@@ -5036,8 +5047,8 @@ msgid ""
 "There should be enough to handle the maximum level of concurrency from its "
 "clients, typically four to six."
 msgstr ""
-"Es sollte genug Leistung vorhande nsein, um den maximalen Grad an "
-"Nichtsequentialität zu handhaben, typisch vier bis sechs."
+"Es sollte genug Leistung vorhanden sein, um den maximalen Grad an "
+"Nichtsequentialität zu handhaben. Typisch sind vier bis sechs Server."
 
 msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
@@ -5436,7 +5447,7 @@ msgid "This user already exists in the user list."
 msgstr "Dieser Benutzer existiert bereits."
 
 msgid "This user already exists."
-msgstr ""
+msgstr "Dieser Benutzer existiert bereits."
 
 msgid "This virtual device name already exists."
 msgstr ""
@@ -5469,7 +5480,7 @@ msgstr ""
 "hinzufügen wollen."
 
 msgid "TiB"
-msgstr ""
+msgstr "TiB"
 
 msgid "Time"
 msgstr "Zeit"
@@ -5605,7 +5616,7 @@ msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol"
 
 msgid "Try to force import."
-msgstr ""
+msgstr "Versuche die Importierung zu erzwingen."
 
 msgid "Try to import from on-disk ZFS config."
 msgstr ""
@@ -5658,7 +5669,7 @@ msgid "UPS disabled"
 msgstr "USV abgeschaltet"
 
 msgid "UPS goes on battery"
-msgstr ""
+msgstr "UPS geht in den Batterie-Modus"
 
 msgid "UPS reaches low battery"
 msgstr ""
@@ -5927,7 +5938,7 @@ msgstr ""
 "gehen dabei verloren und können nicht wiederhergestellt werden."
 
 msgid "Watch directory"
-msgstr ""
+msgstr "Überwache Verzeichnis"
 
 msgid "WebGUI"
 msgstr "Weboberfläche"
@@ -5936,7 +5947,7 @@ msgid "Webserver"
 msgstr "Webserver"
 
 msgid "Week days"
-msgstr ""
+msgstr "Wochentage"
 
 msgid ""
 "When a client initially connects to the server the ident protocol is used to "
@@ -5976,7 +5987,7 @@ msgstr ""
 "Zeichen)."
 
 msgid "Working directory"
-msgstr ""
+msgstr "Arbeitsverzeichnis"
 
 msgid "Write"
 msgstr "Schreiben"
@@ -6068,7 +6079,7 @@ msgid "Your own email address."
 msgstr "Ihre eigene Email Adresse"
 
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 msgid "ZFS dataset information and status"
 msgstr ""
@@ -6092,7 +6103,7 @@ msgid "crlf"
 msgstr "crlf"
 
 msgid "day(s)"
-msgstr ""
+msgstr "Tag(e)"
 
 msgid "dbpath"
 msgstr "dbpath"
@@ -6102,7 +6113,7 @@ msgid "e.g. %s"
 msgstr "z.B. %s"
 
 msgid "hour(s)"
-msgstr ""
+msgstr "Stunde(n)"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI Initiator"
@@ -6114,7 +6125,7 @@ msgid "iSCSI initial parameter (262144 by default)."
 msgstr ""
 
 msgid "iSCSI initial parameter (65536 by default)."
-msgstr ""
+msgstr "iSCSI Initialparameter (65536 ist standard)."
 
 msgid "iSCSI initiator disabled"
 msgstr "iSCSI initiator deaktiviert"
@@ -6123,7 +6134,7 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "minute(s)"
-msgstr ""
+msgstr "Minute(n)"
 
 msgid "minutes"
 msgstr "Minuten"
@@ -6162,7 +6173,7 @@ msgid "nostat"
 msgstr "nostat"
 
 msgid "phpBB"
-msgstr ""
+msgstr "phpBB"
 
 msgid "prodos"
 msgstr "prodos"
@@ -6174,7 +6185,7 @@ msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
 msgid "second(s)"
-msgstr ""
+msgstr "Sekunde(n)"
 
 msgid "seconds"
 msgstr "Sekunden"
