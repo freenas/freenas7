@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-12 19:45+0000\n"
+"POT-Creation-Date: 2009-07-27 09:18+0000\n"
 "PO-Revision-Date: 2009-06-20 16:54+0000\n"
 "Last-Translator: Yuya Kamidu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-27 08:16+0000\n"
+"X-Launchpad-Export-Date: 2009-07-29 07:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -2994,6 +2994,10 @@ msgstr "注意: Ctrl を押しながらクリック (Mac は command を押し�
 msgid "Nothing to synchronize"
 msgstr ""
 
+#, php-format
+msgid "Notification email from host: %s"
+msgstr ""
+
 msgid "Now"
 msgstr "今すぐ"
 
@@ -4222,8 +4226,7 @@ msgid ""
 "specified below."
 msgstr "パケットが指定されたルールに当てはまる場合に実行されるアクションを指定します．"
 
-msgid ""
-"The administrator has been notified. Your changes will be available soon."
+msgid "The administrator has been notified to apply your changes."
 msgstr ""
 
 #, php-format
