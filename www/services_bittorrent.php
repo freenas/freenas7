@@ -93,6 +93,11 @@ if ($_POST) {
 		if (services_is_port_used($_POST['port'], "bittorrent")) {
 			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
 		}
+
+		// Check port range.
+		if ($_POST['port'] && ((1024 > $_POST['port']) || (65535 < $_POST['port']))) {
+			$input_errors[] = sprintf(gettext("The attribute '%s' must be in the range from %d to %d."), gettext("Port"), 1024, 65535);
+		}
 	}
 
 	if (!$input_errors) {

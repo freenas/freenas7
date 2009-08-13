@@ -79,6 +79,7 @@ Bug fixes:
 - Improved Unison WebGUI to be able to configure ZFS shares as working
   directory (BR 2795084).
 - Synchronizing ZFS configuration fails (BR 2814324).
+- Restrict bittorrent administrative WebGUI port to [1024,65535] (BR 2835342). 
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

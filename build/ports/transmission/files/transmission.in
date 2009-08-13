@@ -75,6 +75,7 @@ transmission_poststart()
 	local _command_args
 
 	_command_args=`/usr/local/bin/xml sel -t -m "//bittorrent" \
+		-v "concat(' ',port)" \
 		-i "count(pex) > 0" -o " --pex" -b \
 		-i "count(pex) = 0" -o " --no-pex" -b \
 		-i "count(dht) > 0" -o " --dht" -b \
