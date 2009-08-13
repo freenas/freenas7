@@ -95,7 +95,7 @@ if ($_POST) {
 
 		// Check port range.
 		if ($_POST['port'] && ((1024 > $_POST['port']) || (65535 < $_POST['port']))) {
-			$input_errors[] = sprintf(gettext("Invalid port! Port number must be in the range from %d to %d."), 1025, 65535);
+			$input_errors[] = sprintf(gettext("The attribute '%s' must be in the range from %d to %d."), gettext("Port"), 1025, 65535);
 		}
 	}
 
