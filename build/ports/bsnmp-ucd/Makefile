@@ -7,7 +7,7 @@ MAINTAINER=		votdev@gmx.de
 MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
 
 USE_MAKE=				yes
-USE_AUTOTOOLS=	libtool:15:env
+USE_AUTOTOOLS=	libtool:22:env
 
 post-patch:
 	@${REINPLACE_CMD} -e "s/LOCALBASE/PREFIX/g" ${WRKSRC}/Makefile

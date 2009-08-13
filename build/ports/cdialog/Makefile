@@ -11,7 +11,7 @@ MASTER_SITES=	ftp://invisible-island.net/dialog/ \
 DISTNAME=			${PORTNAME:S|^c||}-${PORTVERSION:R}-${PORTVERSION:E}
 
 EXTRACT_SUFX=			.tgz
-USE_AUTOTOOLS=		libtool:15
+USE_AUTOTOOLS=		libtool:22
 GNU_CONFIGURE=		yes
 USE_LDCONFIG=			yes
 CONFIGURE_ARGS=		--includedir=${PREFIX}/include/${PORTNAME} --with-libtool
