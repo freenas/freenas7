@@ -114,16 +114,17 @@ if ($_POST) {
 		}
 
 		if (("0" !== $_POST['pasv_min_port']) && (($_POST['pasv_min_port'] < 1024) || ($_POST['pasv_min_port'] > 65534))) {
-			$input_errors[] = sprintf(gettext("The %s port must be in the range from %d to %d."), "min-pasv-port", 1024, 65534);
+			$input_errors[] = sprintf(gettext("The attribute '%s' must be in the range from %d to %d."), gettext("Min. passive port"), 1024, 65535);
 		}
 
 		if (("0" !== $_POST['pasv_max_port']) && (($_POST['pasv_max_port'] < 1024) || ($_POST['pasv_max_port'] > 65534))) {
-			$input_errors[] = sprintf(gettext("The %s port must be in the range from %d to %d."), "max-pasv-port", 1024, 65534);
+			$input_errors[] = sprintf(gettext("The attribute '%s' must be in the range from %d to %d."), gettext("Max. passive port"), 1024, 65535);
 		}
 
 		if (("0" !== $_POST['pasv_min_port']) && ("0" !== $_POST['pasv_max_port'])) {
-			if ($_POST['pasv_min_port'] >= $_POST['pasv_max_port'])
-				$input_errors[] = sprintf(gettext("Port %s must be less than %s."), "min-pasv-port", "max-pasv-port");
+			if ($_POST['pasv_min_port'] >= $_POST['pasv_max_port']) {
+				$input_errors[] = sprintf(gettext("The attribute '%s' must be less than '%s'."), gettext("Min. passive port"), gettext("Max. passive port"));
+			}
 		}
 
 		if ($_POST['anonymousonly'] && $_POST['localusersonly']) {
