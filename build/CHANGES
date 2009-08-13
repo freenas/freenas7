@@ -23,6 +23,8 @@ Majors changes:
   afpd_timemachinesupport_enable="NO" (FR 2827270).
   See http://forums.macrumors.com/showpost.php?p=4387985&postcount=50 for
   additional informations.
+- Add AFP FP_SYNCFORK command support (FR 2836955). Thanks to Morton Jonuschat
+  for the patch.
 
 Minors changes:
 - Set transmission umask to 0002 per default. This can be customize via the

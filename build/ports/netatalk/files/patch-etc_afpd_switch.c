@@ -5,7 +5,7 @@
      NULL, NULL, NULL, NULL,					/*  64 -  71 */
      NULL, NULL, NULL, NULL,
 -    NULL, NULL, NULL, NULL,					/*  72 -  79 */
-+    NULL, NULL, afp_syncdir, NULL,				/*  72 -  79 */
++    NULL, NULL, afp_syncdir, afp_flushfork,				/*  72 -  79 */
      NULL, NULL, NULL, NULL,
      NULL, NULL, NULL, NULL,					/*  80 -  87 */
      NULL, NULL, NULL, NULL,
