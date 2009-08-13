@@ -9,7 +9,7 @@ MAINTAINER=		votdev@gmx.de
 MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	netatalk
 
-USE_AUTOTOOLS=		libtool:15
+USE_AUTOTOOLS=		libtool:22
 GNU_CONFIGURE=		yes
 USE_ICONV=				yes
 CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
