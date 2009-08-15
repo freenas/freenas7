@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-07-19 22:07+0000\n"
+"PO-Revision-Date: 2009-08-15 22:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2175,10 +2175,6 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr ""
-
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr ""
 
@@ -2456,6 +2452,9 @@ msgstr ""
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2508,6 +2507,9 @@ msgid "MiB"
 msgstr ""
 
 msgid "MibII"
+msgstr ""
+
+msgid "Min. passive port"
 msgstr ""
 
 msgid "Minimum"
@@ -2987,10 +2989,6 @@ msgstr ""
 msgid "Port %ld is already used by another service."
 msgstr ""
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr ""
-
 msgid "Port forwarding"
 msgstr ""
 
@@ -3165,6 +3163,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr ""
 
+msgid "Read from biggest priority"
+msgstr ""
+
 msgid "Read from lowest load"
 msgstr ""
 
@@ -3337,6 +3338,9 @@ msgid "S.M.A.R.T."
 msgstr ""
 
 msgid "S.M.A.R.T. events"
+msgstr ""
+
+msgid "S.M.A.R.T. extra options"
 msgstr ""
 
 msgid "S.M.A.R.T. log"
@@ -3860,10 +3864,6 @@ msgstr ""
 msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr ""
-
 msgid "The IP address that this hostname represents."
 msgstr ""
 
@@ -3977,6 +3977,14 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must be a string."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
 msgstr ""
 
 #, c-format
