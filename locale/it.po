@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
 "PO-Revision-Date: 2009-08-01 18:50+0000\n"
 "Last-Translator: bertu <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:09+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -2471,12 +2471,6 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr ""
-"Porta invalida! Il numero della porta deve trovarsi nell'intervallo da %d a "
-"%d."
-
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
@@ -2784,6 +2778,9 @@ msgstr "Max. conn. per IP"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2840,6 +2837,9 @@ msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Min. passive port"
+msgstr ""
 
 msgid "Minimum"
 msgstr "Minimo"
@@ -3361,10 +3361,6 @@ msgstr "Porta "
 msgid "Port %ld is already used by another service."
 msgstr ""
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr ""
-
 msgid "Port forwarding"
 msgstr ""
 
@@ -3544,6 +3540,9 @@ msgstr ""
 
 msgid "Read Only Access"
 msgstr "Accesso in Sola Lettura"
+
+msgid "Read from biggest priority"
+msgstr ""
 
 msgid "Read from lowest load"
 msgstr ""
@@ -3726,6 +3725,9 @@ msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
 msgstr "Eventi S.M.A.R.T."
+
+msgid "S.M.A.R.T. extra options"
+msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "Log di S.M.A.R.T."
@@ -4297,10 +4299,6 @@ msgstr ""
 "L'opzione nega specifica utenti e gruppi ai quali non viene consentito "
 "l'accesso alla share. Segue lo stesso formato della opzione consenti."
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr ""
-
 msgid "The IP address that this hostname represents."
 msgstr "L'indirizzo IP che questo nome di host rappresenta."
 
@@ -4437,6 +4435,14 @@ msgstr "L' attributo '%s' deve essere un numero."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "L'attributo '%s' deve essere una stringa."
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -6102,3 +6108,9 @@ msgstr ""
 
 #~ msgid "Shell access"
 #~ msgstr "Accesso alla shell di sistema"
+
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr ""
+#~ "Porta invalida! Il numero della porta deve trovarsi nell'intervallo da %d a "
+#~ "%d."

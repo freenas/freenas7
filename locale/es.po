@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
 "PO-Revision-Date: 2009-07-31 18:38+0000\n"
 "Last-Translator: Feder Sáiz <federsaiz@googlemail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:08+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -2503,11 +2503,6 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "¡Tamaño de bloque máximo no válido! Debe estar en %d a %d."
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr ""
-"¡Puerto inválido! El número de puerto debe estar en el rango de %d a %d."
-
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
@@ -2818,6 +2813,9 @@ msgstr "Max. con. por IP"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2875,6 +2873,9 @@ msgstr ""
 
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Min. passive port"
+msgstr ""
 
 msgid "Minimum"
 msgstr "Mínimo"
@@ -3406,10 +3407,6 @@ msgstr "Puerto "
 msgid "Port %ld is already used by another service."
 msgstr "El puerto %ld ya está en uso por otro servicio."
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr "El puerto %s debe ser menor que %s."
-
 msgid "Port forwarding"
 msgstr ""
 
@@ -3589,6 +3586,9 @@ msgstr ""
 
 msgid "Read Only Access"
 msgstr "Acceso de solo lectura"
+
+msgid "Read from biggest priority"
+msgstr ""
 
 msgid "Read from lowest load"
 msgstr ""
@@ -3771,6 +3771,9 @@ msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
 msgstr "eventos S.M.A.R.T."
+
+msgid "S.M.A.R.T. extra options"
+msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "registro S.M.A.R.T."
@@ -4343,10 +4346,6 @@ msgid ""
 "the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr "El puerto %s debe estar en el rango de %d a %d."
-
 msgid "The IP address that this hostname represents."
 msgstr "La dirección IP que representa esta máquina."
 
@@ -4486,6 +4485,14 @@ msgstr "El atributo '%s' debe ser un número."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "El atributo '%s' debe ser una cadena."
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -6077,6 +6084,11 @@ msgstr "upriv"
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
 
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr ""
+#~ "¡Puerto inválido! El número de puerto debe estar en el rango de %d a %d."
+
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and is "
 #~ "made up of one or more devices, and/or one or more extents."
@@ -6111,6 +6123,14 @@ msgstr "upriv"
 #, php-format
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s en %s (%dMHz)"
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "El puerto %s debe ser menor que %s."
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "El puerto %s debe estar en el rango de %d a %d."
 
 #~ msgid "FTP file transfer"
 #~ msgstr "Transferencia de archivos FTP"

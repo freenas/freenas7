@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
-"PO-Revision-Date: 2009-08-11 03:13+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
+"PO-Revision-Date: 2009-08-16 04:12+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:09+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -1588,7 +1588,7 @@ msgid "Download directory"
 msgstr "Download folder"
 
 msgid "Download firewall rules."
-msgstr "Download de huidige firewallregels om deze als backup te bewaren."
+msgstr "Download de firewall configuratie om als backup elders te bewaren."
 
 msgid "Driver"
 msgstr "Stuurprogramma"
@@ -1755,7 +1755,7 @@ msgid "Enable domain wildcarding."
 msgstr "Inschakelen domein wildcard"
 
 msgid "Enable extended attribute support"
-msgstr "Inschakelen externe attribuut support"
+msgstr "Inschakelen externe attributen support"
 
 msgid "Enable extended attributes for this file system."
 msgstr "Uitgebreide attributen voor dit bestandssysteem inschakelen."
@@ -2514,7 +2514,7 @@ msgid "Import disks used in configuration."
 msgstr "Importeer schijfen gebruikt in de configuratie."
 
 msgid "Import firewall rules."
-msgstr "Firewallregels importeren."
+msgstr "Firewall configuratie importeren of herstellen."
 
 msgid "Import on-disk ZFS config"
 msgstr "Importeer op-schijf ZFS config"
@@ -2619,10 +2619,6 @@ msgstr "Ongeldig bestandsformaat."
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Ongeldige blokgrootte! Het dient in het bereik %d tot %d te zijn."
-
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr "Ongeldige poort! Het poortnummer moet liggen tussen %d en %d."
 
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
@@ -2955,6 +2951,9 @@ msgstr "Max. verb. per IP"
 msgid "Max. connections"
 msgstr "Max. Verbindingen"
 
+msgid "Max. passive port"
+msgstr "Max. passieve poort"
+
 msgid "Max. sessions"
 msgstr "Max. Sessies"
 
@@ -3013,6 +3012,9 @@ msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Min. passive port"
+msgstr "Min. passieve poort"
 
 msgid "Minimum"
 msgstr "Minimaal"
@@ -3568,10 +3570,6 @@ msgstr "Poort "
 msgid "Port %ld is already used by another service."
 msgstr "Poort %ld is al in gebruik door een andere service."
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr "Poort %s moet lager zijn dan %s."
-
 msgid "Port forwarding"
 msgstr "Poort forwarding"
 
@@ -3755,6 +3753,9 @@ msgstr "Alleen Lezen  (ro)"
 msgid "Read Only Access"
 msgstr "Alleen-Lezen Toegang"
 
+msgid "Read from biggest priority"
+msgstr "Lees van de grootste prioriteit"
+
 msgid "Read from lowest load"
 msgstr "Lezen van de laagste belasting"
 
@@ -3937,6 +3938,9 @@ msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. gebeurtenissen"
+
+msgid "S.M.A.R.T. extra options"
+msgstr "S.M.A.R.T. extra opties"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. log"
@@ -4544,10 +4548,6 @@ msgstr ""
 "geen toegang zal worden verleend. Het volgt het zelfde formaat als de "
 "toestaan optie."
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr "De %s poort moet binnen het bereik zijn van %d tot %d."
-
 msgid "The IP address that this hostname represents."
 msgstr "Het IP adres dat deze hostnaam vertegenwoordigd."
 
@@ -4673,12 +4673,12 @@ msgstr "Het kenmerk '%s' is vereist."
 msgid ""
 "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr ""
-"De attribuut '%s' kan slechts bestaan uit de karakters a-z, A-Z, 0-9, _ , -."
+"De attribuut '%s' kan alleen bestaan uit de karakters a-z, A-Z, 0-9, _ , -."
 
 #, c-format
 msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
-"De attribuut '%s' kan slechts bestaan uit de karakters van a-z, A-Z, 0-9."
+"De attribuut '%s' kan alleen bestaan uit de karakters van a-z, A-Z, 0-9."
 
 #, c-format
 msgid "The attribute '%s' must be a number."
@@ -4687,6 +4687,14 @@ msgstr "Het attribuut '%s' moet een nummer zijn."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Het attribuut '%s' moet een tekenreeks zijn."
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr "De attribuut '%s' dient een bereik te hebben van %d tot %d."
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
+msgstr "De attribuut '%s' dient lager te zijn dan '%s'."
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -5630,8 +5638,8 @@ msgid ""
 "To get detailed informations about writing firewall rules check the FreeBSD "
 "<a href='%s' target='_blank'>documentation</a>."
 msgstr ""
-"Voor gedetailleerde informatie hoe u een firewallregels kunt maken, bekijkt "
-"u de FreeBSD <a href='%s' target='_blank'>documentatie</a>."
+"Bekijk voor gedetailleerde informatie over het schrijven van firewallregels "
+"de FreeBSD <a href='%s' target='_blank'>documentatie</a>."
 
 #, php-format
 msgid ""
@@ -5964,7 +5972,7 @@ msgid "Variable"
 msgstr "Variabele"
 
 msgid "Version"
-msgstr "Versie"
+msgstr "FreeNAS versie"
 
 msgid "Virtual device"
 msgstr "Virtuele schijf"
