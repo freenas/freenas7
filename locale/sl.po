@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
 "PO-Revision-Date: 2009-07-21 19:32+0000\n"
 "Last-Translator: Štefan Baebler <Unknown>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:08+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -2381,10 +2381,6 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr ""
-
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
@@ -2684,6 +2680,9 @@ msgstr "Največje število povezav na IP"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2737,6 +2736,9 @@ msgid "MiB"
 msgstr ""
 
 msgid "MibII"
+msgstr ""
+
+msgid "Min. passive port"
 msgstr ""
 
 msgid "Minimum"
@@ -3250,10 +3252,6 @@ msgstr "Vrata "
 msgid "Port %ld is already used by another service."
 msgstr ""
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr ""
-
 msgid "Port forwarding"
 msgstr ""
 
@@ -3432,6 +3430,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr ""
 
+msgid "Read from biggest priority"
+msgstr ""
+
 msgid "Read from lowest load"
 msgstr ""
 
@@ -3608,6 +3609,9 @@ msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
+msgstr ""
+
+msgid "S.M.A.R.T. extra options"
 msgstr ""
 
 msgid "S.M.A.R.T. log"
@@ -4173,10 +4177,6 @@ msgid ""
 "the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr ""
-
 msgid "The IP address that this hostname represents."
 msgstr "IP naslov, ki ga predstavlja to ime gostitelja."
 
@@ -4304,6 +4304,14 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must be a string."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
 msgstr ""
 
 #, c-format

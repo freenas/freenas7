@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
 "PO-Revision-Date: 2009-07-24 08:53+0000\n"
 "Last-Translator: Aron Xu <aronxu@gnome.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:09+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -2415,10 +2415,6 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr "无效的连接阜号！连接阜必需介于 %d - %d。"
-
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
@@ -2716,6 +2712,9 @@ msgstr "相同IP的连线数目"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2770,6 +2769,9 @@ msgstr ""
 
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Min. passive port"
+msgstr ""
 
 msgid "Minimum"
 msgstr ""
@@ -3278,10 +3280,6 @@ msgstr "通讯埠 "
 msgid "Port %ld is already used by another service."
 msgstr ""
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr ""
-
 msgid "Port forwarding"
 msgstr ""
 
@@ -3460,6 +3458,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr "唯独连线"
 
+msgid "Read from biggest priority"
+msgstr ""
+
 msgid "Read from lowest load"
 msgstr ""
 
@@ -3637,6 +3638,9 @@ msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. 事件"
+
+msgid "S.M.A.R.T. extra options"
+msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. 记录"
@@ -4200,10 +4204,6 @@ msgstr ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr ""
-
 msgid "The IP address that this hostname represents."
 msgstr "主机名称所代表的 IP 位置"
 
@@ -4330,6 +4330,14 @@ msgstr "属性 '%s' 必须是数字。"
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "属性 '%s' 是字串。"
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -5857,6 +5865,10 @@ msgstr "upriv"
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "授与使用者 shell 权限"
+
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "无效的连接阜号！连接阜必需介于 %d - %d。"
 
 #, php-format
 #~ msgid "Last %d %s log entries"

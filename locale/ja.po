@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
 "PO-Revision-Date: 2009-08-11 01:55+0000\n"
 "Last-Translator: MASAKI Asato <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:08+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -2397,10 +2397,6 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "無効なブロックサイズの最大値です! %d から %d の範囲で指定して下さい．"
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr "無効なポート番号です! ポート番号は %d から %d の範囲で指定してください．"
-
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
@@ -2698,6 +2694,9 @@ msgstr "IP 毎の最大接続数"
 msgid "Max. connections"
 msgstr "最大接続数"
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "最大セッション数"
 
@@ -2752,6 +2751,9 @@ msgstr ""
 
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Min. passive port"
+msgstr ""
 
 msgid "Minimum"
 msgstr "最小"
@@ -3268,10 +3270,6 @@ msgstr "ポート "
 msgid "Port %ld is already used by another service."
 msgstr "ポート番号 %ld は既に他のサービスで使用されています．"
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr "ポート %s は %s より少なくなければなりません．"
-
 msgid "Port forwarding"
 msgstr ""
 
@@ -3450,6 +3448,9 @@ msgstr ""
 msgid "Read Only Access"
 msgstr "読込み専用アクセス"
 
+msgid "Read from biggest priority"
+msgstr ""
+
 msgid "Read from lowest load"
 msgstr ""
 
@@ -3627,6 +3628,9 @@ msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. イベント"
+
+msgid "S.M.A.R.T. extra options"
+msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. ログ"
@@ -4193,10 +4197,6 @@ msgid ""
 "the share. It follows the same  format  as  the  allow option."
 msgstr "共有へのアクセスを与えないユーザとグループを指定します．このオプションは許可オプションと同じフォーマットです．"
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr "%s ポートは %d から %d の範囲である必要があります．"
-
 msgid "The IP address that this hostname represents."
 msgstr "このホストに割り当てられている IP アドレスを入力して下さい．"
 
@@ -4324,6 +4324,14 @@ msgstr "'%s' は数字である必要があります．"
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "'%s' は文字列である必要があります．"
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -5904,11 +5912,23 @@ msgstr "upriv"
 #~ msgid "Give full shell access to user."
 #~ msgstr "ユーザにシェルアクセスを許可します．"
 
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "無効なポート番号です! ポート番号は %d から %d の範囲で指定してください．"
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "ポート %s は %s より少なくなければなりません．"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC ローカル"
 
 #~ msgid "Shell access"
 #~ msgstr "シェルアクセス"
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "%s ポートは %d から %d の範囲である必要があります．"
 
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "はじめにいくつかの 'エクステント' オブジェクトを定義して下さい．"

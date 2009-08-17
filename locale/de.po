@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 09:18+0000\n"
-"PO-Revision-Date: 2009-08-15 15:14+0000\n"
+"POT-Creation-Date: 2009-08-15 23:09+0000\n"
+"PO-Revision-Date: 2009-08-16 10:41+0000\n"
 "Last-Translator: raymond <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-15 22:08+0000\n"
+"X-Launchpad-Export-Date: 2009-08-17 18:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -910,6 +910,13 @@ msgid ""
 "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
 "Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
+"Steuert den Kompressionsalgorithmus, die in \t dem Datensatz benutzt werden. "
+"Der 'lzjb' Kompressionsalgorithmus ist auf Geschwindigkeit optimiert während "
+"es eine anständige Kompression bietet. Setzt man die Kompression auf 'On' "
+"wird die 'lzjb' Kompression benutzt. Sie können das 'gzip' Level mit dem "
+"Wert 'gzip-N' einstellen, wobei N ein Ganzzahl zwischen 1 (am schnellsten) "
+"bis 9 (beste Kompression) darstellt. Gegenwärtig hat das 'gzip' ein "
+"Equivalent zu 'gzip-6'."
 
 msgid "Controls whether this dataset can be modified."
 msgstr ""
@@ -2553,10 +2560,6 @@ msgstr "Ungültiges Dateiformat."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Ungültige Blockgröße! Sie muss im Bereich von %d bis %d sein."
 
-#, php-format
-msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr "Ungültiger Port! Port-Nummer muss im Bereich von %d bis %d sein."
-
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
 "authentication simultaneously."
@@ -2876,6 +2879,9 @@ msgstr "Max. Anzahl Verb. einer IP"
 msgid "Max. connections"
 msgstr "Maximale Verbindungen"
 
+msgid "Max. passive port"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Maximale Verbindungen"
 
@@ -2935,6 +2941,9 @@ msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
+
+msgid "Min. passive port"
+msgstr ""
 
 msgid "Minimum"
 msgstr "Minimum"
@@ -3224,7 +3233,7 @@ msgid "Number of servers"
 msgstr "Anzahl der Server"
 
 msgid "Numeric identifier of the group."
-msgstr ""
+msgstr "Numerischer Bezeichner für die Gruppe."
 
 msgid "OK"
 msgstr "OK"
@@ -3277,7 +3286,7 @@ msgid "Option"
 msgstr "Einstellung"
 
 msgid "Optional user-friendly string of the target."
-msgstr ""
+msgstr "Optionaler benutzerfreundlicher String für das Ziel."
 
 msgid "Options"
 msgstr "Optionen"
@@ -3486,10 +3495,6 @@ msgstr "Port "
 msgid "Port %ld is already used by another service."
 msgstr "Port %ld wird bereits von einem anderen Dienst verwendet."
 
-#, php-format
-msgid "Port %s must be less than %s."
-msgstr "Port %s muss kleiner sein als %s."
-
 msgid "Port forwarding"
 msgstr "Portweiterleitung"
 
@@ -3673,6 +3678,9 @@ msgstr "Nur Lesen (ro)"
 
 msgid "Read Only Access"
 msgstr "Nur-lese-Zugriff"
+
+msgid "Read from biggest priority"
+msgstr ""
 
 msgid "Read from lowest load"
 msgstr "Lese von niedrigster Auslastung"
@@ -3858,6 +3866,9 @@ msgstr "S.M.A.R.T."
 
 msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. Ereignisse"
+
+msgid "S.M.A.R.T. extra options"
+msgstr "S.M.A.R.T. extra Optionen"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. log"
@@ -4464,10 +4475,6 @@ msgstr ""
 "keinen Zugriff auf die Freigabe bekommen. Es folgt dem gleichen Format wie "
 "die Erlaubnisoption."
 
-#, php-format
-msgid "The %s port must be in the range from %d to %d."
-msgstr "Der %s Port muss im Bereich von %d bis %d sein."
-
 msgid "The IP address that this hostname represents."
 msgstr "Die IP Adresse, welche diesen Hostnamen repräsentiert."
 
@@ -4610,6 +4617,14 @@ msgstr "Das Attribut '%s' muss eine Zahl sein."
 #, c-format
 msgid "The attribute '%s' must be a string."
 msgstr "Der Wert '%s' muss eine Zeichenfolge sein."
+
+#, php-format
+msgid "The attribute '%s' must be in the range from %d to %d."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' must be less than '%s'."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -6424,6 +6439,10 @@ msgstr "upriv"
 #~ "Hinweis: Strg+Klick (oder Command-Klick auf dem Mac) um Minuten, Stunden, "
 #~ "Tage und Monate aus- oder abzuwählen.A"
 
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "Ungültiger Port! Port-Nummer muss im Bereich von %d bis %d sein."
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Lokal"
 
@@ -6435,6 +6454,14 @@ msgstr "upriv"
 #, php-format
 #~ msgid "Status report from host: %s.%s"
 #~ msgstr "Statusbericht von Host: %s.%s"
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "Port %s muss kleiner sein als %s."
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "Der %s Port muss im Bereich von %d bis %d sein."
 
 #, php-format
 #~ msgid "%s on %s (%dMHz)"
