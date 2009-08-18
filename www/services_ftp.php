@@ -113,11 +113,11 @@ if ($_POST) {
 			$input_errors[] = gettext("The maximum idle time be a number.");
 		}
 
-		if (("0" !== $_POST['pasv_min_port']) && (($_POST['pasv_min_port'] < 1024) || ($_POST['pasv_min_port'] > 65534))) {
+		if (("0" !== $_POST['pasv_min_port']) && (($_POST['pasv_min_port'] < 1024) || ($_POST['pasv_min_port'] > 65535))) {
 			$input_errors[] = sprintf(gettext("The attribute '%s' must be in the range from %d to %d."), gettext("Min. passive port"), 1024, 65535);
 		}
 
-		if (("0" !== $_POST['pasv_max_port']) && (($_POST['pasv_max_port'] < 1024) || ($_POST['pasv_max_port'] > 65534))) {
+		if (("0" !== $_POST['pasv_max_port']) && (($_POST['pasv_max_port'] < 1024) || ($_POST['pasv_max_port'] > 65535))) {
 			$input_errors[] = sprintf(gettext("The attribute '%s' must be in the range from %d to %d."), gettext("Max. passive port"), 1024, 65535);
 		}
 
