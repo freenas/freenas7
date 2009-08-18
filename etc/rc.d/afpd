@@ -27,14 +27,11 @@ afpd_enable=${afpd_enable:-"NO"}
 afpd_config=${afpd_config:-"/var/etc/${name}.conf"}
 afpd_avdefault=${afpd_avdefault:-"/var/etc/AppleVolumes.default"}
 afpd_avsystem=${afpd_avsystem:-"/var/etc/AppleVolumes.system"}
-afpd_timemachinesupport_enable=${afpd_timemachinesupport_enable:-"YES"}
 command="/usr/local/sbin/${name}"
 command_args="-F ${afpd_config}"
 
 afpd_mkconf()
 {
-	local _path
-
 	# Create config file
 	/usr/local/bin/xml sel -t -m "//afp" \
 		-i "string-length(afpname) > 0" -v "concat('&quot;',afpname,'&quot;')" -b \
@@ -72,18 +69,6 @@ afpd_mkconf()
 		-i "string-length(cnidscheme) > 0" -v "concat('cnidscheme:',cnidscheme,' ')" -b \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_avdefault}
-
-		# Create '.com.apple.timemachine.support' file for timemachine support
-		# See http://forums.macrumors.com/showpost.php?p=4387985&postcount=50
-		if checkyesno afpd_timemachinesupport_enable; then
-			/usr/local/bin/xml sel -t -m "//afp/share" \
-				-v path \
-				-i "position() != last()" -n -b \
-				${configxml_file} | /usr/local/bin/xml unesc | \
-				while read _path; do
-					touch "${_path}/.com.apple.timemachine.support" > /dev/null 2>&1
-				done
-		fi
 }
 
 run_rc_command "$1"

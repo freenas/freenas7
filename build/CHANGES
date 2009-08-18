@@ -52,11 +52,8 @@ Majors changes:
 - Upgrade iSCSI initiator to 2.2.2.
 - Upgrade fuppes to 0.640.
 - Upgrade fusefs-ntfs/ntfs-3g to 2009.4.4.
-- The file '.com.apple.timemachine.support' is created in each AFP share to
-  enable TimeMachine support. This can be disabled via the rc.conf variable
-  afpd_timemachinesupport_enable="NO" (FR 2827270).
-  See http://forums.macrumors.com/showpost.php?p=4387985&postcount=50 for
-  additional informations.
+- Announce AFP shares using Bonjour/ZeroConf (FR 2839592). Thanks to Morton
+  Jonuschat.
 - Add AFP FP_SYNCFORK command support (FR 2836955). Thanks to Morton Jonuschat
   for the patch.
 - Upgrade e2fsprogs to 1.41.8.

@@ -24,7 +24,7 @@ get_if()
 }
 
 # get_ipaddr [protocol_family] [interface]
-# Get IP address for given protocol family and interface.
+# Get IP address for the given protocol family and interface.
 #
 # Example:
 # get_ipaddr inet eth0
@@ -37,6 +37,20 @@ get_ipaddr()
 	_interface=`get_if $2`
 
 	echo `/usr/bin/netstat -inW -f ${_protocol_family} -I ${_interface} | /usr/bin/grep ${_interface} | /usr/bin/awk '{print $4}'`
+}
+
+# get_macaddr [interface]
+# Get MAC address for the given interface.
+# Example:
+# get_ipaddr eth0
+# get_ipaddr auto
+get_macaddr()
+{
+	local _interface
+
+	_interface=`get_if $1`
+
+	echo `/usr/bin/netstat -inW -f link -I ${_interface} | tail -n 1 | /usr/bin/awk '{print $4}'`
 }
 
 # get_subnetmask [address]
