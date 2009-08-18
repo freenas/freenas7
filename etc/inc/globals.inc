@@ -83,9 +83,10 @@ $g_languages = array (
 	"ro"    => array("codeset" => "ISO-8859-1", "desc" => gettext("Romanian")),
 	"ru"    => array("codeset" => "UTF-8", "desc" => gettext("Russian")),
 	"sl"    => array("codeset" => "UTF-8", "desc" => gettext("Slovenian")),
-	"sq"		=> array("codeset" => "UTF-8", "desc" => gettext("Albanian")),
+	"sq"    => array("codeset" => "UTF-8", "desc" => gettext("Albanian")),
 	"es"    => array("codeset" => "ISO-8859-1", "desc" => gettext("Spanish")),
-	"sv"    => array("codeset" => "UTF-8", "desc" => gettext("Swedish"))
+	"sv"    => array("codeset" => "UTF-8", "desc" => gettext("Swedish")),
+	"lv"    => array("codeset" => "UTF-8", "desc" => gettext("Latvian"))
 );
 
 /* Supported filesystems */

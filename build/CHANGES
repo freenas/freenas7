@@ -73,6 +73,7 @@ Minors changes:
 - Add /usr/bin/getopt command (FR 2824548).
 - Add extra options for S.M.A.R.T. in 'Disks|Management|Disk|Edit' (FR 2824730).
 - Add RAID1 balance algorithm 'prefer' (FR 2833989).
+- Add latvian language support. Thanks to the translators.
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
