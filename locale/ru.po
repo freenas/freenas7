@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: freenas-0.7\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
 "POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2009-08-16 17:30+0000\n"
+"PO-Revision-Date: 2009-08-18 06:48+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-17 18:17+0000\n"
+"X-Launchpad-Export-Date: 2009-08-18 18:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -505,10 +505,10 @@ msgid "AltRoot"
 msgstr "Альтернативный корневой каталог"
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "Другой TCP порт. По умолчанию 22-й."
+msgstr "Другой TCP-порт, по умолчанию 22-й."
 
 msgid "Alternate TCP port. Default is 873"
-msgstr "Другой TCP порт. По умолчанию 873-й."
+msgstr "Другой TCP-порт, по умолчанию 873-й."
 
 msgid "Alternative configuration directory (usually empty)."
 msgstr "Другой каталог конфигурации (обычно пусто)."
@@ -2872,7 +2872,7 @@ msgid "Max. connections"
 msgstr "Максимум подключений"
 
 msgid "Max. passive port"
-msgstr ""
+msgstr "Максимальный порт пассивного режима"
 
 msgid "Max. sessions"
 msgstr "Максимум сессий"
@@ -2934,7 +2934,7 @@ msgid "MibII"
 msgstr "MibII"
 
 msgid "Min. passive port"
-msgstr ""
+msgstr "Минимальный порт пассивного режима"
 
 msgid "Minimum"
 msgstr "Минимальный"
@@ -3495,14 +3495,14 @@ msgstr "Port forwarding"
 
 #, php-format
 msgid "Port to listen for incoming peer connections. Default port is %d."
-msgstr "Порт для прослушивания входящих соединений. По умолчанию %d-й."
+msgstr "Порт для прослушивания входящих соединений, по умолчанию %d-й."
 
 msgid "Port to listen on. Default iTunes port is 3689."
 msgstr "Порт для прослушивания. iTunes обычно использует 3689-й."
 
 #, php-format
 msgid "Port to listen on. Default port is %d."
-msgstr "Порт для прослушивания. По умолчанию %d-й."
+msgstr "Порт для прослушивания, по умолчанию %d-й."
 
 #, php-format
 msgid ""
@@ -3673,7 +3673,7 @@ msgid "Read Only Access"
 msgstr "Доступ только для чтения"
 
 msgid "Read from biggest priority"
-msgstr ""
+msgstr "Чтение с наиболее приоритетного (biggest priority)"
 
 msgid "Read from lowest load"
 msgstr "Чтение с наименее нагруженного (lowest load)"
@@ -4472,7 +4472,7 @@ msgstr ""
 "монтирования</a> перед продолжением."
 
 msgid "The TCP port must be a valid port number."
-msgstr "Порт TCP должен быть верным номером порта."
+msgstr "TCP-порт должен быть задан правильно."
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "VLAN ID должен быть между 1 и 4094."
@@ -4585,7 +4585,7 @@ msgstr "Атрибут '%s' должен быть строкой."
 
 #, php-format
 msgid "The attribute '%s' must be in the range from %d to %d."
-msgstr "Атрибут '%s' должен быть в диапазоне от %d до%d."
+msgstr "Атрибут '%s' должен быть в диапазоне от %d до %d."
 
 #, php-format
 msgid "The attribute '%s' must be less than '%s'."
