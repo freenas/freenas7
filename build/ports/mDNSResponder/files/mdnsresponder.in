@@ -12,6 +12,7 @@
 
 . /etc/rc.subr
 . /etc/configxml.subr
+. /etc/util.subr
 
 name="mdnsresponder"
 rcvar=`set_rcvar`
@@ -31,6 +32,12 @@ pidfile="/var/run/mDNSResponder.pid"
 
 mdnsresponder_mkconf()
 {
+	local _if _macaddr
+
+	# Get the MAC address of the LAN interface
+	_if=`configxml_get "//upnp/if"`
+	_macaddr=`get_macaddr ${_if}`
+
 	echo "# mDNSResponderPosix configuration File
 #
 # This file contains the services to be announced to other Rendezvous aware
@@ -62,6 +69,14 @@ mdnsresponder_mkconf()
 			-v "//system/hostname" -n \
 			-o "_afpovertcp._tcp. local." -n \
 			-o "548" -n \
+			-n \
+			-v "//system/hostname" -n \
+			-o "_adisk._tcp. local." -n \
+			-o "9" -n \
+			-o "sys=waMA=${_macaddr}" -n \
+			-m "//afp/share" \
+				-v "concat('dk2=adVF=0x83\,adVN=',name,'\,adVU=',uuid)" -n \
+			-b \
 			-n \
 		-b \
 		-i "count(//rsyncd/enable) > 0" \
