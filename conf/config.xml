@@ -702,6 +702,10 @@
 				<nostat/>
 				<upriv/>
 			</options>
+			<adisk>
+				<enable/>
+				<advf>0x83</advf>
+			</adisk>
 		</share>
 		-->
 	</afp>

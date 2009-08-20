@@ -35,7 +35,7 @@ mdnsresponder_mkconf()
 	local _if _macaddr
 
 	# Get the MAC address of the LAN interface
-	_if=`configxml_get "//upnp/if"`
+	_if=`configxml_get "//interfaces/lan/if"`
 	_macaddr=`get_macaddr ${_if}`
 
 	echo "# mDNSResponderPosix configuration File
@@ -75,7 +75,11 @@ mdnsresponder_mkconf()
 			-o "9" -n \
 			-o "sys=waMA=${_macaddr}" -n \
 			-m "//afp/share" \
-				-v "concat('dk2=adVF=0x83\,adVN=',name,'\,adVU=',uuid)" -n \
+				-i "adisk/enable" \
+					-o "dk2=" \
+					-i "string-length(adisk/advf) > 0" -v "concat('adVF=',adisk/advf,',')" -b \
+					-v "concat('adVN=',name,',adVU=',uuid)" -n \
+				-b \
 			-b \
 			-n \
 		-b \
