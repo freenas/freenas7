@@ -15,7 +15,7 @@ Majors changes:
   there have to be restarted several services (which is not allowed to be
   done by a user).
 - Upgrade ProFTPD to 1.3.2a.
-- Upgrade iSCSI initiator to 2.2.2.
+- Upgrade iSCSI initiator to 2.2.3.
 - Upgrade fuppes to 0.640.
 - Upgrade fusefs-ntfs/ntfs-3g to 2009.4.4.
 - Announce AFP shares using Bonjour/ZeroConf (FR 2839592). Thanks to Morton
