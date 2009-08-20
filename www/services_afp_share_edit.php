@@ -79,6 +79,8 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['prodos'] = isset($a_share[$cnid]['options']['prodos']);
 	$pconfig['nostat'] = isset($a_share[$cnid]['options']['nostat']);
 	$pconfig['upriv'] = isset($a_share[$cnid]['options']['upriv']);
+	$pconfig['adisk_enable'] = isset($a_share[$cnid]['adisk']['enable']);
+	$pconfig['adisk_advf'] = $a_share[$cnid]['adisk']['advf'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
@@ -103,6 +105,8 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['prodos'] = false;
 	$pconfig['nostat'] = false;
 	$pconfig['upriv'] = false;
+	$pconfig['adisk_enable'] = true;
+	$pconfig['adisk_advf'] = "";
 }
 
 if ($_POST) {
@@ -160,6 +164,8 @@ if ($_POST) {
 		$share['options']['prodos'] = $_POST['prodos'] ? true : false;
 		$share['options']['nostat'] = $_POST['nostat'] ? true : false;
 		$share['options']['upriv'] = $_POST['upriv'] ? true : false;
+		$share['adisk']['enable'] = $_POST['adisk_enable'] ? true : false;
+		$share['adisk']['advf'] = $_POST['adisk_advf'];
 
 		if (isset($uuid) && (FALSE !== $cnid)) {
 			$a_share[$cnid] = $share;
@@ -178,6 +184,21 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function adisk_change() {
+	switch (document.iform.adisk_enable.checked) {
+		case false:
+			showElementById('adisk_advf_tr','hide');
+			break;
+
+		case true:
+			showElementById('adisk_advf_tr','show');
+			break;
+	}
+}
+//-->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -255,12 +276,10 @@ if ($_POST) {
 			        <?=gettext("Allows  certain  users and groups to have read/write access to a share. This follows the allow option format.");?>
 			      </td>
 			    </tr>
-					<tr>
-			      <td colspan="2" class="list" height="12"></td>
-			    </tr>
-			    <tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced Options");?></td>
-			    </tr>
+				<?php html_checkbox("adisk_enable", gettext("Automatic disk discovery"), $pconfig['adisk_enable'] ? true : false, gettext("Enable automatic disk discovery."), "", false, "adisk_change()");?>
+				<?php html_combobox("adisk_advf", gettext("Automatic disk discovery mode"), $pconfig['adisk_advf'], array("" => gettext("Default"), "0x83" => gettext("TimeMachine")), gettext("Note, selecting 'TimeMachine' on multiple shares will may cause unpredictable behavior in MacOS."), false);?>
+				<?php html_separator();?>
+				<?php html_titleline(gettext("Advanced Options"));?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Case Folding");?></td>
 			      <td width="78%" class="vtable">
@@ -364,4 +383,9 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
+<script language="JavaScript">
+<!--
+adisk_change();
+//-->
+</script>
 <?php include("fend.inc");?>
