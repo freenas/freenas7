@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 // Russian Mimes Module (translated by Mikhail M. Pigulsky - mikhail@mikhail.pp.ru)
 // Reviewed by Alexey P. Sannikov 
@@ -6,57 +6,57 @@
 
 $GLOBALS["mimes"]=array(
       // dir, exe, file
-      "dir"       => "Êàòàëîã",
-      "exe"       => "Ôàéë",
-      "file"      => "Ôàéë",
+      "dir"       => "ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³",
+      "exe"       => "Ð¤Ð°Ð¹Ð»",
+      "file"      => "Ð¤Ð°Ð¹Ð»",
 
       // text
-      "text"      => "Òåêñòîâûé ôàéë",
+      "text"      => "Ð¢ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»",
       
       // programming
-      "php"       => "PHP-ñêðèïò",
-      "sql"       => "SQL-ôàéë",
-      "perl"      => "PERL-ñêðèïò",
-      "html"      => "HTML-ñòðàíèöà",
-      "js"        => "JavaScript-ôàéë",
-      "css"       => "CSS-ñòèëü",
-      "cgi"       => "CGI-ñêðèïò",
+      "php"       => "PHP-ÑÐºÑ€Ð¸Ð¿Ñ‚",
+      "sql"       => "SQL-Ñ„Ð°Ð¹Ð»",
+      "perl"      => "PERL-ÑÐºÑ€Ð¸Ð¿Ñ‚",
+      "html"      => "HTML-ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°",
+      "js"        => "JavaScript-Ñ„Ð°Ð¹Ð»",
+      "css"       => "CSS-ÑÑ‚Ð¸Ð»ÑŒ",
+      "cgi"       => "CGI-ÑÐºÑ€Ð¸Ð¿Ñ‚",
       // C++
-      "cpps"      => "Èñõîäíûé êîä C++",
-      "cpph"      => "Çàãîëîâîê êîäà C++",
+      "cpps"      => "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ C++",
+      "cpph"      => "Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº ÐºÐ¾Ð´Ð° C++",
       // Java
-      "javas"     => "Èñõîäíûé êîä Java",
-      "javac"     => "Èñõîäíûé êîä Java class",
+      "javas"     => "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Java",
+      "javac"     => "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Java class",
       // Pascal
-      "pas"       => "Èñõîäíûé êîä Pascal",
+      "pas"       => "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Pascal",
       
       // images
-      "gif"       => "Èçîáðàæåíèå GIF",
-      "jpg"       => "Èçîáðàæåíèå JPG",
-      "bmp"       => "Èçîáðàæåíèå BMP",
-      "png"       => "Èçîáðàæåíèå PNG",
+      "gif"       => "Ð˜Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ GIF",
+      "jpg"       => "Ð˜Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ JPG",
+      "bmp"       => "Ð˜Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ BMP",
+      "png"       => "Ð˜Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ PNG",
       
       // compressed
-      "zip"       => "Àðõèâ ZIP",
-      "tar"       => "Àðõèâ TAR",
-      "gzip"      => "Àðõèâ GZIP",
-      "bzip2"     => "Àðõèâ BZIP2",
-      "rar"       => "Àðõèâ RAR",
+      "zip"       => "ÐÑ€Ñ…Ð¸Ð² ZIP",
+      "tar"       => "ÐÑ€Ñ…Ð¸Ð² TAR",
+      "gzip"      => "ÐÑ€Ñ…Ð¸Ð² GZIP",
+      "bzip2"     => "ÐÑ€Ñ…Ð¸Ð² BZIP2",
+      "rar"       => "ÐÑ€Ñ…Ð¸Ð² RAR",
       
       // music
-      "mp3"       => "Ôàéë MP3",
-      "wav"       => "Ôàéë WAV",
-      "midi"      => "Ôàéë MIDI",
-      "real"      => "Ôàéë RealAudio",
+      "mp3"       => "Ð¤Ð°Ð¹Ð» MP3",
+      "wav"       => "Ð¤Ð°Ð¹Ð» WAV",
+      "midi"      => "Ð¤Ð°Ð¹Ð» MIDI",
+      "real"      => "Ð¤Ð°Ð¹Ð» RealAudio",
       
       // movie
-      "mpg"       => "Âèäåîôàéë MPG",
-      "mov"       => "Âèäåîôàéë Movie",
-      "avi"       => "Âèäåîôàéë AVI",
-      "flash"     => "Ôàéë Flash",
+      "mpg"       => "Ð’Ð¸Ð´ÐµÐ¾Ñ„Ð°Ð¹Ð» MPG",
+      "mov"       => "Ð’Ð¸Ð´ÐµÐ¾Ñ„Ð°Ð¹Ð» Movie",
+      "avi"       => "Ð’Ð¸Ð´ÐµÐ¾Ñ„Ð°Ð¹Ð» AVI",
+      "flash"     => "Ð¤Ð°Ð¹Ð» Flash",
       
       // Micosoft / Adobe
-      "word"      => "Äîêóìåíò Word",
-      "excel"     => "Äîêóìåíò Excel",
-      "pdf"       => "Ôàéë PDF"
+      "word"      => "Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚ Word",
+      "excel"     => "Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚ Excel",
+      "pdf"       => "Ð¤Ð°Ð¹Ð» PDF"
 ); ?>
