@@ -277,7 +277,7 @@ function adisk_change() {
 			      </td>
 			    </tr>
 				<?php html_checkbox("adisk_enable", gettext("Automatic disk discovery"), $pconfig['adisk_enable'] ? true : false, gettext("Enable automatic disk discovery."), "", false, "adisk_change()");?>
-				<?php html_combobox("adisk_advf", gettext("Automatic disk discovery mode"), $pconfig['adisk_advf'], array("" => gettext("Default"), "0x83" => gettext("TimeMachine")), gettext("Note, selecting 'TimeMachine' on multiple shares will may cause unpredictable behavior in MacOS."), false);?>
+				<?php html_combobox("adisk_advf", gettext("Automatic disk discovery mode"), $pconfig['adisk_advf'], array("" => gettext("Default"), "0x83" => gettext("Time Machine")), gettext("Note! Selecting 'Time Machine' on multiple shares will may cause unpredictable behavior in MacOS."), false);?>
 				<?php html_separator();?>
 				<?php html_titleline(gettext("Advanced Options"));?>
 			    <tr>
