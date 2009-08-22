@@ -24,6 +24,6 @@ be done to make changes in the WebGUI look easy as possible.
 
 Global settings:
 - Use real tabs in source files. The tab width is 2.
-- Files must be in UTF-8 and unix format.
+- Files must be in UTF-8 and Unix format.
 
 Volker Theile
