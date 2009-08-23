@@ -1,5 +1,5 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.35
+PORTVERSION=	3.0.36
 PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
