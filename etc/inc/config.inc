@@ -1859,6 +1859,14 @@ function config_upgrade() {
 		$config['version'] = "8.2";
 	}
 
+	/* Convert 8.2 -> 8.3 */
+	/* Set default //ftpd/maxloginattempts. */
+	if ($config['version'] === "8.2") {
+		$config['ftpd']['maxloginattempts'] = 1;
+
+		$config['version'] = "8.3";
+	}
+
 	write_config();
 
 	if (is_booting())
