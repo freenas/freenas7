@@ -138,6 +138,7 @@ proftpd_mkconf()
 		-o "MaxInstances ${proftpd_maxinstances}" -n \
 		-v "concat('MaxClients ',numberclients)" -n \
 		-i "maxconperip[. > 0]" -v "concat('MaxConnectionsPerHost ',maxconperip)" -n -b \
+		-i "maxloginattempts[. > 0]" -v "concat('MaxLoginAttempts  ',maxloginattempts )" -n -b \
 		-o "DefaultTransferMode ${proftpd_defaulttransfermode}" -n \
 		-i "count(fxp) > 0" -o "AllowForeignAddress on" -n -b \
 		-i "string-length(pasv_address) > 0" -v "concat('MasqueradeAddress ',pasv_address)" -n -b \

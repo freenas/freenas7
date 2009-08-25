@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.2</version>
+	<version>8.3</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -629,6 +629,7 @@
 		<!-- <enable/> -->
 		<numberclients>5</numberclients>
 		<maxconperip>2</maxconperip>
+		<maxloginattempts>1</maxloginattempts>
 		<timeout>600</timeout>
 		<port>21</port>
 		<pasv_max_port>0</pasv_max_port>

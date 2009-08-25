@@ -44,6 +44,7 @@ $pconfig['enable'] = isset($config['ftpd']['enable']);
 $pconfig['port'] = $config['ftpd']['port'];
 $pconfig['numberclients'] = $config['ftpd']['numberclients'];
 $pconfig['maxconperip'] = $config['ftpd']['maxconperip'];
+$pconfig['maxloginattempts'] = $config['ftpd']['maxloginattempts'];
 $pconfig['timeout'] = $config['ftpd']['timeout'];
 $pconfig['anonymousonly'] = isset($config['ftpd']['anonymousonly']);
 $pconfig['localusersonly'] = isset($config['ftpd']['localusersonly']);
@@ -84,9 +85,9 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		// Input validation.
-		$reqdfields = explode(" ", "port numberclients maxconperip timeout");
-		$reqdfieldsn = array(gettext("TCP port"), gettext("Number of clients"), gettext("Max. conn. per IP"), gettext("Timeout"));
-		$reqdfieldst = explode(" ", "numeric numeric numeric numeric");
+		$reqdfields = explode(" ", "port numberclients maxconperip timeout maxloginattempts");
+		$reqdfieldsn = array(gettext("TCP port"), gettext("Number of clients"), gettext("Max. conn. per IP"), gettext("Timeout"), gettext("Max. login attempts"));
+		$reqdfieldst = explode(" ", "numeric numeric numeric numeric numeric");
 
 		if ($_POST['tls']) {
 			$reqdfields = array_merge($reqdfields, explode(" ", "certificate privatekey"));
@@ -136,6 +137,7 @@ if ($_POST) {
 		$config['ftpd']['enable'] = $_POST['enable'] ? true : false;
 		$config['ftpd']['numberclients'] = $_POST['numberclients'];
 		$config['ftpd']['maxconperip'] = $_POST['maxconperip'];
+		$config['ftpd']['maxloginattempts'] = $_POST['maxloginattempts'];
 		$config['ftpd']['timeout'] = $_POST['timeout'];
 		$config['ftpd']['port'] = $_POST['port'];
 		$config['ftpd']['anonymousonly'] = $_POST['anonymousonly'] ? true : false;
@@ -192,6 +194,7 @@ function enable_change(enable_change) {
 	document.iform.permitrootlogin.disabled = endis;
 	document.iform.numberclients.disabled = endis;
 	document.iform.maxconperip.disabled = endis;
+	document.iform.maxloginattempts.disabled = endis;
 	document.iform.anonymousonly.disabled = endis;
 	document.iform.localusersonly.disabled = endis;
 	document.iform.banner.disabled = endis;
@@ -277,10 +280,11 @@ function anonymousonly_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("File Transfer Protocol"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_inputbox("port", gettext("TCP port"), $pconfig['port'], sprintf(gettext("Default is %s."), "21"), true, 20);?>
-					<?php html_inputbox("numberclients", gettext("Number of clients"), $pconfig['numberclients'], gettext("Maximum number of simultaneous clients."), true, 20);?>
-					<?php html_inputbox("maxconperip", gettext("Max. conn. per IP"), $pconfig['maxconperip'], gettext("Maximum number of connections per IP address (0 = unlimited)."), true, 20);?>
-					<?php html_inputbox("timeout", gettext("Timeout"), $pconfig['timeout'], gettext("Maximum idle time in seconds."), true, 20);?>
+					<?php html_inputbox("port", gettext("TCP port"), $pconfig['port'], sprintf(gettext("Default is %s."), "21"), true, 4);?>
+					<?php html_inputbox("numberclients", gettext("Number of clients"), $pconfig['numberclients'], gettext("Maximum number of simultaneous clients."), true, 3);?>
+					<?php html_inputbox("maxconperip", gettext("Max. conn. per IP"), $pconfig['maxconperip'], gettext("Maximum number of connections per IP address (0 = unlimited)."), true, 3);?>
+					<?php html_inputbox("maxloginattempts", gettext("Max. login attempts"), $pconfig['maxloginattempts'], gettext("Maximum number of allowed password attempts before disconnection."), true, 3);?>
+					<?php html_inputbox("timeout", gettext("Timeout"), $pconfig['timeout'], gettext("Maximum idle time in seconds."), true, 5);?>
 					<?php html_checkbox("permitrootlogin", gettext("Permit root login"), $pconfig['permitrootlogin'] ? true : false, gettext("Specifies whether it is allowed to login as superuser (root) directly."), "", false);?>
 					<?php html_checkbox("anonymousonly", gettext("Anonymous users only"), $pconfig['anonymousonly'] ? true : false, gettext("Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."), "", false, "anonymousonly_change()");?>
 					<?php html_checkbox("localusersonly", gettext("Local users only"), $pconfig['localusersonly'] ? true : false, gettext("Only allow authenticated users. Anonymous logins are prohibited."), "", false, "localusersonly_change()");?>

@@ -72,6 +72,7 @@ Minors changes:
 - Add RAID1 balance algorithm 'prefer' (FR 2833989).
 - Add latvian language support. Thanks to the translators.
 - Update Quixplorer russian translation (BR 2841900). Thanks to Alexey Sannikov.
+- Add 'Max. login attempts' to 'Services|FTP' (FR 2844193).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
