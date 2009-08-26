@@ -76,7 +76,7 @@ mdnsresponder_mkconf()
 			-o "sys=waMA=${_macaddr}" -n \
 			-m "//afp/share" \
 				-i "adisk/enable" \
-					-o "dk2=" \
+					-v "concat('dk',position()-1,'=')" \
 					-i "string-length(adisk/advf) > 0" -v "concat('adVF=',adisk/advf,',')" -b \
 					-v "concat('adVN=',name,',adVU=',uuid)" -n \
 				-b \
