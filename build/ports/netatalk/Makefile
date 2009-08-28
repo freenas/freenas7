@@ -25,6 +25,7 @@ CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/cnid_dbd/cnid_metad ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/etc/uams
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams
