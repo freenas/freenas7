@@ -19,6 +19,8 @@ load_rc_config "${name}"
 
 # Custom commands
 start_precmd="afpd_mkconf"
+start_postcmd="afpd_poststart"
+stop_postcmd="afpd_poststop"
 mkconf_cmd="afpd_mkconf"
 extra_commands="mkconf"
 
@@ -69,6 +71,16 @@ afpd_mkconf()
 		-i "string-length(cnidscheme) > 0" -v "concat('cnidscheme:',cnidscheme,' ')" -b \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_avdefault}
+}
+
+afpd_poststart()
+{
+	checkyesno afpd_enable && /usr/local/sbin/cnid_metad
+}
+
+afpd_poststop()
+{
+	checkyesno afpd_enable && killall cnid_metad
 }
 
 run_rc_command "$1"

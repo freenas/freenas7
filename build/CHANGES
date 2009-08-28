@@ -39,6 +39,7 @@ Minors changes:
 - Add latvian language support. Thanks to the translators.
 - Update Quixplorer russian translation (BR 2841900). Thanks to Alexey Sannikov.
 - Add 'Max. login attempts' to 'Services|FTP' (FR 2844193).
+- Get AFP dbd cnid scheme working (BR 2844900).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
