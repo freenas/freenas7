@@ -30,6 +30,9 @@
 */
 require_once("array.inc");
 
+// Set PATH, otherwise some commands will not be found during exec.
+putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
+
 /* kill a process by pid file */
 function killbypid($pidfile) {
 	sigkillbypid($pidfile, "TERM");
@@ -1054,9 +1057,6 @@ function get_all_disks_list()
 function mwexec($command, $logerr = false) {
 	global $g;
 
-	// Set PATH
-	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
-
 	if ($g['debug']) {
 		if (!$_SERVER['REMOTE_ADDR'])
 			echo "mwexec(): $command\n";
@@ -1077,8 +1077,6 @@ function mwexec($command, $logerr = false) {
 }
 
 function mwexec2($command, &$output = NULL, &$return_var = NULL) {
-	// Set PATH
-	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
 	return exec($command, $output, $return_var);
 }
 
