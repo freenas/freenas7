@@ -1084,9 +1084,6 @@ function mwexec2($command, &$output = NULL, &$return_var = NULL) {
 function mwexec_bg($command) {
 	global $g;
 
-	// Set PATH
-	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
-
 	if ($g['debug']) {
 		if (!$_SERVER['REMOTE_ADDR'])
 			echo "mwexec(): $command\n";
