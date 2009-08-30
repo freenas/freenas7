@@ -31,6 +31,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require_once("functions.inc");
+require_once("util.inc");
 
 // Mount all configured disks.
 // Return 0 if successful, 1 if error
@@ -94,9 +95,6 @@ function disks_umount_all()
 function disks_mount($mount)
 {
 	global $config, $g;
-
-	// Set PATH (otherwise ntfs won't be mounted via WebGUI)
-	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
 
 	// Set mount name
 	$mountname = "{$g['media_path']}/{$mount['sharename']}";
