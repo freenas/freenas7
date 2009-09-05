@@ -32,11 +32,7 @@ pidfile="/var/run/mDNSResponder.pid"
 
 mdnsresponder_mkconf()
 {
-	local _if _macaddr
-
-	# Get the MAC address of the LAN interface
-	_if=`configxml_get "//interfaces/lan/if"`
-	_macaddr=`get_macaddr ${_if}`
+	local _if
 
 	echo "# mDNSResponderPosix configuration File
 #
@@ -73,7 +69,7 @@ mdnsresponder_mkconf()
 			-v "//system/hostname" -n \
 			-o "_adisk._tcp. local." -n \
 			-o "9" -n \
-			-o "sys=waMA=${_macaddr}" -n \
+			-o "sys=waMA=0,adVF=0x100" -n \
 			-m "//afp/share" \
 				-i "adisk/enable" \
 					-v "concat('dk',position()-1,'=')" \
