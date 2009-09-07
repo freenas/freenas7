@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
 "POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2009-03-08 19:53+0000\n"
-"Last-Translator: Linus C Unneback <linus@folkdatorn.se>\n"
+"PO-Revision-Date: 2009-08-21 13:28+0000\n"
+"Last-Translator: Simon Österberg <simon.osterberg@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-18 18:08+0000\n"
+"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -52,7 +52,7 @@ msgstr "%s kommer att starta om efter att konfigurationen återskapats"
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
-msgstr ""
+msgstr "%s%d %s används redan av %s%d."
 
 #, c-format, php-format
 msgid "%sB available of %sB"
@@ -574,7 +574,7 @@ msgid "Authentication"
 msgstr "Autentisering"
 
 msgid "Authentication method"
-msgstr ""
+msgstr "Autentisieringsmetod"
 
 msgid "Authorised network"
 msgstr "Behörigt nätverk"
@@ -626,7 +626,7 @@ msgid ""
 msgstr ""
 
 msgid "Best available"
-msgstr ""
+msgstr "Bästa tillgängliga"
 
 msgid "Bind DN"
 msgstr ""
@@ -647,10 +647,10 @@ msgid "Built on"
 msgstr ""
 
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgariska"
 
 msgid "By default, only already existing files can be uploaded."
-msgstr ""
+msgstr "Som standard kan bara redan existerande filer laddas upp."
 
 msgid "CCMP"
 msgstr "CCMP"
@@ -677,13 +677,13 @@ msgid "CIFS/SMB informations"
 msgstr "CIFS/SMB information"
 
 msgid "CPU frequency"
-msgstr ""
+msgstr "CPU frekvens"
 
 msgid "CPU load"
 msgstr "Processorbelastning"
 
 msgid "CPU temperature"
-msgstr ""
+msgstr "CPU temperatur"
 
 msgid "CPU usage"
 msgstr "CPU-användning"
@@ -695,7 +695,7 @@ msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Kan inte montera systempartition 1, DATA-partitionen är 2."
 
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 msgid "Canmount"
 msgstr ""
@@ -704,7 +704,7 @@ msgid "Cannot get data about interface"
 msgstr "Kan inte få data om gränssnittet"
 
 msgid "Capacity"
-msgstr ""
+msgstr "Kapacitet"
 
 msgid "Case Folding"
 msgstr ""
@@ -720,7 +720,7 @@ msgid "Certificate"
 msgstr "Certifikat"
 
 msgid "Change"
-msgstr ""
+msgstr "Ändra"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -736,10 +736,10 @@ msgid "Check shared secret:"
 msgstr ""
 
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Kinesiska (förenklad)"
 
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Kinesiska (traditionell)"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -751,7 +751,7 @@ msgid "Choose which interface this route applies to."
 msgstr "Välj det gränssnitt som denna väg gäller."
 
 msgid "Clear"
-msgstr ""
+msgstr "Rensa"
 
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
@@ -824,7 +824,7 @@ msgstr ""
 "Användbart enbart för Internet överföring."
 
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
 msgid "Configuration directory"
 msgstr "Konfigurationskatalog"
@@ -882,7 +882,7 @@ msgid "Create mask"
 msgstr "Skapa mask"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Skapa katalogen om den inte finns."
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -894,7 +894,7 @@ msgid "Creating filesystem with 'Soft Updates'"
 msgstr ""
 
 msgid "Creating partition"
-msgstr ""
+msgstr "Skapar partition"
 
 msgid "Credits"
 msgstr "Tack till"
@@ -945,7 +945,7 @@ msgid "Daemon log"
 msgstr ""
 
 msgid "Danish"
-msgstr ""
+msgstr "Danska"
 
 msgid "Data digest"
 msgstr ""
@@ -963,10 +963,10 @@ msgid "Datasets"
 msgstr ""
 
 msgid "Date & Time"
-msgstr ""
+msgstr "Datum och tid"
 
 msgid "Days"
-msgstr ""
+msgstr "Dagar"
 
 msgid "Debug"
 msgstr ""
@@ -976,7 +976,7 @@ msgstr "Standard"
 
 #, php-format
 msgid "Default is %s."
-msgstr ""
+msgstr "Standard är %s."
 
 msgid "Default root"
 msgstr ""
@@ -1009,7 +1009,7 @@ msgid "Delete Route"
 msgstr "Ta bort väg"
 
 msgid "Delete Rsync job"
-msgstr ""
+msgstr "Radera Rsync jobb"
 
 msgid "Delete URL"
 msgstr "Radera URL"
@@ -1024,7 +1024,7 @@ msgid "Delete all options"
 msgstr "Radera alla alternativ"
 
 msgid "Delete all rules"
-msgstr ""
+msgstr "Raderar alla regler"
 
 msgid "Delete all self-tests"
 msgstr ""
@@ -1129,7 +1129,7 @@ msgid "Destination network for this static route"
 msgstr "Destinationsnätverk för denna statiska väg"
 
 msgid "Destination port"
-msgstr ""
+msgstr "Destinations port"
 
 msgid "Destination share"
 msgstr ""
@@ -1174,7 +1174,7 @@ msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr ""
 
 msgid "Devices"
-msgstr ""
+msgstr "Enheter"
 
 msgid "Diagnostics"
 msgstr "Diagnostik"
@@ -1257,7 +1257,7 @@ msgid "Do you really want to delete all options?"
 msgstr "Vill du verkligen radera alla alternativ?"
 
 msgid "Do you really want to delete all rules?"
-msgstr ""
+msgstr "Vill du verkligen radera alla regler?"
 
 msgid "Do you really want to delete all scheduled self-tests?"
 msgstr ""
@@ -1338,7 +1338,7 @@ msgid "Do you really want to delete this route?"
 msgstr "Vill du verkligen ta bort den här vägen?"
 
 msgid "Do you really want to delete this rule?"
-msgstr ""
+msgstr "Vill du verkligen radera denna regeln?"
 
 msgid "Do you really want to delete this scheduled self-test?"
 msgstr "Vill du verkligen radera detta schemalagda självtest?"
@@ -1411,7 +1411,7 @@ msgid ""
 msgstr ""
 
 msgid "Donate"
-msgstr ""
+msgstr "Donera"
 
 msgid "Done"
 msgstr "Färdig"
@@ -1426,10 +1426,10 @@ msgid "Double-parity RAID-5"
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "Ladda ner"
 
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Nerladdningsbandbredd"
 
 msgid "Download configuration"
 msgstr "Hämta ner konfiguration"
@@ -1438,7 +1438,7 @@ msgid "Download directory"
 msgstr "Nedladdningsmapp"
 
 msgid "Download firewall rules."
-msgstr ""
+msgstr "Ladda ner brandväggsregler."
 
 msgid "Driver"
 msgstr "Drivrutin"
@@ -1453,7 +1453,7 @@ msgid "Duplicate mount point name."
 msgstr ""
 
 msgid "Dutch"
-msgstr ""
+msgstr "Nederländska"
 
 msgid "Dynamic DNS"
 msgstr "Dynamisk DNS"
@@ -1480,7 +1480,7 @@ msgid "Edit Route"
 msgstr "Redigera väg"
 
 msgid "Edit Rsync job"
-msgstr ""
+msgstr "Redigera Rsync jobb"
 
 msgid "Edit URL"
 msgstr "Redigera URL"
@@ -1534,7 +1534,7 @@ msgid "Edit portal group"
 msgstr ""
 
 msgid "Edit rule"
-msgstr ""
+msgstr "Redigera regel"
 
 msgid "Edit self-test"
 msgstr "Redigera självtest"
@@ -1573,7 +1573,7 @@ msgid "Enable SMTP authentication."
 msgstr "Aktivera SMTP-autentisering."
 
 msgid "Enable TLS/SSL connections."
-msgstr ""
+msgstr "Aktivera TLS/SSL anslutningar."
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
@@ -1648,7 +1648,7 @@ msgid "Enable recycle bin"
 msgstr "Aktivera papperskorg"
 
 msgid "Enable remote monitoring of the local connected UPS."
-msgstr ""
+msgstr "Aktivera fjärrövervakning av lokalt ansluten UPS."
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -1704,7 +1704,7 @@ msgstr ""
 "radbyteskonverteringen."
 
 msgid "Encrypted"
-msgstr ""
+msgstr "Krypterad"
 
 #, php-format
 msgid "Encrypting '%s'... Please wait"
@@ -1720,7 +1720,7 @@ msgid "Encryption algorithm to use."
 msgstr ""
 
 msgid "English"
-msgstr ""
+msgstr "Engelska"
 
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
@@ -1765,7 +1765,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Fel: Ändringarna kunde inte verkställas (felkod %s)."
 
 msgid "Event"
-msgstr ""
+msgstr "Händelse"
 
 msgid "Execute"
 msgstr "Kör"
@@ -1787,7 +1787,7 @@ msgid "Expire"
 msgstr ""
 
 msgid "Export"
-msgstr ""
+msgstr "Exportera"
 
 msgid "Extended attributes"
 msgstr ""
@@ -1914,7 +1914,7 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
-msgstr ""
+msgstr "Filhanterare"
 
 msgid "File Transfer Protocol"
 msgstr ""
@@ -1945,7 +1945,7 @@ msgid "Filename"
 msgstr "Filnamn"
 
 msgid "Firewall"
-msgstr ""
+msgstr "Brandvägg"
 
 msgid "Firewall rule"
 msgstr ""
@@ -1981,10 +1981,10 @@ msgid "Format disk"
 msgstr "Formatera disk"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Formatera rapporten för phpBB-forum"
 
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 msgid "Free"
 msgstr ""
@@ -1993,10 +1993,10 @@ msgid "Free disk space"
 msgstr "Ledigt diskutrymme"
 
 msgid "French"
-msgstr ""
+msgstr "Franska"
 
 msgid "Frequency"
-msgstr ""
+msgstr "Frekvens"
 
 msgid "From email"
 msgstr "Från e-post"
@@ -2023,19 +2023,19 @@ msgid "Gateway to be used to reach the destination network."
 msgstr "Gateway som används för att nå destinationsnätverk."
 
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
 msgid "General Setup"
 msgstr "Allmän Inställning"
 
 msgid "Generate"
-msgstr ""
+msgstr "Generera"
 
 msgid "German"
-msgstr ""
+msgstr "Tyska"
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
 msgstr "Ge enbart lokala användare tillgång till webbsidan."
@@ -2050,7 +2050,7 @@ msgid "Graph shows last"
 msgstr "Graf visar senaste"
 
 msgid "Greek"
-msgstr ""
+msgstr "Grekiska"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
@@ -2090,7 +2090,7 @@ msgid "Hard disk standby time"
 msgstr ""
 
 msgid "Hardware"
-msgstr ""
+msgstr "Hårdvara"
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2099,7 +2099,7 @@ msgid "Header digest"
 msgstr ""
 
 msgid "Health"
-msgstr ""
+msgstr "Hälsa"
 
 msgid "Help"
 msgstr "Hjälp"
@@ -2108,7 +2108,7 @@ msgid "Hide dot files"
 msgstr "Dölj punktfiler"
 
 msgid "Highlighting"
-msgstr ""
+msgstr "Markering"
 
 msgid "Hint"
 msgstr "Tips"
@@ -2131,7 +2131,7 @@ msgid "Host access control"
 msgstr ""
 
 msgid "Host name"
-msgstr ""
+msgstr "Värdnamn"
 
 msgid "Host resources"
 msgstr "Värdresurser"
@@ -2155,7 +2155,7 @@ msgid "Hot Spare"
 msgstr ""
 
 msgid "Hours"
-msgstr ""
+msgstr "Timmar"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2167,7 +2167,7 @@ msgid ""
 msgstr ""
 
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungerska"
 
 msgid "I/O Timeout"
 msgstr ""
