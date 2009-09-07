@@ -55,6 +55,14 @@ if ($_POST) {
 		header("Location: disks_manage.php");
 		exit;
 	}
+	if ($_POST['disks_rescan']) {
+		$do_action = true;
+		$disks_rescan = true;
+	}
+}
+
+if (!isset($do_action)) {
+	$do_action = false;
 }
 
 if (!is_array($config['disks']['disk']))
@@ -160,6 +168,23 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0"></a></td>
 					</tr>
 				</table>
+				<div id="submit">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Rescan disks");?>">
+					<input type="hidden" name="disks_rescan" value="1">
+				</div>
+				<?php
+				if ($do_action) {
+					echo('<pre>');
+					echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+					ob_end_flush();
+					if (true == $disks_rescan) {
+						disks_rescan();
+					}
+					echo('</pre>');
+					echo('<script type="text/javascript">');
+					echo('window.location.href="disks_manage.php"');
+					echo('</script>');
+				}?>
 				<?php include("formend.inc");?>
 			</form>
 		</td>

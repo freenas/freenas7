@@ -1194,4 +1194,33 @@ EOD;
 
 	return 0;
 }
+
+/**
+ * Rescan disks after a Hotswap has been performed
+ */ 
+function disks_rescan() {
+	mwexec2("atacontrol list", $devicelist, $return_val);
+	if (true == $return_val) {
+		echo gettext("atacontrol list failed, atacontrol not found !!");
+		return $return_val;
+	}
+	$atachannels = array();
+	$channel = 'NONE';
+	foreach ($devicelist as $item) {
+		if (preg_match("/ATA\s+channel\s+(\d+):/i", $item, $matched)) {
+			$channel = 'ata' . $matched[1];
+			$atachannels[$channel] = 0;
+		} else if (preg_match("/no device present/i", $item, $matched)) {
+			$atachannels[$channel]++;
+		}
+	}
+	foreach ($atachannels as $channel => $count) {
+		if ($count == 2) {
+			echo gettext("Resetting channel ") . "$channel\n";
+			mwexec("atacontrol detach $channel");
+			sleep(1);
+			mwexec("atacontrol attach $channel");
+		}
+	}
+}
 ?>
