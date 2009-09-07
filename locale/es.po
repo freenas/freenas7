@@ -3,20 +3,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
 "POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2009-07-31 18:38+0000\n"
-"Last-Translator: Feder Sáiz <federsaiz@googlemail.com>\n"
+"PO-Revision-Date: 2009-09-06 05:41+0000\n"
+"Last-Translator: jfunez <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-18 18:08+0000\n"
+"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
-
-msgid "Target Name"
-msgstr "Nombre del objetivo"
 
 msgid " interfaces:"
 msgstr " interfaces:"
@@ -26,7 +23,7 @@ msgstr " fue asignado a "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr ""
+msgstr "%d%% de %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -73,6 +70,8 @@ msgstr "*** Importación duplicada ***"
 
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
+"0=deshabilitado, 1-255=habilitado comando de encolado con profundidad "
+"especificada"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -93,6 +92,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a> debe estar habilitada por Unison para funcionar, y el <a "
+"href=%s>usuario</a> debe tener acceso a la consola"
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -304,13 +305,13 @@ msgid "Add additional scheduled self-test."
 msgstr "Añadir autocomprobación planeada adicional."
 
 msgid "Add auth group"
-msgstr ""
+msgstr "Añadir grupo autorizado"
 
 msgid "Add command"
 msgstr "Añadir comando"
 
 msgid "Add dataset"
-msgstr ""
+msgstr "Añadir conjunto de datos"
 
 msgid "Add device"
 msgstr "Agregar dispositivo"
@@ -328,7 +329,7 @@ msgid "Add initiator"
 msgstr "Añadir iniciador"
 
 msgid "Add initiator group"
-msgstr ""
+msgstr "Añadir grupo iniciador"
 
 msgid "Add interface"
 msgstr "Añadir interfaz"
@@ -349,7 +350,7 @@ msgid "Add pool"
 msgstr ""
 
 msgid "Add portal group"
-msgstr ""
+msgstr "Agregar grupo portal"
 
 msgid "Add rule"
 msgstr "Añadir regla"
@@ -431,7 +432,7 @@ msgid "Aggregation protocol"
 msgstr "Protocolo de Agregación"
 
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresivo"
 
 msgid "Albanian"
 msgstr "Albanés"
@@ -446,6 +447,8 @@ msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
 "anything beginning with .Apple illegal."
 msgstr ""
+"Todos los compartidos usan la opción 'usedots' haciendo, además, ilegales "
+"los archivos .Parent y cualquiera que empiece con .Apple."
 
 msgid "All users will have the root privilege."
 msgstr "Todos los usuarios tendrán permisos de root."
@@ -584,13 +587,13 @@ msgid "Attaching provider '%s'."
 msgstr "Adjuntando provedor '%s'."
 
 msgid "Auth Group"
-msgstr ""
+msgstr "Grupo de Autenticacion"
 
 msgid "Auth Groups"
-msgstr ""
+msgstr "Grupos de Autenticacion"
 
 msgid "Auth Method"
-msgstr ""
+msgstr "Metodo Autenticacion"
 
 msgid "Authenticate URL"
 msgstr "Autentificar URL"
@@ -614,7 +617,7 @@ msgid "AutoScale"
 msgstr "Escala Automática"
 
 msgid "Autoselect"
-msgstr ""
+msgstr "Autoseleccionar"
 
 msgid "Auxiliary parameters"
 msgstr "Parámetros auxiliares."
@@ -644,14 +647,16 @@ msgid "Base DN"
 msgstr "DN base"
 
 msgid "Base Name"
-msgstr ""
+msgstr "Nombre Base"
 
 msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
+"El nombre base sera agregado al final automaticamente, cuando no comience "
+"con 'iqn.'"
 
 msgid "Best available"
-msgstr ""
+msgstr "Mejor disponible"
 
 msgid "Bind DN"
 msgstr "Bind DN"
@@ -870,7 +875,7 @@ msgid "Console menu"
 msgstr "Menú de consola"
 
 msgid "Console screensaver"
-msgstr ""
+msgstr "Salvapantallas de consola"
 
 msgid "Contact"
 msgstr "Contacto"
@@ -910,7 +915,7 @@ msgid "Create mask"
 msgstr "Crear máscara"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Crear directorio de trabajo, si no existe."
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -991,16 +996,16 @@ msgid "Database directory"
 msgstr "Directorio de la base de datos"
 
 msgid "Dataset"
-msgstr ""
+msgstr "Conjunto de datos"
 
 msgid "Datasets"
-msgstr ""
+msgstr "Conjuntos de datos"
 
 msgid "Date & Time"
 msgstr "Fecha y hora"
 
 msgid "Days"
-msgstr ""
+msgstr "Días"
 
 msgid "Debug"
 msgstr "Depurar"
@@ -1070,7 +1075,7 @@ msgid "Delete command"
 msgstr "Borrar comando"
 
 msgid "Delete dataset"
-msgstr ""
+msgstr "Eliminar conjunto de datos"
 
 msgid "Delete device"
 msgstr "Borrar dispositivo"
@@ -4296,6 +4301,9 @@ msgstr "Objetivo"
 
 msgid "Target Alias"
 msgstr ""
+
+msgid "Target Name"
+msgstr "Nombre del objetivo"
 
 msgid "Target address"
 msgstr "Dirección del destino"
