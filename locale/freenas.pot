@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-08-15 22:06+0000\n"
+"PO-Revision-Date: 2009-09-10 21:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -486,6 +486,12 @@ msgid "Auto"
 msgstr ""
 
 msgid "AutoScale"
+msgstr ""
+
+msgid "Automatic disk discovery"
+msgstr ""
+
+msgid "Automatic disk discovery mode"
 msgstr ""
 
 msgid "Autoselect"
@@ -1420,6 +1426,9 @@ msgstr ""
 msgid "Enable authentication."
 msgstr ""
 
+msgid "Enable automatic disk discovery."
+msgstr ""
+
 msgid "Enable compression."
 msgstr ""
 
@@ -2241,6 +2250,9 @@ msgstr ""
 msgid "Last config change"
 msgstr ""
 
+msgid "Latvian"
+msgstr ""
+
 #, php-format
 msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
 msgstr ""
@@ -2452,6 +2464,9 @@ msgstr ""
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. login attempts"
+msgstr ""
+
 msgid "Max. passive port"
 msgstr ""
 
@@ -2471,6 +2486,9 @@ msgid "Maximum connections"
 msgstr ""
 
 msgid "Maximum idle time in seconds."
+msgstr ""
+
+msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
@@ -2716,6 +2734,9 @@ msgid "Not attached"
 msgstr ""
 
 msgid "Note"
+msgstr ""
+
+msgid "Note! Selecting 'Time Machine' on multiple shares will may cause unpredictable behavior in MacOS."
 msgstr ""
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
@@ -3256,7 +3277,13 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
+msgid "Rescan disks"
+msgstr ""
+
 msgid "Rescan interval"
+msgstr ""
+
+msgid "Resetting channel "
 msgstr ""
 
 msgid "Resolve"
@@ -4544,6 +4571,9 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
+msgid "Time Machine"
+msgstr ""
+
 msgid "Time interval"
 msgstr ""
 
@@ -5014,6 +5044,9 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
+msgstr ""
+
+msgid "atacontrol list failed, atacontrol not found !!"
 msgstr ""
 
 msgid "cachecnid"
