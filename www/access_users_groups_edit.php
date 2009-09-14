@@ -86,7 +86,9 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if group is created.
-	if (!(isset($uuid) && (FALSE !== $cnid)) && ((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
+	if (!(isset($uuid) && (FALSE !== $cnid)) &&
+		((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
+		(is_array($a_group_system) && in_array($_POST['groupid'], $a_group_system)) ||
 		(false !== array_search_ex($_POST['name'], $a_group, "name")))) {
 		$input_errors[] = gettext("This group already exists in the group list.");
 	}
