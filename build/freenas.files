@@ -542,6 +542,9 @@ usr/sbin/ntpdate
 ## vidcontrol -- system console control and configuration utility
 usr/sbin/vidcontrol
 
+## gstat -- print statistics about GEOM disks
+usr/sbin/gstat
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
