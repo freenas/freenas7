@@ -243,7 +243,7 @@ function authentication_change() {
               <br><?=gettext("Server description. This can usually be left blank.") ;?>
             </td>
           </tr>
-          <?php html_combobox("doscharset", gettext("Dos charset"), $pconfig['doscharset'], array("CP437" => "CP437", "CP850" => "CP850", "CP852" => "CP852", "CP866" => "CP866", "CP932" => "CP932", "ASCII" => "ASCII"), "", false);?>
+          <?php html_combobox("doscharset", gettext("Dos charset"), $pconfig['doscharset'], array("CP437" => "CP437", "CP850" => "CP850", "CP852" => "CP852", "CP866" => "CP866", "CP932" => "CP932", "CP1251" => "CP1251", "ASCII" => "ASCII"), "", false);?>
           <?php html_combobox("unixcharset", gettext("Unix charset"), $pconfig['unixcharset'], array("UTF-8" => "UTF-8", "iso-8859-1" => "iso-8859-1", "iso-8859-15" => "iso-8859-15", "gb2312" => "gb2312", "EUC-JP" => "EUC-JP", "ASCII" => "ASCII"), "", false);?>
           <?php html_combobox("loglevel", gettext("Log Level"), $pconfig['loglevel'], array("1" => gettext("Minimum"), "2" => gettext("Normal"), "3" => gettext("Full"), "10" => gettext("Debug")), "", false);?>
           <tr>
