@@ -60,11 +60,11 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 				<li class="tabinact"><a href="diag_infos_sockets.php"><span><?=gettext("Sockets");?></span></a></li>
 				<li class="tabinact"><a href="diag_infos_ups.php"><span><?=gettext("UPS");?></span></a></li>
 			</ul>
-  	</td>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
-    	<table width="100%" border="0">
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0">
 				<?php if (!isset($config['samba']['enable'])):?>
 				<?php html_titleline(gettext("CIFS/SMB informations"));?>
 				<tr>
@@ -73,26 +73,37 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 					</td>
 				</tr>
 				<?php else:?>
-				<?php html_titleline(gettext("List of shares"));?>
+				<?php html_titleline(gettext("Active shares"));?>
 				<tr>
-			    <td>
-						<pre><?php system("/usr/local/bin/net -P rpc share");?></pre>
+					<td>
+						<pre><?php system("/usr/bin/smbstatus -S");?></pre>
 					</td>
-			  </tr>
-			  <?php html_titleline(gettext("List of open files"));?>
+				</tr>
+				<?php html_titleline(gettext("List of open files"));?>
 				<tr>
-			    <td>
+					<td>
 						<pre><?php
-						exec("/usr/local/bin/net -P rpc file", $rawdata);
+						exec("/usr/bin/smbstatus -L", $rawdata);
 						$rawdata = array_slice($rawdata, 4);
 						echo implode("\n", $rawdata);
 						unset($rawdata);
 						?></pre>
 					</td>
-			  </tr>
-			  <?php endif;?>
-    	</table>
-    </td>
-  </tr>
+				</tr>
+				<?php html_titleline(gettext("Active Users"));?>
+				<tr>
+					<td>
+						<pre><?php
+						exec("/usr/bin/smbstatus -u", $rawdata);
+						$rawdata = array_slice($rawdata, 4);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						?></pre>
+					</td>
+				</tr>
+				<?php endif;?>
+			</table>
+		</td>
+	</tr>
 </table>
 <?php include("fend.inc");?>
