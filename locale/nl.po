@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2009-09-05 14:45+0000\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
+"PO-Revision-Date: 2009-09-15 04:58+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -703,6 +703,12 @@ msgstr "Automatisch"
 msgid "AutoScale"
 msgstr "AutoSchaal"
 
+msgid "Automatic disk discovery"
+msgstr "Automatische schijfdetectie"
+
+msgid "Automatic disk discovery mode"
+msgstr "Automatische schijfdetectie mode"
+
 msgid "Autoselect"
 msgstr "Selecteer automatisch"
 
@@ -1271,7 +1277,7 @@ msgid "Detected"
 msgstr "Gedetecteerd"
 
 msgid "Detected RSYNC remote shares"
-msgstr "Gedetecteerde RSYNC remote delingen"
+msgstr "Gedetecteerde RSYNC remote mappen"
 
 msgid ""
 "Determine the default timeout, in microseconds, before the first packet is "
@@ -1734,6 +1740,9 @@ msgstr "Inschakelen anonieme koppeling."
 msgid "Enable authentication."
 msgstr "Inschakelen verificatie."
 
+msgid "Enable automatic disk discovery."
+msgstr "Automatische schijfdetectie inschakelen."
+
 msgid "Enable compression."
 msgstr "Inschakelen van compressie."
 
@@ -1994,7 +2003,7 @@ msgid "FTP log"
 msgstr "FTP log"
 
 msgid "FTP server disabled"
-msgstr "FTP server uitgeschakeld"
+msgstr "De FTP server is uitgeschakeld"
 
 msgid "FXP"
 msgstr "FXP"
@@ -2405,9 +2414,9 @@ msgid ""
 "IDLE state, most disks are still spinning, so this is probably not what you "
 "want."
 msgstr ""
-"Idle - Controleert de harde schijf tenzij deze zich in SLAAP, STANDBY of "
-"RUST bevindt. In de RUST mode draaien de meeste schijven nog steeds, dit is "
-"dan misschien niet helemaal wat u wilt."
+"Idle - Controleert de harde schijf tenzij deze zich in de SLEEP, STANDBY of "
+"IDLE mode bevindt. In de IDLE mode draaien de meeste schijven nog steeds, "
+"dit is dan waarschijnlijk niet wat u wilt."
 
 msgid ""
 "If default root is enabled, a chroot operation is performed immediately "
@@ -2697,6 +2706,9 @@ msgstr "Groot lees/schrijf"
 msgid "Last config change"
 msgstr "Laatste configuratiewijziging"
 
+msgid "Latvian"
+msgstr "Lets"
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2813,7 +2825,7 @@ msgid "Local share (destination)"
 msgstr "Lokaal gedeeld (bestemming)"
 
 msgid "Local shares to be synchronized"
-msgstr "Lokale deelingen die moeten worden gesynchroniseerd"
+msgstr "Lokale mappen om te worden gesynchroniseerd"
 
 msgid "Local user bandwidth"
 msgstr "Lokale gebruikers bandbreedte"
@@ -2949,6 +2961,9 @@ msgstr "Max. verb. per IP"
 msgid "Max. connections"
 msgstr "Max. Verbindingen"
 
+msgid "Max. login attempts"
+msgstr "Max. inlogpogingen"
+
 msgid "Max. passive port"
 msgstr "Max. passieve poort"
 
@@ -2972,6 +2987,11 @@ msgstr "Maximaal aantal verbindingen"
 
 msgid "Maximum idle time in seconds."
 msgstr "De maximale rusttijd in seconden."
+
+msgid "Maximum number of allowed password attempts before disconnection."
+msgstr ""
+"Maximum aantal toegestane wachtwoord pogingen voor de verbinding wordt "
+"verbroken."
 
 msgid "Maximum number of connections in each session (8 by default)."
 msgstr "Maximum aantal verbindingen in elke sessie. (standaard 8)"
@@ -3176,7 +3196,7 @@ msgid "No"
 msgstr "Nee"
 
 msgid "No RSYNC Client configured"
-msgstr "Geen RSYNC Werkstation geconfigureerd"
+msgstr "Er zijn geen RSYNC Werkstations geconfigureerd"
 
 msgid "No case folding"
 msgstr "Geen hoge/lage karakters veranderen"
@@ -3260,6 +3280,13 @@ msgstr "Niet verbonden"
 
 msgid "Note"
 msgstr "Opmerking"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
+"Opmerking! Het selecteren van 'Tijdmachine' op meerdere netwerkdelingen kan "
+"tot een onvoorspelbaar gedrag leiden op een MacOS."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3852,8 +3879,14 @@ msgstr "Verificatie vereist."
 msgid "Required"
 msgstr "Vereist"
 
+msgid "Rescan disks"
+msgstr "Herscan schijven"
+
 msgid "Rescan interval"
 msgstr "Opnieuw scannen interval"
+
+msgid "Resetting channel "
+msgstr "Resetten kanaal "
 
 msgid "Resolve"
 msgstr "Omzetten"
@@ -4310,7 +4343,7 @@ msgid ""
 "modes most disks are not spinning, so if you want to prevent a laptop disk "
 "from spinning up each poll, this is probably what you want."
 msgstr ""
-"Standby - Controleert de harde schijf, tenzij deze zich in de SLAAP of "
+"Standby - Controleert de harde schijf, tenzij deze zich in de SLEEP of "
 "STANDBY mode bevindt. In deze mode spinnen de meeste harde schijven niet, "
 "zodat u bijv. een laptop schijf kunt verhinderen bij elke poll aan te "
 "spinnen, dit is dan waarschijnlijk wat u wilt."
@@ -4390,7 +4423,7 @@ msgid "Swap"
 msgstr "Wisselbestand"
 
 msgid "Swap disabled"
-msgstr "Wisselbestand uitgeschakeld."
+msgstr "Het Wisselbestand is uitgeschakeld"
 
 msgid "Swap memory"
 msgstr "Wisselbestand"
@@ -5583,6 +5616,9 @@ msgstr "TiB"
 msgid "Time"
 msgstr "Tijd"
 
+msgid "Time Machine"
+msgstr "Tijdmachine"
+
 msgid "Time interval"
 msgstr "Tijdsinterval"
 
@@ -5774,7 +5810,7 @@ msgid "UPS"
 msgstr "UPS"
 
 msgid "UPS disabled"
-msgstr "UPS uitgeschakeld"
+msgstr "UPS is uitgeschakeld of niet aangesloten"
 
 msgid "UPS goes on battery"
 msgstr "UPS gaat over op batterij"
@@ -6201,6 +6237,9 @@ msgstr "ZFS dataset eigenschappen"
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
+
+msgid "atacontrol list failed, atacontrol not found !!"
+msgstr "atacontrol lijst mislukte, atacontrol niet gevonden!!"
 
 msgid "cachecnid"
 msgstr "cachecnid"

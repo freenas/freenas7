@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
 "PO-Revision-Date: 2009-08-21 13:28+0000\n"
 "Last-Translator: Simon Österberg <simon.osterberg@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -586,6 +586,12 @@ msgid "Auto"
 msgstr "Automatisk"
 
 msgid "AutoScale"
+msgstr ""
+
+msgid "Automatic disk discovery"
+msgstr ""
+
+msgid "Automatic disk discovery mode"
 msgstr ""
 
 msgid "Autoselect"
@@ -1585,6 +1591,9 @@ msgstr ""
 msgid "Enable authentication."
 msgstr "Aktivera autentisering."
 
+msgid "Enable automatic disk discovery."
+msgstr ""
+
 msgid "Enable compression."
 msgstr "Aktivera komprimering."
 
@@ -2500,6 +2509,9 @@ msgstr ""
 msgid "Last config change"
 msgstr "Senaste konfigurationsändring"
 
+msgid "Latvian"
+msgstr ""
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2725,6 +2737,9 @@ msgstr "Max. anslutningar per IP"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. login attempts"
+msgstr ""
+
 msgid "Max. passive port"
 msgstr ""
 
@@ -2745,6 +2760,9 @@ msgid "Maximum connections"
 msgstr "Maximalt antal anslutningar"
 
 msgid "Maximum idle time in seconds."
+msgstr ""
+
+msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
@@ -3006,6 +3024,11 @@ msgstr ""
 
 msgid "Note"
 msgstr "Observera"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3570,7 +3593,13 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
+msgid "Rescan disks"
+msgstr ""
+
 msgid "Rescan interval"
+msgstr ""
+
+msgid "Resetting channel "
 msgstr ""
 
 msgid "Resolve"
@@ -5077,6 +5106,9 @@ msgstr ""
 msgid "Time"
 msgstr "Tid"
 
+msgid "Time Machine"
+msgstr ""
+
 msgid "Time interval"
 msgstr ""
 
@@ -5618,6 +5650,9 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
+msgstr ""
+
+msgid "atacontrol list failed, atacontrol not found !!"
 msgstr ""
 
 msgid "cachecnid"

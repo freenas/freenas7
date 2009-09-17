@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
 "PO-Revision-Date: 2009-08-11 01:55+0000\n"
 "Last-Translator: MASAKI Asato <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -565,6 +565,12 @@ msgstr "オート"
 
 msgid "AutoScale"
 msgstr "オートスケール"
+
+msgid "Automatic disk discovery"
+msgstr ""
+
+msgid "Automatic disk discovery mode"
+msgstr ""
 
 msgid "Autoselect"
 msgstr "自動選択"
@@ -1555,6 +1561,9 @@ msgstr "匿名バインドを有効にします．"
 msgid "Enable authentication."
 msgstr "認証を有効にします．"
 
+msgid "Enable automatic disk discovery."
+msgstr ""
+
 msgid "Enable compression."
 msgstr "圧縮を有効化"
 
@@ -2466,6 +2475,9 @@ msgstr "Large read/write"
 msgid "Last config change"
 msgstr "最終設定変更日"
 
+msgid "Latvian"
+msgstr ""
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2691,6 +2703,9 @@ msgstr "IP 毎の最大接続数"
 msgid "Max. connections"
 msgstr "最大接続数"
 
+msgid "Max. login attempts"
+msgstr ""
+
 msgid "Max. passive port"
 msgstr ""
 
@@ -2712,6 +2727,9 @@ msgstr "最大接続数"
 
 msgid "Maximum idle time in seconds."
 msgstr "最大のアイドル時間を秒単位で指定します．"
+
+msgid "Maximum number of allowed password attempts before disconnection."
+msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
 msgstr "セッションあたりの最大接続数(初期値:8)"
@@ -2976,6 +2994,11 @@ msgstr "接続されていません"
 
 msgid "Note"
 msgstr "注意"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3542,8 +3565,14 @@ msgstr "認証を要求します．"
 msgid "Required"
 msgstr ""
 
+msgid "Rescan disks"
+msgstr ""
+
 msgid "Rescan interval"
 msgstr "再スキャンの間隔"
+
+msgid "Resetting channel "
+msgstr ""
 
 msgid "Resolve"
 msgstr "逆引き"
@@ -5091,6 +5120,9 @@ msgstr ""
 msgid "Time"
 msgstr "時間"
 
+msgid "Time Machine"
+msgstr ""
+
 msgid "Time interval"
 msgstr "インターバル"
 
@@ -5649,6 +5681,9 @@ msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
+
+msgid "atacontrol list failed, atacontrol not found !!"
+msgstr ""
 
 msgid "cachecnid"
 msgstr ""

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2009-09-06 05:41+0000\n"
-"Last-Translator: jfunez <Unknown>\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
+"PO-Revision-Date: 2009-09-13 03:49+0000\n"
+"Last-Translator: Federico Vera <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -616,6 +616,12 @@ msgstr "Automático"
 msgid "AutoScale"
 msgstr "Escala Automática"
 
+msgid "Automatic disk discovery"
+msgstr ""
+
+msgid "Automatic disk discovery mode"
+msgstr ""
+
 msgid "Autoselect"
 msgstr "Autoseleccionar"
 
@@ -755,7 +761,7 @@ msgid "Change"
 msgstr "Modificar"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr "Los cambios en esta opción serán activos después de reiniciar."
+msgstr "Los cambios en esta opción tendrán efecto después de reiniciar."
 
 msgid "Channel"
 msgstr "Canal"
@@ -1633,6 +1639,9 @@ msgstr "Permitir vínculo anónimo"
 
 msgid "Enable authentication."
 msgstr "Activar autentificación."
+
+msgid "Enable automatic disk discovery."
+msgstr ""
 
 msgid "Enable compression."
 msgstr "Habilitar compresión"
@@ -2584,6 +2593,9 @@ msgstr "Gran lectura/escritura"
 msgid "Last config change"
 msgstr "Último cambio en la configuración"
 
+msgid "Latvian"
+msgstr ""
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2818,6 +2830,9 @@ msgstr "Max. con. por IP"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. login attempts"
+msgstr ""
+
 msgid "Max. passive port"
 msgstr ""
 
@@ -2841,6 +2856,9 @@ msgstr "Máximo número de conexiones"
 
 msgid "Maximum idle time in seconds."
 msgstr "Tiempo de espera máximo en segundos"
+
+msgid "Maximum number of allowed password attempts before disconnection."
+msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
 msgstr ""
@@ -3106,6 +3124,11 @@ msgstr "Sin agregar"
 
 msgid "Note"
 msgstr "Nota"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3693,8 +3716,14 @@ msgstr "Requiere autenticación."
 msgid "Required"
 msgstr "Requerido"
 
+msgid "Rescan disks"
+msgstr ""
+
 msgid "Rescan interval"
 msgstr "Intervalo de Re-Escaneo"
+
+msgid "Resetting channel "
+msgstr ""
 
 msgid "Resolve"
 msgstr "Resolver"
@@ -5288,6 +5317,9 @@ msgstr ""
 msgid "Time"
 msgstr "Hora"
 
+msgid "Time Machine"
+msgstr ""
+
 msgid "Time interval"
 msgstr "Intervalo de tiempo"
 
@@ -5862,6 +5894,9 @@ msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
+
+msgid "atacontrol list failed, atacontrol not found !!"
+msgstr ""
 
 msgid "cachecnid"
 msgstr ""
