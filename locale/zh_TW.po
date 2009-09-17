@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
 "PO-Revision-Date: 2008-10-30 15:07+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:13+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -592,6 +592,12 @@ msgstr "自動"
 
 msgid "AutoScale"
 msgstr "自動擴展"
+
+msgid "Automatic disk discovery"
+msgstr ""
+
+msgid "Automatic disk discovery mode"
+msgstr ""
 
 msgid "Autoselect"
 msgstr ""
@@ -1580,6 +1586,9 @@ msgstr ""
 msgid "Enable authentication."
 msgstr "啟用認證。"
 
+msgid "Enable automatic disk discovery."
+msgstr ""
+
 msgid "Enable compression."
 msgstr "開啟資料壓縮。"
 
@@ -2486,6 +2495,9 @@ msgstr "大筆資料 讀／寫"
 msgid "Last config change"
 msgstr "上次設定時間"
 
+msgid "Latvian"
+msgstr ""
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2711,6 +2723,9 @@ msgstr "相同IP的連線數目"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. login attempts"
+msgstr ""
+
 msgid "Max. passive port"
 msgstr ""
 
@@ -2731,6 +2746,9 @@ msgid "Maximum connections"
 msgstr "連線數目上線"
 
 msgid "Maximum idle time in seconds."
+msgstr ""
+
+msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
@@ -2992,6 +3010,11 @@ msgstr "尚未連結"
 
 msgid "Note"
 msgstr "提示"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3554,8 +3577,14 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
+msgid "Rescan disks"
+msgstr ""
+
 msgid "Rescan interval"
 msgstr "重新掃描間隔"
+
+msgid "Resetting channel "
+msgstr ""
 
 msgid "Resolve"
 msgstr "解析"
@@ -5109,6 +5138,9 @@ msgstr ""
 msgid "Time"
 msgstr "時間"
 
+msgid "Time Machine"
+msgstr ""
+
 msgid "Time interval"
 msgstr ""
 
@@ -5651,6 +5683,9 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
+msgstr ""
+
+msgid "atacontrol list failed, atacontrol not found !!"
 msgstr ""
 
 msgid "cachecnid"

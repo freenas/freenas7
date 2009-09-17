@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas-0.7\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2009-09-05 05:30+0000\n"
-"Last-Translator: Sergei Sedov <sedov@webmail.perm.ru>\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
+"PO-Revision-Date: 2009-09-17 17:03+0000\n"
+"Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:13+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -620,6 +620,12 @@ msgstr "Авто"
 
 msgid "AutoScale"
 msgstr "Автомасштаб"
+
+msgid "Automatic disk discovery"
+msgstr "Автоматический поиск дисков"
+
+msgid "Automatic disk discovery mode"
+msgstr "Режим автоматического поиска дисков"
 
 msgid "Autoselect"
 msgstr "Автоматически"
@@ -1646,6 +1652,9 @@ msgstr "Разрешить анонимный доступ"
 msgid "Enable authentication."
 msgstr "Включить авторизацию"
 
+msgid "Enable automatic disk discovery."
+msgstr "Включить автоматический поиск дисков"
+
 msgid "Enable compression."
 msgstr "Включить сжатие"
 
@@ -2618,6 +2627,9 @@ msgstr "Чтение/запись большими блоками"
 msgid "Last config change"
 msgstr "Последнее изменение конфигурации"
 
+msgid "Latvian"
+msgstr "Латвийский"
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2868,6 +2880,9 @@ msgstr "Количество соединений с IP-адреса"
 msgid "Max. connections"
 msgstr "Максимум подключений"
 
+msgid "Max. login attempts"
+msgstr "Максимум попыток входа"
+
 msgid "Max. passive port"
 msgstr "Максимальный порт пассивного режима"
 
@@ -2889,6 +2904,9 @@ msgstr "Максимальное количество соединений"
 
 msgid "Maximum idle time in seconds."
 msgstr "Максимальное время бездействия (в секундах)."
+
+msgid "Maximum number of allowed password attempts before disconnection."
+msgstr "Максимально допустимое число попыток ввода пароля перед отключением."
 
 msgid "Maximum number of connections in each session (8 by default)."
 msgstr "Максимальное число подключений для каждой сессии (по умолчанию 8)."
@@ -3097,7 +3115,7 @@ msgid "No RSYNC Client configured"
 msgstr "Нет настроенных клиентов Rsync"
 
 msgid "No case folding"
-msgstr "Без переключения регистра"
+msgstr "Без преобразования регистра"
 
 #, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
@@ -3178,6 +3196,13 @@ msgstr "Не присоедиен"
 
 msgid "Note"
 msgstr "Примечание"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
+"Внимание! Выбор 'Time Machine' для нескольких общих ресурсов может привести "
+"к непредсказуемому поведению в MacOS."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3770,8 +3795,14 @@ msgstr "Требовать аутентификации"
 msgid "Required"
 msgstr "Требуется"
 
+msgid "Rescan disks"
+msgstr "Обновить список дисков"
+
 msgid "Rescan interval"
 msgstr "Интервал обновления"
+
+msgid "Resetting channel "
+msgstr "Сброс канала "
 
 msgid "Resolve"
 msgstr "Преобразование"
@@ -5486,6 +5517,9 @@ msgstr "ТБ"
 msgid "Time"
 msgstr "Время"
 
+msgid "Time Machine"
+msgstr "Time Machine"
+
 msgid "Time interval"
 msgstr "Временной интервал"
 
@@ -6097,6 +6131,9 @@ msgstr "Свойства dataset'ов ZFS"
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
+
+msgid "atacontrol list failed, atacontrol not found !!"
+msgstr "список atacontrol поврежден, atacontrol не найден!"
 
 msgid "cachecnid"
 msgstr "cachecnid"

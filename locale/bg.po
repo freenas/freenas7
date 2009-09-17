@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-15 23:09+0000\n"
-"PO-Revision-Date: 2008-05-04 10:06+0000\n"
-"Last-Translator: Emil Pavlov <emil.p.pavlov@gmail.com>\n"
+"POT-Creation-Date: 2009-09-15 02:04+0000\n"
+"PO-Revision-Date: 2009-09-16 16:10+0000\n"
+"Last-Translator: Alex Stanev <alex@stanev.org>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-07 18:12+0000\n"
+"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -25,7 +25,7 @@ msgstr " беше зададен на "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr ""
+msgstr "%d%% от %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -37,7 +37,7 @@ msgstr "%s интерфейс"
 
 #, php-format
 msgid "%s is too long."
-msgstr ""
+msgstr "%s е твърде голямо."
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -49,7 +49,7 @@ msgstr "%s от %sБ"
 
 #, php-format
 msgid "%s on %s"
-msgstr ""
+msgstr "%s на %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -57,7 +57,7 @@ msgstr "%s ще се рестартира след възстановяване�
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
-msgstr ""
+msgstr "%s%d %s вече се използва от %s%d."
 
 #, c-format, php-format
 msgid "%sB available of %sB"
@@ -79,10 +79,10 @@ msgid ""
 msgstr ""
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
-msgstr ""
+msgstr "802.1Q VLAN етикет (между 1 и 4094)."
 
 msgid "<->"
-msgstr ""
+msgstr "<->"
 
 #, php-format
 msgid ""
@@ -556,6 +556,12 @@ msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoScale"
+
+msgid "Automatic disk discovery"
+msgstr ""
+
+msgid "Automatic disk discovery mode"
+msgstr ""
 
 msgid "Autoselect"
 msgstr ""
@@ -1544,6 +1550,9 @@ msgstr ""
 msgid "Enable authentication."
 msgstr ""
 
+msgid "Enable automatic disk discovery."
+msgstr ""
+
 msgid "Enable compression."
 msgstr ""
 
@@ -2449,6 +2458,9 @@ msgstr "Large read/write"
 msgid "Last config change"
 msgstr "Последна конфигурационна промяна"
 
+msgid "Latvian"
+msgstr ""
+
 #, php-format
 msgid ""
 "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
@@ -2674,6 +2686,9 @@ msgstr "максимум конекции към IP"
 msgid "Max. connections"
 msgstr ""
 
+msgid "Max. login attempts"
+msgstr ""
+
 msgid "Max. passive port"
 msgstr ""
 
@@ -2694,6 +2709,9 @@ msgid "Maximum connections"
 msgstr "максимален брой връзки"
 
 msgid "Maximum idle time in seconds."
+msgstr ""
+
+msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
 msgid "Maximum number of connections in each session (8 by default)."
@@ -2956,6 +2974,11 @@ msgstr "не е закачен"
 
 msgid "Note"
 msgstr "Забележка"
+
+msgid ""
+"Note! Selecting 'Time Machine' on multiple shares will may cause "
+"unpredictable behavior in MacOS."
+msgstr ""
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
@@ -3522,7 +3545,13 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
+msgid "Rescan disks"
+msgstr ""
+
 msgid "Rescan interval"
+msgstr ""
+
+msgid "Resetting channel "
 msgstr ""
 
 msgid "Resolve"
@@ -5049,6 +5078,9 @@ msgstr ""
 msgid "Time"
 msgstr "Час"
 
+msgid "Time Machine"
+msgstr ""
+
 msgid "Time interval"
 msgstr ""
 
@@ -5592,6 +5624,9 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
+msgstr ""
+
+msgid "atacontrol list failed, atacontrol not found !!"
 msgstr ""
 
 msgid "cachecnid"
