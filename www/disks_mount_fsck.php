@@ -51,15 +51,15 @@ if ($_POST) {
 	unset($errormsg);
 	unset($do_action);
 
-	/* input validation */
+	// Input validation
 	$reqdfields = explode(" ", "disk");
 	$reqdfieldsn = array(gettext("Disk"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if(!$input_errors) {
+	if (!$input_errors) {
 		$do_action = true;
 		$disk = $_POST['disk'];
-		$umount = $_POST['umount'];
+		$umount = $_POST['umount'] ? true : false;
 	}
 }
 
