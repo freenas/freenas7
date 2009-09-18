@@ -1,12 +1,13 @@
 PORTNAME=			fuppes
-PORTVERSION=	0.640
-PORTEPOCH=		1
+PORTVERSION=	0.7.2.3
+PORTEPOCH=		2
 CATEGORIES=		net
 COMMENT=			Free UPnP Entertainment Service
 MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	${PORTNAME}
+DISTNAME=						${PORTNAME}-SVN-578
 
 LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									tag:${PORTSDIR}/audio/taglib \
@@ -21,52 +22,23 @@ USE_AUTOTOOLS=		autoconf:262
 USE_GNOME=				libxml2
 USE_ICONV=				yes
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--enable-largefile \
-									--enable-faad \
-									--enable-twolame \
-									--enable-mp4v2 \
-									--enable-taglib \
-									--enable-lame \
-									--enable-vorbis \
-									--enable-musepack \
-									--enable-flac \
-									--enable-dlna \
-									--disable-exiv2
-
+CONFIGURE_ARGS+=	--disable-libnotify \
+									--disable-imagemagick \
+									--enable-transcoding \
+									--enable-video-transcoding \
+									--enable-largefile
 CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include -I${LOCALBASE}/include/ffmpeg ${PTHREAD_CFLAGS}" \
 									LIBS="-L${LOCALBASE}/lib ${PTHREAD_LIBS}"
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|-ldl ||' ${WRKSRC}/configure.in
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/${PORTNAME}d ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/libfuppes.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
-	@${INSTALL_DATA} -v ${WRKSRC}/src/lib/Presentation/fuppes-small.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
-	@${INSTALL_DATA} -v ${WRKSRC}/src/lib/Presentation/header-gradient.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
-	@${INSTALL_DATA} -v ${WRKSRC}/src/lib/Presentation/header-gradient-small.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
-	@${INSTALL_DATA} -v ${WRKSRC}/src/lib/Presentation/style.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 	@${INSTALL_DATA} -v ${FILESDIR}/vfolder.cfg ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
-
-	# Install plugins
-	@${MKDIR} -v ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libtranscoder_ffmpeg.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libtranscoder_ffmpeg.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libmetadata_taglib.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libmetadata_taglib.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libmetadata_libavformat.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libmetadata_libavformat.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libmetadata_dlna_profiles.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libmetadata_dlna_profiles.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libencoder_pcm.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libencoder_pcm.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libdecoder_vorbis.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libdecoder_vorbis.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libdecoder_flac.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libdecoder_flac.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libdatabase_sqlite3.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libdatabase_sqlite3.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libcore_presentation.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libcore_presentation.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 
 	# Copy additional libraries that are linked dynamically. These can not be
 	# covered by ldd when building userland via make.sh.
@@ -77,7 +49,7 @@ do-install:
 	@${CP} -Rpv /usr/local/lib/libmp3lame.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libmp3lame.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libogg.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libogg.so.* ${FREENAS_ROOTFS}/usr/local/lib
+	@${CP} -Rpv /usr/local/lib/libogg.so.5 ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libsndfile.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libsndfile.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libtwolame.so ${FREENAS_ROOTFS}/usr/local/lib
