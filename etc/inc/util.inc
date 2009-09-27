@@ -466,7 +466,7 @@ function get_mounts_list()
 
 	foreach ($rawdata as $line) {
 		// e.g.: /dev/ad8p1 on /mnt/xyz (ufs, local, soft-updates, acls, fsid 66ad394809fce81b)
-		if (0 == preg_match("/^(\S+) on (\S+).+fsid (\S+).+/", $line, $aline))
+		if (0 == preg_match("/^(\S+) on ([\w\d\s.\/]+).+fsid (\S+).+/", $line, $aline))
 			continue;
 
 		// Get device path
