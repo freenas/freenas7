@@ -1,5 +1,5 @@
 ARCH!=		/usr/bin/uname -p
-ARCHIVE=	aac6x-${ARCH}.tgz
+ARCHIVE=	aac7x-${ARCH}.tgz
 SRCDIR=		${FREENAS_WORKINGDIR}/aac
 
 install:	clean
