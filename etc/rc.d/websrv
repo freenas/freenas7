@@ -55,6 +55,7 @@ websrv_mkconf()
 			-o "server.dir-listing = &quot;enable&quot;" -n \
 			-o "dir-listing.activate = &quot;enable&quot;" -n \
 			-o "dir-listing.hide-dotfiles = &quot;enable&quot;" -n \
+			-o "dir-listing.encoding = &quot;utf-8&quot;" -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${websrv_conf}
 
