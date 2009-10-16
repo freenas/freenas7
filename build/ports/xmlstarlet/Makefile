@@ -4,8 +4,7 @@ CATEGORIES=		textproc
 COMMENT=			Command line XML toolkit
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				${MASTER_SITE_SOURCEFORGE_EXTENDED}
-MASTER_SITE_SUBDIR=	xmlstar
+MASTER_SITES=	SF/xmlstar/${PORTNAME}/${PORTVERSION}
 
 USE_GNOME=			libxslt
 USE_ICONV=			yes

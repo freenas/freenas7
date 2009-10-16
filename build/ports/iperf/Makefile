@@ -4,8 +4,7 @@ CATEGORIES=		benchmarks ipv6
 COMMENT=			A tool to measure maximum TCP and UDP bandwidth
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
-MASTER_SITE_SUBDIR=	${PORTNAME}
+MASTER_SITES=			SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}%20source
 
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--enable-ipv6 \

@@ -1,16 +1,15 @@
 PORTNAME=			smartmontools
 PORTVERSION=	5.38
 CATEGORIES=		sysutils
-COMMENT=	S.M.A.R.T. disk monitoring tools
+COMMENT=			S.M.A.R.T. disk monitoring tools
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
-MASTER_SITE_SUBDIR=	${PORTNAME}
+MASTER_SITES=		SF
 
-USE_GMAKE=				yes
-GNU_CONFIGURE=		yes
+USE_GMAKE=			yes
+GNU_CONFIGURE=	yes
 
-CFLAGS:=					${CFLAGS:S/-O2/-O/}
+CFLAGS:=				${CFLAGS:S/-O2/-O/}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| install-initdDATA | |' ${WRKSRC}/Makefile.in

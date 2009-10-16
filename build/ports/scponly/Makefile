@@ -4,9 +4,8 @@ CATEGORIES=		shells security
 COMMENT=			A tiny shell that only permits scp and sftp
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				http://www.sublimation.org/scponly/ \
-										${MASTER_SITE_SOURCEFORGE}
-MASTER_SITE_SUBDIR=	scponly
+MASTER_SITES=	http://www.sublimation.org/scponly/ \
+							SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
 EXTRACT_SUFX=		.tgz
 GNU_CONFIGURE=	yes

@@ -5,9 +5,8 @@ CATEGORIES=		net
 COMMENT=			Free UPnP Entertainment Service
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
-MASTER_SITE_SUBDIR=	${PORTNAME}
-DISTNAME=						${PORTNAME}-SVN-578
+MASTER_SITES=			SF/${PORTNAME}/${PORTNAME}/SVN-578
+DISTNAME=					${PORTNAME}-SVN-578
 
 LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									tag:${PORTSDIR}/audio/taglib \
