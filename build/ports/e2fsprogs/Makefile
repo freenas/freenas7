@@ -5,8 +5,7 @@ CATEGORIES=		sysutils
 COMMENT=			Utilities & library to manipulate ext2/3/4 filesystems
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=	${MASTER_SITE_SOURCEFORGE_EXTENDED}
-MASTER_SITE_SUBDIR=	${PORTNAME}
+MASTER_SITES=			SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}
 
 PATCH_STRIP=			-p1
 USE_GMAKE=				yes

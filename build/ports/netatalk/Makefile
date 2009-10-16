@@ -6,8 +6,7 @@ CATEGORIES=		net
 COMMENT=			File and print server for AppleTalk networks
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
-MASTER_SITE_SUBDIR=	netatalk
+MASTER_SITES=			SF
 
 USE_AUTOTOOLS=		libtool:22
 GNU_CONFIGURE=		yes
