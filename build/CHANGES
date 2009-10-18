@@ -24,6 +24,7 @@ Majors changes:
 - Upgrade e2fsprogs to 1.41.8.
 - Add Adaptec AACRAID 32/64-bit driver to v5.2.0 Build 17517.
 - Upgrade inadyn-mt to 02.14.06.
+- Upgrade fuppes to SVN-0.640.
 
 Minors changes:
 - Set transmission umask to 0002 per default. This can be customize via the
