@@ -120,7 +120,8 @@ function diskmanagement_process_updatenotification($mode, $data) {
 					<tr>
 						<td width="5%" class="listhdrlr"><?=gettext("Disk"); ?></td>
 						<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
-						<td width="50%" class="listhdrr"><?=gettext("Description"); ?></td>
+						<td width="40%" class="listhdrr"><?=gettext("Description"); ?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Serial number"); ?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
 						<td width="10%" class="listhdrr"><?=gettext("File system"); ?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
@@ -148,6 +149,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+						<td class="listr"><?=system_get_volume_serial($disk['devicespecialfile']);?>&nbsp;</td>
 						<td class="listr"><?php if ($disk['harddiskstandby']) { echo $disk['harddiskstandby']; } else { echo gettext("Always on"); }?>&nbsp;</td>
 						<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>
 						<td class="listbg"><?=$status;?>&nbsp;</td>
@@ -164,7 +166,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 					</tr>
 					<?php endforeach;?>
 					<tr>
-						<td class="list" colspan="6"></td>
+						<td class="list" colspan="7"></td>
 						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0"></a></td>
 					</tr>
 				</table>

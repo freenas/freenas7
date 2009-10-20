@@ -354,6 +354,18 @@ function system_get_device_temp($device) {
 }
 
 /**
+ * Get volume serial number.
+ * @param[in] device	The device name, e.g. /dev/ad1
+ * @return The disk device serial number.
+ */
+function system_get_volume_serial($devicefile) {
+	mwexec2("smartctl -i {$devicefile} | grep 'Serial Number'", $rawdata);
+	if (1 !== preg_match("/^Serial Number:\s+(.+)$/", $rawdata[0], $matches))
+		return gettext("n/a");
+	return $matches[1];
+}
+
+/**
  * Get mount point usage information.
  * @return An array containg the requested informations:
  * @code
