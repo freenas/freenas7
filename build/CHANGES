@@ -78,6 +78,7 @@ Minors changes:
 - Get AFP dbd cnid scheme working (BR 2844900).
 - Set 'dir-listing.encoding = "utf-8"' for the webserver directory listing
   (FR 2872624).
+- Display volume serial number in 'Disks|Management' (FR 2881880).
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
