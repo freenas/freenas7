@@ -79,6 +79,8 @@ Minors changes:
 - Set 'dir-listing.encoding = "utf-8"' for the webserver directory listing
   (FR 2872624).
 - Display volume serial number in 'Disks|Management' (FR 2881880).
+- Now it is possible to configure iSCSI-Targets for export: removable media
+  (static & dynamic size), pass-through devices. Thanks to Vasily Chalykh.
 
 Bug fixes:
 - Prohibit user 'transmission' to login via FTP.
