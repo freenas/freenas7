@@ -138,27 +138,34 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['inqrevision'] = $a_iscsitarget_target[$cnid]['inqrevision'];
 	$pconfig['inqserial'] = $a_iscsitarget_target[$cnid]['inqserial'];
 
-	/*
-	if (!isset($pconfig['storage']))
-		$pconfig['storage'] = $pconfig['lunmap'][0]['extentname'];
-	*/
+	if (!isset($pconfig['type'])){
+		$pconfig['type'] = "Disk";
+	}
+	if (!isset($pconfig['queuedepth'])){
+		$pconfig['queuedepth'] = 0;
+	}
+	$type = $pconfig['type'];
+	if ($type == "Disk"){
+		$stype = "Storage";
+	}elseif ($type == "Pass"){
+		$stype = "Device";
+	}else{
+		$stype = "Removable";
+	}
 	if (!is_array($pconfig['lunmap'])) {
 		$pconfig['lunmap'] = array();
 		$pconfig['lunmap'][0]['lun'] = "0";
-		$pconfig['lunmap'][0]['type'] = "Storage";
+		$pconfig['lunmap'][0]['type'] = "$stype";
 		$pconfig['lunmap'][0]['extentname'] = $pconfig['storage'];
 		for ($i = 1; $i < $MAX_LUNS; $i++) {
 			$pconfig['lunmap'][$i]['lun'] = "$i";
-			$pconfig['lunmap'][$i]['type'] = "Storage";
+			$pconfig['lunmap'][$i]['type'] = "$stype";
 			$pconfig['lunmap'][$i]['extentname'] = "-";
 		}
 	}
-	if (!isset($pconfig['type']))
-		$pconfig['type'] = "Disk";
-	if (!isset($pconfig['queuedepth']))
-		$pconfig['queuedepth'] = 0;
 } else {
 	$type = "Disk";
+	$stype = "Storage";
 	// Find next unused ID.
 	$targetid = 0;
 	$a_id = array();
@@ -176,7 +183,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['name'] = strtolower($type)."$targetid";
 	$pconfig['alias'] = "";
 	$pconfig['type'] = "$type";
-	$pconfig['flags'] = "rw";
+	$pconfig['flags'] = "ro";
 	$pconfig['comment'] = "";
 	$pconfig['storage'] = "";
 	$pconfig['pgigmap'] = array();
@@ -186,11 +193,11 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['agmap'][0]['agtag'] = 0;
 	$pconfig['lunmap'] = array();
 	$pconfig['lunmap'][0]['lun'] = "0";
-	$pconfig['lunmap'][0]['type'] = "Storage";
+	$pconfig['lunmap'][0]['type'] = "$stype";
 	$pconfig['lunmap'][0]['extentname'] = "";
 	for ($i = 1; $i < $MAX_LUNS; $i++) {
 		$pconfig['lunmap'][$i]['lun'] = "$i";
-		$pconfig['lunmap'][$i]['type'] = "Storage";
+		$pconfig['lunmap'][$i]['type'] = "$stype";
 		$pconfig['lunmap'][$i]['extentname'] = "-";
 	}
 	$pconfig['authmethod'] = "Auto";
@@ -211,7 +218,15 @@ if ($_POST) {
 		header("Location: services_iscsitarget_target.php");
 		exit;
 	}
-
+	$type = $_POST['type'];
+	if ($type == "Disk"){
+		$stype = "Storage";
+	}elseif ($type == "Pass"){
+		$stype = "Device";
+	}else{
+		$stype = "Removable";
+	}
+	
 	$tgtname = $_POST['name'];
 	$tgtname = preg_replace('/\s/', '', $tgtname);
 	$pconfig['name'] = $tgtname;
@@ -224,13 +239,13 @@ if ($_POST) {
 	$pconfig['agmap'] = $agmap;
 	$lunmap = array();
 	$lunmap[0]['lun'] = "0";
-	$lunmap[0]['type'] = "Storage";
+	$lunmap[0]['type'] = "$stype";
 	$lunmap[0]['extentname'] = $_POST['storage'];
 	for ($i = 1; $i < $MAX_LUNS; $i++) {
 		if ($_POST['enable'.$i]
 			&& $_POST['storage'.$i] !== "-") {
 			$lunmap[$i]['lun'] = "$i";
-			$lunmap[$i]['type'] = "Storage";
+			$lunmap[$i]['type'] = "$stype";
 			$lunmap[$i]['extentname'] = $_POST['storage'.$i];
 		}
 	}
@@ -323,6 +338,9 @@ if ($_POST) {
 		$iscsitarget_target['type'] = $_POST['type'];
 		$iscsitarget_target['flags'] = $_POST['flags'];
 		$iscsitarget_target['comment'] = $_POST['comment'];
+
+		//$iscsitarget_target['storage'] = $_POST['storage'];
+
 		$iscsitarget_target['authmethod'] = $_POST['authmethod'];
 		$iscsitarget_target['digest'] = $_POST['digest'];
 		$iscsitarget_target['queuedepth'] = $queuedepth;
@@ -330,6 +348,7 @@ if ($_POST) {
 		$iscsitarget_target['inqproduct'] = $_POST['inqproduct'];
 		$iscsitarget_target['inqrevision'] = $_POST['inqrevision'];
 		$iscsitarget_target['inqserial'] = $_POST['inqserial'];
+
 		$iscsitarget_target['pgigmap'] = $pgigmap;
 		$iscsitarget_target['agmap'] = $agmap;
 		$iscsitarget_target['lunmap'] = $lunmap;
@@ -379,6 +398,7 @@ function lun_change(idx) {
       </ul>
     </td>
   </tr>
+
   <tr>
     <td class="tabcont">
       <?php if ($errormsg) print_error_box($errormsg);?>
@@ -386,8 +406,8 @@ function lun_change(idx) {
       <table width="100%" border="0" cellpadding="6" cellspacing="0">
       <?php html_inputbox("name", gettext("Target Name"), $pconfig['name'], gettext("Base Name will be appended automatically when starting without 'iqn.'."), true, 60, false);?>
       <?php html_inputbox("alias", gettext("Target Alias"), $pconfig['alias'], gettext("Optional user-friendly string of the target."), false, 60, false);?>
-      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk")), gettext("Logical Unit Type mapped to LUN."), true);?>
-      <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => gettext("Read/Write (rw)"), "ro" => gettext("Read Only (ro)")), "", true);?>
+      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk"),"DVD" => gettext("DVD"),"Tape" => gettext("Tape"),"Pass" => gettext("Device Pass-through")), gettext("Logical Unit Type mapped to LUN."), true);?>
+      <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => gettext("Read/Write (rw)"),"rw,dynamic" => gettext("Read/Write (rw,dynamic) for Removable types file size grow and shrink automatically by EOF (ignore specified size)"),"rw,extend" => gettext("Read/Write (rw,extend) for Removable types extend file size if EOM reached"), "ro" => gettext("Read Only (ro)")), "", true);?>
       <?php
 		$pg_list = array();
 		//$pg_list['0'] = gettext("None");

@@ -35,6 +35,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+
+/*
+TODO: 	1) Script to creat file based extend in existing(mounted) File System e.g.(/mnt/$mountpoint/.../$filename) 
+		with automaticaly formatting in necessary structure ( e.g. http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-virtual.html). 
+		2) Insert changes to GUI for script.
+		3) row 196.
+*/
 require("auth.inc");
 require("guiconfig.inc");
 
@@ -90,9 +97,17 @@ if ($_POST) {
 	}
 
 	// Input validation.
-	$reqdfields = explode(" ", "name path size");
-	$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("File size"));
-	$reqdfieldst = explode(" ", "string string numericint");
+	if ($pconfig['sizeunit'] == 'auto'){
+		$pconfig['size'] = "";
+		$_POST['size'] = "";
+		$reqdfields = explode(" ", "name path sizeunit");
+		$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("Auto size"));
+		$reqdfieldst = explode(" ", "string string string");
+	}else{
+		$reqdfields = explode(" ", "name path size sizeunit");
+		$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("File size"), gettext("File sizeunit"));
+		$reqdfieldst = explode(" ", "string string numericint string");
+	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -174,15 +189,17 @@ if ($_POST) {
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
 	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true);?>
-	      <?php html_filechooser("path", gettext("Path"), $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
+	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 	      <tr>
 	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
 	        <td width="78%" class="vtable">
 	          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>">
-	          <select name="sizeunit">
+<!-- TODO: GUI onselect: if $sizeunit='auto' {blocking $size input window}else{unblocking $size input window}  -->
+	          <select name="sizeunit"> 
 	            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MiB"));?></option>
 	            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GiB"));?></option>
 	            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TiB"));?></option>
+	            <option value="auto" <?php if ($pconfig['sizeunit'] === "auto") echo "selected";?>><?=htmlspecialchars(gettext("auto"));?></option>
 	          </select><br/>
 	          <span class="vexpl"><?=gettext("Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)");?></span>
 	        </td>

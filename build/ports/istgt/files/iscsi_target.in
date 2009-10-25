@@ -31,7 +31,8 @@ istgt_ctlfile="/var/etc/iscsi/istgtcontrol.conf"
 istgt_pidfile="/var/run/istgt.pid"
 pidfile="${istgt_pidfile}"
 command="/usr/local/bin/istgt"
-command_args="-c ${istgt_config}"
+command_args="-c ${istgt_config} -t all"
+flag=""
 
 istgt_mkconf()
 {
@@ -256,7 +257,7 @@ istgt_mkconf()
 		-o "# LogicalUnit section" -n \
 		-i "count(//iscsitarget/nodebase) != 0" \
 			-i "count(//iscsitarget/target/lunmap) != 0" \
-				-m "//iscsitarget/target[lunmap/extentname=//iscsitarget/extent/name or storage=//iscsitarget/extent/name]" \
+				-m "//iscsitarget/target[lunmap/extentname=//iscsitarget/extent/name]" \
 					-s "A:T:U" "name" \
 					-v "concat('[LogicalUnit',position(),']')" -n \
 					-i "count(lunmap) != 0" \
@@ -282,57 +283,27 @@ istgt_mkconf()
 						-v "concat('  UseDigest ',digest)" -n \
 						-i "flags[.='ro']" -o "  ReadOnly Yes" -n -b \
 						-i "flags[.='rw']" -o "  ReadOnly No" -n -b \
+						-i "flags[.='rw,dynamic']" -o "  ReadOnly No" -n -b \
+						-i "flags[.='rw,extend']" -o "  ReadOnly No" -n -b \
 						-v "concat('  UnitType ',type)" -n \
+						-v "concat('  UnitOnline ','Yes')" -n \
 						-v "concat('  QueueDepth ',queuedepth)" -n \
 						-i "string-length(inqvendor) != 0 or string-length(inqproduct) != 0 or string-length(inqrevision) != 0 or string-length(inqserial) != 0" \
 							-v "concat('  UnitInquiry &quot;',inqvendor,'&quot;',' ','&quot;',inqproduct,'&quot;',' ','&quot;',inqrevision,'&quot;',' ', '&quot;',inqserial,'&quot;')" -n \
 						-b \
 						-m "lunmap" \
-							-v "concat('  LUN',lun,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+							-i "type = 'Storage' or type = 'Removable'" \
+								-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+							-b \
+							-i "type = 'Device'" \
+								-v "concat('  LUN',lun,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path)" -n \
+							-b \
 						-b \
-					-b \
-					-i "count(lunmap) = 0" \
-						-v "concat('  TargetName &quot;',name,'&quot;')" -n \
-						-v "concat('  #TargetAlias &quot;','','&quot;')" -n \
-						-v "concat('  Mapping ','PortalGroup','1',' ','InitiatorGroup','1')" -n \
-						-v "concat('  AuthMethod ','Auto')" -n \
-						-v "concat('  AuthGroup ','None')" -n \
-						-v "concat('  UseDigest ','Auto')" -n \
-						-i "flags[.='ro']" -o "  ReadOnly Yes" -n -b \
-						-i "flags[.='rw']" -o "  ReadOnly No" -n -b \
-						-o "  UnitType Disk" -n \
-						-v "concat('  QueueDepth ','0')" -n \
-						-m "storage" \
-						-v "concat('  LUN',position()-1,' ','Storage',' ',//iscsitarget/extent[name=current()]/path,' ',//iscsitarget/extent[name=current()]/size,'MB')" -n \
-					-b \
+					-b -n \
 				-b \
 				-n \
 			-b \
 		-b \
-		-b \
-		-i "count(//iscsitarget/nodebase) = 0" \
-			-m "//iscsitarget/target[storage=//iscsitarget/extent/name]" \
-				-v "concat('[LogicalUnit',position(),']')" -n \
-					-i "not(starts-with(name,'iqn.'))" \
-						-v "concat('  TargetName &quot;','${NETBSD_ISCSI_IQN}',':',name,'&quot;')" -n \
-					-b \
-					-i "starts-with(name, 'iqn.')" \
-						-v "concat('  TargetName &quot;',name,'&quot;')" -n \
-					-b \
-					-v "concat('  #TargetAlias &quot;','','&quot;')" -n \
-					-v "concat('  Mapping ','PortalGroup','${DEFAULT_PG}',' ','InitiatorGroup',position())" -n \
-				-v "concat('  AuthMethod ','Auto')" -n \
-				-v "concat('  AuthGroup ','AuthGroup',position())" -n \
-				-v "concat('  UseDigest ','Auto')" -n \
-				-i "flags[.='ro']" -o "  ReadOnly Yes" -n -b \
-				-i "flags[.='rw']" -o "  ReadOnly No" -n -b \
-				-o "  UnitType Disk" -n \
-				-v "concat('  QueueDepth ','0')" -n \
-				-m "storage" \
-					-v "concat('  LUN',position()-1,' ','Storage',' ',//iscsitarget/extent[name=current()]/path,' ',//iscsitarget/extent[name=current()]/size,'MB')" -n \
-				-b \
-				-n \
-			-b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${istgt_config}
 }
