@@ -150,7 +150,7 @@ To use the DATA partition:
 - Add the disk {$harddrive} on the 'Disks|Management' page.
 - Add the mount point on the 'Disks|Mount Point|Management' page.
   Use the following parameters:
-  Disk {$harddrive}, Partition 2, Filesystem UFS
+  Disk {$harddrive}, Partition 2, Partition type MBR, Filesystem UFS
 
 EOD;
 
