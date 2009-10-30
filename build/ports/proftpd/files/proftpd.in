@@ -82,6 +82,7 @@ proftpd_mkconf()
 	[ ! -e "${proftpd_delaytable}" ] && cat /dev/null > "${proftpd_delaytable}"
 	[ ! -e "${proftpd_tcpaccessfilesallow}" ] && cat /dev/null > "${proftpd_tcpaccessfilesallow}"
 	[ ! -e "${proftpd_tcpaccessfilesdeny}" ] && cat /dev/null > "${proftpd_tcpaccessfilesdeny}"
+	[ ! -e "/var/log/wtmp" ] && touch /var/log/wtmp && chmod 644 /var/log/wtmp
 
 	# Create welcome message file
 	_welcomemsg=`configxml_get "//ftpd/banner"`
