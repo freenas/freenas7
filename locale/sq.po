@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-07-05 19:30+0000\n"
+"PO-Revision-Date: 2009-10-10 18:48+0000\n"
 "Last-Translator: Sir.Punisher <eris@shytaj.tk>\n"
 "Language-Team: Albanian <sq@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
+"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -25,7 +25,7 @@ msgstr " eshte caktuar "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr ""
+msgstr "%d%% of %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -309,7 +309,7 @@ msgid "Add command"
 msgstr "Shto nje komande"
 
 msgid "Add dataset"
-msgstr ""
+msgstr "Shto dataset"
 
 msgid "Add device"
 msgstr "Shto paisje"
@@ -345,7 +345,7 @@ msgid "Add option"
 msgstr "Shto nje opcion"
 
 msgid "Add pool"
-msgstr ""
+msgstr "Shto pool"
 
 msgid "Add portal group"
 msgstr ""
@@ -378,7 +378,7 @@ msgid "Administration password"
 msgstr "Fjalekalimi i administrimit"
 
 msgid "Administrative WebGUI"
-msgstr ""
+msgstr "WebGUI-ja e administrimit"
 
 msgid "Administrator name"
 msgstr "Emri i administratorit"
@@ -610,10 +610,10 @@ msgid "AutoScale"
 msgstr "Shkallezim automatik"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "Zbulim automatik per diskun"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "Modalitet automatik per zbulimin e diskut"
 
 msgid "Autoselect"
 msgstr "Autoselect"
@@ -665,13 +665,13 @@ msgid "BitTorrent"
 msgstr "BitTorrent"
 
 msgid "Blank time"
-msgstr ""
+msgstr "Ler kohen bosh"
 
 msgid "Browseable"
 msgstr "I Eksplorushem"
 
 msgid "Built on"
-msgstr ""
+msgstr "i perfshire"
 
 msgid "Bulgarian"
 msgstr "Bullgarisht"
@@ -726,7 +726,7 @@ msgid "Cancel"
 msgstr "Fshij"
 
 msgid "Canmount"
-msgstr ""
+msgstr "Nuk mund te montohet"
 
 msgid "Cannot get data about interface"
 msgstr "Nuk mund te merren te dhenat nga nderfaqja"
@@ -817,13 +817,13 @@ msgid "Command output:"
 msgstr "Komande ne dalje:"
 
 msgid "Command scripts"
-msgstr ""
+msgstr "Komanda per scripts"
 
 msgid "Comment"
 msgstr "Koment"
 
 msgid "Common Internet File System"
-msgstr ""
+msgstr "Skedari i Sistemit te internetit te perbashket"
 
 msgid "Community"
 msgstr "Komunitet"
@@ -974,7 +974,7 @@ msgid "Danish"
 msgstr "Danezshe"
 
 msgid "Data digest"
-msgstr ""
+msgstr "Data digest"
 
 msgid "Data integrity"
 msgstr "Integriteti i te dhenave"
@@ -983,10 +983,10 @@ msgid "Database directory"
 msgstr "Drejtoria e database"
 
 msgid "Dataset"
-msgstr ""
+msgstr "Dataset"
 
 msgid "Datasets"
-msgstr ""
+msgstr "Datasets"
 
 msgid "Date & Time"
 msgstr "Data & Ora"
@@ -1062,7 +1062,7 @@ msgid "Delete command"
 msgstr "Fshij komanden"
 
 msgid "Delete dataset"
-msgstr ""
+msgstr "Fshij dataset"
 
 msgid "Delete device"
 msgstr "Fhij paisjen"
@@ -1101,10 +1101,10 @@ msgid "Delete option"
 msgstr "Fshij opcionin"
 
 msgid "Delete pool"
-msgstr ""
+msgstr "Fshij pool"
 
 msgid "Delete portal group"
-msgstr ""
+msgstr "Fshij grupin e portalit"
 
 msgid "Delete rule"
 msgstr "Fshij rregullin"
@@ -1187,7 +1187,7 @@ msgid "Device name"
 msgstr "Emri i paisjes"
 
 msgid "Device polling"
-msgstr ""
+msgstr "Device polling"
 
 msgid ""
 "Device polling is a technique that lets the system periodically poll network "
@@ -1307,10 +1307,10 @@ msgid "Do you really want to delete this command?"
 msgstr "Doni te fshini me te vertete kete komande?"
 
 msgid "Do you really want to delete this cron job?"
-msgstr ""
+msgstr "Me te vertete deshironi ta fshini kete pune cronologjie?"
 
 msgid "Do you really want to delete this dataset?"
-msgstr ""
+msgstr "Me te vertete deshironi ta fshini kete dataset?"
 
 msgid "Do you really want to delete this device?"
 msgstr "Doni te fshini me te vertete kete paisje?"
@@ -1358,10 +1358,10 @@ msgid "Do you really want to delete this option?"
 msgstr "Doni te fshini me te vertete kete opcion?"
 
 msgid "Do you really want to delete this pool?"
-msgstr ""
+msgstr "Me te vertete deshironi ta fshini kete pool?"
 
 msgid "Do you really want to delete this portal group?"
-msgstr ""
+msgstr "Me te vertete deshironi ta fshini kete grup portali?"
 
 msgid "Do you really want to delete this route?"
 msgstr "Me te vertete doni te fshini kete rruge?"
@@ -1450,10 +1450,10 @@ msgid "Done."
 msgstr "E bere."
 
 msgid "Dos charset"
-msgstr ""
+msgstr "Dos charset"
 
 msgid "Double-parity RAID-5"
-msgstr ""
+msgstr "Double-parity RAID-5"
 
 msgid "Download"
 msgstr "Shkarko"
@@ -1489,7 +1489,7 @@ msgid "Dynamic DNS"
 msgstr "DNS dinamik"
 
 msgid "EA support"
-msgstr ""
+msgstr "Ndihme per EA"
 
 msgid "EFI/GPT partition can be use with UFS only."
 msgstr "Particionet EFI/GPT  mund te perdoren vetem me UFS."
@@ -1522,7 +1522,7 @@ msgid "Edit command"
 msgstr "Modifiko komanden"
 
 msgid "Edit dataset"
-msgstr ""
+msgstr "Modifiko kete dataset"
 
 msgid "Edit device"
 msgstr "Modifiko paisjen"
@@ -1558,10 +1558,10 @@ msgid "Edit option"
 msgstr "Modifiko opcionin"
 
 msgid "Edit pool"
-msgstr ""
+msgstr "Modifiko kete pool"
 
 msgid "Edit portal group"
-msgstr ""
+msgstr "Modifiko grupin e portalit"
 
 msgid "Edit rule"
 msgstr "Modifiko rregullin"
@@ -1582,13 +1582,13 @@ msgid "Email"
 msgstr "Email"
 
 msgid "Email Report"
-msgstr ""
+msgstr "Raportim nepermjet emailit"
 
 msgid "Email notification"
 msgstr "Notfikim me Email"
 
 msgid "Email report"
-msgstr ""
+msgstr "Raportim nepermjet emailit"
 
 msgid "Enable"
 msgstr "Aktivo"
@@ -1615,7 +1615,7 @@ msgid "Enable authentication."
 msgstr "Aktivo Autentikimin"
 
 msgid "Enable automatic disk discovery."
-msgstr ""
+msgstr "Aktivo zbulimin automatik te diskut."
 
 msgid "Enable compression."
 msgstr "Aktivo kompresimin"

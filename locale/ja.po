@@ -3,27 +3,27 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-08-11 01:55+0000\n"
+"PO-Revision-Date: 2009-10-27 05:54+0000\n"
 "Last-Translator: MASAKI Asato <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
+"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 msgid " interfaces:"
-msgstr " インタフェース:"
+msgstr " インターフェース:"
 
 msgid " was assigned to "
 msgstr " は次の項目にアサインされています "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr ""
+msgstr "%2$dMiB 中 %1$d%%"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -31,11 +31,11 @@ msgstr "%s を Windows クライアントにタイムサーバとして公告し
 
 #, php-format
 msgid "%s interface"
-msgstr "%s インタフェース"
+msgstr "%s インターフェース"
 
 #, php-format
 msgid "%s is too long."
-msgstr ""
+msgstr "%s は長すぎます。"
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -47,7 +47,7 @@ msgstr "%2$sB 中 %1$s"
 
 #, php-format
 msgid "%s on %s"
-msgstr ""
+msgstr "%s＠%s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -279,7 +279,7 @@ msgid "Add command"
 msgstr "コマンドを追加"
 
 msgid "Add dataset"
-msgstr ""
+msgstr "データセットの追加"
 
 msgid "Add device"
 msgstr "デバイスを追加"
@@ -297,7 +297,7 @@ msgid "Add initiator"
 msgstr "イニシエータの追加"
 
 msgid "Add initiator group"
-msgstr ""
+msgstr "イニシエータグループの追加"
 
 msgid "Add interface"
 msgstr "インタフェースの追加"
@@ -315,10 +315,10 @@ msgid "Add option"
 msgstr "オプションの追加"
 
 msgid "Add pool"
-msgstr ""
+msgstr "プールの追加"
 
 msgid "Add portal group"
-msgstr ""
+msgstr "ポータルグループの追加"
 
 msgid "Add rule"
 msgstr "ルールの追加"
@@ -567,10 +567,10 @@ msgid "AutoScale"
 msgstr "オートスケール"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "ディスクの自動検出"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "ディスクの自動検出モード"
 
 msgid "Autoselect"
 msgstr "自動選択"
@@ -824,7 +824,7 @@ msgid "Console menu"
 msgstr "コンソールメニュー"
 
 msgid "Console screensaver"
-msgstr ""
+msgstr "コンソールスクリーンセーバ"
 
 msgid "Contact"
 msgstr "連絡先"
@@ -1019,7 +1019,7 @@ msgid "Delete command"
 msgstr "コマンドを削除"
 
 msgid "Delete dataset"
-msgstr ""
+msgstr "データセットの削除"
 
 msgid "Delete device"
 msgstr "デバイスを削除"
@@ -1040,7 +1040,7 @@ msgid "Delete initiator"
 msgstr "イニシエータを削除"
 
 msgid "Delete initiator group"
-msgstr ""
+msgstr "イニシエータグループの削除"
 
 msgid "Delete interface"
 msgstr "インタフェースの削除"
@@ -1058,10 +1058,10 @@ msgid "Delete option"
 msgstr "オプションを削除"
 
 msgid "Delete pool"
-msgstr ""
+msgstr "プールの削除"
 
 msgid "Delete portal group"
-msgstr ""
+msgstr "ポータルグループの削除"
 
 msgid "Delete rule"
 msgstr "ルールを削除"
@@ -1232,7 +1232,7 @@ msgid "Disks (ATA)"
 msgstr "ディスク(ATA)"
 
 msgid "Distributed hash table"
-msgstr ""
+msgstr "分散ハッシュテーブル"
 
 msgid "Do you really want to delete all MIBs?"
 msgstr "全ての MIB を削除してもよろしいですか?"
@@ -1265,7 +1265,7 @@ msgid "Do you really want to delete this cron job?"
 msgstr "この Cron ジョブを削除してもよろしいですか?"
 
 msgid "Do you really want to delete this dataset?"
-msgstr ""
+msgstr "このデータセットを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this device?"
 msgstr "このデバイスを削除してもよろしいですか?"
@@ -1285,7 +1285,7 @@ msgid "Do you really want to delete this host?"
 msgstr "このホストを削除してもよろしいですか?"
 
 msgid "Do you really want to delete this initiator group?"
-msgstr ""
+msgstr "このイニシエータグループを削除してもよろしいですか？"
 
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
@@ -1307,10 +1307,10 @@ msgid "Do you really want to delete this option?"
 msgstr "このオプションを削除してもよろしいですか?"
 
 msgid "Do you really want to delete this pool?"
-msgstr ""
+msgstr "このプールを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this portal group?"
-msgstr ""
+msgstr "このポータルグループを削除してもよろしいですか？"
 
 msgid "Do you really want to delete this route?"
 msgstr "このルーティング情報を削除してもよろしいですか?"
@@ -1767,7 +1767,7 @@ msgid "Extent"
 msgstr "エクステント"
 
 msgid "Extent Name"
-msgstr ""
+msgstr "エクステント名"
 
 msgid "Extent name"
 msgstr "エクステント名"
@@ -2133,7 +2133,7 @@ msgid "Hungarian"
 msgstr "ハンガリー語"
 
 msgid "I/O Timeout"
-msgstr ""
+msgstr "I/O タイムアウト"
 
 msgid "I/O errors"
 msgstr "I/O エラー"
@@ -2142,10 +2142,10 @@ msgid "I/O packets"
 msgstr "I/O パケット"
 
 msgid "I/O statistics"
-msgstr ""
+msgstr "I/O 統計"
 
 msgid "I/O timeout in seconds (30 by default)."
-msgstr ""
+msgstr "I/O タイムアウトまでの秒数(初期値は30秒)"
 
 msgid "IG"
 msgstr ""
@@ -2293,7 +2293,7 @@ msgid "Import"
 msgstr "インポート"
 
 msgid "Import disks"
-msgstr ""
+msgstr "ディスクのインポート"
 
 msgid "Import disks used in configuration."
 msgstr ""
@@ -2341,10 +2341,10 @@ msgid "Initializing"
 msgstr "初期化中"
 
 msgid "Initiator Group"
-msgstr ""
+msgstr "イニシエータグループ"
 
 msgid "Initiator Groups"
-msgstr ""
+msgstr "イニシエータグループ"
 
 msgid ""
 "Initiator authorised to access to the iSCSI target.  It takes a name or "
@@ -2361,7 +2361,7 @@ msgid "Initiator side user name. (for mutual CHAP authentication)"
 msgstr ""
 
 msgid "Initiators"
-msgstr ""
+msgstr "イニシエータ"
 
 msgid "Inquiry Product"
 msgstr ""
@@ -2461,7 +2461,7 @@ msgid "LDAP"
 msgstr "LDAP"
 
 msgid "LUN"
-msgstr ""
+msgstr "LUN(Logical Unit Number)"
 
 msgid "LUNs"
 msgstr ""
@@ -2476,7 +2476,7 @@ msgid "Last config change"
 msgstr "最終設定変更日"
 
 msgid "Latvian"
-msgstr ""
+msgstr "ラトビア語"
 
 #, php-format
 msgid ""
@@ -3439,10 +3439,10 @@ msgid "RSYNC - Client"
 msgstr ""
 
 msgid "RSYNC - Local"
-msgstr ""
+msgstr "RSYNC - ローカル"
 
 msgid "RSYNC - Server"
-msgstr ""
+msgstr "RSYNC - サーバー"
 
 msgid "RSYNC Client"
 msgstr "RSYNC クライアント"
@@ -3463,7 +3463,7 @@ msgid "Read"
 msgstr "読込み"
 
 msgid "Read Only (ro)"
-msgstr ""
+msgstr "読込のみ(ro)"
 
 msgid "Read Only Access"
 msgstr "読込み専用アクセス"
@@ -3481,13 +3481,13 @@ msgid "Read/Write"
 msgstr "読込み/書込み"
 
 msgid "Read/Write (rw)"
-msgstr ""
+msgstr "読込み/書込み(rw)"
 
 msgid "Read/Write Access"
 msgstr "読書き可能アクセス"
 
 msgid "Readonly"
-msgstr ""
+msgstr "読み込み専用"
 
 msgid "Realm"
 msgstr "レルム"
@@ -3541,10 +3541,10 @@ msgid "Remove all entries from ARP table"
 msgstr "ARP テーブルの全てのエントリを削除"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "レポートジェネレーター"
 
 msgid "Report generator"
-msgstr ""
+msgstr "レポートジェネレーター"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -3566,7 +3566,7 @@ msgid "Required"
 msgstr ""
 
 msgid "Rescan disks"
-msgstr ""
+msgstr "ディスクの再スキャン"
 
 msgid "Rescan interval"
 msgstr "再スキャンの間隔"
@@ -4726,7 +4726,7 @@ msgid "The uploaded image file is not for this platform"
 msgstr "アップロードされたイメージファイルはこのプラットフォームの物ではありません．"
 
 msgid "The user's login shell."
-msgstr ""
+msgstr "ユーザログインシェル"
 
 msgid "The value of the variable."
 msgstr "変数の値"
@@ -4735,10 +4735,10 @@ msgid "The volume must be detached before it can be deleted."
 msgstr "ボリュームは削除する前に切り離しを行う必要があります．"
 
 msgid "The working directory does not exist."
-msgstr ""
+msgstr "作業用ディレクトリーが存在していません。"
 
 msgid "There is no error, the file uploaded with success."
-msgstr ""
+msgstr "ファイルのアップロードに成功しました。"
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "RAID1 ボリュームは 2つのディスクが必要です．"
@@ -4765,7 +4765,7 @@ msgid "There must be at least 2 disks in a raidz."
 msgstr ""
 
 msgid "There must be at least 3 disks in a raidz2."
-msgstr ""
+msgstr "raidz2 を使用するには少なくともディスクが3個必要です。"
 
 msgid "There must be selected a minimum of 1 interface."
 msgstr "最低 1つのインタフェースを選択する必要があります．"
@@ -5072,16 +5072,16 @@ msgid ""
 msgstr "ユーザで使用されるサフィックスを指定します．例) %s"
 
 msgid "This pool name already exists."
-msgstr ""
+msgstr "このプール名は既に存在しています。"
 
 msgid "This rule is triggered whenever the selected event directive occurs."
 msgstr ""
 
 msgid "This tag already exists."
-msgstr ""
+msgstr "このタグはすでに存在しています。"
 
 msgid "This tag is used."
-msgstr ""
+msgstr "このタグは使用されています。"
 
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "iSCSIターゲットのIPアドレスもしくはFQDN"
@@ -5090,10 +5090,10 @@ msgid "This user already exists in the user list."
 msgstr "ユーザは既にユーザリストに存在します．"
 
 msgid "This user already exists."
-msgstr ""
+msgstr "このユーザは既に存在しています。"
 
 msgid "This virtual device name already exists."
-msgstr ""
+msgstr "この仮想デバイス名は既に存在しています。"
 
 #, php-format
 msgid ""
@@ -5112,7 +5112,7 @@ msgstr "選択したDiskのデータをすべて消去します！既存の RAID
 msgid ""
 "This will erase ALL data on your disk! Do not use this option if you want to "
 "add an existing encrypted disk."
-msgstr ""
+msgstr "既存の暗号化されたディスクを追加するのに、このオプションは使用しないでください。(ディスク上のデータが消去されてしまいます)"
 
 msgid "TiB"
 msgstr ""
@@ -5206,11 +5206,11 @@ msgstr "ツール"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s"
-msgstr ""
+msgstr "合計: %s | 使用中: %s | 未使用: %s"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
-msgstr ""
+msgstr "合計: %s | 使用中: %s | 未使用: %s | 状態: %s"
 
 msgid "Traceroute"
 msgstr "Traceroute"
@@ -5259,7 +5259,7 @@ msgid "Tuning"
 msgstr "チューニング"
 
 msgid "Turn the monitor to standby after N seconds."
-msgstr ""
+msgstr "モニターを N 秒後にスタンバイ状態にする。"
 
 msgid "Type"
 msgstr "タイプ"
@@ -5453,7 +5453,7 @@ msgid "User password."
 msgstr "ユーザのパスワード．"
 
 msgid "User portal"
-msgstr ""
+msgstr "ﾕｰｻﾞｰポータル"
 
 msgid "User suffix"
 msgstr "ユーザサフィックス"
@@ -5477,7 +5477,7 @@ msgid "VLAN tag"
 msgstr "VLAN タグ"
 
 msgid "Value"
-msgstr ""
+msgstr "値"
 
 msgid "Variable"
 msgstr "変数"
@@ -5486,10 +5486,10 @@ msgid "Version"
 msgstr "バージョン"
 
 msgid "Virtual device"
-msgstr ""
+msgstr "仮想デバイス"
 
 msgid "Virtual devices"
-msgstr ""
+msgstr "仮想デバイス"
 
 msgid "Virtual interface"
 msgstr "仮想インタフェース"
@@ -5698,7 +5698,7 @@ msgid "crlf"
 msgstr ""
 
 msgid "day(s)"
-msgstr ""
+msgstr "日"
 
 msgid "dbpath"
 msgstr ""
@@ -5708,7 +5708,7 @@ msgid "e.g. %s"
 msgstr "例) %s"
 
 msgid "hour(s)"
-msgstr ""
+msgstr "時間"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI イニシエータ"
@@ -5729,7 +5729,7 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "minute(s)"
-msgstr ""
+msgstr "分"
 
 msgid "minutes"
 msgstr "分"
@@ -5744,7 +5744,7 @@ msgid "mswindows"
 msgstr "MS-Windows"
 
 msgid "mutual CHAP"
-msgstr ""
+msgstr "双方向CHAP"
 
 msgid "n/a"
 msgstr "n/a"

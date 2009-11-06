@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
 "POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-09-13 03:49+0000\n"
-"Last-Translator: Federico Vera <Unknown>\n"
+"PO-Revision-Date: 2009-11-05 04:33+0000\n"
+"Last-Translator: Carlos Andrés Zambrano Barrera <czam01@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
+"X-Launchpad-Export-Date: 2009-11-06 18:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -608,7 +608,7 @@ msgid "Authorised network"
 msgstr "Authorised network"
 
 msgid "Auths"
-msgstr ""
+msgstr "Autorizaciones"
 
 msgid "Auto"
 msgstr "Automático"
@@ -617,10 +617,10 @@ msgid "AutoScale"
 msgstr "Escala Automática"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "Descubrimiento de discos automático"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "Modo de descubrimiento de discos automático"
 
 msgid "Autoselect"
 msgstr "Autoseleccionar"
@@ -674,13 +674,13 @@ msgid "BitTorrent"
 msgstr "BitTorrent"
 
 msgid "Blank time"
-msgstr ""
+msgstr "Tiempo en blanco"
 
 msgid "Browseable"
 msgstr "Visible"
 
 msgid "Built on"
-msgstr ""
+msgstr "Construcción en marcha"
 
 msgid "Bulgarian"
 msgstr "Búlgaro"
@@ -736,7 +736,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Canmount"
-msgstr ""
+msgstr "SePuedeMontar"
 
 msgid "Cannot get data about interface"
 msgstr "No es posible obtener información sobre el interfaz"
@@ -1313,7 +1313,7 @@ msgid "Do you really want to delete all rules?"
 msgstr "¿De verdad desea eliminar todas las reglas?"
 
 msgid "Do you really want to delete all scheduled self-tests?"
-msgstr ""
+msgstr "¿Realmente quiere eliminar todas las auto-pruebas planificadas?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "¿Realemente quiere borrar ésta MIB?"
@@ -1334,7 +1334,7 @@ msgid "Do you really want to delete this cron job?"
 msgstr "¿Realmente desea eliminar esta tarea de Cron?"
 
 msgid "Do you really want to delete this dataset?"
-msgstr ""
+msgstr "Esta seguro de que desea eliminar este conjunto de datos?"
 
 msgid "Do you really want to delete this device?"
 msgstr "¿Realmente desea eliminar este dispositivo?"
@@ -1385,10 +1385,10 @@ msgid "Do you really want to delete this pool?"
 msgstr ""
 
 msgid "Do you really want to delete this portal group?"
-msgstr ""
+msgstr "¿Está seguro de que desea eliminar este grupo del portal?"
 
 msgid "Do you really want to delete this route?"
-msgstr "Realmente desea borrar esta ruta?"
+msgstr "¿Realmente desea borrar esta ruta?"
 
 msgid "Do you really want to delete this rule?"
 msgstr "¿Realmente desea borrar esta regla?"
@@ -1400,7 +1400,7 @@ msgid "Do you really want to delete this share?"
 msgstr "¿Realemente quire borrar ésta MIB?"
 
 msgid "Do you really want to delete this target?"
-msgstr "Realmente desea borrar este destino?"
+msgstr "¿Está seguro de que desea borrar este destino?"
 
 msgid "Do you really want to delete this user?"
 msgstr "¿Realmente quiere eliminar este usuario?"
@@ -1466,7 +1466,7 @@ msgid ""
 msgstr ""
 
 msgid "Donate"
-msgstr ""
+msgstr "Donar"
 
 msgid "Done"
 msgstr "Finalizado"
@@ -1478,7 +1478,7 @@ msgid "Dos charset"
 msgstr "Conjunto de caracteres de Dos"
 
 msgid "Double-parity RAID-5"
-msgstr ""
+msgstr "RAID-5 de doble paridad"
 
 msgid "Download"
 msgstr "Descargas"
@@ -1699,7 +1699,7 @@ msgid "Enable permission inheritance"
 msgstr "Habilitar herencia de permisos"
 
 msgid "Enable port forwarding via NAT-PMP or UPnP."
-msgstr ""
+msgstr "Activar redirección de puertos vía NAT-PMP o UPnP."
 
 msgid "Enable proxy authentication."
 msgstr "Activar autentificación de proxy."
@@ -1735,7 +1735,7 @@ msgid "Enable transcoding."
 msgstr "Permitir transcodificación"
 
 msgid "Enable traps."
-msgstr ""
+msgstr "Activar trampas."
 
 msgid "Enable tuning of some kernel variables"
 msgstr "Permitir ajustar algunas variables del kernel"
@@ -1853,7 +1853,7 @@ msgid "Export"
 msgstr "Exportar"
 
 msgid "Extended attributes"
-msgstr ""
+msgstr "Atributos extendidos"
 
 msgid "Extensions"
 msgstr "Extensiones"
@@ -1862,7 +1862,7 @@ msgid "Extent"
 msgstr "Extensión"
 
 msgid "Extent Name"
-msgstr ""
+msgstr "Nombre extendido"
 
 msgid "Extent name"
 msgstr "Nombre de extensión"
@@ -1903,7 +1903,7 @@ msgid "FTP - Ban module"
 msgstr ""
 
 msgid "FTP - File transfer"
-msgstr ""
+msgstr "Transferencia de archivos - FTP"
 
 msgid "FTP Proxy"
 msgstr "Proxy FTP"
@@ -1969,7 +1969,7 @@ msgid "Failed to upload metadata backup file."
 msgstr "Falló al subir archivo de respaldo de metadata."
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "Falló en escribir archivo a disco."
 
 msgid "Failed."
 msgstr "Falló."
@@ -1997,7 +1997,7 @@ msgstr "Ruta del archivo"
 
 #, php-format
 msgid "File path (e.g. /mnt/sharename/extent/%s) used as extent."
-msgstr ""
+msgstr "Ruta de archivo (ej. /mnt/sharename/extent/%s) usada como extensión."
 
 msgid "File size"
 msgstr "Tamaño de archivo"
@@ -2009,7 +2009,7 @@ msgid "File system check"
 msgstr "Comprobación del sistema de archivos"
 
 msgid "File upload stopped by extension."
-msgstr ""
+msgstr "Carga de archivo parada por extensión."
 
 msgid "Filename"
 msgstr "Nombre de archivo"
@@ -2057,7 +2057,7 @@ msgid "Forum"
 msgstr "Foro"
 
 msgid "Free"
-msgstr ""
+msgstr "Libres"
 
 msgid "Free disk space"
 msgstr "Liberar espacio en disco"
@@ -2084,7 +2084,7 @@ msgid "GID"
 msgstr "GID"
 
 msgid "GPT partition"
-msgstr ""
+msgstr "Partición GPT"
 
 msgid "Gateway"
 msgstr "Puerta de Enlace"
@@ -2099,13 +2099,13 @@ msgid "General Setup"
 msgstr "Configuración general"
 
 msgid "Generate"
-msgstr ""
+msgstr "Generar"
 
 msgid "German"
 msgstr "Alemán"
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
 msgstr "Dar acceso a la pagina web sólo a los usuarios locales."
@@ -2160,13 +2160,13 @@ msgid "Hard disk standby time"
 msgstr "Tiempo de espera de apagado del disco duro"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Hardware"
 
 msgid "Header and Data digest"
-msgstr ""
+msgstr "Cabecera y resumen de datos"
 
 msgid "Header digest"
-msgstr ""
+msgstr "Resumen de cabecera"
 
 msgid "Health"
 msgstr ""
@@ -2225,7 +2225,7 @@ msgid "Hot Spare"
 msgstr ""
 
 msgid "Hours"
-msgstr ""
+msgstr "Horas"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2256,13 +2256,13 @@ msgid "I/O statistics"
 msgstr "Estadísticas de E/S"
 
 msgid "I/O timeout in seconds (30 by default)."
-msgstr ""
+msgstr "E / S tiempo de espera en segundos (30 por defecto)."
 
 msgid "IG"
-msgstr ""
+msgstr "IG"
 
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 msgid "IP address"
 msgstr "Dirección IP"
@@ -2407,7 +2407,7 @@ msgid "Import"
 msgstr "Importar"
 
 msgid "Import disks"
-msgstr ""
+msgstr "Importar discos"
 
 msgid "Import disks used in configuration."
 msgstr ""
@@ -2425,7 +2425,7 @@ msgid "In most cases, 'public' is used here."
 msgstr "En la mayoría de los casos, 'public' es usado aquí."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Incluir información básica del hardware."
 
 msgid "Info"
 msgstr "Información"
@@ -2443,7 +2443,7 @@ msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
 msgstr ""
 
 msgid "Initial Digest"
-msgstr ""
+msgstr "Resumen inicial"
 
 msgid "Initialize"
 msgstr "Inicializar"
@@ -2579,10 +2579,10 @@ msgid "LDAP"
 msgstr "LDAP"
 
 msgid "LUN"
-msgstr ""
+msgstr "LUN"
 
 msgid "LUNs"
-msgstr ""
+msgstr "LUNs"
 
 msgid "Language"
 msgstr "Idioma"
@@ -2768,7 +2768,7 @@ msgid "MAC address"
 msgstr "Dirección MAC"
 
 msgid "MBR partition"
-msgstr ""
+msgstr "Partición MBR"
 
 msgid "MIB"
 msgstr "MIB"
@@ -2828,16 +2828,16 @@ msgid "Max. conn. per IP"
 msgstr "Max. con. por IP"
 
 msgid "Max. connections"
-msgstr ""
+msgstr "Conexiones máx."
 
 msgid "Max. login attempts"
 msgstr ""
 
 msgid "Max. passive port"
-msgstr ""
+msgstr "Puerto pasivo máx."
 
 msgid "Max. sessions"
-msgstr ""
+msgstr "Sesiones máx."
 
 msgid ""
 "Max. time-to-live (max. number of hops) used in outgoing probe packets."
@@ -2898,7 +2898,7 @@ msgid "MibII"
 msgstr "MibII"
 
 msgid "Min. passive port"
-msgstr ""
+msgstr "Puerto pasivo mín."
 
 msgid "Minimum"
 msgstr "Mínimo"
@@ -2982,7 +2982,7 @@ msgid "NIS"
 msgstr "NIS"
 
 msgid "NOPIN Interval"
-msgstr ""
+msgstr "Intervalo NOPIN"
 
 msgid "NOPIN sending interval in seconds (20 by default)."
 msgstr ""
@@ -3436,7 +3436,7 @@ msgid "Port %ld is already used by another service."
 msgstr "El puerto %ld ya está en uso por otro servicio."
 
 msgid "Port forwarding"
-msgstr ""
+msgstr "Reenvío de puertos"
 
 #, php-format
 msgid "Port to listen for incoming peer connections. Default port is %d."
@@ -3485,7 +3485,7 @@ msgid "PreInit"
 msgstr "PreInit"
 
 msgid "Preferred"
-msgstr ""
+msgstr "Preferidos"
 
 msgid "Prefix"
 msgstr "Prefijo"
@@ -5389,7 +5389,7 @@ msgid ""
 msgstr ""
 
 msgid "Tolerated"
-msgstr ""
+msgstr "Tolerado"
 
 msgid "Tools"
 msgstr "Herramientas"
@@ -5563,7 +5563,7 @@ msgid "Upload"
 msgstr "Subida"
 
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Ancho de banda de subida"
 
 msgid "Uppercases names in both directions"
 msgstr ""
@@ -5878,19 +5878,19 @@ msgstr ""
 "Debería emplear HTTPS como protocolo del WebGUI para enviar la contraseña."
 
 msgid "Your ZFS system is not healthy."
-msgstr ""
+msgstr "Su sistema ZFS no está sano."
 
 msgid "Your own email address."
 msgstr "Tu dirección de email"
 
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 msgid "ZFS dataset information and status"
-msgstr ""
+msgstr "Información del conjunto de datos ZFS y estado"
 
 msgid "ZFS dataset properties"
-msgstr ""
+msgstr "Propiedades del conjunto de datos ZFS"
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5911,7 +5911,7 @@ msgid "crlf"
 msgstr "crlf"
 
 msgid "day(s)"
-msgstr ""
+msgstr "día(s)"
 
 msgid "dbpath"
 msgstr "dbpath"
@@ -5921,7 +5921,7 @@ msgid "e.g. %s"
 msgstr "por ejemplo, %s"
 
 msgid "hour(s)"
-msgstr ""
+msgstr "hora(s)"
 
 msgid "iSCSI Initiator"
 msgstr "Iniciador iSCSI"
@@ -5930,10 +5930,10 @@ msgid "iSCSI Target"
 msgstr "Destino iSCSI"
 
 msgid "iSCSI initial parameter (262144 by default)."
-msgstr ""
+msgstr "Parámetro inicial iSCSI (262144 por defecto)."
 
 msgid "iSCSI initial parameter (65536 by default)."
-msgstr ""
+msgstr "Parámetro inicial iSCSI (65536 por defecto)."
 
 msgid "iSCSI initiator disabled"
 msgstr "Iniciador iSCSI desactivado"
@@ -5942,7 +5942,7 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "minute(s)"
-msgstr ""
+msgstr "minuto(s)"
 
 msgid "minutes"
 msgstr "minutos"
@@ -5975,13 +5975,13 @@ msgid "nohex"
 msgstr "nohex"
 
 msgid "none"
-msgstr ""
+msgstr "ninguno"
 
 msgid "nostat"
 msgstr "nostat"
 
 msgid "phpBB"
-msgstr ""
+msgstr "phpBB"
 
 msgid "prodos"
 msgstr "prodos"
@@ -5993,7 +5993,7 @@ msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
 msgid "second(s)"
-msgstr ""
+msgstr "segundo(s)"
 
 msgid "seconds"
 msgstr "segundos"
