@@ -1,5 +1,5 @@
-FreeNAS 0.7RC2 (Khasadar):
---------------------------
+FreeNAS 0.7 (Khasadar):
+-----------------------
 
 Majors changes:
 - Add ability to configure the login shell for a user.
