@@ -31,13 +31,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-09-07 07:37+0000\n"
-"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
+"PO-Revision-Date: 2009-11-01 13:20+0000\n"
+"Last-Translator: ZhangCheng <xxzc@live.cn>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-17 19:04+0000\n"
+"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -52,7 +52,7 @@ msgstr " 被指派为 "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr ""
+msgstr "已用百分之 %d ，共 %dMB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -76,7 +76,7 @@ msgstr "%s字节中的%s"
 
 #, php-format
 msgid "%s on %s"
-msgstr ""
+msgstr "%2$s 上的 %1$s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -84,7 +84,7 @@ msgstr "%s还原设定后将会自动重新开机。"
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
-msgstr ""
+msgstr "%s%d %s 早已被 %s%d 使用。"
 
 #, c-format, php-format
 msgid "%sB available of %sB"
@@ -98,7 +98,7 @@ msgid "*** Imported duplicate ***"
 msgstr "*** 重复导入 ***"
 
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
-msgstr ""
+msgstr "0=禁用, 1-255=以指定的深度启用"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -116,6 +116,7 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a>必须启用 Unison 服务，用户 <a href=%s>user</a> 也必须有 shell 执行权限。"
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -303,13 +304,13 @@ msgid "Add additional scheduled self-test."
 msgstr "添加额外的计划自我检测"
 
 msgid "Add auth group"
-msgstr ""
+msgstr "新增验证组"
 
 msgid "Add command"
 msgstr "添加命令"
 
 msgid "Add dataset"
-msgstr ""
+msgstr "新增数据集"
 
 msgid "Add device"
 msgstr "添加设备"
@@ -327,7 +328,7 @@ msgid "Add initiator"
 msgstr "添加发起人"
 
 msgid "Add initiator group"
-msgstr ""
+msgstr "新增初始组"
 
 msgid "Add interface"
 msgstr "添加界面"
@@ -345,10 +346,10 @@ msgid "Add option"
 msgstr "添加选项"
 
 msgid "Add pool"
-msgstr ""
+msgstr "新增池"
 
 msgid "Add portal group"
-msgstr ""
+msgstr "添加 portal 组"
 
 msgid "Add rule"
 msgstr "添加规则"
@@ -405,7 +406,7 @@ msgid ""
 "address of your computer</li><li>access the webGUI with the new IP "
 "address</li></ul>"
 msgstr ""
-"点击&quot;存储&quot;之后，可能需要执行下列的步骤，才能再次连接至%s：<ul><li>变更电脑上的IP位置</li><li>使用新的IP位置来"
+"当按下&quot;储存&quot;之后，请继续执行下列的步骤，才能再次连线至%s：<ul><li>变更电脑上的IP位置</li><li>使用新的IP位置来"
 "连接网页管理介面</li></ul>"
 
 #, php-format
@@ -527,7 +528,7 @@ msgstr "用KB/s计算的匿名用户下载带宽。留空则为最大。"
 
 msgid ""
 "Anonymous user upload bandwith in KB/s. An empty field means infinity."
-msgstr ""
+msgstr "你们用户上传带宽的速度限制 KB/s，若为空表示不受限。"
 
 msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
@@ -536,7 +537,7 @@ msgid "Any"
 msgstr "任意"
 
 msgid "Apple Filing Protocol"
-msgstr ""
+msgstr "Apple Filing Protocol"
 
 msgid "Apply changes"
 msgstr "应用更改"
@@ -575,7 +576,7 @@ msgid "Auth Groups"
 msgstr ""
 
 msgid "Auth Method"
-msgstr ""
+msgstr "验证模式"
 
 msgid "Authenticate URL"
 msgstr "认证 URL"
@@ -599,10 +600,10 @@ msgid "AutoScale"
 msgstr "自动扩展"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "自动发现磁盘"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "自动发现磁盘模式"
 
 msgid "Autoselect"
 msgstr "自动选择"
@@ -642,7 +643,7 @@ msgid ""
 msgstr ""
 
 msgid "Best available"
-msgstr ""
+msgstr "最可用的"
 
 msgid "Bind DN"
 msgstr "绑定 DN"
@@ -687,7 +688,7 @@ msgid "CIFS/SMB"
 msgstr "CIFS/SMB/网芳"
 
 msgid "CIFS/SMB disabled"
-msgstr "网路芳邻伺服器关闭中"
+msgstr "关闭网上邻居服务器"
 
 msgid "CIFS/SMB informations"
 msgstr "网路芳邻资讯"
@@ -714,13 +715,13 @@ msgid "Cancel"
 msgstr "取消"
 
 msgid "Canmount"
-msgstr ""
+msgstr "可以挂载"
 
 msgid "Cannot get data about interface"
 msgstr "无法获得介面的资料"
 
 msgid "Capacity"
-msgstr ""
+msgstr "容量"
 
 msgid "Case Folding"
 msgstr "大小写视为相同"
@@ -1021,7 +1022,7 @@ msgid "Delete Route"
 msgstr "删除路由"
 
 msgid "Delete Rsync job"
-msgstr ""
+msgstr "删除 Rsync 作业"
 
 msgid "Delete URL"
 msgstr "删除 URL"
@@ -1039,7 +1040,7 @@ msgid "Delete all rules"
 msgstr "删除全部规则"
 
 msgid "Delete all self-tests"
-msgstr ""
+msgstr "删除所有的自我测试"
 
 msgid "Delete auth group"
 msgstr ""
@@ -1087,7 +1088,7 @@ msgid "Delete option"
 msgstr "删除选项"
 
 msgid "Delete pool"
-msgstr ""
+msgstr "删除池"
 
 msgid "Delete portal group"
 msgstr ""
@@ -1197,7 +1198,7 @@ msgid "Difference"
 msgstr "差异"
 
 msgid "Digital Audio Access Protocol"
-msgstr ""
+msgstr "Digital Audio Access Protocol"
 
 msgid "Direction"
 msgstr "方向"
@@ -1262,7 +1263,7 @@ msgid "Disks (ATA)"
 msgstr "磁碟（ATA）"
 
 msgid "Distributed hash table"
-msgstr ""
+msgstr "分布式哈希表"
 
 msgid "Do you really want to delete all MIBs?"
 msgstr "是否确定删除全部 MIB ？"
@@ -1274,13 +1275,13 @@ msgid "Do you really want to delete all rules?"
 msgstr "是否要删除全部规则？"
 
 msgid "Do you really want to delete all scheduled self-tests?"
-msgstr ""
+msgstr "你真的要删除所有自我测试任务吗?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "是否确定删除此 MIB?"
 
 msgid "Do you really want to delete this Rsync job?"
-msgstr ""
+msgstr "你真的要删除这个 Rsync 作业吗?"
 
 msgid "Do you really want to delete this URL?"
 msgstr "确定要删除这个 URL 吗？"
@@ -1337,7 +1338,7 @@ msgid "Do you really want to delete this option?"
 msgstr "是否确定删除此选项？"
 
 msgid "Do you really want to delete this pool?"
-msgstr ""
+msgstr "你真的要删除这个池吗?"
 
 msgid "Do you really want to delete this portal group?"
 msgstr ""
@@ -1363,13 +1364,13 @@ msgstr "确定要删除这个使用者？"
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
 "and can not be recovered. !!!"
-msgstr ""
+msgstr "你真的要删除这个卷吗?\\n!!! 注意, 所有数据都会丢失且不可复原 !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "确定真的要格式化这个磁碟？所有内部的资料都会消失！"
 
 msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
+msgstr "你真的要从列表中删除该项吗?"
 
 msgid "Do you really want to uninstall this package?"
 msgstr "确定要移除这个套件？"
@@ -1378,7 +1379,7 @@ msgid "Document root"
 msgstr "根目录"
 
 msgid "Document root of the webserver. Home of the web page files."
-msgstr "网页伺服器根目录。"
+msgstr "网页服务器跟目录"
 
 msgid "Domain"
 msgstr "网域"
@@ -1436,7 +1437,7 @@ msgid "Download"
 msgstr "下载"
 
 msgid "Download bandwidth"
-msgstr ""
+msgstr "下载带宽"
 
 msgid "Download configuration"
 msgstr "下载设定"
@@ -1457,7 +1458,7 @@ msgid "Duplex"
 msgstr "双工模式"
 
 msgid "Duplicate mount point name."
-msgstr ""
+msgstr "重复的挂载点名称"
 
 msgid "Dutch"
 msgstr "荷兰语"
@@ -1499,7 +1500,7 @@ msgid "Edit command"
 msgstr "编辑命令"
 
 msgid "Edit dataset"
-msgstr ""
+msgstr "编辑数据集"
 
 msgid "Edit device"
 msgstr "编辑装置"
@@ -1535,7 +1536,7 @@ msgid "Edit option"
 msgstr "编辑选项"
 
 msgid "Edit pool"
-msgstr ""
+msgstr "编辑池"
 
 msgid "Edit portal group"
 msgstr ""
@@ -1642,7 +1643,7 @@ msgid "Enable module listing."
 msgstr "开启模组列表。"
 
 msgid "Enable peer exchange (PEX)."
-msgstr ""
+msgstr "启用对等交换(PEX)"
 
 msgid "Enable permission inheritance"
 msgstr "开启权限继承"
@@ -1657,7 +1658,7 @@ msgid "Enable recycle bin"
 msgstr "开启档案垃圾桶"
 
 msgid "Enable remote monitoring of the local connected UPS."
-msgstr ""
+msgstr "启用远程监控本地 UPS 状态"
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -1666,16 +1667,16 @@ msgid ""
 msgstr ""
 
 msgid "Enable reverse DNS lookup."
-msgstr ""
+msgstr "启用反查 DNS"
 
 msgid "Enable store DOS attributes"
 msgstr "开启 DOS 属性储存"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "开启 syslog'ing 写入远端 syslog 伺服器"
+msgstr "启用 syslog'ing 写入远程 syslog 服务器"
 
 msgid "Enable the ident protocol (RFC1413)."
-msgstr ""
+msgstr "启用 RFC1413 协议"
 
 msgid "Enable the system power control utility"
 msgstr "开启电源监控程式。"
@@ -1848,7 +1849,7 @@ msgid "FTP log"
 msgstr "FTP 记录"
 
 msgid "FTP server disabled"
-msgstr "FTP 伺服器关闭中"
+msgstr "关闭 FTP 服务器"
 
 msgid "FXP"
 msgstr "FXP"
@@ -2034,7 +2035,7 @@ msgid "GiB"
 msgstr ""
 
 msgid "Give only local users access to the web page."
-msgstr "只有本机使用者可以使用网页伺服器。"
+msgstr "只有本机使用者可以使用网页服务器"
 
 msgid "Grant access to the user portal."
 msgstr ""
@@ -2184,10 +2185,10 @@ msgid "IP"
 msgstr ""
 
 msgid "IP address"
-msgstr "IP位置"
+msgstr "IP 地址"
 
 msgid "IP address of remote syslog server"
-msgstr "远端 syslog 伺服器的IP位置"
+msgstr "远程 syslog 服务器的 IP 地址"
 
 #, php-format
 msgid ""
@@ -2205,7 +2206,7 @@ msgid "IPv4 Configuration"
 msgstr "IPv4 组态"
 
 msgid "IPv4 DNS servers"
-msgstr "IPv4 DNS 伺服器"
+msgstr "IPv4 DNS 服务器"
 
 msgid "IPv4 addresses"
 msgstr "IPv4 位置"
@@ -2214,7 +2215,7 @@ msgid "IPv6 Configuration"
 msgstr "IPv6 组态"
 
 msgid "IPv6 DNS servers"
-msgstr "IPv6 DNS 伺服器"
+msgstr "IPv6 DNS 服务器"
 
 msgid "IPv6 Gateway"
 msgstr "IPv6 闸道"
@@ -2884,7 +2885,7 @@ msgid "NOT YET AVAILABLE"
 msgstr ""
 
 msgid "NTP time server"
-msgstr "NTP时间伺服器"
+msgstr "NTP 时间服务器"
 
 msgid "Name"
 msgstr "名称"
@@ -2900,7 +2901,7 @@ msgstr ""
 msgid ""
 "Name of the server. If this field is left empty the default server is "
 "specified."
-msgstr "这台伺服器的名称。如果留白则会使用预设的伺服器名称。"
+msgstr "这台服务器的名称。若为空则会使用预设的服务器名称。"
 
 msgid "Name of the variable."
 msgstr ""
@@ -3059,7 +3060,7 @@ msgid "Number of log entries to show must be between 5 and 1000."
 msgstr "一次要检视多少笔记录（5-100）"
 
 msgid "Number of servers"
-msgstr "伺服器数量"
+msgstr "服务器数量"
 
 msgid "Numeric identifier of the group."
 msgstr ""
@@ -3121,10 +3122,10 @@ msgid "Out"
 msgstr "外送"
 
 msgid "Outgoing SMTP mail server address, e.g. smtp.mycorp.com."
-msgstr "外送 SMTP 邮件伺服器位置，例：smtp.mycorp.com"
+msgstr "SMTP 邮件服务器地址，例：smtp.mycorp.com"
 
 msgid "Outgoing mail server"
-msgstr "外送邮件伺服器"
+msgstr "SMTP 邮件服务器"
 
 msgid "Overwrite already configured disks (only affects filesystem value)."
 msgstr ""
@@ -3554,7 +3555,7 @@ msgid "Remote monitoring"
 msgstr ""
 
 msgid "Remote syslog server"
-msgstr "远端 syslog 伺服器"
+msgstr "远程 syslog 服务器"
 
 msgid "Remove all entries from ARP table"
 msgstr "移除所有ARP table内的项目"
@@ -3796,13 +3797,13 @@ msgid "Separate email addresses by semi-colon."
 msgstr ""
 
 msgid "Server"
-msgstr "伺服器"
+msgstr "服务器"
 
 msgid "Server Name"
-msgstr "伺服器名称"
+msgstr "服务器名称"
 
 msgid "Server description. This can usually be left blank."
-msgstr "伺服器描述文字。通常可以留白。"
+msgstr "服务器描述，通常可以为空"
 
 msgid "Server name"
 msgstr ""
@@ -4437,7 +4438,7 @@ msgid "The cron job has been executed successfully."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
-msgstr "预设的 SMTP 邮件伺服器连接阜，例：25 或 587。"
+msgstr "默认的 SMTP 邮件服务端口，例：25 或 587"
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
@@ -5149,7 +5150,7 @@ msgid "Time interval"
 msgstr "统计间隔"
 
 msgid "Time server"
-msgstr "时间伺服器"
+msgstr "时间服务器"
 
 msgid "Time update interval"
 msgstr "时间同步间隔"
@@ -5321,7 +5322,7 @@ msgid "UPnP"
 msgstr "UPnP"
 
 msgid "UPnP A/V Media Server"
-msgstr "UPnP影音多媒体伺服器"
+msgstr "UPnP影音多媒体服务器"
 
 msgid "UPnP friendly name."
 msgstr "UPnP friendly name."
@@ -5407,7 +5408,7 @@ msgid ""
 msgstr "使用 Windows 2000 之后新增的 64K 串流选项。"
 
 msgid "Use the specified NTP server."
-msgstr "使用指定的 NTP 伺服器。"
+msgstr "使用指定的 NTP 服务器。"
 
 #, php-format
 msgid ""
@@ -5518,10 +5519,10 @@ msgid "WEP"
 msgstr "WEP"
 
 msgid "WINS server"
-msgstr "WINS伺服器"
+msgstr "WINS 服务器"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
-msgstr "WINS 伺服器位置 (AD Server)"
+msgstr "WINS 服务器 IP 地址 (例：微软的 AD 服务器)"
 
 msgid "WPA"
 msgstr "WPA"
