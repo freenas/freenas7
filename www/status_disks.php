@@ -53,7 +53,8 @@ $raidstatus = get_sraid_disks_list();
 					<td width="5%" class="listhdrlr"><?=gettext("Disk");?></td>
 					<td width="5%" class="listhdrr"><?=gettext("Capacity");?></td>
 					<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
-					<td width="20%" class="listhdrr"><?=gettext("I/O statistics");?></td>
+					<td width="15%" class="listhdrr"><?=gettext("Serial number"); ?></td>
+					<td width="15%" class="listhdrr"><?=gettext("I/O statistics");?></td>
 					<td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
 					<td width="10%" class="listhdrr"><?=gettext("Status");?></td>
 				</tr>
@@ -64,6 +65,7 @@ $raidstatus = get_sraid_disks_list();
 					<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+					<td class="listr"><?=system_get_volume_serial($disk['devicespecialfile']);?>&nbsp;</td>
 					<td class="listr"><?=$iostat;?>&nbsp;</td>
 					<td class="listr"><?=$temp;?>&nbsp;</td>
 					<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
@@ -77,6 +79,7 @@ $raidstatus = get_sraid_disks_list();
 					<td class="listlr"><?=htmlspecialchars($diskk);?></td>
 					<td class="listr"><?=htmlspecialchars($diskv['size']);?></td>
 					<td class="listr"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars(gettext("n/a"));?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($iostat);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($temp);?>&nbsp;</td>
 					<td class="listbg"><?=htmlspecialchars($diskv['state']);?>&nbsp;</td>
