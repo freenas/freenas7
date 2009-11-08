@@ -407,7 +407,7 @@ function lun_change(idx) {
       <?php html_inputbox("name", gettext("Target Name"), $pconfig['name'], gettext("Base Name will be appended automatically when starting without 'iqn.'."), true, 60, false);?>
       <?php html_inputbox("alias", gettext("Target Alias"), $pconfig['alias'], gettext("Optional user-friendly string of the target."), false, 60, false);?>
       <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk"),"DVD" => gettext("DVD"),"Tape" => gettext("Tape"),"Pass" => gettext("Device Pass-through")), gettext("Logical Unit Type mapped to LUN."), true);?>
-      <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => gettext("Read/Write (rw)"),"rw,dynamic" => gettext("Read/Write (rw,dynamic) for Removable types file size grow and shrink automatically by EOF (ignore specified size)"),"rw,extend" => gettext("Read/Write (rw,extend) for Removable types extend file size if EOM reached"), "ro" => gettext("Read Only (ro)")), "", true);?>
+      <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => gettext("Read/Write (rw)"),"rw,dynamic" => gettext("Read/Write (rw,dynamic) for removable types file size grow and shrink automatically by EOF (ignore specified size)"),"rw,extend" => gettext("Read/Write (rw,extend) for removable types extend file size if EOM reached"), "ro" => gettext("Read Only (ro)")), "", true);?>
       <?php
 		$pg_list = array();
 		//$pg_list['0'] = gettext("None");

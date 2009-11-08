@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-09-10 21:16+0000\n"
+"PO-Revision-Date: 2009-11-08 02:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -197,6 +197,12 @@ msgid "Activate email report if you want to be notified if a failure or a new er
 msgstr ""
 
 msgid "Active Directory"
+msgstr ""
+
+msgid "Active Users"
+msgstr ""
+
+msgid "Active shares"
 msgstr ""
 
 msgid "Add"
@@ -483,6 +489,9 @@ msgid "Auths"
 msgstr ""
 
 msgid "Auto"
+msgstr ""
+
+msgid "Auto size"
 msgstr ""
 
 msgid "AutoScale"
@@ -807,6 +816,9 @@ msgstr ""
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
 msgstr ""
 
+msgid "DVD"
+msgstr ""
+
 msgid "Daemon"
 msgstr ""
 
@@ -1023,6 +1035,9 @@ msgid "Device /dev/%s - %s"
 msgstr ""
 
 msgid "Device IP"
+msgstr ""
+
+msgid "Device Pass-through"
 msgstr ""
 
 msgid "Device name"
@@ -1730,6 +1745,9 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
+msgid "File sizeunit"
+msgstr ""
+
 msgid "File system"
 msgstr ""
 
@@ -2316,9 +2334,6 @@ msgid "List of mount points"
 msgstr ""
 
 msgid "List of open files"
-msgstr ""
-
-msgid "List of shares"
 msgstr ""
 
 msgid "Load"
@@ -3199,6 +3214,12 @@ msgstr ""
 msgid "Read/Write (rw)"
 msgstr ""
 
+msgid "Read/Write (rw,dynamic) for removable types file size grow and shrink automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid "Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+
 msgid "Read/Write Access"
 msgstr ""
 
@@ -3482,6 +3503,9 @@ msgid "Send test email"
 msgstr ""
 
 msgid "Separate email addresses by semi-colon."
+msgstr ""
+
+msgid "Serial number"
 msgstr ""
 
 msgid "Server"
@@ -3833,6 +3857,9 @@ msgstr ""
 
 #, php-format
 msgid "Tag%d (%s)"
+msgstr ""
+
+msgid "Tape"
 msgstr ""
 
 msgid "Target"
@@ -5047,6 +5074,9 @@ msgid "Zeroconf/Bonjour"
 msgstr ""
 
 msgid "atacontrol list failed, atacontrol not found !!"
+msgstr ""
+
+msgid "auto"
 msgstr ""
 
 msgid "cachecnid"
