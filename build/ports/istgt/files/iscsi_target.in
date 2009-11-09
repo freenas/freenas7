@@ -287,12 +287,15 @@ istgt_mkconf()
 						-i "flags[.='rw,extend']" -o "  ReadOnly No" -n -b \
 						-v "concat('  UnitType ',type)" -n \
 						-v "concat('  UnitOnline ','Yes')" -n \
-						-v "concat('  QueueDepth ',queuedepth)" -n \
+						-i "string-length(queuedepth) != 0" -v "concat('  QueueDepth ',queuedepth)" -n \
 						-i "string-length(inqvendor) != 0 or string-length(inqproduct) != 0 or string-length(inqrevision) != 0 or string-length(inqserial) != 0" \
 							-v "concat('  UnitInquiry &quot;',inqvendor,'&quot;',' ','&quot;',inqproduct,'&quot;',' ','&quot;',inqrevision,'&quot;',' ', '&quot;',inqserial,'&quot;')" -n \
 						-b \
 						-m "lunmap" \
-							-i "type = 'Storage' or type = 'Removable'" \
+							-i "type = 'Storage'" \
+								-v "concat('  LUN',lun,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+							-b \
+							-i "type = 'Removable'" \
 								-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
 							-b \
 							-i "type = 'Device'" \
