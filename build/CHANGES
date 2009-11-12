@@ -37,6 +37,10 @@ FreeNAS 0.7.1 (Shere):
 
 Bug fixes:
 - Fix bug in istgt script.
+- To prevent Samba error messages like 'Unknown socket option IPTOS_LOWDELAY'
+  create a rc.conf variable (via 'System|Advanced|rc.conf') called
+  'samba_socket_options' and set it to the value 'TCP_NODELAY' (default is
+  'IPTOS_LOWDELAY TCP_NODELAY') (BR 2894782).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
