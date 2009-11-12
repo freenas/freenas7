@@ -41,6 +41,8 @@ Bug fixes:
   create a rc.conf variable (via 'System|Advanced|rc.conf') called
   'samba_socket_options' and set it to the value 'TCP_NODELAY' (default is
   'IPTOS_LOWDELAY TCP_NODELAY') (BR 2894782).
+- Fix mt-daapd/firefly error 'Undefined symbol "avcodec_decode_audio"'
+  (BR 2895960).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
