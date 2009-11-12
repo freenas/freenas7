@@ -31,7 +31,7 @@ mkconf_cmd="samba_mkconf_cmd"
 samba_enable="${samba_enable:=NO}"
 samba_config_default="/var/etc/smb.conf"
 samba_config="${samba_config=${samba_config_default}}"
-command_args="${samba_config:+-s "${samba_config}"}"			#"
+command_args="${samba_config:+-s "${samba_config}"}"
 samba_daemons="nmbd smbd winbindd"
 smbcontrol_command="/usr/bin/smbcontrol"
 samba_logdir="${samba_logdir=/var/log/samba}"
@@ -43,6 +43,9 @@ samba_recycle_subdir_mode="${samba_recycle_subdir_mode:-"0700"}"
 samba_idmap_range="${samba_idmap_range:-"10000-999999"}"
 samba_idmap_uid="${samba_idmap_uid:-"10000-999999"}"
 samba_idmap_gid="${samba_idmap_gid:-"10000-999999"}"
+samba_socket_options="${samba_socket_options:-"IPTOS_LOWDELAY TCP_NODELAY"}"
+samba_create_mask="${samba_create_mask:-"0666"}"
+samba_directory_mask="${samba_directory_mask:-"0777"}"
 
 # Check if 'Active Directory' is enabled?
 configxml_isset //ad/enable
@@ -114,7 +117,7 @@ samba_mkconf_cmd()
 		-o "max xmit = 65535" -n \
 		-o "deadtime = 15" -n \
 		-o "getwd cache = yes" -n \
-		-o "socket options = IPTOS_LOWDELAY TCP_NODELAY " \
+		-o "socket options = ${samba_socket_options} " \
 		-i "string-length(//samba/sndbuf) > 0" \
 			-v "concat('SO_SNDBUF=',//samba/sndbuf,' ')" \
 		-b \
@@ -166,9 +169,9 @@ samba_mkconf_cmd()
 		-i "//samba/security[. = 'share']" \
 			-o "passdb backend = smbpasswd" -n \
 			-i "string-length(//samba/createmask) > 0" -v "concat('create mask = ',//samba/createmask)" -n -b \
-			-i "string-length(//samba/createmask) = 0" -o "create mask = 0666" -n -b \
+			-i "string-length(//samba/createmask) = 0" -o "create mask = ${samba_create_mask}" -n -b \
 			-i "string-length(//samba/directorymask) > 0" -v "concat('directory mask = ',//samba/directorymask)" -n -b \
-			-i "string-length(//samba/directorymask) = 0" -o "directory mask = 0777" -n -b \
+			-i "string-length(//samba/directorymask) = 0" -o "directory mask = ${samba_directory_mask}" -n -b \
 			-o "force user = ftp" -n \
 			-o "force group = ftp" -n \
 		-b \
