@@ -1,6 +1,9 @@
 FreeNAS 0.7.1 (Shere):
 ----------------------
 
+Majors changes:
+- Upgrade e2fsprogs to 1.41.9.
+
 Bug fixes:
 - Fix bug in istgt script.
 - To prevent Samba error messages like 'Unknown socket option IPTOS_LOWDELAY'
