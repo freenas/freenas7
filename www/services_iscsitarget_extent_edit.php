@@ -57,6 +57,41 @@ if (!is_array($config['iscsitarget']['extent']))
 array_sort_key($config['iscsitarget']['extent'], "name");
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
+function get_all_device() {
+	$a = array();
+	$a[''] = gettext("Must choose one");
+	foreach (get_conf_all_disks_list_filtered() as $diskv) {
+		$file = $diskv['devicespecialfile'];
+		$size = $diskv['size'];
+		$name = $diskv['name'];
+		$desc = $diskv['desc'];
+		if (strcmp($size, "NA") == 0) continue;
+		if (disks_exists($file) == 1) continue;
+		$a[$file] = htmlspecialchars("$name: $size ($desc)");
+	}
+	return $a;
+}
+
+// TODO: handle SCSI pass-through device
+function get_all_scsi_device() {
+	$a = array();
+	$a[''] = gettext("Must choose one");
+	foreach (get_conf_all_disks_list_filtered() as $diskv) {
+		$file = $diskv['devicespecialfile'];
+		$size = $diskv['size'];
+		$name = $diskv['name'];
+		$desc = $diskv['desc'];
+		if (strcmp($size, "NA") == 0) continue;
+		if (disks_exists($file) == 1) continue;
+		if (!preg_match("/^(da|cd|sa)[0-9]/", $name)) continue;
+		$a[$file] = htmlspecialchars("$name: $size ($desc)");
+	}
+	return $a;
+}
+
+$a_device = get_all_device();
+$a_scsi_device = get_all_scsi_device();
+
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_extent, "uuid")))) {
 	$pconfig['uuid'] = $a_iscsitarget_extent[$cnid]['uuid'];
 	$pconfig['name'] = $a_iscsitarget_extent[$cnid]['name'];
@@ -97,16 +132,26 @@ if ($_POST) {
 	}
 
 	// Input validation.
-	if ($pconfig['sizeunit'] == 'auto'){
+	if ($_POST['type'] == 'device') {
+		$pconfig['sizeunit'] = "auto";
+		$_POST['sizeunit'] = "auto";
 		$pconfig['size'] = "";
 		$_POST['size'] = "";
-		$reqdfields = explode(" ", "name path sizeunit");
-		$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("Auto size"));
-		$reqdfieldst = explode(" ", "string string string");
-	}else{
-		$reqdfields = explode(" ", "name path size sizeunit");
-		$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("File size"), gettext("File sizeunit"));
-		$reqdfieldst = explode(" ", "string string numericint string");
+		$reqdfields = explode(" ", "name device");
+		$reqdfieldsn = array(gettext("Extent name"), gettext("Device"));
+		$reqdfieldst = explode(" ", "string string");
+	} else {
+		if ($pconfig['sizeunit'] == 'auto'){
+			$pconfig['size'] = "";
+			$_POST['size'] = "";
+			$reqdfields = explode(" ", "name path sizeunit");
+			$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("Auto size"));
+			$reqdfieldst = explode(" ", "string string string");
+		}else{
+			$reqdfields = explode(" ", "name path size sizeunit");
+			$reqdfieldsn = array(gettext("Extent name"), gettext("Path"), gettext("File size"), gettext("File sizeunit"));
+			$reqdfieldst = explode(" ", "string string numericint string");
+		}
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -139,7 +184,7 @@ if ($_POST) {
 			$input_errors[] = sprintf(gettext("The path '%s' is a directory."), $path);
 		}
 	} else {
-		$path = $_POST['path'];
+		$path = $_POST['device'];
 	}
 	$pconfig['path'] = $path;
 
@@ -170,6 +215,35 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function type_change() {
+	switch (document.iform.type.value) {
+	case "file":
+		showElementById("path_tr", 'show');
+		showElementById("size_tr", 'show');
+		showElementById("device_tr", 'hide');
+		break;
+	case "device":
+		showElementById("path_tr", 'hide');
+		showElementById("size_tr", 'hide');
+		showElementById("device_tr", 'show');
+		break;
+	}
+}
+
+function sizeunit_change() {
+	switch (document.iform.sizeunit.value) {
+	case "auto":
+		document.iform.size.disabled = true;
+		break;
+	default:
+		document.iform.size.disabled = false;
+		break;
+	}
+}
+//-->
+</script>
 <form action="services_iscsitarget_extent_edit.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
@@ -188,18 +262,18 @@ if ($_POST) {
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
-	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true);?>
+	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true, false, "type_change()");?>
 	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
-	      <tr>
+	      <?php html_combobox("device", gettext("Device"), $pconfig['path'], $a_device, "", true);?>
+	      <tr id="size_tr">
 	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
 	        <td width="78%" class="vtable">
 	          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>">
-<!-- TODO: GUI onselect: if $sizeunit='auto' {blocking $size input window}else{unblocking $size input window}  -->
-	          <select name="sizeunit"> 
+	          <select name="sizeunit" onclick="sizeunit_change()"> 
 	            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MiB"));?></option>
 	            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GiB"));?></option>
 	            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TiB"));?></option>
-	            <option value="auto" <?php if ($pconfig['sizeunit'] === "auto") echo "selected";?>><?=htmlspecialchars(gettext("auto"));?></option>
+	            <option value="auto" <?php if ($pconfig['sizeunit'] === "auto") echo "selected";?>><?=htmlspecialchars(gettext("Auto"));?></option>
 	          </select><br/>
 	          <span class="vexpl"><?=gettext("Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)");?></span>
 	        </td>
@@ -216,4 +290,10 @@ if ($_POST) {
 	</table>
 	<?php include("formend.inc");?>
 </form>
+<script language="JavaScript">
+<!--
+	type_change();
+	sizeunit_change();
+//-->
+</script>
 <?php include("fend.inc");?>

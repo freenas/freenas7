@@ -236,11 +236,12 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
         </tr>
         <?php foreach($config['iscsitarget']['extent'] as $extent):?>
         <?php $sizeunit = $extent['sizeunit']; if (!$sizeunit) { $sizeunit = "MB"; }?>
+        <?php if ($sizeunit === "MB") { $psizeunit = gettext("MiB"); } else if ($sizeunit === "GB") { $psizeunit = gettext("GiB"); } else if ($sizeunit === "TB") { $psizeunit = gettext("TiB"); } else if ($sizeunit === "auto") { $psizeunit = gettext("Auto"); } else { $psizeunit = $sizeunit; }?>
         <?php $notificationmode = updatenotify_get_mode("iscsitarget_extent", $extent['uuid']);?>
         <tr>
           <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
           <td class="listr"><?=htmlspecialchars($extent['path']);?>&nbsp;</td>
-          <td class="listr"><?=htmlspecialchars($extent['size']);?><?=htmlspecialchars($sizeunit)?>&nbsp;</td>
+          <td class="listr"><?=htmlspecialchars($extent['size']);?><?=htmlspecialchars($psizeunit)?>&nbsp;</td>
           <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
           <td valign="middle" nowrap class="list">
             <a href="services_iscsitarget_extent_edit.php?uuid=<?=$extent['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" border="0"></a>

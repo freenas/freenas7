@@ -31,7 +31,7 @@ istgt_ctlfile="/var/etc/iscsi/istgtcontrol.conf"
 istgt_pidfile="/var/run/istgt.pid"
 pidfile="${istgt_pidfile}"
 command="/usr/local/bin/istgt"
-command_args="-c ${istgt_config} -t all"
+command_args="-c ${istgt_config}"
 flag=""
 
 istgt_mkconf()
