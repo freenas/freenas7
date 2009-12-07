@@ -1,11 +1,19 @@
---- pmap.h.orig	2008-09-23 18:33:11.000000000 +0000
-+++ pmap.h	2008-10-29 19:50:41.000000000 +0000
-@@ -118,7 +118,7 @@
- #define	NKPT		240
- #else
- /* 18 page tables needed to map 4G (72B "struct vm_page", 4M page tables). */
--#define	NKPT		30
-+#define	NKPT		60
- #endif
- #endif
- 
+*** pmap.h.orig	2009-12-07 13:58:28.000000000 +0100
+--- pmap.h	2009-12-07 13:59:47.000000000 +0100
+***************
+*** 129,135 ****
+  #define	NKPT		240
+  #else
+  /* 18 page tables needed to map 4G (72B "struct vm_page", 4M page tables). */
+! #define	NKPT		30
+  #endif
+  #endif
+  
+--- 129,135 ----
+  #define	NKPT		240
+  #else
+  /* 18 page tables needed to map 4G (72B "struct vm_page", 4M page tables). */
+! #define	NKPT		60
+  #endif
+  #endif
+  

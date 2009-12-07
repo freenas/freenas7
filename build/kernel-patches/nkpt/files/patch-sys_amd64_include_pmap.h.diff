@@ -1,11 +1,19 @@
---- pmap.h.orig	2009-04-05 09:37:42.000000000 +0000
-+++ pmap.h	2009-04-05 09:37:25.000000000 +0000
-@@ -111,7 +111,7 @@
- 
- /* Initial number of kernel page tables. */
- #ifndef NKPT
--#define	NKPT		32
-+#define	NKPT		60
- #endif
- 
- #define NKPML4E		1		/* number of kernel PML4 slots */
+*** pmap.h.orig	2009-12-07 13:56:56.000000000 +0100
+--- pmap.h	2009-12-07 13:57:16.000000000 +0100
+***************
+*** 115,121 ****
+  
+  /* Initial number of kernel page tables. */
+  #ifndef NKPT
+! #define	NKPT		32
+  #endif
+  
+  #define NKPML4E		1		/* number of kernel PML4 slots */
+--- 115,121 ----
+  
+  /* Initial number of kernel page tables. */
+  #ifndef NKPT
+! #define	NKPT		60
+  #endif
+  
+  #define NKPML4E		1		/* number of kernel PML4 slots */
