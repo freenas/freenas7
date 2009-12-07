@@ -9,7 +9,8 @@ DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${DISTNAME}${EXTRACT_SUFX}.sig
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 #libusb is included from FreeBSD 8.0
-#LIB_DEPENDS+=		usb-0.1.8:${PORTSDIR}/devel/libusb
+#But it need an extrapatch
+EXTRA_PATCHES=  ${FILESDIR}/extra-patch-m4_nut_check_libusb.m4
 
 USE_AUTOTOOLS=	autoconf:262
 GNU_CONFIGURE=	yes
