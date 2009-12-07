@@ -340,7 +340,7 @@ device		nxge		# Neterion Xframe 10GbE Server/Storage
 device		ixgb		# Intel PRO/10GbE Ethernet Card
 
 # SCSI Controllers
-#device		ihb				# IOI-A100U2W drivers
+device		ihb				# IOI-A100U2W drivers
 
 # Wireless NIC cards
 device		wlan_acl
