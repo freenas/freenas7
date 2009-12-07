@@ -19,7 +19,7 @@
 # $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.530 2009/07/02 18:24:37 ed Exp $
 
 cpu		HAMMER
-ident		GENERIC
+ident		FREENAS-x86-64
 
 # To statically compile in device wiring instead of /boot/device.hints
 #hints		"GENERIC.hints"		# Default places to look for devices.
@@ -30,7 +30,7 @@ options 	SCHED_ULE			# ULE scheduler
 options 	PREEMPTION		# Enable kernel thread preemption
 options 	INET			# InterNETworking
 options 	INET6			# IPv6 communications protocols
-options 	SCTP			# Stream Control Transmission Protocol
+#options 	SCTP			# Stream Control Transmission Protocol
 options 	FFS			# Berkeley Fast Filesystem
 options 	SOFTUPDATES		# Enable FFS soft updates support
 options 	UFS_ACL			# Support for access control lists
@@ -49,10 +49,10 @@ options 	GEOM_PART_GPT		# GUID Partition Tables.
 options 	GEOM_LABEL		# Provides labelization
 options 	COMPAT_43TTY		# BSD 4.3 TTY compat (sgtty)
 options 	COMPAT_IA32		# Compatible with i386 binaries
-options 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
-options 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
-options 	COMPAT_FREEBSD6		# Compatible with FreeBSD6
-options 	COMPAT_FREEBSD7		# Compatible with FreeBSD7
+#options 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
+#options 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
+#options 	COMPAT_FREEBSD6		# Compatible with FreeBSD6
+#options 	COMPAT_FREEBSD7		# Compatible with FreeBSD7
 options 	SCSI_DELAY=5000		# Delay (in ms) before probing SCSI
 #options 	KTRACE			# ktrace(1) support
 #options 	STACK			# stack(9) support
@@ -63,7 +63,6 @@ options 	P1003_1B_SEMAPHORES	# POSIX-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	PRINTF_BUFR_SIZE=128	# Prevent printf output being interspersed.
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
-options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
 options 	HWPMC_HOOKS		# Necessary kernel hooks for hwpmc(4)
 options 	AUDIT			# Security event auditing
 options 	MAC			# TrustedBSD MAC Framework
@@ -92,6 +91,9 @@ device		atapicd		# ATAPI CDROM drives
 device		atapifd		# ATAPI floppy drives
 device		atapist		# ATAPI tape drives
 options 	ATA_STATIC_ID	# Static device numbering
+
+# Experimental AHCI drivers
+device      ahci        # Serial ATA Advanced Host Controller Interface driver
 
 # SCSI Controllers
 device		ahc		# AHA2940 and onboard AIC7xxx devices
@@ -334,7 +336,7 @@ device		nxge		# Neterion Xframe 10GbE Server/Storage
 device		ixgb		# Intel PRO/10GbE Ethernet Card
 
 # SCSI Controllers
-device		ihb				# IOI-A100U2W drivers
+#device		ihb				# IOI-A100U2W drivers
 
 # Wireless NIC cards
 device		wlan_acl

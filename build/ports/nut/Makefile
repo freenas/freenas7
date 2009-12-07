@@ -8,7 +8,8 @@ MASTER_SITES=	http://www.networkupstools.org/source/${PORTVERSION:R}/
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${DISTNAME}${EXTRACT_SUFX}.sig
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-LIB_DEPENDS+=		usb-0.1.8:${PORTSDIR}/devel/libusb
+#libusb is included from FreeBSD 8.0
+#LIB_DEPENDS+=		usb-0.1.8:${PORTSDIR}/devel/libusb
 
 USE_AUTOTOOLS=	autoconf:262
 GNU_CONFIGURE=	yes

@@ -30,6 +30,10 @@ chmod 4755 usr/bin/su
 echo "usr/bin/passwd"
 chflags -RH noschg usr/bin/passwd
 
+# usr/bin/login
+echo "usr/bin/login"
+chflags -RH noschg usr/bin/login
+
 # sbin/init
 echo "sbin/init"
 chflags -RH noschg sbin/init

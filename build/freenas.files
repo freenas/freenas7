@@ -144,8 +144,8 @@ sbin/geom:sbin/gconcat:sbin/gmirror:sbin/gnop:sbin/gstripe:sbin/geli:sbin/glabel
 ## growfs -- grow size of an existing ufs file system
 sbin/growfs
 
-## gpt -- Manipulate GUID partition tables
-sbin/gpt
+##gpart — control utility for the disk partitioning GEOM class
+sbin/gpart
 
 ## gvinum -- Volume manager (RAID0,1,5)
 sbin/gvinum
@@ -194,9 +194,6 @@ sbin/mount_msdosfs
 
 ## mount_nfs -- mount NFS file system
 sbin/mount_nfs
-
-## mount_nfs4 -- mount NFSv4 file system
-sbin/mount_nfs4
 
 ## mount_cd9660 -- mount CDROM file system
 sbin/mount_cd9660
@@ -616,7 +613,9 @@ etc/rc.firewall6
 
 ####### contents of /etc/defaults
 etc/defaults/devfs.rules
-etc/defaults/pccard.conf
+#pccard.conf is not present on /etc/defaults on FreeBSD 8.0
+#Need to check if still usefull
+#etc/defaults/pccard.conf
 etc/defaults/rc.conf
 
 ####### contents of /etc/rc.d
@@ -639,7 +638,28 @@ etc/rc.d/devd
 etc/rc.d/dmesg
 
 ####### contents of /usr/share/snmp/defs
-usr/share/snmp/defs/*.def
+usr/share/snmp/defs/atm_freebsd.def
+usr/share/snmp/defs/bridge_tree.def
+usr/share/snmp/defs/mibII_tree.def
+usr/share/snmp/defs/pf_tree.def
+usr/share/snmp/defs/atm_tree.def
+usr/share/snmp/defs/hostres_tree.def
+usr/share/snmp/defs/netgraph_tree.def
+usr/share/snmp/defs/tree.def
 
 ####### contents of /usr/share/snmp/mibs
-usr/share/snmp/mibs/*.txt
+usr/share/snmp/mibs/BEGEMOT-ATM-FREEBSD-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-ATM.txt
+usr/share/snmp/mibs/BEGEMOT-BRIDGE-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-HOSTRES-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-IP-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-MIB2-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-NETGRAPH.txt
+usr/share/snmp/mibs/BEGEMOT-PF-MIB.txt
+usr/share/snmp/mibs/BEGEMOT-SNMPD.txt
+usr/share/snmp/mibs/BRIDGE-MIB.txt
+usr/share/snmp/mibs/FOKUS-MIB.txt
+usr/share/snmp/mibs/FREEBSD-MIB.txt
+usr/share/snmp/mibs/RSTP-MIB.txt
+

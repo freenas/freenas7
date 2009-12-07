@@ -6,6 +6,9 @@
 # Debug script
 #set -x
 
+# Exit if not managed error
+set -e
+
 ################################################################################
 # Settings
 ################################################################################
@@ -129,12 +132,17 @@ build_world() {
 		fi
 
 		# Copy files from world.
-		cp -Rpv ${FREENAS_WORLD}/$file $(echo $file | rev | cut -d "/" -f 2- | rev)
-
+        if [ -a ${FREENAS_WORLD}/$file ]; then
+		    if ! cp -fRpv ${FREENAS_WORLD}/$file $(echo $file | rev | cut -d "/" -f 2- | rev) ; then
+                echo "can't copy ${FREENAS_WORLD}/$file"
+            fi
+        else
+            echo "WARNING, Missing file: ${FREENAS_WORLD}/$file"
+        fi
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
-				ln -sv /$file $j
+				ln -fsv /$file $j
 			done
 		fi
 	done
