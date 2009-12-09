@@ -46,9 +46,7 @@ set colorcat
 alias ls ls -G
 alias ll ls -hl
 
-# Some BSDRP aliases:
-alias cli vtysh
-alias xorp xorpsh
+# Some FreeNAS aliases:
 alias include grep
 alias reload 'system reboot'
 alias halt 'system halt'

@@ -298,18 +298,7 @@ add_port "security/libgcrypt" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
 add_port "databases/db41" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
 add_port "net/netatalk" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
 
-
-
-# Then we need to install net-snmp without perl modules
-#add_port "net-mgmt/net-snmp" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITH_IPV6 -DWITH_MFD_REWRITES -DWITHOUT_TKMIB -DWITH_DUMMY -DWITHOUT_PERL_EMBEDDED -DWITHOUT_PERL"
-
-# Quagga installation
-#add_port "net/quagga" "-DNO_INSTALL_MANPAGES -DWITH_ISISD -DWITH_OSPF_NSSA -DWITH_OSPF_OPAQUE_LSA -DWITH_SNMP -DWITH_TCPSOCKETS -DWITH_DLMALLOC -DWITH_VTYSH"
-# Quagga install some software that we don't need anymore after install: devel/libtool*, devel/gettext, /devel/gmake, /lang/gawk
-
-# Libiconv is needed by vim-lite, but the package is not automaticaly generated, then force it:
-#add_port "converters/libiconv" "-DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER"
-
+### Extra stuf
 # Add a text editor that support syntax colorization (usefull for edit shell script)
 add_port "editors/vim-lite" "-DWITHOUT_X11 -DNO_INSTALL_MANPAGES"
 

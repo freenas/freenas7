@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# Qemu test script for BSD Router Project
+# Qemu test script for FreeNAs
 #
-# Copyright (c) 2009, The BSDRP Development Team
+# Copyright (c) 2009, The FreeNAS Development Team
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -87,7 +87,7 @@ check_image () {
     fi
 
     if ! `file -b ${FILENAME} | grep -q "boot sector"  > /dev/null 2>&1`; then
-        echo "ERROR: Not a BSDRP image??"
+        echo "ERROR: Not a FreeNAS NanoBSD image??"
         exit 1
     fi
     
@@ -114,47 +114,6 @@ create_interfaces_shared () {
     ifconfig ${TAP_IF} up
 }
 
-# Creating interfaces for lAB mode
-create_interfaces_lab () {
-    if ! `ifconfig | grep -q 10.0.0.254`; then
-        echo "Creating admin bridge interface..."
-        BRIDGE_IF=`ifconfig bridge create`
-        if ! `ifconfig ${BRIDGE_IF} 10.0.0.254/24`; then
-            echo "Can't set IP address on ${BRIDGE_IF}"
-            exit 1
-        fi
-    else
-        echo "Need to found the bridge number configured with 10.0.0.254"
-        exit 1
-    fi
-    #Shared TAP interface for communicating with the host
-    echo "Creating the $NUMBER_VM tap interfaces that be shared with host"
-    i=1
-    while [ $i -le $NUMBER_VM ]; do
-        echo "Creating admin tap interface..."
-        eval TAP_IF_${i}=`ifconfig tap create`
-
-        # Link bridge with tap
-        TAP_IF="TAP_IF_$i"
-        TAP_IF=`eval echo $"${TAP_IF}"`
-        ifconfig ${BRIDGE_IF} addm ${TAP_IF} up
-        ifconfig ${TAP_IF} up
-        i=`expr $i + 1`
-    done
-}
-
-# Delete all admin interfaces create for lab mode
-delete_interface_lab () {
-    i=1
-    while [ $i -le $NUMBER_VM ]; do
-        TAP_IF="TAP_IF_$i"
-        TAP_IF=`eval echo $"${TAP_IF}"`
-        ifconfig ${TAP_IF} destroy
-        i=`expr $i + 1`
-    done
-    ifconfig ${BRIDGE_IF} destroy
-
-} 
 # Parse filename for detecting ARCH and console
 parse_filename () {
     QEMU_ARCH=0
@@ -194,89 +153,13 @@ parse_filename () {
 
 }
 
-start_lab_vm () {
-    echo "Starting a lab with $NUMBER_VM routers:"
-    echo "- 1 shared LAN between all routers and the host"
-    echo "- $NUMBER_LAN LAN between all routers"
-    echo "- Full mesh ethernet point-to-point link between each routers"
-    echo ""
-    i=1
-    #Enter the main loop for each VM
-    while [ $i -le $NUMBER_VM ]; do
-        echo "Router$i have the folllowing NIC:"
-        TAP_IF="TAP_IF_$i"
-        TAP_IF=`eval echo $"${TAP_IF}"`
-        QEMU_NAME="-name Router${i}"
-        if ($SHARED_WITH_HOST); then
-            NIC_NUMBER=0
-            echo "em${NIC_NUMBER} connected to shared with host LAN, configure IP 10.0.0.${i}/8 on this."
-            NIC_NUMBER=`expr ${NIC_NUMBER} + 1`
-            QEMU_ADMIN_NIC="-net nic,macaddr=AA:AA:00:00:00:0${i},vlan=0 -net tap,vlan=0,ifname=${TAP_IF}"
-        else
-            QEMU_ADMIN_NIC=""
-            NIC_NUMBER=0
-        fi
-        #Enter in the Cross-over (Point-to-Point) NIC loop
-        #Now generate X x (X-1)/2 full meshed link
-        j=1
-        QEMU_PP_NIC=""
-        while [ $j -le $NUMBER_VM ]; do
-            if [ $i -ne $j ]; then
-                echo "em${NIC_NUMBER} connected to Router${j}."
-                NIC_NUMBER=`expr ${NIC_NUMBER} + 1`
-                if [ $i -le $j ]; then
-                    QEMU_PP_NIC="${QEMU_PP_NIC} -net nic,macaddr=AA:AA:00:00:0${i}:${i}${j},vlan=${i}${j} -net socket,mcast=230.0.0.1:100${i}${j},vlan=${i}${j}"
-                else
-                    QEMU_PP_NIC="${QEMU_PP_NIC} -net nic,macaddr=AA:AA:00:00:0${i}:${j}${i},vlan=${j}${i} -net socket,mcast=230.0.0.1:100${j}${i},vlan=${j}${i}"
-                fi
-            fi
-            j=`expr $j + 1` 
-        done
-        #Enter in the LAN NIC loop
-        j=1
-        QEMU_LAN_NIC=""
-        while [ $j -le $NUMBER_LAN ]; do
-            echo "em${NIC_NUMBER} connected to LAN number ${j}."
-            NIC_NUMBER=`expr ${NIC_NUMBER} + 1`
-            QEMU_LAN_NIC="${QEMU_LAN_NIC} -net nic,macaddr=CC:CC:00:00:0${j}:0${i},vlan=10${j} -net socket,mcast=230.0.0.1:1000${j},vlan=10${j}"
-            j=`expr $j + 1`
-        done
-        if ($SERIAL); then
-            QEMU_OUTPUT="-nographic -vga none -serial telnet::800${i},server,nowait"
-            echo "Connect to the router ${i} by telneting to localhost on port 800${i}"
-        else
-            QEMU_OUTPUT="-vnc :${i}"
-            echo "Connect to the router ${i} by VNC client on display ${i}"
-        fi
-        ${QEMU_ARCH} -enable-kqemu -snapshot -hda ${FILENAME} ${QEMU_OUTPUT} ${QEMU_NAME} ${QEMU_ADMIN_NIC} ${QEMU_PP_NIC} ${QEMU_LAN_NIC} -pidfile /tmp/BSDRP-$i.pid -daemonize
-        i=`expr $i + 1`
-    done
-
-    #Now wait for each qemu process end before continue
-    i=1
-    while [ $i -le $NUMBER_VM ]; do
-        while (ps -p `cat /tmp/BSDRP-$i.pid` > /dev/null)
-        do
-            sleep 1
-        done
-        i=`expr $i + 1`
-    done
-    
-}
-
 usage () {
         (
-        echo "Usage: $0 [-s] -i BSDRP-full.img [-n router-number] [-l LAN-number]"
-        echo "  -i filename     BSDRP file image path"
-        echo "  -n X            Lab mode: start X routers (between 2 and 9) full meshed"
-        echo "  -l Y            Number of LAN between 0 and 9 (in lab mode only)"
+        echo "Usage: $0 [-s] -i FreeNAS-full.img" 
+        echo "  -i filename     FreeNAS file image path"
         echo "  -s              Enable a shared LAN with Qemu host"
         echo "  -h              Display this help"
         echo ""
-        echo "Note: In lab mode, the qemu process are started in snapshot mode,"
-        echo "this mean that all modifications to disks are lose after quitting the lab"
-        echo "Script need to be started with root if you want a shared LAN with the Qemu host"
-        echo "WARNING: Multicast traffic is not possible between Qemu guest!!"
         ) 1>&2
         exit 2
 }
@@ -288,7 +171,7 @@ usage () {
 ### Parse argument
 
 set +e
-args=`getopt i:hl:n:s $*`
+args=`getopt i:hs $*`
 if [ $? -ne 0 ] ; then
         usage
         exit 2
@@ -296,23 +179,11 @@ fi
 set -e
 
 set -- $args
-LAB_MODE=false
 SHARED_WITH_HOST=false
 for i
 do
         case "$i" 
         in
-        -n)
-                LAB_MODE=true
-                NUMBER_VM=$2
-                shift
-                shift
-                ;;
-        -l)
-                NUMBER_LAN=$2
-                shift
-                shift
-                ;;
         -s)
                 SHARED_WITH_HOST=true
                 shift
@@ -331,27 +202,6 @@ do
         esac
 done
 
-if [ "$NUMBER_VM" != "" ]; then
-    if [ $NUMBER_VM -lt 1 ]; then
-        echo "Error: Use a minimal of 2 routers in your lab."
-        exit 1
-    fi
-
-    if [ $NUMBER_VM -ge 9 ]; then
-        echo "Error: Use a maximum of 9 routers in your lab."
-        exit 1
-    fi
-fi
-
-if [ "$NUMBER_LAN" != "" ]; then
-    if [ $NUMBER_LAN -ge 9 ]; then
-        echo "Error: Use a maximum of 9 LAN in your lab."
-        exit 1
-    fi
-else
-    NUMBER_LAN=0
-fi
-
 if [ "$FILENAME" = "" ]; then
     usage
 fi
@@ -360,29 +210,20 @@ if [ $# -gt 0 ] ; then
     usage
 fi
 
-echo "BSD Router Project Qemu script"
+echo "FreeNAS NanoBSD Qemu script"
 check_system
 check_user
 check_image
 parse_filename
 
 if ($SHARED_WITH_HOST); then
-    if ($LAB_MODE); then
-        create_interfaces_lab
-    else
-        create_interfaces_shared
-    fi
+   create_interfaces_shared
 fi
 
-if ($LAB_MODE); then
-    echo "Starting qemu in lab mode..."
-    echo "With $NUMBER_VM BSDRP VM full meshed"
-    start_lab_vm    
-else
-    echo "Starting qemu..."
-    ${QEMU_ARCH} -hda ${FILENAME} -net nic -net tap,ifname=tap0 -localtime \
-    ${QEMU_OUTPUT} -k fr
-fi
+echo "Starting qemu..."
+${QEMU_ARCH} -hda ${FILENAME} -net nic -net usr -localtime \
+${QEMU_OUTPUT}
+
 echo "...qemu stoped"
 if ($SHARED_WITH_HOST); then
     echo "Destroying shared Interfaces..."
