@@ -374,8 +374,8 @@ device		cryptodev
 device		padlock
 
 # GEOM classes
-options		GEOM_ELI	# GELI filesystem encryption
-options		GEOM_UZIP	# GEOM based compressed disk images
+#options		GEOM_ELI	# GELI filesystem encryption
+#options		GEOM_UZIP	# GEOM based compressed disk images
 
 # Temperature sensors:
 #
@@ -394,4 +394,7 @@ device		coretemp
 #ipfw     :   IPFIREWALL
 #if_lagg  :   Link aggregation interface
 #if_vlan  :   IEEE 802.1Q VLAN Support
-makeoptions    MODULES_OVERRIDE="acpi if_lagg if_vlan ipfw"
+#zfs, opensolaris : ZFS
+#geom     :  All geom modules
+makeoptions    MODULES_OVERRIDE="acpi if_lagg if_vlan ipfw zfs opensolaris geom"
+
