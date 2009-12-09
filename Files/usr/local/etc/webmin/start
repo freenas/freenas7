@@ -1,0 +1,10 @@
+#!/bin/sh
+trap '' 1
+LANG=
+export LANG
+#PERLIO=:raw
+unset PERLIO
+export PERLIO
+PERLLIB=/usr/local/lib/webmin
+export PERLLIB
+exec '/usr/local/lib/webmin/miniserv.pl' /usr/local/etc/webmin/miniserv.conf

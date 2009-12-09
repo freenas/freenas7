@@ -1,0 +1,12 @@
+lease_file=/var/db/dhcpd.leases
+dhcpd_path=/usr/local/sbin/dhcpd
+display_max=100
+group_name=0
+lease_tz=0
+lease_sort=0
+show_mac=0
+dhcpd_conf=/usr/local/etc/dhcpd.conf
+pid_file=/var/run/dhcpd.pid
+desc_name=0
+show_ip=0
+dhcpd_nocols=5

@@ -1,0 +1,6 @@
+timeserver_hardware=1
+seconds=2
+lease=5
+ntp_only=1
+zone_style=freebsd
+hwtime=0

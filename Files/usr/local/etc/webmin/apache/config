@@ -1,0 +1,17 @@
+test_manual=0
+show_list=0
+access_conf=/usr/local/etc/apache/access.conf
+mime_types=/usr/local/etc/apache/mime.types
+auto_mods=1
+pid_file=/var/run/httpd.pid
+test_apachectl=1
+max_servers=100
+srm_conf=/usr/local/etc/apache/srm.conf
+httpd_dir=/usr/local
+show_order=0
+test_always=0
+httpd_conf=/usr/local/etc/apache/httpd.conf
+apachectl_path=/usr/local/sbin/apachectl
+show_names=0
+test_config=1
+httpd_path=/usr/local/sbin/httpd

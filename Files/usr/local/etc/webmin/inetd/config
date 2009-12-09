@@ -1,0 +1,12 @@
+ipv6=0
+services_file=/etc/services
+rpc_protocols=tcp udp
+restart_command=killall -HUP inetd
+protocols_file=/etc/protocols
+rpc_inetd=0
+extended_inetd=2
+show_empty=0
+rpc_file=/etc/rpc
+sort_mode=0
+inetd_conf_file=/etc/inetd.conf
+qm_mode=0

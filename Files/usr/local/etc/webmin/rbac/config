@@ -1,0 +1,10 @@
+base_id=100
+prof_help_dir=/usr/lib/help/profiles/locale/C
+project=/etc/project
+user_attr=/etc/user_attr
+policy_conf=/etc/security/policy.conf
+auth_help_dir=/usr/lib/help/auths/locale/C
+auth_attr=/etc/security/auth_attr
+crypt_conf=/etc/security/crypt.conf
+prof_attr=/etc/security/prof_attr
+exec_attr=/etc/security/exec_attr

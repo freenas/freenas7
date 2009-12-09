@@ -1,0 +1,15 @@
+m4_conf=0
+pipe=0
+sync=0
+others=1
+pri_dir=2
+lines=20
+socket=0
+tags=1
+syslogd=/usr/sbin/syslogd
+pri_all=1
+pid_file=/var/run/syslog.pid
+m4_path=
+compressed=1
+syslog_conf=/etc/syslog.conf
+facilities=auth authpriv cron daemon ftp kern lpr mail mark news ntp syslog user uucp local0 local1 local2 local3 local4 local5 local6 local7

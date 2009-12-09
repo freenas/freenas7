@@ -1,0 +1,4 @@
+logrotate=/usr/local/sbin/logrotate
+sample_conf=/usr/local/etc/logrotate.conf.sample
+sort_mode=0
+logrotate_conf=/usr/local/etc/logrotate.conf

@@ -1,0 +1,2 @@
+exports_file=/etc/exports
+restart_command=(killall -0 portmap || portmap) ; (killall -HUP mountd nfsd || (mountd ; nfsd))

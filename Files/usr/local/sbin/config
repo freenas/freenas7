@@ -124,7 +124,7 @@ umount_cfg () {
 # Mount data
 mount_data () {
 	trap "umount /data" 1 2 15 EXIT
-	mount /dev/ufs/data /mnt
+	mount /dev/ufs/sysdata /mnt
 }
 
 # umount data

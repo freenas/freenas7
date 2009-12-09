@@ -1,0 +1,2 @@
+apply_cmd=exportfs -u -a ; exportfs -a
+exports_file=/etc/exports

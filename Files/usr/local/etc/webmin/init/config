@@ -1,0 +1,10 @@
+no_chkconfig=0
+local_down=/etc/rc.shutdown
+rc_dir=/etc/rc.d /usr/local/etc/rc.d
+rc_conf=/etc/defaults/rc.conf /etc/rc.conf
+shutdown_command=shutdown -p now
+order=0
+status_check=0
+sort_mode=0
+reboot_command=shutdown -r now
+local_script=/etc/rc.local

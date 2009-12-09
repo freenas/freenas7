@@ -1,0 +1,16 @@
+samba_server=/usr/local/sbin/smbd
+samba_status_program=/usr/local/bin/smbstatus
+name_server=/usr/local/sbin/nmbd
+net=/usr/local/bin/net
+smbgroupedit=/usr/local/bin/smbgroupedit
+alt_smb_conf=/usr/local/etc/smb.conf.default
+samba_password_program=/usr/local/bin/smbpasswd
+sort_mode=0
+smb_conf=/usr/local/etc/smb.conf
+run_from_inetd=0
+smb_passwd=/usr/local/private/smbpasswd
+text_lists=0
+list_printers_command=lpc status | grep "[A-z0-9]:" | sed -e 's/://g'
+swat_path=/usr/local/sbin/swat
+dont_convert=-499 root toor daemon operator bin tty sys kmem adm lp smtp uucp nuucp listen nobody noaccess nobody4 pop lp mail postmaster news man ftp games smmsp mailnull bind xten gnats www pgsql mysql
+pdbedit=/usr/local/bin/pdbedit

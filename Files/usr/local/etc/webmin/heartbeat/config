@@ -1,0 +1,12 @@
+start_cmd=/usr/local/etc/rc.d/heartbeat.sh start
+haresources=
+ha_cf=
+req_resource_cmd=/usr/local/lib/heartbeat/req_resource
+stop_cmd=/usr/local/etc/rc.d/heartbeat.sh stop
+authkeys=
+pid_file=/var/run/heartbeat.pid
+apply_cmd=/usr/local/etc/rc.d/heartbeat.sh reload
+heartbeat=/usr/local/lib/heartbeat/heartbeat
+ha_dir=/usr/local/etc/ha.d
+serials=/dev/cuaa*
+resource_d=

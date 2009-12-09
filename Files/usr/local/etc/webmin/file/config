@@ -1,0 +1,10 @@
+defzip=0
+getfacl=getfacl
+iconsize=0
+setfacl=setfacl -M -
+force_text=0
+nocharset=0
+extract=1
+hide_dot_files=0
+ufs_acl=&has_command("getfacl") && &has_command("setfacl")
+defuser=root

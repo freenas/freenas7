@@ -1,0 +1,5 @@
+start_cmd=/usr/local/sbin/xinetd
+pid_file=/var/run/xinetd.pid
+xinetd_conf=/etc/xinetd.conf
+lookup_servs=1
+protocols_file=/etc/protocols
