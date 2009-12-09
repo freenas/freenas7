@@ -1,0 +1,12 @@
+Founder:
+    Olivier Cochard-Labbe <olivier@cochard.me>
+
+Developers and Contributors:
+Listed in order of seniority along with date of first contribution.
+
+Reuse of existing softwares/patches:
+
+FreeNAS is based upon/includes various free software packages, listed below. The authors of BSDRP would like to thank the authors of these software packages for their efforts.
+
+* FreeBSD:  Copyright (c) 1995-2009 The FreeBSD Project. All rights reserved.
+

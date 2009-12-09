@@ -1,0 +1,111 @@
+#!/bin/sh
+#
+# Configuration tool for BSD Router Project
+#
+# Copyright (c) 2009, The BSDRP Development Team
+# All rights reserved.
+# Based on the updatep1 and updatep2 script of nanoBSD
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+
+#######################
+##  Example of Usage ##
+#######################	
+
+# Put the bziped _.disk.image on my-server, in the  home dir of my-user,
+# and from the nanoBSD device, enter this command:
+# ssh my-user@my-server cat _.disk.image.bz2 | bzcat | upgrade
+
+
+# Exit script if error meet
+set -e
+
+# Get the NANO_GLABEL_SYS variable
+# (get the name from mount output, and remove the last character)
+NANO_GLABEL_SYS=`mount | grep " / " | cut -d'/' -f4 | cut -d' ' -f1 | sed 's/\(.*\)./\1/'`
+# Get the NANO_GLABEL_SYS_FULL variable
+# (kept the last 1 or 2 number)
+NANO_GLABEL_SYS_FULL=`mount | grep " / " | cut -d'/' -f4 | cut -d' ' -f1`
+
+# Get the disk name using its label
+NANO_DRIVE=`glabel status | grep ufs/${NANO_GLABEL_SYS_FULL} | awk '{print $3}' | cut -d's' -f1`
+
+# Get the full disk name
+NANO_FULLDRIVE=`glabel status | grep ufs/${NANO_GLABEL_SYS_FULL} | awk '{print $3}'`
+
+# Check and set final variable
+DST_SLICE=0
+
+if [ `echo $NANO_FULLDRIVE | /usr/bin/grep "s1"` ]; then 
+	DST_SLICE=2
+	SRC_SLICE=1
+fi
+if [ `echo $NANO_FULLDRIVE | /usr/bin/grep "s2"` ]; then                
+    DST_SLICE=1
+	SRC_SLICE=2
+fi
+
+if [ $DST_SLICE = 0 ]; then
+	echo "Can't detect active slice"
+	exit 1
+fi
+
+# Blow away old system.
+dd if=/dev/zero of=/dev/${NANO_DRIVE}s${DST_SLICE} bs=1m count=1 > /dev/null 2>&1
+
+echo "Upgrading... Please wait."
+
+# Copy in new system
+dd of=/dev/${NANO_DRIVE}s${DST_SLICE} obs=64k
+
+# Check that it worked
+fsck_ffs -n /dev/${NANO_DRIVE}s${DST_SLICE}a
+
+# Set Label into the new slice
+tunefs -L ${NANO_GLABEL_SYS}${DST_SLICE} /dev/${NANO_DRIVE}s${DST_SLICE}a
+
+# Adapt fstab of the new system
+mkdir /tmp/upgrade
+mount /dev/ufs/${NANO_GLABEL_SYS}${DST_SLICE} /tmp/upgrade
+for f in /tmp/upgrade/etc/fstab /tmp/upgrade/conf/base/etc/fstab /etc/fstab
+	do
+	    sed -i "" "s/${NANO_GLABEL_SYS}${SRC_SLICE}/${NANO_GLABEL_SYS}${DST_SLICE}/g" $f
+    done
+umount /tmp/upgrade
+
+# Save the config file that include the fstab
+# Don't know if it's usefull
+mount /cfg
+cp /etc/fstab /cfg
+umount /cfg
+
+# Changing bootloader
+# some man page say that is better to use debugflag before modifying MBR
+# But this remove all geom UFS label, and let the system in ustable state
+# (the / use an UFS label, then it's not more useable after boot0tcf)
+#sysctl kern.geom.debugflags=16
+boot0cfg -s ${DST_SLICE} -v ${NANO_DRIVE}
+# Special bug fix for FreeBSD 7.2 and 8.0-current:
+# boot0cfg don't update the MBR active slice !!!
+echo "a ${DST_SLICE}" | fdisk -f /dev/stdin ${NANO_DRIVE}
+#sysctl kern.geom.debugflags=0

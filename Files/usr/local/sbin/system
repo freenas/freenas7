@@ -1,0 +1,245 @@
+#!/bin/sh
+#
+# System tool for BSD Router Project 
+#
+# Copyright (c) 2009, The BSDRP Development Team 
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+
+# Uncomment for enable the debug mode:
+#set -xv
+
+# Stop the script automatically on error
+set -e
+
+# Get options passed by user
+getoption () {
+	FIRST_OPTION="$1"
+	SECOND_OPTION="$2"
+	THIRD_OPTION="$3"
+	case "$FIRST_OPTION" in
+	halt|stop)
+		sys_halt
+		;;
+	reboot|reload)
+		sys_reboot
+		;;
+	virtualized)
+		sys_virtualized
+		;;
+	check-vm)
+        check_vm
+        ;;
+
+	help|h)
+		usage
+		;;
+	*)
+		if [ "${FIRST_OPTION}" = "" ];
+		then
+			echo "missing option"
+		else	
+			echo "illegal option: $FIRST_OPTION"
+		fi
+		usage
+		;;
+	esac
+}
+
+# Display help
+usage () {
+	echo "BSD Router Project: system tool"
+	case ${SECOND_OPTION} in
+	check-vm)
+		echo "Check if running under a Virtualized environnement (Qemu, VirtualBox, etc.)"
+		echo "- [quiet] : Display only the warning"
+		exit 0
+		;;
+	virtualized)
+		echo "Optimize the system for running as a VM"
+		exit 0
+		;;
+	esac
+	# value $0 is the name of the called script
+	echo "Usage: $0 option"
+    echo "  - reboot/reload   : Restart the system"
+	echo "  - halt/stop       : Poweroff the system"
+	echo "  - virtualized     : Configure for usage as a VM"
+	echo "  - check-vm        : Try to detect if use in VM"
+	echo "  - help/h [option] : Display this help message. "
+	echo "		if [option] given, display more detail about the option"
+	exit 0
+}
+
+#ask to save configuration
+ask_save () {	
+	echo "Warning: Unsaved changes detected !"
+	echo "Do you want to save the configuration before to continue ? (y/n)"
+	while [ "$USER_CONFIRM" != "y" -a "$USER_CONFIRM" != "n" ]; do
+       	read USER_CONFIRM <&1
+	done
+	if [ "$USER_CONFIRM" = "y" ]; then
+		config save	
+	fi
+}
+# Check if cfg was modified
+check_cfg () {
+	echo "Checking if configuration is saved."
+	# Don't know why I can't test the exist value of config diff quit in my if
+	set +e
+    config diff quiet
+    if [ $? -eq 1 ]; then
+        ask_save
+    fi
+    set -e
+}
+
+# Reboot
+sys_reboot () {
+	check_cfg
+	echo "Rebooting..."
+	reboot
+}
+
+# Halt
+sys_halt () {
+	check_cfg
+	echo "Power halting..."
+	halt -p
+}
+
+# Check if system is under a VM
+check_vm () {
+	#Don't know how to use the pipe in a if
+	set +e
+	# Look for Qemu
+	sysctl -q dev.acpi.0.%desc | grep -q QEMU
+	if [ $? -eq 0 ]; then
+       	VM_FOUND=true
+	else
+		VM_FOUND=false
+    	fi
+	# Look for VMware
+	if ! (${VM_FOUND}); then
+		sysctl -q dev.ad.0.%desc | grep -q VMware
+		if [ $? -eq 0 ]; then
+       		VM_FOUND=true
+    	else
+        	VM_FOUND=false
+    	fi
+	fi
+	# Look for Virtualbox
+	if ! (${VM_FOUND}); then
+		sysctl -q dev.acpi.0.%desc | grep -q VBOX
+		if [ $? -eq 0 ]; then
+       		VM_FOUND=true
+    	else
+        	VM_FOUND=false
+    	fi
+	fi
+    # Need to add virtualbox, virtualpc, etc...
+    if (${VM_FOUND}); then
+		if [ "${SECOND_OPTION}" != "quiet" ]; then
+        	echo "VM environnement detected"
+		fi
+    fi
+	grep -q kern.hz=50 /boot/loader.conf
+    if [ $? -eq 0 ]; then
+        NOT_TUNED=false
+    else
+        NOT_TUNED=true
+    fi
+	
+	# Since FreeBSD 8, the kernel automatically detect the VM presence and lower the kern.hz
+	uname -r | grep -q 8.0
+	if [ $? -eq 0 ]; then
+		FREEBSD_8=true
+	else
+		FREEBSD_8=false
+	fi
+	# Stupid if, but don't know how to use an "add" condition in the if
+    if (${VM_FOUND}); then
+		if (${FREEBSD_8}); then
+			echo "VM usage detected, but since FreeBSD 8 there is no need to tune the system"
+			exit 0
+		fi
+		if (${NOT_TUNED}); then
+        	echo "Warning: default kern.hz not lowered!"
+        	echo 'Use "system virtualized" for tuning your system for a VM usage'
+   		fi 
+	fi
+	set -e
+    exit 0
+}
+
+# Create a new image with acceptable performance under virtualization (quemu, vmware, virtualbox, etc...)
+sys_virtualized () {
+
+	# Check if FreeBSD 8 detected
+	set +e
+	uname -r | grep -q 8.0
+    if [ $? -eq 0 ]; then
+		echo "There is no need of tuning BSDRP based on FreeBSD 8.0 for being use as a VM"
+		exit 0
+    fi
+	set -e
+
+	echo "This step will configure BSDRP for being use as a VM"
+	echo "A reboot is needed"
+	echo "Do you want to continue ? (y/n)"
+	while [ "$USER_CONFIRM" != "y" -a "$USER_CONFIRM" != "n" ]
+	do
+        read USER_CONFIRM <&1
+	done
+	
+	if [ "$USER_CONFIRM" = "n" ]; then
+		echo "Canceling"
+		exit 0
+	fi
+	
+	if [ `mount -u -o rw /` ]; then
+		echo "Error: Can't mount in read-write mode the /"
+		exit 1
+	fi
+	
+	if [ `echo kern.hz=50 >> /boot/loader.conf` ]; then
+		echo "Error: Can't modify loader.conf"
+		exit 1
+	fi
+
+	if [ `mount -u -o ro /` ]; then
+        echo "Error: Can't re-mount in read-only mode the /"
+        exit 1
+    fi
+
+	exit 0
+
+
+}
+
+###################
+## Main function ##
+###################
+
+getoption $*
