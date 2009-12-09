@@ -252,53 +252,51 @@ add_port () {
 ##### General library
 
 # Libiconv is needed by vim-lite, but the package is not automaticaly generated, then force it:
-add_port "converters/libiconv" -DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER
+add_port "converters/libiconv" "-DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER"
 
 # Gettext is need for allmost all ports
-add_port "devel/gettext" -DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER
+add_port "devel/gettext" "-DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER"
 
 # Webmin and samba compilation need perl
 add_port "lang/perl5.8" "-DWITHOUT_PERL_MALLOC -DWITH_PERL_64BITINT -DNO_INSTALL_MANPAGES"
 
 #### FreeNAS webGUI
-add_port "devel/pcre" -DNO_INSTALL_MANPAGES -DNOPORTDOCS
-add_port "devel/pkg-config" -DNO_INSTALL_MANPAGES -DNOPORTDOCS
-# I don't want spawn-fcgi! Why the option -DWITHOUT_SPAWNFCGI is not used !!!
-add_port "www/spawn-fcgi" -DNO_INSTALL_MANPAGES -DNOPORTDOCS
-add_port "www/lighttpd" -DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER -DWITH_WEBDAV -DWITH_BZIP2 -DWITHOUT_SPAWNFCGI
-
-add_port "security/p5-Net-SSLeay" -DNO_INSTALL_MANPAGES -DNOPORTDOCS
-add_port "security/p5-Authen-PAM" -DNO_INSTALL_MANPAGES -DNOPORTDOCS
-add_port "sysutils/webmin" -DNO_INSTALL_MANPAGES -DNOPORTDOCS 
+add_port "security/p5-Net-SSLeay" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+add_port "security/p5-Authen-PAM" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+add_port "sysutils/webmin" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS" 
 
 #### Disks Mangement
 
-add_port "sysutils/smartmontools" -DNO_INSTALL_MANPAGES -DNOPORTDOCS
+add_port "sysutils/smartmontools" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
 
 # NTFS-3g
-add_port "sysutils/fusefs-libs" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
-add_port "sysutils/fusefs-kmod" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
-add_port "devel/libublio" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
-add_port "sysutils/fusefs-ntfs" -DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITH_UBLIO
-
-# gzip: Why ???
-#add_port "archivers/gzip" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
+add_port "sysutils/fusefs-libs" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "sysutils/fusefs-kmod" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "devel/libublio" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "sysutils/fusefs-ntfs" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITH_UBLIO"
 
 #### Network protocols
 
 # iSCSI target
-add_port "net/istgt" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
+add_port "net/istgt" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
 
 # Samba
 #add_port "net/samba33" -DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITHOUT_CUPS -DWITH_SYSLOG -DWITH_QUOTAS -DWITH_EXP_MODULES -DWITH_ACL_SUPPORT -DWITH_PAM_SMBPASS -DWITH_ADS
 
 # netatalk: For Apple network
-add_port "security/libgpg-error" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
-add_port "security/libgcrypt" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
-add_port "databases/db41" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
-add_port "net/netatalk" -DNOPORTDOCS -DNO_INSTALL_MANPAGES
+add_port "security/libgpg-error" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "security/libgcrypt" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "databases/db41" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "net/netatalk" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
 
 ### Extra stuf
+# The webserver is not mandatory (webmin include a webserver)
+add_port "devel/pcre" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+add_port "devel/pkg-config" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+# I don't want spawn-fcgi! Why the option -DWITHOUT_SPAWNFCGI is not used !!!
+#add_port "www/spawn-fcgi" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+add_port "www/lighttpd" "-DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER -DWITH_WEBDAV -DWITH_BZIP2 -DWITHOUT_SPAWNFCGI"
+
 # Add a text editor that support syntax colorization (usefull for edit shell script)
 add_port "editors/vim-lite" "-DWITHOUT_X11 -DNO_INSTALL_MANPAGES"
 
