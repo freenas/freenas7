@@ -9,7 +9,8 @@ cd FreeNAS
 
 The resulting image will be in /usr/obj/nanobsd.FreeNAS/
 
-Then you can try it with qemu for example:
+Then you can try it with qemu using script: tools/qemu.sh
+or manually with this example:
 
 qemu-img create -f qcow2 FreeNAS-disk1.qcow2 100M
 qemu-img create -f qcow2 FreeNAS-disk2.qcow2 100M
