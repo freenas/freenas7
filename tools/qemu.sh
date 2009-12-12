@@ -149,13 +149,15 @@ parse_filename () {
         SERIAL=true
         echo "filename guests a serial image"
         echo "Use standard console as input/output"
+        echo "Guest VM configured without vga card"
+        
     fi
     if echo "${FILENAME}" | grep -q "vga"; then
         QEMU_OUTPUT="-vnc :0 -serial none"
         SERIAL=false
         echo "filename guests a vga image"
         echo "start a VNC server on :0 for input/output"
-        echo "DEBUG: Need to test with no serial port"
+        echo "Guest VM configured without serial port"
     fi
     if [ "$QEMU_OUTPUT" = "0" ]; then
         echo "WARNING: Can't suppose default console of this image"
@@ -245,7 +247,7 @@ check_user
 check_image
 parse_filename
 
-QEMU_NIC="-net nic -net usr"
+QEMU_NIC="-net nic -net user"
 
 if ($SHARED_WITH_HOST); then
    create_interfaces_shared
@@ -254,7 +256,7 @@ fi
 disks_init
 
 echo "Starting qemu..."
-${QEMU_ARCH} -hda ${FILENAME} -${QEMU_NIC} ${QEMU_OUTPUT} ${QEMU_DISK} -boot c -localtime \
+${QEMU_ARCH} -hda ${FILENAME} ${QEMU_NIC} ${QEMU_OUTPUT} ${QEMU_DISK} -boot c -localtime \
 -enable-kqemu
 echo "...qemu stoped"
 

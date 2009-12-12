@@ -30,10 +30,10 @@
 # Uncomment for enable debug: 
 #set -x
 
-DEST_ROOT=/tmp/bsdrp_root
-DEST_CFG=/tmp/bsdrp_cfg
-DEST_DATA=/tmp/bsdrp_data
-BSDRP_SRC=/usr/src/tools/tools/nanobsd/BSDRP
+DEST_ROOT=/tmp/freenas_root
+DEST_CFG=/tmp/freenas_cfg
+DEST_DATA=/tmp/freenas_data
+BSDRP_SRC=/usr/src/tools/tools/nanobsd/FreeNAS
 
 # Get options passed by user
 getoption () {
