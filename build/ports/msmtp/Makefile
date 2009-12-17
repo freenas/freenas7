@@ -1,5 +1,5 @@
 PORTNAME=			msmtp
-PORTVERSION=	1.4.17
+PORTVERSION=	1.4.19
 CATEGORIES=		mail ipv6
 COMMENT=			A SMTP client
 MAINTAINER=		votdev@gmx.de
