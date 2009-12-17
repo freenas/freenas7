@@ -14,6 +14,7 @@ Bug fixes:
   'IPTOS_LOWDELAY TCP_NODELAY') (BR 2894782).
 - Fix mt-daapd/firefly error 'Undefined symbol "avcodec_decode_audio"'
   (BR 2895960).
+- Fix bug in iSCSI initiator script (BR 2916334). Thanks to Daisuke Aoyama.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
