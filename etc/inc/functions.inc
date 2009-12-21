@@ -1,7 +1,7 @@
 <?php
 /*
   functions.inc
- 	part of FreeNAS (http://www.freenas.org)
+ 	part of FreeNAS (http://freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 

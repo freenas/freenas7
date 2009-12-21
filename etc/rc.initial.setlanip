@@ -2,7 +2,7 @@
 <?php
 /*
 	rc.initial.setlanip
-	part of FreeNAS (http://www.freenas.org)
+	part of FreeNAS (http://freenas.org)
 	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
@@ -314,9 +314,15 @@ else
 
 write_console("\n\n");
 write_console("The LAN IP address has been set to:\n");
-write_console("IPv4: {$laninfov4}\n");
+if ($laninfov4 !== "")
+    write_console("IPv4: {$laninfov4}\n");
+else
+    write_console("Error: Don't get IPv4 address!\n");
 if (isset($config['interfaces']['lan']['ipv6_enable'])) {
-	write_console("IPv6: {$laninfov6}\n");
+    if ($laninfov6 !== "")
+	    write_console("IPv6: {$laninfov6}\n");
+    else
+        write_console("IPv6 enabled, but can't get one\n");
 }
 
 $port = $config['system']['webgui']['port'] ? $config['system']['webgui']['port'] : 80;
@@ -324,9 +330,15 @@ $protocol = $config['system']['webgui']['protocol'];
 
 write_console("\n");
 write_console("You can access the WebGUI using the following URL:\n");
-write_console("{$protocol}://{$lanipv4}:{$port}\n");
-if (isset($config['interfaces']['lan']['ipv6_enable'])) {
-	write_console("{$protocol}://[{$lanipv6}]:{$port}\n");
+// Hide default port (80 for http and 443 for https)
+if ((($protocol === "https") && ($port === 443)) || (($protocol === "http") && ($port === 80))) {
+    write_console("{$protocol}://{$lanipv4}\n");
+    if ($laninfov6 !== "")
+	    write_console("{$protocol}://[{$lanipv6}]\n");
+} else {
+    write_console("{$protocol}://{$lanipv4}:{$port}\n");
+    if ($laninfov6 !== "")
+	    write_console("{$protocol}://[{$lanipv6}]:{$port}\n");
 }
 
 tui_wait_keypress();

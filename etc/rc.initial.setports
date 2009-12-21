@@ -2,7 +2,7 @@
 <?php
 /*
 	rc.initial.setports
-	part of FreeNAS (http://www.freenas.org)
+	part of FreeNAS (http://freenas.org)
 	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
@@ -63,43 +63,46 @@ do {
 } while (0 >= strlen($lanif));
 
 // Optional interfaces
-$i = 0;
-$optif = array();
-while (1) {
-	if ($optif[$i])
-		$i++;
-	$i1 = $i + 1;
-	$text = "Select the optional OPT{$i1} interface name, auto-detection or none to finish configuration.";
-	$amenuitem = array();
-	foreach ($iflist as $ifk => $ifv) {
-		$menuitem = array();
-		$menuitem['tag'] = $ifk;
-		$menuitem['item'] = sprintf("%s   %s", $ifv['mac'], $ifv['up'] ? "(up)" : "");
-		$amenuitem[] = $menuitem;
+// skip OPT selection if there is only on interface detected
+if (1 != count($iflist)) {
+    $i = 0;
+    $optif = array();
+    while (1) {
+	    if ($optif[$i])
+		    $i++;
+	    $i1 = $i + 1;
+	    $text = "Select the optional OPT{$i1} interface name, auto-detection or none to finish configuration.";
+	    $amenuitem = array();
+	    foreach ($iflist as $ifk => $ifv) {
+		    $menuitem = array();
+		    $menuitem['tag'] = $ifk;
+		    $menuitem['item'] = sprintf("%s   %s", $ifv['mac'], $ifv['up'] ? "(up)" : "");
+		    $amenuitem[] = $menuitem;
 	}
-	$menuitem = array();
-	$menuitem['tag'] = "auto";
-	$menuitem['item'] = "Auto-detection";
-	$amenuitem[] = $menuitem;
-	$menuitem['tag'] = "none";
-	$menuitem['item'] = "Finish and exit configuration";
-	$amenuitem[] = $menuitem;
-	$result = tui_display_menu("Configure OPT interface", $text, 70, 13, 5, $amenuitem, $optif[$i]);
-	if (0 != $result)
-		exit(0);
+	    $menuitem = array();
+	    $menuitem['tag'] = "auto";
+	    $menuitem['item'] = "Auto-detection";
+	    $amenuitem[] = $menuitem;
+	    $menuitem['tag'] = "none";
+	    $menuitem['item'] = "Finish and exit configuration";
+	    $amenuitem[] = $menuitem;
+	    $result = tui_display_menu("Configure OPT interface", $text, 70, 13, 5, $amenuitem, $optif[$i]);
+	    if (0 != $result)
+		    exit(0);
 
-	if (0 < strlen($optif[$i])) {
-		if ("auto" === $optif[$i]) {
-			$ad = autodetect_interface("optional OPT{$i1}");
-			if ($ad)
-				$optif[$i] = $ad;
-			else
-				unset($optif[$i]);
-		} else if ("none" === $optif[$i]) {
-			unset($optif[$i]);
-			break;
-		}
-	}
+	    if (0 < strlen($optif[$i])) {
+		    if ("auto" === $optif[$i]) {
+			    $ad = autodetect_interface("optional OPT{$i1}");
+			    if ($ad)
+				    $optif[$i] = $ad;
+			    else
+				    unset($optif[$i]);
+		    } else if ("none" === $optif[$i]) {
+			    unset($optif[$i]);
+			    break;
+		    }
+	    }
+    }
 }
 
 // Check for duplicate assignments

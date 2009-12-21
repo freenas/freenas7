@@ -2,8 +2,8 @@
 <?php
 /*
 	license.php
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	part of FreeNAS (http://freenas.org)
+	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without

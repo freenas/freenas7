@@ -5,7 +5,7 @@
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
+	part of FreeNAS (http://freenas.org)
 	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 

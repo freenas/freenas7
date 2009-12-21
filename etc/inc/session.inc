@@ -4,7 +4,7 @@
 	Copyright (c) 2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
+	part of FreeNAS (http://freenas.org)
 	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 

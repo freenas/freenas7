@@ -7,6 +7,9 @@
 #set -x
 
 # Exit if not managed error
+# http://www.davidpashley.com/articles/writing-robust-shell-scripts.html
+# "This tells bash that it should exit the script if any statement returns a non-true return value. 
+# The benefit of using -e is that it prevents errors snowballing into serious issues when they could have been caught earlier"
 set -e
 
 ################################################################################
@@ -283,7 +286,9 @@ add_libs() {
 	dirs=(${FREENAS_ROOTFS}/bin ${FREENAS_ROOTFS}/sbin ${FREENAS_ROOTFS}/usr/bin ${FREENAS_ROOTFS}/usr/sbin ${FREENAS_ROOTFS}/usr/local/bin ${FREENAS_ROOTFS}/usr/local/sbin ${FREENAS_ROOTFS}/usr/lib ${FREENAS_ROOTFS}/usr/local/lib ${FREENAS_ROOTFS}/usr/libexec ${FREENAS_ROOTFS}/usr/local/libexec)
 	for i in ${dirs[@]}; do
 		for file in $(find -L ${i} -type f -print); do
+            set +e
 			ldd -f "%p\n" ${file} 2> /dev/null >> /tmp/lib.list
+            set -e
 		done
 	done
 
@@ -295,7 +300,7 @@ add_libs() {
 	done
 
 	# Cleanup.
-	rm -f /tmp/lib.list
+	rm -f /tmp/lib.list || { echo "Can't rm /tmp/lib.list"; exit 1; } 
 
   return 0
 }
@@ -316,23 +321,28 @@ create_mfsroot() {
 	# Configure this file as a memory disk
 	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot`
 	# Create label on memory disk
-	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
+	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto || { echo "Can't bsdlabel the MFSroot md"; exit 1; } 
 	# Format memory disk using UFS
-	newfs -O1 -o space -m 0 /dev/${md}c
+	newfs -O1 -o space -m 0 /dev/${md}a || { echo "Can't newfs the /dev/$(md)a"; exit 1; } 
 	# Umount memory disk (if already used)
-	umount $FREENAS_TMPDIR >/dev/null 2>&1
+    if [ `mount | grep -q $FREENAS_TMPDIR` ]; then
+        echo "Detected allready mounted workdir $FREENAS_TMPDIR"
+        umount $FREENAS_TMPDIR >/dev/null 2>&1
+    fi
 	# Mount memory disk
-	mount /dev/${md} ${FREENAS_TMPDIR}
+	mount /dev/${md}a ${FREENAS_TMPDIR} || { echo "Can't mount /dev/$(md)a";
+ exit 1; }
 	cd $FREENAS_TMPDIR
 	tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf -
 
 	cd $FREENAS_WORKINGDIR
 	# Umount memory disk
-	umount $FREENAS_TMPDIR
-	# Detach memory disk
-	mdconfig -d -u ${md}
+	umount $FREENAS_TMPDIR || { echo "Can't umount $FREENAS_TMPDIR"; exit 1; }
+	
+    # Detach memory disk
+	mdconfig -d -u ${md} || { echo "Cant' destroy ${md}"; exit 1; }
 
-	gzip -9fnv $FREENAS_WORKINGDIR/mfsroot
+	gzip -9fnv $FREENAS_WORKINGDIR/mfsroot || { echo "Can't gzip mfsroot"; exit 1; }
 
 	return 0
 }
@@ -365,7 +375,9 @@ create_image() {
 	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.${FREENAS_REVISION}.img"
 
 	echo "===> Generating tempory $FREENAS_TMPDIR folder"
-	mkdir $FREENAS_TMPDIR
+    if [ ! -d $FREENAS_TMPDIR ]; then
+	    mkdir $FREENAS_TMPDIR
+    fi
 	create_mfsroot;
 
 	echo "===> Creating an empty IMG file"

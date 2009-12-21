@@ -2,7 +2,15 @@ FreeNAS 0.8 (Golden Path):
 --------------------------
 
 Majors changes:
-- Upgrade to FreeBSD 8.0.
+- Upgrade to FreeBSD 8.0:
+   - Enable the new AHCI drivers for SATA (/dev/ad0 became /dev/ada0)
+        (TODO: Need to use glabel for mounting disk, hide drivers changes)
+   - add atapicam that permit to use a CD Burner software
+
+Minors changes.
+- Do not ask for network card OPT if only one network card detected
+- Update URL of the website (http://freenas.org)
+- Improve the display of IP addresses in console mode
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

@@ -48,8 +48,11 @@ chflags -RH noschg lib/libc.so.7
 
 # lib/libcrypt.so.4
 echo "lib/libcrypt.so.4"
-chflags -RH noschg lib/libcrypt.so.4
+chflags -RH noschg lib/libcrypt.so.5
 
 # lib/libthr.so.3
 echo "lib/libthr.so.3"
 chflags -RH noschg lib/libthr.so.3
+
+echo "lib/librt.so.1"
+chflags -RH noschg usr/lib/librt.so.1

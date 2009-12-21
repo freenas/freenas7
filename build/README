@@ -1,13 +1,14 @@
-FreeNAS (http://www.freenas.org) 
+FreeNAS (http://freenas.org) 
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
 ============== SUMMARY =========
 
 1. Files and directories listing
-2. How to generate an FreeNAS ISO or IMG  file
-3. Building FreeNAS from the latest sources
-4. Building kernel
+2. Preparing your FreeBSD for compiling FreeNAS
+3. How to generate an FreeNAS ISO or IMG  file
+4. Building FreeNAS from the latest sources
+5. Building kernel
 
 ================================
 1. Files and directories listing
@@ -15,8 +16,19 @@ Licence: BSD
 - /freenas/rootfs: Minimum FreeBSD root filesystem and FreeNAS script/WebGUI
 - /freenas/svn: Contains the whole up-to-date (working) release and scripts
 
-================================
-2. How to generate an FreeNAS ISO or IMG file
+===============================================
+2. Preparing your FreeBSD for compiling FreeNAS
+The FreeNAS build scripts are stupid scripts: They copy the binary files of your FreeBSD host.
+This means that your FreeBSD used for compiling FreeNAS need to be compiled/re-installed with this /etc/make.conf:
+- NO_SHARED=no
+- Debug symbol disabled (comment the line WITH_DEBUG=yes if you have it)
+- Remove all customization for CPU (comment the line CPUTYPE?=native if you have it)
+Check the make.conf include in the source
+
+Note about NO_SHARED: It seems that since FreeBSD 5.0 many executables binaries in /bin and /sbin are build using dynamic linking (this KNOBS is a m0n0wall heritage, don't know if it's still important to use it).
+
+=============================================
+3. How to generate an FreeNAS ISO or IMG file
 
 Edit the script '/freenas/svn/build/make.sh' and adapt the directory
 variables with your local ones.

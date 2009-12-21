@@ -11,7 +11,7 @@ USE_LDCONFIG=		YES
 USE_GMAKE=			YES
 MAKE_ARGS+=			os=freebsd LOCALBASE=${PREFIX}
 BUILD_WRKSRC=		${WRKSRC}/mDNSPosix
-CONFLICTS=			avahi-libdns-[0-9]*
+#CONFLICTS=			avahi-libdns-[0-9]*
 
 .include <bsd.port.pre.mk>
 
