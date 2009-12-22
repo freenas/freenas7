@@ -24,7 +24,7 @@ FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
-FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep "Revision:" | awk '{print $2}')
+FREENAS_REVISION=$(svnversion -n ${FREENAS_SVNDIR})
 FREENAS_ARCH=$(uname -p)
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
@@ -53,7 +53,7 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
 FREENAS_MFSROOT_SIZE=94
-FREENAS_IMG_SIZE=40
+FREENAS_IMG_SIZE=42
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
