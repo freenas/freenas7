@@ -1,6 +1,6 @@
 PORTNAME=				transmission
-PORTVERSION=		1.72
-PORTREVISION?=	1
+PORTVERSION=		1.76
+PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
 MAINTAINER=			votdev@gmx.de
@@ -53,6 +53,7 @@ do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 
 	@${INSTALL_DATA} -v ${WRKSRC}/web/LICENSE ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/cancel.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/file_priority_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/file_wanted_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_activity.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
