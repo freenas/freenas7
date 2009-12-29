@@ -45,7 +45,7 @@ FreeNAS 0.7.1 (Shere):
 
 Majors changes:
 - Upgrade e2fsprogs to 1.41.9.
-- Upgrade istgt to version 20091211.
+- Upgrade istgt to version 20091225.
 - Upgrade msmtp to 1.4.19.
 
 Bug fixes:
