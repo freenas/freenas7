@@ -47,6 +47,7 @@ Majors changes:
 - Upgrade e2fsprogs to 1.41.9.
 - Upgrade istgt to version 20091225.
 - Upgrade msmtp to 1.4.19.
+- Upgrade transmission to 1.76.
 
 Bug fixes:
 - Fix bug in istgt script.
