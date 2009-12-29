@@ -73,7 +73,7 @@ $raidstatus = get_sraid_disks_list();
 				<?php endforeach; ?>
 				<?php if (isset($raidstatus)):?>
 				<?php foreach ($raidstatus as $diskk => $diskv):?>
-				<?php (($iostat = system_get_device_iostat($diskk)) === FALSE) ? $iostat = "n/a" : $iostat = sprintf("%s KiB/t, %s tps, %s MiB/s", $iostat['kpt'], $iostat['tps'], $iostat['mps']);?>
+				<?php (($iostat = system_get_device_iostat($diskk)) === FALSE) ? $iostat = gettext("n/a") : $iostat = sprintf("%s KiB/t, %s tps, %s MiB/s", $iostat['kpt'], $iostat['tps'], $iostat['mps']);?>
 				<?php (($temp = system_get_device_temp($diskk)) === FALSE) ? $temp = gettext("n/a") : $temp = sprintf("%s &deg;C", $temp);?>
 				<tr>
 					<td class="listlr"><?=htmlspecialchars($diskk);?></td>
