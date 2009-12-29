@@ -143,7 +143,7 @@ if (empty($pconfig['if']) && is_array($a_interface))
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.name.disabled = endis;
-	document.iform.if.disabled = endis;
+	document.iform.xif.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.web.disabled = endis;
 	document.iform.home.disabled = endis;
@@ -213,7 +213,7 @@ function transcoding_change() {
 				<tr>
 					<td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
 					<td width="78%" class="vtable">
-					<select name="if" class="formfld" id="if">
+					<select name="if" class="formfld" id="xif">
 						<?php foreach($a_interface as $if => $ifinfo):?>
 							<?php $ifinfo = get_interface_info($if); if (("up" == $ifinfo['status']) || ("associated" == $ifinfo['status'])):?>
 							<option value="<?=$if;?>"<?php if ($if == $pconfig['if']) echo "selected";?>><?=$if?></option>
