@@ -58,7 +58,7 @@ sajax_handle_client_request();
 				<?php html_titleline(gettext("Processes information"));?>
 			  <tr>
 			    <td class="listt">
-			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="84" rows="30" readonly><?=get_process_info();?></textarea></pre>
+			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="95" rows="30" readonly><?=get_process_info();?></textarea></pre>
 			    </td>
 			  </tr>
 			</table>
