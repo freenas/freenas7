@@ -1,5 +1,5 @@
 PORTNAME=			php5
-PORTVERSION=	5.2.8
+PORTVERSION=	5.2.12
 CATEGORIES=		lang
 COMMENT=			PHP5 scripting language
 MAINTAINER=		votdev@gmx.de
