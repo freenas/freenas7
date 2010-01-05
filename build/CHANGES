@@ -55,10 +55,8 @@ Majors changes:
 
 Bug fixes:
 - Fix bug in istgt script.
-- To prevent Samba error messages like 'Unknown socket option IPTOS_LOWDELAY'
-  create a rc.conf variable (via 'System|Advanced|rc.conf') called
-  'samba_socket_options' and set it to the value 'TCP_NODELAY' (default is
-  'IPTOS_LOWDELAY TCP_NODELAY') (BR 2894782).
+- Fix Samba 'Unknown socket option IPTOS_LOWDELAY' messages. Thanks to Daisuke
+  Aoyama. (BR 2894782|2858262).
 - Fix mt-daapd/firefly error 'Undefined symbol "avcodec_decode_audio"'
   (BR 2895960).
 - Fix bug in iSCSI initiator script (BR 2916334). Thanks to Daisuke Aoyama.
