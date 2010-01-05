@@ -175,6 +175,7 @@ set-current
 			s" 0" s" hw.ata.wc" setenv
 			s" 0" s" hw.eisa_slots" setenv
 			s" 1" s" hint.kbdmux.0.disabled" setenv
+			s" 1" s" hint.est.0.disabled" setenv
 			0 boot
 		then
 		dup bootverbosekey @ = if
