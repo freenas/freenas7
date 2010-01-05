@@ -463,6 +463,9 @@ usr/sbin/chroot
 ## cron -- daemon to execute scheduled commands (Vixie Cron)
 usr/sbin/cron
 
+## pciconf -- diagnostic utility for the PCI bus
+usr/sbin/pciconf
+
 ## powerd -- system power control utility
 usr/sbin/powerd
 
