@@ -183,7 +183,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['name'] = strtolower($type)."$targetid";
 	$pconfig['alias'] = "";
 	$pconfig['type'] = "$type";
-	$pconfig['flags'] = "ro";
+	$pconfig['flags'] = "rw";
 	$pconfig['comment'] = "";
 	$pconfig['storage'] = "";
 	$pconfig['pgigmap'] = array();
@@ -372,6 +372,22 @@ if ($_POST) {
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
+function type_change() {
+	var addedit = document.iform.addedit.value;
+	if (addedit == "edit") return;
+	switch (document.iform.type.value) {
+	case "Disk":
+		document.iform.flags.value = "rw";
+		break;
+	case "DVD":
+		document.iform.flags.value = "ro";
+		break;
+	default:
+		document.iform.flags.value = "rw";
+		break;
+	}
+}
+
 function lun_change(idx) {
 	var sw_name = "enable" + idx;
 	var tr_name = "storage" + idx + "_tr";
@@ -406,7 +422,7 @@ function lun_change(idx) {
       <table width="100%" border="0" cellpadding="6" cellspacing="0">
       <?php html_inputbox("name", gettext("Target Name"), $pconfig['name'], gettext("Base Name will be appended automatically when starting without 'iqn.'."), true, 60, false);?>
       <?php html_inputbox("alias", gettext("Target Alias"), $pconfig['alias'], gettext("Optional user-friendly string of the target."), false, 60, false);?>
-      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk"),"DVD" => gettext("DVD"),"Tape" => gettext("Tape"),"Pass" => gettext("Device Pass-through")), gettext("Logical Unit Type mapped to LUN."), true);?>
+      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk"),"DVD" => gettext("DVD"),"Tape" => gettext("Tape"),"Pass" => gettext("Device Pass-through")), gettext("Logical Unit Type mapped to LUN."), true, false, "type_change()");?>
       <?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => gettext("Read/Write (rw)"),"rw,dynamic" => gettext("Read/Write (rw,dynamic) for removable types file size grow and shrink automatically by EOF (ignore specified size)"),"rw,extend" => gettext("Read/Write (rw,extend) for removable types extend file size if EOM reached"), "ro" => gettext("Read Only (ro)")), "", true);?>
       <?php
 		$pg_list = array();
@@ -539,6 +555,7 @@ function lun_change(idx) {
 	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
 	      <input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
 	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+	      <input name="addedit" type="hidden" value="<?=isset($uuid) ? 'edit' : 'add';?>">
       </div>
     </td>
   </tr>
@@ -547,9 +564,10 @@ function lun_change(idx) {
 </form>
 <script language="JavaScript">
 <!--
+	type_change();
 <?php
 	for ($i = 1; $i < $MAX_LUNS; $i++) {
-		echo "lun_change($i)\n";
+		echo "lun_change($i);\n";
 	}
 ?>
 //-->
