@@ -57,7 +57,7 @@ if (!is_array($config['iscsitarget']['extent']))
 array_sort_key($config['iscsitarget']['extent'], "name");
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
-function get_all_device() {
+function get_all_device($a_extent,$uuid) {
 	$a = array();
 	$a[''] = gettext("Must choose one");
 	foreach (get_conf_all_disks_list_filtered() as $diskv) {
@@ -67,13 +67,19 @@ function get_all_device() {
 		$desc = $diskv['desc'];
 		if (strcmp($size, "NA") == 0) continue;
 		if (disks_exists($file) == 1) continue;
+		$index = array_search_ex($file, $a_extent, "path");
+		if (FALSE !== $index) {
+			if (!isset($uuid)) continue;
+			if ($a_extent[$index]['uuid'] != $uuid) continue;
+		}
+		if (disks_ismounted_ex($file, "devicespecialfile")) continue;
 		$a[$file] = htmlspecialchars("$name: $size ($desc)");
 	}
 	return $a;
 }
 
 // TODO: handle SCSI pass-through device
-function get_all_scsi_device() {
+function get_all_scsi_device($a_extent,$uuid) {
 	$a = array();
 	$a[''] = gettext("Must choose one");
 	foreach (get_conf_all_disks_list_filtered() as $diskv) {
@@ -83,14 +89,43 @@ function get_all_scsi_device() {
 		$desc = $diskv['desc'];
 		if (strcmp($size, "NA") == 0) continue;
 		if (disks_exists($file) == 1) continue;
-		if (!preg_match("/^(da|cd|sa)[0-9]/", $name)) continue;
+		$index = array_search_ex($file, $a_extent, "path");
+		if (FALSE !== $index) {
+			if (!isset($uuid)) continue;
+			if ($a_extent[$index]['uuid'] != $uuid) continue;
+		}
+		if (!preg_match("/^(da|cd|sa|ch)[0-9]/", $name)) continue;
 		$a[$file] = htmlspecialchars("$name: $size ($desc)");
 	}
 	return $a;
 }
 
-$a_device = get_all_device();
-$a_scsi_device = get_all_scsi_device();
+function get_all_zvol($a_extent,$uuid) {
+	$a = array();
+	$a[''] = gettext("Must choose one");
+	mwexec2("zfs list -H -t volume -o name,volsize,sharenfs,org.freebsd:swap", $rawdata);
+	foreach ($rawdata as $line) {
+		$zvol = explode("\t", $line);
+		$name = $zvol[0];
+		$file = "/dev/zvol/$name";
+		$size = $zvol[1];
+		$sharenfs = $zvol[2];
+		$swap = $zvol[3];
+		if ($sharenfs !== "-") continue;
+		if ($swap !== "-") continue;
+		$index = array_search_ex($file, $a_extent, "path");
+		if (FALSE !== $index) {
+			if (!isset($uuid)) continue;
+			if ($a_extent[$index]['uuid'] != $uuid) continue;
+		}
+		$a[$file] = htmlspecialchars("$name: $size");
+	}
+	return $a;
+}
+
+$a_device = get_all_device($a_iscsitarget_extent,$uuid);
+$a_scsi_device = get_all_scsi_device($a_iscsitarget_extent,$uuid);
+$a_zvol = get_all_zvol($a_iscsitarget_extent,$uuid);
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_extent, "uuid")))) {
 	$pconfig['uuid'] = $a_iscsitarget_extent[$cnid]['uuid'];
@@ -140,6 +175,14 @@ if ($_POST) {
 		$reqdfields = explode(" ", "name device");
 		$reqdfieldsn = array(gettext("Extent name"), gettext("Device"));
 		$reqdfieldst = explode(" ", "string string");
+	} else if ($_POST['type'] == 'zvol') {
+		$pconfig['sizeunit'] = "auto";
+		$_POST['sizeunit'] = "auto";
+		$pconfig['size'] = "";
+		$_POST['size'] = "";
+		$reqdfields = explode(" ", "name zvol");
+		$reqdfieldsn = array(gettext("Extent name"), gettext("ZFS volume"));
+		$reqdfieldst = explode(" ", "string string");
 	} else {
 		if ($pconfig['sizeunit'] == 'auto'){
 			$pconfig['size'] = "";
@@ -166,7 +209,7 @@ if ($_POST) {
 	}
 
 	// Check if path exists and match directory.
-	if ("device" !== $_POST['type']) {
+	if ($_POST['type'] == 'file') {
 		$dirname = dirname($_POST['path']);
 		$basename = basename($_POST['path']);
 		if ($dirname !== "/") {
@@ -183,6 +226,8 @@ if ($_POST) {
 		if (is_dir($path)) {
 			$input_errors[] = sprintf(gettext("The path '%s' is a directory."), $path);
 		}
+	} else if ($_POST['type'] == 'zvol') {
+		$path = $_POST['zvol'];
 	} else {
 		$path = $_POST['device'];
 	}
@@ -223,11 +268,19 @@ function type_change() {
 		showElementById("path_tr", 'show');
 		showElementById("size_tr", 'show');
 		showElementById("device_tr", 'hide');
+		showElementById("zvol_tr", 'hide');
 		break;
 	case "device":
 		showElementById("path_tr", 'hide');
 		showElementById("size_tr", 'hide');
 		showElementById("device_tr", 'show');
+		showElementById("zvol_tr", 'hide');
+		break;
+	case "zvol":
+		showElementById("path_tr", 'hide');
+		showElementById("size_tr", 'hide');
+		showElementById("device_tr", 'hide');
+		showElementById("zvol_tr", 'show');
 		break;
 	}
 }
@@ -262,9 +315,10 @@ function sizeunit_change() {
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
-	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device")), gettext("Type used as extent. (File includes an emulated volume of ZFS)"), true, false, "type_change()");?>
+	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device"), "zvol" => gettext("ZFS volume")), gettext("Type used as extent."), true, false, "type_change()");?>
 	      <?php html_filechooser("path", "Path", $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 	      <?php html_combobox("device", gettext("Device"), $pconfig['path'], $a_device, "", true);?>
+	      <?php html_combobox("zvol", gettext("ZFS volume"), $pconfig['path'], $a_zvol, "", true);?>
 	      <tr id="size_tr">
 	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
 	        <td width="78%" class="vtable">
