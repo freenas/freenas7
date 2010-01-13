@@ -1,7 +1,7 @@
 <?php
 /*
 	email.inc
-	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -79,7 +79,6 @@ function email_send($address, $subject, $message, &$error) {
 From: {$config['system']['email']['from']}
 Subject: {$subject}
 Date: {$rfcdate}
-.
 
 {$message}
 
