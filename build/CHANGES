@@ -64,6 +64,7 @@ Bug fixes:
 - Remove useless character in email (BR 2928068).
 - Every reboot increases the number of 'proc' entries in fstab on 'full'
   installations (BR 2929029).
+- Fix message in console menu 'Reset WebGUI password' (BR 2929338).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
