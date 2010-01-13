@@ -1,8 +1,8 @@
 <?php
 /*
 	config.inc
-	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -205,11 +205,11 @@ EOD;
 		// Write /etc/fstab
 		$data = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
 		@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT);
-	}
 
-	// Append process file system to /etc/fstab
-	$data = "proc /proc procfs rw 0 0\n";
-	@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT | FILE_APPEND);
+		// Append process file system to /etc/fstab
+		$data = "proc /proc procfs rw 0 0\n";
+		@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT | FILE_APPEND);
+	}
 
 	// Mount all filesystems
 	mwexec("/sbin/mount -a");
