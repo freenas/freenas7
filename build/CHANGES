@@ -7,6 +7,7 @@ Majors changes:
 - Upgrade msmtp to 1.4.19.
 - Upgrade transmission to 1.76.
 - Upgrade PHP to 5.2.12 (Thanks to Xin LI).
+- Upgrade fuppes to 0.660.
 
 Bug fixes:
 - Fix bug in istgt script.
