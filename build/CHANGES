@@ -17,6 +17,8 @@ Bug fixes:
 - Fix bug in iSCSI initiator script (BR 2916334). Thanks to Daisuke Aoyama.
 - Set home dir for Quixplorer users. Thanks to Daisuke Aoyama.
 - Remove useless character in email (BR 2928068).
+- Every reboot increases the number of 'proc' entries in fstab on 'full'
+  installations (BR 2929029).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
