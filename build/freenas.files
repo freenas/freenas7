@@ -441,6 +441,9 @@ usr/bin/procstat
 ## getopt -- parse command options
 usr/bin/getopt
 
+## mt -- magnetic tape manipulating program
+usr/bin/mt
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
