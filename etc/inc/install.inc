@@ -1,11 +1,11 @@
 <?php
 /*
 	install.inc
-	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
-	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -96,7 +96,7 @@ function install_dd_image($harddrive)
 
 	// dd image file on the destination disk.
 	write_console("Installing system image on device {$harddrive}.\n");
-	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} bs=16k > /dev/null 2>&1")) {
+	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} ibs=16k obs=16k > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
 		return 1;
 	}
