@@ -2,8 +2,8 @@
 <?php
 /*
 	services_iscsitarget_ag_edit.php
-	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009 Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -289,6 +289,7 @@ function normalize_ipv6addr($v6addr) {
 					<li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
 					<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
 					<li class="tabact"><a href="services_iscsitarget_ag.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Auths");?></span></a></li>
+					<li class="tabinact"><a href="services_iscsitarget_media.php"><span><?=gettext("Media");?></span></a></li>
 	      </ul>
 	    </td>
 	  </tr>

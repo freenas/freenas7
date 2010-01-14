@@ -2,12 +2,12 @@
 <?php
 /*
 	services_iscsitarget_target_edit.php
-	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009 Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -240,7 +240,16 @@ if ($_POST) {
 	$lunmap = array();
 	$lunmap[0]['lun'] = "0";
 	$lunmap[0]['type'] = "$stype";
-	$lunmap[0]['extentname'] = $_POST['storage'];
+	if ($stype == "Removable") {
+		if ($_POST['removable'] == "-") {
+			$lunmap[0]['extentname'] = "-";
+		} else {
+			$lunmap[0]['extentname'] = $_POST['removable'];
+		}
+		$_POST['storage'] = "-";
+	} else {
+		$lunmap[0]['extentname'] = $_POST['storage'];
+	}
 	for ($i = 1; $i < $MAX_LUNS; $i++) {
 		if ($_POST['enable'.$i]
 			&& $_POST['storage'.$i] !== "-") {
@@ -374,16 +383,35 @@ if ($_POST) {
 <!--
 function type_change() {
 	var addedit = document.iform.addedit.value;
-	if (addedit == "edit") return;
+	//if (addedit == "edit") return;
 	switch (document.iform.type.value) {
 	case "Disk":
-		document.iform.flags.value = "rw";
+		if (addedit != "edit") {
+			document.iform.flags.value = "rw";
+		}
+		showElementById("storage_tr", 'show');
+		showElementById("removable_tr", 'hide');
 		break;
 	case "DVD":
-		document.iform.flags.value = "ro";
+		if (addedit != "edit") {
+			document.iform.flags.value = "ro";
+		}
+		showElementById("storage_tr", 'hide');
+		showElementById("removable_tr", 'show');
+		break;
+	case "Tape":
+		if (addedit != "edit") {
+			document.iform.flags.value = "rw";
+		}
+		showElementById("storage_tr", 'hide');
+		showElementById("removable_tr", 'show');
 		break;
 	default:
-		document.iform.flags.value = "rw";
+		if (addedit != "edit") {
+			document.iform.flags.value = "rw";
+		}
+		showElementById("storage_tr", 'show');
+		showElementById("removable_tr", 'hide');
 		break;
 	}
 }
@@ -411,6 +439,7 @@ function lun_change(idx) {
         <li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
 		<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
 		<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+		<li class="tabinact"><a href="services_iscsitarget_media.php"><span><?=gettext("Media");?></span></a></li>
       </ul>
     </td>
   </tr>
@@ -484,9 +513,11 @@ function lun_change(idx) {
 			if (!(isset($uuid) && (FALSE !== $cnid))) {
 				// Add
 				$a_storage = &$a_storage_add;
+				$a_storage_opt=array_merge(array("-" => gettext("None")), $a_storage_add);
 			} else {
 				// Edit
 				$a_storage = &$a_storage_edit;
+				$a_storage_opt=array_merge(array("-" => gettext("None")), $a_storage_edit);
 			}
       ?>
       <?php html_separator();?>
@@ -495,6 +526,7 @@ function lun_change(idx) {
 			$index = array_search_ex("0", $pconfig['lunmap'], "lun");
 			if (false !== $index) {
 				html_combobox("storage", gettext("Storage"), $pconfig['lunmap'][$index]['extentname'], $a_storage, sprintf(gettext("The storage area mapped to LUN%d."), 0), true);
+				html_combobox("removable", gettext("Removable"), $pconfig['lunmap'][$index]['extentname'], $a_storage_opt, sprintf(gettext("The removable area mapped to LUN%d."), 0), true);
 			}
       ?>
       <?php for ($i = 1; $i < $MAX_LUNS; $i++): ?>
@@ -530,7 +562,7 @@ function lun_change(idx) {
       <?php endfor;?>
       <?php html_separator();?>
       <?php html_titleline(gettext("Advanced settings"));?>
-      <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("mutual CHAP")), gettext("The method can be accepted by the target. Auto means both none and authentication."), false);?>
+      <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP Mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted by the target. Auto means both none and authentication."), false);?>
       <?php
 			$ag_list = array();
 			$ag_list['0'] = gettext("None");

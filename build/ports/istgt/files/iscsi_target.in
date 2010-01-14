@@ -43,6 +43,7 @@ istgt_mkconf()
 	DEFAULT_PG=1
 	ISCSI_PORT=3260
 	CONTROL_PORT=3261
+	MEDIADIRECTORY="/mnt"
 
 	# Clear existing file
 	cat /dev/null > ${istgt_config}
@@ -65,6 +66,7 @@ istgt_mkconf()
 	if [ "$NB" = "OK" ]; then
 	    # Clear existing file
 	    cat /dev/null > ${istgt_authfile}
+	    cat /dev/null > ${istgt_ctlfile}
 	fi
 	if [ -f ${istgt_authfile} -a ! -s ${istgt_authfile} ]; then
 		# [AuthGroupXXXXX]
@@ -107,22 +109,46 @@ istgt_mkconf()
 	fi
 	# store default for istgtcontrol.conf
 	if [ -f ${istgt_ctlfile} -a ! -s ${istgt_ctlfile} ]; then
-    /usr/local/bin/xml sel -t \
+		/usr/local/bin/xml sel -t \
 			-o "# Global section" -n \
 			-o "[Global]" -n \
-			-v "concat('  Timeout ','30')" -n \
-			-v "concat('  AuthMethod ','CHAP Mutual')" -n \
-			-i "1 and 'CHAP w/mutual CHAP'" \
-		    -v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;',' ','&quot;','MUSER','&quot;',' ','&quot;','MSECRET','&quot;')" -n \
+			-i "count(//iscsitarget/uctlenable) != 0" \
+				-v "concat('  Timeout ','30')" -n \
+				-v "concat('  AuthMethod ',//iscsitarget/uctlauthmethod)" -n \
+				-i "1 and 'CHAP w/mutual CHAP'" \
+					-v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;',' ','&quot;','MUSER','&quot;',' ','&quot;','MSECRET','&quot;')" -n \
+				-b \
+				-m "//iscsitarget/authgroup[tag=//iscsitarget/uctlauthgroup]" \
+					-m "agauth[position()=1]" \
+						-i "string-length(authmuser) != 0" \
+							-v "concat('  Auth &quot;',authuser,'&quot;',' ','&quot;',authsecret,'&quot;',' ','&quot;',authmuser,'&quot;',' ','&quot;',authmsecret,'&quot;')" -n \
+						-b \
+						-i "string-length(authmuser) = 0" \
+							-v "concat('  Auth &quot;',authuser,'&quot;',' ','&quot;',authsecret,'&quot;')" -n \
+					-b \
+				-b \
+				-v "concat('  Host ',//iscsitarget/uctladdress)" -n \
+				-v "concat('  Port ',//iscsitarget/uctlport)" -n \
+				-v "concat('  #TargetName &quot;','iqn.xxxx','&quot;')" -n \
+				-v "concat('  Lun ','0')" -n \
+				-v "concat('  Flags ','ro')" -n \
+				-v "concat('  Size ','auto')" -n \
 			-b \
-			-v "concat('  Host ', 'localhost')" -n \
-			-v "concat('  Port ', '${CONTROL_PORT}')" -n \
-			-v "concat('  #TargetName &quot;','iqn.xxxx','&quot;')" -n \
-			-v "concat('  Lun ','0')" -n \
-			-v "concat('  Flags ','ro')" -n \
-			-v "concat('  Size ','auto')" -n \
-	    ${configxml_file} | /usr/local/bin/xml unesc >> ${istgt_ctlfile}
-	  chmod o-rwx ${istgt_ctlfile}
+			-i "count(//iscsitarget/uctlenable) = 0" \
+				-v "concat('  Timeout ','30')" -n \
+				-v "concat('  AuthMethod ','CHAP Mutual')" -n \
+				-i "1 and 'CHAP w/mutual CHAP'" \
+					-v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;',' ','&quot;','MUSER','&quot;',' ','&quot;','MSECRET','&quot;')" -n \
+				-b \
+				-v "concat('  Host ', 'localhost')" -n \
+				-v "concat('  Port ', '${CONTROL_PORT}')" -n \
+				-v "concat('  #TargetName &quot;','iqn.xxxx','&quot;')" -n \
+				-v "concat('  Lun ','0')" -n \
+				-v "concat('  Flags ','ro')" -n \
+				-v "concat('  Size ','auto')" -n \
+			-b \
+		${configxml_file} | /usr/local/bin/xml unesc >> ${istgt_ctlfile}
+		chmod o-rwx ${istgt_ctlfile}
 	fi
 
 	# create istgt.conf
@@ -133,6 +159,12 @@ istgt_mkconf()
 			-v "concat('  NodeBase &quot;',//iscsitarget/nodebase,'&quot;')" -n \
 			-v "concat('  PidFile &quot;','${istgt_pidfile}','&quot;')" -n \
 			-v "concat('  AuthFile &quot;','${istgt_authfile}','&quot;')" -n \
+			-i "count(//iscsitarget/mediadirectory) != 0" \
+				-v "concat('  MediaDirectory &quot;',//iscsitarget/mediadirectory,'&quot;')" -n \
+			-b \
+			-i "count(//iscsitarget/mediadirectory) = 0" \
+				-v "concat('  MediaDirectory &quot;','${MEDIADIRECTORY}','&quot;')" -n \
+			-b \
 			-v "concat('  Timeout ',//iscsitarget/timeout)" -n \
 			-v "concat('  NopInInterval ',//iscsitarget/nopininterval)" -n \
 			-v "concat('  DiscoveryAuthMethod ',//iscsitarget/discoveryauthmethod)" -n \
@@ -152,6 +184,7 @@ istgt_mkconf()
 			-v "concat('  NodeBase &quot;','${VENDOR_IQN}','&quot;')" -n \
 			-v "concat('  PidFile &quot;','${istgt_pidfile}','&quot;')" -n \
 			-v "concat('  AuthFile &quot;','${istgt_authfile}','&quot;')" -n \
+			-v "concat('  MediaDirectory &quot;','${MEDIADIRECTORY}','&quot;')" -n \
 			-v "concat('  Timeout ','30')" -n \
 			-v "concat('  NopInInterval ','20')" -n \
 			-v "concat('  DiscoveryAuthMethod ','Auto')" -n \
@@ -168,6 +201,18 @@ istgt_mkconf()
 	/usr/local/bin/xml sel -t \
 		-o "# UnitControl section" -n \
 		-o "[UnitControl]" -n \
+		-i "count(//iscsitarget/uctlenable) != 0" \
+			-v "concat('  AuthMethod ',//iscsitarget/uctlauthmethod)" -n \
+			-i "//iscsitarget/uctlauthgroup != 0" \
+				-v "concat('  AuthGroup ','AuthGroup',//iscsitarget/uctlauthgroup)" -n \
+			-b \
+			-i "//iscsitarget/uctlauthgroup = 0" \
+				-v "concat('  AuthGroup ','None')" -n \
+			-b \
+			-v "concat('  Portal UC1 ',//iscsitarget/uctladdress,':',//iscsitarget/uctlport)" -n \
+			-v "concat('  Netmask ',//iscsitarget/uctlnetmask)" -n \
+		-b \
+		-i "count(//iscsitarget/uctlenable) = 0" \
 		-o "  AuthMethod CHAP Mutual" -n \
 		-v "concat('  AuthGroup ','AuthGroup','${CONTROL_AG}')" -n \
 		-i "count(//interfaces/*[ipv6_enable]) != 0" \
@@ -181,6 +226,7 @@ istgt_mkconf()
 		-b \
 		-i "count(//interfaces/*[enable]) != 0" \
 			-v "concat('  #Netmask ','127.0.0.1')" -n \
+		-b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${istgt_config}
 
@@ -257,7 +303,7 @@ istgt_mkconf()
 		-o "# LogicalUnit section" -n \
 		-i "count(//iscsitarget/nodebase) != 0" \
 			-i "count(//iscsitarget/target/lunmap) != 0" \
-				-m "//iscsitarget/target[lunmap/extentname=//iscsitarget/extent/name]" \
+				-m "//iscsitarget/target[lunmap/extentname=//iscsitarget/extent/name or lunmap/extentname='-']" \
 					-s "A:T:U" "name" \
 					-v "concat('[LogicalUnit',position(),']')" -n \
 					-i "count(lunmap) != 0" \
@@ -296,7 +342,12 @@ istgt_mkconf()
 								-v "concat('  LUN',lun,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
 							-b \
 							-i "type = 'Removable'" \
-								-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+								-i "extentname != '-'" \
+									-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+								-b \
+								-i "extentname = '-'" \
+									-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ','/dev/null',' ','0')" -n \
+								-b \
 							-b \
 							-i "type = 'Device'" \
 								-v "concat('  LUN',lun,' ',type,' ',//iscsitarget/extent[name=current()/extentname]/path)" -n \

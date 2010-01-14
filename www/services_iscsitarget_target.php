@@ -2,12 +2,12 @@
 <?php
 /*
 	services_iscsitarget_target.php
-	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009 Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -212,6 +212,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 				<li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
 				<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
 				<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+				<li class="tabinact"><a href="services_iscsitarget_media.php"><span><?=gettext("Media");?></span></a></li>
       </ul>
     </td>
   </tr>
