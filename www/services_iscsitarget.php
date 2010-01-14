@@ -2,8 +2,8 @@
 <?php
 /*
 	services_iscsitarget.php
-	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009 Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -70,6 +70,23 @@ $pconfig['firstburstlength'] = $config['iscsitarget']['firstburstlength'];
 $pconfig['maxburstlength'] = $config['iscsitarget']['maxburstlength'];
 $pconfig['maxrecvdatasegmentlength'] = $config['iscsitarget']['maxrecvdatasegmentlength'];
 
+$pconfig['uctlenable'] = isset($config['iscsitarget']['uctlenable']);
+$pconfig['uctladdress'] = $config['iscsitarget']['uctladdress'];
+$pconfig['uctlport'] = $config['iscsitarget']['uctlport'];
+$pconfig['uctlnetmask'] = $config['iscsitarget']['uctlnetmask'];
+$pconfig['uctlauthmethod'] = $config['iscsitarget']['uctlauthmethod'];
+$pconfig['uctlauthgroup'] = $config['iscsitarget']['uctlauthgroup'];
+$pconfig['mediadirectory'] = $config['iscsitarget']['mediadirectory'];
+
+if (!isset($pconfig['uctladdress']) || $pconfig['uctladdress'] == '') {
+	$pconfig['uctladdress'] = "127.0.0.1";
+	$pconfig['uctlport'] = "3261";
+	$pconfig['uctlnetmask'] = "127.0.0.1/8";
+	$pconfig['uctlauthmethod'] = "CHAP";
+	$pconfig['uctlauthgroup'] = 0;
+	$pconfig['mediadirectory'] = "/mnt";
+}
+
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
@@ -99,6 +116,33 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	if (strcasecmp("Auto", $pconfig['discoveryauthmethod']) != 0
+		&& $pconfig['discoveryauthgroup'] == 0) {
+		$input_errors[] = sprintf(gettext("The attribute '%s' is required."), gettext("Discovery Auth Group"));
+	}
+
+	$reqdfields = explode(" ", "uctladdress uctlport uctlnetmask uctlauthmethod uctlauthgroup mediadirectory");
+	$reqdfieldsn = array(gettext("Controller IP address"),
+		gettext("Controller TCP Port"),
+		gettext("Controller Authorised network"),
+		gettext("Controller Auth Method"),
+		gettext("Controller Auth Group"),
+		gettext("Media Directory"));
+	$reqdfieldst = explode(" ", "string numericint string string numericint string");
+
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+	if (isset($_POST['uctlenable'])) {
+		if (strcasecmp("Auto", $pconfig['uctlauthmethod']) != 0
+			&& $pconfig['uctlauthgroup'] == 0) {
+			if (count($config['iscsitarget']['authgroup']) == 0) {
+				$errormsg .= sprintf(gettext("No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."), "services_iscsitarget_ag.php")."<br/>\n";
+			}
+			$input_errors[] = sprintf(gettext("The attribute '%s' is required."), gettext("Controller Auth Group"));
+		}
+	}
+
 	$nodebase = $_POST['nodebase'];
 	$nodebase = preg_replace('/\s/', '', $nodebase);
 	$pconfig['nodebase'] = $nodebase;
@@ -115,6 +159,14 @@ if ($_POST) {
 		$config['iscsitarget']['firstburstlength'] = $_POST['firstburstlength'];
 		$config['iscsitarget']['maxburstlength'] = $_POST['maxburstlength'];
 		$config['iscsitarget']['maxrecvdatasegmentlength'] = $_POST['maxrecvdatasegmentlength'];
+
+		$config['iscsitarget']['uctlenable'] = $_POST['uctlenable'] ? true : false;
+		$config['iscsitarget']['uctladdress'] = $_POST['uctladdress'];
+		$config['iscsitarget']['uctlport'] = $_POST['uctlport'];
+		$config['iscsitarget']['uctlnetmask'] = $_POST['uctlnetmask'];
+		$config['iscsitarget']['uctlauthmethod'] = $_POST['uctlauthmethod'];
+		$config['iscsitarget']['uctlauthgroup'] = $_POST['uctlauthgroup'];
+		$config['iscsitarget']['mediadirectory'] = $_POST['mediadirectory'];
 
 		write_config();
 
@@ -153,6 +205,34 @@ function enable_change(enable_change) {
 	document.iform.firstburstlength.disabled = endis;
 	document.iform.maxburstlength.disabled = endis;
 	document.iform.maxrecvdatasegmentlength.disabled = endis;
+
+	document.iform.uctladdress.disabled = endis;
+	document.iform.uctlport.disabled = endis;
+	document.iform.uctlnetmask.disabled = endis;
+	document.iform.uctlauthmethod.disabled = endis;
+	document.iform.uctlauthgroup.disabled = endis;
+	document.iform.mediadirectory.disabled = endis;
+}
+
+function uctlenable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+	var endis2 = !(document.iform.uctlenable.checked || enable_change);
+
+	if (!endis2) {
+		showElementById("uctladdress_tr", 'show');
+		showElementById("uctlport_tr", 'show');
+		showElementById("uctlnetmask_tr", 'show');
+		showElementById("uctlauthmethod_tr", 'show');
+		showElementById("uctlauthgroup_tr", 'show');
+		showElementById("mediadirectory_tr", 'show');
+	} else {
+		showElementById("uctladdress_tr", 'hide');
+		showElementById("uctlport_tr", 'hide');
+		showElementById("uctlnetmask_tr", 'hide');
+		showElementById("uctlauthmethod_tr", 'hide');
+		showElementById("uctlauthgroup_tr", 'hide');
+		showElementById("mediadirectory_tr", 'hide');
+	}
 }
 //-->
 </script>
@@ -165,18 +245,20 @@ function enable_change(enable_change) {
 				<li class="tabinact"><a href="services_iscsitarget_pg.php"><span><?=gettext("Portals");?></span></a></li>
 				<li class="tabinact"><a href="services_iscsitarget_ig.php"><span><?=gettext("Initiators");?></span></a></li>
 				<li class="tabinact"><a href="services_iscsitarget_ag.php"><span><?=gettext("Auths");?></span></a></li>
+				<li class="tabinact"><a href="services_iscsitarget_media.php"><span><?=gettext("Media");?></span></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
     	<form action="services_iscsitarget.php" method="post" name="iform" id="iform">
+	      <?php if ($errormsg) print_error_box($errormsg);?>
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <?php if ($savemsg) print_info_box($savemsg);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
 		      <?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 		      <?php html_inputbox("nodebase", gettext("Base Name"), $pconfig['nodebase'], gettext("The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."), true, 60, false);?>
-		      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted in discovery session. Auto means both none and authentication."), true);?>
+		      <?php html_combobox("discoveryauthmethod", gettext("Discovery Auth Method"), $pconfig['discoveryauthmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP Mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted in discovery session. Auto means both none and authentication."), true);?>
 		      <?php
 					$ag_list = array();
 					$ag_list['0'] = gettext("None");
@@ -198,6 +280,26 @@ function enable_change(enable_change) {
 		      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter (65536 by default)."), true, 30, false);?>
 		      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter (262144 by default)."), true, 30, false);?>
 		      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter (262144 by default)."), true, 30, false);?>
+		      <?php html_separator();?>
+		      <?php html_titleline_checkbox("uctlenable", gettext("iSCSI Target Logical Unit Controller"), $pconfig['uctlenable'] ? true : false, gettext("Enable"), "uctlenable_change(false)");?>
+		      <?php html_inputbox("uctladdress", gettext("Controller IP address"), $pconfig['uctladdress'], gettext("Logical Unit Controller IP address (127.0.0.1(localhost) by default)"), true, 30, false);?>
+		      <?php html_inputbox("uctlport", gettext("Controller TCP Port"), $pconfig['uctlport'], gettext("Logical Unit Controller TCP port (3261 by default)"), true, 15, false);?>
+		      <?php html_inputbox("uctlnetmask", gettext("Controller Authorised network"), $pconfig['uctlnetmask'], gettext("Logical Unit Controller Authorised network (127.0.0.1/8 by default)"), true, 30, false);?>
+		      <?php html_combobox("uctlauthmethod", gettext("Controller Auth Method"), $pconfig['uctlauthmethod'], array("CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted in the controller."), true);?>
+		      <?php
+					$ag_list = array();
+					$ag_list['0'] = gettext("Must choose one");
+
+					foreach($config['iscsitarget']['authgroup'] as $ag) {
+						if ($ag['comment']) {
+							$l = sprintf(gettext("Tag%d (%s)"), $ag['tag'], $ag['comment']);
+						} else {
+							$l = sprintf(gettext("Tag%d"), $ag['tag']);
+						}
+						$ag_list[$ag['tag']] = htmlspecialchars($l);
+					};?>
+					<?php html_combobox("uctlauthgroup", gettext("Controller Auth Group"), $pconfig['uctlauthgroup'], $ag_list, gettext("The istgtcontrol can access the targets with correct user and secret in specific Auth Group."), true);?>
+		      <?php html_filechooser("mediadirectory", gettext("Media Directory"), $pconfig['mediadirectory'], gettext("Directory that contains removable media. (e.g /mnt/iscsi/)"), $g['media_path'], true);?>
 	      </table>
 	      <div id="submit">
 	        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
@@ -213,6 +315,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 enable_change();
+uctlenable_change();
 //-->
 </script>
 <?php include("fend.inc");?>
