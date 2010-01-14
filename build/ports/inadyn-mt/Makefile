@@ -1,5 +1,5 @@
 PORTNAME=			inadyn-mt
-PORTVERSION=	02.14.10
+PORTVERSION=	02.18.06
 CATEGORIES=		dns
 COMMENT=			A simple DYNAMIC DNS client
 MAINTAINER=		votdev@gmx.de
@@ -7,10 +7,11 @@ MAINTAINER=		votdev@gmx.de
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}.v.${PORTVERSION}
 DISTNAME=			${PORTNAME}.v.${PORTVERSION}
 
-WRKSRC=				${WRKDIR}/${PORTNAME}.v.${PORTVERSION}
-USE_DOS2UNIX=	yes
-USE_GMAKE=		yes
-MAKEFILE=			makefile
+WRKSRC=					${WRKDIR}/${PORTNAME}.v.${PORTVERSION}
+USE_DOS2UNIX=		yes
+GNU_CONFIGURE=	yes
+
+CONFIGURE_ARGS+=	--disable-sound
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/linux/inadyn-mt ${FREENAS_ROOTFS}/usr/local/bin/inadyn
