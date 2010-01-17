@@ -21,7 +21,7 @@ NANO_PACKAGE_LIST="*"
 # default is subdir of /usr/obj
 # XXX: MAKEOBJDIRPREFIX handling... ?
 # Need to configure this variable because it's used in the pkg_add function
-NANO_OBJ=/usr/obj/nanobsd.${NANO_NAME}
+NANO_OBJ=/usr/obj/nanobsd.${NANO_NAME}.${TARGET_ARCH}
 
 # The directory to put the final images
 # default is ${NANO_OBJ}
@@ -297,6 +297,11 @@ add_port "net/netatalk" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
 add_port "devel/pcre" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
 # I don't want spawn-fcgi! Why the option -DWITHOUT_SPAWNFCGI is not used !!!
 #add_port "www/spawn-fcgi" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+# Lighttpd, for Webdav, need theses libs:
+add_port "misc/e2fsprogs-libuuid" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+add_port "databases/sqlite3" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+add_port "textproc/libxml2" "-DNO_INSTALL_MANPAGES -DNOPORTDOCS"
+# And, at last, lighttpd:
 add_port "www/lighttpd" "-DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER -DWITH_WEBDAV -DWITH_BZIP2 -DWITHOUT_SPAWNFCGI"
 
 # Add a text editor that support syntax colorization (usefull for edit shell script)

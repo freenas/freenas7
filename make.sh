@@ -40,7 +40,6 @@
 FREEBSD_SRC=/usr/src
 NANOBSD_DIR=/usr/src/tools/tools/nanobsd
 FREENAS_VERSION=`cat ${NANOBSD_DIR}/FreeNAS/Files/etc/FreeNAS.version`
-
 #Compact flash database needed for NanoBSD ?
 #cp $NANOBSD_DIR/FlashDevice.sub .
 
@@ -307,6 +306,8 @@ else
 	pprint 1 "- Zip the final full image: NO"
 fi
 
+NANOBSD_OBJ=/usr/obj/nanobsd.FreeNAS.${TARGET_ARCH}
+
 system_patch
 
 # Copy the common nanobsd configuration file to /tmp
@@ -370,9 +371,9 @@ export TARGET_ARCH
 
 # Delete the destination dir
 if ($DELETE_ALL); then
-	if [ -d /usr/obj/nanobsd.FreeNAS ]; then
-		pprint 1 "Delete existing /usr/obj/nanobsd.FreeNAS directory"
-		rm -rf /usr/obj/nanobsd.FreeNAS
+	if [ -d ${NANOBSD_OBJ} ]; then
+		pprint 1 "Delete existing ${NANOBSD_OBJ} directory"
+		rm -rf ${NANOBSD_OBJ}
 	fi
 fi
 # Start nanobsd using the FreeNAS configuration file
@@ -384,7 +385,7 @@ if [ $? -eq 0 ]; then
 	pprint 1 "NanoBSD build seems finish successfully."
 else
 	pprint 1 "ERROR: NanoBSD meet an error, check the log files here:"
-	pprint 1 "/usr/obj/nanobsd.FreeNAS/"	
+	pprint 1 "${NANOBSD_OBJ}"	
 	pprint 1 "An error during the build world or kernel can be caused by"
 	pprint 1 "a bug in the FreeBSD-current code"	
 	pprint 1 "try to re-sync your code" 
@@ -392,39 +393,39 @@ else
 fi
 
 # The exit code on NanoBSD doesn't work for port compilation/installation
-if [ ! -f /usr/obj/nanobsd.FreeNAS/_.disk.image ]; then
+if [ ! -f ${NANOBSD_OBJ}/_.disk.image ]; then
 	pprint 1 "ERROR: NanoBSD meet an error (port installation/compilation ?)"
 	exit 1
 fi
 
 FREENAS_FILENAME="FreeNAS_${FREENAS_VERSION}_upgrade_${TARGET_ARCH}_${INPUT_CONSOLE}.img"
-if [ -f /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2 ]; then
+if [ -f ${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2 ]; then
 	pprint 1 "Backuping old FreeNAS upgrade image..."
-	mv -f /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2 /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2.bak
+	mv -f ${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2 ${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2.bak
 fi 
 pprint 1 "Zipping the FreeNAS upgrade image..."
-mv /usr/obj/nanobsd.FreeNAS/_.disk.image /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}
-bzip2 -9vf /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}
+mv ${NANOBSD_OBJ}/_.disk.image ${NANOBSD_OBJ}/${FREENAS_FILENAME}
+bzip2 -9vf ${NANOBSD_OBJ}/${FREENAS_FILENAME}
 pprint 1 "You will found the zipped FreeNAS upgrade image file here:"
-pprint 1 "/usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2"
+pprint 1 "${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2"
 
 FREENAS_FILENAME="FreeNAS_${FREENAS_VERSION}_full_${TARGET_ARCH}_${INPUT_CONSOLE}.img"
 if [ "$ZIP_IMAGE" = "y" ]; then
-	if [ -f /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME} ]; then
+	if [ -f ${NANOBSD_OBJ}/${FREENAS_FILENAME} ]; then
 		pprint 1 "Backuping old FreeNAS full zipped image..."
-		mv -f /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2 /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2.bak
+		mv -f ${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2 ${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2.bak
 	fi 
 	pprint 1 "Zipping the FreeNAS full image..." 
-	bzip2 -9vf /usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}
+	bzip2 -9vf ${NANOBSD_OBJ}/${FREENAS_FILENAME}
    	pprint 1 "You will found the zipped FreeNAS full image file here:"
-   	pprint 1 "/usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}.bz2"
+   	pprint 1 "${NANOBSD_OBJ}/${FREENAS_FILENAME}.bz2"
 else
 	pprint 1 "You will found the FreeNAS full image file here:"
-   	pprint 1 "/usr/obj/nanobsd.FreeNAS/${FREENAS_FILENAME}"
+   	pprint 1 "${NANOBSD_OBJ}/${FREENAS_FILENAME}"
 fi
 pprint 1 "Generating checksum..."
-date >> /usr/obj/nanobsd.FreeNAS/checksums.txt
-md5 /usr/obj/nanobsd.FreeNAS/FreeNAS_${FREENAS_VERSION}* >> /usr/obj/nanobsd.FreeNAS/checksums.txt
-sha256 /usr/obj/nanobsd.FreeNAS/FreeNAS_${FREENAS_VERSION}* >> /usr/obj/nanobsd.FreeNAS/checksums.txt
+date >> ${NANOBSD_OBJ}/checksums.txt
+md5 ${NANOBSD_OBJ}/FreeNAS_${FREENAS_VERSION}* >> ${NANOBSD_OBJ}/checksums.txt
+sha256 ${NANOBSD_OBJ}/FreeNAS_${FREENAS_VERSION}* >> ${NANOBSD_OBJ}/checksums.txt
 pprint 1 "Done !"
 exit 0
