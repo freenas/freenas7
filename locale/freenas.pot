@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-11-08 02:05+0000\n"
+"PO-Revision-Date: 2010-01-05 23:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -632,6 +632,9 @@ msgstr ""
 msgid "Change"
 msgstr ""
 
+msgid "Change below file"
+msgstr ""
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
 
@@ -747,6 +750,21 @@ msgid "Contact information, e.g. name or email of the person responsible for thi
 msgstr ""
 
 msgid "Content"
+msgstr ""
+
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
 msgstr ""
 
 msgid "Controls the compression algorithm used\tfor this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
@@ -881,6 +899,9 @@ msgid "Delete ARP entry"
 msgstr ""
 
 msgid "Delete Host"
+msgstr ""
+
+msgid "Delete Login Info"
 msgstr ""
 
 msgid "Delete MIB"
@@ -1075,6 +1096,9 @@ msgid "Directory listing"
 msgstr ""
 
 msgid "Directory mask"
+msgstr ""
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
 msgid "Directory to watch for new .torrent files."
@@ -1850,6 +1874,9 @@ msgstr ""
 msgid "German"
 msgstr ""
 
+msgid "Get Target Info"
+msgstr ""
+
 msgid "GiB"
 msgstr ""
 
@@ -2400,6 +2427,18 @@ msgstr ""
 msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
+msgstr ""
+
 msgid "Logical Unit Type mapped to LUN."
 msgstr ""
 
@@ -2525,6 +2564,9 @@ msgid "Maximum performance, maximum acoustic output"
 msgstr ""
 
 msgid "Media"
+msgstr ""
+
+msgid "Media Directory"
 msgstr ""
 
 msgid "Medium acoustic output"
@@ -2692,6 +2734,10 @@ msgid "No RSYNC Client configured"
 msgstr ""
 
 msgid "No case folding"
+msgstr ""
+
+#, php-format
+msgid "No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
 msgstr ""
 
 #, php-format
@@ -3274,6 +3320,9 @@ msgstr ""
 msgid "Remote syslog server"
 msgstr ""
 
+msgid "Removable"
+msgstr ""
+
 msgid "Remove all entries from ARP table"
 msgstr ""
 
@@ -3424,7 +3473,13 @@ msgstr ""
 msgid "Save and Restart"
 msgstr ""
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
+msgstr ""
+
+msgid "Scan Targets"
 msgstr ""
 
 msgid "Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."
@@ -3877,6 +3932,15 @@ msgstr ""
 msgid "Target directory."
 msgstr ""
 
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
+msgstr ""
+
 msgid "Target name"
 msgstr ""
 
@@ -4171,6 +4235,9 @@ msgstr ""
 msgid "The initiator can discover the targets with correct user and secret in specific Auth Group."
 msgstr ""
 
+msgid "The istgtcontrol can access the targets with correct user and secret in specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr ""
 
@@ -4196,6 +4263,9 @@ msgid "The method can be accepted by the target. Auto means both none and authen
 msgstr ""
 
 msgid "The method can be accepted in discovery session. Auto means both none and authentication."
+msgstr ""
+
+msgid "The method can be accepted in the controller."
 msgstr ""
 
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
@@ -4261,6 +4331,10 @@ msgid "The powerd utility monitors the system state and sets various power contr
 msgstr ""
 
 msgid "The queuedepth range is invalid."
+msgstr ""
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
 msgstr ""
 
 msgid "The rule number determines the order of the rule."
@@ -4708,7 +4782,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+msgid "Type used as extent."
 msgstr ""
 
 msgid "UCD-SNMP-MIB"
@@ -4777,6 +4851,9 @@ msgid "Unknown"
 msgstr ""
 
 msgid "Unknown or unformatted"
+msgstr ""
+
+msgid "Unload"
 msgstr ""
 
 msgid "Unmount disk/partition"
@@ -5070,13 +5147,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
 msgid "atacontrol list failed, atacontrol not found !!"
-msgstr ""
-
-msgid "auto"
 msgstr ""
 
 msgid "cachecnid"
@@ -5110,6 +5187,9 @@ msgstr ""
 msgid "iSCSI Target"
 msgstr ""
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr ""
 
@@ -5135,9 +5215,6 @@ msgid "mount"
 msgstr ""
 
 msgid "mswindows"
-msgstr ""
-
-msgid "mutual CHAP"
 msgstr ""
 
 msgid "n/a"
@@ -5180,6 +5257,12 @@ msgid "seconds"
 msgstr ""
 
 msgid "striping"
+msgstr ""
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
 msgstr ""
 
 msgid "sysctl.conf"
