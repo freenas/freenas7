@@ -295,6 +295,7 @@ rc_exec_service("rcconf.sh");
 rc_restart_service("netif");
 rc_restart_service("routing");
 rc_restart_service("network_ipv6");
+rc_restart_service("resolv");
 
 // Get current IP.
 $lanipv4 = get_ipaddr($config['interfaces']['lan']['if']);
