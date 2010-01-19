@@ -115,8 +115,9 @@ function sysctl_tune($mode) {
 
 	$a_mib = array(
 		"net.inet.tcp.delayed_ack" => 0,
-		"net.inet.tcp.sendspace" => 65536,
-		"net.inet.tcp.recvspace" => 65536,
+		"net.inet.tcp.rfc1323" => 1,
+		"net.inet.tcp.sendspace" => 262144,
+		"net.inet.tcp.recvspace" => 262144,
 		"net.inet.udp.recvspace" => 65536,
 		"net.inet.udp.maxdgram" => 57344,
 		"net.local.stream.recvspace" => 65536,
@@ -126,6 +127,8 @@ function sysctl_tune($mode) {
 		"kern.ipc.nmbclusters" => 32768,
 		"kern.maxfiles" => 65536,
 		"kern.maxfilesperproc" => 32768,
+		"net.inet.icmp.icmplim" => 300,
+		"net.inet.icmp.icmplim_output" => 1,
 		"net.inet.tcp.inflight.enable" => 0,
 		"net.inet.tcp.path_mtu_discovery" => 0
 	);
