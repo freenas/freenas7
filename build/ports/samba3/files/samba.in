@@ -122,13 +122,13 @@ samba_mkconf_cmd()
 			-v "concat('SO_SNDBUF=',//samba/sndbuf,' ')" \
 		-b \
 		-i "string-length(//samba/sndbuf) = 0" \
-			-o "SO_SNDBUF=16384 " \
+			-o "SO_SNDBUF=64240 " \
 		-b \
 		-i "string-length(//samba/rcvbuf) > 0" \
 			-v "concat('SO_RCVBUF=',//samba/rcvbuf,' ')" \
 		-b \
 		-i "string-length(//samba/rcvbuf) = 0" \
-			-o "SO_RCVBUF=16384 " \
+			-o "SO_RCVBUF=64240 " \
 		-b \
 		-n -o "# End of performance section" -n \
 		-i "string-length(//samba/winssrv) > 0" \
