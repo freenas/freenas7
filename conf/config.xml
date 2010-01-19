@@ -599,8 +599,8 @@
 		<security>share</security>
 		<guestaccount>ftp</guestaccount>
 		<localmaster>yes</localmaster>
-		<rcvbuf>16384</rcvbuf>
-		<sndbuf>16384</sndbuf>
+		<rcvbuf>64240</rcvbuf>
+		<sndbuf>64240</sndbuf>
 		<storedosattributes/>
 		<usesendfile/>
 		<!--
