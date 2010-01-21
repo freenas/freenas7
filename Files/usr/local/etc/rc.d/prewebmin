@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# FreeNAS pre-webmin start script
+#
+
+# PROVIDE: prewebmin
+# REQUIRE: LOGIN
+# BEFORE:  webmin
+
+. /etc/rc.subr
+
+# Create log webmin directory
+if [ ! -d /var/log/webmin ]; then
+    mkdir /var/log/webmin
+fi
+
