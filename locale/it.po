@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-10-08 09:39+0000\n"
-"Last-Translator: Man from Mars <manfrommars@libero.it>\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"PO-Revision-Date: 2009-11-24 19:21+0000\n"
+"Last-Translator: Giampaolo Bozzali <giampaolo.bozzali@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -91,6 +91,8 @@ msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
 "href=%s>user</a> must have shell access."
 msgstr ""
+"<a href=%s>SSHD</a> deve essere abilitato per il funzionamento di Unison e "
+"<a href=%s>utente</a> deve avere accesso alla shell."
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -276,6 +278,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
+
+msgid "Active Users"
+msgstr "Utenti Attivi"
+
+msgid "Active shares"
+msgstr "Condivisioni Attive"
 
 msgid "Add"
 msgstr "Aggiungi"
@@ -548,7 +556,7 @@ msgid "Anonymous users only"
 msgstr "Solo utenti anonimi"
 
 msgid "Any"
-msgstr ""
+msgstr "Qualsiasi"
 
 msgid "Apple Filing Protocol"
 msgstr "Apple Filing Protocol"
@@ -590,7 +598,7 @@ msgid "Auth Groups"
 msgstr "Auth Groups"
 
 msgid "Auth Method"
-msgstr ""
+msgstr "Metodo di Autenticazione"
 
 msgid "Authenticate URL"
 msgstr "Autentica URL"
@@ -605,10 +613,13 @@ msgid "Authorised network"
 msgstr "Rete autorizzata"
 
 msgid "Auths"
-msgstr ""
+msgstr "Autenticazioni"
 
 msgid "Auto"
 msgstr "Automatico"
+
+msgid "Auto size"
+msgstr "Dimensione automatica"
 
 msgid "AutoScale"
 msgstr "AutoScala"
@@ -660,10 +671,10 @@ msgid "Best available"
 msgstr "Il migliore disponibile"
 
 msgid "Bind DN"
-msgstr ""
+msgstr "Bind DN"
 
 msgid "Bind password"
-msgstr ""
+msgstr "Bind password"
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -757,6 +768,9 @@ msgstr "Certificato"
 
 msgid "Change"
 msgstr "Cambia"
+
+msgid "Change below file"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "I cambiamenti a questa opzione avranno effetto dopo un riavvio."
@@ -895,6 +909,21 @@ msgstr ""
 msgid "Content"
 msgstr "Contenuto"
 
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
+msgstr ""
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -985,6 +1014,9 @@ msgstr ""
 "effettuare il <a href=%s>Backup</a> della configurazione di sistema  prima "
 "di avviare un aggiornamento del Firmware."
 
+msgid "DVD"
+msgstr "DVD"
+
 msgid "Daemon"
 msgstr "Daemon"
 
@@ -1048,6 +1080,9 @@ msgstr "Cancella ARP"
 
 msgid "Delete Host"
 msgstr "Cancella host"
+
+msgid "Delete Login Info"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr "Elimina MIB"
@@ -1210,6 +1245,9 @@ msgstr "Dispositivo /dev/%s - %s"
 msgid "Device IP"
 msgstr "Dispositivo IP"
 
+msgid "Device Pass-through"
+msgstr ""
+
 msgid "Device name"
 msgstr "Nome del dispositivo"
 
@@ -1258,6 +1296,9 @@ msgstr "Elenco delle cartelle"
 
 msgid "Directory mask"
 msgstr "Maschera dell'indice"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr ""
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Directory in cui cercare i nuovi files .torrent"
@@ -1644,7 +1685,7 @@ msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Abilita Zeroconf/Bonjour a notificare i servizi di questa periferica"
 
 msgid "Enable anonymous bind."
-msgstr ""
+msgstr "Abilita bind anonimo."
 
 msgid "Enable authentication."
 msgstr "Attiva autenticazione."
@@ -1724,9 +1765,12 @@ msgid ""
 "incoming active mode data connections and outgoing passive mode data "
 "connections."
 msgstr ""
+"Abilita la risoluzione DNS inversa effettuata sull'indirizzo IP dell'host "
+"remoto per connessioni dati attive in ingresso e per connessioni dati "
+"passive in uscita."
 
 msgid "Enable reverse DNS lookup."
-msgstr ""
+msgstr "Abilita la risoluzione DNS inversa."
 
 msgid "Enable store DOS attributes"
 msgstr "Abilita gli attributi DOS per l'archiviazione"
@@ -1735,7 +1779,7 @@ msgid "Enable syslog'ing to remote syslog server"
 msgstr "Abilitare il logging verso un server syslog remoto"
 
 msgid "Enable the ident protocol (RFC1413)."
-msgstr ""
+msgstr "Abilita il protocollo ident (RFC1413)."
 
 msgid "Enable the system power control utility"
 msgstr "Abilita l'utilita' di controllo del consumo energetico del sistema"
@@ -1765,6 +1809,13 @@ msgid ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
+"Abilita conversione crlf per i file di TESTO, convertendo automaticamente in "
+"stile Unix i caratteri di fine linea tipo macintosh. L'uso di questa opzione "
+"può essere pericoloso, dato che alcuni vecchi software memorizzano i file di "
+"dati come 'TESTO' in fase di salvataggio, modificando il tipo di file in un "
+"secondo momento. Afpd potrebbe potenzialmente danneggiare questi file "
+"modificandone 'erroneamente' alcuni byte per convertire i caratteri di fine "
+"linea."
 
 msgid "Encrypted"
 msgstr "Cifrato"
@@ -1985,7 +2036,7 @@ msgid "File Editor"
 msgstr ""
 
 msgid "File Manager"
-msgstr ""
+msgstr "Gestore file"
 
 msgid "File Transfer Protocol"
 msgstr ""
@@ -2002,6 +2053,9 @@ msgstr ""
 
 msgid "File size"
 msgstr "Dimensione file"
+
+msgid "File sizeunit"
+msgstr ""
 
 msgid "File system"
 msgstr "File system"
@@ -2058,7 +2112,7 @@ msgid "Forum"
 msgstr "Forum"
 
 msgid "Free"
-msgstr ""
+msgstr "Libero"
 
 msgid "Free disk space"
 msgstr "Sazio disponibile su disco"
@@ -2067,7 +2121,7 @@ msgid "French"
 msgstr "Francese"
 
 msgid "Frequency"
-msgstr ""
+msgstr "Frequenza"
 
 msgid "From email"
 msgstr "Da email"
@@ -2076,7 +2130,7 @@ msgid "Fsck"
 msgstr "Fsck"
 
 msgid "Full"
-msgstr ""
+msgstr "Pieno"
 
 msgid "Full Name"
 msgstr "Nome completo"
@@ -2091,7 +2145,7 @@ msgid "Gateway"
 msgstr "Gateway"
 
 msgid "Gateway to be used to reach the destination network."
-msgstr ""
+msgstr "Gateway da usare per arrivare alla rete di destinazione."
 
 msgid "General"
 msgstr "Generale"
@@ -2100,10 +2154,13 @@ msgid "General Setup"
 msgstr "Impostazioni generali"
 
 msgid "Generate"
-msgstr ""
+msgstr "Genera"
 
 msgid "German"
 msgstr "Tedesco"
+
+msgid "Get Target Info"
+msgstr ""
 
 msgid "GiB"
 msgstr "GiB"
@@ -2140,7 +2197,7 @@ msgid "Group name."
 msgstr "Nome Gruppo."
 
 msgid "Group numeric id."
-msgstr ""
+msgstr "Identificativo numerico del Gruppo"
 
 msgid "Group suffix"
 msgstr "Suffisso gruppo"
@@ -2161,7 +2218,7 @@ msgid "Hard disk standby time"
 msgstr "Tempo per lo standby del Disco"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Hardware"
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2170,7 +2227,7 @@ msgid "Header digest"
 msgstr ""
 
 msgid "Health"
-msgstr ""
+msgstr "Stato"
 
 msgid "Help"
 msgstr "Aiuto"
@@ -2318,10 +2375,10 @@ msgid "ISP DNS servers"
 msgstr "Server DNS ISP"
 
 msgid "Ident protocol"
-msgstr ""
+msgstr "Protocollo Ident"
 
 msgid "Identifier"
-msgstr ""
+msgstr "Identificativo"
 
 msgid ""
 "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
@@ -2347,6 +2404,9 @@ msgid ""
 "reduce database load. Don't set this option if the volume is modified by non "
 "AFP clients (NFS/SMB/local)."
 msgstr ""
+"Se attiva, afpd usa le informazioni contenute nei file di intestazione "
+"AppleDouble V2 per ridurre il carico di lavoro del database. Non attivare "
+"questa opzione se il volume è modificato da client non AFP (NFS/SMB/locali)."
 
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
@@ -2419,7 +2479,7 @@ msgid "Image upload failed (out of memory?)"
 msgstr "Caricamento dell'immagine fallito (memoria esaurita?)"
 
 msgid "Import"
-msgstr ""
+msgstr "Importa"
 
 msgid "Import disks"
 msgstr "Importa dischi"
@@ -2528,7 +2588,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "L'intervallo deve essere maggiore od uguale a 10 secondi."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Formato file non valido."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2572,7 +2632,7 @@ msgid "Key Management Protocol"
 msgstr ""
 
 msgid "Key length"
-msgstr ""
+msgstr "Lunghezza della chiave"
 
 msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
@@ -2615,7 +2675,7 @@ msgid "Last config change"
 msgstr "Ultima modifica della configurazione"
 
 msgid "Latvian"
-msgstr ""
+msgstr "Lettone"
 
 #, php-format
 msgid ""
@@ -2695,9 +2755,6 @@ msgstr "Lista dei punti di mount"
 msgid "List of open files"
 msgstr "Elenco dei file aperti"
 
-msgid "List of shares"
-msgstr "Lista delle condivisioni"
-
 msgid "Load"
 msgstr "Carica"
 
@@ -2763,13 +2820,25 @@ msgid ""
 msgstr ""
 
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 msgid "Log Level"
 msgstr "Livello di Log"
 
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "Pacchetti registro gestiti da questa regola nel syslog."
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
+msgstr ""
 
 msgid "Logical Unit Type mapped to LUN."
 msgstr ""
@@ -2781,7 +2850,7 @@ msgid "Login name of user."
 msgstr "Nome di login dell'utente."
 
 msgid "Logout"
-msgstr ""
+msgstr "Esci"
 
 msgid "Lowercases names in both directions"
 msgstr "Nomi in minuscolo in entrambe le direzioni"
@@ -2805,7 +2874,7 @@ msgid "MS Active Directory"
 msgstr "MS Active Directory"
 
 msgid "MS Active Directory informations"
-msgstr ""
+msgstr "Informazioni MS Active Directory"
 
 msgid "MS Domain"
 msgstr "Dominio MS"
@@ -2842,7 +2911,7 @@ msgid "Masquerade address"
 msgstr ""
 
 msgid "Max. TTL"
-msgstr ""
+msgstr "Max. TTL"
 
 msgid "Max. block size"
 msgstr "Dim. massima blocco"
@@ -2857,7 +2926,7 @@ msgid "Max. login attempts"
 msgstr "Tentativi di login massimi"
 
 msgid "Max. passive port"
-msgstr ""
+msgstr "Max. porta passiva"
 
 msgid "Max. sessions"
 msgstr "Sessioni massime"
@@ -2888,7 +2957,7 @@ msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numero massimo di connessioni per indirizzo IP (0 = illimitate)."
 
 msgid "Maximum number of sessions holding at same time (32 by default)."
-msgstr ""
+msgstr "Nmero Massimo di sessioni mantenute contemporaneamente (default: 32)"
 
 msgid "Maximum number of simultaneous clients."
 msgstr "Numero massimo di clients simultaneo."
@@ -2903,6 +2972,9 @@ msgstr "Massime prestazioni, massimo livello acustico"
 
 msgid "Media"
 msgstr "Dischi"
+
+msgid "Media Directory"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "Medio livello acustico"
@@ -2938,10 +3010,10 @@ msgid "Minutes between network time sync."
 msgstr "Minuti tra le sincronizzazioni NTP."
 
 msgid "Mirror"
-msgstr ""
+msgstr "Mirror"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Manca una directory temporanea."
 
 msgid "Mode"
 msgstr ""
@@ -3064,7 +3136,7 @@ msgid "Network that is authorised to access the NFS share."
 msgstr "Rete autorizzata ad accedere alla condivisione NFS."
 
 msgid "Networks"
-msgstr ""
+msgstr "Reti"
 
 msgid ""
 "Never - Poll (check) the device regardless of its power mode. This may cause "
@@ -3083,6 +3155,11 @@ msgid "No RSYNC Client configured"
 msgstr "Nessun client RSYNC configurato"
 
 msgid "No case folding"
+msgstr ""
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
 msgstr ""
 
 #, php-format
@@ -3125,7 +3202,7 @@ msgstr ""
 "Nessun disco disponibile. Aggiungere un nuovo <a href=%s>disco</a> prima."
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "Nessun file è stato caricato."
 
 msgid "No pool was found."
 msgstr "Nessun pool trovato"
@@ -3147,6 +3224,9 @@ msgid ""
 "not explicitly support it, VLAN tagging will still work, but the reduced MTU "
 "may cause problems."
 msgstr ""
+"Non tutti i driver/NIC supportano adeguatamente il tagging VLAN 802.1Q. Su "
+"schede che non lo supportano esplicitamente, il tag VLAN funzionerà ancora, "
+"ma l'MTU ridotto potrebbe causare problemi."
 
 msgid "Not attached"
 msgstr "Non agganciato"
@@ -3175,6 +3255,7 @@ msgstr ""
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr ""
+"Nota: Ctrl-click (oppure command-click sui Mac) per selezionare più elementi."
 
 msgid "Nothing to synchronize"
 msgstr ""
@@ -3250,13 +3331,13 @@ msgstr ""
 "per ripristinarla."
 
 msgid "Option"
-msgstr ""
+msgstr "Opzione"
 
 msgid "Optional user-friendly string of the target."
 msgstr ""
 
 msgid "Options"
-msgstr ""
+msgstr "Opzioni"
 
 msgid "Others"
 msgstr ""
@@ -3328,7 +3409,7 @@ msgid "Partitions"
 msgstr "Partizioni"
 
 msgid "Passive ports"
-msgstr ""
+msgstr "Porte passive"
 
 msgid ""
 "Passive ports restricts the range of ports from which the server will select "
@@ -3650,6 +3731,15 @@ msgstr "Lettura/scrittura"
 msgid "Read/Write (rw)"
 msgstr ""
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+
 msgid "Read/Write Access"
 msgstr "Accesso in Lettura/Scrittura"
 
@@ -3703,6 +3793,9 @@ msgstr ""
 
 msgid "Remote syslog server"
 msgstr "Server syslog remoto"
+
+msgid "Removable"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "Cancella tutte le voci dalla tabella ARP"
@@ -3862,8 +3955,14 @@ msgstr "Salva"
 msgid "Save and Restart"
 msgstr "Salva e Riavvia"
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
 msgstr "File salvato in"
+
+msgid "Scan Targets"
+msgstr ""
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -3946,6 +4045,9 @@ msgid "Send test email"
 msgstr ""
 
 msgid "Separate email addresses by semi-colon."
+msgstr ""
+
+msgid "Serial number"
 msgstr ""
 
 msgid "Server"
@@ -4339,6 +4441,9 @@ msgstr ""
 msgid "Tag%d (%s)"
 msgstr ""
 
+msgid "Tape"
+msgstr ""
+
 msgid "Target"
 msgstr "Target"
 
@@ -4353,6 +4458,15 @@ msgstr "Indirizzo target"
 
 msgid "Target directory."
 msgstr "Cartella di destinazione."
+
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
+msgstr ""
 
 msgid "Target name"
 msgstr "Nome target"
@@ -4724,6 +4838,11 @@ msgid ""
 "specific Auth Group."
 msgstr ""
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr "Il nome di login contiene caratteri non validi."
 
@@ -4759,6 +4878,9 @@ msgstr ""
 msgid ""
 "The method can be accepted in discovery session. Auto means both none and "
 "authentication."
+msgstr ""
+
+msgid "The method can be accepted in the controller."
 msgstr ""
 
 msgid ""
@@ -4851,6 +4973,10 @@ msgstr ""
 "conseguenza varie opzioni di controllo energetico."
 
 msgid "The queuedepth range is invalid."
+msgstr ""
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
 msgstr ""
 
 msgid "The rule number determines the order of the rule."
@@ -5498,7 +5624,7 @@ msgstr ""
 msgid "Type"
 msgstr "Tipo"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+msgid "Type used as extent."
 msgstr ""
 
 msgid "UCD-SNMP-MIB"
@@ -5582,6 +5708,9 @@ msgstr "Sconosciuto"
 
 msgid "Unknown or unformatted"
 msgstr "Sconosciuto o non formattato"
+
+msgid "Unload"
+msgstr ""
 
 msgid "Unmount disk/partition"
 msgstr "Smonta disco/partizione"
@@ -5943,6 +6072,9 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
@@ -5980,6 +6112,9 @@ msgstr "iSCSI Initiator"
 msgid "iSCSI Target"
 msgstr "Target iSCSI"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr "parametri iniziale iSCSI (predefinito 262144)."
 
@@ -6006,9 +6141,6 @@ msgstr "mount"
 
 msgid "mswindows"
 msgstr "mswindows"
-
-msgid "mutual CHAP"
-msgstr ""
 
 msgid "n/a"
 msgstr "n.d."
@@ -6051,6 +6183,12 @@ msgstr "secondi"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"

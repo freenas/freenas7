@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2008-10-30 15:07+0000\n"
-"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"PO-Revision-Date: 2009-12-06 23:53+0000\n"
+"Last-Translator: raymond <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
@@ -271,6 +271,12 @@ msgstr "如果您希望偵測到新的錯誤或是對磁碟的 S.M.A.R.T. 指令
 msgid "Active Directory"
 msgstr "Active Directory"
 
+msgid "Active Users"
+msgstr ""
+
+msgid "Active shares"
+msgstr ""
+
 msgid "Add"
 msgstr "增加"
 
@@ -422,7 +428,7 @@ msgid "Aggressive"
 msgstr ""
 
 msgid "Albanian"
-msgstr ""
+msgstr "阿爾巴尼亞文"
 
 msgid "All"
 msgstr "全部"
@@ -537,7 +543,7 @@ msgid "Apply changes"
 msgstr "套用"
 
 msgid "Archive"
-msgstr ""
+msgstr "檔案"
 
 msgid "Archive mode."
 msgstr ""
@@ -589,6 +595,9 @@ msgstr ""
 
 msgid "Auto"
 msgstr "自動"
+
+msgid "Auto size"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "自動擴展"
@@ -658,7 +667,7 @@ msgid "Built on"
 msgstr ""
 
 msgid "Bulgarian"
-msgstr ""
+msgstr "保加利亞文"
 
 msgid "By default, only already existing files can be uploaded."
 msgstr ""
@@ -706,7 +715,7 @@ msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 msgid "Canmount"
 msgstr ""
@@ -731,6 +740,9 @@ msgid "Certificate"
 msgstr "驗證碼"
 
 msgid "Change"
+msgstr ""
+
+msgid "Change below file"
 msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
@@ -828,7 +840,7 @@ msgid ""
 msgstr "如果你的網際網路連線速度很慢，開啟資料壓縮可以增快工作效率。注意：資料壓縮的比例會依據不同的檔案類型而有很大的差異。"
 
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 msgid "Configuration directory"
 msgstr "組態目錄"
@@ -858,6 +870,21 @@ msgstr "聯絡人資訊，例：系統管理者的姓名或是 email：admin@ema
 
 msgid "Content"
 msgstr "內容"
+
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
+msgstr ""
 
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
@@ -914,7 +941,7 @@ msgid "Current"
 msgstr ""
 
 msgid "Custom"
-msgstr ""
+msgstr "風俗"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -941,6 +968,9 @@ msgstr ""
 "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
 "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
+
+msgid "DVD"
+msgstr ""
 
 msgid "Daemon"
 msgstr "常駐程式"
@@ -1005,6 +1035,9 @@ msgstr "刪除ARP項目"
 
 msgid "Delete Host"
 msgstr "刪除主機資訊"
+
+msgid "Delete Login Info"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr "刪除 MIB"
@@ -1162,6 +1195,9 @@ msgstr "裝置 /dev/%s - %s"
 msgid "Device IP"
 msgstr "裝置 IP"
 
+msgid "Device Pass-through"
+msgstr ""
+
 msgid "Device name"
 msgstr "裝置名稱"
 
@@ -1205,6 +1241,9 @@ msgstr "目錄清單"
 
 msgid "Directory mask"
 msgstr "目錄遮罩"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr ""
 
 msgid "Directory to watch for new .torrent files."
 msgstr ""
@@ -1413,7 +1452,7 @@ msgstr ""
 "automounting or volumes created by a preexec script."
 
 msgid "Donate"
-msgstr ""
+msgstr "捐贈"
 
 msgid "Done"
 msgstr "完成"
@@ -1455,7 +1494,7 @@ msgid "Duplicate mount point name."
 msgstr ""
 
 msgid "Dutch"
-msgstr ""
+msgstr "荷蘭文"
 
 msgid "Dynamic DNS"
 msgstr "動態 DNS"
@@ -1923,6 +1962,9 @@ msgstr ""
 msgid "File size"
 msgstr "檔案大小"
 
+msgid "File sizeunit"
+msgstr ""
+
 msgid "File system"
 msgstr "檔案系統"
 
@@ -1936,7 +1978,7 @@ msgid "Filename"
 msgstr "檔案名稱"
 
 msgid "Firewall"
-msgstr ""
+msgstr "防火牆"
 
 msgid "Firewall rule"
 msgstr ""
@@ -1975,7 +2017,7 @@ msgid "Format the report for phpBB forum."
 msgstr ""
 
 msgid "Forum"
-msgstr ""
+msgstr "論壇"
 
 msgid "Free"
 msgstr ""
@@ -2023,6 +2065,9 @@ msgid "Generate"
 msgstr ""
 
 msgid "German"
+msgstr "德語"
+
+msgid "Get Target Info"
 msgstr ""
 
 msgid "GiB"
@@ -2143,7 +2188,7 @@ msgid "Hot Spare"
 msgstr ""
 
 msgid "Hours"
-msgstr ""
+msgstr "小時"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -2445,7 +2490,7 @@ msgid ""
 msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
 
 msgid "Japanese"
-msgstr ""
+msgstr "日語"
 
 msgid "Key"
 msgstr "金鑰"
@@ -2573,9 +2618,6 @@ msgstr "掛載點一覽"
 msgid "List of open files"
 msgstr "已開啟檔案"
 
-msgid "List of shares"
-msgstr "分享列表"
-
 msgid "Load"
 msgstr "載入"
 
@@ -2635,12 +2677,24 @@ msgid ""
 msgstr ""
 
 msgid "Log"
-msgstr ""
+msgstr "日誌"
 
 msgid "Log Level"
 msgstr "記錄檔層級"
 
 msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
 msgstr ""
 
 msgid "Logical Unit Type mapped to LUN."
@@ -2771,6 +2825,9 @@ msgstr "最大效能/噪音"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Media Directory"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "中等效能/噪音"
@@ -2927,7 +2984,7 @@ msgid "Network that is authorised to access the NFS share."
 msgstr "授權可以存取 NFS 分享區的網域。"
 
 msgid "Networks"
-msgstr ""
+msgstr "網路"
 
 msgid ""
 "Never - Poll (check) the device regardless of its power mode. This may cause "
@@ -2945,6 +3002,11 @@ msgstr "尚無RSYNC客戶端設定"
 
 msgid "No case folding"
 msgstr "大小寫視為相異"
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+msgstr ""
 
 #, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
@@ -2997,7 +3059,7 @@ msgid "Normal"
 msgstr ""
 
 msgid "Norwegian (Bokmal)"
-msgstr ""
+msgstr "挪威語 (伯克默爾)"
 
 msgid ""
 "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
@@ -3335,7 +3397,7 @@ msgid "Ports"
 msgstr "連接埠"
 
 msgid "Portuguese"
-msgstr ""
+msgstr "葡萄牙語"
 
 msgid "PostInit"
 msgstr "後置初始動作"
@@ -3495,6 +3557,15 @@ msgstr "讀/寫"
 msgid "Read/Write (rw)"
 msgstr ""
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+
 msgid "Read/Write Access"
 msgstr "讀/寫 連線"
 
@@ -3523,7 +3594,7 @@ msgid "Refresh"
 msgstr ""
 
 msgid "Reject"
-msgstr ""
+msgstr "拒絕"
 
 msgid "Release notes"
 msgstr "釋出公告"
@@ -3548,6 +3619,9 @@ msgstr ""
 
 msgid "Remote syslog server"
 msgstr "遠端 syslog 伺服器"
+
+msgid "Removable"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "移除所有ARP table內的項目"
@@ -3611,7 +3685,7 @@ msgid "Reverse DNS lookup"
 msgstr ""
 
 msgid "Romanian"
-msgstr ""
+msgstr "羅馬尼亞文"
 
 msgid "Root"
 msgstr ""
@@ -3659,7 +3733,7 @@ msgid "Running"
 msgstr ""
 
 msgid "Russian"
-msgstr ""
+msgstr "俄文"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -3703,8 +3777,14 @@ msgstr "儲存"
 msgid "Save and Restart"
 msgstr "儲存並重新啟動"
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
 msgstr "將檔案儲存至"
+
+msgid "Scan Targets"
+msgstr ""
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -3788,6 +3868,9 @@ msgstr "傳送測試電子郵件"
 
 msgid "Separate email addresses by semi-colon."
 msgstr "以分號隔開電子郵件位址。"
+
+msgid "Serial number"
+msgstr ""
 
 msgid "Server"
 msgstr "伺服器"
@@ -3951,7 +4034,7 @@ msgid "Space Used"
 msgstr "使用空間"
 
 msgid "Spanish"
-msgstr ""
+msgstr "西班牙語"
 
 msgid "Specifies how many servers to create."
 msgstr "輸入預建立伺服器的數量。"
@@ -4091,7 +4174,7 @@ msgid "Swap usage"
 msgstr "Swap 使用量"
 
 msgid "Swedish"
-msgstr ""
+msgstr "瑞典文"
 
 msgid "Switch to"
 msgstr "Switch to"
@@ -4104,7 +4187,7 @@ msgid "Synchronization time"
 msgstr ""
 
 msgid "Synchronize"
-msgstr ""
+msgstr "同步"
 
 #, php-format
 msgid ""
@@ -4173,6 +4256,9 @@ msgstr ""
 msgid "Tag%d (%s)"
 msgstr ""
 
+msgid "Tape"
+msgstr ""
+
 msgid "Target"
 msgstr "目標"
 
@@ -4187,6 +4273,15 @@ msgstr "目標位置"
 
 msgid "Target directory."
 msgstr "目標目錄。"
+
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
+msgstr ""
 
 msgid "Target name"
 msgstr "目標名稱"
@@ -4535,6 +4630,11 @@ msgid ""
 "specific Auth Group."
 msgstr ""
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr "登入帳號含有無效的字元。"
 
@@ -4567,6 +4667,9 @@ msgstr ""
 msgid ""
 "The method can be accepted in discovery session. Auto means both none and "
 "authentication."
+msgstr ""
+
+msgid "The method can be accepted in the controller."
 msgstr ""
 
 msgid ""
@@ -4654,6 +4757,10 @@ msgid ""
 msgstr "電源監控程式會監控系統的整體狀態並且設定相關的電源控制項目。"
 
 msgid "The queuedepth range is invalid."
+msgstr ""
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
 msgstr ""
 
 msgid "The rule number determines the order of the rule."
@@ -5214,7 +5321,7 @@ msgstr "工具"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s"
-msgstr ""
+msgstr "總: %s | 二手: %s | 自由的: %s"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
@@ -5270,7 +5377,7 @@ msgstr ""
 msgid "Type"
 msgstr "類別"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+msgid "Type used as extent."
 msgstr ""
 
 msgid "UCD-SNMP-MIB"
@@ -5352,6 +5459,9 @@ msgstr "未知"
 msgid "Unknown or unformatted"
 msgstr "未知/未格式化"
 
+msgid "Unload"
+msgstr ""
+
 msgid "Unmount disk/partition"
 msgstr "卸載 磁碟/磁區"
 
@@ -5371,7 +5481,7 @@ msgid "Upgrade firmware"
 msgstr "韌體升級"
 
 msgid "Upload"
-msgstr ""
+msgstr "上傳"
 
 msgid "Upload bandwidth"
 msgstr ""
@@ -5682,6 +5792,9 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
@@ -5719,6 +5832,9 @@ msgstr "iSCSI 初始"
 msgid "iSCSI Target"
 msgstr "iSCSI 目標"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr ""
 
@@ -5746,9 +5862,6 @@ msgstr ""
 msgid "mswindows"
 msgstr "微軟小窗窗"
 
-msgid "mutual CHAP"
-msgstr ""
-
 msgid "n/a"
 msgstr "無資料"
 
@@ -5771,7 +5884,7 @@ msgid "nostat"
 msgstr "nostat"
 
 msgid "phpBB"
-msgstr ""
+msgstr "phpBB"
 
 msgid "prodos"
 msgstr "prodos"
@@ -5790,6 +5903,12 @@ msgstr "秒"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
@@ -5936,6 +6055,9 @@ msgstr "upriv"
 #, php-format
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "無效的連接阜號！連接阜必需介於 %d - %d。"
+
+#~ msgid "List of shares"
+#~ msgstr "分享列表"
 
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-09-28 03:45+0000\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"PO-Revision-Date: 2010-01-18 00:32+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -22,9 +22,9 @@ msgid ""
 "address</li></ul>"
 msgstr ""
 "Na gebruik van de knop &quot;Opslaan&quot;, moet u mogelijk ook één van de "
-"volgende stappen uitvoeren om opnieuw toegang tot  %s  te krijgen: "
-"<ul><li>Verander het IP adres van uw computer</li><li>Open de webGUI met het "
-"nieuwe IP adres</li></ul>"
+"volgende stappen uitvoeren om opnieuw toegang tot %s te krijgen: "
+"<ul><li>Verander het IP-adres van uw computer</li><li>Open de webGUI met het "
+"nieuwe IP-adres</li></ul>"
 
 msgid "Create mask"
 msgstr "Bestandsmachtigingen"
@@ -57,7 +57,7 @@ msgid "File size"
 msgstr "bestands grootte"
 
 msgid "Please note that blanks in path names are not allowed."
-msgstr "Let op dat spaties in padnamen niet zijn toegestaan."
+msgstr "Spaties in de padnamen niet zijn toegestaan."
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -71,7 +71,7 @@ msgid ""
 msgstr ""
 "De basisconfiguratie neemt gewoonlijk de vorm aan van 'daemon: adres: "
 "actie'. Waar daemon de daemonnaam van de gestarte service is. Het adres kan "
-"een geldig hostnaam, een IP adres of een IPv6 adres tussen haakjes "
+"een geldig hostnaam, een IP-adres of een IPv6 adres tussen haakjes "
 "ingesloten zijn. Het actiegebied kan zijn toestaan of afwijzen om geschikt "
 "toegang toe te staan of in zijn geheel af te wijzen. Houd in gedachte dat de "
 "configuratie werkt van een eerste semantische regelgelijke, dit betekent dat "
@@ -138,9 +138,7 @@ msgstr "%s op %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr ""
-"Na het herstellen van het configuratiebestand zal %s automatisch opnieuw "
-"opstarten."
+msgstr "Na het herstellen van de configuratie zal %s automatisch herstarten."
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
@@ -191,12 +189,12 @@ msgid ""
 "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
-"<b>EFI GPT</b> als u een GPT geformatteerde harde schijf wilt aankoppelen "
-"(<b>standaard partitie vanaf versie 0.684b</b>).<br><b>MBR</b> partitie, "
-"voor UFS geformatteerde harde schijven of Software RAID volume (<b>gecreëerd "
-"voor versie 0.684b</b>) of geïmporteerde schijven van een ander "
-"OS.<br><b>CD/DVD of Oude Software RAID</b> voor oude Software RAID volumes "
-"(<b>gecreëerd voor versie 0.68</b>) of CD/DVD."
+"<b>GPT partitie</b> als u een GPT geformatteerde harde schijf wilt "
+"aankoppelen (<b>standaard partitie vanaf versie 0.684b</b>).<br><b>MBR "
+"partitie</b> voor UFS geformatteerde harde schijven of Software RAID "
+"volume's (<b>gecreëerd voor versie 0.684b</b>) of geïmporteerde schijven van "
+"een ander OS.<br><b>CD/DVD of Oude Software RAID</b> voor oude Software RAID "
+"volumes (<b>gecreëerd voor versie 0.68</b>) of CD/DVD."
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -241,8 +239,8 @@ msgid ""
 "A Portal Group contains IP addresses and listening TCP ports to connect the "
 "target from the initiator."
 msgstr ""
-"Een Portaal Groep bevat IP adressen en luisterende TCP poorten om te "
-"verbinden met het doel van de initiator."
+"Een Portaal Groep bevat IP-adressen en TCP luister poorten om te verbinden "
+"met het doel van de initiator."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
@@ -262,7 +260,7 @@ msgid ""
 "that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
 "Een host alias naam. Deze optie kan veelvoudig verschijnen, voor elk domein "
-"dat het zelfde IP adres gebruikt. Gebruik een spatie om meerdere alias namen "
+"dat het zelfde IP-adres gebruikt. Gebruik een spatie om meerdere alias namen "
 "te scheiden."
 
 msgid ""
@@ -280,7 +278,7 @@ msgid "A route to this destination network already exists."
 msgstr "Een route naar dit bestemmingsnetwerk bestaat reeds."
 
 msgid "A valid IP address must be specified."
-msgstr "Een geldig IP adres moet worden gespecificeerd."
+msgstr "Een geldig IP-adres moet worden gespecificeerd."
 
 msgid ""
 "A valid IPv4 address must be specified for the primary/secondary DNS server."
@@ -313,7 +311,7 @@ msgid "A valid destination network must be specified."
 msgstr "Een geldig bestemmingsnetwerk moet worden gespecificeerd."
 
 msgid "A valid gateway IP address must be specified."
-msgstr "Een geldig gateway IP adres moet worden gespecificeerd."
+msgstr "Een geldig gateway IP-adres moet worden gespecificeerd."
 
 msgid "A valid mtu size must be specified."
 msgstr "Een geldige mtu grootte moet worden opgegeven."
@@ -328,7 +326,7 @@ msgid "A valid systctl MIB value."
 msgstr "Een geldige systctl MIB waarde."
 
 msgid "AD authentication disabled"
-msgstr "AD verificatie uitgeschakeld"
+msgstr "AD verificatie is uitgeschakeld"
 
 msgid "AD or PDC name."
 msgstr "AD of PDC naam."
@@ -376,6 +374,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
+
+msgid "Active Users"
+msgstr "Actieve Gebruikers"
+
+msgid "Active shares"
+msgstr "Actief gedeeld"
 
 msgid "Add"
 msgstr "Toevoegen"
@@ -508,8 +512,8 @@ msgstr ""
 "Na gebruik van de knop &quot;Opslaan&quot; moet u %s herstarten om de "
 "veranderingen door te voeren. Mogelijk moeten ook één van de volgende "
 "stappen uitgevoerd worden, om opnieuw toegang tot uw FreeNas te krijgen: "
-"</span></p><ul><li><span class='vexpl'>Verander het IP adres van uw "
-"computer</span></li><li><span class='vexpl'>Open de WebGUI met het nieuwe IP "
+"</span></p><ul><li><span class='vexpl'>Verander het IP-adres van uw "
+"computer</span></li><li><span class='vexpl'>Open de WebGUI met het nieuwe IP-"
 "adres</span></li></ul>"
 
 msgid "Aggregation protocol"
@@ -700,6 +704,9 @@ msgstr "Auths"
 msgid "Auto"
 msgstr "Automatisch"
 
+msgid "Auto size"
+msgstr "Auto grootte"
+
 msgid "AutoScale"
 msgstr "AutoSchaal"
 
@@ -839,7 +846,7 @@ msgid ""
 "server."
 msgstr ""
 "Verzorgt dat de server netwerk informatie weegeeft voor het gespecificeerde "
-"IP adres of DNS hostnaam naar de werkstation, aangenomen zijnde dat het IP "
+"IP-adres of DNS hostnaam naar de werkstation, aangenomen zijnde dat het IP-"
 "adres of DNS host werkzaam is als een NAT gateway of poort forwarder voor de "
 "server."
 
@@ -848,6 +855,9 @@ msgstr "Certificaat"
 
 msgid "Change"
 msgstr "Wijzigen"
+
+msgid "Change below file"
+msgstr "Verander het bestand hieronder"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -887,9 +897,9 @@ msgid ""
 "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
-"Druk hieronder op de knop &quot;Inschakelen Firmware Update&quot; en kies "
-"hierna het image bestand.<br>Druk op &quot;Update Firmware&quot; om het "
-"update proces te starten."
+"Druk op de knop &quot;Inschakelen Firmware Update&quot; en selecteer het "
+"image bestand.<br>Druk op &quot;Update Firmware&quot; om het updateproces te "
+"starten."
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr ""
@@ -989,6 +999,21 @@ msgstr ""
 msgid "Content"
 msgstr "Inhoud"
 
+msgid "Controller Auth Group"
+msgstr "Controller Auth Groep"
+
+msgid "Controller Auth Method"
+msgstr "Controller Auth Methode"
+
+msgid "Controller Authorised network"
+msgstr "Controller Geautoriseerd netwerk"
+
+msgid "Controller IP address"
+msgstr "Controller IP-adres"
+
+msgid "Controller TCP Port"
+msgstr "Controller TCP Poort"
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -1076,6 +1101,9 @@ msgstr ""
 "href=%s>Backup</a> van de huidige configuratie te maken, alvorens de "
 "firmware update uit te voeren."
 
+msgid "DVD"
+msgstr "DVD"
+
 msgid "Daemon"
 msgstr "Daemon"
 
@@ -1139,6 +1167,9 @@ msgstr "ARP regel verwijderen"
 
 msgid "Delete Host"
 msgstr "Host verwijderen"
+
+msgid "Delete Login Info"
+msgstr "Verwijder Inlog Info"
 
 msgid "Delete MIB"
 msgstr "MIB verwijderen"
@@ -1256,7 +1287,7 @@ msgid "Destination email address."
 msgstr "Bestemmings e-mail adres."
 
 msgid "Destination host name or IP number."
-msgstr "Bestemmings hostnaam of IP nummer."
+msgstr "Bestemmings hostnaam of IP-nummer."
 
 msgid "Destination network"
 msgstr "Bestemmingsnetwerk"
@@ -1295,6 +1326,9 @@ msgstr "Schijf /dev/%s - %s"
 
 msgid "Device IP"
 msgstr "IP apparaat"
+
+msgid "Device Pass-through"
+msgstr "Apparaat Pass-through"
 
 msgid "Device name"
 msgstr "Apparaatnaam"
@@ -1343,6 +1377,9 @@ msgstr "Mappenlijst"
 
 msgid "Directory mask"
 msgstr "Mapmachtigingen"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr "De locatie die de verwijderbare media bevat . (bijv. /mnt/iscsi/)"
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Map om in te kijken voor nieuwe .torrent bestanden."
@@ -1546,15 +1583,15 @@ msgid "Domain name, e.g. example.com."
 msgstr "Domein naam, bijv. voorbeeld.com."
 
 msgid "Don't Erase MBR"
-msgstr "MBR Niet Wissen"
+msgstr "Niet Wissen MBR"
 
 msgid "Don't advertise createfileid, resolveid, deleteid calls."
 msgstr "Niet bekendmaken maakbestandid, omzetid, wisid aanvragen."
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr ""
-"Master Boot Record niet laten wissen (zinvol voor sommige RAID controller "
-"kaarten)."
+"MBR (Master Boot Record) niet laten wissen. (Zinvol voor sommige RAID "
+"controller kaarten)."
 
 msgid ""
 "Don't stat volume path when enumerating volumes list, useful for "
@@ -1592,7 +1629,8 @@ msgid "Download directory"
 msgstr "Downloadmap"
 
 msgid "Download firewall rules."
-msgstr "Download de firewall configuratie om als backup elders te bewaren."
+msgstr ""
+"Exporteer de huidige firewall configuratie om als backup elders te bewaren."
 
 msgid "Driver"
 msgstr "Stuurprogramma"
@@ -1794,8 +1832,8 @@ msgstr "Inschakelen modulenlijst."
 
 msgid "Enable peer exchange (PEX)."
 msgstr ""
-"Inschakelen peer exchange (PEX). Hierbij verbindt een verbonden peer jou met "
-"andere peers."
+"Inschakelen peer exchange (PEX). (Hierbij verbindt de verbonden peer u ook "
+"met andere peers)"
 
 msgid "Enable permission inheritance"
 msgstr "Inschakelen permissie overerving"
@@ -1814,7 +1852,7 @@ msgid ""
 "incoming active mode data connections and outgoing passive mode data "
 "connections."
 msgstr ""
-"Inschakelen reverse DNS lookup, deze is operationeel op de remote hosts IP "
+"Inschakelen reverse DNS lookup, deze is operationeel op de remote hosts IP-"
 "adres voor binnenkomende actieve dataverbindingen en uitgaande passieve mode "
 "dataverbindingen."
 
@@ -2080,11 +2118,14 @@ msgid "File not found"
 msgstr "Bestand niet gevonden"
 
 msgid "File path"
-msgstr "Bestands pad"
+msgstr "Selecteer bestand"
 
 #, php-format
 msgid "File path (e.g. /mnt/sharename/extent/%s) used as extent."
 msgstr "Bestands pad (bijv. /mnt/deelnaam/omvang/%s) gebruikt als omvang."
+
+msgid "File sizeunit"
+msgstr "Bestandsgrootte unit"
 
 msgid "File system"
 msgstr "Bestandssysteem"
@@ -2111,7 +2152,7 @@ msgid "Firmware image file"
 msgstr "Firmware image bestand"
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr "Firmware Updaten is niet ondersteund op dit platform."
+msgstr "Het updaten van de firmware wordt niet ondersteund op dit platform."
 
 msgid "Firmware version check"
 msgstr "Firmware Versie Controle"
@@ -2187,6 +2228,9 @@ msgstr "Aanmaken"
 
 msgid "German"
 msgstr "Duits"
+
+msgid "Get Target Info"
+msgstr "Opvragen Doel Info"
 
 msgid "GiB"
 msgstr "GiB"
@@ -2273,7 +2317,7 @@ msgid ""
 "Hint: If this is checked, IP addresses in %s logs are resolved to real "
 "hostnames where possible."
 msgstr ""
-"Tip: Wanneer dit is aangevinkt, IP adressen in de %s logs worden dan zoveel "
+"Tip: Wanneer dit is aangevinkt, IP-adressen in de %s logs worden dan zoveel "
 "mogelijk omgezet naar echte hostnamen waar mogelijk."
 
 msgid "Home directory"
@@ -2315,14 +2359,14 @@ msgstr "Uren"
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr ""
-"Hoe vaak het IP adres wordt gecontroleerd. De periode is in seconden (max. "
+"Hoe vaak het IP-adres wordt gecontroleerd. De periode is in seconden (max. "
 "10 dagen)."
 
 msgid ""
 "How often the IP is updated even if it is not changed. The period is in "
 "seconds (max. is 10 days)."
 msgstr ""
-"Hoe vaak het IP adres geupdate wordt zelfs wanneer het niet is gewijzigd. De "
+"Hoe vaak het IP-adres geupdate wordt zelfs wanneer het niet is gewijzigd. De "
 "periode is in seconden (max. 10 dagen)."
 
 msgid "Hungarian"
@@ -2350,25 +2394,25 @@ msgid "IP"
 msgstr "IP"
 
 msgid "IP address"
-msgstr "IP adres"
+msgstr "IP-adres"
 
 msgid "IP address of remote syslog server"
-msgstr "Vul hier het IP adres in van de externe syslog server"
+msgstr "Vul hier het IP-adres in van de externe syslog server"
 
 #, php-format
 msgid ""
 "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"IP adressen worden waar mogelijk omgezet naar hostnamen indien <a "
-"href=%s>&quot;omzetten van IP adressen naar hostnamen&quot;</a> is "
+"IP-adressen worden waar mogelijk omgezet naar hostnamen indien <a "
+"href=%s>&quot;omzetten van IP-adressen naar hostnamen&quot;</a> is "
 "ingeschakeld."
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr "IP of FQDN adres van de remote Rsync server."
 
 msgid "IP type mismatch for network and gateway."
-msgstr "IP adres komt niet overeen met het netwerk of gateway."
+msgstr "Het IP-adres komt niet overeen met het netwerk of de gateway."
 
 msgid "IPv4 Configuration"
 msgstr "IPv4 Configuratie"
@@ -2490,10 +2534,9 @@ msgid ""
 "immediately. The entire system configuration will be overwritten. The LAN IP "
 "address will be reset to %s and the password will be set to '%s'."
 msgstr ""
-"Als u op 'Ja' drukt, zal %s direct naar de standaard fabrieksinstellingen "
-"terugkeren, een herstart zal volgen. De huidige systeemconfiguratie wordt "
-"overschreven. Het LAN IP adres verandert in IP %s en het wachtwoord wijzigt "
-"in '%s'."
+"Als u op 'Ja' drukt, zal %s direct naar de fabrieksinstellingen terugkeren "
+"en herstarten. De huidige systeemconfiguratie wordt overschreven. Het LAN IP-"
+"adres verandert naar %s en het wachtwoord wijzigt in '%s'."
 
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
@@ -2542,7 +2585,7 @@ msgid "Informal"
 msgstr "Informeel"
 
 msgid "Information"
-msgstr "Informatie"
+msgstr "Systeem-Info"
 
 msgid "Inherit permissions"
 msgstr "Overerf permissies"
@@ -2797,9 +2840,6 @@ msgstr "Koppelpunt lijst"
 msgid "List of open files"
 msgstr "Lijst van geopende bestanden"
 
-msgid "List of shares"
-msgstr "Lijst van gedeelde mappen"
-
 msgid "Load"
 msgstr "Laden"
 
@@ -2878,6 +2918,19 @@ msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 "Log pakketten die worden behandeld door deze regel door naar de syslog."
 
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+"Logical Unit Controller Geautoriseerd netwerk (127.0.0.1/8 standaard)"
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr "Logical Unit Controller IP-adres (127.0.0.1(localhost) standaard)"
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr "Logical Unit Controller TCP poort (3261 standaard)"
+
+msgid "Logical Unit Controller login information"
+msgstr "Logical Unit Controller inlog informatie"
+
 msgid "Logical Unit Type mapped to LUN."
 msgstr "Logical Unit Type in kaart gebracht aan LUN."
 
@@ -2894,7 +2947,7 @@ msgid "Lowercases names in both directions"
 msgstr "Lowercase namen in beide richtingen"
 
 msgid "MAC address"
-msgstr "MAC adres"
+msgstr "MAC-adres"
 
 msgid "MBR partition"
 msgstr "MBR partitie"
@@ -2998,7 +3051,7 @@ msgstr "Maximum aantal verbindingen in elke sessie. (standaard 8)"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
-"Maximaal aantal gelijktijdige verbindingen per IP adres (0 = ongelimiteerd)."
+"Maximaal aantal gelijktijdige verbindingen per IP-adres (0 = ongelimiteerd)."
 
 msgid "Maximum number of sessions holding at same time (32 by default)."
 msgstr "Maximum aantal sessies tegelijkertijd vasthouden. (standaard 32)"
@@ -3015,6 +3068,9 @@ msgstr "Maximale prestaties, maximale geluidsproductie"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Media Directory"
+msgstr "Media Locatie"
 
 msgid "Medium acoustic output"
 msgstr "Medium geluidsproductie"
@@ -3119,7 +3175,7 @@ msgid "NOPIN Interval"
 msgstr "NOPIN Interval"
 
 msgid "NOPIN sending interval in seconds (20 by default)."
-msgstr "NOPIN verzend interval in seconden. (standaars 20)"
+msgstr "NOPIN verzend interval in seconden. (standaard 20)"
 
 msgid "NOT YET AVAILABLE"
 msgstr "NOG NIET BESCHIKBAAR"
@@ -3200,6 +3256,13 @@ msgstr "Er zijn geen RSYNC Werkstations geconfigureerd"
 
 msgid "No case folding"
 msgstr "Geen hoge/lage karakters veranderen"
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+msgstr ""
+"Er is geen geconfigureerd Auth Groep. Voeg eerst een nieuwe <a href=%s>Auth "
+"Groep</a> toe."
 
 #, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
@@ -3380,9 +3443,8 @@ msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
 "configuration."
 msgstr ""
-"Open een %s configuratie bestand (XML formaat) en druk op de knop "
-"\"Configuratie Herstellen\" om het opgeslagen configuratie bestand te "
-"herstellen."
+"Selecteer het %s configuratie bestand (XML formaat) en druk op de knop "
+"\"Configuratie Herstellen\" om het systeem te herstellen."
 
 msgid "Option"
 msgstr "Optie"
@@ -3685,7 +3747,7 @@ msgid "Processes"
 msgstr "Processen"
 
 msgid "Processes information"
-msgstr "Proces informatie"
+msgstr "Procesinformatie"
 
 msgid "Profile"
 msgstr "Profiel"
@@ -3793,6 +3855,20 @@ msgstr "Lezen/Schrijven"
 msgid "Read/Write (rw)"
 msgstr "Lees/Schrijf  (rw)"
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+"Lezen / Schrijven (rw, dynamisch) voor Verwisselbare soorten "
+"bestandsgrootte, automatisch groeien en krimpen door EOF (negeer opgegeven "
+"grootte)"
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+"Lezen / Schrijven (rw, extend) voor Verwisselbare soorten extend "
+"bestandsgrootte als EOM is bereikt"
+
 msgid "Read/Write Access"
 msgstr "Lees/Schrijf Toegang"
 
@@ -3847,6 +3923,9 @@ msgstr "Remote monitoring"
 msgid "Remote syslog server"
 msgstr "Externe syslog server"
 
+msgid "Removable"
+msgstr "Verwijderbaar"
+
 msgid "Remove all entries from ARP table"
 msgstr "Alle ARP regels verwijderen uit de tabel"
 
@@ -3892,7 +3971,7 @@ msgid "Resolve"
 msgstr "Omzetten"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "Omzetten van IP adressen naar hostnamen"
+msgstr "Omzetten van IP-adressen naar hostnamen"
 
 msgid "Restore configuration"
 msgstr "Configuratie Herstellen"
@@ -4006,8 +4085,14 @@ msgstr "Opslaan"
 msgid "Save and Restart"
 msgstr "Opslaan en Herstarten"
 
+msgid "Save login information in configuration file."
+msgstr "Bewaar de inlog informatie in het configuratiebestand."
+
 msgid "Saved file to"
 msgstr "Bestand opgeslagen op"
+
+msgid "Scan Targets"
+msgstr "Doelen Scannen"
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -4034,13 +4119,13 @@ msgid "Scheduled Self-Test"
 msgstr "Geplande Zelf-Testen"
 
 msgid "Scheduled reboot"
-msgstr "Geplande herstart"
+msgstr "Gepland herstarten"
 
 msgid "Scheduled self-tests"
 msgstr "Geplande zelf-testen"
 
 msgid "Scheduled shutdown"
-msgstr "Geplande uitschakeling"
+msgstr "Gepland uitschakelen"
 
 msgid "Secret"
 msgstr "Wachtwoord"
@@ -4100,6 +4185,9 @@ msgstr "Verstuur test e-mail"
 msgid "Separate email addresses by semi-colon."
 msgstr ""
 "Afzonderlijke e-mail adressen scheiden door punt-komma. (gebruik de ; toets)"
+
+msgid "Serial number"
+msgstr "Serienummer"
 
 msgid "Server"
 msgstr "Server"
@@ -4328,8 +4416,8 @@ msgid ""
 "lowering the threshold can adversely affect performance and auto-"
 "defragmentation."
 msgstr ""
-"Kies het percentage van ruimte die moet worden verborgen voor algemene "
-"gebruikers. Het verlagen van deze drempel kan een negatief effect hebben op "
+"Selecteer het ruimte percentage dat moet worden verborgen voor algemene "
+"gebruikers. Het verlagen van deze drempel kan een nadelig effect hebben op "
 "de prestaties en auto-defragmentatie."
 
 msgid "Split request"
@@ -4457,8 +4545,8 @@ msgid ""
 "messages from %s."
 msgstr ""
 "Syslog verstuurd UDP datagrammen naar poort 514 op de gespecificeerde remote "
-"syslog server. Verzeker uzelf er van dat u de syslog op de remote server "
-"juist heeft ingesteld om syslog berichten van %s te kunnen ontvangen."
+"syslog server. Verzeker uzelf er van dat u syslog op de remote server juist "
+"ingesteld heeft om de syslog berichten van %s te kunnen ontvangen."
 
 msgid "System"
 msgstr "Systeem"
@@ -4473,7 +4561,7 @@ msgid "System firewall"
 msgstr "Systeem firewall"
 
 msgid "System info"
-msgstr "Systeem info"
+msgstr "Systeem-info"
 
 msgid "System information"
 msgstr "Systeemoverzicht"
@@ -4519,6 +4607,9 @@ msgstr "Markering%d"
 msgid "Tag%d (%s)"
 msgstr "markering%d (%s)"
 
+msgid "Tape"
+msgstr "Tape"
+
 msgid "Target"
 msgstr "Doel"
 
@@ -4529,10 +4620,19 @@ msgid "Target Name"
 msgstr "Doelnaam"
 
 msgid "Target address"
-msgstr "Doel adres"
+msgstr "Doeladres"
 
 msgid "Target directory."
 msgstr "Doelmap."
+
+msgid "Target information"
+msgstr "Doel informatie"
+
+msgid "Target is not selected."
+msgstr "Het doel is niet geselecteerd."
+
+msgid "Target list"
+msgstr "Doel lijst"
 
 msgid "Target name"
 msgstr "Doelnaam"
@@ -4583,7 +4683,7 @@ msgstr ""
 "toestaan optie."
 
 msgid "The IP address that this hostname represents."
-msgstr "Het IP adres dat deze hostnaam vertegenwoordigd."
+msgstr "Het IP-adres dat deze hostnaam vertegenwoordigd."
 
 #, php-format
 msgid "The MIB '%s' already exist."
@@ -4801,14 +4901,14 @@ msgid ""
 "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia "
 "and 192 for 3DES."
 msgstr ""
-"De standaard sleutellengte's zijn: 128 voor AES, 128 voor Blowfish, 128 voor "
-"Camellia en 192 voor 3DES."
+"De standaard sleutellengte's zijn: 128 AES, 128 Blowfish, 128 Camellia en "
+"192 voor 3DES."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "De schijf naam mag alleen bestaan uit de karakters a-z, A-Z, 0-9."
 
 msgid "The device's IP address."
-msgstr "Het IP adres van het apparaat."
+msgstr "Het IP-adres van het apparaat."
 
 msgid ""
 "The directory containing the files you want to publish. The remote host does "
@@ -4864,7 +4964,7 @@ msgid "The firmware is now being installed. %s will reboot automatically."
 msgstr "De firmware wordt nu geïnstalleerd. %s zal automatisch herstarten."
 
 msgid "The following input errors were detected"
-msgstr "De volgende invoer fouten zijn ontdekt"
+msgstr "De volgende fouten zijn gedetecteerd"
 
 msgid "The group description contains invalid characters."
 msgstr "De groep omschrijving bevat ongeldige karakters."
@@ -4912,6 +5012,13 @@ msgstr ""
 "De initiator kan de doelen met correcte gebruikersnaam en wachtwoord in de "
 "specifieke Auth Groep ontdekken."
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+"De istgtcontrol kan toegang krijgen tot de doelen met de juiste gebruiker en "
+"wachtwoord in de specifieke Auth Groep."
+
 msgid "The login name contains invalid characters."
 msgstr "De inlognaam bevat ongeldige karakters."
 
@@ -4957,6 +5064,9 @@ msgstr ""
 "Deze methode kan geaccepteerd worden in de ontdekkings sessie. Auto betekent "
 "beide geen en verificatie."
 
+msgid "The method can be accepted in the controller."
+msgstr "De methode dat kan worden aanvaard in de controller."
+
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
@@ -4976,7 +5086,7 @@ msgstr ""
 "gebruiker, gastheer, of groep met de server kan verbinden."
 
 msgid "The name or IP address of the LDAP server."
-msgstr "Naam of IP adres van de LDAP server."
+msgstr "Naam of IP-adres van de LDAP server."
 
 #, php-format
 msgid "The network '%s' is invalid."
@@ -5046,9 +5156,9 @@ msgid ""
 msgstr ""
 "Het portaal heeft de vorm van 'adres: poort'. bijvoorbeeld '192 "
 ".168.1.1:3260' voor IPv4, '[2001:db8:1:1::1]:3260' voor IPv6. de poort 3260 "
-"is de standaard iSCSI poortnummer. Voor alle IP adressen (wildcard adres), "
+"is de standaard iSCSI poortnummer. Voor alle IP-adressen (wildcard adres), "
 "gebruik '0.0.0.0:3260' en/of '[::]:3260'. Meng geen wildcard en andere IP-"
-"adressen op de zelfde adres familie."
+"adressen op het zelfde adres familie."
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -5059,6 +5169,10 @@ msgstr ""
 
 msgid "The queuedepth range is invalid."
 msgstr "De queuedepth bereik is ongeldig."
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
+msgstr "Het verwijderbare gebied toegewezen aan LUN%d."
 
 msgid "The rule number determines the order of the rule."
 msgstr "Het regelnummer bepaald de volgorde van de regel."
@@ -5360,7 +5474,7 @@ msgstr ""
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr ""
 "Dit is alleen ter informatie (wordt niet gebruikt tijdens iSCSI "
-"onderhandeling)."
+"onderhandelingen)."
 
 msgid ""
 "This may make more efficient use of the system CPU's and cause Samba to be "
@@ -5394,7 +5508,7 @@ msgid ""
 msgstr "Deze naam is als voobeeld: iqn.1994-04.org.netbsd.iscsi-doel:doel0."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
-msgstr "Deze naam is als voobeeld: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr "Deze naam is als voobeeld: iqn.2005-01.il.ac.huji.cs:iemand."
 
 msgid "This name is used to uniquely identify your UPS on this system."
 msgstr ""
@@ -5472,7 +5586,7 @@ msgid ""
 msgstr ""
 "Deze optie is een komma, spatie, of met een tab afgebakende reeks hosten die "
 "worden toegelaten om tot deze module toegang te hebben. U kunt de specifieke "
-"hosten opgeven met een hostnaam of IP nummer. Laat dit veld leeg om de "
+"hosten opgeven met een hostnaam of IP-nummer. Laat dit veld leeg om de "
 "standaard waarden te gebruiken."
 
 msgid ""
@@ -5482,7 +5596,7 @@ msgid ""
 msgstr ""
 "Deze optie is een komma, een spatie, of met een tab afgebakende reeks hosten "
 "die zijn toegestaan om tot dit gedeelde toegang te hebben. U kunt de "
-"specifieke hosten opgeven met een hostnaam of IP nummer. Laat dit veld leeg "
+"specifieke hosten opgeven met een hostnaam of IP-nummer. Laat dit veld leeg "
 "om de standaard waarde te gebruiken."
 
 msgid ""
@@ -5574,7 +5688,7 @@ msgid "This tag is used."
 msgstr "Deze markering is gebruikt."
 
 msgid "This the IP address or DNS name of the iSCSI target."
-msgstr "Dit het IP adres of DNS naam van het iSCSI doel."
+msgstr "Dit is het IP-adres of DNS-naam van de iSCSI doel."
 
 msgid "This user already exists in the user list."
 msgstr "Deze gebruiker bestaat reeds in de gebruikerslijst."
@@ -5693,7 +5807,7 @@ msgstr ""
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
-"Om het voor alle IP adressen te laten gelden kunt u dit veld leeg laten."
+"Om het voor alle IP-adressen te laten gelden kunt u dit veld leeg laten."
 
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
@@ -5773,9 +5887,8 @@ msgstr "Schakelt de monitor in de stand-by stand na X seconden."
 msgid "Type"
 msgstr "Type"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
-msgstr ""
-"Type gebruikt als extentie. (Bestand inclusief een geëmuleerde volume of ZFS)"
+msgid "Type used as extent."
+msgstr "Type gebruikt als extentie."
 
 msgid "UCD-SNMP-MIB"
 msgstr "UCD-SNMP-MIB"
@@ -5810,7 +5923,7 @@ msgid "UPS"
 msgstr "UPS"
 
 msgid "UPS disabled"
-msgstr "UPS is uitgeschakeld of niet aangesloten"
+msgstr "De UPS is uitgeschakeld"
 
 msgid "UPS goes on battery"
 msgstr "UPS gaat over op batterij"
@@ -5856,6 +5969,9 @@ msgstr "Onbekend"
 
 msgid "Unknown or unformatted"
 msgstr "Onbekend of nog niet geformatteerd"
+
+msgid "Unload"
+msgstr "Verwijder"
 
 msgid "Unmount disk/partition"
 msgstr "Ontkoppel schijf/partitie"
@@ -5904,7 +6020,7 @@ msgstr "Gebruik zendbestand"
 msgid ""
 "Use the following IP address as the source address in outgoing packets."
 msgstr ""
-"Gebruik het volgende IP adres als bronadres in de uitgaande pakketten."
+"Gebruik het volgende IP-adres als bronadres in de uitgaande pakketten."
 
 msgid ""
 "Use the new 64k streaming read and write varient SMB requests introduced "
@@ -6040,7 +6156,7 @@ msgid "WINS server"
 msgstr "WINS server"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
-msgstr "WINS server IP adres (bijv. van de MS Active Directory server)."
+msgstr "WINS server IP-adres (bijv. van de MS Active Directory server)."
 
 msgid "WPA"
 msgstr "WPA"
@@ -6055,7 +6171,7 @@ msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
 
 msgid "Wake On LAN"
-msgstr "Wake On LAN"
+msgstr "Wake-on-LAN"
 
 msgid "Warning"
 msgstr "Waarschuwing"
@@ -6200,7 +6316,7 @@ msgstr "U moet eerst de hardeschijven toevoegen."
 
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
-"U moet voor de het netwerk en de gateway het zelfde IP nummer invullen."
+"U moet voor de het netwerk en de gateway het zelfde IP-nummer invullen."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -6235,6 +6351,9 @@ msgstr "ZFS dataset informatie en status"
 msgid "ZFS dataset properties"
 msgstr "ZFS dataset eigenschappen"
 
+msgid "ZFS volume"
+msgstr "ZFS volume"
+
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
@@ -6265,6 +6384,9 @@ msgstr "iSCSI Initiator"
 msgid "iSCSI Target"
 msgstr "iSCSI Doel"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr "iSCSI Doel Logical Unit Controller"
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr "iSCSI initiële parameter. (standaard 262144)"
 
@@ -6272,7 +6394,7 @@ msgid "iSCSI initial parameter (65536 by default)."
 msgstr "iSCSI initiële parameter. (standaard 65536)"
 
 msgid "iSCSI initiator disabled"
-msgstr "iSCSI initiator uitgeschakeld"
+msgstr "iSCSI initiator is uitgeschakeld"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
@@ -6291,9 +6413,6 @@ msgstr "aankoppelen"
 
 msgid "mswindows"
 msgstr "mswindows"
-
-msgid "mutual CHAP"
-msgstr "Wederzijds CHAP"
 
 msgid "n/a"
 msgstr "n.v.t."
@@ -6336,6 +6455,12 @@ msgstr "seconden"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr "succes"
+
+msgid "successfully."
+msgstr "succes."
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
