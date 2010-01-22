@@ -45,6 +45,7 @@ CONF_INSTALL=''
 # See the file /usr/src/tools/build/options for details
 # WITHOUT_INFO= incompatible for installing a dependency of Quagga
 # WITHOUT_FORTH= incompatible with boot flags (to be confirm).
+# WITHOUT_GROFF= incompatible because Needed for installing openldap (need by samba)
 
 CONF_WORLD='
 WITHOUT_ACCT=
@@ -72,7 +73,6 @@ WITHOUT_GAMES=
 WITHOUT_GCOV=
 WITHOUT_GDB=
 WITHOUT_GPIB=
-WITHOUT_GROFF=
 WITHOUT_HTML=
 WITHOUT_IPFILTER=
 WITHOUT_IPFW=
@@ -284,7 +284,11 @@ add_port "sysutils/fusefs-ntfs" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITH_UBLIO
 add_port "net/istgt" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
 
 # Samba
-add_port "net/samba33" -DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITHOUT_CUPS -DWITH_SYSLOG -DWITH_QUOTAS -DWITH_EXP_MODULES -DWITH_ACL_SUPPORT -DWITH_PAM_SMBPASS -DWITH_ADS
+add_port "security/heimdal" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "net/openldap24-client" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "devel/libexecinfo" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "devel/popt" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+add_port "net/samba33" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES -DWITHOUT_CUPS -DWITH_SYSLOG -DWITH_QUOTAS -DWITH_EXP_MODULES -DWITH_ACL_SUPPORT -DWITH_PAM_SMBPASS -DWITH_ADS"
 
 # netatalk: For Apple network
 add_port "security/libgpg-error" "-DNOPORTDOCS -DNO_INSTALL_MANPAGES"
@@ -308,7 +312,13 @@ add_port "www/lighttpd" "-DNO_INSTALL_MANPAGES -DFORCE_PKG_REGISTER -DWITH_WEBDA
 add_port "editors/vim-lite" "-DWITHOUT_X11 -DNO_INSTALL_MANPAGES"
 
 # Add a simple mail sender (replace sendmail, don't forget /etc/mail/mailer.conf)
-add_port "mail/ssmtp" "-DWITH_LOGFILE -DWITH_MD5AUTH -DNOPORTDOCS -DNO_INSTALL_MANPAGES"
+# Can't compile it under NanoBSD, erreur log:
+#===>  Building for ssmtp-2.62.3
+#cc -DSTDC_HEADERS=1 -DHAVE_LIMITS_H=1 -DHAVE_STRINGS_H=1 -DHAVE_SYSLOG_H=1 -DHAVE_UNISTD_H=1 -DRETSIGTYPE=void -DHAVE_VPRINTF=1 -DHAVE_GETHOSTNAME=1 -DHAVE_SOCKET=1 -DHAVE_STRDUP=1 -DHAVE_STRSTR=1 -DLOGFILE=1 -DREWRITE_DOMAIN=1 -DHAVE_SSL=1 -DINET6=1 -DMD5AUTH=1  -DSSMTPCONFDIR=\"/usr/local/etc/ssmtp\" -DCONFIGURATION_FILE=\"/usr/local/etc/ssmtp/ssmtp.conf\" -DREVALIASES_FILE=\"/usr/local/etc/ssmtp/revaliases\"  -O2 -pipe -I/usr/include -fno-strict-aliasing  amd64 -c -o ssmtp.o ssmtp.c
+#cc: amd64: No such file or directory
+#gmake: *** [ssmtp.o] Erreur 1
+
+# add_port "mail/ssmtp" "-DWITHOUT_USERPREFS -DWITH_LOGFILE -DWITH_MD5AUTH -DNOPORTDOCS -DNO_INSTALL_MANPAGES"
 
 cleanup_ports () {
 		# The build tools are installed only if ports are compiled, then don't exist otherwize.
@@ -329,16 +339,17 @@ freenas_custom () {
 	# Disable reverse DNS in sshd:
 	echo "UseDNS no" >> ${NANO_WORLDDIR}/etc/ssh/sshd_config
 	# Set ssmtp permission (mail/ssmtp/files/pkg-install.in)
-	chroot ${NANO_WORLDDIR} /bin/sh -exc \
-	'chown root:ssmtp /usr/local/sbin/ssmtp'
-	chroot ${NANO_WORLDDIR} /bin/sh -exc \
-    'chmod g+s /usr/local/sbin/ssmtp'
-	chroot ${NANO_WORLDDIR} /bin/sh -exc \
-    'chown -R root:ssmtp /usr/local/etc/ssmtp'
-    chroot ${NANO_WORLDDIR} /bin/sh -exc \
-    'chmod 750 /usr/local/etc/ssmtp'
-    chroot ${NANO_WORLDDIR} /bin/sh -exc \
-    'chmod 640 /usr/local/etc/ssmtp/*'
+	# Theses permission are normally allready set by installing ssmtp ??
+	#chroot ${NANO_WORLDDIR} /bin/sh -exc \
+	#'chown root:ssmtp /usr/local/sbin/ssmtp'
+	#chroot ${NANO_WORLDDIR} /bin/sh -exc \
+    #'chmod g+s /usr/local/sbin/ssmtp'
+	#chroot ${NANO_WORLDDIR} /bin/sh -exc \
+    #'chown -R root:ssmtp /usr/local/etc/ssmtp'
+    #chroot ${NANO_WORLDDIR} /bin/sh -exc \
+    #'chmod 750 /usr/local/etc/ssmtp'
+    #chroot ${NANO_WORLDDIR} /bin/sh -exc \
+    #'chmod 640 /usr/local/etc/ssmtp/*'
 	# Compress the kernel (save 3Mb)
 	if [ -f ${NANO_WORLDDIR}/boot/kernel/kernel ]
 	then
@@ -360,7 +371,6 @@ doc/gettext
 doc/libasprintf
 doc/libiconv
 doc/snmp
-examples/quagga
 '
 	for c in $DOCS_TO_REMOVE
 	do	
@@ -384,7 +394,6 @@ examples/quagga
 		#rm -rf ${NANO_WORLDDIR}/usr/include/*
 		rm -rf ${NANO_WORLDDIR}/usr/include/dlmalloc
 		rm -rf ${NANO_WORLDDIR}/usr/include/net-snmp
-		rm -rf ${NANO_WORLDDIR}/usr/include/quagga
 	fi
 	# Remove some files
     FILES_TO_REMOVE='
