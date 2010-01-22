@@ -1,4 +1,4 @@
-How to compil this NanoBSD/Webmin FreeNAS test:
+How to compile this NanoBSD/Webmin FreeNAS test:
 
 From a FreeBSD 8.0, as root:
 
@@ -7,7 +7,7 @@ svn checkout https://freenas.svn.sourceforge.net/svnroot/freenas/experimental/na
 cd FreeNAS
 ./make.sh
 
-The resulting image will be in /usr/obj/nanobsd.FreeNAS/
+The resulting image will be in /usr/obj/nanobsd.FreeNAS.{ARCH}/
 
 Then you can try it with qemu using script: tools/qemu.sh
 or manually with this example:
@@ -15,6 +15,6 @@ or manually with this example:
 qemu-img create -f qcow2 FreeNAS-disk1.qcow2 100M
 qemu-img create -f qcow2 FreeNAS-disk2.qcow2 100M
 qemu-img create -f qcow2 FreeNAS-disk3.qcow2 100M
-bunzip /usr/obj/nanobsd.FreeNAS/FreeNAS_0.32_full_amd64_vga.img.bz2
-qemu-system-x86_64 -nographic -hda /usr/obj/nanobsd.FreeNAS/FreeNAS_0.01_full_amd64_vga.img -hdb FreeNAS-disk1.qcow2 \
+bunzip /usr/obj/nanobsd.FreeNAS.amd64/FreeNAS_0.32_full_amd64_vga.img.bz2
+qemu-system-x86_64 -nographic -hda /usr/obj/nanobsd.FreeNAS.amd64/FreeNAS_0.01_full_amd64_vga.img -hdb FreeNAS-disk1.qcow2 \
 -hdc FreeNAS-disk2.qcow2 -hdd FreeNAS-disk3.qcow2 -enable-kqemu -net nic -net user -boot c

@@ -2,7 +2,7 @@
 #
 # Make script for FreeNAS using NanoBSD 
 #
-# Copyright (c) 2009, The FreeNAS Development Team 
+# Copyright (c) 2009-2010, The FreeNAS Development Team 
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
