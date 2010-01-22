@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-11-03 14:08+0000\n"
-"Last-Translator: raymond <Unknown>\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"PO-Revision-Date: 2010-01-22 18:47+0000\n"
+"Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -287,6 +287,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
+
+msgid "Active Users"
+msgstr "Aktive Benutzer"
+
+msgid "Active shares"
+msgstr "Aktive Freigaben"
 
 msgid "Add"
 msgstr "Hinzufügen"
@@ -620,6 +626,9 @@ msgstr "Authentifikationen"
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto size"
+msgstr "Automatisches Anpassen"
+
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
@@ -665,6 +674,7 @@ msgstr "Basisname"
 msgid ""
 "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
+"Ist der Anfang nicht 'iqn.', wird der Base Name automatisch mit angehängt."
 
 msgid "Best available"
 msgstr "Bester verfügbarer"
@@ -771,6 +781,9 @@ msgstr "Zertifikat"
 
 msgid "Change"
 msgstr "Ändern"
+
+msgid "Change below file"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -908,6 +921,21 @@ msgstr ""
 msgid "Content"
 msgstr "Inhalt"
 
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
+msgstr ""
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -998,6 +1026,9 @@ msgstr ""
 "durchführen zu können.<br>Vor dem Firmware-Upgrade sollte UNBEDINGT ein <a "
 "href=%s>Backup</a> der System-Konfiguration durchgeführt werden."
 
+msgid "DVD"
+msgstr "DVD"
+
 msgid "Daemon"
 msgstr "Dienst"
 
@@ -1011,7 +1042,7 @@ msgid "Danish"
 msgstr "Dänisch"
 
 msgid "Data digest"
-msgstr ""
+msgstr "Datenauszug"
 
 msgid "Data integrity"
 msgstr "Datenintegrität"
@@ -1061,6 +1092,9 @@ msgstr "Lösche ARP Eintrag"
 
 msgid "Delete Host"
 msgstr "Lösche Host"
+
+msgid "Delete Login Info"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr "MIB löschen"
@@ -1221,6 +1255,9 @@ msgstr "Gerät /dev/%s - %s"
 msgid "Device IP"
 msgstr "IP des Geräts"
 
+msgid "Device Pass-through"
+msgstr "Gerät durchreichen"
+
 msgid "Device name"
 msgstr "Gerätename"
 
@@ -1268,6 +1305,9 @@ msgstr "Verzeichnisauflistung"
 
 msgid "Directory mask"
 msgstr "Verzeichnismaske"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr ""
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Zu beobachtendes Verzeichnis für neue .torrent Dateien."
@@ -1764,7 +1804,7 @@ msgid "Enable transcoding."
 msgstr "Umwandlung aktivieren."
 
 msgid "Enable traps."
-msgstr ""
+msgstr "Traps aktivieren."
 
 msgid "Enable tuning of some kernel variables"
 msgstr "Das Anpassen einiger Kernel-Variablen zulassen."
@@ -1893,7 +1933,7 @@ msgid "Extent"
 msgstr "Erweiterung"
 
 msgid "Extent Name"
-msgstr ""
+msgstr "Name des Extent"
 
 msgid "Extent name"
 msgstr "Erweiterungsname"
@@ -2027,10 +2067,13 @@ msgstr "Dateipfad"
 
 #, php-format
 msgid "File path (e.g. /mnt/sharename/extent/%s) used as extent."
-msgstr ""
+msgstr "Dateipfad (z.B. /mnt/sharename/extend/%s) wird als Extent verwendet."
 
 msgid "File size"
 msgstr "Dateigröße"
+
+msgid "File sizeunit"
+msgstr "Dateigrößeneinheit"
 
 msgid "File system"
 msgstr "Dateisystem"
@@ -2133,6 +2176,9 @@ msgstr "Erzeugen"
 
 msgid "German"
 msgstr "Deutsch"
+
+msgid "Get Target Info"
+msgstr ""
 
 msgid "GiB"
 msgstr "GiB"
@@ -2288,7 +2334,7 @@ msgid "I/O timeout in seconds (30 by default)."
 msgstr "I/O Timeout in Sekunden (30 sind standard)."
 
 msgid "IG"
-msgstr ""
+msgstr "IG"
 
 msgid "IP"
 msgstr "IP"
@@ -2739,9 +2785,6 @@ msgstr "Liste von Einhängepunkten"
 msgid "List of open files"
 msgstr "Liste geöffneter Dateien"
 
-msgid "List of shares"
-msgstr "Freigabeliste"
-
 msgid "Load"
 msgstr "Laden"
 
@@ -2818,6 +2861,18 @@ msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 "Pakete des Protokolls werden durch diese Regel abgedeckt - werden nach "
 "Syslog weitergeleitet."
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
+msgstr ""
 
 msgid "Logical Unit Type mapped to LUN."
 msgstr "Logical Unit Type zugewiesen zur LUN."
@@ -2955,6 +3010,9 @@ msgstr "Maximale Performance, maximale Geräuschbelastung"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Media Directory"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "Mittlere Geräuschbelastung"
@@ -3139,8 +3197,15 @@ msgid "No case folding"
 msgstr "Keine Veränderung der Groß-/Kleinschreibung"
 
 #, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+msgstr ""
+
+#, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
 msgstr ""
+"Kein Extent eingestellt. Bitte zuerst einen neuen <s href=\"%s>Extent</a> "
+"hinzufügen."
 
 #, php-format
 msgid ""
@@ -3190,7 +3255,7 @@ msgid "No pool was found."
 msgstr "Keinen Pool gefunden."
 
 msgid "Node Base"
-msgstr ""
+msgstr "Knotenbasis"
 
 msgid "None"
 msgstr "Keine"
@@ -3350,7 +3415,7 @@ msgid "Owner"
 msgstr "Eigentümer"
 
 msgid "PG"
-msgstr ""
+msgstr "PG"
 
 msgid "PHP Command"
 msgstr "PHP Befehl"
@@ -3467,10 +3532,10 @@ msgid "Path to be shared."
 msgstr "Freizugebender Pfad."
 
 msgid "Peer Secret"
-msgstr ""
+msgstr "Peer Geheimnis (Peer Secret)"
 
 msgid "Peer User"
-msgstr ""
+msgstr "Peer Benutzer"
 
 msgid "Peer exchange"
 msgstr "Peer-Austausch"
@@ -3730,6 +3795,15 @@ msgstr "Lesen/Schreiben"
 msgid "Read/Write (rw)"
 msgstr "Lesen/Schreiben (rw)"
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+
 msgid "Read/Write Access"
 msgstr "Lese-schreib-Zugriff"
 
@@ -3783,6 +3857,9 @@ msgstr "Fernüberwachung"
 
 msgid "Remote syslog server"
 msgstr "Remote Syslog Server"
+
+msgid "Removable"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "Lösch alle Einträge aus ARP Tabelle"
@@ -3945,8 +4022,14 @@ msgstr "Speichern"
 msgid "Save and Restart"
 msgstr "Speichern und Neustart"
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
 msgstr "Datei wurde gespeichert nach"
+
+msgid "Scan Targets"
+msgstr ""
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -4034,6 +4117,9 @@ msgstr "Test-E-Mail senden"
 
 msgid "Separate email addresses by semi-colon."
 msgstr "Semikolon getrennte Liste von E-Mail Adressen."
+
+msgid "Serial number"
+msgstr "Seriennummer"
 
 msgid "Server"
 msgstr "Server"
@@ -4329,7 +4415,7 @@ msgstr ""
 "Nachricht die dem Benutzer beim Zugriff auf die URL angezeigt werden soll."
 
 msgid "String identifier of the extent."
-msgstr ""
+msgstr "Zeichenkette zur Identifizierung des Extents."
 
 msgid "Stripe"
 msgstr "Stripe"
@@ -4442,18 +4528,21 @@ msgid "TKIP"
 msgstr "TKIP"
 
 msgid "Tag"
-msgstr ""
+msgstr "Tag"
 
 msgid "Tag number"
-msgstr ""
+msgstr "Tag Nummer"
 
 #, php-format
 msgid "Tag%d"
-msgstr ""
+msgstr "Tag%d"
 
 #, php-format
 msgid "Tag%d (%s)"
-msgstr ""
+msgstr "Tag%d (%s)"
+
+msgid "Tape"
+msgstr "Band"
 
 msgid "Target"
 msgstr "Ziel"
@@ -4469,6 +4558,15 @@ msgstr "Ziel-Adresse"
 
 msgid "Target directory."
 msgstr "Zielverzeichnis"
+
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
+msgstr ""
 
 msgid "Target name"
 msgstr "Zielname"
@@ -4666,7 +4764,7 @@ msgstr "Das Attribut '%s' muss im Bereich von %d und %d liegen."
 
 #, php-format
 msgid "The attribute '%s' must be less than '%s'."
-msgstr ""
+msgstr "Das Attribut '%s' muss kleiner als '%s' sein."
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
@@ -4676,6 +4774,8 @@ msgid ""
 "The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target "
 "name that is not starting with 'iqn.'."
 msgstr ""
+"Der Hostname (z.B. ign.2007-09.jp.ne.peach.istgt) wird an den Zielnamen "
+"angehängt, wenn er nicht mit 'ign.' beginnt."
 
 msgid ""
 "The basic configuration usually takes the form of 'daemon : address : "
@@ -4874,6 +4974,11 @@ msgstr ""
 "Der Initiator kann das Ziel mit dem richtigen Benutzer und Passwort in der "
 "spezifizierten Authentifizierungsgruppe feststellen."
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr "Der Login-Name enthält ungültige Zeichen."
 
@@ -4919,6 +5024,9 @@ msgid ""
 msgstr ""
 "Die Methode kann in der Entdeckungssitzung akzeptiert werden. \"Auto\" kann "
 "einerseits \"keine\" und \"Authentifikation\" bedeuten."
+
+msgid "The method can be accepted in the controller."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -5023,6 +5131,10 @@ msgstr ""
 "diverse Energiekontrolloptionen ein."
 
 msgid "The queuedepth range is invalid."
+msgstr ""
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
 msgstr ""
 
 msgid "The rule number determines the order of the rule."
@@ -5746,7 +5858,7 @@ msgstr "Schaltet den Monitor nach N Sekunden in den Standby-Modus."
 msgid "Type"
 msgstr "Typ"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+msgid "Type used as extent."
 msgstr ""
 
 msgid "UCD-SNMP-MIB"
@@ -5832,6 +5944,9 @@ msgstr "Unbekannt"
 
 msgid "Unknown or unformatted"
 msgstr "Unbekannt oder nicht formatiert"
+
+msgid "Unload"
+msgstr ""
 
 msgid "Unmount disk/partition"
 msgstr "Unmount Festplatte/Partition"
@@ -6207,6 +6322,9 @@ msgstr "ZFS Datensatzinformationen und Status"
 msgid "ZFS dataset properties"
 msgstr "ZFS Datensatzeigenschaften"
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
@@ -6244,6 +6362,9 @@ msgstr "iSCSI Initiator"
 msgid "iSCSI Target"
 msgstr "iSCSI Target"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr "iSCSI Initialparameter (262144 ist standard)."
 
@@ -6270,9 +6391,6 @@ msgstr "Einhängen"
 
 msgid "mswindows"
 msgstr "mswindows"
-
-msgid "mutual CHAP"
-msgstr "mutual CHAP"
 
 msgid "n/a"
 msgstr "k.A."
@@ -6315,6 +6433,12 @@ msgstr "Sekunden"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
@@ -6492,6 +6616,9 @@ msgstr "upriv"
 #, php-format
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Ungültiger Port! Port-Nummer muss im Bereich von %d bis %d sein."
+
+#~ msgid "List of shares"
+#~ msgstr "Freigabeliste"
 
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Lokal"

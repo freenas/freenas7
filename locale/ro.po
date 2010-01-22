@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
 "PO-Revision-Date: 2009-06-26 11:05+0000\n"
 "Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -251,6 +251,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
+
+msgid "Active Users"
+msgstr ""
+
+msgid "Active shares"
+msgstr ""
 
 msgid "Add"
 msgstr "Adauga"
@@ -570,6 +576,9 @@ msgstr ""
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto size"
+msgstr ""
+
 msgid "AutoScale"
 msgstr "AutoScalare"
 
@@ -714,6 +723,9 @@ msgstr "Certificat"
 msgid "Change"
 msgstr ""
 
+msgid "Change below file"
+msgstr ""
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
 "Modificarile pentru aceasta optiune vor deveni active dupa repornirea "
@@ -851,6 +863,21 @@ msgstr ""
 msgid "Content"
 msgstr "Continut"
 
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
+msgstr ""
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -934,6 +961,9 @@ msgstr ""
 "actualizarea..<br>Este recomandabil sa <a href=%s>Salvati</a> configuratia "
 "sistemului inainte de a realiza aceasta actualizare."
 
+msgid "DVD"
+msgstr ""
+
 msgid "Daemon"
 msgstr "Daemon"
 
@@ -997,6 +1027,9 @@ msgstr "Sterge intrare ARP"
 
 msgid "Delete Host"
 msgstr "Stergere sistem"
+
+msgid "Delete Login Info"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr "Stergere MIB"
@@ -1154,6 +1187,9 @@ msgstr "Dispozitiv /dev/%s - %s"
 msgid "Device IP"
 msgstr "IP dispozitiv"
 
+msgid "Device Pass-through"
+msgstr ""
+
 msgid "Device name"
 msgstr "Nume dispozitiv"
 
@@ -1201,6 +1237,9 @@ msgstr "Lista director"
 
 msgid "Directory mask"
 msgstr "Masca directoare"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr ""
 
 msgid "Directory to watch for new .torrent files."
 msgstr ""
@@ -1925,6 +1964,9 @@ msgstr ""
 msgid "File size"
 msgstr "Dimensiune fisier"
 
+msgid "File sizeunit"
+msgstr ""
+
 msgid "File system"
 msgstr "Sistem Fisiere"
 
@@ -2026,6 +2068,9 @@ msgstr ""
 
 msgid "German"
 msgstr "Germană"
+
+msgid "Get Target Info"
+msgstr ""
 
 msgid "GiB"
 msgstr ""
@@ -2583,9 +2628,6 @@ msgstr "Lista punctelor de montare"
 msgid "List of open files"
 msgstr ""
 
-msgid "List of shares"
-msgstr ""
-
 msgid "Load"
 msgstr "Incarcare"
 
@@ -2653,6 +2695,18 @@ msgid "Log Level"
 msgstr "Nivel Jurnal"
 
 msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
 msgstr ""
 
 msgid "Logical Unit Type mapped to LUN."
@@ -2783,6 +2837,9 @@ msgstr "Performanta maxima, Nivel Maxim Zgomot"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Media Directory"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "Nivel Mediu de Zgomot"
@@ -2958,6 +3015,11 @@ msgid "No RSYNC Client configured"
 msgstr "Niciun client RSYNC configurat"
 
 msgid "No case folding"
+msgstr ""
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
 msgstr ""
 
 #, php-format
@@ -3515,6 +3577,15 @@ msgstr "Citire/Scriere"
 msgid "Read/Write (rw)"
 msgstr ""
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+
 msgid "Read/Write Access"
 msgstr "Permisiune scris/citit"
 
@@ -3568,6 +3639,9 @@ msgstr ""
 
 msgid "Remote syslog server"
 msgstr "Server-ul Remote syslog"
+
+msgid "Removable"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "Sterge toate intrarile in tabela ARP"
@@ -3723,8 +3797,14 @@ msgstr "Salvare"
 msgid "Save and Restart"
 msgstr "Salvare si repornire"
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
 msgstr "Salvare fiser la"
+
+msgid "Scan Targets"
+msgstr ""
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -3806,6 +3886,9 @@ msgid "Send test email"
 msgstr ""
 
 msgid "Separate email addresses by semi-colon."
+msgstr ""
+
+msgid "Serial number"
 msgstr ""
 
 msgid "Server"
@@ -4194,6 +4277,9 @@ msgstr ""
 msgid "Tag%d (%s)"
 msgstr ""
 
+msgid "Tape"
+msgstr ""
+
 msgid "Target"
 msgstr "Destinatie"
 
@@ -4208,6 +4294,15 @@ msgstr "Adresa Destinatie"
 
 msgid "Target directory."
 msgstr "Directorul de destinatie."
+
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
+msgstr ""
 
 msgid "Target name"
 msgstr "Nume Destinatie"
@@ -4564,6 +4659,11 @@ msgid ""
 "specific Auth Group."
 msgstr ""
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr "Numele pentru login contine caractere invalide."
 
@@ -4596,6 +4696,9 @@ msgstr ""
 msgid ""
 "The method can be accepted in discovery session. Auto means both none and "
 "authentication."
+msgstr ""
+
+msgid "The method can be accepted in the controller."
 msgstr ""
 
 msgid ""
@@ -4683,6 +4786,10 @@ msgstr ""
 "controlul alimentarii sistemului."
 
 msgid "The queuedepth range is invalid."
+msgstr ""
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
 msgstr ""
 
 msgid "The rule number determines the order of the rule."
@@ -5269,7 +5376,7 @@ msgstr ""
 msgid "Type"
 msgstr "Tip"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+msgid "Type used as extent."
 msgstr ""
 
 msgid "UCD-SNMP-MIB"
@@ -5353,6 +5460,9 @@ msgstr "Necunoscut"
 
 msgid "Unknown or unformatted"
 msgstr "Necunoscut sau neformatat"
+
+msgid "Unload"
+msgstr ""
 
 msgid "Unmount disk/partition"
 msgstr "De-montare disc/partitie"
@@ -5697,6 +5807,9 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
@@ -5734,6 +5847,9 @@ msgstr "Initiator iSCSI"
 msgid "iSCSI Target"
 msgstr "Destinatie iSCSI"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr ""
 
@@ -5759,9 +5875,6 @@ msgid "mount"
 msgstr ""
 
 msgid "mswindows"
-msgstr ""
-
-msgid "mutual CHAP"
 msgstr ""
 
 msgid "n/a"
@@ -5805,6 +5918,12 @@ msgstr "secunde"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"

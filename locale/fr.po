@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-11-02 17:00+0000\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"PO-Revision-Date: 2010-01-18 17:19+0000\n"
 "Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:53+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -284,6 +284,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
+
+msgid "Active Users"
+msgstr "Utilisateurs actifs"
+
+msgid "Active shares"
+msgstr "Partages actifs"
 
 msgid "Add"
 msgstr "Ajouter"
@@ -622,6 +628,9 @@ msgstr "Auths"
 msgid "Auto"
 msgstr "Automatique"
 
+msgid "Auto size"
+msgstr "Taille automatique"
+
 msgid "AutoScale"
 msgstr "Echelle auto"
 
@@ -772,6 +781,9 @@ msgstr "Certificat"
 msgid "Change"
 msgstr "Modifier"
 
+msgid "Change below file"
+msgstr "Modifier"
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Ce changement ne prend effet qu'au prochain redémarrage."
 
@@ -908,6 +920,21 @@ msgstr ""
 msgid "Content"
 msgstr "Contenu"
 
+msgid "Controller Auth Group"
+msgstr "Groupe Auth du contrôleur"
+
+msgid "Controller Auth Method"
+msgstr "Méthode Auth du contrôleur"
+
+msgid "Controller Authorised network"
+msgstr "Réseaux autorisé du contrôleur"
+
+msgid "Controller IP address"
+msgstr "Adresse IP du contrôleur"
+
+msgid "Controller TCP Port"
+msgstr "Port TCP du contrôleur"
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -998,6 +1025,9 @@ msgstr ""
 "faire une <a href=%s>Sauvegarde</a> de la configuration du Système avant de "
 "lancer une mise à jour du logiciel."
 
+msgid "DVD"
+msgstr "DVD"
+
 msgid "Daemon"
 msgstr "Démon"
 
@@ -1061,6 +1091,9 @@ msgstr "Supprimer l'entrée ARP"
 
 msgid "Delete Host"
 msgstr "Supprimer un hôte"
+
+msgid "Delete Login Info"
+msgstr "Suppression des info de login"
 
 msgid "Delete MIB"
 msgstr "Supprimer MIB"
@@ -1221,6 +1254,9 @@ msgstr "Périphérique /dev/%s - %s"
 msgid "Device IP"
 msgstr "IP du périphérique"
 
+msgid "Device Pass-through"
+msgstr "Périphérique Pass-through"
+
 msgid "Device name"
 msgstr "Nom du périphérique"
 
@@ -1269,6 +1305,9 @@ msgstr "Listage de répertoire"
 
 msgid "Directory mask"
 msgstr "Masque de répertoire"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr "Répertoire contenant des media amovibles. (e.g /mnt/iscsi/)"
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Répertoire où rechercher des nouveaux fichiers .torrent."
@@ -2028,6 +2067,9 @@ msgstr ""
 msgid "File size"
 msgstr "Taille de fichier"
 
+msgid "File sizeunit"
+msgstr "Unité de taille de fichier"
+
 msgid "File system"
 msgstr "Système de fichiers"
 
@@ -2129,6 +2171,9 @@ msgstr "Générer"
 
 msgid "German"
 msgstr "Allemand"
+
+msgid "Get Target Info"
+msgstr "Obtenir les info de la cible"
 
 msgid "GiB"
 msgstr "GiB"
@@ -2738,9 +2783,6 @@ msgstr "Liste des points de montage"
 msgid "List of open files"
 msgstr "Liste des fichiers ouverts"
 
-msgid "List of shares"
-msgstr "Liste des partages"
-
 msgid "Load"
 msgstr "Charger"
 
@@ -2816,6 +2858,20 @@ msgstr "Niveau de journalisation"
 
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "Journaliser dans syslog les paquets gérés par cette règle."
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+"Réseau autorisé pour le contrôleur d'unités logiques (127.0.0.1/8 par défaut)"
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+"Adresse IP du contrôleur d'unités logiques (127.0.0.1 (localhost) par défaut)"
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr "Port TCP du contrôleur d'unités logiques (3261 par défaut)"
+
+msgid "Logical Unit Controller login information"
+msgstr "Informations de login du contrôleur d'unités logiques"
 
 msgid "Logical Unit Type mapped to LUN."
 msgstr "Logical Unit Type attaché au LUN."
@@ -2950,6 +3006,9 @@ msgstr "Performance maximale, niveau acoustique maximal"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Media Directory"
+msgstr "Répertoire des media"
 
 msgid "Medium acoustic output"
 msgstr "Niveau acoustique moyen"
@@ -3132,6 +3191,13 @@ msgstr "Aucun client RSYNC configuré"
 
 msgid "No case folding"
 msgstr "Pas de modification de casse"
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+msgstr ""
+"Aucun groupe Auth configuré. Veuillez d'abord ajouter un nouveau <a "
+"href=%s>groupe Auth</a>."
 
 #, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
@@ -3730,6 +3796,20 @@ msgstr "Lecture/Écriture"
 msgid "Read/Write (rw)"
 msgstr "Lecture/Ecriture (rw)"
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+"Lecture/Ecriture (rw,dynamic) pour les types amovibles où la taille de "
+"fichier sera augmentée ou réduite automatiquement en fonction de l'EOF "
+"(ignore la taille spécifiée)"
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+"Lecture/Ecriture (rw,extend) pour les types amovibles où la taille de "
+"fichier sera augmentée si elle atteint l'EOM"
+
 msgid "Read/Write Access"
 msgstr "Accès en Lecture/Écriture"
 
@@ -3783,6 +3863,9 @@ msgstr "Contrôle à distance"
 
 msgid "Remote syslog server"
 msgstr "Serveur syslog distant"
+
+msgid "Removable"
+msgstr "Amovible"
 
 msgid "Remove all entries from ARP table"
 msgstr "Supprimer toutes les entrées de la table ARP"
@@ -3943,8 +4026,15 @@ msgstr "Enregistrer"
 msgid "Save and Restart"
 msgstr "Enregistrer et redémarrer"
 
+msgid "Save login information in configuration file."
+msgstr ""
+"Sauvegarder les informations de login dans un fichier de configuration."
+
 msgid "Saved file to"
 msgstr "Enregistrer le fichier dans"
+
+msgid "Scan Targets"
+msgstr "Scanner les cibles"
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -4032,6 +4122,9 @@ msgstr "Envoyer un e-mail de test"
 
 msgid "Separate email addresses by semi-colon."
 msgstr "Séparer les adresses e-mail par des points-virgules."
+
+msgid "Serial number"
+msgstr "Numéro de série"
 
 msgid "Server"
 msgstr "Serveur"
@@ -4451,6 +4544,9 @@ msgstr "Tag%d"
 msgid "Tag%d (%s)"
 msgstr "Tag%d (%s)"
 
+msgid "Tape"
+msgstr "Bande"
+
 msgid "Target"
 msgstr "Cible"
 
@@ -4465,6 +4561,15 @@ msgstr "Adresse de la cible"
 
 msgid "Target directory."
 msgstr "Répertoire cible"
+
+msgid "Target information"
+msgstr "Information de la cible"
+
+msgid "Target is not selected."
+msgstr "La cible n'est pas sélectionnée"
+
+msgid "Target list"
+msgstr "Liste des cibles"
 
 msgid "Target name"
 msgstr "Nom de la cible"
@@ -4874,6 +4979,13 @@ msgstr ""
 "L'initiateur peut découvrir les cibles avec un nom et un secret corrects "
 "dans le groupe Auth spécifique."
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+"Istgtcontrol peut accéder aux cibles avec un nom d'utilisateur et un secret "
+"dans un groupe Auth spécifique."
+
 msgid "The login name contains invalid characters."
 msgstr "L'identifiant contient un caractère invalide."
 
@@ -4916,6 +5028,9 @@ msgid ""
 msgstr ""
 "La méthode acceptée lors d'une session de découverte (discovery). Auto "
 "signifie à la fois 'none' et 'authentication'."
+
+msgid "The method can be accepted in the controller."
+msgstr "La méthode peut être acceptée dans le contrôleur."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -5021,6 +5136,10 @@ msgstr ""
 
 msgid "The queuedepth range is invalid."
 msgstr "La profondeur de queue est invalide."
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
+msgstr "La zone amovible attachée au LUN%d."
 
 msgid "The rule number determines the order of the rule."
 msgstr "Le numéro de règle détermine l'ordre de la règle."
@@ -5732,8 +5851,8 @@ msgstr "Basculer le moniteur en mode veille après N secondes."
 msgid "Type"
 msgstr "Type"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
-msgstr "Type utilisé comme extension (le fichier inclus un volume ZFS émulé)"
+msgid "Type used as extent."
+msgstr "Type utilisé comme extension (extent)"
 
 msgid "UCD-SNMP-MIB"
 msgstr "UCD-SNMP-MIB"
@@ -5771,7 +5890,7 @@ msgid "UPS disabled"
 msgstr "UPS désactivé"
 
 msgid "UPS goes on battery"
-msgstr "L'UPS bascle sur la batterie"
+msgstr "L'UPS bascule sur la batterie"
 
 msgid "UPS reaches low battery"
 msgstr "Batterie faible sur le système UPS"
@@ -5817,6 +5936,9 @@ msgstr "Inconnu"
 
 msgid "Unknown or unformatted"
 msgstr "Inconnu ou non formaté"
+
+msgid "Unload"
+msgstr "Ejecter"
 
 msgid "Unmount disk/partition"
 msgstr "Démonter disque/partition"
@@ -6194,6 +6316,9 @@ msgstr "Informations et état du dataset ZFS"
 msgid "ZFS dataset properties"
 msgstr "Propriétés du dataset ZFS"
 
+msgid "ZFS volume"
+msgstr "Volume ZFS"
+
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
@@ -6231,6 +6356,9 @@ msgstr "Initiateur iSCSI"
 msgid "iSCSI Target"
 msgstr "Cible iSCSI"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr "iSCSI Target Logical Unit Controller"
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr "Paramètre initial iSCSI (262144 par défaut)."
 
@@ -6257,9 +6385,6 @@ msgstr "montage"
 
 msgid "mswindows"
 msgstr "mswindows"
-
-msgid "mutual CHAP"
-msgstr "CHAP mutuel"
 
 msgid "n/a"
 msgstr "n/a"
@@ -6302,6 +6427,12 @@ msgstr "secondes"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr "avec succès"
+
+msgid "successfully."
+msgstr "avec succès."
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
@@ -6432,6 +6563,9 @@ msgstr "upriv"
 #, php-format
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Port invalide! Le numéro de port doit être compris entre %d et %d."
+
+#~ msgid "List of shares"
+#~ msgstr "Liste des partages"
 
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "

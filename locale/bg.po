@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
 "PO-Revision-Date: 2009-09-16 16:10+0000\n"
 "Last-Translator: Alex Stanev <alex@stanev.org>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:53+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid " interfaces:"
@@ -241,6 +241,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Активна директория"
+
+msgid "Active Users"
+msgstr ""
+
+msgid "Active shares"
+msgstr ""
 
 msgid "Add"
 msgstr "Добави"
@@ -554,6 +560,9 @@ msgstr ""
 msgid "Auto"
 msgstr ""
 
+msgid "Auto size"
+msgstr ""
+
 msgid "AutoScale"
 msgstr "AutoScale"
 
@@ -697,6 +706,9 @@ msgstr "Сертификат"
 msgid "Change"
 msgstr ""
 
+msgid "Change below file"
+msgstr ""
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr "промените ще влязат в действие след рестарта"
 
@@ -826,6 +838,21 @@ msgstr ""
 msgid "Content"
 msgstr "Съдържание"
 
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
+msgstr ""
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -904,6 +931,9 @@ msgid ""
 "System configuration before doing a Firmware upgrade."
 msgstr ""
 
+msgid "DVD"
+msgstr ""
+
 msgid "Daemon"
 msgstr ""
 
@@ -969,6 +999,9 @@ msgstr ""
 
 msgid "Delete Host"
 msgstr "Delete Host"
+
+msgid "Delete Login Info"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr ""
@@ -1126,6 +1159,9 @@ msgstr ""
 msgid "Device IP"
 msgstr ""
 
+msgid "Device Pass-through"
+msgstr ""
+
 msgid "Device name"
 msgstr ""
 
@@ -1166,6 +1202,9 @@ msgid "Directory listing"
 msgstr ""
 
 msgid "Directory mask"
+msgstr ""
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
 msgid "Directory to watch for new .torrent files."
@@ -1884,6 +1923,9 @@ msgstr ""
 msgid "File size"
 msgstr "Размер на файла"
 
+msgid "File sizeunit"
+msgstr ""
+
 msgid "File system"
 msgstr "Файлова система"
 
@@ -1984,6 +2026,9 @@ msgid "Generate"
 msgstr ""
 
 msgid "German"
+msgstr ""
+
+msgid "Get Target Info"
 msgstr ""
 
 msgid "GiB"
@@ -2536,9 +2581,6 @@ msgstr "лист на точките за монтиране"
 msgid "List of open files"
 msgstr ""
 
-msgid "List of shares"
-msgstr ""
-
 msgid "Load"
 msgstr "Зареди"
 
@@ -2604,6 +2646,18 @@ msgid "Log Level"
 msgstr "ниво на логване"
 
 msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
 msgstr ""
 
 msgid "Logical Unit Type mapped to LUN."
@@ -2735,6 +2789,9 @@ msgstr "Maximum performance, maximum acoustic output"
 
 msgid "Media"
 msgstr "Носител"
+
+msgid "Media Directory"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "средно акустично ниво"
@@ -2908,6 +2965,11 @@ msgid "No RSYNC Client configured"
 msgstr "No RSYNC Client configured"
 
 msgid "No case folding"
+msgstr ""
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
 msgstr ""
 
 #, php-format
@@ -3463,6 +3525,15 @@ msgstr ""
 msgid "Read/Write (rw)"
 msgstr ""
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+
 msgid "Read/Write Access"
 msgstr ""
 
@@ -3516,6 +3587,9 @@ msgstr ""
 
 msgid "Remote syslog server"
 msgstr "отдалечен системен дневник"
+
+msgid "Removable"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "Изтрий цялата ARP таблица"
@@ -3671,8 +3745,14 @@ msgstr "Запази"
 msgid "Save and Restart"
 msgstr ""
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
 msgstr "Запази фаила в"
+
+msgid "Scan Targets"
+msgstr ""
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -3754,6 +3834,9 @@ msgid "Send test email"
 msgstr ""
 
 msgid "Separate email addresses by semi-colon."
+msgstr ""
+
+msgid "Serial number"
 msgstr ""
 
 msgid "Server"
@@ -4143,6 +4226,9 @@ msgstr ""
 msgid "Tag%d (%s)"
 msgstr ""
 
+msgid "Tape"
+msgstr ""
+
 msgid "Target"
 msgstr ""
 
@@ -4156,6 +4242,15 @@ msgid "Target address"
 msgstr "Target address"
 
 msgid "Target directory."
+msgstr ""
+
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
 msgstr ""
 
 msgid "Target name"
@@ -4511,6 +4606,11 @@ msgid ""
 "specific Auth Group."
 msgstr ""
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr "Входното име съдържа невалидни символи."
 
@@ -4545,6 +4645,9 @@ msgstr ""
 msgid ""
 "The method can be accepted in discovery session. Auto means both none and "
 "authentication."
+msgstr ""
+
+msgid "The method can be accepted in the controller."
 msgstr ""
 
 msgid ""
@@ -4632,6 +4735,10 @@ msgstr ""
 "options accordingly."
 
 msgid "The queuedepth range is invalid."
+msgstr ""
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
 msgstr ""
 
 msgid "The rule number determines the order of the rule."
@@ -5212,7 +5319,7 @@ msgstr ""
 msgid "Type"
 msgstr "Тип:"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+msgid "Type used as extent."
 msgstr ""
 
 msgid "UCD-SNMP-MIB"
@@ -5292,6 +5399,9 @@ msgstr ""
 
 msgid "Unknown or unformatted"
 msgstr "непознат и неформатиран"
+
+msgid "Unload"
+msgstr ""
 
 msgid "Unmount disk/partition"
 msgstr "демонтирай диска/дяла"
@@ -5623,6 +5733,9 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
@@ -5660,6 +5773,9 @@ msgstr "iSCSI Initiator"
 msgid "iSCSI Target"
 msgstr "iSCSI цел"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr ""
 
@@ -5685,9 +5801,6 @@ msgid "mount"
 msgstr ""
 
 msgid "mswindows"
-msgstr ""
-
-msgid "mutual CHAP"
 msgstr ""
 
 msgid "n/a"
@@ -5731,6 +5844,12 @@ msgstr "секунди"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr ""

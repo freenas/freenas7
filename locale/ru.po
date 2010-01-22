@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas-0.7\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2009-09-15 02:04+0000\n"
-"PO-Revision-Date: 2009-09-17 17:03+0000\n"
+"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"PO-Revision-Date: 2010-01-16 18:36+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-06 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-01-22 18:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -284,6 +284,12 @@ msgstr ""
 
 msgid "Active Directory"
 msgstr "Служба каталогов Active Directory"
+
+msgid "Active Users"
+msgstr "Активные пользователи"
+
+msgid "Active shares"
+msgstr "Активные общие ресурсы"
 
 msgid "Add"
 msgstr "Добавить"
@@ -618,6 +624,9 @@ msgstr "Аутентификация"
 msgid "Auto"
 msgstr "Авто"
 
+msgid "Auto size"
+msgstr "Авторазмер"
+
 msgid "AutoScale"
 msgstr "Автомасштаб"
 
@@ -766,6 +775,9 @@ msgstr "Сертификат"
 msgid "Change"
 msgstr "Изменить"
 
+msgid "Change below file"
+msgstr ""
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Изменения этого параметра подействуют после перезагрузки."
 
@@ -902,6 +914,21 @@ msgstr ""
 msgid "Content"
 msgstr "Содержимое"
 
+msgid "Controller Auth Group"
+msgstr ""
+
+msgid "Controller Auth Method"
+msgstr ""
+
+msgid "Controller Authorised network"
+msgstr ""
+
+msgid "Controller IP address"
+msgstr ""
+
+msgid "Controller TCP Port"
+msgstr ""
+
 msgid ""
 "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
 "compression algorithm is optimized for performance while providing decent "
@@ -990,6 +1017,9 @@ msgstr ""
 "Для обновления прошивки нужно минимум %d Мбайт ОЗУ.<br> Рекомендуется <a "
 "href=%s>сохранить</a> конфигурацию системы перед обновлением."
 
+msgid "DVD"
+msgstr "DVD"
+
 msgid "Daemon"
 msgstr "Процесс"
 
@@ -1053,6 +1083,9 @@ msgstr "Удалить запись ARP"
 
 msgid "Delete Host"
 msgstr "Удалить хост"
+
+msgid "Delete Login Info"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr "Удалить MIB"
@@ -1213,6 +1246,9 @@ msgstr "Устройство /dev/%s - %s"
 msgid "Device IP"
 msgstr "IP-адрес устройства"
 
+msgid "Device Pass-through"
+msgstr "Сквозное (pass-through) устройство"
+
 msgid "Device name"
 msgstr "Имя устройства"
 
@@ -1260,6 +1296,9 @@ msgstr "Список файлов каталога"
 
 msgid "Directory mask"
 msgstr "Маска каталога"
+
+msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
+msgstr ""
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Каталог для отслеживания новых .torrent-файлов."
@@ -2019,6 +2058,9 @@ msgstr ""
 msgid "File size"
 msgstr "Размер файла"
 
+msgid "File sizeunit"
+msgstr "Файловый размер единицы (unit)"
+
 msgid "File system"
 msgstr "Файловая система"
 
@@ -2120,6 +2162,9 @@ msgstr "Создать"
 
 msgid "German"
 msgstr "Немецкий"
+
+msgid "Get Target Info"
+msgstr ""
 
 msgid "GiB"
 msgstr "ГБ"
@@ -2721,9 +2766,6 @@ msgstr "Список точек монтирования"
 msgid "List of open files"
 msgstr "Список открытых файлов"
 
-msgid "List of shares"
-msgstr "Список общих ресурсов"
-
 msgid "Load"
 msgstr "Загрузка"
 
@@ -2798,6 +2840,18 @@ msgstr "Уровень журналирования"
 msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 "Заносить в журнал записи о пакетах, обработанных этим правилом, для syslog."
+
+msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+msgstr ""
+
+msgid "Logical Unit Controller TCP port (3261 by default)"
+msgstr ""
+
+msgid "Logical Unit Controller login information"
+msgstr ""
 
 msgid "Logical Unit Type mapped to LUN."
 msgstr "Тип логического устройства, сопоставленный с LUN."
@@ -2932,6 +2986,9 @@ msgstr "Максимальная производительность, макс�
 
 msgid "Media"
 msgstr "Среда передачи"
+
+msgid "Media Directory"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "Средний уровень шума"
@@ -3116,6 +3173,11 @@ msgstr "Нет настроенных клиентов Rsync"
 
 msgid "No case folding"
 msgstr "Без преобразования регистра"
+
+#, php-format
+msgid ""
+"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+msgstr ""
 
 #, php-format
 msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
@@ -3709,6 +3771,19 @@ msgstr "Чтение/запись"
 msgid "Read/Write (rw)"
 msgstr "Чтение и запись (RW)"
 
+msgid ""
+"Read/Write (rw,dynamic) for removable types file size grow and shrink "
+"automatically by EOF (ignore specified size)"
+msgstr ""
+"Чтение и запись (RW, dynamic) для съемных типов увеличивает и делит файл "
+"автоматически (EOF), игнорируя заданный размер."
+
+msgid ""
+"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgstr ""
+"Чтение и запись (RW, extend) для съемных типов увеличивает размер файла, "
+"если достигнут предел памяти (EOM)."
+
 msgid "Read/Write Access"
 msgstr "Доступ на чтение/запись"
 
@@ -3762,6 +3837,9 @@ msgstr "Удаленный мониторинг"
 
 msgid "Remote syslog server"
 msgstr "Удаленный syslog-сервер"
+
+msgid "Removable"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "Удалить все записи из ARP-таблицы"
@@ -3921,8 +3999,14 @@ msgstr "Сохранить"
 msgid "Save and Restart"
 msgstr "Сохранить и перезапустить"
 
+msgid "Save login information in configuration file."
+msgstr ""
+
 msgid "Saved file to"
 msgstr "Файл сохранен в"
+
+msgid "Scan Targets"
+msgstr ""
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -4008,6 +4092,9 @@ msgstr "Отправить тестовый e-mail"
 
 msgid "Separate email addresses by semi-colon."
 msgstr "Несколько адресов e-mail разделяются точкой с запятой."
+
+msgid "Serial number"
+msgstr "Серийный номер"
 
 msgid "Server"
 msgstr "Сервер"
@@ -4422,6 +4509,9 @@ msgstr "С меткой '%d'"
 msgid "Tag%d (%s)"
 msgstr "С меткой '%d' (%s)"
 
+msgid "Tape"
+msgstr "Магнитная лента"
+
 msgid "Target"
 msgstr "Цель"
 
@@ -4436,6 +4526,15 @@ msgstr "Адрес цели"
 
 msgid "Target directory."
 msgstr "Целевой каталог."
+
+msgid "Target information"
+msgstr ""
+
+msgid "Target is not selected."
+msgstr ""
+
+msgid "Target list"
+msgstr ""
 
 msgid "Target name"
 msgstr "Имя цели"
@@ -4828,6 +4927,11 @@ msgstr ""
 "Инициатор может осуществлять поиск целей, используя корректные имя "
 "пользователя и ключ безопасности из указанной группы аутентификации."
 
+msgid ""
+"The istgtcontrol can access the targets with correct user and secret in "
+"specific Auth Group."
+msgstr ""
+
 msgid "The login name contains invalid characters."
 msgstr "Логин содержит недопустимые символы."
 
@@ -4871,6 +4975,9 @@ msgid ""
 msgstr ""
 "Метод аутентификации, используемый в сессии обнаружения. При значении 'Авто' "
 "используется как включенная, так и выключенная аутентификация одновременно."
+
+msgid "The method can be accepted in the controller."
+msgstr ""
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
@@ -4974,6 +5081,10 @@ msgstr ""
 
 msgid "The queuedepth range is invalid."
 msgstr "Диапазон глубины очереди задан некорректно."
+
+#, php-format
+msgid "The removable area mapped to LUN%d."
+msgstr ""
 
 msgid "The rule number determines the order of the rule."
 msgstr "Номера правил определяют последовательность их применения."
@@ -5674,8 +5785,8 @@ msgstr "Переводить монитор в режим энергопотре
 msgid "Type"
 msgstr "Тип"
 
-msgid "Type used as extent. (File includes an emulated volume of ZFS)"
-msgstr "Тип используемого экстента (файл включает эмулированный том ZFS)."
+msgid "Type used as extent."
+msgstr ""
 
 msgid "UCD-SNMP-MIB"
 msgstr "UCD-SNMP-MIB"
@@ -5759,6 +5870,9 @@ msgstr "Неизвестно"
 
 msgid "Unknown or unformatted"
 msgstr "Неизвестно или не отформатировано"
+
+msgid "Unload"
+msgstr ""
 
 msgid "Unmount disk/partition"
 msgstr "Размонтировать диск/раздел"
@@ -6129,6 +6243,9 @@ msgstr "Информация и состояние dataset'ов ZFS"
 msgid "ZFS dataset properties"
 msgstr "Свойства dataset'ов ZFS"
 
+msgid "ZFS volume"
+msgstr ""
+
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
@@ -6166,6 +6283,9 @@ msgstr "iSCSI-инициатор"
 msgid "iSCSI Target"
 msgstr "iSCSI"
 
+msgid "iSCSI Target Logical Unit Controller"
+msgstr ""
+
 msgid "iSCSI initial parameter (262144 by default)."
 msgstr "Начальный параметр iSCSI (по умолчанию 262144)."
 
@@ -6192,9 +6312,6 @@ msgstr "монтировать"
 
 msgid "mswindows"
 msgstr "mswindows"
-
-msgid "mutual CHAP"
-msgstr "Взаимный CHAP"
 
 msgid "n/a"
 msgstr "n/a"
@@ -6237,6 +6354,12 @@ msgstr "секунд"
 
 msgid "striping"
 msgstr "чередование"
+
+msgid "successfully"
+msgstr ""
+
+msgid "successfully."
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
@@ -6329,6 +6452,9 @@ msgstr "upriv"
 
 #~ msgid "A valid network must be specified."
 #~ msgstr "Должна быть указана корректная сеть."
+
+#~ msgid "List of shares"
+#~ msgstr "Список общих ресурсов"
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "Разрешить полный доступ к shell этому пользователю"
