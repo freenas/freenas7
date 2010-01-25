@@ -140,6 +140,7 @@ device		iir		# Intel Integrated RAID
 device		ips		# IBM (Adaptec) ServeRAID
 device		mly		# Mylex AcceleRAID/eXtremeRAID
 device		twa		# 3ware 9000 series PATA/SATA RAID
+device      siis    # SiliconImage Serial ATA Host Controller driver
 
 # RAID controllers
 device		aac		# Adaptec FSA RAID
