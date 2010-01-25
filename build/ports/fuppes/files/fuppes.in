@@ -462,7 +462,8 @@ EOF
 fuppes_poststop()
 {
 	# Delete multicast route.
-	/sbin/route delete -net 239.0.0.0 >/dev/null 2>&1
+	/sbin/route -q delete -net 239.0.0.0 >/dev/null 2>&1
+	return 0
 }
 
 # Command to
