@@ -205,7 +205,10 @@ EOD;
 		// Write /etc/fstab
 		$data = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
 		@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT);
+	}
 
+	// Append if not found
+	if (mwexec("/usr/bin/grep '^proc ' {$g['etc_path']}/fstab") != 0) {
 		// Append process file system to /etc/fstab
 		$data = "proc /proc procfs rw 0 0\n";
 		@file_put_contents("{$g['etc_path']}/fstab", $data, FILE_TEXT | FILE_APPEND);
