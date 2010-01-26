@@ -252,7 +252,18 @@ function install_upgrade_full($harddrive)
 	mwexec("/bin/rm -f -r {$sysbackup}");
 
 	// Unmount disk containing OS
-	mwexec("/sbin/umount {$mntpath}");
+	$retry = 10;
+	while ($retry > 0) {
+		if (0 == mwexec("/sbin/umount {$mntpath}")) {
+			break;
+		}
+		$retry--;
+		sleep(1);
+	}
+	if ($retry == 0) {
+		write_console("Error: Failed to umount {$mntpath}!\n");
+		return 1;
+	}
 	mwexec("/bin/rm -f -r {$mntpath}");
 
 	return 0;
