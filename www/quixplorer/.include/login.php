@@ -52,6 +52,10 @@ function login() {
 		if(!activate_user($GLOBALS['__SESSION']["s_user"],$GLOBALS['__SESSION']["s_pass"])) {
 			logout();
 		}
+		$GLOBALS["lang"] = $GLOBALS['__SESSION']["s_lang"];
+		$GLOBALS["language"] = $GLOBALS['__SESSION']["s_lang"];
+		require "./_lang/".$GLOBALS["language"].".php";
+		require "./_lang/".$GLOBALS["language"]."_mimes.php";
 	} else {
 		if(isset($GLOBALS['__POST']["p_pass"])) $p_pass=$GLOBALS['__POST']["p_pass"];
 		else $p_pass="";
@@ -61,6 +65,7 @@ function login() {
 			if(!activate_user(stripslashes($GLOBALS['__POST']["p_user"]), md5(stripslashes($p_pass)))) {
 				logout();
 			}
+			$GLOBALS['__SESSION']["s_lang"] = $GLOBALS['__POST']["lang"];
 			return;
 		} else {
 			// Ask for Login

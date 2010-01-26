@@ -47,7 +47,11 @@ function show_header($title) {			// header for html-page
 	
 	//echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\"";
 	//echo "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
-	echo "<HTML lang=\"".$GLOBALS["language"]."\" dir=\"".$GLOBALS["text_dir"]."\">\n";
+	if ($GLOBALS["language"] == "enutf8") {
+		echo "<HTML lang=\""."en"."\" dir=\"".$GLOBALS["text_dir"]."\">\n";
+	} else {
+		echo "<HTML lang=\"".$GLOBALS["language"]."\" dir=\"".$GLOBALS["text_dir"]."\">\n";
+	}
 	echo "<HEAD>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$GLOBALS["charset"]."\">\n";
 	echo "<title>QuiXplorer ".$GLOBALS["version"]." - the QuiX project</title>\n";
 	echo "<LINK href=\"_style/style.css\" rel=\"stylesheet\" type=\"text/css\">\n";
