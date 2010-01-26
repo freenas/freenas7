@@ -65,7 +65,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['network'] = "";
 	$pconfig['mask'] = "24";
 	$pconfig['comment'] = "";
-	$pconfig['alldirs'] = true;
+	$pconfig['alldirs'] = false;
 	$pconfig['readonly'] = false;
 	$pconfig['quiet'] = false;
 }
@@ -84,10 +84,19 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Path"), gettext("Authorised network"), gettext("Network mask"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
+	// remove last slash and check alldirs option
+	$path = $_POST['path'];
+	if ($path[strlen($path)-1] == "/") {
+		$path = substr($path, 0, strlen($path)-1);
+	}
+	if (isset($_POST['alldirs']) && !disks_ismounted_ex($path, "mp")) {
+	   $input_errors[] = sprintf(gettext("All dirs requires mounted path, but Path %s is not mounted."), $path);
+	}
+
 	if (!$input_errors) {
 		$share = array();
 		$share['uuid'] = $_POST['uuid'];
-		$share['path'] = $_POST['path'];
+		$share['path'] = $path;
 		$share['mapall'] = $_POST['mapall'];
 		$share['network'] = gen_subnet($_POST['network'], $_POST['mask']) . "/" . $_POST['mask'];
 		$share['comment'] = $_POST['comment'];
