@@ -56,6 +56,7 @@ Majors changes:
 - Upgrade rsync to 3.0.7.
 - Upgrade inadyn-mt to 02.18.06.
 - Upgrade netatalk to 2.0.5.
+- Upgrade bash to 4.0.35.
 
 Minors changes:
 - Modify Samba default buffer size.
