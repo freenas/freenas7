@@ -57,6 +57,7 @@ Majors changes:
 - Upgrade inadyn-mt to 02.18.06.
 - Upgrade netatalk to 2.0.5.
 - Upgrade bash to 4.0.35.
+- Upgrade lighttpd to 1.4.25.
 
 Minors changes:
 - Modify Samba default buffer size.
