@@ -86,10 +86,14 @@ if ($_POST) {
 
 	// remove last slash and check alldirs option
 	$path = $_POST['path'];
-	if ($path[strlen($path)-1] == "/") {
+	if (strlen($path) > 1 && $path[strlen($path)-1] == "/") {
 		$path = substr($path, 0, strlen($path)-1);
 	}
-	if (isset($_POST['alldirs']) && !disks_ismounted_ex($path, "mp")) {
+	if ($path == "/") {
+		// allow alldirs
+	} else if (isset($_POST['quiet'])) {
+		// might be delayed mount
+	} else if (isset($_POST['alldirs']) && !disks_ismounted_ex($path, "mp")) {
 	   $input_errors[] = sprintf(gettext("All dirs requires mounted path, but Path %s is not mounted."), $path);
 	}
 
