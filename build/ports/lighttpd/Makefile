@@ -1,5 +1,5 @@
 PORTNAME=			lighttpd
-PORTVERSION=	1.4.23
+PORTVERSION=	1.4.25
 CATEGORIES=		www
 COMMENT=			A secure, fast, compliant, and very flexible Web Server
 MAINTAINER=		votdev@gmx.de
@@ -12,6 +12,7 @@ LIB_DEPENDS+=			uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
 									pcre.0:${PORTSDIR}/devel/pcre
 
 USE_BZIP2=				yes
+USE_AUTOTOOLS=	libtool:22
 GNU_CONFIGURE=		yes
 USE_OPENSSL=			yes
 USE_GNOME+=				libxml2
