@@ -56,6 +56,13 @@ Majors changes:
 - Upgrade rsync to 3.0.7.
 - Upgrade inadyn-mt to 02.18.06.
 
+Minors changes:
+- Modify Samba default buffer size.
+- Modify Tuning values.
+- Add new MIB in System|Advanced|sysctl.conf.
+- Add UTF-8 with English menu in File Manager (quixplorer).
+- Restrict NFS sharing directory with alldirs.
+
 Bug fixes:
 - Fix bug in istgt script.
 - Fix Samba 'Unknown socket option IPTOS_LOWDELAY' messages. Thanks to Daisuke
@@ -68,6 +75,8 @@ Bug fixes:
 - Every reboot increases the number of 'proc' entries in fstab on 'full'
   installations (BR 2929029).
 - Fix message in console menu 'Reset WebGUI password' (BR 2929338).
+- Fix initial resolv issue.
+- Fix full install upgrade error.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
