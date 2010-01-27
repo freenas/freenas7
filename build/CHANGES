@@ -4,7 +4,7 @@ FreeNAS 0.8 (Golden Path):
 WARNING: DOESN'T BOOT !!!
 
 Majors changes:
-- Upgrade to FreeBSD 8.0:
+- Upgrade to FreeBSD 8.0-Release:
    - Enable the new AHCI drivers for SATA (/dev/ad0 became /dev/ada0)
         (TODO: Need to use glabel for mounting disk, hide drivers changes)
    - add atapicam that permit to use a CD Burner software
