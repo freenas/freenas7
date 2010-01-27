@@ -1,0 +1,62 @@
+*** g_raid5.c.orig	2010-01-17 18:34:16.000000000 -0500
+--- g_raid5.c	2010-01-17 18:34:57.000000000 -0500
+***************
+*** 2012,2018 ****
+  	wakeup(&sc->term);
+  
+  	curthread->td_pflags &= ~TDP_GEOM;
+! 	kthread_exit(0);
+  }
+  
+  static __inline void
+--- 2012,2018 ----
+  	wakeup(&sc->term);
+  
+  	curthread->td_pflags &= ~TDP_GEOM;
+! 	kproc_exit(0);
+  }
+  
+  static __inline void
+***************
+*** 2441,2447 ****
+  	wakeup(sc);
+  
+  	curthread->td_pflags &= ~TDP_GEOM;
+! 	kthread_exit(0);
+  }
+  
+  /*
+--- 2441,2447 ----
+  	wakeup(sc);
+  
+  	curthread->td_pflags &= ~TDP_GEOM;
+! 	kproc_exit(0);
+  }
+  
+  /*
+***************
+*** 2632,2642 ****
+  	sc->sc_type = type;
+  
+  	sc->term = 0;
+! 	if (kthread_create(g_raid5_worker, sc, &sc->worker, 0, 0,
+  							 "g_raid5/main %s", md->md_name) != 0) {
+  		sc->workerD = NULL;
+  		sc->worker = NULL;
+! 	} else if (kthread_create(g_raid5_workerD, sc, &sc->workerD, 0, 0,
+  							 "g_raid5/done %s", md->md_name) != 0) {
+  		sc->workerD = NULL;
+  		sc->term = 1;
+--- 2632,2642 ----
+  	sc->sc_type = type;
+  
+  	sc->term = 0;
+! 	if (kproc_create(g_raid5_worker, sc, &sc->worker, 0, 0,
+  							 "g_raid5/main %s", md->md_name) != 0) {
+  		sc->workerD = NULL;
+  		sc->worker = NULL;
+! 	} else if (kproc_create(g_raid5_workerD, sc, &sc->workerD, 0, 0,
+  							 "g_raid5/done %s", md->md_name) != 0) {
+  		sc->workerD = NULL;
+  		sc->term = 1;
+

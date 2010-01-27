@@ -12,6 +12,9 @@ DISTFILES?=
 do-build:
 	@${TAR} -zxvf ${FILESDIR}/geom_raid5.tbz -C /usr/src
 
+	# Patch geom raid 5 for FreeBSD 8.0.
+	@${PATCH} -f /usr/src/sys/geom/raid5/g_raid5.c ${FILESDIR}/g_raid5.c.patch
+
 	# Make kernel module.
 	@${MAKE} -C /usr/src/sys/modules/geom/geom_raid5 depend
 	@${MAKE} -C /usr/src/sys/modules/geom/geom_raid5
