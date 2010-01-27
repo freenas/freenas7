@@ -55,6 +55,7 @@ Majors changes:
 - Upgrade fuppes to 0.660.
 - Upgrade rsync to 3.0.7.
 - Upgrade inadyn-mt to 02.18.06.
+- Upgrade netatalk to 2.0.5.
 
 Minors changes:
 - Modify Samba default buffer size.
