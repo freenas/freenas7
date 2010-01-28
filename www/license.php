@@ -48,7 +48,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               All rights reserved.</strong></p>
 			  <p>FreeNAS&reg is a registered trademark of Olivier Cochard-Labbe.</p>
 		<p>FreeNAS is based on m0n0wall which is Copyright &copy; 2002-2007 by Manuel Kasper (mk@neon1.net).</p>
-	<p>FreeNAS code and documentation are released under the BSD license, under terms as follows:</p>
+	<p>FreeNAS code, documentation and logo are released under the BSD license, under terms as follows:</p>
             <p> Redistribution and use in source and binary forms, with or without<br>
               modification, are permitted provided that the following conditions
               are met:<br>

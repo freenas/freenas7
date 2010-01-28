@@ -7,14 +7,9 @@ FreeNAS is a registered trademark of Olivier Cochard-Labbe
 
 Portions from m0n0wall, both documentation and source code, copyright 2002-2005 Manuel Kasper, and m0n0wall Documentation Project. Please refer to source code header for exact copyright information. Portion of logo (hard drive) from tpdkdesign.net.
 
-FreeNAS Logo is copyright 2005-2007 Youri Trioreau.
-
-Logo Usage
-The FreeNAS logo is not released under the BSD license. Usage in any commercial context is strictly prohibited without prior written consent of Youri Trioreau.
-
 FreeNAS Splashscreen is copyright 2007-2009 Volker Theile.
 
-Code and Documentation
+Code, Documentation and Logo
 FreeNAS code and documentation are released under the modified BSD license, under terms as follows.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
