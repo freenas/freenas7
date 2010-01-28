@@ -8,6 +8,7 @@ MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=			SF
 
+LIB_DEPENDS=    gcrypt:${PORTSDIR}/security/libgcrypt
 USE_AUTOTOOLS=		libtool:22
 GNU_CONFIGURE=		yes
 USE_ICONV=				yes
