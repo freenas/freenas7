@@ -643,6 +643,7 @@ etc/rc.d/swap1
 etc/rc.d/ip6fw
 etc/rc.d/devd
 etc/rc.d/dmesg
+etc/rc.d/hostid
 
 ####### contents of /usr/share/snmp/defs
 usr/share/snmp/defs/atm_freebsd.def
