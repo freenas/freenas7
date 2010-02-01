@@ -444,6 +444,12 @@ usr/bin/getopt
 ## mt -- magnetic tape manipulating program
 usr/bin/mt
 
+## tip -- connect to a remote system
+usr/bin/tip
+
+## tty -- return user's terminal name
+usr/bin/tty
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -617,6 +623,7 @@ etc/netconfig
 etc/networks
 etc/protocols
 etc/rc.firewall6
+etc/remote
 
 ####### contents of /etc/defaults
 etc/defaults/devfs.rules
