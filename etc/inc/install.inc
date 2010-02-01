@@ -216,6 +216,9 @@ function install_upgrade_full($harddrive)
 	write_console("Backup system configuration.\n");
 	mwexec("/bin/mkdir -p {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/boot/loader.conf {$sysbackup}");
+	if (file_exists("{$mntpath}/boot.config")) {
+		mwexec("/bin/cp -p {$mntpath}/boot.config {$sysbackup}");
+	}
 	mwexec("/bin/cp -p {$mntpath}/etc/platform {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/etc/fstab {$sysbackup}");
 	mwexec("/bin/cp -p {$mntpath}/etc/cfdevice {$sysbackup}");
@@ -244,6 +247,11 @@ function install_upgrade_full($harddrive)
 	// Restore system files
 	write_console("Restore system configuration.\n");
 	mwexec("/bin/cp -p {$sysbackup}/loader.conf {$mntpath}/boot");
+	if (file_exists("{$sysbackup}/boot.config")) {
+		mwexec("/bin/cp -p {$sysbackup}/boot.config {$mntpath}/");
+	} else {
+		mwexec("/bin/rm -f {$mntpath}/boot.config");
+	}
 	mwexec("/bin/cp -p {$sysbackup}/platform {$mntpath}/etc");
 	mwexec("/bin/cp -p {$sysbackup}/fstab {$mntpath}/etc");
 	mwexec("/bin/cp -p {$sysbackup}/cfdevice {$mntpath}/etc");
@@ -303,6 +311,11 @@ function install_backup_config($disk)
 		write_console("Error: Failed to backup the configuration file!\n");
 		return 1;
 	}
+	if (file_exists("{$mnt_cf_disk}/boot.config")
+	    && 1 == mwexec("/bin/cp -p {$mnt_cf_disk}/boot.config {$tmp_cf_bak}")) {
+		write_console("Error: Failed to backup the configuration file!\n");
+		return 1;
+	}
 
 	/* Unmount the drive to be upgraded */
 	if (1 == mwexec("/sbin/umount {$mnt_cf_disk}")) {
@@ -332,6 +345,17 @@ function install_restore_config($disk)
 	if (1 == mwexec("/bin/cp -p {$tmp_cf_bak}/config.xml {$mnt_cf_disk}/conf")) {
 		write_console("Error: Failed to restore the configuration file!\n");
 		return 1;
+	}
+	if (file_exists("{$tmp_cf_bak}/boot.config")) {
+		if (1 == mwexec("/bin/cp -p {$tmp_cf_bak}/boot.config {$mnt_cf_disk}/")) {
+			write_console("Error: Failed to restore the configuration file!\n");
+			return 1;
+		}
+	} else {
+		if (1 == mwexec("/bin/rm -f {$mnt_cf_disk}/boot.config")) {
+			write_console("Error: Failed to remove the configuration file!\n");
+			return 1;
+		}
 	}
 
 	/* Unmount the upgraded drive */

@@ -45,6 +45,7 @@ $pconfig['powerd'] = isset($config['system']['powerd']);
 $pconfig['motd'] = base64_decode($config['system']['motd']);
 $pconfig['sysconsaver'] = isset($config['system']['sysconsaver']['enable']);
 $pconfig['sysconsaverblanktime'] = $config['system']['sysconsaver']['blanktime'];
+$pconfig['enableserialconsole'] = isset($config['system']['enableserialconsole']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -73,6 +74,35 @@ if ($_POST) {
 			sysctl_tune(0);
 			touch($d_sysrebootreqd_path);
 		}
+		$bootconfig="boot.config";
+		if (!isset($_POST['enableserialconsole'])) {
+			if (file_exists("/$bootconfig")) {
+				unlink("/$bootconfig");
+			}
+			if (file_exists("{$g['cf_path']}/mfsroot.gz")
+			    && file_exists("{$g['cf_path']}/$bootconfig")) {
+				config_lock();
+				conf_mount_rw();
+				unlink("{$g['cf_path']}/$bootconfig");
+				conf_mount_ro();
+				config_unlock();
+			}
+		} else {
+			if (file_exists("/$bootconfig")) {
+				unlink("/$bootconfig");
+			}
+			file_put_contents("/$bootconfig", "-Dh\n");
+			if (file_exists("{$g['cf_path']}/mfsroot.gz")) {
+				config_lock();
+				conf_mount_rw();
+				if (file_exists("{$g['cf_path']}/$bootconfig")) {
+					unlink("{$g['cf_path']}/$bootconfig");
+				}
+				file_put_contents("{$g['cf_path']}/$bootconfig", "-Dh\n");
+				conf_mount_ro();
+				config_unlock();
+			}
+		}
 
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
@@ -84,6 +114,7 @@ if ($_POST) {
 		$config['system']['motd'] = base64_encode($_POST['motd']); // Encode string, otherwise line breaks will get lost
 		$config['system']['sysconsaver']['enable'] = $_POST['sysconsaver'] ? true : false;
 		$config['system']['sysconsaver']['blanktime'] = $_POST['sysconsaverblanktime'];
+		$config['system']['enableserialconsole'] = $_POST['enableserialconsole'] ? true : false;
 
 		write_config();
 
@@ -202,6 +233,7 @@ function sysconsaver_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_checkbox("disableconsolemenu", gettext("Console menu"), $pconfig['disableconsolemenu'] ? true : false, gettext("Disable console menu"), gettext("Changes to this option will take effect after a reboot."));?>
+					<?php html_checkbox("enableserialconsole", gettext("Serial Console"), $pconfig['enableserialconsole'] ? true : false, gettext("Enable serial console"), gettext("Changes to this option will take effect after a reboot."));?>
 					<?php html_checkbox("sysconsaver", gettext("Console screensaver"), $pconfig['sysconsaver'] ? true : false, gettext("Enable console screensaver"), "", false, "sysconsaver_change()");?>
 					<?php html_inputbox("sysconsaverblanktime", gettext("Blank time"), $pconfig['sysconsaverblanktime'], gettext("Turn the monitor to standby after N seconds."), true, 5);?>
 					<?php if ("full" !== $g['platform']):?>

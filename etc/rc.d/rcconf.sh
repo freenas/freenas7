@@ -294,6 +294,27 @@ setoptions()
 	eval /usr/local/sbin/rconf attribute set saver "${_value}";
 }
 
+# Serial console
+setserialconsole()
+{
+    local _sio _ttyd _ttydonoff
+
+    _ttyd="ttyd0"
+    _ttydonoff=`sed -n "/^${_ttyd}/ s/.*on.*/on/p" /etc/ttys`
+    #_sio=`configxml_isset "//system/enableserialconsole"`
+    _sio=`kenv console | sed -n 's/.*comconsole.*/on/p'`
+
+    if [ "$_sio" = "on" ]; then
+	if [ "$_ttydonoff" != "on" ]; then
+	    sed -i.bak -e "/^${_ttyd}/ s/off/on/" /etc/ttys
+	fi
+    else
+	if [ "$_ttydonoff" = "on" ]; then
+	    sed -i.bak -e "/^${_ttyd}/ s/on/off/" /etc/ttys
+	fi
+    fi
+}
+
 load_rc_config ${name}
 
 echo -n "Updating rc.conf:"
@@ -303,6 +324,7 @@ setvar
 sethostname
 setifconfig
 setoptions
+setserialconsole
 
 # Finally issue a line break
 echo
