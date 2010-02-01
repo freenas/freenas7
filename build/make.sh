@@ -135,13 +135,17 @@ build_world() {
 		fi
 
 		# Copy files from world.
-        if [ -a ${FREENAS_WORLD}/$file ]; then
-		    if ! cp -fRpv ${FREENAS_WORLD}/$file $(echo $file | rev | cut -d "/" -f 2- | rev) ; then
-                echo "can't copy ${FREENAS_WORLD}/$file"
-            fi
-        else
-            echo "WARNING, Missing file: ${FREENAS_WORLD}/$file"
-        fi
+		for xfile in ${FREENAS_WORLD}/$file; do
+		    _file="${xfile#${FREENAS_WORLD}/}"
+		    if [ -e "$xfile" ]; then
+			if ! cp -fRpv $xfile $(echo $_file | rev | cut -d "/" -f 2- | rev) ; then
+			    echo "can't copy $xfile"
+			fi
+		    else
+			echo "WARNING, Missing file: $xfile"
+		    fi
+		done
+
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
@@ -323,14 +327,14 @@ create_mfsroot() {
 	# Create label on memory disk
 	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto || { echo "Can't bsdlabel the MFSroot md"; exit 1; } 
 	# Format memory disk using UFS
-	newfs -O1 -o space -m 0 /dev/${md}a || { echo "Can't newfs the /dev/$(md)a"; exit 1; } 
+	newfs -O2 -o space -m 0 /dev/${md} || { echo "Can't newfs the /dev/$(md)"; exit 1; } 
 	# Umount memory disk (if already used)
     if [ `mount | grep -q $FREENAS_TMPDIR` ]; then
         echo "Detected allready mounted workdir $FREENAS_TMPDIR"
         umount $FREENAS_TMPDIR >/dev/null 2>&1
     fi
 	# Mount memory disk
-	mount /dev/${md}a ${FREENAS_TMPDIR} || { echo "Can't mount /dev/$(md)a";
+	mount /dev/${md} ${FREENAS_TMPDIR} || { echo "Can't mount /dev/$(md)";
  exit 1; }
 	cd $FREENAS_TMPDIR
 	tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf -
