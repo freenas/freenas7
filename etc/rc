@@ -113,6 +113,12 @@ files=`rcorder ${skip} /etc/rc.d/* 2>/dev/null`
 for _rc_elem in ${files}; do
 	run_rc_script ${_rc_elem} ${_boot}
 
+	# Force reloading of rc.conf file
+	if [ "${_rc_elem}" = "/etc/rc.d/rcconf" ]; then
+	    _rc_conf_loaded=false
+	    load_rc_config ${_rc_elem}
+	fi
+
 	case "$_rc_elem" in
 	*/${early_late_divider})	break ;;
 	esac

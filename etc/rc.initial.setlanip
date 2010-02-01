@@ -291,7 +291,7 @@ write_config();
 
 // Initialize interface
 write_console("\nInitializing interface. Please wait...");
-rc_exec_service("rcconf.sh");
+rc_exec_service("rcconf");
 rc_restart_service("netif");
 rc_restart_service("routing");
 rc_restart_service("network_ipv6");

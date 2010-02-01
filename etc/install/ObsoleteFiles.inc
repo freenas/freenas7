@@ -65,3 +65,7 @@ usr/local/www/diag_logs_smartd.php
 usr/local/www/diag_logs_sshd.php
 usr/local/www/diag_logs_upnp.php
 usr/local/www/gradient_listhdr.gif
+etc/rc.d/execcmd_postinit.sh
+etc/rc.d/execcmd_preinit.sh
+etc/rc.d/execcmd_shutdown.sh
+etc/rc.d/rcconf.sh

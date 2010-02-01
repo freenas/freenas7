@@ -165,7 +165,7 @@ if (0 == $result) {
 
 	// Initialize interface
 	write_console("\nInitializing interface. Please wait...");
-	rc_exec_service("rcconf.sh");
+	rc_exec_service("rcconf");
 	rc_update_service("netif");
 	rc_update_service("network_ipv6");
 }
