@@ -511,7 +511,7 @@ function install_fdisk($disk, $slicesize)
 	}
 
 	// Delete MBR and partition table.
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs={$diskinfo['sectorsize']} count=1")) {
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs={$diskinfo['sectorsize']} count=64")) {
 		write_console("Error: Failed to delete MBR and partition table on disk {$disk}.\n");
 		return 1;
 	}
