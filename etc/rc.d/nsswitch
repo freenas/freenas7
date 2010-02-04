@@ -49,14 +49,14 @@ generate_nsswitch_conf()
 		-i "count(//ad/enable) > 0" -i "count(//ldap/enable) = 0" \
 			-o "group: files winbind" -n \
 			-o "group_compat: nis" -n \
-			-o "hosts: files dns wins" -n \
+			-o "hosts: files dns" -n \
 			-o "networks: files" -n \
 			-o "passwd: files winbind" -n \
 		-b -b \
 		-i "count(//ad/enable) > 0" -i "count(//ldap/enable) > 0" \
 			-o "group: files winbind ldap" -n \
 			-o "group_compat: nis" -n \
-			-o "hosts: files dns wins" -n \
+			-o "hosts: files dns" -n \
 			-o "networks: files" -n \
 			-o "passwd: files winbind ldap" -n \
 		-b -b \
