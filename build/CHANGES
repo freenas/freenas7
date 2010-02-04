@@ -65,6 +65,7 @@ Minors changes:
 - Add new MIB in System|Advanced|sysctl.conf.
 - Add UTF-8 with English menu in File Manager (quixplorer).
 - Restrict NFS sharing directory with alldirs.
+- Add serial console support.
 
 Bug fixes:
 - Fix bug in istgt script.
@@ -80,6 +81,7 @@ Bug fixes:
 - Fix message in console menu 'Reset WebGUI password' (BR 2929338).
 - Fix initial resolv issue.
 - Fix full install upgrade error.
+- Fix nsswitch error when ldap is enabled (BR 2936505).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
