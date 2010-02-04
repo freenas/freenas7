@@ -67,7 +67,24 @@ transmission_prestart()
 	_umask=`configxml_get "//bittorrent/umask"`
 	_umask=${_umask:-"${transmission_umask}"}
 
-	umask ${_umask}
+	#umask ${_umask}
+
+	# Get the configuration directory.
+	local _configdir _configfile
+	_configdir=`configxml_get "//bittorrent/configdir"`
+	[ -z "${_configdir}" ] && _configdir="${HOME}/.config/${name}-daemon"
+	# Check configuration's umask.
+	_configfile="${_configdir}/settings.json"
+	if [ ! -f "${_configfile}" ]; then
+	    # create default settings
+	    eval "$command -d $command_args > ${_configfile} 2>&1"
+	    chown "${transmission_user}" "${_configfile}"
+	fi
+	if [ -f "${_configfile}" ]; then
+	    # replace umask
+	    _umask=`printf "%d" "0${_umask}"`
+	    sed -i.bak "/\"umask\":/ s/:[^0-9]*[0-9]*\(.*\)/: ${_umask}\1/" "${_configfile}" && rm "${_configfile}.bak"
+	fi
 }
 
 transmission_poststart()
