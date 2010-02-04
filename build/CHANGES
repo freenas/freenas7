@@ -58,6 +58,7 @@ Majors changes:
 - Upgrade netatalk to 2.0.5.
 - Upgrade bash to 4.0.35.
 - Upgrade lighttpd to 1.4.25.
+- Upgrade proftpd to 1.3.2c.
 
 Minors changes:
 - Modify Samba default buffer size.
