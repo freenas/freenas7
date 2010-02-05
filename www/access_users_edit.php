@@ -89,6 +89,9 @@ if ($_POST) {
 	if (($_POST['login'] && !is_validlogin($_POST['login']))) {
 		$input_errors[] = gettext("The login name contains invalid characters.");
 	}
+	if (($_POST['login'] && strlen($_POST['login']) > 16)) {
+		$input_errors[] = gettext("The login name is limited to 16 characters.");
+	}
 
 	if (($_POST['login'] && in_array($_POST['login'], $reservedlogin))) {
 		$input_errors[] = gettext("The login name is a reserved login name.");
@@ -113,6 +116,11 @@ if ($_POST) {
 	// Check if primary group is also selected in additional group.
 	if (is_array($_POST['group']) && in_array($_POST['primarygroup'], $_POST['group'])) {
 		$input_errors[] = gettext("Primary group is also selected in additional group.");
+	}
+
+	// Check additional group count. Max=15 (Primary+14) 
+	if (is_array($_POST['group']) && count($_POST['group']) > 14) {
+		$input_errors[] = gettext("There are too many additional groups.");
 	}
 
 	// Validate if ID is unique. Only check if user is created.
