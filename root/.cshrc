@@ -35,7 +35,7 @@ if ($?prompt) then
 endif
 
 # Display console menu (only on ttyv0/ttyd0).
-if ( "ttyv0" == $tty || "ttyd0" == $tty ) then
+if ( "ttyv0" == "$tty" || "ttyd0" == "$tty" ) then
 	/etc/rc.banner
 	/etc/rc.initial
 endif
