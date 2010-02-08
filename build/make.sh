@@ -52,7 +52,7 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-FREENAS_MFSROOT_SIZE=94
+FREENAS_MFSROOT_SIZE=96
 FREENAS_IMG_SIZE=42
 
 # Media geometry, only relevant if bios doesn't understand LBA.
@@ -172,7 +172,9 @@ create_rootfs() {
 	cp -v $FREENAS_SVNDIR/conf/config.xml .
 
 	# Compress zoneinfo data, exclude some useless files.
-	mkdir $FREENAS_TMPDIR
+	if [ ! -d $FREENAS_TMPDIR ] ; then
+		mkdir $FREENAS_TMPDIR
+	fi
 	echo "Factory" > $FREENAS_TMPDIR/zoneinfo.exlude
 	echo "posixrules" >> $FREENAS_TMPDIR/zoneinfo.exlude
 	echo "zone.tab" >> $FREENAS_TMPDIR/zoneinfo.exlude
