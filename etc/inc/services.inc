@@ -47,8 +47,14 @@ function services_is_port_used($port, $except = "") {
 	);
 
 	// Special handling for webgui port.
-	if (!isset($config['system']['webgui']['port']))
-		$a_port['sysgui'] = 80;
+	if (!isset($config['system']['webgui']['port'])
+            || $config['system']['webgui']['port'] == '') {
+		if ($config['system']['webgui']['protocol'] == 'https') {
+			$a_port['sysgui'] = 443;
+		} else {
+			$a_port['sysgui'] = 80;
+		}
+	}
 
 	if (0 < strlen($except))
 		unset($a_port[$except]);
