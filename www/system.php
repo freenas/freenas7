@@ -127,7 +127,7 @@ if ($_POST) {
 
 	// Check if port is already used.
 	if (services_is_port_used(!empty($_POST['webguiport']) ? $_POST['webguiport'] : 80, "sysgui")) {
-		$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['webguiport']);
+		$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), (!empty($_POST['webguiport']) ? $_POST['webguiport'] : 80));
 	}
 
 	if (!$input_errors) {
