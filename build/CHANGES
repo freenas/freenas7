@@ -85,6 +85,7 @@ Bug fixes:
 - Fix nsswitch error when ldap is enabled (BR 2936505).
 - Fix transmission umask does not work (BR 2945242).
 - Fix WebGUI allows usernames longer than 16 characters (BR 2934168).
+- Fix cannot check WebGUI default port.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
