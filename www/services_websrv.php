@@ -77,6 +77,12 @@ if ($_POST) {
 		// Check if port is already used.
 		if (services_is_port_used($_POST['port'], "websrv"))
 			$input_errors[] = sprintf(gettext("Port %ld is already used by another service."), $_POST['port']);
+
+		// Check Webserver document root if auth is required
+		if (isset($_POST['authentication'])
+		    && !is_dir($_POST['documentroot'])) {
+			$input_errors[] = gettext("Webserver document root is missing.");
+		}
 	}
 
 	if (!$input_errors) {

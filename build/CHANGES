@@ -86,6 +86,7 @@ Bug fixes:
 - Fix transmission umask does not work (BR 2945242).
 - Fix WebGUI allows usernames longer than 16 characters (BR 2934168).
 - Fix cannot check WebGUI default port.
+- Fix fail to apply if webserver authentication is enabled and documentroot is missing.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
