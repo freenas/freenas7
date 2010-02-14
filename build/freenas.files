@@ -444,6 +444,9 @@ usr/bin/getopt
 ## mt -- magnetic tape manipulating program
 usr/bin/mt
 
+## cu -- call UNIX
+usr/bin/cu
+
 ## tip -- connect to a remote system
 usr/bin/tip
 
