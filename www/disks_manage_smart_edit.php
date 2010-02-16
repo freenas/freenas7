@@ -76,6 +76,11 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_selftest, "uui
 	$pconfig['uuid'] = uuid();
 	$pconfig['type'] = "S";
 	$pconfig['desc'] = "";
+	$pconfig['all_mins'] = 1;
+	$pconfig['all_hours'] = 1;
+	$pconfig['all_days'] = 1;
+	$pconfig['all_months'] = 1;
+	$pconfig['all_weekdays'] = 1;
 }
 
 if ($_POST) {
@@ -88,10 +93,13 @@ if ($_POST) {
 		exit;
 	}
 
+	// insert dummy minutes
+	$pconfig['all_mins'] = $_POST['all_mins'] = 1;
+
 	$reqdfields = explode(" ", "disk type");
 	$reqdfieldsn = array(gettext("Disk"), gettext("Type"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-//	do_input_validate_synctime($_POST, &$input_errors);
+	do_input_validate_synctime($_POST, &$input_errors);
 
 	if (!$input_errors) {
 		$selftest = array();
