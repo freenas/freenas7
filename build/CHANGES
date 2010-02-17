@@ -59,6 +59,7 @@ Majors changes:
 - Upgrade bash to 4.0.35.
 - Upgrade lighttpd to 1.4.25.
 - Upgrade proftpd to 1.3.2c.
+- Upgrade iSCSI initiator to 2.2.4.
 
 Minors changes:
 - Modify Samba default buffer size.
@@ -90,6 +91,7 @@ Bug fixes:
 - Fix scheduled self-test does not work when one digit is contained in config.
 - Fix transmission script does not support spaces (BR 2872949).
 - Fix default configdir is wrong (BR 2896621).
+- Fix no tm option on AFP share (BR 2950743).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
