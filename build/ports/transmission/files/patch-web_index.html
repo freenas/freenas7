@@ -1,6 +1,6 @@
---- web/index.html.orig	2009-06-17 00:01:54.000000000 +0000
-+++ web/index.html	2009-06-26 10:31:48.000000000 +0000
-@@ -263,16 +263,16 @@
+--- web/index.html.orig	2010-01-29 10:02:17.000000000 +0900
++++ web/index.html	2010-02-17 04:14:00.000000000 +0900
+@@ -315,18 +315,18 @@
  			<div class="dialog_top_bar"></div>
  			<div class="dialog_window">
  				<img src="images/graphics/logo.png" alt="Transmission Logo" />
@@ -14,39 +14,40 @@
  							<input type="file" name="torrent_files[]" id="torrent_upload_file" multiple="multiple" />
  						<label for="torrent_upload_url">Or enter a URL:</label>
  							<input type="text" id="torrent_upload_url"/>
+ 							<input type="checkbox" id="torrent_auto_start" />
+ 						<label for="torrent_auto_start" id="auto_start_label">Start when added</label>
  					</div>
 -					<a href="#upload" id="upload_confirm_button">Upload</a>
 +					<a href="#upload" id="upload_confirm_button">Run</a>
  					<a href="#cancel" id="upload_cancel_button">Cancel</a>
  				</form>
  			</div>
-@@ -300,6 +300,9 @@
+@@ -354,6 +354,9 @@
  								<li>150 KB/s</li>
  								<li>200 KB/s</li>
  								<li>250 KB/s</li>
-+                                <li>300 KB/s</li>
-+                                <li>350 KB/s</li>
-+                                <li>400 KB/s</li>
++								<li>300 KB/s</li>
++								<li>350 KB/s</li>
++								<li>400 KB/s</li>
  								<li>500 KB/s</li>
  								<li>750 KB/s</li>
  							</ul>
-@@ -318,8 +321,18 @@
+@@ -372,8 +375,18 @@
  								<li>75 KB/s</li>
  								<li>100 KB/s</li>
  								<li>150 KB/s</li>
--								<li>200 KB/s</li>
 +								<li>160 KB/s</li>
-+                                <li>170 KB/s</li>
-+                                <li>180 KB/s</li>
-+                                <li>190 KB/s</li>
-+                                <li>200 KB/s</li>
-+                                <li>225 KB/s</li>
++								<li>170 KB/s</li>
++								<li>180 KB/s</li>
++								<li>190 KB/s</li>
+ 								<li>200 KB/s</li>
++								<li>225 KB/s</li>
  								<li>250 KB/s</li>
-+                                <li>300 KB/s</li>
-+                                <li>325 KB/s</li>
-+                                <li>350 KB/s</li>
-+                                <li>375 KB/s</li>
-+                                <li>400 KB/s</li>
++								<li>300 KB/s</li>
++								<li>325 KB/s</li>
++								<li>350 KB/s</li>
++								<li>375 KB/s</li>
++								<li>400 KB/s</li>
  								<li>500 KB/s</li>
  								<li>750 KB/s</li>
  							</ul>

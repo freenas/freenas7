@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		1.76
+PORTVERSION=		1.83
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -75,15 +75,10 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/index.html ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/common.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/dialog.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery-1.3.2.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.r2.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form-2.21.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/json.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery	
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/json.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/menu.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/torrent.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
@@ -92,7 +87,6 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/common.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie6.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie7.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
-	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ieAll.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets	
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/iphone.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 
 .include <bsd.port.mk>
