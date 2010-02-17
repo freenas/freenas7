@@ -88,6 +88,8 @@ Bug fixes:
 - Fix cannot check WebGUI default port.
 - Fix fail to apply if webserver authentication is enabled and documentroot is missing.
 - Fix scheduled self-test does not work when one digit is contained in config.
+- Fix transmission script does not support spaces (BR 2872949).
+- Fix default configdir is wrong (BR 2896621).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
