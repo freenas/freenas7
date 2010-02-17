@@ -69,21 +69,21 @@ function zfs_zpool_get_status() {
 		if (preg_match("/(\s+)(?:pool\:)(\s+)(.*)/", $line, $match)) {
 			$pool = trim($match[3]);
 			$index = array_search_ex($pool, $a_pool, "name");
-			if ($index !== false) {
+			if (0 && $index !== false) {
 				$href = "<a href='disks_zfs_zpool_edit.php?uuid={$a_pool[$index]['uuid']}'>{$pool}</a>";
 				$result .= "{$match[1]}pool:{$match[2]}{$href}";
 			} else {
 				$result .= htmlspecialchars($line);
 			}
 		} else if (preg_match("/(\s+)(?:scrub\:)(\s+)(.*)/", $line, $match)) {
-			if (isset($pool)) {
+			if (0 && isset($pool)) {
 				$href = "<a href='disks_zfs_zpool_tools.php?action=scrub&option=s&pool={$pool}' title=\"".sprintf(gettext("Start scrub on '%s'."), $pool)."\">scrub</a>:";
 			} else {
 				$href = "scrub";
 			}
 			$result .= "{$match[1]}{$href}{$match[2]}{$match[3]}";
 		} else {
-			if (isset($pool)) {
+			if (0 && isset($pool)) {
 				$a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
 				$found = false;
 				if (count($a_disk) > 0 && false !== ($index = array_search_ex($pool, $a_pool, "name"))) {
@@ -100,9 +100,9 @@ function zfs_zpool_get_status() {
 										$string = "/(\s+)(?:".$disk['name'].")(\s+)(\w+)(.*)/";
 										if (preg_match($string, $line, $match)) {
 											$href = "<a href='disks_zfs_zpool_tools.php'>{$disk['name']}</a>";
-											if ($match[3] == "ONLINE") {
+											if (0 && $match[3] == "ONLINE") {
 												$href1 = "<a href='disks_zfs_zpool_tools.php?action=offline&option=d&pool={$pool}&device={$disk[name]}'>{$match[3]}</a>";
-											} else if($match[3] == "OFFLINE") {
+											} else if(0 && $match[3] == "OFFLINE") {
 												$href1 = "<a href='disks_zfs_zpool_tools.php?action=online&option=d&pool={$pool}&device={$disk[name]}'>{$match[3]}</a>";
 											} else {
 												$href1 = "";
