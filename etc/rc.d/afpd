@@ -62,6 +62,11 @@ afpd_mkconf()
 		-m "options/*" \
 			-v "concat(',',local-name())" \
 		-b \
+		-i "adisk/enable" \
+			-i "string-length(adisk/advf) > 0" \
+				-v "concat(',','tm')" \
+			-b \
+		-b \
 		-o " " \
 		-i "string-length(allow) > 0" -v "concat('allow:',allow,' ')" -b \
 		-i "string-length(deny) > 0" -v "concat('deny:',deny,' ')" -b \
