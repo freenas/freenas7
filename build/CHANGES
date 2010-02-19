@@ -14,6 +14,7 @@ Minors changes.
 - Do not ask for network card OPT if only one network card detected
 - Update URL of the website (http://freenas.org)
 - Improve the display of IP addresses in console mode
+- Update iSCSI initiator to 2.2.4.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
