@@ -141,6 +141,9 @@ sbin/fsck_msdosfs
 ## geom -- universal control utility for GEOM classes
 sbin/geom:sbin/gconcat:sbin/gmirror:sbin/gnop:sbin/gstripe:sbin/geli:sbin/glabel
 
+## gmultipath -disk multipath control utility
+sbin/gmultipath
+
 ## growfs -- grow size of an existing ufs file system
 sbin/growfs
 

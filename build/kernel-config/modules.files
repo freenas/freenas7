@@ -6,6 +6,7 @@ geom/geom_stripe/geom_stripe.ko
 geom/geom_concat/geom_concat.ko
 geom/geom_mirror/geom_mirror.ko
 geom/geom_nop/geom_nop.ko
+geom/geom_multipath/geom_multipath.ko
 
 # Interfaces
 if_tap/if_tap.ko

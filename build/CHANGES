@@ -6,8 +6,9 @@ WARNING: DOESN'T BOOT !!!
 Majors changes:
 - Upgrade to FreeBSD 8.0-Release:
    - Enable the new AHCI drivers for SATA (/dev/ad0 became /dev/ada0)
-        (TODO: Need to use glabel for mounting disk, hide drivers changes)
+        (TODO: Need to use glabel for mounting disk,hide drivers changes)
    - add atapicam that permit to use a CD Burner software
+- Add gmultipath, disk mutlipath control utility(FR #2835904)
 
 Minors changes.
 - Update php to 5.2.12 (Thanks to Xin LI)

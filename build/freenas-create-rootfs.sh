@@ -4,7 +4,7 @@
 # http://www.ultradesic.com
 # E-Mail Contact: minibsd@ultradesic.com
 #
-# Adapted for FreeNAS by Olivier Cochard-Labbe (http://www.freenas.org)
+# Adapted for FreeNAS by Olivier Cochard-Labbe (http://freenas.org)
 # Modified by Volker Theile (votdev@gmx.de)
 
 MINIBSD_DIR=${FREENAS_ROOTFS};
@@ -98,7 +98,7 @@ mkdir usr/share/locale ;
 mkdir usr/share/snmp ;
 mkdir usr/share/snmp/defs ;
 mkdir usr/share/snmp/mibs ;
-mkdir tmp ;
+#mkdir tmp ;
 # /var will be populated by /etc/rc and /etc/rc.d/var
 mkdir var ;
 mkdir -m 0555 proc ;
@@ -121,3 +121,4 @@ ln -s /var/etc/pam.d/netatalk etc/pam.d/netatalk
 ln -s /var/etc/pam.d/login etc/pam.d/login
 ln -s /var/etc/pam.d/system etc/pam.d/system
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
+ln -s /var/tmp tmp
