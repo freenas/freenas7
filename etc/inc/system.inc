@@ -337,6 +337,15 @@ function system_get_device_iostat($device) {
 function system_get_device_temp($device) {
 	$result = FALSE;
 
+	/* without smart */
+	mwexec2("ataidle /dev/{$device} | grep 'SMART Enabled'", $rawdata);
+	if (1 === preg_match("/^SMART Enabled:\s+(\S+)/", $rawdata[0], $matches)) {
+		if (strcasecmp($matches[1], "no") == 0) {
+			/* SMART disabled */
+			return $result;
+		}
+	}
+	/* with smart */
 	mwexec2("smartctl -A /dev/{$device}", $rawdata);
 	foreach ($rawdata as $rawdatav) {
 		$arawdatav = preg_split("/\s+/", $rawdatav);
@@ -359,6 +368,11 @@ function system_get_device_temp($device) {
  * @return The disk device serial number.
  */
 function system_get_volume_serial($devicefile) {
+	/* without smart */
+	mwexec2("ataidle {$devicefile} | grep 'Serial'", $rawdata);
+	if (1 === preg_match("/^Serial:\s+(.+)$/", $rawdata[0], $matches))
+		return $matches[1];
+	/* failback to old method */
 	mwexec2("smartctl -i {$devicefile} | grep 'Serial Number'", $rawdata);
 	if (1 !== preg_match("/^Serial Number:\s+(.+)$/", $rawdata[0], $matches))
 		return gettext("n/a");
