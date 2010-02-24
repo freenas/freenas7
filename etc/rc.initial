@@ -14,6 +14,8 @@
 trap : 2
 trap : 3
 trap : 4
+# Make sure the user can't access rootshell by pressing Ctrl-Z
+trap : 18
 
 # Set our operating platform
 PLATFORM=`cat /etc/platform`
