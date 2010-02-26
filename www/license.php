@@ -196,7 +196,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
 			Copyright &copy; 2002-2008 Bruce Allen.</p>
 
 	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
-			Copyright &copy; 2005-2009 Daniel Braniss (danny@cs.huji.ac.il).</p>
+			Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
 		<p>istgt (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br>
 	  	Copyright &copy; 2008-2010 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
@@ -205,7 +205,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
       Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>
 
     <p>FUPPES - Free UPnP Entertainment Service (<a href="http://fuppes.ulrich-voelkel.de" target="_blank">http://fuppes.ulrich-voelkel.de</a>)<br>
-      Copyright &copy; 2005 - 2007 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
+      Copyright &copy; 2005 - 2008 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
 
 		<p>mt-daapd - Multithread daapd Apple iTunes server (<a href="http://www.fireflymediaserver.org" target="_blank">http://www.fireflymediaserver.org</a>)<br>
       Copyright &copy; 2003 Ron Pedde (ron@pedde.com).</p>
