@@ -1,10 +1,10 @@
 PORTNAME=			lighttpd
-PORTVERSION=	1.4.25
+PORTVERSION=	1.4.26
 CATEGORIES=		www
 COMMENT=			A secure, fast, compliant, and very flexible Web Server
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=	http://www.lighttpd.net/download/ \
+MASTER_SITES=	http://download.lighttpd.net/lighttpd/releases-1.4.x/ \
 							http://mirrors.cat.pdx.edu/lighttpd/
 
 LIB_DEPENDS+=			uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
