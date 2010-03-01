@@ -52,7 +52,7 @@ Majors changes:
 - Upgrade e2fsprogs to 1.41.9.
 - Upgrade istgt to version 20100125.
 - Upgrade msmtp to 1.4.19.
-- Upgrade transmission to 1.83.
+- Upgrade transmission to 1.91.
 - Upgrade PHP to 5.2.12 (Thanks to Xin LI).
 - Upgrade fuppes to 0.660.
 - Upgrade rsync to 3.0.7.
