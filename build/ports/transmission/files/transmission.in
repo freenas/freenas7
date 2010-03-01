@@ -155,7 +155,15 @@ transmission_prestart()
 	_configfile="${_configdir}/settings.json"
 	if [ ! -f "${_configfile}" ]; then
 	    # create default settings
-	    eval "su -m \"${transmission_user}\" -c 'sh -c \"${command} -d ${command_args} > `safe_shellquote "${_configfile}"` 2>&1\"'"
+	    eval "su -m \"${transmission_user}\" -c 'sh -c \"${command} -d ${command_args} > `safe_shellquote "${_configfile}.new"` 2>&1\"'"
+	    if [ ! -f "${_configfile}" ]; then
+		# copy config
+		chmod 600 "${_configfile}.new"
+		mv "${_configfile}.new" ${_configfile}
+	    else
+		# use new created file
+		rm -f "${_configfile}.new"
+	    fi
 	fi
 	if [ -f "${_configfile}" ]; then
 	    # replace umask
