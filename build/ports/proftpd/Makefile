@@ -1,5 +1,5 @@
 PORTNAME=			proftpd
-PORTVERSION=	1.3.2c
+PORTVERSION=	1.3.2e
 CATEGORIES=		ftp
 COMMENT=			Highly configurable ftp daemon
 MAINTAINER=		votdev@gmx.de

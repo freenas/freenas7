@@ -60,7 +60,7 @@ Majors changes:
 - Upgrade netatalk to 2.0.5.
 - Upgrade bash to 4.0.35.
 - Upgrade lighttpd to 1.4.25.
-- Upgrade proftpd to 1.3.2c.
+- Upgrade proftpd to 1.3.2e.
 - Upgrade iSCSI initiator to 2.2.4.
 
 Minors changes:
