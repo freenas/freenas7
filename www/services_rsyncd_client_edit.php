@@ -184,7 +184,7 @@ function set_selected(name) {
 }
 
 function delete_change() {
-	switch(document.iform.delete.checked) {
+	switch(document.getElementById('delete').checked) {
 		case false:
 			showElementById('delete_algorithm_tr','hide');
 			break;
