@@ -97,6 +97,7 @@ Bug fixes:
 - Fix default configdir is wrong (BR 2896621).
 - Fix no tm option on AFP share (BR 2950743).
 - Fix SMART error on SMART disabled devices.
+- Fix the partition problem when installation on the disk > 1TB.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
