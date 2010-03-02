@@ -70,6 +70,7 @@ Minors changes:
 - Add UTF-8 with English menu in File Manager (quixplorer).
 - Restrict NFS sharing directory with alldirs.
 - Add serial console support.
+- Add aio(asynchronous I/O) support but default is disabled.
 
 Bug fixes:
 - Fix bug in istgt script.
