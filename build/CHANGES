@@ -71,6 +71,7 @@ Minors changes:
 - Restrict NFS sharing directory with alldirs.
 - Add serial console support.
 - Add aio(asynchronous I/O) support but default is disabled.
+- Modify /mnt and /tmp permission.
 
 Bug fixes:
 - Fix bug in istgt script.

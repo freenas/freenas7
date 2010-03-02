@@ -72,7 +72,7 @@ mkdir etc/zfs ;
 mkdir lib ;
 mkdir lib/geom ;
 mkdir libexec ;
-mkdir -m 0777 mnt ;
+mkdir -m 0755 mnt ;
 mkdir -m 0700 root ;
 mkdir sbin ;
 mkdir usr ;
@@ -98,7 +98,7 @@ mkdir usr/share/locale ;
 mkdir usr/share/snmp ;
 mkdir usr/share/snmp/defs ;
 mkdir usr/share/snmp/mibs ;
-#mkdir tmp ;
+#mkdir -m 01777 tmp ;
 # /var will be populated by /etc/rc and /etc/rc.d/var
 mkdir var ;
 mkdir -m 0555 proc ;
