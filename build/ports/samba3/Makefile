@@ -34,6 +34,7 @@ WRKSRC=						${WRKDIR}/${DISTNAME}/source
 CONFIGURE_ARGS+=	--localstatedir="${VARDIR}" \
 									--enable-largefile \
 									--disable-cups \
+									--with-aio-support \
 									--with-ads \
 									--with-pam \
 									--with-ldapsam \
