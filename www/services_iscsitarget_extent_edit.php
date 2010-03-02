@@ -315,7 +315,7 @@ function sizeunit_change() {
 	    <td class="tabcont">
 	      <?php if ($input_errors) print_input_errors($input_errors);?>
 	      <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 10, (isset($uuid) && (FALSE !== $cnid)));?>
+	      <?php html_inputbox("name", gettext("Extent Name"), $pconfig['name'], gettext("String identifier of the extent."), true, 30, (isset($uuid) && (FALSE !== $cnid)));?>
 	      <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("file" => gettext("File"), "device" => gettext("Device"), "zvol" => gettext("ZFS volume")), gettext("Type used as extent."), true, false, "type_change()");?>
 	      <?php html_filechooser("path", gettext("Path"), $pconfig['path'], sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) used as extent."), $pconfig['name']), $g['media_path'], true);?>
 	      <?php html_combobox("device", gettext("Device"), $pconfig['path'], $a_device, "", true);?>
