@@ -129,7 +129,7 @@ transmission_prestart()
 		-i "string-length(watchdir) = 0" -o " --no-watch-dir" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
-		# daemon have no option in 1.83
+		# daemon have no option in 1.91
 		#-i "string-length(incompletedir) > 0" -v "concat(' --incompletedir-dir ${_incompletedir}','')" -b \
 		#-i "string-length(incompletedir) = 0" -o " --no-incompletedir-dir" -b \
 
