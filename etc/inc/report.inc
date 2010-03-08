@@ -390,7 +390,7 @@ function report_generate_html() {
 	$statusreport->AddArticle(new StatusReportArticleCmd("/conf","ls /conf"));
 	$statusreport->AddArticle(new StatusReportArticleCmd("/var/etc","ls /var/etc"));
 	$statusreport->AddArticle(new StatusReportArticleCmd("/var/run","ls /var/run"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("config.xml","/usr/local/bin/xml ed -P -u \"//*/password\" -v \"xxxxx\" -u \"//system/email/from\" -v \"xxxxx\" -u \"//statusreport/to\" -v \"xxxxx\" /conf/config.xml"));
+	$statusreport->AddArticle(new StatusReportArticleCmd("config.xml","/usr/local/bin/xml ed -P -u \"//*/password\" -v \"xxxxx\" -u \"//system/email/from\" -v \"xxxxx\" -u \"//statusreport/to\" -v \"xxxxx\" -u \"//*/media_uctlsecret\" -v \"xxxxx\" -u \"//*/authsecret\" -v \"xxxxx\" -u \"//*/authmsecret\" -v \"xxxxx\" /conf/config.xml"));
 
 	return $statusreport->Generate();
 }
