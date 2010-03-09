@@ -325,6 +325,9 @@ function report_send_mail() {
 	if (is_array($config['statusreport']['report']) && in_array("daemonlog", $config['statusreport']['report'])) {
 		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog {$clogdir}/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
+	if (is_array($config['statusreport']['report']) && in_array("script", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Custom script entries","{$config['statusreport']['report_scriptname']}"));
+	}
 
 	// Send email and log result.
 	$result = email_send($config['statusreport']['to'], $config['statusreport']['subject'], $statusreport->Generate(), $error);
