@@ -49,6 +49,7 @@ $pconfig['enable'] = isset($config['statusreport']['enable']);
 $pconfig['to'] = $config['statusreport']['to'];
 $pconfig['subject'] = $config['statusreport']['subject'];
 $pconfig['report'] = $config['statusreport']['report'];
+$pconfig['report_scriptname'] = $config['statusreport']['report_scriptname'];
 $pconfig['minute'] = $config['statusreport']['minute'];
 $pconfig['hour'] = $config['statusreport']['hour'];
 $pconfig['day'] = $config['statusreport']['day'];
@@ -80,6 +81,15 @@ if ($_POST) {
 			// Validate synchronization time
 			do_input_validate_synctime($_POST, &$input_errors);
 		}
+
+		// custom script
+		if (is_array($_POST['report']) && in_array("script", $_POST['report'])) {
+			if ($_POST['report_scriptname'] == '') {
+				$input_errors[] = gettext("Custom script is required.");
+			} else if (!file_exists($_POST['report_scriptname'])) {
+				$input_errors[] = gettext("Custom script is not found.");
+			}
+		}
 	}
 
 	if (!$input_errors) {
@@ -87,6 +97,7 @@ if ($_POST) {
 		$config['statusreport']['to'] = $_POST['to'];
 		$config['statusreport']['subject'] = $_POST['subject'];
 		$config['statusreport']['report'] = $_POST['report'];
+		$config['statusreport']['report_scriptname'] = $_POST['report_scriptname'];
 		$config['statusreport']['minute'] = $_POST['minute'];
 		$config['statusreport']['hour'] = $_POST['hour'];
 		$config['statusreport']['day'] = $_POST['day'];
@@ -139,6 +150,9 @@ function enable_change(enable_change) {
 	document.iform.report_sshdlog.disabled = endis;
 	document.iform.report_smartdlog.disabled = endis;
 	document.iform.report_daemonlog.disabled = endis;
+	document.iform.report_script.disabled = endis;
+	document.iform.report_scriptname.disabled = endis;
+	document.iform.report_scriptnamebrowsebtn.disabled = endis;
 	document.iform.minutes1.disabled = endis;
 	document.iform.minutes2.disabled = endis;
 	document.iform.minutes3.disabled = endis;
@@ -195,6 +209,18 @@ function enable_change(enable_change) {
 								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_sshdlog" value="sshdlog" <?php if (is_array($pconfig['report']) && in_array("sshdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("SSHD log");?></td></tr>
 								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_smartdlog" value="smartdlog" <?php if (is_array($pconfig['report']) && in_array("smartdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("S.M.A.R.T. log");?></td></tr>
 								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_daemonlog" value="daemonlog" <?php if (is_array($pconfig['report']) && in_array("daemonlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Daemon log");?></td></tr>
+								<tr><td><input name="report[]" type="checkbox" class="formfld" id="report_script" value="script" <?php if (is_array($pconfig['report']) && in_array("script", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Custom script");?></td></tr>
+								<tr><td>
+<?php
+	$scriptname = $pconfig['report_scriptname'];
+	$scriptpath = "/mnt";
+	$ctrl = new HTMLFileChooser("report_scriptname", "", "$scriptname", "", 60);
+	$ctrl->SetRequired(false);
+	$ctrl->SetReadOnly(false);
+	$ctrl->SetPath($scriptpath);
+	$ctrl->RenderCtrl();
+?>
+								</td></tr>
 			        </table>
 			      </td>
 					</tr>

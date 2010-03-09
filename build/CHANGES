@@ -72,6 +72,7 @@ Minors changes:
 - Add serial console support.
 - Add aio(asynchronous I/O) support but default is disabled.
 - Modify /mnt and /tmp permission.
+- Add custom script in email report (FR 2964946).
 
 Bug fixes:
 - Fix bug in istgt script.
