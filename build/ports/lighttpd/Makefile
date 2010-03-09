@@ -42,6 +42,8 @@ do-install:
 	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_staticfile.so ${FREENAS_ROOTFS}/usr/local/lib/mod_staticfile.so
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_cgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_cgi.so ${FREENAS_ROOTFS}/usr/local/lib/mod_cgi.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_fastcgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_fastcgi.so ${FREENAS_ROOTFS}/usr/local/lib/mod_fastcgi.so
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_auth.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_auth.so ${FREENAS_ROOTFS}/usr/local/lib/mod_auth.so
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_webdav.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
