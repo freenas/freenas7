@@ -106,7 +106,9 @@ do
 		-i "string-length(shell) > 0" -v "concat(' -s ',shell)" -b \
 		-i "string-length(shell) = 0" -o " -s nologin" -b \
 		-i "string-length(homedir) = 0" -o " -d /mnt" -b \
-		-i "string-length(homedir) > 0" -v "concat(' -m -d ',homedir)" -b \
+		-i "string-length(homedir) > 0" \
+			-i "homedir[.!='/mnt']" -o " -m " -b \
+			-v "concat(' -d ',homedir)" -b \
 		-i "string-length(password) > 0" -o " -h 0" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
