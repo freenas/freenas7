@@ -126,6 +126,7 @@ function install_harddrive_image($harddrive)
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
 	mwexec("/bin/mkdir -p {$mntpath}/tmp");
+	mwexec("/bin/chmod 1777 {$mntpath}/tmp");
 	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
@@ -190,7 +191,18 @@ EOD;
 	}
 
 	// Unmount disk containing OS
-	mwexec("/sbin/umount {$mntpath}");
+	$retry = 10;
+	while ($retry > 0) {
+		if (0 == mwexec("/sbin/umount {$mntpath}")) {
+			break;
+		}
+		$retry--;
+		sleep(1);
+	}
+	if ($retry == 0) {
+		write_console("Error: Failed to umount {$mntpath}!\n");
+		return 1;
+	}
 	mwexec("/bin/rm -f -r {$mntpath}");
 
 	return 0;
@@ -236,6 +248,7 @@ function install_upgrade_full($harddrive)
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
 	mwexec("/bin/mkdir -p {$mntpath}/tmp");
+	mwexec("/bin/chmod 1777 {$mntpath}/tmp");
 	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
