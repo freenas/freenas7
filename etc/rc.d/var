@@ -43,6 +43,14 @@ stop_cmd=':'
 
 load_rc_config $name
 
+populate_var()
+{
+	# Create required directories in /var
+	/usr/sbin/mtree -deU -f /etc/mtree/BSD.var.dist -p /var > /dev/null
+	# Configure the shared library cache
+	/sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
+}
+
 # If we do not have a writable /var, create a memory filesystem for /var
 # unless told otherwise by rc.conf.  We don't have /usr yet so use mkdir
 # instead of touch to test.  We want mount to record its mounts so we
@@ -60,6 +68,24 @@ case "${varmfs}" in
 	else
 		mount_md ${varsize} /var "${varmfs_flags}"
 	fi
+esac
+
+case "${populate_var}" in
+[Yy][Ee][Ss])
+	populate_var
+	;;
+[Nn][Oo])
+	;;
+*)
+	if [ -d /var/run -a -d /var/db -a -d /var/empty ] ; then
+		true
+	else
+		if [ ! -x /usr/sbin/mtree ] ; then
+			exit 1
+		fi
+		populate_var
+	fi
+	;;
 esac
 
 # Make sure we have /var/log/lastlog and /var/log/wtmp files
