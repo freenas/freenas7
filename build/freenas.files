@@ -273,6 +273,12 @@ sbin/dumpon
 ## savecore -- save a core dump of the operating system
 sbin/savecore
 
+## dump -- file system backup
+sbin/dump
+
+## restore -- restore files or file systems from backups made with dump
+sbin/restore
+
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
