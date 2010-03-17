@@ -127,11 +127,9 @@ transmission_prestart()
 		-i "count(portforwarding) = 0" -o " --no-portmap" -b \
 		-i "string-length(watchdir) > 0" -v "concat(' --watch-dir ${_watchdir}','')" -b \
 		-i "string-length(watchdir) = 0" -o " --no-watch-dir" -b \
+		-i "string-length(incompletedir) > 0" -v "concat(' --incomplete-dir ${_incompletedir}','')" -b \
+		-i "string-length(incompletedir) = 0" -o " --no-incomplete-dir" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
-
-		# daemon have no option in 1.91
-		#-i "string-length(incompletedir) > 0" -v "concat(' --incompletedir-dir ${_incompletedir}','')" -b \
-		#-i "string-length(incompletedir) = 0" -o " --no-incompletedir-dir" -b \
 
 	if checkyesno transmission_blocklist; then
 		_command_args="${_command_args} --blocklist"
