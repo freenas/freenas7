@@ -51,7 +51,7 @@ pre {
 	border: 2px solid #435370;
 	background: #F0F0F0;
 	padding: 1em;
-	font-family: courier new, courier;
+	font-family: 'Courier New', Courier, monospace;
 	white-space: pre;
 	line-height: 10pt;
 	font-size: 10pt;

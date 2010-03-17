@@ -156,7 +156,7 @@ a {
 }
 pre {
 	margin: 0px;
-	font-family: courier new, courier;
+	font-family: 'Courier New', Courier, monospace;
 	font-weight: normal;
 	font-size: 9pt;
 }

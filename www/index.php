@@ -81,7 +81,7 @@ sajax_handle_client_request();
 			  </tr>
 			  <tr>
 			    <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
-			    <td width="75%" class="listr"><strong><?=get_product_version();?></strong> <?=get_product_versionname();?> (revision <?=get_product_revision();?>)
+			    <td width="75%" class="listr"><strong><?=get_product_version();?></strong> <?=get_product_versionname();?> (revision <?=get_product_revision();?>)</td>
 			  </tr>
 			  <tr>
 			    <td width="25%" valign="top" class="vncellt"><?=gettext("Built on");?></td>
@@ -192,7 +192,7 @@ sajax_handle_client_request();
 								echo sprintf(gettext("%s of %sB"),
 									"<span name='swapusage_{$ctrlid}_capacity' id='swapusage_{$ctrlid}_capacity' class='capacity'>{$swapv['capacity']}</span>",
 									$swapv['total']);
-								echo "<br/>";
+								echo "<br />";
 								echo sprintf(gettext("Device: %s | Total: %s | Used: %s | Free: %s"),
 									"<span name='swapusage_{$ctrlid}_device' id='swapusage_{$ctrlid}_device' class='device'>{$swapv['device']}</span>",
 									"<span name='swapusage_{$ctrlid}_total' id='swapusage_{$ctrlid}_total' class='total'>{$swapv['total']}</span>",
@@ -201,7 +201,7 @@ sajax_handle_client_request();
 								echo "</div></td></tr>";
 
 								if ($ctrlid < count($swapinfo))
-										echo "<tr><td><hr size='1'></td></tr>";
+										echo "<tr><td><hr size='1' /></td></tr>";
 							}?>
 						</table>
 					</td>
@@ -234,7 +234,7 @@ sajax_handle_client_request();
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 
 									echo "<tr><td><div id='diskusage'>";
-									echo "<span name='diskusage_{$ctrlid}_name' id='diskusage_{$ctrlid}_name' class='name'>{$diskusagev['name']}</span><br/>";
+									echo "<span name='diskusage_{$ctrlid}_name' id='diskusage_{$ctrlid}_name' class='name'>{$diskusagev['name']}</span><br />";
 									echo "<img src='bar_left.gif' class='progbarl' alt='' />";
 									echo "<img src='bar_blue.gif' name='diskusage_{$ctrlid}_bar_used' id='diskusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}' alt='' />";
 									echo "<img src='bar_gray.gif' name='diskusage_{$ctrlid}_bar_free' id='diskusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}' alt='' />";
@@ -242,7 +242,7 @@ sajax_handle_client_request();
 									echo sprintf(gettext("%s of %sB"),
 										"<span name='diskusage_{$ctrlid}_capacity' id='diskusage_{$ctrlid}_capacity' class='capacity'>{$diskusagev['capacity']}</span>",
 										$diskusagev['size']);
-									echo "<br/>";
+									echo "<br />";
 									echo sprintf(gettext("Total: %s | Used: %s | Free: %s"),
 										"<span name='diskusage_{$ctrlid}_total' id='diskusage_{$ctrlid}_total' class='total'>{$diskusagev['size']}</span>",
 										"<span name='diskusage_{$ctrlid}_used' id='diskusage_{$ctrlid}_used' class='used'>{$diskusagev['used']}</span>",
@@ -250,7 +250,7 @@ sajax_handle_client_request();
 									echo "</div></td></tr>";
 
 									if (++$index < count($diskusage))
-										echo "<tr><td><hr size='1'></td></tr>";
+										echo "<tr><td><hr size='1' /></td></tr>";
 								}
 							}
 
@@ -260,7 +260,7 @@ sajax_handle_client_request();
 								$index = 0;
 
 								if (!empty($diskusage))
-										echo "<tr><td><hr size='1'></td></tr>";
+										echo "<tr><td><hr size='1' /></td></tr>";
 
 								foreach ($zfspools as $poolk => $poolv) {
 									$ctrlid = $poolv['name'];
@@ -269,7 +269,7 @@ sajax_handle_client_request();
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $poolv['avail'], $poolv['size']);
 
 									echo "<tr><td><div id='diskusage'>";
-									echo "<span name='diskusage_{$ctrlid}_name' id='diskusage_{$ctrlid}_name' class='name'>{$poolv['name']}</span><br/>";
+									echo "<span name='diskusage_{$ctrlid}_name' id='diskusage_{$ctrlid}_name' class='name'>{$poolv['name']}</span><br />";
 									echo "<img src='bar_left.gif' class='progbarl' alt='' />";
 									echo "<img src='bar_blue.gif' name='diskusage_{$ctrlid}_bar_used' id='diskusage_{$ctrlid}_bar_used' width='{$percent_used}' class='progbarcf' title='{$tooltip_used}' alt='' />";
 									echo "<img src='bar_gray.gif' name='diskusage_{$ctrlid}_bar_free' id='diskusage_{$ctrlid}_bar_free' width='" . (100 - $percent_used) . "' class='progbarc' title='{$tooltip_available}' alt='' />";
@@ -277,7 +277,7 @@ sajax_handle_client_request();
 									echo sprintf(gettext("%s of %sB"),
 										"<span name='diskusage_{$ctrlid}_capacity' id='diskusage_{$ctrlid}_capacity' class='capacity'>{$poolv['cap']}</span>",
 										$poolv['size']);
-									echo "<br/>";
+									echo "<br />";
 									echo sprintf(gettext("Total: %s | Used: %s | Free: %s | State: %s"),
 										"<span name='diskusage_{$ctrlid}_total' id='diskusage_{$ctrlid}_total' class='total'>{$poolv['size']}</span>",
 										"<span name='diskusage_{$ctrlid}_used' id='diskusage_{$ctrlid}_used' class='used'>{$poolv['used']}</span>",
@@ -286,12 +286,14 @@ sajax_handle_client_request();
 									echo "</div></td></tr>";
 
 									if (++$index < count($zfspools))
-										echo "<tr><td><hr size='1'></td></tr>";
+										echo "<tr><td><hr size='1' /></td></tr>";
 								}
 							}
 
 							if (empty($diskusage) && empty($zfspools)) {
+								echo "<tr><td>";
 								echo gettext("No disk configured");
+								echo "</td></tr>";
 							}
 							?>
 						</table>

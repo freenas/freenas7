@@ -148,8 +148,10 @@ function display_menu($menuid) {
 	if (!$menu[$menuid]['visible'])
 		return;
 
+	$link = $menu[$menuid]['link'];
+	if ($link == '') $link = 'index.php';
 	echo "<li>\n";
-	echo "	<a href=\"{$menu[$menuid]['link']}\" onmouseover=\"mopen('{$menuid}')\" onmouseout=\"mclosetime()\">{$menu[$menuid]['desc']}</a>\n";
+	echo "	<a href=\"{$link}\" onmouseover=\"mopen('{$menuid}')\" onmouseout=\"mclosetime()\">".htmlspecialchars($menu[$menuid]['desc'])."</a>\n";
 	echo "	<div id=\"{$menuid}\" onmouseover=\"mcancelclosetime()\" onmouseout=\"mclosetime()\">\n";
 
 	# Display menu items.
@@ -160,7 +162,9 @@ function display_menu($menuid) {
 		}
 		if ("separator" !== $menuv['type']) {
 			# Display menuitem.
-			echo "<a href=\"{$menuv['link']}\" target=\"" . (empty($menuv['target']) ? "_self" : $menuv['target']) . "\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
+			$link = $menuv['link'];
+			if ($link == '') $link = 'index.php';
+			echo "<a href=\"{$link}\" target=\"" . (empty($menuv['target']) ? "_self" : $menuv['target']) . "\" title=\"".htmlspecialchars($menuv['desc'])."\">".htmlspecialchars($menuv['desc'])."</a>\n";
 		} else {
 			# Display separator.
 			echo "<span class=\"tabseparator\">&nbsp;</span>";
@@ -172,24 +176,34 @@ function display_menu($menuid) {
 }
 ?>
 <?php header("Content-Type: text/html; charset=" . system_get_language_codeset());?>
+<?php
+  // XML declarations
+/*
+  some browser might be broken.
+  echo '<?xml version="1.0" encoding="'.system_get_language_codeset().'"?>';
+  echo "\n";
+*/
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?=system_get_language_code();?>" lang="<?=system_get_language_code();?>">
 <head>
 	<title><?=genhtmltitle($pgtitle);?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
 	<?php if ($pgrefresh):?>
-	<meta http-equiv="refresh" content="<?=$pgrefresh;?>"/>
+	<meta http-equiv="refresh" content="<?=$pgrefresh;?>" />
 	<?php endif;?>
-	<link href="gui.css" rel="stylesheet" type="text/css"/>
-	<link href="navbar.css" rel="stylesheet" type="text/css"/>
-	<link href="tabs.css" rel="stylesheet" type="text/css"/>
+	<link href="gui.css" rel="stylesheet" type="text/css" />
+	<link href="navbar.css" rel="stylesheet" type="text/css" />
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="javascript/gui.js"></script>
 	<script type="text/javascript" src="javascript/navbar.js"></script>
 </head>
 <body>
 <div id="header">
 	<div id="headerlogo">
-		<a title="www.<?=get_product_url();?>" href="http://www.<?=get_product_url();?>" target="_blank"><img src="/header_logo.png" alt="logo"/></a>
+		<a title="www.<?=get_product_url();?>" href="http://www.<?=get_product_url();?>" target="_blank"><img src="/header_logo.png" alt="logo" /></a>
 	</div>
 	<div id="headerrlogo">
 		<div class="hostname">
@@ -206,7 +220,7 @@ function display_menu($menuid) {
 		<!-- Begin extension section -->
 		<?php if (Session::isAdmin() && is_dir("{$g['www_path']}/ext")):?>
 		<li>
-			<a href="" onmouseover="mopen('extensions')" onmouseout="mclosetime()"><?=gettext("Extensions");?></a>
+			<a href="index.php" onmouseover="mopen('extensions')" onmouseout="mclosetime()"><?=gettext("Extensions");?></a>
 			<div id="extensions" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
 				<?php
 				$dh = @opendir("{$g['www_path']}/ext");
