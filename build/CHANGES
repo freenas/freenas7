@@ -73,6 +73,7 @@ Minors changes:
 - Add aio(asynchronous I/O) support but default is disabled.
 - Modify /mnt and /tmp permission.
 - Add custom script in email report (FR 2964946).
+- Add Japanese in File Manager (quixplorer).
 
 Bug fixes:
 - Fix bug in istgt script.
