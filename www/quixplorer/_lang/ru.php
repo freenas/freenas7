@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // Russian Language Module (translated by Mikhail M. Pigulsky - mikhail@mikhail.pp.ru)
 // Reviewed by Alexey P. Sannikov 
