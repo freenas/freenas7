@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_infos_ad.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -73,12 +77,18 @@ if (!is_array($config['ad'])) {
 						<pre><?=gettext("AD authentication disabled");?></pre>
 						<?php else:?>
 						<pre><?php
-						echo gettext("Results for net rpc testjoin:") . "<br>";
-						system("/usr/local/bin/net rpc testjoin -S {$config['ad']['domaincontrollername']} 2>&1");
-						echo "<br/>" . gettext("Ping winbindd to see if it is alive:") . "<br>";
-						system("/usr/local/bin/wbinfo -p 2>&1");
-						echo "<br/>" . gettext("Check shared secret:") . "<br>";
-						system("/usr/local/bin/wbinfo -t 2>&1");
+						echo gettext("Results for net rpc testjoin:") . "<br />";
+						exec("/usr/local/bin/net rpc testjoin -S {$config['ad']['domaincontrollername']} 2>&1", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
+						unset($rawdata);
+						echo "<br />" . gettext("Ping winbindd to see if it is alive:") . "<br />";
+						exec("/usr/local/bin/wbinfo -p 2>&1", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
+						unset($rawdata);
+						echo "<br />" . gettext("Check shared secret:") . "<br />";
+						exec("/usr/local/bin/wbinfo -t 2>&1", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
+						unset($rawdata);
 						?></pre>
 					</td>
 				</tr>
@@ -87,7 +97,7 @@ if (!is_array($config['ad'])) {
 					<td>
 						<pre><?php
 						exec("/usr/local/bin/net rpc user -S {$config['ad']['domaincontrollername']} -U {$config['ad']['username']}%{$config['ad']['password']} 2>&1", $rawdata);
-						echo implode("\n", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
 						unset($rawdata);
 						?></pre>
 						<?php endif;?>

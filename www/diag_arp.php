@@ -2,8 +2,15 @@
 <?php
 /*
 	diag_arp.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
 
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2005 Paul Taylor (paultaylor@winndixie.com) and Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
@@ -191,7 +198,7 @@ function getHostName($mac, $ip) {
 	else if ($resolve)
 		return get_hostbyaddr($ip);
 	else
-		return "&nbsp;";
+		return "";
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -208,11 +215,11 @@ function getHostName($mac, $ip) {
 			  </tr>
 			  <?php $i = 0; foreach ($data as $entry): ?>
 			  <tr>
-			    <td class="listlr"><?=$entry['ip'];?></td>
-			    <td class="listr"><?=$entry['mac'];?></td>
-			    <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?>&nbsp;</td>
-			    <td class="listr"><?=$hwif[$entry['interface']];?>&nbsp;</td>
-			    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" border="0"></a></td>
+			    <td class="listlr"><?=htmlspecialchars($entry['ip']);?></td>
+			    <td class="listr"><?=htmlspecialchars($entry['mac']);?></td>
+			    <td class="listr"><?=htmlspecialchars(getHostName($entry['mac'], $entry['ip']));?>&nbsp;</td>
+			    <td class="listr"><?=htmlspecialchars($hwif[$entry['interface']]);?>&nbsp;</td>
+			    <td valign="middle" nowrap="nowrap" class="list"><a href="diag_arp.php?act=del&amp;id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" border="0" alt="<?=gettext("Delete ARP entry");?>" /></a></td>
 			  </tr>
 			  <?php $i++; endforeach; ?>
 			  <tr>
@@ -220,11 +227,11 @@ function getHostName($mac, $ip) {
 			  </tr>
 			  <tr>
 			    <td class="list" colspan="4"></td>
-			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" border="0"></a></td>
+			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" border="0" alt="<?=gettext("Remove all entries from ARP table");?>" /></a></td>
 			  </tr>
 			</table>
 			<div id="remarks">
-				<?php html_remark("hint", gettext("Hint"), sprintf(gettext("IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_log_settings.php"));?>
+				<?php html_remark("hint", gettext("Hint"), sprintf(gettext("IP addresses are resolved to hostnames if <a href=\"%s\">&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_log_settings.php"));?>
 			</div>
 		</td>
 	</tr>

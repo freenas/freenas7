@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_infos_swap.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -68,9 +72,13 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
 			    	<?php if (!isset($config['system']['swap']['enable'])):?>
 			    	<pre><?=gettext("Swap disabled");?></pre>
 			    	<?php else:?>
-			    	<pre><?php system("/usr/sbin/swapinfo");?></pre>
-						<?php endif;?>
-					</td>
+			    	<pre><?php
+				exec("/usr/sbin/swapinfo", $rawdata);
+				echo htmlspecialchars(implode("\n", $rawdata));
+				unset($rawdata);
+				?></pre>
+				<?php endif;?>
+			    </td>
 			  </tr>
     	</table>
     </td>

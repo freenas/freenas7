@@ -2,11 +2,15 @@
 <?php
 /*
 	diag_infos_ftpd.php
-	Copyright © 2007-2009 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -74,7 +78,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP"))
 			    	<pre><?php
 			    	exec("/usr/local/bin/ftpwho -v", $rawdata);
 						$rawdata = array_slice($rawdata, 1);
-						echo implode("\n", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
 						unset($rawdata);
 						?></pre>
 						<?php endif;?>

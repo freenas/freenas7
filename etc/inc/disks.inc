@@ -2,7 +2,7 @@
 /*
 	disks.inc
 	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1100,8 +1100,9 @@ function disks_exists($disk)
 // $param   - The command parameter.
 // $verbose - Display command results or hide them.
 // $stderr  - Redirect stderr to stdout to display error messages too.
+// $output  - Output array filled with every line of output.
 // Return 0 if successful, 1 if error.
-function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = true)
+function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = true, &$output = false)
 {
 	$result = 1;
 
@@ -1114,7 +1115,11 @@ function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = tr
 		if (true === $stderr)
 			$cmd .= " 2>&1"; // Redirect error message to stdout
 
-		system($cmd, $result);
+		if (false !== $output) {
+			exec($cmd, $output, $result);
+		} else {
+			system($cmd, $result);
+		}
 	}	else {
 		$result = mwexec($cmd);
 	}

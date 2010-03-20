@@ -1,9 +1,13 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos.php
+	diag_infos_smart.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -71,7 +75,7 @@ $a_disk = get_physical_disks_list();
 						<pre><?php
 						exec("/usr/local/sbin/smartctl -a /dev/{$diskk}", $rawdata);
 						$rawdata = array_slice($rawdata, 3);
-						echo implode("\n", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
 						unset($rawdata);
 						?></pre>
 					</td>

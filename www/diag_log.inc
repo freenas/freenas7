@@ -1,11 +1,15 @@
 <?php
 /*
 	diag_log.inc
-	Copyright © 2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -51,8 +55,8 @@ $loginfo = array(
 		"size" => "262144",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap", "pmid" => 2),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
+			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap=\"nowrap\"", "pmid" => 2),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
@@ -64,8 +68,8 @@ $loginfo = array(
 		"size" => "32768",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap", "pmid" => 2),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
+			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap=\"nowrap\"", "pmid" => 2),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
@@ -77,8 +81,8 @@ $loginfo = array(
 		"size" => "32768",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap", "pmid" => 2),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
+			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap=\"nowrap\"", "pmid" => 2),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
@@ -90,8 +94,8 @@ $loginfo = array(
 		"size" => "32768",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap", "pmid" => 2),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
+			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap=\"nowrap\"", "pmid" => 2),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
@@ -102,7 +106,7 @@ $loginfo = array(
 		"type" => "plain",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 2)
 		)),
 	array(
@@ -113,7 +117,7 @@ $loginfo = array(
 		"type" => "plain",
 		"pattern" => "/^(\S+\s+\S+\s+\d+\s+\S+\s+\d+) ((\d+) (\S+) (\d+) (\S+) (a|b) (C|U|T|_) (o|i|d) (a|g|r) (\S+) (\S+) (0|1) (\S+) (c|i))$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
 			array("title" => gettext("IP"), "class" => "listr", "param" => "", "pmid" => 4),
 			array("title" => gettext("User"), "class" => "listr", "param" => "", "pmid" => 11),
 //		array("title" => gettext("File"), "class" => "listr", "param" => "", "pmid" => 6),
@@ -129,8 +133,8 @@ $loginfo = array(
 		"size" => "32768",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap", "pmid" => 2),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
+			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap=\"nowrap\"", "pmid" => 2),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
@@ -142,8 +146,8 @@ $loginfo = array(
 		"size" => "32768",
 		"pattern" => "/^(\S+\s+\d+\s+\S+)\s+(\S+)\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
-			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap", "pmid" => 2),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
+			array("title" => gettext("User"), "class" => "listr", "param" => "nowrap=\"nowrap\"", "pmid" => 2),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 3)
 		)),
 	array(
@@ -184,7 +188,7 @@ $loginfo = array(
 		"type" => "plain",
 		"pattern" => "/^(\S+\s+\S+)\s+\S+:\s+(.*)$/",
 		"columns" => array(
-			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap", "pmid" => 1),
+			array("title" => gettext("Date & Time"), "class" => "listlr", "param" => "nowrap=\"nowrap\"", "pmid" => 1),
 			array("title" => gettext("Event"), "class" => "listr", "param" => "", "pmid" => 2)
 		))
 );
@@ -216,7 +220,7 @@ function log_display($loginfo) {
 	// Create table header
 	echo "<tr>";
 	foreach ($loginfo['columns'] as $columnk => $columnv) {
-		echo "<td {$columnv['param']} class='" . (($columnk == 0) ? "listhdrlr" : "listhdrr") . "'>{$columnv['title']}</td>\n";
+		echo "<td {$columnv['param']} class='" . (($columnk == 0) ? "listhdrlr" : "listhdrr") . "'>".htmlspecialchars($columnv['title'])."</td>\n";
 	}
 	echo "</tr>";
 

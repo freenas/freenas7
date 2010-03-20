@@ -1,11 +1,15 @@
 <?php
 /*
 	wui.inc
-	Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (c) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without

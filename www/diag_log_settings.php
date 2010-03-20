@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_log_settings.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -92,7 +96,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -124,7 +128,7 @@ function enable_change(enable_change) {
 	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
-							<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
+							<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked=\"checked\""; ?> />
 	            <strong><?=gettext("Show log entries in reverse order (newest entries on top)");?></strong>
 						</td>
 	        </tr>
@@ -132,56 +136,56 @@ function enable_change(enable_change) {
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
 							<?=gettext("Number of log entries to show");?>:
-	            <input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>"></td>
+	            <input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>" /></td>
 	        </tr>
 	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
-							<input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($pconfig['resolve']) echo "checked"; ?>>
-	            <strong><?=gettext("Resolve IP addresses to hostnames");?></strong><br>
-	            <?php echo sprintf(gettext("Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."), get_product_name());?><br>
+							<input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($pconfig['resolve']) echo "checked=\"checked\""; ?> />
+	            <strong><?=gettext("Resolve IP addresses to hostnames");?></strong><br />
+	            <?php echo sprintf(gettext("Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."), get_product_name());?><br />
 							<?php echo sprintf(gettext("Warning: This can cause a huge delay in loading the %s log page!"), get_product_name());?>
 						</td>
 	        </tr>
 	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
-							<input name="enable" type="checkbox" id="enable" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)">
+							<input name="enable" type="checkbox" id="enable" value="yes" <?php if ($pconfig['enable']) echo "checked=\"checked\""; ?> onclick="enable_change(false)" />
 	            <strong><?=gettext("Enable syslog'ing to remote syslog server");?></strong></td>
 	        </tr>
 	        <tr>
 	          <td width="22%" valign="top" class="vncell"><?=gettext("Remote syslog server");?></td>
 	          <td width="78%" class="vtable">
-							<input name="ipaddr" id="ipaddr" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
-	            <br>
-	            <?=gettext("IP address of remote syslog server");?><br><br>
-							<input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked"; ?>>
-	            <?=gettext("System events");?><br>
-							<input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked"; ?>>
-	            <?=gettext("FTP events");?><br>
-							<input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked"; ?>>
-	            <?=gettext("RSYNC events");?><br>
-							<input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked"; ?>>
-	            <?=gettext("SSH events");?><br>
-	            <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked"; ?>>
-	            <?=gettext("S.M.A.R.T. events");?><br>
-	            <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked"; ?>>
-	            <?=gettext("Daemon events");?><br>
+							<input name="ipaddr" id="ipaddr" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>" />
+	            <br />
+	            <?=gettext("IP address of remote syslog server");?><br /><br />
+							<input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked=\"checked\""; ?> />
+	            <?=gettext("System events");?><br />
+							<input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked=\"checked\""; ?> />
+	            <?=gettext("FTP events");?><br />
+							<input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked=\"checked\""; ?> />
+	            <?=gettext("RSYNC events");?><br />
+							<input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked=\"checked\""; ?> />
+	            <?=gettext("SSH events");?><br />
+	            <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked=\"checked\""; ?> />
+	            <?=gettext("S.M.A.R.T. events");?><br />
+	            <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked=\"checked\""; ?> />
+	            <?=gettext("Daemon events");?><br />
 	          </td>
 	        </tr>
 	      </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 				</div>
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), get_product_name()));?>
 				</div>
-			</td>
 			<?php include("formend.inc");?>
 		</form>
+		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->

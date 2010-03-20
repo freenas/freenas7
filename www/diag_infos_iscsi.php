@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_infos_iscsi.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -76,13 +80,15 @@ $a_disk = $config['iscsiinit']['vdisk'];
 			    	<?php else:?>
 			    	<pre><?php
 			    	foreach ($a_disk as $disk) {
-			    		echo sprintf(gettext("Discovered iSCSI target for %s"), $disk['targetaddress']);
-			    		echo "<br>";
-							system("/usr/local/sbin/iscontrol -d targetaddress={$iscsiinit['targetaddress']}");
-						}
-						?></pre>
-						<?php endif;?>
-					</td>
+			    		echo htmlspecialchars(sprintf(gettext("Discovered iSCSI target for %s"), $disk['targetaddress']));
+			    		echo "<br />";
+					unset ($rawdata);
+					exec("/sbin/iscontrol -d targetaddress={$disk['targetaddress']} initiatorname={$disk['initiatorname']}", $rawdata);
+					echo htmlspecialchars(implode("\n", $rawdata));
+				}
+				?></pre>
+				<?php endif;?>
+			    </td>
 			  </tr>
     	</table>
     </td>

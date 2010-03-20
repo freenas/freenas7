@@ -2,11 +2,15 @@
 <?php
 /*
 	system_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2004, 2005 Scott Ullrich
 	All rights reserved.
 
 	Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
-	Copyright (C) 2006-2009 Volker Theile
+	Copyright (C) 2006-2010 Volker Theile
 
 	Using dp.SyntaxHighlighter for syntax highlighting
 	http://www.dreamprojections.com/SyntaxHighlighter
@@ -104,7 +108,7 @@ else
 						<td>
 							<span class="label"><?=gettext("File path");?></span>
 							<input size="42" id="savetopath" name="savetopath" value="<?=$savetopath;?>" />
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+							<input name="browse" type="button" class="formbtn" id="Browse" onclick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." />
 							<input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" />
 							<input name="submit" type="submit" class="formbtn" id="Save" value="<?=gettext("Save");?>" />
 							<hr noshade="noshade" />
@@ -136,19 +140,19 @@ else
 		</td>
 	</tr>
 </table>
-<script class="javascript" src="syntaxhighlighter/shCore.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushCSharp.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushPhp.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushJScript.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushJava.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushVb.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushSql.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushXml.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushDelphi.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushPython.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushRuby.js"></script>
-<script class="javascript" src="syntaxhighlighter/shBrushCss.js"></script>
-<script class="javascript">
+<script type="text/javascript" src="syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushVb.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushDelphi.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushRuby.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript">
 <!--
   // Set focus.
   document.forms[0].savetopath.focus();
