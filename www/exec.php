@@ -7,6 +7,7 @@
 	(modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
 	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
 	(adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
+	(modified for XHTML by Daisuke Aoyama <aoyama@peach.ne.jp>)
 */
 require("auth.inc");
 require("guiconfig.inc");
@@ -27,6 +28,22 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	$ulmsg = "Uploaded file to /tmp/{$_FILES['ulfile']['name']}";
 	unset($_POST['txtCommand']);
 }
+
+$pglocalheader = <<< EOD
+<style type="text/css">
+<!--
+pre {
+   border: 2px solid #435370;
+   background: #F0F0F0;
+   padding: 1em;
+   font-family: courier new, courier;
+   white-space: pre;
+   line-height: 10pt;
+   font-size: 10pt;
+}
+-->
+</style>
+EOD;
 ?>
 <?php include("fbegin.inc");?>
 <?php
@@ -38,7 +55,7 @@ function isBlank( $arg ) { return ereg( "^\s*$", $arg ); }
 // Put string, Ruby-style.
 function puts( $arg ) { echo "$arg\n"; }
 ?>
-<script language="javascript">
+<script type="text/javascript">
 <!--
    // Create recall buffer array (of encoded strings).
 <?php
@@ -137,19 +154,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    }
 //-->
 </script>
-<style type="text/css">
-<!--
-pre {
-   border: 2px solid #435370;
-   background: #F0F0F0;
-   padding: 1em;
-   font-family: courier new, courier;
-   white-space: pre;
-   line-height: 10pt;
-   font-size: 10pt;
-}
--->
-</style>
 <?php if (isBlank($_POST['txtCommand'])): ?>
 <p class="red"><strong><?=gettext("Note");?>: <?=gettext("This function is unsupported. Use it on your own risk!");?></strong></p>
 <?php endif; ?>
@@ -181,20 +185,20 @@ if (!isBlank($_POST['txtPHPCommand'])) {
 	puts("</pre>");
 }
 ?>
-<form action="<?=$HTTP_SERVER_VARS['SCRIPT_NAME'];?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
+<form action="<?=$HTTP_SERVER_VARS['SCRIPT_NAME'];?>" method="post" enctype="multipart/form-data" name="frmExecPlus" id="frmExecPlus" onsubmit="return frmExecPlus_onSubmit( this );">
   <table>
     <tr>
       <td class="label" align="right"><?=gettext("Command");?></td>
-      <td class="type"><input name="txtCommand" type="text" size="80" value="" onkeypress="txtCommand_onKey(event);"></td>
+      <td class="type"><input name="txtCommand" type="text" size="80" value="" onkeypress="txtCommand_onKey(event);" /></td>
     </tr>
     <tr>
       <td valign="top">&nbsp;</td>
       <td valign="top" class="label">
-         <input type="hidden" name="txtRecallBuffer" value="<?=$_POST['txtRecallBuffer'] ?>">
-         <input type="button" class="formbtn" name="btnRecallPrev" value="<" onClick="btnRecall_onClick( this.form, -1 );">
-         <input type="submit" class="formbtn" value="<?=gettext("Execute");?>">
-         <input type="button" class="formbtn" name="btnRecallNext" value=">" onClick="btnRecall_onClick( this.form,  1 );">
-         <input type="button"  class="formbtn" value="<?=gettext("Clear");?>" onClick="return Reset_onClick( this.form );">
+         <input type="hidden" name="txtRecallBuffer" value="<?=$_POST['txtRecallBuffer'] ?>" />
+         <input type="button" class="formbtn" name="btnRecallPrev" value="&lt;" onclick="btnRecall_onClick( this.form, -1 );" />
+         <input type="submit" class="formbtn" value="<?=gettext("Execute");?>" />
+         <input type="button" class="formbtn" name="btnRecallNext" value="&gt;" onclick="btnRecall_onClick( this.form,  1 );" />
+         <input type="button"  class="formbtn" value="<?=gettext("Clear");?>" onclick="return Reset_onClick( this.form );" />
       </td>
     </tr>
     <tr>
@@ -204,34 +208,34 @@ if (!isBlank($_POST['txtPHPCommand'])) {
     <tr>
       <td align="right"><?=gettext("Download");?></td>
       <td>
-        <input name="dlPath" type="text" id="dlPath" size="50">
-        <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.dlPath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-        <input name="submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download");?>">
+        <input name="dlPath" type="text" id="dlPath" size="50" value="" />
+        <input name="browse" type="button" class="formbtn" id="Browse" onclick='ifield = form.dlPath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." />
+        <input name="submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download");?>" />
         </td>
     </tr>
     <tr>
       <td align="right"><?=gettext("Upload");?></td>
       <td valign="top" class="label">
-        <input name="ulfile" type="file" class="formbtn" id="ulfile">
-        <input name="submit" type="submit"  class="formbtn" id="upload" value="<?=gettext("Upload");?>"></td>
+        <input name="ulfile" type="file" class="formbtn" id="ulfile" />
+        <input name="submit" type="submit"  class="formbtn" id="upload" value="<?=gettext("Upload");?>" /></td>
     </tr>
 		<tr>
 			<td colspan="2" valign="top" height="16"></td>
 		</tr>
 		<tr>
 			<td align="right"><?=gettext("PHP Command");?></td>
-			<td class="type"><textarea id="txtPHPCommand" name="txtPHPCommand" type="text" rows="3" cols="50" wrap="off"><?=htmlspecialchars($_POST['txtPHPCommand']);?></textarea></td>
+			<td class="type"><textarea id="txtPHPCommand" name="txtPHPCommand" rows="3" cols="50" wrap="off"><?=htmlspecialchars($_POST['txtPHPCommand']);?></textarea></td>
 		</tr>
 		<tr>
 			<td valign="top">&nbsp;&nbsp;&nbsp;</td>
 			<td valign="top" class="label">
-				<input type="submit" class="button" value="<?=gettext("Execute");?>">
+				<input type="submit" class="button" value="<?=gettext("Execute");?>" />
 			</td>
 		</tr>
   </table>
   <?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
   document.forms[0].txtCommand.focus();
 //-->

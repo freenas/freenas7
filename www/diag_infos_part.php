@@ -1,9 +1,13 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos.php
+	diag_infos_part.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -68,7 +72,7 @@ $a_disk = get_physical_disks_list();
   			<?php html_titleline(sprintf(gettext("Device /dev/%s - %s"), $diskk, $diskv['desc']));?>
 				<tr>
 					<td>
-						<pre><?php system("/sbin/fdisk {$diskk}");?></pre>
+						<pre><?php unset($rawdata); exec("/sbin/fdisk {$diskk}", $rawdata); echo htmlspecialchars(implode("\n", $rawdata));?></pre>
 					</td>
 				</tr>
     		<?php endforeach;?>

@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_infos.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -69,7 +73,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
 				?>
 				<tr>
 					<td>
-						<pre><?php if (empty($rawdata)) { echo gettext("n/a"); } else { echo implode("\n", $rawdata); }?></pre>
+						<pre><?php if (empty($rawdata)) { echo gettext("n/a"); } else { echo htmlspecialchars(implode("\n", $rawdata)); }?></pre>
 					</td>
 				</tr>
 				<?php
@@ -79,7 +83,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
 				?>
 				<tr>
 					<td>
-						<pre><?php if (empty($rawdata)) { echo gettext("n/a"); } else { echo implode("\n", $rawdata); }?></pre>
+						<pre><?php if (empty($rawdata)) { echo gettext("n/a"); } else { echo htmlspecialchars(implode("\n", $rawdata)); }?></pre>
 					</td>
 				</tr>
 			</table>

@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_ping.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -90,18 +94,20 @@ function get_interface_addr($ifdescr) {
 					<?php html_combobox("count", gettext("Count"), $count, $a_count, gettext("Stop after sending (and receiving) N packets."), true);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Ping");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Ping");?>" />
 				</div>
 				<?php if ($do_ping) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 				$ifaddr = get_interface_addr($interface);
 				if ($ifaddr) {
-					system("/sbin/ping -S {$ifaddr} -c {$count} " . escapeshellarg($host));
+					exec("/sbin/ping -S {$ifaddr} -c {$count} " . escapeshellarg($host), $rawdata);
 				} else {
-					system("/sbin/ping -c {$count} " . escapeshellarg($host));
+					exec("/sbin/ping -c {$count} " . escapeshellarg($host), $rawdata);
 				}
+				echo htmlspecialchars(implode("\n", $rawdata));
+				unset($rawdata);
 				echo('</pre>');
 				}
 				?>

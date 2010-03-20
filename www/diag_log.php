@@ -2,11 +2,15 @@
 <?php
 /*
 	diag_log.php
-	Copyright (C) 2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -59,7 +63,7 @@ if ($_POST['refresh']) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function log_change() {
 	// Reload page
@@ -82,13 +86,13 @@ function log_change() {
 				<select id="log" class="formfld" onchange="log_change()" name="log">
 					<?php foreach($loginfo as $loginfok => $loginfov):?>
 					<?php if (FALSE === $loginfov['visible']) continue;?>
-					<option value="<?=$loginfok;?>" <?php if ($loginfok == $log) echo "selected";?>><?=htmlspecialchars($loginfov['desc']);?></option>
+					<option value="<?=$loginfok;?>" <?php if ($loginfok == $log) echo "selected=\"selected\"";?>><?=htmlspecialchars($loginfov['desc']);?></option>
 					<?php endforeach;?>
 				</select>
-				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear");?>">
-				<input name="download" type="submit" class="formbtn" value="<?=gettext("Download");?>">
-				<input name="refresh" type="submit" class="formbtn" value="<?=gettext("Refresh");?>">
-				<br/><br/>
+				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear");?>" />
+				<input name="download" type="submit" class="formbtn" value="<?=gettext("Download");?>" />
+				<input name="refresh" type="submit" class="formbtn" value="<?=gettext("Refresh");?>" />
+				<br /><br />
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				  <?php log_display($loginfo[$log]);?>
 				</table>

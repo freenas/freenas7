@@ -1,9 +1,13 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos.php
+	diag_infos_mount.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -65,7 +69,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Mounts
     		<?php html_titleline(gettext("List of mount points"));?>
 				<tr>
 					<td>
-						<pre><?php system("/sbin/mount");?></pre>
+						<pre><?php unset($rawdata); exec("/sbin/mount", $rawdata); echo htmlspecialchars(implode("\n", $rawdata));?></pre>
 					</td>
 				</tr>
     	</table>

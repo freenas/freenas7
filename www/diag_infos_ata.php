@@ -2,8 +2,12 @@
 <?php
 /*
 	diag_infos_ata.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -73,8 +77,8 @@ $a_disk = get_ata_disks_list();
 						$device = $diskv['devicespecialfile'];
 						$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$name}")));
 
-						echo gettext("Device name") . ":		{$name}<br/>";
-						echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
+						echo gettext("Device name") . ":		{$name}<br />";
+						echo gettext("Transfer mode") . ":		{$dmamode}<br />";
 
 						// Display more information
 						exec("/usr/local/sbin/ataidle {$device}", $rawdata);

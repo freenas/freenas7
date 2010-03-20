@@ -352,3 +352,12 @@ div#loginbox {
 	border: 1px solid #DEDBD1;
 	padding: 20px 25px 20px 25px;
 }
+pre.cmdoutput {
+	margin: 0;
+	border: 0px solid #435370;
+	background: #F0F0F0;
+	font-family: 'Courier New', Courier, monospace;
+	white-space: pre-wrap;
+	line-height: 10pt;
+	font-size: 9pt;
+}

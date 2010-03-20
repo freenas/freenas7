@@ -2,11 +2,15 @@
 <?php
 /*
 	diag_infos_rsync_client.php
-	Copyright © 2007-2009 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -72,15 +76,15 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("RSYNC 
 			    	<pre><?=gettext("No RSYNC Client configured");?></pre>
 			    	<?php else:?>
 			    	<pre><?php
-			    	echo("<strong>" . gettext("Detected RSYNC remote shares") . ":</strong><br><br>");
+			    	echo("<strong>" . gettext("Detected RSYNC remote shares") . ":</strong><br /><br />");
 						$i = 0;
 						foreach ($config['rsync']['rsyncclient'] as $rsyncclient) {
-							echo("<br>RSYNC client number $i:<br>");
-							echo("- Remote server address: {$rsyncclient['rsyncserverip']}<br>");
-							echo("- Remote share name configured : {$rsyncclient['remoteshare']}<br>");
-							echo("- Detected shares on this server: <br>");
+							echo("<br />RSYNC client number $i:<br />");
+							echo("- Remote server address: {$rsyncclient['rsyncserverip']}<br />");
+							echo("- Remote share name configured : {$rsyncclient['remoteshare']}<br />");
+							echo("- Detected shares on this server: <br />");
 							exec("/usr/local/bin/rsync {$rsyncclient['rsyncserverip']}::", $rawdata);
-							echo implode("\n", $rawdata);
+							echo htmlspecialchars(implode("\n", $rawdata));
 							unset($rawdata);
 						}
 						?></pre>

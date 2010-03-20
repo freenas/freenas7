@@ -2,8 +2,15 @@
 <?php
 /*
 	diag_traceroute.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
 
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2005 Paul Taylor (paultaylor@winndixie.com) and Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
@@ -79,13 +86,15 @@ if (!isset($do_traceroute)) {
 					<?php html_checkbox("resolve", gettext("Resolve"), $resolve ? true : false, gettext("Resolve IP addresses to hostnames"), "", false);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>" />
 				</div>
 				<?php if ($do_traceroute) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
-				system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
+				exec("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host), $rawdata);
+				echo htmlspecialchars(implode("\n", $rawdata));
+				unset($rawdata);
 				echo('</pre>');
 				}
 				?>

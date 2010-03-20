@@ -1,6 +1,14 @@
 <?php
 /*
 	diag_routes.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	All rights reserved.
+
 	Copyright (C) 2006 Fernando Lamos
 	All rights reserved.
 
@@ -48,6 +56,8 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 		foreach (explode("\n", $table) as $row => $line) {
 			if ($row == 0)
 				continue;
+			if ($line == '')
+				continue;
 			print("<tr>\n");
 			$col = 0;
 			foreach (explode(' ', $line) as $entry) {
@@ -66,7 +76,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 				print('<td class="listr">&nbsp;</td>' . "\n");
 			print("</tr>\n");
 		}
-		print("</table><br/>\n");
+		print("</table><br />\n");
 	}
 ?>
 		</td>

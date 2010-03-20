@@ -2,11 +2,15 @@
 <?php
 /*
 	diag_infos_samba.php
-	Copyright © 2008-2009 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2008-2010 Volker Theile (votdev@gmx.de)
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -76,7 +80,11 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 				<?php html_titleline(gettext("Active shares"));?>
 				<tr>
 					<td>
-						<pre><?php system("/usr/bin/smbstatus -S");?></pre>
+						<pre><?php
+						exec("/usr/bin/smbstatus -S", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
+						unset($rawdata);
+						?></pre>
 					</td>
 				</tr>
 				<?php html_titleline(gettext("List of open files"));?>
@@ -85,7 +93,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 						<pre><?php
 						exec("/usr/bin/smbstatus -L", $rawdata);
 						$rawdata = array_slice($rawdata, 4);
-						echo implode("\n", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
 						unset($rawdata);
 						?></pre>
 					</td>
@@ -96,7 +104,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 						<pre><?php
 						exec("/usr/bin/smbstatus -u", $rawdata);
 						$rawdata = array_slice($rawdata, 4);
-						echo implode("\n", $rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
 						unset($rawdata);
 						?></pre>
 					</td>
