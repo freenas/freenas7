@@ -2,11 +2,11 @@
 <?php
 /*
 	system_password.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -105,7 +105,7 @@ if ($_POST) {
 					<?php html_passwordconfbox("password_new", "password_confirm", gettext("Password"), "", "", gettext("If you want to change the password for accessing the WebGUI, enter it here twice."), true);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

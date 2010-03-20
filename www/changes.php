@@ -2,11 +2,11 @@
 <?php
 /*
 	changes.php
-	Copyright © 2008-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2008-2010 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ $pgtitle = array(gettext("Help"), gettext("Release notes"));
 				<tr>
 					<td class="listt">
 						<div>
-							<textarea style="width: 98%;" id="content" name="content" class="listcontent" rows="30" readonly><?php system("/bin/cat {$g['www_path']}/CHANGES");?></textarea>
+							<textarea style="width: 98%;" id="content" name="content" class="listcontent" cols="10" rows="30" readonly="readonly"><?php $lines = array(); exec("/bin/cat {$g['www_path']}/CHANGES", $lines); foreach ($lines as $line) { echo htmlspecialchars($line)."\n"; }?></textarea>
 						</div>
 					</td>
 				</tr>

@@ -3,7 +3,7 @@
 /*
   index.php
   part of FreeNAS (http://www.freenas.org)
-  Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+  Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
 

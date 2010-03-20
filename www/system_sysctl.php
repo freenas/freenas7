@@ -8,7 +8,7 @@
 	Modified by Volker Theile (votdev@gmx.de)
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -134,22 +134,22 @@ function sysctl_process_updatenotification($mode, $data) {
 	          <td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
 	          <td class="listbg"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-	          <td valign="middle" nowrap class="list">
-	            <a href="system_sysctl_edit.php?uuid=<?=$sysctlvarv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0"></a>
-	            <a href="system_sysctl.php?act=del&uuid=<?=$sysctlvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" border="0"></a>
+	          <td valign="middle" nowrap="nowrap" class="list">
+	            <a href="system_sysctl_edit.php?uuid=<?=$sysctlvarv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" border="0" alt="<?=gettext("Edit MIB");?>" /></a>
+	            <a href="system_sysctl.php?act=del&amp;uuid=<?=$sysctlvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" border="0" alt="<?=gettext("Delete MIB");?>" /></a>
 	          </td>
 	          <?php else:?>
-						<td valign="middle" nowrap class="list">
-							<img src="del.gif" border="0">
+						<td valign="middle" nowrap="nowrap" class="list">
+							<img src="del.gif" border="0" alt="" />
 						</td>
 						<?php endif;?>
 	        </tr>
 	        <?php endforeach;?>
 					<tr>
 	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" border="0"></a>
+	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" border="0" alt="<?=gettext("Add MIB");?>" /></a>
 	          	<?php if (!empty($a_sysctlvar)):?>
-							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all MIBs?");?>')"><img src="x.gif" title="<?=gettext("Delete all MIBs");?>" border="0"></a>
+							<a href="system_sysctl.php?act=del&amp;id=all" onclick="return confirm('<?=gettext("Do you really want to delete all MIBs?");?>')"><img src="x.gif" title="<?=gettext("Delete all MIBs");?>" border="0" alt="<?=gettext("Delete all MIBs");?>" /></a>
 							<?php endif;?>
 						</td>
 	        </tr>

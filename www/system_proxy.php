@@ -2,11 +2,11 @@
 <?php
 /*
 	system_proxy.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -123,7 +123,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	if (enable_change.name == "http_enable") {
@@ -221,7 +221,7 @@ function proxy_auth_change() {
 			    <?php html_inputbox("ftp_password", gettext("Password"), $pconfig['ftp_password'], "", true, 20);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 			  </div>
 			  <div id="remarks">
 			  	<?php html_remark("note", gettext("Note"), gettext("If the server is behind a proxy set this parameters to give local services access to the internet via proxy."));?>
@@ -231,7 +231,7 @@ function proxy_auth_change() {
 		</td>
   </tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 proxy_auth_change();
 enable_change(false);

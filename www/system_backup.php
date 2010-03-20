@@ -3,7 +3,7 @@
 /*
 	system_backup.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -101,9 +101,9 @@ if ($_POST) {
 			    <tr>
 					<td width="22%" valign="baseline" class="vncell">&nbsp;</td>
 					<td width="78%" class="vtable">
-						<?=gettext("Click this button to download the system configuration in XML format.");?><br/>
+						<?=gettext("Click this button to download the system configuration in XML format.");?><br />
 						<div id="submit">
-							<input name="Submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download configuration");?>">
+							<input name="Submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download configuration");?>" />
 						</div>
 					</td>
 			    </tr>
@@ -116,15 +116,15 @@ if ($_POST) {
 			    <tr>
 					<td width="22%" valign="baseline" class="vncell">&nbsp;</td>
 					<td width="78%" class="vtable">
-						<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br/>
+						<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br />
 						<div id="remarks">
 							<?php html_remark("note", gettext("Note"), sprintf(gettext("%s will reboot after restoring the configuration."), get_product_name()));?>
 						</div>
 						<div id="submit">
-						<input name="conffile" type="file" class="formfld" id="conffile" size="40">
+						<input name="conffile" type="file" class="formfld" id="conffile" size="40" />
 						</div>
 						<div id="submit">
-						<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
+						<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>" />
 						</div>
 					</td>
 			    </tr>

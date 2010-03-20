@@ -3,7 +3,7 @@
 /*
 	shutdown_sched.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	Cron configuration from services_rsynclient.php improved by Mat Murdock <mmurdock@kimballequipment.com>
 
@@ -93,7 +93,7 @@ if ($_POST){
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function set_selected(name) {
 	document.getElementsByName(name)[1].checked = true;
@@ -154,42 +154,42 @@ function enable_change(enable_change) {
 								</tr>
 								<tr>
 									<td class="listlr">
-										<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked";?>>
-										<?=gettext("All");?><br>
-										<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked";?>>
-										<?=gettext("Selected");?> ..<br>
+										<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked=\"checked\"";?> />
+										<?=gettext("All");?><br />
+										<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked=\"checked\"";?> />
+										<?=gettext("Selected");?> ..<br />
 										<table>
 											<tr>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes1" onchange="set_selected('all_mins')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="minute[]" id="minutes1" onchange="set_selected('all_mins')">
 														<?php for ($i = 0; $i <= 11; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes2" onchange="set_selected('all_mins')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="minute[]" id="minutes2" onchange="set_selected('all_mins')">
 														<?php for ($i = 12; $i <= 23; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes3" onchange="set_selected('all_mins')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="minute[]" id="minutes3" onchange="set_selected('all_mins')">
 														<?php for ($i = 24; $i <= 35; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes4" onchange="set_selected('all_mins')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="minute[]" id="minutes4" onchange="set_selected('all_mins')">
 														<?php for ($i = 36; $i <= 47; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes5" onchange="set_selected('all_mins')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="minute[]" id="minutes5" onchange="set_selected('all_mins')">
 														<?php for ($i = 48; $i <= 59; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
@@ -197,24 +197,24 @@ function enable_change(enable_change) {
 												</td>
 											</tr>
 										</table>
-										<br>
+										<br />
 									</td>
-									<td class="listr" valign=top>
-										<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked";?>>
-										<?=gettext("All");?><br>
-										<input type="radio" name="all_hours" id="all_hours2" value="0" <?php if (1 != $pconfig['all_hours']) echo "checked";?>>
-										<?=gettext("Selected");?> ..<br>
+									<td class="listr" valign="top">
+										<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked=\"checked\"";?> />
+										<?=gettext("All");?><br />
+										<input type="radio" name="all_hours" id="all_hours2" value="0" <?php if (1 != $pconfig['all_hours']) echo "checked=\"checked\"";?> />
+										<?=gettext("Selected");?> ..<br />
 										<table>
 											<tr>
-												<td valign=top>
-													<select multiple size="12" name="hour[]" id="hours1" onchange="set_selected('all_hours')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="hour[]" id="hours1" onchange="set_selected('all_hours')">
 														<?php for ($i = 0; $i <= 11; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array("$i", $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="12" name="hour[]" id="hours2" onchange="set_selected('all_hours')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="hour[]" id="hours2" onchange="set_selected('all_hours')">
 														<?php for ($i = 12; $i <= 23; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array("$i", $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
@@ -223,29 +223,29 @@ function enable_change(enable_change) {
 											</tr>
 										</table>
 									</td>
-									<td class="listr" valign=top>
-										<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked";?>>
-										<?=gettext("All");?><br>
-										<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked";?>>
-										<?=gettext("Selected");?> ..<br>
+									<td class="listr" valign="top">
+										<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked=\"checked\"";?> />
+										<?=gettext("All");?><br />
+										<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked=\"checked\"";?> />
+										<?=gettext("Selected");?> ..<br />
 										<table>
 											<tr>
-												<td valign=top>
-													<select multiple size="12" name="day[]" id="days1" onchange="set_selected('all_days')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="day[]" id="days1" onchange="set_selected('all_days')">
 														<?php for ($i = 1; $i <= 12; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="12" name="day[]" id="days2" onchange="set_selected('all_days')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="day[]" id="days2" onchange="set_selected('all_days')">
 														<?php for ($i = 13; $i <= 24; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
 												</td>
-												<td valign=top>
-													<select multiple size="7" name="day[]" id="days3" onchange="set_selected('all_days')">
+												<td valign="top">
+													<select multiple="multiple" size="7" name="day[]" id="days3" onchange="set_selected('all_days')">
 														<?php for ($i = 25; $i <= 31; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
@@ -254,15 +254,15 @@ function enable_change(enable_change) {
 											</tr>
 										</table>
 									</td>
-									<td class="listr" valign=top>
-										<input type="radio" name="all_months" id="all_months1" value="1" <?php if (1 == $pconfig['all_months']) echo "checked";?>>
-										<?=gettext("All");?><br>
-										<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked";?>>
-										<?=gettext("Selected");?> ..<br>
+									<td class="listr" valign="top">
+										<input type="radio" name="all_months" id="all_months1" value="1" <?php if (1 == $pconfig['all_months']) echo "checked=\"checked\"";?> />
+										<?=gettext("All");?><br />
+										<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked=\"checked\"";?> />
+										<?=gettext("Selected");?> ..<br />
 										<table>
 											<tr>
-												<td valign=top>
-													<select multiple size="12" name="month[]" id="months" onchange="set_selected('all_months')">
+												<td valign="top">
+													<select multiple="multiple" size="12" name="month[]" id="months" onchange="set_selected('all_months')">
 														<?php $i = 1; foreach ($a_months as $month):?>
 														<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlspecialchars($month);?></option>
 														<?php $i++; endforeach;?>
@@ -271,15 +271,15 @@ function enable_change(enable_change) {
 											</tr>
 										</table>
 									</td>
-									<td class="listr" valign=top>
-										<input type="radio" name="all_weekdays" id="all_weekdays1" value="1" <?php if (1 == $pconfig['all_weekdays']) echo "checked";?>>
-										<?=gettext("All");?><br>
-										<input type="radio" name="all_weekdays" id="all_weekdays2" value="0" <?php if (1 != $pconfig['all_weekdays']) echo "checked";?>>
-										<?=gettext("Selected");?> ..<br>
+									<td class="listr" valign="top">
+										<input type="radio" name="all_weekdays" id="all_weekdays1" value="1" <?php if (1 == $pconfig['all_weekdays']) echo "checked=\"checked\"";?> />
+										<?=gettext("All");?><br />
+										<input type="radio" name="all_weekdays" id="all_weekdays2" value="0" <?php if (1 != $pconfig['all_weekdays']) echo "checked=\"checked\"";?> />
+										<?=gettext("Selected");?> ..<br />
 										<table>
 											<tr>
-												<td valign=top>
-													<select multiple size="7" name="weekday[]" id="weekdays" onchange="set_selected('all_weekdays')">
+												<td valign="top">
+													<select multiple="multiple" size="7" name="weekday[]" id="weekdays" onchange="set_selected('all_weekdays')">
 														<?php $i = 0; foreach ($a_weekdays as $day):?>
 														<option value="<?=$i;?>" <?php if (isset($pconfig['weekday']) && in_array("$i", $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
 														<?php $i++; endforeach;?>
@@ -295,14 +295,14 @@ function enable_change(enable_change) {
 					</tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->
