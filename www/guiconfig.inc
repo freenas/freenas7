@@ -2,7 +2,7 @@
 /*
 	guiconfig.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -188,15 +188,15 @@ function print_input_errors($input_errors) {
 	echo "  <div id='errorbox'>\n";
 	echo "    <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
 	echo "      <tr>\n";
-	echo "        <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/err.gif\"></td>\n";
+	echo "        <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" alt=\"\" /></td>\n";
 	echo "        <td class=\"message\">\n";
-	echo "          <p>" . gettext("The following input errors were detected").":\n";
+	echo "          <div>" . gettext("The following input errors were detected").":\n";
 	echo "            <ul>\n";
 	foreach ($input_errors as $msg) {
 		echo "              <li>{$msg}</li>\n";
 	}
 	echo "            </ul>\n";
-	echo "          </p>\n";
+	echo "          </div>\n";
 	echo "        </td>\n";
 	echo "      </tr>\n";
 	echo "    </table>\n";
@@ -230,7 +230,7 @@ function print_core_box($type, $msg) {
 	echo "<div id='{$id}'>\n";
 	echo "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
 	echo "    <tr>\n";
-	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/{$img}\"></td>\n";
+	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/{$img}\" alt=\"\" /></td>\n";
 	echo "      <td class=\"message\">{$msg}</td>\n";
 	echo "    </tr>\n";
 	echo "  </table>\n";
@@ -252,8 +252,8 @@ function print_warning_box($msg) {
 function print_config_change_box() {
 	$message = gettext("Apply changes");
 	echo "<div id='applybox'>";
-	print_info_box(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));
-	echo "<input name=\"apply\" type=\"submit\" class=\"formbtn\" id=\"apply\" value=\"{$message}\">";
+	print_info_box(gettext("The configuration has been changed.<br />You must apply the changes in order for them to take effect."));
+	echo "<input name=\"apply\" type=\"submit\" class=\"formbtn\" id=\"apply\" value=\"{$message}\" />";
 	echo "</div>";
 }
 

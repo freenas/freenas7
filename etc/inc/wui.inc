@@ -113,7 +113,7 @@ class HTMLBaseControl {
 		echo "	<td width='78%' class='vtable'>\n";
 		$this->RenderCtrl();
 		if (!empty($description))
-			echo "		<br/><span class='vexpl'>{$description}</span>\n";
+			echo "		<br /><span class='vexpl'>{$description}</span>\n";
 		echo "	</td>\n";
 		echo "</tr>\n";
 	}
@@ -153,7 +153,7 @@ class HTMLEditBox extends HTMLBaseControl {
 	function GetParam() {
 		$param = "";
 		if (true === $this->IsReadOnly())
-			$param .= "readonly ";
+			$param .= "readonly=\"readonly\" ";
 		return $param;
 	}
 
@@ -225,7 +225,7 @@ class HTMLPasswordConfBox extends HTMLEditBox {
 		$param = $this->GetParam();
 		$caption = htmlspecialchars(gettext("Confirmation"), ENT_QUOTES);
 
-		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} /><br/>\n";
+		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} /><br />\n";
 		echo "    <input name='{$ctrlnameconf}' type='password' class='formfld' id='{$ctrlnameconf}' size='{$size}' value='{$valueconf}' {$param} />&nbsp;({$caption})\n";
 	}
 }
@@ -313,7 +313,7 @@ class HTMLFileChooser extends HTMLEditBox {
 		$path = $this->GetPath();
 
 		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} />\n";
-		echo "		<input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
+		echo "		<input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onclick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
 	}
 }
 
@@ -366,7 +366,7 @@ class HTMLIPv4AddressBox extends HTMLIPAddressBox {
 		foreach (range(1, 32) as $netmask) {
 			$optparam = "";
 			if ($netmask == $valuenetmask)
-				$optparam .= "selected ";
+				$optparam .= "selected=\"selected\" ";
 			echo "      <option value='{$netmask}' {$optparam}>{$netmask}</option>\n";
 		}
 		echo "    </select>\n";
@@ -419,10 +419,10 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 	function GetParam() {
 		$param = "";
 		if (true === $this->IsChecked())
-			$param .= "checked ";
+			$param .= "checked=\"checked\" ";
 		$onclick = $this->GetJSonClick();
 		if (!empty($onclick))
-			$param .= "onClick='{$onclick}' ";
+			$param .= "onclick='{$onclick}' ";
 		return $param;
 	}
 
@@ -465,10 +465,10 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 	function GetParam() {
 		$param = "";
 		if (true === $this->IsReadOnly())
-			$param .= "disabled ";
+			$param .= "disabled=\"disabled\" ";
 		$onclick = $this->GetJSonClick();
 		if (!empty($onclick))
-			$param .= "onClick='{$onclick}' ";
+			$param .= "onclick='{$onclick}' ";
 		return $param;
 	}
 
@@ -483,7 +483,7 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 		foreach ($options as $optionk => $optionv) {
 			$optparam = "";
 			if ($value == $optionk)
-				$optparam .= "selected ";
+				$optparam .= "selected=\"selected\" ";
 			echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
 		}
 		echo "    </select>\n";
@@ -517,7 +517,7 @@ class HTMLMultiSelectControl extends HTMLSelectControl {
 		foreach ($options as $optionk => $optionv) {
 			$optparam = "";
 			if (is_array($value) && in_array($optionk, $value))
-				$optparam .= "selected ";
+				$optparam .= "selected=\"selected\" ";
 			echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
 		}
 		echo "    </select>\n";
@@ -727,7 +727,7 @@ class HTMLRemark extends HTMLBaseControl {
 		if (!empty($title)) {
 			echo "  <span class='red'>\n";
 			echo "    <strong>{$title}:</strong>\n";
-			echo "  </span><br/>\n";
+			echo "  </span><br />\n";
 		}
 		echo "  {$text}\n";
 		echo "</div>\n";
@@ -808,9 +808,9 @@ class HTMLFolderBox extends HTMLBaseControl {
 			echo "      <option value='{$valuev}' {$optparam}>{$valuev}</option>\n";
 		}
 		echo "    </select>\n";
-		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".htmlspecialchars(gettext("Delete"), ENT_QUOTES)."' onclick='onclick_delete_{$ctrlname}()' /><br/>\n";
+		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".htmlspecialchars(gettext("Delete"), ENT_QUOTES)."' onclick='onclick_delete_{$ctrlname}()' /><br />\n";
 		echo "    <input name='{$ctrlname}data' type='text' class='formfld' id='{$ctrlname}data' size='60' value='' />\n";
-		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onClick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
+		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onclick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
 		echo "    <input name='{$ctrlname}addbtn' type='button' class='formbtn' id='{$ctrlname}addbtn' value='".htmlspecialchars(gettext("Add"), ENT_QUOTES)."' onclick='onclick_add_{$ctrlname}()' />\n";
 		echo "    <input name='{$ctrlname}changebtn' type='button' class='formbtn' id='{$ctrlname}changebtn' value='".htmlspecialchars(gettext("Change"), ENT_QUOTES)."' onclick='onclick_change_{$ctrlname}()' />\n";
 	}

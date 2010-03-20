@@ -2,11 +2,11 @@
 <?php
 /*
 	system_email.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -115,7 +115,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function auth_change() {
 	switch (document.iform.auth.checked) {
@@ -166,15 +166,15 @@ function auth_change() {
 					<?php html_combobox("authmethod", gettext("Authentication method"), $pconfig['authmethod'], array("plain" => "Plain", "cram-md5" => "Cram-MD5", "digest-md5" => "Digest-MD5", "gssapi" => "GSSAPI", "external" => "External", "login" => "Login", "ntlm" => "NTLM", "on" => gettext("Best available")), "", true);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-					<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" />
+					<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>" />
 			  </div>
 			  <?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 auth_change();
 //-->

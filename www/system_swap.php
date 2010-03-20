@@ -3,7 +3,7 @@
 /*
 	system_swap.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -85,7 +85,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -140,14 +140,14 @@ function type_change() {
 					<?php html_inputbox("devicespecialfile", gettext("Device"), $pconfig['devicespecialfile'], sprintf(gettext("Name of the device to use as swap device, e.g. %s."), "/dev/ad0s3"), true, 20);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 type_change(false);

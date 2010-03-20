@@ -2,11 +2,11 @@
 <?php
 /*
 	system_rc_edit.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -141,11 +141,11 @@ if ($_POST) {
 					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("PREINIT" => "PreInit", "POSTINIT" => "PostInit", "SHUTDOWN" => "Shutdown"), gettext("Execute command pre or post system initialization (booting) or before system shutdown."), true, isset($pconfig['type']));?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
 					<?php if (isset($id) && isset($type)):?>
-					<input name="id" type="hidden" value="<?=$id;?>">
-					<input name="type" type="hidden" value="<?=$type;?>">
+					<input name="id" type="hidden" value="<?=$id;?>" />
+					<input name="type" type="hidden" value="<?=$type;?>" />
 					<?php endif;?>
 				</div>
 				<?php include("formend.inc");?>

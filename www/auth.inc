@@ -1,11 +1,11 @@
 <?php
 /*
 	auth.inc
-	Copyright © 2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2009-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -49,6 +49,7 @@ if (!Session::isAdmin() && (!isset($pgperm['allowuser']) || !$pgperm['allowuser'
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title>403 - Forbidden</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	</head>
 	<body>
 		<h1>403 - Forbidden</h1>
@@ -70,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title>401 - Unauthorized</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	</head>
 	<body>
 		<h1>401 - Unauthorized</h1>

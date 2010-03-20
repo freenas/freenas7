@@ -2,11 +2,11 @@
 <?php
 /*
 	system_rcconf.php
-	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -133,13 +133,13 @@ function rcconf_process_updatenotification($mode, $data) {
 	          <td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
 	          <td class="listbg"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
 	          <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-	          <td valign="middle" nowrap class="list">
-	            <a href="system_rcconf_edit.php?uuid=<?=$rcvarv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0"></a>
-	            <a href="system_rcconf.php?act=del&uuid=<?=$rcvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0"></a>
+	          <td valign="middle" nowrap="nowrap" class="list">
+	            <a href="system_rcconf_edit.php?uuid=<?=$rcvarv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit option");?>" border="0" alt="<?=gettext("Edit option");?>" /></a>
+	            <a href="system_rcconf.php?act=del&amp;uuid=<?=$rcvarv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" border="0" alt="<?=gettext("Delete option");?>" /></a>
 	          </td>
 	          <?php else:?>
-						<td valign="middle" nowrap class="list">
-							<img src="del.gif" border="0">
+						<td valign="middle" nowrap="nowrap" class="list">
+							<img src="del.gif" border="0" alt="" />
 						</td>
 						<?php endif;?>
 	        </tr>
@@ -147,9 +147,9 @@ function rcconf_process_updatenotification($mode, $data) {
 	        <tr>
 	          <td class="list" colspan="3"></td>
 	          <td class="list">
-							<a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" border="0"></a>
+							<a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" border="0" alt="<?=gettext("Add option");?>" /></a>
 	          	<?php if (!empty($a_rcvar)):?>
-							<a href="system_rcconf.php?act=del&uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" border="0"></a>
+							<a href="system_rcconf.php?act=del&amp;uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" border="0" alt="<?=gettext("Delete all options");?>" /></a>
 							<?php endif;?>
 						</td>
 	        </tr>

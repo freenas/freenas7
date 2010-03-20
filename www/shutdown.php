@@ -3,7 +3,7 @@
 /*
 	shutdown.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -61,8 +61,8 @@ if ($_POST) {
       <form action="shutdown.php" method="post">
 				<strong><?=gettext("Are you sure you want to shutdown the system?");?></strong>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>" />
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>" />
 				</div>
 				<?php include("formend.inc");?>
       </form>

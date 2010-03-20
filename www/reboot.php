@@ -2,8 +2,11 @@
 <?php
 /*
 	reboot.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
 
+	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
@@ -58,8 +61,8 @@ if ($_POST) {
 			<form action="reboot.php" method="post">
 			  <strong><?=gettext("Are you sure you want to reboot the system?");?></strong>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Yes");?>" />
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("No");?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

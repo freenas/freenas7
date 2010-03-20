@@ -3,7 +3,7 @@
 /*
 	system.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	Set time function added by Paul Wheels (pwheels@users.sourceforge.net)
 
@@ -234,9 +234,14 @@ if ($_POST) {
 		}
 	}
 }
+
+$pglocalheader = <<< EOD
+<link rel="stylesheet" type="text/css" href="datechooser.css" />
+<script type="text/javascript" src="datechooser.js"></script>
+EOD;
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function ntp_change() {
 	switch(document.iform.ntp_enable.checked) {
@@ -267,8 +272,6 @@ function webguiproto_change() {
 }
 //-->
 </script>
-<script language="JavaScript" src="datechooser.js"></script>
-<link rel="stylesheet" type="text/css" href="datechooser.css">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
     <td class="tabnavtbl">
@@ -294,19 +297,19 @@ function webguiproto_change() {
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
 			      <td width="78%" class="vtable">
-							<?php $readonly = ("dhcp" === $config['interfaces']['lan']['ipaddr']) ? "readonly" : "";?>
-							<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$readonly;?>><br>
-							<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$readonly;?>><br>
-							<span class="vexpl"><?=gettext("IPv4 addresses");?><br>
+							<?php $readonly = ("dhcp" === $config['interfaces']['lan']['ipaddr']) ? "readonly=\"readonly\"" : "";?>
+							<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$readonly;?> /><br />
+							<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$readonly;?> /><br />
+							<span class="vexpl"><?=gettext("IPv4 addresses");?></span><br />
 			      </td>
 			    </tr>
 				  <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv6 DNS servers");?></td>
 			      <td width="78%" class="vtable">
-							<?php $readonly = (!isset($config['interfaces']['lan']['ipv6_enable']) || ("auto" === $config['interfaces']['lan']['ipv6addr'])) ? "readonly" : "";?>
-							<input name="ipv6dns1" type="text" class="formfld" id="ipv6dns1" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns1']);?>" <?=$readonly;?>><br>
-							<input name="ipv6dns2" type="text" class="formfld" id="ipv6dns2" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns2']);?>" <?=$readonly;?>><br>
-							<span class="vexpl"><?=gettext("IPv6 addresses");?><br>
+							<?php $readonly = (!isset($config['interfaces']['lan']['ipv6_enable']) || ("auto" === $config['interfaces']['lan']['ipv6addr'])) ? "readonly=\"readonly\"" : "";?>
+							<input name="ipv6dns1" type="text" class="formfld" id="ipv6dns1" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns1']);?>" <?=$readonly;?> /><br />
+							<input name="ipv6dns2" type="text" class="formfld" id="ipv6dns2" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns2']);?>" <?=$readonly;?> /><br />
+							<span class="vexpl"><?=gettext("IPv6 addresses");?></span><br />
 			      </td>
 			    </tr>
 			    <?php html_separator();?>
@@ -323,9 +326,9 @@ function webguiproto_change() {
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("System time");?></td>
 						<td width="78%" class="vtable">
-							<input id="systime" size="20" maxlength="20" name="systime" type="text">
-							<img src="cal.gif" onclick="showChooser(this, 'systime', 'chooserSpan', 1950, 2020, Date.patterns.Default, true);">
-							<div id="chooserSpan" class="dateChooser select-free" style="display: none; visibility: hidden; width: 160px;"></div><br/>
+							<input id="systime" size="20" maxlength="20" name="systime" type="text" value="" />
+							<img src="cal.gif" onclick="showChooser(this, 'systime', 'chooserSpan', 1950, 2020, Date.patterns.Default, true);" alt="" />
+							<div id="chooserSpan" class="dateChooser select-free" style="display: none; visibility: hidden; width: 160px;"></div><br />
 							<span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it.");?></span>
 						</td>
 			    </tr>
@@ -334,14 +337,14 @@ function webguiproto_change() {
 					<?php html_inputbox("ntp_updateinterval", gettext("Time update interval"), $pconfig['ntp_updateinterval'], gettext("Minutes between network time sync."), true, 20);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 ntp_change();
 webguiproto_change();
