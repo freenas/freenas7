@@ -2,6 +2,10 @@
 <?php
 /*
 	interfaces_vlan_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of m0n0wall (http://m0n0.ch/wall)
 
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
@@ -153,11 +157,11 @@ function get_nextvlan_id() {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
-					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>" />
+					<input name="if" type="hidden" value="<?=$pconfig['if'];?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

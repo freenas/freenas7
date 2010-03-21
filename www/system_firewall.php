@@ -2,11 +2,15 @@
 <?php
 /*
 	system_firewall.php
-	Copyright (C) 2008-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2008-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -175,7 +179,7 @@ function firewall_process_updatenotification($mode, $data) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -203,7 +207,7 @@ function enable_change(enable_change) {
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
 									<td width="20%" class="listhdrr"><?=gettext("Destination");?></td>
 									<td width="5%" class="listhdrr"><?=gettext("Port");?></td>
-									<td width="5%" class="listhdrr"><?=gettext("<->");?></td>
+									<td width="5%" class="listhdrr"><?=htmlspecialchars(gettext("<->"));?></td>
 									<td width="26%" class="listhdrr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 								</tr>
@@ -223,7 +227,7 @@ function enable_change(enable_change) {
 											break;
 									}
 									?>
-									<td class="<?=$enable?"listlr":"listlrd";?>"><img src="<?=$actionimg;?>"></td>
+									<td class="<?=$enable?"listlr":"listlrd";?>"><img src="<?=$actionimg;?>" alt="" /></td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=strtoupper($rule['protocol']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['src']) ? "*" : $rule['src']);?>&nbsp;</td>
 									<td class="<?=$enable?"listr":"listrd";?>"><?=htmlspecialchars(empty($rule['srcport']) ? "*" : $rule['srcport']);?>&nbsp;</td>
@@ -232,13 +236,13 @@ function enable_change(enable_change) {
 									<td class="<?=$enable?"listrc":"listrcd";?>"><?=empty($rule['direction']) ? "*" : strtoupper($rule['direction']);?>&nbsp;</td>
 									<td class="listbg"><?=htmlspecialchars($rule['desc']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-									<td valign="middle" nowrap class="list">
-										<a href="system_firewall_edit.php?uuid=<?=$rule['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit rule");?>" border="0"></a>
-										<a href="system_firewall.php?act=del&uuid=<?=$rule['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this rule?");?>')"><img src="x.gif" title="<?=gettext("Delete rule");?>" border="0"></a>
+									<td valign="middle" nowrap="nowrap" class="list">
+										<a href="system_firewall_edit.php?uuid=<?=$rule['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit rule");?>" border="0" alt="<?=gettext("Edit rule");?>" /></a>
+										<a href="system_firewall.php?act=del&amp;uuid=<?=$rule['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this rule?");?>')"><img src="x.gif" title="<?=gettext("Delete rule");?>" border="0" alt="<?=gettext("Delete rule");?>" /></a>
 									</td>
 									<?php else:?>
-									<td valign="middle" nowrap class="list">
-										<img src="del.gif" border="0">
+									<td valign="middle" nowrap="nowrap" class="list">
+										<img src="del.gif" border="0" alt="" />
 									</td>
 									<?php endif;?>
 								</tr>
@@ -246,9 +250,9 @@ function enable_change(enable_change) {
 								<tr>
 									<td class="list" colspan="8"></td>
 									<td class="list">
-										<a href="system_firewall_edit.php"><img src="plus.gif" title="<?=gettext("Add rule");?>" border="0"></a>
+										<a href="system_firewall_edit.php"><img src="plus.gif" title="<?=gettext("Add rule");?>" border="0" alt="<?=gettext("Add rule");?>" /></a>
 										<?php if (!empty($a_rule)):?>
-										<a href="system_firewall.php?act=del&uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all rules?");?>')"><img src="x.gif" title="<?=gettext("Delete all rules");?>" border="0"></a>
+										<a href="system_firewall.php?act=del&amp;uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all rules?");?>')"><img src="x.gif" title="<?=gettext("Delete all rules");?>" border="0" alt="<?=gettext("Delete all rules");?>" /></a>
 										<?php endif;?>
 									</td>
 								</tr>
@@ -258,25 +262,25 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncell">&nbsp;</td>
 						<td width="78%" class="vtable">
-							<?=gettext("Download firewall rules.");?><br/>
+							<?=gettext("Download firewall rules.");?><br />
 							<div id="submit">
-								<input name="export" type="submit" class="formbtn" value="<?=gettext("Export");?>"><br/>
+								<input name="export" type="submit" class="formbtn" value="<?=gettext("Export");?>" /><br />
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell">&nbsp;</td>
 						<td width="78%" class="vtable">
-							<?=gettext("Import firewall rules.");?><br/>
+							<?=gettext("Import firewall rules.");?><br />
 							<div id="submit">
-								<input name="rulesfile" type="file" class="formfld" id="rulesfile" size="40" accept="*.rules">&nbsp;
-								<input name="import" type="submit" class="formbtn" id="import" value="<?=gettext("Import");?>"><br/>
+								<input name="rulesfile" type="file" class="formfld" id="rulesfile" size="40" accept="*.rules" />&nbsp;
+								<input name="import" type="submit" class="formbtn" id="import" value="<?=gettext("Import");?>" /><br />
 							</div>
 						</td>
 					</tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" />
 				</div>
 			</td>
 		</tr>

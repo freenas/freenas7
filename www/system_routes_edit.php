@@ -2,8 +2,12 @@
 <?php 
 /*
 	system_routes_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -151,23 +155,23 @@ if ($_POST) {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination network");?></td>
             <td width="78%" class="vtable"> 
-							<input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
+							<input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>" /> 
 							/
 							<select name="network_subnet" class="formfld" id="network_subnet">
 								<?php for ($i = 32; $i > 0; $i--):?>
-								<option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected";?>><?=$i;?></option>
+								<option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected=\"selected\"";?>><?=$i;?></option>
 								<?php endfor;?>
 							</select>
-							<br><span class="vexpl"><?=gettext("Destination network for this static route");?></span>
+							<br /><span class="vexpl"><?=gettext("Destination network for this static route");?></span>
 						</td>
           </tr>
           <?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], gettext("Gateway to be used to reach the destination network."), true, 40);?>
           <?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), false, 40);?>
         </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 			  </div>
 			  <?php include("formend.inc");?>
 			</form>

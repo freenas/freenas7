@@ -2,6 +2,10 @@
 <?php
 /*
 	interfaces_assign.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of m0n0wall (http://neon1.net/m0n0wall)
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -220,7 +224,7 @@ if ($_GET['act'] == "add") {
 					  <td valign="middle" class="listr">
 							<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
 							  <?php foreach ($portlist as $portname => $portinfo):?>
-							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>>
+							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected=\"selected\"";?>>
 							  	<?php
 									if ($portinfo['isvirtual']) {
 										$descr = $portinfo['if'];
@@ -238,7 +242,7 @@ if ($_GET['act'] == "add") {
 						</td>
 						<td valign="middle" class="list">
 							<?php if (($ifname != 'lan') && ($ifname != 'wan')):?>
-							<a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a>
+							<a href="interfaces_assign.php?act=del&amp;id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0" alt="<?=gettext("Delete interface");?>" /></a>
 							<?php endif;?>
 						</td>
 					</tr>
@@ -246,8 +250,8 @@ if ($_GET['act'] == "add") {
 				  <?php if (count($config['interfaces']) < count($portlist)):?>
 				  <tr>
 						<td class="list" colspan="2"></td>
-						<td class="list" nowrap>
-							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a>
+						<td class="list" nowrap="nowrap">
+							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0" alt="<?=gettext("Add interface");?>" /></a>
 						</td>
 				  </tr>
 				  <?php else:?>
@@ -257,10 +261,10 @@ if ($_GET['act'] == "add") {
 				  <?php endif;?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" />
 				</div>
 				<div id="remarks">
-					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name()));?>
+					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: <ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name()));?>
 				</div>
 				<?php include("formend.inc");?>
 			</form>
