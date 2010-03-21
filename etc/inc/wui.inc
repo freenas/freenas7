@@ -317,7 +317,7 @@ class HTMLFileChooser extends HTMLEditBox {
 		$path = $this->GetPath();
 
 		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param} />\n";
-		echo "		<input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onclick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
+		echo "		<input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onclick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&amp;sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
 	}
 }
 
@@ -814,7 +814,7 @@ class HTMLFolderBox extends HTMLBaseControl {
 		echo "    </select>\n";
 		echo "    <input name='{$ctrlname}deletebtn' type='button' class='formbtn' id='{$ctrlname}deletebtn' value='".htmlspecialchars(gettext("Delete"), ENT_QUOTES)."' onclick='onclick_delete_{$ctrlname}()' /><br />\n";
 		echo "    <input name='{$ctrlname}data' type='text' class='formfld' id='{$ctrlname}data' size='60' value='' />\n";
-		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onclick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
+		echo "    <input name='{$ctrlname}browsebtn' type='button' class='formbtn' id='{$ctrlname}browsebtn' onclick='ifield = form.{$ctrlname}data; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&amp;sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />\n";
 		echo "    <input name='{$ctrlname}addbtn' type='button' class='formbtn' id='{$ctrlname}addbtn' value='".htmlspecialchars(gettext("Add"), ENT_QUOTES)."' onclick='onclick_add_{$ctrlname}()' />\n";
 		echo "    <input name='{$ctrlname}changebtn' type='button' class='formbtn' id='{$ctrlname}changebtn' value='".htmlspecialchars(gettext("Change"), ENT_QUOTES)."' onclick='onclick_change_{$ctrlname}()' />\n";
 	}

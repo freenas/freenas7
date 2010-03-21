@@ -2,8 +2,12 @@
 <?php
 /*
 	status_process.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -39,7 +43,7 @@ $pgtitle = array(gettext("Status"), gettext("Processes"));
 
 function get_process_info() {
 	exec("top -b", $result);
-	return implode("\n", $result);
+	return htmlspecialchars(implode("\n", $result));
 }
 
 sajax_init();
@@ -47,8 +51,9 @@ sajax_export("get_process_info");
 sajax_handle_client_request();
 ?>
 <?php include("fbegin.inc");?>
-<script>
+<script type="text/javascript">//<![CDATA[
 <?php sajax_show_javascript();?>
+//]]>
 </script>
 <script type="text/javascript" src="javascript/status_process.js"></script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -58,7 +63,7 @@ sajax_handle_client_request();
 				<?php html_titleline(gettext("Processes information"));?>
 			  <tr>
 			    <td class="listt">
-			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="95" rows="30" readonly><?=get_process_info();?></textarea></pre>
+			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="95" rows="30" readonly="readonly"><?=htmlspecialchars(get_process_info());?></textarea></pre>
 			    </td>
 			  </tr>
 			</table>

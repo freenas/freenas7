@@ -231,7 +231,7 @@ function getHostName($mac, $ip) {
 			  </tr>
 			</table>
 			<div id="remarks">
-				<?php html_remark("hint", gettext("Hint"), sprintf(gettext("IP addresses are resolved to hostnames if <a href=\"%s\">&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_log_settings.php"));?>
+				<?php html_remark("hint", gettext("Hint"), sprintf(gettext("IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_log_settings.php"));?>
 			</div>
 		</td>
 	</tr>
