@@ -2,11 +2,15 @@
 <?php
 /*
 	interfaces_lagg.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -110,16 +114,16 @@ if ($_GET['act'] === "del") {
 						<td class="listlr"><?=htmlspecialchars($lagg['if']);?></td>
 						<td class="listr"><?=htmlspecialchars(implode(" ", $lagg['laggport']));?></td>
 						<td class="listbg"><?=htmlspecialchars($lagg['desc']);?>&nbsp;</td>
-						<td valign="middle" nowrap class="list">
-							<a href="interfaces_lagg_edit.php?uuid=<?=$lagg['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0"></a>&nbsp;
-							<a href="interfaces_lagg.php?act=del&uuid=<?=$lagg['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0"></a>
+						<td valign="middle" nowrap="nowrap" class="list">
+							<a href="interfaces_lagg_edit.php?uuid=<?=$lagg['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit interface");?>" border="0" alt="<?=gettext("Edit interface");?>" /></a>&nbsp;
+							<a href="interfaces_lagg.php?act=del&amp;uuid=<?=$lagg['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this interface?");?>')"><img src="x.gif" title="<?=gettext("Delete interface");?>" border="0" alt="<?=gettext("Delete interface");?>" /></a>
 						</td>
 					</tr>
 					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="3">&nbsp;</td>
 						<td class="list">
-							<a href="interfaces_lagg_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0"></a>
+							<a href="interfaces_lagg_edit.php"><img src="plus.gif" title="<?=gettext("Add interface");?>" border="0" alt="<?=gettext("Add interface");?>" /></a>
 						</td>
 					</tr>
 				</table>

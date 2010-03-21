@@ -1,6 +1,10 @@
 <?php
 /*
 	guiconfig.inc
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
@@ -274,7 +278,7 @@ function get_std_save_message($ok) {
 
 	if ($ok == 0) {
 		if (file_exists($d_sysrebootreqd_path)) {
-			return sprintf( gettext("The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."), "reboot.php");
+			return sprintf( gettext("The changes have been saved. You have to <a href='%s'>reboot</a> the system for the changes to take effect."), "reboot.php");
 		}
 		else {
 			return gettext("The changes have been applied successfully.");

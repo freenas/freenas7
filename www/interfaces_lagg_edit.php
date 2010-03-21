@@ -2,11 +2,15 @@
 <?php
 /*
 	interfaces_lagg_edit.php
-	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -142,11 +146,11 @@ function get_nextlagg_id() {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
-					<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>" />
+					<input name="if" type="hidden" value="<?=$pconfig['if'];?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

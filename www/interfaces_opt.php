@@ -2,10 +2,14 @@
 <?php
 /*
 	interfaces_opt.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -168,7 +172,7 @@ if ($_POST) {
 $pgtitle = array(gettext("Interfaces"), "Optional $index (" . htmlspecialchars($optcfg['descr']) . ")");
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -322,15 +326,15 @@ function encryption_change() {
 											<?php if (isset($optcfg['wireless'])) wireless_config_print();?>
 										</table>
 										<div id="submit">
-											<input name="index" type="hidden" value="<?=$index;?>">
-											<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
+											<input name="index" type="hidden" value="<?=$index;?>" />
+											<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 										</div>
 									</td>
 								</tr>
 							</table>
 							<?php include("formend.inc");?>
 						</form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->

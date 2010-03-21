@@ -2,8 +2,12 @@
 <?php
 /*
 	system_hosts.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -134,20 +138,20 @@ function hosts_process_updatenotification($mode, $data) {
 									<td class="listr"><?=htmlspecialchars($host['address']);?>&nbsp;</td>
 									<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-									<td valign="middle" nowrap class="list">
-										<a href="system_hosts_edit.php?uuid=<?=$host['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0"></a>
-										<a href="system_hosts.php?act=del&uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0"></a>
+									<td valign="middle" nowrap="nowrap" class="list">
+										<a href="system_hosts_edit.php?uuid=<?=$host['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" border="0" alt="<?=gettext("Edit Host");?>" /></a>
+										<a href="system_hosts.php?act=del&amp;uuid=<?=$host['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" border="0" alt="<?=gettext("Delete Host");?>" /></a>
 									</td>
 									<?php else:?>
-									<td valign="middle" nowrap class="list">
-										<img src="del.gif" border="0">
+									<td valign="middle" nowrap="nowrap" class="list">
+										<img src="del.gif" border="0" alt="" />
 									</td>
 									<?php endif;?>
 								</tr>
 								<?php endforeach;?>
 								<tr>
 									<td class="list" colspan="3"></td>
-									<td class="list"><a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0"></a></td>
+									<td class="list"><a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" border="0" alt="<?=gettext("Add Host");?>" /></a></td>
 								</tr>
 							</table>
 						</td>
@@ -155,7 +159,7 @@ function hosts_process_updatenotification($mode, $data) {
 					<?php html_textarea("hostsacl", gettext("Host access control"), $pconfig['hostsacl'], gettext("The basic configuration usually takes the form of 'daemon : address : action'. Where daemon is the daemon name of the service started. The address can be a valid hostname, an IP address or an IPv6 address enclosed in brackets. The action field can be either allow or deny to grant or deny access appropriately. Keep in mind that configuration works off a first rule match semantic, meaning that the configuration file is scanned in ascending order for a matching rule. When a match is found the rule is applied and the search process will halt.") . " " . sprintf(gettext("To get detailed informations about TCP Wrappers check the FreeBSD <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/doc/en/books/handbook/tcpwrappers.html"), false, 80, 8, false, false);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
