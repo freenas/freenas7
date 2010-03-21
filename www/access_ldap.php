@@ -2,8 +2,12 @@
 <?php
 /*
 	acces_ldap.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -136,7 +140,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -193,17 +197,16 @@ function anonymousbind_change() {
 					<?php html_inputbox("password_suffix", gettext("Password suffix"), $pconfig['password_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for passwords when these are added to the LDAP directory, e.g. %s"), "ou=Users"), true, 20);?>
 					<?php html_inputbox("machine_suffix", gettext("Machine suffix"), $pconfig['machine_suffix'], sprintf(gettext("This parameter specifies the suffix that is used for machines when these are added to the LDAP directory, e.g. %s"), "ou=Computers"), true, 20);?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters are added to %s."), "ldap.conf"), false, 65, 5, false, false);?>
-					</tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 				</div>
 			</td>
 		</tr>
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 anonymousbind_change();
 enable_change(false);

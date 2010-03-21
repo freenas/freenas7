@@ -2,8 +2,12 @@
 <?php
 /*
 	access_users_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -211,14 +215,14 @@ function get_nextuser_id() {
 					<?php html_combobox("shell", gettext("Shell"), $pconfig['shell'], array("nologin" => "nologin", "scponly" => "scponly", "sh" => "sh",  "csh" => "csh", "tcsh" => "tcsh", "bash" => "bash"), gettext("The user's login shell."), true);?>
 					<?php $grouplist = array(); foreach ($a_group as $groupk => $groupv) { $grouplist[$groupv] = $groupk; } ?>
 					<?php html_combobox("primarygroup", gettext("Primary group"), $pconfig['primarygroup'], $grouplist, gettext("Set the account's primary group to the given group."), true);?>
-					<?php html_listbox("group", gettext("Additional group"), $pconfig['group'], $grouplist, gettext("Set additional group memberships for this account.")."<br>".gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."));?>
+					<?php html_listbox("group", gettext("Additional group"), $pconfig['group'], $grouplist, gettext("Set additional group memberships for this account.")."<br />".gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."));?>
 					<?php html_filechooser("homedir", gettext("Home directory"), $pconfig['homedir'], gettext("Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."), $g['media_path'], false, 60);?>
 					<?php html_checkbox("userportal", gettext("User portal"), $pconfig['userportal'] ? true : false, gettext("Grant access to the user portal."), "", false);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

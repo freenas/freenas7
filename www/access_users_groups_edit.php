@@ -2,8 +2,12 @@
 <?php
 /*
 	access_users_groups_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -164,9 +168,9 @@ function get_nextgroup_id() {
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("Group description."), true, 20);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
