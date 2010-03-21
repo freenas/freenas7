@@ -2,6 +2,10 @@
 <?php
 /*
 	system_firmware.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
@@ -200,7 +204,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				<strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong>
 				<?php endif;?>
 				<div id="remarks">
-					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br />You need a minimum of %d Mb RAM to perform the firmware update.<br />It is strongly recommended that you <a href=\"%s\">Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 192, "system_backup.php"));?>
+					<?php html_remark("warning", gettext("Warning"), sprintf(gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br />You need a minimum of %d Mb RAM to perform the firmware update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 192, "system_backup.php"));?>
 				</div>
 				<?php include("formend.inc");?>
 			</form>

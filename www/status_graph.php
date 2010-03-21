@@ -2,8 +2,12 @@
 <?php
 /*
 	status_graph.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -59,13 +63,13 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 	$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
 }
 ?>
-<form name="form1" action="" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
+<form name="form1" action="status_graph.php" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
 Interface:
 <select name="if" class="formfld" onchange="document.form1.submit()">
 <?php
 foreach ($ifdescrs as $ifn => $ifd) {
 	echo "<option value=\"$ifn\"";
-	if ($ifn == $curif) echo " selected";
+	if ($ifn == $curif) echo " selected=\"selected\"";
 	echo ">" . htmlspecialchars($ifd) . "</option>\n";
 }
 ?>
@@ -78,8 +82,8 @@ foreach ($ifdescrs as $ifn => $ifd) {
         type="image/svg+xml"
         width="550"
         height="275">
-  <param name="src" value="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>">
-  Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.examotion.com/index.php?id=product_player_download" target="_blank">RENESIS Player</a> is required to view the graph.
+  <param name="src" value="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>" />
+  Your browser does not support this object type!<br /><span class="red"><strong>Note:</strong></span> The <a href="http://www.examotion.com/index.php?id=product_player_download" target="_blank">RENESIS Player</a> is required to view the graph.
 </object>
 </div>
 </td></tr></table>

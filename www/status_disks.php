@@ -2,8 +2,12 @@
 <?php
 /*
 	status_disks.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -60,13 +64,13 @@ $raidstatus = get_sraid_disks_list();
 				</tr>
 				<?php foreach ($a_disk_conf as $disk):?>
 				<?php (($iostat = system_get_device_iostat($disk['name'])) === FALSE) ? $iostat = gettext("n/a") : $iostat = sprintf("%s KiB/t, %s tps, %s MiB/s", $iostat['kpt'], $iostat['tps'], $iostat['mps']);?>
-				<?php (($temp = system_get_device_temp($disk['name'])) === FALSE) ? $temp = gettext("n/a") : $temp = sprintf("%s &deg;C", $temp);?>
+				<?php (($temp = system_get_device_temp($disk['name'])) === FALSE) ? $temp = htmlspecialchars(gettext("n/a")) : $temp = sprintf("%s &deg;C", htmlspecialchars($temp));?>
 				<tr>
 					<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-					<td class="listr"><?=system_get_volume_serial($disk['devicespecialfile']);?>&nbsp;</td>
-					<td class="listr"><?=$iostat;?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars(system_get_volume_serial($disk['devicespecialfile']));?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($iostat);?>&nbsp;</td>
 					<td class="listr"><?=$temp;?>&nbsp;</td>
 					<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
 				</tr>

@@ -2,8 +2,12 @@
 <?php
 /*
 	status_graph_cpu.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -50,8 +54,8 @@ $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
     <td class="tabcont">
       <div align="center">
         <object id="graph" data="graph_cpu.php" type="image/svg+xml" width="550" height="275">
-          <param name="src" value="graph_cpu.php">
-          Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.examotion.com/index.php?id=product_player_download" target="_blank">RENESIS Player</a> is required to view the graph.
+          <param name="src" value="graph_cpu.php" />
+          Your browser does not support this object type!<br /><span class="red"><strong>Note:</strong></span> The <a href="http://www.examotion.com/index.php?id=product_player_download" target="_blank">RENESIS Player</a> is required to view the graph.
         </object>
       </div>
     </td>
