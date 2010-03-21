@@ -2,8 +2,12 @@
 <?php
 /*
 	acces_ad.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -101,7 +105,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -125,43 +129,43 @@ function enable_change(enable_change) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain controller name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="domaincontrollername" type="text" class="formfld" id="domaincontrollername" size="20" value="<?=htmlspecialchars($pconfig['domaincontrollername']);?>">
-			      	<br/><span class="vexpl"><?=gettext("AD or PDC name.");?></span>
+			        <input name="domaincontrollername" type="text" class="formfld" id="domaincontrollername" size="20" value="<?=htmlspecialchars($pconfig['domaincontrollername']);?>" />
+			      	<br /><span class="vexpl"><?=gettext("AD or PDC name.");?></span>
 						</td>
 					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name (DNS/Realm-Name)");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="domainname_dns" type="text" class="formfld" id="domainname_dns" size="20" value="<?=htmlspecialchars($pconfig['domainname_dns']);?>">
-							<br/><span class="vexpl"><?=gettext("Domain name, e.g. example.com.");?></span>
+			        <input name="domainname_dns" type="text" class="formfld" id="domainname_dns" size="20" value="<?=htmlspecialchars($pconfig['domainname_dns']);?>" />
+							<br /><span class="vexpl"><?=gettext("Domain name, e.g. example.com.");?></span>
 						</td>
 					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name (NetBIOS-Name)");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="domainname_netbios" type="text" class="formfld" id="domainname_netbios" size="20" value="<?=htmlspecialchars($pconfig['domainname_netbios']);?>">
-							<br/><span class="vexpl"><?=gettext("Domain name in old format, e.g. EXAMPLE.");?></span>
+			        <input name="domainname_netbios" type="text" class="formfld" id="domainname_netbios" size="20" value="<?=htmlspecialchars($pconfig['domainname_netbios']);?>" />
+							<br /><span class="vexpl"><?=gettext("Domain name in old format, e.g. EXAMPLE.");?></span>
 						</td>
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
-							<br/><span class="vexpl"><?=gettext("Username of a domain administrator account.");?></span>
+			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>" />
+							<br /><span class="vexpl"><?=gettext("Username of a domain administrator account.");?></span>
 						</td>
 					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-							<input name="password2" type="password" class="formfld" id="password2" size="20" value="<?=htmlspecialchars($pconfig['password2']);?>">
+			      	<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>" /><br />
+							<input name="password2" type="password" class="formfld" id="password2" size="20" value="<?=htmlspecialchars($pconfig['password2']);?>" />
 			        &nbsp;(<?=gettext("Confirmation");?>)
-							<br/><span class="vexpl"><?=gettext("Password of domain administrator account.");?></span>
+							<br /><span class="vexpl"><?=gettext("Password of domain administrator account.");?></span>
 						</td>
 			    </tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)" />
 			  </div>
 			  <div id="remarks">
 			  	<?php html_remark("note", gettext("Note"), gettext("To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<div id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul></div>"));?>
@@ -171,7 +175,7 @@ function enable_change(enable_change) {
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->

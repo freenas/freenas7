@@ -2,8 +2,12 @@
 <?php
 /*
 	access_users.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -126,13 +130,13 @@ function userdbuser_process_updatenotification($mode, $data) {
 						<td class="listr"><?=htmlspecialchars($userv['id']);?>&nbsp;</td>
 						<td class="listr"><?=array_search($userv['primarygroup'], $a_group);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-						<td valign="middle" nowrap class="list">
-							<a href="access_users_edit.php?uuid=<?=$userv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit user");?>" border="0"></a>&nbsp;
-							<a href="access_users.php?act=del&uuid=<?=$userv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" border="0"></a>
+						<td valign="middle" nowrap="nowrap" class="list">
+							<a href="access_users_edit.php?uuid=<?=$userv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit user");?>" border="0" alt="<?=gettext("Edit user");?>" /></a>&nbsp;
+							<a href="access_users.php?act=del&amp;uuid=<?=$userv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" border="0" alt="<?=gettext("Delete user");?>" /></a>
 						</td>
 						<?php else:?>
-						<td valign="middle" nowrap class="list">
-							<img src="del.gif" border="0">
+						<td valign="middle" nowrap="nowrap" class="list">
+							<img src="del.gif" border="0" alt="" />
 						</td>
 						<?php endif;?>
 					</tr>
@@ -140,7 +144,7 @@ function userdbuser_process_updatenotification($mode, $data) {
 					<tr>
 						<td class="list" colspan="4"></td>
 						<td class="list">
-							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" border="0"></a>
+							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" border="0" alt="<?=gettext("Add user");?>" /></a>
 						</td>
 					</tr>
 				</table>
