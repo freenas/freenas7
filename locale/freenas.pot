@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-01-05 23:01+0000\n"
+"PO-Revision-Date: 2010-03-23 02:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
 
-msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
+msgid "1. Use these specials actions for debugging only!<br />2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
@@ -75,10 +75,13 @@ msgid "<->"
 msgstr ""
 
 #, php-format
-msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have shell access."
+msgid "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%s'>user</a> must have shell access."
 msgstr ""
 
-msgid "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+msgid "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+msgstr ""
+
+msgid "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
 msgid "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"
@@ -330,7 +333,7 @@ msgid "After you click &quot;Save&quot;, you may also have to do one or more of 
 msgstr ""
 
 #, php-format
-msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: <ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
 
 msgid "Aggregation protocol"
@@ -346,6 +349,10 @@ msgid "All"
 msgstr ""
 
 msgid "All dirs"
+msgstr ""
+
+#, php-format
+msgid "All dirs requires mounted path, but Path %s is not mounted."
 msgstr ""
 
 msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
@@ -635,6 +642,9 @@ msgstr ""
 msgid "Change below file"
 msgstr ""
 
+msgid "Change password"
+msgstr ""
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
 
@@ -665,7 +675,7 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
 
 msgid "Click this button to download the system configuration in XML format."
@@ -818,6 +828,15 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
+msgid "Custom script"
+msgstr ""
+
+msgid "Custom script is not found."
+msgstr ""
+
+msgid "Custom script is required."
+msgstr ""
+
 msgid "DAAP"
 msgstr ""
 
@@ -831,7 +850,7 @@ msgid "DNS settings"
 msgstr ""
 
 #, php-format
-msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br />You need a minimum of %d Mb RAM to perform the firmware update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the System configuration before doing a Firmware upgrade."
 msgstr ""
 
 msgid "DVD"
@@ -1537,6 +1556,9 @@ msgstr ""
 msgid "Enable reverse DNS lookup."
 msgstr ""
 
+msgid "Enable serial console"
+msgstr ""
+
 msgid "Enable store DOS attributes"
 msgstr ""
 
@@ -2016,7 +2038,8 @@ msgstr ""
 msgid "I/O statistics"
 msgstr ""
 
-msgid "I/O timeout in seconds (30 by default)."
+#, php-format
+msgid "I/O timeout in seconds (%d by default)."
 msgstr ""
 
 msgid "IG"
@@ -2032,7 +2055,7 @@ msgid "IP address of remote syslog server"
 msgstr ""
 
 #, php-format
-msgid "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
+msgid "IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
 msgid "IP or FQDN address of remote Rsync server."
@@ -2089,7 +2112,7 @@ msgstr ""
 msgid "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
 msgstr ""
 
-msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br />Service disruption to users accessing this mount will occur during this process."
 msgstr ""
 
 msgid "If the server is behind a proxy set this parameters to give local services access to the internet via proxy."
@@ -2299,7 +2322,7 @@ msgid "Latvian"
 msgstr ""
 
 #, php-format
-msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr ""
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
@@ -2427,13 +2450,16 @@ msgstr ""
 msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 
-msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#, php-format
+msgid "Logical Unit Controller Authorised network (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#, php-format
+msgid "Logical Unit Controller IP address (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller TCP port (3261 by default)"
+#, php-format
+msgid "Logical Unit Controller TCP port (%d by default)"
 msgstr ""
 
 msgid "Logical Unit Controller login information"
@@ -2545,13 +2571,15 @@ msgstr ""
 msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
-msgid "Maximum number of connections in each session (8 by default)."
+#, php-format
+msgid "Maximum number of connections in each session (%d by default)."
 msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
 
-msgid "Maximum number of sessions holding at same time (32 by default)."
+#, php-format
+msgid "Maximum number of sessions holding at same time (%d by default)."
 msgstr ""
 
 msgid "Maximum number of simultaneous clients."
@@ -2668,7 +2696,8 @@ msgstr ""
 msgid "NOPIN Interval"
 msgstr ""
 
-msgid "NOPIN sending interval in seconds (20 by default)."
+#, php-format
+msgid "NOPIN sending interval in seconds (%d by default)."
 msgstr ""
 
 msgid "NOT YET AVAILABLE"
@@ -3560,6 +3589,9 @@ msgstr ""
 msgid "Separate email addresses by semi-colon."
 msgstr ""
 
+msgid "Serial Console"
+msgstr ""
+
 msgid "Serial number"
 msgstr ""
 
@@ -3665,10 +3697,12 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-msgid "Size of receive buffer (16384 by default)."
+#, php-format
+msgid "Size of receive buffer (%d by default)."
 msgstr ""
 
-msgid "Size of send buffer (16384 by default)."
+#, php-format
+msgid "Size of send buffer (%d by default)."
 msgstr ""
 
 msgid "Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)"
@@ -3982,6 +4016,9 @@ msgstr ""
 msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
+msgid "The COM port in BIOS has to be enabled before enabling this option."
+msgstr ""
+
 msgid "The IP address that this hostname represents."
 msgstr ""
 
@@ -4119,7 +4156,7 @@ msgid "The changes have been applied successfully."
 msgstr ""
 
 #, c-format
-msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
+msgid "The changes have been saved. You have to <a href='%s'>reboot</a> the system for the changes to take effect."
 msgstr ""
 
 msgid "The cleartext credentials with which to bind."
@@ -4135,7 +4172,7 @@ msgstr ""
 msgid "The configuration could not be restored. %s"
 msgstr ""
 
-msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
+msgid "The configuration has been changed.<br />You must apply the changes in order for them to take effect."
 msgstr ""
 
 #, php-format
@@ -4244,6 +4281,9 @@ msgstr ""
 msgid "The login name is a reserved login name."
 msgstr ""
 
+msgid "The login name is limited to 16 characters."
+msgstr ""
+
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 
@@ -4334,6 +4374,10 @@ msgid "The queuedepth range is invalid."
 msgstr ""
 
 #, php-format
+msgid "The recommended queue depth is %d."
+msgstr ""
+
+#, php-format
 msgid "The removable area mapped to LUN%d."
 msgstr ""
 
@@ -4408,6 +4452,9 @@ msgid "The volume must be detached before it can be deleted."
 msgstr ""
 
 msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There are too many additional groups."
 msgstr ""
 
 msgid "There is no error, the file uploaded with success."
@@ -4555,7 +4602,7 @@ msgstr ""
 msgid "This may make more efficient use of the system CPU's and cause Samba to be faster. Samba automatically turns this off for clients that use protocol levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
 
-msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br /><br />Do you want to install this image anyway (on your own risk)?"
 msgstr ""
 
 msgid "This name already exists in the disk list."
@@ -4654,7 +4701,7 @@ msgid "This virtual device name already exists."
 msgstr ""
 
 #, php-format
-msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+msgid "This will cause %s not to check for newer firmware versions when the <a href='%s'>%s</a> page is viewed."
 msgstr ""
 
 msgid "This will create a recycle bin on the share."
@@ -4693,7 +4740,7 @@ msgstr ""
 msgid "Times"
 msgstr ""
 
-msgid "To configure the target, you must add at least Portal Group and Initiator Group and Extent.<br/>Portal Group which is identified by tag number defines IP addresses and listening TCP ports.<br/>Initiator Group which is identified by tag number defines authorised initiator names and networks.<br/>Auth Group which is identified by tag number and is optional if the target does not use CHAP authentication defines authorised users and secrets for additional security.<br/>Extent defines the storage area of the target."
+msgid "To configure the target, you must add at least Portal Group and Initiator Group and Extent.<br />Portal Group which is identified by tag number defines IP addresses and listening TCP ports.<br />Initiator Group which is identified by tag number defines authorised initiator names and networks.<br />Auth Group which is identified by tag number and is optional if the target does not use CHAP authentication defines authorised users and secrets for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 
 msgid "To e-mail"
@@ -5044,6 +5091,9 @@ msgstr ""
 msgid "Webserver"
 msgstr ""
 
+msgid "Webserver document root is missing."
+msgstr ""
+
 msgid "Week days"
 msgstr ""
 
@@ -5089,11 +5139,11 @@ msgstr ""
 msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
 msgstr ""
 
-msgid "You can use the following parameters for substitution:<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "You can use the following parameters for substitution:"
 msgstr ""
 
 #, php-format
-msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+msgid "You can't mount the partition '%s' where the config file is stored.<br />"
 msgstr ""
 
 msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
@@ -5101,6 +5151,10 @@ msgstr ""
 
 #, php-format
 msgid "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."
+msgstr ""
+
+#, php-format
+msgid "You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this service to clients."
 msgstr ""
 
 #, c-format
@@ -5178,6 +5232,9 @@ msgstr ""
 msgid "e.g. %s"
 msgstr ""
 
+msgid "filechooser"
+msgstr ""
+
 msgid "hour(s)"
 msgstr ""
 
@@ -5190,10 +5247,8 @@ msgstr ""
 msgid "iSCSI Target Logical Unit Controller"
 msgstr ""
 
-msgid "iSCSI initial parameter (262144 by default)."
-msgstr ""
-
-msgid "iSCSI initial parameter (65536 by default)."
+#, php-format
+msgid "iSCSI initial parameter (%d by default)."
 msgstr ""
 
 msgid "iSCSI initiator disabled"
