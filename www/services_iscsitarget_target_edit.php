@@ -579,7 +579,7 @@ function lun_change(idx) {
 			html_combobox("authgroup", gettext("Auth Group"), $pconfig['authgroup'], $ag_list, gettext("The initiator can access to the target with correct user and secret in specific Auth Group."), false);
       ?>
       <?php html_combobox("digest", gettext("Initial Digest"), $pconfig['digest'], array("Auto" => gettext("Auto"), "Header" => gettext("Header digest"), "Data" => gettext("Data digest"), "Header Data" => gettext("Header and Data digest")), gettext("The initial digest mode negotiated with the initiator."), false);?>
-      <?php html_inputbox("queuedepth", gettext("Queue Depth"), $pconfig['queuedepth'], gettext("0=disabled, 1-255=enabled command queuing with specified depth."), false, 10);?>
+      <?php html_inputbox("queuedepth", gettext("Queue Depth"), $pconfig['queuedepth'], gettext("0=disabled, 1-255=enabled command queuing with specified depth.")." ".sprintf(gettext("The recommended queue depth is %d."), 32), false, 10);?>
       <?php html_inputbox("inqvendor", gettext("Inquiry Vendor"), $pconfig['inqvendor'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 8), false, 20);?>
       <?php html_inputbox("inqproduct", gettext("Inquiry Product"), $pconfig['inqproduct'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 16), false, 20);?>
       <?php html_inputbox("inqrevision", gettext("Inquiry Revision"), $pconfig['inqrevision'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 4), false, 20);?>
