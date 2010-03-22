@@ -2,8 +2,10 @@
 <?php
 /*
 	services_iscsitarget_ag.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -158,30 +160,30 @@ function iscsitargetag_process_updatenotification($mode, $data) {
           <td class="listr">
           <?php if (count($ag['agauth']) == 0) echo "&nbsp;"; ?>
           <?php foreach ($ag['agauth'] as $agauth): ?>
-          <?php echo htmlspecialchars($agauth['authuser'])."<br/>\n"; ?>
+          <?php echo htmlspecialchars($agauth['authuser'])."<br />\n"; ?>
           <?php endforeach; ?>
           </td>
           <td class="listr">
           <?php if (count($ag['agauth']) == 0) echo "&nbsp;"; ?>
           <?php foreach ($ag['agauth'] as $agauth): ?>
-          <?php echo htmlspecialchars($agauth['authmuser'])."<br/>\n"; ?>
+          <?php echo htmlspecialchars($agauth['authmuser'])."<br />\n"; ?>
           <?php endforeach; ?>
           </td>
           <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-          <td valign="middle" nowrap class="list">
-            <a href="services_iscsitarget_ag_edit.php?uuid=<?=$ag['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit auth group");?>" border="0"></a>
-            <a href="services_iscsitarget_ag.php?act=del&type=ag&uuid=<?=$ag['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this auth group?");?>')"><img src="x.gif" title="<?=gettext("Delete auth group");?>" border="0"></a>
+          <td valign="middle" nowrap="nowrap" class="list">
+            <a href="services_iscsitarget_ag_edit.php?uuid=<?=$ag['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit auth group");?>" border="0" alt="<?=gettext("Edit auth group");?>" /></a>
+            <a href="services_iscsitarget_ag.php?act=del&amp;type=ag&amp;uuid=<?=$ag['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this auth group?");?>')"><img src="x.gif" title="<?=gettext("Delete auth group");?>" border="0" alt="<?=gettext("Delete auth group");?>" /></a>
           </td>
           <?php else:?>
-          <td valign="middle" nowrap class="list">
-            <img src="del.gif" border="0">
+          <td valign="middle" nowrap="nowrap" class="list">
+            <img src="del.gif" border="0" alt="" />
           </td>
           <?php endif;?>
         </tr>
         <?php endforeach;?>
         <tr>
           <td class="list" colspan="3"></td>
-          <td class="list"><a href="services_iscsitarget_ag_edit.php"><img src="plus.gif" title="<?=gettext("Add auth group");?>" border="0"></a></td>
+          <td class="list"><a href="services_iscsitarget_ag_edit.php"><img src="plus.gif" title="<?=gettext("Add auth group");?>" border="0" alt="<?=gettext("Add auth group");?>" /></a></td>
         </tr>
         </table>
         <?=gettext("A Auth Group contains authorised users and secrets for additional security.");?>

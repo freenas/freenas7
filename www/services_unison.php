@@ -2,8 +2,12 @@
 <?php
 /*
 	services_unison.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -109,7 +113,7 @@ array_sort_key($config['mounts']['mount'], "devicespecialfile");
 $a_mount = &$config['mounts']['mount'];
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -130,17 +134,17 @@ function enable_change(enable_change) {
 				  <?php html_checkbox("mkdir", "", $pconfig['mkdir'] ? true : false, gettext("Create work directory if it doesn't exist."), "", false);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true)" />
 				</div>
 				<div id="remarks">
-					<?php html_remark("note", gettext("Note"), sprintf(gettext("<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have shell access."), "services_sshd.php", "access_users.php"));?>
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%s'>user</a> must have shell access."), "services_sshd.php", "access_users.php"));?>
 				</div>
 			</td>
 		</tr>
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->

@@ -2,8 +2,10 @@
 <?php
 /*
 	services_iscsitarget_extent_edit.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -260,7 +262,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function type_change() {
 	switch (document.iform.type.value) {
@@ -323,29 +325,29 @@ function sizeunit_change() {
 	      <tr id="size_tr">
 	        <td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
 	        <td width="78%" class="vtable">
-	          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>">
+	          <input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>" />
 	          <select name="sizeunit" onclick="sizeunit_change()"> 
-	            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected";?>><?=htmlspecialchars(gettext("MiB"));?></option>
-	            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected";?>><?=htmlspecialchars(gettext("GiB"));?></option>
-	            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected";?>><?=htmlspecialchars(gettext("TiB"));?></option>
-	            <option value="auto" <?php if ($pconfig['sizeunit'] === "auto") echo "selected";?>><?=htmlspecialchars(gettext("Auto"));?></option>
-	          </select><br/>
+	            <option value="MB" <?php if ($pconfig['sizeunit'] === "MB") echo "selected=\"selected\"";?>><?=htmlspecialchars(gettext("MiB"));?></option>
+	            <option value="GB" <?php if ($pconfig['sizeunit'] === "GB") echo "selected=\"selected\"";?>><?=htmlspecialchars(gettext("GiB"));?></option>
+	            <option value="TB" <?php if ($pconfig['sizeunit'] === "TB") echo "selected=\"selected\"";?>><?=htmlspecialchars(gettext("TiB"));?></option>
+	            <option value="auto" <?php if ($pconfig['sizeunit'] === "auto") echo "selected=\"selected\"";?>><?=htmlspecialchars(gettext("Auto"));?></option>
+	          </select><br />
 	          <span class="vexpl"><?=gettext("Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)");?></span>
 	        </td>
 	      </tr>
 	      <?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 	      </table>
 	      <div id="submit">
-		      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-		      <input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+		      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+		      <input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 	      </div>
 	    </td>
 	  </tr>
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 	type_change();
 	sizeunit_change();

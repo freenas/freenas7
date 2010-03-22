@@ -2,11 +2,15 @@
 <?php
 /*
 	services_nfs_share_edit.php
-	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -142,8 +146,8 @@ if ($_POST) {
 			    <tr>
   				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
   				  <td width="78%" class="vtable">
-  				  	<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
-  				  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+  				  	<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>" />
+  				  	<input name="browse" type="button" class="formbtn" id="Browse" onclick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&amp;sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." /><br />
   				  	<span class="vexpl"><?=gettext("Path to be shared.");?> <?=gettext("Please note that blanks in path names are not allowed.");?></span>
   				  </td>
   				</tr>
@@ -154,58 +158,58 @@ if ($_POST) {
 			        <?php $types = array(gettext("Yes"),gettext("No"));?>
 			        <?php $vals = explode(" ", "yes no");?>
 			        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-			          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mapall']) echo "selected";?>>
+			          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mapall']) echo "selected=\"selected\"";?>>
 			          <?=htmlspecialchars($types[$j]);?>
 			          </option>
 			        <?php endfor; ?>
-			        </select></br>
+			        </select><br />
 			        <span class="vexpl"><?=gettext("All users will have the root privilege.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> /
+			        <input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>" /> /
 			        <select name="mask" class="formfld" id="mask">
 			          <?php for ($i = 32; $i >= 1; $i--):?>
-			          <option value="<?=$i;?>" <?php if ($i == $pconfig['mask']) echo "selected";?>><?=$i;?></option>
+			          <option value="<?=$i;?>" <?php if ($i == $pconfig['mask']) echo "selected=\"selected\"";?>><?=$i;?></option>
 			          <?php endfor;?>
-			        </select><br>
+			        </select><br />
 			        <span class="vexpl"><?=gettext("Network that is authorised to access the NFS share.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Comment");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
+			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>" />
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("All dirs");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="alldirs" type="checkbox" id="alldirs" value="yes" <?php if ($pconfig['alldirs']) echo "checked";?>>
+			      	<input name="alldirs" type="checkbox" id="alldirs" value="yes" <?php if ($pconfig['alldirs']) echo "checked=\"checked\"";?> />
 			      	<span class="vexpl"><?=gettext("Share all sub directories.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Read only");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked";?>>
+			      	<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked=\"checked\"";?> />
 			        <span class="vexpl"><?=gettext("Specifies that the file system should be exported read-only.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Quiet");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="quiet" type="checkbox" id="quiet" value="yes" <?php if ($pconfig['quiet']) echo "checked";?>>
+			      	<input name="quiet" type="checkbox" id="quiet" value="yes" <?php if ($pconfig['quiet']) echo "checked=\"checked\"";?> />
 			        <span class="vexpl"><?=gettext("Inhibit some of the syslog diagnostics for bad lines in /etc/exports.");?></span>
 			      </td>
 			    </tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

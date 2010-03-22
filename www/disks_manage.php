@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_manage.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -149,35 +153,35 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-						<td class="listr"><?=system_get_volume_serial($disk['devicespecialfile']);?>&nbsp;</td>
-						<td class="listr"><?php if ($disk['harddiskstandby']) { echo $disk['harddiskstandby']; } else { echo gettext("Always on"); }?>&nbsp;</td>
-						<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>
-						<td class="listbg"><?=$status;?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars(system_get_volume_serial($disk['devicespecialfile']));?>&nbsp;</td>
+						<td class="listr"><?php if ($disk['harddiskstandby']) { echo htmlspecialchars($disk['harddiskstandby']); } else { echo htmlspecialchars(gettext("Always on")); }?>&nbsp;</td>
+						<td class="listr"><?=($disk['fstype']) ? htmlspecialchars(get_fstype_shortdesc($disk['fstype'])) : htmlspecialchars(gettext("Unknown or unformatted"))?>&nbsp;</td>
+						<td class="listbg"><?=htmlspecialchars($status);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-						<td valign="middle" nowrap class="list">
-							<a href="disks_manage_edit.php?uuid=<?=$disk['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" border="0"></a>&nbsp;
-							<a href="disks_manage.php?act=del&uuid=<?=$disk['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" border="0"></a>
+						<td valign="middle" nowrap="nowrap" class="list">
+							<a href="disks_manage_edit.php?uuid=<?=$disk['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" border="0" alt="<?=gettext("Edit disk");?>" /></a>&nbsp;
+							<a href="disks_manage.php?act=del&amp;uuid=<?=$disk['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" border="0" alt="<?=gettext("Delete disk"); ?>" /></a>
 						</td>
 						<?php else:?>
-						<td valign="middle" nowrap class="list">
-							<img src="del.gif" border="0">
+						<td valign="middle" nowrap="nowrap" class="list">
+							<img src="del.gif" border="0" alt="" />
 						</td>
 						<?php endif;?>
 					</tr>
 					<?php endforeach;?>
 					<tr>
 						<td class="list" colspan="7"></td>
-						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0"></a></td>
+						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0" alt="<?=gettext("Add disk"); ?>" /></a></td>
 					</tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Rescan disks");?>">
-					<input type="hidden" name="disks_rescan" value="1">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Rescan disks");?>" />
+					<input type="hidden" name="disks_rescan" value="1" />
 				</div>
 				<?php
 				if ($do_action) {
-					echo('<pre>');
 					echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+					echo('<pre class="cmdoutput">');
 					ob_end_flush();
 					if (true == $disks_rescan) {
 						disks_rescan();

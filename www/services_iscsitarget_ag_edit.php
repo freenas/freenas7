@@ -2,8 +2,10 @@
 <?php
 /*
 	services_iscsitarget_ag_edit.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -313,8 +315,8 @@ function normalize_ipv6addr($v6addr) {
 	      <tr>
 	        <td width="22%" valign="top" class="vncell"><?=gettext("Secret");?></td>
 	        <td width="78%" class="vtable">
-	          <input name="<?=$lsecret;?>" type="password" class="formfld" id="<?=$lsecret;?>" size="30" value="<?=htmlspecialchars($pconfig[$lsecret]);?>"><br/>
-	          <input name="<?=$lsecret2;?>" type="password" class="formfld" id="<?=$lsecret2;?>" size="30" value="<?=htmlspecialchars($pconfig[$lsecret2]);?>">&nbsp;(<?=gettext("Confirmation");?>)<br/>
+	          <input name="<?=$lsecret;?>" type="password" class="formfld" id="<?=$lsecret;?>" size="30" value="<?=htmlspecialchars($pconfig[$lsecret]);?>" /><br />
+	          <input name="<?=$lsecret2;?>" type="password" class="formfld" id="<?=$lsecret2;?>" size="30" value="<?=htmlspecialchars($pconfig[$lsecret2]);?>" />&nbsp;(<?=gettext("Confirmation");?>)<br />
 	          <span class="vexpl"><?=gettext("Target side secret.");?></span>
 	        </td>
 	      </tr>
@@ -322,17 +324,17 @@ function normalize_ipv6addr($v6addr) {
 	      <tr>
 	        <td width="22%" valign="top" class="vncell"><?=gettext("Peer Secret");?></td>
 	        <td width="78%" class="vtable">
-	          <input name="<?=$lmsecret;?>" type="password" class="formfld" id="<?=$lmsecret;?>" size="30" value="<?=htmlspecialchars($pconfig[$lmsecret]);?>"><br/>
-	          <input name="<?=$lmsecret2;?>" type="password" class="formfld" id="<?=$lmsecret2;?>" size="30" value="<?=htmlspecialchars($pconfig[$lmsecret2]);?>">&nbsp;(<?=gettext("Confirmation");?>)<br/>
+	          <input name="<?=$lmsecret;?>" type="password" class="formfld" id="<?=$lmsecret;?>" size="30" value="<?=htmlspecialchars($pconfig[$lmsecret]);?>" /><br />
+	          <input name="<?=$lmsecret2;?>" type="password" class="formfld" id="<?=$lmsecret2;?>" size="30" value="<?=htmlspecialchars($pconfig[$lmsecret2]);?>" />&nbsp;(<?=gettext("Confirmation");?>)<br />
 	          <span class="vexpl"><?=gettext("Initiator side secret. (for mutual CHAP autentication)");?></span>
 	        </td>
 	      </tr>
 	      <?php endfor;?>
 	      </table>
 	      <div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+		      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 	      </div>
 	    </td>
 	  </tr>

@@ -2,11 +2,15 @@
 <?php
 /*
 	services_upnp.php
-	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -138,7 +142,7 @@ if (empty($pconfig['if']) && is_array($a_interface))
 	$pconfig['if'] = key($a_interface);
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -216,11 +220,11 @@ function transcoding_change() {
 					<select name="if" class="formfld" id="xif">
 						<?php foreach($a_interface as $if => $ifinfo):?>
 							<?php $ifinfo = get_interface_info($if); if (("up" == $ifinfo['status']) || ("associated" == $ifinfo['status'])):?>
-							<option value="<?=$if;?>"<?php if ($if == $pconfig['if']) echo "selected";?>><?=$if?></option>
+							<option value="<?=$if;?>"<?php if ($if == $pconfig['if']) echo "selected=\"selected\"";?>><?=$if?></option>
 							<?php endif;?>
 						<?php endforeach;?>
 					</select>
-					<br><?=gettext("Interface to listen to.");?>
+					<br /><?=gettext("Interface to listen to.");?>
 					</td>
 				</tr>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."), 1025, 65535, 49152), true, 5);?>
@@ -242,14 +246,14 @@ function transcoding_change() {
 					<?php html_text("url", gettext("URL"), $text);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="onsubmit_content(); enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="onsubmit_content(); enable_change(true)" />
 				</div>
 			</td>
 		</tr>
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 profile_change();
 web_change();

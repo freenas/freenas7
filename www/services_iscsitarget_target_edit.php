@@ -2,8 +2,10 @@
 <?php
 /*
 	services_iscsitarget_target_edit.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -379,7 +381,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function type_change() {
 	var addedit = document.iform.addedit.value;
@@ -584,17 +586,17 @@ function lun_change(idx) {
       <?php html_inputbox("inqserial", gettext("Inquiry Serial"), $pconfig['inqserial'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 16), false, 20);?>
       </table>
       <div id="submit">
-	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-	      <input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
-	      <input name="addedit" type="hidden" value="<?=isset($uuid) ? 'edit' : 'add';?>">
+	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+	      <input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
+	      <input name="addedit" type="hidden" value="<?=isset($uuid) ? 'edit' : 'add';?>" />
       </div>
     </td>
   </tr>
 </table>
 <?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 	type_change();
 <?php

@@ -2,9 +2,12 @@
 <?php
 /*
 	disks_raid_gvinum_tools.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -71,7 +74,7 @@ if (!isset($do_action)) {
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
-  <ul id="tabnav">
+  <ul id="tabnav2">
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><span><?=gettext("Management"); ?></span></a></li>
 	<li class="tabact"><a href="disks_raid_gvinum_tools.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Tools");?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum_info.php"><span><?=gettext("Information"); ?></span></a></li>
@@ -85,29 +88,29 @@ if (!isset($do_action)) {
 					<tr>
 					  <td width="22%" valign="top" class="vncellreq"><?=gettext("Object name");?></td>
 					  <td width="78%" class="vtable">
-	          	<input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>">
+	          	<input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>" />
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Unix Command");?></td>
             <td width="78%" class="vtable">
 	            <select name="action" class="formfld" id="action">
-	              <option value="start" <?php if ($action == "start") echo "selected"; ?>>start</option>
-	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild</option>
-	              <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-	              <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
-	              <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>>forceup</option>
-	              <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected"; ?>>saveconfig</option>
+	              <option value="start" <?php if ($action == "start") echo "selected=\"selected\""; ?>>start</option>
+	              <option value="rebuild" <?php if ($action == "rebuild") echo "selected=\"selected\""; ?>>rebuild</option>
+	              <option value="list" <?php if ($action == "list") echo "selected=\"selected\""; ?>>list</option>
+	              <option value="remove" <?php if ($action == "remove") echo "selected=\"selected\""; ?>>remove</option>
+	              <option value="forceup" <?php if ($action == "forceup") echo "selected=\"selected\""; ?>>forceup</option>
+	              <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected=\"selected\""; ?>>saveconfig</option>
 	             </select>
 	          </td>
 	        </tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>" />
 				</div>
 				<?php if ($do_action) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 
 				// Function disks_geom_cmd() can't be used. That's because gvinum can't be accessed
@@ -136,7 +139,7 @@ if (!isset($do_action)) {
 				echo('</pre>');
 				};?>
 				<div id="remarks">
-					<?php html_remark("warning", gettext("Warning"), gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."));?>
+					<?php html_remark("warning", gettext("Warning"), gettext("1. Use these specials actions for debugging only!<br />2. There is no need of using this menu for starting a RAID volume (start automaticaly)."));?>
 				</div>
 				<?php include("formend.inc");?>
 			</form>

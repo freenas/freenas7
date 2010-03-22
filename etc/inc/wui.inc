@@ -464,6 +464,10 @@ class HTMLSelectControl extends HTMLBaseControlJS {
 
 	function SetOptions($options) {
 		$this->_options = $options;
+		if (empty($this->_options)) {
+			unset($this->_options);
+			$this->_options = array();
+		}
 	}
 
 	function GetParam() {
@@ -759,6 +763,7 @@ class HTMLFolderBox extends HTMLBaseControl {
 		$path = $this->GetPath();
 
 		echo "    <script type='text/javascript'>\n";
+		echo "    //<![CDATA[\n";
 		echo "    function onchange_{$ctrlname}() {\n";
 		echo "      document.getElementById('{$ctrlname}data').value = document.getElementById('{$ctrlname}').value;\n";
 		echo "    }\n";
@@ -806,6 +811,7 @@ class HTMLFolderBox extends HTMLBaseControl {
 		echo "          element.options[i].selected = true;\n";
 		echo "      }\n";
 		echo "    }\n";
+		echo "    //]]>\n";
 		echo "    </script>\n";
 		echo "    <select name='{$ctrlname}[]' class='formfld' id='{$ctrlname}' multiple='multiple' size='4' style='width: 350px' onchange='onchange_{$ctrlname}()'>\n";
 		foreach ($value as $valuek => $valuev) {

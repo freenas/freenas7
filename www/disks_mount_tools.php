@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_mount_tools.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -105,11 +109,11 @@ if (!isset($do_action)) {
 					<?php html_combobox("action", gettext("Command"), $action, array("mount" => gettext("mount"), "umount" => gettext("umount")), "", true);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>" />
 				</div>
 				<?php if(($do_action) && (!$errormsg)) {
-					echo('<pre>');
 					echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+					echo('<pre class="cmdoutput">');
 					ob_end_flush();
 
 					$index = array_search_ex($uuid, $config['mounts']['mount'], "uuid");
@@ -118,12 +122,12 @@ if (!isset($do_action)) {
 
 						switch ($action) {
 						  case "mount":
-						    echo(gettext("Mounting...") . "<br>");
+						    echo(gettext("Mounting...") . "<br />");
 								$result = disks_mount($mount);
 						    break;
 
 						  case "umount":
-						    echo(gettext("Unmounting...") . "<br>");
+						    echo(gettext("Unmounting...") . "<br />");
 								$result = disks_umount($mount);
 						    break;
 						}

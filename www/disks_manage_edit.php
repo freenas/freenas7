@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_manage_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -129,7 +133,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	document.iform.name.disabled = !enable_change;
@@ -170,7 +174,7 @@ function smart_enable_change() {
 								<?php foreach ($a_phy_disk as $diskk => $diskv):?>
 								<?php // Do not display disks that are already configured. (Create mode);?>
 								<?php if (!isset($uuid) && (false !== array_search_ex($diskk, $a_disk, "name"))) continue;?>
-								<option value="<?=$diskk;?>" <?php if ($diskk == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diskk . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+								<option value="<?=$diskk;?>" <?php if ($diskk == $pconfig['name']) echo "selected=\"selected\"";?>><?php echo htmlspecialchars($diskk . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
 								<?php endforeach;?>
 							</select>
 					  </td>
@@ -187,12 +191,12 @@ function smart_enable_change() {
 					<?php html_checkbox("smart_enable", gettext("S.M.A.R.T."), $pconfig['smart_enable'] ? true : false, gettext("Activate S.M.A.R.T. monitoring for this device."), "", false, "smart_enable_change()");?>
 					<?php html_inputbox("smart_extraoptions", gettext("S.M.A.R.T. extra options"), $pconfig['smart_extraoptions'], gettext("Extra options (usually empty).") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://smartmontools.sourceforge.net/man/smartd.conf.5.html"), false, 40);?>
 					<?php $options = get_fstype_list();?>
-					<?php html_combobox("fstype", gettext("Preformatted file system"), $pconfig['fstype'], $options, gettext("This allows you to set the file system for preformatted hard disks containing data.") . " " . sprintf(gettext("Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."), "Unformated", "disks_init.php"), false);?>
+					<?php html_combobox("fstype", gettext("Preformatted file system"), $pconfig['fstype'], $options, gettext("This allows you to set the file system for preformatted hard disks containing data.") . " " . sprintf(gettext("Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."), "Unformated", "disks_init.php"), false);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onClick="enable_change(true)">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onclick="enable_change(true)" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
@@ -200,7 +204,7 @@ function smart_enable_change() {
 	</tr>
 </table>
 <?php if (isset($uuid) && (FALSE !== $cnid)):?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 smart_enable_change();

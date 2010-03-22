@@ -2,8 +2,10 @@
 <?php
 /*
 	services_iscsitarget_ig.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -149,22 +151,22 @@ function iscsitargetig_process_updatenotification($mode, $data) {
           <td class="listlr"><?=htmlspecialchars($ig['tag']);?>&nbsp;</td>
           <td class="listr">
           <?php foreach ($ig['iginitiatorname'] as $initiator): ?>
-          <?php echo htmlspecialchars($initiator)."<br/>\n"; ?>
+          <?php echo htmlspecialchars($initiator)."<br />\n"; ?>
           <?php endforeach;?>
           </td>
           <td class="listr">
           <?php foreach ($ig['ignetmask'] as $netmask): ?>
-          <?php echo htmlspecialchars($netmask)."<br/>\n"; ?>
+          <?php echo htmlspecialchars($netmask)."<br />\n"; ?>
           <?php endforeach;?>
           </td>
           <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-          <td valign="middle" nowrap class="list">
-            <a href="services_iscsitarget_ig_edit.php?uuid=<?=$ig['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit initiator group");?>" border="0"></a>
-            <a href="services_iscsitarget_ig.php?act=del&type=ig&uuid=<?=$ig['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator group?");?>')"><img src="x.gif" title="<?=gettext("Delete initiator group");?>" border="0"></a>
+          <td valign="middle" nowrap="nowrap" class="list">
+            <a href="services_iscsitarget_ig_edit.php?uuid=<?=$ig['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit initiator group");?>" border="0" alt="<?=gettext("Edit initiator group");?>" /></a>
+            <a href="services_iscsitarget_ig.php?act=del&amp;type=ig&amp;uuid=<?=$ig['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator group?");?>')"><img src="x.gif" title="<?=gettext("Delete initiator group");?>" border="0" alt="<?=gettext("Add initiator group");?>" /></a>
           </td>
           <?php else:?>
-          <td valign="middle" nowrap class="list">
-            <img src="del.gif" border="0">
+          <td valign="middle" nowrap="nowrap" class="list">
+            <img src="del.gif" border="0" alt="" />
           </td>
           <?php endif;?>
         </tr>
@@ -172,7 +174,7 @@ function iscsitargetig_process_updatenotification($mode, $data) {
         <tr>
           <td class="list" colspan="3"></td>
           <td class="list">
-						<a href="services_iscsitarget_ig_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator group");?>" border="0"></a>
+						<a href="services_iscsitarget_ig_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator group");?>" border="0" alt="<?=gettext("Add initiator group");?>" /></a>
 					</td>
         </tr>
         </table>

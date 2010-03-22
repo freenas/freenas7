@@ -2,11 +2,15 @@
 <?php
 /*
 	services_samba_share_edit.php
-	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -165,82 +169,82 @@ if ($_POST) {
 			  	<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>">
+			        <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>" />
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Comment");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
+			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>" />
 			      </td>
 			    </tr>
 			    <tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path"); ?></td>
 						<td width="78%" class="vtable">
-							<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>" />
+							<input name="browse" type="button" class="formbtn" id="Browse" onclick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&amp;sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." /><br />
 							<span class="vexpl"><?=gettext("Path to be shared.");?></span>
 					  </td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Read only");?></td>
 			      <td width="78%" class="vtable">
-							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked"; ?>>
-							<?=gettext("Set read only");?><br>
+							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked=\"checked\""; ?> />
+							<?=gettext("Set read only");?><br />
 							<span class="vexpl"><?=gettext("If this parameter is set, then users may not create or modify files in the share.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked"; ?>>
-			      	<?=gettext("Set browseable");?><br>
+			      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked=\"checked\""; ?> />
+			      	<?=gettext("Set browseable");?><br />
 			        <span class="vexpl"><?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Inherit permissions");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="inheritpermissions" type="checkbox" id="inheritpermissions" value="yes" <?php if ($pconfig['inheritpermissions']) echo "checked"; ?>>
-			        <?=gettext("Enable permission inheritance");?><br/>
+			        <input name="inheritpermissions" type="checkbox" id="inheritpermissions" value="yes" <?php if ($pconfig['inheritpermissions']) echo "checked=\"checked\""; ?> />
+			        <?=gettext("Enable permission inheritance");?><br />
 							<span class="vexpl"><?=gettext("The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Recycle bin");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
-			        <?=gettext("Enable recycle bin");?><br>
+			        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked=\"checked\""; ?> />
+			        <?=gettext("Enable recycle bin");?><br />
 			        <span class="vexpl"><?=gettext("This will create a recycle bin on the share.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Hide dot files");?></td>
 			      <td width="78%" class="vtable">
-							<input name="hidedotfiles" type="checkbox" id="hidedotfiles" value="yes" <?php if ($pconfig['hidedotfiles']) echo "checked";?>>
+							<input name="hidedotfiles" type="checkbox" id="hidedotfiles" value="yes" <?php if ($pconfig['hidedotfiles']) echo "checked=\"checked\"";?> />
 							<span class="vexpl"><?=gettext("This parameter controls whether files starting with a dot appear as hidden files.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts allow");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>"><br/>
+			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>" /><br />
 			        <span class="vexpl"><?=gettext("This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts deny");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="hostsdeny" type="text" class="formfld" id="hostsdeny" size="60" value="<?=htmlspecialchars($pconfig['hostsdeny']);?>"><br/>
+			        <input name="hostsdeny" type="text" class="formfld" id="hostsdeny" size="60" value="<?=htmlspecialchars($pconfig['hostsdeny']);?>" /><br />
 			        <span class="vexpl"><?=gettext("This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings.");?></span>
 			      </td>
 			    </tr>
 			    <?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters are added to [Share] section of %s."), "smb.conf") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://us1.samba.org/samba/docs/man/manpages-3/smb.conf.5.html"), false, 65, 5, false, false);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

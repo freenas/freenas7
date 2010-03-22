@@ -1,11 +1,15 @@
 <?php
 /*
 	login.php
-	Copyright © 2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2009-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -60,13 +64,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	write_log(gettext("Authentication error for illegal user {$_POST['username']} from {$_SERVER['REMOTE_ADDR']}"));
 }
 ?>
-<html>
+<?php header("Content-Type: text/html; charset=" . system_get_language_codeset());?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?=system_get_language_code();?>" lang="<?=system_get_language_code();?>">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>"/>
-		<link href="gui.css" rel="stylesheet" type="text/css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<link href="gui.css" rel="stylesheet" type="text/css" />
 		<title><?=get_product_name();?></title>
+		<style type="text/css">
+		html,body {
+			height: 100%;
+			width: 100%;
+		}
+		</style>
+
 	</head>
-	<body onLoad='document.iform.username.focus();'>
+	<body onload='document.iform.username.focus();'>
 		<div id="loginpage">
 			<table height="100%" width="100%" cellspacing="0" cellpadding="0" border="0">
 				<tbody>
@@ -82,17 +97,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 														<tbody>
 															<tr>
 																<td><?=gettext("Username");?></td>
-																<td><input class="formfld" type="text" name="username" value=""/></td>
+																<td><input class="formfld" type="text" name="username" value="" /></td>
 															</tr>
 															<tr>
 																<td><?=gettext("Password");?></td>
-																<td><input class="formfld" type="password" name="password" value=""/></td>
+																<td><input class="formfld" type="password" name="password" value="" /></td>
 															</tr>
 															<tr>
 																<td></td>
 															</tr>
 															<tr>
-																<td align="center" colspan="2"><input class="formbtn" type="submit" value="<?=gettext("Login");?>"/></td>
+																<td align="center" colspan="2"><input class="formbtn" type="submit" value="<?=gettext("Login");?>" /></td>
 															</tr>
 														</tbody>
 													</table>

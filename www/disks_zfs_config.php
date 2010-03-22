@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_zfs_config.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -99,7 +103,12 @@ foreach($rawdata as $line)
 }
 
 $rawdata = null;
-mwexec2('zpool list -H -o name,root,size,capacity,health', $rawdata);
+$spa = @exec("sysctl -q -n vfs.zfs.version.spa");
+if ($spa == '') {
+	mwexec2('zpool list -H -o name,root,size,capacity,health', $rawdata);
+} else {
+	mwexec2('zpool list -H -o name,altroot,size,capacity,health', $rawdata);
+}
 foreach ($rawdata as $line)
 {
 	if ($line == 'no pools available') { continue; }
@@ -199,9 +208,9 @@ if (count($zfs['pools']['pool']) <= 0)
 				$message_box_text .= ' ';
 				$message_box_text .= gettext('Try to force import.');
 				$message_box_text = <<<HTML
-<br/>
+<br />
 <form action="{$_SERVER['PHP_SELF']}" method="post">
-	{$message_box_text}<br/>
+	{$message_box_text}<br />
 	<input type="submit" name="import" value="{$import_button_value}" />
 	<input type="hidden" name="import_force" value="true" />
 	<input name="authtoken" type="hidden" value="{$authToken}" autocomplete="off">
@@ -215,7 +224,7 @@ HTML;
 		$text = gettext('No pool was found.').' '.gettext('Try to import from on-disk ZFS config.');
 		$message_box_text = <<<HTML
 <form action="{$_SERVER['PHP_SELF']}" method="post">
-	{$text}<br/>
+	{$text}<br />
 	<input type="submit" name="import" value="{$import_button_value}" />
 	<input name="authtoken" type="hidden" value="{$authToken}" autocomplete="off">
 </form>
@@ -247,7 +256,7 @@ if (!$health)
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-			<ul id="tabnav">
+			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_config_current.php"><span><?=gettext("Current");?></span></a></li>
 				<li class="tabact" title="<?=gettext("Reload page");?>"><a href="disks_zfs_config.php"><span><?=gettext("Detected");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_config_sync.php"><span><?=gettext("Synchronize");?></span></a></li>
@@ -280,7 +289,7 @@ if (!$health)
 				</tr>
 				<?php endforeach; ?>
 			</table>
-			<br/>
+			<br />
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<?php html_titleline(gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')', 4);?>
 				<tr>
@@ -298,7 +307,7 @@ if (!$health)
 				</tr>
 				<?php endforeach; ?>
 			</table>
-			<br/>
+			<br />
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 7);?>
 				<tr>

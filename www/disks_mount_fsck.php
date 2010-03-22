@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_mount_fsck.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -92,28 +96,28 @@ if (!isset($do_action)) {
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_mount as $mountv):?>
 								<?php if (strcmp($mountv['fstype'],"cd9660") == 0) continue;?>
-                <option value="<?=$mountv['devicespecialfile'];?>"<?php if ($mountv['devicespecialfile'] === $disk) echo "selected";?>>
+                <option value="<?=$mountv['devicespecialfile'];?>" <?php if ($mountv['devicespecialfile'] === $disk) echo "selected=\"selected\"";?>>
                 <?php echo htmlspecialchars($mountv['sharename'] . ": " . $mountv['devicespecialfile']);?>
-                <?php endforeach;?>
                 </option>
+                <?php endforeach;?>
               </select>
             </td>
       		</tr>
           <tr>
             <td width="22%" valign="top" class="vncell"></td>
             <td width="78%" class="vtable">
-              <input name="umount" type="checkbox" id="umount" value="yes" <?php if ($umount) echo "checked"; ?>>
-              <strong><?=gettext("Unmount disk/partition");?></strong><span class="vexpl"><br>
-              <?=gettext("If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process.");?></span>
+              <input name="umount" type="checkbox" id="umount" value="yes" <?php if ($umount) echo "checked=\"checked\""; ?> />
+              <strong><?=gettext("Unmount disk/partition");?></strong><span class="vexpl"><br />
+              <?=gettext("If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br />Service disruption to users accessing this mount will occur during this process.");?></span>
             </td>
           </tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>" />
 				</div>
 				<?php if($do_action) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 				/* Check filesystem */
 				$result = disks_fsck($disk,$umount);

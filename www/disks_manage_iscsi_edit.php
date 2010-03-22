@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_manage_iscsi_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -134,14 +138,14 @@ if ($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("This is for information only (not using during iSCSI negociation)."), true, 20);?>
-					<?php html_inputbox("initiatorname", gettext("Initiator name"), $pconfig['initiatorname'], gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."), true, 40);?>			
-					<?php html_inputbox("targetname", gettext("Target name"), $pconfig['targetname'], gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."), true, 40);?>
+					<?php html_inputbox("initiatorname", gettext("Initiator name"), $pconfig['initiatorname'], gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."), true, 60);?>			
+					<?php html_inputbox("targetname", gettext("Target name"), $pconfig['targetname'], gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."), true, 60);?>
 					<?php html_inputbox("targetaddress", gettext("Target address"), $pconfig['targetaddress'], gettext("This the IP address or DNS name of the iSCSI target."), true, 20);?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
-					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
+					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>

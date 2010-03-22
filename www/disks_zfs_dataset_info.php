@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_zfs_dataset_info.php
-	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -67,7 +71,7 @@ function zfs_dataset_display_properties() {
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-			<ul id="tabnav">
+			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Dataset");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_dataset_info.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Information");?></span></a></li>
 			</ul>
@@ -85,7 +89,7 @@ function zfs_dataset_display_properties() {
 				<?php html_titleline(gettext("ZFS dataset properties"));?>
 				<tr>
 					<td class="listt">
-						<pre><span id="zfs_dataset_list"><?=zfs_dataset_display_properties();?></span></pre>
+						<pre><span id="zfs_dataset_properties"><?=zfs_dataset_display_properties();?></span></pre>
 					</td>
 				</tr>
 			</table>

@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_zfs_config_current.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -71,7 +75,12 @@ foreach($rawdata as $line)
 }
 
 $rawdata = null;
-mwexec2("zpool list -H -o name,root,size,capacity,health", $rawdata);
+$spa = @exec("sysctl -q -n vfs.zfs.version.spa");
+if ($spa == '') {
+	mwexec2("zpool list -H -o name,root,size,capacity,health", $rawdata);
+} else {
+	mwexec2("zpool list -H -o name,altroot,size,capacity,health", $rawdata);
+}
 foreach ($rawdata as $line)
 {
 	if ($line == 'no pools available') { continue; }
@@ -115,7 +124,7 @@ if (updatenotify_exists('zfs_import_config'))
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-		<ul id="tabnav">
+		<ul id="tabnav2">
 			<li class="tabact"><a href="disks_zfs_config_current.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Current");?></span></a></li>
 			<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Detected");?></span></a></li>
 			<li class="tabinact"><a href="disks_zfs_config_sync.php"><span><?=gettext("Synchronize");?></span></a></li>

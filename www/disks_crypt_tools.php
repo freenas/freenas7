@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_crypt_tools.php
-	Copyright © 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -132,7 +136,7 @@ if ("restore" === $pconfig['action']) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function action_change() {
 	switch(document.iform.action.value) {
@@ -182,7 +186,7 @@ function action_change() {
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_geli as $geliv):?>
-								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected";?>>
+								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected=\"selected\"";?>>
 								<?php echo htmlspecialchars("{$geliv['name']}: {$geliv['size']} ({$geliv['desc']})");?>
                 </option>
                 <?php endforeach;?>
@@ -194,29 +198,29 @@ function action_change() {
           <tr id="oldpassphrase_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Old passphrase"));?></td>
 						<td width="78%" class="vtable">
-							<input name="oldpassphrase" type="password" class="formfld" id="oldpassphrase" size="20">
+							<input name="oldpassphrase" type="password" class="formfld" id="oldpassphrase" size="20" />
 						</td>
 					</tr>
           <tr id="passphrase_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
 						<td width="78%" class="vtable">
-							<input name="passphrase" type="password" class="formfld" id="passphrase" size="20">
+							<input name="passphrase" type="password" class="formfld" id="passphrase" size="20" />
 						</td>
 					</tr>
 					<tr id="backupfile_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Backup file"));?></td>
 						<td width="78%" class="vtable">
-							<input name="backupfile" type="file" class="formfld" size="40"><br />
+							<input name="backupfile" type="file" class="formfld" size="40" /><br />
 							<span class="vexpl"><?=gettext("Restore metadata from the given file to the given provider.");?></span>
 						</td>
 					</tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Execute");?>" />
 				</div>
 				<?php if ($pconfig['do_action']) {
-					echo('<pre>');
 					echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+					echo('<pre class="cmdoutput">');
 					ob_end_flush();
 
 					switch($pconfig['action']) {
@@ -264,7 +268,7 @@ function action_change() {
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 action_change();
 //-->

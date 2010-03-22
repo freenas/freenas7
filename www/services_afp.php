@@ -2,8 +2,12 @@
 <?php
 /*
 	services_afp.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -75,7 +79,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -105,33 +109,33 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Server Name");?></td>
 						<td width="78%" class="vtable">
-							<input name="afpname" type="text" class="formfld" id="afpname" size="30" value="<?=htmlspecialchars($pconfig['afpname']);?>"><br/>
-							<?=gettext("Name of the server. If this field is left empty the default server is specified.");?><br>
+							<input name="afpname" type="text" class="formfld" id="afpname" size="30" value="<?=htmlspecialchars($pconfig['afpname']);?>" /><br />
+							<?=gettext("Name of the server. If this field is left empty the default server is specified.");?><br />
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?><strong></td>
+						<td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?></strong></td>
 						<td width="78%" class="vtable">
-							<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked";?>>
-							<?=gettext("Enable guest access.");?></br>
-							<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked";?>>
+							<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked=\"checked\"";?> />
+							<?=gettext("Enable guest access.");?><br />
+							<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked=\"checked\"";?> />
 							<?=gettext("Enable local user authentication.");?>
 						</td>
 					</tr>
 					<?php html_checkbox("noddp", gettext("DDP"), $pconfig['noddp'] ? true : false, gettext("Disable AFP-over-Appletalk to prevent DDP connections."));?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true)" />
 				</div>
 				<div id="remarks">
-					<?php html_remark("note", gettext("Note"), sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php"));?>
+					<?php html_remark("note", gettext("Note"), sprintf(gettext("You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php"));?>
 				</div>
 				<?php include("formend.inc");?>
 			</form>
 		</td>
   </tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->

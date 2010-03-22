@@ -2,12 +2,14 @@
 <?php
 /*
 	services_iscsitarget.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -191,7 +193,7 @@ if (!is_array($config['iscsitarget']['authgroup']))
 	$config['iscsitarget']['authgroup'] = array();
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -302,7 +304,7 @@ function uctlenable_change(enable_change) {
 		      <?php html_filechooser("mediadirectory", gettext("Media Directory"), $pconfig['mediadirectory'], gettext("Directory that contains removable media. (e.g /mnt/iscsi/)"), $g['media_path'], true);?>
 	      </table>
 	      <div id="submit">
-	        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+	        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true)" />
 	      </div>
 	      <div id="remarks">
 	        <?php html_remark("note", gettext("Note"), gettext("You must have a minimum of 256MB of RAM for using iSCSI target."));?>
@@ -312,7 +314,7 @@ function uctlenable_change(enable_change) {
     </td>
   </tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change();
 uctlenable_change();

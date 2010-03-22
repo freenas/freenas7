@@ -2,9 +2,12 @@
 <?php
 /*
 	disks_raid_gstripe_tools.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	JavaScript code are from Volker Theile
 
@@ -71,7 +74,7 @@ if (!isset($do_action)) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function raid_change() {
 	var next = null;
@@ -107,7 +110,7 @@ function raid_change() {
 	</tr>
   <tr>
 		<td class="tabnavtbl">
-		  <ul id="tabnav">
+		  <ul id="tabnav2">
 				<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("Management"); ?></span></a></li>
 				<li class="tabact"><a href="disks_raid_gstripe_tools.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Tools");?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gstripe_info.php"><span><?=gettext("Information"); ?></span></a></li>
@@ -125,7 +128,7 @@ function raid_change() {
 							<select name="raid" class="formfld" id="raid" onchange="raid_change()">
 				    	 	<option value=""><?=gettext("Must choose one");?></option>
 				    	  <?php foreach ($a_raid as $raidv):?>
-				    		<option value="<?=$raidv['name'];?>" <?php if ($raid === $raidv['name']) echo "selected";?>>
+				    		<option value="<?=$raidv['name'];?>" <?php if ($raid === $raidv['name']) echo "selected=\"selected\"";?>>
 				    		<?php echo htmlspecialchars($raidv['name']);	?>
 				    		</option>
 				    		<?php endforeach;?>
@@ -142,21 +145,21 @@ function raid_change() {
 	          <td width="22%" valign="top" class="vncellreq"><?=gettext("Unix Command");?></td>
             <td width="78%" class="vtable">
 	            <select name="action" class="formfld" id="action">
-	              <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-	              <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
-	              <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
-	              <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
-	              <option value="dump" <?php if ($action == "dump") echo "selected"; ?>>dump</option>
+	              <option value="list" <?php if ($action == "list") echo "selected=\"selected\""; ?>>list</option>
+	              <option value="status" <?php if ($action == "status") echo "selected=\"selected\""; ?>>status</option>
+	              <option value="clear" <?php if ($action == "clear") echo "selected=\"selected\""; ?>>clear</option>
+	              <option value="stop" <?php if ($action == "stop") echo "selected=\"selected\""; ?>>stop</option>
+	              <option value="dump" <?php if ($action == "dump") echo "selected=\"selected\""; ?>>dump</option>
 	             </select>
 	          </td>
 	        </tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>" />
 				</div>
 				<?php if ($do_action) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 
 				switch ($action) {
@@ -180,14 +183,14 @@ function raid_change() {
 				echo('</pre>');
 				};?>
 				<div id="remarks">
-					<?php html_remark("warning", gettext("Warning"), gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."));?>
+					<?php html_remark("warning", gettext("Warning"), gettext("1. Use these specials actions for debugging only!<br />2. There is no need of using this menu for starting a RAID volume (start automaticaly)."));?>
 				</div>
 				<?php include("formend.inc");?>
 			</form>
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 raid_change();
 //-->

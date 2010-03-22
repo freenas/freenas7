@@ -2,9 +2,12 @@
 <?php
 /*
 	disks_init.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -117,8 +120,9 @@ if (!isset($do_format)) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script>
+<script type="text/javascript">//<![CDATA[
 <?php sajax_show_javascript();?>
+//]]>
 </script>
 <script type="text/javascript" src="javascript/disks_init.js"></script>
 <form action="disks_init.php" method="post" name="iform" id="iform">
@@ -136,7 +140,7 @@ if (!isset($do_format)) {
 								<?php foreach ($a_disk as $diskv):?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected";?>>
+								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected=\"selected\"";?>>
 								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
@@ -148,7 +152,7 @@ if (!isset($do_format)) {
 				    <td class="vtable">
 				      <select name="type" class="formfld" id="type" onchange="type_change()">
 				        <?php foreach ($a_fst as $fstval => $fstname): ?>
-				        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+				        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected="selected"';?>><?=htmlspecialchars($fstname);?></option>
 				        <?php endforeach; ?>
 				       </select>
 				    </td>
@@ -156,7 +160,7 @@ if (!isset($do_format)) {
 					<tr id="volumelabel_tr">
 						<td width="22%" valign="top" class="vncell"><?=gettext("Volume label");?></td>
 						<td width="78%" class="vtable">
-							<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>"><br/>
+							<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>" /><br />
 							<?=gettext("Volume label of the new file system.");?>
 						</td>
 					</tr>
@@ -169,23 +173,23 @@ if (!isset($do_format)) {
 								<option value="<?=$vals[$j];?>"><?=htmlspecialchars($types[$j]);?></option>
 							<?php endfor; ?>
 							</select>
-							<br><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
+							<br /><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
 						</td>
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes">
+			        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" />
 			        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)");?>
 						</td>
 				  </tr>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')" />
 				</div>
 				<?php if ($do_format) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
 				echo('</pre>');
@@ -199,7 +203,7 @@ if (!isset($do_format)) {
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 disk_change();
 //-->

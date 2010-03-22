@@ -2,6 +2,10 @@
 <?php
 /*
 	services_snmp.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of m0n0wall (http://m0n0.ch/wall) and pfSense (http://www.pfsense.org)
 
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
@@ -109,7 +113,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -158,21 +162,21 @@ function trapenable_change() {
 					<?php html_inputbox("traphost", gettext("Trap host"), $pconfig['traphost'], gettext("Enter trap host name."), true, 40);?>
 					<?php html_inputbox("trapport", gettext("Trap port"), $pconfig['trapport'], gettext("Enter the port to send the traps to (default 162)."), true, 5);?>
 					<?php html_inputbox("trap", gettext("Trap string"), $pconfig['trap'], gettext("Trap string."), true, 40);?>
-					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to %s."), "snmpd.config")  . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/cgi/man.cgi?query=bsnmpd&apropos=0&sektion=0&manpath=FreeBSD+${os_release}-RELEASE&format=html"), false, 65, 5, false, false);?>
+					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters will be added to %s."), "snmpd.config")  . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/cgi/man.cgi?query=bsnmpd&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+${os_release}-RELEASE&amp;format=html"), false, 65, 5, false, false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Modules"));?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("SNMP Modules");?></td>
 						<td width="78%" class="vtable">
-							<input name="mibii" type="checkbox" id="mibii" value="yes" <?php if ($pconfig['mibii']) echo "checked"; ?>><?=gettext("MibII");?><br/>
-							<input name="netgraph" type="checkbox" id="netgraph" value="yes" <?php if ($pconfig['netgraph']) echo "checked"; ?>><?=gettext("Netgraph");?><br/>
-							<input name="hostres" type="checkbox" id="hostres" value="yes" <?php if ($pconfig['hostres']) echo "checked"; ?>><?=gettext("Host resources");?><br/>
-							<input name="ucd" type="checkbox" id="ucd" value="yes" <?php if ($pconfig['ucd']) echo "checked"; ?>><?=gettext("UCD-SNMP-MIB");?>
+							<input name="mibii" type="checkbox" id="mibii" value="yes" <?php if ($pconfig['mibii']) echo "checked=\"checked\""; ?> /><?=gettext("MibII");?><br />
+							<input name="netgraph" type="checkbox" id="netgraph" value="yes" <?php if ($pconfig['netgraph']) echo "checked=\"checked\""; ?> /><?=gettext("Netgraph");?><br />
+							<input name="hostres" type="checkbox" id="hostres" value="yes" <?php if ($pconfig['hostres']) echo "checked=\"checked\""; ?> /><?=gettext("Host resources");?><br />
+							<input name="ucd" type="checkbox" id="ucd" value="yes" <?php if ($pconfig['ucd']) echo "checked=\"checked\""; ?> /><?=gettext("UCD-SNMP-MIB");?>
 						</td>
 					</tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true)" />
 				</div>
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), sprintf(gettext("The associated MIB files can be found at %s."), "/usr/share/snmp/mibs"));?>
@@ -182,7 +186,7 @@ function trapenable_change() {
 	</table>
 	<?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 trapenable_change();
 enable_change(false);
