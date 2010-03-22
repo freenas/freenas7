@@ -2,9 +2,12 @@
 <?php
 /*
 	disks_raid_gstripe_info.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -51,7 +54,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
-  <ul id="tabnav">
+  <ul id="tabnav2">
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("Management"); ?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 	<li class="tabact"><a href="disks_raid_gstripe_info.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Information");?></span></a></li>
@@ -60,13 +63,13 @@ $pgrefresh = 5; // Refresh every 5 seconds.
   <tr> 
     <td class="tabcont">
 			<?php
-			echo "<pre>";
 			echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Software RAID information and status")));
+			echo "<pre class='cmdoutput'>";
 			exec("/sbin/gstripe list",$rawdata);
 			foreach ($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br>";
+				echo htmlspecialchars($line) . "<br />";
 			}
-			unset ($line);
+			unset ($rawdata);
 			echo "</pre>";
 			?>
 		</td>

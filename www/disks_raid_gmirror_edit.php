@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_raid_gmirror_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -137,7 +141,7 @@ if ($_POST) {
 	</tr>
   <tr>
 		<td class="tabnavtbl">
-		  <ul id="tabnav">
+		  <ul id="tabnav2">
 				<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror_info.php"><span><?=gettext("Information"); ?></span></a></li>
@@ -153,7 +157,7 @@ if ($_POST) {
 			    <tr>
 			      <td valign="top" class="vncellreq"><?=gettext("Raid name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="name" type="text" class="formfld" id="name" size="15" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
+			        <input name="name" type="text" class="formfld" id="name" size="15" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly=\"readonly\"";?> />
 			      </td>
 			    </tr>
 			    <tr>
@@ -165,12 +169,12 @@ if ($_POST) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Balance algorithm"); ?></td>
 			      <td width="78%" class="vtable">
-			        <select name="balance" class="formfld" <?php if(isset($id)) echo "disabled";?>>
+			        <select name="balance" class="formfld" <?php if(isset($id)) echo "disabled=\"disabled\"";?>>
 			        <?php $balvals = array("round-robin" => gettext("Round-robin read"), "split" => gettext("Split request"), "load" => gettext("Read from lowest load"), "prefer" => gettext("Read from biggest priority")); ?>
 			        <?php foreach ($balvals as $balval => $balname): ?>
-			          <option value="<?=$balval;?>" <?php if($pconfig['balance'] == $balval) echo 'selected';?>><?=htmlspecialchars($balname);?></option>
+			          <option value="<?=$balval;?>" <?php if($pconfig['balance'] == $balval) echo 'selected="selected"';?>><?=htmlspecialchars($balname);?></option>
 			        <?php endforeach; ?>
-			        </select><br>
+			        </select><br />
 			        <?=gettext("Select your read balance algorithm.");?></td>
 			    </tr>
 			    <?php $a_provider = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $all_raid, "device")) { continue; } $a_provider[$diskv[devicespecialfile]] = htmlspecialchars("$diskv[name] ($diskv[size], $diskv[desc])"); }?>
@@ -179,8 +183,8 @@ if ($_POST) {
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
 			      <td width="78%" class="vtable">
-							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked"; ?>>
-							<?=gettext("Create and initialize RAID.");?><br/>
+							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked=\"checked\""; ?> />
+							<?=gettext("Create and initialize RAID.");?><br />
 							<span class="vexpl"><?=gettext("This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again.");?></span>
 			      </td>
 			    </tr>
@@ -188,8 +192,8 @@ if ($_POST) {
 			  </table>
 			  <?php if (!isset($id)):?>
 			  <div id="submit">
-			  	<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-			  	<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
+			  	<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>" />
+			  	<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
 				</div>
 			  <?php endif;?>
 			  <?php include("formend.inc");?>

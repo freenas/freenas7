@@ -2,8 +2,10 @@
 <?php
 /*
 	services_iscsitarget_target_media.php
+	Copyright (C) 2009-2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
-	Copyright (C) 2009-2010 Daisuke Aoyama (aoyama@peach.ne.jp)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -438,16 +440,16 @@ function target_list(&$pconfig) {
 	echo '</tr>'."\n";
 	foreach ($pconfig['target_list'] as $targetv) {
 		$name = $targetv['name'];
-		$sel = ($pconfig['target'] == $name) ? " checked" : "";
+		$sel = ($pconfig['target'] == $name) ? " checked=\"checked\"" : "";
 		echo '<tr>';
-		echo '  <td width="1%" class="listlr"><input name="target" type="radio" value="'.htmlspecialchars($name).'"'.$sel.'></td>';
+		echo '  <td width="1%" class="listlr"><input name="target" type="radio" value="'.htmlspecialchars($name).'"'.$sel.' /></td>';
 		echo '  <td class="listr">'.htmlspecialchars($name).'&nbsp;</td>';
 		echo '</tr>'."\n";
 	}
 	echo '</table>';
 	echo '</td></tr>'."\n";
 	echo '<tr><td colspan="2" valign="top">';
-	echo '  <input name="Info" type="submit" class="formbtn" value="'.gettext("Get Target Info").'">';
+	echo '  <input name="Info" type="submit" class="formbtn" value="'.gettext("Get Target Info").'" />';
 	echo '</td></tr>'."\n";
 }
 
@@ -483,31 +485,31 @@ function target_info(&$pconfig) {
 
 	if ($removable == 0) return;
 	echo '<tr><td colspan="2" valign="top">';
-	echo '  <input name="Unload" type="submit" class="formbtn" value="'.gettext("Unload").'">';
-	echo '  <input name="Load" type="submit" class="formbtn" value="'.gettext("Load").'">';
-	echo '  <input name="Change" type="submit" class="formbtn" value="'.gettext("Change below file").'">';
+	echo '  <input name="Unload" type="submit" class="formbtn" value="'.gettext("Unload").'" />';
+	echo '  <input name="Load" type="submit" class="formbtn" value="'.gettext("Load").'" />';
+	echo '  <input name="Change" type="submit" class="formbtn" value="'.gettext("Change below file").'" />';
 	echo '</td></tr>'."\n";
 
 	echo "<tr id='path_tr'><td colspan='2' valign='top'>";
 	echo "<input name='path' type='text' class='formfld' id='path' size='60' value=''  />";
-	echo "<input name='pathbrowsebtn' type='button' class='formbtn' id='pathbrowsebtn' onClick='ifield = form.path; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd=".$mediadir."\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />";
+	echo "<input name='pathbrowsebtn' type='button' class='formbtn' id='pathbrowsebtn' onclick='ifield = form.path; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&amp;sd=".$mediadir."\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...' />";
 	echo "</td></tr>\n";
 
 	echo '<tr id="size_tr"><td colspan="2">';
-	echo '<input name="size" type="text" class="formfld" id="size" size="10" value=""> ';
+	echo '<input name="size" type="text" class="formfld" id="size" size="10" value="" /> ';
 	echo '<select name="sizeunit" onclick="sizeunit_change()">';
 	echo '  <option value="MB" >'.htmlspecialchars(gettext("MiB")).'</option>';
 
 	echo '  <option value="GB" >'.htmlspecialchars(gettext("GiB")).'</option>';
 	echo '  <option value="TB" >'.htmlspecialchars(gettext("TiB")).'</option>';
-	echo '  <option value="auto" selected>'.htmlspecialchars(gettext("Auto")).'</option>';
+	echo '  <option value="auto" selected="selected">'.htmlspecialchars(gettext("Auto")).'</option>';
 	echo '</select>';
-	echo '<br/><span class="vexpl">'.gettext("Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)").'</span>';
+	echo '<br /><span class="vexpl">'.gettext("Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)").'</span>';
 	echo '</td></tr>'."\n";
 
 	echo '<tr id="flags_tr"><td colspan="2">';
 	echo "<select name='flags' class='formfld' id='flags' >";
-	echo "  <option value='rw' selected >".gettext("Read/Write (rw)")."</option>";
+	echo "  <option value='rw' selected='selected' >".gettext("Read/Write (rw)")."</option>";
 	echo "  <option value='rw,dynamic' >".gettext("Read/Write (rw,dynamic) for removable types file size grow and shrink automatically by EOF (ignore specified size)")."</option>";
 	echo "  <option value='rw,extend' >".gettext("Read/Write (rw,extend) for removable types extend file size if EOM reached")."</option>";
 	echo "  <option value='ro' >".gettext("Read Only (ro)")."</option>";
@@ -516,7 +518,7 @@ function target_info(&$pconfig) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function authmethod_change() {
 	switch (document.iform.media_uctlauthmethod.value) {
@@ -579,10 +581,10 @@ function sizeunit_change() {
       <?php html_checkbox("media_uctlsave", gettext("Save"), $pconfig['media_uctlsave'] ? true : false, gettext("Save login information in configuration file."), "", false);?>
       <tr>
         <td colspan="1" valign="top">
-          <input name="Scan" type="submit" class="formbtn" value="<?=gettext("Scan Targets");?>">
+          <input name="Scan" type="submit" class="formbtn" value="<?=gettext("Scan Targets");?>" />
         </td>
         <td colspan="1" valign="top" align="right">
-          <input name="Delete" type="submit" class="formbtn" value="<?=gettext("Delete Login Info");?>">
+          <input name="Delete" type="submit" class="formbtn" value="<?=gettext("Delete Login Info");?>" />
         </td>
       </tr>
       <?php target_list($pconfig) ?>
@@ -593,7 +595,7 @@ function sizeunit_change() {
 </table>
 <?php include("formend.inc");?>
 </form>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 	authmethod_change();
 	sizeunit_change();

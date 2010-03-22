@@ -1,7 +1,11 @@
 <?
 /*
 	filechooser.php
-	Copyright © 2007-2009 Volker Theile (votdev@gmx.de)
+	Modified for HTML4.01 by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	Parts of code are take from 'File Browser Class'
@@ -381,6 +385,7 @@ class FileChooser
 
 	function row($type, $dir=null, $rowcount=null, $file=null)
 	{
+		$scriptname = "filechooser.php";
 		// alternating row styles
 		$rnum = $rowcount ? ($rowcount%2 == 0 ? '_even' : '_odd') : null;
 
@@ -397,7 +402,7 @@ class FileChooser
 
 				// filename
 				$row .= '<td class="nm"><a href="';
-				$row .= '?p=' . urlencode("{$dir}{$file['name']}") . (($type === "fr") ? "/" : "");
+				$row .= ''.$scriptname.'?p=' . urlencode("{$dir}{$file['name']}") . (($type === "fr") ? "/" : "");
 				$row .= '">'.$file['name'].'</a></td>';
 
 				// file size
@@ -433,18 +438,18 @@ class FileChooser
 
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&nbsp;</td>' : '';
-				$row .= '<td><a href="?N='.$N.'&amp;p=' . urlencode($dir) . '">Name</a></td>';
+				$row .= '<td><a href="'.$scriptname.'?N='.$N.'&amp;p=' . urlencode($dir) . '">Name</a></td>';
 				$row .= $this->cfg['showFileSize'] ?
 					    '<td class="sz">
-						 <a href="?S='.$S.'&amp;p=' . urlencode($dir) . '">Size</a>
+						 <a href="'.$scriptname.'?S='.$S.'&amp;p=' . urlencode($dir) . '">Size</a>
 						 </td>' : '';
 				$row .= $this->cfg['showFileType'] ?
 				        '<td class="tp">
-				         <a href="?T='.$T.'&amp;p=' . urlencode($dir) . '">Type</a>
+				         <a href="'.$scriptname.'?T='.$T.'&amp;p=' . urlencode($dir) . '">Type</a>
 				         </td>' : '';
 				$row .= $this->cfg['showFileModDate'] ?
 					    '<td class="dt">
-					     <a href="?M='.$M.'&amp;p=' . urlencode($dir) . '">Last Modified</a>
+					     <a href="'.$scriptname.'?M='.$M.'&amp;p=' . urlencode($dir) . '">Last Modified</a>
 					     </td>' : '';
 				break;
 
@@ -453,7 +458,7 @@ class FileChooser
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&laquo;</td>' : '';
 				$row .= '<td class="nm">
-				         <a href="?p=' . urlencode($this->get_valid_parent_dir($dir)) . '">';
+				         <a href="'.$scriptname.'?p=' . urlencode($this->get_valid_parent_dir($dir)) . '">';
 				$row .= 'Parent Directory';
 				$row .= '</a></td>';
 				$row .= $this->cfg['showFileSize'] ?
@@ -486,29 +491,41 @@ class FileChooser
   function navigation_bar($path)
 	{
     $ret .= <<<EOD
-
-		<tr>
-		  <form method="get" action="?" onSubmit="onSubmit();" onReset="onReset();">
-		  	<td class="navbar">
-	        <input class="input" name="p" value="{$path}" type="text">
-	      	<input class="button" type="reset" value="Cancel">
-	      	<input class="button" type="submit" value="Ok">
-		    </td>
-		    <?php include("formend.inc");?>
-		  </form>
-	  </tr>
-
+	<tr>
+	<td class="navbar">
+	<form method="get" action="filechooser.php" onSubmit="onSubmit();" onReset="onReset();">
+		<input class="input" name="p" value="{$path}" type="text">
+		<input class="button" type="reset" value="Cancel">
+		<input class="button" type="submit" value="Ok">
+EOD;
+    ob_start();
+    include("formend.inc");
+    $formend = ob_get_contents();
+    ob_end_clean();
+    $formend = str_replace('/>', '>', $formend);
+    $ret .= $formend;
+    $ret .= <<<EOD
+	</form>
+	</td>
+	</tr>
 EOD;
     return $ret;
   }
 }
 ?>
-<html>
+<?php header("Content-Type: text/html; charset=" . system_get_language_codeset());?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="<?=system_get_language_code();?>">
   <head>
+	<title><?=htmlspecialchars(gettext("filechooser"));?></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<meta http-equiv="Content-Style-Type" content="text/css">
   	<link href="gui.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="niftycube/niftycube.js"></script>
 		<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 		<style type="text/css">
+		<!--
 			body { background: #FFFFFF; min-width: 0px; }
 
 			.filechooser { background-color: #fff; margin: 0px; padding: 0px; }
@@ -552,11 +569,13 @@ EOD;
 			.filechooser .filelist table tr.footer td { border:0; font-weight:bold; }
 
 			/* Navigation bar */
-			.filechooser .navbar { background-color: #eee; padding: 6px 9px; text-align:left; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
-			.filechooser .navbar .input { position:absolute; width:75%; }
+			.filechooser .navbar { background-color: #eee; padding: 6px 9px; text-align:left; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 40px }
+			.filechooser .navbar .input { position:absolute; width:75%; top: 6px; left: 9px; }
 			.filechooser .navbar .button { position:relative; float:right; }
+		-->
 		</style>
-		<script class="javascript">
+		<script type="text/javascript">
+		<!--
 			function onSubmit()
 			{
 				opener.ifield.value = document.forms[0].p.value;
@@ -566,6 +585,7 @@ EOD;
 			{
 				close();
 			}
+		// -->
 		</script>
   </head>
   <body class="filechooser">

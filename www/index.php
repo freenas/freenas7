@@ -108,7 +108,7 @@ sajax_handle_client_request();
 			  <tr>
 			    <td width="25%" class="vncellt"><?=gettext("System time");?></td>
 			    <td width="75%" class="listr">
-			      <input style="padding: 0; border: 0;" size="30" name="date" id="date" value="<?=htmlspecialchars(shell_exec("date"));?>"/>
+			      <input style="padding: 0; border: 0;" size="30" name="date" id="date" value="<?=htmlspecialchars(shell_exec("date"));?>" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -123,7 +123,7 @@ sajax_handle_client_request();
 		    <tr>
 		      <td width="25%" class="vncellt"><?=gettext("Last config change");?></td>
 		      <td width="75%" class="listr">
-						<input style="padding: 0; border: 0;" size="30" name="lastchange" id="lastchange" value="<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>"/>
+						<input style="padding: 0; border: 0;" size="30" name="lastchange" id="lastchange" value="<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>" />
 		      </td>
 		    </tr>
 				<?php endif;?>
@@ -131,7 +131,7 @@ sajax_handle_client_request();
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU temperature");?></td>
 					<td width="75%" class="listr">
-						<input style="padding: 0; border: 0;" size="30" name="cputemp" id="cputemp" value="<?=htmlspecialchars($cpuinfo['temperature']);?>"/>
+						<input style="padding: 0; border: 0;" size="30" name="cputemp" id="cputemp" value="<?=htmlspecialchars($cpuinfo['temperature']);?>" />
 					</td>
 				</tr>
 				<?php endif;?>
@@ -139,7 +139,7 @@ sajax_handle_client_request();
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU frequency");?></td>
 					<td width="75%" class="listr">
-						<input style="padding: 0; border: 0;" size="30" name="cpufreq" id="cpufreq" value="<?=htmlspecialchars($cpuinfo['freq']);?>MHz" title="<?=sprintf(gettext("Levels (MHz/mW): %s"), $cpuinfo['freqlevels']);?>"/>
+						<input style="padding: 0; border: 0;" size="30" name="cpufreq" id="cpufreq" value="<?=htmlspecialchars($cpuinfo['freq']);?>MHz" title="<?=sprintf(gettext("Levels (MHz/mW): %s"), $cpuinfo['freqlevels']);?>" />
 					</td>
 				</tr>
 				<?php endif;?>
@@ -153,7 +153,7 @@ sajax_handle_client_request();
 						echo "<img src='bar_gray.gif' name='cpuusagef' id='cpuusagef' width='" . (100 - $percentage) . "' class='progbarc' alt='' />";
 						echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 						?>
-						<input style="padding: 0; border: 0;" size="30" name="cpuusage" id="cpuusage" value="<?=gettext("Updating in 5 seconds.");?>"/>
+						<input style="padding: 0; border: 0;" size="30" name="cpuusage" id="cpuusage" value="<?=gettext("Updating in 5 seconds.");?>" />
 					</td>
 				</tr>
 			  <tr>
@@ -167,7 +167,7 @@ sajax_handle_client_request();
 						echo "<img src='bar_gray.gif' name='memusagef' id='memusagef' width='" . (100 - $percentage) . "' class='progbarc' alt='' />";
 						echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 						?>
-						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMiB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>"/>
+						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMiB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>" />
 			    </td>
 			  </tr>
 				<?php $swapinfo = system_get_swap_info(); if (!empty($swapinfo)):?>
@@ -214,7 +214,7 @@ sajax_handle_client_request();
 						exec("uptime", $result);
 						$loadaverage = substr(strrchr($result[0], "load averages:"), 15);
 						?>
-						<input style="padding: 0; border: 0;" size="14" name="loadaverage" id="loadaverage" value="<?=$loadaverage;?>"/>
+						<input style="padding: 0; border: 0;" size="14" name="loadaverage" id="loadaverage" value="<?=$loadaverage;?>" />
 						<?="<small>[<a href='status_process.php'>".gettext("Show process information")."</a></small>]";?>
 			    </td>
 			  </tr>

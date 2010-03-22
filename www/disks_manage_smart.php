@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_manage_smart.php
-	Copyright (C) 2006-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -145,7 +149,7 @@ function smartssd_process_updatenotification($mode, $data) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
@@ -200,7 +204,7 @@ function enable_change(enable_change) {
 							<select name="powermode" class="formfld" id="powermode">
 								<?php $types = explode(" ", "Never Sleep Standby Idle"); $vals = explode(" ", "never sleep standby idle");?>
 								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['powermode']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['powermode']) echo "selected=\"selected\"";?>><?=htmlspecialchars($types[$j]);?></option>
 								<?php endfor;?>
 							</select>
 							<div id="enumeration">
@@ -218,21 +222,21 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Difference");?></td>
 						<td width="78%" class="vtable">
-							<input name="temp_diff" type="text" class="formfld" id="temp_diff" size="5" value="<?=htmlspecialchars($pconfig['temp_diff']);?>">&nbsp;&deg;C<br/>
+							<input name="temp_diff" type="text" class="formfld" id="temp_diff" size="5" value="<?=htmlspecialchars($pconfig['temp_diff']);?>" />&nbsp;&deg;C<br />
 							<span class="vexpl"><?=gettext("Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Informal");?></td>
 						<td width="78%" class="vtable">
-							<input name="temp_info" type="text" class="formfld" id="temp_info" size="5" value="<?=htmlspecialchars($pconfig['temp_info']);?>">&nbsp;&deg;C<br/>
+							<input name="temp_info" type="text" class="formfld" id="temp_info" size="5" value="<?=htmlspecialchars($pconfig['temp_info']);?>" />&nbsp;&deg;C<br />
 							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Critical");?></td>
 						<td width="78%" class="vtable">
-							<input name="temp_crit" type="text" class="formfld" id="temp_crit" size="5" value="<?=htmlspecialchars($pconfig['temp_crit']);?>">&nbsp;&deg;C<br/>
+							<input name="temp_crit" type="text" class="formfld" id="temp_crit" size="5" value="<?=htmlspecialchars($pconfig['temp_crit']);?>" />&nbsp;&deg;C<br />
 							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
@@ -255,13 +259,13 @@ function enable_change(enable_change) {
 									<td class="listr"><?=htmlspecialchars(gettext($a_type[$selftest['type']]));?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
 									<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-				          <td valign="middle" nowrap class="list">
-				          	<a href="disks_manage_smart_edit.php?uuid=<?=$selftest['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0"></a>
-				            <a href="disks_manage_smart.php?act=del&uuid=<?=$selftest['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0"></a>
+				          <td valign="middle" nowrap="nowrap" class="list">
+				          	<a href="disks_manage_smart_edit.php?uuid=<?=$selftest['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" border="0" alt="<?=gettext("Edit self-test");?>" /></a>
+				            <a href="disks_manage_smart.php?act=del&amp;uuid=<?=$selftest['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" border="0" alt="<?=gettext("Delete self-test");?>" /></a>
 				          </td>
 				          <?php else:?>
-									<td valign="middle" nowrap class="list">
-										<img src="del.gif" border="0">
+									<td valign="middle" nowrap="nowrap" class="list">
+										<img src="del.gif" border="0" alt="" />
 									</td>
 									<?php endif;?>
 				        </tr>
@@ -269,9 +273,9 @@ function enable_change(enable_change) {
 				        <tr>
 				          <td class="list" colspan="3"></td>
 				          <td class="list">
-										<a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" border="0"></a>
+										<a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" border="0" alt="<?=gettext("Add self-test");?>" /></a>
 										<?php if (!empty($a_selftest)):?>
-										<a href="disks_manage_smart.php?act=del&uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all scheduled self-tests?");?>')"><img src="x.gif" title="<?=gettext("Delete all self-tests");?>" border="0"></a>
+										<a href="disks_manage_smart.php?act=del&amp;uuid=all" onclick="return confirm('<?=gettext("Do you really want to delete all scheduled self-tests?");?>')"><img src="x.gif" title="<?=gettext("Delete all self-tests");?>" border="0" alt="<?=gettext("Delete all self-tests");?>" /></a>
 										<?php endif;?>
 									</td>
 						    </tr>
@@ -285,7 +289,7 @@ function enable_change(enable_change) {
 					<?php html_checkbox("email_testemail", gettext("Test email"), $pconfig['email_testemail'] ? true : false, gettext("Send a TEST warning email on startup."));?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true)" />
 				</div>
 				<div id="remarks">
 					<?php html_remark("note", gettext("Note"), gettext("Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails."));?>
@@ -295,7 +299,7 @@ function enable_change(enable_change) {
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 enable_change(false);
 //-->

@@ -2,12 +2,16 @@
 <?php
 /*
 	disks_zfs_zpool_tools.php
-	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -88,7 +92,7 @@ if (!isset($do_action)) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">//<![CDATA[
 function command_change() {
 	showElementById('device_new_tr','hide');
 	document.iform.option.length = 0;
@@ -190,19 +194,19 @@ function pool_change() {
 				if (is_array($pconfig['device'])) {
 					foreach ($pconfig['device'] as $devicev) {
 						if ($devicev === $disk['name']) {
-							$checked = " checked";
+							$checked = " checked=\"checked\"";
 							break;
 						}
 					}
 				} else {
 					if ($pconfig['device'] === $disk['name']) {
-						$checked = " checked";
+						$checked = " checked=\"checked\"";
 					}
 				}
 				?>
-				div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name'];?>'<?=$checked?>>";
+				div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name'];?>'<?=$checked?> />";
 				div.innerHTML += "<?=$disk['name'];?> (<?=$disk['size']?>, <?=$disk['desc']?>)";
-				div.innerHTML += "</br>";
+				div.innerHTML += "<br />";
 				document.iform.device_new[<?=$i;?>] = new Option('<?="{$disk['name']} ({$disk['size']}, {$disk['desc']})";?>','<?=$disk['name'];?>','false');
 				<?php
 				$i++;
@@ -213,6 +217,7 @@ function pool_change() {
 		<?php endforeach;?>
 	}
 }
+//]]>
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -226,7 +231,7 @@ function pool_change() {
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-			<ul id="tabnav">
+			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool_tools.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Tools");?></span></a></li>
@@ -255,7 +260,7 @@ function pool_change() {
 								foreach ($a_cmd as $cmdv) {
 									echo "<option value=\"${cmdv}\"";
 									if ($cmdv === $pconfig['action'])
-										echo " selected";
+										echo " selected=\"selected\"";
 									echo ">${cmdv}</option>";
 								}
 							?>
@@ -275,11 +280,11 @@ function pool_change() {
 					<?php html_combobox("device_new", gettext("New Device"), NULL, NULL, "", true);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>" />
 				</div>
 				<?php if ($do_action) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 
 				$action = $pconfig['action'];
@@ -298,7 +303,7 @@ function pool_change() {
 											} else {
 												echo htmlspecialchars($line);
 											}
-											echo "<br/>";
+											echo "<br />";
 										}
 									}
 									break;
@@ -430,7 +435,7 @@ function pool_change() {
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 command_change();
 </script>
 <?php include("fend.inc");?>

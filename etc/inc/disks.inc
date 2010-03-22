@@ -965,7 +965,7 @@ function disks_fsck($device,$umount = false)
 
 	// Unmount disk temporarily if necessary
 	if($umount && $ismounted) {
-		echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br><br>");
+		echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br /><br />");
 		disks_umount($mount);
 	}
 

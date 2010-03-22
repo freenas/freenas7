@@ -2,12 +2,16 @@
 <?php
 /*
 	disks_zfs_zpool_info.php
-	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -124,7 +128,7 @@ function zfs_zpool_get_status() {
 				$result .= htmlspecialchars($line);
 			}
 		}
-		$result .= "<br/>";
+		$result .= "<br />";
 	}
 	return $result;
 }
@@ -134,8 +138,9 @@ sajax_export("zfs_zpool_get_status");
 sajax_handle_client_request();
 ?>
 <?php include("fbegin.inc");?>
-<script>
+<script type="text/javascript">//<![CDATA[
 <?php sajax_show_javascript();?>
+//]]>
 </script>
 <script type="text/javascript" src="javascript/disks_zfs_zpool_info.js"></script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -150,7 +155,7 @@ sajax_handle_client_request();
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-			<ul id="tabnav">
+			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>

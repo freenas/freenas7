@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_crypt_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -133,7 +137,7 @@ if (!isset($pconfig['do_action'])) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function ealgo_change() {
 	// Disable illegal values in 'Key length' selective list.
@@ -185,7 +189,7 @@ function ealgo_change() {
 								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-								<option value="<?=$i;?>" <?php if ($pconfig['disk'] == $i) echo "selected";?>>
+								<option value="<?=$i;?>" <?php if ($pconfig['disk'] == $i) echo "selected=\"selected\"";?>>
 								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
@@ -198,13 +202,13 @@ function ealgo_change() {
 						<td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm");?></td>
 			      <td class="vtable">
 			        <select name="aalgo" class="formfld" id="aalgo">
-								<option value="none" <?php if ($pconfig['aalgo'] === "none") echo "selected"; ?>>none</option>
-			          <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] === "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
-			          <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] === "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
-			          <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] === "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
-			          <option value="HMAC/SHA256" <?php if ($pconfig['aalgo'] === "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
-			          <option value="HMAC/SHA384" <?php if ($pconfig['aalgo'] === "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
-			          <option value="HMAC/SHA512" <?php if ($pconfig['aalgo'] === "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
+								<option value="none" <?php if ($pconfig['aalgo'] === "none") echo "selected=\"selected\""; ?>>none</option>
+			          <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] === "HMAC/MD5") echo "selected=\"selected\""; ?>>HMAC/MD5</option>
+			          <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] === "HMAC/SHA1") echo "selected=\"selected\""; ?>>HMAC/SHA1</option>
+			          <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] === "HMAC/RIPEMD160") echo "selected=\"selected\""; ?>>HMAC/RIPEMD160</option>
+			          <option value="HMAC/SHA256" <?php if ($pconfig['aalgo'] === "HMAC/SHA256") echo "selected=\"selected\""; ?>>HMAC/SHA256</option>
+			          <option value="HMAC/SHA384" <?php if ($pconfig['aalgo'] === "HMAC/SHA384") echo "selected=\"selected\""; ?>>HMAC/SHA384</option>
+			          <option value="HMAC/SHA512" <?php if ($pconfig['aalgo'] === "HMAC/SHA512") echo "selected=\"selected\""; ?>>HMAC/SHA512</option>
 			        </select>
 			      </td>
 			    </tr>
@@ -218,22 +222,22 @@ function ealgo_change() {
 					<?php html_checkbox("init", gettext("Initialize"), $pconfig['init'] ? true : false, gettext("Initialize and encrypt disk."), gettext("This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."));?>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
 				</div>
 				<?php if ($pconfig['do_action']) {
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
 
 				if (true === $pconfig['init']) {
 					// Initialize and encrypt the disk.
-					echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $pconfig['devicespecialfile']);
+					echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br />", $pconfig['devicespecialfile']);
 					disks_geli_init($pconfig['devicespecialfile'], $pconfig['aalgo'], $pconfig['ealgo'], $pconfig['keylen'], $pconfig['passphrase'], true);
 				}
 
 				// Attach the disk.
-				echo(sprintf(gettext("Attaching provider '%s'."), $pconfig['devicespecialfile']) . "<br/>");
+				echo(sprintf(gettext("Attaching provider '%s'."), $pconfig['devicespecialfile']) . "<br />");
 				disks_geli_attach($pconfig['devicespecialfile'], $pconfig['passphrase'], true);
 
 				echo('</pre>');
@@ -244,7 +248,7 @@ function ealgo_change() {
 		</td>
 	</tr>
 </table>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 ealgo_change();
 //-->

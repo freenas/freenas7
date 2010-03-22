@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_raid_gmirror.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -117,7 +121,7 @@ function gmirror_process_updatenotification($mode, $data) {
 	</tr>
   <tr>
 		<td class="tabnavtbl">
-		  <ul id="tabnav">
+		  <ul id="tabnav2">
 				<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror_info.php"><span><?=gettext("Information"); ?></span></a></li>
@@ -170,20 +174,20 @@ function gmirror_process_updatenotification($mode, $data) {
             <td class="listr"><?=$size;?>&nbsp;</td>
             <td class="listbg"><?=$status;?>&nbsp;</td>
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
-            <td valign="middle" nowrap class="list">
-							<a href="disks_raid_gmirror_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" border="0"></a>&nbsp;
-							<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" border="0"></a>
+            <td valign="middle" nowrap="nowrap" class="list">
+							<a href="disks_raid_gmirror_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" border="0" alt="<?=gettext("Edit RAID"); ?>" /></a>&nbsp;
+							<a href="disks_raid_gmirror.php?act=del&amp;id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" border="0" alt="<?=gettext("Delete RAID") ;?>" /></a>
 						</td>
 						<?php else:?>
-						<td valign="middle" nowrap class="list">
-							<img src="del.gif" border="0">
+						<td valign="middle" nowrap="nowrap" class="list">
+							<img src="del.gif" border="0" alt="" />
 						</td>
 						<?php endif;?>
 					</tr>
 					<?php $i++; endforeach;?>
           <tr>
             <td class="list" colspan="4"></td>
-            <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" border="0"></a></td>
+            <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" border="0" alt="<?=gettext("Add RAID");?>" /></a></td>
 					</tr>
         </table>
         <div id="remarks">

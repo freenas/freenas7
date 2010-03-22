@@ -2,11 +2,15 @@
 <?php
 /*
 	services_status.php
-	Copyright (C) 2008-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2008-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -71,17 +75,17 @@ $a_service[] = array("desc" => gettext("BitTorrent"), "link" => "services_bittor
 						<td class="<?=$enable?"listrc":"listrcd";?>">
 							<a href="<?=$servicev['link'];?>">
 								<?php if ($enable):?>
-								<img src="status_enabled.png" border="0">
+								<img src="status_enabled.png" border="0" alt="" />
 								<?php else:?>
-								<img src="status_disabled.png" border="0">
+								<img src="status_disabled.png" border="0" alt="" />
 								<?php endif;?>
 							</a>
 						</td>
 						<td class="<?=$enable?"listrc":"listrcd";?>">
 							<?php if (0 === $status):?>
-							<a title="<?=gettext("Running");?>"><img src="status_enabled.png" border="0"></a>
+							<a title="<?=gettext("Running");?>"><img src="status_enabled.png" border="0" alt="" /></a>
 							<?php else:?>
-							<a title="<?=gettext("Stopped");?>"><img src="status_disabled.png" border="0"></a>
+							<a title="<?=gettext("Stopped");?>"><img src="status_disabled.png" border="0" alt="" /></a>
 							<?php endif;?>
 						</td>
 					</tr>

@@ -2,8 +2,12 @@
 <?php
 /*
 	disks_raid_gvinum_edit.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -148,7 +152,7 @@ if ($_POST) {
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-			<ul id="tabnav">
+			<ul id="tabnav2">
 				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gvinum_info.php"><span><?=gettext("Information"); ?></span></a></li>
@@ -164,16 +168,16 @@ if ($_POST) {
 			    <tr>
 			      <td valign="top" class="vncellreq"><?=gettext("Raid name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="name" type="text" class="formfld" id="name" size="15" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
+			        <input name="name" type="text" class="formfld" id="name" size="15" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly=\"readonly\"";?> />
 			      </td>
 			    </tr>
 			    <tr>
 			      <td valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
 			      <td width="78%" class="vtable">
-			        <select name="type" class="formfld" id="type" <?php if(isset($id)) echo "disabled";?>>
-			          <option value="0" <?php if ($pconfig['type'] == 0) echo "selected"; ?>>RAID 0 (<?=gettext("striping");?>)</option>
-			          <option value="1" <?php if ($pconfig['type'] == 1) echo "selected"; ?>>RAID 1 (<?=gettext("mirroring"); ?>)</option>
-			          <option value="5" <?php if ($pconfig['type'] == 5) echo "selected"; ?>>RAID 5 (<?=gettext("rotated block-interleaved parity"); ?>)</option>
+			        <select name="type" class="formfld" id="type" <?php if(isset($id)) echo "disabled=\"disabled\"";?>>
+			          <option value="0" <?php if ($pconfig['type'] == 0) echo "selected=\"selected\""; ?>>RAID 0 (<?=gettext("striping");?>)</option>
+			          <option value="1" <?php if ($pconfig['type'] == 1) echo "selected=\"selected\""; ?>>RAID 1 (<?=gettext("mirroring"); ?>)</option>
+			          <option value="5" <?php if ($pconfig['type'] == 5) echo "selected=\"selected\""; ?>>RAID 5 (<?=gettext("rotated block-interleaved parity"); ?>)</option>
 			        </select>
 			      </td>
 			    </tr>
@@ -183,8 +187,8 @@ if ($_POST) {
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
 			      <td width="78%" class="vtable">
-							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked"; ?>>
-							<?=gettext("Create and initialize RAID.");?><br/>
+							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked=\"checked\""; ?> />
+							<?=gettext("Create and initialize RAID.");?><br />
 							<span class="vexpl"><?=gettext("This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again.");?></span>
 			      </td>
 			    </tr>
@@ -192,8 +196,8 @@ if ($_POST) {
 			  </table>
 			  <?php if (!isset($id)):?>
 			  <div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>" />
+					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
 				</div>
 				<?php endif;?>
 				<?php include("formend.inc");?>

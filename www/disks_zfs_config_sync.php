@@ -2,11 +2,15 @@
 <?php
 /*
 	disks_zfs_config_sync.php
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -87,7 +91,12 @@ foreach($rawdata as $line)
 }
 
 $rawdata = null;
-mwexec2('zpool list -H -o name,root,size,capacity,health', $rawdata);
+$spa = @exec("sysctl -q -n vfs.zfs.version.spa");
+if ($spa == '') {
+	mwexec2('zpool list -H -o name,root,size,capacity,health', $rawdata);
+} else {
+	mwexec2('zpool list -H -o name,altroot,size,capacity,health', $rawdata);
+}
 foreach ($rawdata as $line)
 {
 	if ($line == 'no pools available') { continue; }
@@ -276,7 +285,7 @@ if (!$health)
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-			<ul id="tabnav">
+			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_config_current.php"><span><?=gettext("Current");?></span></a></li>
 				<li class="tabinact" title="<?=gettext("Reload page");?>"><a href="disks_zfs_config.php"><span><?=gettext("Detected");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_config_sync.php"><span><?=gettext("Synchronize");?></span></a></li>
@@ -293,7 +302,7 @@ if (!$health)
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 8);?>
 					<tr>
-						<td width="1%" class="listhdrlr"></td>
+						<td width="1%" class="listhdrlr">&nbsp;</td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
@@ -315,11 +324,11 @@ if (!$health)
 					</tr>
 					<?php endforeach; ?>
 				</table>
-				<br/>
+				<br />
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<?php html_titleline(gettext('Virtual devices').' ('.count($zfs['vdevices']['vdevice']).')', 5);?>
 					<tr>
-						<td width="1%" class="listhdrlr"></td>
+						<td width="1%" class="listhdrlr">&nbsp;</td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="21%" class="listhdrr"><?=gettext("Type");?></td>
 						<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
@@ -335,11 +344,11 @@ if (!$health)
 					</tr>
 					<?php endforeach; ?>
 				</table>
-				<br/>
+				<br />
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 8);?>
 					<tr>
-						<td width="1%" class="listhdrlr"></td>
+						<td width="1%" class="listhdrlr">&nbsp;</td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
 						<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>

@@ -346,6 +346,8 @@ div#loginpage {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
+	height: 100%;
+	width: 100%;
 }
 div#loginbox {
 	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
