@@ -275,18 +275,18 @@ function uctlenable_change(enable_change) {
 					<?php html_combobox("discoveryauthgroup", gettext("Discovery Auth Group"), $pconfig['discoveryauthgroup'], $ag_list, gettext("The initiator can discover the targets with correct user and secret in specific Auth Group."), true);?>
 		      <?php html_separator();?>
 		      <?php html_titleline(gettext("Advanced settings"));?>
-		      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], gettext("I/O timeout in seconds (30 by default)."), true, 30, false);?>
-		      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], gettext("NOPIN sending interval in seconds (20 by default)."), true, 30, false);?>
-		      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], gettext("Maximum number of sessions holding at same time (32 by default)."), true, 30, false);?>
-		      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], gettext("Maximum number of connections in each session (8 by default)."), true, 30, false);?>
-		      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], gettext("iSCSI initial parameter (65536 by default)."), true, 30, false);?>
-		      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], gettext("iSCSI initial parameter (262144 by default)."), true, 30, false);?>
-		      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], gettext("iSCSI initial parameter (262144 by default)."), true, 30, false);?>
+		      <?php html_inputbox("timeout", gettext("I/O Timeout"), $pconfig['timeout'], sprintf(gettext("I/O timeout in seconds (%d by default)."), 30), true, 30, false);?>
+		      <?php html_inputbox("nopininterval", gettext("NOPIN Interval"), $pconfig['nopininterval'], sprintf(gettext("NOPIN sending interval in seconds (%d by default)."), 20), true, 30, false);?>
+		      <?php html_inputbox("maxsessions", gettext("Max. sessions"), $pconfig['maxsessions'], sprintf(gettext("Maximum number of sessions holding at same time (%d by default)."), 32), true, 30, false);?>
+		      <?php html_inputbox("maxconnections", gettext("Max. connections"), $pconfig['maxconnections'], sprintf(gettext("Maximum number of connections in each session (%d by default)."), 8), true, 30, false);?>
+		      <?php html_inputbox("firstburstlength", gettext("FirstBurstLength"), $pconfig['firstburstlength'], sprintf(gettext("iSCSI initial parameter (%d by default)."), 65536), true, 30, false);?>
+		      <?php html_inputbox("maxburstlength", gettext("MaxBurstLength"), $pconfig['maxburstlength'], sprintf(gettext("iSCSI initial parameter (%d by default)."), 262144), true, 30, false);?>
+		      <?php html_inputbox("maxrecvdatasegmentlength", gettext("MaxRecvDataSegmentLength"), $pconfig['maxrecvdatasegmentlength'], sprintf(gettext("iSCSI initial parameter (%d by default)."), 262144), true, 30, false);?>
 		      <?php html_separator();?>
 		      <?php html_titleline_checkbox("uctlenable", gettext("iSCSI Target Logical Unit Controller"), $pconfig['uctlenable'] ? true : false, gettext("Enable"), "uctlenable_change(false)");?>
-		      <?php html_inputbox("uctladdress", gettext("Controller IP address"), $pconfig['uctladdress'], gettext("Logical Unit Controller IP address (127.0.0.1(localhost) by default)"), true, 30, false);?>
-		      <?php html_inputbox("uctlport", gettext("Controller TCP Port"), $pconfig['uctlport'], gettext("Logical Unit Controller TCP port (3261 by default)"), true, 15, false);?>
-		      <?php html_inputbox("uctlnetmask", gettext("Controller Authorised network"), $pconfig['uctlnetmask'], gettext("Logical Unit Controller Authorised network (127.0.0.1/8 by default)"), true, 30, false);?>
+		      <?php html_inputbox("uctladdress", gettext("Controller IP address"), $pconfig['uctladdress'], sprintf(gettext("Logical Unit Controller IP address (%s by default)"), "127.0.0.1(localhost)"), true, 30, false);?>
+		      <?php html_inputbox("uctlport", gettext("Controller TCP Port"), $pconfig['uctlport'], sprintf(gettext("Logical Unit Controller TCP port (%d by default)"), 3261), true, 15, false);?>
+		      <?php html_inputbox("uctlnetmask", gettext("Controller Authorised network"), $pconfig['uctlnetmask'], sprintf(gettext("Logical Unit Controller Authorised network (%s by default)"), "127.0.0.1/8"), true, 30, false);?>
 		      <?php html_combobox("uctlauthmethod", gettext("Controller Auth Method"), $pconfig['uctlauthmethod'], array("CHAP" => gettext("CHAP"), "CHAP mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted in the controller."), true);?>
 		      <?php
 					$ag_list = array();
