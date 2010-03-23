@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"POT-Creation-Date: 2010-03-23 21:14+0000\n"
 "PO-Revision-Date: 2010-01-22 18:47+0000\n"
 "Last-Translator: votdev <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -51,8 +51,7 @@ msgstr "%s auf %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr ""
-"%s wird neu gestartet, sobald die Konfiguration wiederhergestellt ist."
+msgstr "%s wird neu gestartet, sobald die Konfiguration wiederhergestellt ist."
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
@@ -74,9 +73,10 @@ msgstr ""
 "0=deaktiviert, 1-255=aktivierte Befehlswarteschlange mit spezifizierter "
 "Tiefe."
 
+#, fuzzy
 msgid ""
-"1. Use these specials actions for debugging only!<br>2. There is no need of "
-"using this menu for starting a RAID volume (start automaticaly)."
+"1. Use these specials actions for debugging only!<br />2. There is no need "
+"of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
 "1. Spezialbefehle NUR für die Fehlerbeseitigung (debugging)!<br>2. Zum Start "
 "eines RAID-Datenträgers wird dieses Menü NICHT benötigt (startet "
@@ -88,46 +88,53 @@ msgstr "802.1Q VLAN tag (von 1 bis 4094)."
 msgid "<->"
 msgstr "<->"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have shell access."
+"<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%"
+"s'>user</a> must have shell access."
 msgstr ""
 "<a href=%s>SSHD</a> muss aktiviert sein, damit Unison funktioniert. Zudem "
 "muss der <a href=%s>Benutzer</a> Shell-Rechte besitzen."
 
+#, fuzzy
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted "
 "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
 "<b>EFI GPT</b> wenn Sie ein GPT formatiertes Laufwerk einbinden wollen "
 "(<b>voreingestelle Partition seit 0.684b</b>).<br><b>MBR</b> Partition, für "
-"UFS formatierte Laufwerke oder Software RAID Volumes (<b>erzeugt vor "
-"0.684b</b>) oder importierte Laufwerke von anderen BS.<br><b>CD/DVD oder "
-"altes Software RAID</b> für alte Software RAID Volumes (<b>erzeugt vor "
-"Version 0.68</b>) oder CD/DVD."
+"UFS formatierte Laufwerke oder Software RAID Volumes (<b>erzeugt vor 0.684b</"
+"b>) oder importierte Laufwerke von anderen BS.<br><b>CD/DVD oder altes "
+"Software RAID</b> für alte Software RAID Volumes (<b>erzeugt vor Version "
+"0.68</b>) oder CD/DVD."
+
+#, fuzzy
+msgid ""
+"<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Folgende Parameter können als Ersetzungen verwendet werden:<div "
+"id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostname</li></ul></div>"
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older "
-"rsync.</li><li>Before - File-deletions will be done before the transfer "
-"starts.</li><li>During - File-deletions will be done incrementally as the "
-"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</"
+"li><li>Before - File-deletions will be done before the transfer starts.</"
+"li><li>During - File-deletions will be done incrementally as the transfer "
+"happens.</li><li>Delay - File-deletions will be computed during the "
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 "<li>Voreinstellung - Rsync wird den 'During'-Algorithmus verwenden, wenn "
 "Kommunikation mit Rsync 3.0 oder neuer besteht - und den 'Before'-"
-"Algorithmus, wenn Kommunikation zu einer älteren Rsync Version besteht. "
-".</li><li>Before - Dateilöschen wird vor dem Dateitransfer "
-"begonnen..</li><li>During - Dateilöschen wird während des Dateitransfers "
-"durchgeführt. .</li><li>Delay - Dateilöschen wird beim Dateitransfer "
-"berechnet, und nach dem Abschluss des Dateitransfers werden die Daten "
-"gelöscht. .</li><li>Löschen der Dateien wird nach dem Transfer "
-"durchgeführt..</li>"
+"Algorithmus, wenn Kommunikation zu einer älteren Rsync Version besteht. .</"
+"li><li>Before - Dateilöschen wird vor dem Dateitransfer begonnen..</"
+"li><li>During - Dateilöschen wird während des Dateitransfers durchgeführt. ."
+"</li><li>Delay - Dateilöschen wird beim Dateitransfer berechnet, und nach "
+"dem Abschluss des Dateitransfers werden die Daten gelöscht. .</"
+"li><li>Löschen der Dateien wird nach dem Transfer durchgeführt..</li>"
 
 msgid ""
 "A Auth Group contains authorised users and secrets for additional security."
@@ -157,8 +164,7 @@ msgstr ""
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
-msgstr ""
-"Ein VLAN mit dem Tag %s ist bereits für diese Schnittstelle definiert."
+msgstr "Ein VLAN mit dem Tag %s ist bereits für diese Schnittstelle definiert."
 
 msgid ""
 "A directory listing is generated if a directory is requested and no index-"
@@ -166,8 +172,8 @@ msgid ""
 "directory."
 msgstr ""
 "Eine Verzeichnisübersicht wird erstellt wenn ein Verzeichnis angefordert "
-"wird und keine Indexdatei (index.php, index.html, index.htm oder "
-"default.htm) enthält."
+"wird und keine Indexdatei (index.php, index.html, index.htm oder default."
+"htm) enthält."
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
@@ -282,8 +288,8 @@ msgid ""
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr ""
 "Aktiviere E-Mail-Benachrichtigung, falls Sie benachrichtigt werden wollen, "
-"wenn eine Störung oder ein neuer Fehler erkannt wurde, oder wenn ein "
-"S.M.A.R.T. Befehl an eine Festplatte fehlschlug."
+"wenn eine Störung oder ein neuer Fehler erkannt wurde, oder wenn ein S.M.A.R."
+"T. Befehl an eine Festplatte fehlschlug."
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -418,28 +424,28 @@ msgstr "Erweiterte Einstellungen"
 msgid ""
 "After you click &quot;Save&quot;, you may also have to do one or more of the "
 "following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP "
-"address</li></ul>"
+"address of your computer</li><li>access the webGUI with the new IP address</"
+"li></ul>"
 msgstr ""
 "Nach dem Klick auf &quot;Sichern&quot;, könnten einige Arbeitsschritte "
 "notwendig werden, bevor wieder ein Zugriff auf %s möglich ist: "
 "<ul><li>Änderung der IP-Adresse des Systems</li><li>Zugriff auf die WebGUI "
 "via neuer IP-Adresse</li></ul>"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: </span></p><ul><li><span "
-"class='vexpl'>change the IP address of your computer</span></li><li><span "
-"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+"before you can access your NAS again: <ul><li><span class='vexpl'>change the "
+"IP address of your computer</span></li><li><span class='vexpl'>access the "
+"webGUI with the new IP address</span></li></ul>"
 msgstr ""
 "Nach dem Anwählen von &quot;Speichern&quot;, muss %s zur Übernahme der "
 "Änderungen neu gestartet werden. Sie könnten auch einige der folgenden Dinge "
-"vor erneutem Zugriff auf ihren NAS ausführen müssen: "
-"</span></p><ul><li><span class='vexpl'>Ändern Sie die IP-Adresse ihres "
-"Computers </span></li><li><span class='vexpl'>Greifen Sie auf die WebGUI mit "
-"der neuen IP-Adresse zu</span></li></ul>"
+"vor erneutem Zugriff auf ihren NAS ausführen müssen: </span></"
+"p><ul><li><span class='vexpl'>Ändern Sie die IP-Adresse ihres Computers </"
+"span></li><li><span class='vexpl'>Greifen Sie auf die WebGUI mit der neuen "
+"IP-Adresse zu</span></li></ul>"
 
 msgid "Aggregation protocol"
 msgstr "Aggregation Protokoll"
@@ -455,6 +461,10 @@ msgstr "Alle"
 
 msgid "All dirs"
 msgstr "Alle Verzeichnisse"
+
+#, php-format
+msgid "All dirs requires mounted path, but Path %s is not mounted."
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -473,8 +483,7 @@ msgid "Allow TLS/SSL connections only."
 msgstr "Erlauben Sie nur TLS/SSL Anschlüsse."
 
 msgid "Allow client access to accounts that have null passwords."
-msgstr ""
-"Erlaube Clients auf Benutzerkonten mit leeren Passwörtern zuzugreifen."
+msgstr "Erlaube Clients auf Benutzerkonten mit leeren Passwörtern zuzugreifen."
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -536,8 +545,7 @@ msgid "An host with this name already exists."
 msgstr "Ein Host mit diesem Namen existiert bereits."
 
 msgid "An interface with the specified description already exists."
-msgstr ""
-"Eine Schnittstelle mit der angegebenen Beschreibung existiert bereits."
+msgstr "Eine Schnittstelle mit der angegebenen Beschreibung existiert bereits."
 
 msgid "Anonymous"
 msgstr "Anonym"
@@ -554,8 +562,7 @@ msgstr ""
 "Download-Bandbreite anonymer Benutzer in KB/s. Ein leeres Feld steht für "
 "unbegrenzt."
 
-msgid ""
-"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 "Upload-Bandbreite anonymer Benutzer in KB/s. Ein leeres Feld steht für "
 "unbegrenzt."
@@ -671,8 +678,7 @@ msgstr "Base DN"
 msgid "Base Name"
 msgstr "Basisname"
 
-msgid ""
-"Base Name will be appended automatically when starting without 'iqn.'."
+msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 "Ist der Anfang nicht 'iqn.', wird der Base Name automatisch mit angehängt."
 
@@ -785,9 +791,12 @@ msgstr "Ändern"
 msgid "Change below file"
 msgstr ""
 
+#, fuzzy
+msgid "Change password"
+msgstr "Passwort für die Freigabe"
+
 msgid "Changes to this option will take effect after a reboot."
-msgstr ""
-"Änderungen in diesen Optionen werden erst nach einem Neustart wirksam."
+msgstr "Änderungen in diesen Optionen werden erst nach einem Neustart wirksam."
 
 msgid "Channel"
 msgstr "Channel"
@@ -818,9 +827,10 @@ msgstr "Wählen Sie eine Netzwerkschnittstelle zu dieser Route."
 msgid "Clear"
 msgstr "Zurücksetzen"
 
+#, fuzzy
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
 "Drücken Sie unterhalb auf &quot;Firmware Upload zulassen&quot; und wählen "
@@ -1000,6 +1010,16 @@ msgstr "Aktuell"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
+#, fuzzy
+msgid "Custom script"
+msgstr "Befehlsskript"
+
+msgid "Custom script is not found."
+msgstr ""
+
+msgid "Custom script is required."
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -1012,12 +1032,12 @@ msgstr "DHCP"
 msgid "DNS settings"
 msgstr "DNS-Einstellungen"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 "automatically after storing the new firmware. The configuration will be "
-"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"maintained.<br />You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
 "Brechen Sie das Firmware-Upgrade NICHT ab, sobald es gestartet wurde. %s "
@@ -1478,8 +1498,7 @@ msgstr ""
 "verloren!"
 
 msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
-"Wollen Sie wirklich den selektierten Eintrag aus der Liste entfernen?"
+msgstr "Wollen Sie wirklich den selektierten Eintrag aus der Liste entfernen?"
 
 msgid "Do you really want to uninstall this package?"
 msgstr "Soll das Paket wirklich deinstalliert werden?"
@@ -1488,8 +1507,7 @@ msgid "Document root"
 msgstr "Stammverzeichnis"
 
 msgid "Document root of the webserver. Home of the web page files."
-msgstr ""
-"Stammverzeichnis auf dem Webserver. Hier liegen Dateien für Webseiten."
+msgstr "Stammverzeichnis auf dem Webserver. Hier liegen Dateien für Webseiten."
 
 msgid "Domain"
 msgstr "Domäne"
@@ -1786,6 +1804,10 @@ msgstr ""
 msgid "Enable reverse DNS lookup."
 msgstr "Aktiviert umgekehrte DNS Auflösung."
 
+#, fuzzy
+msgid "Enable serial console"
+msgstr "Die Benutzung von Sendfile einschalten"
+
 msgid "Enable store DOS attributes"
 msgstr "Aktiviere Speicherung der DOS-Attribute"
 
@@ -2018,19 +2040,18 @@ msgstr "Konnte keine Statusreport an %s senden."
 msgid ""
 "Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Fehler beim versenden des Statusreports. Bitte überprüfen Sie die <a "
-"href='%s'>Log-Dateien</a>."
+"Fehler beim versenden des Statusreports. Bitte überprüfen Sie die <a href='%"
+"s'>Log-Dateien</a>."
 
 #, php-format
 msgid "Failed to send test email to: %s."
 msgstr "Fehler beim Senden der Test-E-Mail an: %s."
 
 #, php-format
-msgid ""
-"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgid "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Fehler beim Versenden der Test-E-Mail. Bitte überprüfen Sie die <a "
-"href='%s'>Log-Dateien</a>."
+"Fehler beim Versenden der Test-E-Mail. Bitte überprüfen Sie die <a href='%"
+"s'>Log-Dateien</a>."
 
 msgid "Failed to upload file."
 msgstr "Das Hochladen der Datei ist fehlgeschlagen."
@@ -2330,7 +2351,8 @@ msgstr "I/O-Pakete"
 msgid "I/O statistics"
 msgstr "I/O Statistik"
 
-msgid "I/O timeout in seconds (30 by default)."
+#, fuzzy, php-format
+msgid "I/O timeout in seconds (%d by default)."
 msgstr "I/O Timeout in Sekunden (30 sind standard)."
 
 msgid "IG"
@@ -2345,9 +2367,9 @@ msgstr "IP-Adresse"
 msgid "IP address of remote syslog server"
 msgstr "IP-Adresse des Remote Syslog Server"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 "IP Adressen werden zu Hostnamen aufgelöst, wenn <a href=%s>&quot;Löse IP "
@@ -2427,10 +2449,11 @@ msgstr ""
 "sie nicht, wenn andere Clients als AFP (NFS/SMB/lokaler Client) auf den "
 "Datenträger schreiben."
 
+#, fuzzy
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only "
-"mode.<br>Service disruption to users accessing this mount will occur during "
+"to perform selected command, otherwise the commands work in read-only mode."
+"<br />Service disruption to users accessing this mount will occur during "
 "this process."
 msgstr ""
 "Wenn die ausgewählte Festplatte/Partition gemountet ist, wird diese "
@@ -2567,8 +2590,7 @@ msgid "Initiator name"
 msgstr "Name des Initiators"
 
 msgid "Initiator side secret. (for mutual CHAP autentication)"
-msgstr ""
-"Initiatorseitiges Geheimnis. (Für gegenseitige CHAP-Authentifizierung)"
+msgstr "Initiatorseitiges Geheimnis. (Für gegenseitige CHAP-Authentifizierung)"
 
 msgid "Initiator side user name. (for mutual CHAP authentication)"
 msgstr ""
@@ -2698,13 +2720,13 @@ msgstr "Letzte Änderung abgespeichert"
 msgid "Latvian"
 msgstr "Lettisch"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
-"menu."
+"Leave '%s' for unformated disks and format them using <a href='%s'>format</"
+"a> menu."
 msgstr ""
-"Lass '%s' für unformatierte Festplatten und formatiere sie mit dem <a "
-"href=%s>Formatieren</a> Menü."
+"Lass '%s' für unformatierte Festplatten und formatiere sie mit dem <a href=%"
+"s>Formatieren</a> Menü."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Level 1 - Minimaler Stromverbrauch mit Standby ('spindown')"
@@ -2763,9 +2785,8 @@ msgid ""
 "(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
 msgstr ""
 "Liste der paarweise akzeptablen (Unicast) Chiffren für WPA. Eine oder "
-"mehrere von: CCMP (AES im Zählermodus mit CBC-MAC, RFC 3610, IEEE "
-"802i/D7.0), TKIP (temporäres Schlüssel Integritätsprotokoll, IEEE "
-"802.11i/D7.0)."
+"mehrere von: CCMP (AES im Zählermodus mit CBC-MAC, RFC 3610, IEEE 802i/"
+"D7.0), TKIP (temporäres Schlüssel Integritätsprotokoll, IEEE 802.11i/D7.0)."
 
 msgid "List of available target name on all configured iSCSI targets"
 msgstr "Liste verfügbarer Zielnamen auf allen konfigurierten iSCSI Zielen"
@@ -2845,11 +2866,10 @@ msgid "Location where the content database file will be stored."
 msgstr "Standort an welchem die Inhalte-Datenbank gespeichert werden soll."
 
 #, php-format
-msgid ""
-"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
-"Ort, an dem die Arbeitsdateien gespeichert werden sollen, z.B. "
-"%s/backup/.unison"
+"Ort, an dem die Arbeitsdateien gespeichert werden sollen, z.B. %s/backup/."
+"unison"
 
 msgid "Log"
 msgstr "Log"
@@ -2862,13 +2882,16 @@ msgstr ""
 "Pakete des Protokolls werden durch diese Regel abgedeckt - werden nach "
 "Syslog weitergeleitet."
 
-msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#, php-format
+msgid "Logical Unit Controller Authorised network (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#, php-format
+msgid "Logical Unit Controller IP address (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller TCP port (3261 by default)"
+#, php-format
+msgid "Logical Unit Controller TCP port (%d by default)"
 msgstr ""
 
 msgid "Logical Unit Controller login information"
@@ -2965,10 +2988,8 @@ msgstr "Maximaler passiver Port"
 msgid "Max. sessions"
 msgstr "Maximale Verbindungen"
 
-msgid ""
-"Max. time-to-live (max. number of hops) used in outgoing probe packets."
-msgstr ""
-"Max. time-to-live (max. Anzahl Netzknoten) für gesendete Datenpakete."
+msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgstr "Max. time-to-live (max. Anzahl Netzknoten) für gesendete Datenpakete."
 
 msgid "MaxBurstLength"
 msgstr "MaxBurstLength"
@@ -2986,14 +3007,16 @@ msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 "Maximal erlaubte Verbindungsversuche bevor eine Trennung durchgeführt wird."
 
-msgid "Maximum number of connections in each session (8 by default)."
+#, fuzzy, php-format
+msgid "Maximum number of connections in each session (%d by default)."
 msgstr "Maximale Anzahl an Verbindungen pro Session (8 sind standard)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr ""
 "Maximale Anzahl der Verbindungen von einer IP-Adresse (0 = unbegrenzt)."
 
-msgid "Maximum number of sessions holding at same time (32 by default)."
+#, fuzzy, php-format
+msgid "Maximum number of sessions holding at same time (%d by default)."
 msgstr ""
 "Maximale Anzahl an Sessions, die zur gleichen Zeit gehalten werden kann (32 "
 "ist standard)."
@@ -3083,8 +3106,7 @@ msgstr "Einhängepunkt"
 msgid "Mount point name"
 msgstr "Name des Einhängepunkts"
 
-msgid ""
-"Mount the file system read-only (even the super-user may not write it)."
+msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 "Das Dateisystem im Nur-Lesen-Modus einbinden (selbst der Super-User darf "
 "nicht schreibend zugreifen)."
@@ -3116,7 +3138,8 @@ msgstr "NIS"
 msgid "NOPIN Interval"
 msgstr "NOPIN Intervall"
 
-msgid "NOPIN sending interval in seconds (20 by default)."
+#, fuzzy, php-format
+msgid "NOPIN sending interval in seconds (%d by default)."
 msgstr "NOPIN Versandintervall in Sekunden (standard ist 20)."
 
 msgid "NOT YET AVAILABLE"
@@ -3212,29 +3235,29 @@ msgid ""
 "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
 "first."
 msgstr ""
-"Keine konfigurierte Initiatorgruppe gefunden. Bitte füge eine neue <a "
-"href=%s>Initiatorgruppe</a> zuerst hinzu."
+"Keine konfigurierte Initiatorgruppe gefunden. Bitte füge eine neue <a href=%"
+"s>Initiatorgruppe</a> zuerst hinzu."
 
 #, php-format
 msgid ""
 "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
 msgstr ""
-"Keine konfigurierte Portalgruppe gefunden. Bitte füge eine neue <a "
-"href=%s>Portalgruppe</a> zuerst hinzu."
+"Keine konfigurierte Portalgruppe gefunden. Bitte füge eine neue <a href=%"
+"s>Portalgruppe</a> zuerst hinzu."
 
 #, php-format
 msgid "No configured pools. Please add new <a href=%s>pools</a> first."
 msgstr ""
-"Kein konfigurierter Pool gefunden. Bitte füge einen neuen <a "
-"href=%s>Pool</a> zuerst hinzu."
+"Kein konfigurierter Pool gefunden. Bitte füge einen neuen <a href=%s>Pool</"
+"a> zuerst hinzu."
 
 #, php-format
 msgid ""
 "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
 "first."
 msgstr ""
-"Kein konfiguriertes virtuelles Gerät gefunden. Bitte füge ein neues <a "
-"href=%s>virtuelles Gerät</a> zuerst hinzu."
+"Kein konfiguriertes virtuelles Gerät gefunden. Bitte füge ein neues <a href=%"
+"s>virtuelles Gerät</a> zuerst hinzu."
 
 msgid "No device selected."
 msgstr "Kein Gerät ausgewählt."
@@ -3245,8 +3268,8 @@ msgstr "Keine Festplatte konfiguriert"
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
 msgstr ""
-"Keine Festplatte verfügbar. Bitte fügen Sie zuerst eine neue <a "
-"href=%s>Festplatte</a> hinzu."
+"Keine Festplatte verfügbar. Bitte fügen Sie zuerst eine neue <a href=%"
+"s>Festplatte</a> hinzu."
 
 msgid "No file was uploaded."
 msgstr "Es wurde keine Datei hochgeladen."
@@ -3372,8 +3395,7 @@ msgstr ""
 "besitzt."
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
-msgstr ""
-"Nur authentifizierte Benutzer zulassen. Anonymer Zugang ist verboten."
+msgstr "Nur authentifizierte Benutzer zulassen. Anonymer Zugang ist verboten."
 
 #, php-format
 msgid ""
@@ -4118,6 +4140,10 @@ msgstr "Test-E-Mail senden"
 msgid "Separate email addresses by semi-colon."
 msgstr "Semikolon getrennte Liste von E-Mail Adressen."
 
+#, fuzzy
+msgid "Serial Console"
+msgstr "Seriennummer"
+
 msgid "Serial number"
 msgstr "Seriennummer"
 
@@ -4175,8 +4201,8 @@ msgstr ""
 
 msgid "Sets an alternate mount point for the root dataset. Default is /mnt."
 msgstr ""
-"Setzt den alternativen Einhängepunkt für den Wurzeldatensatz. Standard ist "
-"/mnt."
+"Setzt den alternativen Einhängepunkt für den Wurzeldatensatz. Standard ist /"
+"mnt."
 
 msgid ""
 "Sets the database information to be stored in path. You have to specifiy a "
@@ -4249,10 +4275,12 @@ msgstr "Single-Parität RAID-5"
 msgid "Size"
 msgstr "Größe"
 
-msgid "Size of receive buffer (16384 by default)."
+#, fuzzy, php-format
+msgid "Size of receive buffer (%d by default)."
 msgstr "Größe des 'Receive' Puffer"
 
-msgid "Size of send buffer (16384 by default)."
+#, fuzzy, php-format
+msgid "Size of send buffer (%d by default)."
 msgstr "Größe des 'Send' Puffer"
 
 msgid ""
@@ -4306,8 +4334,7 @@ msgid "Specifies how many servers to create."
 msgstr "Legt fest, wie viele Server erstellt werden sollen."
 
 msgid "Specifies that the file system should be exported read-only."
-msgstr ""
-"Legt fest, dass das Dateisystem nur lesefähig exportiert werden soll."
+msgstr "Legt fest, dass das Dateisystem nur lesefähig exportiert werden soll."
 
 msgid "Specifies the command to be run."
 msgstr "Gibt den auszuführende Befehl an."
@@ -4340,8 +4367,7 @@ msgid "Specifies the username which the service will run as."
 msgstr ""
 "Gibt den Benutzernamen an, unter dem der Hintergrundprozess laufen soll."
 
-msgid ""
-"Specifies whether it is allowed to login as superuser (root) directly."
+msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 "Gibt an, ob es dem Administrator (root) erlaubt ist, sich direkt einzuloggen."
 
@@ -4615,6 +4641,9 @@ msgstr ""
 "keinen Zugriff auf die Freigabe bekommen. Es folgt dem gleichen Format wie "
 "die Erlaubnisoption."
 
+msgid "The COM port in BIOS has to be enabled before enabling this option."
+msgstr ""
+
 msgid "The IP address that this hostname represents."
 msgstr "Die IP Adresse, welche diesen Hostnamen repräsentiert."
 
@@ -4631,8 +4660,8 @@ msgid ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
 "first before proceeding."
 msgstr ""
-"Das RAID Laufwerk ist momentan gemountet! Entfernen Sie den <a "
-"href=%s>Einhängepunkt</a> zuerst bevor sie fortfahren."
+"Das RAID Laufwerk ist momentan gemountet! Entfernen Sie den <a href=%"
+"s>Einhängepunkt</a> zuerst bevor sie fortfahren."
 
 msgid "The TCP port must be a valid port number."
 msgstr "Der TCP/IP Port muss eingetragen werden."
@@ -4742,8 +4771,8 @@ msgstr "Das Attribut '%s' wird benötigt."
 msgid ""
 "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr ""
-"Das Attribut '%s' darf nur aus folgenden Zeichen bestehen: a-z, A-Z, 0-9, _ "
-", -."
+"Das Attribut '%s' darf nur aus folgenden Zeichen bestehen: a-z, A-Z, 0-9, "
+"_ , -."
 
 #, c-format
 msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
@@ -4801,9 +4830,9 @@ msgstr ""
 msgid "The changes have been applied successfully."
 msgstr "Die Änderungen wurden übernommen."
 
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"The changes have been saved. You have to <a href=%s>reboot</a> the system "
+"The changes have been saved. You have to <a href='%s'>reboot</a> the system "
 "for the changes to take effect."
 msgstr ""
 "Änderungen wurden gespeichert. Es muss ein <a href=%s>Neustart</a> "
@@ -4822,8 +4851,9 @@ msgstr "Die Konfiguration konnte nicht wiederhergestellt werden."
 msgid "The configuration could not be restored. %s"
 msgstr "Die Konfiguration konnte nicht wiederhergestellt werden. %s"
 
+#, fuzzy
 msgid ""
-"The configuration has been changed.<br>You must apply the changes in order "
+"The configuration has been changed.<br />You must apply the changes in order "
 "for them to take effect."
 msgstr ""
 "Die Konfiguration wurde geändert.<br>Damit die Änderungen wirksam werden, "
@@ -4897,8 +4927,8 @@ msgstr "Diese Festplatte/Partition ist bereits konfiguriert."
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
-"Der ausgewählte Name, zu dem der Verzeichnis-Server verbunden werden soll, "
-"z.B.: %s"
+"Der ausgewählte Name, zu dem der Verzeichnis-Server verbunden werden soll, z."
+"B.: %s"
 
 #, php-format
 msgid ""
@@ -4940,8 +4970,8 @@ msgid "The host name contain invalid characters."
 msgstr "Der Hostname enthält ungültige Zeichen."
 
 msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
-"."
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ "
+"and ."
 msgstr ""
 "Der Hostname darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9, - , _ "
 "sowie ."
@@ -4985,13 +5015,16 @@ msgstr "Der Login-Name enthält ungültige Zeichen."
 msgid "The login name is a reserved login name."
 msgstr "Der Login-Name ist reserviert."
 
+#, fuzzy
+msgid "The login name is limited to 16 characters."
+msgstr "Der Login-Name enthält ungültige Zeichen."
+
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 "Die maximale Anzahl von Verbindungen je IP muss entweder 0 (unbegrenzt) oder "
 "größer 0 sein."
 
-msgid ""
-"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgid "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
 "Die maximale Download-Bandbreite in KiB/s. Ein leeres Feld steht für "
 "unbegrenzt."
@@ -5015,8 +5048,8 @@ msgid ""
 "The method can be accepted by the target. Auto means both none and "
 "authentication."
 msgstr ""
-"Die Methode kann vom Ziel akzeptiert werden. \"Auto\" kann einerseits "
-"\"keine\" und \"Authentifikation\" bedeuten."
+"Die Methode kann vom Ziel akzeptiert werden. \"Auto\" kann einerseits \"keine"
+"\" und \"Authentifikation\" bedeuten."
 
 msgid ""
 "The method can be accepted in discovery session. Auto means both none and "
@@ -5061,8 +5094,7 @@ msgid "The old password is not correct."
 msgstr "Das alte Passwort ist nicht korrekt."
 
 msgid "The password change protocol to use."
-msgstr ""
-"Mit dem Kennwort das Protokoll, welches verwendet werden soll, ändern."
+msgstr "Mit dem Kennwort das Protokoll, welches verwendet werden soll, ändern."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Das Passwort enthält das ungültige Zeichen ':'."
@@ -5134,6 +5166,10 @@ msgid "The queuedepth range is invalid."
 msgstr ""
 
 #, php-format
+msgid "The recommended queue depth is %d."
+msgstr ""
+
+#, php-format
 msgid "The removable area mapped to LUN%d."
 msgstr ""
 
@@ -5167,8 +5203,7 @@ msgid "The system is halting now. This may take one minute."
 msgstr "Das System wird heruntergefahren, dies kann kurz dauern."
 
 msgid "The system is rebooting now. This may take one minute."
-msgstr ""
-"Das System wird jetzt neu gestartet. Dies kann einige Minuten dauern."
+msgstr "Das System wird jetzt neu gestartet. Dies kann einige Minuten dauern."
 
 msgid "The tag range is invalid."
 msgstr ""
@@ -5203,8 +5238,7 @@ msgstr ""
 "Die hochgeladene Datei überschreitet die MAX_FILE_SIZE Anweisung, die in der "
 "HTML Form spezifiziert wurde."
 
-msgid ""
-"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 "Die hochgeladene Datei überschreitet die upload_max_filesize Anweisung in "
 "der php.ini."
@@ -5226,6 +5260,9 @@ msgstr "Das Volume muss vor dem Löschen ausgeworfen werden."
 
 msgid "The working directory does not exist."
 msgstr "Das Arbeitsverzeichnis existiert nicht."
+
+msgid "There are too many additional groups."
+msgstr ""
 
 msgid "There is no error, the file uploaded with success."
 msgstr ""
@@ -5436,8 +5473,8 @@ msgid "This group already exists in the group list."
 msgstr "Diese Gruppe gibt es bereits."
 
 msgid ""
-"This is both the name of the server as advertised via "
-"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+"This is both the name of the server as advertised via Zeroconf/Bonjour/"
+"Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
 "Dies ist einerseits der Name des Server wie per Zeroconf/Bonjour/Rendevous "
 "angezeigt und andererseits der Name der Datenbank die via DAAP exportiert "
@@ -5457,12 +5494,13 @@ msgstr ""
 "Protokoll mit der Versionsnummer niedriger als NT LM 0.12 verwendet und wenn "
 "Windows 9x erkannt wird."
 
+#, fuzzy
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
 "and may lead to unexpected behavior or security compromises. Only install "
 "images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br><br>Do you want to install this image anyway "
-"(on your own risk)?"
+"has not been tampered with.<br /><br />Do you want to install this image "
+"anyway (on your own risk)?"
 msgstr ""
 "Das bedeutet, dass das Image, das Sie geladen haben kein offiziell "
 "unterstütztes Image ist und eventuell die Sicherheit des Systems gefährdet. "
@@ -5473,8 +5511,7 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Der Name kommt in der Platten-Liste bereits vor."
 
-msgid ""
-"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr "Beispielname: iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5677,10 +5714,10 @@ msgstr "Dieser Benutzer existiert bereits."
 msgid "This virtual device name already exists."
 msgstr "Der virtuelle Gerätename existiert bereits."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "This will cause %s not to check for newer firmware versions when the <a "
-"href=%s>%s</a> page is viewed."
+"href='%s'>%s</a> page is viewed."
 msgstr ""
 "Damit wird %s beim Aufruf der Seite <a href=%s>%s</a> nicht nach einer neuen "
 "Firmware suchen."
@@ -5733,13 +5770,12 @@ msgstr "Zeiten"
 
 msgid ""
 "To configure the target, you must add at least Portal Group and Initiator "
-"Group and Extent.<br/>Portal Group which is identified by tag number defines "
-"IP addresses and listening TCP ports.<br/>Initiator Group which is "
-"identified by tag number defines authorised initiator names and "
-"networks.<br/>Auth Group which is identified by tag number and is optional "
-"if the target does not use CHAP authentication defines authorised users and "
-"secrets for additional security.<br/>Extent defines the storage area of the "
-"target."
+"Group and Extent.<br />Portal Group which is identified by tag number "
+"defines IP addresses and listening TCP ports.<br />Initiator Group which is "
+"identified by tag number defines authorised initiator names and networks."
+"<br />Auth Group which is identified by tag number and is optional if the "
+"target does not use CHAP authentication defines authorised users and secrets "
+"for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 
 msgid "To e-mail"
@@ -5750,8 +5786,8 @@ msgstr "An E-Mail-Adresse"
 
 #, php-format
 msgid ""
-"To get detailed informations about TCP Wrappers check the FreeBSD <a "
-"href='%s' target='_blank'>documentation</a>."
+"To get detailed informations about TCP Wrappers check the FreeBSD <a href='%"
+"s' target='_blank'>documentation</a>."
 msgstr ""
 "Um ausführliche Informationen über TCP Wrapper zu erhalten, sehen Sie in der "
 "FreeBSD <a href='%s' target='_blank'>Dokumentation</a> nach."
@@ -5769,13 +5805,13 @@ msgstr ""
 msgid ""
 "To increase CIFS performance try the following:<div "
 "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a "
-"href='%s'>MTU</a></li></ul></div>"
+"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
+"ul></div>"
 msgstr ""
-"Um die Leistungsfähigkeit von CIFS zu steigern, versuchen Sie das "
-"folgende:<div id='enumeration'><ul><li>Einschalten 'Lesen/Schreiben in "
-"großen Blöcken'-Schalter</li><li>Einschalten '<a href='%s'>Tuning</a>' "
-"Schalter</li><li>erhöht <a href='%s'>MTU</a></li></ul></div>"
+"Um die Leistungsfähigkeit von CIFS zu steigern, versuchen Sie das folgende:"
+"<div id='enumeration'><ul><li>Einschalten 'Lesen/Schreiben in großen "
+"Blöcken'-Schalter</li><li>Einschalten '<a href='%s'>Tuning</a>' Schalter</"
+"li><li>erhöht <a href='%s'>MTU</a></li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr "Um alle IP Adressen abzudecken, lassen Sie dieses Feld frei."
@@ -5783,13 +5819,13 @@ msgstr "Um alle IP Adressen abzudecken, lassen Sie dieses Feld frei."
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
 "following services will use AD authentication:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
-">System</li></ul></div>"
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
+"li><li>System</li></ul></div>"
 msgstr ""
 "Um Active Directory zu verwenden, wird der Dienst CIFS/SMB auch "
 "eingeschaltet. Die folgenden Dienste verwenden die AD Authentifizierung:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
-">System</li></ul></div>"
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
+"li><li>System</li></ul></div>"
 
 msgid "Tolerated"
 msgstr "Toleriert"
@@ -5992,8 +6028,7 @@ msgstr ""
 msgid "Use sendfile"
 msgstr "Verwende Sendfile"
 
-msgid ""
-"Use the following IP address as the source address in outgoing packets."
+msgid "Use the following IP address as the source address in outgoing packets."
 msgstr "Benutze folgende IP als Quelladresse für ausgehende Pakete."
 
 msgid ""
@@ -6179,6 +6214,9 @@ msgstr "Weboberfläche"
 msgid "Webserver"
 msgstr "Webserver"
 
+msgid "Webserver document root is missing."
+msgstr ""
+
 msgid "Week days"
 msgstr "Wochentage"
 
@@ -6241,16 +6279,12 @@ msgstr ""
 "Sie können ebenfalls ein Packet mittels SSH oder Konsole unter Benutzung des "
 "Kommandos pkg_add installieren.<br>Beispiel: pkg_add -r Packetname"
 
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "You can use the following parameters for substitution:"
 msgstr ""
-"Folgende Parameter können als Ersetzungen verwendet werden:<div "
-"id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostname</li></ul></div>"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br>"
+"You can't mount the partition '%s' where the config file is stored.<br />"
 msgstr ""
 "Die Partition '%s' dient als Speicherort für die Konfigurationsdatei und "
 "kann daher nicht eingebunden werden.<br>"
@@ -6265,6 +6299,14 @@ msgstr ""
 #, php-format
 msgid ""
 "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
+"Sie müssen <a href=%s>Zeroconf/Bonjour</a> aktivieren um diesen Service den "
+"Clients bekannt zu machen."
+
+#, fuzzy, php-format
+msgid ""
+"You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this "
 "service to clients."
 msgstr ""
 "Sie müssen <a href=%s>Zeroconf/Bonjour</a> aktivieren um diesen Service den "
@@ -6334,6 +6376,10 @@ msgstr "atacontrol Auflistung fehlgeschlagen, atacontrol nicht gefunden !!"
 msgid "cachecnid"
 msgstr "cachecnid"
 
+#, fuzzy
+msgid "change failed."
+msgstr "Paketdatei"
+
 msgid "chroot() everyone, but root."
 msgstr "Wurzel-Verzeichnis für alle Benutzer ändern, bis auf den root."
 
@@ -6353,6 +6399,12 @@ msgstr "dbpath"
 msgid "e.g. %s"
 msgstr "z.B. %s"
 
+msgid "filechooser"
+msgstr ""
+
+msgid "get target info failed."
+msgstr ""
+
 msgid "hour(s)"
 msgstr "Stunde(n)"
 
@@ -6365,10 +6417,8 @@ msgstr "iSCSI Target"
 msgid "iSCSI Target Logical Unit Controller"
 msgstr ""
 
-msgid "iSCSI initial parameter (262144 by default)."
-msgstr "iSCSI Initialparameter (262144 ist standard)."
-
-msgid "iSCSI initial parameter (65536 by default)."
+#, fuzzy, php-format
+msgid "iSCSI initial parameter (%d by default)."
 msgstr "iSCSI Initialparameter (65536 ist standard)."
 
 msgid "iSCSI initiator disabled"
@@ -6376,6 +6426,10 @@ msgstr "iSCSI initiator deaktiviert"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+#, fuzzy
+msgid "load/unload failed."
+msgstr "Das Hochladen der Datei ist fehlgeschlagen."
 
 msgid "minute(s)"
 msgstr "Minute(n)"
@@ -6425,6 +6479,9 @@ msgstr "rc.conf"
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
+msgid "scan target failed."
+msgstr ""
+
 msgid "second(s)"
 msgstr "Sekunde(n)"
 
@@ -6433,9 +6490,6 @@ msgstr "Sekunden"
 
 msgid "striping"
 msgstr "striping"
-
-msgid "successfully"
-msgstr ""
 
 msgid "successfully."
 msgstr ""
@@ -6451,6 +6505,9 @@ msgstr "Aushängen"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "iSCSI Initialparameter (262144 ist standard)."
 
 #~ msgid "Date"
 #~ msgstr "Datum"
@@ -6521,15 +6578,16 @@ msgstr "upriv"
 #~ msgid "Shutdown Time"
 #~ msgstr "Shutdownzeit"
 
-#, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Letzte %d %s Logfileeinträge"
 
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr ""
-#~ "Die Konfiguration konnte nicht wiederhergestellt werden. (file upload error)."
+#~ "Die Konfiguration konnte nicht wiederhergestellt werden. (file upload "
+#~ "error)."
 
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Diese verschlüsselte Festplatte ist eingebunden (gemountet); vor dem "
 #~ "Entfernen ist diese zu entbinden (unmount)"
@@ -6557,7 +6615,6 @@ msgstr "upriv"
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (mirroring/spiegeln)"
 
-#, c-format, php-format
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% von %d MB"
 
@@ -6567,13 +6624,12 @@ msgstr "upriv"
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Lege Arbeitsverzeichnis an, falls es noch nicht existiert"
 
-#, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 #~ "used as extent."
 #~ msgstr ""
-#~ "Dateipfad (z. B. /mnt/sharename/extent/%s) oder Gerätename (z. B. /dev/ad1) "
-#~ "als extent nutzen."
+#~ "Dateipfad (z. B. /mnt/sharename/extent/%s) oder Gerätename (z. B. /dev/"
+#~ "ad1) als extent nutzen."
 
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Sie müssen zuerst 'Extent'-Objekte definieren."
@@ -6585,20 +6641,20 @@ msgstr "upriv"
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
+#~ "must be defined before they can be used, and they cannot be used more "
+#~ "than once."
 #~ msgstr ""
 #~ "Devices werden verwendet, um Extents oder andere Devices zu kombinieren. "
 #~ "Extents und Devices müssen definiert sein, bevor sie verwendet werden "
 #~ "können, und sie können nicht mehr als einmal verwendet werden."
 
 #~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and is "
-#~ "made up of one or more devices, and/or one or more extents."
+#~ "At the highest level, a target is what is presented to the initiator, and "
+#~ "is made up of one or more devices, and/or one or more extents."
 #~ msgstr ""
-#~ "Auf der höchsten Ebene ist ein Ziel das, was dem Initiator angezeigt wird. "
-#~ "Es besteht aus einem oder mehreren Geräten und/oder einem oder mehreren "
-#~ "Extents."
+#~ "Auf der höchsten Ebene ist ein Ziel das, was dem Initiator angezeigt "
+#~ "wird. Es besteht aus einem oder mehreren Geräten und/oder einem oder "
+#~ "mehreren Extents."
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "Voller Kommandozeilenzugang für Benutzer!"
@@ -6613,7 +6669,6 @@ msgstr "upriv"
 #~ "Hinweis: Strg+Klick (oder Command-Klick auf dem Mac) um Minuten, Stunden, "
 #~ "Tage und Monate aus- oder abzuwählen.A"
 
-#, php-format
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Ungültiger Port! Port-Nummer muss im Bereich von %d bis %d sein."
 
@@ -6628,35 +6683,31 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "Diese Optionen werden der Freigabe-Konfiguration in smb.conf hinzugefügt."
 
-#, php-format
 #~ msgid "Status report from host: %s.%s"
 #~ msgstr "Statusbericht von Host: %s.%s"
 
-#, php-format
 #~ msgid "Port %s must be less than %s."
 #~ msgstr "Port %s muss kleiner sein als %s."
 
-#, php-format
 #~ msgid "The %s port must be in the range from %d to %d."
 #~ msgstr "Der %s Port muss im Bereich von %d bis %d sein."
 
-#, php-format
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s auf %s (%dMHz)"
 
-#, php-format
 #~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
 #~ msgstr ""
-#~ "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a "
-#~ "href=%s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
+#~ "<a href=%s>SSHD</a> muss für Unison aktiviert sein; der <a href=%"
+#~ "s>Benutzer</a> benötigt außerdem uneingeschränkten Zugang zur Shell."
 
 #~ msgid ""
-#~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
-#~ msgstr ""
-#~ "Die Standardschlüssellängen sind: 128 für AES, 128 für Blowfish und 192 für "
+#~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for "
 #~ "3DES."
+#~ msgstr ""
+#~ "Die Standardschlüssellängen sind: 128 für AES, 128 für Blowfish und 192 "
+#~ "für 3DES."
 
 #~ msgid "Syslog"
 #~ msgstr "Syslog"

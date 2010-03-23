@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"POT-Creation-Date: 2010-03-23 21:14+0000\n"
 "PO-Revision-Date: 2009-11-09 20:52+0000\n"
 "Last-Translator: Rūdolfs <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -53,8 +53,7 @@ msgstr "%s uz %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr ""
-"%s atkārtoti ielādēs operētājsistēmu pēc konfigurācijas atjaunošanas."
+msgstr "%s atkārtoti ielādēs operētājsistēmu pēc konfigurācijas atjaunošanas."
 
 #, php-format
 msgid "%s%d %s is already used by %s%d."
@@ -74,9 +73,10 @@ msgstr "*** Importēts duplikāts ***"
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr "0=atspējots, 1-255=iespējota komandu rindošana ar noteiktu dziļumu."
 
+#, fuzzy
 msgid ""
-"1. Use these specials actions for debugging only!<br>2. There is no need of "
-"using this menu for starting a RAID volume (start automaticaly)."
+"1. Use these specials actions for debugging only!<br />2. There is no need "
+"of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
 "1. Lietojiet šīs speciālās iespējas tikai atkļūdošanai!<br>2. Nav iemesla "
 "izmantot šo izvēlni, lai uzsāktu RAID sējumu (iespēkojas automātiski)."
@@ -87,19 +87,20 @@ msgstr "802.1Q VLAN birka (starp 1 un 4094)."
 msgid "<->"
 msgstr "<->"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have shell access."
+"<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%"
+"s'>user</a> must have shell access."
 msgstr ""
-"<a href=%s>SSHD</a> vajag būt iespējotam priekš Unison, un <a "
-"href=%s>lietotājam</a> vajag pieeju čaulai."
+"<a href=%s>SSHD</a> vajag būt iespējotam priekš Unison, un <a href=%"
+"s>lietotājam</a> vajag pieeju čaulai."
 
+#, fuzzy
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted "
 "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
 "<b>EFI GPT</b> ja tu vēlies pievienot ar GPT formatētu disku (<b>galvenā "
@@ -109,22 +110,30 @@ msgstr ""
 "programmatūras RAID</b> priekš vecajiem programmatūrasRAID sējumiem "
 "(<b>izveidoti pirms 0.68</b>) vai CD/DVD."
 
+#, fuzzy
+msgid ""
+"<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+"Tu vari lietot sekojošos parametrus priekš aizstāšanas:<div "
+"id='enumeration'><ul><li>%d - Datums</li><li>%h - Saimniekdatora nosaukums</"
+"li></ul></div>"
+
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older "
-"rsync.</li><li>Before - File-deletions will be done before the transfer "
-"starts.</li><li>During - File-deletions will be done incrementally as the "
-"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</"
+"li><li>Before - File-deletions will be done before the transfer starts.</"
+"li><li>During - File-deletions will be done incrementally as the transfer "
+"happens.</li><li>Delay - File-deletions will be computed during the "
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 "<li>Galvenais - Rsync izvēlēsies 'esošo' algoritmu runājot ar rsync 3.0.0 "
-"vai jaunāku, un 'un iepriekšējo' algoritmu, kad runās ar vecāku "
-"rsync.</li><li>Pirms - Faila-dzēšana tiks veikta pirms pārsūtīšanas "
-"uzsākšanas.</li><li>Esošo - Failu-dzēšana tiks veikta tikai tiem kas tiek "
-"mainīti.</li><li>Aizkaves - Failu-dzēšana tiks veikta pārsūtīšanas laikā, un "
-"pēc tam dzēsta, kad pārsūtīšana beigusies.</li><li>Pēc - Failu-dzēšana tiks "
-"veikta, kad pārsūtījums ir beidzies.</li>"
+"vai jaunāku, un 'un iepriekšējo' algoritmu, kad runās ar vecāku rsync.</"
+"li><li>Pirms - Faila-dzēšana tiks veikta pirms pārsūtīšanas uzsākšanas.</"
+"li><li>Esošo - Failu-dzēšana tiks veikta tikai tiem kas tiek mainīti.</"
+"li><li>Aizkaves - Failu-dzēšana tiks veikta pārsūtīšanas laikā, un pēc tam "
+"dzēsta, kad pārsūtīšana beigusies.</li><li>Pēc - Failu-dzēšana tiks veikta, "
+"kad pārsūtījums ir beidzies.</li>"
 
 msgid ""
 "A Auth Group contains authorised users and secrets for additional security."
@@ -407,20 +416,20 @@ msgstr "Paplašināti iestatījumi"
 msgid ""
 "After you click &quot;Save&quot;, you may also have to do one or more of the "
 "following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP "
-"address</li></ul>"
+"address of your computer</li><li>access the webGUI with the new IP address</"
+"li></ul>"
 msgstr ""
 "Pēc tam kad Tu spied uz &quot;Saglabāt&quot;, Tev arī var nākties veikt "
 "vienu vai vairākus soļus pirms tu vari piekļūt %s atkal: <ul><li>mainīt IP "
 "adresi datoram</li><li>piekļūt webGUI ar jauno IP adresi</li></ul>"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: </span></p><ul><li><span "
-"class='vexpl'>change the IP address of your computer</span></li><li><span "
-"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+"before you can access your NAS again: <ul><li><span class='vexpl'>change the "
+"IP address of your computer</span></li><li><span class='vexpl'>access the "
+"webGUI with the new IP address</span></li></ul>"
 msgstr ""
 "Pēc tam kad tu spied &quot;Saglabāt&quot;, tev vajag pārlādēt %s lai "
 "izmaiņas stātos spēkā. Tu arī varēji veikt vienu vai vairākus soļus pirms tu "
@@ -442,6 +451,10 @@ msgstr "Viss"
 
 msgid "All dirs"
 msgstr "Visas direktorijas"
+
+#, php-format
+msgid "All dirs requires mounted path, but Path %s is not mounted."
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -540,8 +553,7 @@ msgstr ""
 "Anonīma lietotāja lejupielādes joslas platums iekš KB/s. Tukšs lauks nozīmē "
 "bezgalību."
 
-msgid ""
-"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 "Anonīma lietotāja augšupielādes joslas platums iekš KB/S. Tukšums nozīmē "
 "bezgalību."
@@ -659,8 +671,7 @@ msgstr "Bāzes DN"
 msgid "Base Name"
 msgstr "Bāzes Vārds"
 
-msgid ""
-"Base Name will be appended automatically when starting without 'iqn.'."
+msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr "Bāzes Nosaukums tiks pievienots automātiski, ja sāksies bez 'iqn.'."
 
 msgid "Best available"
@@ -767,6 +778,10 @@ msgstr "Mainīt"
 msgid "Change below file"
 msgstr ""
 
+#, fuzzy
+msgid "Change password"
+msgstr "Kopīgojuma Parole"
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Izmaiņas šajā iespējā tiks īstenotas pēc pārlādes."
 
@@ -786,8 +801,7 @@ msgid "Chinese (Traditional)"
 msgstr "Ķīniešu (Tradicionālā)"
 
 msgid "Choose on which interface packets must come in to match this rule."
-msgstr ""
-"Izvēlies uz kury interfeisa paketēm jānāk, lai izpildītu šo noteikumu."
+msgstr "Izvēlies uz kury interfeisa paketēm jānāk, lai izpildītu šo noteikumu."
 
 msgid "Choose which IP protocol this rule should match."
 msgstr "Izvēlies kuram IP protokolam šim noteikumam vajadzētu atbilst."
@@ -798,9 +812,10 @@ msgstr "Izvēlies, kuram interfeisam pieder šis ceļš."
 msgid "Clear"
 msgstr "Notīrīt"
 
+#, fuzzy
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
 "Spied &quot;Iespējot programmatūras augšupielādi&quot; zemāk, tad izvēlies "
@@ -980,6 +995,16 @@ msgstr "Tekošais"
 msgid "Custom"
 msgstr "Pielāgots"
 
+#, fuzzy
+msgid "Custom script"
+msgstr "Komandas skripti"
+
+msgid "Custom script is not found."
+msgstr ""
+
+msgid "Custom script is required."
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -992,19 +1017,19 @@ msgstr "DHCP"
 msgid "DNS settings"
 msgstr "DNS uzstādījumi"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 "automatically after storing the new firmware. The configuration will be "
-"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"maintained.<br />You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
 "DO NOT nepārtraucies programmatūras uzlabošanu, kad tā ir sākusies. %s "
 "automātiski pārlādēsies pēc jaunās programmatūras noglabāšanas. "
 "Konfigurācija tiks atstāta.<br>Jums vajag vismaz %d Mb RAM, lai veiktu "
-"programmatūras uzlabošanu.<br>Ir stigri ieteicams, ka Jūs <a "
-"href=%s>Dublējat</a> Sistēmas konfigurāciju pirms Programmatūras uzlabošanas."
+"programmatūras uzlabošanu.<br>Ir stigri ieteicams, ka Jūs <a href=%"
+"s>Dublējat</a> Sistēmas konfigurāciju pirms Programmatūras uzlabošanas."
 
 msgid "DVD"
 msgstr "DVD"
@@ -1757,6 +1782,10 @@ msgstr ""
 msgid "Enable reverse DNS lookup."
 msgstr "Iespējot atpakaļēju DNS pārlūkošanu."
 
+#, fuzzy
+msgid "Enable serial console"
+msgstr "Iespējot sendfile."
+
 msgid "Enable store DOS attributes"
 msgstr "Iespējot DOS atribūtu glabāšanu"
 
@@ -1984,16 +2013,15 @@ msgstr "Neizdevās nosūtīt pārskatu uz: %s."
 msgid ""
 "Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Neizdevās nosūtīt statusa pārskatu. Lūdzu pārbaudi <a href='%s'> žurnāla "
-"</a> datnes."
+"Neizdevās nosūtīt statusa pārskatu. Lūdzu pārbaudi <a href='%s'> žurnāla </"
+"a> datnes."
 
 #, php-format
 msgid "Failed to send test email to: %s."
 msgstr "Neizdevās nosūtīt testa e-pastu uz: %s."
 
 #, php-format
-msgid ""
-"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgid "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
 "Neizdevās nosūtīt testa e-pastu. Lūdzu pārbaudi <a href='%s'>žurnāla</a> "
 "datnes."
@@ -2296,7 +2324,8 @@ msgstr "I/O paketes"
 msgid "I/O statistics"
 msgstr "I/O statistika"
 
-msgid "I/O timeout in seconds (30 by default)."
+#, fuzzy, php-format
+msgid "I/O timeout in seconds (%d by default)."
 msgstr "I/O noildze sekundēs (30 pēc noklusējuma)."
 
 msgid "IG"
@@ -2311,14 +2340,14 @@ msgstr "IP adrese"
 msgid "IP address of remote syslog server"
 msgstr "Attālinātā syslog servera IP adrese"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"IP adreses tiek atrisinātas uz saimniekdatoru nosaukumiem, ja <a "
-"href=%s>&quot;Atrisināt IP adreses uz saimniekdatoru nosaukumiem&quot;</a> "
-"ir iespējots."
+"IP adreses tiek atrisinātas uz saimniekdatoru nosaukumiem, ja <a href=%"
+"s>&quot;Atrisināt IP adreses uz saimniekdatoru nosaukumiem&quot;</a> ir "
+"iespējots."
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr "Attālinātā Rsync servera IP vai FQDN adrese."
@@ -2392,10 +2421,11 @@ msgstr ""
 "galvenes datnēs, lai samazinātu datubāzes slodzi. Neuzstādi šo iespēju, ja "
 "sējumu ir modificējis ne AFP klients (NFS/SMB/lokāls)."
 
+#, fuzzy
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only "
-"mode.<br>Service disruption to users accessing this mount will occur during "
+"to perform selected command, otherwise the commands work in read-only mode."
+"<br />Service disruption to users accessing this mount will occur during "
 "this process."
 msgstr ""
 "Ja izvēlētais disks/partīcija ir piemontēts, tas tiks atmontēts uz pagaidu "
@@ -2450,8 +2480,7 @@ msgstr "Ja vēlies mainīt paroli piekļūstot WebGUI, ievadi to te divreiz."
 
 msgid ""
 "If you want to change the username for accessing the WebGUI, enter it here."
-msgstr ""
-"Ja tu vēlies mainīt lietotājvārdu, lai piekļūtu WebGUI, ievadi to te."
+msgstr "Ja tu vēlies mainīt lietotājvārdu, lai piekļūtu WebGUI, ievadi to te."
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Bildes augšupielāde neizdevās (beidzās atmiņa?)"
@@ -2657,13 +2686,13 @@ msgstr "Pēdējā konfigurācijas izmaiņa"
 msgid "Latvian"
 msgstr "Latviešu"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
-"menu."
+"Leave '%s' for unformated disks and format them using <a href='%s'>format</"
+"a> menu."
 msgstr ""
-"Atstāj '%s' neformatētiem diskiem, un formatē tos izmantojot <a "
-"href=%s>formatēšanas</a> izvēlni."
+"Atstāj '%s' neformatētiem diskiem, un formatē tos izmantojot <a href=%"
+"s>formatēšanas</a> izvēlni."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
@@ -2724,9 +2753,8 @@ msgid ""
 "(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
 msgstr ""
 "Saraksts ar pieņemamiem pāru veidu (unicast) šifriem priekš WPA. Viens vai "
-"vairāk no: CCMP (AES Skaitītāja režīmā ar CBC-MAC, RFC 3610, IEEE "
-"802.11i/D7.0), TKIP (Pagaidu Atslēgas Integritātes Protokols, IEEE "
-"802.11i/D7.0)."
+"vairāk no: CCMP (AES Skaitītāja režīmā ar CBC-MAC, RFC 3610, IEEE 802.11i/"
+"D7.0), TKIP (Pagaidu Atslēgas Integritātes Protokols, IEEE 802.11i/D7.0)."
 
 msgid "List of available target name on all configured iSCSI targets"
 msgstr ""
@@ -2807,8 +2835,7 @@ msgid "Location where the content database file will be stored."
 msgstr "Vieta, kur satura datubāzes datne tiks glabāta."
 
 #, php-format
-msgid ""
-"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr "Vieta, kur darbojošās datnes tiks glabātas, piem. %s/backup/.unison"
 
 msgid "Log"
@@ -2820,13 +2847,16 @@ msgstr "Žurnalēšanas līmenis"
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "Žurnalēt paketes, kuras tiek padotas pa šo notiekumu uz syslog."
 
-msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#, php-format
+msgid "Logical Unit Controller Authorised network (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#, php-format
+msgid "Logical Unit Controller IP address (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller TCP port (3261 by default)"
+#, php-format
+msgid "Logical Unit Controller TCP port (%d by default)"
 msgstr ""
 
 msgid "Logical Unit Controller login information"
@@ -2923,8 +2953,7 @@ msgstr "Max. pasīvais ports"
 msgid "Max. sessions"
 msgstr "Max. sesijas"
 
-msgid ""
-"Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 "Max. laiks-uz-dzīvi (max. lēcienu skaits) lietots izejošās .zondes paketēs."
 
@@ -2943,13 +2972,15 @@ msgstr "Maksimālais tukšgaitas laiks sekundēs."
 msgid "Maximum number of allowed password attempts before disconnection."
 msgstr "Maksimālais skaits atļauto paroles mēģinājumu pirms atslēgšanas."
 
-msgid "Maximum number of connections in each session (8 by default)."
+#, fuzzy, php-format
+msgid "Maximum number of connections in each session (%d by default)."
 msgstr "Maksimālais pieslēgumu skaits katrai sesijai (8 pēc noklusējuma)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maksimālais pieslēgumu skaits uz IP adresi (0 = neirobežots)"
 
-msgid "Maximum number of sessions holding at same time (32 by default)."
+#, fuzzy, php-format
+msgid "Maximum number of sessions holding at same time (%d by default)."
 msgstr "Maksimālais skaits turošo sesiju vienā laikā (32 pēc noklusējuma)"
 
 msgid "Maximum number of simultaneous clients."
@@ -3037,8 +3068,7 @@ msgstr "Montēšanas punkts"
 msgid "Mount point name"
 msgstr "Montēšanas punkta nosaukums"
 
-msgid ""
-"Mount the file system read-only (even the super-user may not write it)."
+msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 "Montēt datņu sistēmu tikai lasīšanai (pat super-lietotājs tajā nevarēs "
 "ierakstīt)"
@@ -3070,7 +3100,8 @@ msgstr "NIS"
 msgid "NOPIN Interval"
 msgstr "NOPIN Intervāls"
 
-msgid "NOPIN sending interval in seconds (20 by default)."
+#, fuzzy, php-format
+msgid "NOPIN sending interval in seconds (%d by default)."
 msgstr "NOPIN sūta intervālu sekundēs (20 pēc noklusējuma)."
 
 msgid "NOT YET AVAILABLE"
@@ -3197,8 +3228,7 @@ msgstr "Nav konfigurēts neviens disks."
 
 #, php-format
 msgid "No disks available. Please add new <a href=%s>disk</a> first."
-msgstr ""
-"Nav pieejami diski. Lūdzu pievieno jaunu<a href=%s>disku</a> vispirms."
+msgstr "Nav pieejami diski. Lūdzu pievieno jaunu<a href=%s>disku</a> vispirms."
 
 msgid "No file was uploaded."
 msgstr "Neviena datne netika augšupielādēta."
@@ -4068,6 +4098,10 @@ msgstr "Sūtīt testa e-pastu"
 msgid "Separate email addresses by semi-colon."
 msgstr "Atdalīt e-pasta adreses ar semikolu."
 
+#, fuzzy
+msgid "Serial Console"
+msgstr "Sērijas numurs"
+
 msgid "Serial number"
 msgstr "Sērijas numurs"
 
@@ -4195,10 +4229,12 @@ msgstr "Vienas Paritātes RAID-5"
 msgid "Size"
 msgstr "Izmērs"
 
-msgid "Size of receive buffer (16384 by default)."
+#, fuzzy, php-format
+msgid "Size of receive buffer (%d by default)."
 msgstr "Saņemšanas bufera lielums (16384 pēc noklusējuma)."
 
-msgid "Size of send buffer (16384 by default)."
+#, fuzzy, php-format
+msgid "Size of send buffer (%d by default)."
 msgstr "Sūtīšanas bufera lielums (16384 pēc noklusējuma)."
 
 msgid ""
@@ -4251,8 +4287,7 @@ msgid "Specifies how many servers to create."
 msgstr "Norāda, cik daudz serveru veidot."
 
 msgid "Specifies that the file system should be exported read-only."
-msgstr ""
-"Norāda, ka datņu sistēmai vajadzētu tikt eksportētai tikai lasišanai."
+msgstr "Norāda, ka datņu sistēmai vajadzētu tikt eksportētai tikai lasišanai."
 
 msgid "Specifies the command to be run."
 msgstr "Norāda izpildāmo komandu."
@@ -4283,10 +4318,8 @@ msgstr ""
 msgid "Specifies the username which the service will run as."
 msgstr "Norāda lietotājvārdu zem kura darbosies serviss."
 
-msgid ""
-"Specifies whether it is allowed to login as superuser (root) directly."
-msgstr ""
-"Norāda vai ir atļauts autorizēties, kā superlietotājam (saknei) tieši."
+msgid "Specifies whether it is allowed to login as superuser (root) directly."
+msgstr "Norāda vai ir atļauts autorizēties, kā superlietotājam (saknei) tieši."
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
@@ -4376,8 +4409,7 @@ msgid "Successful."
 msgstr "Veiksmīgi."
 
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
-msgstr ""
-"Svētdiena Pirmdiena Otrdiena Trešdiena Ceturdiena Piektdiena Sestdiena"
+msgstr "Svētdiena Pirmdiena Otrdiena Trešdiena Ceturdiena Piektdiena Sestdiena"
 
 msgid "Suppress non-error messages."
 msgstr "Noklusēt ziņojumus bez kļūdām."
@@ -4556,6 +4588,9 @@ msgstr ""
 "Aizlieguma iespēja norāda lietotājus un grupas, kurām nav atļauja piekļūt "
 "kopīgojumam. Tā seko tam pašam formātam, kā atļaujas iespēja."
 
+msgid "The COM port in BIOS has to be enabled before enabling this option."
+msgstr ""
+
 msgid "The IP address that this hostname represents."
 msgstr "IP adrese, kura reprezentē šo saimniekdatoru."
 
@@ -4604,8 +4639,7 @@ msgstr ""
 #, c-format
 msgid ""
 "The attribute '%s' contains invalid characters and is no valid domain name."
-msgstr ""
-"Atribūts '%s' satur nederīgus simbolus un nav derīgs domēna nosaukums."
+msgstr "Atribūts '%s' satur nederīgus simbolus un nav derīgs domēna nosaukums."
 
 #, c-format
 msgid ""
@@ -4678,8 +4712,7 @@ msgstr "Atribūts '%s' ir obligāts."
 #, php-format
 msgid ""
 "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
-msgstr ""
-"Atribūts '%s' var satstātvēt tikai no simboliem a-z, A-Z, 0-9, _ , -.."
+msgstr "Atribūts '%s' var satstātvēt tikai no simboliem a-z, A-Z, 0-9, _ , -.."
 
 #, c-format
 msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
@@ -4735,9 +4768,9 @@ msgstr ""
 msgid "The changes have been applied successfully."
 msgstr "Izmaiņas ir veiktas veiksmīgi."
 
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"The changes have been saved. You have to <a href=%s>reboot</a> the system "
+"The changes have been saved. You have to <a href='%s'>reboot</a> the system "
 "for the changes to take effect."
 msgstr ""
 "Izmaiņas ir saglabātas. Tev vajag <a href=%s>pārstartēt</a> sistēmu, lai "
@@ -4756,8 +4789,9 @@ msgstr "Konfigurāciju nevar atjaunot."
 msgid "The configuration could not be restored. %s"
 msgstr "Konfigurāciju nevar atjaunot. %s"
 
+#, fuzzy
 msgid ""
-"The configuration has been changed.<br>You must apply the changes in order "
+"The configuration has been changed.<br />You must apply the changes in order "
 "for them to take effect."
 msgstr ""
 "Konfigurācija ir izmainīta.<br>Tev vajag lietot izmaiņas, lai tās dotu "
@@ -4784,8 +4818,7 @@ msgstr "Noklusējuma SMTP servera ports, piem. 25 vai 587."
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
-msgstr ""
-"Noklusējuma bāzes īpašais vārds (DN) tiek lietots meklēšanai, piem. %s"
+msgstr "Noklusējuma bāzes īpašais vārds (DN) tiek lietots meklēšanai, piem. %s"
 
 msgid ""
 "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia "
@@ -4869,8 +4902,8 @@ msgid "The host name contain invalid characters."
 msgstr "Saimniekdatora nosaukums satur nederīgus simbolus."
 
 msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
-"."
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ "
+"and ."
 msgstr ""
 "Saimniekdatora nosaukums var sastāvēt tiktai no a-z, A-Z un 0-9,-,_ un ."
 
@@ -4915,12 +4948,15 @@ msgstr "Lietotājvārds satur neatļautus simbolus."
 msgid "The login name is a reserved login name."
 msgstr "Lietotājvārds ir rezervēts lietotājvārds."
 
+#, fuzzy
+msgid "The login name is limited to 16 characters."
+msgstr "Lietotājvārds satur neatļautus simbolus."
+
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 "Max. pieslēgumi vienai IP adresei vajag būt 0 (neierobežots) vai lielāks."
 
-msgid ""
-"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgid "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
 "Maksimālais lejupielādes joslas platums iekš KiB/s. Tukšs lauks nozīmē "
 "bezgalību."
@@ -5056,6 +5092,10 @@ msgstr ""
 msgid "The queuedepth range is invalid."
 msgstr "Rindas dziļuma diapazons ir nederīgs."
 
+#, fuzzy, php-format
+msgid "The recommended queue depth is %d."
+msgstr "Rindas dziļuma diapazons ir nederīgs."
+
 #, php-format
 msgid "The removable area mapped to LUN%d."
 msgstr ""
@@ -5124,8 +5164,7 @@ msgstr ""
 "Augšupielādētā datne pārsniedz MAX_FILE_SIZE direktīvu, kas norādīta HTML "
 "formā."
 
-msgid ""
-"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 "Augšupielādētā datne pārsniedz upload_max_filesize direktīvu iekš php.ini."
 
@@ -5146,6 +5185,9 @@ msgstr "Sējumam jābūt atvienotam pirms tas var tikt dzēsts."
 
 msgid "The working directory does not exist."
 msgstr "Strādājošā mape neeksistē."
+
+msgid "There are too many additional groups."
+msgstr ""
 
 msgid "There is no error, the file uploaded with success."
 msgstr "Šeit nav kļūdas, datne veiksmīgi augšupielādējās."
@@ -5234,8 +5276,7 @@ msgstr "Šie prarametri tiks pievienoti vispārējiem uzstādījumiem iekš %s."
 
 msgid ""
 "These parameters will be added to the module configuration in rsyncd.conf."
-msgstr ""
-"Šie prarametri tiks pievienoti moduļu konfigurācijai iekš rsyncd.conf."
+msgstr "Šie prarametri tiks pievienoti moduļu konfigurācijai iekš rsyncd.conf."
 
 msgid ""
 "This LAGG cannot be deleted because it is still being used as an interface."
@@ -5246,8 +5287,7 @@ msgstr "Šis URL jau ir konfigrēts"
 
 msgid ""
 "This VLAN cannot be deleted because it is still being used as an interface."
-msgstr ""
-"Šis VLAN nevar tikt atrasts, tāpēc ka to joprojām izmanto interfeiss."
+msgstr "Šis VLAN nevar tikt atrasts, tāpēc ka to joprojām izmanto interfeiss."
 
 msgid ""
 "This allows you to lower the power consumption of the drive, at the expense "
@@ -5335,16 +5375,14 @@ msgid "This group already exists in the group list."
 msgstr "Šī grupa jau eksistē grupu sarakstā!"
 
 msgid ""
-"This is both the name of the server as advertised via "
-"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+"This is both the name of the server as advertised via Zeroconf/Bonjour/"
+"Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
-"Šie ir abi - servera nosaukums, kurš tiks reklamēts caur "
-"Zeroconf/Bonjour/Rendezvous, un datubāzes nosaukums, kura tiks eksportēta "
-"caur DAAP."
+"Šie ir abi - servera nosaukums, kurš tiks reklamēts caur Zeroconf/Bonjour/"
+"Rendezvous, un datubāzes nosaukums, kura tiks eksportēta caur DAAP."
 
 msgid "This is for information only (not using during iSCSI negociation)."
-msgstr ""
-"Šis ir tikai informācijai (netiek lietots, kad notiek iSCSI pārrunas)."
+msgstr "Šis ir tikai informācijai (netiek lietots, kad notiek iSCSI pārrunas)."
 
 msgid ""
 "This may make more efficient use of the system CPU's and cause Samba to be "
@@ -5355,12 +5393,13 @@ msgstr ""
 "automātiski izslēdz šo ārā klientiem, kuri lieto protokolu, kurš ir zemāks "
 "par NT LM 0.12 un, kad tas detektē, ja klients lieto Windows 9x."
 
+#, fuzzy
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
 "and may lead to unexpected behavior or security compromises. Only install "
 "images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br><br>Do you want to install this image anyway "
-"(on your own risk)?"
+"has not been tampered with.<br /><br />Do you want to install this image "
+"anyway (on your own risk)?"
 msgstr ""
 "Šis nozīmē, ka bilde, kuru Jūs augšupielādējāt nav oficiāla/atbalstīta bilde "
 "un ka tas var novest pie negaidītas uzvedības vai drošības kompromisiem. "
@@ -5371,8 +5410,7 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Vārds jau eksistē iekš disku saraksta."
 
-msgid ""
-"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr "Vārds ir piemēram: iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5568,13 +5606,13 @@ msgstr "Šis lietotājs jau eksistē."
 msgid "This virtual device name already exists."
 msgstr "Šis virtuālās ierīces nosaukums jau eksistē."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "This will cause %s not to check for newer firmware versions when the <a "
-"href=%s>%s</a> page is viewed."
+"href='%s'>%s</a> page is viewed."
 msgstr ""
-"Šis liks %s nepārbaudīt vai ir jaunāka programmatūras versija, kad <a "
-"href=%s>%s</a> lapa ir apskatīta."
+"Šis liks %s nepārbaudīt vai ir jaunāka programmatūras versija, kad <a href=%"
+"s>%s</a> lapa ir apskatīta."
 
 msgid "This will create a recycle bin on the share."
 msgstr "Šis izveidois miskasti iekš kopīgojuma."
@@ -5620,15 +5658,15 @@ msgstr "Noildze"
 msgid "Times"
 msgstr "Reizes"
 
+#, fuzzy
 msgid ""
 "To configure the target, you must add at least Portal Group and Initiator "
-"Group and Extent.<br/>Portal Group which is identified by tag number defines "
-"IP addresses and listening TCP ports.<br/>Initiator Group which is "
-"identified by tag number defines authorised initiator names and "
-"networks.<br/>Auth Group which is identified by tag number and is optional "
-"if the target does not use CHAP authentication defines authorised users and "
-"secrets for additional security.<br/>Extent defines the storage area of the "
-"target."
+"Group and Extent.<br />Portal Group which is identified by tag number "
+"defines IP addresses and listening TCP ports.<br />Initiator Group which is "
+"identified by tag number defines authorised initiator names and networks."
+"<br />Auth Group which is identified by tag number and is optional if the "
+"target does not use CHAP authentication defines authorised users and secrets "
+"for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 "Lai konfigurētu mērķi, tev vajag pievienot vismaz Portāla Grupu un "
 "Iniciatoru Grupu un Apjomu.<br/>Portāla Grupa, kura ir identificēta pēc "
@@ -5647,8 +5685,8 @@ msgstr "Uz e-pastu"
 
 #, php-format
 msgid ""
-"To get detailed informations about TCP Wrappers check the FreeBSD <a "
-"href='%s' target='_blank'>documentation</a>."
+"To get detailed informations about TCP Wrappers check the FreeBSD <a href='%"
+"s' target='_blank'>documentation</a>."
 msgstr ""
 "Lai iegūtu detalizētu informāciju par TCP Wrappers pārbaudi FreeBSD <a "
 "href='%s' target='_blank'>dokumentāciju</a>."
@@ -5665,13 +5703,13 @@ msgstr ""
 msgid ""
 "To increase CIFS performance try the following:<div "
 "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a "
-"href='%s'>MTU</a></li></ul></div>"
+"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
+"ul></div>"
 msgstr ""
 "Lai palielinātu CIFS veiktspēju mēģini sekojošo:<div "
-"id='enumeration'><ul><li>Iespējo 'Liela lasīšanas/rakstīšanas' "
-"slēdzi</li><li>Iespējo '<a href='%s'>Pielāgošanas</a>' "
-"slēdzi</li><li>Palielini <a href='%s'>MTU</a></li></ul></div>"
+"id='enumeration'><ul><li>Iespējo 'Liela lasīšanas/rakstīšanas' slēdzi</"
+"li><li>Iespējo '<a href='%s'>Pielāgošanas</a>' slēdzi</li><li>Palielini <a "
+"href='%s'>MTU</a></li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr "Lai saderētu ar jebkuru IP adresi atstāj šo lauku tukšu."
@@ -5679,13 +5717,12 @@ msgstr "Lai saderētu ar jebkuru IP adresi atstāj šo lauku tukšu."
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
 "following services will use AD authentication:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
-">System</li></ul></div>"
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
+"li><li>System</li></ul></div>"
 msgstr ""
 "Lai lietotu Aktīvo Mapi, CIFS/SMB servisam arī jābūt ieslēgtam. Sekojošie "
-"servisi lietos AD autorizāciju:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
-">Sistēma</li></ul></div>"
+"servisi lietos AD autorizāciju:<div id='enumeration'><ul><li>CIFS/SMB</"
+"li><li>SSH</li><li>FTP</li><li>AFP</li><li>Sistēma</li></ul></div>"
 
 msgid "Tolerated"
 msgstr "Pieļauts"
@@ -5886,8 +5923,7 @@ msgstr ""
 msgid "Use sendfile"
 msgstr "Lietot sendfile"
 
-msgid ""
-"Use the following IP address as the source address in outgoing packets."
+msgid "Use the following IP address as the source address in outgoing packets."
 msgstr "Lietot šo IP adresi, kā avotu adresi izejošajām paketēm."
 
 msgid ""
@@ -6047,8 +6083,7 @@ msgstr "Brīdinājums"
 
 #, php-format
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr ""
-"Brīdinājums: Šis var izsaukt lielu aizturi ielādējot %s žurnāla lapu!"
+msgstr "Brīdinājums: Šis var izsaukt lielu aizturi ielādējot %s žurnāla lapu!"
 
 msgid ""
 "Warning: You are going to delete a RAID volume. All data will get lost and "
@@ -6072,6 +6107,9 @@ msgstr "WebGUI"
 
 msgid "Webserver"
 msgstr "Webserveris"
+
+msgid "Webserver document root is missing."
+msgstr ""
 
 msgid "Week days"
 msgstr "Nedēļas dienas"
@@ -6131,20 +6169,15 @@ msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
 "command.<br>Example: pkg_add -r packagename"
 msgstr ""
-"Tu arī vari instalēt paku caur SSH vai konsoli lietojot pkg_add "
-"komandu.<br>Piemērs: pkg_add -r pakasnosaukums"
+"Tu arī vari instalēt paku caur SSH vai konsoli lietojot pkg_add komandu."
+"<br>Piemērs: pkg_add -r pakasnosaukums"
 
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "You can use the following parameters for substitution:"
 msgstr ""
-"Tu vari lietot sekojošos parametrus priekš aizstāšanas:<div "
-"id='enumeration'><ul><li>%d - Datums</li><li>%h - Saimniekdatora "
-"nosaukums</li></ul></div>"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br>"
+"You can't mount the partition '%s' where the config file is stored.<br />"
 msgstr ""
 "Tu nevari piemontēt partīciju '%s' , kurā galbājas konfigurācijas datnes.<br>"
 
@@ -6158,6 +6191,14 @@ msgstr ""
 #, php-format
 msgid ""
 "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
+"Tev vajag aktivizēt <a href=%s>Zeroconf/Bonjour</a> lai reklamētu šo servisu "
+"lietotājiem."
+
+#, fuzzy, php-format
+msgid ""
+"You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this "
 "service to clients."
 msgstr ""
 "Tev vajag aktivizēt <a href=%s>Zeroconf/Bonjour</a> lai reklamētu šo servisu "
@@ -6224,6 +6265,10 @@ msgstr "atacontrol saraksts neizdevās, atacontrol nav atrasts !!"
 msgid "cachecnid"
 msgstr "cachecnid"
 
+#, fuzzy
+msgid "change failed."
+msgstr "Pakotnes datne"
+
 msgid "chroot() everyone, but root."
 msgstr "chroot() visiem, bet sakne."
 
@@ -6243,6 +6288,12 @@ msgstr "dbpath"
 msgid "e.g. %s"
 msgstr "piem. %s"
 
+msgid "filechooser"
+msgstr ""
+
+msgid "get target info failed."
+msgstr ""
+
 msgid "hour(s)"
 msgstr "stunda(as)"
 
@@ -6255,10 +6306,8 @@ msgstr "iSCSI Mērķis"
 msgid "iSCSI Target Logical Unit Controller"
 msgstr ""
 
-msgid "iSCSI initial parameter (262144 by default)."
-msgstr "iSCSI sākumparametrs (262144 pēc noklusējuma)."
-
-msgid "iSCSI initial parameter (65536 by default)."
+#, fuzzy, php-format
+msgid "iSCSI initial parameter (%d by default)."
 msgstr "iSCSI sākumparametrs (65536 pēc noklusējuma)."
 
 msgid "iSCSI initiator disabled"
@@ -6266,6 +6315,10 @@ msgstr "iSCSI iniciators atspējots"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+#, fuzzy
+msgid "load/unload failed."
+msgstr "Neizdevās augšupielādēt datni."
 
 msgid "minute(s)"
 msgstr "minūte(es)"
@@ -6315,6 +6368,9 @@ msgstr "rc.conf"
 msgid "rotated block-interleaved parity"
 msgstr "rotēts bloka-mijas paritāte"
 
+msgid "scan target failed."
+msgstr ""
+
 msgid "second(s)"
 msgstr "sekunde(es)"
 
@@ -6323,9 +6379,6 @@ msgstr "sekundes"
 
 msgid "striping"
 msgstr "svītrošana"
-
-msgid "successfully"
-msgstr ""
 
 msgid "successfully."
 msgstr ""
@@ -6341,3 +6394,6 @@ msgstr "aitsaistīt"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "iSCSI sākumparametrs (262144 pēc noklusējuma)."
