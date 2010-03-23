@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"POT-Creation-Date: 2010-03-23 21:14+0000\n"
 "PO-Revision-Date: 2009-10-10 18:48+0000\n"
 "Last-Translator: Sir.Punisher <eris@shytaj.tk>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -75,9 +75,10 @@ msgstr ""
 "0=dizaktivizuar, 1-255=i aktivizuar me komande queuing  i specifikuar ne "
 "thellesi."
 
+#, fuzzy
 msgid ""
-"1. Use these specials actions for debugging only!<br>2. There is no need of "
-"using this menu for starting a RAID volume (start automaticaly)."
+"1. Use these specials actions for debugging only!<br />2. There is no need "
+"of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
 "1. Perdor keto aplikacione speciale vetem per debugging!<br>2. Nuk eshte e "
 "nevojshme perdorimi i kesaj menuje per te krijuar nje volum RAID (niset "
@@ -89,34 +90,39 @@ msgstr "802.1Q VLAN tag (midis 1 dhe 4094)."
 msgid "<->"
 msgstr "<->"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have shell access."
+"<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%"
+"s'>user</a> must have shell access."
 msgstr ""
-"<a href=%s>SSHD</a> duhet te aktivizohet qe UNISON te punoje <a "
-"href=%s>user</a> duhet te kete hyrje ne shell."
+"<a href=%s>SSHD</a> duhet te aktivizohet qe UNISON te punoje <a href=%"
+"s>user</a> duhet te kete hyrje ne shell."
 
+#, fuzzy
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted "
 "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
-"<b>EFI GPT</b> ne qofte se doni te montoni nje drive te formatuar ne "
-"GTP(<b>particion i parapercaktuar qe nga versioni 0.684b</b>).<br><b>MBR</b> "
+"<b>EFI GPT</b> ne qofte se doni te montoni nje drive te formatuar ne GTP"
+"(<b>particion i parapercaktuar qe nga versioni 0.684b</b>).<br><b>MBR</b> "
 "particion, per drive te formatuar ne UFS ose volum RAID sofware(<b>krijuar "
 "perpara versionit 0.684b</b>) ose diqe te iportuara nga sisteme operative te "
 "tjera.<br><b>CD/DVD ose software RAID te vjeter</b> per volume Software RAID "
 "te vjeter (<b>rijuar perpara versionit 0.68</b>) ose CD/DVD."
 
 msgid ""
+"<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+
+msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older "
-"rsync.</li><li>Before - File-deletions will be done before the transfer "
-"starts.</li><li>During - File-deletions will be done incrementally as the "
-"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</"
+"li><li>Before - File-deletions will be done before the transfer starts.</"
+"li><li>During - File-deletions will be done incrementally as the transfer "
+"happens.</li><li>Delay - File-deletions will be computed during the "
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
@@ -185,8 +191,8 @@ msgstr "Duhet te specifikohet nje adrese IP e vlefshme."
 msgid ""
 "A valid IPv4 address must be specified for the primary/secondary DNS server."
 msgstr ""
-"Duhet te specifikohet nje adrese IPv4 e vlefshme per serverat "
-"primare/sekondare."
+"Duhet te specifikohet nje adrese IPv4 e vlefshme per serverat primare/"
+"sekondare."
 
 msgid "A valid IPv4 address must be specified."
 msgstr "Duhet te specifikohet nje adrese IPv4 e vlefshme."
@@ -200,8 +206,8 @@ msgstr "Duhet te specifikohet nje adrese Gateway IPv6 e vlefshme."
 msgid ""
 "A valid IPv6 address must be specified for the primary/secondary DNS server."
 msgstr ""
-"Duhet te specifikohet nje adrese IPv6 e vlefshme per serverat "
-"primare/sekondare."
+"Duhet te specifikohet nje adrese IPv6 e vlefshme per serverat primare/"
+"sekondare."
 
 msgid "A valid IPv6 address must be specified."
 msgstr "Duhet te specifikohet nje adrese IPv6 e vlefshme."
@@ -219,8 +225,7 @@ msgid "A valid mtu size must be specified."
 msgstr "Duhet të specifikohet një permasë MTU-je e vlefshme"
 
 msgid "A valid network bit count (1-32) must be specified."
-msgstr ""
-"Duhe te specifikohet nje numerim ne bit i vlefshem per rrjetin (1-32)."
+msgstr "Duhe te specifikohet nje numerim ne bit i vlefshem per rrjetin (1-32)."
 
 msgid "A valid prefix (1-128) must be specified."
 msgstr "Duhet të specifikohet një prefiks i vlefshëm (nga 1-128) ."
@@ -272,8 +277,8 @@ msgid ""
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr ""
 "Aktivizo raportin permes e-mail, nëse dëshironi të njoftoheni per një "
-"dështim apo një gabim te ri që është zbuluar, ose në qoftë se një komandë "
-"S.M.A.R.T. në një disk dështon."
+"dështim apo një gabim te ri që është zbuluar, ose në qoftë se një komandë S."
+"M.A.R.T. në një disk dështon."
 
 msgid "Active Directory"
 msgstr "Drejtori aktive"
@@ -408,22 +413,26 @@ msgstr "Konfiguruesit e përparuar"
 msgid ""
 "After you click &quot;Save&quot;, you may also have to do one or more of the "
 "following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP "
-"address</li></ul>"
+"address of your computer</li><li>access the webGUI with the new IP address</"
+"li></ul>"
 msgstr ""
 "Pasi te klikoni &quot;Save&quot;. ju gjithashtu duhet te beni nje nga hapat "
-"e pershkruar ketu poshte perpara se te kni te drejten e hyrjes %s "
-"perseri.<ul><li>nderro adresen IP te kompjuterit </li><li>hyni ne WEbGUI me "
-"adresen IP te re</li></ul>"
+"e pershkruar ketu poshte perpara se te kni te drejten e hyrjes %s perseri."
+"<ul><li>nderro adresen IP te kompjuterit </li><li>hyni ne WEbGUI me adresen "
+"IP te re</li></ul>"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: </span></p><ul><li><span "
-"class='vexpl'>change the IP address of your computer</span></li><li><span "
-"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+"before you can access your NAS again: <ul><li><span class='vexpl'>change the "
+"IP address of your computer</span></li><li><span class='vexpl'>access the "
+"webGUI with the new IP address</span></li></ul>"
 msgstr ""
+"Pasi te klikoni &quot;Save&quot;. ju gjithashtu duhet te beni nje nga hapat "
+"e pershkruar ketu poshte perpara se te kni te drejten e hyrjes %s perseri."
+"<ul><li>nderro adresen IP te kompjuterit </li><li>hyni ne WEbGUI me adresen "
+"IP te re</li></ul>"
 
 msgid "Aggregation protocol"
 msgstr "Protokolli i agregimit"
@@ -439,6 +448,10 @@ msgstr "Te ghitha"
 
 msgid "All dirs"
 msgstr "Te gjitha dirs"
+
+#, php-format
+msgid "All dirs requires mounted path, but Path %s is not mounted."
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -538,8 +551,7 @@ msgstr ""
 "Largesia e bandes ne shkarkim per perdoruesit anonim ne KB/s. Duke e lene "
 "bosh ke te fushe eshte e palimituar."
 
-msgid ""
-"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 "Largesia e bandes ne ngarkim per perdoruesit anonim ne KB/s. Duke e lene "
 "bosh ke te fushe eshte e palimituar."
@@ -657,8 +669,7 @@ msgstr "DN baze"
 msgid "Base Name"
 msgstr "Emri Baze"
 
-msgid ""
-"Base Name will be appended automatically when starting without 'iqn.'."
+msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr "Emri Baze do te vihet automatikisht kur te fillohet pa 'iqn.'."
 
 msgid "Best available"
@@ -728,8 +739,7 @@ msgid "Can't format the OS origin disk!"
 msgstr "Nuk mund e formatoj diskun e sistemit operativ"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
-msgstr ""
-"Nuk mund te montoj particionin 1 te sistemit, particioni DATA eshte 2"
+msgstr "Nuk mund te montoj particionin 1 te sistemit, particioni DATA eshte 2"
 
 msgid "Cancel"
 msgstr "Fshij"
@@ -761,6 +771,10 @@ msgstr "Ndrysho"
 
 msgid "Change below file"
 msgstr ""
+
+#, fuzzy
+msgid "Change password"
+msgstr "Falekalimi bind"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
@@ -796,7 +810,7 @@ msgstr "Pastro"
 
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
 
@@ -967,6 +981,16 @@ msgstr "Tanishem"
 msgid "Custom"
 msgstr "E Personalizuar"
 
+#, fuzzy
+msgid "Custom script"
+msgstr "Komanda per scripts"
+
+msgid "Custom script is not found."
+msgstr ""
+
+msgid "Custom script is required."
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -983,8 +1007,8 @@ msgstr "Konfigurimi DNS"
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 "automatically after storing the new firmware. The configuration will be "
-"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"maintained.<br />You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
 
@@ -1730,6 +1754,10 @@ msgstr ""
 msgid "Enable reverse DNS lookup."
 msgstr ""
 
+#, fuzzy
+msgid "Enable serial console"
+msgstr "Aktivizo transkodimin."
+
 msgid "Enable store DOS attributes"
 msgstr "Aktivo atributet per ruajtjen DOS"
 
@@ -1945,19 +1973,18 @@ msgstr "Dergimi i raportit te statusit deshtoi :  %s."
 msgid ""
 "Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Dergimi i raportit te statusit deshtoi. Ju lutem kontrolloni <a "
-"href='%s'>log</a> e skedarit."
+"Dergimi i raportit te statusit deshtoi. Ju lutem kontrolloni <a href='%"
+"s'>log</a> e skedarit."
 
 #, php-format
 msgid "Failed to send test email to: %s."
 msgstr "Deshtoi dergimi i email-it per testim tek: %s."
 
 #, php-format
-msgid ""
-"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgid "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr ""
-"Dergimi i email-it per testim deshtoi. Ju lutem kontrolloni <a "
-"href='%s'>log</a> e skedarit."
+"Dergimi i email-it per testim deshtoi. Ju lutem kontrolloni <a href='%"
+"s'>log</a> e skedarit."
 
 msgid "Failed to upload file."
 msgstr "Ngarkimi i skedes deshtoi."
@@ -2126,8 +2153,7 @@ msgid "Greek"
 msgstr "Greqisht"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr ""
-"Banner pershendetes qe do te shfaqet kur te kryhet lidhja e pare FTP."
+msgstr "Banner pershendetes qe do te shfaqet kur te kryhet lidhja e pare FTP."
 
 msgid "Group"
 msgstr "Grupi"
@@ -2258,8 +2284,9 @@ msgstr "Paketa I/O"
 msgid "I/O statistics"
 msgstr "Statistika I/O"
 
-msgid "I/O timeout in seconds (30 by default)."
-msgstr ""
+#, fuzzy, php-format
+msgid "I/O timeout in seconds (%d by default)."
+msgstr "NOPIN po dergon intervalin ne sekonda (20 i paracaktuar)"
 
 msgid "IG"
 msgstr "IG"
@@ -2275,7 +2302,7 @@ msgstr "Adresa IP per serverin syslog ne largesi"
 
 #, php-format
 msgid ""
-"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
 msgstr ""
 
@@ -2344,8 +2371,8 @@ msgstr ""
 
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only "
-"mode.<br>Service disruption to users accessing this mount will occur during "
+"to perform selected command, otherwise the commands work in read-only mode."
+"<br />Service disruption to users accessing this mount will occur during "
 "this process."
 msgstr ""
 
@@ -2592,13 +2619,13 @@ msgstr "Ndryshimi i fundit ne konfigurim"
 msgid "Latvian"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
-"menu."
+"Leave '%s' for unformated disks and format them using <a href='%s'>format</"
+"a> menu."
 msgstr ""
-"Lini '%s' per disqe te paformatuar dhe formatoni ato duke perdorur <a "
-"href=%s>format</a> menu."
+"Lini '%s' per disqe te paformatuar dhe formatoni ato duke perdorur <a href=%"
+"s>format</a> menu."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
@@ -2733,8 +2760,7 @@ msgid "Location where the content database file will be stored."
 msgstr "Vendodhja ku permbajtja e skedarve te database"
 
 #, php-format
-msgid ""
-"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
 
 msgid "Log"
@@ -2746,13 +2772,16 @@ msgstr ""
 msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 
-msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#, php-format
+msgid "Logical Unit Controller Authorised network (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#, php-format
+msgid "Logical Unit Controller IP address (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller TCP port (3261 by default)"
+#, php-format
+msgid "Logical Unit Controller TCP port (%d by default)"
 msgstr ""
 
 msgid "Logical Unit Controller login information"
@@ -2847,8 +2876,7 @@ msgstr ""
 msgid "Max. sessions"
 msgstr "Maksimumi i seksioneve"
 
-msgid ""
-"Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
@@ -2866,13 +2894,15 @@ msgstr ""
 msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
-msgid "Maximum number of connections in each session (8 by default)."
+#, fuzzy, php-format
+msgid "Maximum number of connections in each session (%d by default)."
 msgstr "Numri maksimal i lidhjeve ne nje seksion (8 jane te paracaktuara)"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numri i lidhjeve maksimale per nje adrese IP (0 = pa kufi)."
 
-msgid "Maximum number of sessions holding at same time (32 by default)."
+#, fuzzy, php-format
+msgid "Maximum number of sessions holding at same time (%d by default)."
 msgstr "Numri maksimal i seksioneve pernjeheresh (32 te paracaktuara)."
 
 msgid "Maximum number of simultaneous clients."
@@ -2960,8 +2990,7 @@ msgstr "Pika e montimit"
 msgid "Mount point name"
 msgstr "Emri i pikes se montimit"
 
-msgid ""
-"Mount the file system read-only (even the super-user may not write it)."
+msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 "Monto skedarin e sistemit vetem ne lexim ( as nje super perdorues mund te "
 "shkruaje ne te)."
@@ -2993,7 +3022,8 @@ msgstr "NIS"
 msgid "NOPIN Interval"
 msgstr "Interval NOPIN"
 
-msgid "NOPIN sending interval in seconds (20 by default)."
+#, fuzzy, php-format
+msgid "NOPIN sending interval in seconds (%d by default)."
 msgstr "NOPIN po dergon intervalin ne sekonda (20 i paracaktuar)"
 
 msgid "NOT YET AVAILABLE"
@@ -3087,8 +3117,8 @@ msgid ""
 "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
 "first."
 msgstr ""
-"S'ka nje grup iniciator te konfiguruar . Ju lutem shto nje te re <a "
-"href=%s>Extent</a> perpara."
+"S'ka nje grup iniciator te konfiguruar . Ju lutem shto nje te re <a href=%"
+"s>Extent</a> perpara."
 
 #, php-format
 msgid ""
@@ -3104,8 +3134,8 @@ msgid ""
 "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
 "first."
 msgstr ""
-"Piasje virtuale te pakonfiguruara.Ju lutem shto nje te re <a "
-"href=%s>Extent</a> perpara."
+"Piasje virtuale te pakonfiguruara.Ju lutem shto nje te re <a href=%s>Extent</"
+"a> perpara."
 
 msgid "No device selected."
 msgstr "Nuk ke seleksionuar asnje paisje."
@@ -3953,6 +3983,9 @@ msgstr ""
 msgid "Separate email addresses by semi-colon."
 msgstr ""
 
+msgid "Serial Console"
+msgstr ""
+
 msgid "Serial number"
 msgstr ""
 
@@ -4068,10 +4101,12 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-msgid "Size of receive buffer (16384 by default)."
+#, php-format
+msgid "Size of receive buffer (%d by default)."
 msgstr ""
 
-msgid "Size of send buffer (16384 by default)."
+#, php-format
+msgid "Size of send buffer (%d by default)."
 msgstr ""
 
 msgid ""
@@ -4148,8 +4183,7 @@ msgstr ""
 msgid "Specifies the username which the service will run as."
 msgstr ""
 
-msgid ""
-"Specifies whether it is allowed to login as superuser (root) directly."
+msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 
 msgid ""
@@ -4406,6 +4440,9 @@ msgid ""
 "the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
+msgid "The COM port in BIOS has to be enabled before enabling this option."
+msgstr ""
+
 msgid "The IP address that this hostname represents."
 msgstr ""
 
@@ -4566,7 +4603,7 @@ msgstr ""
 
 #, c-format
 msgid ""
-"The changes have been saved. You have to <a href=%s>reboot</a> the system "
+"The changes have been saved. You have to <a href='%s'>reboot</a> the system "
 "for the changes to take effect."
 msgstr ""
 
@@ -4584,7 +4621,7 @@ msgid "The configuration could not be restored. %s"
 msgstr ""
 
 msgid ""
-"The configuration has been changed.<br>You must apply the changes in order "
+"The configuration has been changed.<br />You must apply the changes in order "
 "for them to take effect."
 msgstr ""
 
@@ -4680,8 +4717,8 @@ msgid "The host name contain invalid characters."
 msgstr ""
 
 msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
-"."
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ "
+"and ."
 msgstr ""
 
 msgid "The image file is corrupt"
@@ -4719,11 +4756,13 @@ msgstr ""
 msgid "The login name is a reserved login name."
 msgstr ""
 
+msgid "The login name is limited to 16 characters."
+msgstr ""
+
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
 
-msgid ""
-"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgid "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
 
 msgid "The maximum idle time be a number."
@@ -4834,6 +4873,10 @@ msgid "The queuedepth range is invalid."
 msgstr ""
 
 #, php-format
+msgid "The recommended queue depth is %d."
+msgstr ""
+
+#, php-format
 msgid "The removable area mapped to LUN%d."
 msgstr ""
 
@@ -4895,8 +4938,7 @@ msgid ""
 "the HTML form."
 msgstr ""
 
-msgid ""
-"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 
 msgid "The uploaded file was only partially uploaded."
@@ -4915,6 +4957,9 @@ msgid "The volume must be detached before it can be deleted."
 msgstr ""
 
 msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There are too many additional groups."
 msgstr ""
 
 msgid "There is no error, the file uploaded with success."
@@ -5080,8 +5125,8 @@ msgid "This group already exists in the group list."
 msgstr ""
 
 msgid ""
-"This is both the name of the server as advertised via "
-"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+"This is both the name of the server as advertised via Zeroconf/Bonjour/"
+"Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
 
 msgid "This is for information only (not using during iSCSI negociation)."
@@ -5097,15 +5142,14 @@ msgid ""
 "This means that the image you uploaded is not an official/supported image "
 "and may lead to unexpected behavior or security compromises. Only install "
 "images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br><br>Do you want to install this image anyway "
-"(on your own risk)?"
+"has not been tampered with.<br /><br />Do you want to install this image "
+"anyway (on your own risk)?"
 msgstr ""
 
 msgid "This name already exists in the disk list."
 msgstr ""
 
-msgid ""
-"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5251,7 +5295,7 @@ msgstr ""
 #, php-format
 msgid ""
 "This will cause %s not to check for newer firmware versions when the <a "
-"href=%s>%s</a> page is viewed."
+"href='%s'>%s</a> page is viewed."
 msgstr ""
 
 msgid "This will create a recycle bin on the share."
@@ -5296,13 +5340,12 @@ msgstr ""
 
 msgid ""
 "To configure the target, you must add at least Portal Group and Initiator "
-"Group and Extent.<br/>Portal Group which is identified by tag number defines "
-"IP addresses and listening TCP ports.<br/>Initiator Group which is "
-"identified by tag number defines authorised initiator names and "
-"networks.<br/>Auth Group which is identified by tag number and is optional "
-"if the target does not use CHAP authentication defines authorised users and "
-"secrets for additional security.<br/>Extent defines the storage area of the "
-"target."
+"Group and Extent.<br />Portal Group which is identified by tag number "
+"defines IP addresses and listening TCP ports.<br />Initiator Group which is "
+"identified by tag number defines authorised initiator names and networks."
+"<br />Auth Group which is identified by tag number and is optional if the "
+"target does not use CHAP authentication defines authorised users and secrets "
+"for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 
 msgid "To e-mail"
@@ -5313,8 +5356,8 @@ msgstr ""
 
 #, php-format
 msgid ""
-"To get detailed informations about TCP Wrappers check the FreeBSD <a "
-"href='%s' target='_blank'>documentation</a>."
+"To get detailed informations about TCP Wrappers check the FreeBSD <a href='%"
+"s' target='_blank'>documentation</a>."
 msgstr ""
 
 #, php-format
@@ -5327,8 +5370,8 @@ msgstr ""
 msgid ""
 "To increase CIFS performance try the following:<div "
 "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a "
-"href='%s'>MTU</a></li></ul></div>"
+"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
+"ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5337,8 +5380,8 @@ msgstr ""
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
 "following services will use AD authentication:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
-">System</li></ul></div>"
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
+"li><li>System</li></ul></div>"
 msgstr ""
 
 msgid "Tolerated"
@@ -5527,8 +5570,7 @@ msgstr ""
 msgid "Use sendfile"
 msgstr ""
 
-msgid ""
-"Use the following IP address as the source address in outgoing packets."
+msgid "Use the following IP address as the source address in outgoing packets."
 msgstr "Perdor kete adrese IP-je si adrese burimi per paketat ne dalje."
 
 msgid ""
@@ -5697,6 +5739,9 @@ msgstr "WebGUI"
 msgid "Webserver"
 msgstr "Webserver"
 
+msgid "Webserver document root is missing."
+msgstr ""
+
 msgid "Week days"
 msgstr ""
 
@@ -5757,14 +5802,12 @@ msgstr ""
 "perdorur komanden the pkg_add. <br>Shembull: pkg_add -r packagename (emri i "
 "paketes)"
 
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "You can use the following parameters for substitution:"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br>"
+"You can't mount the partition '%s' where the config file is stored.<br />"
 msgstr ""
 "Ju nuk mund te montoni nje particion'%s' ku eshte ruajtur skedari i "
 "konfigurimit .<br>"
@@ -5777,6 +5820,12 @@ msgstr ""
 #, php-format
 msgid ""
 "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
+
+#, php-format
+msgid ""
+"You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this "
 "service to clients."
 msgstr ""
 
@@ -5800,8 +5849,7 @@ msgid "You must enter the same IP type for network and gateway."
 msgstr "Duhet te vini te njejten tip IP-je per rrjetin dhe gateway."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
-msgstr ""
-"Duhet te keni te pakten 256MB memorie RAM perte perdorur iSCSI target."
+msgstr "Duhet te keni te pakten 256MB memorie RAM perte perdorur iSCSI target."
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Duhet te reboot sistemin perpara se te axhornoni firmware."
@@ -5840,6 +5888,9 @@ msgstr ""
 msgid "cachecnid"
 msgstr ""
 
+msgid "change failed."
+msgstr ""
+
 msgid "chroot() everyone, but root."
 msgstr ""
 
@@ -5859,6 +5910,12 @@ msgstr "dbpath"
 msgid "e.g. %s"
 msgstr "shembull. %s"
 
+msgid "filechooser"
+msgstr ""
+
+msgid "get target info failed."
+msgstr ""
+
 msgid "hour(s)"
 msgstr ""
 
@@ -5871,10 +5928,8 @@ msgstr "iSCSI Vendi"
 msgid "iSCSI Target Logical Unit Controller"
 msgstr ""
 
-msgid "iSCSI initial parameter (262144 by default)."
-msgstr "Parametri iSCSI fillestar (262144 eshte vlera e parapercaktuar)"
-
-msgid "iSCSI initial parameter (65536 by default)."
+#, fuzzy, php-format
+msgid "iSCSI initial parameter (%d by default)."
 msgstr "Parametri iSCSI fillestar (65536 eshte vlera e parapercaktuar)"
 
 msgid "iSCSI initiator disabled"
@@ -5882,6 +5937,10 @@ msgstr "Iniciatori iSCSI eshte i diszabilituar"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+#, fuzzy
+msgid "load/unload failed."
+msgstr "Ngarkimi i skedes deshtoi."
 
 msgid "minute(s)"
 msgstr ""
@@ -5931,6 +5990,9 @@ msgstr "rc.conf"
 msgid "rotated block-interleaved parity"
 msgstr ""
 
+msgid "scan target failed."
+msgstr ""
+
 msgid "second(s)"
 msgstr ""
 
@@ -5938,9 +6000,6 @@ msgid "seconds"
 msgstr "sekonda"
 
 msgid "striping"
-msgstr ""
-
-msgid "successfully"
 msgstr ""
 
 msgid "successfully."
@@ -5957,3 +6016,6 @@ msgstr "zmonto"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "Parametri iSCSI fillestar (262144 eshte vlera e parapercaktuar)"

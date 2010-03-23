@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-17 19:31+0000\n"
+"POT-Creation-Date: 2010-03-23 21:14+0000\n"
 "PO-Revision-Date: 2009-12-06 23:53+0000\n"
 "Last-Translator: raymond <Unknown>\n"
 "Language-Team: \n"
@@ -100,10 +100,13 @@ msgstr ""
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
 
+#, fuzzy
 msgid ""
-"1. Use these specials actions for debugging only!<br>2. There is no need of "
-"using this menu for starting a RAID volume (start automaticaly)."
-msgstr "1. 這些特別的指令只適用於 debugging！<br>2. RAID 將會自動開始運作，不需要再次下達 starting。"
+"1. Use these specials actions for debugging only!<br />2. There is no need "
+"of using this menu for starting a RAID volume (start automaticaly)."
+msgstr ""
+"1. 這些特別的指令只適用於 debugging！<br>2. RAID 將會自動開始運作，不需要再次"
+"下達 starting。"
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr ""
@@ -111,26 +114,32 @@ msgstr ""
 msgid "<->"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have shell access."
+"<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%"
+"s'>user</a> must have shell access."
 msgstr ""
+"Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必"
+"須要有 Shell 權限。"
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+"partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted "
 "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+"disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old "
 "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
 
 msgid ""
+"<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgstr ""
+
+msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older "
-"rsync.</li><li>Before - File-deletions will be done before the transfer "
-"starts.</li><li>During - File-deletions will be done incrementally as the "
-"transfer happens.</li><li>Delay - File-deletions will be computed during the "
+"3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</"
+"li><li>Before - File-deletions will be done before the transfer starts.</"
+"li><li>During - File-deletions will be done incrementally as the transfer "
+"happens.</li><li>Delay - File-deletions will be computed during the "
 "transfer, and then removed after the transfer completes.</li><li>After - "
 "File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
@@ -162,13 +171,15 @@ msgid ""
 "file (index.php, index.html, index.htm or default.htm) was found in that "
 "directory."
 msgstr ""
-"如果目錄被存取時目錄檔不存在，系統將會自動產生一個目錄檔。(index.php, index.html, index.htm or "
-"default.htm) was found in that directory."
+"如果目錄被存取時目錄檔不存在，系統將會自動產生一個目錄檔。(index.php, index."
+"html, index.htm or default.htm) was found in that directory."
 
 msgid ""
 "A host name alias. This option can appear multiple times, for each domain "
 "that has the same IP. Use a space to separate multiple alias names."
-msgstr "主機名稱的別名。這個選項可以設定多個別名，以用於相同 IP 的每個網域名稱。使用空白來隔開多個別名。"
+msgstr ""
+"主機名稱的別名。這個選項可以設定多個別名，以用於相同 IP 的每個網域名稱。使用"
+"空白來隔開多個別名。"
 
 msgid ""
 "A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
@@ -266,7 +277,9 @@ msgstr "開啟這個裝置的 S.M.A.R.T. 監測"
 msgid ""
 "Activate email report if you want to be notified if a failure or a new error "
 "has been detected, or if a S.M.A.R.T. command to a disk fails."
-msgstr "如果您希望偵測到新的錯誤或是對磁碟的 S.M.A.R.T. 指令失敗時獲得通知，請使用 email 回報功能。"
+msgstr ""
+"如果您希望偵測到新的錯誤或是對磁碟的 S.M.A.R.T. 指令失敗時獲得通知，請使用 "
+"email 回報功能。"
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -401,19 +414,19 @@ msgstr "進階設定"
 msgid ""
 "After you click &quot;Save&quot;, you may also have to do one or more of the "
 "following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP "
-"address</li></ul>"
+"address of your computer</li><li>access the webGUI with the new IP address</"
+"li></ul>"
 msgstr ""
-"當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：<ul><li>變更電腦上的IP位置</li><li>使用新的IP位置來"
-"連接網頁管理介面</li></ul>"
+"當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：<ul><li>"
+"變更電腦上的IP位置</li><li>使用新的IP位置來連接網頁管理介面</li></ul>"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: </span></p><ul><li><span "
-"class='vexpl'>change the IP address of your computer</span></li><li><span "
-"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+"before you can access your NAS again: <ul><li><span class='vexpl'>change the "
+"IP address of your computer</span></li><li><span class='vexpl'>access the "
+"webGUI with the new IP address</span></li></ul>"
 msgstr ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
@@ -435,6 +448,10 @@ msgstr "全部"
 
 msgid "All dirs"
 msgstr "所有目錄"
+
+#, php-format
+msgid "All dirs requires mounted path, but Path %s is not mounted."
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -526,8 +543,7 @@ msgid ""
 "Anonymous user download bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
-msgid ""
-"Anonymous user upload bandwith in KB/s. An empty field means infinity."
+msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid "Anonymous users only"
@@ -641,8 +657,7 @@ msgstr "網域名稱"
 msgid "Base Name"
 msgstr ""
 
-msgid ""
-"Base Name will be appended automatically when starting without 'iqn.'."
+msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
 msgid "Best available"
@@ -745,6 +760,10 @@ msgstr ""
 msgid "Change below file"
 msgstr ""
 
+#, fuzzy
+msgid "Change password"
+msgstr "分享密碼"
+
 msgid "Changes to this option will take effect after a reboot."
 msgstr "這個變更必須等到重新開機之後才會生效。"
 
@@ -775,12 +794,14 @@ msgstr "選擇本路由設定要套用到哪一個網路介面。"
 msgid "Clear"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
-"於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 以啟動升級動作"
+"於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 "
+"&quot;韌體升級&quot; 以啟動升級動作"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr "點這個按鈕下載 XML 格式的系統組態"
@@ -837,7 +858,9 @@ msgid ""
 "Compression is worth using if your connection is slow. The efficiency of the "
 "compression depends on the type of the file, and varies widely. Useful for "
 "internet transfer only."
-msgstr "如果你的網際網路連線速度很慢，開啟資料壓縮可以增快工作效率。注意：資料壓縮的比例會依據不同的檔案類型而有很大的差異。"
+msgstr ""
+"如果你的網際網路連線速度很慢，開啟資料壓縮可以增快工作效率。注意：資料壓縮的"
+"比例會依據不同的檔案類型而有很大的差異。"
 
 msgid "Configuration"
 msgstr "配置"
@@ -943,6 +966,16 @@ msgstr ""
 msgid "Custom"
 msgstr "風俗"
 
+#, fuzzy
+msgid "Custom script"
+msgstr "命令列腳本"
+
+msgid "Custom script is not found."
+msgstr ""
+
+msgid "Custom script is required."
+msgstr ""
+
 msgid "DAAP"
 msgstr "DAAP"
 
@@ -955,12 +988,12 @@ msgstr "DHCP"
 msgid "DNS settings"
 msgstr "DNS 設定"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 "automatically after storing the new firmware. The configuration will be "
-"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"maintained.<br />You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -1211,8 +1244,9 @@ msgid ""
 "forwarding delay (the devices are polled 1000 times per second). Not all "
 "NICs support polling."
 msgstr ""
-"Polling 是一種定期訪查網路卡資料區的方式（每秒將檢查 1000 次），這可以降低 CPU "
-"的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding delay）。但並非所有網路卡都支援 Polling。"
+"Polling 是一種定期訪查網路卡資料區的方式（每秒將檢查 1000 次），這可以降低 "
+"CPU 的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding "
+"delay）。但並非所有網路卡都支援 Polling。"
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
@@ -1702,6 +1736,10 @@ msgstr ""
 msgid "Enable reverse DNS lookup."
 msgstr ""
 
+#, fuzzy
+msgid "Enable serial console"
+msgstr "啟用轉碼。"
+
 msgid "Enable store DOS attributes"
 msgstr "開啟 DOS 屬性儲存"
 
@@ -1775,12 +1813,14 @@ msgstr "輸入有效的 sysctl MIB 名稱。"
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select it."
-msgstr "直接輸入欲設定的系統時間 (格式為 mm/dd/yyyy hh:mm) ，或是點選圖示選擇時間"
+msgstr ""
+"直接輸入欲設定的系統時間 (格式為 mm/dd/yyyy hh:mm) ，或是點選圖示選擇時間"
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
-msgstr "輸入在 WPA-PSK 模式中使用的密語。這個密語長度必須在 8 到 63 個字元之間。"
+msgstr ""
+"輸入在 WPA-PSK 模式中使用的密語。這個密語長度必須在 8 到 63 個字元之間。"
 
 msgid ""
 "Enter the path to the home directory of that user. Leave this field empty to "
@@ -1852,7 +1892,9 @@ msgstr ""
 msgid ""
 "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
 "entered options prevent SSH service to be started."
-msgstr "用於 /etc/ssh/sshd_config 的額外選項(通常為空白)。注意，輸入錯誤的選項會導致 SSH 服務無法啟動。"
+msgstr ""
+"用於 /etc/ssh/sshd_config 的額外選項(通常為空白)。注意，輸入錯誤的選項會導致 "
+"SSH 服務無法啟動。"
 
 msgid "Extra options to ifconfig (usually empty)."
 msgstr "用於 ifconfig 的額外選項(通常為空白)。"
@@ -1918,8 +1960,7 @@ msgid "Failed to send test email to: %s."
 msgstr "傳送測試電子郵件給：%s 失敗。"
 
 #, php-format
-msgid ""
-"Failed to send test email. Please check the <a href='%s'>log</a> files."
+msgid "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr "傳送測試電子郵件失敗。請檢查 <a href='%s'>log</a> 檔案。"
 
 msgid "Failed to upload file."
@@ -2214,7 +2255,8 @@ msgstr "I/O封包"
 msgid "I/O statistics"
 msgstr ""
 
-msgid "I/O timeout in seconds (30 by default)."
+#, php-format
+msgid "I/O timeout in seconds (%d by default)."
 msgstr ""
 
 msgid "IG"
@@ -2229,11 +2271,13 @@ msgstr "IP位置"
 msgid "IP address of remote syslog server"
 msgstr "遠端 syslog 伺服器的IP位置"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP "
 "addresses to hostnames&quot;</a> is enabled."
-msgstr "如果啟用 <a href=%s>&quot;將 IP 位址解析為主機名稱&quot;</a> 就會把 IP 位址解析為主機名稱。"
+msgstr ""
+"如果啟用 <a href=%s>&quot;將 IP 位址解析為主機名稱&quot;</a> 就會把 IP 位址解"
+"析為主機名稱。"
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
@@ -2284,7 +2328,9 @@ msgid ""
 "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
 "IDLE state, most disks are still spinning, so this is probably not what you "
 "want."
-msgstr "閒置 - 裝置除了在睡眠、待命、閒置模式以外都要進行檢查。大部分的磁碟在閒置狀態下依然會轉動磁盤，所以這並不能節省電源。"
+msgstr ""
+"閒置 - 裝置除了在睡眠、待命、閒置模式以外都要進行檢查。大部分的磁碟在閒置狀態"
+"下依然會轉動磁盤，所以這並不能節省電源。"
 
 msgid ""
 "If default root is enabled, a chroot operation is performed immediately "
@@ -2301,17 +2347,22 @@ msgstr ""
 "reduce database load. Don't set this option if the volume is modified by non "
 "AFP clients (NFS/SMB/local)."
 
+#, fuzzy
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only "
-"mode.<br>Service disruption to users accessing this mount will occur during "
+"to perform selected command, otherwise the commands work in read-only mode."
+"<br />Service disruption to users accessing this mount will occur during "
 "this process."
-msgstr "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或有暫時性的服務中斷。否則指令只能在唯讀模式下運作。"
+msgstr ""
+"如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或有暫"
+"時性的服務中斷。否則指令只能在唯讀模式下運作。"
 
 msgid ""
 "If the server is behind a proxy set this parameters to give local services "
 "access to the internet via proxy."
-msgstr "如果此伺服器位於代理伺服器後面，設定這個參數會讓本地端服務能透過代理伺服器存取網際網路。"
+msgstr ""
+"如果此伺服器位於代理伺服器後面，設定這個參數會讓本地端服務能透過代理伺服器存"
+"取網際網路。"
 
 msgid ""
 "If this parameter is set, Samba attempts to first read DOS attributes "
@@ -2340,7 +2391,8 @@ msgid ""
 "immediately. The entire system configuration will be overwritten. The LAN IP "
 "address will be reset to %s and the password will be set to '%s'."
 msgstr ""
-"當你點選了'是'， %s 將會重設回原廠預設值並立刻重新開機。全部系統的設定值將會被覆寫，IP位置也將重設為 %s 。 而密碼將設定為 '%s' 。"
+"當你點選了'是'， %s 將會重設回原廠預設值並立刻重新開機。全部系統的設定值將會"
+"被覆寫，IP位置也將重設為 %s 。 而密碼將設定為 '%s' 。"
 
 msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
@@ -2543,11 +2595,12 @@ msgstr "上次設定時間"
 msgid "Latvian"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
-"menu."
-msgstr "將未格式化的磁碟設為 '%s' 並且使用<a href=%s>格式化選單</a>來進行格式化。"
+"Leave '%s' for unformated disks and format them using <a href='%s'>format</"
+"a> menu."
+msgstr ""
+"將未格式化的磁碟設為 '%s' 並且使用<a href=%s>格式化選單</a>來進行格式化。"
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
@@ -2672,8 +2725,7 @@ msgid "Location where the content database file will be stored."
 msgstr "用來儲存內容資料庫檔案的位置。"
 
 #, php-format
-msgid ""
-"Location where the working files will be stored, e.g. %s/backup/.unison"
+msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
 
 msgid "Log"
@@ -2685,13 +2737,16 @@ msgstr "記錄檔層級"
 msgid "Log packets that are handled by this rule to syslog."
 msgstr ""
 
-msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#, php-format
+msgid "Logical Unit Controller Authorised network (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#, php-format
+msgid "Logical Unit Controller IP address (%s by default)"
 msgstr ""
 
-msgid "Logical Unit Controller TCP port (3261 by default)"
+#, php-format
+msgid "Logical Unit Controller TCP port (%d by default)"
 msgstr ""
 
 msgid "Logical Unit Controller login information"
@@ -2786,8 +2841,7 @@ msgstr ""
 msgid "Max. sessions"
 msgstr ""
 
-msgid ""
-"Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
@@ -2805,13 +2859,15 @@ msgstr ""
 msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
-msgid "Maximum number of connections in each session (8 by default)."
-msgstr ""
+#, fuzzy, php-format
+msgid "Maximum number of connections in each session (%d by default)."
+msgstr "來自相同IP的連線數目上限(0 = 不限制)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "來自相同IP的連線數目上限(0 = 不限制)."
 
-msgid "Maximum number of sessions holding at same time (32 by default)."
+#, php-format
+msgid "Maximum number of sessions holding at same time (%d by default)."
 msgstr ""
 
 msgid "Maximum number of simultaneous clients."
@@ -2898,8 +2954,7 @@ msgstr "掛載點"
 msgid "Mount point name"
 msgstr ""
 
-msgid ""
-"Mount the file system read-only (even the super-user may not write it)."
+msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr "以唯讀模式掛載（超級使用者也無法寫入）。"
 
 msgid "Mounting device."
@@ -2929,7 +2984,8 @@ msgstr "NIS"
 msgid "NOPIN Interval"
 msgstr ""
 
-msgid "NOPIN sending interval in seconds (20 by default)."
+#, php-format
+msgid "NOPIN sending interval in seconds (%d by default)."
 msgstr ""
 
 msgid "NOT YET AVAILABLE"
@@ -3382,7 +3438,9 @@ msgstr "要監聽的連接埠。預設的連接埠為 %d。"
 msgid ""
 "Port to listen on. Only dynamic or private ports can be used (from %d "
 "through %d). Default port is %d."
-msgstr "要監聽的連接埠。只有動態的或私人的連接埠可以使用(從 %d 到 %d)。預設的連接埠為 %d。"
+msgstr ""
+"要監聽的連接埠。只有動態的或私人的連接埠可以使用(從 %d 到 %d)。預設的連接埠"
+"為 %d。"
 
 msgid "Portal Group"
 msgstr ""
@@ -3635,7 +3693,9 @@ msgstr ""
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
 "last report. Set to 0 to disable this report."
-msgstr "設定自上次回報之後最少變異了攝氏多少度才會再次回報，設為 0 則可以取消這個功能。"
+msgstr ""
+"設定自上次回報之後最少變異了攝氏多少度才會再次回報，設為 0 則可以取消這個功"
+"能。"
 
 msgid ""
 "Report if the temperature is greater or equal than N degrees Celsius. Set to "
@@ -3792,7 +3852,8 @@ msgid ""
 "is disabled, a scan can still be forced from the status page of the "
 "administrative web interface."
 msgstr ""
-"每 N 秒掃描檔案系統以查看是否有任何檔案被加入或移除。設為 0 則停用背景掃描。如果停用背景掃描，仍然可以使用管理網頁介面的狀態頁來強制掃描。"
+"每 N 秒掃描檔案系統以查看是否有任何檔案被加入或移除。設為 0 則停用背景掃描。"
+"如果停用背景掃描，仍然可以使用管理網頁介面的狀態頁來強制掃描。"
 
 msgid "Scan type"
 msgstr "掃描類型"
@@ -3849,7 +3910,8 @@ msgid "Selected file isn't an valid ISO file."
 msgstr "所選擇的檔案不是一個有效的 ISO 檔。"
 
 msgid "Self-Monitoring, Analysis and Reporting Technology"
-msgstr "Self-Monitoring, Analysis and Reporting Technology 自我監測、分析與回報技術"
+msgstr ""
+"Self-Monitoring, Analysis and Reporting Technology 自我監測、分析與回報技術"
 
 msgid "Send Buffer Size"
 msgstr "傳送緩衝區"
@@ -3868,6 +3930,9 @@ msgstr "傳送測試電子郵件"
 
 msgid "Separate email addresses by semi-colon."
 msgstr "以分號隔開電子郵件位址。"
+
+msgid "Serial Console"
+msgstr ""
 
 msgid "Serial number"
 msgstr ""
@@ -3986,10 +4051,12 @@ msgstr ""
 msgid "Size"
 msgstr "大小"
 
-msgid "Size of receive buffer (16384 by default)."
+#, fuzzy, php-format
+msgid "Size of receive buffer (%d by default)."
 msgstr "接收緩衝區的大小(預設為16384)."
 
-msgid "Size of send buffer (16384 by default)."
+#, fuzzy, php-format
+msgid "Size of send buffer (%d by default)."
 msgstr "傳送緩衝區的大小(預設為16384)."
 
 msgid ""
@@ -4066,15 +4133,16 @@ msgstr ""
 msgid "Specifies the username which the service will run as."
 msgstr ""
 
-msgid ""
-"Specifies whether it is allowed to login as superuser (root) directly."
+msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "指定超級使用者 (root)是否可以透過SSH直接登入。"
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
 "lowering the threshold can adversely affect performance and auto-"
 "defragmentation."
-msgstr "指定要用多少百分比的硬碟空間配置給一般使用者。注意將門檻降低會影響到磁碟效能。"
+msgstr ""
+"指定要用多少百分比的硬碟空間配置給一般使用者。注意將門檻降低會影響到磁碟效"
+"能。"
 
 msgid "Split request"
 msgstr ""
@@ -4087,7 +4155,8 @@ msgid ""
 "modes most disks are not spinning, so if you want to prevent a laptop disk "
 "from spinning up each poll, this is probably what you want."
 msgstr ""
-"待命 - 裝置除了在睡眠、待命模式之外都將檢查。這個情況下大部分的磁碟都會停止旋轉，如果你想預防磁碟不斷因為檢查而重新啟動，這應該就是你要的。"
+"待命 - 裝置除了在睡眠、待命模式之外都將檢查。這個情況下大部分的磁碟都會停止旋"
+"轉，如果你想預防磁碟不斷因為檢查而重新啟動，這應該就是你要的。"
 
 msgid "Standby time"
 msgstr "進入待命時間"
@@ -4195,7 +4264,8 @@ msgid ""
 "server. Be sure to set syslogd on the remote server to accept syslog "
 "messages from %s."
 msgstr ""
-"Syslog 會透過 UDP 514 連接埠將資料送到指定的遠端 syslog 伺服器。請確定遠端的 syslog 伺服器將會接受來自 %s 的記錄資料。"
+"Syslog 會透過 UDP 514 連接埠將資料送到指定的遠端 syslog 伺服器。請確定遠端的 "
+"syslog 伺服器將會接受來自 %s 的記錄資料。"
 
 msgid "System"
 msgstr "系統"
@@ -4328,6 +4398,9 @@ msgstr ""
 "The  deny  option specifies users and groups who are not allowed access to "
 "the share. It follows the same  format  as  the  allow option."
 
+msgid "The COM port in BIOS has to be enabled before enabling this option."
+msgstr ""
+
 msgid "The IP address that this hostname represents."
 msgstr "主機名稱所代表的 IP 位置"
 
@@ -4343,7 +4416,8 @@ msgstr "MIB '%s' 在 sysctl 中不存在。"
 msgid ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
 "first before proceeding."
-msgstr "這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</a>。"
+msgstr ""
+"這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</a>。"
 
 msgid "The TCP port must be a valid port number."
 msgstr "請輸入一個有效的連接埠。"
@@ -4486,9 +4560,9 @@ msgstr ""
 msgid "The changes have been applied successfully."
 msgstr "變更套用成功。"
 
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"The changes have been saved. You have to <a href=%s>reboot</a> the system "
+"The changes have been saved. You have to <a href='%s'>reboot</a> the system "
 "for the changes to take effect."
 msgstr "變更已經套用。你必須<a href=%s>重新開機</a>以讓變更生效。"
 
@@ -4505,8 +4579,9 @@ msgstr "無法回覆設定組態。"
 msgid "The configuration could not be restored. %s"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"The configuration has been changed.<br>You must apply the changes in order "
+"The configuration has been changed.<br />You must apply the changes in order "
 "for them to take effect."
 msgstr "設定已經儲存。<br>套用之後才會生效。"
 
@@ -4571,7 +4646,9 @@ msgstr ""
 msgid ""
 "The driver used to communicate with your UPS. Get the list of available <a "
 "href='%s' target='_blank'>drivers</a>."
-msgstr "用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</a> 清單。"
+msgstr ""
+"用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</"
+"a> 清單。"
 
 #, php-format
 msgid ""
@@ -4602,8 +4679,8 @@ msgid "The host name contain invalid characters."
 msgstr "主機名稱輸入了無效的字元。"
 
 msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
-"."
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ "
+"and ."
 msgstr "主機名稱只可以由 a-z, A-Z, 0-9 組成。"
 
 msgid "The image file is corrupt"
@@ -4641,11 +4718,14 @@ msgstr "登入帳號含有無效的字元。"
 msgid "The login name is a reserved login name."
 msgstr "預定的登入帳號。"
 
+#, fuzzy
+msgid "The login name is limited to 16 characters."
+msgstr "登入帳號含有無效的字元。"
+
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "每個 IP 的最大連線數必需是 0 （不限制）或更大。"
 
-msgid ""
-"The maximum download bandwith in KiB/s. An empty field means infinity."
+msgid "The maximum download bandwith in KiB/s. An empty field means infinity."
 msgstr ""
 
 msgid "The maximum idle time be a number."
@@ -4760,6 +4840,10 @@ msgid "The queuedepth range is invalid."
 msgstr ""
 
 #, php-format
+msgid "The recommended queue depth is %d."
+msgstr ""
+
+#, php-format
 msgid "The removable area mapped to LUN%d."
 msgstr ""
 
@@ -4785,7 +4869,8 @@ msgstr "這封 email 的主旨。"
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
 "take one minute."
-msgstr "系統已經回復為初始設定，現在已經自動進入重新開機程序，可能要花一分鐘的時間。"
+msgstr ""
+"系統已經回復為初始設定，現在已經自動進入重新開機程序，可能要花一分鐘的時間。"
 
 msgid "The system is halting now. This may take one minute."
 msgstr "系統關閉中，可能需要一分鐘的時間..."
@@ -4821,8 +4906,7 @@ msgid ""
 "the HTML form."
 msgstr ""
 
-msgid ""
-"The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 
 msgid "The uploaded file was only partially uploaded."
@@ -4841,6 +4925,9 @@ msgid "The volume must be detached before it can be deleted."
 msgstr "磁碟必需先移除才可以刪除。"
 
 msgid "The working directory does not exist."
+msgstr ""
+
+msgid "There are too many additional groups."
 msgstr ""
 
 msgid "There is no error, the file uploaded with success."
@@ -4886,7 +4973,8 @@ msgstr ""
 msgid ""
 "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
 "to a running system."
-msgstr "這些 MIB 會加入到 /etc/sysctl.conf。這樣會讓您可以對執行中的系統進行變更。"
+msgstr ""
+"這些 MIB 會加入到 /etc/sysctl.conf。這樣會讓您可以對執行中的系統進行變更。"
 
 msgid ""
 "These commands will be executed pre or post system initialization (booting) "
@@ -4898,7 +4986,9 @@ msgstr ""
 msgid ""
 "These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
 "options used by various generic startup scripts."
-msgstr "這些選項會加入到 /etc/rc.conf。這讓您可以覆蓋由各式原始啟動命令稿所使用的選項。"
+msgstr ""
+"這些選項會加入到 /etc/rc.conf。這讓您可以覆蓋由各式原始啟動命令稿所使用的選"
+"項。"
 
 #, php-format
 msgid "These parameters are added to %s."
@@ -4964,8 +5054,9 @@ msgid ""
 "configure your UPS please check the NUT (Network UPS Tools) <a href='%s' "
 "target='_blank'>documentation</a>."
 msgstr ""
-"這個組態設定值是用來產生 NUT UPS 伺服程式所需的 ups.conf 組態。要取得更多關於如何設定您的 UPS 的資訊，請查閱 NUT "
-"(Network UPS Tools) <a href='%s' target='_blank'>文件</a>。"
+"這個組態設定值是用來產生 NUT UPS 伺服程式所需的 ups.conf 組態。要取得更多關於"
+"如何設定您的 UPS 的資訊，請查閱 NUT (Network UPS Tools) <a href='%s' "
+"target='_blank'>文件</a>。"
 
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr "This controls how the case of filenames are viewed and stored."
@@ -5019,8 +5110,8 @@ msgid "This group already exists in the group list."
 msgstr "這個群組已經建立過了。"
 
 msgid ""
-"This is both the name of the server as advertised via "
-"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+"This is both the name of the server as advertised via Zeroconf/Bonjour/"
+"Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
 
 msgid "This is for information only (not using during iSCSI negociation)."
@@ -5032,21 +5123,23 @@ msgid ""
 "levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
 "and may lead to unexpected behavior or security compromises. Only install "
 "images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br><br>Do you want to install this image anyway "
-"(on your own risk)?"
+"has not been tampered with.<br /><br />Do you want to install this image "
+"anyway (on your own risk)?"
 msgstr ""
-"這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致安全漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像"
-"檔，並確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像檔嗎？(自行負責)"
+"這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致安全"
+"漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像檔，並"
+"確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像檔嗎？(自"
+"行負責)"
 
 msgid "This name already exists in the disk list."
 msgstr "磁碟列表已經有這個名稱存在。"
 
-msgid ""
-"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr "範例名稱：iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5220,10 +5313,10 @@ msgstr ""
 msgid "This virtual device name already exists."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "This will cause %s not to check for newer firmware versions when the <a "
-"href=%s>%s</a> page is viewed."
+"href='%s'>%s</a> page is viewed."
 msgstr "這會讓 %s 在瀏覽<a href=%s>%s</a>頁面時不檢查新版的韌體。"
 
 msgid "This will create a recycle bin on the share."
@@ -5232,7 +5325,9 @@ msgstr "將產生一個垃圾桶的資料夾。"
 msgid ""
 "This will erase ALL data on the selected disks! Do not use this option if "
 "you want to add an already existing RAID again."
-msgstr "這個動作會把選取的磁碟內資料清空！如果你想要新增一個已經設定好的 RAID 請勿使用這個選項。"
+msgstr ""
+"這個動作會把選取的磁碟內資料清空！如果你想要新增一個已經設定好的 RAID 請勿使"
+"用這個選項。"
 
 msgid ""
 "This will erase ALL data on your disk! Do not use this option if you want to "
@@ -5268,13 +5363,12 @@ msgstr ""
 
 msgid ""
 "To configure the target, you must add at least Portal Group and Initiator "
-"Group and Extent.<br/>Portal Group which is identified by tag number defines "
-"IP addresses and listening TCP ports.<br/>Initiator Group which is "
-"identified by tag number defines authorised initiator names and "
-"networks.<br/>Auth Group which is identified by tag number and is optional "
-"if the target does not use CHAP authentication defines authorised users and "
-"secrets for additional security.<br/>Extent defines the storage area of the "
-"target."
+"Group and Extent.<br />Portal Group which is identified by tag number "
+"defines IP addresses and listening TCP ports.<br />Initiator Group which is "
+"identified by tag number defines authorised initiator names and networks."
+"<br />Auth Group which is identified by tag number and is optional if the "
+"target does not use CHAP authentication defines authorised users and secrets "
+"for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 
 msgid "To e-mail"
@@ -5285,8 +5379,8 @@ msgstr "發送至 email"
 
 #, php-format
 msgid ""
-"To get detailed informations about TCP Wrappers check the FreeBSD <a "
-"href='%s' target='_blank'>documentation</a>."
+"To get detailed informations about TCP Wrappers check the FreeBSD <a href='%"
+"s' target='_blank'>documentation</a>."
 msgstr ""
 
 #, php-format
@@ -5299,8 +5393,8 @@ msgstr ""
 msgid ""
 "To increase CIFS performance try the following:<div "
 "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a "
-"href='%s'>MTU</a></li></ul></div>"
+"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
+"ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5309,8 +5403,8 @@ msgstr ""
 msgid ""
 "To use Active Directory the CIFS/SMB service will enabled, too. The "
 "following services will use AD authentication:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li"
-">System</li></ul></div>"
+"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
+"li><li>System</li></ul></div>"
 msgstr ""
 
 msgid "Tolerated"
@@ -5333,7 +5427,8 @@ msgstr "Traceroute"
 msgid ""
 "Traceroute may take a while to complete. You may hit the Stop button on your "
 "browser at any time to see the progress of failed traceroutes."
-msgstr "Traceroute需要一段時間才能完成。你可以隨時按下瀏覽器的停止載入鈕並觀看結果。"
+msgstr ""
+"Traceroute需要一段時間才能完成。你可以隨時按下瀏覽器的停止載入鈕並觀看結果。"
 
 msgid "Traffic graph"
 msgstr "流量圖表"
@@ -5390,8 +5485,8 @@ msgid ""
 "or NTFS can result in unpredictable results, file corruption, and loss of "
 "data!"
 msgstr ""
-"UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS "
-"可能會導致檔案損毀等不可預期的錯誤！"
+"UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, "
+"EXT3, 或是 NTFS 可能會導致檔案損毀等不可預期的錯誤！"
 
 #, php-format
 msgid ""
@@ -5399,8 +5494,8 @@ msgid ""
 "Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
 "can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
-"UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s之原生OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS "
-"檔案格式可能會導致檔案損毀等不可預期的錯誤！"
+"UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s之原生OS)。 如果使用FAT, FAT32, "
+"EXT2, EXT3, 或是 NTFS 檔案格式可能會導致檔案損毀等不可預期的錯誤！"
 
 msgid "UID"
 msgstr "UID"
@@ -5498,13 +5593,14 @@ msgstr "使用 AFP3 UNIX 權限。"
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
-msgstr "使用空白字元來分隔多個主機位置(一個空白即可)。如果你輸入主機名稱，請先設定DNS伺服器。"
+msgstr ""
+"使用空白字元來分隔多個主機位置(一個空白即可)。如果你輸入主機名稱，請先設定DNS"
+"伺服器。"
 
 msgid "Use sendfile"
 msgstr ""
 
-msgid ""
-"Use the following IP address as the source address in outgoing packets."
+msgid "Use the following IP address as the source address in outgoing packets."
 msgstr ""
 
 msgid ""
@@ -5542,8 +5638,8 @@ msgid ""
 "guest service. This user must exist in the password file, but does not "
 "require a valid login."
 msgstr ""
-"設定使用者名稱（預設為'ftp'），預設權限為guest。這個使用者所擁有的權限也會套用在其他的服務上。您可以取消這個使用者的登入權限，但是千萬不能將他刪"
-"除。"
+"設定使用者名稱（預設為'ftp'），預設權限為guest。這個使用者所擁有的權限也會套"
+"用在其他的服務上。您可以取消這個使用者的登入權限，但是千萬不能將他刪除。"
 
 msgid "Used"
 msgstr ""
@@ -5670,6 +5766,9 @@ msgstr "網頁介面"
 msgid "Webserver"
 msgstr "網頁伺服器"
 
+msgid "Webserver document root is missing."
+msgstr ""
+
 msgid "Week days"
 msgstr ""
 
@@ -5684,7 +5783,9 @@ msgstr "要將下載的資料儲存於何處。"
 msgid ""
 "Whether scans should be skipped if there are no users connected. This allows "
 "the drive to spin down when no users are connected."
-msgstr "如果沒有使用者連線是否略過掃描。這樣會讓磁碟機在沒有使用者連線的時候停止運轉。"
+msgstr ""
+"如果沒有使用者連線是否略過掃描。這樣會讓磁碟機在沒有使用者連線的時候停止運"
+"轉。"
 
 msgid "Who"
 msgstr "Who"
@@ -5723,16 +5824,16 @@ msgstr "是"
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
 "command.<br>Example: pkg_add -r packagename"
-msgstr "你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r package-name"
+msgstr ""
+"你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r "
+"package-name"
 
-msgid ""
-"You can use the following parameters for substitution:<div "
-"id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "You can use the following parameters for substitution:"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br>"
+"You can't mount the partition '%s' where the config file is stored.<br />"
 msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
 
 msgid ""
@@ -5743,6 +5844,12 @@ msgstr "正在被 Swap、iSCSI 目標或是任何程序使用的磁碟不能夠�
 #, php-format
 msgid ""
 "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
+
+#, php-format
+msgid ""
+"You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this "
 "service to clients."
 msgstr ""
 
@@ -5804,6 +5911,10 @@ msgstr ""
 msgid "cachecnid"
 msgstr "cachecnid"
 
+#, fuzzy
+msgid "change failed."
+msgstr "套件檔案"
+
 msgid "chroot() everyone, but root."
 msgstr "chroot() everyone, but root."
 
@@ -5823,6 +5934,12 @@ msgstr "資料庫位置"
 msgid "e.g. %s"
 msgstr "例：%s"
 
+msgid "filechooser"
+msgstr ""
+
+msgid "get target info failed."
+msgstr ""
+
 msgid "hour(s)"
 msgstr ""
 
@@ -5835,10 +5952,8 @@ msgstr "iSCSI 目標"
 msgid "iSCSI Target Logical Unit Controller"
 msgstr ""
 
-msgid "iSCSI initial parameter (262144 by default)."
-msgstr ""
-
-msgid "iSCSI initial parameter (65536 by default)."
+#, php-format
+msgid "iSCSI initial parameter (%d by default)."
 msgstr ""
 
 msgid "iSCSI initiator disabled"
@@ -5846,6 +5961,9 @@ msgstr "關閉 iSCSI 初始器"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "load/unload failed."
+msgstr ""
 
 msgid "minute(s)"
 msgstr ""
@@ -5895,6 +6013,9 @@ msgstr "rc.conf"
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
+msgid "scan target failed."
+msgstr ""
+
 msgid "second(s)"
 msgstr ""
 
@@ -5903,9 +6024,6 @@ msgstr "秒"
 
 msgid "striping"
 msgstr "striping"
-
-msgid "successfully"
-msgstr ""
 
 msgid "successfully."
 msgstr ""
@@ -5991,14 +6109,14 @@ msgstr "upriv"
 #~ msgid "Shutdown Time"
 #~ msgstr "關機時間"
 
-#, php-format
 #~ msgid "Last %d %s log entries"
 #~ msgstr "最後 %d 筆 %s 記錄資料"
 
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "無法回覆設定組態（檔案上傳錯誤）。"
 
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr "這個加密磁碟正在掛載中，在卸除之前請先將其卸載。"
 
 #~ msgid "You must use a passphrase to attach an encrypted disk."
@@ -6010,49 +6128,41 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "設定可以使用iSCSI目標的網路區段"
 
-#, c-format, php-format
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% of %dMB"
 
-#, php-format
 #~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-#~ "href=%s>user</a> must have full Shell enabled."
+#~ "At the highest level, a target is what is presented to the initiator, and "
+#~ "is made up of one or more devices, and/or one or more extents."
 #~ msgstr ""
-#~ "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
-
-#~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and is "
-#~ "made up of one or more devices, and/or one or more extents."
-#~ msgstr ""
-#~ "At the highest level, a target is what is presented to the initiator, and is "
-#~ "made up of one or more devices, and/or one or more extents."
+#~ "At the highest level, a target is what is presented to the initiator, and "
+#~ "is made up of one or more devices, and/or one or more extents."
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "裝置已經掛載，移除之前請先卸載。"
 
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
+#~ "must be defined before they can be used, and they cannot be used more "
+#~ "than once."
 #~ msgstr ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more than "
-#~ "once."
+#~ "must be defined before they can be used, and they cannot be used more "
+#~ "than once."
 
 #~ msgid "Disk Name"
 #~ msgstr "磁碟名稱"
 
-#, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 #~ "used as extent."
-#~ msgstr "檔案路徑（例：/mnt/sharename/extent/%s）或是裝置名稱（例：/dev/ad1）將會視為 extent。"
+#~ msgstr ""
+#~ "檔案路徑（例：/mnt/sharename/extent/%s）或是裝置名稱（例：/dev/ad1）將會視"
+#~ "為 extent。"
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "授與使用者 shell 權限"
 
-#, php-format
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "無效的連接阜號！連接阜必需介於 %d - %d。"
 
