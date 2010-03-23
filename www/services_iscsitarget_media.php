@@ -315,7 +315,7 @@ if ($_POST) {
 				if ($pconfig['error'] != "") {
 					$errormsg = $pconfig['error'];
 				} else {
-					$errormsg = "scan target failed.";
+					$errormsg = gettext("scan target failed.");
 				}
 			}
 		}
@@ -325,7 +325,7 @@ if ($_POST) {
 			if ($pconfig['error'] != "") {
 				$errormsg = $pconfig['error'];
 			} else {
-				$errormsg = "scan target failed.";
+				$errormsg = gettext("scan target failed.");
 			}
 		}
 		if ($pconfig['target'] == "") {
@@ -337,7 +337,7 @@ if ($_POST) {
 				if ($pconfig['error'] != "") {
 					$errormsg = $pconfig['error'];
 				} else {
-					$errormsg = "get target info failed.";
+					$errormsg = gettext("get target info failed.");
 				}
 			}
 		}
@@ -347,7 +347,7 @@ if ($_POST) {
 			if ($pconfig['error'] != "") {
 				$errormsg = $pconfig['error'];
 			} else {
-				$errormsg = "scan target failed.";
+				$errormsg = gettext("scan target failed.");
 			}
 		}
 		if ($pconfig['target'] == "") {
@@ -359,7 +359,7 @@ if ($_POST) {
 				if ($pconfig['error'] != "") {
 					$errormsg = $pconfig['error'];
 				} else {
-					$errormsg = "load/unload failed.";
+					$errormsg = gettext("load/unload failed.");
 				}
 			} else {
 				$savemsg = sprintf("%s %s",
@@ -371,7 +371,7 @@ if ($_POST) {
 			if ($pconfig['error'] != "") {
 				$errormsg = $pconfig['error'];
 			} else {
-				$errormsg = "get target info failed.";
+				$errormsg = gettext("get target info failed.");
 			}
 		}
 	}
@@ -380,7 +380,7 @@ if ($_POST) {
 			if ($pconfig['error'] != "") {
 				$errormsg = $pconfig['error'];
 			} else {
-				$errormsg = "scan target failed.";
+				$errormsg = gettext("scan target failed.");
 			}
 		}
 		if ($pconfig['target'] == "") {
@@ -410,19 +410,19 @@ if ($_POST) {
 				if ($pconfig['error'] != "") {
 					$errormsg = $pconfig['error'];
 				} else {
-					$errormsg = "change failed.";
+					$errormsg = gettext("change failed.");
 				}
 			} else {
 				$savemsg = sprintf("%s %s",
 					 gettext("Change"),
-					 gettext("successfully"));
+					 gettext("successfully."));
 			}
 		}
 		if (get_target_info($pconfig) != 0) {
 			if ($pconfig['error'] != "") {
 				$errormsg = $pconfig['error'];
 			} else {
-				$errormsg = "get target info failed.";
+				$errormsg = gettext("get target info failed.");
 			}
 		}
 	}
