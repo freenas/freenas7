@@ -1,5 +1,5 @@
 PORTNAME=			zoneinfo
-DISTVERSION=	2010e
+DISTVERSION=	2010f
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
 MAINTAINER=		votdev@gmx.de
