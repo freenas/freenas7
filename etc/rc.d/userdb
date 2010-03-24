@@ -36,6 +36,8 @@ echo "Generating user database(s)."
 	-o "ftp:*:50:" -n \
 	-o "_pflogd:*:64:" -n \
 	-o "_dhcp:*:65:" -n \
+	-o "uucp:*:66:" -n \
+	-o "dialer:*:68:" -n \
 	-o "network:*:69:" -n \
 	-o "www:*:80:" -n \
 	-o "nogroup:*:65533:" -n \
@@ -68,7 +70,8 @@ nobody:*:65534:65534::0:0:Unprivileged user:/nonexistent:/usr/sbin/nologin
 ftp:*:21:50::0:0:FTP user:/mnt:/sbin/nologin
 man:*:9:9::0:0:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
 sshd:*:22:22::0:0:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
-_dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin" > ${userdb_masterpasswd}
+_dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin
+uucp:*:66:66::0:0:UUCP pseudo-user:/var/empty:/usr/sbin/nologin" > ${userdb_masterpasswd}
 
 # Generate the /etc/passwd, pwd.db and spwd.db files
 /usr/sbin/pwd_mkdb -p ${userdb_masterpasswd} > /dev/null 2>&1
