@@ -462,6 +462,9 @@ usr/bin/tip
 ## tty -- return user's terminal name
 usr/bin/tty
 
+## vi - text editors
+usr/bin/vi
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -565,6 +568,9 @@ usr/sbin/ntpdate
 
 ## vidcontrol -- system console control and configuration utility
 usr/sbin/vidcontrol
+
+## kbdcontrol -- keyboard control and configuration utility
+usr/sbin/kbdcontrol
 
 ## gstat -- print statistics about GEOM disks
 usr/sbin/gstat
