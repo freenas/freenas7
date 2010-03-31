@@ -139,7 +139,7 @@ if ($_POST) {
 		if (strcasecmp("Auto", $pconfig['uctlauthmethod']) != 0
 			&& $pconfig['uctlauthgroup'] == 0) {
 			if (count($config['iscsitarget']['authgroup']) == 0) {
-				$errormsg .= sprintf(gettext("No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."), "services_iscsitarget_ag.php")."<br/>\n";
+				$errormsg .= sprintf(gettext("No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."), "services_iscsitarget_ag.php")."<br />\n";
 			}
 			$input_errors[] = sprintf(gettext("The attribute '%s' is required."), gettext("Controller Auth Group"));
 		}

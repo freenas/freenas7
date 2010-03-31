@@ -73,7 +73,7 @@ if ($_GET['act'] === "del") {
 			header("Location: disks_raid_graid5.php");
 			exit;
 		} else {
-			$errormsg = sprintf( gettext("The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."), "disks_mount.php");
+			$errormsg = sprintf( gettext("The RAID volume is currently mounted! Remove the <a href='%s'>mount point</a> first before proceeding."), "disks_mount.php");
 		}
 	}
 }

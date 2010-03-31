@@ -57,7 +57,7 @@ $a_pool = &$config['zfs']['pools']['pool'];
 $a_dataset = &$config['zfs']['datasets']['dataset'];
 
 if (!isset($uuid) && (!sizeof($a_pool))) {
-	$errormsg = sprintf(gettext("No configured pools. Please add new <a href=%s>pools</a> first."), "disks_zfs_zpool.php");
+	$errormsg = sprintf(gettext("No configured pools. Please add new <a href='%s'>pools</a> first."), "disks_zfs_zpool.php");
 }
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_dataset, "uuid")))) {

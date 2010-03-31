@@ -107,13 +107,13 @@ $a_iscsitarget_target = &$config['iscsitarget']['target'];
 
 $errormsg = "";
 if (count($config['iscsitarget']['portalgroup']) == 0) {
-	$errormsg .= sprintf(gettext("No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."), "services_iscsitarget_pg.php")."<br/>\n";
+	$errormsg .= sprintf(gettext("No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."), "services_iscsitarget_pg.php")."<br />\n";
 }
 if (count($config['iscsitarget']['initiatorgroup']) == 0) {
-	$errormsg .= sprintf(gettext("No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> first."), "services_iscsitarget_ig.php")."<br/>\n";
+	$errormsg .= sprintf(gettext("No configured Initiator Group. Please add new <a href='%s'>Initiator Group</a> first."), "services_iscsitarget_ig.php")."<br />\n";
 }
 if (count($config['iscsitarget']['extent']) == 0) {
-	$errormsg .= sprintf(gettext("No configured Extent. Please add new <a href=%s>Extent</a> first."), "services_iscsitarget_target.php")."<br/>\n";
+	$errormsg .= sprintf(gettext("No configured Extent. Please add new <a href='%s'>Extent</a> first."), "services_iscsitarget_target.php")."<br />\n";
 }
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_target, "uuid")))) {

@@ -63,6 +63,15 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsiinit, "uu
 	$pconfig['targetaddress'] = "";
 	$pconfig['initiatorname'] = "";
 }
+if (isset($config['iscsitarget']['nodebase'])
+    && !empty($config['iscsitarget']['nodebase'])) {
+	$ex_nodebase = $config['iscsitarget']['nodebase'];
+	$ex_disk = "disk0";
+} else {
+	$ex_nodebase = "iqn.2007-09.jp.ne.peach.istgt";
+	$ex_disk = "disk0";
+}
+$ex_iscsitarget = $ex_nodebase.":".$ex_disk;
 
 if ($_POST) {
 	unset($input_errors);
@@ -139,7 +148,7 @@ if ($_POST) {
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("This is for information only (not using during iSCSI negociation)."), true, 20);?>
 					<?php html_inputbox("initiatorname", gettext("Initiator name"), $pconfig['initiatorname'], gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."), true, 60);?>			
-					<?php html_inputbox("targetname", gettext("Target name"), $pconfig['targetname'], gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."), true, 60);?>
+					<?php html_inputbox("targetname", gettext("Target name"), $pconfig['targetname'], sprintf(gettext("This name is for example: %s."), $ex_iscsitarget), true, 60);?>
 					<?php html_inputbox("targetaddress", gettext("Target address"), $pconfig['targetaddress'], gettext("This the IP address or DNS name of the iSCSI target."), true, 20);?>
 			  </table>
 				<div id="submit">

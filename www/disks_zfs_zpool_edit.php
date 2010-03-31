@@ -58,7 +58,7 @@ $a_pool = &$config['zfs']['pools']['pool'];
 $a_vdevice = &$config['zfs']['vdevices']['vdevice'];
 
 if (!isset($uuid) && (!sizeof($a_vdevice))) {
-	$errormsg = sprintf(gettext("No configured virtual devices. Please add new <a href=%s>virtual device</a> first."), "disks_zfs_zpool_vdevice.php");
+	$errormsg = sprintf(gettext("No configured virtual devices. Please add new <a href='%s'>virtual device</a> first."), "disks_zfs_zpool_vdevice.php");
 }
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_pool, "uuid")))) {
