@@ -2,11 +2,15 @@
 <?php
 /*
 	system_packages_edit.php
-	Copyright © 2007-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -87,7 +91,7 @@ if(!isset($do_action)) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Package file");?></td>
 						<td width="78%" class="vtable">
 							<input name="ulfile" type="file" class="formfld">
-							<br><?=gettext("Select the FreeBSD package to be installed.");?>
+							<br /><?=gettext("Select the FreeBSD package to be installed.");?>
 						</td>
 					</tr>
 			  </table>
@@ -110,7 +114,7 @@ if(!isset($do_action)) {
 				}
 				?>
 				<div id="remarks">
-					<?php html_remark("note", gettext("Note"), gettext("You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"));?>
+					<?php html_remark("note", gettext("Note"), gettext("You can also install a package via SSH or console using the the pkg_add command.<br />Example: pkg_add -r packagename"));?>
 				</div>
 				<?php include("formend.inc");?>
 			</form>

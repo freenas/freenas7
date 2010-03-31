@@ -95,7 +95,7 @@ if ($_POST) {
 
 		// Check whether disk is mounted.
 		if (disks_ismounted_ex($pconfig['devicespecialfile'], "devicespecialfile")) {
-			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$pconfig['devicespecialfile']}&action=umount");
+			$errormsg = sprintf( gettext("The disk is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$pconfig['devicespecialfile']}&action=umount");
 			$pconfig['do_action'] = false;
 		}
 

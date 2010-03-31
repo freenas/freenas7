@@ -53,7 +53,7 @@ $a_vdevice = &$config['zfs']['vdevices']['vdevice'];
 $a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
 
 if (!isset($uuid) && (!sizeof($a_disk))) {
-	$errormsg = sprintf(gettext("No disks available. Please add new <a href=%s>disk</a> first."), "disks_manage.php");
+	$errormsg = sprintf(gettext("No disks available. Please add new <a href='%s'>disk</a> first."), "disks_manage.php");
 }
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_vdevice, "uuid")))) {

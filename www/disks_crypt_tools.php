@@ -81,7 +81,7 @@ if ($_POST) {
 
 		// Action = 'detach' => Check if device is mounted
 		if (($_POST['action'] === "detach") && (1 == disks_ismounted_ex($_POST['disk'], "devicespecialfile"))) {
-			$errormsg = sprintf(gettext("The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$_POST['disk']}&action=umount");
+			$errormsg = sprintf(gettext("The encrypted device is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$_POST['disk']}&action=umount");
 			$pconfig['do_action'] = false;
 		}
 
@@ -228,7 +228,7 @@ function action_change() {
 			        $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
 			        // When attaching the disk, then also mount it.
 							if (FALSE !== ($cnid = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk"))) {
-								echo("<br>" . gettext("Mounting device.") . "<br>");
+								echo("<br />" . gettext("Mounting device.") . "<br />");
 								echo((0 == disks_mount($a_mount[$cnid])) ? gettext("Successful.") : gettext("Failed."));
 							}
 			        break;
