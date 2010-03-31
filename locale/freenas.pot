@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-03-23 21:14+0000\n"
+"PO-Revision-Date: 2010-04-01 01:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1120,6 +1120,9 @@ msgstr ""
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr ""
 
@@ -2164,6 +2167,9 @@ msgstr ""
 msgid "Include basic hardware information."
 msgstr ""
 
+msgid "Incomplete directory"
+msgstr ""
+
 msgid "Info"
 msgstr ""
 
@@ -2294,7 +2300,7 @@ msgstr ""
 msgid "LAGG"
 msgstr ""
 
-msgid "LAN"
+msgid "LAN Management"
 msgstr ""
 
 msgid "LAN net"
@@ -2766,27 +2772,27 @@ msgid "No case folding"
 msgstr ""
 
 #, php-format
-msgid "No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+msgid "No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 
 #, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
 msgstr ""
 
 #, php-format
-msgid "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> first."
+msgid "No configured Initiator Group. Please add new <a href='%s'>Initiator Group</a> first."
 msgstr ""
 
 #, php-format
-msgid "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
 #, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
 #, php-format
-msgid "No configured virtual devices. Please add new <a href=%s>virtual device</a> first."
+msgid "No configured virtual devices. Please add new <a href='%s'>virtual device</a> first."
 msgstr ""
 
 msgid "No device selected."
@@ -2796,7 +2802,7 @@ msgid "No disk configured"
 msgstr ""
 
 #, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
 
 msgid "No file was uploaded."
@@ -4031,7 +4037,7 @@ msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
 #, php-format
-msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+msgid "The RAID volume is currently mounted! Remove the <a href='%s'>mount point</a> first before proceeding."
 msgstr ""
 
 msgid "The TCP port must be a valid port number."
@@ -4208,7 +4214,7 @@ msgid "The directory containing the files you want to publish. The remote host d
 msgstr ""
 
 #, php-format
-msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+msgid "The disk is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
 msgstr ""
 
 msgid "The disk is currently mounted! The mount point will be removed temporary to perform selected command."
@@ -4226,7 +4232,7 @@ msgid "The driver used to communicate with your UPS. Get the list of available <
 msgstr ""
 
 #, php-format
-msgid "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+msgid "The encrypted device is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
 msgstr ""
 
 msgid "The extent name already exists."
@@ -4608,7 +4614,8 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr ""
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, php-format
+msgid "This name is for example: %s."
 msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5136,7 +5143,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+msgid "You can also install a package via SSH or console using the the pkg_add command.<br />Example: pkg_add -r packagename"
 msgstr ""
 
 msgid "You can use the following parameters for substitution:"
@@ -5147,10 +5154,6 @@ msgid "You can't mount the partition '%s' where the config file is stored.<br />
 msgstr ""
 
 msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
-msgstr ""
-
-#, php-format
-msgid "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."
 msgstr ""
 
 #, php-format

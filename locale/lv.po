@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2009-11-09 20:52+0000\n"
 "Last-Translator: Rūdolfs <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -1312,6 +1312,9 @@ msgstr "Mapes maska"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr "Mape, kurā skatīties pēc jaunām .torrent datnem."
 
@@ -2509,6 +2512,10 @@ msgstr "Vairumā gadījumu, 'public' tiek šeit lietots."
 msgid "Include basic hardware information."
 msgstr "Iekļaut vienkāršu aparatūras informāciju."
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Mājas mape"
+
 msgid "Info"
 msgstr "Informācija"
 
@@ -2659,8 +2666,9 @@ msgstr "LACP (Saišu Savākšanas Kontroles Protokols)"
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "LAN"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Menedžments"
 
 msgid "LAN net"
 msgstr "LAN tīkls"
@@ -3181,41 +3189,44 @@ msgstr "RSYNC Klients nav konfigurēts"
 msgid "No case folding"
 msgstr "Nav gadījuma locīšanas"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr ""
-"Nav konfigurēts Apjoms. Lūdzu pievieno jaunu <a href=%s>Apjomu</a> vispirms."
-
-#, php-format
-msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
-"first."
-msgstr ""
-"Nav konfigurēta Iniciatoru Grupa. Lūdzu pievieno jaunu <a href=%s>Iniciatoru "
-"Grupu</a> vispirms."
-
-#, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 "Nav konfigurēta Portāla Grupa. Lūdzu pievieno jaunu <a href=%s>Portāla "
 "Grupu</a> vispirms."
 
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr ""
+"Nav konfigurēts Apjoms. Lūdzu pievieno jaunu <a href=%s>Apjomu</a> vispirms."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+"Nav konfigurēta Iniciatoru Grupa. Lūdzu pievieno jaunu <a href=%s>Iniciatoru "
+"Grupu</a> vispirms."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
+"first."
+msgstr ""
+"Nav konfigurēta Portāla Grupa. Lūdzu pievieno jaunu <a href=%s>Portāla "
+"Grupu</a> vispirms."
+
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 "Nav konfigurēts neviens pūls. Lūdzu pievieno jaunus <a href=%s>pūlus</a> "
 "vispirms."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 "Nav konfigurētas virtuālās ierīces. Lūdzu pievieno jaunu <a href=%s>virtuālo "
 "ierīci</a> vispirms."
@@ -3226,8 +3237,8 @@ msgstr "Nav izvēlēta neviena ierīce."
 msgid "No disk configured"
 msgstr "Nav konfigurēts neviens disks."
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr "Nav pieejami diski. Lūdzu pievieno jaunu<a href=%s>disku</a> vispirms."
 
 msgid "No file was uploaded."
@@ -4602,10 +4613,10 @@ msgstr "MIB '%s' jau eksistē."
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' neeksistē iekš sysctl."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "RAID sējums pašlaik ir piemontēts! Noņem <a href=%s>montēšanas punktu</a> "
 "pirms turpini."
@@ -4840,10 +4851,10 @@ msgstr ""
 "Mape, kura satur datnes, kuru jūs vēlaties publiskot. Attālinātajam "
 "saimniekdatoram nevajag iet cauri mapei, kā daļai no pārsūtījuma."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 "Šis disks pašlaik ir piemontēts! <a href=%s>Atmontēt</a> šo disku pirms "
 "turpināt."
@@ -4871,10 +4882,10 @@ msgstr ""
 "Dzinis, kurš tiks lietots, lai sazinātos ar Tavu UPS. Saraksts ar pieejamiem "
 "<a href='%s' target='_blank'>dziņiem</a>."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
 "Šifrētā ierīce pašlaik ir piemontēta!<a href=%s>Atmontē</a> šo disku pirms "
 "turpini."
@@ -5410,8 +5421,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Vārds jau eksistē iekš disku saraksta."
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "Vārds ir piemēram: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "Vārds ir piemēram: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Vārds ir piemēram: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -6165,9 +6177,10 @@ msgstr "Nepareizs partīcijas tips vai partīcijas numurs."
 msgid "Yes"
 msgstr "Jā"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "Tu arī vari instalēt paku caur SSH vai konsoli lietojot pkg_add komandu."
 "<br>Piemērs: pkg_add -r pakasnosaukums"
@@ -6187,14 +6200,6 @@ msgid ""
 msgstr ""
 "Tu nevari piemontēt disku, kuru izmanto palīgatmiņas datne, iSCSI-mērķa "
 "datne vai cits darbojoš process!"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
-"Tev vajag aktivizēt <a href=%s>Zeroconf/Bonjour</a> lai reklamētu šo servisu "
-"lietotājiem."
 
 #, fuzzy, php-format
 msgid ""
@@ -6394,6 +6399,20 @@ msgstr "aitsaistīt"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Vārds ir piemēram: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "Tev vajag aktivizēt <a href=%s>Zeroconf/Bonjour</a> lai reklamētu šo "
+#~ "servisu lietotājiem."
 
 #~ msgid "iSCSI initial parameter (262144 by default)."
 #~ msgstr "iSCSI sākumparametrs (262144 pēc noklusējuma)."

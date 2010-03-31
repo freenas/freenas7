@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2010-01-13 14:50+0000\n"
 "Last-Translator: Daniel Ruus <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -1303,6 +1303,9 @@ msgstr "Katalogmask"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr "Katalog att bevaka efter .torrentfiler"
 
@@ -2465,6 +2468,10 @@ msgstr ""
 msgid "Include basic hardware information."
 msgstr "Inkludera grundläggande hårdvaruinformation."
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Hemkatalog"
+
 msgid "Info"
 msgstr ""
 
@@ -2605,8 +2612,9 @@ msgstr ""
 msgid "LAGG"
 msgstr ""
 
-msgid "LAN"
-msgstr "LAN"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Hantering"
 
 msgid "LAN net"
 msgstr ""
@@ -3100,34 +3108,35 @@ msgstr "Ingen RSYNC-klient konfigurerad"
 msgid "No case folding"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr ""
-
-#, php-format
-msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
-"first."
-msgstr ""
-
-#, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr "Inga konfigurerade pooler. Lägg till nya <a href=%s>pooler</a> först."
 
-#, php-format
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr "Inga konfigurerade pooler. Lägg till nya <a href=%s>pooler</a> först."
+
+#, fuzzy, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr "Inga konfigurerade pooler. Lägg till nya <a href=%s>pooler</a> först."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
+msgstr "Inga konfigurerade pooler. Lägg till nya <a href=%s>pooler</a> först."
+
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
+msgstr "Inga konfigurerade pooler. Lägg till nya <a href=%s>pooler</a> först."
+
+#, fuzzy, php-format
+msgid ""
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 "Inga konfigurerade virtuella enheter. Lägg till en ny <a href=%s>virtuell "
 "enhet</a> först."
@@ -3138,9 +3147,9 @@ msgstr "Ingen enhet vald."
 msgid "No disk configured"
 msgstr "Ingen disk konfigurerad"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
-msgstr ""
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
+msgstr "Inga konfigurerade pooler. Lägg till nya <a href=%s>pooler</a> först."
 
 msgid "No file was uploaded."
 msgstr ""
@@ -4444,11 +4453,13 @@ msgstr ""
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
+"Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
+"först innan du fortsätter."
 
 msgid "The TCP port must be a valid port number."
 msgstr "TCP-porten måste vara ett giltigt portnummer."
@@ -4660,10 +4671,10 @@ msgid ""
 "not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 "Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
 "först innan du fortsätter."
@@ -4689,11 +4700,13 @@ msgid ""
 "href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
+"Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
+"först innan du fortsätter."
 
 msgid "The extent name already exists."
 msgstr ""
@@ -5167,7 +5180,8 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr ""
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, php-format
+msgid "This name is for example: %s."
 msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5830,7 +5844,7 @@ msgstr "Ja"
 
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 
 msgid "You can use the following parameters for substitution:"
@@ -5847,12 +5861,6 @@ msgid ""
 msgstr ""
 "Du kan inte avmontera en enhet som används av en växlingsfil, en iSCSI-"
 "målfil eller annan aktiv process!"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
 
 #, php-format
 msgid ""
@@ -6049,6 +6057,9 @@ msgstr ""
 
 msgid "upriv"
 msgstr ""
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
 
 #~ msgid "Date"
 #~ msgstr "Datum"

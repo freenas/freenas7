@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2009-06-26 11:05+0000\n"
 "Last-Translator: danmero <Unknown>\n"
 "Language-Team: \n"
@@ -1265,6 +1265,9 @@ msgstr "Masca directoare"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr ""
 
@@ -2412,6 +2415,10 @@ msgstr "In cele mai multe cazuri aici se utilizeaza 'public'"
 msgid "Include basic hardware information."
 msgstr ""
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Director utilizator"
+
 msgid "Info"
 msgstr "Info"
 
@@ -2554,8 +2561,9 @@ msgstr ""
 msgid "LAGG"
 msgstr ""
 
-msgid "LAN"
-msgstr "RETEA"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Configurare"
 
 msgid "LAN net"
 msgstr "Retea LAN"
@@ -3050,32 +3058,33 @@ msgstr ""
 
 #, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 
 #, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
 msgstr ""
 
 #, php-format
 msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+
+#, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
 msgstr ""
 
 #, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
 #, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 
 msgid "No device selected."
@@ -3085,7 +3094,7 @@ msgid "No disk configured"
 msgstr "Niciun disc configurat"
 
 #, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
 
 msgid "No file was uploaded."
@@ -4395,10 +4404,10 @@ msgstr ""
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "Volumul RAID este montat! Eliminati <a href=%s>punctul de montare</a> "
 "inainte de a continua."
@@ -4612,10 +4621,10 @@ msgid ""
 "not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr "Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!"
 
 msgid ""
@@ -4639,11 +4648,11 @@ msgid ""
 "href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
-msgstr ""
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
+msgstr "Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!"
 
 msgid "The extent name already exists."
 msgstr ""
@@ -5118,8 +5127,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Acest nume exista deja in lista discurilor."
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "Exemplu: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "Exemplu: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Exemplu: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5776,9 +5786,10 @@ msgstr ""
 msgid "Yes"
 msgstr "Da"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "Puteti instala un pachet si prin SSH sau de la consola folosind comanda "
 "pkg_add.<br>Exemplu: pkg_add -r numepachet"
@@ -5795,12 +5806,6 @@ msgstr ""
 msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
 "any other running process!"
-msgstr ""
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
 msgstr ""
 
 #, php-format
@@ -5998,6 +6003,13 @@ msgstr ""
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "RETEA"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Exemplu: iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 #~ msgid "Date"
 #~ msgstr "Data"

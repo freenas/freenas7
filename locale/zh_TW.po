@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2009-12-06 23:53+0000\n"
 "Last-Translator: raymond <Unknown>\n"
 "Language-Team: \n"
@@ -1279,6 +1279,9 @@ msgstr "目錄遮罩"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr ""
 
@@ -2430,6 +2433,10 @@ msgstr "大多數的情況下，這裡會設定'public'"
 msgid "Include basic hardware information."
 msgstr ""
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "家目錄"
+
 msgid "Info"
 msgstr "資訊"
 
@@ -2568,8 +2575,9 @@ msgstr ""
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "區域網路"
+#, fuzzy
+msgid "LAN Management"
+msgstr "管理"
 
 msgid "LAN net"
 msgstr "區域網路"
@@ -3061,32 +3069,33 @@ msgstr "大小寫視為相異"
 
 #, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr ""
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr "傳送測試電子郵件失敗。請檢查 <a href='%s'>log</a> 檔案。"
 
 #, php-format
 msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
-msgstr ""
+msgstr "傳送狀態報告失敗。請檢查 <a href='%s'>log</a> 檔案。"
+
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
+msgstr "傳送狀態報告失敗。請檢查 <a href='%s'>log</a> 檔案。"
 
 #, php-format
 msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
-msgstr ""
-
-#, php-format
-msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 
 msgid "No device selected."
@@ -3095,9 +3104,9 @@ msgstr ""
 msgid "No disk configured"
 msgstr "尚未加入磁碟"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
-msgstr ""
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
+msgstr "傳送測試電子郵件失敗。請檢查 <a href='%s'>log</a> 檔案。"
 
 msgid "No file was uploaded."
 msgstr ""
@@ -4412,10 +4421,10 @@ msgstr "MIB '%s' 已經存在。"
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' 在 sysctl 中不存在。"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</a>。"
 
@@ -4623,10 +4632,10 @@ msgid ""
 "not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
 
 msgid ""
@@ -4650,11 +4659,11 @@ msgstr ""
 "用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</"
 "a> 清單。"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
-msgstr ""
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
+msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
 
 msgid "The extent name already exists."
 msgstr ""
@@ -5139,8 +5148,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "磁碟列表已經有這個名稱存在。"
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "範例名稱：iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "範例名稱：iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "範例名稱：iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5821,9 +5831,10 @@ msgstr ""
 msgid "Yes"
 msgstr "是"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r "
 "package-name"
@@ -5840,12 +5851,6 @@ msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
 "any other running process!"
 msgstr "正在被 Swap、iSCSI 目標或是任何程序使用的磁碟不能夠被卸載。"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
 
 #, php-format
 msgid ""
@@ -6039,6 +6044,13 @@ msgstr ""
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "區域網路"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "範例名稱：iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 #~ msgid "Date"
 #~ msgstr "日期"

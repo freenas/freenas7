@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2010-01-18 00:32+0000\n"
 "Last-Translator: Michael <Unknown>\n"
 "Language-Team: \n"
@@ -1336,6 +1336,9 @@ msgstr "Mapmachtigingen"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr "De locatie die de verwijderbare media bevat . (bijv. /mnt/iscsi/)"
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr "Map om in te kijken voor nieuwe .torrent bestanden."
 
@@ -2561,6 +2564,10 @@ msgstr "In de meeste gevallen, wordt 'publiek' hier gebruikt."
 msgid "Include basic hardware information."
 msgstr "Basis hardware informatie bijsluiten."
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Persoonlijke map"
+
 msgid "Info"
 msgstr "Info"
 
@@ -2708,8 +2715,9 @@ msgstr "LACP (Link Aggregation Control Protocol)"
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "LAN"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Management"
 
 msgid "LAN net"
 msgstr "LAN net"
@@ -3240,44 +3248,45 @@ msgstr "Er zijn geen RSYNC Werkstations geconfigureerd"
 msgid "No case folding"
 msgstr "Geen hoge/lage karakters veranderen"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 "Er is geen geconfigureerd Auth Groep. Voeg eerst een nieuwe <a href=%s>Auth "
 "Groep</a> toe."
 
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
 msgstr ""
 "Er is geen extentie geconfigureerd.  Voeg eerst een nieuwe <a href=%"
 "s>Extentie</a> toe."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
-"first."
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
 msgstr ""
 "Er is geen geconfigureerde Initiator Groep. Voeg eerst een nieuwe <a href=%"
 "s>Initiator Groep</a> toe."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
+"first."
 msgstr ""
 "Er is geen geconfigureerde Portaal Groep. Voeg eerst een nieuwe <a href=%"
 "s>Portaal Groep</a> toe."
 
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 "Er zijn geen geconfigureerde pools. Voeg eerst een nieuwe <a href=%s>pool</"
 "a> toe."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 "Er zijn geen geconfigureerde virtuele schijven. Voeg eerst een nieuwe <a "
 "href=%s>virtuele schijf</a> toe."
@@ -3288,8 +3297,8 @@ msgstr "Er is geen schijf geselecteerd"
 msgid "No disk configured"
 msgstr "Geen schijf geconfigureerd"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
 "Geen schijven beschikbaar. Voeg eerst een nieuwe <a href=%s>schijf</a> toe."
 
@@ -4685,10 +4694,10 @@ msgstr "De MIB '%s' bestaat reeds."
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "De MIB '%s' bestaat niet in sysctl."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "Het RAID volume is momenteel aangekoppeld! Verwijder het <a href=%"
 "s>koppelpunt</a> eerst voor u verder gaat."
@@ -4930,10 +4939,10 @@ msgstr ""
 "De map met bestanden die gepubliceerd dienen te worden. De remote server "
 "hoeft de map niet door te geven als onderdeel van de overdracht."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 "De schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> deze schijf "
 "eerst voor u verder gaat."
@@ -4961,10 +4970,10 @@ msgstr ""
 "Het stuurprogramma dat gebruikt wordt om te communiceren met uw UPS. Bekijk "
 "de lijst met beschikbare <a href='%s' target='_blank'>stuurprogramma's</a>."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
 "De versleutelde schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> "
 "deze schijf eerst voor u verder gaat."
@@ -5529,8 +5538,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Deze naam bestaat reeds in de schijf lijst."
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "Deze naam is als voobeeld: iqn.1994-04.org.netbsd.iscsi-doel:doel0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "Deze naam is als voobeeld: iqn.2005-01.il.ac.huji.cs:iemand."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Deze naam is als voobeeld: iqn.2005-01.il.ac.huji.cs:iemand."
@@ -6296,9 +6306,10 @@ msgstr "Fout partitie type of partitie nummer."
 msgid "Yes"
 msgstr "Ja"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "U kunt ook een pakket installeren via SSH of console door gebruik te maken "
 "van de pkg_add opdracht.<br>Voorbeeld: pkg_add -r pakketnaam"
@@ -6319,14 +6330,6 @@ msgid ""
 msgstr ""
 "Het is niet mogelijk een schijf te ontkoppelen die gebruikt wordt door het "
 "wisselbestand, een iSCSI-doel bestand of elk ander in werking zijnde proces!"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
-"U dient <a href=%s>Zeroconf/Bonjour</a> in te schakelen om deze service "
-"kenbaar te maken aan de werkstations."
 
 #, fuzzy, php-format
 msgid ""
@@ -6533,6 +6536,20 @@ msgstr "loskoppelen"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Deze naam is als voobeeld: iqn.1994-04.org.netbsd.iscsi-doel:doel0."
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "U dient <a href=%s>Zeroconf/Bonjour</a> in te schakelen om deze service "
+#~ "kenbaar te maken aan de werkstations."
 
 #~ msgid "iSCSI initial parameter (262144 by default)."
 #~ msgstr "iSCSI initiële parameter. (standaard 262144)"
