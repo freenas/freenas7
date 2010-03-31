@@ -76,6 +76,7 @@ Minors changes:
 - Modify /mnt and /tmp permission.
 - Add custom script in email report (FR 2964946).
 - Add Japanese in File Manager (quixplorer).
+- Add incomplete directory in Services|BitTorrent.
 
 Bug fixes:
 - Fix bug in istgt script.
@@ -104,6 +105,7 @@ Bug fixes:
 - Fix the partition problem when installation on the disk > 1TB.
 - Fix union /var is useless (BR 2964649).
 - Fix warning in quixploler when using Russian.
+- Fix transmission_user = root does not work.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
