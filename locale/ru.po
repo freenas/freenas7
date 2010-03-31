@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas-0.7\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2010-01-16 18:36+0000\n"
 "Last-Translator: Alexey Sannikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1326,6 +1326,9 @@ msgstr "Маска каталога"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr "Каталог для отслеживания новых .torrent-файлов."
 
@@ -2527,6 +2530,10 @@ msgstr "В большинстве случаев здесь использует
 msgid "Include basic hardware information."
 msgstr "Включить базовые сведения об аппаратном обеспечении"
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Домашний каталог"
+
 msgid "Info"
 msgstr "Сведения"
 
@@ -2678,8 +2685,9 @@ msgstr "LACP (протокол агрегации каналов)"
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "Локальная сеть"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Управление"
 
 msgid "LAN net"
 msgstr "Локальная сеть"
@@ -3205,42 +3213,45 @@ msgstr "Нет настроенных клиентов Rsync"
 msgid "No case folding"
 msgstr "Без преобразования регистра"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr ""
-"Отсутствуют сконфигурированные экстенты. Пожалуйста, добавьте вначале новый "
-"<a href=%s>экстент</a>."
-
-#, php-format
-msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
-"first."
-msgstr ""
-"Отсутствуют сконфигурированные группы инициаторов. Пожалуйста, добавьте "
-"вначале <a href=%s>группу инициаторов</a>."
-
-#, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 "Отсутствуют сконфигурированные группы порталов. Пожалуйста, добавьте вначале "
 "<a href=%s>группу порталов</a>."
 
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr ""
+"Отсутствуют сконфигурированные экстенты. Пожалуйста, добавьте вначале новый "
+"<a href=%s>экстент</a>."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+"Отсутствуют сконфигурированные группы инициаторов. Пожалуйста, добавьте "
+"вначале <a href=%s>группу инициаторов</a>."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
+"first."
+msgstr ""
+"Отсутствуют сконфигурированные группы порталов. Пожалуйста, добавьте вначале "
+"<a href=%s>группу порталов</a>."
+
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 "Отсутствуют сконфигурированные пулы. Пожалуйста, добавьте вначале новые <a "
 "href=%s>пулы</a>."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 "Отсутствуют сконфигурированные виртуальные устройства. Пожалуйста, добавьте "
 "вначале новое <a href=%s>виртуальное устройство</a>."
@@ -3251,8 +3262,8 @@ msgstr "Выбранные устройства отсутствуют."
 msgid "No disk configured"
 msgstr "Нет сконфигурированных дисков"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
 "Отсутствуют доступные диски. Пожалуйста, добавьте вначале новый <a href=%"
 "s>диск</a>."
@@ -4632,10 +4643,10 @@ msgstr "MIB '%s' уже существует."
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' не существует в sysctl."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "Том RAID-массива в данный момент смонтирован! Удалите <a href=%s>точку "
 "монтирования</a> перед продолжением."
@@ -4870,10 +4881,10 @@ msgstr ""
 "Удаленному хосту в процессе передачи не требуется просмотра содержимого "
 "каталогов пути."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 "Этот диск смонтирован! <a href=%s>Размонтируйте</a> диск перед продолжением."
 
@@ -4900,10 +4911,10 @@ msgstr ""
 "Драйвер используется для соединения с вашим UPS. Список доступных драйверов "
 "находится <a href='%s' target='_blank'>здесь</a>."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
 "Зашифрованное устройство в данный момент смонтировано. Необходимо вначале <a "
 "href=%s>размонтировать</a> этот диск."
@@ -5448,8 +5459,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Такое имя уже есть в списке дисков."
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "Например, такое имя: qn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "Например, такое имя: qn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Например, такое имя: qn.2005-01.il.ac.huji.cs:somebody."
@@ -6210,9 +6222,10 @@ msgstr "Неверный номер или тип раздела."
 msgid "Yes"
 msgstr "Да"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "Возможно также установить пакет посредством SSH или консоли, используя "
 "команду pkg_add.<br> Пример: pkg_add -r packagename"
@@ -6231,13 +6244,6 @@ msgid ""
 msgstr ""
 "Вы не можете отмонтировать диск, который используется файлом подкачки, iSCSI "
 "или другим запущенным процессом!"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
-"Включите <a href=%s>Zeroconf/Bonjour</a> для предоставления сервиса клиентам."
 
 #, fuzzy, php-format
 msgid ""
@@ -6437,6 +6443,20 @@ msgstr "размонтировать"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "Локальная сеть"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Например, такое имя: qn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "Включите <a href=%s>Zeroconf/Bonjour</a> для предоставления сервиса "
+#~ "клиентам."
 
 #~ msgid "iSCSI initial parameter (262144 by default)."
 #~ msgstr "Начальный параметр iSCSI (по умолчанию 262144)."

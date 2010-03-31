@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2009-05-20 19:00+0000\n"
 "Last-Translator: Morten Mytting Wang <morten@dc-system.net>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -1296,6 +1296,9 @@ msgstr "Katalog maske"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr ""
 
@@ -2483,6 +2486,10 @@ msgstr "Som oftest blir 'public' brukt her."
 msgid "Include basic hardware information."
 msgstr ""
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Hjemme mappe"
+
 msgid "Info"
 msgstr "Info"
 
@@ -2629,8 +2636,9 @@ msgstr "LACP (Link Aggregation Control Protocol)"
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "LAN"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Håndering"
 
 msgid "LAN net"
 msgstr "LAN nett"
@@ -3144,35 +3152,36 @@ msgstr "Ingen RSYNC klient konfigruert"
 msgid "No case folding"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
-msgstr ""
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
+msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
 
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr ""
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
-msgstr ""
+msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
 
-#, php-format
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
+msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+
+#, fuzzy, php-format
 msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
-msgstr ""
-
-#, php-format
-msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
-msgstr ""
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
+msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
 
 msgid "No device selected."
 msgstr ""
@@ -3181,7 +3190,7 @@ msgid "No disk configured"
 msgstr "Ingen disker konfigruert"
 
 #, fuzzy, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
 
 #, fuzzy
@@ -4549,10 +4558,10 @@ msgstr "MIB '%s' finnes allerede."
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' finnes ikke i sysctl."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "RAID volumet er allerede montert! Fjern <a href=%s>monterings punktet</a> "
 "før du fortsetter."
@@ -4771,10 +4780,10 @@ msgid ""
 "not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 "Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
 
@@ -4801,8 +4810,8 @@ msgstr ""
 
 #, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
 "Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
 
@@ -5287,9 +5296,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "Navnet eksisterer allerede i disk listen."
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr ""
-"Dette navnet er for eksempel: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "Dette navnet er for eksempel: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Dette navnet er for eksempel: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5958,9 +5967,10 @@ msgstr ""
 msgid "Yes"
 msgstr "Ja"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "Du kan også installere pakker via SSH eller console ved å bruke pkg_add "
 "kommandoen.<br />Eksempel: pkg_add -r pakkenavn"
@@ -5980,14 +5990,6 @@ msgid ""
 msgstr ""
 "Du kan ikke avmontere et drev som er i bruk av en swap fil, en iSCSI-mål fil "
 "eller en annen kjørende prosess!"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
-"Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne "
-"tjenesten til klienter."
 
 #, fuzzy, php-format
 msgid ""
@@ -6192,6 +6194,21 @@ msgstr ""
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr ""
+#~ "Dette navnet er for eksempel: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne "
+#~ "tjenesten til klienter."
 
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s på %s (%dMHz)"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2009-10-10 18:48+0000\n"
 "Last-Translator: Sir.Punisher <eris@shytaj.tk>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -1288,6 +1288,9 @@ msgstr "Maska e drejtorise"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr "Drejtoria per te kerkuar per file torrent te rinj."
 
@@ -2450,6 +2453,10 @@ msgstr "Ne shumicen e rasteve, 'publike' perdoret ketu."
 msgid "Include basic hardware information."
 msgstr "Permban informacionet hardware baze."
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "Drejtoria e shtepise"
+
 msgid "Info"
 msgstr "Informacione"
 
@@ -2592,8 +2599,9 @@ msgstr "LACP (Link Aggregation Control Protocol)"
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "LAN"
+#, fuzzy
+msgid "LAN Management"
+msgstr "Menaxhim"
 
 msgid "LAN net"
 msgstr "LAN net"
@@ -3101,38 +3109,45 @@ msgstr "Nuk ka nje klient RSYNC te konfiguruar"
 msgid "No case folding"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
+"S'ka nje grup iniciator te konfiguruar . Ju lutem shto nje te re <a href=%"
+"s>Extent</a> perpara."
 
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
 msgstr ""
 "S'ka shtrirje te konfiguruar. Ju lutem shto nje te re <a href=%s>Extent</a> "
 "perpara."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+"S'ka nje grup iniciator te konfiguruar . Ju lutem shto nje te re <a href=%"
+"s>Extent</a> perpara."
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
 msgstr ""
 "S'ka nje grup iniciator te konfiguruar . Ju lutem shto nje te re <a href=%"
 "s>Extent</a> perpara."
 
-#, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
+"S'ka shtrirje te konfiguruar. Ju lutem shto nje te re <a href=%s>Extent</a> "
+"perpara."
 
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
-msgstr ""
-
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 "Piasje virtuale te pakonfiguruara.Ju lutem shto nje te re <a href=%s>Extent</"
 "a> perpara."
@@ -3143,8 +3158,8 @@ msgstr "Nuk ke seleksionuar asnje paisje."
 msgid "No disk configured"
 msgstr "Nuk ka nje disk te konfiguruar"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
 "S'ka nje disk te disponueshem. Ju lutem shto nje te re <a href=%s>Extent</a> "
 "perpara"
@@ -4456,8 +4471,8 @@ msgstr ""
 
 #, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 
 msgid "The TCP port must be a valid port number."
@@ -4665,8 +4680,8 @@ msgstr ""
 
 #, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 
 msgid ""
@@ -4690,8 +4705,8 @@ msgstr ""
 
 #, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
 
 msgid "The extent name already exists."
@@ -5149,7 +5164,8 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr ""
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, php-format
+msgid "This name is for example: %s."
 msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5794,9 +5810,10 @@ msgstr "Numri i particionit ose tipi i particionit te gabuar."
 msgid "Yes"
 msgstr "Po"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "Ju mund te instaloni nje pakete edhe prej SSH ose nepermjet konsoles  duke "
 "perdorur komanden the pkg_add. <br>Shembull: pkg_add -r packagename (emri i "
@@ -5815,12 +5832,6 @@ msgstr ""
 msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
 "any other running process!"
-msgstr ""
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
 msgstr ""
 
 #, php-format
@@ -6016,6 +6027,9 @@ msgstr "zmonto"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
 
 #~ msgid "iSCSI initial parameter (262144 by default)."
 #~ msgstr "Parametri iSCSI fillestar (262144 eshte vlera e parapercaktuar)"

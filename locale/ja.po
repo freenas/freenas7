@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2010-03-23 22:19+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: \n"
@@ -109,7 +109,8 @@ msgstr ""
 
 msgid ""
 "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
-msgstr "<div id='enumeration'><ul><li>%d - 日付</li><li>%h - ホスト名</li></ul></div>"
+msgstr ""
+"<div id='enumeration'><ul><li>%d - 日付</li><li>%h - ホスト名</li></ul></div>"
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -1283,6 +1284,9 @@ msgstr "Directory mask"
 
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr "リムーバブルメディアを格納するディレクトリ．(例: /mnt/iscsi/)"
+
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
 
 msgid "Directory to watch for new .torrent files."
 msgstr ""
@@ -2469,6 +2473,10 @@ msgstr "ほとんどの場合 'public' が使われます．"
 msgid "Include basic hardware information."
 msgstr "基本的なハードウェア情報を含む。"
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "ホームディレクトリ"
+
 msgid "Info"
 msgstr "情報"
 
@@ -2613,8 +2621,9 @@ msgstr "LACP (リンクアグリゲーション コントロールプロトコ�
 msgid "LAGG"
 msgstr "アグリゲーション"
 
-msgid "LAN"
-msgstr "LAN"
+#, fuzzy
+msgid "LAN Management"
+msgstr "マネージメント"
 
 msgid "LAN net"
 msgstr "LAN net"
@@ -3115,35 +3124,48 @@ msgstr "設定された RSYNC クライアントはありません"
 msgid "No case folding"
 msgstr "ケースフォールディングを行いません"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
-msgstr "認証グループがありません．まず最初に新しい <a href=%s>認証グループ</a> を追加してください．"
-
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr "エクステントがありません．まず最初に新しい <a href=%s>エクステント</a> を追加してください．"
-
-#, php-format
-msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
-"first."
-msgstr "イニシエータグループがありません．まず最初に新しい <a href=%s>イニシエータグループ</a> を追加してください．"
-
-#, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
-msgstr "ポータルグループがありません．まず最初に新しい <a href=%s>ポータルグループ</a> を追加してください．"
-
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
+"認証グループがありません．まず最初に新しい <a href=%s>認証グループ</a> を追加"
+"してください．"
 
-#, php-format
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr ""
+"エクステントがありません．まず最初に新しい <a href=%s>エクステント</a> を追加"
+"してください．"
+
+#, fuzzy, php-format
 msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+"イニシエータグループがありません．まず最初に新しい <a href=%s>イニシエータグ"
+"ループ</a> を追加してください．"
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
 msgstr ""
+"ポータルグループがありません．まず最初に新しい <a href=%s>ポータルグループ</"
+"a> を追加してください．"
+
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
+msgstr ""
+"エクステントがありません．まず最初に新しい <a href=%s>エクステント</a> を追加"
+"してください．"
+
+#, fuzzy, php-format
+msgid ""
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
+msgstr ""
+"ポータルグループがありません．まず最初に新しい <a href=%s>ポータルグループ</"
+"a> を追加してください．"
 
 msgid "No device selected."
 msgstr ""
@@ -3151,8 +3173,8 @@ msgstr ""
 msgid "No disk configured"
 msgstr "ディスクが設定されていません"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
 "利用可能なディスクがありません。まず最初に新しい <a href=%s>ディスク</a> を追"
 "加してください。"
@@ -4514,10 +4536,10 @@ msgstr "MIB '%s' は既に存在しています．"
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' は sysctl 内に存在しません．"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "RAID ボリュームは既にマウントされています! 処理を行う前に，はじめに <a href=%"
 "s>マウントポイント</a> を削除して下さい．"
@@ -4743,10 +4765,10 @@ msgstr ""
 "発信したいファイルがおかれているディレクトリを指定します．リモートホストは転"
 "送の一部分としてディレクトリに沿っている必要はありません．"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr ""
 "ディスクは既にマウントされています! 次へ進む為に最初にディスクを <a href=%s>"
 "アンマウント</a> して下さい．"
@@ -4774,11 +4796,13 @@ msgstr ""
 "UPS と通信する為のドライバを指定します．使用可能な <a href='%s' "
 "target='_blank'>ドライバ</a> のリストを入手して下さい"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
 msgstr ""
+"ディスクは既にマウントされています! 次へ進む為に最初にディスクを <a href=%s>"
+"アンマウント</a> して下さい．"
 
 msgid "The extent name already exists."
 msgstr "エクステント名は既に存在しています．"
@@ -5290,8 +5314,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "この名前は既にディスクリストに存在しています．"
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "この名前の例: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "この名前の例: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "この名前の例: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -6013,9 +6038,10 @@ msgstr "パーティションタイプまたはパーティション番号が間
 msgid "Yes"
 msgstr "Yes"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "SSHによるリモートコンソールもしくはローカルコンソールでも pkg_add コマンドを"
 "使用してパッケージをインストールする事が可能です．<br>例) pkg_add -r パッケー"
@@ -6036,14 +6062,6 @@ msgid ""
 msgstr ""
 "スワップファイルやiSCSIターゲットとして現在使用されているドライブはアンマウン"
 "トできません．"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
-"このサービスをクライアントへ広告するには <a href=%s>Zeroconf/Bonjour</a> を起"
-"動させる必要があります．"
 
 #, php-format
 msgid ""
@@ -6240,6 +6258,20 @@ msgstr "アンマウント"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "この名前の例: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "このサービスをクライアントへ広告するには <a href=%s>Zeroconf/Bonjour</a> "
+#~ "を起動させる必要があります．"
 
 #~ msgid "Date"
 #~ msgstr "日時"

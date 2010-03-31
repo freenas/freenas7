@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-23 21:14+0000\n"
+"POT-Creation-Date: 2010-04-01 01:06+0000\n"
 "PO-Revision-Date: 2009-12-14 09:02+0000\n"
 "Last-Translator: yezhiqiu <Unknown>\n"
 "Language-Team: \n"
@@ -1285,6 +1285,9 @@ msgstr "目录遮罩"
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
 msgstr ""
 
+msgid "Directory to incomplete files. An empty field means disable."
+msgstr ""
+
 msgid "Directory to watch for new .torrent files."
 msgstr "监视 .torrent 文件的目录"
 
@@ -2416,6 +2419,10 @@ msgstr "大多数的情况下，这里应该是'public'"
 msgid "Include basic hardware information."
 msgstr ""
 
+#, fuzzy
+msgid "Incomplete directory"
+msgstr "家目录"
+
 msgid "Info"
 msgstr "消息"
 
@@ -2554,8 +2561,9 @@ msgstr "LACP（链路汇聚控制协议）"
 msgid "LAGG"
 msgstr "LAGG"
 
-msgid "LAN"
-msgstr "区域网络"
+#, fuzzy
+msgid "LAN Management"
+msgstr "管理"
 
 msgid "LAN net"
 msgstr "区域网络"
@@ -3047,32 +3055,33 @@ msgstr "大小写视为相异"
 
 #, php-format
 msgid ""
-"No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 
-#, php-format
-msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
-msgstr ""
+#, fuzzy, php-format
+msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
+msgstr "发送测试消息失败。详情请参见<a href='%s'>日志</a>文件"
 
 #, php-format
 msgid ""
-"No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
+"a> first."
+msgstr ""
+
+#, fuzzy, php-format
+msgid ""
+"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
 "first."
-msgstr ""
+msgstr "发送状态报告失败，请检查<a href='%s'>日志</a>文件。"
+
+#, fuzzy, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
+msgstr "发送状态报告失败，请检查<a href='%s'>日志</a>文件。"
 
 #, php-format
 msgid ""
-"No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
-msgstr ""
-
-#, php-format
-msgid "No configured pools. Please add new <a href=%s>pools</a> first."
-msgstr ""
-
-#, php-format
-msgid ""
-"No configured virtual devices. Please add new <a href=%s>virtual device</a> "
-"first."
+"No configured virtual devices. Please add new <a href='%s'>virtual device</"
+"a> first."
 msgstr ""
 
 msgid "No device selected."
@@ -3081,9 +3090,9 @@ msgstr ""
 msgid "No disk configured"
 msgstr "没有配置的硬盘"
 
-#, php-format
-msgid "No disks available. Please add new <a href=%s>disk</a> first."
-msgstr ""
+#, fuzzy, php-format
+msgid "No disks available. Please add new <a href='%s'>disk</a> first."
+msgstr "发送测试消息失败。详情请参见<a href='%s'>日志</a>文件"
 
 msgid "No file was uploaded."
 msgstr ""
@@ -4392,10 +4401,10 @@ msgstr "MIB '%s' 已经存在"
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
+"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
+"a> first before proceeding."
 msgstr ""
 "这个RAID卷目前正被挂载中！进行任何操作之前请先将其<a href=%s>卸载</a>。"
 
@@ -4603,10 +4612,10 @@ msgid ""
 "not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
+"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
+"before proceeding."
 msgstr "硬盘已经挂载！请先<a href=%s>卸载</a>之后再继续其他动作。"
 
 msgid ""
@@ -4628,11 +4637,11 @@ msgid ""
 "href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
-"first before proceeding."
-msgstr ""
+"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
+"disk first before proceeding."
+msgstr "硬盘已经挂载！请先<a href=%s>卸载</a>之后再继续其他动作。"
 
 msgid "The extent name already exists."
 msgstr ""
@@ -5096,8 +5105,9 @@ msgstr ""
 msgid "This name already exists in the disk list."
 msgstr "硬盘列表已经有这个名称存在。"
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "范例名称：iqn.1994-04.org.netbsd.iscsi-target:target0."
+#, fuzzy, php-format
+msgid "This name is for example: %s."
+msgstr "范例名称：iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "范例名称：iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5746,9 +5756,10 @@ msgstr "错误的分区格式或分区数"
 msgid "Yes"
 msgstr "是"
 
+#, fuzzy
 msgid ""
 "You can also install a package via SSH or console using the the pkg_add "
-"command.<br>Example: pkg_add -r packagename"
+"command.<br />Example: pkg_add -r packagename"
 msgstr ""
 "你也可以利用 SSH 连接或是 console 下达 pkg_add 的指令。<br>例：pkg_add -r "
 "package-name"
@@ -5765,12 +5776,6 @@ msgid ""
 "You can't unmount a drive which is used by swap file, a iSCSI-target file or "
 "any other running process!"
 msgstr "正在被 Swap、iSCSI 目标或是任何程序使用的硬盘不能够被卸载。"
-
-#, php-format
-msgid ""
-"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
-msgstr ""
 
 #, php-format
 msgid ""
@@ -5965,6 +5970,13 @@ msgstr "卸载"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "LAN"
+#~ msgstr "区域网络"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "范例名称：iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 #~ msgid "iSCSI initial parameter (262144 by default)."
 #~ msgstr "iSCSI 初始参数（默认是 262144）"
