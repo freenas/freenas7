@@ -37,7 +37,7 @@ $menu['network']['visible'] = Session::isAdmin();
 $menu['network']['link'] = "";
 $menu['network']['menuitem'] = array();
 $menu['network']['menuitem'][] = array("desc" => gettext("Interface Management"), "link" => "interfaces_assign.php", "visible" => TRUE);
-$menu['network']['menuitem'][] = array("desc" => "LAN", "link" => "interfaces_lan.php", "visible" => TRUE);
+$menu['network']['menuitem'][] = array("desc" => "LAN Management", "link" => "interfaces_lan.php", "visible" => TRUE);
 for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 	$desc = $config['interfaces']['opt'.$i]['descr'];
 	$menu['network']['menuitem'][] = array("desc" => "{$desc}", "link" => "interfaces_opt.php?index={$i}", "visible" => TRUE);

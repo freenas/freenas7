@@ -36,7 +36,7 @@
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Network"), gettext("Interfaces"), gettext("LAN"));
+$pgtitle = array(gettext("Network"), gettext("LAN Management"));
 
 $lancfg = &$config['interfaces']['lan'];
 $optcfg = &$config['interfaces']['lan']; // Required for WLAN.
