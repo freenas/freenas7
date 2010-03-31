@@ -137,6 +137,14 @@ transmission_prestart()
 		_command_args="${_command_args} --no-blocklist"
 	fi
 
+	# Check the effective user.
+	debug "command_args: $_command_args"
+	if [ "${transmission_user}" = "`/usr/bin/id -un`" ]; then
+	    # eval first level quote
+	    _command_args=`eval echo "${_command_args}"`
+	    debug "command_args: $_command_args"
+	fi
+
 	command_args="${command_args} ${_command_args}"
 
 	# Set the umask.
