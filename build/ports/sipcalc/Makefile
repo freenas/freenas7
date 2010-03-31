@@ -1,8 +1,8 @@
 PORTNAME=			sipcalc
-PORTVERSION=	1.1.4
+PORTVERSION=	1.1.5
 CATEGORIES=		net-mgmt ipv6
 COMMENT=			Sipcalc is an IP subnet calculator with IPv6 support
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		ma.zoon@quicknet.nl
 
 MASTER_SITES=	http://www.routemeister.net/projects/sipcalc/files/
 
