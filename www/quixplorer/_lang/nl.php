@@ -1,6 +1,6 @@
 <?php
 
-// Dutch Language Module for v2.3 (translated by the QuiX project)
+// Dutch Language Module for v2.3 (translated by Michael Zoon & the QuiX project)
 
 $GLOBALS["charset"] = "UTF-8";
 $GLOBALS["text_dir"] = "ltr"; // ('ltr' for left to right, 'rtl' for right to left)
@@ -49,7 +49,7 @@ $GLOBALS["error_msg"] = array(
 	"chpass"		=> "Het wachtwoord wijzigen is mislukt.",
 	"deluser"		=> "Gebruiker verwijderen is mislukt.",
 	"adduser"		=> "Toevoegen gebruiker is mislukt.",
-	"saveuser"		=> "Oopslaan gebruiker is mislukt.",
+	"saveuser"		=> "Opslaan gebruiker is mislukt.",
 	"searchnothing"	=> "U moet om iets te zoeken het juiste opgeven.",
 	
 	// misc
@@ -111,7 +111,6 @@ $GLOBALS["messages"] = array(
 	"btnedit"		=> "Bewerken",
 	"btnremove"		=> "Verwijderen",
 	
-
 	// actions
 
 	"actdir"		=> "Map",
@@ -150,7 +149,7 @@ $GLOBALS["messages"] = array(
 	"miscedituser"	=> "gebruiker '%s' bewerken",
 	"miscactive"		=> "Geactiveerd",
 	"misclang"		=> "Taal",
-	"miscnoresult"	=> "Geen resultaten beschikbaar.",
+	"miscnoresult"	=> "Er zijn geen resultaten beschikbaar.",
 	"miscsubdirs"		=> "Zoek in subdirectories",
 	"miscpermnames"	=> array("Alleen kijken","Wijzigen","Wachtwoord wijzigen",
 					"Wijzigen & Wachtwoord wijzigen","Beheerder"),
