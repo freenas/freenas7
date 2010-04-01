@@ -43,7 +43,7 @@ $pgtitle = array(gettext("Status"), gettext("Processes"));
 
 function get_process_info() {
 	exec("top -b", $result);
-	return htmlspecialchars(implode("\n", $result));
+	return implode("\n", $result);
 }
 
 sajax_init();

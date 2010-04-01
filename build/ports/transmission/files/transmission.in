@@ -161,7 +161,11 @@ transmission_prestart()
 	_configfile="${_configdir}/settings.json"
 	if [ ! -f "${_configfile}" ]; then
 	    # create default settings
-	    eval "su -m \"${transmission_user}\" -c 'sh -c \"${command} -d ${command_args} > `safe_shellquote "${_configfile}.new"` 2>&1\"'"
+	    if [ "${transmission_user}" = "`/usr/bin/id -un`" ]; then
+		eval 'sh -c "${command} -d ${command_args} > "${_configfile}.new" 2>&1"'
+	    else
+		eval "su -m \"${transmission_user}\" -c 'sh -c \"${command} -d ${command_args} > `safe_shellquote "${_configfile}.new"` 2>&1\"'"
+	    fi
 	    if [ ! -f "${_configfile}" ]; then
 		# copy config
 		chmod 600 "${_configfile}.new"
