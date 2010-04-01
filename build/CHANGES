@@ -63,6 +63,7 @@ Majors changes:
 - Upgrade proftpd to 1.3.2e.
 - Upgrade iSCSI initiator to 2.2.4.
 - Upgrade sipcalc to 1.1.5.
+- Upgrade nano to 2.2.3.
 
 Minors changes:
 - Modify Samba default buffer size.
