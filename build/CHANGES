@@ -70,8 +70,8 @@ Minors changes:
 - Modify Samba default buffer size.
 - Modify Tuning values.
 - Add new MIB in System|Advanced|sysctl.conf.
-- Add English and Polish UTF-8 with English menu in File Manager (quixplorer) and set
-  European languages files to UTF-8.
+- Add English, Italian and Polish UTF-8 with English menu in File Manager (quixplorer) and
+  set European language files to UTF-8.
 - Restrict NFS sharing directory with alldirs.
 - Add serial console support.
 - Add aio(asynchronous I/O) support but default is disabled.
