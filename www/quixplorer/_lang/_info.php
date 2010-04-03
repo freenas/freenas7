@@ -5,4 +5,5 @@
 <OPTION value="fr">Français</OPTION>
 <OPTION value="ja">Japanese</OPTION>
 <OPTION value="nl">Nederlands</OPTION>
+<OPTION value="pl">Polski</OPTION>
 <OPTION value="ru">Russian</OPTION>
