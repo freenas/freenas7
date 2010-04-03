@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-03 11:19+0000\n"
-"PO-Revision-Date: 2010-04-04 04:06+0900\n"
+"PO-Revision-Date: 2010-04-04 06:53+0900\n"
 "Last-Translator: Daisuke Aoyama <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-03 18:20+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 19:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -502,7 +502,7 @@ msgstr "常にスキャン"
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
-msgstr ""
+msgstr "デバイス番号として常に0を使います。リブートやクラスタを超てデバイスが特定の値をもたない場合に役に立ちます。"
 
 msgid "An host with this name already exists."
 msgstr "この名前がつけられたホストは既に存在しています。"
@@ -557,7 +557,7 @@ msgstr "本当にシステムをシャットダウンしても宜しいですか
 msgid ""
 "At the highest level, a target is what is presented to the initiator, and is "
 "made up of one or more extents."
-msgstr ""
+msgstr "最も上のレベルで、ターゲットはイニシエータに提示され、ひとつ以上のエクステントから構成されます。"
 
 msgid "Attached"
 msgstr "接続済み"
@@ -643,7 +643,7 @@ msgid ""
 msgstr "iqn. から指定しない場合は自動的にベース名が追加されます。"
 
 msgid "Best available"
-msgstr ""
+msgstr "最も良いものを自動選択"
 
 msgid "Bind DN"
 msgstr "Bind DN"
@@ -1285,7 +1285,7 @@ msgstr "無効"
 msgid ""
 "Disables :hex translations for anything except dot files. This option makes "
 "the '/' character illegal."
-msgstr ""
+msgstr "ドットファイル以外のHEX変換を禁止します。このオプションは '/' を無効なキャラクタと認識するようになります。"
 
 #, php-format
 msgid "Discovered iSCSI target for %s"
@@ -1994,7 +1994,7 @@ msgid "File system check"
 msgstr "ファイルシステムチェック"
 
 msgid "File upload stopped by extension."
-msgstr ""
+msgstr "ファイルアップロードは拡張子により中断されました。"
 
 msgid "Filename"
 msgstr "ファイル名"
@@ -2156,7 +2156,7 @@ msgid "Header digest"
 msgstr "ヘッダーダイジェスト"
 
 msgid "Health"
-msgstr ""
+msgstr "状態"
 
 msgid "Help"
 msgstr "ヘルプ"
@@ -2508,7 +2508,7 @@ msgstr "同時に '匿名ユーザ専用' と 'ローカルユーザ専用' の�
 msgid ""
 "It is not recommanded to import non healty pools nor virtual devices that "
 "are part of a non healthy pool."
-msgstr ""
+msgstr "良好な状態でないプールまたはそれらに含まれる仮想デバイスをインポートする事は推奨しません。"
 
 msgid "Italian"
 msgstr "イタリア語"
@@ -2972,7 +2972,7 @@ msgid "NOPIN sending interval in seconds (%d by default)."
 msgstr "NOPIN 送信間隔の秒数(初期値は%d秒)"
 
 msgid "NOT YET AVAILABLE"
-msgstr ""
+msgstr "まだ利用可能ではありません"
 
 msgid "NTP time server"
 msgstr "NTP サーバ"
@@ -3268,7 +3268,7 @@ msgid "Packages"
 msgstr "パッケージ"
 
 msgid "Painfully aggressive"
-msgstr ""
+msgstr "最高にアグレッシブ"
 
 msgid "Pairwise"
 msgstr "ペア"
@@ -3372,7 +3372,7 @@ msgid "Ping"
 msgstr "Ping"
 
 msgid "Ping winbindd to see if it is alive:"
-msgstr ""
+msgstr "Pingによる winbindd の生存確認:"
 
 msgid "Ping/Traceroute"
 msgstr "Ping/Traceroute"
@@ -3706,7 +3706,7 @@ msgid "Rescan interval"
 msgstr "再スキャンの間隔"
 
 msgid "Resetting channel "
-msgstr ""
+msgstr "チャネルをリセットしています"
 
 msgid "Resolve"
 msgstr "逆引き"
@@ -4419,7 +4419,7 @@ msgid ""
 msgstr "パケットが指定されたルールに当てはまる場合に実行されるアクションを指定します。"
 
 msgid "The administrator has been notified to apply your changes."
-msgstr ""
+msgstr "貴方の変更が適用された事を管理者に通知しました。"
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
@@ -4808,7 +4808,7 @@ msgstr ""
 "ムにで有益です。"
 
 msgid "The pool name does not match the naming rules."
-msgstr ""
+msgstr "このプール名は命名規則に合致していません。"
 
 msgid ""
 "The port to listen to. The default is to listen to the tftp port specified "
@@ -4903,14 +4903,14 @@ msgstr "このユーザ ID は既に使用されています。"
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form."
-msgstr ""
+msgstr "アップロードされたファイルは、HTMLフォームで指定された MAX_FILE_SIZE 指示を超えています。"
 
 msgid ""
 "The uploaded file exceeds the upload_max_filesize directive in php.ini."
-msgstr ""
+msgstr "アップロードされたファイルは、php.ini の upload_max_filesize 指示を超えています。"
 
 msgid "The uploaded file was only partially uploaded."
-msgstr ""
+msgstr "アップロードされたファイルは部分的にだけアップロードされています。"
 
 msgid "The uploaded image file is not for this platform"
 msgstr "アップロードされたイメージファイルはこのプラットフォームの物ではありません。"
@@ -5063,7 +5063,7 @@ msgid ""
 "This controls whether the .AppleDouble directory gets created unless "
 "absolutely needed. This option should not be used if files are access mostly "
 "by Mac computers."
-msgstr ""
+msgstr "絶対に必要でない場合にも .AppleDouble ディレクトリを作成するかどうかを制御します。このオプションはMacからのアクセスが主であれば使うべきではありません。"
 
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
@@ -5224,13 +5224,13 @@ msgstr ""
 
 msgid ""
 "This page reflects the configuration that has been created with the WebGUI."
-msgstr ""
+msgstr "このページはWebGUIで作成された設定を反映しています。"
 
 msgid ""
 "This page reflects the current system configuration. It may be different to "
 "the configuration which has been created with the WebGUI if changes has been "
 "done via command line."
-msgstr ""
+msgstr "このページは現在のシステム設定を反映しています。コマンドラインで変更を行なっていると、WebGUIで作成された設定と違う場合があります。"
 
 msgid ""
 "This parameter controls whether files starting with a dot appear as hidden "
@@ -5344,7 +5344,7 @@ msgid ""
 "/>Auth Group which is identified by tag number and is optional if the target "
 "does not use CHAP authentication defines authorised users and secrets for "
 "additional security.<br />Extent defines the storage area of the target."
-msgstr ""
+msgstr "ターゲットを構成するには、ポータルグループ、イニシエータグループ、エクステントを追加する必要があります。<br />ポータルグループは、タグ番号で識別され、接続に利用するIPアドレスとTCP待ち受けポート番号を定義します。<br />イニシエータグループは、タグ番号で識別され、許可されたイニシエータ名とネットワークを定義します。<br />認証グループは、タグ番号で識別され、追加のセキュリティのための認証ユーザとシークレットを定義します。CHAP認証を利用しない場合は省略可能です。<br />エクステントは、ターゲットのストレージ領域を定義します。"
 
 msgid "To e-mail"
 msgstr "メールの宛て先"
@@ -5393,7 +5393,7 @@ msgstr ""
 ">System</li></ul></div>"
 
 msgid "Tolerated"
-msgstr ""
+msgstr "許容"
 
 msgid "Tools"
 msgstr "ツール"
@@ -5601,7 +5601,7 @@ msgstr "特定の NTP サーバを使用します。"
 msgid ""
 "Use this option to override the default permission modes for newly created "
 "files (%s by default)."
-msgstr ""
+msgstr "新規作成ファイルのデフォルトパーミッションを上書きするにはこのオプションを使います。(初期値は %s)"
 
 msgid ""
 "Use this option to override the directory creation mask (022 by default)."
@@ -5641,7 +5641,7 @@ msgid "User full name."
 msgstr "ユーザのフルネーム。"
 
 msgid "User mask"
-msgstr ""
+msgstr "User mask"
 
 msgid "User numeric id."
 msgstr "ユーザ ID の整数値"
@@ -5650,7 +5650,7 @@ msgid "User password."
 msgstr "ユーザのパスワード。"
 
 msgid "User portal"
-msgstr "ﾕｰｻﾞｰポータル"
+msgstr "ユーザポータル"
 
 msgid "User suffix"
 msgstr "ユーザサフィックス"
@@ -5885,10 +5885,10 @@ msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
 msgid "atacontrol list failed, atacontrol not found !!"
-msgstr ""
+msgstr "atacontrol list が失敗しました。atacontrol が見つかりません !!"
 
 msgid "cachecnid"
-msgstr ""
+msgstr "CNID キャッシュ"
 
 msgid "change failed."
 msgstr "変更に失敗しました。"
@@ -5913,7 +5913,7 @@ msgid "e.g. %s"
 msgstr "例) %s"
 
 msgid "filechooser"
-msgstr ""
+msgstr "ファイル選択"
 
 msgid "get target info failed."
 msgstr "ターゲット情報の取得に失敗しました。"
@@ -5962,22 +5962,22 @@ msgid "n/a"
 msgstr "n/a"
 
 msgid "noadouble"
-msgstr ""
+msgstr "noadouble"
 
 msgid "nodev"
 msgstr "nodev"
 
 msgid "nofileid"
-msgstr ""
+msgstr "nofileid"
 
 msgid "nohex"
-msgstr ""
+msgstr "nohex"
 
 msgid "none"
 msgstr "none"
 
 msgid "nostat"
-msgstr ""
+msgstr "nostat"
 
 msgid "phpBB"
 msgstr "phpBB"
@@ -6017,9 +6017,6 @@ msgstr "アンマウント"
 
 msgid "upriv"
 msgstr "upriv"
-
-#~ msgid "Date"
-#~ msgstr "日時"
 
 #~ msgid "hours"
 #~ msgstr "時"
