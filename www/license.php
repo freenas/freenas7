@@ -2,7 +2,7 @@
 <?php
 /*
 	license.php
-	part of FreeNAS (http://freenas.org)
+	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
@@ -48,7 +48,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               All rights reserved.</strong></p>
 			  <p>FreeNAS&reg; is a registered trademark of Olivier Cochard-Labbe.</p>
 		<p>FreeNAS is based on m0n0wall which is Copyright &copy; 2002-2007 by Manuel Kasper (mk@neon1.net).</p>
-	<p>FreeNAS code, documentation and logo are released under the BSD license, under terms as follows:</p>
+	<p>FreeNAS code and documentation are released under the BSD license, under terms as follows:</p>
             <p> Redistribution and use in source and binary forms, with or without<br />
               modification, are permitted provided that the following conditions
               are met:<br />
@@ -88,6 +88,10 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
             <p>The following persons have contributed to FreeNAS code:</p>
              <div>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and project leader</font></em></div><br />
+              <div>Daisuke Aoyama (<a href="mailto:aoyama@peach.ne.jp">aoyama@peach.ne.jp</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and adapt iSCSI Target WebGUI to istgt</font></em></div><br />
+             <div>Michael Zoon (<a href="mailto:ma.zoon@quicknet.nl">ma.zoon@quicknet.nl</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and Dutch translator of the WebGUI</font></em></div><br />
              <div>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em></div><br />
              <div>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br />
@@ -103,13 +107,11 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               <div>Niels Endres (<a href="mailto:niels@weaklogic.com">niels@weaklogic.com</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added FAT support for config file and auto detection of NIC name</font></em></div><br />
               <div>Dan Merschi (<a href="mailto:dan@freenaskb.info">dan@freenaskb.info</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Created core implementation of email status report.</font></em></div><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Created core implementation of email status report</font></em></div><br />
               <div>Gerard Hickey (<a href="mailto:hickey@kinetic-compute.com">hickey@kinetic-compute.com</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script &amp; AFP/Rsync shares.</font></em></div><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script &amp; AFP/Rsync shares</font></em></div><br />
               <div>Nelson Silva (<a href="mailto:nelson.emanuel.silva@gmail.com">nelson.emanuel.silva@gmail.com</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add core ZFS implementation and additional code improvements.</font></em></div><br />
-              <div>Daisuke Aoyama (<a href="mailto:aoyama@peach.ne.jp">aoyama@peach.ne.jp</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Adapt iSCSI Target WebGUI to istgt.</font></em></div><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add core ZFS implementation and additional code improvements</font></em></div><br />
             <hr size="1" />
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <div>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br />
@@ -125,8 +127,6 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
             <div>Falk Menzel (<a href="mailto:fmenzel@htwm.de">fmenzel@htwm.de</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em></div><br />
             <div>Kris Verhoeven (<a href="mailto:kris@esiv.be">kris@esiv.be</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Dutch translator of the WebGUI</font></em></div><br />
-            <div>Michael Zoon (<a href="mailto:ma.zoon@quicknet.nl">ma.zoon@quicknet.nl</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Dutch translator of the WebGUI</font></em></div><br />
             <div>Baikuan Hsu (<a href="mailto:chicworks@gmail.com">chicworks@gmail.com</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the WebGUI</font></em></div><br />
@@ -239,7 +239,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
       Rewritten by Eric Wassenaar, Nikhef-H, (e07@nikhef.nl).</p>
 
 		<p>Transmission - Transmission is a fast, easy, and free multi-platform BitTorrent client (<a href="http://www.transmissionbt.com" target="_blank">http://www.transmissionbt.com</a>)<br />
-      Copyright &copy; Transmission Project 2008. All rights reserved.</p>
+      Copyright &copy; Transmission Project 2008-2010. All rights reserved.</p>
 
 		<p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br />
       Copyright &copy; Felix C. Stegerman. All rights reserved.</p>
