@@ -108,6 +108,7 @@ Bug fixes:
 - Fix union /var is useless (BR 2964649).
 - Fix warning in quixploler when using Russian.
 - Fix transmission_user = root does not work.
+- Fix spaces in password does not work for su, etc.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
