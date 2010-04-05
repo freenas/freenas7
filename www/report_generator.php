@@ -22,13 +22,13 @@ $pgperm['allowuser'] = TRUE;
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Report generator"));
+$pgtitle = array(gettext("Help"), gettext("Report Generator"));
 
 $pglocalheader = <<< EOD
 <style type="text/css">
 <!--
 pre {
-	border: 2px solid #435370;
+	border: 2px solid #999999;
 	background: #F0F0F0;
 	padding: 1em;
 	font-family: 'Courier New', Courier, monospace;
@@ -88,7 +88,7 @@ EOD;
 <form action="<?=$_SERVER['SCRIPT_NAME'];?>" method="post" enctype="multipart/form-data" name="iform">
   <table>
 		<tr>
-			<td class="label" align="right"><?=gettext("Info");?></td>
+			<td class="label" align="right"><?=gettext("System info");?></td>
 			<td class="text" align="left"><?=$sys_summary;?></td>
 		</tr>
 		<tr>
