@@ -88,7 +88,7 @@ EOD;
 <form action="<?=$_SERVER['SCRIPT_NAME'];?>" method="post" enctype="multipart/form-data" name="iform">
   <table>
 		<tr>
-			<td class="label" align="right"><?=gettext("System info");?></td>
+			<td class="label" align="right"><?=gettext("Info");?></td>
 			<td class="text" align="left"><?=$sys_summary;?></td>
 		</tr>
 		<tr>
