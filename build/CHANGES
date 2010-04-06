@@ -67,6 +67,7 @@ Majors changes:
 - Upgrade nano to 2.2.3.
 
 Minors changes:
+- Add iSCSI target removable media control.
 - Modify Samba default buffer size.
 - Modify Tuning values.
 - Add new MIB in System|Advanced|sysctl.conf.
