@@ -1,18 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-04 15:05+0100\n"
+"PO-Revision-Date: 2010-04-06 01:35+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-04 12:40+0000\n"
+"X-Launchpad-Export-Date: 2010-04-05 21:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Country: Netherlands\n"
 "X-Poedit-Language: Dutch\n"
-"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 msgid " interfaces:"
 msgstr " netwerken:"
@@ -102,7 +103,7 @@ msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and 
 msgstr "De NTP tijd servernaam mag alleen uit de karakters: a-z, 0-9, '-' en '.' bestaan."
 
 msgid "A Portal Group contains IP addresses and listening TCP ports to connect the target from the initiator."
-msgstr "Een Portaal Groep bevat IP-adressen en TCP luister poorten om te verbinden met het doel van de initiator."
+msgstr "Een Portaal Groep bevat IP-adressen en TCP luisterpoorten om te verbinden met het doel van de initiator."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
@@ -401,10 +402,10 @@ msgid "AltRoot"
 msgstr "AltRoot"
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "Alternatieve TCP poort. Standaard 22"
+msgstr "Alternatieve TCP-poort. Standaard 22"
 
 msgid "Alternate TCP port. Default is 873"
-msgstr "Alternatieve TCP poort. Standaard 873"
+msgstr "Alternatieve TCP-poort. Standaard 873"
 
 msgid "Alternative configuration directory (usually empty)."
 msgstr "Alternatieve configuratiemap (normaal leeg)."
@@ -771,16 +772,16 @@ msgid "Controller Auth Group"
 msgstr "Controller Auth Groep"
 
 msgid "Controller Auth Method"
-msgstr "Controller Auth Methode"
+msgstr "Auth Methode Controller"
 
 msgid "Controller Authorised network"
 msgstr "Controller Geautoriseerd netwerk"
 
 msgid "Controller IP address"
-msgstr "Controller IP-adres"
+msgstr "IP-adres Controller"
 
 msgid "Controller TCP Port"
-msgstr "Controller TCP Poort"
+msgstr "TCP-poort Controller"
 
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Controleert het compressiealgoritme dat wordt gebruikt voor deze dataset. De 'lzjb' compressie algoritme is geoptimaliseerd voor prestaties terwijl fatsoenlijke gegevenscompressie wodt gebruikt. Zet compressie op 'Aan' gebruikt de 'lzjb' compressie algoritme. U kunt het 'gzip' niveau opgeven met de waarde 'gzip-N', waar N een geheel van 1 (het snelste) tot 9 (beste compressieverhouding) is. Momenteel is 'gzip' gelijkwaardig aan ' gzip-6'."
@@ -2471,14 +2472,14 @@ msgstr "Logical Unit Controller Geautoriseerd netwerk (standaard %s)"
 
 #, php-format
 msgid "Logical Unit Controller IP address (%s by default)"
-msgstr "Logical Unit Controller IP-adres (standaard %s)"
+msgstr "IP-adres Logical Unit Controller (standaard %s)"
 
 #, php-format
 msgid "Logical Unit Controller TCP port (%d by default)"
-msgstr "Logical Unit Controller TCP poort (standaard %d)"
+msgstr "TCP-poort Logical Unit Controller (standaard %d)"
 
 msgid "Logical Unit Controller login information"
-msgstr "Logical Unit Controller inlog informatie"
+msgstr "Inloginformatie Logical Unit Controller"
 
 msgid "Logical Unit Type mapped to LUN."
 msgstr "Logical Unit Type in kaart gebracht aan LUN."
@@ -3518,7 +3519,7 @@ msgid "Save and Restart"
 msgstr "Opslaan en Herstarten"
 
 msgid "Save login information in configuration file."
-msgstr "Bewaar de inlog informatie in het configuratiebestand."
+msgstr "Inloginformatie opslaan in het configuratiebestand."
 
 msgid "Saved file to"
 msgstr "Bestand opgeslagen op"
@@ -3938,10 +3939,10 @@ msgid "TCP forwarding"
 msgstr "TCP forwarding"
 
 msgid "TCP port"
-msgstr "TCP poort"
+msgstr "TCP-poort"
 
 msgid "TCP port to bind the server to."
-msgstr "TCP poort om de sever aan te koppelen."
+msgstr "TCP-poort om de sever aan te koppelen."
 
 msgid "TFTP"
 msgstr "TFTP"
@@ -4050,7 +4051,7 @@ msgid "The RAID volume is currently mounted! Remove the <a href='%s'>mount point
 msgstr "Het RAID volume is momenteel aangekoppeld! Verwijder het <a href='%s'>koppelpunt</a> eerst voor u verder gaat."
 
 msgid "The TCP port must be a valid port number."
-msgstr "De TCP poort moet een geldig poortnummer zijn."
+msgstr "De TCP-poort moet een geldig poortnummer zijn."
 
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "Het VLAN ID moet tussen de 1 en 4094 zijn."
