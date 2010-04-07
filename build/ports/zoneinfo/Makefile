@@ -1,8 +1,8 @@
 PORTNAME=			zoneinfo
-DISTVERSION=	2010g
+DISTVERSION=	2010h
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		ma.zoon@quicknet.nl
 
 MASTER_SITES=	ftp://elsie.nci.nih.gov/pub/
 DISTNAME=			tzdata${DISTVERSION}
