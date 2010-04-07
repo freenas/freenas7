@@ -4,9 +4,12 @@
 	report_generator.php
 	Copyright (C) 2009-2010 Dan Merschi
 	All rights reserved.
+	
+	Modified by Michael Zoon (C) 2010 <ma.zoon@quicknet.nl>
+	All rights reserved.	
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>
 	All rights reserved.
 
 	Part of code from:
@@ -35,6 +38,7 @@ pre {
 	white-space: pre;
 	line-height: 10pt;
 	font-size: 10pt;
+	width: 500pt;
 }
 -->
 </style>
@@ -97,11 +101,11 @@ EOD;
 		</tr>
 		<tr>
 			<td class="label" align="right"><?=gettext("Description");?></td>
-			<td class="text"><textarea id="txtDescription" name="txtDescription" rows="6" cols="77" wrap="on"><?=htmlspecialchars($_POST['txtDescription']);?></textarea></td>
+			<td class="text"><textarea id="txtDescription" name="txtDescription" rows="7" cols="77" wrap="on"><?=htmlspecialchars($_POST['txtDescription']);?></textarea></td>
 		</tr>
 		<tr>
 			<td align="right"><?=gettext("Error");?></td>
-			<td class="text"><textarea id="txtError" name="txtError" rows="2" cols="77" wrap="on"><?=htmlspecialchars($_POST['txtError']);?></textarea></td>
+			<td class="text"><textarea id="txtError" name="txtError" rows="3" cols="77" wrap="on"><?=htmlspecialchars($_POST['txtError']);?></textarea></td>
 		</tr>
 		<tr>
 			<td align="right"><?=gettext("Hardware");?></td>
@@ -131,12 +135,14 @@ EOD;
 		}
 		print str_replace("; ", "\n", $sys_summary).$nl.$nl;
 		if (isset($_POST['chk_Hardware'])) {
-			print $hwinfo;
+		print wordwrap($hwinfo, 75, $nl, true);
+		print $nl;			
+
 		}
-		print $hr.$nl.$nl.$bs."Subject:".$be.$nl.$_POST['txtSubject'].$hr;
-		print $nl.$nl.$bs."Description:".$be.$nl.$_POST['txtDescription'];
+		print wordwrap($hr.$nl.$nl.$bs."Subject:".$be.$nl.$_POST['txtSubject'].$hr, 75, $nl, true);
+		print wordwrap($nl.$nl.$bs."Description:".$be.$nl.$_POST['txtDescription'], 75, $nl, true);
 		if (!isBlank($_POST['txtError'])) {
-			print $nl.$nl.$hr.$cs.$nl.$_POST['txtError'].$nl.$ce;
+			print wordwrap($nl.$nl.$hr.$cs.$nl.$_POST['txtError'].$nl.$ce, 75, $nl, true);
 		}
 		puts("</pre>");
 	}
