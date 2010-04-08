@@ -1,20 +1,15 @@
-# Russian translation for freenas
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
-# This file is distributed under the same license as the freenas package.
-# LAST TRANSLATOR Alexey Sannikov <mr-sannikov@yandex.ru>, 2009.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: freenas-0.7\n"
+"Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-05 03:34+0100\n"
+"PO-Revision-Date: 2010-04-08 23:29+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-04 21:24+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 21:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -5363,28 +5358,38 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Дата"
+
 #~ msgid "hours"
 #~ msgstr "часов"
+
 #~ msgid "day"
 #~ msgstr "день"
+
 #~ msgid "days"
 #~ msgstr "дней"
+
 #~ msgid "week days"
 #~ msgstr "дней недели"
+
 #~ msgid "months"
 #~ msgstr "месяцев"
+
 #~ msgid "Create"
 #~ msgstr "Создать"
+
 #~ msgid "LAN"
 #~ msgstr "Локальная сеть"
+
 #~ msgid "Logs"
 #~ msgstr "Журналы"
+
 #~ msgid ""
 #~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
 #~ "before proceeding."
 #~ msgstr ""
 #~ "Этот диск смонтирован! <a href=%s>Размонтируйте</a> диск перед "
 #~ "продолжением."
+
 #~ msgid ""
 #~ "If the selected disk/partition is mounted it will be unmounted "
 #~ "temporarily to perform selected command, otherwise the commands work in "
@@ -5395,43 +5400,57 @@ msgstr "upriv"
 #~ "он будет временно размонтирован, иначе команды смогут работать в режиме "
 #~ "только-для-чтения.<br>Во время этого процесса пользователи, использующие "
 #~ "данную точку монтирования, будут испытывать нарушение работы сервиса."
+
 #~ msgid ""
 #~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
 #~ "a> first before proceeding."
 #~ msgstr ""
 #~ "Том RAID-массива в данный момент смонтирован! Удалите <a href=%s>точку "
 #~ "монтирования</a> перед продолжением."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Размер буфера отправки (по умолчанию 16384)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Размер буфера приема (по умолчанию 16384)."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Время синхронизации"
+
 #~ msgid "Working Directory"
 #~ msgstr "Рабочий каталог"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Создать рабочий каталог, если он не существует"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Время выключения"
+
 #~ msgid ""
 #~ "This will cause %s not to check for newer firmware versions when the <a "
 #~ "href=%s>%s</a> page is viewed."
 #~ msgstr ""
 #~ "Это заставит %s не проверять обновления версий прошивок при просмотре "
 #~ "страницы <a href=%s>%s</a>."
+
 #~ msgid ""
 #~ "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Зашифрованный диск смонтирован, размонтируйте его перед отсоединением."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Имя зашифрованного диска"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Сеть, авторизованная для доступа к этой iSCSI-цели."
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Конфигурация не может быть восстановлена (ошибка загрузки файла)."
+
 #~ msgid ""
 #~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "Например, такое имя: qn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and "
 #~ "is made up of one or more devices, and/or one or more extents."
@@ -5439,6 +5458,7 @@ msgstr "upriv"
 #~ "На верхнем уровне абстракции, цель - это то, что предоставляется "
 #~ "инициатору, и состоит из одного или более устройств и/или одного или "
 #~ "более экстентов."
+
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
 #~ "must be defined before they can be used, and they cannot be used more "
@@ -5447,72 +5467,93 @@ msgstr "upriv"
 #~ "Устройства используются для сочетания экстентов или других устройств. "
 #~ "Перед использованием экстенты и устройства должны быть определены, и не "
 #~ "могут быть задействованы дважды."
+
 #~ msgid "Disk Name"
 #~ msgstr "Имя диска"
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (с чередованием)"
+
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (зеркалирование)"
+
 #~ msgid ""
 #~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
 #~ "for the changes to take effect."
 #~ msgstr ""
 #~ "Изменения сохранены. Необходимо <a href=%s>перезагрузить</a> систему, "
 #~ "чтобы они вступили в силу."
+
 #~ msgid ""
 #~ "The configuration has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
 #~ msgstr ""
 #~ "Конфигурация была изменена.<br>Необходимо принять изменения, чтобы они "
 #~ "вступили в силу."
+
 #~ msgid ""
 #~ "You can also install a package via SSH or console using the the pkg_add "
 #~ "command.<br>Example: pkg_add -r packagename"
 #~ msgstr ""
 #~ "Возможно также установить пакет посредством SSH или консоли, используя "
 #~ "команду pkg_add.<br> Пример: pkg_add -r packagename"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Должна быть указана правильная маска подсети."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Должна быть указана корректная сеть."
+
 #~ msgid "List of shares"
 #~ msgstr "Список общих ресурсов"
+
 #~ msgid ""
 #~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
 #~ "service to clients."
 #~ msgstr ""
 #~ "Включите <a href=%s>Zeroconf/Bonjour</a> для предоставления сервиса "
 #~ "клиентам."
+
 #~ msgid ""
 #~ "1. Use these specials actions for debugging only!<br>2. There is no need "
 #~ "of using this menu for starting a RAID volume (start automaticaly)."
 #~ msgstr ""
 #~ "1. Используйте эти действия только с целью отладки!<br>2. Чтобы запустить "
 #~ "RAID-массив, данное меню не требуется."
+
 #~ msgid "Give full shell access to user."
 #~ msgstr "Разрешить полный доступ к shell этому пользователю"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Комбинация общего ресурса и рабочего каталога не существует."
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Место хранения рабочих файлов"
+
 #~ msgid ""
 #~ "You can't mount the partition '%s' where the config file is stored.<br>"
 #~ msgstr ""
 #~ "Невозможно смонтировать раздел '%s', где хранится файл настроек.<br>"
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Сначала нужно задать объекты типа 'Extent'"
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% из %d Мбайт"
+
 #~ msgid ""
 #~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
 #~ "s>user</a> must have full Shell enabled."
 #~ msgstr ""
 #~ "<a href=%s>SSHD</a> должен быть включен для работы Unison. <a href=%"
 #~ "s>Пользователь</a> должен иметь полные права доступа к оболочке shell."
+
 #~ msgid "Shell access"
 #~ msgstr "Доступ к системной оболочке shell"
+
 #~ msgid "Size in MB."
 #~ msgstr "Размер в мегабайтах"
+
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 #~ "automatically after storing the new firmware. The configuration will be "
@@ -5525,26 +5566,32 @@ msgstr "upriv"
 #~ "<br> Для обновления прошивки нужно минимум %d Мбайт ОЗУ.<br> "
 #~ "Рекомендуется <a href=%s>сохранить</a> конфигурацию системы перед "
 #~ "обновлением."
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Устройство смонтировано. Размонтируйте его перед отключением."
+
 #~ msgid ""
 #~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
 #~ "addresses to hostnames&quot;</a> is enabled."
 #~ msgstr ""
 #~ "IP-адреса будут преобразованы в имена хостов, если включено <a href=%"
 #~ "s>&quot;Преобразовывать IP-адреса в имена хостов&quot;</a>."
+
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Неверный порт. Номер порта должен быть между %d и %d."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr ""
 #~ "Вам понадобится достаточно места для дублирования всех синхронизируемых "
 #~ "файлов"
+
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 #~ "minutes, hours, days and months."
 #~ msgstr ""
 #~ "Примечание: щелкните, удерживая Ctrl (или Сommand для Macintosh), чтобы "
 #~ "выбрать или отменить выбор минут, часов, дней, месяцев."
+
 #~ msgid ""
 #~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
 #~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
@@ -5553,6 +5600,7 @@ msgstr "upriv"
 #~ "Щелкните &quot;Разрешить загрузку прошивки&quot;, затем выберите файл "
 #~ "образа, который должен быть  загружен.<br>Щелкните &quot;Обновить "
 #~ "прошивку&quot; чтобы начать процесс обновления."
+
 #~ msgid ""
 #~ "This means that the image you uploaded is not an official/supported image "
 #~ "and may lead to unexpected behavior or security compromises. Only install "
@@ -5566,6 +5614,7 @@ msgstr "upriv"
 #~ "которые были получены из доверенных источников, убедившись, что они не "
 #~ "были изменены.<br><br>Вы все равно хотите установить этот образ (на свой "
 #~ "риск)?"
+
 #~ msgid ""
 #~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 #~ "take effect. You may also have to do one or more of the following steps "
@@ -5579,39 +5628,51 @@ msgstr "upriv"
 #~ "<ul><li><span class='vexpl'>сменить IP-адрес вашего компьютера;</span></"
 #~ "li> <li><span class='vexpl'>войти в web-интерфейс управления с новым IP-"
 #~ "адресом.</span></li></ul>"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Последние %d записей в журнале '%s'"
+
 #~ msgid "RSYNCD"
 #~ msgstr "Rsync"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "Локальный Rsync"
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr ""
 #~ "Для присоединения зашифрованного диска нужно использовать парольную фразу."
+
 #~ msgid "Port %s must be less than %s."
 #~ msgstr "Номер порта %s должен быть меньше, чем %s."
+
 #~ msgid "The %s port must be in the range from %d to %d."
 #~ msgstr "Номер порта %s должен быть в диапазоне от %d-го до %d-го."
+
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s из %s (%dMHz)"
+
 #~ msgid "built on"
 #~ msgstr "Cборка от"
+
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 #~ "used as extent."
 #~ msgstr ""
 #~ "Путь к файлу (например, /mnt/sharename/extent/%s) или имя устройства "
 #~ "(например, /dev/ad1), используемого как экстент."
+
 #~ msgid ""
 #~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for "
 #~ "3DES."
 #~ msgstr ""
 #~ "По умолчанию, длина ключа составляет 128 бит для AES, 128 бит для "
 #~ "Blowfish и 192 бита для 3DES."
+
 #~ msgid "Syslog"
 #~ msgstr "Syslog"
+
 #~ msgid "File transfer"
 #~ msgstr "Передача файлов"
+
 #~ msgid "FTP file transfer"
 #~ msgstr "Передача файлов по FTP"
-

@@ -1,21 +1,19 @@
-# Danish translation for freenas
-# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
-# This file is distributed under the same license as the freenas package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: freenas\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: FreeNAS\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-04 14:44+0100\n"
+"PO-Revision-Date: 2010-04-08 23:08+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
-"Language-Team: Danish <da@li.org>\n"
+"Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-04 11:52+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 20:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 msgid " interfaces:"
 msgstr " grænseflader:"
@@ -5358,6 +5356,7 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Dato"
+
 #~ msgid ""
 #~ "1. Use these specials actions for debugging only!<br>2. There is no need "
 #~ "of using this menu for starting a RAID volume (start automaticaly)."
@@ -5365,30 +5364,41 @@ msgstr "upriv"
 #~ "1. Brug kun disse specielle funktioner til fejlfinding!<br>2. RAID "
 #~ "volumen starter automatisk, der er ingen grund til at bruge menuen til "
 #~ "dette."
+
 #~ msgid "Create"
 #~ msgstr "Opret"
+
 #~ msgid "week days"
 #~ msgstr "uge dage"
+
 #~ msgid "months"
 #~ msgstr "måneder"
+
 #~ msgid "hours"
 #~ msgstr "timer"
+
 #~ msgid "days"
 #~ msgstr "dage"
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% af %dMB"
+
 #~ msgid ""
 #~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
 #~ "s>user</a> must have full Shell enabled."
 #~ msgstr ""
 #~ "<a href=%s>SSHD</a> skal være aktiveret for at Unison kan virke, og <a "
 #~ "href=%s>brugeren</a> skal have fulde Shell rettigheder."
+
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s på %s (%dMHz)"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Et gyldigt netværks bit antal skal angives."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Et gyldigt netværk skal angives."
+
 #~ msgid ""
 #~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 #~ "take effect. You may also have to do one or more of the following steps "
@@ -5402,6 +5412,7 @@ msgstr "upriv"
 #~ "p><ul><li><span class='vexpl'>Skift IP-adressen på din computer.</span></"
 #~ "li><li><span class='vexpl'>Gå ind på WebGUI med den nye IP-adresse.</"
 #~ "span></li></ul>"
+
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and "
 #~ "is made up of one or more devices, and/or one or more extents."
@@ -5409,6 +5420,7 @@ msgstr "upriv"
 #~ "På det højeste niveau, er et mål hvad der bliver præsenteret for "
 #~ "initiatoren, og består af en eller flere enheder, og/eller en eller flere "
 #~ "extents."
+
 #~ msgid ""
 #~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
 #~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
@@ -5417,8 +5429,10 @@ msgstr "upriv"
 #~ "Tryk på &quot;Aktiver firmware upload&quot; nedenfor, og vælg derefter "
 #~ "image filen der skal uploades.<br>Tryk på &quot;Opgrader firmware&quot; "
 #~ "for at starte opgraderings processen."
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Opret arbejdsmappe hvis den ikke eksisterer"
+
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 #~ "automatically after storing the new firmware. The configuration will be "
@@ -5432,8 +5446,10 @@ msgstr "upriv"
 #~ "RAM for at udføre firmware opdateringen.<br>Det anbefales kraftigt at du "
 #~ "laver en <a href=%s>Backup</a> af system konfigurationen, inden du "
 #~ "udfører en firmware opgradering."
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Enheden er monteret, afmonter den inden frakobling"
+
 #~ msgid ""
 #~ "Devices are used to combine extents or other devices. Extents and devices "
 #~ "must be defined before they can be used, and they cannot be used more "
@@ -5442,24 +5458,30 @@ msgstr "upriv"
 #~ "Enheder bliver brugt til at kombinere extents eller andre enheder. "
 #~ "Extents og enheder skal defineres før de kan bruges, og de kan ikke "
 #~ "bruges mere end en gang."
+
 #~ msgid "Disk Name"
 #~ msgstr "Disknavn"
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Krypteret disknavn"
+
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 #~ "used as extent."
 #~ msgstr ""
 #~ "Fil sti (f.eks. /mnt/sharenavn/extent/%s) eller enheds navn (f.eks. /dev/"
 #~ "ad1) brugt som extent."
+
 #~ msgid "Give full shell access to user."
 #~ msgstr "Giv brugeren fuld shell adgang."
+
 #~ msgid ""
 #~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
 #~ "addresses to hostnames&quot;</a> is enabled."
 #~ msgstr ""
 #~ "IP-adresser bliver løst til værtsnavne hvis <a href=%s>&quot;Løs IP-"
 #~ "adresser til værtsnavne&quot;</a> er aktiveret."
+
 #~ msgid ""
 #~ "If the selected disk/partition is mounted it will be unmounted "
 #~ "temporarily to perform selected command, otherwise the commands work in "
@@ -5470,103 +5492,138 @@ msgstr "upriv"
 #~ "afmonteret for at udføre den valgte handling, ellers vil handlingerne kun "
 #~ "virke i skrivebeskyttet tilstand.<br>Under processen kan der opstå udfald "
 #~ "af tjenester for brugere der tilgår dette monterings punkt."
+
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Ugyldig port! Port numre skal være i området fra %d til %d."
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Sidste %d %s log posteringer"
+
 #~ msgid ""
 #~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
 #~ "a> menu."
 #~ msgstr ""
 #~ "Sæt til '%s' for uformaterede diske og formater dem med <a href%"
 #~ "s>formater</a> menuen."
+
 #~ msgid "List of shares"
 #~ msgstr "Liste med shares"
+
 #~ msgid "Logs"
 #~ msgstr "Logfiler"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maksimum ydelse, maksimum strømforbrug"
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Medium strømforbrug med standby"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Medium strømforbrug uden standby"
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Minimum strømforbrug med standby"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Monimum strømforbrug uden standby"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Netværk der er godkendt til at tilgå iSCSI målet."
+
 #~ msgid ""
 #~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
 #~ "minutes, hours, days and months."
 #~ msgstr ""
 #~ "Bemærk: Ctrl-klik (eller kommando-klik på Mac) for at vælge eller "
 #~ "fravælge minutter, timer, dage og måneder."
+
 #~ msgid "Port %s must be less than %s."
 #~ msgstr "Porten %s skal være mindre end %s."
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (striping)"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC lokal"
+
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (spejling)"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Shell access"
 #~ msgstr "Shell adgang"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Nedluknings tid"
+
 #~ msgid "Size in MB."
 #~ msgstr "Størrelse i MB."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Størrelse på afsendelses bufferen (16384 som standard)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Størrelse på modtagelses bufferen (16384 som standard)."
+
 #~ msgid "Status report from host: %s.%s"
 #~ msgstr "Status rapport fra vært: %s.%s"
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Synkroniserings tid"
+
 #~ msgid "The %s port must be in the range from %d to %d."
 #~ msgstr "%s porten skal være i området fra %d til %d."
+
 #~ msgid ""
 #~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
 #~ "a> first before proceeding."
 #~ msgstr ""
 #~ "RAID volumen er monteret i øjeblikket! Fjern <a href=%s>monterings "
 #~ "punktet</a> først inden der fortsættes."
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Konfigurationen kunne ikke gendannes (fil upload fejl)."
+
 #~ msgid ""
 #~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
 #~ "for the changes to take effect."
 #~ msgstr ""
 #~ "Ændringerne blev gemt. Du skal <a href=%s>genstarte</a> systemet, inden "
 #~ "ændringerne bliver anvendt."
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Kombinationen af share og arbejdsmappe eksisterer ikke."
+
 #~ msgid ""
 #~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for "
 #~ "3DES."
 #~ msgstr ""
 #~ "Standard nøgle længder er: 128 for AES, 128 for Blowfish og 192 for 3DES."
+
 #~ msgid ""
 #~ "The configuration has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
 #~ msgstr ""
 #~ "Konfigurationen blev ændret.<br>Du skal anvende ændringerne inden de "
 #~ "træder i kraft."
+
 #~ msgid ""
 #~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
 #~ "before proceeding."
 #~ msgstr ""
 #~ "Disken er monteret i øjeblikket! <a href=%s>Afmonter</a> disken inden der "
 #~ "fortsættes."
+
 #~ msgid ""
 #~ "These parameters will be added to the share configuration in smb.conf."
 #~ msgstr ""
 #~ "Disse parametre vil blive tilføjet share konfigurationen i smb.conf."
+
 #~ msgid ""
 #~ "This means that the image you uploaded is not an official/supported image "
 #~ "and may lead to unexpected behavior or security compromises. Only install "
@@ -5579,56 +5636,71 @@ msgstr "upriv"
 #~ "sikkerhedshuller. Installer kun image-filer der kommer fra kilder du "
 #~ "stoler på, og sørg for at der ikke er pillet image-filen.<br><br>Vil du "
 #~ "installere denne image-fil alligevel (på eget ansvar)?"
+
 #~ msgid ""
 #~ "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Denne krypterede disk er monteret, afmonter den inden du prøver at "
 #~ "frakoble den."
+
 #~ msgid ""
 #~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr ""
 #~ "Dette navn kan f.eks. være: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid ""
 #~ "This will cause %s not to check for newer firmware versions when the <a "
 #~ "href=%s>%s</a> page is viewed."
 #~ msgstr ""
 #~ "Denne vil forårsage at %s ikke kontrollerer om der er nyere firmware "
 #~ "versioner, når <a href=%s>%s</a> siden vises."
+
 #~ msgid "UPS notification from host: %s"
 #~ msgstr "UPS besked fra vært: %s"
+
 #~ msgid "Working Directory"
 #~ msgstr "Arbejdsmappe"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Hvor de midlertidige filer skal gemmes"
+
 #~ msgid ""
 #~ "You can also install a package via SSH or console using the the pkg_add "
 #~ "command.<br>Example: pkg_add -r packagename"
 #~ msgstr ""
 #~ "Du kan også installere en pakke via SSH eller konsollen, ved at bruge "
 #~ "pkg_add kommandoen.<br>Eksempel: pkg_add -r pakkenavn"
+
 #~ msgid ""
 #~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
 #~ "service to clients."
 #~ msgstr ""
 #~ "Du skal aktivere <a href=%s>Zeroconf/Bonjour</a> for at proklamere denne "
 #~ "tjeneste til klienterne."
+
 #~ msgid ""
 #~ "You can't mount the partition '%s' where the config file is stored.<br>"
 #~ msgstr ""
 #~ "Du kan ikke montere partitionen '%s' hvor konfigurations filen er gemt."
 #~ "<br>"
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Du skal definere nogle 'Extent' objekter først."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr ""
 #~ "Du skal muligvis bruge nok diskplads til at duplikere alle filer der "
 #~ "synkroniseres"
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Du skal bruge en adgangskode for at tilkoble en krypteret disk."
+
 #~ msgid "day"
 #~ msgstr "dag"
+
 #~ msgid "built on"
 #~ msgstr "bygget på"
+
 #~ msgid ""
 #~ "The module provides automatic bans that are triggered based on "
 #~ "configurable criteria. A ban prevents the banned user, host, or class "
@@ -5640,4 +5712,3 @@ msgstr "upriv"
 #~ "bruger, vært eller klasse i at logge ind på serveren, den forbindrer ikke "
 #~ "den udelukkede bruger, vært eller klasse fra at oprette forbindelse til "
 #~ "serveren."
-

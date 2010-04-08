@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-04 14:48+0100\n"
+"PO-Revision-Date: 2010-04-08 23:31+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
-"Language-Team: FreeNAS team\n"
+"Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-04 11:52+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 21:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -5354,26 +5354,37 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Datum"
+
 #~ msgid "hours"
 #~ msgstr "ur(e)"
+
 #~ msgid "days"
 #~ msgstr "dni"
+
 #~ msgid "day"
 #~ msgstr "dan"
+
 #~ msgid "months"
 #~ msgstr "mesecev"
+
 #~ msgid "week days"
 #~ msgstr "delovnik"
+
 #~ msgid "Create"
 #~ msgstr "Ustvari"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Vnešen mora biti veljaven podomrežni bit."
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "Dnevniki"
+
 #~ msgid ""
 #~ "This means that the image you uploaded is not an official/supported image "
 #~ "and may lead to unexpected behavior or security compromises. Only install "
@@ -5385,6 +5396,7 @@ msgstr ""
 #~ "privede do nepričakovanega obnašanja sistema. Nameščajte le slike, ki "
 #~ "prihajajo iz zanesljivih virov.<br><br>Ali želite kljub temu namestiti to "
 #~ "sliko (na lastno odgovornost)?"
+
 #~ msgid ""
 #~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
 #~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
@@ -5393,8 +5405,10 @@ msgstr ""
 #~ "Spodaj kliknite &quot;Omogoči nalaganje firmware&quot;, nato izberite "
 #~ "sliko za nalaganje.<br>Za začetek nadgradnje pa kliknite &quot;Nadgradi "
 #~ "firmware&quot;."
+
 #~ msgid "Size in MB."
 #~ msgstr "Velikost v MB."
+
 #~ msgid ""
 #~ "If the selected disk/partition is mounted it will be unmounted "
 #~ "temporarily to perform selected command, otherwise the commands work in "
@@ -5405,77 +5419,101 @@ msgstr ""
 #~ "ukaza začasno odklopljen. Drugače se bo ukaz izvršil v bralnem načinu."
 #~ "<br>Med izvajanjem ukaza bodo imeli uporabniki, ki dostopajo do sistema, "
 #~ "moten dostop."
+
 #~ msgid ""
 #~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
 #~ "a> first before proceeding."
 #~ msgstr ""
 #~ "RAID polje je trenutno priključeno! Pred nadaljevanjem odstranite <a href="
 #~ "%s>priklopno točko</a>."
+
 #~ msgid ""
 #~ "You can't mount the partition '%s' where the config file is stored.<br>"
 #~ msgstr ""
 #~ "Me morete priklopiti particije '%s', kjer je shranjena datoteka z "
 #~ "nastavitvami.<br>"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Velikost predpomnilnika pošiljanja (privzeto 16384)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Velikost predpomnilnika sprejemanja (privzeto 16384)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Določeno mora biti veljavno omrežje."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Čas sinhronizacije"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Kombinacija deljenega vira in delovne mape ne obstaja."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr ""
 #~ "Potrebovali boste zadostno količino prostega diska, da boste lahko "
 #~ "duplicirali vse podatke, ki se sinhronizirajo"
+
 #~ msgid "Working Directory"
 #~ msgstr "Delovna mapa"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Kjer bodo shranjene delovne datoteke"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Ustvari delovni imenik, če ne obstaja"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Čas izklopa"
+
 #~ msgid ""
 #~ "This will cause %s not to check for newer firmware versions when the <a "
 #~ "href=%s>%s</a> page is viewed."
 #~ msgstr ""
 #~ "To bo, kadar je prikazana <a href=%s>%s</a> stran, onemogočilo %s -u "
 #~ "preverjanje nove verzije firmware."
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Zadnjih %d %s dnevniških vnosov"
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Nastavitev ni bilo možno obnoviti (napaka pri nalaganju datoteke)."
+
 #~ msgid ""
 #~ "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr ""
 #~ "Ta šifriran pogon je priklopljen, preden ga izvlecete, ga morate "
 #~ "opdklopiti."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Za pliklop šifriranega pogona, morate uporabiti geslo."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Ime šifriranega pogona"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Omrežje z dovoljenjem za dostop do tega iSCSI cilja."
+
 #~ msgid ""
 #~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "To ime je za primer: iqn.1994-04.org.netbsd.iscsi-cilj:cilj0."
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% od %dMB"
+
 #~ msgid ""
 #~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
 #~ "s>user</a> must have full Shell enabled."
 #~ msgstr ""
 #~ "Za delovanje Unison, mora biti omogočen <a href=%s>SSHD</a> ter <a href=%"
 #~ "s>uporabnik</a> mora imeti omogočeno celotno lupino."
+
 #~ msgid ""
 #~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
 #~ "before proceeding."
 #~ msgstr ""
 #~ "Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a href=%"
 #~ "s>Odklopite</a>."
+
 #~ msgid ""
 #~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 #~ "take effect. You may also have to do one or more of the following steps "
@@ -5489,6 +5527,6 @@ msgstr ""
 #~ "class='vexpl'>spremeniti IP naslov vašega računalnika</span></"
 #~ "li><li><span class='vexpl'>odpreti webGUI na novem IP naslovu</span></"
 #~ "li></ul>"
+
 #~ msgid "Disk Name"
 #~ msgstr "Ime diska"
-
