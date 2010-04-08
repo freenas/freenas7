@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-07 01:09+0100\n"
+"PO-Revision-Date: 2010-04-08 22:37+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-06 22:16+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 20:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -72,7 +72,7 @@ msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr "0=deshabilitado, 1-255=habilitado comando de encolado con profundidad especificada"
 
 msgid "1. Use these specials actions for debugging only!<br />2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
-msgstr "1. ¡Use estas acciones especiales sólo para detección de errores!<br />2. No hay necesidad de usar este menú para iniciar un valúmen RAID (iniciado automáticamente)."
+msgstr "¡Use estas acciones especiales sólo para detección de errores!<br />2. No hay necesidad de usar este menú para iniciar un volúmen RAID (iniciado automáticamente)."
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "etiqueta VLAN 802.1Q (entre 1 y 4094)"
@@ -359,7 +359,7 @@ msgstr "Todos los directorios"
 
 #, php-format
 msgid "All dirs requires mounted path, but Path %s is not mounted."
-msgstr ""
+msgstr "Se requiere un Path que este montado, pero %s no esta montado"
 
 msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
 msgstr "Todos los compartidos usan la opción 'usedots' haciendo, además, ilegales los archivos .Parent y cualquiera que empiece con .Apple."
@@ -2468,15 +2468,15 @@ msgstr "Paquetes de registro que se tratan por esta regla al syslog."
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
-msgstr ""
+msgstr "Controladora de red autorizada (%s por defecto)"
 
 #, php-format
 msgid "Logical Unit Controller IP address (%s by default)"
-msgstr ""
+msgstr "IP de la controladora de red autorizada (%s por defecto)"
 
 #, php-format
 msgid "Logical Unit Controller TCP port (%d by default)"
-msgstr ""
+msgstr "Puerto TCP de la controladora de red autorizada (%d por defecto)"
 
 msgid "Logical Unit Controller login information"
 msgstr "Informacion de Inicio de sesión de la controladora"
@@ -3606,7 +3606,7 @@ msgid "Separate email addresses by semi-colon."
 msgstr "Separe direcciones de correo-e por un punto y coma."
 
 msgid "Serial Console"
-msgstr ""
+msgstr "Consola (RS-232)"
 
 msgid "Serial number"
 msgstr "Número de serie"
@@ -4289,7 +4289,7 @@ msgid "The initiator can discover the targets with correct user and secret in sp
 msgstr "El iniciador puede descubrir los objetivos con el secreto y usuario adecuado en el Grupo de Autorizado específico."
 
 msgid "The istgtcontrol can access the targets with correct user and secret in specific Auth Group."
-msgstr ""
+msgstr "La aplicacion istgtcontrol no puede alcanzar su objetivo  sin un usuario y contraseña correctos"
 
 msgid "The login name contains invalid characters."
 msgstr "El nombre de acceso contiene caracteres no válidos."
@@ -4391,7 +4391,7 @@ msgstr "El intérvalo de la profundidad de cola es inválido."
 
 #, php-format
 msgid "The recommended queue depth is %d."
-msgstr ""
+msgstr "El anidamiento recomendado maximo es %d"
 
 #, php-format
 msgid "The removable area mapped to LUN%d."
@@ -5157,7 +5157,7 @@ msgid "You can also install a package via SSH or console using the the pkg_add c
 msgstr "También puede instalar un paquete mediante SSH o a través de la consola utilizando la orden pkg_add.<br />Ejemplo: pkg_add -r nombre_del_paquete"
 
 msgid "You can use the following parameters for substitution:"
-msgstr ""
+msgstr "Vds. puede usar el siguiente parametro como sustituto"
 
 #, php-format
 msgid "You can't mount the partition '%s' where the config file is stored.<br />"
@@ -5252,7 +5252,7 @@ msgid "filechooser"
 msgstr "selector de ficheros"
 
 msgid "get target info failed."
-msgstr ""
+msgstr "Petición de informacion fallida"
 
 msgid "hour(s)"
 msgstr "hora(s)"
@@ -5277,7 +5277,7 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "load/unload failed."
-msgstr ""
+msgstr "de carga y descarga no."
 
 msgid "minute(s)"
 msgstr "minuto(s)"

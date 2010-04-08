@@ -1,46 +1,18 @@
-#
-# zh_TW.UTF8.po
-# 	part of FreeNAS (http://www.freenas.org)
-# 	Copyright (C) 2006-2008 Baikuan Hsu <chicworks@gmail.com>
-# 	All rights reserved.
-#
-#
-# 	Redistribution and use in source and binary forms, with or without
-# 	modification, are permitted provided that the following conditions are met:
-#
-# 	1. Redistributions of source code must retain the above copyright notice,
-# 	   this list of conditions and the following disclaimer.
-#
-# 	2. Redistributions in binary form must reproduce the above copyright
-# 	   notice, this list of conditions and the following disclaimer in the
-# 	   documentation and/or other materials provided with the distribution.
-#
-# 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-# 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-# 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-# 	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-# 	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# 	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# 	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# 	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-# 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# 	POSSIBILITY OF SUCH DAMAGE.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-04 13:19+0000\n"
-"PO-Revision-Date: 2009-12-06 23:53+0000\n"
-"Last-Translator: raymond <Unknown>\n"
-"Language-Team: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2010-04-08 23:45+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
+"Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-22 18:52+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 21:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-"X-Poedit-Country: TAIWAN\n"
-"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-Language: Chinese (Traditional)\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,128,-1,-1,-1,-1,-1\n"
 
@@ -64,7 +36,7 @@ msgstr "%s 介面"
 
 #, php-format
 msgid "%s is too long."
-msgstr ""
+msgstr "%s 太長"
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -76,7 +48,7 @@ msgstr "%s of %sB"
 
 #, php-format
 msgid "%s on %s"
-msgstr ""
+msgstr "%s 於 %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -100,92 +72,51 @@ msgstr ""
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
 
-#, fuzzy
-msgid ""
-"1. Use these specials actions for debugging only!<br />2. There is no need "
-"of using this menu for starting a RAID volume (start automaticaly)."
+msgid "1. Use these specials actions for debugging only!<br />2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
-"1. 這些特別的指令只適用於 debugging！<br>2. RAID 將會自動開始運作，不需要再次"
-"下達 starting。"
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
-msgstr ""
+msgstr "802.1Q VLAN 標籤 (介於 1 和 4094 )."
 
 msgid "<->"
+msgstr "<->"
+
+#, php-format
+msgid "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%s'>user</a> must have shell access."
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%"
-"s'>user</a> must have shell access."
-msgstr ""
-"Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必"
-"須要有 Shell 權限。"
-
-msgid ""
-"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted "
-"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+msgid "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
 
-msgid ""
-"<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
-msgid ""
-"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</"
-"li><li>Before - File-deletions will be done before the transfer starts.</"
-"li><li>During - File-deletions will be done incrementally as the transfer "
-"happens.</li><li>Delay - File-deletions will be computed during the "
-"transfer, and then removed after the transfer completes.</li><li>After - "
-"File-deletions will be done after the transfer has completed.</li>"
+msgid "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 
-msgid ""
-"A Auth Group contains authorised users and secrets for additional security."
+msgid "A Auth Group contains authorised users and secrets for additional security."
 msgstr ""
 
-msgid ""
-"A Initiator Group contains authorised initiator names and networks to access "
-"the target."
+msgid "A Initiator Group contains authorised initiator names and networks to access the target."
 msgstr ""
 
-msgid ""
-"A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "NTP 伺服器名稱只可以包含下面的字元 a-z， 0-9， '-' 以及 '.'。"
 
-msgid ""
-"A Portal Group contains IP addresses and listening TCP ports to connect the "
-"target from the initiator."
+msgid "A Portal Group contains IP addresses and listening TCP ports to connect the target from the initiator."
 msgstr ""
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
 msgstr "在這個介面上已經定義一個標籤為 %s 的 VLAN。"
 
-msgid ""
-"A directory listing is generated if a directory is requested and no index-"
-"file (index.php, index.html, index.htm or default.htm) was found in that "
-"directory."
-msgstr ""
-"如果目錄被存取時目錄檔不存在，系統將會自動產生一個目錄檔。(index.php, index."
-"html, index.htm or default.htm) was found in that directory."
+msgid "A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory."
+msgstr "如果目錄被存取時目錄檔不存在，系統將會自動產生一個目錄檔。(index.php, index.html, index.htm or default.htm) was found in that directory."
 
-msgid ""
-"A host name alias. This option can appear multiple times, for each domain "
-"that has the same IP. Use a space to separate multiple alias names."
-msgstr ""
-"主機名稱的別名。這個選項可以設定多個別名，以用於相同 IP 的每個網域名稱。使用"
-"空白來隔開多個別名。"
+msgid "A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."
+msgstr "主機名稱的別名。這個選項可以設定多個別名，以用於相同 IP 的每個網域名稱。使用空白來隔開多個別名。"
 
-msgid ""
-"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
-"local network and the capabilities of the adaptor. It may be specified "
-"either as a plain string or as a string of hexadecimal digits preceded by "
-"'0x'."
+msgid "A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'."
 msgstr ""
 
 msgid "A route to this destination network already exists."
@@ -194,8 +125,7 @@ msgstr "已經有一個目標網段的路由設定存在了。"
 msgid "A valid IP address must be specified."
 msgstr "請輸入一個有效的IP位置。"
 
-msgid ""
-"A valid IPv4 address must be specified for the primary/secondary DNS server."
+msgid "A valid IPv4 address must be specified for the primary/secondary DNS server."
 msgstr "請指定一個有效的 DNS IPv4 位置。"
 
 msgid "A valid IPv4 address must be specified."
@@ -207,8 +137,7 @@ msgstr "請指定一個有效的 IPv4 network bit count。"
 msgid "A valid IPv6 Gateway address must be specified."
 msgstr "請指定一個有效的 IPv6 閘道位置。"
 
-msgid ""
-"A valid IPv6 address must be specified for the primary/secondary DNS server."
+msgid "A valid IPv6 address must be specified for the primary/secondary DNS server."
 msgstr "請指定一個有效的 DNS IPv6 位置。"
 
 msgid "A valid IPv6 address must be specified."
@@ -266,7 +195,7 @@ msgid "Acoustic level"
 msgstr "噪音控制"
 
 msgid "Action"
-msgstr ""
+msgstr "動作"
 
 msgid "Activate"
 msgstr "啟始"
@@ -274,18 +203,14 @@ msgstr "啟始"
 msgid "Activate S.M.A.R.T. monitoring for this device."
 msgstr "開啟這個裝置的 S.M.A.R.T. 監測"
 
-msgid ""
-"Activate email report if you want to be notified if a failure or a new error "
-"has been detected, or if a S.M.A.R.T. command to a disk fails."
-msgstr ""
-"如果您希望偵測到新的錯誤或是對磁碟的 S.M.A.R.T. 指令失敗時獲得通知，請使用 "
-"email 回報功能。"
+msgid "Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails."
+msgstr "如果您希望偵測到新的錯誤或是對磁碟的 S.M.A.R.T. 指令失敗時獲得通知，請使用 email 回報功能。"
 
 msgid "Active Directory"
 msgstr "Active Directory"
 
 msgid "Active Users"
-msgstr ""
+msgstr "啟動使用者"
 
 msgid "Active shares"
 msgstr ""
@@ -306,7 +231,7 @@ msgid "Add Route"
 msgstr "新增路由"
 
 msgid "Add Rsync job"
-msgstr ""
+msgstr "增加 Rsync 工作"
 
 msgid "Add URL"
 msgstr "新增 URL"
@@ -321,7 +246,7 @@ msgid "Add command"
 msgstr "新增指令"
 
 msgid "Add dataset"
-msgstr ""
+msgstr "增加資料設定"
 
 msgid "Add device"
 msgstr "新增裝置"
@@ -363,7 +288,7 @@ msgid "Add portal group"
 msgstr ""
 
 msgid "Add rule"
-msgstr ""
+msgstr "新增規則"
 
 msgid "Add self-test"
 msgstr "新增自我檢測"
@@ -411,34 +336,18 @@ msgid "Advanced settings"
 msgstr "進階設定"
 
 #, php-format
-msgid ""
-"After you click &quot;Save&quot;, you may also have to do one or more of the "
-"following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP address</"
-"li></ul>"
-msgstr ""
-"當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：<ul><li>"
-"變更電腦上的IP位置</li><li>使用新的IP位置來連接網頁管理介面</li></ul>"
+msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：<ul><li>變更電腦上的IP位置</li><li>使用新的IP位置來連接網頁管理介面</li></ul>"
 
-#, fuzzy, php-format
-msgid ""
-"After you click &quot;Save&quot;, you must reboot %s to make the changes "
-"take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: <ul><li><span class='vexpl'>change the "
-"IP address of your computer</span></li><li><span class='vexpl'>access the "
-"webGUI with the new IP address</span></li></ul>"
+#, php-format
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: <ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
-"After you click &quot;Save&quot;, you must reboot %s to make the changes "
-"take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: </span></p><ul><li><span "
-"class='vexpl'>change the IP address of your computer</span></li><li><span "
-"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 
 msgid "Aggregation protocol"
 msgstr ""
 
 msgid "Aggressive"
-msgstr ""
+msgstr "積極模式"
 
 msgid "Albanian"
 msgstr "阿爾巴尼亞文"
@@ -453,12 +362,8 @@ msgstr "所有目錄"
 msgid "All dirs requires mounted path, but Path %s is not mounted."
 msgstr ""
 
-msgid ""
-"All shares use the option 'usedots' thus making the filenames .Parent and "
-"anything beginning with .Apple illegal."
-msgstr ""
-"All shares use the option 'usedots' thus making the filenames .Parent and "
-"anything beginning with .Apple illegal."
+msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
+msgstr "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
 
 msgid "All users will have the root privilege."
 msgstr "讓所有的使用者都有 root 權限。"
@@ -467,36 +372,31 @@ msgid "Allow"
 msgstr "允許"
 
 msgid "Allow TLS/SSL connections only."
-msgstr ""
+msgstr "只允許 TLS/SSL 連線"
 
 msgid "Allow client access to accounts that have null passwords."
 msgstr "允許未設置密碼的帳號連線。"
 
-msgid ""
-"Allow clients to attempt to store OS/2 style extended attributes on a share."
+msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
 msgstr "允許使用者以 OS/2 延伸屬性於分享區儲存檔案。"
 
 msgid "Allow clients to resume interrupted uploads and downloads."
-msgstr ""
+msgstr "允許客戶端恢復中斷的上載和下載"
 
 msgid "Allow new files"
-msgstr ""
+msgstr "允許新檔案"
 
 msgid "Allow new files to be created."
-msgstr ""
+msgstr "允許建立新檔案"
 
-msgid ""
-"Allows  certain  users and groups to have read/write access to a share. This "
-"follows the allow option format."
+msgid "Allows  certain  users and groups to have read/write access to a share. This follows the allow option format."
 msgstr "允許特定使用者與群組可以讀寫某個分享區。這將使用允許選項的格式。"
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "讓 %s 嘗試成為 local master browser。"
 
-msgid ""
-"Allows certain users and groups to have read-only  access  to  a share. This "
-"follows the allow option format."
+msgid "Allows certain users and groups to have read-only  access  to  a share. This follows the allow option format."
 msgstr "允許特定使用者與群組只能對某個分享區唯讀。這將使用允許選項的格式。"
 
 msgid "AltRoot"
@@ -517,12 +417,8 @@ msgstr "永遠開啟"
 msgid "Always scan"
 msgstr "永遠掃描"
 
-msgid ""
-"Always use 0 for device number, helps when the device number is not constant "
-"across a reboot, cluster, ..."
-msgstr ""
-"Always use 0 for device number, helps when the device number is not constant "
-"across a reboot, cluster, ..."
+msgid "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
+msgstr "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
 
 msgid "An host with this name already exists."
 msgstr "已經有一個相同的主機名稱存在了。"
@@ -531,16 +427,15 @@ msgid "An interface with the specified description already exists."
 msgstr "已存在具有指定描述的介面。"
 
 msgid "Anonymous"
-msgstr ""
+msgstr "匿名者"
 
 msgid "Anonymous bind"
-msgstr ""
+msgstr "匿名綁定"
 
 msgid "Anonymous user bandwidth"
-msgstr ""
+msgstr "匿名使用者頻寬"
 
-msgid ""
-"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgid "Anonymous user download bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
 msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
@@ -550,7 +445,7 @@ msgid "Anonymous users only"
 msgstr "只允許匿名使用者"
 
 msgid "Any"
-msgstr ""
+msgstr "任何的"
 
 msgid "Apple Filing Protocol"
 msgstr ""
@@ -562,7 +457,7 @@ msgid "Archive"
 msgstr "檔案"
 
 msgid "Archive mode."
-msgstr ""
+msgstr "歸檔模式"
 
 msgid "Are you sure you want to proceed?"
 msgstr "確定要繼續進行？"
@@ -573,9 +468,7 @@ msgstr "確定要重新啟動系統？"
 msgid "Are you sure you want to shutdown the system?"
 msgstr "確定要關閉系統？"
 
-msgid ""
-"At the highest level, a target is what is presented to the initiator, and is "
-"made up of one or more extents."
+msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
 msgstr ""
 
 msgid "Attached"
@@ -601,7 +494,7 @@ msgid "Authentication"
 msgstr "認證方式"
 
 msgid "Authentication method"
-msgstr ""
+msgstr "認證方法"
 
 msgid "Authorised network"
 msgstr "認可網路"
@@ -613,19 +506,19 @@ msgid "Auto"
 msgstr "自動"
 
 msgid "Auto size"
-msgstr ""
+msgstr "自動大小"
 
 msgid "AutoScale"
 msgstr "自動擴展"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "自動發現硬碟"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "自動發現硬碟模式"
 
 msgid "Autoselect"
-msgstr ""
+msgstr "自動選擇"
 
 msgid "Auxiliary parameters"
 msgstr "附屬參數"
@@ -643,10 +536,10 @@ msgid "Balance algorithm"
 msgstr "平衡演算法"
 
 msgid "Ban list"
-msgstr ""
+msgstr "阻擋列表"
 
 msgid "Ban list rule"
-msgstr ""
+msgstr "阻擋列表規則"
 
 msgid "Banner"
 msgstr "歡迎文字"
@@ -655,7 +548,7 @@ msgid "Base DN"
 msgstr "網域名稱"
 
 msgid "Base Name"
-msgstr ""
+msgstr "基本名稱"
 
 msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
@@ -673,13 +566,13 @@ msgid "BitTorrent"
 msgstr "BitTorrent"
 
 msgid "Blank time"
-msgstr ""
+msgstr "空白時間"
 
 msgid "Browseable"
 msgstr "提供瀏覽"
 
 msgid "Built on"
-msgstr ""
+msgstr "建立於"
 
 msgid "Bulgarian"
 msgstr "保加利亞文"
@@ -712,16 +605,16 @@ msgid "CIFS/SMB informations"
 msgstr "網路芳鄰資訊"
 
 msgid "CPU frequency"
-msgstr ""
+msgstr "中央處理器頻率"
 
 msgid "CPU load"
-msgstr "CPU 負載"
+msgstr "中央處理器負載"
 
 msgid "CPU temperature"
-msgstr ""
+msgstr "中央處理器溫度"
 
 msgid "CPU usage"
-msgstr "CPU 負載"
+msgstr "中央處理器使用率"
 
 msgid "Can't format the OS origin disk!"
 msgstr "不能夠格式化作業系統安裝磁碟！"
@@ -733,36 +626,31 @@ msgid "Cancel"
 msgstr "取消"
 
 msgid "Canmount"
-msgstr ""
+msgstr "可以掛載"
 
 msgid "Cannot get data about interface"
 msgstr "無法獲得介面的資料"
 
 msgid "Capacity"
-msgstr ""
+msgstr "容量"
 
 msgid "Case Folding"
 msgstr "大小寫視為相同"
 
-msgid ""
-"Causes the server to display the network information for the specified IP "
-"address or DNS hostname to the client, on the assumption that that IP "
-"address or DNS host is acting as a NAT gateway or port forwarder for the "
-"server."
+msgid "Causes the server to display the network information for the specified IP address or DNS hostname to the client, on the assumption that that IP address or DNS host is acting as a NAT gateway or port forwarder for the server."
 msgstr ""
 
 msgid "Certificate"
 msgstr "驗證碼"
 
 msgid "Change"
-msgstr ""
+msgstr "更新"
 
 msgid "Change below file"
-msgstr ""
+msgstr "更改下面檔案"
 
-#, fuzzy
 msgid "Change password"
-msgstr "分享密碼"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "這個變更必須等到重新開機之後才會生效。"
@@ -777,10 +665,10 @@ msgid "Check shared secret:"
 msgstr "檢查分享密文："
 
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "中文（簡體）"
 
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "中文（繁體）"
 
 msgid "Choose on which interface packets must come in to match this rule."
 msgstr ""
@@ -792,16 +680,10 @@ msgid "Choose which interface this route applies to."
 msgstr "選擇本路由設定要套用到哪一個網路介面。"
 
 msgid "Clear"
-msgstr ""
+msgstr "清除"
 
-#, fuzzy
-msgid ""
-"Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade "
-"process."
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
-"於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 "
-"&quot;韌體升級&quot; 以啟動升級動作"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr "點這個按鈕下載 XML 格式的系統組態"
@@ -837,7 +719,7 @@ msgid "Comment"
 msgstr "註解"
 
 msgid "Common Internet File System"
-msgstr ""
+msgstr "通用網際網路檔案系統"
 
 msgid "Community"
 msgstr "社群"
@@ -854,13 +736,8 @@ msgstr "傳輸時壓縮檔案資料。"
 msgid "Compression"
 msgstr "資料壓縮"
 
-msgid ""
-"Compression is worth using if your connection is slow. The efficiency of the "
-"compression depends on the type of the file, and varies widely. Useful for "
-"internet transfer only."
-msgstr ""
-"如果你的網際網路連線速度很慢，開啟資料壓縮可以增快工作效率。注意：資料壓縮的"
-"比例會依據不同的檔案類型而有很大的差異。"
+msgid "Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only."
+msgstr "如果你的網際網路連線速度很慢，開啟資料壓縮可以增快工作效率。注意：資料壓縮的比例會依據不同的檔案類型而有很大的差異。"
 
 msgid "Configuration"
 msgstr "配置"
@@ -886,9 +763,7 @@ msgstr ""
 msgid "Contact"
 msgstr "聯絡人"
 
-msgid ""
-"Contact information, e.g. name or email of the person responsible for this "
-"system: 'admin@email.address'."
+msgid "Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'."
 msgstr "聯絡人資訊，例：系統管理者的姓名或是 email：admin@email.address。"
 
 msgid "Content"
@@ -904,18 +779,12 @@ msgid "Controller Authorised network"
 msgstr ""
 
 msgid "Controller IP address"
-msgstr ""
+msgstr "IP 位址管理員"
 
 msgid "Controller TCP Port"
-msgstr ""
+msgstr "TCP 通訊埠管理員"
 
-msgid ""
-"Controls the compression algorithm used for this dataset. The 'lzjb' "
-"compression algorithm is optimized for performance while providing decent "
-"data compression. Setting compression to 'On' uses the 'lzjb' compression "
-"algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
-"where N is an integer from 1 (fastest) to 9 (best compression ratio). "
-"Currently, 'gzip' is equivalent to 'gzip-6'."
+msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
 msgid "Controls whether this dataset can be modified."
@@ -934,7 +803,7 @@ msgid "Create mask"
 msgstr "建立遮罩"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "如果不存在則建立工作目錄"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -946,29 +815,28 @@ msgid "Creating filesystem with 'Soft Updates'"
 msgstr "建立'Soft Updates'的檔案系統"
 
 msgid "Creating partition"
-msgstr ""
+msgstr "建立磁碟分區中"
 
 msgid "Credits"
-msgstr ""
+msgstr "鳴謝"
 
 msgid "Critical"
 msgstr "重要"
 
 msgid "Cron"
-msgstr "Cron"
+msgstr "排程"
 
 msgid "Cron job"
-msgstr "Cron job"
+msgstr "工作排程"
 
 msgid "Current"
-msgstr ""
+msgstr "正在使用的版本"
 
 msgid "Custom"
 msgstr "風俗"
 
-#, fuzzy
 msgid "Custom script"
-msgstr "命令列腳本"
+msgstr ""
 
 msgid "Custom script is not found."
 msgstr ""
@@ -988,22 +856,12 @@ msgstr "DHCP"
 msgid "DNS settings"
 msgstr "DNS 設定"
 
-#, fuzzy, php-format
-msgid ""
-"DO NOT abort the firmware upgrade once it has started. %s will reboot "
-"automatically after storing the new firmware. The configuration will be "
-"maintained.<br />You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
-"System configuration before doing a Firmware upgrade."
+#, php-format
+msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br />You need a minimum of %d Mb RAM to perform the firmware update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the System configuration before doing a Firmware upgrade."
 msgstr ""
-"DO NOT abort the firmware upgrade once it has started. %s will reboot "
-"automatically after storing the new firmware. The configuration will be "
-"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-"System configuration before doing a Firmware upgrade."
 
 msgid "DVD"
-msgstr ""
+msgstr "DVD光碟機"
 
 msgid "Daemon"
 msgstr "常駐程式"
@@ -1015,10 +873,10 @@ msgid "Daemon log"
 msgstr "常駐程式記錄"
 
 msgid "Danish"
-msgstr ""
+msgstr "丹麥語"
 
 msgid "Data digest"
-msgstr ""
+msgstr "資料摘要"
 
 msgid "Data integrity"
 msgstr "資料完整性"
@@ -1033,20 +891,20 @@ msgid "Datasets"
 msgstr ""
 
 msgid "Date & Time"
-msgstr ""
+msgstr "日期與時間"
 
 msgid "Days"
-msgstr ""
+msgstr "日"
 
 msgid "Debug"
-msgstr ""
+msgstr "除錯"
 
 msgid "Default"
 msgstr "預設值"
 
 #, php-format
 msgid "Default is %s."
-msgstr ""
+msgstr "預設值是 %s。"
 
 msgid "Default root"
 msgstr ""
@@ -1070,7 +928,7 @@ msgid "Delete Host"
 msgstr "刪除主機資訊"
 
 msgid "Delete Login Info"
-msgstr ""
+msgstr "刪除登入資訊"
 
 msgid "Delete MIB"
 msgstr "刪除 MIB"
@@ -1082,7 +940,7 @@ msgid "Delete Route"
 msgstr "刪除路由"
 
 msgid "Delete Rsync job"
-msgstr ""
+msgstr "刪除 Rsync 工作"
 
 msgid "Delete URL"
 msgstr "刪除 URL"
@@ -1097,19 +955,19 @@ msgid "Delete all options"
 msgstr "刪除全部選項"
 
 msgid "Delete all rules"
-msgstr ""
+msgstr "刪除所有規則"
 
 msgid "Delete all self-tests"
-msgstr ""
+msgstr "刪除所有自我測試"
 
 msgid "Delete auth group"
-msgstr ""
+msgstr "刪除 auth 群組"
 
 msgid "Delete command"
 msgstr "刪除指令"
 
 msgid "Delete dataset"
-msgstr ""
+msgstr "刪除資料設定"
 
 msgid "Delete device"
 msgstr "刪除裝置"
@@ -1130,7 +988,7 @@ msgid "Delete initiator"
 msgstr "刪除初始器"
 
 msgid "Delete initiator group"
-msgstr ""
+msgstr "刪除創始者群組"
 
 msgid "Delete interface"
 msgstr "刪除介面"
@@ -1151,10 +1009,10 @@ msgid "Delete pool"
 msgstr ""
 
 msgid "Delete portal group"
-msgstr ""
+msgstr "刪除協定群組"
 
 msgid "Delete rule"
-msgstr ""
+msgstr "刪除規則"
 
 msgid "Delete self-test"
 msgstr "刪除自我檢測"
@@ -1175,7 +1033,7 @@ msgid "Deleting GEOM metadata"
 msgstr ""
 
 msgid "Deleting MBR and partition table"
-msgstr ""
+msgstr "刪除 MBR 及 磁碟分區表 中"
 
 msgid "Deny"
 msgstr "拒絕"
@@ -1202,20 +1060,18 @@ msgid "Destination network for this static route"
 msgstr "本路由設定要套用的目標網段"
 
 msgid "Destination port"
-msgstr ""
+msgstr "目的地連接埠"
 
 msgid "Destination share"
 msgstr "目標位置"
 
 msgid "Detected"
-msgstr ""
+msgstr "已偵測"
 
 msgid "Detected RSYNC remote shares"
 msgstr "刪除 RSYNC 遠端分享"
 
-msgid ""
-"Determine the default timeout, in microseconds, before the first packet is "
-"retransmitted. The default is 1000000 (1 second)."
+msgid "Determine the default timeout, in microseconds, before the first packet is retransmitted. The default is 1000000 (1 second)."
 msgstr ""
 
 msgid "Device"
@@ -1237,23 +1093,15 @@ msgstr "裝置名稱"
 msgid "Device polling"
 msgstr "Device polling"
 
-msgid ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling."
-msgstr ""
-"Polling 是一種定期訪查網路卡資料區的方式（每秒將檢查 1000 次），這可以降低 "
-"CPU 的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding "
-"delay）。但並非所有網路卡都支援 Polling。"
+msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
+msgstr "Polling 是一種定期訪查網路卡資料區的方式（每秒將檢查 1000 次），這可以降低 CPU 的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding delay）。但並非所有網路卡都支援 Polling。"
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
-msgstr ""
+msgstr "裝置: %s | 總共: %s | 已使用: %s | 剩餘: %s"
 
 msgid "Devices"
-msgstr ""
+msgstr "裝置設定："
 
 msgid "Diagnostics"
 msgstr "診斷"
@@ -1262,10 +1110,10 @@ msgid "Difference"
 msgstr "差異"
 
 msgid "Digital Audio Access Protocol"
-msgstr ""
+msgstr "數位音頻信號存取協定"
 
 msgid "Direction"
-msgstr ""
+msgstr "描述"
 
 msgid "Directory"
 msgstr "目錄"
@@ -1303,22 +1151,18 @@ msgstr "關閉系統於開/關機時的提示聲響"
 msgid "Disabled"
 msgstr "關閉"
 
-msgid ""
-"Disables :hex translations for anything except dot files. This option makes "
-"the '/' character illegal."
-msgstr ""
-"Disables :hex translations for anything except dot files. This option makes "
-"the '/' character illegal."
+msgid "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
+msgstr "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
 
 #, php-format
 msgid "Discovered iSCSI target for %s"
 msgstr "搜尋 %s 上的 iSCSI 目標。"
 
 msgid "Discovery Auth Group"
-msgstr ""
+msgstr "發現 Auth 群組"
 
 msgid "Discovery Auth Method"
-msgstr ""
+msgstr "發現 Auth 方法"
 
 msgid "Disk"
 msgstr "磁碟"
@@ -1333,79 +1177,73 @@ msgid "Disks (ATA)"
 msgstr "磁碟（ATA）"
 
 msgid "Distributed hash table"
-msgstr ""
+msgstr "分散式的雜湊表"
 
 msgid "Do you really want to delete all MIBs?"
-msgstr "確定要刪除所有的 MIB？"
+msgstr "您確定要刪除所有的 MIB？"
 
 msgid "Do you really want to delete all options?"
-msgstr "確定要刪除所有的選項？"
+msgstr "您確定要刪除所有的選項？"
 
 msgid "Do you really want to delete all rules?"
-msgstr ""
+msgstr "您確定要刪除所有規則？"
 
 msgid "Do you really want to delete all scheduled self-tests?"
-msgstr ""
+msgstr "您確定要刪除所有自我測試進度?"
 
 msgid "Do you really want to delete this MIB?"
-msgstr "確定要刪除這個 MIB？"
+msgstr "您確定要刪除這個 MIB？"
 
 msgid "Do you really want to delete this Rsync job?"
-msgstr ""
+msgstr "您確定要刪除 Rsync 作業？"
 
 msgid "Do you really want to delete this URL?"
-msgstr "確定要刪除這個 URL 嗎？"
+msgstr "您確定要刪除這個 URL 嗎？"
 
 msgid "Do you really want to delete this auth group?"
-msgstr ""
+msgstr "您確定要刪除這個 auth 群組嗎？"
 
 msgid "Do you really want to delete this command?"
-msgstr "確認要刪除指令嗎？"
+msgstr "您確認要刪除這個指令嗎？"
 
 msgid "Do you really want to delete this cron job?"
-msgstr "確定要刪除這項 Cron job？"
+msgstr "您確定要刪除這項排程工作？"
 
 msgid "Do you really want to delete this dataset?"
-msgstr ""
+msgstr "您確定要刪除這項資料設定？"
 
 msgid "Do you really want to delete this device?"
-msgstr "確定要刪除這個裝置？"
+msgstr "您確定要刪除這個裝置？"
 
-msgid ""
-"Do you really want to delete this disk? All elements that still use it will "
-"become invalid (e.g. share)!"
-msgstr "確定要刪除這個磁碟嗎？所有使用此磁碟的元件都會失效！(例：分享)"
+msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
+msgstr "您確定要刪除這個磁碟嗎？所有使用此磁碟的元件都會失效！(例：分享)"
 
 msgid "Do you really want to delete this extent?"
-msgstr "確定要刪除這個 extent？"
+msgstr "您確定要刪除這個 extent？"
 
 msgid "Do you really want to delete this group?"
-msgstr "確定要刪除此群組？"
+msgstr "您確定要刪除此群組？"
 
 msgid "Do you really want to delete this host?"
-msgstr "確定要刪除這個主機資訊嗎？"
+msgstr "您確定要刪除這個主機資訊嗎？"
 
 msgid "Do you really want to delete this initiator group?"
-msgstr ""
+msgstr "您確定要刪除這個創始者群組嗎？"
 
-msgid ""
-"Do you really want to delete this initiator? All elements that still use it "
-"will become invalid (e.g. share)!"
-msgstr "確定要刪除這個初始器？所有存取這個初始器的元件都將失效！"
+msgid "Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!"
+msgstr "您確定要刪除這個初始器？所有存取這個初始器的元件都將失效！"
 
 msgid "Do you really want to delete this interface?"
-msgstr "確定要刪除這個介面？"
+msgstr "您確定要刪除這個介面？"
 
 msgid "Do you really want to delete this module?"
-msgstr "確定要刪除這個模組？"
+msgstr "您確定要刪除這個模組？"
 
-msgid ""
-"Do you really want to delete this mount point? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr "確定要刪除這個掛載點嗎？所有使用此掛載點的元件都會失效！(例：分享)"
+msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
+msgstr "您確定要刪除這個掛載點嗎？所有使用此掛載點的元件都會失效！(例：分享)"
 
 msgid "Do you really want to delete this option?"
-msgstr "確定要刪除這個選項？"
+msgstr "您確定要刪除這個選項？"
 
 msgid "Do you really want to delete this pool?"
 msgstr ""
@@ -1414,36 +1252,36 @@ msgid "Do you really want to delete this portal group?"
 msgstr ""
 
 msgid "Do you really want to delete this route?"
-msgstr "確定要刪除這個路由資訊嗎？"
+msgstr "您確定要刪除這個路由資訊嗎？"
 
 msgid "Do you really want to delete this rule?"
-msgstr ""
+msgstr "您確定要刪除這個規則嗎？"
 
 msgid "Do you really want to delete this scheduled self-test?"
-msgstr "確定要刪除這項自我檢測流程嗎？"
+msgstr "您確定要刪除這項自我檢測流程嗎？"
 
 msgid "Do you really want to delete this share?"
-msgstr "確定要刪除這個分享區？"
+msgstr "您確定要刪除這個分享區？"
 
 msgid "Do you really want to delete this target?"
-msgstr "確定要刪除這個iSCSI目標嗎？"
+msgstr "您確定要刪除這個iSCSI目標嗎？"
 
 msgid "Do you really want to delete this user?"
-msgstr "確定要刪除這個使用者？"
+msgstr "您確定要刪除這個使用者？"
 
 msgid ""
-"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
-"and can not be recovered. !!!"
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
-msgstr "確定真的要格式化這個磁碟？所有內部的資料都會消失！"
+msgstr "您確定真的要格式化這個磁碟？所有內部的資料都會消失！"
 
 msgid "Do you really want to remove the selected item from the list?"
-msgstr ""
+msgstr "您確定要刪除從列表中所選項目嗎？"
 
 msgid "Do you really want to uninstall this package?"
-msgstr "確定要移除這個套件？"
+msgstr "您確定要移除這個套件？"
 
 msgid "Document root"
 msgstr "根目錄"
@@ -1481,12 +1319,8 @@ msgstr "Don't advertise createfileid, resolveid, deleteid calls."
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "保留原本的MBR (某些RAID控制卡需要)"
 
-msgid ""
-"Don't stat volume path when enumerating volumes list, useful for "
-"automounting or volumes created by a preexec script."
-msgstr ""
-"Don't stat volume path when enumerating volumes list, useful for "
-"automounting or volumes created by a preexec script."
+msgid "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
+msgstr "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
 
 msgid "Donate"
 msgstr "捐贈"
@@ -1504,10 +1338,10 @@ msgid "Double-parity RAID-5"
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "下載"
 
 msgid "Download bandwidth"
-msgstr ""
+msgstr "下載頻寬"
 
 msgid "Download configuration"
 msgstr "下載設定"
@@ -1516,19 +1350,19 @@ msgid "Download directory"
 msgstr "下載目錄"
 
 msgid "Download firewall rules."
-msgstr ""
+msgstr "下載防火牆規則"
 
 msgid "Driver"
-msgstr ""
+msgstr "驅動"
 
 msgid "Driver list"
-msgstr ""
+msgstr "驅動列表"
 
 msgid "Duplex"
 msgstr "雙工模式"
 
 msgid "Duplicate mount point name."
-msgstr ""
+msgstr "重複掛載點名稱。"
 
 msgid "Dutch"
 msgstr "荷蘭文"
@@ -1558,19 +1392,19 @@ msgid "Edit Route"
 msgstr "編輯路由"
 
 msgid "Edit Rsync job"
-msgstr ""
+msgstr "編輯 Rsync 工作"
 
 msgid "Edit URL"
 msgstr "編輯 URL"
 
 msgid "Edit auth group"
-msgstr ""
+msgstr "編輯 auth 群組"
 
 msgid "Edit command"
 msgstr "編輯指令"
 
 msgid "Edit dataset"
-msgstr ""
+msgstr "編輯資料設定"
 
 msgid "Edit device"
 msgstr "編輯裝置"
@@ -1588,7 +1422,7 @@ msgid "Edit initiator"
 msgstr "編輯初始器"
 
 msgid "Edit initiator group"
-msgstr ""
+msgstr "編輯創始者群組"
 
 msgid "Edit interface"
 msgstr "編輯介面"
@@ -1612,7 +1446,7 @@ msgid "Edit portal group"
 msgstr ""
 
 msgid "Edit rule"
-msgstr ""
+msgstr "編輯規則"
 
 msgid "Edit self-test"
 msgstr "編輯自我檢測流程"
@@ -1651,19 +1485,19 @@ msgid "Enable SMTP authentication."
 msgstr "啟用 SMTP 認證。"
 
 msgid "Enable TLS/SSL connections."
-msgstr ""
+msgstr "啟用 TLS/SSL 連接"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 
 msgid "Enable anonymous bind."
-msgstr ""
+msgstr "啟用匿名者綁定"
 
 msgid "Enable authentication."
 msgstr "啟用認證。"
 
 msgid "Enable automatic disk discovery."
-msgstr ""
+msgstr "啟用自動磁碟發現。"
 
 msgid "Enable compression."
 msgstr "開啟資料壓縮。"
@@ -1678,7 +1512,7 @@ msgid "Enable directory listing."
 msgstr "開啟目錄清單。"
 
 msgid "Enable distributed hash table."
-msgstr ""
+msgstr "啟用分散式雜湊表。"
 
 msgid "Enable domain wildcarding."
 msgstr ""
@@ -1692,9 +1526,7 @@ msgstr ""
 msgid "Enable firmware upload"
 msgstr "開啟韌體升級功能"
 
-msgid ""
-"Enable foreground/background file system consistency check during boot "
-"process."
+msgid "Enable foreground/background file system consistency check during boot process."
 msgstr "開啟開機階段檔案系統完整性檢查。"
 
 msgid "Enable guest access."
@@ -1730,18 +1562,14 @@ msgstr "開啟檔案垃圾桶"
 msgid "Enable remote monitoring of the local connected UPS."
 msgstr ""
 
-msgid ""
-"Enable reverse DNS lookup performed on the remote host's IP address for "
-"incoming active mode data connections and outgoing passive mode data "
-"connections."
+msgid "Enable reverse DNS lookup performed on the remote host's IP address for incoming active mode data connections and outgoing passive mode data connections."
 msgstr ""
 
 msgid "Enable reverse DNS lookup."
 msgstr ""
 
-#, fuzzy
 msgid "Enable serial console"
-msgstr "啟用轉碼。"
+msgstr ""
 
 msgid "Enable store DOS attributes"
 msgstr "開啟 DOS 屬性儲存"
@@ -1773,21 +1601,11 @@ msgstr "開啟 Web 控制介面。"
 msgid "Enabled"
 msgstr "開啟"
 
-msgid ""
-"Enables crlf translation for TEXT files, automatically converting macintosh "
-"line breaks into Unix ones. Use of this option might be dangerous since some "
-"older programs store binary data files as type 'TEXT' when saving and switch "
-"the filetype in a second step. Afpd will potentially destroy such files when "
-"'erroneously' changing bytes in order to do line break translation."
-msgstr ""
-"Enables crlf translation for TEXT files, automatically converting macintosh "
-"line breaks into Unix ones. Use of this option might be dangerous since some "
-"older programs store binary data files as type 'TEXT' when saving and switch "
-"the filetype in a second step. Afpd will potentially destroy such files when "
-"'erroneously' changing bytes in order to do line break translation."
+msgid "Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation."
+msgstr "Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation."
 
 msgid "Encrypted"
-msgstr ""
+msgstr "加密"
 
 #, php-format
 msgid "Encrypting '%s'... Please wait"
@@ -1800,38 +1618,28 @@ msgid "Encryption algorithm"
 msgstr "加密演算法"
 
 msgid "Encryption algorithm to use."
-msgstr ""
+msgstr "使用加密演算法"
 
 msgid "English"
-msgstr ""
+msgstr "英文"
 
-msgid ""
-"Enter a custom port number for the WebGUI above if you want to override the "
-"default (80 for HTTP, 443 for HTTPS)."
+msgid "Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
 msgstr "輸入自訂的網頁管理介面連接阜，Http 預設是 80，Https 為 443。"
 
 msgid "Enter a valid sysctl MIB name."
 msgstr "輸入有效的 sysctl MIB 名稱。"
 
-msgid ""
-"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-"select it."
-msgstr ""
-"直接輸入欲設定的系統時間 (格式為 mm/dd/yyyy hh:mm) ，或是點選圖示選擇時間"
+msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
+msgstr "直接輸入欲設定的系統時間 (格式為 mm/dd/yyyy hh:mm)，或是點選圖示選擇時間"
 
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"輸入在 WPA-PSK 模式中使用的密語。這個密語長度必須在 8 到 63 個字元之間。"
+msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."
+msgstr "輸入在 WPA-PSK 模式中使用的密語。這個密語長度必須在 8 到 63 個字元之間。"
 
-msgid ""
-"Enter the path to the home directory of that user. Leave this field empty to "
-"use default path /mnt."
+msgid "Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."
 msgstr ""
 
 msgid "Enter the port to send the traps to (default 162)."
-msgstr "輸入 Traps 傳送阜（預設為 162）"
+msgstr "輸入 Traps 傳送埠（預設為 162）"
 
 msgid "Enter trap host name."
 msgstr "輸入 Trap 主機名稱。"
@@ -1844,7 +1652,7 @@ msgid "Error: The changes could not be applied (error code %s)."
 msgstr "錯誤：變更無法套用（Error Code %s）。"
 
 msgid "Event"
-msgstr ""
+msgstr "項目"
 
 msgid "Execute"
 msgstr "執行"
@@ -1852,22 +1660,20 @@ msgstr "執行"
 msgid "Execute command"
 msgstr "執行指令"
 
-msgid ""
-"Execute command pre or post system initialization (booting) or before system "
-"shutdown."
+msgid "Execute command pre or post system initialization (booting) or before system shutdown."
 msgstr "在系統起始/關機之前或之後的指令。"
 
 msgid "Execute now"
 msgstr "立刻執行"
 
 msgid "Expire"
-msgstr ""
+msgstr "終止"
 
 msgid "Export"
-msgstr ""
+msgstr "匯出"
 
 msgid "Extended attributes"
-msgstr ""
+msgstr "擴充屬性"
 
 msgid "Extensions"
 msgstr "擴充"
@@ -1881,9 +1687,7 @@ msgstr ""
 msgid "Extent name"
 msgstr "Extent 名稱"
 
-msgid ""
-"Extents must be defined before they can be used, and extents cannot be used "
-"more than once."
+msgid "Extents must be defined before they can be used, and extents cannot be used more than once."
 msgstr "在使用 Extent 之前必須先定義他們，而 extent 不能夠被使用超過一次。"
 
 msgid "Extra options"
@@ -1892,12 +1696,8 @@ msgstr "額外選項"
 msgid "Extra options (usually empty)."
 msgstr ""
 
-msgid ""
-"Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
-"entered options prevent SSH service to be started."
-msgstr ""
-"用於 /etc/ssh/sshd_config 的額外選項(通常為空白)。注意，輸入錯誤的選項會導致 "
-"SSH 服務無法啟動。"
+msgid "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."
+msgstr "用於 /etc/ssh/sshd_config 的額外選項(通常為空白)。注意，輸入錯誤的選項會導致 SSH 服務無法啟動。"
 
 msgid "Extra options to ifconfig (usually empty)."
 msgstr "用於 ifconfig 的額外選項(通常為空白)。"
@@ -1906,16 +1706,16 @@ msgid "Extra options to rsync (usually empty)."
 msgstr "用於 rsync 的額外選項(通常為空白)。"
 
 msgid "FEC (Fast EtherChannel)"
-msgstr ""
+msgstr "FEC (快速 EtherChannel)"
 
 msgid "FTP"
 msgstr "FTP"
 
 msgid "FTP - Ban module"
-msgstr ""
+msgstr "FTP - 阻擋模組"
 
 msgid "FTP - File transfer"
-msgstr ""
+msgstr "FTP - 檔案傳輸"
 
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
@@ -1932,9 +1732,7 @@ msgstr "FTP 伺服器關閉中"
 msgid "FXP"
 msgstr "FXP"
 
-msgid ""
-"FXP allows transfers between two remote servers without any file data going "
-"to the client asking for the transfer (insecure!)."
+msgid "FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!)."
 msgstr "FXP是支援兩個遠端伺服器互傳檔案的通訊協定。(有安全疑慮！)."
 
 msgid "Factory defaults"
@@ -1954,8 +1752,7 @@ msgid "Failed to send status report to: %s."
 msgstr ""
 
 #, php-format
-msgid ""
-"Failed to send status report. Please check the <a href='%s'>log</a> files."
+msgid "Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr "傳送狀態報告失敗。請檢查 <a href='%s'>log</a> 檔案。"
 
 #, php-format
@@ -1967,19 +1764,19 @@ msgid "Failed to send test email. Please check the <a href='%s'>log</a> files."
 msgstr "傳送測試電子郵件失敗。請檢查 <a href='%s'>log</a> 檔案。"
 
 msgid "Failed to upload file."
-msgstr ""
+msgstr "上傳檔案失敗。"
 
 msgid "Failed to upload metadata backup file."
 msgstr "組態備份檔案上傳失敗。"
 
 msgid "Failed to write file to disk."
-msgstr ""
+msgstr "寫入檔失敗."
 
 msgid "Failed."
 msgstr "失敗"
 
 msgid "Failover"
-msgstr ""
+msgstr "故障轉移"
 
 msgid "File"
 msgstr "檔案"
@@ -1991,7 +1788,7 @@ msgid "File Manager"
 msgstr "檔案管理員"
 
 msgid "File Transfer Protocol"
-msgstr ""
+msgstr "檔案傳輸協定"
 
 msgid "File not found"
 msgstr "沒有這個檔案"
@@ -2007,7 +1804,7 @@ msgid "File size"
 msgstr "檔案大小"
 
 msgid "File sizeunit"
-msgstr ""
+msgstr "檔案大小單位"
 
 msgid "File system"
 msgstr "檔案系統"
@@ -2016,7 +1813,7 @@ msgid "File system check"
 msgstr "檔案系統檢查"
 
 msgid "File upload stopped by extension."
-msgstr ""
+msgstr "檔案上傳被外掛程式終止了。"
 
 msgid "Filename"
 msgstr "檔案名稱"
@@ -2025,7 +1822,7 @@ msgid "Firewall"
 msgstr "防火牆"
 
 msgid "Firewall rule"
-msgstr ""
+msgstr "防火牆規則"
 
 msgid "Firmware"
 msgstr "韌體"
@@ -2040,7 +1837,7 @@ msgid "Firmware version check"
 msgstr "韌體版本檢查"
 
 msgid "FirstBurstLength"
-msgstr ""
+msgstr "FirstBurstLength"
 
 msgid "Flags"
 msgstr "旗標"
@@ -2064,16 +1861,16 @@ msgid "Forum"
 msgstr "論壇"
 
 msgid "Free"
-msgstr ""
+msgstr "可用空間"
 
 msgid "Free disk space"
 msgstr "可用空間"
 
 msgid "French"
-msgstr ""
+msgstr "法語"
 
 msgid "Frequency"
-msgstr ""
+msgstr "頻率"
 
 msgid "From email"
 msgstr "來源 email"
@@ -2082,7 +1879,7 @@ msgid "Fsck"
 msgstr "Fsck"
 
 msgid "Full"
-msgstr ""
+msgstr "額滿"
 
 msgid "Full Name"
 msgstr "全名"
@@ -2091,7 +1888,7 @@ msgid "GID"
 msgstr "GID"
 
 msgid "GPT partition"
-msgstr ""
+msgstr "GPT 分區"
 
 msgid "Gateway"
 msgstr "閘道"
@@ -2106,7 +1903,7 @@ msgid "General Setup"
 msgstr "一般設定"
 
 msgid "Generate"
-msgstr ""
+msgstr "產生"
 
 msgid "German"
 msgstr "德語"
@@ -2115,7 +1912,7 @@ msgid "Get Target Info"
 msgstr ""
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
 msgstr "只有本機使用者可以使用網頁伺服器。"
@@ -2130,7 +1927,7 @@ msgid "Graph shows last"
 msgstr "Graph shows last"
 
 msgid "Greek"
-msgstr ""
+msgstr "希臘語"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "當使用者剛連接上FTP所顯示的訊息。"
@@ -2169,7 +1966,7 @@ msgid "Hard disk standby time"
 msgstr "硬碟待命時間"
 
 msgid "Hardware"
-msgstr ""
+msgstr "硬體"
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2178,7 +1975,7 @@ msgid "Header digest"
 msgstr ""
 
 msgid "Health"
-msgstr ""
+msgstr "健康度"
 
 msgid "Help"
 msgstr "說明"
@@ -2193,9 +1990,7 @@ msgid "Hint"
 msgstr "提示"
 
 #, php-format
-msgid ""
-"Hint: If this is checked, IP addresses in %s logs are resolved to real "
-"hostnames where possible."
+msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
 msgstr "提示：如果開啟這個選項，%s 記錄檔中的 IP 位置都會轉換成對應主機名稱。"
 
 msgid "Home directory"
@@ -2205,10 +2000,10 @@ msgid "Host"
 msgstr "主機"
 
 msgid "Host access control"
-msgstr ""
+msgstr "主機存取控制"
 
 msgid "Host name"
-msgstr ""
+msgstr "主機名稱"
 
 msgid "Host resources"
 msgstr "主機資源"
@@ -2217,7 +2012,7 @@ msgid "Hostname"
 msgstr "主機名稱"
 
 msgid "Hostname database"
-msgstr ""
+msgstr "主機名稱資料庫"
 
 msgid "Hosts"
 msgstr "主機列表"
@@ -2229,58 +2024,51 @@ msgid "Hosts deny"
 msgstr "拒絕主機"
 
 msgid "Hot Spare"
-msgstr ""
+msgstr "熱插拔"
 
 msgid "Hours"
 msgstr "小時"
 
-msgid ""
-"How often the IP is checked. The period is in seconds (max. is 10 days)."
+msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr "多久檢查一次 IP。以秒為單位（最多為 10 天）"
 
-msgid ""
-"How often the IP is updated even if it is not changed. The period is in "
-"seconds (max. is 10 days)."
+msgid "How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."
 msgstr "多久強制更新一次 IP 資訊。以秒為單位（最多 10 天）"
 
 msgid "Hungarian"
-msgstr ""
+msgstr "匈牙利語"
 
 msgid "I/O Timeout"
-msgstr ""
+msgstr "I/O 逾時"
 
 msgid "I/O errors"
-msgstr "I/O錯誤"
+msgstr "I/O 錯誤"
 
 msgid "I/O packets"
-msgstr "I/O封包"
+msgstr "I/O 封包"
 
 msgid "I/O statistics"
-msgstr ""
+msgstr "I/O 統計資料"
 
 #, php-format
 msgid "I/O timeout in seconds (%d by default)."
 msgstr ""
 
 msgid "IG"
-msgstr ""
+msgstr "IG"
 
 msgid "IP"
-msgstr ""
+msgstr "IP 位址"
 
 msgid "IP address"
-msgstr "IP位置"
+msgstr "IP 位址"
 
 msgid "IP address of remote syslog server"
 msgstr "遠端 syslog 伺服器的IP位置"
 
-#, fuzzy, php-format
-msgid ""
-"IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP "
-"addresses to hostnames&quot;</a> is enabled."
+#, php-format
+msgid "IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"如果啟用 <a href=%s>&quot;將 IP 位址解析為主機名稱&quot;</a> 就會把 IP 位址解"
-"析為主機名稱。"
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
@@ -2310,10 +2098,10 @@ msgid "IPv6 Prefix"
 msgstr "IPv6 Prefix"
 
 msgid "IPv6 address"
-msgstr "IPv6 位置"
+msgstr "IPv6 位址"
 
 msgid "IPv6 addresses"
-msgstr "IPv6 位置"
+msgstr "IPv6 位址"
 
 msgid "ISO file to be mounted."
 msgstr "要掛載的 ISO 檔案。"
@@ -2322,107 +2110,62 @@ msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
 
 msgid "Ident protocol"
-msgstr ""
+msgstr "Ident 協定"
 
 msgid "Identifier"
+msgstr "識別碼"
+
+msgid "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want."
+msgstr "閒置 - 裝置除了在睡眠、待命、閒置模式以外都要進行檢查。大部分的磁碟在閒置狀態下依然會轉動磁盤，所以這並不能節省電源。"
+
+msgid "If default root is enabled, a chroot operation is performed immediately after a client authenticates. This can be used to effectively isolate the client from a portion of the host system filespace."
 msgstr ""
 
-msgid ""
-"Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
-"IDLE state, most disks are still spinning, so this is probably not what you "
-"want."
-msgstr ""
-"閒置 - 裝置除了在睡眠、待命、閒置模式以外都要進行檢查。大部分的磁碟在閒置狀態"
-"下依然會轉動磁盤，所以這並不能節省電源。"
+msgid "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
+msgstr "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
 
-msgid ""
-"If default root is enabled, a chroot operation is performed immediately "
-"after a client authenticates. This can be used to effectively isolate the "
-"client from a portion of the host system filespace."
+msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br />Service disruption to users accessing this mount will occur during this process."
 msgstr ""
 
-msgid ""
-"If set afpd uses the ID information stored in AppleDouble V2 header files to "
-"reduce database load. Don't set this option if the volume is modified by non "
-"AFP clients (NFS/SMB/local)."
-msgstr ""
-"If set afpd uses the ID information stored in AppleDouble V2 header files to "
-"reduce database load. Don't set this option if the volume is modified by non "
-"AFP clients (NFS/SMB/local)."
+msgid "If the server is behind a proxy set this parameters to give local services access to the internet via proxy."
+msgstr "如果此伺服器位於代理伺服器後面，設定這個參數會讓本地端服務能透過代理伺服器存取網際網路。"
 
-#, fuzzy
-msgid ""
-"If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only mode."
-"<br />Service disruption to users accessing this mount will occur during "
-"this process."
-msgstr ""
-"如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或有暫"
-"時性的服務中斷。否則指令只能在唯讀模式下運作。"
+msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
+msgstr "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
 
-msgid ""
-"If the server is behind a proxy set this parameters to give local services "
-"access to the internet via proxy."
-msgstr ""
-"如果此伺服器位於代理伺服器後面，設定這個參數會讓本地端服務能透過代理伺服器存"
-"取網際網路。"
-
-msgid ""
-"If this parameter is set, Samba attempts to first read DOS attributes "
-"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
-"before mapping DOS attributes to UNIX permission bits. When set, DOS "
-"attributes will be stored onto an extended attribute in the UNIX filesystem, "
-"associated with the file or directory."
-msgstr ""
-"If this parameter is set, Samba attempts to first read DOS attributes "
-"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
-"before mapping DOS attributes to UNIX permission bits. When set, DOS "
-"attributes will be stored onto an extended attribute in the UNIX filesystem, "
-"associated with the file or directory."
-
-msgid ""
-"If this parameter is set, then users may not create or modify files in the "
-"share."
+msgid "If this parameter is set, then users may not create or modify files in the share."
 msgstr "如勾選此項，使用者將無法在分享區中新增與修改檔案。"
 
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
 #, php-format
-msgid ""
-"If you click 'Yes', %s will be reset to factory defaults and will reboot "
-"immediately. The entire system configuration will be overwritten. The LAN IP "
-"address will be reset to %s and the password will be set to '%s'."
-msgstr ""
-"當你點選了'是'， %s 將會重設回原廠預設值並立刻重新開機。全部系統的設定值將會"
-"被覆寫，IP位置也將重設為 %s 。 而密碼將設定為 '%s' 。"
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
+msgstr "當你點選了'是'， %s 將會重設回原廠預設值並立刻重新開機。全部系統的設定值將會被覆寫，IP位置也將重設為 %s 。 而密碼將設定為 '%s' 。"
 
-msgid ""
-"If you want to change the password for accessing the WebGUI, enter it here "
-"twice."
+msgid "If you want to change the password for accessing the WebGUI, enter it here twice."
 msgstr "如果你想變更網頁控制介面的密碼，請在這裡輸入。"
 
-msgid ""
-"If you want to change the username for accessing the WebGUI, enter it here."
+msgid "If you want to change the username for accessing the WebGUI, enter it here."
 msgstr "如果你想變更網頁控制介面的使用者名稱，請在這裡輸入。"
 
 msgid "Image upload failed (out of memory?)"
 msgstr "映像檔上傳失敗(記憶體不足？)"
 
 msgid "Import"
-msgstr ""
+msgstr "匯入"
 
 msgid "Import disks"
-msgstr ""
+msgstr "匯入磁碟"
 
 msgid "Import disks used in configuration."
 msgstr ""
 
 msgid "Import firewall rules."
-msgstr ""
+msgstr "匯入防火牆規則"
 
 msgid "Import on-disk ZFS config"
-msgstr ""
+msgstr "從硬碟上匯入ZFS 設定"
 
 msgid "In"
 msgstr "In"
@@ -2433,9 +2176,8 @@ msgstr "大多數的情況下，這裡會設定'public'"
 msgid "Include basic hardware information."
 msgstr ""
 
-#, fuzzy
 msgid "Incomplete directory"
-msgstr "家目錄"
+msgstr ""
 
 msgid "Info"
 msgstr "資訊"
@@ -2459,7 +2201,7 @@ msgid "Initialize"
 msgstr "初始化"
 
 msgid "Initialize and encrypt disk."
-msgstr ""
+msgstr "初始化及加密磁碟"
 
 msgid "Initializing"
 msgstr "正在初始化"
@@ -2470,9 +2212,7 @@ msgstr ""
 msgid "Initiator Groups"
 msgstr ""
 
-msgid ""
-"Initiator authorised to access to the iSCSI target.  It takes a name or "
-"'ALL' for any initiators."
+msgid "Initiator authorised to access to the iSCSI target.  It takes a name or 'ALL' for any initiators."
 msgstr ""
 
 msgid "Initiator name"
@@ -2509,7 +2249,7 @@ msgid "Interface"
 msgstr "網路介面卡"
 
 msgid "Interface Management"
-msgstr ""
+msgstr "網路介面卡管理"
 
 msgid "Interface to listen to."
 msgstr "要使用的網路介面"
@@ -2521,31 +2261,25 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "間隔必需大於等於 10 秒。"
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "無效的檔案格式"
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
-msgid ""
-"It is impossible to enable 'Anonymous users only' and 'Local users only' "
-"authentication simultaneously."
+msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "'只允許匿名使用者'與'只允許本地端使用者存取'並不能夠同時選取。"
 
-msgid ""
-"It is not recommanded to import non healty pools nor virtual devices that "
-"are part of a non healthy pool."
+msgid "It is not recommanded to import non healty pools nor virtual devices that are part of a non healthy pool."
 msgstr ""
 
 msgid "Italian"
-msgstr ""
+msgstr "義大利語"
 
 msgid "JBOD"
 msgstr "JBOD"
 
-msgid ""
-"January February March April May June July August September October November "
-"December"
+msgid "January February March April May June July August September October November December"
 msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
 
 msgid "Japanese"
@@ -2555,10 +2289,10 @@ msgid "Key"
 msgstr "金鑰"
 
 msgid "Key Management Protocol"
-msgstr ""
+msgstr "金鑰管理協定"
 
 msgid "Key length"
-msgstr ""
+msgstr "金鑰長度"
 
 msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
@@ -2575,9 +2309,8 @@ msgstr ""
 msgid "LAGG"
 msgstr "LAGG"
 
-#, fuzzy
 msgid "LAN Management"
-msgstr "管理"
+msgstr ""
 
 msgid "LAN net"
 msgstr "區域網路"
@@ -2601,14 +2334,11 @@ msgid "Last config change"
 msgstr "上次設定時間"
 
 msgid "Latvian"
-msgstr ""
+msgstr "拉脫維亞語"
 
-#, fuzzy, php-format
-msgid ""
-"Leave '%s' for unformated disks and format them using <a href='%s'>format</"
-"a> menu."
+#, php-format
+msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr ""
-"將未格式化的磁碟設為 '%s' 並且使用<a href=%s>格式化選單</a>來進行格式化。"
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
@@ -2641,12 +2371,7 @@ msgstr ""
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
-msgid ""
-"Limits the amount of space a dataset and its descendants can consume. This "
-"property enforces a hard limit on the amount of space used. This includes "
-"all space consumed by descendants, including file systems and snapshots. To "
-"specify the size use the following human-readable suffixes (for example, "
-"'k', 'KB', 'M', 'Gb', etc.)."
+msgid "Limits the amount of space a dataset and its descendants can consume. This property enforces a hard limit on the amount of space used. This includes all space consumed by descendants, including file systems and snapshots. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2655,10 +2380,7 @@ msgstr ""
 msgid "List"
 msgstr "列表"
 
-msgid ""
-"List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP "
-"(AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP "
-"(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
+msgid "List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP (AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP (Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
 msgstr ""
 
 msgid "List of available target name on all configured iSCSI targets"
@@ -2707,7 +2429,7 @@ msgid "Local shares to be synchronized"
 msgstr "欲同步的本機分享區"
 
 msgid "Local user bandwidth"
-msgstr ""
+msgstr "本機使用者頻寬"
 
 msgid "Local user download bandwith in KB/s. An empty field means infinity."
 msgstr ""
@@ -2721,9 +2443,7 @@ msgstr "只允許本機使用者存取"
 msgid "Location"
 msgstr "位置"
 
-msgid ""
-"Location information, e.g. physical location of this system: 'Floor of "
-"building, Room xyz'."
+msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
 msgstr "位置資訊，例：這台機器實際存放的地點：'哪棟大樓的幾樓幾室'。"
 
 msgid "Location of the files to share."
@@ -2770,7 +2490,7 @@ msgid "Login name of user."
 msgstr "使用者登入的帳號"
 
 msgid "Logout"
-msgstr ""
+msgstr "登出"
 
 msgid "Lowercases names in both directions"
 msgstr "雙向小寫名稱"
@@ -2779,7 +2499,7 @@ msgid "MAC address"
 msgstr "MAC位置"
 
 msgid "MBR partition"
-msgstr ""
+msgstr "MBR 磁碟分區"
 
 msgid "MIB"
 msgstr "MIB"
@@ -2800,7 +2520,7 @@ msgid "MS Domain"
 msgstr "MS網域"
 
 msgid "MTU"
-msgstr "MTU"
+msgstr "MTU (最大傳輸單元)"
 
 msgid "Machine suffix"
 msgstr ""
@@ -2809,8 +2529,7 @@ msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr "請確定您已經啟用裝置的 S.M.A.R.T.。"
 
 #, php-format
-msgid ""
-"Make sure you have already configured your <a href='%s'>Email</a> settings."
+msgid "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr "確認你的<a href='%s'>Email</a>資訊是否設定好了。"
 
 msgid "Management"
@@ -2826,28 +2545,28 @@ msgid "Map to user"
 msgstr "對應到本地使用者"
 
 msgid "Masquerade address"
-msgstr ""
+msgstr "偽裝位址"
 
 msgid "Max. TTL"
-msgstr ""
+msgstr "Max. TTL"
 
 msgid "Max. block size"
-msgstr ""
+msgstr "Max. block size"
 
 msgid "Max. conn. per IP"
 msgstr "相同IP的連線數目"
 
 msgid "Max. connections"
-msgstr ""
+msgstr "Max. connections"
 
 msgid "Max. login attempts"
-msgstr ""
+msgstr "Max. login attempts"
 
 msgid "Max. passive port"
-msgstr ""
+msgstr "Max. passive port"
 
 msgid "Max. sessions"
-msgstr ""
+msgstr "Max. sessions"
 
 msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
@@ -2859,17 +2578,17 @@ msgid "MaxRecvDataSegmentLength"
 msgstr ""
 
 msgid "Maximum connections"
-msgstr "連線數目上線"
+msgstr "連線數目上限"
 
 msgid "Maximum idle time in seconds."
-msgstr ""
+msgstr "最大閒置時間秒"
 
 msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Maximum number of connections in each session (%d by default)."
-msgstr "來自相同IP的連線數目上限(0 = 不限制)."
+msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "來自相同IP的連線數目上限(0 = 不限制)."
@@ -2891,7 +2610,7 @@ msgid "Media"
 msgstr "Media"
 
 msgid "Media Directory"
-msgstr ""
+msgstr "媒體目錄"
 
 msgid "Medium acoustic output"
 msgstr "中等效能/噪音"
@@ -2903,16 +2622,16 @@ msgid "Message of the day."
 msgstr "每日新訊(每次登入時顯示)。"
 
 msgid "MiB"
-msgstr ""
+msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
 
 msgid "Min. passive port"
-msgstr ""
+msgstr "Min. passive port"
 
 msgid "Minimum"
-msgstr ""
+msgstr "最小值"
 
 msgid "Minimum free space"
 msgstr "最少需求空間"
@@ -2921,25 +2640,25 @@ msgid "Minimum performance, Minimum acoustic output"
 msgstr "最小效能/噪音"
 
 msgid "Minutes"
-msgstr ""
+msgstr "分鐘"
 
 msgid "Minutes between network time sync."
 msgstr "多少分鐘進行一次校時。"
 
 msgid "Mirror"
-msgstr ""
+msgstr "鏡象"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "遺失了一個暫存檔案夾。"
 
 msgid "Mode"
 msgstr "模式"
 
 msgid "Model extra"
-msgstr ""
+msgstr "額外模組"
 
 msgid "Model name"
-msgstr ""
+msgstr "模組名稱"
 
 msgid "Modifying"
 msgstr "正在修改"
@@ -2951,7 +2670,7 @@ msgid "Modules"
 msgstr "模組"
 
 msgid "Months"
-msgstr ""
+msgstr "月"
 
 msgid "Mount Point"
 msgstr "掛載點"
@@ -2960,7 +2679,7 @@ msgid "Mount point"
 msgstr "掛載點"
 
 msgid "Mount point name"
-msgstr ""
+msgstr "掛載點名稱"
 
 msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr "以唯讀模式掛載（超級使用者也無法寫入）。"
@@ -3013,9 +2732,7 @@ msgstr "NAS 主機的名稱，不包含網域的名稱。例：%s。"
 msgid "Name of the device to use as swap device, e.g. %s."
 msgstr ""
 
-msgid ""
-"Name of the server. If this field is left empty the default server is "
-"specified."
+msgid "Name of the server. If this field is left empty the default server is specified."
 msgstr "這台伺服器的名稱。如果留白則會使用預設的伺服器名稱。"
 
 msgid "Name of the variable."
@@ -3025,24 +2742,22 @@ msgid "NetBIOS name"
 msgstr "NetBIOS 名稱"
 
 msgid "Netgraph"
-msgstr "網路圖"
+msgstr "網路圖表"
 
 msgid "Network"
 msgstr "目標網段"
 
 msgid "Network File System"
-msgstr ""
+msgstr "網路檔案系統"
 
-msgid ""
-"Network authorised to access to the iSCSI target. It takes IP or CIDR "
-"addresses or 'ALL' for any IPs."
+msgid "Network authorised to access to the iSCSI target. It takes IP or CIDR addresses or 'ALL' for any IPs."
 msgstr ""
 
 msgid "Network mask"
 msgstr "網路遮罩"
 
 msgid "Network port"
-msgstr "網路卡"
+msgstr "網路卡通訊埠"
 
 msgid "Network that is authorised to access the NFS share."
 msgstr "授權可以存取 NFS 分享區的網域。"
@@ -3050,13 +2765,11 @@ msgstr "授權可以存取 NFS 分享區的網域。"
 msgid "Networks"
 msgstr "網路"
 
-msgid ""
-"Never - Poll (check) the device regardless of its power mode. This may cause "
-"a disk which is spun-down to be spun-up when it is checked."
+msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "永不 - 永遠不管目標磁碟的電源模式而進行檢查。"
 
 msgid "New Device"
-msgstr ""
+msgstr "新裝置"
 
 msgid "No"
 msgstr "否"
@@ -3068,48 +2781,41 @@ msgid "No case folding"
 msgstr "大小寫視為相異"
 
 #, php-format
-msgid ""
-"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
+msgid "No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
-msgstr "傳送測試電子郵件失敗。請檢查 <a href='%s'>log</a> 檔案。"
-
-#, php-format
-msgid ""
-"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
-"a> first."
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
-"first."
-msgstr "傳送狀態報告失敗。請檢查 <a href='%s'>log</a> 檔案。"
-
-#, fuzzy, php-format
-msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
-msgstr "傳送狀態報告失敗。請檢查 <a href='%s'>log</a> 檔案。"
+#, php-format
+msgid "No configured Initiator Group. Please add new <a href='%s'>Initiator Group</a> first."
+msgstr ""
 
 #, php-format
-msgid ""
-"No configured virtual devices. Please add new <a href='%s'>virtual device</"
-"a> first."
+msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
+msgstr ""
+
+#, php-format
+msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
+msgstr ""
+
+#, php-format
+msgid "No configured virtual devices. Please add new <a href='%s'>virtual device</a> first."
 msgstr ""
 
 msgid "No device selected."
-msgstr ""
+msgstr "沒有選擇裝置。"
 
 msgid "No disk configured"
 msgstr "尚未加入磁碟"
 
-#, fuzzy, php-format
+#, php-format
 msgid "No disks available. Please add new <a href='%s'>disk</a> first."
-msgstr "傳送測試電子郵件失敗。請檢查 <a href='%s'>log</a> 檔案。"
+msgstr ""
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "沒有檔案被上傳。"
 
 msgid "No pool was found."
 msgstr ""
@@ -3121,15 +2827,12 @@ msgid "None"
 msgstr "無"
 
 msgid "Normal"
-msgstr ""
+msgstr "正常"
 
 msgid "Norwegian (Bokmal)"
 msgstr "挪威語 (伯克默爾)"
 
-msgid ""
-"Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
-"not explicitly support it, VLAN tagging will still work, but the reduced MTU "
-"may cause problems."
+msgid "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."
 msgstr ""
 
 msgid "Not attached"
@@ -3138,26 +2841,20 @@ msgstr "尚未連結"
 msgid "Note"
 msgstr "提示"
 
-msgid ""
-"Note! Selecting 'Time Machine' on multiple shares will may cause "
-"unpredictable behavior in MacOS."
+msgid "Note! Selecting 'Time Machine' on multiple shares will may cause unpredictable behavior in MacOS."
 msgstr ""
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
-"minutes, hours, days and months."
+msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr "提示：使用Ctrl+滑鼠左鍵(Mac：command+滑鼠主鍵)就可以複選項目。"
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgid "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
 msgstr "備註：按著 Ctrl 配合滑鼠左鍵（Mac 請按 Cmd）以選擇多重群組。"
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
+msgid "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr "注意：使用 Ctrl-點選 (在 Mac 上為 command-點選)來選取多個項目。"
 
 msgid "Nothing to synchronize"
-msgstr ""
+msgstr "沒有同步"
 
 #, php-format
 msgid "Notification email from host: %s"
@@ -3197,10 +2894,10 @@ msgid "Object name"
 msgstr "物件名稱"
 
 msgid "Occurrence"
-msgstr ""
+msgstr "出現"
 
 msgid "Off"
-msgstr ""
+msgstr "關閉"
 
 msgid "Old passphrase"
 msgstr "舊金鑰"
@@ -3209,20 +2906,16 @@ msgid "Old password"
 msgstr "舊密碼"
 
 msgid "On"
-msgstr ""
+msgstr "開啟"
 
-msgid ""
-"Only allow anonymous users. Use this on a public FTP site with no remote FTP "
-"access to real accounts."
+msgid "Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."
 msgstr "只允許匿名使用者。使用在公共而且拒絕遠端帳號連線的 FTP 站"
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr "只允許授權的使用者，匿名使用者無法連線。"
 
 #, php-format
-msgid ""
-"Open a %s configuration XML file and click the button below to restore the "
-"configuration."
+msgid "Open a %s configuration XML file and click the button below to restore the configuration."
 msgstr "開啟 %s XML 設定檔並且點選下方的按鈕來回復設定。"
 
 msgid "Option"
@@ -3232,7 +2925,7 @@ msgid "Optional user-friendly string of the target."
 msgstr ""
 
 msgid "Options"
-msgstr ""
+msgstr "選項"
 
 msgid "Others"
 msgstr "其他"
@@ -3250,7 +2943,7 @@ msgid "Overwrite already configured disks (only affects filesystem value)."
 msgstr ""
 
 msgid "Overwrite disks configuration"
-msgstr ""
+msgstr "覆蓋磁碟配置"
 
 msgid "Owner"
 msgstr "擁有者"
@@ -3259,7 +2952,7 @@ msgid "PG"
 msgstr ""
 
 msgid "PHP Command"
-msgstr ""
+msgstr "PHP 命令列"
 
 msgid "PPPoE"
 msgstr "PPPoE"
@@ -3295,10 +2988,10 @@ msgid "Pairwise"
 msgstr ""
 
 msgid "Partition number"
-msgstr ""
+msgstr "磁碟分區數量"
 
 msgid "Partition type"
-msgstr ""
+msgstr "磁碟分區型態"
 
 msgid "Partitions"
 msgstr "磁區"
@@ -3306,14 +2999,7 @@ msgstr "磁區"
 msgid "Passive ports"
 msgstr ""
 
-msgid ""
-"Passive ports restricts the range of ports from which the server will select "
-"when sent the PASV command from a client. The server will randomly choose a "
-"number from within the specified range until an open port is found. The port "
-"range selected must be in the non-privileged range (eg. greater than or "
-"equal to 1024). It is strongly recommended that the chosen range be large "
-"enough to handle many simultaneous passive connections (for example, 49152-"
-"65534, the IANA-registered ephemeral port range)."
+msgid "Passive ports restricts the range of ports from which the server will select when sent the PASV command from a client. The server will randomly choose a number from within the specified range until an open port is found. The port range selected must be in the non-privileged range (eg. greater than or equal to 1024). It is strongly recommended that the chosen range be large enough to handle many simultaneous passive connections (for example, 49152-65534, the IANA-registered ephemeral port range)."
 msgstr ""
 
 msgid "Passphrase"
@@ -3405,7 +3091,7 @@ msgid "Please note that blanks in path names are not allowed."
 msgstr "請注意在路徑中不可以有空白字元。"
 
 msgid "Polish"
-msgstr ""
+msgstr "波蘭語"
 
 msgid "Polling time"
 msgstr "Polling 時間"
@@ -3427,10 +3113,10 @@ msgstr "通訊埠 "
 
 #, php-format
 msgid "Port %ld is already used by another service."
-msgstr ""
+msgstr "通訊埠 %ld 已經被其他服務使用。"
 
 msgid "Port forwarding"
-msgstr ""
+msgstr "Port forwarding"
 
 #, php-format
 msgid "Port to listen for incoming peer connections. Default port is %d."
@@ -3444,12 +3130,8 @@ msgid "Port to listen on. Default port is %d."
 msgstr "要監聽的連接埠。預設的連接埠為 %d。"
 
 #, php-format
-msgid ""
-"Port to listen on. Only dynamic or private ports can be used (from %d "
-"through %d). Default port is %d."
-msgstr ""
-"要監聽的連接埠。只有動態的或私人的連接埠可以使用(從 %d 到 %d)。預設的連接埠"
-"為 %d。"
+msgid "Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."
+msgstr "要監聽的連接埠。只有動態的或私人的連接埠可以使用(從 %d 到 %d)。預設的連接埠為 %d。"
 
 msgid "Portal Group"
 msgstr ""
@@ -3479,7 +3161,7 @@ msgid "PreInit"
 msgstr "前置初始動作"
 
 msgid "Preferred"
-msgstr ""
+msgstr "優先"
 
 msgid "Prefix"
 msgstr "前置字元"
@@ -3524,7 +3206,7 @@ msgid "Profile"
 msgstr "設定檔"
 
 msgid "Proto"
-msgstr ""
+msgstr "協定"
 
 msgid "Protocol"
 msgstr "協定"
@@ -3536,11 +3218,9 @@ msgid "Provides compatibility with Apple II clients."
 msgstr "與 Apple II 相容"
 
 msgid "Proxy"
-msgstr "Proxy"
+msgstr "Proxy 代理伺服器"
 
-msgid ""
-"Puts the hard disk into standby mode when the selected amount of time after "
-"the last hard disk access has been elapsed."
+msgid "Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed."
 msgstr "設定當硬碟沒有作動多久之後將其設為待命模式。"
 
 msgid "Queue Depth"
@@ -3550,13 +3230,13 @@ msgid "Quiet"
 msgstr "靜音"
 
 msgid "Quota"
-msgstr ""
+msgstr "磁碟配額"
 
 msgid "RAID 0"
 msgstr "RAID 0"
 
 msgid "RAID 0/1/5"
-msgstr ""
+msgstr "RAID 0/1/5"
 
 msgid "RAID 1"
 msgstr "RAID 1"
@@ -3577,13 +3257,13 @@ msgid "RSYNC"
 msgstr "RSYNC"
 
 msgid "RSYNC - Client"
-msgstr ""
+msgstr "RSYNC - 客服端"
 
 msgid "RSYNC - Local"
-msgstr ""
+msgstr "RSYNC - 本地端"
 
 msgid "RSYNC - Server"
-msgstr ""
+msgstr "RSYNC - 伺服端"
 
 msgid "RSYNC Client"
 msgstr "RSYNC 客戶端"
@@ -3598,16 +3278,16 @@ msgid "RSYNC log"
 msgstr "RSYNC 記錄"
 
 msgid "Raid name"
-msgstr "RAID ㄎ名稱"
+msgstr "RAID 名稱"
 
 msgid "Read"
 msgstr "讀取"
 
 msgid "Read Only (ro)"
-msgstr ""
+msgstr "唯讀 (ro)"
 
 msgid "Read Only Access"
-msgstr "唯獨連線"
+msgstr "唯讀存取"
 
 msgid "Read from biggest priority"
 msgstr ""
@@ -3622,22 +3302,19 @@ msgid "Read/Write"
 msgstr "讀/寫"
 
 msgid "Read/Write (rw)"
+msgstr "讀/寫 (rw)"
+
+msgid "Read/Write (rw,dynamic) for removable types file size grow and shrink automatically by EOF (ignore specified size)"
 msgstr ""
 
-msgid ""
-"Read/Write (rw,dynamic) for removable types file size grow and shrink "
-"automatically by EOF (ignore specified size)"
-msgstr ""
-
-msgid ""
-"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgid "Read/Write (rw,extend) for removable types extend file size if EOM reached"
 msgstr ""
 
 msgid "Read/Write Access"
 msgstr "讀/寫 連線"
 
 msgid "Readonly"
-msgstr ""
+msgstr "唯讀"
 
 msgid "Realm"
 msgstr "Realm"
@@ -3646,7 +3323,7 @@ msgid "Reboot"
 msgstr "重新開機"
 
 msgid "Receive Buffer Size"
-msgstr "接收緩衝區"
+msgstr "接收緩衝區大小"
 
 msgid "Recurse into directories."
 msgstr "包含所有子目錄。"
@@ -3658,7 +3335,7 @@ msgid "Recycle bin"
 msgstr "垃圾桶"
 
 msgid "Refresh"
-msgstr ""
+msgstr "恢復"
 
 msgid "Reject"
 msgstr "拒絕"
@@ -3670,7 +3347,7 @@ msgid "Reload page"
 msgstr "重新載入頁面"
 
 msgid "Remote Rsync Server"
-msgstr ""
+msgstr "遠端 Rsync 服務"
 
 msgid "Remote address"
 msgstr "遠端位置"
@@ -3682,33 +3359,27 @@ msgid "Remote module name"
 msgstr "遠端模組名稱"
 
 msgid "Remote monitoring"
-msgstr ""
+msgstr "遠端監控"
 
 msgid "Remote syslog server"
 msgstr "遠端 syslog 伺服器"
 
 msgid "Removable"
-msgstr ""
+msgstr "可攜式"
 
 msgid "Remove all entries from ARP table"
 msgstr "移除所有ARP table內的項目"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "報告產生"
 
 msgid "Report generator"
-msgstr ""
+msgstr "產生報告"
 
-msgid ""
-"Report if the temperature had changed by at least N degrees Celsius since "
-"last report. Set to 0 to disable this report."
-msgstr ""
-"設定自上次回報之後最少變異了攝氏多少度才會再次回報，設為 0 則可以取消這個功"
-"能。"
+msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
+msgstr "設定自上次回報之後最少變異了攝氏多少度才會再次回報，設為 0 則可以取消這個功能。"
 
-msgid ""
-"Report if the temperature is greater or equal than N degrees Celsius. Set to "
-"0 to disable this report."
+msgid "Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report."
 msgstr "如果溫度大於攝氏 N 便回報。設為 0 則可以關閉這項功能。"
 
 msgid "Reports"
@@ -3718,10 +3389,10 @@ msgid "Require authentication."
 msgstr ""
 
 msgid "Required"
-msgstr ""
+msgstr "必填"
 
 msgid "Rescan disks"
-msgstr ""
+msgstr "重新掃描磁碟"
 
 msgid "Rescan interval"
 msgstr "重新掃描間隔"
@@ -3757,7 +3428,7 @@ msgid "Romanian"
 msgstr "羅馬尼亞文"
 
 msgid "Root"
-msgstr ""
+msgstr "主目錄"
 
 msgid "Root bind DN"
 msgstr ""
@@ -3781,25 +3452,25 @@ msgid "Rows"
 msgstr "列"
 
 msgid "Rsync"
-msgstr ""
+msgstr "Rsync"
 
 msgid "Rsync job"
-msgstr ""
+msgstr "Rsync 工作"
 
 msgid "Rule"
-msgstr ""
+msgstr "規則"
 
 msgid "Rule number"
-msgstr ""
+msgstr "規則數量"
 
 msgid "Rules"
-msgstr ""
+msgstr "規則"
 
 msgid "Run now"
 msgstr "立刻執行"
 
 msgid "Running"
-msgstr ""
+msgstr "執行中"
 
 msgid "Russian"
 msgstr "俄文"
@@ -3811,7 +3482,7 @@ msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. 事件"
 
 msgid "S.M.A.R.T. extra options"
-msgstr ""
+msgstr "S.M.A.R.T. 額外選項"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. 記錄"
@@ -3838,7 +3509,7 @@ msgid "SSL/TLS"
 msgstr "SSL/TLS"
 
 msgid "SSL/TLS only"
-msgstr ""
+msgstr "只有 SSL/TLS"
 
 msgid "Save"
 msgstr "儲存"
@@ -3847,22 +3518,16 @@ msgid "Save and Restart"
 msgstr "儲存並重新啟動"
 
 msgid "Save login information in configuration file."
-msgstr ""
+msgstr "登錄訊息儲存在設定檔案內。"
 
 msgid "Saved file to"
 msgstr "將檔案儲存至"
 
 msgid "Scan Targets"
-msgstr ""
+msgstr "掃描目標"
 
-msgid ""
-"Scan file system every N seconds to see if any files have been added or "
-"removed. Set to 0 to disable background scanning. If background rescanning "
-"is disabled, a scan can still be forced from the status page of the "
-"administrative web interface."
-msgstr ""
-"每 N 秒掃描檔案系統以查看是否有任何檔案被加入或移除。設為 0 則停用背景掃描。"
-"如果停用背景掃描，仍然可以使用管理網頁介面的狀態頁來強制掃描。"
+msgid "Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."
+msgstr "每 N 秒掃描檔案系統以查看是否有任何檔案被加入或移除。設為 0 則停用背景掃描。如果停用背景掃描，仍然可以使用管理網頁介面的狀態頁來強制掃描。"
 
 msgid "Scan type"
 msgstr "掃描類型"
@@ -3886,10 +3551,10 @@ msgid "Scheduled shutdown"
 msgstr "排程關機"
 
 msgid "Secret"
-msgstr ""
+msgstr "安全保密"
 
 msgid "Secure Shell"
-msgstr ""
+msgstr "安全保密外殼程式"
 
 msgid "Security"
 msgstr "安全"
@@ -3898,7 +3563,7 @@ msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "選擇要開啟 S.M.A.R.T. 監測的磁碟。"
 
 msgid "Select item to remove from the list"
-msgstr ""
+msgstr "選擇項目從列表中刪除"
 
 msgid "Select mount point where to create the swap file."
 msgstr "選擇欲產生 Swap 檔的掛載點。"
@@ -3919,8 +3584,7 @@ msgid "Selected file isn't an valid ISO file."
 msgstr "所選擇的檔案不是一個有效的 ISO 檔。"
 
 msgid "Self-Monitoring, Analysis and Reporting Technology"
-msgstr ""
-"Self-Monitoring, Analysis and Reporting Technology 自我監測、分析與回報技術"
+msgstr "Self-Monitoring, Analysis and Reporting Technology 自我監測、分析與回報技術"
 
 msgid "Send Buffer Size"
 msgstr "傳送緩衝區"
@@ -3944,7 +3608,7 @@ msgid "Serial Console"
 msgstr ""
 
 msgid "Serial number"
-msgstr ""
+msgstr "序號"
 
 msgid "Server"
 msgstr "伺服器"
@@ -3985,31 +3649,19 @@ msgstr "設定帳號的主要群組。"
 msgid "Set the desired Service Set Identifier (aka network name)."
 msgstr ""
 
-msgid ""
-"Set the maximum transmission unit of the interface to n, default is "
-"interface specific. The MTU is used to limit the size of packets that are "
-"transmitted on an interface. Not all interfaces support setting the MTU, and "
-"some interfaces have range restrictions."
+msgid "Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."
 msgstr ""
 
 msgid "Sets an alternate mount point for the root dataset. Default is /mnt."
 msgstr ""
 
-msgid ""
-"Sets the database information to be stored in path. You have to specifiy a "
-"writable location, even if the volume is read only."
-msgstr ""
-"Sets the database information to be stored in path. You have to specifiy a "
-"writable location, even if the volume is read only."
+msgid "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
+msgstr "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
 
-msgid ""
-"Sets the interval between disk checks to N seconds. The minimum allowed "
-"value is 10."
+msgid "Sets the interval between disk checks to N seconds. The minimum allowed value is 10."
 msgstr "設定磁碟檢查間隔時間，單位是秒，最少是 10。"
 
-msgid ""
-"Sets the umask for newly created files to the specified value. The default "
-"is zero (anyone can read or write)."
+msgid "Sets the umask for newly created files to the specified value. The default is zero (anyone can read or write)."
 msgstr ""
 
 msgid "Settings"
@@ -4034,7 +3686,7 @@ msgid "Shares"
 msgstr "共享"
 
 msgid "Shell"
-msgstr ""
+msgstr "命令殼"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "反向顯示記錄資料(最新的在上面)"
@@ -4046,10 +3698,10 @@ msgid "Shutdown"
 msgstr "關機"
 
 msgid "Shutdown mode"
-msgstr ""
+msgstr "關機模式"
 
 msgid "Shutdown timer"
-msgstr ""
+msgstr "關機定時器"
 
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
@@ -4060,30 +3712,28 @@ msgstr ""
 msgid "Size"
 msgstr "大小"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Size of receive buffer (%d by default)."
-msgstr "接收緩衝區的大小(預設為16384)."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Size of send buffer (%d by default)."
-msgstr "傳送緩衝區的大小(預設為16384)."
+msgstr ""
 
-msgid ""
-"Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend "
-"on your disks.)"
+msgid "Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)"
 msgstr ""
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "睡眠 - 裝置除了在睡眠模式之外都將檢查。"
 
 msgid "Slovenian"
-msgstr ""
+msgstr "斯洛維尼亞語"
 
 msgid "Sockets"
 msgstr "Sockets"
 
 msgid "SoftRaid"
-msgstr ""
+msgstr "SoftRaid"
 
 msgid "Software RAID"
 msgstr "軟體RAID"
@@ -4101,7 +3751,7 @@ msgid "Source directory to be synchronized."
 msgstr "要備份的資料夾。"
 
 msgid "Source port"
-msgstr ""
+msgstr "來源通訊埠"
 
 msgid "Source share"
 msgstr "來源位置"
@@ -4121,22 +3771,16 @@ msgstr "指定這個檔案系統只能唯讀。"
 msgid "Specifies the command to be run."
 msgstr "指定要執行的指令。"
 
-msgid ""
-"Specifies the maximum permitted block size. The permitted range for this "
-"parameter is from 512 to 65464."
+msgid "Specifies the maximum permitted block size. The permitted range for this parameter is from 512 to 65464."
 msgstr ""
 
-msgid ""
-"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
-"etc."
+msgid "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, etc."
 msgstr "指定這個分享區的檔名編碼，UTF8、UTF8-MAC、ISO-8859-15等等"
 
 msgid "Specifies the time in hh:mm:ss after which the ban expires."
 msgstr ""
 
-msgid ""
-"Specifies the time interval in hh:mm:ss in which the given number of "
-"occurrences must happen to add the ban."
+msgid "Specifies the time interval in hh:mm:ss in which the given number of occurrences must happen to add the ban."
 msgstr ""
 
 msgid "Specifies the username which the service will run as."
@@ -4145,13 +3789,8 @@ msgstr ""
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "指定超級使用者 (root)是否可以透過SSH直接登入。"
 
-msgid ""
-"Specify the percentage of space held back from normal users. Note that "
-"lowering the threshold can adversely affect performance and auto-"
-"defragmentation."
-msgstr ""
-"指定要用多少百分比的硬碟空間配置給一般使用者。注意將門檻降低會影響到磁碟效"
-"能。"
+msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr "指定要用多少百分比的硬碟空間配置給一般使用者。注意將門檻降低會影響到磁碟效能。"
 
 msgid "Split request"
 msgstr ""
@@ -4159,13 +3798,8 @@ msgstr ""
 msgid "Standard"
 msgstr "標準"
 
-msgid ""
-"Standby - Check the device unless it is in SLEEP or STANDBY mode. In these "
-"modes most disks are not spinning, so if you want to prevent a laptop disk "
-"from spinning up each poll, this is probably what you want."
-msgstr ""
-"待命 - 裝置除了在睡眠、待命模式之外都將檢查。這個情況下大部分的磁碟都會停止旋"
-"轉，如果你想預防磁碟不斷因為檢查而重新啟動，這應該就是你要的。"
+msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want."
+msgstr "待命 - 裝置除了在睡眠、待命模式之外都將檢查。這個情況下大部分的磁碟都會停止旋轉，如果你想預防磁碟不斷因為檢查而重新啟動，這應該就是你要的。"
 
 msgid "Standby time"
 msgstr "進入待命時間"
@@ -4175,7 +3809,7 @@ msgid "Start scrub on '%s'."
 msgstr ""
 
 msgid "Static"
-msgstr ""
+msgstr "靜態"
 
 msgid "Static Routes"
 msgstr "靜態路由"
@@ -4205,8 +3839,7 @@ msgstr "儲存空間"
 msgid "Store DOS attributes"
 msgstr "儲存 DOS 屬性"
 
-msgid ""
-"String displayed in the dialog presented to the user when accessing the URL."
+msgid "String displayed in the dialog presented to the user when accessing the URL."
 msgstr "當使用者連線到這個 URL 將顯示的對話框。"
 
 msgid "String identifier of the extent."
@@ -4237,7 +3870,7 @@ msgid "Suppress non-error messages."
 msgstr "只顯示錯誤訊息。"
 
 msgid "Swap"
-msgstr "Swap 分割區："
+msgstr "置換"
 
 msgid "Swap disabled"
 msgstr "關閉 Swap"
@@ -4252,7 +3885,7 @@ msgid "Swap usage"
 msgstr "Swap 使用量"
 
 msgid "Swedish"
-msgstr "瑞典文"
+msgstr "瑞典語"
 
 msgid "Switch to"
 msgstr "Switch to"
@@ -4262,19 +3895,14 @@ msgid "Switch to %s/s"
 msgstr "切換為 %s/s"
 
 msgid "Synchronization time"
-msgstr ""
+msgstr "同步時間"
 
 msgid "Synchronize"
 msgstr "同步"
 
 #, php-format
-msgid ""
-"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from %s."
-msgstr ""
-"Syslog 會透過 UDP 514 連接埠將資料送到指定的遠端 syslog 伺服器。請確定遠端的 "
-"syslog 伺服器將會接受來自 %s 的記錄資料。"
+msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+msgstr "Syslog 會透過 UDP 514 連接埠將資料送到指定的遠端 syslog 伺服器。請確定遠端的 syslog 伺服器將會接受來自 %s 的記錄資料。"
 
 msgid "System"
 msgstr "系統"
@@ -4286,7 +3914,7 @@ msgid "System events"
 msgstr "系統事件"
 
 msgid "System firewall"
-msgstr ""
+msgstr "系統防火牆"
 
 msgid "System info"
 msgstr "系統資訊"
@@ -4304,7 +3932,7 @@ msgid "System time"
 msgstr "系統時間"
 
 msgid "System tuning"
-msgstr ""
+msgstr "系統調整"
 
 msgid "TCP forwarding"
 msgstr "TCP 轉送"
@@ -4316,16 +3944,16 @@ msgid "TCP port to bind the server to."
 msgstr "這個服務將使用的 TCP 連接阜。"
 
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 msgid "TKIP"
 msgstr "TKIP"
 
 msgid "Tag"
-msgstr ""
+msgstr "標籤"
 
 msgid "Tag number"
-msgstr ""
+msgstr "標籤數量"
 
 #, php-format
 msgid "Tag%d"
@@ -4336,7 +3964,7 @@ msgid "Tag%d (%s)"
 msgstr ""
 
 msgid "Tape"
-msgstr ""
+msgstr "磁帶"
 
 msgid "Target"
 msgstr "目標"
@@ -4354,13 +3982,13 @@ msgid "Target directory."
 msgstr "目標目錄。"
 
 msgid "Target information"
-msgstr ""
+msgstr "目標資訊"
 
 msgid "Target is not selected."
-msgstr ""
+msgstr "尚未選定目標"
 
 msgid "Target list"
-msgstr ""
+msgstr "目標列表"
 
 msgid "Target name"
 msgstr "目標名稱"
@@ -4372,7 +4000,7 @@ msgid "Target side user name. It is usually the initiator name by default."
 msgstr ""
 
 msgid "Targets"
-msgstr ""
+msgstr "目標"
 
 msgid "Temperature"
 msgstr "溫度"
@@ -4400,12 +4028,8 @@ msgstr "測試電子郵件成功的傳送至：%s。"
 msgid "Test email successfully sent."
 msgstr "測試電子郵件成功的送出。"
 
-msgid ""
-"The  deny  option specifies users and groups who are not allowed access to "
-"the share. It follows the same  format  as  the  allow option."
-msgstr ""
-"The  deny  option specifies users and groups who are not allowed access to "
-"the share. It follows the same  format  as  the  allow option."
+msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
+msgstr "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
 
 msgid "The COM port in BIOS has to be enabled before enabling this option."
 msgstr ""
@@ -4421,12 +4045,9 @@ msgstr "MIB '%s' 已經存在。"
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' 在 sysctl 中不存在。"
 
-#, fuzzy, php-format
-msgid ""
-"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
-"a> first before proceeding."
+#, php-format
+msgid "The RAID volume is currently mounted! Remove the <a href='%s'>mount point</a> first before proceeding."
 msgstr ""
-"這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</a>。"
 
 msgid "The TCP port must be a valid port number."
 msgstr "請輸入一個有效的連接埠。"
@@ -4434,37 +4055,30 @@ msgstr "請輸入一個有效的連接埠。"
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "VLAN ID 必須介於 1 到 4094 之間。"
 
-msgid ""
-"The action which will be executed when the packet match the criteria "
-"specified below."
+msgid "The action which will be executed when the packet match the criteria specified below."
 msgstr ""
 
 msgid "The administrator has been notified to apply your changes."
-msgstr ""
+msgstr "管理員已通知來套用您的更改。"
 
 #, php-format
 msgid "The associated MIB files can be found at %s."
 msgstr ""
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
+msgid "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr "屬性 '%s' 含有無效的字元並且不是合法的 NetBIOS 名稱。"
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid domain name."
+msgid "The attribute '%s' contains invalid characters and is no valid domain name."
 msgstr "屬性 '%s' 包含了無效字元，請輸入有效的網域名稱。"
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid host name."
+msgid "The attribute '%s' contains invalid characters and is no valid host name."
 msgstr "屬性 '%s' 包含了無效字元，請輸入有效的主機名稱。"
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid workgroup "
-"name."
+msgid "The attribute '%s' contains invalid characters and is no valid workgroup name."
 msgstr "屬性 '%s' 包含了無效字元，請輸入有效的工作群組名稱。"
 
 #, c-format, php-format
@@ -4472,9 +4086,7 @@ msgid "The attribute '%s' contains invalid characters."
 msgstr "屬性 '%s' 包含了無效的字元。"
 
 #, c-format
-msgid ""
-"The attribute '%s' contains the illegal character ':' and is no valid "
-"password."
+msgid "The attribute '%s' contains the illegal character ':' and is no valid password."
 msgstr "屬性 '%s' 包含了無效字元 ':'，請輸入有效的密碼。"
 
 #, c-format
@@ -4522,8 +4134,7 @@ msgid "The attribute '%s' is required."
 msgstr "屬性 '%s' 是必須欄位。"
 
 #, php-format
-msgid ""
-"The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr "屬性 '%s' 只可以由下列的字元組成 a-z, A-Z, 0-9, _, -."
 
 #, c-format
@@ -4550,30 +4161,18 @@ msgstr ""
 msgid "The attribute '%s' must contain at least one entry."
 msgstr ""
 
-msgid ""
-"The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target "
-"name that is not starting with 'iqn.'."
+msgid "The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."
 msgstr ""
 
-msgid ""
-"The basic configuration usually takes the form of 'daemon : address : "
-"action'. Where daemon is the daemon name of the service started. The address "
-"can be a valid hostname, an IP address or an IPv6 address enclosed in "
-"brackets. The action field can be either allow or deny to grant or deny "
-"access appropriately. Keep in mind that configuration works off a first rule "
-"match semantic, meaning that the configuration file is scanned in ascending "
-"order for a matching rule. When a match is found the rule is applied and the "
-"search process will halt."
+msgid "The basic configuration usually takes the form of 'daemon : address : action'. Where daemon is the daemon name of the service started. The address can be a valid hostname, an IP address or an IPv6 address enclosed in brackets. The action field can be either allow or deny to grant or deny access appropriately. Keep in mind that configuration works off a first rule match semantic, meaning that the configuration file is scanned in ascending order for a matching rule. When a match is found the rule is applied and the search process will halt."
 msgstr ""
 
 msgid "The changes have been applied successfully."
 msgstr "變更套用成功。"
 
-#, fuzzy, c-format
-msgid ""
-"The changes have been saved. You have to <a href='%s'>reboot</a> the system "
-"for the changes to take effect."
-msgstr "變更已經套用。你必須<a href=%s>重新開機</a>以讓變更生效。"
+#, c-format
+msgid "The changes have been saved. You have to <a href='%s'>reboot</a> the system for the changes to take effect."
+msgstr ""
 
 msgid "The cleartext credentials with which to bind."
 msgstr ""
@@ -4588,19 +4187,14 @@ msgstr "無法回覆設定組態。"
 msgid "The configuration could not be restored. %s"
 msgstr ""
 
-#, fuzzy
-msgid ""
-"The configuration has been changed.<br />You must apply the changes in order "
-"for them to take effect."
-msgstr "設定已經儲存。<br>套用之後才會生效。"
+msgid "The configuration has been changed.<br />You must apply the changes in order for them to take effect."
+msgstr ""
 
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr "設定組態復原成功。 %s 現在正重新啟動。"
 
-msgid ""
-"The confimed password does not match. Please ensure the passwords match "
-"exactly."
+msgid "The confimed password does not match. Please ensure the passwords match exactly."
 msgstr "密碼確認並不一致，請在確認一次輸入的密碼是否一致。"
 
 msgid "The credentials with which to bind."
@@ -4616,9 +4210,7 @@ msgstr "預設的 SMTP 郵件伺服器連接阜，例：25 或 587。"
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 
-msgid ""
-"The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia "
-"and 192 for 3DES."
+msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4627,46 +4219,33 @@ msgstr "裝置名稱只可以由 a-z, A-Z, 0-9 組成。"
 msgid "The device's IP address."
 msgstr "裝置的 IP 位址。"
 
-msgid ""
-"The directory containing the files you want to publish. The remote host does "
-"not need to pass along the directory as part of the transfer."
+msgid "The directory containing the files you want to publish. The remote host does not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
-"before proceeding."
-msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
+#, php-format
+msgid "The disk is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
+msgstr ""
 
-msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
+msgid "The disk is currently mounted! The mount point will be removed temporary to perform selected command."
 msgstr "磁碟目前正在掛載中！系統會將磁碟暫時卸載以進行指令。"
 
 msgid "The disk/partition is already configured."
+msgstr "磁碟/磁碟分區 已經配置。"
+
+#, php-format
+msgid "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"The distinguished name with which to bind to the directory server, e.g. %s"
-msgstr ""
+msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</a> 清單。"
 
 #, php-format
-msgid ""
-"The driver used to communicate with your UPS. Get the list of available <a "
-"href='%s' target='_blank'>drivers</a>."
+msgid "The encrypted device is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
 msgstr ""
-"用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</"
-"a> 清單。"
-
-#, fuzzy, php-format
-msgid ""
-"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
-"disk first before proceeding."
-msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
 
 msgid "The extent name already exists."
-msgstr ""
+msgstr "額外得名稱已經存在"
 
 #, php-format
 msgid "The firmware is now being installed. %s will reboot automatically."
@@ -4687,9 +4266,7 @@ msgstr "群組名稱包含無效字元。"
 msgid "The host name contain invalid characters."
 msgstr "主機名稱輸入了無效的字元。"
 
-msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ "
-"and ."
+msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
 msgstr "主機名稱只可以由 a-z, A-Z, 0-9 組成。"
 
 msgid "The image file is corrupt"
@@ -4698,27 +4275,19 @@ msgstr "映像檔已損毀"
 msgid "The initial digest mode negotiated with the initiator."
 msgstr ""
 
-msgid ""
-"The initiator can access to the target via the portals by authorised "
-"initiator names and networks in specific Initiator Group."
+msgid "The initiator can access to the target via the portals by authorised initiator names and networks in specific Initiator Group."
 msgstr ""
 
-msgid ""
-"The initiator can access to the target with correct user and secret in "
-"specific Auth Group."
+msgid "The initiator can access to the target with correct user and secret in specific Auth Group."
 msgstr ""
 
 msgid "The initiator can connect to the portals in specific Portal Group."
 msgstr ""
 
-msgid ""
-"The initiator can discover the targets with correct user and secret in "
-"specific Auth Group."
+msgid "The initiator can discover the targets with correct user and secret in specific Auth Group."
 msgstr ""
 
-msgid ""
-"The istgtcontrol can access the targets with correct user and secret in "
-"specific Auth Group."
+msgid "The istgtcontrol can access the targets with correct user and secret in specific Auth Group."
 msgstr ""
 
 msgid "The login name contains invalid characters."
@@ -4727,50 +4296,37 @@ msgstr "登入帳號含有無效的字元。"
 msgid "The login name is a reserved login name."
 msgstr "預定的登入帳號。"
 
-#, fuzzy
 msgid "The login name is limited to 16 characters."
-msgstr "登入帳號含有無效的字元。"
+msgstr ""
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "每個 IP 的最大連線數必需是 0 （不限制）或更大。"
 
 msgid "The maximum download bandwith in KiB/s. An empty field means infinity."
-msgstr ""
+msgstr "最大下載頻寬於 KB/s。一個空的意思就是無窮大。"
 
 msgid "The maximum idle time be a number."
 msgstr "失效時間必須是一個數字。"
 
-msgid ""
-"The maximum port to allocate for PASV style data connections (0 = use any "
-"port)."
+msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
 msgstr "被動式連線埠的區段終點(0 = 不限制)"
 
 msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
+msgstr "最大上傳頻寬於 KB/s。一個空的意思就是無窮大。"
+
+msgid "The method can be accepted by the target. Auto means both none and authentication."
 msgstr ""
 
-msgid ""
-"The method can be accepted by the target. Auto means both none and "
-"authentication."
-msgstr ""
-
-msgid ""
-"The method can be accepted in discovery session. Auto means both none and "
-"authentication."
+msgid "The method can be accepted in discovery session. Auto means both none and authentication."
 msgstr ""
 
 msgid "The method can be accepted in the controller."
 msgstr ""
 
-msgid ""
-"The minimum port to allocate for PASV style data connections (0 = use any "
-"port)."
+msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
 msgstr "被動式連線埠的區段起點(0 = 不限制)"
 
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging into "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
+msgid "The module provides automatic bans that are triggered based on configurable criteria. A ban prevents the banned user, host, or class from logging into the server, it does not prevent the banned user, host, or class from connecting to the server."
 msgstr ""
 
 msgid "The name or IP address of the LDAP server."
@@ -4778,7 +4334,7 @@ msgstr ""
 
 #, php-format
 msgid "The network '%s' is invalid."
-msgstr ""
+msgstr "網路 '%s' 是無效的。"
 
 msgid "The number of clients must be between 1 and 50."
 msgstr "使用者上限必須介於 1 至 50。"
@@ -4797,56 +4353,40 @@ msgstr "您輸入的密碼不相符。"
 
 #, php-format
 msgid "The path '%s' does not exist."
-msgstr ""
+msgstr "路徑 '%s' 不存在。"
 
 #, php-format
 msgid "The path '%s' is a directory."
-msgstr ""
+msgstr "路徑 '%s' 是一個目錄。"
 
 #, php-format
 msgid "The path '%s' is not a directory."
-msgstr ""
+msgstr "路徑 '%s' 不是一個目錄。"
 
 msgid "The peer connection encryption mode."
-msgstr ""
+msgstr "同行連接加密模式。"
 
-msgid ""
-"The permissions on new files and directories are normally governed by create "
-"mask and directory mask but the inherit permissions parameter overrides "
-"this. This can be particularly useful on systems with many users to allow a "
-"single share to be used flexibly by each user."
-msgstr ""
-"The permissions on new files and directories are normally governed by create "
-"mask and directory mask but the inherit permissions parameter overrides "
-"this. This can be particularly useful on systems with many users to allow a "
-"single share to be used flexibly by each user."
+msgid "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
+msgstr "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
 
 msgid "The pool name does not match the naming rules."
-msgstr ""
+msgstr "pool 名稱不符合命名規則。"
 
-msgid ""
-"The port to listen to. The default is to listen to the tftp port specified "
-"in /etc/services."
+msgid "The port to listen to. The default is to listen to the tftp port specified in /etc/services."
 msgstr ""
 
 #, php-format
 msgid "The portal '%s' is invalid."
+msgstr "入口 '%s' 是無效的。"
+
+msgid "The portal takes the form of 'address:port'. for example '192.168.1.1:3260' for IPv4, '[2001:db8:1:1::1]:3260' for IPv6. the port 3260 is standard iSCSI port number. For any IPs (wildcard address), use '0.0.0.0:3260' and/or '[::]:3260'. Do not mix wildcard and other IPs at same address family."
 msgstr ""
 
-msgid ""
-"The portal takes the form of 'address:port'. for example '192.168.1.1:3260' "
-"for IPv4, '[2001:db8:1:1::1]:3260' for IPv6. the port 3260 is standard iSCSI "
-"port number. For any IPs (wildcard address), use '0.0.0.0:3260' and/or "
-"'[::]:3260'. Do not mix wildcard and other IPs at same address family."
-msgstr ""
-
-msgid ""
-"The powerd utility monitors the system state and sets various power control "
-"options accordingly."
+msgid "The powerd utility monitors the system state and sets various power control options accordingly."
 msgstr "電源監控程式會監控系統的整體狀態並且設定相關的電源控制項目。"
 
 msgid "The queuedepth range is invalid."
-msgstr ""
+msgstr "該 queuedepth 範圍是無效的。"
 
 #, php-format
 msgid "The recommended queue depth is %d."
@@ -4854,10 +4394,10 @@ msgstr ""
 
 #, php-format
 msgid "The removable area mapped to LUN%d."
-msgstr ""
+msgstr "可移動區域映射到 LUN%d。"
 
 msgid "The rule number determines the order of the rule."
-msgstr ""
+msgstr "該規則的數目決定在順序規則。"
 
 msgid "The serial or USB port where your UPS is connected."
 msgstr "您的 UPS 連接的序列埠或 USB 埠。"
@@ -4866,20 +4406,17 @@ msgid "The share name is already used."
 msgstr "此分享名稱已經被使用了。"
 
 msgid "The size of the swap file in MB."
-msgstr ""
+msgstr "SWAP 交換檔案的大小以MB為單位。"
 
 #, php-format
 msgid "The storage area mapped to LUN%d."
-msgstr ""
+msgstr "儲存區域映射到 LUN%d 。"
 
 msgid "The subject of the email."
 msgstr "這封 email 的主旨。"
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take one minute."
-msgstr ""
-"系統已經回復為初始設定，現在已經自動進入重新開機程序，可能要花一分鐘的時間。"
+msgid "The system has been reset to factory defaults and is now rebooting. This may take one minute."
+msgstr "系統已經回復為初始設定，現在已經自動進入重新開機程序，可能要花一分鐘的時間。"
 
 msgid "The system is halting now. This may take one minute."
 msgstr "系統關閉中，可能需要一分鐘的時間..."
@@ -4888,14 +4425,12 @@ msgid "The system is rebooting now. This may take one minute."
 msgstr "系統重新啟動中，可能需要一分鐘的時間..."
 
 msgid "The tag range is invalid."
-msgstr ""
+msgstr "該標籤範圍無效。"
 
 msgid "The target name already exists."
-msgstr ""
+msgstr "目標名稱已經存在。"
 
-msgid ""
-"The time in seconds until shutdown is initiated. If the UPS happens to come "
-"back before the time is up the shutdown is canceled."
+msgid "The time in seconds until shutdown is initiated. If the UPS happens to come back before the time is up the shutdown is canceled."
 msgstr ""
 
 msgid "The time update interval must be either between 6 and 1440."
@@ -4905,27 +4440,25 @@ msgid "The unique group ID is already used."
 msgstr "這個 GID 已經被用過了。"
 
 msgid "The unique rule number is already used."
-msgstr ""
+msgstr "獨特的規則序號已經被使用。"
 
 msgid "The unique user ID is already used."
 msgstr "這個 UID 已經被用過了。"
 
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form."
-msgstr ""
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
+msgstr "上傳的文件超過了MAX_FILE_SIZE 選項所指定的 HTML 表單。"
 
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
-msgstr ""
+msgstr "上傳的文件超過了在 php.ini 中 upload_max_filesize。"
 
 msgid "The uploaded file was only partially uploaded."
-msgstr ""
+msgstr "上傳的檔案並不完整。"
 
 msgid "The uploaded image file is not for this platform"
 msgstr "上傳之映像檔並不適用於這個系統"
 
 msgid "The user's login shell."
-msgstr ""
+msgstr "用戶的登錄 shell。"
 
 msgid "The value of the variable."
 msgstr "變數的數值。"
@@ -4934,13 +4467,13 @@ msgid "The volume must be detached before it can be deleted."
 msgstr "磁碟必需先移除才可以刪除。"
 
 msgid "The working directory does not exist."
-msgstr ""
+msgstr "工作目錄不存在。"
 
 msgid "There are too many additional groups."
 msgstr ""
 
 msgid "There is no error, the file uploaded with success."
-msgstr ""
+msgstr "沒有任何錯誤，該文件上傳成功。"
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "架構 RAID 1 最少要有兩個磁碟。"
@@ -4958,114 +4491,83 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "RAID 5 模式必需最少有三個成員磁碟。"
 
 msgid "There must be at least 1 disks selected."
-msgstr ""
+msgstr "至少要選擇１個磁碟。"
 
 msgid "There must be at least 2 disks in a mirror."
-msgstr ""
+msgstr "至少要選擇２個磁碟做映射。"
 
 msgid "There must be at least 2 disks in a raidz."
-msgstr ""
+msgstr "至少要選擇２個磁碟做 raidz 。"
 
 msgid "There must be at least 3 disks in a raidz2."
-msgstr ""
+msgstr "至少要選擇３個磁碟做 raidz2 。"
 
 msgid "There must be selected a minimum of 1 interface."
 msgstr "這裡必須最少選擇 1 個介面。"
 
-msgid ""
-"There should be enough to handle the maximum level of concurrency from its "
-"clients, typically four to six."
-msgstr ""
-"There should be enough to handle the maximum level of concurrency from its "
-"clients, typically four to six."
+msgid "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
+msgstr "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
 
-msgid ""
-"These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
-"to a running system."
-msgstr ""
-"這些 MIB 會加入到 /etc/sysctl.conf。這樣會讓您可以對執行中的系統進行變更。"
+msgid "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system."
+msgstr "這些 MIB 會加入到 /etc/sysctl.conf。這樣會讓您可以對執行中的系統進行變更。"
 
-msgid ""
-"These commands will be executed pre or post system initialization (booting) "
-"or before system shutdown."
-msgstr ""
-"These commands will be executed pre or post system initialization (booting) "
-"or before system shutdown."
+msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
+msgstr "These commands will be executed pre or post system initialization (booting) or before system shutdown."
 
-msgid ""
-"These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
-"options used by various generic startup scripts."
-msgstr ""
-"這些選項會加入到 /etc/rc.conf。這讓您可以覆蓋由各式原始啟動命令稿所使用的選"
-"項。"
+msgid "These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts."
+msgstr "這些選項會加入到 /etc/rc.conf。這讓您可以覆蓋由各式原始啟動命令稿所使用的選項。"
 
 #, php-format
 msgid "These parameters are added to %s."
-msgstr ""
+msgstr "這些參數都被增加到 %s。"
 
 #, php-format
 msgid "These parameters are added to [Global] section of %s."
-msgstr ""
+msgstr "這些的參數將增加到 [Global] 區域 %s。"
 
 #, php-format
 msgid "These parameters are added to [Share] section of %s."
-msgstr ""
+msgstr "這些的參數將增加到 [Share] 區域 %s。"
 
 #, php-format
 msgid "These parameters will be added to %s."
-msgstr ""
+msgstr "這些的參數將增加到 %s。"
 
 #, php-format
 msgid "These parameters will be added to [global] settings in %s."
-msgstr ""
+msgstr "這些參數將被增加到[global] 設置在 %s。"
 
 #, php-format
 msgid "These parameters will be added to global settings in %s."
 msgstr "這些參數會加入到 %s 的全域設定值。"
 
-msgid ""
-"These parameters will be added to the module configuration in rsyncd.conf."
+msgid "These parameters will be added to the module configuration in rsyncd.conf."
 msgstr "這些參數會加入到 rsyncd.conf 的模組組態中。"
 
-msgid ""
-"This LAGG cannot be deleted because it is still being used as an interface."
+msgid "This LAGG cannot be deleted because it is still being used as an interface."
 msgstr "這個 LAGG 不能被刪除，因為它仍然被用來做為一個介面。"
 
 msgid "This URL is already configured."
 msgstr "這個 URL 已經設定過了。"
 
-msgid ""
-"This VLAN cannot be deleted because it is still being used as an interface."
+msgid "This VLAN cannot be deleted because it is still being used as an interface."
 msgstr "這個 VLAN 不能被刪除，因為它仍然被用來做為一個介面。"
 
-msgid ""
-"This allows you to lower the power consumption of the drive, at the expense "
-"of performance."
-msgstr ""
-"This allows you to lower the power consumption of the drive, at the expense "
-"of performance."
+msgid "This allows you to lower the power consumption of the drive, at the expense of performance."
+msgstr "This allows you to lower the power consumption of the drive, at the expense of performance."
 
 msgid "This allows you to set how loud the drive is while it's operating."
 msgstr "這是磁碟的運作噪音控制選項。"
 
-msgid ""
-"This allows you to set the file system for preformatted hard disks "
-"containing data."
+msgid "This allows you to set the file system for preformatted hard disks containing data."
 msgstr "如果原本的磁碟內部有資料，請在這裡選擇資料存在的檔案系統格式。"
 
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
 msgstr "這是磁碟的 ATA 傳輸模式選項。"
 
 #, php-format
-msgid ""
-"This configuration settings are used to generate the ups.conf configuration "
-"file which is required by the NUT UPS daemon. To get more information how to "
-"configure your UPS please check the NUT (Network UPS Tools) <a href='%s' "
-"target='_blank'>documentation</a>."
-msgstr ""
-"這個組態設定值是用來產生 NUT UPS 伺服程式所需的 ups.conf 組態。要取得更多關於"
-"如何設定您的 UPS 的資訊，請查閱 NUT (Network UPS Tools) <a href='%s' "
-"target='_blank'>文件</a>。"
+msgid "This configuration settings are used to generate the ups.conf configuration file which is required by the NUT UPS daemon. To get more information how to configure your UPS please check the NUT (Network UPS Tools) <a href='%s' target='_blank'>documentation</a>."
+msgstr "這個組態設定值是用來產生 NUT UPS 伺服程式所需的 ups.conf 組態。要取得更多關於如何設定您的 UPS 的資訊，請查閱 NUT (Network UPS Tools) <a href='%s' target='_blank'>文件</a>。"
 
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr "This controls how the case of filenames are viewed and stored."
@@ -5076,18 +4578,10 @@ msgstr "This controls the access a remote host has to this module."
 msgid "This controls the access to this share with an access password."
 msgstr "This controls the access to this share with an access password."
 
-msgid ""
-"This controls whether the .AppleDouble directory gets created unless "
-"absolutely needed. This option should not be used if files are access mostly "
-"by Mac computers."
-msgstr ""
-"This controls whether the .AppleDouble directory gets created unless "
-"absolutely needed. This option should not be used if files are access mostly "
-"by Mac computers."
+msgid "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
+msgstr "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
 
-msgid ""
-"This controls whether this share is seen in the list of available shares in "
-"a net view and in the browse list."
+msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "控制這個分享資料夾能不能直接的被瀏覽器看到。"
 
 msgid "This couple targetname/targetaddress already exists in the disk list."
@@ -5105,52 +4599,33 @@ msgstr "這個電子郵件會寄出以驗證您的電子郵件組態。"
 msgid "This extent is used."
 msgstr ""
 
-msgid ""
-"This forces filenames to be restricted to the character set used by Windows. "
-"This is not recommended for shares used principally by Mac computers."
-msgstr ""
-"This forces filenames to be restricted to the character set used by Windows. "
-"This is not recommended for shares used principally by Mac computers."
+msgid "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
+msgstr "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
 
 msgid "This function is unsupported. Use it on your own risk!"
-msgstr ""
+msgstr "不支援這個功能。使用這個自己承擔風險！"
 
 msgid "This group already exists in the group list."
 msgstr "這個群組已經建立過了。"
 
-msgid ""
-"This is both the name of the server as advertised via Zeroconf/Bonjour/"
-"Rendezvous, and the name of the database exported via DAAP."
+msgid "This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
 
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr "只是提供資料之用（並非給 iSCSI 溝通的資料）"
 
-msgid ""
-"This may make more efficient use of the system CPU's and cause Samba to be "
-"faster. Samba automatically turns this off for clients that use protocol "
-"levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
+msgid "This may make more efficient use of the system CPU's and cause Samba to be faster. Samba automatically turns this off for clients that use protocol levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
 
-#, fuzzy
-msgid ""
-"This means that the image you uploaded is not an official/supported image "
-"and may lead to unexpected behavior or security compromises. Only install "
-"images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br /><br />Do you want to install this image "
-"anyway (on your own risk)?"
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br /><br />Do you want to install this image anyway (on your own risk)?"
 msgstr ""
-"這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致安全"
-"漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像檔，並"
-"確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像檔嗎？(自"
-"行負責)"
 
 msgid "This name already exists in the disk list."
 msgstr "磁碟列表已經有這個名稱存在。"
 
-#, fuzzy, php-format
+#, php-format
 msgid "This name is for example: %s."
-msgstr "範例名稱：iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "範例名稱：iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5158,158 +4633,76 @@ msgstr "範例名稱：iqn.2005-01.il.ac.huji.cs:somebody."
 msgid "This name is used to uniquely identify your UPS on this system."
 msgstr "這個名稱用來做為您的 UPS 在此系統中的唯一識別。"
 
-msgid ""
-"This option allows the users and groups that access a share to be specified. "
-"Users and groups are specified, delimited by commas. Groups are designated "
-"by a @ prefix."
-msgstr ""
-"This option allows the users and groups that access a share to be specified. "
-"Users and groups are specified, delimited by commas. Groups are designated "
-"by a @ prefix."
+msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
+msgstr "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 
-msgid ""
-"This option causes rsync to update the remote extended attributes to be the "
-"same as the local ones."
+msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "這個選項會讓 rsync 將遠端的擴充屬性更新為與本地端的相同。"
 
-msgid ""
-"This option causes the receiving rsync to set the destination permissions to "
-"be the same as the source permissions."
+msgid "This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."
 msgstr "這個選項會讓 rsync 將目的端的權限設定為與來源相同。"
 
-msgid ""
-"This option determines if this module should be listed when the client asks "
-"for a listing of available modules. By setting this to false you can create "
-"hidden modules."
-msgstr ""
-"This option determines if this module should be listed when the client asks "
-"for a listing of available modules. By setting this to false you can create "
-"hidden modules."
+msgid "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
+msgstr "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
 
-msgid ""
-"This option is a comma, space, or tab delimited set of host which are NOT "
-"permitted to access this module. Where the lists conflict, the allow list "
-"takes precedence. In the event that it is necessary to deny all by default, "
-"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
-"to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to use default settings."
-msgstr ""
-"This option is a comma, space, or tab delimited set of host which are NOT "
-"permitted to access this module. Where the lists conflict, the allow list "
-"takes precedence. In the event that it is necessary to deny all by default, "
-"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
-"to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
+msgstr "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
 
-msgid ""
-"This option is a comma, space, or tab delimited set of host which are NOT "
-"permitted to access this share. Where the lists conflict, the allow list "
-"takes precedence. In the event that it is necessary to deny all by default, "
-"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
-"to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to use default settings."
-msgstr ""
-"This option is a comma, space, or tab delimited set of host which are NOT "
-"permitted to access this share. Where the lists conflict, the allow list "
-"takes precedence. In the event that it is necessary to deny all by default, "
-"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
-"to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
+msgstr "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
 
-msgid ""
-"This option is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this module. You can specify the hosts by name or IP "
-"number. Leave this field empty to use default settings."
-msgstr ""
-"This option is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this module. You can specify the hosts by name or IP "
-"number. Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
+msgstr "This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
 
-msgid ""
-"This option is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this share. You can specify the hosts by name or IP "
-"number. Leave this field empty to use default settings."
-msgstr ""
-"This option is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this share. You can specify the hosts by name or IP "
-"number. Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
+msgstr "This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
 
-msgid ""
-"This option specifies the group name or group ID that file transfers to and "
-"from that module should take place. Leave this field empty to use default "
-"settings."
-msgstr ""
-"This option specifies the group name or group ID that file transfers to and "
-"from that module should take place. Leave this field empty to use default "
-"settings."
+msgid "This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings."
+msgstr "This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings."
 
 #, php-format
-msgid ""
-"This option specifies the user name or user ID that file transfers to and "
-"from that module should take place. In combination with the '%s' option this "
-"determines what file permissions are available. Leave this field empty to "
-"use default settings."
-msgstr ""
-"This option specifies the user name or user ID that file transfers to and "
-"from that module should take place. In combination with the '%s' option this "
-"determines what file permissions are available. Leave this field empty to "
-"use default settings."
+msgid "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
+msgstr "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
 
-msgid ""
-"This page reflects the configuration that has been created with the WebGUI."
+msgid "This page reflects the configuration that has been created with the WebGUI."
 msgstr ""
 
-msgid ""
-"This page reflects the current system configuration. It may be different to "
-"the configuration which has been created with the WebGUI if changes has been "
-"done via command line."
+msgid "This page reflects the current system configuration. It may be different to the configuration which has been created with the WebGUI if changes has been done via command line."
 msgstr ""
 
-msgid ""
-"This parameter controls whether files starting with a dot appear as hidden "
-"files."
+msgid "This parameter controls whether files starting with a dot appear as hidden files."
 msgstr "這個參數將會套用在所有的檔案，包含以逗點為開頭的隱藏檔。"
 
-msgid ""
-"This parameter says that if N occurrences of the event happen within the "
-"given time interval, then a ban is automatically added."
+msgid "This parameter says that if N occurrences of the event happen within the given time interval, then a ban is automatically added."
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for groups when these are "
-"added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for machines when these are "
-"added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for machines when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for passwords when these "
-"are added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for passwords when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for users when these are "
-"added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 msgid "This pool name already exists."
-msgstr ""
+msgstr "這 pool 名稱已經存在。"
 
 msgid "This rule is triggered whenever the selected event directive occurs."
-msgstr ""
+msgstr "這條規則被觸發時，選定的事件指令會發生。"
 
 msgid "This tag already exists."
-msgstr ""
+msgstr "這個標籤已經存在。"
 
 msgid "This tag is used."
-msgstr ""
+msgstr "這個標記使用。"
 
 msgid "This the IP address or DNS name of the iSCSI target."
 msgstr "這是 iSCSI 的 IP 位置或者 DNS 名稱"
@@ -5318,43 +4711,35 @@ msgid "This user already exists in the user list."
 msgstr "使用者帳號已經存在。"
 
 msgid "This user already exists."
-msgstr ""
+msgstr "這個使用者已經存在。"
 
 msgid "This virtual device name already exists."
-msgstr ""
+msgstr "這個虛擬裝置名稱已經存在。"
 
-#, fuzzy, php-format
-msgid ""
-"This will cause %s not to check for newer firmware versions when the <a "
-"href='%s'>%s</a> page is viewed."
-msgstr "這會讓 %s 在瀏覽<a href=%s>%s</a>頁面時不檢查新版的韌體。"
+#, php-format
+msgid "This will cause %s not to check for newer firmware versions when the <a href='%s'>%s</a> page is viewed."
+msgstr ""
 
 msgid "This will create a recycle bin on the share."
 msgstr "將產生一個垃圾桶的資料夾。"
 
-msgid ""
-"This will erase ALL data on the selected disks! Do not use this option if "
-"you want to add an already existing RAID again."
-msgstr ""
-"這個動作會把選取的磁碟內資料清空！如果你想要新增一個已經設定好的 RAID 請勿使"
-"用這個選項。"
+msgid "This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again."
+msgstr "這個動作會把選取的磁碟內資料清空！如果你想要新增一個已經設定好的 RAID 請勿使用這個選項。"
 
-msgid ""
-"This will erase ALL data on your disk! Do not use this option if you want to "
-"add an existing encrypted disk."
-msgstr ""
+msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
+msgstr "即將刪除所有在磁碟上的資料！不要使用此選項 如果您想添加一個已經存在的加密磁碟。"
 
 msgid "TiB"
-msgstr ""
+msgstr "TiB"
 
 msgid "Time"
 msgstr "時間"
 
 msgid "Time Machine"
-msgstr ""
+msgstr "時間機器"
 
 msgid "Time interval"
-msgstr ""
+msgstr "時間間隔"
 
 msgid "Time server"
 msgstr "時間伺服器"
@@ -5369,16 +4754,9 @@ msgid "Timeout"
 msgstr "失效時間"
 
 msgid "Times"
-msgstr ""
+msgstr "時間"
 
-msgid ""
-"To configure the target, you must add at least Portal Group and Initiator "
-"Group and Extent.<br />Portal Group which is identified by tag number "
-"defines IP addresses and listening TCP ports.<br />Initiator Group which is "
-"identified by tag number defines authorised initiator names and networks."
-"<br />Auth Group which is identified by tag number and is optional if the "
-"target does not use CHAP authentication defines authorised users and secrets "
-"for additional security.<br />Extent defines the storage area of the target."
+msgid "To configure the target, you must add at least Portal Group and Initiator Group and Extent.<br />Portal Group which is identified by tag number defines IP addresses and listening TCP ports.<br />Initiator Group which is identified by tag number defines authorised initiator names and networks.<br />Auth Group which is identified by tag number and is optional if the target does not use CHAP authentication defines authorised users and secrets for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 
 msgid "To e-mail"
@@ -5388,57 +4766,42 @@ msgid "To email"
 msgstr "發送至 email"
 
 #, php-format
-msgid ""
-"To get detailed informations about TCP Wrappers check the FreeBSD <a href='%"
-"s' target='_blank'>documentation</a>."
+msgid "To get detailed informations about TCP Wrappers check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
 #, php-format
-msgid ""
-"To get detailed informations about writing firewall rules check the FreeBSD "
-"<a href='%s' target='_blank'>documentation</a>."
+msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
 #, php-format
-msgid ""
-"To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
 
-msgid ""
-"To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD authentication:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
-"li><li>System</li></ul></div>"
+msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<div id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul></div>"
 msgstr ""
 
 msgid "Tolerated"
-msgstr ""
+msgstr "容許"
 
 msgid "Tools"
 msgstr "工具"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s"
-msgstr "總: %s | 二手: %s | 自由的: %s"
+msgstr "總共: %s | 已使用: %s | 剩餘: %s"
 
 #, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
-msgstr ""
+msgstr "總共: %s | 已使用: %s | 剩餘: %s | 目前: %s"
 
 msgid "Traceroute"
 msgstr "Traceroute"
 
-msgid ""
-"Traceroute may take a while to complete. You may hit the Stop button on your "
-"browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Traceroute需要一段時間才能完成。你可以隨時按下瀏覽器的停止載入鈕並觀看結果。"
+msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
+msgstr "Traceroute需要一段時間才能完成。你可以隨時按下瀏覽器的停止載入鈕並觀看結果。"
 
 msgid "Traffic graph"
 msgstr "流量圖表"
@@ -5465,13 +4828,13 @@ msgid "Traps"
 msgstr "Traps"
 
 msgid "Trivial File Transfer Protocol"
-msgstr ""
+msgstr "TFTP 簡單文件傳輸傳輸協定"
 
 msgid "Try to force import."
-msgstr ""
+msgstr "嘗試強迫匯入"
 
 msgid "Try to import from on-disk ZFS config."
-msgstr ""
+msgstr "嘗試從硬碟匯入 ZFS 配置。"
 
 msgid "Tuning"
 msgstr "微調"
@@ -5483,29 +4846,18 @@ msgid "Type"
 msgstr "類別"
 
 msgid "Type used as extent."
-msgstr ""
+msgstr "作為類型的程度。"
 
 msgid "UCD-SNMP-MIB"
-msgstr ""
+msgstr "UCD-SNMP-MIB"
 
 #, php-format
-msgid ""
-"UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
-"of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, "
-"or NTFS can result in unpredictable results, file corruption, and loss of "
-"data!"
-msgstr ""
-"UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, "
-"EXT3, 或是 NTFS 可能會導致檔案損毀等不可預期的錯誤！"
+msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 可能會導致檔案損毀等不可預期的錯誤！"
 
 #, php-format
-msgid ""
-"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
-"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
-"can result in unpredictable results, file corruption, and loss of data!"
-msgstr ""
-"UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s之原生OS)。 如果使用FAT, FAT32, "
-"EXT2, EXT3, 或是 NTFS 檔案格式可能會導致檔案損毀等不可預期的錯誤！"
+msgid "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s之原生OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 檔案格式可能會導致檔案損毀等不可預期的錯誤！"
 
 msgid "UID"
 msgstr "UID"
@@ -5517,10 +4869,10 @@ msgid "UPS disabled"
 msgstr "UPS 已停用"
 
 msgid "UPS goes on battery"
-msgstr ""
+msgstr "UPS 接著蓄電池"
 
 msgid "UPS reaches low battery"
-msgstr ""
+msgstr "UPS 達到電壓不足"
 
 msgid "UPS status"
 msgstr "UPS 狀態"
@@ -5538,13 +4890,13 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Unformated"
-msgstr ""
+msgstr "尚未格式化"
 
 msgid "Uninstall package"
 msgstr "移除套件"
 
 msgid "Uninterruptible Power Supply"
-msgstr ""
+msgstr "不中斷電源供應"
 
 msgid "Unison"
 msgstr "Unison"
@@ -5565,7 +4917,7 @@ msgid "Unknown or unformatted"
 msgstr "未知/未格式化"
 
 msgid "Unload"
-msgstr ""
+msgstr "卸下"
 
 msgid "Unmount disk/partition"
 msgstr "卸載 磁碟/磁區"
@@ -5589,7 +4941,7 @@ msgid "Upload"
 msgstr "上傳"
 
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "上傳頻寬"
 
 msgid "Uppercases names in both directions"
 msgstr "雙向大寫名稱"
@@ -5600,39 +4952,29 @@ msgstr "啟動時間"
 msgid "Use AFP3 unix privileges."
 msgstr "使用 AFP3 UNIX 權限。"
 
-msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
-msgstr ""
-"使用空白字元來分隔多個主機位置(一個空白即可)。如果你輸入主機名稱，請先設定DNS"
-"伺服器。"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
+msgstr "使用空白字元來分隔多個主機位置(一個空白即可)。如果你輸入主機名稱，請先設定DNS伺服器。"
 
 msgid "Use sendfile"
 msgstr ""
 
 msgid "Use the following IP address as the source address in outgoing packets."
-msgstr ""
+msgstr "使用下面的IP位址作為來源位址的封包輸出。"
 
-msgid ""
-"Use the new 64k streaming read and write varient SMB requests introduced "
-"with Windows 2000."
+msgid "Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000."
 msgstr "使用 Windows 2000 之後新增的 64K 串流選項。"
 
 msgid "Use the specified NTP server."
 msgstr "使用指定的 NTP 伺服器。"
 
 #, php-format
-msgid ""
-"Use this option to override the default permission modes for newly created "
-"files (%s by default)."
-msgstr ""
+msgid "Use this option to override the default permission modes for newly created files (%s by default)."
+msgstr "使用此選項來覆蓋預設值權限模式以為新建立的文件(預設值為 %s)。"
 
-msgid ""
-"Use this option to override the directory creation mask (022 by default)."
+msgid "Use this option to override the directory creation mask (022 by default)."
 msgstr "設定目錄新增遮罩（預設為022）。"
 
-msgid ""
-"Use this option to override the directory creation mask (0777 by default)."
+msgid "Use this option to override the directory creation mask (0777 by default)."
 msgstr "設定目錄新增遮罩（預設為0777）。"
 
 msgid "Use this option to override the file creation mask (0666 by default)."
@@ -5641,18 +4983,11 @@ msgstr "設定檔案新增遮罩（預設為0666）。"
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr "設定檔案新增遮罩（預設為077）。"
 
-msgid ""
-"Use this option to override the username ('ftp' by default) which will be "
-"used for access to services which are specified as guest. Whatever "
-"privileges this user has will be available to any client connecting to the "
-"guest service. This user must exist in the password file, but does not "
-"require a valid login."
-msgstr ""
-"設定使用者名稱（預設為'ftp'），預設權限為guest。這個使用者所擁有的權限也會套"
-"用在其他的服務上。您可以取消這個使用者的登入權限，但是千萬不能將他刪除。"
+msgid "Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login."
+msgstr "設定使用者名稱（預設為'ftp'），預設權限為guest。這個使用者所擁有的權限也會套用在其他的服務上。您可以取消這個使用者的登入權限，但是千萬不能將他刪除。"
 
 msgid "Used"
-msgstr ""
+msgstr "已使用空間"
 
 msgid "User"
 msgstr "使用者"
@@ -5664,7 +4999,7 @@ msgid "User full name."
 msgstr "使用者全名"
 
 msgid "User mask"
-msgstr ""
+msgstr "使用者遮蔽"
 
 msgid "User numeric id."
 msgstr "使用者數字 ID"
@@ -5673,7 +5008,7 @@ msgid "User password."
 msgstr "使用者自行設定的密碼"
 
 msgid "User portal"
-msgstr ""
+msgstr "使用者入口"
 
 msgid "User suffix"
 msgstr "使用者名稱詞綴"
@@ -5691,10 +5026,10 @@ msgid "Users and Groups"
 msgstr "使用者/群組"
 
 msgid "VLAN"
-msgstr ""
+msgstr "VLAN 虛擬區網"
 
 msgid "VLAN tag"
-msgstr "VLAN標籤"
+msgstr "VLAN 虛擬區網標籤"
 
 msgid "Value"
 msgstr "數值"
@@ -5706,10 +5041,10 @@ msgid "Version"
 msgstr "版本"
 
 msgid "Virtual device"
-msgstr ""
+msgstr "虛擬裝置"
 
 msgid "Virtual devices"
-msgstr ""
+msgstr "虛擬裝置"
 
 msgid "Virtual interface"
 msgstr "虛擬介面"
@@ -5739,16 +5074,16 @@ msgid "WPA"
 msgstr "WPA"
 
 msgid "WPA-EAP (Extensible Authentication Protocol)"
-msgstr ""
+msgstr "WPA-EAP (Extensible Authentication Protocol)"
 
 msgid "WPA-PSK (Pre Shared Key)"
-msgstr ""
+msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
 
 msgid "Wake On LAN"
-msgstr ""
+msgstr "Wake On LAN 網路喚醒"
 
 msgid "Warning"
 msgstr "警告"
@@ -5757,18 +5092,14 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "注意：讀取 %s 記錄檔可能會再成很大的延遲！"
 
-msgid ""
-"Warning: You are going to delete a RAID volume. All data will get lost and "
-"can not be recovered."
-msgstr ""
+msgid "Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."
+msgstr "警告：您即將刪除一個 RAID 。所有資料將會遺失而且不能復原。"
 
-msgid ""
-"Warning: You are going to delete an encrypted volume. All data will get lost "
-"and can not be recovered."
+msgid "Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."
 msgstr ""
 
 msgid "Watch directory"
-msgstr ""
+msgstr "表目錄"
 
 msgid "WebGUI"
 msgstr "網頁介面"
@@ -5780,22 +5111,16 @@ msgid "Webserver document root is missing."
 msgstr ""
 
 msgid "Week days"
-msgstr ""
+msgstr "星期幾"
 
-msgid ""
-"When a client initially connects to the server the ident protocol is used to "
-"attempt to identify the remote username."
+msgid "When a client initially connects to the server the ident protocol is used to attempt to identify the remote username."
 msgstr ""
 
 msgid "Where to save downloaded data."
 msgstr "要將下載的資料儲存於何處。"
 
-msgid ""
-"Whether scans should be skipped if there are no users connected. This allows "
-"the drive to spin down when no users are connected."
-msgstr ""
-"如果沒有使用者連線是否略過掃描。這樣會讓磁碟機在沒有使用者連線的時候停止運"
-"轉。"
+msgid "Whether scans should be skipped if there are no users connected. This allows the drive to spin down when no users are connected."
+msgstr "如果沒有使用者連線是否略過掃描。這樣會讓磁碟機在沒有使用者連線的時候停止運轉。"
 
 msgid "Who"
 msgstr "Who"
@@ -5809,15 +5134,11 @@ msgstr "無線網路組態"
 msgid "Workgroup"
 msgstr "工作群組"
 
-msgid ""
-"Workgroup the server will appear to be in when queried by clients (maximum "
-"15 characters)."
-msgstr ""
-"Workgroup the server will appear to be in when queried by clients (maximum "
-"15 characters)."
+msgid "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
+msgstr "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
 
 msgid "Working directory"
-msgstr ""
+msgstr "工作目錄"
 
 msgid "Write"
 msgstr "寫入"
@@ -5826,36 +5147,26 @@ msgid "Write only"
 msgstr "只供寫入"
 
 msgid "Wrong partition type or partition number."
-msgstr ""
+msgstr "錯誤的磁碟分區型態或者磁碟分區數量"
 
 msgid "Yes"
 msgstr "是"
 
-#, fuzzy
-msgid ""
-"You can also install a package via SSH or console using the the pkg_add "
-"command.<br />Example: pkg_add -r packagename"
+msgid "You can also install a package via SSH or console using the the pkg_add command.<br />Example: pkg_add -r packagename"
 msgstr ""
-"你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r "
-"package-name"
 
 msgid "You can use the following parameters for substitution:"
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br />"
-msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
+#, php-format
+msgid "You can't mount the partition '%s' where the config file is stored.<br />"
+msgstr ""
 
-msgid ""
-"You can't unmount a drive which is used by swap file, a iSCSI-target file or "
-"any other running process!"
+msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
 msgstr "正在被 Swap、iSCSI 目標或是任何程序使用的磁碟不能夠被卸載。"
 
 #, php-format
-msgid ""
-"You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
+msgid "You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this service to clients."
 msgstr ""
 
 #, c-format
@@ -5866,9 +5177,7 @@ msgid "You may enter a description here for your reference."
 msgstr "可以加註必要的描述文字。"
 
 #, php-format
-msgid ""
-"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
-"chars)"
+msgid "You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"
 msgstr ""
 
 msgid "You must add disks first."
@@ -5890,35 +5199,34 @@ msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr "建議您使用 HTTPS 加密模式連接 WebGUI 來傳送加密金鑰。"
 
 msgid "Your ZFS system is not healthy."
-msgstr ""
+msgstr "您的 ZFS 系統是不健全的。"
 
 msgid "Your own email address."
 msgstr "你的 email"
 
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 msgid "ZFS dataset information and status"
-msgstr ""
+msgstr "ZFS 資料設定資訊及狀態"
 
 msgid "ZFS dataset properties"
-msgstr ""
+msgstr "ZFS dataset properties"
 
 msgid "ZFS volume"
-msgstr ""
+msgstr "ZFS 標籤"
 
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
 msgid "atacontrol list failed, atacontrol not found !!"
-msgstr ""
+msgstr "atacontrol 列表失敗，atacontrol 沒有找到！"
 
 msgid "cachecnid"
 msgstr "cachecnid"
 
-#, fuzzy
 msgid "change failed."
-msgstr "套件檔案"
+msgstr ""
 
 msgid "chroot() everyone, but root."
 msgstr "chroot() everyone, but root."
@@ -5930,7 +5238,7 @@ msgid "crlf"
 msgstr "crlf"
 
 msgid "day(s)"
-msgstr ""
+msgstr "日"
 
 msgid "dbpath"
 msgstr "資料庫位置"
@@ -5946,7 +5254,7 @@ msgid "get target info failed."
 msgstr ""
 
 msgid "hour(s)"
-msgstr ""
+msgstr "小時"
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI 初始"
@@ -5955,7 +5263,7 @@ msgid "iSCSI Target"
 msgstr "iSCSI 目標"
 
 msgid "iSCSI Target Logical Unit Controller"
-msgstr ""
+msgstr "iSCSI 目標邏輯單元控制器"
 
 #, php-format
 msgid "iSCSI initial parameter (%d by default)."
@@ -5971,19 +5279,19 @@ msgid "load/unload failed."
 msgstr ""
 
 msgid "minute(s)"
-msgstr ""
+msgstr "分鐘"
 
 msgid "minutes"
-msgstr "分"
+msgstr "分鐘"
 
 msgid "mirroring"
 msgstr "mirroring"
 
 msgid "mount"
-msgstr ""
+msgstr "掛載"
 
 msgid "mswindows"
-msgstr "微軟小窗窗"
+msgstr "微軟小視窗"
 
 msgid "n/a"
 msgstr "無資料"
@@ -6001,7 +5309,7 @@ msgid "nohex"
 msgstr "nohex"
 
 msgid "none"
-msgstr ""
+msgstr "無"
 
 msgid "nostat"
 msgstr "nostat"
@@ -6022,7 +5330,7 @@ msgid "scan target failed."
 msgstr ""
 
 msgid "second(s)"
-msgstr ""
+msgstr "秒鐘"
 
 msgid "seconds"
 msgstr "秒"
@@ -6031,26 +5339,19 @@ msgid "striping"
 msgstr "striping"
 
 msgid "successfully."
-msgstr ""
+msgstr "成功地."
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
 msgid "umask"
-msgstr ""
+msgstr "umask 檔案預設權限"
 
 msgid "umount"
-msgstr ""
+msgstr "卸載"
 
 msgid "upriv"
 msgstr "upriv"
-
-#~ msgid "LAN"
-#~ msgstr "區域網路"
-
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr "範例名稱：iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 #~ msgid "Date"
 #~ msgstr "日期"
@@ -6076,11 +5377,34 @@ msgstr "upriv"
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "請輸入一個有效的network bit count。"
 
+#~ msgid "LAN"
+#~ msgstr "區域網路"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
 
 #~ msgid "Logs"
 #~ msgstr "記錄檔"
+
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the "
+#~ "image has not been tampered with.<br><br>Do you want to install this "
+#~ "image anyway (on your own risk)?"
+#~ msgstr ""
+#~ "這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致"
+#~ "安全漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像"
+#~ "檔，並確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像"
+#~ "檔嗎？(自行負責)"
+
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
+#~ msgstr ""
+#~ "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點"
+#~ "選 &quot;韌體升級&quot; 以啟動升級動作"
 
 #~ msgid "Size in MB."
 #~ msgstr "以MB為單位。"
@@ -6099,6 +5423,37 @@ msgstr "upriv"
 
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "最大效能/耗電量"
+
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
+
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted "
+#~ "temporarily to perform selected command, otherwise the commands work in "
+#~ "read-only mode.<br>Service disruption to users accessing this mount will "
+#~ "occur during this process."
+#~ msgstr ""
+#~ "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或"
+#~ "有暫時性的服務中斷。否則指令只能在唯讀模式下運作。"
+
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</"
+#~ "a>。"
+
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
+
+#~ msgid "Size of send buffer (16384 by default)."
+#~ msgstr "傳送緩衝區的大小(預設為16384)."
+
+#~ msgid "Size of receive buffer (16384 by default)."
+#~ msgstr "接收緩衝區的大小(預設為16384)."
 
 #~ msgid "A valid network must be specified."
 #~ msgstr "必須指定一個有效的網域。"
@@ -6121,6 +5476,11 @@ msgstr "upriv"
 #~ msgid "Shutdown Time"
 #~ msgstr "關機時間"
 
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr "這會讓 %s 在瀏覽<a href=%s>%s</a>頁面時不檢查新版的韌體。"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "最後 %d 筆 %s 記錄資料"
 
@@ -6140,8 +5500,39 @@ msgstr "upriv"
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "設定可以使用iSCSI目標的網路區段"
 
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "範例名稱：iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% of %dMB"
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
+#~ "of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. 這些特別的指令只適用於 debugging！<br>2. RAID 將會自動開始運作，不需要"
+#~ "再次下達 starting。"
+
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</"
+#~ "a>必須要有 Shell 權限。"
+
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 
 #~ msgid ""
 #~ "At the highest level, a target is what is presented to the initiator, and "
@@ -6149,6 +5540,19 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "At the highest level, a target is what is presented to the initiator, and "
 #~ "is made up of one or more devices, and/or one or more extents."
+
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "裝置已經掛載，移除之前請先卸載。"
@@ -6178,6 +5582,12 @@ msgstr "upriv"
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "無效的連接阜號！連接阜必需介於 %d - %d。"
 
+#~ msgid ""
+#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
+#~ "a> menu."
+#~ msgstr ""
+#~ "將未格式化的磁碟設為 '%s' 並且使用<a href=%s>格式化選單</a>來進行格式化。"
+
 #~ msgid "List of shares"
 #~ msgstr "分享列表"
 
@@ -6198,6 +5608,23 @@ msgstr "upriv"
 #~ msgid "Shell access"
 #~ msgstr "Shell 權限"
 
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr "變更已經套用。你必須<a href=%s>重新開機</a>以讓變更生效。"
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "設定已經儲存。<br>套用之後才會生效。"
+
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r "
+#~ "package-name"
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "你必須先定義 Extent 物件。"
 
@@ -6206,3 +5633,10 @@ msgstr "upriv"
 
 #~ msgid "built on"
 #~ msgstr "建立於"
+
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "如果啟用 <a href=%s>&quot;將 IP 位址解析為主機名稱&quot;</a> 就會把 IP 位"
+#~ "址解析為主機名稱。"

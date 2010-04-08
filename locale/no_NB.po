@@ -1,21 +1,19 @@
-# Norwegian Bokmal translation for freenas
-# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
-# This file is distributed under the same license as the freenas package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: freenas\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-04 13:19+0000\n"
-"PO-Revision-Date: 2009-05-20 19:00+0000\n"
-"Last-Translator: Morten Mytting Wang <morten@dc-system.net>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"Project-Id-Version: FreeNAS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2010-04-08 23:12+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
+"Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-11 18:44+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 20:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Language: Norwegian Bokmal\n"
+"X-Poedit-Country: NORWAY\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 msgid " interfaces:"
 msgstr " grensesnitt:"
@@ -23,9 +21,9 @@ msgstr " grensesnitt:"
 msgid " was assigned to "
 msgstr " ble satt til "
 
-#, fuzzy, c-format, php-format
+#, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr "%d%% av %dMB"
+msgstr "%d%% av %dMiB"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -37,7 +35,7 @@ msgstr "%s grensesnitt"
 
 #, php-format
 msgid "%s is too long."
-msgstr ""
+msgstr "%s er for lang."
 
 #, php-format
 msgid "%s is used to create %s volumes."
@@ -47,17 +45,17 @@ msgstr "%s blir brukt til å lage %s volumer."
 msgid "%s of %sB"
 msgstr "%s av %sB"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s on %s"
-msgstr "%s av %sB"
+msgstr "%s på %s"
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s vil starte på nytt etter gjennopprettingen av konfigurasjonen."
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s%d %s is already used by %s%d."
-msgstr "Port %ld er allerede i bruk av en annen tjeneste."
+msgstr "%s%d %s er allerede brukt av %s%d."
 
 #, c-format, php-format
 msgid "%sB available of %sB"
@@ -73,14 +71,8 @@ msgstr "*** Importet duplikat ***"
 msgid "0=disabled, 1-255=enabled command queuing with specified depth."
 msgstr ""
 
-#, fuzzy
-msgid ""
-"1. Use these specials actions for debugging only!<br />2. There is no need "
-"of using this menu for starting a RAID volume (start automaticaly)."
+msgid "1. Use these specials actions for debugging only!<br />2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
-"1. Bruk disse spesielle aksjonene kun for debugging!<br>2. Det er ikke "
-"nødvendig å bruke denne menyen for å starte et RAID volum (starter "
-"automatisk)."
 
 msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr "802.1Q VLAN tagg (mellom 1 og 4094)"
@@ -88,77 +80,42 @@ msgstr "802.1Q VLAN tagg (mellom 1 og 4094)"
 msgid "<->"
 msgstr "<->"
 
-#, fuzzy, php-format
-msgid ""
-"<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%"
-"s'>user</a> must have shell access."
-msgstr ""
-"<a href=%s>SSHD</a> må være slått på for at Unison skal fungere og <a href=%"
-"s>brukeren</a> få ha fult Shell slått på."
-
-msgid ""
-"<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
-"partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted "
-"drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
-"disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old "
-"SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+#, php-format
+msgid "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href='%s'>user</a> must have shell access."
 msgstr ""
 
-msgid ""
-"<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+msgid "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
 msgstr ""
 
-msgid ""
-"<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
-"3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</"
-"li><li>Before - File-deletions will be done before the transfer starts.</"
-"li><li>During - File-deletions will be done incrementally as the transfer "
-"happens.</li><li>Delay - File-deletions will be computed during the "
-"transfer, and then removed after the transfer completes.</li><li>After - "
-"File-deletions will be done after the transfer has completed.</li>"
+msgid "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
 
-msgid ""
-"A Auth Group contains authorised users and secrets for additional security."
+msgid "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 
-msgid ""
-"A Initiator Group contains authorised initiator names and networks to access "
-"the target."
+msgid "A Auth Group contains authorised users and secrets for additional security."
 msgstr ""
 
-msgid ""
-"A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgid "A Initiator Group contains authorised initiator names and networks to access the target."
 msgstr ""
-"En NTP tids-tjeners navn kan kun inneholde tegnene a-z, 0-9 '-' og '.'."
 
-msgid ""
-"A Portal Group contains IP addresses and listening TCP ports to connect the "
-"target from the initiator."
+msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr "En NTP tids-tjeners navn kan kun inneholde tegnene a-z, 0-9 '-' og '.'."
+
+msgid "A Portal Group contains IP addresses and listening TCP ports to connect the target from the initiator."
 msgstr ""
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
 msgstr "Et VLAN med taggen %s er allerede definert på dette grensesnittet."
 
-msgid ""
-"A directory listing is generated if a directory is requested and no index-"
-"file (index.php, index.html, index.htm or default.htm) was found in that "
-"directory."
-msgstr ""
-"En opplisting blir generert hvis en katalog blir hentet og ingen indeks fil "
-"(index.php, index.html, index.htm eller default.htm) ble funnet i katalogen."
+msgid "A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory."
+msgstr "En opplisting blir generert hvis en katalog blir hentet og ingen indeks fil (index.php, index.html, index.htm eller default.htm) ble funnet i katalogen."
 
-msgid ""
-"A host name alias. This option can appear multiple times, for each domain "
-"that has the same IP. Use a space to separate multiple alias names."
+msgid "A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
 
-msgid ""
-"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
-"local network and the capabilities of the adaptor. It may be specified "
-"either as a plain string or as a string of hexadecimal digits preceded by "
-"'0x'."
+msgid "A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'."
 msgstr ""
 
 msgid "A route to this destination network already exists."
@@ -167,10 +124,8 @@ msgstr "En rute til dette mottaker nettverket eksisterer allerede."
 msgid "A valid IP address must be specified."
 msgstr "En valid IP adresse må bli spesifisert"
 
-msgid ""
-"A valid IPv4 address must be specified for the primary/secondary DNS server."
-msgstr ""
-"En valid IPv4 adresse må spesifiseres for den primære/sekundære DNS tjeneren."
+msgid "A valid IPv4 address must be specified for the primary/secondary DNS server."
+msgstr "En valid IPv4 adresse må spesifiseres for den primære/sekundære DNS tjeneren."
 
 msgid "A valid IPv4 address must be specified."
 msgstr "En valid IPv4 adresse må spesifiseres."
@@ -181,10 +136,8 @@ msgstr "Et valid IPv4 bit antall må spesifiseres."
 msgid "A valid IPv6 Gateway address must be specified."
 msgstr "En valid IPv6 Gateway adresse må spesifiseres"
 
-msgid ""
-"A valid IPv6 address must be specified for the primary/secondary DNS server."
-msgstr ""
-"En valid IPv6 adresse må spesifiseres for den primære/sekundære DNS tjeneren."
+msgid "A valid IPv6 address must be specified for the primary/secondary DNS server."
+msgstr "En valid IPv6 adresse må spesifiseres for den primære/sekundære DNS tjeneren."
 
 msgid "A valid IPv6 address must be specified."
 msgstr "En valid IPv6 adresse må spesifiseres."
@@ -219,9 +172,8 @@ msgstr "AD eller PDC navn."
 msgid "AFP"
 msgstr "AFP"
 
-#, fuzzy
 msgid "AG"
-msgstr "LAGG"
+msgstr "AG"
 
 msgid "ARP Tables"
 msgstr "ARP tabeller"
@@ -250,23 +202,17 @@ msgstr "Aktiver"
 msgid "Activate S.M.A.R.T. monitoring for this device."
 msgstr "Aktiver S.M.A.R.T. overvåking for denne enheten."
 
-msgid ""
-"Activate email report if you want to be notified if a failure or a new error "
-"has been detected, or if a S.M.A.R.T. command to a disk fails."
-msgstr ""
-"Aktiver e-post rapporter hvis du vil bli varslet om en stans, om en feil har "
-"blitt oppdaget eller hvis en S.M.A.R.T. kommando til en disk feiler."
+msgid "Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails."
+msgstr "Aktiver e-post rapporter hvis du vil bli varslet om en stans, om en feil har blitt oppdaget eller hvis en S.M.A.R.T. kommando til en disk feiler."
 
 msgid "Active Directory"
 msgstr "Active Directory"
 
-#, fuzzy
 msgid "Active Users"
-msgstr "Active Directory"
+msgstr "Aktive brukere"
 
-#, fuzzy
 msgid "Active shares"
-msgstr "Aktiver"
+msgstr "Aktive delinger"
 
 msgid "Add"
 msgstr "Tilføy"
@@ -292,16 +238,14 @@ msgstr "Legg til URL"
 msgid "Add additional scheduled self-test."
 msgstr "Legg til en planlagt selv-test til."
 
-#, fuzzy
 msgid "Add auth group"
-msgstr "Legg til gruppe"
+msgstr "Legg til auth gruppe"
 
 msgid "Add command"
 msgstr "Legg til kommando"
 
-#, fuzzy
 msgid "Add dataset"
-msgstr "Legg til mål"
+msgstr "Legg til datasett"
 
 msgid "Add device"
 msgstr "Legg til enhet"
@@ -318,9 +262,8 @@ msgstr "Legg til gruppe"
 msgid "Add initiator"
 msgstr "Legg til initiator"
 
-#, fuzzy
 msgid "Add initiator group"
-msgstr "Legg til initiator"
+msgstr ""
 
 msgid "Add interface"
 msgstr "Legg til grensesnitt"
@@ -337,13 +280,11 @@ msgstr "Legg til monteringspunkt"
 msgid "Add option"
 msgstr "Legg til valg"
 
-#, fuzzy
 msgid "Add pool"
-msgstr "Legg til jobb"
+msgstr ""
 
-#, fuzzy
 msgid "Add portal group"
-msgstr "Ekstra gruppe"
+msgstr "Legg til portal gruppe"
 
 msgid "Add rule"
 msgstr "Legg til regel"
@@ -394,37 +335,21 @@ msgid "Advanced settings"
 msgstr "Avansert instillinger"
 
 #, php-format
-msgid ""
-"After you click &quot;Save&quot;, you may also have to do one or more of the "
-"following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP address</"
-"li></ul>"
-msgstr ""
-"Etter du klikker &quot;Lagre&quot;, må du kanskje gjøre en eller flere av "
-"følgende grep før du få tilgang til %s igjen: <ul><li>bytt IP'en til din "
-"maskin</li><li>gå inn i webGUI med den nye IP-adressen</li></ul>"
+msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "Etter du klikker &quot;Lagre&quot;, må du kanskje gjøre en eller flere av følgende grep før du få tilgang til %s igjen: <ul><li>bytt IP'en til din maskin</li><li>gå inn i webGUI med den nye IP-adressen</li></ul>"
 
-#, fuzzy, php-format
-msgid ""
-"After you click &quot;Save&quot;, you must reboot %s to make the changes "
-"take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: <ul><li><span class='vexpl'>change the "
-"IP address of your computer</span></li><li><span class='vexpl'>access the "
-"webGUI with the new IP address</span></li></ul>"
+#, php-format
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: <ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
-"Etter du klikker &quot;Lagre&quot;, må du kanskje gjøre en eller flere av "
-"følgende grep før du få tilgang til %s igjen: <ul><li>bytt IP'en til din "
-"maskin</li><li>gå inn i webGUI med den nye IP-adressen</li></ul>"
 
 msgid "Aggregation protocol"
 msgstr "Aggregerings protokol"
 
 msgid "Aggressive"
-msgstr ""
+msgstr "Aggressiv"
 
-#, fuzzy
 msgid "Albanian"
-msgstr "Romansk"
+msgstr "Albansk"
 
 msgid "All"
 msgstr "Alle"
@@ -436,9 +361,7 @@ msgstr "Alle kataloger"
 msgid "All dirs requires mounted path, but Path %s is not mounted."
 msgstr ""
 
-msgid ""
-"All shares use the option 'usedots' thus making the filenames .Parent and "
-"anything beginning with .Apple illegal."
+msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
 msgstr ""
 
 msgid "All users will have the root privilege."
@@ -453,10 +376,8 @@ msgstr "Tillat kun TLS/SSL tilkoblinger."
 msgid "Allow client access to accounts that have null passwords."
 msgstr "Tillater klienttilgang til kontoer som har tomme passord."
 
-msgid ""
-"Allow clients to attempt to store OS/2 style extended attributes on a share."
-msgstr ""
-"Tillat klienter til å forsøke å lagre OS/2 utvidede attributter på en deling."
+msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
+msgstr "Tillat klienter til å forsøke å lagre OS/2 utvidede attributter på en deling."
 
 msgid "Allow clients to resume interrupted uploads and downloads."
 msgstr "Tillat klienter å fortsette stoppede opplastinger og nedlastinger."
@@ -467,27 +388,18 @@ msgstr "Tillatt nye filer"
 msgid "Allow new files to be created."
 msgstr "Tillatt nye filer å bli laget"
 
-msgid ""
-"Allows  certain  users and groups to have read/write access to a share. This "
-"follows the allow option format."
-msgstr ""
-"Tillat visse brukere og grupper til å ha lese/skrive rettigheter til en "
-"deling. Dette følger tillatt formatet."
+msgid "Allows  certain  users and groups to have read/write access to a share. This follows the allow option format."
+msgstr "Tillat visse brukere og grupper til å ha lese/skrive rettigheter til en deling. Dette følger tillatt formatet."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr ""
 
-msgid ""
-"Allows certain users and groups to have read-only  access  to  a share. This "
-"follows the allow option format."
-msgstr ""
-"Lar visse brukere og grupper å ha kun lese tilgang på en deling. Dette "
-"følger tillat formatet."
+msgid "Allows certain users and groups to have read-only  access  to  a share. This follows the allow option format."
+msgstr "Lar visse brukere og grupper å ha kun lese tilgang på en deling. Dette følger tillat formatet."
 
-#, fuzzy
 msgid "AltRoot"
-msgstr "Omstart"
+msgstr "AltRoot"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativ TCP port. Standard er 22"
@@ -504,12 +416,8 @@ msgstr "Alltid på"
 msgid "Always scan"
 msgstr "Alltid scan"
 
-msgid ""
-"Always use 0 for device number, helps when the device number is not constant "
-"across a reboot, cluster, ..."
-msgstr ""
-"Alltid bruk 0 som enhetsnummer, hjelper når enhetsnummeret ikke er konstant "
-"under en restart, klynge,..."
+msgid "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
+msgstr "Alltid bruk 0 som enhetsnummer, hjelper når enhetsnummeret ikke er konstant under en restart, klynge,..."
 
 msgid "An host with this name already exists."
 msgstr "En vert med dette navnet eksiterer allerede."
@@ -526,8 +434,7 @@ msgstr "Anonym binding"
 msgid "Anonymous user bandwidth"
 msgstr "Anonym bruker-båndbredde"
 
-msgid ""
-"Anonymous user download bandwith in KB/s. An empty field means infinity."
+msgid "Anonymous user download bandwith in KB/s. An empty field means infinity."
 msgstr "Anonym nedlastings båndbredde i KB/s. Et tomt felt betyr uendelig."
 
 msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
@@ -560,9 +467,7 @@ msgstr "Er du sikker på at du vil starte systemet på nytt?"
 msgid "Are you sure you want to shutdown the system?"
 msgstr "Er du sikker på at du vil slå av systemet?"
 
-msgid ""
-"At the highest level, a target is what is presented to the initiator, and is "
-"made up of one or more extents."
+msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
 msgstr ""
 
 msgid "Attached"
@@ -572,17 +477,14 @@ msgstr "Tilkoblet"
 msgid "Attaching provider '%s'."
 msgstr "Legger til tilbyder '%s'."
 
-#, fuzzy
 msgid "Auth Group"
-msgstr "Gruppe"
+msgstr "Auth gruppe"
 
-#, fuzzy
 msgid "Auth Groups"
-msgstr "Grupper"
+msgstr "Auth grupper"
 
-#, fuzzy
 msgid "Auth Method"
-msgstr "Autentiseringsmetode"
+msgstr "Auth metode"
 
 msgid "Authenticate URL"
 msgstr "Verifisere URL"
@@ -596,29 +498,26 @@ msgstr "Autentiseringsmetode"
 msgid "Authorised network"
 msgstr "Autorisert nettverk"
 
-#, fuzzy
 msgid "Auths"
-msgstr "Auto"
+msgstr "Auths"
 
 msgid "Auto"
 msgstr "Auto"
 
-#, fuzzy
 msgid "Auto size"
-msgstr "Auto"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoSkaler"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "Automatisk disk-gjennoppretting"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "Automatisk disk-oppdagelses modus"
 
-#, fuzzy
 msgid "Autoselect"
-msgstr "AutoSkaler"
+msgstr "Autovalg"
 
 msgid "Auxiliary parameters"
 msgstr "Hjelpe-parametere"
@@ -647,16 +546,14 @@ msgstr "Banner"
 msgid "Base DN"
 msgstr "Base-DN"
 
-#, fuzzy
 msgid "Base Name"
-msgstr "Base-DN"
+msgstr ""
 
 msgid "Base Name will be appended automatically when starting without 'iqn.'."
 msgstr ""
 
-#, fuzzy
 msgid "Best available"
-msgstr "%sB tilgjengelig av %sB"
+msgstr "Beste tilgjengelige"
 
 msgid "Bind DN"
 msgstr "Bind DN"
@@ -673,9 +570,8 @@ msgstr "Blank tid"
 msgid "Browseable"
 msgstr "Søkbar"
 
-#, fuzzy
 msgid "Built on"
-msgstr "bygd på"
+msgstr "Bygd på"
 
 msgid "Bulgarian"
 msgstr "Bulgarsk"
@@ -693,11 +589,10 @@ msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD eller gammel programvare RAID"
 
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
-#, fuzzy
 msgid "CHAP Users"
-msgstr "Brukere"
+msgstr "CHAP brukere"
 
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
@@ -726,13 +621,11 @@ msgstr "Kan ikke formatere OS disken!"
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Kan ikke montere system partisjon 1, DATA partisjonen er 2."
 
-#, fuzzy
 msgid "Cancel"
-msgstr "Kanal"
+msgstr "Avbryt"
 
-#, fuzzy
 msgid "Canmount"
-msgstr "Antall"
+msgstr "Canmount"
 
 msgid "Cannot get data about interface"
 msgstr "Kan ikke hente data om grensesnittet"
@@ -743,11 +636,7 @@ msgstr "Kapasitet"
 msgid "Case Folding"
 msgstr ""
 
-msgid ""
-"Causes the server to display the network information for the specified IP "
-"address or DNS hostname to the client, on the assumption that that IP "
-"address or DNS host is acting as a NAT gateway or port forwarder for the "
-"server."
+msgid "Causes the server to display the network information for the specified IP address or DNS hostname to the client, on the assumption that that IP address or DNS host is acting as a NAT gateway or port forwarder for the server."
 msgstr ""
 
 msgid "Certificate"
@@ -759,9 +648,8 @@ msgstr "Endre"
 msgid "Change below file"
 msgstr ""
 
-#, fuzzy
 msgid "Change password"
-msgstr "Delings passord"
+msgstr ""
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Forandringer på dette alternativet vil bli effektivt etter en restart."
@@ -782,8 +670,7 @@ msgid "Chinese (Traditional)"
 msgstr "Kinesisk (tradisjonell)"
 
 msgid "Choose on which interface packets must come in to match this rule."
-msgstr ""
-"Velg hvilket grensesnitt pakker må komme på for å være lik denne regelen."
+msgstr "Velg hvilket grensesnitt pakker må komme på for å være lik denne regelen."
 
 msgid "Choose which IP protocol this rule should match."
 msgstr "Velg hvilken IP protokoll denne regelen bør være lik."
@@ -794,15 +681,11 @@ msgstr "Velg grensesnittet denne ruten gjelder for."
 msgid "Clear"
 msgstr "Tøm"
 
-msgid ""
-"Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade "
-"process."
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
 
 msgid "Click this button to download the system configuration in XML format."
-msgstr ""
-"Klikk på denne knappen for å laste ned system konfigurasjonen i XML format."
+msgstr "Klikk på denne knappen for å laste ned system konfigurasjonen i XML format."
 
 msgid "Client"
 msgstr "Klient"
@@ -852,18 +735,11 @@ msgstr "Komprimer fildata under overføring."
 msgid "Compression"
 msgstr "Komprimering"
 
-msgid ""
-"Compression is worth using if your connection is slow. The efficiency of the "
-"compression depends on the type of the file, and varies widely. Useful for "
-"internet transfer only."
-msgstr ""
-"Komprimering er verdt det hvis din tilkobling er sakte. Effektiviteten av "
-"komprimeringen avhenger av filtypen og varierer sterkt. Brukbar kun for "
-"Internettoverføringer."
+msgid "Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only."
+msgstr "Komprimering er verdt det hvis din tilkobling er sakte. Effektiviteten av komprimeringen avhenger av filtypen og varierer sterkt. Brukbar kun for Internettoverføringer."
 
-#, fuzzy
 msgid "Configuration"
-msgstr "Bekreftelse"
+msgstr "Konfigurasjon"
 
 msgid "Configuration directory"
 msgstr "Konfigurasjosn katalog"
@@ -886,12 +762,8 @@ msgstr "Konsoll skjermsparer"
 msgid "Contact"
 msgstr "Kontakt"
 
-msgid ""
-"Contact information, e.g. name or email of the person responsible for this "
-"system: 'admin@email.address'."
-msgstr ""
-"Kontaktinformasjon, f.eks. navn eller e-post til personen ansvarlig for "
-"dette systemet: 'admin@epost.adresse'."
+msgid "Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'."
+msgstr "Kontaktinformasjon, f.eks. navn eller e-post til personen ansvarlig for dette systemet: 'admin@epost.adresse'."
 
 msgid "Content"
 msgstr "Innhold"
@@ -902,28 +774,20 @@ msgstr ""
 msgid "Controller Auth Method"
 msgstr ""
 
-#, fuzzy
 msgid "Controller Authorised network"
-msgstr "Autorisert nettverk"
+msgstr ""
 
-#, fuzzy
 msgid "Controller IP address"
-msgstr "IP adresse"
+msgstr ""
 
 msgid "Controller TCP Port"
 msgstr ""
 
-msgid ""
-"Controls the compression algorithm used for this dataset. The 'lzjb' "
-"compression algorithm is optimized for performance while providing decent "
-"data compression. Setting compression to 'On' uses the 'lzjb' compression "
-"algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
-"where N is an integer from 1 (fastest) to 9 (best compression ratio). "
-"Currently, 'gzip' is equivalent to 'gzip-6'."
+msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
 msgid "Controls whether this dataset can be modified."
-msgstr ""
+msgstr "Kontrollerer om dette datasettet kan bli modifisert"
 
 msgid "Count"
 msgstr "Antall"
@@ -937,9 +801,8 @@ msgstr "Lag kryptert volum"
 msgid "Create mask"
 msgstr "Lag maske"
 
-#, fuzzy
 msgid "Create work directory if it doesn't exist."
-msgstr "Lag arbeids katalog hvis den ikke eksisterer"
+msgstr "Lag en arbeids-katalog om den ikke eksisterer"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -965,16 +828,14 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Cron jobb"
 
-#, fuzzy
 msgid "Current"
-msgstr "Antall"
+msgstr "Gjeldende"
 
 msgid "Custom"
 msgstr "Egendefinert"
 
-#, fuzzy
 msgid "Custom script"
-msgstr "Kommando skript"
+msgstr ""
 
 msgid "Custom script is not found."
 msgstr ""
@@ -994,24 +855,12 @@ msgstr "DHCP"
 msgid "DNS settings"
 msgstr "DNS innstillinger"
 
-#, fuzzy, php-format
-msgid ""
-"DO NOT abort the firmware upgrade once it has started. %s will reboot "
-"automatically after storing the new firmware. The configuration will be "
-"maintained.<br />You need a minimum of %d Mb RAM to perform the firmware "
-"update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
-"System configuration before doing a Firmware upgrade."
+#, php-format
+msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br />You need a minimum of %d Mb RAM to perform the firmware update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the System configuration before doing a Firmware upgrade."
 msgstr ""
-"IKKE avslutt firmware oppgraderingen når den har startet. %s vil restarte "
-"automatisk etter å ha lagret den nye firmwaren. Konfigurasjonen vil "
-"vedlikeholdes. <br> Du trenger minst %d MB RAM for å utføre en "
-"firmwareoppgradering.<br> Det anbefales sterkt at du <a href=%"
-"s>sikkerhetskopierer</a> systemkonfigurasjonen før du gjør en "
-"firmwareoppgradering."
 
-#, fuzzy
 msgid "DVD"
-msgstr "DDP"
+msgstr "DVD"
 
 msgid "Daemon"
 msgstr "Daemon"
@@ -1025,9 +874,8 @@ msgstr "Daemon logg"
 msgid "Danish"
 msgstr "Dansk"
 
-#, fuzzy
 msgid "Data digest"
-msgstr "Data integritet"
+msgstr ""
 
 msgid "Data integrity"
 msgstr "Data integritet"
@@ -1035,20 +883,17 @@ msgstr "Data integritet"
 msgid "Database directory"
 msgstr "Database katalog"
 
-#, fuzzy
 msgid "Dataset"
-msgstr "dato"
+msgstr "Datasett"
 
-#, fuzzy
 msgid "Datasets"
-msgstr "dato"
+msgstr "Datasett"
 
 msgid "Date & Time"
-msgstr ""
+msgstr "Dato og klokkeslett"
 
-#, fuzzy
 msgid "Days"
-msgstr "dager"
+msgstr "Dager"
 
 msgid "Debug"
 msgstr "Avlus"
@@ -1081,9 +926,8 @@ msgstr "Slett ARP innslag"
 msgid "Delete Host"
 msgstr "Slett verit"
 
-#, fuzzy
 msgid "Delete Login Info"
-msgstr "Slett alternativ"
+msgstr ""
 
 msgid "Delete MIB"
 msgstr "Slett MIB"
@@ -1113,18 +957,16 @@ msgid "Delete all rules"
 msgstr "Slett alle regler"
 
 msgid "Delete all self-tests"
-msgstr ""
+msgstr "Slett alle selv-tester"
 
-#, fuzzy
 msgid "Delete auth group"
-msgstr "Slett gruppe"
+msgstr "Slett auth gruppe"
 
 msgid "Delete command"
 msgstr "Slett kommando"
 
-#, fuzzy
 msgid "Delete dataset"
-msgstr "Slett mål"
+msgstr "Slett datasett"
 
 msgid "Delete device"
 msgstr "Slett enhet"
@@ -1144,9 +986,8 @@ msgstr "Slett gruppe"
 msgid "Delete initiator"
 msgstr "Slett initiator"
 
-#, fuzzy
 msgid "Delete initiator group"
-msgstr "Slett initiator"
+msgstr ""
 
 msgid "Delete interface"
 msgstr "Slett grensesnitt"
@@ -1163,13 +1004,11 @@ msgstr "Slett monteringspunkt"
 msgid "Delete option"
 msgstr "Slett alternativ"
 
-#, fuzzy
 msgid "Delete pool"
-msgstr "Slett jobb"
+msgstr ""
 
-#, fuzzy
 msgid "Delete portal group"
-msgstr "Slett gruppe"
+msgstr "Slett portal gruppe"
 
 msgid "Delete rule"
 msgstr "Slett regel"
@@ -1225,16 +1064,13 @@ msgstr "Destinasjons port"
 msgid "Destination share"
 msgstr "Mål deling"
 
-#, fuzzy
 msgid "Detected"
-msgstr "Valgt"
+msgstr "Oppdaget"
 
 msgid "Detected RSYNC remote shares"
 msgstr "Oppdaget RSYNC fjern delinger."
 
-msgid ""
-"Determine the default timeout, in microseconds, before the first packet is "
-"retransmitted. The default is 1000000 (1 second)."
+msgid "Determine the default timeout, in microseconds, before the first packet is retransmitted. The default is 1000000 (1 second)."
 msgstr ""
 
 msgid "Device"
@@ -1256,21 +1092,15 @@ msgstr "Enhets navn"
 msgid "Device polling"
 msgstr "Enhets spørring"
 
-msgid ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling."
+msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
 msgstr ""
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Enhet: %s | Total: %s | Brukt: %s | Ledig: %s"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Enhet"
+msgstr "Enheter"
 
 msgid "Diagnostics"
 msgstr "Diagnostikk"
@@ -1300,7 +1130,7 @@ msgid "Directory to incomplete files. An empty field means disable."
 msgstr ""
 
 msgid "Directory to watch for new .torrent files."
-msgstr ""
+msgstr "Katalog for å oppdage nye .torrent-filer"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Slå av AFP-over-Appletalk for å forhindre DDP tilkoblinger."
@@ -1320,9 +1150,7 @@ msgstr "Slå av høytaler pip under oppstart og avslutting."
 msgid "Disabled"
 msgstr "Slått av"
 
-msgid ""
-"Disables :hex translations for anything except dot files. This option makes "
-"the '/' character illegal."
+msgid "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
 msgstr ""
 
 #, php-format
@@ -1330,10 +1158,10 @@ msgid "Discovered iSCSI target for %s"
 msgstr "Oppdaget iSCSI mål for %s"
 
 msgid "Discovery Auth Group"
-msgstr ""
+msgstr "Oppdag Auth gruppe"
 
 msgid "Discovery Auth Method"
-msgstr ""
+msgstr "Oppdag Auth metode"
 
 msgid "Disk"
 msgstr "Disk"
@@ -1348,7 +1176,7 @@ msgid "Disks (ATA)"
 msgstr "Disker (ATA)"
 
 msgid "Distributed hash table"
-msgstr ""
+msgstr "Distribuert hash-tabell"
 
 msgid "Do you really want to delete all MIBs?"
 msgstr "Vil du virkelig slette alle MIB's?"
@@ -1360,7 +1188,7 @@ msgid "Do you really want to delete all rules?"
 msgstr "Vil du virkelig slette alle reglene?"
 
 msgid "Do you really want to delete all scheduled self-tests?"
-msgstr ""
+msgstr "Vil du virkelig slette alle planlagte selv-tester?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "Vil du virkelig slette denne MIB?"
@@ -1371,9 +1199,8 @@ msgstr "Vil du virkelig slette denne Rsync jobben?"
 msgid "Do you really want to delete this URL?"
 msgstr "Vil du virkelig slette denne URL-en?"
 
-#, fuzzy
 msgid "Do you really want to delete this auth group?"
-msgstr "Vil du virkelig slette denne gruppen?"
+msgstr "Vil du virkelig slette den auth gruppen?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Vil du virkelig slette denne kommandoen?"
@@ -1381,19 +1208,14 @@ msgstr "Vil du virkelig slette denne kommandoen?"
 msgid "Do you really want to delete this cron job?"
 msgstr "Vil du virkelig slette denne cron jobben?"
 
-#, fuzzy
 msgid "Do you really want to delete this dataset?"
-msgstr "Vil du virkelig slette dette målet?"
+msgstr "Vil du virkelig slette dette datasettet?"
 
 msgid "Do you really want to delete this device?"
 msgstr "Vil du virkelig slette denne enheten?"
 
-msgid ""
-"Do you really want to delete this disk? All elements that still use it will "
-"become invalid (e.g. share)!"
-msgstr ""
-"Vil du virkelig slette denne disken? Alle elementene som bruker den vil bli "
-"feil (f.eks. delinger)!"
+msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
+msgstr "Vil du virkelig slette denne disken? Alle elementene som bruker den vil bli feil (f.eks. delinger)!"
 
 msgid "Do you really want to delete this extent?"
 msgstr "Vil du virkelig slette dette omfanget?"
@@ -1404,16 +1226,11 @@ msgstr "Vil du virkelig slette denne gruppen?"
 msgid "Do you really want to delete this host?"
 msgstr "Vil du virkelig slette denne verten?"
 
-#, fuzzy
 msgid "Do you really want to delete this initiator group?"
-msgstr "Vil du virkelig slette denne gruppen?"
-
-msgid ""
-"Do you really want to delete this initiator? All elements that still use it "
-"will become invalid (e.g. share)!"
 msgstr ""
-"VIl du virkelig slette denne initiatoren? Alle elementer som bruker den vil "
-"bli invalide (f.eks. delinger)!"
+
+msgid "Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!"
+msgstr "VIl du virkelig slette denne initiatoren? Alle elementer som bruker den vil bli invalide (f.eks. delinger)!"
 
 msgid "Do you really want to delete this interface?"
 msgstr "Vil du virkelig slette dette grensesnittet?"
@@ -1421,23 +1238,17 @@ msgstr "Vil du virkelig slette dette grensesnittet?"
 msgid "Do you really want to delete this module?"
 msgstr "Vil du virkelig slette denne modulen?"
 
-msgid ""
-"Do you really want to delete this mount point? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Vil du virkelig slette dette monterings punktet? Alle elementer som "
-"fremdeles bruker denne vil i invalide (f.eks. delinger)!"
+msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
+msgstr "Vil du virkelig slette dette monterings punktet? Alle elementer som fremdeles bruker denne vil i invalide (f.eks. delinger)!"
 
 msgid "Do you really want to delete this option?"
 msgstr "Vil du virkelig slette dette alternativet?"
 
-#, fuzzy
 msgid "Do you really want to delete this pool?"
-msgstr "Vil du virkelig slette denne modulen?"
+msgstr ""
 
-#, fuzzy
 msgid "Do you really want to delete this portal group?"
-msgstr "Vil du virkelig slette denne gruppen?"
+msgstr "Vil du virkelig slette denne portal-gruppen?"
 
 msgid "Do you really want to delete this route?"
 msgstr "Vil du virkelig slette denne ruten?"
@@ -1458,11 +1269,11 @@ msgid "Do you really want to delete this user?"
 msgstr "Vil du virkelig slette denne brukeren?"
 
 msgid ""
-"Do you really want to delete this volume?\\n!!! Note, all data will get lost "
-"and can not be recovered. !!!"
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
-"Vil du virkelig slette dette volumet?\\n!!! Obs, all data vil forsvinne og "
-"kan ikke bli gjenopprettet. !!!"
+"Vil du virkelig slette dette volumet?\\n"
+"!!! Obs, all data vil forsvinne og kan ikke bli gjenopprettet. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vil du virkelig slette denne disken? Alle data vil forsvinne!"
@@ -1509,14 +1320,11 @@ msgstr "Ikke reklamer for createfileid, resolveid, deleteid kall."
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "Ikke slett MBR (nyttig for noen RAID kontroller kort)"
 
-msgid ""
-"Don't stat volume path when enumerating volumes list, useful for "
-"automounting or volumes created by a preexec script."
+msgid "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
 msgstr ""
 
-#, fuzzy
 msgid "Donate"
-msgstr "dato"
+msgstr "Doner"
 
 msgid "Done"
 msgstr "Ferdig"
@@ -1528,7 +1336,7 @@ msgid "Dos charset"
 msgstr "Dos tegnsett"
 
 msgid "Double-parity RAID-5"
-msgstr ""
+msgstr "Dobbel-paritets RAID-5"
 
 msgid "Download"
 msgstr "Last ned"
@@ -1590,16 +1398,14 @@ msgstr "Endre Rsync job"
 msgid "Edit URL"
 msgstr "Endre URL"
 
-#, fuzzy
 msgid "Edit auth group"
-msgstr "Endre gruppe"
+msgstr "Endre auth-gruppe"
 
 msgid "Edit command"
 msgstr "Rediger kommando"
 
-#, fuzzy
 msgid "Edit dataset"
-msgstr "Endre mål"
+msgstr "Endre datasett"
 
 msgid "Edit device"
 msgstr "Endre enhet"
@@ -1616,9 +1422,8 @@ msgstr "Endre gruppe"
 msgid "Edit initiator"
 msgstr "Endre initiator"
 
-#, fuzzy
 msgid "Edit initiator group"
-msgstr "Endre initiator"
+msgstr "Endre initator-gruppe"
 
 msgid "Edit interface"
 msgstr "Endre grensesnitt"
@@ -1635,13 +1440,11 @@ msgstr "Endre monteringspunkt"
 msgid "Edit option"
 msgstr "Endre alternativ"
 
-#, fuzzy
 msgid "Edit pool"
-msgstr "Endre jobb"
+msgstr ""
 
-#, fuzzy
 msgid "Edit portal group"
-msgstr "Endre gruppe"
+msgstr "Endre portal-gruppe"
 
 msgid "Edit rule"
 msgstr "Rediger regel"
@@ -1695,7 +1498,7 @@ msgid "Enable authentication."
 msgstr "Slå på autentisering"
 
 msgid "Enable automatic disk discovery."
-msgstr ""
+msgstr "Slå på automatisk disk-oppdagelse"
 
 msgid "Enable compression."
 msgstr "Slå på komprimering."
@@ -1710,7 +1513,7 @@ msgid "Enable directory listing."
 msgstr "Slå på kataloglisting."
 
 msgid "Enable distributed hash table."
-msgstr ""
+msgstr "Slå på distribuert hash-tabell"
 
 msgid "Enable domain wildcarding."
 msgstr "Slå på domenejoker."
@@ -1718,19 +1521,14 @@ msgstr "Slå på domenejoker."
 msgid "Enable extended attribute support"
 msgstr "Slå på utvidet attributt støtte."
 
-#, fuzzy
 msgid "Enable extended attributes for this file system."
-msgstr "Slå på utvidet attributt støtte."
+msgstr "Slå på utvidede atributter for dette filsystemet."
 
 msgid "Enable firmware upload"
 msgstr "Slå på fabrikkvare opplasting"
 
-msgid ""
-"Enable foreground/background file system consistency check during boot "
-"process."
-msgstr ""
-"Tillat forgrunns/backgrunns filsystem konsistens sjekk under oppstarts "
-"prosessen."
+msgid "Enable foreground/background file system consistency check during boot process."
+msgstr "Tillat forgrunns/backgrunns filsystem konsistens sjekk under oppstarts prosessen."
 
 msgid "Enable guest access."
 msgstr "Tillat gjeste tilgang"
@@ -1765,18 +1563,14 @@ msgstr "Slå på papirkurven"
 msgid "Enable remote monitoring of the local connected UPS."
 msgstr "Slå på fjernovervåking av den tilkoblede UPSen."
 
-msgid ""
-"Enable reverse DNS lookup performed on the remote host's IP address for "
-"incoming active mode data connections and outgoing passive mode data "
-"connections."
+msgid "Enable reverse DNS lookup performed on the remote host's IP address for incoming active mode data connections and outgoing passive mode data connections."
 msgstr ""
 
 msgid "Enable reverse DNS lookup."
 msgstr "Slå på reversert DNS oppslag."
 
-#, fuzzy
 msgid "Enable serial console"
-msgstr "Slå på bruk av sendfile."
+msgstr ""
 
 msgid "Enable store DOS attributes"
 msgstr "Slå på lagring av DOS attributter"
@@ -1793,9 +1587,8 @@ msgstr "Slå på system strøm kontroll verktøyet."
 msgid "Enable transcoding."
 msgstr "Slå på transkoding"
 
-#, fuzzy
 msgid "Enable traps."
-msgstr "Slå på transkoding"
+msgstr ""
 
 msgid "Enable tuning of some kernel variables"
 msgstr "Slå på finstilling av noen kernel variabler"
@@ -1809,12 +1602,7 @@ msgstr "Slå på web brukergrensesnittet."
 msgid "Enabled"
 msgstr "Slått på"
 
-msgid ""
-"Enables crlf translation for TEXT files, automatically converting macintosh "
-"line breaks into Unix ones. Use of this option might be dangerous since some "
-"older programs store binary data files as type 'TEXT' when saving and switch "
-"the filetype in a second step. Afpd will potentially destroy such files when "
-"'erroneously' changing bytes in order to do line break translation."
+msgid "Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
 msgid "Encrypted"
@@ -1836,36 +1624,20 @@ msgstr "Krypteringsalgoritme som skal brukes."
 msgid "English"
 msgstr "Engelsk"
 
-msgid ""
-"Enter a custom port number for the WebGUI above if you want to override the "
-"default (80 for HTTP, 443 for HTTPS)."
-msgstr ""
-"Skriv inn et eget-definert port nummer for WebGUI over hvis du vil overstyre "
-"standard (80 for HTTP, 443 for HTTPS)."
+msgid "Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
+msgstr "Skriv inn et eget-definert port nummer for WebGUI over hvis du vil overstyre standard (80 for HTTP, 443 for HTTPS)."
 
 msgid "Enter a valid sysctl MIB name."
 msgstr "Skriv inn et gyldig sysctl MIB navn."
 
-msgid ""
-"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-"select it."
-msgstr ""
-"Skriv inn ønsket system tid direkte (format mm/dd/åååå tt:mm) eller bruk "
-"ikonet for å velge det."
+msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
+msgstr "Skriv inn ønsket system tid direkte (format mm/dd/åååå tt:mm) eller bruk ikonet for å velge det."
 
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Skriv inn passordet som skal brukes i WPA-PSK modues. Dette må være mellom 8 "
-"og 63 tegn langt."
+msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."
+msgstr "Skriv inn passordet som skal brukes i WPA-PSK modues. Dette må være mellom 8 og 63 tegn langt."
 
-msgid ""
-"Enter the path to the home directory of that user. Leave this field empty to "
-"use default path /mnt."
-msgstr ""
-"Skriv inn banen til brukerens hjemmeområde. Om feltet er tomt brukes /mnt "
-"som standard."
+msgid "Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."
+msgstr "Skriv inn banen til brukerens hjemmeområde. Om feltet er tomt brukes /mnt som standard."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -1889,12 +1661,8 @@ msgstr "Kjør"
 msgid "Execute command"
 msgstr "Kjør kommando"
 
-msgid ""
-"Execute command pre or post system initialization (booting) or before system "
-"shutdown."
-msgstr ""
-"Kjør kommando før eller etter system initialisering (booting) eller før "
-"systemet blir slått av."
+msgid "Execute command pre or post system initialization (booting) or before system shutdown."
+msgstr "Kjør kommando før eller etter system initialisering (booting) eller før systemet blir slått av."
 
 msgid "Execute now"
 msgstr "Kjør nå"
@@ -1905,9 +1673,8 @@ msgstr "Utløpt"
 msgid "Export"
 msgstr "Eksportér"
 
-#, fuzzy
 msgid "Extended attributes"
-msgstr "Behold utvidede attributter"
+msgstr "Utvidede attributter"
 
 msgid "Extensions"
 msgstr "Utvidelser"
@@ -1915,18 +1682,14 @@ msgstr "Utvidelser"
 msgid "Extent"
 msgstr "Omfang"
 
-#, fuzzy
 msgid "Extent Name"
-msgstr "Omfang navn"
+msgstr ""
 
 msgid "Extent name"
 msgstr "Omfang navn"
 
-msgid ""
-"Extents must be defined before they can be used, and extents cannot be used "
-"more than once."
-msgstr ""
-"Omfang må defineres før de kan brukes og de kan ikke brukes mer enn en gang."
+msgid "Extents must be defined before they can be used, and extents cannot be used more than once."
+msgstr "Omfang må defineres før de kan brukes og de kan ikke brukes mer enn en gang."
 
 msgid "Extra options"
 msgstr "Ekstra alternativer"
@@ -1934,10 +1697,8 @@ msgstr "Ekstra alternativer"
 msgid "Extra options (usually empty)."
 msgstr "Ekstra alternativer (vanligvis tom)."
 
-msgid ""
-"Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect "
-"entered options prevent SSH service to be started."
-msgstr ""
+msgid "Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started."
+msgstr "Extra alternativer til /etc/ssh/sshd_config (vanligvis tom). Obs, feil alternativer kan føre til at SSH-tjenesten ikke starter."
 
 msgid "Extra options to ifconfig (usually empty)."
 msgstr "Ekstra alternativer til ifconfig (vanligvis tomt)."
@@ -1952,10 +1713,10 @@ msgid "FTP"
 msgstr "FTP"
 
 msgid "FTP - Ban module"
-msgstr ""
+msgstr "FTP - Bannlysnings modul"
 
 msgid "FTP - File transfer"
-msgstr ""
+msgstr "FTP - Filoverføring"
 
 msgid "FTP Proxy"
 msgstr "FTP Proxy"
@@ -1972,12 +1733,8 @@ msgstr "FTP server avslått"
 msgid "FXP"
 msgstr "FXP"
 
-msgid ""
-"FXP allows transfers between two remote servers without any file data going "
-"to the client asking for the transfer (insecure!)."
-msgstr ""
-"FXP tillater overføring mellom to tjenere uten at fil data går mellom "
-"klienten som spør om overføringen (usikkert!)."
+msgid "FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!)."
+msgstr "FXP tillater overføring mellom to tjenere uten at fil data går mellom klienten som spør om overføringen (usikkert!)."
 
 msgid "Factory defaults"
 msgstr "Farbrikk standard"
@@ -1996,8 +1753,7 @@ msgid "Failed to send status report to: %s."
 msgstr "Feilet i å sende status rapport til: %s."
 
 #, php-format
-msgid ""
-"Failed to send status report. Please check the <a href='%s'>log</a> files."
+msgid "Failed to send status report. Please check the <a href='%s'>log</a> files."
 msgstr "Feilet i å sende status rapport. Sjekk <a href='%s'>logg</a> filene."
 
 #, php-format
@@ -2014,9 +1770,8 @@ msgstr "Opplasting av fil feilet."
 msgid "Failed to upload metadata backup file."
 msgstr "Feiler i å laste opp metadata sikkerhetskopi."
 
-#, fuzzy
 msgid "Failed to write file to disk."
-msgstr "Feilet i å sende test e-post til: %s."
+msgstr "Feil oppstod ved skriving til disk."
 
 msgid "Failed."
 msgstr "Mislyktes."
@@ -2028,7 +1783,7 @@ msgid "File"
 msgstr "Fil"
 
 msgid "File Editor"
-msgstr ""
+msgstr "Fil redigerer"
 
 msgid "File Manager"
 msgstr "Filhåndterer"
@@ -2042,18 +1797,15 @@ msgstr "Fil ikke funnet"
 msgid "File path"
 msgstr "Fil sti"
 
-#, fuzzy, php-format
+#, php-format
 msgid "File path (e.g. /mnt/sharename/extent/%s) used as extent."
 msgstr ""
-"Filbane (f.eks. /mnt/delingsnavn/extent/%s) eller enhetesnavn (f.eks. /dev/"
-"ad1) brukt som omfang."
 
 msgid "File size"
 msgstr "Fil størrelse"
 
-#, fuzzy
 msgid "File sizeunit"
-msgstr "Fil størrelse"
+msgstr ""
 
 msgid "File system"
 msgstr "Filsystem"
@@ -2104,14 +1856,13 @@ msgid "Format disk"
 msgstr "Formater disk"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Formater rapporten for phpBB forum."
 
 msgid "Forum"
 msgstr "Forum"
 
-#, fuzzy
 msgid "Free"
-msgstr "Gresk"
+msgstr "Ledig"
 
 msgid "Free disk space"
 msgstr "Ledig diskplass"
@@ -2137,9 +1888,8 @@ msgstr "Fullt navn"
 msgid "GID"
 msgstr "GID"
 
-#, fuzzy
 msgid "GPT partition"
-msgstr "Partisjoner"
+msgstr "GPT partisjon"
 
 msgid "Gateway"
 msgstr "Gateway"
@@ -2153,25 +1903,23 @@ msgstr "Genrelt"
 msgid "General Setup"
 msgstr "Generelt Oppsett"
 
-#, fuzzy
 msgid "Generate"
-msgstr "Genrelt"
+msgstr "Generer"
 
 msgid "German"
 msgstr "Tysk"
 
-#, fuzzy
 msgid "Get Target Info"
-msgstr "Mål navn"
+msgstr ""
 
 msgid "GiB"
-msgstr ""
+msgstr "GiB"
 
 msgid "Give only local users access to the web page."
 msgstr "Gi kun lokale brukere tilgang til nettsiden."
 
 msgid "Grant access to the user portal."
-msgstr ""
+msgstr "Gi tilgang til bruker portalen."
 
 msgid "Graph"
 msgstr "Graf"
@@ -2218,9 +1966,8 @@ msgstr "HTTP Proxy"
 msgid "Hard disk standby time"
 msgstr "Hard disk standby tid"
 
-#, fuzzy
 msgid "Hardware"
-msgstr "Fastvare"
+msgstr "Maskinvare"
 
 msgid "Header and Data digest"
 msgstr ""
@@ -2228,9 +1975,8 @@ msgstr ""
 msgid "Header digest"
 msgstr ""
 
-#, fuzzy
 msgid "Health"
-msgstr "Standard"
+msgstr "Helse"
 
 msgid "Help"
 msgstr "Hjelp"
@@ -2245,12 +1991,8 @@ msgid "Hint"
 msgstr "Hint"
 
 #, php-format
-msgid ""
-"Hint: If this is checked, IP addresses in %s logs are resolved to real "
-"hostnames where possible."
-msgstr ""
-"Tips: Hvis denne er på vil IP-adresser i %s logger bli løst til ekte "
-"vertsnavn når det er mulig."
+msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+msgstr "Tips: Hvis denne er på vil IP-adresser i %s logger bli løst til ekte vertsnavn når det er mulig."
 
 msgid "Home directory"
 msgstr "Hjemme mappe"
@@ -2282,32 +2024,23 @@ msgstr "Verter tillatt"
 msgid "Hosts deny"
 msgstr "Verter nektet"
 
-#, fuzzy
 msgid "Hot Spare"
-msgstr "Vertsnavn"
+msgstr ""
 
-#, fuzzy
 msgid "Hours"
-msgstr "timer"
+msgstr "Timer"
 
-msgid ""
-"How often the IP is checked. The period is in seconds (max. is 10 days)."
-msgstr ""
-"Hvor ofte blir IP'en sjekket. Perioden er i sekunder (maks er 10 dager)."
+msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
+msgstr "Hvor ofte blir IP'en sjekket. Perioden er i sekunder (maks er 10 dager)."
 
-msgid ""
-"How often the IP is updated even if it is not changed. The period is in "
-"seconds (max. is 10 days)."
-msgstr ""
-"Hvor ofte IP'en blir oppdatert selv om den ikke er endret. Perioden er i "
-"sekunder (maks er 10 dager)."
+msgid "How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."
+msgstr "Hvor ofte IP'en blir oppdatert selv om den ikke er endret. Perioden er i sekunder (maks er 10 dager)."
 
 msgid "Hungarian"
 msgstr "Ungarsk"
 
-#, fuzzy
 msgid "I/O Timeout"
-msgstr "Tidsbrudd"
+msgstr "I/O tidsavbrudd"
 
 msgid "I/O errors"
 msgstr "I/O feil"
@@ -2323,11 +2056,10 @@ msgid "I/O timeout in seconds (%d by default)."
 msgstr ""
 
 msgid "IG"
-msgstr ""
+msgstr "IG"
 
-#, fuzzy
 msgid "IP"
-msgstr "TKIP"
+msgstr "IP"
 
 msgid "IP address"
 msgstr "IP adresse"
@@ -2335,13 +2067,9 @@ msgstr "IP adresse"
 msgid "IP address of remote syslog server"
 msgstr "IP adressen til den fjerne syslog tjeneren"
 
-#, fuzzy, php-format
-msgid ""
-"IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP "
-"addresses to hostnames&quot;</a> is enabled."
+#, php-format
+msgid "IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"IP adresser blir løst til vertsnavn om <a href=%s>&quot;Løs IP adresser til "
-"vertsnavn&quot;</a> er slått på."
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr "IP eller FQDN til fjern Rsync tjener."
@@ -2388,72 +2116,38 @@ msgstr "Ident protokoll"
 msgid "Identifier"
 msgstr "Identifikator"
 
-msgid ""
-"Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
-"IDLE state, most disks are still spinning, so this is probably not what you "
-"want."
+msgid "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want."
+msgstr "Idle - Sjekk enheten med mindre den er i SLEEP, STANDBY eller IDLE modus. I IDLE modus spinner de fleste disker fremdeles, så dette er sansynligvis ikke hva du vil ha."
+
+msgid "If default root is enabled, a chroot operation is performed immediately after a client authenticates. This can be used to effectively isolate the client from a portion of the host system filespace."
 msgstr ""
 
-msgid ""
-"If default root is enabled, a chroot operation is performed immediately "
-"after a client authenticates. This can be used to effectively isolate the "
-"client from a portion of the host system filespace."
+msgid "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
 msgstr ""
 
-msgid ""
-"If set afpd uses the ID information stored in AppleDouble V2 header files to "
-"reduce database load. Don't set this option if the volume is modified by non "
-"AFP clients (NFS/SMB/local)."
+msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br />Service disruption to users accessing this mount will occur during this process."
 msgstr ""
 
-msgid ""
-"If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only mode."
-"<br />Service disruption to users accessing this mount will occur during "
-"this process."
+msgid "If the server is behind a proxy set this parameters to give local services access to the internet via proxy."
+msgstr "Hvis tjeneren befinner seg bak en proxy, sett dette alternativet for å gi lokale tjenester tilgangt til Internett via proxyen."
+
+msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
 msgstr ""
 
-msgid ""
-"If the server is behind a proxy set this parameters to give local services "
-"access to the internet via proxy."
-msgstr ""
-
-msgid ""
-"If this parameter is set, Samba attempts to first read DOS attributes "
-"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
-"before mapping DOS attributes to UNIX permission bits. When set, DOS "
-"attributes will be stored onto an extended attribute in the UNIX filesystem, "
-"associated with the file or directory."
-msgstr ""
-
-msgid ""
-"If this parameter is set, then users may not create or modify files in the "
-"share."
-msgstr ""
-"Hvis denne er slått på kan brukere ikke lage eller endre filer i delingen."
+msgid "If this parameter is set, then users may not create or modify files in the share."
+msgstr "Hvis denne er slått på kan brukere ikke lage eller endre filer i delingen."
 
 msgid "If this property is disabled, the file system cannot be mounted."
-msgstr ""
+msgstr "Hvis denne er slått av, kan filsystemet ikke monteres."
 
 #, php-format
-msgid ""
-"If you click 'Yes', %s will be reset to factory defaults and will reboot "
-"immediately. The entire system configuration will be overwritten. The LAN IP "
-"address will be reset to %s and the password will be set to '%s'."
-msgstr ""
-"Hvis du trykker 'Ja', vil %s bli resatt til fabrikk instillinger og vil "
-"starte på nytt umiddelbart. Hele systemkonfigurasjonen vil bli skrever over. "
-"LAN IP-adressen vil bli resatt til %s og passordet vil bli satt til '%s'."
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
+msgstr "Hvis du trykker 'Ja', vil %s bli resatt til fabrikk instillinger og vil starte på nytt umiddelbart. Hele systemkonfigurasjonen vil bli skrever over. LAN IP-adressen vil bli resatt til %s og passordet vil bli satt til '%s'."
 
-msgid ""
-"If you want to change the password for accessing the WebGUI, enter it here "
-"twice."
-msgstr ""
-"Hvis du vil endre passordet for å aksessere WebGUI, skriv det inn her to "
-"ganger."
+msgid "If you want to change the password for accessing the WebGUI, enter it here twice."
+msgstr "Hvis du vil endre passordet for å aksessere WebGUI, skriv det inn her to ganger."
 
-msgid ""
-"If you want to change the username for accessing the WebGUI, enter it here."
+msgid "If you want to change the username for accessing the WebGUI, enter it here."
 msgstr "Hvis du vil forandre brukernavn for WebGUI, skriv det inn her"
 
 msgid "Image upload failed (out of memory?)"
@@ -2462,20 +2156,17 @@ msgstr "Opplasting av bilde feilet (tomt for minne?)"
 msgid "Import"
 msgstr "Importér"
 
-#, fuzzy
 msgid "Import disks"
-msgstr "Formater disk"
+msgstr "Importer disker"
 
-#, fuzzy
 msgid "Import disks used in configuration."
-msgstr "Gjennopprett konfigurajson"
+msgstr "Importer disker brukt i denne konfigurasjonen."
 
 msgid "Import firewall rules."
 msgstr "Importer brannmur regler"
 
-#, fuzzy
 msgid "Import on-disk ZFS config"
-msgstr "Ingen disker konfigruert"
+msgstr ""
 
 msgid "In"
 msgstr "Inn"
@@ -2484,11 +2175,10 @@ msgid "In most cases, 'public' is used here."
 msgstr "Som oftest blir 'public' brukt her."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Inkluder grunnleggende maskinvare informasjon."
 
-#, fuzzy
 msgid "Incomplete directory"
-msgstr "Hjemme mappe"
+msgstr ""
 
 msgid "Info"
 msgstr "Info"
@@ -2505,9 +2195,8 @@ msgstr "Arv tillatelser"
 msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
 msgstr ""
 
-#, fuzzy
 msgid "Initial Digest"
-msgstr "Initialiser"
+msgstr ""
 
 msgid "Initialize"
 msgstr "Initialiser"
@@ -2518,17 +2207,13 @@ msgstr "Initialiser og krypter disk."
 msgid "Initializing"
 msgstr "Klargjør"
 
-#, fuzzy
 msgid "Initiator Group"
-msgstr "Initierings navn"
+msgstr ""
 
-#, fuzzy
 msgid "Initiator Groups"
-msgstr "Initierings navn"
+msgstr ""
 
-msgid ""
-"Initiator authorised to access to the iSCSI target.  It takes a name or "
-"'ALL' for any initiators."
+msgid "Initiator authorised to access to the iSCSI target.  It takes a name or 'ALL' for any initiators."
 msgstr ""
 
 msgid "Initiator name"
@@ -2540,21 +2225,20 @@ msgstr ""
 msgid "Initiator side user name. (for mutual CHAP authentication)"
 msgstr ""
 
-#, fuzzy
 msgid "Initiators"
-msgstr "Initierings navn"
+msgstr ""
 
 msgid "Inquiry Product"
-msgstr ""
+msgstr "Spør om produkt"
 
 msgid "Inquiry Revision"
-msgstr ""
+msgstr "Spør om revisjon"
 
 msgid "Inquiry Serial"
-msgstr ""
+msgstr "Spør om serienummer"
 
 msgid "Inquiry Vendor"
-msgstr ""
+msgstr "Spør om forhandler"
 
 msgid "Install"
 msgstr "Installer"
@@ -2578,22 +2262,16 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "Intervallet må være større enn eller lik 10 sekunder."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Ugyldig filformat."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Feil maks. blokk størrelse. Må være innen rekkevidden fra %d til %d."
 
-msgid ""
-"It is impossible to enable 'Anonymous users only' and 'Local users only' "
-"authentication simultaneously."
-msgstr ""
-"Det er ikke mulig å slå på 'Kun anonyme brukere' og 'Kun lokale brukere' "
-"autentisering samtidig."
+msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
+msgstr "Det er ikke mulig å slå på 'Kun anonyme brukere' og 'Kun lokale brukere' autentisering samtidig."
 
-msgid ""
-"It is not recommanded to import non healty pools nor virtual devices that "
-"are part of a non healthy pool."
+msgid "It is not recommanded to import non healty pools nor virtual devices that are part of a non healthy pool."
 msgstr ""
 
 msgid "Italian"
@@ -2602,12 +2280,8 @@ msgstr "Italiensk"
 msgid "JBOD"
 msgstr "JBOD"
 
-msgid ""
-"January February March April May June July August September October November "
-"December"
-msgstr ""
-"Januas Februar Mars April May Juni Juli August September Oktober November "
-"Desember"
+msgid "January February March April May June July August September October November December"
+msgstr "Januas Februar Mars April May Juni Juli August September Oktober November Desember"
 
 msgid "Japanese"
 msgstr "Japansk"
@@ -2636,9 +2310,8 @@ msgstr "LACP (Link Aggregation Control Protocol)"
 msgid "LAGG"
 msgstr "LAGG"
 
-#, fuzzy
 msgid "LAN Management"
-msgstr "Håndering"
+msgstr ""
 
 msgid "LAN net"
 msgstr "LAN nett"
@@ -2646,12 +2319,11 @@ msgstr "LAN nett"
 msgid "LDAP"
 msgstr "LDAP"
 
-#, fuzzy
 msgid "LUN"
-msgstr "LAN"
+msgstr "LUN"
 
 msgid "LUNs"
-msgstr ""
+msgstr "LUNer"
 
 msgid "Language"
 msgstr "Språk"
@@ -2662,35 +2334,30 @@ msgstr "Stor les/skriv"
 msgid "Last config change"
 msgstr "Siste konfig endring"
 
-#, fuzzy
 msgid "Latvian"
-msgstr "Plassering"
+msgstr "Latvisk"
 
-#, fuzzy, php-format
-msgid ""
-"Leave '%s' for unformated disks and format them using <a href='%s'>format</"
-"a> menu."
+#, php-format
+msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr ""
-"Bruk '%s' for uformaterte disker og formater de med <a href=%s>formaterings</"
-"a> menyen."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
-msgstr ""
+msgstr "Nivå 1 - Minimalt strømforbruk med standby (spindown)"
 
 msgid "Level 127 - Intermediate power usage with Standby"
-msgstr ""
+msgstr "Nivå 127 - Middels strømforbruk med standby"
 
 msgid "Level 128 - Minimum power usage without Standby (no spindown)"
-msgstr ""
+msgstr "Nivå 128 - Minimalt strømforbruk uten stadby (ingen spindown)"
 
 msgid "Level 192 - Intermediate power usage without Standby"
-msgstr ""
+msgstr "Nivå 192 - Middels strømforbruk uten standby"
 
 msgid "Level 254 - Maximum performance, maximum power usage"
-msgstr ""
+msgstr "Nivå 254 - Maskimal ytelse, maksimalt strømforbruk"
 
 msgid "Level 64 - Intermediate power usage with Standby"
-msgstr ""
+msgstr "Nivå 64 - Middels strømforbruk med standby"
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
@@ -2705,12 +2372,7 @@ msgstr ""
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol"
 
-msgid ""
-"Limits the amount of space a dataset and its descendants can consume. This "
-"property enforces a hard limit on the amount of space used. This includes "
-"all space consumed by descendants, including file systems and snapshots. To "
-"specify the size use the following human-readable suffixes (for example, "
-"'k', 'KB', 'M', 'Gb', etc.)."
+msgid "Limits the amount of space a dataset and its descendants can consume. This property enforces a hard limit on the amount of space used. This includes all space consumed by descendants, including file systems and snapshots. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Link Aggregation and Failover"
@@ -2719,10 +2381,7 @@ msgstr ""
 msgid "List"
 msgstr "Liste"
 
-msgid ""
-"List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP "
-"(AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP "
-"(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
+msgid "List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP (AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP (Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
 msgstr ""
 
 msgid "List of available target name on all configured iSCSI targets"
@@ -2777,7 +2436,7 @@ msgid "Local user download bandwith in KB/s. An empty field means infinity."
 msgstr "Lokal bruker båndbredde i KB/s. Et tomt felt betyr ubegrenset."
 
 msgid "Local user upload bandwith in KB/s. An empty field means infinity."
-msgstr ""
+msgstr "Lokal båndbredde for opplasting i KB/s. Et tomt felt betyr ubegrenset."
 
 msgid "Local users only"
 msgstr "Lokale brukere kun"
@@ -2785,11 +2444,8 @@ msgstr "Lokale brukere kun"
 msgid "Location"
 msgstr "Plassering"
 
-msgid ""
-"Location information, e.g. physical location of this system: 'Floor of "
-"building, Room xyz'."
-msgstr ""
-"Lokaliserings informasjon, f.eks. fyskisk plassering av systemet: 'Rom XYZ'."
+msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
+msgstr "Lokaliserings informasjon, f.eks. fyskisk plassering av systemet: 'Rom XYZ'."
 
 msgid "Location of the files to share."
 msgstr "Filer som skal deles"
@@ -2797,9 +2453,9 @@ msgstr "Filer som skal deles"
 msgid "Location where the content database file will be stored."
 msgstr "Lokasjon hvor innholdsdatabasen skal lagres."
 
-#, fuzzy, php-format
+#, php-format
 msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
-msgstr "Hvor de nåværende filene vil bli lagret"
+msgstr ""
 
 msgid "Log"
 msgstr "Logg"
@@ -2834,9 +2490,8 @@ msgstr "Innlogging"
 msgid "Login name of user."
 msgstr "Brukers innloggingsnavn"
 
-#, fuzzy
 msgid "Logout"
-msgstr "Logg"
+msgstr "Logg ut"
 
 msgid "Lowercases names in both directions"
 msgstr ""
@@ -2844,9 +2499,8 @@ msgstr ""
 msgid "MAC address"
 msgstr "MAC adresse"
 
-#, fuzzy
 msgid "MBR partition"
-msgstr "Partisjoner"
+msgstr "MBT partisjon"
 
 msgid "MIB"
 msgstr "MIB"
@@ -2870,17 +2524,14 @@ msgid "MTU"
 msgstr "MTU"
 
 msgid "Machine suffix"
-msgstr ""
+msgstr "Maskin suffiks"
 
 msgid "Make sure you have activated S.M.A.R.T. for your devices."
 msgstr "Forsikre deg om at du har aktivert S.M.A.R.T. for dine enheter."
 
 #, php-format
-msgid ""
-"Make sure you have already configured your <a href='%s'>Email</a> settings."
-msgstr ""
-"Sjekk at du allerede har konfigurert dine <a href='%s'>e-post</a> "
-"innstillinger."
+msgid "Make sure you have already configured your <a href='%s'>Email</a> settings."
+msgstr "Sjekk at du allerede har konfigurert dine <a href='%s'>e-post</a> innstillinger."
 
 msgid "Management"
 msgstr "Håndering"
@@ -2906,20 +2557,17 @@ msgstr "Maks. blokk størrelse"
 msgid "Max. conn. per IP"
 msgstr "Maks tilkoblinger per IP"
 
-#, fuzzy
 msgid "Max. connections"
-msgstr "Maksimalt antall tilkoblinger"
+msgstr "Maks tilkoblinger"
 
 msgid "Max. login attempts"
-msgstr ""
+msgstr "Maks innloggings forsøk"
 
-#, fuzzy
 msgid "Max. passive port"
-msgstr "Passive porter"
+msgstr "Maks passiv port"
 
-#, fuzzy
 msgid "Max. sessions"
-msgstr "Utvidelser"
+msgstr "Maks sesjoner"
 
 msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr "Maks. time-to-live (maks. antall hopp) brukt i utgående søke-pakker."
@@ -2939,9 +2587,9 @@ msgstr ""
 msgid "Maximum number of allowed password attempts before disconnection."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Maximum number of connections in each session (%d by default)."
-msgstr "Maksimalt antall tilkoblinger per IP adresse (0 = ubegrenset)."
+msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maksimalt antall tilkoblinger per IP adresse (0 = ubegrenset)."
@@ -2962,9 +2610,8 @@ msgstr "Maksimal ytelse, maksimal akustisk lyd"
 msgid "Media"
 msgstr "Media"
 
-#, fuzzy
 msgid "Media Directory"
-msgstr "Katalog"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr "Middels akustisk lyd"
@@ -2975,16 +2622,14 @@ msgstr "Minne bruk"
 msgid "Message of the day."
 msgstr "Message of the day."
 
-#, fuzzy
 msgid "MiB"
-msgstr "MIB"
+msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
 
-#, fuzzy
 msgid "Min. passive port"
-msgstr "Passive porter"
+msgstr "Min. passive port"
 
 msgid "Minimum"
 msgstr "Minimum"
@@ -2995,19 +2640,17 @@ msgstr "Minimum ledig plass"
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minimal ytelse, Minimal akustisk lyd"
 
-#, fuzzy
 msgid "Minutes"
-msgstr "minutter"
+msgstr "Minutter"
 
 msgid "Minutes between network time sync."
 msgstr "Minutter mellom nettverks tids synk."
 
-#, fuzzy
 msgid "Mirror"
-msgstr "Feil"
+msgstr "Speil"
 
 msgid "Missing a temporary folder."
-msgstr ""
+msgstr "Mangler en midlertidig mappe."
 
 msgid "Mode"
 msgstr "Modus"
@@ -3027,9 +2670,8 @@ msgstr "Modul"
 msgid "Modules"
 msgstr "Moduler"
 
-#, fuzzy
 msgid "Months"
-msgstr "Monteringer"
+msgstr "Måneder"
 
 msgid "Mount Point"
 msgstr "Monteringspunkt"
@@ -3041,9 +2683,7 @@ msgid "Mount point name"
 msgstr "Monteringspunkt navn"
 
 msgid "Mount the file system read-only (even the super-user may not write it)."
-msgstr ""
-"Monter filsystemet som read-only (les-kun), selv ikke superbrukeren kan "
-"skrive til det."
+msgstr "Monter filsystemet som read-only (les-kun), selv ikke superbrukeren kan skrive til det."
 
 msgid "Mounting device."
 msgstr "Monterer enhet"
@@ -3093,12 +2733,8 @@ msgstr "Navnet til NAS verten, uten domene delen. F.eks. %s."
 msgid "Name of the device to use as swap device, e.g. %s."
 msgstr "Navnet på enheten som skal benyttes som swap enhet, f.eks. %s."
 
-msgid ""
-"Name of the server. If this field is left empty the default server is "
-"specified."
-msgstr ""
-"Navnet på tjeneren. Hvis dette feltet er tomt vil standard tjener bli "
-"spesifisert."
+msgid "Name of the server. If this field is left empty the default server is specified."
+msgstr "Navnet på tjeneren. Hvis dette feltet er tomt vil standard tjener bli spesifisert."
 
 msgid "Name of the variable."
 msgstr "Variabelens navn"
@@ -3115,11 +2751,8 @@ msgstr "Nettverk"
 msgid "Network File System"
 msgstr "Network File System"
 
-#, fuzzy
-msgid ""
-"Network authorised to access to the iSCSI target. It takes IP or CIDR "
-"addresses or 'ALL' for any IPs."
-msgstr "Nettverk som er autoriserte til å aksessere dette iSCSI målet."
+msgid "Network authorised to access to the iSCSI target. It takes IP or CIDR addresses or 'ALL' for any IPs."
+msgstr ""
 
 msgid "Network mask"
 msgstr "Nettverksmaske"
@@ -3130,18 +2763,14 @@ msgstr "Nettverks port"
 msgid "Network that is authorised to access the NFS share."
 msgstr "Nettverk som er autorisert til å aksessere NFS-delingen."
 
-#, fuzzy
 msgid "Networks"
 msgstr "Nettverk"
 
-msgid ""
-"Never - Poll (check) the device regardless of its power mode. This may cause "
-"a disk which is spun-down to be spun-up when it is checked."
+msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr ""
 
-#, fuzzy
 msgid "New Device"
-msgstr "Enhet"
+msgstr "Ny enhet"
 
 msgid "No"
 msgstr "Nei"
@@ -3152,57 +2781,48 @@ msgstr "Ingen RSYNC klient konfigruert"
 msgid "No case folding"
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+#, php-format
+msgid "No configured Auth Group. Please add new <a href='%s'>Auth Group</a> first."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"No configured Initiator Group. Please add new <a href='%s'>Initiator Group</"
-"a> first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+#, php-format
+msgid "No configured Initiator Group. Please add new <a href='%s'>Initiator Group</a> first."
+msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"No configured Portal Group. Please add new <a href='%s'>Portal Group</a> "
-"first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+#, php-format
+msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"No configured virtual devices. Please add new <a href='%s'>virtual device</"
-"a> first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+#, php-format
+msgid "No configured virtual devices. Please add new <a href='%s'>virtual device</a> first."
+msgstr ""
 
 msgid "No device selected."
-msgstr ""
+msgstr "Ingen enhet valgt."
 
 msgid "No disk configured"
 msgstr "Ingen disker konfigruert"
 
-#, fuzzy, php-format
+#, php-format
 msgid "No disks available. Please add new <a href='%s'>disk</a> first."
-msgstr "Feilet i å sende test e-post. Sjekk <a href='%s'>logg</a> filene."
+msgstr ""
 
-#, fuzzy
 msgid "No file was uploaded."
-msgstr "Opplasting av fil feilet."
+msgstr "Ingen fil ble lastet opp."
 
 msgid "No pool was found."
 msgstr ""
 
-#, fuzzy
 msgid "Node Base"
-msgstr "Modellnavn"
+msgstr ""
 
 msgid "None"
 msgstr "Ingen"
@@ -3213,14 +2833,8 @@ msgstr "Normal"
 msgid "Norwegian (Bokmal)"
 msgstr "Norsk (bokmål)"
 
-msgid ""
-"Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
-"not explicitly support it, VLAN tagging will still work, but the reduced MTU "
-"may cause problems."
-msgstr ""
-"Ikke alle drivere/kort støtter 8021Q VLAN tagging riktig. På kort som ikke "
-"eksplisitt støtter det vil VLAN tagging fremdeles fungere men redusert MTU "
-"kan skape problemer."
+msgid "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."
+msgstr "Ikke alle drivere/kort støtter 8021Q VLAN tagging riktig. På kort som ikke eksplisitt støtter det vil VLAN tagging fremdeles fungere men redusert MTU kan skape problemer."
 
 msgid "Not attached"
 msgstr "Ikke tilkoblet"
@@ -3228,35 +2842,24 @@ msgstr "Ikke tilkoblet"
 msgid "Note"
 msgstr "Notat"
 
-msgid ""
-"Note! Selecting 'Time Machine' on multiple shares will may cause "
-"unpredictable behavior in MacOS."
+msgid "Note! Selecting 'Time Machine' on multiple shares will may cause unpredictable behavior in MacOS."
 msgstr ""
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
-"minutes, hours, days and months."
-msgstr ""
-"Mark: Ctrl-klikk (eller kommand-klikk på Mac) for å velge og fjerne "
-"minutter, timer, dager og måneder."
+msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
+msgstr "Mark: Ctrl-klikk (eller kommand-klikk på Mac) for å velge og fjerne minutter, timer, dager og måneder."
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
-msgstr ""
-"Tips: CTRL-klikk (eller kommando-klikk på Mac) for å velge og ta vekk "
-"grupper."
+msgid "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgstr "Tips: CTRL-klikk (eller kommando-klikk på Mac) for å velge og ta vekk grupper."
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
+msgid "Note: Ctrl-click (or command-click on the Mac) to select multiple entries."
 msgstr "Obs: Ctrl-klikk (eller kommando-klikk på Mac) for å velge flere."
 
-#, fuzzy
 msgid "Nothing to synchronize"
-msgstr "Lokale delinger som skal synkroniseres"
+msgstr "Ingenting å synkronisere"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Notification email from host: %s"
-msgstr "Test e-post fra vert: %s"
+msgstr "Notifikasjons e-post fra: %s"
 
 msgid "Now"
 msgstr "Nå"
@@ -3295,7 +2898,7 @@ msgid "Occurrence"
 msgstr "Forekomst"
 
 msgid "Off"
-msgstr ""
+msgstr "Av"
 
 msgid "Old passphrase"
 msgstr "Gammelt passord"
@@ -3304,25 +2907,17 @@ msgid "Old password"
 msgstr "Gammelt passord"
 
 msgid "On"
-msgstr ""
+msgstr "På"
 
-msgid ""
-"Only allow anonymous users. Use this on a public FTP site with no remote FTP "
-"access to real accounts."
-msgstr ""
-"Tillat kun anonyme brukere. Bruk dette på en offentlig FTP side uten FTP "
-"tilgang for ekte kontoer."
+msgid "Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."
+msgstr "Tillat kun anonyme brukere. Bruk dette på en offentlig FTP side uten FTP tilgang for ekte kontoer."
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr "Tillat kun autentiserte brukere. Anonyme innlogginger er forbudt."
 
 #, php-format
-msgid ""
-"Open a %s configuration XML file and click the button below to restore the "
-"configuration."
-msgstr ""
-"Åpne en %s konfigurasjon XML fil og klikk knappen nedenfor for å "
-"gjennopprette konfigurasjonen."
+msgid "Open a %s configuration XML file and click the button below to restore the configuration."
+msgstr "Åpne en %s konfigurasjon XML fil og klikk knappen nedenfor for å gjennopprette konfigurasjonen."
 
 msgid "Option"
 msgstr "Alternativ"
@@ -3348,15 +2943,14 @@ msgstr "Utgående e-post tjener"
 msgid "Overwrite already configured disks (only affects filesystem value)."
 msgstr ""
 
-#, fuzzy
 msgid "Overwrite disks configuration"
-msgstr "Trådløs konfigurasjon"
+msgstr "Overskriv diskkonfigurasjon"
 
 msgid "Owner"
 msgstr "Eier"
 
 msgid "PG"
-msgstr ""
+msgstr "PG"
 
 msgid "PHP Command"
 msgstr "PHP kommando"
@@ -3406,14 +3000,7 @@ msgstr "Partisjoner"
 msgid "Passive ports"
 msgstr "Passive porter"
 
-msgid ""
-"Passive ports restricts the range of ports from which the server will select "
-"when sent the PASV command from a client. The server will randomly choose a "
-"number from within the specified range until an open port is found. The port "
-"range selected must be in the non-privileged range (eg. greater than or "
-"equal to 1024). It is strongly recommended that the chosen range be large "
-"enough to handle many simultaneous passive connections (for example, 49152-"
-"65534, the IANA-registered ephemeral port range)."
+msgid "Passive ports restricts the range of ports from which the server will select when sent the PASV command from a client. The server will randomly choose a number from within the specified range until an open port is found. The port range selected must be in the non-privileged range (eg. greater than or equal to 1024). It is strongly recommended that the chosen range be large enough to handle many simultaneous passive connections (for example, 49152-65534, the IANA-registered ephemeral port range)."
 msgstr ""
 
 msgid "Passphrase"
@@ -3464,13 +3051,11 @@ msgstr "Bane til URL relativt til dokument roten."
 msgid "Path to be shared."
 msgstr "Sti som skal deles"
 
-#, fuzzy
 msgid "Peer Secret"
-msgstr "Foretrukket"
+msgstr ""
 
-#, fuzzy
 msgid "Peer User"
-msgstr "Bruker"
+msgstr ""
 
 msgid "Peer exchange"
 msgstr ""
@@ -3507,22 +3092,19 @@ msgid "Please note that blanks in path names are not allowed."
 msgstr "Legg merke til at tomme felter i navn på baner ikke er tilltatt."
 
 msgid "Polish"
-msgstr ""
+msgstr "Polsk"
 
 msgid "Polling time"
 msgstr ""
 
-#, fuzzy
 msgid "Pool"
-msgstr "Proto"
+msgstr ""
 
-#, fuzzy
 msgid "Pool information and status"
-msgstr "Programvare RAID informasjon og status"
+msgstr ""
 
-#, fuzzy
 msgid "Pools"
-msgstr "Verktøy"
+msgstr ""
 
 msgid "Port"
 msgstr "Port"
@@ -3549,24 +3131,17 @@ msgid "Port to listen on. Default port is %d."
 msgstr "Port til å lytte på. Standard er %d."
 
 #, php-format
-msgid ""
-"Port to listen on. Only dynamic or private ports can be used (from %d "
-"through %d). Default port is %d."
-msgstr ""
-"Port til å lytte til. Kun dynamiske eller private porter kan brukes (fra %d "
-"til %d). Standardport er %d."
+msgid "Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."
+msgstr "Port til å lytte til. Kun dynamiske eller private porter kan brukes (fra %d til %d). Standardport er %d."
 
-#, fuzzy
 msgid "Portal Group"
-msgstr "Primær gruppe"
+msgstr "Portal gruppe"
 
-#, fuzzy
 msgid "Portal Groups"
-msgstr "Primær gruppe"
+msgstr "Portal grupper"
 
-#, fuzzy
 msgid "Portals"
-msgstr "Porter"
+msgstr "Portaler"
 
 msgid "Ports"
 msgstr "Porter"
@@ -3646,12 +3221,8 @@ msgstr "Gir kompatabilitet med Apple II klienter."
 msgid "Proxy"
 msgstr "Proxy"
 
-msgid ""
-"Puts the hard disk into standby mode when the selected amount of time after "
-"the last hard disk access has been elapsed."
-msgstr ""
-"Setter harddisken i stand-by modues når den valgte tiden har gått siden "
-"harddisken sist ble brukt."
+msgid "Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed."
+msgstr "Setter harddisken i stand-by modues når den valgte tiden har gått siden harddisken sist ble brukt."
 
 msgid "Queue Depth"
 msgstr ""
@@ -3659,9 +3230,8 @@ msgstr ""
 msgid "Quiet"
 msgstr "Stille"
 
-#, fuzzy
 msgid "Quota"
-msgstr "Stille"
+msgstr "Kvote"
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3687,17 +3257,14 @@ msgstr "RAID5"
 msgid "RSYNC"
 msgstr "RSYNC"
 
-#, fuzzy
 msgid "RSYNC - Client"
-msgstr "RSYNC Klient"
+msgstr "RSYNC - klient"
 
-#, fuzzy
 msgid "RSYNC - Local"
-msgstr "RSYNC Lokal"
+msgstr "RSYNC - lokal"
 
-#, fuzzy
 msgid "RSYNC - Server"
-msgstr "RSYNC hendelser"
+msgstr "RSYNC - server"
 
 msgid "RSYNC Client"
 msgstr "RSYNC Klient"
@@ -3717,9 +3284,8 @@ msgstr "RAID navn"
 msgid "Read"
 msgstr "Les"
 
-#, fuzzy
 msgid "Read Only (ro)"
-msgstr "Kun lesing"
+msgstr ""
 
 msgid "Read Only Access"
 msgstr "Kun lese tilgang"
@@ -3736,25 +3302,20 @@ msgstr "Kun lesing"
 msgid "Read/Write"
 msgstr "Les/Skriv"
 
-#, fuzzy
 msgid "Read/Write (rw)"
-msgstr "Les/Skriv"
-
-msgid ""
-"Read/Write (rw,dynamic) for removable types file size grow and shrink "
-"automatically by EOF (ignore specified size)"
 msgstr ""
 
-msgid ""
-"Read/Write (rw,extend) for removable types extend file size if EOM reached"
+msgid "Read/Write (rw,dynamic) for removable types file size grow and shrink automatically by EOF (ignore specified size)"
+msgstr ""
+
+msgid "Read/Write (rw,extend) for removable types extend file size if EOM reached"
 msgstr ""
 
 msgid "Read/Write Access"
 msgstr "Les/Skriv tilgang"
 
-#, fuzzy
 msgid "Readonly"
-msgstr "Kun lesing"
+msgstr ""
 
 msgid "Realm"
 msgstr "Realm"
@@ -3775,7 +3336,7 @@ msgid "Recycle bin"
 msgstr "Papirkurv"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Oppdater"
 
 msgid "Reject"
 msgstr "Avvis"
@@ -3804,32 +3365,23 @@ msgstr "Fjernovervåking"
 msgid "Remote syslog server"
 msgstr "Fjern syslog tjener"
 
-#, fuzzy
 msgid "Removable"
-msgstr "Løs"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr "Slett alle innslag fra ARP tabellen"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Rapport generator"
 
 msgid "Report generator"
-msgstr ""
+msgstr "Rapport generator"
 
-msgid ""
-"Report if the temperature had changed by at least N degrees Celsius since "
-"last report. Set to 0 to disable this report."
-msgstr ""
-"Rapporter hvis temperaturen har endret seg med minst N grader Celsius siden "
-"siste rapport. Set til 0 for å slå av denne rapporten."
+msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
+msgstr "Rapporter hvis temperaturen har endret seg med minst N grader Celsius siden siste rapport. Set til 0 for å slå av denne rapporten."
 
-msgid ""
-"Report if the temperature is greater or equal than N degrees Celsius. Set to "
-"0 to disable this report."
-msgstr ""
-"Rapporter hvis temperaturen er høyere enn eller lik N grader Celsius. Sett "
-"til 0 for å slå av denne rapporten."
+msgid "Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report."
+msgstr "Rapporter hvis temperaturen er høyere enn eller lik N grader Celsius. Sett til 0 for å slå av denne rapporten."
 
 msgid "Reports"
 msgstr "Rapporter"
@@ -3876,9 +3428,8 @@ msgstr "Reversert DNS oppslag"
 msgid "Romanian"
 msgstr "Romansk"
 
-#, fuzzy
 msgid "Root"
-msgstr "Omstart"
+msgstr "Rot"
 
 msgid "Root bind DN"
 msgstr "Root bind DN"
@@ -3886,9 +3437,8 @@ msgstr "Root bind DN"
 msgid "Root bind password"
 msgstr "Root bind passord"
 
-#, fuzzy
 msgid "Round-robin read"
-msgstr "Roundrobin"
+msgstr ""
 
 msgid "Roundrobin"
 msgstr "Roundrobin"
@@ -3932,9 +3482,8 @@ msgstr "S.M.A.R.T."
 msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. saker"
 
-#, fuzzy
 msgid "S.M.A.R.T. extra options"
-msgstr "S.M.A.R.T. saker"
+msgstr "S.M.A.R.T. ekstra alternativer"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. logg"
@@ -3975,15 +3524,10 @@ msgstr ""
 msgid "Saved file to"
 msgstr "Lagret fil til"
 
-#, fuzzy
 msgid "Scan Targets"
-msgstr "Mål"
+msgstr ""
 
-msgid ""
-"Scan file system every N seconds to see if any files have been added or "
-"removed. Set to 0 to disable background scanning. If background rescanning "
-"is disabled, a scan can still be forced from the status page of the "
-"administrative web interface."
+msgid "Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."
 msgstr ""
 
 msgid "Scan type"
@@ -4007,9 +3551,8 @@ msgstr "Planlagte selv-tester"
 msgid "Scheduled shutdown"
 msgstr "Planlagt slå av"
 
-#, fuzzy
 msgid "Secret"
-msgstr "Sikkerhet"
+msgstr "Hemmelighet"
 
 msgid "Secure Shell"
 msgstr "SSH"
@@ -4065,9 +3608,8 @@ msgstr "Separer e-post adresser med semikolon."
 msgid "Serial Console"
 msgstr ""
 
-#, fuzzy
 msgid "Serial number"
-msgstr "Regel nummer"
+msgstr ""
 
 msgid "Server"
 msgstr "Tjener"
@@ -4108,31 +3650,19 @@ msgstr "Sett kontoens primærgruppe til den oppgitte gruppen."
 msgid "Set the desired Service Set Identifier (aka network name)."
 msgstr "Sett ønsket Service Set Identifier (dvs. nettverks-navnet)."
 
-msgid ""
-"Set the maximum transmission unit of the interface to n, default is "
-"interface specific. The MTU is used to limit the size of packets that are "
-"transmitted on an interface. Not all interfaces support setting the MTU, and "
-"some interfaces have range restrictions."
+msgid "Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."
 msgstr ""
 
 msgid "Sets an alternate mount point for the root dataset. Default is /mnt."
 msgstr ""
 
-msgid ""
-"Sets the database information to be stored in path. You have to specifiy a "
-"writable location, even if the volume is read only."
+msgid "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
 msgstr ""
 
-msgid ""
-"Sets the interval between disk checks to N seconds. The minimum allowed "
-"value is 10."
-msgstr ""
-"Setter intervallet mellom disk-sjekker til N sekunder. Den minste tillatte "
-"verdien er 10."
+msgid "Sets the interval between disk checks to N seconds. The minimum allowed value is 10."
+msgstr "Setter intervallet mellom disk-sjekker til N sekunder. Den minste tillatte verdien er 10."
 
-msgid ""
-"Sets the umask for newly created files to the specified value. The default "
-"is zero (anyone can read or write)."
+msgid "Sets the umask for newly created files to the specified value. The default is zero (anyone can read or write)."
 msgstr ""
 
 msgid "Settings"
@@ -4156,9 +3686,8 @@ msgstr "Delingspassord kan ikke være lengre enn 8 tegn."
 msgid "Shares"
 msgstr "Delinger"
 
-#, fuzzy
 msgid "Shell"
-msgstr "Deling"
+msgstr "Skall"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Vis logg innslag i reversert rekkefølge (nyeste på topp)"
@@ -4179,22 +3708,20 @@ msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
 msgid "Single-parity RAID-5"
-msgstr ""
+msgstr "Enkel paritets RAID-5"
 
 msgid "Size"
 msgstr "Størrelse"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Size of receive buffer (%d by default)."
-msgstr "Størrelse på mottaks bufferen (16384 som standard)."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Size of send buffer (%d by default)."
-msgstr "Størrelse på send bufferen (16384 som standard)."
+msgstr ""
 
-msgid ""
-"Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend "
-"on your disks.)"
+msgid "Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is depend on your disks.)"
 msgstr ""
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
@@ -4216,7 +3743,7 @@ msgid "Software RAID information and status"
 msgstr "Programvare RAID informasjon og status"
 
 msgid "Software used"
-msgstr ""
+msgstr "Programvare brukt"
 
 msgid "Source"
 msgstr "Kilde"
@@ -4245,42 +3772,26 @@ msgstr "Spesifiserer at filsystemet kun skal eksporteres med lese-tilgang."
 msgid "Specifies the command to be run."
 msgstr "Spesifiserer kommandoen som skal kjøres."
 
-msgid ""
-"Specifies the maximum permitted block size. The permitted range for this "
-"parameter is from 512 to 65464."
+msgid "Specifies the maximum permitted block size. The permitted range for this parameter is from 512 to 65464."
 msgstr ""
 
-msgid ""
-"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
-"etc."
-msgstr ""
-"Spesifiserer delingens tegnsett. For eksempel UTF8, UTF8-MAC, ISO-8859-15, "
-"etc."
+msgid "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, etc."
+msgstr "Spesifiserer delingens tegnsett. For eksempel UTF8, UTF8-MAC, ISO-8859-15, etc."
 
 msgid "Specifies the time in hh:mm:ss after which the ban expires."
 msgstr ""
 
-msgid ""
-"Specifies the time interval in hh:mm:ss in which the given number of "
-"occurrences must happen to add the ban."
+msgid "Specifies the time interval in hh:mm:ss in which the given number of occurrences must happen to add the ban."
 msgstr ""
 
 msgid "Specifies the username which the service will run as."
 msgstr ""
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
-msgstr ""
-"Spesifiserer hvorvidt det er tillatt å logge inn som superbruker (root) "
-"direkte."
+msgstr "Spesifiserer hvorvidt det er tillatt å logge inn som superbruker (root) direkte."
 
-msgid ""
-"Specify the percentage of space held back from normal users. Note that "
-"lowering the threshold can adversely affect performance and auto-"
-"defragmentation."
-msgstr ""
-"Spesifiser prosenten av plass hold unne fra normale brukere. Legg merke til "
-"at ved å senke denne kan man negativt påvirke ytelsen og auto-"
-"defragmenteringen."
+msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr "Spesifiser prosenten av plass hold unne fra normale brukere. Legg merke til at ved å senke denne kan man negativt påvirke ytelsen og auto-defragmenteringen."
 
 msgid "Split request"
 msgstr ""
@@ -4288,10 +3799,7 @@ msgstr ""
 msgid "Standard"
 msgstr "Standard"
 
-msgid ""
-"Standby - Check the device unless it is in SLEEP or STANDBY mode. In these "
-"modes most disks are not spinning, so if you want to prevent a laptop disk "
-"from spinning up each poll, this is probably what you want."
+msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want."
 msgstr ""
 
 msgid "Standby time"
@@ -4301,9 +3809,8 @@ msgstr "Standby tid"
 msgid "Start scrub on '%s'."
 msgstr ""
 
-#, fuzzy
 msgid "Static"
-msgstr "Status"
+msgstr "Statisk"
 
 msgid "Static Routes"
 msgstr "Statiske ruter"
@@ -4316,7 +3823,7 @@ msgstr "Status"
 
 #, c-format
 msgid "Status report successfully sent to: %s."
-msgstr ""
+msgstr "Status rapport sendt til: %s"
 
 msgid "Status report successfully sent."
 msgstr "Status rapport sendt vellykket."
@@ -4333,16 +3840,14 @@ msgstr "Lagring"
 msgid "Store DOS attributes"
 msgstr "Lagre DOS attributter"
 
-msgid ""
-"String displayed in the dialog presented to the user when accessing the URL."
+msgid "String displayed in the dialog presented to the user when accessing the URL."
 msgstr ""
 
 msgid "String identifier of the extent."
 msgstr ""
 
-#, fuzzy
 msgid "Stripe"
-msgstr "Tjeneste"
+msgstr "Stripe"
 
 msgid "Subject"
 msgstr "Emne"
@@ -4390,19 +3895,14 @@ msgstr "Bytt til"
 msgid "Switch to %s/s"
 msgstr "Bytt itl %s/s"
 
-#, fuzzy
 msgid "Synchronization time"
-msgstr "Synkroniserings tid"
+msgstr ""
 
-#, fuzzy
 msgid "Synchronize"
-msgstr "Synkroniserings tid"
+msgstr "Synkroniser"
 
 #, php-format
-msgid ""
-"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from %s."
+msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
 msgstr ""
 
 msgid "System"
@@ -4450,34 +3950,29 @@ msgstr "TFTP"
 msgid "TKIP"
 msgstr "TKIP"
 
-#, fuzzy
 msgid "Tag"
-msgstr "Mål"
+msgstr "Tag"
 
-#, fuzzy
 msgid "Tag number"
-msgstr "Regel nummer"
+msgstr ""
 
 #, php-format
 msgid "Tag%d"
-msgstr ""
+msgstr "Tag%d"
 
 #, php-format
 msgid "Tag%d (%s)"
-msgstr ""
+msgstr "Tag%d (%s)"
 
-#, fuzzy
 msgid "Tape"
-msgstr "Type"
+msgstr ""
 
 msgid "Target"
 msgstr "Mål"
 
-#, fuzzy
 msgid "Target Alias"
-msgstr "Mål navn"
+msgstr ""
 
-#, fuzzy
 msgid "Target Name"
 msgstr "Mål navn"
 
@@ -4487,29 +3982,24 @@ msgstr "Mål adresse"
 msgid "Target directory."
 msgstr "Målkatalog"
 
-#, fuzzy
 msgid "Target information"
-msgstr "System informasjon"
+msgstr ""
 
-#, fuzzy
 msgid "Target is not selected."
-msgstr "Målkatalog"
+msgstr ""
 
-#, fuzzy
 msgid "Target list"
-msgstr "Mål"
+msgstr ""
 
 msgid "Target name"
 msgstr "Mål navn"
 
-#, fuzzy
 msgid "Target side secret."
-msgstr "Målkatalog"
+msgstr ""
 
 msgid "Target side user name. It is usually the initiator name by default."
 msgstr ""
 
-#, fuzzy
 msgid "Targets"
 msgstr "Mål"
 
@@ -4539,9 +4029,7 @@ msgstr ""
 msgid "Test email successfully sent."
 msgstr "Sending av test e-post vellykket."
 
-msgid ""
-"The  deny  option specifies users and groups who are not allowed access to "
-"the share. It follows the same  format  as  the  allow option."
+msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
 msgid "The COM port in BIOS has to be enabled before enabling this option."
@@ -4558,13 +4046,9 @@ msgstr "MIB '%s' finnes allerede."
 msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr "MIB '%s' finnes ikke i sysctl."
 
-#, fuzzy, php-format
-msgid ""
-"The RAID volume is currently mounted! Remove the <a href='%s'>mount point</"
-"a> first before proceeding."
+#, php-format
+msgid "The RAID volume is currently mounted! Remove the <a href='%s'>mount point</a> first before proceeding."
 msgstr ""
-"RAID volumet er allerede montert! Fjern <a href=%s>monterings punktet</a> "
-"før du fortsetter."
 
 msgid "The TCP port must be a valid port number."
 msgstr "TCP porten må være et valid port nummer"
@@ -4572,9 +4056,7 @@ msgstr "TCP porten må være et valid port nummer"
 msgid "The VLAN ID must be between 1 and 4094."
 msgstr "VLAN ID må være mellom 1 og 4094."
 
-msgid ""
-"The action which will be executed when the packet match the criteria "
-"specified below."
+msgid "The action which will be executed when the packet match the criteria specified below."
 msgstr ""
 
 msgid "The administrator has been notified to apply your changes."
@@ -4585,41 +4067,28 @@ msgid "The associated MIB files can be found at %s."
 msgstr ""
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid NetBIOS name."
+msgid "The attribute '%s' contains invalid characters and is no valid NetBIOS name."
 msgstr ""
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid domain name."
-msgstr ""
-"Attributten '%s' inneholder invalide tegn og er ikke et valid domenenavn."
+msgid "The attribute '%s' contains invalid characters and is no valid domain name."
+msgstr "Attributten '%s' inneholder invalide tegn og er ikke et valid domenenavn."
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid host name."
-msgstr ""
-"Attributten '%s' inneholder invalide tegn og er ikke et valid tjenernavn."
+msgid "The attribute '%s' contains invalid characters and is no valid host name."
+msgstr "Attributten '%s' inneholder invalide tegn og er ikke et valid tjenernavn."
 
 #, c-format
-msgid ""
-"The attribute '%s' contains invalid characters and is no valid workgroup "
-"name."
-msgstr ""
-"Attributten '%s' inneholder invalide tegn og er ikke et valid arbeidsgruppe-"
-"navn."
+msgid "The attribute '%s' contains invalid characters and is no valid workgroup name."
+msgstr "Attributten '%s' inneholder invalide tegn og er ikke et valid arbeidsgruppe-navn."
 
 #, c-format, php-format
 msgid "The attribute '%s' contains invalid characters."
 msgstr "Attributten '%s' inneholder invalide tegn."
 
 #, c-format
-msgid ""
-"The attribute '%s' contains the illegal character ':' and is no valid "
-"password."
-msgstr ""
-"Attributten '%s' inneholder det invalidet tegnet ';' og er ikke et valid "
-"passord."
+msgid "The attribute '%s' contains the illegal character ':' and is no valid password."
+msgstr "Attributten '%s' inneholder det invalidet tegnet ';' og er ikke et valid passord."
 
 #, c-format
 msgid "The attribute '%s' does not appear to be a valid certificate."
@@ -4666,8 +4135,7 @@ msgid "The attribute '%s' is required."
 msgstr "'%s' attributten er påkrevd."
 
 #, php-format
-msgid ""
-"The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr "Attributtten '%s'  kan kun bestå av tegnene a-z, A-Z, 0-9,_,-."
 
 #, c-format
@@ -4682,44 +4150,30 @@ msgstr "Attributten '%'s må være et tall."
 msgid "The attribute '%s' must be a string."
 msgstr "Attributten '%s' må være en streng."
 
-#, fuzzy, php-format
+#, php-format
 msgid "The attribute '%s' must be in the range from %d to %d."
-msgstr "Attributten '%s' må være en streng."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "The attribute '%s' must be less than '%s'."
-msgstr "Attributten '%s' må være en streng."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must contain at least one entry."
 msgstr ""
 
-msgid ""
-"The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target "
-"name that is not starting with 'iqn.'."
+msgid "The base name (e.g. iqn.2007-09.jp.ne.peach.istgt) will append the target name that is not starting with 'iqn.'."
 msgstr ""
 
-msgid ""
-"The basic configuration usually takes the form of 'daemon : address : "
-"action'. Where daemon is the daemon name of the service started. The address "
-"can be a valid hostname, an IP address or an IPv6 address enclosed in "
-"brackets. The action field can be either allow or deny to grant or deny "
-"access appropriately. Keep in mind that configuration works off a first rule "
-"match semantic, meaning that the configuration file is scanned in ascending "
-"order for a matching rule. When a match is found the rule is applied and the "
-"search process will halt."
+msgid "The basic configuration usually takes the form of 'daemon : address : action'. Where daemon is the daemon name of the service started. The address can be a valid hostname, an IP address or an IPv6 address enclosed in brackets. The action field can be either allow or deny to grant or deny access appropriately. Keep in mind that configuration works off a first rule match semantic, meaning that the configuration file is scanned in ascending order for a matching rule. When a match is found the rule is applied and the search process will halt."
 msgstr ""
 
 msgid "The changes have been applied successfully."
 msgstr "Endringene er tatt i bruk"
 
-#, fuzzy, c-format
-msgid ""
-"The changes have been saved. You have to <a href='%s'>reboot</a> the system "
-"for the changes to take effect."
+#, c-format
+msgid "The changes have been saved. You have to <a href='%s'>reboot</a> the system for the changes to take effect."
 msgstr ""
-"Dine endringer har blitt lagret. Du må <a href=%s>starte på nytt</a> for at "
-"endringene skal bli effektive."
 
 msgid "The cleartext credentials with which to bind."
 msgstr ""
@@ -4730,25 +4184,18 @@ msgstr "Kommando som skal kjøres."
 msgid "The configuration could not be restored."
 msgstr "Konfigurasjon kunne ikke gjennopprettes."
 
-#, fuzzy, php-format
+#, php-format
 msgid "The configuration could not be restored. %s"
-msgstr "Konfigurasjon kunne ikke gjennopprettes."
-
-#, fuzzy
-msgid ""
-"The configuration has been changed.<br />You must apply the changes in order "
-"for them to take effect."
 msgstr ""
-"Konfigurasjonen har blitt endret.<br>Du må ta i bruk endringene for at de "
-"skal bli effektive."
+
+msgid "The configuration has been changed.<br />You must apply the changes in order for them to take effect."
+msgstr ""
 
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr "Konfigurasjonen har blitt gjenopprettet. %s starter på nytt."
 
-msgid ""
-"The confimed password does not match. Please ensure the passwords match "
-"exactly."
+msgid "The confimed password does not match. Please ensure the passwords match exactly."
 msgstr "Passordene stemmer ikke. Sjekk at passordet er helt like."
 
 msgid "The credentials with which to bind."
@@ -4764,9 +4211,7 @@ msgstr "Standard SMTP e-post tjener port, f.eks. 25 eller 587"
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
 msgstr ""
 
-msgid ""
-"The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia "
-"and 192 for 3DES."
+msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -4775,49 +4220,33 @@ msgstr "Enhets navnet kan kun bestå av tegnene a-z, A-Z, 0-9."
 msgid "The device's IP address."
 msgstr "Enhetens IP adresse."
 
-msgid ""
-"The directory containing the files you want to publish. The remote host does "
-"not need to pass along the directory as part of the transfer."
+msgid "The directory containing the files you want to publish. The remote host does not need to pass along the directory as part of the transfer."
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"The disk is currently mounted! <a href='%s'>Unmount</a> this disk first "
-"before proceeding."
+#, php-format
+msgid "The disk is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
 msgstr ""
-"Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
 
-msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
-msgstr ""
-"Disken er for øyeblikket montert! Dette monteringspunktet vil bli "
-"midlertidig fjernet for å utføre den valgte kommandoen."
+msgid "The disk is currently mounted! The mount point will be removed temporary to perform selected command."
+msgstr "Disken er for øyeblikket montert! Dette monteringspunktet vil bli midlertidig fjernet for å utføre den valgte kommandoen."
 
 msgid "The disk/partition is already configured."
+msgstr "Disken/partisjonen er allerede konfigurert."
+
+#, php-format
+msgid "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"The distinguished name with which to bind to the directory server, e.g. %s"
+msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
 #, php-format
-msgid ""
-"The driver used to communicate with your UPS. Get the list of available <a "
-"href='%s' target='_blank'>drivers</a>."
+msgid "The encrypted device is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"The encrypted device is currently mounted! <a href='%s'>Unmount</a> this "
-"disk first before proceeding."
-msgstr ""
-"Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
-
-#, fuzzy
 msgid "The extent name already exists."
-msgstr "En vert med dette navnet eksiterer allerede."
+msgstr ""
 
 #, php-format
 msgid "The firmware is now being installed. %s will reboot automatically."
@@ -4838,9 +4267,7 @@ msgstr "Gruppenavnet inneholder invalide tegn."
 msgid "The host name contain invalid characters."
 msgstr "Vertsnavnet inneholder invalide tegn."
 
-msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ "
-"and ."
+msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
 msgstr "Vertsnavnet kan kun bestå av tegnene a-z, A-Z og 0-0,-,_ og ."
 
 msgid "The image file is corrupt"
@@ -4849,27 +4276,19 @@ msgstr "Bilde filen er korrupt"
 msgid "The initial digest mode negotiated with the initiator."
 msgstr ""
 
-msgid ""
-"The initiator can access to the target via the portals by authorised "
-"initiator names and networks in specific Initiator Group."
+msgid "The initiator can access to the target via the portals by authorised initiator names and networks in specific Initiator Group."
 msgstr ""
 
-msgid ""
-"The initiator can access to the target with correct user and secret in "
-"specific Auth Group."
+msgid "The initiator can access to the target with correct user and secret in specific Auth Group."
 msgstr ""
 
 msgid "The initiator can connect to the portals in specific Portal Group."
 msgstr ""
 
-msgid ""
-"The initiator can discover the targets with correct user and secret in "
-"specific Auth Group."
+msgid "The initiator can discover the targets with correct user and secret in specific Auth Group."
 msgstr ""
 
-msgid ""
-"The istgtcontrol can access the targets with correct user and secret in "
-"specific Auth Group."
+msgid "The istgtcontrol can access the targets with correct user and secret in specific Auth Group."
 msgstr ""
 
 msgid "The login name contains invalid characters."
@@ -4878,9 +4297,8 @@ msgstr "Innloggings navnet inneholder invalide tegn."
 msgid "The login name is a reserved login name."
 msgstr "Innloggings navnet er et reservert innloggings navn."
 
-#, fuzzy
 msgid "The login name is limited to 16 characters."
-msgstr "Innloggings navnet inneholder invalide tegn."
+msgstr ""
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "Antall tilkoblinger per IP må være enten 0 (uendelig) eller høyere."
@@ -4891,45 +4309,33 @@ msgstr ""
 msgid "The maximum idle time be a number."
 msgstr "Maksimum idle tid må være et tall."
 
-msgid ""
-"The maximum port to allocate for PASV style data connections (0 = use any "
-"port)."
+msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
 msgstr ""
 
 msgid "The maximum upload bandwith in KB/s. An empty field means infinity."
 msgstr ""
 
-msgid ""
-"The method can be accepted by the target. Auto means both none and "
-"authentication."
+msgid "The method can be accepted by the target. Auto means both none and authentication."
 msgstr ""
 
-msgid ""
-"The method can be accepted in discovery session. Auto means both none and "
-"authentication."
+msgid "The method can be accepted in discovery session. Auto means both none and authentication."
 msgstr ""
 
 msgid "The method can be accepted in the controller."
 msgstr ""
 
-msgid ""
-"The minimum port to allocate for PASV style data connections (0 = use any "
-"port)."
+msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
 msgstr ""
 
-msgid ""
-"The module provides automatic bans that are triggered based on configurable "
-"criteria. A ban prevents the banned user, host, or class from logging into "
-"the server, it does not prevent the banned user, host, or class from "
-"connecting to the server."
+msgid "The module provides automatic bans that are triggered based on configurable criteria. A ban prevents the banned user, host, or class from logging into the server, it does not prevent the banned user, host, or class from connecting to the server."
 msgstr ""
 
 msgid "The name or IP address of the LDAP server."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "The network '%s' is invalid."
-msgstr "Attributtten '%s' er invalid"
+msgstr ""
 
 msgid "The number of clients must be between 1 and 50."
 msgstr "Antallet klienter må være mellom 1 og 50."
@@ -4946,57 +4352,42 @@ msgstr "Passordet inneholder tegnet ':', dette er ikke mulig."
 msgid "The passwords do not match."
 msgstr "Passordene er ikke like."
 
-#, fuzzy, php-format
+#, php-format
 msgid "The path '%s' does not exist."
-msgstr "MIB '%s' finnes ikke i sysctl."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "The path '%s' is a directory."
-msgstr "'%s' attributten er påkrevd."
+msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "The path '%s' is not a directory."
-msgstr "Attributtten '%s' er ikke en valid IP adresse."
+msgstr ""
 
 msgid "The peer connection encryption mode."
 msgstr ""
 
-msgid ""
-"The permissions on new files and directories are normally governed by create "
-"mask and directory mask but the inherit permissions parameter overrides "
-"this. This can be particularly useful on systems with many users to allow a "
-"single share to be used flexibly by each user."
+msgid "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
 msgstr ""
 
 msgid "The pool name does not match the naming rules."
 msgstr ""
 
-msgid ""
-"The port to listen to. The default is to listen to the tftp port specified "
-"in /etc/services."
+msgid "The port to listen to. The default is to listen to the tftp port specified in /etc/services."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "The portal '%s' is invalid."
-msgstr "Attributtten '%s' er invalid"
-
-msgid ""
-"The portal takes the form of 'address:port'. for example '192.168.1.1:3260' "
-"for IPv4, '[2001:db8:1:1::1]:3260' for IPv6. the port 3260 is standard iSCSI "
-"port number. For any IPs (wildcard address), use '0.0.0.0:3260' and/or "
-"'[::]:3260'. Do not mix wildcard and other IPs at same address family."
 msgstr ""
 
-msgid ""
-"The powerd utility monitors the system state and sets various power control "
-"options accordingly."
+msgid "The portal takes the form of 'address:port'. for example '192.168.1.1:3260' for IPv4, '[2001:db8:1:1::1]:3260' for IPv6. the port 3260 is standard iSCSI port number. For any IPs (wildcard address), use '0.0.0.0:3260' and/or '[::]:3260'. Do not mix wildcard and other IPs at same address family."
 msgstr ""
-"powerd overvåker systemstatusen og setter forskjellige strøm-innstillinger i "
-"forhold til dette."
 
-#, fuzzy
+msgid "The powerd utility monitors the system state and sets various power control options accordingly."
+msgstr "powerd overvåker systemstatusen og setter forskjellige strøm-innstillinger i forhold til dette."
+
 msgid "The queuedepth range is invalid."
-msgstr "Attributtten '%s' er invalid"
+msgstr ""
 
 #, php-format
 msgid "The recommended queue depth is %d."
@@ -5025,12 +4416,8 @@ msgstr ""
 msgid "The subject of the email."
 msgstr "Emnet til eposten."
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take one minute."
-msgstr ""
-"Systemet har blitt gjennomrettet til fabrikk-standarden og starter nå på "
-"nytt. Dette kan ta et minutt."
+msgid "The system has been reset to factory defaults and is now rebooting. This may take one minute."
+msgstr "Systemet har blitt gjennomrettet til fabrikk-standarden og starter nå på nytt. Dette kan ta et minutt."
 
 msgid "The system is halting now. This may take one minute."
 msgstr "Systemet blir nå slått av. Dette kan ta et minutt."
@@ -5038,17 +4425,13 @@ msgstr "Systemet blir nå slått av. Dette kan ta et minutt."
 msgid "The system is rebooting now. This may take one minute."
 msgstr "Systemet starter på nytt nå. Dette kan ta et minutt."
 
-#, fuzzy
 msgid "The tag range is invalid."
-msgstr "Attributtten '%s' er invalid"
+msgstr ""
 
-#, fuzzy
 msgid "The target name already exists."
-msgstr "Delingsnavnet er allerede i bruk."
+msgstr ""
 
-msgid ""
-"The time in seconds until shutdown is initiated. If the UPS happens to come "
-"back before the time is up the shutdown is canceled."
+msgid "The time in seconds until shutdown is initiated. If the UPS happens to come back before the time is up the shutdown is canceled."
 msgstr ""
 
 msgid "The time update interval must be either between 6 and 1440."
@@ -5063,17 +4446,14 @@ msgstr ""
 msgid "The unique user ID is already used."
 msgstr "Den unike bruker ID'en er allerede i bruk."
 
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form."
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
 msgstr ""
 
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 
-#, fuzzy
 msgid "The uploaded file was only partially uploaded."
-msgstr "Det opplastede bilde er ikke for denne platformen"
+msgstr ""
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Det opplastede bilde er ikke for denne platformen"
@@ -5087,9 +4467,8 @@ msgstr "Variabelens verdi."
 msgid "The volume must be detached before it can be deleted."
 msgstr "Volumet på bli koblet fra før det kan slettes."
 
-#, fuzzy
 msgid "The working directory does not exist."
-msgstr "Kombinasjonen av deling og arbeidskatalog finnes ikke."
+msgstr ""
 
 msgid "There are too many additional groups."
 msgstr ""
@@ -5115,46 +4494,29 @@ msgstr "Det må være minst 3 disker i et RAID 5 volum."
 msgid "There must be at least 1 disks selected."
 msgstr ""
 
-#, fuzzy
 msgid "There must be at least 2 disks in a mirror."
-msgstr "Det må være minst 2 disker i et JBOD."
+msgstr ""
 
-#, fuzzy
 msgid "There must be at least 2 disks in a raidz."
-msgstr "Det må være minst 2 disker i et JBOD."
+msgstr ""
 
-#, fuzzy
 msgid "There must be at least 3 disks in a raidz2."
-msgstr "Det må være minst 2 disker i et JBOD."
+msgstr ""
 
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Minst et grensesnitt må velges."
 
-msgid ""
-"There should be enough to handle the maximum level of concurrency from its "
-"clients, typically four to six."
+msgid "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
 msgstr ""
 
-msgid ""
-"These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
-"to a running system."
-msgstr ""
-"MIB vil bli lagt til i /etc/sysctl.conf. Dette lar deg gjøre endringer til "
-"et kjørende system."
+msgid "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system."
+msgstr "MIB vil bli lagt til i /etc/sysctl.conf. Dette lar deg gjøre endringer til et kjørende system."
 
-msgid ""
-"These commands will be executed pre or post system initialization (booting) "
-"or before system shutdown."
-msgstr ""
-"Disse kommandoene vil bli kjørt før eller etter system initialiseringen "
-"(boot) eller før systemet slår seg av."
+msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
+msgstr "Disse kommandoene vil bli kjørt før eller etter system initialiseringen (boot) eller før systemet slår seg av."
 
-msgid ""
-"These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
-"options used by various generic startup scripts."
-msgstr ""
-"Alternativene vil bli lagt til i /etc/rc.conf. Dette lar deg overskrive "
-"alternativer satt av forskjellige generiske oppstarts-skript."
+msgid "These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts."
+msgstr "Alternativene vil bli lagt til i /etc/rc.conf. Dette lar deg overskrive alternativer satt av forskjellige generiske oppstarts-skript."
 
 #, php-format
 msgid "These parameters are added to %s."
@@ -5180,47 +4542,32 @@ msgstr ""
 msgid "These parameters will be added to global settings in %s."
 msgstr ""
 
-msgid ""
-"These parameters will be added to the module configuration in rsyncd.conf."
+msgid "These parameters will be added to the module configuration in rsyncd.conf."
 msgstr ""
 
-msgid ""
-"This LAGG cannot be deleted because it is still being used as an interface."
+msgid "This LAGG cannot be deleted because it is still being used as an interface."
 msgstr ""
 
 msgid "This URL is already configured."
 msgstr "URL'en er allerede konfigurert."
 
-msgid ""
-"This VLAN cannot be deleted because it is still being used as an interface."
-msgstr ""
-"VLAN'et kan ikke slettes fordi det fremdeles blir brukt som et grensesnitt."
+msgid "This VLAN cannot be deleted because it is still being used as an interface."
+msgstr "VLAN'et kan ikke slettes fordi det fremdeles blir brukt som et grensesnitt."
 
-msgid ""
-"This allows you to lower the power consumption of the drive, at the expense "
-"of performance."
-msgstr ""
-"Dette lar deg senke strømforbruket til disken på bekostning av ytelsen."
+msgid "This allows you to lower the power consumption of the drive, at the expense of performance."
+msgstr "Dette lar deg senke strømforbruket til disken på bekostning av ytelsen."
 
 msgid "This allows you to set how loud the drive is while it's operating."
 msgstr "Dette lar deg sette hvor mye disken støyer når den jobber."
 
-msgid ""
-"This allows you to set the file system for preformatted hard disks "
-"containing data."
-msgstr ""
-"Dette lar deg sette filsystemet for ferdigformaterte harddisker som "
-"inneholder data."
+msgid "This allows you to set the file system for preformatted hard disks containing data."
+msgstr "Dette lar deg sette filsystemet for ferdigformaterte harddisker som inneholder data."
 
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
 msgstr "Dette lar deg sette overføringsmodusen for ATA/IDE harddisker."
 
 #, php-format
-msgid ""
-"This configuration settings are used to generate the ups.conf configuration "
-"file which is required by the NUT UPS daemon. To get more information how to "
-"configure your UPS please check the NUT (Network UPS Tools) <a href='%s' "
-"target='_blank'>documentation</a>."
+msgid "This configuration settings are used to generate the ups.conf configuration file which is required by the NUT UPS daemon. To get more information how to configure your UPS please check the NUT (Network UPS Tools) <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
 msgid "This controls how the case of filenames are viewed and stored."
@@ -5232,18 +4579,11 @@ msgstr ""
 msgid "This controls the access to this share with an access password."
 msgstr "Denne kontrollerer adgangen til denne delingen med et adgangspassord."
 
-msgid ""
-"This controls whether the .AppleDouble directory gets created unless "
-"absolutely needed. This option should not be used if files are access mostly "
-"by Mac computers."
+msgid "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
 msgstr ""
 
-msgid ""
-"This controls whether this share is seen in the list of available shares in "
-"a net view and in the browse list."
-msgstr ""
-"Dette styrer om ressursen er synlig i lista over tilgjengelige ressurser i "
-"en nettvisning og i visningslista."
+msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
+msgstr "Dette styrer om ressursen er synlig i lista over tilgjengelige ressurser i en nettvisning og i visningslista."
 
 msgid "This couple targetname/targetaddress already exists in the disk list."
 msgstr ""
@@ -5260,9 +4600,7 @@ msgstr ""
 msgid "This extent is used."
 msgstr ""
 
-msgid ""
-"This forces filenames to be restricted to the character set used by Windows. "
-"This is not recommended for shares used principally by Mac computers."
+msgid "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
 msgid "This function is unsupported. Use it on your own risk!"
@@ -5271,34 +4609,24 @@ msgstr ""
 msgid "This group already exists in the group list."
 msgstr "Gruppen eksisterer allerede i gruppe listen."
 
-msgid ""
-"This is both the name of the server as advertised via Zeroconf/Bonjour/"
-"Rendezvous, and the name of the database exported via DAAP."
+msgid "This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
 
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr "Dette er for informasjon kun (ikke i bruk under iSCSI forhandling)."
 
-msgid ""
-"This may make more efficient use of the system CPU's and cause Samba to be "
-"faster. Samba automatically turns this off for clients that use protocol "
-"levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
+msgid "This may make more efficient use of the system CPU's and cause Samba to be faster. Samba automatically turns this off for clients that use protocol levels lower than NT LM 0.12 and when it detects a client is Windows 9x."
 msgstr ""
 
-msgid ""
-"This means that the image you uploaded is not an official/supported image "
-"and may lead to unexpected behavior or security compromises. Only install "
-"images that come from sources that you trust, and make sure that the image "
-"has not been tampered with.<br /><br />Do you want to install this image "
-"anyway (on your own risk)?"
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br /><br />Do you want to install this image anyway (on your own risk)?"
 msgstr ""
 
 msgid "This name already exists in the disk list."
 msgstr "Navnet eksisterer allerede i disk listen."
 
-#, fuzzy, php-format
+#, php-format
 msgid "This name is for example: %s."
-msgstr "Dette navnet er for eksempel: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Dette navnet er for eksempel: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -5306,128 +4634,73 @@ msgstr "Dette navnet er for eksempel: iqn.2005-01.il.ac.huji.cs:somebody."
 msgid "This name is used to uniquely identify your UPS on this system."
 msgstr ""
 
-msgid ""
-"This option allows the users and groups that access a share to be specified. "
-"Users and groups are specified, delimited by commas. Groups are designated "
-"by a @ prefix."
+msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr ""
 
-msgid ""
-"This option causes rsync to update the remote extended attributes to be the "
-"same as the local ones."
+msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr ""
 
-msgid ""
-"This option causes the receiving rsync to set the destination permissions to "
-"be the same as the source permissions."
+msgid "This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."
 msgstr ""
 
-msgid ""
-"This option determines if this module should be listed when the client asks "
-"for a listing of available modules. By setting this to false you can create "
-"hidden modules."
+msgid "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
 msgstr ""
 
-msgid ""
-"This option is a comma, space, or tab delimited set of host which are NOT "
-"permitted to access this module. Where the lists conflict, the allow list "
-"takes precedence. In the event that it is necessary to deny all by default, "
-"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
-"to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
 msgstr ""
 
-msgid ""
-"This option is a comma, space, or tab delimited set of host which are NOT "
-"permitted to access this share. Where the lists conflict, the allow list "
-"takes precedence. In the event that it is necessary to deny all by default, "
-"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
-"to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
 msgstr ""
 
-msgid ""
-"This option is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this module. You can specify the hosts by name or IP "
-"number. Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
 msgstr ""
 
-msgid ""
-"This option is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this share. You can specify the hosts by name or IP "
-"number. Leave this field empty to use default settings."
+msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
 msgstr ""
 
-msgid ""
-"This option specifies the group name or group ID that file transfers to and "
-"from that module should take place. Leave this field empty to use default "
-"settings."
+msgid "This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings."
 msgstr ""
 
 #, php-format
-msgid ""
-"This option specifies the user name or user ID that file transfers to and "
-"from that module should take place. In combination with the '%s' option this "
-"determines what file permissions are available. Leave this field empty to "
-"use default settings."
+msgid "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
 msgstr ""
 
-msgid ""
-"This page reflects the configuration that has been created with the WebGUI."
+msgid "This page reflects the configuration that has been created with the WebGUI."
 msgstr ""
 
-msgid ""
-"This page reflects the current system configuration. It may be different to "
-"the configuration which has been created with the WebGUI if changes has been "
-"done via command line."
+msgid "This page reflects the current system configuration. It may be different to the configuration which has been created with the WebGUI if changes has been done via command line."
 msgstr ""
 
-msgid ""
-"This parameter controls whether files starting with a dot appear as hidden "
-"files."
-msgstr ""
-"Denne parameteren kontrollere om filer som starter med en punktum skal vises "
-"som skjulte filer."
+msgid "This parameter controls whether files starting with a dot appear as hidden files."
+msgstr "Denne parameteren kontrollere om filer som starter med en punktum skal vises som skjulte filer."
 
-msgid ""
-"This parameter says that if N occurrences of the event happen within the "
-"given time interval, then a ban is automatically added."
+msgid "This parameter says that if N occurrences of the event happen within the given time interval, then a ban is automatically added."
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for groups when these are "
-"added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for groups when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for machines when these are "
-"added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for machines when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for passwords when these "
-"are added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for passwords when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
 #, php-format
-msgid ""
-"This parameter specifies the suffix that is used for users when these are "
-"added to the LDAP directory, e.g. %s"
+msgid "This parameter specifies the suffix that is used for users when these are added to the LDAP directory, e.g. %s"
 msgstr ""
 
-#, fuzzy
 msgid "This pool name already exists."
-msgstr "En vert med dette navnet eksiterer allerede."
+msgstr ""
 
 msgid "This rule is triggered whenever the selected event directive occurs."
 msgstr ""
 
-#, fuzzy
 msgid "This tag already exists."
-msgstr "MIB '%s' finnes allerede."
+msgstr ""
 
 msgid "This tag is used."
 msgstr ""
@@ -5438,35 +4711,23 @@ msgstr "Dette er IP adressen eller DNS navnet til iSCSI målet."
 msgid "This user already exists in the user list."
 msgstr "Brukeren eksisterer allerede i bruker listen."
 
-#, fuzzy
 msgid "This user already exists."
-msgstr "Brukeren eksisterer allerede i bruker listen."
-
-#, fuzzy
-msgid "This virtual device name already exists."
-msgstr "En vert med dette navnet eksiterer allerede."
-
-#, fuzzy, php-format
-msgid ""
-"This will cause %s not to check for newer firmware versions when the <a "
-"href='%s'>%s</a> page is viewed."
 msgstr ""
-"Dette vil gjøre at %s ikke sjekker for nye fabrikkvare versjoner når <a href="
-"%s>%s</a> siden blir vist."
+
+msgid "This virtual device name already exists."
+msgstr ""
+
+#, php-format
+msgid "This will cause %s not to check for newer firmware versions when the <a href='%s'>%s</a> page is viewed."
+msgstr ""
 
 msgid "This will create a recycle bin on the share."
 msgstr "Dette lager en papirkurv på delingen."
 
-msgid ""
-"This will erase ALL data on the selected disks! Do not use this option if "
-"you want to add an already existing RAID again."
-msgstr ""
-"Dette vil slette ALL data på den valgte disken. Ikke bruk dette alternativer "
-"hvis du vil legge til et allerede eksisterende RAID igjen."
+msgid "This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again."
+msgstr "Dette vil slette ALL data på den valgte disken. Ikke bruk dette alternativer hvis du vil legge til et allerede eksisterende RAID igjen."
 
-msgid ""
-"This will erase ALL data on your disk! Do not use this option if you want to "
-"add an existing encrypted disk."
+msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr ""
 
 msgid "TiB"
@@ -5475,9 +4736,8 @@ msgstr ""
 msgid "Time"
 msgstr "Tid"
 
-#, fuzzy
 msgid "Time Machine"
-msgstr "Tidssone"
+msgstr ""
 
 msgid "Time interval"
 msgstr ""
@@ -5497,14 +4757,7 @@ msgstr "Tidsbrudd"
 msgid "Times"
 msgstr ""
 
-msgid ""
-"To configure the target, you must add at least Portal Group and Initiator "
-"Group and Extent.<br />Portal Group which is identified by tag number "
-"defines IP addresses and listening TCP ports.<br />Initiator Group which is "
-"identified by tag number defines authorised initiator names and networks."
-"<br />Auth Group which is identified by tag number and is optional if the "
-"target does not use CHAP authentication defines authorised users and secrets "
-"for additional security.<br />Extent defines the storage area of the target."
+msgid "To configure the target, you must add at least Portal Group and Initiator Group and Extent.<br />Portal Group which is identified by tag number defines IP addresses and listening TCP ports.<br />Initiator Group which is identified by tag number defines authorised initiator names and networks.<br />Auth Group which is identified by tag number and is optional if the target does not use CHAP authentication defines authorised users and secrets for additional security.<br />Extent defines the storage area of the target."
 msgstr ""
 
 msgid "To e-mail"
@@ -5514,33 +4767,21 @@ msgid "To email"
 msgstr "Til epost"
 
 #, php-format
-msgid ""
-"To get detailed informations about TCP Wrappers check the FreeBSD <a href='%"
-"s' target='_blank'>documentation</a>."
+msgid "To get detailed informations about TCP Wrappers check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
 #, php-format
-msgid ""
-"To get detailed informations about writing firewall rules check the FreeBSD "
-"<a href='%s' target='_blank'>documentation</a>."
+msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
 #, php-format
-msgid ""
-"To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
 
-msgid ""
-"To use Active Directory the CIFS/SMB service will enabled, too. The "
-"following services will use AD authentication:<div "
-"id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</"
-"li><li>System</li></ul></div>"
+msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<div id='enumeration'><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul></div>"
 msgstr ""
 
 msgid "Tolerated"
@@ -5553,19 +4794,15 @@ msgstr "Verktøy"
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
-msgstr "Enhet: %s | Total: %s | Brukt: %s | Ledig: %s"
+msgstr ""
 
 msgid "Traceroute"
 msgstr "Traceroute"
 
-msgid ""
-"Traceroute may take a while to complete. You may hit the Stop button on your "
-"browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Traceroute kan ta litt tid å fullføre. Du kan trykke på Stop knappen i din "
-"nettleser når som helst for å se fremgangen til feilede traceroutes."
+msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
+msgstr "Traceroute kan ta litt tid å fullføre. Du kan trykke på Stop knappen i din nettleser når som helst for å se fremgangen til feilede traceroutes."
 
 msgid "Traffic graph"
 msgstr "Trafikk graf"
@@ -5616,22 +4853,12 @@ msgid "UCD-SNMP-MIB"
 msgstr ""
 
 #, php-format
-msgid ""
-"UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
-"of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, "
-"or NTFS can result in unpredictable results, file corruption, and loss of "
-"data!"
+msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
 
 #, php-format
-msgid ""
-"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
-"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
-"can result in unpredictable results, file corruption, and loss of data!"
-msgstr ""
-"UFS er det naturlige filformeter for FreeBAS (operativsystemet til %s). "
-"Forsøk på\"å bruke filsystemer som FAT, FAT32, EXT2, EXT3 eller NTFS kan "
-"ende i uforutsette resultater, fil-korrupsjon og tap av data!"
+msgid "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS er det naturlige filformeter for FreeBAS (operativsystemet til %s). Forsøk på\"å bruke filsystemer som FAT, FAT32, EXT2, EXT3 eller NTFS kan ende i uforutsette resultater, fil-korrupsjon og tap av data!"
 
 msgid "UID"
 msgstr "UID"
@@ -5690,9 +4917,8 @@ msgstr "Ukjent"
 msgid "Unknown or unformatted"
 msgstr "Ukjent eller uformatert"
 
-#, fuzzy
 msgid "Unload"
-msgstr "CPU belastning"
+msgstr ""
 
 msgid "Unmount disk/partition"
 msgstr "Avmonter disk/partisjon"
@@ -5727,12 +4953,8 @@ msgstr "Oppetid"
 msgid "Use AFP3 unix privileges."
 msgstr "Bruk AFP3 UNIX privilegier"
 
-msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
-msgstr ""
-"Bruk et mellomrom for å separere flere verter (kun en er påkrevd). Husk å "
-"sette opp minst en DNS tjener hvis du skriver inn et vertsnavn her!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
+msgstr "Bruk et mellomrom for å separere flere verter (kun en er påkrevd). Husk å sette opp minst en DNS tjener hvis du skriver inn et vertsnavn her!"
 
 msgid "Use sendfile"
 msgstr ""
@@ -5740,26 +4962,20 @@ msgstr ""
 msgid "Use the following IP address as the source address in outgoing packets."
 msgstr "Bruk følgende IP adresse som kildeadresse i utgående pakker."
 
-msgid ""
-"Use the new 64k streaming read and write varient SMB requests introduced "
-"with Windows 2000."
+msgid "Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000."
 msgstr ""
 
 msgid "Use the specified NTP server."
 msgstr "Bruk den spesifiserte NTP tjeneren."
 
 #, php-format
-msgid ""
-"Use this option to override the default permission modes for newly created "
-"files (%s by default)."
+msgid "Use this option to override the default permission modes for newly created files (%s by default)."
 msgstr ""
 
-msgid ""
-"Use this option to override the directory creation mask (022 by default)."
+msgid "Use this option to override the directory creation mask (022 by default)."
 msgstr ""
 
-msgid ""
-"Use this option to override the directory creation mask (0777 by default)."
+msgid "Use this option to override the directory creation mask (0777 by default)."
 msgstr ""
 
 msgid "Use this option to override the file creation mask (0666 by default)."
@@ -5768,17 +4984,11 @@ msgstr ""
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
 
-msgid ""
-"Use this option to override the username ('ftp' by default) which will be "
-"used for access to services which are specified as guest. Whatever "
-"privileges this user has will be available to any client connecting to the "
-"guest service. This user must exist in the password file, but does not "
-"require a valid login."
+msgid "Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login."
 msgstr ""
 
-#, fuzzy
 msgid "Used"
-msgstr "Bruker"
+msgstr ""
 
 msgid "User"
 msgstr "Bruker"
@@ -5789,9 +4999,8 @@ msgstr "Bruker ID"
 msgid "User full name."
 msgstr "Brukers hele navn."
 
-#, fuzzy
 msgid "User mask"
-msgstr "Brukere"
+msgstr ""
 
 msgid "User numeric id."
 msgstr "Brukers numeriske ID"
@@ -5799,9 +5008,8 @@ msgstr "Brukers numeriske ID"
 msgid "User password."
 msgstr "Brukers passord"
 
-#, fuzzy
 msgid "User portal"
-msgstr "Brukers passord"
+msgstr ""
 
 msgid "User suffix"
 msgstr "Bruker suffiks"
@@ -5833,13 +5041,11 @@ msgstr "Variabel"
 msgid "Version"
 msgstr "Versjon"
 
-#, fuzzy
 msgid "Virtual device"
-msgstr "Endre enhet"
+msgstr ""
 
-#, fuzzy
 msgid "Virtual devices"
-msgstr "Endre enhet"
+msgstr ""
 
 msgid "Virtual interface"
 msgstr "Virituellt grensesnitt"
@@ -5885,26 +5091,16 @@ msgstr "Advarsel"
 
 #, php-format
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr ""
-"Advarsel: Dette kan skape en stor forsinkelse i lastingen av %s loggsiden!"
+msgstr "Advarsel: Dette kan skape en stor forsinkelse i lastingen av %s loggsiden!"
 
-msgid ""
-"Warning: You are going to delete a RAID volume. All data will get lost and "
-"can not be recovered."
-msgstr ""
-"Advarsel: Du er på vei til å slette et RAID volum. All data vil bli tapt og "
-"kan ikke gjenopprettes."
+msgid "Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."
+msgstr "Advarsel: Du er på vei til å slette et RAID volum. All data vil bli tapt og kan ikke gjenopprettes."
 
-msgid ""
-"Warning: You are going to delete an encrypted volume. All data will get lost "
-"and can not be recovered."
-msgstr ""
-"Advarsel: Du er på vei til å slette et kryptert volum. All data vil bli tapt "
-"og kan ikke gjenopprettes."
+msgid "Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."
+msgstr "Advarsel: Du er på vei til å slette et kryptert volum. All data vil bli tapt og kan ikke gjenopprettes."
 
-#, fuzzy
 msgid "Watch directory"
-msgstr "Målkatalog"
+msgstr ""
 
 msgid "WebGUI"
 msgstr "WebGUI"
@@ -5915,24 +5111,17 @@ msgstr "Nettjener"
 msgid "Webserver document root is missing."
 msgstr ""
 
-#, fuzzy
 msgid "Week days"
-msgstr "ukedager"
+msgstr ""
 
-msgid ""
-"When a client initially connects to the server the ident protocol is used to "
-"attempt to identify the remote username."
+msgid "When a client initially connects to the server the ident protocol is used to attempt to identify the remote username."
 msgstr ""
 
 msgid "Where to save downloaded data."
 msgstr ""
 
-msgid ""
-"Whether scans should be skipped if there are no users connected. This allows "
-"the drive to spin down when no users are connected."
-msgstr ""
-"Om søk skal hoppes over dersom ingen brukere er koblet til. Dette lar drevet "
-"spinne ned når ingen brukere er tilkoblet."
+msgid "Whether scans should be skipped if there are no users connected. This allows the drive to spin down when no users are connected."
+msgstr "Om søk skal hoppes over dersom ingen brukere er koblet til. Dette lar drevet spinne ned når ingen brukere er tilkoblet."
 
 msgid "Who"
 msgstr "Hvem"
@@ -5946,14 +5135,11 @@ msgstr "Trådløs konfigurasjon"
 msgid "Workgroup"
 msgstr "Arbeidsgruppe"
 
-msgid ""
-"Workgroup the server will appear to be in when queried by clients (maximum "
-"15 characters)."
+msgid "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
 msgstr "Arbeidsgruppen tjeneren vil være i når spurt av klient (maks 15 tegn)."
 
-#, fuzzy
 msgid "Working directory"
-msgstr "Nåværende katalog"
+msgstr ""
 
 msgid "Write"
 msgstr "Skriv"
@@ -5967,37 +5153,22 @@ msgstr ""
 msgid "Yes"
 msgstr "Ja"
 
-#, fuzzy
-msgid ""
-"You can also install a package via SSH or console using the the pkg_add "
-"command.<br />Example: pkg_add -r packagename"
+msgid "You can also install a package via SSH or console using the the pkg_add command.<br />Example: pkg_add -r packagename"
 msgstr ""
-"Du kan også installere pakker via SSH eller console ved å bruke pkg_add "
-"kommandoen.<br />Eksempel: pkg_add -r pakkenavn"
 
 msgid "You can use the following parameters for substitution:"
 msgstr ""
 
-#, fuzzy, php-format
-msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br />"
+#, php-format
+msgid "You can't mount the partition '%s' where the config file is stored.<br />"
 msgstr ""
-"Du kan ikke avmontere partisjonen '%s' hvor config filen blir lagret.<br>"
 
-msgid ""
-"You can't unmount a drive which is used by swap file, a iSCSI-target file or "
-"any other running process!"
-msgstr ""
-"Du kan ikke avmontere et drev som er i bruk av en swap fil, en iSCSI-mål fil "
-"eller en annen kjørende prosess!"
+msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
+msgstr "Du kan ikke avmontere et drev som er i bruk av en swap fil, en iSCSI-mål fil eller en annen kjørende prosess!"
 
-#, fuzzy, php-format
-msgid ""
-"You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this "
-"service to clients."
+#, php-format
+msgid "You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this service to clients."
 msgstr ""
-"Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne "
-"tjenesten til klienter."
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
@@ -6007,9 +5178,7 @@ msgid "You may enter a description here for your reference."
 msgstr "Du kan legge til en beskrivelse her som din referanse."
 
 #, php-format
-msgid ""
-"You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
-"chars)"
+msgid "You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"
 msgstr ""
 
 msgid "You must add disks first."
@@ -6036,13 +5205,11 @@ msgstr ""
 msgid "Your own email address."
 msgstr "Din egen epost adresse."
 
-#, fuzzy
 msgid "ZFS"
-msgstr "NFS"
+msgstr ""
 
-#, fuzzy
 msgid "ZFS dataset information and status"
-msgstr "Programvare RAID informasjon og status"
+msgstr ""
 
 msgid "ZFS dataset properties"
 msgstr ""
@@ -6059,9 +5226,8 @@ msgstr ""
 msgid "cachecnid"
 msgstr "cachecnid"
 
-#, fuzzy
 msgid "change failed."
-msgstr "Pakke fil"
+msgstr ""
 
 msgid "chroot() everyone, but root."
 msgstr "chroot()  alle bortsett fra root."
@@ -6072,9 +5238,8 @@ msgstr ""
 msgid "crlf"
 msgstr "crlf"
 
-#, fuzzy
 msgid "day(s)"
-msgstr "dager"
+msgstr ""
 
 msgid "dbpath"
 msgstr "dbpath"
@@ -6089,9 +5254,8 @@ msgstr ""
 msgid "get target info failed."
 msgstr ""
 
-#, fuzzy
 msgid "hour(s)"
-msgstr "timer"
+msgstr ""
 
 msgid "iSCSI Initiator"
 msgstr "iSCSI initiering"
@@ -6112,13 +5276,11 @@ msgstr "iSCSI initiator slått av"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
-#, fuzzy
 msgid "load/unload failed."
-msgstr "Opplasting av fil feilet."
+msgstr ""
 
-#, fuzzy
 msgid "minute(s)"
-msgstr "minutter"
+msgstr ""
 
 msgid "minutes"
 msgstr "minutter"
@@ -6147,9 +5309,8 @@ msgstr "nofileid"
 msgid "nohex"
 msgstr "nohex"
 
-#, fuzzy
 msgid "none"
-msgstr "Ferdig"
+msgstr ""
 
 msgid "nostat"
 msgstr "nostat"
@@ -6169,9 +5330,8 @@ msgstr "rotated block-interleaved parity"
 msgid "scan target failed."
 msgstr ""
 
-#, fuzzy
 msgid "second(s)"
-msgstr "sekunder"
+msgstr ""
 
 msgid "seconds"
 msgstr "sekunder"
@@ -6179,9 +5339,8 @@ msgstr "sekunder"
 msgid "striping"
 msgstr "striping"
 
-#, fuzzy
 msgid "successfully."
-msgstr "Vellykket"
+msgstr ""
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
@@ -6195,84 +5354,105 @@ msgstr ""
 msgid "upriv"
 msgstr "upriv"
 
-#~ msgid "LAN"
-#~ msgstr "LAN"
+#~ msgid "Date"
+#~ msgstr "dato"
 
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr ""
-#~ "Dette navnet er for eksempel: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgid "hours"
+#~ msgstr "timer"
 
-#~ msgid ""
-#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-#~ "service to clients."
-#~ msgstr ""
-#~ "Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne "
-#~ "tjenesten til klienter."
+#~ msgid "days"
+#~ msgstr "dager"
 
-#~ msgid "%s on %s (%dMHz)"
-#~ msgstr "%s på %s (%dMHz)"
+#~ msgid "day"
+#~ msgstr "dag"
 
-#~ msgid "A valid network bit count must be specified."
-#~ msgstr "Et valid nettverks bit antall må spesifiseres."
+#~ msgid "months"
+#~ msgstr "måneder"
 
-#~ msgid "A valid network must be specified."
-#~ msgstr "Et valid nettverk må spesifiseres."
+#~ msgid "week days"
+#~ msgstr "ukedager"
 
 #~ msgid "Create"
 #~ msgstr "Lag"
 
-#~ msgid "Device is mounted, umount it first before detaching."
-#~ msgstr "Enheten er montert, avmonter den før fjerning."
-
-#~ msgid "Disk Name"
-#~ msgstr "Disk Navn"
-
-#~ msgid "Encrypted disk name"
-#~ msgstr "Kryptert disk navn"
-
-#~ msgid "Give full shell access to user."
-#~ msgstr "Gi full shell tilgang til bruker."
-
-#~ msgid "Invalid port! Port number must be in the range from %d to %d."
-#~ msgstr "Feil port! Port nummere må være mellom %d og %d."
-
-#~ msgid "Last %d %s log entries"
-#~ msgstr "Siste %d %s logg innslagene"
-
-#~ msgid "List of shares"
-#~ msgstr "Liste over delinger"
-
-#~ msgid "Logs"
-#~ msgstr "Logger"
-
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
-#~ msgstr ""
-#~ "Tips: CTRL-klikk (eller kommando-klikk på Mac) for å velge eller fjerne "
-#~ "minutter, timer, dager og måneder."
-
-#~ msgid "Port %s must be less than %s."
-#~ msgstr "Port %s må være lavere enn %s."
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (stripping)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (speiling)"
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "Et valid nettverks bit antall må spesifiseres."
 
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
 
-#~ msgid "Shell access"
-#~ msgstr "Shell tilgang"
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "Logs"
+#~ msgstr "Logger"
+
+#~ msgid "Size in MB."
+#~ msgstr "Størrelse i MB."
+
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgstr ""
+#~ "Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
+
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "RAID volumet er allerede montert! Fjern <a href=%s>monterings punktet</a> "
+#~ "før du fortsetter."
+
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "Du kan ikke avmontere partisjonen '%s' hvor config filen blir lagret.<br>"
+
+#~ msgid "Size of send buffer (16384 by default)."
+#~ msgstr "Størrelse på send bufferen (16384 som standard)."
+
+#~ msgid "Size of receive buffer (16384 by default)."
+#~ msgstr "Størrelse på mottaks bufferen (16384 som standard)."
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "Et valid nettverk må spesifiseres."
+
+#~ msgid "Synchronization Time"
+#~ msgstr "Synkroniserings tid"
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr ""
+#~ "Du trenger kanskje nok plass til å duplikere alle filene som blir "
+#~ "sykroniserte."
+
+#~ msgid "Working Directory"
+#~ msgstr "Nåværende katalog"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "Hvor de nåværende filene vil bli lagret"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Lag arbeids katalog hvis den ikke eksisterer"
 
 #~ msgid "Shutdown Time"
 #~ msgstr "Tid for å slå av"
 
-#~ msgid "Size in MB."
-#~ msgstr "Størrelse i MB."
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "Dette vil gjøre at %s ikke sjekker for nye fabrikkvare versjoner når <a "
+#~ "href=%s>%s</a> siden blir vist."
+
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> må være slått på for at Unison skal fungere og <a "
+#~ "href=%s>brukeren</a> få ha fult Shell slått på."
+
+#~ msgid "Last %d %s log entries"
+#~ msgstr "Siste %d %s logg innslagene"
 
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Konfigurasjon kunne ikke gjennopprettes (fil opplastings feil)."
@@ -6283,19 +5463,139 @@ msgstr "upriv"
 #~ "Denne krypterte disken er montert, avmonter den før du forsøker å koble "
 #~ "den fra."
 
-#~ msgid "You have to define some 'Extent' objects first."
-#~ msgstr "Du må definere 'Extent' objekter først."
-
-#~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Du trenger kanskje nok plass til å duplikere alle filene som blir "
-#~ "sykroniserte."
-
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Du må bruke et passord for å koble til en kryptert disk."
 
-#~ msgid "day"
-#~ msgstr "dag"
+#~ msgid "Encrypted disk name"
+#~ msgstr "Kryptert disk navn"
 
-#~ msgid "months"
-#~ msgstr "måneder"
+#~ msgid "Network that is authorised to access to this iSCSI target."
+#~ msgstr "Nettverk som er autoriserte til å aksessere dette iSCSI målet."
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr ""
+#~ "Dette navnet er for eksempel: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% av %dMB"
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (speiling)"
+
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr ""
+#~ "Dine endringer har blitt lagret. Du må <a href=%s>starte på nytt</a> for "
+#~ "at endringene skal bli effektive."
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "Konfigurasjonen har blitt endret.<br>Du må ta i bruk endringene for at de "
+#~ "skal bli effektive."
+
+#~ msgid "built on"
+#~ msgstr "bygd på"
+
+#~ msgid "Disk Name"
+#~ msgstr "Disk Navn"
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "Enheten er montert, avmonter den før fjerning."
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
+#~ "of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. Bruk disse spesielle aksjonene kun for debugging!<br>2. Det er ikke "
+#~ "nødvendig å bruke denne menyen for å starte et RAID volum (starter "
+#~ "automatisk)."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Gi full shell tilgang til bruker."
+
+#~ msgid "Shell access"
+#~ msgstr "Shell tilgang"
+
+#~ msgid ""
+#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
+#~ "a> menu."
+#~ msgstr ""
+#~ "Bruk '%s' for uformaterte disker og formater de med <a href=%"
+#~ "s>formaterings</a> menyen."
+
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "Feil port! Port nummere må være mellom %d og %d."
+
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "IKKE avslutt firmware oppgraderingen når den har startet. %s vil restarte "
+#~ "automatisk etter å ha lagret den nye firmwaren. Konfigurasjonen vil "
+#~ "vedlikeholdes. <br> Du trenger minst %d MB RAM for å utføre en "
+#~ "firmwareoppgradering.<br> Det anbefales sterkt at du <a href=%"
+#~ "s>sikkerhetskopierer</a> systemkonfigurasjonen før du gjør en "
+#~ "firmwareoppgradering."
+
+#~ msgid "List of shares"
+#~ msgstr "Liste over delinger"
+
+#~ msgid "RSYNC Local"
+#~ msgstr "RSYNC Lokal"
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "Kombinasjonen av deling og arbeidskatalog finnes ikke."
+
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "Filbane (f.eks. /mnt/delingsnavn/extent/%s) eller enhetesnavn (f.eks. /"
+#~ "dev/ad1) brukt som omfang."
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Tips: CTRL-klikk (eller kommando-klikk på Mac) for å velge eller fjerne "
+#~ "minutter, timer, dager og måneder."
+
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "Du kan også installere pakker via SSH eller console ved å bruke pkg_add "
+#~ "kommandoen.<br />Eksempel: pkg_add -r pakkenavn"
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne "
+#~ "tjenesten til klienter."
+
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "IP adresser blir løst til vertsnavn om <a href=%s>&quot;Løs IP adresser "
+#~ "til vertsnavn&quot;</a> er slått på."
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "Du må definere 'Extent' objekter først."
+
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s på %s (%dMHz)"
+
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "Port %s må være lavere enn %s."
