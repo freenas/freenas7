@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-03 11:19+0000\n"
-"PO-Revision-Date: 2010-04-07 02:27+0900\n"
+"PO-Revision-Date: 2010-04-10 17:01+0900\n"
 "Last-Translator: Daisuke Aoyama <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -3067,13 +3067,13 @@ msgstr "ポータルグループがありません。まず最初に新しい <a
 
 #, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
-msgstr "エクステントがありません。まず最初に新しい <a href='%s'>エクステント</a> を追加してください。"
+msgstr "プールがありません。まず最初に新しい <a href='%s'>プール</a> を追加してください。"
 
 #, php-format
 msgid ""
 "No configured virtual devices. Please add new <a href='%s'>virtual "
 "device</a> first."
-msgstr "ポータルグループがありません。まず最初に新しい <a href='%s'>ポータルグループ</a> を追加してください。"
+msgstr "仮想デバイスがありません。まず最初に新しい <a href='%s'>仮想デバイス</a> を追加してください。"
 
 msgid "No device selected."
 msgstr "デバイスが選択されていませんでした。"
