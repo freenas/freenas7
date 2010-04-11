@@ -1,6 +1,6 @@
 diff -c -r /usr/src/sys/dev/nfe/if_nfe.c usr/src/sys/dev/nfe/if_nfe.c
-*** /usr/src/sys/dev/nfe/if_nfe.c	Wed Apr 15 03:14:26 2009
---- usr/src/sys/dev/nfe/if_nfe.c	Sun Apr 26 11:04:17 2009
+*** /usr/src/sys/dev/nfe/if_nfe.c	Wed Feb 10 09:26:20 2010
+--- usr/src/sys/dev/nfe/if_nfe.c	Sat Apr 10 13:26:37 2010
 ***************
 *** 104,109 ****
 --- 104,110 ----
@@ -99,8 +99,8 @@ diff -c -r /usr/src/sys/dev/nfe/if_nfe.c usr/src/sys/dev/nfe/if_nfe.c
 + 
 + }
 diff -c -r /usr/src/sys/dev/nfe/if_nfereg.h usr/src/sys/dev/nfe/if_nfereg.h
-*** /usr/src/sys/dev/nfe/if_nfereg.h	Wed Apr 15 03:14:26 2009
---- usr/src/sys/dev/nfe/if_nfereg.h	Thu Apr 23 20:04:14 2009
+*** /usr/src/sys/dev/nfe/if_nfereg.h	Wed Feb 10 09:26:20 2010
+--- usr/src/sys/dev/nfe/if_nfereg.h	Sat Apr 10 13:26:37 2010
 ***************
 *** 178,183 ****
 --- 178,184 ----
@@ -112,8 +112,8 @@ diff -c -r /usr/src/sys/dev/nfe/if_nfereg.h usr/src/sys/dev/nfe/if_nfereg.h
   
   /* default interrupt moderation timer of 128us */
 diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
-*** /usr/src/sys/pci/if_xl.c	Wed Apr 15 03:14:26 2009
---- usr/src/sys/pci/if_xl.c	Fri May  1 22:09:40 2009
+*** /usr/src/sys/pci/if_xl.c	Wed Feb 10 09:26:20 2010
+--- usr/src/sys/pci/if_xl.c	Sat Apr 10 13:26:37 2010
 ***************
 *** 245,250 ****
 --- 245,251 ----
@@ -166,8 +166,8 @@ diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
   	ifp->if_capabilities |= IFCAP_POLLING;
   #endif
 ***************
-*** 3106,3111 ****
---- 3121,3127 ----
+*** 3110,3115 ****
+--- 3125,3131 ----
   	int			error = 0;
   	struct mii_data		*mii = NULL;
   	u_int8_t		rxfilt;
@@ -176,8 +176,8 @@ diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
   	switch (command) {
   	case SIOCSIFFLAGS:
 ***************
-*** 3163,3168 ****
---- 3179,3185 ----
+*** 3167,3172 ****
+--- 3183,3189 ----
   			    &mii->mii_media, command);
   		break;
   	case SIOCSIFCAP:
@@ -186,8 +186,8 @@ diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
   		if (ifr->ifr_reqcap & IFCAP_POLLING &&
   		    !(ifp->if_capenable & IFCAP_POLLING)) {
 ***************
-*** 3191,3196 ****
---- 3208,3219 ----
+*** 3195,3200 ****
+--- 3212,3223 ----
   			return (error);
   		}
   #endif /* DEVICE_POLLING */
@@ -201,8 +201,8 @@ diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
   		ifp->if_capenable = ifr->ifr_reqcap;
   		if (ifp->if_capenable & IFCAP_TXCSUM)
 ***************
-*** 3330,3335 ****
---- 3353,3359 ----
+*** 3350,3355 ****
+--- 3373,3379 ----
   	XL_LOCK(sc);
   	xl_reset(sc);
   	xl_stop(sc);
@@ -211,8 +211,8 @@ diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
   
   	return (0);
 ***************
-*** 3368,3370 ****
---- 3392,3445 ----
+*** 3388,3390 ****
+--- 3412,3465 ----
   
   	return (0);
   }
@@ -268,8 +268,8 @@ diff -c -r /usr/src/sys/pci/if_xl.c usr/src/sys/pci/if_xl.c
 + 	pci_write_config(sc->xl_dev, XL_PCI_PWRMGMTCTRL, config | XL_PME_EN, 2);
 + }
 diff -c -r /usr/src/sys/pci/if_xlreg.h usr/src/sys/pci/if_xlreg.h
-*** /usr/src/sys/pci/if_xlreg.h	Wed Apr 15 03:14:26 2009
---- usr/src/sys/pci/if_xlreg.h	Sun Apr 26 10:18:23 2009
+*** /usr/src/sys/pci/if_xlreg.h	Wed Feb 10 09:26:20 2010
+--- usr/src/sys/pci/if_xlreg.h	Sat Apr 10 13:26:37 2010
 ***************
 *** 408,413 ****
 --- 408,414 ----
