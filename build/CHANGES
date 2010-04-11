@@ -46,6 +46,39 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
+FreeNAS 0.7.2 (Sabanda):
+------------------------
+
+Majors changes:
+- Upgrade to FreeBSD 7.3.
+
+Minors changes:
+- Add Czech and Slovak translations.
+ 
+Bug fixes:
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+- It is not possible to get seperate CPU stats per processor on SMP machines because
+  FreeBSD does not support that feature.
+- Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
+  overriden by the IPv4 DNS server.
+
+NEED TESTING:
+- IPv6: auto mode
+- All services using IPv6 address (NFS, FTP, etc...)
+- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes
+  samba when accessing to share
+- Need to write an online-test procedure
+
+Help needed:
+- Need help for adding LDAP authentication feature:
+  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
+
 FreeNAS 0.7.1 (Shere):
 ----------------------
 
