@@ -1,5 +1,5 @@
---- ata/ata-all.c.orig	2009-04-15 03:14:26.000000000 +0000
-+++ ata/ata-all.c	2009-05-07 18:17:12.000000000 +0000
+--- ata/ata-all.c.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-all.c	2010-04-10 13:26:20.000000000 +0900
 @@ -75,6 +75,7 @@
  uma_zone_t ata_request_zone;
  uma_zone_t ata_composite_zone;
@@ -18,9 +18,9 @@
  
  /*
   * newbus device interface related functions
---- ata/ata-all.h.orig	2009-04-15 03:14:26.000000000 +0000
-+++ ata/ata-all.h	2009-05-07 18:17:12.000000000 +0000
-@@ -524,6 +524,7 @@
+--- ata/ata-all.h.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-all.h	2010-04-10 13:26:20.000000000 +0900
+@@ -528,6 +528,7 @@
  extern struct intr_config_hook *ata_delayed_attach;
  extern devclass_t ata_devclass;
  extern int ata_wc;
@@ -29,7 +29,7 @@
  
  /* public prototypes */
 --- ata/ata-disk.c.orig	2010-02-10 09:26:20.000000000 +0900
-+++ ata/ata-disk.c	2010-04-10 12:30:44.000000000 +0900
++++ ata/ata-disk.c	2010-04-10 13:26:20.000000000 +0900
 @@ -263,7 +263,7 @@
      }
      request->flags = ATA_R_CONTROL;
@@ -51,9 +51,9 @@
      }
      request->retries = 2;
      request->data = bp->bio_data;
---- ata/ata-chipset.c.orig	2009-05-14 18:41:10.000000000 +0000
-+++ ata/ata-chipset.c	2009-05-14 18:38:26.000000000 +0000
-@@ -5508,6 +5506,7 @@
+--- ata/ata-chipset.c.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-chipset.c	2010-04-10 13:26:20.000000000 +0900
+@@ -5567,6 +5567,7 @@
       { ATA_VIA8237A,  0x00, VIA133, 0x00,    ATA_UDMA6, "8237A" },
       { ATA_VIA8237S,  0x00, VIA133, 0x00,    ATA_UDMA6, "8237S" },
       { ATA_VIA8251,   0x00, VIA133, 0x00,    ATA_UDMA6, "8251" },
@@ -61,7 +61,7 @@
       { 0, 0, 0, 0, 0, 0 }};
      static struct ata_chip_id new_ids[] =
      {{ ATA_VIA6410,   0x00, 0,      0x00,    ATA_UDMA6, "6410" },
-@@ -5516,6 +5515,7 @@
+@@ -5575,6 +5576,7 @@
       { ATA_VIA8237A,  0x00, 7,      0x00,    ATA_SA150, "8237A" },
       { ATA_VIA8237S,  0x00, 7,      0x00,    ATA_SA150, "8237S" },
       { ATA_VIA8251,   0x00, 0,      VIAAHCI, ATA_SA300, "8251" },
@@ -69,9 +69,9 @@
       { 0, 0, 0, 0, 0, 0 }};
  
      if (pci_get_devid(dev) == ATA_VIA82C571) {
---- ata/ata-pci.h.orig	2009-05-14 18:41:01.000000000 +0000
-+++ ata/ata-pci.h	2009-05-14 18:37:03.000000000 +0000
-@@ -414,6 +414,7 @@
+--- ata/ata-pci.h.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-pci.h	2010-04-10 13:26:20.000000000 +0900
+@@ -418,6 +418,7 @@
  #define ATA_VIA6410             0x31641106
  #define ATA_VIA6420             0x31491106
  #define ATA_VIA6421             0x32491106

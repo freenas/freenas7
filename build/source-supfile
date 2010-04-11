@@ -1,4 +1,4 @@
-# $FreeBSD: src/share/examples/cvsup/standard-supfile,v 1.25.2.1.6.2 2009/04/15 04:24:24 kensmith Exp $
+# $FreeBSD: src/share/examples/cvsup/standard-supfile,v 1.25.2.1.8.2 2010/02/10 04:06:29 kensmith Exp $
 #
 # This file contains all of the "CVSup collections" that make up the
 # FreeBSD-current source tree.
@@ -49,7 +49,7 @@
 *default host=cvsup5.FreeBSD.org
 *default base=/var/db
 *default prefix=/usr
-*default release=cvs tag=RELENG_7_2
+*default release=cvs tag=RELENG_7_3
 *default delete use-rel-suffix
 
 # If you seem to be limited by CPU rather than network or disk bandwidth, try
