@@ -1,5 +1,5 @@
---- ata/ata-all.c.orig	2009-04-15 05:14:26.000000000 +0200
-+++ ata/ata-all.c	2010-04-11 03:09:50.000000000 +0200
+--- ata/ata-all.c.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-all.c	2010-04-10 13:26:20.000000000 +0900
 @@ -75,6 +75,7 @@
  uma_zone_t ata_request_zone;
  uma_zone_t ata_composite_zone;
@@ -8,25 +8,19 @@
  int ata_dma_check_80pin = 1;
  
  /* local vars */
-@@ -96,9 +97,12 @@
+@@ -96,6 +97,9 @@
  TUNABLE_INT("hw.ata.wc", &ata_wc);
  SYSCTL_INT(_hw_ata, OID_AUTO, wc, CTLFLAG_RDTUN, &ata_wc, 0,
  	   "ATA disk write caching");
--
--/*
-- * newbus device interface related functions
 +TUNABLE_INT("hw.ata.to", &ata_to);
 +SYSCTL_INT(_hw_ata, OID_AUTO, to, CTLFLAG_RW, &ata_to, 0,
 +	   "ATA disk timeout vis-a-vis power-saving");
-+ 
-+ /*
-+  * newbus device interface related functions
-  */
- int
- ata_probe(device_t dev)
---- ata/ata-all.h.orig	2009-04-15 05:14:26.000000000 +0200
-+++ ata/ata-all.h	2010-04-11 03:12:22.000000000 +0200
-@@ -524,6 +524,7 @@
+ 
+ /*
+  * newbus device interface related functions
+--- ata/ata-all.h.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-all.h	2010-04-10 13:26:20.000000000 +0900
+@@ -528,6 +528,7 @@
  extern struct intr_config_hook *ata_delayed_attach;
  extern devclass_t ata_devclass;
  extern int ata_wc;
@@ -34,28 +28,32 @@
  extern int ata_dma_check_80pin;
  
  /* public prototypes */
---- ata/ata-disk.c.orig	2009-04-15 05:14:26.000000000 +0200
-+++ ata/ata-disk.c	2010-04-11 03:16:03.000000000 +0200
-@@ -260,6 +260,7 @@
+--- ata/ata-disk.c.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-disk.c	2010-04-10 13:26:20.000000000 +0900
+@@ -263,7 +263,7 @@
+     }
      request->flags = ATA_R_CONTROL;
      request->dev = dev;
-     request->timeout = 5;
+-    request->timeout = ATA_REQUEST_TIMEOUT;
 +    request->timeout = ata_to;
      request->retries = 1;
      request->callback = ad_power_callback;
      request->u.ata.command = ATA_STANDBY_IMMEDIATE;
-@@ -293,7 +294,7 @@
+@@ -295,9 +295,9 @@
+     if (atadev->spindown_state) {
+ 	device_printf(dev, "request while spun down, starting.\n");
  	atadev->spindown_state = 0;
- 	request->timeout = 31;
+-	request->timeout = MAX(ATA_REQUEST_TIMEOUT, 31);
++	request->timeout = MAX(ata_to, 31);
      } else {
--	request->timeout = 5;
+-	request->timeout = ATA_REQUEST_TIMEOUT;
 +	request->timeout = ata_to;
      }
      request->retries = 2;
      request->data = bp->bio_data;
---- ata/ata-chipset.c.orig	2009-04-15 05:14:26.000000000 +0200
-+++ ata/ata-chipset.c	2010-04-11 03:19:23.000000000 +0200
-@@ -5506,6 +5506,7 @@
+--- ata/ata-chipset.c.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-chipset.c	2010-04-10 13:26:20.000000000 +0900
+@@ -5567,6 +5567,7 @@
       { ATA_VIA8237A,  0x00, VIA133, 0x00,    ATA_UDMA6, "8237A" },
       { ATA_VIA8237S,  0x00, VIA133, 0x00,    ATA_UDMA6, "8237S" },
       { ATA_VIA8251,   0x00, VIA133, 0x00,    ATA_UDMA6, "8251" },
@@ -63,7 +61,7 @@
       { 0, 0, 0, 0, 0, 0 }};
      static struct ata_chip_id new_ids[] =
      {{ ATA_VIA6410,   0x00, 0,      0x00,    ATA_UDMA6, "6410" },
-@@ -5514,6 +5515,7 @@
+@@ -5575,6 +5576,7 @@
       { ATA_VIA8237A,  0x00, 7,      0x00,    ATA_SA150, "8237A" },
       { ATA_VIA8237S,  0x00, 7,      0x00,    ATA_SA150, "8237S" },
       { ATA_VIA8251,   0x00, 0,      VIAAHCI, ATA_SA300, "8251" },
@@ -71,9 +69,9 @@
       { 0, 0, 0, 0, 0, 0 }};
  
      if (pci_get_devid(dev) == ATA_VIA82C571) {
---- ata/ata-pci.h.orig	2009-04-15 05:14:26.000000000 +0200
-+++ ata/ata-pci.h	2010-04-11 03:20:34.000000000 +0200
-@@ -414,6 +414,7 @@
+--- ata/ata-pci.h.orig	2010-02-10 09:26:20.000000000 +0900
++++ ata/ata-pci.h	2010-04-10 13:26:20.000000000 +0900
+@@ -418,6 +418,7 @@
  #define ATA_VIA6410             0x31641106
  #define ATA_VIA6420             0x31491106
  #define ATA_VIA6421             0x32491106
