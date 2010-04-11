@@ -86,7 +86,9 @@ $g_languages = array (
 	"sq"    => array("codeset" => "UTF-8", "desc" => gettext("Albanian")),
 	"es"    => array("codeset" => "UTF-8", "desc" => gettext("Spanish")),
 	"sv"    => array("codeset" => "UTF-8", "desc" => gettext("Swedish")),
-	"lv"    => array("codeset" => "UTF-8", "desc" => gettext("Latvian"))
+	"lv"    => array("codeset" => "UTF-8", "desc" => gettext("Latvian")),
+	"sk"    => array("codeset" => "UTF-8", "desc" => gettext("Slovak")),
+	"cs"    => array("codeset" => "UTF-8", "desc" => gettext("Czech"))
 );
 
 /* Supported filesystems */

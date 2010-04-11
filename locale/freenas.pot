@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-04 13:19+0000\n"
+"PO-Revision-Date: 2010-04-11 20:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -835,6 +835,9 @@ msgid "Custom script is not found."
 msgstr ""
 
 msgid "Custom script is required."
+msgstr ""
+
+msgid "Czech"
 msgstr ""
 
 msgid "DAAP"
@@ -3364,9 +3367,6 @@ msgstr ""
 msgid "Report Generator"
 msgstr ""
 
-msgid "Report generator"
-msgstr ""
-
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr ""
 
@@ -3715,6 +3715,9 @@ msgid "Size offered to the initiator. (up to 8EiB=8388608TiB. actual size is dep
 msgstr ""
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
+msgstr ""
+
+msgid "Slovak"
 msgstr ""
 
 msgid "Slovenian"
