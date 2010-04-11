@@ -1,13 +1,13 @@
 PORTNAME=				transmission
 PORTVERSION=		1.92
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
 MAINTAINER=			votdev@gmx.de
 
 MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 
-LIB_DEPENDS+=		curl.5:${PORTSDIR}/ftp/curl
+LIB_DEPENDS+=		curl.6:${PORTSDIR}/ftp/curl
 
 USE_GMAKE=			yes
 USE_GNOME?=			pkgconfig
