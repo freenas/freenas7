@@ -81,7 +81,7 @@ sajax_handle_client_request();
 			  </tr>
 			  <tr>
 			    <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
-			    <td width="75%" class="listr"><strong><?=get_product_version();?></strong> <?=get_product_versionname();?> (revision <?=get_product_revision();?>)</td>
+			    <td width="75%" class="listr"><strong><?=get_product_version();?> <?=get_product_versionname();?></strong> (<?=gettext("revision");?> <?=get_product_revision();?>)</td>
 			  </tr>
 			  <tr>
 			    <td width="25%" valign="top" class="vncellt"><?=gettext("Built on");?></td>
