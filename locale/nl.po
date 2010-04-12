@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-06 01:35+0100\n"
+"PO-Revision-Date: 2010-04-12 20:13+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-05 21:08+0000\n"
+"X-Launchpad-Export-Date: 2010-04-12 18:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: Netherlands\n"
 "X-Poedit-Language: Dutch\n"
@@ -842,6 +842,9 @@ msgstr "Er is geen aangepast script gevonden."
 
 msgid "Custom script is required."
 msgstr "Er is een aangepast script nodig."
+
+msgid "Czech"
+msgstr "Tsjechisch"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -3374,9 +3377,6 @@ msgstr "Alle ARP regels verwijderen uit de tabel"
 msgid "Report Generator"
 msgstr "Rapport Generator"
 
-msgid "Report generator"
-msgstr "Rapport generator"
-
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr "Rapporteer wanneer de temperatuur is veranderd met tenminste N graden Celsius na het laatste rapport. Vul 0 in om deze rapportage uit te schakelen."
 
@@ -3726,6 +3726,9 @@ msgstr "Grootte aangeboden aan de initiator. (tot 8EiB = 8388608TiB. werkelijke 
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - Controleert de harde schijf tenzij het zich in de SLAAP mode bevindt."
+
+msgid "Slovak"
+msgstr "Slowaaks"
 
 msgid "Slovenian"
 msgstr "Sloveens"
@@ -5324,6 +5327,9 @@ msgstr "prodos"
 msgid "rc.conf"
 msgstr "rc.conf"
 
+msgid "revision"
+msgstr "revisie"
+
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
@@ -5354,24 +5360,35 @@ msgstr "loskoppelen"
 msgid "upriv"
 msgstr "upriv"
 
+#~ msgid "Report generator"
+#~ msgstr "Rapport generator"
+
 #~ msgid "Date"
 #~ msgstr "Datum"
+
 #~ msgid "hours"
 #~ msgstr "uren"
+
 #~ msgid "day"
 #~ msgstr "dag"
+
 #~ msgid "days"
 #~ msgstr "dagen"
+
 #~ msgid "week days"
 #~ msgstr "weekdagen"
+
 #~ msgid "months"
 #~ msgstr "maanden"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Grootte van de zendbuffer (16384 standaard)."
-

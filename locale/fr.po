@@ -3,18 +3,18 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-07 03:22+0100\n"
+"PO-Revision-Date: 2010-04-12 20:11+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-07 01:12+0000\n"
+"X-Launchpad-Export-Date: 2010-04-12 18:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-"X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
-"X-Poedit-Language: French\n"
 "X-Poedit-Country: FRANCE\n"
+"X-Poedit-Language: French\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
 msgid " interfaces:"
 msgstr " interfaces:"
@@ -843,6 +843,9 @@ msgstr "Script personnalisé non trouvé."
 
 msgid "Custom script is required."
 msgstr "Le script personnalisé est requis."
+
+msgid "Czech"
+msgstr "Tchèque"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -3375,9 +3378,6 @@ msgstr "Supprimer toutes les entrées de la table ARP"
 msgid "Report Generator"
 msgstr "Générateur de rapports"
 
-msgid "Report generator"
-msgstr "Générateur de rapports"
-
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr "Indique si la température a changé d'au moins N degrés Celsius depuis le dernier rapport. Définir à 0 pour désactiver."
 
@@ -3727,6 +3727,9 @@ msgstr "Taille offerte à l'initiateur (jusqu'à 8EiB=8388608TiB. La taille dép
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - Contrôler le disque sauf s'il est dans le mode SLEEP."
+
+msgid "Slovak"
+msgstr "Slovaque"
 
 msgid "Slovenian"
 msgstr "Slovène"
@@ -5325,6 +5328,9 @@ msgstr "prodos"
 msgid "rc.conf"
 msgstr "rc.conf"
 
+msgid "revision"
+msgstr "revision"
+
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
@@ -5354,6 +5360,9 @@ msgstr "démontage"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Report generator"
+#~ msgstr "Générateur de rapports"
 
 #~ msgid "Date"
 #~ msgstr "Date"

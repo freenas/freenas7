@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-08 23:25+0100\n"
+"PO-Revision-Date: 2010-04-12 20:12+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-08 20:56+0000\n"
+"X-Launchpad-Export-Date: 2010-04-12 18:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-"X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: LATVIA\n"
+"X-Poedit-Language: Latvian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 msgid " interfaces:"
@@ -842,6 +842,9 @@ msgstr "Pielāgotais skripts nav atrasts."
 
 msgid "Custom script is required."
 msgstr "Pielāgots skripts ir nepeciešams."
+
+msgid "Czech"
+msgstr "Čehu"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -3374,9 +3377,6 @@ msgstr "Izdzēst visus ierakstus no ARP tabulas"
 msgid "Report Generator"
 msgstr "Pārskata Ģenerators"
 
-msgid "Report generator"
-msgstr "Pārskata ģenerators"
-
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr "Paziņot, ja temperatūra ir mainījusies pa vismaz N grādiem Celsija skalā pēc pēdējā pārskata. Uzstādi uz 0, lai atspējotu šo pārskatu."
 
@@ -3726,6 +3726,9 @@ msgstr "Iniciatoram piedāvātais izmērs. (līdz 8EiB=8388608TiB. Īstais izmē
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Gulēt - Pārbaudīt ierīci, ja vien tā nav GULĒŠANAS režīmā."
+
+msgid "Slovak"
+msgstr "Slovāku"
 
 msgid "Slovenian"
 msgstr "Slovēņu"
@@ -5324,6 +5327,9 @@ msgstr "prodos"
 msgid "rc.conf"
 msgstr "rc.conf"
 
+msgid "revision"
+msgstr "revīzija"
+
 msgid "rotated block-interleaved parity"
 msgstr "rotēts bloka-mijas paritāte"
 
@@ -5354,3 +5360,5 @@ msgstr "aitsaistīt"
 msgid "upriv"
 msgstr "upriv"
 
+#~ msgid "Report generator"
+#~ msgstr "Pārskata ģenerators"
