@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-10 10:44+0100\n"
+"PO-Revision-Date: 2010-04-12 20:11+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-10 08:36+0000\n"
+"X-Launchpad-Export-Date: 2010-04-12 18:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -842,6 +842,9 @@ msgstr "Script personalizado no encontrado"
 
 msgid "Custom script is required."
 msgstr "Es necesario un Script personalizado"
+
+msgid "Czech"
+msgstr "Checo"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -3374,9 +3377,6 @@ msgstr "Borrar todas las entradas de la tabla ARP"
 msgid "Report Generator"
 msgstr "Generador de reporte"
 
-msgid "Report generator"
-msgstr "Generador de reporte"
-
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr "Reportar sí la temperatura ha cambiado a los sumo N grados Celsius desde el ultimo informe. Asignar 0 para desabilitar éste reporte."
 
@@ -3726,6 +3726,9 @@ msgstr "Tamaño ofrecido al iniciador. (Hasta 8EiB=8388608TiB. El tamaño actual
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Dormir - Controla que el dispositivo esté en modo DORMIR"
+
+msgid "Slovak"
+msgstr "Eslovaco"
 
 msgid "Slovenian"
 msgstr "Esloveno"
@@ -5324,6 +5327,9 @@ msgstr "prodos"
 msgid "rc.conf"
 msgstr "rc.conf"
 
+msgid "revision"
+msgstr "revisión"
+
 msgid "rotated block-interleaved parity"
 msgstr "Bloque intercalado de paridad rotado"
 
@@ -5354,30 +5360,35 @@ msgstr "Desmontar"
 msgid "upriv"
 msgstr "upriv"
 
+#~ msgid "Report generator"
+#~ msgstr "Generador de reporte"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr ""
+#~ "Este nombre es por ejemplo: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "Debe activar <a href=%s>Zeroconf/Bonjour</a> para mostrar este servicio a "
+#~ "los clientes."
+
 #~ msgid "Date"
 #~ msgstr "Fecha"
 
 #~ msgid "Create"
 #~ msgstr "Crear"
 
-#~ msgid "LAN"
-#~ msgstr "LAN"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
 
 #~ msgid "Logs"
 #~ msgstr "Registros"
-
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Click &quot;Habilitar la actualización del Sistema Base &quot; a "
-#~ "continuación, luego seleccione el fichero de la imagen a enviar.<br>Click "
-#~ "&quot;Actualizar Sistema Base&quot; para comenzar el proceso de "
-#~ "actualización."
 
 #~ msgid "day"
 #~ msgstr "día"
@@ -5390,6 +5401,157 @@ msgstr "upriv"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Se debe especificar un valor de red válido."
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "Se debe indicar una red válida."
+
+#~ msgid "Synchronization Time"
+#~ msgstr "Hora de Sincronización"
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr ""
+#~ "No existe la combinación de elemento compartido y directorio de trabajo."
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr ""
+#~ "Es posible que necesite espacio suficiente para duplicar todos los "
+#~ "archivos que se van a sincronizar"
+
+#~ msgid "Working Directory"
+#~ msgstr "Directorio de trabajo"
+
+#~ msgid "Where the working files will be stored"
+#~ msgstr "Donde se almacenarán los archivos de trabajo"
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Crear el directorio de trabajo si no existe"
+
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> debe estar activado para que funcione Unison, y el <a "
+#~ "href=%s>usuario</a> debe tener acceso completo a la Consola activado."
+
+#~ msgid "Last %d %s log entries"
+#~ msgstr "Últimas %d %s entradas de registro"
+
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr ""
+#~ "No se ha podido restaurar la configuración (error de subida de archivo)."
+
+#~ msgid "week days"
+#~ msgstr "días de la semana"
+
+#~ msgid "hours"
+#~ msgstr "horas"
+
+#~ msgid "Size in MB."
+#~ msgstr "Tamaño en MB"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Hora de Parada"
+
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Este disco encriptado está montado, desmóntelo antes de tratar de "
+#~ "eliminarlo."
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr "Debe emplear una contraseña para agregar un disco encriptado."
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "Nombre del disco encriptado"
+
+#~ msgid "Network that is authorised to access to this iSCSI target."
+#~ msgstr "Red autorizada para acceder al destino iSCSI."
+
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% de %dMB"
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "El dispositivo está montado, desmóntelo antes de desconectarlo."
+
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more "
+#~ "than once."
+#~ msgstr ""
+#~ "Los dispositivos son utilizados para combinar extensiones u otros "
+#~ "dispositivos. Las extensiones y los dispositivos deben ser definidos "
+#~ "antes de que puedan ser utilizados, y no pueden ser usados más de una vez."
+
+#~ msgid "Disk Name"
+#~ msgstr "Nombre del disco"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr ""
+#~ "¡Puerto inválido! El número de puerto debe estar en el rango de %d a %d."
+
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and "
+#~ "is made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "En el nivel más alto, el objetivo es lo que le es presentado al inicador, "
+#~ "y esta compuesto de uno o más dispositivos, y/o uno o mas extenciones."
+
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "Ruta de archivo (e.g. /mnt/sharename/extent/%s) o nombre de dispositivo "
+#~ "(e.g. /dev/ad1) usado como extensión."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Otorgar al usuario acceso completo a la consola."
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Nota: Ctrl-click (o comando-click en Mac) para seleccionar y o no "
+#~ "minutos, horas, días y meses."
+
+#~ msgid "RSYNC Local"
+#~ msgstr "RSYNC Local"
+
+#~ msgid "Shell access"
+#~ msgstr "Acceso a la consola"
+
+#~ msgid "List of shares"
+#~ msgstr "Lista de partes"
+
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s en %s (%dMHz)"
+
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "El puerto %s debe ser menor que %s."
+
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "El puerto %s debe estar en el rango de %d a %d."
+
+#~ msgid "FTP file transfer"
+#~ msgstr "Transferencia de archivos FTP"
+
+#~ msgid "File transfer"
+#~ msgstr "Transferencia de archivo"
+
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
+#~ msgstr ""
+#~ "Click &quot;Habilitar la actualización del Sistema Base &quot; a "
+#~ "continuación, luego seleccione el fichero de la imagen a enviar.<br>Click "
+#~ "&quot;Actualizar Sistema Base&quot; para comenzar el proceso de "
+#~ "actualización."
 
 #~ msgid ""
 #~ "This means that the image you uploaded is not an official/supported image "
@@ -5435,85 +5597,12 @@ msgstr "upriv"
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Tamaño del buffer de recepción (16384 por defecto)."
 
-#~ msgid "A valid network must be specified."
-#~ msgstr "Se debe indicar una red válida."
-
-#~ msgid "Synchronization Time"
-#~ msgstr "Hora de Sincronización"
-
-#~ msgid "The combination of share and working directory does not exist."
-#~ msgstr ""
-#~ "No existe la combinación de elemento compartido y directorio de trabajo."
-
-#~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Es posible que necesite espacio suficiente para duplicar todos los "
-#~ "archivos que se van a sincronizar"
-
-#~ msgid "Working Directory"
-#~ msgstr "Directorio de trabajo"
-
-#~ msgid "Where the working files will be stored"
-#~ msgstr "Donde se almacenarán los archivos de trabajo"
-
-#~ msgid "Create work directory if it doesn't exist"
-#~ msgstr "Crear el directorio de trabajo si no existe"
-
 #~ msgid ""
 #~ "This will cause %s not to check for newer firmware versions when the <a "
 #~ "href=%s>%s</a> page is viewed."
 #~ msgstr ""
 #~ "Ésto causará que %s no trate de detectar nuevas versiones del Sistema "
 #~ "Base cuando se visualice la página <a href=%s>%s</a>."
-
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> debe estar activado para que funcione Unison, y el <a "
-#~ "href=%s>usuario</a> debe tener acceso completo a la Consola activado."
-
-#~ msgid "Last %d %s log entries"
-#~ msgstr "Últimas %d %s entradas de registro"
-
-#~ msgid "The configuration could not be restored (file upload error)."
-#~ msgstr ""
-#~ "No se ha podido restaurar la configuración (error de subida de archivo)."
-
-#~ msgid "week days"
-#~ msgstr "días de la semana"
-
-#~ msgid "hours"
-#~ msgstr "horas"
-
-#~ msgid "Size in MB."
-#~ msgstr "Tamaño en MB"
-
-#~ msgid "Shutdown Time"
-#~ msgstr "Hora de Parada"
-
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Este disco encriptado está montado, desmóntelo antes de tratar de "
-#~ "eliminarlo."
-
-#~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr "Debe emplear una contraseña para agregar un disco encriptado."
-
-#~ msgid "Encrypted disk name"
-#~ msgstr "Nombre del disco encriptado"
-
-#~ msgid "Network that is authorised to access to this iSCSI target."
-#~ msgstr "Red autorizada para acceder al destino iSCSI."
-
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr ""
-#~ "Este nombre es por ejemplo: iqn.1994-04.org.netbsd.iscsi-target:target0."
-
-#~ msgid "%d%% of %dMB"
-#~ msgstr "%d%% de %dMB"
 
 #~ msgid ""
 #~ "You can also install a package via SSH or console using the the pkg_add "
@@ -5550,9 +5639,6 @@ msgstr "upriv"
 #~ "span></li><li><span class='vexpl'>Acceda a través de webGUI con la nueva "
 #~ "dirección IP</span></li></ul>"
 
-#~ msgid "Device is mounted, umount it first before detaching."
-#~ msgstr "El dispositivo está montado, desmóntelo antes de desconectarlo."
-
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
 #~ "automatically after storing the new firmware. The configuration will be "
@@ -5568,60 +5654,11 @@ msgstr "upriv"
 #~ "sistema antes de realizar la actualización del firmware."
 
 #~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more "
-#~ "than once."
-#~ msgstr ""
-#~ "Los dispositivos son utilizados para combinar extensiones u otros "
-#~ "dispositivos. Las extensiones y los dispositivos deben ser definidos "
-#~ "antes de que puedan ser utilizados, y no pueden ser usados más de una vez."
-
-#~ msgid "Disk Name"
-#~ msgstr "Nombre del disco"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (mirroring)"
-
-#~ msgid "RAID 0 (stripping)"
-#~ msgstr "RAID 0 (stripping)"
-
-#~ msgid "Invalid port! Port number must be in the range from %d to %d."
-#~ msgstr ""
-#~ "¡Puerto inválido! El número de puerto debe estar en el rango de %d a %d."
-
-#~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and "
-#~ "is made up of one or more devices, and/or one or more extents."
-#~ msgstr ""
-#~ "En el nivel más alto, el objetivo es lo que le es presentado al inicador, "
-#~ "y esta compuesto de uno o más dispositivos, y/o uno o mas extenciones."
-
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "Ruta de archivo (e.g. /mnt/sharename/extent/%s) o nombre de dispositivo "
-#~ "(e.g. /dev/ad1) usado como extensión."
-
-#~ msgid "Give full shell access to user."
-#~ msgstr "Otorgar al usuario acceso completo a la consola."
-
-#~ msgid ""
 #~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
 #~ "a> menu."
 #~ msgstr ""
 #~ "Dejar '%s' para discos sin formtear y formatearlos usuando menú <a href=%"
 #~ "s>formatear</a>."
-
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
-#~ msgstr ""
-#~ "Nota: Ctrl-click (o comando-click en Mac) para seleccionar y o no "
-#~ "minutos, horas, días y meses."
-
-#~ msgid "RSYNC Local"
-#~ msgstr "RSYNC Local"
 
 #~ msgid ""
 #~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
@@ -5630,21 +5667,12 @@ msgstr "upriv"
 #~ "Los cambios furon guardados. Tiene que <a href=%s>reiniciar</a> el "
 #~ "sistema para que los cambios tengan efecto."
 
-#~ msgid "Shell access"
-#~ msgstr "Acceso a la consola"
-
-#~ msgid "List of shares"
-#~ msgstr "Lista de partes"
-
 #~ msgid ""
 #~ "The configuration has been changed.<br>You must apply the changes in "
 #~ "order for them to take effect."
 #~ msgstr ""
 #~ "La configuración a sido cambiada. <br> Debes aplicar los cambios para que "
 #~ "la configuración tenga efecto"
-
-#~ msgid "%s on %s (%dMHz)"
-#~ msgstr "%s en %s (%dMHz)"
 
 #~ msgid ""
 #~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
@@ -5653,22 +5681,3 @@ msgstr "upriv"
 #~ "Las direcciones IPs se resuelven a nombres de equipo si <a href=%s>&quot;"
 #~ "la resolución de direcciones a IP a nombres de equipo&quot;</a> está "
 #~ "activada."
-
-#~ msgid "Port %s must be less than %s."
-#~ msgstr "El puerto %s debe ser menor que %s."
-
-#~ msgid "The %s port must be in the range from %d to %d."
-#~ msgstr "El puerto %s debe estar en el rango de %d a %d."
-
-#~ msgid ""
-#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-#~ "service to clients."
-#~ msgstr ""
-#~ "Debe activar <a href=%s>Zeroconf/Bonjour</a> para mostrar este servicio a "
-#~ "los clientes."
-
-#~ msgid "FTP file transfer"
-#~ msgstr "Transferencia de archivos FTP"
-
-#~ msgid "File transfer"
-#~ msgstr "Transferencia de archivo"

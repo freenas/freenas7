@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-08 23:29+0100\n"
+"PO-Revision-Date: 2010-04-12 20:13+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-08 21:00+0000\n"
+"X-Launchpad-Export-Date: 2010-04-12 18:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -783,7 +783,6 @@ msgstr "IP-адрес контроллера"
 msgid "Controller TCP Port"
 msgstr "TCP-порт контроллера"
 
-#, fuzzy
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Алгоритм сжатия, используемый для этого dataset'а. Алгоритм 'lzjb' оптимизирован для обеспечения приемлемой компрессии при достаточном быстродействии, включается выбором 'Вкл.' или 'lzjb'. Выбор 'gzip' эквивалентен 'gzip-6', но вы можете задать необходимый вам уровень сжатия 'gzip-N', где N - целое число от 1 (наиболее быстрое сжатие) до 9 (максимальная компрессия)."
 
@@ -843,6 +842,9 @@ msgstr "Пользовательский сценарий не найден."
 
 msgid "Custom script is required."
 msgstr "Требуется пользовательский сценарий."
+
+msgid "Czech"
+msgstr "Чешский"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -2373,7 +2375,6 @@ msgstr "Лицензия и список разработчиков"
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol (LDAP)"
 
-#, fuzzy
 msgid "Limits the amount of space a dataset and its descendants can consume. This property enforces a hard limit on the amount of space used. This includes all space consumed by descendants, including file systems and snapshots. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr "Ограничение величины дискового пространства, которое могут занимать dataset и его потомки. Этот параметр накладывает жесткое ограничение на размер используемого пространства, включающего в себя файловые системы и моментальные снимки состояния (snapshots). Чтобы задать размер, вы можете использовать понятные суффиксы, такие как 'k' или 'KB' (килобайт), 'M' (мегабайт), 'Gb' (гигабайт)."
 
@@ -3376,9 +3377,6 @@ msgstr "Удалить все записи из ARP-таблицы"
 msgid "Report Generator"
 msgstr "Генератор отчетов"
 
-msgid "Report generator"
-msgstr "Генератор отчетов"
-
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
 msgstr "Сообщить, если температура изменилась на N градусов с последнего отчета. Установите 0 для отключения сообщения."
 
@@ -3728,6 +3726,9 @@ msgstr "Размер, предлагаемый инициатору (до 8 Эк
 
 msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - проверять устройство, пока оно не в режиме сна (SLEEP)."
+
+msgid "Slovak"
+msgstr "Словацкий"
 
 msgid "Slovenian"
 msgstr "Словенский"
@@ -5326,6 +5327,9 @@ msgstr "prodos"
 msgid "rc.conf"
 msgstr "rc.conf"
 
+msgid "revision"
+msgstr "ревизии"
+
 msgid "rotated block-interleaved parity"
 msgstr "с циклическим чередованием контрольных сумм"
 
@@ -5355,6 +5359,9 @@ msgstr "размонтировать"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Report generator"
+#~ msgstr "Генератор отчетов"
 
 #~ msgid "Date"
 #~ msgstr "Дата"

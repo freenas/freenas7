@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-11 20:19+0000\n"
+"PO-Revision-Date: 2010-04-12 19:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -5315,6 +5315,9 @@ msgid "prodos"
 msgstr ""
 
 msgid "rc.conf"
+msgstr ""
+
+msgid "revision"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
