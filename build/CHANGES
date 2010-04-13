@@ -3,6 +3,7 @@ FreeNAS 0.7.2 (Sabanda):
 
 Majors changes:
 - Upgrade to FreeBSD 7.3.
+- Upgrade unison to 2.32.52.
 
 Minors changes:
 - Add Czech and Slovak translations.
