@@ -1,8 +1,8 @@
 PORTNAME=			unison
-PORTVERSION=	2.27.57
+PORTVERSION=	2.32.52
 CATEGORIES=		net
 COMMENT=			A user-level file synchronization tool
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		ma.zoon@quicknet.nl
 
 MASTER_SITES=	http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/
 DISTFILES=		${EXTRACT_ONLY}
