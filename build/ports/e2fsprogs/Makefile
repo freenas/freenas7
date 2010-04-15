@@ -1,9 +1,9 @@
 PORTNAME=			e2fsprogs
-PORTVERSION=	1.41.9
+PORTVERSION=	1.41.11
 PORTREVISION=	0
 CATEGORIES=		sysutils
 COMMENT=			Utilities & library to manipulate ext2/3/4 filesystems
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		ma.zoon@quicknet.nl
 
 MASTER_SITES=			SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}
 
@@ -13,11 +13,13 @@ USE_LDCONFIG=			yes
 GNU_CONFIGURE=		yes
 MAKE_JOBS_SAFE=		yes
 CONFIGURE_ARGS+=	--disable-fsck --disable-e2initrd-helper \
-									--with-cc='${CC}' --with-linker='${LD}' \
-									--with-ccopts='${CFLAGS}' \
 									--with-root-prefix='${PREFIX}'
+#CONFIGURE_ENV+=        CPPFLAGS='${CPPFLAGS} -I${WRKSRC}/lib \ 
+   #               -I${LOCALBASE}/include -D_EXT2_USE_C_VERSIONS_' 
+
+
 CONFIGURE_ENV+=		CPPFLAGS='${CPPFLAGS} -I${WRKSRC}/lib \
-									-I${LOCALBASE}/include -D_EXT2_USE_C_VERSIONS_'
+									-I${LOCALBASE}/include'
 MAKE_ARGS+=				LDFLAGS='${LDFLAGS} -L${LOCALBASE}/lib'
 
 .include <bsd.port.pre.mk>
