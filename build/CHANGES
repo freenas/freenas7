@@ -59,8 +59,10 @@ Majors changes:
 Minors changes:
 - Add Czech and Slovak translations.
 - Add multiple CPUs usage.
+- Add AIO WebGUI for CIFS/SMB service.
  
 Bug fixes:
+- Fix wrong validation when WINS is enabled.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
