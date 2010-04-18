@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-12 19:39+0000\n"
+"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -167,6 +167,12 @@ msgid "AFP"
 msgstr ""
 
 msgid "AG"
+msgstr ""
+
+msgid "AIO read size"
+msgstr ""
+
+msgid "AIO write size"
 msgstr ""
 
 msgid "ARP Tables"
@@ -459,6 +465,9 @@ msgid "Are you sure you want to reboot the system?"
 msgstr ""
 
 msgid "Are you sure you want to shutdown the system?"
+msgstr ""
+
+msgid "Asynchronous I/O (AIO)"
 msgstr ""
 
 msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
@@ -1467,6 +1476,9 @@ msgid "Email report"
 msgstr ""
 
 msgid "Enable"
+msgstr ""
+
+msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
 
 msgid "Enable FXP protocol."
@@ -3500,6 +3512,14 @@ msgid "SSL/TLS"
 msgstr ""
 
 msgid "SSL/TLS only"
+msgstr ""
+
+#, php-format
+msgid "Samba will read from file asynchronously when size of request is bigger than this value. (%d by default)"
+msgstr ""
+
+#, php-format
+msgid "Samba will write to file asynchronously when size of request is bigger than this value. (%d by default)"
 msgstr ""
 
 msgid "Save"
