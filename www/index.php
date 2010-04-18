@@ -2,6 +2,10 @@
 <?php
 /*
   index.php
+  Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+  Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+  All rights reserved.
+
   part of FreeNAS (http://www.freenas.org)
   Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
@@ -47,6 +51,14 @@ $cpuinfo = system_get_cpu_info();
 
 function update_controls() {
 	$sysinfo = system_get_sysinfo();
+	$cpus = system_get_cpus();
+	$sysinfo['cpus'] = $cpus;
+	if ($cpus > 1) {
+		$sysinfo['cpuusage2'] = system_get_smp_cpu_usage();
+		$sysinfo['cpuusage'] = floor(array_sum($sysinfo['cpuusage2']) / $cpus);
+	} else {
+		$sysinfo['cpuusage2'] = array($sysinfo['cpuusage']);
+	}
 	return json_encode($sysinfo);
 }
 
@@ -146,6 +158,7 @@ sajax_handle_client_request();
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU usage");?></td>
 					<td width="75%" class="listr">
+				    	<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td>
 						<?php
 						$percentage = 0;
 						echo "<img src='bar_left.gif' class='progbarl' alt='' />";
@@ -154,6 +167,24 @@ sajax_handle_client_request();
 						echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
 						?>
 						<input style="padding: 0; border: 0;" size="30" name="cpuusage" id="cpuusage" value="<?=gettext("Updating in 5 seconds.");?>" />
+					</td></tr>
+						<?php
+						$cpus = system_get_cpus();
+						if ($cpus > 1) {
+							echo "<tr><td><hr size='1' /></td></tr>";
+							for ($idx = 0; $idx < $cpus; $idx++) {
+								$percentage = 0;
+								echo "<tr><td>";
+								echo "<img src='bar_left.gif' class='progbarl' alt='' />";
+								echo "<img src='bar_blue.gif' name='cpuusageu${idx}' id='cpuusageu${idx}' width='" . $percentage . "' class='progbarcf' alt='' />";
+								echo "<img src='bar_gray.gif' name='cpuusagef${idx}' id='cpuusagef${idx}' width='" . (100 - $percentage) . "' class='progbarc' alt='' />";
+								echo "<img src='bar_right.gif' class='progbarr' alt='' /> ";
+								echo "<input style='padding: 0; border: 0;' size='30' name='cpuusage${idx}' id='cpuusage${idx}' value=\"".gettext("Updating in 5 seconds.")."\" />";
+								echo "</td></tr>";
+							}
+						}
+						?>
+					</table>
 					</td>
 				</tr>
 			  <tr>

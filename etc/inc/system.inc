@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -174,8 +174,36 @@ function system_get_user_list() {
 	return $userlist;
 }
 
+// Get number of CPUs
+function system_get_cpus() {
+	$cpus = @exec("/sbin/sysctl -q -n kern.smp.cpus");
+	if ($cpus == '' || $cpus < 1) $cpus = 1;
+	return $cpus;
+}
+
 // Get current CPU usage.
 // Return current CPU usage in percent.
+function cb_map_array_diff2($a, $b) {
+	return $b - $a;
+}
+function system_get_smp_cpu_usage() {
+	$cpus = system_get_cpus();
+	$a_stat1 = explode(" ", @exec("/sbin/sysctl -q -n kern.cp_times"));
+	sleep(2);
+	$a_stat2 = explode(" ", @exec("/sbin/sysctl -q -n kern.cp_times"));
+	$a_dstat = array_map("cb_map_array_diff2", $a_stat1, $a_stat2);
+
+	$a_usage = array_fill_keys(range(0, $cpus - 1), 0);
+	for ($i = 0; $i < $cpus; $i++) {
+		// user, nice, system, interrupt, idle
+		$a = array_splice($a_dstat, 0, 5);
+		$idle = $a[4];
+		$total = array_sum($a);
+		$a_usage[$i] = floor(100 * (($total - $idle) / $total));
+	}
+	return $a_usage;
+}
+
 function system_get_cpu_usage() {
 	$cpuTicks1 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
 	sleep(2);

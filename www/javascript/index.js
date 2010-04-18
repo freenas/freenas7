@@ -2,6 +2,7 @@
 	index.js
 	Copyright (C) 2008-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
+	Modified for SMP by Daisuke Aoyama (aoyama@peach.ne.jp)
 */
 function update_controls(x) {
 	var value = eval('(' + x + ')');
@@ -13,6 +14,7 @@ function update_controls(x) {
 	update_cputemp(value['cputemp']);
 	update_cpufreq(value['cpufreq']);
 	update_cpuusage(value['cpuusage']);
+	update_cpuusage2(value['cpuusage2']);
 	update_diskusage(value['diskusage']);
 	update_swapusage(value['swapusage']);
 }
@@ -61,6 +63,16 @@ function update_cpuusage(value) {
 	document.getElementById("cpuusage").value = value + '%';
 	document.getElementById("cpuusageu").style.width = value + 'px';
 	document.getElementById("cpuusagef").style.width = (100 - value) + 'px';
+}
+
+function update_cpuusage2(value) {
+	for (var idx = 0; idx < value.length; idx++) {
+		if (document.getElementById("cpuusage"+idx) == null)
+			continue;
+		document.getElementById("cpuusage"+idx).value = value[idx] + '%';
+		document.getElementById("cpuusageu"+idx).style.width = value[idx] + 'px';
+		document.getElementById("cpuusagef"+idx).style.width = (100 - value[idx]) + 'px';
+	}
 }
 
 function update_diskusage(value) {
