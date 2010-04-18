@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.3</version>
+	<version>8.4</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -603,6 +603,10 @@
 		<sndbuf>64240</sndbuf>
 		<storedosattributes/>
 		<usesendfile/>
+		<!-- <aio/> -->
+		<aiorsize>1</aiorsize>
+		<aiowsize>1</aiowsize>
+		<aiowbehind/>
 		<!--
 		// createmask and directorymask can be used to overwrite default values when security=share
 		<createmask>0666</createmask>
@@ -987,6 +991,7 @@
 		<report>sshdlog</report>
 		<report>smartdlog</report>
 		<report>daemonlog</report>
+		<report_scriptname/>
 	</statusreport>
 	<shutdown>
 		<!-- <enable/> -->
