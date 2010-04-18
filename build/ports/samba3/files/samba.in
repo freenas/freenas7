@@ -1,6 +1,7 @@
 #!/bin/sh
 # Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
+# Modified for AIO by Daisuke Aoyama (aoyama@peach.ne.jp)
 
 # PROVIDE: nmbd smbd winbindd
 # REQUIRE: NETWORKING SERVERS DAEMON resolv
@@ -71,7 +72,7 @@ if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
     # Check that winbindd is actually configured
     if [ 0 -eq ${samba_idmap} ]; then
 			winbindd_enable="${winbindd_enable=YES}"
-		fi
+    fi
 fi
 
 # Hack to work around name change of pid file with non-default config
@@ -210,6 +211,10 @@ samba_mkconf_cmd()
 				-o "idmap gid = ${samba_idmap_gid}" -n \
 			-b \
 		-b \
+		-i "count(//samba/aio) > 0" \
+			-v "concat('aio read size = ',//samba/aiorsize)" -n \
+			-v "concat('aio write size = ',//samba/aiowsize)" -n \
+		-b \
 		-m "//samba/auxparam" \
 			-v "." -n \
 		-b \
@@ -278,9 +283,16 @@ samba_start_precmd() {
 				locking.tdb messages.tdb namelist.debug sessionid.tdb \
 				unexpected.tdb
 		do
-	    rm "${samba_lockdir}/${file}" </dev/null 2>/dev/null && echo -n '.'
+			rm "${samba_lockdir}/${file}" </dev/null 2>/dev/null && echo -n '.'
 		done
 		echo " done"
+	fi
+	# AIO module check
+	if configxml_isset //samba/aio; then
+		if ! /sbin/kldstat -q -m aio; then
+			echo "Load AIO module"
+			/sbin/kldload aio.ko
+		fi
 	fi
 }
 

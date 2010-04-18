@@ -77,6 +77,10 @@ $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
 $pconfig['guestaccount'] = $config['samba']['guestaccount'];
 $pconfig['nullpasswords'] = isset($config['samba']['nullpasswords']);
+$pconfig['aio'] = isset($config['samba']['aio']);
+$pconfig['aiorsize'] = $config['samba']['aiorsize'];
+$pconfig['aiowsize'] = $config['samba']['aiowsize'];
+$pconfig['aiowbehind'] = $config['samba']['aiowbehind'];
 if (is_array($config['samba']['auxparam']))
 	$pconfig['auxparam'] = implode("\n", $config['samba']['auxparam']);
 
@@ -93,16 +97,27 @@ if ($_POST) {
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 		// Do additional input type validation.
-		$reqdfields = explode(" ", "sndbuf rcvbuf createmask directorymask");
-		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
-		$reqdfieldst = explode(" ", "numericint numericint filemode filemode");
+		$reqdfields = explode(" ", "sndbuf rcvbuf");
+		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"));
+		$reqdfieldst = explode(" ", "numericint numericint");
 
+		if (!empty($_POST['createmask']) || !empty($_POST['directorymask'])) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "createmask directorymask"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Create mask"), gettext("Directory mask")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "filemode filemode"));
+		}
 		if (!empty($_POST['winssrv'])) {
-			$reqdfields = explode(" ", "winssrv");
-			$reqdfieldsn = array(gettext("WINS server"));
-			$reqdfieldst = explode(" ", "ipaddr");
+			$reqdfields = array_merge($reqdfields, explode(" ", "winssrv"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("WINS server")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "ipaddr"));
+		}
+		if ($_POST['aio']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "aiorsize aiowsize"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("AIO read size"), gettext("AIO write size")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "numericint numericint"));
 		}
 
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
@@ -137,6 +152,12 @@ if ($_POST) {
 		else
 			unset($config['samba']['guestaccount']);
 		$config['samba']['nullpasswords'] = $_POST['nullpasswords'] ? true : false;
+		$config['samba']['aio'] = $_POST['aio'] ? true : false;
+		if ($_POST['aio']) {
+			$config['samba']['aiorsize'] = $_POST['aiorsize'];
+			$config['samba']['aiowsize'] = $_POST['aiowsize'];
+			$config['samba']['aiowbehind'] = '';
+		}
 
 		# Write additional parameters.
 		unset($config['samba']['auxparam']);
@@ -204,6 +225,20 @@ function authentication_change() {
 			showElementById('createmask_tr','hide');
 			showElementById('directorymask_tr','hide');
 			showElementById('winssrv_tr','hide');
+			break;
+	}
+}
+
+function aio_change() {
+	switch (document.iform.aio.checked) {
+		case true:
+			showElementById('aiorsize_tr','show');
+			showElementById('aiowsize_tr','show');
+			break;
+
+		case false:
+			showElementById('aiorsize_tr','hide');
+			showElementById('aiowsize_tr','hide');
 			break;
 	}
 }
@@ -357,6 +392,10 @@ function authentication_change() {
 							<?=gettext("Allow client access to accounts that have null passwords.");?>
 						</td>
 					</tr>
+					<?php html_checkbox("aio", gettext("Asynchronous I/O (AIO)"), $pconfig['aio'] ? true : false, gettext("Enable Asynchronous I/O (AIO)"), "", false, "aio_change()");?>
+					<?php html_inputbox("aiorsize", gettext("AIO read size"), $pconfig['aiorsize'], sprintf(gettext("Samba will read from file asynchronously when size of request is bigger than this value. (%d by default)"), 1), true, 30);?>
+					<?php html_inputbox("aiowsize", gettext("AIO write size"), $pconfig['aiowsize'], sprintf(gettext("Samba will write to file asynchronously when size of request is bigger than this value. (%d by default)"), 1), true, 30);?>
+					<?php /*html_inputbox("aiowbehind", gettext("AIO write behind"), $pconfig['aiowbehind'], "", false, 60);*/?>
 					<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], sprintf(gettext("These parameters are added to [Global] section of %s."), "smb.conf") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://us1.samba.org/samba/docs/man/manpages-3/smb.conf.5.html"), false, 65, 5, false, false);?>
         </table>
 				<div id="submit">
@@ -374,6 +413,7 @@ function authentication_change() {
 <!--
 enable_change(false);
 authentication_change();
+aio_change();
 //-->
 </script>
 <?php include("fend.inc");?>
