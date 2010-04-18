@@ -80,8 +80,6 @@ $menu['services']['menuitem'][] = array("desc" => gettext("SNMP"), "link" => "se
 $menu['services']['menuitem'][] = array("desc" => gettext("UPS"), "link" => "services_ups.php", "visible" => TRUE);
 $menu['services']['menuitem'][] = array("desc" => gettext("Webserver"), "link" => "services_websrv.php", "visible" => TRUE);
 $menu['services']['menuitem'][] = array("desc" => gettext("BitTorrent"), "link" => "services_bittorrent.php", "visible" => TRUE);
-$menu['services']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
-$menu['services']['menuitem'][] = array("desc" => gettext("Status"), "link" => "services_status.php", "visible" => TRUE);
 
 // Access
 $menu['access']['desc'] = gettext("Access");
@@ -100,6 +98,7 @@ $menu['status']['link'] = "index.php";
 $menu['status']['menuitem'] = array();
 $menu['status']['menuitem'][] = array("desc" => gettext("System"), "link" => "index.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Process"), "link" => "status_process.php", "visible" => TRUE);
+$menu['status']['menuitem'][] = array("desc" => gettext("Services"), "link" => "services_status.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Interfaces"), "link" => "status_interfaces.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Disks"), "link" => "status_disks.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Graph"), "link" => "status_graph.php", "visible" => TRUE);

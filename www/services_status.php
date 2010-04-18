@@ -37,7 +37,7 @@
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("Status"));
+$pgtitle = array(gettext("Status"), gettext("Services"));
 
 $a_service[] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "config" => "samba", "scriptname" => "samba");
 $a_service[] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "config" => "ftpd", "scriptname" => "proftpd");
