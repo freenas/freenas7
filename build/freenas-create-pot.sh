@@ -21,11 +21,12 @@ xgettext ${PARAMETERS} --join-existing *.*
 cd ${FREENAS_SVNDIR}/etc/inc
 xgettext ${PARAMETERS} --join-existing *.*
 
+DATE="$(date "+%Y-%m-%d %H:%M")+0000"
 echo "msgid \"\"
 msgstr \"\"
 \"Project-Id-Version: ${FREENAS_PRODUCTNAME}\\n\"
-\"POT-Creation-Date: \\n\"
-\"PO-Revision-Date: $(date "+%Y-%m-%d %H:%M")+0000\\n\"
+\"POT-Creation-Date: ${DATE}\\n\"
+\"PO-Revision-Date: \\n\"
 \"Last-Translator: \\n\"
 \"Language-Team: \\n\"
 \"MIME-Version: 1.0\\n\"
