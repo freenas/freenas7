@@ -1870,6 +1870,21 @@ function config_upgrade() {
 		$config['version'] = "8.3";
 	}
 
+	/* Convert 8.3 -> 8.4 */
+	/* Set default custom script. */
+	/* Set default AIO values. */
+	if ($config['version'] === "8.3") {
+		if (!array_key_exists('report_scriptname', $config['statusreport'])) {
+			$config['statusreport']['report_scriptname'] = '';
+		}
+		$config['samba']['aio'] = false;
+		$config['samba']['aiorsize'] = 1;
+		$config['samba']['aiowsize'] = 1;
+		$config['samba']['aiowbehind'] = '';
+
+		$config['version'] = "8.4";
+	}
+
 	write_config();
 
 	if (is_booting())
