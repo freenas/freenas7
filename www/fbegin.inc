@@ -62,7 +62,7 @@ $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" =>
 // Services
 $menu['services']['desc'] = gettext("Services");
 $menu['services']['visible'] = Session::isAdmin();
-$menu['services']['link'] = "services_status.php";
+$menu['services']['link'] = "status_services.php";
 $menu['services']['menuitem'] = array();
 $menu['services']['menuitem'][] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "visible" => TRUE);
 $menu['services']['menuitem'][] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "visible" => TRUE);
@@ -98,7 +98,7 @@ $menu['status']['link'] = "index.php";
 $menu['status']['menuitem'] = array();
 $menu['status']['menuitem'][] = array("desc" => gettext("System"), "link" => "index.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Process"), "link" => "status_process.php", "visible" => TRUE);
-$menu['status']['menuitem'][] = array("desc" => gettext("Services"), "link" => "services_status.php", "visible" => TRUE);
+$menu['status']['menuitem'][] = array("desc" => gettext("Services"), "link" => "status_services.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Interfaces"), "link" => "status_interfaces.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Disks"), "link" => "status_disks.php", "visible" => TRUE);
 $menu['status']['menuitem'][] = array("desc" => gettext("Graph"), "link" => "status_graph.php", "visible" => TRUE);
