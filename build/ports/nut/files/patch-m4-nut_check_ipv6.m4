@@ -1,13 +1,13 @@
---- m4/nut_check_ipv6.m4.orig	2007-03-15 21:19:05.000000000 +0100
-+++ m4/nut_check_ipv6.m4	2007-10-15 11:42:02.000000000 +0200
-@@ -22,7 +22,9 @@
- 		   struct in6_addr],
-                   [:],
-                   [nut_have_ipv6=no],
--		  [#include <netdb.h>])
-+		  [#include <netdb.h>
-+		   #include <sys/socket.h>
-+		   #include <netinet/in.h>])
+--- m4/nut_check_ipv6.m4.orig	2010-02-23 09:37:41.000000000 +0100
++++ m4/nut_check_ipv6.m4	2010-04-13 05:18:25.000000000 +0200
+@@ -12,7 +12,9 @@
+ 	AC_CHECK_FUNCS([getaddrinfo freeaddrinfo], [nut_have_ipv6=yes], [nut_have_ipv6=no])
  
- dnl AC_CHECK_MEMBERS([struct in6_addr.s6_addr32],
- dnl               [:],
+ 	AC_CHECK_TYPES([struct addrinfo],
+-		[], [nut_have_ipv6=no], [#include <netdb.h>])
++		[], [nut_have_ipv6=no], [#include <netdb.h>
++					    #include <sys/socket.h>
++					    #include <netinet/in.h>])
+ 
+ 	AC_CHECK_TYPES([struct sockaddr_storage],
+ 		[], [nut_have_ipv6=no], [#include <sys/socket.h>])

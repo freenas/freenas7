@@ -55,6 +55,7 @@ Majors changes:
 - Upgrade bsnmp-ucd to 0.3.1.
 - Upgrade e2fsprogs to 1.41.11.
 - Upgrade smartmontools to 5.39.1.
+- Upgrade nut to 2.4.3.
 
 Minors changes:
 - Add Czech and Slovak translations.
