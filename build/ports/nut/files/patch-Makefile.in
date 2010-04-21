@@ -1,0 +1,11 @@
+--- clients/Makefile.in.orig	2010-02-23 10:04:40.000000000 +0100
++++ clients/Makefile.in	2010-04-13 04:30:49.000000000 +0200
+@@ -481,7 +481,7 @@
+ 	rm -f $$list
+ install-cgiexecPROGRAMS: $(cgiexec_PROGRAMS)
+ 	@$(NORMAL_INSTALL)
+-	test -z "$(cgiexecdir)" || $(MKDIR_P) "$(DESTDIR)$(cgiexecdir)"
++	test -z "$(cgiexec_PROGRAMS)" -o -z "$(cgiexecdir)" || $(MKDIR_P) "$(DESTDIR)$(cgiexecdir)"
+ 	@list='$(cgiexec_PROGRAMS)'; test -n "$(cgiexecdir)" || list=; \
+ 	for p in $$list; do echo "$$p $$p"; done | \
+ 	sed 's/$(EXEEXT)$$//' | \
