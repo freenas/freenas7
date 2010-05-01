@@ -837,16 +837,33 @@ function disks_geli_setkey($devicespecialfile, $oldpassphrase, $passphrase, $ver
 
 // Format disk. Error and warning messages are redirected to stdout.
 // Return none
-function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
+function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k)
 {
 	global $g;
 
 	// Get disk information
 	$diskinfo = disks_get_diskinfo($disk);
 
+	system("/sbin/sysctl kern.geom.debugflags=0x10 2>&1");
 	if (!$notinitmbr) {
 		echo gettext("Deleting MBR and partition table")."...\n";
 		system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} count=1 2>&1");
+	}
+	if ($aft4k) {
+		// Advanced Format 4KB (512 x 8)
+		// IDENTIFY = 6003
+		$aft_secs = (1 << 3);
+		$aft_bytes = 512 * $aft_secs;
+		// block:fragment ratio is 8:1
+		$aft_blocksize = $aft_bytes * 8;
+		// MBR(1) + Pri GPT header(1) + Pri GPT table(32)
+		//  + Sec GPT table(32) + Sec GPT header(1)
+		$aft_gptstart = 1 + 1 + 32;
+		$aft_aligned = ceil($aft_gptstart / $aft_secs) * $aft_secs;
+		$aft_counts = $diskinfo['mediasize_sectors'];
+		$aft_counts -= 1 + ((1 + 32) * 2);
+		$aft_counts -= ($aft_aligned - $aft_gptstart);
+		$aft_counts = floor($aft_counts / $aft_secs) * $aft_secs;
 	}
 
 	switch ($type) {
@@ -856,7 +873,11 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1");
 			// Create new GPT partition
 			system("/sbin/gpt create -f {$disk} 2>&1");
-			system("/sbin/gpt add -t ufs {$disk} 2>&1");
+			if ($aft4k) {
+				system("/sbin/gpt add -b $aft_aligned -s $aft_counts -t ufs {$disk} 2>&1");
+			} else {
+				system("/sbin/gpt add -t ufs {$disk} 2>&1");
+			}
 
 			// Create filesystem
 			echo gettext("Creating filesystem with 'Soft Updates'")."...\n";
@@ -865,6 +886,10 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 				$param .= " -L " . escapeshellarg($volumelabel);
 			if (!empty($minspace))
 				$param .= " -m {$minspace}";
+			if ($aft4k) {
+				$param .= " -S $aft_bytes -b $aft_blocksize -f $aft_bytes";
+			}
+			//echo "/sbin/newfs {$param} {$disk}p1\n";
 			system("/sbin/newfs {$param} {$disk}p1 2>&1");
 			break;
 
@@ -934,6 +959,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 
 			break;
 	}
+	system("/sbin/sysctl kern.geom.debugflags=0 2>&1");
 
 	echo gettext("Done")."!\n";
 }

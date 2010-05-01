@@ -66,6 +66,9 @@ function get_fs_type($devicespecialfile) {
 	return $a_disk[$index]['fstype'];
 }
 
+// Advanced Format
+$pconfig['aft4k'] = false;
+
 sajax_init();
 sajax_export("get_fs_type");
 sajax_handle_client_request();
@@ -87,6 +90,7 @@ if ($_POST) {
 		$minspace = $_POST['minspace'];
 		$notinitmbr= $_POST['notinitmbr'];
 		$volumelabel = $_POST['volumelabel'];
+		$aft4k = $_POST['aft4k'] ? true : false;
 
 		// Check whether disk is mounted.
 		if (disks_ismounted_ex($disk, "devicespecialfile")) {
@@ -117,6 +121,7 @@ if (!isset($do_format)) {
 	$type = '';
 	$minspace = '';
 	$volumelabel = '';
+	$aft4k = false;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -176,6 +181,7 @@ if (!isset($do_format)) {
 							<br /><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
 						</td>
 					</tr>
+			    <?php html_checkbox("aft4k", gettext("Advanced Format"), $pconfig['aft4k'] ? true : false, gettext("Enable Advanced Format (4KB sector)"), "", false, "");?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR");?></td>
 			      <td width="78%" class="vtable">
@@ -191,7 +197,7 @@ if (!isset($do_format)) {
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
 				echo('<pre class="cmdoutput">');
 				ob_end_flush();
-				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
+				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel, $aft4k);
 				echo('</pre>');
 				}
 				?>
