@@ -1,8 +1,8 @@
 PORTNAME=			php5
-PORTVERSION=	5.2.12
+PORTVERSION=	5.2.13
 CATEGORIES=		lang
 COMMENT=			PHP5 scripting language
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		ma.zoon@quicknet.nl
 
 MASTER_SITES=				${MASTER_SITE_PHP:S,$,:release,}
 MASTER_SITE_SUBDIR=	distributions/:release

@@ -1,5 +1,5 @@
---- Zend/zend_list.h.orig	2007-01-01 10:35:46.000000000 +0100
-+++ Zend/zend_list.h	2008-01-29 11:05:12.000000000 +0100
+--- Zend/zend_list.h.orig	2010-01-05 20:46:52.000000000 +0100
++++ Zend/zend_list.h	2010-04-30 22:53:26.000000000 +0200
 @@ -71,9 +71,9 @@
  void zend_destroy_rsrc_list_dtors(void);
  

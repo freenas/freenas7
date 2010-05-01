@@ -1,5 +1,5 @@
---- ext/standard/image.c.orig	2007-10-04 15:31:11.000000000 +0200
-+++ ext/standard/image.c	2007-11-13 22:47:04.000000000 +0100
+--- ext/standard/image.c.orig	2010-01-03 09:23:26.000000000 +0100
++++ ext/standard/image.c	2010-04-30 22:00:36.000000000 +0200
 @@ -31,9 +31,7 @@
  #endif
  #include "php_image.h"
