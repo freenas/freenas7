@@ -3,10 +3,16 @@
 #
 
 /set type=dir uname=root gname=wheel mode=0755
-		db
-		..
-		empty
-		..
+.              
+    ..
+    cron           
+        tabs           
+        ..
+    ..
+    db             
+    ..
+    empty           mode=0555
+    ..
     etc            
         iscsi          
         ..
@@ -31,8 +37,6 @@
         lock           
         ..
     ..
-    cron          
-        tabs           
-        ..
+    tmp             mode=01777
     ..
 ..
