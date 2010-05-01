@@ -24,15 +24,18 @@ function type_change() {
 		case "ufsgpt":
 			showElementById('minspace_tr','show');
 			showElementById('volumelabel_tr','show');
+			showElementById('aft4k_tr','show');
 			break;
 		case "ext2":
 		case "msdos":
 			showElementById('minspace_tr','hide');
 			showElementById('volumelabel_tr','show');
+			showElementById('aft4k_tr','hide');
 			break;
 		default:
 			showElementById('minspace_tr','hide');
 			showElementById('volumelabel_tr','hide');
+			showElementById('aft4k_tr','hide');
 			break;
 	}
 }

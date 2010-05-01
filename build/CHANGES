@@ -63,6 +63,9 @@ Minors changes:
 - Add multiple CPUs usage.
 - Add AIO WebGUI for CIFS/SMB service.
 - Remove /var/tmp symbolic link.
+- Support Advanced Format 4KB sector. (UFS/GPT data partition only)
+- Set fsck enable by default at Disks|Mount Point|Add.
+- Set kern.geom.debugflags when formating.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.

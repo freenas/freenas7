@@ -77,7 +77,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_mount, "uuid")
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
 	$pconfig['readonly'] = false;
-	$pconfig['fsck'] = false;
+	$pconfig['fsck'] = true;
 	$pconfig['owner'] = "root";
 	$pconfig['group'] = "wheel";
 	$pconfig['mode'] = "0777";
@@ -319,10 +319,16 @@ function partitiontype_change() {
 	switch (document.iform.partitiontype.selectedIndex) {
 		case 0: /* GPT */
 		case 1: /* MBR */
+<?php if (!isset($uuid)):?>
+			document.iform.fsck.checked = true;
+<?php endif;?>
 			showElementById('partitionnum_tr','show');
 			break;
 
 		case 2: /* CD/DVD */
+<?php if (!isset($uuid)):?>
+			document.iform.fsck.checked = false;
+<?php endif;?>
 			showElementById('partitionnum_tr','hide');
 			break;
 	}
