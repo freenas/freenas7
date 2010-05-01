@@ -38,9 +38,9 @@ pidfile=${lighttpd_pidfile}
 sig_reload="-INT"
 
 # Create symlink for lighttpd file upload if it doesn't exist.
-if [ ! -h "/var/tmp" ]; then
-	ln -s /ftmp /var/tmp
-fi
+#if [ ! -h "/var/tmp" ]; then
+#	ln -s /ftmp /var/tmp
+#fi
 
 lighttpd_mkconf()
 {

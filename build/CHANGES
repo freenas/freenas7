@@ -62,15 +62,14 @@ Minors changes:
 - Add Czech and Slovak translations.
 - Add multiple CPUs usage.
 - Add AIO WebGUI for CIFS/SMB service.
- 
+- Remove /var/tmp symbolic link.
+
 Bug fixes:
 - Fix wrong validation when WINS is enabled.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
-- It is not possible to get seperate CPU stats per processor on SMP machines because
-  FreeBSD does not support that feature.
 - Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
 
 Known bugs:
