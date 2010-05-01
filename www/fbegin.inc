@@ -110,7 +110,9 @@ $menu['advanced']['visible'] = TRUE;
 $menu['advanced']['link'] = "";
 $menu['advanced']['menuitem'] = array();
 $menu['advanced']['menuitem'][] = array("desc" => gettext("File Editor"), "link" => "system_edit.php", "visible" => Session::isAdmin());
-$menu['advanced']['menuitem'][] = array("desc" => gettext("File Manager"), "link" => "quixplorer", "visible" => TRUE, "target" => "_blank");
+if (!isset($config['system']['disablefm'])) {
+	$menu['advanced']['menuitem'][] = array("desc" => gettext("File Manager"), "link" => "quixplorer", "visible" => TRUE, "target" => "_blank");
+}
 $menu['advanced']['menuitem'][] = array("type" => "separator", "visible" => Session::isAdmin());
 $menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => "exec.php", "visible" => Session::isAdmin());
 
