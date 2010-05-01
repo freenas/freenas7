@@ -23,6 +23,12 @@ echo "Preparing web-based file-management."
 # Generate the .htusers.php file containing the user configuration
 echo '<?php $GLOBALS["users"]=array(' > ${webfm_htusers}
 
+# Disable File Manager
+if [ `configxml_get_count "//system/disablefm"` -gt 0 ]; then
+    echo ');?>' >> ${webfm_htusers}
+    exit 0;
+fi
+
 # Iterate over all configured users
 _index=`configxml_get_count "//access/user"`
 while [ ${_index} -gt 0 ]

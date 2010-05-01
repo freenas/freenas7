@@ -41,6 +41,7 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("System"), gettext("Advanced"));
 
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
+$pconfig['disablefm'] = isset($config['system']['disablefm']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
@@ -107,8 +108,14 @@ if ($_POST) {
 				config_unlock();
 			}
 		}
+		if ((isset($config['system']['disablefm']) && (!$_POST['disablefm']))
+		    || (!isset($config['system']['disablefm']) && ($_POST['disablefm']))) {
+			// need restarting WebGUI
+			touch($d_sysrebootreqd_path);
+		}
 
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
+		$config['system']['disablefm'] = $_POST['disablefm'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
 		$config['system']['disablebeep'] = $_POST['disablebeep'] ? true : false;
@@ -132,6 +139,7 @@ if ($_POST) {
 			if (isset($config['system']['tune']))
 				$retval |= rc_update_service("sysctl");
 			$retval |= rc_update_service("syscons");
+			$retval |= rc_update_service("webfm");
 			config_unlock();
 		}
 
@@ -157,7 +165,7 @@ function sysctl_tune($mode) {
 		"net.inet.udp.maxdgram" => 57344,
 		"net.local.stream.recvspace" => 65536,
 		"net.local.stream.sendspace" => 65536,
-		"kern.ipc.maxsockbuf" => 2097152,
+		"kern.ipc.maxsockbuf" => 4194304,
 		"kern.ipc.somaxconn" => 8192,
 		"kern.ipc.nmbclusters" => 32768,
 		"kern.maxfiles" => 65536,
@@ -240,6 +248,7 @@ function sysconsaver_change() {
 					<?php html_checkbox("enableserialconsole", gettext("Serial Console"), $pconfig['enableserialconsole'] ? true : false, gettext("Enable serial console"), sprintf("<span class='red'><strong>%s</strong></span><br />%s", gettext("The COM port in BIOS has to be enabled before enabling this option."), gettext("Changes to this option will take effect after a reboot.")));?>
 					<?php html_checkbox("sysconsaver", gettext("Console screensaver"), $pconfig['sysconsaver'] ? true : false, gettext("Enable console screensaver"), "", false, "sysconsaver_change()");?>
 					<?php html_inputbox("sysconsaverblanktime", gettext("Blank time"), $pconfig['sysconsaverblanktime'], gettext("Turn the monitor to standby after N seconds."), true, 5);?>
+					<?php html_checkbox("disablefm", gettext("File Manager"), $pconfig['disablefm'] ? true : false, gettext("Disable File Manager"));?>
 					<?php if ("full" !== $g['platform']):?>
 					<?php html_checkbox("disablefirmwarecheck", gettext("Firmware version check"), $pconfig['disablefirmwarecheck'] ? true : false, gettext("Disable firmware version check"), sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href='%s'>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware")));?>
 					<?php endif;?>

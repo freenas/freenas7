@@ -66,6 +66,8 @@ Minors changes:
 - Support Advanced Format 4KB sector. (UFS/GPT data partition only)
 - Set fsck enable by default at Disks|Mount Point|Add.
 - Set kern.geom.debugflags when formating.
+- Modify Tuning values.
+- Add ability to disable File Manager.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.

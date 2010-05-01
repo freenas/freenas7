@@ -116,6 +116,15 @@ server.pid-file = "${pidfile}"
 cgi.assign = (".php" => "/usr/local/bin/php")
 EOF
 
+	# Disable File Manager
+	if [ `configxml_get_count "//system/disablefm"` -gt 0 ]; then
+		cat <<EOF >> ${lighttpd_conf}
+\$HTTP["url"] =~ "^/quixplorer/" {
+  url.access-deny = ( "" )
+}
+EOF
+	fi
+
 	# Is authentication (RFC 2617) required?
 	if checkyesno lighttpd_authrequire; then
 		/usr/local/bin/xml sel -t \
