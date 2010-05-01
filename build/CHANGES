@@ -56,6 +56,7 @@ Majors changes:
 - Upgrade e2fsprogs to 1.41.11.
 - Upgrade smartmontools to 5.39.1.
 - Upgrade nut to 2.4.3.
+- Upgrade php5 to 5.2.13.
 
 Minors changes:
 - Add Czech and Slovak translations.
