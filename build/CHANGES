@@ -68,6 +68,7 @@ Minors changes:
 - Set kern.geom.debugflags when formating.
 - Modify Tuning values.
 - Add ability to disable File Manager.
+- Make three backups of configuration when writing new one.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.

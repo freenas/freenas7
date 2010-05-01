@@ -225,7 +225,8 @@ if (!$noparseconfig) {
 	/* see if there's a newer cache file */
 	if (file_exists("{$g['tmp_path']}/config.cache") &&
 		(@filemtime("{$g['tmp_path']}/config.cache") >=
-		 @filemtime("{$g['conf_path']}/config.xml"))) {
+		 @filemtime("{$g['conf_path']}/config.xml")) &&
+		!is_booting()) {
 
 		/* read cache */
 		$config = unserialize(file_get_contents("{$g['tmp_path']}/config.cache"));
@@ -331,8 +332,27 @@ function write_config() {
 	$xmlconfig = dump_xml_config($config, $g['xml_rootobj'],
 		system_get_language_codeset());
 
-	// Write configuration file
+	// Save current configuration file
 	$filename = "{$g['cf_conf_path']}/config.xml";
+	if (file_exists($filename)) {
+		$filename_bk2 = preg_replace("/.xml$/", ".bk2", $filename);
+		$filename_bk1 = preg_replace("/.xml$/", ".bk1", $filename);
+		$filename_bk0 = preg_replace("/.xml$/", ".bk0", $filename);
+		if (file_exists($filename_bk2) && unlink($filename_bk2) === FALSE) {
+			die("Error: Failed to delete configuration file '{$filename_bk2}'");
+		}
+		if (file_exists($filename_bk1) && rename($filename_bk1, $filename_bk2) === FALSE) {
+			die("Error: Failed to rename configuration file '{$filename_bk1}'");
+		}
+		if (file_exists($filename_bk0) && rename($filename_bk0, $filename_bk1) === FALSE) {
+			die("Error: Failed to rename configuration file '{$filename_bk0}'");
+		}
+		if (rename($filename, $filename_bk0) === FALSE) {
+			die("Error: Failed to rename configuration file '{$filename}'");
+		}
+	}
+
+	// Write configuration file
 	if (!file_put_contents_safe($filename, $xmlconfig)) {
 		die("Error: Failed to write configuration file '{$filename}'");
 	}
