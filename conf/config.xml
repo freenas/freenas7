@@ -34,6 +34,8 @@
 		<motd>V2VsY29tZSB0byBGcmVlTkFTIQ0KDQo=</motd>
 		<!--
 		<disableconsolemenu/>
+		<enableserialconsole/>
+		<disablefm/>
 		<disablefirmwarecheck/>
 		<disablebeep/>
 		<tune/>
