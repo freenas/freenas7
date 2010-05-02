@@ -51,14 +51,6 @@ $cpuinfo = system_get_cpu_info();
 
 function update_controls() {
 	$sysinfo = system_get_sysinfo();
-	$cpus = system_get_cpus();
-	$sysinfo['cpus'] = $cpus;
-	if ($cpus > 1) {
-		$sysinfo['cpuusage2'] = system_get_smp_cpu_usage();
-		$sysinfo['cpuusage'] = floor(array_sum($sysinfo['cpuusage2']) / $cpus);
-	} else {
-		$sysinfo['cpuusage2'] = array($sysinfo['cpuusage']);
-	}
 	return json_encode($sysinfo);
 }
 
@@ -139,7 +131,21 @@ sajax_handle_client_request();
 		      </td>
 		    </tr>
 				<?php endif;?>
-				<?php if (!empty($cpuinfo['temperature'])):?>
+				<?php if (!empty($cpuinfo['temperature2'])):
+					echo "<tr>";
+					echo "<td width='25%' class='vncellt'>".gettext("CPU temperature")."</td>";
+					echo "<td width='75%' class='listr'>";
+					echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td>\n";
+					$cpus = system_get_cpus();
+					for ($idx = 0; $idx < $cpus; $idx++) {
+						echo "<tr><td>";
+						echo "<input style='padding: 0; border: 0;' size='30' name='cputemp${idx}' id='cputemp${idx}' value='".htmlspecialchars($cpuinfo['temperature2'][$idx])."' />";
+						echo "</td></tr>";
+					}
+					echo "</table></td>";
+					echo "</tr>\n";
+				?>
+				<?php elseif (!empty($cpuinfo['temperature'])):?>
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU temperature");?></td>
 					<td width="75%" class="listr">

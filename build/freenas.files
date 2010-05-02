@@ -465,6 +465,9 @@ usr/bin/tty
 ## vi - text editors
 usr/bin/vi
 
+## cpuset -- configure processor sets
+usr/bin/cpuset
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -574,6 +577,9 @@ usr/sbin/kbdcontrol
 
 ## gstat -- print statistics about GEOM disks
 usr/sbin/gstat
+
+## cpucontrol -- control utility for the cpuctl device
+usr/sbin/cpucontrol
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
