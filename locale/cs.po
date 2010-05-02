@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-12 23:49+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s je příliš dlouhý."
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s z %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s na %s"
 
@@ -386,6 +386,10 @@ msgid "Advanced"
 msgstr "Pokročilé"
 
 msgid "Advanced Configuration"
+msgstr "Pokročilé nastavení"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Pokročilé nastavení"
 
 msgid "Advanced Options"
@@ -1247,7 +1251,7 @@ msgstr ""
 "Toto může sníži zátěž procesoru a prodloužit dobu přeposílání (zařízení je "
 "kontrolováno 1000 krát za sekundu). Ne všechny síťové karty toto podporují."
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Zařízení: %s | Celkem: %s | Využitá: %s | Volná: %s"
 
@@ -1286,6 +1290,10 @@ msgstr ""
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Zakázat AFP přes Appletalk kvůlu prevenci DDP spojení"
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Správce souborů"
 
 msgid "Disable console menu"
 msgstr "Zakázat konzolové menu"
@@ -1651,6 +1659,9 @@ msgstr "E-mail report"
 
 msgid "Enable"
 msgstr "Povoleno"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5464,9 +5475,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5485,11 +5496,11 @@ msgstr "Tolerovaný"
 msgid "Tools"
 msgstr "Nástroje"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Celkem: %s | Použito: %s | Volné: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr ""
 

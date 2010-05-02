@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:12+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s er for lang."
 msgid "%s is used to create %s volumes."
 msgstr "%s blir brukt til å lage %s volumer."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s av %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s på %s"
 
@@ -373,6 +373,10 @@ msgid "Advanced"
 msgstr "Avansert"
 
 msgid "Advanced Configuration"
+msgstr "Avansert konfigurasjon"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Avansert konfigurasjon"
 
 msgid "Advanced Options"
@@ -1219,7 +1223,7 @@ msgid ""
 "NICs support polling."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Enhet: %s | Total: %s | Brukt: %s | Ledig: %s"
 
@@ -1258,6 +1262,10 @@ msgstr "Katalog for å oppdage nye .torrent-filer"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Slå av AFP-over-Appletalk for å forhindre DDP tilkoblinger."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Filhåndterer"
 
 msgid "Disable console menu"
 msgstr "Slå av konsoll menyen"
@@ -1615,6 +1623,9 @@ msgstr "E-post rapport"
 
 msgid "Enable"
 msgstr "Aktiver"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5379,9 +5390,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5400,11 +5411,11 @@ msgstr ""
 msgid "Tools"
 msgstr "Verktøy"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr ""
 

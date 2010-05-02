@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:31+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr ""
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s od %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr ""
 
@@ -370,6 +370,10 @@ msgid "Advanced"
 msgstr "Zahtevnejše"
 
 msgid "Advanced Configuration"
+msgstr "Napredne nastavitve"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Napredne nastavitve"
 
 msgid "Advanced Options"
@@ -1213,7 +1217,7 @@ msgid ""
 "NICs support polling."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr ""
 
@@ -1252,6 +1256,10 @@ msgstr ""
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Onemogoči menu konzole"
 
 msgid "Disable console menu"
 msgstr "Onemogoči menu konzole"
@@ -1605,6 +1613,9 @@ msgstr ""
 
 msgid "Enable"
 msgstr "Omogoči"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5303,9 +5314,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5324,11 +5335,11 @@ msgstr ""
 msgid "Tools"
 msgstr "Orodja"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr ""
 

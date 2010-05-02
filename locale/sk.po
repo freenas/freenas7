@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-12 23:48+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s je píliš dlhý."
 msgid "%s is used to create %s volumes."
 msgstr "%s sa používa na tvorbu zväzkov %s."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s z %s B"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s na %s"
 
@@ -391,6 +391,10 @@ msgid "Advanced"
 msgstr "Pokročilé"
 
 msgid "Advanced Configuration"
+msgstr "Pokročilá konfigurácia"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Pokročilá konfigurácia"
 
 msgid "Advanced Options"
@@ -1265,7 +1269,7 @@ msgstr ""
 "zvýšeného oneskorenia preposielania (zariadenia sa kontrolujú 1000 krát za "
 "sekundu). Nie všeky sieťové adaptéry to podporujú."
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Zariadenie: %s | Celkom: %s | Využité: %s | Voľné: %s"
 
@@ -1304,6 +1308,10 @@ msgstr "Adresár, v ktorom sledovať nové súbory .torrent."
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Vypnúť AFP-over-Appletalk, aby sa zamedzilo DDP spojeniam."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Správca súborov"
 
 msgid "Disable console menu"
 msgstr "Vypnúť ponuku konzoly"
@@ -1666,6 +1674,9 @@ msgstr "Upraviť správu"
 
 msgid "Enable"
 msgstr "Zapnúť"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5601,12 +5612,12 @@ msgstr ""
 "Podrobné informácie o písaní pravidiel firewallu nájdete v <a href='%s' "
 "target='_blank'>dokumentácii</a> FreeBSD."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 "Môžete skúsiť zvýšiť výkon CIFS nasledovne:<div "
 "id='enumeration'><ul><li>Zapnúť voľbu „Veľké čítanie/zápis“</li><li>Zapnúť  "
@@ -5633,11 +5644,11 @@ msgstr "Tolerované"
 msgid "Tools"
 msgstr "Nástroje"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Celkom: %s | Využité: %s | Voľné: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr ""
 
