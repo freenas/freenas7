@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:43+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -42,11 +42,11 @@ msgstr "%s 太长了。"
 msgid "%s is used to create %s volumes."
 msgstr "%s 被用来创建 %s 分卷。"
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s 与 %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%2$s 上的 %1$s"
 
@@ -379,6 +379,10 @@ msgid "Advanced"
 msgstr "高级"
 
 msgid "Advanced Configuration"
+msgstr "高级选项"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "高级选项"
 
 msgid "Advanced Options"
@@ -1215,7 +1219,7 @@ msgstr ""
 "载同时增加处理量，但是会使得资料传输时间些微得拉长（forwarding delay)。但并非"
 "所有的网卡都支持轮询。"
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "设备： %s | 总共： %s | 已使用： %s | 空闲： %s"
 
@@ -1254,6 +1258,10 @@ msgstr "监视 .torrent 文件的目录"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "关闭 AFP-over-Appletalk 避免 DDP 连接。"
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "文件管理器"
 
 msgid "Disable console menu"
 msgstr "关闭console选单"
@@ -1603,6 +1611,9 @@ msgstr "Email 报告"
 
 msgid "Enable"
 msgstr "启动"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5293,9 +5304,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5314,11 +5325,11 @@ msgstr ""
 msgid "Tools"
 msgstr "工具"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "总共： %s | 已使用： %s | 空闲： %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "总共: %s | 已使用: %s | 空闲: %s | 状态: %s"
 

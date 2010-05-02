@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-19 02:37+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s は長すぎます。"
 msgid "%s is used to create %s volumes."
 msgstr "%s は %s ボリュームを作成して使用します。"
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%2$sB 中 %1$s"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s＠%s"
 
@@ -402,6 +402,10 @@ msgid "Advanced"
 msgstr "高度な設定"
 
 msgid "Advanced Configuration"
+msgstr "高度な設定"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "高度な設定"
 
 msgid "Advanced Options"
@@ -1286,7 +1290,7 @@ msgstr ""
 "スは1秒あたり 1000回ポーリングされます)。ポーリングは全ての NIC をサポートす"
 "る訳ではありません。"
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "デバイス: %s | 容量: %s | 使用領域: %s | 空き領域: %s"
 
@@ -1325,6 +1329,10 @@ msgstr "新しい .torrent ファイルを監視するディレクトリ。"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "DDP 接続を防止する為に、AFP over Appletalk を無効にします。"
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "ファイルマネージャ"
 
 msgid "Disable console menu"
 msgstr "コンソールメニューを無効にする"
@@ -1688,6 +1696,9 @@ msgstr "レポートメール"
 
 msgid "Enable"
 msgstr "有効"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr "非同期I/O (AIO)を有効にします。"
@@ -3995,13 +4006,17 @@ msgstr "SSL/TLS 専用"
 msgid ""
 "Samba will read from file asynchronously when size of request is bigger than "
 "this value. (%d by default)"
-msgstr "Samba は要求サイズがこの値より大きい場合に非同期ファイル読み込みを行います。(デフォルトは %d)"
+msgstr ""
+"Samba は要求サイズがこの値より大きい場合に非同期ファイル読み込みを行います。"
+"(デフォルトは %d)"
 
 #, php-format
 msgid ""
 "Samba will write to file asynchronously when size of request is bigger than "
 "this value. (%d by default)"
-msgstr "Samba は要求サイズがこの値より大きい場合に非同期ファイル書き込みを行います。(デフォルトは %d)"
+msgstr ""
+"Samba は要求サイズがこの値より大きい場合に非同期ファイル書き込みを行います。"
+"(デフォルトは %d)"
 
 msgid "Save"
 msgstr "保存"
@@ -5690,12 +5705,12 @@ msgstr ""
 "ファイアウォールのルールの詳細な書き方についてはFreeBSDの<a href='%s' "
 "target='_blank'>ドキュメント</a>を確認してください。"
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 "CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div "
 "id='enumeration'><ul><li>Large read/write を有効にする</li><li>'<a href='%s'>"
@@ -5722,11 +5737,11 @@ msgstr "許容"
 msgid "Tools"
 msgstr "ツール"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "合計: %s | 使用中: %s | 未使用: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "合計: %s | 使用中: %s | 未使用: %s | 状態: %s"
 

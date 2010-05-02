@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-12 20:12+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s ir pārāk garš."
 msgid "%s is used to create %s volumes."
 msgstr "%s tiek lietots, lai veidotu %s sējumus."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s no %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s uz %s"
 
@@ -402,6 +402,10 @@ msgid "Advanced"
 msgstr "Paplašināti"
 
 msgid "Advanced Configuration"
+msgstr "Paplašinātā konfigurācija"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Paplašinātā konfigurācija"
 
 msgid "Advanced Options"
@@ -1285,7 +1289,7 @@ msgstr ""
 "pārsūtīšanas aizturi (ierīces ir aptaujātas 1000 reizes sekundē). Ne visi "
 "NICi atbalsta aptaujāšanu."
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Ierīce: %s | Kopā: %s | Izlietots: %s | Brīvs: %s"
 
@@ -1324,6 +1328,10 @@ msgstr "Mape, kurā skatīties pēc jaunām .torrent datnem."
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Atspējot AFP-pār-Appletalk lai neatļautu DDP pieslēgumus."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Datņu Pārvaldnieks"
 
 msgid "Disable console menu"
 msgstr "Atspējot konsoles izvēlni"
@@ -1685,6 +1693,9 @@ msgstr "E-pasta pārskats"
 
 msgid "Enable"
 msgstr "Iespējot"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5725,12 +5736,12 @@ msgstr ""
 "Lai iegūtu detalizētu informāciju, kā rakstīt ugunsmūra noteikumus pārbaudi "
 "FreeBSD <a href='%s' target='_blank'>dokumentāciju</a>."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 "Lai palielinātu CIFS veiktspēju mēģini sekojošo:<div "
 "id='enumeration'><ul><li>Iespējo 'Liela lasīšanas/rakstīšanas' slēdzi</"
@@ -5756,11 +5767,11 @@ msgstr "Pieļauts"
 msgid "Tools"
 msgstr "Rīki"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Kopā: %s | Lietots: %s | Brīvs: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Kopā: %s | Lietots: %s | Brīvs: %s | Statuss: %s"
 

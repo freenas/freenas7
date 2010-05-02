@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 22:32+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s ist zu lang."
 msgid "%s is used to create %s volumes."
 msgstr "%s wird benutzt um %s Volumes zu erzeugen."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s von %s B"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s auf %s"
 
@@ -414,6 +414,10 @@ msgid "Advanced"
 msgstr "Erweitert"
 
 msgid "Advanced Configuration"
+msgstr "Erweiterte Einstellungen"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Erweiterte Einstellungen"
 
 msgid "Advanced Options"
@@ -1307,7 +1311,7 @@ msgstr ""
 "delay) führt. Die Geräte werden 1000 Mal pro Sekunde abgefragt. Nicht alle "
 "Netzwerkkarten unterstützen Device polling."
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Gerät: %s | Gesamt: %s | Belegt: %s | Frei: %s"
 
@@ -1349,6 +1353,10 @@ msgstr "Zu beobachtendes Verzeichnis für neue .torrent Dateien."
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 "Deaktivieren von \"AFP-over-Appletalk\", um DDP Verbindungen zu verhindern."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Dateimanager"
 
 msgid "Disable console menu"
 msgstr "Konsolenmenü deaktivieren"
@@ -1714,6 +1722,9 @@ msgstr "E-Mail Bericht"
 
 msgid "Enable"
 msgstr "Freigeben"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5835,12 +5846,12 @@ msgstr ""
 "erhalten, sehen Sie in der FreeBSD <a href='%s' "
 "target='_blank'>Dokumentation</a> nach."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 "Um die Leistungsfähigkeit von CIFS zu steigern, versuchen Sie das folgende:"
 "<div id='enumeration'><ul><li>Einschalten 'Lesen/Schreiben in großen "
@@ -5867,11 +5878,11 @@ msgstr "Toleriert"
 msgid "Tools"
 msgstr "Tools"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Gesamt: %s | Belegt: %s | Frei: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Gesamt: %s | Benutzt: %s | Frei: %s | Status: %s"
 

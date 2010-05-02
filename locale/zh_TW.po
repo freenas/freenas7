@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:45+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -42,11 +42,11 @@ msgstr "%s 太長"
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s of %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s 於 %s"
 
@@ -373,6 +373,10 @@ msgid "Advanced"
 msgstr "進階"
 
 msgid "Advanced Configuration"
+msgstr "進階組態"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "進階組態"
 
 msgid "Advanced Options"
@@ -1213,7 +1217,7 @@ msgstr ""
 "CPU 的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding "
 "delay）。但並非所有網路卡都支援 Polling。"
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "裝置: %s | 總共: %s | 已使用: %s | 剩餘: %s"
 
@@ -1252,6 +1256,10 @@ msgstr ""
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "關閉 AFP-over-Appletalk 避免 DDP 連線。"
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "檔案管理員"
 
 msgid "Disable console menu"
 msgstr "關閉console選單"
@@ -1605,6 +1613,9 @@ msgstr "Email 報告"
 
 msgid "Enable"
 msgstr "啟動"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5368,9 +5379,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5389,11 +5400,11 @@ msgstr "容許"
 msgid "Tools"
 msgstr "工具"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "總共: %s | 已使用: %s | 剩餘: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "總共: %s | 已使用: %s | 剩餘: %s | 目前: %s"
 

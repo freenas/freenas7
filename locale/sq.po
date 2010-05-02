@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:38+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s eshte shume e gjate."
 msgid "%s is used to create %s volumes."
 msgstr "%s perdoret per krijuar %s volume."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s ne %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s mbi %s"
 
@@ -390,6 +390,10 @@ msgid "Advanced"
 msgstr "Avancuar"
 
 msgid "Advanced Configuration"
+msgstr "Konfigurim i avancuar"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Konfigurim i avancuar"
 
 msgid "Advanced Options"
@@ -1249,7 +1253,7 @@ msgid ""
 "NICs support polling."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Paisja: %s | Total: %s | Perdorur: %s | Bosh: %s"
 
@@ -1288,6 +1292,10 @@ msgstr "Drejtoria per te kerkuar per file torrent te rinj."
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Dizabilito AFP-over-Appletalk per te parandaluar lidhjet DDP."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Organizues i Skedarëve"
 
 msgid "Disable console menu"
 msgstr "Dizabilito menune e konsolles"
@@ -1650,6 +1658,9 @@ msgstr "Raportim nepermjet emailit"
 
 msgid "Enable"
 msgstr "Aktivo"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5380,9 +5391,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5401,11 +5412,11 @@ msgstr "E toleruar"
 msgid "Tools"
 msgstr "Veglat"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Totali: %s | Përdorur: %s | Lirë: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Totali: %s | Përdoru: %s | Lirë: %s | Gjëndja: %s"
 

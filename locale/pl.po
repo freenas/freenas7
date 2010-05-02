@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:20+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -47,11 +47,11 @@ msgstr "%s jest za długi."
 msgid "%s is used to create %s volumes."
 msgstr "%s został użyty do stworzenia %s woluminów"
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s z %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s na %s"
 
@@ -406,6 +406,10 @@ msgid "Advanced"
 msgstr "Zaawansowane"
 
 msgid "Advanced Configuration"
+msgstr "Konfiguracja zaawansowana"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Konfiguracja zaawansowana"
 
 msgid "Advanced Options"
@@ -1275,7 +1279,7 @@ msgid ""
 "NICs support polling."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Urządzenie: %s | Razem: %s | Zajęte: %s | Wolne: %s"
 
@@ -1314,6 +1318,10 @@ msgstr "Katalog w którym znajdują się pliki .torrent."
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Wyłącz AFP-over-Appletalk aby zablokować połączenia DDP."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Menedżer plików"
 
 msgid "Disable console menu"
 msgstr "Wyłącz menu konsoli"
@@ -1673,6 +1681,9 @@ msgstr "Wyślij raport"
 
 msgid "Enable"
 msgstr "Włącz"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5549,12 +5560,12 @@ msgstr ""
 "Dokładne informacje na temat pisania reguł zapory można znaleźć w <a href='%"
 "s' target='_blank'>documentation</a> FreeBSD."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 "Aby poprawić wydajność spróbuj następujących opcji:<div "
 "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
@@ -5581,11 +5592,11 @@ msgstr ""
 msgid "Tools"
 msgstr "Narzędzia"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Razem: %s | Zajęte: %s | Wolne: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Ogółem: %s | Używane: %s | Wolne: %s | Stan: %s"
 

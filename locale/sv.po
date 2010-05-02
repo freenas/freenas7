@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 02:25+0000\n"
+"POT-Creation-Date: 2010-05-02 19:06+0000\n"
 "PO-Revision-Date: 2010-04-08 23:40+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -41,11 +41,11 @@ msgstr "%s är för lång."
 msgid "%s is used to create %s volumes."
 msgstr "%s används för att skapa %s volymer."
 
-#, php-format
+#, c-format, php-format
 msgid "%s of %sB"
 msgstr "%s av %sB"
 
-#, php-format
+#, c-format, php-format
 msgid "%s on %s"
 msgstr "%s på %s"
 
@@ -396,6 +396,10 @@ msgid "Advanced"
 msgstr "Avancerat"
 
 msgid "Advanced Configuration"
+msgstr "Avancerad konfiguration"
+
+#, fuzzy
+msgid "Advanced Format"
 msgstr "Avancerad konfiguration"
 
 msgid "Advanced Options"
@@ -1269,7 +1273,7 @@ msgstr ""
 "vidarebefodring av data (enheterna pollas 1000 gånger per sekund). Inte alla "
 "nätverkskort stödjer polling."
 
-#, php-format
+#, c-format, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Enhet: %s | Totalt: %s | Använt: %s | Ledigt: %s"
 
@@ -1308,6 +1312,10 @@ msgstr "Katalog att bevaka efter .torrentfiler"
 
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Avaktivera AFP-over-Appletalk för att förhindra DDP-anslutningar."
+
+#, fuzzy
+msgid "Disable File Manager"
+msgstr "Filhanterare"
 
 msgid "Disable console menu"
 msgstr "Inaktivera konsollmeny"
@@ -1668,6 +1676,9 @@ msgstr "E-posta rapport"
 
 msgid "Enable"
 msgstr "Aktivera"
+
+msgid "Enable Advanced Format (4KB sector)"
+msgstr ""
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -5414,9 +5425,9 @@ msgstr ""
 #, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
-"id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
-"href='%s'>Tuning</a>' switch</li><li>Increase <a href='%s'>MTU</a></li></"
-"ul></div>"
+"id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
+"li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
+"a>' switch</li></ul></div>"
 msgstr ""
 
 msgid "To match any IP address leave this field empty."
@@ -5439,11 +5450,11 @@ msgstr ""
 msgid "Tools"
 msgstr "Verktyg"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Totalt: %s | Använt: %s | Ledigt: %s"
 
-#, php-format
+#, c-format, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Totalt: %s | Använd: %s | Ledigt: %s | Tillstånd: %s"
 
