@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-02 19:06+0000\n"
-"PO-Revision-Date: 2010-04-19 02:37+0900\n"
+"PO-Revision-Date: 2010-05-02 19:26+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
@@ -404,9 +404,8 @@ msgstr "高度な設定"
 msgid "Advanced Configuration"
 msgstr "高度な設定"
 
-#, fuzzy
 msgid "Advanced Format"
-msgstr "高度な設定"
+msgstr "Advanced Format"
 
 msgid "Advanced Options"
 msgstr "高度なオプション"
@@ -1330,9 +1329,8 @@ msgstr "新しい .torrent ファイルを監視するディレクトリ。"
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "DDP 接続を防止する為に、AFP over Appletalk を無効にします。"
 
-#, fuzzy
 msgid "Disable File Manager"
-msgstr "ファイルマネージャ"
+msgstr "ファイルマネージャを無効にする"
 
 msgid "Disable console menu"
 msgstr "コンソールメニューを無効にする"
@@ -1698,7 +1696,7 @@ msgid "Enable"
 msgstr "有効"
 
 msgid "Enable Advanced Format (4KB sector)"
-msgstr ""
+msgstr "Advanced Format を有効にする (4KB セクタ)"
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr "非同期I/O (AIO)を有効にします。"
@@ -5705,17 +5703,15 @@ msgstr ""
 "ファイアウォールのルールの詳細な書き方についてはFreeBSDの<a href='%s' "
 "target='_blank'>ドキュメント</a>を確認してください。"
 
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "To increase CIFS performance try the following:<div "
 "id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</"
 "li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
 "a>' switch</li></ul></div>"
 msgstr ""
-"CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div "
-"id='enumeration'><ul><li>Large read/write を有効にする</li><li>'<a href='%s'>"
-"チューニング</a>' スイッチを有効にする</li><li><a href='%s'>MTU</a> を増やす"
-"</li></ul></div>"
+"CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div id='enumeration'><ul><li>'非同期 I/O (AIO)' を有効にする</li>\n"
+"<li>Large read/write を有効にする</li><li>'<a href='%s'>チューニング</a>' スイッチを有効にする</li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
