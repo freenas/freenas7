@@ -226,6 +226,17 @@ function system_get_cpu_usage() {
 	return floor(100 * ($totalused / $totalDiff));
 }
 
+// Get CPUID
+function system_get_cpuid($cpuidx, $level) {
+	$r = explode(" ", @exec("/usr/sbin/cpucontrol -i $level /dev/cpuctl${cpuidx} | awk '{ print $4, $5, $6, $7 }'"));
+	$a = array();
+	$a['eax'] = $r[0];
+	$a['ebx'] = $r[1];
+	$a['ecx'] = $r[2];
+	$a['edx'] = $r[3];
+	return $a;
+}
+
 // Get various CPU informations.
 // Result:
 //  Array (
@@ -243,6 +254,29 @@ function system_get_cpu_info() {
 	$cpuinfo['model'] = chop(`/sbin/sysctl -n hw.model`);
 	$cpuinfo['clockrate'] = chop(`/sbin/sysctl -n hw.clockrate`);
 	$cpuinfo['temperature'] = chop(`/sbin/sysctl -n hw.acpi.thermal.tz0.temperature`);
+	$cpus = system_get_cpus();
+	$cpuinfo['temperature2'] = array();
+	$temp = @exec("/sbin/sysctl -q -n dev.cpu.0.temperature");
+	if ($temp != '') {
+		$adj = 0;
+		$cpuid = system_get_cpuid(0, "0x0");
+		// AuthenticAMD ?
+		if ($cpuid['ebx'] == 0x68747541 && $cpuid['ecx'] == 0x444d4163 && $cpuid['edx'] == 0x69746e65) {
+			$cpuid2 = system_get_cpuid(0, "0x80000001");
+			// Brisbane BH-G1/BH-G2 ?
+			if ($cpuid2['eax'] == 0x00060fb1 || $cpuid2['eax'] == 0x00060fb2) {
+				$adj = 21.0;
+			}
+
+		}
+		for ($i = 0; $i < $cpus; $i++) {
+			$temp = @exec("/sbin/sysctl -q -n dev.cpu.{$i}.temperature");
+			if ($temp != '') {
+				$temp = sprintf("%.1f", ($temp + $adj));
+			}
+			$cpuinfo['temperature2'][$i] = $temp;
+		}
+	}
 	$cpuinfo['freq'] = chop(`/sbin/sysctl -n dev.cpu.0.freq`);
 	$cpuinfo['freqlevels'] = chop(`/sbin/sysctl -n dev.cpu.0.freq_levels`);
 
@@ -480,6 +514,10 @@ function system_get_mount_usage() {
 function system_get_sysinfo() {
 	$value['hostname'] = system_get_hostname();
 
+	// Get CPU counts.
+	$cpus = system_get_cpus();
+	$value['cpus'] = $cpus;
+
 	// Get uptime and date.
 	$value['uptime'] = system_get_uptime();
 	$value['date'] = shell_exec("date");
@@ -497,9 +535,18 @@ function system_get_sysinfo() {
 	$cpuinfo = system_get_cpu_info();
 	$value['cputemp'] = $cpuinfo['temperature'];
 	$value['cpufreq'] = $cpuinfo['freq'];
+	if (!empty($cpuinfo['temperature2'])) {
+		$value['cputemp2'] = $cpuinfo['temperature2'];
+	}
 
 	// Get CPU usage.
-	$value['cpuusage'] = system_get_cpu_usage();
+	if ($cpus > 1) {
+		$value['cpuusage2'] = system_get_smp_cpu_usage();
+		$value['cpuusage'] = floor(array_sum($value['cpuusage2']) / $cpus);
+	} else {
+		$value['cpuusage'] = system_get_cpu_usage();
+		$value['cpuusage2'] = array($value['cpuusage']);
+	}
 
 	// Get disk usage.
 	$a_diskusage = system_get_mount_usage();

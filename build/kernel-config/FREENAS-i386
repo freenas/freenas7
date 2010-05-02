@@ -392,9 +392,16 @@ options		GEOM_UZIP	# GEOM based compressed disk images
 # coretemp: on-die sensor on Intel Core and newer CPUs
 #
 device		coretemp
+# amdtemp: on-die digital thermal sensor for AMD K8, K10 and K11
+device		amdtemp
+# cpuctl: cpuctl pseudo device
+device		cpuctl
 
 # IP firewall
 options		IPFIREWALL
 options		IPFIREWALL_VERBOSE
 options		IPFIREWALL_VERBOSE_LIMIT=5
 options		IPFIREWALL_DEFAULT_TO_ACCEPT
+
+# Disk quotas are supported when this option is enabled.
+options 	QUOTA			#enable disk quotas

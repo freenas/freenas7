@@ -12,6 +12,7 @@ function update_controls(x) {
 	update_memusage(value['memusage']);
 	update_loadaverage(value['loadaverage']);
 	update_cputemp(value['cputemp']);
+	update_cputemp2(value['cputemp2']);
 	update_cpufreq(value['cpufreq']);
 	update_cpuusage(value['cpuusage']);
 	update_cpuusage2(value['cpuusage2']);
@@ -49,6 +50,14 @@ function update_cputemp(value) {
 	if (document.getElementById("cputemp") == null)
 		return;
 	document.getElementById("cputemp").value = value;
+}
+
+function update_cputemp2(value) {
+	for (var idx = 0; idx < value.length; idx++) {
+		if (document.getElementById("cputemp"+idx) == null)
+			return;
+		document.getElementById("cputemp"+idx).value = value[idx];
+	}
 }
 
 function update_cpufreq(value) {
