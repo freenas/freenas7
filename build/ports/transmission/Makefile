@@ -1,9 +1,9 @@
 PORTNAME=				transmission
-PORTVERSION=		1.92
+PORTVERSION=		1.93
 PORTREVISION?=	1
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
-MAINTAINER=			votdev@gmx.de
+MAINTAINER=			ma.zoon@quicknet.nl
 
 MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 

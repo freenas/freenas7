@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-02 19:06+0000\n"
-"PO-Revision-Date: 2010-05-02 15:35+0100\n"
+"POT-Creation-Date: 2010-05-01 17:45+0000\n"
+"PO-Revision-Date: 2010-05-03 21:17+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -41,11 +41,11 @@ msgstr "%s is te lang."
 msgid "%s is used to create %s volumes."
 msgstr "%s is gebruikt voor het maken van %s volumes."
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%s van %sB"
 
-#, c-format, php-format
+#, php-format
 msgid "%s on %s"
 msgstr "%s op %s"
 
@@ -1110,7 +1110,7 @@ msgstr "Netwerk-polling"
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
 msgstr "Netwerk-polling is een systeem techniek die periodiek netwerkapparaten scant op nieuwe gegevens in plaats van te vertrouwen op interrupts. Dit kan de belasting van de processor verminderen en daardoor de doorvoer snelheid verhogen ten koste van een licht verhoogde doorstuur vertraging (de apparaten worden 1000 keer per seconde gepold). Niet alle NIC's ondersteunen polling."
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Apparaat: %s | Totaal: %s | Gebruikt: %s | Vrij: %s"
 
@@ -1561,7 +1561,7 @@ msgid "Enable keyboard-interactive authentication."
 msgstr "Inschakelen interactieve-toetsenbord verificatie."
 
 msgid "Enable large read/write"
-msgstr "Inschakelen groot lees/schrijf"
+msgstr "Inschakelen groot lezen/schrijven"
 
 msgid "Enable local user authentication."
 msgstr "Inschakelen lokale gebruikers verificatie."
@@ -2353,7 +2353,7 @@ msgid "Language"
 msgstr "Taal"
 
 msgid "Large read/write"
-msgstr "Groot lees/schrijf"
+msgstr "Groot lezen/schrijven"
 
 msgid "Last config change"
 msgstr "Laatste configuratiewijziging"
@@ -3535,11 +3535,11 @@ msgstr "Alleen SSL/TLS"
 
 #, php-format
 msgid "Samba will read from file asynchronously when size of request is bigger than this value. (%d by default)"
-msgstr "Samba zal het bestand asynchronously lezen als de grootte van aanvraag groter is dan deze waarde. (standaard %d)"
+msgstr "Samba zal het bestand asynchroon lezen als de grootte van aanvraag groter is dan deze waarde. (standaard %d)"
 
 #, php-format
 msgid "Samba will write to file asynchronously when size of request is bigger than this value. (%d by default)"
-msgstr "Samba zal het bestand asynchronously schrijven als de grootte van aanvraag groter is dan deze waarde. (standaard %d)"
+msgstr "Samba zal het bestand asynchroon schrijven als de grootte van aanvraag groter is dan deze waarde. (standaard %d)"
 
 msgid "Save"
 msgstr "Opslaan"
@@ -4556,7 +4556,7 @@ msgstr "Deze parameters worden toegevoegd aan %s."
 
 #, php-format
 msgid "These parameters are added to [Global] section of %s."
-msgstr "Deze aanvullende parameters zijn toegevoegd aan [Global] een sectie van %s."
+msgstr "Deze aanvullende parameters worden toegevoegd aan de [Global] sectie van %s."
 
 #, php-format
 msgid "These parameters are added to [Share] section of %s."
@@ -4808,7 +4808,7 @@ msgstr "Bekijk voor gedetailleerde informatie over het schrijven van firewallreg
 
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
-msgstr "Om de CIFS prestatie's te verhogen kunt u het volgende proberen:<div id='enumeration'><ul><li>Inschakelen 'Asynchronous I/O (AIO)' schakelaar</li><li>Inschakelen 'Groot lezen/schrijven' schakelaar</li><li>Inschakelen  '<a href='%s'>Optimalisatie</a>' schakelaar</li></ul></div>"
+msgstr "Om de CIFS prestatie's te verhogen kunt u het volgende proberen:<div id='enumeration'><ul><li>Inschakelen 'Asynchronous I/O (AIO)'</li><li>Inschakelen 'Groot lezen/schrijven'</li><li>Inschakelen  '<a href='%s'>Optimalisatie</a>'</li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr "Om het voor alle IP-adressen te laten gelden kunt u dit veld leeg laten."
@@ -4822,11 +4822,11 @@ msgstr "Toelaten"
 msgid "Tools"
 msgstr "Hulpmiddelen"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Totaal: %s | Gebruikt: %s | Vrij: %s"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Totaal: %s | Gebruikt: %s | Vrij: %s | Status: %s"
 
@@ -4995,7 +4995,7 @@ msgid "Use the following IP address as the source address in outgoing packets."
 msgstr "Gebruik het volgende IP-adres als bronadres in de uitgaande pakketten."
 
 msgid "Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000."
-msgstr "Gebruik de nieuwe 64k streaming lees en schrijf variant voor SMB aanvragen, geïntroduceerd met Windows 2000."
+msgstr "Gebruik de nieuwe 64k lees/schrijf variant voor SMB aanvragen, geïntroduceerd met Windows 2000."
 
 msgid "Use the specified NTP server."
 msgstr "Na inschakeling kunt u gemachtigde NTP tijdservers configureren."
@@ -5017,7 +5017,7 @@ msgid "Use this option to override the file creation mask (077 by default)."
 msgstr "Gebruik deze optie om de bestandsmachtigingen te overbruggen (standaard 077)."
 
 msgid "Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login."
-msgstr "Gebruik deze instelling om de gebruikersnaam (standaard 'ftp') te overbruggen, die wordt gebruikt voor toegang tot de service als gast. Welke bevoegdheden deze gebruiker ook heeft zal beschikbaar zijn voor elk werkstation die verbinding maakt met de gast service. De gebruiker dient in het wachtwoord bestand aanwezig te zijn maar hoeft geen geldig wachtwoord te hebben."
+msgstr "Gebruik deze instelling om de gebruikersnaam (standaard 'ftp') te overbruggen, deze gebruikersnaam wordt gebruikt voor toegang tot de service als gast. Welke bevoegdheden deze gebruiker ook heeft zal beschikbaar zijn voor elk werkstation die verbinding maakt met de gast service. De gebruiker dient in het wachtwoord bestand aanwezig te zijn maar hoeft geen geldig wachtwoord te hebben."
 
 msgid "Used"
 msgstr "Gebruikt"
