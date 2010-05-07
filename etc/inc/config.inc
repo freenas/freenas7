@@ -116,10 +116,10 @@ if (is_booting()) {
 				echo " {$disk}";
 
 				// Try to mount device using UFS
-				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1
+				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1a {$g['cf_path']}")) { // Search on slice 1
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						$cfgdevice = $disk;
-						$cfgpartition = "{$cfgdevice}s1";
+						$cfgpartition = "{$cfgdevice}s1a";
 						$cfgfstype = "ufs";
 					}
 					// Unmount device
@@ -1903,6 +1903,18 @@ function config_upgrade() {
 		$config['samba']['aiowbehind'] = '';
 
 		$config['version'] = "8.4";
+	}
+
+	/* Convert 8.4 -> 8.5 */
+	/* Disable fsck on MBR/UFS. */
+	if ($config['version'] === "8.4") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			if ($config['mounts']['mount'][$i]['fstype'] == "ufs" && preg_match("/s\d+$/", $config['mounts']['mount'][$i]['partition'])) {
+				$config['mounts']['mount'][$i]['fsck'] = false;
+			}
+		}
+
+		$config['version'] = "8.5";
 	}
 
 	write_config();

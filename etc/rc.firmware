@@ -17,8 +17,8 @@
 # - upgrade <file> : Do an embedded release (IMG file) upgrade using the file <file>
 # - fullupgrade <file> : Do a full release (TGZ file) upgrade using the file <file>
 
-SIZE="64M"
-CFDEVICE=`cat /etc/cfdevice`
+SIZE="128M"
+CFDEVICE=`cat /etc/cfdevice | sed -e 's/[a-h]$//'`
 
 backup_chflags() {
  	TOPROCESS="bin lib libexec sbin usr"
@@ -48,7 +48,7 @@ case $1 in
 		exec </dev/console >/dev/console 2>/dev/console
 
 		# Use auto-unit feature to automatically select an unused device.
-		/sbin/mdmfs -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
+		/sbin/mdmfs -m 0 -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
 			msg="ERROR: Failed to create in-memory file system."
 			printf "\n\33[31m%s\33[0m\n" "${msg}"

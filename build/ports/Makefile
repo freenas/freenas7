@@ -37,7 +37,7 @@
     SUBDIR += proftpd
     SUBDIR += rconf
     SUBDIR += rsync
-    SUBDIR += samba3
+    SUBDIR += samba35
     SUBDIR += scponly
     SUBDIR += sipcalc
     SUBDIR += smartmontools

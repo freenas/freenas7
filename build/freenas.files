@@ -468,6 +468,9 @@ usr/bin/vi
 ## cpuset -- configure processor sets
 usr/bin/cpuset
 
+## systat -- display system statistics
+usr/bin/systat
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol

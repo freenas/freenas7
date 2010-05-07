@@ -86,6 +86,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_mount, "uuid")
 // Split partition string
 $pconfig['partitiontype'] = substr($pconfig['partition'], 0, 1);
 $pconfig['partitionnum'] = substr($pconfig['partition'], 1);
+$pconfig['partitionnum'] = preg_replace('/(\d+).*/', '\1', $pconfig['partitionnum']);
 
 initmodectrl($pconfig, $pconfig['mode']);
 
@@ -150,6 +151,13 @@ if ($_POST) {
 		}
 
 		$device = "{$_POST['mdisk']}{$_POST['partition']}";
+		if (($_POST['fstype'] == "ufs") && preg_match("/s\d+$/", $_POST['partition'])) {
+			// MBR/UFS
+			if (file_exists("{$device}a")) {
+				$_POST['partition'] = "{$_POST['partition']}a";
+				$device = "{$device}a";
+			}
+		}
 		if ($device === $cfdevice) {
 			$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
 		}

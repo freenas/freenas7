@@ -2,6 +2,7 @@
 # This is a script designed to automate the assembly of the FreeNAS OS.
 # Created: 2/12/2006 by Scott Zahn
 # Modified by Volker Theile (votdev@gmx.de)
+# Modified by Daisuke Aoyama (aoyama@peach.ne.jp)
 
 # Debug script
 #set -x
@@ -46,13 +47,56 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-FREENAS_MFSROOT_SIZE=94
-FREENAS_IMG_SIZE=42
+FREENAS_MFSROOT_SIZE=160
+FREENAS_IMG_SIZE=65
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
-FREENAS_IMG_SECTS=32
+FREENAS_IMG_SECTS=63
 FREENAS_IMG_HEADS=16
+# cylinder alignment
+FREENAS_IMG_SIZE_SEC=`expr \( $FREENAS_IMG_SIZE_SEC / \( $FREENAS_IMG_SECTS \* $FREENAS_IMG_HEADS \) \) \* \( $FREENAS_IMG_SECTS \* $FREENAS_IMG_HEADS \)`
+
+# aligned BSD partition on MBR slice
+FREENAS_IMG_SSTART=$FREENAS_IMG_SECTS
+FREENAS_IMG_SSIZE=`expr $FREENAS_IMG_SIZE_SEC - $FREENAS_IMG_SSTART`
+# aligned by BLKSEC: 8=4KB, 64=32KB, 128=64KB, 2048=1MB
+FREENAS_IMG_BLKSEC=8
+#FREENAS_IMG_BLKSEC=64
+FREENAS_IMG_BLKSIZE=`expr $FREENAS_IMG_BLKSEC \* 512`
+# PSTART must BLKSEC aligned in the slice.
+FREENAS_IMG_POFFSET=16
+FREENAS_IMG_PSTART=`expr \( \( \( $FREENAS_IMG_SSTART + $FREENAS_IMG_POFFSET + $FREENAS_IMG_BLKSEC - 1 \) / $FREENAS_IMG_BLKSEC \) \* $FREENAS_IMG_BLKSEC \) - $FREENAS_IMG_SSTART`
+FREENAS_IMG_PSIZE0=`expr $FREENAS_IMG_SSIZE - $FREENAS_IMG_PSTART`
+if [ `expr $FREENAS_IMG_PSIZE0 % $FREENAS_IMG_BLKSEC` -ne 0 ]; then
+    FREENAS_IMG_PSIZE=`expr $FREENAS_IMG_PSIZE0 - \( $FREENAS_IMG_PSIZE0 % $FREENAS_IMG_BLKSEC \)`
+else
+    FREENAS_IMG_PSIZE=$FREENAS_IMG_PSIZE0
+fi
+
+# BSD partition only
+FREENAS_IMG_SSTART=0
+FREENAS_IMG_SSIZE=$FREENAS_IMG_SIZE_SEC
+FREENAS_IMG_BLKSEC=1
+FREENAS_IMG_BLKSIZE=512
+FREENAS_IMG_POFFSET=16
+FREENAS_IMG_PSTART=$FREENAS_IMG_POFFSET
+FREENAS_IMG_PSIZE=`expr $FREENAS_IMG_SSIZE - $FREENAS_IMG_PSTART`
+
+# newfs parameters
+FREENAS_IMGFMT_SECTOR=512
+FREENAS_IMGFMT_FSIZE=2048
+#FREENAS_IMGFMT_SECTOR=4096
+#FREENAS_IMGFMT_FSIZE=4096
+FREENAS_IMGFMT_BSIZE=`expr $FREENAS_IMGFMT_FSIZE \* 8`
+
+#echo "IMAGE=$FREENAS_IMG_SIZE_SEC"
+#echo "SSTART=$FREENAS_IMG_SSTART"
+#echo "SSIZE=$FREENAS_IMG_SSIZE"
+#echo "ALIGN=$FREENAS_IMG_BLKSEC"
+#echo "PSTART=$FREENAS_IMG_PSTART"
+#echo "PSIZE0=$FREENAS_IMG_PSIZE0"
+#echo "PSIZE=$FREENAS_IMG_PSIZE"
 
 # Options:
 # Support bootmenu
@@ -308,9 +352,9 @@ create_mfsroot() {
 	# Configure this file as a memory disk
 	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot`
 	# Create label on memory disk
-	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
+	#bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
 	# Format memory disk using UFS
-	newfs -O1 -o space -m 0 /dev/${md}c
+	newfs -S $FREENAS_IMGFMT_SECTOR -b $FREENAS_IMGFMT_BSIZE -f $FREENAS_IMGFMT_FSIZE -O2 -o space -m 0 /dev/${md}
 	# Umount memory disk (if already used)
 	umount $FREENAS_TMPDIR >/dev/null 2>&1
 	# Mount memory disk
@@ -365,20 +409,20 @@ create_image() {
 	echo "===> Use IMG as a memory disk"
 	md=`mdconfig -a -t vnode -f ${FREENAS_WORKINGDIR}/image.bin -x ${FREENAS_IMG_SECTS} -y ${FREENAS_IMG_HEADS}`
 	diskinfo -v ${md}
-	echo "===> Creating partition on this memory disk"
-	fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
+	#echo "===> Creating partition on this memory disk"
+	#fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
 	echo "===> Configuring FreeBSD label on this memory disk"
 	echo "
 # /dev/${md}:
 8 partitions:
 #        size   offset    fstype   [fsize bsize bps/cpg]
-  a:    ${FREENAS_IMG_SIZE_SEC}        0    4.2BSD        0     0
-  c:    *            *    unused        0     0         # "raw" part, don't edit
+  a: ${FREENAS_IMG_PSIZE}  ${FREENAS_IMG_PSTART}  4.2BSD        0     0
+  c: ${FREENAS_IMG_SSIZE}  0    unused        0     0         # "raw" part, don't edit
 " > ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel ${md}
 	echo "===> Formatting this memory disk using UFS"
-	newfs -U -o space -m 0 /dev/${md}a
+	newfs -S $FREENAS_IMGFMT_SECTOR -b $FREENAS_IMGFMT_BSIZE -f $FREENAS_IMGFMT_FSIZE -O2 -U -o space -m 0 /dev/${md}a
 	echo "===> Mount this virtual disk on $FREENAS_TMPDIR"
 	mount /dev/${md}a $FREENAS_TMPDIR
 	echo "===> Copying previously generated MFSROOT file to memory disk"

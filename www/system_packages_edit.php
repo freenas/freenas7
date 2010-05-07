@@ -90,25 +90,30 @@ if(!isset($do_action)) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Package file");?></td>
 						<td width="78%" class="vtable">
-							<input name="ulfile" type="file" class="formfld">
+							<input name="ulfile" type="file" class="formfld" />
 							<br /><?=gettext("Select the FreeBSD package to be installed.");?>
 						</td>
 					</tr>
 			  </table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Install")?>">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Install")?>" />
 				</div>
 				<?php if($do_action)
 				{
-				echo('<pre>');
 				echo(sprintf("<div id='cmdoutput'>%s</div>", gettext("Command output:")));
+				echo('<pre class="cmdoutput">');
 				ob_end_flush();
+				ob_start();
 				
 				// Install package.
 				packages_install($packagename);
 				
 				// Delete file.
 				@unlink($packagename);
+				
+				$cmdoutput = ob_get_contents();
+				ob_end_clean();
+				echo htmlspecialchars($cmdoutput);
 				
 				echo('</pre>');
 				}

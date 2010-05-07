@@ -10,6 +10,12 @@ Majors changes:
 - Upgrade nut to 2.4.3.
 - Upgrade php5 to 5.2.13.
 - Upgrade transmission to 1.93.
+- Upgrade samba to 3.5.2.
+- Increase image size to 65MB, mfsroot to 160MB.
+- Increase default install size embedded to 120MB, full to 380MB.
+- Increase default swap size to 256MB.
+- Increase memory disk for firmware upgrade to 128MB.
+- Create 4KB aligned data partition on the boot disk.
 
 Minors changes:
 - Add Czech and Slovak translations.
@@ -25,9 +31,18 @@ Minors changes:
 - Add amdtemp module. (FR 2992462)
 - Add ability to probe on-die digital thermal sensor.
 - Enable disk quotas of kernel option.
+- Remove a useless partition.
+- Add ability to mount 'a' partition on MBR/UFS.
+- Add variables to change upload directory of lighttpd.
+- Disable fsck on MBR/UFS mount point due to 4KB alignment. You need
+  re-enable it after upgrading.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.
+- Fix missing /var/tmp in full installation.
+- Fix upload fail when firmware upgrade.
+- Fix AIO checkbox is not disabled if samba is disabled.
+- Fix fail to update index.php if some value is undefined.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

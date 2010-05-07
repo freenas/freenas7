@@ -2,11 +2,15 @@
 <?php
 /*
 	system_packages.php
-	Copyright (C) 2007-2009 Volker Theile (votdev@gmx.de)
+	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -75,12 +79,12 @@ if ($_GET['act'] == "del") {
 			    <tr>
 			      <td class="listr"><?=htmlspecialchars($packagev['name']);?>&nbsp;</td>
 			      <td class="listbg"><?=htmlspecialchars($packagev['desc']);?>&nbsp;</td>
-			      <td valign="middle" nowrap class="list"> <a href="system_packages.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to uninstall this package?"); ?>')"><img src="x.gif" title="<?=gettext("Uninstall package"); ?>" border="0"></a></td>
+			      <td valign="middle" nowrap="nowrap" class="list"> <a href="system_packages.php?act=del&amp;id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to uninstall this package?"); ?>')"><img src="x.gif" title="<?=gettext("Uninstall package"); ?>" border="0" alt="<?=gettext("Uninstall package"); ?>" /></a></td>
 			    </tr>
 			    <?php $i++; endforeach; ?>
 			    <tr>
 						<td class="list" colspan="2"></td>
-						<td class="list"> <a href="system_packages_edit.php"><img src="plus.gif" title="<?=gettext("Install package"); ?>" border="0"></a></td>
+						<td class="list"> <a href="system_packages_edit.php"><img src="plus.gif" title="<?=gettext("Install package"); ?>" border="0" alt="<?=gettext("Install package"); ?>" /></a></td>
 					</tr>
 			  </table>
 			  <?php include("formend.inc");?>

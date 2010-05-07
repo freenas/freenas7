@@ -32,15 +32,17 @@ lighttpd_docroot=${lighttpd_docroot:-"/usr/local/www"}
 lighttpd_server_maxwriteidle=${lighttpd_server_maxwriteidle:-"360"}
 lighttpd_pidfile=${lighttpd_pidfile:-"/var/run/${name}.pid"}
 lighttpd_authrequire=${lighttpd_authrequire:-"NO"}
+lighttpd_uploaddir=${lighttpd_uploaddir:-"/var/tmp"}
+lighttpd_maxrequestsize=${lighttpd_maxrequestsize:-"262144"}
 command=/usr/local/sbin/lighttpd
 command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
 pidfile=${lighttpd_pidfile}
 sig_reload="-INT"
 
 # Create symlink for lighttpd file upload if it doesn't exist.
-#if [ ! -h "/var/tmp" ]; then
-#	ln -s /ftmp /var/tmp
-#fi
+if [ ! -h /ftmp ]; then
+	ln -s /ftmp ${lighttpd_uploaddir}/ftmp
+fi
 
 lighttpd_mkconf()
 {
@@ -114,6 +116,12 @@ url.access-deny = ( "~", ".inc", ".htpasswd" )
 static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file = "${pidfile}"
 cgi.assign = (".php" => "/usr/local/bin/php")
+EOF
+
+	# Set temporary directory
+	cat <<EOF >> ${lighttpd_conf}
+server.upload-dirs = ( "${lighttpd_uploaddir}/ftmp", "${lighttpd_uploaddir}" )
+server.max-request-size = ${lighttpd_maxrequestsize}
 EOF
 
 	# Disable File Manager
