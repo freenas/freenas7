@@ -1,6 +1,6 @@
---- ./nsswitch/wins_freebsd.c.orig	2009-01-20 15:50:59.000000000 +0000
-+++ ./nsswitch/wins_freebsd.c	2009-01-20 15:50:59.000000000 +0000
-@@ -0,0 +1,113 @@
+--- ./nsswitch/wins_freebsd.c.orig	2010-05-04 15:49:31.000000000 +0900
++++ ./nsswitch/wins_freebsd.c	2010-05-04 15:49:31.000000000 +0900
+@@ -0,0 +1,79 @@
 +/* 
 +   Unix SMB/CIFS implementation.
 +
@@ -24,59 +24,25 @@
 +
 +#include "winbind_client.h"
 +
-+NSS_STATUS _nss_wins_gethostbyname_r(const char *hostname, struct hostent *he,
-+			  char *buffer, size_t buflen, int *h_errnop);
-+
 +NSS_STATUS _nss_wins_gethostbyname2_r(const char *name, int af, struct hostent *he,
 +			   char *buffer, size_t buflen, int *h_errnop);
 +
-+NSS_METHOD_PROTOTYPE(__nss_wins_freebsd_gethostbyname_r);
 +NSS_METHOD_PROTOTYPE(__nss_wins_freebsd_gethostbyname2_r);
 +
 +static ns_mtab methods[] =
 +{
-+/*
 +	{ NSDB_HOSTS, "getaddrinfo",	  NULL, NULL },
 +	{ NSDB_HOSTS, "ghbyname",	  NULL, NULL },
 +	{ NSDB_HOSTS, "ghbyaddr",	  NULL, NULL },
-+*/
-+	{ NSDB_HOSTS, "gethostbyaddr_r",  __nss_wins_freebsd_gethostbyname_r,  _nss_wins_gethostbyname_r },
++	{ NSDB_HOSTS, "gethostbyaddr_r",  NULL, NULL },
 +	{ NSDB_HOSTS, "gethostbyname2_r", __nss_wins_freebsd_gethostbyname2_r, _nss_wins_gethostbyname2_r },
-+/*
 +	{ NSDB_HOSTS, "getnetbyname_r",	  NULL, NULL },
 +	{ NSDB_HOSTS, "getnetbyaddr_r",	  NULL, NULL },
 +	{ NSDB_HOSTS, "gethostbyname",	  NULL, NULL },
 +	{ NSDB_HOSTS, "gethostbyaddr",	  NULL, NULL },
 +	{ NSDB_HOSTS, "getnetbyname",	  NULL, NULL },
 +	{ NSDB_HOSTS, "getnetbyaddr",	  NULL, NULL }
-+*/
 +};
-+
-+int
-+__nss_wins_freebsd_gethostbyname_r(void *retval, void *mdata, va_list ap)
-+{
-+	int (*fn)(const char *, struct hostent *, char *, size_t, int *);
-+	const char	*hostname;
-+	struct hostent	*he;
-+	char		*buffer;
-+	size_t		buflen;
-+	int		*h_errnop;
-+	enum nss_status	 status;
-+	
-+	fn = mdata;
-+	hostname = va_arg(ap, const char *);
-+	he = va_arg(ap, struct hostent *);
-+	buffer = va_arg(ap, char *);
-+	buflen = va_arg(ap, size_t);
-+	h_errnop = va_arg(ap, int *);
-+
-+	status = fn(hostname, he, buffer, buflen, h_errnop);
-+	status = __nss_compat_result(status, *h_errnop);
-+	if (status == NS_SUCCESS)
-+		*(struct hostent **)retval = he;
-+	
-+	return (status);
-+}
 +
 +int
 +__nss_wins_freebsd_gethostbyname2_r(void *retval, void *mdata, va_list ap)
@@ -88,7 +54,7 @@
 +	char		*buffer;
 +	size_t		buflen;
 +	int		*h_errnop;
-+	enum nss_status	 status;
++	enum nss_status	status;
 +	
 +	fn = mdata;
 +	hostname = va_arg(ap, const char *);

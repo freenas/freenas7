@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
-# Modified for AIO by Daisuke Aoyama (aoyama@peach.ne.jp)
+# Modified for AIO/Samba3.5 by Daisuke Aoyama (aoyama@peach.ne.jp)
 
 # PROVIDE: nmbd smbd winbindd
 # REQUIRE: NETWORKING SERVERS DAEMON resolv
@@ -31,12 +31,12 @@ mkconf_cmd="samba_mkconf_cmd"
 # Defaults
 samba_enable="${samba_enable:=NO}"
 samba_config_default="/var/etc/smb.conf"
-samba_config="${samba_config=${samba_config_default}}"
+samba_config="${samba_config:-${samba_config_default}}"
 command_args="${samba_config:+-s "${samba_config}"}"
 samba_daemons="nmbd smbd winbindd"
 smbcontrol_command="/usr/bin/smbcontrol"
-samba_logdir="${samba_logdir=/var/log/samba}"
-samba_lockdir="${samba_lockdir=/var/db/samba}"
+samba_logdir="${samba_logdir:-/var/log/samba}"
+samba_lockdir="${samba_lockdir:-/var/db/samba}"
 samba_piddir="${samba_piddir=/var/run}"
 samba_recycle_repository="${samba_recycle_repository:-".recycle/%U"}"
 samba_recycle_directory_mode="${samba_recycle_directory_mode:-"0777"}"
@@ -317,7 +317,7 @@ samba_reload_cmd() {
 	local name rcvar command pidfile
 	# Prevent recursive calling
 	unset "${rc_arg}_cmd" "${rc_arg}_precmd" "${rc_arg}_postcmd"
-	# Apply to all the daemons
+	# Apply to all daemons
 	for name in ${samba_daemons}; do
 		rcvar=$(set_rcvar)
 		command="/usr/local/sbin/${name}"
@@ -328,7 +328,7 @@ samba_reload_cmd() {
 				debug "reloading ${name} configuration"
 				echo "Reloading ${name}."
 				# XXX: Hack with pid_extra
-				"${smbcontrol_command}" "${name}${pid_extra}" 'reload-config' ${command_args} >/dev/null 2>&1
+				${smbcontrol_command} "${name}${pid_extra}" 'reload-config' ${command_args} >/dev/null 2>&1
 			fi
 		fi
 	done
@@ -357,13 +357,15 @@ samba_cmd() {
 		fi
 	fi
 
-	# Apply to all the daemons
+	# Apply to all daemons
 	for name in ${samba_daemons}; do
 		rcvar=$(set_rcvar)
 		command="/usr/local/sbin/${name}"
 		pidfile="${samba_piddir}/${name}${pid_extra}.pid"
-
-		run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
+		# Daemon should be enabled and running
+		if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
+		    run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
+		fi
 	done
 
 	# Start additional processes when starting
