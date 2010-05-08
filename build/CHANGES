@@ -16,6 +16,7 @@ Majors changes:
 - Increase default swap size to 256MB.
 - Increase memory disk for firmware upgrade to 128MB.
 - Create 4KB aligned data partition on the boot disk.
+- Upgrade arcconf to 6.40.18530.
 
 Minors changes:
 - Add Czech and Slovak translations.
@@ -36,6 +37,7 @@ Minors changes:
 - Add variables to change upload directory of lighttpd.
 - Disable fsck on MBR/UFS mount point due to 4KB alignment. You need
   re-enable it after upgrading.
+- Add wireless firmware modules.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.

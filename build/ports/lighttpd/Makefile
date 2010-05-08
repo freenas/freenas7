@@ -30,23 +30,38 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/lighttpd ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_indexfile.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_indexfile.so ${FREENAS_ROOTFS}/usr/local/lib/mod_indexfile.so
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_access.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_access.so ${FREENAS_ROOTFS}/usr/local/lib/mod_access.so
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_accesslog.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_accesslog.so ${FREENAS_ROOTFS}/usr/local/lib/mod_accesslog.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_dirlisting.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_dirlisting.so ${FREENAS_ROOTFS}/usr/local/lib/mod_dirlisting.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_staticfile.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_staticfile.so ${FREENAS_ROOTFS}/usr/local/lib/mod_staticfile.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_cgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_cgi.so ${FREENAS_ROOTFS}/usr/local/lib/mod_cgi.so
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_fastcgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_fastcgi.so ${FREENAS_ROOTFS}/usr/local/lib/mod_fastcgi.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_alias.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_auth.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_auth.so ${FREENAS_ROOTFS}/usr/local/lib/mod_auth.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_cgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_cml.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_compress.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_dirlisting.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_evasive.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_evhost.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_expire.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_extforward.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_fastcgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_flv_streaming.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_indexfile.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_magnet.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_mysql_vhost.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_proxy.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_redirect.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_rewrite.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_rrdtool.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_scgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_secdownload.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_setenv.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_simple_vhost.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_ssi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_staticfile.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_status.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_trigger_b4_dl.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_userdir.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_usertrack.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_webdav.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_webdav.so ${FREENAS_ROOTFS}/usr/local/lib/mod_webdav.so
 
 .include <bsd.port.mk>

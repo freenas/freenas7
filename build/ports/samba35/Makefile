@@ -163,6 +163,7 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcacls ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcquotas ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbspool ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/testparm ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbbackup ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbdump ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbtool ${FREENAS_ROOTFS}/usr/local/bin

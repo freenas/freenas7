@@ -471,6 +471,9 @@ usr/bin/cpuset
 ## systat -- display system statistics
 usr/bin/systat
 
+## systat -- apply a diff file to an original
+usr/bin/patch
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -682,3 +685,8 @@ usr/share/snmp/defs/*.def
 
 ####### contents of /usr/share/snmp/mibs
 usr/share/snmp/mibs/*.txt
+
+####### Intel wireless module license
+usr/share/doc/legal/intel_wpi/LICENSE
+usr/share/doc/legal/intel_iwi/LICENSE
+usr/share/doc/legal/intel_ipw/LICENSE
