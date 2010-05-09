@@ -37,7 +37,7 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--with-serial \
 								--with-usb=auto \
 								--without-snmp \
-								--without-neonxml \
+								--without-neon \
 								--without-powerman \
 								--without-hal \
 								--with-ipv6 \
