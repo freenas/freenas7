@@ -415,8 +415,8 @@ function install_init_disk($disk, $partlayout)
 	$partinfo = disks_get_partition_info($disk);
 
 	// AFT support
-	$alignsector = 8; // 4KB/AFT
-	//$alignsector = 64; // 32KB/blocksize
+	//$alignsector = 8; // 4KB/AFT
+	$alignsector = 64; // 32KB/blocksize
 	$newfs_sector = 4096;
 	$newfs_fsize = 4096;
 	$newfs_bsize = $newfs_fsize * 8;

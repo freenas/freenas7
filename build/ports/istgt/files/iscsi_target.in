@@ -305,6 +305,14 @@ istgt_mkconf()
 			-i "count(//iscsitarget/target/lunmap) != 0" \
 				-m "//iscsitarget/target[lunmap/extentname=//iscsitarget/extent/name or lunmap/extentname='-']" \
 					-s "A:T:U" "name" \
+					-i "count(enable) = 0" \
+						-o "# disabled" -n \
+						-v "concat('#[LogicalUnit',position(),']')" -n \
+						-i "count(lunmap) != 0" \
+							-v "concat('#  TargetName &quot;',name,'&quot;')" -n \
+						-b -n \
+					-b \
+					-i "count(enable) != 0" \
 					-v "concat('[LogicalUnit',position(),']')" -n \
 					-i "count(lunmap) != 0" \
 						-v "concat('  TargetName &quot;',name,'&quot;')" -n \
@@ -333,7 +341,8 @@ istgt_mkconf()
 						-i "flags[.='rw,extend']" -o "  ReadOnly No" -n -b \
 						-v "concat('  UnitType ',type)" -n \
 						-v "concat('  UnitOnline ','Yes')" -n \
-						-i "string-length(queuedepth) != 0" -v "concat('  QueueDepth ',queuedepth)" -n \
+						-i "count(blocklen) != 0 and blocklen != 0" -v "concat('  BlockLength ',blocklen)" -n -b \
+						-i "string-length(queuedepth) != 0" -v "concat('  QueueDepth ',queuedepth)" -n -b \
 						-i "string-length(inqvendor) != 0 or string-length(inqproduct) != 0 or string-length(inqrevision) != 0 or string-length(inqserial) != 0" \
 							-v "concat('  UnitInquiry &quot;',inqvendor,'&quot;',' ','&quot;',inqproduct,'&quot;',' ','&quot;',inqrevision,'&quot;',' ', '&quot;',inqserial,'&quot;')" -n \
 						-b \
@@ -354,6 +363,7 @@ istgt_mkconf()
 							-b \
 						-b \
 					-b -n \
+					-b \
 				-b \
 				-n \
 			-b \

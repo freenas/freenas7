@@ -292,6 +292,11 @@ setoptions()
 		_value=""
 	fi
 	eval /usr/local/sbin/rconf attribute set saver "${_value}";
+
+	# Enable/disable Ctrl + Alt + Del.
+	if configxml_isset "//system/disableconsolemenu"; then
+		sysctl hw.syscons.kbd_reboot=0 >/dev/null
+	fi
 }
 
 # Serial console

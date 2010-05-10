@@ -1917,6 +1917,21 @@ function config_upgrade() {
 		$config['version'] = "8.5";
 	}
 
+	/* Convert 8.5 -> 8.6 */
+	/* Set enable/blocklen on iSCSI target */
+	if ($config['version'] === "8.5") {
+		for ($i = 0; isset($config['iscsitarget']['target'][$i]); $i++) {
+			$config['iscsitarget']['target'][$i]['enable'] = true;
+			if ($config['iscsitarget']['target'][$i]['type'] === "Disk") {
+				$config['iscsitarget']['target'][$i]['blocklen'] = 512;
+			} else {
+				$config['iscsitarget']['target'][$i]['blocklen'] = 0;
+			}
+		}
+
+		$config['version'] = "8.6";
+	}
+
 	write_config();
 
 	if (is_booting())

@@ -11,7 +11,7 @@ Majors changes:
 - Upgrade php5 to 5.2.13.
 - Upgrade transmission to 1.93.
 - Upgrade samba to 3.5.2.
-- Increase image size to 65MB, mfsroot to 160MB.
+- Increase image size to 66MB, mfsroot to 164MB.
 - Increase default install size embedded to 120MB, full to 380MB.
 - Increase default swap size to 256MB.
 - Increase memory disk for firmware upgrade to 128MB.
@@ -38,6 +38,9 @@ Minors changes:
 - Disable fsck on MBR/UFS mount point due to 4KB alignment. You need
   re-enable it after upgrading.
 - Add wireless firmware modules.
+- Add logical block length for iSCSI target.
+- Add ability to disable/enable for iSCSI target.
+- Add unused extents to the list in iSCSI target edit mode.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.
@@ -45,6 +48,7 @@ Bug fixes:
 - Fix upload fail when firmware upgrade.
 - Fix AIO checkbox is not disabled if samba is disabled.
 - Fix fail to update index.php if some value is undefined.
+- Fix control of Ctrl+Alt+Del if console menu is disabled (BR 2976816).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

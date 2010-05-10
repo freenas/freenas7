@@ -854,16 +854,18 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k
 		// IDENTIFY = 6003
 		$aft_secs = (1 << 3);
 		$aft_bytes = 512 * $aft_secs;
+		//$aft_align = $aft_secs; // 4KB
+		$aft_align = 64; // 32KB
 		// block:fragment ratio is 8:1
 		$aft_blocksize = $aft_bytes * 8;
 		// MBR(1) + Pri GPT header(1) + Pri GPT table(32)
 		//  + Sec GPT table(32) + Sec GPT header(1)
 		$aft_gptstart = 1 + 1 + 32;
-		$aft_aligned = ceil($aft_gptstart / $aft_secs) * $aft_secs;
+		$aft_aligned = ceil($aft_gptstart / $aft_align) * $aft_align;
 		$aft_counts = $diskinfo['mediasize_sectors'];
 		$aft_counts -= 1 + ((1 + 32) * 2);
 		$aft_counts -= ($aft_aligned - $aft_gptstart);
-		$aft_counts = floor($aft_counts / $aft_secs) * $aft_secs;
+		$aft_counts = floor($aft_counts / $aft_align) * $aft_align;
 	}
 
 	switch ($type) {
