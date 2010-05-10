@@ -1,13 +1,11 @@
 PORTNAME=			cdialog
-PORTVERSION=	1.1.20080819
+PORTVERSION=	1.1.20100428
 PORTEPOCH=		1
 CATEGORIES=		devel
 COMMENT=			An enhanced version of 'dialog' to work with ncurses
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		ma.zoon@quicknet.nl
 
-MASTER_SITES=	ftp://invisible-island.net/dialog/ \
-							http://www.xs4all.nl/~tournoij/distfiles/ \
-							http://www.rwxrwxrwx.net/distfiles/
+MASTER_SITES=	ftp://invisible-island.net/${PORTNAME:S|^c||}/
 DISTNAME=			${PORTNAME:S|^c||}-${PORTVERSION:R}-${PORTVERSION:E}
 
 EXTRACT_SUFX=			.tgz
@@ -22,7 +20,7 @@ post-patch:
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/.libs/dialog ${FREENAS_ROOTFS}/${PREFIX}/bin/cdialog
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/.libs/libdialog.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/.libs/libcdialog.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib
 
 .include <bsd.port.pre.mk>
 

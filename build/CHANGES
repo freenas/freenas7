@@ -17,6 +17,7 @@ Majors changes:
 - Increase memory disk for firmware upgrade to 128MB.
 - Create 4KB aligned data partition on the boot disk.
 - Upgrade arcconf to 6.40.18530.
+- Upgrade cdialog to 1.1.20100428.
 
 Minors changes:
 - Add Czech and Slovak translations.
