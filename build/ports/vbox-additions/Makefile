@@ -16,6 +16,7 @@ BUILD_DEPENDS=	${NONEXISTENT}:${PORTSDIR}/emulators/virtualbox-ose-additions:bui
 BLDSRC=${PORTSDIR}/emulators/virtualbox-ose-additions/work/VirtualBox-*/
 WRKSRC=${WRKDIR}/virtualbox-ose-additions
 
+.include <../freenas.mk>
 .if ${FREENAS_ARCH} == amd64
 ARCH_DIR=	freebsd.amd64
 .else
@@ -28,4 +29,3 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${BLDSRC}/out/${ARCH_DIR}/release/bin/additions/VBoxService ${FREENAS_ROOTFS}/${PREFIX}/sbin
 
 .include <bsd.port.mk>
-.include <../freenas.mk>
