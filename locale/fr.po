@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-02 19:06+0000\n"
+"POT-Creation-Date: 2010-05-12 17:38+0000\n"
 "PO-Revision-Date: 2010-04-12 20:11+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -27,6 +27,10 @@ msgid "%d%% of %dMiB"
 msgstr "%d%% de %dMiB"
 
 #, php-format
+msgid "%dB / block"
+msgstr ""
+
+#, php-format
 msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s s'annonce commme un serveur de temps pour les clients Windows."
 
@@ -42,11 +46,11 @@ msgstr "%s est trop long"
 msgid "%s is used to create %s volumes."
 msgstr "%s est utilisé pour créer les volumes %s."
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%s de %sB"
 
-#, c-format, php-format
+#, php-format
 msgid "%s on %s"
 msgstr "%s sur %s"
 
@@ -1316,7 +1320,7 @@ msgstr ""
 "1000 fois par seconde). Toutes les cartes réseau ne supportent pas cette "
 "technique."
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Périphérique: %s | Total: %s | Utilisé: %s | Disponible: %s"
 
@@ -2916,6 +2920,9 @@ msgstr "Niveau de journalisation"
 
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "Journaliser dans syslog les paquets gérés par cette règle."
+
+msgid "Logical Block Length"
+msgstr ""
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -5217,6 +5224,10 @@ msgstr ""
 msgid "The queuedepth range is invalid."
 msgstr "La profondeur de queue est invalide."
 
+#, fuzzy, php-format
+msgid "The recommended length for compatibility is %d."
+msgstr "Le recommandé de queue depth est %d."
+
 #, php-format
 msgid "The recommended queue depth is %d."
 msgstr "Le recommandé de queue depth est %d."
@@ -5869,11 +5880,11 @@ msgstr "Toléré"
 msgid "Tools"
 msgstr "Outils"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Total: %s | Utilisé: %s | Disponible: %s"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Total: %s | Utilisé: %s | Disponible: %s | Etat: %s"
 
@@ -6353,6 +6364,10 @@ msgid ""
 msgstr ""
 "Vous pouvez spécifier des données SCSI INQUIRY. Vide par défaut. (jusqu'à %d "
 "caractères ASCII)"
+
+#, php-format
+msgid "You may specify logical block length (%d by default)."
+msgstr ""
 
 msgid "You must add disks first."
 msgstr "Vous devez d'abord ajouter des disques."

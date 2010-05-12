@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-02 19:06+0000\n"
+"POT-Creation-Date: 2010-05-12 17:38+0000\n"
 "PO-Revision-Date: 2010-04-08 23:45+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -27,6 +27,10 @@ msgid "%d%% of %dMiB"
 msgstr ""
 
 #, php-format
+msgid "%dB / block"
+msgstr ""
+
+#, php-format
 msgid "%s advertises itself as a time server to Windows clients."
 msgstr "設定%s成為Windows客戶端的時間伺服器。"
 
@@ -42,11 +46,11 @@ msgstr "%s 太長"
 msgid "%s is used to create %s volumes."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%s of %sB"
 
-#, c-format, php-format
+#, php-format
 msgid "%s on %s"
 msgstr "%s 於 %s"
 
@@ -1217,7 +1221,7 @@ msgstr ""
 "CPU 的負載同時增加處理量，但是會使得資料傳輸時間些微的拉長（forwarding "
 "delay）。但並非所有網路卡都支援 Polling。"
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "裝置: %s | 總共: %s | 已使用: %s | 剩餘: %s"
 
@@ -2713,6 +2717,9 @@ msgid "Log Level"
 msgstr "記錄檔層級"
 
 msgid "Log packets that are handled by this rule to syslog."
+msgstr ""
+
+msgid "Logical Block Length"
 msgstr ""
 
 #, php-format
@@ -4829,6 +4836,10 @@ msgid "The queuedepth range is invalid."
 msgstr "該 queuedepth 範圍是無效的。"
 
 #, php-format
+msgid "The recommended length for compatibility is %d."
+msgstr ""
+
+#, php-format
 msgid "The recommended queue depth is %d."
 msgstr ""
 
@@ -5400,11 +5411,11 @@ msgstr "容許"
 msgid "Tools"
 msgstr "工具"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "總共: %s | 已使用: %s | 剩餘: %s"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "總共: %s | 已使用: %s | 剩餘: %s | 目前: %s"
 
@@ -5843,6 +5854,10 @@ msgstr "可以加註必要的描述文字。"
 msgid ""
 "You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
+msgstr ""
+
+#, php-format
+msgid "You may specify logical block length (%d by default)."
 msgstr ""
 
 msgid "You must add disks first."

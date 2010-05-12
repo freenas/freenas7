@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-02 19:06+0000\n"
+"POT-Creation-Date: 2010-05-12 17:38+0000\n"
 "PO-Revision-Date: 2010-04-07 01:29+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -26,6 +26,10 @@ msgid "%d%% of %dMiB"
 msgstr "%d%% di %dMiB"
 
 #, php-format
+msgid "%dB / block"
+msgstr ""
+
+#, php-format
 msgid "%s advertises itself as a time server to Windows clients."
 msgstr "Consenti a %s di proporsi come time server per i client Windows."
 
@@ -41,11 +45,11 @@ msgstr "%s è troppo lungo"
 msgid "%s is used to create %s volumes."
 msgstr "%s è usato per creare %s volumi."
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%s di %sB"
 
-#, c-format, php-format
+#, php-format
 msgid "%s on %s"
 msgstr "%s su %s"
 
@@ -1310,7 +1314,7 @@ msgstr ""
 "pacchetti (i dispositivi sono interrogati 1000 volte al secondo). Non tutte "
 "le schede di rete supportano il polling."
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Dispositivo: %s | Totale: %s | Usati: %s | Liberi: %s"
 
@@ -2892,6 +2896,9 @@ msgstr "Livello di Log"
 
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "Pacchetti registro gestiti da questa regola nel syslog."
+
+msgid "Logical Block Length"
+msgstr ""
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -5105,6 +5112,10 @@ msgid "The queuedepth range is invalid."
 msgstr ""
 
 #, php-format
+msgid "The recommended length for compatibility is %d."
+msgstr ""
+
+#, php-format
 msgid "The recommended queue depth is %d."
 msgstr ""
 
@@ -5722,11 +5733,11 @@ msgstr ""
 msgid "Tools"
 msgstr "Strumenti"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr ""
 
@@ -6194,6 +6205,10 @@ msgstr "Inserire qui una descrizione per riferimento."
 msgid ""
 "You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII "
 "chars)"
+msgstr ""
+
+#, php-format
+msgid "You may specify logical block length (%d by default)."
 msgstr ""
 
 msgid "You must add disks first."

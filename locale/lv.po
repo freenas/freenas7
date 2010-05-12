@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-02 19:06+0000\n"
+"POT-Creation-Date: 2010-05-12 17:38+0000\n"
 "PO-Revision-Date: 2010-04-12 20:12+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
@@ -26,6 +26,10 @@ msgid "%d%% of %dMiB"
 msgstr "%d%% no %dMiB"
 
 #, php-format
+msgid "%dB / block"
+msgstr ""
+
+#, php-format
 msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s reklamē sevi kā laika serveri Windows klientiem."
 
@@ -41,11 +45,11 @@ msgstr "%s ir pārāk garš."
 msgid "%s is used to create %s volumes."
 msgstr "%s tiek lietots, lai veidotu %s sējumus."
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%s no %sB"
 
-#, c-format, php-format
+#, php-format
 msgid "%s on %s"
 msgstr "%s uz %s"
 
@@ -1289,7 +1293,7 @@ msgstr ""
 "pārsūtīšanas aizturi (ierīces ir aptaujātas 1000 reizes sekundē). Ne visi "
 "NICi atbalsta aptaujāšanu."
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "Ierīce: %s | Kopā: %s | Izlietots: %s | Brīvs: %s"
 
@@ -2868,6 +2872,9 @@ msgstr "Žurnalēšanas līmenis"
 
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "Žurnalēt paketes, kuras tiek padotas pa šo notiekumu uz syslog."
+
+msgid "Logical Block Length"
+msgstr ""
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -5130,6 +5137,10 @@ msgstr ""
 msgid "The queuedepth range is invalid."
 msgstr "Rindas dziļuma diapazons ir nederīgs."
 
+#, fuzzy, php-format
+msgid "The recommended length for compatibility is %d."
+msgstr "Rekomendētais rindas dziļums ir %d."
+
 #, php-format
 msgid "The recommended queue depth is %d."
 msgstr "Rekomendētais rindas dziļums ir %d."
@@ -5767,11 +5778,11 @@ msgstr "Pieļauts"
 msgid "Tools"
 msgstr "Rīki"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "Kopā: %s | Lietots: %s | Brīvs: %s"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "Kopā: %s | Lietots: %s | Brīvs: %s | Statuss: %s"
 
@@ -6248,6 +6259,10 @@ msgid ""
 msgstr ""
 "Jūs varat norādīt kā SCSI INQUIRY datu. Pēc noklusējuma tukšs. (līdz %d "
 "ASCII simboliem)"
+
+#, php-format
+msgid "You may specify logical block length (%d by default)."
+msgstr ""
 
 msgid "You must add disks first."
 msgstr "Tev vispirms jāpievieno disks."
