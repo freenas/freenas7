@@ -30,6 +30,7 @@
     SUBDIR += nss_ldap
     SUBDIR += ntfsprogs
     SUBDIR += nut
+    SUBDIR += open-vm-tools
     SUBDIR += openssh-portable
     SUBDIR += pam_ldap
     SUBDIR += pam_mkhomedir
@@ -44,6 +45,7 @@
     SUBDIR += tftp-hpa
     SUBDIR += transmission
     SUBDIR += unison
+    SUBDIR += vbox-additions
     SUBDIR += xmlstarlet
     SUBDIR += zoneinfo
 
