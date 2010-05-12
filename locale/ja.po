@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-12 17:38+0000\n"
-"PO-Revision-Date: 2010-05-02 19:26+0900\n"
+"PO-Revision-Date: 2010-05-12 17:45+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "%2$dMiB 中 %1$d%%"
 
 #, php-format
 msgid "%dB / block"
-msgstr ""
+msgstr "%dバイト / ブロック"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -2864,7 +2864,7 @@ msgid "Log packets that are handled by this rule to syslog."
 msgstr "このルールによって処理されたパケットを syslog に記録します。"
 
 msgid "Logical Block Length"
-msgstr ""
+msgstr "論理ブロック長"
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -5117,9 +5117,9 @@ msgstr ""
 msgid "The queuedepth range is invalid."
 msgstr "キューの深さが範囲外です。"
 
-#, fuzzy, php-format
+#, php-format
 msgid "The recommended length for compatibility is %d."
-msgstr "推奨するキューの深さは%dです。"
+msgstr "互換性のため推奨する長さは%dです。"
 
 #, php-format
 msgid "The recommended queue depth is %d."
@@ -6228,7 +6228,7 @@ msgstr ""
 
 #, php-format
 msgid "You may specify logical block length (%d by default)."
-msgstr ""
+msgstr "論理ブロック長を指定して下さい。(デフォルトは%d)"
 
 msgid "You must add disks first."
 msgstr "始めにディスクを追加して下さい。"
