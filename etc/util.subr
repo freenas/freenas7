@@ -118,3 +118,35 @@ get_product_name()
 {
 	echo $(cat /etc/prd.name)
 }
+
+# get_vmtype
+# Get the virtual machine type.
+#	Return virtual machine type string.
+#	none = unknown or physical
+get_vmtype()
+{
+    local _type _smmaker _smproduct _smversion;
+    _smmaker=`/bin/kenv -q smbios.system.maker`
+    _smproduct=`/bin/kenv -q smbios.system.product`
+    _smversion=`/bin/kenv -q smbios.system.version`
+
+    _type="none";
+    if [ -x /usr/local/bin/vmware-checkvm ] && /usr/local/bin/vmware-checkvm > /dev/null; then
+	_type="vmware";
+    elif [ "$_smproduct" = "VMware Virtual Platform" ]; then
+	_type="vmware";
+    elif [ "$_smproduct" = "VirtualBox" ]; then
+	_type="vbox";
+    elif [ "$_smproduct" = "Virtual Machine" -a "$_smmaker" = "Microsoft Corporation" ]; then
+	if [ "$_smversion" = "7.0" ]; then
+	    _type="hv2";
+	elif [ "$_smversion" = "5.0" ]; then
+	    _type="hv1";
+	elif [ "$_smversion" = "VS2005R2" ]; then
+	    _type="vs";
+	else
+	    _type="msvm";
+	fi
+    fi
+    echo "$_type";
+}

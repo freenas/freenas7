@@ -606,6 +606,7 @@
 		<rcvbuf>64240</rcvbuf>
 		<sndbuf>64240</sndbuf>
 		<storedosattributes/>
+		<largereadwrite/>
 		<usesendfile/>
 		<!-- <aio/> -->
 		<aiorsize>1</aiorsize>

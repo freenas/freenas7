@@ -11,13 +11,15 @@ Majors changes:
 - Upgrade php5 to 5.2.13.
 - Upgrade transmission to 1.93.
 - Upgrade samba to 3.5.2.
-- Increase image size to 66MB, mfsroot to 164MB.
+- Increase image size to 72MB, mfsroot to 178MB.
 - Increase default install size embedded to 120MB, full to 380MB.
 - Increase default swap size to 256MB.
 - Increase memory disk for firmware upgrade to 128MB.
 - Create 4KB aligned data partition on the boot disk.
 - Upgrade arcconf to 6.40.18530.
 - Upgrade cdialog to 1.1.20100428.
+- Set kern.hz=100 when running on virtual machine and kern.hz>100.
+- Add virtual machine guest support (open-vm-tools/vbox-additions).
 
 Minors changes:
 - Add Czech and Slovak translations.
@@ -42,6 +44,8 @@ Minors changes:
 - Add logical block length for iSCSI target.
 - Add ability to disable/enable for iSCSI target.
 - Add unused extents to the list in iSCSI target edit mode.
+- Add kernel module directory (/boot/modules).
+- Set Large read/write by default (Services|CIFS/SMB|Settings).
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.

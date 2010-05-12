@@ -64,6 +64,7 @@ fi
 mkdir $MINIBSD_DIR
 mkdir $MINIBSD_DIR/defaults
 mkdir $MINIBSD_DIR/kernel
+mkdir $MINIBSD_DIR/modules
 mkdir $MINIBSD_DIR/zfs
 
 # Copy required files

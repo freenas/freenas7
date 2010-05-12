@@ -40,6 +40,22 @@ export FREENAS_BOOTDIR
 export FREENAS_REVISION
 export FREENAS_TMPDIR
 
+FREENAS_MK=${FREENAS_SVNDIR}/build/ports/freenas.mk
+rm -rf ${FREENAS_MK}
+echo "FREENAS_ROOTDIR=${FREENAS_ROOTDIR}" >> ${FREENAS_MK}
+echo "FREENAS_WORKINGDIR=${FREENAS_WORKINGDIR}" >> ${FREENAS_MK}
+echo "FREENAS_ROOTFS=${FREENAS_ROOTFS}" >> ${FREENAS_MK}
+echo "FREENAS_SVNDIR=${FREENAS_SVNDIR}" >> ${FREENAS_MK}
+echo "FREENAS_WORLD=${FREENAS_WORLD}" >> ${FREENAS_MK}
+echo "FREENAS_PRODUCTNAME=${FREENAS_PRODUCTNAME}" >> ${FREENAS_MK}
+echo "FREENAS_VERSION=${FREENAS_VERSION}" >> ${FREENAS_MK}
+echo "FREENAS_ARCH=${FREENAS_ARCH}" >> ${FREENAS_MK}
+echo "FREENAS_KERNCONF=${FREENAS_KERNCONF}" >> ${FREENAS_MK}
+echo "FREENAS_OBJDIRPREFIX=${FREENAS_OBJDIRPREFIX}" >> ${FREENAS_MK}
+echo "FREENAS_BOOTDIR=${FREENAS_BOOTDIR}" >> ${FREENAS_MK}
+echo "FREENAS_REVISION=${FREENAS_REVISION}" >> ${FREENAS_MK}
+echo "FREENAS_TMPDIR=${FREENAS_TMPDIR}" >> ${FREENAS_MK}
+
 # Local variables
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
 FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7"
@@ -47,8 +63,10 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-FREENAS_MFSROOT_SIZE=164
-FREENAS_IMG_SIZE=66
+#FREENAS_MFSROOT_SIZE=164
+#FREENAS_IMG_SIZE=66
+FREENAS_MFSROOT_SIZE=178
+FREENAS_IMG_SIZE=72
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
@@ -326,7 +344,11 @@ add_libs() {
 	# Copy identified libs.
 	for i in $(sort -u /tmp/lib.list); do
 		if [ -e "${FREENAS_WORLD}${i}" ]; then
-			install -c -s -v ${FREENAS_WORLD}${i} ${FREENAS_ROOTFS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+			DESTDIR=${FREENAS_ROOTFS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+			if [ ! -d ${DESTDIR} ]; then
+			    DESTDIR=${FREENAS_ROOTFS}/usr/local/lib
+			fi
+			install -c -s -v ${FREENAS_WORLD}${i} ${DESTDIR}
 		fi
 	done
 
