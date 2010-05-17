@@ -929,18 +929,29 @@ function config_upgrade() {
 	/* Convert language setting. */
 	if ($config['version'] === "2.6") {
 		$language = array(
+			"Albanian" => "sq",
 			"Bulgarian" => "bg",
+			"Czech" => "cs",
+			"Danish" => "da",
 			"Dutch" => "nl",
 			"English" => "en_US",
 			"French" => "fr",
 			"German" => "de",
 			"Greek" => "el",
+			"Hungarian" => "hu",
 			"Italian" => "it",
 			"Japanese" => "ja",
+			"Latvian" => "lv",
+			"Norwegian (Bokmal)" => "no_NB",
+			"Polish" => "pl",
+			"Portuguese" => "pt",
 			"Romanian" => "ro",
 			"Russian" => "ru",
+			"Slovak" => "sk",
+			"Slovenian" => "sl",
 			"SimplifiedChinese" => "zh_CN",
 			"Spanish" => "es",
+			"Swedish" => "sv",
 			"TraditionalChinese" => "zh_TW"
 		);
 
