@@ -155,13 +155,14 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         The authors of FreeNAS would like to thank the authors of these software
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br />
-        Copyright &copy; 1995-2009 The FreeBSD Project. All rights reserved.</p>
+        Copyright &copy; 1995-2010 The FreeBSD Project. All rights reserved.</p>
 
-			<p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br />
+      <p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br />
         Copyright &copy; 2006-2007 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br />
-        Copyright &copy; 2001-2009 The PHP Group. All rights reserved.</p>
+        Copyright &copy; 2001-2010 The PHP Group. All rights reserved.</p>
+
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://www.lighttpd.net</a>)<br />
         Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
 
@@ -175,10 +176,10 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
        </p>
 
       <p> ProFTPD - Highly configurable FTP server (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br />
-        Copyright &copy; 1999, 2000-9, The ProFTPD Project</p>
+        Copyright &copy; 1999, 2000-10, The ProFTPD Project</p>
 
-			<p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br />
-			</p>
+      <p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br />
+       </p>
 
       <p> Netatalk (<a href="http://netatalk.sourceforge.net" target="_blank">http://netatalk.sourceforge.net</a>)<br />
         Copyright &copy; 1990,1996 Regents of The University of Michigan</p>
@@ -189,65 +190,66 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
       <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd" target="_blank">http://software.wwwi.com/syslogd</a>)<br />
         Copyright &copy; 2001 Jeff Wheelhouse (jdw@wheelhouse.org)</p>
 
-	  <p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br />
-			Copyright &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
+	<p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br />
+        Copyright &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
 
-	  <p>smartmontools (<a href="http://sourceforge.net/projects/smartmontools" target="_blank">http://sourceforge.net/projects/smartmontools</a>)<br />
-			Copyright &copy; 2002-2008 Bruce Allen.</p>
+      <p>smartmontools (<a href="http://sourceforge.net/projects/smartmontools" target="_blank">http://sourceforge.net/projects/smartmontools</a>)<br />
+        Copyright &copy; 2002-2008 Bruce Allen.</p>
 
-	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br />
-			Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
+      <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br />
+        Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
-		<p>istgt (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br />
-	  	Copyright &copy; 2008-2010 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
+      <p>istgt (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br />
+        Copyright &copy; 2008-2010 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
 
-    <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br />
-      Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>
+      <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br />
+        Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>
 
-    <p>FUPPES - Free UPnP Entertainment Service (<a href="http://fuppes.ulrich-voelkel.de" target="_blank">http://fuppes.ulrich-voelkel.de</a>)<br />
-      Copyright &copy; 2005 - 2008 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
+      <p>FUPPES - Free UPnP Entertainment Service (<a href="http://fuppes.ulrich-voelkel.de" target="_blank">http://fuppes.ulrich-voelkel.de</a>)<br />
+        Copyright &copy; 2005 - 2009 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
 
-		<p>mt-daapd - Multithread daapd Apple iTunes server (<a href="http://www.fireflymediaserver.org" target="_blank">http://www.fireflymediaserver.org</a>)<br />
-      Copyright &copy; 2003 Ron Pedde (ron@pedde.com).</p>
+      <p>mt-daapd - Multithread daapd Apple iTunes server (<a href="http://www.fireflymediaserver.org" target="_blank">http://www.fireflymediaserver.org</a>)<br />
+        Copyright &copy; 2003 Ron Pedde (ron@pedde.com).</p>
 
-	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org</a>)<br />
-      from Szabolcs Szakacsits.</p>
+      <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org</a>)<br />
+        from Szabolcs Szakacsits.</p>
 
-	   <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net" target="_blank">http://fuse.sourceforge.net</a>)<br />
-      </p>
-		<p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br />
-      Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
-		</p>
+      <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net" target="_blank">http://fuse.sourceforge.net</a>)<br />
+       </p>
 
-		<p>inadyn-mt - Simple Dynamic DNS client (<a href="http://sourceforge.net/projects/inadyn-mt" target="_blank">http://sourceforge.net/projects/inadyn-mt</a>)<br />
-      Inadyn Copyright &copy; 2003-2004 Narcis Ilisei. All rights reserved.<br />
-			Inadyn-mt Copyright &copy; 2007 Bryan Hoover (bhoover@wecs.com).</p>
+      <p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br />
+        Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.</p>
 
-		<p>XMLStarlet Command Line XML Toolkit (<a href="http://xmlstar.sourceforge.net" target="_blank">http://xmlstar.sourceforge.net</a>)<br />
-      Copyright &copy; 2002 Mikhail Grushinskiy. All rights reserved.</p>
+      <p>inadyn-mt - Simple Dynamic DNS client (<a href="http://sourceforge.net/projects/inadyn-mt" target="_blank">http://sourceforge.net/projects/inadyn-mt</a>)<br />
+        Inadyn Copyright &copy; 2003-2004 Narcis Ilisei. All rights reserved.<br />
+        Inadyn-mt Copyright &copy; 2007 Bryan Hoover (bhoover@wecs.com).</p>
 
-		<p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br />
-      Copyright &copy; 2003 Simon Ekstrand. All rights reserved.</p>
+      <p>XMLStarlet Command Line XML Toolkit (<a href="http://xmlstar.sourceforge.net" target="_blank">http://xmlstar.sourceforge.net</a>)<br />
+        Copyright &copy; 2002 Mikhail Grushinskiy. All rights reserved.</p>
 
-    <p>msmtp - An SMTP client with a sendmail compatible interface (<a href="http://msmtp.sourceforge.net" target="_blank">http://msmtp.sourceforge.net</a>)<br />
-      Copyright &copy; 2008 Martin Lambers and others.</p>
+      <p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br />
+        Copyright &copy; 2003 Simon Ekstrand. All rights reserved.</p>
 
-		<p>cdialog - Display simple dialog boxes from shell scripts (<a href="http://invisible-island.net/dialog" target="_blank">http://invisible-island.net/dialog</a>)<br />
-      Copyright &copy; 2000-2006, 2007 Thomas E. Dickey.</p>
+      <p>msmtp - An SMTP client with a sendmail compatible interface (<a href="http://msmtp.sourceforge.net" target="_blank">http://msmtp.sourceforge.net</a>)<br />
+        Copyright &copy; 2008 Martin Lambers and others.</p>
 
-		<p>host - An utility to query DNS servers<br />
-      Rewritten by Eric Wassenaar, Nikhef-H, (e07@nikhef.nl).</p>
+      <p>cdialog - Display simple dialog boxes from shell scripts (<a href="http://invisible-island.net/dialog" target="_blank">http://invisible-island.net/dialog</a>)<br />
+        Copyright &copy; 2000-2006, 2007 Thomas E. Dickey.</p>
 
-		<p>Transmission - Transmission is a fast, easy, and free multi-platform BitTorrent client (<a href="http://www.transmissionbt.com" target="_blank">http://www.transmissionbt.com</a>)<br />
-      Copyright &copy; Transmission Project 2008-2010. All rights reserved.</p>
+      <p>host - An utility to query DNS servers<br />
+        Rewritten by Eric Wassenaar, Nikhef-H, (e07@nikhef.nl).</p>
 
-		<p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br />
-      Copyright &copy; Felix C. Stegerman. All rights reserved.</p>
+      <p>Transmission - Transmission is a fast, easy, and free multi-platform BitTorrent client (<a href="http://www.transmissionbt.com" target="_blank">http://www.transmissionbt.com</a>)<br />
+        Copyright &copy; Transmission Project 2008-2010. All rights reserved.</p>
 
-	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com</a>)<br />
-	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
-    </p>
-		<p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
+      <p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br />
+        Copyright &copy; Felix C. Stegerman. All rights reserved.</p>
+
+      <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com</a>)<br />
+        Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.</p>
+		
+      <p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
+
 					</td>
 				</tr>
 			</table>
