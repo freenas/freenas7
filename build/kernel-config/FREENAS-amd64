@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.484.2.19.2.1 2009/04/15 03:14:26 kensmith Exp $
+# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.484.2.24.2.1 2010/02/10 00:26:20 kensmith Exp $
 
 machine		amd64
 cpu		HAMMER
@@ -27,11 +27,11 @@ ident		FREENAS
 
 #makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
 
-options 	SCHED_ULE			# ULE scheduler
+options 	SCHED_ULE		# ULE scheduler
 options 	PREEMPTION		# Enable kernel thread preemption
 options 	INET			# InterNETworking
 options 	INET6			# IPv6 communications protocols
-options 	SCTP			# Stream Control Transmission Protocol
+options 	SCTP			# Stream Control Transmission Protocol 
 options 	FFS			# Berkeley Fast Filesystem
 options 	SOFTUPDATES		# Enable FFS soft updates support
 options 	UFS_ACL			# Support for access control lists
@@ -59,6 +59,7 @@ options 	SCSI_DELAY=5000		# Delay (in ms) before probing SCSI
 options 	SYSVSHM			# SYSV-style shared memory
 options 	SYSVMSG			# SYSV-style message queues
 options 	SYSVSEM			# SYSV-style semaphores
+options 	P1003_1B_SEMAPHORES	# POSIX-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
@@ -66,6 +67,7 @@ options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
 #options 	AUDIT			# Security event auditing
 #options 	KDTRACE_FRAME		# Ensure frames are compiled in
 #options 	KDTRACE_HOOKS		# Kernel DTrace hooks
+options 	INCLUDE_CONFIG_FILE     # Include this file in kernel
 
 # Make an SMP-capable kernel by default
 options 	SMP			# Symmetric MultiProcessor Kernel
@@ -145,7 +147,7 @@ device		twe		# 3ware ATA RAID
 # atkbdc0 controls both the keyboard and the PS/2 mouse
 device		atkbdc		# AT keyboard controller
 device		atkbd		# AT keyboard
-#device		psm		# PS/2 mouse
+device		psm		# PS/2 mouse
 
 device		kbdmux		# keyboard multiplexer
 
@@ -254,6 +256,7 @@ device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
 device		loop		# Network loopback
 device		random		# Entropy device
 device		ether		# Ethernet support
+device		vlan		# 802.1Q VLAN support
 #device		sl		# Kernel SLIP
 #device		ppp		# Kernel PPP
 #device		tun		# Packet tunnel.
@@ -279,10 +282,9 @@ device		uhid		# "Human Interface Devices"
 device		ukbd		# Keyboard
 device		ulpt		# Printer
 device		umass		# Disks/Mass storage - Requires scbus and da
-#device		ums		# Mouse
-device		ural		# Ralink Technology RT2500USB wireless NICs
-#device		urio		# Diamond Rio 500 MP3 player
-#device		uscanner	# Scanners
+device		ums		# Mouse
+device		urio		# Diamond Rio 500 MP3 player
+device		uscanner	# Scanners
 # USB Serial devices
 device		ucom		# Generic com ttys
 device		uark		# Technologies ARK3116 based serial adapters
@@ -301,6 +303,9 @@ device		cdce		# Generic USB over Ethernet
 device		cue		# CATC USB Ethernet
 device		kue		# Kawasaki LSI USB Ethernet
 device		rue		# RealTek RTL8150 USB Ethernet
+# USB Wireless
+device		rum		# Ralink Technology RT2501USB wireless NICs
+device		ural		# Ralink Technology RT2500USB wireless NICs
 
 # FireWire support
 device		firewire	# FireWire bus code
@@ -323,16 +328,17 @@ options		HZ=1000
 #options		VESA
 
 # Network drivers:
-#device		arl			# Aironet Arlan 655 wireless adapters
-device		iwi			# Intel PRO/Wireless 2200BG/2225BG/2915ABG
+#device		arl		# Aironet Arlan 655 wireless adapters
+device		iwi		# Intel PRO/Wireless 2200BG/2225BG/2915ABG
 device		ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
-#device		zyd			# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
+#device		zyd		# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
 #device		sbni		# Granch SBNI12-xx ISA and PCI adapters
-device 		wpi			# Intel 3945ABG Wireless LAN controller
+device 		wpi		# Intel 3945ABG Wireless LAN controller
 device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
-device 		gem			# ERI/GEM/GMAC Ethernet device driver
+device 		gem		# ERI/GEM/GMAC Ethernet device driver
 device		nxge		# Neterion Xframe 10GbE Server/Storage
 device		ixgb		# Intel PRO/10GbE Ethernet Card
+device		stge		# Sundance/Tamarack TC9021 gigabit Ethernet
 
 # SCSI Controllers
 device		ihb				# IOI-A100U2W drivers
@@ -342,7 +348,6 @@ device		wlan_acl
 device		wlan_xauth
 
 device		lagg			# Link aggregation interface
-device		vlan			# IEEE 802.1Q VLAN Support
 
 # USB support
 device		udav			# Davicom DM910 USB Ethernet driver
