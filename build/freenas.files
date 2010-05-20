@@ -471,7 +471,7 @@ usr/bin/cpuset
 ## systat -- display system statistics
 usr/bin/systat
 
-## systat -- apply a diff file to an original
+## patch -- apply a diff file to an original
 usr/bin/patch
 
 ####### contents of /usr/sbin
