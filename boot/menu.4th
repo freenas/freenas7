@@ -43,6 +43,46 @@ variable rebootkey
 at-xy ." "
 ;
 
+variable vmguest
+: set-vmguest ( -- )
+	0 vmguest !
+	s" smbios.system.product" getenv dup -1 <> if
+		2dup s" VMware Virtual Platform" compare 0= if
+			1 vmguest !
+		then
+		2dup s" VirtualBox" compare 0= if
+			1 vmguest !
+		then
+		2dup s" Virtual Machine" compare 0= if
+			s" smbios.system.maker" getenv dup -1 <> if
+				s" Microsoft Corporation" compare 0= if
+					1 vmguest !
+				then
+			else
+				drop
+			then
+		then
+		2drop
+	else
+		drop
+	then
+	vmguest @ 0 <> if
+		s" 1" s" freenas.vmguest" setenv
+		s" kern.hz" getenv dup -1 <> if
+			?number if
+				100 > if
+					s" 100" s" kern.hz" setenv
+				then
+			then
+		else
+			drop
+			s" 100" s" kern.hz" setenv
+		then
+	else
+		s" 0" s" freenas.vmguest" setenv
+	then
+;
+
 : acpienabled? ( -- flag )
 	s" acpi_load" getenv
 	dup -1 = if
@@ -126,6 +166,7 @@ at-xy ." "
 ;
 
 set-current
+set-vmguest
 
 : menu-start
 	s" menu_disable" getenv

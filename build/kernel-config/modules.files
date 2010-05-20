@@ -39,3 +39,12 @@ iscsi/initiator/iscsi_initiator.ko
 syscons/green/green_saver.ko
 ata/atapicam/atapicam.ko
 aio/aio.ko
+
+# Wireless
+wpifw/wpifw.ko
+iwifw/iwi_bss/iwi_bss
+iwifw/iwi_ibss/iwi_ibss.ko
+iwifw/iwi_monitor/iwi_monitor.ko
+ipwfw/ipw_bss/ipw_bss.ko
+ipwfw/ipw_ibss/ipw_ibss.ko
+ipwfw/ipw_monitor/ipw_monitor.ko

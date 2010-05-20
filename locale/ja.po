@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-02 19:06+0000\n"
-"PO-Revision-Date: 2010-05-02 19:26+0900\n"
+"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"PO-Revision-Date: 2010-05-12 17:45+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,10 @@ msgid "%d%% of %dMiB"
 msgstr "%2$dMiB 中 %1$d%%"
 
 #, php-format
+msgid "%dB / block"
+msgstr "%dバイト / ブロック"
+
+#, php-format
 msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s を Windows クライアントにタイムサーバとして公告します。"
 
@@ -41,11 +45,11 @@ msgstr "%s は長すぎます。"
 msgid "%s is used to create %s volumes."
 msgstr "%s は %s ボリュームを作成して使用します。"
 
-#, c-format, php-format
+#, php-format
 msgid "%s of %sB"
 msgstr "%2$sB 中 %1$s"
 
-#, c-format, php-format
+#, php-format
 msgid "%s on %s"
 msgstr "%s＠%s"
 
@@ -1289,7 +1293,7 @@ msgstr ""
 "スは1秒あたり 1000回ポーリングされます)。ポーリングは全ての NIC をサポートす"
 "る訳ではありません。"
 
-#, c-format, php-format
+#, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
 msgstr "デバイス: %s | 容量: %s | 使用領域: %s | 空き領域: %s"
 
@@ -2858,6 +2862,9 @@ msgstr "ログレベル"
 
 msgid "Log packets that are handled by this rule to syslog."
 msgstr "このルールによって処理されたパケットを syslog に記録します。"
+
+msgid "Logical Block Length"
+msgstr "論理ブロック長"
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -5111,6 +5118,10 @@ msgid "The queuedepth range is invalid."
 msgstr "キューの深さが範囲外です。"
 
 #, php-format
+msgid "The recommended length for compatibility is %d."
+msgstr "互換性のため推奨する長さは%dです。"
+
+#, php-format
 msgid "The recommended queue depth is %d."
 msgstr "推奨するキューの深さは%dです。"
 
@@ -5710,8 +5721,10 @@ msgid ""
 "li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</"
 "a>' switch</li></ul></div>"
 msgstr ""
-"CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div id='enumeration'><ul><li>'非同期 I/O (AIO)' を有効にする</li>\n"
-"<li>Large read/write を有効にする</li><li>'<a href='%s'>チューニング</a>' スイッチを有効にする</li></ul></div>"
+"CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div "
+"id='enumeration'><ul><li>'非同期 I/O (AIO)' を有効にする</li>\n"
+"<li>Large read/write を有効にする</li><li>'<a href='%s'>チューニング</a>' ス"
+"イッチを有効にする</li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr ""
@@ -5733,11 +5746,11 @@ msgstr "許容"
 msgid "Tools"
 msgstr "ツール"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s"
 msgstr "合計: %s | 使用中: %s | 未使用: %s"
 
-#, c-format, php-format
+#, php-format
 msgid "Total: %s | Used: %s | Free: %s | State: %s"
 msgstr "合計: %s | 使用中: %s | 未使用: %s | 状態: %s"
 
@@ -6212,6 +6225,10 @@ msgid ""
 msgstr ""
 "SCSI INQUIRY データを指定して下さい。デフォルトは空です。(ASCII 文字列で %d "
 "文字まで)"
+
+#, php-format
+msgid "You may specify logical block length (%d by default)."
+msgstr "論理ブロック長を指定して下さい。(デフォルトは%d)"
 
 msgid "You must add disks first."
 msgstr "始めにディスクを追加して下さい。"

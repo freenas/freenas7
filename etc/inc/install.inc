@@ -1,6 +1,8 @@
 <?php
 /*
 	install.inc
+	Modified for cylinder/AFT boundary by Daisuke Aoyama (aoyama@peach.ne.jp)
+
 	Copyright (C) 2007-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -120,7 +122,7 @@ function install_harddrive_image($harddrive)
 	}
 
 	// Install system files.
-	write_console("Installing system files on device {$harddrive}s1.\n");
+	write_console("Installing system files on device {$harddrive}s1a.\n");
 	mwexec("/usr/bin/tar --exclude mnt/ --exclude dev/ --exclude var/ --exclude tmp/ --exclude {$g['cf_path']}/ -c -f - -C / . | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
@@ -242,7 +244,7 @@ function install_upgrade_full($harddrive)
 	mwexec("/etc/install/upgrade.sh clean {$mntpath}");
 
 	// Install system files
-	write_console("Installing system files on device {$harddrive}s1.\n");
+	write_console("Installing system files on device {$harddrive}s1a.\n");
 	mwexec("/usr/bin/tar --exclude mnt/ --exclude dev/ --exclude var/ --exclude tmp/ --exclude {$g['cf_path']}/ -c -f - -C / . | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
@@ -409,13 +411,36 @@ function install_init_disk($disk, $partlayout)
 		return 1;
 	}
 
+	// Get partition information
+	$partinfo = disks_get_partition_info($disk);
+
+	// AFT support
+	//$alignsector = 8; // 4KB/AFT
+	$alignsector = 64; // 32KB/blocksize
+	$newfs_sector = 4096;
+	$newfs_fsize = 4096;
+	$newfs_bsize = $newfs_fsize * 8;
+
 	// Create disk labels.
 	write_console("Create BSD label on slice/partition:\n");
 	foreach ($partlayout as $partlayoutv) {
 		$diskdevicename = "{$disk}s{$partlayoutv['slice']}";
+		$startsector = $partinfo[$partlayoutv['slice']]['start'];
+		$slicesize = $partinfo[$partlayoutv['slice']]['size'];
 
 		write_console("  {$diskdevicename}\n");
-		if (install_bsdlabel($diskdevicename, $partlayoutv['fstype'])) {
+
+		// Do not create partitions for swap.
+		if ("swap" === $partlayoutv['fstype']) {
+			// Completely wipe any prior information
+			if (mwexec("/bin/dd if=/dev/zero of=/dev/{$diskdevicename} bs=512 count=34")) {
+				write_console("\nError: Failed to wipe any prior information on {$diskdevicename}.\n");
+				return 1;
+			}
+			continue;
+		}
+
+		if (install_bsdlabel($diskdevicename, $partlayoutv['fstype'], $startsector, $slicesize, $alignsector)) {
 			write_console("\nError: Failed to create BSD label on {$diskdevicename}!\n");
 			return 1;
 		}
@@ -428,10 +453,11 @@ function install_init_disk($disk, $partlayout)
 		if ("swap" === $partlayoutv['fstype'] || "unused" === $partlayoutv['fstype'])
 			continue;
 
-		$diskdevicename = "{$disk}s{$partlayoutv['slice']}";
+		$diskdevicename = "{$disk}s{$partlayoutv['slice']}a";
 
 		write_console("  {$diskdevicename}\n");
-		if (install_newfs($diskdevicename, $partlayoutv['volname'])) {
+		if (install_newfs($diskdevicename, $partlayoutv['volname'],
+		   		  $newfs_sector, $newfs_fsize, $newfs_bsize)) {
 			write_console("\nError: Failed to create file system on {$diskdevicename}!\n");
 			return 1;
 		}
@@ -464,11 +490,16 @@ function install_fdisk($disk, $slicesize)
 	disk_sanitize_bios_geom($diskinfo);
 
 	// Calculate the size of the slices
-	$usedsectors = 0;
+	$usedsectors = $diskinfo['sectors']; // MBR start here
+	$align = $diskinfo['heads'] * $diskinfo['sectors'];
 	foreach ($slicesize as $slicesizek => $slicesizev) {
 		if (is_numeric($slicesizev)) {
 			$bytes = $slicesizev * 1024 * 1024;
 			$slicetable[$slicesizek]['length'] = $bytes / $diskinfo['sectorsize'];
+			$slicetable[$slicesizek]['length'] = floor($slicetable[$slicesizek]['length'] / $align) * $align;
+			if ($slicesizek == 0) {
+				$slicetable[$slicesizek]['length'] -= $diskinfo['sectors'];
+			}
 
 			// Sum total used sectors
 			$usedsectors += $slicetable[$slicesizek]['length'];
@@ -477,6 +508,10 @@ function install_fdisk($disk, $slicesize)
 	foreach ($slicesize as $slicesizek => $slicesizev) {
 		if ("*" === $slicesizev) { // Use the rest of the disk space for this slice.
 			$slicetable[$slicesizek]['length'] = $diskinfo['mediasize_sectors'] - $usedsectors;
+			$slicetable[$slicesizek]['length'] = floor($slicetable[$slicesizek]['length'] / $align) * $align;
+			if ($slicesizek == 0) {
+				$slicetable[$slicesizek]['length'] -= $diskinfo['sectors'];
+			}
 			// Stop processing here (only one '*' is accepted and processed)
 			break;
 		}
@@ -495,7 +530,7 @@ function install_fdisk($disk, $slicesize)
 	}
 
 	// Calculate slice start sectors and type
-	$startsector = 1;
+	$startsector = $diskinfo['sectors'];
 	foreach ($slicesize as $slicesizek => $slicesizev) {
 		if ( 0 >= $slicetable[$slicesizek]['length'])
 			continue;
@@ -508,7 +543,7 @@ function install_fdisk($disk, $slicesize)
 		$slicetable[$slicesizek]['start'] = $startsector;
 
 		// Calculate start of next slice
-		$startsector += $slicetable[$slicesizek]['length'] + 1;
+		$startsector += $slicetable[$slicesizek]['length'];
 	}
 
 	// Create fdisk config file (fdisk.conf)
@@ -554,13 +589,28 @@ function install_fdisk($disk, $slicesize)
 // Create disk label.
 // $disk - Disk name (e.g. ad0s1)
 // $fstype - The file system type (e.g. 4.2BSD or swap)
+// $startsector - Start sector of the slice
+// $slicesize - Size of the slice
+// $alignsector - alignment for the sector of the partition (e.g. 8=4KB)
 // Return 0 if successful, otherwise 1
-function install_bsdlabel($disk, $fstype)
+function install_bsdlabel($disk, $fstype, $startsector, $slicesize, $alignsector)
 {
 	global $g;
 
+	// Check sectors
+	if ($startsector == '' || $slicesize == '' || $alignsector ==''
+	    || $alignsector < 1 || $slicesize < $alignsector) {
+		write_console("\nError: Invalid parameter on {$disk}.\n");
+		return 1;
+	}
+	$poffset = 16;
+	$aligned_start = ceil(($startsector + $poffset) / $alignsector) * $alignsector;
+	$aligned_start -= $startsector;
+	$aligned_counts = $slicesize - $aligned_start;
+	$aligned_counts = floor($aligned_counts / $alignsector) * $alignsector;
+
 	// Completely wipe any prior information on the partition
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=32")) {
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=34")) {
 		write_console("\nError: Failed to wipe any prior information on {$disk}.\n");
 		return 1;
 	}
@@ -582,14 +632,19 @@ function install_bsdlabel($disk, $fstype)
 	$label = file("{$g['tmp_path']}/label.tmp");
 
 	// Open this file in add mode
-	$fd = fopen("{$g['tmp_path']}/label.tmp", 'a');
+	$fd = fopen("{$g['tmp_path']}/label.tmp", 'w');
 
 	while(list(,$val) = each($label)) {
-		if (ereg ("unused",$val)) {
-			$val = ereg_replace("c:", "a:", $val);
+		if (ereg ("unused",$val) && !ereg ("c:",$val)) {
 			// Replace 'unused' with '$fstype'
 			$val = ereg_replace("unused", $fstype, $val);
+			// Replace with aligned size
+			$val = preg_replace("/([a-z]:)\s+\d+\s+\d+/",
+				"\\1 {$aligned_counts} {$aligned_start}",
+				$val);
 			// Adding this line add the end of the file
+			fwrite($fd, $val);
+		} else {
 			fwrite($fd, $val);
 		}
 	}
@@ -612,9 +667,13 @@ function install_bsdlabel($disk, $fstype)
 // Create new file system on disk.
 // $disk - Disk name (e.g. ad0s1)
 // $volname - The new volume label (e.g. 'data')
+// $sector - The size of a sector in bytes.
+// $fsize - The fragment size of the file system in bytes.
+// $bsize - The block size of the file system, in bytes.
 // Return 0 if successful, otherwise 1
-function install_newfs($disk, $volname) {
-	$param = "-U -b 16384 -f 2048";
+function install_newfs($disk, $volname, $sector, $fsize, $bsize) {
+	//$param = "-U -b 16384 -f 2048";
+	$param = "-U -S $sector -b $bsize -f $fsize";
 	if (!empty($volname))
 		$param .= " -L \"{$volname}\"";
 
@@ -652,11 +711,15 @@ function install_detect_installation($mode, &$devinfo) {
 			continue;
 
 		// Search on slice 1 for OS installed on disk with install script
-		if (0 == mwexec("/sbin/mount -r /dev/{$diskv}s1 {$mnt_cf_disk}")) {
+		if (0 == mwexec("/sbin/mount -r /dev/{$diskv}s1a {$mnt_cf_disk}")) {
 			// Check if configuration file exists
 			if (file_exists("{$mnt_cf_disk}/conf/config.xml")) {
 				$devinfo['device'] = $diskv;
-				$devinfo['partition'] = "s1";
+				$devinfo['partition'] = "s1a";
+
+				// Get partition information
+				$partinfo = disks_get_partition_info($diskv);
+				$devinfo['size'] = $partinfo[1]['size'];
 
 				// Check install mode
 				switch ($mode) {
@@ -688,6 +751,10 @@ function install_detect_installation($mode, &$devinfo) {
 			if (file_exists("{$mnt_cf_disk}/conf/config.xml")) {
 				$devinfo['device'] = $diskv;
 				$devinfo['partition'] = "a";
+
+				// Get disk information
+				$diskinfo = disks_get_diskinfo($diskv);
+				$devinfo['size'] = $diskinfo['mediasize_sectors'];
 
 				// Check install mode
 				switch ($mode) {

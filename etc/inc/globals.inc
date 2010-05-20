@@ -51,7 +51,7 @@ $g = array(
 	"www_path" => "/usr/local/www",
 	"xml_rootobj" => "freenas",
 	"debug" => false,
-	"latest_config" => "8.4",
+	"latest_config" => "8.6",
 	"nopccard_platforms" => array("wrap", "net48xx"),
 	"wireless_regex" => "/^(ndis|wi|ath|an|ral|ural|wai|iwi|awi|wlan|ipw|wpi|rum|arl|zyd)/",
 	"default_passwd" => "freenas",
@@ -59,8 +59,8 @@ $g = array(
 );
 
 $g_install = array(
-	"part1size_embedded" => "64",
-	"part1size_full" => "128"
+	"part1size_embedded" => "120",
+	"part1size_full" => "380"
 );
 
 /* Available languages/locales */

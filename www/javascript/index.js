@@ -47,12 +47,16 @@ function update_loadaverage(value) {
 }
 
 function update_cputemp(value) {
+	if (value == undefined || value == null)
+		return;
 	if (document.getElementById("cputemp") == null)
 		return;
 	document.getElementById("cputemp").value = value;
 }
 
 function update_cputemp2(value) {
+	if (value == undefined || value == null)
+		return;
 	for (var idx = 0; idx < value.length; idx++) {
 		if (document.getElementById("cputemp"+idx) == null)
 			return;
@@ -61,12 +65,16 @@ function update_cputemp2(value) {
 }
 
 function update_cpufreq(value) {
+	if (value == undefined || value == null)
+		return;
 	if (document.getElementById("cpufreq") == null)
 		return;
 	document.getElementById("cpufreq").value = value + 'MHz';
 }
 
 function update_cpuusage(value) {
+	if (value == undefined || value == null)
+		return;
 	if (document.getElementById("cpuusage") == null)
 		return;
 	document.getElementById("cpuusage").value = value + '%';
@@ -75,6 +83,8 @@ function update_cpuusage(value) {
 }
 
 function update_cpuusage2(value) {
+	if (value == undefined || value == null)
+		return;
 	for (var idx = 0; idx < value.length; idx++) {
 		if (document.getElementById("cpuusage"+idx) == null)
 			continue;

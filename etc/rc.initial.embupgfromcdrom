@@ -33,6 +33,9 @@ require_once("install.inc");
 require_once("util.inc");
 require_once("tui.inc");
 
+// Default size of slice/partition 1 (used for OS)
+$part1size = $g_install['part1size_embedded'];
+
 // Get product information
 $productname = get_product_name();
 
@@ -49,6 +52,14 @@ if (0 != $result)
 // Search where the config file is installed
 if (0 != install_detect_installation("embedded", $devinfo)) {
 	tui_wait_keypress("No 'embedded' installation detected!");
+	exit(0);
+}
+
+// Check partition size
+$minsector = floor((($part1size * 1000 * 1000) - (256 * 63 * 512)) / 512);
+$devsize = floor(($devinfo['size'] * 512) / 1024 / 1024);
+if ($devinfo['size'] < $minsector) {
+	tui_wait_keypress("The size '{$devsize}MB' is too small. To upgrade, you need {$part1size}MB on the disk.");
 	exit(0);
 }
 
@@ -89,8 +100,9 @@ if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
 }
 
 // Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a.
-if ("s1" === $devinfo['partition']) {
-	if (install_dd_image("{$devinfo['device']}{$devinfo['partition']}")) {
+if ("s1a" === $devinfo['partition']) {
+	$slice = preg_replace('/(s\d+).$/', '\1', $devinfo['partition']);
+	if (install_dd_image("{$devinfo['device']}{$slice}")) {
 		install_unmount_cd();
 		tui_wait_keypress("There was a problem while copying files.");
 		exit(0);

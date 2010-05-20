@@ -48,6 +48,8 @@ $pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target")
 
 /* currently support LUN0 only */
 $MAX_LUNS = 1;
+/* supported block length */
+$MAX_BLOCKLEN = 4096;
 
 if (!is_array($config['iscsitarget']['portalgroup']))
 	$config['iscsitarget']['portalgroup'] = array();
@@ -118,6 +120,7 @@ if (count($config['iscsitarget']['extent']) == 0) {
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_target, "uuid")))) {
 	$pconfig['uuid'] = $a_iscsitarget_target[$cnid]['uuid'];
+	$pconfig['enable'] = isset($a_iscsitarget_target[$cnid]['enable']) ? true : false;
 	$pconfig['name'] = $a_iscsitarget_target[$cnid]['name'];
 	$pconfig['alias'] = $a_iscsitarget_target[$cnid]['alias'];
 	$pconfig['type'] = $a_iscsitarget_target[$cnid]['type'];
@@ -139,6 +142,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['inqproduct'] = $a_iscsitarget_target[$cnid]['inqproduct'];
 	$pconfig['inqrevision'] = $a_iscsitarget_target[$cnid]['inqrevision'];
 	$pconfig['inqserial'] = $a_iscsitarget_target[$cnid]['inqserial'];
+	$pconfig['blocklen'] = $a_iscsitarget_target[$cnid]['blocklen'];
 
 	if (!isset($pconfig['type'])){
 		$pconfig['type'] = "Disk";
@@ -182,6 +186,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 		$targetid += 1;
 
 	$pconfig['uuid'] = uuid();
+	$pconfig['enable'] = true;
 	$pconfig['name'] = strtolower($type)."$targetid";
 	$pconfig['alias'] = "";
 	$pconfig['type'] = "$type";
@@ -209,6 +214,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	$pconfig['inqproduct'] = "";
 	$pconfig['inqrevision'] = "";
 	$pconfig['inqserial'] = "";
+	$pconfig['blocklen'] = "512";
 }
 
 if ($_POST) {
@@ -221,8 +227,10 @@ if ($_POST) {
 		exit;
 	}
 	$type = $_POST['type'];
+	$blocklen = 0;
 	if ($type == "Disk"){
 		$stype = "Storage";
+		$blocklen = $_POST['blocklen'];
 	}elseif ($type == "Pass"){
 		$stype = "Device";
 	}else{
@@ -285,12 +293,13 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	$reqdfields = explode(" ", "authmethod authgroup digest queuedepth");
+	$reqdfields = explode(" ", "authmethod authgroup digest queuedepth blocklen");
 	$reqdfieldsn = array(gettext("Auth Method"),
 						 gettext("Auth Group"),
 						 gettext("Initial Digest"),
-						 gettext("Queue Depth"));
-	$reqdfieldst = explode(" ", "string numericint string numericint");
+						 gettext("Queue Depth"),
+						 gettext("Logical Block Length"));
+	$reqdfieldst = explode(" ", "string numericint string numericint numericint");
 	//do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
@@ -344,6 +353,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$iscsitarget_target = array();
 		$iscsitarget_target['uuid'] = $_POST['uuid'];
+		$iscsitarget_target['enable'] = $_POST['enable'] ? true : false;
 		$iscsitarget_target['name'] = $tgtname;
 		$iscsitarget_target['alias'] = $_POST['alias'];
 		$iscsitarget_target['type'] = $_POST['type'];
@@ -359,6 +369,7 @@ if ($_POST) {
 		$iscsitarget_target['inqproduct'] = $_POST['inqproduct'];
 		$iscsitarget_target['inqrevision'] = $_POST['inqrevision'];
 		$iscsitarget_target['inqserial'] = $_POST['inqserial'];
+		$iscsitarget_target['blocklen'] = $blocklen;
 
 		$iscsitarget_target['pgigmap'] = $pgigmap;
 		$iscsitarget_target['agmap'] = $agmap;
@@ -393,6 +404,18 @@ function type_change() {
 		}
 		showElementById("storage_tr", 'show');
 		showElementById("removable_tr", 'hide');
+<?php if ($MAX_BLOCKLEN > 512): ?>
+		showElementById("blocklen_tr", 'show');
+<?php endif; ?>
+<?php if ($MAX_LUNS > 1): ?>
+		for (var idx = 1; idx < <?php echo "$MAX_LUNS"; ?>; idx++) {
+			var sw_name = "enable" + idx;
+			var tr_name = "storage" + idx + "_tr";
+			//eval("document.iform." + sw_name + ".checked = true");
+			eval("document.iform." + sw_name + ".disabled = false");
+			showElementById(tr_name, 'hide');
+		}
+<?php endif; ?>
 		break;
 	case "DVD":
 		if (addedit != "edit") {
@@ -400,6 +423,18 @@ function type_change() {
 		}
 		showElementById("storage_tr", 'hide');
 		showElementById("removable_tr", 'show');
+<?php if ($MAX_BLOCKLEN > 512): ?>
+		showElementById("blocklen_tr", 'hide');
+<?php endif; ?>
+<?php if ($MAX_LUNS > 1): ?>
+		for (var idx = 1; idx < <?php echo "$MAX_LUNS"; ?>; idx++) {
+			var sw_name = "enable" + idx;
+			var tr_name = "storage" + idx + "_tr";
+			eval("document.iform." + sw_name + ".checked = false");
+			eval("document.iform." + sw_name + ".disabled = true");
+			showElementById(tr_name, 'hide');
+		}
+<?php endif; ?>
 		break;
 	case "Tape":
 		if (addedit != "edit") {
@@ -407,6 +442,18 @@ function type_change() {
 		}
 		showElementById("storage_tr", 'hide');
 		showElementById("removable_tr", 'show');
+<?php if ($MAX_BLOCKLEN > 512): ?>
+		showElementById("blocklen_tr", 'hide');
+<?php endif; ?>
+<?php if ($MAX_LUNS > 1): ?>
+		for (var idx = 1; idx < <?php echo "$MAX_LUNS"; ?>; idx++) {
+			var sw_name = "enable" + idx;
+			var tr_name = "storage" + idx + "_tr";
+			eval("document.iform." + sw_name + ".checked = false");
+			eval("document.iform." + sw_name + ".disabled = true");
+			showElementById(tr_name, 'hide');
+		}
+<?php endif; ?>
 		break;
 	default:
 		if (addedit != "edit") {
@@ -414,6 +461,18 @@ function type_change() {
 		}
 		showElementById("storage_tr", 'show');
 		showElementById("removable_tr", 'hide');
+<?php if ($MAX_BLOCKLEN > 512): ?>
+		showElementById("blocklen_tr", 'hide');
+<?php endif; ?>
+<?php if ($MAX_LUNS > 1): ?>
+		for (var idx = 1; idx < <?php echo "$MAX_LUNS"; ?>; idx++) {
+			var sw_name = "enable" + idx;
+			var tr_name = "storage" + idx + "_tr";
+			eval("document.iform." + sw_name + ".checked = false");
+			eval("document.iform." + sw_name + ".disabled = true");
+			showElementById(tr_name, 'hide');
+		}
+<?php endif; ?>
 		break;
 	}
 }
@@ -428,6 +487,40 @@ function lun_change(idx) {
 	} else {
 		showElementById(tr_name, 'hide');
 	}
+}
+
+function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.name.disabled = endis;
+	document.iform.alias.disabled = endis;
+	document.iform.type.disabled = endis;
+	document.iform.flags.disabled = endis;
+	document.iform.portalgroup.disabled = endis;
+	document.iform.initiatorgroup.disabled = endis;
+	document.iform.comment.disabled = endis;
+	document.iform.storage.disabled = endis;
+	document.iform.removable.disabled = endis;
+<?php if ($MAX_LUNS > 1): ?>
+	for (var idx = 1; idx < <?php echo "$MAX_LUNS"; ?>; idx++) {
+		var sw_name = "enable" + idx;
+		var tr_name = "storage" + idx + "_tr";
+		var name = "storage" + idx;
+		var endis_str = endis ? "true" : "false";
+		eval("document.iform." + sw_name + ".disabled = " + endis_str);
+		eval("document.iform." + name + ".disabled = " + endis_str);
+	}
+<?php endif; ?>
+	document.iform.authmethod.disabled = endis;
+	document.iform.authgroup.disabled = endis;
+	document.iform.digest.disabled = endis;
+	document.iform.queuedepth.disabled = endis;
+	document.iform.inqvendor.disabled = endis;
+	document.iform.inqproduct.disabled = endis;
+	document.iform.inqrevision.disabled = endis;
+	document.iform.inqserial.disabled = endis;
+<?php if ($MAX_BLOCKLEN > 512): ?>
+	document.iform.blocklen.disabled = endis;
+<?php endif; ?>
 }
 //-->
 </script>
@@ -451,6 +544,7 @@ function lun_change(idx) {
       <?php if ($errormsg) print_error_box($errormsg);?>
       <?php if ($input_errors) print_input_errors($input_errors);?>
       <table width="100%" border="0" cellpadding="6" cellspacing="0">
+      <?php html_titleline_checkbox("enable", gettext("iSCSI Target"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
       <?php html_inputbox("name", gettext("Target Name"), $pconfig['name'], gettext("Base Name will be appended automatically when starting without 'iqn.'."), true, 70, false);?>
       <?php html_inputbox("alias", gettext("Target Alias"), $pconfig['alias'], gettext("Optional user-friendly string of the target."), false, 70, false);?>
       <?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Disk" => gettext("Disk"),"DVD" => gettext("DVD"),"Tape" => gettext("Tape"),"Pass" => gettext("Device Pass-through")), gettext("Logical Unit Type mapped to LUN."), true, false, "type_change()");?>
@@ -519,7 +613,8 @@ function lun_change(idx) {
 			} else {
 				// Edit
 				$a_storage = &$a_storage_edit;
-				$a_storage_opt=array_merge(array("-" => gettext("None")), $a_storage_edit);
+				$a_storage = array_merge($a_storage, $a_storage_add);
+				$a_storage_opt = array_merge(array("-" => gettext("None")), $a_storage_edit);
 			}
       ?>
       <?php html_separator();?>
@@ -584,9 +679,19 @@ function lun_change(idx) {
       <?php html_inputbox("inqproduct", gettext("Inquiry Product"), $pconfig['inqproduct'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 16), false, 20);?>
       <?php html_inputbox("inqrevision", gettext("Inquiry Revision"), $pconfig['inqrevision'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 4), false, 20);?>
       <?php html_inputbox("inqserial", gettext("Inquiry Serial"), $pconfig['inqserial'], sprintf(gettext("You may specify as SCSI INQUIRY data. Empty as default. (up to %d ASCII chars)"), 16), false, 20);?>
+      <?php if ($MAX_BLOCKLEN > 512): ?>
+      <?php $a_blocklen = array();
+	for ($x = 0; (512 << $x) <= $MAX_BLOCKLEN; $x++) {
+		$a_blocklen[(512 << $x)] = sprintf(gettext("%dB / block"), (512 << $x));
+	}
+      ?>
+      <?php html_combobox("blocklen", gettext("Logical Block Length"), $pconfig['blocklen'], $a_blocklen, sprintf("%s %s", sprintf(gettext("You may specify logical block length (%d by default)."), 512), sprintf(gettext("The recommended length for compatibility is %d."), 512)), false, false, "");?>
+      <?php else: ?>
+      <input name="blocklen" type="hidden" value="512" />
+      <?php endif; ?>
       </table>
       <div id="submit">
-	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" />
+	      <input name="Submit" type="submit" class="formbtn" value="<?=(isset($uuid) && (FALSE !== $cnid)) ? gettext("Save") : gettext("Add")?>" onclick="enable_change(true)" />
 	      <input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
 	      <input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
 	      <input name="addedit" type="hidden" value="<?=isset($uuid) ? 'edit' : 'add';?>" />
@@ -599,6 +704,7 @@ function lun_change(idx) {
 <script type="text/javascript">
 <!--
 	type_change();
+	enable_change();
 <?php
 	for ($i = 1; $i < $MAX_LUNS; $i++) {
 		echo "lun_change($i);\n";

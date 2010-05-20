@@ -57,6 +57,19 @@ Majors changes:
 - Upgrade smartmontools to 5.39.1.
 - Upgrade nut to 2.4.3.
 - Upgrade php5 to 5.2.13.
+- Upgrade transmission to 1.93.
+- Upgrade samba to 3.5.2.
+- Increase image size to 72MB, mfsroot to 178MB.
+- Increase default install size embedded to 120MB, full to 380MB.
+- Increase default swap size to 256MB.
+- Increase memory disk for firmware upgrade to 128MB.
+- Create 4KB aligned data partition on the boot disk.
+- Upgrade arcconf to 6.40.18530.
+- Upgrade cdialog to 1.1.20100428.
+- Set kern.hz=100 when running on virtual machine and kern.hz>100.
+- Add virtual machine guest support (open-vm-tools/vbox-additions).
+- Upgrade inadyn-mt to 02.18.24.
+- Upgrade bash to 4.1.005.
 
 Minors changes:
 - Add Czech and Slovak translations.
@@ -72,9 +85,25 @@ Minors changes:
 - Add amdtemp module. (FR 2992462)
 - Add ability to probe on-die digital thermal sensor.
 - Enable disk quotas of kernel option.
+- Remove a useless partition.
+- Add ability to mount 'a' partition on MBR/UFS.
+- Add variables to change upload directory of lighttpd.
+- Disable fsck on MBR/UFS mount point due to 4KB alignment. You need
+  re-enable it after upgrading.
+- Add wireless firmware modules.
+- Add logical block length for iSCSI target.
+- Add ability to disable/enable for iSCSI target.
+- Add unused extents to the list in iSCSI target edit mode.
+- Add kernel module directory (/boot/modules).
+- Set Large read/write by default (Services|CIFS/SMB|Settings).
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.
+- Fix missing /var/tmp in full installation.
+- Fix upload fail when firmware upgrade.
+- Fix AIO checkbox is not disabled if samba is disabled.
+- Fix fail to update index.php if some value is undefined.
+- Fix control of Ctrl+Alt+Del if console menu is disabled (BR 2976816).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

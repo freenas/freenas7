@@ -52,6 +52,7 @@ cd $MINIBSD_DIR ;
 mkdir boot ;
 mkdir boot/defaults ;
 mkdir boot/kernel ;
+mkdir boot/modules ;
 mkdir boot/zfs ;
 mkdir bin ;
 mkdir cf ;

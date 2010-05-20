@@ -124,6 +124,8 @@ if (0 == $result) {
 	do {
 		$raminfo = system_get_ram_info();
 		$swapsize = intval($raminfo['physical'] / 1024 / 1024); // Convert to MB
+		if ($swapsize < 256)
+			$swapsize = 256;
 		$result = tui_display_input("Enter the size of the swap partition in MB.", 47, 8, $swapsize);
 		if (0 != $result)
 			exit(0);

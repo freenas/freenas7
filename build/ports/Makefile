@@ -30,6 +30,7 @@
     SUBDIR += nss_ldap
     SUBDIR += ntfsprogs
     SUBDIR += nut
+    SUBDIR += open-vm-tools
     SUBDIR += openssh-portable
     SUBDIR += pam_ldap
     SUBDIR += pam_mkhomedir
@@ -37,13 +38,14 @@
     SUBDIR += proftpd
     SUBDIR += rconf
     SUBDIR += rsync
-    SUBDIR += samba3
+    SUBDIR += samba35
     SUBDIR += scponly
     SUBDIR += sipcalc
     SUBDIR += smartmontools
     SUBDIR += tftp-hpa
     SUBDIR += transmission
     SUBDIR += unison
+    SUBDIR += vbox-additions
     SUBDIR += xmlstarlet
     SUBDIR += zoneinfo
 

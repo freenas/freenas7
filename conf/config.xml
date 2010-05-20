@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.4</version>
+	<version>8.6</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -490,6 +490,7 @@
 		</extent>
 		<target>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
+			<enable/>
 			<name>xxx</name>
 			<alias/>
 			<type>xxx</type>
@@ -502,6 +503,7 @@
 			<inqproduct/>
 			<inqrevision/>
 			<inqserial/>
+			<blocklen>xxx</blocklen>
 			<pgigmap>
 				<pgtag>xxx</pgtag>
 				<igtag>xxx</igtag>
@@ -604,6 +606,7 @@
 		<rcvbuf>64240</rcvbuf>
 		<sndbuf>64240</sndbuf>
 		<storedosattributes/>
+		<largereadwrite/>
 		<usesendfile/>
 		<!-- <aio/> -->
 		<aiorsize>1</aiorsize>

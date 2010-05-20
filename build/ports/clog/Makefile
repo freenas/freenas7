@@ -1,13 +1,13 @@
-PORTNAME=			clog
-PORTVERSION=	1.0
+PORTNAME=		clog
+PORTVERSION=		1.0
 CATEGORIES=		sysutils
-COMMENT=			Circular log file tool
-MAINTAINER=		votdev@gmx.de
+COMMENT=		Circular log file tool
+MAINTAINER=		aoyama@peach.ne.jp
 
 DISTFILES?=
 
 do-build:
-	@${TAR} -zxvf ${FILESDIR}/syslogd_clog-current.tgz -C /usr/src/usr.bin
+	@${TAR} -zxvf ${FILESDIR}/syslogd-clog.tar.gz -C /usr/src/usr.bin
 	@${TAR} -zxvf ${FILESDIR}/clog-1.0.1.tar.gz -C /usr/src/usr.bin
 
 	@${MAKE} -C /usr/src/usr.bin/syslogd

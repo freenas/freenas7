@@ -206,6 +206,9 @@ function enable_change(enable_change) {
 	document.iform.directorymask.disabled = endis;
 	document.iform.guestaccount.disabled = endis;
 	document.iform.nullpasswords.disabled = endis;
+	document.iform.aio.disabled = endis;
+	document.iform.aiorsize.disabled = endis;
+	document.iform.aiowsize.disabled = endis;
 	document.iform.auxparam.disabled = endis;
 }
 

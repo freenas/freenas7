@@ -284,6 +284,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
 			$igtag = $target['pgigmap'][0]['igtag'];
 			$agtag = $target['agmap'][0]['agtag'];
 			$name = get_fulliqn($target['name']);
+			$disabled = !isset($target['enable']) ? sprintf("(%s)", gettext("Disabled")) : "";
 			if ($pgtag == 0 && count($config['iscsitarget']['portalgroup']) != 0)
 				$pgtag = 1;
 			if ($igtag == 0 && count($config['iscsitarget']['initiatorgroup']) != 0)
@@ -310,7 +311,7 @@ function iscsitargettarget_process_updatenotification($mode, $data) {
         ?>
         <?php $notificationmode = updatenotify_get_mode("iscsitarget_target", $target['uuid']);?>
         <tr>
-          <td class="listlr"><?=htmlspecialchars($name);?>&nbsp;</td>
+          <td class="listlr"><?=htmlspecialchars($name);?> <?=htmlspecialchars($disabled);?>&nbsp;</td>
           <td class="listr"><?=htmlspecialchars($target['flags']);?>&nbsp;</td>
           <td class="listr">
           <?php

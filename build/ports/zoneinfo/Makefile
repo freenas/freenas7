@@ -1,5 +1,5 @@
 PORTNAME=			zoneinfo
-DISTVERSION=	2010i
+DISTVERSION=	2010j
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
 MAINTAINER=		ma.zoon@quicknet.nl

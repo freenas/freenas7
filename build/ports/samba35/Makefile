@@ -1,0 +1,217 @@
+PORTNAME=		samba35
+PORTVERSION=		3.5.2
+#PORTREVISION?=		0
+CATEGORIES?=		net
+MASTER_SITES=		${MASTER_SITE_SAMBA}
+MASTER_SITE_SUBDIR=	. old-versions rc pre
+DISTNAME=		${PORTNAME:S|35$||}-${PORTVERSION:S|.p|pre|:S|.r|rc|:S|.t|tp|:S|.a|alpha|}
+
+MAINTAINER?=		aoyama@peach.ne.jp
+COMMENT?=		A free SMB and CIFS client and server for UNIX
+
+# Additional patches from Sernet.de
+#PATCH_STRIP=		-p1
+#EXTRA_PATCHES=		${PATCHDIR}/sernet.patch
+
+LATEST_LINK=		${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
+EXAMPLESDIR=		${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
+PATCH_WRKSRC=		${WRKDIR}/${DISTNAME}
+WRKSRC=			${WRKDIR}/${DISTNAME}/source3
+IPATHS=			-I${WRKDIR}/${DISTNAME}/source3/m4 -I${WRKDIR}/${DISTNAME}/m4 -I${WRKDIR}/${DISTNAME}/lib/replace -I${WRKDIR}/${DISTNAME}/source4
+AUTOHEADER_ARGS=	${IPATHS}
+AUTOCONF_ARGS=		${IPATHS}
+
+USE_GMAKE=		yes
+USE_ICONV=		yes
+GNU_CONFIGURE=		yes
+USE_AUTOTOOLS=		autoconf:262 autoheader:262
+# directories
+VARDIR?=		/var
+SAMBA_SPOOL?=		${VARDIR}/spool/samba
+SAMBA_LOGDIR=		${VARDIR}/log/samba
+SAMBA_RUNDIR=		${VARDIR}/run
+SAMBA_LOCKDIR?=		${VARDIR}/db/samba
+SAMBA_CONFIG?=		smb.conf
+SAMBA_CONFDIR?=		${VARDIR}/etc
+SAMBA_LIBDIR=		/usr/local/lib
+SAMBA_MODULEDIR=	${SAMBA_LIBDIR}/samba
+SAMBA_INCLUDEDIR=	/usr/local/include/samba
+SAMBA_PRIVATEDIR?=	${VARDIR}/etc/private
+
+CONFIGURE_ARGS+=	--exec-prefix="${PREFIX}" \
+			--sysconfdir="${SAMBA_CONFDIR}" \
+			--with-configdir="${SAMBA_CONFDIR}" \
+			--includedir="${SAMBA_INCLUDEDIR}" \
+			--datadir="${DATADIR}" \
+			--libdir="${SAMBA_LIBDIR}" \
+			--with-modulesdir="${SAMBA_MODULEDIR}" \
+			--with-pammodulesdir="${SAMBA_LIBDIR}" \
+			--localstatedir="${VARDIR}" \
+			--with-piddir="${SAMBA_RUNDIR}" \
+			--with-ncalrpcdir="${SAMBA_RUNDIR}/ncalrpc" \
+			--with-lockdir="${SAMBA_LOCKDIR}" \
+			--with-statedir="${SAMBA_LOCKDIR}" \
+			--with-cachedir="${SAMBA_LOCKDIR}" \
+			--with-privatedir="${SAMBA_PRIVATEDIR}" \
+			--with-logfilebase="${SAMBA_LOGDIR}"
+
+CPPFLAGS+=		-I${LOCALBASE}/include
+LDFLAGS+=		-L${LOCALBASE}/lib
+CONFIGURE_ENV+=		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
+# pkg-config is used to find talloc
+PKGCONFIGDIR?=		${PREFIX}/libdata/pkgconfig
+PKGCONFIGDIR_REL?=	${PKGCONFIGDIR:S|^${PREFIX}/||}
+
+PKG_CONFIG?=		${LOCALBASE}/bin/pkg-config
+CONFIGURE_ENV+=		PKG_CONFIG="${PKG_CONFIG}"
+BUILD_DEPENDS+=		${PKG_CONFIG}:${PORTSDIR}/devel/pkg-config
+LIB_DEPENDS+=		execinfo.1:${PORTSDIR}/devel/libexecinfo
+LIB_DEPENDS+=		talloc.2:${PORTSDIR}/devel/talloc
+CONFIGURE_ARGS+=	--enable-external-libtalloc
+#LIB_DEPENDS+=		tdb.1:${PORTSDIR}/databases/tdb
+#CONFIGURE_ARGS+=	--enable-external-libtdb
+
+CONFIGURE_ARGS+=	--without-libtalloc \
+			--without-libtdb \
+			--with-libiconv="${LOCALBASE}" \
+			--disable-cups \
+			--disable-fam \
+			--with-winbind \
+			--with-syslog \
+			--with-quotas \
+			--without-utmp \
+			--with-pam \
+			--with-pam_smbpass \
+			--with-aio-support \
+			--with-readline=/usr \
+			--with-included-iniparser \
+			--with-sendfile-support \
+			--enable-largefile \
+			--without-cluster-support \
+			--without-libsmbclient \
+			--without-libaddns \
+			--without-libnetapi \
+			--without-libsmbsharemodes \
+			--disable-iprint \
+			--disable-debug \
+			--disable-socket-wrapper \
+			--disable-nss-wrapper \
+			--disable-developer \
+			--disable-krb5developer \
+			--disable-dmalloc \
+			--without-profiling-data \
+			--disable-swat \
+			--with-acl-support \
+			--without-dnsupdate \
+			--disable-avahi \
+			--with-included-popt
+
+CONFIGURE_ARGS+=	--with-ads
+.if defined(KRB5_HOME) && exists(${KRB5_HOME}/lib/libgssapi_krb5.so)
+CONFIGURE_ARGS+=	--with-krb5="${KRB5_HOME}"
+.elif defined(HEIMDAL_HOME) && exists(${HEIMDAL_HOME}/lib/libgssapi.so)
+CONFIGURE_ARGS+=	--with-krb5="${HEIMDAL_HOME}"
+.elif exists(/usr/lib/libkrb5.so) && exists(/usr/bin/krb5-config)
+CONFIGURE_ARGS+=	--with-krb5="/usr"
+.else
+LIB_DEPENDS+=		krb5:${PORTSDIR}/security/heimdal
+CONFIGURE_ARGS+=	--with-krb5="${LOCALBASE}"
+.endif
+
+USE_OPENLDAP=		yes
+CONFIGURE_ARGS+=	--with-ldap
+
+#CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird"
+CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird,vfs_cacheprime,vfs_commit,vfs_dirsort,vfs_syncops"
+
+.include <bsd.port.pre.mk>
+
+post-patch:
+		@${REINPLACE_CMD} -e 's|%%SAMBA_CONFIG%%|${SAMBA_CONFIG}|g' \
+		    ${WRKSRC}/Makefile.in
+
+pre-configure:
+	@${FIND} ${WRKDIR}/${DISTNAME} -type d | ${XARGS} ${CHMOD} u+w,a+rx
+	@${FIND} ${WRKDIR}/${DISTNAME} -type f | ${XARGS} ${CHMOD} u+w,a+r
+
+pre-build:
+	cd ${WRKSRC} && ${MAKE} pch
+
+do-install:
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/samba.in ${FREENAS_ROOTFS}/etc/rc.d/samba
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/libwbclient.so.0 ${FREENAS_ROOTFS}/${SAMBA_LIBDIR}
+	@${LN} -f -v -s libwbclient.so.0 ${FREENAS_ROOTFS}/${SAMBA_LIBDIR}/libwbclient.so
+
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/winbindd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/wbinfo ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/net ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pdbedit ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbpasswd ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbstatus ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcontrol ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbtree ${FREENAS_ROOTFS}/usr/bin
+
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbadd ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbdel ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbedit ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbmodify ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbrename ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbsearch ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/sharesec ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcacls ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcquotas ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbspool ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/testparm ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbbackup ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbdump ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbtool ${FREENAS_ROOTFS}/usr/local/bin
+
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/charset
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/rpc
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/pdb
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+
+	@${CP} -pv ${WRKSRC}/bin/CP*.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/charset
+	@${CP} -pv ${WRKDIR}/${DISTNAME}/codepages/*.dat ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}
+	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+
+	@${CP} -pv $(WRKSRC)/bin/acl_tdb.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/acl_xattr.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/audit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/cacheprime.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/cap.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/catia.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/commit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/default_quota.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/dirsort.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/fake_perms.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/full_audit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/preopen.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/readonly.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/shadow_copy.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/shadow_copy2.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/smb_traffic_analyzer.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/streams_depot.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/streams_xattr.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/syncops.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/xattr_tdb.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+
+	@${CP} -pv ${WRKSRC}/bin/ad.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${CP} -pv ${WRKSRC}/bin/adex.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${CP} -pv ${WRKSRC}/bin/hash.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${CP} -pv ${WRKSRC}/bin/tdb2.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}/${SAMBA_LIBDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/${SAMBA_LIBDIR}
+	@${INSTALL_PROGRAM} -v ${WRKDIR}/${DISTNAME}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
+	@${INSTALL_PROGRAM} -v ${WRKDIR}/${DISTNAME}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
+	@${LN} -f -v -s nss_winbind.so.1 ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so
+	@${LN} -f -v -s nss_wins.so.1 ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so
+
+.include <bsd.port.post.mk>

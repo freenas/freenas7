@@ -1,8 +1,8 @@
 PORTNAME=			arcconf
-DISTVERSION=	v6_10_18359
+DISTVERSION=	v6_40_18530
 CATEGORIES=		sysutils
 COMMENT=			Adaptec SCSI RAID administration tool
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		aoyama@peach.ne.jp
 
 MASTER_SITES=	http://download.adaptec.com/raid/storage_manager/
 DISTNAME=			asm_freebsd${DIST_TYPE}_${DIST_EXT}_${DISTVERSION}
