@@ -104,6 +104,7 @@ Bug fixes:
 - Fix AIO checkbox is not disabled if samba is disabled.
 - Fix fail to update index.php if some value is undefined.
 - Fix control of Ctrl+Alt+Del if console menu is disabled (BR 2976816).
+- Fix the document link on Services|Rsync|Server|Settings (BR 2997828).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

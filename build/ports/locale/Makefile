@@ -6,6 +6,8 @@ MAINTAINER=		votdev@gmx.de
 
 DISTFILES?=
 
+.include <../freenas.mk>
+
 do-build:
 # Translate *po files to *.mo.
 	@for i in $$(ls ${FREENAS_SVNDIR}/locale/*.po); do \
