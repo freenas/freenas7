@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-12 17:38+0000\n"
-"PO-Revision-Date: 2010-05-21 13:03+0100\n"
+"PO-Revision-Date: 2010-05-21 18:29+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 10:16+0000\n"
+"X-Launchpad-Export-Date: 2010-05-21 16:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: DENMARK\n"
 "X-Poedit-Language: Danish\n"
@@ -27,7 +27,7 @@ msgstr "%d%% af %dMiB"
 
 #, php-format
 msgid "%dB / block"
-msgstr ""
+msgstr "%dB / blok"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -180,10 +180,10 @@ msgid "AG"
 msgstr "AG"
 
 msgid "AIO read size"
-msgstr ""
+msgstr "AIO læse størrelse"
 
 msgid "AIO write size"
-msgstr ""
+msgstr "AIO skrive størrelse"
 
 msgid "ARP Tables"
 msgstr "ARP Tabeller"
@@ -336,7 +336,7 @@ msgid "Advanced Configuration"
 msgstr "Avanceret konfiguration"
 
 msgid "Advanced Format"
-msgstr ""
+msgstr "Avanceret formatering"
 
 msgid "Advanced Options"
 msgstr "Advancerede valgmuligheder"
@@ -481,7 +481,7 @@ msgid "Are you sure you want to shutdown the system?"
 msgstr "Er du sikker på du vil lukke systemet ned?"
 
 msgid "Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "Asynkron I/O (AIO)"
 
 msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
 msgstr "På det højeste niveau, bliver et mål præsenteret for initiatoren, og indholder en eller flere extents."
@@ -860,7 +860,7 @@ msgid "Custom script is required."
 msgstr "Brugerdefineret script er krævet."
 
 msgid "Czech"
-msgstr ""
+msgstr "Tjekkisk"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -1155,7 +1155,7 @@ msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Deaktiver AFP-over-Appletalk for at forhindre DDP forbindelser."
 
 msgid "Disable File Manager"
-msgstr ""
+msgstr "Deaktiver Filhåndtering"
 
 msgid "Disable console menu"
 msgstr "Deaktiver konsol menuen"
@@ -1499,10 +1499,10 @@ msgid "Enable"
 msgstr "Aktiver"
 
 msgid "Enable Advanced Format (4KB sector)"
-msgstr ""
+msgstr "Aktiver avanceret formatering (4KB sektorer)"
 
 msgid "Enable Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "Aktiver Asynkron I/O (AIO)"
 
 msgid "Enable FXP protocol."
 msgstr "Aktiver FXP protokol."
@@ -2495,7 +2495,7 @@ msgid "Log packets that are handled by this rule to syslog."
 msgstr "Log pakker, der bliver behandlet af denne regel, til syslog."
 
 msgid "Logical Block Length"
-msgstr ""
+msgstr "Logisk blok størrelse"
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -2818,23 +2818,23 @@ msgstr "Ingen konfigureret Auth Gruppe. Tilføj venligst en ny <a href='%s'>Auth
 
 #, php-format
 msgid "No configured Extent. Please add new <a href='%s'>Extent</a> first."
-msgstr ""
+msgstr "Ingen konfigurerede Extents. Tilføj venligst en ny <a href='%s'>Extent</a> først."
 
 #, php-format
 msgid "No configured Initiator Group. Please add new <a href='%s'>Initiator Group</a> first."
-msgstr ""
+msgstr "Ingen konfigurerede Initiator Grupper. Tilføj venligst en ny <a href='%s'>Initiator Gruppe</a> først."
 
 #, php-format
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
-msgstr ""
+msgstr "Ingen konfigurerede Portal Grupper. Tilføj venligst en ny <a href='%s'>Portal Gruppe</a> først."
 
 #, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
-msgstr ""
+msgstr "Ingen konfigurerede puljer. Tilføj venligst en ny <a href='%s'>pulje</a> først."
 
 #, php-format
 msgid "No configured virtual devices. Please add new <a href='%s'>virtual device</a> first."
-msgstr ""
+msgstr "Ingen konfigurerede virtuelle enheder. Tilføj venligst en ny <a href='%s'>virtuel enhed</a> først."
 
 msgid "No device selected."
 msgstr "Ingen enhed valgt."
@@ -2844,7 +2844,7 @@ msgstr "Ingen diske konfigureret"
 
 #, php-format
 msgid "No disks available. Please add new <a href='%s'>disk</a> first."
-msgstr ""
+msgstr "Ingen diske tilgængelige. Tilføj venligst en ny <a href='%s'>disk</a> først."
 
 msgid "No file was uploaded."
 msgstr "Ingen fil blev oploaded."
@@ -3542,11 +3542,11 @@ msgstr "Kun SSL/TLS"
 
 #, php-format
 msgid "Samba will read from file asynchronously when size of request is bigger than this value. (%d by default)"
-msgstr ""
+msgstr "Samba vil læse asynkront fra filen, når størrelse på forespørgslen er mere end denne værdi. (%d som standard)"
 
 #, php-format
 msgid "Samba will write to file asynchronously when size of request is bigger than this value. (%d by default)"
-msgstr ""
+msgstr "Samba vil skrive asynkront til filen, når størrelse på forespørgslen er mere end denne værdi. (%d som standard)"
 
 msgid "Save"
 msgstr "Gem"
@@ -3561,7 +3561,7 @@ msgid "Saved file to"
 msgstr "Gemte filen til"
 
 msgid "Scan Targets"
-msgstr ""
+msgstr "Scan mål"
 
 msgid "Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."
 msgstr "Undersøg filsystemet hver N sekunder, for at se om der er blevet tilføjet eller fjernet nogle filer. Sæt dette til 0 for at deaktivere baggrunds undersøgelsen. Hvis baggrunds undersøgelse er deaktiveret, kan en undersøgelse stadig gennemtvinges fra status siden på den administrative hjemmeside."
@@ -3764,7 +3764,7 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sov - Kontroller enheden medmindre den er i SOV tilstand."
 
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakisk"
 
 msgid "Slovenian"
 msgstr "Slovensk"
@@ -4022,13 +4022,13 @@ msgid "Target directory."
 msgstr "Destinations mappe."
 
 msgid "Target information"
-msgstr ""
+msgstr "Mål information"
 
 msgid "Target is not selected."
-msgstr ""
+msgstr "Målet er ikke valgt."
 
 msgid "Target list"
-msgstr ""
+msgstr "Mål liste"
 
 msgid "Target name"
 msgstr "Destinations navn"
@@ -4072,7 +4072,7 @@ msgid "The  deny  option specifies users and groups who are not allowed access t
 msgstr "Nægt indstillingen angiver brugere og grupper der ikke har tilladelse til at tilgå dette share. Denne bruger samme format som tillad indstillinger."
 
 msgid "The COM port in BIOS has to be enabled before enabling this option."
-msgstr ""
+msgstr "COM-porten skal aktiveres i BIOS, inden denne indstilling aktiveres."
 
 msgid "The IP address that this hostname represents."
 msgstr "IP-adressen som dette værtsnavn repræsenterer."
@@ -4087,7 +4087,7 @@ msgstr "'%s' MIBen eksisterer ikke i sysctl."
 
 #, php-format
 msgid "The RAID volume is currently mounted! Remove the <a href='%s'>mount point</a> first before proceeding."
-msgstr ""
+msgstr "RAID volumen er monteret i øjeblikket! Fjern <a href='%s'>monterings punktet</a> først, inden du fortsætter."
 
 msgid "The TCP port must be a valid port number."
 msgstr "TCP porten skal gøre et gyldigt port nummer."
@@ -4212,7 +4212,7 @@ msgstr "Ændringerne blev succesfuldt anvendt."
 
 #, c-format
 msgid "The changes have been saved. You have to <a href='%s'>reboot</a> the system for the changes to take effect."
-msgstr ""
+msgstr "Ændringerne er blevet gemt. Du skal <a href='%s'>genstarte</a> system inden ændringerne bliver anvendt."
 
 msgid "The cleartext credentials with which to bind."
 msgstr "Klartekst legitimationsoplysningerne der skal tilkobles."
@@ -4228,7 +4228,7 @@ msgid "The configuration could not be restored. %s"
 msgstr "Konfigurationen kunne ikke gendannes. %s."
 
 msgid "The configuration has been changed.<br />You must apply the changes in order for them to take effect."
-msgstr ""
+msgstr "Konfigurationen er blevet ændret.<br />Du skal anvende ændringer inden de bliver taget i brug."
 
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
@@ -4264,7 +4264,7 @@ msgstr "Mappen der indeholder de filer du gerne vil udgive. Den fjerne vært beh
 
 #, php-format
 msgid "The disk is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
-msgstr ""
+msgstr "Disken er monteret i øjeblikket! <a href='%s'>Afmonter</a> denne disk, inden du fortsætter."
 
 msgid "The disk is currently mounted! The mount point will be removed temporary to perform selected command."
 msgstr "Disken er monteret i øjeblikket! Monterings punktet vil blive midlertidigt fjernet, for at udføre den valgte kommando."
@@ -4282,7 +4282,7 @@ msgstr "Driver der bruges til at kommunikere med din UPS. Se listen med tilgæng
 
 #, php-format
 msgid "The encrypted device is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
-msgstr ""
+msgstr "Den krypterede enheden er monteret i øjeblikket! <a href='%s'>Afmonter</a> denne disk, inden du fortsætter."
 
 msgid "The extent name already exists."
 msgstr "Extent navnet eksisterer allerede."
@@ -4328,7 +4328,7 @@ msgid "The initiator can discover the targets with correct user and secret in sp
 msgstr "Initiatoren kan opdage målet med den korrekte bruger og secret i den angivne Auth Gruppe."
 
 msgid "The istgtcontrol can access the targets with correct user and secret in specific Auth Group."
-msgstr ""
+msgstr "istgtcontrol kan tilgå målene med det korrekte brugernavn og hemmeligt i den angivne Auth Gruppe."
 
 msgid "The login name contains invalid characters."
 msgstr "Login navnet indeholder ugyldige tegn."
@@ -4337,7 +4337,7 @@ msgid "The login name is a reserved login name."
 msgstr "Login navnet er et reserveret login navn."
 
 msgid "The login name is limited to 16 characters."
-msgstr ""
+msgstr "Login navnet er begrænset til 16 tegn."
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr "Maks. antal forbindelser per IP skal enten være 0 (uendeligt) eller større."
@@ -4361,7 +4361,7 @@ msgid "The method can be accepted in discovery session. Auto means both none and
 msgstr "Denne metode kan accepteres i discovery sessionen. Auto betyder både ingen og godkendelse."
 
 msgid "The method can be accepted in the controller."
-msgstr ""
+msgstr "Metoden kan accepteres i controlleren."
 
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
 msgstr "Minimum porten der allokeres til PASV data forbindelser (0 = brug hvilken som helst port)."
@@ -4430,15 +4430,15 @@ msgstr "Queuedepth området er ugyldigt."
 
 #, php-format
 msgid "The recommended length for compatibility is %d."
-msgstr ""
+msgstr "Den anbefalede længde for kompatibilitet er %d."
 
 #, php-format
 msgid "The recommended queue depth is %d."
-msgstr ""
+msgstr "Den anbefalede kø størrelse er %d."
 
 #, php-format
 msgid "The removable area mapped to LUN%d."
-msgstr ""
+msgstr "Det flytbare område er kortlagt til LUN%d."
 
 msgid "The rule number determines the order of the rule."
 msgstr "Regel nummeret bestemmer reglens rækkefølge."
@@ -4514,7 +4514,7 @@ msgid "The working directory does not exist."
 msgstr "Arbejdsmappen eksisterer ikke."
 
 msgid "There are too many additional groups."
-msgstr ""
+msgstr "Der er for mange ekstra grupper."
 
 msgid "There is no error, the file uploaded with success."
 msgstr "Der opstod ingen fejl, filen blev succesfuldt uploaded."
@@ -4662,14 +4662,14 @@ msgid "This may make more efficient use of the system CPU's and cause Samba to b
 msgstr "Dette kan bruge systemets CPU mere effektivt, og øge ydelsen på Samba. Samba deaktiverer automatisk dette for klienter der bruger protokol niveauer mindre en NT LM 0.12, og når det opdager en klient der bruger Windows 9x."
 
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br /><br />Do you want to install this image anyway (on your own risk)?"
-msgstr ""
+msgstr "Dette betyder at det image du har uploaded ikke er et officielt/understøttet image, og kan resultere i uventet opførsel eller sikkerheds problemer. Installer kun images der kommer fra kilder du stoler på, og er sikker på at imaget ikke er blevet ændret.<br /><br />Vil du installere dette image alligevel (på egen risiko)?"
 
 msgid "This name already exists in the disk list."
 msgstr "Dette navn eksisterer allerede i disk listen."
 
 #, php-format
 msgid "This name is for example: %s."
-msgstr ""
+msgstr "Dette navn er for eksempel: %s."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Dette navn kan f.eks. være: iqn.2005-01.il.ac.huji.cs:somebody."
@@ -4762,7 +4762,7 @@ msgstr "Det virtualle enheds navn eksisterer allerede."
 
 #, php-format
 msgid "This will cause %s not to check for newer firmware versions when the <a href='%s'>%s</a> page is viewed."
-msgstr ""
+msgstr "Dette vil gøre så %s ikke ser efter nye firmware versioner, når <a href='%s'>%s</a> siden bliver vist."
 
 msgid "This will create a recycle bin on the share."
 msgstr "Dette vil oprette en papirkurv på sharet."
@@ -4801,7 +4801,7 @@ msgid "Times"
 msgstr "Antal"
 
 msgid "To configure the target, you must add at least Portal Group and Initiator Group and Extent.<br />Portal Group which is identified by tag number defines IP addresses and listening TCP ports.<br />Initiator Group which is identified by tag number defines authorised initiator names and networks.<br />Auth Group which is identified by tag number and is optional if the target does not use CHAP authentication defines authorised users and secrets for additional security.<br />Extent defines the storage area of the target."
-msgstr ""
+msgstr "For at konfigurere målet, skal du tilføje mindst en Portal Gruppe, Initiator Gruppe og Extent.<br />Portal Gruppen, som identificeres ved mærket nummeret, definerer IP-adresse og lyttende TCP porte.<br />Initiator Gruppen, som identificeres ved mærkat nummeret, definerer godkendte initiator navne og netværk.<br />Auth Gruppen, som identificeres ved mærkat nummeret, og er valgfri hvis målet ikke bruger CHAP godkendelse, definerer godkendte brugere og hemmeligheder for yderligere sikkerhed.<br />Extent definerer målets lager område."
 
 msgid "To e-mail"
 msgstr "Til email"
@@ -4819,7 +4819,7 @@ msgstr "For mere detaljerede informationer om at skrive firewall regler, kan du 
 
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
-msgstr ""
+msgstr "For at forbedre CIFS ydelsen, kan du prøve følgende:<div id='enumeration'><ul><li>Aktiver 'Asynkron I/O (AIO)' indstillingen</li><li>Aktiver 'Stor læsning/skrivning' indstillingen</li><li>Aktiver '<a href='%s'>Finjustering</a>' indstillingen</li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr "Lad feltet være tomt, hvis alle IP-adresser skal gælde."
@@ -4890,7 +4890,7 @@ msgid "Type"
 msgstr "Type"
 
 msgid "Type used as extent."
-msgstr ""
+msgstr "Type brugt som Extent."
 
 msgid "UCD-SNMP-MIB"
 msgstr "UCD-SNMP-MIB"
@@ -5152,7 +5152,7 @@ msgid "Webserver"
 msgstr "Webserver"
 
 msgid "Webserver document root is missing."
-msgstr ""
+msgstr "Webserver dokument-rod mangler."
 
 msgid "Week days"
 msgstr "Ugedage"
@@ -5197,21 +5197,21 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "You can also install a package via SSH or console using the the pkg_add command.<br />Example: pkg_add -r packagename"
-msgstr ""
+msgstr "Du kan også installere en pakke via SSH eller konsollen, ved at bruge pkg_add kommandoen.<br />Eksempel: pkg_add -r pakkenavn"
 
 msgid "You can use the following parameters for substitution:"
-msgstr ""
+msgstr "Du kan bruge følgende parametre for erstatning:"
 
 #, php-format
 msgid "You can't mount the partition '%s' where the config file is stored.<br />"
-msgstr ""
+msgstr "Du kan ikke montere partitionen '%s' hvor konfigurations-filen er gemt.<br />"
 
 msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
 msgstr "Du kan ikke afmontere et drev der bruges af swap filen, en iSCSI mål fil eller en anden kørende proces!"
 
 #, php-format
 msgid "You have to activate <a href='%s'>Zeroconf/Bonjour</a> to advertise this service to clients."
-msgstr ""
+msgstr "Du er nødt til at aktivere <a href='%s'>Zeroconf/Bonjour</a> for at oplyse klienter om denne tjeneste."
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
@@ -5226,7 +5226,7 @@ msgstr "Du kan angive som SCSI INQUIRY data. Tom som standard. (Op til %d ASCII 
 
 #, php-format
 msgid "You may specify logical block length (%d by default)."
-msgstr ""
+msgstr "Du kan angive den logiske blok størrelse (%d som standard)."
 
 msgid "You must add disks first."
 msgstr "Du skal tilføje diske først."
@@ -5274,7 +5274,7 @@ msgid "cachecnid"
 msgstr "cachecnid"
 
 msgid "change failed."
-msgstr ""
+msgstr "ændring fejlede."
 
 msgid "chroot() everyone, but root."
 msgstr "chroot() alle, undtagen root."
@@ -5296,10 +5296,10 @@ msgid "e.g. %s"
 msgstr "f.eks. %s"
 
 msgid "filechooser"
-msgstr ""
+msgstr "Filvælger"
 
 msgid "get target info failed."
-msgstr ""
+msgstr "Kunne ikke hente mål info."
 
 msgid "hour(s)"
 msgstr "time(r)"
@@ -5315,7 +5315,7 @@ msgstr "iSCSI Target Logical Unit Controller"
 
 #, php-format
 msgid "iSCSI initial parameter (%d by default)."
-msgstr ""
+msgstr "iSCSI start parameter (%d som standard)."
 
 msgid "iSCSI initiator disabled"
 msgstr "iSCSI initiator deaktiveret"
@@ -5324,7 +5324,7 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "load/unload failed."
-msgstr ""
+msgstr "Indlæsning/Udlæsning fejlede."
 
 msgid "minute(s)"
 msgstr "minut(ter)"
@@ -5372,13 +5372,13 @@ msgid "rc.conf"
 msgstr "rc.conf"
 
 msgid "revision"
-msgstr ""
+msgstr "revision"
 
 msgid "rotated block-interleaved parity"
 msgstr "roteret block-interleaved paritet"
 
 msgid "scan target failed."
-msgstr ""
+msgstr "Kunne ikke scanne målet."
 
 msgid "second(s)"
 msgstr "sekund(er)"
