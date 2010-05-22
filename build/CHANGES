@@ -70,6 +70,7 @@ Majors changes:
 - Add virtual machine guest support (open-vm-tools/vbox-additions).
 - Upgrade inadyn-mt to 02.18.24.
 - Upgrade bash to 4.1.005.
+- Upgrade istgt to 20100522.
 
 Minors changes:
 - Add Czech and Slovak translations.
@@ -96,6 +97,10 @@ Minors changes:
 - Add unused extents to the list in iSCSI target edit mode.
 - Add kernel module directory (/boot/modules).
 - Set Large read/write by default (Services|CIFS/SMB|Settings).
+- Add crypto accelerator driver (hifn, safe, ubsec).
+- Move upload directory to /var/tmp/ftmp from /ftmp.
+- Change iSCSI initial parameter.
+- Add new parameter of istgt 20100522.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.

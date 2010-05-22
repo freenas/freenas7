@@ -50,6 +50,7 @@ $pgtitle = array(gettext("Services"), gettext("iSCSI Target"), gettext("Target")
 $MAX_LUNS = 1;
 /* supported block length */
 $MAX_BLOCKLEN = 4096;
+//$MAX_BLOCKLEN = 128 * 1024;
 
 if (!is_array($config['iscsitarget']['portalgroup']))
 	$config['iscsitarget']['portalgroup'] = array();
@@ -303,7 +304,8 @@ if ($_POST) {
 	//do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	if (strcasecmp("Auto", $pconfig['authmethod']) != 0
+	if ((strcasecmp("Auto", $pconfig['authmethod']) != 0
+	   && strcasecmp("None", $pconfig['authmethod']) != 0)
 		&& $pconfig['authgroup'] == 0) {
 		$input_errors[] = sprintf(gettext("The attribute '%s' is required."), gettext("Auth Group"));
 	}
@@ -659,7 +661,7 @@ function enable_change(enable_change) {
       <?php endfor;?>
       <?php html_separator();?>
       <?php html_titleline(gettext("Advanced settings"));?>
-      <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP Mutual" => gettext("Mutual CHAP")), gettext("The method can be accepted by the target. Auto means both none and authentication."), false);?>
+      <?php html_combobox("authmethod", gettext("Auth Method"), $pconfig['authmethod'], array("Auto" => gettext("Auto"), "CHAP" => gettext("CHAP"), "CHAP Mutual" => gettext("Mutual CHAP"), "None" => gettext("None")), gettext("The method can be accepted by the target. Auto means both none and authentication."), false);?>
       <?php
 			$ag_list = array();
 			$ag_list['0'] = gettext("None");
