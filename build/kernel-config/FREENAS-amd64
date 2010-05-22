@@ -328,6 +328,7 @@ options		HZ=1000
 #options		VESA
 
 # Network drivers:
+device		ae		# Attansic/Atheros L2 FastEthernet
 #device		arl		# Aironet Arlan 655 wireless adapters
 device		iwi		# Intel PRO/Wireless 2200BG/2225BG/2915ABG
 device		ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
@@ -360,6 +361,8 @@ device		cryptodev
 # GEOM classes
 options		GEOM_ELI	# GELI filesystem encryption
 options		GEOM_UZIP	# GEOM based compressed disk images
+options 	GEOM_PART_BSD		# BSD disklabel
+options 	GEOM_PART_MBR		# MBR partitioning
 
 # Temperature sensors:
 #

@@ -147,6 +147,9 @@ sbin/growfs
 ## gpt -- Manipulate GUID partition tables
 sbin/gpt
 
+## gpart -- control utility for the disk partitioning GEOM class
+sbin/gpart
+
 ## gvinum -- Volume manager (RAID0,1,5)
 sbin/gvinum
 
