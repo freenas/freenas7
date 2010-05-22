@@ -1946,6 +1946,29 @@ function config_upgrade() {
 		$config['version'] = "8.7";
 	}
 
+	/* Convert 8.7 -> 8.8 */
+	/* Set iSCSI parameter */
+	if ($config['version'] === "8.7") {
+		if ($config['iscsitarget']['maxsessions'] === "32") {
+			$config['iscsitarget']['maxsessions'] = "16";
+		}
+		if ($config['iscsitarget']['maxconnections'] === "8") {
+			$config['iscsitarget']['maxconnections'] = "4";
+		}
+		if ($config['iscsitarget']['firstburstlength'] === "65536") {
+			$config['iscsitarget']['firstburstlength'] = "262144";
+		}
+		if ($config['iscsitarget']['maxburstlength'] === "262144") {
+			$config['iscsitarget']['maxburstlength'] = "1048576";
+		}
+		$config['iscsitarget']['maxr2t'] = "32";
+		$config['iscsitarget']['maxoutstandingr2t'] = "16";
+		$config['iscsitarget']['defaulttime2wait'] = "2";
+		$config['iscsitarget']['defaulttime2retain'] = "60";
+
+		$config['version'] = "8.8";
+	}
+
 	write_config();
 
 	if (is_booting())

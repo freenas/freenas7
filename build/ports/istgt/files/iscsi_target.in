@@ -167,6 +167,7 @@ istgt_mkconf()
 			-b \
 			-v "concat('  Timeout ',//iscsitarget/timeout)" -n \
 			-v "concat('  NopInInterval ',//iscsitarget/nopininterval)" -n \
+			-v "concat('  MaxR2T ',//iscsitarget/maxr2t)" -n \
 			-v "concat('  DiscoveryAuthMethod ',//iscsitarget/discoveryauthmethod)" -n \
 			-i "//iscsitarget/discoveryauthgroup != 0" \
 				-v "concat('  DiscoveryAuthGroup ','AuthGroup',//iscsitarget/discoveryauthgroup)" -n \
@@ -179,6 +180,9 @@ istgt_mkconf()
 			-v "concat('  FirstBurstLength ',//iscsitarget/firstburstlength)" -n \
 			-v "concat('  MaxBurstLength ',//iscsitarget/maxburstlength)" -n \
 			-v "concat('  MaxRecvDataSegmentLength ',//iscsitarget/maxrecvdatasegmentlength)" -n \
+			-v "concat('  MaxOutstandingR2T ',//iscsitarget/maxoutstandingr2t)" -n \
+			-v "concat('  DefaultTime2Wait ',//iscsitarget/defaulttime2wait)" -n \
+			-v "concat('  DefaultTime2Retain ',//iscsitarget/defaulttime2retain)" -n \
 		-b \
 		-i "count(//iscsitarget/nodebase) = 0" \
 			-v "concat('  NodeBase &quot;','${VENDOR_IQN}','&quot;')" -n \
@@ -187,13 +191,17 @@ istgt_mkconf()
 			-v "concat('  MediaDirectory &quot;','${MEDIADIRECTORY}','&quot;')" -n \
 			-v "concat('  Timeout ','30')" -n \
 			-v "concat('  NopInInterval ','20')" -n \
+			-v "concat('  MaxR2T ','32')" -n \
 			-v "concat('  DiscoveryAuthMethod ','Auto')" -n \
 			-v "concat('  DiscoveryAuthGroup ','AuthGroup','${DISCOVERY_AG}')" -n \
-			-v "concat('  MaxSessions ','32')" -n \
-			-v "concat('  MaxConnections ','8')" -n \
-			-v "concat('  FirstBurstLength ','65536')" -n \
-			-v "concat('  MaxBurstLength ','262144')" -n \
+			-v "concat('  MaxSessions ','16')" -n \
+			-v "concat('  MaxConnections ','4')" -n \
+			-v "concat('  FirstBurstLength ','262144')" -n \
+			-v "concat('  MaxBurstLength ','1048576')" -n \
 			-v "concat('  MaxRecvDataSegmentLength ','262144')" -n \
+			-v "concat('  MaxOutstandingR2T ','16')" -n \
+			-v "concat('  DefaultTime2Wait ','2')" -n \
+			-v "concat('  DefaultTime2Retain ','60')" -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${istgt_config}
 

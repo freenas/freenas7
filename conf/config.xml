@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.6</version>
+	<version>8.8</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -446,11 +446,15 @@
 		<discoveryauthgroup>0</discoveryauthgroup>
 		<timeout>30</timeout>
 		<nopininterval>20</nopininterval>
-		<maxsessions>32</maxsessions>
-		<maxconnections>8</maxconnections>
-		<firstburstlength>65536</firstburstlength>
-		<maxburstlength>262144</maxburstlength>
+		<maxr2t>32</maxr2t>
+		<maxsessions>16</maxsessions>
+		<maxconnections>4</maxconnections>
+		<firstburstlength>262144</firstburstlength>
+		<maxburstlength>1048576</maxburstlength>
 		<maxrecvdatasegmentlength>262144</maxrecvdatasegmentlength>
+		<maxoutstandingr2t>16</maxoutstandingr2t>
+		<defaulttime2wait>2</defaulttime2wait>
+		<defaulttime2retain>60</defaulttime2retain>
 		<!--
 		<portalgroup>
 			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
