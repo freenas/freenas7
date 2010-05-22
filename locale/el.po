@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:20+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr "Προεπιλεγμένος γονικός φάκελος"
 msgid "Default user name is 'admin'."
 msgstr "Το προεπιλεγμένο όνομα χρήστη είναι 'admin'."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Προεπιλεγμένο"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Ορισμός καταλόγων/URL που απαιτούν πιστοποίηση."
 
@@ -1290,12 +1297,8 @@ msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον 
 msgid "Do you really want to delete this user?"
 msgstr "Θέλετε πράγματι να διαγράψετε αυτό τον χρήστη."
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Θέλετε σίγουρα να διαγράψετε αυτόν τον τόμο;\\n"
-"!!! Προσοχή, όλα τα δεδομένα θα χαθούν και δεν μπορούν να ανακτηθούν. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον τόμο;\\n!!! Προσοχή, όλα τα δεδομένα θα χαθούν και δεν μπορούν να ανακτηθούν. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Θέλετε σίγουρα να διαμορφώσετε αυτόν το δίσκο; Όλα τα δεδομένα θα χαθούν!"
@@ -2597,6 +2600,9 @@ msgstr "Μέγιστος αριθμός προσπαθειών σύνδεσης"
 msgid "Max. passive port"
 msgstr ""
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2604,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Μέγιστος αριθμός συνδέσεων ανά διεύθυνση IP (0 = απεριόριστες)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Πρέπει πρώτα να προσθέσετε δίσκους."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Πρέπει να εισάγετε τον ίδιο τύπο IP δικτύων και πύλης."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "Πρέπει να έχετε το λιγότερο 256MB μνήμης RAM για να χρησιμοποιήσετε iSCSI προορισμό."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,147 +5420,129 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Ημερομηνία"
+
 #~ msgid "hours"
 #~ msgstr "ώρες"
+
 #~ msgid "days"
 #~ msgstr "ημέρες"
+
 #~ msgid "day"
 #~ msgstr "ημέρα"
+
 #~ msgid "months"
 #~ msgstr "μήνες"
+
 #~ msgid "week days"
 #~ msgstr "ημέρες εβδομάδας"
+
 #~ msgid "Create"
 #~ msgstr "Δημιουργία"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "Logs"
 #~ msgstr "Αρχεία καταγραφής"
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Αυτό σημαίνει ότι η εικόνα που αποστείλατε δεν είναι μια επίσημη/"
-#~ "υποστηριζόμενη εικόνα και μπορεί να οδηγήσει σε απρόβλεπτη συμπεριφορά ή "
-#~ "να θέσει σε κίνδυνο την ασφάλεια του συστήματος. Εγκαθιστάτε εικόνες που "
-#~ "προέρχονται μόνο από πηγές τις οποίες εμπιστεύεστε, και σιγουρευτείτε ότι "
-#~ "η εικόνα δεν έχει αλλοιωθεί.<br><br>Θέλετε να εγκαταστήσετε αυτή την "
-#~ "εικόνα οπωσδήποτε (με δικό σας ρίσκο);"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Κάντε click στο &quot;Ενεργοποίηση αποστολής firmware&quot; παρακάτω, και "
-#~ "κατόπιν επιλέξτε το αρχείο εικόνας που θα αποσταλεί.<br>Κάντε click στο "
-#~ "&quot;Αναβάθμιση firmware&quot; για να αρχίσετε την διαδικασία "
-#~ "αναβάθμισης."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Αυτό σημαίνει ότι η εικόνα που αποστείλατε δεν είναι μια επίσημη/υποστηριζόμενη εικόνα και μπορεί να οδηγήσει σε απρόβλεπτη συμπεριφορά ή να θέσει σε κίνδυνο την ασφάλεια του συστήματος. Εγκαθιστάτε εικόνες που προέρχονται μόνο από πηγές τις οποίες εμπιστεύεστε, και σιγουρευτείτε ότι η εικόνα δεν έχει αλλοιωθεί.<br><br>Θέλετε να εγκαταστήσετε αυτή την εικόνα οπωσδήποτε (με δικό σας ρίσκο);"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Κάντε click στο &quot;Ενεργοποίηση αποστολής firmware&quot; παρακάτω, και κατόπιν επιλέξτε το αρχείο εικόνας που θα αποσταλεί.<br>Κάντε click στο &quot;Αναβάθμιση firmware&quot; για να αρχίσετε την διαδικασία αναβάθμισης."
+
 #~ msgid "Size in MB."
 #~ msgstr "Μέγεθος σε MB."
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "Ο δίσκος είναι προσαρτημένος! <a href'%s>Αποπροσαρτήστε</a> το δίσκο "
-#~ "προτού συνεχίσετε."
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted "
-#~ "temporarily to perform selected command, otherwise the commands work in "
-#~ "read-only mode.<br>Service disruption to users accessing this mount will "
-#~ "occur during this process."
-#~ msgstr ""
-#~ "Αν ο επιλεγμένος δίσκος/κατάτμηση είναι προσαρτημένος θα αποπροσαρτηθεί "
-#~ "προσωρινά για να εκτελεστεί η επιλεγμένη εντολή, σε αντίθετη περίπτωση οι "
-#~ "εντολές εκτελούνται σε λειτουργία μόνο για ανάγνωση.<br>Κατά τη διάρκεια "
-#~ "αυτής της διεργασίας θα διακοπούν οι υπηρεσίες στους χρήστες που "
-#~ "προσπελαύνουν το σημείο προσάρτησης."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Δεν μπορείτε να προσαρτήσετε την κατάτμηση '%s' όπου είναι αποθηκευμένο "
-#~ "το αρχείο ρυθμίσεων.<br>"
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "Ο δίσκος είναι προσαρτημένος! <a href'%s>Αποπροσαρτήστε</a> το δίσκο προτού συνεχίσετε."
+
+#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+#~ msgstr "Αν ο επιλεγμένος δίσκος/κατάτμηση είναι προσαρτημένος θα αποπροσαρτηθεί προσωρινά για να εκτελεστεί η επιλεγμένη εντολή, σε αντίθετη περίπτωση οι εντολές εκτελούνται σε λειτουργία μόνο για ανάγνωση.<br>Κατά τη διάρκεια αυτής της διεργασίας θα διακοπούν οι υπηρεσίες στους χρήστες που προσπελαύνουν το σημείο προσάρτησης."
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Δεν μπορείτε να προσαρτήσετε την κατάτμηση '%s' όπου είναι αποθηκευμένο το αρχείο ρυθμίσεων.<br>"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Μέγεθος buffer αποστολής (16384 από προεπιλογή)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Πρέπει να καθοριστεί ένα έγκυρο δίκτυο."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Χρόνος Συγχρονισμού"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Ο συνδυασμός κοινοχρήστων και καταλόγου εργασίας δεν υπάρχει,"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Δημιουργία καταλόγου εργασίας αν δεν υπάρχει"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Ώρα Τερματισμού"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Τελευταίες %d καταχωρίσεις καταγραφέα %s"
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "Το <a href=%s>SSHD</a> πρέπει να ενεργοποιηθεί για να δουλέψει το Unison, "
-#~ "και ο <a href=%s>user</a> πρέπει να έχει πλήρη φλοιό ενεργοποιημένο."
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "Το <a href=%s>SSHD</a> πρέπει να ενεργοποιηθεί για να δουλέψει το Unison, και ο <a href=%s>user</a> πρέπει να έχει πλήρη φλοιό ενεργοποιημένο."
+
 #~ msgid "The configuration could not be restored (file upload error)."
-#~ msgstr ""
-#~ "Οι ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν (σφάλμα αποστολής αρχείου)."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Αυτός ο κρυπτογραφημένος δίσκος έχει προσαρτηθεί, αποπροσαρτήστε τον πριν "
-#~ "να προσπαθήσετε να τον αποσπάσετε."
+#~ msgstr "Οι ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν (σφάλμα αποστολής αρχείου)."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "Αυτός ο κρυπτογραφημένος δίσκος έχει προσαρτηθεί, αποπροσαρτήστε τον πριν να προσπαθήσετε να τον αποσπάσετε."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr ""
-#~ "Πρέπει να χρησιμοποιήσετε ένα συνθηματικό για να επισυνάψετε έναν "
-#~ "κρυπτογραφημένο δίσκο."
+#~ msgstr "Πρέπει να χρησιμοποιήσετε ένα συνθηματικό για να επισυνάψετε έναν κρυπτογραφημένο δίσκο."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Όνομα κρυπτογραφημένου δίσκου"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
-#~ msgstr ""
-#~ "Δίκτυο που είναι εξουσιοδοτημένο να προσπελαύνει αυτόν τον προορισμό "
-#~ "iSCSI."
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr ""
-#~ "Αυτό το όνομα είναι για παράδειγμα: iqn.1994-04.org.netbsd.iscsi-target:"
-#~ "target0."
+#~ msgstr "Δίκτυο που είναι εξουσιοδοτημένο να προσπελαύνει αυτόν τον προορισμό iSCSI."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Αυτό το όνομα είναι για παράδειγμα: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Ελάχιστη κατανάλωση ενέργειας με Αναμονή"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Μέγιστη κατανάλωση ενέργειας χωρίς Αναμονή"
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Μέτρια κατανάλωση ενέργειας με Αναμονή"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Μέγιστη απόδοση, μέγιστη κατανάλωση ενέργειας"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Μέτρια κατανάλωση ενέργειας χωρίς Αναμονή"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "Αυτό θα κάνει το %s να μην ελέγχει για νεότερες εκδόσεις firmware όταν "
-#~ "προβάλεται η σελίδα <a href=%s>%s</a>."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "Αυτό θα κάνει το %s να μην ελέγχει για νεότερες εκδόσεις firmware όταν προβάλεται η σελίδα <a href=%s>%s</a>."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Μέγεθος buffer παραλαβής (16384 από προεπιλογή)."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Μπορεί να χρειαστείτε αρκετό χώρο για τα αντίγραφα των αρχείων που "
-#~ "συγχρονίζονται"
+#~ msgstr "Μπορεί να χρειαστείτε αρκετό χώρο για τα αντίγραφα των αρχείων που συγχρονίζονται"
+
 #~ msgid "Working Directory"
 #~ msgstr "Κατάλογος Εργασίας"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Τοποθεσία αποθήκευσης αρχείων εργασίας"
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "Ο τόμος RAID είναι αυτή τη στιγμή προσαρτημένος! Αφαιρέστε πρώτα το <a "
-#~ "href=%s>σημείο προσάρτησης</a> προτού συνεχίσετε."
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "Ο τόμος RAID είναι αυτή τη στιγμή προσαρτημένος! Αφαιρέστε πρώτα το <a href=%s>σημείο προσάρτησης</a> προτού συνεχίσετε."
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Πρέπει να καθοριστεί μια έγκυρη bit μέτρηση δικτύου."
+
 #~ msgid "Report generator"
 #~ msgstr "Γεννήτρια αναφορών"
-

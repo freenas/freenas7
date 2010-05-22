@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:37+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr ""
 msgid "Default user name is 'admin'."
 msgstr "Standardanvändarnamn är 'admin'."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Standard"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Specificera kataloger/URL:er som kräver autentiering."
 
@@ -1290,12 +1297,8 @@ msgstr "Vill du verkligen ta bort det här målet?"
 msgid "Do you really want to delete this user?"
 msgstr "Vill du verkligen ta bort denna användare?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Vill du verkligen radera den här volymen?\\n"
-"!!! OBSERVERA: all data kommer att gå förlorad och kan inte återställas. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Vill du verkligen radera den här volymen?\\n!!! OBSERVERA: all data kommer att gå förlorad och kan inte återställas. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vill du verkligen formatera den här disken? All data kommer att förloras!"
@@ -2597,6 +2600,9 @@ msgstr "Maximalt antal inloggningsförsök"
 msgid "Max. passive port"
 msgstr ""
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2604,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximalt antal anslutningar per IP-adress (0 = obegränsat)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Du måste lägga till diskar först."
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,117 +5420,105 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Datum"
+
 #~ msgid "hours"
 #~ msgstr "timmar"
+
 #~ msgid "day"
 #~ msgstr "dag"
+
 #~ msgid "days"
 #~ msgstr "dagar"
+
 #~ msgid "week days"
 #~ msgstr "veckodagar"
+
 #~ msgid "months"
 #~ msgstr "månader"
+
 #~ msgid "Create"
 #~ msgstr "Skapa"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "Loggar"
+
 #~ msgid "Size in MB."
 #~ msgstr "Storlek i MB."
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Ett giltigt antal nätverksbitar måste anges."
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Det här betyder att avbilden som du skickade upp inte är en officiell/"
-#~ "stödd avbild och kan leda till oförväntat beteende eller "
-#~ "säkerhetsproblem. Installera endast avbilder som kommer från källor du "
-#~ "litar på, och försäkra dig om att avbilden inte har modifierats."
-#~ "<br><br>Vill du installera den här avbilden ändå (på din egen risk)?"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Klicka på &quot;Aktivera uppskickning av fast programvara&quot; nedan, "
-#~ "välj sedan avbildsfilen som ska skickas upp.<br>Klicka på &quot;"
-#~ "Uppgradera den fast programvaran&quot; för att starta "
-#~ "uppgraderingsprocessen."
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här "
-#~ "disken först innan du fortsätter."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Det här betyder att avbilden som du skickade upp inte är en officiell/stödd avbild och kan leda till oförväntat beteende eller säkerhetsproblem. Installera endast avbilder som kommer från källor du litar på, och försäkra dig om att avbilden inte har modifierats.<br><br>Vill du installera den här avbilden ändå (på din egen risk)?"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Klicka på &quot;Aktivera uppskickning av fast programvara&quot; nedan, välj sedan avbildsfilen som ska skickas upp.<br>Klicka på &quot;Uppgradera den fast programvaran&quot; för att starta uppgraderingsprocessen."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken först innan du fortsätter."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Ett giltig nätverk måste anges."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Synkroniseringstid"
+
 #~ msgid "Working Directory"
 #~ msgstr "Arbetskatalog"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Var arbetsfilerna ska lagras"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Skapa arbetskatalog om den inte redan finns"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Senaste %d %s loggposterna"
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Konfigurationen kunde inte återskapas (fel vid filsändning)."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Du måste använda en lösenfras för att ansluta en krypterad disk."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Namn på krypterad disk"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Nätverk som är behörigt att komma åt det här iSCSI-målet."
+
 #~ msgid "Disk Name"
 #~ msgstr "Disknamn"
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% av %dMB"
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> måste aktiveras för att Unison ska fungera, och <a "
-#~ "href=%s>användaren</a> måste ha komplett Skal aktiverat."
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
-#~ "of using this menu for starting a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. Använd dessa speciella funktioner enbart för felsökning!<br>2. Denna "
-#~ "meny behöver inte användas för att starta en RAID volym (startar "
-#~ "automatiskt)."
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span></p><ul><li><span "
-#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
-#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgstr ""
-#~ "Efter att du klickat på &quot;Spara&quot;, måste du starta om %s för att "
-#~ "ändringarna ska ha effekt. Du kanske också måste göra något av följande "
-#~ "för att kunna nå din NAS igen: </span></p><ul><li><span "
-#~ "class='vexpl'>ändra IP-adress på din dator</span></li><li><span "
-#~ "class='vexpl'>besöka webbgränssnittet med den nya IP-adressen</span></"
-#~ "li></ul>"
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "<a href=%s>SSHD</a> måste aktiveras för att Unison ska fungera, och <a href=%s>användaren</a> måste ha komplett Skal aktiverat."
+
+#~ msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr "1. Använd dessa speciella funktioner enbart för felsökning!<br>2. Denna meny behöver inte användas för att starta en RAID volym (startar automatiskt)."
+
+#~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr "Efter att du klickat på &quot;Spara&quot;, måste du starta om %s för att ändringarna ska ha effekt. Du kanske också måste göra något av följande för att kunna nå din NAS igen: </span></p><ul><li><span class='vexpl'>ändra IP-adress på din dator</span></li><li><span class='vexpl'>besöka webbgränssnittet med den nya IP-adressen</span></li></ul>"
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Enheten är monterad, avmontera den först innan avkoppling."
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "Filsökväg (t.ex. /mnt/sharename/extent/%s) eller enhetsnamn (t.ex. /dev/"
-#~ "ad1) användes som extent."
+
+#~ msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
+#~ msgstr "Filsökväg (t.ex. /mnt/sharename/extent/%s) eller enhetsnamn (t.ex. /dev/ad1) användes som extent."
+
 #~ msgid "Give full shell access to user."
 #~ msgstr "Ge komplett skaltillgång för användare."
+
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s av %s (%dMHz)"
+
 #~ msgid "Report generator"
 #~ msgstr "Rapportgenerator"
-

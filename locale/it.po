@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 20:20+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr "Radice di default"
 msgid "Default user name is 'admin'."
 msgstr "Il nome utente predefinito è 'admin'"
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Predefinita"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Definisci le cartelle/URL che richiedono autenticazione"
 
@@ -1290,12 +1297,8 @@ msgstr "Si vuole realmente cancellare questo target?"
 msgid "Do you really want to delete this user?"
 msgstr "Si desidera realmente cancellare questo utente?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Volete veramente eliminare questo volume?\\n"
-"!!! Nota, tutti i dati andranno persi e non potranno essere recuperati!!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Volete veramente eliminare questo volume?\\n!!! Nota, tutti i dati andranno persi e non potranno essere recuperati!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Si vuole realmente formattare questo disco? Verranno persi tutti i dati!"
@@ -2597,6 +2600,9 @@ msgstr "Tentativi di login massimi"
 msgid "Max. passive port"
 msgstr "Max. porta passiva"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Sessioni massime"
 
@@ -2605,6 +2611,9 @@ msgstr "Max. time-to-live (max. numero di hop) per i pacchetti sonda in uscita."
 
 msgid "MaxBurstLength"
 msgstr "MaxBurstLength"
+
+msgid "MaxOutstandingR2T"
+msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
 msgstr "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr "Numero massimo di connessioni per ogni sessione (di default %d)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numero massimo di connessioni per indirizzo IP (0 = illimitate)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "E' necessario prima aggiungere i dischi."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Si deve inserire lo stesso tipo di IP per rete e gateway."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "Sono richiesti almeno 256MB di RAM per usare iSCSI target."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,233 +5420,186 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Data"
+
 #~ msgid "hours"
 #~ msgstr "ore"
+
 #~ msgid "day"
 #~ msgstr "giorno"
+
 #~ msgid "days"
 #~ msgstr "giorni"
+
 #~ msgid "week days"
 #~ msgstr "giorni della settimana"
+
 #~ msgid "months"
 #~ msgstr "mesi"
+
 #~ msgid "Create"
 #~ msgstr "Crea"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Deve essere specificata una netmask valida."
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "Logs"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Clicca &quot;Abilita aggiornamento firmware&quot; sotto, e scegliere il "
-#~ "file immagine da caricare.<br>Clicca &quot;Aggiorna firmware&quot; per "
-#~ "iniziare il processo di upgrade."
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Clicca &quot;Abilita aggiornamento firmware&quot; sotto, e scegliere il file immagine da caricare.<br>Clicca &quot;Aggiorna firmware&quot; per iniziare il processo di upgrade."
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Consumo minimo con standby"
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Consumo medio con standby"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Consumo minimo senza standby"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Consumo medio senza standby"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Massime prestazioni, massimo consumo"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Dimensione del buffer di invio (16384 di default)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Dimensione del buffer di ricezione (16384 di default)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Deve essere specificata una rete valida."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Orario Sincronizzazione"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "La combinazione di condivisione e directory di lavoro non esiste."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Potrebbe essere necessario abbastanza spazio per duplicare tutti i file "
-#~ "sincronizzati"
+#~ msgstr "Potrebbe essere necessario abbastanza spazio per duplicare tutti i file sincronizzati"
+
 #~ msgid "Working Directory"
 #~ msgstr "Directory di Lavoro"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Dove i file sono conservati"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Crea la directory di lavoro se non esiste"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Orario di spegnimento"
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> deve essere abilitato per poter usare Unison, e l' <a "
-#~ "href=%s>utente</a> deve aver abilitata una shell completa."
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Questo significa che l'immagine che avete caricato non e' una immagine "
-#~ "ufficiale/supportata e puo' causare comportamenti inattesi o problemi di "
-#~ "sicurezza. Installare solo immagini provenienti da fonti fidate e "
-#~ "accertarsi che la stessa non sia stata alterata.<br><br>Si vuole comunque "
-#~ "installare questa immagine (a proprio rischio) ?"
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "Il disco e' montato! <a href=%s>Eseguire lo smontaggio</a> di questo "
-#~ "disco prima di procedere."
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted "
-#~ "temporarily to perform selected command, otherwise the commands work in "
-#~ "read-only mode.<br>Service disruption to users accessing this mount will "
-#~ "occur during this process."
-#~ msgstr ""
-#~ "Se il disco/partizione selezionato risulta montato, esso verra' "
-#~ "temporaneamente smontato per eseguire il comando selezionato, altrimenti "
-#~ "i comandi lavoreranno in sola lettura.<br>Ci sara' una interruzione del "
-#~ "servizio di accesso agli utenti che condividono questo supporto durante "
-#~ "l'operazione."
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "Il volume RAID e' attualmente montato! Prima di procedere rimuovere il <a "
-#~ "href=%s>punto di mount</a>."
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "Questo fara' in modo che %s non verifichi l'esistenza di nuove versioni "
-#~ "di firmware quando viene visualizzata la pagina <a href=%s>%s</a>."
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "<a href=%s>SSHD</a> deve essere abilitato per poter usare Unison, e l' <a href=%s>utente</a> deve aver abilitata una shell completa."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Questo significa che l'immagine che avete caricato non e' una immagine ufficiale/supportata e puo' causare comportamenti inattesi o problemi di sicurezza. Installare solo immagini provenienti da fonti fidate e accertarsi che la stessa non sia stata alterata.<br><br>Si vuole comunque installare questa immagine (a proprio rischio) ?"
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "Il disco e' montato! <a href=%s>Eseguire lo smontaggio</a> di questo disco prima di procedere."
+
+#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+#~ msgstr "Se il disco/partizione selezionato risulta montato, esso verra' temporaneamente smontato per eseguire il comando selezionato, altrimenti i comandi lavoreranno in sola lettura.<br>Ci sara' una interruzione del servizio di accesso agli utenti che condividono questo supporto durante l'operazione."
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "Il volume RAID e' attualmente montato! Prima di procedere rimuovere il <a href=%s>punto di mount</a>."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "Questo fara' in modo che %s non verifichi l'esistenza di nuove versioni di firmware quando viene visualizzata la pagina <a href=%s>%s</a>."
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Ultime %d righe del log di %s"
+
 #~ msgid "The configuration could not be restored (file upload error)."
-#~ msgstr ""
-#~ "Non e' stato possibile ripristinare la configurazione (errore di upload "
-#~ "del file)."
+#~ msgstr "Non e' stato possibile ripristinare la configurazione (errore di upload del file)."
+
 #~ msgid "Size in MB."
 #~ msgstr "Dimensione in MB."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Questo disco cifrato risulta montato. Smontarlo prima di \"sganciarlo\"."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "Questo disco cifrato risulta montato. Smontarlo prima di \"sganciarlo\"."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr ""
-#~ "E' necessario utilizzare una passphrase per agganciare un disco cifrato"
+#~ msgstr "E' necessario utilizzare una passphrase per agganciare un disco cifrato"
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Nome disco cifrato"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Rete autorizzata ad accedere a questo target iSCSI."
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr ""
-#~ "Questo nome e' per esempio: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Non e' possibile montare la partizione '%s' dove si trova il file di "
-#~ "configurazione.<br>"
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span></p><ul><li><span "
-#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
-#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgstr ""
-#~ "Dopo aver premuto &quot;Salva&quot;, si dovra' riavviare %s affinche' i "
-#~ "cambiamenti abbiano effetto. Potrebbe essere necessario seguire uno o "
-#~ "piu' dei seguenti passi prima di accedere nuovamente al NAS: </span></"
-#~ "p><ul><li><span class='vexpl'>cambiare l'indirizzo IP del tuo computer</"
-#~ "span></li><li><span class='vexpl'>accedere alla webGUI con il nuovo "
-#~ "indirizzo IP</span></li></ul>"
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "NON annullare l'operazione di aggiornamento del Firmware una volta "
-#~ "iniziata. Al termine della operazione %s si riavviera' automaticamente, "
-#~ "mantenendo la configurazione di sistema.<br>E' necessario avrere un "
-#~ "minimo di %d MB di RAM per effettuare l'aggiornamento del firmware.<br>Si "
-#~ "raccomanda vivamente di effettuare il <a href=%s>Backup</a> della "
-#~ "configurazione di sistema  prima di avviare un aggiornamento del Firmware."
-#~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more "
-#~ "than once."
-#~ msgstr ""
-#~ "I dispositivi sono utilizzati per unire i limiti o altri dispositivi. "
-#~ "Limiti e dispositivi devono essre definiti prima che essi vengano "
-#~ "utilizzati e non possono essere usati  piu' di una volta."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Questo nome e' per esempio: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Non e' possibile montare la partizione '%s' dove si trova il file di configurazione.<br>"
+
+#~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr "Dopo aver premuto &quot;Salva&quot;, si dovra' riavviare %s affinche' i cambiamenti abbiano effetto. Potrebbe essere necessario seguire uno o piu' dei seguenti passi prima di accedere nuovamente al NAS: </span></p><ul><li><span class='vexpl'>cambiare l'indirizzo IP del tuo computer</span></li><li><span class='vexpl'>accedere alla webGUI con il nuovo indirizzo IP</span></li></ul>"
+
+#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+#~ msgstr "NON annullare l'operazione di aggiornamento del Firmware una volta iniziata. Al termine della operazione %s si riavviera' automaticamente, mantenendo la configurazione di sistema.<br>E' necessario avrere un minimo di %d MB di RAM per effettuare l'aggiornamento del firmware.<br>Si raccomanda vivamente di effettuare il <a href=%s>Backup</a> della configurazione di sistema  prima di avviare un aggiornamento del Firmware."
+
+#~ msgid "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
+#~ msgstr "I dispositivi sono utilizzati per unire i limiti o altri dispositivi. Limiti e dispositivi devono essre definiti prima che essi vengano utilizzati e non possono essere usati  piu' di una volta."
+
 #~ msgid "Disk Name"
 #~ msgstr "Nome del disco"
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
+
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (mirroring)"
-#~ msgid ""
-#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
-#~ "for the changes to take effect."
-#~ msgstr ""
-#~ "I cambiamenti sono stati salvati. Bisogna <a href=%s>riavviare</a> il "
-#~ "sistema affinche' i cambiamenti abbiano effetto."
-#~ msgid ""
-#~ "The configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "La configurazione e' stata cambiata.<br>Applicare i cambiamenti  per "
-#~ "renderli effettivi."
-#~ msgid ""
-#~ "You can also install a package via SSH or console using the the pkg_add "
-#~ "command.<br>Example: pkg_add -r packagename"
-#~ msgstr ""
-#~ "E' possibile inoltre installare un pacchetto via SSH o console usando il "
-#~ "comando pkg_add .<br>Esempio: pkg_add -r packagename"
+
+#~ msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
+#~ msgstr "I cambiamenti sono stati salvati. Bisogna <a href=%s>riavviare</a> il sistema affinche' i cambiamenti abbiano effetto."
+
+#~ msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
+#~ msgstr "La configurazione e' stata cambiata.<br>Applicare i cambiamenti  per renderli effettivi."
+
+#~ msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+#~ msgstr "E' possibile inoltre installare un pacchetto via SSH o console usando il comando pkg_add .<br>Esempio: pkg_add -r packagename"
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "In primo luogo, bisogna definire alcuni oggetti 'Limite'."
+
 #~ msgid "built on"
 #~ msgstr "costruito su"
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% di %dMB"
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "Percorso di file (e.g. /mnt/sharename/extent/%s) o nome di device (e.g. /"
-#~ "dev/ad1) utilizzato come extent."
-#~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and "
-#~ "is made up of one or more devices, and/or one or more extents."
-#~ msgstr ""
-#~ "Al livello elevato, un target e' cio' che viene presentato all'iniziatore "
-#~ "e si compone di uno o piu' dispositivi e/o, di uno o piu' limiti."
+
+#~ msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
+#~ msgstr "Percorso di file (e.g. /mnt/sharename/extent/%s) o nome di device (e.g. /dev/ad1) utilizzato come extent."
+
+#~ msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
+#~ msgstr "Al livello elevato, un target e' cio' che viene presentato all'iniziatore e si compone di uno o piu' dispositivi e/o, di uno o piu' limiti."
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Il dispositivo risulta montato e va smontato prima di sganciarlo."
+
 #~ msgid "Give full shell access to user."
 #~ msgstr "Consenti all'utente un completo accesso alla shell"
-#~ msgid ""
-#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
-#~ "a> menu."
-#~ msgstr ""
-#~ "Lasciare '% s' per i dischi non formattati e formattarli utilizzando <a "
-#~ "href=%s> dal menu </ a>  formatta."
+
+#~ msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+#~ msgstr "Lasciare '% s' per i dischi non formattati e formattarli utilizzando <a href=%s> dal menu </ a>  formatta."
+
 #~ msgid "Shell access"
 #~ msgstr "Accesso alla shell di sistema"
+
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
-#~ msgstr ""
-#~ "Porta invalida! Il numero della porta deve trovarsi nell'intervallo da %d "
-#~ "a %d."
+#~ msgstr "Porta invalida! Il numero della porta deve trovarsi nell'intervallo da %d a %d."
+
 #~ msgid "Report generator"
 #~ msgstr "Generatore rapporti"
-

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:49+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -931,6 +931,13 @@ msgstr ""
 msgid "Default user name is 'admin'."
 msgstr "預設的使用者名稱為 'admin'。"
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "預設值"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "指定需要認證的目錄/URL"
 
@@ -1291,9 +1298,7 @@ msgstr "您確定要刪除這個iSCSI目標嗎？"
 msgid "Do you really want to delete this user?"
 msgstr "您確定要刪除這個使用者？"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
@@ -2596,6 +2601,9 @@ msgstr "Max. login attempts"
 msgid "Max. passive port"
 msgstr "Max. passive port"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Max. sessions"
 
@@ -2603,6 +2611,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2623,6 +2634,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "來自相同IP的連線數目上限(0 = 不限制)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5233,7 +5248,8 @@ msgstr "請先加入磁碟。"
 msgid "You must enter the same IP type for network and gateway."
 msgstr "你必須在網路與閘道輸入相同的 IP 類型。"
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "系統最少需要 256MB 的記憶體以使用 iSCSI 目標。"
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5405,226 +5421,201 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "日期"
+
 #~ msgid "hours"
 #~ msgstr "小時"
+
 #~ msgid "day"
 #~ msgstr "天"
+
 #~ msgid "days"
 #~ msgstr "天"
+
 #~ msgid "week days"
 #~ msgstr "平常日"
+
 #~ msgid "months"
 #~ msgstr "月"
+
 #~ msgid "Create"
 #~ msgstr "建立"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "請輸入一個有效的network bit count。"
+
 #~ msgid "LAN"
 #~ msgstr "區域網路"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "記錄檔"
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致"
-#~ "安全漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像"
-#~ "檔，並確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像"
-#~ "檔嗎？(自行負責)"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點"
-#~ "選 &quot;韌體升級&quot; 以啟動升級動作"
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致安全漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像檔，並確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像檔嗎？(自行負責)"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 以啟動升級動作"
+
 #~ msgid "Size in MB."
 #~ msgstr "以MB為單位。"
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "開啟待命模式之最小耗電量"
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "開啟待命模式之中等耗電量"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "關閉待命模式之最小耗電量"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "關閉待命模式之中等耗電量"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "最大效能/耗電量"
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 #~ msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted "
-#~ "temporarily to perform selected command, otherwise the commands work in "
-#~ "read-only mode.<br>Service disruption to users accessing this mount will "
-#~ "occur during this process."
-#~ msgstr ""
-#~ "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或"
-#~ "有暫時性的服務中斷。否則指令只能在唯讀模式下運作。"
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</"
-#~ "a>。"
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+
+#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+#~ msgstr "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或有暫時性的服務中斷。否則指令只能在唯讀模式下運作。"
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</a>。"
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
 #~ msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "傳送緩衝區的大小(預設為16384)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "接收緩衝區的大小(預設為16384)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "必須指定一個有效的網域。"
+
 #~ msgid "Synchronization Time"
 #~ msgstr "同步啟動時間"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "設定值內的分享/工作目錄不存在。"
+
 #~ msgid "Working Directory"
 #~ msgstr "工作目錄"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "選擇工作檔案要儲存的位置"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "如果你還沒有工作目錄，請建立一個"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "關機時間"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 #~ msgstr "這會讓 %s 在瀏覽<a href=%s>%s</a>頁面時不檢查新版的韌體。"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "最後 %d 筆 %s 記錄資料"
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "無法回覆設定組態（檔案上傳錯誤）。"
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr "這個加密磁碟正在掛載中，在卸除之前請先將其卸載。"
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "連結加密磁碟之前請輸入一個加密金鑰。"
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "加密磁碟名稱"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "設定可以使用iSCSI目標的網路區段"
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "範例名稱：iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% of %dMB"
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
-#~ "of using this menu for starting a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. 這些特別的指令只適用於 debugging！<br>2. RAID 將會自動開始運作，不需要"
-#~ "再次下達 starting。"
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</"
-#~ "a>必須要有 Shell 權限。"
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span></p><ul><li><span "
-#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
-#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgstr ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span></p><ul><li><span "
-#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
-#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and "
-#~ "is made up of one or more devices, and/or one or more extents."
-#~ msgstr ""
-#~ "At the highest level, a target is what is presented to the initiator, and "
-#~ "is made up of one or more devices, and/or one or more extents."
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
+
+#~ msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr "1. 這些特別的指令只適用於 debugging！<br>2. RAID 將會自動開始運作，不需要再次下達 starting。"
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "Unison 服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必須要有 Shell 權限。"
+
+#~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+
+#~ msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
+#~ msgstr "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
+
+#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+#~ msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "裝置已經掛載，移除之前請先卸載。"
-#~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more "
-#~ "than once."
-#~ msgstr ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more "
-#~ "than once."
+
+#~ msgid "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
+#~ msgstr "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
+
 #~ msgid "Disk Name"
 #~ msgstr "磁碟名稱"
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "檔案路徑（例：/mnt/sharename/extent/%s）或是裝置名稱（例：/dev/ad1）將會視"
-#~ "為 extent。"
+
+#~ msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
+#~ msgstr "檔案路徑（例：/mnt/sharename/extent/%s）或是裝置名稱（例：/dev/ad1）將會視為 extent。"
+
 #~ msgid "Give full shell access to user."
 #~ msgstr "授與使用者 shell 權限"
+
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "無效的連接阜號！連接阜必需介於 %d - %d。"
-#~ msgid ""
-#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
-#~ "a> menu."
-#~ msgstr ""
-#~ "將未格式化的磁碟設為 '%s' 並且使用<a href=%s>格式化選單</a>來進行格式化。"
+
+#~ msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+#~ msgstr "將未格式化的磁碟設為 '%s' 並且使用<a href=%s>格式化選單</a>來進行格式化。"
+
 #~ msgid "List of shares"
 #~ msgstr "分享列表"
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
+
+#~ msgid "Note: Ctrl-click (or command-click on the Mac) to select or de-select minutes, hours, days and months."
 #~ msgstr "備註：按著 Ctrl 配合滑鼠左鍵（Mac 請按 Cmd）以選擇時間與日期。"
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
+
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (鏡射)"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"
+
 #~ msgid "Shell access"
 #~ msgstr "Shell 權限"
-#~ msgid ""
-#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
-#~ "for the changes to take effect."
+
+#~ msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
 #~ msgstr "變更已經套用。你必須<a href=%s>重新開機</a>以讓變更生效。"
-#~ msgid ""
-#~ "The configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
+
+#~ msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
 #~ msgstr "設定已經儲存。<br>套用之後才會生效。"
-#~ msgid ""
-#~ "You can also install a package via SSH or console using the the pkg_add "
-#~ "command.<br>Example: pkg_add -r packagename"
-#~ msgstr ""
-#~ "你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r "
-#~ "package-name"
+
+#~ msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+#~ msgstr "你也可以利用 SSH 連線或是 console 下達 pkg_add 的指令。<br>例：pkg_add -r package-name"
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "你必須先定義 Extent 物件。"
+
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr "確定你有足夠的空間來複製所有要同步的檔案"
+
 #~ msgid "built on"
 #~ msgstr "建立於"
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
-#~ "addresses to hostnames&quot;</a> is enabled."
-#~ msgstr ""
-#~ "如果啟用 <a href=%s>&quot;將 IP 位址解析為主機名稱&quot;</a> 就會把 IP 位"
-#~ "址解析為主機名稱。"
+
+#~ msgid "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
+#~ msgstr "如果啟用 <a href=%s>&quot;將 IP 位址解析為主機名稱&quot;</a> 就會把 IP 位址解析為主機名稱。"
+
 #~ msgid "Report generator"
 #~ msgstr "產生報告"
-

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:13+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
@@ -930,6 +930,13 @@ msgstr "Standaard root"
 msgid "Default user name is 'admin'."
 msgstr "De standaard gebruikersnaam is 'admin'."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Standaard"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Defineer mappen/URL'S die verificatie vereisen."
 
@@ -1290,12 +1297,8 @@ msgstr "Weet  u zeker dat u dit doel wilt verwijderen?"
 msgid "Do you really want to delete this user?"
 msgstr "Weet u zeker dat u deze gebruiker wilt verwijderen?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Weet u zeker dat u dit volume wilt verwijderen?\\n"
-"!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Weet u zeker dat u dit volume wilt verwijderen?\\n!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Weet u zeker dat u deze schijf wilt formatteren? Alle gegevens zullen verloren gaan!"
@@ -2597,6 +2600,9 @@ msgstr "Max. inlogpogingen"
 msgid "Max. passive port"
 msgstr "Max. passieve poort"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Max. Sessies"
 
@@ -2605,6 +2611,9 @@ msgstr "Maximale Tijd-Tot-Leven (maximum nummer van hops) gebruikt in de uitgaan
 
 msgid "MaxBurstLength"
 msgstr "MaxBurstLength"
+
+msgid "MaxOutstandingR2T"
+msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
 msgstr "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr "Maximum aantal verbindingen in elke sessie (standaard %d)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximaal aantal gelijktijdige verbindingen per IP-adres (0 = ongelimiteerd)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "U moet eerst de hardeschijven toevoegen."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "U moet voor de het netwerk en de gateway het zelfde IP-nummer invullen."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "U heeft minimaal 256MB RAM geheugen nodig voor het gebruiken van een iSCSI doel."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,22 +5420,30 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Datum"
+
 #~ msgid "hours"
 #~ msgstr "uren"
+
 #~ msgid "day"
 #~ msgstr "dag"
+
 #~ msgid "days"
 #~ msgstr "dagen"
+
 #~ msgid "week days"
 #~ msgstr "weekdagen"
+
 #~ msgid "months"
 #~ msgstr "maanden"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Grootte van de zendbuffer (16384 standaard)."
-

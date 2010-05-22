@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:07+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr "Noklusējuma sakne"
 msgid "Default user name is 'admin'."
 msgstr "Noklusējuma lietotāja vārds ir 'admin'"
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Noklusētais"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Definē mapes/URL, kas pieprasa autentifikāciju."
 
@@ -1290,12 +1297,8 @@ msgstr "Vai Tu patiešām vēlies dzēst šo mērķi?"
 msgid "Do you really want to delete this user?"
 msgstr "Vai Tu patiešām vēlies dzēst šo lietotāju?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Vai Tu patiešām vēlies dzēst šo sējumu?\\n"
-"!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Vai Tu patiešām vēlies dzēst šo sējumu?\\n!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vai Tu patiešām vēlies formatēt šo disku? Visi dati tiks pazaudēti!"
@@ -2597,6 +2600,9 @@ msgstr "Max. autorizēšanās mēginājumi"
 msgid "Max. passive port"
 msgstr "Max. pasīvais ports"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Max. sesijas"
 
@@ -2605,6 +2611,9 @@ msgstr "Max. laiks-uz-dzīvi (max. lēcienu skaits) lietots izejošās .zondes p
 
 msgid "MaxBurstLength"
 msgstr "MaxBurstLength"
+
+msgid "MaxOutstandingR2T"
+msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
 msgstr "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr "Maksimālais pieslēgumu skaits katrai sesijai (%d pēc noklusējuma)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maksimālais pieslēgumu skaits uz IP adresi (0 = neirobežots)"
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Tev vispirms jāpievieno disks."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Tev vajag ievadīt to pašu IP tipu tīklam un vartējai."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "Tev vajag minimums 256 MB operatīvās atmiņas priekš iSCSI mērķa."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,4 +5420,3 @@ msgstr "upriv"
 
 #~ msgid "Report generator"
 #~ msgstr "Pārskata ģenerators"
-
