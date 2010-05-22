@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:03+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr "Standard root"
 msgid "Default user name is 'admin'."
 msgstr "Standard brukernavn er 'admin'."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Standard"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Definer kataloger/URL'er som krever autentisering."
 
@@ -1290,12 +1297,8 @@ msgstr "Vil du virkelig slette dette målet?"
 msgid "Do you really want to delete this user?"
 msgstr "Vil du virkelig slette denne brukeren?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Vil du virkelig slette dette volumet?\\n"
-"!!! Obs, all data vil forsvinne og kan ikke bli gjenopprettet. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Vil du virkelig slette dette volumet?\\n!!! Obs, all data vil forsvinne og kan ikke bli gjenopprettet. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vil du virkelig slette denne disken? Alle data vil forsvinne!"
@@ -2597,6 +2600,9 @@ msgstr "Maks innloggings forsøk"
 msgid "Max. passive port"
 msgstr "Maks passiv port"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Maks sesjoner"
 
@@ -2604,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr "Maks. time-to-live (maks. antall hopp) brukt i utgående søke-pakker."
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maksimalt antall tilkoblinger per IP adresse (0 = ubegrenset)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Du må legge til disker først."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Du må skrive samme IP type for nettverket og gatewayen."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "Du må ha minst 256 Mb RAM for å bruke iSCSI mål."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,190 +5420,174 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "dato"
+
 #~ msgid "hours"
 #~ msgstr "timer"
+
 #~ msgid "days"
 #~ msgstr "dager"
+
 #~ msgid "day"
 #~ msgstr "dag"
+
 #~ msgid "months"
 #~ msgstr "måneder"
+
 #~ msgid "week days"
 #~ msgstr "ukedager"
+
 #~ msgid "Create"
 #~ msgstr "Lag"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Et valid nettverks bit antall må spesifiseres."
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "Logs"
 #~ msgstr "Logger"
+
 #~ msgid "Size in MB."
 #~ msgstr "Størrelse i MB."
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "RAID volumet er allerede montert! Fjern <a href=%s>monterings punktet</a> "
-#~ "før du fortsetter."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Du kan ikke avmontere partisjonen '%s' hvor config filen blir lagret.<br>"
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "Disken er montert! <a href=%s>Avmonter</a> denne disken før du fortsetter"
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "RAID volumet er allerede montert! Fjern <a href=%s>monterings punktet</a> før du fortsetter."
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Du kan ikke avmontere partisjonen '%s' hvor config filen blir lagret.<br>"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Størrelse på send bufferen (16384 som standard)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Størrelse på mottaks bufferen (16384 som standard)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Et valid nettverk må spesifiseres."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Synkroniserings tid"
+
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Du trenger kanskje nok plass til å duplikere alle filene som blir "
-#~ "sykroniserte."
+#~ msgstr "Du trenger kanskje nok plass til å duplikere alle filene som blir sykroniserte."
+
 #~ msgid "Working Directory"
 #~ msgstr "Nåværende katalog"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Hvor de nåværende filene vil bli lagret"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Lag arbeids katalog hvis den ikke eksisterer"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Tid for å slå av"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "Dette vil gjøre at %s ikke sjekker for nye fabrikkvare versjoner når <a "
-#~ "href=%s>%s</a> siden blir vist."
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> må være slått på for at Unison skal fungere og <a "
-#~ "href=%s>brukeren</a> få ha fult Shell slått på."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "Dette vil gjøre at %s ikke sjekker for nye fabrikkvare versjoner når <a href=%s>%s</a> siden blir vist."
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "<a href=%s>SSHD</a> må være slått på for at Unison skal fungere og <a href=%s>brukeren</a> få ha fult Shell slått på."
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Siste %d %s logg innslagene"
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Konfigurasjon kunne ikke gjennopprettes (fil opplastings feil)."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Denne krypterte disken er montert, avmonter den før du forsøker å koble "
-#~ "den fra."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "Denne krypterte disken er montert, avmonter den før du forsøker å koble den fra."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Du må bruke et passord for å koble til en kryptert disk."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Kryptert disk navn"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Nettverk som er autoriserte til å aksessere dette iSCSI målet."
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr ""
-#~ "Dette navnet er for eksempel: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Dette navnet er for eksempel: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% av %dMB"
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
+
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (speiling)"
-#~ msgid ""
-#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
-#~ "for the changes to take effect."
-#~ msgstr ""
-#~ "Dine endringer har blitt lagret. Du må <a href=%s>starte på nytt</a> for "
-#~ "at endringene skal bli effektive."
-#~ msgid ""
-#~ "The configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Konfigurasjonen har blitt endret.<br>Du må ta i bruk endringene for at de "
-#~ "skal bli effektive."
+
+#~ msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
+#~ msgstr "Dine endringer har blitt lagret. Du må <a href=%s>starte på nytt</a> for at endringene skal bli effektive."
+
+#~ msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
+#~ msgstr "Konfigurasjonen har blitt endret.<br>Du må ta i bruk endringene for at de skal bli effektive."
+
 #~ msgid "built on"
 #~ msgstr "bygd på"
+
 #~ msgid "Disk Name"
 #~ msgstr "Disk Navn"
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Enheten er montert, avmonter den før fjerning."
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
-#~ "of using this menu for starting a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. Bruk disse spesielle aksjonene kun for debugging!<br>2. Det er ikke "
-#~ "nødvendig å bruke denne menyen for å starte et RAID volum (starter "
-#~ "automatisk)."
+
+#~ msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr "1. Bruk disse spesielle aksjonene kun for debugging!<br>2. Det er ikke nødvendig å bruke denne menyen for å starte et RAID volum (starter automatisk)."
+
 #~ msgid "Give full shell access to user."
 #~ msgstr "Gi full shell tilgang til bruker."
+
 #~ msgid "Shell access"
 #~ msgstr "Shell tilgang"
-#~ msgid ""
-#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</"
-#~ "a> menu."
-#~ msgstr ""
-#~ "Bruk '%s' for uformaterte disker og formater de med <a href=%"
-#~ "s>formaterings</a> menyen."
+
+#~ msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+#~ msgstr "Bruk '%s' for uformaterte disker og formater de med <a href=%s>formaterings</a> menyen."
+
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Feil port! Port nummere må være mellom %d og %d."
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "IKKE avslutt firmware oppgraderingen når den har startet. %s vil restarte "
-#~ "automatisk etter å ha lagret den nye firmwaren. Konfigurasjonen vil "
-#~ "vedlikeholdes. <br> Du trenger minst %d MB RAM for å utføre en "
-#~ "firmwareoppgradering.<br> Det anbefales sterkt at du <a href=%"
-#~ "s>sikkerhetskopierer</a> systemkonfigurasjonen før du gjør en "
-#~ "firmwareoppgradering."
+
+#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+#~ msgstr "IKKE avslutt firmware oppgraderingen når den har startet. %s vil restarte automatisk etter å ha lagret den nye firmwaren. Konfigurasjonen vil vedlikeholdes. <br> Du trenger minst %d MB RAM for å utføre en firmwareoppgradering.<br> Det anbefales sterkt at du <a href=%s>sikkerhetskopierer</a> systemkonfigurasjonen før du gjør en firmwareoppgradering."
+
 #~ msgid "List of shares"
 #~ msgstr "Liste over delinger"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC Lokal"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Kombinasjonen av deling og arbeidskatalog finnes ikke."
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "Filbane (f.eks. /mnt/delingsnavn/extent/%s) eller enhetesnavn (f.eks. /"
-#~ "dev/ad1) brukt som omfang."
-#~ msgid ""
-#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
-#~ "minutes, hours, days and months."
-#~ msgstr ""
-#~ "Tips: CTRL-klikk (eller kommando-klikk på Mac) for å velge eller fjerne "
-#~ "minutter, timer, dager og måneder."
-#~ msgid ""
-#~ "You can also install a package via SSH or console using the the pkg_add "
-#~ "command.<br>Example: pkg_add -r packagename"
-#~ msgstr ""
-#~ "Du kan også installere pakker via SSH eller console ved å bruke pkg_add "
-#~ "kommandoen.<br />Eksempel: pkg_add -r pakkenavn"
-#~ msgid ""
-#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
-#~ "service to clients."
-#~ msgstr ""
-#~ "Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne "
-#~ "tjenesten til klienter."
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
-#~ "addresses to hostnames&quot;</a> is enabled."
-#~ msgstr ""
-#~ "IP adresser blir løst til vertsnavn om <a href=%s>&quot;Løs IP adresser "
-#~ "til vertsnavn&quot;</a> er slått på."
+
+#~ msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
+#~ msgstr "Filbane (f.eks. /mnt/delingsnavn/extent/%s) eller enhetesnavn (f.eks. /dev/ad1) brukt som omfang."
+
+#~ msgid "Note: Ctrl-click (or command-click on the Mac) to select or de-select minutes, hours, days and months."
+#~ msgstr "Tips: CTRL-klikk (eller kommando-klikk på Mac) for å velge eller fjerne minutter, timer, dager og måneder."
+
+#~ msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+#~ msgstr "Du kan også installere pakker via SSH eller console ved å bruke pkg_add kommandoen.<br />Eksempel: pkg_add -r pakkenavn"
+
+#~ msgid "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."
+#~ msgstr "Du må aktivere <a href=%s>Zeroconf/Bonjour</a> for å reklamere for denne tjenesten til klienter."
+
+#~ msgid "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
+#~ msgstr "IP adresser blir løst til vertsnavn om <a href=%s>&quot;Løs IP adresser til vertsnavn&quot;</a> er slått på."
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Du må definere 'Extent' objekter først."
+
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s på %s (%dMHz)"
+
 #~ msgid "Port %s must be less than %s."
 #~ msgstr "Port %s må være lavere enn %s."
-

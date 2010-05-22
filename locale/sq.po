@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:37+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr "Rrrenja e paracaktuar"
 msgid "Default user name is 'admin'."
 msgstr "Emri i perdoruesit i paracaktuar eshte 'admin'."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "I paracaktuar"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Percakto drejtorite/URL-te qe kane nevoje per autentikim."
 
@@ -1290,12 +1297,8 @@ msgstr "Me te vertete doni te fshini kete objektiv?"
 msgid "Do you really want to delete this user?"
 msgstr "Doni te fshini me te vertete kete perdorues?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Me te vertete doni te fshini kete volum\\n"
-"!!! Kujdes, te gjitha te dhenat do te humbin dhe nuk mund te rekuperohen me. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Me te vertete doni te fshini kete volum\\n!!! Kujdes, te gjitha te dhenat do te humbin dhe nuk mund te rekuperohen me. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Dini me te vertete te formatoni kete disk? Te gjitha te dhenat qe ndodhen ne te do te humbin!"
@@ -2597,6 +2600,9 @@ msgstr "Maksimumi i tentativa per hyrje"
 msgid "Max. passive port"
 msgstr "Maksimumi i portave pasive"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Maksimumi i seksioneve"
 
@@ -2604,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numri i lidhjeve maksimale per nje adrese IP (0 = pa kufi)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Perpara duhet te shtoni nje disk."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Duhet te vini te njejten tip IP-je per rrjetin dhe gateway."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "Duhet te keni te pakten 256MB memorie RAM perte perdorur iSCSI target."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5403,4 +5417,3 @@ msgstr "zmonto"
 
 msgid "upriv"
 msgstr "upriv"
-

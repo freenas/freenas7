@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -922,6 +922,12 @@ msgid "Default root"
 msgstr ""
 
 msgid "Default user name is 'admin'."
+msgstr ""
+
+msgid "DefaultTime2Retain"
+msgstr ""
+
+msgid "DefaultTime2Wait"
 msgstr ""
 
 msgid "Define directories/URL's that require authentication."
@@ -2587,6 +2593,9 @@ msgstr ""
 msgid "Max. passive port"
 msgstr ""
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2594,6 +2603,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2613,6 +2625,10 @@ msgid "Maximum number of connections in each session (%d by default)."
 msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
+msgstr ""
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
 msgstr ""
 
 #, php-format
@@ -5224,7 +5240,8 @@ msgstr ""
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."

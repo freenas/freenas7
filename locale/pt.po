@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:02+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr "Utilizador padrão"
 msgid "Default user name is 'admin'."
 msgstr "Utilizador por defeito é 'admin'."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Predefinição"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Escolha as pastas/urls que necessitam de autenticação"
 
@@ -1290,12 +1297,8 @@ msgstr "Deseja realmente eliminar este destino?"
 msgid "Do you really want to delete this user?"
 msgstr "Quer realmente apagar este utilizador?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Pretende mesmo apagar este volume?\\n"
-"!!! Atenção que todos os dados serão perdidos e não podem ser recuperados. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Pretende mesmo apagar este volume?\\n!!! Atenção que todos os dados serão perdidos e não podem ser recuperados. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Tem a certeza que pretende formatar este disco? Todos os dados serão perdidos!"
@@ -2597,6 +2600,9 @@ msgstr "Número máximo de tentativas de login"
 msgid "Max. passive port"
 msgstr "Porta passiva máxima"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Número máximo de sessões"
 
@@ -2605,6 +2611,9 @@ msgstr "Valor do <i>time-to-live</i> (número máximo de <i>hops</i>) usado nos 
 
 msgid "MaxBurstLength"
 msgstr "MaxBurstLength"
+
+msgid "MaxOutstandingR2T"
+msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
 msgstr "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr "Número máximo de ligações em cada sessão (%d by default)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Máximo de ligações por endereço IP (0 = ilímitado)"
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Tem que adicionar discos primeiro."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Tem de introduzir o mesmo tipo de IP para a rede e gateway."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "É necessário um mínimo de 256MB de RAM para usar um alvo ISCSI."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,129 +5420,123 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Data"
+
 #~ msgid "hours"
 #~ msgstr "Horas"
+
 #~ msgid "days"
 #~ msgstr "dias"
+
 #~ msgid "day"
 #~ msgstr "dia"
+
 #~ msgid "months"
 #~ msgstr "meses"
+
 #~ msgid "week days"
 #~ msgstr "Dias Úteis"
+
 #~ msgid "Create"
 #~ msgstr "Criar"
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "O disco está actualmente montado! <a href=%s>Desmontar</a> este disco "
-#~ "antes de prosseguir."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "O disco está actualmente montado! <a href=%s>Desmontar</a> este disco antes de prosseguir."
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Um número válido de bits de rede tem que ser específicado."
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "Registos"
+
 #~ msgid "Size in MB."
 #~ msgstr "Tamanho em MB."
+
 #~ msgid "Minimum power usage with Standby"
-#~ msgstr ""
-#~ "Utilização de energia mínima no modo de poupança de energia (standby)"
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "O volume RAID está actualmente montado! Por favor remova o a href=%"
-#~ "s>mount point</a> antes de prosseguir."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Não é possível montar a partição de '%s' onde está guardada a "
-#~ "configuração.<br>"
+#~ msgstr "Utilização de energia mínima no modo de poupança de energia (standby)"
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "O volume RAID está actualmente montado! Por favor remova o a href=%s>mount point</a> antes de prosseguir."
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Não é possível montar a partição de '%s' onde está guardada a configuração.<br>"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Tamanho do tampão (buffer) de envio (16384 por defeito)"
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Tamanho do tampão (buffer) de recepção (16384 por defeito)"
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Uma rede válida tem que ser especificada"
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Isto significa que a imagem que enviou não é uma imagem oficial/suportada "
-#~ "e pode resultarem comportamento inesperado ou problemas de segurança. "
-#~ "Instala apenas imagens de origens de confiança e certifique-se que estas "
-#~ "não foram alteradas.<br>Tem a certeza que pretende prosseguir utilizando "
-#~ "esta imagem (por sua conta e risco)?"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Clique em &quot;Activar acualização de firmware&quot; abaixo, depois "
-#~ "escolha a imagem a ser envida.<br>Clique em &quot;Actualizar "
-#~ "firmware&quot; para iniciar o processo de actualização."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Isto significa que a imagem que enviou não é uma imagem oficial/suportada e pode resultarem comportamento inesperado ou problemas de segurança. Instala apenas imagens de origens de confiança e certifique-se que estas não foram alteradas.<br>Tem a certeza que pretende prosseguir utilizando esta imagem (por sua conta e risco)?"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Clique em &quot;Activar acualização de firmware&quot; abaixo, depois escolha a imagem a ser envida.<br>Clique em &quot;Actualizar firmware&quot; para iniciar o processo de actualização."
+
 #~ msgid "Medium power usage with Standby"
-#~ msgstr ""
-#~ "Utilização de energia média no modo de poupança de energia (standby)"
+#~ msgstr "Utilização de energia média no modo de poupança de energia (standby)"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Máxima performance, máximo consumo de energia"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Utilização média de energia sem entrar em espera (Standby)."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Hora de sincronização"
+
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Pode precisar de espaço suficiente para duplicar todos os ficheiros a "
-#~ "sincronizar"
+#~ msgstr "Pode precisar de espaço suficiente para duplicar todos os ficheiros a sincronizar"
+
 #~ msgid "Working Directory"
 #~ msgstr "Directório de trabalho"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Onde os ficheiros de trabalho serão armazenados"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Criar um directório de trabalho caso ainda não exista"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "A combinação de partilha e directoria de trabalho não existe."
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Hora de encerramento"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "Isto vai impedir que %s verifique se existem novas versões do firmware "
-#~ "sempre que a página <a href=%s>%s</a> for visualizada."
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> tem que estar activo para que o Unison possa "
-#~ "funcionar, e o utilizador <a href=%s>user</a> terá que ter acesso total à "
-#~ "shell activo."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "Isto vai impedir que %s verifique se existem novas versões do firmware sempre que a página <a href=%s>%s</a> for visualizada."
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "<a href=%s>SSHD</a> tem que estar activo para que o Unison possa funcionar, e o utilizador <a href=%s>user</a> terá que ter acesso total à shell activo."
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Últimas %d %s entradas do ficheiro de registro"
+
 #~ msgid "The configuration could not be restored (file upload error)."
-#~ msgstr ""
-#~ "Não foi possível restaurar a configuração (ocorreu um erro na "
-#~ "transferência do ficheiro)."
+#~ msgstr "Não foi possível restaurar a configuração (ocorreu um erro na transferência do ficheiro)."
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Utilização mínima de energia sem entrar em espera (Standby)."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "O disco encriptado está montado, desmonte-o antes de tentar desliga-lo."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "O disco encriptado está montado, desmonte-o antes de tentar desliga-lo."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr ""
-#~ "Tem que utilizar uma palavra chave para assignar a um disco encriptado."
+#~ msgstr "Tem que utilizar uma palavra chave para assignar a um disco encriptado."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Nome do disco encriptado"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Rede que está autorizada a aceder a este destino iSCSI."
+
 #~ msgid "Report generator"
 #~ msgstr "Gerador de relatórios"
-

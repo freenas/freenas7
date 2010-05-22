@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:48+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -931,6 +931,13 @@ msgstr ""
 msgid "Default user name is 'admin'."
 msgstr "默认情况下用户名是“admin”。"
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "默认值"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "指定需要认证的目录/URL"
 
@@ -1291,12 +1298,8 @@ msgstr "确定要删除这个iSCSI目标吗？"
 msgid "Do you really want to delete this user?"
 msgstr "确定要删除这个用户？"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"你真的要删除此卷吗？\\n"
-"！！！ 注意，所有数据将被删除，并且无法恢复。 ！！！"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "你真的要删除此卷吗？\\n！！！ 注意，所有数据将被删除，并且无法恢复。 ！！！"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "确定真的要格式化这个硬盘？硬盘内所有资料都会消失！"
@@ -2598,6 +2601,9 @@ msgstr ""
 msgid "Max. passive port"
 msgstr "主动端口数上限"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2605,6 +2611,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2625,6 +2634,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "来自相同IP的连接数目上限(0 = 不限制)。"
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5235,7 +5248,8 @@ msgstr "请先加入硬盘。"
 msgid "You must enter the same IP type for network and gateway."
 msgstr "您必须输入相同网络类型的IP和网关。"
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "系统最少需要 256MB 的内存才能使用 iSCSI。"
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5407,51 +5421,57 @@ msgstr "upriv"
 
 #~ msgid "hours"
 #~ msgstr "小时"
+
 #~ msgid "day"
 #~ msgstr "天"
+
 #~ msgid "days"
 #~ msgstr "天"
+
 #~ msgid "months"
 #~ msgstr "月"
+
 #~ msgid "Create"
 #~ msgstr "建立"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Size in MB."
 #~ msgstr "以MB为单位。"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "关机时间"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "必须指定一个有效的网络比特值。"
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "必须指定一个有效的网络。"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "如果你还没有工作目录，请建立一个"
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
+
+#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+#~ msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
+
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"
+
 #~ msgid "Shell access"
 #~ msgstr "Shell 权限"
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "范例名称：iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "Working Directory"
 #~ msgstr "工作目录"
+
 #~ msgid "built on"
 #~ msgstr "建立于"
+
 #~ msgid "Report generator"
 #~ msgstr "报告生成器"
-

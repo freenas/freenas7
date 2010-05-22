@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:16+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr ""
 msgid "Default user name is 'admin'."
 msgstr "Az 'admin' az alapértelmezett felhasználónév."
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Alapértelmezett"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Hitelesítést igénylő mappák/URL-ek meghatározása."
 
@@ -1290,12 +1297,8 @@ msgstr "Valóban törölni akarja ezt a célt?"
 msgid "Do you really want to delete this user?"
 msgstr "Valóban törölni akarja ezt a felhasználót?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Valóban törölni akarja ezt a kötetet?\\n"
-"!!! A rajta levő adatok végérvényesen elvesznek. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Valóban törölni akarja ezt a kötetet?\\n!!! A rajta levő adatok végérvényesen elvesznek. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Biztos, hogy formázod ezt a lemezt? Minden adat törlődni fog!"
@@ -2597,6 +2600,9 @@ msgstr "Maximális bejelentkezési próbálkozások száma"
 msgid "Max. passive port"
 msgstr "Maximális passzív port"
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr "Max. munkafolyamatok száma"
 
@@ -2604,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximális kapcsolatok száma IP címenként (0 = korlátlan)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Elöszőr lemezt kell hozzáadni."
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,106 +5420,96 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Dátum"
+
 #~ msgid "hours"
 #~ msgstr "óra"
+
 #~ msgid "days"
 #~ msgstr "nap"
+
 #~ msgid "day"
 #~ msgstr "nap"
+
 #~ msgid "months"
 #~ msgstr "hónap"
+
 #~ msgid "week days"
 #~ msgstr "a hét napjai"
+
 #~ msgid "Create"
 #~ msgstr "Létrehoz"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "Logs"
 #~ msgstr "Naplók"
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Ez azt jelenti, hogy a feltöltött lemezkép nem hivatalos/támogatott és "
-#~ "nem várt működést vagy biztonsági kockázatot okozhat. Csak megbízható "
-#~ "forrásból származó lemezképet használj és győződj  meg, hogy azt nem "
-#~ "módosították.<br><br>Mindenképpen telepíted ezt a lemezképet (saját "
-#~ "felelőségre)?"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Kattints a &quot;Firmware feltöltés engedélyezése&quot;-re, válassz ki "
-#~ "egy lemezkép fájlt a feltöltéshez.<br>Kattints &quot;Firmware "
-#~ "frissítése&quot;-re a frissítési folyamat megkezdéséhez."
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "A lemez jelenleg csatlakoztatva van! A lemez <a href=%s>ecsatlakoztatása</"
-#~ "a> a folyamat elött."
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted "
-#~ "temporarily to perform selected command, otherwise the commands work in "
-#~ "read-only mode.<br>Service disruption to users accessing this mount will "
-#~ "occur during this process."
-#~ msgstr ""
-#~ "Ha a kiválasztott lemez/partíció csatlakoztatva (mount-olva) van, "
-#~ "átmenetileg le lesz csatlakoztatva, amíg a kiválasztott parancs "
-#~ "végrehajtása folyik. Ellenkező esetben a parancs csak-olvas üzemmódban "
-#~ "fut le.<br>Szolgáltatás és hozzáférés megszakadás várható, amíg a "
-#~ "folyamat tart."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Nem csatolható fel az a partíció '%s', ahol a beállítás fájl tárolódik."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Ez azt jelenti, hogy a feltöltött lemezkép nem hivatalos/támogatott és nem várt működést vagy biztonsági kockázatot okozhat. Csak megbízható forrásból származó lemezképet használj és győződj  meg, hogy azt nem módosították.<br><br>Mindenképpen telepíted ezt a lemezképet (saját felelőségre)?"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Kattints a &quot;Firmware feltöltés engedélyezése&quot;-re, válassz ki egy lemezkép fájlt a feltöltéshez.<br>Kattints &quot;Firmware frissítése&quot;-re a frissítési folyamat megkezdéséhez."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "A lemez jelenleg csatlakoztatva van! A lemez <a href=%s>ecsatlakoztatása</a> a folyamat elött."
+
+#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+#~ msgstr "Ha a kiválasztott lemez/partíció csatlakoztatva (mount-olva) van, átmenetileg le lesz csatlakoztatva, amíg a kiválasztott parancs végrehajtása folyik. Ellenkező esetben a parancs csak-olvas üzemmódban fut le.<br>Szolgáltatás és hozzáférés megszakadás várható, amíg a folyamat tart."
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Nem csatolható fel az a partíció '%s', ahol a beállítás fájl tárolódik."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Fogadó puffer mérete (alapértelmezett: 16384)"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Küldő puffer mérete (alapértelmezett: 16384)"
+
 #~ msgid "Size in MB."
 #~ msgstr "Méret MB-ban."
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Minimális energiafelhasználás készenléti állapot használatával."
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Minimális energiafelhasználás készenléti állapot nélkül."
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Közepes energiafelhasználás készenléti állapot használatával."
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maximális teljesítmény, maximális energiafelhasználás"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Közepes energiafelhasználás készenléti állapot nélkül."
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "A RAID kötet csatlakoztatva van! Töröld a <a href=%s>csatolási pontot</a> "
-#~ "először a folytatás előtt."
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "A RAID kötet csatlakoztatva van! Töröld a <a href=%s>csatolási pontot</a> először a folytatás előtt."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Szinkronizálási idő"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Munka könyvtár létrehozása, ha az nem létezik"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "Ez azért van, mert a %s nem ellenőrzi az újabb firmware verzió "
-#~ "megjelenését, ha a <a href=%s>%s</a> oldal van megjelenítve."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "Ez azért van, mert a %s nem ellenőrzi az újabb firmware verzió megjelenését, ha a <a href=%s>%s</a> oldal van megjelenítve."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Titkosított lemez neve"
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "A név például: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Leállítás ideje"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Utolsó %d %s napló bejegyzés"
+
 #~ msgid "Report generator"
 #~ msgstr "Jelentéskészítő"
-

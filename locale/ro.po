@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:36+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr ""
 msgid "Default user name is 'admin'."
 msgstr ""
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Implicit"
+
 msgid "Define directories/URL's that require authentication."
 msgstr "Definiţi directoarele/URL-urile care necesită autentificare"
 
@@ -1290,12 +1297,8 @@ msgstr "Doriti sa stergeti aceasta destinatie?"
 msgid "Do you really want to delete this user?"
 msgstr "Stergeti acest utilizator?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Sigur doriţi să ştergeţi acest volum?\\n"
-"!!! Notă: Toate datele vor fi pierdute şi nu mai pot fi recuperate. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Sigur doriţi să ştergeţi acest volum?\\n!!! Notă: Toate datele vor fi pierdute şi nu mai pot fi recuperate. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Sigur doriti formatarea discului? Toate datele vor fi pierdute!"
@@ -2597,6 +2600,9 @@ msgstr ""
 msgid "Max. passive port"
 msgstr ""
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2604,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2624,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Numar maxim de conexiuni pe IP (0 = nelimitat)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5234,7 +5247,8 @@ msgstr "Trebuia sa adaugati discul mai intii."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Trebuie folosit acelasi IP pentru retea si pentru gateway."
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, fuzzy, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr "Aveti nevoie de minim 256MB RAM pentru utilizare iSCSI."
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5406,216 +5420,174 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Data"
+
 #~ msgid "hours"
 #~ msgstr "ore"
+
 #~ msgid "day"
 #~ msgstr "zi"
+
 #~ msgid "days"
 #~ msgstr "zile"
+
 #~ msgid "week days"
 #~ msgstr "zilele saptaminii"
+
 #~ msgid "months"
 #~ msgstr "luni"
+
 #~ msgid "Create"
 #~ msgstr "Creare"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Trebuie sa introduceti un bit masca retea valid."
+
 #~ msgid "LAN"
 #~ msgstr "RETEA"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "Jurnale"
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Acest lucru insemna ca imaginea incarcata nu este in mod oficial "
-#~ "suportata si poate produce efecte nedorite in functionare . Instalati "
-#~ "doar imagini sistem care provin din surse sigure si asigurati-va ca "
-#~ "imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum "
-#~ "aceasta imagine (pe riscul dvs.)?"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi "
-#~ "alegeti imaginea de incarcat.<br>Click &quot;Actualizare Firmware&quot; "
-#~ "pentru inceperea actualizarii."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Acest lucru insemna ca imaginea incarcata nu este in mod oficial suportata si poate produce efecte nedorite in functionare . Instalati doar imagini sistem care provin din surse sigure si asigurati-va ca imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum aceasta imagine (pe riscul dvs.)?"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi alegeti imaginea de incarcat.<br>Click &quot;Actualizare Firmware&quot; pentru inceperea actualizarii."
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Consum minim in modul Standby"
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Consum mediu in modul Standby"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Consum maxim fara modul Standby"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Consum mediu fara modul Standby"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Performanta Maxima, consum maxim"
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 #~ msgstr "Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!"
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted "
-#~ "temporarily to perform selected command, otherwise the commands work in "
-#~ "read-only mode.<br>Service disruption to users accessing this mount will "
-#~ "occur during this process."
-#~ msgstr ""
-#~ "Daca discul/partitia selectata este montat va fi de-montat momentan "
-#~ "pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul "
-#~ "citire."
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "Volumul RAID este montat! Eliminati <a href=%s>punctul de montare</a> "
-#~ "inainte de a continua."
+
+#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+#~ msgstr "Daca discul/partitia selectata este montat va fi de-montat momentan pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul citire."
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "Volumul RAID este montat! Eliminati <a href=%s>punctul de montare</a> inainte de a continua."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Marimea buffer-ului de Iesire (implicit 16384)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Marimea buffer-ului de Intrare (implicit 16384)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Trebuie introdusa o retea valida."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Timp Sincronizare"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Combinatia de director/partajare nu exista."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Aveti nevoie de spatiu pentru a duplica toate fisierele care sint "
-#~ "sincronizate"
+#~ msgstr "Aveti nevoie de spatiu pentru a duplica toate fisierele care sint sincronizate"
+
 #~ msgid "Working Directory"
 #~ msgstr "Director de Lucru"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Unde sint stocate fisierele de lucru"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Creare director de lucru daca acesta nu exista"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Timp de Oprire"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "Aceasta optiune va determina %s sa nu verifice existenta unor actualizari "
-#~ "pentru firmware cind vizualizati pagina <a href=%s>%s</a>."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "Aceasta optiune va determina %s sa nu verifice existenta unor actualizari pentru firmware cind vizualizati pagina <a href=%s>%s</a>."
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Ultimele %d %s intrari in jurnal"
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Configuratia nu a putut fi refacuta (eroare incarcare fiser)."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr "Discul criptat este montat, demontati-l inainte de a-l detasa."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr ""
-#~ "Este necesar sa utilizati o fraza de control pentru a atasa un disc "
-#~ "criptat"
+#~ msgstr "Este necesar sa utilizati o fraza de control pentru a atasa un disc criptat"
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Nume disc criptat"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Retea autorizata pentru acces iSCSI"
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "Exemplu: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
 #~ msgid "Size in MB."
 #~ msgstr "Dimensiune in MB."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Nu puteti monta partitia '%s' unde se afla fisierul de configurare.<br>"
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Nu puteti monta partitia '%s' unde se afla fisierul de configurare.<br>"
+
 #~ msgid "Disk Name"
 #~ msgstr "Nume Disc"
-#~ msgid ""
-#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
-#~ "for the changes to take effect."
-#~ msgstr ""
-#~ "Schimbarile au fost salvate. Va trebui sa <a href=%s>reporniti</a> "
-#~ "sistemul pentru ca acestea sa devina active."
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span></p><ul><li><span "
-#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
-#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgstr ""
-#~ "Dupa ce apasati &quot;Salvare&quot;, va trebui sa reporniti %s pentru ca "
-#~ "modificarile sa devina active. Eventual va trebui sa parcurgeti si "
-#~ "urmatorii pasi pentru a avea din nou acces la sistemul NAS: </span></"
-#~ "p><ul><li><span class='vexpl'>schimbati adresa IP a sistemului "
-#~ "dumneavoastra</span></li><li><span class='vexpl'> si accesati interfata "
-#~ "Web cu noua adresa IP</span></li></ul>"
+
+#~ msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
+#~ msgstr "Schimbarile au fost salvate. Va trebui sa <a href=%s>reporniti</a> sistemul pentru ca acestea sa devina active."
+
+#~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr "Dupa ce apasati &quot;Salvare&quot;, va trebui sa reporniti %s pentru ca modificarile sa devina active. Eventual va trebui sa parcurgeti si urmatorii pasi pentru a avea din nou acces la sistemul NAS: </span></p><ul><li><span class='vexpl'>schimbati adresa IP a sistemului dumneavoastra</span></li><li><span class='vexpl'> si accesati interfata Web cu noua adresa IP</span></li></ul>"
+
 #~ msgid "built on"
 #~ msgstr "inclus"
-#~ msgid ""
-#~ "At the highest level, a target is what is presented to the initiator, and "
-#~ "is made up of one or more devices, and/or one or more extents."
-#~ msgstr ""
-#~ "La cel mai inalt nivel, o destinatie reprezinta legatura pentru "
-#~ "initiator, fiind reprezentata de unul sau mai multe dispozitive, si/sau "
-#~ "unul sau mai multe extensii."
-#~ msgid ""
-#~ "Devices are used to combine extents or other devices. Extents and devices "
-#~ "must be defined before they can be used, and they cannot be used more "
-#~ "than once."
-#~ msgstr ""
-#~ "Dispozitivele pot fi folosite pentru a defini extensii sau alte "
-#~ "dispozitive. Extensiile si dispozitivele trebuie sa fie definite inainte "
-#~ "de a fi folosite, si pot fi utilizate doar o singura data."
-#~ msgid ""
-#~ "The configuration has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr ""
-#~ "Configuratia a fost schimbata.<br>Va trebui sa aplicati schimbarile "
-#~ "pentru ca acestea sa devina active."
+
+#~ msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
+#~ msgstr "La cel mai inalt nivel, o destinatie reprezinta legatura pentru initiator, fiind reprezentata de unul sau mai multe dispozitive, si/sau unul sau mai multe extensii."
+
+#~ msgid "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
+#~ msgstr "Dispozitivele pot fi folosite pentru a defini extensii sau alte dispozitive. Extensiile si dispozitivele trebuie sa fie definite inainte de a fi folosite, si pot fi utilizate doar o singura data."
+
+#~ msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
+#~ msgstr "Configuratia a fost schimbata.<br>Va trebui sa aplicati schimbarile pentru ca acestea sa devina active."
+
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Trebuie sa definiti un obiect 'Extins' mai intii."
+
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (distribuire)"
+
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (duplicare)"
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "NU OPRITI procesul de actuaalizare firmware odata pornit. %s va reporni "
-#~ "automat dupa incarcarea noului firmware cu pastrarea configuratiei.<br> "
-#~ "Aveti nevoie de minim %d MB RAM pentru a putea realiza actualizarea.."
-#~ "<br>Este recomandabil sa <a href=%s>Salvati</a> configuratia sistemului "
-#~ "inainte de a realiza aceasta actualizare."
-#~ msgid ""
-#~ "You can also install a package via SSH or console using the the pkg_add "
-#~ "command.<br>Example: pkg_add -r packagename"
-#~ msgstr ""
-#~ "Puteti instala un pachet si prin SSH sau de la consola folosind comanda "
-#~ "pkg_add.<br>Exemplu: pkg_add -r numepachet"
+
+#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+#~ msgstr "NU OPRITI procesul de actuaalizare firmware odata pornit. %s va reporni automat dupa incarcarea noului firmware cu pastrarea configuratiei.<br> Aveti nevoie de minim %d MB RAM pentru a putea realiza actualizarea..<br>Este recomandabil sa <a href=%s>Salvati</a> configuratia sistemului inainte de a realiza aceasta actualizare."
+
+#~ msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+#~ msgstr "Puteti instala un pachet si prin SSH sau de la consola folosind comanda pkg_add.<br>Exemplu: pkg_add -r numepachet"
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% din %dMB"
+
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Dispozitivul este inca montat, demontati-l inainte de detasare."
-#~ msgid ""
-#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
-#~ "used as extent."
-#~ msgstr ""
-#~ "calea fisierului (ex. /mnt/sharename/extent/%s) sau numele dispozitivului "
-#~ "(ex. /dev/ad1) folosit ca extensie."
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a "
-#~ "href=%s></a> trebuie să aibă acces complet la Shell."
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
-#~ "of using this menu for starting a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. Folosiţi aceste opţiuni doar pentru analiza erorilor!<br>2. Nu este "
-#~ "nevoie de această opţiune pentru a porni un volum RAID (acesta este "
-#~ "pornit automat)."
 
+#~ msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
+#~ msgstr "calea fisierului (ex. /mnt/sharename/extent/%s) sau numele dispozitivului (ex. /dev/ad1) folosit ca extensie."
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a href=%s></a> trebuie să aibă acces complet la Shell."
+
+#~ msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr "1. Folosiţi aceste opţiuni doar pentru analiza erorilor!<br>2. Nu este nevoie de această opţiune pentru a porni un volum RAID (acesta este pornit automat)."

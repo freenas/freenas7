@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 17:38+0000\n"
+"POT-Creation-Date: 2010-05-23 04:20+0000\n"
 "PO-Revision-Date: 2010-05-21 13:37+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -930,6 +930,13 @@ msgstr ""
 msgid "Default user name is 'admin'."
 msgstr ""
 
+msgid "DefaultTime2Retain"
+msgstr ""
+
+#, fuzzy
+msgid "DefaultTime2Wait"
+msgstr "Privzeto"
+
 msgid "Define directories/URL's that require authentication."
 msgstr ""
 
@@ -1290,9 +1297,7 @@ msgstr "Res želite odstraniti ta cilj?"
 msgid "Do you really want to delete this user?"
 msgstr "Ali res želite izbrisati tega uporabnika?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
@@ -2595,6 +2600,9 @@ msgstr ""
 msgid "Max. passive port"
 msgstr ""
 
+msgid "Max. pre-send R2T"
+msgstr ""
+
 msgid "Max. sessions"
 msgstr ""
 
@@ -2602,6 +2610,9 @@ msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "MaxBurstLength"
+msgstr ""
+
+msgid "MaxOutstandingR2T"
 msgstr ""
 
 msgid "MaxRecvDataSegmentLength"
@@ -2622,6 +2633,10 @@ msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Največje število povezav na IP naslov (0 = neomejeno)."
+
+#, php-format
+msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
+msgstr ""
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -5232,7 +5247,8 @@ msgstr "Najprej morate dodati diske."
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#, php-format
+msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
 msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
@@ -5404,141 +5420,120 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Datum"
+
 #~ msgid "hours"
 #~ msgstr "ur(e)"
+
 #~ msgid "days"
 #~ msgstr "dni"
+
 #~ msgid "day"
 #~ msgstr "dan"
+
 #~ msgid "months"
 #~ msgstr "mesecev"
+
 #~ msgid "week days"
 #~ msgstr "delovnik"
+
 #~ msgid "Create"
 #~ msgstr "Ustvari"
+
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Vnešen mora biti veljaven podomrežni bit."
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Logs"
 #~ msgstr "Dnevniki"
-#~ msgid ""
-#~ "This means that the image you uploaded is not an official/supported image "
-#~ "and may lead to unexpected behavior or security compromises. Only install "
-#~ "images that come from sources that you trust, and make sure that the "
-#~ "image has not been tampered with.<br><br>Do you want to install this "
-#~ "image anyway (on your own risk)?"
-#~ msgstr ""
-#~ "Pomeni, da slika, ki ste jo naložili ni uradna/podprta slika in lahko "
-#~ "privede do nepričakovanega obnašanja sistema. Nameščajte le slike, ki "
-#~ "prihajajo iz zanesljivih virov.<br><br>Ali želite kljub temu namestiti to "
-#~ "sliko (na lastno odgovornost)?"
-#~ msgid ""
-#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
-#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
-#~ "upgrade process."
-#~ msgstr ""
-#~ "Spodaj kliknite &quot;Omogoči nalaganje firmware&quot;, nato izberite "
-#~ "sliko za nalaganje.<br>Za začetek nadgradnje pa kliknite &quot;Nadgradi "
-#~ "firmware&quot;."
+
+#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+#~ msgstr "Pomeni, da slika, ki ste jo naložili ni uradna/podprta slika in lahko privede do nepričakovanega obnašanja sistema. Nameščajte le slike, ki prihajajo iz zanesljivih virov.<br><br>Ali želite kljub temu namestiti to sliko (na lastno odgovornost)?"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
+#~ msgstr "Spodaj kliknite &quot;Omogoči nalaganje firmware&quot;, nato izberite sliko za nalaganje.<br>Za začetek nadgradnje pa kliknite &quot;Nadgradi firmware&quot;."
+
 #~ msgid "Size in MB."
 #~ msgstr "Velikost v MB."
-#~ msgid ""
-#~ "If the selected disk/partition is mounted it will be unmounted "
-#~ "temporarily to perform selected command, otherwise the commands work in "
-#~ "read-only mode.<br>Service disruption to users accessing this mount will "
-#~ "occur during this process."
-#~ msgstr ""
-#~ "Če je izbrani pogon/particija priklopljen, bo za izvršitev izbranega "
-#~ "ukaza začasno odklopljen. Drugače se bo ukaz izvršil v bralnem načinu."
-#~ "<br>Med izvajanjem ukaza bodo imeli uporabniki, ki dostopajo do sistema, "
-#~ "moten dostop."
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "RAID polje je trenutno priključeno! Pred nadaljevanjem odstranite <a href="
-#~ "%s>priklopno točko</a>."
-#~ msgid ""
-#~ "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr ""
-#~ "Me morete priklopiti particije '%s', kjer je shranjena datoteka z "
-#~ "nastavitvami.<br>"
+
+#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+#~ msgstr "Če je izbrani pogon/particija priklopljen, bo za izvršitev izbranega ukaza začasno odklopljen. Drugače se bo ukaz izvršil v bralnem načinu.<br>Med izvajanjem ukaza bodo imeli uporabniki, ki dostopajo do sistema, moten dostop."
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "RAID polje je trenutno priključeno! Pred nadaljevanjem odstranite <a href=%s>priklopno točko</a>."
+
+#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "Me morete priklopiti particije '%s', kjer je shranjena datoteka z nastavitvami.<br>"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Velikost predpomnilnika pošiljanja (privzeto 16384)."
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Velikost predpomnilnika sprejemanja (privzeto 16384)."
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Določeno mora biti veljavno omrežje."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Čas sinhronizacije"
+
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Kombinacija deljenega vira in delovne mape ne obstaja."
+
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr ""
-#~ "Potrebovali boste zadostno količino prostega diska, da boste lahko "
-#~ "duplicirali vse podatke, ki se sinhronizirajo"
+#~ msgstr "Potrebovali boste zadostno količino prostega diska, da boste lahko duplicirali vse podatke, ki se sinhronizirajo"
+
 #~ msgid "Working Directory"
 #~ msgstr "Delovna mapa"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Kjer bodo shranjene delovne datoteke"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Ustvari delovni imenik, če ne obstaja"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Čas izklopa"
-#~ msgid ""
-#~ "This will cause %s not to check for newer firmware versions when the <a "
-#~ "href=%s>%s</a> page is viewed."
-#~ msgstr ""
-#~ "To bo, kadar je prikazana <a href=%s>%s</a> stran, onemogočilo %s -u "
-#~ "preverjanje nove verzije firmware."
+
+#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+#~ msgstr "To bo, kadar je prikazana <a href=%s>%s</a> stran, onemogočilo %s -u preverjanje nove verzije firmware."
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Zadnjih %d %s dnevniških vnosov"
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Nastavitev ni bilo možno obnoviti (napaka pri nalaganju datoteke)."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Ta šifriran pogon je priklopljen, preden ga izvlecete, ga morate "
-#~ "opdklopiti."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "Ta šifriran pogon je priklopljen, preden ga izvlecete, ga morate opdklopiti."
+
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Za pliklop šifriranega pogona, morate uporabiti geslo."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Ime šifriranega pogona"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Omrežje z dovoljenjem za dostop do tega iSCSI cilja."
-#~ msgid ""
-#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "To ime je za primer: iqn.1994-04.org.netbsd.iscsi-cilj:cilj0."
+
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% od %dMB"
-#~ msgid ""
-#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
-#~ "s>user</a> must have full Shell enabled."
-#~ msgstr ""
-#~ "Za delovanje Unison, mora biti omogočen <a href=%s>SSHD</a> ter <a href=%"
-#~ "s>uporabnik</a> mora imeti omogočeno celotno lupino."
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a href=%"
-#~ "s>Odklopite</a>."
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span></p><ul><li><span "
-#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
-#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgstr ""
-#~ "Po kliku na &quot;Shrani&quot; morate za uveljavitev vseh sprememb "
-#~ "ponovno zagnati %s. Preden boste spet lahko dostopali do vaše NAS naprave "
-#~ "bo morda potrebno storiti še: </span></p><ul><li><span "
-#~ "class='vexpl'>spremeniti IP naslov vašega računalnika</span></"
-#~ "li><li><span class='vexpl'>odpreti webGUI na novem IP naslovu</span></"
-#~ "li></ul>"
+
+#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+#~ msgstr "Za delovanje Unison, mora biti omogočen <a href=%s>SSHD</a> ter <a href=%s>uporabnik</a> mora imeti omogočeno celotno lupino."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "Pogon je trnutno priklopljen! Pred nadaljevanjem ga najprej <a href=%s>Odklopite</a>."
+
+#~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr "Po kliku na &quot;Shrani&quot; morate za uveljavitev vseh sprememb ponovno zagnati %s. Preden boste spet lahko dostopali do vaše NAS naprave bo morda potrebno storiti še: </span></p><ul><li><span class='vexpl'>spremeniti IP naslov vašega računalnika</span></li><li><span class='vexpl'>odpreti webGUI na novem IP naslovu</span></li></ul>"
+
 #~ msgid "Disk Name"
 #~ msgstr "Ime diska"
-
