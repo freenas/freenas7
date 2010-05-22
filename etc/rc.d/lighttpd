@@ -40,8 +40,14 @@ pidfile=${lighttpd_pidfile}
 sig_reload="-INT"
 
 # Create symlink for lighttpd file upload if it doesn't exist.
-if [ ! -h "${lighttpd_uploaddir}/ftmp" ]; then
-	ln -s /ftmp "${lighttpd_uploaddir}/ftmp"
+#if [ ! -h "${lighttpd_uploaddir}/ftmp" ]; then
+#	ln -s /ftmp "${lighttpd_uploaddir}/ftmp"
+#fi
+if [ -h "${lighttpd_uploaddir}/ftmp" ]; then
+	rm -f "${lighttpd_uploaddir}/ftmp"
+fi
+if [ ! -d "${lighttpd_uploaddir}/ftmp" ]; then
+	mkdir -p "${lighttpd_uploaddir}/ftmp"
 fi
 
 lighttpd_mkconf()
