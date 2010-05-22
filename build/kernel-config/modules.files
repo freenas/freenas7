@@ -7,10 +7,14 @@ geom/geom_concat/geom_concat.ko
 geom/geom_mirror/geom_mirror.ko
 geom/geom_nop/geom_nop.ko
 geom/geom_multipath/geom_multipath.ko
+geom/geom_fox/geom_fox.ko
+geom/geom_virstor/geom_virstor.ko
 
 # Interfaces
 if_tap/if_tap.ko
 if_tun/if_tun.ko
+#if_bridge/if_bridge.ko
+#bridgestp/bridgestp.ko
 
 # File systems
 ext2fs/ext2fs.ko
@@ -33,6 +37,7 @@ libmchain/libmchain.ko
 # Netgraph (required by bsnmpd)
 netgraph/netgraph/netgraph.ko
 netgraph/socket/ng_socket.ko
+#netgraph/ether/ng_ether.ko
 
 # Misc.
 iscsi/initiator/iscsi_initiator.ko
@@ -48,3 +53,11 @@ iwifw/iwi_monitor/iwi_monitor.ko
 ipwfw/ipw_bss/ipw_bss.ko
 ipwfw/ipw_ibss/ipw_ibss.ko
 ipwfw/ipw_monitor/ipw_monitor.ko
+
+# Crypto accelerator
+#crypto/crypto.ko
+#cryptodev/cryptodev.ko
+#zlib/zlib.ko
+hifn/hifn.ko
+safe/safe.ko
+ubsec/ubsec.ko

@@ -147,7 +147,7 @@ sbin/gmultipath
 ## growfs -- grow size of an existing ufs file system
 sbin/growfs
 
-##gpart — control utility for the disk partitioning GEOM class
+## gpart -- control utility for the disk partitioning GEOM class
 sbin/gpart
 
 ## gvinum -- Volume manager (RAID0,1,5)
