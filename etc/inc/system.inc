@@ -189,7 +189,7 @@ function cb_map_array_diff2($a, $b) {
 function system_get_smp_cpu_usage() {
 	$cpus = system_get_cpus();
 	$a_stat1 = explode(" ", @exec("/sbin/sysctl -q -n kern.cp_times"));
-	sleep(2);
+	sleep(1);
 	$a_stat2 = explode(" ", @exec("/sbin/sysctl -q -n kern.cp_times"));
 	$a_dstat = array_map("cb_map_array_diff2", $a_stat1, $a_stat2);
 
@@ -206,7 +206,7 @@ function system_get_smp_cpu_usage() {
 
 function system_get_cpu_usage() {
 	$cpuTicks1 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
-	sleep(2);
+	sleep(1);
 	$cpuTicks2 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
 
 	$diff = array();
