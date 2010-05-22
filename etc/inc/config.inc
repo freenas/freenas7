@@ -235,7 +235,9 @@ if (!$noparseconfig) {
 			if (is_booting()) {
 				if (stristr($g['platform'], "liveCD")) {
 					// Try copying the default config.xml to the floppy disk/USB stick
+					config_unlock();
 					reset_factory_defaults();
+					config_lock();
 
 					echo "\n";
 					echo "*******************************************************************************\n";
