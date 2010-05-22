@@ -197,7 +197,7 @@ function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out 
 		if (true === $out) {
 			mwexec2($cmd, $output, $result);
 		} else {
-			$result = mwexec($cmd);
+			$result = mwexec($cmd, true);
 		}
 	}
 
@@ -332,7 +332,7 @@ function zfs_dataset_properties($uuid) {
 		// Update dataset properties
 		if (!empty($param)) {
 			$cmd = "zfs set {$param} {$dataset['pool'][0]}/{$dataset['name']}";
-			$result |= mwexec($cmd);
+			$result |= mwexec($cmd, true);
 		}
 	}
 
