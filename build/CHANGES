@@ -58,7 +58,7 @@ Majors changes:
 - Upgrade nut to 2.4.3.
 - Upgrade php5 to 5.2.13.
 - Upgrade transmission to 1.93.
-- Upgrade samba to 3.5.2.
+- Upgrade samba to 3.5.3.
 - Increase image size to 72MB, mfsroot to 178MB.
 - Increase default install size embedded to 120MB, full to 380MB.
 - Increase default swap size to 256MB.
