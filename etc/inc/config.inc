@@ -434,7 +434,7 @@ function config_lock() {
 	$lockfile = "{$g['varrun_path']}/config.lock";
 
 	$n = 0;
-	while ($n < 10) {
+	while ($n < 15) {
 		/* open the lock file in append mode to avoid race condition */
 		if ($fd = @fopen($lockfile, "x")) {
 			/* succeeded */
@@ -446,6 +446,8 @@ function config_lock() {
 			$n++;
 		}
 	}
+	mwexec("/usr/bin/logger 'Lock error {$lockfile}'");
+	exit;
 }
 
 /* Unlock configuration file */
