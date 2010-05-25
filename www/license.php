@@ -114,12 +114,12 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add core ZFS implementation and additional code improvements</font></em></div><br />
             <hr size="1" />
             <p>The following persons have contributed to FreeNAS documentation project:</p>
-            <div>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em></div><br />
             <div>Yang Vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://www.freenas.cn">http://www.freenas.cn</a></font></em></div><br />
             <div>Baikuan Hsu (<a href="mailto:chicworks@gmail.com">chicworks@gmail.com</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the WebGUI</font></em></div><br />
+            <div>Carsten Vinkler (<a href="mailto:carsten@indysign.dk">carsten@indysign.dk</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Danish translator of the WebGUI</font></em></div><br />
             <div>Kris Verhoeven (<a href="mailto:kris@esiv.be">kris@esiv.be</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Dutch translator of the WebGUI</font></em></div><br />
             <div>Regis Caubet (<a href="mailto:caubet.r@gmail.com">caubet.r@gmail.com</a>)<br />
@@ -130,14 +130,18 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em></div><br />
             <div>Ioannis Koniaris (<a href="mailto:ikoniari@csd.auth.gr">ikoniari@csd.auth.gr</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Greek translator of the WebGUI</font></em></div><br />
+            <div>Petros Kyladitis (<a href="mailto:petros.kyladitis@gmail.com">petros.kyladitis@gmail.com</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Greek translator of the WebGUI</font></em></div><br />
             <div>Pietro De Faccio (<a href="mailto:defaccio.pietro@tiscali.it">defaccio.pietro@tiscali.it</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Italian translator of the WebGUI</font></em></div><br />
+            <div>Christian Sulmoni (<a href="mailto:csulmoni@gmail.com">csulmoni@gmail.com</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Italian translator of the WebGUI and QuiXplorer</font></em></div><br />
             <div>Hiroyuki Seino (<a href="mailto:seichan-ml@wakhok.ne.jp">seichan-ml@wakhok.ne.jp</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Japanese translator of the WebGUI</font></em></div><br />
             <div>Frederico Tavares (<a href="mailto:frederico-tavares@sapo.pt">frederico-tavares@sapo.pt</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Portuguese translator of the WebGUI</font></em></div><br />
             <div>Laurentiu Florin Bubuianu (<a href="mailto:laurb@mail.dntis.ro">laurb@mail.dntis.ro</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Romana translator of the WebGUI</font></em></div><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Romanian translator of the WebGUI</font></em></div><br />
             <div>Alexander Samoilov (<a href="mailto:root@lifeslice.ru">root@lifeslice.ru</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Russian translator of the WebGUI</font></em></div><br />
             <div>Raul Fernandez Garcia (<a href="mailto:raulfg3@gmail.com">raulfg3@gmail.com</a>)<br />
@@ -145,9 +149,11 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
             <div>Daniel Nylander (<a href="mailto:po@danielnylander.se">po@danielnylander.se</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Swedish translator of the WebGUI</font></em></div><br />
             <hr size="1" />
-            <p>The following persons have contributed to FreeNAS Website:</p>
+            <p>The following persons have contributed to FreeNAS in the past:</p>
             <div>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em></div><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster FreeNAS Website (2006-2009)</font></em></div><br />
+            <div>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor (2006-2008)</font></em></div><br />
 							</td>
 						</tr>
             <?php html_separator();?>
@@ -162,13 +168,13 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 1995-2010 The FreeBSD Project. All rights reserved.</p>
 
       <p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br />
-        Copyright &copy; 2006-2007 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
+        Copyright &copy; 2006-2009 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br />
         Copyright &copy; 2001-2010 The PHP Group. All rights reserved.</p>
 
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://www.lighttpd.net</a>)<br />
-        Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
+        Copyright &copy; 2004 by Jan Kneschke (jan@kneschke.de). All rights reserved.</p>
 
       <p> OpenSSH (<a href="http://www.openssh.com" target="_blank">http://www.openssh.com</a>)<br />
         Copyright &copy; 1999-2009 OpenBSD</p>
@@ -180,7 +186,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
        </p>
 
       <p> ProFTPD - Highly configurable FTP server (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br />
-        Copyright &copy; 1999, 2000-10, The ProFTPD Project</p>
+        Copyright &copy; 1999, 2000-2010 The ProFTPD Project</p>
 
       <p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br />
        </p>
@@ -195,7 +201,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 2001 Jeff Wheelhouse (jdw@wheelhouse.org)</p>
 
 	<p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br />
-        Copyright &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
+        Copyright &copy; 2004-2005 Bruce Cran (bruce@cran.org.uk). All rights reserved.</p>
 
       <p>smartmontools (<a href="http://sourceforge.net/projects/smartmontools" target="_blank">http://sourceforge.net/projects/smartmontools</a>)<br />
         Copyright &copy; 2002-2008 Bruce Allen.</p>
