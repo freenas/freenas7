@@ -369,8 +369,8 @@ device		cryptodev
 # GEOM classes
 options		GEOM_ELI	# GELI filesystem encryption
 options		GEOM_UZIP	# GEOM based compressed disk images
-options 	GEOM_PART_BSD		# BSD disklabel
-options 	GEOM_PART_MBR		# MBR partitioning
+#options 	GEOM_PART_BSD		# BSD disklabel
+#options 	GEOM_PART_MBR		# MBR partitioning
 
 # Temperature sensors:
 #

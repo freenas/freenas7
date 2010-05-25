@@ -70,7 +70,7 @@ Majors changes:
 - Add virtual machine guest support (open-vm-tools/vbox-additions).
 - Upgrade inadyn-mt to 02.18.24.
 - Upgrade bash to 4.1.005.
-- Upgrade istgt to 20100522.
+- Upgrade istgt to 20100525.
 
 Minors changes:
 - Add Czech and Slovak translations.
