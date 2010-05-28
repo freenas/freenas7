@@ -209,7 +209,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
       <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br />
         Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
-      <p>istgt (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br />
+      <p>istgt - iSCSI target for FreeBSD (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br />
         Copyright &copy; 2008-2010 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
 
       <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br />
@@ -257,8 +257,12 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
 
       <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com</a>)<br />
         Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.</p>
-		
-      <p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
+
+      <p>Open Virtual Machine Tools (<a href="http://sourceforge.net/projects/open-vm-tools/" target="_blank">http://sourceforge.net/projects/open-vm-tools/</a>)</p>
+
+      <p>VirtualBox Open Source Edition (OSE) (guest additions) (<a href="http://www.virtualbox.org/" target="_blank">http://www.virtualbox.org/</a>)</p>
+
+      <p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License</a> (<a href="gpl-license.txt">GPLv2</a>, <a href="gpl3-license.txt">GPLv3</a>), <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
 
 					</td>
 				</tr>
