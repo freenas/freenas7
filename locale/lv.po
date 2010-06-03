@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-05-23 04:20+0000\n"
-"PO-Revision-Date: 2010-05-21 13:07+0100\n"
+"PO-Revision-Date: 2010-06-03 20:00+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:01+0000\n"
+"X-Launchpad-Export-Date: 2010-06-03 04:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: LATVIA\n"
 "X-Poedit-Language: Latvian\n"
@@ -27,7 +27,7 @@ msgstr "%d%% no %dMiB"
 
 #, php-format
 msgid "%dB / block"
-msgstr ""
+msgstr "%dB / blokā"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -180,10 +180,10 @@ msgid "AG"
 msgstr "AG"
 
 msgid "AIO read size"
-msgstr ""
+msgstr "AIO lasīšanas lielums"
 
 msgid "AIO write size"
-msgstr ""
+msgstr "AIO rakstīšanas lielums"
 
 msgid "ARP Tables"
 msgstr "ARP Tabulas"
@@ -336,7 +336,7 @@ msgid "Advanced Configuration"
 msgstr "Paplašinātā konfigurācija"
 
 msgid "Advanced Format"
-msgstr ""
+msgstr "Attīstītāks Formāts"
 
 msgid "Advanced Options"
 msgstr "Paplašinātās iespējas"
@@ -481,7 +481,7 @@ msgid "Are you sure you want to shutdown the system?"
 msgstr "Vai esat drošs, ka vēlaties izslēgt sistēmu?"
 
 msgid "Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "Asinhronais I/O (AIO)"
 
 msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
 msgstr "Augstākajā līmenī, mērķis ir tas, kas tiek prezentēts iniciatoram, un ir izveidots no viena vai vairākiem apjomiem."
@@ -931,11 +931,10 @@ msgid "Default user name is 'admin'."
 msgstr "Noklusējuma lietotāja vārds ir 'admin'"
 
 msgid "DefaultTime2Retain"
-msgstr ""
+msgstr "NoklusējumaLaiksIegūšanai"
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Noklusētais"
+msgstr "NoklusējumaLaiksGaidīšanai"
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Definē mapes/URL, kas pieprasa autentifikāciju."
@@ -1162,7 +1161,7 @@ msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Atspējot AFP-pār-Appletalk lai neatļautu DDP pieslēgumus."
 
 msgid "Disable File Manager"
-msgstr ""
+msgstr "Atspējot Datņu Menedžeri"
 
 msgid "Disable console menu"
 msgstr "Atspējot konsoles izvēlni"
@@ -1297,8 +1296,12 @@ msgstr "Vai Tu patiešām vēlies dzēst šo mērķi?"
 msgid "Do you really want to delete this user?"
 msgstr "Vai Tu patiešām vēlies dzēst šo lietotāju?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Vai Tu patiešām vēlies dzēst šo sējumu?\\n!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Vai Tu patiešām vēlies dzēst šo sējumu?\\n"
+"!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vai Tu patiešām vēlies formatēt šo disku? Visi dati tiks pazaudēti!"
@@ -1502,10 +1505,10 @@ msgid "Enable"
 msgstr "Iespējot"
 
 msgid "Enable Advanced Format (4KB sector)"
-msgstr ""
+msgstr "Iespējot Attīstīto Formātu (4KB sektors)"
 
 msgid "Enable Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "Iespējot Asinhrono I/O (AIO)"
 
 msgid "Enable FXP protocol."
 msgstr "Iespējot FXP protokolu"
@@ -2498,7 +2501,7 @@ msgid "Log packets that are handled by this rule to syslog."
 msgstr "Žurnalēt paketes, kuras tiek padotas pa šo notiekumu uz syslog."
 
 msgid "Logical Block Length"
-msgstr ""
+msgstr "Loģiskā Bloka Garums"
 
 #, php-format
 msgid "Logical Unit Controller Authorised network (%s by default)"
@@ -2601,7 +2604,7 @@ msgid "Max. passive port"
 msgstr "Max. pasīvais ports"
 
 msgid "Max. pre-send R2T"
-msgstr ""
+msgstr "Maks. pirms-sūtīšanas R2T"
 
 msgid "Max. sessions"
 msgstr "Max. sesijas"
@@ -2613,7 +2616,7 @@ msgid "MaxBurstLength"
 msgstr "MaxBurstLength"
 
 msgid "MaxOutstandingR2T"
-msgstr ""
+msgstr "Maks.ĀrpusstāvošaisR2T"
 
 msgid "MaxRecvDataSegmentLength"
 msgstr "MaxRecvDataSegmentLength"
@@ -2636,7 +2639,7 @@ msgstr "Maksimālais pieslēgumu skaits uz IP adresi (0 = neirobežots)"
 
 #, php-format
 msgid "Maximum number of pre-send R2T in each connection (%d by default). The actual number is limited to QueueDepth of the target."
-msgstr ""
+msgstr "Maks. skaits pirms-sūtīšanas R2T katrā savienojumā (%d pēc noklusējuma). Aktuālais skaitlis ir limitēts līdz mērķa RindasDziļumam"
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -3555,11 +3558,11 @@ msgstr "SSL/TLS tikai"
 
 #, php-format
 msgid "Samba will read from file asynchronously when size of request is bigger than this value. (%d by default)"
-msgstr ""
+msgstr "Samba no datnes nolasīs asinhroni, kad pieprasījuma lielums ir lielāks nekā šī vērtība. (%d pēc noklusējuma)"
 
 #, php-format
 msgid "Samba will write to file asynchronously when size of request is bigger than this value. (%d by default)"
-msgstr ""
+msgstr "Samba rakstīs datnē asinhroni, kad pieprasījuma lielums ir lielāks nekā šī vērtība. (%d pēc noklusējuma)"
 
 msgid "Save"
 msgstr "Saglabāt"
@@ -4443,7 +4446,7 @@ msgstr "Rindas dziļuma diapazons ir nederīgs."
 
 #, php-format
 msgid "The recommended length for compatibility is %d."
-msgstr ""
+msgstr "Rekomendējamais garums saderībai ir %d."
 
 #, php-format
 msgid "The recommended queue depth is %d."
@@ -4832,7 +4835,7 @@ msgstr "Lai iegūtu detalizētu informāciju, kā rakstīt ugunsmūra noteikumus
 
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
-msgstr ""
+msgstr "Lai palielinātu CIFS veiktspēju, izmēģini sekojošo:<div id='enumeration'><ul><li>Iespējot 'Asinhrono I/O (AIO)' slezi</li><li>Iespējot 'Liels lasīt/rakstīt' slēdzi</li><li>Iespējot '<a href='%s'>Uzlabojumus</a>' slēdzi</li></ul></div>"
 
 msgid "To match any IP address leave this field empty."
 msgstr "Lai saderētu ar jebkuru IP adresi atstāj šo lauku tukšu."
@@ -5239,7 +5242,7 @@ msgstr "Jūs varat norādīt kā SCSI INQUIRY datu. Pēc noklusējuma tukšs. (l
 
 #, php-format
 msgid "You may specify logical block length (%d by default)."
-msgstr ""
+msgstr "Tu vari norādīt loģiskā bloka garumu (%d pēc noklusējuma)"
 
 msgid "You must add disks first."
 msgstr "Tev vispirms jāpievieno disks."
@@ -5247,9 +5250,9 @@ msgstr "Tev vispirms jāpievieno disks."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Tev vajag ievadīt to pašu IP tipu tīklam un vartējai."
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "Tev vajag minimums 256 MB operatīvās atmiņas priekš iSCSI mērķa."
+msgstr "Tev ir minimums %dMB no RAM, lai lietotu iSCSI mērķi."
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Tev vajag pārlādēt sistēmu pirms Tu vari uzlabot programmatūru."
@@ -5420,3 +5423,4 @@ msgstr "upriv"
 
 #~ msgid "Report generator"
 #~ msgstr "Pārskata ģenerators"
+
