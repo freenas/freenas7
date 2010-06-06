@@ -65,12 +65,7 @@ sajax_handle_client_request();
 </script>
 <script type="text/javascript" src="javascript/index.js"></script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr align="center" valign="top">
-    <td><img src="logobig.png" alt="<?=get_product_name();?> logo" /></td>
-  </tr>
-  <tr align="center" valign="top">
-    <td>&nbsp;</td>
-  </tr>
+<td>&nbsp;</td>
 </table>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
