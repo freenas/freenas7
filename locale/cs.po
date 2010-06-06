@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-05-23 04:20+0000\n"
-"PO-Revision-Date: 2010-05-21 13:23+0100\n"
+"PO-Revision-Date: 2010-06-06 08:41+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 10:56+0000\n"
+"X-Launchpad-Export-Date: 2010-06-06 06:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Language: Czech\n"
@@ -933,9 +933,8 @@ msgstr "Výchozí uživatelské jméno je 'admin'."
 msgid "DefaultTime2Retain"
 msgstr ""
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Výchozí"
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Definujte adresáře/URL, která vyžadují autentizaci."
@@ -1297,8 +1296,12 @@ msgstr "Opravdu chcete odstranit tento cíl?"
 msgid "Do you really want to delete this user?"
 msgstr "Opravdu chcete odstranit tohoto uživatele?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Skutečně chcete smazat tento oddíl?\\n !!!! Všechna data budou ztracena a nebude je možné obnovit. !!!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Skutečně chcete smazat tento oddíl?\\n"
+" !!!! Všechna data budou ztracena a nebude je možné obnovit. !!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Opravdu chcete naformátovat tento disk? Všechna data, která jsou na něm uložena, budou nenávratně smazána!"
@@ -5247,9 +5250,9 @@ msgstr "Musíte nejprve přidat disky."
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "Musíte mít nejméně 256MB RAM aby bylo možné použít iSCSI cíl."
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr ""
@@ -5417,3 +5420,4 @@ msgstr "odpojit"
 
 msgid "upriv"
 msgstr "upriv"
+
