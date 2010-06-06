@@ -1,10 +1,10 @@
 PORTNAME=				bash
-PATCHLEVEL=			05
+PATCHLEVEL=			07
 PORTVERSION=		4.1.${PATCHLEVEL:S/^0//g}
-PORTREVISION?=	1
+PORTREVISION?=	2
 CATEGORIES=			shells
 COMMENT=				The GNU Project's Bourne Again SHell
-MAINTAINER=			ma.zoon@quicknet.nl
+MAINTAINER=			michael.zoon@freenas.org
 
 
 MASTER_SITES=				${MASTER_SITE_GNU:S/$/:bash/} \
