@@ -70,6 +70,7 @@ Majors changes:
 - Upgrade inadyn-mt to 02.18.24.
 - Upgrade bash to 4.1.007.
 - Upgrade istgt to 20100525.
+Upgrade msmtp to 1.4.20.
 
 Minors changes:
 - Add Czech and Slovak translations.
