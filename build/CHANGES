@@ -72,6 +72,7 @@ Majors changes:
 - Upgrade istgt to 20100525.
 - Upgrade msmtp to 1.4.20.
 - Upgrade nano to 2.2.4.
+- Upgrade gzip to 1.4.
 
 Minors changes:
 - Add Czech and Slovak translations.
