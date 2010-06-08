@@ -1,8 +1,8 @@
 PORTNAME=			nano
-PORTVERSION=	2.2.3
+PORTVERSION=	2.2.4
 CATEGORIES=		editors
 COMMENT=			Nano's ANOther editor, an enhanced free Pico clone
-MAINTAINER=		ma.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	http://www.nano-editor.org/dist/v2.2/ \
 							${MASTER_SITE_GNU}

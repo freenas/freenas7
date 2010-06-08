@@ -23,6 +23,7 @@ Majors changes:
 - Upgrade bash to 4.1.007.
 - Upgrade istgt to 20100525.
 - Upgrade msmtp to 1.4.20.
+- Upgrade nano to 2.2.4.
 
 Minors changes:
 - Add Czech and Slovak translations.
