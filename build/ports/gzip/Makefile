@@ -1,9 +1,8 @@
 PORTNAME=			gzip
-PORTVERSION=	1.3.12
-PORTREVISION=	1
+PORTVERSION=	1.4
 CATEGORIES=		archivers
 COMMENT=			A compression utility designed to be a replacement for compress
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=				${MASTER_SITE_GNU}
 MASTER_SITE_SUBDIR=	${PORTNAME}
