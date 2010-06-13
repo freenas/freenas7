@@ -67,7 +67,7 @@ Majors changes:
 - Upgrade cdialog to 1.1.20100428.
 - Set kern.hz=100 when running on virtual machine and kern.hz>100.
 - Add virtual machine guest support (open-vm-tools/vbox-additions).
-- Upgrade inadyn-mt to 02.18.24.
+- Upgrade inadyn-mt to 02.18.26.
 - Upgrade bash to 4.1.007.
 - Upgrade istgt to 20100525.
 - Upgrade msmtp to 1.4.20.
