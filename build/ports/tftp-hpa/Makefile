@@ -1,8 +1,8 @@
 PORTNAME=			tftp-hpa
-PORTVERSION=	0.49
+PORTVERSION=	5.0
 CATEGORIES=		ftp
 COMMENT=			An advanced tftp server
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	ftp://ftp.kernel.org/pub/software/network/tftp/
 
