@@ -15,12 +15,3 @@ $FreeBSD: ports/ftp/tftp-hpa/files/patch-tftpd_tftpd.c,v 1.4 2009/02/13 17:28:49
  
      srand(time(NULL) ^ getpid());
  
-@@ -841,7 +844,7 @@
-                        sizeof(bindaddr4.sin_addr));
- #ifdef HAVE_IPV6
-             } else if ((from.sa.sa_family == AF_INET6) &&
--              IN6_IS_ADDR_UNSPECIFIED(SOCKADDR_P(&myaddr))) {
-+              IN6_IS_ADDR_UNSPECIFIED((struct in6_addr*)SOCKADDR_P(&myaddr))) {
-                 memcpy(SOCKADDR_P(&myaddr), &bindaddr6.sin6_addr,
-                        sizeof(bindaddr6.sin6_addr));
- #endif
