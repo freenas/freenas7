@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-05-23 04:20+0000\n"
-"PO-Revision-Date: 2010-05-21 13:36+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"PO-Revision-Date: 2010-06-22 01:49+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-21 23:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-Language: Polish\n"
@@ -856,16 +856,16 @@ msgid "Custom"
 msgstr "Własny"
 
 msgid "Custom script"
-msgstr ""
+msgstr "Skrypt użytkownika"
 
 msgid "Custom script is not found."
-msgstr ""
+msgstr "Nie znaleziono skryptu użytkownika."
 
 msgid "Custom script is required."
-msgstr ""
+msgstr "Wymagany jest skrypt użytkownika."
 
 msgid "Czech"
-msgstr ""
+msgstr "czeski"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -938,9 +938,8 @@ msgstr "Domyślna nazwa użytkownika to 'admin'."
 msgid "DefaultTime2Retain"
 msgstr ""
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Domyślny"
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Zdefiniuj katalogi/URL wymagające autoryzacji."
@@ -1084,7 +1083,7 @@ msgid "Destination network"
 msgstr "Sieć docelowa"
 
 msgid "Destination network bit count"
-msgstr ""
+msgstr "Liczba bitów sieci docelowej"
 
 msgid "Destination network for this static route"
 msgstr "Siec docelowa dla tej trasy statycznej"
@@ -1124,7 +1123,7 @@ msgid "Device polling"
 msgstr "Device polling"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
-msgstr ""
+msgstr "Odpytywanie urządzeń to metoda sprawdzania przez system obecności nowych danych w urządzeniach sieciowych, stosowana zamiast wykorzystywania przerwań. Może ona zmniejszyć obciążenie procesora i w konsekwencji zwiększyć przepustowość, kosztem nieznacznie zwiększonego opóźnienia w wysyłaniu danych (urządzenia są odpytywane 1000 razy na sekundę). Nie wszystkie karty sieciowe obsługują odpytywanie."
 
 #, php-format
 msgid "Device: %s | Total: %s | Used: %s | Free: %s"
@@ -1155,10 +1154,10 @@ msgid "Directory mask"
 msgstr "Maska katalogu"
 
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
-msgstr ""
+msgstr "Katalog zawierający nośniki wymienne. (np. /mnt/iscsi/)"
 
 msgid "Directory to incomplete files. An empty field means disable."
-msgstr ""
+msgstr "Katalog niezakończonych plików. Pozostawienie pustego pola wyłącza tę funkcję."
 
 msgid "Directory to watch for new .torrent files."
 msgstr "Katalog w którym znajdują się pliki .torrent."
@@ -1167,7 +1166,7 @@ msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Wyłącz AFP-over-Appletalk aby zablokować połączenia DDP."
 
 msgid "Disable File Manager"
-msgstr ""
+msgstr "Wyłącz Menadżer plików"
 
 msgid "Disable console menu"
 msgstr "Wyłącz menu konsoli"
@@ -1302,8 +1301,12 @@ msgstr "Czy na pewno chcesz usunąć ten cel?"
 msgid "Do you really want to delete this user?"
 msgstr "Czy na pewno chcesz skasować tego użytkownika?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Czy na pewno chcesz usunąć ten wolumin?\\n!!! Uwaga, wszystkie dane zostaną utracone i nie będzie możliwe ich odzyskanie. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Czy na pewno chcesz usunąć ten wolumin?\\n"
+"!!! Uwaga, wszystkie dane zostaną utracone i nie będzie możliwe ich odzyskanie. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Czy na pewno chcesz sformatować ten dysk? Wszystkie dane zostaną utracone!"
@@ -1507,7 +1510,7 @@ msgid "Enable"
 msgstr "Włącz"
 
 msgid "Enable Advanced Format (4KB sector)"
-msgstr ""
+msgstr "Włącz Format zaawansowany (sektor 4KB)"
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -1552,7 +1555,7 @@ msgid "Enable distributed hash table."
 msgstr "Włącz dystrybuowanie tablicy hash."
 
 msgid "Enable domain wildcarding."
-msgstr ""
+msgstr "Włącz symbole wieloznaczne w domenach."
 
 msgid "Enable extended attribute support"
 msgstr "Włącz obsługę rozszerzonych atrybutów"
@@ -2162,7 +2165,7 @@ msgid "If set afpd uses the ID information stored in AppleDouble V2 header files
 msgstr ""
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br />Service disruption to users accessing this mount will occur during this process."
-msgstr ""
+msgstr "Jeśli wybrany dysk/partycja jest zamontowany/-a, wówczas zostanie przeprowadzone tymczasowe odmontowanie w celu wykonania wybranego polecenia, w przeciwnym razie polecenia będą działały w trybie tylko do odczytu.<br />W tym czasie dostęp użytkowników do tej usługi zostanie przerwany."
 
 msgid "If the server is behind a proxy set this parameters to give local services access to the internet via proxy."
 msgstr "Jeśli serwer znajduje się za serwerem proxy ustaw te parametry aby umożliwić dostęp usługom lokalnym do internetu przez proxy."
@@ -2214,7 +2217,7 @@ msgid "Include basic hardware information."
 msgstr "Dołącz podstawową informację o sprzęcie"
 
 msgid "Incomplete directory"
-msgstr ""
+msgstr "Niezakończony karalog"
 
 msgid "Info"
 msgstr "Informacje"
@@ -2347,7 +2350,7 @@ msgid "LAGG"
 msgstr "LAGG"
 
 msgid "LAN Management"
-msgstr ""
+msgstr "Zarządzanie siecią lokalną"
 
 msgid "LAN net"
 msgstr "Sieć LAN"
@@ -5254,9 +5257,9 @@ msgstr "Najpierw musisz dodać dysk."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Musisz podać ten sam typ IP dla sieci i bramy."
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "Musisz mieć przynajmniej 256MB pamięci aby móc używać cel iSCSI."
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Musisz uruchomić ponownie system zanim zaktualizujesz firmware."
@@ -5427,90 +5430,73 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Data"
-
 #~ msgid "hours"
 #~ msgstr "godzin"
-
 #~ msgid "day"
 #~ msgstr "dzień"
-
 #~ msgid "days"
 #~ msgstr "dni"
-
 #~ msgid "months"
 #~ msgstr "miesięcy"
-
 #~ msgid "week days"
 #~ msgstr "dni w tygodniu"
-
 #~ msgid "Create"
 #~ msgstr "Utwórz"
-
 #~ msgid "LAN"
 #~ msgstr "LAN"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "Size in MB."
 #~ msgstr "Rozmiar w MB."
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Minimalne zużycie energi w trybie Standby"
-
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Średnie zużycie energi w trybie Standby"
-
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Minimalne zużycie energi bez trybu Standby"
-
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Średnie zużycie energi bez trybu Standby"
-
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maksymalna wydajność, maksymalne zużycie energii"
-
-#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
-#~ msgstr "Dysk jest aktualnie zamontowany! Najpierw <a href=%s>Odmontuj</a> dysk zanim przejdziesz dalej."
-
-#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-#~ msgstr "Poziom RAID jesy aktualnie zamontowany! Usuń <a href=%s>punkt zamontowania</a> zanim przejdziesz dalej."
-
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgstr ""
+#~ "Dysk jest aktualnie zamontowany! Najpierw <a href=%s>Odmontuj</a> dysk "
+#~ "zanim przejdziesz dalej."
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "Poziom RAID jesy aktualnie zamontowany! Usuń <a href=%s>punkt "
+#~ "zamontowania</a> zanim przejdziesz dalej."
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Rozmiar buforu wysyłania (domyślnie 16384)"
-
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Rozmiar buforu pobierania (domyślnie 16384)"
-
 #~ msgid "A valid network must be specified."
 #~ msgstr "Należy podać prawidłową sieć."
-
 #~ msgid "Synchronization Time"
 #~ msgstr "Czas synchronizacji"
-
 #~ msgid "Working Directory"
 #~ msgstr "Katalog roboczy"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Utwórz katalog roboczy jeśli  nie istnieje"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Czas wyłączenia"
-
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Ostatnie %d %s wpisów logu."
-
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Konfiguracja nie może być przywrócona (błąd wysyłania pliku)."
-
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr "Ten szyfrowany dysk jest podłączony, odmontuj go zanim spróbujesz odłączyć."
-
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Ten szyfrowany dysk jest podłączony, odmontuj go zanim spróbujesz "
+#~ "odłączyć."
 #~ msgid "Encrypted disk name"
 #~ msgstr "Szyfrowana nazwa dysku"
-
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Sieć, która posiada autoryzacjędo dostępu d tego celu iSCSI."
-
 #~ msgid "Report generator"
 #~ msgstr "Generator raportów"
+
