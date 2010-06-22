@@ -3,6 +3,7 @@
 # Created: 2/12/2006 by Scott Zahn
 # Modified by Volker Theile (votdev@gmx.de)
 # Modified by Daisuke Aoyama (aoyama@peach.ne.jp)
+# Modified by Michael Zoon (michael.zoon@freenas.org)
 
 # Debug script
 #set -x
@@ -202,7 +203,10 @@ build_world() {
 	done
 
 	# Cleanup
-	rm -f $FREENAS_WORKINGDIR/freenas.files
+	chflags -R noschg $FREENAS_TMPDIR
+	chflags -R noschg $FREENAS_ROOTFS
+	[ -d $FREENAS_TMPDIR ] && rm -f $FREENAS_WORKINGDIR/freenas.files
+	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
 	return 0
 }

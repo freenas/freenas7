@@ -48,10 +48,10 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${BLDSRC}/hgfsmounter/mount.vmhgfs ${FREENAS_ROOTFS}/${PREFIX}/sbin/mount_vmhgfs
 
 	@${MKDIR} ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
-	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/freebsd/poweroff-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
-	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/freebsd/poweron-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
-	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/freebsd/resume-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
-	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/freebsd/suspend-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
+	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/poweroff-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
+	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/poweron-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
+	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/resume-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
+	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/suspend-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
 	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/common/vm-support ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
 
 .include <bsd.port.mk>
