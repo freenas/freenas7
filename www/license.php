@@ -92,6 +92,8 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and adapt iSCSI Target WebGUI to istgt</font></em></div><br />
              <div>Michael Zoon (<a href="mailto:michael.zoon@freenas.org">michael.zoon@freenas.org</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and Dutch translator of the WebGUI</font></em></div><br />
+              <div>Christian Degen (<a href="mailto:bubulein@freenas.org">bubulein@freenas.org</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">User guide and Live support on irc #freenas|IRC Freenode <a href="http://webchat.freenode.net/?channels=#freenas">http://webchat.freenode.net</a></font></em></div><br />
              <div>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em></div><br />
              <div>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br />
