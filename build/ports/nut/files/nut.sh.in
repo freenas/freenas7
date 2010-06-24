@@ -91,6 +91,7 @@ EOF
 	/usr/local/bin/xml sel -t \
 		-o "[${nut_upsmon_user}]" -n \
 		-v "concat('        password = ',//system/password)" -n \
+		-o "        actions = set" -n \
 		-o "        instcmds = all" -n \
 		-o "        upsmon master" \
 		${configxml_file} | /usr/local/bin/xml unesc > ${nut_upsd_users}
