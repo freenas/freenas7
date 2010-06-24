@@ -1,6 +1,6 @@
---- ./source3/configure.in.orig	2010-04-01 22:26:22.000000000 +0900
-+++ ./source3/configure.in	2010-05-04 18:43:57.000000000 +0900
-@@ -745,10 +745,10 @@
+--- ./source3/configure.in.orig	2010-06-18 14:01:04.000000000 +0200
++++ ./source3/configure.in	2010-06-24 16:46:34.000000000 +0200
+@@ -756,10 +756,10 @@
  
          if test "x$CUPS_CONFIG" != x; then
  
@@ -14,7 +14,7 @@
  		LDFLAGS="$LDFLAGS `$CUPS_CONFIG --ldflags`"
  		PRINT_LIBS="$PRINT_LIBS -lcups"
  		AC_CHECK_HEADERS(cups/cups.h cups/language.h)
-@@ -759,8 +759,8 @@
+@@ -770,8 +770,8 @@
  			AC_CHECK_LIB_EXT(cups, PRINT_LIBS, httpConnectEncrypt)
  		else
  			AC_MSG_WARN([cups-config around but cups-devel not installed])
@@ -25,10 +25,10 @@
  			PRINT_LIBS=$ac_save_PRINT_LIBS
  		fi
  
-@@ -1693,18 +1693,18 @@
- 
+@@ -1706,18 +1706,18 @@
  AC_MSG_RESULT($BLDSHARED)
  
+ saved_before_as_needed_ldflags="$LDFLAGS"
 -for flags in "-Wl,--as-needed" "-Wl,-z,ignore" "-z ignore" ; do
 -	saved_ldflags="$LDFLAGS"
 -	AC_MSG_CHECKING([if $flags works])
@@ -54,24 +54,36 @@
 +#	test x"$ld_as_needed_flag_found" = xyes && break
 +#done
  
- # for historical reasons almost all linkers don't complain about unresolved
- # symbols in shared libs. Except for the internal samba modules we want to get
-@@ -4181,10 +4181,10 @@
+ # check if we have to disable LD_AS_NEEDED_FLAG:
+ # On some systems for a veriety of reasons linking with
+@@ -1725,16 +1725,16 @@
+ # we have to retest, if these combination is detected before.
+ # Bugzilla #7209
  
-   ################################################################
-   # first test for Active Directory support being enabled
--  #if test x"$with_ads_support" = x"no"; then
--  #		AC_MSG_ERROR(Active Directory support is required to enable DNS Update support)
--  #		with_dnsupdate_support=no
--  #fi	  	
-+  if test x"$with_ads_support" = x"no"; then
-+  		AC_MSG_ERROR(Active Directory support is required to enable DNS Update support)
-+  		with_dnsupdate_support=no
-+  fi
-   ##################################################################
-   # then test for uuid.h (necessary to generate unique DNS keynames
-   # (uuid.h is required for this test)
-@@ -4434,10 +4434,46 @@
+-if test x$ac_cv_lib_readline_rl_callback_handler_install = xyes ; then
+-	if test x$ld_as_needed_flag_found = xyes ; then
+-		AC_MSG_CHECKING([if $LD_AS_NEEDED_FLAG works with readline])
+-		# try if check no fails
+-		save_LIBS=$LIBS
+-		LIBS="$LIBS $TERMLIBS"
+-		AC_TRY_LINK([], [rl_callback_handler_install();], [AC_MSG_RESULT([yes])],[ AC_MSG_RESULT([no]); LDFLAGS="$saved_before_as_needed_ldflags"])
+-		LIBS="$save_LIBS"
+-        fi
+-fi
++#if test x$ac_cv_lib_readline_rl_callback_handler_install = xyes ; then
++#	if test x$ld_as_needed_flag_found = xyes ; then
++#		AC_MSG_CHECKING([if $LD_AS_NEEDED_FLAG works with readline])
++#		# try if check no fails
++#		save_LIBS=$LIBS
++#		LIBS="$LIBS $TERMLIBS"
++#		AC_TRY_LINK([], [rl_callback_handler_install();], [AC_MSG_RESULT([yes])],[ AC_MSG_RESULT([no]); LDFLAGS="$saved_before_as_needed_ldflags"])
++#		LIBS="$save_LIBS"
++#        fi
++#fi
+ 
+ 
+ 
+@@ -4469,10 +4469,46 @@
      fi
  
  	if test x"$use_pam" = x"yes"; then
@@ -99,7 +111,7 @@
 +					#endif
 +					#if HAVE_PAM_PAM_APPL_H
 +					#include <pam/pam_appl.h>
-+					#endif
++					#endif+
 +					#if HAVE_SECURITY_PAM_MODULES_H
 +					#include <security/pam_modules.h>
 +					#endif
@@ -120,7 +132,7 @@
  
  		if test x"$create_pam_modules" = x"yes"; then
  			AC_DEFINE(WITH_PAM_MODULES,1,[Whether to include PAM MODULES support])
-@@ -6380,13 +6416,21 @@
+@@ -6415,13 +6451,21 @@
  # Start
  AC_CHECK_FUNC(getmntent)
  
@@ -143,7 +155,7 @@
  		int main(void)
  		{
  			struct statfs fsd;
-@@ -6716,6 +6760,16 @@
+@@ -6751,6 +6795,16 @@
  	LIBS="$LIBS -ldmalloc"
  fi
  
