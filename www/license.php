@@ -124,6 +124,8 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Danish translator of the WebGUI</font></em></div><br />
             <div>Kris Verhoeven (<a href="mailto:kris@esiv.be">kris@esiv.be</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Dutch translator of the WebGUI</font></em></div><br />
+            <div>Christophe Lherieau (<a href="skimpax+freenas@gmail.com">skimpax+freenas@gmail.com</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the WebGUI</font></em></div><br />
             <div>Regis Caubet (<a href="mailto:caubet.r@gmail.com">caubet.r@gmail.com</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the WebGUI and user manual contributor</font></em></div><br />
             <div>Dominik Plaszewski (<a href="mailto:domme555@gmx.net">domme555@gmx.net</a>)<br />
@@ -196,13 +198,13 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
       <p> Netatalk (<a href="http://netatalk.sourceforge.net" target="_blank">http://netatalk.sourceforge.net</a>)<br />
         Copyright &copy; 1990,1996 Regents of The University of Michigan</p>
 
-       <p> Apple Bonjour (<a href="http://developer.apple.com/networking/bonjour" target="_blank">http://developer.apple.com/networking/bonjour</a>)<br />
+      <p> Apple Bonjour (<a href="http://developer.apple.com/networking/bonjour" target="_blank">http://developer.apple.com/networking/bonjour</a>)<br />
         Apple Public Source License.</p>
 
       <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd" target="_blank">http://software.wwwi.com/syslogd</a>)<br />
         Copyright &copy; 2001 Jeff Wheelhouse (jdw@wheelhouse.org)</p>
 
-	<p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br />
+      <p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br />
         Copyright &copy; 2004-2005 Bruce Cran (bruce@cran.org.uk). All rights reserved.</p>
 
       <p>smartmontools (<a href="http://sourceforge.net/projects/smartmontools" target="_blank">http://sourceforge.net/projects/smartmontools</a>)<br />
