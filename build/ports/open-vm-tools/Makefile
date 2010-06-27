@@ -1,6 +1,6 @@
 PORTNAME=		freenas-open-vm-tools
 PORTVERSION=		1.0
-#PORTREVISION=		0
+PORTREVISION=		1
 CATEGORIES=		emulators
 MAINTAINER=		aoyama@peach.ne.jp
 COMMENT=		Open VMware tools for FreeBSD VMware guests
@@ -53,6 +53,9 @@ do-install:
 	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/resume-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
 	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/suspend-vm-default ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
 	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/common/vm-support ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
+	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/common/statechange.subr ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools
+	@${MKDIR} ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools/scripts/vmware
+	@${INSTALL_SCRIPT} -v ${BLDSRC}/scripts/freebsd/network ${FREENAS_ROOTFS}/${PREFIX}/share/vmware-tools/scripts/vmware
 
 .include <bsd.port.mk>
 .include <../freenas.mk>

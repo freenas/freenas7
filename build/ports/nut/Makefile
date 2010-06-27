@@ -8,8 +8,6 @@ MASTER_SITES=	http://www.networkupstools.org/source/${PORTVERSION:R}/
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${DISTNAME}${EXTRACT_SUFX}.sig
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-LIB_DEPENDS+=		usb-0.1.8:${PORTSDIR}/devel/libusb
-
 USE_AUTOTOOLS=	autoconf:262
 GNU_CONFIGURE=	yes
 USE_GMAKE=			yes
@@ -45,6 +43,13 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--with-user=${NUT_USER} \
 								--with-group=${NUT_GROUP} \
 								--with-wrap
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} < 800069
+LIB_DEPENDS+=	usb-0.1.8:${PORTSDIR}/devel/libusb
+.else
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-m4_nut_check_libusb.m4
+.endif
 
 do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DATADIR}
@@ -111,4 +116,4 @@ do-install:
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut_upslog.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut_upslog
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut_upsmon.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut_upsmon
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

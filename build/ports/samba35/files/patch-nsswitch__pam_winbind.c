@@ -1,14 +1,6 @@
---- ./nsswitch/pam_winbind.c.orig	2010-04-01 22:26:22.000000000 +0900
-+++ ./nsswitch/pam_winbind.c	2010-05-04 15:49:07.000000000 +0900
-@@ -163,7 +163,6 @@
- }
- #endif
- 
--
- /*
-  * Work around the pam API that has functions with void ** as parameters
-  * These lead to strict aliasing warnings with gcc.
-@@ -173,14 +172,20 @@
+--- ./nsswitch/pam_winbind.c.orig	2010-05-17 20:51:23.000000000 +0900
++++ ./nsswitch/pam_winbind.c	2010-06-13 11:28:03.605626000 +0900
+@@ -173,14 +173,20 @@
  			 const void *_item)
  {
  	const void **item = (const void **)_item;
@@ -31,16 +23,16 @@
  }
  
  /* some syslogging */
-@@ -311,7 +316,7 @@
+@@ -311,7 +317,7 @@
  	if (item_type != 0) {
  		pam_get_item(ctx->pamh, item_type, &data);
  	} else {
 -		pam_get_data(ctx->pamh, key, &data);
-+		_pam_get_data(ctx->pamh, key, data);
++		_pam_get_data(ctx->pamh, key, &data);
  	}
  	if (data != NULL) {
  		const char *type = (item_type != 0) ? "ITEM" : "DATA";
-@@ -1434,12 +1439,12 @@
+@@ -1434,12 +1440,12 @@
  static bool _pam_check_remark_auth_err(struct pwb_context *ctx,
  				       const struct wbcAuthErrorInfo *e,
  				       const char *nt_status_string,
@@ -55,7 +47,7 @@
  		return false;
  	}
  
-@@ -1453,18 +1458,18 @@
+@@ -1453,18 +1459,18 @@
  		error_string = _get_ntstatus_error_string(nt_status_string);
  		if (error_string) {
  			_make_remark(ctx, PAM_ERROR_MSG, error_string);
@@ -77,13 +69,14 @@
  
  		return true;
  	}
-@@ -2848,8 +2853,7 @@
+@@ -2848,8 +2854,8 @@
  		ret = PAM_USER_UNKNOWN;
  		goto out;
  	case 0:
 -		pam_get_data(pamh, PAM_WINBIND_NEW_AUTHTOK_REQD,
 -			     (const void **)&tmp);
-+		_pam_get_data(pamh, PAM_WINBIND_NEW_AUTHTOK_REQD, tmp);
++		_pam_get_data(pamh, PAM_WINBIND_NEW_AUTHTOK_REQD,
++			      (const void **)&tmp);
  		if (tmp != NULL) {
  			ret = atoi((const char *)tmp);
  			switch (ret) {
