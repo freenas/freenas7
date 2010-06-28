@@ -21,6 +21,9 @@ FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
 FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep "Revision:" | awk '{print $2}')
+if [ -f "${FREENAS_SVNDIR}/local.revision" ]; then
+	FREENAS_REVISION=$(printf $(cat ${FREENAS_SVNDIR}/local.revision) ${FREENAS_REVISION})
+fi
 FREENAS_ARCH=$(uname -p)
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
@@ -460,6 +463,7 @@ create_image() {
 	mkdir -p $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
+	cp $FREENAS_BOOTDIR/kernel/isboot.ko $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/boot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader.conf $FREENAS_TMPDIR/boot
@@ -537,6 +541,7 @@ create_iso () {
 	mkdir -p $FREENAS_TMPDIR/boot
 	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
+	cp $FREENAS_BOOTDIR/kernel/isboot.ko $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/cdboot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader.conf $FREENAS_TMPDIR/boot
@@ -615,6 +620,7 @@ create_full() {
 	#mkdir $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
+	cp $FREENAS_BOOTDIR/kernel/isboot.ko $FREENAS_TMPDIR/boot/kernel
 	gunzip $FREENAS_TMPDIR/boot/kernel/kernel.gz
 	cp $FREENAS_BOOTDIR/boot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot

@@ -124,6 +124,9 @@ fi
 if [ 0 != $opt_a ]; then
   echo 'hint.acpi.0.disabled="1"' >> $MINIBSD_DIR/device.hints
 fi
+# iSCSI driver
+echo 'isboot_load="YES"' >> $MINIBSD_DIR/loader.conf
+cp -v ${FREENAS_WORLD}/boot/kernel/isboot.ko $MINIBSD_DIR/kernel
 
 # Copy kernel.
 if [ -e "${FREENAS_WORKINGDIR}/kernel.gz" ] ; then

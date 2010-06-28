@@ -44,6 +44,7 @@ iscsi/initiator/iscsi_initiator.ko
 syscons/green/green_saver.ko
 ata/atapicam/atapicam.ko
 aio/aio.ko
+iscsi/isboot/isboot.ko
 
 # Wireless
 wpifw/wpifw.ko

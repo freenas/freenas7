@@ -42,6 +42,19 @@
   $ipaddr = get_ipaddr($if);
   $ipv6addr = get_ipv6addr($if);
 
+	$if_isboot = @exec("/sbin/sysctl -q -n net.isboot.nic");
+	$nic_prefix = @exec("/sbin/sysctl -q -n hw.ibft.nic_prefix");
+	$ip_conf = $config['interfaces']['lan']['ipaddr'];
+	// Update iSCSI booted NIC
+	if (strcmp($if, $if_isboot) == 0) {
+		if (strcmp($ipaddr, $ip_conf) != 0) {
+			$config['interfaces']['lan']['if'] = $if_isboot;
+			$config['interfaces']['lan']['ipaddr'] = $ipaddr;
+			$config['interfaces']['lan']['subnet'] = $nic_prefix;
+			write_config();
+		}
+	}
+
 	/* Get product information */
 	$productname = get_product_name();
 	$producturl = get_product_url();

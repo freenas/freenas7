@@ -219,7 +219,7 @@ function authentication_change() {
 			showElementById('directorymask_tr','show');
 			showElementById('winssrv_tr','hide');
 			break;
-		case "domain":
+		case "ads":
 			showElementById('createmask_tr','hide');
 			showElementById('directorymask_tr','hide');
 			showElementById('winssrv_tr','show');
@@ -263,7 +263,7 @@ function aio_change() {
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Common Internet File System"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
-					<?php html_combobox("security", gettext("Authentication"), $pconfig['security'], array("share" => gettext("Anonymous"), "user" => gettext("Local User"), "domain" => gettext("Domain")), "", true, false, "authentication_change()");?>
+					<?php html_combobox("security", gettext("Authentication"), $pconfig['security'], array("share" => gettext("Anonymous"), "user" => gettext("Local User"), "ads" => gettext("Active Directory")), "", true, false, "authentication_change()");?>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBIOS name");?></td>
             <td width="78%" class="vtable">

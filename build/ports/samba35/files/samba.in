@@ -1,7 +1,8 @@
 #!/bin/sh
+# Copyright (C) 2005-2010 FreeNAS Project. All rights reserved.
 # Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
-# Modified for AIO/Samba3.5 by Daisuke Aoyama (aoyama@peach.ne.jp)
+# Modified for AIO/Samba3.5/AD by Daisuke Aoyama (aoyama@peach.ne.jp)
 
 # PROVIDE: nmbd smbd winbindd
 # REQUIRE: NETWORKING SERVERS DAEMON resolv
@@ -41,10 +42,10 @@ samba_piddir="${samba_piddir=/var/run}"
 samba_recycle_repository="${samba_recycle_repository:-".recycle/%U"}"
 samba_recycle_directory_mode="${samba_recycle_directory_mode:-"0777"}"
 samba_recycle_subdir_mode="${samba_recycle_subdir_mode:-"0700"}"
-samba_idmap_range="${samba_idmap_range:-"10000-999999"}"
-samba_idmap_uid="${samba_idmap_uid:-"10000-999999"}"
-samba_idmap_gid="${samba_idmap_gid:-"10000-999999"}"
-samba_socket_options="${samba_socket_options:-"IPTOS_LOWDELAY TCP_NODELAY"}"
+samba_idmap_range="${samba_idmap_range:-"10000-39999"}"
+samba_idmap_uid="${samba_idmap_uid:-"10000-39999"}"
+samba_idmap_gid="${samba_idmap_gid:-"10000-39999"}"
+samba_socket_options="${samba_socket_options:-"TCP_NODELAY"}"
 samba_create_mask="${samba_create_mask:-"0666"}"
 samba_directory_mask="${samba_directory_mask:-"0777"}"
 
@@ -101,6 +102,7 @@ samba_mkconf_cmd()
 	# Create smb.conf file
 	/usr/local/bin/xml sel -t \
 		-o "[global]" -n \
+		-o "#max protocol = smb2" -n \
 		-o "encrypt passwords = yes" -n \
 		-v "concat('netbios name = ',//samba/netbiosname)" -n \
 		-v "concat('workgroup = ',//samba/workgroup)" -n \
@@ -168,7 +170,7 @@ samba_mkconf_cmd()
 		-o "smb passwd file = /var/etc/private/smbpasswd" -n \
 		-o "private dir = /var/etc/private" -n \
 		-i "//samba/security[. = 'share']" \
-			-o "passdb backend = smbpasswd" -n \
+			-o "passdb backend = tdbsam" -n \
 			-i "string-length(//samba/createmask) > 0" -v "concat('create mask = ',//samba/createmask)" -n -b \
 			-i "string-length(//samba/createmask) = 0" -o "create mask = ${samba_create_mask}" -n -b \
 			-i "string-length(//samba/directorymask) > 0" -v "concat('directory mask = ',//samba/directorymask)" -n -b \
@@ -176,25 +178,25 @@ samba_mkconf_cmd()
 			-o "force user = ftp" -n \
 			-o "force group = ftp" -n \
 		-b \
-		-i "//samba/security[. = 'domain']" \
-			-o "passdb backend = smbpasswd" -n \
+		-i "//samba/security[. = 'ads']" \
+			-o "passdb backend = tdbsam" -n \
 			-o "allow trusted domains = no" -n \
-			-o "dns proxy = no" -n \
-			-o "ldap ssl = no" -n \
-			-v "concat('idmap domains = ',//ad/domainname_netbios)" -n \
-			-v "concat('idmap config ',//ad/domainname_netbios,':backend = rid')" -n \
-			-v "concat('idmap config ',//ad/domainname_netbios,':range = ${samba_idmap_range}')" -n \
+			-o "idmap alloc backend = tdb" -n \
+			-o "idmap backend = tdb" -n \
 			-o "idmap uid = ${samba_idmap_uid}" -n \
 			-o "idmap gid = ${samba_idmap_gid}" -n \
-			-o "winbind enum groups = yes" -n \
+			-v "concat('idmap config ',//ad/domainname_netbios,' : backend = rid')" -n \
+			-v "concat('idmap config ',//ad/domainname_netbios,' : range = ${samba_idmap_range}')" -n \
 			-o "winbind enum users = yes" -n \
+			-o "winbind enum groups = yes" -n \
 			-o "winbind use default domain = yes" -n \
+			-o "winbind normalize names = yes" -n \
 			-o "template homedir = /mnt" -n \
 			-o "template shell = /bin/sh" -n \
 		-b \
 		-i "//samba/security[. = 'user']" \
 			-i "count(//ldap/enable) = 0" \
-				-o "passdb backend = smbpasswd" -n \
+				-o "passdb backend = tdbsam" -n \
 			-b \
 			-i "count(//ldap/enable) > 0" \
 				-v "concat('passdb backend = ldapsam:&quot;ldap://',//ldap/hostname,'&quot;')" -n \
@@ -353,7 +355,7 @@ samba_cmd() {
 		fi
  		if [ 0 -eq ${samba_ldap} ]; then
 			local _password=`configxml_get "//ldap/rootbindpw"`
-			/usr/local/bin/smbpasswd -w ${_password}
+			#/usr/local/bin/smbpasswd -w ${_password}
 		fi
 	fi
 
@@ -370,7 +372,7 @@ samba_cmd() {
 
 	# Start additional processes when starting
 	if [ "${rc_arg}" = "start" ]; then
-		/etc/rc.d/smbpasswd
+		/etc/rc.d/passdb
 	fi
 }
 

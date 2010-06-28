@@ -103,6 +103,30 @@ if ($_POST) {
 		}
 	}
 
+	// Check vdevices
+	if (is_array($_POST['vdevice'])) {
+		$n = 0;
+		foreach ($_POST['vdevice'] as $vdev) {
+			$index = array_search_ex($vdev, $a_vdevice, "name");
+			if ($index !== false) {
+				$vdevice = $a_vdevice[$index];
+				if ($vdevice['type'] == 'spare'
+				    || $vdevice['type'] == 'cache'
+				    || $vdevice['type'] == 'log') {
+					continue;
+				}
+				if ($vdevice['type'] == 'disk') {
+					// sync disk
+					continue;
+				}
+			}
+			$n++;
+		}
+		if ($n == 0) {
+			$input_errors[] = sprintf(gettext("The attribute '%s' is required."), gettext("Virtual devices"));
+		}
+	}
+
 	if (!$input_errors) {
 		$pooldata = array();
 		$pooldata['uuid'] = $_POST['uuid'];
