@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-06-22 01:49+0100\n"
 "Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -636,6 +637,14 @@ msgstr "Temperatura CPU"
 msgid "CPU usage"
 msgstr "Użycie procesora"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Załączone"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Nowe urządzenie"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Nie można sformatować źródłowego dysku systemu operacyjnego!"
 
@@ -1208,6 +1217,9 @@ msgstr "Dyski"
 msgid "Disks (ATA)"
 msgstr "Dyski (ATA)"
 
+msgid "Display"
+msgstr ""
+
 msgid "Distributed hash table"
 msgstr "Dystrybuowana tablica hash"
 
@@ -1301,12 +1313,8 @@ msgstr "Czy na pewno chcesz usunąć ten cel?"
 msgid "Do you really want to delete this user?"
 msgstr "Czy na pewno chcesz skasować tego użytkownika?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Czy na pewno chcesz usunąć ten wolumin?\\n"
-"!!! Uwaga, wszystkie dane zostaną utracone i nie będzie możliwe ich odzyskanie. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Czy na pewno chcesz usunąć ten wolumin?\\n!!! Uwaga, wszystkie dane zostaną utracone i nie będzie możliwe ich odzyskanie. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Czy na pewno chcesz sformatować ten dysk? Wszystkie dane zostaną utracone!"
@@ -2143,6 +2151,10 @@ msgstr "Adres IPv6"
 msgid "IPv6 addresses"
 msgstr "Adresy IPv6"
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "Wsparcie atrybutów rozszerzonych"
+
 msgid "ISO file to be mounted."
 msgstr "Plik ISO do zamotowania."
 
@@ -2226,6 +2238,10 @@ msgid "Informal"
 msgstr "Nieformalny"
 
 msgid "Information"
+msgstr "Informacja"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Informacja"
 
 msgid "Inherit permissions"
@@ -2498,6 +2514,9 @@ msgstr "Miejsce, w którym będą przechowywane pliki robocze, np. %s/backup/.un
 
 msgid "Log"
 msgstr "Dziennik"
+
+msgid "Log (mirror)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Poziom logowania"
@@ -3867,6 +3886,9 @@ msgstr ""
 msgid "Standby time"
 msgstr "Czas stanu gotowości"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr ""
@@ -3889,6 +3911,10 @@ msgstr "Raport stanu został pomyślnie wysłany do: %s."
 
 msgid "Status report successfully sent."
 msgstr "Raport statusowy wysłany pomyślnie."
+
+#, fuzzy
+msgid "Stop"
+msgstr "Zatrzymany"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Zatrzymaj po wysłaniu (i otrzymaniu) N pakietów."
@@ -4070,6 +4096,10 @@ msgstr "Temperatura"
 
 msgid "Temperature monitoring"
 msgstr "Monitorowanie temperatury"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Katalog tymczasowy"
 
 msgid "Temporary directory"
 msgstr "Katalog tymczasowy"
@@ -5430,73 +5460,90 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Data"
+
 #~ msgid "hours"
 #~ msgstr "godzin"
+
 #~ msgid "day"
 #~ msgstr "dzień"
+
 #~ msgid "days"
 #~ msgstr "dni"
+
 #~ msgid "months"
 #~ msgstr "miesięcy"
+
 #~ msgid "week days"
 #~ msgstr "dni w tygodniu"
+
 #~ msgid "Create"
 #~ msgstr "Utwórz"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Size in MB."
 #~ msgstr "Rozmiar w MB."
+
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Minimalne zużycie energi w trybie Standby"
+
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Średnie zużycie energi w trybie Standby"
+
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Minimalne zużycie energi bez trybu Standby"
+
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Średnie zużycie energi bez trybu Standby"
+
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maksymalna wydajność, maksymalne zużycie energii"
-#~ msgid ""
-#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
-#~ "before proceeding."
-#~ msgstr ""
-#~ "Dysk jest aktualnie zamontowany! Najpierw <a href=%s>Odmontuj</a> dysk "
-#~ "zanim przejdziesz dalej."
-#~ msgid ""
-#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
-#~ "a> first before proceeding."
-#~ msgstr ""
-#~ "Poziom RAID jesy aktualnie zamontowany! Usuń <a href=%s>punkt "
-#~ "zamontowania</a> zanim przejdziesz dalej."
+
+#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgstr "Dysk jest aktualnie zamontowany! Najpierw <a href=%s>Odmontuj</a> dysk zanim przejdziesz dalej."
+
+#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+#~ msgstr "Poziom RAID jesy aktualnie zamontowany! Usuń <a href=%s>punkt zamontowania</a> zanim przejdziesz dalej."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Rozmiar buforu wysyłania (domyślnie 16384)"
+
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Rozmiar buforu pobierania (domyślnie 16384)"
+
 #~ msgid "A valid network must be specified."
 #~ msgstr "Należy podać prawidłową sieć."
+
 #~ msgid "Synchronization Time"
 #~ msgstr "Czas synchronizacji"
+
 #~ msgid "Working Directory"
 #~ msgstr "Katalog roboczy"
+
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Utwórz katalog roboczy jeśli  nie istnieje"
+
 #~ msgid "Shutdown Time"
 #~ msgstr "Czas wyłączenia"
+
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Ostatnie %d %s wpisów logu."
+
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Konfiguracja nie może być przywrócona (błąd wysyłania pliku)."
-#~ msgid ""
-#~ "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr ""
-#~ "Ten szyfrowany dysk jest podłączony, odmontuj go zanim spróbujesz "
-#~ "odłączyć."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "Ten szyfrowany dysk jest podłączony, odmontuj go zanim spróbujesz odłączyć."
+
 #~ msgid "Encrypted disk name"
 #~ msgstr "Szyfrowana nazwa dysku"
+
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Sieć, która posiada autoryzacjędo dostępu d tego celu iSCSI."
+
 #~ msgid "Report generator"
 #~ msgstr "Generator raportów"
-
