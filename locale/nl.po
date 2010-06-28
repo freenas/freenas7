@@ -3,14 +3,13 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-25 04:17+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"PO-Revision-Date: 2010-06-29 00:54+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 10:40+0000\n"
+"X-Launchpad-Export-Date: 2010-06-28 22:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: Netherlands\n"
 "X-Poedit-Language: Dutch\n"
@@ -632,13 +631,11 @@ msgstr "CPU temperatuur"
 msgid "CPU usage"
 msgstr "CPU belasting"
 
-#, fuzzy
 msgid "Cache"
-msgstr "Verbonden"
+msgstr "Cache"
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "Nieuwe Schijf"
+msgstr "Cache Apparaat"
 
 msgid "Can't format the OS origin disk!"
 msgstr "Kan de schijf waarop van oorsprong het OS staat niet formatteren!"
@@ -1213,7 +1210,7 @@ msgid "Disks (ATA)"
 msgstr "Schijven (ATA)"
 
 msgid "Display"
-msgstr ""
+msgstr "Weergave"
 
 msgid "Distributed hash table"
 msgstr "Distributed hash table"
@@ -1308,8 +1305,12 @@ msgstr "Weet  u zeker dat u dit doel wilt verwijderen?"
 msgid "Do you really want to delete this user?"
 msgstr "Weet u zeker dat u deze gebruiker wilt verwijderen?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Weet u zeker dat u dit volume wilt verwijderen?\\n!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Weet u zeker dat u dit volume wilt verwijderen?\\n"
+"!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Weet u zeker dat u deze schijf wilt formatteren? Alle gegevens zullen verloren gaan!"
@@ -2146,9 +2147,8 @@ msgstr "IPv6 adres"
 msgid "IPv6 addresses"
 msgstr "IPv6 adressen"
 
-#, fuzzy
 msgid "IRC Live support"
-msgstr "EA support"
+msgstr "IRC Live ondersteuning"
 
 msgid "ISO file to be mounted."
 msgstr "ISO bestand om aangekoppeld te worden."
@@ -2235,9 +2235,8 @@ msgstr "Informeel"
 msgid "Information"
 msgstr "Systeem-Info"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Systeem-Info"
+msgstr "Informatie & Handleiding"
 
 msgid "Inherit permissions"
 msgstr "Overerf permissies"
@@ -2511,7 +2510,7 @@ msgid "Log"
 msgstr "Logboek"
 
 msgid "Log (mirror)"
-msgstr ""
+msgstr "Log (mirror)"
 
 msgid "Log Level"
 msgstr "Log Niveau"
@@ -3880,7 +3879,7 @@ msgid "Standby time"
 msgstr "Standby tijd"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #, php-format
 msgid "Start scrub on '%s'."
@@ -3905,9 +3904,8 @@ msgstr "Het statusrapport is met succes verzonden naar: %s."
 msgid "Status report successfully sent."
 msgstr "Het status rapport is met succes verzonden."
 
-#, fuzzy
 msgid "Stop"
-msgstr "Gestopt"
+msgstr "Stop"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Stop na het verzenden (en ontvangen) van N pakketten."
@@ -4090,9 +4088,8 @@ msgstr "Temperatuur"
 msgid "Temperature monitoring"
 msgstr "Temperatuur controle"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "Tijdelijke map"
+msgstr "Tijdelijk Apparaat"
 
 msgid "Temporary directory"
 msgstr "Tijdelijke map"
@@ -5453,30 +5450,22 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Datum"
-
 #~ msgid "hours"
 #~ msgstr "uren"
-
 #~ msgid "day"
 #~ msgstr "dag"
-
 #~ msgid "days"
 #~ msgstr "dagen"
-
 #~ msgid "week days"
 #~ msgstr "weekdagen"
-
 #~ msgid "months"
 #~ msgstr "maanden"
-
 #~ msgid "LAN"
 #~ msgstr "LAN"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
-
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Grootte van de zendbuffer (16384 standaard)."
+
