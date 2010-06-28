@@ -138,11 +138,31 @@ if (0 == $result) {
 		unset($config['interfaces']['lan']['wireless']);
 	}
 
+	$if_isboot = @exec("/sbin/sysctl -q -n net.isboot.nic");
+	$ip_isboot = @exec("/sbin/sysctl -q -n hw.ibft.initiator_address");
+	$nic_prefix = @exec("/sbin/sysctl -q -n hw.ibft.nic_prefix");
+	$ip_conf = $config['interfaces']['lan']['ipaddr'];
+	if (strcmp($lanif, $if_isboot) == 0) {
+		// Update iSCSI booted NIC
+		$config['interfaces']['lan']['ipaddr'] = $ip_isboot;
+		$config['interfaces']['lan']['subnet'] = $nic_prefix;
+	} else if (strcmp($ip_conf, $ip_isboot) == 0) {
+		// set default if used iSCSI booted IP
+		$config['interfaces']['lan']['ipaddr'] = $g['default_ip'];
+		$config['interfaces']['lan']['subnet'] = 24;
+	}
+
 	for ($i = 0; $i < count($optif); $i++) {
 		if (!is_array($config['interfaces']['opt' . ($i+1)]))
 			$config['interfaces']['opt' . ($i+1)] = array();
 
 		$config['interfaces']['opt' . ($i+1)]['if'] = $optif[$i];
+		if (strcmp($optif[$i], $if_isboot) == 0) {
+			// Update iSCSI booted NIC
+			$config['interfaces']['opt' . ($i+1)]['ipaddr'] = $ip_isboot;
+			$config['interfaces']['opt' . ($i+1)]['subnet'] = $nic_prefix;
+			$config['interfaces']['opt' . ($i+1)]['enable'] = true;
+		}
 
 		// Wireless interface?
 		if (preg_match($g['wireless_regex'], $optif[$i])) {
@@ -152,7 +172,9 @@ if (0 == $result) {
 			unset($config['interfaces']['opt' . ($i+1)]['wireless']);
 		}
 
-		unset($config['interfaces']['opt' . ($i+1)]['enable']);
+		if (strcmp($optif[$i], $if_isboot) != 0) {
+			unset($config['interfaces']['opt' . ($i+1)]['enable']);
+		}
 		$config['interfaces']['opt' . ($i+1)]['descr'] = "OPT" . ($i+1);
 		$config['interfaces']['opt' . ($i+1)]['ipv6addr'] = "auto";
 	}

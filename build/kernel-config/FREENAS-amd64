@@ -332,6 +332,9 @@ device		fwip		# IP over FireWire (RFC 2734,3146)
 #####################################################################
 device		speaker
 
+# for ZFS tuning
+options		VM_KMEM_SIZE_SCALE=2
+
 # Networking options
 options		DEVICE_POLLING
 options		HZ=1000

@@ -114,6 +114,14 @@ function zfs_zpool_configure($uuid) {
 	// Create the pool
 	$cmd = "zpool create {$param} {$pool['name']} ";
 
+	// Load nop class
+	if (@mwexec("/sbin/kldstat -q -m g_nop") != 0) {
+		write_log("Load NOP GEOM class");
+		@mwexec("/sbin/kldload geom_nop.ko");
+	}
+
+	$dev_cache = "";
+	$dev_log = "";
 	foreach ($pool['vdevice'] as $vdevicev) {
 		$index = array_search_ex($vdevicev, $config['zfs']['vdevices']['vdevice'], "name");
 		if (false === $index)
@@ -125,6 +133,33 @@ function zfs_zpool_configure($uuid) {
 			case "stripe":
 				break;
 
+			case "cache":
+				$dev_cache = "{$vdevice['type']} ";
+				if (is_array($vdevice['device'])) {
+					foreach ($vdevice['device'] as $vdevicev) {
+						$dev_cache .= "{$vdevicev} ";
+					}
+				}
+				continue 2;
+
+			case "log":
+				$dev_log = "{$vdevice['type']} ";
+				if (is_array($vdevice['device'])) {
+					foreach ($vdevice['device'] as $vdevicev) {
+						$dev_log .= "{$vdevicev} ";
+					}
+				}
+				continue 2;
+
+			case "log-mirror":
+				$dev_log = "log mirror ";
+				if (is_array($vdevice['device'])) {
+					foreach ($vdevice['device'] as $vdevicev) {
+						$dev_log .= "{$vdevicev} ";
+					}
+				}
+				continue 2;
+
 			default:
 				$cmd .= "{$vdevice['type']} ";
 				break;
@@ -132,11 +167,23 @@ function zfs_zpool_configure($uuid) {
 
 		if (is_array($vdevice['device'])) {
 			foreach ($vdevice['device'] as $vdevicev) {
-				$cmd .= "{$vdevicev} ";
+				if (isset($vdevice['aft4k'])) {
+					$gnop_cmd = "gnop create -S 4096 {$vdevicev}";
+					write_log("$gnop_cmd");
+					$result = mwexec($gnop_cmd, true);
+					if ($result != 0)
+						return 1;
+					$cmd .= "{$vdevicev}.nop ";
+				} else {
+					$cmd .= "{$vdevicev} ";
+				}
 			}
 		}
 	}
+	$cmd .= "{$dev_cache} ";
+	$cmd .= "{$dev_log} ";
 
+	write_log("$cmd");
 	$result = mwexec($cmd, true);
 	if (0 != $result)
 		return 1;
@@ -167,7 +214,9 @@ function zfs_zpool_destroy($uuid) {
 		 return 1;
 
 	// Destroy the pool
-	$result = mwexec("zpool destroy {$pool['name']}", true);
+	$cmd ="zpool destroy {$pool['name']}";
+	write_log($cmd);
+	$result = mwexec($cmd, true);
 
 	// Remove mount point.
 	$mountpoint = "/mnt/{$pool['name']}";
@@ -175,6 +224,25 @@ function zfs_zpool_destroy($uuid) {
 		$mountpoint = $pool['mountpoint'];
 
 	@rmdir($mountpoint);
+
+	// destroy gnop devices
+	if ($result != 0) {
+		foreach ($pool['vdevice'] as $vdevicev) {
+			$index = array_search_ex($vdevicev, $config['zfs']['vdevices']['vdevice'], "name");
+			if (false === $index)
+				continue;
+			$vdevice = $config['zfs']['vdevices']['vdevice'][$index];
+			if (is_array($vdevice['device'])) {
+				foreach ($vdevice['device'] as $vdevicev) {
+					if (isset($vdevice['aft4k'])) {
+						$gnop_cmd = "gnop destroy {$vdevicev}.nop";
+						write_log("$gnop_cmd");
+						$result = mwexec($gnop_cmd, true);
+					}
+				}
+			}
+		}
+	}
 
 	return $result;
 }
@@ -188,6 +256,7 @@ function zfs_zpool_destroy($uuid) {
 function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out = false, &$output = array()) {
 	$result = 1;
 	$cmd = "zpool {$command} {$param}";
+	write_log($cmd);
 
 	if (true === $verbose) {
 		if (true === $stderr)
@@ -243,6 +312,7 @@ function zfs_dataset_configure($uuid) {
 
 	// Create the dataset
 	$cmd = "zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
+	write_log($cmd);
 
 	return mwexec($cmd, true);
 }
@@ -267,7 +337,10 @@ function zfs_dataset_destroy($uuid) {
 		 return 1;
 
 	// Destroy the dataset
-	return mwexec("zfs destroy {$dataset['pool'][0]}/{$dataset['name']}", true);
+	$cmd = "zfs destroy {$dataset['pool'][0]}/{$dataset['name']}";
+	write_log($cmd);
+
+	return mwexec($cmd, true);
 }
 
 /**

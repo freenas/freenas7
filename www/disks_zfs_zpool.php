@@ -55,14 +55,14 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			updatenotify_process("zfszpool", "zfszpool_process_updatenotification");
+			$retval |= updatenotify_process("zfszpool", "zfszpool_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
 			updatenotify_delete("zfszpool");
 		}
-		header("Location: disks_zfs_zpool.php");
-		exit;
+		//header("Location: disks_zfs_zpool.php");
+		//exit;
 	}
 }
 

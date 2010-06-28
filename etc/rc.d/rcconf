@@ -51,6 +51,7 @@ sethostname()
 setifconfig()
 {
 	local _value _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _id
+	local _ifn_isboot
 
 	# Cleanup
 	set | grep ^ifconfig_ | while read _value; do
@@ -64,6 +65,7 @@ setifconfig()
 	# LAN interface:
 	_ifn=`configxml_get "//interfaces/lan/if"`
 	_ifn=`get_if ${_ifn}`
+	_ifn_isboot=`sysctl -q -n net.isboot.nic`
 	_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/lan" \
 		-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
 		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
@@ -98,7 +100,9 @@ setifconfig()
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
-	if [ -n "${_ifconfig_args}" ]; then
+	if [ "${_ifn}" = "${_ifn_isboot}" ]; then
+		# don't set default for iSCSI booted NIC
+	elif [ -n "${_ifconfig_args}" ]; then
 		eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
 	fi
 

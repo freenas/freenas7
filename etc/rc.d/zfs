@@ -26,12 +26,19 @@ required_modules="zfs"
 
 zfs_init()
 {
+	# gnop for 4KB sector
+	if ! /sbin/kldstat -q -m g_nop; then
+		echo "Load NOP GEOM class"
+		/sbin/kldload geom_nop.ko
+	fi
+
 	# Make sure /boot/zfs/zpool.cache exists. On 'embedded' installations
 	# this file is missing after a reboot => zpools are missing, so we
 	# have to import them to be able to use them.
 	if [ ! -e /boot/zfs/zpool.cache ]; then
 		info Importing ZFS pools...
 		zpool import -f -a
+		zfs umount -a
 	fi
 }
 

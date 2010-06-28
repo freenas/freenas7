@@ -61,11 +61,13 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_vdevice, "uuid
 	$pconfig['name'] = $a_vdevice[$cnid]['name'];
 	$pconfig['type'] = $a_vdevice[$cnid]['type'];
 	$pconfig['device'] = $a_vdevice[$cnid]['device'];
+	$pconfig['aft4k'] = isset($a_vdevice[$cnid]['aft4k']);
 	$pconfig['desc'] = $a_vdevice[$cnid]['desc'];
 } else {
 	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['type'] = "stripe";
+	$pconfig['aft4k'] = false;
 	$pconfig['desc'] = "";
 }
 
@@ -94,6 +96,7 @@ if ($_POST) {
 	}
 
 	switch ($_POST['type']) {
+		case "log-mirror":
 		case "mirror": {
 				if (count($_POST['device']) <  2) {
 					$input_errors[] = gettext("There must be at least 2 disks in a mirror.");
@@ -130,6 +133,7 @@ if ($_POST) {
 		$vdevice['name'] = $_POST['name'];
 		$vdevice['type'] = $_POST['type'];
 		$vdevice['device'] = $_POST['device'];
+		$vdevice['aft4k'] = isset($_POST['aft4k']);
 		$vdevice['desc'] = $_POST['desc'];
 
 		if (isset($uuid) && (FALSE !== $cnid)) {
@@ -155,6 +159,7 @@ function enable_change(enable_change) {
 	document.iform.name.disabled = !enable_change;
 	document.iform.type.disabled = !enable_change;
 	document.iform.device.disabled = !enable_change;
+	document.iform.aft4k.disabled = !enable_change;
 }
 // -->
 </script>
@@ -187,9 +192,10 @@ function enable_change(enable_change) {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($uuid) && false !== $cnid);?>
-					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), "", true, isset($uuid) && false !== $cnid);?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare"), "cache" => gettext("Cache"), "log" => gettext("Log"), "log-mirror" => gettext("Log (mirror)")), "", true, isset($uuid) && false !== $cnid);?>
 					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($uuid) && false !== $cnid && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if ((!isset($uuid) || isset($uuid) && false === $cnid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
 					<?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($uuid) && false !== $cnid);?>
+					<?php html_checkbox("aft4k", gettext("Advanced Format"), $pconfig['aft4k'] ? true : false, gettext("Enable Advanced Format (4KB sector)"), "", false, "");?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>
 				<div id="submit">

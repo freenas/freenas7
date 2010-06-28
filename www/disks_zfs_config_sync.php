@@ -133,6 +133,17 @@ foreach ($rawdata as $line)
 		{
 			$dev = $m[1];
 		}
+		else if ($type == 'cache')
+		{
+			$dev = $m[1];
+		}
+		else if ($type == 'log')
+		{
+			$dev = $m[1];
+			if ($dev == 'mirror') {
+				$type = "log-mirror";
+			}
+		}
 		else // vdev or dev (type disk)
 		{
 			$type = $m[1];
@@ -148,17 +159,24 @@ foreach ($rawdata as $line)
 				$vdev = sprintf("%s_%s_%d", $pool, $type, $i++);
 			}
 		}
-		$zfs['vdevices']['vdevice'][$vdev] = array(
-			'uuid' => uuid(),
-			'name' => $vdev,
-			'type' => $type,
-			'device' => array(),
-		);
-		$zfs['extra']['vdevices']['vdevice'][$vdev]['pool'] = $pool;
-		$zfs['pools']['pool'][$pool]['vdevice'][] = $vdev;
-		if ($type == 'spare' || $type == 'disk')
+		if (!array_key_exists($vdev, $zfs['vdevices']['vdevice'])) {
+			$zfs['vdevices']['vdevice'][$vdev] = array(
+				'uuid' => uuid(),
+				'name' => $vdev,
+				'type' => $type,
+				'device' => array(),
+			);
+			$zfs['extra']['vdevices']['vdevice'][$vdev]['pool'] = $pool;
+			$zfs['pools']['pool'][$pool]['vdevice'][] = $vdev;
+		}
+		if ($type == 'spare' || $type == 'cache' || $type == 'log' || $type == 'disk')
 		{
-			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
+			if (preg_match("/^(.+)\.nop$/", $dev, $m)) {
+				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+				$zfs['vdevices']['vdevice'][$vdev]['aft4k'] = true;
+			} else {
+				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
+			}
 		}
 	}
 	else if (preg_match('/^\t(\S+)/', $line, $m)) // zpool or spares
@@ -168,6 +186,16 @@ foreach ($rawdata as $line)
 		if ($m[1] == 'spares')
 		{
 			$type = 'spare';
+			$vdev = sprintf("%s_%s_%d", $pool, $type, $i++);
+		}
+		else if ($m[1] == 'cache')
+		{
+			$type = 'cache';
+			$vdev = sprintf("%s_%s_%d", $pool, $type, $i++);
+		}
+		else if ($m[1] == 'logs')
+		{
+			$type = 'log';
 			$vdev = sprintf("%s_%s_%d", $pool, $type, $i++);
 		}
 		else
