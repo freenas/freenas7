@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-05-21 13:36+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr "Teplota CPU"
 msgid "CPU usage"
 msgstr "Využitie CPU"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Pridaný"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Zariadenie"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Nie je možné formátovať zdrojový disk OS!"
 
@@ -1203,6 +1212,9 @@ msgstr "Disky"
 
 msgid "Disks (ATA)"
 msgstr "Disky (ATA)"
+
+msgid "Display"
+msgstr ""
 
 msgid "Distributed hash table"
 msgstr "Distribuovaná hašovacia tabuľka"
@@ -2135,6 +2147,10 @@ msgstr "IPv6 adresa"
 msgid "IPv6 addresses"
 msgstr "IPv6 adresy"
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "Podpora rozš. atrib."
+
 msgid "ISO file to be mounted."
 msgstr "Pripojiť ISO súbor."
 
@@ -2218,6 +2234,10 @@ msgid "Informal"
 msgstr "Neformálne"
 
 msgid "Information"
+msgstr "Informácie"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Informácie"
 
 msgid "Inherit permissions"
@@ -2490,6 +2510,9 @@ msgstr ""
 
 msgid "Log"
 msgstr "Záznam"
+
+msgid "Log (mirror)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Úroveň podrobnosti záznamov"
@@ -3857,6 +3880,9 @@ msgstr "Standby - Kontrolovať zariadenie, ak nie je v režimoch SLEEP alebo STA
 msgid "Standby time"
 msgstr "Čas prechodu do pohotovostného režimu"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr ""
@@ -3879,6 +3905,10 @@ msgstr "Správa o stave úspešne odoslaná pre: %s."
 
 msgid "Status report successfully sent."
 msgstr "Správa o stave bola úspešne odoslaná."
+
+#, fuzzy
+msgid "Stop"
+msgstr "Zastavené"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Zastaviť po odoslaní (a prijatí) N paketov."
@@ -4060,6 +4090,10 @@ msgstr "Teplota"
 
 msgid "Temperature monitoring"
 msgstr "Monitorovanie teploty"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Dočasný priečinok"
 
 msgid "Temporary directory"
 msgstr "Dočasný priečinok"

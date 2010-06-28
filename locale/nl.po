@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-05-25 04:17+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr "CPU temperatuur"
 msgid "CPU usage"
 msgstr "CPU belasting"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Verbonden"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Nieuwe Schijf"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Kan de schijf waarop van oorsprong het OS staat niet formatteren!"
 
@@ -1203,6 +1212,9 @@ msgstr "Schijven"
 msgid "Disks (ATA)"
 msgstr "Schijven (ATA)"
 
+msgid "Display"
+msgstr ""
+
 msgid "Distributed hash table"
 msgstr "Distributed hash table"
 
@@ -1296,12 +1308,8 @@ msgstr "Weet  u zeker dat u dit doel wilt verwijderen?"
 msgid "Do you really want to delete this user?"
 msgstr "Weet u zeker dat u deze gebruiker wilt verwijderen?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Weet u zeker dat u dit volume wilt verwijderen?\\n"
-"!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Weet u zeker dat u dit volume wilt verwijderen?\\n!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Weet u zeker dat u deze schijf wilt formatteren? Alle gegevens zullen verloren gaan!"
@@ -2138,6 +2146,10 @@ msgstr "IPv6 adres"
 msgid "IPv6 addresses"
 msgstr "IPv6 adressen"
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "EA support"
+
 msgid "ISO file to be mounted."
 msgstr "ISO bestand om aangekoppeld te worden."
 
@@ -2221,6 +2233,10 @@ msgid "Informal"
 msgstr "Informeel"
 
 msgid "Information"
+msgstr "Systeem-Info"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Systeem-Info"
 
 msgid "Inherit permissions"
@@ -2493,6 +2509,9 @@ msgstr "Plaats waar de werk bestanden zullen worden opgeslagen, bijv. %s/backup/
 
 msgid "Log"
 msgstr "Logboek"
+
+msgid "Log (mirror)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Log Niveau"
@@ -3860,6 +3879,9 @@ msgstr "Standby - Controleert de harde schijf, tenzij deze zich in de SLEEP of S
 msgid "Standby time"
 msgstr "Standby tijd"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr "Start scrub op '%s'."
@@ -3882,6 +3904,10 @@ msgstr "Het statusrapport is met succes verzonden naar: %s."
 
 msgid "Status report successfully sent."
 msgstr "Het status rapport is met succes verzonden."
+
+#, fuzzy
+msgid "Stop"
+msgstr "Gestopt"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Stop na het verzenden (en ontvangen) van N pakketten."
@@ -4063,6 +4089,10 @@ msgstr "Temperatuur"
 
 msgid "Temperature monitoring"
 msgstr "Temperatuur controle"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Tijdelijke map"
 
 msgid "Temporary directory"
 msgstr "Tijdelijke map"
@@ -5423,22 +5453,30 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Datum"
+
 #~ msgid "hours"
 #~ msgstr "uren"
+
 #~ msgid "day"
 #~ msgstr "dag"
+
 #~ msgid "days"
 #~ msgstr "dagen"
+
 #~ msgid "week days"
 #~ msgstr "weekdagen"
+
 #~ msgid "months"
 #~ msgstr "maanden"
+
 #~ msgid "LAN"
 #~ msgstr "LAN"
+
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Grootte van de zendbuffer (16384 standaard)."
-

@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-05-21 13:51+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr "Температура ЦП"
 msgid "CPU usage"
 msgstr "Загрузка процессора"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Присоединен"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Новое устройство"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Диск с операционной системой не может быть отформатирован!"
 
@@ -1203,6 +1212,9 @@ msgstr "Диски"
 
 msgid "Disks (ATA)"
 msgstr "Диски (ATA)"
+
+msgid "Display"
+msgstr ""
 
 msgid "Distributed hash table"
 msgstr "DHT"
@@ -2135,6 +2147,10 @@ msgstr "IPv6-адрес"
 msgid "IPv6 addresses"
 msgstr "Адреса IPv6."
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "Поддержка расширенных атрибутов"
+
 msgid "ISO file to be mounted."
 msgstr "Файл ISO будет смонтирован"
 
@@ -2218,6 +2234,10 @@ msgid "Informal"
 msgstr "Информирование"
 
 msgid "Information"
+msgstr "Информация"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Информация"
 
 msgid "Inherit permissions"
@@ -2490,6 +2510,10 @@ msgstr "Местоположение для сохранения рабочих 
 
 msgid "Log"
 msgstr "Журнал"
+
+#, fuzzy
+msgid "Log (mirror)"
+msgstr "RAID 1 (зеркалирование)"
 
 msgid "Log Level"
 msgstr "Уровень журналирования"
@@ -3857,6 +3881,9 @@ msgstr "Standby - проверка устройства, пока оно не в
 msgid "Standby time"
 msgstr "Таймаут до режима Standby"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr "Выполнить команду scrub для '%s'"
@@ -3879,6 +3906,10 @@ msgstr "Отчет для %s отправлен успешно."
 
 msgid "Status report successfully sent."
 msgstr "Отчет отправлен успешно."
+
+#, fuzzy
+msgid "Stop"
+msgstr "Остановлено"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Остановить после отправки и приема N пакетов."
@@ -4060,6 +4091,10 @@ msgstr "Температура"
 
 msgid "Temperature monitoring"
 msgstr "Контроль температуры"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Временный каталог"
 
 msgid "Temporary directory"
 msgstr "Временный каталог"
@@ -5501,9 +5536,6 @@ msgstr "upriv"
 
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (с чередованием)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (зеркалирование)"
 
 #~ msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
 #~ msgstr "Изменения сохранены. Необходимо <a href=%s>перезагрузить</a> систему, чтобы они вступили в силу."

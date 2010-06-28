@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-06-03 20:00+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr "CPU temperatūra"
 msgid "CPU usage"
 msgstr "CPU lietojums"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Pievienots"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Jauna ierīce"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Nevar formatēt OS izcelsmes disku/"
 
@@ -1203,6 +1212,9 @@ msgstr "Diski"
 msgid "Disks (ATA)"
 msgstr "Diski (ATA)"
 
+msgid "Display"
+msgstr ""
+
 msgid "Distributed hash table"
 msgstr "Dalīta jaucējtabula"
 
@@ -1296,12 +1308,8 @@ msgstr "Vai Tu patiešām vēlies dzēst šo mērķi?"
 msgid "Do you really want to delete this user?"
 msgstr "Vai Tu patiešām vēlies dzēst šo lietotāju?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Vai Tu patiešām vēlies dzēst šo sējumu?\\n"
-"!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Vai Tu patiešām vēlies dzēst šo sējumu?\\n!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vai Tu patiešām vēlies formatēt šo disku? Visi dati tiks pazaudēti!"
@@ -2138,6 +2146,10 @@ msgstr "IPv6 adreses"
 msgid "IPv6 addresses"
 msgstr "IPv6 adreses"
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "EA palīdzība"
+
 msgid "ISO file to be mounted."
 msgstr "ISO datne, kura tiks piemontēta."
 
@@ -2221,6 +2233,10 @@ msgid "Informal"
 msgstr "Neformāls"
 
 msgid "Information"
+msgstr "Informācija"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Informācija"
 
 msgid "Inherit permissions"
@@ -2493,6 +2509,9 @@ msgstr "Vieta, kur darbojošās datnes tiks glabātas, piem. %s/backup/.unison"
 
 msgid "Log"
 msgstr "Žurnāls"
+
+msgid "Log (mirror)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Žurnalēšanas līmenis"
@@ -3860,6 +3879,9 @@ msgstr "Nodrose - Pārbaudīt ierīce, ja vien tā nav GULĒŠANAS vai NODROSES 
 msgid "Standby time"
 msgstr "Nodroses laiks"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr "Sākt scrub uz '%s'."
@@ -3882,6 +3904,10 @@ msgstr "Statusa pārskats veiksmīgi nosūtīts uz: %s."
 
 msgid "Status report successfully sent."
 msgstr "Statusa pārskats veiksmīgi nosūtīts."
+
+#, fuzzy
+msgid "Stop"
+msgstr "Apturēts"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Pārtraukt pēc  N pakešu nosūtīšanas (un saņemšanas)."
@@ -4063,6 +4089,10 @@ msgstr "Temperatūra"
 
 msgid "Temperature monitoring"
 msgstr "Temperatūras uzraudzīšana"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Pagaidu mape"
 
 msgid "Temporary directory"
 msgstr "Pagaidu mape"
@@ -5423,4 +5453,3 @@ msgstr "upriv"
 
 #~ msgid "Report generator"
 #~ msgstr "Pārskata ģenerators"
-

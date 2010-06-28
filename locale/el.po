@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-05-21 13:20+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr "Θερμοκρασία κεντρικού επεξεργαστή"
 msgid "CPU usage"
 msgstr "χρήση CPU"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Προσαρτημένος"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Νέα συσκευή"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Δεν μπορεί να διαμορφωθεί ο δίσκος που περιέχει το λειτουργικό!"
 
@@ -1203,6 +1212,9 @@ msgstr "Δίσκοι"
 
 msgid "Disks (ATA)"
 msgstr "Δίσκοι (ATA)"
+
+msgid "Display"
+msgstr ""
 
 msgid "Distributed hash table"
 msgstr "Κατανεμημένος πίνακας κατακερματισμού"
@@ -2135,6 +2147,10 @@ msgstr "Διεύθυνση IPv6"
 msgid "IPv6 addresses"
 msgstr "Διευθύνσεις IPv6"
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "Υποτήριξη ΕΑ"
+
 msgid "ISO file to be mounted."
 msgstr "Αρχείο ISO για προσάρτηση"
 
@@ -2218,6 +2234,10 @@ msgid "Informal"
 msgstr "Ανεπίσημος"
 
 msgid "Information"
+msgstr "Πληροφορίες"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Πληροφορίες"
 
 msgid "Inherit permissions"
@@ -2490,6 +2510,9 @@ msgstr ""
 
 msgid "Log"
 msgstr "Καταγραφή"
+
+msgid "Log (mirror)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Επίπεδο Καταγραφής"
@@ -3857,6 +3880,9 @@ msgstr ""
 msgid "Standby time"
 msgstr "Χρόνος αναμονής"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr ""
@@ -3879,6 +3905,10 @@ msgstr ""
 
 msgid "Status report successfully sent."
 msgstr ""
+
+#, fuzzy
+msgid "Stop"
+msgstr "Σταματημένο"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr ""
@@ -4060,6 +4090,10 @@ msgstr "Θερμοκρασία"
 
 msgid "Temperature monitoring"
 msgstr "Επίβλεψη θερμοκρασίας"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Προσωρινός φάκελος"
 
 msgid "Temporary directory"
 msgstr "Προσωρινός φάκελος"

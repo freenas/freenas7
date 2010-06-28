@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-06-06 08:41+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr "teplota CPU"
 msgid "CPU usage"
 msgstr "využití procesoru"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Připojeno"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Zařízení"
+
 msgid "Can't format the OS origin disk!"
 msgstr "Není možné formátovat výchozí disk operačního systému!"
 
@@ -1203,6 +1212,9 @@ msgstr "Disky"
 msgid "Disks (ATA)"
 msgstr "Disky (ATA)"
 
+msgid "Display"
+msgstr ""
+
 msgid "Distributed hash table"
 msgstr ""
 
@@ -1296,12 +1308,8 @@ msgstr "Opravdu chcete odstranit tento cíl?"
 msgid "Do you really want to delete this user?"
 msgstr "Opravdu chcete odstranit tohoto uživatele?"
 
-msgid ""
-"Do you really want to delete this volume?\\n"
-"!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr ""
-"Skutečně chcete smazat tento oddíl?\\n"
-" !!!! Všechna data budou ztracena a nebude je možné obnovit. !!!!"
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr "Skutečně chcete smazat tento oddíl?\\n !!!! Všechna data budou ztracena a nebude je možné obnovit. !!!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Opravdu chcete naformátovat tento disk? Všechna data, která jsou na něm uložena, budou nenávratně smazána!"
@@ -2138,6 +2146,10 @@ msgstr "IPv6 adresa"
 msgid "IPv6 addresses"
 msgstr "IPv6 adresy"
 
+#, fuzzy
+msgid "IRC Live support"
+msgstr "EA podpora"
+
 msgid "ISO file to be mounted."
 msgstr "ISO soubor k připojení."
 
@@ -2221,6 +2233,10 @@ msgid "Informal"
 msgstr "Neformálně"
 
 msgid "Information"
+msgstr "Informace"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Informace"
 
 msgid "Inherit permissions"
@@ -2493,6 +2509,9 @@ msgstr ""
 
 msgid "Log"
 msgstr "Protokol"
+
+msgid "Log (mirror)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Úroveň protokolování"
@@ -3860,6 +3879,9 @@ msgstr ""
 msgid "Standby time"
 msgstr "Čas přechodu do pohotovostního režimu"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr ""
@@ -3882,6 +3904,10 @@ msgstr "Zpráva o stavu byla úspěšně odeslána na: %s."
 
 msgid "Status report successfully sent."
 msgstr "Zpráva o stavu byal úspěšně odeslána."
+
+#, fuzzy
+msgid "Stop"
+msgstr "Zastaveno"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Zastavit po odeslání (a přijmutí) N paketů."
@@ -4063,6 +4089,10 @@ msgstr "Teplota"
 
 msgid "Temperature monitoring"
 msgstr "Monitorování teploty"
+
+#, fuzzy
+msgid "Temporary Device"
+msgstr "Dočasný adresář"
 
 msgid "Temporary directory"
 msgstr "Dočasný adresář"
@@ -5420,4 +5450,3 @@ msgstr "odpojit"
 
 msgid "upriv"
 msgstr "upriv"
-

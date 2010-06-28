@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-23 04:20+0000\n"
+"POT-Creation-Date: 2010-06-28 19:19+0000\n"
 "PO-Revision-Date: 2010-05-21 13:37+0100\n"
 "Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -631,6 +632,14 @@ msgstr ""
 msgid "CPU usage"
 msgstr "Raba CPE"
 
+#, fuzzy
+msgid "Cache"
+msgstr "Pripet"
+
+#, fuzzy
+msgid "Cache Device"
+msgstr "Naprava"
+
 msgid "Can't format the OS origin disk!"
 msgstr ""
 
@@ -1203,6 +1212,9 @@ msgstr "Diski"
 
 msgid "Disks (ATA)"
 msgstr "Diski (ATA)"
+
+msgid "Display"
+msgstr ""
 
 msgid "Distributed hash table"
 msgstr ""
@@ -2135,6 +2147,9 @@ msgstr "IPv6 naslov"
 msgid "IPv6 addresses"
 msgstr "IPv6 naslovi"
 
+msgid "IRC Live support"
+msgstr ""
+
 msgid "ISO file to be mounted."
 msgstr ""
 
@@ -2218,6 +2233,10 @@ msgid "Informal"
 msgstr ""
 
 msgid "Information"
+msgstr "Informacije"
+
+#, fuzzy
+msgid "Information & Manual"
 msgstr "Informacije"
 
 msgid "Inherit permissions"
@@ -2489,6 +2508,9 @@ msgid "Location where the working files will be stored, e.g. %s/backup/.unison"
 msgstr ""
 
 msgid "Log"
+msgstr ""
+
+msgid "Log (mirror)"
 msgstr ""
 
 msgid "Log Level"
@@ -3857,6 +3879,9 @@ msgstr ""
 msgid "Standby time"
 msgstr "Čas pripravljenosti"
 
+msgid "Start"
+msgstr ""
+
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr ""
@@ -3878,6 +3903,9 @@ msgid "Status report successfully sent to: %s."
 msgstr ""
 
 msgid "Status report successfully sent."
+msgstr ""
+
+msgid "Stop"
 msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
@@ -4059,6 +4087,9 @@ msgid "Temperature"
 msgstr "Temperatura"
 
 msgid "Temperature monitoring"
+msgstr ""
+
+msgid "Temporary Device"
 msgstr ""
 
 msgid "Temporary directory"
