@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-23 04:37+0900\n"
+"PO-Revision-Date: 2010-06-29 12:50+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:01+0000\n"
+"X-Launchpad-Export-Date: 2010-06-29 03:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -632,13 +632,11 @@ msgstr "CPU 温度"
 msgid "CPU usage"
 msgstr "CPU 使用率"
 
-#, fuzzy
 msgid "Cache"
-msgstr "接続済み"
+msgstr "キャッシュ"
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "新しいデバイス"
+msgstr "キャッシュ デバイス"
 
 msgid "Can't format the OS origin disk!"
 msgstr "OS がインストールされているディスクはフォーマットする事が出来ません!"
@@ -1213,7 +1211,7 @@ msgid "Disks (ATA)"
 msgstr "ディスク(ATA)"
 
 msgid "Display"
-msgstr ""
+msgstr "表示"
 
 msgid "Distributed hash table"
 msgstr "分散ハッシュテーブル"
@@ -2148,9 +2146,8 @@ msgstr "IPv6 アドレス"
 msgid "IPv6 addresses"
 msgstr "IPv6 アドレス一覧"
 
-#, fuzzy
 msgid "IRC Live support"
-msgstr "拡張属性サポート"
+msgstr "IRC ライブサポート"
 
 msgid "ISO file to be mounted."
 msgstr "マウントする ISO ファイル。"
@@ -2237,9 +2234,8 @@ msgstr "インフォーマル"
 msgid "Information"
 msgstr "情報"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "情報"
+msgstr "情報とマニュアル"
 
 msgid "Inherit permissions"
 msgstr "パーミッションを引き継ぐ"
@@ -2512,9 +2508,8 @@ msgstr "作業ファイルが保存される場所を指定します。例) %s/b
 msgid "Log"
 msgstr "ログ"
 
-#, fuzzy
 msgid "Log (mirror)"
-msgstr "RAID 1 (ミラーリング)"
+msgstr "ログ (ミラー)"
 
 msgid "Log Level"
 msgstr "ログレベル"
@@ -3883,7 +3878,7 @@ msgid "Standby time"
 msgstr "スタンバイ時間"
 
 msgid "Start"
-msgstr ""
+msgstr "開始"
 
 #, php-format
 msgid "Start scrub on '%s'."
@@ -3908,7 +3903,6 @@ msgstr "ステータスレポートの送信が完了しました。宛て先: %
 msgid "Status report successfully sent."
 msgstr "ステータスレポートの送信に成功しました。"
 
-#, fuzzy
 msgid "Stop"
 msgstr "停止"
 
@@ -4093,9 +4087,8 @@ msgstr "温度"
 msgid "Temperature monitoring"
 msgstr "温度監視"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "テンポラリディレクトリ"
+msgstr "一時的なデバイス"
 
 msgid "Temporary directory"
 msgstr "テンポラリディレクトリ"
@@ -5524,6 +5517,9 @@ msgstr "upriv"
 
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (ストライピング)"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (ミラーリング)"
 
 #~ msgid "List of shares"
 #~ msgstr "共有のリスト"
