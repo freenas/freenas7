@@ -449,6 +449,10 @@ function config_lock() {
 		}
 	}
 	mwexec("/usr/bin/logger 'Lock error {$lockfile}'");
+	while (1) {
+		/* can't continue without lock */
+		sleep(1);
+	}
 	exit;
 }
 
@@ -1967,6 +1971,15 @@ function config_upgrade() {
 		$config['iscsitarget']['defaulttime2retain'] = "60";
 
 		$config['version'] = "8.8";
+	}
+
+	/* Convert 8.8 -> 8.9 */
+	if ($config['version'] === "8.8") {
+		if ($config['samba']['security'] === "domain") {
+			$config['samba']['security'] = "ads";
+		}
+
+		$config['version'] = "8.9";
 	}
 
 	write_config();

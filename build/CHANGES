@@ -58,7 +58,7 @@ Majors changes:
 - Upgrade php5 to 5.2.13.
 - Upgrade transmission to 1.93.
 - Upgrade samba to 3.5.4.
-- Increase image size to 72MB, mfsroot to 178MB.
+- Increase image size to 72MB, mfsroot to 180MB.
 - Increase default install size embedded to 120MB, full to 380MB.
 - Increase default swap size to 256MB.
 - Increase memory disk for firmware upgrade to 128MB.
@@ -74,6 +74,7 @@ Majors changes:
 - Upgrade nano to 2.2.4.
 - Upgrade gzip to 1.4.
 - Upgrade tftp-hpa to 5.0.
+- Introduce iSCSI boot/install feature (isboot 0.1.3).
 
 Minors changes:
 - Add Czech and Slovak translations.
@@ -104,6 +105,12 @@ Minors changes:
 - Move upload directory to /var/tmp/ftmp from /ftmp.
 - Change iSCSI initial parameter.
 - Add new parameter of istgt 20100522.
+- Add minimum set of zfskerntune feature.
+- Add Hyper-V reboot issue patch.
+- Add ZFS pool with 4KB sector support.
+- Add ZFS cache and log device support.
+- Improve parameters for Samba 3.5.x.
+- Improve Active Directory support.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.
@@ -113,6 +120,7 @@ Bug fixes:
 - Fix fail to update index.php if some value is undefined.
 - Fix control of Ctrl+Alt+Del if console menu is disabled (BR 2976816).
 - Fix the document link on Services|Rsync|Server|Settings (BR 2997828).
+- Fix fail to connect SSH if ActiveDirectory is enabled (BR 2821715, 2898371).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
