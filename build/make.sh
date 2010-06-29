@@ -69,7 +69,7 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # to a RAM disk at FreeNAS startup.
 #FREENAS_MFSROOT_SIZE=164
 #FREENAS_IMG_SIZE=66
-FREENAS_MFSROOT_SIZE=178
+FREENAS_MFSROOT_SIZE=180
 FREENAS_IMG_SIZE=72
 
 # Media geometry, only relevant if bios doesn't understand LBA.
@@ -463,7 +463,6 @@ create_image() {
 	mkdir -p $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
-	cp $FREENAS_BOOTDIR/kernel/isboot.ko $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/boot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader.conf $FREENAS_TMPDIR/boot
@@ -484,6 +483,8 @@ create_image() {
 	if [ "amd64" != ${FREENAS_ARCH} ]; then
 		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
 	fi
+	# iSCSI driver
+	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 iscsi/isboot/isboot.ko $FREENAS_TMPDIR/boot/kernel
 
 	echo "===> Unmount memory disk"
 	umount $FREENAS_TMPDIR
@@ -541,7 +542,6 @@ create_iso () {
 	mkdir -p $FREENAS_TMPDIR/boot
 	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
-	cp $FREENAS_BOOTDIR/kernel/isboot.ko $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/cdboot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader.conf $FREENAS_TMPDIR/boot
@@ -562,6 +562,8 @@ create_iso () {
 	if [ "amd64" != ${FREENAS_ARCH} ]; then
 		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
 	fi
+	# iSCSI driver
+	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 iscsi/isboot/isboot.ko $FREENAS_TMPDIR/boot/kernel
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
@@ -620,7 +622,6 @@ create_full() {
 	#mkdir $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
-	cp $FREENAS_BOOTDIR/kernel/isboot.ko $FREENAS_TMPDIR/boot/kernel
 	gunzip $FREENAS_TMPDIR/boot/kernel/kernel.gz
 	cp $FREENAS_BOOTDIR/boot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
@@ -641,6 +642,8 @@ create_full() {
 	if [ "amd64" != ${FREENAS_ARCH} ]; then
 		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
 	fi
+	# iSCSI driver
+	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 iscsi/isboot/isboot.ko $FREENAS_TMPDIR/boot/kernel
 
 	#Generate a loader.conf for full mode:
 	echo 'kernel="kernel"' >> $FREENAS_TMPDIR/boot/loader.conf
@@ -650,6 +653,7 @@ create_full() {
 	echo 'splash_bmp_load="YES"' >> $FREENAS_TMPDIR/boot/loader.conf
 	echo 'bitmap_load="YES"' >> $FREENAS_TMPDIR/boot/loader.conf
 	echo 'bitmap_name="/boot/splash.bmp"' >> $FREENAS_TMPDIR/boot/loader.conf
+	echo 'isboot_load="YES"' >> $FREENAS_TMPDIR/boot/loader.conf
 
 	#Check that there is no /etc/fstab file! This file can be generated only during install, and must be kept
 	[ -f $FREENAS_TMPDIR/etc/fstab ] && rm -f $FREENAS_TMPDIR/etc/fstab

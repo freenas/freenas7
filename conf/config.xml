@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.8</version>
+	<version>8.9</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
