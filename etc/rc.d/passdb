@@ -21,7 +21,7 @@ passdb_minuid=${passdb_minuid:-"1001"}
 echo "Updating passdb."
 
 # Clear password database
-cat /dev/null > ${passdb_file}
+rm -rf ${passdb_file}
 
 # Generate Samba password database.
 # Iterate over all configured users.
