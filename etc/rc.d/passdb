@@ -14,7 +14,7 @@ command="/usr/local/bin/pdbedit"
 load_rc_config "$name"
 
 # Defaults
-passdb_file=${passdb_file:-"/var/etc/private/passdb.tdb"}
+passdb_file=${passdb_file:-"/var/etc/private/passdb"}
 passdb_minuid=${passdb_minuid:-"1001"}
 
 # Display message
