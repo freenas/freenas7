@@ -359,6 +359,11 @@ samba_cmd() {
 		fi
 	fi
 
+	# Create local userdb
+	if [ "${rc_arg}" = "start" ]; then
+		/etc/rc.d/passdb
+	fi
+
 	# Apply to all daemons
 	for name in ${samba_daemons}; do
 		rcvar=$(set_rcvar)
@@ -369,11 +374,6 @@ samba_cmd() {
 		    run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
 		fi
 	done
-
-	# Start additional processes when starting
-	if [ "${rc_arg}" = "start" ]; then
-		/etc/rc.d/passdb
-	fi
 }
 
 # Create required config file
