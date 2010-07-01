@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-06-03 20:00+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"PO-Revision-Date: 2010-07-02 00:32+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-03 04:32+0000\n"
+"X-Launchpad-Export-Date: 2010-07-01 22:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: LATVIA\n"
+"Language: \n"
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -632,13 +632,11 @@ msgstr "CPU temperatūra"
 msgid "CPU usage"
 msgstr "CPU lietojums"
 
-#, fuzzy
 msgid "Cache"
-msgstr "Pievienots"
+msgstr "Kešatmiņa"
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "Jauna ierīce"
+msgstr "Kešatmiņas ierīce"
 
 msgid "Can't format the OS origin disk!"
 msgstr "Nevar formatēt OS izcelsmes disku/"
@@ -1213,7 +1211,7 @@ msgid "Disks (ATA)"
 msgstr "Diski (ATA)"
 
 msgid "Display"
-msgstr ""
+msgstr "Rādīt"
 
 msgid "Distributed hash table"
 msgstr "Dalīta jaucējtabula"
@@ -1308,8 +1306,12 @@ msgstr "Vai Tu patiešām vēlies dzēst šo mērķi?"
 msgid "Do you really want to delete this user?"
 msgstr "Vai Tu patiešām vēlies dzēst šo lietotāju?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Vai Tu patiešām vēlies dzēst šo sējumu?\\n!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Vai Tu patiešām vēlies dzēst šo sējumu?\\n"
+"!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Vai Tu patiešām vēlies formatēt šo disku? Visi dati tiks pazaudēti!"
@@ -2146,9 +2148,8 @@ msgstr "IPv6 adreses"
 msgid "IPv6 addresses"
 msgstr "IPv6 adreses"
 
-#, fuzzy
 msgid "IRC Live support"
-msgstr "EA palīdzība"
+msgstr "IRC Tiešsaistes palīdzība"
 
 msgid "ISO file to be mounted."
 msgstr "ISO datne, kura tiks piemontēta."
@@ -2235,9 +2236,8 @@ msgstr "Neformāls"
 msgid "Information"
 msgstr "Informācija"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Informācija"
+msgstr "Informācija & Instrukcijas"
 
 msgid "Inherit permissions"
 msgstr "Pārmantot tiesības"
@@ -2511,7 +2511,7 @@ msgid "Log"
 msgstr "Žurnāls"
 
 msgid "Log (mirror)"
-msgstr ""
+msgstr "Žurnāls (spogulis)"
 
 msgid "Log Level"
 msgstr "Žurnalēšanas līmenis"
@@ -3880,7 +3880,7 @@ msgid "Standby time"
 msgstr "Nodroses laiks"
 
 msgid "Start"
-msgstr ""
+msgstr "Sākt"
 
 #, php-format
 msgid "Start scrub on '%s'."
@@ -3905,9 +3905,8 @@ msgstr "Statusa pārskats veiksmīgi nosūtīts uz: %s."
 msgid "Status report successfully sent."
 msgstr "Statusa pārskats veiksmīgi nosūtīts."
 
-#, fuzzy
 msgid "Stop"
-msgstr "Apturēts"
+msgstr "Apturēt"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Pārtraukt pēc  N pakešu nosūtīšanas (un saņemšanas)."
@@ -4090,9 +4089,8 @@ msgstr "Temperatūra"
 msgid "Temperature monitoring"
 msgstr "Temperatūras uzraudzīšana"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "Pagaidu mape"
+msgstr "Pagaidu Ierīce"
 
 msgid "Temporary directory"
 msgstr "Pagaidu mape"
@@ -4699,7 +4697,7 @@ msgid "This group already exists in the group list."
 msgstr "Šī grupa jau eksistē grupu sarakstā!"
 
 msgid "This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
-msgstr "Šie ir abi - servera nosaukums, kurš tiks reklamēts caur Zeroconf/Bonjour/Rendezvous, un datubāzes nosaukums, kura tiks eksportēta caur DAAP."
+msgstr "Šie ir abi - servera nosaukums, kurš tiks reklamēts caur Zeroconf/Bonjour/Rendezvous, un datubāzes nosaukums, kurš tiks eksportēts caur DAAP."
 
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr "Šis ir tikai informācijai (netiek lietots, kad notiek iSCSI pārrunas)."
@@ -5453,3 +5451,4 @@ msgstr "upriv"
 
 #~ msgid "Report generator"
 #~ msgstr "Pārskata ģenerators"
+
