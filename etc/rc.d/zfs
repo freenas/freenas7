@@ -26,11 +26,26 @@ required_modules="zfs"
 
 zfs_init()
 {
+	local _aft4kdevs _dev _cmd
+
 	# gnop for 4KB sector
 	if ! /sbin/kldstat -q -m g_nop; then
 		echo "Load NOP GEOM class"
 		/sbin/kldload geom_nop.ko
 	fi
+
+	# Create nop device
+	_aft4kdevs=`/usr/local/bin/xml sel -t \
+	    -m "//zfs/vdevices/vdevice[aft4k]" \
+		-m "device" -v "concat(.,' ')" \
+	    ${configxml_file} | /usr/local/bin/xml unesc`
+	for _dev in $_aft4kdevs
+	do
+		if [ ! -e "${_dev}.nop" ]; then
+			_cmd="gnop create -S 4096 $_dev"
+			eval "$_cmd"
+		fi
+	done
 
 	# Make sure /boot/zfs/zpool.cache exists. On 'embedded' installations
 	# this file is missing after a reboot => zpools are missing, so we
