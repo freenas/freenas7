@@ -124,7 +124,13 @@ foreach ($rawdata as $line)
 
 	if (!is_null($vdev) && preg_match('/^\t    (\S+)/', $line, $m)) // dev
 	{
-		$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+		$dev = $m[1];
+		if (preg_match("/^(.+)\.nop$/", $dev, $m)) {
+			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+			$zfs['vdevices']['vdevice'][$vdev]['aft4k'] = true;
+		} else {
+			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
+		}
 	}
 	else if (!is_null($pool) && preg_match('/^\t  (\S+)/', $line, $m)) // vdev or dev (type disk)
 	{

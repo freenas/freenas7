@@ -847,7 +847,8 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k
 	system("/sbin/sysctl kern.geom.debugflags=0x10 2>&1");
 	if (!$notinitmbr) {
 		echo gettext("Deleting MBR and partition table")."...\n";
-		system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} count=1 2>&1");
+		$count = (1024*1024) / $diskinfo['sectorsize'];
+		system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} count={$count} 2>&1");
 	}
 	if ($aft4k) {
 		// Advanced Format 4KB (512 x 8)
