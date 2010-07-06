@@ -559,7 +559,8 @@ function install_fdisk($disk, $slicesize)
 	}
 
 	// Delete MBR and partition table.
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs={$diskinfo['sectorsize']} count=64")) {
+	$count = (1024*1024) / $diskinfo['sectorsize'];
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs={$diskinfo['sectorsize']} count={$count}")) {
 		write_console("Error: Failed to delete MBR and partition table on disk {$disk}.\n");
 		return 1;
 	}
@@ -610,7 +611,7 @@ function install_bsdlabel($disk, $fstype, $startsector, $slicesize, $alignsector
 	$aligned_counts = floor($aligned_counts / $alignsector) * $alignsector;
 
 	// Completely wipe any prior information on the partition
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=34")) {
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$disk} bs=512 count=2048")) {
 		write_console("\nError: Failed to wipe any prior information on {$disk}.\n");
 		return 1;
 	}
