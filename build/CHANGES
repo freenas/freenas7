@@ -69,7 +69,7 @@ Majors changes:
 - Add virtual machine guest support (open-vm-tools/vbox-additions).
 - Upgrade inadyn-mt to 02.18.32.
 - Upgrade bash to 4.1.007.
-- Upgrade istgt to 20100525.
+- Upgrade istgt to 20100707.
 - Upgrade msmtp to 1.4.20.
 - Upgrade nano to 2.2.4.
 - Upgrade gzip to 1.4.
