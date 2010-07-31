@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2010 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 #
 # Service types definition: http://www.dns-sd.org/ServiceTypes.html
@@ -26,15 +26,18 @@ extra_commands="mkconf"
 
 # Defaults
 mdnsresponder_config=${mdnsresponder_config:-"/var/etc/${name}.conf"}
+pidfile="/var/run/mDNSResponder.pid"
 command="/usr/local/sbin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
-pidfile="/var/run/mDNSResponder.pid"
+
+stop_cmd="kill -s int `cat ${pidfile}`"
+stop_postcmd="rm ${pidfile}"
 
 mdnsresponder_mkconf()
 {
 	local _if
 
-	echo "# mDNSResponderPosix configuration File
+	echo "" > ${mdnsresponder_config}
 #
 # This file contains the services to be announced to other Rendezvous aware
 # machines on the .local network
@@ -46,8 +49,12 @@ mdnsresponder_mkconf()
 # TXT RECORD (short description of service)
 #
 # For types: http://www.dns-sd.org/ServiceTypes.html" > ${mdnsresponder_config}
-
 	/usr/local/bin/xml sel -t \
+		-v "//system/hostname" -n \
+		-o "_device-info._tcp. local." -n \
+		-o "1" -n \
+		-o "model=Xserve" -n \
+		-n \
 		-v "//system/hostname" -n \
 		-i "//system/webgui/protocol[. = 'https']" \
 			-o "_https._tcp. local." -n \
