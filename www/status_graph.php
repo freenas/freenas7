@@ -83,7 +83,7 @@ foreach ($ifdescrs as $ifn => $ifd) {
         width="550"
         height="275">
   <param name="src" value="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>" />
-  Your browser does not support this object type!<br /><span class="red"><strong>Note:</strong></span> The <a href="http://www.examotion.com/index.php?id=product_player_download" target="_blank">RENESIS Player</a> is required to view the graph.
+  Your browser does not support this object type!<br /><span class="red"><strong>Note:</strong></span> The <a href="http://de.brothersoft.com/Renesis-Player-download-141155.html" target="_blank">RENESIS Player</a> is required to view the graph.
 </object>
 </div>
 </td></tr></table>
