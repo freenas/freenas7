@@ -1,8 +1,8 @@
 PORTNAME=			zoneinfo
-DISTVERSION=	2010k
+DISTVERSION=	2010l
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
-MAINTAINER=		ma.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	ftp://elsie.nci.nih.gov/pub/
 DISTNAME=			tzdata${DISTVERSION}
