@@ -1,19 +1,23 @@
 PORTNAME=				transmission
-PORTVERSION=		1.93
-PORTREVISION?=	1
+PORTVERSION=		2.04
+PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
-MAINTAINER=			ma.zoon@quicknet.nl
+MAINTAINER=			michael.zoon@freenas.org
 
 MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 
-LIB_DEPENDS+=		curl.6:${PORTSDIR}/ftp/curl
+LIB_DEPENDS+=     curl.6:${PORTSDIR}/ftp/curl \
+		       event-1.4.4:${PORTSDIR}/devel/libevent
 
 USE_GMAKE=			yes
 USE_GNOME?=			pkgconfig
 USE_OPENSSL=		yes
 USE_BZIP2=			yes
 GNU_CONFIGURE=	yes
+CPPFLAGS=	-I${LOCALBASE}/include
+LDFLAGS=	-L${LOCALBASE}/lib
+CONFIGURE_ENV=	CPPFLAGS="${CPPFLAGS}"
 
 CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE} \
 									--with-zlib=/usr \
@@ -25,22 +29,26 @@ CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE} \
 		 							--disable-nls
 
 general-patch:
-	@${REINPLACE_CMD} -e 's|SUBDIRS = . sample.*|SUBDIRS = .|g' \
-		${WRKSRC}/third-party/libevent/Makefile.*
-	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \
+	@${FIND} ${WRKSRC} -name Makefile.in | ${XARGS} ${REINPLACE_CMD} -e \
 		's|noinst_PROGRAMS = |noinst_PROGRAMS = #|g'
+	@${REINPLACE_CMD} -e '/#define DISABLE_GETTEXT/s,/\* \(.*\) \*/,\1,' \
+		${WRKSRC}/libtransmission/utils.h
 	@${REINPLACE_CMD} -e \
 		's|_pthread_flags=".*"|_pthread_flags="${PTHREAD_LIBS}"|g ; \
-		s|libevent_source=system|libevent_source=bundled|g' \
+		s|rt_clock_gettime=yes|rt_clock_gettime=no|g ; \
+		s|" == "|" = "|g ; s|$$with_ssl.*/usr;|${OPENSSLBASE};|g' \
 			${WRKSRC}/configure
-	@${REINPLACE_CMD} -e 's|-lrt||g' \
-		${WRKSRC}/third-party/libevent/configure
 	@${REINPLACE_CMD} -e 's|doc \\| \\|g' \
 		${WRKSRC}/Makefile.in
+
 
 post-patch: general-patch
 
 do-install:
+
+	@${CP} -Rpv /usr/local/lib/libevent-1.4.so.4 ${FREENAS_ROOTFS}/lib/libevent-1.4.so.4
+
+
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/daemon/transmission-daemon ${FREENAS_ROOTFS}/usr/local/bin
