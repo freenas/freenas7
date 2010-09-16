@@ -1,12 +1,12 @@
 PORTNAME=		samba35
-PORTVERSION=		3.5.4
+PORTVERSION=		3.5.5
 #PORTREVISION?=		0
 CATEGORIES?=		net
 MASTER_SITES=		${MASTER_SITE_SAMBA}
 MASTER_SITE_SUBDIR=	. old-versions rc pre
 DISTNAME=		${PORTNAME:S|35$||}-${PORTVERSION:S|.p|pre|:S|.r|rc|:S|.t|tp|:S|.a|alpha|}
 
-MAINTAINER?=		aoyama@peach.ne.jp
+MAINTAINER?=		michael.zoon@quicknet.nl
 COMMENT?=		A free SMB and CIFS client and server for UNIX
 
 # Additional patches from Sernet.de
