@@ -3,7 +3,7 @@ PORTVERSION=	0.660
 PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			Free UPnP Entertainment Service
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=			SF/${PORTNAME}/${PORTNAME}/SVN-660
 DISTNAME=					${PORTNAME}-${PORTVERSION}
@@ -17,7 +17,7 @@ LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									vorbis.4:${PORTSDIR}/audio/libvorbis \
 									avformat:${PORTSDIR}/multimedia/ffmpeg
 
-USE_AUTOTOOLS=		autoconf:262
+USE_AUTOTOOLS=		autoconf:267
 USE_GNOME=				libxml2
 USE_ICONV=				yes
 USE_GMAKE=				yes
