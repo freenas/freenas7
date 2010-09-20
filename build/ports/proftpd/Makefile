@@ -2,7 +2,7 @@ PORTNAME=			proftpd
 PORTVERSION=	1.3.2e
 CATEGORIES=		ftp
 COMMENT=			Highly configurable ftp daemon
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	ftp://ftp.proftpd.org/distrib/source/ \
 							ftp://ftp.fastorama.com/mirrors/ftp.proftpd.org/distrib/source/ \
@@ -16,7 +16,7 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 USE_GMAKE=			yes
 USE_BZIP2=			yes
-USE_AUTOTOOLS=	autoconf:262
+USE_AUTOTOOLS=	autoconf:267
 GNU_CONFIGURE=	yes
 USE_GETTEXT=		yes
 USE_OPENSSL=		yes

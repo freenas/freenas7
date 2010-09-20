@@ -6,7 +6,7 @@ MASTER_SITES=		${MASTER_SITE_SAMBA}
 MASTER_SITE_SUBDIR=	. old-versions rc pre
 DISTNAME=		${PORTNAME:S|35$||}-${PORTVERSION:S|.p|pre|:S|.r|rc|:S|.t|tp|:S|.a|alpha|}
 
-MAINTAINER?=		michael.zoon@quicknet.nl
+MAINTAINER?=		michael.zoon@freenas.org
 COMMENT?=		A free SMB and CIFS client and server for UNIX
 
 # Additional patches from Sernet.de
@@ -24,7 +24,7 @@ AUTOCONF_ARGS=		${IPATHS}
 USE_GMAKE=		yes
 USE_ICONV=		yes
 GNU_CONFIGURE=		yes
-USE_AUTOTOOLS=		autoconf:262 autoheader:262
+USE_AUTOTOOLS=		autoconf:267 autoheader:267
 # directories
 VARDIR?=		/var
 SAMBA_SPOOL?=		${VARDIR}/spool/samba
