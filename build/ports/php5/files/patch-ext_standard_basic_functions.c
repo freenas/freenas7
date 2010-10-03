@@ -22,7 +22,7 @@
  		for (env = environ; env != NULL && *env != NULL; env++) {
  			if (!strncmp(*env, pe.key, pe.key_len) && (*env)[pe.key_len] == '=') {	/* found it */
 -#if defined(PHP_WIN32)
-+##if defined(PHP_WIN32) || __FreeBSD_version < 700050
++#if defined(PHP_WIN32) || __FreeBSD_version < 700050
  				/* must copy previous value because MSVCRT's putenv can free the string without notice */
  				pe.previous_value = estrdup(*env);
  #else
