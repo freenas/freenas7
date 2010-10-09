@@ -1,0 +1,24 @@
+*** usbdevs.orig	Fri Oct  1 17:07:06 2010
+--- usbdevs	Fri Oct  1 17:11:01 2010
+***************
+*** 62,67 ****
+--- 62,68 ----
+   * make the device recognised by the appropriate device driver.
+   */
+  
++ vendor MEGATEC		0x0001	Mega System Technologies (likely unofficial)
+  vendor UNKNOWN1		0x0053	Unknown vendor
+  vendor UNKNOWN2		0x0105	Unknown vendor
+  vendor EGALAX2		0x0123	eGalax, Inc.
+***************
+*** 1670,1675 ****
+--- 1671,1679 ----
+  product MCT USB232		0x0210	USB-232 Interface
+  product MCT SITECOM_USB232	0x0230	Sitecom USB-232 Products
+  
++ /* Mega Systems Technologies, Inc. -- megatec.com.tw */
++ product	MEGATEC UPS		0x0000	Megatec USB UPS interface
++ 
+  /* Meizu Electronics */
+  product MEIZU M6_SL		0x0140	MiniPlayer M6 (SL)
+  
