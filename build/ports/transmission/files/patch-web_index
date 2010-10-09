@@ -1,25 +1,25 @@
---- web/index.html.orig	2010-08-07 05:35:38.000000000 +0200
-+++ web/index.html	2010-08-15 12:06:12.000000000 +0200
-@@ -73,7 +73,7 @@
+--- web/index.html.orig	2010-10-08 02:54:32.000000000 +0200
++++ web/index.html	2010-10-09 19:53:04.000000000 +0200
+@@ -78,7 +78,7 @@
  			</div>
- 			
+ 
  			<div id="inspector_header">
 -				<h1 id="torrent_inspector_name"></h1>
 +				<h4 id="torrent_inspector_name"></h4>
  				<span id="torrent_inspector_size"></span>
  			</div>
- 			
-@@ -378,18 +378,18 @@
+ 
+@@ -386,18 +386,18 @@
  			<div class="dialog_top_bar"></div>
  			<div class="dialog_window">
  				<img src="images/graphics/logo.png" alt="Transmission Logo" />
 -				<h2 class="dialog_heading">Upload Torrent Files</h2>
-+				<h2 class="dialog_heading">Open a Torrent File</h2>
- 				<form action="#" method="post" id="torrent_upload_form" 
- 					enctype="multipart/form-data" target="torrent_upload_frame">  
++				<h2 class="dialog_heading">Add a Torrent File</h2>
+ 				<form action="#" method="post" id="torrent_upload_form"
+ 					enctype="multipart/form-data" target="torrent_upload_frame">
  					<div class="dialog_message">
 -						<label for="torrent_upload_file">Please select a torrent file to upload:</label>
-+						<label for="torrent_upload_file">Please select the torrent file to run:</label>
++						<label for="torrent_upload_file">Please select a torrent file to run:</label>
  							<input type="file" name="torrent_files[]" id="torrent_upload_file" multiple="multiple" />
  						<label for="torrent_upload_url">Or enter a URL:</label>
  							<input type="text" id="torrent_upload_url"/>
@@ -31,30 +31,47 @@
  					<a href="#cancel" id="upload_cancel_button">Cancel</a>
  				</form>
  			</div>
-@@ -418,6 +418,9 @@
- 								<li>150 KB/s</li>
- 								<li>200 KB/s</li>
- 								<li>250 KB/s</li>
-+								<li>300 KB/s</li>
-+								<li>350 KB/s</li>
-+								<li>400 KB/s</li>
- 								<li>500 KB/s</li>
- 								<li>750 KB/s</li>
+@@ -416,7 +416,6 @@
+ 								<li id="unlimited_download_rate">Unlimited</li>
+ 								<li id="limited_download_rate">Limit (10 kB/s)</li>
+ 								<li class="separator"></li>
+-								<li>5 kB/s</li>
+ 								<li>10 kB/s</li>
+ 								<li>20 kB/s</li>
+ 								<li>30 kB/s</li>
+@@ -427,6 +426,10 @@
+ 								<li>150 kB/s</li>
+ 								<li>200 kB/s</li>
+ 								<li>250 kB/s</li>
++								<li>300 kB/s</li>
++								<li>350 kB/s</li>
++								<li>400 kB/s</li>
++								<li>450 kB/s</li>
+ 								<li>500 kB/s</li>
+ 								<li>750 kB/s</li>
  							</ul>
-@@ -436,8 +439,16 @@
- 								<li>75 KB/s</li>
- 								<li>100 KB/s</li>
- 								<li>150 KB/s</li>
-+								<li>160 KB/s</li>
-+								<li>170 KB/s</li>
-+								<li>180 KB/s</li>
-+								<li>190 KB/s</li>
- 								<li>200 KB/s</li>
-+								<li>225 KB/s</li>
- 								<li>250 KB/s</li>
-+								<li>300 KB/s</li>
-+								<li>350 KB/s</li>
-+								<li>400 KB/s</li>
- 								<li>500 KB/s</li>
- 								<li>750 KB/s</li>
+@@ -436,7 +439,6 @@
+ 								<li id="unlimited_upload_rate">Unlimited</li>
+ 								<li id="limited_upload_rate">Limit (10 kB/s)</li>
+ 								<li class="separator"></li>
+-								<li>5 kB/s</li>
+ 								<li>10 kB/s</li>
+ 								<li>20 kB/s</li>
+ 								<li>30 kB/s</li>
+@@ -445,8 +447,16 @@
+ 								<li>75 kB/s</li>
+ 								<li>100 kB/s</li>
+ 								<li>150 kB/s</li>
++								<li>160 kB/s</li>
++								<li>170 kB/s</li>
++								<li>180 kB/s</li>
++								<li>190 kB/s</li>
+ 								<li>200 kB/s</li>
++								<li>225 kB/s</li>
+ 								<li>250 kB/s</li>
++								<li>300 kB/s</li>
++								<li>350 kB/s</li>
++								<li>400 kB/s</li>
+ 								<li>500 kB/s</li>
+ 								<li>750 kB/s</li>
  							</ul>
