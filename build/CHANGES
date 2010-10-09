@@ -8,7 +8,7 @@ Majors changes:
 - Upgrade e2fsprogs to 1.41.11.
 - Upgrade smartmontools to 5.39.1.
 - Upgrade php5 to 5.2.14.
-- Upgrade transmission to 2.04.
+- Upgrade transmission to 2.10.
 - Upgrade samba to 3.5.5.
 - Increase image size to 72MB, mfsroot to 180MB.
 - Increase default install size embedded to 120MB, full to 380MB.

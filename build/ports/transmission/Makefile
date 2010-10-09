@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		2.04
+PORTVERSION=		2.10
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -66,33 +66,38 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/file_wanted_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_activity.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_files.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
-	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_trackers.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_general.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_peers.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/info_trackers.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/tab_backgrounds.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/toolbar_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/buttons/torrent_buttons.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/buttons
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/favicon.ico ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/favicon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/webclip-icon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/chrome.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/filter_bar.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/filter_icon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/iphone_chrome.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/lock_icon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/logo.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/transfer_arrows.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
+	@${INSTALL_DATA} -v ${WRKSRC}/web/images/graphics/wait20.gif ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/graphics
 	@${INSTALL_DATA} -v ${WRKSRC}/web/images/progress/progress.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images/progress
-	@${INSTALL_DATA} -v ${WRKSRC}/web/images/webclip-icon.png ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/images
 	@${INSTALL_DATA} -v ${WRKSRC}/web/index.html ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/common.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/dialog.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
-	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/json.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/formatter.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/menu.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/torrent.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/transmission.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
 	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/transmission.remote.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.contextmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.form-2.21.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/jquery.transmenu.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
+	@${INSTALL_DATA} -v ${WRKSRC}/web/javascript/jquery/json.min.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/javascript/jquery
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/common.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie6.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
 	@${INSTALL_DATA} -v ${WRKSRC}/web/stylesheets/ie7.css ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/stylesheets
