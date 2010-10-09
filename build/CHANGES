@@ -12,7 +12,7 @@ Majors changes:
 - Add gmultipath, disk mutlipath control utility(FR #2835904)
 
 Minors changes.
-- Update php to 5.2.12 (Thanks to Xin LI)
+- Update php to 5.2.14 (Thanks to Xin LI)
 - Do not ask for network card OPT if only one network card detected
 - Update URL of the website (http://freenas.org)
 - Improve the display of IP addresses in console mode
@@ -121,6 +121,7 @@ Bug fixes:
 - Fix control of Ctrl+Alt+Del if console menu is disabled (BR 2976816).
 - Fix the document link on Services|Rsync|Server|Settings (BR 2997828).
 - Fix fail to connect SSH if ActiveDirectory is enabled (BR 2821715, 2898371).
+- Fix UPS support for Megatec USB UPSs fails (BR 3079159).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
