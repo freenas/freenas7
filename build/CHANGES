@@ -5,7 +5,7 @@ Majors changes:
 - Upgrade to FreeBSD 7.3.
 - Upgrade unison to 2.32.52.
 - Upgrade bsnmp-ucd to 0.3.2.
-- Upgrade e2fsprogs to 1.41.11.
+- Upgrade e2fsprogs to 1.41.12.
 - Upgrade smartmontools to 5.39.1.
 - Upgrade php5 to 5.2.14.
 - Upgrade transmission to 2.10.
