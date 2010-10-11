@@ -1,9 +1,9 @@
 PORTNAME=			e2fsprogs
-PORTVERSION=	1.41.11
+PORTVERSION=	1.41.12
 PORTREVISION=	0
 CATEGORIES=		sysutils
 COMMENT=			Utilities & library to manipulate ext2/3/4 filesystems
-MAINTAINER=		ma.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=			SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}
 
