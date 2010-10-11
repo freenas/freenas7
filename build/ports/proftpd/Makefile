@@ -1,5 +1,5 @@
 PORTNAME=			proftpd
-PORTVERSION=	1.3.2e
+PORTVERSION=	1.3.3b
 CATEGORIES=		ftp
 COMMENT=			Highly configurable ftp daemon
 MAINTAINER=		michael.zoon@freenas.org
@@ -21,7 +21,8 @@ GNU_CONFIGURE=	yes
 USE_GETTEXT=		yes
 USE_OPENSSL=		yes
 
-MODULES=				mod_site_misc:mod_tls:mod_wrap:mod_ban
+MODULES=				mod_site_misc:mod_tls:mod_wrap2:mod_ban
+OPTIONS+=                          WRAP "Include mod_wrap2" on
 
 CONFIGURE_ARGS=	--localstatedir=/var/run \
 								--with-pkgconfig=libdata/pkgconfig \
