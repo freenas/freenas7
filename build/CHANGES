@@ -12,7 +12,7 @@ Majors changes:
 - Add gmultipath, disk mutlipath control utility(FR #2835904)
 
 Minors changes.
-- Update php to 5.2.14 (Thanks to Xin LI)
+- Update php to 5.2.14.
 - Do not ask for network card OPT if only one network card detected
 - Update URL of the website (http://freenas.org)
 - Improve the display of IP addresses in console mode
@@ -75,6 +75,8 @@ Majors changes:
 - Upgrade gzip to 1.4.
 - Upgrade tftp-hpa to 5.0.
 - Introduce iSCSI boot/install feature (isboot 0.1.3).
+- Upgrade 3ware driver to 9.5.3.
+- Upgrade proftpd to 1.3.3b.
 
 Minors changes:
 - Add Czech and Slovak translations.
