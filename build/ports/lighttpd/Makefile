@@ -1,8 +1,8 @@
 PORTNAME=			lighttpd
-PORTVERSION=	1.4.26
+PORTVERSION=	1.4.28
 CATEGORIES=		www
 COMMENT=			A secure, fast, compliant, and very flexible Web Server
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	http://download.lighttpd.net/lighttpd/releases-1.4.x/ \
 							http://mirrors.cat.pdx.edu/lighttpd/
@@ -16,7 +16,8 @@ USE_AUTOTOOLS=	libtool:22
 GNU_CONFIGURE=		yes
 USE_OPENSSL=			yes
 USE_GNOME+=				libxml2
-CONFIGURE_ARGS+=	--sysconfdir=/var/etc/ \
+CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/lighttpd --enable-static \
+						                     --sysconfdir=/var/etc/ \
 									--enable-lfs \
 									--without-mysql \
 									--without-ldap \
@@ -24,7 +25,7 @@ CONFIGURE_ARGS+=	--sysconfdir=/var/etc/ \
 									--without-lua \
 									--with-bzip2 \
 									--with-webdav-props \
-									--with-webdav-locks
+									--with-webdav-lock
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/lighttpd ${FREENAS_ROOTFS}/usr/local/sbin
@@ -44,7 +45,6 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_extforward.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_fastcgi.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_flv_streaming.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
-
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_indexfile.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_magnet.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/mod_mysql_vhost.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
