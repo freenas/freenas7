@@ -25,7 +25,7 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/lighttpd --enable-static \
 									--without-lua \
 									--with-bzip2 \
 									--with-webdav-props \
-									--with-webdav-lock
+									--with-webdav-locks
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/lighttpd ${FREENAS_ROOTFS}/usr/local/sbin
