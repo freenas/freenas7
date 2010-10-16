@@ -86,12 +86,12 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
             <tr>
             	<td class="listt">
             <p>The following persons have contributed to FreeNAS code:</p>
-             <div>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and project leader</font></em></div><br />
               <div>Daisuke Aoyama (<a href="mailto:aoyama@peach.ne.jp">aoyama@peach.ne.jp</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and adapt iSCSI Target WebGUI to istgt</font></em></div><br />
              <div>Michael Zoon (<a href="mailto:michael.zoon@freenas.org">michael.zoon@freenas.org</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer and Dutch translator of the WebGUI</font></em></div><br />
+             <div>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Developer</font></em></div><br />
               <div>Christian Degen (<a href="mailto:bubulein@freenas.org">bubulein@freenas.org</a>)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">User guide and Live support on irc #freenas|IRC Freenode <a href="http://webchat.freenode.net/?channels=#freenas">http://webchat.freenode.net</a></font></em></div><br />
              <div>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br />
@@ -184,16 +184,16 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 1999-2009 OpenBSD</p>
 
       <p> Samba (<a href="http://www.samba.org" target="_blank">http://www.samba.org</a>)<br />
-       </p>
+        Copyright &copy; 2007 Free Software Foundation</p>
 
       <p> Rsync (<a href="http://www.samba.org/rsync" target="_blank">http://www.samba.org/rsync</a>)<br />
-       </p>
+        Copyright &copy; 2007 Free Software Foundation</p>
 
       <p> ProFTPD - Highly configurable FTP server (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br />
         Copyright &copy; 1999, 2000-2010 The ProFTPD Project</p>
 
       <p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br />
-       </p>
+       Copyright &copy; 1999, 2000-2009 The tftp-hpa series is maintained by H. Peter Anvin <hpa@zytor.com>.</p>
 
       <p> Netatalk (<a href="http://netatalk.sourceforge.net" target="_blank">http://netatalk.sourceforge.net</a>)<br />
         Copyright &copy; 1990,1996 Regents of The University of Michigan</p>
@@ -254,7 +254,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Rewritten by Eric Wassenaar, Nikhef-H, (e07@nikhef.nl).</p>
 
       <p>Transmission - Transmission is a fast, easy, and free multi-platform BitTorrent client (<a href="http://www.transmissionbt.com" target="_blank">http://www.transmissionbt.com</a>)<br />
-        Copyright &copy; Transmission Project 2008-2010. All rights reserved.</p>
+        Copyright &copy; 2008-2010 Transmission Project. All rights reserved.</p>
 
       <p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br />
         Copyright &copy; Felix C. Stegerman. All rights reserved.</p>
