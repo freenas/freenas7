@@ -12,7 +12,7 @@ USE_BZIP2=					yes
 
 BUILD_DEPENDS=		sqlite3>=3.0:${PORTSDIR}/databases/sqlite3
 
-USE_AUTOTOOLS=		autoconf:267
+USE_AUTOTOOLS=		autoconf:268
 USE_GETOPT_LONG=	yes
 USE_GNOME=				libxml2
 USE_OPENSSL=			yes

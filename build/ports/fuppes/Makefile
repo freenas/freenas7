@@ -17,7 +17,7 @@ LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									vorbis.4:${PORTSDIR}/audio/libvorbis \
 									avformat:${PORTSDIR}/multimedia/ffmpeg
 
-USE_AUTOTOOLS=		autoconf:267
+USE_AUTOTOOLS=		autoconf:268
 USE_GNOME=				libxml2
 USE_ICONV=				yes
 USE_GMAKE=				yes
@@ -79,20 +79,13 @@ do-install:
 	# Copy additional libraries that are linked dynamically. These can not be
 	# covered by ldd when building userland via make.sh.
 	@${CP} -Rpv /usr/local/lib/libFLAC.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libFLAC.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libFLAC++.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libFLAC++.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libmp3lame.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libmp3lame.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libogg.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libogg.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libsndfile.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libsndfile.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libtwolame.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libtwolame.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libvorbis.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libvorbis.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -Rpv /usr/local/lib/libvorbisfile.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libvorbisfile.so.* ${FREENAS_ROOTFS}/usr/local/lib
+
 
 .include <bsd.port.mk>
