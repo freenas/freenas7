@@ -1,8 +1,8 @@
 PORTNAME=			smartmontools
-PORTVERSION=	5.39.1
+PORTVERSION=	5.40
 CATEGORIES=		sysutils
 COMMENT=			S.M.A.R.T. disk monitoring tools
-MAINTAINER=		ma.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=		SF
 
