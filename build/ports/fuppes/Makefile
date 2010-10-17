@@ -76,16 +76,4 @@ do-install:
 	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libdatabase_sqlite3.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libdatabase_sqlite3.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 
-	# Copy additional libraries that are linked dynamically. These can not be
-	# covered by ldd when building userland via make.sh.
-	@${CP} -Rpv /usr/local/lib/libFLAC.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libFLAC++.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libmp3lame.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libogg.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libsndfile.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libtwolame.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libvorbis.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${CP} -Rpv /usr/local/lib/libvorbisfile.so ${FREENAS_ROOTFS}/usr/local/lib
-
-
 .include <bsd.port.mk>
