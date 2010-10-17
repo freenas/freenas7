@@ -208,7 +208,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 2004-2005 Bruce Cran (bruce@cran.org.uk). All rights reserved.</p>
 
       <p>smartmontools (<a href="http://sourceforge.net/projects/smartmontools" target="_blank">http://sourceforge.net/projects/smartmontools</a>)<br />
-        Copyright &copy; 2002-2008 Bruce Allen.</p>
+        Copyright &copy; 2002-2010 Bruce Allen.</p>
 
       <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br />
         Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
