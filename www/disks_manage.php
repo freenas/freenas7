@@ -124,11 +124,12 @@ function diskmanagement_process_updatenotification($mode, $data) {
 					<tr>
 						<td width="5%" class="listhdrlr"><?=gettext("Disk"); ?></td>
 						<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
-						<td width="40%" class="listhdrr"><?=gettext("Description"); ?></td>
-						<td width="10%" class="listhdrr"><?=gettext("Serial number"); ?></td>
+						<td width="22%" class="listhdrr"><?=gettext("Description"); ?></td>
+						<td width="15%" class="listhdrr"><?=gettext("Device model"); ?></td>
+						<td width="15%" class="listhdrr"><?=gettext("Serial number"); ?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
 						<td width="10%" class="listhdrr"><?=gettext("File system"); ?></td>
-						<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
+						<td width="8%" class="listhdrr"><?=gettext("Status"); ?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php foreach ($a_disk_conf as $disk):?>
@@ -153,6 +154,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars(system_get_volume_model($disk['devicespecialfile']));?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars(system_get_volume_serial($disk['devicespecialfile']));?>&nbsp;</td>
 						<td class="listr"><?php if ($disk['harddiskstandby']) { echo htmlspecialchars($disk['harddiskstandby']); } else { echo htmlspecialchars(gettext("Always on")); }?>&nbsp;</td>
 						<td class="listr"><?=($disk['fstype']) ? htmlspecialchars(get_fstype_shortdesc($disk['fstype'])) : htmlspecialchars(gettext("Unknown or unformatted"))?>&nbsp;</td>
@@ -170,7 +172,7 @@ function diskmanagement_process_updatenotification($mode, $data) {
 					</tr>
 					<?php endforeach;?>
 					<tr>
-						<td class="list" colspan="7"></td>
+						<td class="list" colspan="8"></td>
 						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" border="0" alt="<?=gettext("Add disk"); ?>" /></a></td>
 					</tr>
 				</table>

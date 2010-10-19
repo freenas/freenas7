@@ -458,6 +458,23 @@ function system_get_volume_serial($devicefile) {
 }
 
 /**
+ * Get volume device model.
+ * @param[in] device	The device name, e.g. /dev/ad1
+ * @return The disk device model.
+ */
+function system_get_volume_model($devicefile) {
+	/* without smart */
+	mwexec2("ataidle {$devicefile} | grep 'Model'", $rawdata);
+	if (1 === preg_match("/^Model:\s+(.+)$/", $rawdata[0], $matches))
+		return $matches[1];
+	/* failback to old method */
+	mwexec2("smartctl -i {$devicefile} | grep 'Device Model'", $rawdata);
+	if (1 !== preg_match("/^Device Model:\s+(.+)$/", $rawdata[0], $matches))
+		return gettext("n/a");
+	return $matches[1];
+}
+
+/**
  * Get mount point usage information.
  * @return An array containg the requested informations:
  * @code
