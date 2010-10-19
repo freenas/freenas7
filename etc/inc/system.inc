@@ -1,7 +1,7 @@
 <?php
 /*
 	system.inc
-	part of FreeNAS (http://freenas.org)
+	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
@@ -453,6 +453,23 @@ function system_get_volume_serial($devicefile) {
 	/* failback to old method */
 	mwexec2("smartctl -i {$devicefile} | grep 'Serial Number'", $rawdata);
 	if (1 !== preg_match("/^Serial Number:\s+(.+)$/", $rawdata[0], $matches))
+		return gettext("n/a");
+	return $matches[1];
+}
+
+/**
+ * Get volume device model.
+ * @param[in] device	The device name, e.g. /dev/ad1
+ * @return The disk device model.
+ */
+function system_get_volume_model($devicefile) {
+	/* without smart */
+	mwexec2("ataidle {$devicefile} | grep 'Model'", $rawdata);
+	if (1 === preg_match("/^Model:\s+(.+)$/", $rawdata[0], $matches))
+		return $matches[1];
+	/* failback to old method */
+	mwexec2("smartctl -i {$devicefile} | grep 'Device Model'", $rawdata);
+	if (1 !== preg_match("/^Device Model:\s+(.+)$/", $rawdata[0], $matches))
 		return gettext("n/a");
 	return $matches[1];
 }

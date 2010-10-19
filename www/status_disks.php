@@ -56,11 +56,12 @@ $raidstatus = get_sraid_disks_list();
 				<tr>
 					<td width="5%" class="listhdrlr"><?=gettext("Disk");?></td>
 					<td width="5%" class="listhdrr"><?=gettext("Capacity");?></td>
-					<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
+					<td width="22%" class="listhdrr"><?=gettext("Description");?></td>
+					<td width="15%" class="listhdrr"><?=gettext("Device model"); ?></td>
 					<td width="15%" class="listhdrr"><?=gettext("Serial number"); ?></td>
 					<td width="15%" class="listhdrr"><?=gettext("I/O statistics");?></td>
 					<td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
-					<td width="10%" class="listhdrr"><?=gettext("Status");?></td>
+					<td width="8%" class="listhdrr"><?=gettext("Status");?></td>
 				</tr>
 				<?php foreach ($a_disk_conf as $disk):?>
 				<?php (($iostat = system_get_device_iostat($disk['name'])) === FALSE) ? $iostat = gettext("n/a") : $iostat = sprintf("%s KiB/t, %s tps, %s MiB/s", $iostat['kpt'], $iostat['tps'], $iostat['mps']);?>
@@ -69,6 +70,7 @@ $raidstatus = get_sraid_disks_list();
 					<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars(system_get_volume_model($disk['devicespecialfile']));?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars(system_get_volume_serial($disk['devicespecialfile']));?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($iostat);?>&nbsp;</td>
 					<td class="listr"><?=$temp;?>&nbsp;</td>
@@ -83,6 +85,7 @@ $raidstatus = get_sraid_disks_list();
 					<td class="listlr"><?=htmlspecialchars($diskk);?></td>
 					<td class="listr"><?=htmlspecialchars($diskv['size']);?></td>
 					<td class="listr"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars(gettext("n/a"));?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars(gettext("n/a"));?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($iostat);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($temp);?>&nbsp;</td>
