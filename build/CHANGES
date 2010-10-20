@@ -68,7 +68,7 @@ Majors changes:
 - Set kern.hz=100 when running on virtual machine and kern.hz>100.
 - Add virtual machine guest support (open-vm-tools/vbox-additions).
 - Upgrade inadyn-mt to 02.18.36.
-- Upgrade bash to 4.1.007.
+- Upgrade bash to 4.1.009.
 - Upgrade istgt to 20100707.
 - Upgrade msmtp to 1.4.20.
 - Upgrade nano to 2.2.4.
@@ -78,6 +78,7 @@ Majors changes:
 - Upgrade 3ware driver to 9.5.3.
 - Upgrade proftpd to 1.3.3b.
 - Upgrade lighttpd to 1.4.28.
+- Upgrade iperf to 2.0.5.
 
 Minors changes:
 - Add Czech and Slovak translations.
