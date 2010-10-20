@@ -1,5 +1,5 @@
 PORTNAME=			iperf
-PORTVERSION=	2.0.4
+PORTVERSION=	2.0.5
 CATEGORIES=		benchmarks ipv6
 COMMENT=			A tool to measure maximum TCP and UDP bandwidth
 MAINTAINER=		votdev@gmx.de
