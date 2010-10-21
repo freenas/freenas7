@@ -55,12 +55,12 @@ $raidstatus = get_sraid_disks_list();
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="5%" class="listhdrlr"><?=gettext("Disk");?></td>
-					<td width="5%" class="listhdrr"><?=gettext("Capacity");?></td>
-					<td width="22%" class="listhdrr"><?=gettext("Description");?></td>
-					<td width="15%" class="listhdrr"><?=gettext("Device model"); ?></td>
-					<td width="15%" class="listhdrr"><?=gettext("Serial number"); ?></td>
-					<td width="15%" class="listhdrr"><?=gettext("I/O statistics");?></td>
-					<td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
+					<td width="6%" class="listhdrr"><?=gettext("Capacity");?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Description");?></td>
+					<td width="16%" class="listhdrr"><?=gettext("Device model"); ?></td>
+					<td width="16%" class="listhdrr"><?=gettext("Serial number"); ?></td>
+					<td width="16%" class="listhdrr"><?=gettext("I/O statistics");?></td>
+					<td width="8%" class="listhdrr"><?=gettext("Temperature");?></td>
 					<td width="8%" class="listhdrr"><?=gettext("Status");?></td>
 				</tr>
 				<?php foreach ($a_disk_conf as $disk):?>

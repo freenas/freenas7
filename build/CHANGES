@@ -67,6 +67,7 @@ Minors changes:
 - Add ZFS cache and log device support.
 - Improve parameters for Samba 3.5.x.
 - Improve Active Directory support.
+- Display Device model on 'Status|Disks and Disks|Management'.
 
 Bug fixes:
 - Fix wrong validation when WINS is enabled.
