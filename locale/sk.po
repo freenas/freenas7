@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-21 13:36+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:17+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:32+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVAKIA\n"
+"Language: \n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -632,13 +632,11 @@ msgstr "Teplota CPU"
 msgid "CPU usage"
 msgstr "Využitie CPU"
 
-#, fuzzy
 msgid "Cache"
-msgstr "Pridaný"
+msgstr ""
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "Zariadenie"
+msgstr ""
 
 msgid "Can't format the OS origin disk!"
 msgstr "Nie je možné formátovať zdrojový disk OS!"
@@ -942,9 +940,8 @@ msgstr "Štandardné používateľské meno je „admin“."
 msgid "DefaultTime2Retain"
 msgstr ""
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Štandardné"
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Definovať adresáre/URL, ktoré vyžadujú overenie."
@@ -1120,6 +1117,10 @@ msgstr "IP zariadenia"
 
 msgid "Device Pass-through"
 msgstr ""
+
+#, fuzzy
+msgid "Device model"
+msgstr "Názov zariadenia"
 
 msgid "Device name"
 msgstr "Názov zariadenia"
@@ -1309,8 +1310,12 @@ msgstr "Naozaj chcete zmazať tento cieľ?"
 msgid "Do you really want to delete this user?"
 msgstr "Naozaj chcete zmazať tohto používateľa?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Skutočne chcete zmazať tento zväzok?\\n!!!  Pozn.: Všetky údaje sa stratia anebude možné ich obnoviť. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Skutočne chcete zmazať tento zväzok?\\n"
+"!!!  Pozn.: Všetky údaje sa stratia anebude možné ich obnoviť. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Naozaj chcete formátovať disk? Všetky údaje sa stratia!"
@@ -2147,9 +2152,8 @@ msgstr "IPv6 adresa"
 msgid "IPv6 addresses"
 msgstr "IPv6 adresy"
 
-#, fuzzy
-msgid "IRC Live support"
-msgstr "Podpora rozš. atrib."
+msgid "IRC Live Support"
+msgstr ""
 
 msgid "ISO file to be mounted."
 msgstr "Pripojiť ISO súbor."
@@ -2236,9 +2240,8 @@ msgstr "Neformálne"
 msgid "Information"
 msgstr "Informácie"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Informácie"
+msgstr ""
 
 msgid "Inherit permissions"
 msgstr "Dedičnosť práv"
@@ -3408,7 +3411,8 @@ msgstr ""
 msgid "Reject"
 msgstr "Odmietnuť"
 
-msgid "Release notes"
+#, fuzzy
+msgid "Release Notes"
 msgstr "Poznámky k vydaniu"
 
 msgid "Reload page"
@@ -3906,9 +3910,8 @@ msgstr "Správa o stave úspešne odoslaná pre: %s."
 msgid "Status report successfully sent."
 msgstr "Správa o stave bola úspešne odoslaná."
 
-#, fuzzy
 msgid "Stop"
-msgstr "Zastavené"
+msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Zastaviť po odoslaní (a prijatí) N paketov."
@@ -4091,9 +4094,8 @@ msgstr "Teplota"
 msgid "Temperature monitoring"
 msgstr "Monitorovanie teploty"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "Dočasný priečinok"
+msgstr ""
 
 msgid "Temporary directory"
 msgstr "Dočasný priečinok"
@@ -5281,9 +5283,9 @@ msgstr "Najprv musíte pridať disky."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Musíte zadať rovnaký typ IP pre sieť a bránu."
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "Aby ste mohli používať iSCSI cieľ, musíte mať aspoň 256 MB RAM."
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Pred aktualizáciou firmvéru musíte reštartovať systém."
@@ -5451,3 +5453,4 @@ msgstr "odpojiť"
 
 msgid "upriv"
 msgstr "upriv"
+

@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-06-29 12:50+0900\n"
-"Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:04+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-29 03:40+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:36+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
+"Language: \n"
 "X-Poedit-Language: Japanese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1118,6 +1118,10 @@ msgstr "デバイスのIP"
 msgid "Device Pass-through"
 msgstr "SCSIデバイスパススルー"
 
+#, fuzzy
+msgid "Device model"
+msgstr "デバイス名"
+
 msgid "Device name"
 msgstr "デバイス名"
 
@@ -1306,7 +1310,9 @@ msgstr "このターゲットを削除してもよろしいですか?"
 msgid "Do you really want to delete this user?"
 msgstr "このユーザを削除してもよろしいですか?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 "このボリュームを削除してもよろしいですか?\n"
 "!!! 注意: 全てのデータは無くなってしまい、復旧する事ができません。"
@@ -2146,7 +2152,8 @@ msgstr "IPv6 アドレス"
 msgid "IPv6 addresses"
 msgstr "IPv6 アドレス一覧"
 
-msgid "IRC Live support"
+#, fuzzy
+msgid "IRC Live Support"
 msgstr "IRC ライブサポート"
 
 msgid "ISO file to be mounted."
@@ -3405,7 +3412,8 @@ msgstr "更新"
 msgid "Reject"
 msgstr "却下"
 
-msgid "Release notes"
+#, fuzzy
+msgid "Release Notes"
 msgstr "リリースノート"
 
 msgid "Reload page"
@@ -5451,96 +5459,66 @@ msgstr "upriv"
 
 #~ msgid "hours"
 #~ msgstr "時"
-
 #~ msgid "day"
 #~ msgstr "日"
-
 #~ msgid "days"
 #~ msgstr "日"
-
 #~ msgid "week days"
 #~ msgstr "週日"
-
 #~ msgid "months"
 #~ msgstr "月"
-
 #~ msgid "Create"
 #~ msgstr "作成"
-
 #~ msgid "LAN"
 #~ msgstr "LAN"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "Logs"
 #~ msgstr "ログ"
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "スタンバイ有りの最小の電力利用"
-
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "スタンバイ有りの中間の電力利用"
-
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "スタンバイ無しの最小の電力利用"
-
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "スタンバイ無しの中間の電力利用"
-
 #~ msgid "Synchronization Time"
 #~ msgstr "同期時間"
-
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr "同期する全てのファイルを複製する為に十分なスペースが必要かもしれません"
-
+#~ msgstr ""
+#~ "同期する全てのファイルを複製する為に十分なスペースが必要かもしれません"
 #~ msgid "Working Directory"
 #~ msgstr "作業ディレクトリ"
-
 #~ msgid "Where the working files will be stored"
 #~ msgstr "作業ファイルが保存される場所"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "作業ディレクトリが存在しない場合は作成して下さい"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "シャットダウン時間"
-
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Last %d %s log entries"
-
 #~ msgid "Encrypted disk name"
 #~ msgstr "暗号化ディスク名"
-
 #~ msgid "Disk Name"
 #~ msgstr "ディスク名"
-
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (ストライピング)"
-
-#~ msgid "RAID 1 (mirroring)"
-#~ msgstr "RAID 1 (ミラーリング)"
-
 #~ msgid "List of shares"
 #~ msgstr "共有のリスト"
-
-#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "この名前の例: iqn.1994-04.org.netbsd.iscsi-target:target0."
-
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%2$dMB 中 %1$d%%"
-
 #~ msgid "%s on %s (%dMHz)"
 #~ msgstr "%s 上の %s (%dMHz)"
-
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC ローカル"
-
 #~ msgid "Shell access"
 #~ msgstr "シェルアクセス"
-
 #~ msgid "built on"
 #~ msgstr "ビルトオン"
-
 #~ msgid "Report generator"
 #~ msgstr "レポートジェネレーター"
+

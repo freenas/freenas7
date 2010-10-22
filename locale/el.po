@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-21 13:20+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:03+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:00+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: Greece\n"
+"Language: \n"
 "X-Poedit-Language: Greek\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -24,11 +24,11 @@ msgstr " έχει αντιστοιχεί σε "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr "%d%% από %dMiB"
+msgstr "%d%% από %dMB"
 
 #, php-format
 msgid "%dB / block"
-msgstr ""
+msgstr "%dB / μλποκ"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -181,10 +181,10 @@ msgid "AG"
 msgstr "AG"
 
 msgid "AIO read size"
-msgstr ""
+msgstr "Μέγεθος ανάγνωσης  I/O"
 
 msgid "AIO write size"
-msgstr ""
+msgstr "Μέγεθος εγραφής  I/O"
 
 msgid "ARP Tables"
 msgstr "Πίνακες ARP"
@@ -337,7 +337,7 @@ msgid "Advanced Configuration"
 msgstr "Προχωρημένες Ρυθμίσεις"
 
 msgid "Advanced Format"
-msgstr ""
+msgstr "Προχωρημένη διαμόρφωση"
 
 msgid "Advanced Options"
 msgstr "Προχωρημένες Επιλογές"
@@ -482,7 +482,7 @@ msgid "Are you sure you want to shutdown the system?"
 msgstr "Είστε σίγουρος ότι θέλετε να τερματίσετε το σύστημα;"
 
 msgid "Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "Ασύγχρονο I/O (είσοδος/έξοδος)"
 
 msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
 msgstr "Στο υψηλότερο επίπεδο, ο προορισμός είναι αυτός που παρουσιάζεται στον χρήστη, και αποτελείται από μία ή περισσότερες επεκτάσεις."
@@ -632,13 +632,11 @@ msgstr "Θερμοκρασία κεντρικού επεξεργαστή"
 msgid "CPU usage"
 msgstr "χρήση CPU"
 
-#, fuzzy
 msgid "Cache"
-msgstr "Προσαρτημένος"
+msgstr ""
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "Νέα συσκευή"
+msgstr ""
 
 msgid "Can't format the OS origin disk!"
 msgstr "Δεν μπορεί να διαμορφωθεί ο δίσκος που περιέχει το λειτουργικό!"
@@ -686,7 +684,7 @@ msgid "Check interval"
 msgstr "Διαστήματα ελέγχου"
 
 msgid "Check shared secret:"
-msgstr ""
+msgstr "Επαλήθευση κοινόχρηστου συνθηματικού:"
 
 msgid "Chinese (Simplified)"
 msgstr "Κινέζικα (Απλοποιημένα)"
@@ -869,7 +867,7 @@ msgid "Custom script is required."
 msgstr "Απαιτείται προσαρμοσμένο σενάριο."
 
 msgid "Czech"
-msgstr ""
+msgstr "Τσέχικα"
 
 msgid "DAAP"
 msgstr "DAAP"
@@ -940,11 +938,10 @@ msgid "Default user name is 'admin'."
 msgstr "Το προεπιλεγμένο όνομα χρήστη είναι 'admin'."
 
 msgid "DefaultTime2Retain"
-msgstr ""
+msgstr "Προκαθορισμένος χρόνος Διατήρησης"
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Προεπιλεγμένο"
+msgstr "Προκαθορισμένος χρόνος αναμονής"
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Ορισμός καταλόγων/URL που απαιτούν πιστοποίηση."
@@ -1121,6 +1118,10 @@ msgstr "IP συσκευής"
 msgid "Device Pass-through"
 msgstr ""
 
+#, fuzzy
+msgid "Device model"
+msgstr "Όνομα συσκευής"
+
 msgid "Device name"
 msgstr "Όνομα συσκευής"
 
@@ -1144,7 +1145,7 @@ msgid "Difference"
 msgstr "Διαφορά"
 
 msgid "Digital Audio Access Protocol"
-msgstr ""
+msgstr "Πρωτόκολλο Πρόσβασης Ψηφιακού Ήχου"
 
 msgid "Direction"
 msgstr "Κατεύθυνση"
@@ -1171,7 +1172,7 @@ msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr "Απενεργοποιήστε το AFP-over-Appletalk για να εμποδίσετε συνδέσεις DDP."
 
 msgid "Disable File Manager"
-msgstr ""
+msgstr "Απενεργοποίηση διαχειριστή αρχείων"
 
 msgid "Disable console menu"
 msgstr "Απενεργοποίηση μενού κονσόλας"
@@ -1309,8 +1310,12 @@ msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον 
 msgid "Do you really want to delete this user?"
 msgstr "Θέλετε πράγματι να διαγράψετε αυτό τον χρήστη."
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον τόμο;\\n!!! Προσοχή, όλα τα δεδομένα θα χαθούν και δεν μπορούν να ανακτηθούν. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Θέλετε σίγουρα να διαγράψετε αυτόν τον τόμο;\\n"
+"!!! Προσοχή, όλα τα δεδομένα θα χαθούν και δεν μπορούν να ανακτηθούν. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Θέλετε σίγουρα να διαμορφώσετε αυτόν το δίσκο; Όλα τα δεδομένα θα χαθούν!"
@@ -1514,10 +1519,10 @@ msgid "Enable"
 msgstr "Ενεργοποίηση"
 
 msgid "Enable Advanced Format (4KB sector)"
-msgstr ""
+msgstr "Ενεργοποίηση Προχωρημένης Διαμόρφωσης (4KB τομέας)"
 
 msgid "Enable Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "Ενεργοποίηση Ασύγχρονου Ι/Ο (είσοδος/έξοδος)"
 
 msgid "Enable FXP protocol."
 msgstr "Ενεργοποίηση πρωτοκόλλου FXP."
@@ -2013,10 +2018,10 @@ msgid "Hardware"
 msgstr "Υλικό"
 
 msgid "Header and Data digest"
-msgstr ""
+msgstr "Περίληψη Κεφαλίδας και Δεδομένων"
 
 msgid "Header digest"
-msgstr ""
+msgstr "Περίληψη κεφαλίδας"
 
 msgid "Health"
 msgstr "Κατάσταση"
@@ -2112,7 +2117,7 @@ msgstr "διεύθυνση IP του απομακρυσμένου διακομι
 
 #, php-format
 msgid "IP addresses are resolved to hostnames if <a href='%s'>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
-msgstr ""
+msgstr "Οι διευθύνσεις IP ανάγονται σε ονόματα διακομιστών εάν η <a href='%s'> \"Επίλυση διευθύνσεις IP σε ονόματα εξυπηρετητών\" </a> είναι ενεργοποιημένη."
 
 msgid "IP or FQDN address of remote Rsync server."
 msgstr ""
@@ -2147,9 +2152,8 @@ msgstr "Διεύθυνση IPv6"
 msgid "IPv6 addresses"
 msgstr "Διευθύνσεις IPv6"
 
-#, fuzzy
-msgid "IRC Live support"
-msgstr "Υποτήριξη ΕΑ"
+msgid "IRC Live Support"
+msgstr ""
 
 msgid "ISO file to be mounted."
 msgstr "Αρχείο ISO για προσάρτηση"
@@ -2176,7 +2180,7 @@ msgid "If the selected disk/partition is mounted it will be unmounted temporaril
 msgstr ""
 
 msgid "If the server is behind a proxy set this parameters to give local services access to the internet via proxy."
-msgstr ""
+msgstr "Εάν ο διακομιστής βρίσκεται πίσω από ένα μεσολαβητή (proxy), ρυθμίστε αυτές τις παραμέτρους για να δώσει των τοπικών υπηρεσιών πρόσβαση στο διαδίκτυο μέσω του διακομιστή μεσολάβησης."
 
 msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
 msgstr ""
@@ -2185,7 +2189,7 @@ msgid "If this parameter is set, then users may not create or modify files in th
 msgstr "Αν οριστεί αυτή η παράμετρος τότε οι χρήστες δεν θα μπορούν να δημιουργούν ή να τροποποιούν αρχεία σε αυτό το κοινόχρηστο."
 
 msgid "If this property is disabled, the file system cannot be mounted."
-msgstr ""
+msgstr "Αν αυτή η ιδιότητα είναι απενεργοποιημένη, το σύστημα αρχείων δεν μπορεί να προσαρτηθεί."
 
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
@@ -2207,7 +2211,7 @@ msgid "Import disks"
 msgstr "Εισαγωγή δίσκων"
 
 msgid "Import disks used in configuration."
-msgstr ""
+msgstr "Εισαγωγή δίσκων που χρησιμοποιούνται στην διαμόρφωση."
 
 msgid "Import firewall rules."
 msgstr "Εισαγωγή κανόνων τείχους προστασίας"
@@ -2219,7 +2223,7 @@ msgid "In"
 msgstr "Μέσα"
 
 msgid "In most cases, 'public' is used here."
-msgstr ""
+msgstr "Στις περισσότερες περιπτώσεις, το 'Δημόσιο' χρησιμοποιείται εδώ."
 
 msgid "Include basic hardware information."
 msgstr "Περιλαμβάνει βασικές πληροφορίες υλικού."
@@ -2236,9 +2240,8 @@ msgstr "Ανεπίσημος"
 msgid "Information"
 msgstr "Πληροφορίες"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Πληροφορίες"
+msgstr ""
 
 msgid "Inherit permissions"
 msgstr "Κληρονόμηση δικαιωμάτων"
@@ -2253,7 +2256,7 @@ msgid "Initialize"
 msgstr "Αρχικοποίηση"
 
 msgid "Initialize and encrypt disk."
-msgstr ""
+msgstr "Προετοιμασία και κρυπτογράφηση δίσκου."
 
 msgid "Initializing"
 msgstr "Αρχικοποίηση"
@@ -2280,16 +2283,16 @@ msgid "Initiators"
 msgstr ""
 
 msgid "Inquiry Product"
-msgstr ""
+msgstr "Εξέταση Προϊόντος"
 
 msgid "Inquiry Revision"
-msgstr ""
+msgstr "Εξέταση Αναθεώρησης"
 
 msgid "Inquiry Serial"
-msgstr ""
+msgstr "Εξέταση Σειριακού"
 
 msgid "Inquiry Vendor"
-msgstr ""
+msgstr "Εξέταση Κατασκευαστή"
 
 msgid "Install"
 msgstr "Εγκατάσταση"
@@ -2301,7 +2304,7 @@ msgid "Interface"
 msgstr "Διεπαφή"
 
 msgid "Interface Management"
-msgstr ""
+msgstr "Διαχείριση περιβάλλοντος εργασίας"
 
 msgid "Interface to listen to."
 msgstr "Διεπαφή που θα ανιχνεύεται."
@@ -2310,7 +2313,7 @@ msgid "Interfaces"
 msgstr "Διεπαφές"
 
 msgid "Interval must be greater or equal than 10 seconds."
-msgstr ""
+msgstr "Το διάστημα πρέπει να είναι μεγαλύτερο ή ίσο από 10 δευτερόλεπτα."
 
 msgid "Invalid file format."
 msgstr "Άκυρη μορφή αρχείου."
@@ -2347,7 +2350,7 @@ msgid "Key length"
 msgstr "Μήκος κλειδιού"
 
 msgid "Key length to use with the given cryptographic algorithm."
-msgstr ""
+msgstr "Μήκος κλειδιού για χρήση με το δεδομένο αλγόριθμο κρυπτογράφησης."
 
 msgid "Kill encrypted volume"
 msgstr "Καταστροφή κρυπτογραφημένου τόμου"
@@ -2356,7 +2359,7 @@ msgid "Knowledgebase"
 msgstr "Γνωσιακή βάση"
 
 msgid "LACP (Link Aggregation Control Protocol)"
-msgstr ""
+msgstr "LACP (Πρωτόκολλο Ελέγχου Συνυπολογισμού Συνδέσμου)"
 
 msgid "LAGG"
 msgstr "LAGG"
@@ -2390,29 +2393,29 @@ msgstr "Λετονικά"
 
 #, php-format
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
-msgstr ""
+msgstr "Άφησε '%s' για τους αδιαμόρφωτους δίσκους και διαμόρφωσή τους με τη χρήση του μενού <a href='%s'>διαμόρφωση</a>."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
-msgstr ""
+msgstr "Επίπεδο 1 - Ελάχιστη χρήση ενέργειας στην κατάσταση ετοιμότητας (spindown)"
 
 msgid "Level 127 - Intermediate power usage with Standby"
-msgstr ""
+msgstr "Επίπεδο 127 - Ενδιάμεση χρήση ενέργειας στην κατάσταση ετοιμότητας"
 
 msgid "Level 128 - Minimum power usage without Standby (no spindown)"
-msgstr ""
+msgstr "Επίπεδο 128 - Ελάχιστη χρήση ενέργειας χωρίς να είναι στην κατάσταση ετοιμότητας (no spindown)"
 
 msgid "Level 192 - Intermediate power usage without Standby"
-msgstr ""
+msgstr "Επίπεδο 192 - Ενδιάμεση χρήση ενέργειας χωρίς να είναι στην κατάσταση ετοιμότητας"
 
 msgid "Level 254 - Maximum performance, maximum power usage"
-msgstr ""
+msgstr "Επίπεδο 254 - Μέγιστη απόδοση, μέγιστη χρήση ενέργειας"
 
 msgid "Level 64 - Intermediate power usage with Standby"
-msgstr ""
+msgstr "Επίπεδο 64 - Ενδιάμεση χρήση ενέργειας στην κατάσταση ετοιμότητας"
 
 #, php-format
 msgid "Levels (MHz/mW): %s"
-msgstr ""
+msgstr "Επίπεδα (MHz/mW): %s"
 
 msgid "License"
 msgstr "Άδεια"
@@ -3408,7 +3411,8 @@ msgstr "Ανανέωση"
 msgid "Reject"
 msgstr "Απόρριψη"
 
-msgid "Release notes"
+#, fuzzy
+msgid "Release Notes"
 msgstr "Σημειώσεις έκδοσης"
 
 msgid "Reload page"
@@ -3906,9 +3910,8 @@ msgstr ""
 msgid "Status report successfully sent."
 msgstr ""
 
-#, fuzzy
 msgid "Stop"
-msgstr "Σταματημένο"
+msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr ""
@@ -4091,9 +4094,8 @@ msgstr "Θερμοκρασία"
 msgid "Temperature monitoring"
 msgstr "Επίβλεψη θερμοκρασίας"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "Προσωρινός φάκελος"
+msgstr ""
 
 msgid "Temporary directory"
 msgstr "Προσωρινός φάκελος"
@@ -5251,7 +5253,7 @@ msgstr "Μπορείτε να χρησιμοποιήσετε τις παρακά
 
 #, php-format
 msgid "You can't mount the partition '%s' where the config file is stored.<br />"
-msgstr ""
+msgstr "Δεν μπορείτε να προσαρτήσετε το διαμέρισμα '%s' όπου βρίσκεται αποθηκευμένο το αρχείο ρυθμίσεων."
 
 msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
 msgstr ""
@@ -5281,9 +5283,9 @@ msgstr "Πρέπει πρώτα να προσθέσετε δίσκους."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Πρέπει να εισάγετε τον ίδιο τύπο IP δικτύων και πύλης."
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "Πρέπει να έχετε το λιγότερο 256MB μνήμης RAM για να χρησιμοποιήσετε iSCSI προορισμό."
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Πρέπει να επανεκκινήσετε το σύστημα προτού να μπορείτε να αναβαθμίσετε το firmware."
@@ -5316,7 +5318,7 @@ msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
 
 msgid "atacontrol list failed, atacontrol not found !!"
-msgstr ""
+msgstr "Η εμφάνιση ελεγκτών ATA απέτυχε, δεν βρέθηκαν ελεγκτές ATA!"
 
 msgid "cachecnid"
 msgstr "cachecnid"
@@ -5325,10 +5327,10 @@ msgid "change failed."
 msgstr "η αλλαγή απέτυχε."
 
 msgid "chroot() everyone, but root."
-msgstr ""
+msgstr "chroot() όλοι, εκτός του root."
 
 msgid "cnidscheme"
-msgstr ""
+msgstr "Σχήμα cnid"
 
 msgid "crlf"
 msgstr "crlf"
@@ -5359,7 +5361,7 @@ msgid "iSCSI Target"
 msgstr "Προορισμός iSCSI"
 
 msgid "iSCSI Target Logical Unit Controller"
-msgstr ""
+msgstr "iSCSI Ελεγκτής λογικής μονάδας προορισμού"
 
 #, php-format
 msgid "iSCSI initial parameter (%d by default)."
@@ -5420,7 +5422,7 @@ msgid "rc.conf"
 msgstr "rc.conf"
 
 msgid "revision"
-msgstr ""
+msgstr "επανεξέταση"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
@@ -5444,7 +5446,7 @@ msgid "sysctl.conf"
 msgstr "sysctl.conf"
 
 msgid "umask"
-msgstr ""
+msgstr "αφαίρεση μάσκας"
 
 msgid "umount"
 msgstr "αποπροσάρτηση"
@@ -5454,129 +5456,147 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Ημερομηνία"
-
 #~ msgid "hours"
 #~ msgstr "ώρες"
-
 #~ msgid "days"
 #~ msgstr "ημέρες"
-
 #~ msgid "day"
 #~ msgstr "ημέρα"
-
 #~ msgid "months"
 #~ msgstr "μήνες"
-
 #~ msgid "week days"
 #~ msgstr "ημέρες εβδομάδας"
-
 #~ msgid "Create"
 #~ msgstr "Δημιουργία"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "LAN"
 #~ msgstr "LAN"
-
 #~ msgid "Logs"
 #~ msgstr "Αρχεία καταγραφής"
-
-#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-#~ msgstr "Αυτό σημαίνει ότι η εικόνα που αποστείλατε δεν είναι μια επίσημη/υποστηριζόμενη εικόνα και μπορεί να οδηγήσει σε απρόβλεπτη συμπεριφορά ή να θέσει σε κίνδυνο την ασφάλεια του συστήματος. Εγκαθιστάτε εικόνες που προέρχονται μόνο από πηγές τις οποίες εμπιστεύεστε, και σιγουρευτείτε ότι η εικόνα δεν έχει αλλοιωθεί.<br><br>Θέλετε να εγκαταστήσετε αυτή την εικόνα οπωσδήποτε (με δικό σας ρίσκο);"
-
-#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-#~ msgstr "Κάντε click στο &quot;Ενεργοποίηση αποστολής firmware&quot; παρακάτω, και κατόπιν επιλέξτε το αρχείο εικόνας που θα αποσταλεί.<br>Κάντε click στο &quot;Αναβάθμιση firmware&quot; για να αρχίσετε την διαδικασία αναβάθμισης."
-
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the "
+#~ "image has not been tampered with.<br><br>Do you want to install this "
+#~ "image anyway (on your own risk)?"
+#~ msgstr ""
+#~ "Αυτό σημαίνει ότι η εικόνα που αποστείλατε δεν είναι μια επίσημη/"
+#~ "υποστηριζόμενη εικόνα και μπορεί να οδηγήσει σε απρόβλεπτη συμπεριφορά ή "
+#~ "να θέσει σε κίνδυνο την ασφάλεια του συστήματος. Εγκαθιστάτε εικόνες που "
+#~ "προέρχονται μόνο από πηγές τις οποίες εμπιστεύεστε, και σιγουρευτείτε ότι "
+#~ "η εικόνα δεν έχει αλλοιωθεί.<br><br>Θέλετε να εγκαταστήσετε αυτή την "
+#~ "εικόνα οπωσδήποτε (με δικό σας ρίσκο);"
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
+#~ msgstr ""
+#~ "Κάντε click στο &quot;Ενεργοποίηση αποστολής firmware&quot; παρακάτω, και "
+#~ "κατόπιν επιλέξτε το αρχείο εικόνας που θα αποσταλεί.<br>Κάντε click στο "
+#~ "&quot;Αναβάθμιση firmware&quot; για να αρχίσετε την διαδικασία "
+#~ "αναβάθμισης."
 #~ msgid "Size in MB."
 #~ msgstr "Μέγεθος σε MB."
-
-#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
-#~ msgstr "Ο δίσκος είναι προσαρτημένος! <a href'%s>Αποπροσαρτήστε</a> το δίσκο προτού συνεχίσετε."
-
-#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-#~ msgstr "Αν ο επιλεγμένος δίσκος/κατάτμηση είναι προσαρτημένος θα αποπροσαρτηθεί προσωρινά για να εκτελεστεί η επιλεγμένη εντολή, σε αντίθετη περίπτωση οι εντολές εκτελούνται σε λειτουργία μόνο για ανάγνωση.<br>Κατά τη διάρκεια αυτής της διεργασίας θα διακοπούν οι υπηρεσίες στους χρήστες που προσπελαύνουν το σημείο προσάρτησης."
-
-#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr "Δεν μπορείτε να προσαρτήσετε την κατάτμηση '%s' όπου είναι αποθηκευμένο το αρχείο ρυθμίσεων.<br>"
-
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgstr ""
+#~ "Ο δίσκος είναι προσαρτημένος! <a href'%s>Αποπροσαρτήστε</a> το δίσκο "
+#~ "προτού συνεχίσετε."
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted "
+#~ "temporarily to perform selected command, otherwise the commands work in "
+#~ "read-only mode.<br>Service disruption to users accessing this mount will "
+#~ "occur during this process."
+#~ msgstr ""
+#~ "Αν ο επιλεγμένος δίσκος/κατάτμηση είναι προσαρτημένος θα αποπροσαρτηθεί "
+#~ "προσωρινά για να εκτελεστεί η επιλεγμένη εντολή, σε αντίθετη περίπτωση οι "
+#~ "εντολές εκτελούνται σε λειτουργία μόνο για ανάγνωση.<br>Κατά τη διάρκεια "
+#~ "αυτής της διεργασίας θα διακοπούν οι υπηρεσίες στους χρήστες που "
+#~ "προσπελαύνουν το σημείο προσάρτησης."
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "Δεν μπορείτε να προσαρτήσετε την κατάτμηση '%s' όπου είναι αποθηκευμένο "
+#~ "το αρχείο ρυθμίσεων.<br>"
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Μέγεθος buffer αποστολής (16384 από προεπιλογή)."
-
 #~ msgid "A valid network must be specified."
 #~ msgstr "Πρέπει να καθοριστεί ένα έγκυρο δίκτυο."
-
 #~ msgid "Synchronization Time"
 #~ msgstr "Χρόνος Συγχρονισμού"
-
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Ο συνδυασμός κοινοχρήστων και καταλόγου εργασίας δεν υπάρχει,"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Δημιουργία καταλόγου εργασίας αν δεν υπάρχει"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Ώρα Τερματισμού"
-
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Τελευταίες %d καταχωρίσεις καταγραφέα %s"
-
-#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-#~ msgstr "Το <a href=%s>SSHD</a> πρέπει να ενεργοποιηθεί για να δουλέψει το Unison, και ο <a href=%s>user</a> πρέπει να έχει πλήρη φλοιό ενεργοποιημένο."
-
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "Το <a href=%s>SSHD</a> πρέπει να ενεργοποιηθεί για να δουλέψει το Unison, "
+#~ "και ο <a href=%s>user</a> πρέπει να έχει πλήρη φλοιό ενεργοποιημένο."
 #~ msgid "The configuration could not be restored (file upload error)."
-#~ msgstr "Οι ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν (σφάλμα αποστολής αρχείου)."
-
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr "Αυτός ο κρυπτογραφημένος δίσκος έχει προσαρτηθεί, αποπροσαρτήστε τον πριν να προσπαθήσετε να τον αποσπάσετε."
-
+#~ msgstr ""
+#~ "Οι ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν (σφάλμα αποστολής αρχείου)."
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Αυτός ο κρυπτογραφημένος δίσκος έχει προσαρτηθεί, αποπροσαρτήστε τον πριν "
+#~ "να προσπαθήσετε να τον αποσπάσετε."
 #~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr "Πρέπει να χρησιμοποιήσετε ένα συνθηματικό για να επισυνάψετε έναν κρυπτογραφημένο δίσκο."
-
+#~ msgstr ""
+#~ "Πρέπει να χρησιμοποιήσετε ένα συνθηματικό για να επισυνάψετε έναν "
+#~ "κρυπτογραφημένο δίσκο."
 #~ msgid "Encrypted disk name"
 #~ msgstr "Όνομα κρυπτογραφημένου δίσκου"
-
 #~ msgid "Network that is authorised to access to this iSCSI target."
-#~ msgstr "Δίκτυο που είναι εξουσιοδοτημένο να προσπελαύνει αυτόν τον προορισμό iSCSI."
-
-#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr "Αυτό το όνομα είναι για παράδειγμα: iqn.1994-04.org.netbsd.iscsi-target:target0."
-
+#~ msgstr ""
+#~ "Δίκτυο που είναι εξουσιοδοτημένο να προσπελαύνει αυτόν τον προορισμό "
+#~ "iSCSI."
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr ""
+#~ "Αυτό το όνομα είναι για παράδειγμα: iqn.1994-04.org.netbsd.iscsi-target:"
+#~ "target0."
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Ελάχιστη κατανάλωση ενέργειας με Αναμονή"
-
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Μέγιστη κατανάλωση ενέργειας χωρίς Αναμονή"
-
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Μέτρια κατανάλωση ενέργειας με Αναμονή"
-
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Μέγιστη απόδοση, μέγιστη κατανάλωση ενέργειας"
-
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Μέτρια κατανάλωση ενέργειας χωρίς Αναμονή"
-
-#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-#~ msgstr "Αυτό θα κάνει το %s να μην ελέγχει για νεότερες εκδόσεις firmware όταν προβάλεται η σελίδα <a href=%s>%s</a>."
-
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "Αυτό θα κάνει το %s να μην ελέγχει για νεότερες εκδόσεις firmware όταν "
+#~ "προβάλεται η σελίδα <a href=%s>%s</a>."
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Μέγεθος buffer παραλαβής (16384 από προεπιλογή)."
-
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr "Μπορεί να χρειαστείτε αρκετό χώρο για τα αντίγραφα των αρχείων που συγχρονίζονται"
-
+#~ msgstr ""
+#~ "Μπορεί να χρειαστείτε αρκετό χώρο για τα αντίγραφα των αρχείων που "
+#~ "συγχρονίζονται"
 #~ msgid "Working Directory"
 #~ msgstr "Κατάλογος Εργασίας"
-
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Τοποθεσία αποθήκευσης αρχείων εργασίας"
-
-#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-#~ msgstr "Ο τόμος RAID είναι αυτή τη στιγμή προσαρτημένος! Αφαιρέστε πρώτα το <a href=%s>σημείο προσάρτησης</a> προτού συνεχίσετε."
-
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "Ο τόμος RAID είναι αυτή τη στιγμή προσαρτημένος! Αφαιρέστε πρώτα το <a "
+#~ "href=%s>σημείο προσάρτησης</a> προτού συνεχίσετε."
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Πρέπει να καθοριστεί μια έγκυρη bit μέτρηση δικτύου."
-
 #~ msgid "Report generator"
 #~ msgstr "Γεννήτρια αναφορών"
+

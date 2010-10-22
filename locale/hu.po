@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-21 13:16+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:04+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:00+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:33+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: HUNGARY\n"
+"Language: \n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -64,7 +64,7 @@ msgstr ""
 
 #, c-format, php-format
 msgid "%sB available of %sB"
-msgstr ""
+msgstr "%sB elérhető a(z) %sB-ból"
 
 #, c-format, php-format
 msgid "%sB used of %sB"
@@ -337,7 +337,7 @@ msgid "Advanced Configuration"
 msgstr "Részletes beállítás"
 
 msgid "Advanced Format"
-msgstr ""
+msgstr "Advanced Format"
 
 msgid "Advanced Options"
 msgstr "Haladó beállítások"
@@ -632,13 +632,11 @@ msgstr "CPU (processzor) hőmérséklet"
 msgid "CPU usage"
 msgstr "CPU (processzor) kihasználtság"
 
-#, fuzzy
 msgid "Cache"
-msgstr "Csatolt"
+msgstr ""
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "Új eszköz"
+msgstr ""
 
 msgid "Can't format the OS origin disk!"
 msgstr "Nem formázhatja az operációs rendszert tartalmazó partíciót!"
@@ -942,9 +940,8 @@ msgstr "Az 'admin' az alapértelmezett felhasználónév."
 msgid "DefaultTime2Retain"
 msgstr ""
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Alapértelmezett"
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Hitelesítést igénylő mappák/URL-ek meghatározása."
@@ -1121,6 +1118,10 @@ msgstr "Eszköz IP"
 msgid "Device Pass-through"
 msgstr ""
 
+#, fuzzy
+msgid "Device model"
+msgstr "Eszköz név"
+
 msgid "Device name"
 msgstr "Eszköz név"
 
@@ -1159,7 +1160,7 @@ msgid "Directory mask"
 msgstr "Könyvtár maszk"
 
 msgid "Directory that contains removable media. (e.g /mnt/iscsi/)"
-msgstr "Cserélhető médiát tartalmazó könyvtár. (pl.: /mnt/scsi/)"
+msgstr "Cserélhető médiát tartalmazó könyvtár. (pl.: /mnt/iscsi/)"
 
 msgid "Directory to incomplete files. An empty field means disable."
 msgstr ""
@@ -1309,8 +1310,12 @@ msgstr "Valóban törölni akarja ezt a célt?"
 msgid "Do you really want to delete this user?"
 msgstr "Valóban törölni akarja ezt a felhasználót?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Valóban törölni akarja ezt a kötetet?\\n!!! A rajta levő adatok végérvényesen elvesznek. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Valóban törölni akarja ezt a kötetet?\\n"
+"!!! A rajta levő adatok végérvényesen elvesznek. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Biztos, hogy formázod ezt a lemezt? Minden adat törlődni fog!"
@@ -1322,10 +1327,10 @@ msgid "Do you really want to uninstall this package?"
 msgstr "Valóban el akarja távolítani ezt a csomagot?"
 
 msgid "Document root"
-msgstr "Dokumentumgyökér"
+msgstr "Dokumentum főkönyvtár"
 
 msgid "Document root of the webserver. Home of the web page files."
-msgstr "A webkiszolgáló dokumentum gyökér könyvtára. A weblap fájlainak lakhelye."
+msgstr "A webkiszolgáló dokumentumainak főkönyvtára. A weblap fájlainak lakhelye."
 
 msgid "Domain"
 msgstr "Tartomány"
@@ -1514,7 +1519,7 @@ msgid "Enable"
 msgstr "Engedélyezés"
 
 msgid "Enable Advanced Format (4KB sector)"
-msgstr ""
+msgstr "Advanced Format engedélyezése (4KB sector)"
 
 msgid "Enable Asynchronous I/O (AIO)"
 msgstr ""
@@ -1541,7 +1546,7 @@ msgid "Enable authentication."
 msgstr "Hitelesítés engedélyezése"
 
 msgid "Enable automatic disk discovery."
-msgstr "Automatikus lemez helyreállító engedélyezése"
+msgstr "Automatikus lemezfeltérképező engedélyezése"
 
 msgid "Enable compression."
 msgstr "Tömörítés egnedélyezése."
@@ -1680,7 +1685,7 @@ msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be betw
 msgstr ""
 
 msgid "Enter the path to the home directory of that user. Leave this field empty to use default path /mnt."
-msgstr "Írja be a felhasználó saját mappájának útvonalát. Ha üresen hagyja ,akkor az alapértelmezett útvonal a /mnt."
+msgstr "Írja be a felhasználó saját mappájának útvonalát. Ha üresen hagyja, akkor az alapértelmezett útvonal a /mnt."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -1811,7 +1816,7 @@ msgid "Failed to upload file."
 msgstr "Fájlfeltöltés sikertelen."
 
 msgid "Failed to upload metadata backup file."
-msgstr "Metaadat mentő fájl feltöltése sikertelen."
+msgstr "Metaadat-mentőfájl feltöltése sikertelen."
 
 msgid "Failed to write file to disk."
 msgstr "A fájl lemezre írása sikertelen."
@@ -1866,7 +1871,7 @@ msgid "Firewall"
 msgstr "Tűzfal"
 
 msgid "Firewall rule"
-msgstr "Tűzfal szabály"
+msgstr "Tűzfalszabály"
 
 msgid "Firmware"
 msgstr "Firmware"
@@ -1932,7 +1937,7 @@ msgid "GID"
 msgstr "GID"
 
 msgid "GPT partition"
-msgstr "GPt partíció"
+msgstr "GPT partíció"
 
 msgid "Gateway"
 msgstr "Átjáró"
@@ -1974,7 +1979,7 @@ msgid "Greek"
 msgstr "Görög"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr "FTP üdvözlő üzenet, ami látható, ha valaki először csatlakozik az FTP kiszolgálóhoz."
+msgstr "FTP üdvözlő üzenet az először csatlakozó felhasználóknak."
 
 msgid "Group"
 msgstr "Csoport"
@@ -2147,9 +2152,8 @@ msgstr "IPv6 címek"
 msgid "IPv6 addresses"
 msgstr "IPv6 címek"
 
-#, fuzzy
-msgid "IRC Live support"
-msgstr "EA támogatás"
+msgid "IRC Live Support"
+msgstr ""
 
 msgid "ISO file to be mounted."
 msgstr "Csatolandó ISO fájl."
@@ -2236,9 +2240,8 @@ msgstr "Informális"
 msgid "Information"
 msgstr "Információ"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Információ"
+msgstr ""
 
 msgid "Inherit permissions"
 msgstr "Örökölt tiltások"
@@ -2460,7 +2463,7 @@ msgid "Load averages"
 msgstr "Betöltési átlagok"
 
 msgid "Loadbalance"
-msgstr "Terheltség kiegyensúlyozás"
+msgstr "Terhelés-kiegyensúlyozás"
 
 msgid "Local"
 msgstr "Helyi"
@@ -2496,7 +2499,7 @@ msgid "Location"
 msgstr "Hely"
 
 msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
-msgstr "Hely információk, pl.: fizikailag hol van ez a rendszer: 'x-edik emelet, x+1-es szoba'"
+msgstr "Hely információk, pl.: fizikailag hol van a számítógép: 'x-edik emelet, x+1-es szoba'"
 
 msgid "Location of the files to share."
 msgstr "Megosztandó fájlok helye"
@@ -2615,19 +2618,19 @@ msgid "Max. conn. per IP"
 msgstr "Maximális kapcsolatok száma IP címenként"
 
 msgid "Max. connections"
-msgstr "Maximális kapcsolatok száma"
+msgstr "Max. kapcsolatok"
 
 msgid "Max. login attempts"
-msgstr "Maximális bejelentkezési próbálkozások száma"
+msgstr "Max. bejelentkezési próbálkozások"
 
 msgid "Max. passive port"
-msgstr "Maximális passzív port"
+msgstr "Max. passzív port"
 
 msgid "Max. pre-send R2T"
 msgstr ""
 
 msgid "Max. sessions"
-msgstr "Max. munkafolyamatok száma"
+msgstr "Max. munkamenetek"
 
 msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
@@ -2648,11 +2651,11 @@ msgid "Maximum idle time in seconds."
 msgstr "Maximális várakozási idő mp-ben."
 
 msgid "Maximum number of allowed password attempts before disconnection."
-msgstr ""
+msgstr "Max. jelszó próbálkozások ledobás előtt"
 
 #, php-format
 msgid "Maximum number of connections in each session (%d by default)."
-msgstr ""
+msgstr "Max. kapcsolatok munkamenetenként (alapértelmezetten: %d)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximális kapcsolatok száma IP címenként (0 = korlátlan)."
@@ -2711,7 +2714,7 @@ msgid "Minutes"
 msgstr "Perc"
 
 msgid "Minutes between network time sync."
-msgstr "Idő szinkronizálás közt eltelt percek."
+msgstr "Időszinkronizálások között eltelt percek."
 
 msgid "Mirror"
 msgstr "Tükör"
@@ -2977,7 +2980,7 @@ msgid "On"
 msgstr "Be"
 
 msgid "Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."
-msgstr "Csak Anonymus (névtelen) felhasználók. Ajánlott publikus FTP oldalaknál, ahol valós felhasználókkal nem lehet  FTP-re távolról bejelentkezni ."
+msgstr "Csak névtelen felhasználók. Ajánlott publikus FTP oldalaknál, ahol nincs FTP hozzáférés a valós felhasználókkal."
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr "Csak hitelesített felhasználók engedélyezettek. Névtelen bejelentkezések tiltva."
@@ -3056,7 +3059,7 @@ msgid "Pairwise"
 msgstr ""
 
 msgid "Partition number"
-msgstr "Partíció szám"
+msgstr "Partíciószám"
 
 msgid "Partition type"
 msgstr "Partíció típusa"
@@ -3156,7 +3159,7 @@ msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "Kérjük nézze meg a <a href='%s' target='_blank'>dokumentációt</a>."
 
 msgid "Please note that blanks in path names are not allowed."
-msgstr "Kérjük ügyeljen, az elérési útvonal nem tartalmazhat üres karaktert."
+msgstr "Kérjük ügyeljen arra, hogy az elérési útvonal nem tartalmazhat üres karaktert."
 
 msgid "Polish"
 msgstr "Lengyel"
@@ -3199,16 +3202,16 @@ msgstr "Figyelendő port. Alapértelmezett port: %d."
 
 #, php-format
 msgid "Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."
-msgstr "Figyelendő port. Dinamikus vagy privát portok használhatók (%d-tól %d-ig). Alapértelmezett port: %d."
+msgstr "Figyelendő port. Csak dinamikus vagy privát portok használhatóak (%d-tól %d-ig). Alapértelmezett port: %d."
 
 msgid "Portal Group"
-msgstr ""
+msgstr "Portál csoport"
 
 msgid "Portal Groups"
-msgstr ""
+msgstr "Portál csoportok"
 
 msgid "Portals"
-msgstr ""
+msgstr "Portálok"
 
 msgid "Ports"
 msgstr "Portok"
@@ -3229,7 +3232,7 @@ msgid "PreInit"
 msgstr ""
 
 msgid "Preferred"
-msgstr "Elsődleges"
+msgstr "Preferált"
 
 msgid "Prefix"
 msgstr "Előtag"
@@ -3408,7 +3411,8 @@ msgstr "Frissítés"
 msgid "Reject"
 msgstr "Elvetés"
 
-msgid "Release notes"
+#, fuzzy
+msgid "Release Notes"
 msgstr "Kiadási megjegyzések"
 
 msgid "Reload page"
@@ -3442,10 +3446,10 @@ msgid "Report Generator"
 msgstr "Jelentéskészítő"
 
 msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
-msgstr "Jelentse, ha a hőmérséklet legalább N Celsius foknyit változott a legutolsó jelentés óta. Ahhoz, hogy kikapcsolja ezt a jelentést, állítsa 0-ra."
+msgstr "Jelentse, ha a hőmérséklet legalább N Celsius foknyit változott a legutolsó jelentés óta. (kikapcsoláshoz állítsa 0-ra.)"
 
 msgid "Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report."
-msgstr "Jelentse, ha a hőmérséklet nagyobb, mint egyenlő, mint  N Celsius fok. Ahhoz, hogy kikapcsolja ezt a jelentést, állítsa 0-ra."
+msgstr "Jelentse, ha a hőmérséklet nagyobb, mint egyenlő, mint  N Celsius fok. (kikapcsoláshoz állítsa 0-ra.)"
 
 msgid "Reports"
 msgstr "Jelentések"
@@ -3774,7 +3778,7 @@ msgid "Shutdown mode"
 msgstr "Leállítás módja"
 
 msgid "Shutdown timer"
-msgstr ""
+msgstr "Kikapcsolás időzítő"
 
 msgid "Simple Network Management Protocol"
 msgstr ""
@@ -3800,7 +3804,7 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
 msgid "Slovak"
-msgstr ""
+msgstr "Szlovák"
 
 msgid "Slovenian"
 msgstr "Szlovén"
@@ -4088,11 +4092,10 @@ msgid "Temperature"
 msgstr "Hőmérséklet"
 
 msgid "Temperature monitoring"
-msgstr "Hőmérséklet monitorozás"
+msgstr "Hőmérsékletfigyelés"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "Átmeneti könyvtár"
+msgstr "Átmeneti eszköz"
 
 msgid "Temporary directory"
 msgstr "Átmeneti könyvtár"
@@ -4290,7 +4293,7 @@ msgid "The cron job has been executed successfully."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
-msgstr "Az alapértelmezett SMTP levelezőszerver port például a 25-ös vagy az 587-es port."
+msgstr "Az alapértelmezett SMTP levelezőszerver port például a 25-ös vagy az 587-es."
 
 #, php-format
 msgid "The default base distinguished name (DN) to use for searches, e.g. %s"
@@ -4986,7 +4989,7 @@ msgid "Uninstall package"
 msgstr "Csomag eltávolítása"
 
 msgid "Uninterruptible Power Supply"
-msgstr "Megszakítás mentes tápegység"
+msgstr "Megszakításmentes tápegység"
 
 msgid "Unison"
 msgstr "Unison"
@@ -5143,10 +5146,10 @@ msgid "Volume Name"
 msgstr "Kötet név"
 
 msgid "Volume label"
-msgstr "Kötet címke"
+msgstr "Címke"
 
 msgid "Volume label of the new file system."
-msgstr "Az új fájlrendszer kötet címkéje."
+msgstr "Az új kötet címkéje"
 
 msgid "WAN address"
 msgstr "WAN cím"
@@ -5437,7 +5440,7 @@ msgid "striping"
 msgstr ""
 
 msgid "successfully."
-msgstr "sikeres."
+msgstr "sikeresen."
 
 msgid "sysctl.conf"
 msgstr "sysctl.conf"
@@ -5453,96 +5456,106 @@ msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Dátum"
-
 #~ msgid "hours"
 #~ msgstr "óra"
-
 #~ msgid "days"
 #~ msgstr "nap"
-
 #~ msgid "day"
 #~ msgstr "nap"
-
 #~ msgid "months"
 #~ msgstr "hónap"
-
 #~ msgid "week days"
 #~ msgstr "a hét napjai"
-
 #~ msgid "Create"
 #~ msgstr "Létrehoz"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "LAN"
 #~ msgstr "LAN"
-
 #~ msgid "Logs"
 #~ msgstr "Naplók"
-
-#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-#~ msgstr "Ez azt jelenti, hogy a feltöltött lemezkép nem hivatalos/támogatott és nem várt működést vagy biztonsági kockázatot okozhat. Csak megbízható forrásból származó lemezképet használj és győződj  meg, hogy azt nem módosították.<br><br>Mindenképpen telepíted ezt a lemezképet (saját felelőségre)?"
-
-#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-#~ msgstr "Kattints a &quot;Firmware feltöltés engedélyezése&quot;-re, válassz ki egy lemezkép fájlt a feltöltéshez.<br>Kattints &quot;Firmware frissítése&quot;-re a frissítési folyamat megkezdéséhez."
-
-#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
-#~ msgstr "A lemez jelenleg csatlakoztatva van! A lemez <a href=%s>ecsatlakoztatása</a> a folyamat elött."
-
-#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-#~ msgstr "Ha a kiválasztott lemez/partíció csatlakoztatva (mount-olva) van, átmenetileg le lesz csatlakoztatva, amíg a kiválasztott parancs végrehajtása folyik. Ellenkező esetben a parancs csak-olvas üzemmódban fut le.<br>Szolgáltatás és hozzáférés megszakadás várható, amíg a folyamat tart."
-
-#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr "Nem csatolható fel az a partíció '%s', ahol a beállítás fájl tárolódik."
-
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the "
+#~ "image has not been tampered with.<br><br>Do you want to install this "
+#~ "image anyway (on your own risk)?"
+#~ msgstr ""
+#~ "Ez azt jelenti, hogy a feltöltött lemezkép nem hivatalos/támogatott és "
+#~ "nem várt működést vagy biztonsági kockázatot okozhat. Csak megbízható "
+#~ "forrásból származó lemezképet használj és győződj  meg, hogy azt nem "
+#~ "módosították.<br><br>Mindenképpen telepíted ezt a lemezképet (saját "
+#~ "felelőségre)?"
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
+#~ msgstr ""
+#~ "Kattints a &quot;Firmware feltöltés engedélyezése&quot;-re, válassz ki "
+#~ "egy lemezkép fájlt a feltöltéshez.<br>Kattints &quot;Firmware "
+#~ "frissítése&quot;-re a frissítési folyamat megkezdéséhez."
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgstr ""
+#~ "A lemez jelenleg csatlakoztatva van! A lemez <a href=%s>ecsatlakoztatása</"
+#~ "a> a folyamat elött."
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted "
+#~ "temporarily to perform selected command, otherwise the commands work in "
+#~ "read-only mode.<br>Service disruption to users accessing this mount will "
+#~ "occur during this process."
+#~ msgstr ""
+#~ "Ha a kiválasztott lemez/partíció csatlakoztatva (mount-olva) van, "
+#~ "átmenetileg le lesz csatlakoztatva, amíg a kiválasztott parancs "
+#~ "végrehajtása folyik. Ellenkező esetben a parancs csak-olvas üzemmódban "
+#~ "fut le.<br>Szolgáltatás és hozzáférés megszakadás várható, amíg a "
+#~ "folyamat tart."
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "Nem csatolható fel az a partíció '%s', ahol a beállítás fájl tárolódik."
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Fogadó puffer mérete (alapértelmezett: 16384)"
-
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Küldő puffer mérete (alapértelmezett: 16384)"
-
 #~ msgid "Size in MB."
 #~ msgstr "Méret MB-ban."
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Minimális energiafelhasználás készenléti állapot használatával."
-
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Minimális energiafelhasználás készenléti állapot nélkül."
-
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Közepes energiafelhasználás készenléti állapot használatával."
-
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maximális teljesítmény, maximális energiafelhasználás"
-
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Közepes energiafelhasználás készenléti állapot nélkül."
-
-#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-#~ msgstr "A RAID kötet csatlakoztatva van! Töröld a <a href=%s>csatolási pontot</a> először a folytatás előtt."
-
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "A RAID kötet csatlakoztatva van! Töröld a <a href=%s>csatolási pontot</a> "
+#~ "először a folytatás előtt."
 #~ msgid "Synchronization Time"
 #~ msgstr "Szinkronizálási idő"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Munka könyvtár létrehozása, ha az nem létezik"
-
-#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-#~ msgstr "Ez azért van, mert a %s nem ellenőrzi az újabb firmware verzió megjelenését, ha a <a href=%s>%s</a> oldal van megjelenítve."
-
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "Ez azért van, mert a %s nem ellenőrzi az újabb firmware verzió "
+#~ "megjelenését, ha a <a href=%s>%s</a> oldal van megjelenítve."
 #~ msgid "Encrypted disk name"
 #~ msgstr "Titkosított lemez neve"
-
-#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "A név például: iqn.1994-04.org.netbsd.iscsi-target:target0."
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Leállítás ideje"
-
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Utolsó %d %s napló bejegyzés"
-
 #~ msgid "Report generator"
 #~ msgstr "Jelentéskészítő"
+

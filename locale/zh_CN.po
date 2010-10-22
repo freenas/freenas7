@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-21 13:48+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:18+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:32+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: CHINA\n"
+"Language: \n"
 "X-Poedit-Language: Chinese (Simplified)\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,128,-1,-1,-1,-1,-1\n"
@@ -182,10 +182,10 @@ msgid "AG"
 msgstr "AG"
 
 msgid "AIO read size"
-msgstr ""
+msgstr "AIO读大小"
 
 msgid "AIO write size"
-msgstr ""
+msgstr "AIO写大小"
 
 msgid "ARP Tables"
 msgstr "ARP 表"
@@ -221,7 +221,7 @@ msgid "Active Directory"
 msgstr "活动目录"
 
 msgid "Active Users"
-msgstr ""
+msgstr "活跃用户"
 
 msgid "Active shares"
 msgstr ""
@@ -483,7 +483,7 @@ msgid "Are you sure you want to shutdown the system?"
 msgstr "确定要关闭系统？"
 
 msgid "Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "异步 I/O (AIO)"
 
 msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
 msgstr ""
@@ -633,13 +633,11 @@ msgstr "CPU 温度"
 msgid "CPU usage"
 msgstr "CPU 负载"
 
-#, fuzzy
 msgid "Cache"
-msgstr "连接成功"
+msgstr "缓存"
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "设备"
+msgstr "缓存设备"
 
 msgid "Can't format the OS origin disk!"
 msgstr "不能格式化系统盘！"
@@ -675,7 +673,7 @@ msgid "Change below file"
 msgstr ""
 
 msgid "Change password"
-msgstr ""
+msgstr "更改密码"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "要使用设置生效必须重启系统。"
@@ -861,10 +859,10 @@ msgid "Custom"
 msgstr "自定义"
 
 msgid "Custom script"
-msgstr ""
+msgstr "定制脚本"
 
 msgid "Custom script is not found."
-msgstr ""
+msgstr "未找到定制脚本"
 
 msgid "Custom script is required."
 msgstr ""
@@ -889,7 +887,7 @@ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot aut
 msgstr ""
 
 msgid "DVD"
-msgstr ""
+msgstr "DVD"
 
 msgid "Daemon"
 msgstr "常驻程序"
@@ -943,9 +941,8 @@ msgstr "默认情况下用户名是“admin”。"
 msgid "DefaultTime2Retain"
 msgstr ""
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "默认值"
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "指定需要认证的目录/URL"
@@ -1121,6 +1118,10 @@ msgstr "设备 IP"
 
 msgid "Device Pass-through"
 msgstr ""
+
+#, fuzzy
+msgid "Device model"
+msgstr "设备名称"
 
 msgid "Device name"
 msgstr "设备名称"
@@ -1310,8 +1311,12 @@ msgstr "确定要删除这个iSCSI目标吗？"
 msgid "Do you really want to delete this user?"
 msgstr "确定要删除这个用户？"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "你真的要删除此卷吗？\\n！！！ 注意，所有数据将被删除，并且无法恢复。 ！！！"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"你真的要删除此卷吗？\\n"
+"！！！ 注意，所有数据将被删除，并且无法恢复。 ！！！"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "确定真的要格式化这个硬盘？硬盘内所有资料都会消失！"
@@ -2148,9 +2153,8 @@ msgstr "IPv6 地址"
 msgid "IPv6 addresses"
 msgstr "IPv6 地址"
 
-#, fuzzy
-msgid "IRC Live support"
-msgstr "EA 支持"
+msgid "IRC Live Support"
+msgstr ""
 
 msgid "ISO file to be mounted."
 msgstr "要挂载到 ISO 文件"
@@ -2237,9 +2241,8 @@ msgstr "非正式"
 msgid "Information"
 msgstr "信息"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "信息"
+msgstr ""
 
 msgid "Inherit permissions"
 msgstr "权限继承"
@@ -3409,7 +3412,8 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-msgid "Release notes"
+#, fuzzy
+msgid "Release Notes"
 msgstr "发行说明"
 
 msgid "Reload page"
@@ -3907,9 +3911,8 @@ msgstr "状态报告成功发送到 %s。"
 msgid "Status report successfully sent."
 msgstr "状态报告已发送成功。"
 
-#, fuzzy
 msgid "Stop"
-msgstr "已停止"
+msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr ""
@@ -4092,9 +4095,8 @@ msgstr "温度"
 msgid "Temperature monitoring"
 msgstr "温度监测"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "临时目录。"
+msgstr ""
 
 msgid "Temporary directory"
 msgstr "临时目录。"
@@ -5282,9 +5284,9 @@ msgstr "请先加入硬盘。"
 msgid "You must enter the same IP type for network and gateway."
 msgstr "您必须输入相同网络类型的IP和网关。"
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "系统最少需要 256MB 的内存才能使用 iSCSI。"
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "系统必须重新开机才能开启固件升级功能。"
@@ -5455,57 +5457,51 @@ msgstr "upriv"
 
 #~ msgid "hours"
 #~ msgstr "小时"
-
 #~ msgid "day"
 #~ msgstr "天"
-
 #~ msgid "days"
 #~ msgstr "天"
-
 #~ msgid "months"
 #~ msgstr "月"
-
 #~ msgid "Create"
 #~ msgstr "建立"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "Size in MB."
 #~ msgstr "以MB为单位。"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "关机时间"
-
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "必须指定一个有效的网络比特值。"
-
 #~ msgid "A valid network must be specified."
 #~ msgstr "必须指定一个有效的网络。"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "如果你还没有工作目录，请建立一个"
-
-#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-#~ msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
-
 #~ msgid "RSYNC Local"
 #~ msgstr "RSYNC 本地端"
-
 #~ msgid "Shell access"
 #~ msgstr "Shell 权限"
-
-#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "范例名称：iqn.1994-04.org.netbsd.iscsi-target:target0."
-
 #~ msgid "Working Directory"
 #~ msgstr "工作目录"
-
 #~ msgid "built on"
 #~ msgstr "建立于"
-
 #~ msgid "Report generator"
 #~ msgstr "报告生成器"
+
