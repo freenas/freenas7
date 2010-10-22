@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-21 13:04+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:01+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 10:44+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BULGARIA\n"
+"Language: \n"
 "X-Poedit-Language: Bulgarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -632,9 +632,8 @@ msgstr ""
 msgid "CPU usage"
 msgstr ""
 
-#, fuzzy
 msgid "Cache"
-msgstr "закачен"
+msgstr ""
 
 msgid "Cache Device"
 msgstr ""
@@ -1119,6 +1118,10 @@ msgstr ""
 msgid "Device Pass-through"
 msgstr ""
 
+#, fuzzy
+msgid "Device model"
+msgstr "Device polling"
+
 msgid "Device name"
 msgstr ""
 
@@ -1307,7 +1310,9 @@ msgstr "Do you really want to delete this target?"
 msgid "Do you really want to delete this user?"
 msgstr ""
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
@@ -2145,7 +2150,7 @@ msgstr ""
 msgid "IPv6 addresses"
 msgstr ""
 
-msgid "IRC Live support"
+msgid "IRC Live Support"
 msgstr ""
 
 msgid "ISO file to be mounted."
@@ -2233,9 +2238,8 @@ msgstr ""
 msgid "Information"
 msgstr "Информация"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Информация"
+msgstr ""
 
 msgid "Inherit permissions"
 msgstr ""
@@ -3405,8 +3409,9 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-msgid "Release notes"
-msgstr ""
+#, fuzzy
+msgid "Release Notes"
+msgstr "Изтрий пътя"
 
 msgid "Reload page"
 msgstr "опресни страницата"
@@ -5449,129 +5454,134 @@ msgstr ""
 
 #~ msgid "days"
 #~ msgstr "дни"
-
 #~ msgid "day"
 #~ msgstr "ден"
-
 #~ msgid "months"
 #~ msgstr "месеци"
-
 #~ msgid "week days"
 #~ msgstr "ден от седмицата"
-
 #~ msgid "Create"
 #~ msgstr "Създай"
-
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "A valid network bit count must be specified."
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "Logs"
 #~ msgstr "Логове"
-
-#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-#~ msgstr "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-
-#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-#~ msgstr "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the "
+#~ "image has not been tampered with.<br><br>Do you want to install this "
+#~ "image anyway (on your own risk)?"
+#~ msgstr ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the "
+#~ "image has not been tampered with.<br><br>Do you want to install this "
+#~ "image anyway (on your own risk)?"
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
+#~ msgstr ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Maximum performance, maximum power usage"
-
-#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
-#~ msgstr "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
-
-#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-#~ msgstr "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-
-#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-#~ msgstr "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-
-#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr "You can't mount the partition '%s' where the config file is stored.<br>"
-
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgstr ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted "
+#~ "temporarily to perform selected command, otherwise the commands work in "
+#~ "read-only mode.<br>Service disruption to users accessing this mount will "
+#~ "occur during this process."
+#~ msgstr ""
+#~ "If the selected disk/partition is mounted it will be unmounted "
+#~ "temporarily to perform selected command, otherwise the commands work in "
+#~ "read-only mode.<br>Service disruption to users accessing this mount will "
+#~ "occur during this process."
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Size of receive buffer (16384 by default)."
-
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Size of send buffer (16384 by default)."
-
 #~ msgid "Synchronization Time"
 #~ msgstr "Synchronization Time"
-
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr "You may need enough space to duplicate all files being synced"
-
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "The combination of share and working directory does not exist."
-
 #~ msgid "Working Directory"
 #~ msgstr "Working Directory"
-
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Where the working files will be stored"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Create work directory if it doesn't exist"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Време за изключване"
-
-#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-#~ msgstr "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-
-#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-#~ msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "The configuration could not be restored (file upload error)."
-
 #~ msgid "Encrypted disk name"
 #~ msgstr "Криприрано име на диска"
-
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
-#~ msgstr "Този криптиран диск е монтиран , демонтирайте го преди да го разкачате ."
-
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "Този криптиран диск е монтиран , демонтирайте го преди да го разкачате ."
 #~ msgid "You must use a passphrase to attach an encrypted disk."
 #~ msgstr "Трябва да използвате секретна фраза за да закачите криптиран диск."
-
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Network that is authorised to access to this iSCSI target."
-
-#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-#~ msgstr "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgid "Date"
 #~ msgstr "дата"
-
 #~ msgid "hours"
 #~ msgstr "ч"
-
 #~ msgid "LAN"
 #~ msgstr "Локална мрежа"
-
 #~ msgid "Size in MB."
 #~ msgstr "размер в MB"
-
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "минимален разход на енергия в стендбай режим"
-
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "минимален разход на енергия без използване на стендбай режим"
-
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "среден разход на енергия в стендбай режим"
-
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "среден разход на енергия без използване на стендбай режим"
-
 #~ msgid "A valid network must be specified."
 #~ msgstr "трябва да посочите валидна мрежа"
-
 #~ msgid "Last %d %s log entries"
 #~ msgstr "последни %d %s позиции в дневника"
-
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% от %dМБ"
+

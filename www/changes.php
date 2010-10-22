@@ -36,7 +36,7 @@ $pgperm['allowuser'] = TRUE;
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Help"), gettext("Release notes"));
+$pgtitle = array(gettext("Help"), gettext("Release Notes"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

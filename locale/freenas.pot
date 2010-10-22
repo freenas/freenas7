@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1111,6 +1111,9 @@ msgstr ""
 msgid "Device Pass-through"
 msgstr ""
 
+msgid "Device model"
+msgstr ""
+
 msgid "Device name"
 msgstr ""
 
@@ -2137,7 +2140,7 @@ msgstr ""
 msgid "IPv6 addresses"
 msgstr ""
 
-msgid "IRC Live support"
+msgid "IRC Live Support"
 msgstr ""
 
 msgid "ISO file to be mounted."
@@ -3396,7 +3399,7 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-msgid "Release notes"
+msgid "Release Notes"
 msgstr ""
 
 msgid "Reload page"

@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-28 19:19+0000\n"
-"PO-Revision-Date: 2010-05-21 13:36+0100\n"
-"Last-Translator: Michael Zoon <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2010-10-22 01:59+0000\n"
+"PO-Revision-Date: 2010-10-22 02:16+0100\n"
+"Last-Translator: Michael Zoon <ma.zoon@quicknet.nl>\n"
 "Language-Team: FreeNAS\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 11:28+0000\n"
+"X-Launchpad-Export-Date: 2010-10-21 23:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
+"Language: \n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -90,7 +90,7 @@ msgid "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a href
 msgstr "<a href='%s'>SSHD</a> trebuie să fie activat pentru Unison să funcţioneze, iar <a href='%s'>utilizatorul</a> trebuie să aibă acces la shell."
 
 msgid "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default partition since 0.684b</b>).<br /><b>MBR</b> partition, for UFS formatted drive or Software RAID volume (<b>created before 0.684b</b>) or imported disks from other OS.<br /><b>CD/DVD or Old software RAID</b> for old SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
-msgstr "<b>EFI GPT</b> dacă vreţi să montaţi disc formatat GPT (<b>partiţionare implicită de la ver. 0.684b</b>).<br /><b>MBR</b> pentru discuri formatate UFS sau volume Software RAID (<b>create înainte de 0.684b</b>) sau discuri importate din alete sisteme de operare.<br /><b>CD/DVD sau Software RAID vechi</b>pentru volume SoftwareRAID vechi (<b>create înaintea versiunii 0.68</b>) sau CD/DVD."
+msgstr "<b>EFI GPT</b> dacă vreţi să montaţi disc formatat GPT (<b>partiţionare implicită de la ver. 0.684b</b>).<br /><b>MBR</b> pentru discuri formatate UFS sau volume Software RAID (<b>create înainte de 0.684b</b>) sau discuri importate din alte sisteme de operare.<br /><b>CD/DVD sau Software RAID vechi</b>pentru volume SoftwareRAID vechi (<b>create înaintea versiunii 0.68</b>) sau CD/DVD."
 
 msgid "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr "<div id='enumeration'><ul><li>%d - Data</li><li>%h - Hostname</li></ul></div>"
@@ -99,16 +99,16 @@ msgid "<li>Default - Rsync will choose the 'during' algorithm when talking to rs
 msgstr "<li>Implicit - Rsync va alege algoritmul 'Simultan' atunci când discută cu  rsync 3.0.0 sau mai nou, şi algoritmul 'Anterior'  atunci când discută cu rsync mai vechi.</li><li>Anterior - Ştergerea fişierelor se face înainte de începerea transferului.</li><li>Simultan - Ştergerea fişierelor se face incremental, în cursul transferului.</li><li>Decalat- Ştergerea fişierelor va fi calculată în timpul transferului, dar se efectuează la terminarea transferului.</li><li>După - Ştergerea fişierelor se face după terminarea transferului.</li>"
 
 msgid "A Auth Group contains authorised users and secrets for additional security."
-msgstr "Un Auth Group conţine utilizatori autorizaţi şi secrete de securitate suplimentare."
+msgstr "Un Auth Grup conţine utilizatori autorizaţi şi secrete de securitate suplimentare."
 
 msgid "A Initiator Group contains authorised initiator names and networks to access the target."
-msgstr "Un Initiator Group conţine nume de iniţiator şi autorizate pentru a accesa reţelele de ţintă."
+msgstr "Un Group Initiator conţine nume de iniţiator şi autorizate pentru a accesa reţelele de ţintă."
 
 msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Numele serverului NTP poate conţine doar caracterele a-z, 0-9, '-' şi '.'."
 
 msgid "A Portal Group contains IP addresses and listening TCP ports to connect the target from the initiator."
-msgstr "Un Portalul Group conţine adresele IP şi porturile TCP pentru a conecta ţintă din iniţiator."
+msgstr "Un Group Portal conţine adresele IP şi porturile TCP pentru a conecta la ţintă din iniţiator."
 
 #, php-format
 msgid "A VLAN with the tag %s is already defined on this interface."
@@ -118,7 +118,7 @@ msgid "A directory listing is generated if a directory is requested and no index
 msgstr "O listă director este generat dacă un director este solicitat şi nici un fişier tip (index.php, index.html, index.htm sau default.htm) a fost găsit în acel director."
 
 msgid "A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."
-msgstr ""
+msgstr "Un alias pt hostname. Aceasta optiune poate sa apara mai multe ori, pt fiecare domeniu care are aceeasi adresa IP. Utilizati un spatiu pt. separarea multiplelor nume de alias."
 
 msgid "A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'."
 msgstr "Cheia poate avea 5 sau 13 caractere (40 sau 140 de biti) functie de tipul retelei si de posibilitatile adaptorului de retea. Poate fi introdusa fie ca text in clar fie ca un sir de caractere hexazecimale precedate de caracterele '0x'."
@@ -181,16 +181,16 @@ msgid "AG"
 msgstr "AG"
 
 msgid "AIO read size"
-msgstr ""
+msgstr "Marimea de citire AIO"
 
 msgid "AIO write size"
-msgstr ""
+msgstr "marimea de scriere AIO"
 
 msgid "ARP Tables"
-msgstr "Tabela ARP"
+msgstr "Tabele ARP"
 
 msgid "ARP tables"
-msgstr "Tabela ARP"
+msgstr "Tabele ARP"
 
 msgid "Access"
 msgstr "Acces"
@@ -208,16 +208,16 @@ msgid "Action"
 msgstr "Actiune:"
 
 msgid "Activate"
-msgstr "Activ"
+msgstr "Activeaza"
 
 msgid "Activate S.M.A.R.T. monitoring for this device."
-msgstr "Activare monitorizare S.M.A.R.T. pentru dispozitiv."
+msgstr "Activare monitorizare S.M.A.R.T. pentru respectivul dispozitiv."
 
 msgid "Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr "Activare raport prin email in cazul aparitiei unei erori sau unei defectiuni (monitorizare S.M.A.R.T.)"
 
 msgid "Active Directory"
-msgstr "Active Directory"
+msgstr "Director activ"
 
 msgid "Active Users"
 msgstr "Utilizatori activi"
@@ -280,13 +280,13 @@ msgid "Add interface"
 msgstr "Adaugare Interfata"
 
 msgid "Add job"
-msgstr "Adaugare program"
+msgstr "Adauga sesiune"
 
 msgid "Add module"
 msgstr "Adaugare modul"
 
 msgid "Add mount point"
-msgstr "Creaza un nou punc de montaj"
+msgstr "Creaza punct de montare"
 
 msgid "Add option"
 msgstr "Adaugare optiune"
@@ -316,7 +316,7 @@ msgid "Additional group"
 msgstr "Grup aditional"
 
 msgid "Additional parameters to the hardware-specific part of the driver."
-msgstr "Parametri suplimentari la partea hardware specifice ale driverului."
+msgstr "Parametri suplimentari la partea hardware specifica driverului."
 
 msgid "Address"
 msgstr "Adresa"
@@ -331,7 +331,7 @@ msgid "Administrator name"
 msgstr "Nume Administrator"
 
 msgid "Advanced"
-msgstr "Setari Speciale"
+msgstr "Setari avansate"
 
 msgid "Advanced Configuration"
 msgstr "Configurare avansată"
@@ -343,7 +343,7 @@ msgid "Advanced Options"
 msgstr "Opţiuni Avansate"
 
 msgid "Advanced Power Management"
-msgstr "Mod Avansat Power Management"
+msgstr "Mod avansat de management energie"
 
 msgid "Advanced settings"
 msgstr "Setari avansate"
@@ -354,7 +354,7 @@ msgstr "Dupa ce selectati &quot;Salvare&quot;, va mai fi probabil necesar sa exe
 
 #, php-format
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: <ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-msgstr ""
+msgstr "Dupa ce efectuati click pe &quot;Salvare&quot; este necesar sa reporniti %s pentru a activa noile modificari. Va mai trebui de asemenea sa mai efectuati una sau mai multe etape inainte de a avea acces la NAS-ul dvs: <ul><li><span class='vexpl'>schimbati adresa IP a calculatorului dvs.</span></li><li><span class='vexpl'>accesati interfata web folosind noua adresa IP</span></li></ul>"
 
 msgid "Aggregation protocol"
 msgstr "Protocol de agregare"
@@ -431,7 +431,7 @@ msgid "Always scan"
 msgstr "Scanează întotdeauna"
 
 msgid "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
-msgstr ""
+msgstr "Intotdeauna folositi 0 pt numere de dispozitive, folositor cand numarul dispozitivului nu este constant de-a lungul repornirii, unor clustere,..."
 
 msgid "An host with this name already exists."
 msgstr "Acest nume sistem exista deja."
@@ -443,16 +443,16 @@ msgid "Anonymous"
 msgstr "Anonim"
 
 msgid "Anonymous bind"
-msgstr ""
+msgstr "Legatura anonim"
 
 msgid "Anonymous user bandwidth"
 msgstr "Lăţime de bandă pentru utilizatori anonimi"
 
 msgid "Anonymous user download bandwith in KB/s. An empty field means infinity."
-msgstr ""
+msgstr "Latimea de band de descarcare pt utilizatori anonimi in KB/s. Un camp nul inseamna infinitate."
 
 msgid "Anonymous user upload bandwith in KB/s. An empty field means infinity."
-msgstr ""
+msgstr "Latimea de band de upload pt utilizatori anonimi in KB/s. Un camp nul inseamna infinitate."
 
 msgid "Anonymous users only"
 msgstr "Doar utilizatori anonimi"
@@ -482,10 +482,10 @@ msgid "Are you sure you want to shutdown the system?"
 msgstr "Doriti sa opriti sistemul?"
 
 msgid "Asynchronous I/O (AIO)"
-msgstr ""
+msgstr "I/O Asincrona"
 
 msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more extents."
-msgstr ""
+msgstr "In cel mai inalt nivel, o tinta este ceea ce este prezentat initiatorilor, si este alcatuita din una sau mai multe extensii."
 
 msgid "Attached"
 msgstr "Atasat"
@@ -495,10 +495,10 @@ msgid "Attaching provider '%s'."
 msgstr "Ataseaza providerul '%s'."
 
 msgid "Auth Group"
-msgstr ""
+msgstr "Grup Auth"
 
 msgid "Auth Groups"
-msgstr ""
+msgstr "Grupuri auth"
 
 msgid "Auth Method"
 msgstr ""
@@ -522,16 +522,16 @@ msgid "Auto"
 msgstr "Auto"
 
 msgid "Auto size"
-msgstr ""
+msgstr "Dimensionare automata"
 
 msgid "AutoScale"
 msgstr "AutoScalare"
 
 msgid "Automatic disk discovery"
-msgstr ""
+msgstr "Descoperire disc automata"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "Modul descoperire automata disc"
 
 msgid "Autoselect"
 msgstr "Selectare automată"
@@ -546,7 +546,7 @@ msgid "Backup file"
 msgstr "Fişier backup"
 
 msgid "Backup/Restore"
-msgstr "Backup/Restore"
+msgstr "Salvare/Resetare"
 
 msgid "Balance algorithm"
 msgstr "Algoritm Balans"
@@ -555,7 +555,7 @@ msgid "Ban list"
 msgstr "Lista neagră"
 
 msgid "Ban list rule"
-msgstr ""
+msgstr "Reguli de liste interzise"
 
 msgid "Banner"
 msgstr "Baner"
@@ -564,37 +564,37 @@ msgid "Base DN"
 msgstr "DN baza"
 
 msgid "Base Name"
-msgstr ""
+msgstr "Nume baza"
 
 msgid "Base Name will be appended automatically when starting without 'iqn.'."
-msgstr ""
+msgstr "Numele bazei va fi auto-adaugat la pornirea fara 'iqn.'"
 
 msgid "Best available"
-msgstr ""
+msgstr "Cea mai bun/a disponibila"
 
 msgid "Bind DN"
-msgstr ""
+msgstr "Legaturi DN"
 
 msgid "Bind password"
-msgstr ""
+msgstr "Parola Bind"
 
 msgid "BitTorrent"
 msgstr "BitTorent"
 
 msgid "Blank time"
-msgstr ""
+msgstr "Timp nul"
 
 msgid "Browseable"
-msgstr "Vizibil"
+msgstr ""
 
 msgid "Built on"
-msgstr ""
+msgstr "Are baza in"
 
 msgid "Bulgarian"
 msgstr "Bulgară"
 
 msgid "By default, only already existing files can be uploaded."
-msgstr ""
+msgstr "Implicit, doar fisierele existente pot fi uploadate"
 
 msgid "CCMP"
 msgstr ""
@@ -632,13 +632,11 @@ msgstr "Temperatura procesorului"
 msgid "CPU usage"
 msgstr "Utilizare CPU"
 
-#, fuzzy
 msgid "Cache"
-msgstr "Atasat"
+msgstr ""
 
-#, fuzzy
 msgid "Cache Device"
-msgstr "Dispozitiv nou"
+msgstr "Dispozitiv de cache"
 
 msgid "Can't format the OS origin disk!"
 msgstr "Nu se poate formata discul sistem!"
@@ -662,7 +660,7 @@ msgid "Case Folding"
 msgstr ""
 
 msgid "Causes the server to display the network information for the specified IP address or DNS hostname to the client, on the assumption that that IP address or DNS host is acting as a NAT gateway or port forwarder for the server."
-msgstr ""
+msgstr "Face ca serverul sa afiseze informatii ale retelei pt adresa IP data sau hostnameul DNS spre client, pe presupunerea ca acea adresa IP sau host DNS functioneaza ca un gateway NAT sau ininteaza porturi pt server."
 
 msgid "Certificate"
 msgstr "Certificat"
@@ -671,7 +669,7 @@ msgid "Change"
 msgstr "Modifică"
 
 msgid "Change below file"
-msgstr ""
+msgstr "Schimbare fisier de dedesubt"
 
 msgid "Change password"
 msgstr "Modifică parola"
@@ -695,10 +693,10 @@ msgid "Chinese (Traditional)"
 msgstr "Chineză (Tradiţională)"
 
 msgid "Choose on which interface packets must come in to match this rule."
-msgstr ""
+msgstr "Alegeti pe ce interfata trebuie sa vina pachetele pt a se potrivi cu aceasta regula"
 
 msgid "Choose which IP protocol this rule should match."
-msgstr ""
+msgstr "Alegeti cu ce protocol IP aceasta regula ar trebui se potriveasca"
 
 msgid "Choose which interface this route applies to."
 msgstr "Selectati interfata pentru aceasta ruta."
@@ -707,7 +705,7 @@ msgid "Clear"
 msgstr "Curăță"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br />Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr ""
+msgstr "Efectuati click pe &quot;Activeaza upload de firmware&quot; mai jos, dupa aceea alegeti fisierul imagine care sa fie uploadat.<br />Efectuati click pe &quot;Actualizare firmware&quot;pt a incepe procesul de actualizare"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr "Selectati acest buton pentru a descarca configuratia sistemului in format XML."
@@ -716,10 +714,10 @@ msgid "Client"
 msgstr "Client"
 
 msgid "Client sees lowercase, server sees uppercase"
-msgstr ""
+msgstr "Clientul vede litere minuscule, serverele le vad majuscule."
 
 msgid "Client sees uppercase, server sees lowercase"
-msgstr ""
+msgstr "Clientul le vede majuscule, serverele le vad minuscule."
 
 msgid "Collecting initial data, please wait..."
 msgstr "Colectare initiala date, va rugam asteptati..."
@@ -737,7 +735,7 @@ msgid "Command output:"
 msgstr "Rezultat comanda:"
 
 msgid "Command scripts"
-msgstr "Linia de comandata"
+msgstr "Linia de comanda"
 
 msgid "Comment"
 msgstr "Comentariu"
@@ -755,7 +753,7 @@ msgid "Compress"
 msgstr "Compresează"
 
 msgid "Compress file data during the transfer."
-msgstr ""
+msgstr "Comprima datele de fisiere in timpul transferelor"
 
 msgid "Compression"
 msgstr "Compresie"
@@ -767,7 +765,7 @@ msgid "Configuration"
 msgstr "Configuraţie"
 
 msgid "Configuration directory"
-msgstr ""
+msgstr "Director de configurare"
 
 msgid "Configuring"
 msgstr "Configurare"
@@ -806,13 +804,13 @@ msgid "Controller IP address"
 msgstr ""
 
 msgid "Controller TCP Port"
-msgstr ""
+msgstr "Controller de port TCP"
 
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
-msgstr ""
+msgstr "Controleaza algoritmul de compresie utilizat pt acest set de date. Algoritmul compresie 'lzjb' este optimizat pt performanta in timp ce furnizeaza compresie de date buna. Setarea compresiei pe 'Pornit' utilizeaza algoritmul compresie 'lzjb'. Puteti specifica nivelul 'gzip' utilizand valoarea 'gzip-N', unde N este un intreg intre 1(cel mai repede) si 9(cea mai buna compresie). Deocamdata, 'gzip' este acelasi cu 'gzip-6'."
 
 msgid "Controls whether this dataset can be modified."
-msgstr ""
+msgstr "Controleaza daca acest set de date poate fi modificata"
 
 msgid "Count"
 msgstr "Numar"
@@ -827,10 +825,10 @@ msgid "Create mask"
 msgstr "Creare masca"
 
 msgid "Create work directory if it doesn't exist."
-msgstr ""
+msgstr "Creare director de lucru daca nu este existent"
 
 msgid "Creates the pool with an alternate root."
-msgstr ""
+msgstr "Creare pool cu un alt root"
 
 msgid "Creating filesystem"
 msgstr "Creare Sistem fisiere"
@@ -839,7 +837,7 @@ msgid "Creating filesystem with 'Soft Updates'"
 msgstr "Creare sistem fisiere cu 'Soft Updates'"
 
 msgid "Creating partition"
-msgstr ""
+msgstr "Creatie partitie"
 
 msgid "Credits"
 msgstr "Credite"
@@ -860,13 +858,13 @@ msgid "Custom"
 msgstr "Personalizat"
 
 msgid "Custom script"
-msgstr ""
+msgstr "Fisier script personalizat"
 
 msgid "Custom script is not found."
-msgstr ""
+msgstr "Script personalizat nu poate fi gasit."
 
 msgid "Custom script is required."
-msgstr ""
+msgstr "Scriptul personalizat este recomandat"
 
 msgid "Czech"
 msgstr ""
@@ -885,7 +883,7 @@ msgstr "Setari DNS"
 
 #, php-format
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br />You need a minimum of %d Mb RAM to perform the firmware update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr ""
+msgstr "NU renuntati actualizarea firmwareului odata inceputa. %s reporneste automat dupa instalarea firmwareului nou. Setarile vor fi pastrate. <br />Aveti nevoie de minimum %d MB RAM pt a efectua actualizarea firmwareului. <br />Este recomandat sa <a href='%s'>Salvati</a> setarile sistemului inainte sa incepeti actualizarea firmwareului"
 
 msgid "DVD"
 msgstr "DVD"
@@ -903,7 +901,7 @@ msgid "Danish"
 msgstr "Daneză"
 
 msgid "Data digest"
-msgstr ""
+msgstr "\"Digestia\" datelor"
 
 msgid "Data integrity"
 msgstr "Integritate Date"
@@ -912,10 +910,10 @@ msgid "Database directory"
 msgstr "Directorul bazei de date"
 
 msgid "Dataset"
-msgstr ""
+msgstr "Set de date"
 
 msgid "Datasets"
-msgstr ""
+msgstr "Seturi de date"
 
 msgid "Date & Time"
 msgstr "Data şi Ora"
@@ -931,26 +929,25 @@ msgstr "Implicit"
 
 #, php-format
 msgid "Default is %s."
-msgstr ""
+msgstr "Recomandat este %s"
 
 msgid "Default root"
-msgstr ""
+msgstr "Cont root initial"
 
 msgid "Default user name is 'admin'."
-msgstr ""
+msgstr "Numele utilizator initial este 'admin'"
 
 msgid "DefaultTime2Retain"
 msgstr ""
 
-#, fuzzy
 msgid "DefaultTime2Wait"
-msgstr "Implicit"
+msgstr ""
 
 msgid "Define directories/URL's that require authentication."
 msgstr "Definiţi directoarele/URL-urile care necesită autentificare"
 
 msgid "Defines when the shutdown is initiated."
-msgstr ""
+msgstr "Configureaza cand se initiaza oprirea"
 
 msgid "Delete"
 msgstr "Stergere"
@@ -962,7 +959,7 @@ msgid "Delete Host"
 msgstr "Stergere sistem"
 
 msgid "Delete Login Info"
-msgstr ""
+msgstr "Sterge date de logare"
 
 msgid "Delete MIB"
 msgstr "Stergere MIB"
@@ -992,7 +989,7 @@ msgid "Delete all rules"
 msgstr "Şterge toate regulile"
 
 msgid "Delete all self-tests"
-msgstr ""
+msgstr "Sterge auto-testele"
 
 msgid "Delete auth group"
 msgstr ""
@@ -1013,7 +1010,7 @@ msgid "Delete extent"
 msgstr "Stergere extensie"
 
 msgid "Delete files on the receiving side that don't exist on sender."
-msgstr ""
+msgstr "Stergere fisiere in partea primitoare care sunt sterse pe emitent."
 
 msgid "Delete group"
 msgstr "Stergere grup"
@@ -1022,7 +1019,7 @@ msgid "Delete initiator"
 msgstr "Stergere initiator"
 
 msgid "Delete initiator group"
-msgstr ""
+msgstr "Stergere grup initiator"
 
 msgid "Delete interface"
 msgstr "Stergere Interfata"
@@ -1120,6 +1117,10 @@ msgstr "IP dispozitiv"
 
 msgid "Device Pass-through"
 msgstr ""
+
+#, fuzzy
+msgid "Device model"
+msgstr "Nume dispozitiv"
 
 msgid "Device name"
 msgstr "Nume dispozitiv"
@@ -1309,8 +1310,12 @@ msgstr "Doriti sa stergeti aceasta destinatie?"
 msgid "Do you really want to delete this user?"
 msgstr "Stergeti acest utilizator?"
 
-msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
-msgstr "Sigur doriţi să ştergeţi acest volum?\\n!!! Notă: Toate datele vor fi pierdute şi nu mai pot fi recuperate. !!!"
+msgid ""
+"Do you really want to delete this volume?\\n"
+"!!! Note, all data will get lost and can not be recovered. !!!"
+msgstr ""
+"Sigur doriţi să ştergeţi acest volum?\\n"
+"!!! Notă: Toate datele vor fi pierdute şi nu mai pot fi recuperate. !!!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Sigur doriti formatarea discului? Toate datele vor fi pierdute!"
@@ -2147,9 +2152,8 @@ msgstr "Adresa IPv6"
 msgid "IPv6 addresses"
 msgstr "Adresa IPv6"
 
-#, fuzzy
-msgid "IRC Live support"
-msgstr "Suport EA"
+msgid "IRC Live Support"
+msgstr ""
 
 msgid "ISO file to be mounted."
 msgstr ""
@@ -2236,9 +2240,8 @@ msgstr ""
 msgid "Information"
 msgstr "Informatii"
 
-#, fuzzy
 msgid "Information & Manual"
-msgstr "Informatii"
+msgstr ""
 
 msgid "Inherit permissions"
 msgstr "Permisiuni ierarhice"
@@ -2511,9 +2514,8 @@ msgstr ""
 msgid "Log"
 msgstr "Log"
 
-#, fuzzy
 msgid "Log (mirror)"
-msgstr "RAID 1 (duplicare)"
+msgstr ""
 
 msgid "Log Level"
 msgstr "Nivel Jurnal"
@@ -3409,8 +3411,9 @@ msgstr "Reactualizare"
 msgid "Reject"
 msgstr "Respinge"
 
-msgid "Release notes"
-msgstr ""
+#, fuzzy
+msgid "Release Notes"
+msgstr "Stergere Ruta"
 
 msgid "Reload page"
 msgstr "Reincarcare pagina"
@@ -3907,9 +3910,8 @@ msgstr ""
 msgid "Status report successfully sent."
 msgstr "Raportul de stare a fost trimis cu succes."
 
-#, fuzzy
 msgid "Stop"
-msgstr "Oprit"
+msgstr ""
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr ""
@@ -4092,9 +4094,8 @@ msgstr "Temperatura"
 msgid "Temperature monitoring"
 msgstr "Monitorizarea temperaturii"
 
-#, fuzzy
 msgid "Temporary Device"
-msgstr "Director temporar"
+msgstr ""
 
 msgid "Temporary directory"
 msgstr "Director temporar"
@@ -5282,9 +5283,9 @@ msgstr "Trebuia sa adaugati discul mai intii."
 msgid "You must enter the same IP type for network and gateway."
 msgstr "Trebuie folosit acelasi IP pentru retea si pentru gateway."
 
-#, fuzzy, php-format
+#, php-format
 msgid "You must have a minimum of %dMB of RAM for using iSCSI target."
-msgstr "Aveti nevoie de minim 256MB RAM pentru utilizare iSCSI."
+msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Trebuie sa reporniti sistemul inainte de a putea actualiza firmware-ul."
@@ -5345,10 +5346,10 @@ msgid "e.g. %s"
 msgstr "ex. %s"
 
 msgid "filechooser"
-msgstr ""
+msgstr "selector de fisiere"
 
 msgid "get target info failed."
-msgstr ""
+msgstr "esuare aducere informatii despre tinte"
 
 msgid "hour(s)"
 msgstr "oră(e)"
@@ -5421,7 +5422,7 @@ msgid "rc.conf"
 msgstr "rc.conf"
 
 msgid "revision"
-msgstr ""
+msgstr "revizuirea"
 
 msgid "rotated block-interleaved parity"
 msgstr "paritate intretesere blocuri"
@@ -5455,171 +5456,214 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Data"
-
 #~ msgid "hours"
 #~ msgstr "ore"
-
 #~ msgid "day"
 #~ msgstr "zi"
-
 #~ msgid "days"
 #~ msgstr "zile"
-
 #~ msgid "week days"
 #~ msgstr "zilele saptaminii"
-
 #~ msgid "months"
 #~ msgstr "luni"
-
 #~ msgid "Create"
 #~ msgstr "Creare"
-
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Trebuie sa introduceti un bit masca retea valid."
-
 #~ msgid "LAN"
 #~ msgstr "RETEA"
-
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
-
 #~ msgid "Logs"
 #~ msgstr "Jurnale"
-
-#~ msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-#~ msgstr "Acest lucru insemna ca imaginea incarcata nu este in mod oficial suportata si poate produce efecte nedorite in functionare . Instalati doar imagini sistem care provin din surse sigure si asigurati-va ca imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum aceasta imagine (pe riscul dvs.)?"
-
-#~ msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-#~ msgstr "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi alegeti imaginea de incarcat.<br>Click &quot;Actualizare Firmware&quot; pentru inceperea actualizarii."
-
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the "
+#~ "image has not been tampered with.<br><br>Do you want to install this "
+#~ "image anyway (on your own risk)?"
+#~ msgstr ""
+#~ "Acest lucru insemna ca imaginea incarcata nu este in mod oficial "
+#~ "suportata si poate produce efecte nedorite in functionare . Instalati "
+#~ "doar imagini sistem care provin din surse sigure si asigurati-va ca "
+#~ "imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum "
+#~ "aceasta imagine (pe riscul dvs.)?"
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image "
+#~ "file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the "
+#~ "upgrade process."
+#~ msgstr ""
+#~ "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi "
+#~ "alegeti imaginea de incarcat.<br>Click &quot;Actualizare Firmware&quot; "
+#~ "pentru inceperea actualizarii."
 #~ msgid "Minimum power usage with Standby"
 #~ msgstr "Consum minim in modul Standby"
-
 #~ msgid "Medium power usage with Standby"
 #~ msgstr "Consum mediu in modul Standby"
-
 #~ msgid "Minimum power usage without Standby"
 #~ msgstr "Consum maxim fara modul Standby"
-
 #~ msgid "Medium power usage without Standby"
 #~ msgstr "Consum mediu fara modul Standby"
-
 #~ msgid "Maximum performance, maximum power usage"
 #~ msgstr "Performanta Maxima, consum maxim"
-
-#~ msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first "
+#~ "before proceeding."
 #~ msgstr "Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!"
-
-#~ msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-#~ msgstr "Daca discul/partitia selectata este montat va fi de-montat momentan pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul citire."
-
-#~ msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-#~ msgstr "Volumul RAID este montat! Eliminati <a href=%s>punctul de montare</a> inainte de a continua."
-
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted "
+#~ "temporarily to perform selected command, otherwise the commands work in "
+#~ "read-only mode.<br>Service disruption to users accessing this mount will "
+#~ "occur during this process."
+#~ msgstr ""
+#~ "Daca discul/partitia selectata este montat va fi de-montat momentan "
+#~ "pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul "
+#~ "citire."
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</"
+#~ "a> first before proceeding."
+#~ msgstr ""
+#~ "Volumul RAID este montat! Eliminati <a href=%s>punctul de montare</a> "
+#~ "inainte de a continua."
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Marimea buffer-ului de Iesire (implicit 16384)."
-
 #~ msgid "Size of receive buffer (16384 by default)."
 #~ msgstr "Marimea buffer-ului de Intrare (implicit 16384)."
-
 #~ msgid "A valid network must be specified."
 #~ msgstr "Trebuie introdusa o retea valida."
-
 #~ msgid "Synchronization Time"
 #~ msgstr "Timp Sincronizare"
-
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Combinatia de director/partajare nu exista."
-
 #~ msgid "You may need enough space to duplicate all files being synced"
-#~ msgstr "Aveti nevoie de spatiu pentru a duplica toate fisierele care sint sincronizate"
-
+#~ msgstr ""
+#~ "Aveti nevoie de spatiu pentru a duplica toate fisierele care sint "
+#~ "sincronizate"
 #~ msgid "Working Directory"
 #~ msgstr "Director de Lucru"
-
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Unde sint stocate fisierele de lucru"
-
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Creare director de lucru daca acesta nu exista"
-
 #~ msgid "Shutdown Time"
 #~ msgstr "Timp de Oprire"
-
-#~ msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-#~ msgstr "Aceasta optiune va determina %s sa nu verifice existenta unor actualizari pentru firmware cind vizualizati pagina <a href=%s>%s</a>."
-
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "Aceasta optiune va determina %s sa nu verifice existenta unor actualizari "
+#~ "pentru firmware cind vizualizati pagina <a href=%s>%s</a>."
 #~ msgid "Last %d %s log entries"
 #~ msgstr "Ultimele %d %s intrari in jurnal"
-
 #~ msgid "The configuration could not be restored (file upload error)."
 #~ msgstr "Configuratia nu a putut fi refacuta (eroare incarcare fiser)."
-
-#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgid ""
+#~ "This encrypted disk is mounted, umount it before trying to detach it."
 #~ msgstr "Discul criptat este montat, demontati-l inainte de a-l detasa."
-
 #~ msgid "You must use a passphrase to attach an encrypted disk."
-#~ msgstr "Este necesar sa utilizati o fraza de control pentru a atasa un disc criptat"
-
+#~ msgstr ""
+#~ "Este necesar sa utilizati o fraza de control pentru a atasa un disc "
+#~ "criptat"
 #~ msgid "Encrypted disk name"
 #~ msgstr "Nume disc criptat"
-
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Retea autorizata pentru acces iSCSI"
-
-#~ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "Exemplu: iqn.1994-04.org.netbsd.iscsi-target:target0."
-
 #~ msgid "Size in MB."
 #~ msgstr "Dimensiune in MB."
-
-#~ msgid "You can't mount the partition '%s' where the config file is stored.<br>"
-#~ msgstr "Nu puteti monta partitia '%s' unde se afla fisierul de configurare.<br>"
-
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "Nu puteti monta partitia '%s' unde se afla fisierul de configurare.<br>"
 #~ msgid "Disk Name"
 #~ msgstr "Nume Disc"
-
-#~ msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
-#~ msgstr "Schimbarile au fost salvate. Va trebui sa <a href=%s>reporniti</a> sistemul pentru ca acestea sa devina active."
-
-#~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-#~ msgstr "Dupa ce apasati &quot;Salvare&quot;, va trebui sa reporniti %s pentru ca modificarile sa devina active. Eventual va trebui sa parcurgeti si urmatorii pasi pentru a avea din nou acces la sistemul NAS: </span></p><ul><li><span class='vexpl'>schimbati adresa IP a sistemului dumneavoastra</span></li><li><span class='vexpl'> si accesati interfata Web cu noua adresa IP</span></li></ul>"
-
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr ""
+#~ "Schimbarile au fost salvate. Va trebui sa <a href=%s>reporniti</a> "
+#~ "sistemul pentru ca acestea sa devina active."
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "Dupa ce apasati &quot;Salvare&quot;, va trebui sa reporniti %s pentru ca "
+#~ "modificarile sa devina active. Eventual va trebui sa parcurgeti si "
+#~ "urmatorii pasi pentru a avea din nou acces la sistemul NAS: </span></"
+#~ "p><ul><li><span class='vexpl'>schimbati adresa IP a sistemului "
+#~ "dumneavoastra</span></li><li><span class='vexpl'> si accesati interfata "
+#~ "Web cu noua adresa IP</span></li></ul>"
 #~ msgid "built on"
 #~ msgstr "inclus"
-
-#~ msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
-#~ msgstr "La cel mai inalt nivel, o destinatie reprezinta legatura pentru initiator, fiind reprezentata de unul sau mai multe dispozitive, si/sau unul sau mai multe extensii."
-
-#~ msgid "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
-#~ msgstr "Dispozitivele pot fi folosite pentru a defini extensii sau alte dispozitive. Extensiile si dispozitivele trebuie sa fie definite inainte de a fi folosite, si pot fi utilizate doar o singura data."
-
-#~ msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
-#~ msgstr "Configuratia a fost schimbata.<br>Va trebui sa aplicati schimbarile pentru ca acestea sa devina active."
-
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and "
+#~ "is made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "La cel mai inalt nivel, o destinatie reprezinta legatura pentru "
+#~ "initiator, fiind reprezentata de unul sau mai multe dispozitive, si/sau "
+#~ "unul sau mai multe extensii."
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more "
+#~ "than once."
+#~ msgstr ""
+#~ "Dispozitivele pot fi folosite pentru a defini extensii sau alte "
+#~ "dispozitive. Extensiile si dispozitivele trebuie sa fie definite inainte "
+#~ "de a fi folosite, si pot fi utilizate doar o singura data."
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "Configuratia a fost schimbata.<br>Va trebui sa aplicati schimbarile "
+#~ "pentru ca acestea sa devina active."
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Trebuie sa definiti un obiect 'Extins' mai intii."
-
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (distribuire)"
-
-#~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-#~ msgstr "NU OPRITI procesul de actuaalizare firmware odata pornit. %s va reporni automat dupa incarcarea noului firmware cu pastrarea configuratiei.<br> Aveti nevoie de minim %d MB RAM pentru a putea realiza actualizarea..<br>Este recomandabil sa <a href=%s>Salvati</a> configuratia sistemului inainte de a realiza aceasta actualizare."
-
-#~ msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
-#~ msgstr "Puteti instala un pachet si prin SSH sau de la consola folosind comanda pkg_add.<br>Exemplu: pkg_add -r numepachet"
-
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "NU OPRITI procesul de actuaalizare firmware odata pornit. %s va reporni "
+#~ "automat dupa incarcarea noului firmware cu pastrarea configuratiei.<br> "
+#~ "Aveti nevoie de minim %d MB RAM pentru a putea realiza actualizarea.."
+#~ "<br>Este recomandabil sa <a href=%s>Salvati</a> configuratia sistemului "
+#~ "inainte de a realiza aceasta actualizare."
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "Puteti instala un pachet si prin SSH sau de la consola folosind comanda "
+#~ "pkg_add.<br>Exemplu: pkg_add -r numepachet"
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% din %dMB"
-
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Dispozitivul este inca montat, demontati-l inainte de detasare."
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "calea fisierului (ex. /mnt/sharename/extent/%s) sau numele dispozitivului "
+#~ "(ex. /dev/ad1) folosit ca extensie."
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%"
+#~ "s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a "
+#~ "href=%s></a> trebuie să aibă acces complet la Shell."
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
+#~ "of using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. Folosiţi aceste opţiuni doar pentru analiza erorilor!<br>2. Nu este "
+#~ "nevoie de această opţiune pentru a porni un volum RAID (acesta este "
+#~ "pornit automat)."
 
-#~ msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
-#~ msgstr "calea fisierului (ex. /mnt/sharename/extent/%s) sau numele dispozitivului (ex. /dev/ad1) folosit ca extensie."
-
-#~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-#~ msgstr "<a href=%s>SSHD</a> trebuie activat pentru Unison, iar utilizatorul<a href=%s></a> trebuie să aibă acces complet la Shell."
-
-#~ msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
-#~ msgstr "1. Folosiţi aceste opţiuni doar pentru analiza erorilor!<br>2. Nu este nevoie de această opţiune pentru a porni un volum RAID (acesta este pornit automat)."
