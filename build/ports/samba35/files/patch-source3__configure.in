@@ -1,20 +1,17 @@
---- ./source3/configure.in.orig	2010-06-18 21:01:04.000000000 +0900
-+++ ./source3/configure.in	2010-06-27 15:26:32.000000000 +0900
-@@ -756,10 +756,10 @@
+--- ./source3/configure.in.orig	2010-10-07 18:41:16.000000000 +0200
++++ ./source3/configure.in	2010-10-21 09:43:17.000000000 +0200
+@@ -756,8 +756,8 @@
  
          if test "x$CUPS_CONFIG" != x; then
  
--		ac_save_CFLAGS=$CFLAGS
 -		ac_save_LDFLAGS=$LDFLAGS
+-		ac_save_PRINT_LIBS=$PRINT_LIBS
 +		ac_save_PRINT_CPPFLAGS=$CPPFLAGS
 +		ac_save_PRINT_LDFLAGS=$LDFLAGS
- 		ac_save_PRINT_LIBS=$PRINT_LIBS
--		CFLAGS="$CFLAGS `$CUPS_CONFIG --cflags`"
-+		CPPFLAGS="$CPPFLAGS `$CUPS_CONFIG --cflags`"
- 		LDFLAGS="$LDFLAGS `$CUPS_CONFIG --ldflags`"
- 		PRINT_LIBS="$PRINT_LIBS -lcups"
  		AC_CHECK_HEADERS(cups/cups.h cups/language.h)
-@@ -770,8 +770,8 @@
+ 
+ 		if test x"$ac_cv_header_cups_cups_h" = xyes -a \
+@@ -776,8 +776,8 @@
  			AC_CHECK_LIB_EXT(cups, PRINT_LIBS, httpConnectEncrypt)
  		else
  			AC_MSG_WARN([cups-config around but cups-devel not installed])
@@ -25,7 +22,7 @@
  			PRINT_LIBS=$ac_save_PRINT_LIBS
  		fi
  
-@@ -1706,18 +1706,18 @@
+@@ -1712,18 +1712,18 @@
  AC_MSG_RESULT($BLDSHARED)
  
  saved_before_as_needed_ldflags="$LDFLAGS"
@@ -56,7 +53,7 @@
  
  # check if we have to disable LD_AS_NEEDED_FLAG:
  # On some systems for a veriety of reasons linking with
-@@ -4216,10 +4216,10 @@
+@@ -4222,10 +4222,10 @@
  
    ################################################################
    # first test for Active Directory support being enabled
@@ -67,11 +64,11 @@
 +  if test x"$with_ads_support" = x"no"; then
 +  		AC_MSG_ERROR(Active Directory support is required to enable DNS Update support)
 +  		with_dnsupdate_support=no
-+  fi
++  fi	
    ##################################################################
    # then test for uuid.h (necessary to generate unique DNS keynames
    # (uuid.h is required for this test)
-@@ -4469,10 +4469,46 @@
+@@ -4475,10 +4475,46 @@
      fi
  
  	if test x"$use_pam" = x"yes"; then
@@ -120,7 +117,7 @@
  
  		if test x"$create_pam_modules" = x"yes"; then
  			AC_DEFINE(WITH_PAM_MODULES,1,[Whether to include PAM MODULES support])
-@@ -6415,13 +6451,21 @@
+@@ -6421,13 +6457,21 @@
  # Start
  AC_CHECK_FUNC(getmntent)
  
@@ -143,7 +140,7 @@
  		int main(void)
  		{
  			struct statfs fsd;
-@@ -6751,6 +6795,16 @@
+@@ -6757,6 +6801,16 @@
  	LIBS="$LIBS -ldmalloc"
  fi
  
