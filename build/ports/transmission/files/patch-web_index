@@ -1,5 +1,5 @@
---- web/index.html.orig	2010-10-08 02:54:32.000000000 +0200
-+++ web/index.html	2010-10-09 19:53:04.000000000 +0200
+--- ./web/index.html.orig	2010-10-17 02:14:43.000000000 +0200
++++ ./web/index.html	2010-10-25 10:00:33.000000000 +0200
 @@ -78,7 +78,7 @@
  			</div>
  
@@ -31,7 +31,15 @@
  					<a href="#cancel" id="upload_cancel_button">Cancel</a>
  				</form>
  			</div>
-@@ -416,7 +416,6 @@
+@@ -409,7 +409,6 @@
+ 				<li id="button">&nbsp;
+ 					<ul id="footer_super_menu">
+ 						<li id="homepage">Transmission Homepage</li>
+-						<li id="tipjar">Transmission Tip Jar</li>
+ 						<li class="separator"></li>
+ 						<li id="preferences">Preferences</li>
+ 						<li id="statistics">Statistics</li>
+@@ -419,7 +418,6 @@
  								<li id="unlimited_download_rate">Unlimited</li>
  								<li id="limited_download_rate">Limit (10 kB/s)</li>
  								<li class="separator"></li>
@@ -39,7 +47,7 @@
  								<li>10 kB/s</li>
  								<li>20 kB/s</li>
  								<li>30 kB/s</li>
-@@ -427,6 +426,10 @@
+@@ -430,6 +428,10 @@
  								<li>150 kB/s</li>
  								<li>200 kB/s</li>
  								<li>250 kB/s</li>
@@ -50,7 +58,7 @@
  								<li>500 kB/s</li>
  								<li>750 kB/s</li>
  							</ul>
-@@ -436,7 +439,6 @@
+@@ -439,7 +441,6 @@
  								<li id="unlimited_upload_rate">Unlimited</li>
  								<li id="limited_upload_rate">Limit (10 kB/s)</li>
  								<li class="separator"></li>
@@ -58,7 +66,7 @@
  								<li>10 kB/s</li>
  								<li>20 kB/s</li>
  								<li>30 kB/s</li>
-@@ -445,8 +447,16 @@
+@@ -448,8 +449,16 @@
  								<li>75 kB/s</li>
  								<li>100 kB/s</li>
  								<li>150 kB/s</li>
