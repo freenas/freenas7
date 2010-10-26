@@ -12,6 +12,9 @@ USE_GMAKE=			yes
 # hack to prevent gmake failure on 6.xx
 GMAKE=		make
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--with-docdir=${DOCSDIR} --disable-sample \
+    --disable-dependency-tracking --disable-drivedb
+
 
 CFLAGS:=			${CFLAGS:S/-O2/-O/} -Wno-write-strings
 
