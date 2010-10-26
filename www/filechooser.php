@@ -548,7 +548,7 @@ EOD;
 			.filechooser .filelist table tr.sort a:hover { text-decoration:underline; }
 			/* parent row */
 			.filechooser .filelist table tr.parent { font-weight:bold; }
-			.filechooser .filelist table tr.parent td { height: 18px; border-bottom: 1px solid #eee; text-color: #ffffff; background: #435370; }
+			.filechooser .filelist table tr.parent td { height: 18px; border-bottom: 1px solid #eee; text-color: #ffffff; background: #435370 url(listtopic_bg.png); }
 			.filechooser .filelist table tr.parent a { text-decoration:none; color:#ffffff; }
 			.filechooser .filelist table tr.parent a:hover { text-decoration:underline; }
 			/* filelist rows */
