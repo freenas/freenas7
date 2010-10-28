@@ -127,6 +127,7 @@ Bug fixes:
 - Fix the document link on Services|Rsync|Server|Settings (BR 2997828).
 - Fix fail to connect SSH if ActiveDirectory is enabled (BR 2821715, 2898371).
 - Fix UPS support for Megatec USB UPSs fails (BR 3079159).
+- Fix Unable to create ZFS datasets with . or / in the name by WebGUI (BR2934275).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
