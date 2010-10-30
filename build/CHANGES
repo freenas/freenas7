@@ -71,7 +71,7 @@ Majors changes:
 - Upgrade bash to 4.1.009.
 - Upgrade istgt to 20100707.
 - Upgrade msmtp to 1.4.21.
-- Upgrade nano to 2.2.4.
+- Upgrade nano to 2.2.5.
 - Upgrade gzip to 1.4.
 - Upgrade tftp-hpa to 5.0.
 - Introduce iSCSI boot/install feature (isboot 0.1.3).
