@@ -2,11 +2,10 @@ PORTNAME=			rsync
 PORTVERSION=	3.0.7
 CATEGORIES=		net
 COMMENT=			A network file distribution/sync utility
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@quicknet.nl
 
 MASTER_SITES=	http://rsync.samba.org/ftp/%SUBDIR%/ \
 							ftp://ftp.samba.org/pub/%SUBDIR%/ \
-							ftp://sunsite.auc.dk/pub/unix/%SUBDIR%/  \
 							ftp://ftp.sunet.se/pub/unix/admin/%SUBDIR%/  \
 							ftp://ftp.fu-berlin.de/pub/unix/network/%SUBDIR%/ \
 							http://www.mirrorservice.org/sites/rsync.samba.org/ \
