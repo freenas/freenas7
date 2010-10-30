@@ -1,11 +1,13 @@
 PORTNAME=			arcconf
-DISTVERSION=	v6_40_18530
+DISTVERSION=	v6_50_18570
 CATEGORIES=		sysutils
 COMMENT=			Adaptec SCSI RAID administration tool
-MAINTAINER=		aoyama@peach.ne.jp
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	http://download.adaptec.com/raid/storage_manager/
-DISTNAME=			asm_freebsd${DIST_TYPE}_${DIST_EXT}_${DISTVERSION}
+
+DISTNAME=			asm_freebsd_${DIST_EXT}_${DISTVERSION}
+EXTRACT_SUFX=	.tgz
 
 ONLY_FOR_ARCHS=	i386 amd64
 RESTRICTED=			May not be redistributed in binary form
@@ -15,21 +17,23 @@ NO_WRKSUBDIR=		yes
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} >= 700000
+.if ${OSVERSION} >= 800000
+DIST_TYPE=	8
+.elif ${OSVERSION} >= 700000
 DIST_TYPE=	7
-EXTRACT_SUFX=	.pkg.tbz
 .else
 DIST_TYPE=	6
-EXTRACT_SUFX=	.pkg.tgz
 .endif
 
 .if ${ARCH} == amd64
 DIST_EXT=	x64
+WORK_EXT=	_x86_64
 .else
 DIST_EXT=	x86
+WORK_EXT=	#
 .endif
 
 do-install:
-	${INSTALL_PROGRAM} -v ${WRKSRC}/opt/StorMan/arcconf ${FREENAS_ROOTFS}/${PREFIX}/sbin
+	${INSTALL_PROGRAM} -v ${WRKSRC}/freebsd${DIST_TYPE}${WORK_EXT}/cmdline/arcconf ${FREENAS_ROOTFS}/${PREFIX}/sbin
 
 .include <bsd.port.post.mk>
