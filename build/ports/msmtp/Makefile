@@ -1,5 +1,5 @@
 PORTNAME=			msmtp
-PORTVERSION=	1.4.20
+PORTVERSION=	1.4.21
 CATEGORIES=		mail ipv6
 COMMENT=			A SMTP client
 MAINTAINER=		michael.zoon@freenas.org
