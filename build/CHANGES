@@ -80,7 +80,7 @@ Bug fixes:
 - Fix fail to connect SSH if ActiveDirectory is enabled (BR 2821715, 2898371).
 - Fix UPS support for Megatec USB UPSs fails (BR 3079159).  
 - Fix Unable to create ZFS datasets with . or / in the name by WebGUI (BR2934275).
-- Fix Remote root vulnerability in exec_raw.php (BT 3103082).
+- Fix Remote root vulnerability in exec_raw.php.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
