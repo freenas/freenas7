@@ -2,7 +2,7 @@
 /*
 	globals.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -65,28 +65,29 @@ $g_install = array(
 
 /* Available languages/locales */
 $g_languages = array (
+	"sq"    => array("codeset" => "UTF-8", "desc" => gettext("Albanian")),
 	"bg"    => array("codeset" => "UTF-8", "desc" => gettext("Bulgarian")),
 	"zh_CN" => array("codeset" => "UTF-8", "desc" => gettext("Chinese (Simplified)")),
 	"zh_TW" => array("codeset" => "UTF-8", "desc" => gettext("Chinese (Traditional)")),
 	"nl"    => array("codeset" => "UTF-8", "desc" => gettext("Dutch")),
+	"da"    => array("codeset" => "UTF-8", "desc" => gettext("Danish")),
 	"en_US" => array("codeset" => "ISO-8859-1", "desc" => gettext("English")),
 	"fr"    => array("codeset" => "UTF-8", "desc" => gettext("French")),
-	"da"    => array("codeset" => "UTF-8", "desc" => gettext("Danish")),
 	"de"    => array("codeset" => "UTF-8", "desc" => gettext("German")),
 	"el"    => array("codeset" => "UTF-8", "desc" => gettext("Greek")),
 	"hu"    => array("codeset" => "UTF-8", "desc" => gettext("Hungarian")),
 	"it"    => array("codeset" => "UTF-8", "desc" => gettext("Italian")),
 	"ja"    => array("codeset" => "UTF-8", "desc" => gettext("Japanese")),
+	"ko"    => array("codeset" => "UTF-8", "desc" => gettext("Korean")),
+	"lv"    => array("codeset" => "UTF-8", "desc" => gettext("Latvian")),
 	"nb"    => array("codeset" => "UTF-8", "desc" => gettext("Norwegian (Bokmal)")),
 	"pl"    => array("codeset" => "UTF-8", "desc" => gettext("Polish")),
 	"pt"    => array("codeset" => "UTF-8", "desc" => gettext("Portuguese")),
 	"ro"    => array("codeset" => "UTF-8", "desc" => gettext("Romanian")),
 	"ru"    => array("codeset" => "UTF-8", "desc" => gettext("Russian")),
 	"sl"    => array("codeset" => "UTF-8", "desc" => gettext("Slovenian")),
-	"sq"    => array("codeset" => "UTF-8", "desc" => gettext("Albanian")),
 	"es"    => array("codeset" => "UTF-8", "desc" => gettext("Spanish")),
 	"sv"    => array("codeset" => "UTF-8", "desc" => gettext("Swedish")),
-	"lv"    => array("codeset" => "UTF-8", "desc" => gettext("Latvian")),
 	"sk"    => array("codeset" => "UTF-8", "desc" => gettext("Slovak")),
 	"cs"    => array("codeset" => "UTF-8", "desc" => gettext("Czech"))
 );
