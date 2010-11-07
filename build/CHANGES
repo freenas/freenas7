@@ -82,7 +82,7 @@ Majors changes:
 - Display Device model on 'Status|Disks and Disks|Management'.
 
 Minors changes:
-- Add Czech and Slovak translations.
+- Add Czech, Korean and Slovak translations.
 - Add multiple CPUs usage.
 - Add AIO WebGUI for CIFS/SMB service.
 - Remove /var/tmp symbolic link.
