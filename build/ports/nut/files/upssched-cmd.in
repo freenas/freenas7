@@ -15,23 +15,23 @@ nut_upssched_forced_shutdown_timer=${nut_upssched_forced_shutdown_timer:-"0"}
 
 case "${NOTIFYTYPE}" in
 	ONLINE)
-		_notifymessage="UPS ${UPSNAME} on line power";;
+		_notifymessage="UPS ${UPSNAME} - Running on line power";;
 	ONBATT)
-		_notifymessage="UPS ${UPSNAME} on battery";;
+		_notifymessage="UPS ${UPSNAME} - Line Power Fail, system running on battery power";;
 	LOWBATT)
-		_notifymessage="UPS ${UPSNAME} battery is low";;
+		_notifymessage="UPS ${UPSNAME} - Low battery power";;
 	FSD)
-		_notifymessage="UPS ${UPSNAME}: forced shutdown in progress";;
+		_notifymessage="UPS ${UPSNAME}: - Forced shutdown in progress";;
 	COMMOK)
-		_notifymessage="Communications with UPS ${UPSNAME} established";;
+		_notifymessage="Communications with the UPS ${UPSNAME} are established";;
 	COMMBAD)
-		_notifymessage="Communications with UPS ${UPSNAME} lost";;
+		_notifymessage="Communications with the UPS ${UPSNAME} are lost";;
 	SHUTDOWN)
-		_notifymessage="Auto logout and shutdown proceeding";;
+		_notifymessage="Automatic logout and shutdown proceeding";;
 	REPLBATT)
-		_notifymessage="UPS ${UPSNAME} battery needs to be replaced";;
+		_notifymessage="UPS ${UPSNAME} - The battery needs to be replaced!";;
 	NOCOMM)
-		_notifymessage="UPS ${UPSNAME} is unavailable";;
+		_notifymessage="UPS ${UPSNAME} - The ups is unavailable";;
 	NOPARENT)
 		_notifymessage="upsmon parent process died - shutdown impossible";;
 esac
