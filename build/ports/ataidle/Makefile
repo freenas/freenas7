@@ -2,7 +2,7 @@ PORTNAME=			ataidle
 PORTVERSION=	2.5.1
 CATEGORIES=		sysutils
 COMMENT=			Utility to set spindown timeout for ATA drives
-MAINTAINER=		michael.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	http://www.cran.org.uk/bruce/software/
 
