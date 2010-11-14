@@ -76,7 +76,7 @@ Majors changes:
 - Upgrade tftp-hpa to 5.0.
 - Introduce iSCSI boot/install feature (isboot 0.2.2).
 - Upgrade 3ware driver to 9.5.3.
-- Upgrade proftpd to 1.3.3b.
+- Upgrade proftpd to 1.3.3c.
 - Upgrade lighttpd to 1.4.28.
 - Upgrade iperf to 2.0.5.
 - Upgrade ataidle to 2.5.1.
