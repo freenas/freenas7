@@ -31,6 +31,7 @@ Majors changes:
 - Upgrade proftpd to 1.3.3b.
 - Upgrade lighttpd to 1.4.28.
 - Upgrade iperf to 2.0.5.
+- Upgrade ataidle to 2.5.1.
 
 Minors changes:
 - Add Czech, Korean and Slovak translations.
