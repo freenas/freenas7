@@ -1,5 +1,5 @@
 PORTNAME=			proftpd
-PORTVERSION=	1.3.3c
+PORTVERSION=	1.3.3d
 CATEGORIES=		ftp
 COMMENT=			Highly configurable ftp daemon
 MAINTAINER=		michael.zoon@freenas.org
