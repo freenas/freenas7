@@ -17,7 +17,7 @@ LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									vorbis.4:${PORTSDIR}/audio/libvorbis \
 									avformat:${PORTSDIR}/multimedia/ffmpeg
 
-USE_AUTOTOOLS=		autoconf:268
+USE_AUTOTOOLS=		autoconf
 USE_GNOME=				libxml2
 USE_ICONV=				yes
 USE_GMAKE=				yes
