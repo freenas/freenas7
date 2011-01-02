@@ -1,3 +1,7 @@
-MD5 (php-5.2.14.tar.bz2) = bfdfc0e62fe437020cc04078269d1414
-SHA256 (php-5.2.14.tar.bz2) = 515b5fd41258798d59b93d86b0d752ab0b03e5738c32af444fba1907763c2bd1
-SIZE (php-5.2.14.tar.bz2) = 9055945
+SHA256 (php-5.2.16.tar.bz2) = 790c4aeb77064a17e3c985fac0fbd7ac3635bc53c7ce7c80bd7c39239e338603
+SIZE (php-5.2.16.tar.bz2) = 9090930
+SHA256 (php-5.2.14-fpm-0.5.14-freebsd.patch.gz) = 354ce451417d14ef47761ae55147e9cee30fa0ff6f59447da021194c539f4d7f
+SIZE (php-5.2.14-fpm-0.5.14-freebsd.patch.gz) = 43550
+
+
+
