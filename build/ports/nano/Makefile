@@ -1,5 +1,5 @@
 PORTNAME=			nano
-PORTVERSION=	2.2.5
+PORTVERSION=	2.2.6
 CATEGORIES=		editors
 COMMENT=			Nano's ANOther editor, an enhanced free Pico clone
 MAINTAINER=		michael.zoon@freenas.org
