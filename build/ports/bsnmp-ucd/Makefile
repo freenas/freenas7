@@ -7,7 +7,7 @@ MAINTAINER=		michael.zoon@freenas.org
 MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
 
 USE_MAKE=				yes
-USE_AUTOTOOLS=	libtool:22:env
+USE_AUTOTOOLS=	libtool:env
 
 post-patch:
 	@${REINPLACE_CMD} -e "s/LOCALBASE/PREFIX/g" ${WRKSRC}/Makefile
