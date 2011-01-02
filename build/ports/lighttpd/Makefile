@@ -12,7 +12,7 @@ LIB_DEPENDS+=			uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
 									pcre.0:${PORTSDIR}/devel/pcre
 
 USE_BZIP2=				yes
-USE_AUTOTOOLS=	libtool:22
+USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=		yes
 USE_OPENSSL=			yes
 USE_GNOME+=				libxml2

@@ -3,13 +3,13 @@ PORTVERSION=	1.1.20100428
 PORTEPOCH=		1
 CATEGORIES=		devel
 COMMENT=			An enhanced version of 'dialog' to work with ncurses
-MAINTAINER=		ma.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	ftp://invisible-island.net/${PORTNAME:S|^c||}/
 DISTNAME=			${PORTNAME:S|^c||}-${PORTVERSION:R}-${PORTVERSION:E}
 
 EXTRACT_SUFX=			.tgz
-USE_AUTOTOOLS=		libtool:22
+USE_AUTOTOOLS=		libtool
 GNU_CONFIGURE=		yes
 USE_LDCONFIG=			yes
 CONFIGURE_ARGS=		--includedir=${PREFIX}/include/${PORTNAME} --with-libtool
