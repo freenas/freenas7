@@ -1,11 +1,11 @@
---- pmap.h.orig	2009-10-25 10:10:29.000000000 +0900
-+++ pmap.h	2010-01-30 19:33:49.000000000 +0900
+--- pmap.h.orig	2010-12-22 02:09:25.000000000 +0900
++++ pmap.h	2011-01-05 03:31:59.000000000 +0900
 @@ -115,7 +115,7 @@
  
  /* Initial number of kernel page tables. */
  #ifndef NKPT
 -#define	NKPT		32
-+#define	NKPT		60
++#define	NKPT		120
  #endif
  
  #define NKPML4E		1		/* number of kernel PML4 slots */
