@@ -1,5 +1,5 @@
 PORTNAME=			php5
-PORTVERSION=	5.2.16
+PORTVERSION=	5.2.17
 CATEGORIES=		lang
 COMMENT=			PHP5 scripting language
 MAINTAINER=		michael.zoon@freenas.org
