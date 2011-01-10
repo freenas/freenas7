@@ -67,7 +67,7 @@ setifconfig()
 	_ifn=`get_if ${_ifn}`
 	_ifn_isboot=`sysctl -q -n net.isboot.nic`
 	_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/lan" \
-		-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
+		-i "ipaddr[. = 'dhcp']" -o "syncdhcp" -b \
 		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 		-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
 		-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
@@ -120,7 +120,7 @@ setifconfig()
 		_ifn=`configxml_get "//interfaces/*[name() = 'opt${_id}']/if"`
 		if configxml_isset "//interfaces/*[name() = 'opt${_id}']/enable"; then
 			_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/*[name() = 'opt${_id}']" \
-				-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
+				-i "ipaddr[. = 'dhcp']" -o "syncdhcp" -b \
 				-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 				-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
 				-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \

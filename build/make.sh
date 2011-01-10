@@ -70,7 +70,7 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 #FREENAS_MFSROOT_SIZE=164
 #FREENAS_IMG_SIZE=66
 FREENAS_MFSROOT_SIZE=192
-FREENAS_IMG_SIZE=72
+FREENAS_IMG_SIZE=75
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`

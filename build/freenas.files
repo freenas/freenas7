@@ -95,6 +95,9 @@ bin/chflags
 ## pgrep, pkill -- find or signal processes by name
 bin/pkill:bin/pgrep:usr/bin/pkill:usr/bin/pgrep
 
+## pwait -- wait for processes to terminate
+bin/pwait
+
 ## getfacl -- get ACL information
 bin/getfacl
 
