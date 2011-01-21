@@ -1,5 +1,5 @@
 PORTNAME=			arcconf
-DISTVERSION=	v6_50_18570
+DISTVERSION=	v6_50_18579
 CATEGORIES=		sysutils
 COMMENT=			Adaptec SCSI RAID administration tool
 MAINTAINER=		michael.zoon@freenas.org
@@ -27,10 +27,9 @@ DIST_TYPE=	6
 
 .if ${ARCH} == amd64
 DIST_EXT=	x64
-WORK_EXT=	_x86_64
 .else
 DIST_EXT=	x86
-WORK_EXT=	#
+
 .endif
 
 do-install:
