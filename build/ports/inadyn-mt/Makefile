@@ -1,5 +1,5 @@
 PORTNAME=			inadyn-mt
-PORTVERSION=	02.24.10
+PORTVERSION=	02.24.20
 CATEGORIES=		dns
 COMMENT=			A simple DYNAMIC DNS client
 MAINTAINER=		michael.zoon@freenas.org
