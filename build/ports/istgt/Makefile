@@ -1,5 +1,5 @@
 PORTNAME=		istgt
-PORTVERSION=		20100707
+PORTVERSION=		20110219
 CATEGORIES=		net
 COMMENT=		Implementation of userland ISCSI target
 MAINTAINER=		aoyama@peach.ne.jp
