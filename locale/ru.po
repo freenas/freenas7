@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
 "POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2010-11-11 21:29+0000\n"
-"Last-Translator: Evgeniy Devyatkin <Unknown>\n"
+"PO-Revision-Date: 2011-01-14 18:22+0000\n"
+"Last-Translator: Sergey Sedov <sedov@webmail.perm.ru>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-12 16:12+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-27 22:04+0000\n"
+"X-Generator: Launchpad (build 12460)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "Language: \n"
 "X-Poedit-Language: Russian\n"
@@ -45,6 +45,17 @@ msgid ""
 "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
 "."
 msgstr "Имя хоста может состоять только из символов a-z, A-Z, 0-9, - , _ и ."
+
+#~ msgid ""
+#~ "The module provides automatic bans that are triggered based on configurable "
+#~ "criteria. A ban prevents the banned user, host, or class from logging in to "
+#~ "the server, it does not prevent the banned user, host, or class from "
+#~ "connecting to the server."
+#~ msgstr ""
+#~ "Модуль 'Ban list' выполняет автоматическое блокирование в соответствии с "
+#~ "гибко задаваемыми критериями. Блокирование подразумевает собой временную "
+#~ "невозможность работы с сервером, но не запрещает соединение с ним и может "
+#~ "применяться к пользователям, хостам, или классам."
 
 msgid " interfaces:"
 msgstr " интерфейсы:"
@@ -2462,7 +2473,7 @@ msgid "IPv6 addresses"
 msgstr "Адреса IPv6."
 
 msgid "IRC Live Support"
-msgstr ""
+msgstr "Поддержка в чате IRC"
 
 msgid "ISO file to be mounted."
 msgstr "Файл ISO будет смонтирован"
@@ -6581,6 +6592,9 @@ msgstr "upriv"
 #~ msgid "Logs"
 #~ msgstr "Журналы"
 
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "Максимальная производительность, максимальное энергопотребление"
+
 #, php-format
 #~ msgid ""
 #~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
@@ -6672,6 +6686,9 @@ msgstr "upriv"
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (с чередованием)"
 
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (зеркалирование)"
+
 #, c-format
 #~ msgid ""
 #~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
@@ -6723,6 +6740,11 @@ msgstr "upriv"
 #~ msgid "The combination of share and working directory does not exist."
 #~ msgstr "Комбинация общего ресурса и рабочего каталога не существует."
 
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr ""
+#~ "Эти параметры будут добавлены к настройкам общих ресурсов в smb.conf."
+
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Место хранения рабочих файлов"
 
@@ -6733,6 +6755,10 @@ msgstr "upriv"
 
 #~ msgid "You have to define some 'Extent' objects first."
 #~ msgstr "Сначала нужно задать объекты типа 'Extent'"
+
+#, php-format
+#~ msgid "Status report from host: %s.%s"
+#~ msgstr "Отчет состояния от хоста %s.%s"
 
 #, c-format, php-format
 #~ msgid "%d%% of %dMB"
@@ -6779,6 +6805,18 @@ msgstr "upriv"
 #, php-format
 #~ msgid "Invalid port! Port number must be in the range from %d to %d."
 #~ msgstr "Неверный порт. Номер порта должен быть между %d и %d."
+
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "Среднее энергопотребление с режимом Standby"
+
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "Среднее энергопотребление без режима Standby"
+
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "Минимальное энергопотребление с режимом Standby"
+
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "Минимальное энергопотребление без режима Standby"
 
 #~ msgid "You may need enough space to duplicate all files being synced"
 #~ msgstr ""
@@ -6869,6 +6907,23 @@ msgstr "upriv"
 #~ "Путь к файлу (например, /mnt/sharename/extent/%s) или имя устройства "
 #~ "(например, /dev/ad1), используемого как экстент."
 
+#, php-format
+#~ msgid ""
+#~ "To increase CIFS performance try the following:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+#~ msgstr ""
+#~ "Чтобы увеличить производительность службы CIFS/SMB, попробуйте сделать "
+#~ "следующее:<div id='enumeration'><ul><li>Разрешите параметр 'Чтение/запись "
+#~ "большими блоками'</li><li>Разрешите параметр '<a href='%s'>Настройка</a>' "
+#~ "для настройки некоторых переменных ядра</li><li>Увеличьте размер <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+
+#, php-format
+#~ msgid "UPS notification from host: %s"
+#~ msgstr "Уведомление UPS хоста %s"
+
 #~ msgid ""
 #~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
 #~ msgstr ""
@@ -6884,5 +6939,235 @@ msgstr "upriv"
 #~ msgid "FTP file transfer"
 #~ msgstr "Передача файлов по FTP"
 
+#, c-format
+#~ msgid ""
+#~ "An unauthorized POST request has been detected. Because this can be a <a "
+#~ "href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
+#~ "has been blocked. Please <a href='%s'>login</a> again to continue."
+#~ msgstr ""
+#~ "Неавторизованный POST-запрос был заблокирован, поскольку это может быть "
+#~ "атака вида <a href='%s' target='_blank'>'межсайтовая подделка запроса'</a>. "
+#~ "Пожалуйста, <a href='%s'>зарегистрируйтесь</a> повторно для продолжения."
+
+#~ msgid ""
+#~ "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
+#~ "compression algorithm is optimized for performance while providing decent "
+#~ "data compression. Setting compression to 'On' uses the 'lzjb' compression "
+#~ "algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
+#~ "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
+#~ "Currently, 'gzip' is equivalent to 'gzip-6'."
+#~ msgstr ""
+#~ "Алгоритм сжатия, используемый для этого dataset'а. Алгоритм 'lzjb' "
+#~ "оптимизирован для обеспечения приемлемой компрессии при достаточном "
+#~ "быстродействии, включается выбором 'Вкл.' или 'lzjb'. Выбор 'gzip' "
+#~ "эквивалентен 'gzip-6', но вы можете задать необходимый вам уровень сжатия "
+#~ "'gzip-N', где N - целое число от 1 (наиболее быстрое сжатие) до 9 "
+#~ "(максимальная компрессия)."
+
+#, php-format
+#~ msgid ""
+#~ "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Отсутствуют сконфигурированные виртуальные устройства. Пожалуйста, добавьте "
+#~ "вначале новое <a href=%s>виртуальное устройство</a>."
+
+#, php-format
+#~ msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#~ msgstr ""
+#~ "Отсутствуют сконфигурированные экстенты. Пожалуйста, добавьте вначале новый "
+#~ "<a href=%s>экстент</a>."
+
+#, php-format
+#~ msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#~ msgstr ""
+#~ "Отсутствуют доступные диски. Пожалуйста, добавьте вначале новый <a "
+#~ "href=%s>диск</a>."
+
+#, php-format
+#~ msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#~ msgstr ""
+#~ "Отсутствуют сконфигурированные пулы. Пожалуйста, добавьте вначале новые <a "
+#~ "href=%s>пулы</a>."
+
+#~ msgid ""
+#~ "Limits the\tamount of space a dataset and its descendants can consume. This "
+#~ "property enforces a hard limit on the amount of space used. This\tincludes "
+#~ "all space consumed by descendants, including file systems and snapshots. To "
+#~ "specify the size use the following human-readable suffixes (for example, "
+#~ "'k', 'KB', 'M', 'Gb', etc.)."
+#~ msgstr ""
+#~ "Ограничение величины дискового пространства, которое могут занимать dataset "
+#~ "и его потомки. Этот параметр накладывает жесткое ограничение на размер "
+#~ "используемого пространства, включающего в себя файловые системы и "
+#~ "моментальные снимки состояния (snapshots). Чтобы задать размер, вы можете "
+#~ "использовать понятные суффиксы, такие как 'k' или 'KB' (килобайт), 'M' "
+#~ "(мегабайт), 'Gb' (гигабайт)."
+
+#~ msgid ""
+#~ "You can use the following parameters for substitution:<div "
+#~ "id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+#~ msgstr ""
+#~ "Вы можете использовать следующие параметры для замены:<div "
+#~ "id='enumeration'><ul><li>%d - Дата</li><li>%h - Имя хоста</li></ul></div>"
+
+#~ msgid "I/O timeout in seconds (30 by default)."
+#~ msgstr "Таймаут ввода/вывода в секундах (по умолчанию 30)"
+
+#~ msgid "Maximum number of connections in each session (8 by default)."
+#~ msgstr "Максимальное число подключений для каждой сессии (по умолчанию 8)."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Отсутствуют сконфигурированные группы инициаторов. Пожалуйста, добавьте "
+#~ "вначале <a href=%s>группу инициаторов</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+#~ msgstr ""
+#~ "Отсутствуют сконфигурированные группы порталов. Пожалуйста, добавьте вначале "
+#~ "<a href=%s>группу порталов</a>."
+
+#~ msgid "mutual CHAP"
+#~ msgstr "Взаимный CHAP"
+
+#~ msgid "Maximum number of sessions holding at same time (32 by default)."
+#~ msgstr ""
+#~ "Максимальное число одновременно подключенных сессий (по умолчанию 32)."
+
+#~ msgid "NOPIN sending interval in seconds (20 by default)."
+#~ msgstr "Интервал отправки NOPIN в секундах (по умолчанию 20)."
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "Начальный параметр iSCSI (по умолчанию 262144)."
+
+#~ msgid "iSCSI initial parameter (65536 by default)."
+#~ msgstr "Начальный параметр iSCSI (по умолчанию 65536)."
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr "Для использования iSCSI-цели нужно иметь не менее 256 Мбайт ОЗУ."
+
+#~ msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+#~ msgstr "Тип используемого экстента (файл включает эмулированный том ZFS)."
+
+#~ msgid ""
+#~ "To configure the target, you must add at least Portal Group and Initiator "
+#~ "Group and Extent.<br/>Portal Group which is identified by tag number defines "
+#~ "IP addresses and listening TCP ports.<br/>Initiator Group which is "
+#~ "identified by tag number defines authorised initiator names and "
+#~ "networks.<br/>Auth Group which is identified by tag number and is optional "
+#~ "if the target does not use CHAP authentication defines authorised users and "
+#~ "secrets for additional security.<br/>Extent defines the storage area of the "
+#~ "target."
+#~ msgstr ""
+#~ "Чтобы сконфигурировать цель, вам необходимо добавить группу порталов, группу "
+#~ "инициаторов и экстент:<br/><ul><li>Группа порталов с заданным номером метки "
+#~ "определяет IP-адреса и прослушиваемые TCP-порты.</li><li>Группа инициаторов "
+#~ "с заданным номером метки определяет имена авторизованных инициаторов и "
+#~ "подсети.</li><li>Группа аутентификации с заданным номером метки содержит "
+#~ "имена пользователей и их ключи безопасности для дополнительной защищенности "
+#~ "(является необязательной, если цель не использует аутентификацию "
+#~ "CHAP).</li><li>Экстент определяет область хранилища, расположенную на "
+#~ "цели.</li></ul>"
+
+#~ msgid ""
+#~ "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+#~ "partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+#~ "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+#~ "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+#~ "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+#~ msgstr ""
+#~ "Выберите <b>Раздел GPT</b>, если хотите смонтировать накопитель, "
+#~ "отформатированный в GPT (тип раздела по умолчанию, <b>начиная с версии "
+#~ "0.684b</b>).<br>Выберите <b>Раздел MBR</b> для устройства, "
+#~ "отформатированного в UFS или тома Software RAID (созданного <b>до версии "
+#~ "0.684b</b>), а также для для накопителей из других операционных "
+#~ "систем.<br>Выберите <b>CD/DVD или старый программный RAID</b> для старых "
+#~ "томов SoftwareRAID (созданных в версиях <b>ранее 0.68</b>) или CD/DVD."
+
+#, php-format
+#~ msgid ""
+#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+#~ "menu."
+#~ msgstr ""
+#~ "Оставьте '%s' для неформатированных дисков и отформатируйте их в меню <a "
+#~ "href=%s>'Формат'</a>."
+
+#~ msgid "Hardware:"
+#~ msgstr "Аппаратное обеспечение"
+
+#~ msgid "Error's"
+#~ msgstr "Ошибки"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have shell access."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> должен быть включен для работы Unison. <a "
+#~ "href=%s>Пользователь</a> должен иметь доступ к оболочке shell."
+
+#~ msgid "Info:"
+#~ msgstr "Информация:"
+
 #~ msgid "Report generator"
 #~ msgstr "Генератор отчетов"
+
+#~ msgid "Subject:"
+#~ msgstr "Тема:"
+
+#~ msgid "phpBB:"
+#~ msgstr "Отчет для phpBB:"
+
+#, php-format
+#~ msgid ""
+#~ "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "Зашифрованное устройство в данный момент смонтировано. Необходимо вначале <a "
+#~ "href=%s>размонтировать</a> этот диск."
+
+#, php-format
+#~ msgid ""
+#~ "Use this option to override the default permission modes for newly created "
+#~ "files (%s by default). "
+#~ msgstr ""
+#~ "Команда umask изменяет права доступа, которые присваиваются новым файлам и "
+#~ "каталогам (по умолчанию %s). "
+
+#~ msgid ""
+#~ "The administrator has been notified. Your changes will be available soon."
+#~ msgstr ""
+#~ "Администратору было отправлено уведомление, после подтверждения ваши "
+#~ "изменения станут доступны."
+
+#~ msgid "auto"
+#~ msgstr "автоматически"
+
+#~ msgid "successfully"
+#~ msgstr "успешно"
+
+#, php-format
+#~ msgid ""
+#~ "No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+#~ msgstr ""
+#~ "Отсутствуют сконфигурированные группы аутентификации. Пожалуйста, добавьте "
+#~ "вначале новую <a href=%s>группу аутентификации</a>."
+
+#~ msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#~ msgstr ""
+#~ "IP-адрес Logical Unit Controller (по умолчанию 127.0.0.1(localhost))."
+
+#~ msgid "Logical Unit Controller TCP port (3261 by default)"
+#~ msgstr "TCP-порт Logical Unit Controller (по умолчанию 3261)."
+
+#~ msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#~ msgstr ""
+#~ "Сети, авторизованные Logical Unit Controller (по умолчанию 127.0.0.1/8)."
+
+#~ msgid "IRC Live support"
+#~ msgstr "Поддержка IRC Live"
