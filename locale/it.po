@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2010-11-12 16:12+0000\n"
-"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
+"PO-Revision-Date: 2011-01-26 10:54+0000\n"
+"Last-Translator: misterredman <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-12 16:24+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-27 22:00+0000\n"
+"X-Generator: Launchpad (build 12460)\n"
 "X-Poedit-Country: ITALY\n"
 "Language: \n"
 "X-Poedit-Language: Italian\n"
@@ -1308,7 +1308,7 @@ msgid "Device Pass-through"
 msgstr "Dispositivo Pass-through"
 
 msgid "Device model"
-msgstr ""
+msgstr "Modello del dispositivo"
 
 msgid "Device name"
 msgstr "Nome del dispositivo"
@@ -2455,7 +2455,7 @@ msgid "IPv6 addresses"
 msgstr "Indirizzi IPv6"
 
 msgid "IRC Live Support"
-msgstr ""
+msgstr "Aiuto in linea tramite IRC"
 
 msgid "ISO file to be mounted."
 msgstr "File ISO da montare."
@@ -3938,7 +3938,7 @@ msgid "Reject"
 msgstr "Rifiuta"
 
 msgid "Release Notes"
-msgstr ""
+msgstr "Note di rilascio"
 
 msgid "Reload page"
 msgstr "Ricarica pagina"
@@ -6761,6 +6761,12 @@ msgstr "upriv"
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
 
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr "Sono richiesti almeno 256MB di RAM per usare iSCSI target."
+
 #~ msgid "built on"
 #~ msgstr "costruito su"
 
@@ -6799,8 +6805,315 @@ msgstr "upriv"
 #~ "Porta invalida! Il numero della porta deve trovarsi nell'intervallo da %d a "
 #~ "%d."
 
+#~ msgid ""
+#~ "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+#~ "partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+#~ "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+#~ "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+#~ "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+#~ msgstr ""
+#~ "<b>EFI GPT</b> se vuoi montare un drive formattato in GPT (<b>partizione di "
+#~ "default dalla versione 0.684b</b>).<br><b>MBR</b> partizione, per drive "
+#~ "formatatti in UFS o volumi creati con software RAID (<b>creata prima della "
+#~ "versione 0.684b</b>) o dischi importati da altri sistemi "
+#~ "operativi.<br><b>CD/DVD o vecchi vecchi software RAID</b> per volumi creati "
+#~ "con Software RAID vecchi (<b>creata prima della versione 0.68</b>) o CD/DVD."
+
 #~ msgid "Release notes"
 #~ msgstr "Note di rilascio"
 
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have shell access."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> deve essere abilitato per il funzionamento di Unison e "
+#~ "<a href=%s>utente</a> deve avere accesso alla shell."
+
+#~ msgid "iSCSI initial parameter (65536 by default)."
+#~ msgstr "parametro iniziale iSCSI (predefinito 65536)"
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "parametri iniziale iSCSI (predefinito 262144)."
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
+#~ "using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. Usare queste azioni speciali azioni solo per il debugging!<br>2. Non e' "
+#~ "necessario usare questo menu per inizializzare un volume RAID (parte "
+#~ "automaticamente)."
+
+#~ msgid ""
+#~ "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
+#~ "compression algorithm is optimized for performance while providing decent "
+#~ "data compression. Setting compression to 'On' uses the 'lzjb' compression "
+#~ "algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
+#~ "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
+#~ "Currently, 'gzip' is equivalent to 'gzip-6'."
+#~ msgstr ""
+#~ "Controlla l'algoritmo di compressione usato\tper questo dataset. L'algoritmo "
+#~ "di compressione 'lzjb'è ottimizzato per migliori prestazioni mantenendo "
+#~ "comunque una decente compressione. Impostando la compressione ad 'On' usa "
+#~ "l'algoritmo di compressione 'lzjb'. Può essere specificato il valore 'gzip' "
+#~ "usando  'gzip-N', dove N è un intero fra 1 (più veloce) e 9 (migliore "
+#~ "rapporto di compressione). Attualmente, 'gzip' equivale a 'gzip-6'."
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "Gli indirizzi IP sono risolti in nomi host se <a href=%s>&quot;Risolvi "
+#~ "indirizzi IP in nomi host&quot;</a> è abilitato."
+
+#~ msgid "I/O timeout in seconds (30 by default)."
+#~ msgstr "Timeout I/O in secondi (default: 30)"
+
+#~ msgid "List of shares"
+#~ msgstr "Lista delle condivisioni"
+
+#~ msgid ""
+#~ "Limits the\tamount of space a dataset and its descendants can consume. This "
+#~ "property enforces a hard limit on the amount of space used. This\tincludes "
+#~ "all space consumed by descendants, including file systems and snapshots. To "
+#~ "specify the size use the following human-readable suffixes (for example, "
+#~ "'k', 'KB', 'M', 'Gb', etc.)."
+#~ msgstr ""
+#~ "Limita lo\tspazio di un dataset e dei suoi discendenti. Questa proprietà "
+#~ "imposta un limite sullo spazio usato. Ciò\tinclude tutto lo spazio usato dai "
+#~ "discendenti, inclusi i file system e gli snapshot. Per specificare la "
+#~ "dimensione, utilizzare i seguenti suffissi 'human-readable' (for example, "
+#~ "'k', 'KB', 'M', 'Gb', etc.)."
+
+#~ msgid "Maximum number of connections in each session (8 by default)."
+#~ msgstr "Numero massimo di connessioni per sessione (default: 8)"
+
+#~ msgid "NOPIN sending interval in seconds (20 by default)."
+#~ msgstr "Intervallo di invio NOPIN in secondi (default: 20)"
+
+#, php-format
+#~ msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#~ msgstr ""
+#~ "Nessun pool configurato. Aggiungere un nuovo <a href=%s>pool</a> prima."
+
+#, php-format
+#~ msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#~ msgstr ""
+#~ "Nessun disco disponibile. Aggiungere un nuovo <a href=%s>disco</a> prima."
+
+#, php-format
+#~ msgid ""
+#~ "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Periferiche virtuali non configurate. Aggiungere una nuova <a "
+#~ "href=%s>periferica virtuale</a> prima."
+
+#~ msgid "Maximum number of sessions holding at same time (32 by default)."
+#~ msgstr "Nmero Massimo di sessioni mantenute contemporaneamente (default: 32)"
+
+#, php-format
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s su %s (%dMHz)"
+
+#~ msgid "File transfer"
+#~ msgstr "Trasferimento file"
+
+#~ msgid "FTP file transfer"
+#~ msgstr "Trasferimento file FTP"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Nota: Ctrl-click (oppure command-click sui Mac) per selezionare o "
+#~ "deselezionare minuti, ore, giorni e mesi."
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "La porta %s deve essere meno di %s."
+
+#, php-format
+#~ msgid ""
+#~ "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "Il dispositivo cifrato è montato. <a href=%s>Smontare</a> questo disco prima "
+#~ "di procedere."
+
 #~ msgid "Report generator"
 #~ msgstr "Generatore rapporti"
+
+#~ msgid "IRC Live support"
+#~ msgstr "Supporto on-line IRC"
+
+#~ msgid "The devicès IP address."
+#~ msgstr "L'indirizzo IP del dispositivo."
+
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the image "
+#~ "has not been tampered with.<br><br>Do you want to install this image anyway "
+#~ "(on your own risk)?"
+#~ msgstr ""
+#~ "Questo significa che l'immagine che avete caricato non è una immagine "
+#~ "ufficiale/supportata e puo' causare comportamenti inattesi o problemi di "
+#~ "sicurezza. Installare solo immagini provenienti da fonti fidate e accertarsi "
+#~ "che la stessa non sia stata alterata.<br><br>Si vuole comunque installare "
+#~ "questa immagine (a proprio rischio) ?"
+
+#, php-format
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+#~ "proceeding."
+#~ msgstr ""
+#~ "Il disco è montato! <a href=%s>Eseguire lo smontaggio</a> di questo disco "
+#~ "prima di procedere."
+
+#, php-format
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "Il volume RAID è attualmente montato! Prima di procedere rimuovere il <a "
+#~ "href=%s>punto di mount</a>."
+
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr ""
+#~ "Non è stato possibile ripristinare la configurazione (errore di upload del "
+#~ "file)."
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr ""
+#~ "è necessario utilizzare una passphrase per agganciare un disco cifrato"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr ""
+#~ "Questo nome è per esempio: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#, php-format
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "Non è possibile montare la partizione '%s' dove si trova il file di "
+#~ "configurazione.<br>"
+
+#, php-format
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "Dopo aver premuto &quot;Salva&quot;, si dovra' riavviare %s affinchè i "
+#~ "cambiamenti abbiano effetto. Potrebbe essere necessario seguire uno o piu' "
+#~ "dei seguenti passi prima di accedere nuovamente al NAS: "
+#~ "</span></p><ul><li><span class='vexpl'>cambiare l'indirizzo IP del tuo "
+#~ "computer</span></li><li><span class='vexpl'>accedere alla webGUI con il "
+#~ "nuovo indirizzo IP</span></li></ul>"
+
+#, php-format
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "NON annullare l'operazione di aggiornamento del Firmware una volta iniziata. "
+#~ "Al termine della operazione %s si riavviera' automaticamente, mantenendo la "
+#~ "configurazione di sistema.<br>É necessario avrere un minimo di %d MB di RAM "
+#~ "per effettuare l'aggiornamento del firmware.<br>Si raccomanda vivamente di "
+#~ "effettuare il <a href=%s>Backup</a> della configurazione di sistema  prima "
+#~ "di avviare un aggiornamento del Firmware."
+
+#, c-format
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr ""
+#~ "I cambiamenti sono stati salvati. Bisogna <a href=%s>riavviare</a> il "
+#~ "sistema affinchè i cambiamenti abbiano effetto."
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "La configurazione è stata cambiata.<br>Applicare i cambiamenti  per renderli "
+#~ "effettivi."
+
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "è possibile inoltre installare un pacchetto via SSH o console usando il "
+#~ "comando pkg_add .<br>Esempio: pkg_add -r packagename"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "In primo luogo, bisogna definire alcuni oggetti 'Limitè."
+
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and is "
+#~ "made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "Al livello elevato, un target è cio' che viene presentato all'iniziatore e "
+#~ "si compone di uno o piu' dispositivi e/o, di uno o piu' limiti."
+
+#~ msgid "RSYNC Local"
+#~ msgstr "RSYNC Locale"
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "La porta %s dev'essere nell'intervallo tra %d e %d."
+
+#~ msgid ""
+#~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+#~ msgstr ""
+#~ "La lunghezza predefinita per la chiave è: 128 per AES, 128 per Blowfish e "
+#~ "192 per 3DES."
+
+#~ msgid "Syslog"
+#~ msgstr "Log di sistema"
+
+#, php-format
+#~ msgid ""
+#~ "To increase CIFS performance try the following:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+#~ msgstr ""
+#~ "Per aumentare la performance di CIFS provare: <div "
+#~ "id='enumeration'><ul><li>Prova ad attivare l'opzione 'Large "
+#~ "read/write'</li><li>Prova ad attivare l'opzione '<a "
+#~ "href='%s'>Tuning</a>'</li><li>Prova ad aumentare la <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+
+#~ msgid ""
+#~ "You can use the following parameters for substitution:<div "
+#~ "id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+#~ msgstr ""
+#~ "Possono essere usati questi parametri per la sostituzione:<div "
+#~ "id='enumeration'><ul><li>%d - Data</li><li>%h - Nome host</li></ul></div>"
+
+#, php-format
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "E' necessario attivare <a href=%s>Zeroconf/Bonjour</a> per notificare questo "
+#~ "servizio ai client."
+
+#~ msgid ""
+#~ "The module provides automatic bans that are triggered based on configurable "
+#~ "criteria. A ban prevents the banned user, host, or class from logging in to "
+#~ "the server, it does not prevent the banned user, host, or class from "
+#~ "connecting to the server."
+#~ msgstr ""
+#~ "Questo modulo fornisce ban automatici attivati in base a criteri "
+#~ "configurabili. Un ban impedisce all'utente, host o classe interessati di "
+#~ "effettuare l'accesso al server, ma non impedisce all'utente, host o classe "
+#~ "interessati di connettersi al server."
