@@ -1,5 +1,5 @@
 PORTNAME=			msmtp
-PORTVERSION=	1.4.22
+PORTVERSION=	1.4.23
 CATEGORIES=		mail ipv6
 COMMENT=			A SMTP client
 MAINTAINER=		michael.zoon@freenas.org
@@ -14,7 +14,7 @@ CONFIGURE_ENV=		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 USE_OPENSSL=			yes
 USE_GETTEXT=			yes
 CONFIGURE_ARGS+=	--with-ssl=openssl \
-									--without-gsasl \
+									--without-libgsasl \
 									--without-libidn \
 									--enable-nls
 
