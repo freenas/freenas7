@@ -70,7 +70,7 @@ Majors changes:
 - Upgrade inadyn-mt to 02.24.30.
 - Upgrade bash to 4.1.010.
 - Upgrade istgt to 20110223.
-- Upgrade msmtp to 1.4.22.
+- Upgrade msmtp to 1.4.23.
 - Upgrade nano to 2.2.6.
 - Upgrade gzip to 1.4.
 - Upgrade tftp-hpa to 5.0.
