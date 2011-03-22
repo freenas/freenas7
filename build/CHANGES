@@ -9,7 +9,7 @@ Majors changes:
 - Upgrade smartmontools to 5.40.
 - Upgrade php5 to 5.2.17.
 - Upgrade transmission to 2.13.
-- Upgrade samba to 3.5.6.
+- Upgrade samba to 3.5.8.
 - Increase image size to 72MB, mfsroot to 180MB.
 - Increase default install size embedded to 120MB, full to 380MB.
 - Increase default swap size to 256MB.
