@@ -3,7 +3,7 @@ FreeNAS 0.7.2 (Sabanda):
 
 Majors changes:
 - Upgrade to FreeBSD 7.3.
-- Upgrade unison to 2.32.52.
+- Upgrade unison to 2.40.61.
 - Upgrade bsnmp-ucd to 0.3.2.
 - Upgrade e2fsprogs to 1.41.14.
 - Upgrade smartmontools to 5.40.

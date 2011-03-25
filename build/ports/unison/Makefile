@@ -1,5 +1,5 @@
 PORTNAME=			unison
-PORTVERSION=	2.32.52
+PORTVERSION=	2.40.61
 CATEGORIES=		net
 COMMENT=			A user-level file synchronization tool
 MAINTAINER=		ma.zoon@quicknet.nl
