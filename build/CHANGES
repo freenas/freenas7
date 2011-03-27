@@ -80,6 +80,7 @@ Majors changes:
 - Upgrade lighttpd to 1.4.28.
 - Upgrade iperf to 2.0.5.
 - Upgrade ataidle to 2.5.1.
+- Upgrade nut to 2.60.
 
 Minors changes:
 - Add Czech, Korean and Slovak translations.

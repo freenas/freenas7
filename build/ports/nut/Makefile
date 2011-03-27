@@ -1,5 +1,5 @@
 PORTNAME=			nut
-PORTVERSION=	2.4.1
+PORTVERSION=	2.6.0
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		michael.zoon@freenas.org
@@ -22,6 +22,9 @@ NUT_SYSCONFDIR=	/var/etc
 NUT_DATADIR=		/usr/local/etc/${PORTNAME}
 NUT_DRVDIR=			/usr/local/libexec/${PORTNAME}
 
+OPTIONS=		IPV6		"IPV6 support"  on 
+
+
 CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--program-transform-name="" \
 								--localstatedir=${NUT_STATEDIR} \
@@ -34,15 +37,17 @@ CONFIGURE_ARGS=	--sysconfdir=${NUT_SYSCONFDIR} \
 								--without-cgi \
 								--with-serial \
 								--with-usb=auto \
-								--without-snmp \
 								--without-neonxml \
+								--without-snmp \
 								--without-powerman \
 								--without-hal \
-								--with-ipv6 \
 								--without-dev \
 								--with-user=${NUT_USER} \
 								--with-group=${NUT_GROUP} \
 								--with-wrap
+
+
+
 .if !defined(WITHOUT_IPV6)
 CONFIGURE_ARGS+=	--with-ipv6
 .else
@@ -51,27 +56,10 @@ CONFIGURE_ARGS+=	--without-ipv6
 
 .include <bsd.port.pre.mk>
 
-
 .if ${OSVERSION} < 800069
 LIB_DEPENDS+=	usb-0.1.8:${PORTSDIR}/devel/libusb
-.else
-EXTRA_PATCHES=	${FILESDIR}/extra-patch-m4_nut_check_libusb.m4
 .endif
 
-post-patch:
-	-@if [ -e /usr/src/sys/dev/usb/usb_quirks.c.orig ]; then \
-		${MV} /usr/src/sys/dev/usb/usb_quirks.c.orig /usr/src/sys/dev/usb/usb_quirks.c; \
-	fi
-
-	# Patch sys/dev/usb sources.
-	${PATCH} -f /usr/src/sys/dev/usb/usb_quirks.c /usr/local/freenas/svn/build/ports/nut/files/usb_quirks.c.diffs
-
-	-@if [ -e /usr/src/sys/dev/usb/usbdevs.orig ]; then \
-		${MV} /usr/src/sys/dev/usb/usbdevs.orig /usr/src/sys/dev/usb/usbdevs; \
-	fi
-
-	# Patch sys/dev/usb sources.
-	${PATCH} -f /usr/src/sys/dev/usb/usbdevs /usr/local/freenas/svn/build/ports/nut/files/usbdevs.diffs
 
 do-install:
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DATADIR}
@@ -85,24 +73,27 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/belkin ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/belkinunv ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestfcom ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestfortress ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestuferrups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bestups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/blazer_ser ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/blazer_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/cyberpower ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/clone ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/clone-outlet ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/etapro ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/everups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/gamatronic ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/genericups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/isbmex ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/ivtscd ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/liebert ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/liebert-esp2 ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/masterguard ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/megatec ${FREENAS_ROOTFS}/${NUT_DRVDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/megatec_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/metasys ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/mge-shut ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/mge-utalk ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/microdowell ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/netxml-ups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/newmge-shut ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/oneac ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/optiups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
