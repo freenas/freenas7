@@ -1,5 +1,5 @@
 PORTNAME=				transmission
-PORTVERSION=		2.13
+PORTVERSION=		2.22
 PORTREVISION?=	0
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
@@ -8,8 +8,8 @@ MAINTAINER=			michael.zoon@freenas.org
 MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 
 LIB_DEPENDS+=     curl.6:${PORTSDIR}/ftp/curl \
-		       event-1.4.4:${PORTSDIR}/devel/libevent
-
+		       event-2.0.5:${PORTSDIR}/devel/libevent2
+GEN_RUN_DEPENDS=${LOCALBASE}/share/transmission/web/index.html:${PORTSDIR}/www/transmission-web
 USE_GMAKE=			yes
 USE_GNOME?=			pkgconfig
 USE_OPENSSL=		yes
@@ -21,6 +21,7 @@ CONFIGURE_ENV=	CPPFLAGS="${CPPFLAGS}"
 
 CONFIGURE_ARGS+=	--with-ssl=${OPENSSLBASE} \
 									--with-zlib=/usr \
+									--disable-libappindicator \
 									--enable-largefile \
 									--enable-daemon \
 									--disable-gtk \
@@ -45,9 +46,6 @@ general-patch:
 post-patch: general-patch
 
 do-install:
-
-	@${CP} -Rpv /usr/local/lib/libevent-1.4.so.4 ${FREENAS_ROOTFS}/lib/libevent-1.4.so.4
-
 
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 

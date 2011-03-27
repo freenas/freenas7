@@ -49,7 +49,3 @@ chflags -RH noschg lib/libcrypt.so.5
 # lib/libthr.so.3
 echo "lib/libthr.so.3"
 chflags -RH noschg lib/libthr.so.3
-
-# lib/libevent-1.4.so.4
-echo "lib/libevent-1.4.so.4"
-chflags -RH noschg lib/libevent-1.4.so.4
