@@ -1,8 +1,8 @@
 PORTNAME=			rsync
-PORTVERSION=	3.0.7
+PORTVERSION=	3.0.8
 CATEGORIES=		net
 COMMENT=			A network file distribution/sync utility
-MAINTAINER=		michael.zoon@quicknet.nl
+MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	http://rsync.samba.org/ftp/%SUBDIR%/ \
 							ftp://ftp.samba.org/pub/%SUBDIR%/ \
