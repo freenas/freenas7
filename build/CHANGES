@@ -33,6 +33,7 @@ Majors changes:
 - Upgrade iperf to 2.0.5.
 - Upgrade ataidle to 2.5.1.
 - Upgrade nut to 2.60.
+- Upgrade rsync to 3.0.8.
 
 Minors changes:
 - Add Czech, Korean and Slovak translations.
