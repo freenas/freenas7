@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2010-11-07 17:45+0000\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4305,7 +4305,7 @@ msgstr ""
 msgid "The disk is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
 msgstr ""
 
-msgid "The disk is currently mounted! The mount point will be removed temporary to perform selected command."
+msgid "The disk is currently mounted! The mount point will be removed temporarily to perform selected command."
 msgstr ""
 
 msgid "The disk/partition is already configured."
