@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-22 01:59+0000\n"
-"PO-Revision-Date: 2010-11-07 13:49+0000\n"
-"Last-Translator: Andreas <Unknown>\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"PO-Revision-Date: 2011-03-30 06:18+0000\n"
+"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-07 16:33+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-03-30 20:04+0000\n"
+"X-Generator: Launchpad (build 12684)\n"
 "X-Poedit-Country: Netherlands\n"
 "Language: \n"
 "X-Poedit-Language: Dutch\n"
@@ -103,6 +103,20 @@ msgstr "dbpad"
 #, php-format
 msgid "e.g. %s"
 msgstr "bijv. %s"
+
+#~ msgid ""
+#~ "The module provides automatic bans that are triggered based on configurable "
+#~ "criteria. A ban prevents the banned user, host, or class from logging in to "
+#~ "the server, it does not prevent the banned user, host, or class from "
+#~ "connecting to the server."
+#~ msgstr ""
+#~ "Deze module verstrekt automatische bans gebaseerd op geconfigureerde ban "
+#~ "regels. Een ban verhindert de verbannen gebruiker, gastheer, of groep om in "
+#~ "te loggen op deze server, het verhindert niet de verbannen gebruiker, "
+#~ "gastheer, of groep met de server te verbinden."
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Creëer een werkmap als deze nog niet bestaat"
 
 msgid " interfaces:"
 msgstr " netwerken:"
@@ -2809,6 +2823,9 @@ msgstr "Versleuteld station opheffen"
 msgid "Knowledgebase"
 msgstr "Basiskennis"
 
+msgid "Korean"
+msgstr "Koreaans"
+
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr "LACP (Link Aggregation Control Protocol)"
 
@@ -5076,8 +5093,8 @@ msgstr ""
 "eerst voor u verder gaat."
 
 msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
+"The disk is currently mounted! The mount point will be removed temporarily "
+"to perform selected command."
 msgstr ""
 "De schijf is momenteel aangekoppeld! Het koppelpunt zal tijdelijk verwijderd "
 "worden om het geselecteerde commando uit te voeren."
@@ -6680,5 +6697,605 @@ msgstr "upriv"
 #~ msgid "Where the working files will be stored"
 #~ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
 
+#~ msgid "Size in MB."
+#~ msgstr "Grootte in MB."
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (stripping)"
+
+#~ msgid "Disk Name"
+#~ msgstr "Schijfnaam"
+
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Grootte van de zendbuffer (16384 standaard)."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Geef volledige shell rechten aan de gebruiker"
+
+#~ msgid "List of shares"
+#~ msgstr "Lijst van gedeelde mappen"
+
+#~ msgid "Shell access"
+#~ msgstr "Shell toegang"
+
+#~ msgid "RSYNC Local"
+#~ msgstr "RSYNC Lokaal"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% van %dMB"
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "Een geldig netwerk moet worden gespecificeerd."
+
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "Een geldig bit aantal moet worden gespecificeerd."
+
+#, php-format
+#~ msgid "Status report from host: %s.%s"
+#~ msgstr "Status rapport van host: %s.%s"
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Uitschakel Tijd"
+
+#~ msgid "Synchronization Time"
+#~ msgstr "Synchronisatie Tijd"
+
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the image "
+#~ "has not been tampered with.<br><br>Do you want to install this image anyway "
+#~ "(on your own risk)?"
+#~ msgstr ""
+#~ "Dit betekent dat het image bestand dat u wilt gebruiken geen "
+#~ "officieel/ondersteund image bestand is en dat dit kan leiden tot onverwacht "
+#~ "systeemgedrag of beveiligingsrisico's. Installeer uitsluitend bestanden die "
+#~ "afkomstig zijn uit betrouwbare bronnen, en zorgt u ervoor dat er niets "
+#~ "veranderd is aan het bestand.<br><br>Wilt u het image bestand toch "
+#~ "installeren (op eigen risico)?"
+
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and is "
+#~ "made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "Op het hoogste niveau, een doel is wat is gepresenteerd naar de initiator en "
+#~ "bestaat uit één of meerdere apparaten en/of één of meer extenties."
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "Versleutelde schijf naam"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Deze naam is als voobeeld: iqn.1994-04.org.netbsd.iscsi-doel:doel0."
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+#~ msgstr ""
+#~ "Apparaten zijn gebruikt om extentie's of andere apparaten te combineren. "
+#~ "Extenties en apparaten moeten gedefinieerd zijn voordat ze gebruikt kunnen "
+#~ "worden en ze kunnen niet meer dan één keer gebruikt worden."
+
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "Maximale prestaties, maximale energieverbruik"
+
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "Minimale energie verbruik zonder Standby"
+
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "Minimale energie verbruik met Standby"
+
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "Gemiddelde energie verbruik met Standby"
+
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "Gemiddelde energie verbruik zonder Standby"
+
+#~ msgid "Network that is authorised to access to this iSCSI target."
+#~ msgstr "Netwerk dat is toegestaan voor toegang naar deze iSCSI doelwit."
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "De combinatie van gedeelde map en werkmap bestaat niet."
+
+#~ msgid "Working Directory"
+#~ msgstr "Werkmap"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr ""
+#~ "U moet een wachtwoordzin gebruiken om een versleutelde schijf aan te "
+#~ "koppelen."
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr ""
+#~ "U heeft minimaal 256MB RAM geheugen nodig voor het gebruiken van een iSCSI "
+#~ "doel."
+
+#, php-format
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "Het RAID volume is momenteel aangekoppeld! Verwijder het <a "
+#~ "href=%s>koppelpunt</a> eerst voor u verder gaat."
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "U dient eerst de 'Extentie' objecten te definiëren."
+
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr ""
+#~ "Deze parameters worden toegevoegd aan de deel configuratie in smb.conf."
+
+#~ msgid "Release notes"
+#~ msgstr "Uitgave Notities"
+
+#~ msgid "Logs"
+#~ msgstr "Logboek"
+
+#, php-format
+#~ msgid "Last %d %s log entries"
+#~ msgstr "Laatste %d regels van de %s logboek"
+
+#, php-format
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "U kunt de partitie '%s' waarop het configuratiebestand is opgeslagen niet "
+#~ "aankoppelen.<br>"
+
+#~ msgid "Size of receive buffer (16384 by default)."
+#~ msgstr "Grootte van de ontvangstbuffer (16384 standaard)."
+
+#~ msgid "You may need enough space to duplicate all files being synced"
+#~ msgstr ""
+#~ "U heeft voldoende ruimte nodig om alle te synchroniseren bestanden te kunnen "
+#~ "dupliceren"
+
+#, php-format
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+#~ "proceeding."
+#~ msgstr ""
+#~ "De schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> deze schijf "
+#~ "eerst voor u verder gaat."
+
+#~ msgid ""
+#~ "The disk is currently mounted! The mount point will be removed temporary to "
+#~ "perform selected command."
+#~ msgstr ""
+#~ "De schijf is momenteel aangekoppeld! Het koppelpunt zal tijdelijk verwijderd "
+#~ "worden om het geselecteerde commando uit te voeren."
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "Poort %s moet lager zijn dan %s."
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "De %s poort moet binnen het bereik zijn van %d tot %d."
+
+#, php-format
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s op %s (%dMHz)"
+
+#, php-format
+#~ msgid "UPS notification from host: %s"
+#~ msgstr "UPS bericht van host: %s"
+
+#~ msgid ""
+#~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+#~ msgstr ""
+#~ "De standaard sleutellengtes zijn: 128 bits voor AES, 128 bits voor Blowfish "
+#~ "en 192 bits voor 3DES."
+
+#~ msgid "File transfer"
+#~ msgstr "Bestandsoverdracht"
+
+#~ msgid "FTP file transfer"
+#~ msgstr "FTP bestandsoverdracht"
+
+#~ msgid "Syslog"
+#~ msgstr "Syslog"
+
+#~ msgid ""
+#~ "You can use the following parameters for substitution:<div "
+#~ "id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+#~ msgstr ""
+#~ "U kunt de volgende parameters gebruiken voor substitutie:<div "
+#~ "id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostnaam</li></ul></div>"
+
+#~ msgid "Create"
+#~ msgstr "Creëer"
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "Apparaat is aangekoppeld, ontkoppel het eerst voor u het losneemt."
+
+#, php-format
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "Bestand pad (bijv. /mnt/sharename/extent/%s) of schijf naam (bijv. /dev/ad1) "
+#~ "gebruikt als extentie."
+
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "Ongeldige poort! Het poortnummer moet liggen tussen %d en %d."
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Tip: Ctrl-klik (of command-click op de Mac) om minuten, uren, dagen en "
+#~ "maanden te selecteren of te de-selecteren."
+
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr "De configuratie kon niet worden hersteld. (bestands upload fout)."
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "De configuratie is veranderd.<br>U dient de wijzigingen toe te passen "
+#~ "voordat deze effect zullen hebben."
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr ""
+#~ "De versleutelde schijf is aangekoppelt, ontkoppel de schijf eerst voor u hem "
+#~ "loskoppeld."
+
+#~ msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+#~ msgstr ""
+#~ "Type gebruikt als extentie. (Bestand inclusief een geëmuleerde volume of ZFS)"
+
+#, php-format
+#~ msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#~ msgstr ""
+#~ "Geen schijven beschikbaar. Voeg eerst een nieuwe <a href=%s>schijf</a> toe."
+
+#, c-format
+#~ msgid ""
+#~ "An unauthorized POST request has been detected. Because this can be a <a "
+#~ "href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
+#~ "has been blocked. Please <a href='%s'>login</a> again to continue."
+#~ msgstr ""
+#~ "Een onbevoegde POST verzoek is ontdekt. Omdat dit kan een <a href='%s' "
+#~ "target='_blank'>cross-site verzoek vervalsing</a> aanval kan wezen is het "
+#~ "verzoek geblokkeerd. <a href='%s'>Aanmelden</a> om verder te gaan."
+
+#~ msgid "mutual CHAP"
+#~ msgstr "Wederzijds CHAP"
+
+#, php-format
+#~ msgid ""
+#~ "You may specify as SCSI INQUIRY data. Empty as defalut. (up to %d ASCII "
+#~ "chars)"
+#~ msgstr ""
+#~ "U kunt specificeren als SCSI INSTRUCTIE gegevens. Standaard leeg. (maximaal "
+#~ "%d ASCII tekens)"
+
+#~ msgid ""
+#~ "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
+#~ "compression algorithm is optimized for performance while providing decent "
+#~ "data compression. Setting compression to 'On' uses the 'lzjb' compression "
+#~ "algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
+#~ "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
+#~ "Currently, 'gzip' is equivalent to 'gzip-6'."
+#~ msgstr ""
+#~ "Controleert het compressiealgoritme dat \t wordt gebruikt voor deze dataset. "
+#~ "De 'lzjb' compressie algoritme is geoptimaliseerd voor prestaties terwijl "
+#~ "fatsoenlijke gegevenscompressie wodt gebruikt. Zet compressie op 'Aan' "
+#~ "gebruikt de 'lzjb' compressie algoritme. U kunt het 'gzip' niveau opgeven "
+#~ "met de waarde 'gzip-N', waar N een geheel van 1 (het snelste) tot 9 (beste "
+#~ "compressieverhouding) is. Momenteel is 'gzip' gelijkwaardig aan ' gzip-6'."
+
+#~ msgid "Maximum number of connections in each session (8 by default)."
+#~ msgstr "Maximum aantal verbindingen in elke sessie. (standaard 8)"
+
+#~ msgid "Maximum number of sessions holding at same time (32 by default)."
+#~ msgstr "Maximum aantal sessies tegelijkertijd vasthouden. (standaard 32)"
+
+#~ msgid "iSCSI initial parameter (65536 by default)."
+#~ msgstr "iSCSI initiële parameter. (standaard 65536)"
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "iSCSI initiële parameter. (standaard 262144)"
+
+#~ msgid ""
+#~ "To configure the target, you must add at least Portal Group and Initiator "
+#~ "Group and Extent.<br/>Portal Group which is identified by tag number defines "
+#~ "IP addresses and listening TCP ports.<br/>Initiator Group which is "
+#~ "identified by tag number defines authorised initiator names and "
+#~ "networks.<br/>Auth Group which is identified by tag number and is optional "
+#~ "if the target does not use CHAP authentication defines authorised users and "
+#~ "secrets for additional security.<br/>Extent defines the storage area of the "
+#~ "target."
+#~ msgstr ""
+#~ "Om het doel te configureren, dient u ten minste een Portaal Groep en "
+#~ "Initiator Groep en de Extentie toe te voegen. <br/> Portaal Groep, die wordt "
+#~ "aangeduid met een markeringsnummer definieert IP-adressen en TCP luister "
+#~ "poorten. <br/> Initiator Groep, die wordt aangeduid met een markeringsnummer "
+#~ "definieert geautoriseerde initiator-namen en netwerken. <br/> Auth Groep, "
+#~ "die wordt aangeduid met een markeringsnummer en is optioneel als het doel "
+#~ "CHAP verificatie niet gebruikt definieert geautoriseerde gebruikers en "
+#~ "wachtwoorden voor extra beveiliging. <br/> Extenties definiëren het "
+#~ "opslaggebied van de doel."
+
+#~ msgid "built on"
+#~ msgstr "gecompileerd op:"
+
+#, php-format
+#~ msgid ""
+#~ "To increase CIFS performance try the following:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+#~ msgstr ""
+#~ "Om de CIFS snelheid te verhogen kunt u het volgende proberen:<div "
+#~ "id='enumeration'><ul><li>Inschakelen van de 'Groot lees/schrijf' "
+#~ "optie</li><li>Inschakelen van de '<a href='%s'>Optimalisatie</a>' "
+#~ "optie</li><li>Verhogen van de <a href='%s'>MTU</a></li></ul></div>"
+
+#, php-format
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "U dient <a href=%s>Zeroconf/Bonjour</a> in te schakelen om deze service "
+#~ "kenbaar te maken aan de werkstations."
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> moet ingeschakeld zijn voor Unison kan werken, en de <a "
+#~ "href=%s>gebruiker</a> dient volledige Shell rechten ingeschakeld te hebben "
+#~ "staan."
+
+#~ msgid "Hardware:"
+#~ msgstr "Hardware:"
+
+#~ msgid "Error's"
+#~ msgstr "Fouten"
+
+#~ msgid "Info:"
+#~ msgstr "Info:"
+
+#~ msgid "Report generator"
+#~ msgstr "Rapport generator"
+
+#~ msgid "Subject:"
+#~ msgstr "Onderwerp:"
+
+#~ msgid "phpBB:"
+#~ msgstr "phpBB:"
+
+#, php-format
+#~ msgid ""
+#~ "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "De versleutelde schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> "
+#~ "deze schijf eerst voor u verder gaat."
+
+#, php-format
+#~ msgid ""
+#~ "Use this option to override the default permission modes for newly created "
+#~ "files (%s by default). "
+#~ msgstr ""
+#~ "Gebruik deze instelling om de standaard bestandsmachtigingen te overbruggen "
+#~ "op nieuw aangemaakte bestanden (%s standaard). "
+
+#~ msgid ""
+#~ "The administrator has been notified. Your changes will be available soon."
+#~ msgstr ""
+#~ "De beheerder is op de hoogte gebracht. Uw veranderingen zullen spoedig "
+#~ "beschikbaar zijn."
+
+#~ msgid "I/O timeout in seconds (30 by default)."
+#~ msgstr "In/Uitgaande onderbreking in seconden. (standaard 30)"
+
+#, php-format
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "%s niet laten controleren op een nieuwere firmware versie wanneer u de "
+#~ "pagina <a href=%s>%s</a> bezoekt."
+
+#~ msgid "auto"
+#~ msgstr "auto"
+
+#~ msgid "NOPIN sending interval in seconds (20 by default)."
+#~ msgstr "NOPIN verzend interval in seconden. (standaard 20)"
+
+#~ msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#~ msgstr "Logical Unit Controller IP-adres (127.0.0.1(localhost) standaard)"
+
+#~ msgid "Logical Unit Controller TCP port (3261 by default)"
+#~ msgstr "Logical Unit Controller TCP poort (3261 standaard)"
+
+#~ msgid "successfully"
+#~ msgstr "succes"
+
+#~ msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#~ msgstr ""
+#~ "Logical Unit Controller Geautoriseerd netwerk (127.0.0.1/8 standaard)"
+
+#~ msgid ""
+#~ "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+#~ "partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+#~ "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+#~ "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+#~ "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+#~ msgstr ""
+#~ "<b>GPT partitie</b> als u een GPT geformatteerde harde schijf wilt "
+#~ "aankoppelen (<b>standaard partitie vanaf versie 0.684b</b>).<br><b>MBR "
+#~ "partitie</b> voor UFS geformatteerde harde schijven of Software RAID "
+#~ "volume's (<b>gecreëerd voor versie 0.684b</b>) of geïmporteerde schijven van "
+#~ "een ander OS.<br><b>CD/DVD of Oude Software RAID</b> voor oude Software RAID "
+#~ "volumes (<b>gecreëerd voor versie 0.68</b>) of CD/DVD."
+
+#, php-format
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "Na gebruik van de knop &quot;Opslaan&quot; moet u %s herstarten om de "
+#~ "veranderingen door te voeren. Mogelijk moeten ook één van de volgende "
+#~ "stappen uitgevoerd worden, om opnieuw toegang tot FreeNas te krijgen: "
+#~ "</span></p><ul><li><span class='vexpl'>Verander het IP-adres van uw "
+#~ "computer</span></li><li><span class='vexpl'>Open de WebGUI met het nieuwe IP-"
+#~ "adres</span></li></ul>"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have shell access."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> moet ingeschakeld zijn om Unison te laten werken en de "
+#~ "<a href=%s>gebruiker</a> heeft volledige shell toegang nodig."
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
+#~ "using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. Gebruik deze speciale opdrachten alléén voor fout opsporing!<br>2. Het is "
+#~ "niet nodig om dit menu te gebruiken om een RAID volume te starten. (start "
+#~ "automatisch)."
+
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image file "
+#~ "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+#~ "process."
+#~ msgstr ""
+#~ "Druk op de knop &quot;Inschakelen Firmware Update&quot; selecteer dan het "
+#~ "image bestand.<br>Druk op &quot;Update Firmware&quot; om het updateproces te "
+#~ "starten."
+
+#, php-format
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "Breek de firmware update procedure niet af nadat deze is gestart. %s zal "
+#~ "automatisch herstarten na het opslaan van de nieuwe firmware. De huidige "
+#~ "configuratie zal behouden blijven.<br>Er is minimaal %d Mb RAM nodig om de "
+#~ "firmware update uit te voeren.<br>Het is aanbevolen eerst een <a "
+#~ "href=%s>Backup</a> van de huidige configuratie te maken, alvorens de "
+#~ "firmware update uit te voeren."
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "IP-adressen worden waar mogelijk omgezet naar hostnamen indien <a "
+#~ "href=%s>&quot;Omzetten van IP-adressen naar hostnamen&quot;</a> is "
+#~ "ingeschakeld."
+
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted temporarily "
+#~ "to perform selected command, otherwise the commands work in read-only "
+#~ "mode.<br>Service disruption to users accessing this mount will occur during "
+#~ "this process."
+#~ msgstr ""
+#~ "Als de geselecteerde schijf/partitie is aangekoppeld zal deze tijdelijk "
+#~ "ontkoppeld worden om de gekozen opdracht uit te voeren, anders werken de "
+#~ "opdrachten in 'alleen-lezen' mode.<br>Verstoring van services naar "
+#~ "gebruikers zullen ontstaan wanneer deze toegang zoeken naar dit koppelpunt "
+#~ "gedurende dit proces."
+
+#, php-format
+#~ msgid ""
+#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+#~ "menu."
+#~ msgstr ""
+#~ "Behoud '%s' voor ongeformatteerde harde schijven en formatteer deze via het "
+#~ "<a href=%s>Formatteren</a> menu."
+
+#, php-format
+#~ msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#~ msgstr ""
+#~ "Er is geen extentie geconfigureerd. Voeg eerst een nieuwe <a "
+#~ "href=%s>Extentie</a> toe."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+#~ msgstr ""
+#~ "Er is geen Portaal Groep geconfigureerd. Voeg eerst een nieuwe <a "
+#~ "href=%s>Portaal Groep</a> toe."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Er is geen Initiator Groep geconfigureerd. Voeg eerst een nieuwe <a "
+#~ "href=%s>Initiator Groep</a> toe."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+#~ msgstr ""
+#~ "Er is geen Auth Groep geconfigureerd. Voeg eerst een nieuwe <a href=%s>Auth "
+#~ "Groep</a> toe."
+
+#, php-format
+#~ msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#~ msgstr ""
+#~ "Er zijn geen pools geconfigureerd. Voeg eerst een nieuwe <a href=%s>pool</a> "
+#~ "toe."
+
+#, php-format
+#~ msgid ""
+#~ "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Er zijn geen virtuele schijven geconfigureerd. Voeg eerst een nieuwe <a "
+#~ "href=%s>virtuele schijf</a> toe."
+
+#, c-format
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr ""
+#~ "De wijzigingen zijn opgeslagen. U moet het systeem <a href=%s>herstarten</a> "
+#~ "om de wijzigingen door te voeren."
+
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "U kunt ook een pakket installeren via SSH of met de console door gebruik te "
+#~ "maken van de pkg_add opdracht.<br>Voorbeeld: pkg_add -r pakketnaam"
+
+#~ msgid ""
+#~ "Limits the\tamount of space a dataset and its descendants can consume. This "
+#~ "property enforces a hard limit on the amount of space used. This\tincludes "
+#~ "all space consumed by descendants, including file systems and snapshots. To "
+#~ "specify the size use the following human-readable suffixes (for example, "
+#~ "'k', 'KB', 'M', 'Gb', etc.)."
+#~ msgstr ""
+#~ "Beperkt de \t hoeveelheid ruimte dat een dataset en zijn nakomelingen kunnen "
+#~ "verbruiken. Deze eigenschap dwingt een harde grens af op de hoeveelheid aan "
+#~ "gebruikte ruimte. Dit \t omvat alle ruimte die door nakomelingen, met "
+#~ "inbegrip van bestandssystemen en momentopnames worden verbruikt. Om de "
+#~ "grootte te specificeren gebruikt u de volgende leesbare achtervoegsels "
+#~ "(bijvoorbeeld, ' k' , ' KB' , ' M' , ' Gb' , enz.)."
+
+#~ msgid "IRC Live support"
+#~ msgstr "IRC Live ondersteuning"

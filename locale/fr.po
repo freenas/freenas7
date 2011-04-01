@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2010-11-12 16:04+0000\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"PO-Revision-Date: 2011-03-30 19:42+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-12 16:08+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-03-30 20:04+0000\n"
+"X-Generator: Launchpad (build 12684)\n"
 "X-Poedit-Country: FRANCE\n"
 "Language: \n"
 "X-Poedit-Language: French\n"
@@ -34,8 +34,8 @@ msgid ""
 "lowering the threshold can adversely affect performance and auto-"
 "defragmentation."
 msgstr ""
-"Spécifiez le pourcentage d'espace disque réservée aux utilisateurs normaux. "
-"Notez qu'abaisser ce seuil peut nuire aux performances et à l'auto-"
+"Indiquez le pourcentage d'espace disque inaccessible aux utilisateurs "
+"normaux. Notez qu'abaisser ce seuil peut nuire aux performances et à l'auto-"
 "défragmentation."
 
 msgid ""
@@ -59,6 +59,16 @@ msgstr ""
 "Contrôle si ce partage doit apparaître dans la liste des partages "
 "disponibles et navigables depuis la vue réseau du client."
 
+#~ msgid ""
+#~ "The module provides automatic bans that are triggered based on configurable "
+#~ "criteria. A ban prevents the banned user, host, or class from logging in to "
+#~ "the server, it does not prevent the banned user, host, or class from "
+#~ "connecting to the server."
+#~ msgstr ""
+#~ "Le module fourni des interdictions (bans) qui sont déclenchées sur des "
+#~ "critères configurables. Une interdiction permet de refuser à un utilisateur, "
+#~ "un hôte ou une classe de se connecter sur le serveur."
+
 msgid " interfaces:"
 msgstr " interfaces:"
 
@@ -67,7 +77,7 @@ msgstr " a été assignée à "
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
-msgstr "%d%% de %dMiB"
+msgstr "%d%% de %dMO"
 
 #, php-format
 msgid "%dB / block"
@@ -2647,7 +2657,7 @@ msgid "Information"
 msgstr "Informations"
 
 msgid "Information & Manual"
-msgstr "Informations & manuel"
+msgstr "Informations & Manuel"
 
 msgid "Inherit permissions"
 msgstr "Héritage des permissions"
@@ -2858,7 +2868,7 @@ msgid "License"
 msgstr "Licence"
 
 msgid "License & Credits"
-msgstr "Licence & crédits"
+msgstr "Licence & Crédits"
 
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol (LDAP)"
@@ -5066,8 +5076,8 @@ msgstr ""
 "Ce disque est monté! <a href='%s'>Démontez-le</a> avant de continuer."
 
 msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
+"The disk is currently mounted! The mount point will be removed temporarily "
+"to perform selected command."
 msgstr ""
 "Ce disque est monté!<br>Il va être temporairement démonté afin d'exécuter la "
 "commande."
@@ -6819,6 +6829,9 @@ msgstr "upriv"
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (stripping)"
 
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
 #~ msgid "built on"
 #~ msgstr "Compilé le"
 
@@ -6905,6 +6918,11 @@ msgstr "upriv"
 #~ "Vous devez activer <a href=%s>Zeroconf/Bonjour</a> pour publier ce service "
 #~ "auprès des clients."
 
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr ""
+#~ "Ces paramètres seront ajoutés à la configuration du partage dans smb.conf."
+
 #, php-format
 #~ msgid ""
 #~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
@@ -6912,6 +6930,10 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "Chemin d'accès au fichier (p.ex. /mnt/sharename/extent/%s) ou nom du "
 #~ "périphérique (p.ex. /dev/ad1) utilisé comme extension."
+
+#, php-format
+#~ msgid "Status report from host: %s.%s"
+#~ msgstr "Rapport d'état du hôte: %s.%s"
 
 #, php-format
 #~ msgid "Port %s must be less than %s."
@@ -6943,6 +6965,10 @@ msgstr "upriv"
 #~ "ordinateur soit dans le même réseau que la nouvelle adresse du "
 #~ "NAS</span></li><li><span class='vexpl'>accédez à l'interface avec la "
 #~ "nouvelle adresse IP</span></li></ul>"
+
+#, php-format
+#~ msgid "UPS notification from host: %s"
+#~ msgstr "Notification UPS du hôte: %s"
 
 #, php-format
 #~ msgid ""
@@ -6999,6 +7025,10 @@ msgstr "upriv"
 #~ msgid "FTP file transfer"
 #~ msgstr "Transfert de fichier FTP"
 
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr ""
+#~ "Vous devez avoir au minimum 256MB de RAM pour utiliser une cible iSCSI."
+
 #~ msgid ""
 #~ "You can also install a package via SSH or console using the the pkg_add "
 #~ "command.<br>Example: pkg_add -r packagename"
@@ -7016,5 +7046,212 @@ msgstr "upriv"
 #~ "Vous pouvez utiliser les paramètres suivants pour la substitution:<div "
 #~ "id='enumeration'><ul><li>%d - Date</li><li>%h - Nom du hôte</li></ul></div>"
 
+#, c-format
+#~ msgid ""
+#~ "An unauthorized POST request has been detected. Because this can be a <a "
+#~ "href='%s' target='_blank'>cross-site request forgery</a> attack, the request "
+#~ "has been blocked. Please <a href='%s'>login</a> again to continue."
+#~ msgstr ""
+#~ "Une requête non-autorisée de type POST a été détectée. Cela pouvant être une "
+#~ "requête <a href='%s' target='_blank'> cross-site falsifiée, la requête a été "
+#~ "bloquée.\r\n"
+#~ "Veuillez vous <a href='%s'>reconnecter</a> pour continuer."
+
+#~ msgid "Maximum number of connections in each session (8 by default)."
+#~ msgstr "Nombre maximum de connexions par session (8 par défaut)."
+
+#~ msgid "Maximum number of sessions holding at same time (32 by default)."
+#~ msgstr "Nombre maximum de sessions en cours simultanément (32 par défaut)."
+
+#, php-format
+#~ msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#~ msgstr ""
+#~ "Aucun pool configuré. Veuillez d'abord ajouter un nouveau <a "
+#~ "href=%s>Pool</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Aucun groupe initiateur configuré. Veuillez d'abord ajouter un nouveau <a "
+#~ "href=%s>groupe Initiateur</a>."
+
+#, php-format
+#~ msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#~ msgstr ""
+#~ "Aucune extension configurée. Veuillez d'abord ajouter une nouvelle <a "
+#~ "href=%s>Extension</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+#~ msgstr ""
+#~ "Aucun groupe portail configuré. Veuillez d'abord ajouter un nouveau <a "
+#~ "href=%s>groupe Portail</a>."
+
+#, php-format
+#~ msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#~ msgstr ""
+#~ "Aucun disque disponible. Veuillez d'abord ajouter un nouveau <a "
+#~ "href=%s>disque</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Aucun périphérique virtuel configuré. Veuillez d'abord ajouter un nouveau <a "
+#~ "href=%s>périphérique virtuel</a>."
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "Paramètre initial iSCSI (262144 par défaut)."
+
+#~ msgid "mutual CHAP"
+#~ msgstr "CHAP mutuel"
+
+#~ msgid "iSCSI initial parameter (65536 by default)."
+#~ msgstr "Paramètre initial iSCSI (65536 par défaut)."
+
+#~ msgid ""
+#~ "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
+#~ "compression algorithm is optimized for performance while providing decent "
+#~ "data compression. Setting compression to 'On' uses the 'lzjb' compression "
+#~ "algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
+#~ "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
+#~ "Currently, 'gzip' is equivalent to 'gzip-6'."
+#~ msgstr ""
+#~ "Contrôle l'algorithme de compression utilisé\t pour ce dataset. L'algorithme "
+#~ "de compression 'lzjb' est optimisé pour la performance et fourni un taux de "
+#~ "compression décent. Configurer la compression à 'On' invoque l'algorithme de "
+#~ "compression 'lzjb'. Vous pouvez spécifier le niveau de 'gzip' en utilisant "
+#~ "la valeur 'gzip-N', où N est un entier de 1 (le plus rapide) à 9 (meilleure "
+#~ "ratio de compression). Actuellement, 'gzip' est équivalent à 'gzip-6'."
+
+#~ msgid "I/O timeout in seconds (30 by default)."
+#~ msgstr "Délais d'expiration des I/O en secondes (30 par défaut)."
+
+#~ msgid "Type used as extent. (File includes an emulated volume of ZFS)"
+#~ msgstr "Type utilisé comme extension (le fichier inclus un volume ZFS émulé)"
+
+#~ msgid ""
+#~ "Limits the\tamount of space a dataset and its descendants can consume. This "
+#~ "property enforces a hard limit on the amount of space used. This\tincludes "
+#~ "all space consumed by descendants, including file systems and snapshots. To "
+#~ "specify the size use the following human-readable suffixes (for example, "
+#~ "'k', 'KB', 'M', 'Gb', etc.)."
+#~ msgstr ""
+#~ "Limite la\t quantité d'espace qu'un dataset et ses descendants puisse "
+#~ "consommer. Cette propriété donne une limite forte sur la quantité d'espace "
+#~ "utilisée.\r\n"
+#~ "Ceci\t inclus tout l'espace consommé par les descendants, incluant les "
+#~ "systèmes de fichiers et les snapshots. Pour spécifier la taille, utiliser "
+#~ "les suffixes usuels (par exemple : 'k', 'KB', 'M', 'Gb', etc...)"
+
+#~ msgid ""
+#~ "To configure the target, you must add at least Portal Group and Initiator "
+#~ "Group and Extent.<br/>Portal Group which is identified by tag number defines "
+#~ "IP addresses and listening TCP ports.<br/>Initiator Group which is "
+#~ "identified by tag number defines authorised initiator names and "
+#~ "networks.<br/>Auth Group which is identified by tag number and is optional "
+#~ "if the target does not use CHAP authentication defines authorised users and "
+#~ "secrets for additional security.<br/>Extent defines the storage area of the "
+#~ "target."
+#~ msgstr ""
+#~ "Pour configurer la cible, vous devez ajouter au moins un groupe Portail, un "
+#~ "groupe Initiateur et une Extension.<br/>Un groupe Portail, identifié par le "
+#~ "numéro de tag, défini des adresses IP et des ports TCP en écoute.<br/>Un "
+#~ "groupe Initiateur, identifié par un numéro de tag, est optionnel si la cible "
+#~ "n'utilise pas l'authentification CHAP. Il défini les utilisateurs et secrets "
+#~ "autorisés pour plus de sécurité.<br/>Une Extension défini la zone de "
+#~ "stockage de la cible."
+
+#~ msgid "NOPIN sending interval in seconds (20 by default)."
+#~ msgstr "Intervalle d'émission NOPIN en secondes (20 par défaut)"
+
+#~ msgid "Info:"
+#~ msgstr "Information:"
+
 #~ msgid "Report generator"
 #~ msgstr "Générateur de rapports"
+
+#~ msgid "Subject:"
+#~ msgstr "Objet:"
+
+#, php-format
+#~ msgid ""
+#~ "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "Le périphérique chiffré est actuellement monté ! <a href=%s>Démontez</a> ce "
+#~ "disque avant de poursuivre."
+
+#, php-format
+#~ msgid ""
+#~ "Use this option to override the default permission modes for newly created "
+#~ "files (%s by default). "
+#~ msgstr ""
+#~ "Utiliser cette option pour surcharger les modes de permission par défaut "
+#~ "pour les nouveaux fichiers créés (%s par défaut). "
+
+#~ msgid "phpBB:"
+#~ msgstr "phpBB:"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have shell access."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> doit être activé pour qu'Unison fonctionne, et l'<a "
+#~ "href=%s>utilisateur</a> doit avoir accès au shell."
+
+#~ msgid ""
+#~ "The administrator has been notified. Your changes will be available soon."
+#~ msgstr ""
+#~ "L'administrateur a été notifié. Vos modifications seront bientôt disponibles."
+
+#~ msgid "auto"
+#~ msgstr "auto"
+
+#~ msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#~ msgstr ""
+#~ "Réseau autorisé pour le contrôleur d'unités logiques (127.0.0.1/8 par défaut)"
+
+#~ msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#~ msgstr ""
+#~ "Adresse IP du contrôleur d'unités logiques (127.0.0.1 (localhost) par défaut)"
+
+#~ msgid "Logical Unit Controller TCP port (3261 by default)"
+#~ msgstr "Port TCP du contrôleur d'unités logiques (3261 par défaut)"
+
+#, php-format
+#~ msgid ""
+#~ "No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+#~ msgstr ""
+#~ "Aucun groupe Auth configuré. Veuillez d'abord ajouter un nouveau <a "
+#~ "href=%s>groupe Auth</a>."
+
+#~ msgid "successfully"
+#~ msgstr "avec succès"
+
+#~ msgid ""
+#~ "The disk is currently mounted! The mount point will be removed temporary to "
+#~ "perform selected command."
+#~ msgstr ""
+#~ "Ce disque est monté!<br>Il va être temporairement démonté afin d'exécuter la "
+#~ "commande."
+
+#, php-format
+#~ msgid ""
+#~ "To increase CIFS performance try the following:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+#~ msgstr ""
+#~ "Pour augmenter les performances de CIFS, essayez ceci : <div "
+#~ "id='enumeration'><ul><li>Activer le bouton 'Lecture/écriture "
+#~ "élargie'</li><li>Activer le '<a href='%s'>Tuning</a>' "
+#~ "switch</li><li>Augmenter le <a href='%s'>MTU</a></li></ul></div>"
+
+#~ msgid "IRC Live support"
+#~ msgstr "Canal IRC du support"

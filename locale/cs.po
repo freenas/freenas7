@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2010-12-01 17:08+0000\n"
-"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"PO-Revision-Date: 2011-03-28 18:50+0000\n"
+"Last-Translator: Vaclav Obrtlik <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-01 17:12+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-03-31 22:21+0000\n"
+"X-Generator: Launchpad (build 12710)\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "Language: \n"
 "X-Poedit-Language: Czech\n"
@@ -104,6 +104,8 @@ msgstr ""
 msgid ""
 "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 msgstr ""
+"<div id='enumeration'><ul><li>%d - Datum</li><li>%h - "
+"Hostname</li></ul></div>"
 
 msgid ""
 "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync "
@@ -125,6 +127,8 @@ msgstr ""
 msgid ""
 "A Auth Group contains authorised users and secrets for additional security."
 msgstr ""
+"Autorizační skupina obsahuje autorizované uživatele a tajemství pro "
+"dodatečnou bezpečnost."
 
 msgid ""
 "A Initiator Group contains authorised initiator names and networks to access "
@@ -276,10 +280,10 @@ msgid "Active Directory"
 msgstr "Aktivní adresář"
 
 msgid "Active Users"
-msgstr ""
+msgstr "Aktivní uživatelé"
 
 msgid "Active shares"
-msgstr ""
+msgstr "Aktivní sdílení"
 
 msgid "Add"
 msgstr "Přidat"
@@ -306,7 +310,7 @@ msgid "Add additional scheduled self-test."
 msgstr "Přidat další plánovaný test vlastního stavu."
 
 msgid "Add auth group"
-msgstr ""
+msgstr "přidat autorizační skupinu"
 
 msgid "Add command"
 msgstr "Přidat příkaz"
@@ -387,16 +391,16 @@ msgid "Administrator name"
 msgstr "Jméno správce"
 
 msgid "Advanced"
-msgstr "Pokročilé"
+msgstr "Rozšířené"
 
 msgid "Advanced Configuration"
-msgstr "Pokročilé nastavení"
+msgstr "Rozšířené nastavení"
 
 msgid "Advanced Format"
 msgstr "Pokročilé formátování"
 
 msgid "Advanced Options"
-msgstr "Pokročilé volby"
+msgstr "Rozšířené nastavení"
 
 msgid "Advanced Power Management"
 msgstr "Pokročilá správa napájení"
@@ -501,7 +505,7 @@ msgstr ""
 "Následuje po povolení formátu voleb."
 
 msgid "AltRoot"
-msgstr ""
+msgstr "Alternativní kořen"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativní TCP port. Výchozí je 22"
@@ -622,7 +626,7 @@ msgid "Auto"
 msgstr "Automaticky"
 
 msgid "Auto size"
-msgstr ""
+msgstr "Automatická velikost"
 
 msgid "AutoScale"
 msgstr "Automatické měřítko"
@@ -631,7 +635,7 @@ msgid "Automatic disk discovery"
 msgstr "Automatické objevování disků"
 
 msgid "Automatic disk discovery mode"
-msgstr ""
+msgstr "Automatické nalezení disků"
 
 msgid "Autoselect"
 msgstr "Automatické vybírání"
@@ -734,7 +738,7 @@ msgid "CPU usage"
 msgstr "Využití procesoru"
 
 msgid "Cache"
-msgstr ""
+msgstr "Vyrovnávací paměť"
 
 msgid "Cache Device"
 msgstr ""
@@ -989,13 +993,13 @@ msgid "Custom"
 msgstr "Volitelný"
 
 msgid "Custom script"
-msgstr ""
+msgstr "Vlastní skript"
 
 msgid "Custom script is not found."
-msgstr ""
+msgstr "Vlastní skript nenalezen"
 
 msgid "Custom script is required."
-msgstr ""
+msgstr "Vlastní skript je vyžadován"
 
 msgid "Czech"
 msgstr "Čeština"
@@ -1020,6 +1024,10 @@ msgid ""
 "update.<br />It is strongly recommended that you <a href='%s'>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
+"NERUŠTE upgrade firmware, jakmile začal. %s rebootuje automaticky po uložení "
+"firmware. Nastavení bude zachováno.<br />Budete potřebovat minimálně %d MB "
+"RAM k aktualizaci firmwaru.<br />Důrazně se doporučuje <a "
+"href='%s'>ZÁLOHOVAT</a> Systémové nastavení, před upgradem"
 
 msgid "DVD"
 msgstr ""
@@ -1095,7 +1103,7 @@ msgid "Delete Host"
 msgstr "Odstranit hostitele"
 
 msgid "Delete Login Info"
-msgstr ""
+msgstr "Smazat informace o přihlášení"
 
 msgid "Delete MIB"
 msgstr "Odstranit MIB"
@@ -1128,7 +1136,7 @@ msgid "Delete all self-tests"
 msgstr "Odstranit všechny testy vlastního stavu"
 
 msgid "Delete auth group"
-msgstr ""
+msgstr "Smazat autorižační skupinu"
 
 msgid "Delete command"
 msgstr "Odstranit příkaz"
@@ -1173,7 +1181,7 @@ msgid "Delete option"
 msgstr "Odstranit volbu"
 
 msgid "Delete pool"
-msgstr ""
+msgstr "Smazat rozsah"
 
 msgid "Delete portal group"
 msgstr ""
@@ -1369,7 +1377,7 @@ msgid "Disks (ATA)"
 msgstr "Disky (ATA)"
 
 msgid "Display"
-msgstr ""
+msgstr "Zobrazit"
 
 msgid "Distributed hash table"
 msgstr "Distribuovaná hašovací tabulka"
@@ -1384,7 +1392,7 @@ msgid "Do you really want to delete all rules?"
 msgstr "Skutečně chcete smazat všechna pravidla?"
 
 msgid "Do you really want to delete all scheduled self-tests?"
-msgstr ""
+msgstr "Chcete smazat všechny naplánováné testy?"
 
 msgid "Do you really want to delete this MIB?"
 msgstr "Opravdu chcete odstranit tento MIB?"
@@ -1396,7 +1404,7 @@ msgid "Do you really want to delete this URL?"
 msgstr "Opravdu chcete smazat tuto URL adresu?"
 
 msgid "Do you really want to delete this auth group?"
-msgstr ""
+msgstr "Chcete smazat tuto autorizační skupinu ?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Opravdu chcete smazat tento příkaz?"
@@ -1800,7 +1808,7 @@ msgid "Enable reverse DNS lookup."
 msgstr "Povolit zpětný překlad DNS."
 
 msgid "Enable serial console"
-msgstr ""
+msgstr "Povolit sériovou konzoli. (RS232)"
 
 msgid "Enable store DOS attributes"
 msgstr "Povolit ukládání DOSových atributů"
@@ -2085,7 +2093,7 @@ msgid "File size"
 msgstr "Velikost souboru"
 
 msgid "File sizeunit"
-msgstr ""
+msgstr "Jednotka velikosti souboru."
 
 msgid "File system"
 msgstr "Souborový systém"
@@ -2136,7 +2144,7 @@ msgid "Format disk"
 msgstr "Formátovat disk"
 
 msgid "Format the report for phpBB forum."
-msgstr ""
+msgstr "Upravit výstup pro phpBB fórum."
 
 msgid "Forum"
 msgstr "Fórum"
@@ -2178,19 +2186,19 @@ msgid "Gateway to be used to reach the destination network."
 msgstr ""
 
 msgid "General"
-msgstr "Všeobecné"
+msgstr "Základní"
 
 msgid "General Setup"
-msgstr "Obecné nastavení"
+msgstr "Základní nastavení"
 
 msgid "Generate"
-msgstr ""
+msgstr "Vygenerovat"
 
 msgid "German"
 msgstr "Německý"
 
 msgid "Get Target Info"
-msgstr ""
+msgstr "Získat info o cíli"
 
 msgid "GiB"
 msgstr "GiB"
@@ -2327,7 +2335,7 @@ msgid "Hungarian"
 msgstr "Maďarština"
 
 msgid "I/O Timeout"
-msgstr ""
+msgstr "I/O Timeout"
 
 msgid "I/O errors"
 msgstr "I/O chyby"
@@ -2340,7 +2348,7 @@ msgstr "Vstupně - výstůpní statistika"
 
 #, php-format
 msgid "I/O timeout in seconds (%d by default)."
-msgstr ""
+msgstr "I/O timeout ve vteřinách (%d ve výchozím)."
 
 msgid "IG"
 msgstr ""
@@ -2498,10 +2506,10 @@ msgid "Import"
 msgstr "Import"
 
 msgid "Import disks"
-msgstr ""
+msgstr "Importovat disky"
 
 msgid "Import disks used in configuration."
-msgstr ""
+msgstr "Importovat disky použité v konfiguraci."
 
 msgid "Import firewall rules."
 msgstr "Importovat pravidla firewallu"
@@ -2516,7 +2524,7 @@ msgid "In most cases, 'public' is used here."
 msgstr "Ve většinš případů je zde použito \"public\"."
 
 msgid "Include basic hardware information."
-msgstr ""
+msgstr "Zahrnout základní info o hardware."
 
 msgid "Incomplete directory"
 msgstr "Adresář s nekompletními soubory"
@@ -2531,7 +2539,7 @@ msgid "Information"
 msgstr "Informace"
 
 msgid "Information & Manual"
-msgstr ""
+msgstr "Info & manuál"
 
 msgid "Inherit permissions"
 msgstr "Dědění oprávnění"
@@ -2608,7 +2616,7 @@ msgid "Interval must be greater or equal than 10 seconds."
 msgstr "Interval musí být větší nebo rovný 10 sekund."
 
 msgid "Invalid file format."
-msgstr ""
+msgstr "Neplatný formát souboru."
 
 #, php-format
 msgid "Invalid max. block size! It must be in the range from %d to %d."
@@ -2663,7 +2671,7 @@ msgid "Knowledgebase"
 msgstr "Znalostní báze"
 
 msgid "Korean"
-msgstr ""
+msgstr "Korejština"
 
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr "LACP (Link Aggregation Control Protocol)"
@@ -2672,7 +2680,7 @@ msgid "LAGG"
 msgstr "LAGG"
 
 msgid "LAN Management"
-msgstr ""
+msgstr "Správa LAN"
 
 msgid "LAN net"
 msgstr "Síť LAN"
@@ -2840,7 +2848,7 @@ msgstr "Umístění databázového souboru s obsahem."
 #, php-format
 msgid ""
 "Location where the working files will be stored, e.g. %s/backup/.unison"
-msgstr ""
+msgstr "Umístění pracovních souborů, např. %s/backup/.unison"
 
 msgid "Log"
 msgstr "Protokol"
@@ -2951,7 +2959,7 @@ msgid "Max. conn. per IP"
 msgstr "Max. připojení na IP adresu"
 
 msgid "Max. connections"
-msgstr ""
+msgstr "Max. spojení"
 
 msgid "Max. login attempts"
 msgstr ""
@@ -2991,7 +2999,7 @@ msgstr ""
 
 #, php-format
 msgid "Maximum number of connections in each session (%d by default)."
-msgstr ""
+msgstr "Maximální počet spojení v každém  sezení (%d ve výchozím)."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximální počet připojených IP adres (0 = neomezeně)"
@@ -3031,7 +3039,7 @@ msgid "Message of the day."
 msgstr "Zpráva dne."
 
 msgid "MiB"
-msgstr ""
+msgstr "MiB"
 
 msgid "MibII"
 msgstr "MibII"
@@ -3180,7 +3188,7 @@ msgid "Network that is authorised to access the NFS share."
 msgstr "Síť s oprávněním přístupu ke sdílenému NFS"
 
 msgid "Networks"
-msgstr ""
+msgstr "Sítě"
 
 msgid ""
 "Never - Poll (check) the device regardless of its power mode. This may cause "
@@ -3191,7 +3199,7 @@ msgstr ""
 "nečinnosti."
 
 msgid "New Device"
-msgstr ""
+msgstr "Nové zařízení"
 
 msgid "No"
 msgstr "Ne"
@@ -3234,7 +3242,7 @@ msgid ""
 msgstr ""
 
 msgid "No device selected."
-msgstr ""
+msgstr "Není vybráno žádné zařízení."
 
 msgid "No disk configured"
 msgstr "Žádný nakonfigurovaný disk"
@@ -3242,12 +3250,13 @@ msgstr "Žádný nakonfigurovaný disk"
 #, php-format
 msgid "No disks available. Please add new <a href='%s'>disk</a> first."
 msgstr ""
+"Nejsou dostupné žádné disky. Nejdříve přidejte nový <a href='%s'>disk</a>."
 
 msgid "No file was uploaded."
-msgstr ""
+msgstr "Žádný soubor nebyl nahrán"
 
 msgid "No pool was found."
-msgstr ""
+msgstr "Nebyl nalezen žádný rozsah"
 
 msgid "Node Base"
 msgstr ""
@@ -3300,11 +3309,11 @@ msgstr ""
 "Poznámka: Ctrl a klik (nebo command a klik) vybere vícenásobné záznamy."
 
 msgid "Nothing to synchronize"
-msgstr ""
+msgstr "Nic k synchronizaci"
 
 #, php-format
 msgid "Notification email from host: %s"
-msgstr ""
+msgstr "Upozornění emailem od: %s"
 
 msgid "Now"
 msgstr "Nyní"
@@ -3343,7 +3352,7 @@ msgid "Occurrence"
 msgstr "Výskyt"
 
 msgid "Off"
-msgstr ""
+msgstr "Vypnuto"
 
 msgid "Old passphrase"
 msgstr "Staré heslo"
@@ -3565,13 +3574,13 @@ msgid "Polling time"
 msgstr "Dotazovací interval."
 
 msgid "Pool"
-msgstr ""
+msgstr "Rozsah"
 
 msgid "Pool information and status"
-msgstr ""
+msgstr "Info a status rozsahu"
 
 msgid "Pools"
-msgstr ""
+msgstr "Rozsahy"
 
 msgid "Port"
 msgstr "Port"
@@ -3701,13 +3710,13 @@ msgstr ""
 "dobu, než jakou určuje zadaný časový interval."
 
 msgid "Queue Depth"
-msgstr ""
+msgstr "Hloubka fronty"
 
 msgid "Quiet"
 msgstr "Tichý"
 
 msgid "Quota"
-msgstr ""
+msgstr "Kvóta"
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3734,13 +3743,13 @@ msgid "RSYNC"
 msgstr "RSYNC"
 
 msgid "RSYNC - Client"
-msgstr ""
+msgstr "RSYNC - Klient"
 
 msgid "RSYNC - Local"
-msgstr ""
+msgstr "RSYNC - Lokální"
 
 msgid "RSYNC - Server"
-msgstr ""
+msgstr "RSYNC - Server"
 
 msgid "RSYNC Client"
 msgstr "RSYNC klient"
@@ -3761,16 +3770,16 @@ msgid "Read"
 msgstr "Čtení"
 
 msgid "Read Only (ro)"
-msgstr ""
+msgstr "Pouze pr čtení (ro)"
 
 msgid "Read Only Access"
 msgstr "Přístu pouze pro čtení"
 
 msgid "Read from biggest priority"
-msgstr ""
+msgstr "Číst od nejvyšší priority"
 
 msgid "Read from lowest load"
-msgstr ""
+msgstr "Číst od nejnižšího zatížení."
 
 msgid "Read only"
 msgstr "Pouze ke čtení"
@@ -3779,7 +3788,7 @@ msgid "Read/Write"
 msgstr "Čtení/zápis"
 
 msgid "Read/Write (rw)"
-msgstr ""
+msgstr "Čtení/Zápis (rw)"
 
 msgid ""
 "Read/Write (rw,dynamic) for removable types file size grow and shrink "
@@ -3794,7 +3803,7 @@ msgid "Read/Write Access"
 msgstr "Přístup pro četní a zápis"
 
 msgid "Readonly"
-msgstr ""
+msgstr "Pouze pro čtení"
 
 msgid "Realm"
 msgstr "Realm"
@@ -3815,13 +3824,13 @@ msgid "Recycle bin"
 msgstr "Odpadkový koš"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Aktualizovat"
 
 msgid "Reject"
 msgstr "Odmítnout"
 
 msgid "Release Notes"
-msgstr ""
+msgstr "Poznámky k vydání"
 
 msgid "Reload page"
 msgstr "Obnovit stránku"
@@ -3845,13 +3854,13 @@ msgid "Remote syslog server"
 msgstr "Vzdálený logovací server."
 
 msgid "Removable"
-msgstr ""
+msgstr "Odpojitelné"
 
 msgid "Remove all entries from ARP table"
 msgstr "Odstranit všechny záznamy z ARP tabulky"
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Generátor hlášení"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -3884,7 +3893,7 @@ msgid "Rescan interval"
 msgstr "Interval opakování skenování"
 
 msgid "Resetting channel "
-msgstr ""
+msgstr "Resetuje se kanál "
 
 msgid "Resolve"
 msgstr "Vyhodnotit"
@@ -3914,7 +3923,7 @@ msgid "Romanian"
 msgstr "Rumunština"
 
 msgid "Root"
-msgstr ""
+msgstr "Kořen"
 
 msgid "Root bind DN"
 msgstr "DN spojení pro Roota"
@@ -3968,7 +3977,7 @@ msgid "S.M.A.R.T. events"
 msgstr "S.M.A.R.T. události"
 
 msgid "S.M.A.R.T. extra options"
-msgstr ""
+msgstr "S.M.A.R.T. extra vlastnosti"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. log"
@@ -4016,13 +4025,13 @@ msgid "Save and Restart"
 msgstr "Ulož nastavení a restartuj"
 
 msgid "Save login information in configuration file."
-msgstr ""
+msgstr "Uložit info o přihlášení v konfiguračním souboru."
 
 msgid "Saved file to"
 msgstr "Uložit soubor do"
 
 msgid "Scan Targets"
-msgstr ""
+msgstr "Oskenovat cíle"
 
 msgid ""
 "Scan file system every N seconds to see if any files have been added or "
@@ -4057,7 +4066,7 @@ msgid "Scheduled shutdown"
 msgstr "Naplánované vypnutí"
 
 msgid "Secret"
-msgstr ""
+msgstr "Tajné"
 
 msgid "Secure Shell"
 msgstr "Secure Shell"
@@ -4111,7 +4120,7 @@ msgid "Separate email addresses by semi-colon."
 msgstr "Emailové adresy oddělujte pomocí středníku."
 
 msgid "Serial Console"
-msgstr ""
+msgstr "Sériová konzole"
 
 msgid "Serial number"
 msgstr "Sériové číslo"
@@ -4212,7 +4221,7 @@ msgid "Shares"
 msgstr "Sdílení"
 
 msgid "Shell"
-msgstr ""
+msgstr "Shell"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Zobrazovat záznamy v logu v opačném pořadí (nejnovější na začátku)."
@@ -4255,7 +4264,7 @@ msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr "Sleep - Kontrolovat stav zařízení pouze pokud není ve SLEEP režimu."
 
 msgid "Slovak"
-msgstr ""
+msgstr "Slovenština"
 
 msgid "Slovenian"
 msgstr "Slovinsky"
@@ -4341,7 +4350,7 @@ msgstr ""
 "Snížení hranice může nepříznivě ovlivnit výkon a auto-defragmentaci."
 
 msgid "Split request"
-msgstr ""
+msgstr "Rozdělit požadavek"
 
 msgid "Standard"
 msgstr "Standardní"
@@ -4359,14 +4368,14 @@ msgid "Standby time"
 msgstr "Čas přechodu do pohotovostního režimu [min]"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #, php-format
 msgid "Start scrub on '%s'."
 msgstr ""
 
 msgid "Static"
-msgstr ""
+msgstr "Statické"
 
 msgid "Static Routes"
 msgstr "Statické cesty"
@@ -4385,7 +4394,7 @@ msgid "Status report successfully sent."
 msgstr "Zpráva o stavu byal úspěšně odeslána."
 
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 msgid "Stop after sending (and receiving) N packets."
 msgstr "Zastavit po odeslání (a přijmutí) N paketů."
@@ -4461,7 +4470,7 @@ msgid "Synchronization time"
 msgstr ""
 
 msgid "Synchronize"
-msgstr ""
+msgstr "Synchronizovat"
 
 #, php-format
 msgid ""
@@ -4530,7 +4539,7 @@ msgid "Tag%d (%s)"
 msgstr ""
 
 msgid "Tape"
-msgstr ""
+msgstr "Páska"
 
 msgid "Target"
 msgstr "Cíl"
@@ -4548,13 +4557,13 @@ msgid "Target directory."
 msgstr "Cílový adresář"
 
 msgid "Target information"
-msgstr ""
+msgstr "Informace o cíli"
 
 msgid "Target is not selected."
-msgstr ""
+msgstr "Cíl není  zvolen."
 
 msgid "Target list"
-msgstr ""
+msgstr "Seznam cílů"
 
 msgid "Target name"
 msgstr "Název cíle"
@@ -4838,8 +4847,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
+"The disk is currently mounted! The mount point will be removed temporarily "
+"to perform selected command."
 msgstr ""
 
 msgid "The disk/partition is already configured."
@@ -6241,5 +6250,320 @@ msgstr "odpojit"
 msgid "upriv"
 msgstr "upriv"
 
+#~ msgid "days"
+#~ msgstr "dnů"
+
+#~ msgid "months"
+#~ msgstr "měsíců"
+
+#~ msgid "Create"
+#~ msgstr "Vytvoř"
+
+#~ msgid "RSYNCD"
+#~ msgstr "RSYNCD"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% ze %dMB"
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "Musí být zadána správná síť."
+
+#~ msgid "Create work directory if it doesn't exist"
+#~ msgstr "Vytvořit pracovní adresář, pokud neexistuje."
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "Zařízení je připojeno, před odebráním jej musíte nejdříve odpojit."
+
+#~ msgid "Disk Name"
+#~ msgstr "Název disku"
+
+#~ msgid "Encrypted disk name"
+#~ msgstr "Název šifrovaného disku"
+
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "Neplatný port! Číslo portu musí být v rozsahu od %d do %d."
+
+#~ msgid "List of shares"
+#~ msgstr "Výpis sdílení"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "Aby Unison pracoval, je nutné, aby bylo povoleno <a href=%s>SSHD</a> a <a "
+#~ "href=%s>uživatel</a>musí mít plný shellový přístup."
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
+#~ "using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. použijte tyto speciální akce pouze pro ladící účely!<br>2. pro "
+#~ "nastartování RAID volume není nutné používat toto menu (startuje "
+#~ "automaticky)-"
+
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "Musí být zadána platná bitová maska sítě."
+
+#, php-format
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "NEPŘERUŠUJTE upgrade firmware. %s se automaticky restartuje po uložení "
+#~ "nového firmware. Konfigurace bude zachována.<br>K upgrade firmware "
+#~ "potřebujete minimálně %d MB RAM.<br>Je velmi žádoucí, abyste <a "
+#~ "href=%s>Zálohoval</a> konfiguraci systému před zahájením upgrade firmware."
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image file "
+#~ "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+#~ "process."
+#~ msgstr ""
+#~ "Klikněte na &quot;Umožnit nahrání firmware&quot; a vyberte soubor s "
+#~ "firmware.<br>Aktualizační proces zahájíte kliknutím na &quot;Aktualizovat "
+#~ "firmware&quot;"
+
+#, php-format
+#~ msgid "%s on %s (%dMHz)"
+#~ msgstr "%s na %s (%dMHz)"
+
+#, php-format
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "Po kliknutí na tlačítko &quot;Uložit&quot;, bude nutné %s restartovat aby "
+#~ "měly provedé změny efekt. Je možné, že bude muset provést některé z "
+#~ "následujících kroků, abyste se mohli na sůj NAS znovu přihlásit: "
+#~ "</span></p><ul><li><span class='vexpl'>změnit IP adresu svého "
+#~ "počítače</span></li><li><span class='vexpl'>zadat novou IP adresu pro vstup "
+#~ "do WebGUI</span></li></ul>"
+
+#~ msgid "week days"
+#~ msgstr "dny v týdnu"
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Udělit uživateli plný přístup do shellu."
+
+#, php-format
+#~ msgid "Last %d %s log entries"
+#~ msgstr "Posledních %d %s záznamů."
+
+#~ msgid "Logs"
+#~ msgstr "Protokoly"
+
+#~ msgid "Medium power usage with Standby"
+#~ msgstr "Střední odběr s pohotovostním režimem."
+
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "Maximální výkon, maximální spotřeba"
+
+#~ msgid "Medium power usage without Standby"
+#~ msgstr "Střední odběr bez pohotovostního režimu."
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (proužkování)"
+
+#~ msgid "RSYNC Local"
+#~ msgstr "RSYNC Local"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (zrcadlení)"
+
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and is "
+#~ "made up of one or more devices, and/or one or more extents."
+#~ msgstr ""
+#~ "Na nejvyšší úrovni je cílem to co je prezentované inicátorovi a je složeno z "
+#~ "jednoho nebo více zařízení a/nebo jehdnoho nebo více rozsahů."
+
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+#~ msgstr ""
+#~ "Zařízení se používají na kombinování rozsahů a nebo jiných zařízení. Rozsahy "
+#~ "a zařízení musí být před použitím definované a není jich možno použít více "
+#~ "než jednou."
+
+#~ msgid "Minimum power usage without Standby"
+#~ msgstr "Minimální spotřeba bez pohotovostního režimu."
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr ""
+#~ "Poznámka: Ctrl a klik (nebo command a klik) vybere případně zruší výběr "
+#~ "minut, hodin, dní a měsíců."
+
 #~ msgid "Release notes"
 #~ msgstr "Poznámky k vydání"
+
+#~ msgid "Minimum power usage with Standby"
+#~ msgstr "Minimální spotřeba v pohotovostním režimu."
+
+#~ msgid "Network that is authorised to access to this iSCSI target."
+#~ msgstr "Síť s oprávněním přístupu k tomuto iSCSI cíli."
+
+#, php-format
+#~ msgid ""
+#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+#~ "menu."
+#~ msgstr ""
+#~ "Ponechte \"%s\" pro nenaformátované disky a naformátujte je pomocí nabídky "
+#~ "<a href=%s>Formátovat</a>"
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "Port %s musí být menší než %s."
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "IP adresy se přidělují názvům hostitelů pokud je zapnutá volba <a "
+#~ "href=%s>&quot;Překládat IP adresy na názvy hostitelů&quot;</a>."
+
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted temporarily "
+#~ "to perform selected command, otherwise the commands work in read-only "
+#~ "mode.<br>Service disruption to users accessing this mount will occur during "
+#~ "this process."
+#~ msgstr ""
+#~ "Pokud je zvolený disk/oddíl připojený, bude dočasně odpojen, aby se mohl "
+#~ "vykonat zvolený příkaz, jinak budou příkazy pracovat v režimu pouze pro "
+#~ "čtení.<br>Během tohoto procesu dojde k výpadku služby pro uživatele, kteří "
+#~ "přistupují k této jednotce."
+
+#~ msgid "Size in MB."
+#~ msgstr "Velikost v MB"
+
+#, php-format
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "Cesta k souboru (např. /mnt/adresar/rozsah/%s) nebo název zařízení (např. "
+#~ "/dev/ad1) použité jako rozsah."
+
+#~ msgid "Shutdown Time"
+#~ msgstr "Čas do vypnutí"
+
+#~ msgid "Size of receive buffer (16384 by default)."
+#~ msgstr "Velikost přijímací vyrovnávací paměti (implicitně 16384)."
+
+#~ msgid "Size of send buffer (16384 by default)."
+#~ msgstr "Velikost odesílací vyrovnávací paměti (implicitně 16384)."
+
+#~ msgid ""
+#~ "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+#~ "partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+#~ "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+#~ "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+#~ "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+#~ msgstr ""
+#~ "zvolte <b>EFI GPT</b> pokud chcete připojit GTP naformátovaný disk "
+#~ "(<b>implicitní diskový oddíl od verze 0.684b</b>). <br><b>MBR</b> oddíl, pro "
+#~ "disky naformátované UFS nebo Software RAID (<b>vytvořené před verzí "
+#~ "0.684b</b>) nebo importované z jiných OS.<br><b>CD/DVD nebo starý Software "
+#~ "RAID</b> pro staré svazky Software RAID (<b>vytvořený před verzí 0.68</b>) "
+#~ "nebo CD/DVD."
+
+#~ msgid "Shell access"
+#~ msgstr "Shell přístup"
+
+#~ msgid "hours"
+#~ msgstr "hodiny"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr "Pro přidání kryptovaného disku je třeba použít heslo."
+
+#~ msgid "day"
+#~ msgstr "den"
+
+#~ msgid "built on"
+#~ msgstr "postavené na"
+
+#~ msgid "Synchronization Time"
+#~ msgstr "Synchronizační čas"
+
+#, c-format
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr ""
+#~ "Změny byly uložena. Aby začaly platiti je nutné <a href=%s>restartovat</a> "
+#~ "systém."
+
+#, php-format
+#~ msgid "Status report from host: %s.%s"
+#~ msgstr "Správa o stavu ze stroje: %s. %s"
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr "Musíte mít nejméně 256MB RAM aby bylo možné použít iSCSI cíl."
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "Číslo portu %s musí být v rozsahu od %d do %d."
+
+#~ msgid "File transfer"
+#~ msgstr "Přenos souborů"
+
+#~ msgid "FTP file transfer"
+#~ msgstr "FTP přenos souborů"
+
+#~ msgid "Syslog"
+#~ msgstr "Syslog"
+
+#, php-format
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "RAID svazek je momentálně připojený! <a href=%s>Odpojte jej</a> předtím, než "
+#~ "budete pokračovat."
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "Kobinace sdíleného a pracovního adresáře neexistuje."
+
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr "Konfigurace nemohl být obnovena (chyba při nahrávání souboru)."
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "Konfigurace byla změněna. <br />Aby se změny projevili mustíe je potvrdit."
+
+#~ msgid ""
+#~ "The default key lengths are: 128 for AES, 128 for Blowfish and 192 for 3DES."
+#~ msgstr ""
+#~ "Implicitní délky klíčů jsou: 128 pro AES, 128 pro Blowfish a 192 pro 3DES."
+
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr "Tyto parametry budou přidány k nastavení sdílení v smb.conf."
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Příkladem jména je: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#, php-format
+#~ msgid "UPS notification from host: %s"
+#~ msgstr "UPS oznámení od hostitele: %s"

@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2010-11-12 16:14+0000\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"PO-Revision-Date: 2011-03-30 19:49+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-12 16:24+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-03-31 22:20+0000\n"
+"X-Generator: Launchpad (build 12710)\n"
 "X-Poedit-Country: POLAND\n"
 "Language: \n"
 "X-Poedit-Language: Polish\n"
@@ -4862,8 +4862,8 @@ msgstr ""
 "kontynuacją."
 
 msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
+"The disk is currently mounted! The mount point will be removed temporarily "
+"to perform selected command."
 msgstr ""
 "Dysk jest aktualnie zamontowany! Punkt zamontowania zostanie czasowo "
 "usunięty by wykonać wybrane polecenie."
@@ -6352,6 +6352,28 @@ msgstr ""
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"
 
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the image "
+#~ "has not been tampered with.<br><br>Do you want to install this image anyway "
+#~ "(on your own risk)?"
+#~ msgstr ""
+#~ "Oznacza to, że wskazany plik nie jest oficjalnym/wspieranym plikiem i może "
+#~ "prowadzić do nieprzewidywalnego zachowania lub zmniejszenia bezpieczeństwa. "
+#~ "Instaluj tylko pliki pochodzące z zaufanych źródeł i upewnij się, że plik "
+#~ "nie był modyfikowany.<br>Czy chcesz pomimo tego zainstalować plik (na własne "
+#~ "ryzyko)?"
+
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image file "
+#~ "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+#~ "process."
+#~ msgstr ""
+#~ "Kliknij &quot;Włącz aktualizacje oprogramowania&quot; poniżej, następnie "
+#~ "wskaż plik z aktualizacją.<br>Kliknij &quot;Aktualizuj oprogramowanie&quot;, "
+#~ "aby rozpocząć proces aktualizacji."
+
 #~ msgid "Size in MB."
 #~ msgstr "Rozmiar w MB."
 
@@ -6378,6 +6400,13 @@ msgstr ""
 #~ "Dysk jest aktualnie zamontowany! Najpierw <a href=%s>Odmontuj</a> dysk zanim "
 #~ "przejdziesz dalej."
 
+#~ msgid ""
+#~ "The disk is currently mounted! The mount point will be removed temporary to "
+#~ "perform selected command."
+#~ msgstr ""
+#~ "Dysk jest aktualnie zamontowany! Punkt zamontowania zostanie czasowo "
+#~ "usunięty by wykonać wybrane polecenie."
+
 #, php-format
 #~ msgid ""
 #~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
@@ -6385,6 +6414,13 @@ msgstr ""
 #~ msgstr ""
 #~ "Poziom RAID jesy aktualnie zamontowany! Usuń <a href=%s>punkt "
 #~ "zamontowania</a> zanim przejdziesz dalej."
+
+#, php-format
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr ""
+#~ "Nie można zamontować partycji '%s', na której znajduje się plik "
+#~ "konfiguracyjny.<br>"
 
 #~ msgid "Size of send buffer (16384 by default)."
 #~ msgstr "Rozmiar buforu wysyłania (domyślnie 16384)"
@@ -6398,6 +6434,9 @@ msgstr ""
 #~ msgid "Synchronization Time"
 #~ msgstr "Czas synchronizacji"
 
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "Kombinacja udziału i katalogu roboczego nie istnieje."
+
 #~ msgid "Working Directory"
 #~ msgstr "Katalog roboczy"
 
@@ -6406,6 +6445,14 @@ msgstr ""
 
 #~ msgid "Shutdown Time"
 #~ msgstr "Czas wyłączenia"
+
+#, php-format
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr ""
+#~ "Spowoduje to, że %s nie będzie sprawdzał, czy istnieją  aktualizacje "
+#~ "oprogramowania podczas przeglądania strony <a href=%s>%s</a>"
 
 #, php-format
 #~ msgid "Last %d %s log entries"
@@ -6424,8 +6471,245 @@ msgstr ""
 #~ msgid "Network that is authorised to access to this iSCSI target."
 #~ msgstr "Sieć, która posiada autoryzacjędo dostępu d tego celu iSCSI."
 
+#~ msgid "Disk Name"
+#~ msgstr "Nazwa dysku"
+
+#~ msgid "RAID 0 (stripping)"
+#~ msgstr "RAID 0 (paskowanie)"
+
+#, c-format
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr ""
+#~ "Zmiany zostały zapisane. Musisz <a href=%s>uruchomić ponownie</a> system, "
+#~ "aby zmiany odniosły skutek."
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "Konfiguracja została zmieniona.<br>Musisz zatwierdzić zmiany, aby odniosły "
+#~ "skutek."
+
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "Możesz także zainstalować pakiet przez SSH lub konsolę używając komendy "
+#~ "pkg_add.<br> Np.: pkg_add -r nazwa_pakietu"
+
+#, php-format
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "Po kliknięciu &quot;Zapisz&quot;, musisz uruchomić ponownie %s aby zmiany "
+#~ "zostały wprowadzone. Być może będziesz musiał dokonać następujących kroków, "
+#~ "aby otrzymać ponownie dotęp do NAS: </span></p><ul><li><span "
+#~ "class='vexpl'>zmienić adres IP komputera</span></li><li><span "
+#~ "class='vexpl'>uzyskać dostęp do środowiska webGUI pod nowym adresem "
+#~ "IP</span></li></ul>"
+
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (mirroring)"
+
+#, php-format
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "NIE PRZERYWAJ aktualizacji oprogramowania podczas jej trwania. %s uruchomi "
+#~ "się ponownie automatycznie po zakończeniu aktualizacji. Konfiguracja "
+#~ "pozostanie niezmieniona.<br>Potrzebujesz minimum %d Mb pamięci RAM, aby "
+#~ "przeprowadzić aktualizację oprogramowania.<br>Zalecane jest zrobienie <a "
+#~ "href=%s>Kopii zapasowej</a> konfiguracji systemu przed dokonaniem "
+#~ "aktualizacji oprogramowania."
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "Urządzenie jest zamontowane. Odmontuj je przed odłączeniem."
+
+#~ msgid "Shell access"
+#~ msgstr "Dostęp do powłoki"
+
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "Nieprawidłowy port! Numer portu musi być z przedziału od %d do %d."
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "Daj pełen dostęp dla użytkownika."
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "Unison dla poprawnego działania wymaga włączenia <a href=%s>SSHD</a> oraz "
+#~ "pełnego dostępu do shell'a dla <a href=%s>użytkownika</a>."
+
+#~ msgid "List of shares"
+#~ msgstr "Lista udziałów"
+
+#, c-format, php-format
+#~ msgid "%d%% of %dMB"
+#~ msgstr "%d%% z %dMB"
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "Port %s musi być mniejszy niż %s."
+
 #~ msgid "Release notes"
 #~ msgstr "Uwagi do wydania"
 
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "Port %s musi być z zakresu od %d do %d."
+
+#~ msgid "File transfer"
+#~ msgstr "Transfer plików"
+
+#~ msgid "Logs"
+#~ msgstr "Dzienniki"
+
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr "Parametry te zostaną dodane do ustawień zasobu w pliku smb.conf"
+
+#~ msgid ""
+#~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+#~ msgstr "Ta nazwa to n.p.: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
+#~ "using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. Użyj tych specjalnych akcji tylko do debugowania!<br>2. Nie ma potrzeby "
+#~ "używania tego menu do rozruchu woluminu RAID (uruchamia się automatycznie "
+#~ "automatyczny)."
+
+#, php-format
+#~ msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#~ msgstr "Brak dostępnych dysków. Dodaj najpierw nowy <a href=%s>disk</a>."
+
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted temporarily "
+#~ "to perform selected command, otherwise the commands work in read-only "
+#~ "mode.<br>Service disruption to users accessing this mount will occur during "
+#~ "this process."
+#~ msgstr ""
+#~ "Jeśli wybrany dysk/partycja jest zamontowany to zostanie on tymczasowo "
+#~ "odmontowany aby wykonać wybrane polecenie, w przeciwnym wypadku polecenie "
+#~ "zadziała w trybie tylko do odczytu.<br>Podczas tego procesu usługi "
+#~ "korzystające z tych zasabów mogą nie działać prawidłowo."
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have shell access."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> musi być włączony aby zadziałał Unison, oraz <a "
+#~ "href=%s>user</a> musi mieć dostęp do powłoki."
+
+#~ msgid "Maximum number of connections in each session (8 by default)."
+#~ msgstr "Dopuszczalna ilość połączeń dla każdej sesji (domyślnie 8)."
+
+#, php-format
+#~ msgid ""
+#~ "To increase CIFS performance try the following:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+#~ msgstr ""
+#~ "Aby poprawić wydajność spróbuj następujących opcji:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+
+#~ msgid "Maximum number of sessions holding at same time (32 by default)."
+#~ msgstr ""
+#~ "Maksymalna ilość sesji utrzymywanych w tym samym czasie (domyślnie 32)."
+
+#, php-format
+#~ msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#~ msgstr ""
+#~ "Zakres nie skonfigurowany. Dodaj najpierw nowy <a href=%s>Extent</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+#~ msgstr ""
+#~ "Nie skonfigurowana grupa portali. Dodaj najpierw nową <a href=%s>Portal "
+#~ "Group</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Nie skonfigurowana grupa inicjatorów. Dodaj najpierw nową <a "
+#~ "href=%s>Initiator Group</a>."
+
+#, php-format
+#~ msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#~ msgstr "Nie skonfigurowano pul. Dodaj najpierw nową <a href=%s>pools</a>."
+
+#, php-format
+#~ msgid ""
+#~ "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+#~ "first."
+#~ msgstr ""
+#~ "Nie skonfigurowano urządzeń wirtualnych. Dodaj najpierw nowe <a "
+#~ "href=%s>virtual device</a>."
+
 #~ msgid "Report generator"
 #~ msgstr "Generator raportów"
+
+#~ msgid ""
+#~ "The administrator has been notified. Your changes will be available soon."
+#~ msgstr ""
+#~ "Administrator został poinformowany. Twoje zmiany będą wkrótce dostępne."
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr "Musisz mieć przynajmniej 256MB pamięci aby móc używać cel iSCSI."
+
+#~ msgid "mutual CHAP"
+#~ msgstr "autentykacja wzajemna CHAP"
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "Adresy IP sąrozwiązywane jako nazwy hostów jeśli jest włączone <a "
+#~ "href=%s>&quot;Rozwiąż adresy IP jako nazwy hostów&quot;</a>."
+
+#~ msgid "I/O timeout in seconds (30 by default)."
+#~ msgstr "Limit czasu funkcji wej./wyj. w sekundach (domyślnie 30)."
+
+#, php-format
+#~ msgid ""
+#~ "The encrypted device is currently mounted! <a href=%s>Unmount</a> this disk "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "Zaszyfrowane urządzenie jest w tej chwili zamontowane! <a "
+#~ "href=%s>Odmontuj</a> najpierw ten dysk przed kontynuacją."
+
+#, php-format
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr ""
+#~ "Aktywuj opcję <a href=%s>Zeroconf/Bonjour</a> aby rozgłaszać tą usługę "
+#~ "klientom."
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "Parametr inicjacyjny iSCSI (domyślnie 262144)."
+
+#~ msgid "iSCSI initial parameter (65536 by default)."
+#~ msgstr "Parametr inicjacyjny iSCSI (domyślnie 65536)."
