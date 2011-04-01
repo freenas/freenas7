@@ -1,5 +1,5 @@
 PORTNAME=			zoneinfo
-DISTVERSION=	2011d
+DISTVERSION=	2011e
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
 MAINTAINER=		michael.zoon@freenas.org
