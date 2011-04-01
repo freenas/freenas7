@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2010-11-12 16:09+0000\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"PO-Revision-Date: 2011-03-30 19:44+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-12 16:12+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-03-30 20:08+0000\n"
+"X-Generator: Launchpad (build 12684)\n"
 "X-Poedit-Country: JAPAN\n"
 "Language: \n"
 "X-Poedit-Language: Japanese\n"
@@ -4738,8 +4738,8 @@ msgid ""
 msgstr "ディスクは既にマウントされています! 次へ進む為に最初にディスクを <a href='%s'>アンマウント</a> して下さい。"
 
 msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
+"The disk is currently mounted! The mount point will be removed temporarily "
+"to perform selected command."
 msgstr "ディスクは既にマウントされています! マウントポイントは選択されたコマンドによってテンポラリが削除されます。"
 
 msgid "The disk/partition is already configured."
@@ -6143,6 +6143,9 @@ msgstr "アンマウント"
 msgid "upriv"
 msgstr "upriv"
 
+#~ msgid "Date"
+#~ msgstr "日時"
+
 #~ msgid "hours"
 #~ msgstr "時"
 
@@ -6213,12 +6216,53 @@ msgstr "upriv"
 #~ msgid "RAID 0 (stripping)"
 #~ msgstr "RAID 0 (ストライピング)"
 
+#~ msgid "RAID 1 (mirroring)"
+#~ msgstr "RAID 1 (ミラーリング)"
+
 #~ msgid "List of shares"
 #~ msgstr "共有のリスト"
+
+#, php-format
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "ファームウェアのアップグレードを一旦開始したら途中で終了しないでください。 %s "
+#~ "はファームウェアのアップグレードが完了すると自動的に再起動します。<br>ファームウェアのアップグレードを行うには最低 %d Mb の RAM "
+#~ "が必要となります。<br>ファームウェアをアップグレードする前にシステム設定の <a href=%s>バックアップ</a> を行う事をお勧めします。"
+
+#~ msgid "Device is mounted, umount it first before detaching."
+#~ msgstr "デバイスはまだマウントされています。デバイスをデタッチするにはまず最初にアンマウントして下さい。"
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
+#~ "using this menu for starting a RAID volume (start automaticaly)."
+#~ msgstr ""
+#~ "1. この特殊な作業はデバッグ時のみに使用して下さい！<br>2. "
+#~ "RAIDボリュームの使用を開始する為にこのメニューを使用する必要はありません。(自動的に開始されます)"
+
+#, php-format
+#~ msgid ""
+#~ "You can't mount the partition '%s' where the config file is stored.<br>"
+#~ msgstr "設定ファイルを保存している '%s' のパーティションはマウントできません。<br>"
 
 #~ msgid ""
 #~ "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 #~ msgstr "この名前の例: iqn.1994-04.org.netbsd.iscsi-target:target0."
+
+#~ msgid ""
+#~ "The configuration has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr "設定は変更されました。<br>変更された設定は適用するまで効果は出ません。"
+
+#, c-format
+#~ msgid ""
+#~ "The changes have been saved. You have to <a href=%s>reboot</a> the system "
+#~ "for the changes to take effect."
+#~ msgstr "変更は保存されました。変更を有効にするにはシステムを <a href=%s>再起動</a> してください。."
 
 #, c-format, php-format
 #~ msgid "%d%% of %dMB"
@@ -6237,8 +6281,327 @@ msgstr "upriv"
 #~ msgid "Shell access"
 #~ msgstr "シェルアクセス"
 
+#, php-format
+#~ msgid "Status report from host: %s.%s"
+#~ msgstr "ホストのステータスレポート: %s.%s"
+
+#~ msgid ""
+#~ "These parameters will be added to the share configuration in smb.conf."
+#~ msgstr "ここで指定したパラメータは smb.conf の共有設定に追加されます．"
+
+#, php-format
+#~ msgid "UPS notification from host: %s"
+#~ msgstr "ホストからの UPS 通知: %s"
+
 #~ msgid "built on"
 #~ msgstr "ビルトオン"
 
+#~ msgid "I/O timeout in seconds (30 by default)."
+#~ msgstr "I/O タイムアウトまでの秒数(初期値は30秒)"
+
+#~ msgid "mutual CHAP"
+#~ msgstr "双方向CHAP"
+
 #~ msgid "Report generator"
 #~ msgstr "レポートジェネレーター"
+
+#, php-format
+#~ msgid "No disks available. Please add new <a href=%s>disk</a> first."
+#~ msgstr "利用可能なディスクがありません。まず最初に新しい <a href=%s>ディスク</a> を追加してください。"
+
+#, php-format
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span></p><ul><li><span "
+#~ "class='vexpl'>change the IP address of your computer</span></li><li><span "
+#~ "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+#~ msgstr ""
+#~ "&quot;保存&quot; をクリックした後、変更を適用するには %s をリブートしなければなりません。また、再度 "
+#~ "NASへアクセスする為に以下のステップを実行する必要があるかもしれません。</span></p><ul><li><span "
+#~ "class='vexpl'>コンピュータの IP アドレスを変更して下さい</span></li><li><span class='vexpl'>新しい "
+#~ "IP アドレスで WebGUI へアクセスして下さい</span></li></ul>"
+
+#~ msgid ""
+#~ "Click &quot;Enable firmware upload&quot; below, then choose the image file "
+#~ "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+#~ "process."
+#~ msgstr ""
+#~ "&quot;ファームウェアアップロードを許可&quot; "
+#~ "をクリックし、アップロードする為にイメージファイルを選択して下さい。<br>その後、アップグレードプロセスを起動する為 "
+#~ "&quot;ファームウェアアップグレード&quot; をクリックして下さい。"
+
+#~ msgid ""
+#~ "If the selected disk/partition is mounted it will be unmounted temporarily "
+#~ "to perform selected command, otherwise the commands work in read-only "
+#~ "mode.<br>Service disruption to users accessing this mount will occur during "
+#~ "this process."
+#~ msgstr ""
+#~ "選択されたディスク/パーティションがマウント済みの場合、選択したコマンドを実行することで一時的にアンマウントされ、そうでない場合、読込み専用モードで動作し"
+#~ "ます。<br>この処理中に、このマウントへアクセスしているユーザへのサービスが中断される事があります。"
+
+#, php-format
+#~ msgid ""
+#~ "Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+#~ "menu."
+#~ msgstr "フォーマットしたくない場合は '%s' を選択し、後で <a href=%s>フォーマット</a> メニューからフォーマットして下さい。"
+
+#~ msgid "Maximum number of sessions holding at same time (32 by default)."
+#~ msgstr "同時接続の最大値 (デフォルト 32)"
+
+#~ msgid "NOPIN sending interval in seconds (20 by default)."
+#~ msgstr "NOPIN を送信する間隔 (デフォルト 20秒)。"
+
+#, php-format
+#~ msgid ""
+#~ "No configured Auth Group. Please add new <a href=%s>Auth Group</a> first."
+#~ msgstr "認証グループが設定されていません。最初に <a href=%s>認証グループ</a> を追加して下さい。"
+
+#, php-format
+#~ msgid "No configured Extent. Please add new <a href=%s>Extent</a> first."
+#~ msgstr "エクステントが設定されていません。最初に <a href=%s>エクステント</a> を追加して下さい。"
+
+#, php-format
+#~ msgid ""
+#~ "No configured Initiator Group. Please add new <a href=%s>Initiator Group</a> "
+#~ "first."
+#~ msgstr "イニシエータグループが設定されていません。最初に <a href=%s>イニシエータグループ</a> を追加して下さい。"
+
+#, php-format
+#~ msgid ""
+#~ "No configured Portal Group. Please add new <a href=%s>Portal Group</a> first."
+#~ msgstr "ポータルグループが設定されていません。最初に <a href=%s>ポータルグループ</a> を追加して下さい。"
+
+#, php-format
+#~ msgid "No configured pools. Please add new <a href=%s>pools</a> first."
+#~ msgstr "プールが設定されていません。最初に <a href=%s>プール</a> を追加して下さい。"
+
+#, php-format
+#~ msgid ""
+#~ "No configured virtual devices. Please add new <a href=%s>virtual device</a> "
+#~ "first."
+#~ msgstr "仮想デバイスが設定されていません。最初に <a href=%s>仮想デバイス</a> を追加して下さい。"
+
+#~ msgid "Size of receive buffer (16384 by default)."
+#~ msgstr "受信バッファのサイズ (デフォルトは 16384)。"
+
+#~ msgid "Size of send buffer (16384 by default)."
+#~ msgstr "送信バッファのサイズ (デフォルトは 16384)。"
+
+#, php-format
+#~ msgid ""
+#~ "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+#~ "first before proceeding."
+#~ msgstr ""
+#~ "RAID ボリュームは既にマウントされています! 処理を行う前に、はじめに <a href=%s>マウントポイント</a> を削除して下さい。"
+
+#, php-format
+#~ msgid ""
+#~ "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+#~ "proceeding."
+#~ msgstr "ディスクは既にマウントされています! 次へ進む為に最初にディスクを <a href=%s>アンマウント</a> して下さい。"
+
+#~ msgid ""
+#~ "The disk is currently mounted! The mount point will be removed temporary to "
+#~ "perform selected command."
+#~ msgstr "ディスクは既にマウントされています! マウントポイントは選択されたコマンドによってテンポラリが削除されます。"
+
+#~ msgid ""
+#~ "This means that the image you uploaded is not an official/supported image "
+#~ "and may lead to unexpected behavior or security compromises. Only install "
+#~ "images that come from sources that you trust, and make sure that the image "
+#~ "has not been tampered with.<br><br>Do you want to install this image anyway "
+#~ "(on your own risk)?"
+#~ msgstr ""
+#~ "これはアップロードしたイメージが正式な/サポートされたイメージでは無い為、予期しない挙動又はセキュリティが損なわれるかもしれない事を意味しています。信頼で"
+#~ "きる所から取得し、イメージの改変がないと確認出来るイメージをインストールして下さい。<br><br>とにかくこのイメージを (あなた自身のリスクで) "
+#~ "インストールしてもよろしいですか?"
+
+#, php-format
+#~ msgid ""
+#~ "This will cause %s not to check for newer firmware versions when the <a "
+#~ "href=%s>%s</a> page is viewed."
+#~ msgstr "%s が <a href=%s>%s</a> において、新しいファームウェアのバージョンチェックをしません。"
+
+#, php-format
+#~ msgid ""
+#~ "To increase CIFS performance try the following:<div "
+#~ "id='enumeration'><ul><li>Enable 'Large read/write' switch</li><li>Enable '<a "
+#~ "href='%s'>Tuning</a>' switch</li><li>Increase <a "
+#~ "href='%s'>MTU</a></li></ul></div>"
+#~ msgstr ""
+#~ "CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div id='enumeration'><ul><li>Large "
+#~ "read/write を有効にする</li><li>'<a href='%s'>チューニング</a>' スイッチを有効にする</li><li><a "
+#~ "href='%s'>MTU</a> を増やす</li></ul></div>"
+
+#~ msgid ""
+#~ "You can also install a package via SSH or console using the the pkg_add "
+#~ "command.<br>Example: pkg_add -r packagename"
+#~ msgstr ""
+#~ "SSHによるリモートコンソールもしくはローカルコンソールでも pkg_add コマンドを使用してパッケージをインストールする事が可能です。<br>例) "
+#~ "pkg_add -r パッケージ名"
+
+#~ msgid ""
+#~ "You can use the following parameters for substitution:<div "
+#~ "id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
+#~ msgstr ""
+#~ "置き換える為、以下のパラメータを使用する事が出来ます。<div id='enumeration'><ul><li>%d - 日付</li><li>%h -"
+#~ " ホスト名</li></ul></div>"
+
+#, php-format
+#~ msgid ""
+#~ "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+#~ "service to clients."
+#~ msgstr "このサービスをクライアントへ広告するには <a href=%s>Zeroconf/Bonjour</a> を起動させる必要があります。"
+
+#~ msgid "iSCSI initial parameter (262144 by default)."
+#~ msgstr "iSCSI 初期化パラメータ (デフォルト 262144)。"
+
+#~ msgid "iSCSI initial parameter (65536 by default)."
+#~ msgstr "iSCSI 初期化パラメータ (デフォルト 65536)。"
+
+#~ msgid "A valid network bit count must be specified."
+#~ msgstr "有効なネットマスクを指定して下さい。"
+
+#~ msgid "Size in MB."
+#~ msgstr "MB 単位のサイズ。"
+
+#~ msgid "Maximum performance, maximum power usage"
+#~ msgstr "最大性能、最大の電力利用"
+
+#~ msgid "A valid network must be specified."
+#~ msgstr "有効なネットワークを指定して下さい。"
+
+#~ msgid "The combination of share and working directory does not exist."
+#~ msgstr "共有と作業ディレクトリの組み合わせが存在しません。"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have full Shell enabled."
+#~ msgstr ""
+#~ "<a href=%s>SSHD</a> は Unison を動作させる為に有効にしなければならず、<a href=%s>ユーザ</a> "
+#~ "は完全なシェルを有効にしなければなりません。"
+
+#~ msgid "The configuration could not be restored (file upload error)."
+#~ msgstr "設定情報をリストアする事が出来ませんでした (ファイルアップロードエラー)。"
+
+#~ msgid "This encrypted disk is mounted, umount it before trying to detach it."
+#~ msgstr "この暗号化ディスクはマウントされています。取り外す前にアンマウントして下さい。"
+
+#~ msgid "You must use a passphrase to attach an encrypted disk."
+#~ msgstr "暗号化ディスクを接続する為に、パスフレーズを使用する必要があります。"
+
+#~ msgid "Network that is authorised to access to this iSCSI target."
+#~ msgstr "この iSCSI ターゲットに認可されているネットワーク。"
+
+#~ msgid ""
+#~ "Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+#~ "minutes, hours, days and months."
+#~ msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分、時、日、月を複数選択出来ます。"
+
+#~ msgid ""
+#~ "At the highest level, a target is what is presented to the initiator, and is "
+#~ "made up of one or more devices, and/or one or more extents."
+#~ msgstr "最も上のレベルで、ターゲットはイニシエータに提供されます。1つ以上のデバイス および/または 1つ以上のエクステントから構成されます。"
+
+#~ msgid ""
+#~ "Devices are used to combine extents or other devices. Extents and devices "
+#~ "must be defined before they can be used, and they cannot be used more than "
+#~ "once."
+#~ msgstr ""
+#~ "デバイスは、エクステントまたは他のデバイスを結び付ける為に使用します。ここで使用する前にエクステントとデバイスが定義されている必要があります。また、デバイ"
+#~ "スは何回も使用することは出来ません。"
+
+#, php-format
+#~ msgid ""
+#~ "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+#~ "used as extent."
+#~ msgstr ""
+#~ "エクステントとして使用するファイルパス (例: /mnt/share/extent/%s) またはデバイス名 (例: /dev/ad1)。"
+
+#~ msgid "Give full shell access to user."
+#~ msgstr "ユーザにシェルアクセスを許可します。"
+
+#, php-format
+#~ msgid "Invalid port! Port number must be in the range from %d to %d."
+#~ msgstr "無効なポート番号です! ポート番号は %d から %d の範囲で指定してください。"
+
+#, php-format
+#~ msgid "Port %s must be less than %s."
+#~ msgstr "ポート %s は %s より少なくなければなりません。"
+
+#, php-format
+#~ msgid "The %s port must be in the range from %d to %d."
+#~ msgstr "%s ポートは %d から %d の範囲である必要があります。"
+
+#~ msgid "You have to define some 'Extent' objects first."
+#~ msgstr "はじめにいくつかの 'エクステント' オブジェクトを定義して下さい。"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+#~ "href=%s>user</a> must have shell access."
+#~ msgstr ""
+#~ "UNISON を動作させるには <a href=%s>SSHD</a> が有効である必要があります。また <a href=%s>ユーザ</a> "
+#~ "がシェルにアクセスできることが必要となります。"
+
+#~ msgid ""
+#~ "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
+#~ "partition since 0.684b</b>).<br><b>MBR</b> partition, for UFS formatted "
+#~ "drive or Software RAID volume (<b>created before 0.684b</b>) or imported "
+#~ "disks from other OS.<br><b>CD/DVD or Old software RAID</b> for old "
+#~ "SoftwareRAID volumes (<b>created before version 0.68</b>) or CD/DVD."
+#~ msgstr ""
+#~ "<b>EFI GPT</b> は GPT フォーマットのドライブをマウントします (<b>0.684b "
+#~ "以降のデフォルトパーティション)。<br><b>MBR</b> パーティションは、UFS フォーマットされたドライブ，(<b>0.684b "
+#~ "以前に作成した</b>) ソフトウェア RAID ボリューム  又は他の OS からインポートしたディスク。<br><b>CD/DVD or Old "
+#~ "software RAID</b> (<b>0.68 以前に作成した</b>) 古いソフトウェア RAID ボリューム又は CD/DVD。"
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+#~ "addresses to hostnames&quot;</a> is enabled."
+#~ msgstr ""
+#~ "<a href=%s>&quot;IP アドレスからホスト名へ変換&quot;</a> が有効な場合、IP アドレスはホスト名へ変換されます。"
+
+#~ msgid "Logical Unit Controller Authorised network (127.0.0.1/8 by default)"
+#~ msgstr "ロジカルユニットコントローラの認証されたネットワーク (127.0.0.1/8 はデフォルト)"
+
+#~ msgid "Logical Unit Controller IP address (127.0.0.1(localhost) by default)"
+#~ msgstr "ロジカルユニットコントローラの IP アドレス (127.0.0.1(localhost) はデフォルト)"
+
+#~ msgid "Logical Unit Controller TCP port (3261 by default)"
+#~ msgstr "ロジカルユニットコントローラの TCP ポート (3261 はデフォルト)"
+
+#~ msgid "Maximum number of connections in each session (8 by default)."
+#~ msgstr "セッションあたりの最大接続数 (初期値: 8)"
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
+#~ msgstr "iSCSI ターゲット機能を有効にするには最低 256MB の RAM が必要になります。"
+
+#~ msgid ""
+#~ "Limits the\tamount of space a dataset and its descendants can consume. This "
+#~ "property enforces a hard limit on the amount of space used. This\tincludes "
+#~ "all space consumed by descendants, including file systems and snapshots. To "
+#~ "specify the size use the following human-readable suffixes (for example, "
+#~ "'k', 'KB', 'M', 'Gb', etc.)."
+#~ msgstr ""
+#~ "データセットとその子孫が利用できる容量の合計を制限します。このプロパティは利用できる容量のハードリミットを設定します。これには、ファイルシステムとスナップ"
+#~ "ショットを含む子孫によるすべての容量を含みます。サイズを指定するには、以下の人間が読める接尾語を使用してください。(例えば、'k', 'KB', "
+#~ "'M', 'Gb', など)"
+
+#~ msgid ""
+#~ "Controls the compression algorithm used\tfor this dataset. The 'lzjb' "
+#~ "compression algorithm is optimized for performance while providing decent "
+#~ "data compression. Setting compression to 'On' uses the 'lzjb' compression "
+#~ "algorithm. You can specify the 'gzip' level by using the value 'gzip-N', "
+#~ "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
+#~ "Currently, 'gzip' is equivalent to 'gzip-6'."
+#~ msgstr ""
+#~ "データセットで使用される圧縮アルゴリズムを制御します。'lzjb' 圧縮アルゴリズムはデータ圧縮のパフォーマンスに最適化します。'On' は "
+#~ "'lzjb' 圧縮アルゴリズムを使用します。'gzip-N' で 'gzip' の圧縮レベルを指定できます。N は数値で、1 (最速) から 9 "
+#~ "(最高圧縮率) です。現在、'gzip' は 'gzip-6' の指定と同じです。"
+
+#~ msgid "IRC Live support"
+#~ msgstr "IRC ライブサポート"

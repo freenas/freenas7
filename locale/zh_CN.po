@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-07 17:45+0000\n"
-"PO-Revision-Date: 2011-01-26 12:07+0000\n"
-"Last-Translator: Elvisqin <qinyi1234@gmail.com>\n"
+"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"PO-Revision-Date: 2011-03-29 19:52+0000\n"
+"Last-Translator: yezhiqiu <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-27 22:05+0000\n"
-"X-Generator: Launchpad (build 12460)\n"
+"X-Launchpad-Export-Date: 2011-03-31 22:16+0000\n"
+"X-Generator: Launchpad (build 12710)\n"
 "X-Poedit-Country: CHINA\n"
 "Language: \n"
 "X-Poedit-Language: Chinese (Simplified)\n"
@@ -46,7 +46,7 @@ msgstr "已用百分之 %d ，共 %dMB"
 
 #, php-format
 msgid "%dB / block"
-msgstr ""
+msgstr "%dB / 块"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
@@ -500,7 +500,7 @@ msgid "Alternative configuration directory (usually empty)."
 msgstr "备用配置目录（通常是空的） 。"
 
 msgid "Always on"
-msgstr "总是开启"
+msgstr "永远开启"
 
 msgid "Always scan"
 msgstr "总是扫描"
@@ -514,7 +514,7 @@ msgid "An host with this name already exists."
 msgstr "已经有一个相同的主机名称存在了。"
 
 msgid "An interface with the specified description already exists."
-msgstr "具有相同描述的接口已经存在。"
+msgstr "接口与指定的描述已经存在。"
 
 msgid "Anonymous"
 msgstr "匿名"
@@ -1520,7 +1520,7 @@ msgid "Driver"
 msgstr "设备"
 
 msgid "Driver list"
-msgstr "驱动列表"
+msgstr "设备列表"
 
 msgid "Duplex"
 msgstr "双工模式"
@@ -1547,7 +1547,7 @@ msgid "Edit Host"
 msgstr "编辑主机信息"
 
 msgid "Edit MIB"
-msgstr "编辑 MIB"
+msgstr "编辑MIB"
 
 msgid "Edit RAID"
 msgstr "编辑RAID"
@@ -1589,7 +1589,7 @@ msgid "Edit initiator group"
 msgstr ""
 
 msgid "Edit interface"
-msgstr "编辑界面"
+msgstr "编辑接口"
 
 msgid "Edit job"
 msgstr "编辑工作"
@@ -1685,10 +1685,10 @@ msgid "Enable distributed hash table."
 msgstr "启用分布散列表。"
 
 msgid "Enable domain wildcarding."
-msgstr "启用域名通配符。"
+msgstr "启用域通配符。"
 
 msgid "Enable extended attribute support"
-msgstr "开启扩展属性支持"
+msgstr "开启附加属性"
 
 msgid "Enable extended attributes for this file system."
 msgstr ""
@@ -1750,7 +1750,7 @@ msgid "Enable store DOS attributes"
 msgstr "开启 DOS 属性储存"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "启用 syslog'ing 写入远程 syslog 服务器"
+msgstr "开启 syslog'ing 写入远端 syslog 服务器"
 
 msgid "Enable the ident protocol (RFC1413)."
 msgstr "启用 RFC1413 协议"
@@ -1806,7 +1806,7 @@ msgstr "英语(English)"
 msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
-msgstr "输入自定义的网页管理界面端口，Http 预设是 80，Https 为 443。"
+msgstr "输入自订的网页管理界面连接端口，Http 默认是 80，Https 为 443。"
 
 msgid "Enter a valid sysctl MIB name."
 msgstr ""
@@ -1843,7 +1843,7 @@ msgid "Event"
 msgstr "事件"
 
 msgid "Execute"
-msgstr "执行"
+msgstr "运行"
 
 msgid "Execute command"
 msgstr "执行命令"
@@ -1854,7 +1854,7 @@ msgid ""
 msgstr "在系统启动/关机之前或之后的命令。"
 
 msgid "Execute now"
-msgstr "立即执行"
+msgstr "立即运行"
 
 msgid "Expire"
 msgstr "过期"
@@ -1883,7 +1883,7 @@ msgid ""
 msgstr "在使用 Extent 之前必须先定义他们，而 extent 不能够被使用超过一次。"
 
 msgid "Extra options"
-msgstr "附加选项"
+msgstr "附加的选项"
 
 msgid "Extra options (usually empty)."
 msgstr "附加选项(通常为空)"
@@ -1894,10 +1894,10 @@ msgid ""
 msgstr "/etc/ssh/sshd_config （通常是空的） 的附加的选项。注意，不正确配置可能会导致SSH服务不能启动。"
 
 msgid "Extra options to ifconfig (usually empty)."
-msgstr "ifconfig 到附加选项(通常为空)."
+msgstr "ifconfig附加的选项（通常是空的） 。"
 
 msgid "Extra options to rsync (usually empty)."
-msgstr "rsync 到附加选项(通常为空)."
+msgstr "rsync 附加的选项（通常是空的） 。"
 
 msgid "FEC (Fast EtherChannel)"
 msgstr "FEC (Fast EtherChannel)"
@@ -1921,7 +1921,7 @@ msgid "FTP log"
 msgstr "FTP 记录"
 
 msgid "FTP server disabled"
-msgstr "关闭 FTP 服务器"
+msgstr "FTP 服务器关闭"
 
 msgid "FXP"
 msgstr "FXP"
@@ -1941,7 +1941,7 @@ msgid "Failed to create in-memory file system."
 msgstr "无法创建 RAM Disk"
 
 msgid "Failed to execute cron job."
-msgstr "执行定时任务失败。"
+msgstr "不能运行的cron任务。"
 
 #, c-format
 msgid "Failed to send status report to: %s."
@@ -2029,7 +2029,7 @@ msgid "Firmware image file"
 msgstr "固件镜像文件"
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr "此系统并不支持固件上传功能。"
+msgstr "此系统并不支持固件上传功能。."
 
 msgid "Firmware version check"
 msgstr "固件版本检查"
@@ -2098,7 +2098,7 @@ msgid "General"
 msgstr "常规"
 
 msgid "General Setup"
-msgstr "常规设置"
+msgstr "一般设置"
 
 msgid "Generate"
 msgstr "生成"
@@ -2113,7 +2113,7 @@ msgid "GiB"
 msgstr ""
 
 msgid "Give only local users access to the web page."
-msgstr "只有本机使用者可以使用网页服务器"
+msgstr "只有本机用户可以使用网页服务器。"
 
 msgid "Grant access to the user portal."
 msgstr ""
@@ -2158,7 +2158,7 @@ msgid "Guest account"
 msgstr "Guest 帐号"
 
 msgid "HTTP Proxy"
-msgstr "HTTP代理"
+msgstr "HTTP 代理"
 
 msgid "Hard disk standby time"
 msgstr "硬盘等待时间"
@@ -2176,7 +2176,7 @@ msgid "Health"
 msgstr "健康"
 
 msgid "Help"
-msgstr "帮助"
+msgstr "说明"
 
 msgid "Hide dot files"
 msgstr "隐藏以点开头的文件"
@@ -2267,7 +2267,7 @@ msgid "IP address"
 msgstr "IP 地址"
 
 msgid "IP address of remote syslog server"
-msgstr "远程 syslog 服务器的 IP 地址"
+msgstr "远端 syslog 服务器的IP位置"
 
 #, php-format
 msgid ""
@@ -2432,7 +2432,7 @@ msgid "Inherit permissions"
 msgstr "权限继承"
 
 msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
-msgstr "抑制系统记录程序检查 /etc/exports 中的错误行所属内容。"
+msgstr "系统记录程序发现一些错误在 /etc/exports。"
 
 msgid "Initial Digest"
 msgstr ""
@@ -4644,9 +4644,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
-msgstr "硬盘目前正在挂载中！系统会将硬盘暂时卸载以进行指令。"
+"The disk is currently mounted! The mount point will be removed temporarily "
+"to perform selected command."
+msgstr ""
 
 msgid "The disk/partition is already configured."
 msgstr ""
@@ -6456,6 +6456,11 @@ msgstr "upriv"
 #~ "This step will erase all your partition, create partition number 1 and "
 #~ "format the hard drive with the file system specified."
 #~ msgstr "这个动作会删除所有分区，建立并且格式化第一号分区成为你指定的文件系统。"
+
+#~ msgid ""
+#~ "The disk is currently mounted! The mount point will be removed temporary to "
+#~ "perform selected command."
+#~ msgstr "硬盘目前正在挂载中！系统会将硬盘暂时卸载以进行指令。"
 
 #~ msgid ""
 #~ "Using Data integrity will reduce size of available storage and also reduce "
