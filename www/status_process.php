@@ -2,8 +2,10 @@
 <?php
 /*
 	status_process.php
-	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+	Modified by Daisuke Aoyama (aoyama@peach.ne.jp)
 	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Modified by Michael Zoon (michael.zoon@freenas.org)
+	Copyright (C) 2008-2011 Michael Zoon (michael.zoon@freenas.org).
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -63,7 +65,7 @@ sajax_handle_client_request();
 				<?php html_titleline(gettext("Processes information"));?>
 			  <tr>
 			    <td class="listt">
-			    	<pre><textarea id="procinfo" name="procinfo" class="listcontent" cols="95" rows="30" readonly="readonly"><?=htmlspecialchars(get_process_info());?></textarea></pre>
+			    	<pre><textarea style="width: 98%;" id="procinfo" name="procinfo" class="listcontent" cols="95" rows="30" readonly="readonly"><?=htmlspecialchars(get_process_info());?></textarea></pre>
 			    </td>
 			  </tr>
 			</table>
