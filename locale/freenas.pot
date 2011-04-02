@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-03-29 21:34+0000\n"
+"POT-Creation-Date: 2011-04-02 23:52+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -3207,7 +3207,10 @@ msgstr ""
 msgid "Ports"
 msgstr ""
 
-msgid "Portuguese"
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+msgid "Portuguese (Portugal)"
 msgstr ""
 
 msgid "PostInit"
