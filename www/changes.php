@@ -2,11 +2,13 @@
 <?php
 /*
 	changes.php
-	Copyright (C) 2008-2010 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2008-2010 Volker Theile (votdev@gmx.de).
+	Modified by Michael Zoon (michael.zoon@freenas.org)
+	Copyright (C) 2008-2011 Michael Zoon (michael.zoon@freenas.org).
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -43,6 +45,7 @@ $pgtitle = array(gettext("Help"), gettext("Release Notes"));
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<?php html_titleline(gettext("Release Notes"));?>
 				<tr>
 					<td class="listt">
 						<div>
