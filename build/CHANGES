@@ -34,6 +34,7 @@ Majors changes:
 - Upgrade ataidle to 2.5.1.
 - Upgrade nut to 2.60.
 - Upgrade rsync to 3.0.8.
+- Upgrade aac driver to 2.4.1.
 
 Minors changes:
 - Add "Czech", "Korean", "Slovak" and "Portuguese (Brazil)" translations.
