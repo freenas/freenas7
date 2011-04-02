@@ -36,7 +36,7 @@ Majors changes:
 - Upgrade rsync to 3.0.8.
 
 Minors changes:
-- Add Czech, Korean and Slovak translations.
+- Add "Czech", "Korean", "Slovak" and "Portuguese (Brazil)" translations.
 - Add multiple CPUs usage.
 - Add AIO WebGUI for CIFS/SMB service.
 - Remove /var/tmp symbolic link.

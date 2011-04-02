@@ -2,7 +2,7 @@
 /*
 	globals.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -82,7 +82,8 @@ $g_languages = array (
 	"lv"    => array("codeset" => "UTF-8", "desc" => gettext("Latvian")),
 	"nb"    => array("codeset" => "UTF-8", "desc" => gettext("Norwegian (Bokmal)")),
 	"pl"    => array("codeset" => "UTF-8", "desc" => gettext("Polish")),
-	"pt"    => array("codeset" => "UTF-8", "desc" => gettext("Portuguese")),
+	"pt_BR" => array("codeset" => "UTF-8", "desc" => gettext("Portuguese (Brazil)")),
+	"pt"    => array("codeset" => "UTF-8", "desc" => gettext("Portuguese (Portugal)")),
 	"ro"    => array("codeset" => "UTF-8", "desc" => gettext("Romanian")),
 	"ru"    => array("codeset" => "UTF-8", "desc" => gettext("Russian")),
 	"sl"    => array("codeset" => "UTF-8", "desc" => gettext("Slovenian")),
