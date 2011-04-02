@@ -74,7 +74,7 @@ Majors changes:
 - Upgrade nano to 2.2.6.
 - Upgrade gzip to 1.4.
 - Upgrade tftp-hpa to 5.0.
-- Introduce iSCSI boot/install feature (isboot 0.2.2).
+- Introduce iSCSI boot/install feature (isboot 0.2.4).
 - Upgrade 3ware driver to 9.5.3.
 - Upgrade proftpd to 1.3.3d.
 - Upgrade lighttpd to 1.4.28.
