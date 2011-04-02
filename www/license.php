@@ -216,7 +216,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
       <p>istgt - iSCSI target for FreeBSD (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br />
-        Copyright &copy; 2008-2010 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
+        Copyright &copy; 2008-2011 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
 
       <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br />
         Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>

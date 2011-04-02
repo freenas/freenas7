@@ -9,7 +9,7 @@ OSVERSION!=/sbin/sysctl -n kern.osreldate
 #.if ${OSVERSION} < 800000
 #.else
 #.endif
-ARCHIVE=isboot-0.2.2.tar.gz
+ARCHIVE=isboot-0.2.4.tar.gz
 
 all: fetch
 
