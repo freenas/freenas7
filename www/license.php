@@ -3,7 +3,7 @@
 /*
 	license.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -256,7 +256,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Rewritten by Eric Wassenaar, Nikhef-H, (e07@nikhef.nl).</p>
 
       <p>Transmission - Transmission is a fast, easy, and free multi-platform BitTorrent client (<a href="http://www.transmissionbt.com" target="_blank">http://www.transmissionbt.com</a>)<br />
-        Copyright &copy; 2008-2010 Transmission Project. All rights reserved.</p>
+        Copyright &copy; 2008-2011 Transmission Project. All rights reserved.</p>
 
       <p>QuiXplorer - Web-based file-management (<a href="http://quixplorer.sourceforge.net" target="_blank">http://quixplorer.sourceforge.net</a>)<br />
         Copyright &copy; Felix C. Stegerman. All rights reserved.</p>

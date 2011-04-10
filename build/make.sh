@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # This is a script designed to automate the assembly of the FreeNAS OS.
-# Created: 2/12/2006 by Scott Zahn
-# Modified by Volker Theile (votdev@gmx.de)
-# Modified by Daisuke Aoyama (aoyama@peach.ne.jp)
-# Modified by Michael Zoon (michael.zoon@freenas.org)
+# First creation by Scott Zahn.
+# Modified by Volker Theile (votdev@gmx.de).
+# Modified by Daisuke Aoyama (aoyama@peach.ne.jp).
+# Modified by Michael Zoon (michael.zoon@freenas.org).
 
 # Debug script
 #set -x
@@ -70,7 +70,7 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 #FREENAS_MFSROOT_SIZE=164
 #FREENAS_IMG_SIZE=66
 FREENAS_MFSROOT_SIZE=192
-FREENAS_IMG_SIZE=75
+FREENAS_IMG_SIZE=72
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
@@ -279,7 +279,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Kernel patches\" \\
 	rm $patches
 }
 
-# Building the kernel
+# Build/Install the kernel.
 build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
@@ -457,7 +457,7 @@ create_image() {
 	echo "===> Copying previously generated MFSROOT file to memory disk"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
-	echo "===> Copying bootloader file(s) to memory disk"
+	echo "===> Copying Bootloader file(s) to memory disk"
 	mkdir -p $FREENAS_TMPDIR/boot
 	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	mkdir -p $FREENAS_TMPDIR/conf
@@ -506,7 +506,7 @@ create_image() {
 create_iso () {
 	# Check if rootfs (contining OS image) exists.
 	if [ ! -d "$FREENAS_ROOTFS" ]; then
-		echo "==> Error: ${FREENAS_ROOTFS} does not exist."
+		echo "==> Error: ${FREENAS_ROOTFS} does not exist!."
 		return 1
 	fi
 
@@ -524,11 +524,11 @@ create_iso () {
 		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-light-${FREENAS_VERSION}"
 	fi
 
-	# Set platform information.
+	# Set Platform Informations.
 	PLATFORM="${FREENAS_ARCH}-liveCD"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
-	# Set revision.
+	# Set Revision.
 	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
 	echo "ISO: Generating temporary folder '$FREENAS_TMPDIR'"
@@ -538,7 +538,7 @@ create_iso () {
 	echo "ISO: Copying previously generated MFSROOT file to $FREENAS_TMPDIR"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
-	echo "ISO: Copying bootloader file(s) to $FREENAS_TMPDIR"
+	echo "ISO: Copying Bootloader file(s) to $FREENAS_TMPDIR"
 	mkdir -p $FREENAS_TMPDIR/boot
 	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
@@ -574,9 +574,8 @@ create_iso () {
 	mkisofs -b "boot/cdboot" -no-emul-boot -r -J -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -V "${VOLUMEID}" -o "${FREENAS_ROOTDIR}/${LABEL}.iso" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
-	echo "Generating MD5 and SHA256 sums..."
+	echo "Generating SHA256 CHECKSUM File"
 	FREENAS_CHECKSUMFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-${FREENAS_VERSION}.${FREENAS_REVISION}.checksum"
-	cd ${FREENAS_ROOTDIR} && md5 *.img *.iso > ${FREENAS_ROOTDIR}/${FREENAS_CHECKSUMFILENAME}
 	cd ${FREENAS_ROOTDIR} && sha256 *.img *.iso >> ${FREENAS_ROOTDIR}/${FREENAS_CHECKSUMFILENAME}
 
 	# Cleanup.
@@ -602,7 +601,7 @@ create_full() {
 	PLATFORM="${FREENAS_ARCH}-full"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
-	# Set revision.
+	# Set Revision.
 	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
 	FULLFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.${FREENAS_REVISION}.tgz"
@@ -672,13 +671,13 @@ create_full() {
 	return 0
 }
 
-# Update subversion sources.
+# Update Subversion Sources.
 update_svn() {
 	# Update sources from repository.
 	cd $FREENAS_ROOTDIR
 	svn co $FREENAS_SVNURL svn
 
-	# Update revision number.
+	# Update Revision Number.
 	FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep Revision | awk '{print $2}')
 
 	return 0
@@ -699,18 +698,21 @@ use_svn() {
 build_system() {
   while true; do
 echo -n '
-Bulding system from scratch
-Menu:
-1 - Update source tree and ports collection
-2 - Create filesystem structure
-3 - Build kernel
-4 - Build world
-5 - Build ports
-6 - Build bootloader
-7 - Add necessary libraries
-8 - Modify file permissions
-* - Quit
-> '
+--------------------------------
+Building the system from scratch
+--------------------------------
+Menu options:
+
+1 - Update the source tree and ports collections.
+2 - Create filesystem structure.
+3 - Build/Install the kernel.
+4 - Build World.
+5 - Build Ports.
+6 - Build Bootloader.
+7 - Add necessary libraries.
+8 - Modify file permissions.
+* - Exit.
+Press # '
 		read choice
 		case $choice in
 			1)	update_sources;;
@@ -733,7 +735,7 @@ Menu:
 			8)	$FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
 			*)	main;;
 		esac
-		[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
+		[ 0 == $? ] && echo "=> Successfully done" || echo "=> Failed!"
 		sleep 1
   done
 }
@@ -835,16 +837,19 @@ main() {
 	cd $FREENAS_WORKINGDIR
 
 	echo -n "
-Welcome to the ${FREENAS_PRODUCTNAME} build environment.
-Menu:
-1  - Update the sources to CURRENT
-2  - Build system from scratch
-10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD)
-11 - Create 'LiveCD' (ISO) file
-12 - Create 'LiveCD' (ISO) file without 'Embedded' file
-13 - Create 'Full' (TGZ) update file
-*  - Quit
-> "
+-------------------------------------------------------
+Welcome to the ${FREENAS_PRODUCTNAME} build environment
+-------------------------------------------------------
+Menu options:
+
+1  - Update the sources to CURRENT.
+2  - Compile FreeNAS from scratch.
+10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD).
+11 - Create 'LiveCD' (ISO) file.
+12 - Create 'LiveCD' (ISO) file without 'Embedded' file.
+13 - Create 'Full' (TGZ) update file.
+*  - Exit.
+Press # "
 	read choice
 	case $choice in
 		1)	update_svn;;
@@ -856,7 +861,7 @@ Menu:
 		*)	exit 0;;
 	esac
 
-	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
+	[ 0 == $? ] && echo "=> Successfully done <=" || echo "=> Failed! <="
 	sleep 1
 
 	return 0

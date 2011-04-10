@@ -50,7 +50,7 @@ FreeNAS 0.7.2 (Sabanda):
 ------------------------
 
 Majors changes:
-- Upgrade to FreeBSD 7.3.
+- Upgrade to FreeBSD 7.3-p4.
 - Upgrade unison to 2.40.61.
 - Upgrade bsnmp-ucd to 0.3.2.
 - Upgrade e2fsprogs to 1.41.14.
@@ -82,6 +82,7 @@ Majors changes:
 - Upgrade ataidle to 2.5.1.
 - Upgrade nut to 2.60.
 - Upgrade rsync to 3.0.8.
+- Upgrade aac driver to 2.4.1.
 
 Minors changes:
 - Add "Czech", "Korean", "Slovak" and "Portuguese (Brazil)" translations.
