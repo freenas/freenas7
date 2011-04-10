@@ -1,28 +1,29 @@
-All release names are taken from the novel 'Dune' from Frank Herbert.
+All release names so far are all taken from the novel 'Dune' from Frank Herbert.
 
+Arafel
+Bene Gesserit
 Butlers Djihad
 Caladan
+Chirox
 Crysknife
+Duncan Idaho
 Giedi Primus
 Golden Path
+Honored Matres
+Ithaka
 IX
 Jacurutu
+Ragnarök
 Rakis
 Sabanda
 Salusa Secundus
+Scytale
 Shaitan
 Siaynoq
 Shere
 Spice Agony
-Bene Gesserit
-Honored Matres
-Scytale
-Duncan Idaho
 Wallach IX
-Chirox
-Arafel
-Ragnarök
-Ithaka
+
 
 Also see:
 http://dune.wikia.com/wiki/Category:Original_Dune

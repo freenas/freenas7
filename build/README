@@ -70,12 +70,12 @@ portsnap fetch update
 
 svn/build/make.sh
 
-Execute all menus in '20 - Build FreeNAS from scratch advanced menu' to build your FreeNAS from scratch. After that use one of the following menus:
+Execute all menus in '2' - Compile FreeNAS from scratch menu' to build your FreeNAS from scratch. After that use one of the following menus:
 
-10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD)
-11 - Create 'LiveCD' (ISO) file
-12 - Create 'LiveCD' (ISO) file without 'Embedded' file
-13 - Create 'Full' (TGZ) update file
+10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD).
+11 - Create 'LiveCD' (ISO) file.
+12 - Create 'LiveCD' (ISO) file without 'Embedded' file.
+13 - Create 'Full' (TGZ) update file.
 
 =================================
 4. Building kernel
