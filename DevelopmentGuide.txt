@@ -8,7 +8,7 @@ services and tools that do not have something to do with a NAS will
 not be included into FreeNAS (e.g. geek features).
 
 To ensure code quality and a seemless intergration of new features
-ONLY the project leader/maintainer will introduce new code in
+ONLY the project leader/maintainer/developers will introduce new code in
 the main development trees.
 Developers have to create subprojects in /experimental to store their features.
 After discussion and code review the project leader/maintainer will include
