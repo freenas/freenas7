@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-29 21:34+0000\n"
-"PO-Revision-Date: 2011-03-02 14:15+0000\n"
-"Last-Translator: Sir.Eris <Unknown>\n"
+"POT-Creation-Date: 2011-04-02 23:52+0000\n"
+"PO-Revision-Date: 2011-04-10 13:51+0000\n"
+"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-31 22:32+0000\n"
-"X-Generator: Launchpad (build 12710)\n"
+"X-Launchpad-Export-Date: 2011-04-10 13:56+0000\n"
+"X-Generator: Launchpad (build 12757)\n"
 "X-Poedit-Country: ALBANIA\n"
 "Language: \n"
 "X-Poedit-Language: Albanian\n"
@@ -1374,7 +1374,7 @@ msgid "Disks (ATA)"
 msgstr "Disqet (ATA)"
 
 msgid "Display"
-msgstr ""
+msgstr "Ekran"
 
 msgid "Distributed hash table"
 msgstr ""
@@ -2643,7 +2643,7 @@ msgid "Knowledgebase"
 msgstr "Njohurite base"
 
 msgid "Korean"
-msgstr ""
+msgstr "Korean"
 
 msgid "LACP (Link Aggregation Control Protocol)"
 msgstr "LACP (Link Aggregation Control Protocol)"
@@ -3534,7 +3534,7 @@ msgid "Polling time"
 msgstr ""
 
 msgid "Pool"
-msgstr ""
+msgstr "Pool"
 
 msgid "Pool information and status"
 msgstr ""
@@ -3584,8 +3584,11 @@ msgstr ""
 msgid "Ports"
 msgstr "Portat"
 
-msgid "Portuguese"
-msgstr "Portugalisht"
+msgid "Portuguese (Brazil)"
+msgstr "Portugalisht (Brazil)"
+
+msgid "Portuguese (Portugal)"
+msgstr "Portugalisht (Portugali)"
 
 msgid "PostInit"
 msgstr ""
@@ -3779,13 +3782,13 @@ msgid "Recycle bin"
 msgstr "Koshi"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Rifreskoje"
 
 msgid "Reject"
 msgstr "Refuzo"
 
 msgid "Release Notes"
-msgstr ""
+msgstr "Shënime Versioni"
 
 msgid "Reload page"
 msgstr "Ringarko faqen"
@@ -3809,13 +3812,13 @@ msgid "Remote syslog server"
 msgstr ""
 
 msgid "Removable"
-msgstr ""
+msgstr "I lëvizshëm"
 
 msgid "Remove all entries from ARP table"
 msgstr ""
 
 msgid "Report Generator"
-msgstr ""
+msgstr "Raporti Generator"
 
 msgid ""
 "Report if the temperature had changed by at least N degrees Celsius since "
@@ -6344,6 +6347,9 @@ msgstr "upriv"
 
 #~ msgid "Logs"
 #~ msgstr "Hyrjet"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugalisht"
 
 #~ msgid "RAID 1 (mirroring)"
 #~ msgstr "RAID 1 (pasqyrim)"
