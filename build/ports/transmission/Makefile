@@ -1,6 +1,6 @@
 PORTNAME=				transmission
 PORTVERSION=		2.22
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES?=		net-p2p
 COMMENT=				A fast and lightweight CLI bitTorrent client
 MAINTAINER=			michael.zoon@freenas.org
@@ -8,7 +8,7 @@ MAINTAINER=			michael.zoon@freenas.org
 MASTER_SITES=		http://download.m0k.org/${PORTNAME}/files/
 
 LIB_DEPENDS+=     curl.6:${PORTSDIR}/ftp/curl \
-		       event-2.0.5:${PORTSDIR}/devel/libevent2
+		       event-2.0.6:${PORTSDIR}/devel/libevent2
 GEN_RUN_DEPENDS=${LOCALBASE}/share/transmission/web/index.html:${PORTSDIR}/www/transmission-web
 USE_GMAKE=			yes
 USE_GNOME?=			pkgconfig
