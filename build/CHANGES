@@ -2,7 +2,7 @@ FreeNAS 0.7.2 (Sabanda):
 ------------------------
 
 Majors changes:
-- Upgrade to FreeBSD 7.3-p4.
+- Upgrade to FreeBSD 7.3-p5.
 - Upgrade unison to 2.40.61.
 - Upgrade bsnmp-ucd to 0.3.2.
 - Upgrade e2fsprogs to 1.41.14.
@@ -22,7 +22,7 @@ Majors changes:
 - Upgrade inadyn-mt to 02.24.36.
 - Upgrade bash to 4.1.011.
 - Upgrade istgt to 20110223.
-- Upgrade msmtp to 1.4.23.
+- Upgrade msmtp to 1.4.24.
 - Upgrade nano to 2.2.6.
 - Upgrade gzip to 1.4.
 - Upgrade tftp-hpa to 5.0.
