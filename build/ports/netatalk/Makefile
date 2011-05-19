@@ -1,10 +1,10 @@
 PORTNAME=			netatalk
-PORTVERSION=	2.0.5
-PORTREVISION=	1
+PORTVERSION=	2.1.5
+PORTREVISION=	0
 PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			File and print server for AppleTalk networks
-MAINTAINER=		votdev@gmx.de
+MAINTAINER=		michael.zoon@quicknet.nl
 
 MASTER_SITES=			SF
 
@@ -12,7 +12,7 @@ LIB_DEPENDS=    gcrypt:${PORTSDIR}/security/libgcrypt
 USE_AUTOTOOLS=		libtool
 GNU_CONFIGURE=		yes
 USE_ICONV=				yes
-USE_BDB=        41+
+USE_BDB=        46+
 USE_GMAKE=      yes
 USE_PERL5=      yes
 CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
