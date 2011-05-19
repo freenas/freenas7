@@ -137,7 +137,7 @@ $menu['help']['menuitem'][] = array("desc" => gettext("Report Generator"), "link
 $menu['help']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
 $menu['help']['menuitem'][] = array("desc" => gettext("Forum"), "link" => "http://apps.sourceforge.net/phpbb/freenas/index.php", "visible" => TRUE, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("Knowledgebase"), "link" => "http://www.freenaskb.info/kb", "visible" => TRUE, "target" => "_blank");
-$menu['help']['menuitem'][] = array("desc" => gettext("Information & Manual"), "link" => "http://freenas.org/", "visible" => TRUE, "target" => "_blank");
+$menu['help']['menuitem'][] = array("desc" => gettext("Information & Manual"), "link" => "http://wiki.freenas.org/", "visible" => TRUE, "target" => "_blank");
 $menu['help']['menuitem'][] = array("desc" => gettext("IRC Live Support"), "link" => "http://webchat.freenode.net/?channels=#freenas", "visible" => TRUE, "target" => "_blank");
 $menu['help']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
 $menu['help']['menuitem'][] = array("desc" => gettext("Release Notes"), "link" => "changes.php", "visible" => TRUE);
