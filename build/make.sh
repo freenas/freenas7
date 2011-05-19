@@ -140,7 +140,7 @@ update_sources() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Update sources" --checklist "Please select what to update." 10 60 3 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Update Sources" --checklist "Please select what to update." 10 60 4 \
 		"cvsup" "Update source tree" OFF \
 		"freebsd-update" "Fetch and install binary updates" OFF \
 		"portsnap" "Update ports collection" OFF \
@@ -175,7 +175,7 @@ build_world() {
   cd $FREENAS_ROOTFS
 
 	echo
-	echo "Building world:"
+	echo "Building World:"
 
 	[ -f $FREENAS_WORKINGDIR/freenas.files ] && rm -f $FREENAS_WORKINGDIR/freenas.files
 	cp $FREENAS_SVNDIR/build/freenas.files $FREENAS_WORKINGDIR
@@ -243,7 +243,7 @@ pre_build_kernel() {
 
 	# Create list of available packages.
 	echo "#! /bin/sh
-$DIALOG --title \"$FREENAS_PRODUCTNAME - Kernel patches\" \\
+$DIALOG --title \"$FREENAS_PRODUCTNAME - Kernel Patches\" \\
 --checklist \"Select the patches you want to add. Make sure you have clean/origin kernel sources (via cvsup) to apply patches successful.\" 22 75 14 \\" > $tempfile
 
 	for s in $FREENAS_SVNDIR/build/kernel-patches/*; do
@@ -287,7 +287,7 @@ build_kernel() {
 	[ ! -d "${FREENAS_ROOTFS}/boot/kernel" ] && mkdir -p ${FREENAS_ROOTFS}/boot/kernel
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install Kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
 		"prebuild" "Apply kernel patches" OFF \
 		"build" "Build kernel" OFF \
 		"install" "Install kernel + modules" ON 2> $tempfile
@@ -318,7 +318,7 @@ build_kernel() {
 			install)
 				# Installing the modules.
 				echo "--------------------------------------------------------------";
-				echo ">>> Install kernel modules";
+				echo ">>> Install Kernel Modules";
 				echo "--------------------------------------------------------------";
 
 				[ -f ${FREENAS_WORKINGDIR}/modules.files ] && rm -f ${FREENAS_WORKINGDIR}/modules.files;
@@ -368,7 +368,7 @@ add_libs() {
 # Creating msfroot
 create_mfsroot() {
 	echo "--------------------------------------------------------------"
-	echo ">>> Generating the MFSROOT filesystem"
+	echo ">>> Generating MFSROOT Filesystem"
 	echo "--------------------------------------------------------------"
 
 	cd $FREENAS_WORKINGDIR
@@ -433,7 +433,7 @@ create_image() {
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
 
-	echo "===> Creating an empty IMG file"
+	echo "===> Creating Empty IMG File"
 	dd if=/dev/zero of=${FREENAS_WORKINGDIR}/image.bin bs=${FREENAS_IMG_SECTS}b count=`expr ${FREENAS_IMG_SIZE_SEC} / ${FREENAS_IMG_SECTS}`
 	echo "===> Use IMG as a memory disk"
 	md=`mdconfig -a -t vnode -f ${FREENAS_WORKINGDIR}/image.bin -x ${FREENAS_IMG_SECTS} -y ${FREENAS_IMG_HEADS}`
@@ -457,7 +457,7 @@ create_image() {
 	echo "===> Copying previously generated MFSROOT file to memory disk"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
-	echo "===> Copying Bootloader file(s) to memory disk"
+	echo "===> Copying Bootloader File(s) to memory disk"
 	mkdir -p $FREENAS_TMPDIR/boot
 	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	mkdir -p $FREENAS_TMPDIR/conf
@@ -570,7 +570,7 @@ create_iso () {
 		cp ${FREENAS_WORKINGDIR}/image.bin.gz ${FREENAS_TMPDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-embedded.gz
 	fi
 
-	echo "ISO: Generating the ISO file"
+	echo "ISO: Generating ISO File"
 	mkisofs -b "boot/cdboot" -no-emul-boot -r -J -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -V "${VOLUMEID}" -o "${FREENAS_ROOTDIR}/${LABEL}.iso" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
@@ -698,19 +698,19 @@ use_svn() {
 build_system() {
   while true; do
 echo -n '
---------------------------------
-Building the system from scratch
---------------------------------
-Menu options:
+----------------------------
+Compile FreeNAS from Scratch
+----------------------------
+Menu Options:
 
-1 - Update the source tree and ports collections.
-2 - Create filesystem structure.
-3 - Build/Install the kernel.
+1 - Update FreeBSD Source Tree and Ports Collections.
+2 - Create Filesystem Structure.
+3 - Build/Install the Kernel.
 4 - Build World.
 5 - Build Ports.
 6 - Build Bootloader.
-7 - Add necessary libraries.
-8 - Modify file permissions.
+7 - Add Necessary Libraries.
+8 - Modify File Permissions.
 * - Exit.
 Press # '
 		read choice
@@ -735,7 +735,7 @@ Press # '
 			8)	$FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
 			*)	main;;
 		esac
-		[ 0 == $? ] && echo "=> Successfully done" || echo "=> Failed!"
+		[ 0 == $? ] && echo "=> Successfully done <=" || echo "=> Failed!"
 		sleep 1
   done
 }
@@ -789,13 +789,13 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 			# Set ports options
 			echo;
 			echo "--------------------------------------------------------------";
-			echo ">>> Set ports options.";
+			echo ">>> Set Ports Options.";
 			echo "--------------------------------------------------------------";
 			cd ${FREENAS_SVNDIR}/build/ports/options && make
 			# Clean ports.
 			echo;
 			echo "--------------------------------------------------------------";
-			echo ">>> Cleaning ports.";
+			echo ">>> Cleaning Ports.";
 			echo "--------------------------------------------------------------";
 			for port in $(cat ${ports} | tr -d '"'); do
 				cd ${FREENAS_SVNDIR}/build/ports/${port};
@@ -805,7 +805,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 			for port in $(cat $ports | tr -d '"'); do
 				echo;
 				echo "--------------------------------------------------------------";
-				echo ">>> Building port: ${port}";
+				echo ">>> Building Port: ${port}";
 				echo "--------------------------------------------------------------";
 				cd ${FREENAS_SVNDIR}/build/ports/${port};
 				make build;
@@ -816,7 +816,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 			for port in $(cat ${ports} | tr -d '"'); do
 				echo;
 				echo "--------------------------------------------------------------";
-				echo ">>> Installing port: ${port}";
+				echo ">>> Installing Port: ${port}";
 				echo "--------------------------------------------------------------";
 				cd ${FREENAS_SVNDIR}/build/ports/${port};
 				# Delete cookie first, otherwise Makefile will skip this step.
@@ -837,17 +837,17 @@ main() {
 	cd $FREENAS_WORKINGDIR
 
 	echo -n "
--------------------------------------------------------
-Welcome to the ${FREENAS_PRODUCTNAME} build environment
--------------------------------------------------------
-Menu options:
+-------------------------
+${FREENAS_PRODUCTNAME} Build Environment
+-------------------------
+Menu Options:
 
-1  - Update the sources to CURRENT.
-2  - Compile FreeNAS from scratch.
-10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD).
-11 - Create 'LiveCD' (ISO) file.
-12 - Create 'LiveCD' (ISO) file without 'Embedded' file.
-13 - Create 'Full' (TGZ) update file.
+1  - Update FreeNAS Source Files to CURRENT.
+2  - Compile FreeNAS from Scratch.
+10 - Create 'Embedded' (IMG) File (rawrite to CF/USB/DD).
+11 - Create 'LiveCD' (ISO) File.
+12 - Create 'LiveCD' (ISO) File without 'Embedded' File.
+13 - Create 'Full' (TGZ) Update File.
 *  - Exit.
 Press # "
 	read choice

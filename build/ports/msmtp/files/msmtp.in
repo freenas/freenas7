@@ -1,5 +1,6 @@
 #!/bin/sh
 # Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# Part of FreeNAS Copyright (c) 2008-2011
 # All rights reserved.
 
 # PROVIDE: msmtp
