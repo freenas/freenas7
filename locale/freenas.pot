@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-04-02 23:52+0000\n"
+"POT-Creation-Date: 2011-05-25 21:45+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1961,6 +1961,9 @@ msgid "Graph"
 msgstr ""
 
 msgid "Graph shows last"
+msgstr ""
+
+msgid "Graph shows last 120 seconds"
 msgstr ""
 
 msgid "Greek"
