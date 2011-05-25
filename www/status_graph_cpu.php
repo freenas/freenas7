@@ -3,7 +3,11 @@
 /*
 	status_graph_cpu.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Modified by Michael Zoon <michael.zoon@freenas.org>
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -38,8 +42,7 @@
 require("auth.inc");
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
-?>
+$pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
@@ -50,8 +53,18 @@ $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
       </ul>
     </td>
   </tr>
-  <tr>
     <td class="tabcont">
+<?php
+?>
+<form name="form1" action="status_graph_cpu.php" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
+
+
+<?php
+
+?>
+<?php include("formend.inc");?>
+</form>
+
       <div align="center">
         <object id="graph" data="graph_cpu.php" type="image/svg+xml" width="550" height="275">
           <param name="src" value="graph_cpu.php" />

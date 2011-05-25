@@ -2,9 +2,13 @@
 <?php
 /*
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
+	Modified by Michael Zoon <michael.zoon@freenas.org>
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+	
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -43,11 +47,11 @@ $fetch_link = "stats.php?cpu";
 
 //Style
 //SVG attributes
-$attribs['bg']='fill="#EEEEEE" stroke="none" stroke-width="0" opacity="1"';
-$attribs['axis']='fill="black" stroke="black"';
+$attribs['bg']='fill="#000000" stroke="none" stroke-width="0" opacity="1"';
+$attribs['axis']='fill="white" stroke="black"';
 $attribs['cpu']='fill="#FF0000" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
-$attribs['graph_cpu']='fill="none" stroke="#FF0000" stroke-opacity="0.8"';
-$attribs['legend']='fill="black" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
+$attribs['graph_cpu']='fill="none" stroke="#CA6110" stroke-opacity="0.8"';
+$attribs['legend']='fill="white" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 $attribs['graphname']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="8"';
 $attribs['grid_txt']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="6"';
 $attribs['grid']='stroke="#C3C3C3" stroke-opacity="0.5"';
