@@ -2,15 +2,15 @@
 <?php
 /*
   index.php
-  Modified by Daisuke Aoyama (aoyama@peach.ne.jp)
-  Copyright (C) 2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+  Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
+  Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
   All rights reserved.
 
   Modified by Michael Zoon (michael.zoon@freenas.org)
-  Copyright (C) 2011 Michael Zoon <michael.zoon@freenas.org>.
+  Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
   All rights reserved.
 
-  Part of FreeNAS (http://www.freenas.org)
+  part of FreeNAS (http://www.freenas.org)
   Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
@@ -138,8 +138,9 @@ sajax_handle_client_request();
 					$cpus = system_get_cpus();
 					for ($idx = 0; $idx < $cpus; $idx++) {
 						echo "<tr><td>";
-						echo "<input style='padding: 0; border: 0;' size='1' name='cputemp${idx}' id='cputemp${idx}' value='".htmlspecialchars($cpuinfo['temperature2'][$idx])."' />";
-						echo "&nbsp;&deg;C</td></tr>";
+						echo "<input style='padding: 0; border: 0;' size='2' name='cputemp${idx}' id='cputemp${idx}' value='".htmlspecialchars($cpuinfo['temperature2'][$idx])."' />";
+					echo $row['temperature']."&#176;C";	
+					echo "</td></tr>";
 					}
 					echo "</table></td>";
 					echo "</tr>\n";
@@ -148,7 +149,7 @@ sajax_handle_client_request();
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU temperature");?></td>
 					<td width="75%" class="listr">
-						<input style="padding: 0; border: 0;" size="1" name="cputemp" id="cputemp" value="<?=htmlspecialchars($cpuinfo['temperature']);?>" />
+						<input style="padding: 0; border: 0;" size="30" name="cputemp" id="cputemp" value="<?=htmlspecialchars($cpuinfo['temperature']);?>" />
 					</td>
 				</tr>
 				<?php endif;?>
@@ -156,7 +157,7 @@ sajax_handle_client_request();
 				<tr>
 					<td width="25%" class="vncellt"><?=gettext("CPU frequency");?></td>
 					<td width="75%" class="listr">
-						<input style="padding: 0; border: 0;" size="15" name="cpufreq" id="cpufreq" value="<?=htmlspecialchars($cpuinfo['freq']);?>MHz" title="<?=sprintf(gettext("Levels (MHz/mW): %s"), $cpuinfo['freqlevels']);?>" />
+						<input style="padding: 0; border: 0;" size="30" name="cpufreq" id="cpufreq" value="<?=htmlspecialchars($cpuinfo['freq']);?>MHz" title="<?=sprintf(gettext("Levels (MHz/mW): %s"), $cpuinfo['freqlevels']);?>" />
 					</td>
 				</tr>
 				<?php endif;?>
