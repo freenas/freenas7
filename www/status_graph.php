@@ -3,7 +3,11 @@
 /*
 	status_graph.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
+	Modified by Michael Zoon <michael.zoon@freenas.org>
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -64,18 +68,12 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 }
 ?>
 <form name="form1" action="status_graph.php" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
-Interface:
+Interface: 
 <select name="if" class="formfld" onchange="document.form1.submit()">
-<?php
-foreach ($ifdescrs as $ifn => $ifd) {
-	echo "<option value=\"$ifn\"";
-	if ($ifn == $curif) echo " selected=\"selected\"";
-	echo ">" . htmlspecialchars($ifd) . "</option>\n";
-}
-?>
+
 </select>
 <?php include("formend.inc");?>
-</form>
+</form> <?=gettext("Graph shows last 120 seconds");?>
 <div align="center">
 <object id="graph"
         data="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>"
@@ -85,6 +83,7 @@ foreach ($ifdescrs as $ifn => $ifd) {
   <param name="src" value="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>" />
   Your browser does not support this object type!<br /><span class="red"><strong>Note:</strong></span> The <a href="http://de.brothersoft.com/Renesis-Player-download-141155.html" target="_blank">RENESIS Player</a> is required to view the graph.
 </object>
+
 </div>
 </td></tr></table>
 <?php include("fend.inc");?>
