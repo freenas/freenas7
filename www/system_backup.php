@@ -2,7 +2,11 @@
 <?php
 /*
 	system_backup.php
-	part of FreeNAS (http://www.freenas.org)
+	Modified by Michael Zoon <michael.zoon@freenas.org>
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+	
+	Part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
@@ -52,6 +56,8 @@ if ($_POST) {
 		if ($mode === "download") {
 			config_lock();
 
+			if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
+                 @date_default_timezone_set(@date_default_timezone_get());
 			$fn = "config-{$config['system']['hostname']}.{$config['system']['domain']}-" . date("YmdHis") . ".xml";
 			$fs = get_filesize("{$g['conf_path']}/config.xml");
 

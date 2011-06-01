@@ -10,7 +10,7 @@
   Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
   All rights reserved.
 
-  part of FreeNAS (http://www.freenas.org)
+  Part of FreeNAS (http://www.freenas.org)
   Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
@@ -61,6 +61,9 @@ function update_controls() {
 sajax_init();
 sajax_export("update_controls");
 sajax_handle_client_request();
+
+if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
+     @date_default_timezone_set(@date_default_timezone_get());
 ?>
 <?php include("fbegin.inc");?>
 <script type="text/javascript">//<![CDATA[
@@ -139,7 +142,7 @@ sajax_handle_client_request();
 					for ($idx = 0; $idx < $cpus; $idx++) {
 						echo "<tr><td>";
 						echo "<input style='padding: 0; border: 0;' size='2' name='cputemp${idx}' id='cputemp${idx}' value='".htmlspecialchars($cpuinfo['temperature2'][$idx])."' />";
-					echo $row['temperature']."&#176;C";	
+					echo $idx['temperature2']."&#176;C";	
 					echo "</td></tr>";
 					}
 					echo "</table></td>";
