@@ -10,8 +10,8 @@
 	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -63,7 +63,8 @@ $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));?>
 
 ?>
 <?php include("formend.inc");?>
-</form>
+</form><?=gettext("Graph shows last 120 seconds");?>
+
 
       <div align="center">
         <object id="graph" data="graph_cpu.php" type="image/svg+xml" width="550" height="275">

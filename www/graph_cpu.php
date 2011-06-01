@@ -1,12 +1,12 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
-	All rights reserved.
-
 	Modified by Michael Zoon <michael.zoon@freenas.org>
 	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -86,7 +86,7 @@ echo "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
     <text id="grid_txt2" x="<?=$width*0.99?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>
     <text id="grid_txt3" x="<?=$width*0.99?>" y="<?=$height/4*3?>" <?=$attribs['grid_txt']?> text-anchor="end">25%</text>
     <text id="datetime" x="<?=$width*0.51?>" y="5" <?=$attribs['legend']?>> </text>
-    <text id="graphlast" x="<?=$width*0.51?>" y="11" <?=$attribs['legend']?>><?=gettext("Graph shows last");?> <?=$time_interval*$nb_plot?> <?=gettext("seconds");?></text>
+
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
     <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.4?>"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
     <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.4?>" visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=gettext("Collecting initial data, please wait...");?></text>

@@ -1,11 +1,11 @@
 <?php
 /*
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
-	All rights reserved.
-
 	Modified by Michael Zoon <michael.zoon@freenas.org>
 	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+	
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 		 
 	Based on m0n0wall (http://m0n0.ch/wall)

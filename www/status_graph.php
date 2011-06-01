@@ -10,8 +10,8 @@
 	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -70,10 +70,10 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 <form name="form1" action="status_graph.php" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
 Interface: 
 <select name="if" class="formfld" onchange="document.form1.submit()">
-
+  <option value="lan" selected="selected">LAN</option>
 </select>
 <?php include("formend.inc");?>
-</form> <?=gettext("Graph shows last 120 seconds");?>
+</form><?=gettext("Graph shows last 120 seconds");?>
 <div align="center">
 <object id="graph"
         data="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>"
