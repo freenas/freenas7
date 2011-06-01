@@ -1,8 +1,12 @@
 <?php
 /*
 	config.inc
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Modified by Michael Zoon (michael.zoon@freenas.org)
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -326,6 +330,8 @@ function write_config() {
 	conf_mount_rw();
 
 	// Make sure the clock settings is plausible
+	if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
+        @date_default_timezone_set(@date_default_timezone_get());
 	if (time() > mktime(0, 0, 0, 9, 1, 2004)) {
 		$config['lastchange'] = time();
 	}

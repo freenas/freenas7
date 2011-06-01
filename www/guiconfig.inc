@@ -5,7 +5,11 @@
 	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
+	Modified by Michael Zoon (michael.zoon@freenas.org)
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
@@ -34,6 +38,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+
+if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
+     @date_default_timezone_set(@date_default_timezone_get());
 
 /* make sure nothing is cached */
 if (!$omit_nocacheheaders) {

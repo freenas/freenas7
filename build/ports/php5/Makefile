@@ -1,7 +1,8 @@
 PORTNAME=			php5
-PORTVERSION=	5.2.17
+PORTVERSION=		5.3.6
+PORTREVISION?= 	0
 CATEGORIES=		lang
-COMMENT=			PHP5 scripting language
+COMMENT=			PHP5 Scripting Language
 MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=				${MASTER_SITE_PHP:S,$,:release,}
@@ -19,10 +20,7 @@ USE_GNOME=				libxml2
 USE_OPENSSL=			yes
 GNU_CONFIGURE=		yes
 
-CONFIGURE_ARGS+=	--enable-fastcgi \
-									--enable-discard-path \
-									--enable-force-cgi-redirect \
-									--without-mysql \
+CONFIGURE_ARGS+=	--without-mysql \
 									--without-pear \
 									--with-openssl \
 									--without-sqlite \
@@ -35,7 +33,14 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-pdo-sqlite=${LOCALBASE} \
 									--with-iconv-dir=${LOCALBASE}
 
-
+OPTIONS=	CLI "Build CLI version" on \
+		CGI "Build CGI version" on \
+		APACHE "Build Apache module" off \
+		DEBUG "Enable debug" off \
+		SUHOSIN "Enable Suhosin protection system" on \
+		MULTIBYTE "Enable zend multibyte support" off \
+		IPV6 "Enable ipv6 support" on \
+		MAILHEAD "Enable mail header patch" off
 
 # Work around issues with newer (>=2.64) autoconf
 pre-configure:
@@ -44,7 +49,7 @@ pre-configure:
 	@${RM} ${WRKSRC}/configure
 	@${CAT} ${WRKSRC}/acinclude.m4 ${WRKSRC}/build/libtool.m4 > ${WRKSRC}/aclocal.m4
 
-
+	@${TOUCH} ${WRKSRC}/ext/php_config.h
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/${PREFIX}/bin/php
