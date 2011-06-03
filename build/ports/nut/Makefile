@@ -1,5 +1,5 @@
 PORTNAME=			nut
-PORTVERSION=	2.6.0
+PORTVERSION=	2.6.1
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		michael.zoon@freenas.org

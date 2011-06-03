@@ -32,7 +32,7 @@ Majors changes:
 - Upgrade lighttpd to 1.4.28.
 - Upgrade iperf to 2.0.5.
 - Upgrade ataidle to 2.5.1.
-- Upgrade nut to 2.60.
+- Upgrade nut to 2.6.1.
 - Upgrade rsync to 3.0.8.
 - Upgrade aac driver to 2.4.1.
 - Upgrade iscsi to 2.3.1.
