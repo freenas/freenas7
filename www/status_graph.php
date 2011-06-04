@@ -70,7 +70,13 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 <form name="form1" action="status_graph.php" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
 Interface: 
 <select name="if" class="formfld" onchange="document.form1.submit()">
-  <option value="lan" selected="selected">LAN</option>
+<?php
+foreach ($ifdescrs as $ifn => $ifd) {
+	echo "<option value=\"$ifn\"";
+	if ($ifn == $curif) echo " selected=\"selected\"";
+	echo ">" . htmlspecialchars($ifd) . "</option>\n";
+}
+?>
 </select>
 <?php include("formend.inc");?>
 </form><?=gettext("Graph shows last 120 seconds");?>
