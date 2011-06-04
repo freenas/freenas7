@@ -58,14 +58,13 @@ $attribs['bg']='fill="#000" stroke="none" stroke-width="0" opacity="1"';
 $attribs['axis']='fill="black" stroke="black"';
 $attribs['in']='fill="#00CC00" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
 $attribs['out']='fill="#FF0000" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
+$attribs['legend']='fill="white" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 $attribs['graph_in']='fill="none" stroke="#00CC00" stroke-opacity="0.8"';
 $attribs['graph_out']='fill="none" stroke="#FF0000" stroke-opacity="0.8"';
-$attribs['legend']='fill="FFFFFF" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 $attribs['grid_txt']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="6"';
 $attribs['grid']='stroke="#C3C3C3" stroke-opacity="0.5"';
 $attribs['switch_unit']='fill="#FFFFFF" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4" text-decoration="underline"';
 $attribs['switch_scale']='fill="#FFFFFF" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4" text-decoration="underline"';
-
 $attribs['error']='fill="red" font-family="Arial" font-size="4"';
 $attribs['collect_initial']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 
@@ -101,7 +100,7 @@ echo "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
     <text id="graph_out_lbl" x="5" y="16" <?=$attribs['out']?>><?=gettext("Out");?> <tspan id="graph_out_txt" <?=$attribs['out']?>> </tspan></text>
     <text id="switch_unit" x="<?=$width*0.60?>" y="5" <?=$attribs['switch_unit']?>><?=sprintf(gettext("Switch to %s/s"), ("bits" === $unit) ? "bytes" : "bits");?></text>
     <text id="switch_scale" x="<?=$width*0.60?>" y="11" <?=$attribs['switch_scale']?>><?=gettext("AutoScale");?> (<?=("up" === $scale_type) ? gettext("Up") : gettext("Follow");?>)</text>
-    <text id="datetime" x="<?=$width*0.51?>" y="17" <?=$attribs['legend']?>> </text>
+    <text id="datetime" x="<?=$width*0.40?>" y="5" <?=$attribs['legend']?>> </text>
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
     <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.4?>" visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
     <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.4?>" visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=gettext("Collecting initial data, please wait...");?></text>
