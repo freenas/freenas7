@@ -3,11 +3,15 @@
 /*
 	diag_arp.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	Modified by Michael Zoon
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -188,7 +192,7 @@ foreach ($rawdata as $line) {
 	}
 }
 
-function getHostName($mac, $ip) {
+function get_HostName($mac, $ip) {
 	global $dhcpmac, $dhcpip, $resolve;
 
 	if ($dhcpmac[$mac])
@@ -217,7 +221,7 @@ function getHostName($mac, $ip) {
 			  <tr>
 			    <td class="listlr"><?=htmlspecialchars($entry['ip']);?></td>
 			    <td class="listr"><?=htmlspecialchars($entry['mac']);?></td>
-			    <td class="listr"><?=htmlspecialchars(getHostName($entry['mac'], $entry['ip']));?>&nbsp;</td>
+			    <td class="listr"><?=htmlspecialchars(get_HostName($entry['mac'], $entry['ip']));?>&nbsp;</td>
 			    <td class="listr"><?=htmlspecialchars($hwif[$entry['interface']]);?>&nbsp;</td>
 			    <td valign="middle" nowrap="nowrap" class="list"><a href="diag_arp.php?act=del&amp;id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" border="0" alt="<?=gettext("Delete ARP entry");?>" /></a></td>
 			  </tr>
