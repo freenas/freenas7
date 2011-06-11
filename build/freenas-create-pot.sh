@@ -1,6 +1,7 @@
 #!/bin/sh
 # Extract gettext strings from source.
 # Created: 09.09.2007 by Volker Theile (votdev@gmx.de)
+# Modified 11-06-2011 by Michael Zoon (michael.zoon@freenas.org) 
 
 # Global variables
 FREENAS_ROOTDIR="/usr/local/freenas"
@@ -19,6 +20,9 @@ cd ${FREENAS_SVNDIR}/www
 xgettext ${PARAMETERS} --join-existing *.*
 
 cd ${FREENAS_SVNDIR}/etc/inc
+xgettext ${PARAMETERS} --join-existing *.*
+
+cd ${FREENAS_SVNDIR}/build/checkversion
 xgettext ${PARAMETERS} --join-existing *.*
 
 DATE="$(date "+%Y-%m-%d %H:%M")+0000"

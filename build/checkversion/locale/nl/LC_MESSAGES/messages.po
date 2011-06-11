@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: checkversionPHP\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-08 12:07-0600\n"
+"PO-Revision-Date: 2011-06-11 01:29+0100\n"
+"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: C:\\Users\\ISCR2\\Desktop\\project\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:108
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr "<b>U gebruikt de meest recente Beta build van FreeNAS.</ b>"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:112
+msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
+msgstr "<b>Er is een nieuwere Beta versie van FreeNAS beschikbaar dan u op dit moment gebruikt!</ b>"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:116
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr "<b>Een nieuwere Stable build is online beschikbaar voor uw server!</ b>"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:118
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr "<b>Een nieuwere <b>Nightly</b> build is online beschikbaar voor uw server!</ b>"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:125
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr "<b>U gebruikt reeds de laatste <b>Stable</b> build op uw server!</ b>"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:128
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr "U gebruikt reeds de laatste <b>Nightly</b> build op uw server!"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:137
+msgid "<HR color='#999999'>Your FreeNAS version: "
+msgstr "<HR color='#999999'> Uw FreeNAS versie:"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:143
+msgid "Online version check:"
+msgstr "Online versie controle:"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:147
+msgid "Latest stable build available: "
+msgstr "Laatste Stable build beschikbaar:"
+
+#: C:\Users\ISCR2\Desktop\project/checkversion.php:149
+msgid "Latest nightly build available: "
+msgstr "Laatste Nightly build beschikbaar:"
+
