@@ -1,8 +1,12 @@
 <?php
 /*
 	util.inc
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Modified by Michael Zoon
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1631,6 +1635,12 @@ function get_platform_type() {
 function get_product_url() {
 	global $g;
 	return chop(file_get_contents("{$g['etc_path']}/prd.url"));
+}
+
+/* Get the firmware check URL */
+function get_firm_url() {
+	global $g;
+	return chop(file_get_contents("{$g['etc_path']}/firm.url"));
 }
 
 /* Get the product copyright note */
