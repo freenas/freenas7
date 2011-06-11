@@ -54,7 +54,7 @@ Majors changes:
 - Upgrade unison to 2.40.61.
 - Upgrade bsnmp-ucd to 0.3.2.
 - Upgrade e2fsprogs to 1.41.14.
-- Upgrade smartmontools to 5.40.
+- Upgrade smartmontools to 5.41.
 - Upgrade php5 to 5.3.06.
 - Upgrade transmission to 2.22.
 - Upgrade samba to 3.5.8.
