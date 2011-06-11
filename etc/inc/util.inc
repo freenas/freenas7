@@ -1,8 +1,12 @@
 <?php
 /*
 	util.inc
-	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Modified by Michael Zoon
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -421,7 +425,7 @@ function get_interface_list() {
 		if (substr($ifname, -1) === "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 		/* add the plip interface to be excluded too */
-		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip|ipfw)/", $ifname)) {
+		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip)/", $ifname)) {
 			$iflist[$ifname] = array();
 
 			$iflist[$ifname]['mac'] = chop($alink[3]);
@@ -1019,7 +1023,7 @@ function get_cdrom_list()
 			$diskname = $temp[0];
 
 		/* On exlus les lecteurs disque dur da */
-		if (!preg_match("/^(da|ada)/", $diskname  )) 	{
+		if (!preg_match("/^(da)/", $diskname  )) 	{
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
@@ -1505,11 +1509,11 @@ function get_interface_info($if) {
 		$ifinfo['macaddr'] = $linkinfo[3];
 		$ifinfo['inpkts'] = $linkinfo[4];
 		$ifinfo['inerrs'] = $linkinfo[5];
-		$ifinfo['inbytes'] = $linkinfo[7];
-		$ifinfo['outpkts'] = $linkinfo[8];
-		$ifinfo['outerrs'] = $linkinfo[9];
-		$ifinfo['outbytes'] = $linkinfo[10];
-		$ifinfo['collisions'] = $linkinfo[11];
+		$ifinfo['inbytes'] = $linkinfo[6];
+		$ifinfo['outpkts'] = $linkinfo[7];
+		$ifinfo['outerrs'] = $linkinfo[8];
+		$ifinfo['outbytes'] = $linkinfo[9];
+		$ifinfo['collisions'] = $linkinfo[10];
 	} else {
 		$ifinfo['inpkts'] = $linkinfo[3];
 		$ifinfo['inbytes'] = $linkinfo[5];
@@ -1631,6 +1635,12 @@ function get_platform_type() {
 function get_product_url() {
 	global $g;
 	return chop(file_get_contents("{$g['etc_path']}/prd.url"));
+}
+
+/* Get the firmware check URL */
+function get_firm_url() {
+	global $g;
+	return chop(file_get_contents("{$g['etc_path']}/firm.url"));
 }
 
 /* Get the product copyright note */

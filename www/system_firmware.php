@@ -6,7 +6,11 @@
 	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
-	part of FreeNAS (http://www.freenas.org)
+	Modified by Michael Zoon
+	Copyright (C) 2010-2011 Michael Zoon <michael.zoon@freenas.org>.
+	All rights reserved.
+
+	Part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
@@ -42,19 +46,21 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 
-/* checks with www.freenas.org to see if a newer firmware version is available;
+/* checks with /etc/firm.url to see if a newer firmware version online is available;
    returns any HTML message it gets from the server */
-function check_firmware_version() {
+$locale = $config['system']['language'];
+
+function check_firmware_version($locale) {
 	global $g;
 
 	$post = "platform=".rawurlencode($g['fullplatform'])."&version=".rawurlencode(get_product_version());
 
-	$rfd = @fsockopen("www.".get_product_url(), 80, $errno, $errstr, 3);
+	$rfd = @fsockopen(get_firm_url(), 80, $errno, $errstr, 3);
 	if ($rfd) {
-		$hdr = "POST /checkversion.php HTTP/1.0\r\n";
+		$hdr = "POST /checkversion.php?locale=$locale HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
 		$hdr .= "User-Agent: ".get_product_name()."-webGUI/1.0\r\n";
-		$hdr .= "Host: ".get_product_url()."\r\n";
+		$hdr .= "Host: ".get_firm_url()."\r\n";
 		$hdr .= "Content-Length: ".strlen($post)."\r\n\r\n";
 
 		fwrite($rfd, $hdr);
@@ -158,7 +164,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	}
 } else {
 	if (!isset($config['system']['disablefirmwarecheck']))
-		$fwinfo = check_firmware_version();
+		$fwinfo = check_firmware_version($locale);
 }
 ?>
 <?php include("fbegin.inc");?>
