@@ -2,12 +2,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-10 14:59-0600\n"
-"PO-Revision-Date: 2011-06-10 15:04-0600\n"
-"Last-Translator: Kevin Fowler <kfowler@i-support.us>\n"
+"POT-Creation-Date: 2011-06-12 14:15+0000\n"
+"PO-Revision-Date: 2011-06-12 21:40+0100\n"
+"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2011-04-10 13:57+0000\n"
 "X-Generator: Launchpad (build 12757)\n"
@@ -16,49 +16,37 @@ msgstr ""
 "X-Poedit-Language: Chinese (Traditional)\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,128,-1,-1,-1,-1,-1\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: C:\\project\n"
-"X-Poedit-SearchPath-1: .\n"
 
-#: C:\project/checkversion.php:108
-msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
-msgstr "您正在使用最新的測試版建立FreeNAS的。"
-
-#: C:\project/checkversion.php:112
-msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
-msgstr "一個較新的Beta版本FreeNAS的比您當前正在使用的是可用！"
-
-#: C:\project/checkversion.php:116
-msgid "<b>A newer Stable build release is available for your server!</b>"
-msgstr "一個新的穩定版本發布可用於您的服務器！"
-
-#: C:\project/checkversion.php:118
-msgid "A newer <b>Nightly</b> build release is available for your server!"
-msgstr "每晚構建一個較新的版本可用於您的服務器！"
-
-#: C:\project/checkversion.php:125
-msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
-msgstr "您目前運行的是最新的穩定版本FreeNAS的。"
-
-#: C:\project/checkversion.php:128
-msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
-msgstr "您目前正在運行的是最新的每日構建 FreeNAS的。"
-
-#: C:\project/checkversion.php:137
 msgid "<HR color='#999999'>Your FreeNAS version: "
-msgstr "<HR color='#999999'>您的FreeNAS的版本："
+msgstr ""
 
-#: C:\project/checkversion.php:143
-msgid "Online version check:"
-msgstr "在線版本檢查："
+msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
+msgstr ""
 
-#: C:\project/checkversion.php:147
-msgid "Latest stable build available: "
-msgstr "最新的穩定版本可供選擇："
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr ""
 
-#: C:\project/checkversion.php:149
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr ""
+
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr ""
+
 msgid "Latest nightly build available: "
-msgstr "最新每日構建可供選擇："
+msgstr ""
+
+msgid "Latest stable build available: "
+msgstr ""
+
+#, fuzzy
+msgid "Online version check:"
+msgstr "韌體版本檢查"
+
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr ""
+
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr ""
 
 #~ msgid "Swap"
 #~ msgstr "置換"

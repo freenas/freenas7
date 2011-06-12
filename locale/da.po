@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 23:52+0000\n"
-"PO-Revision-Date: 2011-04-09 21:08+0000\n"
-"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2011-06-11 19:18+0000\n"
+"PO-Revision-Date: 2011-06-12 09:35+0000\n"
+"Last-Translator: debdrup <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-10 13:57+0000\n"
-"X-Generator: Launchpad (build 12757)\n"
+"X-Launchpad-Export-Date: 2011-06-12 10:08+0000\n"
+"X-Generator: Launchpad (build 13175)\n"
 "X-Poedit-Country: DENMARK\n"
 "Language: \n"
 "X-Poedit-Language: Danish\n"
@@ -110,6 +110,9 @@ msgstr "802.1Q VLAN mærkat (mellem 1 og 4094)."
 msgid "<->"
 msgstr "<->"
 
+msgid "<HR color='#999999'>Your FreeNAS version: "
+msgstr "<HR color='#999999'> Din FreeNAS Version: "
+
 #, php-format
 msgid ""
 "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -117,6 +120,15 @@ msgid ""
 msgstr ""
 "<a href='%s'>SSHD</a> skal være aktiveret for at Unison kan virke, og <a "
 "href='%s'>brugeren</a> skal have fulde Shell rettigheder."
+
+msgid ""
+"<b>A newer Beta version of FreeNAS than the one you're currently using is "
+"available!</b>"
+msgstr ""
+"<b>En nyere Beta version af FreeNAS end den du bruger er tilgængelig!</b>"
+
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr "<b>En nyere Stable udgivelse er tilgængelig til din server!</b>"
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -131,6 +143,9 @@ msgstr ""
 "importerede diske fra andre styresystemer.<br><b>CD/DVD eller gammel "
 "software RAID</b> for gamle software RAID volumer (<b>oprettet før version "
 "0.68</b>) eller CD/DVD."
+
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr "<b>Du bruger den nyeste Beta version af FreeNAS.</b>"
 
 msgid ""
 "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
@@ -211,6 +226,9 @@ msgstr ""
 "En nøgle vil være på enten 5 eller 13 tegn (40 eller 104 bits), afhængig af "
 "det lokale netværk og adapterens funktionalitet. Den kan angives enten som "
 "normal tekst, eller som en række hexdecimale cifre der starter med '0x'."
+
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr "En ny <b>Nightly>/b> version er tilgængelig til din server!"
 
 msgid "A route to this destination network already exists."
 msgstr "En rute til dette destinationens netværk eksisterer allerede."
@@ -1306,7 +1324,7 @@ msgid "Device Pass-through"
 msgstr "Device Pass-through"
 
 msgid "Device model"
-msgstr ""
+msgstr "Device model"
 
 msgid "Device name"
 msgstr "Enhedsnavn"
@@ -2240,8 +2258,8 @@ msgstr "Giv adgang til bruger portalen."
 msgid "Graph"
 msgstr "Diagram"
 
-msgid "Graph shows last"
-msgstr "Diagram viser sidste"
+msgid "Graph shows last 120 seconds"
+msgstr "Grafen viser sidste 120 sekunder"
 
 msgid "Greek"
 msgstr "Græsk"
@@ -2749,6 +2767,12 @@ msgstr "Stor læsning/skrivning"
 msgid "Last config change"
 msgstr "Sidste konfigurations ændring"
 
+msgid "Latest nightly build available: "
+msgstr "Seneste Nightly version tilgængelig: "
+
+msgid "Latest stable build available: "
+msgstr "Seneste Stable version tilgængelig: "
+
 msgid "Latvian"
 msgstr "Lettisk"
 
@@ -3056,6 +3080,8 @@ msgid ""
 "Maximum number of pre-send R2T in each connection (%d by default). The "
 "actual number is limited to QueueDepth of the target."
 msgstr ""
+"Enheden model pre-send R2T i hver enkelt forbindelse (%d som standard). Det "
+"faktiske antal er begrænset til QueueDepth af målet."
 
 #, php-format
 msgid "Maximum number of sessions holding at same time (%d by default)."
@@ -3425,6 +3451,9 @@ msgstr "Gammelt kodeord"
 
 msgid "On"
 msgstr "Til"
+
+msgid "Online version check:"
+msgstr "Check version online:"
 
 msgid ""
 "Only allow anonymous users. Use this on a public FTP site with no remote FTP "
@@ -6363,6 +6392,16 @@ msgstr "Du skal vælge mindst en godkendelses metode."
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr "Du bør bruge HTTPS som WebGUI protokol for at sende adgangskoden."
 
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr ""
+"Du bruger på nuværende tidspunkt den seneste <b>Nightly</b> version af "
+"FreeNAS."
+
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr ""
+"Du bruger på nuværende tidspunkt den seneste <b>Stable</b> version af "
+"FreeNAS."
+
 msgid "Your ZFS system is not healthy."
 msgstr "Dit ZFS system er ikke sundt."
 
@@ -6500,9 +6539,6 @@ msgstr "Kunne ikke scanne målet."
 msgid "second(s)"
 msgstr "sekund(er)"
 
-msgid "seconds"
-msgstr "sekunder"
-
 msgid "striping"
 msgstr "striping"
 
@@ -6533,6 +6569,9 @@ msgstr "upriv"
 
 #~ msgid "Create"
 #~ msgstr "Opret"
+
+#~ msgid "seconds"
+#~ msgstr "sekunder"
 
 #~ msgid "week days"
 #~ msgstr "uge dage"
@@ -6643,6 +6682,9 @@ msgstr "upriv"
 #~ msgstr ""
 #~ "Fil sti (f.eks. /mnt/sharenavn/extent/%s) eller enheds navn (f.eks. "
 #~ "/dev/ad1) brugt som extent."
+
+#~ msgid "Graph shows last"
+#~ msgstr "Diagram viser sidste"
 
 #~ msgid "Give full shell access to user."
 #~ msgstr "Giv brugeren fuld shell adgang."
