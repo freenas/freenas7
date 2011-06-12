@@ -2,12 +2,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-10 11:53-0600\n"
-"PO-Revision-Date: 2011-06-10 12:02-0600\n"
-"Last-Translator: Kevin Fowler <kfowler@i-support.us>\n"
+"POT-Creation-Date: 2011-06-12 14:15+0000\n"
+"PO-Revision-Date: 2011-06-12 14:38+0100\n"
+"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2011-06-02 16:37+0000\n"
 "X-Generator: Launchpad (build 13144)\n"
@@ -16,48 +16,37 @@ msgstr ""
 "X-Poedit-Language: French\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
-"X-Poedit-SearchPath-0: C:\\project\n"
-"X-Poedit-SearchPath-1: .\n"
 
-#: C:\project/checkversion.php:108
-msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
-msgstr "<b>Vous utilisez la version bêta la plus récente version de FreeNAS.</b>"
-
-#: C:\project/checkversion.php:112
-msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
-msgstr "<b>Une nouvelle version bêta de FreeNAS que celui que vous utilisez actuellement est disponible!</b>"
-
-#: C:\project/checkversion.php:116
-msgid "<b>A newer Stable build release is available for your server!</b>"
-msgstr "<b>Une nouvelle version stable communiqué est disponible pour votre serveur!</b>"
-
-#: C:\project/checkversion.php:118
-msgid "A newer <b>Nightly</b> build release is available for your server!"
-msgstr "Une nouvelle <b>soirée</b> construire communiqué est disponible pour votre serveur!"
-
-#: C:\project/checkversion.php:125
-msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
-msgstr "Vous êtes actuellement en cours d'exécution plus tard <b>stable</b> la construction de FreeNAS."
-
-#: C:\project/checkversion.php:128
-msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
-msgstr "Vous êtes en train de tourner la dernière <b>soirée</b> la construction de FreeNAS."
-
-#: C:\project/checkversion.php:137
 msgid "<HR color='#999999'>Your FreeNAS version: "
-msgstr "<HR color='#999999'>Votre version de FreeNAS:"
+msgstr ""
 
-#: C:\project/checkversion.php:143
-msgid "Online version check:"
-msgstr "La version en ligne de vérifier:"
+msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
+msgstr ""
 
-#: C:\project/checkversion.php:147
-msgid "Latest stable build available: "
-msgstr "Dernière version stable disponible:"
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr ""
 
-#: C:\project/checkversion.php:149
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr ""
+
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr ""
+
 msgid "Latest nightly build available: "
-msgstr "Dernières nightly build disponibles:"
+msgstr ""
+
+msgid "Latest stable build available: "
+msgstr ""
+
+#, fuzzy
+msgid "Online version check:"
+msgstr "Vérification de nouvelle version logicielle"
+
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr ""
+
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr ""
 
 #~ msgid "Browseable"
 #~ msgstr "Navigable"

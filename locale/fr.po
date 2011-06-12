@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-25 21:45+0000\n"
+"POT-Creation-Date: 2011-06-11 19:18+0000\n"
 "PO-Revision-Date: 2011-06-02 15:37+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-02 16:37+0000\n"
-"X-Generator: Launchpad (build 13144)\n"
+"X-Launchpad-Export-Date: 2011-06-12 13:08+0000\n"
+"X-Generator: Launchpad (build 13175)\n"
 "X-Poedit-Country: FRANCE\n"
 "Language: \n"
 "X-Poedit-Language: French\n"
@@ -145,6 +145,9 @@ msgstr "802.1Q VLAN tag (entre 1 et 4094)."
 msgid "<->"
 msgstr "<->"
 
+msgid "<HR color='#999999'>Your FreeNAS version: "
+msgstr ""
+
 #, php-format
 msgid ""
 "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -152,6 +155,14 @@ msgid ""
 msgstr ""
 "<a href='%s'>SSHD</a> doit être activé pour qu'Unison fonctionne, et l'<a "
 "href='%s'>utilisateur</a> doit avoir accès au shell."
+
+msgid ""
+"<b>A newer Beta version of FreeNAS than the one you're currently using is "
+"available!</b>"
+msgstr ""
+
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr ""
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -166,6 +177,9 @@ msgstr ""
 "0.684b</b>) ou disque importé depuis un autre OS.<br /><b>CD/DVD ou Ancien "
 "RAID logiciel</b> pour les volumes d'ancien RAID logiciel (<b>créé avant "
 "0.68</b>) ou CD/DVD."
+
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr ""
 
 msgid ""
 "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
@@ -248,6 +262,9 @@ msgstr ""
 "Une clef comprend 5 ou 13 caractères( 40 ou 104 bits), selon le réseau local "
 "et les capacités de l'adaptateur. Elle peut être spécifiée dans une chaîne "
 "texte ou hexadécimale précédée par '0x'."
+
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr ""
 
 msgid "A route to this destination network already exists."
 msgstr "Une route pour cette destination existe déjà."
@@ -2309,9 +2326,6 @@ msgstr "Autorise l'accès au portail utilisateur."
 msgid "Graph"
 msgstr "Graphes"
 
-msgid "Graph shows last"
-msgstr "Le graphique montre la dernière"
-
 msgid "Graph shows last 120 seconds"
 msgstr "Le graphique montre la dernière 120 secondes"
 
@@ -2829,6 +2843,12 @@ msgstr "Lecture/écriture élargie"
 
 msgid "Last config change"
 msgstr "Dernière modification de la configuration"
+
+msgid "Latest nightly build available: "
+msgstr ""
+
+msgid "Latest stable build available: "
+msgstr ""
 
 msgid "Latvian"
 msgstr "Letton"
@@ -3526,6 +3546,9 @@ msgstr "Ancien mot de passe"
 
 msgid "On"
 msgstr "Allumé"
+
+msgid "Online version check:"
+msgstr ""
 
 msgid ""
 "Only allow anonymous users. Use this on a public FTP site with no remote FTP "
@@ -6491,6 +6514,12 @@ msgstr ""
 "Vous devriez utiliser HTTPS comme protocole webGUI pour envoyer la phrase de "
 "passe."
 
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr ""
+
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr ""
+
 msgid "Your ZFS system is not healthy."
 msgstr "Votre système ZFS est dégradé."
 
@@ -6628,9 +6657,6 @@ msgstr "Echecs du scan de la cible."
 msgid "second(s)"
 msgstr "seconde(s)"
 
-msgid "seconds"
-msgstr "secondes"
-
 msgid "striping"
 msgstr "striping"
 
@@ -6651,6 +6677,9 @@ msgstr "upriv"
 
 #~ msgid "Date"
 #~ msgstr "Date"
+
+#~ msgid "seconds"
+#~ msgstr "secondes"
 
 #~ msgid "hours"
 #~ msgstr "heures"
@@ -7264,3 +7293,6 @@ msgstr "upriv"
 
 #~ msgid "IRC Live support"
 #~ msgstr "Canal IRC du support"
+
+#~ msgid "Graph shows last"
+#~ msgstr "Le graphique montre la dernière"

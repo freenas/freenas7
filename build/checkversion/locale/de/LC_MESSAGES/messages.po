@@ -2,62 +2,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-09 17:06-0600\n"
-"PO-Revision-Date: 2011-06-10 11:25-0600\n"
-"Last-Translator: Kevin Fowler <kfowler@i-support.us>\n"
+"POT-Creation-Date: 2011-06-12 14:15+0000\n"
+"PO-Revision-Date: 2011-06-12 22:10+0100\n"
+"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-01 23:52+0000\n"
-"X-Generator: Launchpad (build 13144)\n"
+"X-Launchpad-Export-Date: 2011-06-12 12:36+0000\n"
+"X-Generator: Launchpad (build 13175)\n"
 "X-Poedit-Country: GERMANY\n"
 "Language: \n"
 "X-Poedit-Language: German\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: C:\\project\n"
-"X-Poedit-SearchPath-1: .\n"
 
-#: C:\project/checkversion.php:108
-msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
-msgstr "<b>Sie sind unter Verwendung der neuesten Beta von FreeNAS zu bauen.</b>"
-
-#: C:\project/checkversion.php:112
-msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
-msgstr "<b>Eine neuere Beta-Version von FreeNAS als das Sie derzeit erhältlich ist!</b>"
-
-#: C:\project/checkversion.php:116
-msgid "<b>A newer Stable build release is available for your server!</b>"
-msgstr "<b>Eine neuere Stable Build Release ist für den Server verfügbar!</b>"
-
-#: C:\project/checkversion.php:118
-msgid "A newer <b>Nightly</b> build release is available for your server!"
-msgstr "Eine neuere <b>Nightly</b> bauen Pressemitteilung ist verfügbar für Ihren Server!"
-
-#: C:\project/checkversion.php:125
-msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
-msgstr "Sie sind momentan die neueste <b>Stabile</b> von FreeNAS zu bauen."
-
-#: C:\project/checkversion.php:128
-msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
-msgstr "Sie sind momentan die neueste <b>Nightly</b> von FreeNAS zu bauen."
-
-#: C:\project/checkversion.php:137
 msgid "<HR color='#999999'>Your FreeNAS version: "
-msgstr "<HR color='#999999'>Ihre FreeNAS Version:"
+msgstr "<HR color='#999999'>Deine FreeNAS Version: "
 
-#: C:\project/checkversion.php:143
-msgid "Online version check:"
-msgstr "Online-Version zu überprüfen:"
+msgid "<b>A newer Beta version of FreeNAS than the one you're currently using is available!</b>"
+msgstr "<b>Es ist eine neuere Beta Version von FreeNAS verfügbar, Deine Version, scheint veraltet zu sein! </b>"
 
-#: C:\project/checkversion.php:147
-msgid "Latest stable build available: "
-msgstr "Letzte stabile Aufbau zur Verfügung:"
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr "<b>Es ist eine neue stabile Version für Deinen Server verfügbar!</b>"
 
-#: C:\project/checkversion.php:149
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr "<b>Du benutzt, die zurzeit am meisten Installierte Beta Version von FreeNAS.</b>"
+
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr "Eine neue <b>nächtliche</b> Version ist für Deinen Server verfügbar!"
+
 msgid "Latest nightly build available: "
-msgstr "Aktuelle Nightly Build zur Verfügung:"
+msgstr "Letzte nächtliche Version verfügbar: "
+
+msgid "Latest stable build available: "
+msgstr "Letzte stabile Version verfügbar: "
+
+msgid "Online version check:"
+msgstr "Online Versionscheck:"
+
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr "Du benutzt  zur Zeit die Letzte <b>nächtliche</b> Version von FreeNAS."
+
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr "Du benutzt  zur Zeit die Letzte <b>stabile</b> Version von FreeNAS."
 
 #~ msgid "%s is used to create %s volumes."
 #~ msgstr "%s wird benutzt um %s Volumes zu erzeugen."
@@ -2212,6 +2199,9 @@ msgstr "Aktuelle Nightly Build zur Verfügung:"
 #~ msgid "Firmware uploading is not supported on this platform."
 #~ msgstr "Firmware-Upload wird auf dieser Plattform nicht unterstützt."
 
+#~ msgid "Firmware version check"
+#~ msgstr "Überprüfung der Firmware-Version"
+
 #~ msgid "FirstBurstLength"
 #~ msgstr "FirstBurstLength"
 
@@ -2298,9 +2288,6 @@ msgstr "Aktuelle Nightly Build zur Verfügung:"
 
 #~ msgid "Graph"
 #~ msgstr "Graph"
-
-#~ msgid "Graph shows last"
-#~ msgstr "Graph zeigt die letzten"
 
 #~ msgid "Graph shows last 120 seconds"
 #~ msgstr "Graph zeigt die letzten 120 Sekunden"
@@ -5900,10 +5887,10 @@ msgstr "Aktuelle Nightly Build zur Verfügung:"
 #~ msgstr ""
 #~ "Um das Target zu konfigurieren muss mindestens eine Portal-Gruppe, eine "
 #~ "Initiator-Gruppe und ein Extent hinzugefügt werden.<br />Portal-Gruppen "
-#~ "(numerisch) definiert die IP-Adressen und zuhörenden TCP-Ports.\r\n"
-#~ "<br />Initiator-Gruppe (numerisch) definiert die authorisierten Initiator-"
-#~ "Namen und Netzwerke.\r\n"
-#~ "<br />Extent definiert den Speicherbereich auf dem Target."
+#~ "(numerisch) definiert die IP-Adressen und zuhörenden TCP-Ports.<br /"
+#~ ">Initiator-Gruppe (numerisch) definiert die authorisierten Initiator-"
+#~ "Namen und Netzwerke.<br />Extent definiert den Speicherbereich auf dem "
+#~ "Target."
 
 #~ msgid "To e-mail"
 #~ msgstr "An E-Mail-Adresse"
@@ -6599,9 +6586,6 @@ msgstr "Aktuelle Nightly Build zur Verfügung:"
 #~ msgid "second(s)"
 #~ msgstr "Sekunde(n)"
 
-#~ msgid "seconds"
-#~ msgstr "Sekunden"
-
 #~ msgid "striping"
 #~ msgstr "striping"
 
@@ -6634,6 +6618,9 @@ msgstr "Aktuelle Nightly Build zur Verfügung:"
 
 #~ msgid "Date"
 #~ msgstr "Datum"
+
+#~ msgid "seconds"
+#~ msgstr "Sekunden"
 
 #~ msgid "hours"
 #~ msgstr "Stunden"
@@ -6723,6 +6710,9 @@ msgstr "Aktuelle Nightly Build zur Verfügung:"
 
 #~ msgid "Shutdown Time"
 #~ msgstr "Shutdownzeit"
+
+#~ msgid "Graph shows last"
+#~ msgstr "Graph zeigt die letzten"
 
 #~ msgid ""
 #~ "This will cause %s not to check for newer firmware versions when the <a "

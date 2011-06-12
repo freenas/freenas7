@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-25 21:45+0000\n"
-"PO-Revision-Date: 2011-06-02 15:42+0000\n"
-"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2011-06-11 19:18+0000\n"
+"PO-Revision-Date: 2011-06-11 02:35+0000\n"
+"Last-Translator: jfunez <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-02 16:36+0000\n"
-"X-Generator: Launchpad (build 13144)\n"
+"X-Launchpad-Export-Date: 2011-06-12 10:01+0000\n"
+"X-Generator: Launchpad (build 13175)\n"
 "X-Poedit-Country: SPAIN\n"
 "Language: \n"
 "X-Poedit-Language: Spanish\n"
@@ -108,6 +108,9 @@ msgstr "etiqueta VLAN 802.1Q (entre 1 y 4094)"
 msgid "<->"
 msgstr "<->"
 
+msgid "<HR color='#999999'>Your FreeNAS version: "
+msgstr ""
+
 #, php-format
 msgid ""
 "<a href='%s'>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -115,6 +118,14 @@ msgid ""
 msgstr ""
 "<a href='%s'>SSH</a> debe estar habilitada por Unison para funcionar, y el "
 "<a href='%s'>usuario</a> debe tener acceso a la consola."
+
+msgid ""
+"<b>A newer Beta version of FreeNAS than the one you're currently using is "
+"available!</b>"
+msgstr ""
+
+msgid "<b>A newer Stable build release is available for your server!</b>"
+msgstr ""
 
 msgid ""
 "<b>EFI GPT</b> if you want to mount a GPT formatted drive (<b>default "
@@ -129,6 +140,9 @@ msgstr ""
 "discos importados de otro sistema operativo. <br /> <b>CD / DVD o el "
 "SoftwareRAID Viejo</b> para los viejos volúmenes SoftwareRAID (<b>creados "
 "antes de la versión 0.68</b>) o de CD / DVD."
+
+msgid "<b>You are using the most recent Beta build of FreeNAS.</b>"
+msgstr ""
 
 msgid ""
 "<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
@@ -210,6 +224,9 @@ msgstr ""
 "local y de las capacidades del equipo. Puede ser especificado "
 "indistintamente como texto plano o como digitos hexadecimales precedidos por "
 "'0x'."
+
+msgid "A newer <b>Nightly</b> build release is available for your server!"
+msgstr ""
 
 msgid "A route to this destination network already exists."
 msgstr "Ya existe una ruta a esta red de destino."
@@ -582,7 +599,7 @@ msgid "Anonymous"
 msgstr "Anónimo"
 
 msgid "Anonymous bind"
-msgstr "Vínculo anónimo"
+msgstr "Enlace anónimo"
 
 msgid "Anonymous user bandwidth"
 msgstr "Ancho de banda de usuario anónimo"
@@ -728,7 +745,7 @@ msgid "Bind DN"
 msgstr "Bind DN"
 
 msgid "Bind password"
-msgstr "Contraseña de Bind"
+msgstr "Contraseña de enlace"
 
 msgid "BitTorrent"
 msgstr "BitTorrent"
@@ -1328,7 +1345,7 @@ msgid "Device Pass-through"
 msgstr "Dispositivo por medio de paso"
 
 msgid "Device model"
-msgstr "Modo Dispositivo"
+msgstr "Modelo del Dispositivo"
 
 msgid "Device name"
 msgstr "Nombre del dispositivo"
@@ -1779,7 +1796,7 @@ msgstr ""
 "Habilitar Zeroconf/Bonjour para advertir servicios en éste dispositivo"
 
 msgid "Enable anonymous bind."
-msgstr "Permitir vinculo anonimo"
+msgstr "Permitir enlace anónimo"
 
 msgid "Enable authentication."
 msgstr "Activar autentificacion."
@@ -1849,7 +1866,7 @@ msgid "Enable recycle bin"
 msgstr "Habilitar papelera de reciclaje"
 
 msgid "Enable remote monitoring of the local connected UPS."
-msgstr "Habilitar supervisión remota de la UPS conectada localmente"
+msgstr "Habilitar supervisión remota de la SAI conectada localmente"
 
 msgid ""
 "Enable reverse DNS lookup performed on the remote host's IP address for "
@@ -2268,9 +2285,6 @@ msgstr "Otorga acceso al portal de usuario."
 
 msgid "Graph"
 msgstr "Gráfica"
-
-msgid "Graph shows last"
-msgstr "El gráfico muestra los últimos"
 
 msgid "Graph shows last 120 seconds"
 msgstr "El gráfico muestra los últimos 120 segundos"
@@ -2789,6 +2803,12 @@ msgstr "Gran lectura/escritura"
 
 msgid "Last config change"
 msgstr "Ultimo cambio en la configuracion"
+
+msgid "Latest nightly build available: "
+msgstr ""
+
+msgid "Latest stable build available: "
+msgstr ""
 
 msgid "Latvian"
 msgstr "Lituano"
@@ -3479,6 +3499,9 @@ msgstr "Contraseña anterior"
 msgid "On"
 msgstr "Encendido"
 
+msgid "Online version check:"
+msgstr ""
+
 msgid ""
 "Only allow anonymous users. Use this on a public FTP site with no remote FTP "
 "access to real accounts."
@@ -3761,7 +3784,7 @@ msgid "PostInit"
 msgstr "PostInit"
 
 msgid "Power Daemon"
-msgstr "Daemon de alimentación electrica (UPS)"
+msgstr "Demonio de alimentación electrica (SAI)"
 
 msgid "Power mode"
 msgstr "Modo de energia"
@@ -4057,10 +4080,10 @@ msgid "Root"
 msgstr "Raiz (root)"
 
 msgid "Root bind DN"
-msgstr "DN de la raiz de bind"
+msgstr "Enlace raiz DN"
 
 msgid "Root bind password"
-msgstr "Contraseña de la raíz de bind"
+msgstr "Contraseña de la raiz de enlace"
 
 msgid "Round-robin read"
 msgstr "Round-Robin leido"
@@ -4670,7 +4693,7 @@ msgid "TCP port"
 msgstr "Puerto TCP"
 
 msgid "TCP port to bind the server to."
-msgstr "Puerto TCP que usara el servidor"
+msgstr "Puerto TCP que enlazara al servidor"
 
 msgid "TFTP"
 msgstr "TFTP"
@@ -4968,7 +4991,7 @@ msgstr ""
 "para que los cambios tengan efecto."
 
 msgid "The cleartext credentials with which to bind."
-msgstr "La credencial de texto en claro con la cual se atará."
+msgstr "La credencial de texto en claro con la cual se enlazará"
 
 msgid "The command to be executed."
 msgstr "El comando a ser ejecutado."
@@ -4999,7 +5022,7 @@ msgstr ""
 "contraseñas concuerdan"
 
 msgid "The credentials with which to bind."
-msgstr "Las credenciales con las cuales se atará."
+msgstr "Las credenciales con las cuales se enlazará"
 
 msgid "The cron job has been executed successfully."
 msgstr "El proceso cron se ha ejecutado con exito."
@@ -5057,8 +5080,8 @@ msgstr "El disco/partición ya ha sido configurado"
 msgid ""
 "The distinguished name with which to bind to the directory server, e.g. %s"
 msgstr ""
-"Nombre Distinguido (DN) con el cual se atará al directorio del servidor, por "
-"ejemplo %s"
+"Nombre Distinguido (DN) con el cual se enlazará al directorio del servidor, "
+"por ejemplo %s"
 
 #, php-format
 msgid ""
@@ -6486,6 +6509,12 @@ msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
 "Deberia emplear HTTPS como protocolo del WebGUI para enviar la contraseña."
 
+msgid "You're currently running the latest <b>Nightly</b> build of FreeNAS."
+msgstr ""
+
+msgid "You're currently running the latest <b>Stable</b> build of FreeNAS."
+msgstr ""
+
 msgid "Your ZFS system is not healthy."
 msgstr "Su sistema ZFS esta dañado"
 
@@ -6623,9 +6652,6 @@ msgstr "Fallo la busqueda del objetivo"
 msgid "second(s)"
 msgstr "segundo(s)"
 
-msgid "seconds"
-msgstr "segundos"
-
 msgid "striping"
 msgstr "striping"
 
@@ -6668,6 +6694,9 @@ msgstr "upriv"
 #~ "continuación, luego seleccione el fichero de la imagen a enviar.<br>Click "
 #~ "&quot;Actualizar Sistema Base&quot; para comenzar el proceso de "
 #~ "actualización."
+
+#~ msgid "seconds"
+#~ msgstr "segundos"
 
 #~ msgid "day"
 #~ msgstr "día"
@@ -6772,6 +6801,9 @@ msgstr "upriv"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Crear el directorio de trabajo si no existe"
+
+#~ msgid "Graph shows last"
+#~ msgstr "El gráfico muestra los últimos"
 
 #, php-format
 #~ msgid ""
