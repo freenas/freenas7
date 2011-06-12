@@ -1,5 +1,5 @@
 #!/bin/sh
-# Extract gettext strings from checkfirmware.php to make pot.
+# Extract gettext strings from checkfirmware.php to make pot file.
 # Created: 11-06-2011 by Michael Zoon (michael.zoon@freenas.org) 
 
 # Global variables
