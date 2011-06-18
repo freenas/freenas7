@@ -1,5 +1,5 @@
---- pmap.h.orig	2010-02-10 09:26:20.000000000 +0900
-+++ pmap.h	2010-12-23 21:44:18.000000000 +0900
+--- /usr/src/sys/amd64/include/pmap.h.orig	2010-12-21 17:10:29.000000000 +0000
++++ /usr/src/sys/amd64/include/pmap.h	2011-06-18 10:24:48.000000000 +0000
 @@ -115,7 +115,7 @@
  
  /* Initial number of kernel page tables. */

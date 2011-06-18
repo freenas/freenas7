@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.474.2.22.2.1 2010/02/10 00:26:20 kensmith Exp $
+# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.474.2.23.2.1 2010/12/21 17:10:29 kensmith Exp $
 
 machine		i386
 cpu		I486_CPU
@@ -225,6 +225,7 @@ device		pcn		# AMD Am79C97x PCI 10/100 (precedence over 'le')
 device		re		# RealTek 8139C+/8169/8169S/8110S
 device		rl		# RealTek 8129/8139
 device		sf		# Adaptec AIC-6915 (``Starfire'')
+device		sge		# Silicon Integrated Systems SiS190/191
 device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
 device		sk		# SysKonnect SK-984x & SK-982x gigabit Ethernet
 device		ste		# Sundance ST201 (D-Link DFE-550TX)
