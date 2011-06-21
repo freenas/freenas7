@@ -1,8 +1,9 @@
-FreeNAS 0.7.3 (Sabanda):
+FreeNAS 0.7.3 (RC-1):
 ------------------------
 
 Majors changes:
 - Upgrade to FreeBSD 7.4-p2.
+- Upgrade mDNSResponder to 258.18.
 
 Minors changes:
 -

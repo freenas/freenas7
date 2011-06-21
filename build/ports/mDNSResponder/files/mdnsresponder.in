@@ -1,4 +1,5 @@
 #!/bin/sh
+# Copyright (c) 2011 Michael Zoon (michael.zoon@freenas.org)
 # Copyright (c) 2006-2010 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 #
@@ -26,7 +27,7 @@ extra_commands="mkconf"
 
 # Defaults
 mdnsresponder_config=${mdnsresponder_config:-"/var/etc/${name}.conf"}
-pidfile="/var/run/mDNSResponder.pid"
+pidfile="/var/run/mdnsresponder.pid"
 command="/usr/local/sbin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 
