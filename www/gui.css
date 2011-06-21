@@ -297,6 +297,12 @@ div#pagefooter span a:link, div#pagefooter span a:active, div#pagefooter span a:
 div#pagefooter span a:hover {
 	color: #999999;
 }
+div#loginfooter {
+	position: fixed;
+	botton: 0;
+	margin: 5px 0px 20px 0px;
+	text-align: center;
+}
 div#headernavbar {
 	width: 100%;
 	background: black url(/navbar_default.gif) center center repeat-x;
@@ -342,16 +348,14 @@ div#diskusage .capacity {
 	width: 2px;
 }
 div#loginpage {
-	background-image: url("login_bg.png");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
-	height: 100%;
-	width: 100%;
+	position: relative;
+	left: 42.5%;
+	width: 15%;
+	height: auto;
 }
 div#loginbox {
-	background: #GGGGGG url(gradient.gif) repeat-x scroll left top;
-	border: 1px solid #DEDBD1;
+	background-image: url(vncell_bg.png);
+	border: 1px solid #000000;
 	padding: 20px 25px 20px 25px;
 }
 pre.cmdoutput {
