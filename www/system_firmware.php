@@ -3,7 +3,7 @@
 /*
 	system_firmware.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Modified by Michael Zoon
@@ -11,7 +11,7 @@
 	All rights reserved.
 
 	Part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -49,7 +49,6 @@ $pgtitle = array(gettext("System"), gettext("Firmware"));
 /* checks with /etc/firm.url to see if a newer firmware version online is available;
    returns any HTML message it gets from the server */
 $locale = $config['system']['language'];
-
 function check_firmware_version($locale) {
 	global $g;
 
@@ -108,6 +107,9 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				$input_errors[] = gettext("Failed to create in-memory file system.");
 			}
 		} else if ($mode === "disable") {
+			if (!isset($config['system']['disablefirmwarecheck'])) {
+				$fwinfo = check_firmware_version($locale);
+			} else {}
 			rc_exec_script("/etc/rc.firmware disable");
 			if (file_exists($d_fwupenabled_path))
 				unlink($d_fwupenabled_path);
