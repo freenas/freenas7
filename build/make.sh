@@ -71,6 +71,10 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 #FREENAS_IMG_SIZE=66
 FREENAS_MFSROOT_SIZE=192
 FREENAS_IMG_SIZE=72
+if [ "amd64" = ${FREENAS_ARCH} ]; then
+	FREENAS_MFSROOT_SIZE=200
+	FREENAS_IMG_SIZE=75
+fi
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
@@ -341,7 +345,7 @@ add_libs() {
 
 	# Identify required libs.
 	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
-	dirs=(${FREENAS_ROOTFS}/bin ${FREENAS_ROOTFS}/sbin ${FREENAS_ROOTFS}/usr/bin ${FREENAS_ROOTFS}/usr/sbin ${FREENAS_ROOTFS}/usr/local/bin ${FREENAS_ROOTFS}/usr/local/sbin ${FREENAS_ROOTFS}/usr/lib ${FREENAS_ROOTFS}/usr/local/lib ${FREENAS_ROOTFS}/usr/libexec ${FREENAS_ROOTFS}/usr/local/libexec)
+	dirs=(${FREENAS_ROOTFS}/bin ${FREENAS_ROOTFS}/sbin ${FREENAS_ROOTFS}/usr/bin ${FREENAS_ROOTFS}/usr/sbin ${FREENAS_ROOTFS}/usr/local/bin ${FREENAS_ROOTFS}/usr/local/sbin ${FREENAS_ROOTFS}/usr/lib ${FREENAS_ROOTFS}/usr/local/lib ${FREENAS_ROOTFS}/usr/libexec ${FREENAS_ROOTFS}/usr/local/libexec ${FREENAS_ROOTFS}/etc/uams)
 	for i in ${dirs[@]}; do
 		for file in $(find -L ${i} -type f -print); do
 			ldd -f "%p\n" ${file} 2> /dev/null >> /tmp/lib.list
