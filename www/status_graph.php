@@ -68,7 +68,7 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 }
 ?>
 <form name="form1" action="status_graph.php" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
-Interface: 
+<?=gettext("Interface");?>:
 <select name="if" class="formfld" onchange="document.form1.submit()">
 <?php
 foreach ($ifdescrs as $ifn => $ifd) {
