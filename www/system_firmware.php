@@ -3,7 +3,7 @@
 /*
 	system_firmware.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Modified by Michael Zoon
@@ -11,7 +11,7 @@
 	All rights reserved.
 
 	Part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -53,14 +53,25 @@ $locale = $config['system']['language'];
 function check_firmware_version($locale) {
 	global $g;
 
-	$post = "platform=".rawurlencode($g['fullplatform'])."&version=".rawurlencode(get_product_version());
+	$post = "product=".rawurlencode(get_product_name())
+	      . "&platform=".rawurlencode($g['fullplatform'])
+	      . "&version=".rawurlencode(get_product_version())
+	      . "&revision=".rawurlencode(get_product_revision());
+	$url = trim(get_firm_url());
+	if (preg_match('/^([^\/]+)(\/.*)/', $url, $m)) {
+		$host = $m[1];
+		$path = $m[2];
+	} else {
+		$host = $url;
+		$path = "";
+	}
 
-	$rfd = @fsockopen(get_firm_url(), 80, $errno, $errstr, 3);
+	$rfd = @fsockopen($host, 80, $errno, $errstr, 3);
 	if ($rfd) {
-		$hdr = "POST /checkversion.php?locale=$locale HTTP/1.0\r\n";
+		$hdr = "POST $path/checkversion.php?locale=$locale HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
 		$hdr .= "User-Agent: ".get_product_name()."-webGUI/1.0\r\n";
-		$hdr .= "Host: ".get_firm_url()."\r\n";
+		$hdr .= "Host: ".$host."\r\n";
 		$hdr .= "Content-Length: ".strlen($post)."\r\n\r\n";
 
 		fwrite($rfd, $hdr);
@@ -84,6 +95,66 @@ function check_firmware_version($locale) {
 	}
 
 	return null;
+}
+
+function get_latest_file($rss) {
+	global $g;
+	$product =get_product_name();
+	$platform = $g['fullplatform'];
+	$version = get_product_version();
+	$revision = get_product_revision();
+	if (preg_match("/^(.*?)(\d+)$/", $revision, $m)) {
+		$revision = $m[2];
+	}
+	$ext = "img";
+
+	$resp = "";
+	$xml = simplexml_load_file($rss);
+	if (empty($xml)) return $resp;
+	foreach ($xml->channel->item as $item) {
+		$link = $item->link;
+		$title = $item->title;
+		$date = $item->pubDate;
+		$parts = pathinfo($title);
+		if (empty($parts['extension']) || strcasecmp($parts['extension'], $ext) != 0)
+			continue;
+		$filename = $parts['filename'];
+		$fullname = $parts['filename'].".".$parts['extension'];
+
+		if (preg_match("/^{$product}-{$platform}-(.*?)\.(\d+)$/", $filename, $m)) {
+			$filever = $m[1];
+			$filerev = $m[2];
+			if ($version < $filever
+			    || ($version == $filever && $revision < $filerev)) {
+				$resp .= sprintf("<a href=\"%s\" title=\"%s\" target=\"_blank\">%s</a> (%s)",
+					htmlspecialchars($link), htmlspecialchars($title),
+					htmlspecialchars($fullname), htmlspecialchars($date));
+			} else {
+				$resp .= sprintf("%s (%s)", htmlspecialchars($fullname),
+					htmlspecialchars($date));
+			}
+			break;
+		}
+	}
+	return $resp;
+}
+
+function check_firmware_version_rss($locale) {
+	$rss_stable = "http://sourceforge.net/api/file/index/project-id/151951/path/FreeNAS-7-Stable/mtime/desc/limit/20/rss";
+	$rss_nightly = "http://sourceforge.net/api/file/index/project-id/151951/path/FreeNAS-7-nightly/mtime/desc/limit/20/rss";
+
+	$stable = get_latest_file($rss_stable);
+	$nightly = get_latest_file($rss_nightly);
+	$resp = "";
+	if (!empty($stable)) {
+		$resp .= sprintf(gettext("Latest stable build: %s"), $stable);
+		$resp .= "<br />\n";
+	}
+	if (!empty($nightly)) {
+		$resp .= sprintf(gettext("Latest nightly build: %s"), $nightly);
+		$resp .= "<br />\n";
+	}
+	return $resp;
 }
 
 if ($_POST && !file_exists($d_firmwarelock_path)) {
@@ -163,8 +234,15 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 		}
 	}
 } else {
-	if (!isset($config['system']['disablefirmwarecheck']))
-		$fwinfo = check_firmware_version($locale);
+	$mode = "default";
+}
+if ($mode === "default" || $mode === "enable" || $mode === "disable") {
+	if (!isset($config['system']['disablefirmwarecheck'])) {
+		$fwinfo = check_firmware_version_rss($locale);
+		if (empty($fwinfo)) {
+			//$fwinfo = check_firmware_version($locale);
+		}
+	}
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -173,7 +251,19 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
     <td class="tabcont">
 			<?php if ($input_errors) print_input_errors($input_errors); ?>
 			<?php if ($savemsg) print_info_box($savemsg); ?>
-			<?php if ($fwinfo) echo "{$fwinfo}<br />";?>
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+			<?php html_titleline(gettext("Firmware"));?>
+			<?php html_text("version", gettext("Version"), sprintf("%s %s (%s)", get_product_name(), get_product_version(), get_product_revision()));?>
+			<?php html_separator();?>
+			<?php if ($fwinfo) {
+				html_titleline(gettext("Online version check"));
+				echo "<tr id='fwinfo'><td class='vtable' colspan='2'>";
+				echo "{$fwinfo}";
+				echo "</td></tr>\n";
+				html_separator();
+			      }
+			?>
+			</table>
 			<?php if (!in_array($g['platform'], $fwupplatforms)): ?>
 			<?php print_error_box(gettext("Firmware uploading is not supported on this platform."));?>
 			<?php elseif ($sig_warning && !$input_errors): ?>
