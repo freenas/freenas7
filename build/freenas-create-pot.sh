@@ -22,8 +22,8 @@ xgettext ${PARAMETERS} --join-existing *.*
 cd ${FREENAS_SVNDIR}/etc/inc
 xgettext ${PARAMETERS} --join-existing *.*
 
-cd ${FREENAS_SVNDIR}/build/checkversion
-xgettext ${PARAMETERS} --join-existing *.*
+#cd ${FREENAS_SVNDIR}/build/checkversion
+#xgettext ${PARAMETERS} --join-existing *.*
 
 DATE="$(date "+%Y-%m-%d %H:%M")+0000"
 echo "msgid \"\"

@@ -52,7 +52,7 @@ FreeNAS 0.7.2 (Sabanda):
 - Add virtual machine guest support (open-vm-tools/vbox-additions).
 - Upgrade inadyn-mt to 02.24.36.
 - Upgrade bash to 4.1.011.
-- Upgrade istgt to 20110918.
+- Upgrade istgt to 20110928.
 - Upgrade msmtp to 1.4.24.
 - Upgrade nano to 2.2.6.
 - Upgrade gzip to 1.4.
