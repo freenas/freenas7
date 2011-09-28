@@ -149,7 +149,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 		$pconfig['type'] = "Disk";
 	}
 	if (!isset($pconfig['queuedepth'])){
-		$pconfig['queuedepth'] = 0;
+		$pconfig['queuedepth'] = 32;
 	}
 	$type = $pconfig['type'];
 	if ($type == "Disk"){
@@ -210,7 +210,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_iscsitarget_ta
 	}
 	$pconfig['authmethod'] = "Auto";
 	$pconfig['digest'] = "Auto";
-	$pconfig['queuedepth'] = 0;
+	$pconfig['queuedepth'] = 32;
 	$pconfig['inqvendor'] = "";
 	$pconfig['inqproduct'] = "";
 	$pconfig['inqrevision'] = "";
