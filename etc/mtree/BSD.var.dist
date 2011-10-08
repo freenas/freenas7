@@ -16,6 +16,8 @@
     etc            
         iscsi          
         ..
+        netatalk       
+        ..
         private        
         ..
         ssh            

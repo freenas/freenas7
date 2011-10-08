@@ -109,7 +109,7 @@ function get_latest_file($rss) {
 	$ext = "img";
 
 	$resp = "";
-	$xml = simplexml_load_file($rss);
+	$xml = @simplexml_load_file($rss);
 	if (empty($xml)) return $resp;
 	foreach ($xml->channel->item as $item) {
 		$link = $item->link;

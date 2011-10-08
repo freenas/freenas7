@@ -69,7 +69,7 @@ case ${PLATFORM} in
 esac
 
 # Create required directories in /var
-for dir in /var/run /var/log /var/etc /var/etc/ssh /var/etc/ssl/private /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs /var/spool /var/spool/lock; do
+for dir in /var/run /var/log /var/etc /var/etc/ssh /var/etc/ssl/private /var/etc/private /var/etc/iscsi /var/etc/netatalk /var/db /var/mount /var/empty  /var/cron /var/cron/tabs /var/spool /var/spool/lock; do
 	[ ! -d "${dir}" ] && mkdir -p ${dir} 
 done
 if [ ! -d /var/tmp ]; then
