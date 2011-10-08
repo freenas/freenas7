@@ -70,10 +70,10 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 #FREENAS_MFSROOT_SIZE=164
 #FREENAS_IMG_SIZE=66
 FREENAS_MFSROOT_SIZE=192
-FREENAS_IMG_SIZE=72
+FREENAS_IMG_SIZE=76
 if [ "amd64" = ${FREENAS_ARCH} ]; then
-	FREENAS_MFSROOT_SIZE=200
-	FREENAS_IMG_SIZE=75
+	FREENAS_MFSROOT_SIZE=204
+	FREENAS_IMG_SIZE=80
 fi
 
 # Media geometry, only relevant if bios doesn't understand LBA.
