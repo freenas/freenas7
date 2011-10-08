@@ -1,17 +1,17 @@
-PORTNAME=			mDNSResponder
-PORTVERSION=	108.6
+PORTNAME=		mDNSResponder
+PORTVERSION=		320.5.1
 CATEGORIES=		net dns
-COMMENT=			Apple's mDNSResponder
-MAINTAINER=		votdev@gmx.de
+COMMENT=		Apple's mDNSResponder
+MAINTAINER=		aoyama@peach.ne.jp
 
 MASTER_SITES=	http://www.opensource.apple.com/tarballs/mDNSResponder/
-DISTNAME=			${PORTNAME}-${PORTVERSION}
+DISTNAME=		${PORTNAME}-${PORTVERSION}
 
 USE_LDCONFIG=		YES
-USE_GMAKE=			YES
-MAKE_ARGS+=			os=freebsd LOCALBASE=${PREFIX}
+USE_GMAKE=		YES
+MAKE_ARGS+=		os=freebsd LOCALBASE=${PREFIX}
 BUILD_WRKSRC=		${WRKSRC}/mDNSPosix
-CONFLICTS=			avahi-libdns-[0-9]*
+CONFLICTS=		avahi-libdns-[0-9]*
 
 .include <bsd.port.pre.mk>
 
@@ -21,7 +21,9 @@ pre-build:
 		${WRKSRC}/mDNSPosix/Makefile
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/mDNSResponderPosix ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/mDNSResponderPosix ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/mDNSIdentify ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/mDNSNetMonitor ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${BUILD_WRKSRC}/build/prod/libdns_sd.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/mdnsresponder.in ${FREENAS_ROOTFS}/etc/rc.d/mdnsresponder
 

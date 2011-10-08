@@ -27,7 +27,7 @@ extra_commands="mkconf"
 # Defaults
 mdnsresponder_config=${mdnsresponder_config:-"/var/etc/${name}.conf"}
 pidfile="/var/run/mDNSResponder.pid"
-command="/usr/local/sbin/mDNSResponderPosix"
+command="/usr/local/bin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 
 stop_cmd="kill -s int `cat ${pidfile}`"
