@@ -305,7 +305,7 @@ function adisk_change() {
 					  	<span class="vexpl"><?=gettext("Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only.");?></span>
 					  </td>
 					</tr>
-					<?php html_combobox("cnidscheme", gettext("cnidscheme"), $pconfig['cnidscheme'], array("" => "Default", "cdb" => "cdb", "dbd" => "dbd", "last" => "last"), gettext("Set the CNID backend to be used for the volume."));?>
+					<?php html_combobox("cnidscheme", gettext("cnidscheme"), $pconfig['cnidscheme'], array("" => "Default", "dbd" => "dbd", "last" => "last"), gettext("Set the CNID backend to be used for the volume."));?>
 					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("cachecnid");?></td>
 			      <td width="78%" class="vtable">
