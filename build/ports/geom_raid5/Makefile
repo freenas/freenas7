@@ -1,11 +1,11 @@
 # wgboome.homepage.t-online.de/geom_raid5.tbz
-PORTNAME=			geom_raid5
-PORTVERSION=	1.0
-PORTREVISION=	0
-PORTEPOCH=		2
+PORTNAME=		geom_raid5
+PORTVERSION=		1.0
+PORTREVISION=		0
+PORTEPOCH=		3
 CATEGORIES=		sysutils
-COMMENT=			GEOM RAID5 filesystem
-MAINTAINER=		votdev@gmx.de
+COMMENT=		GEOM RAID5 filesystem
+MAINTAINER=		aoyama@peach.ne.jp
 
 DISTFILES?=
 
@@ -14,6 +14,8 @@ do-build:
 
 	# Patch geom raid 5 for FreeBSD 8.0.
 	@${PATCH} -f /usr/src/sys/geom/raid5/g_raid5.c ${FILESDIR}/g_raid5.c.patch
+	@${PATCH} -f /usr/src/sbin/geom/class/raid5/Makefile ${FILESDIR}/Makefile.patch
+	@${PATCH} -f /usr/src/sbin/geom/class/raid5/geom_raid5.c ${FILESDIR}/geom_raid5.c.patch
 
 	# Make kernel module.
 	@${MAKE} -C /usr/src/sys/modules/geom/geom_raid5 depend

@@ -10,6 +10,7 @@ USE_MAKE=				yes
 USE_AUTOTOOLS=	libtool:env
 
 post-patch:
+	@${REINPLACE_CMD} -e '32,32 s/^.*/#include <sys\/queue.h>/' ${WRKSRC}/snmp_ucd.h
 	@${REINPLACE_CMD} -e "s/LOCALBASE/PREFIX/g" ${WRKSRC}/Makefile
 
 do-install:

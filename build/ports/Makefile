@@ -18,6 +18,7 @@
     SUBDIR += host
     SUBDIR += inadyn-mt
     SUBDIR += iperf
+    SUBDIR += iscontrol
     SUBDIR += istgt
     SUBDIR += lighttpd
     SUBDIR += locale
