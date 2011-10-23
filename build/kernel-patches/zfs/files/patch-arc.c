@@ -1,7 +1,7 @@
---- src/sys/cddl/contrib/opensolaris/uts/common/fs/zfs/arc.c.orig	2010-10-08 16:36:30.000000000 +0900
-+++ src/sys/cddl/contrib/opensolaris/uts/common/fs/zfs/arc.c	2011-10-09 03:55:21.000000000 +0900
-@@ -3811,12 +3811,36 @@
- #endif
+--- src/sys/cddl/contrib/opensolaris/uts/common/fs/zfs/arc.c.orig	2011-02-28 04:41:40.000000000 +0900
++++ src/sys/cddl/contrib/opensolaris/uts/common/fs/zfs/arc.c	2011-10-17 20:07:28.000000000 +0900
+@@ -3747,12 +3747,35 @@
+ #endif	/* sun */
  	/* set min cache to 1/32 of all memory, or 16MB, whichever is more */
  	arc_c_min = MAX(arc_c / 4, 64<<18);
 +#if 0
@@ -33,11 +33,10 @@
 +	else
 +		arc_c_max = MIN(arc_c_min, (32UL * (1<<20)));
 +#endif
-+
+ 
  #ifdef _KERNEL
  	/*
- 	 * Allow the tunables to override our calculations if they are
-@@ -3849,6 +3873,19 @@
+@@ -3787,6 +3810,19 @@
  	if (zfs_arc_p_min_shift > 0)
  		arc_p_min_shift = zfs_arc_p_min_shift;
  
