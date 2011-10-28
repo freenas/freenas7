@@ -1,43 +1,43 @@
-PORTNAME=			proftpd
-PORTVERSION=	1.3.3d
-CATEGORIES=		ftp
-COMMENT=			Highly configurable ftp daemon
-MAINTAINER=		michael.zoon@freenas.org
+PORTNAME=	proftpd
+PORTVERSION=	1.3.3f
+CATEGORIES=	ftp
+COMMENT=	Highly configurable ftp daemon
+MAINTAINER=	aoyama@peach.ne.jp
 
 MASTER_SITES=	ftp://ftp.proftpd.org/distrib/source/ \
-							ftp://ftp.fastorama.com/mirrors/ftp.proftpd.org/distrib/source/ \
-							ftp://ftp.dataguard.no/ftp/pub/proftpd/distrib/source/ \
-							ftp://spirit.bentel.sk/mirrors/Proftpd/distrib/source/ \
-							ftp://proftpd.networkedsystems.co.uk/distrib/source/ \
-							http://mirrors.ibiblio.org/pub/mirrors/proftpd/distrib/source/ \
-							http://www.mirrorservice.org/sites/ftp.proftpd.org/distrib/source/
-DISTFILES=		${DISTNAME}${EXTRACT_SUFX}
+		ftp://ftp.fastorama.com/mirrors/ftp.proftpd.org/distrib/source/ \
+		ftp://ftp.dataguard.no/ftp/pub/proftpd/distrib/source/ \
+		ftp://spirit.bentel.sk/mirrors/Proftpd/distrib/source/ \
+		ftp://proftpd.networkedsystems.co.uk/distrib/source/ \
+		http://mirrors.ibiblio.org/pub/mirrors/proftpd/distrib/source/ \
+		http://www.mirrorservice.org/sites/ftp.proftpd.org/distrib/source/
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-USE_GMAKE=			yes
-USE_BZIP2=			yes
+USE_GMAKE=	yes
+USE_BZIP2=	yes
 USE_AUTOTOOLS=	autoconf
 GNU_CONFIGURE=	yes
-USE_GETTEXT=		yes
-USE_OPENSSL=		yes
+USE_GETTEXT=	yes
+USE_OPENSSL=	yes
 
-MODULES=				mod_site_misc:mod_tls:mod_wrap2:mod_ban
-OPTIONS+=                          WRAP "Include mod_wrap2" on
+MODULES=	mod_site_misc:mod_tls:mod_wrap2:mod_ban
+OPTIONS+=       WRAP "Include mod_wrap2" on
 
 CONFIGURE_ARGS=	--localstatedir=/var/run \
-								--with-pkgconfig=libdata/pkgconfig \
-								--sysconfdir=${PREFIX}/etc \
-								--disable-sendfile \
-								--enable-ipv6 \
-								--enable-nls \
-								--with-modules=${MODULES} \
-								--with-includes=${WORKDIR}/include:${LOCALBASE}/include \
-								--with-libraries=${LOCALBASE}/lib \
-								--enable-auth-pam \
-								--enable-ctrls \
-								--enable-largefile
+		--with-pkgconfig=libdata/pkgconfig \
+		--sysconfdir=${PREFIX}/etc \
+		--disable-sendfile \
+		--enable-ipv6 \
+		--enable-nls \
+		--with-modules=${MODULES} \
+		--with-includes=${WORKDIR}/include:${LOCALBASE}/include \
+		--with-libraries=${LOCALBASE}/lib \
+		--enable-auth-pam \
+		--enable-ctrls \
+		--enable-largefile
 CONFIGURE_ENV=	"LIBS=-lintl -L${LOCALBASE}/lib -lssl -lcrypto -L${OPENSSLLIB}"
-CFLAGS+=				-DHAVE_OPENSSL -I${OPENSSLINC}
+CFLAGS+=	-DHAVE_OPENSSL -I${OPENSSLINC}
 
 .include <bsd.port.pre.mk>
 
@@ -46,7 +46,7 @@ MODULES!=${ECHO} ${MODULES} | ${SED} -e 's,^:,,' -e 's,:$$,,'
 post-patch:
 	@${REINPLACE_CMD} -e 's|-lsupp|-lsupp -lintl|g' ${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e 's|proftpd\.conf|proftpd.conf.sample|g' ${WRKSRC}/Makefile.in
-	
+
 pre-configure:
 	@${ECHO_MSG} "==> Configuring with ${MODULES}"
 

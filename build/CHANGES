@@ -22,6 +22,7 @@ Minors changes:
 - Upgrade transmission to 2.42.
 - Upgrade samba to 3.5.11.
 - Upgrade smartmontools to 5.42.
+- Upgrade proftpd to 1.3.3f.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
