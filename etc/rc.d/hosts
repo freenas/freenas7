@@ -6,16 +6,31 @@
 # REQUIRE: var
 # BEFORE: netif
 
+. /etc/rc.subr
+. /etc/util.subr
 . /etc/configxml.subr
 
 echo "Updating hosts."
 
+# LAN IF/ADDR
+_ifn=`configxml_get "//interfaces/lan/if"`
+_ifn=`get_if ${_ifn}`
+_ipaddr=`/usr/bin/netstat -inW -f inet -I "${_ifn}" | \
+while read _t0 _t1 _t2 _t3 _t4; do \
+  if [ "${_t0}" = "${_ifn}" ]; then \
+     echo ${_t3}; break; \
+  fi \
+done`
+
 # Generate /etc/hosts file
-/usr/local/bin/xml sel -t -m "//system" \
+/usr/local/bin/xml sel -t -m "//system[hostname != '' and domain != '']" \
 	-v "concat('::1 localhost localhost.',domain)" -n \
 	-v "concat('127.0.0.1 localhost localhost.',domain)" -n \
 	-i "//interfaces/lan/ipaddr[. != 'dhcp']" \
 		-v "concat(//interfaces/lan/ipaddr,' ',hostname,'.',domain,' ',hostname)" -n \
+	-b \
+	-i "//interfaces/lan/ipaddr[. = 'dhcp']" \
+		-v "concat('${_ipaddr}',' ',hostname,'.',domain,' ',hostname)" -n \
 	-b \
 	-m "//system/hosts" \
 		-i "string-length(name) > 0" -v "concat(address,' ',name)" -n -b \

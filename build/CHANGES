@@ -28,6 +28,7 @@ Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
 - Fix WOL breaks lagg setting. 
 - Add a partition vdev to disk list when ZFS sync.
+- Fix DHCP client hosts.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
