@@ -1,5 +1,5 @@
---- ./source3/configure.in.orig	2010-10-07 18:41:16.000000000 +0200
-+++ ./source3/configure.in	2010-10-21 09:43:17.000000000 +0200
+--- ./source3/configure.in.orig	2011-08-04 03:24:05.000000000 +0900
++++ ./source3/configure.in	2011-10-29 01:02:30.000000000 +0900
 @@ -756,8 +756,8 @@
  
          if test "x$CUPS_CONFIG" != x; then
@@ -22,7 +22,7 @@
  			PRINT_LIBS=$ac_save_PRINT_LIBS
  		fi
  
-@@ -1712,18 +1712,18 @@
+@@ -1731,18 +1731,18 @@
  AC_MSG_RESULT($BLDSHARED)
  
  saved_before_as_needed_ldflags="$LDFLAGS"
@@ -53,7 +53,7 @@
  
  # check if we have to disable LD_AS_NEEDED_FLAG:
  # On some systems for a veriety of reasons linking with
-@@ -4222,10 +4222,10 @@
+@@ -4287,10 +4287,10 @@
  
    ################################################################
    # first test for Active Directory support being enabled
@@ -68,7 +68,7 @@
    ##################################################################
    # then test for uuid.h (necessary to generate unique DNS keynames
    # (uuid.h is required for this test)
-@@ -4475,10 +4475,46 @@
+@@ -4540,10 +4540,46 @@
      fi
  
  	if test x"$use_pam" = x"yes"; then
@@ -117,7 +117,17 @@
  
  		if test x"$create_pam_modules" = x"yes"; then
  			AC_DEFINE(WITH_PAM_MODULES,1,[Whether to include PAM MODULES support])
-@@ -6421,13 +6457,21 @@
+@@ -5545,7 +5581,8 @@
+         esac
+ fi # with_acl_support
+ 
+-
++# check for NFSv4 acl
++AC_CHECK_LIB(sunacl, acl, [ACL_LIBS="$ACL_LIBS -lsunacl"])
+ 
+ #################################################
+ # check for AIO support
+@@ -6486,13 +6523,21 @@
  # Start
  AC_CHECK_FUNC(getmntent)
  
@@ -140,7 +150,7 @@
  		int main(void)
  		{
  			struct statfs fsd;
-@@ -6757,6 +6801,16 @@
+@@ -6822,6 +6867,16 @@
  	LIBS="$LIBS -ldmalloc"
  fi
  

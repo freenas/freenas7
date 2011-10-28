@@ -1,5 +1,5 @@
 PORTNAME=		samba35
-PORTVERSION=		3.5.8
+PORTVERSION=		3.5.11
 #PORTREVISION?=		0
 CATEGORIES?=		net
 MASTER_SITES=		${MASTER_SITE_SAMBA}
@@ -121,10 +121,15 @@ CONFIGURE_ARGS+=	--with-krb5="${LOCALBASE}"
 USE_OPENLDAP=		yes
 CONFIGURE_ARGS+=	--with-ldap
 
-#CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird"
-CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird,vfs_cacheprime,vfs_commit,vfs_dirsort,vfs_syncops"
-
 .include <bsd.port.pre.mk>
+
+#CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird"
+.if ${OSVERSION} > 800000
+LIB_DEPENDS+=		sunacl.1:${PORTSDIR}/sysutils/libsunacl
+CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird,vfs_cacheprime,vfs_commit,vfs_dirsort,vfs_syncops,vfs_zfsacl"
+.else
+CONFIGURE_ARGS+=	--with-shared-modules="idmap_tdb2,idmap_ad,idmap_adex,idmap_hash,idmap_rid,charset_weird,vfs_cacheprime,vfs_commit,vfs_dirsort,vfs_syncops"
+.endif
 
 post-patch:
 		@${REINPLACE_CMD} -e 's|%%SAMBA_CONFIG%%|${SAMBA_CONFIG}|g' \
@@ -200,6 +205,9 @@ do-install:
 	@${CP} -pv $(WRKSRC)/bin/streams_xattr.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/syncops.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/xattr_tdb.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+.if ${OSVERSION} > 800000
+	@${CP} -pv $(WRKSRC)/bin/zfsacl.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+.endif
 
 	@${CP} -pv ${WRKSRC}/bin/ad.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 	@${CP} -pv ${WRKSRC}/bin/adex.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
