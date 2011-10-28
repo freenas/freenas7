@@ -18,6 +18,7 @@ Minors changes:
 - Add ability to configure ZFS v28 properties. (dedup, zle compression)
 - Add ability to configure MTU for lagg device.
 - Add some utility commands.
+- Upgrade ataidle to 2.6.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
