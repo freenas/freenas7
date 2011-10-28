@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
-"PO-Revision-Date: 2011-04-09 21:13+0000\n"
-"Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"PO-Revision-Date: 2011-10-21 10:56+0900\n"
+"Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -311,6 +311,9 @@ msgstr "ターゲットの追加"
 
 msgid "Add user"
 msgstr "ユーザの追加"
+
+msgid "Add volume"
+msgstr "ボリュームの追加"
 
 msgid "Additional group"
 msgstr "グループの追加"
@@ -641,6 +644,9 @@ msgstr "キャッシュ デバイス"
 msgid "Can't format the OS origin disk!"
 msgstr "OS がインストールされているディスクはフォーマットする事が出来ません!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "システムパーティション 1 はマウント出来ません, データパーティションは 2 になります。"
 
@@ -809,6 +815,12 @@ msgstr "コントローラ TCP ポート"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "データセットで使用される圧縮アルゴリズムを制御します。'lzjb' 圧縮アルゴリズムはデータ圧縮のパフォーマンスに最適化します。'On' は 'lzjb' 圧縮アルゴリズムを使用します。'gzip-N' で 'gzip' の圧縮レベルを指定できます。N は数値で、1 (最速) から 9 (最高圧縮率) です。現在、'gzip' は 'gzip-6' の指定と同じです。"
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "ボリュームで使用される圧縮アルゴリズムを制御します。'lzjb' 圧縮アルゴリズムはデータ圧縮のパフォーマンスに最適化します。'On' は 'lzjb' 圧縮アルゴリズムを使用します。'gzip-N' で 'gzip' の圧縮レベルを指定できます。N は数値で、1 (最速) から 9 (最高圧縮率) です。現在、'gzip' は 'gzip-6' の指定と同じです。"
+
+msgid "Controls the dedup method."
+msgstr "重複排除で使用される方法を制御します。"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "このデータセットが修正可能かどうか制御します。"
 
@@ -826,6 +838,9 @@ msgstr "Create mask"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "作業用ディレクトリが存在しない場合は作成する。"
+
+msgid "Created UFS file system:"
+msgstr "作成されたUFSファイルシステム:"
 
 msgid "Creates the pool with an alternate root."
 msgstr "プールと代替ルートを作成する。"
@@ -923,6 +938,9 @@ msgstr "日"
 
 msgid "Debug"
 msgstr "デバッグ"
+
+msgid "Dedup"
+msgstr "重複排除"
 
 msgid "Default"
 msgstr "デフォルト"
@@ -1056,6 +1074,9 @@ msgstr "ターゲットの削除"
 
 msgid "Delete user"
 msgstr "ユーザの削除"
+
+msgid "Delete volume"
+msgstr "ボリュームの削除"
 
 msgid "Deleting"
 msgstr "削除中"
@@ -1309,6 +1330,9 @@ msgstr "このターゲットを削除してもよろしいですか?"
 msgid "Do you really want to delete this user?"
 msgstr "このユーザを削除してもよろしいですか?"
 
+msgid "Do you really want to delete this volume?"
+msgstr "このボリュームを削除してもよろしいですか?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 "このボリュームを削除してもよろしいですか?\n"
@@ -1374,8 +1398,8 @@ msgstr "完了"
 msgid "Dos charset"
 msgstr "Dos 文字セット"
 
-msgid "Double-parity RAID-5"
-msgstr "ダブルパリティ RAID5 (RAID6)"
+msgid "Double-parity RAID-Z"
+msgstr "ダブルパリティ RAID-Z (RAID 6)"
 
 msgid "Download"
 msgstr "ダウンロード"
@@ -1499,6 +1523,9 @@ msgstr "ターゲットを編集"
 
 msgid "Edit user"
 msgstr "ユーザを編集"
+
+msgid "Edit volume"
+msgstr "ボリュームを編集"
 
 msgid "Email"
 msgstr "メール"
@@ -2351,6 +2378,9 @@ msgstr "暗号化アルゴリズムで使用する鍵長。"
 
 msgid "Kill encrypted volume"
 msgstr "暗号化ボリュームを停止"
+
+msgid "Knowledge Base"
+msgstr "ナレッジベース"
 
 msgid "Knowledgebase"
 msgstr "ナレッジベース"
@@ -3796,8 +3826,8 @@ msgstr "シャットダウンタイマ"
 msgid "Simple Network Management Protocol"
 msgstr "簡易ネットワーク管理プロトコル (SNMP)"
 
-msgid "Single-parity RAID-5"
-msgstr "シングルパリティ RAID-5"
+msgid "Single-parity RAID-Z"
+msgstr "シングルパリティ RAID-Z (RAID 5)"
 
 msgid "Size"
 msgstr "サイズ"
@@ -4608,6 +4638,9 @@ msgstr "raidz を使用するには少なくともディスクが2個必要で�
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "raidz2 を使用するには最低でも 3つのディスクが必要です。"
 
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "raidz3 を使用するには最低でも 4つのディスクが必要です。"
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "最低 1つのインタフェースを選択する必要があります。"
 
@@ -4935,6 +4968,9 @@ msgstr "トラップ文字列。"
 msgid "Traps"
 msgstr "トラップ"
 
+msgid "Triple-parity RAID-Z"
+msgstr "トリプルパリティ RAID-Z"
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol"
 
@@ -5133,6 +5169,10 @@ msgstr "ユーザ"
 msgid "Users and Groups"
 msgstr "ユーザとグループ"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5157,6 +5197,9 @@ msgstr "仮想デバイス"
 msgid "Virtual interface"
 msgstr "仮想インタフェース"
 
+msgid "Volume"
+msgstr "ボリューム"
+
 msgid "Volume Name"
 msgstr "ボリューム名"
 
@@ -5165,6 +5208,9 @@ msgstr "ボリュームラベル"
 
 msgid "Volume label of the new file system."
 msgstr "新しいファイルシステムのボリュームラベル"
+
+msgid "Volumes"
+msgstr "ボリューム"
 
 msgid "WAN address"
 msgstr "WAN アドレス"
@@ -5211,6 +5257,9 @@ msgstr "監視ディレクトリ"
 
 msgid "WebGUI"
 msgstr "WebGUI"
+
+msgid "WebGUI Login"
+msgstr "WebGUI ログイン"
 
 msgid "Webserver"
 msgstr "ウェブサーバ"
@@ -5328,6 +5377,15 @@ msgstr "ZFS データセットプロパティ"
 
 msgid "ZFS volume"
 msgstr "ZFS ボリューム"
+
+msgid "ZFS volume information and status"
+msgstr "ZFS ボリューム情報と状態"
+
+msgid "ZFS volume properties"
+msgstr "ZFS ボリュームプロパティ"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr "サイズを指定するには、以下の人間が読める接尾語を使用してください。(例えば、'k', 'KB', 'M', 'Gb', など)"
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5465,6 +5523,9 @@ msgstr "アンマウント"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Volume size"
+#~ msgstr "ボリュームサイズ"
 
 #~ msgid "seconds"
 #~ msgstr "秒"

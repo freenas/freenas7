@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2010-06-29 04:06+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Pridať cieľ"
 
 msgid "Add user"
 msgstr "Pridať používateľa"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Pridať cestu"
 
 msgid "Additional group"
 msgstr "Ďalšia skupina"
@@ -641,6 +645,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr "Nie je možné formátovať zdrojový disk OS!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Nemôžem pripojiť systémový oddiel 1, DÁTOVÝ oddiel je 2."
 
@@ -809,6 +816,13 @@ msgstr ""
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Ovláda kompresný algoritmus použitý pre túto množinu dát. Kompresný algoritmus „lzjb“ je optimalizovaný na výkon, pričom poskytuje slušný kompresný pomer. Ak nastavíte kompresiu na „zapnutá“, použije sa kompresný algoritmus „lzjb“. You can specify the 'Úroveň „gzip“ môžete nastaviť pomocou parametra „gzip-N“, kde N je celé číslo od 1 (najrýchlejšia) do 9 (najlepší kompresný pomer). „gzip“ momentálne zodpovedá „gzip-6“."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Ovláda kompresný algoritmus použitý pre túto množinu dát. Kompresný algoritmus „lzjb“ je optimalizovaný na výkon, pričom poskytuje slušný kompresný pomer. Ak nastavíte kompresiu na „zapnutá“, použije sa kompresný algoritmus „lzjb“. You can specify the 'Úroveň „gzip“ môžete nastaviť pomocou parametra „gzip-N“, kde N je celé číslo od 1 (najrýchlejšia) do 9 (najlepší kompresný pomer). „gzip“ momentálne zodpovedá „gzip-6“."
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Riadi, či možno skupinu dát zmeniť."
 
@@ -826,6 +840,10 @@ msgstr "Vytvoriť masku"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Vytvoriť pracovný adresár ak neexistuje"
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Predformátovaný súborový systém"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Vytvorí pool v rámci alternatívneho koreňa."
@@ -923,6 +941,9 @@ msgstr "Dní"
 
 msgid "Debug"
 msgstr "Ladenie"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Štandardné"
@@ -1056,6 +1077,10 @@ msgstr "Zmazať cieľ"
 
 msgid "Delete user"
 msgstr "Zmazať používateľa"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Zmazať cestu"
 
 msgid "Deleting"
 msgstr "Odstraňuje sa"
@@ -1309,6 +1334,10 @@ msgstr "Naozaj chcete zmazať tento cieľ?"
 msgid "Do you really want to delete this user?"
 msgstr "Naozaj chcete zmazať tohto používateľa?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Skutočne chcete zmazať túto cestu?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Skutočne chcete zmazať tento zväzok?\\n!!!  Pozn.: Všetky údaje sa stratia anebude možné ich obnoviť. !!!"
 
@@ -1372,7 +1401,8 @@ msgstr "Hotovo."
 msgid "Dos charset"
 msgstr "Znaková sada DOS"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "RAID-5 s dvojitou paritou"
 
 msgid "Download"
@@ -1497,6 +1527,10 @@ msgstr "Upraviť cieľ"
 
 msgid "Edit user"
 msgstr "Upraviť používateľa"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Upraviť cestu"
 
 msgid "Email"
 msgstr "Email"
@@ -2350,6 +2384,10 @@ msgstr "Dĺžka kľúča ktorá sa má použiť s daným kryptografickým algori
 
 msgid "Kill encrypted volume"
 msgstr "Zrušiť kryptovaný zväzok"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Databáza znalostí"
 
 msgid "Knowledgebase"
 msgstr "Databáza znalostí"
@@ -3796,8 +3834,9 @@ msgstr "Odpočet do vypnutia"
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
-msgid "Single-parity RAID-5"
-msgstr ""
+#, fuzzy
+msgid "Single-parity RAID-Z"
+msgstr "RAID-5 s dvojitou paritou"
 
 msgid "Size"
 msgstr "Veľkosť:"
@@ -4608,6 +4647,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "V JBOD musia byť aspoň 2 disky."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Musí byť vybrané aspoň 1 rozhranie."
 
@@ -4933,6 +4976,10 @@ msgstr "Zachytiť reťazec."
 msgid "Traps"
 msgstr "Zachytávanie"
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "RAID-5 s dvojitou paritou"
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol"
 
@@ -5131,6 +5178,10 @@ msgstr "Používatelia"
 msgid "Users and Groups"
 msgstr "Používatelia a skupiny"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5155,6 +5206,10 @@ msgstr ""
 msgid "Virtual interface"
 msgstr "Virtuálne rozhranie"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Názov zväzku"
+
 msgid "Volume Name"
 msgstr "Názov zväzku"
 
@@ -5163,6 +5218,10 @@ msgstr "Názov zväzku."
 
 msgid "Volume label of the new file system."
 msgstr "Názov zväzku nového súborového systému."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Názov zväzku"
 
 msgid "WAN address"
 msgstr "WAN adresa"
@@ -5208,6 +5267,10 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr "Webové rozhranie"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "Webové rozhranie"
 
 msgid "Webserver"
@@ -5325,6 +5388,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Informácie a stav softvérového RAID"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5463,6 +5536,10 @@ msgstr "odpojiť"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Názov zväzku"
 
 #~ msgid "seconds"
 #~ msgstr "sekúnd"

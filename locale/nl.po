@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-06-12 09:38+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
@@ -311,6 +311,10 @@ msgstr "Doel toevoegen"
 
 msgid "Add user"
 msgstr "Gebruiker toevoegen"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Route toevoegen"
 
 msgid "Additional group"
 msgstr "Extra groep"
@@ -641,6 +645,9 @@ msgstr "Cache Apparaat"
 msgid "Can't format the OS origin disk!"
 msgstr "Kan de schijf waarop van oorsprong het OS staat niet formatteren!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Systeem partitie 1 kan niet aangekoppeld worden, de DATA partitie is de 2."
 
@@ -809,6 +816,14 @@ msgstr "TCP-poort Controller"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Controleert het compressiealgoritme dat wordt gebruikt voor deze dataset. De 'lzjb' compressie algoritme is geoptimaliseerd voor prestaties terwijl fatsoenlijke gegevenscompressie wodt gebruikt. Zet compressie op 'Aan' gebruikt de 'lzjb' compressie algoritme. U kunt het 'gzip' niveau opgeven met de waarde 'gzip-N', waar N een geheel van 1 (het snelste) tot 9 (beste compressieverhouding) is. Momenteel is 'gzip' gelijkwaardig aan ' gzip-6'."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Controleert het compressiealgoritme dat wordt gebruikt voor deze dataset. De 'lzjb' compressie algoritme is geoptimaliseerd voor prestaties terwijl fatsoenlijke gegevenscompressie wodt gebruikt. Zet compressie op 'Aan' gebruikt de 'lzjb' compressie algoritme. U kunt het 'gzip' niveau opgeven met de waarde 'gzip-N', waar N een geheel van 1 (het snelste) tot 9 (beste compressieverhouding) is. Momenteel is 'gzip' gelijkwaardig aan ' gzip-6'."
+
+#, fuzzy
+msgid "Controls the dedup method."
+msgstr "Auth Methode Controller"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Controleert of deze dataset kan worden gewijzigd."
 
@@ -826,6 +841,10 @@ msgstr "Bestandsmachtigingen"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Werkmap aanmaken als deze nog niet bestaat."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Reeds geformatteerd bestandssyteem"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Creëer de pool met een alternatieve root."
@@ -923,6 +942,9 @@ msgstr "Dagen"
 
 msgid "Debug"
 msgstr "Debug"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Standaard"
@@ -1056,6 +1078,10 @@ msgstr "Doel verwijderen"
 
 msgid "Delete user"
 msgstr "Gebruiker verwijderen"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Route verwijderen"
 
 msgid "Deleting"
 msgstr "Aan het verwijderen"
@@ -1309,6 +1335,10 @@ msgstr "Weet  u zeker dat u dit doel wilt verwijderen?"
 msgid "Do you really want to delete this user?"
 msgstr "Weet u zeker dat u deze gebruiker wilt verwijderen?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Weet u zeker dat u deze route wilt verwijderen?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Weet u zeker dat u dit volume wilt verwijderen?\\n!!! Opmerking, alle data zal verloren gaan en kan niet meer hersteld worden. !!!"
 
@@ -1372,7 +1402,8 @@ msgstr "Gereed."
 msgid "Dos charset"
 msgstr "DOS karakterset"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "Dubbel-pariteit RAID-5"
 
 msgid "Download"
@@ -1497,6 +1528,10 @@ msgstr "Doel bewerken"
 
 msgid "Edit user"
 msgstr "Gebruiker bewerken"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Bewerk Route"
 
 msgid "Email"
 msgstr "E-mail"
@@ -2349,6 +2384,10 @@ msgstr "Sleutellengte om te gebruiken voor de opgegeven cryptografische algoritm
 
 msgid "Kill encrypted volume"
 msgstr "Versleuteld station opheffen"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Basiskennis"
 
 msgid "Knowledgebase"
 msgstr "Basiskennis"
@@ -3795,7 +3834,8 @@ msgstr "Afsluit timer"
 msgid "Simple Network Management Protocol"
 msgstr "Simpel Netwerk Beheer Protocol"
 
-msgid "Single-parity RAID-5"
+#, fuzzy
+msgid "Single-parity RAID-Z"
 msgstr "Single-parity RAID-5"
 
 msgid "Size"
@@ -4607,6 +4647,10 @@ msgstr "Er dienen minimaal 2 schijven in een raidz te zijn."
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "Er dienen minimaal 3 schijven in een raidz2 te zijn."
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Er dienen minimaal 2 schijven in een raidz te zijn."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Er moet minimaal 1 netwerkkaart geselecteerd zijn."
 
@@ -4932,6 +4976,10 @@ msgstr "Trap string."
 msgid "Traps"
 msgstr "Traps"
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "Single-parity RAID-5"
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol"
 
@@ -5130,6 +5178,10 @@ msgstr "Gebruikers"
 msgid "Users and Groups"
 msgstr "Gebruikers & Groepen"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5154,6 +5206,10 @@ msgstr "Virtuele schijven"
 msgid "Virtual interface"
 msgstr "Virtueel netwerk"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Volume Naam"
+
 msgid "Volume Name"
 msgstr "Volume Naam"
 
@@ -5162,6 +5218,10 @@ msgstr "Volume label"
 
 msgid "Volume label of the new file system."
 msgstr "Volume label voor het nieuwe bestandssysteem."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Volume Naam"
 
 msgid "WAN address"
 msgstr "WAN adres"
@@ -5207,6 +5267,10 @@ msgid "Watch directory"
 msgstr "Kijk map"
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5325,6 +5389,17 @@ msgstr "ZFS dataset eigenschappen"
 
 msgid "ZFS volume"
 msgstr "ZFS volume"
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "ZFS dataset informatie en status"
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "ZFS dataset eigenschappen"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5462,6 +5537,10 @@ msgstr "loskoppelen"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Volume Naam"
 
 #~ msgid "The module provides automatic bans that are triggered based on configurable criteria. A ban prevents the banned user, host, or class from logging in to the server, it does not prevent the banned user, host, or class from connecting to the server."
 #~ msgstr "Deze module verstrekt automatische bans gebaseerd op geconfigureerde ban regels. Een ban verhindert de verbannen gebruiker, gastheer, of groep om in te loggen op deze server, het verhindert niet de verbannen gebruiker, gastheer, of groep met de server te verbinden."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-04-10 13:51+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Shto nje objektiv"
 
 msgid "Add user"
 msgstr "Shto perdorues"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Shto nje rruge"
 
 msgid "Additional group"
 msgstr "Grup shtese"
@@ -641,6 +645,9 @@ msgstr "Cache Device"
 msgid "Can't format the OS origin disk!"
 msgstr "Nuk mund e formatoj diskun e sistemit operativ"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Nuk mund te montoj particionin 1 te sistemit, particioni DATA eshte 2"
 
@@ -809,6 +816,13 @@ msgstr "Kontrolluesi i portes TCP"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+#, fuzzy
+msgid "Controls the dedup method."
+msgstr "Kontrolluesi i menyres se autorizuar"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Kontrollon nëse kjo dataset mund të ndryshohet."
 
@@ -826,6 +840,10 @@ msgstr "Krijo masken"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Krijon drjtorine e punes ne qofte se nuk egziston"
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Duke krijuar filesystem"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Krijon nje pune me nje rrenje alternative."
@@ -923,6 +941,9 @@ msgstr "Ditë"
 
 msgid "Debug"
 msgstr "Debug"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "I paracaktuar"
@@ -1056,6 +1077,10 @@ msgstr "Fshij obkjektivin"
 
 msgid "Delete user"
 msgstr "Fshij perdorues"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Fshij kete rruge"
 
 msgid "Deleting"
 msgstr "Duke fshire"
@@ -1309,6 +1334,10 @@ msgstr "Me te vertete doni te fshini kete objektiv?"
 msgid "Do you really want to delete this user?"
 msgstr "Doni te fshini me te vertete kete perdorues?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Me te vertete doni te fshini kete rruge?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Me te vertete doni te fshini kete volum\\n!!! Kujdes, te gjitha te dhenat do te humbin dhe nuk mund te rekuperohen me. !!!"
 
@@ -1372,7 +1401,8 @@ msgstr "E bere."
 msgid "Dos charset"
 msgstr "Dos charset"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "Double-parity RAID-5"
 
 msgid "Download"
@@ -1497,6 +1527,10 @@ msgstr "Modifiko objektivin"
 
 msgid "Edit user"
 msgstr "Modifiko perdoruesin"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Modifiko rrugen"
 
 msgid "Email"
 msgstr "Email"
@@ -2349,6 +2383,10 @@ msgstr "Gjatesia e çelesit qe do te perdoret me alogaritmin e shifrimit te dhen
 
 msgid "Kill encrypted volume"
 msgstr "Vrit volumin e shifruar"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Njohurite base"
 
 msgid "Knowledgebase"
 msgstr "Njohurite base"
@@ -3795,8 +3833,9 @@ msgstr "Koha e fikjes"
 msgid "Simple Network Management Protocol"
 msgstr "Protokoll i thjeshte i menaxhimit te rrjetit"
 
-msgid "Single-parity RAID-5"
-msgstr ""
+#, fuzzy
+msgid "Single-parity RAID-Z"
+msgstr "Double-parity RAID-5"
 
 msgid "Size"
 msgstr "Madhësia"
@@ -4607,6 +4646,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Të paktën 1 disk të seleksionuar."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr ""
 
@@ -4932,6 +4975,10 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "Double-parity RAID-5"
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5130,6 +5177,10 @@ msgstr "Perdoruesit"
 msgid "Users and Groups"
 msgstr "Perdoruesit dhe grupet"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5154,6 +5205,10 @@ msgstr "Psje virtuale"
 msgid "Virtual interface"
 msgstr "Nderfaqja virtuale"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Emri i volumit"
+
 msgid "Volume Name"
 msgstr "Emri i volumit"
 
@@ -5162,6 +5217,10 @@ msgstr "Emri i volumit"
 
 msgid "Volume label of the new file system."
 msgstr "Emri i volumit per skedarin  e ri te sistemit."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Emri i volumit"
 
 msgid "WAN address"
 msgstr "Adresa WAN"
@@ -5207,6 +5266,10 @@ msgid "Watch directory"
 msgstr "Drejtoria e shikimit"
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5325,6 +5388,17 @@ msgstr ""
 
 msgid "ZFS volume"
 msgstr "Volumi ZFS"
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Gjendja dhe informazione mbi sofwari-n RAID."
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "Volumi ZFS"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5462,6 +5536,10 @@ msgstr "zmonto"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Emri i volumit"
 
 #~ msgid "seconds"
 #~ msgstr "sekonda"

@@ -63,6 +63,7 @@ fi
 # Create the boot directory that will contain boot, and kernel
 mkdir $MINIBSD_DIR
 mkdir $MINIBSD_DIR/defaults
+mkdir $MINIBSD_DIR/firmware
 mkdir $MINIBSD_DIR/kernel
 mkdir $MINIBSD_DIR/modules
 mkdir $MINIBSD_DIR/zfs
@@ -78,8 +79,17 @@ cp -v ${FREENAS_WORLD}/boot/support.4th $MINIBSD_DIR
 cp -v ${FREENAS_WORLD}/boot/device.hints $MINIBSD_DIR
 # Copy files required by bootmenu
 if [ 0 != $opt_m ]; then
-	cp -v ${FREENAS_WORLD}/boot/screen.4th $MINIBSD_DIR
+#	cp -v ${FREENAS_WORLD}/boot/screen.4th $MINIBSD_DIR
+#	cp -v ${FREENAS_WORLD}/boot/frames.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/brand.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/check-password.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/color.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/delay.4th $MINIBSD_DIR
 	cp -v ${FREENAS_WORLD}/boot/frames.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/menu-commands.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/screen.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/shortcuts.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/version.4th $MINIBSD_DIR
 fi
 
 # Generate the loader.rc file used by bootloader
@@ -99,6 +109,9 @@ echo 'mfsroot_load="YES"' > $MINIBSD_DIR/loader.conf
 echo 'mfsroot_type="mfs_root"' >> $MINIBSD_DIR/loader.conf
 echo 'mfsroot_name="/mfsroot"' >> $MINIBSD_DIR/loader.conf
 echo 'hw.est.msr_info="0"' >> $MINIBSD_DIR/loader.conf
+echo 'hw.hptrr.attach_generic="0"' >> $MINIBSD_DIR/loader.conf
+echo 'kern.cam.boot_delay="8000"' >> $MINIBSD_DIR/loader.conf
+echo 'vfs.zfs.prefetch_disable="1"' >> $MINIBSD_DIR/loader.conf
 # Enable bootsplash?
 if [ 0 != $opt_b ]; then
 	echo 'splash_bmp_load="YES"' >> $MINIBSD_DIR/loader.conf

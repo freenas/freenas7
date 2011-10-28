@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2010-12-19 11:18+0000\n"
 "Last-Translator: Matic Gradišer <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Dodaj cilj"
 
 msgid "Add user"
 msgstr "Dodaj uporabnika"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Dodaj pot"
 
 msgid "Additional group"
 msgstr "Dodatna skupina"
@@ -641,6 +645,9 @@ msgstr "Naprava predpomnilnika"
 msgid "Can't format the OS origin disk!"
 msgstr "Ne morem formatirati diska z operacijskim sistemom!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Ne morem priklopiti sistemske particije 1, PODATKOVNA particija je 2."
 
@@ -809,6 +816,14 @@ msgstr "TCP vrata kontrolerja"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Nadzira kompresijski algoritem tega dataset-a. 'Lzjb' kompresijski algoritem je optimiziran za hitrost, vendar kljub temu prinese uporabno kompresijo. Vklop kompresije uporabi 'lzjb' algoritem. Nastavite lahko stopnjo 'gzip' kompresije z vednostmi 'gzip-N', ker je N lahko število od 1 (najhitreje), do 9 (najboljše stiskanje). Trenutno je 'gzip' nastavljen na 'gzip-6'."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Nadzira kompresijski algoritem tega dataset-a. 'Lzjb' kompresijski algoritem je optimiziran za hitrost, vendar kljub temu prinese uporabno kompresijo. Vklop kompresije uporabi 'lzjb' algoritem. Nastavite lahko stopnjo 'gzip' kompresije z vednostmi 'gzip-N', ker je N lahko število od 1 (najhitreje), do 9 (najboljše stiskanje). Trenutno je 'gzip' nastavljen na 'gzip-6'."
+
+#, fuzzy
+msgid "Controls the dedup method."
+msgstr "Način prijave kontrolerja"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Nastavlja, če se dataset lahko spreminja."
 
@@ -826,6 +841,10 @@ msgstr "Maska ustvarjanj"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Ustvari delovni direktorij, če ne obstaja."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Že formatiran datotečni sistem"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Ustvari bazen z drugim izhodiščem"
@@ -923,6 +942,9 @@ msgstr "dnevi"
 
 msgid "Debug"
 msgstr "Razhroščevanje"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Privzeto"
@@ -1056,6 +1078,10 @@ msgstr "Odstrani cilj"
 
 msgid "Delete user"
 msgstr "Odstrani uporabnika"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Odstrani pot"
 
 msgid "Deleting"
 msgstr "Brisanje"
@@ -1309,6 +1335,10 @@ msgstr "Res želite odstraniti ta cilj?"
 msgid "Do you really want to delete this user?"
 msgstr "Ali res želite izbrisati tega uporabnika?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Ali res želite odstraniti to pot?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Res želite izbrisati to particijo?\\n!!! Vedite, da bodo vsi podatki izgubljeni. !!!"
 
@@ -1372,7 +1402,8 @@ msgstr "Opravljeno."
 msgid "Dos charset"
 msgstr "Dos kodna tabela"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "RAID-5 z dvojno pariteto"
 
 msgid "Download"
@@ -1497,6 +1528,10 @@ msgstr "Uredi cilj"
 
 msgid "Edit user"
 msgstr "Uredi uporabnika"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Uredi pot"
 
 msgid "Email"
 msgstr "E-pošta"
@@ -2350,6 +2385,10 @@ msgstr "Dolžina ključa za uporabo z izbranim kriptiranjem."
 
 msgid "Kill encrypted volume"
 msgstr "Ubij kriptiran nosilec"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Baza znanja"
 
 msgid "Knowledgebase"
 msgstr "Baza znanja"
@@ -3796,7 +3835,8 @@ msgstr "Čas do izklopa"
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
-msgid "Single-parity RAID-5"
+#, fuzzy
+msgid "Single-parity RAID-Z"
 msgstr "RAID-5 z enojno pariteto"
 
 msgid "Size"
@@ -4608,6 +4648,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Za RAID 1 polje, morata biti na voljo 2 pogona."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr ""
 
@@ -4933,6 +4977,10 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "RAID-5 z enojno pariteto"
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5131,6 +5179,10 @@ msgstr "Uporabniki"
 msgid "Users and Groups"
 msgstr "Uporabniki in skupine"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr ""
 
@@ -5155,6 +5207,10 @@ msgstr ""
 msgid "Virtual interface"
 msgstr ""
 
+#, fuzzy
+msgid "Volume"
+msgstr "Ime polja"
+
 msgid "Volume Name"
 msgstr "Ime polja"
 
@@ -5163,6 +5219,10 @@ msgstr ""
 
 msgid "Volume label of the new file system."
 msgstr ""
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Ime polja"
 
 msgid "WAN address"
 msgstr ""
@@ -5208,6 +5268,9 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr ""
+
+msgid "WebGUI Login"
 msgstr ""
 
 msgid "Webserver"
@@ -5325,6 +5388,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Informacije in status preverjanj"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5463,6 +5536,10 @@ msgstr "izvrzi"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Ime polja"
 
 #~ msgid "seconds"
 #~ msgstr "sekund"

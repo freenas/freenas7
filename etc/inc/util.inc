@@ -425,7 +425,7 @@ function get_interface_list() {
 		if (substr($ifname, -1) === "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 		/* add the plip interface to be excluded too */
-		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip)/", $ifname)) {
+		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip|ipfw|usbus)/", $ifname)) {
 			$iflist[$ifname] = array();
 
 			$iflist[$ifname]['mac'] = chop($alink[3]);
@@ -819,7 +819,7 @@ function get_ata_disks_list()
 	$disklist = array();
 
 	/******* Getting IDE disk information *******/
-	exec("/sbin/atacontrol list",$rawdata);
+	exec("/sbin/atacontrol list 2>/dev/null",$rawdata);
 
 	foreach ($rawdata as $line) {
 		/* Separe la ligne par les espace */
@@ -973,7 +973,7 @@ function get_cdrom_list()
 	$disklist = array();
 
 	/* Recupere la liste des disques IDE */
-	exec("/sbin/atacontrol list",$rawdata);
+	exec("/sbin/atacontrol list 2>/dev/null",$rawdata);
 
 	/* Variable $i utilis pour l'index du tableau */
 	$i=0;
@@ -1023,7 +1023,7 @@ function get_cdrom_list()
 			$diskname = $temp[0];
 
 		/* On exlus les lecteurs disque dur da */
-		if (!preg_match("/^(da)/", $diskname  )) 	{
+		if (!preg_match("/^(da|ada)/", $diskname  )) 	{
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
@@ -1509,16 +1509,17 @@ function get_interface_info($if) {
 		$ifinfo['macaddr'] = $linkinfo[3];
 		$ifinfo['inpkts'] = $linkinfo[4];
 		$ifinfo['inerrs'] = $linkinfo[5];
-		$ifinfo['inbytes'] = $linkinfo[6];
-		$ifinfo['outpkts'] = $linkinfo[7];
-		$ifinfo['outerrs'] = $linkinfo[8];
-		$ifinfo['outbytes'] = $linkinfo[9];
-		$ifinfo['collisions'] = $linkinfo[10];
+		$ifinfo['indrop'] = $linkinfo[6];
+		$ifinfo['inbytes'] = $linkinfo[7];
+		$ifinfo['outpkts'] = $linkinfo[8];
+		$ifinfo['outerrs'] = $linkinfo[9];
+		$ifinfo['outbytes'] = $linkinfo[10];
+		$ifinfo['collisions'] = $linkinfo[11];
 	} else {
 		$ifinfo['inpkts'] = $linkinfo[3];
-		$ifinfo['inbytes'] = $linkinfo[5];
-		$ifinfo['outpkts'] = $linkinfo[6];
-		$ifinfo['outbytes'] = $linkinfo[8];
+		$ifinfo['inbytes'] = $linkinfo[6];
+		$ifinfo['outpkts'] = $linkinfo[7];
+		$ifinfo['outbytes'] = $linkinfo[9];
 	}
 
 	if ($ifinfo['status'] === "up") {

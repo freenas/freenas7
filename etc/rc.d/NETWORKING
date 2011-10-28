@@ -7,7 +7,7 @@
 
 # PROVIDE: NETWORKING NETWORK
 # REQUIRE: CONFIG
-# REQUIRE: netif netoptions routing network_ipv6
+# REQUIRE: netif netoptions routing
 # REQUIRE: resolv
 
 #	This is a dummy dependency, for services which require networking

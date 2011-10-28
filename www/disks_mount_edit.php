@@ -165,6 +165,16 @@ if ($_POST) {
 		if (!file_exists($device)) {
 			$input_errors[] = gettext("Wrong partition type or partition number.");
 		}
+
+		// convert to UFSID
+		if ($_POST['fstype'] == "ufs") {
+			$ufsid = disks_get_ufsid($device);
+			if (empty($ufsid)) {
+				$input_errors[] = gettext("Can't get UFS ID.");
+			} else {
+				$device = "/dev/ufsid/$ufsid";
+			}
+		}
 	}
 
 	// Check if it is a valid ISO image.
@@ -203,7 +213,11 @@ if ($_POST) {
 				$mount['mdisk'] = $_POST['mdisk'];
 				$mount['partition'] = $_POST['partition'];
 				$mount['fstype'] = $_POST['fstype'];
-				$mount['devicespecialfile'] = trim("{$mount['mdisk']}{$mount['partition']}");
+				if ($mount['fstype'] == "ufs") {
+					$mount['devicespecialfile'] = $device;
+				} else {
+					$mount['devicespecialfile'] = trim("{$mount['mdisk']}{$mount['partition']}");
+				}
 				$mount['readonly'] = $_POST['readonly'] ? true : false;
 				$mount['fsck'] = $_POST['fsck'] ? true : false;
 				break;

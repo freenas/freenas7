@@ -68,7 +68,12 @@ smartd_mkconf()
 				IDE)
 					_param="${_param} -d ata";;
 				SCSI)
-					_param="${_param} -d scsi";;
+					case ${_devicespecialfile} in
+						/dev/ada*|ada*)
+							_param="${_param} -d atacam";;
+						*)
+							_param="${_param} -d scsi";;
+					esac
 			esac
 
 			# Be more tolerant. Try to monitor the disk even if it appears to lack SMART capabilities.

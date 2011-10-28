@@ -3,14 +3,14 @@
 /*
 	disks_zfs_config.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -49,6 +49,9 @@ $zfs = array(
 	'datasets' => array(
 		'dataset' => array()
 	),
+	'volumes' => array(
+		'volume' => array()
+	),
 );
 
 if (isset($_POST['import']))
@@ -64,11 +67,16 @@ if (isset($_POST['import']))
 }
 
 $rawdata = null;
-mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,readonly', $rawdata);
+$spa = @exec("sysctl -q -n vfs.zfs.version.spa");
+if ($spa == '' || $spa < 21) {
+	mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,readonly', $rawdata);
+} else {
+	mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,readonly,dedup', $rawdata);
+}
 foreach($rawdata as $line)
 {
 	if ($line == 'no datasets available') { continue; }
-	list($fname, $mpoint, $compress, $canmount, $quota, $used, $avail, $xattr, $readonly) = explode("\t", $line);
+	list($fname, $mpoint, $compress, $canmount, $quota, $used, $avail, $xattr, $readonly, $dedup) = explode("\t", $line);
 	if (strpos($fname, '/') !== false) // dataset
 	{
 		list($pool, $name) = explode('/', $fname, 2);
@@ -81,6 +89,7 @@ foreach($rawdata as $line)
 			'quota' => ($quota == 'none') ? null : $quota,
 			'xattr' => ($xattr == 'on'),
 			'readonly' => ($readonly == 'on'),
+			'dedup' => $dedup,
 		);
 	}
 	else // zpool
@@ -104,15 +113,42 @@ foreach($rawdata as $line)
 
 $rawdata = null;
 $spa = @exec("sysctl -q -n vfs.zfs.version.spa");
+if ($spa == '' || $spa < 21) {
+	mwexec2('zfs list -H -t volume -o name,volsize,compression', $rawdata);
+} else {
+	mwexec2('zfs list -H -t volume -o name,volsize,compression,dedup', $rawdata);
+}
+foreach($rawdata as $line)
+{
+	if ($line == 'no datasets available') { continue; }
+	list($fname, $volsize, $compress, $dedup) = explode("\t", $line);
+	if (strpos($fname, '/') !== false) // volume
+	{
+		list($pool, $name) = explode('/', $fname, 2);
+		$zfs['volumes']['volume'][$name] = array(
+			'uuid' => uuid(),
+			'name' => $name,
+			'pool' => $pool,
+			'volsize' => $volsize,
+			'compression' => $compress,
+			'dedup' => $dedup,
+		);
+	}
+}
+
+$rawdata = null;
+$spa = @exec("sysctl -q -n vfs.zfs.version.spa");
 if ($spa == '') {
 	mwexec2('zpool list -H -o name,root,size,capacity,health', $rawdata);
+} else if ($spa < 21) {
+	mwexec2("zpool list -H -o name,altroot,size,capacity,health", $rawdata);
 } else {
-	mwexec2('zpool list -H -o name,altroot,size,capacity,health', $rawdata);
+	mwexec2("zpool list -H -o name,altroot,size,capacity,health,dedup", $rawdata);
 }
 foreach ($rawdata as $line)
 {
 	if ($line == 'no pools available') { continue; }
-	list($pool, $root, $size, $cap, $health) = explode("\t", $line);
+	list($pool, $root, $size, $cap, $health, $dedup) = explode("\t", $line);
 	if ($root != '-')
 	{
 		$zfs['pools']['pool'][$pool]['root'] = $root;
@@ -120,13 +156,14 @@ foreach ($rawdata as $line)
 	$zfs['extra']['pools']['pool'][$pool]['size'] = $size;
 	$zfs['extra']['pools']['pool'][$pool]['cap'] = $cap;
 	$zfs['extra']['pools']['pool'][$pool]['health'] = $health;
+	$zfs['extra']['pools']['pool'][$pool]['dedup'] = $dedup;
 }
 
 $pool = null;
 $vdev = null;
 $type = null;
 $i = 0;
-$vdev_type = array('mirror', 'raidz1', 'raidz2');
+$vdev_type = array('mirror', 'raidz1', 'raidz2', 'raidz3');
 
 $rawdata = null;
 mwexec2('zpool status', $rawdata);
@@ -165,7 +202,14 @@ foreach ($rawdata as $line)
 		else // vdev or dev (type disk)
 		{
 			$type = $m[1];
-			$is_vdev_type = in_array($type, $vdev_type);
+			if (preg_match("/^(.*)\-\d+$/", $type, $m)) {
+				$tmp = $m[1];
+				$is_vdev_type = in_array($tmp, $vdev_type);
+				if ($is_vdev_type)
+					$type = $tmp;
+			} else {
+				$is_vdev_type = in_array($type, $vdev_type);
+			}
 			if (!$is_vdev_type) // type disk
 			{
 				$dev = $type;
@@ -284,6 +328,7 @@ if (!$health)
 			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_config.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
@@ -301,15 +346,16 @@ if (!$health)
 		<td class="tabcont">
 			<?php if (isset($message_box_text)) print_core_box($message_box_type, $message_box_text);?>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 7);?>
+				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 8);?>
 				<tr>
 					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Free");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Health");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Mount point");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("AltRoot");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Size");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Used");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Free");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Dedup");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Health");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Mount point");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("AltRoot");?></td>
 				</tr>
 				<?php foreach ($zfs['pools']['pool'] as $key => $pool):?>
 				<tr>
@@ -317,6 +363,7 @@ if (!$health)
 					<td class="listr"><?= $zfs['extra']['pools']['pool'][$key]['size']; ?></td>
 					<td class="listr"><?= $zfs['extra']['pools']['pool'][$key]['used']; ?> (<?= $zfs['extra']['pools']['pool'][$key]['cap']; ?>)</td>
 					<td class="listr"><?= $zfs['extra']['pools']['pool'][$key]['avail']; ?></td>
+					<td class="listr"><?= $zfs['extra']['pools']['pool'][$key]['dedup']; ?></td>
 					<td class="listr"><?= $zfs['extra']['pools']['pool'][$key]['health']; ?></td>
 					<td class="listr"><?= $pool['mountpoint']; ?></td>
 					<td class="listr"><?= empty($pool['root']) ? '-' : $pool['root']; ?></td>
@@ -343,27 +390,49 @@ if (!$health)
 			</table>
 			<br />
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 7);?>
+				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 8);?>
 				<tr>
 					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Canmount");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Quota");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Extended attributes");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Readonly");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Compression");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Dedup");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Canmount");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Quota");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Extended attributes");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Readonly");?></td>
 				</tr>
 				<?php foreach ($zfs['datasets']['dataset'] as $dataset):?>
 				<tr>
 					<td class="listlr"><?= $dataset['name']; ?></td>
 					<td class="listr"><?= $dataset['pool']; ?></td>
 					<td class="listr"><?= $dataset['compression']; ?></td>
+					<td class="listr"><?= $dataset['dedup']; ?></td>
 					<td class="listr"><?= empty($dataset['canmount']) ? 'on' : $dataset['canmount']; ?></td>
 					<td class="listr"><?= empty($dataset['quota']) ? 'none' : $dataset['quota']; ?></td>
 					<td class="listr"><?= empty($dataset['xattr']) ? 'off' : 'on'; ?></td>
 					<td class="listr"><?= empty($dataset['readonly']) ? 'off' : 'on'; ?></td>
 				</tr>
 				<?php endforeach; ?>
+			</table>
+			<br />
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<?php html_titleline(gettext('Volumes').' ('.count($zfs['volumes']['volume']).')', 5);?>
+				<tr>
+					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Size");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Compression");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Dedup");?></td>
+				</tr>
+				<?php foreach ($zfs['volumes']['volume'] as $volume):?>
+				<tr>
+					<td class="listlr"><?= $volume['name']; ?></td>
+					<td class="listr"><?= $volume['pool']; ?></td>
+					<td class="listr"><?= $volume['volsize']; ?></td>
+					<td class="listr"><?= $volume['compression']; ?></td>
+					<td class="listr"><?= $volume['dedup']; ?></td>
+				</tr>
+				<?php endforeach;?>
 			</table>
 			<div id="remarks">
 				<?php html_remark("note", gettext("Note"), gettext("This page reflects the current system configuration. It may be different to the configuration which has been created with the WebGUI if changes has been done via command line."));?>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-04-09 20:58+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Pievienot mērķi"
 
 msgid "Add user"
 msgstr "Pievienot lietotāju"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Pievienot ceļu"
 
 msgid "Additional group"
 msgstr "Papildus grupa"
@@ -641,6 +645,9 @@ msgstr "Kešatmiņas ierīce"
 msgid "Can't format the OS origin disk!"
 msgstr "Nevar formatēt OS izcelsmes disku/"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Nevar piemontēt sistēmas partīciju 1, DATA partīcija ir 2."
 
@@ -809,6 +816,14 @@ msgstr "Kontroliera TCP ports"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Kontrolē kompresijas algoritmu, kurš lietots šajā datu kopā. 'lzjb' kompresijas algoritms ir optimizēts priekš jaudas, kamēr piedāvā labu datu kompresiju. Izvēloties kompresiju uz 'Iespējots', lieto 'lzjb' kompresijas algoritmu. Tu vai izēvelēties gzip līmeni lietojot vērtību 'gzib-N', kur N ir integrālis no 1 (ātrākais) līdz 9 (labākā kompresijas attiecība). Pašlaik, 'gzip' ir ekvivalents 'gzip-6'."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Kontrolē kompresijas algoritmu, kurš lietots šajā datu kopā. 'lzjb' kompresijas algoritms ir optimizēts priekš jaudas, kamēr piedāvā labu datu kompresiju. Izvēloties kompresiju uz 'Iespējots', lieto 'lzjb' kompresijas algoritmu. Tu vai izēvelēties gzip līmeni lietojot vērtību 'gzib-N', kur N ir integrālis no 1 (ātrākais) līdz 9 (labākā kompresijas attiecība). Pašlaik, 'gzip' ir ekvivalents 'gzip-6'."
+
+#, fuzzy
+msgid "Controls the dedup method."
+msgstr "Kontroliera Autentifikācijas Metode"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Kontrolē vai datu kopa var tikt modificēta."
 
@@ -826,6 +841,10 @@ msgstr "Veidot masku"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Veidot darba mapi, ja tā neeksistē."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Iepriekš formatēta datņu sistēma"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Veido pūlu ar alternatīvu sakni"
@@ -923,6 +942,9 @@ msgstr "Dienas"
 
 msgid "Debug"
 msgstr "Atkļūdot"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Noklusētais"
@@ -1056,6 +1078,10 @@ msgstr "Dzēst mērķi"
 
 msgid "Delete user"
 msgstr "Dzēst lietotāju"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Dzēst Ceļu"
 
 msgid "Deleting"
 msgstr "Dzēšana"
@@ -1309,6 +1335,10 @@ msgstr "Vai Tu patiešām vēlies dzēst šo mērķi?"
 msgid "Do you really want to delete this user?"
 msgstr "Vai Tu patiešām vēlies dzēst šo lietotāju?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Vai Tu patiešām vēlies dzēst šo ceļu?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Vai Tu patiešām vēlies dzēst šo sējumu?\\n!!! Piezīme, visi dati tiks pazaudēti un nevarēs tikt atgūti. !!!"
 
@@ -1372,7 +1402,8 @@ msgstr "Pabeigts."
 msgid "Dos charset"
 msgstr "Dos zīmju kopa"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "Dubultāts-paritātes RAID-5"
 
 msgid "Download"
@@ -1497,6 +1528,10 @@ msgstr "Labot mērķi"
 
 msgid "Edit user"
 msgstr "Labot lietotāju"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Labot ceļu"
 
 msgid "Email"
 msgstr "E-pasts"
@@ -2350,6 +2385,10 @@ msgstr "Lietojamais atslēgas garums ar norādītajiem kriptogrāfijas algoritmi
 
 msgid "Kill encrypted volume"
 msgstr "Iznīcināt šifrēto sējumu"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Zināšanu bāze"
 
 msgid "Knowledgebase"
 msgstr "Zināšanu bāze"
@@ -3796,7 +3835,8 @@ msgstr "Izslēgšanās taimeris"
 msgid "Simple Network Management Protocol"
 msgstr "Vienkāršs Tīkla Menedžmenta Protokols"
 
-msgid "Single-parity RAID-5"
+#, fuzzy
+msgid "Single-parity RAID-Z"
 msgstr "Vienas Paritātes RAID-5"
 
 msgid "Size"
@@ -4608,6 +4648,10 @@ msgstr "Iekš raidz jābūt vismaz 2 diskiem."
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "Jābūt vismaz 3 diskiem iekš raidz2"
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Iekš raidz jābūt vismaz 2 diskiem."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Ir jābūt izvēlētam vismaz 1 interfeisam."
 
@@ -4933,6 +4977,10 @@ msgstr "Slazda virkne."
 msgid "Traps"
 msgstr "Slazdi"
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "Vienas Paritātes RAID-5"
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Triviāls Datņu Transfēra Protokols"
 
@@ -5131,6 +5179,10 @@ msgstr "Lietotāji"
 msgid "Users and Groups"
 msgstr "Lietotāji un Grupas"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5155,6 +5207,10 @@ msgstr "Virtuālās ierīces"
 msgid "Virtual interface"
 msgstr "Virtuālais interfeiss"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Sējuma nosaukums"
+
 msgid "Volume Name"
 msgstr "Sējuma nosaukums"
 
@@ -5163,6 +5219,10 @@ msgstr "Sējuma apzīmējums"
 
 msgid "Volume label of the new file system."
 msgstr "Sējuma apzīmējums jaunajai datņu sistēmai."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Sējuma nosaukums"
 
 msgid "WAN address"
 msgstr "WAN adrese"
@@ -5208,6 +5268,10 @@ msgid "Watch directory"
 msgstr "Uzraudzības mape"
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5326,6 +5390,17 @@ msgstr "ZFS datu kopas īpašības"
 
 msgid "ZFS volume"
 msgstr "ZFS sējums"
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "ZFS datu kopas informācija un stāvoklis"
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "ZFS datu kopas īpašības"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5463,6 +5538,10 @@ msgstr "aitsaistīt"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Sējuma nosaukums"
 
 #~ msgid "seconds"
 #~ msgstr "sekundes"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2010-07-18 17:46+0000\n"
 "Last-Translator: Yu - Sian , Liu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -312,6 +312,10 @@ msgstr "新增目標"
 
 msgid "Add user"
 msgstr "新增使用者"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "新增路由"
 
 msgid "Additional group"
 msgstr "其餘群組"
@@ -642,6 +646,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr "不能夠格式化作業系統安裝磁碟！"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 
@@ -810,6 +817,12 @@ msgstr "TCP 通訊埠管理員"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr ""
 
@@ -827,6 +840,10 @@ msgstr "建立遮罩"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "如果不存在則建立工作目錄"
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "已格式化之檔案系統"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -924,6 +941,9 @@ msgstr "日"
 
 msgid "Debug"
 msgstr "除錯"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "預設值"
@@ -1057,6 +1077,10 @@ msgstr "刪除目標"
 
 msgid "Delete user"
 msgstr "刪除使用者"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "刪除路由"
 
 msgid "Deleting"
 msgstr "正在刪除"
@@ -1310,6 +1334,10 @@ msgstr "您確定要刪除這個iSCSI目標嗎？"
 msgid "Do you really want to delete this user?"
 msgstr "您確定要刪除這個使用者？"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "您確定要刪除這個路由資訊嗎？"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
@@ -1373,7 +1401,7 @@ msgstr "完成。"
 msgid "Dos charset"
 msgstr "Dos字元編碼"
 
-msgid "Double-parity RAID-5"
+msgid "Double-parity RAID-Z"
 msgstr ""
 
 msgid "Download"
@@ -1498,6 +1526,10 @@ msgstr "編輯目標"
 
 msgid "Edit user"
 msgstr "編輯使用者"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "編輯路由"
 
 msgid "Email"
 msgstr "Email"
@@ -2351,6 +2383,10 @@ msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "刪除加密磁碟"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "知識庫"
 
 msgid "Knowledgebase"
 msgstr "知識庫"
@@ -3797,7 +3833,7 @@ msgstr "關機定時器"
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
-msgid "Single-parity RAID-5"
+msgid "Single-parity RAID-Z"
 msgstr ""
 
 msgid "Size"
@@ -4609,6 +4645,10 @@ msgstr "至少要選擇２個磁碟做 raidz 。"
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "至少要選擇３個磁碟做 raidz2 。"
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "至少要選擇２個磁碟做 raidz 。"
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "這裡必須最少選擇 1 個介面。"
 
@@ -4934,6 +4974,9 @@ msgstr "Trap 字串。"
 msgid "Traps"
 msgstr "Traps"
 
+msgid "Triple-parity RAID-Z"
+msgstr ""
+
 msgid "Trivial File Transfer Protocol"
 msgstr "TFTP 簡單文件傳輸傳輸協定"
 
@@ -5132,6 +5175,10 @@ msgstr "使用者"
 msgid "Users and Groups"
 msgstr "使用者/群組"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN 虛擬區網"
 
@@ -5156,6 +5203,10 @@ msgstr "虛擬裝置"
 msgid "Virtual interface"
 msgstr "虛擬介面"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Volume名稱"
+
 msgid "Volume Name"
 msgstr "Volume名稱"
 
@@ -5164,6 +5215,10 @@ msgstr "磁碟標籤"
 
 msgid "Volume label of the new file system."
 msgstr "新檔案系統的磁碟標籤"
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Volume名稱"
 
 msgid "WAN address"
 msgstr "廣域網路位置"
@@ -5209,6 +5264,10 @@ msgid "Watch directory"
 msgstr "表目錄"
 
 msgid "WebGUI"
+msgstr "網頁介面"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "網頁介面"
 
 msgid "Webserver"
@@ -5327,6 +5386,17 @@ msgstr "ZFS dataset properties"
 
 msgid "ZFS volume"
 msgstr "ZFS 標籤"
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "ZFS 資料設定資訊及狀態"
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "ZFS dataset properties"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr ""
@@ -5464,6 +5534,10 @@ msgstr "卸載"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Volume名稱"
 
 #~ msgid "seconds"
 #~ msgstr "秒"

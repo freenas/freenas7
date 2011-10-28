@@ -43,6 +43,7 @@ require_once("util.inc");
  *   [used] => 112K
  *   [avail] => 4.66G
  *   [cap] => 0%
+ *   [dedup] => 1.00x
  *   [health] => ONLINE
  *   [altroot] => -)
  * @endcode
@@ -64,8 +65,9 @@ function zfs_get_pool_list() {
 		$result[$poolname]['used'] = $aline[2];
 		$result[$poolname]['avail'] = $aline[3];
 		$result[$poolname]['cap'] = $aline[4];
-		$result[$poolname]['health'] = $aline[5];
-		$result[$poolname]['altroot'] = $aline[6];
+		$result[$poolname]['dedup'] = $aline[5];
+		$result[$poolname]['health'] = $aline[6];
+		$result[$poolname]['altroot'] = $aline[7];
 
 		// Get correct used/available disk space.
 		// See http://bugs.opensolaris.org/bugdatabase/view_bug.do?bug_id=6308817
@@ -298,6 +300,9 @@ function zfs_dataset_configure($uuid) {
 	if (!empty($dataset['compression']))
 		$param .= "-o compression={$dataset['compression']} ";
 
+	if (!empty($dataset['dedup']))
+		$param .= "-o dedup={$dataset['dedup']} ";
+
 	if (!isset($dataset['canmount']))
 		$param .= "-o canmount=off ";
 
@@ -364,13 +369,18 @@ function zfs_dataset_properties($uuid) {
 
 	$result = 0;
 
-	foreach (explode(" ", "compression canmount readonly quota") as $attr) {
+	foreach (explode(" ", "compression dedup canmount readonly quota") as $attr) {
 		$param = "";
 
 		switch ($attr) {
 			case "compression":
 				if (!empty($dataset['compression']))
 					$param = "compression={$dataset['compression']}";
+				break;
+
+			case "dedup":
+				if (!empty($dataset['dedup']))
+					$param = "dedup={$dataset['dedup']}";
 				break;
 
 			case "canmount":
@@ -405,6 +415,118 @@ function zfs_dataset_properties($uuid) {
 		// Update dataset properties
 		if (!empty($param)) {
 			$cmd = "zfs set {$param} {$dataset['pool'][0]}/{$dataset['name']}";
+			$result |= mwexec($cmd, true);
+		}
+	}
+
+	return $result;
+}
+
+/**
+ * Configure, create and start a ZFS volume.
+ * @param[in] uuid	The UUID of the volume to be configured.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_volume_configure($uuid) {
+	global $config;
+
+	if (!is_array($config['zfs']['volumes']['volume']))
+		return 1;
+
+	$index = array_search_ex($uuid, $config['zfs']['volumes']['volume'], "uuid");
+	if (false === $index)
+		return 1;
+
+	$volume = $config['zfs']['volumes']['volume'][$index];
+	if (!is_array($volume))
+		 return 1;
+
+	// Additional parameter
+	$param = "";
+
+	if (!empty($volume['compression']))
+		$param .= "-o compression={$volume['compression']} ";
+
+	if (!empty($volume['dedup']))
+		$param .= "-o dedup={$volume['dedup']} ";
+
+	// Create the volume
+	$cmd = "zfs create -V {$volume['volsize']} {$param} {$volume['pool'][0]}/{$volume['name']}";
+	write_log($cmd);
+
+	return mwexec($cmd, true);
+}
+
+/**
+ * Delete a ZFS volume.
+ * @param[in] uuid	The UUID of the volume to be deleted.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_volume_destroy($uuid) {
+	global $config;
+
+	if (!is_array($config['zfs']['volumes']['volume']))
+		return 1;
+
+	$index = array_search_ex($uuid, $config['zfs']['volumes']['volume'], "uuid");
+	if (false === $index)
+		return 1;
+
+	$volume = $config['zfs']['volumes']['volume'][$index];
+	if (!is_array($volume))
+		 return 1;
+
+	// Destroy the volume
+	$cmd = "zfs destroy {$volume['pool'][0]}/{$volume['name']}";
+	write_log($cmd);
+
+	return mwexec($cmd, true);
+}
+
+/**
+ * Update properties of a ZFS volume.
+ * @param[in] uuid	The UUID of the volume to be updated.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_volume_properties($uuid) {
+	global $config;
+
+	if (!is_array($config['zfs']['volumes']['volume']))
+		return 1;
+
+	$index = array_search_ex($uuid, $config['zfs']['volumes']['volume'], "uuid");
+	if (false === $index)
+		return 1;
+
+	$volume = $config['zfs']['volumes']['volume'][$index];
+	if (!is_array($volume))
+		 return 1;
+
+	$result = 0;
+
+	foreach (explode(" ", "volsize compression dedup") as $attr) {
+		$param = "";
+
+		switch ($attr) {
+			case "volsize":
+				if (!empty($volume['volsize']))
+					$param = "volsize={$volume['volsize']}";
+				break;
+
+			case "compression":
+				if (!empty($volume['compression']))
+					$param = "compression={$volume['compression']}";
+				break;
+
+			case "dedup":
+				if (!empty($volume['dedup']))
+					$param = "dedup={$volume['dedup']}";
+				break;
+		}
+
+		// Update volume properties
+		if (!empty($param)) {
+			$cmd = "zfs set {$param} {$volume['pool'][0]}/{$volume['name']}";
 			$result |= mwexec($cmd, true);
 		}
 	}

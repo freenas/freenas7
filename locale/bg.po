@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2010-06-29 03:57+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Добави цел"
 
 msgid "Add user"
 msgstr "Добавяне на потребител"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Добави път"
 
 msgid "Additional group"
 msgstr ""
@@ -641,6 +645,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr ""
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Can't mount the system partition 1, the DATA partition is the 2."
 
@@ -809,6 +816,12 @@ msgstr ""
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr ""
 
@@ -826,6 +839,10 @@ msgstr ""
 
 msgid "Create work directory if it doesn't exist."
 msgstr ""
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Създаване на файлова система"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -922,6 +939,9 @@ msgid "Days"
 msgstr ""
 
 msgid "Debug"
+msgstr ""
+
+msgid "Dedup"
 msgstr ""
 
 msgid "Default"
@@ -1056,6 +1076,10 @@ msgstr "Изтрий целта"
 
 msgid "Delete user"
 msgstr "изтрий потребителя"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Изтрий пътя"
 
 msgid "Deleting"
 msgstr ""
@@ -1309,6 +1333,10 @@ msgstr "Do you really want to delete this target?"
 msgid "Do you really want to delete this user?"
 msgstr ""
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Наистина ли искатате да изтриете пътя?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
@@ -1372,7 +1400,7 @@ msgstr ""
 msgid "Dos charset"
 msgstr "Dos charset"
 
-msgid "Double-parity RAID-5"
+msgid "Double-parity RAID-Z"
 msgstr ""
 
 msgid "Download"
@@ -1497,6 +1525,10 @@ msgstr ""
 
 msgid "Edit user"
 msgstr "Помени потребителя"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Промени пътя"
 
 msgid "Email"
 msgstr ""
@@ -2349,6 +2381,9 @@ msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
+msgstr ""
+
+msgid "Knowledge Base"
 msgstr ""
 
 msgid "Knowledgebase"
@@ -3796,7 +3831,7 @@ msgstr ""
 msgid "Simple Network Management Protocol"
 msgstr ""
 
-msgid "Single-parity RAID-5"
+msgid "Single-parity RAID-Z"
 msgstr ""
 
 msgid "Size"
@@ -4608,6 +4643,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "трябват  2 диска за RAID 1"
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr ""
 
@@ -4933,6 +4972,9 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+msgid "Triple-parity RAID-Z"
+msgstr ""
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5131,6 +5173,10 @@ msgstr "Потребители"
 msgid "Users and Groups"
 msgstr "Потребители и Групи"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr ""
 
@@ -5155,6 +5201,10 @@ msgstr ""
 msgid "Virtual interface"
 msgstr ""
 
+#, fuzzy
+msgid "Volume"
+msgstr "Име на диск"
+
 msgid "Volume Name"
 msgstr "Име на диск"
 
@@ -5163,6 +5213,10 @@ msgstr ""
 
 msgid "Volume label of the new file system."
 msgstr ""
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Име на диск"
 
 msgid "WAN address"
 msgstr ""
@@ -5208,6 +5262,9 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr ""
+
+msgid "WebGUI Login"
 msgstr ""
 
 msgid "Webserver"
@@ -5325,6 +5382,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Информация и статус на RAID"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5463,6 +5530,10 @@ msgstr ""
 
 msgid "upriv"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Име на диск"
 
 #~ msgid "seconds"
 #~ msgstr "секунди"

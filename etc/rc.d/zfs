@@ -66,7 +66,6 @@ zfs_start_jail()
 
 zfs_start_main()
 {
-	zfs volinit
 	zfs mount -a
 	zfs share -a
 	if [ ! -r /etc/zfs/exports ]; then
@@ -113,7 +112,6 @@ zfs_stop_main()
 	done
 	zfs unshare -a
 	zfs unmount -a
-	zfs volfini
 }
 
 zfs_stop()

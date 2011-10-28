@@ -3,14 +3,14 @@
 /*
 	disks_zfs_dataset_info.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -49,13 +49,15 @@ if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['
 $a_dataset = &$config['zfs']['datasets']['dataset'];
 
 function zfs_dataset_display_list() {
-	mwexec2("zfs list 2>&1", $rawdata);
+	mwexec2("zfs list -t filesystem 2>&1", $rawdata);
 	return implode("\n", $rawdata);
 }
 
 function zfs_dataset_display_properties() {
-	mwexec2("zfs get all 2>&1", $rawdata);
-	return implode("\n", $rawdata);
+	mwexec2("zfs list -H -o name -t filesystem 2>&1", $rawdata);
+	$vols = implode(" ", $rawdata);
+	mwexec2("zfs get all $vols 2>&1", $rawdata2);
+	return implode("\n", $rawdata2);
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -65,6 +67,7 @@ function zfs_dataset_display_properties() {
 			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>

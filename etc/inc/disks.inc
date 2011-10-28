@@ -849,6 +849,8 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k
 		echo gettext("Deleting MBR and partition table")."...\n";
 		$count = (1024*1024) / $diskinfo['sectorsize'];
 		system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} count={$count} 2>&1");
+		$oseek = $diskinfo['mediasize_sectors'] - $count;
+		system("/bin/dd if=/dev/zero of={$disk} bs={$diskinfo['sectorsize']} oseek={$oseek} count={$count} 2>&1");
 	}
 	if ($aft4k) {
 		// Advanced Format 4KB (512 x 8)
@@ -873,13 +875,17 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k
 		case "ufsgpt":
 			echo gettext("Creating partition")."...\n";
 			// Destroy old GTP partition
-			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1");
+			//system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1");
+			system("/sbin/gpart destroy {$disk} 1>/dev/null 2>&1");
 			// Create new GPT partition
-			system("/sbin/gpt create -f {$disk} 2>&1");
+			//system("/sbin/gpt create -f {$disk} 2>&1");
+			system("/sbin/gpart create -s gpt {$disk} 2>&1");
 			if ($aft4k) {
-				system("/sbin/gpt add -b $aft_aligned -s $aft_counts -t ufs {$disk} 2>&1");
+				//system("/sbin/gpt add -b $aft_aligned -s $aft_counts -t ufs {$disk} 2>&1");
+				system("/sbin/gpart add -b $aft_aligned -s $aft_counts -t freebsd-ufs {$disk} 2>&1");
 			} else {
-				system("/sbin/gpt add -t ufs {$disk} 2>&1");
+				//system("/sbin/gpt add -t ufs {$disk} 2>&1");
+				system("/sbin/gpart add -t freebsd-ufs {$disk} 2>&1");
 			}
 
 			// Create filesystem
@@ -890,10 +896,16 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k
 			if (!empty($minspace))
 				$param .= " -m {$minspace}";
 			if ($aft4k) {
+				echo sprintf(gettext("Using %s bytes fragment size."), $aft_bytes)."\n";
 				$param .= " -S $aft_bytes -b $aft_blocksize -f $aft_bytes";
 			}
 			//echo "/sbin/newfs {$param} {$disk}p1\n";
 			system("/sbin/newfs {$param} {$disk}p1 2>&1");
+
+			echo "\n";
+			echo gettext("Created UFS file system:")."\n";
+			system("/sbin/dumpfs -l {$disk}p1 2>&1");
+			echo "\n";
 			break;
 
 		case "softraid":
@@ -1048,6 +1060,19 @@ function disks_get_partition_info($disk) {
   }
 
   return $result;
+}
+
+// Get UFS ID from partition.
+// the partition (e.g. ada1p1)
+// Result is ufsid.
+function disks_get_ufsid($partition) {
+	exec("/sbin/dumpfs -l ${partition}", $rawdata);
+	$info = preg_split("/\s+/", $rawdata[0]);
+	$ufsid = "";
+	if (preg_match("/^\/dev\/ufsid\/(.*)$/", $info[0], $m)) {
+		$ufsid = $m[1];
+	}
+	return $ufsid;
 }
 
 // Get disk information.

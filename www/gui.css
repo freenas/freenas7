@@ -358,6 +358,11 @@ div#loginbox {
 	border: 1px solid #000000;
 	padding: 20px 25px 20px 25px;
 }
+
+div#loginbox table td {
+	white-space: nowrap;
+}
+
 pre.cmdoutput {
 	margin: 0;
 	border: 0px solid #435370;

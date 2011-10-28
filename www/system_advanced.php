@@ -132,7 +132,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("rcconf.sh");
+			$retval |= rc_exec_service("rcconf");
 			$retval |= rc_update_service("powerd");
 			$retval |= rc_update_service("mdnsresponder");
 			$retval |= rc_exec_service("motd");
@@ -161,19 +161,29 @@ function sysctl_tune($mode) {
 		"net.inet.tcp.rfc1323" => 1,
 		"net.inet.tcp.sendspace" => 262144,
 		"net.inet.tcp.recvspace" => 262144,
+		"net.inet.tcp.sendbuf_max" => 4194304,
+		"net.inet.tcp.sendbuf_inc" => 262144,
+		"net.inet.tcp.sendbuf_auto" => 1,
+		"net.inet.tcp.recvbuf_max" => 4194304,
+		"net.inet.tcp.recvbuf_inc" => 262144,
+		"net.inet.tcp.recvbuf_auto" => 1,
 		"net.inet.udp.recvspace" => 65536,
 		"net.inet.udp.maxdgram" => 57344,
 		"net.local.stream.recvspace" => 65536,
 		"net.local.stream.sendspace" => 65536,
-		"kern.ipc.maxsockbuf" => 4194304,
+		"kern.ipc.maxsockbuf" => 8388608,
 		"kern.ipc.somaxconn" => 8192,
-		"kern.ipc.nmbclusters" => 32768,
+		"kern.ipc.nmbclusters" => 262144,
+		"kern.ipc.nmbjumbop" => 262144,
+		"kern.ipc.nmbjumbo9" => 65536,
+		"kern.ipc.nmbjumbo16" => 32768,
 		"kern.maxfiles" => 65536,
 		"kern.maxfilesperproc" => 32768,
 		"net.inet.icmp.icmplim" => 300,
 		"net.inet.icmp.icmplim_output" => 1,
-		"net.inet.tcp.inflight.enable" => 0,
-		"net.inet.tcp.path_mtu_discovery" => 0
+		//"net.inet.tcp.inflight.enable" => 0,
+		"net.inet.tcp.path_mtu_discovery" => 0,
+		"hw.intr_storm_threshold" => 9000,
 	);
 
 	switch ($mode) {

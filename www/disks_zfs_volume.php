@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_zfs_dataset.php
+	disks_zfs_volume.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
 	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
@@ -38,13 +38,13 @@ require("auth.inc");
 require("guiconfig.inc");
 require("zfs.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Dataset"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Volumes"), gettext("Volume"));
 
-if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['dataset']))
-	$config['zfs']['datasets']['dataset'] = array();
+if (!isset($config['zfs']['volumes']) || !is_array($config['zfs']['volumes']['volume']))
+	$config['zfs']['volumes']['volume'] = array();
 
-array_sort_key($config['zfs']['datasets']['dataset'], "name");
-$a_dataset = &$config['zfs']['datasets']['dataset'];
+array_sort_key($config['zfs']['volumes']['volume'], "name");
+$a_volume = &$config['zfs']['volumes']['volume'];
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -54,42 +54,47 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// Process notifications
-			updatenotify_process("zfsdataset", "zfsdataset_process_updatenotification");
+			updatenotify_process("zfsvolume", "zfsvolume_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			updatenotify_delete("zfsdataset");
+			updatenotify_delete("zfsvolume");
 		}
-		header("Location: disks_zfs_dataset.php");
+		header("Location: disks_zfs_volume.php");
 		exit;
 	}
 }
 
 if ($_GET['act'] === "del") {
-	updatenotify_set("zfsdataset", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
-	header("Location: disks_zfs_dataset.php");
+	updatenotify_set("zfsvolume", UPDATENOTIFY_MODE_DIRTY, $_GET['uuid']);
+	header("Location: disks_zfs_volume.php");
 	exit;
 }
 
-function zfsdataset_process_updatenotification($mode, $data) {
+function get_volsize($pool, $name) {
+	mwexec2("zfs get -H -o value volsize $pool/$name 2>&1", $rawdata);
+	return $rawdata[0];
+}
+
+function zfsvolume_process_updatenotification($mode, $data) {
 	global $config;
 
 	$retval = 0;
 
 	switch ($mode) {
 		case UPDATENOTIFY_MODE_NEW:
-			$retval = zfs_dataset_configure($data);
+			$retval = zfs_volume_configure($data);
 			break;
 
 		case UPDATENOTIFY_MODE_MODIFIED:
-			$retval = zfs_dataset_properties($data);
+			$retval = zfs_volume_properties($data);
 			break;
 
 		case UPDATENOTIFY_MODE_DIRTY:
-			zfs_dataset_destroy($data);
-			$cnid = array_search_ex($data, $config['zfs']['datasets']['dataset'], "uuid");
+			zfs_volume_destroy($data);
+			$cnid = array_search_ex($data, $config['zfs']['volumes']['volume'], "uuid");
 			if (FALSE !== $cnid) {
-				unset($config['zfs']['datasets']['dataset'][$cnid]);
+				unset($config['zfs']['volumes']['volume'][$cnid]);
 				write_config();
 			}
 			break;
@@ -104,8 +109,8 @@ function zfsdataset_process_updatenotification($mode, $data) {
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
-				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Datasets");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_volume.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Volumes");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
@@ -113,33 +118,39 @@ function zfsdataset_process_updatenotification($mode, $data) {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav2">
-				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Dataset");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_dataset_info.php"><span><?=gettext("Information");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_volume.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Volume");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_volume_info.php"><span><?=gettext("Information");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabcont">
-			<form action="disks_zfs_dataset.php" method="post">
+			<form action="disks_zfs_volume.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (updatenotify_exists("zfsdataset")) print_config_change_box();?>
+				<?php if (updatenotify_exists("zfsvolume")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="20%" class="listhdrlr"><?=gettext("Pool");?></td>
 						<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
-						<td width="45%" class="listhdrr"><?=gettext("Description");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Size");?></td>
+						<td width="35%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php foreach ($a_dataset as $datasetv):?>
-					<?php $notificationmode = updatenotify_get_mode("zfsdataset", $datasetv['uuid']);?>
+					<?php foreach ($a_volume as $volumev):?>
+					<?php $notificationmode = updatenotify_get_mode("zfsvolume", $volumev['uuid']);?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($datasetv['pool'][0]);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($datasetv['name']);?>&nbsp;</td>
-						<td class="listbg"><?=htmlspecialchars($datasetv['desc']);?>&nbsp;</td>
+						<td class="listlr"><?=htmlspecialchars($volumev['pool'][0]);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($volumev['name']);?>&nbsp;</td>
+						<?php if (UPDATENOTIFY_MODE_MODIFIED == $notificationmode):?>
+						<td class="listr"><?=htmlspecialchars($volumev['volsize']);?>&nbsp;</td>
+						<?php else:?>
+						<td class="listr"><?=htmlspecialchars(get_volsize($volumev['pool'][0], $volumev['name']));?>&nbsp;</td>
+						<?php endif;?>
+						<td class="listbg"><?=htmlspecialchars($volumetv['desc']);?>&nbsp;</td>
 						<?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
 						<td valign="middle" nowrap="nowrap" class="list">
-							<a href="disks_zfs_dataset_edit.php?uuid=<?=$datasetv['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit dataset");?>" border="0" alt="<?=gettext("Edit dataset");?>" /></a>&nbsp;
-							<a href="disks_zfs_dataset.php?act=del&amp;uuid=<?=$datasetv['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this dataset?");?>')"><img src="x.gif" title="<?=gettext("Delete dataset");?>" border="0" alt="<?=gettext("Delete dataset");?>" /></a>
+							<a href="disks_zfs_volume_edit.php?uuid=<?=$volumev['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit volume");?>" border="0" alt="<?=gettext("Edit volume");?>" /></a>&nbsp;
+							<a href="disks_zfs_volume.php?act=del&amp;uuid=<?=$volumev['uuid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?");?>')"><img src="x.gif" title="<?=gettext("Delete volume");?>" border="0" alt="<?=gettext("Delete volume");?>" /></a>
 						</td>
 						<?php else:?>
 						<td valign="middle" nowrap="nowrap" class="list">
@@ -149,9 +160,9 @@ function zfsdataset_process_updatenotification($mode, $data) {
 					</tr>
 					<?php endforeach;?>
 					<tr>
-						<td class="list" colspan="3"></td>
+						<td class="list" colspan="4"></td>
 						<td class="list">
-							<a href="disks_zfs_dataset_edit.php"><img src="plus.gif" title="<?=gettext("Add dataset");?>" border="0" alt="<?=gettext("Add dataset");?>" /></a>
+							<a href="disks_zfs_volume_edit.php"><img src="plus.gif" title="<?=gettext("Add volume");?>" border="0" alt="<?=gettext("Add volume");?>" /></a>
 						</td>
 					</tr>
 				</table>

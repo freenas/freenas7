@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-03-24 21:14+0000\n"
 "Last-Translator: Jim Leirvik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -313,6 +313,10 @@ msgstr "Legg til mål"
 
 msgid "Add user"
 msgstr "Legg til bruker"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Legg til rute"
 
 msgid "Additional group"
 msgstr "Ekstra gruppe"
@@ -643,6 +647,9 @@ msgstr "Mellomlager medium"
 msgid "Can't format the OS origin disk!"
 msgstr "Kan ikke formatere OS disken!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Kan ikke montere system partisjon 1, DATA partisjonen er 2."
 
@@ -811,6 +818,14 @@ msgstr "TCP port for kontroller"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Styrer kompresjonsalgoritmen for dette datasettet. 'lzjb' kompresjonsalgoritmen er optimalisert for ytelse samtidig som den yter OK kompresjon. Valget 'On' bruker 'lzjb' algoritmen. Du kan spesifisere 'gzip' kompresjon ved å velge verdien 'gzip-N', hvor N er et tall fra 1 (hurtigst) til 9 (best kompresjon). For øyeblikket er 'gzip' lik 'gzip-6'."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Styrer kompresjonsalgoritmen for dette datasettet. 'lzjb' kompresjonsalgoritmen er optimalisert for ytelse samtidig som den yter OK kompresjon. Valget 'On' bruker 'lzjb' algoritmen. Du kan spesifisere 'gzip' kompresjon ved å velge verdien 'gzip-N', hvor N er et tall fra 1 (hurtigst) til 9 (best kompresjon). For øyeblikket er 'gzip' lik 'gzip-6'."
+
+#, fuzzy
+msgid "Controls the dedup method."
+msgstr "Autoriseringsmetode for kontroller"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Kontrollerer om dette datasettet kan bli modifisert"
 
@@ -828,6 +843,10 @@ msgstr "Lag maske"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Lag en arbeids-katalog om den ikke eksisterer"
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Preformatert filsystem"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -925,6 +944,9 @@ msgstr "Dager"
 
 msgid "Debug"
 msgstr "Feilsøk"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Standard"
@@ -1058,6 +1080,10 @@ msgstr "Slett mål"
 
 msgid "Delete user"
 msgstr "Slett bruker"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Slett rute"
 
 msgid "Deleting"
 msgstr "Sletter"
@@ -1311,6 +1337,10 @@ msgstr "Vil du virkelig slette dette målet?"
 msgid "Do you really want to delete this user?"
 msgstr "Vil du virkelig slette denne brukeren?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Vil du virkelig slette denne ruten?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Vil du virkelig slette dette volumet?\\n!!! Obs, all data vil forsvinne og kan ikke bli gjenopprettet. !!!"
 
@@ -1374,7 +1404,8 @@ msgstr "Gjort."
 msgid "Dos charset"
 msgstr "Dos tegnsett"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "Dobbel-paritets RAID-5"
 
 msgid "Download"
@@ -1499,6 +1530,10 @@ msgstr "Endre mål"
 
 msgid "Edit user"
 msgstr "Endre bruker"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Endre rute"
 
 msgid "Email"
 msgstr "E-Post"
@@ -2352,6 +2387,10 @@ msgstr "Nøkkellengde for bruk med den kryptografiske algoritmen."
 
 msgid "Kill encrypted volume"
 msgstr "Drep kryptert volum"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Leksikon"
 
 msgid "Knowledgebase"
 msgstr "Leksikon"
@@ -3798,7 +3837,8 @@ msgstr ""
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
-msgid "Single-parity RAID-5"
+#, fuzzy
+msgid "Single-parity RAID-Z"
 msgstr "Enkel paritets RAID-5"
 
 msgid "Size"
@@ -4610,6 +4650,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Det må være minst 2 disker i et JBOD."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Minst et grensesnitt må velges."
 
@@ -4935,6 +4979,10 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "Enkel paritets RAID-5"
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5133,6 +5181,10 @@ msgstr "Brukere"
 msgid "Users and Groups"
 msgstr "Brukere og grupper"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5157,6 +5209,10 @@ msgstr ""
 msgid "Virtual interface"
 msgstr "Virituellt grensesnitt"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Volum navn"
+
 msgid "Volume Name"
 msgstr "Volum navn"
 
@@ -5165,6 +5221,10 @@ msgstr "Volumnavn"
 
 msgid "Volume label of the new file system."
 msgstr "Volumnavnet til det nye filsystemet."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Volum navn"
 
 msgid "WAN address"
 msgstr "WAN adresse"
@@ -5210,6 +5270,10 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5327,6 +5391,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Programvare RAID informasjon og status"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5465,6 +5539,10 @@ msgstr "avmontér"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Volum navn"
 
 #~ msgid "seconds"
 #~ msgstr "sekunder"

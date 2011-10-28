@@ -25,6 +25,13 @@ if [ -f "${FREENAS_SVNDIR}/local.revision" ]; then
 	FREENAS_REVISION=$(printf $(cat ${FREENAS_SVNDIR}/local.revision) ${FREENAS_REVISION})
 fi
 FREENAS_ARCH=$(uname -p)
+if [ "amd64" = ${FREENAS_ARCH} ]; then
+    FREENAS_XARCH="x64"
+elif [ "i386" = ${FREENAS_ARCH} ]; then
+    FREENAS_XARCH="x86"
+else
+    FREENAS_XARCH=$FRENAS_ARCH
+fi
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
@@ -69,11 +76,11 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # to a RAM disk at FreeNAS startup.
 #FREENAS_MFSROOT_SIZE=164
 #FREENAS_IMG_SIZE=66
-FREENAS_MFSROOT_SIZE=192
-FREENAS_IMG_SIZE=76
+FREENAS_MFSROOT_SIZE=194
+FREENAS_IMG_SIZE=80
 if [ "amd64" = ${FREENAS_ARCH} ]; then
-	FREENAS_MFSROOT_SIZE=204
-	FREENAS_IMG_SIZE=80
+	FREENAS_MFSROOT_SIZE=206
+	FREENAS_IMG_SIZE=84
 fi
 
 # Media geometry, only relevant if bios doesn't understand LBA.
@@ -422,7 +429,7 @@ create_image() {
 	[ -f ${FREENAS_WORKINGDIR}/image.bin.gz ] && rm -f image.bin.gz
 
 	# Set platform information.
-	PLATFORM="${FREENAS_ARCH}-embedded"
+	PLATFORM="${FREENAS_XARCH}-embedded"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
 	# Set build time.
@@ -477,15 +484,24 @@ create_image() {
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
 	if [ 0 != $OPT_BOOTMENU ]; then
 		cp $FREENAS_SVNDIR/boot/menu.4th $FREENAS_TMPDIR/boot
-		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		#cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		#cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/brand.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/check-password.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/color.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/delay.4th $FREENAS_TMPDIR/boot
 		cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/menu-commands.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/shortcuts.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/version.4th $FREENAS_TMPDIR/boot
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		install -v -o root -g wheel -m 555 ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	if [ "amd64" != ${FREENAS_ARCH} ]; then
-		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 apm/apm.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	# iSCSI driver
 	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 iscsi/isboot/isboot.ko $FREENAS_TMPDIR/boot/kernel
@@ -519,17 +535,17 @@ create_iso () {
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
 	if [ ! $LIGHT_ISO ]; then
-		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-${FREENAS_VERSION}.${FREENAS_REVISION}"
-		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-${FREENAS_VERSION}"
+		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_XARCH}-LiveCD-${FREENAS_VERSION}.${FREENAS_REVISION}"
+		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_XARCH}-LiveCD-${FREENAS_VERSION}"
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
 		create_image;
 	else
-		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-light-${FREENAS_VERSION}.${FREENAS_REVISION}"
-		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-LiveCD-light-${FREENAS_VERSION}"
+		LABEL="${FREENAS_PRODUCTNAME}-${FREENAS_XARCH}-LiveCD-light-${FREENAS_VERSION}.${FREENAS_REVISION}"
+		VOLUMEID="${FREENAS_PRODUCTNAME}-${FREENAS_XARCH}-LiveCD-light-${FREENAS_VERSION}"
 	fi
 
 	# Set Platform Informations.
-	PLATFORM="${FREENAS_ARCH}-liveCD"
+	PLATFORM="${FREENAS_XARCH}-liveCD"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
 	# Set Revision.
@@ -556,22 +572,31 @@ create_iso () {
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
 	if [ 0 != $OPT_BOOTMENU ]; then
 		cp $FREENAS_SVNDIR/boot/menu.4th $FREENAS_TMPDIR/boot
-		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		#cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		#cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/brand.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/check-password.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/color.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/delay.4th $FREENAS_TMPDIR/boot
 		cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/menu-commands.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/shortcuts.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/version.4th $FREENAS_TMPDIR/boot
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		install -v -o root -g wheel -m 555 ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	if [ "amd64" != ${FREENAS_ARCH} ]; then
-		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 apm/apm.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	# iSCSI driver
 	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 iscsi/isboot/isboot.ko $FREENAS_TMPDIR/boot/kernel
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
-		cp ${FREENAS_WORKINGDIR}/image.bin.gz ${FREENAS_TMPDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-embedded.gz
+		cp ${FREENAS_WORKINGDIR}/image.bin.gz ${FREENAS_TMPDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_XARCH}-embedded.gz
 	fi
 
 	echo "ISO: Generating ISO File"
@@ -579,7 +604,7 @@ create_iso () {
 	[ 0 != $? ] && return 1 # successful?
 
 	echo "Generating SHA256 CHECKSUM File"
-	FREENAS_CHECKSUMFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-${FREENAS_VERSION}.${FREENAS_REVISION}.checksum"
+	FREENAS_CHECKSUMFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_XARCH}-${FREENAS_VERSION}.${FREENAS_REVISION}.checksum"
 	cd ${FREENAS_ROOTDIR} && sha256 *.img *.iso >> ${FREENAS_ROOTDIR}/${FREENAS_CHECKSUMFILENAME}
 
 	# Cleanup.
@@ -602,7 +627,7 @@ create_full() {
 	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"
 
 	# Set platform information.
-	PLATFORM="${FREENAS_ARCH}-full"
+	PLATFORM="${FREENAS_XARCH}-full"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
 	# Set Revision.
@@ -635,15 +660,24 @@ create_full() {
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
 	if [ 0 != $OPT_BOOTMENU ]; then
 		cp $FREENAS_SVNDIR/boot/menu.4th $FREENAS_TMPDIR/boot
-		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		#cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		#cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/brand.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/check-password.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/color.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/delay.4th $FREENAS_TMPDIR/boot
 		cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/menu-commands.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/shortcuts.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/version.4th $FREENAS_TMPDIR/boot
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	if [ "amd64" != ${FREENAS_ARCH} ]; then
-		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	# iSCSI driver
 	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && install -v -o root -g wheel -m 555 iscsi/isboot/isboot.ko $FREENAS_TMPDIR/boot/kernel

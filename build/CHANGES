@@ -1,39 +1,37 @@
-FreeNAS 0.8 (Golden Path):
---------------------------
+FreeNAS 0.7.5 (Golden Path):
+----------------------------
 
-WARNING: This release will not be the 0.8 release
+WARNING: This release will not be the 0.7.5 release
 It's an experimental testing
 
 Majors changes:
-- Upgrade to FreeBSD 8.0-Release:
+- Upgrade to FreeBSD 9.0:
    - Enable the new AHCI drivers for SATA (/dev/ad0 became /dev/ada0)
         (TODO: Need to use glabel for mounting disk,hide drivers changes)
-   - add atapicam that permit to use a CD Burner software
 - Add gmultipath, disk mutlipath control utility(FR #2835904)
+- Change the mount device of UFS into UFS ID.
+- Modify tuning values and enable it by default.
+- Add ZFS volume setting pages.
 
-Minors changes.
-- Update php to 5.2.14.
-- Do not ask for network card OPT if only one network card detected
-- Update URL of the website (http://freenas.org)
-- Improve the display of IP addresses in console mode
-- Update iSCSI initiator to 2.2.4.
+Minors changes:
+- Add ability to configure Triple-parity RAID-Z.
+- Add ability to configure ZFS v28 properties. (dedup, zle compression)
+- Add ability to configure MTU for lagg device.
+- Add some utility commands.
+
+Bug fixes:
+- Fix the problem which discards the DNS settings from a DHCP server.
+- Fix WOL breaks lagg setting. 
+- Add a partition vdev to disk list when ZFS sync.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
-- It is not possible to get seperate CPU stats per processor on SMP machines because
-  FreeBSD does not support that feature.
 - Enable 'polling' on interfaces used by a LAGG interface will make it inoperable.
-- It is not possible to mount EXT2 disks with an inode size of 256 bytes. You
-  have to format it with 128 bytes on Linux to use them on FreeBSD.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be
   overriden by the IPv4 DNS server.
-- Downgrading to 0.69 via WebGUI fails because of broken pipe error.
-- FreeBSD's ext2fs module, as of release 7.1, cannot mount ext2 file systems
-  with 256-byte large inodes, only 128 byte sized.  Unfortunately, 256 byte is
-  the default size with many recent Linux distributions.
 
 NEED TESTING:
 - IPv6: auto mode

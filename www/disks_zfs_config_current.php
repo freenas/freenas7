@@ -3,14 +3,14 @@
 /*
 	disks_zfs_config_current.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -44,6 +44,7 @@ $zfs = $config['zfs'];
 if (!is_array($zfs['pools']['pool'])) $zfs['pools']['pool'] = array();
 if (!is_array($zfs['vdevices']['vdevice'])) $zfs['vdevices']['vdevice'] = array();
 if (!is_array($zfs['datasets']['dataset'])) $zfs['datasets']['dataset'] = array();
+if (!is_array($zfs['volumes']['volume'])) $zfs['volumes']['volume'] = array();
 
 foreach ($zfs['pools']['pool'] as $index => $pool)
 {
@@ -78,13 +79,15 @@ $rawdata = null;
 $spa = @exec("sysctl -q -n vfs.zfs.version.spa");
 if ($spa == '') {
 	mwexec2("zpool list -H -o name,root,size,capacity,health", $rawdata);
-} else {
+} else if ($spa < 21) {
 	mwexec2("zpool list -H -o name,altroot,size,capacity,health", $rawdata);
+} else {
+	mwexec2("zpool list -H -o name,altroot,size,capacity,health,dedup", $rawdata);
 }
 foreach ($rawdata as $line)
 {
 	if ($line == 'no pools available') { continue; }
-	list($pool, $root, $size, $cap, $health) = explode("\t", $line);
+	list($pool, $root, $size, $cap, $health, $dedup) = explode("\t", $line);
 	if (false === ($index = array_search_ex($pool, $zfs['pools']['pool'], 'name'))) { continue; }
 	if ($root != '-')
 	{
@@ -93,6 +96,7 @@ foreach ($rawdata as $line)
 	$zfs['pools']['pool'][$index]['size'] = $size;
 	$zfs['pools']['pool'][$index]['cap'] = $cap;
 	$zfs['pools']['pool'][$index]['health'] = $health;
+	$zfs['pools']['pool'][$index]['dedup'] = $dedup;
 }
 
 if (updatenotify_exists('zfs_import_config'))
@@ -118,6 +122,7 @@ if (updatenotify_exists('zfs_import_config'))
 		<ul id="tabnav">
 			<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 			<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+			<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
 			<li class="tabact"><a href="disks_zfs_config.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Configuration");?></span></a></li>
 		</ul>
 		</td>
@@ -135,15 +140,16 @@ if (updatenotify_exists('zfs_import_config'))
 		<td class="tabcont">
 			<?php if (isset($savemsg)) print_info_box($savemsg); ?>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 7);?>
+				<?php html_titleline(gettext('Pools').' ('.count($zfs['pools']['pool']).')', 8);?>
 				<tr>
 					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Size");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Used");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Free");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Health");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Mount point");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("AltRoot");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Size");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Used");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Free");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Dedup");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Health");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Mount point");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("AltRoot");?></td>
 				</tr>
 				<?php foreach ($zfs['pools']['pool'] as $pool):?>
 				<tr>
@@ -151,6 +157,7 @@ if (updatenotify_exists('zfs_import_config'))
 					<td class="listr"><?= $pool['size']; ?></td>
 					<td class="listr"><?= $pool['used']; ?> (<?= $pool['cap']; ?>)</td>
 					<td class="listr"><?= $pool['avail']; ?></td>
+					<td class="listr"><?= $pool['dedup']; ?></td>
 					<td class="listr"><?= $pool['health']; ?></td>
 					<td class="listr"><?= $pool['mountpoint']; ?></td>
 					<td class="listr"><?= empty($pool['root']) ? '-' : $pool['root']; ?></td>
@@ -177,25 +184,47 @@ if (updatenotify_exists('zfs_import_config'))
 			</table>
 			<br />
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 7);?>
+				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 8);?>
 				<tr>
 					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Compression");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Canmount");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Quota");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Extended attributes");?></td>
-					<td width="14%" class="listhdrr"><?=gettext("Readonly");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Compression");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Dedup");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Canmount");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Quota");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Extended attributes");?></td>
+					<td width="12%" class="listhdrr"><?=gettext("Readonly");?></td>
 				</tr>
 				<?php foreach ($zfs['datasets']['dataset'] as $dataset):?>
 				<tr>
 					<td class="listlr"><?= $dataset['name']; ?></td>
 					<td class="listr"><?= $dataset['pool'][0]; ?></td>
 					<td class="listr"><?= $dataset['compression']; ?></td>
+					<td class="listr"><?= $dataset['dedup']; ?></td>
 					<td class="listr"><?= isset($dataset['canmount']) ? 'on' : 'off'; ?></td>
 					<td class="listr"><?= empty($dataset['quota']) ? 'none' : $dataset['quota']; ?></td>
 					<td class="listr"><?= isset($dataset['xattr']) ? 'on' : 'off'; ?></td>
 					<td class="listr"><?= isset($dataset['readonly']) ? 'on' : 'off'; ?></td>
+				</tr>
+				<?php endforeach;?>
+			</table>
+			<br />
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<?php html_titleline(gettext('Volumes').' ('.count($zfs['volumes']['volume']).')', 5);?>
+				<tr>
+					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Size");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Compression");?></td>
+					<td width="21%" class="listhdrr"><?=gettext("Dedup");?></td>
+				</tr>
+				<?php foreach ($zfs['volumes']['volume'] as $volume):?>
+				<tr>
+					<td class="listlr"><?= $volume['name']; ?></td>
+					<td class="listr"><?= $volume['pool'][0]; ?></td>
+					<td class="listr"><?= $volume['volsize']; ?></td>
+					<td class="listr"><?= $volume['compression']; ?></td>
+					<td class="listr"><?= $volume['dedup']; ?></td>
 				</tr>
 				<?php endforeach;?>
 			</table>

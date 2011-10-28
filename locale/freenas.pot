@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 11:00+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -303,6 +303,9 @@ msgid "Add target"
 msgstr ""
 
 msgid "Add user"
+msgstr ""
+
+msgid "Add volume"
 msgstr ""
 
 msgid "Additional group"
@@ -634,6 +637,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr ""
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
 
@@ -802,6 +808,12 @@ msgstr ""
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr ""
 
@@ -818,6 +830,9 @@ msgid "Create mask"
 msgstr ""
 
 msgid "Create work directory if it doesn't exist."
+msgstr ""
+
+msgid "Created UFS file system:"
 msgstr ""
 
 msgid "Creates the pool with an alternate root."
@@ -915,6 +930,9 @@ msgid "Days"
 msgstr ""
 
 msgid "Debug"
+msgstr ""
+
+msgid "Dedup"
 msgstr ""
 
 msgid "Default"
@@ -1048,6 +1066,9 @@ msgid "Delete target"
 msgstr ""
 
 msgid "Delete user"
+msgstr ""
+
+msgid "Delete volume"
 msgstr ""
 
 msgid "Deleting"
@@ -1302,6 +1323,9 @@ msgstr ""
 msgid "Do you really want to delete this user?"
 msgstr ""
 
+msgid "Do you really want to delete this volume?"
+msgstr ""
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
@@ -1365,7 +1389,7 @@ msgstr ""
 msgid "Dos charset"
 msgstr ""
 
-msgid "Double-parity RAID-5"
+msgid "Double-parity RAID-Z"
 msgstr ""
 
 msgid "Download"
@@ -1489,6 +1513,9 @@ msgid "Edit target"
 msgstr ""
 
 msgid "Edit user"
+msgstr ""
+
+msgid "Edit volume"
 msgstr ""
 
 msgid "Email"
@@ -2341,6 +2368,9 @@ msgid "Key length to use with the given cryptographic algorithm."
 msgstr ""
 
 msgid "Kill encrypted volume"
+msgstr ""
+
+msgid "Knowledge Base"
 msgstr ""
 
 msgid "Knowledgebase"
@@ -3787,7 +3817,7 @@ msgstr ""
 msgid "Simple Network Management Protocol"
 msgstr ""
 
-msgid "Single-parity RAID-5"
+msgid "Single-parity RAID-Z"
 msgstr ""
 
 msgid "Size"
@@ -4599,6 +4629,9 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+msgid "There must be at least 4 disks in a raidz3."
+msgstr ""
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr ""
 
@@ -4924,6 +4957,9 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+msgid "Triple-parity RAID-Z"
+msgstr ""
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5122,6 +5158,10 @@ msgstr ""
 msgid "Users and Groups"
 msgstr ""
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr ""
 
@@ -5146,6 +5186,9 @@ msgstr ""
 msgid "Virtual interface"
 msgstr ""
 
+msgid "Volume"
+msgstr ""
+
 msgid "Volume Name"
 msgstr ""
 
@@ -5153,6 +5196,9 @@ msgid "Volume label"
 msgstr ""
 
 msgid "Volume label of the new file system."
+msgstr ""
+
+msgid "Volumes"
 msgstr ""
 
 msgid "WAN address"
@@ -5199,6 +5245,9 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr ""
+
+msgid "WebGUI Login"
 msgstr ""
 
 msgid "Webserver"
@@ -5316,6 +5365,15 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+msgid "ZFS volume information and status"
+msgstr ""
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"

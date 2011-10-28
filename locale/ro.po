@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2010-12-01 17:01+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Adaugare destinatie"
 
 msgid "Add user"
 msgstr "Adaugă utilizator"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Adaugare Ruta"
 
 msgid "Additional group"
 msgstr "Grup aditional"
@@ -641,6 +645,9 @@ msgstr "Dispozitiv de cache"
 msgid "Can't format the OS origin disk!"
 msgstr "Nu se poate formata discul sistem!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Partitia sistem 1 nu poate fi montata, partitia de DATE este partitia 2"
 
@@ -809,6 +816,13 @@ msgstr "Controller de port TCP"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Controleaza algoritmul de compresie utilizat pt acest set de date. Algoritmul compresie 'lzjb' este optimizat pt performanta in timp ce furnizeaza compresie de date buna. Setarea compresiei pe 'Pornit' utilizeaza algoritmul compresie 'lzjb'. Puteti specifica nivelul 'gzip' utilizand valoarea 'gzip-N', unde N este un intreg intre 1(cel mai repede) si 9(cea mai buna compresie). Deocamdata, 'gzip' este acelasi cu 'gzip-6'."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Controleaza algoritmul de compresie utilizat pt acest set de date. Algoritmul compresie 'lzjb' este optimizat pt performanta in timp ce furnizeaza compresie de date buna. Setarea compresiei pe 'Pornit' utilizeaza algoritmul compresie 'lzjb'. Puteti specifica nivelul 'gzip' utilizand valoarea 'gzip-N', unde N este un intreg intre 1(cel mai repede) si 9(cea mai buna compresie). Deocamdata, 'gzip' este acelasi cu 'gzip-6'."
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Controleaza daca acest set de date poate fi modificata"
 
@@ -826,6 +840,10 @@ msgstr "Creare masca"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Creare director de lucru daca nu este existent"
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Creare Sistem fisiere"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Creare pool cu un alt root"
@@ -923,6 +941,9 @@ msgstr "Zile"
 
 msgid "Debug"
 msgstr "Depanare"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Implicit"
@@ -1056,6 +1077,10 @@ msgstr "Stergere destinatie"
 
 msgid "Delete user"
 msgstr "Stergere utilizator"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Stergere Ruta"
 
 msgid "Deleting"
 msgstr "Ştergere"
@@ -1309,6 +1334,10 @@ msgstr "Doriti sa stergeti aceasta destinatie?"
 msgid "Do you really want to delete this user?"
 msgstr "Stergeti acest utilizator?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Stergeti aceasta ruta?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Sigur doriţi să ştergeţi acest volum?\\n!!! Notă: Toate datele vor fi pierdute şi nu mai pot fi recuperate. !!!"
 
@@ -1372,7 +1401,7 @@ msgstr "Gata."
 msgid "Dos charset"
 msgstr "Caractere Dos"
 
-msgid "Double-parity RAID-5"
+msgid "Double-parity RAID-Z"
 msgstr ""
 
 msgid "Download"
@@ -1497,6 +1526,10 @@ msgstr "Editare destinatie"
 
 msgid "Edit user"
 msgstr "Editare utilizator"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Editare Ruta"
 
 msgid "Email"
 msgstr "Email"
@@ -2350,6 +2383,9 @@ msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Distrugere volum criptat"
+
+msgid "Knowledge Base"
+msgstr ""
 
 msgid "Knowledgebase"
 msgstr ""
@@ -3796,7 +3832,7 @@ msgstr ""
 msgid "Simple Network Management Protocol"
 msgstr ""
 
-msgid "Single-parity RAID-5"
+msgid "Single-parity RAID-Z"
 msgstr ""
 
 msgid "Size"
@@ -4608,6 +4644,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Sint necesare cel putin 2 discuri pentru un JBOD."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr ""
 
@@ -4933,6 +4973,9 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+msgid "Triple-parity RAID-Z"
+msgstr ""
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5131,6 +5174,10 @@ msgstr "Utilizatori"
 msgid "Users and Groups"
 msgstr "Utilizatori si Grupuri"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr ""
 
@@ -5155,6 +5202,10 @@ msgstr ""
 msgid "Virtual interface"
 msgstr ""
 
+#, fuzzy
+msgid "Volume"
+msgstr "Nume Volum"
+
 msgid "Volume Name"
 msgstr "Nume Volum"
 
@@ -5163,6 +5214,10 @@ msgstr "Nume volum"
 
 msgid "Volume label of the new file system."
 msgstr "Numele volumului pentru noul sistem de fisiere."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Nume Volum"
 
 msgid "WAN address"
 msgstr "Adresa WAN"
@@ -5208,6 +5263,9 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr ""
+
+msgid "WebGUI Login"
 msgstr ""
 
 msgid "Webserver"
@@ -5325,6 +5383,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Informatii despre volumul RAID Software"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5463,6 +5531,10 @@ msgstr "demontare"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Nume Volum"
 
 #~ msgid "seconds"
 #~ msgstr "secunde"

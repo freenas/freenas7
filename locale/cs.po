@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-03-28 18:50+0000\n"
 "Last-Translator: Vaclav Obrtlik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Přidat cíl"
 
 msgid "Add user"
 msgstr "Přidat uživatele"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Přidat cestu"
 
 msgid "Additional group"
 msgstr "Dodatečná skupina"
@@ -641,6 +645,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr "Není možné formátovat výchozí disk operačního systému!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Není možné připojit systémový oddíl 1, pro DATA oddíl použijte volbu 2."
 
@@ -809,6 +816,12 @@ msgstr ""
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr ""
 
@@ -826,6 +839,10 @@ msgstr "Vytvořit masku"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Vytvořit pracovní adresář, pokud neexistuje."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Předformátovaný file systém"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -923,6 +940,9 @@ msgstr "Dny"
 
 msgid "Debug"
 msgstr "Ladicí režim"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Výchozí"
@@ -1056,6 +1076,10 @@ msgstr "Odstranit cíl"
 
 msgid "Delete user"
 msgstr "Odstranit uživatele"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Odstranit cestu"
 
 msgid "Deleting"
 msgstr "Odstraňování"
@@ -1309,6 +1333,10 @@ msgstr "Opravdu chcete odstranit tento cíl?"
 msgid "Do you really want to delete this user?"
 msgstr "Opravdu chcete odstranit tohoto uživatele?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Opravdu chcete odstranit tuto cestu?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Skutečně chcete smazat tento oddíl?\\n !!!! Všechna data budou ztracena a nebude je možné obnovit. !!!!"
 
@@ -1372,7 +1400,7 @@ msgstr "Dokončeno."
 msgid "Dos charset"
 msgstr "Znaková sada pro DOS"
 
-msgid "Double-parity RAID-5"
+msgid "Double-parity RAID-Z"
 msgstr ""
 
 msgid "Download"
@@ -1497,6 +1525,10 @@ msgstr "Upravit cíl"
 
 msgid "Edit user"
 msgstr "Upravit uživatele"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Upravit routování"
 
 msgid "Email"
 msgstr "E-mail"
@@ -2350,6 +2382,10 @@ msgstr "Délka klíče použitého kryptovacím algoritmem."
 
 msgid "Kill encrypted volume"
 msgstr "Zlikvidovat šifrovaný svazek"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Znalostní báze"
 
 msgid "Knowledgebase"
 msgstr "Znalostní báze"
@@ -3796,7 +3832,7 @@ msgstr "Odpočítávač vypnutí"
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
-msgid "Single-parity RAID-5"
+msgid "Single-parity RAID-Z"
 msgstr ""
 
 msgid "Size"
@@ -4608,6 +4644,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Pro JBOD jsou potřeba nejméně dva disky."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Musí být vybrán nejméně jeden interface."
 
@@ -4933,6 +4973,9 @@ msgstr "Odchytit řetězec."
 msgid "Traps"
 msgstr "Odchytávání"
 
+msgid "Triple-parity RAID-Z"
+msgstr ""
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol"
 
@@ -5131,6 +5174,10 @@ msgstr "Uživatelé"
 msgid "Users and Groups"
 msgstr "Uživatelé a skupiny"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5155,6 +5202,10 @@ msgstr ""
 msgid "Virtual interface"
 msgstr "Virtuální interface"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Název svazku"
+
 msgid "Volume Name"
 msgstr "Název svazku"
 
@@ -5163,6 +5214,10 @@ msgstr "Štítek svazku"
 
 msgid "Volume label of the new file system."
 msgstr "Štítek svazku nového souborového systému."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Název svazku"
 
 msgid "WAN address"
 msgstr "WAN adresy"
@@ -5208,6 +5263,10 @@ msgid "Watch directory"
 msgstr "Sledovaný adresář"
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5325,6 +5384,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Info a status rozsahu"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5463,6 +5532,10 @@ msgstr "odpojit"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Název svazku"
 
 #~ msgid "seconds"
 #~ msgstr "sekund"

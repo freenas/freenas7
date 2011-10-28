@@ -3,7 +3,7 @@
 /*
 	disks_zfs_zpool_vdevice_edit.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
@@ -11,7 +11,7 @@
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -119,6 +119,13 @@ if ($_POST) {
 			}
 			break;
 
+		case "raidz3":{
+				if (count($_POST['device']) <  4) {
+					$input_errors[] = gettext("There must be at least 4 disks in a raidz3.");
+				}
+			}
+			break;
+
 		default: {
 				if (count($_POST['device']) <  1) {
 					$input_errors[] = gettext("There must be at least 1 disks selected.");
@@ -169,6 +176,7 @@ function enable_change(enable_change) {
 			<ul id="tabnav">
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
@@ -192,7 +200,7 @@ function enable_change(enable_change) {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($uuid) && false !== $cnid);?>
-					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "raidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare"), "cache" => gettext("Cache"), "log" => gettext("Log"), "log-mirror" => gettext("Log (mirror)")), "", true, isset($uuid) && false !== $cnid);?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-Z"), "raidz2" => gettext("Double-parity RAID-Z"), "raidz3" => gettext("Triple-parity RAID-Z"), "spare" => gettext("Hot Spare"), "cache" => gettext("Cache"), "log" => gettext("Log"), "log-mirror" => gettext("Log (mirror)")), "", true, isset($uuid) && false !== $cnid);?>
 					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($uuid) && false !== $cnid && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if ((!isset($uuid) || isset($uuid) && false === $cnid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
 					<?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($uuid) && false !== $cnid);?>
 					<?php html_checkbox("aft4k", gettext("Advanced Format"), $pconfig['aft4k'] ? true : false, gettext("Enable Advanced Format (4KB sector)"), "", false, "");?>

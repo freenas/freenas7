@@ -70,10 +70,14 @@ setifconfig()
 		-i "ipaddr[. = 'dhcp']" -o "syncdhcp" -b \
 		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 		-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
-		-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
-		-i "wakeon[. = 'off']" -o " -wol " -b \
+		-i "starts-with(if,'lagg') = 0" \
+			-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
+			-i "wakeon[. = 'off']" -o " -wol " -b \
+	    	-b \
 		-i "count(polling) > 0" -o " polling" -b \
-		-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+		-i "starts-with(if,'lagg') = 0" \
+			-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+	    	-b \
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		-m "wireless" \
 			-v "concat(' ssid ',ssid,' channel ',channel)" \
@@ -123,10 +127,14 @@ setifconfig()
 				-i "ipaddr[. = 'dhcp']" -o "syncdhcp" -b \
 				-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 				-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
-				-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
-				-i "wakeon[. = 'off']" -o " -wol " -b \
+				-i "starts-with(if,'lagg') = 0" \
+					-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
+					-i "wakeon[. = 'off']" -o " -wol " -b \
+			    	-b \
 				-i "count(polling) > 0" -o " polling" -b \
-				-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+				-i "starts-with(if,'lagg') = 0" \
+					-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+			    	-b \
 				-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 				-m "wireless" \
 					-v "concat(' ssid ',ssid,' channel ',channel)" \
@@ -175,12 +183,18 @@ setifconfig()
 	/usr/local/bin/xml sel -t \
 		-i "//interfaces/*/if[contains(.,'lagg')]" \
 			-m "//vinterfaces/lagg/laggport" \
-				-v . -n \
+				-v . \
+				-m "//interfaces/*[if=if]/mtu" \
+					-v "concat(' ',.)" \
+				-b \
+			-n \
 			-b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
-		while read _laggport; do
-			[ -n "${_laggport}" ] && eval /usr/local/sbin/rconf attribute set "ifconfig_${_laggport}" "up"
+		while read _laggport _laggport_mtu; do
+			_laggport_args="up"
+			[ -n "${_laggport_mtu}" ] && _laggport_args="$_laggport_args mtu ${_laggport_mtu}"
+			[ -n "${_laggport}" ] && eval /usr/local/sbin/rconf attribute set "ifconfig_${_laggport}" "${_laggport_args}"
 		done
 
 	#########################################################################
@@ -191,7 +205,8 @@ setifconfig()
 	if configxml_isset "//interfaces/*[enable]/ipv6_enable"; then
 		_value="YES"
 	fi
-	eval /usr/local/sbin/rconf attribute set "ipv6_enable" "${_value}"
+	#eval /usr/local/sbin/rconf attribute set "ipv6_enable" "${_value}"
+	eval /usr/local/sbin/rconf attribute set "ipv6_activate_all_interfaces" "${_value}"
 
 	# LAN interface:
 	_ifn=`configxml_get "//interfaces/lan/if"`

@@ -294,7 +294,7 @@ write_console("\nInitializing interface. Please wait...");
 rc_exec_service("rcconf");
 rc_restart_service("netif");
 rc_restart_service("routing");
-rc_restart_service("network_ipv6");
+//rc_restart_service("network_ipv6");
 rc_restart_service("resolv");
 
 // Get current IP.
@@ -334,12 +334,16 @@ write_console("You can access the WebGUI using the following URL:\n");
 // Hide default port (80 for http and 443 for https)
 if ((($protocol === "https") && ($port === 443)) || (($protocol === "http") && ($port === 80))) {
     write_console("{$protocol}://{$lanipv4}\n");
-    if ($laninfov6 !== "")
+    if (isset($config['interfaces']['lan']['ipv6_enable'])) {
+	if ($laninfov6 !== "")
 	    write_console("{$protocol}://[{$lanipv6}]\n");
+    }
 } else {
     write_console("{$protocol}://{$lanipv4}:{$port}\n");
-    if ($laninfov6 !== "")
+    if (isset($config['interfaces']['lan']['ipv6_enable'])) {
+	if ($laninfov6 !== "")
 	    write_console("{$protocol}://[{$lanipv6}]:{$port}\n");
+    }
 }
 
 tui_wait_keypress();

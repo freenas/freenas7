@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>8.9</version>
+	<version>9.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -38,9 +38,9 @@
 		<disablefm/>
 		<disablefirmwarecheck/>
 		<disablebeep/>
-		<tune/>
 		<powerd/>
 		-->
+		<tune/>
 		<swap>
 			<type>file</type>
 			<!--
@@ -120,6 +120,189 @@
 				<name>hw.acpi.power_button_state</name>
 				<value>NONE</value>
 				<comment>Disable power button</comment>
+			</param>
+			<!-- Enable Tuning  -->
+			<param>
+				<uuid>d25eb28e-a719-4f07-af4e-00841fd3bd42</uuid>
+				<name>net.inet.tcp.delayed_ack</name>
+				<value>0</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>fdf2ad39-8839-402f-ae71-b6bbe00f35e2</uuid>
+				<name>net.inet.tcp.rfc1323</name>
+				<value>1</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>c8ecaad7-0da8-4042-9248-95de2b39695d</uuid>
+				<name>net.inet.tcp.sendspace</name>
+				<value>262144</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>69f639d1-6ed4-4189-ad0b-9bb3073bb728</uuid>
+				<name>net.inet.tcp.recvspace</name>
+				<value>262144</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>7eb21345-5732-46d0-b720-5161b502b807</uuid>
+				<name>net.inet.tcp.sendbuf_max</name>
+				<value>4194304</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>ef39320f-ec3d-403d-a947-946cdf3e7438</uuid>
+				<name>net.inet.tcp.sendbuf_inc</name>
+				<value>262144</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>42274d44-af41-4e37-b0fc-186bb2e4729a</uuid>
+				<name>net.inet.tcp.sendbuf_auto</name>
+				<value>1</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>dd570d75-ca14-4f9f-9a41-66abfb95b929</uuid>
+				<name>net.inet.tcp.recvbuf_max</name>
+				<value>4194304</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>c1ef4e9f-0a3e-4ae0-b903-056392d121e1</uuid>
+				<name>net.inet.tcp.recvbuf_inc</name>
+				<value>262144</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>d6b049e9-2aef-4dbf-8bd5-b8fca087a97d</uuid>
+				<name>net.inet.tcp.recvbuf_auto</name>
+				<value>1</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>c53babac-1619-4d1c-9fa6-0288480efb48</uuid>
+				<name>net.inet.udp.recvspace</name>
+				<value>65536</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>1300d0f3-bc62-4e2e-b307-54bd25ca885d</uuid>
+				<name>net.inet.udp.maxdgram</name>
+				<value>57344</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>ee1aae55-5add-4d7d-b656-9df9319f1297</uuid>
+				<name>net.local.stream.recvspace</name>
+				<value>65536</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>14068e6e-28b8-49eb-b2b0-385f53f60e74</uuid>
+				<name>net.local.stream.sendspace</name>
+				<value>65536</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>487bc391-ba1b-48e7-b513-8d0da6a4f36b</uuid>
+				<name>kern.ipc.maxsockbuf</name>
+				<value>8388608</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>cff93696-cf5d-4edf-8aa2-dd19910b7eae</uuid>
+				<name>kern.ipc.somaxconn</name>
+				<value>8192</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>2e1e5005-895b-4f20-bd6c-ab5c85bc494b</uuid>
+				<name>kern.ipc.nmbclusters</name>
+				<value>262144</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>d9f1625d-5de5-400a-961c-59da3e616388</uuid>
+				<name>kern.ipc.nmbjumbop</name>
+				<value>262144</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>d831105a-e105-4735-895e-5af035a631a4</uuid>
+				<name>kern.ipc.nmbjumbo9</name>
+				<value>65536</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>160234ee-1e1a-45e0-9bfa-0bb541d6393e</uuid>
+				<name>kern.ipc.nmbjumbo16</name>
+				<value>32768</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>5867a59c-5332-4589-a9cb-4510f1405901</uuid>
+				<name>kern.maxfiles</name>
+				<value>65536</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>a4bd7970-1c77-43d7-8bc8-7924d9f86077</uuid>
+				<name>kern.maxfilesperproc</name>
+				<value>32768</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>7ca96b1d-d150-4d5b-921e-c232af73ab14</uuid>
+				<name>net.inet.icmp.icmplim</name>
+				<value>300</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>68981261-fa0f-4661-acb7-ffc719b7c4e8</uuid>
+				<name>net.inet.icmp.icmplim_output</name>
+				<value>1</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>78f3e99f-613e-40fb-8336-a84302445f6f</uuid>
+				<name>net.inet.tcp.path_mtu_discovery</name>
+				<value>0</value>
+				<comment>System tuning</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>b806f74e-921c-4c65-ba6f-81d3904dad27</uuid>
+				<name>hw.intr_storm_threshold</name>
+				<value>9000</value>
+				<comment>System tuning</comment>
+				<enable/>
 			</param>
 			<!--
 			<param>

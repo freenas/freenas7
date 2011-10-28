@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Προσθήκη προορισμού"
 
 msgid "Add user"
 msgstr "Προσθήκη χρήστη"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Προσθήκη Διαδρομής"
 
 msgid "Additional group"
 msgstr "Επιπρόσθετη ομάδα"
@@ -641,6 +645,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr "Δεν μπορεί να διαμορφωθεί ο δίσκος που περιέχει το λειτουργικό!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Αδυναμία προσάρτησης της κατάτμησης συστήματος 1, η κατάτμηση DATA είναι η 2."
 
@@ -809,6 +816,13 @@ msgstr "Ελεγκτής θύρας TCP"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Ελέγχει τον αλγόριθμο συμπίεσης που χρησιμοποιείται \t γι' αυτό το σύνολο δεδομένων. Ο αλγόριθμος συμπίεσης 'lzjb' είναι βελτιστοποιημένος για επιδόσεις, παρέχοντας παράλληλα αξιοπρεπή συμπίεση δεδομένων. Η ρύθμιση συμπίεσης στο \"On\" χρησιμοποιεί τον 'lzjb' αλγόριθμο συμπίεσης. Μπορείτε να καθορίσετε το 'gzip' επίπεδο χρησιμοποιώντας την τιμή 'gzip-Ν', όπου N είναι ένας ακέραιος αριθμός από 1 (πιο γρήγορος) και 9 (βέλτιστη αναλογία συμπίεσης). Επί του παρόντος, η τιμή 'gzip' ισοδυναμεί με την τιμή 'gzip-6'."
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Ελέγχει αν αυτό το σύνολο δεδομένων μπορεί να τροποποιηθεί."
 
@@ -826,6 +840,10 @@ msgstr "Δημιουργία μάσκας"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Δημιουργία φακέλου εργασίας εάν δεν υπάρχει."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Δημιουργία συστήματος αρχείων"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Δημιουργεί την δημοσκόπηση με μια εναλλακτική ριζική τοποθεσία."
@@ -923,6 +941,9 @@ msgstr "Ημέρες"
 
 msgid "Debug"
 msgstr "Αποσφαλμάτωση"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Προεπιλεγμένο"
@@ -1056,6 +1077,10 @@ msgstr "Διαγραφή προορισμού"
 
 msgid "Delete user"
 msgstr "Διαγραφή χρήστη"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Διαγραφή Διαδρομής"
 
 msgid "Deleting"
 msgstr "Γίνεται διαγραφή"
@@ -1309,6 +1334,10 @@ msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον 
 msgid "Do you really want to delete this user?"
 msgstr "Θέλετε πράγματι να διαγράψετε αυτό τον χρήστη."
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Θέλετε πράγματι να διαγράψετε αυτήν τη διαδρομή;"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον τόμο;\\n!!! Προσοχή, όλα τα δεδομένα θα χαθούν και δεν μπορούν να ανακτηθούν. !!!"
 
@@ -1372,7 +1401,8 @@ msgstr "Ολοκληρώθηκε."
 msgid "Dos charset"
 msgstr "σύνολο χαρακτήρων Dos"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "Διπλής ισοτιμίας RAID-5"
 
 msgid "Download"
@@ -1497,6 +1527,10 @@ msgstr "Επεξεργασία προορισμού"
 
 msgid "Edit user"
 msgstr "Επεξεργασία χρήστη"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Επεξεργασία Διαδρομής"
 
 msgid "Email"
 msgstr "Email"
@@ -2350,6 +2384,10 @@ msgstr "Μήκος κλειδιού για χρήση με το δεδομένο
 
 msgid "Kill encrypted volume"
 msgstr "Καταστροφή κρυπτογραφημένου τόμου"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Γνωσιακή βάση"
 
 msgid "Knowledgebase"
 msgstr "Γνωσιακή βάση"
@@ -3796,8 +3834,9 @@ msgstr ""
 msgid "Simple Network Management Protocol"
 msgstr ""
 
-msgid "Single-parity RAID-5"
-msgstr ""
+#, fuzzy
+msgid "Single-parity RAID-Z"
+msgstr "Διπλής ισοτιμίας RAID-5"
 
 msgid "Size"
 msgstr "Μέγεθος"
@@ -4608,6 +4647,10 @@ msgstr ""
 msgid "There must be at least 3 disks in a raidz2."
 msgstr ""
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Πρέπει να υπάρχει τουλάχιστον ένας δίσκος επιλεγμένος."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Πρέπει να επιλεχθεί τουλάχιστο μια διεπαφή."
 
@@ -4933,6 +4976,10 @@ msgstr ""
 msgid "Traps"
 msgstr "Παγίδες"
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "Διπλής ισοτιμίας RAID-5"
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5131,6 +5178,10 @@ msgstr "Χρήστες"
 msgid "Users and Groups"
 msgstr "Χρήστες και Ομάδες"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5155,6 +5206,10 @@ msgstr "Εικονικές συσκευές"
 msgid "Virtual interface"
 msgstr "Εικονική διεπαφή"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Όνομα Τόμου"
+
 msgid "Volume Name"
 msgstr "Όνομα Τόμου"
 
@@ -5163,6 +5218,10 @@ msgstr "Ετικέτα τόμου"
 
 msgid "Volume label of the new file system."
 msgstr "Ετικέτα τόμου του νέου συστήματος αρχείων."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Όνομα Τόμου"
 
 msgid "WAN address"
 msgstr "Διεύθυνση WAN"
@@ -5208,6 +5267,10 @@ msgid "Watch directory"
 msgstr "Παρακολούθηση καταλόγου."
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5326,6 +5389,17 @@ msgstr "Ιδιότητες συνόλου δεδομένων ZFS"
 
 msgid "ZFS volume"
 msgstr "Τόμος ZFS"
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Πληροφορίες συνόλου δεδομένων και κατάστασης ZFS"
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "Ιδιότητες συνόλου δεδομένων ZFS"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5463,6 +5537,10 @@ msgstr "αποπροσάρτηση"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Όνομα Τόμου"
 
 #~ msgid "seconds"
 #~ msgstr "δευτερόλεπτα"
@@ -5643,6 +5721,3 @@ msgstr "upriv"
 
 #~ msgid "Release notes"
 #~ msgstr "Σημειώσεις έκδοσης"
-
-#~ msgid "Controls the compression algorithm used\tfor this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
-#~ msgstr "Ελέγχει τον αλγόριθμο συμπίεσης που χρησιμοποιείται \t γι' αυτό το σύνολο δεδομένων. Ο αλγόριθμος συμπίεσης 'lzjb' είναι βελτιστοποιημένος για επιδόσεις, παρέχοντας παράλληλα αξιοπρεπή συμπίεση δεδομένων. Η ρύθμιση συμπίεσης στο \"On\" χρησιμοποιεί τον 'lzjb' αλγόριθμο συμπίεσης. Μπορείτε να καθορίσετε το 'gzip' επίπεδο χρησιμοποιώντας την τιμή 'gzip-Ν', όπου N είναι ένας ακέραιος αριθμός από 1 (πιο γρήγορος) και 9 (βέλτιστη αναλογία συμπίεσης). Επί του παρόντος, η τιμή 'gzip' ισοδυναμεί με την τιμή 'gzip-6'."

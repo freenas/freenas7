@@ -189,7 +189,7 @@ if (0 == $result) {
 	write_console("\nInitializing interface. Please wait...");
 	rc_exec_service("rcconf");
 	rc_update_service("netif");
-	rc_update_service("network_ipv6");
+	//rc_update_service("network_ipv6");
 }
 
 function autodetect_interface($ifname) {

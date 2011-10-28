@@ -1,17 +1,20 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_zfs_zpool_io.php
+	disks_zfs_volume_info.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
 	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
-	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -37,37 +40,34 @@
 */
 require("auth.inc");
 require("guiconfig.inc");
-require("sajax/sajax.php");
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("I/O statistics"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Volumes"), gettext("Information"));
 
-function zfs_zpool_get_iostat() {
-	// Get zpool I/O statistic informations
-	$cmd = "zpool iostat -v 2>&1";
-	if (isset($_GET['pool'])) {
-		$cmd .= " {$_GET['pool']}";
-	}
-	mwexec2($cmd, $rawdata);
+if (!isset($config['zfs']['volumes']) || !is_array($config['zfs']['volumes']['volume']))
+	$config['zfs']['volumes']['volume'] = array();
+
+$a_volume = &$config['zfs']['volumes']['volume'];
+
+function zfs_volume_display_list() {
+	mwexec2("zfs list -t volume 2>&1", $rawdata);
 	return implode("\n", $rawdata);
 }
 
-sajax_init();
-sajax_export("zfs_zpool_get_iostat");
-sajax_handle_client_request();
+function zfs_volume_display_properties() {
+	mwexec2("zfs list -H -o name -t volume 2>&1", $rawdata);
+	$vols = implode(" ", $rawdata);
+	mwexec2("zfs get all $vols 2>&1", $rawdata2);
+	return implode("\n", $rawdata2);
+}
 ?>
 <?php include("fbegin.inc");?>
-<script type="text/javascript">//<![CDATA[
-<?php sajax_show_javascript();?>
-//]]>
-</script>
-<script type="text/javascript" src="javascript/disks_zfs_zpool_io.js"></script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pools");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_volume.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Volumes");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
@@ -75,21 +75,24 @@ sajax_handle_client_request();
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav2">
-				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Management");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><span><?=gettext("Tools");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
-				<li class="tabact"><a href="disks_zfs_zpool_io.php" title="<?=gettext("Reload page");?>"><span><?=gettext("I/O statistics");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volume");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_volume_info.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Information");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabcont">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<?php html_titleline(gettext("Pool information and status"));?>
+			<table width="100%" border="0">
+				<?php html_titleline(gettext("ZFS volume information and status"));?>
 				<tr>
 					<td class="listt">
-						<pre><span id="zfs_zpool_iostat"><?=zfs_zpool_get_iostat();?></span></pre>
+						<pre><span id="zfs_volume_list"><?=zfs_volume_display_list();?></span></pre>
+					</td>
+				</tr>
+				<?php html_titleline(gettext("ZFS volume properties"));?>
+				<tr>
+					<td class="listt">
+						<pre><span id="zfs_volume_properties"><?=zfs_volume_display_properties();?></span></pre>
 					</td>
 				</tr>
 			</table>

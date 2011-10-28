@@ -45,7 +45,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			$retval |= updatenotify_process("rcconf", "rcconf_process_updatenotification");
 			config_lock();
-			$retval |= rc_exec_service("rcconf.sh");
+			$retval |= rc_exec_service("rcconf");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

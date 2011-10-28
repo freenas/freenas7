@@ -194,7 +194,7 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("rcconf.sh");
+			$retval |= rc_exec_service("rcconf");
 			$retval |= rc_exec_service("timezone");
 			$retval |= rc_exec_service("resolv");
 			$retval |= rc_exec_service("hosts");

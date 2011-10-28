@@ -1988,6 +1988,78 @@ function config_upgrade() {
 		$config['version'] = "8.9";
 	}
 
+	/* Convert 8.9 -> 9.0 */
+	if ($config['version'] === "8.9") {
+		unset($config['disks']);
+		unset($config['mounts']);
+		unset($config['gvinum']);
+		unset($config['gmirror']);
+		unset($config['gconcat']);
+		unset($config['gstripe']);
+		unset($config['graid5']);
+		unset($config['geli']);
+
+		$config['version'] = "9.0";
+	}
+
+	/* Convert 9.0 -> 9.1 */
+	system_language_load();
+	if ($config['version'] === "9.0") {
+		if (!isset($config['system']['tune'])) {
+			$config['system']['tune'] = true;
+		}
+		$a_mib = array(
+			"net.inet.tcp.delayed_ack" => 0,
+			"net.inet.tcp.rfc1323" => 1,
+			"net.inet.tcp.sendspace" => 262144,
+			"net.inet.tcp.recvspace" => 262144,
+			"net.inet.tcp.sendbuf_max" => 4194304,
+			"net.inet.tcp.sendbuf_inc" => 262144,
+			"net.inet.tcp.sendbuf_auto" => 1,
+			"net.inet.tcp.recvbuf_max" => 4194304,
+			"net.inet.tcp.recvbuf_inc" => 262144,
+			"net.inet.tcp.recvbuf_auto" => 1,
+			"net.inet.udp.recvspace" => 65536,
+			"net.inet.udp.maxdgram" => 57344,
+			"net.local.stream.recvspace" => 65536,
+			"net.local.stream.sendspace" => 65536,
+			"kern.ipc.maxsockbuf" => 8388608,
+			"kern.ipc.somaxconn" => 8192,
+			"kern.ipc.nmbclusters" => 262144,
+			"kern.ipc.nmbjumbop" => 262144,
+			"kern.ipc.nmbjumbo9" => 65536,
+			"kern.ipc.nmbjumbo16" => 32768,
+			"kern.maxfiles" => 65536,
+			"kern.maxfilesperproc" => 32768,
+			"net.inet.icmp.icmplim" => 300,
+			"net.inet.icmp.icmplim_output" => 1,
+			//"net.inet.tcp.inflight.enable" => 0,
+			"net.inet.tcp.path_mtu_discovery" => 0,
+			"hw.intr_storm_threshold" => 9000,
+		);
+		foreach ($a_mib as $key => $val) {
+			$index = array_search_ex($key, $config['system']['sysctl']['param'], "name");
+			if ($index === false) {
+				$config['system']['sysctl']['param'][] = array(
+					"uuid" => uuid(),
+					"name" => $key,
+					"value" => $val,
+					"comment" => gettext("System tuning"),
+					"enable" => true );
+			} else {
+				$config['system']['sysctl']['param'][$index]['value'] = $val;
+				$config['system']['sysctl']['param'][$index]['comment'] = gettext("System tuning");
+				$config['system']['sysctl']['param'][$index]['enable'] = true;
+			}
+		}
+		$index = array_search_ex("net.inet.tcp.inflight.enable", $config['system']['sysctl']['param'], "name");
+		if ($index !== false) {
+			unset($config['system']['sysctl']['param'][$index]);
+		}
+
+		$config['version'] = "9.1";
+	}
+
 	write_config();
 
 	if (is_booting())

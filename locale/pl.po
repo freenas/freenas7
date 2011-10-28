@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-03-30 19:49+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -316,6 +316,10 @@ msgstr "Dodaj cel"
 
 msgid "Add user"
 msgstr "Dodaj użytkownika"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Dodaj trasę"
 
 msgid "Additional group"
 msgstr "Dodatkowa grupa"
@@ -646,6 +650,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr "Nie można sformatować źródłowego dysku systemu operacyjnego!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Nie można zamontować partycji systemowej 1, partycją DANYCH jest 2."
 
@@ -814,6 +821,12 @@ msgstr "Port TCP kontrolera"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr ""
 
@@ -831,6 +844,10 @@ msgstr "Utwórz maskę"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Stwórz katalog roboczy jeśli nie istnieje."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Wstępnie sformatowany system plików"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Tworzy pulę z alternatywnym katalogiem głównym."
@@ -928,6 +945,9 @@ msgstr "Dni"
 
 msgid "Debug"
 msgstr "Debugowanie"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Domyślny"
@@ -1061,6 +1081,10 @@ msgstr "Usuń cel"
 
 msgid "Delete user"
 msgstr "Usuń użytkownika"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Usuń trasę"
 
 msgid "Deleting"
 msgstr "Usuwanie"
@@ -1314,6 +1338,10 @@ msgstr "Czy na pewno chcesz usunąć ten cel?"
 msgid "Do you really want to delete this user?"
 msgstr "Czy na pewno chcesz skasować tego użytkownika?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Czy na pewno chcesz usunąć tę trasę?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Czy na pewno chcesz usunąć ten wolumin?\\n!!! Uwaga, wszystkie dane zostaną utracone i nie będzie możliwe ich odzyskanie. !!!"
 
@@ -1377,7 +1405,8 @@ msgstr "Gotowe."
 msgid "Dos charset"
 msgstr "Zestaw znaków DOS"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "RAID-5 z podwójną parzystością"
 
 msgid "Download"
@@ -1502,6 +1531,10 @@ msgstr "Edytuj cel"
 
 msgid "Edit user"
 msgstr "Edytuj użytkownika"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Edytuj trasę"
 
 msgid "Email"
 msgstr "E-mail"
@@ -2355,6 +2388,10 @@ msgstr "Długość klucza użytego dla danego algorytmu szyfrowania."
 
 msgid "Kill encrypted volume"
 msgstr "Zabij zaszyfrowany wolumen"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Baza wiedzy"
 
 msgid "Knowledgebase"
 msgstr "Baza wiedzy"
@@ -3803,7 +3840,8 @@ msgstr "Ustawianie czasu do zamknięcia"
 msgid "Simple Network Management Protocol"
 msgstr "Protokół SNMP"
 
-msgid "Single-parity RAID-5"
+#, fuzzy
+msgid "Single-parity RAID-Z"
 msgstr "RAID-5 z pojedyńczą parzystością"
 
 msgid "Size"
@@ -4615,6 +4653,10 @@ msgstr "Muszą być przynajmniej dwa dyski dla poziomu raidz"
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "Muszą być przynajmniej trzy dyski dla poziomu raidz2."
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Muszą być przynajmniej dwa dyski dla poziomu raidz"
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Musi zostać wybrany przynajmniej 1 interfejs."
 
@@ -4940,6 +4982,10 @@ msgstr ""
 msgid "Traps"
 msgstr "Pułapki"
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "RAID-5 z pojedyńczą parzystością"
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol"
 
@@ -5138,6 +5184,10 @@ msgstr "Użytkownicy"
 msgid "Users and Groups"
 msgstr "Użytkownicy i Grupy"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5162,6 +5212,10 @@ msgstr "Urządzenia wirtualne"
 msgid "Virtual interface"
 msgstr "Interfejs wirtualny"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Nazwa poziomu"
+
 msgid "Volume Name"
 msgstr "Nazwa poziomu"
 
@@ -5170,6 +5224,10 @@ msgstr "Nazwa wolumenu"
 
 msgid "Volume label of the new file system."
 msgstr "Etykieta (nazwa) nowego systemu plików"
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Nazwa poziomu"
 
 msgid "WAN address"
 msgstr "Adres WAN"
@@ -5215,6 +5273,10 @@ msgid "Watch directory"
 msgstr ""
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5333,6 +5395,17 @@ msgstr "Właściwości zestawu danych ZFS"
 
 msgid "ZFS volume"
 msgstr "wolumen ZFS"
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Stan i informacje o zestawie danych ZFS"
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "Właściwości zestawu danych ZFS"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5470,6 +5543,10 @@ msgstr "odmontuj"
 
 msgid "upriv"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Nazwa poziomu"
 
 #~ msgid "seconds"
 #~ msgstr "seundy"

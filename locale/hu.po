@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-04-09 21:27+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Cél hozzáadása"
 
 msgid "Add user"
 msgstr "Felhasználó hozzáadása"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Útvonal hozzáadása"
 
 msgid "Additional group"
 msgstr "További csoport"
@@ -641,6 +645,9 @@ msgstr ""
 msgid "Can't format the OS origin disk!"
 msgstr "Nem formázhatja az operációs rendszert tartalmazó partíciót!"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Nem csatolható a rendszer partíció 1, az ADAT partíció a 2."
 
@@ -809,6 +816,12 @@ msgstr ""
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
 
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr ""
+
+msgid "Controls the dedup method."
+msgstr ""
+
 msgid "Controls whether this dataset can be modified."
 msgstr ""
 
@@ -826,6 +839,10 @@ msgstr "Maszk létrehozása"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Munka könyvtár létrehozása, ha nem létezik."
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "Előreformázott fájlrendszer"
 
 msgid "Creates the pool with an alternate root."
 msgstr ""
@@ -923,6 +940,9 @@ msgstr "Napok"
 
 msgid "Debug"
 msgstr "Hibakeresés"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Alapértelmezett"
@@ -1056,6 +1076,10 @@ msgstr "Cél törlése"
 
 msgid "Delete user"
 msgstr "Felhasználó törlése"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Útvonal törlése"
 
 msgid "Deleting"
 msgstr "Törlés"
@@ -1309,6 +1333,10 @@ msgstr "Valóban törölni akarja ezt a célt?"
 msgid "Do you really want to delete this user?"
 msgstr "Valóban törölni akarja ezt a felhasználót?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Biztos, hogy törlöd ezt az útvonalat?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Valóban törölni akarja ezt a kötetet?\\n!!! A rajta levő adatok végérvényesen elvesznek. !!!"
 
@@ -1372,7 +1400,8 @@ msgstr "Kész."
 msgid "Dos charset"
 msgstr "Dos karakterkiosztás."
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "Dupla paritású RAID-5"
 
 msgid "Download"
@@ -1497,6 +1526,10 @@ msgstr "Cél szerkesztése"
 
 msgid "Edit user"
 msgstr "Felhasználó szerkesztése"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Útvonal szerkesztése"
 
 msgid "Email"
 msgstr "E-mail"
@@ -2349,6 +2382,10 @@ msgstr ""
 
 msgid "Kill encrypted volume"
 msgstr "Titkosított kötet kilövése"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Tudásbázis"
 
 msgid "Knowledgebase"
 msgstr "Tudásbázis"
@@ -3795,8 +3832,9 @@ msgstr "Kikapcsolás időzítő"
 msgid "Simple Network Management Protocol"
 msgstr ""
 
-msgid "Single-parity RAID-5"
-msgstr ""
+#, fuzzy
+msgid "Single-parity RAID-Z"
+msgstr "Dupla paritású RAID-5"
 
 msgid "Size"
 msgstr "Méret"
@@ -4607,6 +4645,10 @@ msgstr "A raidz-ben legalább 2 lemeznek kell lennie."
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "A raidz2-ben legalább 2 lemeznek kell lennie."
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "A raidz-ben legalább 2 lemeznek kell lennie."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Legalább egy interfészt kell választania."
 
@@ -4932,6 +4974,10 @@ msgstr ""
 msgid "Traps"
 msgstr ""
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "Dupla paritású RAID-5"
+
 msgid "Trivial File Transfer Protocol"
 msgstr ""
 
@@ -5130,6 +5176,10 @@ msgstr "Felhasználók"
 msgid "Users and Groups"
 msgstr "Felhasználók és csoportok"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5154,6 +5204,10 @@ msgstr "Virtuális eszközök"
 msgid "Virtual interface"
 msgstr "Virtuális interfész"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Kötet név"
+
 msgid "Volume Name"
 msgstr "Kötet név"
 
@@ -5162,6 +5216,10 @@ msgstr "Címke"
 
 msgid "Volume label of the new file system."
 msgstr "Az új kötet címkéje"
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Kötet név"
 
 msgid "WAN address"
 msgstr "WAN cím"
@@ -5207,6 +5265,10 @@ msgid "Watch directory"
 msgstr "Figyelt könyvtár"
 
 msgid "WebGUI"
+msgstr "Webes felhasználói felület"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "Webes felhasználói felület"
 
 msgid "Webserver"
@@ -5324,6 +5386,16 @@ msgid "ZFS dataset properties"
 msgstr ""
 
 msgid "ZFS volume"
+msgstr ""
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Szoftver RAID információ és állapot"
+
+msgid "ZFS volume properties"
+msgstr ""
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
 
 msgid "Zeroconf/Bonjour"
@@ -5462,6 +5534,10 @@ msgstr "leválasztás"
 
 msgid "upriv"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Kötet név"
 
 #~ msgid "seconds"
 #~ msgstr "másodperc"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-22 05:16+0000\n"
+"POT-Creation-Date: 2011-10-21 10:45+0000\n"
 "PO-Revision-Date: 2011-06-02 15:39+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -311,6 +311,10 @@ msgstr "Aggiungi target"
 
 msgid "Add user"
 msgstr "Aggiungi utente"
+
+#, fuzzy
+msgid "Add volume"
+msgstr "Aggiungi Route"
 
 msgid "Additional group"
 msgstr "Gruppo addizionale"
@@ -641,6 +645,9 @@ msgstr "Dispositivo cache"
 msgid "Can't format the OS origin disk!"
 msgstr "Non posso formattare il disco dell'OS"
 
+msgid "Can't get UFS ID."
+msgstr ""
+
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Non si puo' montare la partizione 1, la partizione DATI è la 2."
 
@@ -809,6 +816,14 @@ msgstr "Porta TCP del controller"
 msgid "Controls the compression algorithm used for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr "Controlla l'algoritmo di compressione usatoper questo dataset. L'algoritmo di compressione 'lzjb'è ottimizzato per migliori prestazioni mantenendo comunque una decente compressione. Impostando la compressione ad 'On' usa l'algoritmo di compressione 'lzjb'. Può essere specificato il valore 'gzip' usando  'gzip-N', dove N è un intero fra 1 (più veloce) e 9 (migliore rapporto di compressione). Attualmente, 'gzip' equivale a 'gzip-6'."
 
+#, fuzzy
+msgid "Controls the compression algorithm used for this volume. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."
+msgstr "Controlla l'algoritmo di compressione usatoper questo dataset. L'algoritmo di compressione 'lzjb'è ottimizzato per migliori prestazioni mantenendo comunque una decente compressione. Impostando la compressione ad 'On' usa l'algoritmo di compressione 'lzjb'. Può essere specificato il valore 'gzip' usando  'gzip-N', dove N è un intero fra 1 (più veloce) e 9 (migliore rapporto di compressione). Attualmente, 'gzip' equivale a 'gzip-6'."
+
+#, fuzzy
+msgid "Controls the dedup method."
+msgstr "Metodo di autenticazione del controller"
+
 msgid "Controls whether this dataset can be modified."
 msgstr "Controlla se questo dataset può essere modificato"
 
@@ -826,6 +841,10 @@ msgstr "Generare una maschera"
 
 msgid "Create work directory if it doesn't exist."
 msgstr "Crea la directory di lavoro se questa non esiste"
+
+#, fuzzy
+msgid "Created UFS file system:"
+msgstr "File system preformattato"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Crea il pool con un root alternativo."
@@ -923,6 +942,9 @@ msgstr "Giorni"
 
 msgid "Debug"
 msgstr "Debug"
+
+msgid "Dedup"
+msgstr ""
 
 msgid "Default"
 msgstr "Predefinita"
@@ -1056,6 +1078,10 @@ msgstr "Cancella target"
 
 msgid "Delete user"
 msgstr "Cancella utente"
+
+#, fuzzy
+msgid "Delete volume"
+msgstr "Cancella Route"
 
 msgid "Deleting"
 msgstr "Eliminazione"
@@ -1309,6 +1335,10 @@ msgstr "Si vuole realmente cancellare questo target?"
 msgid "Do you really want to delete this user?"
 msgstr "Si desidera realmente cancellare questo utente?"
 
+#, fuzzy
+msgid "Do you really want to delete this volume?"
+msgstr "Si vuole realmente cancellare questa route?"
+
 msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr "Volete veramente eliminare questo volume?\\n!!! Nota, tutti i dati andranno persi e non potranno essere recuperati!!!"
 
@@ -1372,7 +1402,8 @@ msgstr "Finito."
 msgid "Dos charset"
 msgstr "Set caratteri Dos"
 
-msgid "Double-parity RAID-5"
+#, fuzzy
+msgid "Double-parity RAID-Z"
 msgstr "RAID-5 con doppia parità"
 
 msgid "Download"
@@ -1497,6 +1528,10 @@ msgstr "Modifica Target"
 
 msgid "Edit user"
 msgstr "Modifica utente"
+
+#, fuzzy
+msgid "Edit volume"
+msgstr "Modifica Route"
 
 msgid "Email"
 msgstr "Posta Elettronica"
@@ -2349,6 +2384,10 @@ msgstr "Lunghezza della chiave da utilizzare con l'algoritmo crittografico scelt
 
 msgid "Kill encrypted volume"
 msgstr "Terminare il volume cifrato"
+
+#, fuzzy
+msgid "Knowledge Base"
+msgstr "Base di conoscenza"
 
 msgid "Knowledgebase"
 msgstr "Base di conoscenza"
@@ -3795,7 +3834,8 @@ msgstr "Timer di spegnimento"
 msgid "Simple Network Management Protocol"
 msgstr "Simple Network Management Protocol"
 
-msgid "Single-parity RAID-5"
+#, fuzzy
+msgid "Single-parity RAID-Z"
 msgstr "RAID-5 a singola parità"
 
 msgid "Size"
@@ -4607,6 +4647,10 @@ msgstr "Ci vogliono almeno 2 dischi per un raidz."
 msgid "There must be at least 3 disks in a raidz2."
 msgstr "Ci vogliono almeno 3 dischi per un raidz2."
 
+#, fuzzy
+msgid "There must be at least 4 disks in a raidz3."
+msgstr "Ci vogliono almeno 2 dischi per un raidz."
+
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Devi selezionare almeno 1 interfaccia."
 
@@ -4932,6 +4976,10 @@ msgstr "Trap string."
 msgid "Traps"
 msgstr "Traps"
 
+#, fuzzy
+msgid "Triple-parity RAID-Z"
+msgstr "RAID-5 a singola parità"
+
 msgid "Trivial File Transfer Protocol"
 msgstr "Trivial File Transfer Protocol (TFTP)"
 
@@ -5130,6 +5178,10 @@ msgstr "Utenti"
 msgid "Users and Groups"
 msgstr "Utenti e Gruppi"
 
+#, c-format
+msgid "Using %s bytes fragment size."
+msgstr ""
+
 msgid "VLAN"
 msgstr "VLAN"
 
@@ -5154,6 +5206,10 @@ msgstr "Periferiche virtuali"
 msgid "Virtual interface"
 msgstr "Interfaccia virtuale"
 
+#, fuzzy
+msgid "Volume"
+msgstr "Nome volume"
+
 msgid "Volume Name"
 msgstr "Nome volume"
 
@@ -5162,6 +5218,10 @@ msgstr "Etichetta di volume"
 
 msgid "Volume label of the new file system."
 msgstr "Etichetta di volume del nuovo filesystem."
+
+#, fuzzy
+msgid "Volumes"
+msgstr "Nome volume"
 
 msgid "WAN address"
 msgstr "Indirizzo WAN"
@@ -5207,6 +5267,10 @@ msgid "Watch directory"
 msgstr "Controlla cartella"
 
 msgid "WebGUI"
+msgstr "WebGUI"
+
+#, fuzzy
+msgid "WebGUI Login"
 msgstr "WebGUI"
 
 msgid "Webserver"
@@ -5325,6 +5389,17 @@ msgstr "Proprietà del dataset ZFS"
 
 msgid "ZFS volume"
 msgstr "Volume ZFS."
+
+#, fuzzy
+msgid "ZFS volume information and status"
+msgstr "Informazioni e stato del dataset ZFS"
+
+#, fuzzy
+msgid "ZFS volume properties"
+msgstr "Proprietà del dataset ZFS"
+
+msgid "ZFS volume size. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
+msgstr ""
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -5462,6 +5537,10 @@ msgstr "smonta"
 
 msgid "upriv"
 msgstr "upriv"
+
+#, fuzzy
+#~ msgid "Volume size"
+#~ msgstr "Nome volume"
 
 #~ msgid "Graph shows last"
 #~ msgstr "Il grafico mostra l'ultima"

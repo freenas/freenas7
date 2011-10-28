@@ -273,6 +273,9 @@ sbin/clri
 ## dumpon -- specify a device for crash dumps
 sbin/dumpon
 
+## dumpfs -- dump UFS file system information
+sbin/dumpfs
+
 ## savecore -- save a core dump of the operating system
 sbin/savecore
 
@@ -281,6 +284,9 @@ sbin/dump
 
 ## restore -- restore files or file systems from backups made with dump
 sbin/restore
+
+## resolvconf -- a framework for managing multiple DNS configurations
+sbin/resolvconf
 
 ####### contents of /usr/bin
 
@@ -477,6 +483,9 @@ usr/bin/systat
 ## patch -- apply a diff file to an original
 usr/bin/patch
 
+## xz,  unxz,  xzcat, lzma, unlzma, lzcat - Compress or decompress .xz and .lzma files
+usr/bin/xz:usr/bin/unxz:usr/bin/xzcat:usr/bin/lzma:usr/bin/unlzma:usr/bin/lzcat
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -526,6 +535,12 @@ usr/sbin/mountd
 ## nfsd -- remote NFS server
 usr/sbin/nfsd
 
+## nfsuserd -- load user and group information into the kernel for NFSv4 service
+usr/sbin/nfsuserd
+
+## nfscbd -- NFSv4 client side callback daemon
+usr/sbin/nfscbd
+
 ## rpcbind -- universal addresses to RPC program number mapper
 usr/sbin/rpcbind
 
@@ -569,8 +584,8 @@ usr/sbin/ip6addrctl
 ## mount_smbfs -- mount a shared resource from an SMB file server
 usr/sbin/mount_smbfs
 
-## usbdevs -- show USB devices connected to the system
-usr/sbin/usbdevs
+## usbconfig -- configure the USB subsystem
+usr/sbin/usbconfig
 
 ## iostat -- report I/O statistics
 usr/sbin/iostat
@@ -607,6 +622,8 @@ usr/libexec/getty
 ####### contents of /usr/share/misc
 usr/share/misc/termcap:etc/termcap
 usr/share/misc/pci_vendors
+usr/share/misc/usb_hid_usages
+usr/share/misc/usbdevs
 
 ####### contents of /usr/share/locale
 usr/share/locale/en_US.ISO8859-1/
@@ -624,6 +641,9 @@ usr/lib/snmp_hostres.so.*:usr/lib/snmp_hostres.so
 usr/lib/snmp_mibII.so.*:usr/lib/snmp_mibII.so
 usr/lib/snmp_netgraph.so.*:usr/lib/snmp_netgraph.so
 
+# UBS library
+usr/lib/libusbhid.so.4
+
 ####### contents of /lib/geom
 # GEOM tools
 lib/geom/geom_*.so
@@ -637,11 +657,16 @@ lib/libzpool*.so.*
 etc/ssh/moduli
 
 ####### contents of /boot
+# PXE
+boot/pxeboot
 # MBR
 boot/mbr
 boot/boot
 boot/boot0
 boot/boot1
+# GPT
+boot/pmbr
+boot/gptboot
 
 ####### contents of /etc
 etc/rc.shutdown
@@ -658,7 +683,7 @@ etc/fbtab
 etc/netconfig
 etc/networks
 etc/protocols
-etc/rc.firewall6
+#etc/rc.firewall6
 etc/remote
 
 ####### contents of /etc/defaults
@@ -671,19 +696,19 @@ etc/defaults/rc.conf
 ####### contents of /etc/rc.d
 etc/rc.d/LOGIN
 etc/rc.d/local
-etc/rc.d/early.sh
+#etc/rc.d/early.sh
 etc/rc.d/adjkerntz
 etc/rc.d/securelevel
 etc/rc.d/dhclient
 etc/rc.d/netoptions
 etc/rc.d/power_profile
-etc/rc.d/network_ipv6
-etc/rc.d/auto_linklocal
+#etc/rc.d/network_ipv6
+#etc/rc.d/auto_linklocal
 etc/rc.d/FILESYSTEMS
 etc/rc.d/ip6addrctl
 etc/rc.d/random
 etc/rc.d/swap1
-etc/rc.d/ip6fw
+#etc/rc.d/ip6fw
 etc/rc.d/devd
 etc/rc.d/dmesg
 etc/rc.d/hostid
@@ -713,6 +738,13 @@ usr/share/snmp/mibs/BRIDGE-MIB.txt
 usr/share/snmp/mibs/FOKUS-MIB.txt
 usr/share/snmp/mibs/FREEBSD-MIB.txt
 usr/share/snmp/mibs/RSTP-MIB.txt
+
+####### contents of /libexec/resolvconf
+libexec/resolvconf/dnsmasq
+libexec/resolvconf/libc
+libexec/resolvconf/named
+libexec/resolvconf/pdnsd
+libexec/resolvconf/unbound
 
 ####### Intel wireless module license
 usr/share/doc/legal/intel_wpi/LICENSE
