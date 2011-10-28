@@ -1,6 +1,6 @@
---- ./web/index.html.orig	2010-10-17 02:14:43.000000000 +0200
-+++ ./web/index.html	2010-10-25 10:00:33.000000000 +0200
-@@ -78,7 +78,7 @@
+--- web/index.html.orig	2011-10-20 10:57:55.403726000 +0900
++++ web/index.html	2011-10-29 00:01:35.000000000 +0900
+@@ -190,7 +190,7 @@
  			</div>
  
  			<div id="inspector_header">
@@ -9,7 +9,7 @@
  				<span id="torrent_inspector_size"></span>
  			</div>
  
-@@ -386,18 +386,18 @@
+@@ -360,18 +360,18 @@
  			<div class="dialog_top_bar"></div>
  			<div class="dialog_window">
  				<img src="images/graphics/logo.png" alt="Transmission Logo" />
@@ -22,7 +22,7 @@
 +						<label for="torrent_upload_file">Please select a torrent file to run:</label>
  							<input type="file" name="torrent_files[]" id="torrent_upload_file" multiple="multiple" />
  						<label for="torrent_upload_url">Or enter a URL:</label>
- 							<input type="text" id="torrent_upload_url"/>
+ 							<input type="url" id="torrent_upload_url"/>
  							<input type="checkbox" id="torrent_auto_start" />
  						<label for="torrent_auto_start" id="auto_start_label">Start when added</label>
  					</div>
@@ -31,55 +31,55 @@
  					<a href="#cancel" id="upload_cancel_button">Cancel</a>
  				</form>
  			</div>
-@@ -409,7 +409,6 @@
- 				<li id="button">&nbsp;
- 					<ul id="footer_super_menu">
+@@ -384,7 +384,6 @@
+ 						<li id="about-button">About</li>
+ 						<li class="separator"></li>
  						<li id="homepage">Transmission Homepage</li>
 -						<li id="tipjar">Transmission Tip Jar</li>
  						<li class="separator"></li>
  						<li id="preferences">Preferences</li>
  						<li id="statistics">Statistics</li>
-@@ -419,7 +418,6 @@
+@@ -394,7 +393,6 @@
  								<li id="unlimited_download_rate">Unlimited</li>
  								<li id="limited_download_rate">Limit (10 kB/s)</li>
  								<li class="separator"></li>
--								<li>5 kB/s</li>
- 								<li>10 kB/s</li>
- 								<li>20 kB/s</li>
- 								<li>30 kB/s</li>
-@@ -430,6 +428,10 @@
- 								<li>150 kB/s</li>
- 								<li>200 kB/s</li>
- 								<li>250 kB/s</li>
-+								<li>300 kB/s</li>
-+								<li>350 kB/s</li>
-+								<li>400 kB/s</li>
-+								<li>450 kB/s</li>
- 								<li>500 kB/s</li>
- 								<li>750 kB/s</li>
+-								<li class='download-speed'>5 kB/s</li>
+ 								<li class='download-speed'>10 kB/s</li>
+ 								<li class='download-speed'>20 kB/s</li>
+ 								<li class='download-speed'>30 kB/s</li>
+@@ -405,6 +403,10 @@
+ 								<li class='download-speed'>150 kB/s</li>
+ 								<li class='download-speed'>200 kB/s</li>
+ 								<li class='download-speed'>250 kB/s</li>
++								<li class='download-speed'>300 kB/s</li>
++								<li class='download-speed'>350 kB/s</li>
++								<li class='download-speed'>400 kB/s</li>
++								<li class='download-speed'>450 kB/s</li>
+ 								<li class='download-speed'>500 kB/s</li>
+ 								<li class='download-speed'>750 kB/s</li>
  							</ul>
-@@ -439,7 +441,6 @@
+@@ -414,7 +416,6 @@
  								<li id="unlimited_upload_rate">Unlimited</li>
  								<li id="limited_upload_rate">Limit (10 kB/s)</li>
  								<li class="separator"></li>
--								<li>5 kB/s</li>
- 								<li>10 kB/s</li>
- 								<li>20 kB/s</li>
- 								<li>30 kB/s</li>
-@@ -448,8 +449,16 @@
- 								<li>75 kB/s</li>
- 								<li>100 kB/s</li>
- 								<li>150 kB/s</li>
-+								<li>160 kB/s</li>
-+								<li>170 kB/s</li>
-+								<li>180 kB/s</li>
-+								<li>190 kB/s</li>
- 								<li>200 kB/s</li>
-+								<li>225 kB/s</li>
- 								<li>250 kB/s</li>
-+								<li>300 kB/s</li>
-+								<li>350 kB/s</li>
-+								<li>400 kB/s</li>
- 								<li>500 kB/s</li>
- 								<li>750 kB/s</li>
+-								<li class='upload-speed'>5 kB/s</li>
+ 								<li class='upload-speed'>10 kB/s</li>
+ 								<li class='upload-speed'>20 kB/s</li>
+ 								<li class='upload-speed'>30 kB/s</li>
+@@ -423,8 +424,16 @@
+ 								<li class='upload-speed'>75 kB/s</li>
+ 								<li class='upload-speed'>100 kB/s</li>
+ 								<li class='upload-speed'>150 kB/s</li>
++								<li class='upload-speed'>160 kB/s</li>
++								<li class='upload-speed'>170 kB/s</li>
++								<li class='upload-speed'>180 kB/s</li>
++								<li class='upload-speed'>190 kB/s</li>
+ 								<li class='upload-speed'>200 kB/s</li>
++								<li class='upload-speed'>225 kB/s</li>
+ 								<li class='upload-speed'>250 kB/s</li>
++								<li class='upload-speed'>300 kB/s</li>
++								<li class='upload-speed'>350 kB/s</li>
++								<li class='upload-speed'>400 kB/s</li>
+ 								<li class='upload-speed'>500 kB/s</li>
+ 								<li class='upload-speed'>750 kB/s</li>
  							</ul>

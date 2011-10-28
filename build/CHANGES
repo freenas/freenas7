@@ -19,6 +19,7 @@ Minors changes:
 - Add ability to configure MTU for lagg device.
 - Add some utility commands.
 - Upgrade ataidle to 2.6.
+- Upgrade transmission to 2.42.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
