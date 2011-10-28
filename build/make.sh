@@ -76,11 +76,11 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7
 # to a RAM disk at FreeNAS startup.
 #FREENAS_MFSROOT_SIZE=164
 #FREENAS_IMG_SIZE=66
-FREENAS_MFSROOT_SIZE=194
-FREENAS_IMG_SIZE=80
+FREENAS_MFSROOT_SIZE=196
+FREENAS_IMG_SIZE=82
 if [ "amd64" = ${FREENAS_ARCH} ]; then
-	FREENAS_MFSROOT_SIZE=206
-	FREENAS_IMG_SIZE=84
+	FREENAS_MFSROOT_SIZE=220
+	FREENAS_IMG_SIZE=88
 fi
 
 # Media geometry, only relevant if bios doesn't understand LBA.
