@@ -3,8 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: hosts
-# REQUIRE: var
-# BEFORE: netif
+# REQUIRE: netif
+# BEFORE: NETWORKING
 
 . /etc/rc.subr
 . /etc/util.subr
@@ -15,12 +15,7 @@ echo "Updating hosts."
 # LAN IF/ADDR
 _ifn=`configxml_get "//interfaces/lan/if"`
 _ifn=`get_if ${_ifn}`
-_ipaddr=`/usr/bin/netstat -inW -f inet -I "${_ifn}" | \
-while read _t0 _t1 _t2 _t3 _t4; do \
-  if [ "${_t0}" = "${_ifn}" ]; then \
-     echo ${_t3}; break; \
-  fi \
-done`
+_ipaddr=`get_ipaddr inet ${_ifn}`
 
 # Generate /etc/hosts file
 /usr/local/bin/xml sel -t -m "//system[hostname != '' and domain != '']" \
@@ -30,7 +25,9 @@ done`
 		-v "concat(//interfaces/lan/ipaddr,' ',hostname,'.',domain,' ',hostname)" -n \
 	-b \
 	-i "//interfaces/lan/ipaddr[. = 'dhcp']" \
-		-v "concat('${_ipaddr}',' ',hostname,'.',domain,' ',hostname)" -n \
+		-i "string-length('${_ipaddr}') > 0" \
+			-v "concat('${_ipaddr}',' ',hostname,'.',domain,' ',hostname)" -n \
+		-b \
 	-b \
 	-m "//system/hosts" \
 		-i "string-length(name) > 0" -v "concat(address,' ',name)" -n -b \
