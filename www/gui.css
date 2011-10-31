@@ -299,7 +299,7 @@ div#pagefooter span a:hover {
 }
 div#loginfooter {
 	position: fixed;
-	botton: 0;
+	bottom: 0;
 	margin: 5px 0px 20px 0px;
 	text-align: center;
 }
