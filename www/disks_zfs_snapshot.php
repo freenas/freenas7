@@ -157,10 +157,10 @@ function zfssnapshot_process_updatenotification($mode, $data) {
 				<?php if (updatenotify_exists("zfssnapshot")) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="45%" class="listhdrlr"><?=gettext("Path");?></td>
+						<td width="40%" class="listhdrlr"><?=gettext("Path");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
-						<td width="8%" class="listhdrr"><?=gettext("Used");?></td>
-						<td width="17%" class="listhdrr"><?=gettext("Creation");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Used");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Creation");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php foreach ($a_snapshot as $snapshotv):?>

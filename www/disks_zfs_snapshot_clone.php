@@ -154,8 +154,8 @@ function zfsclone_process_updatenotification($mode, $data) {
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="30%" class="listhdrlr"><?=gettext("Path");?></td>
-						<td width="43%" class="listhdrr"><?=gettext("Origin");?></td>
-						<td width="17%" class="listhdrr"><?=gettext("Creation");?></td>
+						<td width="40%" class="listhdrr"><?=gettext("Origin");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Creation");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php foreach ($a_clone as $clonev):?>
