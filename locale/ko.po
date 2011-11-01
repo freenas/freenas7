@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "자체 테스트 추가"
 
 msgid "Add share"
 msgstr "공유 추가"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "데이터 셋 추가"
 
 msgid "Add target"
 msgstr "타겟 추가"
@@ -726,6 +730,9 @@ msgstr "클라이언트는 소문자, 서버는 대문자로 보기"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "클라이언트는 대문자, 서버는 소문자로 보기"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "초기 데이터 수집 중이므로 잠시 기다려 주십시오..."
 
@@ -849,6 +856,9 @@ msgstr "이미 포맷된 파일 시스템"
 msgid "Creates the pool with an alternate root."
 msgstr "풀을 다른 루트로 생성합니다."
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "파일 시스템 생성 중"
 
@@ -857,6 +867,10 @@ msgstr "'Soft Updates'로 파일 시스템을 생성 중"
 
 msgid "Creating partition"
 msgstr "파티션 생성 중"
+
+#, fuzzy
+msgid "Creation"
+msgstr "방향"
 
 msgid "Credits"
 msgstr "제작자"
@@ -1016,6 +1030,10 @@ msgstr "모든 자체 테스트 삭제"
 msgid "Delete auth group"
 msgstr "인증 그룹 삭제"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "규칙 삭제"
+
 msgid "Delete command"
 msgstr "명령 삭제"
 
@@ -1073,6 +1091,10 @@ msgstr "자체 테스트 삭제"
 msgid "Delete share"
 msgstr "공유 삭제"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Host 삭제"
+
 msgid "Delete target"
 msgstr "타젯 삭제"
 
@@ -1082,6 +1104,9 @@ msgstr "사용자 삭제"
 #, fuzzy
 msgid "Delete volume"
 msgstr "라우트 삭제"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "삭제 중"
@@ -1269,6 +1294,10 @@ msgstr "정말로 이 URL을 지우시겠습니까?"
 msgid "Do you really want to delete this auth group?"
 msgstr "정말로 이 인증 그룹을 삭제하시겠습니까?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "정말로 이 규칙을 삭제하시겠습니까?"
+
 msgid "Do you really want to delete this command?"
 msgstr "정말로 이 명령을 지우시겠습니까?"
 
@@ -1328,6 +1357,10 @@ msgstr "정말로 이 예약된 자체 테스트를 삭제하시겠습니까?"
 
 msgid "Do you really want to delete this share?"
 msgstr "정말로 이 공유를 삭제하시겠습니까?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "정말로 이 호스트를 지우시겠습니까?"
 
 msgid "Do you really want to delete this target?"
 msgstr "정말로 이 타젯을 삭제하시겠습니까?"
@@ -1522,6 +1555,10 @@ msgstr "자체 테스트 편집"
 
 msgid "Edit share"
 msgstr "공유 편집"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "데이터 셋 편집"
 
 msgid "Edit target"
 msgstr "타젯 편집"
@@ -2221,6 +2258,10 @@ msgstr "이 인자가 설정되면 사용자들이 이 공유에서 파일을 �
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "이 속성이 비활성화 되면 파일 시스템은 마운트 될 수 없습니다."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "이 속성이 비활성화 되면 파일 시스템은 마운트 될 수 없습니다."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "'예'를 클릭하면 %s은(는) 공장 기본 값으로 설정된 후 바로 리붓 하게 됩니다. 전체 시스템 설정 값을 덮어쓸 것입니다. 랜 IP 주소는 %s로(으로) 설정되고 비밀번호는 '%s'로(으로) 설정될 것입니다."
@@ -2912,7 +2953,7 @@ msgstr "구성된 개시자 그룹이 없습니다. 먼저 새 <a href='%s'>개�
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "포털 그룹이 구성되지 않았음. 먼저 <a href='%s'>포털 그룹</a>을 새로 추가하십시오."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "풀이 구성되지 않았음. 먼저 <a href='%s'>풀</a>을 새로 추가하십시오."
 
@@ -3046,6 +3087,9 @@ msgstr "타젯의 사용자 친화형 문자열(옵션)."
 
 msgid "Options"
 msgstr "옵션"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "기타"
@@ -3861,6 +3905,15 @@ msgstr "슬로바키아어"
 msgid "Slovenian"
 msgstr "슬로베니아어"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "소켓"
 
@@ -4246,7 +4299,7 @@ msgstr "속성 '%s'은(는) 유효한 개인 키로 보이지 않습니다."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "속성 '%s'은(는) 무효한 포트 번호입니다."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "속성 '%s'은(는) 무효합니다."
 
@@ -5385,6 +5438,14 @@ msgid "ZFS dataset information and status"
 msgstr "ZFS 데이터 셋 정보와 상태"
 
 msgid "ZFS dataset properties"
+msgstr "ZFS 데이터 셋 속성"
+
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "ZFS 데이터 셋 정보와 상태"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
 msgstr "ZFS 데이터 셋 속성"
 
 msgid "ZFS volume"

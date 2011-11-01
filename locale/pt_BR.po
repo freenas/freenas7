@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-06-02 00:19+0000\n"
 "Last-Translator: Diego <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Adicionar auto-teste"
 
 msgid "Add share"
 msgstr "Adicionar compartilhamento"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Adicionar dataset"
 
 msgid "Add target"
 msgstr "Adicionar target"
@@ -726,6 +730,9 @@ msgstr "O cliente vê minúsculas, o servidor vê maiúsculas"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "O cliente vê maiúsculas, o servidor vê minúsculas"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Reunindo os dados iniciais, por favor aguarde..."
 
@@ -849,6 +856,9 @@ msgstr "Sistema de arquivos pré-formatado"
 msgid "Creates the pool with an alternate root."
 msgstr "Cria o pool com um raíz alternativo."
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Criando sistema de arquivos"
 
@@ -857,6 +867,10 @@ msgstr "Criando sistema de arquivos com 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Criando partição"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Criar"
 
 msgid "Credits"
 msgstr "Créditos"
@@ -1016,6 +1030,10 @@ msgstr "Excluir todos os auto-testes"
 msgid "Delete auth group"
 msgstr "Excluir todos os grupos de autenticação"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Excluir regra"
+
 msgid "Delete command"
 msgstr "Excluir comando"
 
@@ -1073,6 +1091,10 @@ msgstr "Excluir auto-teste"
 msgid "Delete share"
 msgstr "Excluir compartilhamento"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Excluir host"
+
 msgid "Delete target"
 msgstr "Excluir target"
 
@@ -1082,6 +1104,9 @@ msgstr "Excluir usuário"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Ecluir rota"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Excluindo"
@@ -1269,6 +1294,10 @@ msgstr "Deseja realmente excluir esta URL?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Deseja realmente excluir este grupo de autenticação?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Deseja realmente excluir esta regra?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Deseja realmente excluir este comando?"
 
@@ -1328,6 +1357,10 @@ msgstr "Deseja realmente excluir este auto-teste agendado?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Deseja realmente excluir este compartilhamento?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Deseja realmente eliminar este host?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Deseja realmente excluir este target?"
@@ -1522,6 +1555,10 @@ msgstr "Editar auto-teste"
 
 msgid "Edit share"
 msgstr "Editar compartilhamento"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Editar dataset"
 
 msgid "Edit target"
 msgstr "Editar target"
@@ -2221,6 +2258,10 @@ msgstr "Se este parâmetro estiver habilitado, os usuários não poderão criar 
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Se esta propriedade estiver desabilitada, o sistema de arquivos não poderá ser montado."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Se esta propriedade estiver desabilitada, o sistema de arquivos não poderá ser montado."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Se clicar em 'Sim', %s serão resetados para os padrões de fábrica e o sistema será automaticamente. Toda a configuração do sistema será sobrescrita. O endereço IP da rede será configurado para %s e a senha será configurada para '%s'."
@@ -2912,7 +2953,7 @@ msgstr "Nwnhum grupo \"initiator' configurado. Por favor, adicione um em <a href
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Nenhum Grupo de Portal configurado. Por favor adicione um novo <a href='%s'>Grupo de Portal</a> primeiro."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Nenhum pool configurado. Por favor, adicione um novo <a href='%s'>Pool</a> primeiro."
 
@@ -3046,6 +3087,9 @@ msgstr "Texto amigável opcional para o target."
 
 msgid "Options"
 msgstr "Opções"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Outros"
@@ -3861,6 +3905,15 @@ msgstr "Eslovaco"
 msgid "Slovenian"
 msgstr "Esloveno"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -4246,7 +4299,7 @@ msgstr "O atributo '%s' não parece ser uma chave privada válida."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "O atributo '%s' é um número de porta inválido."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "O atributo '%s' é inválido."
 
@@ -5387,6 +5440,14 @@ msgstr "Informação e status do dataset ZFS"
 msgid "ZFS dataset properties"
 msgstr "Propriedades do dataset ZFS"
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Informação e status do dataset ZFS"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
+msgstr "Propriedades do dataset ZFS"
+
 msgid "ZFS volume"
 msgstr "Volume ZFS"
 
@@ -5553,9 +5614,6 @@ msgstr "upriv"
 
 #~ msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 #~ msgstr "Após clicar em &quot;Salvar&quot;, será necessário reiniciar %s para que as alterações tenham efeito. Talvez seja necessário realizar um ou mais destes passos antes de ter acesso ao NAS novamente: </span></p><ul><li><span class='vexpl'>Mude o endereço IP do seu computador</span></li><li><span class='vexpl'>acesse o webGUI com este novo endereço</span></li></ul>"
-
-#~ msgid "Create"
-#~ msgstr "Criar"
 
 #~ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
 #~ msgstr "NÃO INTERROMPA o processo de atualizar do firmware após ter sido iniciado. %s reiniciará automaticamente após gravar o novo firmware. As configuraçõe serão mantidas.<br>Você precisa de no mínimo %d Mb de RAM para atualizar o firmware.<br>É altamente recomendado que você <a href=%s>Salve</a> a configuração do sistema antes de iniciar o processo de atualização do firmware."

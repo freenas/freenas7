@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-04-10 13:51+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Shto nje testim automatik"
 
 msgid "Add share"
 msgstr "Shto shperndarje"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Shto dataset"
 
 msgid "Add target"
 msgstr "Shto nje objektiv"
@@ -726,6 +730,9 @@ msgstr "Klienti sheh germa dore, serveri i sheh germa shtypi"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Klienti sheh germa shtypi, serveri i sheh germa dore"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Duke mbledhur te dhenat fillestare, ju lutem prisni..."
 
@@ -848,6 +855,9 @@ msgstr "Duke krijuar filesystem"
 msgid "Creates the pool with an alternate root."
 msgstr "Krijon nje pune me nje rrenje alternative."
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Duke krijuar filesystem"
 
@@ -856,6 +866,10 @@ msgstr "Duke krijuar skedarin e sistemit me ' Axhornime te lehta'"
 
 msgid "Creating partition"
 msgstr "Duke krijuar particionin"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Krijo"
 
 msgid "Credits"
 msgstr "Kredite"
@@ -1015,6 +1029,10 @@ msgstr "Fshij te gjithe testimete automatike"
 msgid "Delete auth group"
 msgstr "Fshij grupin e autorizuar"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Fshij rregullin"
+
 msgid "Delete command"
 msgstr "Fshij komanden"
 
@@ -1072,6 +1090,10 @@ msgstr "Fshij testimin automatik"
 msgid "Delete share"
 msgstr "Fshij shperndarje"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Fshij Host"
+
 msgid "Delete target"
 msgstr "Fshij obkjektivin"
 
@@ -1081,6 +1103,9 @@ msgstr "Fshij perdorues"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Fshij kete rruge"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Duke fshire"
@@ -1268,6 +1293,10 @@ msgstr "Doni te fshini me te vertete kete URL?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Me te vertete doni te fshini kete grup te autorizuar?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Doni te fshini me te vertete kete rregull?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Doni te fshini me te vertete kete komande?"
 
@@ -1327,6 +1356,10 @@ msgstr "Me te vertete doni te fshini testim automatik e programuar?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Me te vertete doni te fshini kete shperndarje?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Doni te fshini me te vertete kete host?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Me te vertete doni te fshini kete objektiv?"
@@ -1521,6 +1554,10 @@ msgstr "Modfiko vete-testimin"
 
 msgid "Edit share"
 msgstr "Modifiko shperndarje"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Modifiko kete dataset"
 
 msgid "Edit target"
 msgstr "Modifiko objektivin"
@@ -2220,6 +2257,10 @@ msgstr "Ne qofte se ky parameter eshte i caktuar, atehere perdoruesit  nuk do te
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Ne qofte se kjo perkatesi eshte e dizaktivizuar, skedari is sistemit nuk mund te montohet."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Ne qofte se kjo perkatesi eshte e dizaktivizuar, skedari is sistemit nuk mund te montohet."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr ""
@@ -2911,7 +2952,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3045,6 +3086,9 @@ msgstr ""
 
 msgid "Options"
 msgstr "Opcionet"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Te tjere"
@@ -3860,6 +3904,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr "Sllovenisht."
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -4245,7 +4298,7 @@ msgstr ""
 msgid "The attribute '%s' is an invalid port number."
 msgstr ""
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr ""
 
@@ -5386,6 +5439,14 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Gjendja dhe informazione mbi sofwari-n RAID."
+
+#, fuzzy
+msgid "ZFS snapshot properties"
+msgstr "Volumi ZFS"
+
 msgid "ZFS volume"
 msgstr "Volumi ZFS"
 
@@ -5567,9 +5628,6 @@ msgstr "upriv"
 
 #~ msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
 #~ msgstr "<a href=%s>SSHD</a> duhet te jete in aktivizuar qu Unison te punoje. dhe <a href=%s>perdoruesi</a> duhet te kete te hyrje te plote ne Shell."
-
-#~ msgid "Create"
-#~ msgstr "Krijo"
 
 #~ msgid "Create work directory if it doesn't exist"
 #~ msgstr "Krijo drejtorine epunes ne qofte se nuk ekziston"

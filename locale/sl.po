@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2010-12-19 11:18+0000\n"
 "Last-Translator: Matic Gradišer <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Dodaj self-test"
 
 msgid "Add share"
 msgstr "Dodaj deljeno mapo"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Dodaj dataset"
 
 msgid "Add target"
 msgstr "Dodaj cilj"
@@ -726,6 +730,9 @@ msgstr "Klient vidi majhne črke, server pa velike."
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Klient vidi velike črke, strežnik pa majhne."
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Zbiranje podatkov, prosim počakajte..."
 
@@ -849,6 +856,9 @@ msgstr "Že formatiran datotečni sistem"
 msgid "Creates the pool with an alternate root."
 msgstr "Ustvari bazen z drugim izhodiščem"
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Ustvarjanje datotečnega sistema"
 
@@ -857,6 +867,10 @@ msgstr "Ustvarjanje datotečnega sistema z 'Mehke nadgradnje'"
 
 msgid "Creating partition"
 msgstr "Ustvarjanje particije"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Ustvari"
 
 msgid "Credits"
 msgstr "Zasluge"
@@ -1016,6 +1030,10 @@ msgstr "Probiši vse self-teste"
 msgid "Delete auth group"
 msgstr "Pobriši vse skupine dovoljenj"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Izbriši pravilo"
+
 msgid "Delete command"
 msgstr "Odstrani ukaz"
 
@@ -1073,6 +1091,10 @@ msgstr "Izbriši self-test"
 msgid "Delete share"
 msgstr "Izbriši deljeno mapo"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Odstrani gostitelja"
+
 msgid "Delete target"
 msgstr "Odstrani cilj"
 
@@ -1082,6 +1104,9 @@ msgstr "Odstrani uporabnika"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Odstrani pot"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Brisanje"
@@ -1269,6 +1294,10 @@ msgstr "Ali res želite izbrisati ta URL?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Res želite odstraniti to skupino dovoljenj?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Res želite izbrisati to pravilo?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Res želite odstraniti ta ukaz?"
 
@@ -1328,6 +1357,10 @@ msgstr "Res želite izbrisati ta self-test?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Ali res želite izbrisati to deljeno mapo?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Res želite odstraniti tega gostitelja?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Res želite odstraniti ta cilj?"
@@ -1522,6 +1555,10 @@ msgstr "Uredi selg-test"
 
 msgid "Edit share"
 msgstr "Uredi deljeno mapo"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Uredi dataset"
 
 msgid "Edit target"
 msgstr "Uredi cilj"
@@ -2222,6 +2259,10 @@ msgstr "Če je parameter nastavljen, uporabniki ne bodo mogli ustvarjati in spre
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Če je nastavitev onemogočena, se datotečni sistem ne more priklopiti."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Če je nastavitev onemogočena, se datotečni sistem ne more priklopiti."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Če kliknete 'Da', bo %s ponastavil privzete tovarniške nastavitve in se avtomatsko ponovno zagnal. VSE sistemske nastavitve bodo prepisane. LAN IP naslov bo nastavljen na %s in geslo nastavljeno na '%s'."
@@ -2913,7 +2954,7 @@ msgstr "Ni nastavljenih skupin sprožiteljev. Prosim, dodajte novo <a href='%s'>
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Ni nastavljeni skupin portal. Prosim, dodajte novo <a href='%s'>skupino portal</a>."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Ni nastavljenih bazenov. Prosim, dodajte nov <a href='%s'>bazen</a>."
 
@@ -3047,6 +3088,9 @@ msgstr "Uporabnikov opis cilja."
 
 msgid "Options"
 msgstr "Možnosti"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Ostali"
@@ -3862,6 +3906,15 @@ msgstr "Slovaščina"
 msgid "Slovenian"
 msgstr "Slovenščina"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Vtiči"
 
@@ -4247,7 +4300,7 @@ msgstr "Atribut '%s' ne izgleda kot veljaven privatni ključ."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Atribut '%s' ni veljavna številka vrat."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Atribut '%s' ni veljaven."
 
@@ -5387,6 +5440,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Informacije in status preverjanj"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5561,9 +5621,6 @@ msgstr "upriv"
 
 #~ msgid "week days"
 #~ msgstr "delovnik"
-
-#~ msgid "Create"
-#~ msgstr "Ustvari"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Vnešen mora biti veljaven podomrežni bit."

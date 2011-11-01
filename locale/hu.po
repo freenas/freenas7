@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-04-09 21:27+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Ön-teszt hozzáadása"
 
 msgid "Add share"
 msgstr "Megosztás hozzáadása"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Állomás hozzáadása"
 
 msgid "Add target"
 msgstr "Cél hozzáadása"
@@ -726,6 +730,9 @@ msgstr "Kliens megjelenítése kisbetüvel, szerver megjelenítése nagybetüvel
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Kliens megjelenítése nagybetüvel, szerver megjelenítése kisbetüvel"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Adatok gyűjtése folyamatban, kérem várjon..."
 
@@ -847,6 +854,9 @@ msgstr "Előreformázott fájlrendszer"
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Fájlrendszer létrehozása"
 
@@ -855,6 +865,10 @@ msgstr "Létrehozása fájlrendszer 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Partíció létrehozása"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Létrehoz"
 
 msgid "Credits"
 msgstr "Készítők"
@@ -1014,6 +1028,10 @@ msgstr "Összes Ön-teszt törlése"
 msgid "Delete auth group"
 msgstr ""
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Szabály törlése"
+
 msgid "Delete command"
 msgstr "Parancs törlése"
 
@@ -1071,6 +1089,10 @@ msgstr "Ön-teszt törlése"
 msgid "Delete share"
 msgstr "Megosztás törlése"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Állomás törlése"
+
 msgid "Delete target"
 msgstr "Cél törlése"
 
@@ -1080,6 +1102,9 @@ msgstr "Felhasználó törlése"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Útvonal törlése"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Törlés"
@@ -1267,6 +1292,10 @@ msgstr "Biztos, hogy törli ezt az URL-t?"
 msgid "Do you really want to delete this auth group?"
 msgstr ""
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Biztos, hogy törli ezt a szabályt?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Biztos, hogy törlöd ezt a parancsot?"
 
@@ -1326,6 +1355,10 @@ msgstr "Biztos, hogy törli ezt az időzített ön-tesztet?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Valóban törölni akarja ezt a megosztást?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Biztos, hogy törlöd ezt az állomást?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Valóban törölni akarja ezt a célt?"
@@ -1520,6 +1553,10 @@ msgstr "Ön-teszt szerkesztése"
 
 msgid "Edit share"
 msgstr "Magosztás szerkesztése"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Állomásnév módosítása"
 
 msgid "Edit target"
 msgstr "Cél szerkesztése"
@@ -2219,6 +2256,9 @@ msgstr "Ha ez a paraméter be van állítva, akkor a felhasználók nem hozhatna
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Ha az 'Igen'-re kattintasz, a %s visszaállítja a gyári beállításokat és újraindul. A mostani rendszer beállítás felül lesz írva. A LAN IP cím %s lesz, az admin jelszó pedig '%s' lesz."
@@ -2910,7 +2950,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3044,6 +3084,9 @@ msgstr ""
 
 msgid "Options"
 msgstr "Beállítások"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Egyebek"
@@ -3859,6 +3902,15 @@ msgstr "Szlovák"
 msgid "Slovenian"
 msgstr "Szlovén"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Aljazatok"
 
@@ -4244,7 +4296,7 @@ msgstr ""
 msgid "The attribute '%s' is an invalid port number."
 msgstr ""
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "A(z) '%s' attribútum érvénytelen."
 
@@ -5385,6 +5437,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Szoftver RAID információ és állapot"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5559,9 +5618,6 @@ msgstr ""
 
 #~ msgid "week days"
 #~ msgstr "a hét napjai"
-
-#~ msgid "Create"
-#~ msgstr "Létrehoz"
 
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"

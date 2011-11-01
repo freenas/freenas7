@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-06-12 09:38+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
@@ -305,6 +305,10 @@ msgstr "Zelf-test toevoegen"
 
 msgid "Add share"
 msgstr "Deelmap toevoegen"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Dataset toevoegen"
 
 msgid "Add target"
 msgstr "Doel toevoegen"
@@ -726,6 +730,9 @@ msgstr "De werkstation ziet kleine letters, de server ziet hoofdletters"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "De werkstation ziet hoofdletters, de server ziet kleine letters"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Bezig met het ophalen van data, Even geduld a.u.b."
 
@@ -849,6 +856,9 @@ msgstr "Reeds geformatteerd bestandssyteem"
 msgid "Creates the pool with an alternate root."
 msgstr "Creëer de pool met een alternatieve root."
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Creëer bestandssysteem"
 
@@ -857,6 +867,10 @@ msgstr "Creëer bestandssysteem met 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Creëer partitie"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Creëer"
 
 msgid "Credits"
 msgstr "Met dank aan"
@@ -1016,6 +1030,10 @@ msgstr "Verwijder alle zelf-testen"
 msgid "Delete auth group"
 msgstr "Auth groep verwijderen"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Regel verwijderen"
+
 msgid "Delete command"
 msgstr "Opdracht verwijderen"
 
@@ -1073,6 +1091,10 @@ msgstr "Zelf-test verwijderen"
 msgid "Delete share"
 msgstr "Gedeeld station verwijderen"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Host verwijderen"
+
 msgid "Delete target"
 msgstr "Doel verwijderen"
 
@@ -1082,6 +1104,9 @@ msgstr "Gebruiker verwijderen"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Route verwijderen"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Aan het verwijderen"
@@ -1269,6 +1294,10 @@ msgstr "Weet u zeker dat u deze URL wilt wissen?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Weet u zeker dat u deze auth groep wilt verwijderen?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Weet u zeker dat u deze regel wilt verwijderen?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Weet u zeker dat u deze opdracht wilt verwijderen?"
 
@@ -1328,6 +1357,10 @@ msgstr "Weet u zeker dat u deze zelf-test wilt verwijderen?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Weet u zeker dat u dit gedeeld station wilt verwijderen?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Weet u zeker dat u deze host wil verwijderen?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Weet  u zeker dat u dit doel wilt verwijderen?"
@@ -1522,6 +1555,10 @@ msgstr "Zelf-test bewerken"
 
 msgid "Edit share"
 msgstr "Gedeelde map bewerken"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Dataset bewerken"
 
 msgid "Edit target"
 msgstr "Doel bewerken"
@@ -2221,6 +2258,10 @@ msgstr "Wanneer deze parameter is ingevuld, kunnen gebruikers geen bestanden mak
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Als deze eigenschap is uitgeschakeld, kan het bestandssysteem niet worden aangekoppeld."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Als deze eigenschap is uitgeschakeld, kan het bestandssysteem niet worden aangekoppeld."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Als u op 'Ja' drukt, zal %s direct naar de fabrieks-instellingen terugkeren en herstarten. De huidige systeemconfiguratie wordt overschreven. Het LAN IP-adres verandert naar %s en het wachtwoord wijzigt in '%s'."
@@ -2912,7 +2953,7 @@ msgstr "Er is geen Initiator Groep geconfigureerd. Voeg eerst een nieuwe <a href
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Er is geen Portaal Groep geconfigureerd. Voeg eerst een nieuwe <a href='%s'>Portaal Groep</a> toe."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Er zijn geen pools geconfigureerd. Voeg eerst een nieuwe <a href='%s'>pool</a> toe."
 
@@ -3046,6 +3087,9 @@ msgstr "Optioneel gebruiksvriendelijke naam van het doel."
 
 msgid "Options"
 msgstr "Opties"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Overige"
@@ -3861,6 +3905,15 @@ msgstr "Slowaaks"
 msgid "Slovenian"
 msgstr "Sloveens"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -4246,7 +4299,7 @@ msgstr "Het attribuut '%s' schijnt geen geldige privé sleutel te zijn."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Het attribuut '%s' is een ongeldig poortnummer."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Het attribuut '%s' is ongeldig."
 
@@ -5387,6 +5440,14 @@ msgstr "ZFS dataset informatie en status"
 msgid "ZFS dataset properties"
 msgstr "ZFS dataset eigenschappen"
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "ZFS dataset informatie en status"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
+msgstr "ZFS dataset eigenschappen"
+
 msgid "ZFS volume"
 msgstr "ZFS volume"
 
@@ -5754,9 +5815,6 @@ msgstr "upriv"
 
 #~ msgid "You can use the following parameters for substitution:<div id='enumeration'><ul><li>%d - Date</li><li>%h - Hostname</li></ul></div>"
 #~ msgstr "U kunt de volgende parameters gebruiken voor substitutie:<div id='enumeration'><ul><li>%d - Datum</li><li>%h - Hostnaam</li></ul></div>"
-
-#~ msgid "Create"
-#~ msgstr "Creëer"
 
 #~ msgid "Device is mounted, umount it first before detaching."
 #~ msgstr "Apparaat is aangekoppeld, ontkoppel het eerst voor u het losneemt."

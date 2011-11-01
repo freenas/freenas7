@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-06-02 16:12+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Lägg till självtest"
 
 msgid "Add share"
 msgstr "Lägg till utdelning"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Lägg till ett dataset."
 
 msgid "Add target"
 msgstr "Lägg till mål"
@@ -726,6 +730,9 @@ msgstr "Klienten ser gemener, servern ser versaler."
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Klienten ser versaler, servern ser gemener."
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Samlar in initial data, var god vänta..."
 
@@ -849,6 +856,9 @@ msgstr "Förformaterat filsystem"
 msgid "Creates the pool with an alternate root."
 msgstr "Skapar poolen med en alternativ root"
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Skapar filsystem"
 
@@ -857,6 +867,10 @@ msgstr "Skapar filsystem med \"Mjuka uppdateringar\""
 
 msgid "Creating partition"
 msgstr "Skapar partition"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Skapa"
 
 msgid "Credits"
 msgstr "Tack till"
@@ -1016,6 +1030,10 @@ msgstr "Ta bort alla självtest"
 msgid "Delete auth group"
 msgstr "Radera autentiseringsgrupp"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Radera regel"
+
 msgid "Delete command"
 msgstr "Ta bort kommando"
 
@@ -1073,6 +1091,10 @@ msgstr "Radera självtest"
 msgid "Delete share"
 msgstr "Ta bort utdelning"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Ta bort värd"
+
 msgid "Delete target"
 msgstr "Ta bort mål"
 
@@ -1082,6 +1104,9 @@ msgstr "Ta bort användare"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Ta bort väg"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Raderar"
@@ -1269,6 +1294,10 @@ msgstr "Vill du verkligen radera denna URL?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Vill du verkligen radera denna autentiseringsgrupp?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Vill du verkligen radera denna regeln?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Vill du verkligen ta bort det här kommandot?"
 
@@ -1328,6 +1357,10 @@ msgstr "Vill du verkligen radera detta schemalagda självtest?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Vill du verkligen ta bort denna utdelning?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Vill du verkligen ta bort denna värd?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Vill du verkligen ta bort det här målet?"
@@ -1522,6 +1555,10 @@ msgstr "Redigera självtest"
 
 msgid "Edit share"
 msgstr "Redigera utdelning"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Editera dataset"
 
 msgid "Edit target"
 msgstr "Redigera mål"
@@ -2221,6 +2258,10 @@ msgstr "Om denna parameter är satt, så kan användare inte skapa eller ändra 
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Om denna egenskap är avaktiverad så kan inte filsystemet monteras."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Om denna egenskap är avaktiverad så kan inte filsystemet monteras."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Om Du klickar 'JA', kommer %s återställas till grundinställningar och starta om omedelbart. Hela systeminställningen kommer bli överskrivet. LAN IP-adressen kommer bli återställd till %s och lösenordet kommer bli inställt till '%s'."
@@ -2912,7 +2953,7 @@ msgstr "Ingen konfigurerad Initieringsgrupp (Initiator Group). Lägg till ny <a 
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Ingen konfigurerad Portalgrupp (Portal Group). Lägg till ny <a href='%s'>Portal Group</a> först."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Inga konfigurerade pooler. Var god lägg till ny <a href='%s'>pools</a> först."
 
@@ -3046,6 +3087,9 @@ msgstr "Valfri användarvänlig sträng för målet."
 
 msgid "Options"
 msgstr "Alternativ"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Övriga"
@@ -3861,6 +3905,15 @@ msgstr "Slovakiska"
 msgid "Slovenian"
 msgstr "Slovenska"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Uttag (sockets)"
 
@@ -4246,7 +4299,7 @@ msgstr "Attributet '%s' förefaller inte att vara en giltig privat nyckel."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Attributet '%s' är inget giltigt port-nummer."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Attributet '%s' är giltigt."
 
@@ -5387,6 +5440,14 @@ msgstr "ZFS dataset information och status"
 msgid "ZFS dataset properties"
 msgstr "ZFS dataset egenskaper"
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "ZFS dataset information och status"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
+msgstr "ZFS dataset egenskaper"
+
 msgid "ZFS volume"
 msgstr "ZFS volym"
 
@@ -5565,9 +5626,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "månader"
-
-#~ msgid "Create"
-#~ msgstr "Skapa"
 
 #~ msgid "LAN"
 #~ msgstr "LAN"

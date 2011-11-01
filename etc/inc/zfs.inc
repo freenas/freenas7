@@ -1,6 +1,9 @@
 <?php
 /*
 	zfs.inc
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	All rights reserved.
+
 	Copyright (c) 2008-2009 Volker Theile (votdev@gmx.de)
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
@@ -315,6 +318,9 @@ function zfs_dataset_configure($uuid) {
 	if (!isset($dataset['xattr']))
 		$param .= "-o xattr=off ";
 
+	if (isset($dataset['snapdir']))
+		$param .= "-o snapdir=visible ";
+
 	// Create the dataset
 	$cmd = "zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
 	write_log($cmd);
@@ -369,7 +375,7 @@ function zfs_dataset_properties($uuid) {
 
 	$result = 0;
 
-	foreach (explode(" ", "compression dedup canmount readonly quota") as $attr) {
+	foreach (explode(" ", "compression dedup canmount readonly quota xattr snapdir") as $attr) {
 		$param = "";
 
 		switch ($attr) {
@@ -409,6 +415,13 @@ function zfs_dataset_properties($uuid) {
 					$param = "xattr=off";
 				else
 					$param = "xattr=on";
+				break;
+
+			case "snapdir":
+				if (!isset($dataset['snapdir']))
+					$param = "snapdir=hidden";
+				else
+					$param = "snapdir=visible";
 				break;
 		}
 
@@ -531,6 +544,202 @@ function zfs_volume_properties($uuid) {
 		}
 	}
 
+	return $result;
+}
+
+/**
+ * Configure, create and start a ZFS snapshot.
+ * @param[in] snapshot	The name of the snapshot to be configured.
+ * @return An array containg the result:
+ * @code
+ * [output] => array("lines")
+ * [retval] => 0 if successful, otherwise 1
+ * @endcode
+ */
+function zfs_snapshot_configure($snapshot) {
+	global $config;
+	$result = array("output" => array("error"), "retval" => -1);
+
+	if (empty($snapshot) || empty($snapshot['snapshot']))
+		return $result;
+	if (!preg_match('/.+\@.+/', $snapshot['snapshot']))
+		return $result;
+
+	// Additional parameter
+	$param = "";
+
+	if (isset($snapshot['recursive']))
+		$param .= "-r ";
+
+	// Create the snapshot
+	$cmd = "zfs snapshot {$param} {$snapshot['snapshot']}";
+	write_log($cmd);
+
+//	return mwexec($cmd, true);
+	// Execute the command, and save the log.
+	$redirect = "2>&1";
+	exec("{$cmd} {$redirect}", $output, $retval);
+	$result['output'] = $output;
+	$result['retval'] = $retval;
+	return $result;
+}
+
+/**
+ * Delete a ZFS snapshot.
+ * @param[in] snapshot	The name of the snapshot to be deleted.
+ * @return An array containg the result:
+ * @code
+ * [output] => array("lines")
+ * [retval] => 0 if successful, otherwise 1
+ * @endcode
+ */
+function zfs_snapshot_destroy($snapshot) {
+	global $config;
+	$result = array("output" => array("error"), "retval" => -1);
+
+	if (empty($snapshot) || empty($snapshot['snapshot']))
+		return $result;
+	if (!preg_match('/.+\@.+/', $snapshot['snapshot']))
+		return $result;
+
+	// Additional parameter
+	$param = "";
+
+	if (isset($snapshot['recursive']))
+		$param .= "-r ";
+
+	// Destroy the snapshot
+	$cmd = "zfs destroy {$param} {$snapshot['snapshot']}";
+	write_log($cmd);
+
+//	return mwexec($cmd, true);
+	// Execute the command, and save the log.
+	$redirect = "2>&1";
+	exec("{$cmd} {$redirect}", $output, $retval);
+	$result['output'] = $output;
+	$result['retval'] = $retval;
+	return $result;
+}
+
+/**
+ * Clone from a ZFS snapshot.
+ * @param[in] snapshot	The name of the snapshot to be cloned.
+ * @return An array containg the result:
+ * @code
+ * [output] => array("lines")
+ * [retval] => 0 if successful, otherwise 1
+ * @endcode
+ */
+function zfs_snapshot_clone($snapshot) {
+	global $config;
+	$result = array("output" => array("error"), "retval" => -1);
+
+	if (empty($snapshot) || empty($snapshot['snapshot']))
+		return $result;
+	if (!preg_match('/.+\@.+/', $snapshot['snapshot']))
+		return $result;
+	//if (empty($snapshot['pool']) || empty($snapshot['name']))
+	//	return $result;
+	if (empty($snapshot['path']))
+		return $result;
+
+	// Additional parameter
+	$param = "";
+
+	// Clone the snapshot
+	$cmd = "zfs clone {$param} {$snapshot['snapshot']} {$snapshot['path']}";
+	write_log($cmd);
+
+//	return mwexec($cmd, true);
+	// Execute the command, and save the log.
+	$redirect = "2>&1";
+	exec("{$cmd} {$redirect}", $output, $retval);
+	$result['output'] = $output;
+	$result['retval'] = $retval;
+	return $result;
+}
+
+/**
+ * Update properties of a ZFS snapshot.
+ * @param[in] snapshot	The name of the snapshot to be updated.
+ * @return Return 0 if successful, otherwise 1.
+ */
+function zfs_snapshot_properties($snapshot) {
+	global $config;
+
+	if (empty($snapshot) || empty($snapshot['snapshot']))
+		return -1;
+	if (!preg_match('/.+\@.+/', $snapshot['snapshot']))
+		return -1;
+
+	$result = 0;
+
+	foreach (explode(" ", "dummy") as $attr) {
+		$param = "";
+
+		switch ($attr) {
+		}
+
+		// Update snapshot properties
+		if (!empty($param)) {
+			$cmd = "zfs set {$param} {$snapshot['snapshot']}";
+			$result |= mwexec($cmd, true);
+		}
+	}
+
+	return $result;
+}
+
+/**
+ * Delete a ZFS clone filesystem, volume.
+ * @param[in] dataset	The name of the dataset to be deleted.
+ * @return An array containg the result:
+ * @code
+ * [output] => array("lines")
+ * [retval] => 0 if successful, otherwise 1
+ * @endcode
+ */
+function zfs_clone_destroy($clone) {
+	global $config;
+	$result = array("output" => array("error"), "retval" => -1);
+
+	if (empty($clone) || empty($clone['path']))
+		return $result;
+	if (!preg_match('/.+\/.+/', $clone['path']))
+		return $result;
+
+	// Additional parameter
+	$param = "";
+
+	// Destroy the snapshot
+	$cmd = "zfs destroy {$param} {$clone['path']}";
+	write_log($cmd);
+
+//	return mwexec($cmd, true);
+	// Execute the command, and save the log.
+	$redirect = "2>&1";
+	exec("{$cmd} {$redirect}", $output, $retval);
+	$result['output'] = $output;
+	$result['retval'] = $retval;
+	return $result;
+}
+
+// Update notify for ZFS functions
+function zfs_updatenotify_process($key, $function) {
+	$result = array("output" => array("error"), "retval" => -1);
+	$a_notification = updatenotify_get($key);
+	if (!is_array($a_notification)) {
+		$result = array("output" => array("empty"), "retval" => 0);
+		return $result;
+	}
+
+	foreach ($a_notification as $notificationv) {
+		$ret = call_user_func($function, $notificationv['mode'], $notificationv['data']);
+		if (0 != $ret['retval']) {
+			return $ret;
+		}
+	}
+	$result = array("output" => array(), "retval" => 0);
 	return $result;
 }
 

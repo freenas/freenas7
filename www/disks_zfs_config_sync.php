@@ -57,16 +57,17 @@ $zfs = array(
 $rawdata = null;
 $spa = @exec("sysctl -q -n vfs.zfs.version.spa");
 if ($spa == '' || $spa < 21) {
-	mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,readonly', $rawdata);
+	mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,snapdir,readonly,origin', $rawdata);
 } else {
-	mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,readonly,dedup', $rawdata);
+	mwexec2('zfs list -H -t filesystem -o name,mountpoint,compression,canmount,quota,used,available,xattr,snapdir,readonly,origin,dedup', $rawdata);
 }
 foreach($rawdata as $line)
 {
 	if ($line == 'no datasets available') { continue; }
-	list($fname, $mpoint, $compress, $canmount, $quota, $used, $avail, $xattr, $readonly, $dedup) = explode("\t", $line);
+	list($fname, $mpoint, $compress, $canmount, $quota, $used, $avail, $xattr, $snapdir, $readonly, $origin, $dedup) = explode("\t", $line);
 	if (strpos($fname, '/') !== false) // dataset
 	{
+		if (empty($origin) || $origin != '-') continue;
 		list($pool, $name) = explode('/', $fname, 2);
 		$zfs['datasets']['dataset'][$name] = array(
 			'uuid' => uuid(),
@@ -76,6 +77,7 @@ foreach($rawdata as $line)
 			'canmount' => ($canmount == 'on') ? null : $canmount,
 			'quota' => ($quota == 'none') ? null : $quota,
 			'xattr' => ($xattr == 'on'),
+			'snapdir' => ($snapdir == 'visible'),
 			'readonly' => ($readonly == 'on'),
 			'dedup' => $dedup,
 		);
@@ -102,16 +104,17 @@ foreach($rawdata as $line)
 $rawdata = null;
 $spa = @exec("sysctl -q -n vfs.zfs.version.spa");
 if ($spa == '' || $spa < 21) {
-	mwexec2('zfs list -H -t volume -o name,volsize,compression', $rawdata);
+	mwexec2('zfs list -H -t volume -o name,volsize,compression,origin', $rawdata);
 } else {
-	mwexec2('zfs list -H -t volume -o name,volsize,compression,dedup', $rawdata);
+	mwexec2('zfs list -H -t volume -o name,volsize,compression,origin,dedup', $rawdata);
 }
 foreach($rawdata as $line)
 {
 	if ($line == 'no datasets available') { continue; }
-	list($fname, $volsize, $compress, $dedup) = explode("\t", $line);
+	list($fname, $volsize, $compress, $origin, $dedup) = explode("\t", $line);
 	if (strpos($fname, '/') !== false) // volume
 	{
+		if (empty($origin) || $origin != '-') continue;
 		list($pool, $name) = explode('/', $fname, 2);
 		$zfs['volumes']['volume'][$name] = array(
 			'uuid' => uuid(),
@@ -372,6 +375,7 @@ if (!$health)
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_snapshot.php"><span><?=gettext("Snapshots");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_config.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
@@ -441,17 +445,18 @@ if (!$health)
 				</table>
 				<br />
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
-					<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 9);?>
+					<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 10);?>
 					<tr>
 						<td width="1%" class="listhdrlr">&nbsp;</td>
 						<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Pool");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Compression");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Dedup");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Canmount");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Quota");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Extended attributes");?></td>
-						<td width="12%" class="listhdrr"><?=gettext("Readonly");?></td>
+						<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Compression");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Dedup");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Canmount");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Quota");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Extended attributes");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Readonly");?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Snapshot Visibility");?></td>
 					</tr>
 					<?php foreach ($zfs['datasets']['dataset'] as $dataset):?>
 					<tr>
@@ -464,6 +469,7 @@ if (!$health)
 						<td class="listr"><?= empty($dataset['quota']) ? 'none' : $dataset['quota']; ?></td>
 						<td class="listr"><?= empty($dataset['xattr']) ? 'off' : 'on'; ?></td>
 						<td class="listr"><?= empty($dataset['readonly']) ? 'off' : 'on'; ?></td>
+						<td class="listr"><?= empty($dataset['snapdir']) ? 'hidden' : 'visible'; ?></td>
 					</tr>
 					<?php endforeach; ?>
 				</table>

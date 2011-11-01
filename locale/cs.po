@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-03-28 18:50+0000\n"
 "Last-Translator: Vaclav Obrtlik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Přidat test vlastního stavu"
 
 msgid "Add share"
 msgstr "Přidat sdílení"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Přidat hostitele"
 
 msgid "Add target"
 msgstr "Přidat cíl"
@@ -726,6 +730,9 @@ msgstr "Klient vidí malá písmena, server vidí velká písmena"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Klient vidí velká písmena, server vidí malá písmena"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Sběr výchozích dat, prosím čekejte..."
 
@@ -847,6 +854,9 @@ msgstr "Předformátovaný file systém"
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Vytváření filesystému"
 
@@ -855,6 +865,10 @@ msgstr "Vytváření filesystému se 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Vytváření oddílu"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Vytvoř"
 
 msgid "Credits"
 msgstr "Zásluhy"
@@ -1014,6 +1028,10 @@ msgstr "Odstranit všechny testy vlastního stavu"
 msgid "Delete auth group"
 msgstr "Smazat autorižační skupinu"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Odstranit pravidlo"
+
 msgid "Delete command"
 msgstr "Odstranit příkaz"
 
@@ -1071,6 +1089,10 @@ msgstr "Odstranit test vlastního stavu"
 msgid "Delete share"
 msgstr "Odstranit sdílení"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Odstranit hostitele"
+
 msgid "Delete target"
 msgstr "Odstranit cíl"
 
@@ -1080,6 +1102,9 @@ msgstr "Odstranit uživatele"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Odstranit cestu"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Odstraňování"
@@ -1267,6 +1292,10 @@ msgstr "Opravdu chcete smazat tuto URL adresu?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Chcete smazat tuto autorizační skupinu ?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Skutečně chcete smazat toto pravidlo?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Opravdu chcete smazat tento příkaz?"
 
@@ -1326,6 +1355,10 @@ msgstr "Opravdu chcete smazat tento naplánovaný self-test?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Opravdu chcete odstranit toto sdílení?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Skutečně chcete smazat tohoto hostitele?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Opravdu chcete odstranit tento cíl?"
@@ -1519,6 +1552,10 @@ msgstr "Upravit self-test"
 
 msgid "Edit share"
 msgstr "Upravit sdílení"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Upravit hostitele"
 
 msgid "Edit target"
 msgstr "Upravit cíl"
@@ -2219,6 +2256,9 @@ msgstr "Pokud je tato volba zapnutá, uživatelé nesmějí vytvářet nebo měn
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Pokud kliknete na 'Ano', %s nastaví své výchozí hodnoty a systém se okamžitě restartuje. Celá konfigurace systému bude přepsána. IP adresa LAN se nastaví na %s a heslo na '%s'."
@@ -2910,7 +2950,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3044,6 +3084,9 @@ msgstr ""
 
 msgid "Options"
 msgstr "Možnosti"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Ostatní"
@@ -3858,6 +3901,15 @@ msgstr "Slovenština"
 msgid "Slovenian"
 msgstr "Slovinsky"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sokety"
 
@@ -4243,7 +4295,7 @@ msgstr "Zdá sa, že atribut „%s” není platným privátním klíčem."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Atribut „%s“ obsahuje neplatné znaky a není platným číslem portu."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Atribut „%s“ je neplatný."
 
@@ -5383,6 +5435,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Info a status rozsahu"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5545,9 +5604,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "měsíců"
-
-#~ msgid "Create"
-#~ msgstr "Vytvoř"
 
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
-"PO-Revision-Date: 2011-10-21 10:56+0900\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"PO-Revision-Date: 2011-10-31 10:31+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -305,6 +305,9 @@ msgstr "セルフテストの追加"
 
 msgid "Add share"
 msgstr "共有の追加"
+
+msgid "Add snapshot"
+msgstr "スナップショットの追加"
 
 msgid "Add target"
 msgstr "ターゲットの追加"
@@ -645,7 +648,7 @@ msgid "Can't format the OS origin disk!"
 msgstr "OS がインストールされているディスクはフォーマットする事が出来ません!"
 
 msgid "Can't get UFS ID."
-msgstr ""
+msgstr "UFS ID が取得できません。"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "システムパーティション 1 はマウント出来ません, データパーティションは 2 になります。"
@@ -724,6 +727,9 @@ msgstr "クライアントは小文字、サーバは大文字で表示。"
 
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "クライアントは大文字、サーバは小文字で表示。"
+
+msgid "Clone"
+msgstr "クローン"
 
 msgid "Collecting initial data, please wait..."
 msgstr "初期データを収集しています。お待ち下さい..."
@@ -845,6 +851,9 @@ msgstr "作成されたUFSファイルシステム:"
 msgid "Creates the pool with an alternate root."
 msgstr "プールと代替ルートを作成する。"
 
+msgid "Creates the recursive snapshot."
+msgstr "再帰的にスナップショットを作成する。"
+
 msgid "Creating filesystem"
 msgstr "ファイルシステムの作成"
 
@@ -853,6 +862,9 @@ msgstr "'ソフトアップデート' 有りのファイルシステムを作成
 
 msgid "Creating partition"
 msgstr "パーティションの作成"
+
+msgid "Creation"
+msgstr "作成"
 
 msgid "Credits"
 msgstr "クレジット"
@@ -1012,6 +1024,9 @@ msgstr "全てのセルフテストを削除"
 msgid "Delete auth group"
 msgstr "認証グループの削除"
 
+msgid "Delete clone"
+msgstr "クローンを削除"
+
 msgid "Delete command"
 msgstr "コマンドを削除"
 
@@ -1069,6 +1084,9 @@ msgstr "セルフテストの削除"
 msgid "Delete share"
 msgstr "共有を削除"
 
+msgid "Delete snapshot"
+msgstr "スナップショットの削除"
+
 msgid "Delete target"
 msgstr "ターゲットの削除"
 
@@ -1077,6 +1095,9 @@ msgstr "ユーザの削除"
 
 msgid "Delete volume"
 msgstr "ボリュームの削除"
+
+msgid "Deletes the recursive snapshot."
+msgstr "再帰的にスナップショットを削除する。"
 
 msgid "Deleting"
 msgstr "削除中"
@@ -1264,6 +1285,9 @@ msgstr "この URL を削除してもよろしいですか?"
 msgid "Do you really want to delete this auth group?"
 msgstr "この認証グループを削除してもよろしいですか?"
 
+msgid "Do you really want to delete this clone?"
+msgstr "このクローンを削除してもよろしいですか?"
+
 msgid "Do you really want to delete this command?"
 msgstr "このコマンドを削除してもよろしいですか?"
 
@@ -1323,6 +1347,9 @@ msgstr "このスケジュールされたセルフテストを削除してもよ
 
 msgid "Do you really want to delete this share?"
 msgstr "この共有を削除してもよろしいですか?"
+
+msgid "Do you really want to delete this snapshot?"
+msgstr "このスナップショットを削除してもよろしいですか?"
 
 msgid "Do you really want to delete this target?"
 msgstr "このターゲットを削除してもよろしいですか?"
@@ -1517,6 +1544,9 @@ msgstr "セルフテストを編集"
 
 msgid "Edit share"
 msgstr "共有を編集"
+
+msgid "Edit snapshot"
+msgstr "スナップショットを編集"
 
 msgid "Edit target"
 msgstr "ターゲットを編集"
@@ -2215,6 +2245,9 @@ msgstr "このパラメータが有効な場合、ユーザは共有領域への
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "このプロパティを無効にすると、ファイルシステムはマウントできなくなります。"
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "このプロパティを有効にすると、スナップショットが .zfs ディレクトリ内に表示されます。"
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "'Yes' をクリックすると %s は工場出荷設定にリセットされ、直ちにリブートされます。全てのシステム構成が上書きされます。LAN IP アドレスは %s にリセットされ、パスワードは '%s' に設定されます。"
@@ -2905,7 +2938,7 @@ msgstr "イニシエータグループがありません。まず最初に新し
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "ポータルグループがありません。まず最初に新しい <a href='%s'>ポータルグループ</a> を追加してください。"
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "プールがありません。まず最初に新しい <a href='%s'>プール</a> を追加してください。"
 
@@ -3038,6 +3071,9 @@ msgstr "オプションでターゲットのユーザフレンドリな文字列
 
 msgid "Options"
 msgstr "オプション"
+
+msgid "Origin"
+msgstr "オリジン"
 
 msgid "Others"
 msgstr "その他"
@@ -3852,6 +3888,15 @@ msgstr "スロバキア語"
 msgid "Slovenian"
 msgstr "スロベニア語"
 
+msgid "Snapshot"
+msgstr "スナップショット"
+
+msgid "Snapshot Visibility"
+msgstr "スナップショット可視"
+
+msgid "Snapshots"
+msgstr "スナップショット"
+
 msgid "Sockets"
 msgstr "ソケット"
 
@@ -4237,7 +4282,7 @@ msgstr "属性 '%s' は有効な秘密鍵ではありません。"
 msgid "The attribute '%s' is an invalid port number."
 msgstr "'%s' は無効なポート番号です。"
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "'%s' は無効です。"
 
@@ -5171,7 +5216,7 @@ msgstr "ユーザとグループ"
 
 #, c-format
 msgid "Using %s bytes fragment size."
-msgstr ""
+msgstr "%s バイトのフラグメントサイズを利用します。"
 
 msgid "VLAN"
 msgstr "VLAN"
@@ -5375,6 +5420,12 @@ msgstr "ZFS データセット情報と状態"
 msgid "ZFS dataset properties"
 msgstr "ZFS データセットプロパティ"
 
+msgid "ZFS snapshot information and status"
+msgstr "ZFS スナップショット情報と状態"
+
+msgid "ZFS snapshot properties"
+msgstr "ZFS スナップショットプロパティ"
+
 msgid "ZFS volume"
 msgstr "ZFS ボリューム"
 
@@ -5547,9 +5598,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "月"
-
-#~ msgid "Create"
-#~ msgstr "作成"
 
 #~ msgid "LAN"
 #~ msgstr "LAN"

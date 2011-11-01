@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-10-21 11:00+0000\n"
+"POT-Creation-Date: 2011-10-31 10:34+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -297,6 +297,9 @@ msgid "Add self-test"
 msgstr ""
 
 msgid "Add share"
+msgstr ""
+
+msgid "Add snapshot"
 msgstr ""
 
 msgid "Add target"
@@ -718,6 +721,9 @@ msgstr ""
 msgid "Client sees uppercase, server sees lowercase"
 msgstr ""
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr ""
 
@@ -838,6 +844,9 @@ msgstr ""
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr ""
 
@@ -845,6 +854,9 @@ msgid "Creating filesystem with 'Soft Updates'"
 msgstr ""
 
 msgid "Creating partition"
+msgstr ""
+
+msgid "Creation"
 msgstr ""
 
 msgid "Credits"
@@ -1005,6 +1017,9 @@ msgstr ""
 msgid "Delete auth group"
 msgstr ""
 
+msgid "Delete clone"
+msgstr ""
+
 msgid "Delete command"
 msgstr ""
 
@@ -1062,6 +1077,9 @@ msgstr ""
 msgid "Delete share"
 msgstr ""
 
+msgid "Delete snapshot"
+msgstr ""
+
 msgid "Delete target"
 msgstr ""
 
@@ -1069,6 +1087,9 @@ msgid "Delete user"
 msgstr ""
 
 msgid "Delete volume"
+msgstr ""
+
+msgid "Deletes the recursive snapshot."
 msgstr ""
 
 msgid "Deleting"
@@ -1257,6 +1278,9 @@ msgstr ""
 msgid "Do you really want to delete this auth group?"
 msgstr ""
 
+msgid "Do you really want to delete this clone?"
+msgstr ""
+
 msgid "Do you really want to delete this command?"
 msgstr ""
 
@@ -1315,6 +1339,9 @@ msgid "Do you really want to delete this scheduled self-test?"
 msgstr ""
 
 msgid "Do you really want to delete this share?"
+msgstr ""
+
+msgid "Do you really want to delete this snapshot?"
 msgstr ""
 
 msgid "Do you really want to delete this target?"
@@ -1507,6 +1534,9 @@ msgid "Edit self-test"
 msgstr ""
 
 msgid "Edit share"
+msgstr ""
+
+msgid "Edit snapshot"
 msgstr ""
 
 msgid "Edit target"
@@ -2206,6 +2236,9 @@ msgstr ""
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr ""
@@ -2896,7 +2929,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3028,6 +3061,9 @@ msgid "Optional user-friendly string of the target."
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Origin"
 msgstr ""
 
 msgid "Others"
@@ -3843,6 +3879,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr ""
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -4228,7 +4273,7 @@ msgstr ""
 msgid "The attribute '%s' is an invalid port number."
 msgstr ""
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr ""
 
@@ -5362,6 +5407,12 @@ msgid "ZFS dataset information and status"
 msgstr ""
 
 msgid "ZFS dataset properties"
+msgstr ""
+
+msgid "ZFS snapshot information and status"
+msgstr ""
+
+msgid "ZFS snapshot properties"
 msgstr ""
 
 msgid "ZFS volume"

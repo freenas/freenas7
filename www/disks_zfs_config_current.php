@@ -123,6 +123,7 @@ if (updatenotify_exists('zfs_import_config'))
 			<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 			<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
 			<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
+			<li class="tabinact"><a href="disks_zfs_snapshot.php"><span><?=gettext("Snapshots");?></span></a></li>
 			<li class="tabact"><a href="disks_zfs_config.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Configuration");?></span></a></li>
 		</ul>
 		</td>
@@ -184,16 +185,17 @@ if (updatenotify_exists('zfs_import_config'))
 			</table>
 			<br />
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 8);?>
+				<?php html_titleline(gettext('Datasets').' ('.count($zfs['datasets']['dataset']).')', 9);?>
 				<tr>
 					<td width="16%" class="listhdrlr"><?=gettext("Name");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Pool");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Compression");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Dedup");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Canmount");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Quota");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Extended attributes");?></td>
-					<td width="12%" class="listhdrr"><?=gettext("Readonly");?></td>
+					<td width="14%" class="listhdrr"><?=gettext("Pool");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Compression");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Dedup");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Canmount");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Quota");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Extended attributes");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Readonly");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Snapshot Visibility");?></td>
 				</tr>
 				<?php foreach ($zfs['datasets']['dataset'] as $dataset):?>
 				<tr>
@@ -205,6 +207,7 @@ if (updatenotify_exists('zfs_import_config'))
 					<td class="listr"><?= empty($dataset['quota']) ? 'none' : $dataset['quota']; ?></td>
 					<td class="listr"><?= isset($dataset['xattr']) ? 'on' : 'off'; ?></td>
 					<td class="listr"><?= isset($dataset['readonly']) ? 'on' : 'off'; ?></td>
+					<td class="listr"><?= isset($dataset['snapdir']) ? 'visible' : 'hidden'; ?></td>
 				</tr>
 				<?php endforeach;?>
 			</table>

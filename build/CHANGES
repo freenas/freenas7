@@ -12,6 +12,7 @@ Majors changes:
 - Change the mount device of UFS into UFS ID.
 - Modify tuning values and enable it by default.
 - Add ZFS volume setting pages.
+- Add ZFS snapshot/clone setting pages.
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.
@@ -29,6 +30,7 @@ Bug fixes:
 - Fix WOL breaks lagg setting. 
 - Add a partition vdev to disk list when ZFS sync.
 - Fix DHCP client hosts.
+- Add a patch of iTunes 10.5 connection issue.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

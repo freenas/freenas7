@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2010-06-29 03:57+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr ""
 
 msgid "Add share"
 msgstr ""
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Добавяне на хост"
 
 msgid "Add target"
 msgstr "Добави цел"
@@ -726,6 +730,9 @@ msgstr ""
 msgid "Client sees uppercase, server sees lowercase"
 msgstr ""
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
@@ -847,6 +854,9 @@ msgstr "Създаване на файлова система"
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Създаване на файлова система"
 
@@ -855,6 +865,10 @@ msgstr "Creating filesystem with 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr ""
+
+#, fuzzy
+msgid "Creation"
+msgstr "Създай"
 
 msgid "Credits"
 msgstr ""
@@ -1014,6 +1028,10 @@ msgstr ""
 msgid "Delete auth group"
 msgstr ""
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "изтрий командата"
+
 msgid "Delete command"
 msgstr "изтрий командата"
 
@@ -1071,6 +1089,10 @@ msgstr ""
 msgid "Delete share"
 msgstr ""
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Delete Host"
+
 msgid "Delete target"
 msgstr "Изтрий целта"
 
@@ -1080,6 +1102,9 @@ msgstr "изтрий потребителя"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Изтрий пътя"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr ""
@@ -1267,6 +1292,10 @@ msgstr ""
 msgid "Do you really want to delete this auth group?"
 msgstr ""
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Do you really want to delete this command?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Do you really want to delete this command?"
 
@@ -1326,6 +1355,10 @@ msgstr ""
 
 msgid "Do you really want to delete this share?"
 msgstr ""
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Do you really want to delete this host?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Do you really want to delete this target?"
@@ -1519,6 +1552,10 @@ msgstr ""
 
 msgid "Edit share"
 msgstr "промени споделените папки"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Редактиране на хост"
 
 msgid "Edit target"
 msgstr ""
@@ -2219,6 +2256,9 @@ msgstr ""
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
@@ -2909,7 +2949,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3042,6 +3082,9 @@ msgid "Optional user-friendly string of the target."
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Origin"
 msgstr ""
 
 msgid "Others"
@@ -3857,6 +3900,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr ""
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -4242,7 +4294,7 @@ msgstr ""
 msgid "The attribute '%s' is an invalid port number."
 msgstr ""
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr ""
 
@@ -5381,6 +5433,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Информация и статус на RAID"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5549,9 +5608,6 @@ msgstr ""
 
 #~ msgid "week days"
 #~ msgstr "ден от седмицата"
-
-#~ msgid "Create"
-#~ msgstr "Създай"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "A valid network bit count must be specified."

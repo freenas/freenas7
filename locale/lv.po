@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-04-09 20:58+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Pievienot paš-testu"
 
 msgid "Add share"
 msgstr "Pievienot kopīgojumu"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Pievienot datu kopu"
 
 msgid "Add target"
 msgstr "Pievienot mērķi"
@@ -726,6 +730,9 @@ msgstr "Klients redz mazos, serveris redz lielos"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Klients redz lielos, serveris redz mazos"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Savāc sākotnējos datus, lūdzu uzgaidiet..."
 
@@ -849,6 +856,9 @@ msgstr "Iepriekš formatēta datņu sistēma"
 msgid "Creates the pool with an alternate root."
 msgstr "Veido pūlu ar alternatīvu sakni"
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Veido datņu sistēmu"
 
@@ -857,6 +867,10 @@ msgstr "Veido datņu sistēmu ar 'klusajiem jauninājumiem'"
 
 msgid "Creating partition"
 msgstr "Veido partīciju"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Virziens"
 
 msgid "Credits"
 msgstr "Veidotāji"
@@ -1016,6 +1030,10 @@ msgstr "Dzēst visus paš-testus"
 msgid "Delete auth group"
 msgstr "Dzēst autorizācijas grupu"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Dzēst noteikumus"
+
 msgid "Delete command"
 msgstr "Dzēst komandu"
 
@@ -1073,6 +1091,10 @@ msgstr "Dzēst paš-testu"
 msgid "Delete share"
 msgstr "Dzēst kopīgojumu"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Dzēst saimniekdatoru"
+
 msgid "Delete target"
 msgstr "Dzēst mērķi"
 
@@ -1082,6 +1104,9 @@ msgstr "Dzēst lietotāju"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Dzēst Ceļu"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Dzēšana"
@@ -1269,6 +1294,10 @@ msgstr "Vai Tu patiešām vēlies dzēst šo URL?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Vai Tu patiešām vēlies dzēst šo autorizācijas grupu?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Vai Tu patiešām vēlies dzēst šo noteikumu?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Vai Tu patiešām vēlies dzēst šo komandu?"
 
@@ -1328,6 +1357,10 @@ msgstr "Vai Tu patiešām vēlies dzēst šo ieplānoto paš-testu?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Vai Tu patiešām vēlies dzēst šo kopīgojumu?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Vai Tu patiešām vēlies dzēst šo saimniekdatoru?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Vai Tu patiešām vēlies dzēst šo mērķi?"
@@ -1522,6 +1555,10 @@ msgstr "Labot paš-pārbaudi"
 
 msgid "Edit share"
 msgstr "Labot kopīgojumu"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Labot datu sējumu"
 
 msgid "Edit target"
 msgstr "Labot mērķi"
@@ -2222,6 +2259,10 @@ msgstr "Ja šis parametrs ir uzstādīts, tad lietotāji var nebūt spējīgi ve
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Ja šī butaforija ir atspējota, datņu sistēma nevar tikt piemontēta."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Ja šī butaforija ir atspējota, datņu sistēma nevar tikt piemontēta."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Ja tu spiedīsi 'Jā', %s tiks atjaunots uz rūpnīcas noklusējumiem un automātiski pārstartēsies. Visa sistēmas konfigurācija tiks pārrakstīta. LAN IP adrese tiks atjaunota uz %s un parole tiks uzstādīta kā '%s'."
@@ -2913,7 +2954,7 @@ msgstr "Nav konfigurēta Iniciatoru Grupa. Lūdzu pievieno jaunu <a href='%s'>In
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Nav konfigurēta Portāla Grupa. Lūdzu pievieno jaunu <a href='%s'>Portāla Grupu</a> vispirms."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Nav konfigurēts neviens pūls. Lūdzu pievieno jaunus <a href='%s'>pūlus</a> vispirms."
 
@@ -3047,6 +3088,9 @@ msgstr "Neobligāta lietotājam-draudzīga rinda ar mērķi."
 
 msgid "Options"
 msgstr "Iespējas"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Citi"
@@ -3862,6 +3906,15 @@ msgstr "Slovāku"
 msgid "Slovenian"
 msgstr "Slovēņu"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Ligzdas"
 
@@ -4247,7 +4300,7 @@ msgstr "Atribūts '%s' neizskatās pēc derīgas privātās atslēgas."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Atribūts '%s' ir nederīgs porta numurs."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Atribūts '%s' ir nederīgs."
 
@@ -5386,6 +5439,14 @@ msgid "ZFS dataset information and status"
 msgstr "ZFS datu kopas informācija un stāvoklis"
 
 msgid "ZFS dataset properties"
+msgstr "ZFS datu kopas īpašības"
+
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "ZFS datu kopas informācija un stāvoklis"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
 msgstr "ZFS datu kopas īpašības"
 
 msgid "ZFS volume"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-04-10 13:41+0000\n"
 "Last-Translator: yezhiqiu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -306,6 +306,10 @@ msgstr "添加自我检测"
 
 msgid "Add share"
 msgstr "添加共享"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "新增数据集"
 
 msgid "Add target"
 msgstr "添加目标"
@@ -727,6 +731,9 @@ msgstr "客户端显示小写，服务器端显示大写。"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "客户端显示大写，服务器端显示小写"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
@@ -848,6 +855,9 @@ msgstr "已格式化的文件系统"
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "建立文件系统"
 
@@ -856,6 +866,10 @@ msgstr "建立'Soft Updates'的文件系统"
 
 msgid "Creating partition"
 msgstr "创建分区"
+
+#, fuzzy
+msgid "Creation"
+msgstr "建立"
 
 msgid "Credits"
 msgstr "致谢"
@@ -1015,6 +1029,10 @@ msgstr "删除所有的自我测试"
 msgid "Delete auth group"
 msgstr ""
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "删除规则"
+
 msgid "Delete command"
 msgstr "删除指令"
 
@@ -1072,6 +1090,10 @@ msgstr "删除自我检测"
 msgid "Delete share"
 msgstr "删除共享区"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "删除主机资讯"
+
 msgid "Delete target"
 msgstr "删除目标"
 
@@ -1081,6 +1103,9 @@ msgstr "删除用户"
 #, fuzzy
 msgid "Delete volume"
 msgstr "删除路由"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "删除"
@@ -1268,6 +1293,10 @@ msgstr "确定要删除这个 URL 吗？"
 msgid "Do you really want to delete this auth group?"
 msgstr ""
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "是否要删除此规则？"
+
 msgid "Do you really want to delete this command?"
 msgstr "确认要删除指令吗？"
 
@@ -1327,6 +1356,10 @@ msgstr "确定要删除这项自我检测流程吗？"
 
 msgid "Do you really want to delete this share?"
 msgstr "确定要删除这个共享区？"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "确定要删除此主机信息吗？"
 
 msgid "Do you really want to delete this target?"
 msgstr "确定要删除这个iSCSI目标吗？"
@@ -1520,6 +1553,10 @@ msgstr "编辑自我检测流程"
 
 msgid "Edit share"
 msgstr "编辑"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "编辑数据集"
 
 msgid "Edit target"
 msgstr "编辑目标"
@@ -2220,6 +2257,9 @@ msgstr "如勾选此项，用户将无法在共享区中新增与修改文件。
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "当你点选了'是'， %s 将会重设回原厂默认值并立刻重启。全部系统的设置将会被覆写，IP位置也将重设为 %s 。 而密码将设置为 '%s' 。"
@@ -2911,7 +2951,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3044,6 +3084,9 @@ msgid "Optional user-friendly string of the target."
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Origin"
 msgstr ""
 
 msgid "Others"
@@ -3859,6 +3902,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr ""
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -4244,7 +4296,7 @@ msgstr "这个验证 '%s' 似乎是无效的。"
 msgid "The attribute '%s' is an invalid port number."
 msgstr "属性 '%s' 是无效的端口号。"
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "属性 '%s' 是无效的。"
 
@@ -5384,6 +5436,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "软RAID信息与状态"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5552,9 +5611,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "月"
-
-#~ msgid "Create"
-#~ msgstr "建立"
 
 #~ msgid "RSYNCD"
 #~ msgstr "RSYNCD"

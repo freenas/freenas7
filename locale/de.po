@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-06-12 15:03+0100\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Selbsttest hinzufügen"
 
 msgid "Add share"
 msgstr "Eine Freigabe hinzufügen"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Datensatz hinzufügen"
 
 msgid "Add target"
 msgstr "Füge target hinzu"
@@ -726,6 +730,9 @@ msgstr "Client sieht Kleinbuchstaben, der Server Großbuchstaben"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Client sieht Großbuchstaben, der Server Kleinbuchstaben"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Ermittle Daten, bitte warten..."
 
@@ -849,6 +856,9 @@ msgstr "Vorformatiertes Dateisystem"
 msgid "Creates the pool with an alternate root."
 msgstr "Erstellt den Pool mit alternativem Root-Verzeichis."
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Erstelle Dateisystem"
 
@@ -857,6 +867,10 @@ msgstr "Erstelle Dateisystem samt 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Erzeuge Partition"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Erstellen"
 
 msgid "Credits"
 msgstr "Mitwirkende"
@@ -1016,6 +1030,10 @@ msgstr "Alle Selbsttests löschen"
 msgid "Delete auth group"
 msgstr "Authetifikationsgruppe löschen"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Regel löschen"
+
 msgid "Delete command"
 msgstr "Lösche Befehl"
 
@@ -1073,6 +1091,10 @@ msgstr "Selbsttest löschen"
 msgid "Delete share"
 msgstr "Freigabe löschen"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Lösche Host"
+
 msgid "Delete target"
 msgstr "Lösche Target"
 
@@ -1082,6 +1104,9 @@ msgstr "Lösche Benutzer"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Lösche Route"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Lösche"
@@ -1269,6 +1294,10 @@ msgstr "Möchten Sie diese URL wirklich löschen?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Möchten sie diese Authentifikationsgruppe wirklich löschen?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Wollen sie diese Regel wirklich löschen?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Wollen Sie wirklich diesen Befehl löschen?"
 
@@ -1328,6 +1357,10 @@ msgstr "Wollen Sie wirklich diesen planmäßigen Selbsttest löschen?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Soll diese Freigabe wirklich gelöscht werden?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Wollen Sie diesen Host wirklich löschen?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Wollen Sie wirklich dieses iSCSI-target löschen?"
@@ -1522,6 +1555,10 @@ msgstr "Selbsttest bearbeiten"
 
 msgid "Edit share"
 msgstr "Bearbeite Freigabe"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Bearbeite Datensatz"
 
 msgid "Edit target"
 msgstr "Target bearbeiten"
@@ -2221,6 +2258,10 @@ msgstr "Ist dieser Parameter aktiviert, dann können Benutzer dieser Freigabe ke
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Wenn diese Eigenschaft deaktiviert ist, kann das Dateisystem nicht eingehängt werden."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Wenn diese Eigenschaft deaktiviert ist, kann das Dateisystem nicht eingehängt werden."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Beim Auswählen von 'Ja' wird %s auf die Standardeinstellungen zurückgesetzt und sofort einen Reboot ausführen. Die komplette Systemkonfiguraton wird überschrieben. Die Netzwerk-IP-Adresse wird auf %s, das Passwort auf '%s' gesetzt."
@@ -2912,7 +2953,7 @@ msgstr "Keine konfigurierte Initiatorgruppe gefunden. Bitte füge eine neue <a h
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Keine konfigurierte Portalgruppe gefunden. Bitte füge eine neue <a href='%s'>Portalgruppe</a> zuerst hinzu."
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Kein konfigurierter Pools gefunden. Bitte füge einen neuen <a href='%s'>Pools</a> zuerst hinzu."
 
@@ -3046,6 +3087,9 @@ msgstr "Optionaler benutzerfreundlicher String für das Ziel."
 
 msgid "Options"
 msgstr "Optionen"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Sonstige"
@@ -3861,6 +3905,15 @@ msgstr "Slowakisch"
 msgid "Slovenian"
 msgstr "Slowenisch"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -4246,7 +4299,7 @@ msgstr "Das Attribut '%s' ist anscheinend kein gültiger privater Schlüssel."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Der Wert '%s' ist eine ungültige Portnummer"
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Das Attribut '%s' ist ungültig."
 
@@ -5387,6 +5440,14 @@ msgstr "ZFS Datensatzinformationen und Status"
 msgid "ZFS dataset properties"
 msgstr "ZFS Datensatzeigenschaften"
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "ZFS Datensatzinformationen und Status"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
+msgstr "ZFS Datensatzeigenschaften"
+
 msgid "ZFS volume"
 msgstr "ZFS Volume"
 
@@ -5586,9 +5647,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "Monate"
-
-#~ msgid "Create"
-#~ msgstr "Erstellen"
 
 #~ msgid "LAN"
 #~ msgstr "Netzwerk"

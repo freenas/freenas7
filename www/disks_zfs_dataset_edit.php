@@ -69,6 +69,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_dataset, "uuid
 	$pconfig['canmount'] = isset($a_dataset[$cnid]['canmount']);
 	$pconfig['readonly'] = isset($a_dataset[$cnid]['readonly']);
 	$pconfig['xattr'] = isset($a_dataset[$cnid]['xattr']);
+	$pconfig['snapdir'] = isset($a_dataset[$cnid]['snapdir']);
 	$pconfig['quota'] = $a_dataset[$cnid]['quota'];
 	$pconfig['desc'] = $a_dataset[$cnid]['desc'];
 } else {
@@ -80,6 +81,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_dataset, "uuid
 	$pconfig['canmount'] = true;
 	$pconfig['readonly'] = false;
 	$pconfig['xattr'] = true;
+	$pconfig['snapdir'] = false;
 	$pconfig['quota'] = "";
 	$pconfig['desc'] = "";
 }
@@ -114,6 +116,7 @@ if ($_POST) {
 		$dataset['canmount'] = $_POST['canmount'] ? true : false;
 		$dataset['readonly'] = $_POST['readonly'] ? true : false;
 		$dataset['xattr'] = $_POST['xattr'] ? true : false;
+		$dataset['snapdir'] = $_POST['snapdir'] ? true : false;
 		$dataset['quota'] = $_POST['quota'];
 		$dataset['desc'] = $_POST['desc'];
 
@@ -149,6 +152,7 @@ function enable_change(enable_change) {
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pools");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Datasets");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_volume.php"><span><?=gettext("Volumes");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_snapshot.php"><span><?=gettext("Snapshots");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_config.php"><span><?=gettext("Configuration");?></span></a></li>
 			</ul>
 		</td>
@@ -178,6 +182,7 @@ function enable_change(enable_change) {
 					<?php html_checkbox("canmount", gettext("Canmount"), $pconfig['canmount'] ? true : false, gettext("If this property is disabled, the file system cannot be mounted."), "", false);?>
 					<?php html_checkbox("readonly", gettext("Readonly"), $pconfig['readonly'] ? true : false, gettext("Controls whether this dataset can be modified."), "", false);?>
 					<?php html_checkbox("xattr", gettext("Extended attributes"), $pconfig['xattr'] ? true : false, gettext("Enable extended attributes for this file system."), "", false);?>
+					<?php html_checkbox("snapdir", gettext("Snapshot Visibility"), $pconfig['snapdir'] ? true : false, gettext("If this property is enabled, the snapshots are displayed into .zfs directory."), "", false);?>
 					<?php html_inputbox("quota", gettext("Quota"), $pconfig['quota'], gettext("Limits the amount of space a dataset and its descendants can consume. This property enforces a hard limit on the amount of space used. This includes all space consumed by descendants, including file systems and snapshots. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."), false, 10);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 				</table>

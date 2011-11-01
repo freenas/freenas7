@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2010-07-18 17:46+0000\n"
 "Last-Translator: Yu - Sian , Liu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -306,6 +306,10 @@ msgstr "新增自我檢測"
 
 msgid "Add share"
 msgstr "新增分享"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "增加資料設定"
 
 msgid "Add target"
 msgstr "新增目標"
@@ -727,6 +731,9 @@ msgstr "客戶端顯示小寫，伺服端顯示大寫。"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "客戶端顯示大寫，伺服端顯示小寫"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
@@ -848,6 +855,9 @@ msgstr "已格式化之檔案系統"
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "建立檔案系統"
 
@@ -856,6 +866,10 @@ msgstr "建立'Soft Updates'的檔案系統"
 
 msgid "Creating partition"
 msgstr "建立磁碟分區中"
+
+#, fuzzy
+msgid "Creation"
+msgstr "建立"
 
 msgid "Credits"
 msgstr "鳴謝"
@@ -1015,6 +1029,10 @@ msgstr "刪除所有自我測試"
 msgid "Delete auth group"
 msgstr "刪除 auth 群組"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "刪除規則"
+
 msgid "Delete command"
 msgstr "刪除指令"
 
@@ -1072,6 +1090,10 @@ msgstr "刪除自我檢測"
 msgid "Delete share"
 msgstr "刪除分享區"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "刪除主機資訊"
+
 msgid "Delete target"
 msgstr "刪除目標"
 
@@ -1081,6 +1103,9 @@ msgstr "刪除使用者"
 #, fuzzy
 msgid "Delete volume"
 msgstr "刪除路由"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "正在刪除"
@@ -1268,6 +1293,10 @@ msgstr "您確定要刪除這個 URL 嗎？"
 msgid "Do you really want to delete this auth group?"
 msgstr "您確定要刪除這個 auth 群組嗎？"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "您確定要刪除這個規則嗎？"
+
 msgid "Do you really want to delete this command?"
 msgstr "您確認要刪除這個指令嗎？"
 
@@ -1327,6 +1356,10 @@ msgstr "您確定要刪除這項自我檢測流程嗎？"
 
 msgid "Do you really want to delete this share?"
 msgstr "您確定要刪除這個分享區？"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "您確定要刪除這個主機資訊嗎？"
 
 msgid "Do you really want to delete this target?"
 msgstr "您確定要刪除這個iSCSI目標嗎？"
@@ -1520,6 +1553,10 @@ msgstr "編輯自我檢測流程"
 
 msgid "Edit share"
 msgstr "編輯"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "編輯資料設定"
 
 msgid "Edit target"
 msgstr "編輯目標"
@@ -2220,6 +2257,9 @@ msgstr "如勾選此項，使用者將無法在分享區中新增與修改檔案
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "當你點選了'是'， %s 將會重設回原廠預設值並立刻重新開機。全部系統的設定值將會被覆寫，IP位置也將重設為 %s 。 而密碼將設定為 '%s' 。"
@@ -2911,7 +2951,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3045,6 +3085,9 @@ msgstr ""
 
 msgid "Options"
 msgstr "選項"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "其他"
@@ -3859,6 +3902,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr "斯洛維尼亞語"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -4244,7 +4296,7 @@ msgstr "這個驗證 '%s' 似乎是無效的。"
 msgid "The attribute '%s' is an invalid port number."
 msgstr "屬性 '%s' 是無效的連接阜號。"
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "屬性 '%s' 是無效的。"
 
@@ -5384,6 +5436,14 @@ msgstr "ZFS 資料設定資訊及狀態"
 msgid "ZFS dataset properties"
 msgstr "ZFS dataset properties"
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "ZFS 資料設定資訊及狀態"
+
+#, fuzzy
+msgid "ZFS snapshot properties"
+msgstr "ZFS dataset properties"
+
 msgid "ZFS volume"
 msgstr "ZFS 標籤"
 
@@ -5559,9 +5619,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "月"
-
-#~ msgid "Create"
-#~ msgstr "建立"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "請輸入一個有效的network bit count。"

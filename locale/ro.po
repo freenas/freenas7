@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2010-12-01 17:01+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -305,6 +305,10 @@ msgstr "Adaugare auto-test"
 
 msgid "Add share"
 msgstr "Adaugare partajare"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Adăuga dataset"
 
 msgid "Add target"
 msgstr "Adaugare destinatie"
@@ -726,6 +730,9 @@ msgstr "Clientul vede litere minuscule, serverele le vad majuscule."
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Clientul le vede majuscule, serverele le vad minuscule."
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Colectare initiala date, va rugam asteptati..."
 
@@ -848,6 +855,9 @@ msgstr "Creare Sistem fisiere"
 msgid "Creates the pool with an alternate root."
 msgstr "Creare pool cu un alt root"
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Creare Sistem fisiere"
 
@@ -856,6 +866,10 @@ msgstr "Creare sistem fisiere cu 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Creatie partitie"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Creare"
 
 msgid "Credits"
 msgstr "Credite"
@@ -1015,6 +1029,10 @@ msgstr "Sterge auto-testele"
 msgid "Delete auth group"
 msgstr ""
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Şterge regulă"
+
 msgid "Delete command"
 msgstr "Stergere comanda"
 
@@ -1072,6 +1090,10 @@ msgstr "Ştergere auto+test"
 msgid "Delete share"
 msgstr "Stergere partajare"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Stergere sistem"
+
 msgid "Delete target"
 msgstr "Stergere destinatie"
 
@@ -1081,6 +1103,9 @@ msgstr "Stergere utilizator"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Stergere Ruta"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Ştergere"
@@ -1268,6 +1293,10 @@ msgstr "Stergeti acest URL?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Sigur doriţi să ştergeţi acest Auth Group?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Sigur doriţi să ştergeţi această regulă?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Stergeti aceasta comanda?"
 
@@ -1327,6 +1356,10 @@ msgstr ""
 
 msgid "Do you really want to delete this share?"
 msgstr "Stergeti aceasta partajare?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Stergeti acest sistem din lista?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Doriti sa stergeti aceasta destinatie?"
@@ -1520,6 +1553,10 @@ msgstr ""
 
 msgid "Edit share"
 msgstr "Editare partajare"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Editează dataset"
 
 msgid "Edit target"
 msgstr "Editare destinatie"
@@ -2220,6 +2257,9 @@ msgstr ""
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr ""
 
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr ""
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Daca veti alege optiunea 'Da', %s va fi resetat la valorile implicite si va reporni imediat. Intreaga configuratie va fi rescrisa, adresa IP implicita a sistemului va fi setata la %s iar parola va fi modificata in '%s'."
@@ -2910,7 +2950,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3044,6 +3084,9 @@ msgstr ""
 
 msgid "Options"
 msgstr "Opţiuni"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Altele"
@@ -3858,6 +3901,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr "Sârbă"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -4243,7 +4295,7 @@ msgstr ""
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Atributul '%s' pentru portul de retea este invalid."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Atributul '%s' este invalid."
 
@@ -5382,6 +5434,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Informatii despre volumul RAID Software"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5556,9 +5615,6 @@ msgstr "upriv"
 
 #~ msgid "months"
 #~ msgstr "luni"
-
-#~ msgid "Create"
-#~ msgstr "Creare"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Trebuie sa introduceti un bit masca retea valid."

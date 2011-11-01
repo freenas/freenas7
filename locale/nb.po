@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 10:45+0000\n"
+"POT-Creation-Date: 2011-10-31 10:27+0000\n"
 "PO-Revision-Date: 2011-03-24 21:14+0000\n"
 "Last-Translator: Jim Leirvik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -307,6 +307,10 @@ msgstr "Legg til selv-test"
 
 msgid "Add share"
 msgstr "Legg til deling"
+
+#, fuzzy
+msgid "Add snapshot"
+msgstr "Legg til datasett"
 
 msgid "Add target"
 msgstr "Legg til mål"
@@ -728,6 +732,9 @@ msgstr "Klient ser små bokstaver, tjener ser store bokstaver"
 msgid "Client sees uppercase, server sees lowercase"
 msgstr "Klient ser store bokstaver, tjener ser små bokstaver"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Samler inn data, vennligst vent..."
 
@@ -851,6 +858,9 @@ msgstr "Preformatert filsystem"
 msgid "Creates the pool with an alternate root."
 msgstr ""
 
+msgid "Creates the recursive snapshot."
+msgstr ""
+
 msgid "Creating filesystem"
 msgstr "Lager filsystem"
 
@@ -859,6 +869,10 @@ msgstr "Lager filsystem med 'Soft Updates'"
 
 msgid "Creating partition"
 msgstr "Lager partisjon"
+
+#, fuzzy
+msgid "Creation"
+msgstr "Lag"
 
 msgid "Credits"
 msgstr "Bidragsytere"
@@ -1018,6 +1032,10 @@ msgstr "Slett alle selv-tester"
 msgid "Delete auth group"
 msgstr "Slett auth gruppe"
 
+#, fuzzy
+msgid "Delete clone"
+msgstr "Slett regel"
+
 msgid "Delete command"
 msgstr "Slett kommando"
 
@@ -1075,6 +1093,10 @@ msgstr "Slett selv-test"
 msgid "Delete share"
 msgstr "Slett deling"
 
+#, fuzzy
+msgid "Delete snapshot"
+msgstr "Slett vert"
+
 msgid "Delete target"
 msgstr "Slett mål"
 
@@ -1084,6 +1106,9 @@ msgstr "Slett bruker"
 #, fuzzy
 msgid "Delete volume"
 msgstr "Slett rute"
+
+msgid "Deletes the recursive snapshot."
+msgstr ""
 
 msgid "Deleting"
 msgstr "Sletter"
@@ -1271,6 +1296,10 @@ msgstr "Vil du virkelig slette denne URL-en?"
 msgid "Do you really want to delete this auth group?"
 msgstr "Vil du virkelig slette den auth gruppen?"
 
+#, fuzzy
+msgid "Do you really want to delete this clone?"
+msgstr "Vil du virkelig slette denne regelen?"
+
 msgid "Do you really want to delete this command?"
 msgstr "Vil du virkelig slette denne kommandoen?"
 
@@ -1330,6 +1359,10 @@ msgstr "Vil du virkelig slette denne planlagte selv-testen?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Vil du virkelig slette denne delingen?"
+
+#, fuzzy
+msgid "Do you really want to delete this snapshot?"
+msgstr "Vil du virkelig slette denne verten?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Vil du virkelig slette dette målet?"
@@ -1524,6 +1557,10 @@ msgstr "Endre selv-test"
 
 msgid "Edit share"
 msgstr "Endre deling"
+
+#, fuzzy
+msgid "Edit snapshot"
+msgstr "Endre datasett"
 
 msgid "Edit target"
 msgstr "Endre mål"
@@ -2224,6 +2261,10 @@ msgstr "Hvis denne er slått på kan brukere ikke lage eller endre filer i delin
 msgid "If this property is disabled, the file system cannot be mounted."
 msgstr "Hvis denne er slått av, kan filsystemet ikke monteres."
 
+#, fuzzy
+msgid "If this property is enabled, the snapshots are displayed into .zfs directory."
+msgstr "Hvis denne er slått av, kan filsystemet ikke monteres."
+
 #, php-format
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Hvis du trykker 'Ja', vil %s bli resatt til fabrikk instillinger og vil starte på nytt umiddelbart. Hele systemkonfigurasjonen vil bli skrever over. LAN IP-adressen vil bli resatt til %s og passordet vil bli satt til '%s'."
@@ -2915,7 +2956,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -3049,6 +3090,9 @@ msgstr "Valgfri brukervennlig målstreng."
 
 msgid "Options"
 msgstr "Alternativer"
+
+msgid "Origin"
+msgstr ""
 
 msgid "Others"
 msgstr "Andre"
@@ -3864,6 +3908,15 @@ msgstr ""
 msgid "Slovenian"
 msgstr "Slovensk"
 
+msgid "Snapshot"
+msgstr ""
+
+msgid "Snapshot Visibility"
+msgstr ""
+
+msgid "Snapshots"
+msgstr ""
+
 msgid "Sockets"
 msgstr "Kontakter"
 
@@ -4249,7 +4302,7 @@ msgstr "Attributten '%s' ser ikke ut til å være en gyldig privat nøkkel."
 msgid "The attribute '%s' is an invalid port number."
 msgstr "Attributten '%s' er et invalid port nummer."
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' is invalid."
 msgstr "Attributtten '%s' er invalid"
 
@@ -5390,6 +5443,13 @@ msgstr ""
 msgid "ZFS dataset properties"
 msgstr ""
 
+#, fuzzy
+msgid "ZFS snapshot information and status"
+msgstr "Programvare RAID informasjon og status"
+
+msgid "ZFS snapshot properties"
+msgstr ""
+
 msgid "ZFS volume"
 msgstr ""
 
@@ -5564,9 +5624,6 @@ msgstr "upriv"
 
 #~ msgid "week days"
 #~ msgstr "ukedager"
-
-#~ msgid "Create"
-#~ msgstr "Lag"
 
 #~ msgid "A valid network bit count must be specified."
 #~ msgstr "Et valid nettverks bit antall må spesifiseres."
