@@ -13,8 +13,8 @@ geom/geom_virstor/geom_virstor.ko
 # Interfaces
 if_tap/if_tap.ko
 if_tun/if_tun.ko
-#if_bridge/if_bridge.ko
-#bridgestp/bridgestp.ko
+if_bridge/if_bridge.ko
+bridgestp/bridgestp.ko
 
 # File systems
 ext2fs/ext2fs.ko
@@ -37,7 +37,7 @@ libmchain/libmchain.ko
 # Netgraph (required by bsnmpd)
 netgraph/netgraph/netgraph.ko
 netgraph/socket/ng_socket.ko
-#netgraph/ether/ng_ether.ko
+netgraph/ether/ng_ether.ko
 
 # Misc.
 iscsi/initiator/iscsi_initiator.ko
@@ -59,6 +59,9 @@ ipwfw/ipw_monitor/ipw_monitor.ko
 #crypto/crypto.ko
 #cryptodev/cryptodev.ko
 #zlib/zlib.ko
+aesni/aesni.ko
+glxsb/glxsb.ko
 hifn/hifn.ko
 safe/safe.ko
+padlock/padlock.ko
 ubsec/ubsec.ko

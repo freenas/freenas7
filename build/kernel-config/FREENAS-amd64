@@ -16,6 +16,19 @@ options		VM_KMEM_SIZE_SCALE=2
 device		lagg			# Link aggregation interface.
 device		vlan			# 802.1Q VLAN support
 
+# 10GbE adapters
+device		cxgb		# Chelsio T3 10 Gigabit Ethernet
+device		cxgb_t3fw	# Chelsio T3 10 Gigabit Ethernet firmware
+device		cxgbe		# Chelsio T4 10GbE PCIe adapter
+device		ixgb		# Intel Pro/10Gbe PCI-X Ethernet
+device		mxge		# Myricom Myri-10G 10GbE NIC
+device		nxge		# Neterion Xframe 10GbE Server/Storage Adapter
+device		vxge		# Exar/Neterion XFrame 3100 10GbE
+
+# Hardware crypto acceleration
+device		crypto		# core crypto support
+device		cryptodev	# /dev/crypto for access to h/w
+
 # Temperature sensors:
 #
 # coretemp: on-die sensor on Intel Core and newer CPUs
