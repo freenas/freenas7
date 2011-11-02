@@ -1,10 +1,12 @@
 PORTNAME=			zoneinfo
-DISTVERSION=	2011k
+DISTVERSION=	2011n
 CATEGORIES=		misc
 COMMENT=			Updated timezone definitions
 MAINTAINER=		michael.zoon@freenas.org
 
-MASTER_SITES=	ftp://elsie.nci.nih.gov/pub/
+MASTER_SITES=	ftp://elsie.nci.nih.gov/pub/ \
+		ftp://ftp.iana.org/tz/releases/ \
+		ftp://munnari.oz.au/pub/
 DISTNAME=			tzdata${DISTVERSION}
 
 WRKSRC=				${WRKDIR}
