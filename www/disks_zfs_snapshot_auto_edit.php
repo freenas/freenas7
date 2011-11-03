@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_zfs_snapshot_add.php
+	disks_zfs_snapshot_auto_edit.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
 	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
@@ -42,7 +42,13 @@ $uuid = $_GET['uuid'];
 if (isset($_POST['uuid']))
 	$uuid = $_POST['uuid'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Snapshots"), gettext("Snapshot"), gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Snapshots"), gettext("Auto Snapshot"), isset($uuid) ? gettext("Edit") : gettext("Add"));
+
+if (!isset($config['zfs']['autosnapshots']) || !is_array($config['zfs']['autosnapshots']['autosnapshot']))
+	$config['zfs']['autosnapshots']['autosnapshot'] = array();
+
+array_sort_key($config['zfs']['autosnapshots']['autosnapshot'], "path");
+$a_autosnapshot = &$config['zfs']['autosnapshots']['autosnapshot'];
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -70,21 +76,50 @@ function get_zfs_paths() {
 }
 $a_path = get_zfs_paths();
 
+$a_timehour = array();
+foreach (range(0, 23) as $hour) {
+	$min = 0;
+	$a_timehour[sprintf("%02.2d%02.2d", $hour, $min)] = sprintf("%02.2d:%02.2d", $hour, $min);
+}
+$a_lifetime = array("0" => gettext("infinity"),
+	    "1w" => sprintf(gettext("%d week"), 1),
+	    "2w" => sprintf(gettext("%d weeks"), 2),
+	    "30d" => sprintf(gettext("%d days"), 30),
+	    "90d" => sprintf(gettext("%d days"), 90),
+	    "180d" => sprintf(gettext("%d days"), 180),
+	    "1y" => sprintf(gettext("%d year"), 1),
+	    "2y" => sprintf(gettext("%d years"), 2));
+
 if (!isset($uuid) && (!sizeof($a_pool))) {
 	$errormsg = sprintf(gettext("No configured pools. Please add new <a href='%s'>pools</a> first."), "disks_zfs_zpool.php");
 }
 
-$cnid = FALSE;
-if (isset($uuid) && (FALSE !== $cnid)) {
-	// not supported
-	$pconfig = array();
+if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_autosnapshot, "uuid")))) {
+	$pconfig['uuid'] = $a_autosnapshot[$cnid]['uuid'];
+	$pconfig['type'] = $a_autosnapshot[$cnid]['type'];
+	$pconfig['path'] = $a_autosnapshot[$cnid]['path'];
+	$pconfig['name'] = $a_autosnapshot[$cnid]['name'];
+	$pconfig['snapshot'] = $a_autosnapshot[$cnid]['snapshot'];
+	$pconfig['recursive'] = isset($a_autosnapshot[$cnid]['recursive']);
+	$pconfig['timeday'] = $a_autosnapshot[$cnid]['timeday'];
+	$pconfig['timewday'] = $a_autosnapshot[$cnid]['timewday'];
+	$pconfig['timehour'] = $a_autosnapshot[$cnid]['timehour'];
+	$pconfig['timemin'] = $a_autosnapshot[$cnid]['timemin'];
+	$pconfig['lifetime'] = $a_autosnapshot[$cnid]['lifetime'];
 } else {
 	$pconfig['uuid'] = uuid();
-	$pconfig['snapshot'] = "";
+	$pconfig['type'] = "daily";
 	$pconfig['path'] = "";
-	$pconfig['name'] = "";
-	//$pconfig['pool'] = "";
+	//$pconfig['name'] = "auto-%Y%m%d-%H%M%S";
+	//$pconfig['name'] = "auto-%Y%m%d-%H00";
+	$pconfig['name'] = "auto-%Y%m%d-%H0000";
+	$pconfig['snapshot'] = "";
 	$pconfig['recursive'] = false;
+	$pconfig['timeday'] = "*";
+	$pconfig['timewday'] = "*";
+	$pconfig['timehour'] = "2000";
+	$pconfig['timemin'] = "0000";
+	$pconfig['lifetime'] = "30d";
 }
 
 if ($_POST) {
@@ -92,7 +127,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	if ($_POST['Cancel']) {
-		header("Location: disks_zfs_snapshot.php");
+		header("Location: disks_zfs_snapshot_auto.php");
 		exit;
 	}
 
@@ -109,25 +144,32 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$snapshot = array();
-		$snapshot['uuid'] = $_POST['uuid'];
-		$snapshot['path'] = $_POST['path'];
-		$snapshot['name'] = $_POST['name'];
-		$snapshot['snapshot'] =	$snapshot['path'].'@'.$snapshot['name'];
-		$snapshot['recursive'] = $_POST['recursive'] ? true : false;
+		$autosnapshot = array();
+		$autosnapshot['uuid'] = $_POST['uuid'];
+		$autosnapshot['type'] = $_POST['type'];
+		$autosnapshot['path'] = $_POST['path'];
+		$autosnapshot['name'] = $_POST['name'];
+		$autosnapshot['snapshot'] = $autosnapshot['path'].'@'.$autosnapshot['name'];
+		$autosnapshot['recursive'] = $_POST['recursive'] ? true : false;
+		$autosnapshot['timeday'] = $_POST['timeday'];
+		$autosnapshot['timewday'] = $_POST['timewday'];
+		$autosnapshot['timehour'] = $_POST['timehour'];
+		$autosnapshot['timemin'] = $_POST['timemin'];
+		$autosnapshot['lifetime'] = $_POST['lifetime'];
 
-		//$mode = UPDATENOTIFY_MODE_NEW;
-		//updatenotify_set("zfssnapshot", $mode, serialize($snapshot));
-
-		//header("Location: disks_zfs_snapshot.php");
-		//exit;
-
-		$ret = zfs_snapshot_configure($snapshot);
-		if ($ret['retval'] == 0) {
-			header("Location: disks_zfs_snapshot.php");
-			exit;
+		if (isset($uuid) && (FALSE !== $cnid)) {
+			$mode = UPDATENOTIFY_MODE_MODIFIED;
+			$a_autosnapshot[$cnid] = $autosnapshot;
+		} else {
+			$mode = UPDATENOTIFY_MODE_NEW;
+			$a_autosnapshot[] = $autosnapshot;
 		}
-		$errormsg = implode("\n", $ret['output']);
+
+		updatenotify_set("zfsautosnapshot", $mode, serialize($autosnapshot));
+		write_config();
+
+		header("Location: disks_zfs_snapshot_auto.php");
+		exit;
 	}
 }
 ?>
@@ -154,29 +196,36 @@ function enable_change(enable_change) {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav2">
-				<li class="tabact"><a href="disks_zfs_snapshot.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Snapshot");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_snapshot.php"><span><?=gettext("Snapshot");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_snapshot_clone.php"><span><?=gettext("Clone");?></span></a></li>
-				<li class="tabinact"><a href="disks_zfs_snapshot_auto.php"><span><?=gettext("Auto Snapshot");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_snapshot_auto.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Auto Snapshot");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_snapshot_info.php"><span><?=gettext("Information");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabcont">
-			<form action="disks_zfs_snapshot_add.php" method="post" name="iform" id="iform">
+			<form action="disks_zfs_snapshot_auto_edit.php" method="post" name="iform" id="iform">
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php $a_pathlist = array(); foreach ($a_path as $pathv) { $a_pathlist[$pathv['path']] = htmlspecialchars($pathv['path']); }?>
 					<?php html_combobox("path", gettext("Path"), $pconfig['path'], $a_pathlist, "", true);?>
-					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20);?>
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 40);?>
 					<?php html_checkbox("recursive", gettext("Recursive"), $pconfig['recursive'] ? true : false, gettext("Creates the recursive snapshot."), "", false);?>
+					<?php html_text("type", gettext("Type"), htmlspecialchars($pconfig['type']));?>
+					<?php html_combobox("timehour", gettext("Schedule time"), $pconfig['timehour'], $a_timehour, "", true);?>
+					<?php html_combobox("lifetime", gettext("Life time"), $pconfig['lifetime'], $a_lifetime, "", true);?>
 				</table>
 				<div id="submit">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>" onclick="enable_change(true)" />
+					<input name="Submit" type="submit" class="formbtn" value="<?=((isset($uuid) && (FALSE !== $cnid))) ? gettext("Save") : gettext("Add");?>" onclick="enable_change(true)" />
 					<input name="Cancel" type="submit" class="formbtn" value="<?=gettext("Cancel");?>" />
 					<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>" />
+					<input name="type" type="hidden" value="<?=$pconfig['type'];?>" />
+					<input name="timeday" type="hidden" value="<?=$pconfig['timeday'];?>" />
+					<input name="timewday" type="hidden" value="<?=$pconfig['timewday'];?>" />
+					<input name="timemin" type="hidden" value="<?=$pconfig['timemin'];?>" />
 				</div>
 				<?php include("formend.inc");?>
 			</form>
@@ -189,6 +238,7 @@ function enable_change(enable_change) {
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>
+enable_change(false);
 //-->
 </script>
 <?php include("fend.inc");?>

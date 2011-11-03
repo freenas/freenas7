@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-04-10 13:41+0000\n"
 "Last-Translator: yezhiqiu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -22,6 +22,26 @@ msgstr " 接口："
 
 msgid " was assigned to "
 msgstr " 被指派为 "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "天"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -252,6 +272,10 @@ msgstr "添加附加的计划自我检测"
 
 msgid "Add auth group"
 msgstr "新增验证组"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "新增数据集"
 
 msgid "Add command"
 msgstr "添加命令"
@@ -529,6 +553,10 @@ msgstr ""
 
 msgid "Auto"
 msgstr "自动"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "新增数据集"
 
 msgid "Auto size"
 msgstr ""
@@ -1030,6 +1058,10 @@ msgid "Delete auth group"
 msgstr ""
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "删除主机资讯"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "删除规则"
 
@@ -1294,6 +1326,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr ""
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "确定要删除此主机信息吗？"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "是否要删除此规则？"
 
@@ -1499,6 +1535,10 @@ msgstr "编辑 URL"
 
 msgid "Edit auth group"
 msgstr ""
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "编辑数据集"
 
 msgid "Edit command"
 msgstr "编辑命令"
@@ -2507,6 +2547,10 @@ msgstr "许可"
 msgid "License & Credits"
 msgstr "协议及答谢"
 
+#, fuzzy
+msgid "Life time"
+msgstr "系统时间"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
@@ -2951,7 +2995,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -5515,6 +5559,9 @@ msgstr "关闭 iSCSI 初始器"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr ""
 
@@ -5604,9 +5651,6 @@ msgstr "upriv"
 #~ msgstr "小时"
 
 #~ msgid "day"
-#~ msgstr "天"
-
-#~ msgid "days"
 #~ msgstr "天"
 
 #~ msgid "months"

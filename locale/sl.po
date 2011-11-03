@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2010-12-19 11:18+0000\n"
 "Last-Translator: Matic Gradišer <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " vmesniki:"
 
 msgid " was assigned to "
 msgstr " je bila pripeta k "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "dni"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Dodaj načrtovan self-test."
 
 msgid "Add auth group"
 msgstr "Dodaj skupino dovoljenj"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Dodaj dataset"
 
 msgid "Add command"
 msgstr "Dodaj ukaz"
@@ -528,6 +552,10 @@ msgstr "Prijave"
 
 msgid "Auto"
 msgstr "Samodejno"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Dodaj dataset"
 
 msgid "Auto size"
 msgstr "Samodejna velikost"
@@ -1031,6 +1059,10 @@ msgid "Delete auth group"
 msgstr "Pobriši vse skupine dovoljenj"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Odstrani gostitelja"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Izbriši pravilo"
 
@@ -1295,6 +1327,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Res želite odstraniti to skupino dovoljenj?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Res želite odstraniti tega gostitelja?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Res želite izbrisati to pravilo?"
 
@@ -1501,6 +1537,10 @@ msgstr "Uredi URL"
 
 msgid "Edit auth group"
 msgstr "Uredi skupino dovoljenj"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Uredi dataset"
 
 msgid "Edit command"
 msgstr "Uredi ukaz"
@@ -2510,6 +2550,10 @@ msgstr "Licenca"
 msgid "License & Credits"
 msgstr "Licence in zasluge"
 
+#, fuzzy
+msgid "Life time"
+msgstr "Čas sistema"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol"
 
@@ -2954,7 +2998,7 @@ msgstr "Ni nastavljenih skupin sprožiteljev. Prosim, dodajte novo <a href='%s'>
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Ni nastavljeni skupin portal. Prosim, dodajte novo <a href='%s'>skupino portal</a>."
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Ni nastavljenih bazenov. Prosim, dodajte nov <a href='%s'>bazen</a>."
 
@@ -5519,6 +5563,9 @@ msgstr "iSCSI pobudnik onemogočen"
 msgid "iTunes/DAAP"
 msgstr ""
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr ""
 
@@ -5609,9 +5656,6 @@ msgstr "upriv"
 
 #~ msgid "hours"
 #~ msgstr "ur(e)"
-
-#~ msgid "days"
-#~ msgstr "dni"
 
 #~ msgid "day"
 #~ msgstr "dan"

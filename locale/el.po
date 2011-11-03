@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " διεπαφές:"
 
 msgid " was assigned to "
 msgstr " έχει αντιστοιχεί σε "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "ημέρες"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Προσθήκη επιπλέον προγραμματισμένης α�
 
 msgid "Add auth group"
 msgstr "Προσθήκη πιστοποίησης ομάδας"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Προσθήκη συνόλου δεδομένων"
 
 msgid "Add command"
 msgstr "Προσθήκη εντολής"
@@ -528,6 +552,10 @@ msgstr "Πιστοποιήσεις"
 
 msgid "Auto"
 msgstr "Αυτόματο"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Προσθήκη συνόλου δεδομένων"
 
 msgid "Auto size"
 msgstr "Αυτόματο μέγεθος"
@@ -1030,6 +1058,10 @@ msgid "Delete auth group"
 msgstr "Διαγραφή πι πιστοποίησης ομάδας"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Διαγραφή υπολογιστή"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Διαγραφή κανόνα"
 
@@ -1294,6 +1326,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Θέλτε σίγουρα να διαγράψετε αυτή την ομάδα πιστοποίησης;"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον υπολογιστή;"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Θέλετε σίγουρα να διαγράψετε αυτό τον κανόνα;"
 
@@ -1500,6 +1536,10 @@ msgstr "Επεξεργασία URL"
 
 msgid "Edit auth group"
 msgstr "Επεξεργασία πιστοποίησης ομάδας"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Επεξεργασία συνόλου δεδομένων"
 
 msgid "Edit command"
 msgstr "Επεξεργασία εντολής"
@@ -2509,6 +2549,10 @@ msgstr "Άδεια"
 msgid "License & Credits"
 msgstr "Άδεια & Συντελεστές"
 
+#, fuzzy
+msgid "Life time"
+msgstr "Ώρα συστήματος"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
@@ -2953,7 +2997,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -5521,6 +5565,9 @@ msgstr "Ο αρχικοποιητής iSCSI απνεργοποιήθηκε"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr "αποτυχίας από/φόρτωσης"
 
@@ -5611,9 +5658,6 @@ msgstr "upriv"
 
 #~ msgid "hours"
 #~ msgstr "ώρες"
-
-#~ msgid "days"
-#~ msgstr "ημέρες"
 
 #~ msgid "day"
 #~ msgstr "ημέρα"

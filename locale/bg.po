@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2010-06-29 03:57+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " интерфейси:"
 
 msgid " was assigned to "
 msgstr " беше зададен на "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "дни"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr ""
 
 msgid "Add auth group"
 msgstr ""
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Добавяне на хост"
 
 msgid "Add command"
 msgstr "добави команда"
@@ -528,6 +552,10 @@ msgstr ""
 
 msgid "Auto"
 msgstr ""
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Добавяне на хост"
 
 msgid "Auto size"
 msgstr ""
@@ -1029,6 +1057,10 @@ msgid "Delete auth group"
 msgstr ""
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Delete Host"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "изтрий командата"
 
@@ -1293,6 +1325,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr ""
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Do you really want to delete this host?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Do you really want to delete this command?"
 
@@ -1498,6 +1534,10 @@ msgstr ""
 
 msgid "Edit auth group"
 msgstr ""
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Редактиране на хост"
 
 msgid "Edit command"
 msgstr "Редактиране на команда"
@@ -2505,6 +2545,9 @@ msgstr "Лицензно споразумение"
 msgid "License & Credits"
 msgstr ""
 
+msgid "Life time"
+msgstr ""
+
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
@@ -2949,7 +2992,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -5512,6 +5555,9 @@ msgstr "iSCSI initiator disabled"
 msgid "iTunes/DAAP"
 msgstr ""
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr ""
 
@@ -5596,9 +5642,6 @@ msgstr ""
 
 #~ msgid "seconds"
 #~ msgstr "секунди"
-
-#~ msgid "days"
-#~ msgstr "дни"
 
 #~ msgid "day"
 #~ msgstr "ден"

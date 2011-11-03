@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-06-12 09:35+0000\n"
 "Last-Translator: debdrup <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " grænseflader:"
 
 msgid " was assigned to "
 msgstr " var tildelt til "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "dage"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Tilføj ekstra planlagt selv-diagnose."
 
 msgid "Add auth group"
 msgstr "Tilføj Auth gruppe"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Tilføj datasæt"
 
 msgid "Add command"
 msgstr "Tilføj kommando"
@@ -528,6 +552,10 @@ msgstr "Auths"
 
 msgid "Auto"
 msgstr "Automatisk"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Tilføj datasæt"
 
 msgid "Auto size"
 msgstr "Automatisk størrelse"
@@ -1031,6 +1059,10 @@ msgid "Delete auth group"
 msgstr "Slet Auth gruppe"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Slet vært"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Slet regel"
 
@@ -1295,6 +1327,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Vil du virkelig slette denne Auth gruppe?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Vil du virkelig slette denne vært?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Vil du virkelig slette denne regel?"
 
@@ -1501,6 +1537,10 @@ msgstr "Rediger URL"
 
 msgid "Edit auth group"
 msgstr "Rediger Auth gruppe"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Rediger datasæt"
 
 msgid "Edit command"
 msgstr "Rediger kommando"
@@ -2509,6 +2549,10 @@ msgstr "Licens"
 msgid "License & Credits"
 msgstr "Licens og tak"
 
+#, fuzzy
+msgid "Life time"
+msgstr "System tid"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protokol"
 
@@ -2953,7 +2997,7 @@ msgstr "Ingen konfigurerede Initiator Grupper. Tilføj venligst en ny <a href='%
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Ingen konfigurerede Portal Grupper. Tilføj venligst en ny <a href='%s'>Portal Gruppe</a> først."
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Ingen konfigurerede puljer. Tilføj venligst en ny <a href='%s'>pulje</a> først."
 
@@ -5521,6 +5565,9 @@ msgstr "iSCSI initiator deaktiveret"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr "Indlæsning/Udlæsning fejlede."
 
@@ -5641,9 +5688,6 @@ msgstr "upriv"
 
 #~ msgid "hours"
 #~ msgstr "timer"
-
-#~ msgid "days"
-#~ msgstr "dage"
 
 #~ msgid "%d%% of %dMB"
 #~ msgstr "%d%% af %dMB"

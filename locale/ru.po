@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-06-02 16:13+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " интерфейсы:"
 
 msgid " was assigned to "
 msgstr " был присвоен "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "дней"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Добавить запланированное самотестиров
 
 msgid "Add auth group"
 msgstr "Добавить группу аутентификации"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Добавить dataset"
 
 msgid "Add command"
 msgstr "Добавить команду"
@@ -528,6 +552,10 @@ msgstr "Аутентификация"
 
 msgid "Auto"
 msgstr "Авто"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Добавить dataset"
 
 msgid "Auto size"
 msgstr "Авторазмер"
@@ -1031,6 +1059,10 @@ msgid "Delete auth group"
 msgstr "Удалить группу аутентификации"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Удалить хост"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Удалить правило"
 
@@ -1295,6 +1327,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Вы действительно хотите удалить эту группу аутентификации?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Вы действительно хотите удалить этот хост?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Вы действительно хотите удалить это правило?"
 
@@ -1501,6 +1537,10 @@ msgstr "Редактировать URL"
 
 msgid "Edit auth group"
 msgstr "Изменить группу аутентификации"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Изменить dataset"
 
 msgid "Edit command"
 msgstr "Редактировать команду"
@@ -2509,6 +2549,10 @@ msgstr "Лицензия"
 msgid "License & Credits"
 msgstr "Лицензия и список разработчиков"
 
+#, fuzzy
+msgid "Life time"
+msgstr "Системное время"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol (LDAP)"
 
@@ -2953,7 +2997,7 @@ msgstr "Отсутствуют сконфигурированные группы
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Отсутствуют сконфигурированные группы порталов. Пожалуйста, добавьте вначале <a href='%s'>группу порталов</a>."
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Отсутствуют сконфигурированные пулы. Пожалуйста, добавьте вначале новые <a href='%s'>пулы</a>."
 
@@ -5521,6 +5565,9 @@ msgstr "Инициатор iSCSI запрещен"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr "неудачная загрузка/выгрузка."
 
@@ -5620,9 +5667,6 @@ msgstr "upriv"
 
 #~ msgid "day"
 #~ msgstr "день"
-
-#~ msgid "days"
-#~ msgstr "дней"
 
 #~ msgid "week days"
 #~ msgstr "дней недели"

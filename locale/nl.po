@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-06-12 09:38+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
@@ -21,6 +21,26 @@ msgstr " netwerken:"
 
 msgid " was assigned to "
 msgstr " werd toegewezen aan "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "dagen"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Een extra geplande zelf-test toevoegen."
 
 msgid "Add auth group"
 msgstr "Auth groep toevoegen"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Dataset toevoegen"
 
 msgid "Add command"
 msgstr "Opdracht toevoegen"
@@ -528,6 +552,10 @@ msgstr "Auths"
 
 msgid "Auto"
 msgstr "Automatisch"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Dataset toevoegen"
 
 msgid "Auto size"
 msgstr "Auto grootte"
@@ -1031,6 +1059,10 @@ msgid "Delete auth group"
 msgstr "Auth groep verwijderen"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Host verwijderen"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Regel verwijderen"
 
@@ -1295,6 +1327,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Weet u zeker dat u deze auth groep wilt verwijderen?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Weet u zeker dat u deze host wil verwijderen?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Weet u zeker dat u deze regel wilt verwijderen?"
 
@@ -1501,6 +1537,10 @@ msgstr "Bewerk URL"
 
 msgid "Edit auth group"
 msgstr "Auth groep bewerken"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Dataset bewerken"
 
 msgid "Edit command"
 msgstr "Bewerk Opdracht"
@@ -2509,6 +2549,10 @@ msgstr "Licentie"
 msgid "License & Credits"
 msgstr "Licentie & Bijdragen"
 
+#, fuzzy
+msgid "Life time"
+msgstr "Systeemtijd"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol"
 
@@ -2953,7 +2997,7 @@ msgstr "Er is geen Initiator Groep geconfigureerd. Voeg eerst een nieuwe <a href
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Er is geen Portaal Groep geconfigureerd. Voeg eerst een nieuwe <a href='%s'>Portaal Groep</a> toe."
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Er zijn geen pools geconfigureerd. Voeg eerst een nieuwe <a href='%s'>pool</a> toe."
 
@@ -5521,6 +5565,9 @@ msgstr "iSCSI initiator is uitgeschakeld"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr "load/unload mislukt."
 
@@ -5641,9 +5688,6 @@ msgstr "upriv"
 
 #~ msgid "day"
 #~ msgstr "dag"
-
-#~ msgid "days"
-#~ msgstr "dagen"
 
 #~ msgid "week days"
 #~ msgstr "weekdagen"

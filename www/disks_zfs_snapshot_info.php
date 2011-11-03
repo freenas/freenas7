@@ -81,6 +81,7 @@ function zfs_snapshot_display_properties() {
 			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_snapshot.php"><span><?=gettext("Snapshot");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_snapshot_clone.php"><span><?=gettext("Clone");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_snapshot_auto.php"><span><?=gettext("Auto Snapshot");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_snapshot_info.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Information");?></span></a></li>
 			</ul>
 		</td>

@@ -141,6 +141,7 @@ function zfsclone_process_updatenotification($mode, $data) {
 			<ul id="tabnav2">
 				<li class="tabinact"><a href="disks_zfs_snapshot.php"><span><?=gettext("Snapshot");?></span></a></li>
 				<li class="tabact"><a href="disks_zfs_snapshot_clone.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Clone");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_snapshot_auto.php"><span><?=gettext("Auto Snapshot");?></span></a></li>
 				<li class="tabinact"><a href="disks_zfs_snapshot_info.php"><span><?=gettext("Information");?></span></a></li>
 			</ul>
 		</td>

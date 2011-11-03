@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " 인터페이스:"
 
 msgid " was assigned to "
 msgstr " 가 할당된 "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "요일"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "추가적인 자체 테스트 예약 추가"
 
 msgid "Add auth group"
 msgstr "인증 그룹 추가"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "데이터 셋 추가"
 
 msgid "Add command"
 msgstr "명령어 추가"
@@ -528,6 +552,10 @@ msgstr "인증"
 
 msgid "Auto"
 msgstr "자동"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "데이터 셋 추가"
 
 msgid "Auto size"
 msgstr "자동 크기"
@@ -1031,6 +1059,10 @@ msgid "Delete auth group"
 msgstr "인증 그룹 삭제"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Host 삭제"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "규칙 삭제"
 
@@ -1295,6 +1327,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "정말로 이 인증 그룹을 삭제하시겠습니까?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "정말로 이 호스트를 지우시겠습니까?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "정말로 이 규칙을 삭제하시겠습니까?"
 
@@ -1501,6 +1537,10 @@ msgstr "URL 편집"
 
 msgid "Edit auth group"
 msgstr "인증 그룹 편집"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "데이터 셋 편집"
 
 msgid "Edit command"
 msgstr "명령 편집"
@@ -2509,6 +2549,10 @@ msgstr "사용 허가서"
 msgid "License & Credits"
 msgstr "사용 허가서와 제작자"
 
+#, fuzzy
+msgid "Life time"
+msgstr "시스템 시간"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight 디렉터리 접근 프로토콜"
 
@@ -2953,7 +2997,7 @@ msgstr "구성된 개시자 그룹이 없습니다. 먼저 새 <a href='%s'>개�
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "포털 그룹이 구성되지 않았음. 먼저 <a href='%s'>포털 그룹</a>을 새로 추가하십시오."
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "풀이 구성되지 않았음. 먼저 <a href='%s'>풀</a>을 새로 추가하십시오."
 
@@ -5520,6 +5564,9 @@ msgstr "iSCSI 개시자 비활성화 됨"
 
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
+
+msgid "infinity"
+msgstr ""
 
 msgid "load/unload failed."
 msgstr "로드/언로드가 실패했습니다."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-06-02 00:19+0000\n"
 "Last-Translator: Diego <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " interfaces:"
 
 msgid " was assigned to "
 msgstr " foi atribuido para "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "dias"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Adicionar um auto-teste adicional."
 
 msgid "Add auth group"
 msgstr "Adicionar um grupo de autenticação"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Adicionar dataset"
 
 msgid "Add command"
 msgstr "Adicionar comando"
@@ -528,6 +552,10 @@ msgstr "Auth"
 
 msgid "Auto"
 msgstr "Automático"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Adicionar dataset"
 
 msgid "Auto size"
 msgstr "Tamanho automático"
@@ -1031,6 +1059,10 @@ msgid "Delete auth group"
 msgstr "Excluir todos os grupos de autenticação"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Excluir host"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Excluir regra"
 
@@ -1295,6 +1327,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Deseja realmente excluir este grupo de autenticação?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Deseja realmente eliminar este host?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Deseja realmente excluir esta regra?"
 
@@ -1501,6 +1537,10 @@ msgstr "Editar URL"
 
 msgid "Edit auth group"
 msgstr "Editar grupo 'Auth'"
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Editar dataset"
 
 msgid "Edit command"
 msgstr "Editar comando"
@@ -2509,6 +2549,10 @@ msgstr "Licença"
 msgid "License & Credits"
 msgstr "Licença e Créditos"
 
+#, fuzzy
+msgid "Life time"
+msgstr "Horário do sistema"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Protocolo Leve de Acesso a Diretório"
 
@@ -2953,7 +2997,7 @@ msgstr "Nwnhum grupo \"initiator' configurado. Por favor, adicione um em <a href
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "Nenhum Grupo de Portal configurado. Por favor adicione um novo <a href='%s'>Grupo de Portal</a> primeiro."
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "Nenhum pool configurado. Por favor, adicione um novo <a href='%s'>Pool</a> primeiro."
 
@@ -5521,6 +5565,9 @@ msgstr "iSCSI initiator desabilitado"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr "Carga/descarga falhou."
 
@@ -5652,9 +5699,6 @@ msgstr "upriv"
 
 #~ msgid "day"
 #~ msgstr "dia"
-
-#~ msgid "days"
-#~ msgstr "dias"
 
 #~ msgid "built on"
 #~ msgstr "Versão"

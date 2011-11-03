@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: 2011-03-28 18:50+0000\n"
 "Last-Translator: Vaclav Obrtlik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -21,6 +21,26 @@ msgstr " rozhraní:"
 
 msgid " was assigned to "
 msgstr " bylo přiřazeno k "
+
+#, fuzzy, php-format
+msgid "%d days"
+msgstr "dnů"
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
+msgstr ""
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,10 @@ msgstr "Přidat další plánovaný test vlastního stavu."
 
 msgid "Add auth group"
 msgstr "přidat autorizační skupinu"
+
+#, fuzzy
+msgid "Add auto snapshot"
+msgstr "Přidat hostitele"
 
 msgid "Add command"
 msgstr "Přidat příkaz"
@@ -528,6 +552,10 @@ msgstr "Autorizace"
 
 msgid "Auto"
 msgstr "Automaticky"
+
+#, fuzzy
+msgid "Auto Snapshot"
+msgstr "Přidat hostitele"
 
 msgid "Auto size"
 msgstr "Automatická velikost"
@@ -1029,6 +1057,10 @@ msgid "Delete auth group"
 msgstr "Smazat autorižační skupinu"
 
 #, fuzzy
+msgid "Delete auto snapshot"
+msgstr "Odstranit hostitele"
+
+#, fuzzy
 msgid "Delete clone"
 msgstr "Odstranit pravidlo"
 
@@ -1293,6 +1325,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Chcete smazat tuto autorizační skupinu ?"
 
 #, fuzzy
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "Skutečně chcete smazat tohoto hostitele?"
+
+#, fuzzy
 msgid "Do you really want to delete this clone?"
 msgstr "Skutečně chcete smazat toto pravidlo?"
 
@@ -1498,6 +1534,10 @@ msgstr "Upravit URL adresu"
 
 msgid "Edit auth group"
 msgstr ""
+
+#, fuzzy
+msgid "Edit auto snapshot"
+msgstr "Upravit hostitele"
 
 msgid "Edit command"
 msgstr "Upravit příkaz"
@@ -2506,6 +2546,10 @@ msgstr "Licence"
 msgid "License & Credits"
 msgstr "Licence & Zásluhy"
 
+#, fuzzy
+msgid "Life time"
+msgstr "Systémový čas"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol"
 
@@ -2950,7 +2994,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -5514,6 +5558,9 @@ msgstr ""
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr ""
+
 msgid "load/unload failed."
 msgstr ""
 
@@ -5598,9 +5645,6 @@ msgstr "upriv"
 
 #~ msgid "seconds"
 #~ msgstr "sekund"
-
-#~ msgid "days"
-#~ msgstr "dnů"
 
 #~ msgid "months"
 #~ msgstr "měsíců"

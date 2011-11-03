@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-10-31 10:34+0000\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,6 +13,26 @@ msgid " interfaces:"
 msgstr ""
 
 msgid " was assigned to "
+msgstr ""
+
+#, php-format
+msgid "%d days"
+msgstr ""
+
+#, php-format
+msgid "%d week"
+msgstr ""
+
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#, php-format
+msgid "%d year"
+msgstr ""
+
+#, php-format
+msgid "%d years"
 msgstr ""
 
 #, c-format, php-format
@@ -243,6 +263,9 @@ msgid "Add additional scheduled self-test."
 msgstr ""
 
 msgid "Add auth group"
+msgstr ""
+
+msgid "Add auto snapshot"
 msgstr ""
 
 msgid "Add command"
@@ -518,6 +541,9 @@ msgid "Auths"
 msgstr ""
 
 msgid "Auto"
+msgstr ""
+
+msgid "Auto Snapshot"
 msgstr ""
 
 msgid "Auto size"
@@ -1017,6 +1043,9 @@ msgstr ""
 msgid "Delete auth group"
 msgstr ""
 
+msgid "Delete auto snapshot"
+msgstr ""
+
 msgid "Delete clone"
 msgstr ""
 
@@ -1278,6 +1307,9 @@ msgstr ""
 msgid "Do you really want to delete this auth group?"
 msgstr ""
 
+msgid "Do you really want to delete this auto snapshot?"
+msgstr ""
+
 msgid "Do you really want to delete this clone?"
 msgstr ""
 
@@ -1480,6 +1512,9 @@ msgid "Edit URL"
 msgstr ""
 
 msgid "Edit auth group"
+msgstr ""
+
+msgid "Edit auto snapshot"
 msgstr ""
 
 msgid "Edit command"
@@ -2485,6 +2520,9 @@ msgstr ""
 msgid "License & Credits"
 msgstr ""
 
+msgid "Life time"
+msgstr ""
+
 msgid "Lightweight Directory Access Protocol"
 msgstr ""
 
@@ -2929,7 +2967,7 @@ msgstr ""
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr ""
 
@@ -5484,6 +5522,9 @@ msgid "iSCSI initiator disabled"
 msgstr ""
 
 msgid "iTunes/DAAP"
+msgstr ""
+
+msgid "infinity"
 msgstr ""
 
 msgid "load/unload failed."

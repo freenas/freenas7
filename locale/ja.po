@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-31 10:27+0000\n"
-"PO-Revision-Date: 2011-10-31 10:31+0900\n"
+"POT-Creation-Date: 2011-11-04 03:37+0000\n"
+"PO-Revision-Date: 2011-11-04 03:38+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -21,6 +21,26 @@ msgstr " インタフェース:"
 
 msgid " was assigned to "
 msgstr " は次の項目にアサインされています "
+
+#, php-format
+msgid "%d days"
+msgstr "%d 日"
+
+#, php-format
+msgid "%d week"
+msgstr "%d 週"
+
+#, php-format
+msgid "%d weeks"
+msgstr "%d 週"
+
+#, php-format
+msgid "%d year"
+msgstr "%d 年"
+
+#, php-format
+msgid "%d years"
+msgstr "%d 年"
 
 #, c-format, php-format
 msgid "%d%% of %dMiB"
@@ -251,6 +271,9 @@ msgstr "スケジュールされたセルフテスト項目を追加します。
 
 msgid "Add auth group"
 msgstr "認証グループの追加"
+
+msgid "Add auto snapshot"
+msgstr "自動スナップショットの追加"
 
 msgid "Add command"
 msgstr "コマンドを追加"
@@ -526,6 +549,9 @@ msgstr "認証"
 
 msgid "Auto"
 msgstr "オート"
+
+msgid "Auto Snapshot"
+msgstr "自動スナップショット"
 
 msgid "Auto size"
 msgstr "オートサイズ"
@@ -1024,6 +1050,9 @@ msgstr "全てのセルフテストを削除"
 msgid "Delete auth group"
 msgstr "認証グループの削除"
 
+msgid "Delete auto snapshot"
+msgstr "自動スナップショットの削除"
+
 msgid "Delete clone"
 msgstr "クローンを削除"
 
@@ -1285,6 +1314,9 @@ msgstr "この URL を削除してもよろしいですか?"
 msgid "Do you really want to delete this auth group?"
 msgstr "この認証グループを削除してもよろしいですか?"
 
+msgid "Do you really want to delete this auto snapshot?"
+msgstr "この自動スナップショットを削除してもよろしいですか?"
+
 msgid "Do you really want to delete this clone?"
 msgstr "このクローンを削除してもよろしいですか?"
 
@@ -1490,6 +1522,9 @@ msgstr "URL を編集"
 
 msgid "Edit auth group"
 msgstr "認証グループの編集"
+
+msgid "Edit auto snapshot"
+msgstr "自動スナップショットを編集"
 
 msgid "Edit command"
 msgstr "コマンドを編集"
@@ -2494,6 +2529,9 @@ msgstr "ライセンス"
 msgid "License & Credits"
 msgstr "ライセンスとクレジット"
 
+msgid "Life time"
+msgstr "生存期間"
+
 msgid "Lightweight Directory Access Protocol"
 msgstr "Lightweight Directory Access Protocol"
 
@@ -2938,7 +2976,7 @@ msgstr "イニシエータグループがありません。まず最初に新し
 msgid "No configured Portal Group. Please add new <a href='%s'>Portal Group</a> first."
 msgstr "ポータルグループがありません。まず最初に新しい <a href='%s'>ポータルグループ</a> を追加してください。"
 
-#, c-format, php-format
+#, php-format
 msgid "No configured pools. Please add new <a href='%s'>pools</a> first."
 msgstr "プールがありません。まず最初に新しい <a href='%s'>プール</a> を追加してください。"
 
@@ -5497,6 +5535,9 @@ msgstr "iSCSI イニシエータは無効です"
 msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
+msgid "infinity"
+msgstr "無限"
+
 msgid "load/unload failed."
 msgstr "ロード/アンロードに失敗しました。"
 
@@ -5588,9 +5629,6 @@ msgstr "upriv"
 #~ msgstr "時"
 
 #~ msgid "day"
-#~ msgstr "日"
-
-#~ msgid "days"
 #~ msgstr "日"
 
 #~ msgid "week days"
