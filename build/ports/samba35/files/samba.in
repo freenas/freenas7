@@ -252,13 +252,31 @@ samba_mkconf_cmd()
 				-o "inherit permissions = yes" -n \
 			-b \
 			-i "count(recyclebin) > 0" \
-				-o "vfs objects = recycle" -n \
+				-i "count(shadowcopy) > 0" \
+					-o "vfs objects = shadow_copy2 recycle" -n \
+				-b \
+				-i "count(shadowcopy) = 0" \
+					-o "vfs objects = recycle" -n \
+				-b \
 				-o "recycle:repository = ${samba_recycle_repository}" -n \
 				-o "recycle:keeptree = yes" -n \
 				-o "recycle:versions = yes" -n \
 				-o "recycle:touch = yes" -n \
 				-o "recycle:directory_mode = ${samba_recycle_directory_mode}" -n \
 				-o "recycle:subdir_mode = ${samba_recycle_subdir_mode}" -n \
+			-b \
+			-i "count(recyclebin) = 0" \
+				-i "count(shadowcopy) > 0" \
+					-o "vfs objects = shadow_copy2" -n \
+				-b \
+			-b \
+			-i "count(shadowcopy) > 0" \
+				-i "string-length(shadowformat) > 0" \
+					-v "concat('shadow:format = ', shadowformat)" -n \
+				-b \
+				-o "shadow:snapdir = .zfs/snapshot" -n \
+				-o "shadow:sort = desc" -n \
+				-o "shadow:localtime = yes" -n \
 			-b \
 			-i "count(//afp/enable) > 0" \
 				-o "#vfs objects = netatalk" -n \

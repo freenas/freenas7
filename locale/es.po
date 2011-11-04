@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 03:37+0000\n"
+"POT-Creation-Date: 2011-11-05 05:04+0000\n"
 "PO-Revision-Date: 2011-06-11 02:35+0000\n"
 "Last-Translator: jfunez <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1725,6 +1725,10 @@ msgid "Enable reverse DNS lookup."
 msgstr "Permitir busqueda DNS a la inversa."
 
 msgid "Enable serial console"
+msgstr "Habilitar la consola por puerto serie"
+
+#, fuzzy
+msgid "Enable shadow copy"
 msgstr "Habilitar la consola por puerto serie"
 
 msgid "Enable store DOS attributes"
@@ -3883,6 +3887,13 @@ msgstr "Asigne el valor umask para los archivos creados recientemente al valor e
 msgid "Settings"
 msgstr "Preferencias"
 
+msgid "Shadow Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Shadow Copy format"
+msgstr "Mostrar informacion de procesos"
+
 msgid "Share"
 msgstr "Elemento compartido"
 
@@ -4441,6 +4452,10 @@ msgstr "Las credenciales con las cuales se enlazará"
 msgid "The cron job has been executed successfully."
 msgstr "El proceso cron se ha ejecutado con exito."
 
+#, php-format
+msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
+msgstr ""
+
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "El puerto por defecto del servidor SMTP, por ejemplo 25 o 587."
 
@@ -4974,6 +4989,9 @@ msgstr "¡Esto borrara TODOS los datos en los discos seleccionados! No utilice e
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "¡Esto borrara toda la informacion en tu Disco! No utilices esta opción si quieres agregar un disco ya encriptado/cifrado."
+
+msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
+msgstr ""
 
 msgid "TiB"
 msgstr "TiB"

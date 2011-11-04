@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-04 03:37+0000\n"
+"POT-Creation-Date: 2011-11-05 05:04+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1725,6 +1725,10 @@ msgid "Enable reverse DNS lookup."
 msgstr "DNS 역 방향 조회 활성화."
 
 msgid "Enable serial console"
+msgstr "직렬 콘솔 활성화"
+
+#, fuzzy
+msgid "Enable shadow copy"
 msgstr "직렬 콘솔 활성화"
 
 msgid "Enable store DOS attributes"
@@ -3883,6 +3887,13 @@ msgstr "새로 생성된 파일들을 위한 umask를 특정 값으로 설정합
 msgid "Settings"
 msgstr "설정"
 
+msgid "Shadow Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Shadow Copy format"
+msgstr "프로세스 정보 보기"
+
 msgid "Share"
 msgstr "공유"
 
@@ -4441,6 +4452,10 @@ msgstr "bind 할 때 이용할 자격 증명서."
 msgid "The cron job has been executed successfully."
 msgstr "cron 작업이 성공적으로 실행되었습니다."
 
+#, php-format
+msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
+msgstr ""
+
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "기본 SMTP 메일 서버 포트. 예 25나 587."
 
@@ -4974,6 +4989,9 @@ msgstr "이것은 선택된 디스크의 모든 데이터를 삭제할 것입니
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "이것은 디스크의 모든 데이터를 삭제할 것입니다. 기존의 암호화된 디스크를 추가하려면 이 옵션을 이용하지 마십시오."
+
+msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
+msgstr ""
 
 msgid "TiB"
 msgstr "TiB"

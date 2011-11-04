@@ -58,6 +58,7 @@ array_sort_key($config['samba']['share'], "name");
 
 $a_mount = &$config['mounts']['mount'];
 $a_share = &$config['samba']['share'];
+$default_shadowformat = "auto-%Y%m%d-%H%M%S";
 
 if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")))) {
 	$pconfig['uuid'] = $a_share[$cnid]['uuid'];
@@ -69,6 +70,8 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['inheritpermissions'] = isset($a_share[$cnid]['inheritpermissions']);
 	$pconfig['recyclebin'] = isset($a_share[$cnid]['recyclebin']);
 	$pconfig['hidedotfiles'] = isset($a_share[$cnid]['hidedotfiles']);
+	$pconfig['shadowcopy'] = isset($a_share[$cnid]['shadowcopy']);
+	$pconfig['shadowformat'] = $a_share[$cnid]['shadowformat'];
 	$pconfig['hostsallow'] = $a_share[$cnid]['hostsallow'];
 	$pconfig['hostsdeny'] = $a_share[$cnid]['hostsdeny'];
 	if (is_array($a_share[$cnid]['auxparam']))
@@ -83,9 +86,14 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['inheritpermissions'] = true;
 	$pconfig['recyclebin'] = false;
 	$pconfig['hidedotfiles'] = true;
+	$pconfig['shadowcopy'] = true;
+	$pconfig['shadowformat'] = $default_shadowformat;
 	$pconfig['hostsallow'] = "";
 	$pconfig['hostsdeny'] = "";
 	$pconfig['auxparam'] = "";
+}
+if ($pconfig['shadowformat'] == "") {
+	$pconfig['shadowformat'] = $default_shadowformat;
 }
 
 if ($_POST) {
@@ -124,6 +132,8 @@ if ($_POST) {
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
 		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$share['hidedotfiles'] = $_POST['hidedotfiles'] ? true : false;
+		$share['shadowcopy'] = $_POST['shadowcopy'] ? true : false;
+		$share['shadowformat'] = $_POST['shadowformat'];
 		$share['hostsallow'] = $_POST['hostsallow'];
 		$share['hostsdeny'] = $_POST['hostsdeny'];
 
@@ -223,6 +233,21 @@ if ($_POST) {
 			      <td width="78%" class="vtable">
 							<input name="hidedotfiles" type="checkbox" id="hidedotfiles" value="yes" <?php if ($pconfig['hidedotfiles']) echo "checked=\"checked\"";?> />
 							<span class="vexpl"><?=gettext("This parameter controls whether files starting with a dot appear as hidden files.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Shadow Copy");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="shadowcopy" type="checkbox" id="shadowcopy" value="yes" <?php if ($pconfig['shadowcopy']) echo "checked=\"checked\""; ?> />
+			        <?=gettext("Enable shadow copy");?><br />
+			        <span class="vexpl"><?=gettext("This will provide shadow copy created by auto snapshot. (ZFS only)");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Shadow Copy format");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="shadowformat" type="text" class="formfld" id="shadowformat" size="60" value="<?=htmlspecialchars($pconfig['shadowformat']);?>" /><br />
+			        <span class="vexpl"><?=sprintf(gettext("The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."), $default_shadowformat);?></span>
 			      </td>
 			    </tr>
 			    <tr>

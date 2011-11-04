@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 03:37+0000\n"
+"POT-Creation-Date: 2011-11-05 05:04+0000\n"
 "PO-Revision-Date: 2010-12-19 11:18+0000\n"
 "Last-Translator: Matic Gradišer <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1725,6 +1725,10 @@ msgid "Enable reverse DNS lookup."
 msgstr "Omogoči reverse DNS vpoglede."
 
 msgid "Enable serial console"
+msgstr "Omogoči serijsko povezavo"
+
+#, fuzzy
+msgid "Enable shadow copy"
 msgstr "Omogoči serijsko povezavo"
 
 msgid "Enable store DOS attributes"
@@ -3884,6 +3888,13 @@ msgstr "Nastavi masko dovoljenj za nove ustvarjene datoteke. Privzeto je prazno 
 msgid "Settings"
 msgstr "Nastavitve"
 
+msgid "Shadow Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Shadow Copy format"
+msgstr "Prikaži procese"
+
 msgid "Share"
 msgstr "Deljeni vir"
 
@@ -4442,6 +4453,10 @@ msgstr ""
 msgid "The cron job has been executed successfully."
 msgstr ""
 
+#, php-format
+msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
+msgstr ""
+
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr ""
 
@@ -4974,6 +4989,9 @@ msgid "This will erase ALL data on the selected disks! Do not use this option if
 msgstr ""
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
+msgstr ""
+
+msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr ""
 
 msgid "TiB"

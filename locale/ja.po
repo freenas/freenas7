@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 03:37+0000\n"
-"PO-Revision-Date: 2011-11-04 03:38+0900\n"
+"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"PO-Revision-Date: 2011-11-05 05:12+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -1708,6 +1708,9 @@ msgstr "DNS 逆引き参照を有効にします。"
 
 msgid "Enable serial console"
 msgstr "シリアルコンソールを有効にします。"
+
+msgid "Enable shadow copy"
+msgstr "シャドウコピーを有効にします。"
 
 msgid "Enable store DOS attributes"
 msgstr "DOS 属性の保存を有効にします"
@@ -3861,6 +3864,12 @@ msgstr "新しく作成されるファイルの umsk 値を指定出来ます。
 msgid "Settings"
 msgstr "設定"
 
+msgid "Shadow Copy"
+msgstr "シャドウコピー"
+
+msgid "Shadow Copy format"
+msgstr "シャドウコピー書式"
+
 msgid "Share"
 msgstr "共有"
 
@@ -4418,6 +4427,10 @@ msgstr "バインドする際に使用するパスワードを入力して下さ
 msgid "The cron job has been executed successfully."
 msgstr "Cron ジョブは正常に実行されました。"
 
+#, php-format
+msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
+msgstr "シャドウコピーサービス用のスナップショットのカスタム書式を指定できます。デフォルト書式はZFS自動スナップショットで使用される %s です。"
+
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "SMTP サーバのポート番号。例) 25 又は 587"
 
@@ -4950,6 +4963,9 @@ msgstr "選択したディスクのデータをすべて消去します! 既存�
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "既存の暗号化されたディスクを追加するのに、このオプションは使用しないでください。(ディスク上のデータが消去されてしまいます)"
+
+msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
+msgstr "自動スナップショットにより作成されたシャドウコピーを提供します。(ZFS専用)"
 
 msgid "TiB"
 msgstr "TiB"

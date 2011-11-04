@@ -14,6 +14,7 @@ Majors changes:
 - Add ZFS volume setting pages.
 - Add ZFS snapshot/clone setting pages.
 - Add ZFS Auto Snapshot. (daily)
+- Add Shadow Copy. (ZFS snapshot only)
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.
