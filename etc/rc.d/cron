@@ -115,6 +115,12 @@ HOME=/var/log
 		echo "${_mins} ${_hours} * * * root /etc/rc.d/ntpdate restart" >> ${cron_config}
 	fi
 
+	# Auto Snapshot
+	if [ 0 -lt `configxml_get_count "//zfs/autosnapshots"` ]; then
+		echo "# autosnapshot" >> ${cron_config}
+		echo   "0	*/1	*	*	*	root	/usr/local/sbin/autosnapshot >/dev/null 2>&1" >> ${cron_config}
+	fi
+
 	# RSYNC client
 	_index=`configxml_get_count "//rsync/rsyncclient[enable]"`
 	if [ 0 -lt ${_index} ]; then
