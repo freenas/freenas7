@@ -1210,7 +1210,13 @@ function get_ifname($if)
   // Check if 'auto' mode is activated
   if ($if === "auto")   {
     $interfaces = explode(" ", exec("/sbin/ifconfig -l"));
-    $if = $interfaces[0];
+    foreach($interfaces as $ifname) {
+	if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip|ipfw|usbus)/", $ifname)) {
+	    $if = $ifname;
+	    break;
+	}
+    }
+    if ($if === "auto") $if = "lo0";
   }
 
   return $if;
