@@ -1,5 +1,5 @@
 PORTNAME=		samba35
-PORTVERSION=		3.5.11
+PORTVERSION=		3.5.12
 #PORTREVISION?=		0
 CATEGORIES?=		net
 MASTER_SITES=		${MASTER_SITE_SAMBA}
@@ -66,10 +66,12 @@ PKG_CONFIG?=		${LOCALBASE}/bin/pkg-config
 CONFIGURE_ENV+=		PKG_CONFIG="${PKG_CONFIG}"
 BUILD_DEPENDS+=		${PKG_CONFIG}:${PORTSDIR}/devel/pkg-config
 LIB_DEPENDS+=		execinfo.1:${PORTSDIR}/devel/libexecinfo
-LIB_DEPENDS+=		talloc.2:${PORTSDIR}/devel/talloc
+BUILD_DEPENDS+=		talloc>=2.0.1:${PORTSDIR}/devel/talloc
+RUN_DEPENDS+=		talloc>=2.0.1:${PORTSDIR}/devel/talloc
 CONFIGURE_ARGS+=	--enable-external-libtalloc
-#LIB_DEPENDS+=		tdb.1:${PORTSDIR}/databases/tdb
-#CONFIGURE_ARGS+=	--enable-external-libtdb
+BUILD_DEPENDS+=		tdb>=1.2.1:${PORTSDIR}/databases/tdb
+RUN_DEPENDS+=		tdb>=1.2.1:${PORTSDIR}/databases/tdb
+CONFIGURE_ARGS+=	--enable-external-libtdb
 
 CONFIGURE_ARGS+=	--without-libtalloc \
 			--without-libtdb \
@@ -169,9 +171,13 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcquotas ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbspool ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/testparm ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbbackup ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbdump ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbtool ${FREENAS_ROOTFS}/usr/local/bin
+#	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbbackup ${FREENAS_ROOTFS}/usr/local/bin
+#	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbdump ${FREENAS_ROOTFS}/usr/local/bin
+#	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbtool ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v /usr/local/bin/tdbbackup ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v /usr/local/bin/tdbdump ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v /usr/local/bin/tdbrestore ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v /usr/local/bin/tdbtool ${FREENAS_ROOTFS}/usr/local/bin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/charset
 	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/rpc
