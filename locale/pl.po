@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-03-30 19:49+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -588,6 +588,9 @@ msgstr "Plik kopii zapasowej"
 
 msgid "Backup/Restore"
 msgstr "Backup/Przywróć"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Algorytm integralności danych"
@@ -2440,6 +2443,9 @@ msgstr "Nieprawidłowy format pliku."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Niewłaściwa maksymaln wielkość bloku! Wielkość ta musi się mieścić w granicach od %d do %d."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Nie można włączyć jednocześnie opcji 'Tylko użytkownicy anonimowi' oraz 'Tylko użytkownicy lokalni'."
 
@@ -2739,11 +2745,19 @@ msgstr "Producent"
 msgid "Map all users to root"
 msgstr "Mapuj wszyskich użytkowników do konta root"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Mapuj do użytkownika"
+
 msgid "Map to user"
 msgstr "Mapuj do użytkownika"
 
 msgid "Masquerade address"
 msgstr "Adres maskarady"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokół"
 
 msgid "Max. TTL"
 msgstr "Maksymalna wielkość TTL pakietu danych"
@@ -2928,6 +2942,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr "NIEDOSTĘPNE"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "Serwer czasu NTP"
 
@@ -2976,6 +2993,9 @@ msgid "Networks"
 msgstr "Sieci"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+
+msgid "Never - default"
 msgstr ""
 
 msgid "New Device"
@@ -3703,6 +3723,12 @@ msgstr "Opcje dodatkowe S.M.A.R.T."
 
 msgid "S.M.A.R.T. log"
 msgstr "Dziennik S.M.A.R.T."
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

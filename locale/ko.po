@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "백업 파일"
 
 msgid "Backup/Restore"
 msgstr "백업/복원"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "밸런스 알고리즘"
@@ -2437,6 +2440,9 @@ msgstr "무효한 파일 포맷."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "무효한 최대 블록 크기! %d에서 %d의 범위에 있어야 합니다."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "'로컬 사용자만'과 '익명 사용자만'의 인증을 동시에 활성화 할 수 없습니다."
 
@@ -2736,11 +2742,19 @@ msgstr "제조자"
 msgid "Map all users to root"
 msgstr "모든 사용자를 root로 mapping"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "사용자로 mapping"
+
 msgid "Map to user"
 msgstr "사용자로 mapping"
 
 msgid "Masquerade address"
 msgstr "매스커레이드 주소"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "프로토콜"
 
 msgid "Max. TTL"
 msgstr "최대 TTL"
@@ -2923,6 +2937,9 @@ msgstr "초 단위의 NOPIN 전송 간격(기본 값은 %d)."
 msgid "NOT YET AVAILABLE"
 msgstr "아직 이용할 수 없음"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP 타임 서버"
 
@@ -2972,6 +2989,9 @@ msgstr "네트워크"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "전혀 - 파워 모드와 관계 없이 장치를 check 합니다. check 될 때 디스크가 회전 정지라면 다시 회전하도록 할 것입니다."
+
+msgid "Never - default"
+msgstr ""
 
 msgid "New Device"
 msgstr "새 장치"
@@ -3698,6 +3718,12 @@ msgstr "S.M.A.R.T. 추가 옵션"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. 로그"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

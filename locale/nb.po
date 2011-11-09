@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-03-24 21:14+0000\n"
 "Last-Translator: Jim Leirvik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -585,6 +585,9 @@ msgstr "Sikkerhetskopi"
 
 msgid "Backup/Restore"
 msgstr "Sikkerhetskopi/Gjennoppretting"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Balanse algoritme"
@@ -2440,6 +2443,9 @@ msgstr "Ugyldig filformat."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Feil maks. blokk størrelse. Må være innen rekkevidden fra %d til %d."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Det er ikke mulig å slå på 'Kun anonyme brukere' og 'Kun lokale brukere' autentisering samtidig."
 
@@ -2739,11 +2745,19 @@ msgstr "Produsent"
 msgid "Map all users to root"
 msgstr "Map alle brukere til root"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Map til bruker"
+
 msgid "Map to user"
 msgstr "Map til bruker"
 
 msgid "Masquerade address"
 msgstr "Masker adresse"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokoll"
 
 msgid "Max. TTL"
 msgstr "Maks. TTL"
@@ -2926,6 +2940,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr "IKKE TILGJENGELIG ENNÅ"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP-tids tjener"
 
@@ -2974,6 +2991,9 @@ msgid "Networks"
 msgstr "Nettverk"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+
+msgid "Never - default"
 msgstr ""
 
 msgid "New Device"
@@ -3701,6 +3721,12 @@ msgstr "S.M.A.R.T. ekstra alternativer"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. logg"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

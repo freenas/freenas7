@@ -2060,6 +2060,19 @@ function config_upgrade() {
 		$config['version'] = "9.1";
 	}
 
+	/* Convert 9.1 -> 9.2 */
+	if ($config['version'] === "9.1") {
+		if ($config['samba']['security'] === "share") {
+			$config['samba']['maxprotocol'] = "NT1";
+		} else {
+			$config['samba']['maxprotocol'] = "SMB2";
+		}
+		$config['samba']['maptoguest'] = "Never";
+		unset($config['samba']['usesendfile']);
+
+		$config['version'] = "9.2";
+	}
+
 	write_config();
 
 	if (is_booting())

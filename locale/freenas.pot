@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-11-05 05:11+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -571,6 +571,9 @@ msgid "Backup file"
 msgstr ""
 
 msgid "Backup/Restore"
+msgstr ""
+
+msgid "Bad User - non existing users"
 msgstr ""
 
 msgid "Balance algorithm"
@@ -2408,6 +2411,9 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr ""
 
@@ -2705,10 +2711,16 @@ msgstr ""
 msgid "Map all users to root"
 msgstr ""
 
+msgid "Map to guest"
+msgstr ""
+
 msgid "Map to user"
 msgstr ""
 
 msgid "Masquerade address"
+msgstr ""
+
+msgid "Max Protocol"
 msgstr ""
 
 msgid "Max. TTL"
@@ -2892,6 +2904,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr ""
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr ""
 
@@ -2940,6 +2955,9 @@ msgid "Networks"
 msgstr ""
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+
+msgid "Never - default"
 msgstr ""
 
 msgid "New Device"
@@ -3665,6 +3683,12 @@ msgid "S.M.A.R.T. extra options"
 msgstr ""
 
 msgid "S.M.A.R.T. log"
+msgstr ""
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
 msgstr ""
 
 msgid "SNMP"

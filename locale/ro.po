@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2010-12-01 17:01+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Fişier backup"
 
 msgid "Backup/Restore"
 msgstr "Salvare/Resetare"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Algoritm Balans"
@@ -2434,6 +2437,9 @@ msgstr ""
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Nu puteti sa utilizati \"Doar utilizator anonim\" si \"Doar utilizator local\" in acelasi timp."
 
@@ -2732,11 +2738,19 @@ msgstr "Producător"
 msgid "Map all users to root"
 msgstr "Mapare toti utilizatori in root"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Mapare Utilizator"
+
 msgid "Map to user"
 msgstr "Mapare Utilizator"
 
 msgid "Masquerade address"
 msgstr ""
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protocol"
 
 msgid "Max. TTL"
 msgstr ""
@@ -2919,6 +2933,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr ""
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "Server NTP"
 
@@ -2967,6 +2984,9 @@ msgid "Networks"
 msgstr "Rețele"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+
+msgid "Never - default"
 msgstr ""
 
 msgid "New Device"
@@ -3694,6 +3714,12 @@ msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "Jurnal S.M.A.R.T."
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-04-09 20:58+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Dublēt datni"
 
 msgid "Backup/Restore"
 msgstr "Dublēt/Atjaunot"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Balancēt algoritmu"
@@ -2438,6 +2441,9 @@ msgstr "Nederīgs datņu formāts."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Nederīks maksimālais bloku lielums! Tam vajag būt starp %d un %d."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Tas ir neiespējami iespējot 'Tikai anonīmie lietotāji' un 'Tikai vietējie lietotāji' autentifikāciju vienlaicīgi."
 
@@ -2737,11 +2743,19 @@ msgstr "Ražotājs"
 msgid "Map all users to root"
 msgstr "Kartēt visus lietotājus uz sakni"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Kartēt uz lietotāju"
+
 msgid "Map to user"
 msgstr "Kartēt uz lietotāju"
 
 msgid "Masquerade address"
 msgstr "Maskēšanās adrese"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokols"
 
 msgid "Max. TTL"
 msgstr "Max. TTL"
@@ -2924,6 +2938,9 @@ msgstr "NOPIN sūta intervālu sekundēs (%d pēc noklusējuma)."
 msgid "NOT YET AVAILABLE"
 msgstr "PAšLAIK NAV PIEEJAMS"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP laika serveris"
 
@@ -2973,6 +2990,9 @@ msgstr "Tīkli"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "Nekad - Pārbaudīt ierīci neievērojot tās statusu (jaudas režīmu). Šis var likt diskam, kurš ir pārstājis griezties, sākt griezties, lai to pārbaudītu."
+
+msgid "Never - default"
+msgstr ""
 
 msgid "New Device"
 msgstr "Jauna ierīce"
@@ -3699,6 +3719,12 @@ msgstr "S.M.A.R.T. papildus iespējas"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. žurnāls"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

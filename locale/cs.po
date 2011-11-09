@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-03-28 18:50+0000\n"
 "Last-Translator: Vaclav Obrtlik <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Záložní soubor"
 
 msgid "Backup/Restore"
 msgstr "Zálohovat/Obnovit"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Vyvažovací algoritmus"
@@ -2434,6 +2437,9 @@ msgstr "Neplatný formát souboru."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Neplatná maximální velikost bloku! Velikost musí být uvedena v rozsahu %d až %d."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Není možné současně zapnout ověřování „Pouze anonymní uživatelé“ a „Pouze lokální uživatelé“."
 
@@ -2733,11 +2739,19 @@ msgstr "Výrobce"
 msgid "Map all users to root"
 msgstr "Mapovat všechny uživatele na roota."
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Mapovat na uživatele"
+
 msgid "Map to user"
 msgstr "Mapovat na uživatele"
 
 msgid "Masquerade address"
 msgstr "Veřejná adresa"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokol"
 
 msgid "Max. TTL"
 msgstr "Max. TTL"
@@ -2920,6 +2934,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr "ZATÍM NENÍ DOSTUPNÉ"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP časový server"
 
@@ -2969,6 +2986,9 @@ msgstr "Sítě"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "Nikdy - Kontrolovat stav zařízení bez ohledu na napájecí režim, ve kterém se nachází. To může při kontrole způsobit roztočení disku, který je ve stavu nečinnosti."
+
+msgid "Never - default"
+msgstr ""
 
 msgid "New Device"
 msgstr "Nové zařízení"
@@ -3695,6 +3715,12 @@ msgstr "S.M.A.R.T. extra vlastnosti"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. log"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

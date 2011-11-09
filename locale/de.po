@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-06-12 15:03+0100\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Sicherheitskopie"
 
 msgid "Backup/Restore"
 msgstr "Sichern / Wiederherstellen"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Balance Algorithmus"
@@ -2437,6 +2440,9 @@ msgstr "Ungültiges Dateiformat."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Ungültige Blockgröße! Sie muss im Bereich von %d bis %d sein."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Es ist unmöglich gleichzeitig Zugang für »Nur anonyme Benutzer« und »Nur lokale Benutzer« zu aktivieren."
 
@@ -2736,11 +2742,19 @@ msgstr "Hersteller"
 msgid "Map all users to root"
 msgstr "Bilde alle Benutzer auf den Nutzer 'root' ab"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Bilde auf den Benutzer ab"
+
 msgid "Map to user"
 msgstr "Bilde auf den Benutzer ab"
 
 msgid "Masquerade address"
 msgstr "Masquerade Adresse"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokoll"
 
 msgid "Max. TTL"
 msgstr "Max. TTL"
@@ -2923,6 +2937,9 @@ msgstr "NOPIN Versandintervall in Sekunden (%d ist standard)."
 msgid "NOT YET AVAILABLE"
 msgstr "Noch nicht verfügbar"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP Zeit Server"
 
@@ -2972,6 +2989,9 @@ msgstr "Netzwerke"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "Nie - Das Gerät wird immer überprüft, unabhängig vom Energiesparzustand. Eine abgeschaltete Festplatte wird dann für die Überprüfung hochgefahren."
+
+msgid "Never - default"
+msgstr ""
 
 msgid "New Device"
 msgstr "Neues Gerät"
@@ -3698,6 +3718,12 @@ msgstr "S.M.A.R.T. extra Optionen"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. log"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

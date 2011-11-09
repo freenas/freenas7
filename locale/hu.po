@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2011-04-09 21:27+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Biztonsági mentés"
 
 msgid "Backup/Restore"
 msgstr "Mentés/Visszaállítás"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Kiegyensúlyozó algoritmus"
@@ -2433,6 +2436,9 @@ msgstr "Érvénytelen fájlformátum."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Érvénytelen max. blokk méret! A blokk méret %d-tól %d-ig terjedhet."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Lehetetlen egyszerre a 'Csak Anonymus felhasználók' és 'Csak helyi felhasználók\" opció együttes használata."
 
@@ -2732,11 +2738,18 @@ msgstr "Gyártó"
 msgid "Map all users to root"
 msgstr ""
 
+msgid "Map to guest"
+msgstr ""
+
 msgid "Map to user"
 msgstr ""
 
 msgid "Masquerade address"
 msgstr "Álcím"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokoll"
 
 msgid "Max. TTL"
 msgstr "Maximális TTL"
@@ -2919,6 +2932,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr "MÉG NEM ELÉRHETŐ"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP idő szerver"
 
@@ -2967,6 +2983,9 @@ msgid "Networks"
 msgstr "Hálózatok"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+
+msgid "Never - default"
 msgstr ""
 
 msgid "New Device"
@@ -3694,6 +3713,12 @@ msgstr "S.M.A.R.T. extra beállítások"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. napló"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

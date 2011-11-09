@@ -60,6 +60,7 @@ $pconfig['netbiosname'] = $config['samba']['netbiosname'];
 $pconfig['workgroup'] = $config['samba']['workgroup'];
 $pconfig['serverdesc'] = $config['samba']['serverdesc'];
 $pconfig['security'] = $config['samba']['security'];
+$pconfig['maxprotocol'] = $config['samba']['maxprotocol'];
 $pconfig['localmaster'] = $config['samba']['localmaster'];
 $pconfig['winssrv'] = $config['samba']['winssrv'];
 $pconfig['timesrv'] = $config['samba']['timesrv'];
@@ -76,6 +77,7 @@ $pconfig['storedosattributes'] = isset($config['samba']['storedosattributes']);
 $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
 $pconfig['guestaccount'] = $config['samba']['guestaccount'];
+$pconfig['maptoguest'] = $config['samba']['maptoguest'];
 $pconfig['nullpasswords'] = isset($config['samba']['nullpasswords']);
 $pconfig['aio'] = isset($config['samba']['aio']);
 $pconfig['aiorsize'] = $config['samba']['aiorsize'];
@@ -101,6 +103,9 @@ if ($_POST) {
 		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"));
 		$reqdfieldst = explode(" ", "numericint numericint");
 
+		if ($_POST['security'] == "share" && $_POST['maxprotocol'] == "SMB2") {
+			$input_errors[] = gettext("It cannot be used combining SMB2 and Anonymous.");
+		}
 		if (!empty($_POST['createmask']) || !empty($_POST['directorymask'])) {
 			$reqdfields = array_merge($reqdfields, explode(" ", "createmask directorymask"));
 			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Create mask"), gettext("Directory mask")));
@@ -127,6 +132,11 @@ if ($_POST) {
 		$config['samba']['workgroup'] = $_POST['workgroup'];
 		$config['samba']['serverdesc'] = $_POST['serverdesc'];
 		$config['samba']['security'] = $_POST['security'];
+		if ($_POST['security'] == "share") {
+			$config['samba']['maxprotocol'] = "NT1";
+		} else {
+			$config['samba']['maxprotocol'] = $_POST['maxprotocol'];
+		}
 		$config['samba']['localmaster'] = $_POST['localmaster'];
 		$config['samba']['winssrv'] = $_POST['winssrv'];
 		$config['samba']['timesrv'] = $_POST['timesrv'];
@@ -151,6 +161,7 @@ if ($_POST) {
 			$config['samba']['guestaccount'] = $_POST['guestaccount'];
 		else
 			unset($config['samba']['guestaccount']);
+		$config['samba']['maptoguest'] = $_POST['maptoguest'];
 		$config['samba']['nullpasswords'] = $_POST['nullpasswords'] ? true : false;
 		$config['samba']['aio'] = $_POST['aio'] ? true : false;
 		if ($_POST['aio']) {
@@ -198,6 +209,7 @@ function enable_change(enable_change) {
 	document.iform.sndbuf.disabled = endis;
 	document.iform.rcvbuf.disabled = endis;
 	document.iform.security.disabled = endis;
+	document.iform.maxprotocol.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.usesendfile.disabled = endis;
 	document.iform.easupport.disabled = endis;
@@ -205,6 +217,7 @@ function enable_change(enable_change) {
 	document.iform.createmask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
 	document.iform.guestaccount.disabled = endis;
+	document.iform.maptoguest.disabled = endis;
 	document.iform.nullpasswords.disabled = endis;
 	document.iform.aio.disabled = endis;
 	document.iform.aiorsize.disabled = endis;
@@ -264,6 +277,7 @@ function aio_change() {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Common Internet File System"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_combobox("security", gettext("Authentication"), $pconfig['security'], array("share" => gettext("Anonymous"), "user" => gettext("Local User"), "ads" => gettext("Active Directory")), "", true, false, "authentication_change()");?>
+					<?php html_combobox("maxprotocol", gettext("Max Protocol"), $pconfig['maxprotocol'], array("SMB2" => gettext("SMB2"), "NT1" => gettext("NT1")), gettext("SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."), true, false, "");?>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBIOS name");?></td>
             <td width="78%" class="vtable">
@@ -335,6 +349,7 @@ function aio_change() {
 							<br /><?=gettext("Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login.");?>
 						</td>
 					</tr>
+					<?php html_combobox("maptoguest", gettext("Map to guest"), $pconfig['maptoguest'], array("Never" => gettext("Never - default"), "Bad User" => gettext("Bad User - non existing users")), "", false, false, "");?>
 					<tr id="createmask_tr">
 						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
 						<td width="78%" class="vtable">

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
-"PO-Revision-Date: 2011-11-05 05:12+0900\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"PO-Revision-Date: 2011-11-10 02:46+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -579,6 +579,9 @@ msgstr "バックアップファイル"
 
 msgid "Backup/Restore"
 msgstr "バックアップ/リストア"
+
+msgid "Bad User - non existing users"
+msgstr "Bad User - 存在しないユーザ"
 
 msgid "Balance algorithm"
 msgstr "負荷分散アルゴリズム"
@@ -2417,6 +2420,9 @@ msgstr "無効なファイル形式です。"
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "無効なブロックサイズの最大値です! %d から %d の範囲で指定して下さい。"
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr "SMB2 と 匿名 は組み合せて使用することは出来ません。"
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "同時に '匿名ユーザ専用' と 'ローカルユーザ専用' の両方を有効にする事は出来ません。"
 
@@ -2714,11 +2720,17 @@ msgstr "製造者"
 msgid "Map all users to root"
 msgstr "全てのユーザを root にマッピングします。"
 
+msgid "Map to guest"
+msgstr "ゲストのマッピング"
+
 msgid "Map to user"
 msgstr "ユーザのマッピング"
 
 msgid "Masquerade address"
 msgstr "マスカレードアドレス"
+
+msgid "Max Protocol"
+msgstr "最大プロトコル"
 
 msgid "Max. TTL"
 msgstr "最大 TTL"
@@ -2901,6 +2913,9 @@ msgstr "NOPIN 送信間隔の秒数(初期値は%d秒)"
 msgid "NOT YET AVAILABLE"
 msgstr "まだ利用可能ではありません"
 
+msgid "NT1"
+msgstr "NT1"
+
 msgid "NTP time server"
 msgstr "NTP サーバ"
 
@@ -2950,6 +2965,9 @@ msgstr "ネットワーク"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "Never - 電源モードに関わらず、デバイスをポーリング (チェック) します。これは、スピンダウンしているディスクに対してのチェックが行われる際にスピンアップする可能性があります。"
+
+msgid "Never - default"
+msgstr "Never - デフォルト"
 
 msgid "New Device"
 msgstr "新しいデバイス"
@@ -3675,6 +3693,12 @@ msgstr "S.M.A.R.T. 拡張オプション"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. ログ"
+
+msgid "SMB2"
+msgstr "SMB2"
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr "SMB2 は Windows 7、Vista のような最新OS向けです。NT1 は XP のようなレガシーOS向けです。"
 
 msgid "SNMP"
 msgstr "SNMP"

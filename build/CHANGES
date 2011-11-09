@@ -15,6 +15,8 @@ Majors changes:
 - Add ZFS snapshot/clone setting pages.
 - Add ZFS Auto Snapshot. (daily)
 - Add Shadow Copy. (ZFS snapshot only)
+- Upgrade samba to 3.6.1.
+- Add SMB2 and user authentication as default.
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.
@@ -23,9 +25,9 @@ Minors changes:
 - Add some utility commands.
 - Upgrade ataidle to 2.6.
 - Upgrade transmission to 2.42.
-- Upgrade samba to 3.5.11.
 - Upgrade smartmontools to 5.42.
 - Upgrade proftpd to 1.3.3f.
+- Add ability to set guest account mapping.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.

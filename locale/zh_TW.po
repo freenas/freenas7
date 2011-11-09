@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2010-07-18 17:46+0000\n"
 "Last-Translator: Yu - Sian , Liu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -584,6 +584,9 @@ msgstr "備份檔"
 
 msgid "Backup/Restore"
 msgstr "備份/還原"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "平衡演算法"
@@ -2434,6 +2437,9 @@ msgstr "無效的檔案格式"
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "'只允許匿名使用者'與'只允許本地端使用者存取'並不能夠同時選取。"
 
@@ -2733,11 +2739,19 @@ msgstr "製造商"
 msgid "Map all users to root"
 msgstr "所有人視為root"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "對應到本地使用者"
+
 msgid "Map to user"
 msgstr "對應到本地使用者"
 
 msgid "Masquerade address"
 msgstr "偽裝位址"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "協定"
 
 msgid "Max. TTL"
 msgstr "Max. TTL"
@@ -2920,6 +2934,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr ""
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP時間伺服器"
 
@@ -2969,6 +2986,9 @@ msgstr "網路"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "永不 - 永遠不管目標磁碟的電源模式而進行檢查。"
+
+msgid "Never - default"
+msgstr ""
 
 msgid "New Device"
 msgstr "新裝置"
@@ -3695,6 +3715,12 @@ msgstr "S.M.A.R.T. 額外選項"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. 記錄"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

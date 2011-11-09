@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Αντίγραφο ασφαλείας"
 
 msgid "Backup/Restore"
 msgstr "Φύλαξη/Επαναφορά"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Αλγόριθμος ισορροπίας"
@@ -2437,6 +2440,9 @@ msgstr "Άκυρη μορφή αρχείου."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr ""
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr ""
 
@@ -2736,11 +2742,19 @@ msgstr "Κατασκευαστής"
 msgid "Map all users to root"
 msgstr "Αντιστοίχηση όλων των χρηστών στο root"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Αντιστοίχηση σε χρήστη"
+
 msgid "Map to user"
 msgstr "Αντιστοίχηση σε χρήστη"
 
 msgid "Masquerade address"
 msgstr "Μεταμφίεση διεύθυνσης"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Πρωτόκολλο"
 
 msgid "Max. TTL"
 msgstr "Max. TTL"
@@ -2923,6 +2937,9 @@ msgstr ""
 msgid "NOT YET AVAILABLE"
 msgstr "ΔΕΝ ΕΙΝΑΙ ΑΚΟΜΗ ΔΙΑΘΕΣΙΜΟ"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "διακομιστής ώρας NTP"
 
@@ -2971,6 +2988,9 @@ msgid "Networks"
 msgstr "Δίκτυα"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
+
+msgid "Never - default"
 msgstr ""
 
 msgid "New Device"
@@ -3698,6 +3718,12 @@ msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "Αρχείο καταγραφής S.M.A.R.T."
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"

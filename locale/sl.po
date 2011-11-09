@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 05:04+0000\n"
+"POT-Creation-Date: 2011-11-10 02:20+0000\n"
 "PO-Revision-Date: 2010-12-19 11:18+0000\n"
 "Last-Translator: Matic Gradišer <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -583,6 +583,9 @@ msgstr "Varnostna kopija"
 
 msgid "Backup/Restore"
 msgstr "Shrani/Naloži"
+
+msgid "Bad User - non existing users"
+msgstr ""
 
 msgid "Balance algorithm"
 msgstr "Algoritem ravnotežja"
@@ -2438,6 +2441,9 @@ msgstr "Napačen format datoteke."
 msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Napačna velikost bloka. Biti more med %d in %d."
 
+msgid "It cannot be used combining SMB2 and Anonymous."
+msgstr ""
+
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
 msgstr "Hkrati ne morete omogočiti 'samo anonimne uporabnike' in 'samo lokalne uporabnike'."
 
@@ -2737,11 +2743,19 @@ msgstr "Proizvajalec"
 msgid "Map all users to root"
 msgstr "Dodaj vse uporabnike k root-u"
 
+#, fuzzy
+msgid "Map to guest"
+msgstr "Dodeli uporabniku"
+
 msgid "Map to user"
 msgstr "Dodeli uporabniku"
 
 msgid "Masquerade address"
 msgstr "Prikrij naslove"
+
+#, fuzzy
+msgid "Max Protocol"
+msgstr "Protokol"
 
 msgid "Max. TTL"
 msgstr "Največji TTL"
@@ -2924,6 +2938,9 @@ msgstr "NOPIN interval med pošiljanjem v sekundah (%d privzeto)."
 msgid "NOT YET AVAILABLE"
 msgstr "ŠE NI NA VOLJO"
 
+msgid "NT1"
+msgstr ""
+
 msgid "NTP time server"
 msgstr "NTP časovni strežnik"
 
@@ -2973,6 +2990,9 @@ msgstr "Omrežja"
 
 msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr "Nikoli ne preveri (poll) naprave, neglede v katerem stanju je. To lahko povzroči zagon diska, če je pred tem že izklopljen."
+
+msgid "Never - default"
+msgstr ""
 
 msgid "New Device"
 msgstr "Nova naprava"
@@ -3699,6 +3719,12 @@ msgstr "S.M.A.R.T. dodatne možnosti"
 
 msgid "S.M.A.R.T. log"
 msgstr "S.M.A.R.T. dnevnik"
+
+msgid "SMB2"
+msgstr ""
+
+msgid "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
+msgstr ""
 
 msgid "SNMP"
 msgstr "SNMP"
