@@ -37,6 +37,7 @@
 */
 require_once("functions.inc");
 require_once("util.inc");
+require_once("xmlparse.inc");
 
 // Mount the CDROM.
 // Return 0 if successful, otherwise 1
@@ -288,6 +289,55 @@ function install_upgrade_full($harddrive)
 		return 1;
 	}
 	mwexec("/bin/rm -f -r {$mntpath}");
+
+	return 0;
+}
+
+// Check version of the hard drive/CF
+// Return 0 if successful, otherwise 1
+function install_check_version($disk)
+{
+	global $g;
+
+	$mnt_cf_disk = "/mnt/chkver_{$disk}";
+
+	write_console("Check version.\n");
+
+	/* Creating temporary directory for the disk containing the version file. */
+	if (1 == mwexec("/bin/mkdir -p {$mnt_cf_disk}")) {
+		write_console("Error: Failed to create '{$mnt_cf_disk}'!\n");
+		return 1;
+	}
+
+	/* Mount the drive to be upgraded (readonly mode). */
+	if (1 == mwexec("/sbin/mount -r /dev/{$disk} {$mnt_cf_disk}")) {
+		write_console("Error: Failed to mount device '{$disk}'!\n");
+		return 1;
+	}
+
+	/* Load configuration file into array. */
+	$tmp_config = parse_xml_config("{$mnt_cf_disk}/conf/config.xml", $g['xml_rootobj']);
+	if (false === $tmp_config) {
+		write_console("Error: Failed to load config.xml.\n");
+		return 1;
+	}
+	/* Check config version */
+	if ((float)$tmp_config['version'] < (float)9.0) {
+		write_console("Error: Does not support upgrading form this version.\n");
+		return 1;
+	}
+
+	/* Unmount the drive to be upgraded */
+	if (1 == mwexec("/sbin/umount {$mnt_cf_disk}")) {
+		write_console("Error: Failed to unmount '{$mnt_cf_disk}'!\n");
+		return 1;
+	}
+
+	/* Cleanup */
+	if (1 == mwexec("/bin/rm -f -r {$mnt_cf_disk}")) {
+		write_console("Error: Failed to remove temporary data!\n");
+		return 1;
+	}
 
 	return 0;
 }

@@ -98,6 +98,12 @@ if (install_mount_cd($cdrom)) {
 	exit(0);
 }
 
+if (install_check_version("{$devinfo['device']}{$devinfo['partition']}")) {
+	install_unmount_cd();
+	tui_wait_keypress("There was a problem while checking version.");
+	exit(0);
+}
+
 if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
 	install_unmount_cd();
 	tui_wait_keypress("There was a problem during configuration file backup.");
