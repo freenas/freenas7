@@ -171,13 +171,13 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         The authors of FreeNAS would like to thank the authors of these software
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br />
-        Copyright &copy; 1995-2010 The FreeBSD Project. All rights reserved.</p>
+        Copyright &copy; 1995-2011 The FreeBSD Project. All rights reserved.</p>
 
       <p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br />
         Copyright &copy; 2006-2009 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br />
-        Copyright &copy; 2001-2010 The PHP Group. All rights reserved.</p>
+        Copyright &copy; 2001-2011 The PHP Group. All rights reserved.</p>
 
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://www.lighttpd.net</a>)<br />
         Copyright &copy; 2004 by Jan Kneschke (jan@kneschke.de). All rights reserved.</p>
@@ -192,7 +192,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 2007 Free Software Foundation</p>
 
       <p> ProFTPD - Highly configurable FTP server (<a href="http://www.proftpd.org" target="_blank">http://www.proftpd.org</a>)<br />
-        Copyright &copy; 1999, 2000-2010 The ProFTPD Project</p>
+        Copyright &copy; 1999, 2000-2011 The ProFTPD Project</p>
 
       <p>tftp-hpa (<a href="http://www.kernel.org/pub/software/network/tftp" target="_blank">http://www.kernel.org/pub/software/network/tftp</a>)<br />
        Copyright &copy; 1999, 2000-2009 The tftp-hpa series is maintained by H. Peter Anvin <hpa@zytor.com>.</p>
@@ -213,7 +213,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 2002-2010 Bruce Allen.</p>
 
       <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br />
-        Copyright &copy; 2005-2010 Daniel Braniss (danny@cs.huji.ac.il).</p>
+        Copyright &copy; 2005-2011 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
       <p>istgt - iSCSI target for FreeBSD (<a href="http://shell.peach.ne.jp/aoyama" target="_blank">http://shell.peach.ne.jp/aoyama</a>)<br />
         Copyright &copy; 2008-2011 Daisuke Aoyama (aoyama@peach.ne.jp). All rights reserved.</p>
