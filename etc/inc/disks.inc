@@ -890,7 +890,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel, $aft4k
 
 			// Create filesystem
 			echo gettext("Creating filesystem with 'Soft Updates'")."...\n";
-			$param = "-U";
+			$param = "-U -j";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			if (!empty($minspace))
