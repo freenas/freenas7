@@ -142,7 +142,7 @@ function zfsvolume_process_updatenotification($mode, $data) {
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($volumev['pool'][0]);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($volumev['name']);?>&nbsp;</td>
-						<?php if (UPDATENOTIFY_MODE_MODIFIED == $notificationmode):?>
+						<?php if (UPDATENOTIFY_MODE_MODIFIED == $notificationmode || UPDATENOTIFY_MODE_NEW == $notificationmode):?>
 						<td class="listr"><?=htmlspecialchars($volumev['volsize']);?>&nbsp;</td>
 						<?php else:?>
 						<td class="listr"><?=htmlspecialchars(get_volsize($volumev['pool'][0], $volumev['name']));?>&nbsp;</td>
