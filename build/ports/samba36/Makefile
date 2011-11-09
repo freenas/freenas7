@@ -158,15 +158,19 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcontrol ${FREENAS_ROOTFS}/usr/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbtree ${FREENAS_ROOTFS}/usr/bin
 
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/eventlogadm ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbadd ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbdel ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbedit ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbmodify ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbrename ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/ldbsearch ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/nmblookup ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/profiles ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/sharesec ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcacls ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcquotas ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbget ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbspool ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/testparm ${FREENAS_ROOTFS}/usr/local/bin
 #	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/tdbbackup ${FREENAS_ROOTFS}/usr/local/bin
@@ -190,18 +194,22 @@ do-install:
 
 	@${CP} -pv $(WRKSRC)/bin/acl_tdb.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/acl_xattr.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/aio_fork.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/audit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/cacheprime.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/cap.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/catia.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/commit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/crossrename.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/default_quota.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/dirsort.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/fake_perms.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/full_audit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/linux_xfs_sgid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/preopen.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/readonly.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/scannedonly.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/shadow_copy.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/shadow_copy2.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/shadow_copy3.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
@@ -209,6 +217,7 @@ do-install:
 	@${CP} -pv $(WRKSRC)/bin/streams_depot.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/streams_xattr.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/syncops.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/time_audit.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/xattr_tdb.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 .if ${OSVERSION} > 800000
 	@${CP} -pv $(WRKSRC)/bin/zfsacl.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
@@ -216,6 +225,7 @@ do-install:
 
 	@${CP} -pv ${WRKSRC}/bin/ad.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 	@${CP} -pv ${WRKSRC}/bin/adex.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${CP} -pv ${WRKSRC}/bin/autorid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 	@${CP} -pv ${WRKSRC}/bin/hash.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 	@${CP} -pv ${WRKSRC}/bin/tdb2.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap

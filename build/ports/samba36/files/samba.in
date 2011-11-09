@@ -1,8 +1,8 @@
 #!/bin/sh
-# Copyright (C) 2005-2010 FreeNAS Project. All rights reserved.
+# Copyright (C) 2005-2011 FreeNAS Project. All rights reserved.
 # Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
-# Modified for AIO/Samba3.5/AD by Daisuke Aoyama (aoyama@peach.ne.jp)
+# Modified for AIO/Samba3.5/3.6/AD/SMB2 by Daisuke Aoyama (aoyama@peach.ne.jp)
 
 # PROVIDE: nmbd smbd winbindd
 # REQUIRE: NETWORKING SERVERS DAEMON resolv
