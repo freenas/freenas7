@@ -505,6 +505,9 @@ usr/sbin/chroot
 ## cron -- daemon to execute scheduled commands (Vixie Cron)
 usr/sbin/cron
 
+## daemon -- run detached from the controlling terminal
+usr/sbin/daemon
+
 ## pciconf -- diagnostic utility for the PCI bus
 usr/sbin/pciconf
 
