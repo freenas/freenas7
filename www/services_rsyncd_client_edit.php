@@ -3,11 +3,11 @@
 /*
 	services_rsyncd_client_edit.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -85,6 +85,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rsyncclient, "
 	$pconfig['quiet'] = isset($a_rsyncclient[$cnid]['options']['quiet']);
 	$pconfig['perms'] = isset($a_rsyncclient[$cnid]['options']['perms']);
 	$pconfig['xattrs'] = isset($a_rsyncclient[$cnid]['options']['xattrs']);
+	$pconfig['reversedirection'] = isset($a_rsyncclient[$cnid]['options']['reversedirection']);
 	$pconfig['extraoptions'] = $a_rsyncclient[$cnid]['options']['extraoptions'];
 } else {
 	$pconfig['enable'] = true;
@@ -99,6 +100,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_rsyncclient, "
 	$pconfig['quiet'] = false;
 	$pconfig['perms'] = false;
 	$pconfig['xattrs'] = false;
+	$pconfig['reversedirection'] = false;
 	$pconfig['extraoptions'] = "";
 }
 
@@ -150,6 +152,7 @@ if ($_POST) {
 		$rsyncclient['options']['quiet'] = $_POST['quiet'] ? true : false;
 		$rsyncclient['options']['perms'] = $_POST['perms'] ? true : false;
 		$rsyncclient['options']['xattrs'] = $_POST['xattrs'] ? true : false;
+		$rsyncclient['options']['reversedirection'] = $_POST['reversedirection'] ? true : false;
 		$rsyncclient['options']['extraoptions'] = $_POST['extraoptions'];
 
 		if (isset($uuid) && (FALSE !== $cnid)) {
@@ -218,7 +221,7 @@ function delete_change() {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Rsync job"), $pconfig['enable'] ? true : false, gettext("Enable"));?>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share (destination)");?></td>
 						<td width="78%" class="vtable">
 							<input name="localshare" type="text" class="formfld" id="localshare" size="60" value="<?=htmlspecialchars($pconfig['localshare']);?>" />
 							<input name="browse" type="button" class="formbtn" id="Browse" onclick='ifield = form.localshare; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&amp;sd=<?=$g['media_path'];?>", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." /><br />
@@ -233,7 +236,7 @@ function delete_change() {
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Remote module name");?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Remote module (source)");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="remoteshare" type="text" class="formfld" id="remoteshare" size="20" value="<?=htmlspecialchars($pconfig['remoteshare']);?>" />
 			      </td>
@@ -418,6 +421,7 @@ function delete_change() {
 					</tr>
 					<?php html_checkbox("perms", gettext("Preserve permissions"), $pconfig['perms'] ? true : false, gettext("This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."), "", false);?>
 					<?php html_checkbox("xattrs", gettext("Preserve extended attributes"), $pconfig['xattrs'] ? true : false, gettext("This option causes rsync to update the remote extended attributes to be the same as the local ones."), "", false);?>
+					<?php html_checkbox("reversedirection", gettext("Reverse direction"), $pconfig['reversedirection'] ? true : false, gettext("This option causes rsync to copy the local data to the remote server."), "", false);?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to rsync (usually empty).") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://rsync.samba.org/ftp/rsync/rsync.html"), false, 40);?>
 	      </table>
 				<div id="submit">

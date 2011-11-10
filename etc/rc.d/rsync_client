@@ -34,7 +34,12 @@ if [ 0 -lt ${_scriptnum} ]; then
 		# Generate the shell script used by cron
 		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_scriptnum}]" \
 			-o "#!/bin/sh" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;Start of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
+			-i "count(options/reversedirection) = 0" \
+				-v "concat('/usr/bin/logger -p local4.notice &quot;Start of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
+			-b \
+			-i "count(options/reversedirection) > 0" \
+				-v "concat('/usr/bin/logger -p local4.notice &quot;Start of remote RSYNC synchronization from ',localshare,' to ',remoteshare,' on ',rsyncserverip,'&quot;')" -n \
+			-b \
 			-o "if [ -r ${_rsyncflag} ]; then" -n \
 			-o "/usr/bin/logger -p local4.notice &quot;Previous client synchronization still running... exiting&quot;" -n \
 			-o "exit" -n \
@@ -54,14 +59,29 @@ if [ 0 -lt ${_scriptnum} ]; then
 				-i "count(xattrs) > 0" -o "--xattrs " -b \
 				-i "string-length(extraoptions) > 0" -v "concat(extraoptions,' ')" -b \
 			-b \
-			-i "not(contains(rsyncserverip,':'))" \
-				-v "concat('&quot;rsync://',rsyncserverip,'/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
+			-i "count(options/reversedirection) = 0" \
+				-i "not(contains(rsyncserverip,':'))" \
+					-v "concat('&quot;rsync://',rsyncserverip,'/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
+				-b \
+				-i "contains(rsyncserverip,':')" \
+					-v "concat('&quot;rsync://\\[',rsyncserverip,'\\]/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
+				-b \
 			-b \
-			-i "contains(rsyncserverip,':')" \
-				-v "concat('&quot;rsync://\\[',rsyncserverip,'\\]/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
+			-i "count(options/reversedirection) > 0" \
+				-i "not(contains(rsyncserverip,':'))" \
+					-v "concat('&quot;',localshare,'&quot; &quot;rsync://',rsyncserverip,'/',remoteshare,'&quot;')" -n \
+				-b \
+				-i "contains(rsyncserverip,':')" \
+					-v "concat('&quot;',localshare,'&quot; &quot;rsync://\\[',rsyncserverip,'\\]/',remoteshare,'&quot;')" -n \
+				-b \
 			-b \
 			-o "/bin/rm -f ${_rsyncflag}" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
+			-i "count(options/reversedirection) = 0" \
+				-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
+			-b \
+			-i "count(options/reversedirection) > 0" \
+				-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from ',localshare,' to ',remoteshare,' on ',rsyncserverip,'&quot;')" \
+			-b \
 			${configxml_file} | /usr/local/bin/xml unesc > "${_rsyncscript}"
 
 		# Set owner and execute rights of the script
