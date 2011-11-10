@@ -266,6 +266,7 @@ if (isset($_POST['import_config']))
 		'pools' => array(),
 		'datasets' => array(),
 		'volumes' => array(),
+		'autosnapshots' => array(),
 	);
 	if (!isset($_POST['vol'])) { $_POST['vol'] = array(); }
 	if (!isset($_POST['dset'])) { $_POST['dset'] = array(); }
@@ -345,6 +346,9 @@ if (isset($_POST['import_config']))
 			}
 		}
 		
+		if (isset($_POST['leave_autosnapshots'])) {
+			$cfg['zfs']['autosnapshots'] = $config['zfs']['autosnapshots'];
+		}
 		$config['zfs'] = $cfg['zfs'];
 		$config['disks'] = $cfg['disks'];
 		updatenotify_set('zfs_import_config', UPDATENOTIFY_MODE_UNKNOWN, true);
@@ -510,6 +514,7 @@ if (!$health)
 
 				<table width="100%" border="0" cellpadding="5" cellspacing="0">
 					<?php html_titleline(gettext('Options'));?>
+					<?php html_checkbox("leave_autosnapshots", gettext("Leave auto snapshot configuration"), true, gettext("Leave already configured auto snapshots."), "", false);?>
 					<?php html_checkbox("import_disks", gettext("Import disks"), true, gettext("Import disks used in configuration."), "", false);?>
 					<?php html_checkbox("import_disks_overwrite", gettext("Overwrite disks configuration"), false, gettext("Overwrite already configured disks (only affects filesystem value)."), "", false);?>
 				</table>
