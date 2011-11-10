@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2010-06-29 03:57+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -2526,6 +2526,14 @@ msgstr ""
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr ""
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "Delete Host"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "Запази конфигурацията"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
 
@@ -2607,9 +2615,6 @@ msgstr "Local Master Browser"
 
 msgid "Local User"
 msgstr "локален потребител"
-
-msgid "Local share"
-msgstr ""
 
 msgid "Local share (destination)"
 msgstr "Локален дял (дестинация)"
@@ -3648,6 +3653,9 @@ msgid "Retry"
 msgstr "Нов опит"
 
 msgid "Reverse DNS lookup"
+msgstr ""
+
+msgid "Reverse direction"
 msgstr ""
 
 msgid "Romanian"
@@ -4913,6 +4921,9 @@ msgid "This name is used to uniquely identify your UPS on this system."
 msgstr ""
 
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
+msgstr ""
+
+msgid "This option causes rsync to copy the local data to the remote server."
 msgstr ""
 
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."

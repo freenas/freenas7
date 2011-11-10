@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2011-06-02 16:12+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -2531,6 +2531,14 @@ msgstr "Lettiska"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr "Lämna '%s' för oformaterade diskar och formatera dem med <a href='%s'> formata </ a> menyn."
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "Ta bort värd"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "Trådlös konfiguration"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Nivå 1 - Lägsta strömförbrukning med Standby (spindown)"
 
@@ -2613,9 +2621,6 @@ msgstr "Lokal prioriterad bläddrare (Local Master Browser)"
 
 msgid "Local User"
 msgstr "Lokal användare"
-
-msgid "Local share"
-msgstr "Lokal utdelning"
 
 msgid "Local share (destination)"
 msgstr "Lokal utdelning (destination)"
@@ -3655,6 +3660,10 @@ msgstr "Försök igen"
 
 msgid "Reverse DNS lookup"
 msgstr "Omvänd DNS-uppslagning"
+
+#, fuzzy
+msgid "Reverse direction"
+msgstr "Upprepa i kataloger."
 
 msgid "Romanian"
 msgstr "Rumänska"
@@ -4923,6 +4932,10 @@ msgstr "Detta namnet används för att unikt identifiera din UPS-enhet, på det 
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr "Detta alternativ tillåter användare och grupper att få tillgång till en delning som skall fastställas. Användare och grupper anges, avgränsade med kommatecken. Grupper utses genom ett @ prefix."
 
+#, fuzzy
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr "Denna funktion gör att rsync uppdaterar de utökade attributen på målet så att dom överensstämmer med dom lokala."
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "Denna funktion gör att rsync uppdaterar de utökade attributen på målet så att dom överensstämmer med dom lokala."
 
@@ -5689,6 +5702,9 @@ msgstr "umount"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "Lokal utdelning"
 
 #, fuzzy
 #~ msgid "Volume size"

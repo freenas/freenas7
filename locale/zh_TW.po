@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2010-07-18 17:46+0000\n"
 "Last-Translator: Yu - Sian , Liu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -2528,6 +2528,14 @@ msgstr "拉脫維亞語"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr ""
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "刪除主機資訊"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "無線網路組態"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
 
@@ -2610,9 +2618,6 @@ msgstr "Local Master Browser"
 
 msgid "Local User"
 msgstr "本機使用者"
-
-msgid "Local share"
-msgstr "本機分享區"
 
 msgid "Local share (destination)"
 msgstr "本地端分享(目標)"
@@ -3652,6 +3657,10 @@ msgstr "重試"
 
 msgid "Reverse DNS lookup"
 msgstr ""
+
+#, fuzzy
+msgid "Reverse direction"
+msgstr "包含所有子目錄。"
 
 msgid "Romanian"
 msgstr "羅馬尼亞文"
@@ -4919,6 +4928,10 @@ msgstr "這個名稱用來做為您的 UPS 在此系統中的唯一識別。"
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 
+#, fuzzy
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr "這個選項會讓 rsync 將遠端的擴充屬性更新為與本地端的相同。"
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "這個選項會讓 rsync 將遠端的擴充屬性更新為與本地端的相同。"
 
@@ -5684,6 +5697,9 @@ msgstr "卸載"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "本機分享區"
 
 #, fuzzy
 #~ msgid "Volume size"

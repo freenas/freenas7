@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2011-06-12 15:03+0100\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -2531,6 +2531,14 @@ msgstr "Lettisch"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr "Lass '%s' für unformatierte Festplatten und formatiere sie mit dem <a href='%s'>Formatieren</a> Menü."
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "Lösche Host"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "WLAN Einstellungen"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Level 1 - Minimaler Stromverbrauch mit Standby ('spindown')"
 
@@ -2613,9 +2621,6 @@ msgstr "Local Master Browser"
 
 msgid "Local User"
 msgstr "Lokaler Benutzer"
-
-msgid "Local share"
-msgstr "Lokale Freigabe"
 
 msgid "Local share (destination)"
 msgstr "Lokale Freigabe (Ziel)"
@@ -3655,6 +3660,10 @@ msgstr "Wiederholen"
 
 msgid "Reverse DNS lookup"
 msgstr "Umgekehrte DNS Auflösung"
+
+#, fuzzy
+msgid "Reverse direction"
+msgstr "Unterordner einbeziehen."
 
 msgid "Romanian"
 msgstr "Rumänisch"
@@ -4923,6 +4932,10 @@ msgstr "Dieser Name wird benutzt zur eindeutigen Identifikation der UPS des Syst
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr "Diese Einstellung erlaubt die Angabe von Benutzern und Gruppen, die auf eine Freigabe zugreifen dürfen. Benutzer und Gruppen werden durch Komma getrennt angegeben. Gruppen werden durch ein vorangestelltes @ gekennzeichnet."
 
+#, fuzzy
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr "Diese Option bewirkt, dass Rsync die erweiterten Attribute des entfernten Quelle genauso setzt, wie die der Lokalen."
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "Diese Option bewirkt, dass Rsync die erweiterten Attribute des entfernten Quelle genauso setzt, wie die der Lokalen."
 
@@ -5689,6 +5702,9 @@ msgstr "Aushängen"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "Lokale Freigabe"
 
 #, fuzzy
 #~ msgid "Volume size"

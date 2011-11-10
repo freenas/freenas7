@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2011-06-12 09:38+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: \n"
@@ -2531,6 +2531,14 @@ msgstr "Lets"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr "Behoud '%s' voor ongeformatteerde harde schijven en formatteer deze via het <a href='%s'>Formatteren</a> menu."
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "Host verwijderen"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "Draadloos cofiguratie"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Niveau 1 - Minimaal energieverbruik met Standby (spin-down)"
 
@@ -2613,9 +2621,6 @@ msgstr "Lokaal Hoofd Browser"
 
 msgid "Local User"
 msgstr "Lokale gebruiker"
-
-msgid "Local share"
-msgstr "Lokaal gedeeld"
 
 msgid "Local share (destination)"
 msgstr "Lokaal gedeeld (bestemming)"
@@ -3655,6 +3660,10 @@ msgstr "Opnieuw proberen"
 
 msgid "Reverse DNS lookup"
 msgstr "Reverse DNS lookup"
+
+#, fuzzy
+msgid "Reverse direction"
+msgstr "Recursief naar mappen."
 
 msgid "Romanian"
 msgstr "Roemeens"
@@ -4923,6 +4932,10 @@ msgstr "Geef hier een naam die gebruikt wordt om op dit systeem uniek uw UPS te 
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr "Deze optie staat de gebruikers en de groepen toe die tot een te specificeren deling toegang hebben. De gebruikers en de groepen worden gespecificeerd, afgebakend door komma's. De groepen worden aangewezen door een @ voorvoegsel."
 
+#, fuzzy
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr "Deze optie zorgt er voor dat rsync de remote externe attributen bijwerkt die het zelfde zijn als de lokale attributen."
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "Deze optie zorgt er voor dat rsync de remote externe attributen bijwerkt die het zelfde zijn als de lokale attributen."
 
@@ -5689,6 +5702,9 @@ msgstr "loskoppelen"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "Lokaal gedeeld"
 
 #, fuzzy
 #~ msgid "Volume size"

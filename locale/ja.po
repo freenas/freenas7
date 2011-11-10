@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
-"PO-Revision-Date: 2011-11-10 02:46+0900\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
+"PO-Revision-Date: 2011-11-11 06:21+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -2510,6 +2510,12 @@ msgstr "ラトビア語"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr "フォーマットしたくない場合は '%s' を選択し、後で <a href='%s'>フォーマット</a> メニューからフォーマットして下さい。"
 
+msgid "Leave already configured auto snapshots."
+msgstr "既存の自動スナップショットを残します。"
+
+msgid "Leave auto snapshot configuration"
+msgstr "自動スナップショットの保存"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "レベル 1 - スタンバイ (スピンダウン) の有る最小の消費電力"
 
@@ -2591,9 +2597,6 @@ msgstr "ローカルマスタブラウザ"
 
 msgid "Local User"
 msgstr "ローカルユーザ"
-
-msgid "Local share"
-msgstr "ローカル共有"
 
 msgid "Local share (destination)"
 msgstr "ローカル共有 (接続先)"
@@ -3630,6 +3633,9 @@ msgstr "リトライ"
 
 msgid "Reverse DNS lookup"
 msgstr "DNS 逆引き参照"
+
+msgid "Reverse direction"
+msgstr "逆方向"
 
 msgid "Romanian"
 msgstr "ルーマニア語"
@@ -4895,6 +4901,9 @@ msgstr "この名前は、独自にこのシステム上で UPS を識別する�
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr "共有にアクセスするユーザとグループを指定する事が可能です。カンマで区切ってユーザとグループを指定出来ます。グループはプレフィックスに @ を付けて明示します。"
 
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr "このオプションは rsync に、ローカルデータをリモートサーバにコピーさせます。"
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "このオプションは rsync に、ソースと同一になるように宛て先の拡張属性をアップデートさせます。"
 
@@ -5655,6 +5664,9 @@ msgstr "アンマウント"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "ローカル共有"
 
 #~ msgid "Volume size"
 #~ msgstr "ボリュームサイズ"

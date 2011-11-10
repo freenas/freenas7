@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -2531,6 +2531,14 @@ msgstr "Λετονικά"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr "Άφησε '%s' για τους αδιαμόρφωτους δίσκους και διαμόρφωσή τους με τη χρήση του μενού <a href='%s'>διαμόρφωση</a>."
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "Διαγραφή υπολογιστή"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "Ασύρματη ρύθμιση"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Επίπεδο 1 - Ελάχιστη χρήση ενέργειας στην κατάσταση ετοιμότητας (spindown)"
 
@@ -2613,9 +2621,6 @@ msgstr "Κεντρικός Τοπικός Περιηγητής"
 
 msgid "Local User"
 msgstr "Τοπικός Χρήστης"
-
-msgid "Local share"
-msgstr "Τοπικό κοινόχρηστο"
 
 msgid "Local share (destination)"
 msgstr "Τοπικά κοινόχρηστα (προορισμός)"
@@ -3655,6 +3660,10 @@ msgstr "Επανάληψη"
 
 msgid "Reverse DNS lookup"
 msgstr ""
+
+#, fuzzy
+msgid "Reverse direction"
+msgstr "Κατεύθυνση"
 
 msgid "Romanian"
 msgstr "Ρουμανικά"
@@ -4922,6 +4931,9 @@ msgstr "Αυτό το όνομα χρησιμοποιείται για την μ
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr ""
 
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr ""
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr ""
 
@@ -5688,6 +5700,9 @@ msgstr "αποπροσάρτηση"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "Τοπικό κοινόχρηστο"
 
 #, fuzzy
 #~ msgid "Volume size"

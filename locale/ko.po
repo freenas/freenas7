@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-10 02:20+0000\n"
+"POT-Creation-Date: 2011-11-11 06:17+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -2531,6 +2531,14 @@ msgstr "라트비아어"
 msgid "Leave '%s' for unformated disks and format them using <a href='%s'>format</a> menu."
 msgstr "포맷 되지 않은 디스크에서는 '%s' 상태로 두고 <a href='%s'>포맷</a> 메뉴를 이용해서 포맷 하십시오."
 
+#, fuzzy
+msgid "Leave already configured auto snapshots."
+msgstr "Host 삭제"
+
+#, fuzzy
+msgid "Leave auto snapshot configuration"
+msgstr "무선 설정"
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "레벨 1 - 대기 상태에서 최소 전원 이용(회전 중지)"
 
@@ -2613,9 +2621,6 @@ msgstr "로컬 마스터 브라우저"
 
 msgid "Local User"
 msgstr "로컬 사용자"
-
-msgid "Local share"
-msgstr "로컬 공유"
 
 msgid "Local share (destination)"
 msgstr "로컬 공유(대상)"
@@ -3655,6 +3660,10 @@ msgstr "재시도"
 
 msgid "Reverse DNS lookup"
 msgstr "DNS 역 방향 조회"
+
+#, fuzzy
+msgid "Reverse direction"
+msgstr "디렉터리로 재귀 순환."
 
 msgid "Romanian"
 msgstr "루마니아어"
@@ -4923,6 +4932,10 @@ msgstr "이 이름은 이 시스템에서 UPS를 유일하게 식별하기 위�
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr "이 옵션은 공유를 접근할 사용자와 그룹을 명세 하도록 해줍니다. 사용자와 그룹은 콤마로 분리해서 명세 됩니다. 그룹은 @ 접미사를 붙여서 표기됩니다."
 
+#, fuzzy
+msgid "This option causes rsync to copy the local data to the remote server."
+msgstr "이 옵션은 rsync가 원격 확장 속성을 로컬 확장 속성과 동일하게 갱신하도록 해줍니다."
+
 msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
 msgstr "이 옵션은 rsync가 원격 확장 속성을 로컬 확장 속성과 동일하게 갱신하도록 해줍니다."
 
@@ -5689,6 +5702,9 @@ msgstr "마운트 해제"
 
 msgid "upriv"
 msgstr "upriv"
+
+#~ msgid "Local share"
+#~ msgstr "로컬 공유"
 
 #, fuzzy
 #~ msgid "Volume size"
