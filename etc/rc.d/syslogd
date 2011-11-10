@@ -30,7 +30,7 @@ mkconf_cmd="syslogd_mkconf"
 
 # Check if syslog'ing to remote syslog server is disabled
 if ! configxml_isset //syslogd/remote/enable; then
-	syslogd_flags="-ss"
+	syslogd_flags="-8 -ss"
 	command_args="-f ${syslogd_config}"
 fi
 
