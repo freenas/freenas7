@@ -49,6 +49,7 @@
     SUBDIR += transmission
     SUBDIR += unison
     SUBDIR += vbox-additions
+    SUBDIR += wol
     SUBDIR += xmlstarlet
     SUBDIR += zoneinfo
 

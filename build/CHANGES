@@ -32,6 +32,7 @@ Minors changes:
 - Use 8-bit data for syslogd.
 - Preserve ZFS auto snapshot when importing ZFS config.
 - Add reverse direction of rsync task.
+- Add WOL utility.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
