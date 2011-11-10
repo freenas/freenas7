@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 06:17+0000\n"
+"POT-Creation-Date: 2011-11-11 06:59+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1644,6 +1644,10 @@ msgstr "Ενεργοποίηση πιστοποίησης SMTP."
 
 msgid "Enable TLS/SSL connections."
 msgstr "Ενεργοποίησης  TLS/SSL συνδέσεων."
+
+#, fuzzy
+msgid "Enable ZFS ACL"
+msgstr "Ενεργοποίηση"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
@@ -3320,7 +3324,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Πλατφόρμα"
 
-#, php-format
+#, c-format, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
@@ -4486,7 +4490,7 @@ msgstr "Τα διαπιστευτήρια με την οποία να δεσμε
 msgid "The cron job has been executed successfully."
 msgstr "Η εργασία cron εκτελέστηκε με επιτυχία."
 
-#, php-format
+#, c-format, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4820,7 +4824,7 @@ msgstr "Οι παράμετροι αυτοί προστέθηκαν στο %s."
 msgid "These parameters are added to [Global] section of %s."
 msgstr ""
 
-#, php-format
+#, c-format, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr ""
 
@@ -5025,6 +5029,9 @@ msgid "This will erase ALL data on the selected disks! Do not use this option if
 msgstr "Αυτό θα διαγράψει ΟΛΑ τα δεδομένα των επιλεγμένων δίσκων! Μην χρησιμοποιείτε αυτή την επιλογή αν θέλετε να ξαναπροσθέσετε ένα υπάρχων RAID."
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
+msgstr ""
+
+msgid "This will provide ZFS ACL support. (ZFS only)"
 msgstr ""
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
@@ -5532,6 +5539,9 @@ msgstr "To e-mail σας."
 
 msgid "ZFS"
 msgstr "ZFS"
+
+msgid "ZFS ACL"
+msgstr ""
 
 msgid "ZFS dataset information and status"
 msgstr "Πληροφορίες συνόλου δεδομένων και κατάστασης ZFS"

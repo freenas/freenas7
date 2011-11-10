@@ -3,10 +3,10 @@
 /*
 	services_samba_share_edit.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
-	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
+	Copyright (C) 2006-2011 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -72,6 +72,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['hidedotfiles'] = isset($a_share[$cnid]['hidedotfiles']);
 	$pconfig['shadowcopy'] = isset($a_share[$cnid]['shadowcopy']);
 	$pconfig['shadowformat'] = $a_share[$cnid]['shadowformat'];
+	$pconfig['zfsacl'] = isset($a_share[$cnid]['zfsacl']);
 	$pconfig['hostsallow'] = $a_share[$cnid]['hostsallow'];
 	$pconfig['hostsdeny'] = $a_share[$cnid]['hostsdeny'];
 	if (is_array($a_share[$cnid]['auxparam']))
@@ -88,6 +89,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['hidedotfiles'] = true;
 	$pconfig['shadowcopy'] = true;
 	$pconfig['shadowformat'] = $default_shadowformat;
+	$pconfig['zfsacl'] = false;
 	$pconfig['hostsallow'] = "";
 	$pconfig['hostsdeny'] = "";
 	$pconfig['auxparam'] = "";
@@ -134,6 +136,7 @@ if ($_POST) {
 		$share['hidedotfiles'] = $_POST['hidedotfiles'] ? true : false;
 		$share['shadowcopy'] = $_POST['shadowcopy'] ? true : false;
 		$share['shadowformat'] = $_POST['shadowformat'];
+		$share['zfsacl'] = $_POST['zfsacl'] ? true : false;
 		$share['hostsallow'] = $_POST['hostsallow'];
 		$share['hostsdeny'] = $_POST['hostsdeny'];
 
@@ -248,6 +251,14 @@ if ($_POST) {
 			      <td width="78%" class="vtable">
 			        <input name="shadowformat" type="text" class="formfld" id="shadowformat" size="60" value="<?=htmlspecialchars($pconfig['shadowformat']);?>" /><br />
 			        <span class="vexpl"><?=sprintf(gettext("The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."), $default_shadowformat);?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("ZFS ACL");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="zfsacl" type="checkbox" id="zfsacl" value="yes" <?php if ($pconfig['zfsacl']) echo "checked=\"checked\""; ?> />
+			        <?=gettext("Enable ZFS ACL");?><br />
+			        <span class="vexpl"><?=gettext("This will provide ZFS ACL support. (ZFS only)");?></span>
 			      </td>
 			    </tr>
 			    <tr>

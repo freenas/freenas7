@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 06:17+0000\n"
+"POT-Creation-Date: 2011-11-11 06:59+0000\n"
 "PO-Revision-Date: 2011-06-02 15:39+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1645,6 +1645,10 @@ msgstr "Attiva l'autenticazione SMTP."
 
 msgid "Enable TLS/SSL connections."
 msgstr "Abilita le connessioni TLS/SSL"
+
+#, fuzzy
+msgid "Enable ZFS ACL"
+msgstr "Abilita"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Abilita Zeroconf/Bonjour a notificare i servizi di questa periferica"
@@ -3320,7 +3324,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Piattaforma"
 
-#, php-format
+#, c-format, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "Per favore, controlla la <a href='%s' target='_blank'>documentazione</a>."
 
@@ -4487,7 +4491,7 @@ msgstr "Parola chiave utilizzata per il bind."
 msgid "The cron job has been executed successfully."
 msgstr "Il cron job è stato eseguito con successo."
 
-#, php-format
+#, c-format, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4821,7 +4825,7 @@ msgstr "Questi parametri sono aggiunti a %s."
 msgid "These parameters are added to [Global] section of %s."
 msgstr "Questi parametri sono aggiunti alla sezione [Global] di %s."
 
-#, php-format
+#, c-format, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "Questi parametri sono aggiunti alla sezione [Share] di %s."
 
@@ -5028,6 +5032,9 @@ msgstr "Questo cancellera' tutti i dati sui dischi selezionati! Non utilizzare q
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "Questo cancellerà TUTTI i dati sul disco! Non usare questa opzione se si desidera aggiungere un disco cifrato già esistente."
+
+msgid "This will provide ZFS ACL support. (ZFS only)"
+msgstr ""
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr ""
@@ -5534,6 +5541,9 @@ msgstr "Indirizzo email personale."
 
 msgid "ZFS"
 msgstr "ZFS"
+
+msgid "ZFS ACL"
+msgstr ""
 
 msgid "ZFS dataset information and status"
 msgstr "Informazioni e stato del dataset ZFS"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 06:17+0000\n"
-"PO-Revision-Date: 2011-11-11 06:21+0900\n"
+"POT-Creation-Date: 2011-11-11 06:59+0000\n"
+"PO-Revision-Date: 2011-11-11 07:03+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -1627,6 +1627,9 @@ msgstr "SMTP-AUTHを有効化"
 
 msgid "Enable TLS/SSL connections."
 msgstr "TLS/SSL 接続を有効にします。"
+
+msgid "Enable ZFS ACL"
+msgstr "ZFS ACLを有効化"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Zeroconf/Bonjour でのデバイスのサービスの広告を有効にする"
@@ -3293,7 +3296,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "プラットフォーム"
 
-#, php-format
+#, c-format, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "<a href='%s' target='_blank'>ドキュメント</a> を確認してください。"
 
@@ -4457,7 +4460,7 @@ msgstr "バインドする際に使用するパスワードを入力して下さ
 msgid "The cron job has been executed successfully."
 msgstr "Cron ジョブは正常に実行されました。"
 
-#, php-format
+#, c-format, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr "シャドウコピーサービス用のスナップショットのカスタム書式を指定できます。デフォルト書式はZFS自動スナップショットで使用される %s です。"
 
@@ -4790,7 +4793,7 @@ msgstr "ここで指定したパラメータは %s に追加されます。"
 msgid "These parameters are added to [Global] section of %s."
 msgstr "ここで指定したパラメータは %s の [Global] セクションに追加されます。"
 
-#, php-format
+#, c-format, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "ここで指定したパラメータは %s の [Share] セクションに追加されます。"
 
@@ -4996,6 +4999,9 @@ msgstr "選択したディスクのデータをすべて消去します! 既存�
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "既存の暗号化されたディスクを追加するのに、このオプションは使用しないでください。(ディスク上のデータが消去されてしまいます)"
+
+msgid "This will provide ZFS ACL support. (ZFS only)"
+msgstr "ZFS ACLサポートを提供します。(ZFS専用)"
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr "自動スナップショットにより作成されたシャドウコピーを提供します。(ZFS専用)"
@@ -5500,6 +5506,9 @@ msgstr "あなたのメールアドレス"
 
 msgid "ZFS"
 msgstr "ZFS"
+
+msgid "ZFS ACL"
+msgstr "ZFS ACL"
 
 msgid "ZFS dataset information and status"
 msgstr "ZFS データセット情報と状態"

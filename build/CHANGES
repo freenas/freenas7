@@ -17,6 +17,7 @@ Majors changes:
 - Add Shadow Copy. (ZFS snapshot only)
 - Upgrade samba to 3.6.1.
 - Add SMB2 and user authentication as default.
+- Add ZFS ACL on CIFS/SMB share.
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.

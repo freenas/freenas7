@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-11 06:17+0000\n"
+"POT-Creation-Date: 2011-11-11 06:59+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1645,6 +1645,10 @@ msgstr "SMTP 인증 활성화"
 
 msgid "Enable TLS/SSL connections."
 msgstr "TLS/SSL 연결 활성화."
+
+#, fuzzy
+msgid "Enable ZFS ACL"
+msgstr "활성화"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "이 장치의 서비스를 공지하기 위해 Zeroconf/Bonjour 활성화"
@@ -3320,7 +3324,7 @@ msgstr "ping/traceroute"
 msgid "Platform"
 msgstr "플랫폼"
 
-#, php-format
+#, c-format, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "<a href='%s' target='_blank'>문서</a>를 체크 하기 바랍니다."
 
@@ -4487,7 +4491,7 @@ msgstr "bind 할 때 이용할 자격 증명서."
 msgid "The cron job has been executed successfully."
 msgstr "cron 작업이 성공적으로 실행되었습니다."
 
-#, php-format
+#, c-format, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4821,7 +4825,7 @@ msgstr "이들 인자들이 %s에 추가됩니다."
 msgid "These parameters are added to [Global] section of %s."
 msgstr "이들 인자들이 %s의 [Global] 섹션에 추가됩니다."
 
-#, php-format
+#, c-format, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "이들 인자들이 %s의 [Share] 섹션에 추가됩니다."
 
@@ -5028,6 +5032,9 @@ msgstr "이것은 선택된 디스크의 모든 데이터를 삭제할 것입니
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "이것은 디스크의 모든 데이터를 삭제할 것입니다. 기존의 암호화된 디스크를 추가하려면 이 옵션을 이용하지 마십시오."
+
+msgid "This will provide ZFS ACL support. (ZFS only)"
+msgstr ""
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr ""
@@ -5534,6 +5541,9 @@ msgstr "당신의 전자우편 주소."
 
 msgid "ZFS"
 msgstr "ZFS"
+
+msgid "ZFS ACL"
+msgstr ""
 
 msgid "ZFS dataset information and status"
 msgstr "ZFS 데이터 셋 정보와 상태"

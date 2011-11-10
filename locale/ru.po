@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: Alexey Sannikov  <mr-sannikov@yandex.ru>\n"
-"POT-Creation-Date: 2011-11-11 06:17+0000\n"
+"POT-Creation-Date: 2011-11-11 06:59+0000\n"
 "PO-Revision-Date: 2011-06-02 16:13+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1645,6 +1645,10 @@ msgstr "Включить SMTP-авторизацию"
 
 msgid "Enable TLS/SSL connections."
 msgstr "Разрешить TLS/SSL соединения"
+
+#, fuzzy
+msgid "Enable ZFS ACL"
+msgstr "Включить"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Включить Zeroconf/Bonjour для объявления служб этого устройства"
@@ -3320,7 +3324,7 @@ msgstr "Команды Ping и Traceroute"
 msgid "Platform"
 msgstr "Платформа"
 
-#, php-format
+#, c-format, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "Для получения дополнительных сведений вы можете обратиться к <a href='%s' target='_blank'>документации</a>."
 
@@ -4487,7 +4491,7 @@ msgstr "Пароль DN для связи с сервером каталогов
 msgid "The cron job has been executed successfully."
 msgstr "Задание Сron'а было выполнено успешно."
 
-#, php-format
+#, c-format, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4821,7 +4825,7 @@ msgstr "Эти параметры добавляются к %s."
 msgid "These parameters are added to [Global] section of %s."
 msgstr "Эти параметры добавлены в секцию [Global] на %s."
 
-#, php-format
+#, c-format, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "Эти параметры добавлены в секцию [Share] на %s."
 
@@ -5028,6 +5032,9 @@ msgstr "Это удалит ВСЕ данные с указанных диско
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "Внимание! Все данные на вашем диске будут УДАЛЕНЫ! Не используйте эту опцию, если вы просто хотите добавить уже зашифрованный диск."
+
+msgid "This will provide ZFS ACL support. (ZFS only)"
+msgstr ""
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr ""
@@ -5534,6 +5541,9 @@ msgstr "Ваш собственный адрес e-mail."
 
 msgid "ZFS"
 msgstr "ZFS (Zettabyte File System)"
+
+msgid "ZFS ACL"
+msgstr ""
 
 msgid "ZFS dataset information and status"
 msgstr "Информация и состояние dataset'ов ZFS"

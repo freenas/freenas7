@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-11 06:17+0000\n"
+"POT-Creation-Date: 2011-11-11 06:59+0000\n"
 "PO-Revision-Date: 2010-06-29 04:06+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1644,6 +1644,10 @@ msgstr "Zapnúť overovanie SMTP."
 
 msgid "Enable TLS/SSL connections."
 msgstr "Povoliť TLS/SSL spojenia."
+
+#, fuzzy
+msgid "Enable ZFS ACL"
+msgstr "Zapnúť"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Zapnúť oznamovanie služieb tohto rozhrania pomocou Zeroconf/Bonjour"
@@ -3318,7 +3322,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Platforma"
 
-#, php-format
+#, c-format, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "Prosím, pozrite si <a href='%s' target='_blank'>dokumentáciu</a>."
 
@@ -4485,7 +4489,7 @@ msgstr "Prihlasovacie údaje na pripojenie."
 msgid "The cron job has been executed successfully."
 msgstr "Cron úloha bola úspešne vykonaná."
 
-#, php-format
+#, c-format, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4819,7 +4823,7 @@ msgstr "Tieto parametre sa pridajú k %s."
 msgid "These parameters are added to [Global] section of %s."
 msgstr "Tieto parametre sa pridajú do sekcie [Global] súboru %s."
 
-#, php-format
+#, c-format, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "Tieto parametre sa pridajú do sekcie [Share] súboru %s."
 
@@ -5026,6 +5030,9 @@ msgstr "Týmto sa vymažú VŠETKY údaje na vybraných diskoch! Túto voľbu ne
 
 msgid "This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr "Týmto sa vymažú VŠETKY údaje na vašom disku! Nepoužívajte túto voľbu ak chcete pridať existujúci šifrovaný disk."
+
+msgid "This will provide ZFS ACL support. (ZFS only)"
+msgstr ""
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr ""
@@ -5531,6 +5538,9 @@ msgid "Your own email address."
 msgstr "Vaša vlastná emailová adresa."
 
 msgid "ZFS"
+msgstr ""
+
+msgid "ZFS ACL"
 msgstr ""
 
 msgid "ZFS dataset information and status"
