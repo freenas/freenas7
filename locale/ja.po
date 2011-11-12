@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 06:59+0000\n"
-"PO-Revision-Date: 2011-11-11 07:03+0900\n"
+"POT-Creation-Date: 2011-11-12 21:27+0000\n"
+"PO-Revision-Date: 2011-11-12 21:34+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -2500,11 +2500,11 @@ msgstr "最終設定変更日"
 
 #, php-format
 msgid "Latest nightly build: %s"
-msgstr ""
+msgstr "最新 nightly ビルド: %s"
 
 #, php-format
 msgid "Latest stable build: %s"
-msgstr ""
+msgstr "最新 stable ビルド: %s"
 
 msgid "Latvian"
 msgstr "ラトビア語"
@@ -2518,6 +2518,9 @@ msgstr "既存の自動スナップショットを残します。"
 
 msgid "Leave auto snapshot configuration"
 msgstr "自動スナップショットの保存"
+
+msgid "Leave this field empty to use default settings."
+msgstr "デフォルトの設定を使用する場合はこのフィールドを空のままにして下さい。"
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "レベル 1 - スタンバイ (スピンダウン) の有る最小の消費電力"
@@ -3296,7 +3299,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "プラットフォーム"
 
-#, c-format, php-format
+#, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "<a href='%s' target='_blank'>ドキュメント</a> を確認してください。"
 
@@ -4111,6 +4114,9 @@ msgstr "サブネットビット数"
 msgid "Subnet mask"
 msgstr "サブネットマスク"
 
+msgid "Subsystem"
+msgstr "サブシステム"
+
 msgid "Successful"
 msgstr "成功"
 
@@ -4460,7 +4466,7 @@ msgstr "バインドする際に使用するパスワードを入力して下さ
 msgid "The cron job has been executed successfully."
 msgstr "Cron ジョブは正常に実行されました。"
 
-#, c-format, php-format
+#, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr "シャドウコピーサービス用のスナップショットのカスタム書式を指定できます。デフォルト書式はZFS自動スナップショットで使用される %s です。"
 
@@ -4793,7 +4799,7 @@ msgstr "ここで指定したパラメータは %s に追加されます。"
 msgid "These parameters are added to [Global] section of %s."
 msgstr "ここで指定したパラメータは %s の [Global] セクションに追加されます。"
 
-#, c-format, php-format
+#, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "ここで指定したパラメータは %s の [Share] セクションに追加されます。"
 

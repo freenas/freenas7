@@ -1,4 +1,5 @@
 #!/bin/sh
+# Copyright (C) 2005-2011 FreeNAS Project. All rights reserved.
 # Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
@@ -37,7 +38,8 @@ sshd_mkconf()
 		-o "SyslogFacility LOCAL3" -n \
 		-o "Protocol 2" -n \
 		-o "UseDNS no" -n \
-		-o "Subsystem       sftp    /usr/libexec/sftp-server" -n \
+		-i "string-length(//sshd/subsystem) > 0" -v "concat('Subsystem ', //sshd/subsystem)" -n -b \
+		-i "string-length(//sshd/subsystem) = 0" -v "concat('Subsystem ', 'sftp /usr/libexec/sftp-server')" -n -b \
 		-o "ChallengeResponseAuthentication no" -n \
 		-m "//sshd" \
 			-i "count(port) > 0" -v "concat('Port ',port)" -n -b \

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 06:59+0000\n"
+"POT-Creation-Date: 2011-11-12 21:27+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -2543,6 +2543,9 @@ msgstr "Διαγραφή υπολογιστή"
 msgid "Leave auto snapshot configuration"
 msgstr "Ασύρματη ρύθμιση"
 
+msgid "Leave this field empty to use default settings."
+msgstr ""
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Επίπεδο 1 - Ελάχιστη χρήση ενέργειας στην κατάσταση ετοιμότητας (spindown)"
 
@@ -3324,7 +3327,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Πλατφόρμα"
 
-#, c-format, php-format
+#, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
@@ -4141,6 +4144,10 @@ msgstr "Αριθμός bit υποδικτύου"
 msgid "Subnet mask"
 msgstr "Μάσκα υποδικτύου"
 
+#, fuzzy
+msgid "Subsystem"
+msgstr "Σύστημα"
+
 msgid "Successful"
 msgstr "Επιτυχής"
 
@@ -4490,7 +4497,7 @@ msgstr "Τα διαπιστευτήρια με την οποία να δεσμε
 msgid "The cron job has been executed successfully."
 msgstr "Η εργασία cron εκτελέστηκε με επιτυχία."
 
-#, c-format, php-format
+#, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4824,7 +4831,7 @@ msgstr "Οι παράμετροι αυτοί προστέθηκαν στο %s."
 msgid "These parameters are added to [Global] section of %s."
 msgstr ""
 
-#, c-format, php-format
+#, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr ""
 

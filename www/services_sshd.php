@@ -3,11 +3,11 @@
 /*
 	services_sshd.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -53,6 +53,7 @@ $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 $pconfig['passwordauthentication'] = isset($config['sshd']['passwordauthentication']);
 $pconfig['compression'] = isset($config['sshd']['compression']);
+$pconfig['subsystem'] = $config['sshd']['subsystem'];
 if (is_array($config['sshd']['auxparam']))
 	$pconfig['auxparam'] = implode("\n", $config['sshd']['auxparam']);
 
@@ -87,6 +88,7 @@ if ($_POST) {
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
 		$config['sshd']['passwordauthentication'] = $_POST['passwordauthentication'] ? true : false;
 		$config['sshd']['compression'] = $_POST['compression'] ? true : false;
+		$config['sshd']['subsystem'] = $_POST['subsystem'];
 
 		# Write additional parameters.
 		unset($config['sshd']['auxparam']);
@@ -120,6 +122,7 @@ function enable_change(enable_change) {
 	document.iform.passwordauthentication.disabled = endis;
 	document.iform.tcpforwarding.disabled = endis;
 	document.iform.compression.disabled = endis;
+	document.iform.subsystem.disabled = endis;
 	document.iform.auxparam.disabled = endis;
 }
 //-->
@@ -164,6 +167,13 @@ function enable_change(enable_change) {
 			        <span class="vexpl"><?=gettext("Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only.");?></span></td>
 			    </tr>
 					<?php html_textarea("key", gettext("Private Key"), $pconfig['key'], gettext("Paste a DSA PRIVATE KEY in PEM format here."), false, 65, 7, false, false);?>
+
+
+
+			    <?php html_inputbox("subsystem", gettext("Subsystem"), $pconfig['subsystem'], gettext("Leave this field empty to use default settings."), false, 40);?>
+
+
+
 			    <?php html_textarea("auxparam", gettext("Extra options"), $pconfig['auxparam'], gettext("Extra options to /etc/ssh/sshd_config (usually empty). Note, incorrect entered options prevent SSH service to be started.") . " " . sprintf(gettext("Please check the <a href='%s' target='_blank'>documentation</a>."), "http://www.freebsd.org/cgi/man.cgi?query=sshd_config&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+${os_release}-RELEASE&amp;format=html"), false, 65, 5, false, false);?>
 			  </table>
 				<div id="submit">

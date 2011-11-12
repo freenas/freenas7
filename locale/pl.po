@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-11 06:59+0000\n"
+"POT-Creation-Date: 2011-11-12 21:27+0000\n"
 "PO-Revision-Date: 2011-03-30 19:49+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -2546,6 +2546,9 @@ msgstr "Usuń hosta"
 msgid "Leave auto snapshot configuration"
 msgstr "Konfiguracja sieci bezprzewodowej"
 
+msgid "Leave this field empty to use default settings."
+msgstr ""
+
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr ""
 
@@ -3329,7 +3332,7 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Platforma"
 
-#, c-format, php-format
+#, php-format
 msgid "Please check the <a href='%s' target='_blank'>documentation</a>."
 msgstr "Proszę sprawdzić <a href='%s' target='_blank'>dokumentację</a>."
 
@@ -4147,6 +4150,10 @@ msgstr ""
 msgid "Subnet mask"
 msgstr "Maska podsieci"
 
+#, fuzzy
+msgid "Subsystem"
+msgstr "System"
+
 msgid "Successful"
 msgstr "Pomyślnie"
 
@@ -4496,7 +4503,7 @@ msgstr ""
 msgid "The cron job has been executed successfully."
 msgstr "Wykonanie zadania cron-a zakończone powodzeniem."
 
-#, c-format, php-format
+#, php-format
 msgid "The custom format of the snapshot for shadow copy service can be specified. The default format is %s used for ZFS auto snapshot."
 msgstr ""
 
@@ -4830,7 +4837,7 @@ msgstr "Parametry te są dodawane do %s."
 msgid "These parameters are added to [Global] section of %s."
 msgstr "Parametry te są dodawane do sekcji [Global] w %s."
 
-#, c-format, php-format
+#, php-format
 msgid "These parameters are added to [Share] section of %s."
 msgstr "Parametry te są dodawane do sekcji [Share] w %s."
 
