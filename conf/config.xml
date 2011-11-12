@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>9.2</version>
+	<version>9.3</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -97,6 +97,41 @@
 				<name>powerd_flags</name>
 				<value>-a adaptive -b adaptive</value>
 				<comment>System power control options</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>1c2a4807-9969-42bc-8500-ba234e33a3f5</uuid>
+				<name>varsize</name>
+				<value>32m</value>
+				<comment>Default /var size</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>b67e6ffd-169d-493a-9197-155a9ae84582</uuid>
+				<name>fuppes_logfile</name>
+				<value>/var/log/fuppes.log</value>
+				<comment>Default log file</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>0b5cbdf6-0a84-4806-b85c-6605d38c7008</uuid>
+				<name>mtdaapd_logfile</name>
+				<value>/var/log/mt-daapd.log</value>
+				<comment>Default log file</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>40fe3290-51ac-4a70-b03e-a5613b981be4</uuid>
+				<name>rsync_client_logfile</name>
+				<value>/var/log/rsync_client.log</value>
+				<comment>Default log file</comment>
+				<enable/>
+			</param>
+			<param>
+				<uuid>f52094cc-2bb8-4bc2-be39-76bce3fe1612</uuid>
+				<name>rsync_local_logfile</name>
+				<value>/var/log/rsync_local.log</value>
+				<comment>Default log file</comment>
 				<enable/>
 			</param>
 		</rcconf>

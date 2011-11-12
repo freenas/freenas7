@@ -2073,6 +2073,38 @@ function config_upgrade() {
 		$config['version'] = "9.2";
 	}
 
+	/* Convert 9.2 -> 9.3 */
+	if ($config['version'] === "9.2") {
+		$index = array_search_ex("varsize", $config['system']['rcconf']['param'], "name");
+		if ($index === false) {
+			$config['system']['rcconf']['param'][] = array(
+				"uuid" => uuid(),
+				"name" => "varsize",
+				"value" => "32m",
+				"comment" => "Default /var size",
+				"enable" => true );
+		}
+		$a_log = array(
+			"fuppes_logfile" => "/var/log/fuppes.log",
+			"mtdaapd_logfile" => "/var/log/mt-daapd.log",
+			"rsync_client_logfile" => "/var/log/rsync_client.log",
+			"rsync_local_logfile" => "/var/log/rsync_local.log",
+		);
+		foreach ($a_log as $key => $val) {
+			$index = array_search_ex($key, $config['system']['rcconf']['param'], "name");
+			if ($index === false) {
+				$config['system']['rcconf']['param'][] = array(
+					"uuid" => uuid(),
+					"name" => $key,
+					"value" => $val,
+					"comment" => "Default log file",
+					"enable" => true );
+			}
+		}
+
+		$config['version'] = "9.3";
+	}
+
 	write_config();
 
 	if (is_booting())
