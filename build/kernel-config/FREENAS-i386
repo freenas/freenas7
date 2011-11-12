@@ -16,6 +16,10 @@ options		VM_KMEM_SIZE_MAX=(1280UL*1024*1024)
 #options		DEVICE_POLLING
 #options		HZ=1000
 
+# GEOM classes
+options 	GEOM_ELI		# Disk encryption.
+options 	GEOM_UZIP		# Read-only compressed disks
+
 device		lagg			# Link aggregation interface.
 device		vlan			# 802.1Q VLAN support
 

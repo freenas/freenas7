@@ -5,10 +5,14 @@
 /set type=dir uname=root gname=wheel mode=0755
 .              
     ..
+/set mode=0750
+    backups
+    ..
     cron           
         tabs           
         ..
     ..
+/set mode=0755
     db             
     ..
     empty           mode=0555
