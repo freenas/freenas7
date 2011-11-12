@@ -568,7 +568,7 @@ function zfs_snapshot_configure($snapshot) {
 	// Additional parameter
 	$param = "";
 
-	if (isset($snapshot['recursive']))
+	if (!empty($snapshot['recursive']))
 		$param .= "-r ";
 
 	// Create the snapshot
@@ -605,7 +605,7 @@ function zfs_snapshot_destroy($snapshot) {
 	// Additional parameter
 	$param = "";
 
-	if (isset($snapshot['recursive']))
+	if (!empty($snapshot['recursive']))
 		$param .= "-r ";
 
 	// Destroy the snapshot
