@@ -33,6 +33,7 @@ Minors changes:
 - Preserve ZFS auto snapshot when importing ZFS config.
 - Add reverse direction of rsync task.
 - Add WOL utility.
+- Add sshd subsystem field.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
