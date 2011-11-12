@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-12 21:27+0000\n"
-"PO-Revision-Date: 2011-11-12 21:34+0900\n"
+"POT-Creation-Date: 2011-11-13 00:13+0000\n"
+"PO-Revision-Date: 2011-11-13 00:15+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -491,6 +491,9 @@ msgstr "すべて"
 
 msgid "Apple Filing Protocol"
 msgstr "Apple Filing Protocol"
+
+msgid "Apply"
+msgstr "適用"
 
 msgid "Apply changes"
 msgstr "変更の適用"
@@ -1964,6 +1967,9 @@ msgstr "ファイルアップロードは拡張子により中断されました
 
 msgid "Filename"
 msgstr "ファイル名"
+
+msgid "Filter"
+msgstr "フィルタ"
 
 msgid "Firewall"
 msgstr "ファイアウォール"

@@ -69,11 +69,47 @@ function get_zfs_snapshots() {
 	}
 	return $result;
 }
-$a_snapshot = get_zfs_snapshots();
+$a_snapshot_all = get_zfs_snapshots();
+
+$filter_time = "1week";
+if (isset($_SESSION['filter_time'])) {
+	$filter_time = $_SESSION['filter_time'];
+}
+$a_filter_time = array(
+	    "1week" => sprintf(gettext("%d week"), 1),
+	    "2weeks" => sprintf(gettext("%d weeks"), 2),
+	    "30days" => sprintf(gettext("%d days"), 30),
+	    "90days" => sprintf(gettext("%d days"), 90),
+	    "180days" => sprintf(gettext("%d days"), 180),
+	    "0" => gettext("All"));
+
+function get_zfs_snapshots_filter($snapshots, $filter) {
+	$now = time() / 86400;
+	$now *= 86400;
+	if ($filter['time'] != 0) {
+		$f_time = strtotime("-".$filter['time'], $now);
+	} else {
+		$f_time = 0;
+	}
+
+	$result = array();
+	foreach ($snapshots as $v) {
+		$t = strtotime($v['creation']);
+		if ($f_time != 0 && $t < $f_time) continue;
+		$result[] = $v;
+	}
+	return $result;
+}
+$a_snapshot = get_zfs_snapshots_filter($a_snapshot_all, array('time' => $filter_time));
 
 if ($_POST) {
 	$pconfig = $_POST;
 
+	if ($_POST['filter']) {
+		$_SESSION['filter_time'] = $_POST['filter_time'];
+		header("Location: disks_zfs_snapshot.php");
+		exit;
+	}
 	if ($_POST['apply']) {
 		$ret = array("output" => array(), "retval" => 0);
 
@@ -156,9 +192,26 @@ function zfssnapshot_process_updatenotification($mode, $data) {
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (updatenotify_exists("zfssnapshot")) print_config_change_box();?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<tr id="filter_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Filter"); ?></td>
+						<td width="78%" class="vtable">
+							<select name='filter_time' class='formfld' id='filter_time' >
+							<?
+								foreach ($a_filter_time as $k => $v) {
+									$sel = $filter_time == $k ? "selected='selected'" : "";
+									echo "<option value='${k}' $sel>${v}</option>\n";
+								}
+							?>
+							</select>
+							<input name="filter" type="submit" class="formbtn" id="filter" value="<?=gettext("Apply");?>" />
+						</td>
+					</tr>
+					<?php html_separator();?>
+				</table>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="40%" class="listhdrlr"><?=gettext("Path");?></td>
+						<td width="40%" class="listhdrlr"><?=gettext("Path");?><? echo sprintf(" (%d/%d)", count($a_snapshot), count($a_snapshot_all)); ?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="10%" class="listhdrr"><?=gettext("Used");?></td>
 						<td width="20%" class="listhdrr"><?=gettext("Creation");?></td>

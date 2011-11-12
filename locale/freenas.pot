@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-11-12 21:27+0000\n"
+"POT-Creation-Date: 2011-11-13 00:13+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -483,6 +483,9 @@ msgid "Any"
 msgstr ""
 
 msgid "Apple Filing Protocol"
+msgstr ""
+
+msgid "Apply"
 msgstr ""
 
 msgid "Apply changes"
@@ -1954,6 +1957,9 @@ msgid "File upload stopped by extension."
 msgstr ""
 
 msgid "Filename"
+msgstr ""
+
+msgid "Filter"
 msgstr ""
 
 msgid "Firewall"

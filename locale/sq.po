@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-12 21:27+0000\n"
+"POT-Creation-Date: 2011-11-13 00:13+0000\n"
 "PO-Revision-Date: 2011-04-10 13:51+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -494,6 +494,9 @@ msgstr "Te gjithe"
 
 msgid "Apple Filing Protocol"
 msgstr "Apple Filing Protokoll"
+
+msgid "Apply"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "Apliko ndryshimet"
@@ -1982,6 +1985,9 @@ msgstr "Ngarkimi i skedarit u ndalua nga prapashtesa."
 
 msgid "Filename"
 msgstr "Emri i Skedarit"
+
+msgid "Filter"
+msgstr ""
 
 msgid "Firewall"
 msgstr "Firewall"

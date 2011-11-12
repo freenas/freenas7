@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-12 21:27+0000\n"
+"POT-Creation-Date: 2011-11-13 00:13+0000\n"
 "PO-Revision-Date: 2011-06-02 15:37+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -495,6 +495,9 @@ msgstr "Tous"
 
 msgid "Apple Filing Protocol"
 msgstr "Apple Filing Protocol (AFP)"
+
+msgid "Apply"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "Appliquer les modifications"
@@ -1985,6 +1988,9 @@ msgstr "Upload du fichier arrêté par l'extension"
 
 msgid "Filename"
 msgstr "Nom de fichier"
+
+msgid "Filter"
+msgstr ""
 
 msgid "Firewall"
 msgstr "Pare-feu"
