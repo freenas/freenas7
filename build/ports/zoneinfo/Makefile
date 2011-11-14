@@ -1,26 +1,25 @@
-PORTNAME=			zoneinfo
+PORTNAME=	zoneinfo
 DISTVERSION=	2011n
-CATEGORIES=		misc
-COMMENT=			Updated timezone definitions
-MAINTAINER=		michael.zoon@freenas.org
+CATEGORIES=	misc
+COMMENT=	Updated timezone definitions
+MAINTAINER=	michael.zoon@freenas.org
 
-MASTER_SITES=	ftp://elsie.nci.nih.gov/pub/ \
-		ftp://ftp.iana.org/tz/releases/ \
+MASTER_SITES=   ftp://ftp.iana.org/tz/releases/ \
 		ftp://munnari.oz.au/pub/
-DISTNAME=			tzdata${DISTVERSION}
+DISTNAME=	tzdata${DISTVERSION}
 
-WRKSRC=				${WRKDIR}
-PREFIX=				/usr
+WRKSRC=		${WRKDIR}
+PREFIX=		/usr
 
-TZFILES=			africa antarctica asia australasia etcetera europe \
-							factory northamerica southamerica systemv
-POSIXRULES=		America/New_York
+TZFILES=	africa antarctica asia australasia etcetera europe \
+		factory northamerica southamerica systemv
+POSIXRULES=	America/New_York
 
 .include <bsd.port.pre.mk>
 
 # The following country codes can be missing from /usr/share/misc/iso3166 and
 # shouldn't appear in the zoneinfo file.
-MISSING=	ax bl gg im je me mf rs
+MISSING=	ax bl bq cw gg im je me mf rs ss sx
 
 .ifndef NOMISSING
 .for M in ${MISSING}
