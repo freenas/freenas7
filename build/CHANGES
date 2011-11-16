@@ -27,7 +27,7 @@ Minors changes:
 - Upgrade ataidle to 2.6.
 - Upgrade transmission to 2.42.
 - Upgrade smartmontools to 5.42.
-- Upgrade proftpd to 1.3.3f.
+- Upgrade proftpd to 1.3.3g.
 - Add ability to set guest account mapping.
 - Use 8-bit data for syslogd.
 - Preserve ZFS auto snapshot when importing ZFS config.

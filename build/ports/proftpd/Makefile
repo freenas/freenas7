@@ -1,5 +1,5 @@
 PORTNAME=	proftpd
-PORTVERSION=	1.3.3f
+PORTVERSION=	1.3.3g
 CATEGORIES=	ftp
 COMMENT=	Highly configurable ftp daemon
 MAINTAINER=	aoyama@peach.ne.jp
