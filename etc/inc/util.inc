@@ -390,7 +390,7 @@ function is_filemode($mode) {
 
 // Returns true if $certificate is a valid certificate.
 function is_valid_certificate($certificate) {
-	if (FALSE !== ereg("^(-----BEGIN CERTIFICATE-----).*(-----END CERTIFICATE-----)$", $certificate))
+	if (preg_match('/^(-----BEGIN CERTIFICATE-----).*(-----END CERTIFICATE-----)(\r|\n|\r\n)?\z/s', $certificate))
 		return true;
 	return false;
 }
@@ -400,11 +400,11 @@ function is_valid_privatekey($privatekey, $type = "RSA") {
 	switch ($type) {
 		default:
 		case 'RSA':
-			if (FALSE !== ereg("^(-----BEGIN RSA PRIVATE KEY-----).*(-----END RSA PRIVATE KEY-----)$", $privatekey))
+			if (preg_match('/^(-----BEGIN RSA PRIVATE KEY-----).*(-----END RSA PRIVATE KEY-----)(\r|\n|\r\n)?\z/s', $privatekey))
 				return true;
 			break;
 		case 'DSA':
-			if (FALSE !== ereg("^(-----BEGIN DSA PRIVATE KEY-----).*(-----END DSA PRIVATE KEY-----)$", $privatekey))
+			if (preg_match('^(-----BEGIN DSA PRIVATE KEY-----).*(-----END DSA PRIVATE KEY-----)(\r|\n|\r\n)?\z/s', $privatekey))
 				return true;
 			break;
 	}

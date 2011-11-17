@@ -35,6 +35,7 @@ Minors changes:
 - Add WOL utility.
 - Add sshd subsystem field.
 - Add some default log file to advanced setting.
+- Allow last newline of certificate.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
