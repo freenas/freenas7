@@ -230,7 +230,7 @@ samba_mkconf_cmd()
 				-o "writeable = yes" -n \
 			-b \
 			-o "printable = no" -n \
-			-o "veto files = /.snap/" -n \
+			-o "veto files = /.snap/.sujournal/" -n \
 			-i "count(hidedotfiles) > 0" \
 				-o "hide dot files = yes" -n \
 			-b \
