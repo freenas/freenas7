@@ -1,4 +1,5 @@
 #!/bin/sh
+# Copyright (C) 2005-2011 FreeNAS Project. All rights reserved.
 # Copyright (c) 2006-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
@@ -39,9 +40,15 @@ fuppes_use_imagemagick=${fuppes_use_imagemagick-"false"}
 fuppes_use_taglib=${fuppes_use_taglib-"true"}
 fuppes_use_libavformat=${fuppes_use_libavformat-"true"}
 fuppes_plugin_dir=${fuppes_plugin_dir-"/usr/local/lib/${name}"}
+fuppes_template_device_dir=${fuppes_template_device_dir:-"/usr/local/share/${name}/devices"}
+fuppes_template_vfolder_dir=${fuppes_template_vfolder_dir:-"/usr/local/share/${name}/vfolders"}
+fuppes_device_dir=${fuppes_device_dir:-"/var/db/${name}/devices"}
+fuppes_vfolder_dir=${fuppes_vfolder_dir:-"/var/db/${name}/vfolders"}
+fuppes_custom_config=${fuppes_custom_config:-"/usr/local/share/${name}/${name}-custom.cfg"}
+fuppes_friendly_name=${fuppes_friendly_name:-"FreeNAS (%h)"}
 
 command="/usr/local/bin/${name}d"
-command_args="--config-dir ${fuppes_config_dir} --config-file ${fuppes_config} --vfolder-config-file ${fuppes_vfolder_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile} --plugin-dir ${fuppes_plugin_dir}"
+command_args="--config-file ${fuppes_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile} --plugin-dir ${fuppes_plugin_dir} --friendly-name \"${fuppes_friendly_name}\""
 
 # Set kill signal to KILL, otherwise fuppes takes too long to terminate.
 sig_stop=${sig_stop-"KILL"}
@@ -49,6 +56,19 @@ sig_stop=${sig_stop-"KILL"}
 fuppes_mkconf()
 {
 	local _if _port _name _profile _deviceip _command_args
+	local _dbfile _dir _endis
+
+	# Create directory for config_dir/vfolder_dir
+	if [ ! -d ${fuppes_device_dir} ]; then mkdir -p ${fuppes_device_dir}; fi
+	if [ ! -d ${fuppes_vfolder_dir} ]; then mkdir -p ${fuppes_vfolder_dir}; fi
+
+	# Copy configs to the writable directory
+	for file in ${fuppes_template_device_dir}/*.cfg; do
+	    cp -p $file ${fuppes_device_dir}/`basename $file`
+	done
+	for file in ${fuppes_template_vfolder_dir}/*.cfg; do
+	    cp -p $file ${fuppes_vfolder_dir}/`basename $file`
+	done
 
 	# Get interface and port used for uPnP.
 	_if=`configxml_get "//upnp/if"`
@@ -56,6 +76,7 @@ fuppes_mkconf()
 	_name=`configxml_get "//upnp/name"`
 	_profile=`configxml_get "//upnp/profile"`
 	_deviceip=`configxml_get "//upnp/deviceip"`
+	_dbfile=`configxml_get "//upnp/home"`"/${name}.db"
 
 	# Set customized port.
 	[ -n "${_port}" ] && fuppes_port="${_port}"
@@ -67,17 +88,13 @@ fuppes_mkconf()
 	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if} >/dev/null 2>&1
 
 	# Create config file.
-	cat <<EOF > ${fuppes_config}
+	if [ -f ${fuppes_custom_config} ]; then
+	    cp ${fuppes_custom_config} ${fuppes_config}
+	else
+	    cat << EOF > ${fuppes_config}
 <?xml version="1.0" encoding="UTF-8"?>
-<fuppes_config version="0.7.2.3">
+<fuppes_config version="0.8">
   <shared_objects>
-EOF
-
-	/usr/local/bin/xml sel -t -m "//upnp/content" \
-		-v "concat('&lt;dir&gt;',.,'&lt;/dir&gt;')" -n \
-		${configxml_file} | /usr/local/bin/xml unesc >> ${fuppes_config}
-
-	cat <<EOF >> ${fuppes_config}
   </shared_objects>
   <network>
     <interface>${_if}</interface>
@@ -85,349 +102,74 @@ EOF
     <allowed_ips>
     </allowed_ips>
   </network>
+  <database type="sqlite3">
+    <file>${_dbfile}</file>
+    <readonly>false</readonly>
+  </database>
   <content_directory>
-  	<!--a list of possible charsets can be found under: http://www.gnu.org/software/libiconv/-->
-    <local_charset>${fuppes_local_charset}</local_charset>
-    <!--libs used for metadata extraction when building the database. [true|false]-->
-    <use_imagemagick>${fuppes_use_imagemagick}</use_imagemagick>
-    <use_taglib>${fuppes_use_taglib}</use_taglib>
-    <use_libavformat>${fuppes_use_libavformat}</use_libavformat>
+    <local_charset>UTF-8</local_charset>
   </content_directory>
-  <transcoding>
-  	<!--[lame|twolame]-->
-    <audio_encoder>lame</audio_encoder>
-    <!--[true|false]-->
-    <transcode_vorbis>false</transcode_vorbis>
-    <transcode_musepack>false</transcode_musepack>
-    <transcode_flac>false</transcode_flac>
-  </transcoding>
-  <device_settings>
-<!--"default" settings are inhertied by specific devices and can be overwritten-->
-<!--do NOT remove the "default" device settings-->
-<!--all new file types have to be added to the default settings-->
-<!--adding new file types just to a specific device will have no affect-->
-    <device name="default" virtual="default" enabled="false">
-<!--specify the maximum length for file names (0 or empty = unlimited)-->
-      <max_file_name_length>0</max_file_name_length>
-<!--[file|container]-->
-      <playlist_style>file</playlist_style>
-      <show_childcount_in_title>false</show_childcount_in_title>
-      <enable_dlna>false</enable_dlna>
-      <transcoding_release_delay>4</transcoding_release_delay>
-      <description_values>
-        <friendly_name>${_name}</friendly_name>
-      </description_values>
-      <file_settings>
-<!--audio files-->
-        <file ext="mp3">
-          <type>AUDIO_ITEM</type>
-          <mime_type>audio/mpeg</mime_type>
-          <dlna>MP3</dlna>
-        </file>
-        <file ext="m4a">
-          <type>AUDIO_ITEM_MUSIC_TRACK</type>
-          <mime_type>audio/mp4</mime_type>
-          <dlna>MP4A</dlna>
-        </file>
-        <file ext="ogg">
-          <type>AUDIO_ITEM</type>
-          <mime_type>application/octet-stream</mime_type>
-          <transcode enabled="false">
-            <ext>mp3</ext>
-            <mime_type>audio/mpeg</mime_type>
-            <dlna>MP3</dlna>
-            <http_encoding>chunked</http_encoding>
-            <decoder>vorbis</decoder>
-            <encoder>lame</encoder>
-            <bitrate>192</bitrate>
-            <samplerate>44100</samplerate>
-          </transcode>
-        </file>
-        <file ext="mpc">
-          <type>AUDIO_ITEM</type>
-          <mime_type>application/octet-stream</mime_type>
-          <transcode enabled="false">
-            <ext>mp3</ext>
-            <mime_type>audio/mpeg</mime_type>
-            <dlna>MP3</dlna>
-            <http_encoding>chunked</http_encoding>
-            <decoder>musepack</decoder>
-            <encoder>lame</encoder>
-            <bitrate>192</bitrate>
-            <samplerate>44100</samplerate>
-          </transcode>
-        </file>
-        <file ext="wav">
-          <type>AUDIO_ITEM</type>
-          <mime_type>audio/x-wav</mime_type>
-        </file>
-        <file ext="flac">
-          <type>AUDIO_ITEM</type>
-          <mime_type>audio/x-flac</mime_type>
-          <transcode enabled="false">
-            <ext>mp3</ext>
-            <mime_type>audio/mpeg</mime_type>
-            <dlna>MP3</dlna>
-            <http_encoding>chunked</http_encoding>
-            <decoder>flac</decoder>
-            <encoder>lame</encoder>
-            <bitrate>192</bitrate>
-            <samplerate>44100</samplerate>
-          </transcode>
-        </file>
-        <file ext="wma">
-          <type>AUDIO_ITEM</type>
-          <mime_type>audio/x-ms-wma</mime_type>
-          <dlna>WMAFULL</dlna>
-        </file>
-<!--image files-->
-        <file ext="jpg">
-          <ext>jpeg</ext>
-          <type>IMAGE_ITEM</type>
-          <mime_type>image/jpeg</mime_type>
-          <convert enabled="false">
-<!--<dcraw enabled="true">-q 0</dcraw>-->
-            <ext>png</ext>
-            <mime_type>image/png</mime_type>
-            <height>0</height>
-            <width>0</width>
-<!--set "greater" to "true" if you only want to resize images greater than "height" or "width"-->
-            <greater>false</greater>
-<!--set "less" to "true" if you only want to resize images less than "height" or "width"-->
-            <less>false</less>
-<!--set "less" and "greater" to "false" if you always want to resize-->
-          </convert>
-        </file>
-        <file ext="bmp">
-          <type>IMAGE_ITEM</type>
-          <mime_type>image/bmp</mime_type>
-        </file>
-        <file ext="png">
-          <type>IMAGE_ITEM</type>
-          <mime_type>image/png</mime_type>
-        </file>
-        <file ext="gif">
-          <type>IMAGE_ITEM</type>
-          <mime_type>image/gif</mime_type>
-        </file>
-<!--video files-->
-        <file ext="mpg">
-          <ext>mpeg</ext>
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/mpeg</mime_type>
-        </file>
-        <file ext="mp4">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/mp4</mime_type>
-        </file>
-        <file ext="avi">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-msvideo</mime_type>
-        </file>
-        <file ext="divx">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-divx</mime_type>
-        </file>
-        <file ext="wmv">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-ms-wmv</mime_type>
-        </file>
-        <file ext="vob">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-ms-vob</mime_type>
-        </file>
-        <file ext="vdr">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-extension-vdr</mime_type>
-          <transcode enabled="false">
-            <ext>vob</ext>
-            <mime_type>video/x-ms-vob</mime_type>
-          </transcode>
-        </file>
-        <file ext="flv">
-          <type>VIDEO_ITEM</type>
-          <mime_type>application/x-flash-video</mime_type>
-        </file>
-        <file ext="asf">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-ms-asf</mime_type>
-        </file>
-        <file ext="mkv">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/x-matroska</mime_type>
-          <transcode enabled="false">
-            <transcoder>ffmpeg</transcoder>
-            <ext>mpg</ext>
-            <mime_type>video/mpeg</mime_type>
-            <video_codec>mpeg2video</video_codec>
-            <video_bitrate>1800000</video_bitrate>
-            <audio_codec>mp2</audio_codec>
-            <audio_samplerate>44100</audio_samplerate>
-            <audio_bitrate>192000</audio_bitrate>
-          </transcode>
-        </file>
-        <file ext="iso">
-          <type>VIDEO_ITEM</type>
-          <mime_type>application/x-iso-image</mime_type>
-        </file>
-        <file ext="m2ts">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/mp4</mime_type>
-        </file>
-<!--playlists-->
-        <file ext="pls">
-          <type>PLAYLIST</type>
-          <mime_type>audio/x-scpls</mime_type>
-        </file>
-        <file ext="m3u">
-          <type>PLAYLIST</type>
-          <mime_type>audio/x-mpegurl</mime_type>
-        </file>
-      </file_settings>
-    </device>
-  	<device name="PS3" enabled="false">
-      <user_agent>UPnP/1.0 DLNADOC/1.50</user_agent>
-      <user_agent>PLAYSTATION 3</user_agent>
-<!--<ip></ip>-->
-      <enable_dlna>true</enable_dlna>
-      <transcoding_release_delay>50</transcoding_release_delay>
-      <file_settings>
-        <file ext="ogg">
-          <type>AUDIO_ITEM_MUSIC_TRACK</type>
-          <transcode enabled="true">
-            <http_encoding>stream</http_encoding>
-          </transcode>
-        </file>
-        <file ext="avi">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/divx</mime_type>
-        </file>
-        <file ext="vob">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/mpeg</mime_type>
-        </file>
-        <file ext="ts">
-          <ext>mpeg</ext>
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/mpeg</mime_type>
-        </file>
-        <file ext="mpg">
-          <type>VIDEO_ITEM</type>
-          <transcode enabled="false">
-            <transcoder>ffmpeg</transcoder>
-            <mime_type>video/mpeg</mime_type>
-            <ext>mpg</ext>
-            <video_codec>copy</video_codec>
-            <audio_codec>mp2</audio_codec>
-            <audio_samplerate>44100</audio_samplerate>
-            <audio_bitrate>192000</audio_bitrate>
-          </transcode>
-        </file>
-      </file_settings>
-    </device>
-    <device name="Microsoft_XBox360" virtual="Microsoft_XBox360" enabled="false">
-      <user_agent>Xbox/2.0.\d+.\d+ UPnP/1.0 Xbox/2.0.\d+.\d+</user_agent>
-      <user_agent>Xenon</user_agent>
-      <xbox360>true</xbox360>
-      <show_empty_resolution>true</show_empty_resolution>
-      <description_values>
-        <friendly_name>${_name} : 1</friendly_name>
-        <model_name>Windows Media Connect compatible (%s)</model_name>
-        <model_number>2.0</model_number>
-      </description_values>
-      <file_settings>
-        <file ext="mp3"><type>AUDIO_ITEM_MUSIC_TRACK</type></file>
-        <file ext="jpg"><type>IMAGE_ITEM_PHOTO</type></file>
-        <file ext="avi">
-          <type>VIDEO_ITEM</type>
-          <mime_type>video/avi</mime_type>
-        </file>
-        <file ext="asf">
-          <mime_type>video/x-ms-wmv</mime_type>
-        </file>
-      </file_settings>
-    </device>
-    <device name="Terratec_Noxon_iRadio" virtual="default" enabled="false">
-<!--Please enter the address of your Noxon. Automatic detection is impossible because the Noxon does not send a "user-agent" in it's requests-->
-<!--<ip></ip>-->
-      <playlist_style>container</playlist_style>
-      <show_childcount_in_title>true</show_childcount_in_title>
-    </device>
-    <device name="Telegent_TG100" virtual="default" enabled="false">
-      <user_agent>dma/1.0 \(http://www.cybertan.com.tw/\)</user_agent>
-      <user_agent>UPnP/1.0 DLNADOC/1.00</user_agent>
-      <playlist_style>file</playlist_style>
-      <max_file_name_length>101</max_file_name_length>
-    </device>
-    <device name="DLNA" virtual="default" enabled="false">
-      <enable_dlna>true</enable_dlna>
-    </device>
-    <device name="ZyXEL_DMA1000" virtual="default" enabled="false">
-    </device>
-    <device name="Helios_X3000" virtual="default" enabled="false">
-    </device>
-    <device name="DLink_DSM320" virtual="default" enabled="false">
-      <description_values>
-        <user_agent>redsonic</user_agent>
-        <manufacturer_url>redsonic.com</manufacturer_url>
-        <model_number>105</model_number>
-      </description_values>
-    </device>
-    <device name="Yamaha_RXN600" virtual="Yamaha_RXN600" enabled="false">
-      <user_agent>YAMAHA Network Receiver</user_agent>
-      <user_agent>YAMAHA Network Receiver DLNADOC/1.00</user_agent>
-      <xbox360>false</xbox360>
-      <enable_xms_media_receiver_registrar>true</enable_xms_media_receiver_registrar>
-      <enable_url_base>false</enable_url_base>
-      <description_values>
-        <manufacturer>Microsoft</manufacturer>
-        <manufacturer_url>http://www.microsoft.com/</manufacturer_url>
-        <model_name>Windows Media Connect</model_name>
-        <model_number>2.0</model_number>
-        <model_url>http://www.microsoft.com/</model_url>
-        <model_description enabled="false" />
-        <upc enabled="false" />
-        <serial_number enabled="false" />
-      </description_values>
-    </device>
-    <device name="Loewe_Connect" virtual="Loewe_Connect" enabled="false">
-      <max_file_name_length>0</max_file_name_length>
-      <playlist_style>container</playlist_style>
-      <show_childcount_in_title>true</show_childcount_in_title>
-      <enable_dlna>true</enable_dlna>
-      <transcoding_release_delay>4</transcoding_release_delay>
-      <xbox360>false</xbox360>
-      <show_empty_resolution>false</show_empty_resolution>
-      <user_agent>POSIX DLNADOC/1.00 INTEL_NMPR/2.1 UPnP/1.0 Intel MicroStack/1.0.1868</user_agent>
-      <description_values>
-        <manufacturer>Loewe Opta GmbH</manufacturer>
-        <manufacturer_url>http://www.loewe.de</manufacturer_url>
-        <model_name>NMP-1000</model_name>
-        <model_number>33393</model_number>
-        <model_url>http://www.loewe.de/connect</model_url>
-        <model_description enabled="true">Loewe Network Mediaplayer</model_description>
-        <upc enabled="false"/>
-        <serial_number enabled="false"/>
-      </description_values>
-    </device>
-  </device_settings>
+  <global_settings>
+    <temp_dir/>
+    <use_fixed_uuid>false</use_fixed_uuid>
+    <default_device>${_profile}</default_device>
+  </global_settings>
+  <vfolders enabled="false">
+    <vfolder name="default" enabled="true" />
+    <vfolder name="xbox" enabled="false" />
+  </vfolders>
+  <device_mapping>
+  </device_mapping>
 </fuppes_config>
 EOF
+	fi
+
+	# Updates config file.
+	/usr/local/bin/xml sel -t -m "//upnp/content" \
+	    -v "." -n \
+	    ${configxml_file} | /usr/local/bin/xml unesc | \
+	    while read _dir; do
+		if [ -n "$_dir" ]; then
+		    /usr/local/bin/xml edit -s "//fuppes_config/shared_objects" \
+			-t elem -n dir -v "${_dir}" ${fuppes_config} > ${fuppes_config}.tmp
+		    /bin/mv ${fuppes_config}.tmp ${fuppes_config}
+		fi
+	    done
 
 	# Enable configured device and vfolder profile.
-	/usr/local/bin/xml edit -P -u "//fuppes_config/device_settings/device[@name='${_profile}']/@enabled" \
-		-v true ${fuppes_config} > ${fuppes_config}.tmp
-	/bin/mv ${fuppes_config}.tmp ${fuppes_config}
+#	/usr/local/bin/xml edit -P -u "//fuppes_config/device_settings/device[@name='${_profile}']/@enabled" \
+#		-v true ${fuppes_config} > ${fuppes_config}.tmp
+#	/bin/mv ${fuppes_config}.tmp ${fuppes_config}
 
-	/usr/local/bin/xml edit -P -u "//fuppes_vfolder_config/vfolder_layout[@device='${_profile}']/@enabled" \
-		-v true ${fuppes_vfolder_config} > ${fuppes_vfolder_config}.tmp
-	/bin/mv ${fuppes_vfolder_config}.tmp ${fuppes_vfolder_config}
+#	/usr/local/bin/xml edit -P -u "//fuppes_vfolder_config/vfolder_layout[@device='${_profile}']/@enabled" \
+#		-v true ${fuppes_vfolder_config} > ${fuppes_vfolder_config}.tmp
+#	/bin/mv ${fuppes_vfolder_config}.tmp ${fuppes_vfolder_config}
 
 	# Set device ip.
-	if [ -n ${_deviceip} ]; then
-		/usr/local/bin/xml edit -s "//fuppes_config/device_settings/device[@name='${_profile}']" \
-			-t elem -n ip -v "${_deviceip}" ${fuppes_config} > ${fuppes_config}.tmp
-		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
+	if [ -n "${_deviceip}" ]; then
+	    for file in ${fuppes_device_dir}/*.cfg; do
+		/usr/local/bin/xml edit -P \
+		    -s "//device[not(ip)]" \
+			-t elem -n ip -v "" \
+		    -u "//device/ip" \
+			-v "${_deviceip}" ${file} > ${file}.tmp
+		/bin/mv ${file}.tmp ${file}
+	    done
+	fi
+
+	# Set friendly name.
+	if [ -n "${_name}" ]; then
+	    #for file in ${fuppes_device_dir}/*.cfg; do
+	    for file in ${fuppes_device_dir}/default.cfg; do
+		/usr/local/bin/xml edit -P \
+		    -s "//device[not(description_values)]" \
+			-t elem -n description_values -v "" \
+		    -s "//device/description_values[not(friendly_name)]" \
+			-t elem -n friendly_name -v "" \
+		    -u "//device/description_values/friendly_name" \
+			-v "${_name}" ${file} > ${file}.tmp
+		/bin/mv ${file}.tmp ${file}
+	    done
 	fi
 
 	# Enable/disable web interface.
@@ -439,14 +181,18 @@ EOF
 	fi
 
 	# Enable/disable transcoding
+	_endis="false"
 	if configxml_isset //upnp/transcoding; then
-		/usr/local/bin/xml edit -P \
-			-u "//fuppes_config/transcoding/transcode_vorbis" -v true \
-			-u "//fuppes_config/transcoding/transcode_flac" -v true \
-			-u "//fuppes_config/device_settings/device/file_settings/file/transcode/@enabled" -v true \
-			${fuppes_config} > ${fuppes_config}.tmp
-		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
+		_endis="true"
 	fi
+
+	#for file in ${fuppes_device_dir}/*.cfg; do
+	for file in ${fuppes_device_dir}/default.cfg; do
+		/usr/local/bin/xml edit -P \
+			-u "//device/file_settings/file/transcode/@enabled" \
+				-v "${_endis}" ${file} > ${file}.tmp
+		/bin/mv ${file}.tmp ${file}
+	done
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
