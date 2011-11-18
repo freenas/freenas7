@@ -3,11 +3,11 @@
 /*
 	services_samba.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -168,6 +168,10 @@ if ($_POST) {
 			$config['samba']['aiorsize'] = $_POST['aiorsize'];
 			$config['samba']['aiowsize'] = $_POST['aiowsize'];
 			$config['samba']['aiowbehind'] = '';
+		}
+		if ($config['samba']['maxprotocol'] == "SMB2") {
+			$config['samba']['usesendfile'] = false;
+			unset($pconfig['usesendfile']);
 		}
 
 		# Write additional parameters.
