@@ -37,16 +37,37 @@ $noparseconfig = 1;
 require_once("config.inc");
 require_once("functions.inc");
 require_once("util.inc");
+require_once("rc.inc");
 require_once("tui.inc");
 
 // Get product information.
 $productname = get_product_name();
+
+// Remove old logs.
+function remove_logs() {
+	global $g;
+	$logs = array(
+		'fuppes_logfile' => $g['varlog_path'].'/fuppes.log',
+		'mtdaapd_logfile' => $g['varlog_path'].'/mt-daapd.log',
+		'rsync_client_logfile' => $g['varlog_path'].'/rsync_client.log',
+		'rsync_local_logfile' => $g['varlog_path'].'/rsync_local.log',
+	);
+	rc_stop_service("fuppes");
+	rc_stop_service("mt-daapd");
+	foreach ($logs as $key => $val) {
+		$file = rc_getenv_ex($key, $val);
+		if (!empty($file) && file_exists($file)) {
+			unlink($file);
+		}
+	}
+}
 
 // Display dialog
 $result = tui_display_yesno("You are about to reset {$productname} to factory defaults. The LAN IP address will be reset to {$g['default_ip']} and the WebGUI password will be set to '{$g['default_passwd']}'. System will reboot after resetting the configuration.\n\nDo you want to proceed?", 60, 10, false);
 
 if (0 == $result) {
 	config_unlock();
+	remove_logs();
 	reset_factory_defaults();
 	write_console("\n{$productname} is rebooting now.");
 	system_reboot();
