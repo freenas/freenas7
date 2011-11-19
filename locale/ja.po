@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-13 00:13+0000\n"
-"PO-Revision-Date: 2011-11-13 00:15+0900\n"
+"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"PO-Revision-Date: 2011-11-20 00:53+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -657,6 +657,33 @@ msgstr "CIFS/SMB は無効です"
 
 msgid "CIFS/SMB informations"
 msgstr "CIFS/SMB の情報"
+
+msgid "CP1251 (Cyrillic)"
+msgstr "CP1251 (キリル)"
+
+msgid "CP437 (Latin US)"
+msgstr "CP437 (ラテン US)"
+
+msgid "CP850 (Latin 1)"
+msgstr "CP850 (ラテン 1)"
+
+msgid "CP852 (Latin 2)"
+msgstr "CP852 (ラテン 2)"
+
+msgid "CP866 (Cyrillic CIS 1)"
+msgstr "CP866 (キリル CIS 1)"
+
+msgid "CP932 (Japanese Shift-JIS)"
+msgstr "CP932 (日本語 Shift-JIS)"
+
+msgid "CP936 (Simplified Chinese GBK)"
+msgstr "CP936 (中国語 簡体字 GBK)"
+
+msgid "CP949 (Korean)"
+msgstr "CP949 (韓国語)"
+
+msgid "CP950 (Traditional Chinese Big5)"
+msgstr "CP950 (中国語 繁体字 Big5)"
 
 msgid "CPU frequency"
 msgstr "CPU 周波数"

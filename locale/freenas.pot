@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-11-13 00:13+0000\n"
+"POT-Creation-Date: 2011-11-20 00:44+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -649,6 +649,33 @@ msgid "CIFS/SMB disabled"
 msgstr ""
 
 msgid "CIFS/SMB informations"
+msgstr ""
+
+msgid "CP1251 (Cyrillic)"
+msgstr ""
+
+msgid "CP437 (Latin US)"
+msgstr ""
+
+msgid "CP850 (Latin 1)"
+msgstr ""
+
+msgid "CP852 (Latin 2)"
+msgstr ""
+
+msgid "CP866 (Cyrillic CIS 1)"
+msgstr ""
+
+msgid "CP932 (Japanese Shift-JIS)"
+msgstr ""
+
+msgid "CP936 (Simplified Chinese GBK)"
+msgstr ""
+
+msgid "CP949 (Korean)"
+msgstr ""
+
+msgid "CP950 (Traditional Chinese Big5)"
 msgstr ""
 
 msgid "CPU frequency"
