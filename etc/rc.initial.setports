@@ -53,7 +53,7 @@ do {
 	$menuitem['tag'] = "auto";
 	$menuitem['item'] = "Auto-detection";
 	$amenuitem[] = $menuitem;
-	$result = tui_display_menu("Configure LAN interface", $text, 70, 13, 4, $amenuitem, $lanif);
+	$result = tui_display_menu("Configure LAN interface", $text, 70, 17, 8, $amenuitem, $lanif);
 	if (0 != $result)
 		exit(0);
 
@@ -86,7 +86,7 @@ if (1 != count($iflist)) {
 	    $menuitem['tag'] = "none";
 	    $menuitem['item'] = "Finish and exit configuration";
 	    $amenuitem[] = $menuitem;
-	    $result = tui_display_menu("Configure OPT interface", $text, 70, 13, 5, $amenuitem, $optif[$i]);
+	    $result = tui_display_menu("Configure OPT interface", $text, 70, 17, 9, $amenuitem, $optif[$i]);
 	    if (0 != $result)
 		    exit(0);
 
@@ -127,7 +127,7 @@ for ($i = 0; $i < count($optif); $i++) {
 	$text .= "OPT" . ($i+1) . " -> {$optif[$i]}\n";
 }
 $text .= "\nDo you want to proceed?";
-$result = tui_display_yesno($text, 47, 10);
+$result = tui_display_yesno($text, 47, 16);
 
 if (0 == $result) {
 	$config['interfaces']['lan']['if'] = $lanif;
