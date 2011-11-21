@@ -41,7 +41,7 @@ afpd_mkconf()
 		-i "count(noddp) > 0" -o " -noddp" -b \
 		-o " -uamlist " \
 		-i "count(guest) > 0" -o "uams_guest.so" -b \
-		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so,uams_randnum.so" -b \
+		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so,uams_randnum.so,uams_dhx2.so" -b \
 		-o " -nosavepassword -defaultvol ${afpd_avdefault} -systemvol ${afpd_avsystem} -uservol -uampath /etc/uams -guestname &quot;ftp&quot;" -n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_config}
 
