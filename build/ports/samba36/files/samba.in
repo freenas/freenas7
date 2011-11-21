@@ -182,7 +182,6 @@ samba_mkconf_cmd()
 		-i "//samba/security[. = 'ads']" \
 			-o "passdb backend = tdbsam" -n \
 			-o "allow trusted domains = no" -n \
-			-o "idmap alloc backend = tdb" -n \
 			-o "idmap backend = tdb" -n \
 			-o "idmap uid = ${samba_idmap_uid}" -n \
 			-o "idmap gid = ${samba_idmap_gid}" -n \
