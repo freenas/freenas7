@@ -22,6 +22,7 @@ options 	GEOM_UZIP		# Read-only compressed disks
 
 device		lagg			# Link aggregation interface.
 device		vlan			# 802.1Q VLAN support
+device		if_bridge		# Bridge interface.
 
 # 10GbE adapters
 device		cxgb		# Chelsio T3 10 Gigabit Ethernet
@@ -30,6 +31,7 @@ device		cxgbe		# Chelsio T4 10GbE PCIe adapter
 device		ixgb		# Intel Pro/10Gbe PCI-X Ethernet
 device		mxge		# Myricom Myri-10G 10GbE NIC
 device		nxge		# Neterion Xframe 10GbE Server/Storage Adapter
+#device		qlxgb		# QLogic 3200 and 8200 10GbE/CNA Adapter
 device		vxge		# Exar/Neterion XFrame 3100 10GbE
 
 # Hardware crypto acceleration
