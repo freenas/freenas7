@@ -862,6 +862,8 @@ function get_ata_disks_list()
 //    )
 function get_scsi_disks_list()
 {
+	$disklist = array();
+
 	/* on envoie la commande d'affichage de la liste des disques*/
 	exec("/sbin/camcontrol devlist",$rawdata);
 
@@ -908,6 +910,8 @@ function get_scsi_disks_list()
 //    )
 function get_hraid_disks_list()
 {
+	$disklist = array();
+
 	/* Recupere la liste des disques RAID */
 	$kerneldisks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 
@@ -924,6 +928,10 @@ function get_hraid_disks_list()
 		foreach ($diskdetected as $diskfoundk => $diskfoundv) 	{
 			if (strcasecmp($diskfoundk,$diskname) == 0)
 				$allready = 0;
+		}
+		// Exclude cdrom device
+		if (preg_match("/^(cd)/", $diskname)) {
+			$allready = 0;
 		}
 
 		if ($allready) 	{
