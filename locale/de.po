@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2011-06-12 15:03+0100\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1530,6 +1530,10 @@ msgstr "Treiber"
 msgid "Driver list"
 msgstr "Treiberliste"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "Zusätzliche Parameter"
+
 msgid "Duplex"
 msgstr "Duplex"
 
@@ -2535,6 +2539,12 @@ msgstr "LAN Management"
 
 msgid "LAN net"
 msgstr "LAN net"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4546,6 +4556,9 @@ msgstr "Die vorgegebene Basis an ausgesuchen Wörtern (DN), die für die Suchfun
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr "Die standard Schlüssellänge beträgt: 128 für AES, 128 für Blowfish, 128 für Camellia und 192 für 3DES."
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Der Gerätename darf nur folgende Zeichen enthalten: a-z, A-Z, 0-9."
 
@@ -4571,6 +4584,10 @@ msgstr "Der ausgewählte Name, zu dem der Verzeichnis-Server verbunden werden so
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "Der Treiber der für die USV benutzt wird. Hier die Liste der zur Verfügung stehenden <a href='%s' target='_blank'>Treiber</a>."
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "Der Treiber der für die USV benutzt wird. Hier die Liste der zur Verfügung stehenden <a href='%s' target='_blank'>Treiber</a>."
 
 #, php-format
@@ -5124,6 +5141,10 @@ msgstr "Um ausführliche Informationen über TCP Wrapper zu erhalten, sehen Sie 
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr "Um ausführliche Informationen über das Erstellen von Firewall-Regeln zu erhalten, sehen Sie in der FreeBSD <a href='%s' target='_blank'>Dokumentation</a> nach."
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "Um ausführliche Informationen über das Erstellen von Firewall-Regeln zu erhalten, sehen Sie in der FreeBSD <a href='%s' target='_blank'>Dokumentation</a> nach."
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr "Um die CIFS-Performance zu erhöhen versuchen Sie folgendes: <div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
@@ -5448,6 +5469,10 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "Systemzeit"
 
 msgid "Wake On LAN"
 msgstr "Wake On LAN"

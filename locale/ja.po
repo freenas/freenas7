@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
-"PO-Revision-Date: 2011-11-20 00:53+0900\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
+"PO-Revision-Date: 2011-11-28 03:12+0900\n"
 "Last-Translator: Daisuke Aoyama <aoyama@peach.ne.jp>\n"
 "Language-Team: FreeNAS\n"
 "Language: \n"
@@ -1514,6 +1514,9 @@ msgstr "ドライバ"
 msgid "Driver list"
 msgstr "ドライバの一覧"
 
+msgid "Driver parameters"
+msgstr "ドライバパラメータ"
+
 msgid "Duplex"
 msgstr "デュプレックス"
 
@@ -2512,6 +2515,12 @@ msgstr "LAN マネージメント"
 
 msgid "LAN net"
 msgstr "LAN net"
+
+msgid "LCDproc"
+msgstr "LCDproc"
+
+msgid "LCDproc (client)"
+msgstr "LCDproc (クライアント)"
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4513,6 +4522,9 @@ msgstr "検索の為のデフォルトのベース DN を指定して下さい�
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr "デフォルトの鍵長は次の通りです: AES 128、Blowfish 128、Camellia 128、3DES 192。"
 
+msgid "The default time in seconds to display a screen."
+msgstr "スクリーンを表示するデフォルトの秒数。"
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "デバイス名には a-z, A-Z, 0-9 の文字のみが利用出来ます。"
 
@@ -4539,6 +4551,10 @@ msgstr "ディレクトリサーバに接続する為に使用する識別名を
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "UPS と通信する為のドライバを指定します。使用可能な <a href='%s' target='_blank'>ドライバ</a> のリストを入手して下さい"
+
+#, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "LCD に接続する為のドライバを指定します。使用可能な <a href='%s' target='_blank'>ドライバ</a>。"
 
 #, php-format
 msgid "The encrypted device is currently mounted! <a href='%s'>Unmount</a> this disk first before proceeding."
@@ -5090,6 +5106,10 @@ msgid "To get detailed informations about writing firewall rules check the FreeB
 msgstr "ファイアウォールのルールの詳細な書き方についてはFreeBSDの<a href='%s' target='_blank'>ドキュメント</a>を確認してください。"
 
 #, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "LCDprocの詳細な設定についてはLCDprocの<a href='%s' target='_blank'>ドキュメント</a>を確認してください。"
+
+#, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr ""
 "CIFS のパフォーマンスをあげる為に、以下を試して見て下さい: <div id='enumeration'><ul><li>'非同期 I/O (AIO)' を有効にする</li>\n"
@@ -5412,6 +5432,9 @@ msgstr "WPA-PSK (プリシェアードキー)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+msgid "Wait time"
+msgstr "待ち時間"
 
 msgid "Wake On LAN"
 msgstr "Wake On LAN"

@@ -38,6 +38,7 @@ Minors changes:
 - Add some default log file to advanced setting.
 - Allow last newline of certificate.
 - Add DBCS Codepages for legacy OS.
+- Add LCDproc service.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.

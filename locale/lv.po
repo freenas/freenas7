@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2011-04-09 20:58+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1530,6 +1530,10 @@ msgstr "Draiveris"
 msgid "Driver list"
 msgstr "Draiveru saraksts"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "Palīgu parametri"
+
 msgid "Duplex"
 msgstr "Duplekss"
 
@@ -2536,6 +2540,12 @@ msgstr "LAN Menedžments"
 
 msgid "LAN net"
 msgstr "LAN tīkls"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4547,6 +4557,9 @@ msgstr "Noklusējuma bāzes īpašais vārds (DN) tiek lietots meklēšanai, pie
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr "Moklusējuma atslēgu garumi ir: 128 priekš AES, 128 priekš Blowfish, 128 priekš Camellia un 192 priekš 3DES."
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Ierīces nosaukums var saturēt tikai simbolus a-z, A-Z, 0-9."
 
@@ -4572,6 +4585,10 @@ msgstr "Ievērojamais vārds ar kuru sasieties pie mapes servera, piem. %s"
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "Dzinis, kurš tiks lietots, lai sazinātos ar Tavu UPS. Saraksts ar pieejamiem <a href='%s' target='_blank'>dziņiem</a>."
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "Dzinis, kurš tiks lietots, lai sazinātos ar Tavu UPS. Saraksts ar pieejamiem <a href='%s' target='_blank'>dziņiem</a>."
 
 #, php-format
@@ -5125,6 +5142,10 @@ msgstr "Lai iegūtu detalizētu informāciju par TCP Wrappers pārbaudi FreeBSD 
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr "Lai iegūtu detalizētu informāciju, kā rakstīt ugunsmūra noteikumus pārbaudi FreeBSD <a href='%s' target='_blank'>dokumentāciju</a>."
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "Lai iegūtu detalizētu informāciju, kā rakstīt ugunsmūra noteikumus pārbaudi FreeBSD <a href='%s' target='_blank'>dokumentāciju</a>."
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr "Lai palielinātu CIFS veiktspēju, izmēģini sekojošo:<div id='enumeration'><ul><li>Iespējot 'Asinhrono I/O (AIO)' slezi</li><li>Iespējot 'Liels lasīt/rakstīt' slēdzi</li><li>Iespējot '<a href='%s'>Uzlabojumus</a>' slēdzi</li></ul></div>"
@@ -5449,6 +5470,10 @@ msgstr "WPA-PSK (Iepriekš Izdalīta Atslēga )"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "Sistēmas laiks"
 
 msgid "Wake On LAN"
 msgstr "Pamodināt caur LAN"

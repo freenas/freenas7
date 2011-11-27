@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2011-06-02 16:10+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1530,6 +1530,10 @@ msgstr "드라이버"
 msgid "Driver list"
 msgstr "드라이버 리스트"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "보조 인자들"
+
 msgid "Duplex"
 msgstr "Duplex"
 
@@ -2535,6 +2539,12 @@ msgstr "LAN 관리"
 
 msgid "LAN net"
 msgstr "LAN 네트"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4546,6 +4556,9 @@ msgstr "검색을 위해 이용되는 기본 고유 이름(DN). 예. %s"
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr "기본 키 길이는 다음과 같습니다. AES 128, Blowfish 128, Camellia 128, 3DES 192."
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "장치 명은 a-z, A-Z, 0-9 문자만 포함할 수 있습니다."
 
@@ -4571,6 +4584,10 @@ msgstr "디렉터리 서버에 bind 할 때 이용되는 고유 이름. 예. %s"
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "UPS와 통신하기 위해 이용되는 드라이버. 이용할 수 있는 <a href='%s' target='_blank'>드라이버</a>."
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "UPS와 통신하기 위해 이용되는 드라이버. 이용할 수 있는 <a href='%s' target='_blank'>드라이버</a>."
 
 #, php-format
@@ -5124,6 +5141,10 @@ msgstr "TCP Wrapper에 관한 더 자세한 정보는 FreeBSD <a href='%s' targe
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr "방화벽 규칙을 작성하는 방법에 관한 더 자세한 정보는 FreeBSD <a href='%s' target='_blank'>문서</a>를 참조하기 바랍니다."
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "방화벽 규칙을 작성하는 방법에 관한 더 자세한 정보는 FreeBSD <a href='%s' target='_blank'>문서</a>를 참조하기 바랍니다."
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr "CIFS 성능을 향상하기 위해 아래를 시도하시기 바랍니다:<div id='enumeration'><ul><li>'비동기적 I/O (AIO)' 스위치 활성화</li><li>'대용량 읽기/쓰기' 스위치 활성화</li><li>'<a href='%s'>미세 조정</a>' 스위치 활성화</li></ul></div>"
@@ -5448,6 +5469,10 @@ msgstr "WPA-PSK(사전 공유 키)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "시스템 시간"
 
 msgid "Wake On LAN"
 msgstr "랜으로 깨우기"

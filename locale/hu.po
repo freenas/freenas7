@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2011-04-09 21:27+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1527,6 +1527,10 @@ msgstr "Illesztőprogram"
 msgid "Driver list"
 msgstr "Illesztőprogram lista"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "Kiegészítő paraméterek"
+
 msgid "Duplex"
 msgstr "Duplex"
 
@@ -2529,6 +2533,12 @@ msgid "LAN Management"
 msgstr ""
 
 msgid "LAN net"
+msgstr ""
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
 msgstr ""
 
 msgid "LDAP"
@@ -4540,6 +4550,9 @@ msgstr ""
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Az eszköz név csak a következő karaktereket tartalmazhatja: a-z, A-Z, 0-9"
 
@@ -4565,6 +4578,10 @@ msgstr ""
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr ""
+
+#, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
 #, php-format
@@ -5117,6 +5134,10 @@ msgstr ""
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr ""
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "Kérjük nézze meg a <a href='%s' target='_blank'>dokumentációt</a>."
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr ""
@@ -5441,6 +5462,10 @@ msgstr "WPA-PSK (Előre Osztott Kulcs)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "Rendszeridő"
 
 msgid "Wake On LAN"
 msgstr ""

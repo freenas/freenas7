@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2011-06-11 02:35+0000\n"
 "Last-Translator: jfunez <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1530,6 +1530,10 @@ msgstr "Controlador"
 msgid "Driver list"
 msgstr "Lista de controladores"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "Parámetros auxiliares."
+
 msgid "Duplex"
 msgstr "Duplex"
 
@@ -2535,6 +2539,12 @@ msgstr "LAN Administracion"
 
 msgid "LAN net"
 msgstr "Red LAN"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4546,6 +4556,9 @@ msgstr "El nombre distinguido (DN) base predeterminado a usar en las busquedas, 
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr "Las longitudes predeterminadas de las claves son: 128 para AES, 128 para Blowfish, 128 para Camelia y 192 para 3DES."
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "El nombre del dispositivo solamente puede contener los caracteres a-z, A-Z, 0-9."
 
@@ -4571,6 +4584,10 @@ msgstr "Nombre Distinguido (DN) con el cual se enlazará al directorio del servi
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "El controlador utilizado para comunicarse con su UPS. Obtenga la lista de <a href='%s' target='_blank'>controladores</a> disponibles."
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "El controlador utilizado para comunicarse con su UPS. Obtenga la lista de <a href='%s' target='_blank'>controladores</a> disponibles."
 
 #, php-format
@@ -5124,6 +5141,10 @@ msgstr "Para obtener información  detallada acerca de los Wrappers TCP, revise 
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr "Para obtener informaciones detalladas acerca de escribir reglas del cortafuegos, compruebe la <a href='%s' target='_blank'>documentación</a> de FreeBSD."
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "Para obtener informaciones detalladas acerca de escribir reglas del cortafuegos, compruebe la <a href='%s' target='_blank'>documentación</a> de FreeBSD."
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr "Para aumentar el rendimiento de SAMBA puede intentar lo siguiente: :<div id='enumeration'><ul><li>Habilitar AIO</li><li>Habilitar gran Lectura-Escritura </li><li>Habilitar'<a href='%s'>Tuning</a>'</li></ul></div>"
@@ -5448,6 +5469,10 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "Hora del sistema"
 
 msgid "Wake On LAN"
 msgstr "Encender por medio de la LAN. (Wake On LAN)"

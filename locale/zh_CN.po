@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2011-04-10 13:41+0000\n"
 "Last-Translator: yezhiqiu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1527,6 +1527,10 @@ msgstr "设备"
 msgid "Driver list"
 msgstr "设备列表"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "删除参数"
+
 msgid "Duplex"
 msgstr "双工模式"
 
@@ -2531,6 +2535,12 @@ msgstr ""
 
 msgid "LAN net"
 msgstr "区域网络"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4541,6 +4551,9 @@ msgstr ""
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "设备的名称只可以由 a-z, A-Z, 0-9 组成。"
 
@@ -4566,6 +4579,10 @@ msgstr ""
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr ""
+
+#, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr ""
 
 #, php-format
@@ -5118,6 +5135,10 @@ msgstr "要获取更多关于TCP封装的详细信息，请查阅FreeBSD的<a hr
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr "要获取更多关于防火墙规则的详细信息，请查阅FreeBSD的<a href='%s' target='_blank'>文档</a>。"
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "要获取更多关于防火墙规则的详细信息，请查阅FreeBSD的<a href='%s' target='_blank'>文档</a>。"
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr ""
@@ -5441,6 +5462,10 @@ msgstr "WPA-PSK"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "系统时间"
 
 msgid "Wake On LAN"
 msgstr ""
@@ -6099,9 +6124,6 @@ msgstr "upriv"
 
 #~ msgid "Auxiliary parameter to be added."
 #~ msgstr "预新增之附属参数"
-
-#~ msgid "Delete parameter"
-#~ msgstr "删除参数"
 
 #~ msgid "Do you really want to delete this parameter?"
 #~ msgstr "确定要删除这个参数？"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2010-06-29 04:06+0000\n"
 "Last-Translator: zoon01 <michael.zoon@freenas.org>\n"
 "Language-Team: FreeNAS\n"
@@ -1528,6 +1528,10 @@ msgstr "Ovládač"
 msgid "Driver list"
 msgstr "Zoznam ovládačov"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "Pomocné parametre"
+
 msgid "Duplex"
 msgstr "Duplexne"
 
@@ -2532,6 +2536,12 @@ msgstr ""
 
 msgid "LAN net"
 msgstr "Sieť LAN"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4543,6 +4553,9 @@ msgstr "Štandardný základ DN pre hľadania, napr. %s"
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Názov zariadenia môže pozostávať iba zo znakov a-z, A-Z, 0-9."
 
@@ -4568,6 +4581,10 @@ msgstr "DN kde sa má pripojiť k adresárovému serveru, napr. %s"
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "Ovládač komunikoval s vašim UPS. Stiahnuť zoznam dostupných <a href='%s' target='_blank'>ovládačov</a>."
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "Ovládač komunikoval s vašim UPS. Stiahnuť zoznam dostupných <a href='%s' target='_blank'>ovládačov</a>."
 
 #, php-format
@@ -5121,6 +5138,10 @@ msgstr "Podrobné informácie o TCP Wrappers nájdete v <a href='%s' target='_bl
 msgid "To get detailed informations about writing firewall rules check the FreeBSD <a href='%s' target='_blank'>documentation</a>."
 msgstr "Podrobné informácie o písaní pravidiel firewallu nájdete v <a href='%s' target='_blank'>dokumentácii</a> FreeBSD."
 
+#, fuzzy, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr "Podrobné informácie o písaní pravidiel firewallu nájdete v <a href='%s' target='_blank'>dokumentácii</a> FreeBSD."
+
 #, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr ""
@@ -5445,6 +5466,10 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "Čas systému"
 
 msgid "Wake On LAN"
 msgstr "Wake On LAN"

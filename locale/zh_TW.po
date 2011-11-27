@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2010-07-18 17:46+0000\n"
 "Last-Translator: Yu - Sian , Liu <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1527,6 +1527,10 @@ msgstr "驅動"
 msgid "Driver list"
 msgstr "驅動列表"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "附屬參數"
+
 msgid "Duplex"
 msgstr "雙工模式"
 
@@ -2531,6 +2535,12 @@ msgstr ""
 
 msgid "LAN net"
 msgstr "區域網路"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4541,6 +4551,9 @@ msgstr ""
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "裝置名稱只可以由 a-z, A-Z, 0-9 組成。"
 
@@ -4566,6 +4579,10 @@ msgstr ""
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</a> 清單。"
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "用來與 UPS 通訊的驅動程式。取得可用的<a href='%s' target='_blank'>驅動程式</a> 清單。"
 
 #, php-format
@@ -5120,6 +5137,10 @@ msgid "To get detailed informations about writing firewall rules check the FreeB
 msgstr ""
 
 #, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr ""
 
@@ -5442,6 +5463,10 @@ msgstr "WPA-PSK (Pre Shared Key)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "系統時間"
 
 msgid "Wake On LAN"
 msgstr "Wake On LAN 網路喚醒"

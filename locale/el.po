@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 00:44+0000\n"
+"POT-Creation-Date: 2011-11-28 03:03+0000\n"
 "PO-Revision-Date: 2010-10-29 14:19+0000\n"
 "Last-Translator: Petros Kyladitis <Unknown>\n"
 "Language-Team: FreeNAS\n"
@@ -1528,6 +1528,10 @@ msgstr "Οδηγός υλικού"
 msgid "Driver list"
 msgstr "Λίστα οδηγών"
 
+#, fuzzy
+msgid "Driver parameters"
+msgstr "Βοηθητικές παράμετροι"
+
 msgid "Duplex"
 msgstr "Διπλότυπο"
 
@@ -2534,6 +2538,12 @@ msgstr "Διαχείριση LAN"
 
 msgid "LAN net"
 msgstr "LAN net"
+
+msgid "LCDproc"
+msgstr ""
+
+msgid "LCDproc (client)"
+msgstr ""
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -4544,6 +4554,9 @@ msgstr ""
 msgid "The default key lengths are: 128 for AES, 128 for Blowfish, 128 for Camellia and 192 for 3DES."
 msgstr ""
 
+msgid "The default time in seconds to display a screen."
+msgstr ""
+
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Το όνομα συσκευής μπορεί να αποτελείται μόνο από τους χαρακτήρες a-z, A-Z, 0-9."
 
@@ -4569,6 +4582,10 @@ msgstr "Το αποκλειστικό όνομα με το οποίο θα συ�
 
 #, php-format
 msgid "The driver used to communicate with your UPS. Get the list of available <a href='%s' target='_blank'>drivers</a>."
+msgstr "Ο οδηγός που χρησιμοποιείται για την επικοινωνία με UPS σας. Λάβετε τη λίστα των διαθέσιμων <a href='%s' target='_blank'>οδηγών</a>."
+
+#, fuzzy, php-format
+msgid "The driver used to connect with the LCD. The list of available <a href='%s' target='_blank'>drivers</a>."
 msgstr "Ο οδηγός που χρησιμοποιείται για την επικοινωνία με UPS σας. Λάβετε τη λίστα των διαθέσιμων <a href='%s' target='_blank'>οδηγών</a>."
 
 #, php-format
@@ -5122,6 +5139,10 @@ msgid "To get detailed informations about writing firewall rules check the FreeB
 msgstr ""
 
 #, php-format
+msgid "To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."
+msgstr ""
+
+#, php-format
 msgid "To increase CIFS performance try the following:<div id='enumeration'><ul><li>Enable 'Asynchronous I/O (AIO)' switch</li><li>Enable 'Large read/write' switch</li><li>Enable '<a href='%s'>Tuning</a>' switch</li></ul></div>"
 msgstr ""
 
@@ -5445,6 +5466,10 @@ msgstr "WPA-PSK (Προ-διανεμόμενο κλειδί)"
 
 msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
+
+#, fuzzy
+msgid "Wait time"
+msgstr "Ώρα συστήματος"
 
 msgid "Wake On LAN"
 msgstr "Αφύπνιση μέσω τοπικού δικτύου (Wake On Lan)"
