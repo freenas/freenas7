@@ -2105,6 +2105,126 @@ function config_upgrade() {
 		$config['version'] = "9.3";
 	}
 
+	/* Convert 9.3 -> 9.4 */
+	if ($config['version'] === "9.3") {
+		$index = array_search_ex("kern.ipc.maxsockbuf", $config['system']['sysctl']['param'], "name");
+		if ($index !== false) {
+			$config['system']['sysctl']['param'][$index]['value'] = 16777216;
+		}
+		$index = array_search_ex("kern.ipc.nmbjumbo9", $config['system']['sysctl']['param'], "name");
+		if ($index !== false) {
+			$config['system']['sysctl']['param'][$index]['value'] = 131072;
+		}
+		$index = array_search_ex("kern.ipc.nmbjumbo16", $config['system']['sysctl']['param'], "name");
+		if ($index !== false) {
+			$config['system']['sysctl']['param'][$index]['value'] = 65536;
+		}
+		$config['lcdproc'] = array(
+			"driver" => "hd44780",
+			"port" => 13666,
+			"waittime" => 10,
+		);	
+		$config['lcdproc']['lcdproc'] = array();
+		$a1 = array(
+			"# USB connected FT245R based LCD",
+			"ConnectionType=ftdi",
+			"ftdi_mode=4",
+			"ftdi_line_RS=0x40",
+			"ftdi_line_RW=0x20",
+			"ftdi_line_EN=0x10",
+			"#Port=0x378",
+			"#Device=/dev/ttyu0",
+			"#Speed=0",
+			"Keypad=no",
+			"Contrast=0",
+			"#Brightness=1000",
+			"#OffBrightness=0",
+			"Backlight=no",
+			"OutputPort=no",
+			"#Lastline=yes",
+			"Size=20x4",
+			"#vspan=2,2",
+			"#ExtendedMode=yes",
+			"#LineAddress=0x10",
+			"CharMap=hd44780_default",
+			"#DelayMult=2",
+			"#KeepAliveDisplay=0",
+			"#RefreshDisplay=5",
+			"DelayBus=true",
+			"KeyMatrix_4_1=Enter",
+			"KeyMatrix_4_2=Up",
+			"KeyMatrix_4_3=Down",
+			"KeyMatrix_4_4=Escape",
+		);
+		$a2 = array(
+			"[CPU]",
+			"Active=True",
+			"OnTime=1",
+			"OffTime=2",
+			"ShowInvisible=false",
+			"[Iface]",
+			"Active=True",
+			"Interface0=re0",
+			"Alias0=LAN",
+			"#Interface1=em0",
+			"#Alias1=WAN",
+			"[Iface]",
+			"Active=True",
+			"Interface0=re0",
+			"Alias0=LAN",
+			"#Interface1=em0",
+			"#Alias1=WAN",
+			"#Interface2=em1",
+			"#Alias2=MGMT",
+			"unit=bit",
+			"#transfer=TRUE",
+			"[Memory]",
+			"Active=True",
+			"[Load]",
+			"Active=True",
+			"LowLoad=0.05",
+			"HighLoad=1.3",
+			"[TimeDate]",
+			"Active=True",
+			"TimeFormat=&quot;%H:%M:%S&quot;",
+			"DateFormat=&quot;%x&quot;",
+			"[About]",
+			"Active=false",
+			"[SMP-CPU]",
+			"Active=false",
+			"[OldTime]",
+			"Active=false",
+			"TimeFormat=&quot;%H:%M:%S&quot;",
+			"DateFormat=&quot;%x&quot;",
+			"[BigClock]",
+			"Active=false",
+			"[Uptime]",
+			"Active=false",
+			"[Battery]",
+			"Active=false",
+			"[CPUGraph]",
+			"Active=false",
+			"[ProcSize]",
+			"Active=false",
+			"[Disk]",
+			"Active=false",
+			"[MiniClock]",
+			"Active=false",
+			"TimeFormat=&quot;%H:%M&quot;",
+		);
+
+		unset($config['lcdproc']['param']);
+		foreach ($a1 as $param) {
+			$config['lcdproc']['param'][] = $param;
+		}
+		unset($config['lcdproc']['lcdproc']['param']);
+		foreach ($a2 as $param) {
+			$config['lcdproc']['lcdproc']['param'][] = $param;
+		}
+
+		$config['version'] = "9.4";
+	}
+
 	write_config();
 
 	if (is_booting())
