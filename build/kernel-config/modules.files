@@ -13,8 +13,8 @@ geom/geom_virstor/geom_virstor.ko
 # Interfaces
 if_tap/if_tap.ko
 if_tun/if_tun.ko
-if_bridge/if_bridge.ko
-bridgestp/bridgestp.ko
+#if_bridge/if_bridge.ko
+#bridgestp/bridgestp.ko
 
 # File systems
 ext2fs/ext2fs.ko
