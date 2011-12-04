@@ -18,6 +18,7 @@ Majors changes:
 - Upgrade samba to 3.6.1.
 - Add SMB2 and user authentication as default.
 - Add ZFS ACL on CIFS/SMB share.
+- Use UFS ID for fstab of full installation.
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.
@@ -49,6 +50,7 @@ Bug fixes:
 - Remove config lock before reset to factory default.
 - Fix ignore user when using Execute now from rsync client/local.
 - Inherit serial console at firmware upgrade.
+- Add default values to loader.conf of full installation.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

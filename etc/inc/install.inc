@@ -145,6 +145,14 @@ kernel="kernel"
 bootfile="kernel"
 kernel_options=""
 kern.hz="100"
+hw.est.msr_info="0"
+hw.hptrr.attach_generic="0"
+kern.maxfiles="65536"
+kern.maxfilesperproc="32768"
+kern.cam.boot_delay="8000"
+vfs.zfs.prefetch_disable="1"
+autoboot_delay="5"
+isboot_load="YES"
 
 EOD;
 
@@ -168,9 +176,14 @@ EOD;
 	mwexec("/usr/bin/gzip -d -f {$mntpath}/boot/kernel/kernel.gz");
 
 	// Generate /etc/fstab.
+	$ufsid = disks_get_ufsid("/dev/{$harddrive}s1a");
+	if (empty($ufsid)) {
+		write_console("Error: Failed to get UFS ID.\n");
+		return 1;
+	}
 	$fstab .= <<<EOD
-# Device                Mountpoint      FStype  Options         Dump    Pass#
-/dev/{$harddrive}s1a             /       ufs     rw              1       1
+# Device                    Mountpoint  FStype  Options         Dump    Pass#
+/dev/ufsid/{$ufsid}     /       ufs     rw              1       1
 
 EOD;
 
