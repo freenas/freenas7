@@ -3,11 +3,11 @@
 /*
 	services_rsyncd_local_edit.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -167,7 +167,7 @@ if ($_POST) {
 			// Update scripts and execute it.
 			config_lock();
 			$retval |= rc_exec_service("rsync_local");
-			$retval |= rc_exec_script("/var/run/rsync_local_{$rsynclocal['uuid']}.sh");
+			$retval |= rc_exec_script("su -m {$rsynclocal['who']} -c '/bin/sh /var/run/rsync_local_{$rsynclocal['uuid']}.sh'");
 			config_unlock();
 
 			$savemsg = get_std_save_message($retval);

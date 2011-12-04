@@ -47,6 +47,7 @@ Bug fixes:
 - Fix DHCP client hosts.
 - Add a patch of iTunes 10.5 connection issue.
 - Remove config lock before reset to factory default.
+- Fix ignore user when using Execute now from rsync client/local.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

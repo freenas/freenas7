@@ -172,7 +172,7 @@ if ($_POST) {
 			// Update scripts and execute it.
 			config_lock();
 			$retval |= rc_exec_service("rsync_client");
-			$retval |= rc_exec_script("/var/run/rsync_client_{$rsyncclient['uuid']}.sh");
+			$retval |= rc_exec_script("su -m {$rsyncclient['who']} -c '/bin/sh /var/run/rsync_client_{$rsyncclient['uuid']}.sh'");
 			config_unlock();
 
 			$savemsg = get_std_save_message($retval);
