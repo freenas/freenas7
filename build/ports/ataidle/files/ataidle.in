@@ -1,4 +1,5 @@
 #!/bin/sh
+# Copyright (C) 2005-2011 FreeNAS Project. All rights reserved.
 # Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
@@ -19,11 +20,16 @@ ataidle_delay=${ataidle_delay:-"60"}
 echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 
 # Process all configured IDE disks
-/usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE']" \
-	-v "concat(name,' ',devicespecialfile,' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
+/usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE' or type = 'SCSI']" \
+	-v "concat(name,' ',type,' ',devicespecialfile,' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
 	-i "position() != last()" -n -b \
 	${configxml_file} | /usr/local/bin/xml unesc | \
-	while read _name _devicespecialfile _transfermode _harddiskstandby _apm _acoustic; do
+	while read _name _type _devicespecialfile _transfermode _harddiskstandby _apm _acoustic; do
+		# Skip non ATA disk on CAM
+		if [ "SCSI" = "${_type}" -a  "ada" != `/bin/expr -- "${_name}" : '^\([a-zA-Z]*\).*'` ]; then
+			continue;
+		fi
+
 		# Skip CD/DVD devices
 		if [ "acd" = `/bin/expr -- "${_name}" : '^\([a-zA-Z]*\).*'` ]; then
 			continue
@@ -46,13 +52,12 @@ echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 		fi
 
 		if [ ${_harddiskstandby} != 0 ]; then
-			_idle=$((${_harddiskstandby} / 2))
-			_cmdargs="${_cmdargs} -I ${_idle} -S ${_harddiskstandby}"
-
-			# Delay execution to prevent drives to spin up during boot process
-			# because 'ataidle' immediately spins down the drives on execution.
-			(sleep ${ataidle_delay}; /usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile}) > /dev/null 2>&1 &
+		        # enter IDLE mode with Standby timer
+			_cmdargs="${_cmdargs} -I ${_harddiskstandby}"
+			/usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile} > /dev/null 2>&1
 		else
+		    	# enter IDLE mode and disable timer (Always on)
+			_cmdargs="${_cmdargs} -I0"
 			/usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile} > /dev/null 2>&1
 		fi
 

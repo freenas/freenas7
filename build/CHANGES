@@ -24,7 +24,7 @@ Minors changes:
 - Add ability to configure ZFS v28 properties. (dedup, zle compression)
 - Add ability to configure MTU for lagg device.
 - Add some utility commands.
-- Upgrade ataidle to 2.6.
+- Upgrade ataidle to 2.7.1.
 - Upgrade transmission to 2.42.
 - Upgrade smartmontools to 5.42.
 - Upgrade proftpd to 1.3.3g.
