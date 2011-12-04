@@ -152,7 +152,18 @@ samba_mkconf_cmd()
 		-i "count(//samba/storedosattributes) > 0" \
 			-o "store dos attributes = yes" -n \
 		-b \
-		-v "concat('local master = ',//samba/localmaster)" -n \
+		-i "//samba/localmaster[. = 'yes']" \
+			-v "concat('local master = ',//samba/localmaster)" -n \
+			-o "domain master = yes" -n \
+			-o "preferred master = yes" -n \
+			-o "os level = 35" -n \
+		-b \
+		-i "//samba/localmaster[. = 'no']" \
+			-v "concat('local master = ',//samba/localmaster)" -n \
+			-o "domain master = no" -n \
+			-o "preferred master = no" -n \
+			-o "os level = 0" -n \
+		-b \
 		-v "concat('time server = ',//samba/timesrv)" -n \
 		-i "string-length(//samba/guestaccount) > 0" -v "concat('guest account = ',//samba/guestaccount)" -n -b \
 		-i "string-length(//samba/guestaccount) = 0" -o "guest account = ftp" -n -b \
