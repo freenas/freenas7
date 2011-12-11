@@ -1,22 +1,21 @@
-PORTNAME=			smartmontools
-PORTVERSION=	5.41
-CATEGORIES=		sysutils
-COMMENT=			S.M.A.R.T. disk monitoring tools
-MAINTAINER=		michael.zoon@freenas.org
+PORTNAME=	smartmontools
+PORTVERSION=	5.42
+CATEGORIES=	sysutils
+COMMENT=	S.M.A.R.T. disk monitoring tools
+MAINTAINER=	michael.zoon@quicknet.nl
 
-MASTER_SITES=		SF
+MASTER_SITES=	SF
 
-CONFLICTS=		smartmontools-devel-[0-9]*
+CONFLICTS=	smartmontools-devel-[0-9]*
 
-USE_GMAKE=			yes
+USE_GMAKE=	yes
 # hack to prevent gmake failure on 6.xx
 GMAKE=		make
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-docdir=${DOCSDIR} --disable-sample \
-    --disable-dependency-tracking --disable-drivedb
+			--disable-dependency-tracking --disable-drivedb
 
-
-CFLAGS:=			${CFLAGS:S/-O2/-O/} -Wno-write-strings
+CFLAGS:=	${CFLAGS:S/-O2/-O/} -Wno-write-strings
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| install-initdDATA | |' ${WRKSRC}/Makefile.in
