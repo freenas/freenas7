@@ -1,5 +1,5 @@
 PORTNAME=			lighttpd
-PORTVERSION=	1.4.28
+PORTVERSION=	1.4.29
 CATEGORIES=		www
 COMMENT=			A secure, fast, compliant, and very flexible Web Server
 MAINTAINER=		michael.zoon@freenas.org
