@@ -4,6 +4,9 @@ FreeNAS 0.7.3 (RC-1):
 Majors changes:
 - Upgrade to FreeBSD 7.4-p2.
 - Upgrade mDNSResponder to 258.18.
+- Upgrade lighttpd to 1.4.29.
+- Upgrade nut to 2.6.2.
+
 
 Minors changes:
 -

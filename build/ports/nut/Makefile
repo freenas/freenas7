@@ -1,5 +1,5 @@
 PORTNAME=			nut
-PORTVERSION=	2.6.1
+PORTVERSION=	2.6.2
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		michael.zoon@freenas.org
@@ -68,6 +68,7 @@ do-install:
 
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/apcsmart ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/apcsmart-old ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bcmxcp ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bcmxcp_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/belkin ${FREENAS_ROOTFS}/${NUT_DRVDIR}
