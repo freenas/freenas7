@@ -52,7 +52,7 @@ zfs_init()
 	# have to import them to be able to use them.
 	if [ ! -e /boot/zfs/zpool.cache ]; then
 		info Importing ZFS pools...
-		zpool import -f -a
+		zpool import -d /dev -f -a
 		zfs umount -a
 	fi
 }

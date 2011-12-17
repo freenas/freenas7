@@ -56,7 +56,7 @@ $zfs = array(
 
 if (isset($_POST['import']))
 {
-	$cmd = 'zpool import -a';
+	$cmd = 'zpool import -d /dev -a';
 
 	if (isset($_POST['import_force']))
 	{
