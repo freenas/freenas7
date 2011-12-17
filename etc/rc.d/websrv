@@ -63,7 +63,11 @@ websrv_mkconf()
 server.modules = (
   "mod_access",
   "mod_auth",
-  "mod_cgi" )
+  "mod_cgi",
+  "mod_rewrite",
+  "mod_redirect",
+  "mod_alias"
+ )
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
 server.max-write-idle = ${websrv_server_maxwriteidle}
@@ -130,6 +134,13 @@ static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file = "${pidfile}"
 cgi.assign = (".php" => "/usr/local/bin/php")
 EOF
+
+	# Add auxparam
+	/usr/local/bin/xml sel -t -m "//websrv" \
+		-m "auxparam" \
+			-v "." -n \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc >> ${websrv_conf}
 
 	# Configure authentication.
 	if configxml_isset //websrv/authentication/enable; then
