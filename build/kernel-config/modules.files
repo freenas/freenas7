@@ -48,7 +48,7 @@ iscsi/isboot/isboot.ko
 
 # Wireless
 wpifw/wpifw.ko
-iwifw/iwi_bss/iwi_bss
+iwifw/iwi_bss/iwi_bss.ko
 iwifw/iwi_ibss/iwi_ibss.ko
 iwifw/iwi_monitor/iwi_monitor.ko
 ipwfw/ipw_bss/ipw_bss.ko

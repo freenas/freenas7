@@ -51,6 +51,7 @@ Bug fixes:
 - Fix ignore user when using Execute now from rsync client/local.
 - Inherit serial console at firmware upgrade.
 - Add default values to loader.conf of full installation.
+- Fix wrong binary of iwi_bss.ko (BR 3443587).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
