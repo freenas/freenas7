@@ -1,5 +1,5 @@
 --- g_raid5.c.orig	2008-07-29 22:58:03.000000000 +0900
-+++ g_raid5.c	2011-10-18 01:21:59.000000000 +0900
++++ g_raid5.c	2011-12-18 08:14:44.000000000 +0900
 @@ -46,6 +46,7 @@
  #include <sys/mutex.h>
  #include <sys/bio.h>
@@ -17,7 +17,17 @@
  }
  
  static __inline void
-@@ -2441,7 +2442,7 @@
+@@ -2154,7 +2155,9 @@
+ 		if (now.sec - lst_rrq.sec > g_raid5_tooc)
+ 			break;
+ 	}
++#if __FreeBSD_version < 800000
+ 	MYKASSERT(sc->sc_rootmount != NULL, ("why-oh-why???"));
++#endif
+ 	root_mount_rel(sc->sc_rootmount);
+ 	sc->sc_rootmount = NULL;
+ 	if (!sc->term) {
+@@ -2441,7 +2444,7 @@
  	wakeup(sc);
  
  	curthread->td_pflags &= ~TDP_GEOM;
@@ -26,7 +36,7 @@
  }
  
  /*
-@@ -2632,11 +2633,11 @@
+@@ -2632,11 +2635,11 @@
  	sc->sc_type = type;
  
  	sc->term = 0;
