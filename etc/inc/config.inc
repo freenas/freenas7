@@ -1990,6 +1990,7 @@ function config_upgrade() {
 
 	/* Convert 8.9 -> 9.0 */
 	if ($config['version'] === "8.9") {
+		/*
 		unset($config['disks']);
 		unset($config['mounts']);
 		unset($config['gvinum']);
@@ -1998,6 +1999,9 @@ function config_upgrade() {
 		unset($config['gstripe']);
 		unset($config['graid5']);
 		unset($config['geli']);
+		*/
+		// convert all ad devices to ada, and clear ZFS settings.
+		disks_convert_to_ada();
 
 		$config['version'] = "9.0";
 	}

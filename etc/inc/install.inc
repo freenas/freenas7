@@ -335,8 +335,11 @@ function install_check_version($disk)
 		return 1;
 	}
 	/* Check config version */
-	if ((float)$tmp_config['version'] < (float)9.0) {
+	//if ((float)$tmp_config['version'] < (float)9.0) { // r8492
+	if ((float)$tmp_config['version'] < (float)8.9) { // r5246
 		write_console("Error: Does not support upgrading form this version.\n");
+		mwexec("/sbin/umount {$mnt_cf_disk}");
+		mwexec("/bin/rm -f -r {$mnt_cf_disk}");
 		return 1;
 	}
 

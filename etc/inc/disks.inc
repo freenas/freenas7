@@ -1075,6 +1075,31 @@ function disks_get_ufsid($partition) {
 	return $ufsid;
 }
 
+// Get ad disk map.
+// Result is in the form:
+// Array
+// (
+// 	[ad0] => ada0
+// 	[ad2] => ada1
+// 	[ad0p1] => ada0p1
+// )
+function disks_get_admap() {
+	$result = array();
+	$dir = "/dev";
+	if (($dh = opendir($dir)) !== false) {
+		while (($file = readdir($dh)) !== false) {
+			if (!preg_match('/^ad[0-9]+.*/', $file)) continue;
+			// adXX -> adaYYY
+			if (is_link($dir."/".$file)) {
+				$link = readlink($dir."/".$file);
+				$result[$file] = $link;
+			}
+		}
+		closedir($dh);
+	}
+	return $result;
+}
+
 // Get disk information.
 // $disk - Name of the disk (e.g. ad0)
 // Result is in the form:
@@ -1289,6 +1314,210 @@ function disks_rescan() {
 			sleep(1);
 			mwexec("atacontrol attach $channel");
 		}
+	}
+}
+
+// Convert old ad to ada
+function disks_convert_vdisk_to_ada($key, &$admap, &$raidmap) {
+	global $config;
+
+	if (!isset($config[$key]) || !isset($config[$key]['vdisk'])
+	    || !is_array($config[$key]['vdisk'])) {
+		echo "$key: skip (not configured).\n";
+		return;
+	}
+
+	$tmp = array();
+	foreach ($config[$key]['vdisk'] as $a) {
+		$ret = true;
+		foreach ($a['device'] as &$device) {
+			if (preg_match("/^\/dev\/(ad[0-9]+.*)$/", $device, $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					$device = "/dev/".$admap[$dev];
+					echo "$key: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "$key: $dev is not found (removed).\n";
+					$ret = false;
+				}
+			}
+		}
+		unset($device);
+		if ($ret !== false) {
+			$tmp[] = $a;
+			echo "Add ".$a['devicespecialfile']." to RAID map.\n";
+			$raidmap[$a['devicespecialfile']] = true;
+		}
+	}
+	$config[$key]['vdisk'] = $tmp;
+}
+
+function disks_convert_to_ada() {
+	global $config;
+	$admap = disks_get_admap();
+	$raidmap = array();
+
+	echo "\n";
+	echo "Converting ad devices...\n";
+
+	// Disks|Management
+	if (isset($config['disks']) && isset($config['disks']['disk'])
+	    && is_array($config['disks']['disk'])) {
+		$tmp = array();
+		foreach ($config['disks']['disk'] as $a) {
+			if (preg_match("/^(ad[0-9]+.*)$/", $a['name'], $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					//$serial = system_get_volume_serial($admap[$dev]);
+					$a['name'] = $admap[$dev];
+					$a['devicespecialfile'] = "/dev/".$admap[$dev];
+					$tmp[] = $a;
+					echo "disks: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "disks: $dev is not found (removed).\n";
+				}
+			} else {
+				$tmp[] = $a;
+			}
+		}
+		$config['disks']['disk'] = $tmp;
+	}
+
+	// Disks|Management|S.M.A.R.T.
+	if (isset($config['smartd']) && isset($config['smartd']['selftest'])
+	    && is_array($config['smartd']['selftest'])) {
+		$tmp = array();
+		foreach ($config['smartd']['selftest'] as $a) {
+			if (preg_match("/^\/dev\/(ad[0-9]+.*)$/", $a['devicespecialfile'], $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					$a['devicespecialfile'] = "/dev/".$admap[$dev];
+					$tmp[] = $a;
+					echo "smartd: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "smartd: $dev is not found (removed).\n";
+				}
+			} else {
+				$tmp[] = $a;
+			}
+		}
+		$config['smartd']['selftest'] = $tmp;
+	}
+
+	// System|Advanced|Swap
+	if (isset($config['system']) && isset($config['system']['swap'])) {
+		$tmp = array();
+		$a = $config['system']['swap'];
+		if ($a['type'] == "device") {
+			if (preg_match("/^\/dev\/(ad[0-9]+.*)$/", $a['devicespecialfile'], $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					$a['devicespecialfile'] = "/dev/".$admap[$dev];
+					$tmp = $a;
+					echo "swap: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "swap: $dev is not found (removed).\n";
+				}
+			} else {
+				$tmp = $a;
+			}
+		}
+		$config['system']['swap'] = $tmp;
+	}
+
+	// Disks|Software RAID
+	disks_convert_vdisk_to_ada("gmirror", $admap, $raidmap);
+	disks_convert_vdisk_to_ada("graid5", $admap, $raidmap);
+	disks_convert_vdisk_to_ada("gconcat", $admap, $raidmap);
+	disks_convert_vdisk_to_ada("gstripe", $admap, $raidmap);
+	disks_convert_vdisk_to_ada("gvinum", $admap, $raidmap);
+
+	// Disks|Encryption
+	if (isset($config['geli']) && isset($config['geli']['vdisk'])
+	    && is_array($config['geli']['vdisk'])) {
+		$tmp = array();
+		foreach ($config['geli']['vdisk'] as $a) {
+			if (preg_match("/^(ad[0-9]+.*)$/", $a['name'], $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					$a['device'] = "/dev/".$admap[$dev];
+					$a['devicespecialfile']	= "/dev/".$admap[$dev].".eli";
+					$tmp[] = $a;
+					echo "geli: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "geli: $dev is not found (removed).\n";
+				}
+			} else {
+				$tmp[] = $a;
+			}
+		}
+		$config['geli']['vdisk'] = $tmp;
+	}
+
+	// Disks|Mount Point|Management
+	if (isset($config['mounts']) && isset($config['mounts']['mount'])
+	    && is_array($config['mounts']['mount'])) {
+		$tmp = array();
+		foreach ($config['mounts']['mount'] as $a) {
+			if (preg_match("/^\/dev\/(ad[0-9]+.*)$/", $a['mdisk'], $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					$a['mdisk'] = "/dev/".$admap[$dev];
+					if ($a['fstype'] == "ufs") {
+						$ufsid = disks_get_ufsid($a['mdisk']);
+						$a['devicespecialfile'] = $ufsid;
+					}
+					$tmp[] = $a;
+					echo "mounts: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "mounts: $dev is not found (removed).\n";
+				}
+			} else {
+				// non ad devices
+				if (!empty($raidmap[$a['mdisk']])) {
+					$tmp[] = $a;
+					echo "mounts: ".$a['mdisk']." in RAID map.\n";
+				} else if (file_exists($a['mdisk'])) {
+					$tmp[] = $a;
+					echo "mounts: ".$a['mdisk']." exists.\n";
+				} else {
+					echo "mounts: ".$a['mdisk']." is not found (removed).\n";
+				}
+			}
+		}
+		$config['mounts']['mount'] = $tmp;
+	}
+
+	// Disks|ZFS
+	$config['zfs'] = array(
+		'vdevices' => array(),
+		'pools' => array(),
+		'datasets' => array(),
+		'volumes' => array(),
+		'autosnapshots' => array(),
+	);
+	echo "ZFS: cleared.\n";
+	echo "You must import ZFS pool and synchronize the config by WebGUI.\n";
+
+	// Services|iSCSI Target|Extent
+	if (isset($config['iscsitarget']) && isset($config['iscsitarget']['extent'])
+	    && is_array($config['iscsitarget']['extent'])) {
+		$tmp = array();
+		foreach ($config['iscsitarget']['extent'] as $a) {
+			if (preg_match("/^\/dev\/(ad[0-9]+.*)$/", $a['path'], $m)) {
+				$dev = $m[1];
+				if (!empty($admap[$dev])) {
+					$a['path'] = "/dev/".$admap[$dev];
+					$tmp[] = $a;
+					echo "iscsi: $dev -> ".$admap[$dev]."\n";
+				} else {
+					echo "iscsi: $dev is not found (removed).\n";
+				}
+			} else {
+				$tmp[] = $a;
+			}
+		}
+		$config['iscsitarget']['extent'] = $tmp;
 	}
 }
 ?>
