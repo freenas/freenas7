@@ -1,4 +1,5 @@
 #!/bin/sh
+# Copyright (C) 2005-2012 FreeNAS Project. All rights reserved.
 # Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
@@ -8,6 +9,10 @@
 
 . /etc/rc.subr
 . /etc/configxml.subr
+
+if [ -x /etc/rc.d.php/shutdown ]; then
+	eval /etc/rc.d.php/shutdown
+fi
 
 # Execute all commands.
 /usr/local/bin/xml sel -t -m "//rc/shutdown/cmd" \
