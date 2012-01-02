@@ -1,5 +1,5 @@
 PORTNAME=			rsync
-PORTVERSION=	3.0.8
+PORTVERSION=	3.0.9
 CATEGORIES=		net
 COMMENT=			A network file distribution/sync utility
 MAINTAINER=		michael.zoon@freenas.org
