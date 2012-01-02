@@ -196,9 +196,9 @@ EOF
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
-		-v "concat('--database-file &quot;',home,'/${name}.db&quot;')" \
+		-v "concat('--database-file \"',home,'/${name}.db\"')" \
 		-i "count(transcoding) > 0" \
-			-v "concat(' --temp-dir &quot;',tempdir,'&quot;')" \
+			-v "concat(' --temp-dir \"',tempdir,'\"')" \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
