@@ -336,6 +336,7 @@ if (isset($_POST['import_config']))
 						'type' => $disk['type'],
 						'desc' => $disk['desc'],
 						'size' => $disk['size'],
+						'serial' => $disk['serial'],
 						'smart' => false,
 					);
 				}

@@ -63,6 +63,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_disk, "uuid"))
 	$pconfig['apm'] = $a_disk[$cnid]['apm'];
 	$pconfig['transfermode'] = $a_disk[$cnid]['transfermode'];
 	$pconfig['devicespecialfile'] = $a_disk[$cnid]['devicespecialfile'];
+	$pconfig['serial'] = $a_disk[$cnid]['serial'];
 	$pconfig['smart_enable'] = isset($a_disk[$cnid]['smart']['enable']);
 	$pconfig['smart_extraoptions'] = $a_disk[$cnid]['smart']['extraoptions'];
 	$pconfig['desc'] = $a_disk[$cnid]['desc'];
@@ -74,6 +75,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_disk, "uuid"))
 	$pconfig['apm'] = "0";
 	$pconfig['acoustic'] = "0";
 	$pconfig['fstype'] = "";
+	$pconfig['serial'] = "";
 	$pconfig['smart_enable'] = false;
 	$pconfig['smart_extraoptions'] = "";
 	$pconfig['desc'] = "";
@@ -113,6 +115,15 @@ if ($_POST) {
 		$disks['type'] = $a_phy_disk[$devname]['type'];
 		$disks['desc'] = (empty($_POST['desc'])) ? $a_phy_disk[$devname]['desc'] : $_POST['desc'];
 		$disks['size'] = $a_phy_disk[$devname]['size'];
+		if (isset($a_phy_disk[$devname]['serial'])) {
+			$serial = $a_phy_disk[$devname]['serial'];
+		} else {
+			$serial = "";
+		}
+		if (($serial == "n/a") || ($serial == gettext("n/a"))) {
+			$serial = "";
+		}
+		$disks['serial'] = $serial;
 		$disks['smart']['enable'] = $_POST['smart_enable'] ? true : false;
 		$disks['smart']['extraoptions'] = $_POST['smart_extraoptions'];
 

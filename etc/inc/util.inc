@@ -33,6 +33,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require_once("array.inc");
+require_once("system.inc");
 
 // Set PATH, otherwise some commands will not be found during exec.
 putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
@@ -813,6 +814,7 @@ function get_graid5_disks_list()
 //        [size] => 6149MB
 //        [name] => ad0
 //        [devicespecialfile] => /dev/ad0
+//        [serial] => XX123456
 //    )
 function get_ata_disks_list()
 {
@@ -845,6 +847,10 @@ function get_ata_disks_list()
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($diskname);
 			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
+
+			/* Get serial number */
+			$serial = system_get_volume_serial("/dev/" . $diskname);
+			$disklist[$diskname]['serial'] = $serial;
 		}
 	}
 
@@ -859,6 +865,7 @@ function get_ata_disks_list()
 //        [size] => 6149MB
 //        [name] => ad0
 //        [devicespecialfile] => /dev/ad0
+//        [serial] => XX123456
 //    )
 function get_scsi_disks_list()
 {
@@ -893,6 +900,10 @@ function get_scsi_disks_list()
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($diskname);
 			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
+
+			/* Get serial number */
+			$serial = system_get_volume_serial("/dev/" . $diskname);
+			$disklist[$diskname]['serial'] = $serial;
 		}
 	}
 
@@ -907,6 +918,7 @@ function get_scsi_disks_list()
 //        [size] => xxxMB
 //        [name] => aacd0
 //        [devicespecialfile] => /dev/aacd0
+//        [serial] => XX123456
 //    )
 function get_hraid_disks_list()
 {
@@ -960,6 +972,10 @@ function get_hraid_disks_list()
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($diskname);
 			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
+
+			/* Get serial number */
+			$serial = system_get_volume_serial("/dev/" . $diskname);
+			$disklist[$diskname]['serial'] = $serial;
 		}
 	}
 
@@ -975,6 +991,7 @@ function get_hraid_disks_list()
 //        [name] => acd0
 //        [size] => NA
 //        [devicespecialfile] => /dev/acd0
+//        [serial] => XX123456
 //    )
 function get_cdrom_list()
 {
@@ -1006,6 +1023,10 @@ function get_cdrom_list()
 			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
 			$disklist[$diskname]['desc'] = $match[1];
+
+			/* Get serial number */
+			$serial = system_get_volume_serial("/dev/" . $diskname);
+			$disklist[$diskname]['serial'] = $serial;
 
 			$i++;
 		}
@@ -1041,6 +1062,10 @@ function get_cdrom_list()
 			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
 			$disklist[$diskname]['desc'] = $match[1];
+
+			/* Get serial number */
+			$serial = system_get_volume_serial("/dev/" . $diskname);
+			$disklist[$diskname]['serial'] = $serial;
 
 			$i++;
 		}
