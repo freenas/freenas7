@@ -39,6 +39,7 @@ require_once("util.inc");
 require_once("xmlparse.inc");
 require_once("system.inc");
 require_once("array.inc");
+require_once("rc.inc");
 
 /* Get product information */
 $productname = get_product_name();
@@ -2003,6 +2004,9 @@ function config_upgrade() {
 		// convert all ad devices to ada, and clear ZFS settings.
 		disks_convert_to_ada();
 
+		// this was converted from 0.7.2.
+		$config['after072'] = true;
+
 		$config['version'] = "9.0";
 	}
 
@@ -2229,11 +2233,79 @@ function config_upgrade() {
 		$config['version'] = "9.4";
 	}
 
+	/* Convert 9.4 -> 9.5 */
+	if ($config['version'] === "9.4") {
+		// remove entities
+		if (is_array($config['lcdproc']['lcdproc']['param'])) {
+			$tmp = array();
+			foreach ($config['lcdproc']['lcdproc']['param'] as $param) {
+				$param = str_replace('&quot;', '"', $param);
+				$tmp[] = $param;
+			}
+			unset($config['lcdproc']['lcdproc']['param']);
+			$config['lcdproc']['lcdproc']['param'] = $tmp;
+		}
+		// enable lcdproc
+		if (isset($config['lcdproc']['enable'])) {
+			$config['lcdproc']['lcdproc']['enable'] = true;
+		}
+		// disk serial
+		if (isset($config['disks']) && isset($config['disks']['disk'])
+		    && is_array($config['disks']['disk'])) {
+			foreach ($config['disks']['disk'] as &$a) {
+				$dev = $a['devicespecialfile'];
+				if (file_exists($dev)) {
+					$serial = system_get_volume_serial($dev);
+				} else {
+					$serial = "";
+				}
+				if (($serial == "n/a") || ($serial == gettext("n/a"))) {
+					$serial = "";
+				}
+				$a['serial'] = $serial;
+			}
+			unset($a);
+		}
+
+		$config['version'] = "9.5";
+	}
+
 	write_config();
 
 	if (is_booting())
 		echo "done\n";
 
 	return 0;
+}
+
+// hook for postinit
+function config_postinit() {
+	global $config, $g;
+
+	$need_write_config = false;
+
+	if (isset($config['after072'])) {
+		// remove database
+		if (isset($config['upnp']['enable'])) {
+			rc_stop_service("fuppes");
+		}
+		if (!empty($config['upnp']['home'])) {
+			$file = $config['upnp']['home']."/fuppes.db";
+			if (file_exists($file)) {
+				echo "remove old $file\n";
+				@unlink($file);
+			}
+		}
+		if (isset($config['upnp']['enable'])) {
+			rc_start_service("fuppes");
+		}
+		unset($config['after072']);
+		$need_write_config = true;
+	}
+
+	if ($need_write_config) {
+		echo "save config\n";
+		write_config();
+	}
 }
 ?>
