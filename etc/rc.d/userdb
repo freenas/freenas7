@@ -100,7 +100,7 @@ _index=`configxml_get_count "//access/user"`
 while [ ${_index} -gt 0 ]
 do
 	_cmdarg=`/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
-		-v "concat('-n ',login,' -u ',id,' -g ',primarygroup,' -c &quot;',fullname,'&quot;')" \
+		-v "concat('-n ',login,' -u ',id,' -g ',primarygroup,' -c \"',fullname,'\"')" \
 		-i "count(group) > 0" -o " -G " -b \
 		-m "group" \
 			-i "position() > 1" -o "," -b \

@@ -37,11 +37,11 @@ esac
 # Create wpa_supplicant.conf
 /usr/local/bin/xml sel -t -m "//interfaces/*/wireless/wpa[enable]" \
 	-o "network={" -n \
-	-v "concat('ssid=&quot;',../ssid,'&quot;')" -n \
+	-v "concat('ssid=\"',../ssid,'\"')" -n \
 	-v "concat('key_mgmt=',keymgmt)" -n \
 	-v "concat('pairwise=',pairwise)" -n \
 	-v "concat('group=',pairwise)" -n \
-	-v "concat('psk=&quot;',psk,'&quot;')" -n \
+	-v "concat('psk=\"',psk,'\"')" -n \
 	-o "}" -n \
 	${configxml_file} | /usr/local/bin/xml unesc > ${conf_file}
 

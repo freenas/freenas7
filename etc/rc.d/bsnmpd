@@ -44,17 +44,17 @@ bsnmpd_mkconf()
 	/usr/local/bin/xml sel -t -m "//snmpd" \
 		-o "# Set some common variables" -n \
 		-v "concat('host := ',//system/hostname)" -n \
-		-v "concat('location := &quot;',location,'&quot;')" -n \
-		-v "concat('contact := &quot;',contact,'&quot;')" -n \
+		-v "concat('location := \"',location,'\"')" -n \
+		-v "concat('contact := \"',contact,'\"')" -n \
 		-o "system := 1 # FreeBSD" -n \
-		-o "description := &quot;Hardware: ${hw_machine} ${hw_model} running at ${hw_clockrate} Software: ${kern_ostype} ${kern_osrelease} (revision ${kern_osrevision})&quot;" -n \
-		-v "concat('read := &quot;',read,'&quot;')" -n \
+		-o "description := \"Hardware: ${hw_machine} ${hw_model} running at ${hw_clockrate} Software: ${kern_ostype} ${kern_osrelease} (revision ${kern_osrevision})\"" -n \
+		-v "concat('read := \"',read,'\"')" -n \
 		-i "count(trapenable) > 0" \
 			-n \
 			-o "# Trap settings" -n \
 			-v "concat('traphost := ',traphost)" -n \
 			-v "concat('trapport := ',trapport)" -n \
-			-v "concat('trap := &quot;',trap,'&quot;')" -n \
+			-v "concat('trap := \"',trap,'\"')" -n \
 		-b \
 		-n \
 		-o "# Configuration" -n \
@@ -71,8 +71,8 @@ bsnmpd_mkconf()
 		-o "begemotSnmpdPortStatus.127.0.0.1.161 = 1" -n \
 		-n \
 		-o "# open a unix domain socket" -n \
-		-o "begemotSnmpdLocalPortStatus.&quot;/var/run/snmpd.sock&quot; = 1" -n \
-		-o "begemotSnmpdLocalPortType.&quot;/var/run/snmpd.sock&quot; = 4" -n \
+		-o "begemotSnmpdLocalPortStatus.\"/var/run/snmpd.sock\" = 1" -n \
+		-o "begemotSnmpdLocalPortType.\"/var/run/snmpd.sock\" = 4" -n \
 		-i "count(trapenable) > 0" \
 			-n \
 			-o "# send traps to the traphost" -n \
@@ -92,7 +92,7 @@ bsnmpd_mkconf()
 			-o "#" -n \
 			-o "# Load MIB-2 module" -n \
 			-o "#" -n \
-			-o "begemotSnmpdModulePath.&quot;mibII&quot; = &quot;/usr/lib/snmp_mibII.so&quot;" -n \
+			-o "begemotSnmpdModulePath.\"mibII\" = \"/usr/lib/snmp_mibII.so\"" -n \
 			-n \
 			-o "#%mibII" -n \
 			-o "#begemotIfForcePoll = 2000" -n \
@@ -102,10 +102,10 @@ bsnmpd_mkconf()
 			-o "#" -n \
 			-o "# Netgraph module" -n \
 			-o "#" -n \
-			-o "begemotSnmpdModulePath.&quot;netgraph&quot; = &quot;/usr/lib/snmp_netgraph.so&quot;" -n \
+			-o "begemotSnmpdModulePath.\"netgraph\" = \"/usr/lib/snmp_netgraph.so\"" -n \
 			-n \
 			-o "%netgraph" -n \
-			-o "begemotNgControlNodeName = &quot;snmpd&quot;" -n \
+			-o "begemotNgControlNodeName = \"snmpd\"" -n \
 		-b \
 		-i "count(modules/hostres) > 0" \
 			-n \
@@ -113,31 +113,31 @@ bsnmpd_mkconf()
 			-o "# Host resources module snmp_hostres(3)." -n \
 			-o "# This requires the mibII module." -n \
 			-o "#" -n \
-			-o "begemotSnmpdModulePath.&quot;hostres&quot; = &quot;/usr/lib/snmp_hostres.so&quot;" -n \
+			-o "begemotSnmpdModulePath.\"hostres\" = \"/usr/lib/snmp_hostres.so\"" -n \
 		-b \
 		-i "count(modules/ucd) > 0" \
 			-n \
 			-o "#" -n \
 			-o "# bsnmp-ucd (8)" -n \
 			-o "#" -n \
-			-o "begemotSnmpdModulePath.&quot;ucd&quot; = &quot;/usr/lib/snmp_ucd.so&quot;" -n \
+			-o "begemotSnmpdModulePath.\"ucd\" = \"/usr/lib/snmp_ucd.so\"" -n \
 			-o "%ucd" -n \
 			-o "memMinimumSwap = 1600" -n \
-			-o "memSwapErrorMsg = &quot;No free swap!&quot;" -n \
+			-o "memSwapErrorMsg = \"No free swap!\"" -n \
 			-n \
-			-o "laConfig.1 = &quot;6.0&quot;" -n \
-			-o "laConfig.2 = &quot;5.0&quot;" -n \
-			-o "laConfig.3 = &quot;4.0&quot;" -n \
+			-o "laConfig.1 = \"6.0\"" -n \
+			-o "laConfig.2 = \"5.0\"" -n \
+			-o "laConfig.3 = \"4.0\"" -n \
 			-n \
-			-o "laErrMessage.1 = &quot;1min load average is high!&quot;" -n \
-			-o "laErrMessage.2 = &quot;5min load average is high!&quot;" -n \
-			-o "laErrMessage.3 = &quot;15min load average is high!&quot;" -n \
+			-o "laErrMessage.1 = \"1min load average is high!\"" -n \
+			-o "laErrMessage.2 = \"5min load average is high!\"" -n \
+			-o "laErrMessage.3 = \"15min load average is high!\"" -n \
 			-n \
 			-o "# Extension commands (extTable)" -n \
-			-o "extNames.0 = &quot;uname&quot;" -n \
-			-o "extCommand.0 = &quot;/usr/bin/uname -a&quot;" -n \
-			-o "extNames.1 = &quot;uptime&quot;" -n \
-			-o "extCommand.1 = &quot;/usr/bin/uptime&quot;" -n \
+			-o "extNames.0 = \"uname\"" -n \
+			-o "extCommand.0 = \"/usr/bin/uname -a\"" -n \
+			-o "extNames.1 = \"uptime\"" -n \
+			-o "extCommand.1 = \"/usr/bin/uptime\"" -n \
 		-b \
 		-m "auxparam" \
 			-v "." -n \

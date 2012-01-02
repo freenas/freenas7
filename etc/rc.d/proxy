@@ -22,13 +22,13 @@ fi
 # Set proxy settings
 /usr/local/bin/xml sel -t \
 	-m "//system/proxy/http" \
-		-i "count(enable) > 0" -n -v "concat('setenv HTTP_PROXY &quot;',address,':',port,'&quot;')" \
-			-i "count(auth) > 0" -n -v "concat('setenv HTTP_PROXY_AUTH &quot;basic:*:',username,':',password,'&quot;')" -b \
+		-i "count(enable) > 0" -n -v "concat('setenv HTTP_PROXY \"',address,':',port,'\"')" \
+			-i "count(auth) > 0" -n -v "concat('setenv HTTP_PROXY_AUTH \"basic:*:',username,':',password,'\"')" -b \
 		-b \
 	-b \
 	-m "//system/proxy/ftp" \
-		-i "count(enable) > 0" -n -v "concat('setenv FTP_PROXY &quot;',address,':',port,'&quot;')" \
-			-i "count(auth) > 0" -n -v "concat('setenv FTP_PROXY_AUTH &quot;basic:*:',username,':',password,'&quot;')" -b \
+		-i "count(enable) > 0" -n -v "concat('setenv FTP_PROXY \"',address,':',port,'\"')" \
+			-i "count(auth) > 0" -n -v "concat('setenv FTP_PROXY_AUTH \"basic:*:',username,':',password,'\"')" -b \
 		-b \
 	-b \
 	${configxml_file} | /usr/local/bin/xml unesc >> ${cshrc_config}

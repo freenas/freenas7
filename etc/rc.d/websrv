@@ -50,12 +50,12 @@ websrv_mkconf()
 	# Create .conf file
 	/usr/local/bin/xml sel -t -m "//websrv" \
 		-v "concat('server.port = ',port)" -n \
-		-v "concat('server.document-root = &quot;',documentroot,'&quot;')" -n \
+		-v "concat('server.document-root = \"',documentroot,'\"')" -n \
 		-i "count(dirlisting) > 0" \
-			-o "server.dir-listing = &quot;enable&quot;" -n \
-			-o "dir-listing.activate = &quot;enable&quot;" -n \
-			-o "dir-listing.hide-dotfiles = &quot;enable&quot;" -n \
-			-o "dir-listing.encoding = &quot;utf-8&quot;" -n \
+			-o "server.dir-listing = \"enable\"" -n \
+			-o "dir-listing.activate = \"enable\"" -n \
+			-o "dir-listing.hide-dotfiles = \"enable\"" -n \
+			-o "dir-listing.encoding = \"utf-8\"" -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${websrv_conf}
 
@@ -155,11 +155,11 @@ EOF
 		/usr/local/bin/xml sel -t -m "//websrv/authentication" \
 			-o "auth.require = ( " \
 			-m "url" \
-				-v "concat('&quot;',path,'&quot; =&gt;')" -n\
+				-v "concat('\"',path,'\" =>')" -n\
 				-o "(" -n \
-					-o "&quot;method&quot; =&gt; &quot;basic&quot;," -n \
-					-v "concat('&quot;realm&quot; =&gt; &quot;',realm,'&quot;,')" -n \
-					-o "&quot;require&quot; =&gt; &quot;valid-user&quot;" -n \
+					-o "\"method\" => \"basic\"," -n \
+					-v "concat('\"realm\" => \"',realm,'\",')" -n \
+					-o "\"require\" => \"valid-user\"" -n \
 				-o ")," -n \
 			-b \
 			-o ")" \

@@ -34,9 +34,9 @@ if [ 0 -lt ${_scriptnum} ]; then
 		# Generate the shell script that is used by cron
 		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[position()=${_scriptnum}]" \
 			-o "#!/bin/sh" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;Start of local RSYNC from ',source,' to ',destination,'&quot;')" -n \
+			-v "concat('/usr/bin/logger -p local4.notice \"Start of local RSYNC from ',source,' to ',destination,'\"')" -n \
 			-o "if [ -r ${_rsyncflag} ]; then" -n \
-			-o "/usr/bin/logger -p local4.notice &quot;Previous local synchronization still running... exiting&quot;" -n \
+			-o "/usr/bin/logger -p local4.notice \"Previous local synchronization still running... exiting\"" -n \
 			-o "exit" -n \
 			-o "fi" -n \
 			-o "/usr/bin/touch ${_rsyncflag}" -n \
@@ -54,9 +54,9 @@ if [ 0 -lt ${_scriptnum} ]; then
 				-i "count(xattrs) > 0" -o "--xattrs " -b \
 				-i "string-length(extraoptions) > 0" -v "concat(extraoptions,' ')" -b \
 			-b \
-			-v "concat('&quot;',source,'&quot; &quot;',destination,'&quot;')" -n \
+			-v "concat('\"',source,'\" \"',destination,'\"')" -n \
 			-o "/bin/rm -f ${_rsyncflag}" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;End of local RSYNC synchronization from ',source,' to ',destination,'&quot;')" \
+			-v "concat('/usr/bin/logger -p local4.notice \"End of local RSYNC synchronization from ',source,' to ',destination,'\"')" \
 			${configxml_file} | /usr/local/bin/xml unesc > "${_rsyncscript}"
 
 		# Set owner and execute rights of the script

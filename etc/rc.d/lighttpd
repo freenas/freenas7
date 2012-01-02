@@ -146,12 +146,12 @@ EOF
 	# Is authentication (RFC 2617) required?
 	if checkyesno lighttpd_authrequire; then
 		/usr/local/bin/xml sel -t \
-			-o "auth.backend = &quot;htpasswd&quot;" -n \
-			-o "auth.backend.htpasswd.userfile = &quot;${lighttpd_docroot}/.htpasswd&quot;" -n \
-			-o "auth.require = ( &quot;/&quot; => (" -n \
-			-o "  &quot;method&quot;  => &quot;basic&quot;," -n \
-			-v "concat('  &quot;realm&quot;   => &quot;',//system/hostname,'&quot;,')" -n \
-			-o "  &quot;require&quot; => &quot;valid-user&quot;" -n \
+			-o "auth.backend = \"htpasswd\"" -n \
+			-o "auth.backend.htpasswd.userfile = \"${lighttpd_docroot}/.htpasswd\"" -n \
+			-o "auth.require = ( \"/\" => (" -n \
+			-o "  \"method\"  => \"basic\"," -n \
+			-v "concat('  \"realm\"   => \"',//system/hostname,'\",')" -n \
+			-o "  \"require\" => \"valid-user\"" -n \
 			-o "  )," -n \
 			-o ")" -n \
 			${configxml_file} | /usr/local/bin/xml unesc >> ${lighttpd_conf}
@@ -160,8 +160,8 @@ EOF
 	/usr/local/bin/xml sel -t \
 		-i "string-length(//system/webgui/port) > 0" -v "concat('server.port = ',//system/webgui/port)" -n -b \
 		-i "//system/webgui/protocol[. = 'https']" \
-			-o "ssl.engine = &quot;enable&quot;" -n \
-			-o "ssl.pemfile = &quot;${lighttpd_certpem}&quot;" -n \
+			-o "ssl.engine = \"enable\"" -n \
+			-o "ssl.pemfile = \"${lighttpd_certpem}\"" -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${lighttpd_conf}
 

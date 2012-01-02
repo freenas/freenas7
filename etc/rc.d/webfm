@@ -39,7 +39,7 @@ do
 	[ -z "${_homedir}" ] && _homedir=/mnt
 
 	/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
-		-v "concat('array(&quot;',login,'&quot;,&quot;${_password_md5}&quot;,&quot;${_homedir}&quot;,&quot;http://localhost&quot;,0,&quot;^.ht&quot;,${webfm_user_permissions},${webfm_user_active}),')" \
+		-v "concat('array(\"',login,'\",\"${_password_md5}\",\"${_homedir}\",\"http://localhost\",0,\"^.ht\",${webfm_user_permissions},${webfm_user_active}),')" \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
 
 	_index=$(( ${_index} - 1 ))
@@ -49,8 +49,8 @@ done
 _password=`configxml_get "//system/password"`
 _password_md5=`/sbin/md5 -q -s ${_password}`
 /usr/local/bin/xml sel -t -m "//system" \
-	-v "concat('array(&quot;',username,'&quot;,&quot;${_password_md5}&quot;,&quot;/&quot;,&quot;http://localhost&quot;,1,&quot;&quot;,7,1),')" -n \
-	-o "array(&quot;root&quot;,&quot;${_password_md5}&quot;,&quot;/&quot;,&quot;http://localhost&quot;,1,&quot;&quot;,7,1)," \
+	-v "concat('array(\"',username,'\",\"${_password_md5}\",\"/\",\"http://localhost\",1,\"\",7,1),')" -n \
+	-o "array(\"root\",\"${_password_md5}\",\"/\",\"http://localhost\",1,\"\",7,1)," \
 	${configxml_file} | /usr/local/bin/xml unesc >> ${webfm_htusers}
 
 echo ');?>' >> ${webfm_htusers}

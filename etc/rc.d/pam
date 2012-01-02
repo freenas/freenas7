@@ -60,7 +60,7 @@ fi
 
 # Create /etc/pam.d/sshd
 /usr/local/bin/xml sel -t \
-	-o "# PAM configuration for the &quot;sshd&quot; service" -n \
+	-o "# PAM configuration for the \"sshd\" service" -n \
 	-n \
 	-o "# auth" -n \
 	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
@@ -97,7 +97,7 @@ fi
 
 # Create /etc/pam.d/ftp
 /usr/local/bin/xml sel -t \
-	-o "# PAM configuration for the &quot;ftpd&quot; service" -n \
+	-o "# PAM configuration for the \"ftpd\" service" -n \
 	-n \
 	-o "# auth" -n \
 	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
@@ -126,7 +126,7 @@ fi
 
 # Create /etc/pam.d/netatalk
 /usr/local/bin/xml sel -t \
-	-o "# PAM configuration for the &quot;netatalk&quot; service" -n \
+	-o "# PAM configuration for the \"netatalk\" service" -n \
 	-n \
 	-o "# auth" -n \
 	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
@@ -155,7 +155,7 @@ fi
 
 # Create /etc/pam.d/login
 /usr/local/bin/xml sel -t \
-	-o "# PAM configuration for the &quot;login&quot; service" -n \
+	-o "# PAM configuration for the \"login\" service" -n \
 	-n \
 	-o "# auth" -n \
 	-i "count(//ad/enable) > 0" \
