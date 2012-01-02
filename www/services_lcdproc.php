@@ -40,6 +40,7 @@ $pconfig['enable'] = isset($config['lcdproc']['enable']);
 $pconfig['driver'] = $config['lcdproc']['driver'];
 $pconfig['port'] = $config['lcdproc']['port'];
 $pconfig['waittime'] = $config['lcdproc']['waittime'];
+$pconfig['lcdproc_enable'] = isset($config['lcdproc']['lcdproc']['enable']);
 if (is_array($config['lcdproc']['param']))
 	$pconfig['param'] = implode("\n", $config['lcdproc']['param']);
 if (is_array($config['lcdproc']['auxparam']))
@@ -66,6 +67,7 @@ if ($_POST) {
 		$config['lcdproc']['driver'] = $_POST['driver'];
 		$config['lcdproc']['port'] = $_POST['port'];
 		$config['lcdproc']['waittime'] = $_POST['waittime'];
+		$config['lcdproc']['lcdproc']['enable'] = $_POST['lcdproc_enable'] ? true : false;
 
 		# Write additional parameters.
 		unset($config['lcdproc']['param']);
@@ -118,6 +120,10 @@ function enable_change(enable_change) {
 	document.iform.waittime.disabled = endis;
 	document.iform.param.disabled = endis;
 	document.iform.auxparam.disabled = endis;
+}
+function lcdproc_enable_change(enable_change) {
+	var endis = !(document.iform.lcdproc_enable.checked || enable_change);
+
 	document.iform.lcdproc_param.disabled = endis;
 	document.iform.lcdproc_auxparam.disabled = endis;
 }
@@ -137,12 +143,12 @@ function enable_change(enable_change) {
 	<?php html_textarea("param", gettext("Driver parameters"), $pconfig['param'], gettext("Additional parameters to the hardware-specific part of the driver."), false, 65, 10, false, false);?>
 	<?php html_textarea("auxparam", gettext("Auxiliary parameters"), $pconfig['auxparam'], "", false, 65, 5, false, false);?>
 	<?php html_separator();?>
-	<?php html_titleline(gettext("LCDproc (client)"));?>
+	<?php html_titleline_checkbox("lcdproc_enable", gettext("LCDproc (client)"), $pconfig['lcdproc_enable'] ? true : false, gettext("Enable"), "lcdproc_enable_change(false)");?>
 	<?php html_textarea("lcdproc_param", gettext("Extra options"), $pconfig['lcdproc_param'], "", false, 65, 10, false, false);?>
 	<?php html_textarea("lcdproc_auxparam", gettext("Auxiliary parameters"), $pconfig['lcdproc_auxparam'], "", false, 65, 5, false, false);?>
 	</table>
 	<div id="submit">
-	  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true)" />
+	  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onclick="enable_change(true); lcdproc_enable_change(true);" />
 	</div>
 	<div id="remarks">
 	  <?php html_remark("note", gettext("Note"), sprintf(gettext("To get more information how to configure LCDproc check the LCDproc <a href='%s' target='_blank'>documentation</a>."), "http://lcdproc.org/"));?>
@@ -155,6 +161,7 @@ function enable_change(enable_change) {
 <script type="text/javascript">
 <!--
 enable_change(false);
+lcdproc_enable_change(false);
 //-->
 </script>
 <?php include("fend.inc");?>

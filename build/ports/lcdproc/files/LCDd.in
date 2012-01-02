@@ -16,6 +16,8 @@ load_rc_config "${name}"
 
 # Custom commands
 start_precmd="LCDd_mkconf"
+start_cmd="LCDd_start"
+stop_cmd="LCDd_stop"
 mkconf_cmd="LCDd_mkconf"
 extra_commands="mkconf"
 
@@ -60,6 +62,32 @@ LCDd_mkconf()
 			-v "." -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${LCDd_conf}
+}
+
+LCDd_start()
+{
+	local _driver=`configxml_get "//lcdproc/driver"`
+
+	if [ ! "$_rc_prefix" = "force" ]; then
+		if [ x"$_driver" = x"curses" -o x"$_driver" = x"text" ]; then
+			return 0;
+		fi
+	fi
+	unset start_cmd
+	run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
+}
+
+LCDd_stop()
+{
+	local _driver=`configxml_get "//lcdproc/driver"`
+
+	if [ ! "$_rc_prefix" = "force" ]; then
+		if [ x"$_driver" = x"curses" -o x"$_driver" = x"text" ]; then
+			return 0;
+		fi
+	fi
+	unset stop_cmd
+	run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
 }
 
 run_rc_command "$1"
