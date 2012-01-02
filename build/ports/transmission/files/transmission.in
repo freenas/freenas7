@@ -47,8 +47,9 @@ safe_shellquote()
 safe_xmlescape()
 {
 	local _result
+	_result="$@"
 	# replace < > & => &lt;&gt;&amp;
-	#_result=`echo "$@" | sed -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/\&/\&amp;/g'`
+	#_result=`echo "${_result}" | sed -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/\&/\&amp;/g'`
 	# replace inside XPath " => &quot;, ' => ',"'",';,
 	#_result=`echo "${_result}" | sed -e 's/"/\&quot;/g' -e "s/'/',\&quot;'\&quot;,'/g"`
 	# return escaped string
