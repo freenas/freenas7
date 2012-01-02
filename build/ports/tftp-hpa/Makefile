@@ -1,10 +1,10 @@
 PORTNAME=			tftp-hpa
-PORTVERSION=	5.0
+PORTVERSION=	5.2
 CATEGORIES=		ftp
 COMMENT=			An advanced tftp server
 MAINTAINER=		michael.zoon@freenas.org
 
-MASTER_SITES=	ftp://ftp.kernel.org/pub/software/network/tftp/
+MASTER_SITES=	ftp://ftp.kernel.org/pub/software/network/tftp/tftp-hpa/
 
 USE_BZIP2=			yes
 GNU_CONFIGURE=	yes
