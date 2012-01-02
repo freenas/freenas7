@@ -115,7 +115,7 @@ proftpd_mkconf()
 	fi
 
 	/usr/local/bin/xml sel -t \
-		-v "concat('ServerName &quot;',//system/hostname,' FTP Server&quot;')" -n \
+		-v "concat('ServerName \"',//system/hostname,' FTP Server\"')" -n \
 		-o "ServerType standalone" -n \
 		-o "DefaultServer on" -n \
 		-v "concat('DefaultAddress ',//system/hostname)" -n \
@@ -150,29 +150,29 @@ proftpd_mkconf()
 		-i "count(usereversedns) = 0" -o "UseReverseDNS off" -n -b \
 		-i "count(localusersonly) = 0" \
 			-n \
-			-o "&lt;Anonymous ${proftpd_anonymousrootdir}&gt;" -n \
+			-o "<Anonymous ${proftpd_anonymousrootdir}>" -n \
 			-o "  User ftp" -n \
 			-o "  Group ftp" -n \
 			-o "  UserAlias anonymous ftp" -n \
 			-i "string-length(anonymousbandwidth/up) > 0" -v "concat('  TransferRate STOR ',anonymousbandwidth/up)" -n -b \
 			-i "string-length(anonymousbandwidth/down) > 0" -v "concat('  TransferRate RETR ',anonymousbandwidth/down)" -n -b \
 			-i "count(anonymousonly) > 0" \
-				-o "  &lt;Limit LOGIN&gt;" -n \
+				-o "  <Limit LOGIN>" -n \
 				-o "    AllowAll" -n \
-				-o "  &lt;/Limit&gt;" -n \
+				-o "  </Limit>" -n \
 			-b \
-			-o "&lt;/Anonymous&gt;" -n \
+			-o "</Anonymous>" -n \
 		-b \
 		-i "count(localusersonly) > 0" \
 			-n \
-			-o "&lt;Limit LOGIN&gt;" -n \
+			-o "<Limit LOGIN>" -n \
 			-o "  AllowGroup ftp" -n \
 			-i "count(permitrootlogin) > 0" -o "  AllowGroup wheel" -n -b \
 			-o "  DenyAll" -n \
-			-o "&lt;/Limit&gt;" -n \
+			-o "</Limit>" -n \
 		-b \
 		-n \
-		-o "&lt;Global&gt;" -n \
+		-o "<Global>" -n \
 		-o "  RequireValidShell ${proftpd_requirevalidshell}" -n \
 		-i "count(chrooteveryone) > 0" -o "  DefaultRoot ${proftpd_defaultrootdir} ${proftpd_defaultrootgroupexpr}" -n -b \
 		-i "count(permitrootlogin) > 0" -o "  RootLogin on" -n -b \
@@ -185,17 +185,17 @@ proftpd_mkconf()
 		-i "string-length(userbandwidth/up) > 0" -v "concat('  TransferRate STOR ',userbandwidth/up)" -n -b \
 		-i "string-length(userbandwidth/down) > 0" -v "concat('  TransferRate RETR ',userbandwidth/down)" -n -b \
 		-o "  TimesGMT ${proftpd_timesgmt}" -n \
-		-o "&lt;/Global&gt;" -n \
+		-o "</Global>" -n \
 		-i "count(anonymousonly) > 0" \
 			-n \
-			-o "&lt;Limit LOGIN&gt;" -n \
+			-o "<Limit LOGIN>" -n \
 			-i "count(permitrootlogin) > 0" -o "  AllowGroup wheel" -n -b \
 			-o "  DenyAll" -n \
-			-o "&lt;/Limit&gt;" -n \
+			-o "</Limit>" -n \
 		-b \
 		-i "count(tls) > 0" \
 			-n \
-			-o "&lt;IfModule mod_tls.c&gt;" -n \
+			-o "<IfModule mod_tls.c>" -n \
 			-o "  TLSEngine on" -n \
 			-o "  TLSProtocol ${proftpd_tlsprotocol}" -n \
 			-o "  TLSOptions ${proftpd_tlsoptions}" -n \
@@ -205,10 +205,10 @@ proftpd_mkconf()
 			-i "count(tlsrequired) > 0" \
 				-o "  TLSRequired ${proftpd_tlsrequired}" -n \
 			-b \
-			-o "&lt;/IfModule&gt;" -n \
+			-o "</IfModule>" -n \
 		-b \
 		-n \
-		-o "&lt;IfModule mod_ban.c&gt;" -n \
+		-o "<IfModule mod_ban.c>" -n \
 		-i "count(mod_ban/enable) = 0" -o "  BanEngine off" -n -b \
 		-i "count(mod_ban/enable) > 0" -o "  BanEngine on" -n -b \
 		-o "  BanControlsACLs ${proftpd_modban_bancontrolsacls}" -n \
@@ -218,7 +218,7 @@ proftpd_mkconf()
 			-v "concat('  BanOnEvent ',event,' ',occurrence,'/',timeinterval,' ',expire)" -n \
 		-b \
 		-o "  BanTable ${proftpd_modban_bantable}" -n \
-		-o "&lt;/IfModule&gt;" -n \
+		-o "</IfModule>" -n \
 		-n \
 		-m "auxparam" \
 				-v "." -n \

@@ -77,10 +77,10 @@ istgt_mkconf()
 		    -v "concat('[AuthGroup',tag,']')" -n \
 		    -m "agauth" \
 			-i "string-length(authmuser) != 0" \
-			    -v "concat('  Auth &quot;',authuser,'&quot;',' ','&quot;',authsecret,'&quot;',' ','&quot;',authmuser,'&quot;',' ','&quot;',authmsecret,'&quot;')" -n \
+			    -v "concat('  Auth \"',authuser,'\"',' ','\"',authsecret,'\"',' ','\"',authmuser,'\"',' ','\"',authmsecret,'\"')" -n \
 			-b \
 			-i "string-length(authmuser) = 0" \
-			    -v "concat('  Auth &quot;',authuser,'&quot;',' ','&quot;',authsecret,'&quot;')" -n \
+			    -v "concat('  Auth \"',authuser,'\"',' ','\"',authsecret,'\"')" -n \
 			-b \
 		    -b \
 		-n \
@@ -90,10 +90,10 @@ istgt_mkconf()
 		-m "//iscsitarget/target[storage=//iscsitarget/extent/name]" \
 		-v "concat('[AuthGroup',position(),']')" -n \
 		-i "1 and 'CHAP w/mutual CHAP'" \
-		    -v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;',' ','&quot;','MUSER','&quot;',' ','&quot;','MSECRET','&quot;')" -n \
+		    -v "concat('  #Auth \"','USER','\"',' ','\"','SECRET','\"',' ','\"','MUSER','\"',' ','\"','MSECRET','\"')" -n \
 		-b \
 		-i "1 and 'CHAP'" \
-		    -v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;')" -n \
+		    -v "concat('  #Auth \"','USER','\"',' ','\"','SECRET','\"')" -n \
 		-b \
 		-n \
 		-b \
@@ -116,20 +116,20 @@ istgt_mkconf()
 				-v "concat('  Timeout ','30')" -n \
 				-v "concat('  AuthMethod ',//iscsitarget/uctlauthmethod)" -n \
 				-i "1 and 'CHAP w/mutual CHAP'" \
-					-v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;',' ','&quot;','MUSER','&quot;',' ','&quot;','MSECRET','&quot;')" -n \
+					-v "concat('  #Auth \"','USER','\"',' ','\"','SECRET','\"',' ','\"','MUSER','\"',' ','\"','MSECRET','\"')" -n \
 				-b \
 				-m "//iscsitarget/authgroup[tag=//iscsitarget/uctlauthgroup]" \
 					-m "agauth[position()=1]" \
 						-i "string-length(authmuser) != 0" \
-							-v "concat('  Auth &quot;',authuser,'&quot;',' ','&quot;',authsecret,'&quot;',' ','&quot;',authmuser,'&quot;',' ','&quot;',authmsecret,'&quot;')" -n \
+							-v "concat('  Auth \"',authuser,'\"',' ','\"',authsecret,'\"',' ','\"',authmuser,'\"',' ','\"',authmsecret,'\"')" -n \
 						-b \
 						-i "string-length(authmuser) = 0" \
-							-v "concat('  Auth &quot;',authuser,'&quot;',' ','&quot;',authsecret,'&quot;')" -n \
+							-v "concat('  Auth \"',authuser,'\"',' ','\"',authsecret,'\"')" -n \
 					-b \
 				-b \
 				-v "concat('  Host ',//iscsitarget/uctladdress)" -n \
 				-v "concat('  Port ',//iscsitarget/uctlport)" -n \
-				-v "concat('  #TargetName &quot;','iqn.xxxx','&quot;')" -n \
+				-v "concat('  #TargetName \"','iqn.xxxx','\"')" -n \
 				-v "concat('  Lun ','0')" -n \
 				-v "concat('  Flags ','ro')" -n \
 				-v "concat('  Size ','auto')" -n \
@@ -138,11 +138,11 @@ istgt_mkconf()
 				-v "concat('  Timeout ','30')" -n \
 				-v "concat('  AuthMethod ','CHAP Mutual')" -n \
 				-i "1 and 'CHAP w/mutual CHAP'" \
-					-v "concat('  #Auth &quot;','USER','&quot;',' ','&quot;','SECRET','&quot;',' ','&quot;','MUSER','&quot;',' ','&quot;','MSECRET','&quot;')" -n \
+					-v "concat('  #Auth \"','USER','\"',' ','\"','SECRET','\"',' ','\"','MUSER','\"',' ','\"','MSECRET','\"')" -n \
 				-b \
 				-v "concat('  Host ', 'localhost')" -n \
 				-v "concat('  Port ', '${CONTROL_PORT}')" -n \
-				-v "concat('  #TargetName &quot;','iqn.xxxx','&quot;')" -n \
+				-v "concat('  #TargetName \"','iqn.xxxx','\"')" -n \
 				-v "concat('  Lun ','0')" -n \
 				-v "concat('  Flags ','ro')" -n \
 				-v "concat('  Size ','auto')" -n \
@@ -156,14 +156,14 @@ istgt_mkconf()
 		-o "# Global section" -n \
 		-o "[Global]" -n \
 		-i "count(//iscsitarget/nodebase) != 0" \
-			-v "concat('  NodeBase &quot;',//iscsitarget/nodebase,'&quot;')" -n \
-			-v "concat('  PidFile &quot;','${istgt_pidfile}','&quot;')" -n \
-			-v "concat('  AuthFile &quot;','${istgt_authfile}','&quot;')" -n \
+			-v "concat('  NodeBase \"',//iscsitarget/nodebase,'\"')" -n \
+			-v "concat('  PidFile \"','${istgt_pidfile}','\"')" -n \
+			-v "concat('  AuthFile \"','${istgt_authfile}','\"')" -n \
 			-i "count(//iscsitarget/mediadirectory) != 0" \
-				-v "concat('  MediaDirectory &quot;',//iscsitarget/mediadirectory,'&quot;')" -n \
+				-v "concat('  MediaDirectory \"',//iscsitarget/mediadirectory,'\"')" -n \
 			-b \
 			-i "count(//iscsitarget/mediadirectory) = 0" \
-				-v "concat('  MediaDirectory &quot;','${MEDIADIRECTORY}','&quot;')" -n \
+				-v "concat('  MediaDirectory \"','${MEDIADIRECTORY}','\"')" -n \
 			-b \
 			-v "concat('  Timeout ',//iscsitarget/timeout)" -n \
 			-v "concat('  NopInInterval ',//iscsitarget/nopininterval)" -n \
@@ -185,10 +185,10 @@ istgt_mkconf()
 			-v "concat('  DefaultTime2Retain ',//iscsitarget/defaulttime2retain)" -n \
 		-b \
 		-i "count(//iscsitarget/nodebase) = 0" \
-			-v "concat('  NodeBase &quot;','${VENDOR_IQN}','&quot;')" -n \
-			-v "concat('  PidFile &quot;','${istgt_pidfile}','&quot;')" -n \
-			-v "concat('  AuthFile &quot;','${istgt_authfile}','&quot;')" -n \
-			-v "concat('  MediaDirectory &quot;','${MEDIADIRECTORY}','&quot;')" -n \
+			-v "concat('  NodeBase \"','${VENDOR_IQN}','\"')" -n \
+			-v "concat('  PidFile \"','${istgt_pidfile}','\"')" -n \
+			-v "concat('  AuthFile \"','${istgt_authfile}','\"')" -n \
+			-v "concat('  MediaDirectory \"','${MEDIADIRECTORY}','\"')" -n \
 			-v "concat('  Timeout ','30')" -n \
 			-v "concat('  NopInInterval ','20')" -n \
 			-v "concat('  MaxR2T ','32')" -n \
@@ -283,7 +283,7 @@ istgt_mkconf()
 			-m "//iscsitarget/initiatorgroup" \
 				-v "concat('[InitiatorGroup',tag,']')" -n \
 				-m "iginitiatorname" \
-					-v "concat('  InitiatorName &quot;',.,'&quot;')" -n \
+					-v "concat('  InitiatorName \"',.,'\"')" -n \
 				-b \
 				-m "ignetmask" \
 					-v "concat('  Netmask ',.)" -n \
@@ -294,7 +294,7 @@ istgt_mkconf()
 		-i "count(//iscsitarget/initiatorgroup) = 0" \
 			-m "//iscsitarget/target[storage=//iscsitarget/extent/name]" \
 				-v "concat('[InitiatorGroup',position(),']')" -n \
-				-v "concat('  InitiatorName &quot;','ALL','&quot;')" -n \
+				-v "concat('  InitiatorName \"','ALL','\"')" -n \
 				-v "concat('  Netmask ',ipaddr,'/',subnet)" -n \
 				-n \
 			-b \
@@ -317,18 +317,18 @@ istgt_mkconf()
 						-o "# disabled" -n \
 						-v "concat('#[LogicalUnit',position(),']')" -n \
 						-i "count(lunmap) != 0" \
-							-v "concat('#  TargetName &quot;',name,'&quot;')" -n \
+							-v "concat('#  TargetName \"',name,'\"')" -n \
 						-b -n \
 					-b \
 					-i "count(enable) != 0" \
 					-v "concat('[LogicalUnit',position(),']')" -n \
 					-i "count(lunmap) != 0" \
-						-v "concat('  TargetName &quot;',name,'&quot;')" -n \
+						-v "concat('  TargetName \"',name,'\"')" -n \
 						-i "string-length(alias) != 0" \
-							-v "concat('  TargetAlias &quot;',alias,'&quot;')" -n \
+							-v "concat('  TargetAlias \"',alias,'\"')" -n \
 						-b \
 						-i "string-length(alias) = 0" \
-							-v "concat('  #TargetAlias &quot;','','&quot;')" -n \
+							-v "concat('  #TargetAlias \"','','\"')" -n \
 						-b \
 						-m "pgigmap" \
 							-v "concat('  Mapping ','PortalGroup',pgtag,' ','InitiatorGroup',igtag)" -n \
@@ -352,7 +352,7 @@ istgt_mkconf()
 						-i "count(blocklen) != 0 and blocklen != 0" -v "concat('  BlockLength ',blocklen)" -n -b \
 						-i "string-length(queuedepth) != 0" -v "concat('  QueueDepth ',queuedepth)" -n -b \
 						-i "string-length(inqvendor) != 0 or string-length(inqproduct) != 0 or string-length(inqrevision) != 0 or string-length(inqserial) != 0" \
-							-v "concat('  UnitInquiry &quot;',inqvendor,'&quot;',' ','&quot;',inqproduct,'&quot;',' ','&quot;',inqrevision,'&quot;',' ', '&quot;',inqserial,'&quot;')" -n \
+							-v "concat('  UnitInquiry \"',inqvendor,'\"',' ','\"',inqproduct,'\"',' ','\"',inqrevision,'\"',' ', '\"',inqserial,'\"')" -n \
 						-b \
 						-m "lunmap" \
 							-i "type = 'Storage'" \
@@ -360,10 +360,10 @@ istgt_mkconf()
 							-b \
 							-i "type = 'Removable'" \
 								-i "extentname != '-'" \
-									-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
+									-v "concat('  LUN',lun,' ',type,' \"',../flags,'\" ',//iscsitarget/extent[name=current()/extentname]/path,' ',//iscsitarget/extent[name=current()/extentname]/size,//iscsitarget/extent[name=current()/extentname]/sizeunit)" -n \
 								-b \
 								-i "extentname = '-'" \
-									-v "concat('  LUN',lun,' ',type,' &quot;',../flags,'&quot; ','/dev/null',' ','0')" -n \
+									-v "concat('  LUN',lun,' ',type,' \"',../flags,'\" ','/dev/null',' ','0')" -n \
 								-b \
 							-b \
 							-i "type = 'Device'" \

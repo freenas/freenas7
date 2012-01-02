@@ -38,7 +38,7 @@ tftpd_prestart()
 		-i "string-length(timeout) > 0" -v "concat(' -T ',timeout)" -b \
 		-i "string-length(maxblocksize) > 0" -v "concat(' -B ',maxblocksize)" -b \
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
-		-v "concat(' -s &quot;',dir,'&quot;')" \
+		-v "concat(' -s \"',dir,'\"')" \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	command_args="${command_args} ${_command_args}"
