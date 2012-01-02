@@ -1110,6 +1110,8 @@ function disks_get_admap() {
 // 	[mediasize_bytes]  => 5242503168
 // 	[mediasize_mbytes]  => 4999
 // 	[mediasize_sectors]  => 10239264
+// 	[stripesize] => 0
+// 	[stripeoffset] => 0
 // 	[cylinders] => 10158
 // 	[heads] => 16
 // 	[sectors] => 63
@@ -1127,9 +1129,11 @@ function disks_get_diskinfo($disk)
 	$result[mediasize_bytes] = chop($diskinfo[2]);
 	$result[mediasize_mbytes] = ceil(chop($diskinfo[2]) / 1024 / 1024);
 	$result[mediasize_sectors] = chop($diskinfo[3]);
-	$result[cylinders] = chop($diskinfo[4]);
-	$result[heads] = chop($diskinfo[5]);
-	$result[sectors] = chop($diskinfo[6]);
+	$result[stripesize] = chop($diskinfo[4]);
+	$result[stripeoffset] = chop($diskinfo[5]);
+	$result[cylinders] = chop($diskinfo[6]);
+	$result[heads] = chop($diskinfo[7]);
+	$result[sectors] = chop($diskinfo[8]);
 
 	return $result;
 }
