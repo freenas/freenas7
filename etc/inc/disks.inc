@@ -1463,9 +1463,12 @@ function disks_convert_to_ada() {
 				$dev = $m[1];
 				if (!empty($admap[$dev])) {
 					$a['mdisk'] = "/dev/".$admap[$dev];
+					$p = $a['partition'];
 					if ($a['fstype'] == "ufs") {
-						$ufsid = disks_get_ufsid($a['mdisk']);
-						$a['devicespecialfile'] = $ufsid;
+						$ufsid = disks_get_ufsid($a['mdisk'].$p);
+						$a['devicespecialfile'] = "/dev/ufsid/".$ufsid;
+					} else {
+						$a['devicespecialfile'] = $a['mdisk'].$p;
 					}
 					$tmp[] = $a;
 					echo "mounts: $dev -> ".$admap[$dev]."\n";
@@ -1519,5 +1522,8 @@ function disks_convert_to_ada() {
 		}
 		$config['iscsitarget']['extent'] = $tmp;
 	}
+
+	// wait a moment to see the result.
+	sleep(10);
 }
 ?>
