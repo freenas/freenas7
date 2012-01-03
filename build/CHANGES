@@ -44,6 +44,7 @@ Minors changes:
 - Allow last newline of certificate.
 - Add DBCS Codepages for legacy OS.
 - Add LCDproc service.
+- Add ZFS list and status to report mail.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.

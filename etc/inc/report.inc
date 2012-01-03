@@ -1,11 +1,14 @@
 <?php
 /*
 	report.inc
+	Copyright (C) 2005-2012 FreeNAS Project.
+	All rights reserved.
+
 	Copyright (c) 2007-2009 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://freenas.org)
-	Copyright (C) 2005-2009 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -275,6 +278,8 @@ function report_send_mail() {
 		$statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("ZFS pool list","/sbin/zpool list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("ZFS pool status","/sbin/zpool status"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
 		$disklist = get_physical_disks_list();
@@ -366,6 +371,8 @@ function report_generate_html() {
 	$statusreport->AddArticle(new StatusReportArticleCmd("Network performances","netstat -m"));
 	$statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
 	$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
+	$statusreport->AddArticle(new StatusReportArticleCmd("ZFS pool list","/sbin/zpool list"));
+	$statusreport->AddArticle(new StatusReportArticleCmd("ZFS pool status","/sbin/zpool status"));
 	$statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
 	$statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
 	$disklist = get_physical_disks_list();
