@@ -16,6 +16,10 @@ umask 22
 
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin $HOME/bin)
 
+setenv	LANG	 en_US.UTF-8
+setenv	LANGUAGE en_US.UTF-8
+setenv	LC_ALL	 en_US.UTF-8
+
 setenv	PAGER	more
 setenv	BLOCKSIZE	K
 setenv	EDITOR nano

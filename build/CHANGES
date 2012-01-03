@@ -45,6 +45,7 @@ Minors changes:
 - Add DBCS Codepages for legacy OS.
 - Add LCDproc service.
 - Add ZFS list and status to report mail.
+- Use UTF-8 as default shell environment.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
