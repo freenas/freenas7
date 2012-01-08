@@ -31,7 +31,7 @@ Minors changes:
 - Upgrade proftpd to 1.3.3g.
 - Upgrade fuppes to 0.691.
 - Upgrade tftp-hpa to 5.2.
-- Upgrade to rsyn 3.0.9.
+- Upgrade rsync to 3.0.9.
 - Upgrade xmlstarlet to 1.3.0.
 - Upgrade nut to 2.6.3.
 - Upgrade lighttpd to 1.4.29.
@@ -47,6 +47,8 @@ Minors changes:
 - Add LCDproc service.
 - Add ZFS list and status to report mail.
 - Use UTF-8 as default shell environment.
+- Add guest enabler to CIFS/SMB share.
+- Remove polling setting of IF.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
