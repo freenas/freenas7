@@ -74,7 +74,6 @@ setifconfig()
 			-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
 			-i "wakeon[. = 'off']" -o " -wol " -b \
 	    	-b \
-		-i "count(polling) > 0" -o " polling" -b \
 		-i "starts-with(if,'lagg') = 0" \
 			-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
 	    	-b \
@@ -131,7 +130,6 @@ setifconfig()
 					-i "wakeon[. != 'off']" -v "concat(' -wol ',translate(wakeon, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))" -b \
 					-i "wakeon[. = 'off']" -o " -wol " -b \
 			    	-b \
-				-i "count(polling) > 0" -o " polling" -b \
 				-i "starts-with(if,'lagg') = 0" \
 					-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
 			    	-b \
