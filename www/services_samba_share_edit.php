@@ -3,14 +3,14 @@
 /*
 	services_samba_share_edit.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2012 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (C) 2006-2011 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -67,6 +67,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['comment'] = $a_share[$cnid]['comment'];
 	$pconfig['readonly'] = isset($a_share[$cnid]['readonly']);
 	$pconfig['browseable'] = isset($a_share[$cnid]['browseable']);
+	$pconfig['guest'] = isset($a_share[$cnid]['guest']);
 	$pconfig['inheritpermissions'] = isset($a_share[$cnid]['inheritpermissions']);
 	$pconfig['recyclebin'] = isset($a_share[$cnid]['recyclebin']);
 	$pconfig['hidedotfiles'] = isset($a_share[$cnid]['hidedotfiles']);
@@ -84,6 +85,7 @@ if (isset($uuid) && (FALSE !== ($cnid = array_search_ex($uuid, $a_share, "uuid")
 	$pconfig['comment'] = "";
 	$pconfig['readonly'] = false;
 	$pconfig['browseable'] = true;
+	$pconfig['guest'] = true;
 	$pconfig['inheritpermissions'] = true;
 	$pconfig['recyclebin'] = false;
 	$pconfig['hidedotfiles'] = true;
@@ -131,6 +133,7 @@ if ($_POST) {
 		$share['comment'] = $_POST['comment'];
 		$share['readonly'] = $_POST['readonly'] ? true : false;
 		$share['browseable'] = $_POST['browseable'] ? true : false;
+		$share['guest'] = $_POST['guest'] ? true : false;
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
 		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$share['hidedotfiles'] = $_POST['hidedotfiles'] ? true : false;
@@ -213,6 +216,14 @@ if ($_POST) {
 			      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked=\"checked\""; ?> />
 			      	<?=gettext("Set browseable");?><br />
 			        <span class="vexpl"><?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Guest");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="guest" type="checkbox" id="guest" value="yes" <?php if ($pconfig['guest']) echo "checked=\"checked\""; ?> />
+			      	<?=gettext("Enable guest access");?><br />
+			        <span class="vexpl"><?=gettext("This controls whether this share is accessible by guest account.");?></span>
 			      </td>
 			    </tr>
 			    <tr>

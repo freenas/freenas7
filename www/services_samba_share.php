@@ -3,14 +3,14 @@
 /*
 	services_samba_share.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2012 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (C) 2006-2010 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2010 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -115,7 +115,8 @@ function smbshare_process_updatenotification($mode, $data) {
           	<td width="30%" class="listhdrlr"><?=gettext("Path");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Comment");?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Browseable");?></td>
+            <td width="10%" class="listhdrr"><?=gettext("Browseable");?></td>
+            <td width="10%" class="listhdrr"><?=gettext("Guest");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php foreach($a_share as $sharev):?>
@@ -125,6 +126,7 @@ function smbshare_process_updatenotification($mode, $data) {
             <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
+            <td class="listbg"><?=htmlspecialchars(isset($sharev['guest'])?gettext("Yes"):gettext("No"));?></td>
             <?php if (UPDATENOTIFY_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap="nowrap" class="list">
               <a href="services_samba_share_edit.php?uuid=<?=$sharev['uuid'];?>"><img src="e.gif" title="<?=gettext("Edit share");?>" border="0" alt="<?=gettext("Edit share");?>" /></a>
@@ -138,7 +140,7 @@ function smbshare_process_updatenotification($mode, $data) {
           </tr>
           <?php endforeach;?>
           <tr> 
-            <td class="list" colspan="4"></td>
+            <td class="list" colspan="5"></td>
             <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" border="0" alt="<?=gettext("Add share");?>" /></a></td>
           </tr>
         </table>
