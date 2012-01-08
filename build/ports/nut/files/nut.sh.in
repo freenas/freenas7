@@ -58,10 +58,10 @@ nut_mkconf()
 	# Create ups.conf
 	/usr/local/bin/xml sel -t -m "//ups" \
 		-v "concat('[',upsname,']')" -n \
-		-v "concat('&#009;driver = ',driver)" -n \
-		-v "concat('&#009;port = ',port)" -n \
+		-v "concat('	driver = ',driver)" -n \
+		-v "concat('	port = ',port)" -n \
 		-m "auxparam" \
-			-v "concat('&#009;',.)" -n \
+			-v "concat('	',.)" -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${nut_ups_conf}
 
