@@ -3,13 +3,13 @@
 /*
 	interfaces_opt.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2012 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 
-	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -187,7 +187,7 @@ function enable_change(enable_change) {
 		document.iform.type.disabled = endis;
 		document.iform.descr.disabled = endis;
 		document.iform.mtu.disabled = endis;
-		document.iform.polling.disabled = endis;
+		//document.iform.polling.disabled = endis;
 		document.iform.media.disabled = endis;
 		document.iform.mediaopt.disabled = endis;
 <?php if (!empty($ifinfo['wolevents'])):?>
@@ -315,7 +315,9 @@ function encryption_change() {
 											<?php html_separator();?>
 											<?php html_titleline(gettext("Advanced Configuration"));?>
 											<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."), false, 5);?>
+<!--
 											<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
+-->
 											<?php html_combobox("media", gettext("Media"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), "", false, false, "media_change()");?>
 											<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), "", false);?>
 											<?php if (!empty($ifinfo['wolevents'])):?>
