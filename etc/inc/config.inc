@@ -2270,6 +2270,35 @@ function config_upgrade() {
 		$config['version'] = "9.5";
 	}
 
+	/* Convert 9.5 -> 9.6 */
+	if ($config['version'] === "9.5") {
+		// modify device type IDE to SCSI
+		if (isset($config['disks']) && isset($config['disks']['disk'])
+		    && is_array($config['disks']['disk'])) {
+			foreach ($config['disks']['disk'] as &$a) {
+				if ($a['type'] == 'IDE') {
+					$a['type'] = 'SCSI';
+				}
+			}
+			unset($a);
+		}
+		// guest access
+		if (isset($config['samba']) && isset($config['samba']['share'])
+		    && is_array($config['samba']['share'])) {
+			foreach ($config['samba']['share'] as &$a) {
+				$a['guest'] = true;
+			}
+			unset($a);
+		}
+		// remove polling
+		unset($config['interfaces']['lan']['polling']);
+		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
+			unset($config['interfaces']['opt' . $i]['polling']);
+		}
+
+		$config['version'] = "9.6";
+	}
+
 	write_config();
 
 	if (is_booting())

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>9.5</version>
+	<version>9.6</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -483,7 +483,6 @@
 			<!--
 			<ipv6_enable/>
 			<mtu>1500</mtu>
-			<polling/>
 			<wakeon>off|magic|unicast|multicast|broadcast|link</wakeon>
 			<extraoptions></extraoptions>
 			<wireless>
@@ -564,7 +563,7 @@
 			<acoustic>0</acoustic>
 			<apm>0</apm>
 			<transfermode>auto</transfermode>
-			<type>IDE</type>
+			<type>SCSI</type>
 			<desc>xxx</desc>
 			<size>xxxMB</size>
 			<fstype>xxx</fstype>
@@ -848,6 +847,7 @@
 			<path>/mnt/xxx</path>
 			<comment>xxx</comment>
 			<readonly/>
+			<guest/>
 			<browseable/>
 			<inheritpermissions/>
 			<recyclebin/>
