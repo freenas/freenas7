@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-28 03:03+0000\n"
-"PO-Revision-Date: 2012-01-02 13:49+0000\n"
+"PO-Revision-Date: 2012-01-02 19:42+0000\n"
 "Last-Translator: Nicola <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-02 17:01+0000\n"
-"X-Generator: Launchpad (build 14560)\n"
+"X-Launchpad-Export-Date: 2012-01-08 08:01+0000\n"
+"X-Generator: Launchpad (build 14640)\n"
 "X-Poedit-Country: ITALY\n"
 "Language: \n"
 "X-Poedit-Language: Italian\n"
@@ -416,7 +416,7 @@ msgid "Add user"
 msgstr "Aggiungi utente"
 
 msgid "Add volume"
-msgstr ""
+msgstr "Aggiungi volume"
 
 msgid "Additional group"
 msgstr "Gruppo addizionale"
@@ -791,7 +791,7 @@ msgid "CIFS/SMB informations"
 msgstr "Informazioni CIFS/SMB"
 
 msgid "CP1251 (Cyrillic)"
-msgstr ""
+msgstr "CP1251 (Cirillico)"
 
 msgid "CP437 (Latin US)"
 msgstr ""
@@ -812,7 +812,7 @@ msgid "CP936 (Simplified Chinese GBK)"
 msgstr ""
 
 msgid "CP949 (Korean)"
-msgstr ""
+msgstr "CP949 (Coreano)"
 
 msgid "CP950 (Traditional Chinese Big5)"
 msgstr ""
@@ -839,7 +839,7 @@ msgid "Can't format the OS origin disk!"
 msgstr "Non posso formattare il disco dell'OS"
 
 msgid "Can't get UFS ID."
-msgstr ""
+msgstr "Impossibile ottenere UFS ID"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Non si puo' montare la partizione 1, la partizione DATI è la 2."
@@ -937,7 +937,7 @@ msgid "Client sees uppercase, server sees lowercase"
 msgstr "Il client vede in maiuscolo, il server vede in minuscolo"
 
 msgid "Clone"
-msgstr ""
+msgstr "Clona"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Ottengo i primi dati, attendere..."
@@ -1059,9 +1059,16 @@ msgid ""
 "where N is an integer from 1 (fastest) to 9 (best compression ratio). "
 "Currently, 'gzip' is equivalent to 'gzip-6'."
 msgstr ""
+"Specifica l'algoritmo di compressione usato per questo volume. L'algoritmo "
+"\"lzjb\" è ottimizzato per prestazioni migliori mantendo tuttavia una "
+"compressione decente. Impostando la compressione su \"On\" verrà utilizzato "
+"l'algoritmo \"lzjb\". È possibile specificare il livello \"gzip\" "
+"specificando il valore \"gzip-N\", dove N è un intero compreso tra 1 (più "
+"veloce) e 9 (migliore rapporto di compressione). Attualmente, \"gzip\" "
+"equivale a \"gzip-6\"."
 
 msgid "Controls the dedup method."
-msgstr ""
+msgstr "Specifica il metodo di deduplicazione"
 
 msgid "Controls whether this dataset can be modified."
 msgstr "Controlla se questo dataset può essere modificato"
@@ -1082,13 +1089,13 @@ msgid "Create work directory if it doesn't exist."
 msgstr "Crea la directory di lavoro se questa non esiste"
 
 msgid "Created UFS file system:"
-msgstr ""
+msgstr "Creato file system UFS:"
 
 msgid "Creates the pool with an alternate root."
 msgstr "Crea il pool con un root alternativo."
 
 msgid "Creates the recursive snapshot."
-msgstr ""
+msgstr "Crea uno snapshot ricorsivo."
 
 msgid "Creating filesystem"
 msgstr "Creo filesystem"
@@ -1100,7 +1107,7 @@ msgid "Creating partition"
 msgstr "Creare partizione"
 
 msgid "Creation"
-msgstr ""
+msgstr "Creazione"
 
 msgid "Credits"
 msgstr "Riconoscimenti"
@@ -1199,7 +1206,7 @@ msgid "Debug"
 msgstr "Debug"
 
 msgid "Dedup"
-msgstr ""
+msgstr "Deduplicazione"
 
 msgid "Default"
 msgstr "Predefinita"
@@ -1272,10 +1279,10 @@ msgid "Delete auth group"
 msgstr "Elimina il gruppo di autenticazione"
 
 msgid "Delete auto snapshot"
-msgstr ""
+msgstr "Elimina snapshot automatico"
 
 msgid "Delete clone"
-msgstr ""
+msgstr "Elimina clone"
 
 msgid "Delete command"
 msgstr "Cancella comando"
@@ -1337,7 +1344,7 @@ msgid "Delete share"
 msgstr "Elimina condivisione"
 
 msgid "Delete snapshot"
-msgstr ""
+msgstr "Elimina snapshot"
 
 msgid "Delete target"
 msgstr "Cancella target"
@@ -1346,10 +1353,10 @@ msgid "Delete user"
 msgstr "Cancella utente"
 
 msgid "Delete volume"
-msgstr ""
+msgstr "Elimina volume"
 
 msgid "Deletes the recursive snapshot."
-msgstr ""
+msgstr "Elimina lo snapshot ricorsivo"
 
 msgid "Deleting"
 msgstr "Eliminazione"
@@ -1559,10 +1566,10 @@ msgid "Do you really want to delete this auth group?"
 msgstr "Vuoi davvero eliminare questo gruppo di autenticazione?"
 
 msgid "Do you really want to delete this auto snapshot?"
-msgstr ""
+msgstr "Vuoi davvero eliminare questo snapshot automatico?"
 
 msgid "Do you really want to delete this clone?"
-msgstr ""
+msgstr "Vuoi davvero eliminare questo clone?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Si vuole realmente cancellare questo comando?"
@@ -1637,7 +1644,7 @@ msgid "Do you really want to delete this share?"
 msgstr "Si desidera realmente cancellare questa condivisone?"
 
 msgid "Do you really want to delete this snapshot?"
-msgstr ""
+msgstr "Vuoi davvero eliminare questo snapshot?"
 
 msgid "Do you really want to delete this target?"
 msgstr "Si vuole realmente cancellare questo target?"
@@ -1646,7 +1653,7 @@ msgid "Do you really want to delete this user?"
 msgstr "Si desidera realmente cancellare questo utente?"
 
 msgid "Do you really want to delete this volume?"
-msgstr ""
+msgstr "Vuoi davvero eliminare questo volume?"
 
 msgid ""
 "Do you really want to delete this volume?\\n!!! Note, all data will get lost "
@@ -1725,7 +1732,7 @@ msgid "Dos charset"
 msgstr "Set caratteri Dos"
 
 msgid "Double-parity RAID-Z"
-msgstr ""
+msgstr "Double-parity RAID-Z"
 
 msgid "Download"
 msgstr "Download"
@@ -1749,7 +1756,7 @@ msgid "Driver list"
 msgstr "Lista Driver"
 
 msgid "Driver parameters"
-msgstr ""
+msgstr "Parametri driver"
 
 msgid "Duplex"
 msgstr "Duplex"
@@ -1794,7 +1801,7 @@ msgid "Edit auth group"
 msgstr "Modifica auth group"
 
 msgid "Edit auto snapshot"
-msgstr ""
+msgstr "Modifica snapshot automatico"
 
 msgid "Edit command"
 msgstr "Modifica comando"
@@ -1851,7 +1858,7 @@ msgid "Edit share"
 msgstr "Modifica condivisione"
 
 msgid "Edit snapshot"
-msgstr ""
+msgstr "Modifica snapshot"
 
 msgid "Edit target"
 msgstr "Modifica Target"
@@ -1860,7 +1867,7 @@ msgid "Edit user"
 msgstr "Modifica utente"
 
 msgid "Edit volume"
-msgstr ""
+msgstr "Modifica volume"
 
 msgid "Email"
 msgstr "Posta Elettronica"
@@ -1896,7 +1903,7 @@ msgid "Enable TLS/SSL connections."
 msgstr "Abilita le connessioni TLS/SSL"
 
 msgid "Enable ZFS ACL"
-msgstr ""
+msgstr "Abilita ZFS ACL"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Abilita Zeroconf/Bonjour a notificare i servizi di questa periferica"
@@ -1993,7 +2000,7 @@ msgid "Enable serial console"
 msgstr "Attiva la console seriale"
 
 msgid "Enable shadow copy"
-msgstr ""
+msgstr "Modifica versioni precedenti (shadow copy)"
 
 msgid "Enable store DOS attributes"
 msgstr "Abilita gli attributi DOS per l'archiviazione"
@@ -2294,7 +2301,7 @@ msgid "Filename"
 msgstr "Nome file"
 
 msgid "Filter"
-msgstr ""
+msgstr "Filtro"
 
 msgid "Firewall"
 msgstr "Firewall"
@@ -2686,6 +2693,8 @@ msgstr ""
 msgid ""
 "If this property is enabled, the snapshots are displayed into .zfs directory."
 msgstr ""
+"Se questa opzione è abilitata, gli snapshot saranno visibili dentro la "
+"directory \".zfs\"."
 
 #, php-format
 msgid ""
@@ -2889,7 +2898,7 @@ msgid "Kill encrypted volume"
 msgstr "Terminare il volume cifrato"
 
 msgid "Knowledge Base"
-msgstr ""
+msgstr "Conoscenze base"
 
 msgid "Knowledgebase"
 msgstr "Base di conoscenza"
@@ -2935,11 +2944,11 @@ msgstr "Ultima modifica della configurazione"
 
 #, php-format
 msgid "Latest nightly build: %s"
-msgstr ""
+msgstr "Ultima build nightly: %s"
 
 #, php-format
 msgid "Latest stable build: %s"
-msgstr ""
+msgstr "Ultima build stabile: %s"
 
 msgid "Latvian"
 msgstr "Lettone"
@@ -2953,13 +2962,13 @@ msgstr ""
 "href='%s'>formatta</a>."
 
 msgid "Leave already configured auto snapshots."
-msgstr ""
+msgstr "Tralascia snapshot automatici già configurati"
 
 msgid "Leave auto snapshot configuration"
-msgstr ""
+msgstr "Tralascia configurazione snapshot automatici"
 
 msgid "Leave this field empty to use default settings."
-msgstr ""
+msgstr "Lascia questo campo vuoto per impostare i valori predefiniti."
 
 msgid "Level 1 - Minimum power usage with Standby (spindown)"
 msgstr "Livello 1 - Consumo minimo con standby (spindown)"
@@ -2990,7 +2999,7 @@ msgid "License & Credits"
 msgstr "License & Credits"
 
 msgid "Life time"
-msgstr ""
+msgstr "Durata"
 
 msgid "Lightweight Directory Access Protocol"
 msgstr "Protocollo leggero di accesso alle cartelle"
@@ -4295,6 +4304,8 @@ msgstr ""
 msgid ""
 "SMB2 is for recent OS like Windows 7 and Vista. NT1 is for legacy OS like XP."
 msgstr ""
+"SMB2 è consigliato per i sistemi operativi più recenti come Windows 7 e "
+"Vista. NT1 è per i sistemi operativi legacy come XP."
 
 msgid "SNMP"
 msgstr "SNMP"
@@ -4603,13 +4614,13 @@ msgid "Slovenian"
 msgstr "Sloveno"
 
 msgid "Snapshot"
-msgstr ""
+msgstr "Snapshot"
 
 msgid "Snapshot Visibility"
-msgstr ""
+msgstr "Visibilità snapshot"
 
 msgid "Snapshots"
-msgstr ""
+msgstr "Snapshot"
 
 msgid "Sockets"
 msgstr "Sockets"
@@ -4778,7 +4789,7 @@ msgid "Subnet mask"
 msgstr "Subnet mask"
 
 msgid "Subsystem"
-msgstr ""
+msgstr "Sottosistema"
 
 msgid "Successful"
 msgstr "Riuscito"
@@ -5207,6 +5218,9 @@ msgid ""
 "The custom format of the snapshot for shadow copy service can be specified. "
 "The default format is %s used for ZFS auto snapshot."
 msgstr ""
+"Il formato personalizzato dello snapshot per il servizio shadow copy può "
+"essere specificato. Il formato di default è %s usato per gli snapshot "
+"automatici ZFS."
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "La porta di default del server mail SMTP, es. 25 o 587."
@@ -5640,7 +5654,7 @@ msgid "There must be at least 3 disks in a raidz2."
 msgstr "Ci vogliono almeno 3 dischi per un raidz2."
 
 msgid "There must be at least 4 disks in a raidz3."
-msgstr ""
+msgstr "Devono esserci almeno 4 dischi in un raidz3"
 
 msgid "There must be selected a minimum of 1 interface."
 msgstr "Devi selezionare almeno 1 interfaccia."
@@ -5876,6 +5890,7 @@ msgstr ""
 
 msgid "This option causes rsync to copy the local data to the remote server."
 msgstr ""
+"Questa opzione permette ad rsync di copiare i dati locali sul server remoto."
 
 msgid ""
 "This option causes rsync to update the remote extended attributes to be the "
@@ -6520,7 +6535,7 @@ msgid "Virtual interface"
 msgstr "Interfaccia virtuale"
 
 msgid "Volume"
-msgstr ""
+msgstr "Volume"
 
 msgid "Volume Name"
 msgstr "Nome volume"
@@ -6532,7 +6547,7 @@ msgid "Volume label of the new file system."
 msgstr "Etichetta di volume del nuovo filesystem."
 
 msgid "Volumes"
-msgstr ""
+msgstr "Volumi"
 
 msgid "WAN address"
 msgstr "Indirizzo WAN"
@@ -6560,7 +6575,7 @@ msgid "WPA-PSK WPA-EAP"
 msgstr "WPA-PSK WPA-EAP"
 
 msgid "Wait time"
-msgstr ""
+msgstr "Tempo di attesa"
 
 msgid "Wake On LAN"
 msgstr "Wake On LAN"
@@ -6595,7 +6610,7 @@ msgid "WebGUI"
 msgstr "WebGUI"
 
 msgid "WebGUI Login"
-msgstr ""
+msgstr "Accesso WebGUI"
 
 msgid "Webserver"
 msgstr "Webserver"
@@ -6741,7 +6756,7 @@ msgid "ZFS"
 msgstr "ZFS"
 
 msgid "ZFS ACL"
-msgstr ""
+msgstr "ZFS ACL"
 
 msgid "ZFS dataset information and status"
 msgstr "Informazioni e stato del dataset ZFS"
@@ -6750,24 +6765,26 @@ msgid "ZFS dataset properties"
 msgstr "Proprietà del dataset ZFS"
 
 msgid "ZFS snapshot information and status"
-msgstr ""
+msgstr "Informazioni e stato snapshot ZFS"
 
 msgid "ZFS snapshot properties"
-msgstr ""
+msgstr "Opzioni snapshot ZFS"
 
 msgid "ZFS volume"
 msgstr "Volume ZFS."
 
 msgid "ZFS volume information and status"
-msgstr ""
+msgstr "Informazioni e stato volume ZFS"
 
 msgid "ZFS volume properties"
-msgstr ""
+msgstr "Opzioni volume ZFS"
 
 msgid ""
 "ZFS volume size. To specify the size use the following human-readable "
 "suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
+"Dimensioni volume ZFS. Per specificare le dimensioni utilizzare i seguenti "
+"suffissi (ad esempio \"k\", \"KB\", \"M\", \"Gb\", ecc…)."
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
@@ -6829,7 +6846,7 @@ msgid "iTunes/DAAP"
 msgstr "iTunes/DAAP"
 
 msgid "infinity"
-msgstr ""
+msgstr "infinito"
 
 msgid "load/unload failed."
 msgstr "Caricamento/scaricamento falliti."
