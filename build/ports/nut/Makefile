@@ -1,5 +1,6 @@
 PORTNAME=			nut
-PORTVERSION=	2.6.2
+PORTVERSION=	2.6.3
+PORTREVISION=	0
 CATEGORIES=		sysutils
 COMMENT=			Network UPS tools
 MAINTAINER=		michael.zoon@freenas.org
@@ -68,6 +69,7 @@ do-install:
 
 	@${MKDIR} -pv ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/apcsmart ${FREENAS_ROOTFS}/${NUT_DRVDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/apcsmart-old ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bcmxcp ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/bcmxcp_usb ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/belkin ${FREENAS_ROOTFS}/${NUT_DRVDIR}
@@ -112,17 +114,17 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/usbhid-ups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/drivers/victronups ${FREENAS_ROOTFS}/${NUT_DRVDIR}
 
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/libupsclient.so.1 ${FREENAS_ROOTFS}/usr/local/lib
-	@${LN} -f -v -s /usr/local/lib/libupsclient.so.1 ${FREENAS_ROOTFS}/usr/local/lib/libupsclient.so
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/libupsclient.so.2 ${FREENAS_ROOTFS}/usr/local/lib
+	@${LN} -f -v -s /usr/local/lib/libupsclient.so.2 ${FREENAS_ROOTFS}/usr/local/lib/libupsclient.so
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsc ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upscmd ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upslog ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsmon ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsrw ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/upssched-cmd.in ${FREENAS_ROOTFS}/usr/local/bin/upssched-cmd
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/server/upsd ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/.libs/upsmon ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/clients/upssched ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/nut.sh.in ${FREENAS_ROOTFS}/etc/rc.d/nut
