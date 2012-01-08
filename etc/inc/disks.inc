@@ -1375,6 +1375,7 @@ function disks_convert_to_ada() {
 					//$serial = system_get_volume_serial($admap[$dev]);
 					$a['name'] = $admap[$dev];
 					$a['devicespecialfile'] = "/dev/".$admap[$dev];
+					$a['type'] = "SCSI";
 					$tmp[] = $a;
 					echo "disks: $dev -> ".$admap[$dev]."\n";
 				} else {
