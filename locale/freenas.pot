@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2011-11-28 03:03+0000\n"
+"POT-Creation-Date: 2012-01-09 05:27+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1695,6 +1695,9 @@ msgid "Enable firmware upload"
 msgstr ""
 
 msgid "Enable foreground/background file system consistency check during boot process."
+msgstr ""
+
+msgid "Enable guest access"
 msgstr ""
 
 msgid "Enable guest access."
@@ -4893,6 +4896,9 @@ msgid "This controls the access to this share with an access password."
 msgstr ""
 
 msgid "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
+msgstr ""
+
+msgid "This controls whether this share is accessible by guest account."
 msgstr ""
 
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
