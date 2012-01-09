@@ -1,5 +1,5 @@
 PORTNAME=		mDNSResponder
-PORTVERSION=		320.5.1
+PORTVERSION=		333.10
 CATEGORIES=		net dns
 COMMENT=		Apple's mDNSResponder
 MAINTAINER=		aoyama@peach.ne.jp
