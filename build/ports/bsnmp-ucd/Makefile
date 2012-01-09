@@ -1,5 +1,5 @@
 PORTNAME=			bsnmp-ucd
-PORTVERSION=	0.3.2
+PORTVERSION=	0.3.3
 CATEGORIES=		net-mgmt
 COMMENT=			A bsnmpd module that implements parts of UCD-SNMP-MIB
 MAINTAINER=		michael.zoon@freenas.org

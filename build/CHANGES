@@ -37,6 +37,7 @@ Minors changes:
 - Upgrade lighttpd to 1.4.29.
 - Upgrade php5 to 5.3.8.
 - Upgrade msmtp to 1.4.26.
+- Upgrade bsnmp-ucd-0.3.3.
 - Add ability to set guest account mapping.
 - Use 8-bit data for syslogd.
 - Preserve ZFS auto snapshot when importing ZFS config.
