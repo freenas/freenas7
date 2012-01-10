@@ -69,7 +69,7 @@ echo "FREENAS_TMPDIR=${FREENAS_TMPDIR}" >> ${FREENAS_MK}
 
 # Local variables
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
-FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.7"
+FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/legacy"
 
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
