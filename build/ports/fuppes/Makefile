@@ -92,8 +92,8 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libdecoder_flac.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libdatabase_sqlite3.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libdatabase_sqlite3.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libsource_bliptv.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libsource_bliptv.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
+#	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libsource_bliptv.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
+#	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libsource_bliptv.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 	@${CP} -Rpv ${WRKSRC}/src/plugins/.libs/libsource_itunes.so ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/libsource_itunes.so.* ${FREENAS_ROOTFS}/${PREFIX}/lib/${PORTNAME}
 
