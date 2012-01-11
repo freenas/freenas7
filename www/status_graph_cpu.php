@@ -69,7 +69,7 @@ $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));?>
       <div align="center">
         <object id="graph" data="graph_cpu.php" type="image/svg+xml" width="550" height="275">
           <param name="src" value="graph_cpu.php" />
-          Your browser does not support this object type!<br /><span class="red"><strong>Note:</strong></span> The <a href="http://de.brothersoft.com/Renesis-Player-download-141155.html" target="_blank">RENESIS Player</a> is required to view the graph.
+          Your browser does not support this object type! You need to either use Firefox, Internet Explorer 9 or download RENESIS Player<br /><span class="red"><strong>Note:</strong></span> The <a href="http://de.brothersoft.com/Renesis-Player-download-141155.html" target="_blank">RENESIS Player</a> is required to view the graph.
         </object>
       </div>
     </td>
