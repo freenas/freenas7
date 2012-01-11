@@ -10,6 +10,7 @@ DISTNAME=		${PORTNAME}-${PORTVERSION}
 
 LIB_DEPENDS+=		sqlite3:${PORTSDIR}/databases/sqlite3 \
 			tag:${PORTSDIR}/audio/taglib \
+			curl:${PORTSDIR}/ftp/curl \
 			pcre.0:${PORTSDIR}/devel/pcre \
 			uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
 			mp3lame.0:${PORTSDIR}/audio/lame \
