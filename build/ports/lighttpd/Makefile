@@ -1,7 +1,8 @@
-PORTNAME=			lighttpd
-PORTVERSION=	1.4.29
+PORTNAME=		lighttpd
+PORTVERSION=	1.4.30
 CATEGORIES=		www
-COMMENT=			A secure, fast, compliant, and very flexible Web Server
+COMMENT=		A secure, fast, compliant, and very flexible Web Server
+
 MAINTAINER=		michael.zoon@freenas.org
 
 MASTER_SITES=	http://download.lighttpd.net/lighttpd/releases-1.4.x/ \
@@ -15,7 +16,8 @@ USE_BZIP2=				yes
 USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=		yes
 USE_OPENSSL=			yes
-USE_GNOME+=				libxml2
+USE_GNOME+=		libxml2
+
 CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/lighttpd --enable-static \
 						                     --sysconfdir=/var/etc/ \
 									--enable-lfs \

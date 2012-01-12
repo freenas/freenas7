@@ -34,7 +34,7 @@ Minors changes:
 - Upgrade rsync to 3.0.9.
 - Upgrade xmlstarlet to 1.3.0.
 - Upgrade nut to 2.6.3.
-- Upgrade lighttpd to 1.4.29.
+- Upgrade lighttpd to 1.4.30.
 - Upgrade php5 to 5.3.8.
 - Upgrade msmtp to 1.4.26.
 - Upgrade bsnmp-ucd-0.3.3.
