@@ -20,6 +20,7 @@ Majors changes:
 - Add ZFS ACL on CIFS/SMB share.
 - Use UFS ID for fstab of full installation.
 - Add ZFS pool with encrypted devices.
+- Add ZFS spare device support. (spare add/remove/detach)
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.
