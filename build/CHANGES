@@ -19,6 +19,7 @@ Majors changes:
 - Add SMB2 and user authentication as default.
 - Add ZFS ACL on CIFS/SMB share.
 - Use UFS ID for fstab of full installation.
+- Add ZFS pool with encrypted devices.
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.

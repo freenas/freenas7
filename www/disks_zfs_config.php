@@ -3,14 +3,14 @@
 /*
 	disks_zfs_config.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2012 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -180,6 +180,9 @@ foreach ($rawdata as $line)
 		if (preg_match("/^(.+)\.nop$/", $dev, $m)) {
 			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
 			$zfs['vdevices']['vdevice'][$vdev]['aft4k'] = true;
+		} else if (preg_match("/^(.+)\.eli$/", $dev, $m)) {
+			//$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 		} else {
 			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 		}
@@ -239,6 +242,9 @@ foreach ($rawdata as $line)
 			if (preg_match("/^(.+)\.nop$/", $dev, $m)) {
 				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
 				$zfs['vdevices']['vdevice'][$vdev]['aft4k'] = true;
+			} else if (preg_match("/^(.+)\.eli$/", $dev, $m)) {
+				//$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 			} else {
 				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 			}

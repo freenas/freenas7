@@ -3,14 +3,14 @@
 /*
 	disks_zfs_config_sync.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2012 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2009 Marion DESNAULT (marion.desnault@free.fr)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -168,6 +168,9 @@ foreach ($rawdata as $line)
 		if (preg_match("/^(.+)\.nop$/", $dev, $m)) {
 			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
 			$zfs['vdevices']['vdevice'][$vdev]['aft4k'] = true;
+		} else if (preg_match("/^(.+)\.eli$/", $dev, $m)) {
+			//$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 		} else {
 			$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 		}
@@ -227,6 +230,9 @@ foreach ($rawdata as $line)
 			if (preg_match("/^(.+)\.nop$/", $dev, $m)) {
 				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
 				$zfs['vdevices']['vdevice'][$vdev]['aft4k'] = true;
+			} else if (preg_match("/^(.+)\.eli$/", $dev, $m)) {
+				//$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$m[1]}";
+				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 			} else {
 				$zfs['vdevices']['vdevice'][$vdev]['device'][] = "/dev/{$dev}";
 			}
@@ -256,6 +262,19 @@ foreach ($rawdata as $line)
 			$pool = $m[1];
 		}
 	}
+}
+
+function get_geli_info($device) {
+	$result = array();
+	exec("/sbin/geli dump {$device}", $rawdata);
+	array_shift($rawdata);
+	foreach($rawdata as $line) {
+		$a = preg_split("/:\s+/", $line);
+		$key = trim($a[0]);
+		$val = trim($a[1]);
+		$result[$key] = $val;
+	}
+	return $result;
 }
 
 if (isset($_POST['import_config']))
@@ -311,11 +330,17 @@ if (isset($_POST['import_config']))
 	if ($import)
 	{
 		$cfg['disks'] = $config['disks'];
+		$cfg['geli'] = $config['geli'];
 		$disks = get_physical_disks_list();
 		foreach ($cfg['zfs']['vdevices']['vdevice'] as $vdev)
 		{
 			foreach ($vdev['device'] as $device)
 			{
+				$encrypted = false;
+				if (preg_match("/^(.+)\.eli$/", $device, $m)) {
+					$device = $m[1];
+					$encrypted = true;
+				}
 				if (preg_match("/^(.*)p\d+$/", $device, $m)) {
 					$device = $m[1];
 				}
@@ -330,7 +355,7 @@ if (isset($_POST['import_config']))
 						'devicespecialfile' => $disk['devicespecialfile'],
 						'harddiskstandby' => 0,
 						'acoustic' => 0,
-						'fstype' => 'zfs',
+						'fstype' => $encrypted ? 'geli' : 'zfs',
 						'apm' => 0,
 						'transfermode' => 'auto',
 						'type' => $disk['type'],
@@ -342,7 +367,29 @@ if (isset($_POST['import_config']))
 				}
 				else if ($index !== false && isset($_POST['import_disks_overwrite']))
 				{
-					$cfg['disks']['disk'][$index]['fstype'] = 'zfs';
+					if ($encrypted) {
+						$cfg['disks']['disk'][$index]['fstype'] = 'geli';
+					} else {
+						$cfg['disks']['disk'][$index]['fstype'] = 'zfs';
+					}
+				}
+				if ($encrypted) {
+					$index = array_search_ex($device, $cfg['geli']['vdisk'], 'device');
+					$geli_info = get_geli_info($device);
+					if ($index === false && !empty($geli_info) && isset($_POST['import_disks'])) {
+						$disk = array_search_ex($device, $disks, 'devicespecialfile');
+						$disk = $disks[$disk];
+						$cfg['geli']['vdisk'][] = array(
+							'uuid' => uuid(),
+							'name' => $disk['name'],
+							'device' => $disk['devicespecialfile'],
+							'devicespecialfile' => $disk['devicespecialfile'].".eli",
+							'desc' => "Encrypted disk",
+							'size' => $disk['size'],
+							'aalgo' => "none",
+							'ealgo' => $geli_info['ealgo'],
+						);
+					}
 				}
 			}
 		}
@@ -352,6 +399,7 @@ if (isset($_POST['import_config']))
 		}
 		$config['zfs'] = $cfg['zfs'];
 		$config['disks'] = $cfg['disks'];
+		$config['geli'] = $cfg['geli'];
 		updatenotify_set('zfs_import_config', UPDATENOTIFY_MODE_UNKNOWN, true);
 		write_config();
 		header('Location: disks_zfs_config_current.php');

@@ -3,7 +3,7 @@
 /*
 	disks_zfs_zpool_tools.php
 	Modified for XHTML by Daisuke Aoyama (aoyama@peach.ne.jp)
-	Copyright (C) 2010-2011 Daisuke Aoyama <aoyama@peach.ne.jp>.
+	Copyright (C) 2010-2012 Daisuke Aoyama <aoyama@peach.ne.jp>.
 	All rights reserved.
 
 	Copyright (c) 2008-2010 Volker Theile (votdev@gmx.de)
@@ -11,7 +11,7 @@
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2011 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2012 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -231,10 +231,18 @@ function pool_change() {
 				$type = $vdevice['type'];
 				foreach ($vdevice['device'] as $devicev) {
 					$a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
-					$index = array_search_ex($devicev, $a_disk, "devicespecialfile");
-					$tmp = $a_disk[$index];
-					$tmp['type'] = $type;
-					$result[] = $tmp;
+					$a_encrypteddisk = get_conf_encryped_disks_list();
+
+					if (($index = array_search_ex($devicev, $a_disk, "devicespecialfile")) !== false) {
+						$tmp = $a_disk[$index];
+						$tmp['type'] = $type;
+						$result[] = $tmp;
+					} else if (($index = array_search_ex($devicev, $a_encrypteddisk, "devicespecialfile")) !== false) {
+						$tmp = $a_encrypteddisk[$index];
+						$tmp['type'] = $type;
+						$tmp['name'] = $tmp['name'].".eli";
+						$result[] = $tmp;
+					}
 				}
 			}
 			$i = 0; $j = 0;
