@@ -38,7 +38,7 @@ do-install:
 	@${INSTALL_DATA} -v ${BLDSRC}/modules/freebsd/vmblock.ko ${FREENAS_ROOTFS}/${PREFIX}/lib/vmware-tools/modules/drivers/vmblock.ko
 
 	@${INSTALL_PROGRAM} -v ${BLDSRC}/services/vmtoolsd/.libs/vmtoolsd ${FREENAS_ROOTFS}/${PREFIX}/bin
-	@${INSTALL_PROGRAM} -v ${BLDSRC}/checkvm/vmware-checkvm ${FREENAS_ROOTFS}/${PREFIX}/bin
+	@${INSTALL_PROGRAM} -v ${BLDSRC}/checkvm/.libs/vmware-checkvm ${FREENAS_ROOTFS}/${PREFIX}/bin
 	@${INSTALL_PROGRAM} -v ${BLDSRC}/hgfsclient/.libs/vmware-hgfsclient ${FREENAS_ROOTFS}/${PREFIX}/bin
 	@${INSTALL_PROGRAM} -v ${BLDSRC}/rpctool/vmware-rpctool ${FREENAS_ROOTFS}/${PREFIX}/bin
 	@${INSTALL_PROGRAM} -v ${BLDSRC}/toolbox/.libs/vmware-toolbox-cmd ${FREENAS_ROOTFS}/${PREFIX}/bin
