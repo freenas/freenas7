@@ -54,7 +54,7 @@ ipfw_mkconf()
 	cat /dev/null > ${firewall_script_auxrules}
 
 	# Add rules
-	/usr/local/bin/xml sel -t -m "//system/firewall/rule[enable]" -s A:N "ruleno" \
+	/usr/local/bin/xml sel -t -m "//system/firewall/rule[enable]" -s A:N:- "ruleno" \
 		-v "concat('\${fwcmd} add ',action)" \
 		-i "count(log) > 0" -o " log" -b \
 		-v "concat(' ',protocol,' from ')" \
