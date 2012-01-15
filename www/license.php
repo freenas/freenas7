@@ -171,13 +171,13 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         The authors of FreeNAS would like to thank the authors of these software
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br />
-        Copyright &copy; 1995-2011 The FreeBSD Project. All rights reserved.</p>
+        Copyright &copy; 1995-2012 The FreeBSD Project. All rights reserved.</p>
 
       <p>Unofficial <a href="http://wgboome.homepage.t-online.de/geom_raid5.tbz">FreeBSD GEOM RAID5 module</a><br />
         Copyright &copy; 2006-2009 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br />
-        Copyright &copy; 2001-2011 The PHP Group. All rights reserved.</p>
+        Copyright &copy; 2001-2012 The PHP Group. All rights reserved.</p>
 
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://www.lighttpd.net</a>)<br />
         Copyright &copy; 2004 by Jan Kneschke (jan@kneschke.de). All rights reserved.</p>
@@ -222,7 +222,7 @@ $pgtitle = array(gettext("Help"), gettext("License & Credits"));
         Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>
 
       <p>FUPPES - Free UPnP Entertainment Service (<a href="http://fuppes.ulrich-voelkel.de" target="_blank">http://fuppes.ulrich-voelkel.de</a>)<br />
-        Copyright &copy; 2005 - 2009 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
+        Copyright &copy; 2005 - 2011 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
 
       <p>mt-daapd - Multithread daapd Apple iTunes server (<a href="http://www.fireflymediaserver.org" target="_blank">http://www.fireflymediaserver.org</a>)<br />
         Copyright &copy; 2003 Ron Pedde (ron@pedde.com).</p>
