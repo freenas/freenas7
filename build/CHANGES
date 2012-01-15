@@ -23,6 +23,7 @@ Majors changes:
 - Add ZFS spare device support. (spare add/remove/detach)
 - Add ZFS mirror support. (attach/detach)
 - Add ZFS vdev adding. (same type only)
+- Add ZFS replace with Hot Spare.
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.

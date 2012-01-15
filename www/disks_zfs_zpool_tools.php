@@ -97,6 +97,45 @@ foreach ($a_disk as $diskv) {
 	//$a_disk_free = array_merge($a_disk_free, array("{$diskv['name']}" => "{$diskv['name']} ({$diskv['desc']})"));
 }
 
+function get_spare_list($pool) {
+	$result = array();
+	mwexec2("zpool status {$pool}", $rawdata);
+	$req_level = -1;
+	$key = "";
+	$devs = array();
+	foreach ($rawdata as $line) {
+		if ($line[0] != "\t") continue;
+		if (preg_match('/^\t(\s+)(spare-\S+)/', $line, $m)) {
+			$req_level = strlen($m[1]) + 2;
+			$key = $m[2];
+			continue;
+		}
+		if (preg_match('/^\t(\s+)(\S+)/', $line, $m)) {
+			$level = strlen($m[1]);
+			if ($level == $req_level) {
+				$devs[] = "/dev/{$m[2]}";
+				continue;
+			}
+		}
+		if ($key != "")
+			$result[$key] = $devs;
+		$key = "";
+		$devs = array();
+		$req_level = -1;
+	}
+	return $result;
+}
+
+function get_device_type($device, &$a_vdevice) {
+	$index = array_search_ex($device, $a_vdevice, "device");
+	if ($index !== false) {
+		$type = $a_vdevice[$index]['type'];
+	} else {
+		$type = "none";
+	}
+	return $type;
+}
+
 $pconfig['action'] = $_GET['action'];
 if (isset($_POST['action']))
 	$pconfig['action'] = $_POST['action'];
@@ -718,6 +757,9 @@ function pool_change() {
 		break;
 
 		case "attach": {
+		    echo "$action...\n";
+		    if ((is_array($device) && count($device) == 0) || $device == "")
+			break;
 		    switch ($option) {
 		    case "d":
 			if (is_array($device)) {
@@ -769,6 +811,12 @@ function pool_change() {
 		break;
 
 		case "detach": {
+		    echo "$action...\n";
+		    if ((is_array($device) && count($device) == 0) || $device == "")
+			break;
+		    // get curret spare list
+		    $a_spares = get_spare_list($pool);
+
 		    switch ($option) {
 		    case "d":
 			if (is_array($device)) {
@@ -799,12 +847,67 @@ function pool_change() {
 			    foreach ($target_devices as $target_device) {
 				$index = array_search_ex($target_device, $config['zfs']['vdevices']['vdevice'], "device");
 				if ($index !== false) {
+				    $type = get_device_type($target_device, $a_vdevice);
+
+				    // remove spares if any
+				    if ($type != "spare" && !empty($a_spares)) {
+					foreach ($a_spares as $spares) {
+					    if (in_array($target_device, $spares) == false)
+						continue;
+					    // ok target in the array, remove spare
+					    foreach ($spares as $spare_device) {
+						if (strcmp($spare_device, $target_device) == 0)
+						    continue;
+						$s_index = array_search_ex($spare_device, $config['zfs']['vdevices']['vdevice'], "device");
+						if ($s_index !== false) {
+						    $new_devices = array();
+						    foreach ($config['zfs']['vdevices']['vdevice'][$s_index]['device'] as $device) {
+							if (strcmp($device, $spare_device) != 0) {
+							    $new_devices[] = $device;
+						        }
+						    }
+						    $config['zfs']['vdevices']['vdevice'][$s_index]['device'] = $new_devices;
+						}
+					    }
+var_dump($config['zfs']['vdevices']);
+					    // insert spare to target vdevice
+					    $config['zfs']['vdevices']['vdevice'][$index]['device'][] = $spare_device;
+					}
+				    }
+var_dump($config['zfs']['vdevices']);
+
+				    // cleanup spare vdevice
+				    $new_vdevices = array();
+				    $del_vdevices = array();
+				    foreach ($config['zfs']['vdevices']['vdevice'] as $vdevice) {
+					if (count($vdevice['device']) == 0) {
+					    $del_vdevices[] = $vdevice;
+					} else {
+					    $new_vdevices[] = $vdevice;
+					}
+				    }
+				    $config['zfs']['vdevices']['vdevice'] = $new_vdevices;
+
+				    // reflect pool
+				    $p_index = array_search_ex($pool, $config['zfs']['pools']['pool'], "name");
+				    if ($p_index !== false) {
+					$new_vdevices = array();
+					foreach ($config['zfs']['pools']['pool'][$p_index]['vdevice'] as $vdevice) {
+					    $v_index = array_search_ex($vdevice, $del_vdevices, "name");
+					    if ($v_index === false) {
+						$new_vdevices[] = $vdevice;
+					    }
+					}
+					$config['zfs']['pools']['pool'][$p_index]['vdevice'] = $new_vdevices;
+				    }
+
+				    // now get replaced vdevs, remove target
 				    $new_devices = array();
 				    $result = 0;
 				    foreach ($config['zfs']['vdevices']['vdevice'][$index]['device'] as $device) {
 					if (strcmp($device, $target_device) == 0 && $config['zfs']['vdevices']['vdevice'][$index]['type'] != "spare") {
 					    if (isset($config['zfs']['vdevices']['vdevice'][$index]['aft4k'])) {
-					    	// Destroy gnop
+						// Destroy gnop
 						$gnop_cmd = "gnop destroy {$target_device}.nop";
 						write_log("$gnop_cmd");
 						$result = mwexec($gnop_cmd, true);
@@ -973,6 +1076,7 @@ function pool_change() {
 		break;
 
 		case "spare add": {
+		    echo "$action...\n";
 		    switch ($option) {
 		    case "d":
 			if ($spare_device == '')
@@ -1014,6 +1118,7 @@ function pool_change() {
 		break;
 
 		case "spare remove": {
+		    echo "$action...\n";
 		    switch ($option) {
 		    case "d":
 			if ($spare_device == '')
@@ -1073,6 +1178,7 @@ function pool_change() {
 		break;
 
 		case "vdev add": {
+		    echo "$action...\n";
 		    switch ($option) {
 		    case "d":
 			if ($vdev_device == '')
