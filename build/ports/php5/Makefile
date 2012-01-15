@@ -1,5 +1,5 @@
 PORTNAME=			php5
-PORTVERSION=		5.3.8
+PORTVERSION=		5.3.9
 PORTREVISION?= 	0
 CATEGORIES=		lang
 COMMENT=			PHP5 Scripting Language
@@ -27,6 +27,7 @@ CONFIGURE_ARGS+=	--without-mysql \
 									--with-pcre-regex=yes \
 									--with-gettext \
 									--enable-libxml \
+									--disable-mysqlnd \
 									--with-libxml-dir=${LOCALBASE} \
 									--with-config-file-path=/usr/local/etc \
 									--enable-pdo \
