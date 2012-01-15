@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: 2012-01-09 05:27+0000\n"
+"POT-Creation-Date: 2012-01-15 11:43+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -3152,6 +3152,9 @@ msgid "Old password"
 msgstr ""
 
 msgid "On"
+msgstr ""
+
+msgid "Once you add the virtual device, it becomes impossible to delete again. It recommends adding the same number of drives as the existing virtual device."
 msgstr ""
 
 msgid "Online version check"

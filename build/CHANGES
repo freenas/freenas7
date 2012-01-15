@@ -21,6 +21,7 @@ Majors changes:
 - Use UFS ID for fstab of full installation.
 - Add ZFS pool with encrypted devices.
 - Add ZFS spare device support. (spare add/remove/detach)
+- Add ZFS vdev adding. (same type only)
 
 Minors changes:
 - Add ability to configure Triple-parity RAID-Z.

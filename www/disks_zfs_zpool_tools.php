@@ -54,6 +54,7 @@ $a_pool = $config['zfs']['pools']['pool'];
 $a_vdevice = $config['zfs']['vdevices']['vdevice'];
 $a_vdevice_cache = array();
 $a_vdevice_spare = array();
+$a_vdevice_vdev = array();
 foreach ($a_vdevice as $vdevicev) {
 	if ($vdevicev['type'] == 'cache') {
 		$tmp = $vdevicev;
@@ -73,6 +74,17 @@ foreach ($a_vdevice as $vdevicev) {
 		}
 		$tmp['devs'] = implode(" ", $a_devs);
 		$a_vdevice_spare[] = $tmp;
+	} else if ($vdevicev['type'] == 'stripe' ||$vdevicev['type'] == 'mirror'
+		   || $vdevicev['type'] == 'raidz1' || $vdevicev['type'] == 'raidz2'
+		   || $vdevicev['type'] == 'raidz3') {
+		$tmp = $vdevicev;
+		$a_devs = array();
+		foreach ($vdevicev['device'] as $device) {
+			$name = preg_replace("/^\/dev\//", "", $device);
+			$a_devs[] = $name;
+		}
+		$tmp['devs'] = implode(" ", $a_devs);
+		$a_vdevice_vdev[] = $tmp;
 	}
 }
 
@@ -104,6 +116,10 @@ $pconfig['device_spare'] = $_GET['device_spare'];
 if (isset($_POST['device_spare']))
 	$pconfig['device_spare'] = $_POST['device_spare'];
 
+$pconfig['device_vdev'] = $_GET['device_vdev'];
+if (isset($_POST['device_vdev']))
+	$pconfig['device_vdev'] = $_POST['device_vdev'];
+
 if ($_POST || $_GET) {
 	unset($input_errors);
 	unset($do_action);
@@ -122,6 +138,7 @@ if (!isset($do_action)) {
 	$pconfig['device_new'] = "";
 	$pconfig['device_cache'] = "";
 	$pconfig['device_spare'] = "";
+	$pconfig['device_vdev'] = "";
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -131,10 +148,12 @@ function command_change() {
 	showElementById('device_new_tr','hide');
 	showElementById('device_cache_tr','hide');
 	showElementById('device_spare_tr','hide');
+	showElementById('device_vdev_tr','hide');
 	document.iform.option.length = 0;
 	document.iform.device_new.length = 0;
 	document.iform.device_cache.length = 0;
 	document.iform.device_spare.length = 0;
+	document.iform.device_vdev.length = 0;
 	var action = document.iform.action.value;
 	switch (action) {
 		case "upgrade":
@@ -221,6 +240,13 @@ function command_change() {
 			document.iform.option[0] = new Option('<?=gettext("Device")?>','d', <?=$pconfig['option'] === 'd' ? "true" : "false"?>);
 			<?php endif;?>
 			break;
+		case "vdev add":
+			showElementById('devices_tr','hide');
+			showElementById('device_vdev_tr','show');
+			<?php if (is_array($a_pool) && !empty($a_pool)):?>
+			document.iform.option[0] = new Option('<?=gettext("Device")?>','d', <?=$pconfig['option'] === 'd' ? "true" : "false"?>);
+			<?php endif;?>
+			break;
 		default:
 			break;
 	}
@@ -254,6 +280,7 @@ function pool_change() {
 	document.iform.device_new.length = 0;
 	document.iform.device_cache.length = 0;
 	document.iform.device_spare.length = 0;
+	document.iform.device_vdev.length = 0;
 	var div = document.getElementById("devices");
 	div.innerHTML ="";
 	var pool = document.iform.pool.value;
@@ -263,10 +290,17 @@ function pool_change() {
 		case "<?=$pool['name'];?>": {
 			<?php
 			$result = array();
+			$first_type = "";
 			foreach ($pool['vdevice'] as $vdevicev) {
 				$index = array_search_ex($vdevicev, $a_vdevice, "name");
 				$vdevice = $a_vdevice[$index];
 				$type = $vdevice['type'];
+				if ($first_type == ""
+				    && ($type == "stripe" || $type == "mirror"
+					|| $type == "raidz1" || $type == "raidz2"
+					|| $type == "raidz3")) {
+					$first_type = $type;
+				}
 				foreach ($vdevice['device'] as $devicev) {
 					$a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
 					$a_encrypteddisk = get_conf_encryped_disks_list();
@@ -379,6 +413,37 @@ function pool_change() {
 			<?php $i++; } ?>
 
 			}
+
+			<?php
+			$result_add = array();
+			$result_del = array();
+			array_sort_key($a_vdevice_vdev, "name");
+			foreach ($a_vdevice_vdev as $vdevicev) {
+				if ($first_type == "" || $first_type != $vdevicev['type']) {
+					continue;
+				}
+				$index = array_search_ex($vdevicev['name'], $a_pool, "vdevice");
+				if ($index !== false) {
+					if ($a_pool[$index]['name'] == $pool['name']) {
+						$result_del[] = $vdevicev;
+					}
+				} else {
+					$result_add[] = $vdevicev;
+				}
+			}
+			?>
+
+			if (action == "vdev add") {
+			<?php $i = 0; foreach ($result_add as $vdevicev) {?>
+				document.iform.device_vdev[<?=$i;?>] = new Option('<?="{$vdevicev['name']} ({$vdevicev['devs']})";?>','<?="{$vdevicev['name']}";?>','false');
+			<?php $i++; } ?>
+
+			} else if (action == "vdev remove") {
+			<?php $i = 0; foreach ($result_del as $vdevicev) {?>
+				document.iform.device_vdev[<?=$i;?>] = new Option('<?="{$vdevicev['name']} ({$vdevicev['devs']})";?>','<?="{$vdevicev['name']}";?>','false');
+			<?php $i++; } ?>
+
+			}
 		}
 		break;
 		<?php endforeach;?>
@@ -425,10 +490,13 @@ function pool_change() {
 		    $cmd .= " remove clear scrub offline online replace detach";
 		}
 		$a_cmd = explode(" ", $cmd);
-		$a_cmd[] = "cache add";
-		$a_cmd[] = "cache remove";
-		$a_cmd[] = "spare add";
-		$a_cmd[] = "spare remove";
+		if (is_array($a_pool) && !empty($a_pool)) {
+		    $a_cmd[] = "cache add";
+		    $a_cmd[] = "cache remove";
+		    $a_cmd[] = "spare add";
+		    $a_cmd[] = "spare remove";
+		    $a_cmd[] = "vdev add";
+		}
 		asort($a_cmd);
 		foreach ($a_cmd as $cmdv) {
 		    echo "<option value=\"${cmdv}\"";
@@ -453,6 +521,7 @@ function pool_change() {
 	<?php html_combobox("device_new", gettext("New Device"), NULL, NULL, "", true);?>
 	<?php html_combobox("device_cache", gettext("Cache Device"), NULL, NULL, "", true);?>
 	<?php html_combobox("device_spare", gettext("Hot Spare"), NULL, NULL, "", true);?>
+	<?php html_combobox("device_vdev", gettext("Virtual device"), NULL, NULL, gettext("Once you add the virtual device, it becomes impossible to delete again. It recommends adding the same number of drives as the existing virtual device."), true);?>
 	</table>
 	<div id="submit">
 	  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>" />
@@ -469,6 +538,7 @@ function pool_change() {
 		$new_device = $pconfig['device_new'];
 		$cache_device = $pconfig['device_cache'];
 		$spare_device = $pconfig['device_spare'];
+		$vdev_device = $pconfig['device_vdev'];
 
 		if (is_array($device)) {
 			$a = array();
@@ -872,6 +942,52 @@ function pool_change() {
 						}
 					}
 					$config['zfs']['pools']['pool'][$index]['vdevice'] = $new_vdevice;
+					write_config();
+					echo gettext("Done.")."\n";
+				}
+			}
+			break;
+		    }
+		}
+		break;
+
+		case "vdev add": {
+		    switch ($option) {
+		    case "d":
+			if ($vdev_device == '')
+				break;
+			$index = array_search_ex($vdev_device, $a_vdevice_vdev, "name");
+			if ($index === false)
+				break;
+			$vdevice = $a_vdevice_vdev[$index];
+			$device = $vdevice['device'];
+			$result = 0;
+			if (isset($vdevice['aft4k'])) {
+				$a = array();
+				foreach ($device as $dev) {
+					$gnop_cmd = "gnop create -S 4096 {$dev}";
+					write_log("$gnop_cmd");
+					$result = mwexec($gnop_cmd, true);
+					if ($result != 0)
+						break;
+					$a[] = "${dev}.nop";
+				}
+				$device = $a;
+			}
+			if ($result != 0)
+				break;
+			$devs = implode(" ", $device);
+			if ($vdevice['type'] == 'stripe') {
+				$type = "";
+			} else {
+				$type = "{$vdevice['type']} ";
+			}
+			$result = zfs_zpool_cmd("add", "{$pool} {$type} {$devs}", true);
+			// Update config
+			if ($result == 0) {
+				$index = array_search_ex($pool, $config['zfs']['pools']['pool'], "name");
+				if ($index !== false) {
+					$config['zfs']['pools']['pool'][$index]['vdevice'][] = $vdev_device;
 					write_config();
 					echo gettext("Done.")."\n";
 				}
