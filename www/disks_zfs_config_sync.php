@@ -388,7 +388,10 @@ if (isset($_POST['import_config']))
 							'size' => $disk['size'],
 							'aalgo' => "none",
 							'ealgo' => $geli_info['ealgo'],
+							'fstype' => 'zfs',
 						);
+					} else if ($index !== false && isset($_POST['import_disks_overwrite'])) {
+						$cfg['geli']['vdisk'][$index]['fstype'] = 'zfs';
 					}
 				}
 			}

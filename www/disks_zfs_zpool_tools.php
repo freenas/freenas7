@@ -274,11 +274,10 @@ function pool_change() {
 					if (($index = array_search_ex($devicev, $a_disk, "devicespecialfile")) !== false) {
 						$tmp = $a_disk[$index];
 						$tmp['type'] = $type;
-						$result[] = $tmp;
-					} else if (($index = array_search_ex($devicev, $a_encrypteddisk, "devicespecialfile")) !== false) {
-						$tmp = $a_encrypteddisk[$index];
-						$tmp['type'] = $type;
-						$tmp['name'] = $tmp['name'].".eli";
+						$tmp['name2'] = $tmp['name'];
+						if (($index = array_search_ex($devicev, $a_encrypteddisk, "devicespecialfile")) !== false) {
+							$tmp['name2'] = $tmp['name'].".eli";
+						}
 						$result[] = $tmp;
 					}
 				}
@@ -303,10 +302,10 @@ function pool_change() {
 				?>
 
 				if (action != "cache add" && action != "cache remove") {
-					div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name'];?>'<?=$checked?> />";
+					div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name2'];?>'<?=$checked?> />";
 					div.innerHTML += "<?=$disk['name'];?> (<?=$disk['size']?>, <?=htmlspecialchars($disk['desc'])?>)";
 					div.innerHTML += "<br />";
-					document.iform.device_new[<?=$i;?>] = new Option('<?="{$disk['name']} ({$disk['size']}, {$disk['desc']})";?>','<?=$disk['name'];?>','false');
+					document.iform.device_new[<?=$i;?>] = new Option('<?="{$disk['name']} ({$disk['size']}, {$disk['desc']})";?>','<?=$disk['name2'];?>','false');
 				}
 
 				<?php
@@ -315,10 +314,10 @@ function pool_change() {
 				?>
 
 				if (action == "cache add" || action == "cache remove") {
-					div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name'];?>'<?=$checked?> />";
+					div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name2'];?>'<?=$checked?> />";
 					div.innerHTML += "<?=$disk['name'];?> (<?=$disk['type']?>, <?=$disk['size']?>, <?=htmlspecialchars($disk['desc'])?>)";
 					div.innerHTML += "<br />";
-					document.iform.device_new[<?=$j;?>] = new Option('<?="{$disk['name']} ({$disk['type']}, {$disk['size']}, {$disk['desc']})";?>','<?=$disk['name'];?>','false');
+					document.iform.device_new[<?=$j;?>] = new Option('<?="{$disk['name']} ({$disk['type']}, {$disk['size']}, {$disk['desc']})";?>','<?=$disk['name2'];?>','false');
 				}
 
 				<?php
@@ -583,16 +582,23 @@ function pool_change() {
 		case "offline": {
 		    switch ($option) {
 		    case "t":
-			zfs_zpool_cmd($action, "-t {$pool} {$device}", true);
+			$result = zfs_zpool_cmd($action, "-t {$pool} {$device}", true);
+			if ($result == 0) {
+			    echo gettext("Done.")."\n";
+			}
 			break;
 
 		    case "d":
 			if (is_array($device)) {
+			    $result = 0;
 			    foreach ($device as $dev) {
-				zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+				$result |= zfs_zpool_cmd($action, "{$pool} {$dev}", true);
 			    }
 			} else {
-			    zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			    $result = zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			}
+			if ($result == 0) {
+			    echo gettext("Done.")."\n";
 			}
 			break;
 		    }
@@ -603,11 +609,15 @@ function pool_change() {
 		    switch ($option) {
 		    case "d":
 			if (is_array($device)) {
+			    $result = 0;
 			    foreach ($device as $dev) {
-				zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+				$result |= zfs_zpool_cmd($action, "{$pool} {$dev}", true);
 			    }
 			} else {
-			    zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			    $result = zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			}
+			if ($result == 0) {
+			    echo gettext("Done.")."\n";
 			}
 			break;
 		    }
@@ -618,11 +628,15 @@ function pool_change() {
 		    switch ($option) {
 		    case "d":
 			if (is_array($device)) {
+			    $result = 0;
 			    foreach ($device as $dev) {
-				zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+				$result |= zfs_zpool_cmd($action, "{$pool} {$dev}", true);
 			    }
 			} else {
-			    zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			    $result = zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			}
+			if ($result == 0) {
+			    echo gettext("Done.")."\n";
 			}
 			break;
 		    }
@@ -633,11 +647,15 @@ function pool_change() {
 		    switch ($option) {
 		    case "d":
 			if (is_array($device)) {
+			    $result = 0;
 			    foreach ($device as $dev) {
-				zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+				$result |= zfs_zpool_cmd($action, "{$pool} {$dev}", true);
 			    }
 			} else if (!empty($device)) {
-			    zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			    $result = zfs_zpool_cmd($action, "{$pool} {$device}", true);
+			}
+			if ($result == 0) {
+			    echo gettext("Done.")."\n";
 			}
 			break;
 		    }
@@ -648,11 +666,15 @@ function pool_change() {
 		    switch ($option) {
 		    case "d":
 			if (is_array($device)) {
+			    $result = 0;
 			    foreach ($device as $dev) {
-				zfs_zpool_cmd($action, "{$pool} {$dev} {$new_device}", true);
+				$result |= zfs_zpool_cmd($action, "{$pool} {$dev} {$new_device}", true);
 			    }
 			} else {
-			    zfs_zpool_cmd($action, "{$pool} {$device} {$new_device}", true);
+			    $result = zfs_zpool_cmd($action, "{$pool} {$device} {$new_device}", true);
+			}
+			if ($result == 0) {
+			    echo gettext("Done.")."\n";
 			}
 			break;
 		    }

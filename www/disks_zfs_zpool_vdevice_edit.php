@@ -51,7 +51,6 @@ array_sort_key($config['zfs']['vdevices']['vdevice'], "name");
 
 $a_vdevice = &$config['zfs']['vdevices']['vdevice'];
 $a_disk = get_conf_disks_filtered_ex("fstype", "zfs");
-$a_encrypteddisk = get_conf_encryped_disks_list();
 
 if (!isset($uuid) && (!sizeof($a_disk)) && (!sizeof($a_encrypteddisk))) {
 	$errormsg = sprintf(gettext("No disks available. Please add new <a href='%s'>disk</a> first."), "disks_manage.php");
@@ -204,7 +203,6 @@ function enable_change(enable_change) {
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], "", true, 20, isset($uuid) && false !== $cnid);?>
 					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-Z"), "raidz2" => gettext("Double-parity RAID-Z"), "raidz3" => gettext("Triple-parity RAID-Z"), "spare" => gettext("Hot Spare"), "cache" => gettext("Cache"), "log" => gettext("Log"), "log-mirror" => gettext("Log (mirror)")), "", true, isset($uuid) && false !== $cnid);?>
 					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($uuid) && false !== $cnid && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if ((!isset($uuid) || isset($uuid) && false === $cnid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
-					<?php foreach ($a_encrypteddisk as $diskv) { if (isset($uuid) && false !== $cnid && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if ((!isset($uuid) || isset($uuid) && false === $cnid) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
 					<?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, "", true, isset($uuid) && false !== $cnid);?>
 					<?php html_checkbox("aft4k", gettext("Advanced Format"), $pconfig['aft4k'] ? true : false, gettext("Enable Advanced Format (4KB sector)"), "", false, "");?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
