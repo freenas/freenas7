@@ -45,6 +45,7 @@ Minors changes:
 - Upgrade bsnmp-ucd-0.3.3.
 - Upgrade mDNSResponder to 333.10.
 - Upgrade unison to 2.40.63.
+- Upgrade bash to 4.2 patch 20.
 - Add ability to set guest account mapping.
 - Use 8-bit data for syslogd.
 - Preserve ZFS auto snapshot when importing ZFS config.
