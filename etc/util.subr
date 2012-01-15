@@ -131,9 +131,7 @@ get_vmtype()
     _smversion=`/bin/kenv -q smbios.system.version`
 
     _type="none";
-    if [ -x /usr/local/bin/vmware-checkvm ] && /usr/local/bin/vmware-checkvm > /dev/null; then
-	_type="vmware";
-    elif [ "$_smproduct" = "VMware Virtual Platform" ]; then
+    if [ "$_smproduct" = "VMware Virtual Platform" ]; then
 	_type="vmware";
     elif [ "$_smproduct" = "VirtualBox" ]; then
 	_type="vbox";
@@ -147,6 +145,8 @@ get_vmtype()
 	else
 	    _type="msvm";
 	fi
+#    elif [ -x /usr/local/bin/vmware-checkvm ] && /usr/local/bin/vmware-checkvm > /dev/null; then
+#	_type="vmware";
     fi
     echo "$_type";
 }
