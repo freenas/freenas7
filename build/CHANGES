@@ -41,7 +41,7 @@ Minors changes:
 - Upgrade nut to 2.6.3.
 - Upgrade lighttpd to 1.4.30.
 - Upgrade php5 to 5.3.9.
-- Upgrade msmtp to 1.4.26.
+- Upgrade msmtp to 1.4.27.
 - Upgrade bsnmp-ucd-0.3.3.
 - Upgrade mDNSResponder to 333.10.
 - Upgrade unison to 2.40.63.
