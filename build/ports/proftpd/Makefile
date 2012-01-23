@@ -21,12 +21,13 @@ GNU_CONFIGURE=	yes
 USE_GETTEXT=	yes
 USE_OPENSSL=	yes
 
-MODULES=	mod_site_misc:mod_tls:mod_wrap2:mod_ban
+MODULES=	mod_ratio:mod_readme:mod_rewrite:mod_site_misc:mod_tls:mod_wrap:mod_wrap2:mod_wrap2_file:mod_ban:mod_ctrls_admin:mod_ifsession
 OPTIONS+=       WRAP "Include mod_wrap2" on
 
 CONFIGURE_ARGS=	--localstatedir=/var/run \
 		--with-pkgconfig=libdata/pkgconfig \
 		--sysconfdir=${PREFIX}/etc \
+		--enable-dso \
 		--disable-sendfile \
 		--enable-ipv6 \
 		--enable-nls \
@@ -40,6 +41,9 @@ CONFIGURE_ENV=	"LIBS=-lintl -L${LOCALBASE}/lib -lssl -lcrypto -L${OPENSSLLIB}"
 CFLAGS+=	-DHAVE_OPENSSL -I${OPENSSLINC}
 
 .include <bsd.port.pre.mk>
+
+# FreeBSD-SA-11:07.chroot
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-8-src-fsio.c
 
 MODULES!=${ECHO} ${MODULES} | ${SED} -e 's,^:,,' -e 's,:$$,,'
 
