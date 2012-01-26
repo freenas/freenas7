@@ -15,7 +15,7 @@ Majors changes:
 - Add ZFS snapshot/clone setting pages.
 - Add ZFS Auto Snapshot. (daily)
 - Add Shadow Copy. (ZFS snapshot only)
-- Upgrade samba to 3.6.1.
+- Upgrade samba to 3.6.2.
 - Add SMB2 and user authentication as default.
 - Add ZFS ACL on CIFS/SMB share.
 - Use UFS ID for fstab of full installation.
