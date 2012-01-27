@@ -1296,6 +1296,7 @@ EOD;
  * Rescan disks after a Hotswap has been performed
  */ 
 function disks_rescan() {
+	/*
 	mwexec2("atacontrol list", $devicelist, $return_val);
 	if (true == $return_val) {
 		echo gettext("atacontrol list failed, atacontrol not found !!");
@@ -1319,6 +1320,8 @@ function disks_rescan() {
 			mwexec("atacontrol attach $channel");
 		}
 	}
+	*/
+	mwexec2("camcontrol rescan all", $buslist, $return_val);
 }
 
 // Convert old ad to ada
