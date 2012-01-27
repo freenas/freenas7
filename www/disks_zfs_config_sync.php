@@ -337,6 +337,7 @@ if (isset($_POST['import_config']))
 			foreach ($vdev['device'] as $device)
 			{
 				$encrypted = false;
+				$device = disks_label_to_device($device);
 				if (preg_match("/^(.+)\.eli$/", $device, $m)) {
 					$device = $m[1];
 					$encrypted = true;
