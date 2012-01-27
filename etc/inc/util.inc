@@ -405,7 +405,7 @@ function is_valid_privatekey($privatekey, $type = "RSA") {
 				return true;
 			break;
 		case 'DSA':
-			if (preg_match('^(-----BEGIN DSA PRIVATE KEY-----).*(-----END DSA PRIVATE KEY-----)(\r|\n|\r\n)?\z/s', $privatekey))
+			if (preg_match('/^(-----BEGIN DSA PRIVATE KEY-----).*(-----END DSA PRIVATE KEY-----)(\r|\n|\r\n)?\z/s', $privatekey))
 				return true;
 			break;
 	}
