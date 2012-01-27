@@ -61,6 +61,10 @@ Minors changes:
 - Use UTF-8 as default shell environment.
 - Add guest enabler to CIFS/SMB share.
 - Remove polling setting of IF.
+- Add some proftpd modules and extra patch.
+- Add label based device and partition for ZFS vdev.
+- Disable AIO when SMB2 is selected.
+- Increase kern.maxfilesperproc.
 
 Bug fixes:
 - Fix the problem which discards the DNS settings from a DHCP server.
