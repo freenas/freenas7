@@ -1075,6 +1075,29 @@ function disks_get_ufsid($partition) {
 	return $ufsid;
 }
 
+// Get all disk labels.
+function disks_get_labels() {
+	$result = array();
+	exec("/sbin/geom label status -s", $rawdata);
+	foreach($rawdata as $line) {
+		if (preg_match("/^\s*(\S+)\s+.*?\s+(.+)$/", $line, $m)) {
+			$result[$m[1]] = $m[2];
+		}
+	}
+	return $result;
+}
+
+function disks_label_to_device($device) {
+	$labels = disks_get_labels();
+	foreach($labels as $key => $val) {
+		if (strcmp($device, "/dev/".$key) == 0) {
+			// found label
+			return "/dev/".$val;
+		}
+	}
+	return $device;
+}
+
 // Get ad disk map.
 // Result is in the form:
 // Array

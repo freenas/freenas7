@@ -2332,6 +2332,11 @@ function config_postinit() {
 		$need_write_config = true;
 	}
 
+	// temporary disable AIO
+	if ($config['samba']['maxprotocol'] == "SMB2") {
+		unset($config['samba']['aio']);
+	}
+
 	if ($need_write_config) {
 		echo "save config\n";
 		write_config();
