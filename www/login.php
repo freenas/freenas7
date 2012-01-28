@@ -104,7 +104,7 @@ $menu['irc']['menuitem']['visible'] = FALSE;
 // Donate
 $menu['donate']['desc'] = gettext("Donate");
 $menu['donate']['visible'] = TRUE;
-$menu['donate']['link'] = "https://sourceforge.net/donate/index.php?group_id=151951";
+$menu['donate']['link'] = "https://sourceforge.net/donate/index.php?group_id=321862";
 $menu['donate']['menuitem']['visible'] = FALSE;
 
 function display_menu($menuid) {
