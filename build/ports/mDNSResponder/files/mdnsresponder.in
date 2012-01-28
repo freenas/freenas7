@@ -21,6 +21,7 @@ load_rc_config "${name}"
 
 # Custom commands
 start_precmd="mdnsresponder_mkconf"
+stop_cmd="mdnsresponder_stop"
 mkconf_cmd="mdnsresponder_mkconf"
 extra_commands="mkconf"
 
@@ -30,8 +31,14 @@ pidfile="/var/run/mDNSResponder.pid"
 command="/usr/local/bin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 
-stop_cmd="kill -s int `cat ${pidfile}`"
-stop_postcmd="rm ${pidfile}"
+
+mdnsresponder_stop()
+{
+	if [ -f ${pidfile} ]; then
+		kill -s int `cat ${pidfile}`
+		rm ${pidfile}
+	fi
+}
 
 mdnsresponder_mkconf()
 {
