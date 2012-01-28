@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-15 11:43+0000\n"
-"PO-Revision-Date: 2012-01-01 11:29+0000\n"
-"Last-Translator: Daniel Winzen <d@winzen4.de>\n"
+"PO-Revision-Date: 2012-01-28 12:25+0000\n"
+"Last-Translator: mrx5682 <Unknown>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-15 03:38+0000\n"
-"X-Generator: Launchpad (build 14664)\n"
+"X-Launchpad-Export-Date: 2012-01-28 12:50+0000\n"
+"X-Generator: Launchpad (build 14727)\n"
 "X-Poedit-Country: GERMANY\n"
 "Language: \n"
 "X-Poedit-Language: German\n"
@@ -816,13 +816,13 @@ msgid "CP932 (Japanese Shift-JIS)"
 msgstr "CP932 (Japanisch Shift-JIS)"
 
 msgid "CP936 (Simplified Chinese GBK)"
-msgstr ""
+msgstr "CP936 (Vereinfachtes Chinesisch GBK)"
 
 msgid "CP949 (Korean)"
 msgstr "CP949 (Koreanisch)"
 
 msgid "CP950 (Traditional Chinese Big5)"
-msgstr ""
+msgstr "CP950 (Traditionelles Chinesisch Big5)"
 
 msgid "CPU frequency"
 msgstr "Prozessortaktfrequenz"
@@ -1812,7 +1812,7 @@ msgid "Edit auth group"
 msgstr "Editiere Authentifikationsgruppe"
 
 msgid "Edit auto snapshot"
-msgstr ""
+msgstr "Auto-Snapshot bearbeiten"
 
 msgid "Edit command"
 msgstr "Befehl bearbeiten"
@@ -1869,7 +1869,7 @@ msgid "Edit share"
 msgstr "Bearbeite Freigabe"
 
 msgid "Edit snapshot"
-msgstr ""
+msgstr "Snapshot bearbeiten"
 
 msgid "Edit target"
 msgstr "Target bearbeiten"
@@ -1878,7 +1878,7 @@ msgid "Edit user"
 msgstr "Bearbeite Benutzer"
 
 msgid "Edit volume"
-msgstr ""
+msgstr "Datenträger bearbeiten"
 
 msgid "Email"
 msgstr "E-Mail"
@@ -1914,7 +1914,7 @@ msgid "Enable TLS/SSL connections."
 msgstr "TLS/SSL-Verbindungen aktivieren."
 
 msgid "Enable ZFS ACL"
-msgstr ""
+msgstr "Aktivierung von ZFS ACL"
 
 msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr "Aktiviere Zeroconf/Bonjour zur Ankündigung der Dienste diese Gerätes"
@@ -1963,7 +1963,7 @@ msgstr ""
 "während des Bootvorgangs."
 
 msgid "Enable guest access"
-msgstr ""
+msgstr "Gastzugriff aktivieren"
 
 msgid "Enable guest access."
 msgstr "Aktiviere Gast-Zugriff."
@@ -2712,6 +2712,8 @@ msgstr ""
 msgid ""
 "If this property is enabled, the snapshots are displayed into .zfs directory."
 msgstr ""
+"Wenn diese Einstellung aktiviert ist, werden die Snapshots im .zfs-"
+"Verzeichnis angezeigt."
 
 #, php-format
 msgid ""
@@ -2866,7 +2868,7 @@ msgid "Invalid max. block size! It must be in the range from %d to %d."
 msgstr "Ungültige Blockgröße! Sie muss im Bereich von %d bis %d sein."
 
 msgid "It cannot be used combining SMB2 and Anonymous."
-msgstr ""
+msgstr "Es kann nicht genutzt werden, wenn SMB2 und Anonym kombiniert werden"
 
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
@@ -2935,10 +2937,10 @@ msgid "LAN net"
 msgstr "LAN net"
 
 msgid "LCDproc"
-msgstr ""
+msgstr "LCDproc"
 
 msgid "LCDproc (client)"
-msgstr ""
+msgstr "LCDproc (Client)"
 
 msgid "LDAP"
 msgstr "LDAP"
@@ -3723,7 +3725,7 @@ msgid "Options"
 msgstr "Optionen"
 
 msgid "Origin"
-msgstr ""
+msgstr "Herkunft"
 
 msgid "Others"
 msgstr "Sonstige"
@@ -4575,7 +4577,7 @@ msgid "Shadow Copy"
 msgstr "Schattenkopie"
 
 msgid "Shadow Copy format"
-msgstr ""
+msgstr "Schattenkopie-Format"
 
 msgid "Share"
 msgstr "Freigabe"
@@ -4652,7 +4654,7 @@ msgid "Snapshot"
 msgstr "Schnappschuss"
 
 msgid "Snapshot Visibility"
-msgstr ""
+msgstr "Snapshot Sichtbarkeit"
 
 msgid "Snapshots"
 msgstr "Snapshots"
@@ -5274,7 +5276,7 @@ msgstr ""
 "Camellia und 192 für 3DES."
 
 msgid "The default time in seconds to display a screen."
-msgstr ""
+msgstr "Die Wartezeit in Sekunden, um ein Bild darzustellen."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Der Gerätename darf nur folgende Zeichen enthalten: a-z, A-Z, 0-9."
@@ -5327,6 +5329,8 @@ msgid ""
 "The driver used to connect with the LCD. The list of available <a href='%s' "
 "target='_blank'>drivers</a>."
 msgstr ""
+"Der Treiber, der benutzt wird, um das LCD anzusteuern. Die Liste von "
+"verfügbaren <a href='%s' target='_blank'>Treibern</a>."
 
 #, php-format
 msgid ""
@@ -5839,7 +5843,7 @@ msgstr ""
 "aufgerufen werden."
 
 msgid "This controls whether this share is accessible by guest account."
-msgstr ""
+msgstr "Dies steuert, ob diese Freigabe über ein Gastkonto zugänglich ist."
 
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
@@ -5941,6 +5945,8 @@ msgstr ""
 
 msgid "This option causes rsync to copy the local data to the remote server."
 msgstr ""
+"Diese Option verursacht eine Resynchronisierung, um die lokalen Daten auf "
+"den entfernten Server zu kopieren."
 
 msgid ""
 "This option causes rsync to update the remote extended attributes to be the "
@@ -6154,10 +6160,12 @@ msgstr ""
 "hinzufügen wollen."
 
 msgid "This will provide ZFS ACL support. (ZFS only)"
-msgstr ""
+msgstr "Dies wird ZFS ACL-Unterstützung bereitstellen. (Nur ZFS)"
 
 msgid "This will provide shadow copy created by auto snapshot. (ZFS only)"
 msgstr ""
+"Dies ermöglicht die Erstellung von Schattenkopien durch Auto-Snapshot. (Nur "
+"ZFS)"
 
 msgid "TiB"
 msgstr "TiB"
@@ -6229,6 +6237,8 @@ msgid ""
 "To get more information how to configure LCDproc check the LCDproc <a "
 "href='%s' target='_blank'>documentation</a>."
 msgstr ""
+"In der <a href='%s' target='_blank'>Dokumentation</a> zu LCDproc gibt es "
+"mehr Informationen zur Konfiguration von LCDproc."
 
 #, php-format
 msgid ""
@@ -6557,7 +6567,7 @@ msgstr "Benutzer & Gruppen"
 
 #, c-format
 msgid "Using %s bytes fragment size."
-msgstr ""
+msgstr "Nutze %s Bytes Fragmentgröße."
 
 msgid "VLAN"
 msgstr "VLAN"
@@ -6814,24 +6824,26 @@ msgid "ZFS dataset properties"
 msgstr "ZFS Datensatzeigenschaften"
 
 msgid "ZFS snapshot information and status"
-msgstr ""
+msgstr "ZFS Snapshot Informationen und Status"
 
 msgid "ZFS snapshot properties"
-msgstr ""
+msgstr "ZFS Snapshot Einstellungen"
 
 msgid "ZFS volume"
 msgstr "ZFS Volume"
 
 msgid "ZFS volume information and status"
-msgstr ""
+msgstr "ZFS-Datenträgergröße und -status"
 
 msgid "ZFS volume properties"
-msgstr ""
+msgstr "ZFS-Datenträgereigenschaften"
 
 msgid ""
 "ZFS volume size. To specify the size use the following human-readable "
 "suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."
 msgstr ""
+"ZFS-Datenträgergröße. Um die Größe festzusetzen, benutzen Sie die folgenden "
+"manuell lesbaren Kürzel (Beispielsweise, 'k', 'KB', 'M', 'Gb', usw.)."
 
 msgid "Zeroconf/Bonjour"
 msgstr "Zeroconf/Bonjour"
