@@ -101,11 +101,6 @@ $menu['irc']['desc'] = gettext("IRC Live Support");
 $menu['irc']['visible'] = TRUE;
 $menu['irc']['link'] = "http://webchat.freenode.net/?channels=#freenas";
 $menu['irc']['menuitem']['visible'] = FALSE;
-// Donate
-$menu['donate']['desc'] = gettext("Donate");
-$menu['donate']['visible'] = TRUE;
-$menu['donate']['link'] = "https://sourceforge.net/donate/index.php?group_id=321862";
-$menu['donate']['menuitem']['visible'] = FALSE;
 
 function display_menu($menuid) {
 	global $menu;

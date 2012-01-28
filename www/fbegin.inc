@@ -143,7 +143,6 @@ $menu['help']['menuitem'][] = array("desc" => gettext("IRC Live Support"), "link
 $menu['help']['menuitem'][] = array("type" => "separator", "visible" => TRUE);
 $menu['help']['menuitem'][] = array("desc" => gettext("Release Notes"), "link" => "changes.php", "visible" => TRUE);
 $menu['help']['menuitem'][] = array("desc" => gettext("License & Credits"), "link" => "license.php", "visible" => TRUE);
-$menu['help']['menuitem'][] = array("desc" => gettext("Donate"), "link" => "https://sourceforge.net/donate/index.php?group_id=321862", "visible" => TRUE, "target" => "_blank");
 
 function display_menu($menuid) {
 	global $menu;
