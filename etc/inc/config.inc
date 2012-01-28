@@ -2307,6 +2307,23 @@ function config_upgrade() {
 	return 0;
 }
 
+// hook for preinit
+function config_preinit() {
+	global $config, $g;
+
+	$need_write_config = false;
+
+	// temporary disable AIO
+	if ($config['samba']['maxprotocol'] == "SMB2") {
+		unset($config['samba']['aio']);
+	}
+
+	if ($need_write_config) {
+		echo "save config\n";
+		write_config();
+	}
+}
+
 // hook for postinit
 function config_postinit() {
 	global $config, $g;
@@ -2330,11 +2347,6 @@ function config_postinit() {
 		}
 		unset($config['after072']);
 		$need_write_config = true;
-	}
-
-	// temporary disable AIO
-	if ($config['samba']['maxprotocol'] == "SMB2") {
-		unset($config['samba']['aio']);
 	}
 
 	if ($need_write_config) {
